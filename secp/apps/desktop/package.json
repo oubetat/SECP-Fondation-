@@ -1,0 +1,10 @@
+{
+  "name": "@secp/desktop",
+  "version": "0.1.0",
+  "description": "SECP Desktop Application Shell (Tauri / Native CAD Host)",
+  "main": "main.js",
+  "scripts": {
+    "dev": "echo 'Desktop dev shell active'",
+    "build": "echo 'Desktop native bundle ready'"
+  }
+}

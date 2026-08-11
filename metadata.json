@@ -1,0 +1,6 @@
+{
+  "name": "SECP Foundation - Architecture Platform",
+  "description": "SECP Spatial Engineering CAD Platform featuring B-Rep 3D Geometry Kernel, Parametric Feature Tree, Assembly Engine, PCB ECAD/MCAD, Hydraulic Graph Solver, FEM/Thermal/CFD Simulation, Assembly BOM, CAM G-Code, Technical Drawings, Cryptographic Provenance, Digital Twin Telemetry, AI Engineering Copilot, Generative Topology Optimization, and Industry Plugin SDK.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
