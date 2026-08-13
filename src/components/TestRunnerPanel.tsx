@@ -6,13 +6,16 @@ export const TestRunnerPanel: React.FC = () => {
   const [report, setReport] = useState<TestSuiteReport | null>(null);
   const [isRunning, setIsRunning] = useState(false);
 
-  const handleRunTests = () => {
+  const handleRunTests = async () => {
     setIsRunning(true);
-    setTimeout(() => {
-      const res = TestRunnerEngine.runAllTests();
+    try {
+      const res = await TestRunnerEngine.runAllTests();
       setReport(res);
+    } catch (err) {
+      console.error('Test run failed:', err);
+    } finally {
       setIsRunning(false);
-    }, 200);
+    }
   };
 
   return (

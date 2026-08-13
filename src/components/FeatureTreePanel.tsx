@@ -14,21 +14,38 @@ interface FeatureTreePanelProps {
 }
 
 export const FeatureTreePanel: React.FC<FeatureTreePanelProps> = ({ onSelectFeatureSolid }) => {
-  const [tree, setTree] = useState<Record<string, FeatureTreeNode>>(() => FeatureTreeEngine.createDefaultFeatureTree());
   const [selectedNodeId, setSelectedNodeId] = useState<string>('Pocket001');
   const [rebuildLogs, setRebuildLogs] = useState<string[]>([]);
+  const [isRebuilding, setIsRebuilding] = useState<boolean>(false);
+  const [tree, setTree] = useState<Record<string, FeatureTreeNode>>(() => FeatureTreeEngine.createDefaultFeatureTree());
 
-  const handleParameterChange = (nodeId: string, val: number) => {
-    const { updatedTree, rebuildLog } = FeatureTreeEngine.rebuildFeatureTreeFromNode(tree, nodeId, val);
-    setTree(updatedTree);
-    setRebuildLogs(rebuildLog);
-
-    if (updatedTree[selectedNodeId]) {
-      onSelectFeatureSolid(updatedTree[selectedNodeId].outputSolid);
+  const handleParameterChange = async (nodeId: string, val: number) => {
+    setIsRebuilding(true);
+    try {
+      const { updatedTree, rebuildLog } = await FeatureTreeEngine.rebuildFeatureTreeFromNode(
+        tree,
+        nodeId,
+        val,
+        (currentTree, currentLogs) => {
+          setTree(currentTree);
+          setRebuildLogs(currentLogs);
+        }
+      );
+      setTree(updatedTree);
+      setRebuildLogs(rebuildLog);
+      
+      if (updatedTree[selectedNodeId]) {
+        onSelectFeatureSolid(updatedTree[selectedNodeId].outputSolid);
+      }
+    } catch (err: any) {
+      console.error('[FeatureTreePanel] Rebuild failed', err);
+    } finally {
+      setIsRebuilding(false);
     }
   };
 
   const handleSelectNode = (nodeId: string) => {
+    if (isRebuilding) return; // Prevent selection jumps during processing
     setSelectedNodeId(nodeId);
     if (tree[nodeId]) {
       onSelectFeatureSolid(tree[nodeId].outputSolid);
@@ -40,21 +57,23 @@ export const FeatureTreePanel: React.FC<FeatureTreePanelProps> = ({ onSelectFeat
       <div className="flex items-center justify-between border-b border-slate-800 pb-4">
         <div>
           <h2 className="text-lg font-bold flex items-center gap-2 text-purple-400">
-            <GitMerge className="w-5 h-5 text-purple-400" /> PATCH-SECP-007 — Feature Tree & Parametric DAG
+            <GitMerge className="w-5 h-5 text-purple-400" /> PATCH-SECP-040 — Parametric History & Real-Time DAG
           </h2>
           <p className="text-xs text-slate-400 mt-1">
-            Parametric History Tree (Sketch → Pad → Fillet → Hole → Pocket). Downstream features auto-rebuild on change.
+            Real-time visual caching, step-by-step downstream propagation, and production CAD kernel validations.
           </p>
         </div>
         <button
           onClick={() => {
+            if (isRebuilding) return;
             const def = FeatureTreeEngine.createDefaultFeatureTree();
             setTree(def);
             setRebuildLogs([]);
           }}
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded bg-slate-800 hover:bg-slate-700 text-xs text-slate-300 border border-slate-700"
+          disabled={isRebuilding}
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded bg-slate-800 hover:bg-slate-700 disabled:opacity-50 disabled:cursor-not-allowed text-xs text-slate-300 border border-slate-700"
         >
-          <RefreshCw className="w-3.5 h-3.5 text-purple-400" /> Reset Tree
+          <RefreshCw className={`w-3.5 h-3.5 text-purple-400 ${isRebuilding ? 'animate-spin' : ''}`} /> Reset Tree
         </button>
       </div>
 
@@ -71,16 +90,47 @@ export const FeatureTreePanel: React.FC<FeatureTreePanelProps> = ({ onSelectFeat
                   onClick={() => handleSelectNode(node.id)}
                   className={`p-3 rounded-lg border transition cursor-pointer flex items-center justify-between text-xs ${
                     isSelected
-                      ? 'bg-purple-950/60 border-purple-500/60 text-white'
+                      ? 'bg-purple-950/60 border-purple-500/60 text-white shadow-md shadow-purple-500/5'
                       : 'bg-slate-950 border-slate-800 hover:border-slate-700 text-slate-300'
-                  }`}
+                  } ${isRebuilding ? 'opacity-80' : ''}`}
                 >
                   <div className="flex items-center gap-2.5">
-                    <GitCommit className={`w-4 h-4 ${isSelected ? 'text-purple-400' : 'text-slate-500'}`} />
-                    <span className="font-semibold">{node.name}</span>
+                    <div className="relative">
+                      <GitCommit className={`w-4 h-4 ${
+                        node.status === 'REBUILDING'
+                          ? 'text-purple-400 animate-pulse'
+                          : node.status === 'ERROR'
+                          ? 'text-rose-500'
+                          : node.status === 'OUT_OF_DATE'
+                          ? 'text-amber-500'
+                          : isSelected
+                          ? 'text-purple-400'
+                          : 'text-slate-500'
+                      }`} />
+                      {node.status === 'REBUILDING' && (
+                        <span className="absolute -top-1 -right-1 w-1.5 h-1.5 bg-purple-500 rounded-full animate-ping" />
+                      )}
+                    </div>
+                    <div className="flex flex-col">
+                      <span className="font-semibold">{node.name}</span>
+                      <span className="text-[10px] text-slate-500 font-mono">
+                        {node.type}
+                      </span>
+                    </div>
                   </div>
 
                   <div className="flex items-center gap-2">
+                    <span className={`px-2 py-0.5 rounded text-[9px] font-bold uppercase tracking-wider border ${
+                      node.status === 'UP_TO_DATE'
+                        ? 'bg-emerald-950/40 text-emerald-400 border-emerald-800/40'
+                        : node.status === 'OUT_OF_DATE'
+                        ? 'bg-amber-950/40 text-amber-400 border-amber-800/40 animate-pulse'
+                        : node.status === 'REBUILDING'
+                        ? 'bg-purple-950/40 text-purple-400 border-purple-800/40 animate-pulse'
+                        : 'bg-rose-950/40 text-rose-400 border-rose-800/40'
+                    }`}>
+                      {node.status === 'UP_TO_DATE' ? 'Cached / Ready' : node.status.replace('_', ' ')}
+                    </span>
                     <span className="px-2 py-0.5 rounded bg-slate-900 border border-slate-700 text-[10px] font-mono text-purple-300">
                       Rev #{node.revisionNumber}
                     </span>
@@ -100,8 +150,17 @@ export const FeatureTreePanel: React.FC<FeatureTreePanelProps> = ({ onSelectFeat
                 <span className="text-xs font-bold text-purple-300">
                   Node Inspector: {tree[selectedNodeId].name}
                 </span>
-                <span className="text-[11px] font-mono text-emerald-400 flex items-center gap-1">
-                  <CheckCircle2 className="w-3.5 h-3.5" /> {tree[selectedNodeId].status}
+                <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full border flex items-center gap-1.5 ${
+                  tree[selectedNodeId].status === 'UP_TO_DATE'
+                    ? 'bg-emerald-950/60 text-emerald-400 border-emerald-800'
+                    : tree[selectedNodeId].status === 'OUT_OF_DATE'
+                    ? 'bg-amber-950/60 text-amber-400 border-amber-800'
+                    : tree[selectedNodeId].status === 'REBUILDING'
+                    ? 'bg-purple-950/60 text-purple-400 border-purple-800 animate-pulse'
+                    : 'bg-rose-950/60 text-rose-400 border-rose-800'
+                }`}>
+                  <CheckCircle2 className={`w-3.5 h-3.5 ${tree[selectedNodeId].status === 'REBUILDING' ? 'animate-spin' : ''}`} />
+                  {tree[selectedNodeId].status === 'UP_TO_DATE' ? 'UP_TO_DATE (CACHED)' : tree[selectedNodeId].status}
                 </span>
               </div>
 
@@ -118,8 +177,9 @@ export const FeatureTreePanel: React.FC<FeatureTreePanelProps> = ({ onSelectFeat
                     min="10"
                     max="400"
                     value={tree[selectedNodeId].parameters[0].value}
+                    disabled={isRebuilding}
                     onChange={e => handleParameterChange(selectedNodeId, Number(e.target.value))}
-                    className="w-full accent-purple-500 cursor-pointer"
+                    className="w-full accent-purple-500 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
                   />
                   <p className="text-[11px] text-slate-500">
                     Modifying this parent feature triggers automatic downstream recalculation in the Parametric DAG.
@@ -135,9 +195,21 @@ export const FeatureTreePanel: React.FC<FeatureTreePanelProps> = ({ onSelectFeat
               </div>
               <div className="bg-slate-900 rounded p-2 text-slate-400 max-h-32 overflow-y-auto space-y-1">
                 {rebuildLogs.length > 0 ? (
-                  rebuildLogs.map((log, i) => (
-                    <div key={i} className="text-emerald-400/90">{log}</div>
-                  ))
+                  rebuildLogs.map((log, i) => {
+                    let color = 'text-slate-400';
+                    if (log.includes('Bypassing')) {
+                      color = 'text-amber-400/90 font-semibold';
+                    } else if (log.includes('Actively evaluating')) {
+                      color = 'text-purple-400 font-semibold';
+                    } else if (log.includes('SUCCESS')) {
+                      color = 'text-emerald-400 font-bold';
+                    } else if (log.includes('ERROR') || log.includes('FAILED')) {
+                      color = 'text-rose-400 font-bold';
+                    }
+                    return (
+                      <div key={i} className={color}>{log}</div>
+                    );
+                  })
                 ) : (
                   <div className="text-slate-600">DAG tree is up to date. Adjust a parameter to view live build events.</div>
                 )}

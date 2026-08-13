@@ -6,20 +6,24 @@
 
 import { Constraint } from '../types/domainModel';
 import { CadGeometryKernel, CadSolidEntity, Vector3D } from './cadKernel';
+import { AssemblyCore, PartDefinition, PartInstance, Transform3D, computeTransformMatrix } from './assembly/AssemblyCore';
 
 export type MateKind = 'FIXED' | 'COINCIDENT' | 'CONCENTRIC' | 'DISTANCE' | 'ANGLE' | 'PARALLEL';
 
 export interface AssemblyComponentItem {
-  id: string;
+  id: string;              // Stable unique identity
   name: string;
   partId: string;
   colorHex: string;
   position: Vector3D;
-  rotation: Vector3D; // Euler angles
+  rotation: Vector3D;      // Euler angles
   explodedOffset: Vector3D; // Offset direction for Exploded View
   solid: CadSolidEntity;
-  densityKgM3: number; // e.g. Steel = 7850 kg/m3, Aluminum = 2700 kg/m3
+  densityKgM3: number;     // e.g. Steel = 7850 kg/m3, Aluminum = 2700 kg/m3
   visible: boolean;
+  suppressed: boolean;     // Suppression flag (removes from constraints/mass/interference solvers)
+  localTransform?: Transform3D;
+  worldTransform?: Transform3D;
 }
 
 export interface AssemblyMate {
@@ -75,6 +79,17 @@ export class AssemblyEngine {
         solid: engineBlockSolid,
         densityKgM3: 7850, // Steel
         visible: true,
+        suppressed: false,
+        localTransform: {
+          position: { x: 0, y: 0, z: 0 },
+          rotation: { x: 0, y: 0, z: 0 },
+          matrix: computeTransformMatrix({ x: 0, y: 0, z: 0 }, { x: 0, y: 0, z: 0 })
+        },
+        worldTransform: {
+          position: { x: 0, y: 0, z: 0 },
+          rotation: { x: 0, y: 0, z: 0 },
+          matrix: computeTransformMatrix({ x: 0, y: 0, z: 0 }, { x: 0, y: 0, z: 0 })
+        }
       },
       {
         id: 'comp-head',
@@ -87,6 +102,17 @@ export class AssemblyEngine {
         solid: cylinderHeadSolid,
         densityKgM3: 2700, // Aluminum
         visible: true,
+        suppressed: false,
+        localTransform: {
+          position: { x: -10, y: -10, z: 180 },
+          rotation: { x: 0, y: 0, z: 0 },
+          matrix: computeTransformMatrix({ x: -10, y: -10, z: 180 }, { x: 0, y: 0, z: 0 })
+        },
+        worldTransform: {
+          position: { x: -10, y: -10, z: 180 },
+          rotation: { x: 0, y: 0, z: 0 },
+          matrix: computeTransformMatrix({ x: -10, y: -10, z: 180 }, { x: 0, y: 0, z: 0 })
+        }
       },
       {
         id: 'comp-piston',
@@ -99,6 +125,17 @@ export class AssemblyEngine {
         solid: pistonShaftSolid,
         densityKgM3: 7850,
         visible: true,
+        suppressed: false,
+        localTransform: {
+          position: { x: 100, y: 60, z: -20 },
+          rotation: { x: 0, y: 0, z: 0 },
+          matrix: computeTransformMatrix({ x: 100, y: 60, z: -20 }, { x: 0, y: 0, z: 0 })
+        },
+        worldTransform: {
+          position: { x: 100, y: 60, z: -20 },
+          rotation: { x: 0, y: 0, z: 0 },
+          matrix: computeTransformMatrix({ x: 100, y: 60, z: -20 }, { x: 0, y: 0, z: 0 })
+        }
       },
       {
         id: 'comp-flange',
@@ -111,6 +148,17 @@ export class AssemblyEngine {
         solid: flangeShaftSolid,
         densityKgM3: 7850,
         visible: true,
+        suppressed: false,
+        localTransform: {
+          position: { x: -120, y: 60, z: 40 },
+          rotation: { x: 0, y: 0, z: 0 },
+          matrix: computeTransformMatrix({ x: -120, y: 60, z: 40 }, { x: 0, y: 0, z: 0 })
+        },
+        worldTransform: {
+          position: { x: -120, y: 60, z: 40 },
+          rotation: { x: 0, y: 0, z: 0 },
+          matrix: computeTransformMatrix({ x: -120, y: 60, z: 40 }, { x: 0, y: 0, z: 0 })
+        }
       },
     ];
 

@@ -28,12 +28,14 @@ import { CertificationPanel } from './components/CertificationPanel';
 import { IndustrialOsPanel } from './components/IndustrialOsPanel';
 import { MvpArchitecturePanel } from './components/MvpArchitecturePanel';
 import { TestRunnerPanel } from './components/TestRunnerPanel';
+import { CadKernelInspector } from './components/CadKernelInspector';
 import { NextGen3dEnginePanel } from './components/NextGen3dEnginePanel';
 import { CadGeometryKernel, CadSolidEntity } from './engine/cadKernel';
 import { AssemblyEngine, AssemblyComponentItem } from './engine/assembly';
 import { ProjectStorageEngine, SecpCadProjectData } from './engine/projectStorage';
 import { ParametricEngine } from './engine/parametric';
 import { FeatureTreeEngine } from './engine/featureTree';
+import { GeometryKernelManager } from './engine/geometry/GeometryKernelManager';
 import {
   Box,
   Ruler,
@@ -98,6 +100,12 @@ export function App() {
   const [explodedFactor, setExplodedFactor] = useState<number>(0);
   const [selectedEntityName, setSelectedEntityName] = useState<string>('Main Base Solid');
   const [saveMessage, setSaveMessage] = useState<string | null>(null);
+
+  React.useEffect(() => {
+    GeometryKernelManager.getKernel().catch(err => {
+      console.error('Initial CAD Kernel load failed:', err);
+    });
+  }, []);
 
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -507,7 +515,10 @@ export function App() {
           )}
 
           {activePatchTab === 'TEST-RUNNER' && (
-            <TestRunnerPanel />
+            <div className="space-y-6">
+              <TestRunnerPanel />
+              <CadKernelInspector />
+            </div>
           )}
         </div>
       </main>

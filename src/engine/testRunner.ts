@@ -53,7 +53,7 @@ export interface TestSuiteReport {
 }
 
 export class TestRunnerEngine {
-  public static runAllTests(): TestSuiteReport {
+  public static async runAllTests(): Promise<TestSuiteReport> {
     const results: TestResult[] = [];
 
     // PATCH-SECP-001: Domain Model Test
@@ -114,11 +114,11 @@ export class TestRunnerEngine {
     }));
 
     // PATCH-SECP-007: Feature Tree Engine Tests
-    results.push(this.runTest('PATCH-SECP-007', 'Feature Tree DAG Rebuild', () => {
+    results.push(await this.runTestAsync('PATCH-SECP-007', 'Feature Tree DAG Rebuild (Real Kernel)', async () => {
       const tree = FeatureTreeEngine.createDefaultFeatureTree();
-      const { updatedTree } = FeatureTreeEngine.rebuildFeatureTreeFromNode(tree, 'Pocket001', 40);
+      const { updatedTree } = await FeatureTreeEngine.rebuildFeatureTreeFromNode(tree, 'Pocket001', 40);
       if (!updatedTree['Pocket001']) throw new Error('Feature tree evaluation errors present');
-      return `Parametric DAG tree evaluated cleanly across ${Object.keys(updatedTree).length} nodes.`;
+      return `Parametric DAG tree evaluated cleanly using Real OCCT Kernel.`;
     }));
 
     // PATCH-SECP-008: Assembly Engine Tests
@@ -359,6 +359,32 @@ export class TestRunnerEngine {
     const start = performance.now();
     try {
       const message = testFn();
+      const durationMs = Math.round(performance.now() - start);
+      return {
+        patchId,
+        patchTitle: patchId,
+        testName,
+        passed: true,
+        message,
+        durationMs
+      };
+    } catch (err: any) {
+      const durationMs = Math.round(performance.now() - start);
+      return {
+        patchId,
+        patchTitle: patchId,
+        testName,
+        passed: false,
+        message: err.message || 'Test failed',
+        durationMs
+      };
+    }
+  }
+
+  private static async runTestAsync(patchId: string, testName: string, testFn: () => Promise<string>): Promise<TestResult> {
+    const start = performance.now();
+    try {
+      const message = await testFn();
       const durationMs = Math.round(performance.now() - start);
       return {
         patchId,
