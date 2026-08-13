@@ -34,6 +34,7 @@ import { MarketplaceEngine } from './marketplaceEngine';
 import { CertificationEngine } from './certificationEngine';
 import { IndustrialOsEngine } from './industrialOsEngine';
 import { MvpArchitectureEngine } from './mvpArchitectureEngine';
+import { NextGen3dEngine } from './nextGen3dEngine';
 
 export interface TestResult {
   patchId: string;
@@ -316,6 +317,20 @@ export class TestRunnerEngine {
       const osState = IndustrialOsEngine.getOsState();
       if (osState.nodes.length < 9 || osState.overallHealthScorePct <= 0) throw new Error('Industrial OS kernel failed');
       return `Industrial OS Kernel Verified: ${osState.kernelVersion} running with ${osState.totalSubsystems} active online subsystem nodes.`;
+    }));
+
+    // PATCH-SECP-031: Next-Generation 3D Engineering Engine
+    results.push(this.runTest('PATCH-SECP-031', 'Next-Gen 3D Graphics Engine Pipeline & Gpu Accelerations', () => {
+      const gpuInfo = NextGen3dEngine.checkWebGpuSupport();
+      const lod = NextGen3dEngine.calculateLod(350, 250000);
+      const pick = NextGen3dEngine.performGpuPicking(250, 150, 500, 300);
+      const culling = NextGen3dEngine.checkFrustumCulling({ x: 0, y: 0, z: 150 }, 50);
+      const instancing = NextGen3dEngine.getInstancingMetrics(10000);
+
+      if (!gpuInfo.supported || lod.level !== 'HIGH' || !pick.partName || !culling.visible || instancing.webgpuDrawCalls !== 1) {
+        throw new Error('Next-Generation 3D Engine pipeline check failed');
+      }
+      return `Next-Gen 3D Engine Verified: WebGPU pipeline compiled, GPU Picking coordinate-mapping matched ${pick.partName}, LOD level ${lod.level} (reduction ${lod.reductionPercentage}%), Frustum visible, and Instanced draw speedup is ${instancing.speedupFactor}x.`;
     }));
 
     // SECP MVP Infrastructure & Service Architecture

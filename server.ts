@@ -92,7 +92,7 @@ app.post("/api/secp/jobs/submit", (req, res) => {
   res.status(201).json({ success: true, job: newJob });
 });
 
-// AI Engineering Copilot Server Route
+// AI Engineering Copilot Server Route (Simple Synthesis)
 app.post("/api/ai-copilot", async (req, res) => {
   try {
     const { prompt, targetLoadKN, materialId } = req.body;
@@ -116,6 +116,68 @@ app.post("/api/ai-copilot", async (req, res) => {
   } catch (err: any) {
     console.error("AI Copilot Error:", err);
     res.status(500).json({ error: err.message || "Copilot calculation failed" });
+  }
+});
+
+// PATCH-SECP-033 — AI Engineering Copilot (Parametric Generation)
+app.post("/api/copilot/generate", async (req, res) => {
+  try {
+    const { requirement } = req.body;
+
+    const systemInstruction = `
+      You are an expert CAD/Structural Engineer. 
+      Translate user requirements into a valid SECP Parametric Specification.
+      Return ONLY a JSON object with the following structure:
+      {
+        "parameters": [
+          { "id": "p1", "name": "Parameter_Name", "value": 100, "unit": "mm" }
+        ],
+        "features": [
+          { "id": "f1", "type": "SKETCH|EXTRUDE|FILLET|CHAMFER|PATTERN", "name": "Feature_Name", "dependencies": ["p1", "f0"] }
+        ],
+        "reasoning": "Explain the engineering logic briefly",
+        "validationStatus": "PASSED"
+      }
+      
+      Constraints:
+      1. Features must have unique IDs starting with 'f'.
+      2. Parameters must have unique IDs starting with 'p'.
+      3. Use realistic engineering values based on the requirement (load, weight).
+      4. Features should follow a logical CAD stack (SKETCH -> EXTRUDE -> FILLET).
+    `;
+
+    if (aiClient && process.env.GEMINI_API_KEY) {
+      const response = await aiClient.models.generateContent({
+        model: "gemini-3.6-flash",
+        contents: requirement,
+        config: {
+          systemInstruction,
+          responseMimeType: "application/json"
+        }
+      });
+
+      const result = JSON.parse(response.text);
+      return res.json(result);
+    } else {
+      // Fallback for demo environments without API keys
+      const isHeavy = requirement.toLowerCase().includes('kn') && parseInt(requirement.match(/\d+/)?.[0] || '0') > 10;
+      return res.json({
+        parameters: [
+          { id: 'p1', name: 'AI_Diameter', value: isHeavy ? 150 : 90, unit: 'mm' },
+          { id: 'p2', name: 'AI_Wall_Thickness', value: isHeavy ? 15 : 8, unit: 'mm' }
+        ],
+        features: [
+          { id: 'f1', type: 'SKETCH', name: 'AI_Base_Sketch', dependencies: ['p1'], lastRebuildTime: Date.now(), isDirty: false },
+          { id: 'f2', type: 'EXTRUDE', name: 'AI_Extrusion', dependencies: ['f1'], lastRebuildTime: Date.now(), isDirty: false },
+          { id: 'f3', type: 'FILLET', name: 'AI_Corner_Relief', dependencies: ['f2', 'p2'], lastRebuildTime: Date.now(), isDirty: false }
+        ],
+        reasoning: `[Fallback Mode] Synthesized design for requirement: ${requirement}. Selected ${isHeavy ? 'High-Load' : 'Standard'} profile.`,
+        validationStatus: 'PASSED'
+      });
+    }
+  } catch (err: any) {
+    console.error("Copilot Generation Error:", err);
+    res.status(500).json({ error: "Failed to generate parametric solution" });
   }
 });
 

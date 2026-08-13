@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import {
   Bot,
   Send,
+  Loader2,
   CheckCircle2,
   AlertCircle,
   Sliders,
@@ -15,8 +16,13 @@ import {
 } from 'lucide-react';
 import { AiCopilotEngine, CopilotPipelineResult } from '../engine/aiCopilotEngine';
 import { MaterialsEngine } from '../engine/materials';
+import { CadGeometryKernel, CadSolidEntity } from '../engine/cadKernel';
 
-export const AiCopilotPanel: React.FC = () => {
+interface AiCopilotPanelProps {
+  onApplySolidToViewport?: (solid: CadSolidEntity) => void;
+}
+
+export const AiCopilotPanel: React.FC<AiCopilotPanelProps> = ({ onApplySolidToViewport }) => {
   const [prompt, setPrompt] = useState<string>(
     'صمم لي هيكل فولاذي يتحمل 20 kN مع أقل وزن ممكن'
   );
@@ -24,6 +30,8 @@ export const AiCopilotPanel: React.FC = () => {
   const [selectedMaterial, setSelectedMaterial] = useState<string>('mat-steel-1045');
   const [safetyFactorTarget, setSafetyFactorTarget] = useState<number>(1.5);
   const [maxDeflectionMm, setMaxDeflectionMm] = useState<number>(5.0);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const resultRef = useRef<HTMLDivElement>(null);
 
   const [pipelineResult, setPipelineResult] = useState<CopilotPipelineResult | null>(() =>
     AiCopilotEngine.processEngineeringRequest({
@@ -40,15 +48,66 @@ export const AiCopilotPanel: React.FC = () => {
   const handleRunCopilot = (e?: React.FormEvent) => {
     if (e) e.preventDefault();
 
+    // 1. Force keyboard to close on mobile
+    if (document.activeElement instanceof HTMLElement) {
+      document.activeElement.blur();
+    }
+
+    if (!prompt.trim()) return;
+
+    setIsLoading(true);
     setAppliedToCad(false);
-    const result = AiCopilotEngine.processEngineeringRequest({
-      userPrompt: prompt,
-      targetLoadKN: Number(targetLoadKN) || 20,
-      materialId: selectedMaterial,
-      maxDeflectionMm: Number(maxDeflectionMm) || 5.0,
-      safetyFactorTarget: Number(safetyFactorTarget) || 1.5,
-    });
-    setPipelineResult(result);
+
+    // Simulate AI synthesis delay for better UX
+    setTimeout(() => {
+      const result = AiCopilotEngine.processEngineeringRequest({
+        userPrompt: prompt,
+        targetLoadKN: Number(targetLoadKN) || 20,
+        materialId: selectedMaterial,
+        maxDeflectionMm: Number(maxDeflectionMm) || 5.0,
+        safetyFactorTarget: Number(safetyFactorTarget) || 1.5,
+      });
+      setPipelineResult(result);
+      setIsLoading(false);
+
+      // Auto-generate 3D CAD solid for recommended candidate & sync to viewport
+      if (result && result.recommendedCandidate) {
+        const cand = result.recommendedCandidate;
+        const generatedSolid = CadGeometryKernel.createBox(
+          cand.flangeWidthMm || 120,
+          cand.webHeightMm || 220,
+          350,
+          `AI-Copilot ${cand.name}`
+        );
+        generatedSolid.colorHex = '#6366f1';
+        if (onApplySolidToViewport) {
+          onApplySolidToViewport(generatedSolid);
+          setAppliedToCad(true);
+        }
+      }
+
+      // 2. Smooth scroll to results
+      setTimeout(() => {
+        resultRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 100);
+    }, 700);
+  };
+
+  const handleApplyToCad = () => {
+    setAppliedToCad(true);
+    if (pipelineResult && pipelineResult.recommendedCandidate) {
+      const cand = pipelineResult.recommendedCandidate;
+      const generatedSolid = CadGeometryKernel.createBox(
+        cand.flangeWidthMm || 120,
+        cand.webHeightMm || 220,
+        350,
+        `AI-Copilot ${cand.name}`
+      );
+      generatedSolid.colorHex = '#6366f1';
+      if (onApplySolidToViewport) {
+        onApplySolidToViewport(generatedSolid);
+      }
+    }
   };
 
   const samplePrompts = [
@@ -106,9 +165,15 @@ export const AiCopilotPanel: React.FC = () => {
             />
             <button
               type="submit"
-              className="flex items-center gap-2 px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg text-xs font-semibold transition-all shadow-lg shadow-indigo-600/30"
+              disabled={isLoading}
+              className="flex items-center gap-2 px-4 py-2 bg-indigo-600 hover:bg-indigo-500 disabled:bg-indigo-900 text-white rounded-lg text-xs font-semibold transition-all shadow-lg shadow-indigo-600/30 active:scale-95"
             >
-              <Send className="w-3.5 h-3.5" /> Run Copilot
+              {isLoading ? (
+                <Loader2 className="w-3.5 h-3.5 animate-spin" />
+              ) : (
+                <Send className="w-3.5 h-3.5" />
+              )}
+              {isLoading ? 'Processing...' : 'Run Copilot'}
             </button>
           </div>
         </div>
@@ -182,6 +247,7 @@ export const AiCopilotPanel: React.FC = () => {
       </form>
 
       {/* Copilot Pipeline Execution Output */}
+      <div ref={resultRef} />
       {pipelineResult && (
         <div className="flex flex-col gap-6">
           {/* AI Explanation Summary */}
@@ -288,7 +354,7 @@ export const AiCopilotPanel: React.FC = () => {
             </div>
 
             <button
-              onClick={() => setAppliedToCad(true)}
+              onClick={handleApplyToCad}
               className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-semibold transition-all ${
                 appliedToCad
                   ? 'bg-emerald-600 text-white'
@@ -296,7 +362,7 @@ export const AiCopilotPanel: React.FC = () => {
               }`}
             >
               {appliedToCad ? <Check className="w-4 h-4" /> : <Cpu className="w-4 h-4" />}
-              {appliedToCad ? 'Applied to CAD Tree!' : 'Load to CAD Canvas'}
+              {appliedToCad ? 'Applied to 3D Viewport Kernel!' : 'Load to CAD Canvas'}
             </button>
           </div>
         </div>

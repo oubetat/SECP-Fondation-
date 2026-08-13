@@ -28,6 +28,7 @@ import { CertificationPanel } from './components/CertificationPanel';
 import { IndustrialOsPanel } from './components/IndustrialOsPanel';
 import { MvpArchitecturePanel } from './components/MvpArchitecturePanel';
 import { TestRunnerPanel } from './components/TestRunnerPanel';
+import { NextGen3dEnginePanel } from './components/NextGen3dEnginePanel';
 import { CadGeometryKernel, CadSolidEntity } from './engine/cadKernel';
 import { AssemblyEngine, AssemblyComponentItem } from './engine/assembly';
 import { ProjectStorageEngine, SecpCadProjectData } from './engine/projectStorage';
@@ -86,6 +87,7 @@ export function App() {
     | 'PATCH-028'
     | 'PATCH-029'
     | 'PATCH-030'
+    | 'PATCH-031'
     | 'MVP-ARCH'
     | 'TEST-RUNNER'
   >('MVP-ARCH');
@@ -128,6 +130,7 @@ export function App() {
     { id: 'PATCH-028', name: 'Marketplace', icon: Database, color: 'text-purple-400' },
     { id: 'PATCH-029', name: 'Certification', icon: ShieldCheck, color: 'text-emerald-400' },
     { id: 'PATCH-030', name: 'Industrial OS', icon: Layers, color: 'text-cyan-400' },
+    { id: 'PATCH-031', name: 'Next-Gen 3D Engine', icon: Layers, color: 'text-violet-400' },
     { id: 'MVP-ARCH', name: 'MVP Infrastructure', icon: Server, color: 'text-sky-400' },
     { id: 'TEST-RUNNER', name: 'Tests & Regression', icon: ShieldCheck, color: 'text-emerald-400' },
   ];
@@ -468,7 +471,7 @@ export function App() {
           )}
 
           {activePatchTab === 'PATCH-024' && (
-            <AiCopilotPanel />
+            <AiCopilotPanel onApplySolidToViewport={(solid) => setActiveSolid(solid)} />
           )}
 
           {activePatchTab === 'PATCH-025' && (
@@ -493,6 +496,10 @@ export function App() {
 
           {activePatchTab === 'PATCH-030' && (
             <IndustrialOsPanel />
+          )}
+
+          {activePatchTab === 'PATCH-031' && (
+            <NextGen3dEnginePanel />
           )}
 
           {activePatchTab === 'MVP-ARCH' && (

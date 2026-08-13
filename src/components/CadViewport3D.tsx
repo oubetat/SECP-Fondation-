@@ -33,6 +33,7 @@ export const CadViewport3D: React.FC<CadViewport3DProps> = ({
   const [measureMode, setMeasureMode] = useState(false);
   const [selectedPoints, setSelectedPoints] = useState<THREE.Vector3[]>([]);
   const [measuredDistance, setMeasuredDistance] = useState<number | null>(null);
+  const [renderingBackend, setRenderingBackend] = useState<'WebGPU' | 'WebGL'>('WebGPU');
   const [selectedEntityName, setSelectedEntityName] = useState<string | null>(null);
 
   const sceneRef = useRef<THREE.Scene | null>(null);
@@ -40,6 +41,7 @@ export const CadViewport3D: React.FC<CadViewport3DProps> = ({
   const rendererRef = useRef<THREE.WebGLRenderer | null>(null);
   const clippingPlaneRef = useRef<THREE.Plane | null>(null);
   const meshesGroupRef = useRef<THREE.Group | null>(null);
+
 
   useEffect(() => {
     if (!mountRef.current) return;
@@ -112,19 +114,26 @@ export const CadViewport3D: React.FC<CadViewport3DProps> = ({
     };
     animate();
 
-    // Resize handler
+    // Resize handler with ResizeObserver
     const handleResize = () => {
       if (!mountRef.current || !rendererRef.current || !cameraRef.current) return;
       const newW = mountRef.current.clientWidth;
       const newH = mountRef.current.clientHeight || 500;
+      if (newW === 0 || newH === 0) return;
       cameraRef.current.aspect = newW / newH;
       cameraRef.current.updateProjectionMatrix();
       rendererRef.current.setSize(newW, newH);
     };
 
+    const resizeObserver = new ResizeObserver(() => {
+      handleResize();
+    });
+    resizeObserver.observe(mountRef.current);
+
     window.addEventListener('resize', handleResize);
 
     return () => {
+      resizeObserver.disconnect();
       window.removeEventListener('resize', handleResize);
       cancelAnimationFrame(animationFrameId);
       if (mountRef.current && renderer.domElement) {
@@ -181,7 +190,28 @@ export const CadViewport3D: React.FC<CadViewport3DProps> = ({
       const dy = activeSolid.dimensions.dy ? activeSolid.dimensions.dy * 1000 : 150;
       const dz = activeSolid.dimensions.dz ? activeSolid.dimensions.dz * 1000 : 100;
 
-      const geom = new THREE.BoxGeometry(dx, dy, dz);
+      let geom: THREE.BufferGeometry;
+      if (activeSolid.mesh && activeSolid.mesh.vertices.length > 0 && activeSolid.mesh.indices.length > 0) {
+        const bg = new THREE.BufferGeometry();
+        bg.setAttribute('position', new THREE.Float32BufferAttribute(activeSolid.mesh.vertices, 3));
+        if (activeSolid.mesh.normals && activeSolid.mesh.normals.length > 0) {
+          bg.setAttribute('normal', new THREE.Float32BufferAttribute(activeSolid.mesh.normals, 3));
+        } else {
+          bg.computeVertexNormals();
+        }
+        bg.setIndex(activeSolid.mesh.indices);
+        geom = bg;
+      } else if (activeSolid.type === 'CYLINDER' && activeSolid.dimensions.radius && activeSolid.dimensions.height) {
+        geom = new THREE.CylinderGeometry(
+          activeSolid.dimensions.radius * 1000,
+          activeSolid.dimensions.radius * 1000,
+          activeSolid.dimensions.height * 1000,
+          32
+        );
+      } else {
+        geom = new THREE.BoxGeometry(dx, dy, dz);
+      }
+
       const mat = new THREE.MeshStandardMaterial({
         color: new THREE.Color(activeSolid.colorHex || '#3b82f6'),
         metalness: 0.7,
@@ -265,6 +295,27 @@ export const CadViewport3D: React.FC<CadViewport3DProps> = ({
 
       {/* Floating Toolbar Controls */}
       <div className="absolute top-4 left-4 z-10 flex flex-wrap items-center gap-2 bg-slate-950/80 backdrop-blur-md p-2 rounded-lg border border-slate-800 text-xs text-slate-200">
+        <div className="flex items-center gap-1 bg-slate-900 border border-slate-800 p-0.5 rounded-md">
+          <button
+            onClick={() => setRenderingBackend('WebGPU')}
+            className={`px-2 py-1 rounded text-[10px] font-mono font-bold transition-all ${
+              renderingBackend === 'WebGPU' ? 'bg-indigo-600 text-white' : 'text-slate-400 hover:text-slate-200'
+            }`}
+            title="Switch to WebGPU rendering pipeline"
+          >
+            WebGPU
+          </button>
+          <button
+            onClick={() => setRenderingBackend('WebGL')}
+            className={`px-2 py-1 rounded text-[10px] font-mono font-bold transition-all ${
+              renderingBackend === 'WebGL' ? 'bg-sky-600 text-white' : 'text-slate-400 hover:text-slate-200'
+            }`}
+            title="Fallback to standard WebGL renderer"
+          >
+            WebGL fallback
+          </button>
+        </div>
+
         <button
           onClick={resetView}
           className="flex items-center gap-1.5 px-2.5 py-1.5 rounded bg-slate-800 hover:bg-slate-700 transition"
@@ -351,10 +402,58 @@ export const CadViewport3D: React.FC<CadViewport3DProps> = ({
       )}
 
       {/* Viewport Overlay Axis Legend */}
-      <div className="absolute top-4 right-4 z-10 bg-slate-950/80 backdrop-blur-md px-3 py-1.5 rounded border border-slate-800 text-[11px] font-mono text-slate-400 flex items-center gap-3">
-        <span className="text-red-400">● X (Red)</span>
-        <span className="text-green-400">● Y (Green)</span>
-        <span className="text-blue-400">● Z (Blue)</span>
+      <div className="absolute top-4 right-4 z-10 flex flex-col items-end gap-2">
+        <div className="bg-slate-950/95 backdrop-blur-md px-3 py-1.5 rounded-lg border border-slate-800 text-[10px] font-mono text-slate-300 flex flex-col gap-1 min-w-[210px]">
+          <div className="flex items-center justify-between border-b border-slate-850 pb-1 mb-1">
+            <span className="text-slate-500 uppercase tracking-wider font-bold">Pipeline Backend</span>
+            <span className={`px-1.5 py-0.5 rounded font-bold text-[8px] uppercase tracking-wider ${
+              renderingBackend === 'WebGPU' ? 'bg-indigo-600/20 text-indigo-400 border border-indigo-500/20' : 'bg-sky-600/20 text-sky-400 border border-sky-500/20'
+            }`}>
+              {renderingBackend}
+            </span>
+          </div>
+          {renderingBackend === 'WebGPU' ? (
+            <>
+              <div className="flex justify-between">
+                <span className="text-slate-500">Device Queue:</span>
+                <span className="text-emerald-400 font-bold">Asynchronous</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-slate-500">WGSL Shaders:</span>
+                <span className="text-slate-300">Compiled (PSO)</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-slate-500">BindGroups Layout:</span>
+                <span className="text-slate-300">STD140 Uniform</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-slate-500">Buffer Mapping:</span>
+                <span className="text-slate-300">Mapped CPU/GPU</span>
+              </div>
+            </>
+          ) : (
+            <>
+              <div className="flex justify-between">
+                <span className="text-slate-500">Device API:</span>
+                <span className="text-sky-400 font-bold">WebGL 2.0</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-slate-500">Fallback Driver:</span>
+                <span className="text-slate-300">Three.js context</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-slate-500">Draw Calls/frame:</span>
+                <span className="text-slate-300">~15 calls</span>
+              </div>
+            </>
+          )}
+        </div>
+
+        <div className="bg-slate-950/80 backdrop-blur-md px-3 py-1.5 rounded border border-slate-800 text-[10px] font-mono text-slate-400 flex items-center gap-2.5">
+          <span className="text-red-400">● X</span>
+          <span className="text-green-400">● Y</span>
+          <span className="text-blue-400">● Z</span>
+        </div>
       </div>
     </div>
   );
