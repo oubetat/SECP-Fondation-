@@ -35,6 +35,7 @@ import { CertificationEngine } from './certificationEngine';
 import { IndustrialOsEngine } from './industrialOsEngine';
 import { MvpArchitectureEngine } from './mvpArchitectureEngine';
 import { NextGen3dEngine } from './nextGen3dEngine';
+import { HardAcceptanceGate043 } from './validation/HardAcceptanceGate043';
 
 export interface TestResult {
   patchId: string;
@@ -228,8 +229,9 @@ export class TestRunnerEngine {
     // PATCH-SECP-021: Technical Drawing Tests
     results.push(this.runTest('PATCH-SECP-021', '2D Orthographic Engineering Drawing Generator', () => {
       const drw = TechnicalDrawingEngine.generateTechnicalDrawing();
-      if (drw.views.length < 4 || !drw.titleBlock.drawingNumber) throw new Error('Technical drawing generation failed');
-      return `Technical Drawing Sheet generated: ${drw.views.length} Projections (Front, Top, Right, Iso, Section), Title Block = ${drw.titleBlock.drawingNumber}.`;
+      const activeSheet = drw.sheets[0];
+      if (activeSheet.views.length < 4 || !activeSheet.titleBlock.drawingNumber) throw new Error('Technical drawing generation failed');
+      return `Technical Drawing Sheet generated: ${activeSheet.views.length} Projections (Front, Top, Right, Iso, Section), Title Block = ${activeSheet.titleBlock.drawingNumber}.`;
     }));
 
     // PATCH-SECP-022: Engineering Provenance & Versioning Tests
@@ -342,6 +344,15 @@ export class TestRunnerEngine {
         throw new Error('MVP Infrastructure topology check failed');
       }
       return `SECP MVP Architecture Verified: ${projects.length} Projects, ${parts.length} B-Rep Parts, C++ WASM CAD Kernel & PostgreSQL status nominal.`;
+    }));
+
+    // PATCH-SECP-043: Master Hard Acceptance Gate for Assembly Constraints & Kinematics
+    results.push(await this.runTestAsync('PATCH-SECP-043', 'Assembly Constraints & Kinematics Master Gate (Real OCCT)', async () => {
+      const gate043 = await HardAcceptanceGate043.runGateVerification();
+      if (gate043.status !== 'PASS' || gate043.mockFallback) {
+        throw new Error(`Gate 043 Failed: ${gate043.stagesLog.slice(-2).join(' | ')}`);
+      }
+      return `SECP-043 Approved: Real OCCT Assembly Constraints (Mate, Concentric, Distance), DOF Analysis, Component Instancing, Real Collision Detection (${gate043.assembly.interferenceDetection ? 'PASS' : 'FAIL'}), Deterministic Solver.`;
     }));
 
     const passedCount = results.filter(r => r.passed).length;

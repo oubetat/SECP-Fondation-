@@ -89,7 +89,7 @@ export class OcctShape implements ShapeHandle {
   }
 
   async getBoundingBox(): Promise<BoundingBox> {
-    const bbox = new this.oc.Bnd_Box();
+    const bbox = new this.oc.Bnd_Box_1();
     this.oc.BRepBndLib.Add(this.nativeShape, bbox, false);
     return {
       min: { x: bbox.CornerMin().X(), y: bbox.CornerMin().Y(), z: bbox.CornerMin().Z() },

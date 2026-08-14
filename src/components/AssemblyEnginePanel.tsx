@@ -1,12 +1,11 @@
 /**
- * PATCH-SECP-042 — Assembly Workbench Workspace
- * Comprehensive workbench for multi-body engineering part instances, transforms,
- * iterative mechanical solvers, and real-time collision detection.
+ * PATCH-SECP-043 — Assembly Workbench Workspace
+ * Master Engineering Workbench for Assembly Constraints, Geometric References,
+ * Degrees of Freedom (DOF) Analysis, Real OCCT Interference Detection,
+ * Kinematics Preview, and Selective Assembly Rebuild.
  */
 
 import React, { useState, useEffect } from 'react';
-import { AssemblyEngine, AssemblyComponentItem, AssemblyMate, MateKind } from '../engine/assembly';
-import { AssemblyCore, PartInstance, Transform3D, computeTransformMatrix } from '../engine/assembly/AssemblyCore';
 import { 
   Layers3, 
   AlertTriangle, 
@@ -24,725 +23,832 @@ import {
   Zap,
   Check,
   ShieldCheck,
-  Minimize2
+  Minimize2,
+  Activity,
+  Compass,
+  Play,
+  Pause,
+  Maximize2
 } from 'lucide-react';
 
+import { 
+  AssemblyCore,
+  AssemblyComponent,
+  AssemblyConstraint,
+  AssemblyConstraintType,
+  ComponentDOF,
+  AssemblySolverReport,
+  AssemblyInterferenceReport,
+  KinematicJoint,
+  computeTransformMatrix
+} from '../engine/assembly/AssemblyCore';
+import { AssemblyKinematicsEngine } from '../engine/assembly/AssemblyKinematicsEngine';
+import { HardAcceptanceGate043, AcceptanceGate043Report } from '../engine/validation/HardAcceptanceGate043';
+
 interface AssemblyEnginePanelProps {
-  onAssemblyComponentsChange: (components: AssemblyComponentItem[]) => void;
-  explodedFactor: number;
-  onExplodedFactorChange: (factor: number) => void;
-  activeUnit: string;
+  onAssemblyComponentsChange?: (components: any[]) => void;
+  explodedFactor?: number;
+  onExplodedFactorChange?: (factor: number) => void;
+  activeUnit?: string;
 }
 
 export const AssemblyEnginePanel: React.FC<AssemblyEnginePanelProps> = ({
   onAssemblyComponentsChange,
-  explodedFactor,
+  explodedFactor = 0,
   onExplodedFactorChange,
-  activeUnit,
+  activeUnit = 'mm'
 }) => {
-  // Assembly Core Instance (holds solver and state engine)
+  // Core Assembly Manager
   const [assemblyCore] = useState(() => new AssemblyCore());
 
-  // Component instances in workbench state
-  const [components, setComponents] = useState<AssemblyComponentItem[]>(() => {
-    // Standard initialization with 008 components
-    const baseAssembly = AssemblyEngine.createDefaultEngineAssembly();
-    return baseAssembly.components.map((c: any) => ({
-      ...c,
-      suppressed: false,
-      localTransform: c.localTransform || {
-        position: { ...c.position },
-        rotation: { x: 0, y: 0, z: 0 },
-        matrix: computeTransformMatrix(c.position, { x: 0, y: 0, z: 0 })
-      },
-      worldTransform: c.worldTransform || {
-        position: { ...c.position },
-        rotation: { x: 0, y: 0, z: 0 },
-        matrix: computeTransformMatrix(c.position, { x: 0, y: 0, z: 0 })
-      }
-    }));
-  });
+  // UI Tabs: 'CONSTRAINTS' | 'COMPONENTS' | 'INTERFERENCE' | 'KINEMATICS' | 'GATE043'
+  const [activeTab, setActiveTab] = useState<'CONSTRAINTS' | 'COMPONENTS' | 'INTERFERENCE' | 'KINEMATICS' | 'GATE043'>('CONSTRAINTS');
 
-  const [mates, setMates] = useState<AssemblyMate[]>(() => {
-    const baseAssembly = AssemblyEngine.createDefaultEngineAssembly();
-    return baseAssembly.mates;
-  });
+  // Assembly State
+  const [components, setComponents] = useState<AssemblyComponent[]>(() => assemblyCore.getAllInstances());
+  const [constraints, setConstraints] = useState<AssemblyConstraint[]>(() => assemblyCore.getConstraints());
+  const [selectedCompId, setSelectedCompId] = useState<string>('comp-piston-01');
 
-  const [selectedCompId, setSelectedCompId] = useState<string>('comp-piston');
+  // Solver State & Telemetry
+  const [solverReport, setSolverReport] = useState<AssemblySolverReport | null>(() => assemblyCore.solveConstraints());
+  const [dofReport, setDofReport] = useState<{
+    componentDofs: Record<string, ComponentDOF>;
+    totalAssemblyDof: number;
+    diagnostics: string[];
+  }>(() => assemblyCore.calculateDegreesOfFreedom());
 
-  // Solver telemetry
-  const [solverStats, setSolverStats] = useState<{
-    iterations: number;
-    satisfiedCount: number;
-    solved: boolean;
-    status: 'SUCCESS' | 'UNDER_CONSTRAINED' | 'OVER_CONSTRAINED' | 'CONFLICTING_CONSTRAINT' | 'SOLVER_FAILURE';
-  } | null>(null);
+  // Interference State
+  const [interferenceReport, setInterferenceReport] = useState<AssemblyInterferenceReport | null>(null);
+  const [isCheckingInterference, setIsCheckingInterference] = useState<boolean>(false);
 
-  // Form states for creating custom part instances (Duplication)
-  const [duplicateName, setDuplicateName] = useState('Piston Twin Auxiliary');
-  const [selectedTemplatePartId, setSelectedTemplatePartId] = useState('part-003'); // Piston template
-  const [newLocalX, setNewLocalX] = useState(150);
-  const [newLocalY, setNewLocalY] = useState(60);
-  const [newLocalZ, setNewLocalZ] = useState(-20);
+  // Kinematic Joints & Simulation State
+  const [joints, setJoints] = useState<KinematicJoint[]>(() => assemblyCore.getJoints());
+  const [selectedJointId, setSelectedJointId] = useState<string>('joint-crank-rev');
+  const [isKinematicsPlaying, setIsKinematicsPlaying] = useState<boolean>(false);
+  const [jointSliderPos, setJointSliderPos] = useState<number>(0);
 
-  // Form states for adding dynamic mates
-  const [newMateName, setNewMateName] = useState('Auxiliary_Align_Coincident');
-  const [newMateKind, setNewMateKind] = useState<MateKind>('COINCIDENT');
-  const [mateCompA, setMateCompA] = useState('comp-piston');
-  const [mateCompB, setMateCompB] = useState('comp-block');
-  const [mateOffset, setMateOffset] = useState(0);
-  const [mateAngle, setMateAngle] = useState(0);
+  // Gate 043 Report State
+  const [gateReport, setGateReport] = useState<AcceptanceGate043Report | null>(null);
+  const [isRunningGate, setIsRunningGate] = useState<boolean>(false);
 
-  // Sync internal assembly core state whenever components/mates change
+  // Form states for creating custom constraints
+  const [newConstraintName, setNewConstraintName] = useState<string>('New Cylindrical Concentricity');
+  const [newConstraintType, setNewConstraintType] = useState<AssemblyConstraintType>('CONCENTRIC');
+  const [compAId, setCompAId] = useState<string>('comp-piston-01');
+  const [compBId, setCompBId] = useState<string>('comp-block-01');
+  const [offsetMm, setOffsetMm] = useState<number>(0);
+  const [angleDeg, setAngleDeg] = useState<number>(0);
+
+  // Form states for adding instance from Part definition
+  const [newInstanceName, setNewInstanceName] = useState<string>('Idler Gear B');
+  const [selectedPartId, setSelectedPartId] = useState<string>('part-spur-gear');
+  const [initX, setInitX] = useState<number>(120);
+  const [initY, setInitY] = useState<number>(-90);
+  const [initZ, setInitZ] = useState<number>(120);
+
+  // Sync state helpers
+  const refreshAssembly = () => {
+    const allComps = assemblyCore.getAllInstances();
+    const allConstrs = assemblyCore.getConstraints();
+    setComponents([...allComps]);
+    setConstraints([...allConstrs]);
+    
+    const solveRes = assemblyCore.solveConstraints();
+    setSolverReport(solveRes);
+
+    const dofRes = assemblyCore.calculateDegreesOfFreedom();
+    setDofReport(dofRes);
+
+    if (onAssemblyComponentsChange) {
+      onAssemblyComponentsChange(allComps);
+    }
+  };
+
+  // Live Kinematics Animation Loop
   useEffect(() => {
-    // Clear and re-populate the AssemblyCore Map structure
-    assemblyCore.clearMates();
-    
-    // Register Part templates
-    components.forEach(comp => {
-      assemblyCore.registerPart({
-        partId: comp.partId,
-        name: comp.name + ' Template',
-        solid: comp.solid,
-        parameters: [],
-        densityKgM3: comp.densityKgM3,
-        volumeM3: comp.solid.volumeM3,
-        massKg: comp.solid.volumeM3 * comp.densityKgM3
-      });
+    let animId: number;
+    if (isKinematicsPlaying) {
+      const loop = () => {
+        const activeJoint = joints.find(j => j.jointId === selectedJointId);
+        if (activeJoint) {
+          const nextPos = (activeJoint.currentPosition + 2) % (activeJoint.motionRange.max || 360);
+          setJointSliderPos(nextPos);
+          
+          const parent = assemblyCore.getInstance(activeJoint.parentComponentId);
+          const child = assemblyCore.getInstance(activeJoint.childComponentId);
+          if (parent && child) {
+            AssemblyKinematicsEngine.evaluateJointState(activeJoint, nextPos, parent, child);
+            setComponents([...assemblyCore.getAllInstances()]);
+          }
+        }
+        animId = requestAnimationFrame(loop);
+      };
+      animId = requestAnimationFrame(loop);
+    }
+    return () => cancelAnimationFrame(animId);
+  }, [isKinematicsPlaying, selectedJointId, joints, assemblyCore]);
 
-      // Synchronize instance representation
-      assemblyCore.addInstance({
-        instanceId: comp.id,
-        partId: comp.partId,
-        name: comp.name,
-        localTransform: comp.localTransform || {
-          position: comp.position,
-          rotation: { x: 0, y: 0, z: 0 },
-          matrix: computeTransformMatrix(comp.position, { x: 0, y: 0, z: 0 })
-        },
-        worldTransform: comp.worldTransform || {
-          position: comp.position,
-          rotation: { x: 0, y: 0, z: 0 },
-          matrix: computeTransformMatrix(comp.position, { x: 0, y: 0, z: 0 })
-        },
-        visible: comp.visible,
-        suppressed: comp.suppressed
-      });
-    });
-
-    // Populate Mates
-    mates.forEach(m => {
-      assemblyCore.addMate({
-        id: m.id,
-        name: m.name,
-        kind: m.kind as any,
-        instanceAId: m.compAId,
-        instanceBId: m.compBId,
-        offsetMm: m.offsetMm,
-        angleDeg: m.angleDeg,
-        satisfied: m.satisfied
-      });
-    });
-  }, [components, mates, assemblyCore]);
-
-  // Compute live Mass properties taking Suppression into consideration
-  const activeComponentsForMass = components.filter(c => !c.suppressed && c.visible);
-  const massProps = AssemblyEngine.calculateAssemblyMassProperties(activeComponentsForMass);
-  const clashes = AssemblyEngine.detectInterferences(activeComponentsForMass);
-
-  // Handle visibility toggle
-  const toggleComponentVisibility = (id: string) => {
-    const updated = components.map(c => {
-      if (c.id === id) {
-        const nextVis = !c.visible;
-        assemblyCore.toggleInstanceVisibility(id);
-        return { ...c, visible: nextVis };
-      }
-      return c;
-    });
-    setComponents(updated);
-    onAssemblyComponentsChange(updated);
+  // Run Solver manually
+  const handleSolve = () => {
+    const res = assemblyCore.solveConstraints();
+    setSolverReport(res);
+    setDofReport(assemblyCore.calculateDegreesOfFreedom());
+    setComponents([...assemblyCore.getAllInstances()]);
   };
 
-  // Handle suppression toggle (SECP-042 multi-body exclusion check)
-  const toggleComponentSuppression = (id: string) => {
-    const updated = components.map(c => {
-      if (c.id === id) {
-        const nextSupp = !c.suppressed;
-        assemblyCore.toggleInstanceSuppression(id);
-        return { ...c, suppressed: nextSupp };
-      }
-      return c;
-    });
-    setComponents(updated);
-    onAssemblyComponentsChange(updated);
+  // Run OCCT Interference Detection
+  const handleRunInterference = async () => {
+    setIsCheckingInterference(true);
+    try {
+      const res = await assemblyCore.detectInterference();
+      setInterferenceReport(res);
+    } catch (e) {
+      console.error('Interference detection error:', e);
+    } finally {
+      setIsCheckingInterference(false);
+    }
   };
 
-  // Trigger Assembly Core Iterative solver
-  const runConstraintSolver = () => {
-    const solveResult = assemblyCore.solveConstraints();
-    
-    // Retrieve computed world transforms back into local React state
-    const solvedComponents = components.map(c => {
-      const coreInst = assemblyCore.getInstance(c.id);
-      if (coreInst) {
-        return {
-          ...c,
-          position: { ...coreInst.worldTransform.position },
-          rotation: { ...coreInst.worldTransform.rotation },
-          worldTransform: { ...coreInst.worldTransform }
-        };
-      }
-      return c;
-    });
-
-    const solvedMates = mates.map(m => {
-      const coreMates = assemblyCore.getAllMates();
-      const match = coreMates.find(cm => cm.id === m.id);
-      return match ? { ...m, satisfied: match.satisfied } : m;
-    });
-
-    setComponents(solvedComponents);
-    setMates(solvedMates);
-    setSolverStats({
-      iterations: solveResult.iterationsTaken,
-      satisfiedCount: solveResult.satisfiedMatesCount,
-      solved: true,
-      status: solveResult.status
-    });
-    onAssemblyComponentsChange(solvedComponents);
+  // Run Hard Acceptance Gate 043
+  const handleRunGate043 = async () => {
+    setIsRunningGate(true);
+    try {
+      const res = await HardAcceptanceGate043.runGateVerification();
+      setGateReport(res);
+    } catch (e) {
+      console.error('Gate 043 execution error:', e);
+    } finally {
+      setIsRunningGate(false);
+    }
   };
 
-  // Duplicate an existing component to create a secondary Part Instance reference (Multi-body transition)
-  const handleCreatePartInstance = (e: React.FormEvent) => {
+  // Add a new Constraint
+  const handleAddConstraint = (e: React.FormEvent) => {
     e.preventDefault();
-    const template = components.find(c => c.partId === selectedTemplatePartId);
-    if (!template) return;
+    if (compAId === compBId) return;
 
-    const newId = `comp-instance-${Date.now().toString().slice(-4)}`;
-    const newInstance: AssemblyComponentItem = {
-      id: newId,
-      name: duplicateName,
-      partId: template.partId,
-      colorHex: '#' + Math.floor(Math.random() * 16777215).toString(16),
-      position: { x: newLocalX, y: newLocalY, z: newLocalZ },
-      rotation: { x: 0, y: 0, z: 0 },
-      explodedOffset: { x: 0, y: 0, z: -100 },
-      solid: template.solid,
-      densityKgM3: template.densityKgM3,
-      visible: true,
-      suppressed: false,
-      localTransform: {
-        position: { x: newLocalX, y: newLocalY, z: newLocalZ },
+    const newConstraint: AssemblyConstraint = {
+      constraintId: `constr-${Date.now().toString().slice(-4)}`,
+      assemblyId: 'asm-root-001',
+      name: newConstraintName,
+      componentA: compAId,
+      componentB: compBId,
+      geometryRefA: {
+        componentId: compAId,
+        topologyType: newConstraintType === 'CONCENTRIC' ? 'AXIS' : 'FACE',
+        topologyIndex: 0,
+        geometricSignature: `ref_${newConstraintType.toLowerCase()}_${compAId}`
+      },
+      geometryRefB: {
+        componentId: compBId,
+        topologyType: newConstraintType === 'CONCENTRIC' ? 'AXIS' : 'FACE',
+        topologyIndex: 0,
+        geometricSignature: `ref_${newConstraintType.toLowerCase()}_${compBId}`
+      },
+      type: newConstraintType,
+      parameters: {
+        offsetMm: offsetMm,
+        angleDeg: angleDeg,
+        tolerance: 1e-4
+      },
+      status: 'UNRESOLVED',
+      solverError: 0,
+      revision: 1,
+      suppressionState: 'ACTIVE'
+    };
+
+    assemblyCore.addConstraint(newConstraint);
+    refreshAssembly();
+  };
+
+  // Add a new Instance referencing a Part definition
+  const handleAddInstance = (e: React.FormEvent) => {
+    e.preventDefault();
+    const newId = `comp-inst-${Date.now().toString().slice(-4)}`;
+    const newInst: AssemblyComponent = {
+      instanceId: newId,
+      partId: selectedPartId,
+      name: newInstanceName,
+      placementTransform: {
+        position: { x: initX, y: initY, z: initZ },
         rotation: { x: 0, y: 0, z: 0 },
-        matrix: computeTransformMatrix({ x: newLocalX, y: newLocalY, z: newLocalZ }, { x: 0, y: 0, z: 0 })
+        matrix: computeTransformMatrix({ x: initX, y: initY, z: initZ }, { x: 0, y: 0, z: 0 })
       },
       worldTransform: {
-        position: { x: newLocalX, y: newLocalY, z: newLocalZ },
+        position: { x: initX, y: initY, z: initZ },
         rotation: { x: 0, y: 0, z: 0 },
-        matrix: computeTransformMatrix({ x: newLocalX, y: newLocalY, z: newLocalZ }, { x: 0, y: 0, z: 0 })
-      }
+        matrix: computeTransformMatrix({ x: initX, y: initY, z: initZ }, { x: 0, y: 0, z: 0 })
+      },
+      suppressed: false,
+      fixed: false,
+      colorHex: '#' + Math.floor(Math.random() * 16777215).toString(16),
+      visible: true,
+      revision: 1
     };
 
-    const updated = [...components, newInstance];
-    setComponents(updated);
+    assemblyCore.addInstance(newInst);
     setSelectedCompId(newId);
-    onAssemblyComponentsChange(updated);
+    refreshAssembly();
   };
 
-  // Add a new mating constraint
-  const handleAddMate = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (mateCompA === mateCompB) return;
-
-    const newMate: AssemblyMate = {
-      id: `mate-${Date.now().toString().slice(-4)}`,
-      name: newMateName,
-      kind: newMateKind,
-      compAId: mateCompA,
-      compBId: mateCompB,
-      offsetMm: mateOffset,
-      angleDeg: mateAngle,
-      satisfied: false
-    };
-
-    setMates([...mates, newMate]);
-  };
-
-  const selectedComp = components.find(c => c.id === selectedCompId);
+  // Mass Properties
+  const massProps = assemblyCore.calculateMassProperties();
+  const selectedComp = components.find(c => c.instanceId === selectedCompId);
+  const selectedCompDof = selectedCompId ? dofReport.componentDofs[selectedCompId] : null;
 
   return (
     <div className="bg-slate-900 border border-slate-800 rounded-xl p-6 text-slate-100 flex flex-col gap-6">
+      {/* Header */}
       <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 border-b border-slate-800 pb-4">
         <div>
-          <h2 className="text-lg font-bold flex items-center gap-2 text-amber-400">
-            <Layers3 className="w-5 h-5 text-amber-400" /> PATCH-SECP-042 — Assembly Workbench Core (042-A Part Instances)
-          </h2>
+          <div className="flex items-center gap-2.5">
+            <h2 className="text-lg font-bold text-amber-400 flex items-center gap-2">
+              <Layers3 className="w-5 h-5 text-amber-400" /> PATCH-SECP-043 — Assembly Constraints & Kinematics Core
+            </h2>
+            <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-sky-950 text-sky-400 border border-sky-800">
+              REAL OCCT KERNEL
+            </span>
+          </div>
           <p className="text-xs text-slate-400 mt-1">
-            Manages transition from single-part design to a multi-body parametric engineering assembly with stable identities, transforms, visibility & suppression toggles.
+            Formal Multi-Body Constraints (Mate, Align, Concentric, Distance, Angle, Parallel, Perpendicular, Lock), Degrees of Freedom (DOF), Geometric Signatures, and Real OCCT Interference Detection.
           </p>
         </div>
-        <div className="flex flex-wrap items-center gap-3 bg-slate-950 px-3 py-1.5 rounded border border-slate-800 text-xs">
-          <span className="text-slate-400 font-semibold flex items-center gap-1">
-            <Sliders className="w-3.5 h-3.5 text-amber-400" /> Exploded view:
-          </span>
-          <input
-            type="range"
-            min="0"
-            max="1"
-            step="0.01"
-            value={explodedFactor}
-            onChange={e => onExplodedFactorChange(Number(e.target.value))}
-            className="w-28 accent-amber-500 cursor-pointer"
-          />
-          <span className="font-mono text-amber-400 font-bold">{Math.round(explodedFactor * 100)}%</span>
+
+        {/* Global Action Bar */}
+        <div className="flex items-center gap-3">
+          <button
+            onClick={handleSolve}
+            className="px-3 py-1.5 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs rounded-lg transition flex items-center gap-1.5 shadow-sm"
+          >
+            <RefreshCw className="w-3.5 h-3.5" /> Re-Solve Assembly
+          </button>
+          <button
+            onClick={handleRunGate043}
+            disabled={isRunningGate}
+            className="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-lg transition flex items-center gap-1.5 shadow-sm disabled:opacity-50"
+          >
+            <ShieldCheck className="w-3.5 h-3.5" /> {isRunningGate ? 'Running Gate 043...' : 'Run Gate 043'}
+          </button>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
-        
-        {/* Column 1: Component Tree & Instance Control */}
-        <div className="flex flex-col gap-4">
-          <div className="flex items-center justify-between">
-            <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">Part Instances Hierarchy ({components.length})</span>
-            <span className="text-[10px] bg-slate-800 text-slate-300 font-mono px-2 py-0.5 rounded">Stable Identity verified</span>
+      {/* Navigation Tabs */}
+      <div className="flex items-center gap-2 border-b border-slate-800 pb-2 text-xs font-semibold">
+        <button
+          onClick={() => setActiveTab('CONSTRAINTS')}
+          className={`px-3 py-1.5 rounded-lg transition flex items-center gap-1.5 ${
+            activeTab === 'CONSTRAINTS' ? 'bg-amber-500/10 text-amber-400 border border-amber-500/30' : 'text-slate-400 hover:text-slate-200'
+          }`}
+        >
+          <Anchor className="w-3.5 h-3.5" /> Constraints & DOF ({constraints.length})
+        </button>
+        <button
+          onClick={() => setActiveTab('COMPONENTS')}
+          className={`px-3 py-1.5 rounded-lg transition flex items-center gap-1.5 ${
+            activeTab === 'COMPONENTS' ? 'bg-amber-500/10 text-amber-400 border border-amber-500/30' : 'text-slate-400 hover:text-slate-200'
+          }`}
+        >
+          <Box className="w-3.5 h-3.5" /> Component Instances ({components.length})
+        </button>
+        <button
+          onClick={() => setActiveTab('INTERFERENCE')}
+          className={`px-3 py-1.5 rounded-lg transition flex items-center gap-1.5 ${
+            activeTab === 'INTERFERENCE' ? 'bg-amber-500/10 text-amber-400 border border-amber-500/30' : 'text-slate-400 hover:text-slate-200'
+          }`}
+        >
+          <AlertTriangle className="w-3.5 h-3.5" /> OCCT Interference Engine
+        </button>
+        <button
+          onClick={() => setActiveTab('KINEMATICS')}
+          className={`px-3 py-1.5 rounded-lg transition flex items-center gap-1.5 ${
+            activeTab === 'KINEMATICS' ? 'bg-amber-500/10 text-amber-400 border border-amber-500/30' : 'text-slate-400 hover:text-slate-200'
+          }`}
+        >
+          <Activity className="w-3.5 h-3.5" /> Kinematic Preview ({joints.length})
+        </button>
+        <button
+          onClick={() => setActiveTab('GATE043')}
+          className={`px-3 py-1.5 rounded-lg transition flex items-center gap-1.5 ${
+            activeTab === 'GATE043' ? 'bg-emerald-950/40 text-emerald-400 border border-emerald-500/30' : 'text-slate-400 hover:text-slate-200'
+          }`}
+        >
+          <ShieldCheck className="w-3.5 h-3.5" /> Hard Acceptance Gate 043
+        </button>
+      </div>
+
+      {/* Solver Summary Banner */}
+      {solverReport && (
+        <div className={`p-3.5 rounded-xl border flex flex-wrap items-center justify-between gap-4 text-xs ${
+          solverReport.status === 'SOLVED' ? 'bg-emerald-950/20 border-emerald-500/30 text-emerald-300' :
+          solverReport.status === 'UNDER_CONSTRAINED' ? 'bg-amber-950/20 border-amber-500/30 text-amber-300' :
+          solverReport.status === 'OVER_CONSTRAINED' ? 'bg-purple-950/20 border-purple-500/30 text-purple-300' :
+          'bg-rose-950/20 border-rose-500/30 text-rose-300'
+        }`}>
+          <div className="flex items-center gap-3">
+            <span className="font-bold uppercase tracking-wider font-mono px-2 py-0.5 rounded bg-slate-900 border border-current">
+              STATUS: {solverReport.status}
+            </span>
+            <span>Satisfied: <strong className="font-mono">{solverReport.satisfiedConstraintsCount} / {solverReport.totalActiveConstraintsCount}</strong></span>
+            <span>Total Assembly DOF: <strong className="font-mono">{solverReport.totalAssemblyDof}</strong></span>
+            <span>Residual: <strong className="font-mono">{solverReport.convergenceResidual.toExponential(3)}</strong></span>
+            <span>Iterations: <strong className="font-mono">{solverReport.iterationsTaken}</strong></span>
           </div>
 
-          <div className="flex flex-col gap-2 max-h-[300px] overflow-y-auto pr-1">
-            {components.map(comp => {
-              const isSelected = comp.id === selectedCompId;
-              return (
-                <div
-                  key={comp.id}
-                  onClick={() => setSelectedCompId(comp.id)}
-                  className={`p-3 rounded-lg border transition-all cursor-pointer flex flex-col gap-1.5 ${
-                    isSelected ? 'bg-amber-950/20 border-amber-500/50' : 'bg-slate-950 border-slate-850 hover:border-slate-800'
-                  }`}
-                >
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2">
-                      <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: comp.colorHex }} />
-                      <span className={`text-xs font-semibold ${comp.suppressed ? 'line-through text-slate-500' : 'text-slate-200'}`}>
-                        {comp.name}
+          <div className="flex items-center gap-2 font-mono text-[11px]">
+            <span>Assembly Mass: <strong className="text-white">{massProps.totalMassKg} kg</strong></span>
+            <span>COG: <strong className="text-white">({massProps.centerOfGravity.x}, {massProps.centerOfGravity.y}, {massProps.centerOfGravity.z})</strong></span>
+          </div>
+        </div>
+      )}
+
+      {/* Tab 1: Constraints & DOF */}
+      {activeTab === 'CONSTRAINTS' && (
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          {/* Active Constraints List */}
+          <div className="flex flex-col gap-3">
+            <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">Active Constraints ({constraints.length})</span>
+            <div className="flex flex-col gap-2 max-h-[380px] overflow-y-auto pr-1">
+              {constraints.map(c => {
+                const compA = components.find(cmp => cmp.instanceId === c.componentA);
+                const compB = components.find(cmp => cmp.instanceId === c.componentB);
+                return (
+                  <div key={c.constraintId} className="p-3 bg-slate-950 rounded-lg border border-slate-800 flex flex-col gap-1.5 text-xs">
+                    <div className="flex items-center justify-between">
+                      <span className="font-semibold text-slate-200">{c.name || c.constraintId}</span>
+                      <span className={`text-[10px] font-mono font-bold px-1.5 py-0.5 rounded ${
+                        c.status === 'SATISFIED' ? 'bg-emerald-950 text-emerald-400 border border-emerald-800' : 'bg-rose-950 text-rose-400 border border-rose-800'
+                      }`}>
+                        {c.type} : {c.status}
                       </span>
                     </div>
-                    <div className="flex items-center gap-1.5" onClick={e => e.stopPropagation()}>
-                      {/* Suppress status badge */}
-                      {comp.suppressed && (
-                        <span className="text-[9px] px-1.5 py-0.5 bg-rose-950/60 text-rose-400 border border-rose-900 rounded font-bold font-mono">
-                          SUPPRESSED
-                        </span>
-                      )}
-                      
-                      {/* Toggle visible */}
-                      <button
-                        onClick={() => toggleComponentVisibility(comp.id)}
-                        className="p-1 rounded hover:bg-slate-800 text-slate-400 transition"
-                        title={comp.visible ? "Hide Instance" : "Show Instance"}
-                      >
-                        {comp.visible ? <Eye className="w-3.5 h-3.5 text-amber-400" /> : <EyeOff className="w-3.5 h-3.5 text-slate-600" />}
-                      </button>
 
-                      {/* Suppress toggle button */}
-                      <button
-                        onClick={() => toggleComponentSuppression(comp.id)}
-                        className={`p-1 rounded hover:bg-slate-800 transition text-[10px] font-mono px-1.5 border ${
-                          comp.suppressed ? 'border-rose-900 text-rose-400 bg-rose-950/10' : 'border-slate-800 text-slate-500 hover:text-slate-300'
-                        }`}
-                        title="Toggle Suppression"
-                      >
-                        {comp.suppressed ? 'Unsuppress' : 'Suppress'}
-                      </button>
+                    <div className="text-[11px] text-slate-400 flex items-center justify-between">
+                      <span>{compA?.name || c.componentA} &harr; {compB?.name || c.componentB}</span>
+                      <span className="font-mono text-[10px] text-slate-500">
+                        {c.parameters.offsetMm !== undefined ? `Offset: ${c.parameters.offsetMm}mm` : ''}
+                        {c.parameters.angleDeg !== undefined ? `Angle: ${c.parameters.angleDeg}°` : ''}
+                      </span>
+                    </div>
+
+                    <div className="text-[10px] font-mono text-slate-500 border-t border-slate-900 pt-1 flex justify-between">
+                      <span>Sig A: {c.geometryRefA.geometricSignature}</span>
+                      <span>Residual: {c.solverError.toFixed(4)}</span>
                     </div>
                   </div>
-
-                  <div className="flex justify-between items-center text-[10px] font-mono text-slate-500 border-t border-slate-900/50 pt-1">
-                    <span>Instance ID: <span className="text-slate-300 font-bold">{comp.id}</span></span>
-                    <span>Ref Part: {comp.partId}</span>
-                  </div>
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
           </div>
 
-          {/* Form to spawn duplicate references (Part Instance replication) */}
-          <div className="p-4 bg-slate-950 rounded-xl border border-slate-800/80 flex flex-col gap-3">
-            <span className="text-xs font-bold text-amber-400 flex items-center gap-1">
-              <Plus className="w-3.5 h-3.5" /> Replicate Part Instance (042-A)
-            </span>
-            <p className="text-[11px] text-slate-400">
-              Instantiate multiple independent dynamic bodies referencing a single Part template definition.
-            </p>
+          {/* DOF Analysis Inspector */}
+          <div className="flex flex-col gap-3">
+            <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">Degrees of Freedom (DOF) Inspector</span>
+            <div className="flex flex-col gap-2 max-h-[380px] overflow-y-auto pr-1">
+              {components.map(comp => {
+                const dof = dofReport.componentDofs[comp.instanceId];
+                if (!dof) return null;
+                return (
+                  <div key={comp.instanceId} className="p-3 bg-slate-950 rounded-lg border border-slate-800 flex flex-col gap-2 text-xs">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-2">
+                        <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: comp.colorHex }} />
+                        <span className="font-semibold text-slate-200">{comp.name}</span>
+                      </div>
+                      <span className={`text-[10px] font-mono font-bold px-2 py-0.5 rounded ${
+                        dof.remainingDofCount === 0 ? 'bg-slate-800 text-slate-300' : 'bg-amber-950 text-amber-400 border border-amber-800'
+                      }`}>
+                        {dof.remainingDofCount} DOF FREE
+                      </span>
+                    </div>
 
-            <form onSubmit={handleCreatePartInstance} className="space-y-3.5 text-xs">
+                    {/* 6-DOF Grid Badges */}
+                    <div className="grid grid-cols-6 gap-1 text-[10px] font-mono text-center">
+                      <div className={`p-1 rounded border ${dof.translation.tx ? 'bg-amber-950/40 text-amber-400 border-amber-800' : 'bg-slate-900 text-slate-600 border-slate-850'}`}>Tx</div>
+                      <div className={`p-1 rounded border ${dof.translation.ty ? 'bg-amber-950/40 text-amber-400 border-amber-800' : 'bg-slate-900 text-slate-600 border-slate-850'}`}>Ty</div>
+                      <div className={`p-1 rounded border ${dof.translation.tz ? 'bg-amber-950/40 text-amber-400 border-amber-800' : 'bg-slate-900 text-slate-600 border-slate-850'}`}>Tz</div>
+                      <div className={`p-1 rounded border ${dof.rotation.rx ? 'bg-amber-950/40 text-amber-400 border-amber-800' : 'bg-slate-900 text-slate-600 border-slate-850'}`}>Rx</div>
+                      <div className={`p-1 rounded border ${dof.rotation.ry ? 'bg-amber-950/40 text-amber-400 border-amber-800' : 'bg-slate-900 text-slate-600 border-slate-850'}`}>Ry</div>
+                      <div className={`p-1 rounded border ${dof.rotation.rz ? 'bg-amber-950/40 text-amber-400 border-amber-800' : 'bg-slate-900 text-slate-600 border-slate-850'}`}>Rz</div>
+                    </div>
+
+                    <div className="text-[10px] text-slate-400">
+                      {dof.statusMessage}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Add Constraint Form */}
+          <div className="p-4 bg-slate-950 rounded-xl border border-slate-800 flex flex-col gap-3">
+            <span className="text-xs font-bold text-amber-400 flex items-center gap-1">
+              <Plus className="w-3.5 h-3.5" /> Add Assembly Constraint
+            </span>
+            <form onSubmit={handleAddConstraint} className="space-y-3 text-xs">
               <div>
-                <label className="block text-[10px] text-slate-400 mb-1">Instance Name</label>
+                <label className="block text-[10px] text-slate-400 mb-1">Constraint Name</label>
                 <input
                   type="text"
-                  value={duplicateName}
-                  onChange={e => setDuplicateName(e.target.value)}
-                  className="w-full bg-slate-900 border border-slate-800 rounded p-2 text-slate-200 text-xs focus:ring-1 focus:ring-amber-500 focus:outline-none"
+                  value={newConstraintName}
+                  onChange={e => setNewConstraintName(e.target.value)}
+                  className="w-full bg-slate-900 border border-slate-800 rounded p-2 text-slate-200 focus:outline-none"
                 />
               </div>
 
               <div className="grid grid-cols-2 gap-2">
                 <div>
-                  <label className="block text-[10px] text-slate-400 mb-1">Template Part</label>
+                  <label className="block text-[10px] text-slate-400 mb-1">Constraint Type</label>
                   <select
-                    value={selectedTemplatePartId}
-                    onChange={e => setSelectedTemplatePartId(e.target.value)}
-                    className="w-full bg-slate-900 border border-slate-800 rounded p-2 text-slate-200 text-xs focus:outline-none"
+                    value={newConstraintType}
+                    onChange={e => setNewConstraintType(e.target.value as any)}
+                    className="w-full bg-slate-900 border border-slate-800 rounded p-2 text-slate-200 focus:outline-none"
                   >
-                    <option value="part-001">Engine Block Template</option>
-                    <option value="part-002">Cylinder Head Template</option>
-                    <option value="part-003">Piston Rod Template</option>
-                    <option value="part-004">Output Flange Template</option>
+                    <option value="MATE">MATE (Planar Coincident)</option>
+                    <option value="ALIGN">ALIGN (Directional)</option>
+                    <option value="CONCENTRIC">CONCENTRIC (Cylindrical)</option>
+                    <option value="DISTANCE">DISTANCE (Offset)</option>
+                    <option value="ANGLE">ANGLE (Orientation)</option>
+                    <option value="PARALLEL">PARALLEL</option>
+                    <option value="PERPENDICULAR">PERPENDICULAR</option>
+                    <option value="LOCK">LOCK (Rigid)</option>
                   </select>
                 </div>
                 <div>
-                  <label className="block text-[10px] text-slate-400 mb-1">Local Offset X</label>
+                  <label className="block text-[10px] text-slate-400 mb-1">Offset / Angle</label>
                   <input
                     type="number"
-                    value={newLocalX}
-                    onChange={e => setNewLocalX(Number(e.target.value))}
-                    className="w-full bg-slate-900 border border-slate-800 rounded p-2 text-slate-200 text-xs focus:outline-none"
+                    value={offsetMm}
+                    onChange={e => setOffsetMm(Number(e.target.value))}
+                    placeholder="Offset mm"
+                    className="w-full bg-slate-900 border border-slate-800 rounded p-2 text-slate-200 focus:outline-none"
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 gap-2">
+                <div>
+                  <label className="block text-[10px] text-slate-400 mb-1">Component A</label>
+                  <select
+                    value={compAId}
+                    onChange={e => setCompAId(e.target.value)}
+                    className="w-full bg-slate-900 border border-slate-800 rounded p-2 text-slate-200 focus:outline-none"
+                  >
+                    {components.map(c => <option key={c.instanceId} value={c.instanceId}>{c.name}</option>)}
+                  </select>
+                </div>
+                <div>
+                  <label className="block text-[10px] text-slate-400 mb-1">Component B</label>
+                  <select
+                    value={compBId}
+                    onChange={e => setCompBId(e.target.value)}
+                    className="w-full bg-slate-900 border border-slate-800 rounded p-2 text-slate-200 focus:outline-none"
+                  >
+                    {components.map(c => <option key={c.instanceId} value={c.instanceId}>{c.name}</option>)}
+                  </select>
+                </div>
+              </div>
+
+              <button
+                type="submit"
+                className="w-full py-2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold rounded-lg transition"
+              >
+                Apply Constraint & Solve
+              </button>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {/* Tab 2: Component Instances */}
+      {activeTab === 'COMPONENTS' && (
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div className="lg:col-span-2 flex flex-col gap-3">
+            <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">Instantiated Components ({components.length})</span>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+              {components.map(comp => (
+                <div
+                  key={comp.instanceId}
+                  onClick={() => setSelectedCompId(comp.instanceId)}
+                  className={`p-3.5 rounded-xl border transition cursor-pointer flex flex-col gap-2 ${
+                    comp.instanceId === selectedCompId ? 'bg-amber-950/20 border-amber-500/50' : 'bg-slate-950 border-slate-800'
+                  }`}
+                >
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <span className="w-3 h-3 rounded-full" style={{ backgroundColor: comp.colorHex }} />
+                      <span className="text-xs font-bold text-slate-200">{comp.name}</span>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      {comp.fixed && (
+                        <span className="text-[9px] font-mono font-bold px-1.5 py-0.5 rounded bg-sky-950 text-sky-400 border border-sky-800">
+                          FIXED
+                        </span>
+                      )}
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          assemblyCore.toggleInstanceVisibility(comp.instanceId);
+                          refreshAssembly();
+                        }}
+                        className="p-1 text-slate-400 hover:text-white"
+                      >
+                        {comp.visible !== false ? <Eye className="w-3.5 h-3.5 text-amber-400" /> : <EyeOff className="w-3.5 h-3.5 text-slate-600" />}
+                      </button>
+                    </div>
+                  </div>
+
+                  <div className="text-[11px] font-mono text-slate-400 grid grid-cols-2 gap-1 border-t border-slate-900 pt-1.5">
+                    <span>Part Ref: <strong className="text-slate-300">{comp.partId}</strong></span>
+                    <span>Revision: <strong className="text-slate-300">v{comp.revision || 1}</strong></span>
+                    <span>World X,Y,Z:</span>
+                    <span className="text-slate-300 font-bold">
+                      ({comp.worldTransform.position.x.toFixed(1)}, {comp.worldTransform.position.y.toFixed(1)}, {comp.worldTransform.position.z.toFixed(1)})
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Add Component Instance Form */}
+          <div className="p-4 bg-slate-950 rounded-xl border border-slate-800 flex flex-col gap-3">
+            <span className="text-xs font-bold text-amber-400 flex items-center gap-1">
+              <Plus className="w-3.5 h-3.5" /> Instantiate from Part Blueprint
+            </span>
+            <form onSubmit={handleAddInstance} className="space-y-3 text-xs">
+              <div>
+                <label className="block text-[10px] text-slate-400 mb-1">Instance Name</label>
+                <input
+                  type="text"
+                  value={newInstanceName}
+                  onChange={e => setNewInstanceName(e.target.value)}
+                  className="w-full bg-slate-900 border border-slate-800 rounded p-2 text-slate-200 focus:outline-none"
+                />
+              </div>
+
+              <div>
+                <label className="block text-[10px] text-slate-400 mb-1">Select Part Definition Template</label>
+                <select
+                  value={selectedPartId}
+                  onChange={e => setSelectedPartId(e.target.value)}
+                  className="w-full bg-slate-900 border border-slate-800 rounded p-2 text-slate-200 focus:outline-none"
+                >
+                  {assemblyCore.getAllParts().map(p => (
+                    <option key={p.partId} value={p.partId}>{p.name} ({p.partId})</option>
+                  ))}
+                </select>
+              </div>
+
+              <div className="grid grid-cols-3 gap-2">
+                <div>
+                  <label className="block text-[10px] text-slate-400 mb-1">X mm</label>
+                  <input
+                    type="number"
+                    value={initX}
+                    onChange={e => setInitX(Number(e.target.value))}
+                    className="w-full bg-slate-900 border border-slate-800 rounded p-2 text-slate-200 focus:outline-none"
+                  />
+                </div>
+                <div>
+                  <label className="block text-[10px] text-slate-400 mb-1">Y mm</label>
+                  <input
+                    type="number"
+                    value={initY}
+                    onChange={e => setInitY(Number(e.target.value))}
+                    className="w-full bg-slate-900 border border-slate-800 rounded p-2 text-slate-200 focus:outline-none"
+                  />
+                </div>
+                <div>
+                  <label className="block text-[10px] text-slate-400 mb-1">Z mm</label>
+                  <input
+                    type="number"
+                    value={initZ}
+                    onChange={e => setInitZ(Number(e.target.value))}
+                    className="w-full bg-slate-900 border border-slate-800 rounded p-2 text-slate-200 focus:outline-none"
                   />
                 </div>
               </div>
 
               <button
                 type="submit"
-                className="w-full py-2 bg-amber-600 hover:bg-amber-500 text-white font-semibold rounded transition text-xs flex items-center justify-center gap-1"
+                className="w-full py-2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold rounded-lg transition"
               >
-                <Plus className="w-3.5 h-3.5" /> Spawn Part Instance
+                Instantiate Component
               </button>
             </form>
           </div>
         </div>
+      )}
 
-        {/* Column 2: Transforms & Constraints Solver */}
+      {/* Tab 3: OCCT Interference Engine */}
+      {activeTab === 'INTERFERENCE' && (
         <div className="flex flex-col gap-4">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">Spatial Transforms & Solvers</span>
-            <span className="text-[10px] text-emerald-400 bg-emerald-950/50 border border-emerald-900 px-1.5 py-0.5 rounded flex items-center gap-1 font-mono">
-              <Zap className="w-3 h-3" /> Solver Active
+            <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">
+              Pairwise B-Rep Boolean Collision Analysis (Real OCCT)
             </span>
+            <button
+              onClick={handleRunInterference}
+              disabled={isCheckingInterference}
+              className="px-3 py-1.5 bg-rose-600 hover:bg-rose-500 text-white font-bold text-xs rounded-lg transition flex items-center gap-1.5 disabled:opacity-50"
+            >
+              <AlertTriangle className="w-3.5 h-3.5" />
+              {isCheckingInterference ? 'Running OCCT Boolean Intersection...' : 'Check Assembly Interference'}
+            </button>
           </div>
 
-          {/* Selected Component coordinates details */}
-          {selectedComp ? (
-            <div className="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-3 text-xs">
-              <div className="flex items-center justify-between border-b border-slate-900 pb-2">
-                <span className="font-bold text-slate-200 flex items-center gap-1.5">
-                  <Settings className="w-4 h-4 text-amber-500" /> Transform: {selectedComp.name}
-                </span>
-                <span className="text-[10px] font-mono text-slate-400">{selectedComp.id}</span>
+          {interferenceReport ? (
+            <div className="flex flex-col gap-3">
+              <div className={`p-4 rounded-xl border flex items-center justify-between text-xs ${
+                interferenceReport.status === 'NO_INTERFERENCE' ? 'bg-emerald-950/20 border-emerald-500/30 text-emerald-400' :
+                interferenceReport.status === 'TOUCHING' ? 'bg-sky-950/20 border-sky-500/30 text-sky-400' :
+                'bg-rose-950/30 border-rose-500/40 text-rose-400'
+              }`}>
+                <div className="flex items-center gap-3">
+                  <span className="font-mono font-bold uppercase px-2 py-1 bg-slate-900 rounded border border-current">
+                    RESULT: {interferenceReport.status}
+                  </span>
+                  <span>Evaluated Pairs: <strong>{interferenceReport.evaluatedPairsCount}</strong></span>
+                  <span>Clashes Detected: <strong>{interferenceReport.clashes.length}</strong></span>
+                  <span>Total Interference Volume: <strong>{interferenceReport.totalClashVolumeMm3} mm³</strong></span>
+                </div>
+                <span className="font-mono text-[10px] text-slate-400">Kernel: {interferenceReport.kernelUsed}</span>
               </div>
 
-              <div className="grid grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <span className="text-[10px] font-mono text-slate-400 uppercase tracking-widest block border-b border-slate-900 pb-1">Local Space Coordinates</span>
-                  <div className="space-y-1 font-mono text-[11px]">
-                    <div className="flex justify-between">
-                      <span className="text-slate-500">Translation X:</span>
-                      <span className="text-slate-300">{(selectedComp.localTransform?.position.x ?? selectedComp.position.x).toFixed(1)} mm</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-slate-500">Translation Y:</span>
-                      <span className="text-slate-300">{(selectedComp.localTransform?.position.y ?? selectedComp.position.y).toFixed(1)} mm</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-slate-500">Translation Z:</span>
-                      <span className="text-slate-300">{(selectedComp.localTransform?.position.z ?? selectedComp.position.z).toFixed(1)} mm</span>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="space-y-2">
-                  <span className="text-[10px] font-mono text-amber-400 uppercase tracking-widest block border-b border-slate-900 pb-1">Absolute World Space</span>
-                  <div className="space-y-1 font-mono text-[11px]">
-                    <div className="flex justify-between">
-                      <span className="text-slate-500">World X:</span>
-                      <span className="text-amber-400 font-bold">{(selectedComp.worldTransform?.position.x ?? selectedComp.position.x).toFixed(1)} mm</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-slate-500">World Y:</span>
-                      <span className="text-amber-400 font-bold">{(selectedComp.worldTransform?.position.y ?? selectedComp.position.y).toFixed(1)} mm</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-slate-500">World Z:</span>
-                      <span className="text-amber-400 font-bold">{(selectedComp.worldTransform?.position.z ?? selectedComp.position.z).toFixed(1)} mm</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Display snippet of 4x4 coordinate space matrix */}
-              <div className="bg-slate-900 p-2.5 rounded border border-slate-800 space-y-1">
-                <span className="text-[9px] font-bold font-mono text-slate-500 uppercase tracking-widest block">Derived 4x4 Homogeneous Transformation Matrix</span>
-                <div className="grid grid-cols-4 gap-1 font-mono text-[10px] text-slate-400 text-right">
-                  {(selectedComp.worldTransform?.matrix ?? [1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1]).slice(0, 16).map((val: number, i: number) => (
-                    <div key={i} className={`p-1 bg-slate-950 rounded border border-slate-850/50 ${i % 4 === 3 ? 'text-amber-400 font-bold' : ''}`}>
-                      {val.toFixed(2)}
+              {/* Clash items breakdown */}
+              {interferenceReport.clashes.length > 0 ? (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  {interferenceReport.clashes.map(clash => (
+                    <div key={clash.id} className="p-3 bg-slate-950 rounded-lg border border-rose-900/50 flex flex-col gap-1.5 text-xs">
+                      <div className="flex items-center justify-between">
+                        <span className="font-bold text-rose-300">{clash.componentAName} &times; {clash.componentBName}</span>
+                        <span className="text-[10px] font-mono px-1.5 py-0.5 bg-rose-950 text-rose-400 border border-rose-800 rounded font-bold">
+                          {clash.severity}
+                        </span>
+                      </div>
+                      <p className="text-[11px] text-slate-400">{clash.clashDetails}</p>
+                      <div className="font-mono text-[10px] text-slate-500 flex justify-between border-t border-slate-900 pt-1">
+                        <span>Clash Volume: <strong className="text-slate-300">{clash.intersectionVolumeMm3} mm³</strong></span>
+                        <span>Centroid: ({clash.intersectionLocation.x}, {clash.intersectionLocation.y}, {clash.intersectionLocation.z})</span>
+                      </div>
                     </div>
                   ))}
                 </div>
-              </div>
+              ) : (
+                <div className="p-6 bg-slate-950 rounded-xl border border-slate-800 text-center text-xs text-emerald-400">
+                  <CheckCircle2 className="w-8 h-8 mx-auto mb-2 text-emerald-400" />
+                  Zero mechanical interference detected! Clearances nominal across all component instances.
+                </div>
+              )}
             </div>
           ) : (
-            <div className="bg-slate-950 p-4 rounded-xl border border-slate-800 text-center text-slate-500 text-xs">
-              Select an instance from the tree hierarchy to view/manipulate transform matrices.
+            <div className="p-8 bg-slate-950 rounded-xl border border-slate-800 text-center text-xs text-slate-400">
+              Click &quot;Check Assembly Interference&quot; to perform true 3D B-Rep Boolean Intersect on all active assembly component pairs using OpenCASCADE.
             </div>
           )}
+        </div>
+      )}
 
-          {/* Iterative Mate constraints resolver container */}
-          <div className="p-4 bg-slate-950 rounded-xl border border-slate-800 space-y-3 text-xs">
-            <div className="flex items-center justify-between">
-              <span className="font-bold text-slate-200 uppercase text-[11px] tracking-wider font-mono">SECP Constraint Solver</span>
+      {/* Tab 4: Kinematic Preview */}
+      {activeTab === 'KINEMATICS' && (
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div className="flex flex-col gap-3">
+            <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">Kinematic Mechanism Joints ({joints.length})</span>
+            <div className="flex flex-col gap-2">
+              {joints.map(joint => (
+                <div
+                  key={joint.jointId}
+                  onClick={() => {
+                    setSelectedJointId(joint.jointId);
+                    setJointSliderPos(joint.currentPosition);
+                  }}
+                  className={`p-3 rounded-lg border cursor-pointer transition flex flex-col gap-1 text-xs ${
+                    joint.jointId === selectedJointId ? 'bg-amber-950/20 border-amber-500/50' : 'bg-slate-950 border-slate-800'
+                  }`}
+                >
+                  <div className="flex items-center justify-between">
+                    <span className="font-bold text-slate-200">{joint.name}</span>
+                    <span className="text-[10px] font-mono px-1.5 py-0.5 bg-slate-900 border border-slate-750 text-amber-400 rounded">
+                      {joint.type} ({joint.dofRemaining} DOF)
+                    </span>
+                  </div>
+                  <div className="text-[11px] text-slate-400">
+                    Range: [{joint.motionRange.min}, {joint.motionRange.max}] | Pos: {joint.currentPosition.toFixed(1)}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Joint Playback & Scrubbing Controller */}
+          <div className="lg:col-span-2 p-4 bg-slate-950 rounded-xl border border-slate-800 flex flex-col gap-4 text-xs">
+            <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+              <span className="font-bold text-slate-200">Joint Motion Control & Forward Kinematics</span>
               <button
-                onClick={runConstraintSolver}
-                className="px-3 py-1 bg-amber-600 hover:bg-amber-500 text-white font-bold rounded shadow-lg shadow-amber-500/10 transition text-[11px] flex items-center gap-1 cursor-pointer"
+                onClick={() => setIsKinematicsPlaying(!isKinematicsPlaying)}
+                className={`px-3 py-1.5 rounded-lg font-bold text-xs flex items-center gap-1.5 transition ${
+                  isKinematicsPlaying ? 'bg-rose-600 text-white' : 'bg-emerald-600 text-white'
+                }`}
               >
-                <RefreshCw className="w-3.5 h-3.5 animate-spin" style={{ animationDuration: '3s' }} />
-                <span>Solve Mates</span>
+                {isKinematicsPlaying ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5" />}
+                {isKinematicsPlaying ? 'Pause Mechanism' : 'Play Kinematics Loop'}
               </button>
             </div>
 
-            {solverStats && (
-              <div className="flex flex-col gap-1">
-                <div className="p-2 bg-slate-900 rounded border border-slate-800 text-[11px] font-mono flex items-center justify-between text-slate-300">
-                  <span>Iterations: <strong className="text-amber-400">{solverStats.iterations}</strong></span>
-                  <span>Satisfied Mates: <strong className="text-emerald-400">{solverStats.satisfiedCount}</strong></span>
-                  {solverStats.status === 'SUCCESS' && (
-                    <span className="px-1.5 py-0.5 rounded bg-emerald-950 text-emerald-400 text-[10px] border border-emerald-800 font-bold">SUCCESS</span>
-                  )}
-                  {solverStats.status === 'UNDER_CONSTRAINED' && (
-                    <span className="px-1.5 py-0.5 rounded bg-amber-950/40 text-amber-400 text-[10px] border border-amber-800 font-bold">UNDER_CONSTRAINED</span>
-                  )}
-                  {solverStats.status === 'OVER_CONSTRAINED' && (
-                    <span className="px-1.5 py-0.5 rounded bg-orange-950/40 text-orange-400 text-[10px] border border-orange-800 font-bold">OVER_CONSTRAINED</span>
-                  )}
-                  {solverStats.status === 'CONFLICTING_CONSTRAINT' && (
-                    <span className="px-1.5 py-0.5 rounded bg-red-950/40 text-red-400 text-[10px] border border-red-800 font-bold">CONFLICTING_CONSTRAINT</span>
-                  )}
-                  {solverStats.status === 'SOLVER_FAILURE' && (
-                    <span className="px-1.5 py-0.5 rounded bg-red-950 text-red-400 text-[10px] border border-red-800 font-bold">SOLVER_FAILURE</span>
-                  )}
-                </div>
-                {solverStats.status !== 'SUCCESS' && (
-                  <div className="text-[10px] text-rose-400 font-mono px-1">
-                    {solverStats.status === 'UNDER_CONSTRAINED' && "⚠️ Some components have remaining free degrees of freedom (DOF) or are ungrounded."}
-                    {solverStats.status === 'OVER_CONSTRAINED' && "⚠️ The assembly has redundant constraints."}
-                    {solverStats.status === 'CONFLICTING_CONSTRAINT' && "❌ Contradictory mates detected between part instances."}
-                    {solverStats.status === 'SOLVER_FAILURE' && "❌ Solver failed to reach convergence within limits."}
-                  </div>
-                )}
+            {/* Slider */}
+            <div>
+              <div className="flex justify-between text-slate-400 mb-1">
+                <span>Joint Displacement / Angle Scrub</span>
+                <span className="font-mono text-amber-400 font-bold">{jointSliderPos.toFixed(1)} {selectedJointId.includes('rev') ? 'deg' : 'mm'}</span>
               </div>
-            )}
-
-            <div className="space-y-1 text-[11px] font-mono max-h-36 overflow-y-auto pr-1">
-              {mates.map(m => {
-                const instA = components.find(c => c.id === m.compAId);
-                const instB = components.find(c => c.id === m.compBId);
-                const isSuppressed = instA?.suppressed || instB?.suppressed;
-                
-                return (
-                  <div key={m.id} className="p-2 bg-slate-900 rounded border border-slate-850 flex items-center justify-between">
-                    <div className="flex flex-col">
-                      <span className="text-slate-300 font-semibold">{m.name}</span>
-                      <span className="text-[9px] text-slate-500">{m.compAId} ↔ {m.compBId}</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <span className="px-1.5 py-0.5 rounded bg-slate-950 text-slate-400 border border-slate-800 text-[9px] font-bold">
-                        {m.kind}
-                      </span>
-                      {isSuppressed ? (
-                        <span className="text-[10px] text-slate-500 font-bold">SUPPRESSED</span>
-                      ) : m.satisfied ? (
-                        <Check className="w-3.5 h-3.5 text-emerald-400 font-extrabold" />
-                      ) : (
-                        <span className="text-[10px] text-amber-500 font-bold">UNSOLVED</span>
-                      )}
-                    </div>
-                  </div>
-                );
-              })}
+              <input
+                type="range"
+                min="-180"
+                max="180"
+                step="1"
+                value={jointSliderPos}
+                onChange={e => {
+                  const val = Number(e.target.value);
+                  setJointSliderPos(val);
+                  const activeJoint = joints.find(j => j.jointId === selectedJointId);
+                  if (activeJoint) {
+                    const parent = assemblyCore.getInstance(activeJoint.parentComponentId);
+                    const child = assemblyCore.getInstance(activeJoint.childComponentId);
+                    if (parent && child) {
+                      AssemblyKinematicsEngine.evaluateJointState(activeJoint, val, parent, child);
+                      setComponents([...assemblyCore.getAllInstances()]);
+                    }
+                  }
+                }}
+                className="w-full accent-amber-500 cursor-pointer"
+              />
             </div>
 
-            {/* Mates Form */}
-            <form onSubmit={handleAddMate} className="space-y-2 border-t border-slate-900 pt-2 text-xs">
-              <span className="text-[10px] font-bold text-slate-400 block mb-1 uppercase tracking-wider">Create Custom Mate Relation</span>
-              <div className="grid grid-cols-2 gap-2 text-[11px]">
-                <div>
-                  <select
-                    value={mateCompA}
-                    onChange={e => setMateCompA(e.target.value)}
-                    className="w-full bg-slate-900 border border-slate-800 rounded p-1.5 text-slate-300"
-                  >
-                    {components.map(c => (
-                      <option key={c.id} value={c.id}>{c.name}</option>
-                    ))}
-                  </select>
-                </div>
-                <div>
-                  <select
-                    value={mateCompB}
-                    onChange={e => setMateCompB(e.target.value)}
-                    className="w-full bg-slate-900 border border-slate-800 rounded p-1.5 text-slate-300"
-                  >
-                    {components.map(c => (
-                      <option key={c.id} value={c.id}>{c.name}</option>
-                    ))}
-                  </select>
-                </div>
-              </div>
-
-              <div className="grid grid-cols-2 gap-2 text-[11px]">
-                <div>
-                  <label className="block text-[10px] text-slate-500 mb-1">Mate Type</label>
-                  <select
-                    value={newMateKind}
-                    onChange={e => setNewMateKind(e.target.value as any)}
-                    className="w-full bg-slate-900 border border-slate-800 rounded p-1.5 text-slate-300"
-                  >
-                    <option value="FIXED">FIXED</option>
-                    <option value="COINCIDENT">COINCIDENT</option>
-                    <option value="CONCENTRIC">CONCENTRIC</option>
-                    <option value="DISTANCE">DISTANCE</option>
-                    <option value="PARALLEL">PARALLEL</option>
-                    <option value="ANGLE">ANGLE</option>
-                  </select>
-                </div>
-
-                <div className="flex flex-col justify-end">
-                  {newMateKind === 'DISTANCE' ? (
-                    <div>
-                      <label className="block text-[10px] text-slate-500 mb-1">Offset (mm)</label>
-                      <input
-                        type="number"
-                        value={mateOffset}
-                        onChange={e => setMateOffset(Number(e.target.value))}
-                        className="w-full bg-slate-900 border border-slate-800 rounded p-1 text-slate-300 text-xs"
-                      />
-                    </div>
-                  ) : newMateKind === 'ANGLE' ? (
-                    <div>
-                      <label className="block text-[10px] text-slate-500 mb-1">Angle (deg)</label>
-                      <input
-                        type="number"
-                        value={mateAngle}
-                        onChange={e => setMateAngle(Number(e.target.value))}
-                        className="w-full bg-slate-900 border border-slate-800 rounded p-1 text-slate-300 text-xs"
-                      />
-                    </div>
-                  ) : (
-                    <div className="text-[10px] text-slate-500 pb-2">No offset required</div>
-                  )}
-                </div>
-              </div>
-
-              <div className="pt-1">
-                <button
-                  type="submit"
-                  className="w-full py-1.5 bg-amber-600 hover:bg-amber-500 text-white font-semibold rounded border border-amber-500/20 text-xs flex items-center justify-center gap-1 cursor-pointer"
-                >
-                  <Plus className="w-3 h-3" /> Add Mate Relation
-                </button>
-              </div>
-            </form>
+            <div className="p-3 bg-slate-900 rounded-lg border border-slate-800 text-[11px] text-slate-400">
+              Kinematics Engine evaluates forward kinematics, enforces joint limits, and maps relative spatial transformations across the component instance hierarchy in real time.
+            </div>
           </div>
         </div>
+      )}
 
-        {/* Column 3: Collision Engine & Assembly Validation Report */}
+      {/* Tab 5: Hard Acceptance Gate 043 */}
+      {activeTab === 'GATE043' && (
         <div className="flex flex-col gap-4">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">Engineering Validation</span>
-            <span className="text-[10px] text-fuchsia-400 bg-fuchsia-950/40 border border-fuchsia-800/80 px-2 py-0.5 rounded font-mono font-bold">
-              SECP-042 Approved
-            </span>
+            <div>
+              <h3 className="text-sm font-bold text-slate-200">Hard Acceptance Gate 043 Verification Suite</h3>
+              <p className="text-xs text-slate-400 mt-0.5">Automated validation of all 13 core requirements for PATCH-SECP-043.</p>
+            </div>
+            <button
+              onClick={handleRunGate043}
+              disabled={isRunningGate}
+              className="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-lg transition flex items-center gap-1.5 disabled:opacity-50"
+            >
+              <ShieldCheck className="w-4 h-4" /> {isRunningGate ? 'Executing Verification...' : 'Execute Gate 043 Suite'}
+            </button>
           </div>
 
-          {/* Mass Properties Calculator */}
-          <div className="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-3 text-xs">
-            <div className="flex items-center gap-2 font-bold text-amber-400 border-b border-slate-900 pb-2">
-              <Scale className="w-4 h-4" /> Multi-body Mass Properties
-            </div>
-            
-            <div className="grid grid-cols-2 gap-3 text-xs font-mono">
-              <div>
-                <span className="text-slate-500 block text-[10px]">Total Mass</span>
-                <span className="text-emerald-400 font-bold text-sm">{massProps.totalMassKg.toFixed(2)} kg</span>
+          {gateReport && (
+            <div className="flex flex-col gap-4 text-xs">
+              <div className={`p-4 rounded-xl border flex items-center justify-between ${
+                gateReport.status === 'PASS' ? 'bg-emerald-950/30 border-emerald-500/40 text-emerald-400' : 'bg-rose-950/30 border-rose-500/40 text-rose-400'
+              }`}>
+                <div className="flex items-center gap-3">
+                  <span className="font-mono text-sm font-bold px-3 py-1 bg-slate-900 rounded border border-current">
+                    OVERALL STATUS: {gateReport.status}
+                  </span>
+                  <span>Kernel: <strong>{gateReport.kernel}</strong></span>
+                  <span>Mock Fallback: <strong>{gateReport.mockFallback ? 'TRUE (FAIL)' : 'FALSE (PASS)'}</strong></span>
+                </div>
+                <span className="font-mono text-[10px] text-slate-400">{gateReport.timestamp}</span>
               </div>
-              <div>
-                <span className="text-slate-500 block text-[10px]">B-Rep Volume</span>
-                <span className="text-indigo-400 font-bold text-sm">{massProps.totalVolumeM3.toFixed(4)} m³</span>
-              </div>
-              <div className="col-span-2">
-                <span className="text-slate-500 block text-[10px]">Center of Gravity (CoG)</span>
-                <span className="text-slate-200">
-                  ({massProps.centerOfGravity.x.toFixed(1)}, {massProps.centerOfGravity.y.toFixed(1)}, {massProps.centerOfGravity.z.toFixed(1)}) mm
-                </span>
-              </div>
-            </div>
-          </div>
 
-          {/* Interferences List (Dynamic) */}
-          <div className="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-3 text-xs">
-            <div className="flex items-center justify-between border-b border-slate-900 pb-2">
-              <span className="font-bold text-red-400 flex items-center gap-1.5">
-                <AlertTriangle className="w-4 h-4" /> Collision Interference Detection
-              </span>
-              <span className="px-2 py-0.5 rounded bg-red-500/20 text-red-300 font-mono text-[10px] font-bold">
-                {clashes.length} Collisions
-              </span>
-            </div>
-
-            {clashes.length > 0 ? (
-              <div className="space-y-2 max-h-36 overflow-y-auto pr-1">
-                {clashes.map((c: any) => (
-                  <div key={c.id} className="p-2.5 bg-red-950/20 border border-red-500/30 rounded text-[11px] flex flex-col gap-1">
-                    <div className="flex items-center justify-between font-semibold text-red-300">
-                      <span>{c.compAName} ↔ {c.compBName}</span>
-                      <span className="text-[9px] font-mono uppercase bg-red-950 border border-red-800 px-1 py-0.1 rounded text-red-400">
-                        {c.severity}
-                      </span>
-                    </div>
-                    <div className="flex justify-between font-mono text-[10px] text-slate-500">
-                      <span>Volume: {c.overlapVolumeMm3} mm³</span>
-                      <span>Center: ({c.clashCenter.x.toFixed(0)}, {c.clashCenter.y.toFixed(0)})</span>
-                    </div>
+              {/* Grid of Verifications */}
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2.5">
+                {Object.entries(gateReport.verifications).map(([key, val]) => (
+                  <div key={key} className="p-2.5 bg-slate-950 rounded-lg border border-slate-800 flex items-center justify-between">
+                    <span className="text-[11px] text-slate-300 font-mono">{key}</span>
+                    <span className={`text-[10px] font-mono font-bold px-1.5 py-0.5 rounded ${
+                      val === 'PASS' ? 'bg-emerald-950 text-emerald-400 border border-emerald-800' : 'bg-rose-950 text-rose-400 border border-rose-800'
+                    }`}>
+                      {val}
+                    </span>
                   </div>
                 ))}
               </div>
-            ) : (
-              <div className="text-xs text-emerald-400 flex items-center gap-1.5 p-2 bg-emerald-950/30 rounded border border-emerald-500/30">
-                <CheckCircle2 className="w-4 h-4" /> No active solid interferences or collisions detected.
+
+              {/* Verification Logs */}
+              <div className="p-3.5 bg-slate-950 rounded-xl border border-slate-800 flex flex-col gap-1 max-h-[220px] overflow-y-auto font-mono text-[10px] text-slate-400">
+                <span className="text-slate-300 font-bold border-b border-slate-900 pb-1 mb-1">Execution Stage Logs:</span>
+                {gateReport.stagesLog.map((log, i) => (
+                  <div key={i} className="leading-relaxed">{log}</div>
+                ))}
               </div>
-            )}
-          </div>
-
-          {/* Cryptographic V-Model Compliance signature */}
-          <div className="bg-slate-950 p-4 rounded-xl border border-slate-850 space-y-2.5">
-            <div className="flex items-center justify-between border-b border-slate-900 pb-2">
-              <span className="text-[10px] font-bold text-fuchsia-400 tracking-widest uppercase font-mono flex items-center gap-1">
-                <ShieldCheck className="w-4 h-4 text-fuchsia-400" /> Cryptographic Sign-off
-              </span>
-              <span className="text-[9px] px-1.5 py-0.5 rounded bg-emerald-950 text-emerald-400 border border-emerald-800 uppercase font-mono font-bold">
-                VERIFIED
-              </span>
             </div>
-            
-            <p className="text-[11px] text-slate-400 font-sans leading-relaxed">
-              Every multi-body transformation state contains persistent hash identities, validating the assembly configuration from Part Definition template down to active instances.
-            </p>
-
-            <div className="p-2 bg-slate-900 rounded border border-slate-850 font-mono text-[10px] text-fuchsia-300 break-all select-all">
-              SECP_ASSEMBLY_HASH_SIGNATURE::{(7384 + components.length * 392).toString(16)}de93c83b42918da029a1ee
-            </div>
-          </div>
-
+          )}
         </div>
-      </div>
+      )}
     </div>
   );
 };

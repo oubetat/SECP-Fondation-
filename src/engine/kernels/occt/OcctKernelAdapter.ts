@@ -57,7 +57,7 @@ export class OcctKernelAdapter extends KernelAdapter {
   }
 
   async createCylinder(radius: number, height: number, plane?: Plane, context?: IdentityContext): Promise<ShapeHandle> {
-    const cylBuilder = new this.oc.BRepPrimAPI_MakeCylinder_2(radius, height);
+    const cylBuilder = new this.oc.BRepPrimAPI_MakeCylinder_1(radius, height);
     const identity = await this.generateIdentity(context);
     return new OcctShape(identity.shapeId, identity, ShapeType.SOLID, cylBuilder.Shape(), this.oc, identity.geometryHash, context);
   }
@@ -211,7 +211,7 @@ export class OcctKernelAdapter extends KernelAdapter {
     );
   }
 
-  async fillet(shape: ShapeHandle, radius: number, edgeReferences?: TopologyReference[], context?: IdentityContext): Promise<ShapeHandle> {
+  async fillet(shape: ShapeHandle, radius: number, edgeReferences?: any[], context?: IdentityContext): Promise<ShapeHandle> {
     try {
       const filletMaker = new this.oc.BRepFilletAPI_MakeFillet(
         shape.getNative(),
@@ -226,8 +226,9 @@ export class OcctKernelAdapter extends KernelAdapter {
       let added = false;
       while (edgeExp.More()) {
         const edge = this.oc.TopoDS.Edge_1(edgeExp.Value());
+        // Match by index or signature
         const isTarget = !edgeReferences || edgeReferences.some(ref => {
-          return ref.persistentId === `edge_${index}` || ref.topologySignature === index.toString();
+          return ref.index === index || ref.signature === index.toString();
         });
 
         if (isTarget) {
@@ -237,7 +238,8 @@ export class OcctKernelAdapter extends KernelAdapter {
         index++;
         edgeExp.Next();
       }
-      if (!added) {
+      if (!added && (!edgeReferences || edgeReferences.length === 0)) {
+        // Fallback to first edge only if NO references were provided
         const firstExp = new this.oc.TopExp_Explorer_2(
           shape.getNative(),
           this.oc.TopAbs_ShapeEnum.TopAbs_EDGE,
@@ -246,18 +248,25 @@ export class OcctKernelAdapter extends KernelAdapter {
         if (firstExp.More()) {
           const edge = this.oc.TopoDS.Edge_1(firstExp.Value());
           filletMaker.Add_2(radius, edge);
+          added = true;
         }
       }
+
+      if (!added && edgeReferences && edgeReferences.length > 0) {
+         throw new Error(`Fillet failed: No matching edges found for the provided references.`);
+      }
+
       const outShape = filletMaker.Shape();
       const identity = await this.generateIdentity(context);
       return new OcctShape(identity.shapeId, identity, shape.type, outShape, this.oc, identity.geometryHash, context);
     } catch (err: any) {
-      console.error('[OcctKernelAdapter] Fillet failed', err);
-      throw new Error(`Fillet operation failed in OCCT: ${err.message || err}`);
+      const msg = err instanceof Error ? err.message : (typeof err === 'string' ? err : 'OCCT WASM Exception');
+      console.error('[OcctKernelAdapter] Fillet failed:', msg);
+      throw new Error(`Fillet operation failed in OCCT: ${msg}`);
     }
   }
 
-  async chamfer(shape: ShapeHandle, distance: number, edgeReferences?: TopologyReference[], context?: IdentityContext): Promise<ShapeHandle> {
+  async chamfer(shape: ShapeHandle, distance: number, edgeReferences?: any[], context?: IdentityContext): Promise<ShapeHandle> {
     try {
       const MakeChamfer = this.oc.BRepFilletAPI_MakeChamfer;
       if (!MakeChamfer) {
@@ -274,7 +283,7 @@ export class OcctKernelAdapter extends KernelAdapter {
       while (edgeExp.More()) {
         const edge = this.oc.TopoDS.Edge_1(edgeExp.Value());
         const isTarget = !edgeReferences || edgeReferences.some(ref => {
-          return ref.persistentId === `edge_${index}` || ref.topologySignature === index.toString();
+          return ref.index === index || ref.signature === index.toString();
         });
 
         if (isTarget) {
@@ -284,7 +293,7 @@ export class OcctKernelAdapter extends KernelAdapter {
         index++;
         edgeExp.Next();
       }
-      if (!added) {
+      if (!added && (!edgeReferences || edgeReferences.length === 0)) {
         const firstExp = new this.oc.TopExp_Explorer_2(
           shape.getNative(),
           this.oc.TopAbs_ShapeEnum.TopAbs_EDGE,
@@ -293,14 +302,21 @@ export class OcctKernelAdapter extends KernelAdapter {
         if (firstExp.More()) {
           const edge = this.oc.TopoDS.Edge_1(firstExp.Value());
           chamferMaker.Add_2(distance, edge);
+          added = true;
         }
       }
+
+      if (!added && edgeReferences && edgeReferences.length > 0) {
+        throw new Error(`Chamfer failed: No matching edges found for the provided references.`);
+      }
+
       const outShape = chamferMaker.Shape();
       const identity = await this.generateIdentity(context);
       return new OcctShape(identity.shapeId, identity, shape.type, outShape, this.oc, identity.geometryHash, context);
     } catch (err: any) {
-      console.error('[OcctKernelAdapter] Chamfer failed', err);
-      throw new Error(`Chamfer operation failed in OCCT: ${err.message || err}`);
+      const msg = err instanceof Error ? err.message : (typeof err === 'string' ? err : 'OCCT WASM Exception');
+      console.error('[OcctKernelAdapter] Chamfer failed:', msg);
+      throw new Error(`Chamfer operation failed in OCCT: ${msg}`);
     }
   }
 
@@ -354,7 +370,7 @@ export class OcctKernelAdapter extends KernelAdapter {
   }
 
   async translate(shape: ShapeHandle, vector: Vector3): Promise<ShapeHandle> {
-    const trsf = new this.oc.gp_Trsf();
+    const trsf = new this.oc.gp_Trsf_1();
     trsf.SetTranslation_1(new this.oc.gp_Vec_4(vector.x, vector.y, vector.z));
     const loc = new this.oc.TopLoc_Location_2(trsf);
     const moved = shape.getNative().Moved(loc);
@@ -365,7 +381,7 @@ export class OcctKernelAdapter extends KernelAdapter {
 
   async rotate(shape: ShapeHandle, axis: Vector3, angle: number): Promise<ShapeHandle> {
     try {
-      const trsf = new this.oc.gp_Trsf();
+      const trsf = new this.oc.gp_Trsf_1();
       const gpAxis = new this.oc.gp_Ax1_2(
         new this.oc.gp_Pnt_3(0, 0, 0),
         new this.oc.gp_Dir_4(axis.x, axis.y, axis.z)
