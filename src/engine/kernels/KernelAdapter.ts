@@ -5,34 +5,45 @@
 
 import { GeometryKernel } from '../geometry/GeometryKernel';
 import { ShapeHandle } from '../geometry/ShapeHandle';
-import { Vector3, Plane } from '../geometry/GeometryTypes';
+import { Vector3, Plane, IdentityContext, KernelManifest, TopologyReference } from '../geometry/GeometryTypes';
+import { SketchDefinition } from '../geometry/SketchTypes';
 
 export abstract class KernelAdapter implements GeometryKernel {
-  abstract createBox(dx: number, dy: number, dz: number, center?: Vector3): Promise<ShapeHandle>;
-  abstract createCylinder(radius: number, height: number, plane?: Plane): Promise<ShapeHandle>;
-  abstract createSphere(radius: number, center?: Vector3): Promise<ShapeHandle>;
+  abstract createBox(dx: number, dy: number, dz: number, center?: Vector3, context?: IdentityContext): Promise<ShapeHandle>;
+  abstract createCylinder(radius: number, height: number, plane?: Plane, context?: IdentityContext): Promise<ShapeHandle>;
+  abstract createSphere(radius: number, center?: Vector3, context?: IdentityContext): Promise<ShapeHandle>;
+  abstract createRectangularFace(w: number, h: number, context?: IdentityContext): Promise<ShapeHandle>;
 
-  abstract fuse(target: ShapeHandle, tool: ShapeHandle): Promise<ShapeHandle>;
-  abstract cut(target: ShapeHandle, tool: ShapeHandle): Promise<ShapeHandle>;
-  abstract common(target: ShapeHandle, tool: ShapeHandle): Promise<ShapeHandle>;
+  abstract createPoint(x: number, y: number, z: number): Promise<Vector3>;
+  abstract createLine(p1: Vector3, p2: Vector3, context?: IdentityContext): Promise<ShapeHandle>;
+  abstract createCircle(center: Vector3, radius: number, normal?: Vector3, context?: IdentityContext): Promise<ShapeHandle>;
+  abstract createArc(p1: Vector3, p2: Vector3, p3: Vector3, context?: IdentityContext): Promise<ShapeHandle>;
+  abstract createWire(edges: ShapeHandle[], context?: IdentityContext): Promise<ShapeHandle>;
+  abstract makeFaceFromWire(wire: ShapeHandle, context?: IdentityContext): Promise<ShapeHandle>;
+
+  abstract fuse(target: ShapeHandle, tool: ShapeHandle, context?: IdentityContext): Promise<ShapeHandle>;
+  abstract cut(target: ShapeHandle, tool: ShapeHandle, context?: IdentityContext): Promise<ShapeHandle>;
+  abstract common(target: ShapeHandle, tool: ShapeHandle, context?: IdentityContext): Promise<ShapeHandle>;
 
   // Formalized Software Contract aliases
-  async booleanUnion(target: ShapeHandle, tool: ShapeHandle): Promise<ShapeHandle> {
-    return this.fuse(target, tool);
+  async booleanUnion(target: ShapeHandle, tool: ShapeHandle, context?: IdentityContext): Promise<ShapeHandle> {
+    return this.fuse(target, tool, context);
   }
 
-  async booleanCut(target: ShapeHandle, tool: ShapeHandle): Promise<ShapeHandle> {
-    return this.cut(target, tool);
+  async booleanCut(target: ShapeHandle, tool: ShapeHandle, context?: IdentityContext): Promise<ShapeHandle> {
+    return this.cut(target, tool, context);
   }
 
-  async booleanIntersect(target: ShapeHandle, tool: ShapeHandle): Promise<ShapeHandle> {
-    return this.common(target, tool);
+  async booleanIntersect(target: ShapeHandle, tool: ShapeHandle, context?: IdentityContext): Promise<ShapeHandle> {
+    return this.common(target, tool, context);
   }
 
-  abstract fillet(shape: ShapeHandle, radius: number, edgeIndices?: number[]): Promise<ShapeHandle>;
-  abstract chamfer(shape: ShapeHandle, distance: number, edgeIndices?: number[]): Promise<ShapeHandle>;
-  abstract revolve(shape: ShapeHandle, axisPoint: Vector3, axisDir: Vector3, angle: number): Promise<ShapeHandle>;
-  abstract sweep(profile: ShapeHandle, path: ShapeHandle): Promise<ShapeHandle>;
+  abstract evaluateSketch(sketch: SketchDefinition, context?: IdentityContext): Promise<ShapeHandle>;
+  abstract fillet(shape: ShapeHandle, radius: number, edgeReferences?: TopologyReference[], context?: IdentityContext): Promise<ShapeHandle>;
+  abstract chamfer(shape: ShapeHandle, distance: number, edgeReferences?: TopologyReference[], context?: IdentityContext): Promise<ShapeHandle>;
+  abstract revolve(shape: ShapeHandle, axisPoint: Vector3, axisDir: Vector3, angle: number, context?: IdentityContext): Promise<ShapeHandle>;
+  abstract sweep(profile: ShapeHandle, path: ShapeHandle, context?: IdentityContext): Promise<ShapeHandle>;
+  abstract extrude(shape: ShapeHandle, dx: number, dy: number, dz: number, context?: IdentityContext): Promise<ShapeHandle>;
 
   abstract translate(shape: ShapeHandle, vector: Vector3): Promise<ShapeHandle>;
   abstract rotate(shape: ShapeHandle, axis: Vector3, angle: number): Promise<ShapeHandle>;
@@ -56,16 +67,12 @@ export abstract class KernelAdapter implements GeometryKernel {
     return props.isValid || false;
   }
 
+  abstract getManifest(): KernelManifest;
   abstract exportStep(shape: ShapeHandle): Promise<string>;
+  abstract exportStepAP(shape: ShapeHandle, ap: '203' | '214' | '242'): Promise<string>;
   abstract importStep(stepContent: string): Promise<ShapeHandle>;
 
-  async exportSTEP(shape: ShapeHandle): Promise<string> {
-    return this.exportStep(shape);
-  }
 
-  async importSTEP(stepContent: string): Promise<ShapeHandle> {
-    return this.importStep(stepContent);
-  }
   
   abstract heal(shape: ShapeHandle): Promise<ShapeHandle>;
 }

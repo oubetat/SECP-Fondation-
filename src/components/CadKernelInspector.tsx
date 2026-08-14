@@ -4,7 +4,7 @@ import { Point3D, BoundingBox } from '../types/secp';
 import { KernelFidelityTestSuite, FidelityReport } from '../engine/tests/KernelFidelityTestSuite';
 import { HardAcceptanceGate040, AcceptanceGateReport } from '../engine/validation/HardAcceptanceGate040';
 import { HardAcceptanceGate041, AcceptanceGate041Report } from '../engine/validation/HardAcceptanceGate041';
-import { HardAcceptanceGate042, AcceptanceGate042Report } from '../engine/validation/HardAcceptanceGate042';
+import { HardAcceptanceGate042, FinalAcceptanceGate042Report } from '../engine/validation/HardAcceptanceGate042';
 
 export const CadKernelInspector: React.FC = () => {
   const [fidelityReport, setFidelityReport] = useState<FidelityReport | null>(null);
@@ -15,7 +15,7 @@ export const CadKernelInspector: React.FC = () => {
   const [isRunningGate, setIsRunningGate] = useState(false);
   const [acceptanceReport041, setAcceptanceReport041] = useState<AcceptanceGate041Report | null>(null);
   const [isRunningGate041, setIsRunningGate041] = useState(false);
-  const [acceptanceReport042, setAcceptanceReport042] = useState<AcceptanceGate042Report | null>(null);
+  const [acceptanceReport042, setAcceptanceReport042] = useState<FinalAcceptanceGate042Report | null>(null);
   const [isRunningGate042, setIsRunningGate042] = useState(false);
 
   const runFidelityTests = async () => {

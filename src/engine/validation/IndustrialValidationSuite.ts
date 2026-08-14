@@ -3,6 +3,13 @@
  * Comprehensive testing framework for engineering readiness.
  */
 
+import { HardAcceptanceGate040 } from './HardAcceptanceGate040';
+import { HardAcceptanceGate041 } from './HardAcceptanceGate041';
+import { HardAcceptanceGate042 } from './HardAcceptanceGate042';
+import { HardAcceptanceGate043 } from './HardAcceptanceGate043';
+import { HardAcceptanceGate044 } from './HardAcceptanceGate044';
+import { GeometryKernelManager } from '../geometry/GeometryKernelManager';
+
 export enum ValidationDomain {
   CAD = 'CAD',
   PARAMETRIC = 'PARAMETRIC',
@@ -35,12 +42,17 @@ export class IndustrialValidationSuite {
    */
   public static async runFullDiagnostic(): Promise<EngineeringReadinessReport> {
     const results: ValidationTestResult[] = [];
+    const kernel = await GeometryKernelManager.getKernel();
 
     // 1. CAD Kernel Integrity
+    const r042 = await HardAcceptanceGate042.runGateVerification();
+    const r044 = await HardAcceptanceGate044.runGateVerification();
+    const manifest = kernel.getManifest();
+
     results.push({
       domain: ValidationDomain.CAD,
-      status: 'PASS',
-      details: 'B-Rep Kernel stability verified. Gpu Geometry Pipeline (WebGPU) synchronized.',
+      status: (r042.status === 'PASS' && r044.status === 'PASS') ? 'PASS' : 'FAIL',
+      details: `Kernel: ${manifest.kernel} v${manifest.version}. STEP Fidelity: AP203=${r044.stepReports.ap203.ap203}, AP214=${r044.stepReports.ap214.ap214}, AP242=${r044.stepReports.ap242.ap242}.`,
       timestamp: Date.now()
     });
 

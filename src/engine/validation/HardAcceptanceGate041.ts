@@ -18,6 +18,8 @@ import { GeometryKernelManager, KernelStatus } from '../geometry/GeometryKernelM
 import { Tolerance } from '../geometry/GeometryTolerance';
 import { ShapeType } from '../geometry/GeometryTypes';
 import { FeatureTreeEngine } from '../featureTree';
+import { TessellationIntegrityValidator } from './TessellationIntegrityValidator';
+import { GeometryValidationEngine } from './GeometryValidationEngine';
 
 export interface AcceptanceGate041Report {
   patch: string;
@@ -120,34 +122,57 @@ export class HardAcceptanceGate041 {
       }
 
       // 4. Revolve Verification
-      stagesLog.push('[Gate-041] Stage 4: Testing Revolve profile operation.');
-      const profileFace = await activeAdapter.createBox(10, 40, 2); // Thin rectangular face to revolve
+      stagesLog.push('[Gate-041] Stage 4: Testing Revolve profile operation with real construction layer.');
+      
+      // Create a real profile: A rectangular face in XZ plane
+      const p1 = await activeAdapter.createPoint(10, 0, 0);
+      const p2 = await activeAdapter.createPoint(20, 0, 0);
+      const p3 = await activeAdapter.createPoint(20, 0, 40);
+      const p4 = await activeAdapter.createPoint(10, 0, 40);
+      
+      const e1 = await activeAdapter.createLine(p1, p2);
+      const e2 = await activeAdapter.createLine(p2, p3);
+      const e3 = await activeAdapter.createLine(p3, p4);
+      const e4 = await activeAdapter.createLine(p4, p1);
+      
+      const profileWire = await activeAdapter.createWire([e1, e2, e3, e4]);
+      const profileFace = await activeAdapter.makeFaceFromWire(profileWire);
+      
       const revolvedSolid = await activeAdapter.revolve(
         profileFace,
-        { x: 50, y: 0, z: 0 }, // Axis position
-        { x: 0, y: 1, z: 0 }, // Axis direction
+        { x: 0, y: 0, z: 0 }, // Axis position (origin)
+        { x: 0, y: 0, z: 1 }, // Axis direction (Z axis)
         Math.PI * 2 // Full 360-degree rotation
       );
       const revolveProps = await revolvedSolid.getProperties();
       stagesLog.push(`[Gate-041] Revolved Solid Properties: Volume=${revolveProps.volume?.toFixed(3)} m³, Valid=${revolveProps.isValid}.`);
       
       if (revolveProps.isValid && (revolveProps.volume || 0) > 0) {
-        stagesLog.push('[Gate-041] Revolve Feature Test: PASSED.');
+        stagesLog.push('[Gate-041] Revolve Feature Test: PASSED (Real Profile -> Solid).');
         report.features.revolve = 'PASS';
       } else {
         stagesLog.push('[Gate-041] Revolve Feature Test: FAIL.');
       }
-
+ 
       // 5. Sweep Verification
-      stagesLog.push('[Gate-041] Stage 5: Testing Sweep profiling along path.');
-      const sweepProfile = await activeAdapter.createBox(5, 5, 1);
-      const sweepPath = await activeAdapter.createCylinder(2, 50);
-      const sweptPipe = await activeAdapter.sweep(sweepProfile, sweepPath);
+      stagesLog.push('[Gate-041] Stage 5: Testing Sweep profiling along real path construction.');
+      
+      // Profile: Circle in XY plane
+      const sweepProfileWire = await activeAdapter.createCircle({ x: 0, y: 0, z: 0 }, 5);
+      const sweepProfileFace = await activeAdapter.makeFaceFromWire(sweepProfileWire);
+      
+      // Path: Line in Z direction
+      const pathP1 = await activeAdapter.createPoint(0, 0, 0);
+      const pathP2 = await activeAdapter.createPoint(0, 0, 100);
+      const pathEdge = await activeAdapter.createLine(pathP1, pathP2);
+      const sweepPathWire = await activeAdapter.createWire([pathEdge]);
+      
+      const sweptPipe = await activeAdapter.sweep(sweepProfileFace, sweepPathWire);
       const sweepProps = await sweptPipe.getProperties();
       stagesLog.push(`[Gate-041] Swept Solid Properties: Volume=${sweepProps.volume?.toFixed(3)} m³, Valid=${sweepProps.isValid}.`);
       
       if (sweepProps.isValid && (sweepProps.volume || 0) > 0) {
-        stagesLog.push('[Gate-041] Sweep Feature Test: PASSED.');
+        stagesLog.push('[Gate-041] Sweep Feature Test: PASSED (Real Profile + Real Path -> Solid).');
         report.features.sweep = 'PASS';
       } else {
         stagesLog.push('[Gate-041] Sweep Feature Test: FAIL.');
@@ -163,12 +188,16 @@ export class HardAcceptanceGate041 {
         report.metrics.volumeValidated = true;
       }
 
-      // 7. Tessellation Mesh Validity
-      stagesLog.push('[Gate-041] Stage 7: Testing high-fidelity linear deflection tessellation.');
+      // 7. Tessellation Mesh & Normal Integrity (PATCH-SECP-042H)
+      stagesLog.push('[Gate-041] Stage 7: Testing high-fidelity linear deflection tessellation and normal integrity.');
       const mesh = await activeAdapter.tessellate(filletedBox, Tolerance.DISPLAY_TESSELLATION, 0.5);
-      if (mesh && mesh.positions.length > 0 && mesh.indices.length > 0) {
-        stagesLog.push(`[Gate-041] Tessellation Test: PASSED (Generated ${mesh.positions.length / 3} active mesh vertices).`);
+      const meshReport = await TessellationIntegrityValidator.validateMesh(mesh, filletedBox);
+      
+      if (meshReport.isValid && meshReport.boundingBoxAgreement) {
+        stagesLog.push(`[Gate-041] Tessellation Test: PASSED (${meshReport.vertexCount} vertices, ${meshReport.triangleCount} tris, non-unit normals: ${meshReport.nonUnitNormalCount}, bbox match: ${meshReport.boundingBoxAgreement}).`);
         report.metrics.tessellationMeshValid = true;
+      } else {
+        stagesLog.push(`[Gate-041] Tessellation Test: FAIL (${meshReport.errors.join('; ')}).`);
       }
 
       // 8. Determinism Verification
@@ -185,19 +214,50 @@ export class HardAcceptanceGate041 {
         report.metrics.determinismVerified = true; // Accept within floating point margins
       }
 
-      // 9. STEP AP214 Round-trip Regression Test
-      stagesLog.push('[Gate-041] Stage 9: Executing STEP AP203/214 round-trip validation.');
-      const stepData = await activeAdapter.exportSTEP(filletedBox);
-      const reimportedBox = await activeAdapter.importSTEP(stepData);
-      const importProps = await reimportedBox.getProperties();
-      const roundTripDeviation = Math.abs((filletProps.volume || 0) - (importProps.volume || 0));
+      // 9. STEP Verification
+      stagesLog.push('[Gate-041] Stage 9: Executing rigorous STEP round-trip validation.');
+      const stepData214 = await activeAdapter.exportStepAP(filletedBox, '214');
+      
+      // File validation / Schema evidence
+      if (!stepData214.includes('ISO-10303-21') || !stepData214.includes('AUTOMOTIVE_DESIGN')) {
+        stagesLog.push(`[Gate-041] STEP AP214 Export: FAIL (Schema evidence missing in file header).`);
+      } else {
+        stagesLog.push(`[Gate-041] STEP AP214 Export: PASSED (Found ISO-10303-21 and AUTOMOTIVE_DESIGN).`);
+      }
 
-      if (roundTripDeviation <= Tolerance.VALIDATION) {
-        stagesLog.push(`[Gate-041] STEP AP214 Round-trip: PASSED (Deviation: ${roundTripDeviation.toExponential(1)}).`);
+      // Re-import and check
+      const reimportedBox = await activeAdapter.importStep(stepData214);
+      const reimportReport = await GeometryValidationEngine.validate(reimportedBox);
+      const importProps = await reimportedBox.getProperties();
+      const importBBox = await reimportedBox.getBoundingBox();
+      const originalBBox = await filletedBox.getBoundingBox();
+
+      const roundTripVolumeDeviation = Math.abs((filletProps.volume || 0) - (importProps.volume || 0));
+      const roundTripSurfaceDeviation = Math.abs((filletProps.surfaceArea || 0) - (importProps.surfaceArea || 0));
+      const isTopologyMatch = 
+        filletProps.solidCount === importProps.solidCount && 
+        filletProps.faceCount === importProps.faceCount;
+
+      const isBboxMatch = 
+        Math.abs(originalBBox.min.x - importBBox.min.x) <= Tolerance.VALIDATION &&
+        Math.abs(originalBBox.max.x - importBBox.max.x) <= Tolerance.VALIDATION;
+      
+      if (
+        reimportReport.isValid &&
+        roundTripVolumeDeviation <= Tolerance.VALIDATION && 
+        roundTripSurfaceDeviation <= Tolerance.VALIDATION && 
+        isTopologyMatch && 
+        isBboxMatch
+      ) {
+        stagesLog.push(`[Gate-041] STEP AP214 Round-trip: PASSED (Valid manifold, Volume dev: ${roundTripVolumeDeviation.toExponential(1)}, Surface dev: ${roundTripSurfaceDeviation.toExponential(1)}, Topology Matched, BBox Matched).`);
         report.metrics.stepRoundTripRegressFree = true;
       } else {
-        stagesLog.push(`[Gate-041] STEP AP214 Round-trip: FAIL (Volume shifted by ${roundTripDeviation.toExponential(1)}).`);
+        stagesLog.push(`[Gate-041] STEP AP214 Round-trip: FAIL (Geometry/Topology shifted or invalid B-Rep: ${reimportReport.errors.join('; ')}).`);
       }
+
+      // Explicit AP242 test status
+      stagesLog.push('[Gate-041] Stage 10: STEP AP242 Verification = NOT_VERIFIED (Pending full PMI/Tessellation evaluation support).');
+
 
       // Final Acceptance Signature
       if (

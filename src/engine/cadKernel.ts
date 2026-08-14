@@ -67,7 +67,7 @@ export class CadGeometryKernel {
     const surfaceAreaM2 = 2 * (dx * dy + dy * dz + dz * dx);
 
     return {
-      id: `box-${Date.now()}-${Math.floor(Math.random() * 1000)}`,
+      id: crypto.randomUUID(),
       name,
       type: 'BOX',
       position: { x: 0, y: 0, z: 0 },
@@ -93,7 +93,7 @@ export class CadGeometryKernel {
     const surfaceAreaM2 = 2 * Math.PI * r * h + 2 * Math.PI * r * r;
 
     return {
-      id: `cyl-${Date.now()}-${Math.floor(Math.random() * 1000)}`,
+      id: crypto.randomUUID(),
       name,
       type: 'CYLINDER',
       position: { x: 0, y: 0, z: 0 },
@@ -117,7 +117,7 @@ export class CadGeometryKernel {
     const surfaceAreaM2 = 4.0 * Math.PI * r * r;
 
     return {
-      id: `sph-${Date.now()}`,
+      id: crypto.randomUUID(),
       name,
       type: 'SPHERE',
       position: { x: 0, y: 0, z: 0 },
@@ -142,7 +142,7 @@ export class CadGeometryKernel {
     const volumeM3 = (1.0 / 3.0) * Math.PI * h * (r1 * r1 + r1 * r2 + r2 * r2);
 
     return {
-      id: `cone-${Date.now()}`,
+      id: crypto.randomUUID(),
       name,
       type: 'CONE',
       position: { x: 0, y: 0, z: 0 },
@@ -166,7 +166,7 @@ export class CadGeometryKernel {
     const volumeM3 = (Math.PI * r * r) * (2 * Math.PI * R);
 
     return {
-      id: `torus-${Date.now()}`,
+      id: crypto.randomUUID(),
       name,
       type: 'TORUS',
       position: { x: 0, y: 0, z: 0 },
@@ -210,7 +210,7 @@ export class CadGeometryKernel {
 
     return {
       ...targetSolid,
-      id: `boolean-${op.toLowerCase()}-${Date.now()}`,
+      id: crypto.randomUUID(),
       name,
       type: 'COMPOUND_BOOLEAN',
       volumeM3: resultVolume,
@@ -274,7 +274,7 @@ export class CadGeometryKernel {
     const volumeM3 = volumeMatch ? parseFloat(volumeMatch[1]) : 0.0015;
 
     return {
-      id: `step-reimport-${Date.now()}`,
+      id: crypto.randomUUID(),
       name: `${name}_REIMPORTED`,
       type: 'COMPOUND_BOOLEAN',
       position: { x: 0, y: 0, z: 0 },
