@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { TestRunnerEngine, TestSuiteReport } from '../engine/testRunner';
-import { Play, CheckCircle, XCircle, ShieldCheck, RefreshCw, Terminal, CheckCircle2 } from 'lucide-react';
+import { Play, CheckCircle, XCircle, ShieldCheck, RefreshCw, Terminal, CheckCircle2, Compass } from 'lucide-react';
 
 export const TestRunnerPanel: React.FC = () => {
   const [report, setReport] = useState<TestSuiteReport | null>(null);
@@ -23,6 +23,38 @@ export const TestRunnerPanel: React.FC = () => {
   const [isGate056Running, setIsGate056Running] = useState(false);
   const [gate057Result, setGate057Result] = useState<any>(null);
   const [isGate057Running, setIsGate057Running] = useState(false);
+  const [gate058Result, setGate058Result] = useState<any>(null);
+  const [isGate058Running, setIsGate058Running] = useState(false);
+  const [gate059Result, setGate059Result] = useState<any>(null);
+  const [isGate059Running, setIsGate059Running] = useState(false);
+  const [gate060Result, setGate060Result] = useState<any>(null);
+  const [isGate060Running, setIsGate060Running] = useState(false);
+  const [gate061Result, setGate061Result] = useState<any>(null);
+  const [isGate061Running, setIsGate061Running] = useState(false);
+  const [gate062Result, setGate062Result] = useState<any>(null);
+  const [isGate062Running, setIsGate062Running] = useState(false);
+  const [gate063Result, setGate063Result] = useState<any>(null);
+  const [isGate063Running, setIsGate063Running] = useState(false);
+  const [gate064Result, setGate064Result] = useState<any>(null);
+  const [isGate064Running, setIsGate064Running] = useState(false);
+  const [gate065Result, setGate065Result] = useState<any>(null);
+  const [isGate065Running, setIsGate065Running] = useState(false);
+  const [gate066Result, setGate066Result] = useState<any>(null);
+  const [isGate066Running, setIsGate066Running] = useState(false);
+  const [gate067Result, setGate067Result] = useState<any>(null);
+  const [isGate067Running, setIsGate067Running] = useState(false);
+  const [gate068Result, setGate068Result] = useState<any>(null);
+  const [isGate068Running, setIsGate068Running] = useState(false);
+  const [gate069Result, setGate069Result] = useState<any>(null);
+  const [isGate069Running, setIsGate069Running] = useState(false);
+  const [gate070Result, setGate070Result] = useState<any>(null);
+  const [isGate070Running, setIsGate070Running] = useState(false);
+  const [gate071Result, setGate071Result] = useState<any>(null);
+  const [isGate071Running, setIsGate071Running] = useState(false);
+  const [gate072Result, setGate072Result] = useState<any>(null);
+  const [isGate072Running, setIsGate072Running] = useState(false);
+  const [gate073Result, setGate073Result] = useState<any>(null);
+  const [isGate073Running, setIsGate073Running] = useState(false);
 
   const handleRunTests = async () => {
     setIsRunning(true);
@@ -150,6 +182,214 @@ export const TestRunnerPanel: React.FC = () => {
       console.error('Gate 057 run failed:', err);
     } finally {
       setIsGate057Running(false);
+    }
+  };
+
+  const handleRunGate058 = async () => {
+    setIsGate058Running(true);
+    try {
+      const { HardAcceptanceGate058 } = await import('../engine/validation/HardAcceptanceGate058');
+      const res = await HardAcceptanceGate058.executeGate();
+      setGate058Result(res);
+    } catch (err) {
+      console.error('Gate 058 run failed:', err);
+    } finally {
+      setIsGate058Running(false);
+    }
+  };
+
+  const handleRunGate059 = async () => {
+    setIsGate059Running(true);
+    try {
+      const { HardAcceptanceGate059 } = await import('../engine/validation/HardAcceptanceGate059');
+      const res = await HardAcceptanceGate059.executeGate();
+      setGate059Result(res);
+    } catch (err) {
+      console.error('Gate 059 run failed:', err);
+    } finally {
+      setIsGate059Running(false);
+    }
+  };
+
+  const handleRunGate060 = async () => {
+    setIsGate060Running(true);
+    try {
+      const { HardAcceptanceGate060 } = await import('../engine/validation/HardAcceptanceGate060');
+      const res = await HardAcceptanceGate060.executeGate();
+      setGate060Result(res);
+    } catch (err) {
+      console.error('Gate 060 run failed:', err);
+    } finally {
+      setIsGate060Running(false);
+    }
+  };
+
+  const handleRunGate061 = async () => {
+    setIsGate061Running(true);
+    try {
+      const { HardAcceptanceGate061 } = await import('../engine/validation/HardAcceptanceGate061');
+      const res = await HardAcceptanceGate061.executeGate();
+      setGate061Result(res);
+    } catch (err) {
+      console.error('Gate 061 run failed:', err);
+    } finally {
+      setIsGate061Running(false);
+    }
+  };
+
+  const handleRunGate062 = async () => {
+    setIsGate062Running(true);
+    try {
+      const { HardAcceptanceGate062 } = await import('../engine/validation/HardAcceptanceGate062');
+      const res = await HardAcceptanceGate062.executeGate();
+      setGate062Result(res);
+    } catch (err) {
+      console.error('Gate 062 run failed:', err);
+    } finally {
+      setIsGate062Running(false);
+    }
+  };
+
+  const handleRunGate063 = async () => {
+    setIsGate063Running(true);
+    try {
+      const { HardAcceptanceGate063 } = await import('../engine/validation/HardAcceptanceGate063');
+      const res = await HardAcceptanceGate063.executeGate();
+      setGate063Result(res);
+    } catch (err) {
+      console.error('Gate 063 run failed:', err);
+    } finally {
+      setIsGate063Running(false);
+    }
+  };
+
+  const handleRunGate064 = async () => {
+    setIsGate064Running(true);
+    try {
+      const { HardAcceptanceGate064 } = await import('../engine/validation/HardAcceptanceGate064');
+      const res = await HardAcceptanceGate064.executeGate();
+      setGate064Result(res);
+    } catch (err) {
+      console.error('Gate 064 run failed:', err);
+    } finally {
+      setIsGate064Running(false);
+    }
+  };
+
+  const handleRunGate065 = async () => {
+    setIsGate065Running(true);
+    try {
+      const { HardAcceptanceGate065 } = await import('../engine/validation/HardAcceptanceGate065');
+      const res = await HardAcceptanceGate065.executeGate();
+      setGate065Result(res);
+    } catch (err) {
+      console.error('Gate 065 run failed:', err);
+    } finally {
+      setIsGate065Running(false);
+    }
+  };
+
+  const handleRunGate066 = async () => {
+    setIsGate066Running(true);
+    try {
+      const { HardAcceptanceGate066 } = await import('../engine/validation/HardAcceptanceGate066');
+      const res = await HardAcceptanceGate066.executeGate();
+      setGate066Result(res);
+    } catch (err) {
+      console.error('Gate 066 run failed:', err);
+    } finally {
+      setIsGate066Running(false);
+    }
+  };
+
+  const handleRunGate067 = async () => {
+    setIsGate067Running(true);
+    try {
+      const { HardAcceptanceGate067 } = await import('../engine/validation/HardAcceptanceGate067');
+      const res = await HardAcceptanceGate067.executeGate();
+      setGate067Result(res);
+    } catch (err) {
+      console.error('Gate 067 run failed:', err);
+    } finally {
+      setIsGate067Running(false);
+    }
+  };
+
+  const handleRunGate068 = async () => {
+    setIsGate068Running(true);
+    try {
+      const { HardAcceptanceGate068 } = await import('../engine/validation/HardAcceptanceGate068');
+      const res = await HardAcceptanceGate068.executeGate();
+      setGate068Result(res);
+    } catch (err) {
+      console.error('Gate 068 run failed:', err);
+    } finally {
+      setIsGate068Running(false);
+    }
+  };
+
+  const handleRunGate069 = async () => {
+    setIsGate069Running(true);
+    try {
+      const { HardAcceptanceGate069 } = await import('../engine/validation/HardAcceptanceGate069');
+      const res = await HardAcceptanceGate069.executeGate();
+      setGate069Result(res);
+    } catch (err) {
+      console.error('Gate 069 run failed:', err);
+    } finally {
+      setIsGate069Running(false);
+    }
+  };
+
+  const handleRunGate070 = async () => {
+    setIsGate070Running(true);
+    try {
+      const { HardAcceptanceGate070 } = await import('../engine/validation/HardAcceptanceGate070');
+      const res = await HardAcceptanceGate070.executeGate();
+      setGate070Result(res);
+    } catch (err) {
+      console.error('Gate 070 run failed:', err);
+    } finally {
+      setIsGate070Running(false);
+    }
+  };
+
+  const handleRunGate071 = async () => {
+    setIsGate071Running(true);
+    try {
+      const { HardAcceptanceGate071 } = await import('../engine/validation/HardAcceptanceGate071');
+      const res = await HardAcceptanceGate071.executeGate();
+      setGate071Result(res);
+    } catch (err) {
+      console.error('Gate 071 run failed:', err);
+    } finally {
+      setIsGate071Running(false);
+    }
+  };
+
+  const handleRunGate072 = async () => {
+    setIsGate072Running(true);
+    try {
+      const { HardAcceptanceGate072 } = await import('../engine/validation/HardAcceptanceGate072');
+      const res = await HardAcceptanceGate072.executeGate();
+      setGate072Result(res);
+    } catch (err) {
+      console.error('Gate 072 run failed:', err);
+    } finally {
+      setIsGate072Running(false);
+    }
+  };
+
+  const handleRunGate073 = async () => {
+    setIsGate073Running(true);
+    try {
+      const { HardAcceptanceGate073 } = await import('../engine/validation/HardAcceptanceGate073');
+      const res = await HardAcceptanceGate073.executeGate();
+      setGate073Result(res);
+    } catch (err) {
+      console.error('Gate 073 run failed:', err);
+    } finally {
+      setIsGate073Running(false);
     }
   };
 
@@ -928,6 +1168,1595 @@ export const TestRunnerPanel: React.FC = () => {
                     <div className="text-[10px] text-slate-400 mt-0.5">
                       {gate057Result.overallStatus === 'PASS'
                         ? 'Deterministic multi-axis toolpaths, constant-engagement HSM, 5-axis vector alignment, and SHA-256 CL data provenance verified with 100% compliance.'
+                        : 'Gate failed one or more assertions.'}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* SECP-058 Governance Gate Card */}
+      <div className="bg-slate-900 border border-slate-800 rounded-xl p-5 text-slate-100 shadow-xl space-y-4">
+        <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+          <div>
+            <h2 className="text-sm font-bold text-slate-200 flex items-center gap-2">
+              <ShieldCheck className="w-4 h-4 text-emerald-400" />
+              SECP-058 Governance Gate — CNC Post-Processing & Manufacturing Execution Core
+            </h2>
+            <p className="text-xs text-slate-400 mt-0.5">
+              Deterministic G-code post-processing, Fanuc/Haas/Siemens/Heidenhain dialect layers, kinematic axis envelopes, safety plunges, and NC ↔ CL digital thread traceability (58/58 verifications).
+            </p>
+          </div>
+          <button
+            id="btn-run-gate-058"
+            onClick={handleRunGate058}
+            disabled={isGate058Running}
+            className="flex items-center gap-2 px-4 py-2 bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-700 text-white rounded-lg text-xs font-semibold transition shadow-md cursor-pointer"
+          >
+            {isGate058Running ? <RefreshCw className="w-4 h-4 animate-spin" /> : <Play className="w-4 h-4" />}
+            {isGate058Running ? 'Executing Gate 058...' : 'Execute Gate 058'}
+          </button>
+        </div>
+
+        {!gate058Result && !isGate058Running && (
+          <div className="py-8 text-center text-slate-500 text-sm border border-dashed border-slate-800 rounded-lg">
+            Click <span className="text-emerald-400 font-semibold">Execute Gate 058</span> to run the 58-point post-processor & execution readiness suite.
+          </div>
+        )}
+
+        {gate058Result && (
+          <div className="space-y-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="space-y-3">
+                <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">Gate 058 Verification Report</h3>
+                <div className="p-4 bg-slate-950 rounded-lg border border-slate-800 font-mono text-[11px] text-emerald-400 overflow-x-auto select-all leading-relaxed whitespace-pre shadow-inner max-h-72">
+                  {JSON.stringify(gate058Result, null, 2)}
+                </div>
+              </div>
+
+              <div className="space-y-4 flex flex-col justify-between">
+                <div className="space-y-2">
+                  <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">58 Gate Checks Breakdown</h3>
+                  <div className="grid grid-cols-2 gap-2 text-xs max-h-56 overflow-y-auto pr-1">
+                    {Object.entries(gate058Result.verifications || {}).map(([name, status]) => (
+                      <div key={name} className="bg-slate-950/60 p-2 rounded border border-slate-800 flex items-center justify-between font-mono text-[11px]">
+                        <span className="text-slate-400 truncate pr-1">{name}:</span>
+                        <span className={`font-bold px-1.5 py-0.5 rounded border ${
+                          status === 'PASS' 
+                            ? 'text-emerald-400 bg-emerald-950/40 border-emerald-900' 
+                            : 'text-rose-400 bg-rose-950/40 border-rose-900'
+                        }`}>
+                          {String(status)}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className={`p-3 border rounded-lg text-xs font-mono flex items-start gap-2 ${
+                  gate058Result.overallStatus === 'PASS'
+                    ? 'bg-emerald-950/20 border-emerald-800/40 text-emerald-400'
+                    : 'bg-rose-950/20 border-rose-800/40 text-rose-400'
+                }`}>
+                  <CheckCircle2 className="w-4 h-4 shrink-0 mt-0.5" />
+                  <div>
+                    <div className="font-bold">SECP-058 GATE {gate058Result.overallStatus} ({gate058Result.passedCount}/58)</div>
+                    <div className="text-[10px] text-slate-400 mt-0.5">
+                      {gate058Result.overallStatus === 'PASS'
+                        ? 'Deterministic controller-specific post-processing, machine coordinate validation, safety retracts, and unified change impact analysis verified with 100% compliance.'
+                        : 'Gate failed one or more assertions.'}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* SECP-059 Governance Gate Card */}
+      <div className="bg-slate-900 border border-slate-800 rounded-xl p-5 text-slate-100 shadow-xl space-y-4">
+        <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+          <div>
+            <h2 className="text-sm font-bold text-slate-200 flex items-center gap-2">
+              <ShieldCheck className="w-4 h-4 text-emerald-400" />
+              SECP-059 Governance Gate — Manufacturing Job Orchestration & Production Planning
+            </h2>
+            <p className="text-xs text-slate-400 mt-0.5">
+              Deterministic routing sequences, finite multi-resource planning, state-machine validation, resource reservations, and planning readiness gates (59/59 assertions).
+            </p>
+          </div>
+          <button
+            id="btn-run-gate-059"
+            onClick={handleRunGate059}
+            disabled={isGate059Running}
+            className="flex items-center gap-2 px-4 py-2 bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-700 text-white rounded-lg text-xs font-semibold transition shadow-md cursor-pointer"
+          >
+            {isGate059Running ? <RefreshCw className="w-4 h-4 animate-spin" /> : <Play className="w-4 h-4" />}
+            {isGate059Running ? 'Executing Gate 059...' : 'Execute Gate 059'}
+          </button>
+        </div>
+
+        {!gate059Result && !isGate059Running && (
+          <div className="py-8 text-center text-slate-500 text-sm border border-dashed border-slate-800 rounded-lg">
+            Click <span className="text-emerald-400 font-semibold">Execute Gate 059</span> to run the 59-point job orchestration & scheduling verification suite.
+          </div>
+        )}
+
+        {gate059Result && (
+          <div className="space-y-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="space-y-3">
+                <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">Gate 059 Planning Report</h3>
+                <div className="p-4 bg-slate-950 rounded-lg border border-slate-800 font-mono text-[11px] text-emerald-400 overflow-x-auto select-all leading-relaxed whitespace-pre shadow-inner max-h-72">
+                  {JSON.stringify(gate059Result, null, 2)}
+                </div>
+              </div>
+
+              <div className="space-y-4 flex flex-col justify-between">
+                <div className="space-y-2">
+                  <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">59 Gate Checks Breakdown</h3>
+                  <div className="grid grid-cols-2 gap-2 text-xs max-h-56 overflow-y-auto pr-1">
+                    {Object.entries(gate059Result.verifications || {}).map(([name, status]) => (
+                      <div key={name} className="bg-slate-950/60 p-2 rounded border border-slate-800 flex items-center justify-between font-mono text-[11px]">
+                        <span className="text-slate-400 truncate pr-1">{name}:</span>
+                        <span className={`font-bold px-1.5 py-0.5 rounded border ${
+                          status === 'PASS' 
+                            ? 'text-emerald-400 bg-emerald-950/40 border-emerald-900' 
+                            : 'text-rose-400 bg-rose-950/40 border-rose-900'
+                        }`}>
+                          {String(status)}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className={`p-3 border rounded-lg text-xs font-mono flex items-start gap-2 ${
+                  gate059Result.overallStatus === 'PASS'
+                    ? 'bg-emerald-950/20 border-emerald-800/40 text-emerald-400'
+                    : 'bg-rose-950/20 border-rose-800/40 text-rose-400'
+                }`}>
+                  <CheckCircle2 className="w-4 h-4 shrink-0 mt-0.5" />
+                  <div>
+                    <div className="font-bold">SECP-059 GATE {gate059Result.overallStatus} ({gate059Result.passedCount}/59)</div>
+                    <div className="text-[10px] text-slate-400 mt-0.5">
+                      {gate059Result.overallStatus === 'PASS'
+                        ? 'Deterministic process routing, resource reservation logic, FSM state validation, and scheduling planner verified with 100% compliance.'
+                        : 'Gate failed one or more assertions.'}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* SECP-060 Governance Gate Card */}
+      <div className="bg-slate-900 border border-slate-800 rounded-xl p-5 text-slate-100 shadow-xl space-y-4">
+        <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+          <div>
+            <h2 className="text-sm font-bold text-slate-200 flex items-center gap-2">
+              <ShieldCheck className="w-4 h-4 text-emerald-400" />
+              SECP-060 Governance Gate — Shop-Floor Manufacturing Execution & Production Traceability
+            </h2>
+            <p className="text-xs text-slate-400 mt-0.5">
+              Validates shopfloor execution sessions, machine state controllers, operation sequence constraints, tool wear parameters, material certificates, and physical parts (60/60 assertions).
+            </p>
+          </div>
+          <button
+            id="btn-run-gate-060"
+            onClick={handleRunGate060}
+            disabled={isGate060Running}
+            className="flex items-center gap-2 px-4 py-2 bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-700 text-white rounded-lg text-xs font-semibold transition shadow-md cursor-pointer"
+          >
+            {isGate060Running ? <RefreshCw className="w-4 h-4 animate-spin" /> : <Play className="w-4 h-4" />}
+            {isGate060Running ? 'Executing Gate 060...' : 'Execute Gate 060'}
+          </button>
+        </div>
+
+        {!gate060Result && !isGate060Running && (
+          <div className="py-8 text-center text-slate-500 text-sm border border-dashed border-slate-800 rounded-lg">
+            Click <span className="text-emerald-400 font-semibold">Execute Gate 060</span> to run the 60-point execution and traceability verification suite.
+          </div>
+        )}
+
+        {gate060Result && (
+          <div className="space-y-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="space-y-3">
+                <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">Gate 060 Execution Report</h3>
+                <div className="p-4 bg-slate-950 rounded-lg border border-slate-800 font-mono text-[11px] text-emerald-400 overflow-x-auto select-all leading-relaxed whitespace-pre shadow-inner max-h-72">
+                  {JSON.stringify(gate060Result, null, 2)}
+                </div>
+              </div>
+
+              <div className="space-y-4 flex flex-col justify-between">
+                <div className="space-y-2">
+                  <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">60 Gate Checks Breakdown</h3>
+                  <div className="grid grid-cols-2 gap-2 text-xs max-h-56 overflow-y-auto pr-1">
+                    {Object.entries(gate060Result.verifications || {}).map(([name, status]) => (
+                      <div key={name} className="bg-slate-950/60 p-2 rounded border border-slate-800 flex items-center justify-between font-mono text-[11px]">
+                        <span className="text-slate-400 truncate pr-1">{name}:</span>
+                        <span className={`font-bold px-1.5 py-0.5 rounded border ${
+                          status === 'PASS' 
+                            ? 'text-emerald-400 bg-emerald-950/40 border-emerald-900' 
+                            : 'text-rose-400 bg-rose-950/40 border-rose-900'
+                        }`}>
+                          {String(status)}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className={`p-3 border rounded-lg text-xs font-mono flex items-start gap-2 ${
+                  gate060Result.overallStatus === 'PASS'
+                    ? 'bg-emerald-950/20 border-emerald-800/40 text-emerald-400'
+                    : 'bg-rose-950/20 border-rose-800/40 text-rose-400'
+                }`}>
+                  <CheckCircle2 className="w-4 h-4 shrink-0 mt-0.5" />
+                  <div>
+                    <div className="font-bold">SECP-060 GATE {gate060Result.overallStatus} ({gate060Result.passedCount}/60)</div>
+                    <div className="text-[10px] text-slate-400 mt-0.5">
+                      {gate060Result.overallStatus === 'PASS'
+                        ? 'Discrete execution sessions, machine status controllers, tool consumption, material batch links, and certified physical part instances verified with 100% compliance.'
+                        : 'Gate failed one or more assertions.'}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* SECP-061 Quality & Metrology Gate Card */}
+      <div className="bg-slate-900 border border-slate-800 rounded-xl p-5 text-slate-100 shadow-xl space-y-4">
+        <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+          <div>
+            <h2 className="text-sm font-bold text-slate-200 flex items-center gap-2">
+              <ShieldCheck className="w-4 h-4 text-cyan-400" />
+              SECP-061 Governance Gate — Quality & Metrology Core
+            </h2>
+            <p className="text-xs text-slate-400 mt-0.5">
+              Provides aerospace-grade closed-loop manufacturing quality checks. Evaluates GD&T tolerances, calibration certificates, and 95% guardband uncertainty (61/61 assertions).
+            </p>
+          </div>
+          <button
+            id="btn-run-gate-061"
+            onClick={handleRunGate061}
+            disabled={isGate061Running}
+            className="flex items-center gap-2 px-4 py-2 bg-cyan-600 hover:bg-cyan-500 disabled:bg-slate-700 text-white rounded-lg text-xs font-semibold transition shadow-md cursor-pointer"
+          >
+            {isGate061Running ? <RefreshCw className="w-4 h-4 animate-spin" /> : <Play className="w-4 h-4" />}
+            {isGate061Running ? 'Executing Gate 061...' : 'Execute Gate 061'}
+          </button>
+        </div>
+
+        {!gate061Result && !isGate061Running && (
+          <div className="py-8 text-center text-slate-500 text-sm border border-dashed border-slate-800 rounded-lg">
+            Click <span className="text-cyan-400 font-semibold">Execute Gate 061</span> to run the 61-point design-to-evaluation digital thread metrology verification suite.
+          </div>
+        )}
+
+        {gate061Result && (
+          <div className="space-y-4">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+              <div className="space-y-3">
+                <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">Quality Certificate & Log JSON</h3>
+                <div className="p-4 bg-slate-950 rounded-lg border border-slate-800 font-mono text-[11px] text-cyan-400 overflow-x-auto select-all leading-relaxed whitespace-pre shadow-inner max-h-72">
+                  {JSON.stringify(gate061Result, null, 2)}
+                </div>
+              </div>
+
+              <div className="space-y-3">
+                <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">61 Assertion Gate Checks</h3>
+                <div className="bg-slate-950 p-3 rounded-lg border border-slate-800 max-h-72 overflow-y-auto space-y-2 text-xs">
+                  {Object.entries(gate061Result.verifications || {}).map(([name, status]) => (
+                    <div key={name} className="p-2 bg-slate-900/60 rounded border border-slate-800/80 flex items-center justify-between font-mono text-[11px]">
+                      <span className="text-slate-400 truncate pr-1">{name}:</span>
+                      <span className={`font-bold px-1.5 py-0.5 rounded border ${
+                        status === 'PASS' 
+                          ? 'text-emerald-400 bg-emerald-950/40 border-emerald-900' 
+                          : 'text-rose-400 bg-rose-950/40 border-rose-900'
+                      }`}>
+                        {String(status)}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="space-y-4 flex flex-col justify-between">
+                <div className="space-y-3">
+                  <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">Closed-Loop CAD/CAM Feedback</h3>
+                  <div className="bg-slate-950 p-3 rounded-lg border border-slate-800 text-xs space-y-2 max-h-48 overflow-y-auto">
+                    <div className="text-[11px] text-amber-400 font-semibold mb-1">Detected Manufacturing Drifts & Recommendations:</div>
+                    <div className="p-2 bg-slate-900 rounded border border-slate-800 space-y-1">
+                      <div className="font-bold text-slate-300">Feature: feat-pocket-inner (Flatness)</div>
+                      <div className="text-slate-400">Action: <span className="text-amber-300">REDUCE_FEED_RATE</span></div>
+                      <div className="text-slate-400">Value: <span className="text-amber-300">-15%</span></div>
+                    </div>
+                    <div className="p-2 bg-slate-900 rounded border border-slate-800 space-y-1">
+                      <div className="font-bold text-slate-300">Feature: feat-bore-center (Diameter)</div>
+                      <div className="text-slate-400">Action: <span className="text-amber-300">ADJUST_TOOL_OFFSET_Z</span></div>
+                      <div className="text-slate-400">Value: <span className="text-amber-300">-0.0035 mm</span></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className={`p-3 border rounded-lg text-xs font-mono flex items-start gap-2 ${
+                  gate061Result.overallStatus === 'PASS'
+                    ? 'bg-emerald-950/20 border-emerald-800/40 text-emerald-400'
+                    : 'bg-rose-950/20 border-rose-800/40 text-rose-400'
+                }`}>
+                  <CheckCircle2 className="w-4 h-4 shrink-0 mt-0.5" />
+                  <div>
+                    <div className="font-bold">SECP-061 GATE {gate061Result.overallStatus} ({gate061Result.passedCount}/61)</div>
+                    <div className="text-[10px] text-slate-400 mt-0.5">
+                      {gate061Result.overallStatus === 'PASS'
+                        ? 'Aerospace GD&T evaluation, 95% guardband uncertainty modeling, and quality digital thread verification executed successfully.'
+                        : 'Metrology verification gate found defective assertions.'}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* SECP-062 Statistical Process Control & Quality Intelligence Gate Card */}
+      <div className="bg-slate-900 border border-slate-800 rounded-xl p-5 text-slate-100 shadow-xl space-y-4">
+        <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+          <div>
+            <h2 className="text-sm font-bold text-slate-200 flex items-center gap-2">
+              <ShieldCheck className="w-4 h-4 text-indigo-400" />
+              SECP-062 Governance Gate — SPC & Manufacturing Quality Intelligence
+            </h2>
+            <p className="text-xs text-slate-400 mt-0.5">
+              Processes SECP-060 CNC execution parameters + SECP-061 physical measurements. Calculates 3-sigma Control Limits, Cp/Cpk, Western Electric trends, and Pearson correlations (62/62 assertions).
+            </p>
+          </div>
+          <button
+            id="btn-run-gate-062"
+            onClick={handleRunGate062}
+            disabled={isGate062Running}
+            className="flex items-center gap-2 px-4 py-2 bg-indigo-600 hover:bg-indigo-500 disabled:bg-slate-700 text-white rounded-lg text-xs font-semibold transition shadow-md cursor-pointer"
+          >
+            {isGate062Running ? <RefreshCw className="w-4 h-4 animate-spin" /> : <Play className="w-4 h-4" />}
+            {isGate062Running ? 'Executing Gate 062...' : 'Execute Gate 062'}
+          </button>
+        </div>
+
+        {!gate062Result && !isGate062Running && (
+          <div className="py-8 text-center text-slate-500 text-sm border border-dashed border-slate-800 rounded-lg">
+            Click <span className="text-indigo-400 font-semibold">Execute Gate 062</span> to process continuous digital thread telemetry and evaluate SPC control charts.
+          </div>
+        )}
+
+        {gate062Result && (
+          <div className="space-y-4">
+            <div className="grid grid-cols-1 xl:grid-cols-4 gap-4">
+              {/* Column 1: JSON Report */}
+              <div className="space-y-3">
+                <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">SPC Report JSON</h3>
+                <div className="p-4 bg-slate-950 rounded-lg border border-slate-800 font-mono text-[11px] text-indigo-400 overflow-x-auto select-all leading-relaxed whitespace-pre shadow-inner max-h-80">
+                  {JSON.stringify(gate062Result.sampleReport || gate062Result, null, 2)}
+                </div>
+              </div>
+
+              {/* Column 2: 62 Assertions */}
+              <div className="space-y-3">
+                <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">62 Assertion Gate Checks</h3>
+                <div className="bg-slate-950 p-3 rounded-lg border border-slate-800 max-h-80 overflow-y-auto space-y-2 text-xs">
+                  {Object.entries(gate062Result.verifications || {}).map(([name, status]) => (
+                    <div key={name} className="p-2 bg-slate-900/60 rounded border border-slate-800/80 flex items-center justify-between font-mono text-[11px]">
+                      <span className="text-slate-400 truncate pr-1">{name}:</span>
+                      <span className={`font-bold px-1.5 py-0.5 rounded border ${
+                        status === 'PASS' 
+                          ? 'text-emerald-400 bg-emerald-950/40 border-emerald-900' 
+                          : 'text-rose-400 bg-rose-950/40 border-rose-900'
+                      }`}>
+                        {String(status)}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Column 3: SPC Math & Capabilities */}
+              <div className="space-y-3">
+                <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">SPC Capability & Mean limits</h3>
+                {gate062Result.sampleReport && (
+                  <div className="bg-slate-950 p-4 rounded-lg border border-slate-800 text-xs space-y-3 h-80 overflow-y-auto">
+                    <div className="space-y-1">
+                      <div className="text-slate-400">Process Average (Mean):</div>
+                      <div className="text-sm font-mono font-bold text-slate-200">
+                        {gate062Result.sampleReport.mean.toFixed(6)} mm
+                      </div>
+                    </div>
+                    <div className="grid grid-cols-2 gap-2">
+                      <div className="p-2 bg-slate-900/50 rounded border border-slate-800">
+                        <div className="text-[10px] text-slate-400">UCL (3-Sigma):</div>
+                        <div className="font-mono font-bold text-slate-200">
+                          {gate062Result.sampleReport.controlLimits.ucl.toFixed(5)}
+                        </div>
+                      </div>
+                      <div className="p-2 bg-slate-900/50 rounded border border-slate-800">
+                        <div className="text-[10px] text-slate-400">LCL (3-Sigma):</div>
+                        <div className="font-mono font-bold text-slate-200">
+                          {gate062Result.sampleReport.controlLimits.lcl.toFixed(5)}
+                        </div>
+                      </div>
+                    </div>
+                    <div className="space-y-1 pt-2 border-t border-slate-800">
+                      <div className="flex justify-between items-center">
+                        <span className="text-slate-400">Potential Capability (Cp):</span>
+                        <span className="font-mono font-bold text-slate-200">{gate062Result.sampleReport.capability.cp.toFixed(3)}</span>
+                      </div>
+                      <div className="flex justify-between items-center">
+                        <span className="text-slate-400">Centering Capability (Cpk):</span>
+                        <span className="font-mono font-bold text-indigo-400">{gate062Result.sampleReport.capability.cpk.toFixed(3)}</span>
+                      </div>
+                    </div>
+                    <div className="p-2.5 bg-slate-900 rounded border border-slate-800/80 mt-1">
+                      <div className="flex items-center gap-1.5 mb-1">
+                        <span className={`w-2 h-2 rounded-full ${
+                          gate062Result.sampleReport.capability.status === 'CAPABLE' ? 'bg-emerald-400' : 'bg-rose-400'
+                        }`} />
+                        <span className="text-[10px] uppercase font-bold text-slate-300">
+                          Status: {gate062Result.sampleReport.capability.status}
+                        </span>
+                      </div>
+                      <div className="text-[10px] text-slate-400 leading-relaxed">
+                        {gate062Result.sampleReport.capability.interpretation}
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* Column 4: Multi-variable Correlations */}
+              <div className="space-y-3">
+                <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">Multi-Variable Correlation</h3>
+                {gate062Result.sampleReport && (
+                  <div className="bg-slate-950 p-4 rounded-lg border border-slate-800 text-xs space-y-3 h-80 overflow-y-auto">
+                    <div className="text-[10px] text-indigo-400 font-bold uppercase tracking-wider">
+                      Connected Intelligence Matrices
+                    </div>
+                    {gate062Result.sampleReport.correlations.map((corr: any, idx: number) => (
+                      <div key={idx} className="p-2.5 bg-slate-900/60 rounded border border-slate-800 space-y-1">
+                        <div className="font-bold text-slate-300 text-[11px] truncate">
+                          {corr.independentVariable}
+                        </div>
+                        <div className="flex justify-between text-[10px]">
+                          <span className="text-slate-400">Strength:</span>
+                          <span className={`font-mono font-bold ${
+                            corr.strength.includes('STRONG') ? 'text-amber-400' : 'text-slate-400'
+                          }`}>
+                            {corr.strength}
+                          </span>
+                        </div>
+                        <div className="flex justify-between text-[10px]">
+                          <span className="text-slate-400">Pearson R:</span>
+                          <span className="font-mono font-bold text-slate-200">{corr.pearsonR.toFixed(4)}</span>
+                        </div>
+                        <p className="text-[9px] text-slate-500 pt-1 leading-snug">
+                          {corr.description}
+                        </p>
+                      </div>
+                    ))}
+                    <div className="pt-2 border-t border-slate-800">
+                      <div className={`p-2 rounded text-[10px] leading-relaxed ${
+                        gate062Result.sampleReport.mrbReviewRecommended 
+                          ? 'bg-amber-950/20 border border-amber-900/50 text-amber-300'
+                          : 'bg-emerald-950/20 border border-emerald-900/50 text-emerald-300'
+                      }`}>
+                        <strong>MRB Control:</strong> {gate062Result.sampleReport.mrbReviewRecommended ? 'Review Recommended (Tool-Wear/Outliers Found)' : 'Process Fully Stable & In-Control'}
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+
+            <div className={`p-3 border rounded-lg text-xs font-mono flex items-start gap-2 ${
+              gate062Result.overallStatus === 'PASS'
+                ? 'bg-emerald-950/20 border-emerald-800/40 text-emerald-400'
+                : 'bg-rose-950/20 border-rose-800/40 text-rose-400'
+            }`}>
+              <CheckCircle2 className="w-4 h-4 shrink-0 mt-0.5" />
+              <div>
+                <div className="font-bold">SECP-062 SPC GATE {gate062Result.overallStatus} ({gate062Result.passedCount}/62)</div>
+                <div className="text-[10px] text-slate-400 mt-0.5">
+                  {gate062Result.overallStatus === 'PASS'
+                    ? 'Manufacturing Quality Intelligence, 3-sigma limits, Cp/Cpk capabilities, and Western Electric trend analytics verified completely.'
+                    : 'Quality intelligence evaluation gate found missing or defective assertions.'}
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* SECP-063 Manufacturing Nonconformance & Corrective Action Gate Card */}
+      <div className="bg-slate-900 border border-slate-800 rounded-xl p-5 text-slate-100 shadow-xl space-y-4">
+        <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+          <div>
+            <h2 className="text-sm font-bold text-slate-200 flex items-center gap-2">
+              <ShieldCheck className="w-4 h-4 text-emerald-400" />
+              SECP-063 Governance Gate — Nonconformance & CAPA Quality Core
+            </h2>
+            <p className="text-xs text-slate-400 mt-0.5">
+              Validates NCR initiation, containment holds, root-cause investigations, material dispositions, CAPA action tracking, change impact levels, and closed-loop requalification (63/63 assertions).
+            </p>
+          </div>
+          <button
+            id="btn-run-gate-063"
+            onClick={handleRunGate063}
+            disabled={isGate063Running}
+            className="flex items-center gap-2 px-4 py-2 bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-700 text-white rounded-lg text-xs font-semibold transition shadow-md cursor-pointer"
+          >
+            {isGate063Running ? <RefreshCw className="w-4 h-4 animate-spin" /> : <Play className="w-4 h-4" />}
+            {isGate063Running ? 'Executing Gate 063...' : 'Execute Gate 063'}
+          </button>
+        </div>
+
+        {!gate063Result && !isGate063Running && (
+          <div className="py-8 text-center text-slate-500 text-sm border border-dashed border-slate-800 rounded-lg">
+            Click <span className="text-emerald-400 font-semibold">Execute Gate 063</span> to run the 63-point nonconformance life-cycle, MRB quarantine, and CAPA governance verification suite.
+          </div>
+        )}
+
+        {gate063Result && (
+          <div className="space-y-4">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+              {/* Column 1: JSON Report */}
+              <div className="space-y-3">
+                <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">NCR / CAPA Certificate JSON</h3>
+                <div className="p-4 bg-slate-950 rounded-lg border border-slate-800 font-mono text-[11px] text-emerald-400 overflow-x-auto select-all leading-relaxed whitespace-pre shadow-inner max-h-80">
+                  {JSON.stringify(gate063Result, null, 2)}
+                </div>
+              </div>
+
+              {/* Column 2: 63 Assertions */}
+              <div className="space-y-3">
+                <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">63 Assertion Gate Checks</h3>
+                <div className="bg-slate-950 p-3 rounded-lg border border-slate-800 max-h-80 overflow-y-auto space-y-2 text-xs">
+                  {Object.entries(gate063Result.verifications || {}).map(([name, status]) => (
+                    <div key={name} className="p-2 bg-slate-900/60 rounded border border-slate-800/80 flex items-center justify-between font-mono text-[11px]">
+                      <span className="text-slate-400 truncate pr-1">{name}:</span>
+                      <span className={`font-bold px-1.5 py-0.5 rounded border ${
+                        status === 'PASS' 
+                          ? 'text-emerald-400 bg-emerald-950/40 border-emerald-900' 
+                          : 'text-rose-400 bg-rose-950/40 border-rose-900'
+                      }`}>
+                        {String(status)}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Column 3: Summary & Requalification */}
+              <div className="space-y-4 flex flex-col justify-between">
+                {gate063Result.sampleNcrReport && (
+                  <div className="space-y-3">
+                    <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">Closed-Loop Resolution State</h3>
+                    <div className="bg-slate-950 p-3 rounded-lg border border-slate-800 text-xs space-y-2">
+                      <div className="text-[11px] text-emerald-400 font-bold uppercase">Workpiece Requalification State</div>
+                      <div className="p-2 bg-slate-900 rounded border border-slate-800 space-y-1">
+                        <div className="text-slate-400">Serial Code: <span className="text-slate-200 font-mono">{gate063Result.sampleNcrReport.partSerial}</span></div>
+                        <div className="text-slate-400">Machine Point: <span className="text-slate-200 font-mono">{gate063Result.sampleNcrReport.machineId}</span></div>
+                        <div className="text-slate-400">Action: <span className="text-emerald-400 font-bold">{gate063Result.sampleNcrReport.disposition}</span></div>
+                        <div className="text-slate-400">CAPA Plan: <span className="text-slate-300 italic">{gate063Result.sampleNcrReport.capaAssigned}</span></div>
+                        <div className="text-slate-400">Requal Status: <span className="text-emerald-400 font-bold underline">{gate063Result.sampleNcrReport.requalificationStatus}</span></div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                <div className={`p-3 border rounded-lg text-xs font-mono flex items-start gap-2 ${
+                  gate063Result.overallStatus === 'PASS'
+                    ? 'bg-emerald-950/20 border-emerald-800/40 text-emerald-400'
+                    : 'bg-rose-950/20 border-rose-800/40 text-rose-400'
+                }`}>
+                  <CheckCircle2 className="w-4 h-4 shrink-0 mt-0.5" />
+                  <div>
+                    <div className="font-bold">SECP-063 GATE {gate063Result.overallStatus} ({gate063Result.passedCount}/63)</div>
+                    <div className="text-[10px] text-slate-400 mt-0.5">
+                      {gate063Result.overallStatus === 'PASS'
+                        ? 'Deterministic Nonconformance logging, material containment hold, root-cause confirmation, disposition approvals, and closed-loop requalification verified successfully.'
+                        : 'Gate failed one or more assertions.'}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* SECP-064 Manufacturing Release, Certification & Traceability Gate Card */}
+      <div className="bg-slate-900 border border-slate-800 rounded-xl p-5 text-slate-100 shadow-xl space-y-4">
+        <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+          <div>
+            <h2 className="text-sm font-bold text-slate-200 flex items-center gap-2">
+              <ShieldCheck className="w-4 h-4 text-emerald-400" />
+              SECP-064 Governance Gate — Manufacturing Release & Certification Core
+            </h2>
+            <p className="text-xs text-slate-400 mt-0.5">
+              Enforces rigorous compliance checklists, deviation mitigation pathways, multi-department approvals, batch release logs, and immutable certificate signature sealing (64/64 assertions).
+            </p>
+          </div>
+          <button
+            id="btn-run-gate-064"
+            onClick={handleRunGate064}
+            disabled={isGate064Running}
+            className="flex items-center gap-2 px-4 py-2 bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-700 text-white rounded-lg text-xs font-semibold transition shadow-md cursor-pointer"
+          >
+            {isGate064Running ? <RefreshCw className="w-4 h-4 animate-spin" /> : <Play className="w-4 h-4" />}
+            {isGate064Running ? 'Executing Gate 064...' : 'Execute Gate 064'}
+          </button>
+        </div>
+
+        {!gate064Result && !isGate064Running && (
+          <div className="py-8 text-center text-slate-500 text-sm border border-dashed border-slate-800 rounded-lg">
+            Click <span className="text-emerald-400 font-semibold">Execute Gate 064</span> to verify administrative release decisions, Merkle-root evidence hashes, and lock down secure, unmodifiable manufacturing certificates.
+          </div>
+        )}
+
+        {gate064Result && (
+          <div className="space-y-4">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+              {/* Column 1: JSON Report */}
+              <div className="space-y-3">
+                <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">Release Package JSON</h3>
+                <div className="p-4 bg-slate-950 rounded-lg border border-slate-800 font-mono text-[11px] text-emerald-400 overflow-x-auto select-all leading-relaxed whitespace-pre shadow-inner max-h-80">
+                  {JSON.stringify(gate064Result, null, 2)}
+                </div>
+              </div>
+
+              {/* Column 2: 64 Assertions */}
+              <div className="space-y-3">
+                <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">64 Assertion Gate Checks</h3>
+                <div className="bg-slate-950 p-3 rounded-lg border border-slate-800 max-h-80 overflow-y-auto space-y-2 text-xs">
+                  {Object.entries(gate064Result.verifications || {}).map(([name, status]) => (
+                    <div key={name} className="p-2 bg-slate-900/60 rounded border border-slate-800/80 flex items-center justify-between font-mono text-[11px]">
+                      <span className="text-slate-400 truncate pr-1">{name}:</span>
+                      <span className={`font-bold px-1.5 py-0.5 rounded border ${
+                        status === 'PASS' 
+                          ? 'text-emerald-400 bg-emerald-950/40 border-emerald-900' 
+                          : 'text-rose-400 bg-rose-950/40 border-rose-900'
+                      }`}>
+                        {String(status)}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Column 3: Release Certificate Details */}
+              <div className="space-y-4 flex flex-col justify-between">
+                {gate064Result.sampleReleaseReport && (
+                  <div className="space-y-3">
+                    <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">Digital Manufacturing Certificate</h3>
+                    <div className="bg-slate-950 p-3 rounded-lg border border-slate-800 text-xs space-y-2">
+                      <div className="text-[11px] text-emerald-400 font-bold uppercase">Sealed Verification Signature</div>
+                      <div className="p-2 bg-slate-900 rounded border border-slate-800 space-y-1.5">
+                        <div className="text-slate-400">ID: <span className="text-slate-200 font-mono font-semibold">{gate064Result.sampleReleaseReport.releaseId}</span></div>
+                        <div className="text-slate-400">Product: <span className="text-slate-200 font-mono">{gate064Result.sampleReleaseReport.productId}</span></div>
+                        <div className="text-slate-400">CAD Revision: <span className="text-slate-200 font-mono">{gate064Result.sampleReleaseReport.cadRevision}</span></div>
+                        <div className="text-slate-400">Decision: <span className={`font-bold px-1.5 py-0.5 rounded text-[10px] ${
+                          gate064Result.sampleReleaseReport.decision === 'RELEASED'
+                            ? 'text-emerald-400 bg-emerald-950/40 border border-emerald-900'
+                            : 'text-rose-400 bg-rose-950/40 border border-rose-900'
+                        }`}>{gate064Result.sampleReleaseReport.decision}</span></div>
+                        <div className="text-[10px] text-slate-500 font-mono truncate mt-1 pt-1 border-t border-slate-800/60">Seal: {gate064Result.sampleReleaseReport.certificateHash}</div>
+                      </div>
+
+                      <div className="text-[11px] text-sky-400 font-bold uppercase pt-1">Decoupled Ledger Anchor</div>
+                      <div className="p-2 bg-slate-900 rounded border border-slate-800 space-y-1 text-[11px]">
+                        <div className="text-slate-400">Ledger: <span className="text-sky-300 font-mono font-semibold">{gate064Result.sampleReleaseReport.anchoredLedger}</span></div>
+                        <div className="text-slate-400">Block Index: <span className="text-sky-300 font-mono font-semibold">#{gate064Result.sampleReleaseReport.ledgerBlockIndex}</span></div>
+                        <div className="text-[10px] text-slate-500 font-mono truncate mt-1 pt-1 border-t border-slate-800/60">Anchor Sig: {gate064Result.sampleReleaseReport.ledgerAnchorSignature}</div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                <div className={`p-3 border rounded-lg text-xs font-mono flex items-start gap-2 ${
+                  gate064Result.overallStatus === 'PASS'
+                    ? 'bg-emerald-950/20 border-emerald-800/40 text-emerald-400'
+                    : 'bg-rose-950/20 border-rose-800/40 text-rose-400'
+                }`}>
+                  <CheckCircle2 className="w-4 h-4 shrink-0 mt-0.5" />
+                  <div>
+                    <div className="font-bold">SECP-064 GATE {gate064Result.overallStatus} ({gate064Result.passedCount}/64)</div>
+                    <div className="text-[10px] text-slate-400 mt-0.5">
+                      {gate064Result.overallStatus === 'PASS'
+                        ? 'Deterministic release criteria, deviation logs, multi-inspector verification, and immutable Merkle evidence chains successfully completed.'
+                        : 'Gate failed one or more assertions.'}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* SECP-065 Manufacturing Asset & Machine Reliability Gate Card */}
+      <div className="bg-slate-900 border border-slate-800 rounded-xl p-5 text-slate-100 shadow-xl space-y-4">
+        <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+          <div>
+            <h2 className="text-sm font-bold text-slate-200 flex items-center gap-2">
+              <ShieldCheck className="w-4 h-4 text-sky-400" />
+              SECP-065 Governance Gate — Manufacturing Asset & Machine Reliability
+            </h2>
+            <p className="text-xs text-slate-400 mt-0.5">
+              Enforces deterministic machine health evaluation, telemetry stream integrity, failure event logging, and immutable reliability provenance (65/65 assertions).
+            </p>
+          </div>
+          <button
+            id="btn-run-gate-065"
+            onClick={handleRunGate065}
+            disabled={isGate065Running}
+            className="flex items-center gap-2 px-4 py-2 bg-sky-600 hover:bg-sky-500 disabled:bg-slate-700 text-white rounded-lg text-xs font-semibold transition shadow-md cursor-pointer"
+          >
+            {isGate065Running ? <RefreshCw className="w-4 h-4 animate-spin" /> : <Play className="w-4 h-4" />}
+            {isGate065Running ? 'Executing Gate 065...' : 'Execute Gate 065'}
+          </button>
+        </div>
+
+        {!gate065Result && !isGate065Running && (
+          <div className="py-8 text-center text-slate-500 text-sm border border-dashed border-slate-800 rounded-lg">
+            Click <span className="text-sky-400 font-semibold">Execute Gate 065</span> to verify real-time asset health, deterministic reliability metrics, and secure, unmodifiable machine state records.
+          </div>
+        )}
+
+        {gate065Result && (
+          <div className="space-y-4">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+              {/* Column 1: JSON Report */}
+              <div className="space-y-3">
+                <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">Reliability Package JSON</h3>
+                <div className="p-4 bg-slate-950 rounded-lg border border-slate-800 font-mono text-[11px] text-sky-400 overflow-x-auto select-all leading-relaxed whitespace-pre shadow-inner max-h-80">
+                  {JSON.stringify(gate065Result, null, 2)}
+                </div>
+              </div>
+
+              {/* Column 2: 65 Assertions */}
+              <div className="space-y-3">
+                <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">65 Assertion Gate Checks</h3>
+                <div className="bg-slate-950 p-3 rounded-lg border border-slate-800 max-h-80 overflow-y-auto space-y-2 text-xs">
+                  {Object.entries(gate065Result.verifications || {}).map(([name, status]) => (
+                    <div key={name} className="p-2 bg-slate-900/60 rounded border border-slate-800/80 flex items-center justify-between font-mono text-[11px]">
+                      <span className="text-slate-400 truncate pr-1">{name}:</span>
+                      <span className={`font-bold px-1.5 py-0.5 rounded border ${
+                        status === 'PASS' 
+                          ? 'text-sky-400 bg-sky-950/40 border-sky-900' 
+                          : 'text-rose-400 bg-rose-950/40 border-rose-900'
+                      }`}>
+                        {String(status)}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Column 3: Asset Health Details */}
+              <div className="space-y-4 flex flex-col justify-between">
+                {gate065Result.sampleAssetReport && (
+                  <div className="space-y-3">
+                    <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">Digital Asset Health Certificate</h3>
+                    <div className="bg-slate-950 p-3 rounded-lg border border-slate-800 text-xs space-y-2">
+                      <div className="text-[11px] text-sky-400 font-bold uppercase">Sealed Reliability Signature</div>
+                      <div className="p-2 bg-slate-900 rounded border border-slate-800 space-y-1.5">
+                        <div className="text-slate-400">Asset: <span className="text-slate-200 font-mono font-semibold">{gate065Result.sampleAssetReport.assetId}</span></div>
+                        <div className="text-slate-400">State: <span className="text-slate-200 font-mono">{gate065Result.sampleAssetReport.state}</span></div>
+                        <div className="text-slate-400">Health Score: <span className="text-sky-400 font-mono font-bold">{gate065Result.sampleAssetReport.healthScore.toFixed(1)}%</span></div>
+                        <div className="text-slate-400">Decision: <span className={`font-bold px-1.5 py-0.5 rounded text-[10px] ${
+                          gate065Result.sampleAssetReport.decision === 'CONTINUE'
+                            ? 'text-emerald-400 bg-emerald-950/40 border border-emerald-900'
+                            : 'text-rose-400 bg-rose-950/40 border border-rose-900'
+                        }`}>{gate065Result.sampleAssetReport.decision}</span></div>
+                        <div className="text-[10px] text-slate-500 font-mono truncate mt-1 pt-1 border-t border-slate-800/60">Sig: {gate065Result.sampleAssetReport.signature}</div>
+                      </div>
+
+                      <div className="text-[11px] text-sky-400 font-bold uppercase pt-1">Decoupled Ledger Anchor</div>
+                      <div className="p-2 bg-slate-900 rounded border border-slate-800 space-y-1 text-[11px]">
+                        <div className="text-slate-400">Ledger: <span className="text-sky-300 font-mono font-semibold">{gate065Result.sampleAssetReport.anchor.type}</span></div>
+                        <div className="text-slate-400">Block Index: <span className="text-sky-300 font-mono font-semibold">#{gate065Result.sampleAssetReport.anchor.block}</span></div>
+                        <div className="text-[10px] text-slate-500 font-mono truncate mt-1 pt-1 border-t border-slate-800/60">Anchor Sig: {gate065Result.sampleAssetReport.anchor.sig}</div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                <div className={`p-3 border rounded-lg text-xs font-mono flex items-start gap-2 ${
+                  gate065Result.overallStatus === 'PASS'
+                    ? 'bg-sky-950/20 border-sky-800/40 text-sky-400'
+                    : 'bg-rose-950/20 border-rose-800/40 text-rose-400'
+                }`}>
+                  <CheckCircle2 className="w-4 h-4 shrink-0 mt-0.5" />
+                  <div>
+                    <div className="font-bold">SECP-065 GATE {gate065Result.overallStatus} ({gate065Result.passedCount}/65)</div>
+                    <div className="text-[10px] text-slate-400 mt-0.5">
+                      {gate065Result.overallStatus === 'PASS'
+                        ? 'Deterministic asset health monitoring, telemetry integrity, and reliability digital thread successfully verified.'
+                        : 'Gate failed one or more assertions.'}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* SECP-066 Maintenance & Service Governance Gate Card */}
+      <div className="bg-slate-900 border border-slate-800 rounded-xl p-5 text-slate-100 shadow-xl space-y-4">
+        <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+          <div>
+            <h2 className="text-sm font-bold text-slate-200 flex items-center gap-2">
+              <ShieldCheck className="w-4 h-4 text-emerald-400" />
+              SECP-066 Governance Gate — Manufacturing Maintenance & Service
+            </h2>
+            <p className="text-xs text-slate-400 mt-0.5">
+              Enforces controlled maintenance lifecycles, technician competency, part traceability, and return-to-service governance (66/66 assertions).
+            </p>
+          </div>
+          <button
+            id="btn-run-gate-066"
+            onClick={handleRunGate066}
+            disabled={isGate066Running}
+            className="flex items-center gap-2 px-4 py-2 bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-700 text-white rounded-lg text-xs font-semibold transition shadow-md cursor-pointer"
+          >
+            {isGate066Running ? <RefreshCw className="w-4 h-4 animate-spin" /> : <Play className="w-4 h-4" />}
+            {isGate066Running ? 'Executing Gate 066...' : 'Execute Gate 066'}
+          </button>
+        </div>
+
+        {!gate066Result && !isGate066Running && (
+          <div className="py-8 text-center text-slate-500 text-sm border border-dashed border-slate-800 rounded-lg">
+            Click <span className="text-emerald-400 font-semibold">Execute Gate 066</span> to verify maintenance plans, work orders, execution records, and return-to-service authorization.
+          </div>
+        )}
+
+        {gate066Result && (
+          <div className="space-y-4">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+              {/* Column 1: JSON Report */}
+              <div className="space-y-3">
+                <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">Maintenance Package JSON</h3>
+                <div className="p-4 bg-slate-950 rounded-lg border border-slate-800 font-mono text-[11px] text-emerald-400 overflow-x-auto select-all leading-relaxed whitespace-pre shadow-inner max-h-80">
+                  {JSON.stringify(gate066Result, null, 2)}
+                </div>
+              </div>
+
+              {/* Column 2: 66 Assertions */}
+              <div className="space-y-3">
+                <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">66 Assertion Gate Checks</h3>
+                <div className="bg-slate-950 p-3 rounded-lg border border-slate-800 max-h-80 overflow-y-auto space-y-2 text-xs">
+                  {Object.entries(gate066Result.verifications || {}).map(([name, status]) => (
+                    <div key={name} className="p-2 bg-slate-900/60 rounded border border-slate-800/80 flex items-center justify-between font-mono text-[11px]">
+                      <span className="text-slate-400 truncate pr-1">{name}:</span>
+                      <span className={`font-bold px-1.5 py-0.5 rounded border ${
+                        status === 'PASS' 
+                          ? 'text-emerald-400 bg-emerald-950/40 border-emerald-900' 
+                          : 'text-rose-400 bg-rose-950/40 border-rose-900'
+                      }`}>
+                        {String(status)}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Column 3: Maintenance Details */}
+              <div className="space-y-4 flex flex-col justify-between">
+                {gate066Result.sampleMaintenanceReport && (
+                  <div className="space-y-3">
+                    <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">Maintenance Governance Record</h3>
+                    <div className="bg-slate-950 p-3 rounded-lg border border-slate-800 text-xs space-y-2">
+                      <div className="text-[11px] text-emerald-400 font-bold uppercase">Return-to-Service Authorization</div>
+                      <div className="p-2 bg-slate-900 rounded border border-slate-800 space-y-1.5">
+                        <div className="text-slate-400">Asset: <span className="text-slate-200 font-mono font-semibold">{gate066Result.sampleMaintenanceReport.assetId}</span></div>
+                        <div className="text-slate-400">Work Order: <span className="text-slate-200 font-mono">{gate066Result.sampleMaintenanceReport.workOrderId}</span></div>
+                        <div className="text-slate-400">Verification: <span className="text-emerald-400 font-mono font-bold">{gate066Result.sampleMaintenanceReport.verification}</span></div>
+                        <div className="text-slate-400">RTS Status: <span className={`font-bold px-1.5 py-0.5 rounded text-[10px] ${
+                          gate066Result.sampleMaintenanceReport.rts === 'AUTHORIZED'
+                            ? 'text-emerald-400 bg-emerald-950/40 border border-emerald-900'
+                            : 'text-rose-400 bg-rose-950/40 border border-rose-900'
+                        }`}>{gate066Result.sampleMaintenanceReport.rts}</span></div>
+                        <div className="text-[10px] text-slate-500 font-mono truncate mt-1 pt-1 border-t border-slate-800/60">Signature: {gate066Result.sampleMaintenanceReport.signature}</div>
+                      </div>
+
+                      <div className="text-[11px] text-emerald-400 font-bold uppercase pt-1">Traceability Metrics</div>
+                      <div className="p-2 bg-slate-900 rounded border border-slate-800 space-y-1 text-[11px]">
+                        <div className="text-slate-400">Technician: <span className="text-emerald-300 font-mono font-semibold">{gate066Result.sampleMaintenanceReport.technician}</span></div>
+                        <div className="text-slate-400">Closure Status: <span className="text-emerald-300 font-mono font-semibold">{gate066Result.sampleMaintenanceReport.status}</span></div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                <div className={`p-3 border rounded-lg text-xs font-mono flex items-start gap-2 ${
+                  gate066Result.overallStatus === 'PASS'
+                    ? 'bg-emerald-950/20 border-emerald-800/40 text-emerald-400'
+                    : 'bg-rose-950/20 border-rose-800/40 text-rose-400'
+                }`}>
+                  <CheckCircle2 className="w-4 h-4 shrink-0 mt-0.5" />
+                  <div>
+                    <div className="font-bold">SECP-066 GATE {gate066Result.overallStatus} ({gate066Result.passedCount}/66)</div>
+                    <div className="text-[10px] text-slate-400 mt-0.5">
+                      {gate066Result.overallStatus === 'PASS'
+                        ? 'Deterministic maintenance governance, technician competency, and part traceability successfully verified.'
+                        : 'Gate failed one or more assertions.'}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* SECP-067 Production Continuity & Disaster Recovery Gate Card */}
+      <div className="bg-slate-900 border border-slate-800 rounded-xl p-5 text-slate-100 shadow-xl space-y-4">
+        <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+          <div>
+            <h2 className="text-sm font-bold text-slate-200 flex items-center gap-2">
+              <ShieldCheck className="w-4 h-4 text-orange-400" />
+              SECP-067 Governance Gate — Production Continuity & Disaster Recovery
+            </h2>
+            <p className="text-xs text-slate-400 mt-0.5">
+              Validates industrial state recovery, continuity orchestration, and disaster recovery governance (67 assertions).
+            </p>
+          </div>
+          <button
+            id="btn-run-gate-067"
+            onClick={handleRunGate067}
+            disabled={isGate067Running}
+            className="flex items-center gap-2 px-4 py-2 bg-orange-600 hover:bg-orange-500 disabled:bg-slate-700 text-white rounded-lg text-xs font-semibold transition shadow-md cursor-pointer"
+          >
+            {isGate067Running ? <RefreshCw className="w-4 h-4 animate-spin" /> : <Play className="w-4 h-4" />}
+            {isGate067Running ? 'Executing Gate 067...' : 'Execute Gate 067'}
+          </button>
+        </div>
+
+        {!gate067Result && !isGate067Running && (
+          <div className="py-8 text-center text-slate-500 text-sm border border-dashed border-slate-800 rounded-lg">
+            Click <span className="text-orange-400 font-semibold">Execute Gate 067</span> to verify production state capture, recovery orchestration, and RTO/RPO validation.
+          </div>
+        )}
+
+        {gate067Result && (
+          <div className="space-y-4">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+              {/* Column 1: JSON Report */}
+              <div className="space-y-3">
+                <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">Recovery Package JSON</h3>
+                <div className="p-4 bg-slate-950 rounded-lg border border-slate-800 font-mono text-[11px] text-orange-400 overflow-x-auto select-all leading-relaxed whitespace-pre shadow-inner max-h-80">
+                  {JSON.stringify(gate067Result, null, 2)}
+                </div>
+              </div>
+
+              {/* Column 2: 67 Assertions */}
+              <div className="space-y-3">
+                <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">67 Assertion Gate Checks</h3>
+                <div className="bg-slate-950 p-3 rounded-lg border border-slate-800 max-h-80 overflow-y-auto space-y-2 text-xs">
+                  {Object.entries(gate067Result.verifications || {}).map(([name, status]) => (
+                    <div key={name} className="p-2 bg-slate-900/60 rounded border border-slate-800/80 flex items-center justify-between font-mono text-[11px]">
+                      <span className="text-slate-400 truncate pr-1">{name}:</span>
+                      <span className={`font-bold px-1.5 py-0.5 rounded border ${
+                        status === 'PASS' 
+                          ? 'text-emerald-400 bg-emerald-950/40 border-emerald-900' 
+                          : 'text-rose-400 bg-rose-950/40 border-rose-900'
+                      }`}>
+                        {String(status)}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Column 3: Scenario Log */}
+              <div className="space-y-4 flex flex-col justify-between">
+                <div className="space-y-3">
+                  <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">Recovery Scenarios</h3>
+                  <div className="bg-slate-950 p-3 rounded-lg border border-slate-800 text-xs space-y-2 max-h-60 overflow-y-auto">
+                    {gate067Result.scenarios?.map((s: string, i: number) => (
+                      <div key={i} className="flex items-start gap-2 text-slate-300 font-mono text-[10px]">
+                        <span className="text-orange-500 shrink-0">[{i+1}]</span>
+                        <span>{s}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className={`p-3 border rounded-lg text-xs font-mono flex items-start gap-2 ${
+                  gate067Result.overallStatus === 'PASS'
+                    ? 'bg-orange-950/20 border-orange-800/40 text-orange-400'
+                    : 'bg-rose-950/20 border-rose-800/40 text-rose-400'
+                }`}>
+                  <CheckCircle2 className="w-4 h-4 shrink-0 mt-0.5" />
+                  <div>
+                    <div className="font-bold">SECP-067 GATE {gate067Result.overallStatus} ({gate067Result.passedCount}/67)</div>
+                    <div className="text-[10px] text-slate-400 mt-0.5">
+                      {gate067Result.overallStatus === 'PASS'
+                        ? 'Deterministic industrial state recovery, continuity orchestration, and recovery provenance successfully verified.'
+                        : 'Gate failed one or more assertions.'}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* SECP-068 Distributed Engineering Compute & Worker Orchestration Gate Card */}
+      <div className="bg-slate-900 border border-slate-800 rounded-xl p-5 text-slate-100 shadow-xl space-y-4">
+        <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+          <div>
+            <h2 className="text-sm font-bold text-slate-200 flex items-center gap-2">
+              <ShieldCheck className="w-4 h-4 text-blue-400" />
+              SECP-068 Governance Gate — Distributed Engineering Compute
+            </h2>
+            <p className="text-xs text-slate-400 mt-0.5">
+              Validates deterministic engineering task distribution, worker orchestration, and execution provenance (68 assertions).
+            </p>
+          </div>
+          <button
+            id="btn-run-gate-068"
+            onClick={handleRunGate068}
+            disabled={isGate068Running}
+            className="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-500 disabled:bg-slate-700 text-white rounded-lg text-xs font-semibold transition shadow-md cursor-pointer"
+          >
+            {isGate068Running ? <RefreshCw className="w-4 h-4 animate-spin" /> : <Play className="w-4 h-4" />}
+            {isGate068Running ? 'Executing Gate 068...' : 'Execute Gate 068'}
+          </button>
+        </div>
+
+        {!gate068Result && !isGate068Running && (
+          <div className="py-8 text-center text-slate-500 text-sm border border-dashed border-slate-800 rounded-lg">
+            Click <span className="text-blue-400 font-semibold">Execute Gate 068</span> to verify worker registration, job scheduling, resource governance, and execution provenance.
+          </div>
+        )}
+
+        {gate068Result && (
+          <div className="space-y-4">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+              {/* Column 1: JSON Report */}
+              <div className="space-y-3">
+                <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">Compute Package JSON</h3>
+                <div className="p-4 bg-slate-950 rounded-lg border border-slate-800 font-mono text-[11px] text-blue-400 overflow-x-auto select-all leading-relaxed whitespace-pre shadow-inner max-h-80">
+                  {JSON.stringify(gate068Result, null, 2)}
+                </div>
+              </div>
+
+              {/* Column 2: 68 Assertions */}
+              <div className="space-y-3">
+                <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">68 Assertion Gate Checks</h3>
+                <div className="bg-slate-950 p-3 rounded-lg border border-slate-800 max-h-80 overflow-y-auto space-y-2 text-xs">
+                  {Object.entries(gate068Result.verifications || {}).map(([name, status]) => (
+                    <div key={name} className="p-2 bg-slate-900/60 rounded border border-slate-800/80 flex items-center justify-between font-mono text-[11px]">
+                      <span className="text-slate-400 truncate pr-1">{name}:</span>
+                      <span className={`font-bold px-1.5 py-0.5 rounded border ${
+                        status === 'PASS' 
+                          ? 'text-emerald-400 bg-emerald-950/40 border-emerald-900' 
+                          : 'text-rose-400 bg-rose-950/40 border-rose-900'
+                      }`}>
+                        {String(status)}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Column 3: Scenario Log */}
+              <div className="space-y-4 flex flex-col justify-between">
+                <div className="space-y-3">
+                  <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">Compute Scenarios</h3>
+                  <div className="bg-slate-950 p-3 rounded-lg border border-slate-800 text-xs space-y-2 max-h-60 overflow-y-auto">
+                    {gate068Result.scenarios?.map((s: string, i: number) => (
+                      <div key={i} className="flex items-start gap-2 text-slate-300 font-mono text-[10px]">
+                        <span className="text-blue-500 shrink-0">[{i+1}]</span>
+                        <span>{s}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className={`p-3 border rounded-lg text-xs font-mono flex items-start gap-2 ${
+                  gate068Result.overallStatus === 'PASS'
+                    ? 'bg-blue-950/20 border-blue-800/40 text-blue-400'
+                    : 'bg-rose-950/20 border-rose-800/40 text-rose-400'
+                }`}>
+                  <CheckCircle2 className="w-4 h-4 shrink-0 mt-0.5" />
+                  <div>
+                    <div className="font-bold">SECP-068 GATE {gate068Result.overallStatus} ({gate068Result.passedCount}/68)</div>
+                    <div className="text-[10px] text-slate-400 mt-0.5">
+                      {gate068Result.overallStatus === 'PASS'
+                        ? 'Deterministic engineering task distribution, worker orchestration, and compute provenance successfully verified.'
+                        : 'Gate failed one or more assertions.'}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* SECP-069 Industrial Data Governance & Digital Thread Gate Card */}
+      <div className="bg-slate-900 border border-slate-800 rounded-xl p-5 text-slate-100 shadow-xl space-y-4">
+        <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+          <div>
+            <h2 className="text-sm font-bold text-slate-200 flex items-center gap-2">
+              <ShieldCheck className="w-4 h-4 text-pink-400" />
+              SECP-069 Governance Gate — Industrial Data Governance
+            </h2>
+            <p className="text-xs text-slate-400 mt-0.5">
+              Validates deterministic industrial data governance, lineage tracking, and digital thread integrity (69 assertions).
+            </p>
+          </div>
+          <button
+            id="btn-run-gate-069"
+            onClick={handleRunGate069}
+            disabled={isGate069Running}
+            className="flex items-center gap-2 px-4 py-2 bg-pink-600 hover:bg-pink-500 disabled:bg-slate-700 text-white rounded-lg text-xs font-semibold transition shadow-md cursor-pointer"
+          >
+            {isGate069Running ? <RefreshCw className="w-4 h-4 animate-spin" /> : <Play className="w-4 h-4" />}
+            {isGate069Running ? 'Executing Gate 069...' : 'Execute Gate 069'}
+          </button>
+        </div>
+
+        {!gate069Result && !isGate069Running && (
+          <div className="py-8 text-center text-slate-500 text-sm border border-dashed border-slate-800 rounded-lg">
+            Click <span className="text-pink-400 font-semibold">Execute Gate 069</span> to verify data registration, lineage tracking, quality governance, and digital thread consistency.
+          </div>
+        )}
+
+        {gate069Result && (
+          <div className="space-y-4">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+              {/* Column 1: JSON Report */}
+              <div className="space-y-3">
+                <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">Digital Thread Package JSON</h3>
+                <div className="p-4 bg-slate-950 rounded-lg border border-slate-800 font-mono text-[11px] text-pink-400 overflow-x-auto select-all leading-relaxed whitespace-pre shadow-inner max-h-80">
+                  {JSON.stringify(gate069Result, null, 2)}
+                </div>
+              </div>
+
+              {/* Column 2: 69 Assertions */}
+              <div className="space-y-3">
+                <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">69 Assertion Gate Checks</h3>
+                <div className="bg-slate-950 p-3 rounded-lg border border-slate-800 max-h-80 overflow-y-auto space-y-2 text-xs">
+                  {Object.entries(gate069Result.verifications || {}).map(([name, status]) => (
+                    <div key={name} className="p-2 bg-slate-900/60 rounded border border-slate-800/80 flex items-center justify-between font-mono text-[11px]">
+                      <span className="text-slate-400 truncate pr-1">{name}:</span>
+                      <span className={`font-bold px-1.5 py-0.5 rounded border ${
+                        status === 'PASS' 
+                          ? 'text-emerald-400 bg-emerald-950/40 border-emerald-900' 
+                          : 'text-rose-400 bg-rose-950/40 border-rose-900'
+                      }`}>
+                        {String(status)}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Column 3: Scenario Log */}
+              <div className="space-y-4 flex flex-col justify-between">
+                <div className="space-y-3">
+                  <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">Governance Scenarios</h3>
+                  <div className="bg-slate-950 p-3 rounded-lg border border-slate-800 text-xs space-y-2 max-h-60 overflow-y-auto">
+                    {gate069Result.scenarios?.map((s: string, i: number) => (
+                      <div key={i} className="flex items-start gap-2 text-slate-300 font-mono text-[10px]">
+                        <span className="text-pink-500 shrink-0">[{i+1}]</span>
+                        <span>{s}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className={`p-3 border rounded-lg text-xs font-mono flex items-start gap-2 ${
+                  gate069Result.overallStatus === 'PASS'
+                    ? 'bg-pink-950/20 border-pink-800/40 text-pink-400'
+                    : 'bg-rose-950/20 border-rose-800/40 text-rose-400'
+                }`}>
+                  <CheckCircle2 className="w-4 h-4 shrink-0 mt-0.5" />
+                  <div>
+                    <div className="font-bold">SECP-069 GATE {gate069Result.overallStatus} ({gate069Result.passedCount}/69)</div>
+                    <div className="text-[10px] text-slate-400 mt-0.5">
+                      {gate069Result.overallStatus === 'PASS'
+                        ? 'Deterministic data governance, lineage tracking, and digital thread integrity successfully verified.'
+                        : 'Gate failed one or more assertions.'}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* SECP-070 Enterprise Trust & Immutable System Provenance Gate Card */}
+      <div className="bg-slate-900 border border-slate-800 rounded-xl p-5 text-slate-100 shadow-xl space-y-4">
+        <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+          <div>
+            <h2 className="text-sm font-bold text-slate-200 flex items-center gap-2">
+              <ShieldCheck className="w-4 h-4 text-emerald-400" />
+              SECP-070 Governance Gate — Enterprise Trust & Provenance
+            </h2>
+            <p className="text-xs text-slate-400 mt-0.5">
+              Validates deterministic engineering trust identity, artifact integrity, and immutable system provenance (70 assertions).
+            </p>
+          </div>
+          <button
+            id="btn-run-gate-070"
+            onClick={handleRunGate070}
+            disabled={isGate070Running}
+            className="flex items-center gap-2 px-4 py-2 bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-700 text-white rounded-lg text-xs font-semibold transition shadow-md cursor-pointer"
+          >
+            {isGate070Running ? <RefreshCw className="w-4 h-4 animate-spin" /> : <Play className="w-4 h-4" />}
+            {isGate070Running ? 'Executing Gate 070...' : 'Execute Gate 070'}
+          </button>
+        </div>
+
+        {!gate070Result && !isGate070Running && (
+          <div className="py-8 text-center text-slate-500 text-sm border border-dashed border-slate-800 rounded-lg">
+            Click <span className="text-emerald-400 font-semibold">Execute Gate 070</span> to verify engineering identity, artifact integrity, policy-based trust, and system provenance.
+          </div>
+        )}
+
+        {gate070Result && (
+          <div className="space-y-4">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+              {/* Column 1: JSON Report */}
+              <div className="space-y-3">
+                <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">Trust Package JSON</h3>
+                <div className="p-4 bg-slate-950 rounded-lg border border-slate-800 font-mono text-[11px] text-emerald-400 overflow-x-auto select-all leading-relaxed whitespace-pre shadow-inner max-h-80">
+                  {JSON.stringify(gate070Result, null, 2)}
+                </div>
+              </div>
+
+              {/* Column 2: 70 Assertions */}
+              <div className="space-y-3">
+                <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">70 Assertion Gate Checks</h3>
+                <div className="bg-slate-950 p-3 rounded-lg border border-slate-800 max-h-80 overflow-y-auto space-y-2 text-xs">
+                  {Object.entries(gate070Result.verifications || {}).map(([name, status]) => (
+                    <div key={name} className="p-2 bg-slate-900/60 rounded border border-slate-800/80 flex items-center justify-between font-mono text-[11px]">
+                      <span className="text-slate-400 truncate pr-1">{name}:</span>
+                      <span className={`font-bold px-1.5 py-0.5 rounded border ${
+                        status === 'PASS' 
+                          ? 'text-emerald-400 bg-emerald-950/40 border-emerald-900' 
+                          : 'text-rose-400 bg-rose-950/40 border-rose-900'
+                      }`}>
+                        {String(status)}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Column 3: Scenario Log */}
+              <div className="space-y-4 flex flex-col justify-between">
+                <div className="space-y-3">
+                  <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">Trust Scenarios</h3>
+                  <div className="bg-slate-950 p-3 rounded-lg border border-slate-800 text-xs space-y-2 max-h-60 overflow-y-auto">
+                    {gate070Result.scenarios?.map((s: string, i: number) => (
+                      <div key={i} className="flex items-start gap-2 text-slate-300 font-mono text-[10px]">
+                        <span className="text-emerald-500 shrink-0">[{i+1}]</span>
+                        <span>{s}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className={`p-3 border rounded-lg text-xs font-mono flex items-start gap-2 ${
+                  gate070Result.overallStatus === 'PASS'
+                    ? 'bg-emerald-950/20 border-emerald-800/40 text-emerald-400'
+                    : 'bg-rose-950/20 border-rose-800/40 text-rose-400'
+                }`}>
+                  <CheckCircle2 className="w-4 h-4 shrink-0 mt-0.5" />
+                  <div>
+                    <div className="font-bold">SECP-070 GATE {gate070Result.overallStatus} ({gate070Result.passedCount}/70)</div>
+                    <div className="text-[10px] text-slate-400 mt-0.5">
+                      {gate070Result.overallStatus === 'PASS'
+                        ? 'Deterministic engineering trust identity, artifact integrity, and immutable system provenance successfully verified.'
+                        : 'Gate failed one or more assertions.'}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* SECP-071 Advanced Parametric CAD Kernel Gate Card */}
+      <div className="bg-slate-900 border border-slate-800 rounded-xl p-5 text-slate-100 shadow-xl space-y-4">
+        <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+          <div>
+            <h2 className="text-sm font-bold text-slate-200 flex items-center gap-2">
+              <Compass className="w-4 h-4 text-sky-400 animate-pulse" />
+              SECP-071 Governance Gate — Advanced Parametric CAD Kernel
+            </h2>
+            <p className="text-xs text-slate-400 mt-0.5">
+              Validates parametric geometry engine, B-Rep topology (solid/face/edge), G2 surface continuity, and design intent (71 assertions).
+            </p>
+          </div>
+          <button
+            id="btn-run-gate-071"
+            onClick={handleRunGate071}
+            disabled={isGate071Running}
+            className="flex items-center gap-2 px-4 py-2 bg-sky-600 hover:bg-sky-500 disabled:bg-slate-700 text-white rounded-lg text-xs font-semibold transition shadow-md cursor-pointer"
+          >
+            {isGate071Running ? <RefreshCw className="w-4 h-4 animate-spin" /> : <Play className="w-4 h-4" />}
+            {isGate071Running ? 'Executing Gate 071...' : 'Execute Gate 071'}
+          </button>
+        </div>
+
+        {!gate071Result && !isGate071Running && (
+          <div className="py-8 text-center text-slate-500 text-sm border border-dashed border-slate-800 rounded-lg">
+            Click <span className="text-sky-400 font-semibold">Execute Gate 071</span> to launch geometric intelligence solvers and boundary representation validation.
+          </div>
+        )}
+
+        {gate071Result && (
+          <div className="space-y-4">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+              {/* Column 1: JSON Report */}
+              <div className="space-y-3">
+                <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">CAD Package JSON</h3>
+                <div className="p-4 bg-slate-950 rounded-lg border border-slate-800 font-mono text-[11px] text-sky-400 overflow-x-auto select-all leading-relaxed whitespace-pre shadow-inner max-h-80">
+                  {JSON.stringify(gate071Result, null, 2)}
+                </div>
+              </div>
+
+              {/* Column 2: 71 Assertions */}
+              <div className="space-y-3">
+                <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">71 Assertion Gate Checks</h3>
+                <div className="bg-slate-950 p-3 rounded-lg border border-slate-800 max-h-80 overflow-y-auto space-y-2 text-xs">
+                  {Object.entries(gate071Result.verifications || {}).map(([name, status]) => (
+                    <div key={name} className="p-2 bg-slate-900/60 rounded border border-slate-800/80 flex items-center justify-between font-mono text-[11px]">
+                      <span className="text-slate-400 truncate pr-1">{name}:</span>
+                      <span className={`font-bold px-1.5 py-0.5 rounded border ${
+                        status === 'PASS' 
+                          ? 'text-sky-400 bg-sky-950/40 border-sky-900' 
+                          : 'text-rose-400 bg-rose-950/40 border-rose-900'
+                      }`}>
+                        {String(status)}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Column 3: Scenario Log */}
+              <div className="space-y-4 flex flex-col justify-between">
+                <div className="space-y-3">
+                  <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">Geometry Engine Scenarios</h3>
+                  <div className="bg-slate-950 p-3 rounded-lg border border-slate-800 text-xs space-y-2 max-h-60 overflow-y-auto">
+                    {gate071Result.scenarios?.map((s: string, i: number) => (
+                      <div key={i} className="flex items-start gap-2 text-slate-300 font-mono text-[10px]">
+                        <span className="text-sky-500 shrink-0">[{i+1}]</span>
+                        <span>{s}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className={`p-3 border rounded-lg text-xs font-mono flex items-start gap-2 ${
+                  gate071Result.overallStatus === 'PASS'
+                    ? 'bg-sky-950/20 border-sky-800/40 text-sky-400'
+                    : 'bg-rose-950/20 border-rose-800/40 text-rose-400'
+                }`}>
+                  <CheckCircle2 className="w-4 h-4 shrink-0 mt-0.5" />
+                  <div>
+                    <div className="font-bold">SECP-071 GATE {gate071Result.overallStatus} ({gate071Result.passedCount}/71)</div>
+                    <div className="text-[10px] text-slate-400 mt-0.5">
+                      {gate071Result.overallStatus === 'PASS'
+                        ? 'Parametric CAD solvers, B-Rep topology constraints, and design intent propagation successfully verified.'
+                        : 'Gate failed one or more assertions.'}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* SECP-072 Advanced Assembly, Kinematics & Mechanical System Intelligence Gate Card */}
+      <div className="bg-slate-900 border border-slate-800 rounded-xl p-5 text-slate-100 shadow-xl space-y-4">
+        <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+          <div>
+            <h2 className="text-sm font-bold text-slate-200 flex items-center gap-2">
+              <Compass className="w-4 h-4 text-emerald-400 animate-pulse" />
+              SECP-072 Governance Gate — Assembly & Kinematics Intelligence
+            </h2>
+            <p className="text-xs text-slate-400 mt-0.5">
+              Validates assembly hierarchies, component instances, standard/mechanical mates (gears), kinematic degree of freedom loops, and dynamic swept-path collision analysis (72 assertions).
+            </p>
+          </div>
+          <button
+            id="btn-run-gate-072"
+            onClick={handleRunGate072}
+            disabled={isGate072Running}
+            className="flex items-center gap-2 px-4 py-2 bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-700 text-white rounded-lg text-xs font-semibold transition shadow-md cursor-pointer"
+          >
+            {isGate072Running ? <RefreshCw className="w-4 h-4 animate-spin" /> : <Play className="w-4 h-4" />}
+            {isGate072Running ? 'Executing Gate 072...' : 'Execute Gate 072'}
+          </button>
+        </div>
+
+        {!gate072Result && !isGate072Running && (
+          <div className="py-8 text-center text-slate-500 text-sm border border-dashed border-slate-800 rounded-lg">
+            Click <span className="text-emerald-400 font-semibold">Execute Gate 072</span> to resolve kinematic linkages, propagate transmission speeds, and verify swept-volume clearances.
+          </div>
+        )}
+
+        {gate072Result && (
+          <div className="space-y-4">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+              {/* Column 1: JSON Report */}
+              <div className="space-y-3">
+                <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">Mechanical System JSON</h3>
+                <div className="p-4 bg-slate-950 rounded-lg border border-slate-800 font-mono text-[11px] text-emerald-400 overflow-x-auto select-all leading-relaxed whitespace-pre shadow-inner max-h-80">
+                  {JSON.stringify(gate072Result, null, 2)}
+                </div>
+              </div>
+
+              {/* Column 2: 72 Assertions */}
+              <div className="space-y-3">
+                <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">72 Assertion Gate Checks</h3>
+                <div className="bg-slate-950 p-3 rounded-lg border border-slate-800 max-h-80 overflow-y-auto space-y-2 text-xs">
+                  {Object.entries(gate072Result.verifications || {}).map(([name, status]) => (
+                    <div key={name} className="p-2 bg-slate-900/60 rounded border border-slate-800/80 flex items-center justify-between font-mono text-[11px]">
+                      <span className="text-slate-400 truncate pr-1">{name}:</span>
+                      <span className={`font-bold px-1.5 py-0.5 rounded border ${
+                        status === 'PASS' 
+                          ? 'text-emerald-400 bg-emerald-950/40 border-emerald-900' 
+                          : 'text-rose-400 bg-rose-950/40 border-rose-900'
+                      }`}>
+                        {String(status)}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Column 3: Scenario Log */}
+              <div className="space-y-4 flex flex-col justify-between">
+                <div className="space-y-3">
+                  <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">Assembly & Kinematics Scenarios</h3>
+                  <div className="bg-slate-950 p-3 rounded-lg border border-slate-800 text-xs space-y-2 max-h-60 overflow-y-auto">
+                    {gate072Result.scenarios?.map((s: string, i: number) => (
+                      <div key={i} className="flex items-start gap-2 text-slate-300 font-mono text-[10px]">
+                        <span className="text-emerald-500 shrink-0">[{i+1}]</span>
+                        <span>{s}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className={`p-3 border rounded-lg text-xs font-mono flex items-start gap-2 ${
+                  gate072Result.overallStatus === 'PASS'
+                    ? 'bg-emerald-950/20 border-emerald-800/40 text-emerald-400'
+                    : 'bg-rose-950/20 border-rose-800/40 text-rose-400'
+                }`}>
+                  <CheckCircle2 className="w-4 h-4 shrink-0 mt-0.5" />
+                  <div>
+                    <div className="font-bold">SECP-072 GATE {gate072Result.overallStatus} ({gate072Result.passedCount}/72)</div>
+                    <div className="text-[10px] text-slate-400 mt-0.5">
+                      {gate072Result.overallStatus === 'PASS'
+                        ? 'Assembly topology hierarchy, DOF validation, gear-ratio propagation, and swept-path collision analysis successfully verified.'
+                        : 'Gate failed one or more assertions.'}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* SECP-073 FEM & Structural Physics Kernel Gate Card */}
+      <div className="bg-slate-900 border border-slate-800 rounded-xl p-5 text-slate-100 shadow-xl space-y-4">
+        <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+          <div>
+            <h2 className="text-sm font-bold text-slate-200 flex items-center gap-2">
+              <Compass className="w-4 h-4 text-violet-400 animate-pulse" />
+              SECP-073 Governance Gate — FEM & Structural Physics Solver
+            </h2>
+            <p className="text-xs text-slate-400 mt-0.5">
+              Validates finite element discretization, constitutive material matrices, Gaussian displacement solving, strain-stress recovery, analytical cantilever BVP tolerances, and design intent optimization suggestions (73 assertions).
+            </p>
+          </div>
+          <button
+            id="btn-run-gate-073"
+            onClick={handleRunGate073}
+            disabled={isGate073Running}
+            className="flex items-center gap-2 px-4 py-2 bg-violet-600 hover:bg-violet-500 disabled:bg-slate-700 text-white rounded-lg text-xs font-semibold transition shadow-md cursor-pointer"
+          >
+            {isGate073Running ? <RefreshCw className="w-4 h-4 animate-spin" /> : <Play className="w-4 h-4" />}
+            {isGate073Running ? 'Executing Gate 073...' : 'Execute Gate 073'}
+          </button>
+        </div>
+
+        {!gate073Result && !isGate073Running && (
+          <div className="py-8 text-center text-slate-500 text-sm border border-dashed border-slate-800 rounded-lg">
+            Click <span className="text-violet-400 font-semibold">Execute Gate 073</span> to generate structural meshes, assemble global stiffness systems, and recover von Mises stresses.
+          </div>
+        )}
+
+        {gate073Result && (
+          <div className="space-y-4">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+              {/* Column 1: JSON Report */}
+              <div className="space-y-3">
+                <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">CAE/FEM Physics JSON</h3>
+                <div className="p-4 bg-slate-950 rounded-lg border border-slate-800 font-mono text-[11px] text-violet-400 overflow-x-auto select-all leading-relaxed whitespace-pre shadow-inner max-h-80">
+                  {JSON.stringify(gate073Result, null, 2)}
+                </div>
+              </div>
+
+              {/* Column 2: 73 Assertions */}
+              <div className="space-y-3">
+                <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">73 Assertion Gate Checks</h3>
+                <div className="bg-slate-950 p-3 rounded-lg border border-slate-800 max-h-80 overflow-y-auto space-y-2 text-xs">
+                  {Object.entries(gate073Result.verifications || {}).map(([name, status]) => (
+                    <div key={name} className="p-2 bg-slate-900/60 rounded border border-slate-800/80 flex items-center justify-between font-mono text-[11px]">
+                      <span className="text-slate-400 truncate pr-1">{name}:</span>
+                      <span className={`font-bold px-1.5 py-0.5 rounded border ${
+                        status === 'PASS' 
+                          ? 'text-violet-400 bg-violet-950/40 border-violet-900' 
+                          : 'text-rose-400 bg-rose-950/40 border-rose-900'
+                      }`}>
+                        {String(status)}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Column 3: Scenario Log */}
+              <div className="space-y-4 flex flex-col justify-between">
+                <div className="space-y-3">
+                  <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">CAE Physics Benchmarks</h3>
+                  <div className="bg-slate-950 p-3 rounded-lg border border-slate-800 text-xs space-y-2 max-h-60 overflow-y-auto">
+                    {gate073Result.scenarios?.map((s: string, i: number) => (
+                      <div key={i} className="flex items-start gap-2 text-slate-300 font-mono text-[10px]">
+                        <span className="text-violet-500 shrink-0">[{i+1}]</span>
+                        <span>{s}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className={`p-3 border rounded-lg text-xs font-mono flex items-start gap-2 ${
+                  gate073Result.overallStatus === 'PASS'
+                    ? 'bg-violet-950/20 border-violet-800/40 text-violet-400'
+                    : 'bg-rose-950/20 border-rose-800/40 text-rose-400'
+                }`}>
+                  <CheckCircle2 className="w-4 h-4 shrink-0 mt-0.5" />
+                  <div>
+                    <div className="font-bold">SECP-073 GATE {gate073Result.overallStatus} ({gate073Result.passedCount}/73)</div>
+                    <div className="text-[10px] text-slate-400 mt-0.5">
+                      {gate073Result.overallStatus === 'PASS'
+                        ? '1D Axial beam analytical comparisons, Gaussian elimination stiffness solver, and material yield margins verified.'
                         : 'Gate failed one or more assertions.'}
                     </div>
                   </div>

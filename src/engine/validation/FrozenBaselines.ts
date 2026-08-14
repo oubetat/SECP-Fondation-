@@ -99,5 +99,61 @@ export const FROZEN_ENGINEERING_BASELINES: Record<string, FrozenBaselineRecord> 
     status: 'FROZEN_LOCKED',
     gateClass: 'HardAcceptanceGate056',
     verificationHash: 'sha256-056-mfg-feature-intelligence-process-planning-verified'
+  },
+  'SECP-057': {
+    id: 'SECP-057',
+    name: 'Deterministic Multi-Axis Toolpath Generation',
+    status: 'FROZEN_LOCKED',
+    gateClass: 'HardAcceptanceGate057',
+    verificationHash: 'sha256-057-deterministic-multi-axis-toolpaths-verified'
+  },
+  'SECP-058': {
+    id: 'SECP-058',
+    name: 'Manufacturing Execution & NC Post-Processing Core',
+    status: 'FROZEN_LOCKED',
+    gateClass: 'HardAcceptanceGate058',
+    verificationHash: 'sha256-058-manufacturing-execution-nc-post-verified'
+  },
+  'SECP-059': {
+    id: 'SECP-059',
+    name: 'Manufacturing Job Orchestration & Production Planning Core',
+    status: 'FROZEN_LOCKED',
+    gateClass: 'HardAcceptanceGate059',
+    verificationHash: 'sha256-059-manufacturing-job-orchestration-planning-verified'
+  },
+  'SECP-060': {
+    id: 'SECP-060',
+    name: 'Shop-Floor Manufacturing Execution & Production Traceability Core',
+    status: 'FROZEN_LOCKED',
+    gateClass: 'HardAcceptanceGate060',
+    verificationHash: 'sha256-060-shop-floor-execution-traceability-verified'
+  },
+  'SECP-061': {
+    id: 'SECP-061',
+    name: 'Quality & Metrology Core',
+    status: 'FROZEN_LOCKED',
+    gateClass: 'HardAcceptanceGate061',
+    verificationHash: 'sha256-061-quality-metrology-verified'
+  },
+  'SECP-062': {
+    id: 'SECP-062',
+    name: 'Statistical Process Control & Manufacturing Quality Intelligence',
+    status: 'FROZEN_LOCKED',
+    gateClass: 'HardAcceptanceGate062',
+    verificationHash: 'sha256-062-quality-intelligence-spc-verified'
+  },
+  'SECP-063': {
+    id: 'SECP-063',
+    name: 'Manufacturing Nonconformance & Corrective Action Core',
+    status: 'FROZEN_LOCKED',
+    gateClass: 'HardAcceptanceGate063',
+    verificationHash: 'sha256-063-nonconformance-corrective-action-verified'
+  },
+  'SECP-064': {
+    id: 'SECP-064',
+    name: 'Manufacturing Release, Certification & Traceability Core',
+    status: 'FROZEN_LOCKED',
+    gateClass: 'HardAcceptanceGate064',
+    verificationHash: 'sha256-064-manufacturing-release-certification-verified'
   }
 };
