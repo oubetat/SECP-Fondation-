@@ -164,11 +164,11 @@ export class SECPMasterRoadmapManager {
           patchId: 'SECP-057',
           name: 'Deterministic Multi-Axis Toolpath Generation',
           phase: 'MANUFACTURING_SUPREMACY',
-          objective: 'Generate adaptive roughing, finishing, facing, and drilling toolpaths with collision avoidance.',
-          targetOutcome: 'Deterministic toolpath trajectories with cutter location (CL) data output.',
+          objective: 'Generate high-speed adaptive roughing, facing, 5-axis surface contours, peck drilling, tapping, and cutter location (CL) data.',
+          targetOutcome: 'Deterministic toolpath trajectories with cryptographic SHA-256 CL data provenance and 57/57 gate pass.',
           prerequisites: ['SECP-056'],
-          governanceGatesRequired: ['Gate050', 'Gate057'],
-          status: 'PLANNED'
+          governanceGatesRequired: ['Gate045.1', 'Gate046', 'Gate047', 'Gate048', 'Gate049', 'Gate050', 'Gate051', 'Gate052', 'Gate053', 'Gate054', 'Gate055', 'Gate056', 'Gate057'],
+          status: 'LOCKED_FROZEN'
         },
         'SECP-058': {
           patchId: 'SECP-058',

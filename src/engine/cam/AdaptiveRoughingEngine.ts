@@ -8,19 +8,21 @@ import { Vector3D } from '../cadKernel';
 import { 
   CuttingTool, 
   CutterLocationPoint, 
-  ToolpathTrajectory, 
+  CandidateToolpathTrajectory, 
   MachiningOperationConfig 
 } from './ToolpathTypes';
+import { CAMStockModel } from './CAMStockModel';
 
 export class AdaptiveRoughingEngine {
   /**
-   * Generates a deterministic high-speed adaptive roughing toolpath for a pocket/boundary
+   * Generates a deterministic high-speed adaptive roughing candidate toolpath for a pocket/boundary
    */
   public static generateAdaptiveRoughing(
     config: MachiningOperationConfig,
     boundary: { xMin: number; xMax: number; yMin: number; yMax: number; bottomZ: number; topZ: number },
+    stockModel?: CAMStockModel,
     obstacles: { xMin: number; xMax: number; yMin: number; yMax: number; bottomZ: number; topZ: number }[] = []
-  ): ToolpathTrajectory {
+  ): CandidateToolpathTrajectory {
     const points: CutterLocationPoint[] = [];
     let pointIndex = 0;
     let totalLength = 0;
@@ -59,6 +61,8 @@ export class AdaptiveRoughingEngine {
 
     // 2. Stepdown Z Slicing Loop
     let currentZ = topZ;
+    let passIndex = 0;
+
     while (currentZ > bottomZ) {
       const nextZ = Math.max(bottomZ, currentZ - stepdown);
 
@@ -100,7 +104,6 @@ export class AdaptiveRoughingEngine {
       currentZ = nextZ;
 
       // 3. Constant Engagement Adaptive Morphing / Trochoidal Pocket Clearing
-      // Generate expanding morphing offsets from center outward
       const currentWidth = innerXMax - innerXMin;
       const currentHeight = innerYMax - innerYMin;
       const maxPasses = Math.ceil(Math.min(currentWidth, currentHeight) / (2 * stepover));
@@ -117,15 +120,13 @@ export class AdaptiveRoughingEngine {
           let px = startX + passRadiusX * Math.cos(t);
           let py = startY + passRadiusY * Math.sin(t);
 
-          // Check obstacle collisions and insert trochoidal arc if engagement exceeds limit or near corner
           const isCorner = (i % (perimeterSteps / 4) === 0) && i > 0 && i < perimeterSteps;
           let currentMoveType: any = 'CUTTING';
           let calculatedEngagement = targetEngagementRad * (0.8 + 0.1 * Math.sin(t));
 
           if (isCorner) {
-            // Insert trochoidal loop to relieve corner tool load
             currentMoveType = 'ADAPTIVE_TROCHOIDAL';
-            calculatedEngagement = targetEngagementRad * 0.95; // Stays under target
+            calculatedEngagement = targetEngagementRad * 0.95;
             const trochoidRadius = toolRadius * 0.25;
             const tx = px + trochoidRadius * Math.cos(t + Math.PI / 2);
             const ty = py + trochoidRadius * Math.sin(t + Math.PI / 2);
@@ -165,6 +166,11 @@ export class AdaptiveRoughingEngine {
         }
       }
 
+      // Track material removal pass if stock model is attached
+      if (stockModel) {
+        stockModel.simulatePass(passIndex++, points, tool.diameterMm, stepdown);
+      }
+
       // Retract between Z levels
       points.push({
         pointIndex: pointIndex++,
@@ -187,7 +193,7 @@ export class AdaptiveRoughingEngine {
     });
 
     const totalVolume = (boundary.xMax - boundary.xMin) * (boundary.yMax - boundary.yMin) * (topZ - bottomZ);
-    const estimatedTime = (totalLength / config.feedsAndSpeeds.cuttingFeedMmMin) * 60 + 5; // seconds
+    const estimatedTime = (totalLength / config.feedsAndSpeeds.cuttingFeedMmMin) * 60 + 5;
 
     return {
       operationId: config.operationId,
@@ -196,10 +202,10 @@ export class AdaptiveRoughingEngine {
       points,
       totalLengthMm: Number(totalLength.toFixed(3)),
       estimatedTimeSec: Number(estimatedTime.toFixed(1)),
-      materialRemovalVolumeMm3: Number(totalVolume.toFixed(2)),
+      nominalVolumeMm3: Number(totalVolume.toFixed(2)),
       maxEngagementAngleRad: Number(maxEngagement.toFixed(4)),
-      collisionFree: true,
-      gougeFree: true
+      generatedTimestamp: new Date().toISOString()
     };
   }
 }
+

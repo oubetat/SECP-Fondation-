@@ -1,6 +1,7 @@
 /**
  * PATCH-SECP-057 — Deterministic Multi-Axis Toolpath Generation
- * Type contracts for CAM Toolpath Generation, Cutter Location (CL) Data, and Machining Operations.
+ * Type contracts for CAM Toolpath Generation, Stock Modeling, Cutter Location (CL) Data,
+ * Independent Verification, and Digital Thread Traceability.
  */
 
 import { Vector3D } from '../cadKernel';
@@ -16,18 +17,39 @@ export type ToolType =
   | 'TAP'
   | 'REAMER';
 
-export interface CuttingTool {
-  toolId: string;
+export interface ToolHolderGeometry {
+  holderId: string;
   name: string;
-  type: ToolType;
+  gaugeDiameterMm: number;
+  upperDiameterMm: number;
+  lengthMm: number;
+  clearanceMarginMm: number;
+}
+
+export interface CutterGeometry {
   diameterMm: number;
   cornerRadiusMm: number;    // 0 for flat endmill, diameter/2 for ball nose
   fluteCount: number;
   fluteLengthMm: number;
   overallLengthMm: number;
-  holderDiameterMm: number;
-  gaugeLengthMm: number;     // Distance from gauge line to tip
+  reachMm: number;           // Maximum overhang depth before holder collision
   material: 'CARBIDE' | 'HSS' | 'CERAMIC' | 'CBN' | 'PCD';
+}
+
+export interface CuttingTool {
+  toolId: string;
+  name: string;
+  type: ToolType;
+  diameterMm: number;
+  cornerRadiusMm: number;
+  fluteCount: number;
+  fluteLengthMm: number;
+  overallLengthMm: number;
+  holderDiameterMm: number;
+  gaugeLengthMm: number;
+  reachMm?: number;
+  material: 'CARBIDE' | 'HSS' | 'CERAMIC' | 'CBN' | 'PCD';
+  holder?: ToolHolderGeometry;
 }
 
 export type MoveType = 
@@ -76,6 +98,7 @@ export interface MachiningOperationConfig {
   name: string;
   strategy: ToolpathStrategyType;
   targetFeatureId?: string;
+  topologyId?: string;       // B-Rep persistent topology link
   tool: CuttingTool;
   feedsAndSpeeds: FeedsAndSpeeds;
   stepoverMm: number;         // Radial stepover ae
@@ -86,17 +109,78 @@ export interface MachiningOperationConfig {
   maxEngagementAngleDeg?: number; // For adaptive roughing (e.g., 45 deg)
 }
 
-export interface ToolpathTrajectory {
+/**
+ * Candidate Toolpath (Unverified output from generation engine)
+ */
+export interface CandidateToolpathTrajectory {
   operationId: string;
   strategy: ToolpathStrategyType;
   tool: CuttingTool;
   points: CutterLocationPoint[];
   totalLengthMm: number;
   estimatedTimeSec: number;
-  materialRemovalVolumeMm3: number;
+  nominalVolumeMm3: number;
   maxEngagementAngleRad: number;
+  generatedTimestamp: string;
+}
+
+export type VerificationFailureType = 
+  | 'GOUGE_PART'
+  | 'COLLISION_HOLDER'
+  | 'COLLISION_RAPID'
+  | 'INSUFFICIENT_CLEARANCE'
+  | 'AXIS_LIMIT_VIOLATION'
+  | 'EXCESSIVE_ENGAGEMENT';
+
+export interface VerificationIssue {
+  pointIndex: number;
+  issueType: VerificationFailureType;
+  location: Vector3D;
+  description: string;
+  severity: 'WARNING' | 'CRITICAL';
+}
+
+export interface ToolpathVerificationReport {
+  operationId: string;
+  isValid: boolean;
+  gougeFree: boolean;
+  collisionFree: boolean;
+  clearanceSatisfied: boolean;
+  axisLimitsSatisfied: boolean;
+  issues: VerificationIssue[];
+  verifiedPointsCount: number;
+  verifiedAt: string;
+}
+
+export interface VerifiedToolpathTrajectory extends CandidateToolpathTrajectory {
+  verificationReport: ToolpathVerificationReport;
   collisionFree: boolean;
   gougeFree: boolean;
+}
+
+export interface StockModelBounds {
+  xMin: number;
+  xMax: number;
+  yMin: number;
+  yMax: number;
+  zMin: number;
+  zMax: number;
+}
+
+export interface MaterialRemovalPassResult {
+  passIndex: number;
+  removedVolumeMm3: number;
+  remainingStockVolumeMm3: number;
+  maxRemainingDepthMm: number;
+}
+
+export interface DigitalThreadTraceabilityNode {
+  topologyId: string;
+  manufacturingFeatureId: string;
+  operationId: string;
+  candidateToolpathId: string;
+  verifiedClPackageHash: string;
+  provenanceSignature: string;
 }
 
 export interface CutterLocationDataPackage {
@@ -104,10 +188,12 @@ export interface CutterLocationDataPackage {
   partId: string;
   timestamp: string;
   operations: MachiningOperationConfig[];
-  trajectories: ToolpathTrajectory[];
+  trajectories: VerifiedToolpathTrajectory[];
   totalPointsCount: number;
   totalMachiningTimeSec: number;
   totalMaterialRemovedMm3: number;
   clDataHash: string;
   provenanceSignature: string;
+  traceabilityNodes: DigitalThreadTraceabilityNode[];
 }
+

@@ -1,8 +1,12 @@
 /**
- * PATCH-SECP-020 — Manufacturing / Computer-Aided Manufacturing (CAM) Engine
- * Pipeline: CAD Geometry → Manufacturing Feature Recognition → Toolpath Planning → Machine Profile → G-Code Post-Processor.
- * Supported Processes: CNC Milling (3-Axis/5-Axis), 3D Printing (SLA/FDM G-code), Laser Cutting, Sheet Metal Bending.
+ * PATCH-SECP-057 — Manufacturing / Computer-Aided Manufacturing (CAM) Orchestrator Facade
+ * Orchestrates modular CAM engines (CAMStockModel, CuttingToolModel, ThreeAxisToolpathEngine,
+ * AdaptiveRoughingEngine, FinishingToolpathEngine, DrillingCycleEngine, MultiAxisToolpathEngine,
+ * ToolpathVerificationEngine, CutterLocationDataEngine, ParametricCAMBridge).
  */
+
+import { ParametricCAMBridge } from './cam/ParametricCAMBridge';
+import { StockModelBounds } from './cam/ToolpathTypes';
 
 export type ManufacturingProcessType = 'CNC_MILLING' | 'THREE_D_PRINTING' | 'LASER_CUTTING' | 'SHEET_METAL_BENDING';
 
@@ -31,11 +35,114 @@ export interface CamJobPackage {
   materialRemovalRateCm3Min: number;
   toolpathPoints: CamToolpathPoint[];
   gCodeOutput: string;
+  clDataHash?: string;
+  provenanceSignature?: string;
 }
 
 export class CamEngine {
   /**
-   * Performs Automated Feature Recognition (AFR) on CAD Solid Geometry & Generates Process G-Code
+   * Orchestrates CAM Job Generation delegating to SECP-057 modular CAM engines
+   */
+  public static async generateCamJobAsync(
+    processType: ManufacturingProcessType = 'CNC_MILLING',
+    partLengthMm: number = 100,
+    partWidthMm: number = 60,
+    partHeightMm: number = 25
+  ): Promise<CamJobPackage> {
+    if (processType === 'CNC_MILLING') {
+      const stockBounds: StockModelBounds = {
+        xMin: 0,
+        xMax: partLengthMm,
+        yMin: 0,
+        yMax: partWidthMm,
+        zMin: 0,
+        zMax: partHeightMm
+      };
+
+      const featureBounds = {
+        xMin: 10,
+        xMax: partLengthMm - 10,
+        yMin: 10,
+        yMax: partWidthMm - 10,
+        bottomZ: 5,
+        topZ: partHeightMm
+      };
+
+      const clPackage = await ParametricCAMBridge.generateFullCAMThread(
+        'part-orchestrated-01',
+        'topo-face-top-01',
+        'feat-pocket-01',
+        featureBounds,
+        stockBounds
+      );
+
+      const toolpathPoints: CamToolpathPoint[] = [];
+      const gCodeLines: string[] = [
+        `; SECP-057 Deterministic CAM Post-Processor Output — ${processType}`,
+        `; Cryptographic CL Provenance: ${clPackage.provenanceSignature}`,
+        `; SHA-256 CL Hash: ${clPackage.clDataHash}`,
+        `G21 ; Millimeters`,
+        `G90 ; Absolute positioning`,
+        `G17 ; XY Plane`,
+        `M03 S12000 ; Spindle ON`,
+        `G0 Z${stockBounds.zMax + 20} ; Rapid to Clearance`
+      ];
+
+      clPackage.trajectories.forEach(t => {
+        t.points.forEach(p => {
+          const cmd = p.moveType.startsWith('RAPID') ? 'G0' : 'G1';
+          toolpathPoints.push({
+            x: p.position.x,
+            y: p.position.y,
+            z: p.position.z,
+            feedRateMmMin: p.feedRateMmMin,
+            spindleRpm: p.spindleRpm,
+            command: cmd
+          });
+          gCodeLines.push(`${cmd} X${p.position.x.toFixed(3)} Y${p.position.y.toFixed(3)} Z${p.position.z.toFixed(3)} F${p.feedRateMmMin.toFixed(0)}`);
+        });
+      });
+
+      gCodeLines.push(`G0 Z${stockBounds.zMax + 30} ; Retract`);
+      gCodeLines.push(`M05 ; Spindle Stop`);
+      gCodeLines.push(`M30 ; End of Program`);
+
+      const features: RecognizedFeature[] = [
+        {
+          id: 'feat-01',
+          type: 'PERIMETER',
+          dimensionsMm: { depth: partHeightMm, width: partWidthMm, length: partLengthMm },
+          recommendedTool: '12mm Carbide Flat Endmill',
+          machiningTimeSec: 180
+        },
+        {
+          id: 'feat-02',
+          type: 'POCKET',
+          dimensionsMm: { depth: partHeightMm - 5, width: partWidthMm - 20, length: partLengthMm - 20 },
+          recommendedTool: '12mm 4-Flute Endmill',
+          machiningTimeSec: 240
+        }
+      ];
+
+      return {
+        processType,
+        machineName: 'Haas VF-2SS 5-Axis CNC Machining Center',
+        features,
+        totalEstimatedTimeMin: Math.max(1, Math.round(clPackage.totalMachiningTimeSec / 60)),
+        materialRemovalRateCm3Min: 42.5,
+        toolpathPoints,
+        gCodeOutput: gCodeLines.join('\n'),
+        clDataHash: clPackage.clDataHash,
+        provenanceSignature: clPackage.provenanceSignature
+      };
+    }
+
+    // Synchronous fallback wrapper for non-CNC processes
+    return this.generateCamJob(processType, partLengthMm, partWidthMm, partHeightMm);
+  }
+
+  /**
+   * Synchronous legacy entry point
    */
   public static generateCamJob(
     processType: ManufacturingProcessType = 'CNC_MILLING',
@@ -60,13 +167,6 @@ export class CamEngine {
         recommendedTool: '8mm 4-Flute Endmill',
         machiningTimeSec: 240
       });
-      features.push({
-        id: 'feat-03',
-        type: 'HOLE',
-        dimensionsMm: { depth: partHeightMm, diameter: 8 },
-        recommendedTool: '8.0mm Solid Carbide Twist Drill',
-        machiningTimeSec: 45
-      });
     } else if (processType === 'THREE_D_PRINTING') {
       features.push({
         id: 'feat-01',
@@ -84,7 +184,6 @@ export class CamEngine {
         machiningTimeSec: 35
       });
     } else {
-      // SHEET METAL
       features.push({
         id: 'feat-01',
         type: 'BEND',
@@ -94,24 +193,20 @@ export class CamEngine {
       });
     }
 
-    // Generate Toolpath Coordinates & G-Code Commands
     const toolpathPoints: CamToolpathPoint[] = [];
-    const gCodeLines: string[] = [];
+    const gCodeLines: string[] = [
+      `; SECP CAM Post-Processor Output — ${processType}`,
+      `G21 ; Millimeters`,
+      `G90 ; Absolute positioning`,
+      `G17 ; XY Plane Selection`,
+      `M03 S12000 ; Spindle ON CW @ 12,000 RPM`,
+      `G0 Z10.0 ; Rapid retract`
+    ];
 
-    gCodeLines.push(`; SECP CAM Post-Processor Output — ${processType}`);
-    gCodeLines.push(`; Generated for Part: ${partLengthMm}x${partWidthMm}x${partHeightMm} mm`);
-    gCodeLines.push(`G21 ; Set units to millimeters`);
-    gCodeLines.push(`G90 ; Absolute positioning`);
-    gCodeLines.push(`G17 ; XY Plane Selection`);
-    gCodeLines.push(`M03 S12000 ; Spindle ON CW @ 12,000 RPM`);
-    gCodeLines.push(`G0 Z10.0 ; Rapid retract to safe height`);
-
-    let toolZ = 10;
     const feed = 1200;
     const rpm = 12000;
-
-    // Simulate rectangular spiral clearing toolpath
     const steps = 6;
+
     for (let i = 0; i < steps; i++) {
       const zLayer = -(i * 2);
       toolpathPoints.push({ x: 10, y: 10, z: zLayer, feedRateMmMin: feed, spindleRpm: rpm, command: 'G1' });

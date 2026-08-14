@@ -6,18 +6,20 @@
 
 import { 
   MachiningOperationConfig, 
-  ToolpathTrajectory, 
-  CutterLocationDataPackage 
+  VerifiedToolpathTrajectory, 
+  CutterLocationDataPackage,
+  DigitalThreadTraceabilityNode 
 } from './ToolpathTypes';
 
 export class CutterLocationDataEngine {
   /**
-   * Builds a deterministic CL Data package from operation trajectories
+   * Builds a deterministic CL Data package from verified operation trajectories and digital thread links
    */
   public static async createCLPackage(
     partId: string,
     operations: MachiningOperationConfig[],
-    trajectories: ToolpathTrajectory[]
+    trajectories: VerifiedToolpathTrajectory[],
+    traceabilityNodes: DigitalThreadTraceabilityNode[] = []
   ): Promise<CutterLocationDataPackage> {
     const timestamp = new Date().toISOString();
 
@@ -28,7 +30,7 @@ export class CutterLocationDataEngine {
     trajectories.forEach(t => {
       totalPoints += t.points.length;
       totalTime += t.estimatedTimeSec;
-      totalVolume += t.materialRemovalVolumeMm3;
+      totalVolume += t.nominalVolumeMm3;
     });
 
     // Create deterministic cryptographic hash payload
@@ -39,7 +41,8 @@ export class CutterLocationDataEngine {
       totalPoints,
       totalTime: Number(totalTime.toFixed(1)),
       totalVolume: Number(totalVolume.toFixed(2)),
-      samplePoints: trajectories.map(t => t.points.slice(0, 3))
+      samplePoints: trajectories.map(t => t.points.slice(0, 3)),
+      traceabilityNodes
     });
 
     const hashBuffer = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(payload));
@@ -58,7 +61,9 @@ export class CutterLocationDataEngine {
       totalMachiningTimeSec: Number(totalTime.toFixed(1)),
       totalMaterialRemovedMm3: Number(totalVolume.toFixed(2)),
       clDataHash,
-      provenanceSignature
+      provenanceSignature,
+      traceabilityNodes
     };
   }
 }
+

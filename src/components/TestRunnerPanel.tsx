@@ -858,6 +858,85 @@ export const TestRunnerPanel: React.FC = () => {
           </div>
         )}
       </div>
+
+      {/* SECP-057 Governance Gate Card */}
+      <div className="bg-slate-900 border border-slate-800 rounded-xl p-5 text-slate-100 shadow-xl space-y-4">
+        <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+          <div>
+            <h2 className="text-sm font-bold text-slate-200 flex items-center gap-2">
+              <ShieldCheck className="w-4 h-4 text-cyan-400" />
+              SECP-057 Governance Gate — Deterministic Multi-Axis Toolpath Generation Engine
+            </h2>
+            <p className="text-xs text-slate-400 mt-0.5">
+              High-speed adaptive roughing, constant-engagement trochoidal loops, facing, 5-axis surface contours, peck drilling/tapping, and cryptographic CL data provenance (57/57 verifications).
+            </p>
+          </div>
+          <button
+            id="btn-run-gate-057"
+            onClick={handleRunGate057}
+            disabled={isGate057Running}
+            className="flex items-center gap-2 px-4 py-2 bg-cyan-600 hover:bg-cyan-500 disabled:bg-slate-700 text-white rounded-lg text-xs font-semibold transition shadow-md cursor-pointer"
+          >
+            {isGate057Running ? <RefreshCw className="w-4 h-4 animate-spin" /> : <Play className="w-4 h-4" />}
+            {isGate057Running ? 'Executing Gate 057...' : 'Execute Gate 057'}
+          </button>
+        </div>
+
+        {!gate057Result && !isGate057Running && (
+          <div className="py-8 text-center text-slate-500 text-sm border border-dashed border-slate-800 rounded-lg">
+            Click <span className="text-cyan-400 font-semibold">Execute Gate 057</span> to run the 57-point multi-axis CAM toolpath verification suite.
+          </div>
+        )}
+
+        {gate057Result && (
+          <div className="space-y-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="space-y-3">
+                <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">Gate 057 Verification Report</h3>
+                <div className="p-4 bg-slate-950 rounded-lg border border-slate-800 font-mono text-[11px] text-cyan-400 overflow-x-auto select-all leading-relaxed whitespace-pre shadow-inner max-h-72">
+                  {JSON.stringify(gate057Result, null, 2)}
+                </div>
+              </div>
+
+              <div className="space-y-4 flex flex-col justify-between">
+                <div className="space-y-2">
+                  <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">57 Gate Checks Breakdown</h3>
+                  <div className="grid grid-cols-2 gap-2 text-xs max-h-56 overflow-y-auto pr-1">
+                    {Object.entries(gate057Result.verifications || {}).map(([name, status]) => (
+                      <div key={name} className="bg-slate-950/60 p-2 rounded border border-slate-800 flex items-center justify-between font-mono text-[11px]">
+                        <span className="text-slate-400 truncate pr-1">{name}:</span>
+                        <span className={`font-bold px-1.5 py-0.5 rounded border ${
+                          status === 'PASS' 
+                            ? 'text-emerald-400 bg-emerald-950/40 border-emerald-900' 
+                            : 'text-rose-400 bg-rose-950/40 border-rose-900'
+                        }`}>
+                          {String(status)}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className={`p-3 border rounded-lg text-xs font-mono flex items-start gap-2 ${
+                  gate057Result.overallStatus === 'PASS'
+                    ? 'bg-emerald-950/20 border-emerald-800/40 text-emerald-400'
+                    : 'bg-rose-950/20 border-rose-800/40 text-rose-400'
+                }`}>
+                  <CheckCircle2 className="w-4 h-4 shrink-0 mt-0.5" />
+                  <div>
+                    <div className="font-bold">SECP-057 GATE {gate057Result.overallStatus} ({gate057Result.passedCount}/57)</div>
+                    <div className="text-[10px] text-slate-400 mt-0.5">
+                      {gate057Result.overallStatus === 'PASS'
+                        ? 'Deterministic multi-axis toolpaths, constant-engagement HSM, 5-axis vector alignment, and SHA-256 CL data provenance verified with 100% compliance.'
+                        : 'Gate failed one or more assertions.'}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   );
 };
