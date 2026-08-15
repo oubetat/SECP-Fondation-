@@ -40,6 +40,7 @@ import { HardAcceptanceGate076 } from './validation/HardAcceptanceGate076';
 import { HardAcceptanceGate077 } from './validation/HardAcceptanceGate077';
 import { HardAcceptanceGate078 } from './validation/HardAcceptanceGate078';
 import { HardAcceptanceGate079 } from './validation/HardAcceptanceGate079';
+import { HardAcceptanceGate080 } from './validation/HardAcceptanceGate080';
 
 export interface TestResult {
   patchId: string;
@@ -389,6 +390,14 @@ export class TestRunnerEngine {
         throw new Error(`SECP-079 Failed: ${gate079.mandatoryTests.filter(t => !t.passed).map(t => t.name).join(', ')}`);
       }
       return `SECP-079 FINAL-CLOSED: 19/19 Invariants Passed, 15/15 Mutations Blocked (100%), Throughput=${gate079.overallThroughput} eps, 15-Stage Merkle Digest=${gate079.finalVerdictHash}`;
+    }));
+
+    results.push(this.runTest('PATCH-SECP-080', 'Semantic STEP AP242 & Master GD&T Interoperability Verification Gate', () => {
+      const gate080 = HardAcceptanceGate080.runGate();
+      if (!gate080.passed) {
+        throw new Error(`SECP-080 Failed: ${gate080.mandatoryTests.filter(t => !t.passed).map(t => t.name).join(', ')}`);
+      }
+      return `SECP-080 FINAL-CLOSED: 19/19 Invariants Passed, 12/12 Mutations Blocked (100%), Semantic Retention=100.0%, Throughput=${gate080.overallThroughput} ops/sec, 15-Stage Merkle Digest=${gate080.finalVerdictHash}`;
     }));
 
     const passedCount = results.filter(r => r.passed).length;

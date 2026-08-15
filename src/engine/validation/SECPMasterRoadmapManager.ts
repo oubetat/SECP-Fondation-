@@ -389,6 +389,16 @@ export class SECPMasterRoadmapManager {
           prerequisites: ['SECP-078'],
           governanceGatesRequired: ['Gate079'],
           status: 'LOCKED_FROZEN'
+        },
+        'SECP-080': {
+          patchId: 'SECP-080',
+          name: 'Semantic STEP AP242 & Master GD&T Interoperability Verification Gate',
+          phase: 'INDUSTRIAL_SCALE',
+          objective: 'ISO 10303-242 Model-Based Definition (MBD), Semantic PMI, ASME Y14.5 / ISO 1101 GD&T, Datum Reference Frames, Bidirectional Geometry Association, CMM Metrology Planning Bridge, 12-Mutation Adversarial Suite, and 15-Stage Merkle Provenance.',
+          targetOutcome: 'Deterministic, verifiable AP242 Part 21 bidirectional exchange with >=99.99% semantic retention, volumetric conservation < 1e-4, 100% mutation rejection, and CMM inspection traceability.',
+          prerequisites: ['SECP-079'],
+          governanceGatesRequired: ['Gate080'],
+          status: 'LOCKED_FROZEN'
         }
       }
     };
