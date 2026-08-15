@@ -399,6 +399,26 @@ export class SECPMasterRoadmapManager {
           prerequisites: ['SECP-079'],
           governanceGatesRequired: ['Gate080'],
           status: 'LOCKED_FROZEN'
+        },
+        'SECP-081': {
+          patchId: 'SECP-081',
+          name: 'Multiphysics Thermal & Continuum Mesh Boundary Gate',
+          phase: 'INDUSTRIAL_SCALE',
+          objective: 'Multiphysics continuum mesh boundary integrity, thermal conjugate interface conservation, and 15-stage Merkle audit chain.',
+          targetOutcome: 'Verified continuum mesh boundary & interface conservation.',
+          prerequisites: ['SECP-080'],
+          governanceGatesRequired: ['Gate081'],
+          status: 'LOCKED_FROZEN'
+        },
+        'SECP-082': {
+          patchId: 'SECP-082',
+          name: '3D Finite Volume Navier-Stokes CFD Verification Gate',
+          phase: 'INDUSTRIAL_SCALE',
+          objective: '3D Finite Volume Method discretization, incompressible Navier-Stokes equations, SIMPLE pressure-velocity coupling, k-epsilon turbulence track, independent CFD verifier kernel, 3 physical benchmarks (Poiseuille 3D, Lid Cavity 3D, NACA 0012 3D), grid convergence, 12-mutation adversarial suite, 5-cycle reproducibility, and 14-stage Merkle cryptographic provenance chain.',
+          targetOutcome: 'Deterministic 3D FVM Navier-Stokes CFD kernel with physical mass & momentum conservation, 100% adversarial mutation rejection, and 14-stage Merkle audit chain.',
+          prerequisites: ['SECP-081'],
+          governanceGatesRequired: ['Gate082'],
+          status: 'LOCKED_FROZEN'
         }
       }
     };

@@ -41,6 +41,8 @@ import { HardAcceptanceGate077 } from './validation/HardAcceptanceGate077';
 import { HardAcceptanceGate078 } from './validation/HardAcceptanceGate078';
 import { HardAcceptanceGate079 } from './validation/HardAcceptanceGate079';
 import { HardAcceptanceGate080 } from './validation/HardAcceptanceGate080';
+import { HardAcceptanceGate081 } from './validation/HardAcceptanceGate081';
+import { HardAcceptanceGate082 } from './validation/HardAcceptanceGate082';
 
 export interface TestResult {
   patchId: string;
@@ -398,6 +400,22 @@ export class TestRunnerEngine {
         throw new Error(`SECP-080 Failed: ${gate080.mandatoryTests.filter(t => !t.passed).map(t => t.name).join(', ')}`);
       }
       return `SECP-080 FINAL-CLOSED: 19/19 Invariants Passed, 12/12 Mutations Blocked (100%), Semantic Retention=100.0%, Throughput=${gate080.overallThroughput} ops/sec, 15-Stage Merkle Digest=${gate080.finalVerdictHash}`;
+    }));
+
+    results.push(this.runTest('PATCH-SECP-081', 'Multiphysics Thermal & Continuum Mesh Boundary Gate', () => {
+      const gate081 = HardAcceptanceGate081.runGate();
+      if (!gate081.passed) {
+        throw new Error(`SECP-081 Failed`);
+      }
+      return `SECP-081 FINAL-CLOSED: Multiphysics Mesh Boundary Verified, Digest=${gate081.finalVerdictHash}`;
+    }));
+
+    results.push(this.runTest('PATCH-SECP-082', '3D Finite Volume Navier-Stokes CFD Verification Gate', () => {
+      const gate082 = HardAcceptanceGate082.runGate();
+      if (!gate082.passed) {
+        throw new Error(`SECP-082 Failed: ${gate082.mandatoryTests.filter(t => !t.passed).map(t => t.name).join(', ')}`);
+      }
+      return `SECP-082 FINAL-CLOSED: 16/16 Invariants Passed, 12/12 Mutations Blocked (100%), 3 Benchmarks Verified, 14-Stage Merkle Digest=${gate082.finalVerdictHash}`;
     }));
 
     const passedCount = results.filter(r => r.passed).length;
