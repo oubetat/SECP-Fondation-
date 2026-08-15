@@ -459,6 +459,26 @@ export class SECPMasterRoadmapManager {
           prerequisites: ['SECP-085'],
           governanceGatesRequired: ['Gate086'],
           status: 'LOCKED_FROZEN'
+        },
+        'SECP-087': {
+          patchId: 'SECP-087',
+          name: 'Interactive 5-Axis Toolpath 3D Machine Simulation & Kinematic Render Gate',
+          phase: 'INDUSTRIAL_SCALE',
+          objective: 'Interactive 5-Axis CNC Machine Simulation engine with 3D kinematic model (X/Y/Z linear, A/B/C rotary), Homogeneous Transformation Matrices (4x4), forward/inverse kinematics, toolpath-state propagation, SECP-083 Gouge Verifier bridge integration, axis limit enforcement, rotary singularity detection, safety auto-stop, deterministic replay with SHA-256 simulation digests, 12 mandatory test cases (T1-T12), interactive 3D simulation controls (Play/Pause/Step/Scrub), and 20-stage Merkle cryptographic audit chain.',
+          targetOutcome: 'Deterministic interactive 3D 5-axis CNC machine simulation and kinematic render engine fully connected to SECP-083 CAM core, with zero decoupled visual mocks and 20-stage Merkle audit chain.',
+          prerequisites: ['SECP-086'],
+          governanceGatesRequired: ['Gate087'],
+          status: 'LOCKED_FROZEN'
+        },
+        'SECP-088': {
+          patchId: 'SECP-088',
+          name: 'Full Industrial End-to-End Enterprise Release & ECO System Gate',
+          phase: 'INDUSTRIAL_SCALE',
+          objective: 'Full End-to-End Product Lifecycle Management (PLM) orchestration combining CAD, Assembly, BOM, FEA, CAM, and 5-Axis Simulation. Features a high-integrity Engineering Change Order (ECO) engine with automated impact analysis, artifact versioning, cross-dependency invalidation, multi-stage approval gates, and deterministic production release manifests anchored in a 20-stage Merkle cryptographic provenance chain.',
+          targetOutcome: 'Unified industrial engineering platform with closed-loop CAD-to-Release lifecycle, automated change-propagation integrity, and tamper-proof forensic audit trails.',
+          prerequisites: ['SECP-087'],
+          governanceGatesRequired: ['Gate088'],
+          status: 'LOCKED_FROZEN'
         }
       }
     };

@@ -47,6 +47,8 @@ import { HardAcceptanceGate083 } from './validation/HardAcceptanceGate083';
 import { HardAcceptanceGate084 } from './validation/HardAcceptanceGate084';
 import { HardAcceptanceGate085 } from './validation/HardAcceptanceGate085';
 import { HardAcceptanceGate086 } from './validation/HardAcceptanceGate086';
+import { HardAcceptanceGate087 } from './validation/HardAcceptanceGate087';
+import { HardAcceptanceGate088 } from './validation/HardAcceptanceGate088';
 import { SECP084ProductionIntegrationTests } from './integration/__tests__/SECP084ProductionIntegration.test.ts';
 
 export interface TestResult {
@@ -457,6 +459,22 @@ export class TestRunnerEngine {
         throw new Error(`SECP-086 Gate Failed (${gate086.passedChecksCount}/${gate086.totalChecksCount}): ${gate086.checks.filter(c => !c.passed).map(c => c.criterion).join(', ')}`);
       }
       return `SECP-086 FINAL-CLOSED: 20/20 Invariants Passed (100%), Real Industrial Connectivity Layer Active (OPC-UA, MQTT, Modbus, MTConnect), 20-Stage Merkle Digest=${gate086.merkleRootHash}`;
+    }));
+
+    results.push(await this.runTestAsync('PATCH-SECP-087', 'Interactive 5-Axis Toolpath 3D Machine Simulation & Kinematic Render Hard Acceptance Gate', async () => {
+      const gate087 = await HardAcceptanceGate087.executeGate();
+      if (!gate087.isPassed) {
+        throw new Error(`SECP-087 Gate Failed (${gate087.passedChecksCount}/${gate087.totalChecksCount}): ${gate087.checks.filter(c => !c.passed).map(c => c.criterion).join(', ')}`);
+      }
+      return `SECP-087 FINAL-CLOSED: 20/20 Invariants Passed (100%), Interactive 5-Axis 3D Simulation & Kinematic Render Active, Merkle Digest=${gate087.merkleRootHash}`;
+    }));
+
+    results.push(await this.runTestAsync('PATCH-SECP-088', 'Full Industrial End-to-End Enterprise Release & ECO System Hard Acceptance Gate', async () => {
+      const gate088 = await HardAcceptanceGate088.executeGate();
+      if (!gate088.passed) {
+        throw new Error(`SECP-088 Gate Failed (${gate088.passedChecks}/${gate088.totalChecks}): ${gate088.checks.filter(c => !c.passed).map(c => c.criterion).join(', ')}`);
+      }
+      return `SECP-088 FINAL-CLOSED: 20/20 Invariants Passed (100%), End-to-End PLM & ECO Engine Active, Merkle Digest=${gate088.merkleRootHash}`;
     }));
 
     const passedCount = results.filter(r => r.passed).length;

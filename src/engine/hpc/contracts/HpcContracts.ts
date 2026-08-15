@@ -37,7 +37,7 @@ export interface HpcMemoryBufferLayout {
 
 export interface HpcKernelExecutionRequest {
   taskId: string;
-  kernelName: 'FEA_SPARSE_SOLVER' | 'CFD_FLUX_SOLVER' | 'CAM_5AXIS_KINEMATICS' | 'NURBS_EVALUATION';
+  kernelName: 'FEA_SPARSE_SOLVER' | 'CFD_FLUX_SOLVER' | 'CAM_5AXIS_KINEMATICS' | 'NURBS_EVALUATION' | 'NATIVE_PROOF_OF_LIFE_ADD' | 'NATIVE_PROOF_OF_LIFE_MULT' | 'GEOM_BULK_SOLVER';
   workloadSize: 'SMALL' | 'MEDIUM' | 'LARGE' | 'STRESS';
   inputBufferData: Float64Array;
   csrMatrixData?: {

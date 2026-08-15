@@ -7,6 +7,14 @@ import { HardAcceptanceGate080 } from '../engine/validation/HardAcceptanceGate08
 import { HardAcceptanceGate082 } from '../engine/validation/HardAcceptanceGate082';
 import { HardAcceptanceGate083 } from '../engine/validation/HardAcceptanceGate083';
 import { HardAcceptanceGate084 } from '../engine/validation/HardAcceptanceGate084';
+import { HardAcceptanceGate090 } from '../engine/validation/HardAcceptanceGate090';
+import { HardAcceptanceGate091 } from '../engine/validation/HardAcceptanceGate091';
+import { HardAcceptanceGate092 } from '../engine/validation/HardAcceptanceGate092';
+import { HardAcceptanceGate093 } from '../engine/validation/HardAcceptanceGate093';
+import { HardAcceptanceGate094 } from '../engine/validation/HardAcceptanceGate094';
+import { HardAcceptanceGate094R1 } from '../engine/validation/HardAcceptanceGate094R1';
+import { HardAcceptanceGate094R2 } from '../engine/validation/HardAcceptanceGate094R2';
+import { HardAcceptanceGate095 } from '../engine/validation/HardAcceptanceGate095';
 import React, { useState } from 'react';
 import { TestRunnerEngine, TestSuiteReport } from '../engine/testRunner';
 import { Play, CheckCircle, XCircle, ShieldCheck, ShieldAlert, RefreshCw, Terminal, CheckCircle2, Compass, Link2, Cpu, FileCheck, Layers, Flame, Activity } from 'lucide-react';
@@ -82,6 +90,22 @@ export const TestRunnerPanel: React.FC = () => {
   const [isGate082Running, setIsGate082Running] = useState(false);
   const [gate083Result, setGate083Result] = useState<any>(null);
   const [isGate083Running, setIsGate083Running] = useState(false);
+  const [gate090Result, setGate090Result] = useState<any>(null);
+  const [isGate090Running, setIsGate090Running] = useState(false);
+  const [gate091Result, setGate091Result] = useState<any>(null);
+  const [isGate091Running, setIsGate091Running] = useState(false);
+  const [gate092Result, setGate092Result] = useState<any>(null);
+  const [isGate092Running, setIsGate092Running] = useState(false);
+  const [gate093Result, setGate093Result] = useState<any>(null);
+  const [isGate093Running, setIsGate093Running] = useState(false);
+  const [gate094Result, setGate094Result] = useState<any>(null);
+  const [isGate094Running, setIsGate094Running] = useState(false);
+  const [gate094R1Result, setGate094R1Result] = useState<any>(null);
+  const [isGate094R1Running, setIsGate094R1Running] = useState(false);
+  const [gate094R2Result, setGate094R2Result] = useState<any>(null);
+  const [isGate094R2Running, setIsGate094R2Running] = useState(false);
+  const [gate095Result, setGate095Result] = useState<any>(null);
+  const [isGate095Running, setIsGate095Running] = useState(false);
 
   const handleRunTests = async () => {
     setIsRunning(true);
@@ -522,6 +546,102 @@ export const TestRunnerPanel: React.FC = () => {
       console.error(e);
     } finally {
       setIsGate083Running(false);
+    }
+  };
+
+  const handleRunGate090 = async () => {
+    setIsGate090Running(true);
+    try {
+      const res = await HardAcceptanceGate090.runForensicAudit();
+      setGate090Result(res);
+    } catch (err) {
+      console.error('Gate 090 run failed:', err);
+    } finally {
+      setIsGate090Running(false);
+    }
+  };
+
+  const handleRunGate091 = async () => {
+    setIsGate091Running(true);
+    try {
+      const res = await HardAcceptanceGate091.executeGate();
+      setGate091Result(res);
+    } catch (err) {
+      console.error('Gate 091 run failed:', err);
+    } finally {
+      setIsGate091Running(false);
+    }
+  };
+
+  const handleRunGate092 = async () => {
+    setIsGate092Running(true);
+    try {
+      const res = await HardAcceptanceGate092.executeGate();
+      setGate092Result(res);
+    } catch (err) {
+      console.error('Gate 092 run failed:', err);
+    } finally {
+      setIsGate092Running(false);
+    }
+  };
+
+  const handleRunGate093 = async () => {
+    setIsGate093Running(true);
+    try {
+      const res = await HardAcceptanceGate093.executeGate();
+      setGate093Result(res);
+    } catch (err) {
+      console.error('Gate 093 run failed:', err);
+    } finally {
+      setIsGate093Running(false);
+    }
+  };
+
+  const handleRunGate094 = async () => {
+    setIsGate094Running(true);
+    try {
+      const res = await HardAcceptanceGate094.executeGate();
+      setGate094Result(res);
+    } catch (err) {
+      console.error('Gate 094 run failed:', err);
+    } finally {
+      setIsGate094Running(false);
+    }
+  };
+
+  const handleRunGate094R1 = async () => {
+    setIsGate094R1Running(true);
+    try {
+      const res = await HardAcceptanceGate094R1.executeGate();
+      setGate094R1Result(res);
+    } catch (err) {
+      console.error('Gate 094R1 run failed:', err);
+    } finally {
+      setIsGate094R1Running(false);
+    }
+  };
+
+  const handleRunGate094R2 = async () => {
+    setIsGate094R2Running(true);
+    try {
+      const res = await HardAcceptanceGate094R2.executeGate();
+      setGate094R2Result(res);
+    } catch (err) {
+      console.error('Gate 094R2 run failed:', err);
+    } finally {
+      setIsGate094R2Running(false);
+    }
+  };
+
+  const handleRunGate095 = async () => {
+    setIsGate095Running(true);
+    try {
+      const res = await HardAcceptanceGate095.executeGate();
+      setGate095Result(res);
+    } catch (err) {
+      console.error('Gate 095 run failed:', err);
+    } finally {
+      setIsGate095Running(false);
     }
   };
 
@@ -4603,6 +4723,847 @@ export const TestRunnerPanel: React.FC = () => {
                   ))}
                 </div>
               </div>
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* SECP-090 Native WASM Toolchain Acceptance Gate */}
+      <div className="bg-slate-900 border border-slate-800 rounded-xl p-5 text-slate-100 shadow-xl space-y-4">
+        <div className="flex items-center justify-between pb-3 border-b border-slate-800">
+          <div>
+            <h2 className="text-lg font-bold flex items-center gap-2 text-rose-400">
+              <Cpu className="w-5 h-5 text-rose-400" />
+              SECP-090 — Native WASM Toolchain & Binary Provenance Gate
+            </h2>
+            <p className="text-xs text-slate-400 mt-0.5">
+              Forensic verification of the real C++ toolchain, WASM binary compilation, SHA-256 provenance, and native execution (No-JS-Bypass).
+            </p>
+          </div>
+          <button
+            onClick={handleRunGate090}
+            disabled={isGate090Running}
+            className="flex items-center gap-2 px-4 py-2 bg-rose-600 hover:bg-rose-500 disabled:bg-slate-700 text-white rounded-lg text-xs font-bold transition shadow-md cursor-pointer"
+          >
+            {isGate090Running ? <RefreshCw className="w-4 h-4 animate-spin" /> : <Play className="w-4 h-4 fill-white" />}
+            {isGate090Running ? 'Verifying Toolchain...' : 'Execute SECP-090 Gate'}
+          </button>
+        </div>
+
+        {!gate090Result && !isGate090Running && (
+          <div className="py-8 text-center text-slate-500 text-sm border border-dashed border-slate-800 rounded-lg">
+            Click <span className="text-rose-400 font-semibold">Execute SECP-090 Gate</span> to verify the native build infrastructure.
+          </div>
+        )}
+
+        {gate090Result && (
+          <div className="space-y-4">
+            <div className={`p-4 rounded-lg border flex items-center justify-between ${
+              gate090Result.success 
+                ? 'bg-emerald-950/40 border-emerald-800/80 text-emerald-300' 
+                : 'bg-rose-950/40 border-rose-800/80 text-rose-300'
+            }`}>
+              <div className="flex items-center space-x-3">
+                {gate090Result.success ? (
+                  <ShieldCheck className="w-8 h-8 text-emerald-400" />
+                ) : (
+                  <ShieldAlert className="w-8 h-8 text-rose-400" />
+                )}
+                <div>
+                  <div className="text-sm font-bold tracking-wide">
+                    {gate090Result.success ? 'SECP-090 PASSED: NATIVE WASM ENABLED' : 'SECP-090 FAILED: TOOLCHAIN AUDIT FAILURE'}
+                  </div>
+                  <div className="text-[10px] text-slate-400 font-mono mt-0.5">
+                    Infrastructure status: {gate090Result.success ? 'Production Ready' : 'Degraded / Blocked'}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+              {gate090Result.checks.map((check: any, idx: number) => (
+                <div key={idx} className="p-3 bg-slate-950 border border-slate-800 rounded-lg flex items-center justify-between text-xs">
+                  <div className="space-y-1">
+                    <div className="font-semibold text-slate-200">{check.criterion}</div>
+                    <div className="text-[10px] text-slate-400 font-mono">{check.details}</div>
+                  </div>
+                  {check.passed ? (
+                    <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                  ) : (
+                    <XCircle className="w-4 h-4 text-rose-400 shrink-0" />
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* SECP-091 Real WebWorker + Native WASM Execution Fabric Gate */}
+      <div className="bg-slate-900 border border-slate-800 rounded-xl p-5 text-slate-100 shadow-xl space-y-4 mt-6">
+        <div className="flex items-center justify-between pb-3 border-b border-slate-800">
+          <div>
+            <h2 className="text-lg font-bold flex items-center gap-2 text-indigo-400">
+              <Activity className="w-5 h-5 text-indigo-400" />
+              SECP-091 — Real WebWorker + Native WASM Fabric Gate
+            </h2>
+            <p className="text-xs text-slate-400 mt-0.5">
+              Isolated background execution in a real WebWorker, native ArrayBuffer memory contract, and fail-closed security.
+            </p>
+          </div>
+          <button
+            onClick={handleRunGate091}
+            disabled={isGate091Running}
+            className="flex items-center gap-2 px-4 py-2 bg-indigo-600 hover:bg-indigo-500 disabled:bg-slate-700 text-white rounded-lg text-xs font-bold transition shadow-md cursor-pointer"
+          >
+            {isGate091Running ? <RefreshCw className="w-4 h-4 animate-spin" /> : <Play className="w-4 h-4 fill-white" />}
+            {isGate091Running ? 'Verifying Fabric...' : 'Execute SECP-091 Gate'}
+          </button>
+        </div>
+
+        {!gate091Result && !isGate091Running && (
+          <div className="py-8 text-center text-slate-500 text-sm border border-dashed border-slate-800 rounded-lg">
+            Click <span className="text-indigo-400 font-semibold">Execute SECP-091 Gate</span> to verify the worker-isolated execution path.
+          </div>
+        )}
+
+        {gate091Result && (
+          <div className="space-y-4">
+            <div className={`p-4 rounded-lg border flex items-center justify-between ${
+              gate091Result.success 
+                ? 'bg-emerald-950/40 border-emerald-800/80 text-emerald-300' 
+                : 'bg-rose-950/40 border-rose-800/80 text-rose-300'
+            }`}>
+              <div className="flex items-center space-x-3">
+                {gate091Result.success ? (
+                  <ShieldCheck className="w-8 h-8 text-emerald-400" />
+                ) : (
+                  <ShieldAlert className="w-8 h-8 text-rose-400" />
+                )}
+                <div>
+                  <div className="text-sm font-bold tracking-wide">
+                    {gate091Result.success ? 'SECP-091 PASSED: REAL WORKER FABRIC ACTIVE' : 'SECP-091 FAILED: EXECUTION FABRIC COMPROMISED'}
+                  </div>
+                  <div className="text-[10px] text-slate-400 font-mono mt-0.5">
+                    Fabric isolation: {gate091Result.success ? 'Verified Background Thread' : 'Detection / Fallback / Blocked'}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+              {gate091Result.checks.map((check: any, idx: number) => (
+                <div key={idx} className="p-3 bg-slate-950 border border-slate-800 rounded-lg flex items-center justify-between text-xs">
+                  <div className="space-y-1">
+                    <div className="font-semibold text-slate-200">{check.criterion}</div>
+                    <div className="text-[10px] text-slate-400 font-mono">{check.details}</div>
+                  </div>
+                  {check.passed ? (
+                    <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                  ) : (
+                    <XCircle className="w-4 h-4 text-rose-400 shrink-0" />
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* SECP-092 Native FEA CSR + Conjugate Gradient Gate */}
+      <div className="bg-slate-900 border border-slate-800 rounded-xl p-5 text-slate-100 shadow-xl space-y-4 mt-6">
+        <div className="flex items-center justify-between pb-3 border-b border-slate-800">
+          <div>
+            <h2 className="text-lg font-bold flex items-center gap-2 text-emerald-400">
+              <Cpu className="w-5 h-5 text-emerald-400" />
+              SECP-092 — Native FEA CSR + CG Kernel Gate
+            </h2>
+            <p className="text-xs text-slate-400 mt-0.5">
+              Numerical verification of native C-compiled sparse solvers (CSR/CG) with zero-copy memory contracts.
+            </p>
+          </div>
+          <button
+            onClick={handleRunGate092}
+            disabled={isGate092Running}
+            className="flex items-center gap-2 px-4 py-2 bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-700 text-white rounded-lg text-xs font-bold transition shadow-md cursor-pointer"
+          >
+            {isGate092Running ? <RefreshCw className="w-4 h-4 animate-spin" /> : <Play className="w-4 h-4 fill-white" />}
+            {isGate092Running ? 'Verifying Kernels...' : 'Execute SECP-092 Gate'}
+          </button>
+        </div>
+
+        {!gate092Result && !isGate092Running && (
+          <div className="py-8 text-center text-slate-500 text-sm border border-dashed border-slate-800 rounded-lg">
+            Click <span className="text-emerald-400 font-semibold">Execute SECP-092 Gate</span> to verify the native FEA computation path.
+          </div>
+        )}
+
+        {gate092Result && (
+          <div className="space-y-4">
+            <div className={`p-4 rounded-lg border flex items-center justify-between ${
+              gate092Result.success 
+                ? 'bg-emerald-950/40 border-emerald-800/80 text-emerald-300' 
+                : 'bg-rose-950/40 border-rose-800/80 text-rose-300'
+            }`}>
+              <div className="flex items-center space-x-3">
+                {gate092Result.success ? (
+                  <ShieldCheck className="w-8 h-8 text-emerald-400" />
+                ) : (
+                  <ShieldAlert className="w-8 h-8 text-rose-400" />
+                )}
+                <div>
+                  <div className="text-sm font-bold tracking-wide">
+                    {gate092Result.success ? 'SECP-092 PASSED: NATIVE FEA SOLVER ACTIVE' : 'SECP-092 FAILED: NUMERICAL OR ARCH AUDIT FAILURE'}
+                  </div>
+                  <div className="text-[10px] text-slate-400 font-mono mt-0.5">
+                    Solver status: {gate092Result.success ? 'High Precision Verified' : 'Accuracy / Fabric / Blocked'}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+              {gate092Result.checks.map((check: any, idx: number) => (
+                <div key={idx} className="p-3 bg-slate-950 border border-slate-800 rounded-lg flex items-center justify-between text-xs">
+                  <div className="space-y-1">
+                    <div className="font-semibold text-slate-200">{check.criterion}</div>
+                    <div className="text-[10px] text-slate-400 font-mono">{check.details}</div>
+                  </div>
+                  {check.passed ? (
+                    <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                  ) : (
+                    <XCircle className="w-4 h-4 text-rose-400 shrink-0" />
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* SECP-093 Native CFD FVM Flux Kernel Gate */}
+      <div className="bg-slate-900 border border-slate-800 rounded-xl p-5 text-slate-100 shadow-xl space-y-4 mt-6">
+        <div className="flex items-center justify-between pb-3 border-b border-slate-800">
+          <div>
+            <h2 className="text-lg font-bold flex items-center gap-2 text-sky-400">
+              <Activity className="w-5 h-5 text-sky-400" />
+              SECP-093 — Native CFD FVM Flux Kernel Gate
+            </h2>
+            <p className="text-xs text-slate-400 mt-0.5">
+              Numerical verification of native C-compiled CFD solvers (FVM) with unified engineering kernel fabric.
+            </p>
+          </div>
+          <button
+            onClick={handleRunGate093}
+            disabled={isGate093Running}
+            className="flex items-center gap-2 px-4 py-2 bg-sky-600 hover:bg-sky-500 disabled:bg-slate-700 text-white rounded-lg text-xs font-bold transition shadow-md cursor-pointer"
+          >
+            {isGate093Running ? <RefreshCw className="w-4 h-4 animate-spin" /> : <Play className="w-4 h-4 fill-white" />}
+            {isGate093Running ? 'Verifying Fluxes...' : 'Execute SECP-093 Gate'}
+          </button>
+        </div>
+
+        {!gate093Result && !isGate093Running && (
+          <div className="py-8 text-center text-slate-500 text-sm border border-dashed border-slate-800 rounded-lg">
+            Click <span className="text-sky-400 font-semibold">Execute SECP-093 Gate</span> to verify the native CFD computation path.
+          </div>
+        )}
+
+        {gate093Result && (
+          <div className="space-y-4">
+            <div className={`p-4 rounded-lg border flex items-center justify-between ${
+              gate093Result.success 
+                ? 'bg-emerald-950/40 border-emerald-800/80 text-emerald-300' 
+                : 'bg-rose-950/40 border-rose-800/80 text-rose-300'
+            }`}>
+              <div className="flex items-center space-x-3">
+                {gate093Result.success ? (
+                  <ShieldCheck className="w-8 h-8 text-emerald-400" />
+                ) : (
+                  <ShieldAlert className="w-8 h-8 text-rose-400" />
+                )}
+                <div>
+                  <div className="text-sm font-bold tracking-wide">
+                    {gate093Result.success ? 'SECP-093 PASSED: NATIVE CFD SOLVER ACTIVE' : 'SECP-093 FAILED: NUMERICAL OR ARCH AUDIT FAILURE'}
+                  </div>
+                  <div className="text-[10px] text-slate-400 font-mono mt-0.5">
+                    Flux status: {gate093Result.success ? 'Unified Engineering Fabric Verified' : 'Accuracy / Fabric / Blocked'}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+              {gate093Result.checks.map((check: any, idx: number) => (
+                <div key={idx} className="p-3 bg-slate-950 border border-slate-800 rounded-lg flex items-center justify-between text-xs">
+                  <div className="space-y-1">
+                    <div className="font-semibold text-slate-200">{check.criterion}</div>
+                    <div className="text-[10px] text-slate-400 font-mono">{check.details}</div>
+                  </div>
+                  {check.passed ? (
+                    <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                  ) : (
+                    <XCircle className="w-4 h-4 text-rose-400 shrink-0" />
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+      
+      {/* SECP-095 Native Geometry Kernel & Forensic Gate */}
+      <div className="bg-slate-900 border border-slate-800 rounded-xl p-5 text-slate-100 shadow-xl space-y-4 mt-6">
+        <div className="flex items-center justify-between pb-3 border-b border-slate-800">
+          <div>
+            <h2 className="text-lg font-bold flex items-center gap-2 text-emerald-400">
+              <Layers className="w-5 h-5 text-emerald-400" />
+              SECP-095 — Native Geometry Kernel Migration & Forensic Gate
+            </h2>
+            <p className="text-xs text-slate-400 mt-0.5">
+              Strict forensic validation of 3D geometry primitives in C/WASM, explicit worker thread memory copying, and anti-false-pass checks.
+            </p>
+          </div>
+          <button
+            onClick={handleRunGate095}
+            disabled={isGate095Running}
+            className="flex items-center gap-2 px-4 py-2 bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-700 text-white rounded-lg text-xs font-bold transition shadow-md cursor-pointer"
+          >
+            {isGate095Running ? <RefreshCw className="w-4 h-4 animate-spin" /> : <Play className="w-4 h-4 fill-white" />}
+            {isGate095Running ? 'Executing Math...' : 'Execute SECP-095 Gate'}
+          </button>
+        </div>
+
+        {gate095Result && (
+          <div className="space-y-4 animate-fade-in">
+            {/* Status overview cards */}
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-4 p-3 bg-slate-950 rounded-lg border border-slate-800">
+              <div className="text-center">
+                <div className="text-[10px] text-slate-500 uppercase tracking-wider">Max Abs Error</div>
+                <div className="text-sm font-mono text-emerald-400">{gate095Result.metrics.maxAbsoluteError.toExponential(12)}</div>
+              </div>
+              <div className="text-center border-l border-slate-800">
+                <div className="text-[10px] text-slate-500 uppercase tracking-wider">RMS Error</div>
+                <div className="text-sm font-mono text-indigo-400">{gate095Result.metrics.rmsError.toExponential(12)}</div>
+              </div>
+              <div className="text-center border-l border-slate-800">
+                <div className="text-[10px] text-slate-500 uppercase tracking-wider">Deterministic Cases</div>
+                <div className="text-sm font-mono text-slate-200">
+                  {gate095Result.metrics.passedCases}/{gate095Result.metrics.totalCases}
+                </div>
+              </div>
+              <div className="text-center border-l border-slate-800">
+                <div className="text-[10px] text-slate-500 uppercase tracking-wider">Status Distribution</div>
+                <div className="text-[10px] font-mono text-amber-400">
+                  OK:{gate095Result.metrics.statusesDetected.okCount} | S:{gate095Result.metrics.statusesDetected.singularCount}
+                </div>
+              </div>
+              <div className="text-center border-l border-slate-800">
+                <div className="text-[10px] text-slate-500 uppercase tracking-wider">Gate Tolerance</div>
+                <div className="text-sm font-mono text-slate-400">
+                  {gate095Result.metrics.tolerance.toExponential(1)}
+                </div>
+              </div>
+            </div>
+
+            {/* Verdict Alert */}
+            <div className={`p-4 rounded-lg flex items-start gap-3 border ${
+              gate095Result.success 
+                ? 'bg-emerald-950/40 border-emerald-500/30 text-emerald-200' 
+                : 'bg-rose-950/40 border-rose-500/30 text-rose-200'
+            }`}>
+              {gate095Result.success ? (
+                <ShieldCheck className="w-8 h-8 text-emerald-400 shrink-0" />
+              ) : (
+                <ShieldAlert className="w-8 h-8 text-rose-400 shrink-0" />
+              )}
+              <div className="space-y-1">
+                <div className="text-sm font-bold tracking-wide">
+                  SECP-095 DECISION: {gate095Result.decision}
+                </div>
+                <p className="text-xs text-slate-400">
+                  {gate095Result.success 
+                    ? 'Native Geometry Kernel fully verified under explicit copying. Worker isolation & hash integrity matches expectation.' 
+                    : 'Verification failure. Mismatch detected between native and reference geometry execution or audit hash error.'}
+                </p>
+                <div className="flex gap-2 items-center mt-2">
+                  <span className="text-[10px] font-mono bg-slate-900 px-2 py-0.5 rounded text-slate-400">WASM Binary SHA-256</span>
+                  <div className="text-[10px] font-mono text-slate-300">{gate095Result.artifactHash}</div>
+                </div>
+              </div>
+            </div>
+
+            {/* Worst Case Numeric Trace */}
+            <div className="bg-slate-950 border border-slate-800 rounded-lg p-4 space-y-3">
+              <h3 className="text-xs font-bold text-slate-400 uppercase tracking-widest border-b border-slate-800 pb-2 flex items-center justify-between">
+                <span>Worst-Case Numeric Precision Trace</span>
+                <span className="text-[9px] font-mono bg-slate-900 px-2 py-0.5 rounded text-indigo-400">Op: {gate095Result.metrics.worstCase.opType} (Index #{gate095Result.metrics.worstCase.opIndex})</span>
+              </h3>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs font-mono">
+                <div className="space-y-2">
+                  <div>
+                    <span className="text-slate-500 block text-[9px] uppercase">Input Coordinate Pack:</span>
+                    <div className="text-slate-200 bg-slate-900 p-2 rounded text-[11px] overflow-x-auto whitespace-pre animate-pulse-subtle">
+                      [{gate095Result.metrics.worstCase.inputVector.map((v: number) => v.toExponential(12)).join(', ')}]
+                    </div>
+                  </div>
+                  <div>
+                    <span className="text-slate-500 block text-[9px] uppercase">Reference TS Coordinate Result:</span>
+                    <div className="text-indigo-300 bg-slate-900 p-2 rounded text-[11px] overflow-x-auto whitespace-pre">
+                      [{gate095Result.metrics.worstCase.reference.map((v: number) => v.toExponential(12)).join(', ')}]
+                    </div>
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <div>
+                    <span className="text-slate-500 block text-[9px] uppercase">Actual WASM Native Coordinate Result:</span>
+                    <div className="text-emerald-300 bg-slate-900 p-2 rounded text-[11px] overflow-x-auto whitespace-pre">
+                      [{gate095Result.metrics.worstCase.actual.map((v: number) => v.toExponential(12)).join(', ')}]
+                    </div>
+                  </div>
+                  <div>
+                    <span className="text-slate-500 block text-[9px] uppercase">IEEE-754 Precision Delta:</span>
+                    <div className="text-rose-400 bg-slate-900 p-2 rounded text-[11px] font-bold">
+                      Abs: {gate095Result.metrics.worstCase.absoluteError.toExponential(12)} | Rel: {gate095Result.metrics.worstCase.relativeError.toExponential(12)}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Verification Checks Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+              {gate095Result.checks.map((check: any, idx: number) => (
+                <div key={idx} className="p-3 bg-slate-950 border border-slate-800 rounded-lg flex items-center justify-between text-xs">
+                  <div className="space-y-1">
+                    <div className="font-semibold text-slate-200">{check.criterion}</div>
+                    <div className="text-[10px] text-slate-400 font-mono">{check.details}</div>
+                  </div>
+                  {check.passed ? (
+                    <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                  ) : (
+                    <XCircle className="w-4 h-4 text-rose-400 shrink-0" />
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+      
+      {/* SECP-094-R1.4 Worst-Case Numeric Trace & Continuity Proof */}
+      <div className="bg-slate-900 border border-slate-800 rounded-xl p-5 text-slate-100 shadow-xl space-y-4 mt-6">
+        <div className="flex items-center justify-between pb-3 border-b border-slate-800">
+          <div>
+            <h2 className="text-lg font-bold flex items-center gap-2 text-rose-400">
+              <ShieldCheck className="w-5 h-5 text-rose-400" />
+              SECP-094-R1.4 — Worst-Case Numeric Trace & Continuity Proof
+            </h2>
+            <p className="text-xs text-slate-400 mt-0.5">
+              Forensic validation with 17-digit numeric precision tracing, recalculable invariants, and mathematically sound continuity proof.
+            </p>
+          </div>
+          <button
+            onClick={handleRunGate094R1}
+            disabled={isGate094R1Running}
+            className="flex items-center gap-2 px-4 py-2 bg-rose-600 hover:bg-rose-500 disabled:bg-slate-700 text-white rounded-lg text-xs font-bold transition shadow-md cursor-pointer"
+          >
+            {isGate094R1Running ? <RefreshCw className="w-4 h-4 animate-spin" /> : <Play className="w-4 h-4 fill-white" />}
+            {isGate094R1Running ? 'Auditing Kernels...' : 'Execute SECP-094-R1.4 Gate'}
+          </button>
+        </div>
+
+        {gate094R1Result && (
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-4 p-3 bg-slate-950 rounded-lg border border-slate-800">
+            <div className="text-center">
+              <div className="text-[10px] text-slate-500 uppercase tracking-wider">Max Abs Error</div>
+              <div className="text-sm font-mono text-rose-400">{gate094R1Result.metrics.maxAbsError.toExponential(17)}</div>
+            </div>
+            <div className="text-center border-l border-slate-800">
+              <div className="text-[10px] text-slate-500 uppercase tracking-wider">RMS Error</div>
+              <div className="text-sm font-mono text-indigo-400">{gate094R1Result.metrics.rmsError.toExponential(17)}</div>
+            </div>
+            <div className="text-center border-l border-slate-800">
+              <div className="text-[10px] text-slate-500 uppercase tracking-wider">Cases (Pass/Fail)</div>
+              <div className="text-sm font-mono text-slate-200">
+                {gate094R1Result.metrics.passedCases}/{gate094R1Result.metrics.failedCases}
+              </div>
+            </div>
+            <div className="text-center border-l border-slate-800">
+              <div className="text-[10px] text-slate-500 uppercase tracking-wider">100k Throughput</div>
+              <div className="text-sm font-mono text-emerald-400">
+                {Math.round(gate094R1Result.metrics.benchmarks[2]?.throughput).toLocaleString()} p/s
+              </div>
+            </div>
+            <div className="text-center border-l border-slate-800">
+              <div className="text-[10px] text-slate-500 uppercase tracking-wider">Tolerance</div>
+              <div className="text-sm font-mono text-amber-400">
+                {gate094R1Result.metrics.tolerance.toExponential(1)}
+              </div>
+            </div>
+          </div>
+        )}
+
+        {!gate094R1Result && !isGate094R1Running && (
+          <div className="py-8 text-center text-slate-500 text-sm border border-dashed border-slate-800 rounded-lg">
+            Click <span className="text-rose-400 font-semibold">Execute SECP-094-R1.4 Gate</span> to start forensic audit.
+          </div>
+        )}
+
+        {gate094R1Result && (
+          <div className="space-y-4">
+            <div className={`p-4 rounded-lg border flex items-center justify-between ${
+              gate094R1Result.decision === 'PASS'
+                ? 'bg-emerald-950/40 border-emerald-800/80 text-emerald-300' 
+                : 'bg-rose-950/40 border-rose-800/80 text-rose-300'
+            }`}>
+              <div className="flex items-center space-x-3">
+                {gate094R1Result.decision === 'PASS' ? (
+                  <ShieldCheck className="w-8 h-8 text-emerald-400" />
+                ) : (
+                  <ShieldAlert className="w-8 h-8 text-rose-400" />
+                )}
+                <div>
+                  <div className="text-sm font-bold tracking-wide">
+                    SECP-094-R1.4 DECISION: {gate094R1Result.decision}
+                  </div>
+                  <div className="text-[10px] text-slate-400 font-mono mt-0.5">
+                    {gate094R1Result.decision === 'PASS' ? 'Worst-Case Numeric Trace & Continuity Verified' : 'Trace Recalculation Failure or Continuity Mismatch'}
+                  </div>
+                </div>
+              </div>
+              <div className="text-right">
+                <div className="text-[10px] text-slate-500 uppercase">Artifact Hash</div>
+                <div className="text-[10px] font-mono text-slate-300">{gate094R1Result.artifactHash}</div>
+              </div>
+            </div>
+
+            <div className="bg-slate-950 border border-slate-800 rounded-lg p-4 space-y-3">
+              <div className="flex justify-between items-center border-b border-slate-800 pb-2">
+                <h3 className="text-xs font-bold text-slate-400 uppercase tracking-widest">Worst Case Analysis (17-Digit Detail)</h3>
+                <span className="text-[10px] font-mono text-rose-400 bg-rose-950/40 px-2 py-0.5 rounded border border-rose-900/60">
+                  Index: {gate094R1Result.metrics.worstCase.worstCaseIndex}
+                </span>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-[10px] font-mono">
+                <div className="space-y-1">
+                  <div className="text-slate-500 italic">Input Tool Vector [vi, vj, vk]:</div>
+                  <div className="text-amber-400">[{gate094R1Result.metrics.worstCase.inputVector.map((v: number) => v.toExponential(17)).join(', ')}]</div>
+                  <div className="text-slate-500 italic mt-2">Expected [A, C] (Oracle Reference):</div>
+                  <div className="text-indigo-400">[{gate094R1Result.metrics.worstCase.expectedA.toExponential(17)}, {gate094R1Result.metrics.worstCase.expectedC.toExponential(17)}]</div>
+                </div>
+                <div className="space-y-1">
+                  <div className="text-slate-500 italic">Actual [A, C] (WASM execution):</div>
+                  <div className="text-rose-400">[{gate094R1Result.metrics.worstCase.actualA.toExponential(17)}, {gate094R1Result.metrics.worstCase.actualC.toExponential(17)}]</div>
+                  <div className="text-slate-500 italic mt-2">Absolute Errors [ΔA, ΔC] (Recalculable):</div>
+                  <div className="text-emerald-400">[{gate094R1Result.metrics.worstCase.deltaA.toExponential(17)}, {gate094R1Result.metrics.worstCase.deltaC.toExponential(17)}]</div>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-slate-950 border border-slate-800 rounded-lg p-4 space-y-3">
+              <div className="flex justify-between items-center border-b border-slate-800 pb-2">
+                <h3 className="text-xs font-bold text-slate-400 uppercase tracking-widest">Kinematic Continuity Proof</h3>
+                <span className="text-[10px] font-mono text-indigo-400 bg-indigo-950/40 px-2 py-0.5 rounded border border-indigo-900/60">
+                  Worst Index: {gate094R1Result.metrics.worstContinuityCaseIndex}
+                </span>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-[10px] font-mono">
+                <div className="space-y-1">
+                  <div className="text-slate-500 italic">Base Vector:</div>
+                  <div className="text-slate-300">[{gate094R1Result.metrics.continuityEvidence.baseVector.map((v: number) => v.toExponential(10)).join(', ')}]</div>
+                  <div className="text-slate-500 italic mt-1">Perturbed Vector:</div>
+                  <div className="text-slate-300">[{gate094R1Result.metrics.continuityEvidence.perturbedVector.map((v: number) => v.toExponential(10)).join(', ')}]</div>
+                  <div className="text-slate-500 italic mt-1">Magnitude:</div>
+                  <div className="text-indigo-400">{gate094R1Result.metrics.continuityEvidence.perturbationMagnitude.toExponential(2)}</div>
+                </div>
+                <div className="space-y-1">
+                  <div className="text-slate-500 italic">Base [A, C]:</div>
+                  <div className="text-slate-300">[{gate094R1Result.metrics.continuityEvidence.baseA.toExponential(10)}, {gate094R1Result.metrics.continuityEvidence.baseC.toExponential(10)}]</div>
+                  <div className="text-slate-500 italic mt-1">Perturbed [A, C]:</div>
+                  <div className="text-slate-300">[{gate094R1Result.metrics.continuityEvidence.perturbedA.toExponential(10)}, {gate094R1Result.metrics.continuityEvidence.perturbedC.toExponential(10)}]</div>
+                  <div className="text-slate-500 italic mt-1">Wrapped Delta [ΔA, ΔC] / Max Discontinuity:</div>
+                  <div className="text-emerald-400">
+                    [{gate094R1Result.metrics.continuityEvidence.wrappedDeltaA.toExponential(10)}, {gate094R1Result.metrics.continuityEvidence.wrappedDeltaC.toExponential(10)}] / <span className="font-bold">{gate094R1Result.metrics.continuityEvidence.measuredDiscontinuity.toExponential(10)}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-slate-950 border border-slate-800 rounded-lg p-4 space-y-3">
+              <h3 className="text-xs font-bold text-slate-400 uppercase tracking-widest border-b border-slate-800 pb-2">Benchmark Performance Matrix</h3>
+              <div className="overflow-x-auto">
+                <table className="w-full text-[10px] font-mono text-left">
+                  <thead>
+                    <tr className="text-slate-500 border-b border-slate-800">
+                      <th className="py-2 px-1">Points</th>
+                      <th className="py-2 px-1">Mean Ms</th>
+                      <th className="py-2 px-1">p/s</th>
+                      <th className="py-2 px-1">Min</th>
+                      <th className="py-2 px-1">Median</th>
+                      <th className="py-2 px-1">P95</th>
+                      <th className="py-2 px-1">Max</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {gate094R1Result.metrics.benchmarks.map((b: any, idx: number) => (
+                      <tr key={idx} className="border-b border-slate-900 last:border-0 hover:bg-slate-900/50">
+                        <td className="py-2 px-1 text-slate-300">{b.size.toLocaleString()}</td>
+                        <td className="py-2 px-1 text-indigo-400">{b.wallTimeMs.toFixed(3)}</td>
+                        <td className="py-2 px-1 text-emerald-400">{Math.round(b.throughput).toLocaleString()}</td>
+                        <td className="py-2 px-1 text-slate-400">{b.min.toFixed(3)}</td>
+                        <td className="py-2 px-1 text-slate-400">{b.median.toFixed(3)}</td>
+                        <td className="py-2 px-1 text-slate-400">{b.p95.toFixed(3)}</td>
+                        <td className="py-2 px-1 text-slate-400">{b.max.toFixed(3)}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div className="bg-slate-950 border border-slate-800 rounded-lg p-4 space-y-2 text-[10px] font-mono">
+              <h3 className="text-xs font-bold text-slate-400 uppercase tracking-widest border-b border-slate-800 pb-2 mb-2">Evidence Serialized Stats</h3>
+              <div className="grid grid-cols-2 gap-4">
+                <div className="flex justify-between">
+                  <span className="text-slate-500">totalCases:</span>
+                  <span className="text-slate-300">{gate094R1Result.metrics.totalCases}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-slate-500">passedCases:</span>
+                  <span className="text-slate-300">{gate094R1Result.metrics.passedCases}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-slate-500">failedCases:</span>
+                  <span className="text-slate-300">{gate094R1Result.metrics.failedCases}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-slate-500">maxAngularDiscontinuity:</span>
+                  <span className="text-indigo-400">{gate094R1Result.metrics.maxAngularDiscontinuity.toExponential(17)}</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+              {gate094R1Result.checks.map((check: any, idx: number) => (
+                <div key={idx} className="p-3 bg-slate-950 border border-slate-800 rounded-lg flex items-center justify-between text-xs">
+                  <div className="space-y-1">
+                    <div className="font-semibold text-slate-200">{check.criterion}</div>
+                    <div className="text-[10px] text-slate-400 font-mono">{check.details}</div>
+                  </div>
+                  {check.passed ? (
+                    <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                  ) : (
+                    <XCircle className="w-4 h-4 text-rose-400 shrink-0" />
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+      
+      {/* SECP-094-R2 — Mathematical Kernel Accuracy & Singularity Contract */}
+      <div className="bg-slate-900 border border-slate-800 rounded-xl p-5 text-slate-100 shadow-xl space-y-4 mt-6">
+        <div className="flex items-center justify-between pb-3 border-b border-slate-800">
+          <div>
+            <h2 className="text-lg font-bold flex items-center gap-2 text-emerald-400">
+              <ShieldCheck className="w-5 h-5 text-emerald-400" />
+              SECP-094-R2 — Math Kernel Accuracy & Singularity Contract
+            </h2>
+            <p className="text-xs text-slate-400 mt-0.5">
+              Independent verification of approximation errors and explicit singularity policy enforcement for industrial CAM kernels.
+            </p>
+          </div>
+          <button
+            onClick={handleRunGate094R2}
+            disabled={isGate094R2Running}
+            className="flex items-center gap-2 px-4 py-2 bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-700 text-white rounded-lg text-xs font-bold transition shadow-md cursor-pointer"
+          >
+            {isGate094R2Running ? <RefreshCw className="w-4 h-4 animate-spin" /> : <Play className="w-4 h-4 fill-white" />}
+            {isGate094R2Running ? 'Benchmarking...' : 'Execute SECP-094-R2 Gate'}
+          </button>
+        </div>
+
+        {gate094R2Result && (
+          <div className="space-y-4">
+            <div className={`p-4 rounded-lg border flex items-center justify-between ${
+              gate094R2Result.success 
+                ? 'bg-emerald-950/40 border-emerald-800/80 text-emerald-300' 
+                : 'bg-rose-950/40 border-rose-800/80 text-rose-300'
+            }`}>
+              <div className="flex items-center space-x-3">
+                {gate094R2Result.success ? (
+                  <ShieldCheck className="w-8 h-8 text-emerald-400" />
+                ) : (
+                  <ShieldAlert className="w-8 h-8 text-rose-400" />
+                )}
+                <div>
+                  <div className="text-sm font-bold tracking-wide">
+                    {gate094R2Result.success ? 'SECP-094-R2 PASSED: MATH CONTRACT SECURE' : 'SECP-094-R2 FAILED: ACCURACY/SINGULARITY VIOLATION'}
+                  </div>
+                  <div className="text-[10px] text-slate-400 font-mono mt-0.5">
+                    Decision: {gate094R2Result.decision} | Timestamp: {gate094R2Result.timestamp}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="bg-slate-950 border border-slate-800 rounded-lg p-4 space-y-3">
+                <h3 className="text-xs font-bold text-slate-400 uppercase tracking-widest border-b border-slate-800 pb-2">Accuracy Benchmarks (N={gate094R2Result.accuracy.totalCases.toLocaleString()})</h3>
+                <div className="grid grid-cols-2 gap-x-4 gap-y-2 text-[11px]">
+                  <div className="flex justify-between">
+                    <span className="text-slate-500">RMS Error:</span>
+                    <span className={gate094R2Result.accuracy.rmsError < 1e-6 ? "text-emerald-400 font-mono" : "text-rose-400 font-mono"}>
+                      {gate094R2Result.accuracy.rmsError.toExponential(6)}
+                    </span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-slate-500">Max Abs Error:</span>
+                    <span className="text-rose-400 font-mono">{gate094R2Result.accuracy.maxAbsError.toExponential(6)}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-slate-500">P95 Error:</span>
+                    <span className="text-slate-300 font-mono">{gate094R2Result.accuracy.p95.toExponential(6)}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-slate-500">P99 Error:</span>
+                    <span className="text-slate-300 font-mono">{gate094R2Result.accuracy.p99.toExponential(6)}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-slate-500">P99.9 Error:</span>
+                    <span className="text-amber-400 font-mono">{gate094R2Result.accuracy.p999.toExponential(6)}</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-slate-950 border border-slate-800 rounded-lg p-4 space-y-3">
+                <h3 className="text-xs font-bold text-slate-400 uppercase tracking-widest border-b border-slate-800 pb-2">Singularity Contract Verification</h3>
+                <div className="space-y-2 text-[11px]">
+                  <div className="flex justify-between">
+                    <span className="text-slate-500">Threshold:</span>
+                    <span className="text-slate-300 font-mono">{gate094R2Result.singularity.threshold.toExponential(1)}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-slate-500">Expected Status:</span>
+                    <span className="text-slate-300 font-mono">{gate094R2Result.singularity.expectedStatus}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-slate-500">Contract Passed:</span>
+                    <span className={gate094R2Result.singularity.passed ? "text-emerald-400 font-bold" : "text-rose-400 font-bold"}>
+                      {gate094R2Result.singularity.passed ? 'YES' : 'NO'}
+                    </span>
+                  </div>
+                  <div className="p-2 bg-slate-900 rounded border border-slate-800 text-[10px] text-slate-400 font-mono">
+                    {gate094R2Result.singularity.details}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-slate-950 border border-slate-800 rounded-lg p-4 space-y-2">
+              <h3 className="text-xs font-bold text-slate-400 uppercase tracking-widest border-b border-slate-800 pb-2">Worst-Case Input Vector Forensic</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-[10px] font-mono">
+                <div>
+                  <span className="text-slate-500 block mb-1 uppercase">Input Unit Vector (vi, vj, vk):</span>
+                  <div className="bg-slate-900 p-2 rounded text-slate-300">
+                    [{gate094R2Result.accuracy.worstCase.input.map((v: number) => v.toPrecision(17)).join(', ')}]
+                  </div>
+                </div>
+                <div>
+                  <span className="text-slate-500 block mb-1 uppercase">Output Deviation (A, C):</span>
+                  <div className="grid grid-cols-2 gap-2">
+                    <div className="bg-slate-900 p-2 rounded">
+                      <div className="text-slate-500 uppercase text-[8px]">Expected</div>
+                      <div className="text-emerald-400">[{gate094R2Result.accuracy.worstCase.expected.map((v: number) => v.toFixed(6)).join(', ')}]</div>
+                    </div>
+                    <div className="bg-slate-900 p-2 rounded">
+                      <div className="text-slate-500 uppercase text-[8px]">Actual</div>
+                      <div className="text-rose-400">[{gate094R2Result.accuracy.worstCase.actual.map((v: number) => v.toFixed(6)).join(', ')}]</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {!gate094R2Result && !isGate094R2Running && (
+          <div className="py-8 text-center text-slate-500 text-sm border border-dashed border-slate-800 rounded-lg">
+            Click <span className="text-emerald-400 font-semibold">Execute SECP-094-R2 Gate</span> to verify the mathematical contract.
+          </div>
+        )}
+      </div>
+
+      {/* SECP-094 Native CAM 5-Axis Kinematics Gate */}
+      <div className="bg-slate-900 border border-slate-800 rounded-xl p-5 text-slate-100 shadow-xl space-y-4 mt-6">
+        <div className="flex items-center justify-between pb-3 border-b border-slate-800">
+          <div>
+            <h2 className="text-lg font-bold flex items-center gap-2 text-indigo-400">
+              <Compass className="w-5 h-5 text-indigo-400" />
+              SECP-094 — Native CAM 5-Axis Kinematics Gate
+            </h2>
+            <p className="text-xs text-slate-400 mt-0.5">
+              Numerical verification of native C-compiled 5-axis inverse kinematics for industrial table-table machine configurations.
+            </p>
+          </div>
+          <button
+            onClick={handleRunGate094}
+            disabled={isGate094Running}
+            className="flex items-center gap-2 px-4 py-2 bg-indigo-600 hover:bg-indigo-500 disabled:bg-slate-700 text-white rounded-lg text-xs font-bold transition shadow-md cursor-pointer"
+          >
+            {isGate094Running ? <RefreshCw className="w-4 h-4 animate-spin" /> : <Play className="w-4 h-4 fill-white" />}
+            {isGate094Running ? 'Verifying Kinematics...' : 'Execute SECP-094 Gate'}
+          </button>
+        </div>
+
+        {!gate094Result && !isGate094Running && (
+          <div className="py-8 text-center text-slate-500 text-sm border border-dashed border-slate-800 rounded-lg">
+            Click <span className="text-indigo-400 font-semibold">Execute SECP-094 Gate</span> to verify the native CAM transformation path.
+          </div>
+        )}
+
+        {gate094Result && (
+          <div className="space-y-4">
+            <div className={`p-4 rounded-lg border flex items-center justify-between ${
+              gate094Result.success 
+                ? 'bg-emerald-950/40 border-emerald-800/80 text-emerald-300' 
+                : 'bg-rose-950/40 border-rose-800/80 text-rose-300'
+            }`}>
+              <div className="flex items-center space-x-3">
+                {gate094Result.success ? (
+                  <ShieldCheck className="w-8 h-8 text-emerald-400" />
+                ) : (
+                  <ShieldAlert className="w-8 h-8 text-rose-400" />
+                )}
+                <div>
+                  <div className="text-sm font-bold tracking-wide">
+                    {gate094Result.success ? 'SECP-094 PASSED: NATIVE CAM KERNEL ACTIVE' : 'SECP-094 FAILED: KINEMATIC OR ARCH AUDIT FAILURE'}
+                  </div>
+                  <div className="text-[10px] text-slate-400 font-mono mt-0.5">
+                    CAM status: {gate094Result.success ? '5-Axis IK Invariants Verified' : 'Accuracy / Fabric / Blocked'}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+              {gate094Result.checks.map((check: any, idx: number) => (
+                <div key={idx} className="p-3 bg-slate-950 border border-slate-800 rounded-lg flex items-center justify-between text-xs">
+                  <div className="space-y-1">
+                    <div className="font-semibold text-slate-200">{check.criterion}</div>
+                    <div className="text-[10px] text-slate-400 font-mono">{check.details}</div>
+                  </div>
+                  {check.passed ? (
+                    <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                  ) : (
+                    <XCircle className="w-4 h-4 text-rose-400 shrink-0" />
+                  )}
+                </div>
+              ))}
             </div>
           </div>
         )}

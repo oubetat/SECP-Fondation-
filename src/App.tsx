@@ -32,6 +32,7 @@ import { CadKernelInspector } from './components/CadKernelInspector';
 import { NextGen3dEnginePanel } from './components/NextGen3dEnginePanel';
 import { AdvancedKinematicsPanel } from './components/AdvancedKinematicsPanel';
 import { InteractiveEngineeringWorkbench } from './components/InteractiveEngineeringWorkbench';
+import { EnterprisePLMPanel } from './components/EnterprisePLMPanel';
 import { CadGeometryKernel, CadSolidEntity } from './engine/cadKernel';
 import { AssemblyEngine, AssemblyComponentItem } from './engine/assembly';
 import { ProjectStorageEngine, SecpCadProjectData } from './engine/projectStorage';
@@ -96,6 +97,7 @@ export function App() {
     | 'PATCH-044'
     | 'PATCH-045'
     | 'PATCH-084'
+    | 'PATCH-088'
     | 'MVP-ARCH'
     | 'TEST-RUNNER'
   >('PATCH-084');
@@ -149,6 +151,7 @@ export function App() {
     { id: 'PATCH-044', name: '2D Technical Drawing Engine', icon: Edit3, color: 'text-sky-400' },
     { id: 'PATCH-045', name: 'Advanced Assembly & Kinematics', icon: Activity, color: 'text-amber-400' },
     { id: 'PATCH-084', name: 'Production Integration Workbench', icon: Cpu, color: 'text-cyan-400' },
+    { id: 'PATCH-088', name: 'Enterprise PLM & ECO System', icon: ShieldCheck, color: 'text-emerald-400' },
     { id: 'MVP-ARCH', name: 'MVP Infrastructure', icon: Server, color: 'text-sky-400' },
     { id: 'TEST-RUNNER', name: 'Tests & Regression', icon: ShieldCheck, color: 'text-emerald-400' },
   ];
@@ -539,6 +542,17 @@ export function App() {
 
           {activePatchTab === 'PATCH-084' && (
             <InteractiveEngineeringWorkbench />
+          )}
+
+          {activePatchTab === 'PATCH-088' && (
+            <div className="space-y-6">
+              <EnterprisePLMPanel />
+              <div className="bg-slate-900 border border-slate-800 rounded-xl p-6 text-slate-400 text-xs italic">
+                The Enterprise PLM system provides the orchestration layer for the entire engineering thread. 
+                Use the buttons above to initialize the environment and execute a full ECO (Engineering Change Order) scenario 
+                that ripples through CAD, Assembly, BOM, CAM, and Simulation.
+              </div>
+            </div>
           )}
 
           {activePatchTab === 'MVP-ARCH' && (

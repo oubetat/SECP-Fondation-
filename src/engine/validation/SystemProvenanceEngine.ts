@@ -60,6 +60,20 @@ export class SystemProvenanceEngine {
     };
   }
 
+  /**
+   * Records a granular stage of an engineering process (e.g. simulation, toolpath generation)
+   */
+  public static recordStage(stageId: string, payload: any): { stageId: string; recordHash: string } {
+    const dataStr = JSON.stringify(payload);
+    const hash = this.computeHash(`${stageId}:${dataStr}`);
+    const recordHash = `PROV-${stageId}-${hash.toUpperCase()}`;
+    
+    return {
+      stageId,
+      recordHash
+    };
+  }
+
   private static computeHash(data: string): string {
     let hash = 0;
     for (let i = 0; i < data.length; i++) {

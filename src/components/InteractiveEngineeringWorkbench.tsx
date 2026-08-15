@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ProductionUIBridge } from '../engine/integration/ProductionUIBridge';
 import { ProductionOperationType, ProductionExecutionResult } from '../engine/integration/contracts/ProductionCommandContracts';
+import { EnterprisePLMPanel } from './EnterprisePLMPanel';
 import {
   Play,
   RefreshCw,
@@ -475,6 +476,11 @@ export const InteractiveEngineeringWorkbench: React.FC = () => {
           )}
         </div>
       )}
+
+      {/* SECP-088: Full Industrial PLM & ECO Life Cycle */}
+      <div className="pt-4 border-t border-slate-800">
+        <EnterprisePLMPanel />
+      </div>
     </div>
   );
 };

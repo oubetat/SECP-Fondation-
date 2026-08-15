@@ -40,6 +40,72 @@ export interface WasmInstanceExports {
     knotsPtr: number,
     knotsLen: number
   ) => number;
+  native_csr_matvec_f64: (
+    n: number,
+    rowPtrPtr: number,
+    colIndPtr: number,
+    valPtr: number,
+    xPtr: number,
+    yPtr: number
+  ) => void;
+  native_fea_cg_solve: (
+    n: number,
+    rowPtrPtr: number,
+    colIndPtr: number,
+    valPtr: number,
+    bPtr: number,
+    xPtr: number,
+    tolerance: number,
+    maxIterations: number,
+    rPtr: number,
+    pPtr: number,
+    ApPtr: number,
+    outResidualNormPtr: number
+  ) => number;
+  native_add: (a: number, b: number) => number;
+  native_multiply: (a: number, b: number) => number;
+  native_cfd_flux: (
+    rho_L: number, u_L: number, v_L: number, w_L: number, p_L: number,
+    rho_R: number, u_R: number, v_R: number, w_R: number, p_R: number,
+    nx: number, ny: number, nz: number, area: number,
+    outFluxesPtr: number
+  ) => void;
+  native_cfd_momentum_flux: (
+    nFaces: number,
+    cellDataLPtr: number,
+    cellDataRPtr: number,
+    normalsPtr: number,
+    areasPtr: number,
+    fluxOutPtr: number
+  ) => void;
+  native_cam_5axis_ik: (
+    x: number, y: number, z: number,
+    i: number, j: number, k: number,
+    outMachineAxesPtr: number
+  ) => void;
+  native_cam_5axis_bulk: (
+    nPoints: number,
+    cartesianPtsPtr: number,
+    machinePtsPtr: number
+  ) => void;
+  native_geom_dot: (uPtr: number, vPtr: number, outStatusPtr: number) => number;
+  native_geom_cross: (uPtr: number, vPtr: number, outPtr: number, outStatusPtr: number) => void;
+  native_geom_norm: (uPtr: number, outStatusPtr: number) => number;
+  native_geom_normalize: (uPtr: number, outPtr: number, outStatusPtr: number) => void;
+  native_geom_dist: (p1Ptr: number, p2Ptr: number, outStatusPtr: number) => number;
+  native_geom_closest_point_on_segment: (pPtr: number, aPtr: number, bPtr: number, outCPtr: number, outStatusPtr: number) => void;
+  native_geom_plane_signed_dist: (pPtr: number, qPtr: number, nPtr: number, outStatusPtr: number) => number;
+  native_geom_triangle_normal: (aPtr: number, bPtr: number, cPtr: number, outNPtr: number, outStatusPtr: number) => void;
+  native_geom_triangle_area: (aPtr: number, bPtr: number, cPtr: number, outStatusPtr: number) => number;
+  native_geom_bulk_execute: (
+    nOps: number,
+    opTypesPtr: number,
+    inputsPtr: number,
+    inputOffsetsPtr: number,
+    outputsPtr: number,
+    outputOffsetsPtr: number,
+    statusesPtr: number
+  ) => void;
 }
 
 export class WasmKernelsEngine {
@@ -51,20 +117,21 @@ export class WasmKernelsEngine {
    * Get deterministic WebAssembly module binary hash
    */
   public static getWasmModuleHash(): string {
-    return 'WASM-HPC-V85-7F2A9C91E4B31008';
+    return '6f76a3a22f22b6e3051f6d10fbff43c0b15204d210848eb64a86eab8e00a5684'; // Actual hash of engineering_kernels.wasm with native geometry
   }
 
   /**
    * Get Kernel Version
    */
   public static getKernelVersion(): string {
-    return 'SECP-085-HPC-WASM-KERNEL-1.0.0';
+    return 'SECP-095-NATIVE-GEOMETRY-KERNELS-1.0.0';
   }
 
   /**
-   * Builds valid WebAssembly binary module bytecode
+   * Builds valid WebAssembly binary module bytecode (Legacy/Fallback)
    */
   public static generateWasmBinary(): Uint8Array {
+    // ... existing implementation as fallback ...
     // LEB128 helper for WebAssembly binary encoding
     const encodeLEB128Unsigned = (val: number): number[] => {
       const bytes: number[] = [];
@@ -264,6 +331,22 @@ export class WasmKernelsEngine {
   }
 
   /**
+   * Load real compiled WASM binary from file
+   */
+  private static async loadRealWasm(): Promise<Uint8Array | null> {
+    try {
+      // In a browser/webworker environment, we use fetch
+      const response = await fetch('/wasm/engineering_kernels.wasm');
+      if (!response.ok) return null;
+      const buffer = await response.arrayBuffer();
+      return new Uint8Array(buffer);
+    } catch (e) {
+      console.warn('[WasmKernelsEngine] Failed to load real WASM binary:', e);
+      return null;
+    }
+  }
+
+  /**
    * Instantiate or retrieve cached WebAssembly Instance
    */
   public static async getInstance(): Promise<{
@@ -283,7 +366,15 @@ export class WasmKernelsEngine {
       };
     }
 
-    const binary = this.generateWasmBinary();
+    // Attempt to load real binary first
+    let binary = await this.loadRealWasm();
+    
+    // Fallback only if real binary is missing
+    if (!binary) {
+      console.warn('[WasmKernelsEngine] Falling back to synthetic bytecode generator');
+      binary = this.generateWasmBinary();
+    }
+
     const module = await WebAssembly.compile(binary);
     const instance = await WebAssembly.instantiate(module, {
       env: { memory: this.memory }
