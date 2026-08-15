@@ -6,6 +6,7 @@ import { HardAcceptanceGate079 } from '../engine/validation/HardAcceptanceGate07
 import { HardAcceptanceGate080 } from '../engine/validation/HardAcceptanceGate080';
 import { HardAcceptanceGate082 } from '../engine/validation/HardAcceptanceGate082';
 import { HardAcceptanceGate083 } from '../engine/validation/HardAcceptanceGate083';
+import { HardAcceptanceGate084 } from '../engine/validation/HardAcceptanceGate084';
 import React, { useState } from 'react';
 import { TestRunnerEngine, TestSuiteReport } from '../engine/testRunner';
 import { Play, CheckCircle, XCircle, ShieldCheck, ShieldAlert, RefreshCw, Terminal, CheckCircle2, Compass, Link2, Cpu, FileCheck, Layers, Flame, Activity } from 'lucide-react';

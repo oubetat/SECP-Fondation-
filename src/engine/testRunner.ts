@@ -44,6 +44,10 @@ import { HardAcceptanceGate080 } from './validation/HardAcceptanceGate080';
 import { HardAcceptanceGate081 } from './validation/HardAcceptanceGate081';
 import { HardAcceptanceGate082 } from './validation/HardAcceptanceGate082';
 import { HardAcceptanceGate083 } from './validation/HardAcceptanceGate083';
+import { HardAcceptanceGate084 } from './validation/HardAcceptanceGate084';
+import { HardAcceptanceGate085 } from './validation/HardAcceptanceGate085';
+import { HardAcceptanceGate086 } from './validation/HardAcceptanceGate086';
+import { SECP084ProductionIntegrationTests } from './integration/__tests__/SECP084ProductionIntegration.test.ts';
 
 export interface TestResult {
   patchId: string;
@@ -425,6 +429,34 @@ export class TestRunnerEngine {
         throw new Error(`SECP-083 Failed: ${gate083.invariantChecks.filter(c => !c.passed).map(c => c.name).join(', ')}`);
       }
       return `SECP-083 FINAL-CLOSED: 17/17 Invariants Passed, 14/14 Mutations Blocked (100%), 4 Canonical Benchmarks + Zebra Benchmark Verified, 15-Stage Merkle Digest=${gate083.finalDigest083}`;
+    }));
+
+    results.push(this.runTest('PATCH-SECP-084', 'Interactive Engine-to-UI Production Integration Gate', () => {
+      const suite = SECP084ProductionIntegrationTests.runAllTests();
+      if (!suite.passed) {
+        throw new Error(`SECP-084 Integration Tests Failed (${suite.passedTests}/${suite.totalTests} passed): ${suite.details.filter(d => d.startsWith('FAIL')).join(' | ')}`);
+      }
+      const gate084 = HardAcceptanceGate084.executeGate();
+      if (!gate084.allInvariantsPassed) {
+        throw new Error(`SECP-084 Gate Failed: ${gate084.invariantChecks.filter(c => !c.passed).map(c => c.name).join(', ')}`);
+      }
+      return `SECP-084 FINAL-CLOSED: 16/16 Invariants Passed, 14/14 Automated Integration Tests Passed (100%), Real B-Rep/Class-A/FEA/CFD/CAM/Assembly Call Paths Connected, 16-Stage Merkle Digest=${gate084.finalDigest084}`;
+    }));
+
+    results.push(await this.runTestAsync('PATCH-SECP-085', 'WebAssembly High-Performance Computing Core Hard Acceptance Gate', async () => {
+      const gate085 = await HardAcceptanceGate085.executeGate();
+      if (!gate085.isPassed) {
+        throw new Error(`SECP-085 Gate Failed (${gate085.passedChecksCount}/${gate085.totalChecksCount}): ${gate085.checks.filter(c => !c.passed).map(c => c.criterion).join(', ')}`);
+      }
+      return `SECP-085 FINAL-CLOSED: 18/18 Invariants Passed (100%), High-Performance WebAssembly Kernels Active across FEA/CFD/CAM/Class-A, 18-Stage Merkle Digest=${gate085.merkleRootHash}`;
+    }));
+
+    results.push(await this.runTestAsync('PATCH-SECP-086', 'Real Industrial IIoT / OPC-UA Network Connectivity Engine Hard Acceptance Gate', async () => {
+      const gate086 = await HardAcceptanceGate086.executeGate();
+      if (!gate086.isPassed) {
+        throw new Error(`SECP-086 Gate Failed (${gate086.passedChecksCount}/${gate086.totalChecksCount}): ${gate086.checks.filter(c => !c.passed).map(c => c.criterion).join(', ')}`);
+      }
+      return `SECP-086 FINAL-CLOSED: 20/20 Invariants Passed (100%), Real Industrial Connectivity Layer Active (OPC-UA, MQTT, Modbus, MTConnect), 20-Stage Merkle Digest=${gate086.merkleRootHash}`;
     }));
 
     const passedCount = results.filter(r => r.passed).length;

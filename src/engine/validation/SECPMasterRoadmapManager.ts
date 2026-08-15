@@ -429,6 +429,36 @@ export class SECPMasterRoadmapManager {
           prerequisites: ['SECP-082'],
           governanceGatesRequired: ['Gate083'],
           status: 'LOCKED_FROZEN'
+        },
+        'SECP-084': {
+          patchId: 'SECP-084',
+          name: 'Interactive Engine-to-UI Production Integration Gate',
+          phase: 'INDUSTRIAL_SCALE',
+          objective: 'Production Engine Integration Layer unifying B-Rep, Class-A Surfacing, Linear FEA, 3D FVM CFD, 5-Axis CAM, and Assembly Kinematics call paths directly to the interactive UI. Unified command & execution contracts, execution lifecycle states (QUEUED, RUNNING, VERIFYING, COMPLETED), independent verification boundaries, rejection & stale revision guards, timeout/resource limits, visualization payload contracts, deterministic replay audit, and 16-stage Merkle cryptographic manufacturing provenance chain.',
+          targetOutcome: 'Full interactive production integration of advanced engineering solvers with zero gate-only execution, zero mock paths, 100% verifier boundary enforcement, and 16-stage Merkle audit chain.',
+          prerequisites: ['SECP-083'],
+          governanceGatesRequired: ['Gate084'],
+          status: 'LOCKED_FROZEN'
+        },
+        'SECP-085': {
+          patchId: 'SECP-085',
+          name: 'WebAssembly High-Performance Computing Core Gate',
+          phase: 'INDUSTRIAL_SCALE',
+          objective: 'High-Performance WebAssembly (WASM) compute core accelerating Sparse Matrix CSR, Conjugate Gradient FEA solvers, 3D FVM CFD momentum fluxes, 5-Axis CAM kinematic toolpath transforms, and Class-A NURBS differential geometry. Asynchronous Web Worker thread isolation, TypedArray zero/low-copy transfers, cross-runtime numerical equivalence verification (tol <= 1e-6), benchmark harness across Small/Medium/Large/Stress scales, deterministic execution, timeout/cancellation controls, controlled TS fallback transparency, and 18-stage Merkle cryptographic manufacturing provenance chain.',
+          targetOutcome: 'High-performance native WebAssembly compute kernels active across FEA, CFD, CAM, and Class-A with 100% numerical equivalence, zero UI thread freezing, controlled fallback transparency, and 18-stage Merkle audit chain.',
+          prerequisites: ['SECP-084'],
+          governanceGatesRequired: ['Gate085'],
+          status: 'LOCKED_FROZEN'
+        },
+        'SECP-086': {
+          patchId: 'SECP-086',
+          name: 'Real Industrial IIoT / OPC-UA Network Connectivity Engine Gate',
+          phase: 'INDUSTRIAL_SCALE',
+          objective: 'Real Industrial IIoT Connectivity Core supporting real-world OPC-UA, MQTT, Modbus TCP/RTU, and MTConnect protocols. Unified IndustrialProtocolConnector abstraction, Secure Edge Gateway boundary, normalized telemetry envelopes, source/ingest timestamp integrity, sliding window deduplication, sequence gap tracking, unit canonicalization, EdgeBufferManager bounded queue with audit logging, exponential backoff state machine, Digital Twin propagation, statistical anomaly detection, physics-informed RUL prediction, SystemProvenanceEngine cryptographic audit chain, credential isolation, and 10,000 msg/sec performance benchmark.',
+          targetOutcome: 'Real industrial network connectivity layer operating across OPC-UA, MQTT, Modbus, and MTConnect with 100% zero-mock live data enforcement, zero silent packet loss, 10,000 msg/sec throughput, and 20-stage Merkle audit chain.',
+          prerequisites: ['SECP-085'],
+          governanceGatesRequired: ['Gate086'],
+          status: 'LOCKED_FROZEN'
         }
       }
     };

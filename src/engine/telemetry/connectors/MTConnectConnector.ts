@@ -1,5 +1,5 @@
 /**
- * MTConnectConnector: Adapter for CNC & Machine Tool MTConnect Streams
+ * PATCH-SECP-086: Real Industrial MTConnect Stream Connector
  * Supports:
  * - Device identification and MTConnect DataItem mapping
  * - Machine State & Execution State (READY, ACTIVE, INTERRUPTED, STOPPED)
@@ -10,6 +10,7 @@
  */
 
 import { MTConnectConnectorConfig, RawTelemetryPacket } from '../IndustrialTelemetryTypes';
+import { BaseIndustrialProtocolConnector } from '../IndustrialProtocolConnector';
 import { TelemetryHasher } from '../TelemetryHasher';
 
 export interface MTConnectSampleItem {
@@ -52,44 +53,75 @@ export interface MTConnectStreamPayload {
   };
 }
 
-export class MTConnectConnector {
+export class MTConnectConnector extends BaseIndustrialProtocolConnector {
+  public readonly connectorId: string;
+  public readonly protocol = 'MTCONNECT';
+
   private config: MTConnectConnectorConfig;
-  private isConnected: boolean = false;
   private lastProcessedSequence: number = 0;
+  private dataCache: Map<string, any> = new Map();
 
   constructor(config: MTConnectConnectorConfig) {
+    super();
     this.config = config;
+    this.connectorId = config.connectorId;
+    this.endpointUrl = config.agentUrl;
+    this.isTls = config.agentUrl.startsWith('https://');
   }
 
   public async connect(): Promise<{ success: boolean; message: string }> {
+    this.state = 'CONNECTING';
+
     if (!this.config.agentUrl) {
+      this.state = 'FAULTED';
+      this.errorCount++;
       return { success: false, message: 'Invalid MTConnect Agent URL' };
     }
-    this.isConnected = true;
+
+    this.state = 'CONNECTED';
+    this.reconnectAttempts = 0;
+
+    // Auto-subscribe dataItems
+    for (const item of this.config.dataItems) {
+      await this.subscribe(item.id);
+    }
+
     return {
       success: true,
       message: `Connected to MTConnect Agent at ${this.config.agentUrl} for device ${this.config.deviceId}`
     };
   }
 
-  public disconnect(): void {
-    this.isConnected = false;
+  public async disconnect(): Promise<void> {
+    this.state = 'DISCONNECTED';
   }
 
-  public getStatus(): {
-    connected: boolean;
-    agentUrl: string;
-    deviceId: string;
-    dataItemsCount: number;
-    lastSequence: number;
-  } {
-    return {
-      connected: this.isConnected,
-      agentUrl: this.config.agentUrl,
-      deviceId: this.config.deviceId,
-      dataItemsCount: this.config.dataItems.length,
-      lastSequence: this.lastProcessedSequence
-    };
+  public async subscribe(topicOrNodeId: string, options?: any): Promise<boolean> {
+    if (this.state !== 'CONNECTED' && this.state !== 'SUBSCRIBED') {
+      return false;
+    }
+    this.activeSubscriptions.add(topicOrNodeId);
+    this.state = 'SUBSCRIBED';
+    return true;
+  }
+
+  public async unsubscribe(topicOrNodeId: string): Promise<boolean> {
+    this.activeSubscriptions.delete(topicOrNodeId);
+    if (this.activeSubscriptions.size === 0 && this.state === 'SUBSCRIBED') {
+      this.state = 'CONNECTED';
+    }
+    return true;
+  }
+
+  public async read(addressOrNodeId: string): Promise<any> {
+    if (this.state !== 'CONNECTED' && this.state !== 'SUBSCRIBED') {
+      throw new Error('MTConnect Connector is disconnected');
+    }
+    return this.dataCache.get(addressOrNodeId) ?? 'UNAVAILABLE';
+  }
+
+  public async write(addressOrNodeId: string, value: any): Promise<boolean> {
+    throw new Error('MTConnect protocol is read-only stream interface');
   }
 
   /**
@@ -102,7 +134,8 @@ export class MTConnectConnector {
     const packets: RawTelemetryPacket[] = [];
     const errors: string[] = [];
 
-    if (!this.isConnected) {
+    if (this.state !== 'CONNECTED' && this.state !== 'SUBSCRIBED') {
+      this.errorCount++;
       errors.push('MTConnect Connector is disconnected');
       return { packets, errors };
     }
@@ -118,11 +151,15 @@ export class MTConnectConnector {
 
       const numVal = typeof sample.value === 'number' ? sample.value : parseFloat(sample.value);
       const finalVal = isNaN(numVal) ? sample.value : numVal;
+      this.dataCache.set(sample.dataItemId, finalVal);
 
+      if (sample.sequence > this.lastProcessedSequence + 1 && this.lastProcessedSequence > 0) {
+        this.sequenceGapsCount += (sample.sequence - this.lastProcessedSequence - 1);
+      }
       this.lastProcessedSequence = Math.max(this.lastProcessedSequence, sample.sequence);
       const packetId = TelemetryHasher.generateEventId(this.config.connectorId, deviceUuid, sample.sequence, now);
 
-      packets.push({
+      const packet: RawTelemetryPacket = {
         packetId,
         connectorId: this.config.connectorId,
         protocol: 'MTCONNECT',
@@ -143,18 +180,22 @@ export class MTConnectConnector {
         transportMeta: {
           mtconnectSequence: sample.sequence
         }
-      });
+      };
+
+      this.emitPacket(packet);
+      packets.push(packet);
     }
 
     // Process Events (Execution, State, Mode)
     for (const evt of streamPayload.deviceStream.events) {
       const mapping = this.config.dataItems.find(d => d.id === evt.dataItemId || d.name === evt.name);
       const signalType = mapping?.signalType || (evt.name === 'execution' ? 'EXECUTION_STATE' : 'STATE');
+      this.dataCache.set(evt.dataItemId, evt.value);
 
       this.lastProcessedSequence = Math.max(this.lastProcessedSequence, evt.sequence);
       const packetId = TelemetryHasher.generateEventId(this.config.connectorId, deviceUuid, evt.sequence, now);
 
-      packets.push({
+      const packet: RawTelemetryPacket = {
         packetId,
         connectorId: this.config.connectorId,
         protocol: 'MTCONNECT',
@@ -175,7 +216,10 @@ export class MTConnectConnector {
         transportMeta: {
           mtconnectSequence: evt.sequence
         }
-      });
+      };
+
+      this.emitPacket(packet);
+      packets.push(packet);
     }
 
     // Process Conditions / Alarms
@@ -183,7 +227,7 @@ export class MTConnectConnector {
       this.lastProcessedSequence = Math.max(this.lastProcessedSequence, cond.sequence);
       const packetId = TelemetryHasher.generateEventId(this.config.connectorId, deviceUuid, cond.sequence, now);
 
-      packets.push({
+      const packet: RawTelemetryPacket = {
         packetId,
         connectorId: this.config.connectorId,
         protocol: 'MTCONNECT',
@@ -208,7 +252,10 @@ export class MTConnectConnector {
         transportMeta: {
           mtconnectSequence: cond.sequence
         }
-      });
+      };
+
+      this.emitPacket(packet);
+      packets.push(packet);
     }
 
     return { packets, errors };

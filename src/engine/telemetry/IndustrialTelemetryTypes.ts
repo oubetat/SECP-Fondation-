@@ -44,6 +44,7 @@ export type DropReason =
   | 'UNAUTHORIZED_DEVICE'
   | 'PHYSICAL_BOUNDS_VIOLATED'
   | 'CHANNEL_ISOLATION_VIOLATION'
+  | 'SECURITY_VIOLATION'
   | 'UNKNOWN';
 
 export type SignalType = 
@@ -220,32 +221,34 @@ export interface TelemetryStreamMetrics {
  */
 export interface MQTTConnectorConfig {
   connectorId: string;
+  protocol?: IndustrialProtocol;
   brokerUrl: string;
   clientId: string;
   username?: string;
   password?: string;
   authToken?: string;
-  tlsEnabled: boolean;
+  tlsEnabled?: boolean;
   tlsCaCert?: string;
   topicSubscriptions: Array<{
     topic: string;
     qos: 0 | 1 | 2;
-    signalType: SignalType;
-    unit: EngineeringUnit;
-    deviceId: string;
+    signalType?: SignalType;
+    unit?: EngineeringUnit;
+    deviceId?: string;
   }>;
-  keepAliveSec: number;
-  reconnectBackoffMs: number;
-  maxReconnectAttempts: number;
-  deduplicationWindowMs: number;
+  keepAliveSec?: number;
+  reconnectBackoffMs?: number;
+  maxReconnectAttempts?: number;
+  deduplicationWindowMs?: number;
 }
 
 export interface OPCUAConnectorConfig {
   connectorId: string;
+  protocol?: IndustrialProtocol;
   endpointUrl: string;
-  securityMode: 'None' | 'Sign' | 'SignAndEncrypt';
-  securityPolicy: 'None' | 'Basic256Sha256' | 'Aes128_Sha256_RsaOaep';
-  authType: 'Anonymous' | 'UserPassword' | 'Certificate';
+  securityMode?: 'None' | 'Sign' | 'SignAndEncrypt';
+  securityPolicy?: 'None' | 'Basic256Sha256' | 'Aes128_Sha256_RsaOaep';
+  authType?: 'Anonymous' | 'UserPassword' | 'Certificate';
   username?: string;
   password?: string;
   nodeMappings: Array<{
@@ -254,11 +257,11 @@ export interface OPCUAConnectorConfig {
     deviceId: string;
     signalType: SignalType;
     unit: EngineeringUnit;
-    samplingIntervalMs: number;
-    queueSize: number;
+    samplingIntervalMs?: number;
+    queueSize?: number;
   }>;
-  timeoutMs: number;
-  autoReconnect: boolean;
+  timeoutMs?: number;
+  autoReconnect?: boolean;
 }
 
 export interface ModbusRegisterMapping {
@@ -275,6 +278,7 @@ export interface ModbusRegisterMapping {
 
 export interface ModbusConnectorConfig {
   connectorId: string;
+  protocol?: IndustrialProtocol;
   mode: 'TCP' | 'RTU';
   host?: string;
   port?: number;
@@ -282,27 +286,29 @@ export interface ModbusConnectorConfig {
   baudRate?: number;
   slaveId: number;
   registerMappings: ModbusRegisterMapping[];
-  pollIntervalMs: number;
-  timeoutMs: number;
-  crcValidation: boolean;
+  pollIntervalMs?: number;
+  pollingIntervalMs?: number;
+  timeoutMs?: number;
+  crcValidation?: boolean;
 }
 
 export interface MTConnectConnectorConfig {
   connectorId: string;
+  protocol?: IndustrialProtocol;
   agentUrl: string;
   deviceId: string;
   dataItems: Array<{
     id: string;
-    name: string;
-    type: string;
+    name?: string;
+    type?: string;
     subType?: string;
-    category: 'SAMPLE' | 'EVENT' | 'CONDITION';
-    signalType: SignalType;
-    unit: EngineeringUnit;
+    category?: 'SAMPLE' | 'EVENT' | 'CONDITION';
+    signalType?: SignalType;
+    unit?: EngineeringUnit;
   }>;
-  pollingIntervalMs: number;
-  sampleBufferLength: number;
-  timeoutMs: number;
+  pollingIntervalMs?: number;
+  sampleBufferLength?: number;
+  timeoutMs?: number;
 }
 
 /**
