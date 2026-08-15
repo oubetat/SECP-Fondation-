@@ -43,6 +43,7 @@ import { HardAcceptanceGate079 } from './validation/HardAcceptanceGate079';
 import { HardAcceptanceGate080 } from './validation/HardAcceptanceGate080';
 import { HardAcceptanceGate081 } from './validation/HardAcceptanceGate081';
 import { HardAcceptanceGate082 } from './validation/HardAcceptanceGate082';
+import { HardAcceptanceGate083 } from './validation/HardAcceptanceGate083';
 
 export interface TestResult {
   patchId: string;
@@ -416,6 +417,14 @@ export class TestRunnerEngine {
         throw new Error(`SECP-082 Failed: ${gate082.mandatoryTests.filter(t => !t.passed).map(t => t.name).join(', ')}`);
       }
       return `SECP-082 FINAL-CLOSED: 16/16 Invariants Passed, 12/12 Mutations Blocked (100%), 3 Benchmarks Verified, 14-Stage Merkle Digest=${gate082.finalVerdictHash}`;
+    }));
+
+    results.push(this.runTest('PATCH-SECP-083', 'Advanced Class-A Surfacing & 5-Axis Simultaneous CAM Verification Gate', () => {
+      const gate083 = HardAcceptanceGate083.executeGate();
+      if (!gate083.allInvariantsPassed) {
+        throw new Error(`SECP-083 Failed: ${gate083.invariantChecks.filter(c => !c.passed).map(c => c.name).join(', ')}`);
+      }
+      return `SECP-083 FINAL-CLOSED: 17/17 Invariants Passed, 14/14 Mutations Blocked (100%), 4 Canonical Benchmarks + Zebra Benchmark Verified, 15-Stage Merkle Digest=${gate083.finalDigest083}`;
     }));
 
     const passedCount = results.filter(r => r.passed).length;

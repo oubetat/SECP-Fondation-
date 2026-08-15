@@ -5,6 +5,7 @@ import { HardAcceptanceGate078 } from '../engine/validation/HardAcceptanceGate07
 import { HardAcceptanceGate079 } from '../engine/validation/HardAcceptanceGate079';
 import { HardAcceptanceGate080 } from '../engine/validation/HardAcceptanceGate080';
 import { HardAcceptanceGate082 } from '../engine/validation/HardAcceptanceGate082';
+import { HardAcceptanceGate083 } from '../engine/validation/HardAcceptanceGate083';
 import React, { useState } from 'react';
 import { TestRunnerEngine, TestSuiteReport } from '../engine/testRunner';
 import { Play, CheckCircle, XCircle, ShieldCheck, ShieldAlert, RefreshCw, Terminal, CheckCircle2, Compass, Link2, Cpu, FileCheck, Layers, Flame, Activity } from 'lucide-react';
@@ -78,6 +79,8 @@ export const TestRunnerPanel: React.FC = () => {
   const [isGate080Running, setIsGate080Running] = useState(false);
   const [gate082Result, setGate082Result] = useState<any>(null);
   const [isGate082Running, setIsGate082Running] = useState(false);
+  const [gate083Result, setGate083Result] = useState<any>(null);
+  const [isGate083Running, setIsGate083Running] = useState(false);
 
   const handleRunTests = async () => {
     setIsRunning(true);
@@ -505,6 +508,19 @@ export const TestRunnerPanel: React.FC = () => {
       console.error(e);
     } finally {
       setIsGate082Running(false);
+    }
+  };
+
+  const handleRunGate083 = async () => {
+    setIsGate083Running(true);
+    await new Promise(r => setTimeout(r, 600));
+    try {
+      const result = HardAcceptanceGate083.executeGate();
+      setGate083Result(result);
+    } catch (e) {
+      console.error(e);
+    } finally {
+      setIsGate083Running(false);
     }
   };
 
@@ -4429,6 +4445,162 @@ export const TestRunnerPanel: React.FC = () => {
               <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">Gate 082 Verification Logs</h3>
               <div className="p-4 bg-slate-950 rounded-lg border border-slate-800 font-mono text-[11px] text-emerald-400 overflow-x-auto select-all leading-relaxed whitespace-pre shadow-inner max-h-72">
                 {gate082Result.logs?.join('\n')}
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* SECP-083: Advanced Class-A Surfacing & 5-Axis Simultaneous CAM Gate */}
+      <div className="bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-4 shadow-lg">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-800 pb-4">
+          <div className="flex items-center space-x-3">
+            <div className="p-2.5 bg-amber-950/60 border border-amber-800/80 rounded-lg text-amber-400">
+              <Layers className="w-6 h-6" />
+            </div>
+            <div>
+              <div className="flex items-center space-x-2">
+                <span className="text-xs font-bold px-2 py-0.5 bg-amber-950 text-amber-300 border border-amber-800/60 rounded">PATCH-SECP-083</span>
+                <h2 className="text-base font-bold text-slate-100">Class-A Surfacing & 5-Axis CAM Gate</h2>
+              </div>
+              <p className="text-xs text-slate-400 mt-1">
+                Class-A NURBS Differential Geometry, G0-G3 Boundary Continuity, Zebra Reflections, 5-Axis Toolpaths, Gouge & Collision Verifiers
+              </p>
+            </div>
+          </div>
+          <button
+            onClick={handleRunGate083}
+            disabled={isGate083Running}
+            className={`px-4 py-2.5 rounded-lg text-xs font-bold flex items-center space-x-2 shrink-0 transition-all ${
+              isGate083Running
+                ? 'bg-slate-800 text-slate-500 cursor-not-allowed'
+                : 'bg-amber-600 hover:bg-amber-500 text-white shadow-md hover:shadow-amber-900/30'
+            }`}
+          >
+            {isGate083Running ? (
+              <>
+                <RefreshCw className="w-4 h-4 animate-spin" />
+                <span>Running SECP-083 Audit...</span>
+              </>
+            ) : (
+              <>
+                <Play className="w-4 h-4 fill-current" />
+                <span>Execute Gate 083</span>
+              </>
+            )}
+          </button>
+        </div>
+
+        {gate083Result && (
+          <div className="space-y-4 pt-2">
+            {/* Status Overview Banner */}
+            <div className={`p-4 rounded-xl border flex items-center justify-between font-mono ${
+              gate083Result.allInvariantsPassed
+                ? 'bg-emerald-950/40 border-emerald-800/80 text-emerald-300'
+                : 'bg-rose-950/40 border-rose-800/80 text-rose-300'
+            }`}>
+              <div className="flex items-center space-x-3">
+                {gate083Result.allInvariantsPassed ? (
+                  <ShieldCheck className="w-8 h-8 text-emerald-400 shrink-0" />
+                ) : (
+                  <ShieldAlert className="w-8 h-8 text-rose-400 shrink-0" />
+                )}
+                <div>
+                  <div className="text-sm font-bold tracking-wide">{gate083Result.status}</div>
+                  <div className="text-xs text-slate-300 mt-0.5">
+                    Parent Gate SECP-082: {gate083Result.parentGate082Status} ({gate083Result.parentDigest082})
+                  </div>
+                </div>
+              </div>
+              <div className="text-right">
+                <div className="text-xs font-bold text-amber-400">15-Stage Merkle Digest</div>
+                <div className="text-[11px] text-slate-400 font-mono mt-0.5">{gate083Result.finalDigest083}</div>
+              </div>
+            </div>
+
+            {/* 17 Mandatory Invariants */}
+            <div className="space-y-2">
+              <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">
+                17 Mandatory Invariants & Physical Verification Criteria
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                {gate083Result.invariantChecks?.map((chk: any) => (
+                  <div key={chk.id} className="p-2.5 bg-slate-950 border border-slate-800 rounded-lg flex items-start justify-between gap-2 text-xs">
+                    <div>
+                      <div className="font-medium text-slate-200">{chk.id}: {chk.name}</div>
+                      <div className="text-[11px] text-slate-400 mt-0.5">{chk.details}</div>
+                    </div>
+                    <span className={`px-2 py-0.5 rounded text-[10px] font-bold shrink-0 ${
+                      chk.passed ? 'bg-emerald-950 text-emerald-400 border border-emerald-800' : 'bg-rose-950 text-rose-400 border border-rose-800'
+                    }`}>
+                      {chk.passed ? 'PASS' : 'FAIL'}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Canonical Physical Benchmarks */}
+            <div className="space-y-2">
+              <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">
+                4 Canonical Physical Benchmarks + Zebra Reflection Benchmark
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5">
+                {gate083Result.benchmarks?.map((bm: any) => (
+                  <div key={bm.benchmarkId} className="p-3 bg-slate-950 border border-slate-800 rounded-lg space-y-1.5 text-xs font-mono">
+                    <div className="flex items-center justify-between">
+                      <span className="font-bold text-amber-400">{bm.name}</span>
+                      <span className="px-1.5 py-0.5 text-[10px] font-bold bg-emerald-950 text-emerald-400 border border-emerald-800 rounded">
+                        PASS
+                      </span>
+                    </div>
+                    <div className="text-[11px] text-slate-300">{bm.details}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* 14 Adversarial Mutations */}
+            <div className="space-y-2">
+              <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">
+                14-Mutation Adversarial Suite (100% Rejection Proof)
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
+                {gate083Result.adversarialReport?.mutations?.map((m: any) => (
+                  <div key={m.mutationId} className="p-2.5 bg-slate-950 border border-slate-800 rounded-lg space-y-1 text-xs font-mono">
+                    <div className="flex items-center justify-between">
+                      <span className="font-bold text-rose-400">{m.mutationId}: {m.name}</span>
+                      <span className="px-1.5 py-0.5 text-[9px] bg-emerald-950 text-emerald-400 border border-emerald-800 rounded">
+                        REJECTED
+                      </span>
+                    </div>
+                    <div className="text-[10px] text-slate-400 leading-snug">{m.detectionMechanism}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* 15-Stage Merkle Provenance Chain */}
+            <div className="space-y-2">
+              <div className="flex items-center justify-between">
+                <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">
+                  15-Stage Merkle Cryptographic Manufacturing Provenance Chain
+                </h3>
+                <span className="text-[10px] font-mono text-emerald-400 bg-emerald-950/50 px-2 py-0.5 rounded border border-emerald-800/40">
+                  Root Digest: {gate083Result.cryptographicChain?.finalDigest}
+                </span>
+              </div>
+              <div className="p-3 bg-slate-950 border border-slate-800 rounded-lg">
+                <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-2 text-xs font-mono">
+                  {gate083Result.cryptographicChain?.stages?.map((stage: any) => (
+                    <div key={stage.stageIndex} className="p-2 bg-slate-900 border border-slate-800/80 rounded">
+                      <div className="flex items-center justify-between text-[10px] text-slate-400">
+                        <span className="font-bold text-amber-300">Stage #{stage.stageIndex}: {stage.stageName}</span>
+                      </div>
+                      <div className="text-[9px] text-emerald-400 mt-1 font-mono truncate">{stage.stageOutputDigest}</div>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>

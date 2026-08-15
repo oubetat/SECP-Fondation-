@@ -419,6 +419,16 @@ export class SECPMasterRoadmapManager {
           prerequisites: ['SECP-081'],
           governanceGatesRequired: ['Gate082'],
           status: 'LOCKED_FROZEN'
+        },
+        'SECP-083': {
+          patchId: 'SECP-083',
+          name: 'Advanced Class-A Surfacing & 5-Axis Simultaneous CAM Verification Gate',
+          phase: 'INDUSTRIAL_SCALE',
+          objective: 'Class-A NURBS differential geometry, G0/G1/G2/G3 surface continuity verifiers, curvature & zebra reflection analysis, trimmed surfaces, surface-surface intersection (SSI) kernel, continuous 5-axis simultaneous toolpaths, independent tool gouge & assembly collision verifiers, machine kinematics & singularity avoidance, 5-axis G-code postprocessing, 4 canonical benchmarks + zebra benchmark, 14-mutation adversarial suite, 5-cycle reproducibility audit, and 15-stage Merkle cryptographic manufacturing provenance chain.',
+          targetOutcome: 'Deterministic Class-A surfacing & 5-axis simultaneous CAM verification kernel with zero false industrial claims, 100% mutation rejection, and 15-stage Merkle audit chain.',
+          prerequisites: ['SECP-082'],
+          governanceGatesRequired: ['Gate083'],
+          status: 'LOCKED_FROZEN'
         }
       }
     };
