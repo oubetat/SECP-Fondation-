@@ -328,7 +328,67 @@ export class SECPMasterRoadmapManager {
           targetOutcome: 'True CAE Finite Element Analysis solver fully compliant with analytical Hookean tensile benchmarks within 0.1% strict tolerance.',
           prerequisites: ['SECP-072'],
           governanceGatesRequired: ['Gate073'],
-          status: 'IN_DEVELOPMENT'
+          status: 'LOCKED_FROZEN'
+        },
+        'SECP-074': {
+          patchId: 'SECP-074',
+          name: 'Advanced NURBS, Freeform Surface & Geometric Topology Kernel',
+          phase: 'INDUSTRIAL_SCALE',
+          objective: 'NURBS evaluation, Knot Insertion, Surface Healing/Sewing, Geometric Tolerances, Surface Quality, and Deep CAD-to-FEA coupling.',
+          targetOutcome: 'Industrial-grade surfacing kernel mathematically bridging parameter spaces directly to FEA solver matrices.',
+          prerequisites: ['SECP-073'],
+          governanceGatesRequired: ['Gate074'],
+          status: 'LOCKED_FROZEN'
+        },
+        'SECP-075': {
+          patchId: 'SECP-075',
+          name: 'Mathematical Isoparametric Continuum Formulation & Patch Test Gate',
+          phase: 'INDUSTRIAL_SCALE',
+          objective: 'Mathematical first-principles continuum elements, isoparametric mapping, Gauss integration, and zero-energy mode rejection.',
+          targetOutcome: 'Deterministic mathematical formulation verified against clean-room kernel and strict NAFEMS patch tests.',
+          prerequisites: ['SECP-074'],
+          governanceGatesRequired: ['Gate075'],
+          status: 'LOCKED_FROZEN'
+        },
+        'SECP-076': {
+          patchId: 'SECP-076',
+          name: 'Cross-Kernel Solver & Numerical Integrity Verification Gate',
+          phase: 'INDUSTRIAL_SCALE',
+          objective: 'Solver numerical integrity, conditioning bounds, adversarial mutation rejection, and Merkle cryptographic provenance.',
+          targetOutcome: 'Proven cross-kernel convergence and deterministic solver repeatability with zero false-convergence.',
+          prerequisites: ['SECP-075'],
+          governanceGatesRequired: ['Gate076'],
+          status: 'LOCKED_FROZEN'
+        },
+        'SECP-077': {
+          patchId: 'SECP-077',
+          name: '3D Solid FEA + Modal + Thermal/Thermo-Mechanical Integrity Gate',
+          phase: 'INDUSTRIAL_SCALE',
+          objective: '3D continuum elements (TET4, TET10, HEX8), 3D modal vibration analysis, steady-state thermal conduction, and thermo-mechanical stress coupling.',
+          targetOutcome: 'Full 3D multiphysics continuum FEA with verified NAFEMS LE10/LE11 benchmarks, 100% mutation rejection, and 15-stage cryptographic chain.',
+          prerequisites: ['SECP-076'],
+          governanceGatesRequired: ['Gate077'],
+          status: 'LOCKED_FROZEN'
+        },
+        'SECP-078': {
+          patchId: 'SECP-078',
+          name: 'Nonlinear Mechanics & Structural Contact Verification Gate',
+          phase: 'INDUSTRIAL_SCALE',
+          objective: 'Full Newton-Raphson nonlinear solver, large-deflection Green-Lagrange kinematics, J2 von Mises elastoplasticity with isotropic hardening, penalty & Augmented Lagrangian structural contact, and 15-stage Merkle provenance.',
+          targetOutcome: 'Deterministic nonlinear mechanics and contact verification kernel with 5 physical benchmarks, 100% adversarial mutation rejection, and zero bit-level drift.',
+          prerequisites: ['SECP-077'],
+          governanceGatesRequired: ['Gate078'],
+          status: 'LOCKED_FROZEN'
+        },
+        'SECP-079': {
+          patchId: 'SECP-079',
+          name: 'Industrial Edge Telemetry & Hardware Protocol Verification Gate',
+          phase: 'CONNECTED_INTELLIGENCE',
+          objective: 'Industrial IIoT Telemetry Architecture (MQTT, OPC-UA, Modbus, MTConnect), Canonical Telemetry Schema, Forensic Timestamp/Sequence Integrity, Data Quality Gates, Edge Buffering, Traceable Anomaly/RUL Engines, and 15-Stage Merkle Provenance.',
+          targetOutcome: 'Deterministic, verifiable live industrial telemetry stream processing with >=10,000 events/sec throughput, 100% mutation rejection, zero silent loss, and end-to-end cryptographic auditability.',
+          prerequisites: ['SECP-078'],
+          governanceGatesRequired: ['Gate079'],
+          status: 'LOCKED_FROZEN'
         }
       }
     };

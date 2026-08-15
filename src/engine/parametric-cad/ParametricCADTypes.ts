@@ -63,6 +63,7 @@ export interface ParametricFeature {
 
 export interface CADPart {
   id: string;
+  parameters?: Record<string, number>;
   name: string;
   sketches: Sketch[];
   features: ParametricFeature[];

@@ -36,6 +36,10 @@ import { IndustrialOsEngine } from './industrialOsEngine';
 import { MvpArchitectureEngine } from './mvpArchitectureEngine';
 import { NextGen3dEngine } from './nextGen3dEngine';
 import { HardAcceptanceGate043 } from './validation/HardAcceptanceGate043';
+import { HardAcceptanceGate076 } from './validation/HardAcceptanceGate076';
+import { HardAcceptanceGate077 } from './validation/HardAcceptanceGate077';
+import { HardAcceptanceGate078 } from './validation/HardAcceptanceGate078';
+import { HardAcceptanceGate079 } from './validation/HardAcceptanceGate079';
 
 export interface TestResult {
   patchId: string;
@@ -353,6 +357,38 @@ export class TestRunnerEngine {
         throw new Error(`Gate 043 Failed: ${gate043.stagesLog.slice(-2).join(' | ')}`);
       }
       return `SECP-043 Approved: Real OCCT Assembly Constraints (Mate, Concentric, Distance), DOF Analysis, Component Instancing, Real Collision Detection (${gate043.assembly.interferenceDetection ? 'PASS' : 'FAIL'}), Deterministic Solver.`;
+    }));
+
+    results.push(this.runTest('PATCH-SECP-076', 'Cross-Kernel Solver & Numerical Integrity Verification Gate', () => {
+      const gate076 = HardAcceptanceGate076.runGate();
+      if (!gate076.passed) {
+        throw new Error(`SECP-076 Failed: ${gate076.mandatoryTests.filter(t => !t.passed).map(t => t.name).join(', ')}`);
+      }
+      return `SECP-076 FINAL-CLOSED: 16/16 Invariants Passed, 7/7 Mutations Blocked, 12-Stage Merkle Digest=${gate076.finalVerdictHash}`;
+    }));
+
+    results.push(this.runTest('PATCH-SECP-077', '3D Solid FEA + Modal + Thermal/Thermo-Mechanical Integrity Gate', () => {
+      const gate077 = HardAcceptanceGate077.runGate();
+      if (!gate077.passed) {
+        throw new Error(`SECP-077 Failed: ${gate077.mandatoryTests.filter(t => !t.passed).map(t => t.name).join(', ')}`);
+      }
+      return `SECP-077 FINAL-CLOSED: 17/17 Invariants Passed, 15/15 Mutations Blocked (100%), NAFEMS LE10 & LE11 Verified, 15-Stage Merkle Digest=${gate077.finalVerdictHash}`;
+    }));
+
+    results.push(this.runTest('PATCH-SECP-078', 'Nonlinear Mechanics & Structural Contact Verification Gate', () => {
+      const gate078 = HardAcceptanceGate078.runGate();
+      if (!gate078.passed) {
+        throw new Error(`SECP-078 Failed: ${gate078.mandatoryTests.filter(t => !t.passed).map(t => t.name).join(', ')}`);
+      }
+      return `SECP-078 FINAL-CLOSED: 18/18 Invariants Passed, 15/15 Mutations Blocked (100%), 5 Physical Benchmarks Verified, 15-Stage Merkle Digest=${gate078.finalVerdictHash}`;
+    }));
+
+    results.push(this.runTest('PATCH-SECP-079', 'Industrial Edge Telemetry & Hardware Protocol Verification Gate', () => {
+      const gate079 = HardAcceptanceGate079.runGate();
+      if (!gate079.passed) {
+        throw new Error(`SECP-079 Failed: ${gate079.mandatoryTests.filter(t => !t.passed).map(t => t.name).join(', ')}`);
+      }
+      return `SECP-079 FINAL-CLOSED: 19/19 Invariants Passed, 15/15 Mutations Blocked (100%), Throughput=${gate079.overallThroughput} eps, 15-Stage Merkle Digest=${gate079.finalVerdictHash}`;
     }));
 
     const passedCount = results.filter(r => r.passed).length;

@@ -25,7 +25,7 @@ export interface MeshNode {
 
 export interface MeshElement {
   id: number;
-  type: 'BAR_1D' | 'TRI_2D' | 'TET_3D';
+  type: 'BAR_1D' | 'TRI_2D' | 'TET_3D' | 'QUAD_2D' | 'HEX_3D';
   nodeIds: number[]; // Connected node IDs
   materialId: string;
   crossSectionArea?: number; // m^2 for 1D/2D
@@ -55,6 +55,7 @@ export interface BoundaryCondition {
 
 export interface LoadDefinition {
   id: string;
+  type?: string;
   nodeId: number;
   forceVector: { x: number; y: number; z: number }; // Newtons (N)
   momentVector?: { x: number; y: number; z: number }; // N*m
