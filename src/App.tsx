@@ -97,10 +97,10 @@ export function App() {
     | 'PATCH-043'
     | 'PATCH-044'
     | 'PATCH-045'
+    | 'PATCH-082'
     | 'PATCH-084'
     | 'PATCH-088'
     | 'MVP-ARCH'
-    | 'TEST-RUNNER'
   >('PATCH-084');
 
   const [activeUnit, setActiveUnit] = useState<string>('mm');
@@ -151,10 +151,10 @@ export function App() {
     { id: 'PATCH-043', uxLabel: 'Assembly Constraints', internalId: 'PATCH-SECP-043', name: 'Contact Joint Solver', icon: Layers3, color: 'text-amber-400' },
     { id: 'PATCH-044', uxLabel: 'Drawing Engine', internalId: 'PATCH-SECP-044', name: 'SVG Layout Exporter', icon: Edit3, color: 'text-sky-400' },
     { id: 'PATCH-045', uxLabel: 'Advanced Kinematics', internalId: 'PATCH-SECP-045', name: 'Dynamic Multi-Body Physics', icon: Activity, color: 'text-amber-400' },
+    { id: 'PATCH-082', uxLabel: 'Verification', internalId: 'PATCH-SECP-082', name: 'System Validation Suite', icon: ShieldCheck, color: 'text-emerald-400' },
     { id: 'PATCH-084', uxLabel: 'Integration Workbench', internalId: 'PATCH-SECP-084', name: 'SECP Production Control Center', icon: Cpu, color: 'text-cyan-400' },
     { id: 'PATCH-088', uxLabel: 'Enterprise PLM', internalId: 'PATCH-SECP-088', name: 'ECO Lifecycle Manager', icon: ShieldCheck, color: 'text-emerald-400' },
     { id: 'MVP-ARCH', uxLabel: 'MVP Infrastructure', internalId: 'SECP-MVP', name: 'Core Base Architecture', icon: Server, color: 'text-sky-400' },
-    { id: 'TEST-RUNNER', uxLabel: 'Verification', internalId: 'PATCH-SECP-082', name: 'System Validation Suite', icon: ShieldCheck, color: 'text-emerald-400' },
   ];
 
   const handleSaveProject = () => {
@@ -609,7 +609,7 @@ export function App() {
             <MvpArchitecturePanel />
           )}
 
-          {activePatchTab === 'TEST-RUNNER' && (
+          {activePatchTab === 'PATCH-082' && (
             <div className="space-y-6">
               <TestRunnerPanel />
               <CadKernelInspector />
