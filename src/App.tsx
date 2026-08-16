@@ -60,7 +60,9 @@ import {
   Download,
   Upload,
   RefreshCw,
-  Server
+  Server,
+  Menu,
+  X
 } from 'lucide-react';
 
 export function App() {
@@ -102,6 +104,8 @@ export function App() {
     | 'PATCH-088'
     | 'MVP-ARCH'
   >('PATCH-084');
+
+  const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
 
   const [activeUnit, setActiveUnit] = useState<string>('mm');
   const [activeSolid, setActiveSolid] = useState<CadSolidEntity>(() => CadGeometryKernel.createBox(250, 150, 100));
@@ -243,6 +247,15 @@ export function App() {
       {/* Platform Header */}
       <header className="h-14 bg-slate-900/50 backdrop-blur-md border-b border-slate-800 px-6 flex items-center justify-between shrink-0 z-50">
         <div className="flex items-center gap-3">
+          {/* Mobile Sidebar Hamburger Toggle */}
+          <button
+            onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+            className="p-1.5 text-slate-400 hover:text-white rounded-lg md:hidden hover:bg-slate-800 transition-colors mr-1"
+            title="Toggle Sidebar"
+          >
+            {isSidebarOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          </button>
+
           <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center font-bold text-white shadow-lg shadow-blue-500/30">
             S
           </div>
@@ -310,9 +323,21 @@ export function App() {
         </div>
       </header>
 
-      <div className="flex flex-1 overflow-hidden">
+      <div className="flex flex-1 overflow-hidden relative">
+        {/* Mobile Sidebar Overlay Backdrop */}
+        {isSidebarOpen && (
+          <div 
+            className="fixed inset-0 top-14 bg-black/60 backdrop-blur-sm z-30 md:hidden"
+            onClick={() => setIsSidebarOpen(false)}
+          />
+        )}
+
         {/* Professional Sidebar Navigation */}
-        <aside className="w-64 bg-slate-900/30 border-r border-slate-800 flex flex-col shrink-0 overflow-y-auto">
+        <aside className={`${
+          isSidebarOpen 
+            ? 'fixed inset-y-0 left-0 top-14 w-64 bg-slate-900 border-r border-slate-800 flex flex-col z-40 shadow-2xl transition-all duration-300' 
+            : 'hidden'
+        } md:flex md:relative md:top-0 md:w-64 md:bg-slate-900/30 md:border-r md:border-slate-800 md:shrink-0 overflow-y-auto`}>
           <div className="p-4 border-b border-slate-800">
             <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">SECP WORKBENCH</span>
             <div className="text-[9px] text-slate-500 font-mono mt-0.5">Primary Navigation Workspace</div>
@@ -324,7 +349,10 @@ export function App() {
               return (
                 <button
                   key={p.id}
-                  onClick={() => setActivePatchTab(p.id as any)}
+                  onClick={() => {
+                    setActivePatchTab(p.id as any);
+                    setIsSidebarOpen(false); // Auto-close on mobile selection
+                  }}
                   className={`w-full flex items-center gap-3 px-3 py-2 rounded-lg text-xs transition-all ${
                     isActive
                       ? 'bg-blue-600/10 text-blue-400 border border-blue-500/20 shadow-[0_0_15px_-5px_rgba(59,130,246,0.3)]'

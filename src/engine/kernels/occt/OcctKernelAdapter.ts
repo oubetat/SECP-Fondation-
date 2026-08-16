@@ -28,8 +28,10 @@ export class OcctKernelAdapter extends KernelAdapter {
     const featureId = context?.featureId || 'anonymous_feature';
     const revision = context?.revision || 0;
     
-    // Replace Math.random() with a standard UUID
-    const shapeId = crypto.randomUUID();
+    // Replace Math.random() with a standard UUID or safe fallback
+    const shapeId = (typeof crypto !== 'undefined' && crypto.randomUUID) 
+      ? crypto.randomUUID() 
+      : 'shape_' + Math.random().toString(36).substring(2, 15) + '_' + Date.now().toString(36);
 
     const geometryHash = await generateDeterministicHash(context ? {
       op: context.operation,
