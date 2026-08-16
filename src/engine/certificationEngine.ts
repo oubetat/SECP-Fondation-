@@ -4,7 +4,7 @@
  * audit compliance scoring, and standards enforcement (AS9100D / ASME B31.8 / ISO 9001:2015).
  */
 
-import crypto from 'crypto';
+import { TelemetryHasher } from './telemetry/TelemetryHasher';
 
 export type EvidenceStatus = 'VERIFIED_PASSED' | 'IN_REVIEW' | 'NON_COMPLIANT';
 
@@ -41,7 +41,7 @@ export interface CertificationAuditResult {
 export class CertificationEngine {
   private static computeNodeHash(node: Omit<ProvenanceEvidenceNode, 'hashSha256'>): string {
     const payload = `${node.step}:${node.artifactRef}:${node.title}:${node.authorOrAuditor}:${node.standardsBadge}:${node.status}`;
-    return crypto.createHash('sha256').update(payload).digest('hex');
+    return TelemetryHasher.hashString(payload);
   }
 
   /**
@@ -203,10 +203,9 @@ export class CertificationEngine {
     const computedScorePct = Math.round((passedCount / matrix.chain.length) * 100);
     const isValid = errors.length === 0 && unauthorizedTransitions.length === 0 && computedScorePct === 100 && matrix.isFullyCertified;
 
-    const chainDigestSha256 = crypto
-      .createHash('sha256')
-      .update(matrix.chain.map(n => n.hashSha256).join(':'))
-      .digest('hex');
+    const chainDigestSha256 = TelemetryHasher.hashString(
+      matrix.chain.map(n => n.hashSha256).join(':')
+    );
 
     return {
       isValid,

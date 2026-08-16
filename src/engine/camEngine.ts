@@ -4,7 +4,7 @@
  * feed/speed calculation, collision & boundary validation, and forensic provenance chains.
  */
 
-import crypto from 'crypto';
+import { TelemetryHasher } from './telemetry/TelemetryHasher';
 import { ParametricCAMBridge } from './cam/ParametricCAMBridge';
 import { StockModelBounds } from './cam/ToolpathTypes';
 
@@ -132,10 +132,7 @@ export class CamEngine {
         zMax: partHeightMm
       };
 
-      const topologyDigest = crypto
-        .createHash('sha256')
-        .update(`TOPO:PART-MAIN:${partLengthMm}x${partWidthMm}x${partHeightMm}`)
-        .digest('hex');
+      const topologyDigest = TelemetryHasher.hashString(`TOPO:PART-MAIN:${partLengthMm}x${partWidthMm}x${partHeightMm}`);
 
       const camJob = await ParametricCAMBridge.generateForensicCAMJob(
         'part-orchestrated-01',
@@ -383,8 +380,8 @@ export class CamEngine {
       gCodeLineCount: gCodeLines.length
     });
 
-    const clDataHash = crypto.createHash('sha256').update(payload).digest('hex');
-    const provenanceSignature = crypto.createHash('sha256').update(`${clDataHash}:SECP-PRODUCTION-CAM`).digest('hex');
+    const clDataHash = TelemetryHasher.hashString(payload);
+    const provenanceSignature = TelemetryHasher.hashString(`${clDataHash}:SECP-PRODUCTION-CAM`);
 
     return {
       processType,

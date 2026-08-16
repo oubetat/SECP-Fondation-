@@ -4,7 +4,7 @@
  * structured review approval chains, role-based transition validations, and conflict detection.
  */
 
-import crypto from 'crypto';
+import { TelemetryHasher } from './telemetry/TelemetryHasher';
 
 export type UserRole = 'ADMIN' | 'LEAD_ENGINEER' | 'CAD_DESIGNER' | 'REVIEWER' | 'VIEWER';
 
@@ -317,17 +317,14 @@ export class CollaborationEngine {
       }
     }
 
-    const stateDigest = crypto
-      .createHash('sha256')
-      .update(JSON.stringify({
-        projectId: state.projectId,
-        branch: state.activeBranch,
-        revision: state.syncedRevision,
-        membersCount: state.teamMembers.length,
-        commentsCount: state.comments.length,
-        ticketsCount: state.reviewTickets.length
-      }))
-      .digest('hex');
+    const stateDigest = TelemetryHasher.hashString(JSON.stringify({
+      projectId: state.projectId,
+      branch: state.activeBranch,
+      revision: state.syncedRevision,
+      membersCount: state.teamMembers.length,
+      commentsCount: state.comments.length,
+      ticketsCount: state.reviewTickets.length
+    }));
 
     const isValid = errors.length === 0 && activeConflicts.length === 0 && unauthorizedActions.length === 0;
 

@@ -4,7 +4,6 @@
  * Distributed Compute Job Queue (CPU/GPU worker pool), and STEP File I/O workflows.
  */
 
-import crypto from 'crypto';
 import { CadGeometryKernel, CadSolidEntity } from './cadKernel';
 
 export interface SecpProject {
