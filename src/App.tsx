@@ -119,42 +119,42 @@ export function App() {
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const patches = [
-    { id: 'PATCH-001', name: 'Domain Model', icon: Database, color: 'text-blue-400' },
-    { id: 'PATCH-002', name: 'Unit Engine', icon: Ruler, color: 'text-emerald-400' },
-    { id: 'PATCH-003', name: 'Geometry Kernel', icon: Cpu, color: 'text-cyan-400' },
-    { id: 'PATCH-004', name: '3D Viewport', icon: Layers, color: 'text-amber-400' },
-    { id: 'PATCH-005', name: 'Parametric', icon: Sliders, color: 'text-indigo-400' },
-    { id: 'PATCH-006', name: '2D Sketcher', icon: Edit3, color: 'text-emerald-400' },
-    { id: 'PATCH-007', name: 'Feature Tree', icon: GitMerge, color: 'text-purple-400' },
-    { id: 'PATCH-008', name: 'Assembly Engine', icon: Layers3, color: 'text-amber-400' },
-    { id: 'PATCH-009', name: 'Materials', icon: Layers, color: 'text-indigo-400' },
-    { id: 'PATCH-010', name: 'Eng Calculations', icon: Activity, color: 'text-cyan-400' },
-    { id: 'PATCH-011', name: 'Kinematics', icon: RefreshCw, color: 'text-emerald-400' },
-    { id: 'PATCH-012', name: 'Electrical', icon: Terminal, color: 'text-amber-400' },
-    { id: 'PATCH-013', name: 'Electronics / PCB', icon: Cpu, color: 'text-indigo-400' },
-    { id: 'PATCH-014', name: 'Hydraulics', icon: Activity, color: 'text-cyan-400' },
-    { id: 'PATCH-015', name: 'Simulation FEA', icon: Layers, color: 'text-purple-400' },
-    { id: 'PATCH-018', name: 'CFD Fluid Flow', icon: Activity, color: 'text-cyan-400' },
-    { id: 'PATCH-019', name: 'BOM Engine', icon: Database, color: 'text-amber-400' },
-    { id: 'PATCH-020', name: 'Manufacturing / CAM', icon: Cpu, color: 'text-rose-400' },
-    { id: 'PATCH-021', name: '2D Technical Drawing', icon: Edit3, color: 'text-sky-400' },
-    { id: 'PATCH-022', name: 'Versioning Provenance', icon: GitMerge, color: 'text-emerald-400' },
-    { id: 'PATCH-023', name: 'Digital Twin', icon: Activity, color: 'text-cyan-400' },
-    { id: 'PATCH-024', name: 'AI Copilot', icon: Cpu, color: 'text-indigo-400' },
-    { id: 'PATCH-025', name: 'Generative Design', icon: Sliders, color: 'text-amber-400' },
-    { id: 'PATCH-026', name: 'Plugin SDK', icon: Layers, color: 'text-emerald-400' },
-    { id: 'PATCH-027', name: 'Cloud Collab', icon: CheckCircle2, color: 'text-sky-400' },
-    { id: 'PATCH-028', name: 'Marketplace', icon: Database, color: 'text-purple-400' },
-    { id: 'PATCH-029', name: 'Certification', icon: ShieldCheck, color: 'text-emerald-400' },
-    { id: 'PATCH-030', name: 'Industrial OS', icon: Layers, color: 'text-cyan-400' },
-    { id: 'PATCH-031', name: 'Next-Gen 3D Engine', icon: Layers, color: 'text-violet-400' },
-    { id: 'PATCH-043', name: 'Assembly Constraints & Kinematics', icon: Layers3, color: 'text-amber-400' },
-    { id: 'PATCH-044', name: '2D Technical Drawing Engine', icon: Edit3, color: 'text-sky-400' },
-    { id: 'PATCH-045', name: 'Advanced Assembly & Kinematics', icon: Activity, color: 'text-amber-400' },
-    { id: 'PATCH-084', name: 'Production Integration Workbench', icon: Cpu, color: 'text-cyan-400' },
-    { id: 'PATCH-088', name: 'Enterprise PLM & ECO System', icon: ShieldCheck, color: 'text-emerald-400' },
-    { id: 'MVP-ARCH', name: 'MVP Infrastructure', icon: Server, color: 'text-sky-400' },
-    { id: 'TEST-RUNNER', name: 'Tests & Regression', icon: ShieldCheck, color: 'text-emerald-400' },
+    { id: 'PATCH-001', uxLabel: 'Domain Database', internalId: 'PATCH-SECP-001', name: 'Domain Model & Metadata', icon: Database, color: 'text-blue-400' },
+    { id: 'PATCH-002', uxLabel: 'Unit Engine', internalId: 'PATCH-SECP-002', name: 'Dimension & Unit Solver', icon: Ruler, color: 'text-emerald-400' },
+    { id: 'PATCH-003', uxLabel: 'Geometry Kernel', internalId: 'PATCH-SECP-003', name: 'Solid B-Rep Modeler', icon: Cpu, color: 'text-cyan-400' },
+    { id: 'PATCH-004', uxLabel: '3D Viewport', internalId: 'PATCH-SECP-004', name: 'WebGL Core Graphics', icon: Layers, color: 'text-amber-400' },
+    { id: 'PATCH-005', uxLabel: 'Parametric', internalId: 'PATCH-SECP-005', name: 'Expression & Solver', icon: Sliders, color: 'text-indigo-400' },
+    { id: 'PATCH-006', uxLabel: 'Sketcher', internalId: 'PATCH-SECP-026', name: '2D Constraint Solver', icon: Edit3, color: 'text-emerald-400' },
+    { id: 'PATCH-007', uxLabel: 'Feature Tree', internalId: 'PATCH-SECP-007', name: 'History Modeler', icon: GitMerge, color: 'text-purple-400' },
+    { id: 'PATCH-008', uxLabel: 'Assembly', internalId: 'PATCH-SECP-008', name: 'Hierarchy Solver', icon: Layers3, color: 'text-amber-400' },
+    { id: 'PATCH-009', uxLabel: 'Materials', internalId: 'PATCH-SECP-009', name: 'Materials DB', icon: Layers, color: 'text-indigo-400' },
+    { id: 'PATCH-010', uxLabel: 'Calculations', internalId: 'PATCH-SECP-010', name: 'Structural Formulas', icon: Activity, color: 'text-cyan-400' },
+    { id: 'PATCH-011', uxLabel: 'Kinematics', internalId: 'PATCH-SECP-011', name: 'Joint & Motion Solver', icon: RefreshCw, color: 'text-emerald-400' },
+    { id: 'PATCH-012', uxLabel: 'Electrical', internalId: 'PATCH-SECP-012', name: 'Schematic Capture', icon: Terminal, color: 'text-amber-400' },
+    { id: 'PATCH-013', uxLabel: 'PCB Workbench', internalId: 'PATCH-SECP-013', name: 'ECAD Editor', icon: Cpu, color: 'text-indigo-400' },
+    { id: 'PATCH-014', uxLabel: 'Hydraulics', internalId: 'PATCH-SECP-014', name: 'Fluid Circuit Solver', icon: Activity, color: 'text-cyan-400' },
+    { id: 'PATCH-015', uxLabel: 'Simulation', internalId: 'PATCH-SECP-015', name: 'Finite Element Stress Solver', icon: Layers, color: 'text-purple-400' },
+    { id: 'PATCH-018', uxLabel: 'CFD Fluid Flow', internalId: 'PATCH-SECP-018', name: 'Navier-Stokes Solver', icon: Activity, color: 'text-cyan-400' },
+    { id: 'PATCH-019', uxLabel: 'BOM Engine', internalId: 'PATCH-SECP-019', name: 'Bill of Materials Builder', icon: Database, color: 'text-amber-400' },
+    { id: 'PATCH-020', uxLabel: 'CAM', internalId: 'PATCH-SECP-020', name: 'CNC G-Code Generator', icon: Cpu, color: 'text-rose-400' },
+    { id: 'PATCH-021', uxLabel: 'Technical Drawing', internalId: 'PATCH-SECP-021', name: 'Orthographic Engine', icon: Edit3, color: 'text-sky-400' },
+    { id: 'PATCH-022', uxLabel: 'Quality Control', internalId: 'PATCH-SECP-022', name: 'Versioning Provenance Ledger', icon: GitMerge, color: 'text-emerald-400' },
+    { id: 'PATCH-023', uxLabel: 'Digital Twin', internalId: 'PATCH-SECP-023', name: 'Cyber-Physical Telemetry', icon: Activity, color: 'text-cyan-400' },
+    { id: 'PATCH-024', uxLabel: 'AI Copilot', internalId: 'PATCH-SECP-024', name: 'Grounded Engineering Agent', icon: Cpu, color: 'text-indigo-400' },
+    { id: 'PATCH-025', uxLabel: 'Generative Design', internalId: 'PATCH-SECP-025', name: 'Topology & Stress Optimizer', icon: Sliders, color: 'text-amber-400' },
+    { id: 'PATCH-026', uxLabel: 'Plugin SDK', internalId: 'PATCH-SECP-026', name: 'Extensibility API Library', icon: Layers, color: 'text-emerald-400' },
+    { id: 'PATCH-027', uxLabel: 'Cloud Collab', internalId: 'PATCH-SECP-027', name: 'Real-time Session Controller', icon: CheckCircle2, color: 'text-sky-400' },
+    { id: 'PATCH-028', uxLabel: 'Marketplace', internalId: 'PATCH-SECP-028', name: 'SaaS Component Store', icon: Database, color: 'text-purple-400' },
+    { id: 'PATCH-029', uxLabel: 'Certification', internalId: 'PATCH-SECP-029', name: 'Regulatory Compliance Audit', icon: ShieldCheck, color: 'text-emerald-400' },
+    { id: 'PATCH-030', uxLabel: 'Manufacturing', internalId: 'PATCH-SECP-030', name: 'Industrial CNC Controller', icon: Layers, color: 'text-cyan-400' },
+    { id: 'PATCH-031', uxLabel: 'Next-Gen 3D', internalId: 'PATCH-SECP-031', name: 'WebGPU Engine Preview', icon: Layers, color: 'text-violet-400' },
+    { id: 'PATCH-043', uxLabel: 'Assembly Constraints', internalId: 'PATCH-SECP-043', name: 'Contact Joint Solver', icon: Layers3, color: 'text-amber-400' },
+    { id: 'PATCH-044', uxLabel: 'Drawing Engine', internalId: 'PATCH-SECP-044', name: 'SVG Layout Exporter', icon: Edit3, color: 'text-sky-400' },
+    { id: 'PATCH-045', uxLabel: 'Advanced Kinematics', internalId: 'PATCH-SECP-045', name: 'Dynamic Multi-Body Physics', icon: Activity, color: 'text-amber-400' },
+    { id: 'PATCH-084', uxLabel: 'Integration Workbench', internalId: 'PATCH-SECP-084', name: 'SECP Production Control Center', icon: Cpu, color: 'text-cyan-400' },
+    { id: 'PATCH-088', uxLabel: 'Enterprise PLM', internalId: 'PATCH-SECP-088', name: 'ECO Lifecycle Manager', icon: ShieldCheck, color: 'text-emerald-400' },
+    { id: 'MVP-ARCH', uxLabel: 'MVP Infrastructure', internalId: 'SECP-MVP', name: 'Core Base Architecture', icon: Server, color: 'text-sky-400' },
+    { id: 'TEST-RUNNER', uxLabel: 'Verification', internalId: 'PATCH-SECP-082', name: 'System Validation Suite', icon: ShieldCheck, color: 'text-emerald-400' },
   ];
 
   const handleSaveProject = () => {
@@ -314,7 +314,8 @@ export function App() {
         {/* Professional Sidebar Navigation */}
         <aside className="w-64 bg-slate-900/30 border-r border-slate-800 flex flex-col shrink-0 overflow-y-auto">
           <div className="p-4 border-b border-slate-800">
-            <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Engineering Patches</span>
+            <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">SECP WORKBENCH</span>
+            <div className="text-[9px] text-slate-500 font-mono mt-0.5">Primary Navigation Workspace</div>
           </div>
           <nav className="p-2 space-y-0.5">
             {patches.map(p => {
@@ -331,9 +332,9 @@ export function App() {
                   }`}
                 >
                   <Icon className={`w-4 h-4 ${isActive ? p.color : 'text-slate-500'}`} />
-                  <div className="flex flex-col items-start truncate">
-                    <span className="font-bold">{p.id}</span>
-                    <span className="text-[10px] opacity-60 truncate">{p.name}</span>
+                  <div className="flex flex-col items-start truncate text-left">
+                    <span className="font-bold text-slate-200 text-xs tracking-wide">{p.uxLabel}</span>
+                    <span className="text-[9px] font-mono opacity-60 text-slate-400 truncate w-40">{p.internalId} · {p.name}</span>
                   </div>
                 </button>
               );
@@ -373,6 +374,31 @@ export function App() {
 
           {/* Interactive Control Panel */}
           <div className="flex-1 overflow-y-auto p-6 relative z-10 custom-scrollbar bg-slate-950/20">
+            {/* Engineering Status Traceability Ribbon */}
+            {(() => {
+              const currentPatch = patches.find(p => p.id === activePatchTab);
+              if (!currentPatch) return null;
+              return (
+                <div className="max-w-7xl mx-auto w-full mb-6 px-4 py-2.5 bg-slate-900/30 border border-slate-800/60 rounded-xl flex items-center justify-between gap-4 text-xs font-mono">
+                  <div className="flex items-center gap-3">
+                    <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                    <span className="font-sans text-slate-400">Active Module:</span>
+                    <strong className="text-slate-100 font-sans font-extrabold tracking-wide text-[13px]">{currentPatch.uxLabel}</strong>
+                  </div>
+                  <div className="flex items-center gap-2 text-[11px]">
+                    <span className="text-slate-500">System Link:</span>
+                    <span className="px-2.5 py-0.5 bg-blue-500/10 text-blue-400 border border-blue-500/30 rounded font-bold text-[10px]">
+                      {currentPatch.internalId}
+                    </span>
+                    <span className="text-slate-500">•</span>
+                    <span className="text-emerald-400 flex items-center gap-1 font-bold">
+                      <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full" /> Operational
+                    </span>
+                  </div>
+                </div>
+              );
+            })()}
+
             <AnimatePresence mode="wait">
               <motion.div
                 key={activePatchTab}
