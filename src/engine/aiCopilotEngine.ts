@@ -134,15 +134,7 @@ export class AiCopilotEngine {
       ? validCandidates.reduce((min, c) => (c.massKg < min.massKg ? c : min), validCandidates[0])
       : candidates.reduce((max, c) => (c.safetyFactor > max.safetyFactor ? c : max), candidates[0]);
 
-    const isArabic = /[\u0600-\u06FF]/.test(input.userPrompt);
-
-    const aiExplanation = isArabic
-      ? `قام مساعد الهندسة الذكي بتحليل المطلوب (${input.targetLoadKN} kN علي مادة ${mat.name}):
-1. تم تحديد معامل المقطع المطلوب (${reqSectionModulusCm3.toFixed(2)} cm³).
-2. تم توليد 4 نماذج مرشحة للأبسام وللصناديق المفرغة (RHS).
-3. أجريت محاكاة العناصر المحدودة (Structural FEM) لكل نموذج بشكل منفصل للتحقق من الإجهاد والأمان.
-4. التصميم الموصى به هو: ${recommended.name} بوزن ${recommended.massKg} كجم ومعامل أمان ${recommended.safetyFactor} (تخفيض في الوزن مع الامتثال التام لمعايير السلامة).`
-      : `The AI Copilot evaluated your requirement (${input.targetLoadKN} kN load on ${mat.name}):
+    const aiExplanation = `The AI Copilot evaluated your requirement (${input.targetLoadKN} kN load on ${mat.name}):
 1. Derived required section modulus Z_req = ${reqSectionModulusCm3.toFixed(2)} cm³.
 2. Formulated 4 Rectangular Hollow Section (RHS) candidate profiles.
 3. Passed each candidate through SECP's Structural FEM solver for stress & displacement validation.

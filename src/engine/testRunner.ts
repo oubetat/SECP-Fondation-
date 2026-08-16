@@ -268,7 +268,7 @@ export class TestRunnerEngine {
     // PATCH-SECP-024: AI Engineering Copilot Tests
     results.push(this.runTest('PATCH-SECP-024', 'Grounded AI Engineering Copilot Requirements Pipeline', () => {
       const res = AiCopilotEngine.processEngineeringRequest({
-        userPrompt: 'صمم لي هيكل فولاذي يتحمل 20 kN مع أقل وزن ممكن',
+        userPrompt: 'Design a steel beam to support a 20 kN load with minimum weight',
         targetLoadKN: 20,
         materialId: 'mat-steel-1045',
         maxDeflectionMm: 5.0,
