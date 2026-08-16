@@ -50,19 +50,26 @@ interface AssemblyEnginePanelProps {
   explodedFactor?: number;
   onExplodedFactorChange?: (factor: number) => void;
   activeUnit?: string;
+  defaultTab?: 'CONSTRAINTS' | 'COMPONENTS' | 'INTERFERENCE' | 'KINEMATICS' | 'GATE043';
 }
 
 export const AssemblyEnginePanel: React.FC<AssemblyEnginePanelProps> = ({
   onAssemblyComponentsChange,
   explodedFactor = 0,
   onExplodedFactorChange,
-  activeUnit = 'mm'
+  activeUnit = 'mm',
+  defaultTab = 'CONSTRAINTS'
 }) => {
   // Core Assembly Manager
   const [assemblyCore] = useState(() => new AssemblyCore());
 
   // UI Tabs: 'CONSTRAINTS' | 'COMPONENTS' | 'INTERFERENCE' | 'KINEMATICS' | 'GATE043'
-  const [activeTab, setActiveTab] = useState<'CONSTRAINTS' | 'COMPONENTS' | 'INTERFERENCE' | 'KINEMATICS' | 'GATE043'>('CONSTRAINTS');
+  const [activeTab, setActiveTab] = useState<'CONSTRAINTS' | 'COMPONENTS' | 'INTERFERENCE' | 'KINEMATICS' | 'GATE043'>(defaultTab);
+
+  // Sync activeTab when defaultTab changes (switching sidebar tabs)
+  useEffect(() => {
+    setActiveTab(defaultTab);
+  }, [defaultTab]);
 
   // Assembly State
   const [components, setComponents] = useState<AssemblyComponent[]>(() => assemblyCore.getAllInstances());

@@ -484,6 +484,7 @@ export function App() {
               explodedFactor={explodedFactor}
               onExplodedFactorChange={f => setExplodedFactor(f)}
               activeUnit={activeUnit}
+              defaultTab="COMPONENTS"
             />
           )}
 
@@ -577,6 +578,7 @@ export function App() {
               explodedFactor={explodedFactor}
               onExplodedFactorChange={f => setExplodedFactor(f)}
               activeUnit={activeUnit}
+              defaultTab="CONSTRAINTS"
             />
           )}
 
