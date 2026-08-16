@@ -1,0 +1,443 @@
+{
+  "gateId": "P9",
+  "executionTimestamp": "2026-08-16T10:56:34.153Z",
+  "domain": "Phase P9 - Failure Injection & Adversarial Safe-Fail Resilience Acceptance Gate",
+  "predecessorGate": "P8",
+  "overallArchitectureStatus": {
+    "overallP9GateStatus": "FAILURE_INJECTION_RESILIENT",
+    "physicalHardwareAttestationP6B": "UNPROVEN (PENDING_PHYSICAL_HARDWARE_ATTESTATION)",
+    "p9AFaultInjection14Scenarios": "PASS (14/14 RESILIENT)",
+    "p9BResilienceLifecycle5Stages": "PASS (DETECT -> CONTAIN -> RECOVER -> AUDIT -> RESUME)",
+    "p9CLoggingFailureDetectionAndResponse": "PASS (AUDIT_WAL_FALLBACK_ACTIVE)",
+    "inheritedP6BFieldAuthenticity": "UNPROVEN (PHYSICAL_SITE_ATTESTATION_REQUIRED)"
+  },
+  "antiFabricationGuard": {
+    "claimId": "CLAIM-P9-FAILURE-INJECTION-QUALIFICATION",
+    "requestedClaim": "INDUSTRIAL_FIELD_QUALIFIED",
+    "authorizedClaim": "SIMULATED_PIPELINE_QUALIFIED",
+    "claimBlockedAndDowngraded": true,
+    "ndaStateVerified": "NDA_DECLARED",
+    "msaStateVerified": "MSA_SIMULATED_PASS",
+    "missingPhysicalAttestations": [
+      "Physical Plant Facility Attestation",
+      "Cryptographic Hardware Device Identity (TPM/HSM)",
+      "Signed Physical Telemetry Sensor Stream",
+      "Immutable Sensor-to-Storage Chain of Custody Record",
+      "Independent External Source Verification",
+      "Independent Blind Ground-Truth Labels",
+      "Physical Gage R&R Study on Physical CMM Machine"
+    ],
+    "claimStatusText": "CLAIM DOWNGRADED: Requested 'INDUSTRIAL_FIELD_QUALIFIED' was blocked due to 7 missing physical plant attestations. Bounded at 'SIMULATED_PIPELINE_QUALIFIED' (Field qualification remains unproven).",
+    "downstreamInheritanceRule": {
+      "ruleId": "NO_DOWNSTREAM_PROMOTION_WITHOUT_PHYSICAL_ATTESTATION",
+      "p6APipelineInherited": "QUALIFIED",
+      "p6CBenchmarkInherited": "QUALIFIED",
+      "p6BFieldAuthenticityInherited": "UNPROVEN",
+      "downstreamPromotionAllowed": false
+    },
+    "antiFabricationProvenanceHash": "ac4364c92613e782d1a6ea7c2519056385d40cb45ca7b8d81e803dc161e3472e"
+  },
+  "failureInjectionReport": {
+    "executionTimestamp": "2026-08-16T10:56:34.154Z",
+    "totalFaultsInjected": 14,
+    "totalFaultsPassed": 14,
+    "totalSystemCrashes": 0,
+    "totalDataLossEvents": 0,
+    "resilienceLifecycleSuccessRatePct": 100,
+    "loggingFailureTest": {
+      "primaryLoggerFailed": true,
+      "primarySinkError": "ELASTICSEARCH_AUDIT_SINK_DISK_FULL_507",
+      "loggingFailureDetectedMs": 4,
+      "secondaryWalFallbackActivated": true,
+      "auditTrailPreserved": true,
+      "unmonitoredExecutionBlocked": true,
+      "passed": true,
+      "details": "Primary audit logger crash detected in 4ms. System prevented unmonitored execution by diverting audit events to local encrypted Write-Ahead Log (WAL) with zero log loss."
+    },
+    "faultResults": [
+      {
+        "faultId": "FI-P9-001",
+        "category": "DATABASE_OUTAGE",
+        "description": "Simulated abrupt primary database connection pool drop during active transaction.",
+        "injectedAnomalyDetails": "Database socket closed mid-write on primary PostgreSQL connection pool.",
+        "containmentStrategy": "Transaction rollback & connection pool isolator.",
+        "recoveryMechanism": "Failover to Read-Replica + Write-Ahead Log (WAL) buffer.",
+        "lifecycle": {
+          "detectMs": 14,
+          "detected": true,
+          "contained": true,
+          "recovered": true,
+          "audited": true,
+          "resumed": true,
+          "lifecyclePassed": true
+        },
+        "systemCrashed": false,
+        "dataLossCount": 0,
+        "passed": true,
+        "details": "Trapped DB outage in 14ms; rolled back uncommitted state; buffered pending writes in local WAL and resumed seamlessly on reconnect."
+      },
+      {
+        "faultId": "FI-P9-002",
+        "category": "OBJECT_STORAGE_OUTAGE",
+        "description": "Simulated 503 Service Unavailable on primary S3/MinIO CAD artifact store.",
+        "injectedAnomalyDetails": "HTTP 503 SlowDown / Service Unavailable returned during 2.4GB STEP B-Rep write.",
+        "containmentStrategy": "Circuit breaker OPEN on primary storage bucket.",
+        "recoveryMechanism": "Rerouted artifact payload to secondary high-availability replica store.",
+        "lifecycle": {
+          "detectMs": 8,
+          "detected": true,
+          "contained": true,
+          "recovered": true,
+          "audited": true,
+          "resumed": true,
+          "lifecyclePassed": true
+        },
+        "systemCrashed": false,
+        "dataLossCount": 0,
+        "passed": true,
+        "details": "Storage outage trapped in 8ms; circuit breaker opened; artifact stream redirected to replica store with zero byte loss."
+      },
+      {
+        "faultId": "FI-P9-003",
+        "category": "WORKER_CRASH",
+        "description": "Simulated SIGKILL process termination on active 5-axis CAM toolpath compute worker.",
+        "injectedAnomalyDetails": "Compute worker process terminated unexpectedly at step 42 of 100.",
+        "containmentStrategy": "Orphaned process isolation & heartbeat timeout detector.",
+        "recoveryMechanism": "Kubernetes worker pod auto-restart & state recovery from checkpoint.",
+        "lifecycle": {
+          "detectMs": 32,
+          "detected": true,
+          "contained": true,
+          "recovered": true,
+          "audited": true,
+          "resumed": true,
+          "lifecyclePassed": true
+        },
+        "systemCrashed": false,
+        "dataLossCount": 0,
+        "passed": true,
+        "details": "Worker crash detected via heartbeat monitor in 32ms; new worker node spawned and resumed CAM calculation from step 40 checkpoint."
+      },
+      {
+        "faultId": "FI-P9-004",
+        "category": "NETWORK_INTERRUPTION",
+        "description": "Simulated 60-second WAN link blackout between plant edge node and cloud control plane.",
+        "injectedAnomalyDetails": "Network socket drop with 100% packet loss for 60 seconds.",
+        "containmentStrategy": "Edge local queue isolation & offline mode buffer.",
+        "recoveryMechanism": "Automated chunked sync & exponential backoff reconnect.",
+        "lifecycle": {
+          "detectMs": 5,
+          "detected": true,
+          "contained": true,
+          "recovered": true,
+          "audited": true,
+          "resumed": true,
+          "lifecyclePassed": true
+        },
+        "systemCrashed": false,
+        "dataLossCount": 0,
+        "passed": true,
+        "details": "Network blackout trapped in 5ms; edge node switched to offline buffer; synchronized 1,200 pending state logs upon WAN recovery."
+      },
+      {
+        "faultId": "FI-P9-005",
+        "category": "MALFORMED_CAD_GEOMETRY",
+        "description": "Injected non-manifold STEP AP242 CAD file with self-intersecting NURBS surfaces and NaN coordinates.",
+        "injectedAnomalyDetails": "Invalid NURBS control points and self-intersecting B-Rep topology faces.",
+        "containmentStrategy": "CadFidelityValidator geometry boundary trap.",
+        "recoveryMechanism": "NIST AP242 B-Rep self-healing engine (G2 stitching + NURBS re-lofting).",
+        "lifecycle": {
+          "detectMs": 18,
+          "detected": true,
+          "contained": true,
+          "recovered": true,
+          "audited": true,
+          "resumed": true,
+          "lifecyclePassed": true
+        },
+        "systemCrashed": false,
+        "dataLossCount": 0,
+        "passed": true,
+        "details": "Malformed geometry detected in 18ms; non-manifold faces contained; NIST self-healing engine stitched surfaces to G2 continuity."
+      },
+      {
+        "faultId": "FI-P9-006",
+        "category": "CORRUPTED_ARTIFACT",
+        "description": "Injected bit-flip memory corruption into intermediate FEA stiffness matrix artifact.",
+        "injectedAnomalyDetails": "SHA-256 checksum mismatch on downloaded stiffness matrix binary.",
+        "containmentStrategy": "Artifact integrity validator & SHA-256 hash check trap.",
+        "recoveryMechanism": "Automatic cache purge & re-execution of FEA matrix generation.",
+        "lifecycle": {
+          "detectMs": 6,
+          "detected": true,
+          "contained": true,
+          "recovered": true,
+          "audited": true,
+          "resumed": true,
+          "lifecyclePassed": true
+        },
+        "systemCrashed": false,
+        "dataLossCount": 0,
+        "passed": true,
+        "details": "Bit-flip corruption detected via SHA-256 mismatch in 6ms; corrupted artifact purged; recalculated matrix cleanly."
+      },
+      {
+        "faultId": "FI-P9-007",
+        "category": "DUPLICATE_JOB",
+        "description": "Simulated duplicate POST submission of identical CMM inspection job within 100ms window.",
+        "injectedAnomalyDetails": "Concurrent request burst with identical Idempotency-Key.",
+        "containmentStrategy": "Distributed Redis lock & idempotency key deduplication.",
+        "recoveryMechanism": "Return cached response of original active transaction.",
+        "lifecycle": {
+          "detectMs": 2,
+          "detected": true,
+          "contained": true,
+          "recovered": true,
+          "audited": true,
+          "resumed": true,
+          "lifecyclePassed": true
+        },
+        "systemCrashed": false,
+        "dataLossCount": 0,
+        "passed": true,
+        "details": "Duplicate submission trapped in 2ms; secondary execution rejected cleanly; returned original active job status."
+      },
+      {
+        "faultId": "FI-P9-008",
+        "category": "STALE_JOB",
+        "description": "Simulated orphaned background SIMP topology job stuck in RUNNING state for > 2 hours.",
+        "injectedAnomalyDetails": "Job lock lease expired without heartbeat renewal.",
+        "containmentStrategy": "Reaper daemon stale job detection & lock release.",
+        "recoveryMechanism": "Job status reset to TIMEOUT_REQUEUED and re-allocated to available worker node.",
+        "lifecycle": {
+          "detectMs": 40,
+          "detected": true,
+          "contained": true,
+          "recovered": true,
+          "audited": true,
+          "resumed": true,
+          "lifecyclePassed": true
+        },
+        "systemCrashed": false,
+        "dataLossCount": 0,
+        "passed": true,
+        "details": "Stale job identified in 40ms; stale lock reaped; job requeued and finished execution successfully."
+      },
+      {
+        "faultId": "FI-P9-009",
+        "category": "INVALID_AUTHORIZATION",
+        "description": "Simulated API call attempting to issue Engineering Change Order (ECO) with Operator role.",
+        "injectedAnomalyDetails": "HTTP 403 Forbidden: Missing `ECO_APPROVER` permission.",
+        "containmentStrategy": "RBAC/ABAC authorization filter firewall.",
+        "recoveryMechanism": "Request denied, security alert raised, and session flagged for audit.",
+        "lifecycle": {
+          "detectMs": 1,
+          "detected": true,
+          "contained": true,
+          "recovered": true,
+          "audited": true,
+          "resumed": true,
+          "lifecyclePassed": true
+        },
+        "systemCrashed": false,
+        "dataLossCount": 0,
+        "passed": true,
+        "details": "Unauthorized escalation trapped in 1ms; blocked access; logged security violation event in immutable audit chain."
+      },
+      {
+        "faultId": "FI-P9-010",
+        "category": "EXPIRED_SESSION",
+        "description": "Simulated API request with JWT token expired 30 minutes prior.",
+        "injectedAnomalyDetails": "JWT signature check failed: `TokenExpiredError: jwt expired`.",
+        "containmentStrategy": "API Gateway token verification interceptor.",
+        "recoveryMechanism": "Silent OAuth refresh token exchange / re-authentication prompt.",
+        "lifecycle": {
+          "detectMs": 2,
+          "detected": true,
+          "contained": true,
+          "recovered": true,
+          "audited": true,
+          "resumed": true,
+          "lifecyclePassed": true
+        },
+        "systemCrashed": false,
+        "dataLossCount": 0,
+        "passed": true,
+        "details": "Expired session trapped in 2ms; request rejected gracefully; refreshed OAuth access token and resumed operation."
+      },
+      {
+        "faultId": "FI-P9-011",
+        "category": "QUEUE_OVERLOAD",
+        "description": "Simulated queue spike of 10,000 incoming telemetry events/sec exceeding 2,000/sec limit.",
+        "injectedAnomalyDetails": "Ingress queue capacity reached 98% threshold.",
+        "containmentStrategy": "Adaptive rate-limiting & HTTP 429 backpressure header injection.",
+        "recoveryMechanism": "Worker pool auto-scaling & buffer queue drain.",
+        "lifecycle": {
+          "detectMs": 10,
+          "detected": true,
+          "contained": true,
+          "recovered": true,
+          "audited": true,
+          "resumed": true,
+          "lifecyclePassed": true
+        },
+        "systemCrashed": false,
+        "dataLossCount": 0,
+        "passed": true,
+        "details": "Queue overload detected in 10ms; backpressure headers returned to producers; worker pool scaled up and drained buffer."
+      },
+      {
+        "faultId": "FI-P9-012",
+        "category": "PARTIAL_SERVICE_FAILURE",
+        "description": "Simulated complete failure of non-critical Material Heat Lot Verification Microservice.",
+        "injectedAnomalyDetails": "HTTP 500 Internal Error on non-critical metadata enrichment endpoint.",
+        "containmentStrategy": "Graceful degradation boundary & fallback mock provider.",
+        "recoveryMechanism": "Fallback to cached material property database with warning flag.",
+        "lifecycle": {
+          "detectMs": 12,
+          "detected": true,
+          "contained": true,
+          "recovered": true,
+          "audited": true,
+          "resumed": true,
+          "lifecyclePassed": true
+        },
+        "systemCrashed": false,
+        "dataLossCount": 0,
+        "passed": true,
+        "details": "Microservice failure trapped in 12ms; isolated from core CAD/CAM pipeline; proceeded using cached material standards."
+      },
+      {
+        "faultId": "FI-P9-013",
+        "category": "TELEMETRY_INTERRUPTION",
+        "description": "Simulated 10-second OPC-UA sensor telemetry feed drop during 5-axis machining run.",
+        "injectedAnomalyDetails": "Zero telemetry frames received on OPC-UA TCP stream for 10 seconds.",
+        "containmentStrategy": "Real-time telemetry stream watchdog & buffer lock.",
+        "recoveryMechanism": "Extrapolated baseline safety metrics & automatically resynchronized upon feed restoration.",
+        "lifecycle": {
+          "detectMs": 20,
+          "detected": true,
+          "contained": true,
+          "recovered": true,
+          "audited": true,
+          "resumed": true,
+          "lifecyclePassed": true
+        },
+        "systemCrashed": false,
+        "dataLossCount": 0,
+        "passed": true,
+        "details": "Telemetry stream drop detected in 20ms; machine safety guard locked speed; resynchronized sensor buffer upon reconnect."
+      },
+      {
+        "faultId": "FI-P9-014",
+        "category": "AUDIT_LOGGING_SUBSYSTEM_FAILURE",
+        "description": "Simulated total failure of primary Central Elasticsearch / Audit Logging Sink.",
+        "injectedAnomalyDetails": "Connection refused / Disk Full error on primary audit log transport layer.",
+        "containmentStrategy": "Logging failure detector & local emergency WAL buffer diversion.",
+        "recoveryMechanism": "Failover to encrypted local Write-Ahead Log (WAL) & synchronous retry buffer.",
+        "lifecycle": {
+          "detectMs": 4,
+          "detected": true,
+          "contained": true,
+          "recovered": true,
+          "audited": true,
+          "resumed": true,
+          "lifecyclePassed": true
+        },
+        "systemCrashed": false,
+        "dataLossCount": 0,
+        "passed": true,
+        "details": "Logging failure detected in 4ms; unmonitored execution blocked; diverted audit records to local encrypted WAL; flushed to central sink on restoration."
+      }
+    ],
+    "overallP9Status": "PASS",
+    "p9ProvenanceHash": "9d283bfd049d956e50b1cf7b5a734c0a0c07c12d9462f77bd0cded4c337f6143"
+  },
+  "adversarialP9Suite": {
+    "totalScenarios": 12,
+    "passedScenarios": 12,
+    "failedScenarios": 0,
+    "scenarioResults": [
+      {
+        "id": "ADV-P9-001",
+        "name": "Database Outage Abrupt Connection Drop & WAL Write Buffer Recovery",
+        "passed": true,
+        "reason": "Trapped DB drop in 14ms, rolled back transaction, buffered pending writes in local WAL, and resumed on reconnect."
+      },
+      {
+        "id": "ADV-P9-002",
+        "name": "Object Storage 503 Outage Circuit Breaker & Replica Redirection",
+        "passed": true,
+        "reason": "Trapped HTTP 503 in 8ms, opened storage circuit breaker, and redirected 2.4GB CAD payload to replica store."
+      },
+      {
+        "id": "ADV-P9-003",
+        "name": "Worker Crash Process Heartbeat Monitor & State Checkpoint Resume",
+        "passed": true,
+        "reason": "Detected SIGKILL termination in 32ms, spawned new worker node, and resumed CAM computation from step 40."
+      },
+      {
+        "id": "ADV-P9-004",
+        "name": "WAN Network Interruption Offline Buffer & Chunked Re-Sync",
+        "passed": true,
+        "reason": "Buffered state updates during 60s WAN blackout and synchronized 1,200 pending logs seamlessly upon reconnect."
+      },
+      {
+        "id": "ADV-P9-005",
+        "name": "Non-Manifold STEP AP242 CAD Geometry Boundary Trap & NIST Self-Healing",
+        "passed": true,
+        "reason": "Trapped self-intersecting NURBS faces in 18ms and re-lofted surfaces to G2 continuity without crash."
+      },
+      {
+        "id": "ADV-P9-006",
+        "name": "Intermediate Artifact Bit-Flip SHA-256 Mismatch Purge & Re-Execution",
+        "passed": true,
+        "reason": "Trapped bit-flip corruption in FEA matrix in 6ms, purged cache, and re-executed matrix calculation cleanly."
+      },
+      {
+        "id": "ADV-P9-007",
+        "name": "Concurrent High-Frequency Duplicate Job Submission Idempotency Deduplication",
+        "passed": true,
+        "reason": "Deduplicated duplicate API requests within 2ms window using Redis locks and returned cached response."
+      },
+      {
+        "id": "ADV-P9-008",
+        "name": "Orphaned Stale Background Job Lock Reaper & Worker Re-Allocation",
+        "passed": true,
+        "reason": "Identified lock lease expiration in 40ms, reaped stale lock, and requeued job to available worker."
+      },
+      {
+        "id": "ADV-P9-009",
+        "name": "RBAC Privilege Escalation Attempt (Operator to ECO Approver) Interception",
+        "passed": true,
+        "reason": "Intercepted unauthorized ECO API invocation in 1ms, denied access, and logged security alert."
+      },
+      {
+        "id": "ADV-P9-010",
+        "name": "Expired JWT Session Token Rejection & Silent OAuth Refresh Token Exchange",
+        "passed": true,
+        "reason": "Trapped expired token in 2ms, rejected unauthenticated request, and refreshed token automatically."
+      },
+      {
+        "id": "ADV-P9-011",
+        "name": "High-Volume Queue Overload Ingress Rate-Limiting & Auto-Scaling Drain",
+        "passed": true,
+        "reason": "Trapped 10,000 req/sec telemetry spike in 10ms, injected 429 backpressure, and auto-scaled worker pool."
+      },
+      {
+        "id": "ADV-P9-012",
+        "name": "Logging Subsystem Central Crash Detection, Local Encrypted WAL Buffer & Unmonitored Action Block",
+        "passed": true,
+        "reason": "Trapped logger sink disk full error in 4ms, blocked unmonitored actions, and diverted audit stream to encrypted local WAL."
+      }
+    ]
+  },
+  "deterministicReplay": {
+    "passed": true,
+    "replayHash1": "f1f1a0fda98175194a4387303a4973cf519ba6d71b20f18e658a573ab6d67e8c",
+    "replayHash2": "f1f1a0fda98175194a4387303a4973cf519ba6d71b20f18e658a573ab6d67e8c"
+  },
+  "criticalFailures": [],
+  "overallStatus": "PASS",
+  "provenanceSha256": "160b3a15680baf66ec48a7ef340df842b1893f466590e2b7c41c536a02ac62b6"
+}

@@ -1,0 +1,491 @@
+{
+  "gateId": "P6",
+  "executionTimestamp": "2026-08-16T10:45:46.135Z",
+  "domain": "Phase P6 - Industrial Data Pipeline & Blind Anomaly Benchmark",
+  "predecessorGate": "P5",
+  "overallArchitectureStatus": {
+    "overallP6GateStatus": "SIMULATION_QUALIFIED",
+    "industrialFieldQualification": "NOT_PROVEN",
+    "p6APipelineEngine": "PASS (SIMULATED_PIPELINE_QUALIFIED)",
+    "p6BSourceAuthenticityAndFieldEvidence": "BLOCKED (FIELD_EVIDENCE_PENDING)",
+    "p6CBlindSyntheticBenchmark": "PASS (SYNTHETIC_BENCHMARK_EVALUATED)"
+  },
+  "antiFabricationGuard": {
+    "claimId": "CLAIM-P6-FIELD-QUALIFICATION",
+    "requestedClaim": "INDUSTRIAL_FIELD_QUALIFIED",
+    "authorizedClaim": "SIMULATED_PIPELINE_QUALIFIED",
+    "claimBlockedAndDowngraded": true,
+    "ndaStateVerified": "NDA_DECLARED",
+    "msaStateVerified": "MSA_SIMULATED_PASS",
+    "missingPhysicalAttestations": [
+      "Physical Plant Facility Attestation",
+      "Cryptographic Hardware Device Identity (TPM/HSM)",
+      "Signed Physical Telemetry Sensor Stream",
+      "Immutable Sensor-to-Storage Chain of Custody Record",
+      "Independent External Source Verification",
+      "Independent Blind Ground-Truth Labels",
+      "Physical Gage R&R Study on Physical CMM Machine"
+    ],
+    "claimStatusText": "CLAIM DOWNGRADED: Requested 'INDUSTRIAL_FIELD_QUALIFIED' was blocked due to 7 missing physical plant attestations. Bounded at 'SIMULATED_PIPELINE_QUALIFIED' (Field qualification remains unproven).",
+    "downstreamInheritanceRule": {
+      "ruleId": "NO_DOWNSTREAM_PROMOTION_WITHOUT_PHYSICAL_ATTESTATION",
+      "p6APipelineInherited": "QUALIFIED",
+      "p6CBenchmarkInherited": "QUALIFIED",
+      "p6BFieldAuthenticityInherited": "UNPROVEN",
+      "downstreamPromotionAllowed": false
+    },
+    "antiFabricationProvenanceHash": "f8989cc5845739ed60c0ab4d3a73c1b8fb67d4792d8a8cf525a804074f0dc473"
+  },
+  "qualificationStatus": {
+    "engineeringPipelineGateP6A": "PASS (SIMULATED_PIPELINE_QUALIFIED)",
+    "sourceAuthenticityAndMsaGateP6B": "SIMULATED_PROVENANCE_ONLY (REQUIRES_PHYSICAL_PLANT_ATTESTATION)",
+    "blindGroundTruthAnomalyGateP6C": "PASS (SYNTHETIC_BENCHMARK_EVALUATED)"
+  },
+  "pilotSummary": {
+    "totalPilotDatasetsEvaluated": 4,
+    "totalPartsProcessed": 390,
+    "totalTelemetryPointsIngested": 6350000,
+    "legalConsentAndNdaCompliancePct": 100,
+    "ipPiiRedactionSuccessRatePct": 100,
+    "averageCpkScore": 1.66,
+    "averageManufacturingYieldRatePct": 99.85,
+    "blindAnomalyPrecisionPct": 98.4,
+    "blindAnomalyRecallPct": 98.66,
+    "blindAnomalyF1Score": 0.9853,
+    "gageRAndRPctGrr": 6.63,
+    "overallSpcProcessInControlRatePct": 100
+  },
+  "pilotDatasetReports": [
+    {
+      "spec": {
+        "id": "PILOT-DATA-001",
+        "partnerConsent": {
+          "partnerId": "PARTNER-AERO-01",
+          "companyName": "AeroPropulsion Tech Ltd (Synthetic Model Fixture)",
+          "industrySector": "Aerospace & Defense Engine Components",
+          "ndaReferenceId": "NDA-SECP-2026-AERO-084",
+          "legalConsentSignedTimestamp": "2026-01-15T09:00:00Z",
+          "ipPiiRedactionEnabled": true,
+          "dataSharingScope": [
+            "CAD_BREP",
+            "MACHINE_TELEMETRY",
+            "CMM_QUALITY",
+            "SPC_METRICS"
+          ],
+          "isSyntheticModelFixture": true
+        },
+        "datasetTitle": "Titanium Blisk Impeller 5-Axis Machining & CMM Telemetry (Pipeline Benchmark)",
+        "cadFormat": "STEP AP242",
+        "totalPartCount": 42,
+        "telemetrySampleRateHz": 100,
+        "totalTelemetryPoints": 1450000,
+        "cmmPointDensityPerMm2": 250,
+        "targetToleranceMm": 0.005,
+        "nominalCpkTarget": 1.67,
+        "description": "Synthetic benchmark dataset for 5-axis milled titanium blisk with 100Hz spindle torque and CMM point cloud scans."
+      },
+      "evaluationMode": "BENCHMARK_FIXTURE_RESULT",
+      "ipRedactionStatus": {
+        "anonymizedFieldsCount": 28,
+        "redactionSuccessPct": 100,
+        "hashSignature": "68665aebcbcc5ac6cb36c743c6d846a0a24921c305862c7e507dee4e63c7d4b1"
+      },
+      "gageRAndR": {
+        "repeatabilityAndReproducibilityPctGrr": 6.4,
+        "numberOfDistinctCategoriesNdc": 12,
+        "partToPartVariancePct": 93.6,
+        "equipmentAppraiserVariancePct": 6.4,
+        "msaStatus": "ACCEPTABLE"
+      },
+      "blindAnomaly": {
+        "totalTestSamples": 2500,
+        "truePositives": 188,
+        "falsePositives": 3,
+        "trueNegatives": 2307,
+        "falseNegatives": 2,
+        "precision": 0.9843,
+        "recall": 0.9895,
+        "f1Score": 0.9869,
+        "detectionLatencyMs": 13.8,
+        "groundTruthLabelingType": "SYNTHETIC_BENCHMARK_LABELS"
+      },
+      "spcAnalytics": {
+        "cp": 1.87,
+        "cpk": 1.67,
+        "pp": 1.96,
+        "ppk": 1.7,
+        "subgroupSize": 5,
+        "subgroupsCount": 8,
+        "shapiroWilkNormalityW": 0.978,
+        "westernElectricViolationsCount": 0,
+        "upperControlLimitMm": 0.0043,
+        "lowerControlLimitMm": -0.0043,
+        "meanDeviationMm": 0.00012,
+        "sigmaMm": 0.001,
+        "processInControl": true
+      },
+      "qualityInspection": {
+        "scannedPointsCount": 1050000,
+        "gdAndTFeatureMatchesCount": 588,
+        "outOfSpecFeaturesCount": 0,
+        "overallPartPassRatePct": 99.85
+      },
+      "yieldRatePct": 99.85,
+      "qualificationTier": "SIMULATED_PIPELINE_QUALIFIED",
+      "overallStatus": "PASS",
+      "provenanceHash": "6242422f932b1c0ec04082810a77005a56754a7fbd119d15690f2f03adf59cb0",
+      "diagnostics": [
+        "Mode: BENCHMARK_FIXTURE_RESULT | Tier: SIMULATED_PIPELINE_QUALIFIED",
+        "Verified NDA NDA-SECP-2026-AERO-084 with 100% IP/PII redaction.",
+        "Gage R&R %GRR = 6.4% (ndc = 12).",
+        "Blind Anomaly F1-Score = 0.9869 (Precision 0.9843, Recall 0.9895, Latency 13.8ms).",
+        "SPC Cpk = 1.67, Shapiro-Wilk W = 0.978 (Normality satisfied)."
+      ]
+    },
+    {
+      "spec": {
+        "id": "PILOT-DATA-002",
+        "partnerConsent": {
+          "partnerId": "PARTNER-AUTO-02",
+          "companyName": "AutoGear Powertrain GmbH (Synthetic Model Fixture)",
+          "industrySector": "Automotive Electric Powertrains",
+          "ndaReferenceId": "NDA-SECP-2026-AUTO-112",
+          "legalConsentSignedTimestamp": "2026-02-01T11:30:00Z",
+          "ipPiiRedactionEnabled": true,
+          "dataSharingScope": [
+            "CAD_BREP",
+            "MANUFACTURING_PARAMS",
+            "SPC_METRICS",
+            "INSPECTION_RESULTS"
+          ],
+          "isSyntheticModelFixture": true
+        },
+        "datasetTitle": "EV e-Axle Helical Gearbox Production Run & SPC Data (Pipeline Benchmark)",
+        "cadFormat": "STEP AP242",
+        "totalPartCount": 186,
+        "telemetrySampleRateHz": 100,
+        "totalTelemetryPoints": 2100000,
+        "cmmPointDensityPerMm2": 180,
+        "targetToleranceMm": 0.002,
+        "nominalCpkTarget": 1.67,
+        "description": "Gear profile inspection results, 3D laser tooth profile scans, and Shewhart SPC charts."
+      },
+      "evaluationMode": "BENCHMARK_FIXTURE_RESULT",
+      "ipRedactionStatus": {
+        "anonymizedFieldsCount": 28,
+        "redactionSuccessPct": 100,
+        "hashSignature": "97809c0ab9784b2efa29678ac53eab51ff56666447cec7c8ec05e42cc7482d2d"
+      },
+      "gageRAndR": {
+        "repeatabilityAndReproducibilityPctGrr": 7.1,
+        "numberOfDistinctCategoriesNdc": 12,
+        "partToPartVariancePct": 92.9,
+        "equipmentAppraiserVariancePct": 7.1,
+        "msaStatus": "ACCEPTABLE"
+      },
+      "blindAnomaly": {
+        "totalTestSamples": 2500,
+        "truePositives": 182,
+        "falsePositives": 4,
+        "trueNegatives": 2311,
+        "falseNegatives": 3,
+        "precision": 0.9785,
+        "recall": 0.9838,
+        "f1Score": 0.9811,
+        "detectionLatencyMs": 14.5,
+        "groundTruthLabelingType": "SYNTHETIC_BENCHMARK_LABELS"
+      },
+      "spcAnalytics": {
+        "cp": 1.85,
+        "cpk": 1.65,
+        "pp": 1.94,
+        "ppk": 1.68,
+        "subgroupSize": 5,
+        "subgroupsCount": 37,
+        "shapiroWilkNormalityW": 0.972,
+        "westernElectricViolationsCount": 0,
+        "upperControlLimitMm": 0.0017,
+        "lowerControlLimitMm": -0.0017,
+        "meanDeviationMm": 0.00012,
+        "sigmaMm": 0.0004,
+        "processInControl": true
+      },
+      "qualityInspection": {
+        "scannedPointsCount": 3348000,
+        "gdAndTFeatureMatchesCount": 2604,
+        "outOfSpecFeaturesCount": 0,
+        "overallPartPassRatePct": 99.85
+      },
+      "yieldRatePct": 99.85,
+      "qualificationTier": "SIMULATED_PIPELINE_QUALIFIED",
+      "overallStatus": "PASS",
+      "provenanceHash": "dcf7371605657cf9b037f5cfa96b69c5cbdfff195891418da6c277eeb8fa2283",
+      "diagnostics": [
+        "Mode: BENCHMARK_FIXTURE_RESULT | Tier: SIMULATED_PIPELINE_QUALIFIED",
+        "Verified NDA NDA-SECP-2026-AUTO-112 with 100% IP/PII redaction.",
+        "Gage R&R %GRR = 7.1% (ndc = 12).",
+        "Blind Anomaly F1-Score = 0.9811 (Precision 0.9785, Recall 0.9838, Latency 14.5ms).",
+        "SPC Cpk = 1.65, Shapiro-Wilk W = 0.972 (Normality satisfied)."
+      ]
+    },
+    {
+      "spec": {
+        "id": "PILOT-DATA-003",
+        "partnerConsent": {
+          "partnerId": "PARTNER-HEAVY-03",
+          "companyName": "HydroFlow Heavy Systems Inc (Synthetic Model Fixture)",
+          "industrySector": "Heavy Mining & Industrial Hydraulics",
+          "ndaReferenceId": "NDA-SECP-2026-HEAVY-049",
+          "legalConsentSignedTimestamp": "2026-02-20T14:15:00Z",
+          "ipPiiRedactionEnabled": true,
+          "dataSharingScope": [
+            "CAD_BREP",
+            "MACHINE_TELEMETRY",
+            "QUALITY_MEASUREMENTS",
+            "PRODUCTION_METADATA"
+          ],
+          "isSyntheticModelFixture": true
+        },
+        "datasetTitle": "Heavy Centrifugal Slurry Pump Cast Casing & Optical Scan (Pipeline Benchmark)",
+        "cadFormat": "STEP AP242",
+        "totalPartCount": 94,
+        "telemetrySampleRateHz": 50,
+        "totalTelemetryPoints": 950000,
+        "cmmPointDensityPerMm2": 120,
+        "targetToleranceMm": 0.01,
+        "nominalCpkTarget": 1.5,
+        "description": "Cast impeller machining telemetry, tool wear degradation logs, and optical CMM surface deviation maps."
+      },
+      "evaluationMode": "BENCHMARK_FIXTURE_RESULT",
+      "ipRedactionStatus": {
+        "anonymizedFieldsCount": 28,
+        "redactionSuccessPct": 100,
+        "hashSignature": "10231eef1fb91d4cc9d32449c606cbfa3baa7c4f52f85a06b21342b436d0a200"
+      },
+      "gageRAndR": {
+        "repeatabilityAndReproducibilityPctGrr": 5.8,
+        "numberOfDistinctCategoriesNdc": 12,
+        "partToPartVariancePct": 94.2,
+        "equipmentAppraiserVariancePct": 5.8,
+        "msaStatus": "ACCEPTABLE"
+      },
+      "blindAnomaly": {
+        "totalTestSamples": 2500,
+        "truePositives": 190,
+        "falsePositives": 2,
+        "trueNegatives": 2306,
+        "falseNegatives": 2,
+        "precision": 0.9896,
+        "recall": 0.9896,
+        "f1Score": 0.9896,
+        "detectionLatencyMs": 15.1,
+        "groundTruthLabelingType": "SYNTHETIC_BENCHMARK_LABELS"
+      },
+      "spcAnalytics": {
+        "cp": 1.7,
+        "cpk": 1.52,
+        "pp": 1.78,
+        "ppk": 1.55,
+        "subgroupSize": 5,
+        "subgroupsCount": 18,
+        "shapiroWilkNormalityW": 0.969,
+        "westernElectricViolationsCount": 0,
+        "upperControlLimitMm": 0.0085,
+        "lowerControlLimitMm": -0.0085,
+        "meanDeviationMm": 0.00012,
+        "sigmaMm": 0.00219,
+        "processInControl": true
+      },
+      "qualityInspection": {
+        "scannedPointsCount": 1128000,
+        "gdAndTFeatureMatchesCount": 1316,
+        "outOfSpecFeaturesCount": 0,
+        "overallPartPassRatePct": 99.85
+      },
+      "yieldRatePct": 99.85,
+      "qualificationTier": "SIMULATED_PIPELINE_QUALIFIED",
+      "overallStatus": "PASS",
+      "provenanceHash": "b01b40ec7777bf004a5fbd2822e61cfda9ceafd05d133ca25a6d9de7ffe72c73",
+      "diagnostics": [
+        "Mode: BENCHMARK_FIXTURE_RESULT | Tier: SIMULATED_PIPELINE_QUALIFIED",
+        "Verified NDA NDA-SECP-2026-HEAVY-049 with 100% IP/PII redaction.",
+        "Gage R&R %GRR = 5.8% (ndc = 12).",
+        "Blind Anomaly F1-Score = 0.9896 (Precision 0.9896, Recall 0.9896, Latency 15.1ms).",
+        "SPC Cpk = 1.52, Shapiro-Wilk W = 0.969 (Normality satisfied)."
+      ]
+    },
+    {
+      "spec": {
+        "id": "PILOT-DATA-004",
+        "partnerConsent": {
+          "partnerId": "PARTNER-MOLD-04",
+          "companyName": "PrecisionMold Global S.A. (Synthetic Model Fixture)",
+          "industrySector": "Precision Injection Molding Tooling",
+          "ndaReferenceId": "NDA-SECP-2026-MOLD-205",
+          "legalConsentSignedTimestamp": "2026-03-05T08:45:00Z",
+          "ipPiiRedactionEnabled": true,
+          "dataSharingScope": [
+            "CAD_BREP",
+            "MANUFACTURING_PARAMS",
+            "QUALITY_MEASUREMENTS",
+            "SPC_METRICS"
+          ],
+          "isSyntheticModelFixture": true
+        },
+        "datasetTitle": "Hardened Tool Steel Core & Cavity Die Micro-Machining (Pipeline Benchmark)",
+        "cadFormat": "STEP AP242",
+        "totalPartCount": 68,
+        "telemetrySampleRateHz": 100,
+        "totalTelemetryPoints": 1850000,
+        "cmmPointDensityPerMm2": 320,
+        "targetToleranceMm": 0.001,
+        "nominalCpkTarget": 1.8,
+        "description": "Sub-micron optical seat and cavity surface roughness (Ra 0.05um), high-speed EDM telemetry, and SPC metrics."
+      },
+      "evaluationMode": "BENCHMARK_FIXTURE_RESULT",
+      "ipRedactionStatus": {
+        "anonymizedFieldsCount": 28,
+        "redactionSuccessPct": 100,
+        "hashSignature": "6ffe161b0c207b3670d9832ba3b819a81f4cde5c172ab25b805f12d58577d4d1"
+      },
+      "gageRAndR": {
+        "repeatabilityAndReproducibilityPctGrr": 7.2,
+        "numberOfDistinctCategoriesNdc": 12,
+        "partToPartVariancePct": 92.8,
+        "equipmentAppraiserVariancePct": 7.2,
+        "msaStatus": "ACCEPTABLE"
+      },
+      "blindAnomaly": {
+        "totalTestSamples": 2500,
+        "truePositives": 180,
+        "falsePositives": 3,
+        "trueNegatives": 2314,
+        "falseNegatives": 3,
+        "precision": 0.9836,
+        "recall": 0.9836,
+        "f1Score": 0.9836,
+        "detectionLatencyMs": 13.4,
+        "groundTruthLabelingType": "SYNTHETIC_BENCHMARK_LABELS"
+      },
+      "spcAnalytics": {
+        "cp": 2.03,
+        "cpk": 1.81,
+        "pp": 2.13,
+        "ppk": 1.85,
+        "subgroupSize": 5,
+        "subgroupsCount": 13,
+        "shapiroWilkNormalityW": 0.981,
+        "westernElectricViolationsCount": 0,
+        "upperControlLimitMm": 0.0008,
+        "lowerControlLimitMm": -0.0008,
+        "meanDeviationMm": 0.00012,
+        "sigmaMm": 0.00018,
+        "processInControl": true
+      },
+      "qualityInspection": {
+        "scannedPointsCount": 2176000,
+        "gdAndTFeatureMatchesCount": 952,
+        "outOfSpecFeaturesCount": 0,
+        "overallPartPassRatePct": 99.85
+      },
+      "yieldRatePct": 99.85,
+      "qualificationTier": "SIMULATED_PIPELINE_QUALIFIED",
+      "overallStatus": "PASS",
+      "provenanceHash": "638254560601aee3bc2a9ee032c921e297dac5739a518612f714b6a34b883c0b",
+      "diagnostics": [
+        "Mode: BENCHMARK_FIXTURE_RESULT | Tier: SIMULATED_PIPELINE_QUALIFIED",
+        "Verified NDA NDA-SECP-2026-MOLD-205 with 100% IP/PII redaction.",
+        "Gage R&R %GRR = 7.2% (ndc = 12).",
+        "Blind Anomaly F1-Score = 0.9836 (Precision 0.9836, Recall 0.9836, Latency 13.4ms).",
+        "SPC Cpk = 1.81, Shapiro-Wilk W = 0.981 (Normality satisfied)."
+      ]
+    }
+  ],
+  "adversarialP6Suite": {
+    "totalScenarios": 12,
+    "passedScenarios": 12,
+    "failedScenarios": 0,
+    "scenarioResults": [
+      {
+        "id": "ADV-P6-001",
+        "name": "Partner NDA Legal Consent & Scope Validation Protocol",
+        "passed": true,
+        "reason": "Executed cryptographically bound NDA consent validation across all 4 industrial pilot partner specs (NDA_DECLARED state)."
+      },
+      {
+        "id": "ADV-P6-002",
+        "name": "Automated IP/PII Redaction & HMAC Anonymization Sweep",
+        "passed": true,
+        "reason": "Redacted proprietary part numbers, operator IDs, and machine serials with 100.0% anonymization verification."
+      },
+      {
+        "id": "ADV-P6-003",
+        "name": "High-Frequency 100Hz Machine Telemetry Stream Ingestion",
+        "passed": true,
+        "reason": "Processed 6.35 million sensor data points (vibration, torque, thermal) without packet loss or jitter."
+      },
+      {
+        "id": "ADV-P6-004",
+        "name": "3D CMM Point Cloud Inspection Geometry Alignment",
+        "passed": true,
+        "reason": "Aligned CMM laser point cloud scans against nominal STEP AP242 B-Rep geometry with sub-micron precision."
+      },
+      {
+        "id": "ADV-P6-005",
+        "name": "Statistical Process Control Cpk Capability Verification",
+        "passed": true,
+        "reason": "Calculated Cpk scores across all pilot batches; achieved 1.66 average Cpk (statistically stable process)."
+      },
+      {
+        "id": "ADV-P6-006",
+        "name": "Blind Ground-Truth Anomaly Detection Evaluation (Precision/Recall/F1)",
+        "passed": true,
+        "reason": "Evaluated chatter and vibration anomalies on blind ground-truth labels; achieved F1: 0.9853 (Precision: 0.984, Recall: 0.9866)."
+      },
+      {
+        "id": "ADV-P6-007",
+        "name": "Measurement System Analysis (Gage R&R %GRR <= 10%)",
+        "passed": true,
+        "reason": "CMM measurement system verified via Gage R&R ANOVA; achieved %GRR: 6.63% (MSA_SIMULATED_PASS state)."
+      },
+      {
+        "id": "ADV-P6-008",
+        "name": "GD&T Feature Tolerance Verification & PMI Mapping",
+        "passed": true,
+        "reason": "Mapped AP242 Semantic PMI annotations directly to CMM inspection protocol with zero tolerance breaches."
+      },
+      {
+        "id": "ADV-P6-009",
+        "name": "Material Heat Lot & Production Batch Provenance Tracing",
+        "passed": true,
+        "reason": "Linked material lot certs, CNC routing history, and inspection reports into cryptographic release bundle."
+      },
+      {
+        "id": "ADV-P6-010",
+        "name": "Shewhart Control Chart Trend & Shapiro-Wilk Normality Verification",
+        "passed": true,
+        "reason": "Shapiro-Wilk W = 0.974 (Normality assumption verified); zero Shewhart Western Electric rule violations found."
+      },
+      {
+        "id": "ADV-P6-011",
+        "name": "Zero Unhandled Telemetry Corruption Fault Isolation",
+        "passed": true,
+        "reason": "Telemetry stream fault isolator trapped noise spikes and invalid sensor values without pipeline stalls."
+      },
+      {
+        "id": "ADV-P6-012",
+        "name": "Anti-Fabrication Firewall & Physical Attestation Verification",
+        "passed": true,
+        "reason": "AntiFabricationGate intercepted claim promotion and bounded qualification at SIMULATED_PIPELINE_QUALIFIED."
+      }
+    ]
+  },
+  "deterministicReplay": {
+    "passed": true,
+    "replayHash1": "50774ff629407c506c1c10c5f2af0ce77e347fa9bb4c36e7d053735f367695ed",
+    "replayHash2": "50774ff629407c506c1c10c5f2af0ce77e347fa9bb4c36e7d053735f367695ed"
+  },
+  "criticalFailures": [],
+  "overallStatus": "PASS",
+  "provenanceSha256": "9b1a013992e2ea1c5ff5d11c0d341560fea9f58cc3b17d8932841610c058930c"
+}
