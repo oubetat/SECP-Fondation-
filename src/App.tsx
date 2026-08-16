@@ -347,17 +347,18 @@ export function App() {
           <div className="absolute inset-0 bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-20 pointer-events-none" />
 
           {/* Top 3D WebGL Viewport */}
-          <div className="h-2/3 border-b border-slate-800 relative z-10">
+          {/* Top 3D WebGL Viewport - Dynamic height for better focus */}
+          <div className={`${activePatchTab === 'PATCH-020' || activePatchTab === 'PATCH-015' ? 'h-[30vh]' : 'h-[60vh]'} border-b border-slate-800 relative z-10 transition-all duration-500`}>
             <div className="absolute top-4 left-4 flex items-center gap-2 z-20">
               <div className="px-2.5 py-1 bg-slate-900/80 backdrop-blur-md border border-slate-700 rounded shadow-lg flex items-center gap-2">
                 <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                <span className="text-[10px] font-bold text-slate-200 uppercase tracking-tight">Active Viewport</span>
+                <span className="text-[10px] font-bold text-slate-200 uppercase tracking-tight">System Viewport</span>
               </div>
             </div>
             
             <div className="absolute top-4 right-4 z-20 flex gap-2">
               <div className="px-2 py-1 bg-slate-900/80 backdrop-blur-md border border-slate-700 rounded text-[10px] text-slate-400 font-mono">
-                FPS: 60 | Tris: 14.2k
+                GPU: {activePatchTab === 'PATCH-031' ? 'VULKAN_SIM' : 'WEBGL_ACCEL'}
               </div>
             </div>
 
@@ -371,7 +372,7 @@ export function App() {
           </div>
 
           {/* Interactive Control Panel */}
-          <div className="flex-1 overflow-y-auto p-6 relative z-10">
+          <div className="flex-1 overflow-y-auto p-6 relative z-10 custom-scrollbar bg-slate-950/20">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activePatchTab}
@@ -379,7 +380,7 @@ export function App() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.2 }}
-                className="space-y-6"
+                className="space-y-6 max-w-7xl mx-auto w-full"
               >
                 {activePatchTab === 'PATCH-001' && (
                   <div className="bg-slate-900 border border-slate-800 rounded-xl p-6 text-slate-100 flex flex-col gap-6">
