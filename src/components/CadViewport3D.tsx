@@ -35,6 +35,7 @@ export const CadViewport3D: React.FC<CadViewport3DProps> = ({
   const [measuredDistance, setMeasuredDistance] = useState<number | null>(null);
   const [renderingBackend, setRenderingBackend] = useState<'WebGPU' | 'WebGL'>('WebGPU');
   const [selectedEntityName, setSelectedEntityName] = useState<string | null>(null);
+  const [showPipelineDetails, setShowPipelineDetails] = useState(false);
 
   const sceneRef = useRef<THREE.Scene | null>(null);
   const cameraRef = useRef<THREE.PerspectiveCamera | null>(null);
@@ -401,53 +402,71 @@ export const CadViewport3D: React.FC<CadViewport3DProps> = ({
         </div>
       )}
 
-      {/* Viewport Overlay Axis Legend */}
+      {/* Viewport Overlay Axis Legend & Pipeline */}
       <div className="absolute top-4 right-4 z-10 flex flex-col items-end gap-2">
-        <div className="bg-slate-950/95 backdrop-blur-md px-3 py-1.5 rounded-lg border border-slate-800 text-[10px] font-mono text-slate-300 flex flex-col gap-1 min-w-[210px]">
-          <div className="flex items-center justify-between border-b border-slate-850 pb-1 mb-1">
-            <span className="text-slate-500 uppercase tracking-wider font-bold">Pipeline Backend</span>
-            <span className={`px-1.5 py-0.5 rounded font-bold text-[8px] uppercase tracking-wider ${
-              renderingBackend === 'WebGPU' ? 'bg-indigo-600/20 text-indigo-400 border border-indigo-500/20' : 'bg-sky-600/20 text-sky-400 border border-sky-500/20'
-            }`}>
-              {renderingBackend}
-            </span>
+        {showPipelineDetails ? (
+          <div className="bg-slate-950/95 backdrop-blur-md px-3 py-1.5 rounded-lg border border-indigo-500/40 text-[10px] font-mono text-slate-300 flex flex-col gap-1 min-w-[210px] shadow-xl relative animate-in fade-in zoom-in-95 duration-150">
+            <button 
+              onClick={() => setShowPipelineDetails(false)}
+              className="absolute top-1 right-2 text-slate-500 hover:text-slate-300 text-[9px] font-sans font-bold"
+              title="Hide Pipeline Stats"
+            >
+              ✕
+            </button>
+            <div className="flex items-center justify-between border-b border-slate-800 pb-1 mb-1 pr-3">
+              <span className="text-slate-500 uppercase tracking-wider font-bold text-[9px]">Pipeline Backend</span>
+              <span className={`px-1 py-0.5 rounded font-bold text-[8px] uppercase tracking-wider ${
+                renderingBackend === 'WebGPU' ? 'bg-indigo-600/20 text-indigo-400 border border-indigo-500/20' : 'bg-sky-600/20 text-sky-400 border border-sky-500/20'
+              }`}>
+                {renderingBackend}
+              </span>
+            </div>
+            {renderingBackend === 'WebGPU' ? (
+              <>
+                <div className="flex justify-between">
+                  <span className="text-slate-500">Device Queue:</span>
+                  <span className="text-emerald-400 font-bold">Asynchronous</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-slate-500">WGSL Shaders:</span>
+                  <span className="text-slate-300">Compiled (PSO)</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-slate-500">BindGroups Layout:</span>
+                  <span className="text-slate-300">STD140 Uniform</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-slate-500">Buffer Mapping:</span>
+                  <span className="text-slate-300">Mapped CPU/GPU</span>
+                </div>
+              </>
+            ) : (
+              <>
+                <div className="flex justify-between">
+                  <span className="text-slate-500">Device API:</span>
+                  <span className="text-sky-400 font-bold">WebGL 2.0</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-slate-500">Fallback Driver:</span>
+                  <span className="text-slate-300">Three.js context</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-slate-500">Draw Calls/frame:</span>
+                  <span className="text-slate-300">~15 calls</span>
+                </div>
+              </>
+            )}
           </div>
-          {renderingBackend === 'WebGPU' ? (
-            <>
-              <div className="flex justify-between">
-                <span className="text-slate-500">Device Queue:</span>
-                <span className="text-emerald-400 font-bold">Asynchronous</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-slate-500">WGSL Shaders:</span>
-                <span className="text-slate-300">Compiled (PSO)</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-slate-500">BindGroups Layout:</span>
-                <span className="text-slate-300">STD140 Uniform</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-slate-500">Buffer Mapping:</span>
-                <span className="text-slate-300">Mapped CPU/GPU</span>
-              </div>
-            </>
-          ) : (
-            <>
-              <div className="flex justify-between">
-                <span className="text-slate-500">Device API:</span>
-                <span className="text-sky-400 font-bold">WebGL 2.0</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-slate-500">Fallback Driver:</span>
-                <span className="text-slate-300">Three.js context</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-slate-500">Draw Calls/frame:</span>
-                <span className="text-slate-300">~15 calls</span>
-              </div>
-            </>
-          )}
-        </div>
+        ) : (
+          <button
+            onClick={() => setShowPipelineDetails(true)}
+            className="bg-slate-950/80 hover:bg-slate-900 hover:border-slate-700 transition backdrop-blur-md px-2 py-1 rounded border border-slate-800 text-[9px] font-mono text-slate-400 flex items-center gap-1 shadow-md"
+            title="Show Pipeline Performance Diagnostics"
+          >
+            <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-pulse" />
+            <span>Pipeline Stats</span>
+          </button>
+        )}
 
         <div className="bg-slate-950/80 backdrop-blur-md px-3 py-1.5 rounded border border-slate-800 text-[10px] font-mono text-slate-400 flex items-center gap-2.5">
           <span className="text-red-400">● X</span>

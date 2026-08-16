@@ -350,15 +350,15 @@ export function App() {
           {/* Top 3D WebGL Viewport */}
           {/* Top 3D WebGL Viewport - Dynamic height for better focus */}
           <div className={`${activePatchTab === 'PATCH-020' || activePatchTab === 'PATCH-015' ? 'h-[30vh]' : 'h-[60vh]'} border-b border-slate-800 relative z-10 transition-all duration-500`}>
-            <div className="absolute top-4 left-4 flex items-center gap-2 z-20">
-              <div className="px-2.5 py-1 bg-slate-900/80 backdrop-blur-md border border-slate-700 rounded shadow-lg flex items-center gap-2">
+            <div className="absolute -top-3 left-4 flex items-center gap-2 z-20">
+              <div className="px-2.5 py-1 bg-slate-950 border border-slate-750 rounded shadow-lg flex items-center gap-2 text-slate-200">
                 <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                <span className="text-[10px] font-bold text-slate-200 uppercase tracking-tight">System Viewport</span>
+                <span className="text-[9px] font-bold uppercase tracking-wider">Active Viewport</span>
               </div>
             </div>
             
-            <div className="absolute top-4 right-4 z-20 flex gap-2">
-              <div className="px-2 py-1 bg-slate-900/80 backdrop-blur-md border border-slate-700 rounded text-[10px] text-slate-400 font-mono">
+            <div className="absolute -top-3 right-4 z-20 flex gap-2">
+              <div className="px-2 py-1 bg-slate-950 border border-slate-750 rounded text-[9px] text-slate-300 font-mono font-bold shadow-lg">
                 GPU: {activePatchTab === 'PATCH-031' ? 'VULKAN_SIM' : 'WEBGL_ACCEL'}
               </div>
             </div>
