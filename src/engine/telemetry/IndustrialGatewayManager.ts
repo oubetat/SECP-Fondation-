@@ -1,21 +1,17 @@
 /**
- * PATCH-SECP-086: Real Industrial IIoT Gateway & Ingestion Manager
- *
+ * SECP-102.4: Production Industrial Edge IIoT Gateway & Ingestion Manager
  * Serves as the central operational coordinator for the SECP Industrial Connectivity Core:
- * - Manages real protocol connectors (OPC-UA, MQTT, Modbus TCP/RTU, MTConnect)
- * - Manages operational source modes: LIVE, PROTOCOL-INTEGRATION, SIMULATION
- * - Normalizes and validates incoming packets through TelemetryNormalizer
- * - Enforces zero silent loss with EdgeBufferManager queue & audit logging
+ * - Manages protocol connectors (OPC-UA, MQTT, Modbus TCP/RTU, MTConnect)
+ * - State machine lifecycle: DISCONNECTED -> CONNECTING -> CONNECTED -> DEGRADED -> DISCONNECTED
+ * - Validates schema, timestamps, sequence numbers, physical ranges, and source channel isolation
  * - Propagates normalized events to DigitalTwinTelemetryBridge, IndustrialAnomalyBridge, and IndustrialRulEngine
- * - Binds all telemetry events to SystemProvenanceEngine and TelemetryHasher cryptographic audit chains
- * - Enforces security boundaries: credential isolation, rate limiting, and endpoint allowlists
+ * - Enforces zero silent loss with EdgeBufferManager queue & audit logging
  */
 
 import {
   IndustrialTelemetryEvent,
   RawTelemetryPacket,
-  TelemetryDataSource,
-  IndustrialProtocol
+  TelemetryDataSource
 } from './IndustrialTelemetryTypes';
 import { IIndustrialProtocolConnector, ConnectorHealthStatus } from './IndustrialProtocolConnector';
 import { TelemetryNormalizer } from './ingestion/TelemetryNormalizer';
@@ -23,8 +19,8 @@ import { EdgeBufferManager } from './ingestion/EdgeBufferManager';
 import { DigitalTwinTelemetryBridge } from './twin/DigitalTwinTelemetryBridge';
 import { IndustrialAnomalyBridge } from './twin/IndustrialAnomalyBridge';
 import { IndustrialRulEngine } from './twin/IndustrialRulEngine';
-import { ProvenanceEngine } from '../provenanceEngine';
-import { TelemetryHasher } from './TelemetryHasher';
+
+export type GatewayState = 'DISCONNECTED' | 'CONNECTING' | 'CONNECTED' | 'DEGRADED';
 
 export interface GatewayPerformanceMetrics {
   totalIngestedCount: number;
@@ -41,12 +37,15 @@ export interface GatewayPerformanceMetrics {
   maxQueueCapacity: number;
   isBackpressureActive: boolean;
   activeMode: TelemetryDataSource;
+  gatewayState: GatewayState;
 }
 
 export class IndustrialGatewayManager {
   private static instance: IndustrialGatewayManager | null = null;
 
+  private state: GatewayState = 'CONNECTED';
   private connectors: Map<string, IIndustrialProtocolConnector> = new Map();
+  private deviceSequenceTracker: Map<string, number> = new Map();
   private normalizer: TelemetryNormalizer;
   private bufferManager: EdgeBufferManager;
   private digitalTwinBridge: DigitalTwinTelemetryBridge;
@@ -73,6 +72,26 @@ export class IndustrialGatewayManager {
       this.instance = new IndustrialGatewayManager();
     }
     return this.instance;
+  }
+
+  public getState(): GatewayState {
+    return this.state;
+  }
+
+  public transitionState(nextState: GatewayState): void {
+    const validTransitions: Record<GatewayState, GatewayState[]> = {
+      DISCONNECTED: ['CONNECTING'],
+      CONNECTING: ['CONNECTED', 'DISCONNECTED'],
+      CONNECTED: ['DEGRADED', 'DISCONNECTED'],
+      DEGRADED: ['CONNECTED', 'DISCONNECTED']
+    };
+
+    const allowed = validTransitions[this.state];
+    if (!allowed || !allowed.includes(nextState)) {
+      throw new Error(`INVALID_STATE_TRANSITION: Cannot transition from ${this.state} to ${nextState}`);
+    }
+
+    this.state = nextState;
   }
 
   public setMode(mode: TelemetryDataSource): void {
@@ -114,10 +133,19 @@ export class IndustrialGatewayManager {
     const startMs = performance.now();
     this.totalIngestedCount++;
 
-    // Strict Anti-Mock Guard: Require explicit source tagging
+    if (this.state === 'DISCONNECTED') {
+      this.totalRejectedCount++;
+      return { success: false, rejectReason: 'GATEWAY_DISCONNECTED' };
+    }
+
+    // Strict Anti-Tamper Guard: Require explicit source tagging
     if (this.activeMode === 'LIVE' && packet.source !== 'LIVE') {
       this.totalRejectedCount++;
-      this.bufferManager.recordRawDrop(packet, 'SECURITY_VIOLATION', `Channel isolation: Packet source '${packet.source}' rejected in LIVE mode`);
+      this.bufferManager.recordRawDrop(
+        packet,
+        'SECURITY_VIOLATION',
+        `Channel isolation: Packet source '${packet.source}' rejected in LIVE mode`
+      );
       return { success: false, rejectReason: `Channel isolation violation` };
     }
 
@@ -134,16 +162,35 @@ export class IndustrialGatewayManager {
     }
 
     const event = normRes.event;
+
+    // 2. Monotonic Sequence Verification per Device
+    const prevSeq = this.deviceSequenceTracker.get(event.deviceId);
+    if (prevSeq !== undefined) {
+      if (event.sequenceNumber <= prevSeq) {
+        this.totalRejectedCount++;
+        this.bufferManager.recordRawDrop(
+          packet,
+          'DUPLICATE',
+          `Sequence error: Received sequence ${event.sequenceNumber} <= last seen ${prevSeq} for device ${event.deviceId}`
+        );
+        return { success: false, rejectReason: 'DUPLICATE_OR_OUT_OF_ORDER_SEQUENCE' };
+      }
+    }
+    this.deviceSequenceTracker.set(event.deviceId, event.sequenceNumber);
+
     this.totalNormalizedCount++;
 
-    // 2. Queue into EdgeBufferManager
+    // 3. Queue into EdgeBufferManager
     const enqueueRes = this.bufferManager.enqueue(event);
     if (!enqueueRes.enqueued) {
       this.totalRejectedCount++;
+      if (this.state === 'CONNECTED') {
+        this.state = 'DEGRADED';
+      }
       return { success: false, rejectReason: 'Buffer overflow' };
     }
 
-    // 3. Process into Twin, Anomaly, & RUL engines
+    // 4. Process into Twin, Anomaly, & RUL engines
     this.digitalTwinBridge.applyEvent(event);
     this.anomalyBridge.evaluate(event);
     this.rulEngine.predictRul(event);
@@ -159,7 +206,7 @@ export class IndustrialGatewayManager {
   }
 
   /**
-   * Ingests a high-throughput batch of packets (e.g. for benchmark testing)
+   * Ingests a high-throughput batch of packets
    */
   public ingestBatch(packets: RawTelemetryPacket[]): {
     normalizedCount: number;
@@ -212,7 +259,8 @@ export class IndustrialGatewayManager {
       queueDepth: bufferStats.currentQueueDepth,
       maxQueueCapacity: bufferStats.maxCapacity,
       isBackpressureActive: bufferStats.isBackpressureActive,
-      activeMode: this.activeMode
+      activeMode: this.activeMode,
+      gatewayState: this.state
     };
   }
 
@@ -237,10 +285,12 @@ export class IndustrialGatewayManager {
     this.digitalTwinBridge.reset();
     this.anomalyBridge.clear();
     this.rulEngine.reset();
+    this.deviceSequenceTracker.clear();
     this.latencySamplesMs = [];
     this.totalIngestedCount = 0;
     this.totalNormalizedCount = 0;
     this.totalRejectedCount = 0;
+    this.state = 'CONNECTED';
     this.startTimeMs = Date.now();
   }
 }

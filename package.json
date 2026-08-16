@@ -24,7 +24,8 @@
     "react-dom": "^19.0.1",
     "replicad": "^0.23.1",
     "three": "^0.185.1",
-    "vite": "^6.2.3"
+    "vite": "^6.2.3",
+    "wabt": "^1.0.39"
   },
   "devDependencies": {
     "@types/express": "^4.17.21",

@@ -1,0 +1,29 @@
+{
+  "gateId": "SECP-101.2",
+  "status": "BLOCKED",
+  "target": "src/engine/hpc/runtime/WasmKernels.ts",
+  "previousGate": "SECP-101.1",
+  "previousGateStatus": "BLOCKED",
+  "functionsInspected": 4,
+  "functionsRemediated": [
+    "csr_matvec_f64"
+  ],
+  "functionsUnresolved": [
+    "cfd_flux_f64",
+    "cam_5axis_transform_f64",
+    "nurbs_basis_f64"
+  ],
+  "verificationTests": "PASS",
+  "numericalVerification": "PASS",
+  "wasmNativeComparison": "PASS",
+  "deterministicReplay": "PASS",
+  "adversarialTesting": "PASS",
+  "remainingBlockers": [
+    "UNRESOLVED KERNEL: cfd_flux_f64",
+    "UNRESOLVED KERNEL: cam_5axis_transform_f64",
+    "UNRESOLVED KERNEL: nurbs_basis_f64",
+    "WasmKernels.ts still contains production blockers: /app/applet/src/engine/hpc/runtime/WasmKernels.ts: Contains placeholder"
+  ],
+  "dependencyIntegrity": "PASS",
+  "finalProvenanceSHA256": "4454f79e9b8c064691ff9d0714005acce2b4cac2e558fdbac2c65e1271440126"
+}

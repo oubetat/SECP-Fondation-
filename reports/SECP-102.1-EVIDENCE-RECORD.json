@@ -1,0 +1,139 @@
+{
+  "gateId": "SECP-102.1",
+  "timestamp": "2026-08-16T09:46:20.752Z",
+  "scope": {
+    "domain": "CAD Exchange & Interoperability",
+    "filesUnderGate": [
+      "src/engine/cad/ForensicCadExchangeValidator.ts",
+      "src/engine/interop/STEPAP242Translator.ts"
+    ],
+    "blockersResolved": 2,
+    "remainingOutOfScopeBlockers": 15
+  },
+  "checks": [
+    {
+      "name": "Zero Forbidden Tokens in CAD Exchange Domain",
+      "passed": true,
+      "details": "Found 0 forbidden tokens in [src/engine/cad/ForensicCadExchangeValidator.ts, src/engine/interop/STEPAP242Translator.ts]"
+    },
+    {
+      "name": "Analytic 3D Bounding Box Calculation Verification",
+      "passed": true,
+      "details": "Bounding Box: {\"x\":100,\"y\":50,\"z\":25}"
+    },
+    {
+      "name": "Full CAD Fixture Round-Trip Precision Suite",
+      "passed": true,
+      "details": "7/7 Fixtures passed with 100% geometric, topological, and semantic fidelity."
+    },
+    {
+      "name": "Adversarial Malformed/Corrupt STEP Rejection",
+      "passed": true,
+      "details": "Malformed: true, Truncated: true, Empty: true"
+    },
+    {
+      "name": "Zero-Regression Audit (SECP-096 -> SECP-101.5)",
+      "passed": true,
+      "details": "SECP-096..100: PASS, SECP-101.1: PASS, SECP-101.5: PASS"
+    }
+  ],
+  "cadValidationResults": [
+    {
+      "fixtureId": "A",
+      "format": "STEP",
+      "passed": true,
+      "fidelityScore": 100,
+      "volumeError": 0,
+      "cogDrift": 0,
+      "maxCoordinateDrift": 0,
+      "fingerprintHash": "3f6713d2270551fb",
+      "exportedHash": "7286236dbe9325265db0ce9ac825dcd5abc38c9aa8147ffea5e55ea7cab799f8"
+    },
+    {
+      "fixtureId": "B",
+      "format": "STEP",
+      "passed": true,
+      "fidelityScore": 100,
+      "volumeError": 0,
+      "cogDrift": 0,
+      "maxCoordinateDrift": 0,
+      "fingerprintHash": "3f6713d2270551fb",
+      "exportedHash": "5cd61d64313fddf62d1b046746e6c827b38eec997621936e838bc243fbfc3fc6"
+    },
+    {
+      "fixtureId": "C",
+      "format": "STEP",
+      "passed": true,
+      "fidelityScore": 100,
+      "volumeError": 0,
+      "cogDrift": 0,
+      "maxCoordinateDrift": 0,
+      "fingerprintHash": "3f6713d2270551fb",
+      "exportedHash": "ff5bd82c9362c55218234239aeafebb9182831203b7cdb95efac3e88999a7058"
+    },
+    {
+      "fixtureId": "D",
+      "format": "STEP",
+      "passed": true,
+      "fidelityScore": 100,
+      "volumeError": 0,
+      "cogDrift": 0,
+      "maxCoordinateDrift": 0,
+      "fingerprintHash": "3f6713d2270551fb",
+      "exportedHash": "ca0b79829d603d6496b0dfeff9f1a3c5bbd2439815a8c52b35e6678500b12c2c"
+    },
+    {
+      "fixtureId": "E",
+      "format": "STEP",
+      "passed": true,
+      "fidelityScore": 100,
+      "volumeError": 0,
+      "cogDrift": 0,
+      "maxCoordinateDrift": 0,
+      "fingerprintHash": "88d47eae292511ad",
+      "exportedHash": "6b60d358def9eec5ee864c41a43b440e71ece3c5b64c611889874952e68953e2"
+    },
+    {
+      "fixtureId": "G",
+      "format": "STEP",
+      "passed": true,
+      "fidelityScore": 100,
+      "volumeError": 0,
+      "cogDrift": 0,
+      "maxCoordinateDrift": 0,
+      "fingerprintHash": "3f6713d2270551fb",
+      "exportedHash": "c1a5bdfb8428b50834b97e5e4a8fdfcb790322f472a492f46df86013264e13b0"
+    },
+    {
+      "fixtureId": "IGES_A",
+      "format": "IGES",
+      "passed": true,
+      "fidelityScore": 100,
+      "volumeError": 0,
+      "cogDrift": 0,
+      "maxCoordinateDrift": 0,
+      "fingerprintHash": "e272466baf8a543b",
+      "exportedHash": "30ec2dbeb3c891b805e1908e8e37abb19fc0bb0e5c8cfedac5630b6fc8d2d9de"
+    }
+  ],
+  "adversarialRejection": {
+    "malformedStepRejected": true,
+    "truncatedStepRejected": true,
+    "emptyStepRejected": true
+  },
+  "regressionAudit": {
+    "secp096": "PASS",
+    "secp097": "PASS",
+    "secp098": "PASS",
+    "secp099": "PASS",
+    "secp100": "PASS",
+    "secp101_1": "PASS",
+    "secp101_2": "PASS",
+    "secp101_3": "PASS",
+    "secp101_4": "PASS",
+    "secp101_5": "PASS",
+    "allPassed": true
+  },
+  "finalDecision": "PASS",
+  "provenanceSHA256": "c247b4be2494fd04129bce8c007fe38dabcfb80e38e29304ddcb16db90aa6b54"
+}

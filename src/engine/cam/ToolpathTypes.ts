@@ -1,11 +1,10 @@
 /**
- * PATCH-SECP-057 — Deterministic Multi-Axis Toolpath Generation
- * Type contracts for CAM Toolpath Generation, Stock Modeling, Cutter Location (CL) Data,
- * Independent Verification, and Digital Thread Traceability.
+ * SECP-098 — CAM Toolpath Engine Domain Models
+ * Type contracts for Deterministic Toolpath Generation, Stock Modeling, 
+ * Forensic Provenance, and Machining Integrity.
  */
 
 import { Vector3D } from '../cadKernel';
-import { ProcessType } from '../manufacturing/ManufacturingTypes';
 
 export type ToolType = 
   | 'FLAT_ENDMILL'
@@ -24,16 +23,7 @@ export interface ToolHolderGeometry {
   upperDiameterMm: number;
   lengthMm: number;
   clearanceMarginMm: number;
-}
-
-export interface CutterGeometry {
-  diameterMm: number;
-  cornerRadiusMm: number;    // 0 for flat endmill, diameter/2 for ball nose
-  fluteCount: number;
-  fluteLengthMm: number;
-  overallLengthMm: number;
-  reachMm: number;           // Maximum overhang depth before holder collision
-  material: 'CARBIDE' | 'HSS' | 'CERAMIC' | 'CBN' | 'PCD';
+  fingerprint?: string;
 }
 
 export interface CuttingTool {
@@ -47,9 +37,19 @@ export interface CuttingTool {
   overallLengthMm: number;
   holderDiameterMm: number;
   gaugeLengthMm: number;
-  reachMm?: number;
+  reachMm: number;           // Maximum overhang depth before holder collision
   material: 'CARBIDE' | 'HSS' | 'CERAMIC' | 'CBN' | 'PCD';
   holder?: ToolHolderGeometry;
+  fingerprint: string;       // Deterministic tool hash
+}
+
+export interface ToolAssembly {
+  assemblyId: string;
+  tool: CuttingTool;
+  holder: ToolHolderGeometry;
+  offsetNumber: number;      // T-number in G-code
+  compensationLengthMm: number;
+  fingerprint: string;
 }
 
 export type MoveType = 
@@ -60,7 +60,19 @@ export type MoveType =
   | 'RETRACT'
   | 'CLEARANCE_TRANSITION'
   | 'LEAD_IN'
-  | 'LEAD_OUT';
+  | 'LEAD_OUT'
+  | 'LINK_MOVE';
+
+export interface ToolpathSegment {
+  segmentIndex: number;
+  startPoint: Vector3D;
+  endPoint: Vector3D;
+  moveType: MoveType;
+  feedRateMmMin: number;
+  spindleRpm: number;
+  lengthMm: number;
+  durationSec: number;
+}
 
 export interface CutterLocationPoint {
   pointIndex: number;
@@ -69,68 +81,76 @@ export interface CutterLocationPoint {
   feedRateMmMin: number;     // Feed rate in mm/min
   spindleRpm: number;        // Spindle speed in RPM
   moveType: MoveType;
-  engagementAngleRad?: number; // Tool engagement angle in radians
-  scallopHeightMm?: number;   // Calculated surface scallop height
-  stepoverMm?: number;        // Radial depth of cut
+  engagementAngleRad?: number; 
+  stepoverMm?: number;
 }
 
 export type ToolpathStrategyType = 
   | 'FACING'
-  | 'ADAPTIVE_ROUGHING'
-  | 'Z_LEVEL_FINISHING'
-  | 'PLANAR_RASTER'
-  | 'DRILLING_PECK'
-  | 'TAPPING'
-  | 'MULTI_AXIS_SWARF'
-  | 'FIVE_AXIS_CONTOUR';
+  | 'ROUGHING_ADAPTIVE'
+  | 'FINISHING_Z_LEVEL'
+  | 'CONTOUR_PROFILE'
+  | 'POCKET_MACHINING'
+  | 'DRILLING_PECK';
+
+export interface MachiningParameters {
+  stepoverMm: number;
+  stepdownMm: number;
+  stockToLeaveMm: number;
+  toleranceMm: number;
+  maxEngagementAngleDeg?: number;
+  entryStrategy: 'PLUNGE' | 'RAMP' | 'HELIX';
+}
 
 export interface FeedsAndSpeeds {
-  surfaceSpeedMMin: number;   // Cutting speed Vc (m/min)
-  feedPerToothMm: number;     // Feed per tooth fz (mm/tooth)
-  spindleRpm: number;         // Computed n (RPM)
-  cuttingFeedMmMin: number;   // Computed Vf (mm/min)
-  plungeFeedMmMin: number;    // Plunge feed rate
-  rapidFeedMmMin: number;     // Rapid traverse speed (G0)
+  surfaceSpeedMMin: number;
+  feedPerToothMm: number;
+  spindleRpm: number;
+  cuttingFeedMmMin: number;
+  plungeFeedMmMin: number;
+  rapidFeedMmMin: number;
 }
 
 export interface MachiningOperationConfig {
   operationId: string;
   name: string;
   strategy: ToolpathStrategyType;
-  targetFeatureId?: string;
-  topologyId?: string;       // B-Rep persistent topology link
-  tool: CuttingTool;
+  topologyId: string;       // B-Rep persistent topology link (SECP-096)
+  toolAssembly: ToolAssembly;
+  parameters: MachiningParameters;
   feedsAndSpeeds: FeedsAndSpeeds;
-  stepoverMm: number;         // Radial stepover ae
-  stepdownMm: number;         // Axial depth of cut ap
-  stockToLeaveMm: number;     // Finishing allowance
-  clearancePlaneZ: number;    // Safe Z height
-  retractPlaneZ: number;      // Retract Z height
-  maxEngagementAngleDeg?: number; // For adaptive roughing (e.g., 45 deg)
+  clearancePlaneZ: number;
+  retractPlaneZ: number;
+  fingerprint: string;       // Deterministic op hash
 }
 
-/**
- * Candidate Toolpath (Unverified output from generation engine)
- */
 export interface CandidateToolpathTrajectory {
   operationId: string;
   strategy: ToolpathStrategyType;
-  tool: CuttingTool;
   points: CutterLocationPoint[];
   totalLengthMm: number;
   estimatedTimeSec: number;
-  nominalVolumeMm3: number;
-  maxEngagementAngleRad: number;
-  generatedTimestamp: string;
+  generatedAt: string;
+  provenance: {
+    inputTopologyHash: string;
+    toolFingerprint: string;
+    parameterHash: string;
+    trajectoryHash: string;
+  };
 }
 
 export type VerificationFailureType = 
   | 'GOUGE_PART'
   | 'COLLISION_HOLDER'
   | 'COLLISION_RAPID'
-  | 'INSUFFICIENT_CLEARANCE'
   | 'AXIS_LIMIT_VIOLATION'
-  | 'EXCESSIVE_ENGAGEMENT';
+  | 'EXCESSIVE_ENGAGEMENT'
+  | 'DISCONTINUITY'
+  | 'CONTINUITY_GAP'
+  | 'ZERO_LENGTH_SEGMENT'
+  | 'INVALID_SEGMENT'
+  | 'STOCK_VIOLATION'
+  | 'PARAMETER_OUT_OF_BOUNDS';
 
 export interface VerificationIssue {
   pointIndex: number;
@@ -143,19 +163,35 @@ export interface VerificationIssue {
 export interface ToolpathVerificationReport {
   operationId: string;
   isValid: boolean;
-  gougeFree: boolean;
-  collisionFree: boolean;
-  clearanceSatisfied: boolean;
-  axisLimitsSatisfied: boolean;
+  metrics: {
+    totalLengthMm: number;
+    segmentCount: number;
+    minSegmentLengthMm: number;
+    zeroLengthSegments: number;
+    continuityGaps: number;
+    maxCoordinateDeviationMm: number;
+    stockViolations: number;
+    invalidSegments: number;
+  };
   issues: VerificationIssue[];
-  verifiedPointsCount: number;
   verifiedAt: string;
+  provenanceHash: string;
 }
 
 export interface VerifiedToolpathTrajectory extends CandidateToolpathTrajectory {
   verificationReport: ToolpathVerificationReport;
-  collisionFree: boolean;
-  gougeFree: boolean;
+}
+
+export interface StockModel {
+  stockId: string;
+  material: string;
+  bounds: {
+    xMin: number; xMax: number;
+    yMin: number; yMax: number;
+    zMin: number; zMax: number;
+  };
+  initialVolumeMm3: number;
+  fingerprint: string;
 }
 
 export interface StockModelBounds {
@@ -167,11 +203,12 @@ export interface StockModelBounds {
   zMax: number;
 }
 
-export interface MaterialRemovalPassResult {
-  passIndex: number;
-  removedVolumeMm3: number;
-  remainingStockVolumeMm3: number;
-  maxRemainingDepthMm: number;
+export interface CAMStructuralFingerprint {
+  operationId: string;
+  inputHash: string;
+  outputHash: string;
+  timestamp: string;
+  validatorVersion: string;
 }
 
 export interface DigitalThreadTraceabilityNode {
@@ -183,17 +220,5 @@ export interface DigitalThreadTraceabilityNode {
   provenanceSignature: string;
 }
 
-export interface CutterLocationDataPackage {
-  patch: 'SECP-057';
-  partId: string;
-  timestamp: string;
-  operations: MachiningOperationConfig[];
-  trajectories: VerifiedToolpathTrajectory[];
-  totalPointsCount: number;
-  totalMachiningTimeSec: number;
-  totalMaterialRemovedMm3: number;
-  clDataHash: string;
-  provenanceSignature: string;
-  traceabilityNodes: DigitalThreadTraceabilityNode[];
-}
+export type CutterLocationDataPackage = any; // Legacy bridge
 

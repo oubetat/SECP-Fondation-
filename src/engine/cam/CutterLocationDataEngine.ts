@@ -30,7 +30,7 @@ export class CutterLocationDataEngine {
     trajectories.forEach(t => {
       totalPoints += t.points.length;
       totalTime += t.estimatedTimeSec;
-      totalVolume += t.nominalVolumeMm3;
+      // totalVolume += t.nominalVolumeMm3;
     });
 
     // Create deterministic cryptographic hash payload

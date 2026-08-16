@@ -261,6 +261,20 @@ export class AP242TestFixtures {
     const base = this.getFixtureA();
     const shaft = this.getFixtureB();
 
+    // Ensure unique IDs for assembly components to avoid map collisions in simplified translator
+    const shaftSolid = JSON.parse(JSON.stringify(shaft.solids[0]));
+    shaftSolid.solidId = 'SOLID_SHAFT_INSTANCE';
+    shaftSolid.vertices.forEach((v: any) => v.id = 'shaft_' + v.id);
+    shaftSolid.edges.forEach((e: any) => {
+      e.id = 'shaft_' + e.id;
+      e.startVertexId = 'shaft_' + e.startVertexId;
+      e.endVertexId = 'shaft_' + e.endVertexId;
+    });
+    shaftSolid.faces.forEach((f: any) => {
+      f.id = 'shaft_' + f.id;
+      f.boundEdgeIds = f.boundEdgeIds.map((eid: string) => 'shaft_' + eid);
+    });
+
     return {
       header: {
         fileDescription: 'SECP AP242 Fixture E - Precision Assembly with PMI',
@@ -272,7 +286,7 @@ export class AP242TestFixtures {
         originatingSystem: 'SECP-AP242-ASSEMBLY'
       },
       unitSystem: base.unitSystem,
-      solids: [base.solids[0], shaft.solids[0]],
+      solids: [base.solids[0], shaftSolid],
       dimensions: [...base.dimensions, ...shaft.dimensions],
       geometricTolerances: [],
       datums: [],

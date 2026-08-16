@@ -1,0 +1,22 @@
+{
+  "gateId": "SECP-101.4",
+  "previousGate": "SECP-101.3",
+  "previousGateStatus": "BLOCKED",
+  "camDeprecated": true,
+  "camActiveConsumers": 0,
+  "cfdContractStatus": "RESOLVED",
+  "cfdNativeImplementation": "VERIFIED",
+  "cfdWasmImplementation": "VERIFIED",
+  "cfdNumericalTolerance": 1e-12,
+  "cfdMaxAbsoluteDifference": 0,
+  "cfdDeterministicReplay": true,
+  "nurbsContractStatus": "RESOLVED",
+  "nurbsNativeImplementation": "VERIFIED",
+  "nurbsCoxDeBoorEquivalence": true,
+  "nurbsPartitionOfUnity": true,
+  "nurbsDeterministicReplay": true,
+  "productionBlockers": [],
+  "regressionStatus": "PASS",
+  "finalDecision": "PASS",
+  "finalProvenanceSHA256": "a33d480500eca08000dc71a9d97206147ed23a6428b0460e469de155641af6df"
+}

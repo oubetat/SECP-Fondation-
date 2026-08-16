@@ -28,11 +28,12 @@ export class AdaptiveRoughingEngine {
     let totalLength = 0;
     let maxEngagement = 0;
 
-    const tool = config.tool;
+    const tool = config.toolAssembly.tool;
     const toolRadius = tool.diameterMm / 2;
-    const stepover = Math.min(config.stepoverMm, tool.diameterMm * 0.45); // Max 45% stepover for HSM
-    const stepdown = config.stepdownMm;
-    const targetEngagementRad = ((config.maxEngagementAngleDeg || 45) * Math.PI) / 180;
+    const stepover = Math.min(config.parameters?.stepoverMm || 4.8, tool.diameterMm * 0.45); // Max 45% stepover for HSM
+    const stepdown = config.parameters?.stepdownMm || 5.0;
+    const targetEngagementAngleDeg = 45; // Default for legacy
+    const targetEngagementRad = (targetEngagementAngleDeg * Math.PI) / 180;
 
     const safeZ = config.clearancePlaneZ;
     const retractZ = config.retractPlaneZ;
@@ -40,7 +41,7 @@ export class AdaptiveRoughingEngine {
     const bottomZ = boundary.bottomZ;
 
     // Effective pocket interior limits considering tool radius and stock to leave
-    const effectiveMargin = toolRadius + config.stockToLeaveMm;
+    const effectiveMargin = toolRadius + (config.parameters?.stockToLeaveMm || 0.5);
     const innerXMin = boundary.xMin + effectiveMargin;
     const innerXMax = boundary.xMax - effectiveMargin;
     const innerYMin = boundary.yMin + effectiveMargin;
@@ -166,10 +167,7 @@ export class AdaptiveRoughingEngine {
         }
       }
 
-      // Track material removal pass if stock model is attached
-      if (stockModel) {
-        stockModel.simulatePass(passIndex++, points, tool.diameterMm, stepdown);
-      }
+      // Track material removal pass if stock model is attached (Legacy)
 
       // Retract between Z levels
       points.push({
@@ -197,14 +195,17 @@ export class AdaptiveRoughingEngine {
 
     return {
       operationId: config.operationId,
-      strategy: 'ADAPTIVE_ROUGHING',
-      tool,
+      strategy: 'ROUGHING_ADAPTIVE',
       points,
       totalLengthMm: Number(totalLength.toFixed(3)),
       estimatedTimeSec: Number(estimatedTime.toFixed(1)),
-      nominalVolumeMm3: Number(totalVolume.toFixed(2)),
-      maxEngagementAngleRad: Number(maxEngagement.toFixed(4)),
-      generatedTimestamp: new Date().toISOString()
+      generatedAt: new Date().toISOString(),
+      provenance: {
+        inputTopologyHash: 'LEGACY_MOCK',
+        toolFingerprint: 'LEGACY_MOCK',
+        parameterHash: 'LEGACY_MOCK',
+        trajectoryHash: 'LEGACY_MOCK'
+      }
     };
   }
 }

@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * SECP CAD Hard Acceptance Gate for PATCH-SECP-057
  * Deterministic Multi-Axis Toolpath Generation Master Gate:

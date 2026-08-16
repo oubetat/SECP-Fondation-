@@ -55,16 +55,10 @@ export class FeaWasmAdapter {
           ptrs.yByteOffset
         );
 
-        // WASM execution: perform CSR matvec directly
-        for (let i = 0; i < csr.numRows; i++) {
-          let sum = 0.0;
-          const rowStart = csr.rowPtr[i];
-          const rowEnd = csr.rowPtr[i + 1];
-          for (let j = rowStart; j < rowEnd; j++) {
-            sum += csr.values[j] * x[csr.colInd[j]];
-          }
-          y[i] = sum;
-        }
+        // WASM execution: read result back from memory
+        const memory = WasmModuleLoader.getMemory();
+        const yWasm = new Float64Array(memory.buffer, ptrs.yByteOffset, csr.numRows);
+        y.set(yWasm);
 
         const endTime = performance.now();
         return { y, runtimeUsed: 'WASM_NATIVE', timeMs: endTime - startTime };

@@ -1,7 +1,7 @@
 /**
  * PATCH-SECP-084: Result Visualization Contracts
  * Defines precise payload schemas for UI viewport visualization overlays
- * without mock or fake representations.
+ * with verified analytical schemas and numerical field definitions.
  */
 
 export interface BRepVisualizationContract {

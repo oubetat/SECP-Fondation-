@@ -1,0 +1,123 @@
+{
+  "gateId": "SECP-102.2",
+  "previousGate": "SECP-102.1",
+  "timestamp": "2026-08-16T09:46:20.752Z",
+  "domain": "Feature & Geometry Generation",
+  "targetFiles": [
+    "src/engine/features/FeatureRegenerationEngine.ts",
+    "src/engine/nurbs-geometry/NurbsCurveEngine.ts",
+    "src/engine/nurbs-geometry/SurfaceTrimmingEngine.ts"
+  ],
+  "resolvedBlockers": 3,
+  "remainingBlockers": 12,
+  "forbiddenTokenScan": {
+    "passed": true,
+    "forbiddenCount": 0,
+    "scannedFiles": [
+      "src/engine/features/FeatureRegenerationEngine.ts",
+      "src/engine/nurbs-geometry/NurbsCurveEngine.ts",
+      "src/engine/nurbs-geometry/SurfaceTrimmingEngine.ts"
+    ]
+  },
+  "featureRegenerationResults": {
+    "passed": true,
+    "extrusionValidated": true,
+    "dependencyResolutionPassed": true,
+    "provenanceHash": "a1ca3b792cc2a48e5a9674ebd7db17b21ae3e4d154fdd20465345cf63b3d87b3",
+    "details": "Successfully regenerated 3 parametric features."
+  },
+  "nurbsResults": {
+    "passed": true,
+    "partitionOfUnityMaxResidual": 2.220446049250313e-16,
+    "coxDeBoorConsistencyResidual": 0,
+    "knotInsertionInvarianceResidual": 1.7763568394002505e-15,
+    "degreeElevationValidated": true,
+    "boundaryEndpointsValidated": true
+  },
+  "surfaceTrimmingResults": {
+    "passed": true,
+    "outerBoundaryEnforced": true,
+    "holeExclusionEnforced": true,
+    "closureResidualThreshold": 0.000001,
+    "maxClosureResidual": 0,
+    "fingerprint": "d906918777eed9f5a02ebbc93df5a448dba9c02e4b570862c726d956175c9982"
+  },
+  "adversarialResults": {
+    "passed": true,
+    "rejectedCount": 10,
+    "scenariosTested": 10,
+    "rejectionDetails": {
+      "nanFeatureParameter": true,
+      "negativeFeatureDimension": true,
+      "unsupportedFeatureType": true,
+      "cyclicFeatureDependency": true,
+      "decreasingNurbsKnots": true,
+      "mismatchedNurbsKnots": true,
+      "invalidNurbsWeight": true,
+      "nurbsOutOfDomain": true,
+      "openTrimLoop": true,
+      "degenerateTrimSegment": true
+    }
+  },
+  "deterministicReplay": {
+    "passed": true,
+    "run1Provenance": "a1ca3b792cc2a48e5a9674ebd7db17b21ae3e4d154fdd20465345cf63b3d87b3",
+    "run2Provenance": "a1ca3b792cc2a48e5a9674ebd7db17b21ae3e4d154fdd20465345cf63b3d87b3",
+    "matches": true
+  },
+  "regressionResults": {
+    "secp096": "PASS",
+    "secp097": "PASS",
+    "secp098": "PASS",
+    "secp099": "PASS",
+    "secp100": "PASS",
+    "secp101_1": "PASS",
+    "secp101_5": "PASS",
+    "secp102_1": "PASS",
+    "allPassed": true
+  },
+  "checks": [
+    {
+      "name": "Zero Forbidden Tokens in Feature & Geometry Domain",
+      "passed": true,
+      "details": "Found 0 forbidden tokens across [src/engine/features/FeatureRegenerationEngine.ts, src/engine/nurbs-geometry/NurbsCurveEngine.ts, src/engine/nurbs-geometry/SurfaceTrimmingEngine.ts]"
+    },
+    {
+      "name": "Feature Regeneration Mathematical Validation",
+      "passed": true,
+      "details": "Success: true, Provenance: a1ca3b792cc2a48e5a9674ebd7db17b21ae3e4d154fdd20465345cf63b3d87b3"
+    },
+    {
+      "name": "NURBS Mathematical Integrity & Cox-de Boor Suite",
+      "passed": true,
+      "details": "PoU Res: 2.220e-16, C(0.5) Res: 0.000e+0, KnotIns Res: 1.776e-15"
+    },
+    {
+      "name": "Surface Trimming Integrity & Hole Exclusion Suite",
+      "passed": true,
+      "details": "ActiveZone: true, HoleExcluded: true, MaxClosureResidual: 0"
+    },
+    {
+      "name": "Comprehensive Adversarial Rejection Suite",
+      "passed": true,
+      "details": "10/10 adversarial attacks rejected."
+    },
+    {
+      "name": "Deterministic Replay Invariance",
+      "passed": true,
+      "details": "Hash1: a1ca3b792cc2a48e... === Hash2: a1ca3b792cc2a48e..."
+    },
+    {
+      "name": "Zero-Regression Audit (SECP-096 -> SECP-102.1)",
+      "passed": true,
+      "details": "SECP-096..100: PASS, SECP-101.1: PASS, SECP-101.5: PASS, SECP-102.1: PASS"
+    },
+    {
+      "name": "Scope Integrity & Blocker Accounting",
+      "passed": true,
+      "details": "Resolved: 3, Remaining: 12 (Target: 12)"
+    }
+  ],
+  "finalDecision": "PASS",
+  "provenanceSHA256": "88abd5a285eba0cd20bf4bccf20b397c2a25da92e07fa49b00833f0fb57fe488"
+}

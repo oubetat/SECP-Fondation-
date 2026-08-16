@@ -1,0 +1,54 @@
+{
+  "gateId": "SECP-101.3",
+  "previousGate": "SECP-101.2",
+  "previousGateStatus": "BLOCKED",
+  "kernelsInspected": 3,
+  "kernelClassifications": [
+    {
+      "name": "cfd_flux_f64",
+      "status": "INCOMPLETE"
+    },
+    {
+      "name": "cam_5axis_transform_f64",
+      "status": "FORMALLY_DEPRECATED"
+    },
+    {
+      "name": "nurbs_basis_f64",
+      "status": "UNRESOLVED_CONTRACT"
+    }
+  ],
+  "contractsCompleted": [],
+  "contractsBlocked": [
+    "cfd_flux_f64"
+  ],
+  "formallyDeprecated": [
+    "cam_5axis_transform_f64"
+  ],
+  "unresolvedContracts": [
+    "nurbs_basis_f64"
+  ],
+  "abiHashes": "be4ddd47cba1fc942ea83b1ae966c31cee462a8f03631d492e5592e1a6cc901b",
+  "provenanceStatus": "VERIFIED",
+  "regressionStatus": "PASS",
+  "productionBlockers": [
+    "/app/applet/src/engine/cad/ForensicCadExchangeValidator.ts: Contains mock",
+    "/app/applet/src/engine/camEngine.ts: Contains mock",
+    "/app/applet/src/engine/certificationEngine.ts: Contains mock",
+    "/app/applet/src/engine/collaborationEngine.ts: Contains mock",
+    "/app/applet/src/engine/features/FeatureRegenerationEngine.ts: Contains placeholder",
+    "/app/applet/src/engine/features/FeatureRegenerationEngine.ts: Contains mock",
+    "/app/applet/src/engine/integration/MasterOrchestrationEngine.ts: Contains mock",
+    "/app/applet/src/engine/integration/contracts/VisualizationContracts.ts: Contains mock",
+    "/app/applet/src/engine/integration/contracts/VisualizationContracts.ts: Contains fake",
+    "/app/applet/src/engine/interop/STEPAP242Translator.ts: Contains mock",
+    "/app/applet/src/engine/mvpArchitectureEngine.ts: Contains mock",
+    "/app/applet/src/engine/nurbs-geometry/NurbsCurveEngine.ts: Contains placeholder",
+    "/app/applet/src/engine/nurbs-geometry/SurfaceTrimmingEngine.ts: Contains placeholder",
+    "/app/applet/src/engine/rendering/shared/AssemblyRenderer.ts: Contains mock",
+    "/app/applet/src/engine/spc/QualityPredictionEngine.ts: Contains placeholder",
+    "/app/applet/src/engine/spc/QualityPredictionEngine.ts: Contains mock",
+    "/app/applet/src/engine/telemetry/IndustrialGatewayManager.ts: Contains mock"
+  ],
+  "finalDecision": "BLOCKED",
+  "finalProvenanceSHA256": "394849ce15875d0e3a34b236b72d2b386760351fdafba68029e764b854cc071b"
+}

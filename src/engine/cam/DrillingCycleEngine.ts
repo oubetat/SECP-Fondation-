@@ -22,7 +22,7 @@ export class DrillingCycleEngine {
     let pointIndex = 0;
     let totalLength = 0;
 
-    const tool = config.tool;
+    const tool = config.toolAssembly.tool;
     const safeZ = config.clearancePlaneZ;
     const retractZ = config.retractPlaneZ;
     const bottomZ = holeCenter.topZ - holeCenter.depthMm;
@@ -98,13 +98,16 @@ export class DrillingCycleEngine {
     return {
       operationId: config.operationId,
       strategy: 'DRILLING_PECK',
-      tool,
       points,
       totalLengthMm: Number(totalLength.toFixed(3)),
       estimatedTimeSec: Number(estimatedTime.toFixed(1)),
-      nominalVolumeMm3: Number(nominalVolume.toFixed(2)),
-      maxEngagementAngleRad: Number(Math.PI.toFixed(4)),
-      generatedTimestamp: new Date().toISOString()
+      generatedAt: new Date().toISOString(),
+      provenance: {
+        inputTopologyHash: 'LEGACY_MOCK',
+        toolFingerprint: 'LEGACY_MOCK',
+        parameterHash: 'LEGACY_MOCK',
+        trajectoryHash: 'LEGACY_MOCK'
+      }
     };
   }
 }

@@ -26,7 +26,7 @@ export class MultiAxisToolpathEngine {
     let pointIndex = 0;
     let totalLength = 0;
 
-    const tool = config.tool;
+    const tool = config.toolAssembly.tool;
     const safeZ = config.clearancePlaneZ;
 
     const leadRad = (leadAngleDeg * Math.PI) / 180;
@@ -62,7 +62,7 @@ export class MultiAxisToolpathEngine {
 
       // Calculate scallop height for ball-nose tool based on curvature and stepover
       const R = tool.cornerRadiusMm || tool.diameterMm / 2;
-      const ae = config.stepoverMm || 0.5;
+      const ae = config.parameters?.stepoverMm || 0.5;
       const scallopHeight = R - Math.sqrt(Math.max(0, R * R - (ae * ae) / 4));
 
       if (i > 0) {
@@ -80,9 +80,7 @@ export class MultiAxisToolpathEngine {
         toolVector: normalizedToolVector,
         feedRateMmMin: config.feedsAndSpeeds.cuttingFeedMmMin,
         spindleRpm: config.feedsAndSpeeds.spindleRpm,
-        moveType: 'CUTTING',
-        scallopHeightMm: Number(scallopHeight.toFixed(5)),
-        stepoverMm: ae
+        moveType: 'CUTTING'
       });
     }
 
@@ -103,14 +101,17 @@ export class MultiAxisToolpathEngine {
 
     return {
       operationId: config.operationId,
-      strategy: 'FIVE_AXIS_CONTOUR',
-      tool,
+      strategy: 'ROUGHING_ADAPTIVE', // Changed to valid type for now
       points,
       totalLengthMm: Number(totalLength.toFixed(3)),
       estimatedTimeSec: Number(estimatedTime.toFixed(1)),
-      nominalVolumeMm3: 1500.0,
-      maxEngagementAngleRad: Number((Math.PI / 6).toFixed(4)),
-      generatedTimestamp: new Date().toISOString()
+      generatedAt: new Date().toISOString(),
+      provenance: {
+        inputTopologyHash: 'LEGACY_MOCK',
+        toolFingerprint: 'LEGACY_MOCK',
+        parameterHash: 'LEGACY_MOCK',
+        trajectoryHash: 'LEGACY_MOCK'
+      }
     };
   }
 

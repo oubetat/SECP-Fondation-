@@ -1,0 +1,111 @@
+{
+  "gateId": "SECP-100",
+  "status": "PASS",
+  "machineProfile": {
+    "id": "AC-TABLE-TABLE",
+    "hasA": true,
+    "hasC": true,
+    "limits": {
+      "X": [
+        -500,
+        500
+      ],
+      "Y": [
+        -500,
+        500
+      ],
+      "Z": [
+        0,
+        500
+      ],
+      "A": [
+        -120,
+        120
+      ],
+      "C": [
+        -360,
+        360
+      ]
+    },
+    "feedRange": [
+      1,
+      10000
+    ],
+    "spindleRange": [
+      1,
+      24000
+    ],
+    "toolRange": [
+      1,
+      100
+    ]
+  },
+  "sourceProvenance": {
+    "hash": "099-hash-mock"
+  },
+  "generatedGCodeProvenance": {
+    "postId": "SECP-100-v1",
+    "points": 50
+  },
+  "quantitativeMetrics": {
+    "byteLength": 996,
+    "commandCount": 55,
+    "motionCommandCount": 50,
+    "rapidMoveCount": 0,
+    "cuttingMoveCount": 50,
+    "toolChangeCount": 1,
+    "spindleCommandCount": 3,
+    "feedCommandCount": 1,
+    "sourcePoseCount": 50,
+    "reconstructedPoseCount": 50,
+    "maxPositionDeviation": 0,
+    "maxOrientationDeviation": 0,
+    "maxAxisDeviation": 0,
+    "minSegmentLength": 1.414214,
+    "zeroLengthSegmentCount": 0,
+    "cartesianDiscontinuityCount": 0,
+    "rotaryDiscontinuityCount": 0,
+    "axisLimitViolations": 0,
+    "modalViolations": 0,
+    "syntaxViolations": 0,
+    "dangerousCommandCount": 0,
+    "verificationFailures": 0
+  },
+  "parserResults": "PASS",
+  "modalVerificationResults": "PASS",
+  "geometricFidelityResults": "PASS",
+  "safetyResults": "PASS",
+  "adversarialResults": {
+    "passes": [
+      "Reject malformed G-code",
+      "Reject NaN",
+      "Reject Infinity",
+      "Reject unsupported G-code",
+      "Reject unsupported M-code",
+      "Reject X-axis limit violation",
+      "Reject Y-axis limit violation",
+      "Reject Z-axis limit violation",
+      "Reject A-axis limit violation",
+      "Reject C-axis limit violation",
+      "Detect modal-state corruption",
+      "Detect Cartesian discontinuity",
+      "Detect rotary discontinuity",
+      "Detect unexpected rapid movement",
+      "Detect motion after program termination",
+      "Detect premature program termination",
+      "Reject invalid feed",
+      "Reject invalid spindle speed",
+      "Reject invalid tool number",
+      "Verify deterministic replay"
+    ],
+    "failures": []
+  },
+  "deterministicReplay": "PASS",
+  "finalProvenanceSHA256": "b401bc16e8682c63",
+  "dependencyStatus": {
+    "secp096": "PASS",
+    "secp097": "PASS",
+    "secp098": "PASS",
+    "secp099": "PASS"
+  }
+}

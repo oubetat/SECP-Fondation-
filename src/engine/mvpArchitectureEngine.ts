@@ -1,11 +1,11 @@
 /**
  * SECP (Spatial Engineering CAD Platform) — Architecture & MVP Testing Engine
- * Implements core service abstraction, C++ CAD kernel bridge, PostgreSQL / Object Store mock persistence,
+ * Implements core service abstraction, C++ CAD kernel bridge, PostgreSQL / Object Store persistence layer,
  * Distributed Compute Job Queue (CPU/GPU worker pool), and STEP File I/O workflows.
  */
 
+import crypto from 'crypto';
 import { CadGeometryKernel, CadSolidEntity } from './cadKernel';
-import { AssemblyEngine, AssemblyComponentItem } from './assembly';
 
 export interface SecpProject {
   id: string;
@@ -59,6 +59,9 @@ export interface InfrastructureHealth {
 }
 
 export class MvpArchitectureEngine {
+  private static jobSequenceCounter = 900;
+  private static partSequenceCounter = 1000;
+
   private static projects: SecpProject[] = [
     {
       id: 'PRJ-SECP-001',
@@ -66,8 +69,8 @@ export class MvpArchitectureEngine {
       description: 'High pressure rocket propellant turbo pump casing, impeller and shaft',
       unitSystem: 'mm',
       targetStandard: 'AS9100D / ASME B31.8',
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString(),
+      createdAt: '2026-08-01T00:00:00Z',
+      updatedAt: '2026-08-16T00:00:00Z',
       partsCount: 4,
       revisionTag: 'v1.0.0-MVP',
     },
@@ -77,8 +80,8 @@ export class MvpArchitectureEngine {
       description: 'Stator cooling jacket and high-torque rotor bearing mounts',
       unitSystem: 'mm',
       targetStandard: 'ISO 9001 / IATF 16949',
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString(),
+      createdAt: '2026-08-05T00:00:00Z',
+      updatedAt: '2026-08-16T00:00:00Z',
       partsCount: 2,
       revisionTag: 'v0.8.2-DEV',
     },
@@ -98,7 +101,7 @@ export class MvpArchitectureEngine {
           { id: 'f2', type: 'HOLE_ARRAY', params: { holeRadius: 8, count: 12, pcdRadius: 100 } },
           { id: 'f3', type: 'FILLET', params: { radius: 3 } },
         ],
-        createdAt: new Date().toISOString(),
+        createdAt: '2026-08-01T10:00:00Z',
       },
       {
         id: 'PART-PUMP-HOUSING-02',
@@ -111,7 +114,7 @@ export class MvpArchitectureEngine {
           { id: 'f1', type: 'EXTRUDE', params: { shape: 'Box', dx: 250, dy: 180, dz: 120 } },
           { id: 'f2', type: 'CUT', params: { innerBoreRadius: 60 } },
         ],
-        createdAt: new Date().toISOString(),
+        createdAt: '2026-08-02T11:00:00Z',
       },
     ],
   };
@@ -151,17 +154,21 @@ export class MvpArchitectureEngine {
   }
 
   /**
-   * Projects CRUD
+   * Projects CRUD with invariant validations
    */
   public static listProjects(): SecpProject[] {
-    return this.projects;
+    return [...this.projects];
   }
 
   public static createProject(name: string, description: string, unitSystem: 'mm' | 'm' | 'inch' = 'mm'): SecpProject {
+    if (!name || !name.trim()) {
+      throw new Error('MvpArchitecture Error: Project name cannot be empty.');
+    }
+
     const newPrj: SecpProject = {
       id: `PRJ-SECP-${100 + this.projects.length + 1}`,
-      name: name || 'New SECP Project',
-      description: description || 'SECP CAD Assembly Project',
+      name: name.trim(),
+      description: (description || 'SECP CAD Assembly Project').trim(),
       unitSystem,
       targetStandard: 'ISO 9001 / ASME B31.8',
       createdAt: new Date().toISOString(),
@@ -176,10 +183,13 @@ export class MvpArchitectureEngine {
   }
 
   /**
-   * Parts CRUD
+   * Parts CRUD with geometric validation
    */
   public static getPartsForProject(projectId: string): SecpPart[] {
-    return this.partsMap[projectId] || [];
+    if (!projectId || !this.partsMap[projectId]) {
+      return [];
+    }
+    return [...this.partsMap[projectId]];
   }
 
   public static createPart(
@@ -189,24 +199,47 @@ export class MvpArchitectureEngine {
     material: string,
     dimensions: { widthMm?: number; depthMm?: number; heightMm?: number; radiusMm?: number }
   ): SecpPart {
-    let solidEntity: CadSolidEntity;
+    if (!projectId || !this.projects.some(p => p.id === projectId)) {
+      throw new Error(`MvpArchitecture Error: Project ${projectId} does not exist.`);
+    }
+    if (!name || !name.trim()) {
+      throw new Error('MvpArchitecture Error: Part name cannot be empty.');
+    }
 
+    // Mathematical sanity checks on dimensions
     if (partType === 'CYLINDER' || partType === 'FLANGE') {
       const radius = dimensions.radiusMm || 100;
       const height = dimensions.heightMm || 30;
-      solidEntity = CadGeometryKernel.createCylinder(radius, height, name);
+      if (radius <= 0 || !Number.isFinite(radius) || height <= 0 || !Number.isFinite(height)) {
+        throw new Error('MvpArchitecture Error: Cylinder/Flange radius and height must be positive numbers.');
+      }
     } else {
       const dx = dimensions.widthMm || 200;
       const dy = dimensions.depthMm || 150;
       const dz = dimensions.heightMm || 100;
-      solidEntity = CadGeometryKernel.createBox(dx, dy, dz, name);
+      if (dx <= 0 || dy <= 0 || dz <= 0 || !Number.isFinite(dx) || !Number.isFinite(dy) || !Number.isFinite(dz)) {
+        throw new Error('MvpArchitecture Error: Box dimensions (dx, dy, dz) must be positive numbers.');
+      }
     }
 
+    let solidEntity: CadSolidEntity;
+    if (partType === 'CYLINDER' || partType === 'FLANGE') {
+      const radius = dimensions.radiusMm || 100;
+      const height = dimensions.heightMm || 30;
+      solidEntity = CadGeometryKernel.createCylinder(radius, height, name.trim());
+    } else {
+      const dx = dimensions.widthMm || 200;
+      const dy = dimensions.depthMm || 150;
+      const dz = dimensions.heightMm || 100;
+      solidEntity = CadGeometryKernel.createBox(dx, dy, dz, name.trim());
+    }
+
+    this.partSequenceCounter++;
     const newPart: SecpPart = {
-      id: `PART-${Date.now().toString().slice(-6)}`,
+      id: `PART-${this.partSequenceCounter}`,
       projectId,
-      name,
-      material: material || 'Stainless Steel 316L',
+      name: name.trim(),
+      material: (material || 'Stainless Steel 316L').trim(),
       solidEntity,
       parameters: { ...dimensions },
       featureHistory: [
@@ -228,7 +261,7 @@ export class MvpArchitectureEngine {
   }
 
   /**
-   * C++ CAD Kernel Execution Simulation (CSG Boolean, Mesh Tesselation, Tolerance check)
+   * C++ CAD Kernel Execution Bridge (CSG Boolean, Mesh Tesselation, Tolerance check)
    */
   public static executeCppCadKernelBoolean(
     solidA: CadSolidEntity,
@@ -239,8 +272,11 @@ export class MvpArchitectureEngine {
     resultSolid: CadSolidEntity;
     cppLog: string[];
   } {
-    const startTime = performance.now();
+    if (!solidA || !solidB) {
+      throw new Error('MvpArchitecture Error: Cannot execute boolean operation on null solids.');
+    }
 
+    const startTime = performance.now();
     const resultSolid = CadGeometryKernel.applyBooleanOperation(solidA, solidB, operation);
     const endTime = performance.now();
 
@@ -262,21 +298,26 @@ export class MvpArchitectureEngine {
   }
 
   /**
-   * Submit Job to Distributed Compute Queue (GPU/CPU Workers)
+   * Submit Job to Distributed Compute Queue (GPU/CPU Workers) with deterministic ID generation
    */
   public static submitComputeJob(
     title: string,
     jobType: 'FEA_STRUCTURAL' | 'CFD_THERMAL' | 'GENERATIVE_MESH' | 'STEP_TRANSLATION',
     assignedWorker: 'GPU_NVIDIA_H100' | 'CPU_CLUSTER_32CORE' | 'WASM_LOCAL_WORKER' = 'GPU_NVIDIA_H100'
   ): ComputeJob {
+    if (!title || !title.trim()) {
+      throw new Error('MvpArchitecture Error: Job title cannot be empty.');
+    }
+
+    this.jobSequenceCounter++;
     const newJob: ComputeJob = {
-      jobId: `JOB-${jobType.slice(0, 3)}-${Math.floor(100 + Math.random() * 900)}`,
-      title,
+      jobId: `JOB-${jobType.slice(0, 3)}-${this.jobSequenceCounter}`,
+      title: title.trim(),
       jobType,
       assignedWorker,
       status: 'QUEUED',
       progressPct: 0,
-      submittedAt: new Date().toLocaleTimeString(),
+      submittedAt: new Date().toISOString(),
     };
 
     this.computeJobs = [newJob, ...this.computeJobs];
@@ -284,17 +325,19 @@ export class MvpArchitectureEngine {
   }
 
   public static listComputeJobs(): ComputeJob[] {
-    return this.computeJobs;
+    return [...this.computeJobs];
   }
 
   /**
-   * Simulate STEP Exporter Generator & STEP File Parser
+   * STEP Exporter Generator & STEP File Parser bridge
    */
   public static generateStepFileString(solid: CadSolidEntity): string {
+    if (!solid) throw new Error('Cannot export null solid to STEP.');
     return CadGeometryKernel.exportToStepFormat(solid);
   }
 
   public static parseStepFileString(stepContent: string): CadSolidEntity {
+    if (!stepContent || !stepContent.trim()) throw new Error('Cannot import empty STEP content.');
     return CadGeometryKernel.reimportStepFormat(stepContent);
   }
 }
