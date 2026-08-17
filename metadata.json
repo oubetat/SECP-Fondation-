@@ -1,6 +1,6 @@
 {
-  "name": "SECP Foundation - Architecture Platform",
-  "description": "SECP Spatial Engineering CAD Platform featuring B-Rep 3D Geometry Kernel, Parametric Feature Tree, Assembly Engine, PCB ECAD/MCAD, Hydraulic Graph Solver, FEM/Thermal/CFD Simulation, Assembly BOM, CAM G-Code, Technical Drawings, Cryptographic Provenance, Digital Twin Telemetry, AI Engineering Copilot, Generative Topology Optimization, and Industry Plugin SDK.",
+  "name": "SECP Industrial OS v2 - Engineering Truth Platform",
+  "description": "An advanced industrial engineering kernel and OS featuring multi-physics solvers (CFD/FEM/Thermal), B-Rep geometry, and CAM toolpathing, governed by a rigorous 5-Gate Acceptance framework. Built on the 'Engineering Truth' philosophy with deterministic clocks, cryptographic provenance, and a strict separation between production code, Vitest suites, and acceptance gates.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

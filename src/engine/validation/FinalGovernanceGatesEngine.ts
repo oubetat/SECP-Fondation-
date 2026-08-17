@@ -20,6 +20,7 @@ import fs from 'fs';
 import path from 'path';
 import crypto from 'crypto';
 import { fileURLToPath } from 'url';
+import { SystemClock, EngineeringClock } from '../core/clock';
 import {
   CriticalFailureRuleEngine,
   CriticalFailureRuleReport
@@ -64,11 +65,11 @@ export interface FinalGovernanceGatesReport {
 }
 
 export class FinalGovernanceGatesEngine {
-  public static evaluateFinalGovernanceGates(): FinalGovernanceGatesReport {
-    const timestamp = new Date().toISOString();
+  public static evaluateFinalGovernanceGates(clock: EngineeringClock = new SystemClock()): FinalGovernanceGatesReport {
+    const timestamp = clock.iso();
 
     // 1. Evaluate Zero-Tolerance Critical Failure Policy
-    const criticalReport: CriticalFailureRuleReport = CriticalFailureRuleEngine.evaluateZeroTolerancePolicy();
+    const criticalReport: CriticalFailureRuleReport = CriticalFailureRuleEngine.evaluateZeroTolerancePolicy(clock);
 
     // 2. Evaluate Anti-Fabrication Guard for Final Governance
     const claimSpec: QualificationClaimSpec = {

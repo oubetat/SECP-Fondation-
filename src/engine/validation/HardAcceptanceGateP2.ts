@@ -40,6 +40,7 @@ import fs from 'fs';
 import path from 'path';
 import crypto from 'crypto';
 import { fileURLToPath } from 'url';
+import { SystemClock, EngineeringClock } from '../core/clock';
 import {
   RealEngineeringWorkloadEngine,
   RealEngineeringProjectSpec,
@@ -95,8 +96,8 @@ export interface P2QualificationEvidence {
 }
 
 export class HardAcceptanceGateP2 {
-  public static evaluateQualification(): P2QualificationEvidence {
-    const timestamp = new Date().toISOString();
+  public static evaluateQualification(clock: EngineeringClock = new SystemClock()): P2QualificationEvidence {
+    const timestamp = clock.iso();
     const criticalFailures: string[] = [];
 
     // 1. Evaluate Real-World Heavy Engineering Projects

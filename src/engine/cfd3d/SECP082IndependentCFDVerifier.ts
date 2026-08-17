@@ -29,7 +29,7 @@ export interface IndependentCfdAuditResult {
   physicalConservationPassed: boolean;
   pressureGradientValid: boolean;
   recomputedPressureDropPa: number;
-  independentVerdict: 'VERIFIED_PHYSICAL_CONSERVATION' | 'CONSERVATION_VIOLATION' | 'FORGED_RESIDUAL_DETECTED' | 'PREMATURE_CONVERGENCE_DETECTED' | 'MISSING_INLET_BC_VELOCITY' | 'INTERNAL_FLUX_RECONSTRUCTION_FAILURE';
+  independentVerdict: 'CONVERGED' | 'NOT_CONVERGED' | 'CONSERVATIVE_ONLY' | 'INVALID' | 'FORGED_RESIDUAL_DETECTED' | 'PREMATURE_CONVERGENCE_DETECTED' | 'MISSING_INLET_BC_VELOCITY' | 'INTERNAL_FLUX_RECONSTRUCTION_FAILURE';
   passed: boolean;
 
   // Forensic Internal Face Decomposition & Diagnostics
@@ -421,22 +421,24 @@ export class SECP082IndependentCFDVerifier {
       gate5MutationDetection
     );
 
-    // Determine Forensic Verdict
-    let independentVerdict: 'VERIFIED_PHYSICAL_CONSERVATION' | 'CONSERVATION_VIOLATION' | 'FORGED_RESIDUAL_DETECTED' | 'PREMATURE_CONVERGENCE_DETECTED' | 'MISSING_INLET_BC_VELOCITY' | 'INTERNAL_FLUX_RECONSTRUCTION_FAILURE' = 'VERIFIED_PHYSICAL_CONSERVATION';
+    // Determine Forensic Verdict with Engineering Rigor
+    let independentVerdict: 'CONVERGED' | 'NOT_CONVERGED' | 'CONSERVATIVE_ONLY' | 'INVALID' | 'FORGED_RESIDUAL_DETECTED' | 'PREMATURE_CONVERGENCE_DETECTED' | 'MISSING_INLET_BC_VELOCITY' | 'INTERNAL_FLUX_RECONSTRUCTION_FAILURE' = 'CONVERGED';
 
-    if (!gate1BoundaryFluxCompliance) {
-      independentVerdict = 'MISSING_INLET_BC_VELOCITY';
-    } else if (!gate2InternalFluxReconstruction) {
-      independentVerdict = 'INTERNAL_FLUX_RECONSTRUCTION_FAILURE';
+    if (!gate1BoundaryFluxCompliance || !gate2InternalFluxReconstruction) {
+      independentVerdict = 'INVALID';
     } else if (forgedResidualDetected) {
       independentVerdict = 'FORGED_RESIDUAL_DETECTED';
-    } else if (!gate3GlobalMassConservation) {
-      independentVerdict = 'CONSERVATION_VIOLATION';
     } else if (prematureConvergence) {
       independentVerdict = 'PREMATURE_CONVERGENCE_DETECTED';
+    } else if (!gate3GlobalMassConservation) {
+      independentVerdict = 'NOT_CONVERGED';
+    } else if (gate3GlobalMassConservation && !gate4ContinuityResidualConsistency) {
+      independentVerdict = 'CONSERVATIVE_ONLY';
+    } else if (!physicalConservationPassed) {
+      independentVerdict = 'NOT_CONVERGED';
     }
 
-    const passed = physicalConservationPassed && independentVerdict === 'VERIFIED_PHYSICAL_CONSERVATION';
+    const passed = physicalConservationPassed && independentVerdict === 'CONVERGED';
 
     return {
       independentContinuityResidual,

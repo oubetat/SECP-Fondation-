@@ -18,6 +18,7 @@
  */
 
 import crypto from 'crypto';
+import { SystemClock, EngineeringClock } from '../core/clock';
 
 export type CriticalFailureType =
   | 'DATA_CORRUPTION'
@@ -50,8 +51,8 @@ export interface CriticalFailureRuleReport {
 }
 
 export class CriticalFailureRuleEngine {
-  public static evaluateZeroTolerancePolicy(): CriticalFailureRuleReport {
-    const timestamp = new Date().toISOString();
+  public static evaluateZeroTolerancePolicy(clock: EngineeringClock = new SystemClock()): CriticalFailureRuleReport {
+    const timestamp = clock.iso();
 
     const categoryAudits: CriticalCategoryAudit[] = [
       {
