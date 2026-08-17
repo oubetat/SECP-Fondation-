@@ -186,31 +186,37 @@ export class SECP082AdversarialEngine {
     // M9: Solver Premature Convergence
     {
       const forgedSol: CfdSolution3D = JSON.parse(JSON.stringify(nominalSolution));
+      // Force "converged" status but corrupt the fields so actual residuals are high
       forgedSol.converged = true;
-      forgedSol.finalContinuityResidual = 0.5; // High residual claiming converged
+      forgedSol.finalContinuityResidual = 1e-9; 
+      forgedSol.velocity.u.fill(5.0); // Extreme velocity field that is non-conservative
+      
       const audit = SECP082IndependentCFDVerifier.verifySolution(forgedSol);
-      const rejected = !audit.passed;
+      const rejected = audit.independentVerdict === 'PREMATURE_CONVERGENCE_DETECTED' || !audit.passed;
       mutations.push({
         mutationId: 'M9',
         name: 'Solver Premature Convergence Claim',
         detectedAndRejected: rejected,
-        detectionMechanism: 'Convergence Criteria Gate',
-        details: 'Claimed converged with continuity residual 0.5 - rejected by residual tolerance gate'
+        detectionMechanism: 'Convergence Criteria Gate (Actual vs Reported)',
+        details: 'Claimed converged with 1e-9 residual but actual mass balance is 5.0 m/s - caught by premature convergence gate'
       });
     }
 
     // M10: Non-Conservative Solution
     {
       const forgedSol: CfdSolution3D = JSON.parse(JSON.stringify(nominalSolution));
-      forgedSol.globalMassImbalanceNorm = 0.25; // 25% mass defect
+      // Inject severe imbalance: change velocity in outlet cells without changing BC
+      for (let i = forgedSol.velocity.u.length - 5; i < forgedSol.velocity.u.length; i++) {
+        forgedSol.velocity.u[i] += 10.0;
+      }
       const audit = SECP082IndependentCFDVerifier.verifySolution(forgedSol);
-      const rejected = audit.globalMassImbalance > 0.05 || !audit.passed;
+      const rejected = audit.independentVerdict === 'CONSERVATION_VIOLATION' || !audit.passed;
       mutations.push({
         mutationId: 'M10',
         name: 'Non-Conservative Global Mass Flow Imbalance',
         detectedAndRejected: rejected,
         detectionMechanism: 'Global Mass Flow Auditor',
-        details: '25% global mass flow mismatch - caught by mass conservation gate'
+        details: 'Injected +10 m/s flux at outlet - caught by mass conservation gate'
       });
     }
 

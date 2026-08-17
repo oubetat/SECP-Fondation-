@@ -14,6 +14,7 @@
  * - Master Gate execution (SECP-077 PASS & FINAL-CLOSED)
  */
 
+import { describe, test, expect } from 'vitest';
 import { HardAcceptanceGate077 } from '../HardAcceptanceGate077';
 import { SECP077CleanRoomKernel } from '../SECP077CleanRoomKernel';
 import { SECP077BenchmarkSuite } from '../SECP077BenchmarkSuite';
@@ -174,3 +175,12 @@ export class SECP077SolidMultiphysicsTestSuite {
     return { passed: allPassed, results };
   }
 }
+
+describe('SECP077 Solid Multiphysics Test Suite', () => {
+  const { results } = SECP077SolidMultiphysicsTestSuite.runAll();
+  for (const r of results) {
+    test(r.name, () => {
+      expect(r.passed).toBe(true);
+    });
+  }
+});

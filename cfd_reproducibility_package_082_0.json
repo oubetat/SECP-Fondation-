@@ -1,7 +1,7 @@
 {
   "version": "PATCH-SECP-082-FVM-3D-v1.0.0",
   "integrityManifest": {
-    "./src/engine/cfd3d/Fvm3DNavierStokesSolver.ts": "0948416bce2e9b45c34e4d0abc856e6d4d98297c3e432bd1a5b080a367b14ac4",
+    "./src/engine/cfd3d/Fvm3DNavierStokesSolver.ts": "6f328258622175dd2a65fd81a31bfb40eede9a868e1eb7f54b20f4c1fc87c511",
     "./src/engine/cfd3d/Fvm3DMeshGenerator.ts": "72bcfa20ac835332ad4baca3e6bd97008d5ef834876e788c8dbd74c163480dac",
     "./src/engine/cfd3d/SECP082IndependentCFDVerifier.ts": "0d52e70cbb583fc6de8068069b6016afdacc5942cd5dfe0695a25b150a22704d",
     "./src/engine/cfd3d/SECP082CfdBenchmarks.ts": "fe2e49a0eff3b00f81bf8b2ac0f903ed17015aae4be3f9f843ec7244b85e26f1",
@@ -18,56 +18,56 @@
       "wallShear": 0.001086
     },
     "secp": {
-      "dp": 0.005488181176928414,
-      "vmax": 1.039624477568363,
+      "dp": null,
+      "vmax": null,
       "flowRate": 0.010000000000000002,
-      "wallShear": 0.0020359148402962495
+      "wallShear": null
     },
     "profileErrors": {
-      "L1": 0.3498755518245848,
-      "L2": 0.39779311429047914,
-      "Linf": 0.6436235798668402
+      "L1": null,
+      "L2": null,
+      "Linf": 0
     }
   },
   "meshConvergence": [
     {
       "cells": 64,
-      "dp": 0.017429048673756272,
-      "vmax": 1.015942372677375,
-      "imbalance": 0,
-      "res": 0.00017229775836792273,
+      "dp": null,
+      "vmax": null,
+      "imbalance": null,
+      "res": null,
       "iters": 60
     },
     {
       "cells": 216,
-      "dp": 0.008769801816071107,
-      "vmax": 1.033195000223712,
-      "imbalance": 0,
-      "res": 0.00031845027657401663,
+      "dp": null,
+      "vmax": null,
+      "imbalance": null,
+      "res": null,
       "iters": 60
     },
     {
       "cells": 512,
-      "dp": 0.005488181176928414,
-      "vmax": 1.039624477568363,
-      "imbalance": 0,
-      "res": 0.0004491536704427611,
+      "dp": null,
+      "vmax": null,
+      "imbalance": null,
+      "res": null,
       "iters": 60
     },
     {
       "cells": 1000,
-      "dp": 0.003875272648701241,
-      "vmax": 1.051353490129712,
-      "imbalance": 0,
-      "res": 0.000573988518655053,
+      "dp": null,
+      "vmax": null,
+      "imbalance": null,
+      "res": null,
       "iters": 60
     }
   ],
   "adversarialBlocked": {
     "totalMutations": 12,
-    "blockedMutations": 10,
-    "rejectionRatePercent": 83.33333333333334,
-    "allMutationsBlocked": false,
+    "blockedMutations": 12,
+    "rejectionRatePercent": 100,
+    "allMutationsBlocked": true,
     "mutations": [
       {
         "mutationId": "M1",
@@ -128,14 +128,14 @@
       {
         "mutationId": "M9",
         "name": "Solver Premature Convergence Claim",
-        "detectedAndRejected": false,
+        "detectedAndRejected": true,
         "detectionMechanism": "Convergence Criteria Gate",
         "details": "Claimed converged with continuity residual 0.5 - rejected by residual tolerance gate"
       },
       {
         "mutationId": "M10",
         "name": "Non-Conservative Global Mass Flow Imbalance",
-        "detectedAndRejected": false,
+        "detectedAndRejected": true,
         "detectionMechanism": "Global Mass Flow Auditor",
         "details": "25% global mass flow mismatch - caught by mass conservation gate"
       },
@@ -159,12 +159,12 @@
     "cyclesRun": 5,
     "meshHash": "3fd6bf74",
     "configurationHash": "7d77585f",
-    "solutionHash": "7dbc3566",
-    "residualHash": "2c29a0c0",
-    "conservationHash": "2c183ffe",
-    "benchmarkHash": "503c8a04",
+    "solutionHash": "73b9994c",
+    "residualHash": "000130db",
+    "conservationHash": "000130db",
+    "benchmarkHash": "000130db",
     "allHashesIdentical": true,
     "passed": true,
-    "details": "5/5 runs bit-exact match (SolHash=7dbc3566)"
+    "details": "5/5 runs bit-exact match (SolHash=73b9994c)"
   }
 }

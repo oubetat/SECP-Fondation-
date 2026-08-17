@@ -490,7 +490,7 @@ export class SECP076SolverIntegrityKernel {
     for (let iter = 0; iter < 100; iter++) {
       const Av = this.matVec(A, v);
       const norm = this.computeVectorNorms(Av).l2;
-      if (norm < 1e-15) break;
+      if (norm < 1e-300) break;
       lambdaMax = norm;
       v = Av.map(x => x / norm);
     }
@@ -505,7 +505,7 @@ export class SECP076SolverIntegrityKernel {
         break;
       }
       const norm = this.computeVectorNorms(sol.x).l2;
-      if (norm < 1e-15) break;
+      if (norm < 1e-300) break;
       lambdaMin = 1.0 / norm;
       u = sol.x.map(x => x / norm);
     }

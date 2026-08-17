@@ -13,6 +13,8 @@
  * - Master Gate execution (SECP-076 PASS & FINAL-CLOSED)
  */
 
+import { describe, test, expect } from 'vitest';
+import { describe, test, expect } from 'vitest';
 import { SECP076SolverIntegrityKernel } from '../SECP076SolverIntegrityKernel';
 import { SECP076CrossKernelVerifier } from '../SECP076CrossKernelVerifier';
 import { SECP076PerturbationEngine } from '../SECP076PerturbationEngine';
@@ -227,3 +229,12 @@ export class SECP076SolverIntegrityTestSuite {
     return { passed: allPassed, results };
   }
 }
+
+describe('SECP076 Solver Integrity Test Suite', () => {
+  const { results } = SECP076SolverIntegrityTestSuite.runAll();
+  for (const r of results) {
+    test(r.name, () => {
+      expect(r.passed).toBe(true);
+    });
+  }
+});

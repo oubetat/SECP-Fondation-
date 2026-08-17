@@ -4,6 +4,7 @@
  * 7-Stage Merkle-like Hash Chain, Blind Mutation Classification, and Negative-Control Calibration.
  */
 
+import { describe, test, expect } from 'vitest';
 import { SECP075LinearAlgebra } from '../SECP075LinearAlgebra';
 import { SECP075ForensicVerificationEngine } from '../SECP075ForensicVerificationEngine';
 import { SECP075AdversarialEngine } from '../SECP075AdversarialEngine';
@@ -213,3 +214,12 @@ export class SECP075ForensicVerificationTestSuite {
     return { passed: allPassed, results };
   }
 }
+
+describe('SECP075 Forensic Verification Test Suite', () => {
+  const { results } = SECP075ForensicVerificationTestSuite.runAll();
+  for (const r of results) {
+    test(r.name, () => {
+      expect(r.passed).toBe(true);
+    });
+  }
+});

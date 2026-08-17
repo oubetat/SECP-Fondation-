@@ -4,6 +4,7 @@
  * Runs full HPC benchmark harness across FEA, CFD, and 5-Axis CAM measuring execution speedup ratios.
  */
 
+import { describe, test, expect } from 'vitest';
 import { HpcBenchmarkHarness } from '../benchmarks/HpcBenchmarkHarness';
 
 export function runPerformanceTests(): { name: string; passed: boolean; details: string }[] {
@@ -33,3 +34,12 @@ export function runPerformanceTests(): { name: string; passed: boolean; details:
 
   return results;
 }
+
+describe('SECP085 Performance Test Suite', () => {
+  const results = runPerformanceTests();
+  for (const r of results) {
+    test(r.name, () => {
+      expect(r.passed).toBe(true);
+    });
+  }
+});

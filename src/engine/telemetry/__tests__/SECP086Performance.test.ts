@@ -8,6 +8,7 @@
  * Evaluates throughput, p50/p95/p99 latency, and backpressure behavior.
  */
 
+import { describe, test, expect } from 'vitest';
 import { IndustrialGatewayManager } from '../IndustrialGatewayManager';
 import { ProtocolTestHarness } from '../harness/ProtocolTestHarness';
 
@@ -91,3 +92,10 @@ export class SECP086PerformanceTestSuite {
     };
   }
 }
+
+describe('SECP086 Performance Test Suite', () => {
+  test('All telemetry performance tests pass', async () => {
+    const report = await SECP086PerformanceTestSuite.runTests();
+    expect(report.passed).toBe(true);
+  });
+});

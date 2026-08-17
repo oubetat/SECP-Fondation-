@@ -5,6 +5,7 @@
  * timeout handling, WASM initialization errors, and fallback transparency.
  */
 
+import { describe, test, expect } from 'vitest';
 import { HpcWorker } from '../runtime/HpcWorker';
 import { HpcEngineBroker } from '../HpcEngineBroker';
 
@@ -76,3 +77,12 @@ export async function runAdversarialTests(): Promise<{ name: string; passed: boo
 
   return results;
 }
+
+describe('SECP085 Adversarial Test Suite', () => {
+  test('All adversarial tests pass', async () => {
+    const results = await runAdversarialTests();
+    for (const r of results) {
+      expect(r.passed).toBe(true);
+    }
+  });
+});

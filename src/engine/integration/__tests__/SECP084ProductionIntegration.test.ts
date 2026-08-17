@@ -4,6 +4,8 @@
  * verifier boundaries, timeouts, cancellation, rejection guards, and visualization payloads.
  */
 
+import { describe, test, expect } from 'vitest';
+import { describe, test, expect } from 'vitest';
 import { HardAcceptanceGate084 } from '../../validation/HardAcceptanceGate084';
 import { ProductionExecutionBroker } from '../ProductionExecutionBroker';
 import { ProductionEngineeringCommand } from '../contracts/ProductionCommandContracts';
@@ -219,3 +221,10 @@ export class SECP084ProductionIntegrationTests {
     return result;
   }
 }
+
+describe('SECP084 Production Integration Test Suite', () => {
+  test('All production integration tests pass', () => {
+    const report = SECP084ProductionIntegrationTests.runAllTests();
+    expect(report.passed).toBe(true);
+  });
+});

@@ -13,6 +13,7 @@
  * - 15-Stage Merkle cryptographic provenance chain verification
  */
 
+import { describe, test, expect } from 'vitest';
 import { HardAcceptanceGate078 } from '../HardAcceptanceGate078';
 import { SECP078CleanRoomKernel } from '../SECP078CleanRoomKernel';
 import { SECP078BenchmarkSuite } from '../SECP078BenchmarkSuite';
@@ -161,3 +162,12 @@ export class SECP078NonlinearContactTestSuite {
     return { passed: allPassed, results };
   }
 }
+
+describe('SECP078 Nonlinear Contact Test Suite', () => {
+  const { results } = SECP078NonlinearContactTestSuite.runAll();
+  for (const r of results) {
+    test(r.name, () => {
+      expect(r.passed).toBe(true);
+    });
+  }
+});

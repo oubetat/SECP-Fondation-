@@ -8,7 +8,7 @@ const mu = 1.81e-5;
 const fluid: FluidProperties3D = { densityKgM3: rho, viscosityPaS: mu };
 
 const config: SolverConfig3D = {
-  maxIterations: 100,
+  maxIterations: 60,
   continuityTol: 1e-4,
   momentumTol: 1e-4,
   underRelaxationVelocity: 0.7,
@@ -21,11 +21,11 @@ const config: SolverConfig3D = {
 const mesh = Fvm3DMeshGenerator.generate3DBlockMesh('poiseuille_mesh', Lx, Ly, Lz, 16, 8, 4, 'INLET', 'OUTLET', { x: Uavg, y: 0, z: 0 });
 
 try {
-  const sol = Fvm3DNavierStokesSolver.solve(mesh, fluid, config);
-  console.log("Iteration log details:");
-  sol.iterationHistory.forEach(it => {
-    console.log(`Iter ${it.iteration}: ContRes=${it.continuityResidual.toExponential(4)}, MomRes=${it.uMomentumResidual.toExponential(4)}, MaxV=${it.maxVelocityMS.toFixed(4)}, PressChange=${it.pressureChange.toExponential(4)}`);
-  });
+  const sol = Fvm3DNavierStokesSolver.solve(mesh, fluid, config, Ly * Lz, Uavg);
+  console.log("\nSOLVER COMPLETED SUCCESSFULLY!");
+  console.log(`Pressure Drop (Pa): ${sol.monitors.pressureDropPa.toFixed(4)}`);
+  console.log(`Peak Velocity (m/s): ${Math.max(...sol.velocity.u).toFixed(4)}`);
+  console.log(`Viscous Drag (N): ${sol.monitors.viscousDragForceN.toExponential(4)}`);
 } catch (e) {
-  console.error("Solver error:", e);
+  console.log("Caught:", e);
 }

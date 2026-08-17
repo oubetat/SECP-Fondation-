@@ -372,6 +372,76 @@ export class SECP077CleanRoomKernel {
   // =========================================================================
   // 3. HEX8 Formulation (8-node trilinear hexahedron)
   // =========================================================================
+  public static computeHex8CentroidB(nodes: Solid3DNode[]): { B: number[][]; detJ: number } {
+    if (nodes.length !== 8) throw new Error('HEX8 requires exactly 8 nodes');
+    const xi_i   = [-1,  1,  1, -1, -1,  1,  1, -1];
+    const eta_i  = [-1, -1,  1,  1, -1, -1,  1,  1];
+    const zeta_i = [-1, -1, -1, -1,  1,  1,  1,  1];
+
+    const dN_dxi = new Array(8);
+    const dN_deta = new Array(8);
+    const dN_dzeta = new Array(8);
+
+    for (let i = 0; i < 8; i++) {
+      dN_dxi[i] = 0.125 * xi_i[i];
+      dN_deta[i] = 0.125 * eta_i[i];
+      dN_dzeta[i] = 0.125 * zeta_i[i];
+    }
+
+    const J: number[][] = [
+      [0, 0, 0],
+      [0, 0, 0],
+      [0, 0, 0]
+    ];
+    for (let i = 0; i < 8; i++) {
+      J[0][0] += dN_dxi[i] * nodes[i].x;   J[0][1] += dN_dxi[i] * nodes[i].y;   J[0][2] += dN_dxi[i] * nodes[i].z;
+      J[1][0] += dN_deta[i] * nodes[i].x;  J[1][1] += dN_deta[i] * nodes[i].y;  J[1][2] += dN_deta[i] * nodes[i].z;
+      J[2][0] += dN_dzeta[i] * nodes[i].x; J[2][1] += dN_dzeta[i] * nodes[i].y; J[2][2] += dN_dzeta[i] * nodes[i].z;
+    }
+
+    const detJ = J[0][0] * (J[1][1] * J[2][2] - J[1][2] * J[2][1]) -
+                 J[0][1] * (J[1][0] * J[2][2] - J[1][2] * J[2][0]) +
+                 J[0][2] * (J[1][0] * J[2][1] - J[1][1] * J[2][0]);
+
+    if (detJ <= 1e-15) {
+      throw new Error(`Degenerate HEX8 Element: Jacobian determinant detJ=${detJ} <= 0.`);
+    }
+
+    const invJ = [
+      [(J[1][1] * J[2][2] - J[1][2] * J[2][1]) / detJ, (J[0][2] * J[2][1] - J[0][1] * J[2][2]) / detJ, (J[0][1] * J[1][2] - J[0][2] * J[1][1]) / detJ],
+      [(J[1][2] * J[2][0] - J[1][0] * J[2][2]) / detJ, (J[0][0] * J[2][2] - J[0][2] * J[2][0]) / detJ, (J[0][2] * J[1][0] - J[0][0] * J[1][2]) / detJ],
+      [(J[1][0] * J[2][1] - J[1][1] * J[2][0]) / detJ, (J[0][1] * J[2][0] - J[0][0] * J[2][1]) / detJ, (J[0][0] * J[1][1] - J[0][1] * J[1][0]) / detJ]
+    ];
+
+    const dN_dx = new Array(8);
+    const dN_dy = new Array(8);
+    const dN_dz = new Array(8);
+
+    for (let i = 0; i < 8; i++) {
+      dN_dx[i] = invJ[0][0] * dN_dxi[i] + invJ[0][1] * dN_deta[i] + invJ[0][2] * dN_dzeta[i];
+      dN_dy[i] = invJ[1][0] * dN_dxi[i] + invJ[1][1] * dN_deta[i] + invJ[1][2] * dN_dzeta[i];
+      dN_dz[i] = invJ[2][0] * dN_dxi[i] + invJ[2][1] * dN_deta[i] + invJ[2][2] * dN_dzeta[i];
+    }
+
+    const B: number[][] = Array.from({ length: 6 }, () => new Array(24).fill(0.0));
+    for (let i = 0; i < 8; i++) {
+      B[0][3 * i]     = dN_dx[i];
+      B[1][3 * i + 1] = dN_dy[i];
+      B[2][3 * i + 2] = dN_dz[i];
+
+      B[3][3 * i]     = dN_dy[i];
+      B[3][3 * i + 1] = dN_dx[i];
+
+      B[4][3 * i + 1] = dN_dz[i];
+      B[4][3 * i + 2] = dN_dy[i];
+
+      B[5][3 * i]     = dN_dz[i];
+      B[5][3 * i + 2] = dN_dx[i];
+    }
+
+    return { B, detJ };
+  }
+
   public static formulateHEX8(
     nodes: Solid3DNode[],
     mat: Solid3DMaterial
@@ -785,10 +855,17 @@ export class SECP077CleanRoomKernel {
           }
           eps[m] = sum;
         }
-      } else if (el.type === 'TET10' || el.type === 'HEX8') {
-        // Evaluate strain at centroid
-        const form = el.type === 'TET10' ? this.formulateTET10(elNodes, mat) : this.formulateHEX8(elNodes, mat);
-        // For clean-room representation, use average B or TET4 equivalent at centroid
+      } else if (el.type === 'HEX8') {
+        const hexCentroid = this.computeHex8CentroidB(elNodes);
+        for (let m = 0; m < 6; m++) {
+          let sum = 0.0;
+          for (let n = 0; n < 24; n++) {
+            sum += hexCentroid.B[m][n] * u_e[n];
+          }
+          eps[m] = sum;
+        }
+      } else if (el.type === 'TET10') {
+        // Evaluate strain using corner TET4 reference
         const tet4Approx = this.formulateTET4(elNodes.slice(0, 4), mat);
         for (let m = 0; m < 6; m++) {
           let sum = 0.0;
@@ -1174,16 +1251,15 @@ export class SECP077CleanRoomKernel {
         }
       } else if (el.type === 'HEX8') {
         const form = this.formulateHEX8(elNodes, mat);
-        // Formulate thermal equivalent load on HEX8
-        const tetApprox = this.formulateTET4(elNodes.slice(0, 4), mat);
-        for (let i = 0; i < 12; i++) {
+        const hexCentroid = this.computeHex8CentroidB(elNodes);
+        for (let i = 0; i < 24; i++) {
           let sum = 0.0;
           for (let m = 0; m < 6; m++) {
-            sum += tetApprox.B[m][i] * sig_th[m];
+            sum += hexCentroid.B[m][i] * sig_th[m];
           }
           const dofNodeIdx = nodeIndexMap.get(el.nodeIds[Math.floor(i / 3)])!;
           const dofDir = i % 3;
-          F_thermal[3 * dofNodeIdx + dofDir] += sum * (form.volume * 0.5);
+          F_thermal[3 * dofNodeIdx + dofDir] += sum * form.volume;
         }
       }
     }

@@ -16,6 +16,8 @@
  * T12 - Hash / Provenance Verification
  */
 
+import { describe, test, expect } from 'vitest';
+import { describe, test, expect } from 'vitest';
 import { SECP087MachineKinematicsEngine } from '../SECP087MachineKinematicsEngine';
 import { SECP087ToolpathSimulator } from '../SECP087ToolpathSimulator';
 import { SECP087DeterministicReplay } from '../SECP087DeterministicReplay';
@@ -234,3 +236,10 @@ export class SECP087KinematicsAndSimulationTestSuite {
     };
   }
 }
+
+describe('SECP087 Kinematics and Simulation Test Suite', () => {
+  test('All 5-axis kinematics tests pass', async () => {
+    const report = await SECP087KinematicsAndSimulationTestSuite.runTests();
+    expect(report.passed).toBe(true);
+  });
+});

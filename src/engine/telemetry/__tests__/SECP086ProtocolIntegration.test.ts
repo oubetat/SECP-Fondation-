@@ -5,6 +5,7 @@
  * Digital Twin, Anomaly Detection, and RUL Prediction Engines.
  */
 
+import { describe, test, expect } from 'vitest';
 import { IndustrialGatewayManager } from '../IndustrialGatewayManager';
 import { MQTTConnector } from '../connectors/MQTTConnector';
 import { OPCUAConnector } from '../connectors/OPCUAConnector';
@@ -104,3 +105,10 @@ export class SECP086ProtocolIntegrationTestSuite {
     };
   }
 }
+
+describe('SECP086 Protocol Integration Test Suite', () => {
+  test('All telemetry protocol integration tests pass', async () => {
+    const report = await SECP086ProtocolIntegrationTestSuite.runTests();
+    expect(report.passed).toBe(true);
+  });
+});

@@ -5,6 +5,7 @@
  * and WebAssembly production kernels across FEA, CFD, 5-Axis CAM, and NURBS Class-A surfacing.
  */
 
+import { describe, test, expect } from 'vitest';
 import { HpcEngineBroker } from '../HpcEngineBroker';
 
 export function runCrossRuntimeTests(): { name: string; passed: boolean; details: string }[] {
@@ -28,3 +29,12 @@ export function runCrossRuntimeTests(): { name: string; passed: boolean; details
 
   return results;
 }
+
+describe('SECP085 Cross-Runtime Equivalence Test Suite', () => {
+  const results = runCrossRuntimeTests();
+  for (const r of results) {
+    test(r.name, () => {
+      expect(r.passed).toBe(true);
+    });
+  }
+});

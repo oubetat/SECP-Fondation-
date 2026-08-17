@@ -134,6 +134,7 @@ export interface CfdSolution3D {
   velocity: VelocityField3D;
   pressure: number[];             // Static pressure at cell centers (Pa)
   turbulence?: TurbulenceField3D;
+  faceFluxes?: number[];
   iterationHistory: CfdIterationLog3D[];
   totalIterations: number;
   converged: boolean;

@@ -5,6 +5,7 @@
  * TypedArray low-copy transfers, and module hashing.
  */
 
+import { describe, test, expect } from 'vitest';
 import { WasmKernelsEngine } from '../runtime/WasmKernels';
 import { WasmModuleLoader } from '../runtime/WasmModuleLoader';
 
@@ -66,3 +67,12 @@ export function runWasmIntegrityTests(): { name: string; passed: boolean; detail
 
   return results;
 }
+
+describe('SECP085 Wasm Integrity Test Suite', () => {
+  const results = runWasmIntegrityTests();
+  for (const r of results) {
+    test(r.name, () => {
+      expect(r.passed).toBe(true);
+    });
+  }
+});

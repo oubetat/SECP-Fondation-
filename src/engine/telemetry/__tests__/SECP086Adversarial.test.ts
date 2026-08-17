@@ -10,6 +10,8 @@
  * - Reconnect storms and fault recovery
  */
 
+import { describe, test, expect } from 'vitest';
+import { describe, test, expect } from 'vitest';
 import { IndustrialGatewayManager } from '../IndustrialGatewayManager';
 import { ProtocolTestHarness } from '../harness/ProtocolTestHarness';
 import { RawTelemetryPacket } from '../IndustrialTelemetryTypes';
@@ -132,3 +134,10 @@ export class SECP086AdversarialTestSuite {
     };
   }
 }
+
+describe('SECP086 Adversarial Test Suite', () => {
+  test('All telemetry adversarial tests pass', async () => {
+    const report = await SECP086AdversarialTestSuite.runTests();
+    expect(report.passed).toBe(true);
+  });
+});

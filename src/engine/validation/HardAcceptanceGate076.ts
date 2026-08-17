@@ -474,7 +474,7 @@ export class HardAcceptanceGate076 {
     // Link 2: 076 Input Hash
     const inputPayload = JSON.stringify({ nodesCount: nodes.length, elementsCount: elements.length, material });
     const inputHash = SECP075CryptographicChain.hashString(`076_INPUT:${inputPayload}`);
-    cumulative = SECP075CryptographicChain.hashString(`${cumulative}->INPUT:${inputHash}`);
+    cumulative = SECP075CryptographicChain.hashString(`${cumulative}->076_INPUT:${inputHash}`);
     links.push({
       step: '076_INPUT',
       payloadDescription: 'Geometric nodes, topology, and physical material parameters',

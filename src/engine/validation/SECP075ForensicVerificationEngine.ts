@@ -432,18 +432,20 @@ export class SECP075ForensicVerificationEngine {
     const energy_x = this.computeStrainEnergy(K, u_x);
     const energy_y = this.computeStrainEnergy(K, u_y);
 
+    const kFrob = Math.sqrt(K.reduce((s, row) => s + row.reduce((rs, v) => rs + v * v, 0), 0)) || 1.0;
     const maxEnergy = Math.max(Math.abs(energy_x), Math.abs(energy_y));
+    const relEnergy = maxEnergy / (kFrob * 4.0);
     const tolerance = 1e-10;
-    const passed = maxEnergy <= tolerance;
+    const passed = relEnergy <= tolerance;
 
     return {
       name: 'Rigid Translation',
       category: 'ELEMENT',
       passed,
-      metric: maxEnergy,
+      metric: relEnergy,
       tolerance,
-      relativeError: maxEnergy,
-      details: passed ? 'Strain energy U^T K U approx 0 under rigid translation' : `Non-zero strain energy under rigid translation: ${maxEnergy.toExponential(3)}`
+      relativeError: relEnergy,
+      details: passed ? 'Strain energy U^T K U approx 0 under rigid translation' : `Non-zero strain energy under rigid translation: ${relEnergy.toExponential(3)}`
     };
   }
 

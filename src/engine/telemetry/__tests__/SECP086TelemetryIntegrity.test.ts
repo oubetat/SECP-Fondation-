@@ -5,6 +5,7 @@
  * physical unit canonicalization, and SHA-256 cryptographic provenance generation.
  */
 
+import { describe, test, expect } from 'vitest';
 import { TelemetryNormalizer } from '../ingestion/TelemetryNormalizer';
 import { RawTelemetryPacket } from '../IndustrialTelemetryTypes';
 
@@ -144,3 +145,10 @@ export class SECP086TelemetryIntegrityTestSuite {
     };
   }
 }
+
+describe('SECP086 Telemetry Integrity Test Suite', () => {
+  test('All telemetry integrity tests pass', async () => {
+    const report = await SECP086TelemetryIntegrityTestSuite.runTests();
+    expect(report.passed).toBe(true);
+  });
+});

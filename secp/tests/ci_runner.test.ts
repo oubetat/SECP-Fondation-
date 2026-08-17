@@ -1,3 +1,4 @@
+import { describe, test, expect } from 'vitest';
 import { GeometryApi } from '../packages/geometry-api/src';
 import { generateSecpHash } from '../packages/shared/src';
 import { recordProvenanceAction } from '../services/provenance-service/src/server';
@@ -81,3 +82,12 @@ export function runCiTestSuite(): TestCaseResult[] {
 
   return results;
 }
+
+describe('SECP CI Runner Test Suite', () => {
+  const results = runCiTestSuite();
+  for (const r of results) {
+    test(r.name, () => {
+      expect(r.passed).toBe(true);
+    });
+  }
+});

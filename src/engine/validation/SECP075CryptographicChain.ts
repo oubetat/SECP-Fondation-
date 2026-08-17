@@ -91,8 +91,8 @@ export class SECP075CryptographicChain {
 
     // 3. Material Hash
     const matStr = JSON.stringify(params.material);
-    const materialHash = this.hashString(`MAT:${matStr}`);
-    cumulative = this.hashString(`${cumulative}->MAT:${materialHash}`);
+    const materialHash = this.hashString(`MATERIAL:${matStr}`);
+    cumulative = this.hashString(`${cumulative}->MATERIAL:${materialHash}`);
     links.push({
       step: 'MATERIAL',
       payloadDescription: `Constitutive constants (E=${params.material.E}, nu=${params.material.nu})`,
@@ -102,8 +102,8 @@ export class SECP075CryptographicChain {
 
     // 4. Boundary Condition Hash
     const bcStr = JSON.stringify(params.bcs);
-    const bcHash = this.hashString(`BC:${bcStr}`);
-    cumulative = this.hashString(`${cumulative}->BC:${bcHash}`);
+    const bcHash = this.hashString(`BOUNDARY_CONDITIONS:${bcStr}`);
+    cumulative = this.hashString(`${cumulative}->BOUNDARY_CONDITIONS:${bcHash}`);
     links.push({
       step: 'BOUNDARY_CONDITIONS',
       payloadDescription: `${params.bcs.length} Dirichlet constraints & kinematic fixities`,
@@ -113,8 +113,8 @@ export class SECP075CryptographicChain {
 
     // 5. Stiffness Matrix Hash
     const matSummaryStr = JSON.stringify(params.matrixSummary);
-    const matrixHash = this.hashString(`MATRIX:${matSummaryStr}`);
-    cumulative = this.hashString(`${cumulative}->MATRIX:${matrixHash}`);
+    const matrixHash = this.hashString(`STIFFNESS_MATRIX:${matSummaryStr}`);
+    cumulative = this.hashString(`${cumulative}->STIFFNESS_MATRIX:${matrixHash}`);
     links.push({
       step: 'STIFFNESS_MATRIX',
       payloadDescription: `Global assembled matrix (${params.matrixSummary.rows}x${params.matrixSummary.cols}, ||K||_F=${params.matrixSummary.frobeniusNorm.toExponential(3)})`,
@@ -124,8 +124,8 @@ export class SECP075CryptographicChain {
 
     // 6. Metrics Hash
     const metricsStr = JSON.stringify(params.metrics);
-    const metricsHash = this.hashString(`METRICS:${metricsStr}`);
-    cumulative = this.hashString(`${cumulative}->METRICS:${metricsHash}`);
+    const metricsHash = this.hashString(`SPECTRAL_METRICS:${metricsStr}`);
+    cumulative = this.hashString(`${cumulative}->SPECTRAL_METRICS:${metricsHash}`);
     links.push({
       step: 'SPECTRAL_METRICS',
       payloadDescription: `Eigenvalues, conditioning, residual, and strain energy invariants`,
@@ -135,8 +135,8 @@ export class SECP075CryptographicChain {
 
     // 7. Verdict Hash
     const verdictStr = JSON.stringify({ ...params.verdict, verifier: this.VERIFIER_VERSION });
-    const verdictHash = this.hashString(`VERDICT:${verdictStr}`);
-    cumulative = this.hashString(`${cumulative}->VERDICT:${verdictHash}`);
+    const verdictHash = this.hashString(`AUDIT_VERDICT:${verdictStr}`);
+    cumulative = this.hashString(`${cumulative}->AUDIT_VERDICT:${verdictHash}`);
     links.push({
       step: 'AUDIT_VERDICT',
       payloadDescription: `Final Gate Decision (${params.verdict.passed ? 'PASS' : 'FAIL'}, ${params.verdict.testCount} tests)`,

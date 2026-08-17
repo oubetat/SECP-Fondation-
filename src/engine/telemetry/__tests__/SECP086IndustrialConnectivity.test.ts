@@ -6,6 +6,8 @@
  * OPC-UA, MQTT, Modbus TCP/RTU, and MTConnect.
  */
 
+import { describe, test, expect } from 'vitest';
+import { describe, test, expect } from 'vitest';
 import { MQTTConnector } from '../connectors/MQTTConnector';
 import { OPCUAConnector } from '../connectors/OPCUAConnector';
 import { ModbusConnector } from '../connectors/ModbusConnector';
@@ -156,3 +158,10 @@ export class SECP086IndustrialConnectivityTestSuite {
     };
   }
 }
+
+describe('SECP086 Industrial Connectivity Test Suite', () => {
+  test('All telemetry connectivity tests pass', async () => {
+    const report = await SECP086IndustrialConnectivityTestSuite.runTests();
+    expect(report.passed).toBe(true);
+  });
+});
