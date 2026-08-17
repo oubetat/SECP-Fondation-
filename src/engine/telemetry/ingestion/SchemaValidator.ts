@@ -37,7 +37,7 @@ export class SchemaValidator {
     const hasValidDevice = typeof deviceId === 'string' && deviceId.trim().length >= 3;
     const hasValidTimestamp = typeof timestamp === 'string' && timestamp.length > 0 && !isNaN(Date.parse(timestamp));
     const hasValidSignalType = this.VALID_SIGNAL_TYPES.has(signalType);
-    const hasValidUnit = unit !== undefined && (this.VALID_UNITS.has(unit) || typeof unit === 'string');
+    const hasValidUnit = unit !== undefined && this.VALID_UNITS.has(unit);
     const hasValidProvenance = typeof packet.packetId === 'string' && packet.packetId.length > 0;
 
     let withinPhysicalBounds = true;

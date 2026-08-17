@@ -34,8 +34,8 @@ export class SECP083SurfaceContinuityVerifier {
     for (let k = 0; k <= sampleCount; k++) {
       const uNorm = k / sampleCount;
 
-      // Sample along boundary v=1 of patchA and u=0 of patchB
-      const derivA = SECP083ClassASurfaceCore.evaluateSurfaceDerivatives(patchA, uNorm, 1.0);
+      // Sample along boundary u=1 of patchA and u=0 of patchB
+      const derivA = SECP083ClassASurfaceCore.evaluateSurfaceDerivatives(patchA, 1.0, uNorm);
       const derivB = SECP083ClassASurfaceCore.evaluateSurfaceDerivatives(patchB, 0.0, uNorm);
 
       // 1. G0 Position Gap

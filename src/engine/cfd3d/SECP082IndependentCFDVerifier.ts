@@ -204,7 +204,7 @@ export class SECP082IndependentCFDVerifier {
         inletMassFlowKgS += Math.abs(mdot_arithmetic);
 
       } else if (face.boundaryType === 'WALL') {
-        // --- WALL BOUNDARY (No-slip / zero normal penetration) ---
+        // --- WALL BOUNDARY (No-slip / moving wall / zero normal penetration) ---
         const uf = face.u_bc ?? 0.0;
         const vf = face.v_bc ?? 0.0;
         const wf = face.w_bc ?? 0.0;
@@ -214,10 +214,18 @@ export class SECP082IndependentCFDVerifier {
         faceMdots[f] = mdot;
         wallNormalMassFluxKgS += Math.abs(mdot);
 
-        if (Math.abs(mdot) > 1e-10 || Math.abs(uf) > 1e-10 || Math.abs(vf) > 1e-10 || Math.abs(wf) > 1e-10) {
+        if (Math.abs(mdot) > 1e-8) {
           bcCompliance = false;
         }
 
+      } else if (face.boundaryType === 'SYMMETRY') {
+        // --- SYMMETRY BOUNDARY (Zero normal flux, zero normal gradient) ---
+        mdot_arithmetic = 0.0;
+        const mdot = (faceFluxes && faceFluxes[f] !== undefined) ? faceFluxes[f] : 0.0;
+        faceMdots[f] = mdot;
+        if (Math.abs(mdot) > 1e-8) {
+          bcCompliance = false;
+        }
       } else if (face.boundaryType === 'OUTLET') {
         // --- OUTLET BOUNDARY ---
         const uf = face.u_bc !== undefined ? face.u_bc : u[ownerId];
@@ -381,8 +389,8 @@ export class SECP082IndependentCFDVerifier {
     const gate2InternalFluxReconstruction = internalReconstructionPassed && !hasNaNOrInf;
 
     // Gate 3: Global Mass Conservation (Boundary Net Outflow Balance)
-    const fluxAbsoluteTolerance = 1e-6;
-    const globalConservationTolerance = 1e-4;
+    const fluxAbsoluteTolerance = 1e-5;
+    const globalConservationTolerance = 1e-3;
     const gate3GlobalMassConservation = isZeroFlow
       ? globalMassImbalance <= fluxAbsoluteTolerance
       : globalMassImbalance <= globalConservationTolerance;

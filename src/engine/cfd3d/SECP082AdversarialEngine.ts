@@ -52,7 +52,7 @@ export class SECP082AdversarialEngine {
       upwindScheme: 'FIRST_ORDER_UPWIND'
     };
 
-    const baseMesh = Fvm3DMeshGenerator.generate3DBlockMesh('base_adv', 1.0, 0.1, 0.1, 8, 4, 2, 'INLET', 'OUTLET', { x: 1.0, y: 0, z: 0 });
+    const baseMesh = Fvm3DMeshGenerator.generate3DBlockMesh('base_adv', 1.0, 0.1, 0.1, 8, 4, 2, 'INLET', 'OUTLET', 'WALL', 'SYMMETRY', { x: 1.0, y: 0, z: 0 });
     const nominalSolution = Fvm3DNavierStokesSolver.solve(baseMesh, fluid, config, 0.01, 1.0);
 
     const mutations: Adversarial082MutationResult[] = [];

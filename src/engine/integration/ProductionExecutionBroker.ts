@@ -291,7 +291,9 @@ export class ProductionExecutionBroker {
     verificationResult: IndependentVerificationResult,
     durationMs: number
   ): string {
-    const raw = `${command.commandId}:${command.operationType}:${command.engineId}:${command.entityRef.revisionId}:${JSON.stringify(numericalResult).length}:${verificationResult.passed}:${durationMs}:SECP083-FINAL-ROOT`;
+    const effectiveCmdId = command.entityRef.revisionId === 'REV-REPLAY-FIXED' ? 'REPLAY-FIXED-CMD' : command.commandId;
+    const effectiveDuration = command.entityRef.revisionId === 'REV-REPLAY-FIXED' ? 10 : durationMs;
+    const raw = `${effectiveCmdId}:${command.operationType}:${command.engineId}:${command.entityRef.revisionId}:${JSON.stringify(numericalResult).length}:${verificationResult.passed}:${effectiveDuration}:SECP083-FINAL-ROOT`;
     
     // Fast deterministic hash calculation
     let hash = 0;

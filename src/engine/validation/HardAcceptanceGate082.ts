@@ -80,8 +80,8 @@ export class HardAcceptanceGate082 {
     logs.push('2. Generating 3D Control Volume Mesh & Running Navier-Stokes SIMPLE Solver...');
     const fluid: FluidProperties3D = { densityKgM3: 1.225, viscosityPaS: 1.81e-5 };
     const config: SolverConfig3D = {
-      maxIterations: 50,
-      continuityTol: 1e-3,
+      maxIterations: 200,
+      continuityTol: 1e-4,
       momentumTol: 1e-3,
       underRelaxationVelocity: 0.7,
       underRelaxationPressure: 0.3,
@@ -90,7 +90,7 @@ export class HardAcceptanceGate082 {
       upwindScheme: 'FIRST_ORDER_UPWIND'
     };
 
-    const mesh = Fvm3DMeshGenerator.generate3DBlockMesh('gate_sample_mesh', 1.0, 0.1, 0.1, 16, 8, 4, 'INLET', 'OUTLET', { x: 1.0, y: 0, z: 0 }, 0.0);
+    const mesh = Fvm3DMeshGenerator.generate3DBlockMesh('gate_sample_mesh', 1.0, 0.1, 0.1, 16, 8, 4, 'INLET', 'OUTLET', 'WALL', 'SYMMETRY', { x: 1.0, y: 0, z: 0 }, 0.0);
     const solution = Fvm3DNavierStokesSolver.solve(mesh, fluid, config, 0.01, 1.0);
 
     logs.push(`- Mesh Cells: ${mesh.cells.length}, Faces: ${mesh.faces.length}, Quality: ${mesh.quality.meshQualityStatus}`);

@@ -167,6 +167,7 @@ export class SECP080AP242VerificationEngine {
       }
 
       const valMatch = Math.abs(sDim.nominalValue - rDim.nominalValue) < 1e-4;
+      const unitMatch = sDim.unit === rDim.unit;
       const tolMatch = (!sDim.tolerance && !rDim.tolerance) || (
         sDim.tolerance && rDim.tolerance &&
         sDim.tolerance.toleranceType === rDim.tolerance.toleranceType &&
@@ -175,7 +176,7 @@ export class SECP080AP242VerificationEngine {
       );
       const refsValid = rDim.referencedGeometryIds.length > 0;
 
-      if (valMatch && tolMatch && refsValid) {
+      if (valMatch && unitMatch && tolMatch && refsValid) {
         preserved++;
         details.push({
           entityId: sDim.id,

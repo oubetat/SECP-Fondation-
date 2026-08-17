@@ -155,5 +155,12 @@ export const FROZEN_ENGINEERING_BASELINES: Record<string, FrozenBaselineRecord> 
     status: 'FROZEN_LOCKED',
     gateClass: 'HardAcceptanceGate064',
     verificationHash: 'sha256-064-manufacturing-release-certification-verified'
+  },
+  'SECP-082': {
+    id: 'SECP-082',
+    name: '3D Finite Volume Navier-Stokes CFD Solver Baseline',
+    status: 'FROZEN_LOCKED',
+    gateClass: 'HardAcceptanceGate082',
+    verificationHash: '0xc629b85cc629b85c'
   }
 };

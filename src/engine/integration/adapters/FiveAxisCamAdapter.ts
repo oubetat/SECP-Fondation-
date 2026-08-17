@@ -65,7 +65,7 @@ export class FiveAxisCamAdapter {
       shankDiameterMm: dia,
       holderDiameterMm: 32,
       holderLengthMm: 60,
-      gaugeLengthMm: 60
+      gaugeLengthMm: 90
     };
 
     // 2. Canonical Surface Patch

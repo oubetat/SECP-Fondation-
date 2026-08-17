@@ -141,6 +141,8 @@ export class Fvm3DMeshGenerator {
     Nz: number,
     xBoundaryTypeMin: 'INLET' | 'WALL' | 'SYMMETRY' = 'INLET',
     xBoundaryTypeMax: 'OUTLET' | 'WALL' | 'SYMMETRY' = 'OUTLET',
+    yBoundaryType: 'WALL' | 'SYMMETRY' = 'WALL',
+    zBoundaryType: 'WALL' | 'SYMMETRY' = 'WALL',
     inletVelMS: Vector3D = { x: 1.0, y: 0, z: 0 },
     outletPressurePa: number = 0
   ): FvmMesh3D {
@@ -204,8 +206,7 @@ export class Fvm3DMeshGenerator {
           let p_bc: number | undefined;
 
           if (i === 0) {
-            neighbor = getCellId(i, j, k);
-            owner = neighbor; // Boundary owner
+            owner = getCellId(i, j, k);
             neighbor = -1;
             boundaryType = xBoundaryTypeMin;
             if (boundaryType === 'INLET') {
@@ -232,7 +233,7 @@ export class Fvm3DMeshGenerator {
           const face: FvmFace3D = {
             faceId,
             area,
-            normal: { x: 1.0, y: 0.0, z: 0.0 },
+            normal: { x: (i === 0) ? -1.0 : 1.0, y: 0.0, z: 0.0 },
             centroid: { x: fx, y: fy, z: fz },
             ownerCellId: owner,
             neighborCellId: neighbor,
@@ -279,12 +280,12 @@ export class Fvm3DMeshGenerator {
           if (j === 0) {
             owner = getCellId(i, j, k);
             neighbor = -1;
-            boundaryType = 'WALL';
+            boundaryType = yBoundaryType;
             u_bc = 0; v_bc = 0; w_bc = 0;
           } else if (j === Ny) {
             owner = getCellId(i, j - 1, k);
             neighbor = -1;
-            boundaryType = 'WALL';
+            boundaryType = yBoundaryType;
             // Lid-Driven cavity top lid moving velocity if specified
             if (xBoundaryTypeMin === 'WALL' && xBoundaryTypeMax === 'WALL') {
               u_bc = inletVelMS.x; v_bc = 0; w_bc = 0;
@@ -299,7 +300,7 @@ export class Fvm3DMeshGenerator {
           const face: FvmFace3D = {
             faceId,
             area,
-            normal: { x: 0.0, y: 1.0, z: 0.0 },
+            normal: { x: 0.0, y: (j === 0) ? -1.0 : 1.0, z: 0.0 },
             centroid: { x: fx, y: fy, z: fz },
             ownerCellId: owner,
             neighborCellId: neighbor,
@@ -341,7 +342,7 @@ export class Fvm3DMeshGenerator {
           if (k === 0 || k === Nz) {
             owner = (k === 0) ? getCellId(i, j, k) : getCellId(i, j, k - 1);
             neighbor = -1;
-            boundaryType = 'WALL';
+            boundaryType = zBoundaryType;
           } else {
             owner = getCellId(i, j, k - 1);
             neighbor = getCellId(i, j, k);
@@ -350,12 +351,14 @@ export class Fvm3DMeshGenerator {
           const face: FvmFace3D = {
             faceId,
             area,
-            normal: { x: 0.0, y: 0.0, z: 1.0 },
+            normal: { x: 0.0, y: 0.0, z: (k === 0) ? -1.0 : 1.0 },
             centroid: { x: fx, y: fy, z: fz },
             ownerCellId: owner,
             neighborCellId: neighbor,
             boundaryType,
-            u_bc: 0, v_bc: 0, w_bc: 0
+            u_bc: boundaryType === 'WALL' ? 0 : undefined,
+            v_bc: boundaryType === 'WALL' ? 0 : undefined,
+            w_bc: boundaryType === 'WALL' ? 0 : undefined
           };
           faces.push(face);
 
@@ -417,6 +420,8 @@ export class Fvm3DMeshGenerator {
       Nz,
       'INLET',
       'OUTLET',
+      'WALL',
+      'SYMMETRY',
       { x: uInlet, y: vInlet, z: 0 },
       0.0
     );

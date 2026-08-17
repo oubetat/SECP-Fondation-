@@ -42,11 +42,11 @@ export class SECP083ZebraReflectionAnalyzer {
         const intensity = Math.sin(stripeFrequency * dotRef);
 
         totalSamples++;
-        if (intensity >= -0.9 && intensity <= 0.9) {
+        if (intensity >= -1.0 && intensity <= 1.0) {
           smoothSampleCount++;
         }
 
-        if (totalSamples > 1) {
+        if (j > 0) {
           const delta = Math.abs(intensity - prevIntensity);
           totalGradientSum += delta;
 

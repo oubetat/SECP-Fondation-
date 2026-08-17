@@ -18,7 +18,7 @@ const config: SolverConfig3D = {
   upwindScheme: 'FIRST_ORDER_UPWIND'
 };
 
-const mesh = Fvm3DMeshGenerator.generate3DBlockMesh('poiseuille_mesh', Lx, Ly, Lz, 16, 8, 4, 'INLET', 'OUTLET', { x: Uavg, y: 0, z: 0 });
+const mesh = Fvm3DMeshGenerator.generate3DBlockMesh('poiseuille_mesh', Lx, Ly, Lz, 16, 8, 4, 'INLET', 'OUTLET', 'WALL', 'WALL', { x: Uavg, y: 0, z: 0 });
 
 try {
   const sol = Fvm3DNavierStokesSolver.solve(mesh, fluid, config);

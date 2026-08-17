@@ -47,7 +47,7 @@ export class Cfd3DIntegrationAdapter {
     const useTurb = config.useTurbulence ?? true;
 
     // 1. Generate canonical 3D FVM Mesh
-    const mesh = Fvm3DMeshGenerator.generate3DBlockMesh('CFD-MESH-01', 0.1, 0.1, 0.5, 4, 4, 10);
+    const mesh = Fvm3DMeshGenerator.generate3DBlockMesh('CFD-MESH-01', 0.1, 0.1, 0.5, 4, 4, 10, 'INLET', 'OUTLET', 'WALL', 'SYMMETRY');
 
     // 2. Define Fluid & Solver Config
     const fluid: FluidProperties3D = {

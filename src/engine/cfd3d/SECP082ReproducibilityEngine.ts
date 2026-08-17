@@ -48,7 +48,7 @@ export class SECP082ReproducibilityEngine {
       upwindScheme: 'FIRST_ORDER_UPWIND'
     };
 
-    const mesh = Fvm3DMeshGenerator.generate3DBlockMesh('repro_mesh', 1.0, 0.1, 0.1, 8, 4, 2, 'INLET', 'OUTLET', { x: 1.0, y: 0, z: 0 });
+    const mesh = Fvm3DMeshGenerator.generate3DBlockMesh('repro_mesh', 1.0, 0.1, 0.1, 8, 4, 2, 'INLET', 'OUTLET', 'WALL', 'SYMMETRY', { x: 1.0, y: 0, z: 0 });
 
     const meshHash = this.simpleHash(JSON.stringify(mesh.cells.map(c => c.volume)));
     const configHash = this.simpleHash(JSON.stringify(config));

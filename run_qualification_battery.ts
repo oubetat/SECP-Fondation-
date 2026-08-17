@@ -109,7 +109,7 @@ const config: SolverConfig3D = {
   upwindScheme: 'FIRST_ORDER_UPWIND'
 };
 
-const pipeMesh = Fvm3DMeshGenerator.generate3DBlockMesh('poiseuille_mesh', Lx, Ly, Lz, 16, 8, 4, 'INLET', 'OUTLET', { x: Uavg, y: 0, z: 0 });
+const pipeMesh = Fvm3DMeshGenerator.generate3DBlockMesh('poiseuille_mesh', Lx, Ly, Lz, 16, 8, 4, 'INLET', 'OUTLET', 'WALL', 'WALL', { x: Uavg, y: 0, z: 0 });
 const pipeSolution = Fvm3DNavierStokesSolver.solve(pipeMesh, fluid, config, Ly * Lz, Uavg);
 
 const analyticalDP = (12.0 * mu * Lx * Uavg) / (Ly * Ly);
@@ -133,7 +133,7 @@ console.log("\n==============================================================");
 console.log("TEST CFD-003 — MASS CONSERVATION");
 console.log("==============================================================");
 
-const finestMesh = Fvm3DMeshGenerator.generate3DBlockMesh('finest_mesh', Lx, Ly, Lz, 20, 10, 5, 'INLET', 'OUTLET', { x: Uavg, y: 0, z: 0 });
+const finestMesh = Fvm3DMeshGenerator.generate3DBlockMesh('finest_mesh', Lx, Ly, Lz, 20, 10, 5, 'INLET', 'OUTLET', 'WALL', 'WALL', { x: Uavg, y: 0, z: 0 });
 const finestSolution = Fvm3DNavierStokesSolver.solve(finestMesh, fluid, config, Ly * Lz, Uavg);
 const finAudit = SECP082IndependentCFDVerifier.verifySolution(finestSolution);
 
@@ -189,7 +189,7 @@ console.log("\n==============================================================");
 console.log("TEST CFD-012 — ANTI-STATIC-OUTPUT FORENSIC TEST");
 console.log("==============================================================");
 
-const scalingMesh = Fvm3DMeshGenerator.generate3DBlockMesh('scale_mesh', Lx, Ly, Lz, 12, 6, 3, 'INLET', 'OUTLET', { x: 1.0, y: 0, z: 0 });
+const scalingMesh = Fvm3DMeshGenerator.generate3DBlockMesh('scale_mesh', Lx, Ly, Lz, 12, 6, 3, 'INLET', 'OUTLET', 'WALL', 'WALL', { x: 1.0, y: 0, z: 0 });
 const solA = Fvm3DNavierStokesSolver.solve(scalingMesh, fluid, config, Ly * Lz, 1.0);
 const solB = Fvm3DNavierStokesSolver.solve(scalingMesh, fluid, config, Ly * Lz, 2.0);
 

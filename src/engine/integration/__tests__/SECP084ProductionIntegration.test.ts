@@ -5,21 +5,20 @@
  */
 
 import { describe, test, expect } from 'vitest';
-import { describe, test, expect } from 'vitest';
 import { HardAcceptanceGate084 } from '../../validation/HardAcceptanceGate084';
 import { ProductionExecutionBroker } from '../ProductionExecutionBroker';
 import { ProductionEngineeringCommand } from '../contracts/ProductionCommandContracts';
 
 export class SECP084ProductionIntegrationTests {
 
-  public static runAllTests(): { passed: boolean; totalTests: number; passedTests: number; details: string[] } {
+  public static async runAllTests(): Promise<{ passed: boolean; totalTests: number; passedTests: number; details: string[] }> {
     const details: string[] = [];
     let passedTests = 0;
     const totalTests = 14;
 
     // Test 1: B-Rep Integration Call Path
     try {
-      const res = this.execSync('BREP_HEALING_SEWING');
+      const res = await this.execAsync('BREP_HEALING_SEWING');
       if (res.status === 'COMPLETED' && res.verificationResult?.passed && res.visualizationData?.faceCount > 0) {
         passedTests++;
         details.push('PASS: 1. UI Command -> Real B-Rep Engine Call Path Verified');
@@ -32,7 +31,7 @@ export class SECP084ProductionIntegrationTests {
 
     // Test 2: Class-A Surfacing & Zebra Call Path
     try {
-      const res = this.execSync('CLASS_A_SURFACING_ZEBRA');
+      const res = await this.execAsync('CLASS_A_SURFACING_ZEBRA');
       if (res.status === 'COMPLETED' && res.verificationResult?.passed && res.visualizationData?.zebraStripes?.length > 0) {
         passedTests++;
         details.push('PASS: 2. UI Command -> Real Class-A & Zebra Reflection Call Path Verified');
@@ -45,7 +44,7 @@ export class SECP084ProductionIntegrationTests {
 
     // Test 3: Linear FEA Call Path
     try {
-      const res = this.execSync('LINEAR_STRUCTURAL_FEA');
+      const res = await this.execAsync('LINEAR_STRUCTURAL_FEA');
       if (res.status === 'COMPLETED' && res.verificationResult?.passed && res.numericalResult?.maxVonMisesStressMPa > 0) {
         passedTests++;
         details.push('PASS: 3. UI Command -> Real Structural FEA Call Path Verified');
@@ -58,7 +57,7 @@ export class SECP084ProductionIntegrationTests {
 
     // Test 4: 3D FVM CFD Flow Call Path
     try {
-      const res = this.execSync('CFD_3D_FVM_FLOW');
+      const res = await this.execAsync('CFD_3D_FVM_FLOW');
       if (res.status === 'COMPLETED' && res.verificationResult?.passed && res.numericalResult?.maxVelocityMS > 0) {
         passedTests++;
         details.push('PASS: 4. UI Command -> Real 3D FVM CFD Call Path Verified');
@@ -71,7 +70,7 @@ export class SECP084ProductionIntegrationTests {
 
     // Test 5: 5-Axis Simultaneous CAM Call Path
     try {
-      const res = this.execSync('CAM_5AXIS_SIMULTANEOUS');
+      const res = await this.execAsync('CAM_5AXIS_SIMULTANEOUS');
       if (res.status === 'COMPLETED' && res.verificationResult?.passed && res.numericalResult?.isGougeFree) {
         passedTests++;
         details.push('PASS: 5. UI Command -> Real 5-Axis CAM Call Path Verified');
@@ -84,7 +83,7 @@ export class SECP084ProductionIntegrationTests {
 
     // Test 6: Assembly Kinematics Solve Call Path
     try {
-      const res = this.execSync('ASSEMBLY_KINEMATICS_SOLVE');
+      const res = await this.execAsync('ASSEMBLY_KINEMATICS_SOLVE');
       if (res.status === 'COMPLETED' && res.verificationResult?.passed && res.numericalResult?.componentCount > 0) {
         passedTests++;
         details.push('PASS: 6. UI Command -> Real Assembly Kinematics Call Path Verified');
@@ -97,7 +96,7 @@ export class SECP084ProductionIntegrationTests {
 
     // Test 7: Result Propagation
     try {
-      const res = this.execSync('LINEAR_STRUCTURAL_FEA');
+      const res = await this.execAsync('LINEAR_STRUCTURAL_FEA');
       if (res.durationMs >= 0 && !!res.numericalResult && !!res.visualizationData) {
         passedTests++;
         details.push('PASS: 7. Numerical Result & Visualization Contract Propagation Verified');
@@ -110,7 +109,7 @@ export class SECP084ProductionIntegrationTests {
 
     // Test 8: Independent Verification Propagation
     try {
-      const res = this.execSync('CFD_3D_FVM_FLOW');
+      const res = await this.execAsync('CFD_3D_FVM_FLOW');
       if (res.verificationResult?.verifierName === 'SECP082IndependentCFDVerifier' && res.verificationResult?.passed) {
         passedTests++;
         details.push('PASS: 8. Independent Verification Boundary Propagation Verified');
@@ -123,7 +122,7 @@ export class SECP084ProductionIntegrationTests {
 
     // Test 9: Cryptographic Provenance Creation
     try {
-      const res = this.execSync('CAM_5AXIS_SIMULTANEOUS');
+      const res = await this.execAsync('CAM_5AXIS_SIMULTANEOUS');
       if (res.provenanceDigest?.startsWith('PROV-SECP084-')) {
         passedTests++;
         details.push('PASS: 9. Cryptographic Provenance Generation Verified');
@@ -136,7 +135,7 @@ export class SECP084ProductionIntegrationTests {
 
     // Test 10: Graceful Engine Failure Handling
     try {
-      const res = this.execSync('CLASS_A_SURFACING_ZEBRA', { forceEngineUnavailable: true });
+      const res = await this.execAsync('CLASS_A_SURFACING_ZEBRA', { forceEngineUnavailable: true });
       if (res.status === 'FAILED' && res.errorMessage?.includes('unavailable')) {
         passedTests++;
         details.push('PASS: 10. Engine Unavailability Graceful Failure Verified');
@@ -149,7 +148,7 @@ export class SECP084ProductionIntegrationTests {
 
     // Test 11: Timeout & Resource Protection Guard
     try {
-      const res = this.execSync('CFD_3D_FVM_FLOW', { forceTimeout: true });
+      const res = await this.execAsync('CFD_3D_FVM_FLOW', { forceTimeout: true });
       if (res.status === 'TIMEOUT') {
         passedTests++;
         details.push('PASS: 11. Execution Timeout & Resource Guard Verified');
@@ -162,7 +161,7 @@ export class SECP084ProductionIntegrationTests {
 
     // Test 12: Invalid Input Rejection Guard
     try {
-      const res = this.execSync('BREP_HEALING_SEWING', { forceInvalidInput: true });
+      const res = await this.execAsync('BREP_HEALING_SEWING', { forceInvalidInput: true });
       if (res.status === 'REJECTED') {
         passedTests++;
         details.push('PASS: 12. Invalid Input Rejection Guard Verified');
@@ -175,7 +174,7 @@ export class SECP084ProductionIntegrationTests {
 
     // Test 13: Stale Geometry Revision Protection
     try {
-      const res = this.execSync('LINEAR_STRUCTURAL_FEA', {}, 'stale-rev-old-02');
+      const res = await this.execAsync('LINEAR_STRUCTURAL_FEA', {}, 'stale-rev-old-02');
       if (res.status === 'REJECTED' && res.errorMessage?.includes('Stale geometry')) {
         passedTests++;
         details.push('PASS: 13. Stale Revision Protection Guard Verified');
@@ -188,7 +187,7 @@ export class SECP084ProductionIntegrationTests {
 
     // Test 14: Hard Acceptance Gate 084 Execution
     try {
-      const gateReport = HardAcceptanceGate084.executeGate();
+      const gateReport = await HardAcceptanceGate084.executeGate();
       if (gateReport.status === 'SECP-084 FINAL-CLOSED' && gateReport.allInvariantsPassed) {
         passedTests++;
         details.push('PASS: 14. Master Hard Acceptance Gate 084 (FINAL-CLOSED) Verified');
@@ -207,9 +206,8 @@ export class SECP084ProductionIntegrationTests {
     };
   }
 
-  private static execSync(op: any, config: any = {}, revisionId = 'REV-084-TEST'): any {
-    let result: any;
-    ProductionExecutionBroker.executeCommand({
+  private static async execAsync(op: any, config: any = {}, revisionId = 'REV-084-TEST'): Promise<any> {
+    return await ProductionExecutionBroker.executeCommand({
       commandId: `TEST-CMD-${Date.now()}`,
       operationType: op,
       engineId: `Engine-${op}`,
@@ -217,14 +215,21 @@ export class SECP084ProductionIntegrationTests {
       config,
       submittedBy: 'Test Runner',
       submittedAt: new Date().toISOString()
-    }).then(r => { result = r; });
-    return result;
+    });
   }
 }
 
 describe('SECP084 Production Integration Test Suite', () => {
-  test('All production integration tests pass', () => {
-    const report = SECP084ProductionIntegrationTests.runAllTests();
+  test('All production integration tests pass', async () => {
+    const report = await SECP084ProductionIntegrationTests.runAllTests();
+    if (!report.passed) {
+      console.log('=== SECP084 FAILURES ===');
+      report.details.filter(d => d.includes('Gate 084 Failed') || d.startsWith('FAIL')).forEach(d => console.log(d));
+      // Also execute HardAcceptanceGate084 directly to log its invariant checks
+      const gate084 = await HardAcceptanceGate084.executeGate();
+      console.log('=== GATE 084 INVARIANT CHECKS ===');
+      gate084.invariantChecks.forEach(c => console.log(`${c.id} [${c.passed ? 'PASS' : 'FAIL'}]: ${c.name} - ${c.details}`));
+    }
     expect(report.passed).toBe(true);
   });
 });

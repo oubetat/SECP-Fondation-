@@ -11,7 +11,6 @@
  */
 
 import { describe, test, expect } from 'vitest';
-import { describe, test, expect } from 'vitest';
 import { IndustrialGatewayManager } from '../IndustrialGatewayManager';
 import { ProtocolTestHarness } from '../harness/ProtocolTestHarness';
 import { RawTelemetryPacket } from '../IndustrialTelemetryTypes';

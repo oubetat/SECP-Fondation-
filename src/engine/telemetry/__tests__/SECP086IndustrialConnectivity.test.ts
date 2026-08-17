@@ -7,7 +7,6 @@
  */
 
 import { describe, test, expect } from 'vitest';
-import { describe, test, expect } from 'vitest';
 import { MQTTConnector } from '../connectors/MQTTConnector';
 import { OPCUAConnector } from '../connectors/OPCUAConnector';
 import { ModbusConnector } from '../connectors/ModbusConnector';

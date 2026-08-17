@@ -70,8 +70,8 @@ export class SECP083ClassASurfaceCore {
     const minV = surf.knotVectorV[surf.degreeV];
     const maxV = surf.knotVectorV[surf.knotVectorV.length - 1 - surf.degreeV];
 
-    const clampedU = Math.min(Math.max(u, minU), maxU - 1e-9);
-    const clampedV = Math.min(Math.max(v, minV), maxV - 1e-9);
+    const clampedU = Math.min(Math.max(u, minU), maxU);
+    const clampedV = Math.min(Math.max(v, minV), maxV);
 
     const numU = surf.controlPoints.length; // Count along U
     const numV = surf.controlPoints[0].length; // Count along V

@@ -433,12 +433,12 @@ export class TestRunnerEngine {
       return `SECP-083 FINAL-CLOSED: 17/17 Invariants Passed, 14/14 Mutations Blocked (100%), 4 Canonical Benchmarks + Zebra Benchmark Verified, 15-Stage Merkle Digest=${gate083.finalDigest083}`;
     }));
 
-    results.push(this.runTest('PATCH-SECP-084', 'Interactive Engine-to-UI Production Integration Gate', () => {
-      const suite = SECP084ProductionIntegrationTests.runAllTests();
+    results.push(await this.runTestAsync('PATCH-SECP-084', 'Interactive Engine-to-UI Production Integration Gate', async () => {
+      const suite = await SECP084ProductionIntegrationTests.runAllTests();
       if (!suite.passed) {
         throw new Error(`SECP-084 Integration Tests Failed (${suite.passedTests}/${suite.totalTests} passed): ${suite.details.filter(d => d.startsWith('FAIL')).join(' | ')}`);
       }
-      const gate084 = HardAcceptanceGate084.executeGate();
+      const gate084 = await HardAcceptanceGate084.executeGate();
       if (!gate084.allInvariantsPassed) {
         throw new Error(`SECP-084 Gate Failed: ${gate084.invariantChecks.filter(c => !c.passed).map(c => c.name).join(', ')}`);
       }

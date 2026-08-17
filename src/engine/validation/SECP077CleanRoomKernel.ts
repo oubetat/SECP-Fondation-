@@ -590,6 +590,13 @@ export class SECP077CleanRoomKernel {
     totalDofs: number;
   } {
     const totalDofs = nodes.length * 3;
+
+    for (const n of nodes) {
+      if (!Number.isFinite(n.x) || !Number.isFinite(n.y) || !Number.isFinite(n.z)) {
+        throw new Error(`Node ${n.id} contains non-finite coordinates.`);
+      }
+    }
+
     const K_global: number[][] = Array.from({ length: totalDofs }, () => new Array(totalDofs).fill(0.0));
     const M_global: number[][] = Array.from({ length: totalDofs }, () => new Array(totalDofs).fill(0.0));
     const F_global: number[] = new Array(totalDofs).fill(0.0);
@@ -1093,6 +1100,13 @@ export class SECP077CleanRoomKernel {
     heatLoads: Solid3DHeatFluxLoad[]
   ): Solid3DThermalResult {
     const numNodes = nodes.length;
+
+    for (const n of nodes) {
+      if (!Number.isFinite(n.x) || !Number.isFinite(n.y) || !Number.isFinite(n.z)) {
+        throw new Error(`Node ${n.id} contains non-finite coordinates.`);
+      }
+    }
+
     const Kt_global: number[][] = Array.from({ length: numNodes }, () => new Array(numNodes).fill(0.0));
     const Q_global: number[] = new Array(numNodes).fill(0.0);
 

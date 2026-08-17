@@ -17,7 +17,6 @@
  */
 
 import { describe, test, expect } from 'vitest';
-import { describe, test, expect } from 'vitest';
 import { SECP087MachineKinematicsEngine } from '../SECP087MachineKinematicsEngine';
 import { SECP087ToolpathSimulator } from '../SECP087ToolpathSimulator';
 import { SECP087DeterministicReplay } from '../SECP087DeterministicReplay';

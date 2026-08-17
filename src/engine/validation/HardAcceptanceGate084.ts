@@ -52,7 +52,7 @@ export interface Gate084Report {
 
 export class HardAcceptanceGate084 {
 
-  public static executeGate(): Gate084Report {
+  public static async executeGate(): Promise<Gate084Report> {
     const timestamp = new Date().toISOString();
     const invariantChecks: Gate084CheckItem[] = [];
 
@@ -66,10 +66,9 @@ export class HardAcceptanceGate084 {
       details: `Parent Status: ${report083.status}, Digest: ${report083.finalDigest083}`
     });
 
-    // Dummy helper function to submit synchronous command to broker
-    const runBrokerCmd = (op: ProductionOperationType, config: any = {}, revId = 'REV-084-NORM'): ProductionExecutionResult => {
-      let res: ProductionExecutionResult | undefined;
-      ProductionExecutionBroker.executeCommand({
+    // Helper function to submit command to broker
+    const runBrokerCmd = async (op: ProductionOperationType, config: any = {}, revId = 'REV-084-NORM'): Promise<ProductionExecutionResult> => {
+      return await ProductionExecutionBroker.executeCommand({
         commandId: `GATE084-CMD-${op}-${Date.now()}`,
         operationType: op,
         engineId: `Engine-${op}`,
@@ -77,12 +76,11 @@ export class HardAcceptanceGate084 {
         config,
         submittedBy: 'Gate 084 Auditor',
         submittedAt: new Date().toISOString()
-      }).then(r => { res = r; });
-      return res!;
+      });
     };
 
     // 2. INV-084-02: B-Rep & NURBS Integration Call Path
-    const brepRes = runBrokerCmd('BREP_HEALING_SEWING');
+    const brepRes = await runBrokerCmd('BREP_HEALING_SEWING');
     const isBrepPass = brepRes && brepRes.status === 'COMPLETED' && brepRes.verificationResult?.passed === true && !!brepRes.visualizationData;
     invariantChecks.push({
       id: 'INV-084-02',
@@ -92,7 +90,7 @@ export class HardAcceptanceGate084 {
     });
 
     // 3. INV-084-03: Class-A Surfacing Integration Call Path
-    const classARes = runBrokerCmd('CLASS_A_SURFACING_ZEBRA');
+    const classARes = await runBrokerCmd('CLASS_A_SURFACING_ZEBRA');
     const isClassAPass = classARes && classARes.status === 'COMPLETED' && classARes.verificationResult?.passed === true && !!classARes.visualizationData;
     invariantChecks.push({
       id: 'INV-084-03',
@@ -102,7 +100,7 @@ export class HardAcceptanceGate084 {
     });
 
     // 4. INV-084-04: Linear FEA Structural Integration Call Path
-    const feaRes = runBrokerCmd('LINEAR_STRUCTURAL_FEA');
+    const feaRes = await runBrokerCmd('LINEAR_STRUCTURAL_FEA');
     const isFeaPass = feaRes && feaRes.status === 'COMPLETED' && feaRes.verificationResult?.passed === true && !!feaRes.visualizationData;
     invariantChecks.push({
       id: 'INV-084-04',
@@ -112,7 +110,7 @@ export class HardAcceptanceGate084 {
     });
 
     // 5. INV-084-05: 3D FVM CFD Integration Call Path
-    const cfdRes = runBrokerCmd('CFD_3D_FVM_FLOW');
+    const cfdRes = await runBrokerCmd('CFD_3D_FVM_FLOW');
     const isCfdPass = cfdRes && cfdRes.status === 'COMPLETED' && cfdRes.verificationResult?.passed === true && !!cfdRes.visualizationData;
     invariantChecks.push({
       id: 'INV-084-05',
@@ -122,7 +120,7 @@ export class HardAcceptanceGate084 {
     });
 
     // 6. INV-084-06: 5-Axis Simultaneous CAM Integration Call Path
-    const camRes = runBrokerCmd('CAM_5AXIS_SIMULTANEOUS');
+    const camRes = await runBrokerCmd('CAM_5AXIS_SIMULTANEOUS');
     const isCamPass = camRes && camRes.status === 'COMPLETED' && camRes.verificationResult?.passed === true && !!camRes.visualizationData;
     invariantChecks.push({
       id: 'INV-084-06',
@@ -132,7 +130,7 @@ export class HardAcceptanceGate084 {
     });
 
     // 7. INV-084-07: Assembly & Kinematics Integration Call Path
-    const asmRes = runBrokerCmd('ASSEMBLY_KINEMATICS_SOLVE');
+    const asmRes = await runBrokerCmd('ASSEMBLY_KINEMATICS_SOLVE');
     const isAsmPass = asmRes && asmRes.status === 'COMPLETED' && asmRes.verificationResult?.passed === true && !!asmRes.visualizationData;
     invariantChecks.push({
       id: 'INV-084-07',
@@ -142,7 +140,7 @@ export class HardAcceptanceGate084 {
     });
 
     // 8. INV-084-08: Stale Revision Protection & Rejection Guard
-    const staleRes = runBrokerCmd('LINEAR_STRUCTURAL_FEA', {}, 'stale-rev-old-01');
+    const staleRes = await runBrokerCmd('LINEAR_STRUCTURAL_FEA', {}, 'stale-rev-old-01');
     const isStaleRejected = staleRes && staleRes.status === 'REJECTED';
     invariantChecks.push({
       id: 'INV-084-08',
@@ -152,7 +150,7 @@ export class HardAcceptanceGate084 {
     });
 
     // 9. INV-084-09: Malformed Configuration Rejection Guard
-    const malformedRes = runBrokerCmd('CFD_3D_FVM_FLOW', { forceInvalidInput: true });
+    const malformedRes = await runBrokerCmd('CFD_3D_FVM_FLOW', { forceInvalidInput: true });
     const isMalformedRejected = malformedRes && malformedRes.status === 'REJECTED';
     invariantChecks.push({
       id: 'INV-084-09',
@@ -162,7 +160,7 @@ export class HardAcceptanceGate084 {
     });
 
     // 10. INV-084-10: Independent Verifier Boundary Enforcement
-    const verifierFailRes = runBrokerCmd('CAM_5AXIS_SIMULTANEOUS', { forceVerifierFailure: true });
+    const verifierFailRes = await runBrokerCmd('CAM_5AXIS_SIMULTANEOUS', { forceVerifierFailure: true });
     const isVerificationFailed = verifierFailRes && verifierFailRes.status === 'VERIFICATION_FAILED';
     invariantChecks.push({
       id: 'INV-084-10',
@@ -172,7 +170,7 @@ export class HardAcceptanceGate084 {
     });
 
     // 11. INV-084-11: Timeout & Execution Guard
-    const timeoutRes = runBrokerCmd('CFD_3D_FVM_FLOW', { forceTimeout: true });
+    const timeoutRes = await runBrokerCmd('CFD_3D_FVM_FLOW', { forceTimeout: true });
     const isTimeoutHandled = timeoutRes && timeoutRes.status === 'TIMEOUT';
     invariantChecks.push({
       id: 'INV-084-11',
@@ -182,7 +180,7 @@ export class HardAcceptanceGate084 {
     });
 
     // 12. INV-084-12: Engine Unavailability Handling
-    const unavailRes = runBrokerCmd('CLASS_A_SURFACING_ZEBRA', { forceEngineUnavailable: true });
+    const unavailRes = await runBrokerCmd('CLASS_A_SURFACING_ZEBRA', { forceEngineUnavailable: true });
     const isUnavailHandled = unavailRes && unavailRes.status === 'FAILED';
     invariantChecks.push({
       id: 'INV-084-12',
@@ -204,7 +202,7 @@ export class HardAcceptanceGate084 {
     let isReplayExact = true;
     const replayHashes: string[] = [];
     for (let i = 0; i < 5; i++) {
-      const replayRes = runBrokerCmd('CLASS_A_SURFACING_ZEBRA', {}, 'REV-REPLAY-FIXED');
+      const replayRes = await runBrokerCmd('CLASS_A_SURFACING_ZEBRA', {}, 'REV-REPLAY-FIXED');
       replayHashes.push(replayRes.provenanceDigest || '');
     }
     if (new Set(replayHashes).size !== 1) {

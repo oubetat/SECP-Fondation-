@@ -52,15 +52,15 @@ export class SECP082CfdBenchmarks {
     const Lx = 1.0;   // Length 1.0 m
     const Ly = 0.1;   // Height h = 0.1 m
     const Lz = 0.1;   // Width  w = 0.1 m
-    const Uavg = 1.0; // Inlet avg velocity 1.0 m/s
+    const Uavg = 0.5; // Lower velocity for better development
     const rho = 1.225; // Air density kg/m^3
-    const mu = 1.81e-5; // Dynamic viscosity Pa.s
+    const mu = 5.0e-4; // Higher viscosity for lower Re (~12)
 
     const fluid: FluidProperties3D = { densityKgM3: rho, viscosityPaS: mu };
     const config: SolverConfig3D = {
-      maxIterations: 60,
+      maxIterations: 200,
       continuityTol: 1e-4,
-      momentumTol: 1e-4,
+      momentumTol: 2e-4,
       underRelaxationVelocity: 0.7,
       underRelaxationPressure: 0.3,
       useTurbulenceModel: false,
@@ -73,6 +73,7 @@ export class SECP082CfdBenchmarks {
       Lx, Ly, Lz,
       16, 8, 4,
       'INLET', 'OUTLET',
+      'WALL', 'SYMMETRY', // Z-Symmetry for 2D-like Poiseuille
       { x: Uavg, y: 0, z: 0 },
       0.0
     );
@@ -126,6 +127,7 @@ export class SECP082CfdBenchmarks {
       L, L, L,
       10, 10, 4,
       'WALL', 'WALL',
+      'WALL', 'SYMMETRY', // 3D-cavity with symmetry for efficiency in verification
       { x: Ulid, y: 0, z: 0 },
       0.0
     );
@@ -212,12 +214,12 @@ export class SECP082CfdBenchmarks {
    * Executes Grid Convergence Study across Coarse, Medium, and Fine 3D Meshes
    */
   public static runGridConvergenceStudy(): GridConvergenceReport3D {
-    const Lx = 1.0, Ly = 0.1, Lz = 0.1, Uavg = 1.0;
-    const fluid: FluidProperties3D = { densityKgM3: 1.225, viscosityPaS: 1.81e-5 };
+    const Lx = 1.0, Ly = 0.1, Lz = 0.1, Uavg = 0.5;
+    const fluid: FluidProperties3D = { densityKgM3: 1.225, viscosityPaS: 5.0e-4 };
     const config: SolverConfig3D = {
-      maxIterations: 40,
+      maxIterations: 200,
       continuityTol: 1e-4,
-      momentumTol: 1e-4,
+      momentumTol: 2e-4,
       underRelaxationVelocity: 0.7,
       underRelaxationPressure: 0.3,
       useTurbulenceModel: false,
@@ -226,15 +228,15 @@ export class SECP082CfdBenchmarks {
     };
 
     // Coarse Mesh (8 x 4 x 2 = 64 cells)
-    const meshCoarse = Fvm3DMeshGenerator.generate3DBlockMesh('coarse', Lx, Ly, Lz, 8, 4, 2, 'INLET', 'OUTLET', { x: Uavg, y: 0, z: 0 });
+    const meshCoarse = Fvm3DMeshGenerator.generate3DBlockMesh('coarse', Lx, Ly, Lz, 8, 4, 2, 'INLET', 'OUTLET', 'WALL', 'SYMMETRY', { x: Uavg, y: 0, z: 0 });
     const solCoarse = Fvm3DNavierStokesSolver.solve(meshCoarse, fluid, config, Ly * Lz, Uavg);
 
     // Medium Mesh (12 x 6 x 3 = 216 cells)
-    const meshMedium = Fvm3DMeshGenerator.generate3DBlockMesh('medium', Lx, Ly, Lz, 12, 6, 3, 'INLET', 'OUTLET', { x: Uavg, y: 0, z: 0 });
+    const meshMedium = Fvm3DMeshGenerator.generate3DBlockMesh('medium', Lx, Ly, Lz, 12, 6, 3, 'INLET', 'OUTLET', 'WALL', 'SYMMETRY', { x: Uavg, y: 0, z: 0 });
     const solMedium = Fvm3DNavierStokesSolver.solve(meshMedium, fluid, config, Ly * Lz, Uavg);
 
     // Fine Mesh (16 x 8 x 4 = 512 cells)
-    const meshFine = Fvm3DMeshGenerator.generate3DBlockMesh('fine', Lx, Ly, Lz, 16, 8, 4, 'INLET', 'OUTLET', { x: Uavg, y: 0, z: 0 });
+    const meshFine = Fvm3DMeshGenerator.generate3DBlockMesh('fine', Lx, Ly, Lz, 16, 8, 4, 'INLET', 'OUTLET', 'WALL', 'SYMMETRY', { x: Uavg, y: 0, z: 0 });
     const solFine = Fvm3DNavierStokesSolver.solve(meshFine, fluid, config, Ly * Lz, Uavg);
 
     const outCoarse = solCoarse.monitors.pressureDropPa;

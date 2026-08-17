@@ -207,6 +207,16 @@ export class ModbusConnector extends BaseIndustrialProtocolConnector {
     return { packets, errors };
   }
 
+  public override getStatus(): any {
+    const base = super.getStatus();
+    return {
+      ...base,
+      mode: this.config.mode,
+      slaveId: this.config.slaveId,
+      crcValidation: this.config.crcValidation !== false
+    };
+  }
+
   /**
    * Decodes binary byte slices into floating point / integer values according to endianness
    */

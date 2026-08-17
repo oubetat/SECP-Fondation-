@@ -14,7 +14,6 @@
  */
 
 import { describe, test, expect } from 'vitest';
-import { describe, test, expect } from 'vitest';
 import { SECP076SolverIntegrityKernel } from '../SECP076SolverIntegrityKernel';
 import { SECP076CrossKernelVerifier } from '../SECP076CrossKernelVerifier';
 import { SECP076PerturbationEngine } from '../SECP076PerturbationEngine';

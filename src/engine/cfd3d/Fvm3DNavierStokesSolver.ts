@@ -211,7 +211,9 @@ export class Fvm3DNavierStokesSolver {
              // Simpler: just store the absolute D_f and F_f and calc aN on the fly.
           }
           
-          aP += D_f + Math.max(F_f, 0.0);
+          if (face.boundaryType !== 'SYMMETRY') {
+            aP += D_f + Math.max(F_f, 0.0);
+          }
 
           if (neighborId === -1) {
             // Boundary Condition terms
@@ -226,6 +228,10 @@ export class Fvm3DNavierStokesSolver {
               su_bc_p += aN * u[c];
               sv_bc_p += aN * v[c];
               sw_bc_p += aN * w[c];
+            } else if (face.boundaryType === 'SYMMETRY') {
+              // Symmetry: zero normal flux, zero normal gradient.
+              // convective/diffusive fluxes are zero. 
+              // su_bc_p += 0; aP += 0; 
             }
           }
 
@@ -400,8 +406,8 @@ export class Fvm3DNavierStokesSolver {
             const Vn_bc = (face.u_bc ?? 0) * face.normal.x + (face.v_bc ?? 0) * face.normal.y + (face.w_bc ?? 0) * face.normal.z;
             faceFlux = rho * Vn_bc * face.area;
             if (isOwner) inletMassFlow += Math.abs(faceFlux);
-          } else if (face.boundaryType === 'WALL') {
-            // No-penetration wall: moving wall has tangential velocity only
+          } else if (face.boundaryType === 'WALL' || face.boundaryType === 'SYMMETRY') {
+            // No-penetration wall or symmetry: zero normal flux
             faceFlux = 0.0;
           } else if (face.boundaryType === 'OUTLET') {
             const Vn_star = u_star[c] * face.normal.x + v_star[c] * face.normal.y + w_star[c] * face.normal.z;
@@ -454,8 +460,8 @@ export class Fvm3DNavierStokesSolver {
 
       const contRes = totalMassImbalance / Math.max(inletMassFlow, 1.0);
       
-      // Solve Pressure Correction p' Poisson System (200 sweeps for tight convergence)
-      for (let pIter = 0; pIter < 200; pIter++) {
+      // Solve Pressure Correction p' Poisson System (500 sweeps for tight convergence)
+      for (let pIter = 0; pIter < 500; pIter++) {
         let maxPIterChange = 0.0;
         for (let c = 0; c < numCells; c++) {
           let aP_p = 0.0;
@@ -533,6 +539,8 @@ export class Fvm3DNavierStokesSolver {
         } else if (face.boundaryType === 'INLET') {
           const Vn_bc = (face.u_bc ?? 0)*face.normal.x + (face.v_bc ?? 0)*face.normal.y + (face.w_bc ?? 0)*face.normal.z;
           faceFluxes[f] = rho * Vn_bc * face.area;
+        } else if (face.boundaryType === 'WALL' || face.boundaryType === 'SYMMETRY') {
+          faceFluxes[f] = 0.0;
         } else {
           faceFluxes[f] = 0.0;
         }
@@ -578,6 +586,14 @@ export class Fvm3DNavierStokesSolver {
           totalRhieCorrection += Math.abs(rho * rhieChowVelocityCorr * face.area);
           totalPressCorrection += Math.abs(pressCorrFlux);
           totalFinalFlux += Math.abs(finalFaceFlux);
+        } else if (face.boundaryType === 'INLET') {
+          const inletFlux = Math.abs(rho * ((face.u_bc ?? 0)*face.normal.x + (face.v_bc ?? 0)*face.normal.y + (face.w_bc ?? 0)*face.normal.z) * face.area);
+          totalArithFlux += inletFlux;
+          totalFinalFlux += inletFlux;
+        } else if (face.boundaryType === 'OUTLET') {
+          const outletFlux = Math.abs(rho * (u_star[ownerId]*face.normal.x + v_star[ownerId]*face.normal.y + w_star[ownerId]*face.normal.z) * face.area);
+          totalArithFlux += outletFlux;
+          totalFinalFlux += outletFlux;
         }
       }
 
