@@ -1,0 +1,39 @@
+{
+  "missionId": "NACA0012-VV-CONVERGENCE-CONTRACT-SEMANTIC-REPAIR-004",
+  "timestamp": "2026-09-30T09:00:09.685Z",
+  "causalChain": {
+    "step1": "Delta k & Delta omega update the eddy viscosity: nut = a1*k / max(a1*omega, S*F2)",
+    "step2": "Delta nut updates effective viscosity: mu_eff = mu + rho*nut",
+    "step3": "Delta mu_eff alters face diffusion coefficients: D_f = mu_eff * A_f / d_PN",
+    "step4": "Delta D_f updates momentum diagonal aP and off-diagonals aN",
+    "step5": "Delta aP updates predictor velocity U* = (b_u + sum(aN*U_nb*)) / aP_u",
+    "step6": "U* determines continuity mass defect and pressure correction p'",
+    "step7": "Final velocity U^(n+1) = U* - alpha_p * grad(p') / aP_u",
+    "step8": "Velocity update metric velocityCorrection = ||U^(n+1) - U^n|| / Uinf"
+  },
+  "t0_vs_t2_comparison": {
+    "T0_production": {
+      "nutFieldUpdate": 8.578497539570876,
+      "kFieldUpdate": 0,
+      "omegaFieldUpdate": 3215.2865971192778,
+      "velocityCorrection": 0.022336753681882447,
+      "momentumLinf": 0.000006743571046986647,
+      "continuityL1": 0.000009371482797070212,
+      "forceStabilityPassed": true,
+      "cl": 0.14765775601480574,
+      "cd": 0.022910151287512916
+    },
+    "T2_lagged_nut": {
+      "nutFieldUpdate": 0.27157208031317515,
+      "kFieldUpdate": 0,
+      "omegaFieldUpdate": 262176.80779533996,
+      "velocityCorrection": 0.018222263941808186,
+      "momentumLinf": 0.000017842996742035123,
+      "continuityL1": 0.00001906063440942621,
+      "forceStabilityPassed": false,
+      "cl": 0.12957897840062219,
+      "cd": 0.0254931147797034
+    },
+    "causalProof": "Lagging / under-relaxing nut directly alters the rate at which momentum diffusion changes, demonstrating the quantitative coupling chain Delta nut -> Delta mu_eff -> Delta aP -> Delta U* -> Gate D."
+  }
+}

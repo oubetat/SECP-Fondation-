@@ -1,0 +1,20 @@
+{
+  "validatorName": "StandardHardwareGenerator.validateSize",
+  "tests": [
+    {
+      "input": { "itemName": "Hex Bolt (ISO 4014)", "diameter": "M8", "length": 30 },
+      "verdict": "PASS",
+      "reason": "M8 is a standard diameter, and 30 mm is an indexed length in the ISO 4014 standard series."
+    },
+    {
+      "input": { "itemName": "Hex Bolt (ISO 4014)", "diameter": "M8", "length": 22 },
+      "verdict": "FAIL",
+      "reason": "Blocked. Length 22 mm is non-standard for ISO 4014 M8 bolts."
+    },
+    {
+      "input": { "itemName": "Hex Bolt (ISO 4014)", "diameter": "M8", "length": 9999 },
+      "verdict": "FAIL",
+      "reason": "Blocked. Length 9999 mm exceeds maximum standard limits."
+    }
+  ]
+}

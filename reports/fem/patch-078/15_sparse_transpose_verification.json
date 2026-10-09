@@ -1,0 +1,13 @@
+{
+  "originalDimensions": {
+    "rows": 4,
+    "cols": 4,
+    "nnz": 8
+  },
+  "transposedDimensions": {
+    "rows": 4,
+    "cols": 4,
+    "nnz": 8
+  },
+  "verified": true
+}

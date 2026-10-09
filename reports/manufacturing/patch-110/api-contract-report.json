@@ -1,0 +1,13 @@
+{
+  "endpoints": [
+    "GET /machines/:machineId/twin",
+    "GET /machines/:machineId/twin/state",
+    "GET /machines/:machineId/twin/history",
+    "GET /machines/:machineId/twin/events",
+    "GET /machines/:machineId/twin/checkpoints",
+    "GET /machines/:machineId/twin/health",
+    "GET /machines/:machineId/twin/divergence",
+    "GET /machines/:machineId/twin/simulation"
+  ],
+  "compliance": "100%"
+}

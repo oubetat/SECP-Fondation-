@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "evidence": {
+    "modelHash": "d3f640a08188733bad56e36e01d5679a1bfc7b62a55dd8c5cbed2fe6d5aa414a",
+    "meshHash": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+    "materialHash": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+    "formulationHash": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+    "assemblyHash": "2fab7b63f628217fc94468c7638f32c401ff9c1fa1fe9d2d2abcae8e6b65ded1",
+    "matrixHash": "b2585e645f6d9a7f749291931477903058b73903ee5773308a3aaab5d978600d",
+    "loadHash": "ba9e2e0a09d7b9299347d9d498a66648dcf88929d89755628674e2ef922ccbd7",
+    "solverHash": "82177a79a5d1a03d8677720306cdefc18bb60f57492b301185931dcecb4f93c5",
+    "solutionHash": "82177a79a5d1a03d8677720306cdefc18bb60f57492b301185931dcecb4f93c5",
+    "fieldHash": "ad891178fab9fba334fd45f9dda3c9bdb00988374ca6df3cb728e1b0d5e532bb",
+    "verificationHash": "385ca4b108bab6063aa12f175d4c2f441851d5f5b6772f49765416b168ba44f0",
+    "timestamp": "2026-08-20T07:42:18.220Z"
+  },
+  "diagnostics": "Linear static FEM validated strictly. Scaling, Equilibrium, Singularity tests passed."
+}

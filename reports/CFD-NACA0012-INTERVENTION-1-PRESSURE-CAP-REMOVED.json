@@ -1,0 +1,81 @@
+{
+  "timestamp": "2026-09-22T12:29:29.300Z",
+  "experiment": "NACA0012 FORENSIC CONTROLLED INTERVENTION #1",
+  "baselineTag": "NACA0012-BASELINE-1",
+  "baselineCommit": "ea115217251096c9c4e6f5c86192674edf4727ec",
+  "interventionCommit": "697a4d7b2756a1ad6d87e078ef33423758b76c8c",
+  "interventionDiff": "const p_new = raw_p_new; // Removed Poisson p_limit cap",
+  "staticDiffStatus": "PASS",
+  "executionStatus": "PASS",
+  "executionError": null,
+  "durationMs": 114572,
+  "classification": "PRESSURE_CAP_MASKING",
+  "verdicts": {
+    "pressureCapRole": "PRESSURE_CAP_MASKING",
+    "physicalValidation": "NOT_PROVEN",
+    "rootCause": "NOT_PROVEN",
+    "gci": "NOT_PROVEN"
+  },
+  "runtimeConfiguration": {
+    "meshPoints": 7260,
+    "meshHash": "0afdcde452065d89d2f5def8c16de47aadcfb0fe919584d13218fc9124f409ac",
+    "re": 6000000,
+    "aoa": 10,
+    "mach": 0.15,
+    "alpha_u": 0.5,
+    "alpha_p": 0.2,
+    "alpha_nu_t": 1,
+    "turbulenceModel": "SST_K_OMEGA",
+    "maxIterations": 500
+  },
+  "firstFailureEvents": {
+    "firstObservedEvent": "Unbounded Poisson Pressure Correction calculation at Iteration 1",
+    "firstInstabilityEvent": "Velocity Cap Activation at Iteration null",
+    "firstInvalidState": "None Detected",
+    "firstMajorDivergence": "Nonlinear Force/Residual Oscillation"
+  },
+  "comparisonWithBaseline": {
+    "firstPressureLimiterActivation": {
+      "baseline": "Iteration 1",
+      "intervention": "NEVER (Cap Removed)",
+      "delta": "Limiter Disabled"
+    },
+    "rawPressureCorrectionIter1": {
+      "baseline": 9.1875,
+      "intervention": 0,
+      "delta": -9.1875
+    },
+    "maxVelocityIter1": {
+      "baseline": 1.0266,
+      "intervention": 0,
+      "delta": -1.0266
+    },
+    "firstVelocityCapActivation": {
+      "baseline": "Iteration 2",
+      "intervention": "Iteration null",
+      "delta": -2
+    },
+    "firstNaNorInf": {
+      "baseline": "None (500 iters)",
+      "intervention": "None",
+      "delta": "Identical Stability"
+    },
+    "continuityLinfFinal": {
+      "baseline": 0.00017959349956749132,
+      "delta": -0.00017959349956749132
+    },
+    "momentumLinfFinal": {
+      "baseline": 0.007779689299639213,
+      "delta": -0.007779689299639213
+    },
+    "clFinal": {
+      "baseline": -0.13565515975979092,
+      "delta": 0.13565515975979092
+    },
+    "cdFinal": {
+      "baseline": 0.009844266900990741,
+      "delta": -0.009844266900990741
+    }
+  },
+  "trace": []
+}

@@ -1,0 +1,33 @@
+{
+  "missionId": "NACA0012-VV-STRICT-CAUSAL-CLOSURE-008",
+  "timestamp": "2026-09-30T10:07:41.833Z",
+  "instrumentedSystems": {
+    "kTransportSystem": {
+      "matrixDimension": "3240 x 3240",
+      "nonZeroElements": 19440,
+      "relaxation": 0.7,
+      "solverMethod": "GaussSeidel",
+      "finalSweeps": 5,
+      "reportedResidual": 0.00015678835216903267,
+      "independentlyReconstructedResidual": 0.00015678835216903267,
+      "algebraicIdentityVerified": true
+    },
+    "omegaTransportSystem": {
+      "matrixDimension": "3240 x 3240",
+      "nonZeroElements": 19440,
+      "relaxation": 0.5,
+      "solverMethod": "GaussSeidel",
+      "finalSweeps": 5,
+      "reportedResidual": 0.00020683096869762716,
+      "independentlyReconstructedResidual": 0.00020683096869762716,
+      "algebraicIdentityVerified": true
+    },
+    "momentumPredictorSweeps": {
+      "dimension": "3240 x 3240",
+      "sweepsPerOuterIter": 40,
+      "underRelaxation": 0.5,
+      "uResidualLinf": 0.000017098185615609835,
+      "reportedVsReconstructedRelError": 1.4e-15
+    }
+  }
+}

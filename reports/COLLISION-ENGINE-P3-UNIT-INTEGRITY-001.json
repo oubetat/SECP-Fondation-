@@ -1,0 +1,6 @@
+{
+  "reportId": "COLLISION-ENGINE-P3-UNIT-INTEGRITY-001",
+  "evaluatedUnits": ["MILLIMETERS", "INCHES"],
+  "unitMismatchHandling": "REJECT_WITH_ANALYSIS_FAILED",
+  "verdict": "PASSED"
+}

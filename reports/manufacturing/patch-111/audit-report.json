@@ -1,0 +1,70 @@
+{
+  "auditCount": 13,
+  "events": [
+    {
+      "action": "REGISTER_ROOT_CAD",
+      "artifact": "CAD_MODEL_01",
+      "agent": "HUMAN"
+    },
+    {
+      "action": "REGISTER_MANUFACTURING_FEATURE",
+      "artifact": "FEAT_MODEL_01",
+      "agent": "CAM_ENGINE"
+    },
+    {
+      "action": "REGISTER_MATERIAL",
+      "artifact": "MAT_AL7075_T6",
+      "agent": "SYSTEM"
+    },
+    {
+      "action": "REGISTER_TOOL",
+      "artifact": "TOOL_ENDMILL_10MM",
+      "agent": "SYSTEM"
+    },
+    {
+      "action": "REGISTER_MACHINE",
+      "artifact": "MACH_DMG_50",
+      "agent": "SYSTEM"
+    },
+    {
+      "action": "REGISTER_CAM_OPERATION",
+      "artifact": "OP_AERO_POCKET_01",
+      "agent": "CAM_ENGINE"
+    },
+    {
+      "action": "REGISTER_TOOLPATH",
+      "artifact": "TOOLPATH_AERO_01",
+      "agent": "CAM_ENGINE"
+    },
+    {
+      "action": "REGISTER_SIMULATION",
+      "artifact": "SIM_AERO_01",
+      "agent": "SIMULATOR"
+    },
+    {
+      "action": "REGISTER_POST_PROCESSOR",
+      "artifact": "POST_ENGINE_TNC640",
+      "agent": "SYSTEM"
+    },
+    {
+      "action": "REGISTER_NC_PROGRAM",
+      "artifact": "NC_O1001",
+      "agent": "POST_PROCESSOR"
+    },
+    {
+      "action": "REGISTER_GCODE_VERIFICATION",
+      "artifact": "VERIF_NC_01",
+      "agent": "VERIFIER"
+    },
+    {
+      "action": "REGISTER_DIGITAL_TWIN_STATE",
+      "artifact": "TWIN_EXEC_01",
+      "agent": "SYSTEM"
+    },
+    {
+      "action": "APPROVE_ARTIFACT",
+      "artifact": "TOOLPATH_AERO_01",
+      "agent": "HUMAN"
+    }
+  ]
+}

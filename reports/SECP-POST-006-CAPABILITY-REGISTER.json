@@ -1,0 +1,107 @@
+{
+  "mission": "SECP-POST-006-CAPABILITY-REGISTER",
+  "auditStandard": "Forensic Engineering Truth Reconciliation & Independent Reference Audit",
+  "canonicalGapAuthority": "reports/SECP-POST-FORENSIC-004-GAP-REGISTER.json",
+  "inputArtifact": "reports/SECP-POST-005-CAPABILITY-REGISTER.json",
+  "date": "2026-09-23",
+  "reconciliationVerdicts": {
+    "CLOSED_PROVEN": 9,
+    "PROVEN_PARTIAL": 2,
+    "NOT_PROVEN": 2,
+    "REQUIRED_GAP": 0,
+    "NEWLY_DISCOVERED_GAP": 0
+  },
+  "capabilities": [
+    {
+      "capabilityId": "CAP-001",
+      "gapId": "SECP-GAP-001",
+      "name": "B-Rep Fillet Edge Blend & Topology Reconstruction",
+      "verdict": "PROVEN_PARTIAL",
+      "reconciliationNotes": "Implementation constructs correct blend geometry (cylindrical surfaces) but fails to rewire the shell topology (shared edges not split). Resulting solid is non-manifold despite passing status check in tests. Downgraded from CLOSED_PROVEN to PROVEN_PARTIAL."
+    },
+    {
+      "capabilityId": "CAP-002",
+      "gapId": "SECP-GAP-002",
+      "name": "NURBS Cox-de Boor Knot Insertion & Parametric Evaluation",
+      "verdict": "CLOSED_PROVEN",
+      "reconciliationNotes": "Mathematical invariance against independent reference (De Boor) is verified across the entire domain. Bridge from insertion to evaluator is fully operational."
+    },
+    {
+      "capabilityId": "CAP-003",
+      "gapId": "SECP-GAP-003",
+      "name": "CAD Tooling Mold Split & Draft Angle Verification",
+      "verdict": "CLOSED_PROVEN",
+      "reconciliationNotes": "MoldEngine.performMoldSplit is correctly integrated with the UI tool contract. Volumetric conservation and draft rejection are proven."
+    },
+    {
+      "capabilityId": "CAP-004",
+      "gapId": "SECP-GAP-004",
+      "name": "Industrial OS Evidence Envelope Integrity",
+      "verdict": "CLOSED_PROVEN",
+      "reconciliationNotes": "Mock token 'ev-manual-sandbox' eradicated. EvidenceBus.publishSync() is strictly enforced for state transitions."
+    },
+    {
+      "capabilityId": "CAP-005",
+      "gapId": "SECP-GAP-005",
+      "name": "B-Rep Reconstruction Workbench Canonical Initialization",
+      "verdict": "NOT_PROVEN",
+      "reconciliationNotes": "Static identifiers removed, but the workbench initialization remains a presentation-layer demo state. It does not constitute a proven engineering 'capability' beyond UI hygiene. Downgraded from CLOSED_PROVEN to NOT_PROVEN."
+    },
+    {
+      "capabilityId": "CAP-006",
+      "gapId": "SECP-GAP-006",
+      "name": "Feature Recognition Workbench Canonical Mesh State",
+      "verdict": "NOT_PROVEN",
+      "reconciliationNotes": "Similar to CAP-005, this is a UI-level hygiene fix. The underlying recognition capability is not independently verified in this pass. Downgraded from CLOSED_PROVEN to NOT_PROVEN."
+    },
+    {
+      "capabilityId": "CAP-007",
+      "gapId": "SECP-GAP-007",
+      "name": "FEA Global Stiffness Matrix Assembly Engine",
+      "verdict": "CLOSED_PROVEN",
+      "reconciliationNotes": "StiffnessMatrixEngine provides accurate element stiffness and global assembly. Symmetry and trace positivity confirmed."
+    },
+    {
+      "capabilityId": "CAP-008",
+      "gapId": "SECP-GAP-008",
+      "name": "FEA Displacement Field Analysis & Spatial Interpolation",
+      "verdict": "CLOSED_PROVEN",
+      "reconciliationNotes": "Linear shape function interpolation and nodal summarization are verified against analytical mid-point references."
+    },
+    {
+      "capabilityId": "CAP-009",
+      "gapId": "SECP-GAP-009",
+      "name": "Structural Physics Automated FEA Validation Engine",
+      "verdict": "CLOSED_PROVEN",
+      "reconciliationNotes": "Real validation logic replacing hardcoded 'return true'. Rejects non-equilibrium states and BC violations."
+    },
+    {
+      "capabilityId": "CAP-010",
+      "gapId": "SECP-GAP-010",
+      "name": "EPC Digital Twin Deterministic Mission Evidence Hashing",
+      "verdict": "CLOSED_PROVEN",
+      "reconciliationNotes": "SHA-256 evidence hashing is deterministic and sensitive to input mutations. Timeout issues in tests resolved by increased limits."
+    },
+    {
+      "capabilityId": "CAP-011",
+      "gapId": "SECP-GAP-011",
+      "name": "CFD 3D NACA0012 Transonic Physical Validation",
+      "verdict": "PROVEN_PARTIAL",
+      "reconciliationNotes": "Sophisticated SIMPLE/SST k-omega solver exists and is stable, but physical Lift/Drag polar validation against experimental data (NASA TMR) requires more rigorous grid-independent evidence. Upgraded from REQUIRED_GAP to PROVEN_PARTIAL."
+    },
+    {
+      "capabilityId": "CAP-012",
+      "gapId": "SECP-GAP-012",
+      "name": "CFD Convergence Audit Limiter Telemetry",
+      "verdict": "CLOSED_PROVEN",
+      "reconciliationNotes": "Velocity/Pressure clamp counters are accurately recorded and exported in structured telemetry."
+    },
+    {
+      "capabilityId": "CAP-013",
+      "gapId": "SECP-GAP-013",
+      "name": "CFD Fail-Fast First Invalid Cell Diagnostic",
+      "verdict": "CLOSED_PROVEN",
+      "reconciliationNotes": "Diagnostic capture of first invalid cell (ID, coordinates, iteration) is verified on simulated divergence."
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "contractId": "P1-TRIANGLE-TRIANGLE-001",
+  "name": "P1 Triangle-Triangle Exact Intersection Specification",
+  "version": "1.0.0",
+  "algorithm": "Moller 3D plane intersection with interval overlap and coplanar 2D edge-edge testing",
+  "contactTypes": ["NONE", "COPLANAR_OVERLAP", "EDGE_EDGE", "EDGE_FACE", "VERTEX_CONTACT", "DEGENERATE"]
+}

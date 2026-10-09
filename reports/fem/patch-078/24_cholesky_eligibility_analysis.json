@@ -1,0 +1,13 @@
+{
+  "isSquare": true,
+  "isSymmetric": true,
+  "symmetryMaxDiff": 0,
+  "hasPositiveDiagonal": true,
+  "minDiagonalValue": 200000000,
+  "maxDiagonalValue": 400000000,
+  "isStrictlyDiagonallyDominant": false,
+  "isWeaklyDiagonallyDominant": true,
+  "gershgorinLowerBound": 0,
+  "gershgorinUpperBound": 800000000,
+  "choleskyEligible": true
+}

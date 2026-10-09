@@ -1,0 +1,7 @@
+{
+  "name": "UNIAXIAL_TENSION_ANALYTICAL",
+  "passed": true,
+  "maxError": 1.4570024278428818e-16,
+  "tolerance": 0.000001,
+  "details": "Max relative error against analytical closed-form: 1.4570e-16"
+}

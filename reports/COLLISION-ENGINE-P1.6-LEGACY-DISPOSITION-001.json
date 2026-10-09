@@ -1,0 +1,26 @@
+{
+  "missionId": "COLLISION-ENGINE-P1.6-AUTHORITY-MIGRATION-ENFORCEMENT-001",
+  "artifactType": "LEGACY_DISPOSITION_MATRIX",
+  "timestamp": "2026-10-01T01:57:00.000Z",
+  "dispositionCounts": {
+    "ADAPTER_TO_AUTHORITY": 6,
+    "DIAGNOSTIC_NON_AUTHORITATIVE": 3,
+    "RETAIN_SPECIALIZED_NON_AUTHORITATIVE": 2,
+    "DEPRECATED_PENDING_REMOVAL": 1,
+    "DELETE": 0
+  },
+  "dispositionDetails": [
+    { "engine": "CollisionDetectionEngine (CAM)", "disposition": "ADAPTER_TO_AUTHORITY" },
+    { "engine": "FiveAxisCollisionEngine (CAM 5-Axis)", "disposition": "ADAPTER_TO_AUTHORITY" },
+    { "engine": "MachineCollisionEngine (Machine Sim)", "disposition": "ADAPTER_TO_AUTHORITY" },
+    { "engine": "AssemblyInterferenceEngine (Assembly)", "disposition": "ADAPTER_TO_AUTHORITY" },
+    { "engine": "InterferenceDetectionEngine (Assembly)", "disposition": "ADAPTER_TO_AUTHORITY" },
+    { "engine": "CollisionEngine (Kinematics)", "disposition": "ADAPTER_TO_AUTHORITY" },
+    { "engine": "SECP083GougeVerifier", "disposition": "DIAGNOSTIC_NON_AUTHORITATIVE" },
+    { "engine": "CollisionDetectionEngine (Assembly Intelligence)", "disposition": "DIAGNOSTIC_NON_AUTHORITATIVE" },
+    { "engine": "DynamicInterferenceEngine", "disposition": "DEPRECATED_PENDING_REMOVAL" },
+    { "engine": "CollisionDetector (Manufacturing)", "disposition": "RETAIN_SPECIALIZED_NON_AUTHORITATIVE" },
+    { "engine": "AssemblyInterferenceAnalyzer (CAD Kernel)", "disposition": "RETAIN_SPECIALIZED_NON_AUTHORITATIVE" },
+    { "engine": "ClashDetectionEngine", "disposition": "DIAGNOSTIC_NON_AUTHORITATIVE" }
+  ]
+}

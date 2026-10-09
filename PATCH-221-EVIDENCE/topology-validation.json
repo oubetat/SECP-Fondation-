@@ -1,0 +1,13 @@
+{
+  "topologyEngine": "SECP Solid B-Rep Kernel",
+  "validations": [
+    {
+      "solidType": "FASTENERS",
+      "shellCount": 1,
+      "faceCount": 7,
+      "edgeCount": 12,
+      "vertexCount": 8,
+      "status": "VALIDATED"
+    }
+  ]
+}

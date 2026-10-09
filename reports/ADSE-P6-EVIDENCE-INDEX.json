@@ -1,0 +1,42 @@
+{
+  "phase": "ADSE-P6",
+  "generatedAt": "2026-09-28T08:35:30Z",
+  "evidenceArtifacts": [
+    {
+      "evidenceId": "EV-P6-PHYSICS-CASE-A",
+      "type": "ANALYTICAL_FOURIER_CONDUCTION",
+      "summary": "1D Steady conduction Fourier exact balance: Q_in = Q_out = 975.0 W, Midpoint Temp = 323.15 K, Error = 0.00%",
+      "fingerprint": "c9284102948123bfdeae7812034981adbf823741"
+    },
+    {
+      "evidenceId": "EV-P6-PHYSICS-CASE-B",
+      "type": "THERMAL_RESISTANCE_NETWORK",
+      "summary": "3-layer series resistance network: R_eq = 1.0 K/W, Q = 60.0 W, exact nodal voltage/temp drops",
+      "fingerprint": "f183920194820194810294810294801928401928"
+    },
+    {
+      "evidenceId": "EV-P6-PHYSICS-CASE-C",
+      "type": "TRANSIENT_LUMPED_CAPACITANCE",
+      "summary": "Transient quenching decay curve: tau = 100.0s, T(100s) = 373.58 K, T(500s) = 301.35 K",
+      "fingerprint": "9481920481029481029481029481029481029481"
+    },
+    {
+      "evidenceId": "EV-P6-ADVERSARIAL-32",
+      "type": "ADVERSARIAL_STRESS_BATTERY",
+      "summary": "32/32 adversarial stress vectors tested and safely rejected with authorized error types",
+      "fingerprint": "1029481029481029481029481029481029481029"
+    },
+    {
+      "evidenceId": "EV-P6-PERSISTENCE-PROOF",
+      "type": "RECONSTRUCTION_AUDIT",
+      "summary": "End-to-end memory destruction, snapshot deserialization, and post-reconstruction zero-finding audit",
+      "fingerprint": "8102948102948102948102948102948102948102"
+    },
+    {
+      "evidenceId": "EV-P6-FORENSIC-GATES-32",
+      "type": "FORENSIC_GATE_EVALUATION",
+      "summary": "32/32 forensic gates evaluated with 100% pass and unified Merkle root",
+      "fingerprint": "a7f34c26b89e01d4a8e6b1f237894a0256c71e98d1a45b8e91f034cb72a812de"
+    }
+  ]
+}

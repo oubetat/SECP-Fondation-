@@ -1,0 +1,5 @@
+{
+  "description": "Block Compressed Sparse Row format for block node groupings (e.g. 3x3 for 3D elasticity)",
+  "blockDimensions": "Configurable (e.g. 2x2, 3x3, 6x6)",
+  "status": "FOUNDATION_READY"
+}

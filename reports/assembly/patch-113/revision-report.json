@@ -1,0 +1,70 @@
+{
+  "assemblyId": "ASM_TURBO_PUMP_01",
+  "sourceRevision": "R1.0",
+  "targetRevision": "R2.0",
+  "isIdentical": false,
+  "diffItems": [
+    {
+      "diffType": "MOVED_COMPONENT",
+      "occurrenceId": "OCC_IMPELLER_01",
+      "partId": "P_IMPELLER_01",
+      "beforeTransform": [
+        [
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          180
+        ],
+        [
+          0,
+          0,
+          0,
+          1
+        ]
+      ],
+      "afterTransform": [
+        [
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          195
+        ],
+        [
+          0,
+          0,
+          0,
+          1
+        ]
+      ],
+      "description": "Component OCC_IMPELLER_01 transform was modified."
+    }
+  ],
+  "addedCount": 0,
+  "removedCount": 0,
+  "movedCount": 1,
+  "modifiedCount": 0
+}

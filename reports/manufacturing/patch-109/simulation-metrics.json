@@ -1,0 +1,19 @@
+{
+  "totalSimulationTime": 0.002,
+  "physicalMachiningTime": 0.019633836312465052,
+  "numberOfSamples": 0,
+  "numberOfSegments": 2,
+  "removedVolume": 1600,
+  "remainingVolume": 498400,
+  "minimumClearance": null,
+  "maximumDeviation": 0.04917244058030476,
+  "RMSDeviation": 0.029131545699885807,
+  "collisionCount": 1,
+  "limitViolationCount": 0,
+  "gapCount": 0,
+  "performance": {
+    "samplesPerSec": 0,
+    "segmentsPerSec": 1000,
+    "memoryMB": 120
+  }
+}

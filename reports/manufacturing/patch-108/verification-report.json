@@ -1,0 +1,96 @@
+{
+  "reportId": "REP_VERIFY_1787296981956",
+  "contract": {
+    "verifierId": "SECP_VERIFIER_108",
+    "verifierRevision": 1,
+    "ncProgramId": "PROG_VERIFY_108",
+    "ncProgramRevision": 1,
+    "sourceToolpathId": "TP_5AXIS_01",
+    "machineProfileId": "HAAS_VF5_TRT210",
+    "controllerProfileId": "FANUC_31i_B5",
+    "postProcessorId": "POST_FANUC_5AXIS",
+    "tolerances": {
+      "linearPositionToleranceMM": 0.005,
+      "angularOrientationToleranceDeg": 0.05,
+      "axisToleranceMM": 0.005,
+      "rotaryAxisToleranceDeg": 0.05,
+      "arcRadiusToleranceMM": 0.005,
+      "chordalErrorToleranceMM": 0.002,
+      "minimumSafeClearanceMM": 2,
+      "feedTolerancePercent": 2,
+      "spindleToleranceRPM": 20
+    },
+    "collisionPolicy": {
+      "checkTool": true,
+      "checkHolder": true,
+      "checkSpindle": true,
+      "checkMachineHead": true,
+      "checkFixture": true,
+      "checkStock": true,
+      "checkWorkpiece": true,
+      "checkKeepOut": true,
+      "minimumClearanceMM": 2
+    },
+    "limitPolicy": {
+      "enforceLinearStroke": true,
+      "enforceRotaryRange": true,
+      "enforceRotaryContinuity": true,
+      "enforceFeedBounds": true,
+      "enforceSpindleBounds": true,
+      "enforceToolChangerCapacity": true
+    },
+    "provenance": {
+      "sourceId": "PROV_CONTRACT_108",
+      "sourceType": "STANDARD",
+      "reference": "SECP GCode Verification Standard",
+      "timestamp": "2026-08-21T00:00:00Z",
+      "author": "SECP Verification Council",
+      "hash": "0xCONTRACT108"
+    }
+  },
+  "fingerprint": {
+    "ncProgramFingerprint": "NC_275_13",
+    "machineFingerprint": "HAAS_VF5_TRT210",
+    "controllerFingerprint": "FANUC_31i_B5",
+    "toolFingerprint": "TOOL_1",
+    "policyFingerprint": "TOL_0.005",
+    "verifierRevision": 1,
+    "merkleRootHash": "0xVERIFY_NC_275_1_HAAS_VF5_QUAL"
+  },
+  "overallVerdict": "VERIFIED",
+  "isQualified": true,
+  "scores": {
+    "positionAccuracyScore": 100,
+    "orientationAccuracyScore": 100,
+    "limitComplianceScore": 100,
+    "collisionSafetyScore": 100,
+    "traceabilityCoverageScore": 100,
+    "compositeScore": 100
+  },
+  "metrics": {
+    "maxPositionErrorMM": 0,
+    "rmsPositionErrorMM": 0,
+    "maxOrientationErrorDeg": 0,
+    "rmsOrientationErrorDeg": 0,
+    "maxAxisErrors": {
+      "X": 0,
+      "Y": 0,
+      "Z": 0,
+      "A": 0,
+      "B": 0,
+      "C": 0
+    },
+    "totalNCBlocks": 13,
+    "totalMotionSegments": 3,
+    "totalSamplesEvaluated": 33,
+    "orphanBlocksCount": 0,
+    "missingMotionsCount": 0,
+    "unexpectedMotionsCount": 0
+  },
+  "forensicEvents": [],
+  "failures": [],
+  "warnings": [],
+  "undeterminedItems": [],
+  "executionTimeMs": 6,
+  "timestamp": "2026-08-21T07:23:01.956Z"
+}

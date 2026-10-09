@@ -1,0 +1,63 @@
+{
+  "patch": "PATCH-007",
+  "generatedAt": "2026-09-17T07:23:43.093Z",
+  "report": "reports/secp-baseline-truth.json",
+  "tests": [],
+  "gate": {
+    "gateId": "GATE-BASELINE-TRUTH",
+    "verdict": "PASS",
+    "timestamp": "2026-09-17T07:23:43.096Z",
+    "checks": [
+      {
+        "name": "SCHEMA_INTEGRITY",
+        "passed": true,
+        "reason": "Report conforms to baseline schema"
+      },
+      {
+        "name": "STATUS_ENUM_INTEGRITY",
+        "passed": true,
+        "reason": "All capability statuses are valid baseline taxonomy values"
+      },
+      {
+        "name": "METRIC_AUTHENTICITY",
+        "passed": true,
+        "reason": "Summary metrics strictly match evaluated capability records"
+      },
+      {
+        "name": "EVIDENCE_TRACEABILITY",
+        "passed": true,
+        "reason": "All evidence references have valid identifiers and paths"
+      },
+      {
+        "name": "NO_GLOBAL_PASS_PROHIBITION",
+        "passed": true,
+        "reason": "Report correctly maintains capability-level granularity without global PASS shortcuts"
+      }
+    ],
+    "unresolved": [],
+    "findings": []
+  },
+  "findings": [
+    "[Finding] Hardcoded verdict pattern detected in source: src/engine/topology/",
+    "[Finding] Hardcoded verdict pattern detected in source: src/engine/topology/",
+    "[Finding] Hardcoded verdict pattern detected in source: src/engine/assembly/",
+    "[Finding] Hardcoded verdict pattern detected in source: src/engine/cfd3d/",
+    "[Finding] Hardcoded PASS/verdict detected in gate: src/engine/validation/HardAcceptanceGate076.ts",
+    "[Finding] Hardcoded verdict pattern detected in source: src/engine/cam/",
+    "[Finding] Hardcoded verdict pattern detected in source: src/engine/manufacturing/"
+  ],
+  "summary": {
+    "working": 39,
+    "failed": 0,
+    "unproven": 42,
+    "simulated": 0,
+    "productionReady": 15
+  },
+  "evidenceCoverage": {
+    "implementation": 117,
+    "execution": 56,
+    "tests": 69,
+    "adversarial": 18,
+    "externalValidation": 0
+  }
+}

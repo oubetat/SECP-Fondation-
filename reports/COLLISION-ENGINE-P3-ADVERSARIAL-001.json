@@ -1,0 +1,29 @@
+{
+  "reportId": "COLLISION-ENGINE-P3-ADVERSARIAL-001",
+  "totalMutations": 20,
+  "executedMutations": [
+    "M01_missing_document",
+    "M02_missing_revision",
+    "M03_missing_geometry",
+    "M04_stale_revision",
+    "M05_stale_geometry",
+    "M06_wrong_geometry_id",
+    "M07_wrong_snapshot_id",
+    "M08_modified_geometry",
+    "M09_deleted_geometry",
+    "M10_malformed_topology",
+    "M11_nan_coordinate",
+    "M12_infinity_coordinate",
+    "M13_invalid_transform",
+    "M14_missing_coordinate_frame",
+    "M15_wrong_coordinate_frame",
+    "M16_unit_mismatch",
+    "M17_forged_geometry_hash",
+    "M18_duplicate_geometry_identity",
+    "M19_synthetic_geometry_injected",
+    "M20_canonical_binding_removed"
+  ],
+  "provenSafeForgedResults": 0,
+  "allFailClosedVerified": true,
+  "verdict": "PASSED"
+}

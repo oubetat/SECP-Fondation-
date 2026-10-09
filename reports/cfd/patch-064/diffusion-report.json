@@ -1,0 +1,1 @@
+{"diffusion": "grad( (mu + sigma * muT) * grad(k) )"}

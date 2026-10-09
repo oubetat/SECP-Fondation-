@@ -1,0 +1,16 @@
+[
+  {
+    "eventId": "EVT_000001",
+    "timestamp": 1787297983972,
+    "source": "COMMISSIONING_GATE",
+    "machineId": "MACH_DMG_50_01",
+    "twinId": "TWIN_5AXIS_001",
+    "sequence": 1,
+    "type": "STATE_SYNCHRONIZED",
+    "payload": {
+      "message": "Machine twin commissioned and bound to physical asset serial SN-98421-2026"
+    },
+    "payloadHash": "fa99c091fa99c091fa99c091fa99c091fa99c091fa99c091fa99c091fa99c091",
+    "previousEventHash": "0000000000000000000000000000000000000000000000000000000000000000"
+  }
+]

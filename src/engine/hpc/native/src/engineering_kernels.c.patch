@@ -1,0 +1,30 @@
+--- src/engine/hpc/native/src/engineering_kernels.c
++++ src/engine/hpc/native/src/engineering_kernels.c
+@@ -234,3 +234,26 @@
+ // ==========================================
+ // SECTION 5: NATIVE GEOMETRY KERNELS (SECP-095)
+ // ==========================================
++
++// ==========================================
++// SECTION 6: NATIVE NURBS KERNELS (SECP-101.4)
++// ==========================================
++
++__attribute__((export_name("native_nurbs_basis")))
++double native_nurbs_basis(int i, int p, double u, const double* knots, int knots_len) {
++    if (p == 0) {
++        if (u >= knots[i] && u < knots[i + 1]) return 1.0;
++        if (u == knots[knots_len - 1] && u == knots[i + 1]) return 1.0;
++        return 0.0;
++    }
++    double left = 0.0;
++    double denom1 = knots[i + p] - knots[i];
++    if (denom1 > 1e-12) {
++        left = ((u - knots[i]) / denom1) * native_nurbs_basis(i, p - 1, u, knots, knots_len);
++    }
++    double right = 0.0;
++    double denom2 = knots[i + p + 1] - knots[i + 1];
++    if (denom2 > 1e-12) {
++        right = ((knots[i + p + 1] - u) / denom2) * native_nurbs_basis(i + 1, p - 1, u, knots, knots_len);
++    }
++    return left + right;
++}

@@ -1,0 +1,21 @@
+{
+  "patch": "PATCH-059",
+  "gateId": "HARD_ACCEPTANCE_GATE_059",
+  "overallVerdict": "PASS",
+  "criteria": {
+    "realEnergyState": true,
+    "explicitFormulation": true,
+    "convectiveEnergyFluxCalculation": true,
+    "pressureWorkCalculation": true,
+    "conductiveHeatFluxCalculation": true,
+    "volumetricHeatSourceCalculation": true,
+    "localControlVolumeBalance": true,
+    "globalEnergyBalance": true,
+    "internalFacePairingVerification": true,
+    "noDoubleCountingVerification": true,
+    "fluxRecomputationFunctional": true,
+    "adversarialDetectionPassed": true,
+    "evidenceIntegrityVerified": true
+  },
+  "timestamp": "2026-08-19T11:30:07.679Z"
+}

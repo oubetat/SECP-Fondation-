@@ -1,0 +1,138 @@
+{
+  "gateId": "SECP-099",
+  "status": "PASS",
+  "machineConfiguration": {
+    "id": "AC-TABLE-TABLE",
+    "linearAxes": [
+      {
+        "id": "X",
+        "type": "LINEAR",
+        "minLimit": -500,
+        "maxLimit": 500,
+        "home": 0,
+        "resolution": 0.001,
+        "direction": 1
+      },
+      {
+        "id": "Y",
+        "type": "LINEAR",
+        "minLimit": -500,
+        "maxLimit": 500,
+        "home": 0,
+        "resolution": 0.001,
+        "direction": 1
+      },
+      {
+        "id": "Z",
+        "type": "LINEAR",
+        "minLimit": 0,
+        "maxLimit": 500,
+        "home": 500,
+        "resolution": 0.001,
+        "direction": 1
+      }
+    ],
+    "rotaryAxes": [
+      {
+        "id": "A",
+        "type": "ROTARY",
+        "minLimit": -120,
+        "maxLimit": 120,
+        "home": 0,
+        "resolution": 0.001,
+        "direction": 1,
+        "axisVector": {
+          "x": 1,
+          "y": 0,
+          "z": 0
+        },
+        "center": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        }
+      },
+      {
+        "id": "C",
+        "type": "ROTARY",
+        "minLimit": -360,
+        "maxLimit": 360,
+        "home": 0,
+        "resolution": 0.001,
+        "direction": 1,
+        "axisVector": {
+          "x": 0,
+          "y": 0,
+          "z": 1
+        },
+        "center": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        }
+      }
+    ]
+  },
+  "fixtureResults": "PASS",
+  "kinematicMetrics": {
+    "pathLength": 140.007,
+    "poseCount": 100,
+    "validPoseCount": 100,
+    "rejectedPoseCount": 0,
+    "minCartesianSegmentLength": 1.414214,
+    "minMachineAxisStep": 0,
+    "maxPositionResidual": 0,
+    "maxOrientationResidual": 0.000049,
+    "maxAxisLimitExcursion": 0,
+    "minClearance": 30,
+    "collisionCount": 0,
+    "gougingCount": 0,
+    "singularityCount": 0,
+    "zeroLengthSegmentCount": 0,
+    "cartesianContinuityGapCount": 0,
+    "orientationDiscontinuityCount": 0,
+    "machineAxisDiscontinuityCount": 0
+  },
+  "collisionMetrics": {
+    "count": 0
+  },
+  "clearanceMetrics": {
+    "status": "CLEAR",
+    "minClearance": 30,
+    "minClearancePoseIndex": 0,
+    "violations": 0
+  },
+  "gougingMetrics": {
+    "count": 0
+  },
+  "singularityMetrics": {
+    "count": 0
+  },
+  "adversarialResults": {
+    "passes": [
+      "Reject NaN Cartesian coordinate",
+      "Reject Infinity coordinate",
+      "Reject zero-length tool orientation",
+      "Reject invalid machine axis limits",
+      "Reject axis-limit violation",
+      "Detect singular configuration",
+      "Detect Cartesian discontinuity",
+      "Detect orientation discontinuity",
+      "Detect machine-axis discontinuity",
+      "Detect tool/workpiece collision",
+      "Detect gouging condition",
+      "Detect clearance violation",
+      "Reject invalid machine configuration",
+      "Deterministic replay produces identical hashes"
+    ],
+    "failures": []
+  },
+  "deterministicReplay": "PASS",
+  "provenance": "c1d779e9e7116457",
+  "dependencyStatus": {
+    "secp096": "PASS",
+    "secp097": "PASS",
+    "secp098": "PASS"
+  },
+  "timestampIndependentIdentity": "c1d779e9e7116457"
+}

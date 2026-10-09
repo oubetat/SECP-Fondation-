@@ -1,0 +1,11 @@
+{
+  "maxAxisErrors": {
+    "X": 0,
+    "Y": 0,
+    "Z": 0,
+    "A": 0,
+    "B": 0,
+    "C": 0
+  },
+  "status": "AXIS_ERRORS_WITHIN_LIMITS"
+}

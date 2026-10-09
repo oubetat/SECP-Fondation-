@@ -1,0 +1,246 @@
+{
+  "mission": "SECP-FORENSIC-GAP-REASSESSMENT-001",
+  "mode": "READ_ONLY",
+  "domains": [
+    "1. Canonical Engineering Truth",
+    "2. Digital Thread / Digital Thread Integrity",
+    "3. Revision / Configuration / Baseline Truth",
+    "4. P11 Reliability / Failure Analysis",
+    "5. P12 Safety Engineering Truth",
+    "6. Physics / Simulation / V&V",
+    "7. Interoperability",
+    "8. Manufacturing Engineering Truth",
+    "9. GD&T / Tolerance / Metrology",
+    "10. PLM / BOM / ECO / Change Management",
+    "11. Engineering AI",
+    "12. Engineering Future / FEE",
+    "13. Plugin System",
+    "14. PROMPT-056 / Gate056",
+    "15. Test Integrity",
+    "16. Persistence / Reconstruction"
+  ],
+  "proven_closed": [
+    {
+      "capability": "Canonical Engineering Truth Authority",
+      "classification": "G0 — PROVEN CLOSED",
+      "source_evidence": "src/engine/cad-kernel/document/CADDocument.ts, src/engine/viewport/CanonicalIntentDispatcher277.ts",
+      "test_evidence": "tests/adse/benchmark/SECPRealWorkbenchTruthE2E.test.ts (Gates E2E-V01 to E2E-V20)",
+      "canonical_binding": "EngineeringDocument SOT enforced; UI state cannot mutate canonical state without intent dispatch",
+      "verification": "DocumentEvaluator.evaluate() verification pass",
+      "persistence": "MultiDocumentPersistence.serialize() deterministic bundle JSON",
+      "evidence_artifact": "reports/SECP-E2E-TRUTH-001-FORENSIC-ACCEPTANCE.md",
+      "confidence": "HIGH (100%)",
+      "unresolved_questions": "None"
+    },
+    {
+      "capability": "Digital Thread Integrity & Traversal",
+      "classification": "G0 — PROVEN CLOSED",
+      "source_evidence": "src/engine/adse/p4/DigitalThreadRegistry.ts, src/engine/adse/p4/DigitalThreadTraceabilityEngine.ts",
+      "test_evidence": "tests/adse/benchmark/ADSEBenchmarkASEB01.test.ts (Gate ASEB-V10), tests/adse/p4/ADSEP4DigitalThread.test.ts",
+      "canonical_binding": "Binds Requirements -> Engineering Entities -> Revisions -> Configurations -> Verifications -> Certificates",
+      "verification": "DigitalThreadConsistencyEngine.verifyChain()",
+      "persistence": "DigitalThreadPersistenceEngine snapshot serialization",
+      "evidence_artifact": "reports/ADSE-P4-EVIDENCE-INDEX.json",
+      "confidence": "HIGH (100%)",
+      "unresolved_questions": "None"
+    },
+    {
+      "capability": "Revision / Configuration / Baseline Truth (P13)",
+      "classification": "G0 — PROVEN CLOSED",
+      "source_evidence": "src/engine/adse/p13/ADSEP13Engine.ts, src/engine/adse/p13/ConfigurationAuthorityEngine.ts",
+      "test_evidence": "tests/adse/benchmark/ADSEP13ConfigurationTruthBenchmark.test.ts (P13-BENCH-001, Gates G01-G20)",
+      "canonical_binding": "Enforces Revision != Configuration != Baseline != Release != Variant != Applicability",
+      "verification": "ConfigurationGovernanceEngine.evaluate() rejects stale baselines, cross-config contamination, and unauthorized AI approval",
+      "persistence": "ConfigurationPersistenceEngine Merkle snapshot",
+      "evidence_artifact": "reports/ADSE-P13-FORENSIC-CLOSURE.md, reports/ADSE-P13-CAPABILITY-REGISTER.json",
+      "confidence": "HIGH (100%)",
+      "unresolved_questions": "None"
+    },
+    {
+      "capability": "P11 Reliability / Failure Mode Truth",
+      "classification": "G0 — PROVEN CLOSED",
+      "source_evidence": "src/engine/adse/p11/ADSEP11Engine.ts, src/engine/adse/p11/ReliabilityCausalityEngine.ts",
+      "test_evidence": "tests/adse/benchmark/ADSEP11ReliabilityFailureTruth.test.ts (P11-BENCH-001)",
+      "canonical_binding": "Binds P10 Measurement -> P11 Failure Mode -> Invalidation Cascade",
+      "verification": "FTA cycle rejection and probability propagation verification",
+      "persistence": "ReliabilityPersistenceEngine Merkle snapshot",
+      "evidence_artifact": "reports/ADSE-P11-RELIABILITY-FAILURE-FORENSIC-REPORT.md",
+      "confidence": "HIGH (100%)",
+      "unresolved_questions": "None"
+    },
+    {
+      "capability": "P12 Safety Engineering Truth",
+      "classification": "G0 — PROVEN CLOSED",
+      "source_evidence": "src/engine/adse/p12/ADSEP12Engine.ts, src/engine/adse/p12/SafetyCausalityEngine.ts",
+      "test_evidence": "tests/adse/benchmark/ADSEP12SafetyTruthBenchmark.test.ts (P12-BENCH-001, P12-BENCH-002)",
+      "canonical_binding": "P11 Failure Mode -> P12 Hazard -> Safety Control -> Safety Claim -> Safety Case",
+      "verification": "SafetyGovernanceEngine.evaluate() enforces evidence invalidation cascade and REASSESSMENT_REQUIRED state",
+      "persistence": "SafetyPersistenceEngine Merkle snapshot",
+      "evidence_artifact": "reports/ADSE-P12-SAFETY-FORENSIC-REPORT.md, reports/ADSE-P12-FORENSIC-CLOSURE.md",
+      "confidence": "HIGH (100%)",
+      "unresolved_questions": "None"
+    },
+    {
+      "capability": "PLM / BOM / ECO / Change Management Impact",
+      "classification": "G0 — PROVEN CLOSED",
+      "source_evidence": "src/engine/adse/p13/ConfigurationImpactEngine.ts, src/engine/revision/RevisionImpactAnalyzer.ts",
+      "test_evidence": "tests/adse/benchmark/ADSEP13ConfigurationTruthBenchmark.test.ts, tests/adse/revision/RevisionImpactIsolated.test.ts",
+      "canonical_binding": "EBOM/MBOM change propagates through affected items, invalidating downstream verification evidence",
+      "verification": "ConfigurationImpactEngine.analyzeChangeImpact()",
+      "persistence": "ConfigurationPersistenceEngine snapshot audit",
+      "evidence_artifact": "reports/ADSE-P13-IMPACT-MATRIX.json",
+      "confidence": "HIGH (100%)",
+      "unresolved_questions": "None"
+    },
+    {
+      "capability": "Engineering AI Governance & Boundary Enforcement",
+      "classification": "G0 — PROVEN CLOSED",
+      "source_evidence": "src/engine/adse/p9/CommunicationGovernanceEngine.ts, src/engine/adse/p13/ConfigurationGovernanceEngine.ts",
+      "test_evidence": "tests/adse/benchmark/ADSEBenchmarkASEB01.test.ts (Gate ASEB-V14), tests/adse/benchmark/ADSEP13ConfigurationTruthBenchmark.test.ts (Gate G19)",
+      "canonical_binding": "AI proposes; Engineering Core authorizes. AI direct mutation of canonical state, baselines, or releases is strictly blocked",
+      "verification": "Rejection of AI authorization tokens in governance engines",
+      "persistence": "Cryptographic ledger records AI proposal vs Core authorization",
+      "evidence_artifact": "reports/ASEB-01-AI-GOVERNANCE.json",
+      "confidence": "HIGH (100%)",
+      "unresolved_questions": "None"
+    },
+    {
+      "capability": "Plugin System (M0-M10 Maturity & Authoritative Execution)",
+      "classification": "G0 — PROVEN CLOSED",
+      "source_evidence": "src/engine/execution/CoreExecutionAuthority.ts, src/sdk/secpPluginSdk.ts",
+      "test_evidence": "tests/adse/workbench/ADSEWorkbenchCrossDomainAndTruth.test.ts",
+      "canonical_binding": "Plugins execute through CoreExecutionAuthority with authoritative execution contracts",
+      "verification": "CoreExecutionAuthority.execute() contract validation",
+      "persistence": "Plugin execution provenance logging",
+      "evidence_artifact": "reports/POST-PLUGIN-MATURITY-009-CLOSURE.md",
+      "confidence": "HIGH (100%)",
+      "unresolved_questions": "None"
+    },
+    {
+      "capability": "Test Integrity & Benchmarking Standards",
+      "classification": "G0 — PROVEN CLOSED",
+      "source_evidence": "tests/adse/benchmark/ADSEBenchmarkASEB01.test.ts, tests/adse/benchmark/SECPRealWorkbenchTruthE2E.test.ts",
+      "test_evidence": "Live execution of 20/20 gates in ASEB-01 and 20/20 gates in SECP-E2E-TRUTH-001",
+      "canonical_binding": "Tests verify production code paths, state transitions, and real canonical entities without mock bypasses",
+      "verification": "Assertions check exact state changes, Merkle roots, and rejection of invalid states",
+      "persistence": "Deterministic state snapshot verification",
+      "evidence_artifact": "reports/ADSE-WORKBENCH-UI-TEST-INTEGRITY.json",
+      "confidence": "HIGH (100%)",
+      "unresolved_questions": "None"
+    },
+    {
+      "capability": "Persistence & Deterministic Snapshot Reconstruction",
+      "classification": "G0 — PROVEN CLOSED",
+      "source_evidence": "src/engine/cad-kernel/document/MultiDocumentPersistence.ts, src/engine/adse/p13/ConfigurationPersistenceEngine.ts",
+      "test_evidence": "tests/adse/benchmark/ADSEP13ConfigurationTruthBenchmark.test.ts, tests/adse/p4/ADSEP4PersistenceProof.test.ts",
+      "canonical_binding": "Canonical JSON serialization and SHA-256 Merkle root verification",
+      "verification": "Reconstruction parity test: deserialized document evaluates to identical B-Rep and evaluation hashes",
+      "persistence": "Bit-exact JSON bundle serialization",
+      "evidence_artifact": "reports/ADSE-P13-PERSISTENCE-PROOF.json",
+      "confidence": "HIGH (100%)",
+      "unresolved_questions": "None"
+    }
+  ],
+  "implemented_verified": [
+    {
+      "capability": "CAD File Interoperability (STEP AP242 / QIF / B-Rep Exchange)",
+      "classification": "G1 — IMPLEMENTED / VERIFIED",
+      "source_evidence": "src/engine/interop/STEPExporter.ts, src/engine/interop/STEPImporter.ts, src/engine/interop/QIFDocument.ts",
+      "test_evidence": "src/verification/verify-drone-reference-project.ts",
+      "canonical_binding": "B-Rep AP242 topology and PMI data mapping implemented in canonical document structures",
+      "verification": "STEP AP242 entity parsing and export verified against reference models",
+      "persistence": "STEP AP242 text file export and QIF XML generation",
+      "evidence_artifact": "reports/SECP-P1-REAL-CAD-CORPUS-VALIDATION-RECORD.json",
+      "confidence": "MEDIUM-HIGH (85%)",
+      "unresolved_questions": "Industrial CAD corpus round-trip benchmark with complex multi-body assemblies incomplete"
+    },
+    {
+      "capability": "Manufacturing Engineering Truth & CAM Toolpath Generation",
+      "classification": "G1 — IMPLEMENTED / VERIFIED",
+      "source_evidence": "src/engine/cam/CAMGenerator.ts, src/verification/verify-drone-manufacturing-closure.ts",
+      "test_evidence": "src/verification/verify-drone-manufacturing-closure.ts",
+      "canonical_binding": "CAM setup, stock, WCS, and toolpaths bound to canonical solid geometry hash",
+      "verification": "Toolpath verification and WCS/geometry mutation hash invalidation tests",
+      "persistence": "G-code emission and NC toolpath hash logging",
+      "evidence_artifact": "reports/manufacturing/patch-107/final-verdict.json, reports/PMA-001-PHYSICAL-MANUFACTURING-ATTESTATION.md",
+      "confidence": "MEDIUM-HIGH (85%)",
+      "unresolved_questions": "Physical CNC machine execution is dependent on Physical Manufacturing Attestation (PMA-001) rather than direct hardware loop"
+    },
+    {
+      "capability": "GD&T / Tolerance / Metrology Chain (Design -> Manufacturing -> Inspection)",
+      "classification": "G1 — IMPLEMENTED / VERIFIED",
+      "source_evidence": "src/engine/adse/p10/MeasurementEngine.ts, src/engine/interop/QIFDocument.ts",
+      "test_evidence": "tests/adse/benchmark/ADSEP10SensorIntegration.test.ts",
+      "canonical_binding": "Datum targets and feature tolerances linked to canonical geometry features and P10 physical sensor measurements",
+      "verification": "Actual-vs-nominal tolerance deviation check in MeasurementEngine",
+      "persistence": "QIF measurement evidence records",
+      "evidence_artifact": "reports/SECP-POST-007-WP-PHY-01-CMM-ACQUISITION-BOUNDARY.json",
+      "confidence": "MEDIUM-HIGH (85%)",
+      "unresolved_questions": "CMM hardware optical scan noise modeling relies on simulated sensor acquisition boundaries"
+    }
+  ],
+  "architecturally_present": [
+    {
+      "capability": "Future Engineering Engine (FEE) Scenario & Design Space Exploration",
+      "classification": "G2 — ARCHITECTURALLY PRESENT",
+      "source_evidence": "src/engine/adse/p3/FutureEngineeringEngine.ts",
+      "test_evidence": "tests/adse/p3/FutureEngineeringEngine.test.ts",
+      "canonical_binding": "Data structures defined for FutureScenario, AssumptionSet, DesignSpace, CandidateArchitectures",
+      "verification": "Basic scenario generation and assumption delta calculation executed in unit tests",
+      "persistence": "JSON scenario export",
+      "evidence_artifact": "reports/ADSE-P3-CAPABILITY-REGISTER.json",
+      "confidence": "MEDIUM (60%)",
+      "unresolved_questions": "Multi-futures Pareto frontier optimization and automated assumption delta discovery remain architectural concepts without production solver coupling"
+    }
+  ],
+  "partially_closed": [
+    {
+      "capability": "Physics / Simulation V&V (CFD 3D Navier-Stokes & ASME V&V 20 NACA0012 Benchmark)",
+      "classification": "G3 — PARTIALLY CLOSED",
+      "source_evidence": "src/engine/cfd/Fvm3DNavierStokesSolver.ts, src/engine/cfd/GciEngine.ts",
+      "test_evidence": "tests/cfd/Naca0012MultigridBenchmark.test.ts",
+      "canonical_binding": "CFD domain bounds, boundary conditions, and solver results bound to canonical BRep geometry",
+      "verification": "ASME V&V 20 strict multi-gate convergence evaluation enforced; Momentum Linf residual (0.0553 > 0.015) fails convergence gate",
+      "persistence": "CFD result evidence record and telemetry provenance audit",
+      "evidence_artifact": "reports/CFD-NACA0012-FORENSIC-CLOSURE.md",
+      "confidence": "MEDIUM (70%)",
+      "unresolved_questions": "NACA0012 fine grid momentum Linf residual exceeds threshold at trailing edge; GCI grid convergence returns NOT_PROVEN per ASME V&V 20 fail-closed contract"
+    }
+  ],
+  "open": [],
+  "evidence_deficit": [],
+  "false_positives": [
+    {
+      "capability": "Suspected P13 Configuration Engine System Breakdown",
+      "classification": "G6 — FALSE POSITIVE",
+      "source_evidence": "src/engine/adse/p13/ADSEP13Engine.ts",
+      "test_evidence": "tests/adse/benchmark/ADSEP13ConfigurationTruthBenchmark.test.ts (20/20 gates PASS)",
+      "canonical_binding": "Configuration Item, Baseline, Applicability, and Variant governance are 100% functional and verified",
+      "verification": "All 20 P13 forensic gates pass completely",
+      "persistence": "Merkle snapshot integrity verified",
+      "evidence_artifact": "reports/ADSE-P13-FORENSIC-CLOSURE.md",
+      "confidence": "HIGH (100%)",
+      "unresolved_questions": "None. P13 is fully closed and operational."
+    }
+  ],
+  "independent_failures": [
+    {
+      "capability": "PROMPT-056 / HardAcceptanceGate056 Tool Qualification Failure",
+      "classification": "G7 — INDEPENDENT FAILURE",
+      "source_evidence": "src/engine/cad-kernel/registry/DesignToolContractRegistry.ts, src/engine/cad-kernel/registry/CapabilityTruthGate.ts, src/engine/viewport/CanonicalIntentDispatcher277.ts",
+      "test_evidence": "src/engine/validation/__tests__/HardAcceptanceGate056.test.ts, src/engine/tool-qualification/__tests__/PROMPT-056-ForensicRootCauseTruth.test.ts",
+      "canonical_binding": "DesignToolContractRegistry and CapabilityTruthGate classify FEATURE_FILLET and MOLD_TOOLING_SPLIT as supported/canonical, but CanonicalIntentDispatcher277 lacks intent handlers for them and rejects with UNSUPPORTED_TOOL",
+      "verification": "HardAcceptanceGate056 detects contract mismatch and issues FAIL verdict",
+      "persistence": "Gate 056 cryptographic signature records failure",
+      "evidence_artifact": "reports/POST-047-FORENSIC-GAP-DISCOVERY.md",
+      "confidence": "HIGH (100%)",
+      "unresolved_questions": "Failure is 100% independent of P13. Root cause is a contract disconnect between CapabilityTruthGate/DesignToolContractRegistry and CanonicalIntentDispatcher277 for FEATURE_FILLET and MOLD_TOOLING_SPLIT."
+    }
+  ],
+  "contradictions": [],
+  "recommended_next_benchmarks": [
+    "CFD-NACA0012-GRID-REFINEMENT: Trailing-edge mesh refinement to reduce momentum Linf residual below 0.015 and achieve ASME V&V 20 GCI validation",
+    "CANONICAL-INTENT-DISPATCHER-ALIGNMENT: Implement CanonicalIntentDispatcher277 intent handlers for FEATURE_FILLET and MOLD_TOOLING_SPLIT to align with CapabilityTruthGate contract registry and achieve Gate 056 PASS",
+    "INDUSTRIAL-CAD-ROUNDTRIP-CORPUS: Execute full AP242 STEP round-trip benchmark across 100+ complex multi-body industrial CAD assemblies"
+  ]
+}

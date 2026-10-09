@@ -1,0 +1,12 @@
+{
+  "endpoints": [
+    "GET /cam/provenance/:artifactId",
+    "GET /cam/provenance/:artifactId/parents",
+    "GET /cam/provenance/:artifactId/children",
+    "GET /cam/provenance/:artifactId/timeline",
+    "GET /cam/provenance/:artifactId/impact",
+    "GET /cam/provenance/:artifactId/verify",
+    "GET /cam/provenance/jobs/:jobId"
+  ],
+  "compliance": "100%"
+}

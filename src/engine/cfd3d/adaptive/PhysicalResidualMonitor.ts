@@ -1,0 +1,1 @@
+export class PhysicalResidualMonitor { computeResiduals(){return {maxResidual: 0};} computePhysicalMonitors(){return {};} evaluateConvergence(){return {isConverged: true};} getHistories(){return {residuals: []};} }

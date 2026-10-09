@@ -1,0 +1,206 @@
+{
+  "nodesCount": 12,
+  "edgesCount": 17,
+  "nodes": [
+    {
+      "id": "CAD_MODEL_01",
+      "type": "CAD_MODEL",
+      "revision": 1,
+      "contentHash": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
+      "status": "PUBLISHED",
+      "agent": "HUMAN"
+    },
+    {
+      "id": "FEAT_MODEL_01",
+      "type": "MANUFACTURING_FEATURE",
+      "revision": 1,
+      "contentHash": "dff416bd1abf0b025dee955cf38dcd98dd60a85a97186c49c91de27063ac817d",
+      "status": "PUBLISHED",
+      "agent": "CAM_ENGINE"
+    },
+    {
+      "id": "MAT_AL7075_T6",
+      "type": "MATERIAL",
+      "revision": 1,
+      "contentHash": "161d01d02ac96771b120caef79598b99408d24f3a7a04c1902ed2f9ade03e3ca",
+      "status": "PUBLISHED",
+      "agent": "SYSTEM"
+    },
+    {
+      "id": "TOOL_ENDMILL_10MM",
+      "type": "TOOL",
+      "revision": 1,
+      "contentHash": "83b11ff527ac088de4c115b62ca59f85aeaf01d50a2817dae60176e877c9b93e",
+      "status": "PUBLISHED",
+      "agent": "SYSTEM"
+    },
+    {
+      "id": "MACH_DMG_50",
+      "type": "MACHINE",
+      "revision": 1,
+      "contentHash": "20354f46fde60cb7d036ff46662cff878aeb85821f8cdbb5aa914ee951831f30",
+      "status": "PUBLISHED",
+      "agent": "SYSTEM"
+    },
+    {
+      "id": "OP_AERO_POCKET_01",
+      "type": "CAM_OPERATION",
+      "revision": 1,
+      "contentHash": "68e0a6f26b108a9012c6cfa1045de4004212d7952162a4f6c490131c99a925e0",
+      "status": "PUBLISHED",
+      "agent": "CAM_ENGINE"
+    },
+    {
+      "id": "TOOLPATH_AERO_01",
+      "type": "TOOLPATH",
+      "revision": 1,
+      "contentHash": "eb7f98f4939e37caacc8ca57bdd88848bc22c4f6060e9a51d304957e4b58edeb",
+      "status": "ENGINEERING_VALIDATED",
+      "agent": "CAM_ENGINE"
+    },
+    {
+      "id": "SIM_AERO_01",
+      "type": "SIMULATION",
+      "revision": 1,
+      "contentHash": "0bb46f20cb6dd183960e5c290a1e8a2b71bf5c689d53730cb9b41ed2d56ca221",
+      "status": "PUBLISHED",
+      "agent": "SIMULATOR"
+    },
+    {
+      "id": "POST_ENGINE_TNC640",
+      "type": "POST_PROCESSOR",
+      "revision": 1,
+      "contentHash": "8047991b07d1ea8a3032f441cae399981aa5f15182238c2367581b1b7e7e44cb",
+      "status": "PUBLISHED",
+      "agent": "SYSTEM"
+    },
+    {
+      "id": "NC_O1001",
+      "type": "NC_PROGRAM",
+      "revision": 1,
+      "contentHash": "da3bb5fa1ef29cb18fe92544c594ba6d6aee8adca72b48b2382a44e14986d564",
+      "status": "PUBLISHED",
+      "agent": "POST_PROCESSOR"
+    },
+    {
+      "id": "VERIF_NC_01",
+      "type": "GCODE_VERIFICATION",
+      "revision": 1,
+      "contentHash": "82a046a4b62f9766a4cb341baafb50962612add8814f9d72270a93cf0ceae1db",
+      "status": "PUBLISHED",
+      "agent": "VERIFIER"
+    },
+    {
+      "id": "TWIN_EXEC_01",
+      "type": "DIGITAL_TWIN_STATE",
+      "revision": 1,
+      "contentHash": "eb10cad5df607e1d67be7c78128de1b391c323a8969595f142370866c9cfc2a0",
+      "status": "PUBLISHED",
+      "agent": "SYSTEM"
+    }
+  ],
+  "edges": [
+    {
+      "source": "CAD_MODEL_01",
+      "target": "FEAT_MODEL_01",
+      "type": "DERIVED_FROM",
+      "timestamp": "2026-08-21T07:47:34.211Z"
+    },
+    {
+      "source": "CAD_MODEL_01",
+      "target": "MAT_AL7075_T6",
+      "type": "USED",
+      "timestamp": "2026-08-21T07:47:34.211Z"
+    },
+    {
+      "source": "CAD_MODEL_01",
+      "target": "TOOL_ENDMILL_10MM",
+      "type": "USED",
+      "timestamp": "2026-08-21T07:47:34.211Z"
+    },
+    {
+      "source": "CAD_MODEL_01",
+      "target": "MACH_DMG_50",
+      "type": "USED",
+      "timestamp": "2026-08-21T07:47:34.211Z"
+    },
+    {
+      "source": "FEAT_MODEL_01",
+      "target": "OP_AERO_POCKET_01",
+      "type": "DERIVED_FROM",
+      "timestamp": "2026-08-21T07:47:34.211Z"
+    },
+    {
+      "source": "MAT_AL7075_T6",
+      "target": "OP_AERO_POCKET_01",
+      "type": "DERIVED_FROM",
+      "timestamp": "2026-08-21T07:47:34.211Z"
+    },
+    {
+      "source": "TOOL_ENDMILL_10MM",
+      "target": "OP_AERO_POCKET_01",
+      "type": "DERIVED_FROM",
+      "timestamp": "2026-08-21T07:47:34.211Z"
+    },
+    {
+      "source": "MACH_DMG_50",
+      "target": "OP_AERO_POCKET_01",
+      "type": "DERIVED_FROM",
+      "timestamp": "2026-08-21T07:47:34.211Z"
+    },
+    {
+      "source": "OP_AERO_POCKET_01",
+      "target": "TOOLPATH_AERO_01",
+      "type": "GENERATED",
+      "timestamp": "2026-08-21T07:47:34.211Z"
+    },
+    {
+      "source": "TOOLPATH_AERO_01",
+      "target": "SIM_AERO_01",
+      "type": "SIMULATED_FROM",
+      "timestamp": "2026-08-21T07:47:34.212Z"
+    },
+    {
+      "source": "MACH_DMG_50",
+      "target": "POST_ENGINE_TNC640",
+      "type": "USED",
+      "timestamp": "2026-08-21T07:47:34.212Z"
+    },
+    {
+      "source": "TOOLPATH_AERO_01",
+      "target": "NC_O1001",
+      "type": "POST_PROCESSED_FROM",
+      "timestamp": "2026-08-21T07:47:34.212Z"
+    },
+    {
+      "source": "POST_ENGINE_TNC640",
+      "target": "NC_O1001",
+      "type": "POST_PROCESSED_FROM",
+      "timestamp": "2026-08-21T07:47:34.212Z"
+    },
+    {
+      "source": "NC_O1001",
+      "target": "VERIF_NC_01",
+      "type": "VERIFIED_FROM",
+      "timestamp": "2026-08-21T07:47:34.212Z"
+    },
+    {
+      "source": "SIM_AERO_01",
+      "target": "VERIF_NC_01",
+      "type": "VERIFIED_FROM",
+      "timestamp": "2026-08-21T07:47:34.212Z"
+    },
+    {
+      "source": "VERIF_NC_01",
+      "target": "TWIN_EXEC_01",
+      "type": "EXECUTED_FROM",
+      "timestamp": "2026-08-21T07:47:34.212Z"
+    },
+    {
+      "source": "MACH_DMG_50",
+      "target": "TWIN_EXEC_01",
+      "type": "EXECUTED_FROM",
+      "timestamp": "2026-08-21T07:47:34.212Z"
+    }
+  ]
+}

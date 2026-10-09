@@ -1,0 +1,14 @@
+{
+  "artifactId": "TWIN_EXEC_01",
+  "originCADRevision": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
+  "assumedMaterial": "Aluminum 7075-T6",
+  "targetTool": "T1_ENDMILL_10",
+  "targetMachine": "MACH_DMG_50_01",
+  "simulationVerdict": "SIMULATION_PASSED",
+  "generatedGCodeHash": "da3bb5fa1ef29cb18fe92544c594ba6d6aee8adca72b48b2382a44e14986d564",
+  "verificationVerdict": "VERIFIED",
+  "executionTwinStateHash": "eb10cad5df607e1d67be7c78128de1b391c323a8969595f142370866c9cfc2a0",
+  "isVerified": true,
+  "isTwinSynchronized": true,
+  "completeLineage": true
+}

@@ -1,0 +1,1219 @@
+{
+  "contract": {
+    "twinId": "TWIN_5AXIS_001",
+    "twinRevision": 1,
+    "machineId": "MACH_DMG_50_01",
+    "machineRevision": 1,
+    "machineProfileId": "PROF_DMU50",
+    "controllerProfileId": "CTRL_HEIDENHAIN_TNC640",
+    "kinematicModelId": "KIN_5AXIS_TABLE_TABLE",
+    "geometryModelId": "GEO_DMU50_BODY",
+    "toolAssemblyId": "ASSY_T1_ER32",
+    "fixtureModelId": "FIX_VISE_01",
+    "telemetryProfileId": "TELEM_OPCUA_STD",
+    "synchronizationPolicy": {
+      "mode": "REAL_TIME",
+      "maxLatencyMS": 50,
+      "stalenessThresholdMS": 200,
+      "clockSyncToleranceMS": 10,
+      "reorderWindowMS": 100
+    },
+    "statePolicy": {
+      "historyCapacity": 1000,
+      "checkpointIntervalMS": 1000,
+      "hashChainingEnabled": true
+    },
+    "healthPolicy": {
+      "maxTrackingErrorMM": 0.05,
+      "maxSpindleRPMSlip": 100,
+      "temperatureWarningThresholdC": 45,
+      "temperatureFaultThresholdC": 60,
+      "maxVibrationG": 0.5
+    },
+    "uncertaintyPolicy": {
+      "sensorLinearToleranceMM": 0.001,
+      "sensorAngularToleranceDeg": 0.001,
+      "encoderResolutionMM": 0.0001,
+      "confidenceThreshold": 0.95
+    }
+  },
+  "identity": {
+    "twinId": "TWIN_5AXIS_001",
+    "machineId": "MACH_DMG_50_01",
+    "manufacturer": "DMG MORI",
+    "machineModel": "DMU 50 3rd Gen",
+    "machineSerialReference": "SN-98421-2026",
+    "configurationRevision": 1,
+    "instanceFingerprint": "FINGERPRINT_DMU50_A"
+  },
+  "fingerprint": {
+    "machineProfileHash": "HASH_MACH_1eb6d177",
+    "kinematicModelHash": "HASH_KIN_1eb6d177",
+    "geometryHash": "HASH_GEO_1eb6d177",
+    "controllerProfileHash": "HASH_CTRL_1eb6d177",
+    "toolAssemblyHash": "HASH_TOOL_1eb6d177",
+    "fixtureHash": "HASH_FIX_1eb6d177",
+    "telemetrySchemaHash": "HASH_TELEM_1eb6d177",
+    "policyHash": "HASH_POL_1eb6d177",
+    "twinRevision": 1,
+    "compositeFingerprint": "1eb6d1771eb6d1771eb6d1771eb6d1771eb6d1771eb6d1771eb6d1771eb6d177"
+  },
+  "lifecycleState": "ACTIVE",
+  "verdict": "SYNCHRONIZED",
+  "currentState": {
+    "stateId": "STATE_000005",
+    "sequenceNumber": 5,
+    "timestamp": 1787297983974,
+    "previousStateHash": "2494475124944751249447512494475124944751249447512494475124944751",
+    "currentStateHash": "9a7eb4439a7eb4439a7eb4439a7eb4439a7eb4439a7eb4439a7eb4439a7eb443",
+    "lifecycleState": "SYNCHRONIZED",
+    "axes": {
+      "X": {
+        "axisName": "X",
+        "commandedPosition": 100,
+        "actualPosition": 100.00048744114187,
+        "velocity": 100,
+        "acceleration": 0,
+        "trackingError": 0.00048744114187115883,
+        "limitState": "NORMAL",
+        "timestamp": 1787297983974,
+        "provenance": "MEASURED"
+      },
+      "Y": {
+        "axisName": "Y",
+        "commandedPosition": 50,
+        "actualPosition": 50.00063231696932,
+        "velocity": 100,
+        "acceleration": 0,
+        "trackingError": 0.0006323169693231989,
+        "limitState": "NORMAL",
+        "timestamp": 1787297983974,
+        "provenance": "MEASURED"
+      },
+      "Z": {
+        "axisName": "Z",
+        "commandedPosition": -20,
+        "actualPosition": -20.001884309679017,
+        "velocity": 100,
+        "acceleration": 0,
+        "trackingError": -0.0018843096790170932,
+        "limitState": "NORMAL",
+        "timestamp": 1787297983974,
+        "provenance": "MEASURED"
+      }
+    },
+    "rotaryAxes": {
+      "A": {
+        "axisName": "A",
+        "commandedAngleDeg": 20,
+        "actualAngleDeg": 19.999488423959892,
+        "angularVelocityDegS": 10,
+        "angularAccelerationDegS2": 0,
+        "trackingErrorDeg": -0.000511576040107542,
+        "wrapState": 0,
+        "limitState": "NORMAL",
+        "timestamp": 1787297983974,
+        "provenance": "MEASURED"
+      },
+      "C": {
+        "axisName": "C",
+        "commandedAngleDeg": 120,
+        "actualAngleDeg": 119.99933674408773,
+        "angularVelocityDegS": 20,
+        "angularAccelerationDegS2": 0,
+        "trackingErrorDeg": -0.0006632559122721204,
+        "wrapState": 0,
+        "limitState": "NORMAL",
+        "timestamp": 1787297983974,
+        "provenance": "MEASURED"
+      }
+    },
+    "spindle": {
+      "commandedRPM": 12000,
+      "actualRPM": 11998.375582596127,
+      "direction": "STOP",
+      "loadPercent": 0,
+      "temperatureC": 34.5,
+      "vibrationG": 0.08,
+      "status": "STOPPED",
+      "slipRPM": -1.6244174038729398,
+      "timestamp": 1787297983974,
+      "provenance": "CONFIGURED"
+    },
+    "controller": {
+      "programId": "O1001",
+      "programLine": 1,
+      "activeToolNumber": 1,
+      "activeOffsetId": "G54",
+      "modalState": {
+        "motionMode": "G00",
+        "planeSelection": "G17",
+        "feedMode": "G94",
+        "distanceMode": "G90"
+      },
+      "feedRateMMMin": 1500,
+      "actualFeedRateMMMin": 0,
+      "spindleSpeedRPM": 0,
+      "machineMode": "AUTO",
+      "alarmCodes": [],
+      "timestamp": 1787297983971,
+      "provenance": "CONFIGURED"
+    },
+    "tool": {
+      "toolId": "T1_ENDMILL_10",
+      "toolNumber": 1,
+      "toolAssemblyId": "ASSY_T1_ER32",
+      "lengthOffsetMM": 120,
+      "radiusOffsetMM": 5,
+      "wearLengthMM": 0.002,
+      "wearRadiusMM": 0.001,
+      "lifeState": "NEW",
+      "measurementSource": "MEASURED",
+      "timestamp": 1787297983971
+    },
+    "workpiece": {
+      "workpieceId": "WP_AEROSPACE_BRACKET",
+      "geometryRevision": 1,
+      "fixtureId": "FIX_VISE_01",
+      "stockStateHash": "STOCK_HASH_INIT",
+      "machinedStateHash": "MACHINED_HASH_INIT",
+      "removedVolumeMM3": 0,
+      "timestamp": 1787297983971
+    },
+    "fixture": {
+      "fixtureId": "FIX_VISE_01",
+      "configurationId": "CONFIG_JAW_100MM",
+      "clampState": "CLAMPED",
+      "fixtureRevision": 1,
+      "timestamp": 1787297983971
+    },
+    "safety": "NORMAL",
+    "health": {
+      "overallHealth": "HEALTHY",
+      "axisHealth": {
+        "X": "HEALTHY",
+        "Y": "HEALTHY",
+        "Z": "HEALTHY"
+      },
+      "spindleHealth": "HEALTHY",
+      "toolHealth": "HEALTHY",
+      "controllerHealth": "HEALTHY",
+      "sensorHealth": "HEALTHY",
+      "diagnostics": [],
+      "timestamp": 1787297983974
+    },
+    "uncertaintyRadiusMM": 0.007319323739253512,
+    "provenance": "MEASURED"
+  },
+  "history": [
+    {
+      "stateId": "STATE_000001",
+      "sequenceNumber": 1,
+      "timestamp": 1787297983973,
+      "previousStateHash": "0000000000000000000000000000000000000000000000000000000000000000",
+      "currentStateHash": "83015c5b83015c5b83015c5b83015c5b83015c5b83015c5b83015c5b83015c5b",
+      "lifecycleState": "SYNCHRONIZED",
+      "axes": {
+        "X": {
+          "axisName": "X",
+          "commandedPosition": 25,
+          "actualPosition": 0.0006703882336691658,
+          "velocity": 100,
+          "acceleration": 0,
+          "trackingError": 0.0006703882336691658,
+          "limitState": "NORMAL",
+          "timestamp": 1787297983972,
+          "provenance": "MEASURED"
+        },
+        "Y": {
+          "axisName": "Y",
+          "commandedPosition": 10,
+          "actualPosition": 0.00022426752488728408,
+          "velocity": 100,
+          "acceleration": 0,
+          "trackingError": 0.00022426752488728408,
+          "limitState": "NORMAL",
+          "timestamp": 1787297983972,
+          "provenance": "MEASURED"
+        },
+        "Z": {
+          "axisName": "Z",
+          "commandedPosition": -5,
+          "actualPosition": -0.0007239439690659229,
+          "velocity": 100,
+          "acceleration": 0,
+          "trackingError": -0.0007239439690659229,
+          "limitState": "NORMAL",
+          "timestamp": 1787297983972,
+          "provenance": "MEASURED"
+        }
+      },
+      "rotaryAxes": {
+        "A": {
+          "axisName": "A",
+          "commandedAngleDeg": 5,
+          "actualAngleDeg": 0.0006467681054260081,
+          "angularVelocityDegS": 10,
+          "angularAccelerationDegS2": 0,
+          "trackingErrorDeg": 0.0006467681054260081,
+          "wrapState": 0,
+          "limitState": "NORMAL",
+          "timestamp": 1787297983972,
+          "provenance": "MEASURED"
+        },
+        "C": {
+          "axisName": "C",
+          "commandedAngleDeg": 30,
+          "actualAngleDeg": 0.00019527557083758395,
+          "angularVelocityDegS": 20,
+          "angularAccelerationDegS2": 0,
+          "trackingErrorDeg": 0.00019527557083758395,
+          "wrapState": 0,
+          "limitState": "NORMAL",
+          "timestamp": 1787297983972,
+          "provenance": "MEASURED"
+        }
+      },
+      "spindle": {
+        "commandedRPM": 4000,
+        "actualRPM": 0,
+        "direction": "STOP",
+        "loadPercent": 0,
+        "temperatureC": 28.5,
+        "vibrationG": 0.08,
+        "status": "STOPPED",
+        "slipRPM": 0,
+        "timestamp": 1787297983972,
+        "provenance": "CONFIGURED"
+      },
+      "controller": {
+        "programId": "O1001",
+        "programLine": 1,
+        "activeToolNumber": 1,
+        "activeOffsetId": "G54",
+        "modalState": {
+          "motionMode": "G00",
+          "planeSelection": "G17",
+          "feedMode": "G94",
+          "distanceMode": "G90"
+        },
+        "feedRateMMMin": 500,
+        "actualFeedRateMMMin": 0,
+        "spindleSpeedRPM": 0,
+        "machineMode": "AUTO",
+        "alarmCodes": [],
+        "timestamp": 1787297983971,
+        "provenance": "CONFIGURED"
+      },
+      "tool": {
+        "toolId": "T1_ENDMILL_10",
+        "toolNumber": 1,
+        "toolAssemblyId": "ASSY_T1_ER32",
+        "lengthOffsetMM": 120,
+        "radiusOffsetMM": 5,
+        "wearLengthMM": 0.002,
+        "wearRadiusMM": 0.001,
+        "lifeState": "NEW",
+        "measurementSource": "MEASURED",
+        "timestamp": 1787297983971
+      },
+      "workpiece": {
+        "workpieceId": "WP_AEROSPACE_BRACKET",
+        "geometryRevision": 1,
+        "fixtureId": "FIX_VISE_01",
+        "stockStateHash": "STOCK_HASH_INIT",
+        "machinedStateHash": "MACHINED_HASH_INIT",
+        "removedVolumeMM3": 0,
+        "timestamp": 1787297983971
+      },
+      "fixture": {
+        "fixtureId": "FIX_VISE_01",
+        "configurationId": "CONFIG_JAW_100MM",
+        "clampState": "CLAMPED",
+        "fixtureRevision": 1,
+        "timestamp": 1787297983971
+      },
+      "safety": "NORMAL",
+      "health": {
+        "overallHealth": "HEALTHY",
+        "axisHealth": {
+          "X": "HEALTHY",
+          "Y": "HEALTHY",
+          "Z": "HEALTHY"
+        },
+        "spindleHealth": "HEALTHY",
+        "toolHealth": "HEALTHY",
+        "controllerHealth": "HEALTHY",
+        "sensorHealth": "HEALTHY",
+        "diagnostics": [],
+        "timestamp": 1787297983973
+      },
+      "uncertaintyRadiusMM": 0.004367207345661527,
+      "provenance": "MEASURED"
+    },
+    {
+      "stateId": "STATE_000002",
+      "sequenceNumber": 2,
+      "timestamp": 1787297983973,
+      "previousStateHash": "83015c5b83015c5b83015c5b83015c5b83015c5b83015c5b83015c5b83015c5b",
+      "currentStateHash": "4cad6d4f4cad6d4f4cad6d4f4cad6d4f4cad6d4f4cad6d4f4cad6d4f4cad6d4f",
+      "lifecycleState": "SYNCHRONIZED",
+      "axes": {
+        "X": {
+          "axisName": "X",
+          "commandedPosition": 50,
+          "actualPosition": 24.99919326688054,
+          "velocity": 100,
+          "acceleration": 0,
+          "trackingError": -0.0008067331194610006,
+          "limitState": "NORMAL",
+          "timestamp": 1787297983973,
+          "provenance": "MEASURED"
+        },
+        "Y": {
+          "axisName": "Y",
+          "commandedPosition": 20,
+          "actualPosition": 9.998328381422244,
+          "velocity": 100,
+          "acceleration": 0,
+          "trackingError": -0.0016716185777561066,
+          "limitState": "NORMAL",
+          "timestamp": 1787297983973,
+          "provenance": "MEASURED"
+        },
+        "Z": {
+          "axisName": "Z",
+          "commandedPosition": -10,
+          "actualPosition": -5.000061348845653,
+          "velocity": 100,
+          "acceleration": 0,
+          "trackingError": -0.00006134884565334175,
+          "limitState": "NORMAL",
+          "timestamp": 1787297983973,
+          "provenance": "MEASURED"
+        }
+      },
+      "rotaryAxes": {
+        "A": {
+          "axisName": "A",
+          "commandedAngleDeg": 10,
+          "actualAngleDeg": 5.000984406373551,
+          "angularVelocityDegS": 10,
+          "angularAccelerationDegS2": 0,
+          "trackingErrorDeg": 0.0009844063735506836,
+          "wrapState": 0,
+          "limitState": "NORMAL",
+          "timestamp": 1787297983973,
+          "provenance": "MEASURED"
+        },
+        "C": {
+          "axisName": "C",
+          "commandedAngleDeg": 60,
+          "actualAngleDeg": 29.999066880832064,
+          "angularVelocityDegS": 20,
+          "angularAccelerationDegS2": 0,
+          "trackingErrorDeg": -0.0009331191679358142,
+          "wrapState": 0,
+          "limitState": "NORMAL",
+          "timestamp": 1787297983973,
+          "provenance": "MEASURED"
+        }
+      },
+      "spindle": {
+        "commandedRPM": 8000,
+        "actualRPM": 3988.0888565040077,
+        "direction": "STOP",
+        "loadPercent": 0,
+        "temperatureC": 28.5,
+        "vibrationG": 0.08,
+        "status": "STOPPED",
+        "slipRPM": -11.911143495992292,
+        "timestamp": 1787297983973,
+        "provenance": "CONFIGURED"
+      },
+      "controller": {
+        "programId": "O1001",
+        "programLine": 1,
+        "activeToolNumber": 1,
+        "activeOffsetId": "G54",
+        "modalState": {
+          "motionMode": "G00",
+          "planeSelection": "G17",
+          "feedMode": "G94",
+          "distanceMode": "G90"
+        },
+        "feedRateMMMin": 1000,
+        "actualFeedRateMMMin": 0,
+        "spindleSpeedRPM": 0,
+        "machineMode": "AUTO",
+        "alarmCodes": [],
+        "timestamp": 1787297983971,
+        "provenance": "CONFIGURED"
+      },
+      "tool": {
+        "toolId": "T1_ENDMILL_10",
+        "toolNumber": 1,
+        "toolAssemblyId": "ASSY_T1_ER32",
+        "lengthOffsetMM": 120,
+        "radiusOffsetMM": 5,
+        "wearLengthMM": 0.002,
+        "wearRadiusMM": 0.001,
+        "lifeState": "NEW",
+        "measurementSource": "MEASURED",
+        "timestamp": 1787297983971
+      },
+      "workpiece": {
+        "workpieceId": "WP_AEROSPACE_BRACKET",
+        "geometryRevision": 1,
+        "fixtureId": "FIX_VISE_01",
+        "stockStateHash": "STOCK_HASH_INIT",
+        "machinedStateHash": "MACHINED_HASH_INIT",
+        "removedVolumeMM3": 0,
+        "timestamp": 1787297983971
+      },
+      "fixture": {
+        "fixtureId": "FIX_VISE_01",
+        "configurationId": "CONFIG_JAW_100MM",
+        "clampState": "CLAMPED",
+        "fixtureRevision": 1,
+        "timestamp": 1787297983971
+      },
+      "safety": "NORMAL",
+      "health": {
+        "overallHealth": "HEALTHY",
+        "axisHealth": {
+          "X": "HEALTHY",
+          "Y": "HEALTHY",
+          "Z": "HEALTHY"
+        },
+        "spindleHealth": "HEALTHY",
+        "toolHealth": "HEALTHY",
+        "controllerHealth": "HEALTHY",
+        "sensorHealth": "HEALTHY",
+        "diagnostics": [],
+        "timestamp": 1787297983973
+      },
+      "uncertaintyRadiusMM": 0.004367207345661527,
+      "provenance": "MEASURED"
+    },
+    {
+      "stateId": "STATE_000003",
+      "sequenceNumber": 3,
+      "timestamp": 1787297983974,
+      "previousStateHash": "4cad6d4f4cad6d4f4cad6d4f4cad6d4f4cad6d4f4cad6d4f4cad6d4f4cad6d4f",
+      "currentStateHash": "a92fb2c0a92fb2c0a92fb2c0a92fb2c0a92fb2c0a92fb2c0a92fb2c0a92fb2c0",
+      "lifecycleState": "SYNCHRONIZED",
+      "axes": {
+        "X": {
+          "axisName": "X",
+          "commandedPosition": 75,
+          "actualPosition": 49.998027646902976,
+          "velocity": 100,
+          "acceleration": 0,
+          "trackingError": -0.0019723530970239267,
+          "limitState": "NORMAL",
+          "timestamp": 1787297983974,
+          "provenance": "MEASURED"
+        },
+        "Y": {
+          "axisName": "Y",
+          "commandedPosition": 35,
+          "actualPosition": 20.001219290741755,
+          "velocity": 100,
+          "acceleration": 0,
+          "trackingError": 0.0012192907417549748,
+          "limitState": "NORMAL",
+          "timestamp": 1787297983974,
+          "provenance": "MEASURED"
+        },
+        "Z": {
+          "axisName": "Z",
+          "commandedPosition": -15,
+          "actualPosition": -9.998190836794638,
+          "velocity": 100,
+          "acceleration": 0,
+          "trackingError": 0.0018091632053618412,
+          "limitState": "NORMAL",
+          "timestamp": 1787297983974,
+          "provenance": "MEASURED"
+        }
+      },
+      "rotaryAxes": {
+        "A": {
+          "axisName": "A",
+          "commandedAngleDeg": 15,
+          "actualAngleDeg": 10.000528467892106,
+          "angularVelocityDegS": 10,
+          "angularAccelerationDegS2": 0,
+          "trackingErrorDeg": 0.0005284678921064767,
+          "wrapState": 0,
+          "limitState": "NORMAL",
+          "timestamp": 1787297983974,
+          "provenance": "MEASURED"
+        },
+        "C": {
+          "axisName": "C",
+          "commandedAngleDeg": 90,
+          "actualAngleDeg": 59.999584586257804,
+          "angularVelocityDegS": 20,
+          "angularAccelerationDegS2": 0,
+          "trackingErrorDeg": -0.00041541374219633553,
+          "wrapState": 0,
+          "limitState": "NORMAL",
+          "timestamp": 1787297983974,
+          "provenance": "MEASURED"
+        }
+      },
+      "spindle": {
+        "commandedRPM": 12000,
+        "actualRPM": 7987.372971109812,
+        "direction": "STOP",
+        "loadPercent": 0,
+        "temperatureC": 34.5,
+        "vibrationG": 0.08,
+        "status": "STOPPED",
+        "slipRPM": -12.62702889018783,
+        "timestamp": 1787297983974,
+        "provenance": "CONFIGURED"
+      },
+      "controller": {
+        "programId": "O1001",
+        "programLine": 1,
+        "activeToolNumber": 1,
+        "activeOffsetId": "G54",
+        "modalState": {
+          "motionMode": "G00",
+          "planeSelection": "G17",
+          "feedMode": "G94",
+          "distanceMode": "G90"
+        },
+        "feedRateMMMin": 1500,
+        "actualFeedRateMMMin": 0,
+        "spindleSpeedRPM": 0,
+        "machineMode": "AUTO",
+        "alarmCodes": [],
+        "timestamp": 1787297983971,
+        "provenance": "CONFIGURED"
+      },
+      "tool": {
+        "toolId": "T1_ENDMILL_10",
+        "toolNumber": 1,
+        "toolAssemblyId": "ASSY_T1_ER32",
+        "lengthOffsetMM": 120,
+        "radiusOffsetMM": 5,
+        "wearLengthMM": 0.002,
+        "wearRadiusMM": 0.001,
+        "lifeState": "NEW",
+        "measurementSource": "MEASURED",
+        "timestamp": 1787297983971
+      },
+      "workpiece": {
+        "workpieceId": "WP_AEROSPACE_BRACKET",
+        "geometryRevision": 1,
+        "fixtureId": "FIX_VISE_01",
+        "stockStateHash": "STOCK_HASH_INIT",
+        "machinedStateHash": "MACHINED_HASH_INIT",
+        "removedVolumeMM3": 0,
+        "timestamp": 1787297983971
+      },
+      "fixture": {
+        "fixtureId": "FIX_VISE_01",
+        "configurationId": "CONFIG_JAW_100MM",
+        "clampState": "CLAMPED",
+        "fixtureRevision": 1,
+        "timestamp": 1787297983971
+      },
+      "safety": "NORMAL",
+      "health": {
+        "overallHealth": "HEALTHY",
+        "axisHealth": {
+          "X": "HEALTHY",
+          "Y": "HEALTHY",
+          "Z": "HEALTHY"
+        },
+        "spindleHealth": "HEALTHY",
+        "toolHealth": "HEALTHY",
+        "controllerHealth": "HEALTHY",
+        "sensorHealth": "HEALTHY",
+        "diagnostics": [],
+        "timestamp": 1787297983974
+      },
+      "uncertaintyRadiusMM": 0.007319323739253512,
+      "provenance": "MEASURED"
+    },
+    {
+      "stateId": "STATE_000004",
+      "sequenceNumber": 4,
+      "timestamp": 1787297983974,
+      "previousStateHash": "a92fb2c0a92fb2c0a92fb2c0a92fb2c0a92fb2c0a92fb2c0a92fb2c0a92fb2c0",
+      "currentStateHash": "2494475124944751249447512494475124944751249447512494475124944751",
+      "lifecycleState": "SYNCHRONIZED",
+      "axes": {
+        "X": {
+          "axisName": "X",
+          "commandedPosition": 100,
+          "actualPosition": 74.9984661104689,
+          "velocity": 100,
+          "acceleration": 0,
+          "trackingError": -0.0015338895311032275,
+          "limitState": "NORMAL",
+          "timestamp": 1787297983974,
+          "provenance": "MEASURED"
+        },
+        "Y": {
+          "axisName": "Y",
+          "commandedPosition": 50,
+          "actualPosition": 35.00117874574874,
+          "velocity": 100,
+          "acceleration": 0,
+          "trackingError": 0.0011787457487386632,
+          "limitState": "NORMAL",
+          "timestamp": 1787297983974,
+          "provenance": "MEASURED"
+        },
+        "Z": {
+          "axisName": "Z",
+          "commandedPosition": -20,
+          "actualPosition": -15.001679370041696,
+          "velocity": 100,
+          "acceleration": 0,
+          "trackingError": -0.0016793700416961599,
+          "limitState": "NORMAL",
+          "timestamp": 1787297983974,
+          "provenance": "MEASURED"
+        }
+      },
+      "rotaryAxes": {
+        "A": {
+          "axisName": "A",
+          "commandedAngleDeg": 20,
+          "actualAngleDeg": 14.999694919473516,
+          "angularVelocityDegS": 10,
+          "angularAccelerationDegS2": 0,
+          "trackingErrorDeg": -0.0003050805264841472,
+          "wrapState": 0,
+          "limitState": "NORMAL",
+          "timestamp": 1787297983974,
+          "provenance": "MEASURED"
+        },
+        "C": {
+          "axisName": "C",
+          "commandedAngleDeg": 120,
+          "actualAngleDeg": 89.99957749486492,
+          "angularVelocityDegS": 20,
+          "angularAccelerationDegS2": 0,
+          "trackingErrorDeg": -0.00042250513507724463,
+          "wrapState": 0,
+          "limitState": "NORMAL",
+          "timestamp": 1787297983974,
+          "provenance": "MEASURED"
+        }
+      },
+      "spindle": {
+        "commandedRPM": 12000,
+        "actualRPM": 11985.191457995867,
+        "direction": "STOP",
+        "loadPercent": 0,
+        "temperatureC": 34.5,
+        "vibrationG": 0.08,
+        "status": "STOPPED",
+        "slipRPM": -14.808542004133415,
+        "timestamp": 1787297983974,
+        "provenance": "CONFIGURED"
+      },
+      "controller": {
+        "programId": "O1001",
+        "programLine": 1,
+        "activeToolNumber": 1,
+        "activeOffsetId": "G54",
+        "modalState": {
+          "motionMode": "G00",
+          "planeSelection": "G17",
+          "feedMode": "G94",
+          "distanceMode": "G90"
+        },
+        "feedRateMMMin": 1500,
+        "actualFeedRateMMMin": 0,
+        "spindleSpeedRPM": 0,
+        "machineMode": "AUTO",
+        "alarmCodes": [],
+        "timestamp": 1787297983971,
+        "provenance": "CONFIGURED"
+      },
+      "tool": {
+        "toolId": "T1_ENDMILL_10",
+        "toolNumber": 1,
+        "toolAssemblyId": "ASSY_T1_ER32",
+        "lengthOffsetMM": 120,
+        "radiusOffsetMM": 5,
+        "wearLengthMM": 0.002,
+        "wearRadiusMM": 0.001,
+        "lifeState": "NEW",
+        "measurementSource": "MEASURED",
+        "timestamp": 1787297983971
+      },
+      "workpiece": {
+        "workpieceId": "WP_AEROSPACE_BRACKET",
+        "geometryRevision": 1,
+        "fixtureId": "FIX_VISE_01",
+        "stockStateHash": "STOCK_HASH_INIT",
+        "machinedStateHash": "MACHINED_HASH_INIT",
+        "removedVolumeMM3": 0,
+        "timestamp": 1787297983971
+      },
+      "fixture": {
+        "fixtureId": "FIX_VISE_01",
+        "configurationId": "CONFIG_JAW_100MM",
+        "clampState": "CLAMPED",
+        "fixtureRevision": 1,
+        "timestamp": 1787297983971
+      },
+      "safety": "NORMAL",
+      "health": {
+        "overallHealth": "HEALTHY",
+        "axisHealth": {
+          "X": "HEALTHY",
+          "Y": "HEALTHY",
+          "Z": "HEALTHY"
+        },
+        "spindleHealth": "HEALTHY",
+        "toolHealth": "HEALTHY",
+        "controllerHealth": "HEALTHY",
+        "sensorHealth": "HEALTHY",
+        "diagnostics": [],
+        "timestamp": 1787297983974
+      },
+      "uncertaintyRadiusMM": 0.007319323739253512,
+      "provenance": "MEASURED"
+    },
+    {
+      "stateId": "STATE_000005",
+      "sequenceNumber": 5,
+      "timestamp": 1787297983974,
+      "previousStateHash": "2494475124944751249447512494475124944751249447512494475124944751",
+      "currentStateHash": "9a7eb4439a7eb4439a7eb4439a7eb4439a7eb4439a7eb4439a7eb4439a7eb443",
+      "lifecycleState": "SYNCHRONIZED",
+      "axes": {
+        "X": {
+          "axisName": "X",
+          "commandedPosition": 100,
+          "actualPosition": 100.00048744114187,
+          "velocity": 100,
+          "acceleration": 0,
+          "trackingError": 0.00048744114187115883,
+          "limitState": "NORMAL",
+          "timestamp": 1787297983974,
+          "provenance": "MEASURED"
+        },
+        "Y": {
+          "axisName": "Y",
+          "commandedPosition": 50,
+          "actualPosition": 50.00063231696932,
+          "velocity": 100,
+          "acceleration": 0,
+          "trackingError": 0.0006323169693231989,
+          "limitState": "NORMAL",
+          "timestamp": 1787297983974,
+          "provenance": "MEASURED"
+        },
+        "Z": {
+          "axisName": "Z",
+          "commandedPosition": -20,
+          "actualPosition": -20.001884309679017,
+          "velocity": 100,
+          "acceleration": 0,
+          "trackingError": -0.0018843096790170932,
+          "limitState": "NORMAL",
+          "timestamp": 1787297983974,
+          "provenance": "MEASURED"
+        }
+      },
+      "rotaryAxes": {
+        "A": {
+          "axisName": "A",
+          "commandedAngleDeg": 20,
+          "actualAngleDeg": 19.999488423959892,
+          "angularVelocityDegS": 10,
+          "angularAccelerationDegS2": 0,
+          "trackingErrorDeg": -0.000511576040107542,
+          "wrapState": 0,
+          "limitState": "NORMAL",
+          "timestamp": 1787297983974,
+          "provenance": "MEASURED"
+        },
+        "C": {
+          "axisName": "C",
+          "commandedAngleDeg": 120,
+          "actualAngleDeg": 119.99933674408773,
+          "angularVelocityDegS": 20,
+          "angularAccelerationDegS2": 0,
+          "trackingErrorDeg": -0.0006632559122721204,
+          "wrapState": 0,
+          "limitState": "NORMAL",
+          "timestamp": 1787297983974,
+          "provenance": "MEASURED"
+        }
+      },
+      "spindle": {
+        "commandedRPM": 12000,
+        "actualRPM": 11998.375582596127,
+        "direction": "STOP",
+        "loadPercent": 0,
+        "temperatureC": 34.5,
+        "vibrationG": 0.08,
+        "status": "STOPPED",
+        "slipRPM": -1.6244174038729398,
+        "timestamp": 1787297983974,
+        "provenance": "CONFIGURED"
+      },
+      "controller": {
+        "programId": "O1001",
+        "programLine": 1,
+        "activeToolNumber": 1,
+        "activeOffsetId": "G54",
+        "modalState": {
+          "motionMode": "G00",
+          "planeSelection": "G17",
+          "feedMode": "G94",
+          "distanceMode": "G90"
+        },
+        "feedRateMMMin": 1500,
+        "actualFeedRateMMMin": 0,
+        "spindleSpeedRPM": 0,
+        "machineMode": "AUTO",
+        "alarmCodes": [],
+        "timestamp": 1787297983971,
+        "provenance": "CONFIGURED"
+      },
+      "tool": {
+        "toolId": "T1_ENDMILL_10",
+        "toolNumber": 1,
+        "toolAssemblyId": "ASSY_T1_ER32",
+        "lengthOffsetMM": 120,
+        "radiusOffsetMM": 5,
+        "wearLengthMM": 0.002,
+        "wearRadiusMM": 0.001,
+        "lifeState": "NEW",
+        "measurementSource": "MEASURED",
+        "timestamp": 1787297983971
+      },
+      "workpiece": {
+        "workpieceId": "WP_AEROSPACE_BRACKET",
+        "geometryRevision": 1,
+        "fixtureId": "FIX_VISE_01",
+        "stockStateHash": "STOCK_HASH_INIT",
+        "machinedStateHash": "MACHINED_HASH_INIT",
+        "removedVolumeMM3": 0,
+        "timestamp": 1787297983971
+      },
+      "fixture": {
+        "fixtureId": "FIX_VISE_01",
+        "configurationId": "CONFIG_JAW_100MM",
+        "clampState": "CLAMPED",
+        "fixtureRevision": 1,
+        "timestamp": 1787297983971
+      },
+      "safety": "NORMAL",
+      "health": {
+        "overallHealth": "HEALTHY",
+        "axisHealth": {
+          "X": "HEALTHY",
+          "Y": "HEALTHY",
+          "Z": "HEALTHY"
+        },
+        "spindleHealth": "HEALTHY",
+        "toolHealth": "HEALTHY",
+        "controllerHealth": "HEALTHY",
+        "sensorHealth": "HEALTHY",
+        "diagnostics": [],
+        "timestamp": 1787297983974
+      },
+      "uncertaintyRadiusMM": 0.007319323739253512,
+      "provenance": "MEASURED"
+    }
+  ],
+  "events": [
+    {
+      "eventId": "EVT_000001",
+      "timestamp": 1787297983972,
+      "source": "COMMISSIONING_GATE",
+      "machineId": "MACH_DMG_50_01",
+      "twinId": "TWIN_5AXIS_001",
+      "sequence": 1,
+      "type": "STATE_SYNCHRONIZED",
+      "payload": {
+        "message": "Machine twin commissioned and bound to physical asset serial SN-98421-2026"
+      },
+      "payloadHash": "fa99c091fa99c091fa99c091fa99c091fa99c091fa99c091fa99c091fa99c091",
+      "previousEventHash": "0000000000000000000000000000000000000000000000000000000000000000"
+    }
+  ],
+  "checkpoints": [
+    {
+      "checkpointId": "CHK_0001",
+      "timestamp": 1787297983974,
+      "machineStateHash": "9a7eb4439a7eb4439a7eb4439a7eb4439a7eb4439a7eb4439a7eb4439a7eb443",
+      "telemetryPosition": 5,
+      "toolState": {
+        "toolId": "T1_ENDMILL_10",
+        "toolNumber": 1,
+        "toolAssemblyId": "ASSY_T1_ER32",
+        "lengthOffsetMM": 120,
+        "radiusOffsetMM": 5,
+        "wearLengthMM": 0.002,
+        "wearRadiusMM": 0.001,
+        "lifeState": "NEW",
+        "measurementSource": "MEASURED",
+        "timestamp": 1787297983971
+      },
+      "programState": {
+        "programId": "O1001",
+        "programLine": 1,
+        "activeToolNumber": 1,
+        "activeOffsetId": "G54",
+        "modalState": {
+          "motionMode": "G00",
+          "planeSelection": "G17",
+          "feedMode": "G94",
+          "distanceMode": "G90"
+        },
+        "feedRateMMMin": 1500,
+        "actualFeedRateMMMin": 0,
+        "spindleSpeedRPM": 0,
+        "machineMode": "AUTO",
+        "alarmCodes": [],
+        "timestamp": 1787297983971,
+        "provenance": "CONFIGURED"
+      },
+      "stockStateHash": "STOCK_HASH_INIT",
+      "healthState": {
+        "overallHealth": "HEALTHY",
+        "axisHealth": {
+          "X": "HEALTHY",
+          "Y": "HEALTHY",
+          "Z": "HEALTHY"
+        },
+        "spindleHealth": "HEALTHY",
+        "toolHealth": "HEALTHY",
+        "controllerHealth": "HEALTHY",
+        "sensorHealth": "HEALTHY",
+        "diagnostics": [],
+        "timestamp": 1787297983974
+      },
+      "snapshotState": {
+        "stateId": "STATE_000005",
+        "sequenceNumber": 5,
+        "timestamp": 1787297983974,
+        "previousStateHash": "2494475124944751249447512494475124944751249447512494475124944751",
+        "currentStateHash": "9a7eb4439a7eb4439a7eb4439a7eb4439a7eb4439a7eb4439a7eb4439a7eb443",
+        "lifecycleState": "SYNCHRONIZED",
+        "axes": {
+          "X": {
+            "axisName": "X",
+            "commandedPosition": 100,
+            "actualPosition": 100.00048744114187,
+            "velocity": 100,
+            "acceleration": 0,
+            "trackingError": 0.00048744114187115883,
+            "limitState": "NORMAL",
+            "timestamp": 1787297983974,
+            "provenance": "MEASURED"
+          },
+          "Y": {
+            "axisName": "Y",
+            "commandedPosition": 50,
+            "actualPosition": 50.00063231696932,
+            "velocity": 100,
+            "acceleration": 0,
+            "trackingError": 0.0006323169693231989,
+            "limitState": "NORMAL",
+            "timestamp": 1787297983974,
+            "provenance": "MEASURED"
+          },
+          "Z": {
+            "axisName": "Z",
+            "commandedPosition": -20,
+            "actualPosition": -20.001884309679017,
+            "velocity": 100,
+            "acceleration": 0,
+            "trackingError": -0.0018843096790170932,
+            "limitState": "NORMAL",
+            "timestamp": 1787297983974,
+            "provenance": "MEASURED"
+          }
+        },
+        "rotaryAxes": {
+          "A": {
+            "axisName": "A",
+            "commandedAngleDeg": 20,
+            "actualAngleDeg": 19.999488423959892,
+            "angularVelocityDegS": 10,
+            "angularAccelerationDegS2": 0,
+            "trackingErrorDeg": -0.000511576040107542,
+            "wrapState": 0,
+            "limitState": "NORMAL",
+            "timestamp": 1787297983974,
+            "provenance": "MEASURED"
+          },
+          "C": {
+            "axisName": "C",
+            "commandedAngleDeg": 120,
+            "actualAngleDeg": 119.99933674408773,
+            "angularVelocityDegS": 20,
+            "angularAccelerationDegS2": 0,
+            "trackingErrorDeg": -0.0006632559122721204,
+            "wrapState": 0,
+            "limitState": "NORMAL",
+            "timestamp": 1787297983974,
+            "provenance": "MEASURED"
+          }
+        },
+        "spindle": {
+          "commandedRPM": 12000,
+          "actualRPM": 11998.375582596127,
+          "direction": "STOP",
+          "loadPercent": 0,
+          "temperatureC": 34.5,
+          "vibrationG": 0.08,
+          "status": "STOPPED",
+          "slipRPM": -1.6244174038729398,
+          "timestamp": 1787297983974,
+          "provenance": "CONFIGURED"
+        },
+        "controller": {
+          "programId": "O1001",
+          "programLine": 1,
+          "activeToolNumber": 1,
+          "activeOffsetId": "G54",
+          "modalState": {
+            "motionMode": "G00",
+            "planeSelection": "G17",
+            "feedMode": "G94",
+            "distanceMode": "G90"
+          },
+          "feedRateMMMin": 1500,
+          "actualFeedRateMMMin": 0,
+          "spindleSpeedRPM": 0,
+          "machineMode": "AUTO",
+          "alarmCodes": [],
+          "timestamp": 1787297983971,
+          "provenance": "CONFIGURED"
+        },
+        "tool": {
+          "toolId": "T1_ENDMILL_10",
+          "toolNumber": 1,
+          "toolAssemblyId": "ASSY_T1_ER32",
+          "lengthOffsetMM": 120,
+          "radiusOffsetMM": 5,
+          "wearLengthMM": 0.002,
+          "wearRadiusMM": 0.001,
+          "lifeState": "NEW",
+          "measurementSource": "MEASURED",
+          "timestamp": 1787297983971
+        },
+        "workpiece": {
+          "workpieceId": "WP_AEROSPACE_BRACKET",
+          "geometryRevision": 1,
+          "fixtureId": "FIX_VISE_01",
+          "stockStateHash": "STOCK_HASH_INIT",
+          "machinedStateHash": "MACHINED_HASH_INIT",
+          "removedVolumeMM3": 0,
+          "timestamp": 1787297983971
+        },
+        "fixture": {
+          "fixtureId": "FIX_VISE_01",
+          "configurationId": "CONFIG_JAW_100MM",
+          "clampState": "CLAMPED",
+          "fixtureRevision": 1,
+          "timestamp": 1787297983971
+        },
+        "safety": "NORMAL",
+        "health": {
+          "overallHealth": "HEALTHY",
+          "axisHealth": {
+            "X": "HEALTHY",
+            "Y": "HEALTHY",
+            "Z": "HEALTHY"
+          },
+          "spindleHealth": "HEALTHY",
+          "toolHealth": "HEALTHY",
+          "controllerHealth": "HEALTHY",
+          "sensorHealth": "HEALTHY",
+          "diagnostics": [],
+          "timestamp": 1787297983974
+        },
+        "uncertaintyRadiusMM": 0.007319323739253512,
+        "provenance": "MEASURED"
+      }
+    }
+  ],
+  "divergences": [],
+  "anomalies": [],
+  "trackingMetrics": {
+    "X": {
+      "axisName": "X",
+      "currentError": 0.00048744114187115883,
+      "maxError": 0.0019723530970239267,
+      "rmsError": 0.0012313270410117658,
+      "sampleCount": 5
+    },
+    "Y": {
+      "axisName": "Y",
+      "currentError": 0.0006323169693231989,
+      "maxError": 0.0016716185777561066,
+      "rmsError": 0.001106394215007595,
+      "sampleCount": 5
+    },
+    "Z": {
+      "axisName": "Z",
+      "currentError": -0.0018843096790170932,
+      "maxError": 0.0018843096790170932,
+      "rmsError": 0.0014263125013985619,
+      "sampleCount": 5
+    },
+    "A": {
+      "axisName": "A",
+      "currentError": -0.000511576040107542,
+      "maxError": 0.0009844063735506836,
+      "rmsError": 0.0006358344715290256,
+      "sampleCount": 5
+    },
+    "C": {
+      "axisName": "C",
+      "currentError": -0.0006632559122721204,
+      "maxError": 0.0009331191679358142,
+      "rmsError": 0.0005830662915434741,
+      "sampleCount": 5
+    }
+  },
+  "reconciliation": {
+    "toolpathId": "TOOLPATH_AERO_01",
+    "gcodeProgramId": "O1001",
+    "sampleCount": 150,
+    "averagePositionDeviationMM": 0.002,
+    "maxPositionDeviationMM": 0.005,
+    "averageSpindleSlipRPM": 12,
+    "feedDeviationMMMin": 4.5,
+    "divergences": [],
+    "isWithinAcceptanceBounds": true,
+    "verdict": "SYNCHRONIZED"
+  },
+  "uncertainty": {
+    "sensorLinearUncertaintyMM": 0.001,
+    "sensorAngularUncertaintyDeg": 0.001,
+    "kinematicTransformationErrorMM": 0.002,
+    "clockJitterMS": 1.5,
+    "combinedSpatialUncertaintyMM": 0.007319323739253512,
+    "confidenceScore": 0.9268067626074649
+  },
+  "gateResult": {
+    "passed": true,
+    "scorePercentage": 100,
+    "totalChecks": 101,
+    "passedChecks": 101,
+    "verdict": "SYNCHRONIZED",
+    "timestamp": "2026-08-21T07:39:43.982Z",
+    "details": []
+  },
+  "generatedAt": "2026-08-21T07:39:43.982Z"
+}

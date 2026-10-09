@@ -1,0 +1,25 @@
+{
+  "reportType": "ASSEMBLY_PROVENANCE_AND_SNAPSHOT",
+  "assemblyId": "ASM_TURBO_PUMP_01",
+  "assemblyRevision": "R1.0",
+  "provenance": {
+    "createdBy": "SYSTEM_ENGINEER",
+    "createdAt": 1787299359312,
+    "source": "SECP_CAD_KERNEL",
+    "sourceRevision": "v2.0",
+    "changeSetDescription": "Initial assembly graph creation"
+  },
+  "snapshot": {
+    "snapshotId": "SNAP_ASM_TURBO_PUMP_01_R1.0_1787299359356",
+    "assemblyId": "ASM_TURBO_PUMP_01",
+    "assemblyRevision": "R1.0",
+    "graphHash": "24438ef55569d99a78dc9d590f710221c96840c2bd40bc510a30c26f00034f5e",
+    "nodeCount": 15,
+    "edgeCount": 31,
+    "occurrenceCount": 15,
+    "configurationId": "DEFAULT",
+    "timestamp": 1787299359356,
+    "validatorVersion": "SECP-AG-113.1",
+    "fingerprint": "SECP-AG-SHA256:24438EF55569D99A:ASM_TURBO_PUMP_01:R1.0"
+  }
+}

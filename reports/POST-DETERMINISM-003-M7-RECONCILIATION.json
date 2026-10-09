@@ -1,0 +1,55 @@
+{
+  "$schema": "https://secp.defense.gov/schemas/post-determinism-003-m7-reconciliation.json",
+  "auditId": "SECP-POST-DETERMINISM-003-M7-RECONCILIATION",
+  "timestamp": "2026-09-26T07:31:00Z",
+  "totalBenchmarkCases": 36,
+  "accountingDelta": {
+    "preRepair": {
+      "independentlyProven": 23,
+      "validCaseFailures": 7,
+      "correctlyRejectedInvalid": 1,
+      "physicalConstraintUnenforced": 5,
+      "total": 36
+    },
+    "postRepair": {
+      "independentlyProven": 30,
+      "validCaseFailures": 0,
+      "correctlyRejectedInvalid": 1,
+      "physicalConstraintUnenforced": 5,
+      "total": 36
+    },
+    "deltaAnalysis": {
+      "classFFailuresResolved": 6,
+      "classCZeroPressureResolved": 1,
+      "totalValidFailuresResolved": 7,
+      "physicalConstraintUnenforcedRemaining": 5
+    }
+  },
+  "caseAccounting": {
+    "independentlyProvenCases": [
+      "M7-ROB-01", "M7-ROB-02", "M7-ROB-03", "M7-ROB-04", "M7-ROB-06",
+      "M7-AER-01", "M7-AER-02", "M7-AER-03", "M7-AER-04", "M7-AER-06",
+      "M7-AUT-01", "M7-AUT-02", "M7-AUT-03", "M7-AUT-04", "M7-AUT-06",
+      "M7-ENE-01", "M7-ENE-02", "M7-ENE-03", "M7-ENE-04", "M7-ENE-06",
+      "M7-MAR-01", "M7-MAR-02", "M7-MAR-03", "M7-MAR-04", "M7-MAR-06",
+      "M7-OIL-01", "M7-OIL-02", "M7-OIL-03", "M7-OIL-04", "M7-OIL-06"
+    ],
+    "validCaseFailures": [],
+    "correctlyRejectedInvalidCases": [
+      "M7-MAR-05"
+    ],
+    "physicalConstraintUnenforcedCases": [
+      "M7-ROB-05",
+      "M7-AER-05",
+      "M7-AUT-05",
+      "M7-ENE-05",
+      "M7-OIL-05"
+    ]
+  },
+  "statusBreakdown": {
+    "identityReplayFailures": "CLOSED (0 remaining)",
+    "solverNumericalFailures": "CLOSED (0 remaining)",
+    "physicalConstraintGuardrails": "OPEN (5 domain validation cases pending)",
+    "benchmarkAcceptanceGate": "FAIL-VISIBLE (Fails on 5 unenforced physical constraints)"
+  }
+}

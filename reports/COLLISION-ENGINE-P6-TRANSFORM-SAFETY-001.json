@@ -1,0 +1,7 @@
+{
+  "reportId": "COLLISION-ENGINE-P6-TRANSFORM-SAFETY-001",
+  "timestampIso": "2026-10-02T08:17:49.207Z",
+  "transformChangeTested": "TR_REV_1 -> TR_REV_2",
+  "staleInvalidationConfirmed": true,
+  "verdict": "PASSED"
+}

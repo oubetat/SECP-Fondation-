@@ -1,0 +1,51 @@
+{
+  "contract_id": "SECP-POST-007-PHASE2-CAP-SUP-005-REFERENCE-MATRIX",
+  "timestamp": "2026-09-23T11:08:00.000Z",
+  "references": [
+    {
+      "reference": "ISO 10303-242 (STEP AP242)",
+      "relevant_requirement": "Model-Based 3D Engineering Data Exchange",
+      "secp_capability": "Manufacturing Feature Recognition & GD&T Linkage",
+      "evidence": "AP242 BRep ingestion and PMI parsing.",
+      "scope": "Geometric and semantic nominal data.",
+      "gap": "Lack of direct STEP-NC (AP238) execution evidence.",
+      "verdict": "PARTIAL"
+    },
+    {
+      "reference": "ANSI/DMSC QIF 3.0 / ISO 23952:2020",
+      "relevant_requirement": "Quality Information Framework for Closed-Loop Inspection",
+      "secp_capability": "Closed-Loop Metrology Feedback",
+      "evidence": "QIF Results ingestion for inversion engine.",
+      "scope": "Inspection results to CAM feedback.",
+      "gap": "Incomplete QIF Resource and QIF Plan integration.",
+      "verdict": "PARTIAL"
+    },
+    {
+      "reference": "ISO 23247",
+      "relevant_requirement": "Digital Twin Framework for Manufacturing",
+      "secp_capability": "In-Process Simulation & Machine Synchronization",
+      "evidence": "MachineDigitalTwinEngine and TelemetryAdapter.",
+      "scope": "Real-time state synchronization.",
+      "gap": "Clock drift and sub-microsecond synchronization.",
+      "verdict": "PARTIAL"
+    },
+    {
+      "reference": "NIST Digital Thread Reference Architecture",
+      "relevant_requirement": "Seamless data flow from Design to Inspection",
+      "secp_capability": "Closed-Loop MetrologyInversionEngine",
+      "evidence": "Implementation of feedback loop from CMM deviations to CL-data.",
+      "scope": "Corrective action loop.",
+      "gap": "Automated root-cause decomposition (tool wear vs kinematic drift).",
+      "verdict": "NOT_PROVEN"
+    },
+    {
+      "reference": "ISO 14649 (STEP-NC)",
+      "relevant_requirement": "Data model for Computerized Numerical Controllers",
+      "secp_capability": "Feature-Based Machining",
+      "evidence": "ManufacturingFeatureRecognizer.",
+      "scope": "High-level NC programming.",
+      "gap": "Native AP238 file export/import.",
+      "verdict": "MISSING"
+    }
+  ]
+}

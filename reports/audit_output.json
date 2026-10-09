@@ -1,0 +1,2315 @@
+{
+  "passed": false,
+  "violations": [
+    {
+      "file": "src/engine/assembly/AssemblyConfiguration.ts",
+      "line": 72,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded success: true",
+      "code": "return { success: true, message: `Applied configuration: ${config.name}` };"
+    },
+    {
+      "file": "src/engine/featureTree.ts",
+      "line": 370,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded success: true",
+      "code": "success: true,"
+    },
+    {
+      "file": "src/engine/features/FeatureRegenerationEngine.ts",
+      "line": 250,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded success: true",
+      "code": "success: true,"
+    },
+    {
+      "file": "src/engine/features/TopologyReferenceResolver.ts",
+      "line": 43,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded success: true",
+      "code": "success: true,"
+    },
+    {
+      "file": "src/engine/intent/DesignIntentResolver.ts",
+      "line": 31,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded success: true",
+      "code": "return { success: true, entityIndex: res.index };"
+    },
+    {
+      "file": "src/engine/production-continuity/RecoveryExecutionEngine.ts",
+      "line": 16,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded success: true",
+      "code": "success: true"
+    },
+    {
+      "file": "src/engine/telemetry/IndustrialGatewayManager.ts",
+      "line": 205,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded success: true",
+      "code": "return { success: true, event };"
+    },
+    {
+      "file": "src/engine/telemetry/connectors/MQTTConnector.ts",
+      "line": 71,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded success: true",
+      "code": "success: true,"
+    },
+    {
+      "file": "src/engine/telemetry/connectors/MTConnectConnector.ts",
+      "line": 90,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded success: true",
+      "code": "success: true,"
+    },
+    {
+      "file": "src/engine/telemetry/connectors/ModbusConnector.ts",
+      "line": 74,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded success: true",
+      "code": "success: true,"
+    },
+    {
+      "file": "src/engine/telemetry/connectors/OPCUAConnector.ts",
+      "line": 72,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded success: true",
+      "code": "success: true,"
+    },
+    {
+      "file": "src/engine/testRunner.ts",
+      "line": 507,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/testRunner.ts",
+      "line": 533,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/DisasterRecoveryProofEngine.ts",
+      "line": 82,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/DisasterRecoveryProofEngine.ts",
+      "line": 96,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/DisasterRecoveryProofEngine.ts",
+      "line": 110,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/DisasterRecoveryProofEngine.ts",
+      "line": 124,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/DisasterRecoveryProofEngine.ts",
+      "line": 138,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/DisasterRecoveryProofEngine.ts",
+      "line": 152,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/DisasterRecoveryProofEngine.ts",
+      "line": 166,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/DisasterRecoveryProofEngine.ts",
+      "line": 180,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/DisasterRecoveryProofEngine.ts",
+      "line": 194,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/FactoryAcceptanceTestEngine.ts",
+      "line": 160,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/FactoryAcceptanceTestEngine.ts",
+      "line": 171,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/FactoryAcceptanceTestEngine.ts",
+      "line": 182,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/FactoryAcceptanceTestEngine.ts",
+      "line": 193,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/FactoryAcceptanceTestEngine.ts",
+      "line": 208,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/FactoryAcceptanceTestEngine.ts",
+      "line": 218,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/FactoryAcceptanceTestEngine.ts",
+      "line": 228,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/FactoryAcceptanceTestEngine.ts",
+      "line": 238,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/FactoryAcceptanceTestEngine.ts",
+      "line": 257,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true"
+    },
+    {
+      "file": "src/engine/validation/FactoryAcceptanceTestEngine.ts",
+      "line": 268,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true"
+    },
+    {
+      "file": "src/engine/validation/FactoryAcceptanceTestEngine.ts",
+      "line": 282,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true"
+    },
+    {
+      "file": "src/engine/validation/FactoryAcceptanceTestEngine.ts",
+      "line": 292,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true"
+    },
+    {
+      "file": "src/engine/validation/FactoryAcceptanceTestEngine.ts",
+      "line": 302,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true"
+    },
+    {
+      "file": "src/engine/validation/FactoryAcceptanceTestEngine.ts",
+      "line": 316,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true"
+    },
+    {
+      "file": "src/engine/validation/FactoryAcceptanceTestEngine.ts",
+      "line": 326,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true"
+    },
+    {
+      "file": "src/engine/validation/FactoryAcceptanceTestEngine.ts",
+      "line": 347,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true"
+    },
+    {
+      "file": "src/engine/validation/FactoryAcceptanceTestEngine.ts",
+      "line": 356,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true"
+    },
+    {
+      "file": "src/engine/validation/FactoryAcceptanceTestEngine.ts",
+      "line": 368,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true"
+    },
+    {
+      "file": "src/engine/validation/FactoryAcceptanceTestEngine.ts",
+      "line": 377,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true"
+    },
+    {
+      "file": "src/engine/validation/FactoryAcceptanceTestEngine.ts",
+      "line": 386,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true"
+    },
+    {
+      "file": "src/engine/validation/FactoryAcceptanceTestEngine.ts",
+      "line": 395,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true"
+    },
+    {
+      "file": "src/engine/validation/FactoryAcceptanceTestEngine.ts",
+      "line": 404,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true"
+    },
+    {
+      "file": "src/engine/validation/FactoryAcceptanceTestEngine.ts",
+      "line": 413,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true"
+    },
+    {
+      "file": "src/engine/validation/FailureInjectionEngine.ts",
+      "line": 122,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/FailureInjectionEngine.ts",
+      "line": 145,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/FailureInjectionEngine.ts",
+      "line": 168,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/FailureInjectionEngine.ts",
+      "line": 191,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/FailureInjectionEngine.ts",
+      "line": 214,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/FailureInjectionEngine.ts",
+      "line": 237,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/FailureInjectionEngine.ts",
+      "line": 260,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/FailureInjectionEngine.ts",
+      "line": 283,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/FailureInjectionEngine.ts",
+      "line": 306,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/FailureInjectionEngine.ts",
+      "line": 329,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/FailureInjectionEngine.ts",
+      "line": 352,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/FailureInjectionEngine.ts",
+      "line": 375,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/FailureInjectionEngine.ts",
+      "line": 398,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/FailureInjectionEngine.ts",
+      "line": 421,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/FailureInjectionEngine.ts",
+      "line": 434,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/GateDependencyAudit.ts",
+      "line": 10,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "return { passed: true, violations: [] };"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGate077.ts",
+      "line": 184,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGate077.ts",
+      "line": 198,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGate077.ts",
+      "line": 205,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGate079.ts",
+      "line": 247,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGate079.ts",
+      "line": 274,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGate079.ts",
+      "line": 283,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGate079.ts",
+      "line": 292,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGate079.ts",
+      "line": 301,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGate079.ts",
+      "line": 310,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGate079.ts",
+      "line": 319,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGate081.ts",
+      "line": 58,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGate082.ts",
+      "line": 180,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGate085.ts",
+      "line": 145,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGate085.ts",
+      "line": 155,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGate085.ts",
+      "line": 165,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGate085.ts",
+      "line": 175,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGate085.ts",
+      "line": 185,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGate085.ts",
+      "line": 207,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGate085.ts",
+      "line": 253,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGate088.ts",
+      "line": 78,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "checks.push({ criterion: 'Dependency Graph Integrity', passed: true });"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGate088.ts",
+      "line": 126,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "checks.push({ criterion: 'CAM Toolpath Dependency Tracking', passed: true });"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGate088.ts",
+      "line": 129,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "checks.push({ criterion: '5-Axis Simulation ECO Integration', passed: true });"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGate088.ts",
+      "line": 132,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "checks.push({ criterion: 'Cross-Artifact Revision Consistency', passed: true });"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGate088.ts",
+      "line": 154,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "checks.push({ criterion: 'Forensic Audit Trail (History)', passed: true });"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGate088.ts",
+      "line": 181,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "checks.push({ criterion: 'Concurrency & Conflict Control', passed: true });"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGate088.ts",
+      "line": 184,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "checks.push({ criterion: 'End-to-End Production Workflow Pass', passed: true });"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGate088.ts",
+      "line": 187,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "checks.push({ criterion: 'SECP-088 FINAL-CLOSED Integration', passed: true });"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGate094.ts",
+      "line": 68,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGate094R1.ts",
+      "line": 438,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGate095.ts",
+      "line": 544,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded success: true",
+      "code": "success: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGate101_5.ts",
+      "line": 67,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGate101_5.ts",
+      "line": 229,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGate101_5.ts",
+      "line": 246,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP0.ts",
+      "line": 121,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP0.ts",
+      "line": 126,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP0.ts",
+      "line": 131,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP0.ts",
+      "line": 136,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP0.ts",
+      "line": 141,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP0.ts",
+      "line": 146,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP0.ts",
+      "line": 151,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP0.ts",
+      "line": 178,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP0.ts",
+      "line": 183,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP0.ts",
+      "line": 188,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP0.ts",
+      "line": 193,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP0.ts",
+      "line": 201,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP0.ts",
+      "line": 216,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP0.ts",
+      "line": 222,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP0.ts",
+      "line": 272,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: trueBlockerCount === 0,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP0.ts",
+      "line": 284,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP0.ts",
+      "line": 290,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP0.ts",
+      "line": 296,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP0.ts",
+      "line": 302,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP0.ts",
+      "line": 308,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP0.ts",
+      "line": 314,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP0.ts",
+      "line": 320,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP0.ts",
+      "line": 326,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP0.ts",
+      "line": 332,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP0.ts",
+      "line": 338,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP0.ts",
+      "line": 344,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP0.ts",
+      "line": 350,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP1.ts",
+      "line": 163,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP1.ts",
+      "line": 169,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP1.ts",
+      "line": 175,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP1.ts",
+      "line": 181,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP1.ts",
+      "line": 187,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP1.ts",
+      "line": 193,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP1.ts",
+      "line": 199,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP1.ts",
+      "line": 205,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP1.ts",
+      "line": 211,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP1.ts",
+      "line": 217,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP1.ts",
+      "line": 223,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP1.ts",
+      "line": 229,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP10.ts",
+      "line": 139,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP10.ts",
+      "line": 145,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP10.ts",
+      "line": 151,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP10.ts",
+      "line": 157,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP10.ts",
+      "line": 163,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP10.ts",
+      "line": 169,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP10.ts",
+      "line": 175,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP10.ts",
+      "line": 181,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP10.ts",
+      "line": 187,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP10.ts",
+      "line": 193,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP10.ts",
+      "line": 199,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP10.ts",
+      "line": 205,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP11.ts",
+      "line": 145,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP11.ts",
+      "line": 151,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP11.ts",
+      "line": 157,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP11.ts",
+      "line": 163,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP11.ts",
+      "line": 169,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP11.ts",
+      "line": 175,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP11.ts",
+      "line": 181,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP11.ts",
+      "line": 187,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP11.ts",
+      "line": 193,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP11.ts",
+      "line": 199,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP11.ts",
+      "line": 205,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP11.ts",
+      "line": 211,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP12.ts",
+      "line": 140,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP12.ts",
+      "line": 146,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP12.ts",
+      "line": 152,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP12.ts",
+      "line": 158,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP12.ts",
+      "line": 164,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP12.ts",
+      "line": 170,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP12.ts",
+      "line": 176,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP12.ts",
+      "line": 182,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP12.ts",
+      "line": 188,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP12.ts",
+      "line": 194,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP12.ts",
+      "line": 200,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP12.ts",
+      "line": 206,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP2.ts",
+      "line": 160,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP2.ts",
+      "line": 166,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP2.ts",
+      "line": 172,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP2.ts",
+      "line": 178,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP2.ts",
+      "line": 184,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP2.ts",
+      "line": 190,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP2.ts",
+      "line": 196,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP2.ts",
+      "line": 202,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP2.ts",
+      "line": 208,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP2.ts",
+      "line": 214,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP2.ts",
+      "line": 220,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP2.ts",
+      "line": 226,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP3.ts",
+      "line": 173,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP3.ts",
+      "line": 179,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP3.ts",
+      "line": 185,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP3.ts",
+      "line": 191,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP3.ts",
+      "line": 197,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP3.ts",
+      "line": 203,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP3.ts",
+      "line": 209,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP3.ts",
+      "line": 215,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP3.ts",
+      "line": 221,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP3.ts",
+      "line": 227,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP3.ts",
+      "line": 233,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP3.ts",
+      "line": 239,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP4.ts",
+      "line": 160,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP4.ts",
+      "line": 166,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP4.ts",
+      "line": 172,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP4.ts",
+      "line": 178,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP4.ts",
+      "line": 184,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP4.ts",
+      "line": 190,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP4.ts",
+      "line": 196,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP4.ts",
+      "line": 202,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP4.ts",
+      "line": 208,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP4.ts",
+      "line": 214,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP4.ts",
+      "line": 220,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP4.ts",
+      "line": 226,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP5.ts",
+      "line": 116,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP5.ts",
+      "line": 122,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP5.ts",
+      "line": 128,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP5.ts",
+      "line": 134,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP5.ts",
+      "line": 140,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP5.ts",
+      "line": 146,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP5.ts",
+      "line": 152,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP5.ts",
+      "line": 158,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP5.ts",
+      "line": 164,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP5.ts",
+      "line": 170,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP5.ts",
+      "line": 176,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP5.ts",
+      "line": 182,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP6.ts",
+      "line": 190,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP6.ts",
+      "line": 196,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP6.ts",
+      "line": 202,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP6.ts",
+      "line": 208,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP6.ts",
+      "line": 214,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP6.ts",
+      "line": 220,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP6.ts",
+      "line": 226,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP6.ts",
+      "line": 232,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP6.ts",
+      "line": 238,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP6.ts",
+      "line": 244,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP6.ts",
+      "line": 250,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP6.ts",
+      "line": 256,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP7.ts",
+      "line": 159,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP7.ts",
+      "line": 165,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP7.ts",
+      "line": 171,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP7.ts",
+      "line": 177,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP7.ts",
+      "line": 183,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP7.ts",
+      "line": 189,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP7.ts",
+      "line": 195,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP7.ts",
+      "line": 201,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP7.ts",
+      "line": 207,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP7.ts",
+      "line": 213,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP7.ts",
+      "line": 219,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP7.ts",
+      "line": 225,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP8.ts",
+      "line": 159,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP8.ts",
+      "line": 165,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP8.ts",
+      "line": 171,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP8.ts",
+      "line": 177,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP8.ts",
+      "line": 183,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP8.ts",
+      "line": 189,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP8.ts",
+      "line": 195,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP8.ts",
+      "line": 201,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP8.ts",
+      "line": 207,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP8.ts",
+      "line": 213,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP8.ts",
+      "line": 219,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP8.ts",
+      "line": 225,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP9.ts",
+      "line": 147,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP9.ts",
+      "line": 153,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP9.ts",
+      "line": 159,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP9.ts",
+      "line": 165,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP9.ts",
+      "line": 171,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP9.ts",
+      "line": 177,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP9.ts",
+      "line": 183,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP9.ts",
+      "line": 189,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP9.ts",
+      "line": 195,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP9.ts",
+      "line": 201,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP9.ts",
+      "line": 207,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/HardAcceptanceGateP9.ts",
+      "line": 213,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/ProductionProvenanceEngine.ts",
+      "line": 116,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/ProductionProvenanceEngine.ts",
+      "line": 126,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/ProductionProvenanceEngine.ts",
+      "line": 136,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/ProductionProvenanceEngine.ts",
+      "line": 146,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/ProductionProvenanceEngine.ts",
+      "line": 156,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/ProductionProvenanceEngine.ts",
+      "line": 166,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/ProductionProvenanceEngine.ts",
+      "line": 176,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/ProductionProvenanceEngine.ts",
+      "line": 186,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/ProductionProvenanceEngine.ts",
+      "line": 196,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/RealEngineeringWorkloadEngine.ts",
+      "line": 336,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/SecurityProductionProofEngine.ts",
+      "line": 102,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/SecurityProductionProofEngine.ts",
+      "line": 124,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/SecurityProductionProofEngine.ts",
+      "line": 146,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/SecurityProductionProofEngine.ts",
+      "line": 168,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/SecurityProductionProofEngine.ts",
+      "line": 190,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/SecurityProductionProofEngine.ts",
+      "line": 212,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/SecurityProductionProofEngine.ts",
+      "line": 234,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/SecurityProductionProofEngine.ts",
+      "line": 256,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/SecurityProductionProofEngine.ts",
+      "line": 278,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/SecurityProductionProofEngine.ts",
+      "line": 300,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/SecurityProductionProofEngine.ts",
+      "line": 322,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/SecurityProductionProofEngine.ts",
+      "line": 344,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/SecurityProductionProofEngine.ts",
+      "line": 366,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/SiteAcceptanceTestEngine.ts",
+      "line": 167,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/SiteAcceptanceTestEngine.ts",
+      "line": 177,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/SiteAcceptanceTestEngine.ts",
+      "line": 191,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/SiteAcceptanceTestEngine.ts",
+      "line": 201,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/SiteAcceptanceTestEngine.ts",
+      "line": 214,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/SiteAcceptanceTestEngine.ts",
+      "line": 227,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/SiteAcceptanceTestEngine.ts",
+      "line": 237,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/SiteAcceptanceTestEngine.ts",
+      "line": 249,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/SiteAcceptanceTestEngine.ts",
+      "line": 260,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/SiteAcceptanceTestEngine.ts",
+      "line": 271,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/SiteAcceptanceTestEngine.ts",
+      "line": 284,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/validation/SiteAcceptanceTestEngine.ts",
+      "line": 294,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded passed: true",
+      "code": "passed: true,"
+    },
+    {
+      "file": "src/engine/verification/IndustrialConnectivityVerifier.ts",
+      "line": 31,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded success: true",
+      "code": "results.push({ name: 'MQTT Connector Lifecycle & TLS Verification', success: true });"
+    },
+    {
+      "file": "src/engine/verification/IndustrialConnectivityVerifier.ts",
+      "line": 56,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded success: true",
+      "code": "results.push({ name: 'OPC-UA Gateway Boundary & Node Mapping', success: true });"
+    },
+    {
+      "file": "src/engine/verification/IndustrialConnectivityVerifier.ts",
+      "line": 97,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded success: true",
+      "code": "results.push({ name: 'Modbus Float32_BE Register Decoding', success: true });"
+    },
+    {
+      "file": "src/engine/verification/IndustrialConnectivityVerifier.ts",
+      "line": 131,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded success: true",
+      "code": "results.push({ name: 'MTConnect Stream Ingestion & Conversion', success: true });"
+    },
+    {
+      "file": "src/engine/verification/KinematicsAndSimulationVerifier.ts",
+      "line": 34,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded success: true",
+      "code": "results.push({ name: 'T1 - Linear Axis Motion Calculation', success: true });"
+    },
+    {
+      "file": "src/engine/verification/KinematicsAndSimulationVerifier.ts",
+      "line": 50,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded success: true",
+      "code": "results.push({ name: 'T2 - Rotary Axis Motion Calculation (A/C Angles)', success: true });"
+    },
+    {
+      "file": "src/engine/verification/KinematicsAndSimulationVerifier.ts",
+      "line": 62,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded success: true",
+      "code": "results.push({ name: 'T3 - Combined 5-Axis Motion Toolpath Simulation', success: true });"
+    },
+    {
+      "file": "src/engine/verification/KinematicsAndSimulationVerifier.ts",
+      "line": 79,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded success: true",
+      "code": "results.push({ name: 'T4 - Forward Kinematics Transformation Precision', success: true });"
+    },
+    {
+      "file": "src/engine/verification/KinematicsAndSimulationVerifier.ts",
+      "line": 92,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded success: true",
+      "code": "results.push({ name: 'T5 - Axis Limit Violation Detection', success: true });"
+    },
+    {
+      "file": "src/engine/verification/KinematicsAndSimulationVerifier.ts",
+      "line": 108,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded success: true",
+      "code": "results.push({ name: 'T6 - Tool Gouge Propagation from SECP-083 to Viewport', success: true });"
+    },
+    {
+      "file": "src/engine/verification/KinematicsAndSimulationVerifier.ts",
+      "line": 124,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded success: true",
+      "code": "results.push({ name: 'T7 - Holder Collision Propagation from SECP-083', success: true });"
+    },
+    {
+      "file": "src/engine/verification/KinematicsAndSimulationVerifier.ts",
+      "line": 136,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded success: true",
+      "code": "results.push({ name: 'T8 - Machine & Fixture Collision Analysis', success: true });"
+    },
+    {
+      "file": "src/engine/verification/KinematicsAndSimulationVerifier.ts",
+      "line": 148,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded success: true",
+      "code": "results.push({ name: 'T9 - Deterministic Replay Simulation Hash Verification', success: true });"
+    },
+    {
+      "file": "src/engine/verification/KinematicsAndSimulationVerifier.ts",
+      "line": 172,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded success: true",
+      "code": "results.push({ name: 'T10 - Corrupted Toolpath Rejection', success: true });"
+    },
+    {
+      "file": "src/engine/verification/KinematicsAndSimulationVerifier.ts",
+      "line": 188,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded success: true",
+      "code": "results.push({ name: 'T11 - Corrupted Machine Configuration Rejection', success: true });"
+    },
+    {
+      "file": "src/engine/verification/KinematicsAndSimulationVerifier.ts",
+      "line": 200,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded success: true",
+      "code": "results.push({ name: 'T12 - Cryptographic Hash & Provenance Ledger Link', success: true });"
+    },
+    {
+      "file": "src/engine/verification/ProtocolIntegrationVerifier.ts",
+      "line": 48,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded success: true",
+      "code": "results.push({ name: 'Multi-Protocol Gateway Initialization & Connector Registration', success: true });"
+    },
+    {
+      "file": "src/engine/verification/ProtocolIntegrationVerifier.ts",
+      "line": 67,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded success: true",
+      "code": "results.push({ name: 'End-to-End Ingestion -> Digital Twin Propagation', success: true });"
+    },
+    {
+      "file": "src/engine/verification/ProtocolIntegrationVerifier.ts",
+      "line": 81,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded success: true",
+      "code": "results.push({ name: 'Anomaly & RUL Cryptographic Inference Logging', success: true });"
+    },
+    {
+      "file": "src/engine/verification/TelemetryAdversarialVerifier.ts",
+      "line": 40,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded success: true",
+      "code": "results.push({ name: 'Adversarial: Clock Drift Future Timestamp Rejection', success: true });"
+    },
+    {
+      "file": "src/engine/verification/TelemetryAdversarialVerifier.ts",
+      "line": 69,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded success: true",
+      "code": "results.push({ name: 'Adversarial: Invalid Numeric NaN Rejection', success: true });"
+    },
+    {
+      "file": "src/engine/verification/TelemetryAdversarialVerifier.ts",
+      "line": 88,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded success: true",
+      "code": "results.push({ name: 'Adversarial: Bounded Queue & Audit Tracking', success: true });"
+    },
+    {
+      "file": "src/engine/verification/TelemetryAdversarialVerifier.ts",
+      "line": 104,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded success: true",
+      "code": "results.push({ name: 'Adversarial: Duplicate Storm Filtering', success: true });"
+    },
+    {
+      "file": "src/engine/verification/TelemetryIntegrityVerifier.ts",
+      "line": 37,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded success: true",
+      "code": "results.push({ name: 'Unit Canonicalization °F -> °C', success: true });"
+    },
+    {
+      "file": "src/engine/verification/TelemetryIntegrityVerifier.ts",
+      "line": 66,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded success: true",
+      "code": "results.push({ name: 'Unit Canonicalization PSI -> kPa', success: true });"
+    },
+    {
+      "file": "src/engine/verification/TelemetryIntegrityVerifier.ts",
+      "line": 99,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded success: true",
+      "code": "results.push({ name: 'Duplicate Sequence Rejection', success: true });"
+    },
+    {
+      "file": "src/engine/verification/TelemetryIntegrityVerifier.ts",
+      "line": 121,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded success: true",
+      "code": "results.push({ name: 'Cryptographic SHA-256 Provenance ID Generation', success: true });"
+    },
+    {
+      "file": "src/engine/verification/TelemetryPerformanceVerifier.ts",
+      "line": 27,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded success: true",
+      "code": "results.push({ name: 'Performance: 1,000 msg/sec Ingestion Baseline (p95 < 20ms)', success: true });"
+    },
+    {
+      "file": "src/engine/verification/TelemetryPerformanceVerifier.ts",
+      "line": 46,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded success: true",
+      "code": "results.push({ name: 'Performance: 5,000 msg/sec High-Load Ingestion', success: true });"
+    },
+    {
+      "file": "src/engine/verification/TelemetryPerformanceVerifier.ts",
+      "line": 65,
+      "type": "fabricated_pass",
+      "desc": "Hardcoded success: true",
+      "code": "results.push({ name: 'Performance: 10,000 msg/sec Acceptance Benchmark', success: true });"
+    }
+  ]
+}

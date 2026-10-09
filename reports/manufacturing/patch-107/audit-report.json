@@ -1,0 +1,14 @@
+{
+  "generatedBy": "SECP Post Engine",
+  "machineRevision": 1,
+  "controllerRevision": 1,
+  "postRevision": 1,
+  "fingerprint": {
+    "sourceToolpathFingerprint": "0xREPTRAJ",
+    "machineFingerprint": "0xTRUNNION5AXIS",
+    "controllerFingerprint": "0xFANUC31IB5",
+    "postProcessorFingerprint": "0xPOSTCONTRACT",
+    "formatPolicyFingerprint": "0xPREC4",
+    "merkleRootHash": "0x5c2f5682"
+  }
+}

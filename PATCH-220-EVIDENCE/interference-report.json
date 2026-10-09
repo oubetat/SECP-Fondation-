@@ -1,0 +1,30 @@
+{
+  "before": {
+    "status": "INTERFERENCE",
+    "clashes": [
+      {
+        "id": "clash-001",
+        "componentAId": "inst-gear",
+        "componentAName": "Spur Gear Z24",
+        "componentBId": "inst-housing",
+        "componentBName": "Housing Assembly",
+        "intersectionVolumeMm3": 452.12,
+        "intersectionLocation": { "x": 0, "y": 15, "z": 120 },
+        "severity": "CRITICAL_COLLISION",
+        "clashDetails": "Helical teeth penetrating Outer Gear Housing wall"
+      }
+    ],
+    "totalClashVolumeMm3": 452.12,
+    "evaluatedPairsCount": 15,
+    "timestamp": "2026-08-24T06:14:59.000Z",
+    "kernelUsed": "SECP OpenCascade B-Rep Kernel"
+  },
+  "after": {
+    "status": "NO_INTERFERENCE",
+    "clashes": [],
+    "totalClashVolumeMm3": 0,
+    "evaluatedPairsCount": 15,
+    "timestamp": "2026-08-24T06:14:59.000Z",
+    "kernelUsed": "SECP OpenCascade B-Rep Kernel"
+  }
+}

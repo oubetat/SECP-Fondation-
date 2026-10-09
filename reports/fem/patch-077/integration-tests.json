@@ -1,0 +1,275 @@
+{
+  "rules": [
+    {
+      "ruleId": "GAUSS_1D_1PT",
+      "dimension": 1,
+      "order": 1,
+      "points": [
+        {
+          "xi": 0,
+          "weight": 2
+        }
+      ],
+      "totalWeight": 2,
+      "formulationCompatibility": [
+        "BAR2"
+      ]
+    },
+    {
+      "ruleId": "GAUSS_1D_2PT",
+      "dimension": 1,
+      "order": 2,
+      "points": [
+        {
+          "xi": -0.5773502691896258,
+          "weight": 1
+        },
+        {
+          "xi": 0.5773502691896258,
+          "weight": 1
+        }
+      ],
+      "totalWeight": 2,
+      "formulationCompatibility": [
+        "BAR2",
+        "BEAM2"
+      ]
+    },
+    {
+      "ruleId": "TRI_2D_1PT",
+      "dimension": 2,
+      "order": 1,
+      "points": [
+        {
+          "xi": 0.3333333333333333,
+          "eta": 0.3333333333333333,
+          "weight": 0.5
+        }
+      ],
+      "totalWeight": 0.5,
+      "formulationCompatibility": [
+        "TRI3"
+      ]
+    },
+    {
+      "ruleId": "TRI_2D_3PT",
+      "dimension": 2,
+      "order": 2,
+      "points": [
+        {
+          "xi": 0.5,
+          "eta": 0,
+          "weight": 0.16666666666666666
+        },
+        {
+          "xi": 0.5,
+          "eta": 0.5,
+          "weight": 0.16666666666666666
+        },
+        {
+          "xi": 0,
+          "eta": 0.5,
+          "weight": 0.16666666666666666
+        }
+      ],
+      "totalWeight": 0.5,
+      "formulationCompatibility": [
+        "TRI3",
+        "TRI6"
+      ]
+    },
+    {
+      "ruleId": "GAUSS_QUAD_1PT",
+      "dimension": 2,
+      "order": 1,
+      "points": [
+        {
+          "xi": 0,
+          "eta": 0,
+          "weight": 4
+        }
+      ],
+      "totalWeight": 4,
+      "formulationCompatibility": [
+        "QUAD4"
+      ]
+    },
+    {
+      "ruleId": "GAUSS_QUAD_2X2",
+      "dimension": 2,
+      "order": 2,
+      "points": [
+        {
+          "xi": -0.5773502691896258,
+          "eta": -0.5773502691896258,
+          "weight": 1
+        },
+        {
+          "xi": 0.5773502691896258,
+          "eta": -0.5773502691896258,
+          "weight": 1
+        },
+        {
+          "xi": 0.5773502691896258,
+          "eta": 0.5773502691896258,
+          "weight": 1
+        },
+        {
+          "xi": -0.5773502691896258,
+          "eta": 0.5773502691896258,
+          "weight": 1
+        }
+      ],
+      "totalWeight": 4,
+      "formulationCompatibility": [
+        "QUAD4",
+        "QUAD8"
+      ]
+    },
+    {
+      "ruleId": "TET_3D_1PT",
+      "dimension": 3,
+      "order": 1,
+      "points": [
+        {
+          "xi": 0.25,
+          "eta": 0.25,
+          "zeta": 0.25,
+          "weight": 0.16666666666666666
+        }
+      ],
+      "totalWeight": 0.16666666666666666,
+      "formulationCompatibility": [
+        "TET4"
+      ]
+    },
+    {
+      "ruleId": "TET_3D_4PT",
+      "dimension": 3,
+      "order": 2,
+      "points": [
+        {
+          "xi": 0.5854102,
+          "eta": 0.1381966,
+          "zeta": 0.1381966,
+          "weight": 0.041666666666666664
+        },
+        {
+          "xi": 0.1381966,
+          "eta": 0.5854102,
+          "zeta": 0.1381966,
+          "weight": 0.041666666666666664
+        },
+        {
+          "xi": 0.1381966,
+          "eta": 0.1381966,
+          "zeta": 0.5854102,
+          "weight": 0.041666666666666664
+        },
+        {
+          "xi": 0.1381966,
+          "eta": 0.1381966,
+          "zeta": 0.1381966,
+          "weight": 0.041666666666666664
+        }
+      ],
+      "totalWeight": 0.16666666666666666,
+      "formulationCompatibility": [
+        "TET4",
+        "TET10"
+      ]
+    },
+    {
+      "ruleId": "GAUSS_HEX_1PT",
+      "dimension": 3,
+      "order": 1,
+      "points": [
+        {
+          "xi": 0,
+          "eta": 0,
+          "zeta": 0,
+          "weight": 8
+        }
+      ],
+      "totalWeight": 8,
+      "formulationCompatibility": [
+        "HEX8"
+      ]
+    },
+    {
+      "ruleId": "GAUSS_HEX_2X2X2",
+      "dimension": 3,
+      "order": 2,
+      "points": [
+        {
+          "xi": -0.5773502691896258,
+          "eta": -0.5773502691896258,
+          "zeta": -0.5773502691896258,
+          "weight": 1
+        },
+        {
+          "xi": 0.5773502691896258,
+          "eta": -0.5773502691896258,
+          "zeta": -0.5773502691896258,
+          "weight": 1
+        },
+        {
+          "xi": 0.5773502691896258,
+          "eta": 0.5773502691896258,
+          "zeta": -0.5773502691896258,
+          "weight": 1
+        },
+        {
+          "xi": -0.5773502691896258,
+          "eta": 0.5773502691896258,
+          "zeta": -0.5773502691896258,
+          "weight": 1
+        },
+        {
+          "xi": -0.5773502691896258,
+          "eta": -0.5773502691896258,
+          "zeta": 0.5773502691896258,
+          "weight": 1
+        },
+        {
+          "xi": 0.5773502691896258,
+          "eta": -0.5773502691896258,
+          "zeta": 0.5773502691896258,
+          "weight": 1
+        },
+        {
+          "xi": 0.5773502691896258,
+          "eta": 0.5773502691896258,
+          "zeta": 0.5773502691896258,
+          "weight": 1
+        },
+        {
+          "xi": -0.5773502691896258,
+          "eta": 0.5773502691896258,
+          "zeta": 0.5773502691896258,
+          "weight": 1
+        }
+      ],
+      "totalWeight": 8,
+      "formulationCompatibility": [
+        "HEX8",
+        "HEX20"
+      ]
+    }
+  ],
+  "test1D": {
+    "exact": 4,
+    "computed": 4,
+    "passed": true
+  },
+  "test2D": {
+    "exact": 2.6666666666666665,
+    "computed": 2.6666666666666674,
+    "passed": true
+  },
+  "test3D": {
+    "exact": 8,
+    "computed": 8.000000000000002,
+    "passed": true
+  }
+}

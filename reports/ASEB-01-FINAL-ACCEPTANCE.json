@@ -1,0 +1,37 @@
+{
+  "benchmarkReport": {
+    "title": "SECP ADSE Systems Engineering Benchmark 01 (ASEB-01) — Final Acceptance",
+    "project": "ASEB-01-XA100",
+    "system": "XA-100 Experimental Aircraft",
+    "executionDate": "2026-09-29T08:29:00.000Z",
+    "finalStatus": "FORENSICALLY_CLOSED",
+    "acceptanceMatrix": [
+      { "gate": "ASEB-V01", "requirement": "Requirements -> System Model Allocation", "result": "PASS", "evidence": "40 canonical requirements registered with RQ-001..RQ-008" },
+      { "gate": "ASEB-V02", "requirement": "MBSE Semantic Decomposition", "result": "PASS", "evidence": "XA-100 root + 6 composite subsystems, UI phantoms rejected" },
+      { "gate": "ASEB-V03", "requirement": "Architecture Authority & Impact Analysis", "result": "PASS", "evidence": "XA-100 system + 6 subsystems, impact analysis resolved" },
+      { "gate": "ASEB-V04", "requirement": "Structural Identity & Definition Binding", "result": "PASS", "evidence": "25 component instances registered, unbound instances rejected" },
+      { "gate": "ASEB-V05", "requirement": "Thermal Multiphysics Execution", "result": "PASS", "evidence": "8 thermal regions + boundary conditions, steady-state solver executed" },
+      { "gate": "ASEB-V06", "requirement": "Electrical Power Execution", "result": "PASS", "evidence": "3 sources + 12 loads + 4 buses, power balance solver executed" },
+      { "gate": "ASEB-V07", "requirement": "Control Closed Loops Execution", "result": "PASS", "evidence": "5 closed loops, plant, sensor, actuator bound, dynamic response executed" },
+      { "gate": "ASEB-V08", "requirement": "Cyber-Physical Communications Execution", "result": "PASS", "evidence": "12 nodes + 18 links, full duplex execution passed" },
+      { "gate": "ASEB-V09", "requirement": "Cross-Domain Truth Invariance", "result": "PASS", "evidence": "ACTUATOR-001 bound across P5..P9 with identical identity & revision" },
+      { "gate": "ASEB-V10", "requirement": "Digital Thread Lineage Traversal", "result": "PASS", "evidence": "Forward and reverse thread traversal executed via P4" },
+      { "gate": "ASEB-V11", "requirement": "Revision Cascade & Invalidation", "result": "PASS", "evidence": "Revision R2 automatically invalidated R1 dependent execution" },
+      { "gate": "ASEB-V12", "requirement": "Persistence Cryptographic Snapshot", "result": "PASS", "evidence": "Complete state snapshot with SHA-256 Merkle root generated" },
+      { "gate": "ASEB-V13", "requirement": "Reconstruction Integrity", "result": "PASS", "evidence": "Reconstructed from Merkle snapshot with isValid === true" },
+      { "gate": "ASEB-V14", "requirement": "AI Backend Authority Rejection", "result": "PASS", "evidence": "10/10 AI attacks rejected by backend, stateBefore === stateAfter" },
+      { "gate": "ASEB-V15", "requirement": "UI Bypass Resistance", "result": "PASS", "evidence": "Direct API calls with fake revision threw REVISION_NOT_FOUND" },
+      { "gate": "ASEB-V16", "requirement": "Evidence Cryptographic Integrity", "result": "PASS", "evidence": "35 signed Merkle leaf hashes verified" },
+      { "gate": "ASEB-V17", "requirement": "Provenance Integrity", "result": "PASS", "evidence": "64-hex-char origin hash verified across all systems" },
+      { "gate": "ASEB-V18", "requirement": "Dashboard Recomputation & Delta", "result": "PASS", "evidence": "Recomputed from live query, explainable delta verified" },
+      { "gate": "ASEB-V19", "requirement": "Engineering Certificate Generation", "result": "PASS", "evidence": "Certificate generated with 64-hex-char integrity hash" },
+      { "gate": "ASEB-V20", "requirement": "Full Restart Recovery", "result": "PASS", "evidence": "Total runtime wipe, reboot, restored invalidated execution accurately" }
+    ],
+    "regressionStats": {
+      "benchmarkTests": { "passed": 1, "total": 1 },
+      "workbenchTests": { "passed": 30, "total": 30 },
+      "p0ToP9CoreBattery": { "passedFiles": 70, "totalFiles": 70, "passedTests": 357, "totalTests": 357 },
+      "appletCompilation": "PASS"
+    }
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "postProcessorId": "POST_SECP_107_STD",
+  "revision": 1,
+  "machineId": "MACHINE_TRUNNION_5AXIS_01",
+  "machineRevision": 1,
+  "controllerId": "FANUC_31i_B5",
+  "controllerRevision": 1,
+  "inputTrajectoryVersion": "SECP_TRAJ_V2",
+  "outputDialect": "FANUC_LIKE",
+  "units": "METRIC_MM",
+  "coordinateConvention": "ABSOLUTE",
+  "axisMapping": {
+    "x": "X",
+    "y": "Y",
+    "z": "Z",
+    "a": "A",
+    "c": "C"
+  },
+  "rotaryConvention": [
+    {
+      "axisName": "A",
+      "rotationDirection": "CW_POSITIVE",
+      "zeroPosition": 0,
+      "wrapMode": "STRICT_RANGE",
+      "continuousMode": false,
+      "minAngle": -120,
+      "maxAngle": 120
+    },
+    {
+      "axisName": "C",
+      "rotationDirection": "CCW_POSITIVE",
+      "zeroPosition": 0,
+      "wrapMode": "UNWRAPPED",
+      "continuousMode": true,
+      "minAngle": -99999,
+      "maxAngle": 99999
+    }
+  ],
+  "feedConvention": {
+    "defaultFeedMode": "FEED_PER_MINUTE",
+    "maxFeedRate": 25000,
+    "minFeedRate": 1,
+    "feedPerMinCode": "G94",
+    "feedPerRevCode": "G95",
+    "inverseTimeCode": "G93"
+  },
+  "spindleConvention": {
+    "maxRPM": 24000,
+    "minRPM": 50,
+    "cwMCode": "M03",
+    "ccwMCode": "M04",
+    "stopMCode": "M05",
+    "cssGCode": "G96",
+    "rpmGCode": "G97",
+    "maxSpindleSpeedGCode": "G50"
+  },
+  "formatPolicy": {
+    "linearPrecision": 4,
+    "rotaryPrecision": 3,
+    "feedPrecision": 1,
+    "spindlePrecision": 0,
+    "stripTrailingZeros": false,
+    "forceExplicitSign": false,
+    "decimalSeparator": "."
+  },
+  "safetyPolicy": {
+    "maxLinearVelocityMMMin": 25000,
+    "maxRotaryVelocityDegMin": 7200,
+    "enforceAxisLimits": true,
+    "requireSafeStartBlock": true,
+    "requireProgramFooter": true,
+    "chordalToleranceMM": 0.005,
+    "orientationToleranceDeg": 0.05
+  },
+  "provenance": {
+    "sourceId": "PROV_CONTRACT_POST_SECP_107_STD",
+    "sourceType": "STANDARD",
+    "reference": "SECP Manufacturing Post Contract ISO/ASME Standard",
+    "timestamp": "2026-09-29T11:06:37.733Z",
+    "author": "SECP Post Group",
+    "hash": "0xPOSTCONTRACT"
+  }
+}

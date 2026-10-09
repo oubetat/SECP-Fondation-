@@ -1,0 +1,6 @@
+{
+  "reportId": "COLLISION-ENGINE-P3-COORDINATE-FRAME-001",
+  "evaluatedFrames": ["WCS", "MCS", "TCS"],
+  "frameMismatchHandling": "REJECT_WITH_ANALYSIS_FAILED",
+  "verdict": "PASSED"
+}

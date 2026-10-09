@@ -1,0 +1,15 @@
+{
+  "types": [
+    "REFERENCE",
+    "CURRENT",
+    "UPDATED"
+  ],
+  "measures": [
+    "F",
+    "J",
+    "C",
+    "B",
+    "E",
+    "e"
+  ]
+}

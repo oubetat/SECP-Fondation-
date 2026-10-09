@@ -1,0 +1,230 @@
+{
+  "reportId": "impact-snapshot-report.json",
+  "timestamp": "2026-08-21T08:30:42.662Z",
+  "status": "VERIFIED",
+  "data": {
+    "impactAnalysisId": "IMPACT-ECO-2026-00125-1787301042659",
+    "ecoId": "ECO-2026-00125",
+    "analysisVersion": "1.0",
+    "rootChangeIds": [
+      "CHG-PART-P-001"
+    ],
+    "rootEntityIds": [
+      "PART-P-001"
+    ],
+    "rootRevisionIds": [
+      "R3"
+    ],
+    "status": "COMPLETE",
+    "createdAt": "2026-08-21T08:30:42.659Z",
+    "createdBy": "ENGINEERING-IMPACT-ENGINE",
+    "completedAt": "2026-08-21T08:30:42.660Z",
+    "algorithmVersion": "v1.0",
+    "policyVersion": "Policy v1.0",
+    "graphSnapshotHash": "785e5ceeb173820c60765b6d3c293f7666fc7da4693a939b29098a7f06ba405c",
+    "analysisHash": "b1282434a17ef6c3fdf64ab16925e5d5eeac4c3c05c9798f9573538a7247faba",
+    "verdict": "VALID",
+    "nodes": [
+      {
+        "nodeId": "NODE-PART-P-001:R3",
+        "entityId": "PART-P-001",
+        "entityType": "PART",
+        "revisionId": "R3",
+        "sourceRevisionId": "R3",
+        "impactClass": "DIRECT",
+        "severity": "HIGH",
+        "distance": 0,
+        "pathCount": 1,
+        "status": "OPEN",
+        "isSafetyCritical": false
+      },
+      {
+        "nodeId": "NODE-BOM-100:R7",
+        "entityId": "BOM-100",
+        "entityType": "BOM",
+        "revisionId": "R7",
+        "impactClass": "INDIRECT",
+        "severity": "MEDIUM",
+        "distance": 1,
+        "pathCount": 1,
+        "status": "OPEN",
+        "isSafetyCritical": false
+      },
+      {
+        "nodeId": "NODE-ASM-20:R5",
+        "entityId": "ASM-20",
+        "entityType": "ASSEMBLY",
+        "revisionId": "R5",
+        "impactClass": "TRANSITIVE",
+        "severity": "MEDIUM",
+        "distance": 2,
+        "pathCount": 1,
+        "status": "OPEN",
+        "isSafetyCritical": false
+      },
+      {
+        "nodeId": "NODE-PRODUCT-01:R2",
+        "entityId": "PRODUCT-01",
+        "entityType": "ASSEMBLY",
+        "revisionId": "R2",
+        "impactClass": "TRANSITIVE",
+        "severity": "MEDIUM",
+        "distance": 3,
+        "pathCount": 1,
+        "status": "OPEN",
+        "isSafetyCritical": false
+      }
+    ],
+    "edges": [
+      {
+        "edgeId": "E-BOM",
+        "fromNode": "NODE-PART-P-001:R3",
+        "toNode": "NODE-BOM-100:R7",
+        "relationshipType": "BOM_COMPONENT",
+        "relationshipId": "E-BOM",
+        "confidence": 1,
+        "evidenceId": "EVID-E-BOM"
+      },
+      {
+        "edgeId": "E-ASM",
+        "fromNode": "NODE-BOM-100:R7",
+        "toNode": "NODE-ASM-20:R5",
+        "relationshipType": "ASSEMBLY_OCCURRENCE",
+        "relationshipId": "E-ASM",
+        "confidence": 1,
+        "evidenceId": "EVID-E-ASM"
+      },
+      {
+        "edgeId": "E-PROD",
+        "fromNode": "NODE-ASM-20:R5",
+        "toNode": "NODE-PRODUCT-01:R2",
+        "relationshipType": "ASSEMBLY_OCCURRENCE",
+        "relationshipId": "E-PROD",
+        "confidence": 1,
+        "evidenceId": "EVID-E-PROD"
+      }
+    ],
+    "paths": [
+      {
+        "pathId": "PATH-PART-P-001:R3-BOM-100:R7",
+        "nodes": [
+          "PART-P-001:R3",
+          "BOM-100:R7"
+        ],
+        "edges": [
+          "E-BOM"
+        ],
+        "description": "PART-P-001:R3 affected BOM-100:R7 via BOM_COMPONENT"
+      },
+      {
+        "pathId": "PATH-PART-P-001:R3-BOM-100:R7-ASM-20:R5",
+        "nodes": [
+          "PART-P-001:R3",
+          "BOM-100:R7",
+          "ASM-20:R5"
+        ],
+        "edges": [
+          "E-BOM",
+          "E-ASM"
+        ],
+        "description": "PART-P-001:R3 affected ASM-20:R5 via ASSEMBLY_OCCURRENCE"
+      },
+      {
+        "pathId": "PATH-PART-P-001:R3-BOM-100:R7-ASM-20:R5-PRODUCT-01:R2",
+        "nodes": [
+          "PART-P-001:R3",
+          "BOM-100:R7",
+          "ASM-20:R5",
+          "PRODUCT-01:R2"
+        ],
+        "edges": [
+          "E-BOM",
+          "E-ASM",
+          "E-PROD"
+        ],
+        "description": "PART-P-001:R3 affected PRODUCT-01:R2 via ASSEMBLY_OCCURRENCE"
+      }
+    ],
+    "cycles": [
+      {
+        "cycleId": "CYCLE-1",
+        "cycleNodes": [
+          "PART-P-001:R3",
+          "BOM-100:R7",
+          "PART-P-001:R3"
+        ],
+        "cycleEdges": [
+          "E-BOM",
+          "E-BOM"
+        ],
+        "cyclePath": "PART-P-001:R3 -> BOM-100:R7 -> PART-P-001:R3",
+        "cycleHash": "13a1f9cf4debb91abd51230c05f42d929427ec81a7a8ab76a9317b236e2e4988"
+      },
+      {
+        "cycleId": "CYCLE-2",
+        "cycleNodes": [
+          "BOM-100:R7",
+          "ASM-20:R5",
+          "BOM-100:R7"
+        ],
+        "cycleEdges": [
+          "E-ASM",
+          "E-ASM"
+        ],
+        "cyclePath": "BOM-100:R7 -> ASM-20:R5 -> BOM-100:R7",
+        "cycleHash": "f8819825906cec845a0f0652c3929ffd4d822a4bad5f49137e8a0d43640295f0"
+      },
+      {
+        "cycleId": "CYCLE-3",
+        "cycleNodes": [
+          "ASM-20:R5",
+          "PRODUCT-01:R2",
+          "ASM-20:R5"
+        ],
+        "cycleEdges": [
+          "E-PROD",
+          "E-PROD"
+        ],
+        "cyclePath": "ASM-20:R5 -> PRODUCT-01:R2 -> ASM-20:R5",
+        "cycleHash": "36005b908369af823fad170ad9d4a17bf6d82a0525f71ae35968b87bae75d243"
+      }
+    ],
+    "actions": [
+      {
+        "actionId": "ACT-1",
+        "actionType": "CREATE_REVISION",
+        "targetEntityId": "PART-P-001",
+        "targetRevisionId": "R3",
+        "description": "Create new revision for root change on PART-P-001",
+        "sequence": 1,
+        "dependsOnActionIds": [],
+        "status": "PENDING"
+      },
+      {
+        "actionId": "ACT-2",
+        "actionType": "UPDATE_BOM",
+        "targetEntityId": "BOM-100",
+        "targetRevisionId": "R7",
+        "description": "Update dependent BOM structure for BOM-100",
+        "sequence": 2,
+        "dependsOnActionIds": [
+          "ACT-1"
+        ],
+        "status": "PENDING"
+      }
+    ],
+    "unknownDependencies": [],
+    "brokenEdges": [],
+    "isTruncated": false,
+    "summary": {
+      "directCount": 1,
+      "indirectCount": 1,
+      "transitiveCount": 2,
+      "criticalCount": 0,
+      "reviewRequiredCount": 0,
+      "reverificationCount": 0,
+      "invalidatedCount": 0,
+      "unknownCount": 0
+    }
+  }
+}

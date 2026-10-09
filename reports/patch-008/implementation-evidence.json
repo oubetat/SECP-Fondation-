@@ -1,0 +1,50 @@
+{
+  "patch": "PATCH-008",
+  "name": "Canonical Engineering Identity",
+  "timestamp": "2026-08-18T08:05:40.000Z",
+  "modules": [
+    {
+      "file": "src/engine/identity/CanonicalEngineeringIdentity.ts",
+      "artifactTypes": [
+        "GEOMETRY",
+        "MATERIAL",
+        "MESH",
+        "SIMULATION",
+        "TOOLPATH",
+        "RESULT",
+        "EVIDENCE",
+        "REVISION"
+      ],
+      "interfaces": [
+        "CanonicalEngineeringIdentity",
+        "RuntimeArtifactReference"
+      ],
+      "immutable": true
+    },
+    {
+      "file": "src/engine/identity/EngineeringIdentityFactory.ts",
+      "methods": [
+        "createIdentity",
+        "createChildIdentity",
+        "createRevisionIdentity",
+        "validateIdentity",
+        "formatCanonicalIdentity",
+        "parseCanonicalIdentity",
+        "sameIdentity"
+      ],
+      "hashingProhibited": true,
+      "timestampProhibited": true
+    },
+    {
+      "file": "src/engine/identity/LegacyEngineeringIdentityAdapter.ts",
+      "methods": [
+        "inferArtifactType",
+        "toCanonicalIdentity"
+      ]
+    },
+    {
+      "file": "src/engine/identity/CanonicalEngineeringIdentityGate.ts",
+      "checksCount": 8
+    }
+  ]
+}

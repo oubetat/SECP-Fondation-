@@ -1,0 +1,16 @@
+{
+  "supportedAnalysis": [
+    "LINEAR_STATIC_STRUCTURAL"
+  ],
+  "assumptions": [
+    "SMALL_DEFORMATION",
+    "LINEAR_ELASTIC",
+    "TIME_INDEPENDENT"
+  ],
+  "disallowedInPatch079": [
+    "NONLINEAR_STATIC",
+    "PLASTICITY",
+    "CONTACT",
+    "DYNAMIC"
+  ]
+}

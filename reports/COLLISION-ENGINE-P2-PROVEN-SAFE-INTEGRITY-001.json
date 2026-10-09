@@ -1,0 +1,13 @@
+{
+  "missionId": "COLLISION-ENGINE-P2-FAIL-CLOSED-HARDENING-001",
+  "artifactType": "PROVEN_SAFE_INTEGRITY",
+  "timestamp": "2026-10-01T02:08:00.000Z",
+  "provenSafeInvariants": {
+    "whoCanWrite": "Only CollisionAuthority normalizeResult() method",
+    "canConsumerElevate": "No, result object is deeply frozen via Object.freeze()",
+    "canProviderForge": "No, CollisionAuthority validateInput and normalizeResult override provenSafe",
+    "canFailureResultBecomeTrue": "No, isFailed === true forces provenSafe = false",
+    "canDefaultInitializationBeTrue": "No, defaults to false on failure",
+    "doesPersistenceRoundTripPreserve": "Yes, provenSafe === false is fully maintained through serialization"
+  }
+}

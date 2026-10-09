@@ -1,0 +1,17 @@
+{
+  "patchId": "PATCH-104",
+  "timestamp": "2026-09-03T07:27:28.880Z",
+  "supportedStrategies": [
+    "PLANAR",
+    "CONTOUR",
+    "POCKET",
+    "Z_LEVEL",
+    "PARALLEL",
+    "CONSTANT_SCALLOP",
+    "WATERLINE",
+    "RASTER",
+    "SPIRAL",
+    "ADAPTIVE"
+  ],
+  "millingSubtractiveCoreActive": true
+}

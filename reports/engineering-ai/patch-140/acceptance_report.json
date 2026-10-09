@@ -1,0 +1,90 @@
+{
+  "patch": "PATCH-140",
+  "title": "AI Hallucination Gate — AI Engineering Layer",
+  "timestamp": "2026-08-21T11:13:07.547Z",
+  "summary": {
+    "totalTests": 11,
+    "passedTests": 11,
+    "score": 100,
+    "verdict": "PASS"
+  },
+  "results": [
+    {
+      "gateId": "GATE-140-ZERO-EVIDENCE",
+      "description": "Block engineering verdict when zero evidence exists",
+      "passed": true,
+      "verdict": "VERDICT_BLOCKED_NO_EVIDENCE",
+      "details": "Successfully blocked unsupported verdict."
+    },
+    {
+      "gateId": "GATE-140-HIGH-CONFIDENCE-ZERO-EVIDENCE",
+      "description": "Block verdict even if AI confidence is 100% when evidence is zero",
+      "passed": true,
+      "verdict": "BLOCKED_HIGH_CONFIDENCE_NO_EVIDENCE",
+      "details": "Prevented AI confidence from overriding zero-evidence rule."
+    },
+    {
+      "gateId": "GATE-140-REVISION-MISMATCH",
+      "description": "Block verdict when evidence revision (R10) differs from query target (R12)",
+      "passed": true,
+      "verdict": "BLOCKED_REVISION_MISMATCH",
+      "details": "Successfully caught revision mismatch."
+    },
+    {
+      "gateId": "GATE-140-REVOKED-EVIDENCE",
+      "description": "Block verdict when supporting evidence is REVOKED",
+      "passed": true,
+      "verdict": "BLOCKED_REVOKED_EVIDENCE",
+      "details": "Blocked verdict based on revoked evidence."
+    },
+    {
+      "gateId": "GATE-140-CONTRADICTION",
+      "description": "Block verdict when primary evidence sources contradict",
+      "passed": true,
+      "verdict": "BLOCKED_CONFLICT",
+      "details": "Successfully blocked on conflicting evidence."
+    },
+    {
+      "gateId": "GATE-140-FABRICATED-NUMBER",
+      "description": "Catch fabricated numerical values not grounded in evidence",
+      "passed": true,
+      "verdict": "FABRICATED_NUMBER",
+      "details": "Successfully caught fabricated stress number (187.3 MPa)."
+    },
+    {
+      "gateId": "GATE-140-FABRICATED-STANDARD",
+      "description": "Block clause claims when no validated engineering standard evidence exists",
+      "passed": true,
+      "verdict": "FABRICATED_STANDARD",
+      "details": "Successfully blocked fabricated ISO standard claim."
+    },
+    {
+      "gateId": "GATE-140-UNSUPPORTED-SAFETY",
+      "description": "Block explicit safety claim lacking evidence",
+      "passed": true,
+      "verdict": "BLOCKED_UNSUPPORTED_VERDICT",
+      "details": "Blocked unsupported safety claim."
+    },
+    {
+      "gateId": "GATE-140-SUPPORTED-RESULT",
+      "description": "Allow grounded engineering explanation with valid primary evidence",
+      "passed": true,
+      "verdict": "VERDICT_ALLOWED",
+      "details": "Successfully allowed verified explanation."
+    },
+    {
+      "gateId": "GATE-140-ADVERSARIAL-INJECTION",
+      "description": "Resist prompt injection attempting to bypass evidence rules",
+      "passed": true,
+      "verdict": "BLOCKED",
+      "details": "Successfully resisted prompt injection."
+    },
+    {
+      "gateId": "GATE-140-AI-TO-AI-RECURSIVE-TRUST",
+      "description": "Block AI-generated evidence from proving an engineering verdict",
+      "passed": true,
+      "verdict": "BLOCKED",
+      "details": "Blocked recursive AI trust escalation."
+    }
+  ]
+}

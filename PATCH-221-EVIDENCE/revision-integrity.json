@@ -1,0 +1,11 @@
+{
+  "tracking": [
+    {
+      "partNumber": "ISO-4014-M8X30-STEEL",
+      "activeRevision": "REV-B",
+      "historicalInstances": [
+        { "instanceId": "inst-hdw-hdb01-a", "referencedRevision": "REV-A", "status": "LOCKED" }
+      ]
+    }
+  ]
+}

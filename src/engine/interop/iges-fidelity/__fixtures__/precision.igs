@@ -1,0 +1,9 @@
+SECP FORENSIC IGES EXPORT - precision.igs                             S0000001
+1H,,1H;,7HIGES-5.3-FORENSIC-SECP,8HSECP-CAD,10HUNKNOWN,32,8,24,11,56,precision.igs,G0000001
+     116       1       1       1       0       0       0       000010501D      1
+     116       0       0       1       0                               0D      2
+     186       2       1       1       0       0       0       000010501D      3
+     186       0       0       1       0                               0D      4
+116,1.000000000123,0.0000,0.0000,0;                                     P      1
+186,1000.0000,600.0000,1,1;                                             P      2
+S      1G0000001D      4P      2                                        T0000001

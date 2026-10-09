@@ -1,0 +1,22 @@
+{
+  "deviatoricSplit": {
+    "p": 200000000,
+    "s": [
+      181628993.8539003,
+      -90814496.92695014,
+      -90814496.92695014,
+      34928652.66421159,
+      0,
+      0
+    ],
+    "trace": 2.9802322387695312e-8,
+    "isDeviatoricTraceZero": true
+  },
+  "hydrostaticBenchmark": {
+    "name": "HYDROSTATIC_INVARIANCE",
+    "passed": true,
+    "maxError": 0.0000011680077279964342,
+    "tolerance": 0.0001,
+    "details": "Pure volumetric loading produced von Mises = 1.1680e-6 Pa (zero plastic yield)."
+  }
+}

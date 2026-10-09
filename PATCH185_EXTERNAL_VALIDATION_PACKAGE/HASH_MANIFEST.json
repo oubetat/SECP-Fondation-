@@ -1,0 +1,9 @@
+{
+  "timestamp": "2026-08-23T14:47:16.108Z",
+  "version": "1.0.0",
+  "hashes": {
+    "INPUT_DATA/cylinder_design.json": "14ef2010e7be22d3cfe70a8162c94e6b707e086d263246b568ce837b2e6be00f",
+    "EXPECTED_REFERENCE_DATA/analytical_solutions.json": "e21992890e00d08e99af8896a64a94ba502b4f31395d12839e3334d6a1d2a496",
+    "SECP_RESULTS/solver_results.json": "14318a21f745a1dc7c4394c6d95d631fb0ed760b809c74f3a7d04cd69da690aa"
+  }
+}

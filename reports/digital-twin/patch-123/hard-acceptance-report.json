@@ -1,0 +1,68 @@
+{
+  "gateId": "HARD-ACCEPTANCE-GATE-123",
+  "passed": true,
+  "score": 100,
+  "checks": [
+    {
+      "id": "GATE-123-01",
+      "name": "Deterministic Geometry Hash & Identity Binding",
+      "passed": true,
+      "details": "Geometry Hash: 5daa80ec501fecd4cd7aed0bf571f3693c4d3ed77462259fcd3e525bee7350dd"
+    },
+    {
+      "id": "GATE-123-02",
+      "name": "Topology Hash !== Geometry Hash Distinction",
+      "passed": true,
+      "details": "Topology Hash: e39c99ddb00574ad20067f41baed1745e38d4e13d081a74d3ef2a591388417f3"
+    },
+    {
+      "id": "GATE-123-03",
+      "name": "B-Rep, NURBS & Analytic Parametric Identity Completeness",
+      "passed": true,
+      "details": "B-Rep (V:8, E:12, F:6), NURBS: 1C/1S, Analytic: 1"
+    },
+    {
+      "id": "GATE-123-04",
+      "name": "Coordinate System & Unit Mathematical Integrity",
+      "passed": true,
+      "details": "Coordinate System: Handedness RIGHT_HANDED, 10in = 254mm"
+    },
+    {
+      "id": "GATE-123-05",
+      "name": "B-Rep Topological Closure & 2-Manifold Solid Verification",
+      "passed": true,
+      "details": "Validity: VALID, Closure: COMPLETE, Score: 100"
+    },
+    {
+      "id": "GATE-123-06",
+      "name": "Geometric Diff Detection & Tolerance-Based Equivalence",
+      "passed": true,
+      "details": "Diff Change Types: [VERTEX_MODIFIED], Tol(1.0mm): true, Tol(0.1mm): false"
+    },
+    {
+      "id": "GATE-123-07",
+      "name": "Multi-Domain Digital Thread Linkage (FEM/CAM/BOM)",
+      "passed": true,
+      "details": "FEM Freshness: SYNCHRONIZED, BOM Alignment: ALIGNED"
+    },
+    {
+      "id": "GATE-123-08",
+      "name": "As-Manufactured CMM Measurement Comparison & Deviation Map",
+      "passed": true,
+      "details": "Verdict: WITHIN_TOLERANCE, Max Dev: 0.00860mm, RMS Dev: 0.00653mm"
+    },
+    {
+      "id": "GATE-123-09",
+      "name": "Historical Reconstruction Determinism (reconstruct == reconstruct)",
+      "passed": true,
+      "details": "Reconstructed Hash: 5daa80ec501fecd4cd7aed0bf571f3693c4d3ed77462259fcd3e525bee7350dd (100% Deterministic match)"
+    },
+    {
+      "id": "GATE-123-10",
+      "name": "Independent Geometry Verifier & Differential Engine",
+      "passed": true,
+      "details": "Independent Verdict: VALID, Differential: MATCH"
+    }
+  ],
+  "timestamp": "2026-08-21T09:09:22.286Z"
+}

@@ -1,0 +1,45 @@
+{
+  "contract": {
+    "evidenceId": "EV_EXEC_01",
+    "evidenceType": "EXECUTION_EVIDENCE",
+    "evidenceVersion": "1.0",
+    "sourceArtifactId": "NC_BLADE_01",
+    "sourceRevision": "1.0",
+    "eventId": "EVT_EXEC",
+    "eventType": "EXECUTION_STARTED",
+    "eventTimestamp": 1700000800000,
+    "recordedTimestamp": 1700000800000,
+    "producerId": "SIEMENS_840D",
+    "producerType": "CNC",
+    "contentHash": "e98d773115fe0e4642431534023604f39c7e6c70548b4552fed49aef56b4ee3b",
+    "canonicalHash": "abd11d3a1d3dd46a04c71029416b15caae34e1146590dfa29d56d971d1170176",
+    "previousEvidenceHash": "b35dbf4a3d49c6144ca0356315cddcbcff1977a161a0183716c6745e82b06d9c",
+    "chainSequence": 9,
+    "signature": "96d83501ebcf28c5d7fbd5be199bbaaee2e044874766411257ec1042f25f2bda",
+    "signingIdentity": "KEY_CNC_CTRL_01",
+    "verificationStatus": "COMPLETE",
+    "recordingMode": "ORIGINAL"
+  },
+  "sourceIdentity": {
+    "sourceType": "CNC",
+    "sourceId": "DMG_MORI_NMV5000",
+    "sourceRevision": "2.1",
+    "sourceFingerprint": "FNG_CNC_EXEC"
+  },
+  "eventIdentity": {
+    "eventId": "EVT_EXEC",
+    "eventType": "EXECUTION_STARTED",
+    "eventSequence": 9,
+    "eventTimestamp": 1700000800000,
+    "sourceTimestamp": 1700000800000,
+    "recordedTimestamp": 1700000800000
+  },
+  "payload": {
+    "activeToolId": "TOOL_BALL_6MM",
+    "machineId": "DMG_MORI_NMV5000",
+    "materialId": "INCONEL_718",
+    "programHash": "HASH_NC_BLADE_01"
+  },
+  "context": {},
+  "attestations": []
+}

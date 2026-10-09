@@ -1,0 +1,11 @@
+{
+  "valuesBytes": 64,
+  "indicesBytes": 32,
+  "pointersBytes": 20,
+  "totalSparseBytes": 116,
+  "denseEquivalentBytes": 128,
+  "compressionRatio": 0.90625,
+  "savingsPercentage": 9.375,
+  "indexWidthBits": 32,
+  "numericType": "Float64 (64-bit IEEE 754)"
+}

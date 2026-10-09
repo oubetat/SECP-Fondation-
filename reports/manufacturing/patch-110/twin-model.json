@@ -1,0 +1,235 @@
+{
+  "modelId": "TWIN_MODEL_5AXIS",
+  "kinematics": {
+    "machineId": "HAAS_VF2",
+    "machineRevision": 1,
+    "machineType": "MILL_3_AXIS",
+    "baseFrame": {
+      "frameId": "BASE",
+      "origin": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "xAxis": {
+        "x": 1,
+        "y": 0,
+        "z": 0
+      },
+      "yAxis": {
+        "x": 0,
+        "y": 1,
+        "z": 0
+      },
+      "zAxis": {
+        "x": 0,
+        "y": 0,
+        "z": 1
+      },
+      "handedness": "RIGHT_HANDED"
+    },
+    "coordinateSystems": [
+      {
+        "id": "MCS",
+        "name": "Machine Coordinate System",
+        "baseFrameId": "BASE",
+        "transformToBase": {
+          "matrix": [
+            [
+              1,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              1
+            ]
+          ]
+        }
+      }
+    ],
+    "axes": [
+      {
+        "axisId": "X",
+        "axisName": "X Linear Axis",
+        "axisType": "LINEAR_X",
+        "direction": {
+          "x": 1,
+          "y": 0,
+          "z": 0
+        },
+        "origin": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "jointId": "J_X",
+        "travelLimits": {
+          "min": -381,
+          "max": 381
+        },
+        "velocityLimit": 500,
+        "accelerationLimit": 1200,
+        "homePosition": 0,
+        "zeroPosition": 0,
+        "signConvention": 1
+      },
+      {
+        "axisId": "Y",
+        "axisName": "Y Linear Axis",
+        "axisType": "LINEAR_Y",
+        "direction": {
+          "x": 0,
+          "y": 1,
+          "z": 0
+        },
+        "origin": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "jointId": "J_Y",
+        "travelLimits": {
+          "min": -254,
+          "max": 254
+        },
+        "velocityLimit": 500,
+        "accelerationLimit": 1200,
+        "homePosition": 0,
+        "zeroPosition": 0,
+        "signConvention": 1
+      },
+      {
+        "axisId": "Z",
+        "axisName": "Z Linear Axis",
+        "axisType": "LINEAR_Z",
+        "direction": {
+          "x": 0,
+          "y": 0,
+          "z": 1
+        },
+        "origin": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "jointId": "J_Z",
+        "travelLimits": {
+          "min": 0,
+          "max": 508
+        },
+        "velocityLimit": 500,
+        "accelerationLimit": 1200,
+        "homePosition": 508,
+        "zeroPosition": 0,
+        "signConvention": 1
+      }
+    ],
+    "kinematicChain": {
+      "chainId": "MILL_3X_CHAIN",
+      "links": [
+        {
+          "linkId": "BASE_LINK",
+          "name": "Machine Base Bed"
+        },
+        {
+          "linkId": "TABLE_LINK",
+          "name": "Workpiece Table"
+        },
+        {
+          "linkId": "SPINDLE_HEAD",
+          "name": "Milling Spindle Head"
+        }
+      ],
+      "joints": [
+        {
+          "jointId": "J_X",
+          "jointType": "PRISMATIC",
+          "parentLink": "BASE_LINK",
+          "childLink": "TABLE_LINK",
+          "axisId": "X",
+          "origin": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "offset": 0
+        },
+        {
+          "jointId": "J_Z",
+          "jointType": "PRISMATIC",
+          "parentLink": "BASE_LINK",
+          "childLink": "SPINDLE_HEAD",
+          "axisId": "Z",
+          "origin": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "offset": 0
+        }
+      ],
+      "baseFrameId": "BASE"
+    },
+    "spindle": {
+      "spindleId": "SPINDLE_1",
+      "maxRPM": 10000,
+      "interfaceType": "CAT40"
+    },
+    "limits": {
+      "maxWorkpieceWeight": 1361,
+      "maxToolWeight": 5.4,
+      "workEnvelope": {
+        "xMin": -381,
+        "xMax": 381,
+        "yMin": -254,
+        "yMax": 254,
+        "zMin": 0,
+        "zMax": 508
+      }
+    },
+    "controllerCapabilities": {
+      "rtcpSupported": false,
+      "toolLengthCompensation": true,
+      "workOffsetsCount": 100,
+      "rotaryInterpolation": false,
+      "inverseTimeFeed": false,
+      "continuous5Axis": false
+    },
+    "status": "ACTIVE",
+    "provenance": {
+      "source": "HAAS_CATALOG_2026",
+      "manufacturer": "Haas Automation",
+      "model": "VF-2",
+      "serialNumber": "SN-VF2-109283",
+      "importDate": "2026-08-21T07:39:43.970Z"
+    },
+    "fingerprint": "haas-vf2-provenance-fingerprint-2026"
+  },
+  "coordinateFrames": [
+    "WORLD",
+    "BASE",
+    "MACHINE",
+    "SPINDLE",
+    "TOOL",
+    "TABLE",
+    "FIXTURE",
+    "WORKPIECE"
+  ],
+  "componentCount": 10
+}

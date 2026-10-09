@@ -1,0 +1,9 @@
+{
+  "timestamp": "2026-09-30T08:48:00Z",
+  "missionId": "NACA0012-VV-FINAL-TRUTH-CLOSURE-002",
+  "windowSize": 20,
+  "clRelativeWindowChange": 0.0078,
+  "cdRelativeWindowChange": 0.0067,
+  "threshold": 0.02,
+  "verdict": "PASS"
+}

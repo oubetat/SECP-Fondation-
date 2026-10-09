@@ -1,0 +1,32 @@
+[
+  {
+    "element": "BAR2",
+    "minJacobian": 0.75,
+    "maxJacobian": 0.75,
+    "isValid": true
+  },
+  {
+    "element": "TRI3",
+    "minJacobian": 1,
+    "maxJacobian": 1,
+    "isValid": true
+  },
+  {
+    "element": "QUAD4",
+    "minJacobian": 0.25,
+    "maxJacobian": 0.25,
+    "isValid": true
+  },
+  {
+    "element": "TET4",
+    "minJacobian": 1,
+    "maxJacobian": 1,
+    "isValid": true
+  },
+  {
+    "element": "HEX8",
+    "minJacobian": 0.125,
+    "maxJacobian": 0.125,
+    "isValid": true
+  }
+]

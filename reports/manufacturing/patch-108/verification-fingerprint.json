@@ -1,0 +1,9 @@
+{
+  "ncProgramFingerprint": "NC_275_13",
+  "machineFingerprint": "HAAS_VF5_TRT210",
+  "controllerFingerprint": "FANUC_31i_B5",
+  "toolFingerprint": "TOOL_1",
+  "policyFingerprint": "TOL_0.005",
+  "verifierRevision": 1,
+  "merkleRootHash": "0xVERIFY_NC_275_1_HAAS_VF5_QUAL"
+}

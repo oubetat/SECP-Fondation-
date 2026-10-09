@@ -1,0 +1,5 @@
+{
+  "methodology": "Topology-based pre-allocation without computing numerical Gauss point integrations",
+  "cliqueExpansion": "Full cross-product of element global DOFs",
+  "benefits": "Zero reallocation during numerical stiffness assembly"
+}

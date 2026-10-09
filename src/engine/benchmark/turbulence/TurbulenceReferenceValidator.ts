@@ -1,0 +1,130 @@
+/**
+ * PATCH-176: Turbulence Reference Validator Engine
+ * 
+ * Compares SECP CFD solver output against physical empirical/analytical reference correlations:
+ * - Blasius Empirical Pipe & Channel Friction Correlations (1913/1939)
+ * - Prandtl 1/7th Law Turbulent Skin Friction Correlation (1927)
+ * - Moody / Colebrook-White Friction Factor
+ */
+
+import { ReferenceValidationResult } from './types';
+import { TurbulenceCaseRegistry } from './TurbulenceCaseRegistry';
+import { Fvm3DNavierStokesSolver } from '../../cfd3d/Fvm3DNavierStokesSolver';
+import { Fvm3DMeshGenerator } from '../../cfd3d/Fvm3DMeshGenerator';
+
+export class TurbulenceReferenceValidator {
+  public static validateAgainstReferences(): ReferenceValidationResult[] {
+    const results: ReferenceValidationResult[] = [];
+    const cases = TurbulenceCaseRegistry.getCanonicalCases();
+
+    for (const c of cases) {
+      const sol = Fvm3DNavierStokesSolver.solve(Fvm3DMeshGenerator.cloneMesh(c.mesh), c.fluid, c.boundaryConditions, c.solverConfig);
+
+      if (c.caseId === 'TC-TURB-01-CHANNEL') {
+        // Channel Flow Friction Factor Comparison from integrated wall shear stress
+        const U = c.boundaryConditions.inletVelocityMS.x;
+        const rho = c.fluid.densityKgM3;
+        const wallArea = c.mesh.faces.filter(f => f.boundaryType === 'WALL').reduce((sum, f) => sum + f.area, 0);
+        const viscousForce = sol.monitors.viscousDragForceN || sol.monitors.dragForceN;
+        const tau_w = viscousForce / Math.max(wallArea, 1e-10);
+        const calculatedF = (8.0 * tau_w) / Math.max(rho * U * U, 1e-10);
+        const refF = c.referenceFrictionFactor || 0.0265;
+
+        const absErr = Math.abs(calculatedF - refF);
+        const relErrPercent = (absErr / refF) * 100;
+        const normErr = absErr / refF;
+
+        // Tolerance = 25% for first-order upwind FVM coarse 3D mesh
+        const status = relErrPercent <= 25.0 ? 'PASS' : 'FAIL';
+
+        results.push({
+          caseId: c.caseId,
+          caseName: c.name,
+          calculatedValue: calculatedF,
+          referenceValue: refF,
+          metricName: 'Darcy Friction Factor (f)',
+          unit: 'dimensionless',
+          referenceSource: 'Blasius / Dean Channel Correlation (f = 0.316 * Re^-0.25)',
+          absoluteError: absErr,
+          relativeErrorPercent: relErrPercent,
+          normalizedError: normErr,
+          tolerancePercent: 25.0,
+          status
+        });
+      } else if (c.caseId === 'TC-TURB-02-PIPE') {
+        // Pipe Flow Friction Factor Comparison from integrated wall shear stress
+        const U = c.boundaryConditions.inletVelocityMS.x;
+        const rho = c.fluid.densityKgM3;
+        const wallArea = c.mesh.faces.filter(f => f.boundaryType === 'WALL').reduce((sum, f) => sum + f.area, 0);
+        const viscousForce = sol.monitors.viscousDragForceN || sol.monitors.dragForceN;
+        const tau_w = viscousForce / Math.max(wallArea, 1e-10);
+        const calculatedF = (8.0 * tau_w) / Math.max(rho * U * U, 1e-10);
+        const refF = c.referenceFrictionFactor || 0.0223;
+
+        const absErr = Math.abs(calculatedF - refF);
+        const relErrPercent = (absErr / refF) * 100;
+        const normErr = absErr / refF;
+
+        const status = relErrPercent <= 25.0 ? 'PASS' : 'FAIL';
+
+        results.push({
+          caseId: c.caseId,
+          caseName: c.name,
+          calculatedValue: calculatedF,
+          referenceValue: refF,
+          metricName: 'Darcy Friction Factor (f)',
+          unit: 'dimensionless',
+          referenceSource: 'Blasius / Moody Pipe Correlation (Re = 40,000)',
+          absoluteError: absErr,
+          relativeErrorPercent: relErrPercent,
+          normalizedError: normErr,
+          tolerancePercent: 25.0,
+          status
+        });
+      } else if (c.caseId === 'TC-TURB-03-FLAT-PLATE') {
+        // Flat Plate Skin Friction Comparison
+        const calculatedCf = sol.monitors.dragCoefficientCd / 2.0;
+        const refCf = c.referenceSkinFriction || 0.00427;
+
+        const absErr = Math.abs(calculatedCf - refCf);
+        const relErrPercent = (absErr / refCf) * 100;
+        const normErr = absErr / refCf;
+
+        const status = relErrPercent <= 30.0 ? 'PASS' : 'FAIL';
+
+        results.push({
+          caseId: c.caseId,
+          caseName: c.name,
+          calculatedValue: calculatedCf,
+          referenceValue: refCf,
+          metricName: 'Skin Friction Coefficient (Cf)',
+          unit: 'dimensionless',
+          referenceSource: 'Prandtl 1/7th Power Law Turbulent Skin Friction',
+          absoluteError: absErr,
+          relativeErrorPercent: relErrPercent,
+          normalizedError: normErr,
+          tolerancePercent: 30.0,
+          status
+        });
+      } else if (c.caseId === 'TC-TURB-04-ADVERSE-PRESSURE') {
+        // Adverse Pressure Gradient - Unproven status for baseline isotropic k-epsilon without non-linear strain corrections
+        results.push({
+          caseId: c.caseId,
+          caseName: c.name,
+          calculatedValue: sol.monitors.pressureDropPa,
+          referenceValue: 0.0,
+          metricName: 'Separated Recirculation Length',
+          unit: 'm',
+          referenceSource: 'NASA Langley Adverse Pressure Gradient Database',
+          absoluteError: 0.0,
+          relativeErrorPercent: 0.0,
+          normalizedError: 0.0,
+          tolerancePercent: 0.0,
+          status: 'UNPROVEN'
+        });
+      }
+    }
+
+    return results;
+  }
+}

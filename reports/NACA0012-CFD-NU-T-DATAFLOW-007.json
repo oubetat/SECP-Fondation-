@@ -1,0 +1,42 @@
+{
+  "missionId": "NACA0012-VV-ROOT-CAUSE-FIX-VALIDATION-007",
+  "timestamp": "2026-09-30T09:17:32.109Z",
+  "trace": {
+    "k": {
+      "sourceVariable": "kResult.solution",
+      "destinationVariable": "k",
+      "iterationIndex": "n",
+      "memoryState": "Allocated array size numCells",
+      "updateTiming": "Step 1 of outer loop",
+      "relaxation": "Implicitly relaxed via matrix diagonal (0.7)",
+      "normalization": "Divided by field mean k"
+    },
+    "omega": {
+      "sourceVariable": "omegaResult.solution",
+      "destinationVariable": "omega_field",
+      "iterationIndex": "n",
+      "memoryState": "Allocated array size numCells",
+      "updateTiming": "Step 1 of outer loop",
+      "relaxation": "Implicitly relaxed via matrix diagonal (0.5)",
+      "normalization": "Divided by field mean omega"
+    },
+    "nut": {
+      "sourceVariable": "reEvaluated.turbulentViscosity",
+      "destinationVariable": "nut",
+      "iterationIndex": "n",
+      "memoryState": "Allocated array size numCells",
+      "updateTiming": "Recomputed after k-omega solve, relaxed with alpha_nut = 0.3",
+      "relaxation": "Explicit linear relaxation: relaxedNewNut = alpha_nut * unrelaxedNewNut + (1 - alpha_nut) * oldNut",
+      "normalization": "None (Raw dynamic viscosity Pa s, stored as mu_t)"
+    },
+    "mu_eff_f": {
+      "sourceVariable": "mu + nut[face.ownerCellId] & mu + nut[neighborId]",
+      "destinationVariable": "effMu",
+      "iterationIndex": "n",
+      "memoryState": "Local variable during operator assembly",
+      "updateTiming": "Assembled symmetrically at faces: 0.5 * (ownerMu + neighborMu)",
+      "relaxation": "None (inherits relaxation from nut)",
+      "normalization": "None"
+    }
+  }
+}

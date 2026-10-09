@@ -1,0 +1,199 @@
+[
+  {
+    "checkpointId": "CHK_0001",
+    "timestamp": 1787297983974,
+    "machineStateHash": "9a7eb4439a7eb4439a7eb4439a7eb4439a7eb4439a7eb4439a7eb4439a7eb443",
+    "telemetryPosition": 5,
+    "toolState": {
+      "toolId": "T1_ENDMILL_10",
+      "toolNumber": 1,
+      "toolAssemblyId": "ASSY_T1_ER32",
+      "lengthOffsetMM": 120,
+      "radiusOffsetMM": 5,
+      "wearLengthMM": 0.002,
+      "wearRadiusMM": 0.001,
+      "lifeState": "NEW",
+      "measurementSource": "MEASURED",
+      "timestamp": 1787297983971
+    },
+    "programState": {
+      "programId": "O1001",
+      "programLine": 1,
+      "activeToolNumber": 1,
+      "activeOffsetId": "G54",
+      "modalState": {
+        "motionMode": "G00",
+        "planeSelection": "G17",
+        "feedMode": "G94",
+        "distanceMode": "G90"
+      },
+      "feedRateMMMin": 1500,
+      "actualFeedRateMMMin": 0,
+      "spindleSpeedRPM": 0,
+      "machineMode": "AUTO",
+      "alarmCodes": [],
+      "timestamp": 1787297983971,
+      "provenance": "CONFIGURED"
+    },
+    "stockStateHash": "STOCK_HASH_INIT",
+    "healthState": {
+      "overallHealth": "HEALTHY",
+      "axisHealth": {
+        "X": "HEALTHY",
+        "Y": "HEALTHY",
+        "Z": "HEALTHY"
+      },
+      "spindleHealth": "HEALTHY",
+      "toolHealth": "HEALTHY",
+      "controllerHealth": "HEALTHY",
+      "sensorHealth": "HEALTHY",
+      "diagnostics": [],
+      "timestamp": 1787297983974
+    },
+    "snapshotState": {
+      "stateId": "STATE_000005",
+      "sequenceNumber": 5,
+      "timestamp": 1787297983974,
+      "previousStateHash": "2494475124944751249447512494475124944751249447512494475124944751",
+      "currentStateHash": "9a7eb4439a7eb4439a7eb4439a7eb4439a7eb4439a7eb4439a7eb4439a7eb443",
+      "lifecycleState": "SYNCHRONIZED",
+      "axes": {
+        "X": {
+          "axisName": "X",
+          "commandedPosition": 100,
+          "actualPosition": 100.00048744114187,
+          "velocity": 100,
+          "acceleration": 0,
+          "trackingError": 0.00048744114187115883,
+          "limitState": "NORMAL",
+          "timestamp": 1787297983974,
+          "provenance": "MEASURED"
+        },
+        "Y": {
+          "axisName": "Y",
+          "commandedPosition": 50,
+          "actualPosition": 50.00063231696932,
+          "velocity": 100,
+          "acceleration": 0,
+          "trackingError": 0.0006323169693231989,
+          "limitState": "NORMAL",
+          "timestamp": 1787297983974,
+          "provenance": "MEASURED"
+        },
+        "Z": {
+          "axisName": "Z",
+          "commandedPosition": -20,
+          "actualPosition": -20.001884309679017,
+          "velocity": 100,
+          "acceleration": 0,
+          "trackingError": -0.0018843096790170932,
+          "limitState": "NORMAL",
+          "timestamp": 1787297983974,
+          "provenance": "MEASURED"
+        }
+      },
+      "rotaryAxes": {
+        "A": {
+          "axisName": "A",
+          "commandedAngleDeg": 20,
+          "actualAngleDeg": 19.999488423959892,
+          "angularVelocityDegS": 10,
+          "angularAccelerationDegS2": 0,
+          "trackingErrorDeg": -0.000511576040107542,
+          "wrapState": 0,
+          "limitState": "NORMAL",
+          "timestamp": 1787297983974,
+          "provenance": "MEASURED"
+        },
+        "C": {
+          "axisName": "C",
+          "commandedAngleDeg": 120,
+          "actualAngleDeg": 119.99933674408773,
+          "angularVelocityDegS": 20,
+          "angularAccelerationDegS2": 0,
+          "trackingErrorDeg": -0.0006632559122721204,
+          "wrapState": 0,
+          "limitState": "NORMAL",
+          "timestamp": 1787297983974,
+          "provenance": "MEASURED"
+        }
+      },
+      "spindle": {
+        "commandedRPM": 12000,
+        "actualRPM": 11998.375582596127,
+        "direction": "STOP",
+        "loadPercent": 0,
+        "temperatureC": 34.5,
+        "vibrationG": 0.08,
+        "status": "STOPPED",
+        "slipRPM": -1.6244174038729398,
+        "timestamp": 1787297983974,
+        "provenance": "CONFIGURED"
+      },
+      "controller": {
+        "programId": "O1001",
+        "programLine": 1,
+        "activeToolNumber": 1,
+        "activeOffsetId": "G54",
+        "modalState": {
+          "motionMode": "G00",
+          "planeSelection": "G17",
+          "feedMode": "G94",
+          "distanceMode": "G90"
+        },
+        "feedRateMMMin": 1500,
+        "actualFeedRateMMMin": 0,
+        "spindleSpeedRPM": 0,
+        "machineMode": "AUTO",
+        "alarmCodes": [],
+        "timestamp": 1787297983971,
+        "provenance": "CONFIGURED"
+      },
+      "tool": {
+        "toolId": "T1_ENDMILL_10",
+        "toolNumber": 1,
+        "toolAssemblyId": "ASSY_T1_ER32",
+        "lengthOffsetMM": 120,
+        "radiusOffsetMM": 5,
+        "wearLengthMM": 0.002,
+        "wearRadiusMM": 0.001,
+        "lifeState": "NEW",
+        "measurementSource": "MEASURED",
+        "timestamp": 1787297983971
+      },
+      "workpiece": {
+        "workpieceId": "WP_AEROSPACE_BRACKET",
+        "geometryRevision": 1,
+        "fixtureId": "FIX_VISE_01",
+        "stockStateHash": "STOCK_HASH_INIT",
+        "machinedStateHash": "MACHINED_HASH_INIT",
+        "removedVolumeMM3": 0,
+        "timestamp": 1787297983971
+      },
+      "fixture": {
+        "fixtureId": "FIX_VISE_01",
+        "configurationId": "CONFIG_JAW_100MM",
+        "clampState": "CLAMPED",
+        "fixtureRevision": 1,
+        "timestamp": 1787297983971
+      },
+      "safety": "NORMAL",
+      "health": {
+        "overallHealth": "HEALTHY",
+        "axisHealth": {
+          "X": "HEALTHY",
+          "Y": "HEALTHY",
+          "Z": "HEALTHY"
+        },
+        "spindleHealth": "HEALTHY",
+        "toolHealth": "HEALTHY",
+        "controllerHealth": "HEALTHY",
+        "sensorHealth": "HEALTHY",
+        "diagnostics": [],
+        "timestamp": 1787297983974
+      },
+      "uncertaintyRadiusMM": 0.007319323739253512,
+      "provenance": "MEASURED"
+    }
+  }
+]

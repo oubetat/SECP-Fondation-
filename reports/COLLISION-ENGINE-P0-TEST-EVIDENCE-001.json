@@ -1,0 +1,18 @@
+{
+  "contractId": "P0-TEST-EVIDENCE-001",
+  "name": "P0 Verification Test Evidence",
+  "version": "1.0.0",
+  "testSuite": "src/engine/collision-authority/__tests__/CollisionAuthorityP0.test.ts",
+  "tests": [
+    { "id": "T01", "name": "Canonical result taxonomy includes all required status states", "status": "PASS" },
+    { "id": "T02", "name": "Required input validation fails-closed on missing tool geometry in CAM domain", "status": "PASS" },
+    { "id": "T03", "name": "Kernel exception in provider fails-closed to ANALYSIS_FAILED, never NO_COLLISION", "status": "PASS" },
+    { "id": "T04", "name": "Unregistered provider fails-closed to ANALYSIS_FAILED", "status": "PASS" },
+    { "id": "T05", "name": "Approximate/Sampled legacy adapter retains explicit exactness level and cannot claim EXACT", "status": "PASS" },
+    { "id": "T06", "name": "Canonical result is deeply immutable", "status": "PASS" },
+    { "id": "T07", "name": "Deterministic normalization guarantees identical contact ordering and output on repeat", "status": "PASS" },
+    { "id": "T08", "name": "Inconsistent raw metrics are corrected fail-closed", "status": "PASS" },
+    { "id": "T09", "name": "Negative or NaN tolerance profile parameters immediately fail-closed", "status": "PASS" },
+    { "id": "T10", "name": "evaluateSync handles synchronous providers with full contract compliance", "status": "PASS" }
+  ]
+}

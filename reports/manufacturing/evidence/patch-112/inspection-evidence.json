@@ -1,0 +1,52 @@
+{
+  "contract": {
+    "evidenceId": "EV_INSP_01",
+    "evidenceType": "INSPECTION_EVIDENCE",
+    "evidenceVersion": "1.0",
+    "sourceArtifactId": "INSP_REP_01",
+    "sourceRevision": "1.0",
+    "eventId": "EVT_INSP",
+    "eventType": "INSPECTION_COMPLETED",
+    "eventTimestamp": 1700001000000,
+    "recordedTimestamp": 1700001000000,
+    "producerId": "ZEISS_PRISMA",
+    "producerType": "INSPECTION_SYSTEM",
+    "contentHash": "f3a8cb64ce8a96eeac389e04e216442376ffd0878a946bf754057107030e6731",
+    "canonicalHash": "a2a49f2fa8f1ebcd29b9c0b12b3392d49d5a4cbf37d3686689d95350bf97b21d",
+    "previousEvidenceHash": "7a3c6f59d2fe6b8991311b5216f9ec7d4c70662b3cbc95e6e1432453c4db4a7f",
+    "chainSequence": 11,
+    "signature": "ec982d6396d766c280a3e45d3a5e5cc8bab8ec97c0d001fd1fc77b59f20000cc",
+    "signingIdentity": "KEY_INSPECTOR_01",
+    "verificationStatus": "COMPLETE",
+    "recordingMode": "ORIGINAL"
+  },
+  "sourceIdentity": {
+    "sourceType": "INSPECTION_SYSTEM",
+    "sourceId": "CMM_ZEISS_01",
+    "sourceRevision": "2.0",
+    "sourceFingerprint": "FNG_CMM_01"
+  },
+  "eventIdentity": {
+    "eventId": "EVT_INSP",
+    "eventType": "INSPECTION_COMPLETED",
+    "eventSequence": 11,
+    "eventTimestamp": 1700001000000,
+    "sourceTimestamp": 1700001000000,
+    "recordedTimestamp": 1700001000000
+  },
+  "payload": {
+    "inspectionId": "INSP_01",
+    "measurements": [
+      {
+        "calibrationStatus": "VALID",
+        "measuredValue": 50.002,
+        "measurementId": "M1",
+        "nominalValue": 50,
+        "unit": "mm"
+      }
+    ],
+    "verdict": "PASS"
+  },
+  "context": {},
+  "attestations": []
+}

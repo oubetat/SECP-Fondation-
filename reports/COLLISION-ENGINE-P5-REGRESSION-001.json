@@ -1,0 +1,10 @@
+{
+  "reportId": "COLLISION-ENGINE-P5-REGRESSION-001",
+  "timestampIso": "2026-10-02T08:01:27.700Z",
+  "collisionAuthorityTests": "131/131 PASS",
+  "p3HardAcceptanceGates": "24/24",
+  "p4HardAcceptanceGates": "26/26",
+  "p5HardAcceptanceGates": "30/30",
+  "scopeNote": "Collision Authority regression suite: 131/131 PASS across 7 test suites.",
+  "verdict": "PASSED"
+}

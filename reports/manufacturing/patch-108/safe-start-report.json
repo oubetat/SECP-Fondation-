@@ -1,0 +1,9 @@
+{
+  "safeStartBlocks": [
+    "G90",
+    "G21",
+    "G17",
+    "G54"
+  ],
+  "status": "SAFE_START_VERIFIED"
+}

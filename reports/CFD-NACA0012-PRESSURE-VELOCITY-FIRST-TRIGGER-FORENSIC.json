@@ -1,0 +1,5810 @@
+{
+  "timestamp": "2026-09-22T12:14:31.180Z",
+  "audit_title": "CFD-NACA0012 PRESSURE–VELOCITY FIRST-TRIGGER FORENSIC AUDIT",
+  "benchmark_status": "NOT_PROVEN",
+  "static_contract": {
+    "command": "npx tsc --noEmit run_relaxation_experiments.ts",
+    "typescriptErrorsBefore": 12,
+    "typescriptErrorsAfter": 0,
+    "static_contract_status": "PASS"
+  },
+  "executive_finding": {
+    "first_observable_anomaly": "Unrelaxed Pressure Correction (p') hitting Poisson solver limit (p_limit = 9.1875 Pa) at Iteration 1",
+    "first_numerical_limiter_activation": "Pressure-Correction Limiter (p_limit = 9.1875 Pa) at Iteration 1 (both Exp A and B)",
+    "first_velocity_limiter_activation": "Max Velocity Cap (U_limit = 2.50 m/s) at Iteration 2 (Exp A) and Iteration 23 (Exp B)",
+    "first_trigger_classification": "A = PRESSURE-CAP-FIRST",
+    "first_trigger_iteration": 1,
+    "causal_explanation": "The unrelaxed pressure correction Poisson solver in Phase 3 encounters extreme cell mass imbalances on Iteration 1, forcing raw p' to saturate at p_limit = 9.1875 Pa immediately. This saturated p' creates severe cell pressure gradients grad(p'), which feed large velocity corrections du = -alpha_u * grad(p') / aP, rapidly accelerating boundary cells until the velocity cap (2.50 m/s) saturates in subsequent iterations (Iter 2 in Exp A, Iter 23 in Exp B). Because both pressure and velocity are clipped by artificial numerical bounds, physical mass and momentum conservation cannot be satisfied, culminating in residual degradation and force oscillations."
+  },
+  "execution_order_proven": [
+    "1. SST k-omega Discretization and Assembly (Phase 1)",
+    "2. k Transport Linear Solve (Phase 1)",
+    "3. omega Transport Linear Solve (Phase 1)",
+    "4. Turbulent Viscosity nut Evaluation and Under-Relaxation (Phase 1)",
+    "5. Momentum Equations Assembly & Gauss-Seidel Predictor (Phase 2)",
+    "6. Intermediate Velocity Predictor u*, v*, w* (Phase 2)",
+    "7. Rhie-Chow Face Velocity Interpolation (Phase 2)",
+    "8. Continuity Mass Defect Evaluation (Phase 3)",
+    "9. Pressure-Correction Poisson System Assembly (Phase 3)",
+    "10. Pressure Poisson Linear Solve & Cell p' Limiter (Phase 3/4, p_limit = 9.1875 Pa)",
+    "11. Relaxed Pressure Update p = p + clamp(alpha_p * p', maxDeltaPAllowed) (Phase 4)",
+    "12. Cell Pressure Correction Gradient grad(p') Computation (Phase 4)",
+    "13. Velocity Correction du, dv, dw & Velocity Clamp U_limit = 2.50 m/s (Phase 4)",
+    "14. Corrected Face Fluxes & Mass Flow Balance (Phase 4)",
+    "15. Post-Correction Continuity & Momentum Residual Auditing (Phase 5/10)",
+    "16. Aerodynamic Force & Moment Integration (Phase 6/10)",
+    "17. Telemetry Snapshot & Convergence Gate Verification (Phase 7/10)"
+  ],
+  "pressure_correction_audit": {
+    "formula_p_limit": "p_limit = (3.0 * q_inf) / alpha_p",
+    "q_inf_value": 0.6125,
+    "alpha_p_value": 0.2,
+    "p_limit_value": 9.1875,
+    "maxDeltaPAllowed_formula": "maxDeltaPAllowed = 2.0 * q_inf = 1.225 Pa",
+    "unrelaxed_vs_relaxed_proof": "In Iteration 1, the Poisson solver encounters raw_p_new > 9.1875 Pa in multiple cells, clamping p_prime to 9.1875. The solver records maxDeltaP = max(|p_prime|) = 9.1875. Then deltaP = clamp(alpha_p * p_prime, -1.225, 1.225) applies exactly 1.225 Pa to the pressure field. Hence pressureCorrection = 9.1875 is the unrelaxed Poisson cap, NOT a natural unconstrained result."
+  },
+  "velocity_limiter_audit": {
+    "formula_maxVelCorrAllowed": "maxVelCorrAllowed = 0.5 * max(U_ref, 1.0) = 0.50 m/s",
+    "formula_maxVelocityCap": "U_limit = 2.5 * max(U_ref, 1.0) = 2.50 m/s",
+    "classification": "NUMERICAL_LIMITER",
+    "nature": "Hard artificial ceiling imposed on cell velocity magnitude to prevent numerical explosion from pressure correction gradients."
+  },
+  "k_omega_residual_audit": {
+    "kResidual_one_point_zero_explanation": "In Experiment B, kResidual = 1.0 is a normalization artifact of the Gauss-Seidel solver when the initial residual equals the reference norm (rhsNorm) or when the solver terminates in 0 sweeps due to absoluteTolerance satisfaction on an extremely small baseline field. It represents normalized initial residual (r0 / r0 = 1.0) rather than a physical divergence to 1.0.",
+    "omegaResidual_explanation": "Omega linear solve smoothly reduces residual from initial ~1.0 to 1e-4 across successive sweeps."
+  },
+  "telemetry_independence": {
+    "continuityL1_accumulation": "sum(|mass_defect|) / totalFaceThroughput evaluated over all cells independently in Phase 10.",
+    "momentumL1_accumulation": "sum(|momentum_defect|) / (U_ref * inletMassFlow) evaluated over all momentum equations independently in Phase 10.",
+    "independence_verified": true,
+    "shared_accumulator_contamination": false
+  },
+  "numerical_limiter_inventory": [
+    {
+      "name": "Poisson Cell Pressure Correction Limiter (p_limit)",
+      "formula": "p_new = max(-p_limit, min(p_limit, raw_p_new)), p_limit = 3*q_inf / alpha_p",
+      "value": "9.1875 Pa",
+      "classification": "NUMERICAL_STABILITY_LIMITER",
+      "firstActivation": "Iteration 1",
+      "reason": "Prevents unbounded divergence in pressure Poisson solver during early severe mass defect iterations."
+    },
+    {
+      "name": "Applied Pressure Correction Clamp (maxDeltaPAllowed)",
+      "formula": "deltaP = max(-2*q_inf, min(2*q_inf, alpha_p * p_prime))",
+      "value": "1.2250 Pa",
+      "classification": "NUMERICAL_STABILITY_LIMITER",
+      "firstActivation": "Iteration 1",
+      "reason": "Limits maximum pressure change per SIMPLE outer iteration."
+    },
+    {
+      "name": "Velocity Correction Component Clamp (maxVelCorrAllowed)",
+      "formula": "du = max(-0.5*U_ref, min(0.5*U_ref, du_raw))",
+      "value": "0.5000 m/s",
+      "classification": "NUMERICAL_STABILITY_LIMITER",
+      "firstActivation": "Iteration 1",
+      "reason": "Prevents velocity correction from exceeding 50% free-stream speed in a single step."
+    },
+    {
+      "name": "Global Cell Speed Magnitude Ceiling (maxV_cap)",
+      "formula": "speed = sqrt(u^2 + v^2 + w^2); if (speed > 2.50) scale_to_2.50()",
+      "value": "2.5000 m/s",
+      "classification": "NUMERICAL_STABILITY_LIMITER",
+      "firstActivation": "Iteration 2 (Exp A), Iteration 23 (Exp B)",
+      "reason": "Hard numerical ceiling preventing velocity divergence in recirculation and boundary layer zones."
+    },
+    {
+      "name": "Turbulent Viscosity Ceiling (nut_max)",
+      "formula": "nut = min(nut, 1e4 * mu)",
+      "value": "0.0020417 Pa*s",
+      "classification": "PHYSICAL_MODEL_BOUND",
+      "firstActivation": "Iteration 1",
+      "reason": "Bounds eddy viscosity to maximum realizable turbulent ratio (10,000 * laminar viscosity)."
+    },
+    {
+      "name": "SST k and omega Lower Bound Floors",
+      "formula": "k = max(k, 1e-10), omega = max(omega, 1e-6)",
+      "value": "1e-10 m^2/s^2, 1e-6 1/s",
+      "classification": "INITIALIZATION_FLOOR",
+      "firstActivation": "Iteration 1",
+      "reason": "Prevents negative turbulence quantities and division by zero in eddy viscosity formulation."
+    }
+  ],
+  "first_anomaly_table": {
+    "pressureCapFirstActive": {
+      "experimentA": 1,
+      "experimentB": 1
+    },
+    "velocityCapFirstActive": {
+      "experimentA": 2,
+      "experimentB": 23
+    },
+    "nutCapFirstActive": {
+      "experimentA": 1,
+      "experimentB": 1
+    },
+    "kAnomalyFirstActive": {
+      "experimentA": null,
+      "experimentB": 325
+    },
+    "omegaAnomalyFirstActive": {
+      "experimentA": null,
+      "experimentB": null
+    },
+    "continuityDeteriorationFirstActive": {
+      "experimentA": 13,
+      "experimentB": 43
+    },
+    "momentumDeteriorationFirstActive": {
+      "experimentA": 30,
+      "experimentB": 34
+    },
+    "forceInstabilityFirstActive": {
+      "experimentA": 423,
+      "experimentB": 45
+    },
+    "maxVelocitySaturationFirstActive": {
+      "experimentA": 2,
+      "experimentB": 23
+    }
+  },
+  "trigger_windows": {
+    "experimentA": [
+      {
+        "window": "1–30",
+        "startIteration": 1,
+        "endIteration": 30,
+        "count": 30,
+        "metrics": {
+          "rawPressureCorrection": {
+            "min": 2.8988701779151684,
+            "max": 9.1875,
+            "mean": 8.590350844655521,
+            "stdDev": 1.7963369758832868
+          },
+          "cappedPressureCorrection": {
+            "min": 2.8988701779151684,
+            "max": 9.1875,
+            "mean": 8.590350844655521,
+            "stdDev": 1.7963369758832868
+          },
+          "rawMaxVelocity": {
+            "min": 1.0265737957236936,
+            "max": 2.5000000000000004,
+            "mean": 2.45088579319079,
+            "stdDev": 0.26448809803928497
+          },
+          "postCapMaxVelocity": {
+            "min": 1.0265737957236936,
+            "max": 2.5,
+            "mean": 2.45088579319079,
+            "stdDev": 0.26448809803928497
+          },
+          "velocityCorrection": {
+            "min": 0.3635794810359987,
+            "max": 3.8638343723014197,
+            "mean": 1.9998894777415168,
+            "stdDev": 1.0030607480963092
+          },
+          "continuityL1": {
+            "min": 0.000531945593810797,
+            "max": 0.010088840765312175,
+            "mean": 0.004600887358086688,
+            "stdDev": 0.002610706379843071
+          },
+          "continuityLinf": {
+            "min": 0.00000948314082646362,
+            "max": 0.0005806299432666246,
+            "mean": 0.00008775864840262504,
+            "stdDev": 0.00012419793222279282
+          },
+          "momentumL1": {
+            "min": 0.000023926359962394613,
+            "max": 0.0007278724982935574,
+            "mean": 0.00015502965931381467,
+            "stdDev": 0.00018245086301184888
+          },
+          "momentumLinf": {
+            "min": 0.0019507385163766108,
+            "max": 0.16516891748788662,
+            "mean": 0.028611937112603215,
+            "stdDev": 0.04217898057193658
+          },
+          "kResidual": {
+            "min": 0.0012126172779970787,
+            "max": 0.04348955042968004,
+            "mean": 0.03637076567059856,
+            "stdDev": 0.008959684837119071
+          },
+          "omegaResidual": {
+            "min": 0.0005955735372543448,
+            "max": 0.004211994727872474,
+            "mean": 0.003056884423774925,
+            "stdDev": 0.0008171679134711581
+          },
+          "maxNut": {
+            "min": 0.002041666666666667,
+            "max": 0.002041666666666667,
+            "mean": 0.0020416666666666656,
+            "stdDev": 1.3010426069826053e-18
+          },
+          "numberOfNutClippedCells": {
+            "min": 955,
+            "max": 7260,
+            "mean": 1974.1666666666667,
+            "stdDev": 1506.515694869751
+          },
+          "cl": {
+            "min": -0.027683611131854458,
+            "max": 0.19770516728896237,
+            "mean": 0.05074802806361293,
+            "stdDev": 0.08006273218399407
+          },
+          "cd": {
+            "min": 0.0013387458948986891,
+            "max": 0.15406815074858385,
+            "mean": 0.06694427171389325,
+            "stdDev": 0.042014786350466495
+          },
+          "cm": {
+            "min": -0.0135927384106906,
+            "max": 0.0344243917669895,
+            "mean": 0.011207016419827916,
+            "stdDev": 0.01635670119670381
+          }
+        }
+      },
+      {
+        "window": "31–100",
+        "startIteration": 31,
+        "endIteration": 100,
+        "count": 70,
+        "metrics": {
+          "rawPressureCorrection": {
+            "min": 0.298382320534656,
+            "max": 9.1875,
+            "mean": 5.324572575824069,
+            "stdDev": 3.63819927017506
+          },
+          "cappedPressureCorrection": {
+            "min": 0.298382320534656,
+            "max": 9.1875,
+            "mean": 5.324572575824069,
+            "stdDev": 3.63819927017506
+          },
+          "rawMaxVelocity": {
+            "min": 1.4910281948564477,
+            "max": 2.5000000000000004,
+            "mean": 2.315657719793202,
+            "stdDev": 0.3287208334273397
+          },
+          "postCapMaxVelocity": {
+            "min": 1.4910281948564477,
+            "max": 2.5,
+            "mean": 2.315657719793201,
+            "stdDev": 0.3287208334273394
+          },
+          "velocityCorrection": {
+            "min": 0.2350868871532831,
+            "max": 3.824794965941252,
+            "mean": 1.778238848676734,
+            "stdDev": 0.850697129327068
+          },
+          "continuityL1": {
+            "min": 0.0008706677021938922,
+            "max": 0.005980931061878494,
+            "mean": 0.0020472023734447683,
+            "stdDev": 0.001155447760104759
+          },
+          "continuityLinf": {
+            "min": 0.000009053847288879138,
+            "max": 0.00014169335525041478,
+            "mean": 0.00005441495549098912,
+            "stdDev": 0.00003637669267234479
+          },
+          "momentumL1": {
+            "min": 0.000011782275576892559,
+            "max": 0.00005571882767632402,
+            "mean": 0.000025694184987834822,
+            "stdDev": 0.000013246183287117261
+          },
+          "momentumLinf": {
+            "min": 0.0009177165421567014,
+            "max": 0.010425110815513625,
+            "mean": 0.002763821495082736,
+            "stdDev": 0.0019008061381085594
+          },
+          "kResidual": {
+            "min": 0.023971721072861465,
+            "max": 0.04495769944006037,
+            "mean": 0.04161318319027953,
+            "stdDev": 0.0036499874676585277
+          },
+          "omegaResidual": {
+            "min": 0.0002932784226948745,
+            "max": 0.0038761196500352465,
+            "mean": 0.003204446675589018,
+            "stdDev": 0.0005994323553365164
+          },
+          "maxNut": {
+            "min": 0.002041666666666667,
+            "max": 0.002041666666666667,
+            "mean": 0.0020416666666666647,
+            "stdDev": 2.168404344971009e-18
+          },
+          "numberOfNutClippedCells": {
+            "min": 440,
+            "max": 1067,
+            "mean": 863.3285714285714,
+            "stdDev": 158.01353661981636
+          },
+          "cl": {
+            "min": -0.07392934340690045,
+            "max": 0.21522204526252098,
+            "mean": 0.0853614267768632,
+            "stdDev": 0.07322226132539521
+          },
+          "cd": {
+            "min": 0.0020996848050781436,
+            "max": 0.039283736567709886,
+            "mean": 0.02662396427463225,
+            "stdDev": 0.010013754712917803
+          },
+          "cm": {
+            "min": -0.02654578712229252,
+            "max": 0.0403362343870309,
+            "mean": 0.008224259698146129,
+            "stdDev": 0.014487629615381902
+          }
+        }
+      },
+      {
+        "window": "101–200",
+        "startIteration": 101,
+        "endIteration": 200,
+        "count": 100,
+        "metrics": {
+          "rawPressureCorrection": {
+            "min": 0.07915200760166162,
+            "max": 9.1875,
+            "mean": 6.9210213546367045,
+            "stdDev": 3.5135167118070263
+          },
+          "cappedPressureCorrection": {
+            "min": 0.07915200760166162,
+            "max": 9.1875,
+            "mean": 6.9210213546367045,
+            "stdDev": 3.5135167118070263
+          },
+          "rawMaxVelocity": {
+            "min": 1.297951647811359,
+            "max": 2.5000000000000004,
+            "mean": 2.0641812564493174,
+            "stdDev": 0.5137746960728367
+          },
+          "postCapMaxVelocity": {
+            "min": 1.297951647811359,
+            "max": 2.5,
+            "mean": 2.064181256449317,
+            "stdDev": 0.5137746960728364
+          },
+          "velocityCorrection": {
+            "min": 0.10399255261321151,
+            "max": 4.97544344740901,
+            "mean": 1.632397412695191,
+            "stdDev": 1.1462368845733162
+          },
+          "continuityL1": {
+            "min": 0.00015380500933975133,
+            "max": 0.001820830025378248,
+            "mean": 0.0008654644652047887,
+            "stdDev": 0.0004650839788778028
+          },
+          "continuityLinf": {
+            "min": 0.0000015552531435828293,
+            "max": 0.00007726047121715483,
+            "mean": 0.000021493369146843443,
+            "stdDev": 0.000019305324069473356
+          },
+          "momentumL1": {
+            "min": 0.000006231778784677341,
+            "max": 0.000025771579929705736,
+            "mean": 0.000011783205508509111,
+            "stdDev": 0.000004225709506129467
+          },
+          "momentumLinf": {
+            "min": 0.0006074196446941532,
+            "max": 0.005716973426903157,
+            "mean": 0.0014357271676289053,
+            "stdDev": 0.0010921071760850527
+          },
+          "kResidual": {
+            "min": 0.01554871352071243,
+            "max": 0.04275198404540473,
+            "mean": 0.03940619369950957,
+            "stdDev": 0.004104909594904426
+          },
+          "omegaResidual": {
+            "min": 0.0010712468950357015,
+            "max": 0.003392491900486218,
+            "mean": 0.002832092763598131,
+            "stdDev": 0.00042606303295948184
+          },
+          "maxNut": {
+            "min": 0.002041666666666667,
+            "max": 0.002041666666666667,
+            "mean": 0.0020416666666666643,
+            "stdDev": 2.6020852139652106e-18
+          },
+          "numberOfNutClippedCells": {
+            "min": 242,
+            "max": 578,
+            "mean": 405.3,
+            "stdDev": 110.45646201105663
+          },
+          "cl": {
+            "min": 0.06515152684141683,
+            "max": 0.23732239787862489,
+            "mean": 0.1452579617805412,
+            "stdDev": 0.036444249997152386
+          },
+          "cd": {
+            "min": 0.000442941337546655,
+            "max": 0.05068707854650923,
+            "mean": 0.025978457043905494,
+            "stdDev": 0.010930663653323678
+          },
+          "cm": {
+            "min": -0.038872394246177756,
+            "max": 0.0587839519090701,
+            "mean": 0.005271231872791429,
+            "stdDev": 0.020126111039935057
+          }
+        }
+      },
+      {
+        "window": "201–300",
+        "startIteration": 201,
+        "endIteration": 300,
+        "count": 100,
+        "metrics": {
+          "rawPressureCorrection": {
+            "min": 0.042185278066232616,
+            "max": 9.1875,
+            "mean": 3.1158974538153474,
+            "stdDev": 3.8633631816514704
+          },
+          "cappedPressureCorrection": {
+            "min": 0.042185278066232616,
+            "max": 9.1875,
+            "mean": 3.1158974538153474,
+            "stdDev": 3.8633631816514704
+          },
+          "rawMaxVelocity": {
+            "min": 1.2983734709571348,
+            "max": 2.5000000000000004,
+            "mean": 2.1407063423208603,
+            "stdDev": 0.4927293797328356
+          },
+          "postCapMaxVelocity": {
+            "min": 1.2983734709571348,
+            "max": 2.5,
+            "mean": 2.1407063423208603,
+            "stdDev": 0.4927293797328356
+          },
+          "velocityCorrection": {
+            "min": 0.08360929559542866,
+            "max": 4.0657085527122465,
+            "mean": 1.6580198647802258,
+            "stdDev": 0.9653766633792698
+          },
+          "continuityL1": {
+            "min": 0.00014430732769183473,
+            "max": 0.001991780426126692,
+            "mean": 0.00047065825902475856,
+            "stdDev": 0.00046977878471819923
+          },
+          "continuityLinf": {
+            "min": 0.000002294597486961291,
+            "max": 0.0001604583552557051,
+            "mean": 0.00003616576111538559,
+            "stdDev": 0.000049971348916708094
+          },
+          "momentumL1": {
+            "min": 0.000006079203944103021,
+            "max": 0.000018155233002681363,
+            "mean": 0.000008127279190409764,
+            "stdDev": 0.000003050272780306879
+          },
+          "momentumLinf": {
+            "min": 0.0005548185126622251,
+            "max": 0.010460733250412092,
+            "mean": 0.0019349232500471098,
+            "stdDev": 0.002209853398403992
+          },
+          "kResidual": {
+            "min": 0.019790648512314216,
+            "max": 0.04655296999016092,
+            "mean": 0.040424187577419064,
+            "stdDev": 0.005104654635788162
+          },
+          "omegaResidual": {
+            "min": 0.00033219532469326937,
+            "max": 0.00514149686777961,
+            "mean": 0.0031306497059051617,
+            "stdDev": 0.0008042025174406046
+          },
+          "maxNut": {
+            "min": 0.002041666666666667,
+            "max": 0.002041666666666667,
+            "mean": 0.0020416666666666643,
+            "stdDev": 2.6020852139652106e-18
+          },
+          "numberOfNutClippedCells": {
+            "min": 325,
+            "max": 712,
+            "mean": 554.83,
+            "stdDev": 130.1092660036171
+          },
+          "cl": {
+            "min": 0.0713797650927575,
+            "max": 0.2355632464675952,
+            "mean": 0.1423619445029036,
+            "stdDev": 0.02684794624789091
+          },
+          "cd": {
+            "min": 0.008770922058948161,
+            "max": 0.04644940367288657,
+            "mean": 0.02519164951459182,
+            "stdDev": 0.006801052387719345
+          },
+          "cm": {
+            "min": -0.014863851335318758,
+            "max": 0.029199844211247477,
+            "mean": 0.0075300118949904425,
+            "stdDev": 0.008616934872157058
+          }
+        }
+      },
+      {
+        "window": "301–350",
+        "startIteration": 301,
+        "endIteration": 350,
+        "count": 50,
+        "metrics": {
+          "rawPressureCorrection": {
+            "min": 0.03858493204920266,
+            "max": 1.3562802598758692,
+            "mean": 0.20202014716747216,
+            "stdDev": 0.24261988084360875
+          },
+          "cappedPressureCorrection": {
+            "min": 0.03858493204920266,
+            "max": 1.3562802598758692,
+            "mean": 0.20202014716747216,
+            "stdDev": 0.24261988084360875
+          },
+          "rawMaxVelocity": {
+            "min": 2.5,
+            "max": 2.500000000000001,
+            "mean": 2.5,
+            "stdDev": 4.3962588843145704e-16
+          },
+          "postCapMaxVelocity": {
+            "min": 2.5,
+            "max": 2.5,
+            "mean": 2.5,
+            "stdDev": 0
+          },
+          "velocityCorrection": {
+            "min": 0.9285781883421286,
+            "max": 2.3572131513060004,
+            "mean": 1.7146446020675965,
+            "stdDev": 0.3929343563895644
+          },
+          "continuityL1": {
+            "min": 0.0001727866525228835,
+            "max": 0.0002758192843197332,
+            "mean": 0.0002227084904942319,
+            "stdDev": 0.000021264852061268203
+          },
+          "continuityLinf": {
+            "min": 0.000003078702418384605,
+            "max": 0.000021167780360750786,
+            "mean": 0.00000612777769311203,
+            "stdDev": 0.000003068365812507597
+          },
+          "momentumL1": {
+            "min": 0.000006462785250142552,
+            "max": 0.000007095759612242712,
+            "mean": 0.000006709048664703806,
+            "stdDev": 1.5661165871022082e-7
+          },
+          "momentumLinf": {
+            "min": 0.000611138785027606,
+            "max": 0.0018655594135500839,
+            "mean": 0.0007252937190263949,
+            "stdDev": 0.00016896240356455128
+          },
+          "kResidual": {
+            "min": 0.019116254484280944,
+            "max": 0.039837394049829264,
+            "mean": 0.027903789982460455,
+            "stdDev": 0.006200205427078314
+          },
+          "omegaResidual": {
+            "min": 0.0036727441897273015,
+            "max": 0.006913122206925338,
+            "mean": 0.004203247856313364,
+            "stdDev": 0.000794214446528564
+          },
+          "maxNut": {
+            "min": 0.002041666666666667,
+            "max": 0.002041666666666667,
+            "mean": 0.002041666666666665,
+            "stdDev": 1.734723475976807e-18
+          },
+          "numberOfNutClippedCells": {
+            "min": 262,
+            "max": 673,
+            "mean": 453.88,
+            "stdDev": 119.65477675379283
+          },
+          "cl": {
+            "min": 0.1254397506707059,
+            "max": 0.1280683076176184,
+            "mean": 0.12677807086091078,
+            "stdDev": 0.0006818541064079904
+          },
+          "cd": {
+            "min": 0.018837584170504358,
+            "max": 0.021371786620034527,
+            "mean": 0.02031271712264442,
+            "stdDev": 0.0006944892906033751
+          },
+          "cm": {
+            "min": -0.0005543642867973285,
+            "max": 0.0025322354637874684,
+            "mean": 0.001322608330585664,
+            "stdDev": 0.000831195486075526
+          }
+        }
+      },
+      {
+        "window": "351–400",
+        "startIteration": 351,
+        "endIteration": 400,
+        "count": 50,
+        "metrics": {
+          "rawPressureCorrection": {
+            "min": 0.04338002614728119,
+            "max": 0.7112433974775042,
+            "mean": 0.1913434045711535,
+            "stdDev": 0.15375548334235778
+          },
+          "cappedPressureCorrection": {
+            "min": 0.04338002614728119,
+            "max": 0.7112433974775042,
+            "mean": 0.1913434045711535,
+            "stdDev": 0.15375548334235778
+          },
+          "rawMaxVelocity": {
+            "min": 2.5,
+            "max": 2.500000000000001,
+            "mean": 2.5000000000000004,
+            "stdDev": 1.66162967242209e-16
+          },
+          "postCapMaxVelocity": {
+            "min": 2.5,
+            "max": 2.5,
+            "mean": 2.5,
+            "stdDev": 0
+          },
+          "velocityCorrection": {
+            "min": 1.067287591711891,
+            "max": 2.345571677835112,
+            "mean": 1.8276326993602598,
+            "stdDev": 0.32039202296113317
+          },
+          "continuityL1": {
+            "min": 0.00018367008183199486,
+            "max": 0.0003787765527546682,
+            "mean": 0.0002342076474725409,
+            "stdDev": 0.00003838143449713069
+          },
+          "continuityLinf": {
+            "min": 0.0000018325696975208381,
+            "max": 0.00006219819418967027,
+            "mean": 0.000010942146700385536,
+            "stdDev": 0.0000104714923328806
+          },
+          "momentumL1": {
+            "min": 0.00000621910994666599,
+            "max": 0.000007049902197343062,
+            "mean": 0.000006560645796909289,
+            "stdDev": 2.0935122722090573e-7
+          },
+          "momentumLinf": {
+            "min": 0.0005229164842355425,
+            "max": 0.0015107101291018219,
+            "mean": 0.0005725240173605985,
+            "stdDev": 0.00015009649643757226
+          },
+          "kResidual": {
+            "min": 0.006159289704156042,
+            "max": 0.018845641860564585,
+            "mean": 0.013111844088664011,
+            "stdDev": 0.003589679585377158
+          },
+          "omegaResidual": {
+            "min": 0.0072889905707379824,
+            "max": 0.012816734787910703,
+            "mean": 0.011151692858174687,
+            "stdDev": 0.0014774400744398028
+          },
+          "maxNut": {
+            "min": 0.002041666666666667,
+            "max": 0.002041666666666667,
+            "mean": 0.002041666666666665,
+            "stdDev": 1.734723475976807e-18
+          },
+          "numberOfNutClippedCells": {
+            "min": 48,
+            "max": 258,
+            "mean": 144.62,
+            "stdDev": 59.93826490648523
+          },
+          "cl": {
+            "min": 0.1268079114998462,
+            "max": 0.1379739162469556,
+            "mean": 0.1303910946638571,
+            "stdDev": 0.0029861994957257857
+          },
+          "cd": {
+            "min": 0.020900448689686095,
+            "max": 0.024275343219268025,
+            "mean": 0.022041292452603677,
+            "stdDev": 0.0008526244181484133
+          },
+          "cm": {
+            "min": 0.002231278866049006,
+            "max": 0.005498725051471464,
+            "mean": 0.003058998118538521,
+            "stdDev": 0.0007934046105716979
+          }
+        }
+      },
+      {
+        "window": "401–450",
+        "startIteration": 401,
+        "endIteration": 450,
+        "count": 50,
+        "metrics": {
+          "rawPressureCorrection": {
+            "min": 0.13885353095603545,
+            "max": 9.1875,
+            "mean": 5.97478441924011,
+            "stdDev": 4.186732627020978
+          },
+          "cappedPressureCorrection": {
+            "min": 0.13885353095603545,
+            "max": 9.1875,
+            "mean": 5.97478441924011,
+            "stdDev": 4.186732627020978
+          },
+          "rawMaxVelocity": {
+            "min": 2.5,
+            "max": 2.500000000000001,
+            "mean": 2.5000000000000004,
+            "stdDev": 1.66162967242209e-16
+          },
+          "postCapMaxVelocity": {
+            "min": 2.5,
+            "max": 2.5,
+            "mean": 2.5,
+            "stdDev": 0
+          },
+          "velocityCorrection": {
+            "min": 1.2155360849453132,
+            "max": 3.534147971980572,
+            "mean": 2.2855405070141774,
+            "stdDev": 0.5223739342521833
+          },
+          "continuityL1": {
+            "min": 4.305002852255884e-12,
+            "max": 0.0058895824714654,
+            "mean": 0.0021077219121071215,
+            "stdDev": 0.0018074883285462181
+          },
+          "continuityLinf": {
+            "min": 1.229724025831314e-13,
+            "max": 0.00020010626137882207,
+            "mean": 0.00008424372485836018,
+            "stdDev": 0.00005823741539070522
+          },
+          "momentumL1": {
+            "min": 0.0000061388913277890554,
+            "max": 0.0003559938710463452,
+            "mean": 0.00003152931481804969,
+            "stdDev": 0.00005090798779869833
+          },
+          "momentumLinf": {
+            "min": 0.0005210128547935548,
+            "max": 0.014087798001436117,
+            "mean": 0.004015706127922454,
+            "stdDev": 0.003228327249268005
+          },
+          "kResidual": {
+            "min": 0.00043137129303242217,
+            "max": 0.07314093751520027,
+            "mean": 0.017419201666169063,
+            "stdDev": 0.01602671153163853
+          },
+          "omegaResidual": {
+            "min": 0.00006911534160529954,
+            "max": 0.024149668971324104,
+            "mean": 0.008123943570897494,
+            "stdDev": 0.006386795895976091
+          },
+          "maxNut": {
+            "min": 0.001096976856480727,
+            "max": 0.002041666666666667,
+            "mean": 0.0019839013094919864,
+            "stdDev": 0.0001991664768174829
+          },
+          "numberOfNutClippedCells": {
+            "min": 0,
+            "max": 70,
+            "mean": 19.96,
+            "stdDev": 18.073140291604002
+          },
+          "cl": {
+            "min": -0.11867352338101106,
+            "max": 0.19970433458666872,
+            "mean": 0.07854300585103415,
+            "stdDev": 0.07561847627962631
+          },
+          "cd": {
+            "min": 0.008280863131738134,
+            "max": 0.029597771256721233,
+            "mean": 0.019658552324448922,
+            "stdDev": 0.00585251973515987
+          },
+          "cm": {
+            "min": -0.14583584203219752,
+            "max": 0.03816449071298062,
+            "mean": -0.025320102007274324,
+            "stdDev": 0.03996596890837792
+          }
+        }
+      },
+      {
+        "window": "451–500",
+        "startIteration": 451,
+        "endIteration": 500,
+        "count": 50,
+        "metrics": {
+          "rawPressureCorrection": {
+            "min": 8.086955486516953,
+            "max": 9.1875,
+            "mean": 9.16548910973034,
+            "stdDev": 0.1540762318876266
+          },
+          "cappedPressureCorrection": {
+            "min": 8.086955486516953,
+            "max": 9.1875,
+            "mean": 9.16548910973034,
+            "stdDev": 0.1540762318876266
+          },
+          "rawMaxVelocity": {
+            "min": 2.5,
+            "max": 2.500000000000001,
+            "mean": 2.5000000000000004,
+            "stdDev": 1.25607396694702e-16
+          },
+          "postCapMaxVelocity": {
+            "min": 2.5,
+            "max": 2.5,
+            "mean": 2.5,
+            "stdDev": 0
+          },
+          "velocityCorrection": {
+            "min": 1.5552732926597073,
+            "max": 4.95150249362728,
+            "mean": 2.9153359499182825,
+            "stdDev": 0.7697152335317746
+          },
+          "continuityL1": {
+            "min": 3.3532608879359444e-8,
+            "max": 0.007291762313807651,
+            "mean": 0.003050889326501,
+            "stdDev": 0.0015824601210206735
+          },
+          "continuityLinf": {
+            "min": 9.388785835769027e-10,
+            "max": 0.00019259807051630296,
+            "mean": 0.0001310905426230727,
+            "stdDev": 0.000033317763680582876
+          },
+          "momentumL1": {
+            "min": 0.000016117064341814373,
+            "max": 0.00008399946667862525,
+            "mean": 0.00003160787959902993,
+            "stdDev": 0.000019041466713615444
+          },
+          "momentumLinf": {
+            "min": 0.0030260332368629668,
+            "max": 0.013157614685474016,
+            "mean": 0.005886219512349364,
+            "stdDev": 0.001954392837225816
+          },
+          "kResidual": {
+            "min": 0.00010642063241693775,
+            "max": 0.0481874635385096,
+            "mean": 0.015369503321401528,
+            "stdDev": 0.01692692537509643
+          },
+          "omegaResidual": {
+            "min": 0.000042859781418087196,
+            "max": 0.008183467415103568,
+            "mean": 0.0013198856782288997,
+            "stdDev": 0.0014454922996010428
+          },
+          "maxNut": {
+            "min": 0.002041666666666667,
+            "max": 0.002041666666666667,
+            "mean": 0.002041666666666665,
+            "stdDev": 1.734723475976807e-18
+          },
+          "numberOfNutClippedCells": {
+            "min": 71,
+            "max": 261,
+            "mean": 130.14,
+            "stdDev": 51.829725061975786
+          },
+          "cl": {
+            "min": -0.32195075534751255,
+            "max": 0.1711549265237293,
+            "mean": 0.06075488133647517,
+            "stdDev": 0.13218929443961044
+          },
+          "cd": {
+            "min": 0.004316354932315043,
+            "max": 0.038592769216441065,
+            "mean": 0.02062232890985323,
+            "stdDev": 0.006970581491333142
+          },
+          "cm": {
+            "min": -0.06595585212985379,
+            "max": 0.0174947284087443,
+            "mean": -0.01152350591678244,
+            "stdDev": 0.023774287706578936
+          }
+        }
+      }
+    ],
+    "experimentB": [
+      {
+        "window": "1–30",
+        "startIteration": 1,
+        "endIteration": 30,
+        "count": 30,
+        "metrics": {
+          "rawPressureCorrection": {
+            "min": 6.402353212571459,
+            "max": 9.1875,
+            "mean": 9.094661773752383,
+            "stdDev": 0.4999491487454634
+          },
+          "cappedPressureCorrection": {
+            "min": 6.402353212571459,
+            "max": 9.1875,
+            "mean": 9.094661773752383,
+            "stdDev": 0.4999491487454634
+          },
+          "rawMaxVelocity": {
+            "min": 1.0264434692070736,
+            "max": 2.5000000000000004,
+            "mean": 1.6390165315527918,
+            "stdDev": 0.6252345973618086
+          },
+          "postCapMaxVelocity": {
+            "min": 1.0264434692070736,
+            "max": 2.5,
+            "mean": 1.6390165315527918,
+            "stdDev": 0.6252345973618085
+          },
+          "velocityCorrection": {
+            "min": 0.057144124596951965,
+            "max": 3.617279264419408,
+            "mean": 0.9627548844095565,
+            "stdDev": 1.1271839492865054
+          },
+          "continuityL1": {
+            "min": 0.0035993477982903845,
+            "max": 0.006664751568741363,
+            "mean": 0.004638885704916044,
+            "stdDev": 0.000752123586845039
+          },
+          "continuityLinf": {
+            "min": 0.000013316816805213865,
+            "max": 0.000580954700239234,
+            "mean": 0.00008825529485744849,
+            "stdDev": 0.00012342181342028265
+          },
+          "momentumL1": {
+            "min": 0.00003644455749362688,
+            "max": 0.000714144913048953,
+            "mean": 0.00016789500359104707,
+            "stdDev": 0.00017161465281750754
+          },
+          "momentumLinf": {
+            "min": 0.002248917835048157,
+            "max": 0.16664125959234405,
+            "mean": 0.0290036003570789,
+            "stdDev": 0.04254353822904492
+          },
+          "kResidual": {
+            "min": 0.016815573724497362,
+            "max": 0.043348742558039347,
+            "mean": 0.037280786565912244,
+            "stdDev": 0.007754351237807209
+          },
+          "omegaResidual": {
+            "min": 0.0005135888295158113,
+            "max": 0.015233100167236478,
+            "mean": 0.008007616592722207,
+            "stdDev": 0.00544556486520639
+          },
+          "maxNut": {
+            "min": 0.0020429171759087233,
+            "max": 0.04087849410482748,
+            "mean": 0.006356772453521262,
+            "stdDev": 0.008942119815769431
+          },
+          "numberOfNutClippedCells": {
+            "min": 399,
+            "max": 7260,
+            "mean": 2237.266666666667,
+            "stdDev": 2184.671293861441
+          },
+          "cl": {
+            "min": -0.10495786273071359,
+            "max": 0.1637372049366888,
+            "mean": 0.020057229945070663,
+            "stdDev": 0.08966854819976473
+          },
+          "cd": {
+            "min": 0.0017757676313027537,
+            "max": 0.8158465334032527,
+            "mean": 0.3261451064120291,
+            "stdDev": 0.2811587710694407
+          },
+          "cm": {
+            "min": -0.04721246885942184,
+            "max": 0.05530120742922674,
+            "mean": 0.009087258192600747,
+            "stdDev": 0.03400444322482701
+          }
+        }
+      },
+      {
+        "window": "31–100",
+        "startIteration": 31,
+        "endIteration": 100,
+        "count": 70,
+        "metrics": {
+          "rawPressureCorrection": {
+            "min": 3.450208145547113,
+            "max": 9.1875,
+            "mean": 9.011687325774131,
+            "stdDev": 0.8610200312114121
+          },
+          "cappedPressureCorrection": {
+            "min": 3.450208145547113,
+            "max": 9.1875,
+            "mean": 9.011687325774131,
+            "stdDev": 0.8610200312114121
+          },
+          "rawMaxVelocity": {
+            "min": 1.295316777138954,
+            "max": 2.500000000000001,
+            "mean": 2.0497315150346243,
+            "stdDev": 0.4878422778080018
+          },
+          "postCapMaxVelocity": {
+            "min": 1.295316777138954,
+            "max": 2.5,
+            "mean": 2.0497315150346243,
+            "stdDev": 0.4878422778080018
+          },
+          "velocityCorrection": {
+            "min": 0.14166146463169796,
+            "max": 4.904842930874075,
+            "mean": 1.6439377095939385,
+            "stdDev": 1.274795585787712
+          },
+          "continuityL1": {
+            "min": 1.5379406005670525e-15,
+            "max": 0.012428223350803987,
+            "mean": 0.0034194784029097512,
+            "stdDev": 0.00294119293787929
+          },
+          "continuityLinf": {
+            "min": 3.531614051399161e-17,
+            "max": 0.00022726641612959444,
+            "mean": 0.000060589712845336184,
+            "stdDev": 0.00005630626408610797
+          },
+          "momentumL1": {
+            "min": 0.000011730913543521413,
+            "max": 0.00011159267271319445,
+            "mean": 0.00004150451287508639,
+            "stdDev": 0.000026767499806449998
+          },
+          "momentumLinf": {
+            "min": 0.0018149122480951671,
+            "max": 0.013792940566721118,
+            "mean": 0.004154871192401397,
+            "stdDev": 0.002207913410571496
+          },
+          "kResidual": {
+            "min": 0.015701589726790238,
+            "max": 0.04455315932182107,
+            "mean": 0.040835567085588186,
+            "stdDev": 0.005117638741177997
+          },
+          "omegaResidual": {
+            "min": 0.0011017237724535553,
+            "max": 0.012198781802413128,
+            "mean": 0.0030332840664327792,
+            "stdDev": 0.0012867288492291627
+          },
+          "maxNut": {
+            "min": 0.0020416666666666847,
+            "max": 0.0020425420231361064,
+            "mean": 0.0020417083503080687,
+            "stdDev": 1.4044938598100392e-7
+          },
+          "numberOfNutClippedCells": {
+            "min": 422,
+            "max": 2169,
+            "mean": 1554.5428571428572,
+            "stdDev": 618.9222818903908
+          },
+          "cl": {
+            "min": -0.11195991677798796,
+            "max": 0.2811787995010929,
+            "mean": 0.13461328287268276,
+            "stdDev": 0.11349048820131351
+          },
+          "cd": {
+            "min": 0.0004251001226334906,
+            "max": 0.08327080587293752,
+            "mean": 0.04211838878032541,
+            "stdDev": 0.019807945661263867
+          },
+          "cm": {
+            "min": -0.06730099415239593,
+            "max": 0.07467077234120781,
+            "mean": 0.009377727898600082,
+            "stdDev": 0.04241779060087649
+          }
+        }
+      },
+      {
+        "window": "101–200",
+        "startIteration": 101,
+        "endIteration": 200,
+        "count": 100,
+        "metrics": {
+          "rawPressureCorrection": {
+            "min": 0.021569821374111994,
+            "max": 2.336130749490406,
+            "mean": 0.23708774359781487,
+            "stdDev": 0.4781162389243203
+          },
+          "cappedPressureCorrection": {
+            "min": 0.021569821374111994,
+            "max": 2.336130749490406,
+            "mean": 0.23708774359781487,
+            "stdDev": 0.4781162389243203
+          },
+          "rawMaxVelocity": {
+            "min": 1.3133484274245484,
+            "max": 2.5,
+            "mean": 1.4321771315551166,
+            "stdDev": 0.21660725705206507
+          },
+          "postCapMaxVelocity": {
+            "min": 1.3133484274245484,
+            "max": 2.5,
+            "mean": 1.4321771315551166,
+            "stdDev": 0.21660725705206507
+          },
+          "velocityCorrection": {
+            "min": 0.030372851126339646,
+            "max": 2.3261264852661823,
+            "mean": 0.2335304655336416,
+            "stdDev": 0.398950395786528
+          },
+          "continuityL1": {
+            "min": 0.00008572581691048229,
+            "max": 0.0004918892327192368,
+            "mean": 0.00017783584797138386,
+            "stdDev": 0.00011733917816660133
+          },
+          "continuityLinf": {
+            "min": 7.348384536939922e-7,
+            "max": 0.000010116871488576102,
+            "mean": 0.000002297701495940052,
+            "stdDev": 0.000002394333328748233
+          },
+          "momentumL1": {
+            "min": 0.000008295035713809193,
+            "max": 0.000011381460852441625,
+            "mean": 0.000008821524806210305,
+            "stdDev": 7.290516255764115e-7
+          },
+          "momentumLinf": {
+            "min": 0.0026925490958496874,
+            "max": 0.002965956281105016,
+            "mean": 0.0028969502518832167,
+            "stdDev": 0.00005964734808246771
+          },
+          "kResidual": {
+            "min": 0.029335977113310624,
+            "max": 0.04513016538356267,
+            "mean": 0.04034717353030296,
+            "stdDev": 0.004570877345996589
+          },
+          "omegaResidual": {
+            "min": 0.0035626496001289745,
+            "max": 0.010362135385758722,
+            "mean": 0.005517191905311719,
+            "stdDev": 0.0020170645205489705
+          },
+          "maxNut": {
+            "min": 0.0020416666666666673,
+            "max": 0.0020416666666666795,
+            "mean": 0.002041666666666665,
+            "stdDev": 2.9958528781297537e-18
+          },
+          "numberOfNutClippedCells": {
+            "min": 301,
+            "max": 1800,
+            "mean": 996.63,
+            "stdDev": 492.39513919209224
+          },
+          "cl": {
+            "min": 0.16984920829130154,
+            "max": 0.20890875194684888,
+            "mean": 0.18178846228521237,
+            "stdDev": 0.008514759233170546
+          },
+          "cd": {
+            "min": 0.026572990201168906,
+            "max": 0.03773468726651809,
+            "mean": 0.03008745102806692,
+            "stdDev": 0.0022090652421158058
+          },
+          "cm": {
+            "min": 0.002740255001381005,
+            "max": 0.015613540674684033,
+            "mean": 0.00971599106808872,
+            "stdDev": 0.0022302392692277948
+          }
+        }
+      },
+      {
+        "window": "201–300",
+        "startIteration": 201,
+        "endIteration": 300,
+        "count": 100,
+        "metrics": {
+          "rawPressureCorrection": {
+            "min": 0.010490943009124426,
+            "max": 0.05429696471261829,
+            "mean": 0.016849457903277746,
+            "stdDev": 0.007335810194928385
+          },
+          "cappedPressureCorrection": {
+            "min": 0.010490943009124426,
+            "max": 0.05429696471261829,
+            "mean": 0.016849457903277746,
+            "stdDev": 0.007335810194928385
+          },
+          "rawMaxVelocity": {
+            "min": 1.5314321111130063,
+            "max": 2.5,
+            "mean": 1.852150789234774,
+            "stdDev": 0.2129596943694502
+          },
+          "postCapMaxVelocity": {
+            "min": 1.5314321111130063,
+            "max": 2.5,
+            "mean": 1.852150789234774,
+            "stdDev": 0.2129596943694502
+          },
+          "velocityCorrection": {
+            "min": 0.08931999171198286,
+            "max": 2.067242781118149,
+            "mean": 0.405274234068297,
+            "stdDev": 0.3610657398484298
+          },
+          "continuityL1": {
+            "min": 0.00005776718959554834,
+            "max": 0.00009150486864184218,
+            "mean": 0.00006951275723731718,
+            "stdDev": 0.00000910608062852254
+          },
+          "continuityLinf": {
+            "min": 3.7329328466426344e-7,
+            "max": 0.0000018116672392283612,
+            "mean": 7.211541711796829e-7,
+            "stdDev": 1.9882539116934192e-7
+          },
+          "momentumL1": {
+            "min": 0.000008688175871317893,
+            "max": 0.000009022088127931508,
+            "mean": 0.000008816047387055886,
+            "stdDev": 1.0685401330097225e-7
+          },
+          "momentumLinf": {
+            "min": 0.002926145757098756,
+            "max": 0.0030843180659654553,
+            "mean": 0.0029991146857494687,
+            "stdDev": 0.0000588997285842276
+          },
+          "kResidual": {
+            "min": 0.005807007542438682,
+            "max": 0.042814697766915044,
+            "mean": 0.017117545081778738,
+            "stdDev": 0.008252805564433873
+          },
+          "omegaResidual": {
+            "min": 0.00241737453121099,
+            "max": 0.024170722733796102,
+            "mean": 0.01809324223361561,
+            "stdDev": 0.004230661490591547
+          },
+          "maxNut": {
+            "min": 0.0014430055629886184,
+            "max": 0.0020416666666666673,
+            "mean": 0.002012416161967091,
+            "stdDev": 0.00009743774045758755
+          },
+          "numberOfNutClippedCells": {
+            "min": 0,
+            "max": 294,
+            "mean": 93.07,
+            "stdDev": 87.04645368996945
+          },
+          "cl": {
+            "min": 0.15766768639852244,
+            "max": 0.17268435566067222,
+            "mean": 0.16273466898348402,
+            "stdDev": 0.004106451993539471
+          },
+          "cd": {
+            "min": 0.020996100173213378,
+            "max": 0.026475078948451407,
+            "mean": 0.023263516727344252,
+            "stdDev": 0.0015707618500918757
+          },
+          "cm": {
+            "min": 0.0032956228568539058,
+            "max": 0.008306529380938127,
+            "mean": 0.005261325062463917,
+            "stdDev": 0.0015045584244247874
+          }
+        }
+      },
+      {
+        "window": "301–350",
+        "startIteration": 301,
+        "endIteration": 350,
+        "count": 50,
+        "metrics": {
+          "rawPressureCorrection": {
+            "min": 0.024633131095178982,
+            "max": 9.1875,
+            "mean": 2.1139326420462847,
+            "stdDev": 3.2393372333899957
+          },
+          "cappedPressureCorrection": {
+            "min": 0.024633131095178982,
+            "max": 9.1875,
+            "mean": 2.1139326420462847,
+            "stdDev": 3.2393372333899957
+          },
+          "rawMaxVelocity": {
+            "min": 1.5452759701608632,
+            "max": 2.5000000000000004,
+            "mean": 2.2606669903767767,
+            "stdDev": 0.3763781549306307
+          },
+          "postCapMaxVelocity": {
+            "min": 1.5452759701608632,
+            "max": 2.5,
+            "mean": 2.2606669903767767,
+            "stdDev": 0.3763781549306307
+          },
+          "velocityCorrection": {
+            "min": 0.36435252052766803,
+            "max": 4.53380695934127,
+            "mean": 1.7480191237465643,
+            "stdDev": 0.9575328787736789
+          },
+          "continuityL1": {
+            "min": 0.00007568909200352821,
+            "max": 0.0008952984622753439,
+            "mean": 0.00016197833875286562,
+            "stdDev": 0.00016040019014476478
+          },
+          "continuityLinf": {
+            "min": 3.6935661792731603e-7,
+            "max": 0.000030065873718168305,
+            "mean": 0.000004502649771694907,
+            "stdDev": 0.000006794628540146095
+          },
+          "momentumL1": {
+            "min": 0.000009025922138982985,
+            "max": 0.000018616567405333533,
+            "mean": 0.000009773110992217991,
+            "stdDev": 0.0000017308677473647976
+          },
+          "momentumLinf": {
+            "min": 0.0030311550562509785,
+            "max": 0.00308368652723051,
+            "mean": 0.0030551307655218903,
+            "stdDev": 0.000017401262162055212
+          },
+          "kResidual": {
+            "min": 0.00018313134403221011,
+            "max": 1,
+            "mean": 0.5607240091954051,
+            "stdDev": 0.4645477106656304
+          },
+          "omegaResidual": {
+            "min": 0.00006341116223144973,
+            "max": 0.024217785083948024,
+            "mean": 0.01011311002068515,
+            "stdDev": 0.010973599332104653
+          },
+          "maxNut": {
+            "min": 3.072292083549717e-7,
+            "max": 0.0011775371843222708,
+            "mean": 0.0001626070820814682,
+            "stdDev": 0.0002604134973881505
+          },
+          "numberOfNutClippedCells": {
+            "min": 0,
+            "max": 0,
+            "mean": 0,
+            "stdDev": 0
+          },
+          "cl": {
+            "min": 0.15280983951070792,
+            "max": 0.16238101702510566,
+            "mean": 0.15651649581179045,
+            "stdDev": 0.001688139367361612
+          },
+          "cd": {
+            "min": 0.01859307264465704,
+            "max": 0.024655909775717223,
+            "mean": 0.020897082282477684,
+            "stdDev": 0.0009502876605644938
+          },
+          "cm": {
+            "min": 0.0012697197821045958,
+            "max": 0.008961950645515413,
+            "mean": 0.0033366879134751996,
+            "stdDev": 0.0014671796841808065
+          }
+        }
+      },
+      {
+        "window": "351–400",
+        "startIteration": 351,
+        "endIteration": 400,
+        "count": 50,
+        "metrics": {
+          "rawPressureCorrection": {
+            "min": 9.1875,
+            "max": 9.1875,
+            "mean": 9.1875,
+            "stdDev": 0
+          },
+          "cappedPressureCorrection": {
+            "min": 9.1875,
+            "max": 9.1875,
+            "mean": 9.1875,
+            "stdDev": 0
+          },
+          "rawMaxVelocity": {
+            "min": 2.5000000000000004,
+            "max": 2.500000000000001,
+            "mean": 2.5000000000000004,
+            "stdDev": 2.1755839288168293e-16
+          },
+          "postCapMaxVelocity": {
+            "min": 2.5,
+            "max": 2.5,
+            "mean": 2.5,
+            "stdDev": 0
+          },
+          "velocityCorrection": {
+            "min": 2.425444280141053,
+            "max": 4.9999549988201695,
+            "mean": 3.9571572155514954,
+            "stdDev": 0.6534940455643132
+          },
+          "continuityL1": {
+            "min": 0.0011749876913889987,
+            "max": 0.02206997724948762,
+            "mean": 0.011703129569817203,
+            "stdDev": 0.007380834903641297
+          },
+          "continuityLinf": {
+            "min": 0.000023750777175884738,
+            "max": 0.00025832539640031156,
+            "mean": 0.00011672242347219703,
+            "stdDev": 0.00005250692092338932
+          },
+          "momentumL1": {
+            "min": 0.00002217616079222472,
+            "max": 0.00033848082863741823,
+            "mean": 0.00015707430027486047,
+            "stdDev": 0.00010329326731576194
+          },
+          "momentumLinf": {
+            "min": 0.003032195137951086,
+            "max": 0.023298664062274366,
+            "mean": 0.008333157619281254,
+            "stdDev": 0.005091923623698337
+          },
+          "kResidual": {
+            "min": 1,
+            "max": 1,
+            "mean": 1,
+            "stdDev": 0
+          },
+          "omegaResidual": {
+            "min": 0.0001556211906142959,
+            "max": 0.029150400062454812,
+            "mean": 0.002841577269383271,
+            "stdDev": 0.005423845629357902
+          },
+          "maxNut": {
+            "min": 1.954763931914436e-7,
+            "max": 3.654805296971089e-7,
+            "mean": 3.0211292813132894e-7,
+            "stdDev": 4.43157087402728e-8
+          },
+          "numberOfNutClippedCells": {
+            "min": 0,
+            "max": 0,
+            "mean": 0,
+            "stdDev": 0
+          },
+          "cl": {
+            "min": -0.19251395456252374,
+            "max": 0.35318324434880116,
+            "mean": 0.0788144195734815,
+            "stdDev": 0.15545744795799818
+          },
+          "cd": {
+            "min": 0.01276142473262961,
+            "max": 0.11181882442338331,
+            "mean": 0.054233300700592346,
+            "stdDev": 0.021858241528392934
+          },
+          "cm": {
+            "min": -0.20844045593919078,
+            "max": 0.1404362841808517,
+            "mean": -0.04818411607844008,
+            "stdDev": 0.10483557748772966
+          }
+        }
+      },
+      {
+        "window": "401–450",
+        "startIteration": 401,
+        "endIteration": 450,
+        "count": 50,
+        "metrics": {
+          "rawPressureCorrection": {
+            "min": 9.1875,
+            "max": 9.1875,
+            "mean": 9.1875,
+            "stdDev": 0
+          },
+          "cappedPressureCorrection": {
+            "min": 9.1875,
+            "max": 9.1875,
+            "mean": 9.1875,
+            "stdDev": 0
+          },
+          "rawMaxVelocity": {
+            "min": 2.5000000000000004,
+            "max": 2.500000000000001,
+            "mean": 2.5000000000000004,
+            "stdDev": 3.011959563148489e-16
+          },
+          "postCapMaxVelocity": {
+            "min": 2.5,
+            "max": 2.5,
+            "mean": 2.5,
+            "stdDev": 0
+          },
+          "velocityCorrection": {
+            "min": 3.2402210328927112,
+            "max": 4.999147687393688,
+            "mean": 4.428032087758541,
+            "stdDev": 0.4410333595367923
+          },
+          "continuityL1": {
+            "min": 0.013249376979482643,
+            "max": 0.02647967249868351,
+            "mean": 0.02024196328830712,
+            "stdDev": 0.002403646042143684
+          },
+          "continuityLinf": {
+            "min": 0.00008521293768090293,
+            "max": 0.0001873492957509716,
+            "mean": 0.00014772489743869086,
+            "stdDev": 0.000021719559018376674
+          },
+          "momentumL1": {
+            "min": 0.0001942963060685184,
+            "max": 0.00030615869157772944,
+            "mean": 0.0002280513326711809,
+            "stdDev": 0.000021765640493564272
+          },
+          "momentumLinf": {
+            "min": 0.0068240295480635075,
+            "max": 0.011119587886499903,
+            "mean": 0.008842725859804133,
+            "stdDev": 0.0010946400634750122
+          },
+          "kResidual": {
+            "min": 1,
+            "max": 1,
+            "mean": 1,
+            "stdDev": 0
+          },
+          "omegaResidual": {
+            "min": 0.0000710554295254153,
+            "max": 0.025575996057771607,
+            "mean": 0.0022752036712785657,
+            "stdDev": 0.004782577254770185
+          },
+          "maxNut": {
+            "min": 1.2805780143361667e-7,
+            "max": 2.6962799250105263e-7,
+            "mean": 1.86978154756197e-7,
+            "stdDev": 3.8775442196776014e-8
+          },
+          "numberOfNutClippedCells": {
+            "min": 0,
+            "max": 0,
+            "mean": 0,
+            "stdDev": 0
+          },
+          "cl": {
+            "min": -0.18087146135128163,
+            "max": 0.3666060550013631,
+            "mean": 0.10648463693836076,
+            "stdDev": 0.1568154265112945
+          },
+          "cd": {
+            "min": 0.003100415782650168,
+            "max": 0.12187833711205735,
+            "mean": 0.04436614802456464,
+            "stdDev": 0.029983984733381423
+          },
+          "cm": {
+            "min": -0.14595739361241816,
+            "max": 0.12648045599414864,
+            "mean": 0.006410777949406584,
+            "stdDev": 0.07293168936985468
+          }
+        }
+      },
+      {
+        "window": "451–500",
+        "startIteration": 451,
+        "endIteration": 500,
+        "count": 50,
+        "metrics": {
+          "rawPressureCorrection": {
+            "min": 9.1875,
+            "max": 9.1875,
+            "mean": 9.1875,
+            "stdDev": 0
+          },
+          "cappedPressureCorrection": {
+            "min": 9.1875,
+            "max": 9.1875,
+            "mean": 9.1875,
+            "stdDev": 0
+          },
+          "rawMaxVelocity": {
+            "min": 2.5000000000000004,
+            "max": 2.500000000000001,
+            "mean": 2.5000000000000004,
+            "stdDev": 3.0767402982137023e-16
+          },
+          "postCapMaxVelocity": {
+            "min": 2.5,
+            "max": 2.5,
+            "mean": 2.5,
+            "stdDev": 0
+          },
+          "velocityCorrection": {
+            "min": 3.336048055915575,
+            "max": 4.999936528390824,
+            "mean": 4.413585796387988,
+            "stdDev": 0.45384550290925807
+          },
+          "continuityL1": {
+            "min": 0.012738676241167299,
+            "max": 0.028954094107013908,
+            "mean": 0.023210080973618066,
+            "stdDev": 0.0035408216149839414
+          },
+          "continuityLinf": {
+            "min": 0.00008270526471463398,
+            "max": 0.00033249310606775446,
+            "mean": 0.00014773797988457702,
+            "stdDev": 0.000042944797429858996
+          },
+          "momentumL1": {
+            "min": 0.00027518073381436347,
+            "max": 0.0003589328745664489,
+            "mean": 0.00031270666301944365,
+            "stdDev": 0.00001821521354702386
+          },
+          "momentumLinf": {
+            "min": 0.007275818037751413,
+            "max": 0.02532679106984796,
+            "mean": 0.01223694952420379,
+            "stdDev": 0.004306414486192438
+          },
+          "kResidual": {
+            "min": 1,
+            "max": 1,
+            "mean": 1,
+            "stdDev": 0
+          },
+          "omegaResidual": {
+            "min": 0.00006255682952574841,
+            "max": 0.025498108718868415,
+            "mean": 0.003440640642418395,
+            "stdDev": 0.005570699796710363
+          },
+          "maxNut": {
+            "min": 1.4083927851007266e-7,
+            "max": 2.3256317795428198e-7,
+            "mean": 1.7211707660070557e-7,
+            "stdDev": 2.5793542467539018e-8
+          },
+          "numberOfNutClippedCells": {
+            "min": 0,
+            "max": 0,
+            "mean": 0,
+            "stdDev": 0
+          },
+          "cl": {
+            "min": -0.1216189059183016,
+            "max": 0.6543425091869574,
+            "mean": 0.289208071247534,
+            "stdDev": 0.20904285273060175
+          },
+          "cd": {
+            "min": 0.0018189435560039369,
+            "max": 0.18818913363757397,
+            "mean": 0.08302671022224756,
+            "stdDev": 0.05579573609901975
+          },
+          "cm": {
+            "min": -0.17275264481937616,
+            "max": 0.22969301852330914,
+            "mean": 0.027917214686999633,
+            "stdDev": 0.10531175179180752
+          }
+        }
+      }
+    ]
+  },
+  "lead_lag_correlations": {
+    "experimentA": {
+      "deltaNut_vs_momLinf": {
+        "0": {
+          "pearson": 0.6239065515261903,
+          "spearman": 0.6950206040824163
+        },
+        "1": {
+          "pearson": 0.616470716307352,
+          "spearman": 0.6626985054446242
+        },
+        "2": {
+          "pearson": 0.4864285310597576,
+          "spearman": 0.6570316458958498
+        },
+        "3": {
+          "pearson": 0.5081978913659803,
+          "spearman": 0.6492042030652629
+        },
+        "4": {
+          "pearson": 0.6461294740582456,
+          "spearman": 0.6294711573448512
+        },
+        "5": {
+          "pearson": 0.6483405011693341,
+          "spearman": 0.6163017797143434
+        },
+        "6": {
+          "pearson": 0.6276349885429977,
+          "spearman": 0.5943266583599668
+        },
+        "7": {
+          "pearson": 0.587989162108992,
+          "spearman": 0.5756135416919123
+        },
+        "8": {
+          "pearson": 0.5187145803545684,
+          "spearman": 0.5648089194276474
+        },
+        "9": {
+          "pearson": 0.3919567566218914,
+          "spearman": 0.5594947988633633
+        },
+        "10": {
+          "pearson": 0.2528524526163319,
+          "spearman": 0.5583055663008397
+        },
+        "11": {
+          "pearson": 0.24143374820114108,
+          "spearman": 0.5485472294117285
+        },
+        "12": {
+          "pearson": 0.20480623424128638,
+          "spearman": 0.541164204755608
+        },
+        "13": {
+          "pearson": 0.15517025790080954,
+          "spearman": 0.5198335222151158
+        },
+        "14": {
+          "pearson": 0.11120657638424981,
+          "spearman": 0.5026556577676062
+        },
+        "15": {
+          "pearson": 0.10446868859373984,
+          "spearman": 0.478564253384622
+        },
+        "16": {
+          "pearson": 0.09914341950398183,
+          "spearman": 0.4773369981959689
+        },
+        "17": {
+          "pearson": 0.09087113636877768,
+          "spearman": 0.46988149534358514
+        },
+        "18": {
+          "pearson": 0.08008906504363432,
+          "spearman": 0.45465365923601536
+        },
+        "19": {
+          "pearson": 0.06808481409909604,
+          "spearman": 0.4399070271995583
+        },
+        "20": {
+          "pearson": 0.061723298150615724,
+          "spearman": 0.43056133056133056
+        },
+        "-20": {
+          "pearson": 0.1978551596596566,
+          "spearman": 0.6175600805559052
+        },
+        "-19": {
+          "pearson": 0.2034432842326529,
+          "spearman": 0.623147553074939
+        },
+        "-18": {
+          "pearson": 0.21266856817055704,
+          "spearman": 0.6352095861386859
+        },
+        "-17": {
+          "pearson": 0.2199794857776555,
+          "spearman": 0.6482373185832094
+        },
+        "-16": {
+          "pearson": 0.22844677953481107,
+          "spearman": 0.6676129054108761
+        },
+        "-15": {
+          "pearson": 0.23658576204362636,
+          "spearman": 0.6836690344031799
+        },
+        "-14": {
+          "pearson": 0.24449020388330997,
+          "spearman": 0.679827951323961
+        },
+        "-13": {
+          "pearson": 0.2528396071575074,
+          "spearman": 0.69474792281987
+        },
+        "-12": {
+          "pearson": 0.2562061336756688,
+          "spearman": 0.7016638577055541
+        },
+        "-11": {
+          "pearson": 0.2657309610243896,
+          "spearman": 0.7208275948416176
+        },
+        "-10": {
+          "pearson": 0.26694067729328114,
+          "spearman": 0.7242017259717102
+        },
+        "-9": {
+          "pearson": 0.2608433354613723,
+          "spearman": 0.7337703349185285
+        },
+        "-8": {
+          "pearson": 0.26063644457696306,
+          "spearman": 0.7250059775811235
+        },
+        "-7": {
+          "pearson": 0.2640812077877007,
+          "spearman": 0.7286401844646018
+        },
+        "-6": {
+          "pearson": 0.26269698533894514,
+          "spearman": 0.7263600852369936
+        },
+        "-5": {
+          "pearson": 0.26421235706734486,
+          "spearman": 0.7288415037141692
+        },
+        "-4": {
+          "pearson": 0.26171320689232436,
+          "spearman": 0.7257667215413695
+        },
+        "-3": {
+          "pearson": 0.2634668990533142,
+          "spearman": 0.7223790664703339
+        },
+        "-2": {
+          "pearson": 0.2651733262825073,
+          "spearman": 0.7239927480473055
+        },
+        "-1": {
+          "pearson": 0.26454257448099383,
+          "spearman": 0.7190427119298839
+        }
+      },
+      "deltaNut_vs_continuity": {
+        "0": {
+          "pearson": 0.2647092726463369,
+          "spearman": 0.7132136368545474
+        },
+        "1": {
+          "pearson": 0.31650157540291485,
+          "spearman": 0.6904064514571311
+        },
+        "2": {
+          "pearson": 0.36801269317147817,
+          "spearman": 0.683239257356438
+        },
+        "3": {
+          "pearson": 0.35860831108402,
+          "spearman": 0.6653256108747315
+        },
+        "4": {
+          "pearson": 0.32587698356108474,
+          "spearman": 0.6561556042019467
+        },
+        "5": {
+          "pearson": 0.3095341702956221,
+          "spearman": 0.6456986279142476
+        },
+        "6": {
+          "pearson": 0.2988223315723429,
+          "spearman": 0.640040085177269
+        },
+        "7": {
+          "pearson": 0.28442352278318866,
+          "spearman": 0.6227703299936647
+        },
+        "8": {
+          "pearson": 0.2907123287411565,
+          "spearman": 0.6182111631289697
+        },
+        "9": {
+          "pearson": 0.3024021081036305,
+          "spearman": 0.6095120836074731
+        },
+        "10": {
+          "pearson": 0.29690115112372184,
+          "spearman": 0.596521740904326
+        },
+        "11": {
+          "pearson": 0.12748629496385222,
+          "spearman": 0.579144798822677
+        },
+        "12": {
+          "pearson": 0.2418357115318591,
+          "spearman": 0.569100133595168
+        },
+        "13": {
+          "pearson": 0.22612224671559664,
+          "spearman": 0.5569265588565192
+        },
+        "14": {
+          "pearson": 0.20451875299708355,
+          "spearman": 0.5409265048052209
+        },
+        "15": {
+          "pearson": 0.18424623777807486,
+          "spearman": 0.5199923845347151
+        },
+        "16": {
+          "pearson": 0.17637052500595457,
+          "spearman": 0.5073949399282516
+        },
+        "17": {
+          "pearson": 0.17189840086019523,
+          "spearman": 0.4932767771811283
+        },
+        "18": {
+          "pearson": 0.16658278922779068,
+          "spearman": 0.486966519981133
+        },
+        "19": {
+          "pearson": 0.15655165652841807,
+          "spearman": 0.4714895273505232
+        },
+        "20": {
+          "pearson": 0.14183935613081305,
+          "spearman": 0.44894009956640435
+        },
+        "-20": {
+          "pearson": 0.4813079339784878,
+          "spearman": 0.5698685758184714
+        },
+        "-19": {
+          "pearson": 0.4881033093691818,
+          "spearman": 0.5847984834499357
+        },
+        "-18": {
+          "pearson": 0.4980127557826653,
+          "spearman": 0.5970408418541199
+        },
+        "-17": {
+          "pearson": 0.5002188515296379,
+          "spearman": 0.6102869462553258
+        },
+        "-16": {
+          "pearson": 0.5127904793431752,
+          "spearman": 0.6266986019155857
+        },
+        "-15": {
+          "pearson": 0.5171721311953239,
+          "spearman": 0.6337158947593187
+        },
+        "-14": {
+          "pearson": 0.5250768836127376,
+          "spearman": 0.6448963623120569
+        },
+        "-13": {
+          "pearson": 0.5437232404906043,
+          "spearman": 0.6631988470107432
+        },
+        "-12": {
+          "pearson": 0.5551016618546203,
+          "spearman": 0.6706014838997068
+        },
+        "-11": {
+          "pearson": 0.5609584397708594,
+          "spearman": 0.6802722456779151
+        },
+        "-10": {
+          "pearson": 0.568988962438157,
+          "spearman": 0.6849287424039624
+        },
+        "-9": {
+          "pearson": 0.5732642294573713,
+          "spearman": 0.6923026624588537
+        },
+        "-8": {
+          "pearson": 0.583520433046927,
+          "spearman": 0.7020553911433861
+        },
+        "-7": {
+          "pearson": 0.5785356442071038,
+          "spearman": 0.6919234244366325
+        },
+        "-6": {
+          "pearson": 0.5889423932085772,
+          "spearman": 0.7075087042419166
+        },
+        "-5": {
+          "pearson": 0.5972359302162952,
+          "spearman": 0.7195467803277651
+        },
+        "-4": {
+          "pearson": 0.5895560327752238,
+          "spearman": 0.7188331356663933
+        },
+        "-3": {
+          "pearson": 0.5760959307751078,
+          "spearman": 0.7068265598253337
+        },
+        "-2": {
+          "pearson": 0.5703119142096996,
+          "spearman": 0.7000417163628364
+        },
+        "-1": {
+          "pearson": 0.5706886892809075,
+          "spearman": 0.695042905087283
+        }
+      },
+      "deltaNut_vs_cl": {
+        "0": {
+          "pearson": -0.14948482685479672,
+          "spearman": -0.1505927303709215
+        },
+        "1": {
+          "pearson": -0.15121157420621556,
+          "spearman": -0.1438419006688075
+        },
+        "2": {
+          "pearson": -0.1503267497923042,
+          "spearman": -0.13534926632494584
+        },
+        "3": {
+          "pearson": -0.14765828035847278,
+          "spearman": -0.12957730838978684
+        },
+        "4": {
+          "pearson": -0.14162428383630415,
+          "spearman": -0.1332126679923136
+        },
+        "5": {
+          "pearson": -0.14324845136055808,
+          "spearman": -0.14266862170087977
+        },
+        "6": {
+          "pearson": -0.13604437680528642,
+          "spearman": -0.15449590799222485
+        },
+        "7": {
+          "pearson": -0.12814971353442312,
+          "spearman": -0.15744497217988743
+        },
+        "8": {
+          "pearson": -0.10860482257805683,
+          "spearman": -0.1348317606895927
+        },
+        "9": {
+          "pearson": -0.08531078747151817,
+          "spearman": -0.09914610322793864
+        },
+        "10": {
+          "pearson": -0.060630443287665585,
+          "spearman": -0.08686268954872442
+        },
+        "11": {
+          "pearson": -0.03416703481787875,
+          "spearman": -0.09483792310044807
+        },
+        "12": {
+          "pearson": -0.014621357342663975,
+          "spearman": -0.09678586836136409
+        },
+        "13": {
+          "pearson": -0.004384828103768637,
+          "spearman": -0.09223020554244396
+        },
+        "14": {
+          "pearson": -0.0024339927134497995,
+          "spearman": -0.08828648853910467
+        },
+        "15": {
+          "pearson": -0.009823172258688114,
+          "spearman": -0.08103980553215168
+        },
+        "16": {
+          "pearson": -0.02235859279230757,
+          "spearman": -0.08678453285437517
+        },
+        "17": {
+          "pearson": -0.033715689979636976,
+          "spearman": -0.10165815356637524
+        },
+        "18": {
+          "pearson": -0.046404714123552473,
+          "spearman": -0.10613508953757916
+        },
+        "19": {
+          "pearson": -0.06366874758457391,
+          "spearman": -0.1147770895696207
+        },
+        "20": {
+          "pearson": -0.08556261026791473,
+          "spearman": -0.1302508908458804
+        },
+        "-20": {
+          "pearson": -0.2528700934093069,
+          "spearman": -0.13051575744686392
+        },
+        "-19": {
+          "pearson": -0.25643637883108394,
+          "spearman": -0.1296461598847491
+        },
+        "-18": {
+          "pearson": -0.26225150079780085,
+          "spearman": -0.12860166441259713
+        },
+        "-17": {
+          "pearson": -0.25882858342901427,
+          "spearman": -0.12332859274948396
+        },
+        "-16": {
+          "pearson": -0.2508074080066994,
+          "spearman": -0.11950613259443381
+        },
+        "-15": {
+          "pearson": -0.2461884605328454,
+          "spearman": -0.11626501398447665
+        },
+        "-14": {
+          "pearson": -0.2426098053059149,
+          "spearman": -0.11409933046010581
+        },
+        "-13": {
+          "pearson": -0.23619039008784207,
+          "spearman": -0.10777129055088235
+        },
+        "-12": {
+          "pearson": -0.2343550155811118,
+          "spearman": -0.09385995038247787
+        },
+        "-11": {
+          "pearson": -0.24120649492794222,
+          "spearman": -0.09437590182407067
+        },
+        "-10": {
+          "pearson": -0.2532310124971387,
+          "spearman": -0.10497807409545604
+        },
+        "-9": {
+          "pearson": -0.2504089444248855,
+          "spearman": -0.0998037345184957
+        },
+        "-8": {
+          "pearson": -0.24454820717787334,
+          "spearman": -0.10176397335787307
+        },
+        "-7": {
+          "pearson": -0.24160406398147935,
+          "spearman": -0.09899940131526369
+        },
+        "-6": {
+          "pearson": -0.24184354732767344,
+          "spearman": -0.09919618120749753
+        },
+        "-5": {
+          "pearson": -0.2488382216375872,
+          "spearman": -0.11977592300172946
+        },
+        "-4": {
+          "pearson": -0.2580536122593365,
+          "spearman": -0.1342998361626258
+        },
+        "-3": {
+          "pearson": -0.27022030255588214,
+          "spearman": -0.1310250738789519
+        },
+        "-2": {
+          "pearson": -0.2805292814292056,
+          "spearman": -0.13436025769023685
+        },
+        "-1": {
+          "pearson": -0.28969906987856003,
+          "spearman": -0.1439954608011203
+        }
+      },
+      "deltaNut_vs_cd": {
+        "0": {
+          "pearson": 0.24121497794541885,
+          "spearman": 0.17032292129168516
+        },
+        "1": {
+          "pearson": 0.34400117301418937,
+          "spearman": 0.1778676388922423
+        },
+        "2": {
+          "pearson": 0.41164823214269297,
+          "spearman": 0.1819301253108627
+        },
+        "3": {
+          "pearson": 0.4363897537504544,
+          "spearman": 0.17772247554506987
+        },
+        "4": {
+          "pearson": 0.39629568138746873,
+          "spearman": 0.17070349762307963
+        },
+        "5": {
+          "pearson": 0.28814855868752487,
+          "spearman": 0.16200337579794286
+        },
+        "6": {
+          "pearson": 0.21729882628062339,
+          "spearman": 0.15220337827362487
+        },
+        "7": {
+          "pearson": 0.17122352418018638,
+          "spearman": 0.1457915507537038
+        },
+        "8": {
+          "pearson": 0.162188295549732,
+          "spearman": 0.15755462975119458
+        },
+        "9": {
+          "pearson": 0.1853410387935445,
+          "spearman": 0.17818513228151525
+        },
+        "10": {
+          "pearson": 0.22635893152863404,
+          "spearman": 0.18651087038841377
+        },
+        "11": {
+          "pearson": 0.28421661538985815,
+          "spearman": 0.18374109977894407
+        },
+        "12": {
+          "pearson": 0.3513475421100696,
+          "spearman": 0.17968818569749007
+        },
+        "13": {
+          "pearson": 0.36569113215592824,
+          "spearman": 0.18450726789670474
+        },
+        "14": {
+          "pearson": 0.36092501102031954,
+          "spearman": 0.18678670767693256
+        },
+        "15": {
+          "pearson": 0.3487750794251253,
+          "spearman": 0.18420884887614034
+        },
+        "16": {
+          "pearson": 0.3177776589346868,
+          "spearman": 0.18149674782248842
+        },
+        "17": {
+          "pearson": 0.25687228055530925,
+          "spearman": 0.17939322088699683
+        },
+        "18": {
+          "pearson": 0.1712351890947524,
+          "spearman": 0.17052366087184778
+        },
+        "19": {
+          "pearson": 0.07958728132271657,
+          "spearman": 0.15635292569939874
+        },
+        "20": {
+          "pearson": -0.012232134306484056,
+          "spearman": 0.1351259120048264
+        },
+        "-20": {
+          "pearson": 0.1491312599563932,
+          "spearman": 0.1081082166155235
+        },
+        "-19": {
+          "pearson": 0.14495110470463485,
+          "spearman": 0.09983825191294071
+        },
+        "-18": {
+          "pearson": 0.15101021700161674,
+          "spearman": 0.10490186586163494
+        },
+        "-17": {
+          "pearson": 0.16638312695387267,
+          "spearman": 0.12984488982881714
+        },
+        "-16": {
+          "pearson": 0.1840579830910352,
+          "spearman": 0.14965022752806462
+        },
+        "-15": {
+          "pearson": 0.1973348727302352,
+          "spearman": 0.15950897078669649
+        },
+        "-14": {
+          "pearson": 0.20939281267944332,
+          "spearman": 0.1708604446158868
+        },
+        "-13": {
+          "pearson": 0.21855945490652814,
+          "spearman": 0.19261754826043825
+        },
+        "-12": {
+          "pearson": 0.22381945475561132,
+          "spearman": 0.20091224290571247
+        },
+        "-11": {
+          "pearson": 0.22365909597613814,
+          "spearman": 0.19089268011338095
+        },
+        "-10": {
+          "pearson": 0.2168948051809931,
+          "spearman": 0.1740365262594486
+        },
+        "-9": {
+          "pearson": 0.2088087823258818,
+          "spearman": 0.1640293830512186
+        },
+        "-8": {
+          "pearson": 0.20280582837740374,
+          "spearman": 0.15278646971867735
+        },
+        "-7": {
+          "pearson": 0.1977435029890559,
+          "spearman": 0.14710749545678603
+        },
+        "-6": {
+          "pearson": 0.2007454371564241,
+          "spearman": 0.15679620191203408
+        },
+        "-5": {
+          "pearson": 0.209734755829319,
+          "spearman": 0.1603423882286361
+        },
+        "-4": {
+          "pearson": 0.21880916337878226,
+          "spearman": 0.15515300994628572
+        },
+        "-3": {
+          "pearson": 0.22781765516330899,
+          "spearman": 0.16061243090099087
+        },
+        "-2": {
+          "pearson": 0.23319523685864244,
+          "spearman": 0.1643708740600641
+        },
+        "-1": {
+          "pearson": 0.23555964748537614,
+          "spearman": 0.16605055894922374
+        }
+      },
+      "rawPressureCorrection_vs_momLinf": {
+        "0": {
+          "pearson": 0.24848219494983778,
+          "spearman": 0.7291410605642422
+        },
+        "1": {
+          "pearson": 0.2710617392770874,
+          "spearman": 0.7197455151266389
+        },
+        "2": {
+          "pearson": 0.2931536850836186,
+          "spearman": 0.7067699676582808
+        },
+        "3": {
+          "pearson": 0.2959428586970743,
+          "spearman": 0.6896971608117418
+        },
+        "4": {
+          "pearson": 0.30348044129767876,
+          "spearman": 0.6699048641801936
+        },
+        "5": {
+          "pearson": 0.3441611772084238,
+          "spearman": 0.6557303477507213
+        },
+        "6": {
+          "pearson": 0.385167429480347,
+          "spearman": 0.6462665763829424
+        },
+        "7": {
+          "pearson": 0.424448699205424,
+          "spearman": 0.6272420382841764
+        },
+        "8": {
+          "pearson": 0.4555147859124776,
+          "spearman": 0.616707825406871
+        },
+        "9": {
+          "pearson": 0.4706644963737477,
+          "spearman": 0.603281262830501
+        },
+        "10": {
+          "pearson": 0.47079042759397594,
+          "spearman": 0.5919684150696001
+        },
+        "11": {
+          "pearson": 0.4562811491494812,
+          "spearman": 0.5796587487453998
+        },
+        "12": {
+          "pearson": 0.4318218276393112,
+          "spearman": 0.5613746816814776
+        },
+        "13": {
+          "pearson": 0.4019287578527609,
+          "spearman": 0.5423101426400312
+        },
+        "14": {
+          "pearson": 0.38262440333470926,
+          "spearman": 0.5204525241881381
+        },
+        "15": {
+          "pearson": 0.3604287943246381,
+          "spearman": 0.5037039140756729
+        },
+        "16": {
+          "pearson": 0.3306543793541557,
+          "spearman": 0.4881999219964258
+        },
+        "17": {
+          "pearson": 0.3072707313585725,
+          "spearman": 0.47506443665399267
+        },
+        "18": {
+          "pearson": 0.27400717906056365,
+          "spearman": 0.4596842859516502
+        },
+        "19": {
+          "pearson": 0.257206539134101,
+          "spearman": 0.4494175990545285
+        },
+        "20": {
+          "pearson": 0.2441112109422015,
+          "spearman": 0.4395356533665511
+        },
+        "-20": {
+          "pearson": 0.18288936397635333,
+          "spearman": 0.5556042994978276
+        },
+        "-19": {
+          "pearson": 0.19427977091204238,
+          "spearman": 0.5617831324781533
+        },
+        "-18": {
+          "pearson": 0.2050348191551416,
+          "spearman": 0.5742105581542709
+        },
+        "-17": {
+          "pearson": 0.21358351403422127,
+          "spearman": 0.592027853077826
+        },
+        "-16": {
+          "pearson": 0.21850082772840462,
+          "spearman": 0.6078742332603219
+        },
+        "-15": {
+          "pearson": 0.22230742105274404,
+          "spearman": 0.6191344876443283
+        },
+        "-14": {
+          "pearson": 0.22714160689331012,
+          "spearman": 0.632588264718496
+        },
+        "-13": {
+          "pearson": 0.2312928576732674,
+          "spearman": 0.6481678882684258
+        },
+        "-12": {
+          "pearson": 0.23374311828720018,
+          "spearman": 0.6608127311300698
+        },
+        "-11": {
+          "pearson": 0.23571940507232522,
+          "spearman": 0.6707933178299983
+        },
+        "-10": {
+          "pearson": 0.2368963893564291,
+          "spearman": 0.6768806336773836
+        },
+        "-9": {
+          "pearson": 0.23921394173890612,
+          "spearman": 0.6879423449872721
+        },
+        "-8": {
+          "pearson": 0.24214724645154276,
+          "spearman": 0.6994223334118924
+        },
+        "-7": {
+          "pearson": 0.24452405504593303,
+          "spearman": 0.7085518979948568
+        },
+        "-6": {
+          "pearson": 0.24599791796625503,
+          "spearman": 0.7167865265228348
+        },
+        "-5": {
+          "pearson": 0.2474737912177505,
+          "spearman": 0.7246766674186029
+        },
+        "-4": {
+          "pearson": 0.2488540290480852,
+          "spearman": 0.7323973164500198
+        },
+        "-3": {
+          "pearson": 0.2494415710802601,
+          "spearman": 0.7313742540747791
+        },
+        "-2": {
+          "pearson": 0.24821726592782567,
+          "spearman": 0.732301139575216
+        },
+        "-1": {
+          "pearson": 0.2479601211958086,
+          "spearman": 0.7280483859284834
+        }
+      },
+      "rawPressureCorrection_vs_continuity": {
+        "0": {
+          "pearson": 0.5944378498370938,
+          "spearman": 0.7892941331765327
+        },
+        "1": {
+          "pearson": 0.5984949906798721,
+          "spearman": 0.781623005046237
+        },
+        "2": {
+          "pearson": 0.6017846561269314,
+          "spearman": 0.773392169906223
+        },
+        "3": {
+          "pearson": 0.6075290244182362,
+          "spearman": 0.7676961496925587
+        },
+        "4": {
+          "pearson": 0.6088406763176176,
+          "spearman": 0.7584004515853675
+        },
+        "5": {
+          "pearson": 0.6106511876371084,
+          "spearman": 0.7480054891345214
+        },
+        "6": {
+          "pearson": 0.6048721923851668,
+          "spearman": 0.732961945708823
+        },
+        "7": {
+          "pearson": 0.597922053909561,
+          "spearman": 0.7183179302373047
+        },
+        "8": {
+          "pearson": 0.5918928387080044,
+          "spearman": 0.7035430103209375
+        },
+        "9": {
+          "pearson": 0.5862303216456928,
+          "spearman": 0.6890705673755271
+        },
+        "10": {
+          "pearson": 0.579149772225785,
+          "spearman": 0.6722375489498337
+        },
+        "11": {
+          "pearson": 0.5701770290205582,
+          "spearman": 0.6608585262527016
+        },
+        "12": {
+          "pearson": 0.5661657643165582,
+          "spearman": 0.6437882790220478
+        },
+        "13": {
+          "pearson": 0.5428199349546899,
+          "spearman": 0.6188843548949472
+        },
+        "14": {
+          "pearson": 0.5178443454173928,
+          "spearman": 0.5896035892084355
+        },
+        "15": {
+          "pearson": 0.5084938165817667,
+          "spearman": 0.577542897474169
+        },
+        "16": {
+          "pearson": 0.4974538023739371,
+          "spearman": 0.5635408965754103
+        },
+        "17": {
+          "pearson": 0.47760605203278517,
+          "spearman": 0.5419026220036504
+        },
+        "18": {
+          "pearson": 0.4476956947939242,
+          "spearman": 0.5172959138320856
+        },
+        "19": {
+          "pearson": 0.42623134436398236,
+          "spearman": 0.4989167191449349
+        },
+        "20": {
+          "pearson": 0.41067760091411976,
+          "spearman": 0.4815082747754982
+        },
+        "-20": {
+          "pearson": 0.3889954039239482,
+          "spearman": 0.5537814834265774
+        },
+        "-19": {
+          "pearson": 0.3969086666716068,
+          "spearman": 0.5702989535977088
+        },
+        "-18": {
+          "pearson": 0.4064438860954146,
+          "spearman": 0.5849238941427287
+        },
+        "-17": {
+          "pearson": 0.43006357459216227,
+          "spearman": 0.6006235248686825
+        },
+        "-16": {
+          "pearson": 0.4472154504333688,
+          "spearman": 0.6176807748707834
+        },
+        "-15": {
+          "pearson": 0.4619004914716814,
+          "spearman": 0.6343559514756015
+        },
+        "-14": {
+          "pearson": 0.46891468924134616,
+          "spearman": 0.6519206901391114
+        },
+        "-13": {
+          "pearson": 0.48328201683583333,
+          "spearman": 0.6688436902471754
+        },
+        "-12": {
+          "pearson": 0.496556709692336,
+          "spearman": 0.6839515009682501
+        },
+        "-11": {
+          "pearson": 0.5058144840442895,
+          "spearman": 0.6973439421026381
+        },
+        "-10": {
+          "pearson": 0.5143036059336076,
+          "spearman": 0.7108247949761539
+        },
+        "-9": {
+          "pearson": 0.5226438423904849,
+          "spearman": 0.7222857629465774
+        },
+        "-8": {
+          "pearson": 0.5320305669512698,
+          "spearman": 0.733222544463581
+        },
+        "-7": {
+          "pearson": 0.5376558635623918,
+          "spearman": 0.7333463392200995
+        },
+        "-6": {
+          "pearson": 0.5480130348146349,
+          "spearman": 0.7467680890334888
+        },
+        "-5": {
+          "pearson": 0.5592242359314651,
+          "spearman": 0.7586157051776746
+        },
+        "-4": {
+          "pearson": 0.5690985392676676,
+          "spearman": 0.7665197440754006
+        },
+        "-3": {
+          "pearson": 0.5764924554384193,
+          "spearman": 0.7707331239672782
+        },
+        "-2": {
+          "pearson": 0.5835360929903124,
+          "spearman": 0.7755047560880166
+        },
+        "-1": {
+          "pearson": 0.5893511869474338,
+          "spearman": 0.7858883067339498
+        }
+      },
+      "rawPressureCorrection_vs_cl": {
+        "0": {
+          "pearson": -0.2492842574120153,
+          "spearman": -0.11288550754203017
+        },
+        "1": {
+          "pearson": -0.25227296503258223,
+          "spearman": -0.11788695463215587
+        },
+        "2": {
+          "pearson": -0.2552554604860922,
+          "spearman": -0.11359292243307006
+        },
+        "3": {
+          "pearson": -0.25451528881926955,
+          "spearman": -0.10647092817300226
+        },
+        "4": {
+          "pearson": -0.25264170113741324,
+          "spearman": -0.10346576034899524
+        },
+        "5": {
+          "pearson": -0.25553928678045823,
+          "spearman": -0.10970393500104875
+        },
+        "6": {
+          "pearson": -0.2632542672379641,
+          "spearman": -0.11615827324165105
+        },
+        "7": {
+          "pearson": -0.2695911413601725,
+          "spearman": -0.11585501053456798
+        },
+        "8": {
+          "pearson": -0.2659282301195478,
+          "spearman": -0.10262083555550898
+        },
+        "9": {
+          "pearson": -0.2606692371173755,
+          "spearman": -0.09143741148538298
+        },
+        "10": {
+          "pearson": -0.2592288025323899,
+          "spearman": -0.07978713882564259
+        },
+        "11": {
+          "pearson": -0.2587163624869379,
+          "spearman": -0.07782205510183557
+        },
+        "12": {
+          "pearson": -0.2518199018752517,
+          "spearman": -0.06980455950044617
+        },
+        "13": {
+          "pearson": -0.24553518187875853,
+          "spearman": -0.061832290431610454
+        },
+        "14": {
+          "pearson": -0.24356354808680963,
+          "spearman": -0.05427274335732742
+        },
+        "15": {
+          "pearson": -0.24181880850585527,
+          "spearman": -0.041409513230819074
+        },
+        "16": {
+          "pearson": -0.24123322973254302,
+          "spearman": -0.03305658116790507
+        },
+        "17": {
+          "pearson": -0.2375547363355805,
+          "spearman": -0.025479555460038626
+        },
+        "18": {
+          "pearson": -0.23210716915989615,
+          "spearman": -0.01762846522002214
+        },
+        "19": {
+          "pearson": -0.22810271471245697,
+          "spearman": -0.013636549891736613
+        },
+        "20": {
+          "pearson": -0.22752173877971493,
+          "spearman": -0.006518148950299263
+        },
+        "-20": {
+          "pearson": -0.11957436422574313,
+          "spearman": -0.0471763115291299
+        },
+        "-19": {
+          "pearson": -0.12635225383130902,
+          "spearman": -0.04369549089466102
+        },
+        "-18": {
+          "pearson": -0.13557284576238762,
+          "spearman": -0.04059473787058128
+        },
+        "-17": {
+          "pearson": -0.14622827601424437,
+          "spearman": -0.04441086442136087
+        },
+        "-16": {
+          "pearson": -0.15740818571137385,
+          "spearman": -0.05021080545305312
+        },
+        "-15": {
+          "pearson": -0.1694097919919878,
+          "spearman": -0.05683440675630616
+        },
+        "-14": {
+          "pearson": -0.1822842796849113,
+          "spearman": -0.06310599711109177
+        },
+        "-13": {
+          "pearson": -0.19347964849424187,
+          "spearman": -0.06395487283830098
+        },
+        "-12": {
+          "pearson": -0.20342307067084425,
+          "spearman": -0.06356953319754222
+        },
+        "-11": {
+          "pearson": -0.21212022210533482,
+          "spearman": -0.0698298669764597
+        },
+        "-10": {
+          "pearson": -0.2179277727142133,
+          "spearman": -0.07273586380311999
+        },
+        "-9": {
+          "pearson": -0.22096711249601864,
+          "spearman": -0.07616601058982035
+        },
+        "-8": {
+          "pearson": -0.224823160219085,
+          "spearman": -0.08316188196521708
+        },
+        "-7": {
+          "pearson": -0.22734735711499962,
+          "spearman": -0.08775228031985668
+        },
+        "-6": {
+          "pearson": -0.22773690570082478,
+          "spearman": -0.0920465463862496
+        },
+        "-5": {
+          "pearson": -0.2268013052598323,
+          "spearman": -0.0982369074049889
+        },
+        "-4": {
+          "pearson": -0.22716533532177385,
+          "spearman": -0.10581376823993817
+        },
+        "-3": {
+          "pearson": -0.23024207635625832,
+          "spearman": -0.10814772036806927
+        },
+        "-2": {
+          "pearson": -0.2352457279198357,
+          "spearman": -0.10731171197938774
+        },
+        "-1": {
+          "pearson": -0.24127591136027576,
+          "spearman": -0.10645387159861892
+        }
+      },
+      "rawPressureCorrection_vs_cd": {
+        "0": {
+          "pearson": 0.15277151753874538,
+          "spearman": 0.03963932655730623
+        },
+        "1": {
+          "pearson": 0.14978917953194198,
+          "spearman": 0.04327971605862327
+        },
+        "2": {
+          "pearson": 0.14526194046706284,
+          "spearman": 0.04900343947452249
+        },
+        "3": {
+          "pearson": 0.14156057270442463,
+          "spearman": 0.055062106021281206
+        },
+        "4": {
+          "pearson": 0.1352735459810829,
+          "spearman": 0.057144135585753035
+        },
+        "5": {
+          "pearson": 0.12363810194010455,
+          "spearman": 0.05001652280939208
+        },
+        "6": {
+          "pearson": 0.10960927898994281,
+          "spearman": 0.037008114834526706
+        },
+        "7": {
+          "pearson": 0.09786230353047709,
+          "spearman": 0.029289383851455682
+        },
+        "8": {
+          "pearson": 0.08953445779524032,
+          "spearman": 0.03288652026991965
+        },
+        "9": {
+          "pearson": 0.08099907516043722,
+          "spearman": 0.03443425157058005
+        },
+        "10": {
+          "pearson": 0.07133039114689042,
+          "spearman": 0.03677712535415876
+        },
+        "11": {
+          "pearson": 0.061602202022834784,
+          "spearman": 0.03800119866914884
+        },
+        "12": {
+          "pearson": 0.05327430124717884,
+          "spearman": 0.04282531579902776
+        },
+        "13": {
+          "pearson": 0.044488424723463024,
+          "spearman": 0.04977803793178396
+        },
+        "14": {
+          "pearson": 0.03661744517050244,
+          "spearman": 0.05803412591447901
+        },
+        "15": {
+          "pearson": 0.0317001926420609,
+          "spearman": 0.06997928887963252
+        },
+        "16": {
+          "pearson": 0.0239605858981147,
+          "spearman": 0.0760371855844738
+        },
+        "17": {
+          "pearson": 0.014608807181619528,
+          "spearman": 0.08020422494862
+        },
+        "18": {
+          "pearson": 0.005040809267124303,
+          "spearman": 0.08293681052115114
+        },
+        "19": {
+          "pearson": -0.001987084730481648,
+          "spearman": 0.08467523140759656
+        },
+        "20": {
+          "pearson": -0.00851813974923947,
+          "spearman": 0.08237188529464104
+        },
+        "-20": {
+          "pearson": 0.19744724153075013,
+          "spearman": 0.09749771049353513
+        },
+        "-19": {
+          "pearson": 0.19266849061197122,
+          "spearman": 0.09876111748518387
+        },
+        "-18": {
+          "pearson": 0.18469293322279853,
+          "spearman": 0.09723118887831138
+        },
+        "-17": {
+          "pearson": 0.17456359056200665,
+          "spearman": 0.09592578874064121
+        },
+        "-16": {
+          "pearson": 0.16188280341291436,
+          "spearman": 0.08784864131427027
+        },
+        "-15": {
+          "pearson": 0.14989925355043035,
+          "spearman": 0.08031780893386642
+        },
+        "-14": {
+          "pearson": 0.14064377394949246,
+          "spearman": 0.07042229963262726
+        },
+        "-13": {
+          "pearson": 0.13652553995024885,
+          "spearman": 0.06380962711120586
+        },
+        "-12": {
+          "pearson": 0.13432194835598005,
+          "spearman": 0.059013997857603535
+        },
+        "-11": {
+          "pearson": 0.13415213619850397,
+          "spearman": 0.05330085569378108
+        },
+        "-10": {
+          "pearson": 0.13629721963983543,
+          "spearman": 0.046899072499940714
+        },
+        "-9": {
+          "pearson": 0.13731805350786158,
+          "spearman": 0.041982666595027064
+        },
+        "-8": {
+          "pearson": 0.13710370688607149,
+          "spearman": 0.03273890701503529
+        },
+        "-7": {
+          "pearson": 0.14089488363833838,
+          "spearman": 0.027790969494719295
+        },
+        "-6": {
+          "pearson": 0.14489689521687998,
+          "spearman": 0.02856494418360544
+        },
+        "-5": {
+          "pearson": 0.14568888493996998,
+          "spearman": 0.02929296227258876
+        },
+        "-4": {
+          "pearson": 0.14563830812774764,
+          "spearman": 0.028202548625083836
+        },
+        "-3": {
+          "pearson": 0.1477227133452548,
+          "spearman": 0.032110463011258375
+        },
+        "-2": {
+          "pearson": 0.1494899210490697,
+          "spearman": 0.03381619606331035
+        },
+        "-1": {
+          "pearson": 0.150772030482806,
+          "spearman": 0.037647246299828574
+        }
+      },
+      "velCapActive_vs_momLinf": {
+        "0": {
+          "pearson": 0.043850446810761404,
+          "spearman": 0.03007807231228925
+        },
+        "1": {
+          "pearson": 0.05433893634995962,
+          "spearman": 0.03540642731245624
+        },
+        "2": {
+          "pearson": 0.08274150978330241,
+          "spearman": 0.04330811388843965
+        },
+        "3": {
+          "pearson": 0.08362148490451421,
+          "spearman": 0.04793393082943835
+        },
+        "4": {
+          "pearson": 0.06959406988209181,
+          "spearman": 0.05251223863218411
+        },
+        "5": {
+          "pearson": 0.08183521824942201,
+          "spearman": 0.049409037482042575
+        },
+        "6": {
+          "pearson": 0.09844932497113355,
+          "spearman": 0.0479687779570346
+        },
+        "7": {
+          "pearson": 0.10790731017111667,
+          "spearman": 0.04493320228633875
+        },
+        "8": {
+          "pearson": 0.11316031600257655,
+          "spearman": 0.04235351752310399
+        },
+        "9": {
+          "pearson": 0.13711440167968605,
+          "spearman": 0.046455512312719036
+        },
+        "10": {
+          "pearson": 0.1519156894103748,
+          "spearman": 0.045001895901614054
+        },
+        "11": {
+          "pearson": 0.14898355635103538,
+          "spearman": 0.04234545070165248
+        },
+        "12": {
+          "pearson": 0.14178301966352927,
+          "spearman": 0.03919042856396449
+        },
+        "13": {
+          "pearson": 0.13777303928770585,
+          "spearman": 0.03776918770859593
+        },
+        "14": {
+          "pearson": 0.15253909013418585,
+          "spearman": 0.04100373226871812
+        },
+        "15": {
+          "pearson": 0.15055213310647556,
+          "spearman": 0.03789714283310035
+        },
+        "16": {
+          "pearson": 0.1496634436484182,
+          "spearman": 0.03532651692873363
+        },
+        "17": {
+          "pearson": 0.12771658447445364,
+          "spearman": 0.02834946530516701
+        },
+        "18": {
+          "pearson": 0.11983280065711868,
+          "spearman": 0.020909346004060057
+        },
+        "19": {
+          "pearson": 0.14020576135028814,
+          "spearman": 0.027529093089259063
+        },
+        "20": {
+          "pearson": 0.11556873425633078,
+          "spearman": 0.024074106224419377
+        },
+        "-20": {
+          "pearson": 0.04654458527913766,
+          "spearman": -0.2388696348508457
+        },
+        "-19": {
+          "pearson": 0.04468254162117831,
+          "spearman": -0.2319205536529188
+        },
+        "-18": {
+          "pearson": 0.04822610911047949,
+          "spearman": -0.22059159908699869
+        },
+        "-17": {
+          "pearson": 0.050934308870853484,
+          "spearman": -0.21062803825666077
+        },
+        "-16": {
+          "pearson": 0.05105273912282765,
+          "spearman": -0.20153721019211424
+        },
+        "-15": {
+          "pearson": 0.054643259736825246,
+          "spearman": -0.187459411358193
+        },
+        "-14": {
+          "pearson": 0.057956786990475476,
+          "spearman": -0.17523567443619378
+        },
+        "-13": {
+          "pearson": 0.0610762396159137,
+          "spearman": -0.15742673194620546
+        },
+        "-12": {
+          "pearson": 0.06302235718587522,
+          "spearman": -0.14334664466308059
+        },
+        "-11": {
+          "pearson": 0.06587068229618201,
+          "spearman": -0.12972247935682368
+        },
+        "-10": {
+          "pearson": 0.07111666926423037,
+          "spearman": -0.1135471923953818
+        },
+        "-9": {
+          "pearson": 0.07857552200422337,
+          "spearman": -0.0968309612852145
+        },
+        "-8": {
+          "pearson": 0.08060850486419618,
+          "spearman": -0.07917904460066483
+        },
+        "-7": {
+          "pearson": 0.08580326919738046,
+          "spearman": -0.06213031618125266
+        },
+        "-6": {
+          "pearson": 0.08627646248362798,
+          "spearman": -0.0508681098624517
+        },
+        "-5": {
+          "pearson": 0.09238816795543774,
+          "spearman": -0.0334165410141641
+        },
+        "-4": {
+          "pearson": 0.09786569264834176,
+          "spearman": -0.021176324811036307
+        },
+        "-3": {
+          "pearson": 0.10177308624212139,
+          "spearman": -0.0028208504818260515
+        },
+        "-2": {
+          "pearson": 0.10220214915308298,
+          "spearman": 0.008730704724763094
+        },
+        "-1": {
+          "pearson": 0.10509994698603242,
+          "spearman": 0.021877393340898665
+        }
+      },
+      "velCapActive_vs_continuity": {
+        "0": {
+          "pearson": 0.16170890584525974,
+          "spearman": 0.04929811719246877
+        },
+        "1": {
+          "pearson": 0.15507265171893914,
+          "spearman": 0.060101697370644906
+        },
+        "2": {
+          "pearson": 0.1481475080340552,
+          "spearman": 0.06998287865639402
+        },
+        "3": {
+          "pearson": 0.1489679774173088,
+          "spearman": 0.07854139997388138
+        },
+        "4": {
+          "pearson": 0.15124737078126338,
+          "spearman": 0.08702105103740725
+        },
+        "5": {
+          "pearson": 0.14984757252926914,
+          "spearman": 0.09279654979994538
+        },
+        "6": {
+          "pearson": 0.14720800018187907,
+          "spearman": 0.09889606496844673
+        },
+        "7": {
+          "pearson": 0.14722718638585888,
+          "spearman": 0.10548949237182709
+        },
+        "8": {
+          "pearson": 0.14021959664923903,
+          "spearman": 0.10875268008741526
+        },
+        "9": {
+          "pearson": 0.14642210693262817,
+          "spearman": 0.111867674892718
+        },
+        "10": {
+          "pearson": 0.1546495550531364,
+          "spearman": 0.11754431909082401
+        },
+        "11": {
+          "pearson": 0.18403493416264538,
+          "spearman": 0.12548680540304225
+        },
+        "12": {
+          "pearson": 0.1772772050226871,
+          "spearman": 0.12668607365886994
+        },
+        "13": {
+          "pearson": 0.18132896512665253,
+          "spearman": 0.13114328127344138
+        },
+        "14": {
+          "pearson": 0.1926889457540409,
+          "spearman": 0.13946454057238225
+        },
+        "15": {
+          "pearson": 0.19558299634222914,
+          "spearman": 0.1435163885023304
+        },
+        "16": {
+          "pearson": 0.196003983591955,
+          "spearman": 0.14591896836304155
+        },
+        "17": {
+          "pearson": 0.19519288632700665,
+          "spearman": 0.1475467851322738
+        },
+        "18": {
+          "pearson": 0.19133460213299677,
+          "spearman": 0.1480291166381731
+        },
+        "19": {
+          "pearson": 0.1949425272817243,
+          "spearman": 0.15061776986050845
+        },
+        "20": {
+          "pearson": 0.19218711437239183,
+          "spearman": 0.1486433317852942
+        },
+        "-20": {
+          "pearson": 0.013058471386247028,
+          "spearman": -0.22395713523062166
+        },
+        "-19": {
+          "pearson": 0.019638234365942045,
+          "spearman": -0.21440161834352706
+        },
+        "-18": {
+          "pearson": 0.02656833723428666,
+          "spearman": -0.2043419375189175
+        },
+        "-17": {
+          "pearson": 0.034125422038193964,
+          "spearman": -0.1928283777298915
+        },
+        "-16": {
+          "pearson": 0.04111270330801014,
+          "spearman": -0.18204097357351096
+        },
+        "-15": {
+          "pearson": 0.0491702711556363,
+          "spearman": -0.16940592007758518
+        },
+        "-14": {
+          "pearson": 0.060428880458474915,
+          "spearman": -0.15512318629799243
+        },
+        "-13": {
+          "pearson": 0.06960899289744671,
+          "spearman": -0.14082092718721573
+        },
+        "-12": {
+          "pearson": 0.0792740178435022,
+          "spearman": -0.12752618054326498
+        },
+        "-11": {
+          "pearson": 0.08657383017598246,
+          "spearman": -0.11362942240156648
+        },
+        "-10": {
+          "pearson": 0.09722731803168048,
+          "spearman": -0.09953980717647848
+        },
+        "-9": {
+          "pearson": 0.11340978118291366,
+          "spearman": -0.0820345106896765
+        },
+        "-8": {
+          "pearson": 0.1310604230172026,
+          "spearman": -0.06481471312195182
+        },
+        "-7": {
+          "pearson": 0.14280828147036428,
+          "spearman": -0.06036220326398351
+        },
+        "-6": {
+          "pearson": 0.145810653633478,
+          "spearman": -0.044299695180446755
+        },
+        "-5": {
+          "pearson": 0.15083453967672922,
+          "spearman": -0.02688369920967544
+        },
+        "-4": {
+          "pearson": 0.15609657865433257,
+          "spearman": -0.011236037928450468
+        },
+        "-3": {
+          "pearson": 0.16102468300928857,
+          "spearman": 0.004999292294771349
+        },
+        "-2": {
+          "pearson": 0.16715867528913866,
+          "spearman": 0.021387566774964683
+        },
+        "-1": {
+          "pearson": 0.1725942607355286,
+          "spearman": 0.03789699881691093
+        }
+      },
+      "velCapActive_vs_cl": {
+        "0": {
+          "pearson": -0.15282193380574763,
+          "spearman": -0.19316621266485065
+        },
+        "1": {
+          "pearson": -0.16429949705643893,
+          "spearman": -0.20239041939300287
+        },
+        "2": {
+          "pearson": -0.16989581402171086,
+          "spearman": -0.20965802541545236
+        },
+        "3": {
+          "pearson": -0.17000474106502203,
+          "spearman": -0.2129284646862911
+        },
+        "4": {
+          "pearson": -0.1665765585882399,
+          "spearman": -0.2133712342481084
+        },
+        "5": {
+          "pearson": -0.1611416597872994,
+          "spearman": -0.21490110059719567
+        },
+        "6": {
+          "pearson": -0.15633279790930193,
+          "spearman": -0.21386407621061193
+        },
+        "7": {
+          "pearson": -0.15009633067041905,
+          "spearman": -0.21247980265235966
+        },
+        "8": {
+          "pearson": -0.14592652358130145,
+          "spearman": -0.21226262100886253
+        },
+        "9": {
+          "pearson": -0.14145142286929238,
+          "spearman": -0.2113649473499598
+        },
+        "10": {
+          "pearson": -0.13956434992706374,
+          "spearman": -0.21242120278446366
+        },
+        "11": {
+          "pearson": -0.14152655757420207,
+          "spearman": -0.21669393091642772
+        },
+        "12": {
+          "pearson": -0.14287217107269862,
+          "spearman": -0.213597072099468
+        },
+        "13": {
+          "pearson": -0.1443276376388733,
+          "spearman": -0.2077643503401742
+        },
+        "14": {
+          "pearson": -0.14015231313770654,
+          "spearman": -0.19797656205285494
+        },
+        "15": {
+          "pearson": -0.1355286619311786,
+          "spearman": -0.18571164103810153
+        },
+        "16": {
+          "pearson": -0.13036198941057384,
+          "spearman": -0.17241573470740987
+        },
+        "17": {
+          "pearson": -0.1316328985495859,
+          "spearman": -0.15994656779102354
+        },
+        "18": {
+          "pearson": -0.13398382001808729,
+          "spearman": -0.14746726473228366
+        },
+        "19": {
+          "pearson": -0.13184602044549415,
+          "spearman": -0.13981256631671568
+        },
+        "20": {
+          "pearson": -0.13530794188352777,
+          "spearman": -0.13898237405544295
+        },
+        "-20": {
+          "pearson": -0.045710622888349664,
+          "spearman": -0.08829118181936553
+        },
+        "-19": {
+          "pearson": -0.05751979640899529,
+          "spearman": -0.09616700166492698
+        },
+        "-18": {
+          "pearson": -0.06473591656466171,
+          "spearman": -0.10530351013843707
+        },
+        "-17": {
+          "pearson": -0.06964741054531161,
+          "spearman": -0.1165448790299134
+        },
+        "-16": {
+          "pearson": -0.07260945857423003,
+          "spearman": -0.12320352317907429
+        },
+        "-15": {
+          "pearson": -0.07100956941364443,
+          "spearman": -0.1258009649762227
+        },
+        "-14": {
+          "pearson": -0.06446862991845087,
+          "spearman": -0.12494598651093637
+        },
+        "-13": {
+          "pearson": -0.05940990140116744,
+          "spearman": -0.12119914373591958
+        },
+        "-12": {
+          "pearson": -0.05682464792541912,
+          "spearman": -0.12444207134671735
+        },
+        "-11": {
+          "pearson": -0.05609283604553321,
+          "spearman": -0.12478925795401133
+        },
+        "-10": {
+          "pearson": -0.05683293913046343,
+          "spearman": -0.12313160617163788
+        },
+        "-9": {
+          "pearson": -0.05704004179617028,
+          "spearman": -0.12142071472670336
+        },
+        "-8": {
+          "pearson": -0.0608959323547699,
+          "spearman": -0.1261428313915053
+        },
+        "-7": {
+          "pearson": -0.06559147663842341,
+          "spearman": -0.13183162076917268
+        },
+        "-6": {
+          "pearson": -0.07103479534741426,
+          "spearman": -0.1363661000044047
+        },
+        "-5": {
+          "pearson": -0.07945454505255244,
+          "spearman": -0.1405311440116194
+        },
+        "-4": {
+          "pearson": -0.09223527394491035,
+          "spearman": -0.1456265451949232
+        },
+        "-3": {
+          "pearson": -0.10763241648781799,
+          "spearman": -0.1567588586317751
+        },
+        "-2": {
+          "pearson": -0.12598033846720394,
+          "spearman": -0.1699278414286574
+        },
+        "-1": {
+          "pearson": -0.14499338484083923,
+          "spearman": -0.1846702561750006
+        }
+      },
+      "velCapActive_vs_cd": {
+        "0": {
+          "pearson": -0.07255313677280363,
+          "spearman": -0.4340951123804495
+        },
+        "1": {
+          "pearson": -0.09259603390177967,
+          "spearman": -0.4346375642851969
+        },
+        "2": {
+          "pearson": -0.10835786360823685,
+          "spearman": -0.4302727294058676
+        },
+        "3": {
+          "pearson": -0.11927214191569524,
+          "spearman": -0.4235774147410698
+        },
+        "4": {
+          "pearson": -0.1200101732472199,
+          "spearman": -0.4154742728118466
+        },
+        "5": {
+          "pearson": -0.10915271484900438,
+          "spearman": -0.4065690534705815
+        },
+        "6": {
+          "pearson": -0.09946962298835796,
+          "spearman": -0.3992604598348166
+        },
+        "7": {
+          "pearson": -0.0925915750325307,
+          "spearman": -0.3933932565545363
+        },
+        "8": {
+          "pearson": -0.09168127830969834,
+          "spearman": -0.3883633196477877
+        },
+        "9": {
+          "pearson": -0.09395711956421021,
+          "spearman": -0.385802584905603
+        },
+        "10": {
+          "pearson": -0.1011259809014709,
+          "spearman": -0.38470544165837717
+        },
+        "11": {
+          "pearson": -0.11711425406413593,
+          "spearman": -0.384999189256312
+        },
+        "12": {
+          "pearson": -0.13703096985323454,
+          "spearman": -0.3863643920242714
+        },
+        "13": {
+          "pearson": -0.15637084705866572,
+          "spearman": -0.38520787593396744
+        },
+        "14": {
+          "pearson": -0.16884807693377965,
+          "spearman": -0.37844734380647505
+        },
+        "15": {
+          "pearson": -0.17809175556639506,
+          "spearman": -0.3697976326842306
+        },
+        "16": {
+          "pearson": -0.18392092382069242,
+          "spearman": -0.3619044091070496
+        },
+        "17": {
+          "pearson": -0.18991854585218773,
+          "spearman": -0.35575816930678916
+        },
+        "18": {
+          "pearson": -0.18597266561740797,
+          "spearman": -0.3490702947675706
+        },
+        "19": {
+          "pearson": -0.17096651047284034,
+          "spearman": -0.34003178889071006
+        },
+        "20": {
+          "pearson": -0.1598263101221499,
+          "spearman": -0.3289112582953919
+        },
+        "-20": {
+          "pearson": 0.008403688904547171,
+          "spearman": -0.3833165508530853
+        },
+        "-19": {
+          "pearson": -0.00444682985635696,
+          "spearman": -0.3961539539859042
+        },
+        "-18": {
+          "pearson": -0.009604274735619447,
+          "spearman": -0.4025052722508974
+        },
+        "-17": {
+          "pearson": -0.010264117380136521,
+          "spearman": -0.4046978639257189
+        },
+        "-16": {
+          "pearson": -0.007568150627939888,
+          "spearman": -0.4039200765006559
+        },
+        "-15": {
+          "pearson": -0.0009583476479534504,
+          "spearman": -0.400219102405919
+        },
+        "-14": {
+          "pearson": 0.008527000105377307,
+          "spearman": -0.3920554762373316
+        },
+        "-13": {
+          "pearson": 0.017672028870514053,
+          "spearman": -0.38245246682932527
+        },
+        "-12": {
+          "pearson": 0.02463673282704959,
+          "spearman": -0.3797228390738916
+        },
+        "-11": {
+          "pearson": 0.026846430411513956,
+          "spearman": -0.37913977015929573
+        },
+        "-10": {
+          "pearson": 0.025070127041448044,
+          "spearman": -0.37736194024046715
+        },
+        "-9": {
+          "pearson": 0.023180007923970968,
+          "spearman": -0.3742633708393695
+        },
+        "-8": {
+          "pearson": 0.018213792853519237,
+          "spearman": -0.38052430011417104
+        },
+        "-7": {
+          "pearson": 0.011609827141011698,
+          "spearman": -0.3892285018800784
+        },
+        "-6": {
+          "pearson": 0.0031173507383536496,
+          "spearman": -0.39411199810473857
+        },
+        "-5": {
+          "pearson": -0.0038842440871653624,
+          "spearman": -0.39431496630138396
+        },
+        "-4": {
+          "pearson": -0.010109241411562504,
+          "spearman": -0.39266114772702687
+        },
+        "-3": {
+          "pearson": -0.01651550382601527,
+          "spearman": -0.3929823597629305
+        },
+        "-2": {
+          "pearson": -0.028177721694091523,
+          "spearman": -0.4070654703020742
+        },
+        "-1": {
+          "pearson": -0.04301530413882431,
+          "spearman": -0.42191621797812495
+        }
+      }
+    },
+    "experimentB": {
+      "deltaNut_vs_momLinf": {
+        "0": {
+          "pearson": 0.8771421473838642,
+          "spearman": -0.45426508106032426
+        },
+        "1": {
+          "pearson": 0.8340111139563201,
+          "spearman": -0.46209228094743704
+        },
+        "2": {
+          "pearson": 0.7772635629943988,
+          "spearman": -0.4716264848914333
+        },
+        "3": {
+          "pearson": 0.7671066013025882,
+          "spearman": -0.47958211765736275
+        },
+        "4": {
+          "pearson": 0.7698015364795242,
+          "spearman": -0.49105680023444676
+        },
+        "5": {
+          "pearson": 0.686440804123552,
+          "spearman": -0.5018944835583206
+        },
+        "6": {
+          "pearson": 0.5668420313398348,
+          "spearman": -0.5133380764639439
+        },
+        "7": {
+          "pearson": 0.42684627010466647,
+          "spearman": -0.5265610519225311
+        },
+        "8": {
+          "pearson": 0.27200869705292213,
+          "spearman": -0.5413349860644019
+        },
+        "9": {
+          "pearson": 0.12100235442977114,
+          "spearman": -0.5550686878496865
+        },
+        "10": {
+          "pearson": 0.009720114834821068,
+          "spearman": -0.5693359142414979
+        },
+        "11": {
+          "pearson": -0.04693195803036378,
+          "spearman": -0.5824184586838859
+        },
+        "12": {
+          "pearson": -0.07985742913551626,
+          "spearman": -0.5917717643545622
+        },
+        "13": {
+          "pearson": -0.10416548890590356,
+          "spearman": -0.6013552319838156
+        },
+        "14": {
+          "pearson": -0.1133398238715934,
+          "spearman": -0.6090094003202522
+        },
+        "15": {
+          "pearson": -0.12242690936880841,
+          "spearman": -0.619605826041315
+        },
+        "16": {
+          "pearson": -0.13064569170311446,
+          "spearman": -0.6260638835513535
+        },
+        "17": {
+          "pearson": -0.135897475284966,
+          "spearman": -0.6322463146877232
+        },
+        "18": {
+          "pearson": -0.14027229391249413,
+          "spearman": -0.640235069064223
+        },
+        "19": {
+          "pearson": -0.145220171024823,
+          "spearman": -0.6456227732680014
+        },
+        "20": {
+          "pearson": -0.14951057484475286,
+          "spearman": -0.6513138077856241
+        },
+        "-20": {
+          "pearson": 0.11309020022397515,
+          "spearman": -0.4000885420509638
+        },
+        "-19": {
+          "pearson": 0.10042610887671283,
+          "spearman": -0.4013592230915882
+        },
+        "-18": {
+          "pearson": 0.09116027971484462,
+          "spearman": -0.4033208844682776
+        },
+        "-17": {
+          "pearson": 0.08826456100855622,
+          "spearman": -0.40397751101669227
+        },
+        "-16": {
+          "pearson": 0.08427695699340237,
+          "spearman": -0.40835019265401074
+        },
+        "-15": {
+          "pearson": 0.08756948566193251,
+          "spearman": -0.4122401774697932
+        },
+        "-14": {
+          "pearson": 0.09562136253524889,
+          "spearman": -0.41590289881320597
+        },
+        "-13": {
+          "pearson": 0.11547108039491298,
+          "spearman": -0.4188597940295071
+        },
+        "-12": {
+          "pearson": 0.14033260228548458,
+          "spearman": -0.4183258330182244
+        },
+        "-11": {
+          "pearson": 0.1711964972354362,
+          "spearman": -0.4195059800043924
+        },
+        "-10": {
+          "pearson": 0.21212132774466136,
+          "spearman": -0.42184654952281164
+        },
+        "-9": {
+          "pearson": 0.2619159185450661,
+          "spearman": -0.42566617228581366
+        },
+        "-8": {
+          "pearson": 0.32239746241312434,
+          "spearman": -0.42845528119418214
+        },
+        "-7": {
+          "pearson": 0.3976632698344561,
+          "spearman": -0.4321574422681839
+        },
+        "-6": {
+          "pearson": 0.4939107940001609,
+          "spearman": -0.4345727437218843
+        },
+        "-5": {
+          "pearson": 0.5977912945848722,
+          "spearman": -0.43867079440084533
+        },
+        "-4": {
+          "pearson": 0.6957594021588804,
+          "spearman": -0.44233386634567917
+        },
+        "-3": {
+          "pearson": 0.7703303367251656,
+          "spearman": -0.44452617375453657
+        },
+        "-2": {
+          "pearson": 0.8221224975119464,
+          "spearman": -0.4458651369792505
+        },
+        "-1": {
+          "pearson": 0.8557040607554001,
+          "spearman": -0.4476484535335732
+        }
+      },
+      "deltaNut_vs_continuity": {
+        "0": {
+          "pearson": -0.09031267103198283,
+          "spearman": -0.319936447745791
+        },
+        "1": {
+          "pearson": -0.09271178973168293,
+          "spearman": -0.32409880000965785
+        },
+        "2": {
+          "pearson": -0.09789360726561176,
+          "spearman": -0.3258230601466199
+        },
+        "3": {
+          "pearson": -0.10571958844762255,
+          "spearman": -0.33036716216459266
+        },
+        "4": {
+          "pearson": -0.111385174740029,
+          "spearman": -0.33471070804101244
+        },
+        "5": {
+          "pearson": -0.11350878945857672,
+          "spearman": -0.33616684673560737
+        },
+        "6": {
+          "pearson": -0.11189921854984712,
+          "spearman": -0.3379682628321467
+        },
+        "7": {
+          "pearson": -0.10976247282377492,
+          "spearman": -0.34055957894576605
+        },
+        "8": {
+          "pearson": -0.10863294681448285,
+          "spearman": -0.3419712445349089
+        },
+        "9": {
+          "pearson": -0.10892382876161406,
+          "spearman": -0.34255656065019024
+        },
+        "10": {
+          "pearson": -0.11045998766128827,
+          "spearman": -0.3456647092258117
+        },
+        "11": {
+          "pearson": -0.11258642798498034,
+          "spearman": -0.34659549226509473
+        },
+        "12": {
+          "pearson": -0.11465473321495108,
+          "spearman": -0.34906740494742
+        },
+        "13": {
+          "pearson": -0.11641334071812753,
+          "spearman": -0.3508535212426551
+        },
+        "14": {
+          "pearson": -0.11752170845103878,
+          "spearman": -0.35300958430717033
+        },
+        "15": {
+          "pearson": -0.11750287143692206,
+          "spearman": -0.35536401187760136
+        },
+        "16": {
+          "pearson": -0.11683446846912848,
+          "spearman": -0.35552505031336373
+        },
+        "17": {
+          "pearson": -0.11630546693189885,
+          "spearman": -0.35819175658120767
+        },
+        "18": {
+          "pearson": -0.11606233812418863,
+          "spearman": -0.3605360172201233
+        },
+        "19": {
+          "pearson": -0.11576910487214247,
+          "spearman": -0.361122337626487
+        },
+        "20": {
+          "pearson": -0.1157606929118008,
+          "spearman": -0.368091115846857
+        },
+        "-20": {
+          "pearson": -0.3615325108471626,
+          "spearman": -0.22514312128090833
+        },
+        "-19": {
+          "pearson": -0.3659092820011035,
+          "spearman": -0.23104161454783861
+        },
+        "-18": {
+          "pearson": -0.3706201990669507,
+          "spearman": -0.23795499837354428
+        },
+        "-17": {
+          "pearson": -0.3744618485433803,
+          "spearman": -0.24160843174996982
+        },
+        "-16": {
+          "pearson": -0.37876914666764944,
+          "spearman": -0.24853875597529076
+        },
+        "-15": {
+          "pearson": -0.38202801917256546,
+          "spearman": -0.2527550839016006
+        },
+        "-14": {
+          "pearson": -0.38526520388394647,
+          "spearman": -0.257024968122437
+        },
+        "-13": {
+          "pearson": -0.3878528018585681,
+          "spearman": -0.2608922866830655
+        },
+        "-12": {
+          "pearson": -0.38964647435658684,
+          "spearman": -0.26792098947574067
+        },
+        "-11": {
+          "pearson": -0.3901018056928078,
+          "spearman": -0.2727768689694524
+        },
+        "-10": {
+          "pearson": -0.3883963085402782,
+          "spearman": -0.27597396686111875
+        },
+        "-9": {
+          "pearson": -0.38546681278612005,
+          "spearman": -0.28089432583922247
+        },
+        "-8": {
+          "pearson": -0.37815297929960034,
+          "spearman": -0.28480320029566986
+        },
+        "-7": {
+          "pearson": -0.3646900169738867,
+          "spearman": -0.2891943714421172
+        },
+        "-6": {
+          "pearson": -0.34038943735296434,
+          "spearman": -0.2917670849132363
+        },
+        "-5": {
+          "pearson": -0.3038831498558573,
+          "spearman": -0.29699660837182057
+        },
+        "-4": {
+          "pearson": -0.256337353341018,
+          "spearman": -0.30318007753264453
+        },
+        "-3": {
+          "pearson": -0.20539825502737058,
+          "spearman": -0.30742979055835207
+        },
+        "-2": {
+          "pearson": -0.15864983184341652,
+          "spearman": -0.3112750433596096
+        },
+        "-1": {
+          "pearson": -0.11920446793674272,
+          "spearman": -0.3168950913875945
+        }
+      },
+      "deltaNut_vs_cl": {
+        "0": {
+          "pearson": -0.18225549886148953,
+          "spearman": -0.012001488005952023
+        },
+        "1": {
+          "pearson": -0.18804095833326273,
+          "spearman": -0.007170099234613806
+        },
+        "2": {
+          "pearson": -0.1908536418252714,
+          "spearman": -0.00323145138790344
+        },
+        "3": {
+          "pearson": -0.1893403720592631,
+          "spearman": -0.000464211620285256
+        },
+        "4": {
+          "pearson": -0.18166844656695497,
+          "spearman": 0.003804252691122296
+        },
+        "5": {
+          "pearson": -0.16690422671542354,
+          "spearman": 0.010665423993098017
+        },
+        "6": {
+          "pearson": -0.15247680342765305,
+          "spearman": 0.02149334953861483
+        },
+        "7": {
+          "pearson": -0.13242473142443212,
+          "spearman": 0.03461174924303135
+        },
+        "8": {
+          "pearson": -0.10701136757664546,
+          "spearman": 0.03725023006004383
+        },
+        "9": {
+          "pearson": -0.07775801764639496,
+          "spearman": 0.04286363097223391
+        },
+        "10": {
+          "pearson": -0.04947469378506508,
+          "spearman": 0.04269417436735918
+        },
+        "11": {
+          "pearson": -0.03204388646961012,
+          "spearman": 0.04758182866830731
+        },
+        "12": {
+          "pearson": -0.023823868063694555,
+          "spearman": 0.0515819018508166
+        },
+        "13": {
+          "pearson": -0.022280482536922393,
+          "spearman": 0.05019247656224351
+        },
+        "14": {
+          "pearson": -0.026322635982125975,
+          "spearman": 0.05346518714004619
+        },
+        "15": {
+          "pearson": -0.03473447300648113,
+          "spearman": 0.04784437102462719
+        },
+        "16": {
+          "pearson": -0.047566248160373685,
+          "spearman": 0.0432595968474702
+        },
+        "17": {
+          "pearson": -0.06370817466999851,
+          "spearman": 0.03859053219425843
+        },
+        "18": {
+          "pearson": -0.08347987541804543,
+          "spearman": 0.03883363273585175
+        },
+        "19": {
+          "pearson": -0.10492785057500004,
+          "spearman": 0.043486835862354536
+        },
+        "20": {
+          "pearson": -0.12686450667708415,
+          "spearman": 0.04986349767143087
+        },
+        "-20": {
+          "pearson": -0.17866268775827557,
+          "spearman": 0.07355457271949965
+        },
+        "-19": {
+          "pearson": -0.17673296136257347,
+          "spearman": 0.07225944824492542
+        },
+        "-18": {
+          "pearson": -0.17423929201101712,
+          "spearman": 0.07447602594634888
+        },
+        "-17": {
+          "pearson": -0.172486664754421,
+          "spearman": 0.07438985661313577
+        },
+        "-16": {
+          "pearson": -0.17085657107826496,
+          "spearman": 0.06949155322897224
+        },
+        "-15": {
+          "pearson": -0.1696202177405818,
+          "spearman": 0.061832634372465674
+        },
+        "-14": {
+          "pearson": -0.17124633368153377,
+          "spearman": 0.05138101260231986
+        },
+        "-13": {
+          "pearson": -0.1763496639932777,
+          "spearman": 0.04216759819255303
+        },
+        "-12": {
+          "pearson": -0.18217514456667236,
+          "spearman": 0.03191363255153967
+        },
+        "-11": {
+          "pearson": -0.18884777438489037,
+          "spearman": 0.0271157844612249
+        },
+        "-10": {
+          "pearson": -0.19642753223512205,
+          "spearman": 0.019315348745173228
+        },
+        "-9": {
+          "pearson": -0.20447292587165053,
+          "spearman": 0.00938191579845887
+        },
+        "-8": {
+          "pearson": -0.2113791637863783,
+          "spearman": 0.005370099680762406
+        },
+        "-7": {
+          "pearson": -0.2173822672627827,
+          "spearman": 0.003477539107292757
+        },
+        "-6": {
+          "pearson": -0.2186751538826064,
+          "spearman": 0.0038399449737124554
+        },
+        "-5": {
+          "pearson": -0.21593253214591956,
+          "spearman": 0.004336693301039651
+        },
+        "-4": {
+          "pearson": -0.21076556132384702,
+          "spearman": 0.004698277642393953
+        },
+        "-3": {
+          "pearson": -0.20363991596345674,
+          "spearman": 0.0006187533283650602
+        },
+        "-2": {
+          "pearson": -0.19565751585956223,
+          "spearman": -0.011963273471866766
+        },
+        "-1": {
+          "pearson": -0.18731799033576482,
+          "spearman": -0.015758939565878746
+        }
+      },
+      "deltaNut_vs_cd": {
+        "0": {
+          "pearson": 0.2817269942731786,
+          "spearman": 0.057202116808467235
+        },
+        "1": {
+          "pearson": 0.3676295609282499,
+          "spearman": 0.053592099862375356
+        },
+        "2": {
+          "pearson": 0.44948866290554085,
+          "spearman": 0.04517692144124374
+        },
+        "3": {
+          "pearson": 0.5270465091280468,
+          "spearman": 0.04057741317708036
+        },
+        "4": {
+          "pearson": 0.599690478589721,
+          "spearman": 0.0372951295259337
+        },
+        "5": {
+          "pearson": 0.6657390183637109,
+          "spearman": 0.034583229447406015
+        },
+        "6": {
+          "pearson": 0.7234348386024221,
+          "spearman": 0.03134930618650059
+        },
+        "7": {
+          "pearson": 0.7735104958110864,
+          "spearman": 0.024346278931004238
+        },
+        "8": {
+          "pearson": 0.8135929248019345,
+          "spearman": 0.014042705874896708
+        },
+        "9": {
+          "pearson": 0.8399468218719662,
+          "spearman": 0.007186905361717485
+        },
+        "10": {
+          "pearson": 0.8472087366154711,
+          "spearman": 0.0006876245181515686
+        },
+        "11": {
+          "pearson": 0.8309386183040351,
+          "spearman": -0.007923428850570702
+        },
+        "12": {
+          "pearson": 0.8015551998092342,
+          "spearman": -0.02302229484240871
+        },
+        "13": {
+          "pearson": 0.7537384008554855,
+          "spearman": -0.033758203058929036
+        },
+        "14": {
+          "pearson": 0.6811214871071154,
+          "spearman": -0.043016193723589446
+        },
+        "15": {
+          "pearson": 0.5787118372180007,
+          "spearman": -0.048918214741394996
+        },
+        "16": {
+          "pearson": 0.447157294426458,
+          "spearman": -0.06269053060952332
+        },
+        "17": {
+          "pearson": 0.2977864043509123,
+          "spearman": -0.07739938542096875
+        },
+        "18": {
+          "pearson": 0.15087201577484652,
+          "spearman": -0.08034101828076211
+        },
+        "19": {
+          "pearson": 0.02979788207635602,
+          "spearman": -0.08548580498787968
+        },
+        "20": {
+          "pearson": -0.04531995856780171,
+          "spearman": -0.08754161259380466
+        },
+        "-20": {
+          "pearson": 0.33880534405363655,
+          "spearman": 0.18145705927543088
+        },
+        "-19": {
+          "pearson": 0.3287406205553563,
+          "spearman": 0.1703830626029796
+        },
+        "-18": {
+          "pearson": 0.3167752091890624,
+          "spearman": 0.1707424862755911
+        },
+        "-17": {
+          "pearson": 0.30301373927817155,
+          "spearman": 0.16411010962697775
+        },
+        "-16": {
+          "pearson": 0.28895360729684894,
+          "spearman": 0.15364989519261962
+        },
+        "-15": {
+          "pearson": 0.2757121002404539,
+          "spearman": 0.14494902161256426
+        },
+        "-14": {
+          "pearson": 0.2633355008960281,
+          "spearman": 0.13293509573984041
+        },
+        "-13": {
+          "pearson": 0.25167296166177655,
+          "spearman": 0.12678632504206724
+        },
+        "-12": {
+          "pearson": 0.24318845607997117,
+          "spearman": 0.117765926974721
+        },
+        "-11": {
+          "pearson": 0.23861548895325957,
+          "spearman": 0.10689080821909373
+        },
+        "-10": {
+          "pearson": 0.23814881496526932,
+          "spearman": 0.10030479774031988
+        },
+        "-9": {
+          "pearson": 0.24395548451750987,
+          "spearman": 0.09686532801983741
+        },
+        "-8": {
+          "pearson": 0.2552511513257607,
+          "spearman": 0.09132333318185762
+        },
+        "-7": {
+          "pearson": 0.2705590066342925,
+          "spearman": 0.08647108697232771
+        },
+        "-6": {
+          "pearson": 0.2866121233863468,
+          "spearman": 0.08246154045235929
+        },
+        "-5": {
+          "pearson": 0.2993294666793726,
+          "spearman": 0.08154412084802577
+        },
+        "-4": {
+          "pearson": 0.30444827090912474,
+          "spearman": 0.08372158660663885
+        },
+        "-3": {
+          "pearson": 0.3022621996542969,
+          "spearman": 0.0791816581572607
+        },
+        "-2": {
+          "pearson": 0.29528271142181906,
+          "spearman": 0.07281893062992
+        },
+        "-1": {
+          "pearson": 0.285573889313884,
+          "spearman": 0.06528227539416182
+        }
+      },
+      "rawPressureCorrection_vs_momLinf": {
+        "0": {
+          "pearson": 0.29559975860946613,
+          "spearman": 0.6669469237876952
+        },
+        "1": {
+          "pearson": 0.3306747412578391,
+          "spearman": 0.6634691068884757
+        },
+        "2": {
+          "pearson": 0.3680261690414429,
+          "spearman": 0.6599884698246703
+        },
+        "3": {
+          "pearson": 0.38606007166701545,
+          "spearman": 0.6562560360218052
+        },
+        "4": {
+          "pearson": 0.4016829043193179,
+          "spearman": 0.6527247551781854
+        },
+        "5": {
+          "pearson": 0.4474334852070201,
+          "spearman": 0.6491627783648157
+        },
+        "6": {
+          "pearson": 0.4953128019777851,
+          "spearman": 0.6456489242226404
+        },
+        "7": {
+          "pearson": 0.5333924991790147,
+          "spearman": 0.6422799613268488
+        },
+        "8": {
+          "pearson": 0.560095015692306,
+          "spearman": 0.639022314589943
+        },
+        "9": {
+          "pearson": 0.5742410040152827,
+          "spearman": 0.6357414040078303
+        },
+        "10": {
+          "pearson": 0.5754554750699061,
+          "spearman": 0.630517003572761
+        },
+        "11": {
+          "pearson": 0.5738647529102134,
+          "spearman": 0.6265512400273395
+        },
+        "12": {
+          "pearson": 0.5735294240407287,
+          "spearman": 0.6220833494243677
+        },
+        "13": {
+          "pearson": 0.5742767552913081,
+          "spearman": 0.6177189605309802
+        },
+        "14": {
+          "pearson": 0.5742381872702345,
+          "spearman": 0.6108944299267267
+        },
+        "15": {
+          "pearson": 0.5735225681658322,
+          "spearman": 0.6030421890465627
+        },
+        "16": {
+          "pearson": 0.573799657034003,
+          "spearman": 0.596294459788205
+        },
+        "17": {
+          "pearson": 0.5743279653946984,
+          "spearman": 0.5897407006422473
+        },
+        "18": {
+          "pearson": 0.5743886855141089,
+          "spearman": 0.5840237308756161
+        },
+        "19": {
+          "pearson": 0.5755022840253446,
+          "spearman": 0.577575353042158
+        },
+        "20": {
+          "pearson": 0.5774238318136035,
+          "spearman": 0.5703258260669534
+        },
+        "-20": {
+          "pearson": 0.2751650154555578,
+          "spearman": 0.7157643913385041
+        },
+        "-19": {
+          "pearson": 0.27528954613788514,
+          "spearman": 0.714630761466861
+        },
+        "-18": {
+          "pearson": 0.27842841562165055,
+          "spearman": 0.7134898199303756
+        },
+        "-17": {
+          "pearson": 0.2801796800200366,
+          "spearman": 0.7116297590523888
+        },
+        "-16": {
+          "pearson": 0.2814391140106728,
+          "spearman": 0.7095557553566599
+        },
+        "-15": {
+          "pearson": 0.28248901895326894,
+          "spearman": 0.707387842814272
+        },
+        "-14": {
+          "pearson": 0.28352052627927843,
+          "spearman": 0.7050377133980371
+        },
+        "-13": {
+          "pearson": 0.2845301357962386,
+          "spearman": 0.7027528532785431
+        },
+        "-12": {
+          "pearson": 0.28505633696383303,
+          "spearman": 0.7004205284288824
+        },
+        "-11": {
+          "pearson": 0.28524526395775734,
+          "spearman": 0.6978155075768616
+        },
+        "-10": {
+          "pearson": 0.28660884782474444,
+          "spearman": 0.6957890584419641
+        },
+        "-9": {
+          "pearson": 0.2878519680716026,
+          "spearman": 0.6938453131985495
+        },
+        "-8": {
+          "pearson": 0.289158159704356,
+          "spearman": 0.6916662392767535
+        },
+        "-7": {
+          "pearson": 0.29095431171058,
+          "spearman": 0.6892681003987693
+        },
+        "-6": {
+          "pearson": 0.29121651019275474,
+          "spearman": 0.685938061084853
+        },
+        "-5": {
+          "pearson": 0.29225885199991186,
+          "spearman": 0.6822302626631999
+        },
+        "-4": {
+          "pearson": 0.2926129360526243,
+          "spearman": 0.6784446660412131
+        },
+        "-3": {
+          "pearson": 0.29402957231997656,
+          "spearman": 0.6752458982421541
+        },
+        "-2": {
+          "pearson": 0.2949300153580358,
+          "spearman": 0.6729155384779887
+        },
+        "-1": {
+          "pearson": 0.29525390893482234,
+          "spearman": 0.6701987106743608
+        }
+      },
+      "rawPressureCorrection_vs_continuity": {
+        "0": {
+          "pearson": 0.6773181009310477,
+          "spearman": 0.9541081684326738
+        },
+        "1": {
+          "pearson": 0.678106720383408,
+          "spearman": 0.956068377719294
+        },
+        "2": {
+          "pearson": 0.6788995229902608,
+          "spearman": 0.9572263238751144
+        },
+        "3": {
+          "pearson": 0.6795759181766823,
+          "spearman": 0.957680791316105
+        },
+        "4": {
+          "pearson": 0.6805029495310327,
+          "spearman": 0.9579212321829315
+        },
+        "5": {
+          "pearson": 0.681670379484314,
+          "spearman": 0.9581135898623165
+        },
+        "6": {
+          "pearson": 0.6830706721945288,
+          "spearman": 0.9584622203176703
+        },
+        "7": {
+          "pearson": 0.6842765223389334,
+          "spearman": 0.958164976201831
+        },
+        "8": {
+          "pearson": 0.6853583011651392,
+          "spearman": 0.9576219978209664
+        },
+        "9": {
+          "pearson": 0.6862984474075795,
+          "spearman": 0.9570961224388419
+        },
+        "10": {
+          "pearson": 0.6869827272940054,
+          "spearman": 0.9562907851531651
+        },
+        "11": {
+          "pearson": 0.6875320243676977,
+          "spearman": 0.9551319049192643
+        },
+        "12": {
+          "pearson": 0.6881189618175703,
+          "spearman": 0.9540865479434005
+        },
+        "13": {
+          "pearson": 0.6887118423166988,
+          "spearman": 0.9526467761058934
+        },
+        "14": {
+          "pearson": 0.6890642828733607,
+          "spearman": 0.9507754499773806
+        },
+        "15": {
+          "pearson": 0.6893537254303415,
+          "spearman": 0.948775898104233
+        },
+        "16": {
+          "pearson": 0.6898493487626206,
+          "spearman": 0.9469450805093199
+        },
+        "17": {
+          "pearson": 0.6899051291807271,
+          "spearman": 0.9448566866194341
+        },
+        "18": {
+          "pearson": 0.6902801019889038,
+          "spearman": 0.9435678003240695
+        },
+        "19": {
+          "pearson": 0.6893550561940879,
+          "spearman": 0.9403697345606059
+        },
+        "20": {
+          "pearson": 0.6889379909762097,
+          "spearman": 0.9378646391694409
+        },
+        "-20": {
+          "pearson": 0.6620589284429353,
+          "spearman": 0.8695381707385883
+        },
+        "-19": {
+          "pearson": 0.6630071281380749,
+          "spearman": 0.8744294605809129
+        },
+        "-18": {
+          "pearson": 0.6642880453559922,
+          "spearman": 0.879480998008871
+        },
+        "-17": {
+          "pearson": 0.6650634369946388,
+          "spearman": 0.8844540728161348
+        },
+        "-16": {
+          "pearson": 0.6655205844748004,
+          "spearman": 0.8893538880336485
+        },
+        "-15": {
+          "pearson": 0.6665387939512993,
+          "spearman": 0.8942088804319357
+        },
+        "-14": {
+          "pearson": 0.6667566956096981,
+          "spearman": 0.8992762571415803
+        },
+        "-13": {
+          "pearson": 0.66772728531987,
+          "spearman": 0.9042799489832176
+        },
+        "-12": {
+          "pearson": 0.6688235079531265,
+          "spearman": 0.9091960726448766
+        },
+        "-11": {
+          "pearson": 0.6696014611406563,
+          "spearman": 0.9139059988875365
+        },
+        "-10": {
+          "pearson": 0.6704896940320938,
+          "spearman": 0.9187239345402675
+        },
+        "-9": {
+          "pearson": 0.6709117114731582,
+          "spearman": 0.9231985596384498
+        },
+        "-8": {
+          "pearson": 0.6717191441128175,
+          "spearman": 0.927462645030023
+        },
+        "-7": {
+          "pearson": 0.6719756808819164,
+          "spearman": 0.9314413840773895
+        },
+        "-6": {
+          "pearson": 0.6727131451750958,
+          "spearman": 0.9353093723116143
+        },
+        "-5": {
+          "pearson": 0.6734650155785369,
+          "spearman": 0.9392938131478029
+        },
+        "-4": {
+          "pearson": 0.6739456312358465,
+          "spearman": 0.9431810806186091
+        },
+        "-3": {
+          "pearson": 0.6746282132319698,
+          "spearman": 0.9466880959288573
+        },
+        "-2": {
+          "pearson": 0.6755811000040993,
+          "spearman": 0.9493724546375241
+        },
+        "-1": {
+          "pearson": 0.6764539350678426,
+          "spearman": 0.9521643769466644
+        }
+      },
+      "rawPressureCorrection_vs_cl": {
+        "0": {
+          "pearson": -0.13543539234487853,
+          "spearman": 0.03201718406873628
+        },
+        "1": {
+          "pearson": -0.13165803296865794,
+          "spearman": 0.03774662578168385
+        },
+        "2": {
+          "pearson": -0.12770185806547774,
+          "spearman": 0.04394967239271153
+        },
+        "3": {
+          "pearson": -0.12358107577481603,
+          "spearman": 0.05059838236570609
+        },
+        "4": {
+          "pearson": -0.11939149724367278,
+          "spearman": 0.05754753349028678
+        },
+        "5": {
+          "pearson": -0.1152002072563793,
+          "spearman": 0.06375390314269772
+        },
+        "6": {
+          "pearson": -0.1113302260047663,
+          "spearman": 0.06962731585342881
+        },
+        "7": {
+          "pearson": -0.10741549593743395,
+          "spearman": 0.07552811544901054
+        },
+        "8": {
+          "pearson": -0.10355379363417508,
+          "spearman": 0.08193553321081601
+        },
+        "9": {
+          "pearson": -0.10022000174545312,
+          "spearman": 0.0877827779067516
+        },
+        "10": {
+          "pearson": -0.0970942215718187,
+          "spearman": 0.09389805276751911
+        },
+        "11": {
+          "pearson": -0.0947185727310487,
+          "spearman": 0.10075984129948871
+        },
+        "12": {
+          "pearson": -0.09272541022529981,
+          "spearman": 0.10809302965300571
+        },
+        "13": {
+          "pearson": -0.09094922831768772,
+          "spearman": 0.11596260930312388
+        },
+        "14": {
+          "pearson": -0.08898209782603211,
+          "spearman": 0.1228446677376587
+        },
+        "15": {
+          "pearson": -0.0869844235132538,
+          "spearman": 0.12818079787776757
+        },
+        "16": {
+          "pearson": -0.08543568629972831,
+          "spearman": 0.13393753469545003
+        },
+        "17": {
+          "pearson": -0.08386602266719223,
+          "spearman": 0.14149300914754476
+        },
+        "18": {
+          "pearson": -0.08260734250245994,
+          "spearman": 0.14754677915421197
+        },
+        "19": {
+          "pearson": -0.08177746362193908,
+          "spearman": 0.152455228129502
+        },
+        "20": {
+          "pearson": -0.08160376361892112,
+          "spearman": 0.1566918693223495
+        },
+        "-20": {
+          "pearson": -0.1984868260827772,
+          "spearman": -0.12009958810585115
+        },
+        "-19": {
+          "pearson": -0.18890612905254664,
+          "spearman": -0.10922913018348702
+        },
+        "-18": {
+          "pearson": -0.17881207052432507,
+          "spearman": -0.09940744073884972
+        },
+        "-17": {
+          "pearson": -0.1690233202802485,
+          "spearman": -0.08860500528123902
+        },
+        "-16": {
+          "pearson": -0.16241563821085578,
+          "spearman": -0.07728270262804308
+        },
+        "-15": {
+          "pearson": -0.1597283554055139,
+          "spearman": -0.06619206750415747
+        },
+        "-14": {
+          "pearson": -0.15613455169783785,
+          "spearman": -0.054586461960312666
+        },
+        "-13": {
+          "pearson": -0.1505491409929101,
+          "spearman": -0.04270213987059624
+        },
+        "-12": {
+          "pearson": -0.1461090356547467,
+          "spearman": -0.0307968975521871
+        },
+        "-11": {
+          "pearson": -0.14249915382987477,
+          "spearman": -0.019032156762936493
+        },
+        "-10": {
+          "pearson": -0.14034144485094457,
+          "spearman": -0.007966968727440748
+        },
+        "-9": {
+          "pearson": -0.13918760604758892,
+          "spearman": 0.0007623535231985597
+        },
+        "-8": {
+          "pearson": -0.1394568056149416,
+          "spearman": 0.0002933120716507686
+        },
+        "-7": {
+          "pearson": -0.1402598748956575,
+          "spearman": -0.0008852081606197639
+        },
+        "-6": {
+          "pearson": -0.14288620553219356,
+          "spearman": -0.0032236863879865907
+        },
+        "-5": {
+          "pearson": -0.14541852841591965,
+          "spearman": -0.004819911271524175
+        },
+        "-4": {
+          "pearson": -0.1459811389234244,
+          "spearman": -0.00409298410207088
+        },
+        "-3": {
+          "pearson": -0.1443293947832275,
+          "spearman": -0.0013625280638357936
+        },
+        "-2": {
+          "pearson": -0.14131420227366978,
+          "spearman": 0.010995640404466541
+        },
+        "-1": {
+          "pearson": -0.13853035607076739,
+          "spearman": 0.02183470555568969
+        }
+      },
+      "rawPressureCorrection_vs_cd": {
+        "0": {
+          "pearson": 0.2953877605155869,
+          "spearman": 0.42830513722054886
+        },
+        "1": {
+          "pearson": 0.295844995368262,
+          "spearman": 0.43485109978994135
+        },
+        "2": {
+          "pearson": 0.29492245348130963,
+          "spearman": 0.442397048345072
+        },
+        "3": {
+          "pearson": 0.29296366933763124,
+          "spearman": 0.449071127112461
+        },
+        "4": {
+          "pearson": 0.29006570932196357,
+          "spearman": 0.454162511727255
+        },
+        "5": {
+          "pearson": 0.2872934509474366,
+          "spearman": 0.45920637087869687
+        },
+        "6": {
+          "pearson": 0.28524174270897734,
+          "spearman": 0.4646926682797292
+        },
+        "7": {
+          "pearson": 0.28455870429416075,
+          "spearman": 0.4706529309012859
+        },
+        "8": {
+          "pearson": 0.28642874100391164,
+          "spearman": 0.4763235896158055
+        },
+        "9": {
+          "pearson": 0.2918503169544396,
+          "spearman": 0.48120676913157595
+        },
+        "10": {
+          "pearson": 0.30269793546824253,
+          "spearman": 0.4859337870067373
+        },
+        "11": {
+          "pearson": 0.32097549443061035,
+          "spearman": 0.49001830843973915
+        },
+        "12": {
+          "pearson": 0.3431791152059733,
+          "spearman": 0.49520728109154416
+        },
+        "13": {
+          "pearson": 0.3693996632725714,
+          "spearman": 0.5010472653284112
+        },
+        "14": {
+          "pearson": 0.3982104095245831,
+          "spearman": 0.5055867993567775
+        },
+        "15": {
+          "pearson": 0.42643365703134467,
+          "spearman": 0.50823364331643
+        },
+        "16": {
+          "pearson": 0.4506512854673353,
+          "spearman": 0.5104062800815174
+        },
+        "17": {
+          "pearson": 0.4672812484124925,
+          "spearman": 0.5128040493120118
+        },
+        "18": {
+          "pearson": 0.47449063787931534,
+          "spearman": 0.5152130003293633
+        },
+        "19": {
+          "pearson": 0.4747669287509907,
+          "spearman": 0.5176434813364273
+        },
+        "20": {
+          "pearson": 0.4722857252743023,
+          "spearman": 0.5198724820854257
+        },
+        "-20": {
+          "pearson": 0.2817337359754278,
+          "spearman": 0.3359129162886992
+        },
+        "-19": {
+          "pearson": 0.28246211160535356,
+          "spearman": 0.3432297642359883
+        },
+        "-18": {
+          "pearson": 0.28330173033080897,
+          "spearman": 0.35204779909813283
+        },
+        "-17": {
+          "pearson": 0.28431052187008443,
+          "spearman": 0.361246866560694
+        },
+        "-16": {
+          "pearson": 0.28518321209800546,
+          "spearman": 0.3704984555398149
+        },
+        "-15": {
+          "pearson": 0.2856864247552345,
+          "spearman": 0.3795021968092883
+        },
+        "-14": {
+          "pearson": 0.2866315070958845,
+          "spearman": 0.3886120983420531
+        },
+        "-13": {
+          "pearson": 0.2883595157977625,
+          "spearman": 0.3978722020457414
+        },
+        "-12": {
+          "pearson": 0.2906711640609564,
+          "spearman": 0.4070925011786898
+        },
+        "-11": {
+          "pearson": 0.29245370956682987,
+          "spearman": 0.4160579589373716
+        },
+        "-10": {
+          "pearson": 0.2935643291689095,
+          "spearman": 0.42386704260002955
+        },
+        "-9": {
+          "pearson": 0.29418364858353735,
+          "spearman": 0.4251755085820529
+        },
+        "-8": {
+          "pearson": 0.29449963216299435,
+          "spearman": 0.4227488449640655
+        },
+        "-7": {
+          "pearson": 0.2947863455553819,
+          "spearman": 0.42015670758246537
+        },
+        "-6": {
+          "pearson": 0.2951263520910231,
+          "spearman": 0.41726604060328837
+        },
+        "-5": {
+          "pearson": 0.29555841189169857,
+          "spearman": 0.4182225810409172
+        },
+        "-4": {
+          "pearson": 0.29593303477741234,
+          "spearman": 0.4171949586079527
+        },
+        "-3": {
+          "pearson": 0.29579367499048315,
+          "spearman": 0.4149351022575406
+        },
+        "-2": {
+          "pearson": 0.29596757977793714,
+          "spearman": 0.4138851507285984
+        },
+        "-1": {
+          "pearson": 0.29542360457216993,
+          "spearman": 0.42039326846464015
+        }
+      },
+      "velCapActive_vs_momLinf": {
+        "0": {
+          "pearson": 0.07976525195086713,
+          "spearman": 0.6082405769623078
+        },
+        "1": {
+          "pearson": 0.12751994780291517,
+          "spearman": 0.6175343458000339
+        },
+        "2": {
+          "pearson": 0.18175603471136625,
+          "spearman": 0.6325231005513001
+        },
+        "3": {
+          "pearson": 0.22186636299317636,
+          "spearman": 0.6493668579686436
+        },
+        "4": {
+          "pearson": 0.26156171037861076,
+          "spearman": 0.6670732115075595
+        },
+        "5": {
+          "pearson": 0.3374444785404235,
+          "spearman": 0.6837709404347775
+        },
+        "6": {
+          "pearson": 0.4208280766408519,
+          "spearman": 0.7018398419487348
+        },
+        "7": {
+          "pearson": 0.4962907840513824,
+          "spearman": 0.7203628522230152
+        },
+        "8": {
+          "pearson": 0.5591016901043411,
+          "spearman": 0.740284705160912
+        },
+        "9": {
+          "pearson": 0.6042874428713015,
+          "spearman": 0.7605839911842737
+        },
+        "10": {
+          "pearson": 0.6290116293187069,
+          "spearman": 0.7811912790055735
+        },
+        "11": {
+          "pearson": 0.6402055418152125,
+          "spearman": 0.8010135322357848
+        },
+        "12": {
+          "pearson": 0.6419202218646538,
+          "spearman": 0.808653266122029
+        },
+        "13": {
+          "pearson": 0.6417375474806969,
+          "spearman": 0.8133483316689295
+        },
+        "14": {
+          "pearson": 0.6437076683427891,
+          "spearman": 0.8182409962055311
+        },
+        "15": {
+          "pearson": 0.6482958766326746,
+          "spearman": 0.8315969230995786
+        },
+        "16": {
+          "pearson": 0.6509150602247664,
+          "spearman": 0.8365928843171009
+        },
+        "17": {
+          "pearson": 0.6504624034291295,
+          "spearman": 0.8415531379548239
+        },
+        "18": {
+          "pearson": 0.6516474110098082,
+          "spearman": 0.8452143543249443
+        },
+        "19": {
+          "pearson": 0.6504284842783679,
+          "spearman": 0.8494220201689081
+        },
+        "20": {
+          "pearson": 0.6422536612956056,
+          "spearman": 0.8490032508821653
+        },
+        "-20": {
+          "pearson": 0.17564025574464037,
+          "spearman": 0.6196833536603892
+        },
+        "-19": {
+          "pearson": 0.152248937959754,
+          "spearman": 0.6173480214973991
+        },
+        "-18": {
+          "pearson": 0.13480546229210041,
+          "spearman": 0.6183788906141423
+        },
+        "-17": {
+          "pearson": 0.1091790431186183,
+          "spearman": 0.6175382929766018
+        },
+        "-16": {
+          "pearson": 0.08775131848095066,
+          "spearman": 0.6151117372094512
+        },
+        "-15": {
+          "pearson": 0.07117596587800587,
+          "spearman": 0.6107929235077001
+        },
+        "-14": {
+          "pearson": 0.05928486955260137,
+          "spearman": 0.6064517730824526
+        },
+        "-13": {
+          "pearson": 0.05195381191539752,
+          "spearman": 0.6020193311881017
+        },
+        "-12": {
+          "pearson": 0.04873345100789774,
+          "spearman": 0.6004712487461901
+        },
+        "-11": {
+          "pearson": 0.04793551518769265,
+          "spearman": 0.5987078387625794
+        },
+        "-10": {
+          "pearson": 0.052207008499751954,
+          "spearman": 0.6014722498397982
+        },
+        "-9": {
+          "pearson": 0.05477009683524253,
+          "spearman": 0.6029224903413255
+        },
+        "-8": {
+          "pearson": 0.05789342380154353,
+          "spearman": 0.6048545314196072
+        },
+        "-7": {
+          "pearson": 0.0623660482784336,
+          "spearman": 0.6070742343034536
+        },
+        "-6": {
+          "pearson": 0.0650717660727106,
+          "spearman": 0.6088488003935852
+        },
+        "-5": {
+          "pearson": 0.06774888011554617,
+          "spearman": 0.6089518998262632
+        },
+        "-4": {
+          "pearson": 0.07025237411985046,
+          "spearman": 0.6102083665236777
+        },
+        "-3": {
+          "pearson": 0.07344608373697263,
+          "spearman": 0.6112884066935621
+        },
+        "-2": {
+          "pearson": 0.07564126218036615,
+          "spearman": 0.6046000998141832
+        },
+        "-1": {
+          "pearson": 0.07786597790426851,
+          "spearman": 0.6080915566071903
+        }
+      },
+      "velCapActive_vs_continuity": {
+        "0": {
+          "pearson": 0.697637342461794,
+          "spearman": 0.5396988947955792
+        },
+        "1": {
+          "pearson": 0.7009718531858656,
+          "spearman": 0.543179660525871
+        },
+        "2": {
+          "pearson": 0.7039987200277886,
+          "spearman": 0.5457440298161959
+        },
+        "3": {
+          "pearson": 0.7067764538675161,
+          "spearman": 0.5479098844915588
+        },
+        "4": {
+          "pearson": 0.7093982855257043,
+          "spearman": 0.5503449828983678
+        },
+        "5": {
+          "pearson": 0.7117983995054112,
+          "spearman": 0.5524975166316423
+        },
+        "6": {
+          "pearson": 0.7140991051970987,
+          "spearman": 0.554371382149753
+        },
+        "7": {
+          "pearson": 0.7164659182511213,
+          "spearman": 0.5563079118321055
+        },
+        "8": {
+          "pearson": 0.7189134328685061,
+          "spearman": 0.5586372747348679
+        },
+        "9": {
+          "pearson": 0.721412428076132,
+          "spearman": 0.5611901230612955
+        },
+        "10": {
+          "pearson": 0.7239695733544467,
+          "spearman": 0.5639916901625018
+        },
+        "11": {
+          "pearson": 0.7264970877253502,
+          "spearman": 0.5669498796199562
+        },
+        "12": {
+          "pearson": 0.7288709413363628,
+          "spearman": 0.5696037227391202
+        },
+        "13": {
+          "pearson": 0.7310372290252729,
+          "spearman": 0.5715462997248435
+        },
+        "14": {
+          "pearson": 0.7329814959499196,
+          "spearman": 0.5731723029647767
+        },
+        "15": {
+          "pearson": 0.734864653176899,
+          "spearman": 0.5748713838373319
+        },
+        "16": {
+          "pearson": 0.7364861204250204,
+          "spearman": 0.5766077124049497
+        },
+        "17": {
+          "pearson": 0.7377971823124992,
+          "spearman": 0.5783072814217747
+        },
+        "18": {
+          "pearson": 0.7389391223734668,
+          "spearman": 0.5803731401782999
+        },
+        "19": {
+          "pearson": 0.7396834540609126,
+          "spearman": 0.5819663822775856
+        },
+        "20": {
+          "pearson": 0.7425901648616845,
+          "spearman": 0.5924537432888164
+        },
+        "-20": {
+          "pearson": 0.5968742974466671,
+          "spearman": 0.44297490440496706
+        },
+        "-19": {
+          "pearson": 0.5997882212180856,
+          "spearman": 0.4468131313566998
+        },
+        "-18": {
+          "pearson": 0.6010063167209382,
+          "spearman": 0.44089905735224155
+        },
+        "-17": {
+          "pearson": 0.6057831216072536,
+          "spearman": 0.44666300029329564
+        },
+        "-16": {
+          "pearson": 0.6107440201594856,
+          "spearman": 0.4531183172395837
+        },
+        "-15": {
+          "pearson": 0.6158147001355216,
+          "spearman": 0.459266411906212
+        },
+        "-14": {
+          "pearson": 0.6207268689604748,
+          "spearman": 0.46544409450341695
+        },
+        "-13": {
+          "pearson": 0.6255875388495806,
+          "spearman": 0.47080945298256593
+        },
+        "-12": {
+          "pearson": 0.6307152060905495,
+          "spearman": 0.47631871276130205
+        },
+        "-11": {
+          "pearson": 0.6354103025619898,
+          "spearman": 0.4818056801318536
+        },
+        "-10": {
+          "pearson": 0.6429895616653443,
+          "spearman": 0.4878998127558097
+        },
+        "-9": {
+          "pearson": 0.6498297941442774,
+          "spearman": 0.49382138827415123
+        },
+        "-8": {
+          "pearson": 0.6567974792055555,
+          "spearman": 0.49979822829835774
+        },
+        "-7": {
+          "pearson": 0.6628377370700603,
+          "spearman": 0.5056034808239617
+        },
+        "-6": {
+          "pearson": 0.6690622745327466,
+          "spearman": 0.5112310912460374
+        },
+        "-5": {
+          "pearson": 0.6749043222629842,
+          "spearman": 0.5169743668894773
+        },
+        "-4": {
+          "pearson": 0.6801228129642851,
+          "spearman": 0.5226046405510285
+        },
+        "-3": {
+          "pearson": 0.6848870168138096,
+          "spearman": 0.5276489875905257
+        },
+        "-2": {
+          "pearson": 0.6894274742714793,
+          "spearman": 0.5320395706445253
+        },
+        "-1": {
+          "pearson": 0.6936968923235435,
+          "spearman": 0.536417219982133
+        }
+      },
+      "velCapActive_vs_cl": {
+        "0": {
+          "pearson": -0.08950975067939382,
+          "spearman": -0.07980262321049285
+        },
+        "1": {
+          "pearson": -0.08376025380361408,
+          "spearman": -0.0746027959533525
+        },
+        "2": {
+          "pearson": -0.07749691249347819,
+          "spearman": -0.07006255122545399
+        },
+        "3": {
+          "pearson": -0.07087986193178328,
+          "spearman": -0.06449628591604036
+        },
+        "4": {
+          "pearson": -0.06383052756737798,
+          "spearman": -0.05860460908166497
+        },
+        "5": {
+          "pearson": -0.057457592282677813,
+          "spearman": -0.05285270756408278
+        },
+        "6": {
+          "pearson": -0.052375182816624496,
+          "spearman": -0.048160792625402425
+        },
+        "7": {
+          "pearson": -0.04889153016277371,
+          "spearman": -0.05193975657226249
+        },
+        "8": {
+          "pearson": -0.046405763917959975,
+          "spearman": -0.05563216106913509
+        },
+        "9": {
+          "pearson": -0.04436482455167175,
+          "spearman": -0.059020659577725086
+        },
+        "10": {
+          "pearson": -0.04252546554583069,
+          "spearman": -0.06309820668362055
+        },
+        "11": {
+          "pearson": -0.040098687953979084,
+          "spearman": -0.06621158973495865
+        },
+        "12": {
+          "pearson": -0.036500932941664364,
+          "spearman": -0.06888267229987108
+        },
+        "13": {
+          "pearson": -0.031294720738688636,
+          "spearman": -0.07095794024520138
+        },
+        "14": {
+          "pearson": -0.024076151698389954,
+          "spearman": -0.07097185601246511
+        },
+        "15": {
+          "pearson": -0.015814116262721764,
+          "spearman": -0.06375227859139136
+        },
+        "16": {
+          "pearson": -0.0060873211988938525,
+          "spearman": -0.053673656118544265
+        },
+        "17": {
+          "pearson": 0.004784575217275405,
+          "spearman": -0.0438493001266688
+        },
+        "18": {
+          "pearson": 0.01648339224023,
+          "spearman": -0.03507877312676158
+        },
+        "19": {
+          "pearson": 0.02790445939563366,
+          "spearman": -0.025897701883179063
+        },
+        "20": {
+          "pearson": 0.037348109989728526,
+          "spearman": -0.01780085851067062
+        },
+        "-20": {
+          "pearson": -0.18772254310875547,
+          "spearman": -0.23261570145703758
+        },
+        "-19": {
+          "pearson": -0.18049296646870486,
+          "spearman": -0.2265541834525237
+        },
+        "-18": {
+          "pearson": -0.17163656638687386,
+          "spearman": -0.22004592868745854
+        },
+        "-17": {
+          "pearson": -0.16176587802907083,
+          "spearman": -0.21442874118648642
+        },
+        "-16": {
+          "pearson": -0.15429470799825887,
+          "spearman": -0.20971943585529013
+        },
+        "-15": {
+          "pearson": -0.14842452360371702,
+          "spearman": -0.20580258484038552
+        },
+        "-14": {
+          "pearson": -0.13796631711848803,
+          "spearman": -0.19172508381989248
+        },
+        "-13": {
+          "pearson": -0.12457908868419205,
+          "spearman": -0.17457300041932172
+        },
+        "-12": {
+          "pearson": -0.11259136437262458,
+          "spearman": -0.1539532005945181
+        },
+        "-11": {
+          "pearson": -0.10323539456239361,
+          "spearman": -0.13286436771228657
+        },
+        "-10": {
+          "pearson": -0.09630958591941338,
+          "spearman": -0.11411787535600748
+        },
+        "-9": {
+          "pearson": -0.09173099091670711,
+          "spearman": -0.09891820818536545
+        },
+        "-8": {
+          "pearson": -0.09072747746711016,
+          "spearman": -0.09602438712034551
+        },
+        "-7": {
+          "pearson": -0.09312559331676616,
+          "spearman": -0.10374060787031074
+        },
+        "-6": {
+          "pearson": -0.09951562446627862,
+          "spearman": -0.11510751801132926
+        },
+        "-5": {
+          "pearson": -0.10642330574117012,
+          "spearman": -0.12299608993157381
+        },
+        "-4": {
+          "pearson": -0.11029434268989843,
+          "spearman": -0.12755388636806175
+        },
+        "-3": {
+          "pearson": -0.10994963380609726,
+          "spearman": -0.12744950073546604
+        },
+        "-2": {
+          "pearson": -0.10540847394469831,
+          "spearman": -0.11201666866738738
+        },
+        "-1": {
+          "pearson": -0.09848898172406402,
+          "spearman": -0.09562054228939808
+        }
+      },
+      "velCapActive_vs_cd": {
+        "0": {
+          "pearson": -0.04481903076596926,
+          "spearman": -0.0004600338401353605
+        },
+        "1": {
+          "pearson": -0.04117157116650079,
+          "spearman": 0.007272472656155685
+        },
+        "2": {
+          "pearson": -0.03688837101556841,
+          "spearman": 0.015070989473553297
+        },
+        "3": {
+          "pearson": -0.030261687485533442,
+          "spearman": 0.02438973131443148
+        },
+        "4": {
+          "pearson": -0.02123381334172496,
+          "spearman": 0.04155834321668034
+        },
+        "5": {
+          "pearson": -0.010211611995753149,
+          "spearman": 0.05897079717113673
+        },
+        "6": {
+          "pearson": 0.0012536892821631267,
+          "spearman": 0.07068872197515307
+        },
+        "7": {
+          "pearson": 0.013441958720168335,
+          "spearman": 0.07267670162966833
+        },
+        "8": {
+          "pearson": 0.027021307362480783,
+          "spearman": 0.06848912442971156
+        },
+        "9": {
+          "pearson": 0.043249324157475594,
+          "spearman": 0.06282969002016385
+        },
+        "10": {
+          "pearson": 0.06472011866118653,
+          "spearman": 0.058447574049174104
+        },
+        "11": {
+          "pearson": 0.09379585252164091,
+          "spearman": 0.05537020198806667
+        },
+        "12": {
+          "pearson": 0.1287624137755234,
+          "spearman": 0.05248964270882015
+        },
+        "13": {
+          "pearson": 0.1703765823829749,
+          "spearman": 0.05027143704335388
+        },
+        "14": {
+          "pearson": 0.21905134921821193,
+          "spearman": 0.05722176094820167
+        },
+        "15": {
+          "pearson": 0.27325558513112036,
+          "spearman": 0.07138867588727008
+        },
+        "16": {
+          "pearson": 0.32847061466500266,
+          "spearman": 0.08739109796116439
+        },
+        "17": {
+          "pearson": 0.3753893559189099,
+          "spearman": 0.0999334174100054
+        },
+        "18": {
+          "pearson": 0.4086307689323915,
+          "spearman": 0.10819399868651176
+        },
+        "19": {
+          "pearson": 0.42758225313311976,
+          "spearman": 0.11574358830582897
+        },
+        "20": {
+          "pearson": 0.4354840028212949,
+          "spearman": 0.12159764148281893
+        },
+        "-20": {
+          "pearson": 0.2577367771690544,
+          "spearman": 0.02589572871410032
+        },
+        "-19": {
+          "pearson": 0.2505981473419869,
+          "spearman": 0.029172884982013612
+        },
+        "-18": {
+          "pearson": 0.2395055685531934,
+          "spearman": 0.03209055256682895
+        },
+        "-17": {
+          "pearson": 0.22391264245589357,
+          "spearman": 0.03179936361016511
+        },
+        "-16": {
+          "pearson": 0.20356384993028404,
+          "spearman": 0.02406193293280209
+        },
+        "-15": {
+          "pearson": 0.17947241999094932,
+          "spearman": 0.01574087222322149
+        },
+        "-14": {
+          "pearson": 0.15399778107611042,
+          "spearman": 0.015614582949482786
+        },
+        "-13": {
+          "pearson": 0.12727610899541744,
+          "spearman": 0.01724330674858609
+        },
+        "-12": {
+          "pearson": 0.09905605982143821,
+          "spearman": 0.021119147105647985
+        },
+        "-11": {
+          "pearson": 0.07044527339231137,
+          "spearman": 0.02598546408405462
+        },
+        "-10": {
+          "pearson": 0.04467606927666184,
+          "spearman": 0.029119671808848238
+        },
+        "-9": {
+          "pearson": 0.021824374706207496,
+          "spearman": 0.024946802525093292
+        },
+        "-8": {
+          "pearson": 0.0019776242170955177,
+          "spearman": 0.017966195657792373
+        },
+        "-7": {
+          "pearson": -0.014836823346649992,
+          "spearman": 0.010394561082367523
+        },
+        "-6": {
+          "pearson": -0.028493675274506018,
+          "spearman": 0.002222602137195924
+        },
+        "-5": {
+          "pearson": -0.03888528520188112,
+          "spearman": -0.004272580843039247
+        },
+        "-4": {
+          "pearson": -0.04610409551287762,
+          "spearman": -0.010729577858155778
+        },
+        "-3": {
+          "pearson": -0.050573078191509566,
+          "spearman": -0.017176611945282264
+        },
+        "-2": {
+          "pearson": -0.05150098969630967,
+          "spearman": -0.021507172790224214
+        },
+        "-1": {
+          "pearson": -0.04932991529759308,
+          "spearman": -0.015821136248400414
+        }
+      }
+    }
+  }
+}

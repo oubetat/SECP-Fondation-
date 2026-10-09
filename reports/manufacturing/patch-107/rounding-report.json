@@ -1,0 +1,6 @@
+{
+  "deterministicFixedPoint": true,
+  "linearDecimals": 4,
+  "rotaryDecimals": 3,
+  "feedDecimals": 1
+}

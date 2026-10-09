@@ -1,0 +1,9 @@
+{
+  "loadsApplied": [
+    {
+      "nodeId": "N2",
+      "dof": "UX",
+      "magnitude": 10000
+    }
+  ]
+}

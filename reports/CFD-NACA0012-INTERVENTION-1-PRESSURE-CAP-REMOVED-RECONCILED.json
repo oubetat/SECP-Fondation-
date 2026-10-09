@@ -1,0 +1,155 @@
+{
+  "timestamp": "2026-09-22T12:57:45.858Z",
+  "auditType": "READ-ONLY ARTIFACT INTEGRITY REPAIR & FORENSIC RECONCILIATION",
+  "baselineTag": "NACA0012-BASELINE-1",
+  "provenanceCategories": {
+    "RAW_JSON": "Data verified strictly from JSON arrays in frozen report files",
+    "EXECUTION_LOG": "Data preserved from solver console stdout recorded during execution",
+    "SOURCE_STATIC_AUDIT": "Derived strictly from AST and line-by-line inspection of frozen solver source code",
+    "INFERENCE": "Analytical deductions (explicitly flagged and disallowed as raw proof)"
+  },
+  "artifactIntegrity": {
+    "baselineJson": {
+      "path": "reports/CFD-NACA0012-NU-T-RELAXATION-FORENSIC.json",
+      "sha256": "4b2b511426832eabb1b0b7fa46684ecb6bfb73ccb130f3bc493dc41ed4b2ff90",
+      "iterationHistoryLength": 500,
+      "status": "INTEACT_COMPLETE"
+    },
+    "interventionJsonOriginal": {
+      "path": "reports/CFD-NACA0012-INTERVENTION-1-PRESSURE-CAP-REMOVED.json",
+      "sha256": "99b9b7d93aa32eeec26ef8290b9ab0db44c13cf64185c7446811aa62efc515e2",
+      "iterationHistoryLength": 0,
+      "rawIterationHistoryStatus": "MISSING_EMPTY_TRACE",
+      "note": "Preserved completely unchanged. The solver benchmark run populated aggregate metrics and periodic stdout logs but did not serialize the per-iteration trace array into the JSON artifact."
+    }
+  },
+  "evidenceByProvenance": {
+    "RAW_JSON": {
+      "baseline": {
+        "firstIterationWhereMaxVGeq2p50": {
+          "iteration": 2,
+          "maxVelocity": 2.5
+        },
+        "firstIterationWhereVelocityClampApplied": "VELOCITY_CLAMP_TELEMETRY = MISSING",
+        "firstIterationWhereMomentumRisesStatistically": {
+          "iteration": 432,
+          "momentumLinf": 0.01134566,
+          "baselineMedian_1_30": 0.0053577
+        },
+        "firstIterationWhereContinuityDeteriorates": "NONE_WITHIN_500_ITERS",
+        "firstIterationWhereForceOscillates": "NONE_WITHIN_500_ITERS",
+        "firstIterationWhereMomentumExceeds1": "NONE_WITHIN_500_ITERS",
+        "firstIterationWhereNaNOrInfAppears": "NONE_WITHIN_500_ITERS"
+      },
+      "intervention": {
+        "rawTraceStatus": "UNRECOVERABLE_FROM_FROZEN_JSON",
+        "traceLength": 0,
+        "perIterationEvents": "UNRECOVERABLE_FROM_FROZEN_JSON"
+      }
+    },
+    "EXECUTION_LOG": {
+      "description": "Periodic 10-iteration telemetry samples captured from solver console stdout during run",
+      "samples": [
+        {
+          "iteration": 1,
+          "pPrimeMaxRaw": 0.2233,
+          "maxVelocity": 1.0425,
+          "continuityL1": 0.007624,
+          "momentumLinf": 0.008892
+        },
+        {
+          "iteration": 10,
+          "maxVelocity": 2.5,
+          "note": "FIRST_CONFIRMED_LIMITER_THRESHOLD_EVENT in log"
+        },
+        {
+          "iteration": 20,
+          "maxVelocity": 2.5
+        },
+        {
+          "iteration": 30,
+          "maxVelocity": 2.5
+        },
+        {
+          "iteration": 40,
+          "maxVelocity": 2.5
+        },
+        {
+          "iteration": 50,
+          "maxVelocity": 2.5
+        },
+        {
+          "iteration": 60,
+          "maxVelocity": 2.5,
+          "momentumLinf": 0.08695
+        },
+        {
+          "iteration": 70,
+          "maxVelocity": 2.5,
+          "momentumLinf": 0.15157
+        },
+        {
+          "iteration": 80,
+          "maxVelocity": 2.5,
+          "momentumLinf": 0.17428
+        },
+        {
+          "iteration": 90,
+          "maxVelocity": 2.5,
+          "momentumLinf": 1.2278,
+          "note": "Momentum Linf exceeded 1.0 during transient excursion"
+        },
+        {
+          "iteration": 100,
+          "maxVelocity": 2.5,
+          "momentumLinf": 0.23145
+        },
+        {
+          "iteration": 500,
+          "maxVelocity": 2.5,
+          "continuityLinf": 0.000075261,
+          "momentumLinf": 0.0083486,
+          "cl": -0.011,
+          "cd": 0.014,
+          "cm": -0.0034
+        }
+      ],
+      "nonLinearExcursionsObserved": true
+    },
+    "SOURCE_STATIC_AUDIT": {
+      "pressureCapRemovalDiff": "PASS (Line 994: const p_new = raw_p_new;)",
+      "velocityLimiterPresence": "PRESENT (U_limit = 2.50 m/s clamped on velocity update)",
+      "velocityClampCellCountTelemetry": "MISSING (numberOfVelocityClippedCells is not instrumented in cell loop)",
+      "nuTClippingTelemetry": "INSTRUMENTED (nutCappedCells tracked = 7260/7260, 100%)"
+    },
+    "INFERENCE": {
+      "prohibitedConclusions": [
+        "Identical late-rise at iteration 432 across both runs is INVALID (trace missing for intervention).",
+        "Exact first instability iteration cannot be proven from 10-iteration discrete stdout logs.",
+        "Pass/Fail cannot be declared purely from run completion."
+      ]
+    }
+  },
+  "reconciledEventsSummary": {
+    "firstConfirmedLimiterThresholdEvent": {
+      "provenance": "EXECUTION_LOG",
+      "iteration": 10,
+      "metric": "maxVelocity = 2.50 m/s (Hit U_limit threshold)"
+    },
+    "actualVelocityClampActivation": "NOT_PROVEN / TELEMETRY MISSING",
+    "firstInstabilityEvent": "RECONCILIATION NOT_PROVEN FROM FROZEN JSON (Execution log demonstrates severe nonlinear excursions like Iter 90 momentumLinf=1.2278, but exact first-event reconstruction is unrecoverable)",
+    "firstInvalidState": "None Detected in execution log (0 NaNs / 0 Infs reported across 500 iterations)"
+  },
+  "classification": {
+    "pressureCapStabilizingEffect": "OBSERVED (Cap removal delayed U_limit saturation from Iteration 2 to Iteration 10)",
+    "underlyingInstability": "OBSERVED IN EXECUTION LOG (Transient momentum spikes > 1.0 and pervasive 100% nu_t clipping)",
+    "rootCause": "NOT_PROVEN",
+    "maskingEffect": "NOT_PROVEN"
+  },
+  "verdict": {
+    "executionState": "COMPLETED_WITHOUT_NAN_BUT_NONCONVERGED_AND_CLIPPED",
+    "physicalValidation": "NOT_PROVEN",
+    "rootCause": "NOT_PROVEN",
+    "gci": "NOT_PROVEN"
+  }
+}

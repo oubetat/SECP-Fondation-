@@ -1,0 +1,69 @@
+{
+  "contract_id": "SECP-POST-007-PHASE2-CAP-SUP-005-FORENSIC-DISCOVERY",
+  "timestamp": "2026-09-23T11:06:00.000Z",
+  "audit_mission": "PHASE-2 CAP-SUP-005",
+  "discovery_results": {
+    "CAM_ENGINES": {
+      "FiveAxisToolpathGenerator": {
+        "status": "PARTIAL",
+        "description": "Implements basic toolpath structure but uses hardcoded tool axes (0,0,1) and mock machine coordinates (A=0, C=0). No genuine 5-axis drive-surface projection logic.",
+        "file": "/src/engine/manufacturing/cam/FiveAxisToolpathGenerator.ts"
+      },
+      "ThreeAxisCAM": {
+        "status": "PARTIAL",
+        "description": "Simplified linear toolpath generation.",
+        "file": "/src/engine/manufacturing/__tests__/ThreeAxisCAM.test.ts"
+      }
+    },
+    "KINEMATICS": {
+      "ForwardKinematicsSolver": {
+        "status": "PARTIAL",
+        "description": "Implements basic analytical transformations for 3, 4, and 5-axis (Table-Table/Head-Head/Head-Table) but assumes fixed rotation orders and lacks comprehensive calibration error models.",
+        "file": "/src/engine/manufacturing/kinematics/ForwardKinematicsSolver.ts"
+      },
+      "InverseKinematicsSolver": {
+        "status": "PARTIAL",
+        "description": "Analytical solver for specific 4/5-axis architectures. Detects singularities and limit violations, but doesn't handle complex multi-solution branch selection robustly.",
+        "file": "/src/engine/manufacturing/kinematics/InverseKinematicsSolver.ts"
+      }
+    },
+    "COLLISION_DETECTION": {
+      "CollisionDetector": {
+        "status": "PARTIAL",
+        "description": "Implements adaptive sampling for continuous motion and broad/narrow phase checks. However, NarrowPhase is limited to analytical Capsule/AABB primitives.",
+        "file": "/src/engine/manufacturing/collision/CollisionDetector.ts"
+      },
+      "NarrowPhaseCollisionEngine": {
+        "status": "SIMULATED_CONTRACT_ONLY",
+        "description": "Lacks GJK/EPA or BRep-level collision. Limited to simple primitive distance queries.",
+        "file": "/src/engine/manufacturing/collision/NarrowPhaseCollisionEngine.ts"
+      },
+      "SweptVolumeEngine": {
+        "status": "PARTIAL",
+        "description": "Calculates AABB envelopes using sampled SLERP poses, but no explicit swept-hull mesh or BRep generation.",
+        "file": "/src/engine/manufacturing/collision/SweptVolumeEngine.ts"
+      }
+    },
+    "MATERIAL_REMOVAL": {
+      "MaterialRemovalEngine": {
+        "status": "MOCK",
+        "description": "Basic voxel grid subtraction. Only supports vertical Z-aligned cylinders. Tool orientation in 5-axis is ignored during removal.",
+        "file": "/src/engine/manufacturing/simulation/MaterialRemovalEngine.ts"
+      }
+    },
+    "INSPECTION_FEEDBACK_LOOP": {
+      "status": "MISSING",
+      "description": "No 'ClosedLoopMetrologyInversionEngine' or 'ICP' alignment logic found in the manufacturing or metrology modules. This is the primary gap for CAP-SUP-005.",
+      "gap_id": "GAP-MFG-005"
+    },
+    "GCODE_POST_PROCESSOR": {
+      "status": "PARTIAL",
+      "description": "Basic string-template based G-code generation.",
+      "file": "/src/engine/manufacturing/post/PostProcessor.ts"
+    }
+  },
+  "duplicated_logic_findings": [
+    "Overlapping 'HardAcceptanceGate' logic (103, 104, 105, 106, 109, 110) suggests fragmented verification per module rather than a unified truth contract."
+  ],
+  "forensic_verdict": "CAP-SUP-005 infrastructure is 70% partially implemented (MOCK/SIMULATED) but the core 'Closed-Loop Feedback' logic is 100% MISSING."
+}

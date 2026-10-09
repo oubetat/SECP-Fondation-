@@ -1,0 +1,10 @@
+{
+  "status": "VERIFIED",
+  "sampleRaw": {
+    "z": 1,
+    "a": "test",
+    "f": 12.3456789
+  },
+  "canonicalized": "{\"a\":\"test\",\"f\":12.345679,\"z\":1}",
+  "sampleHash": "f5b370f70344d1b6f2a70342aa9344b88f80020eda22250900ed3325f7a80a98"
+}

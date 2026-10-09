@@ -1,0 +1,7 @@
+{
+  "name": "HYDROSTATIC_INVARIANCE",
+  "passed": true,
+  "maxError": 0.0000011680077279964342,
+  "tolerance": 0.0001,
+  "details": "Pure volumetric loading produced von Mises = 1.1680e-6 Pa (zero plastic yield)."
+}

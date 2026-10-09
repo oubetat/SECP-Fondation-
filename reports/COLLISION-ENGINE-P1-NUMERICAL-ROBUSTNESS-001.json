@@ -1,0 +1,12 @@
+{
+  "contractId": "P1-NUMERICAL-ROBUSTNESS-001",
+  "name": "P1 Numerical Robustness Matrix",
+  "version": "1.0.0",
+  "evaluatedCases": [
+    { "case": "Epsilon Separation (1e-6 mm)", "result": "SEPARATED with minClearance = 1e-6 mm" },
+    { "case": "Epsilon Contact (1e-9 mm)", "result": "CONTACT with isTouching = true" },
+    { "case": "Zero-Area Degenerate Triangle", "result": "Safely handled, isDegenerate = true, distance to point v0" },
+    { "case": "Zero-Length Degenerate Segment", "result": "Safely handled, point-triangle projection" },
+    { "case": "Coplanar Segment Crossing Triangle", "result": "Distance = 0, isInterpenetrating = true" }
+  ]
+}

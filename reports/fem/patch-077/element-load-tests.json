@@ -1,0 +1,47 @@
+[
+  {
+    "element": "BAR2",
+    "supportedLoadTypes": [
+      "POINT_LOAD",
+      "BODY_FORCE",
+      "SURFACE_TRACTION"
+    ],
+    "consistentNodalLoadsVerified": true
+  },
+  {
+    "element": "TRI3",
+    "supportedLoadTypes": [
+      "POINT_LOAD",
+      "BODY_FORCE",
+      "SURFACE_TRACTION"
+    ],
+    "consistentNodalLoadsVerified": true
+  },
+  {
+    "element": "QUAD4",
+    "supportedLoadTypes": [
+      "POINT_LOAD",
+      "BODY_FORCE",
+      "SURFACE_TRACTION"
+    ],
+    "consistentNodalLoadsVerified": true
+  },
+  {
+    "element": "TET4",
+    "supportedLoadTypes": [
+      "POINT_LOAD",
+      "BODY_FORCE",
+      "SURFACE_TRACTION"
+    ],
+    "consistentNodalLoadsVerified": true
+  },
+  {
+    "element": "HEX8",
+    "supportedLoadTypes": [
+      "POINT_LOAD",
+      "BODY_FORCE",
+      "SURFACE_TRACTION"
+    ],
+    "consistentNodalLoadsVerified": true
+  }
+]

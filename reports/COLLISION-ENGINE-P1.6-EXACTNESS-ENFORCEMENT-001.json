@@ -1,0 +1,13 @@
+{
+  "missionId": "COLLISION-ENGINE-P1.6-AUTHORITY-MIGRATION-ENFORCEMENT-001",
+  "artifactType": "EXACTNESS_ENFORCEMENT_REPORT",
+  "timestamp": "2026-10-01T01:57:00.000Z",
+  "exactnessEnforcement": {
+    "ExactNarrowPhaseProvider": "CollisionExactness.EXACT (Closed-form analytical math)",
+    "AssemblyCollisionProvider": "CollisionExactness.EXACT (Exact B-Rep / Triangle pairwise)",
+    "CamFiveAxisCollisionProvider": "CollisionExactness.EXACT (Analytical capsule distance)",
+    "MachineSimulationCollisionProvider": "CollisionExactness.CONSERVATIVE (Bounding volume overlap)",
+    "KinematicsCollisionProvider": "CollisionExactness.SAMPLED (Sampled joint position bounding volumes)"
+  },
+  "forgeryPrevention": "Kinematics and Machine Sim providers declare true SAMPLED / CONSERVATIVE exactness in CollisionAuthority registration, preventing exactness forgery."
+}

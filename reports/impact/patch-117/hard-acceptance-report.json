@@ -1,0 +1,53 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "checkId": "GATE-117-01",
+      "name": "Root Change Identification & Explicit Revision Awareness",
+      "passed": true,
+      "details": "Analyzed root change PART-VALVE-01:R3 with DIRECT classification"
+    },
+    {
+      "checkId": "GATE-117-02",
+      "name": "Graph Snapshot Hash Freeze & Canonicalization",
+      "passed": true,
+      "details": "Graph Snapshot Hash: 2a89064c9b628fc3..."
+    },
+    {
+      "checkId": "GATE-117-03",
+      "name": "Distance & Multi-Tier Propagation (Direct, Indirect, Transitive)",
+      "passed": true,
+      "details": "Propagated tiers: Direct (0), Indirect (1), Transitive (2)"
+    },
+    {
+      "checkId": "GATE-117-04",
+      "name": "Diamond Graph & Multi-Path Preservation",
+      "passed": true,
+      "details": "Preserved 2 distinct paths reaching NODE-D"
+    },
+    {
+      "checkId": "GATE-117-05",
+      "name": "Dependency Cycle Detection & Finite Execution Guarantee",
+      "passed": true,
+      "details": "Detected dependency cycle: CYCLE-A:R1 -> CYCLE-B:R1 -> CYCLE-A:R1"
+    },
+    {
+      "checkId": "GATE-117-06",
+      "name": "Domain Specific Impact Classification (Simulation, Toolpath, Material)",
+      "passed": true,
+      "details": "CFD Simulation classified as REVERIFICATION_REQUIRED with severity CRITICAL"
+    },
+    {
+      "checkId": "GATE-117-07",
+      "name": "Required Action Generation & ECO Integration",
+      "passed": true,
+      "details": "Generated 4 required actions including REVERIFY_CFD"
+    },
+    {
+      "checkId": "GATE-117-08",
+      "name": "Independent Impact Verifier & Differential Comparison",
+      "passed": true,
+      "details": "Differential Verdict: MATCH (Nodes, Edges, Paths, Severities and Hashes match 100%)"
+    }
+  ]
+}

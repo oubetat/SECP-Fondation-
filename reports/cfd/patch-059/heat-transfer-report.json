@@ -1,0 +1,9 @@
+{
+  "patch": "PATCH-059",
+  "conductionLaw": "Fourier's Law (q = -k grad T)",
+  "supportedBoundaryTypes": [
+    "ADIABATIC",
+    "FIXED_TEMPERATURE",
+    "FIXED_HEAT_FLUX"
+  ]
+}

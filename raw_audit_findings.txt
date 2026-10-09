@@ -1,0 +1,1545 @@
+src/components/assembly/KinematicSolverWorkspace.tsx:46:  const defaultConfig: KinematicSolverConfig = {
+src/components/assembly/KinematicSolverWorkspace.tsx:156:      bodies, joints, motionLinks, drivers, tSec, defaultConfig
+src/components/assembly/KinematicSolverWorkspace.tsx:166:  useEffect(() => {
+src/components/assembly/KinematicSolverWorkspace.tsx:189:  useEffect(() => {
+src/components/assembly/KinematicSolverWorkspace.tsx:194:  useEffect(() => {
+src/components/assembly/NonlinearSolverWorkspace.tsx:94:          referenceCoords: refCoords,
+src/components/assembly/NonlinearSolverWorkspace.tsx:120:      initialYieldStress: yieldStressMPa * 1e6,
+src/components/assembly/NonlinearSolverWorkspace.tsx:139:        initialIncrement: 1.0 / numLoadSteps,
+src/components/assembly/NonlinearSolverWorkspace.tsx:169:  useEffect(() => {
+src/components/assembly/NonlinearSolverWorkspace.tsx:521:                  <p>Executing initial nonlinear FEM simulation...</p>
+src/components/assembly/MotionLinksWorkspace.tsx:472:  useEffect(() => {
+src/components/assembly/MotionLinksWorkspace.tsx:479:  const activeLink = useMemo(() => {
+src/components/assembly/MotionLinksWorkspace.tsx:484:  const dependencyGraph = useMemo(() => {
+src/components/assembly/MotionLinksWorkspace.tsx:491:  useEffect(() => {
+src/components/assembly/MotionLinksWorkspace.tsx:520:  useEffect(() => {
+src/components/assembly/MotionLinksWorkspace.tsx:547:  useEffect(() => {
+src/components/assembly/MotionLinksWorkspace.tsx:697:          { x: x1, y: y1, r: r1, angle: j1?.currentPosition || 0, name: c1.name },
+src/components/assembly/MotionLinksWorkspace.tsx:698:          { x: x2, y: y2, r: r2, angle: j2?.currentPosition || 0, name: c2.name }
+src/components/assembly/MotionLinksWorkspace.tsx:743:        const pinAngle = jPin?.currentPosition || 0;
+src/components/assembly/MotionLinksWorkspace.tsx:744:        const rackTravel = jRack?.currentPosition || 0;
+src/components/assembly/MotionLinksWorkspace.tsx:795:        const cx = (crank.worldOrigin?.x ?? 0) + 80;
+src/components/assembly/MotionLinksWorkspace.tsx:796:        const cy = (crank.worldOrigin?.y ?? 0) + 30;
+src/components/assembly/MotionLinksWorkspace.tsx:799:        const theta = (jCrank?.currentPosition || 0) * (Math.PI / 180);
+src/components/assembly/MotionLinksWorkspace.tsx:853:        ctx.fillText(`Piston Position: ${(jPiston?.currentPosition || 0).toFixed(1)} mm`, pistX - 45, pistY + 35);
+src/components/assembly/MotionLinksWorkspace.tsx:862:        const cx = (cam.worldOrigin?.x ?? 0) + 80;
+src/components/assembly/MotionLinksWorkspace.tsx:863:        const cy = (cam.worldOrigin?.y ?? 0) + 30;
+src/components/assembly/MotionLinksWorkspace.tsx:864:        const camAngle = jCam?.currentPosition || 0;
+src/components/assembly/MotionLinksWorkspace.tsx:865:        const lift = jFol?.currentPosition || 0;
+src/components/assembly/ContactSolverWorkspace.tsx:47:  const simulationResult = useMemo(() => {
+src/components/assembly/ContactSolverWorkspace.tsx:75:      pairId: 'pair_demo',
+src/components/assembly/FEMMeshWorkspace.tsx:72:  useEffect(() => {
+src/components/assembly/FEMMeshWorkspace.tsx:174:  const selectedNode = useMemo(() => {
+src/components/assembly/FEMMeshWorkspace.tsx:179:  const selectedElement = useMemo(() => {
+src/components/assembly/FEMMeshWorkspace.tsx:184:  const elementQualityMetrics = useMemo(() => {
+src/components/assembly/FEMMeshWorkspace.tsx:313:  useEffect(() => {
+src/components/assembly/FEMMeshWorkspace.tsx:531:                      type="number" step="0.1" value={height} onChange={(e) => setHeight(parseFloat(e.target.value) || 0.5)}
+src/components/assembly/FEMMeshWorkspace.tsx:542:                    type="number" step="0.05" value={radius} onChange={(e) => setRadius(parseFloat(e.target.value) || 0.5)}
+src/components/assembly/FEMMeshWorkspace.tsx:568:                        type="number" step="0.05" value={holeRadius} onChange={(e) => setHoleRadius(parseFloat(e.target.value) || 0.25)}
+src/components/assembly/FEMMeshWorkspace.tsx:607:                      type="number" step="0.05" value={cylRadius} onChange={(e) => setCylRadius(parseFloat(e.target.value) || 0.5)}
+src/components/assembly/MaterialConstitutiveWorkspace.tsx:26:  const materials = useMemo(() => MaterialConstitutiveLibrary.list(), []);
+src/components/assembly/MaterialConstitutiveWorkspace.tsx:34:  const selectedDef = useMemo(() => {
+src/components/assembly/MaterialConstitutiveWorkspace.tsx:39:  const evaluationResult = useMemo(() => {
+src/components/assembly/MaterialConstitutiveWorkspace.tsx:41:    const state: MaterialPointState = sm.initializeState('UI_ELEM_1', 0, temperatureK);
+src/components/assembly/MaterialConstitutiveWorkspace.tsx:66:  const pipelineResult = useMemo(() => {
+src/components/assembly/MaterialConstitutiveWorkspace.tsx:209:              <span className="text-slate-200 font-mono">{selectedDef?.density || 0} kg/m³</span>
+src/components/assembly/MaterialConstitutiveWorkspace.tsx:221:                  {(selectedDef.plastic.initialYieldStress / 1e6).toFixed(1)} MPa
+src/components/assembly/MaterialConstitutiveWorkspace.tsx:303:                        {((evaluationResult.response?.stress[0] || 0) / 1e6).toFixed(2)} MPa
+src/components/assembly/MaterialConstitutiveWorkspace.tsx:310:                        {(evaluationResult.response?.equivalentPlasticStrain || 0).toExponential(3)}
+src/components/assembly/MaterialConstitutiveWorkspace.tsx:317:                        {((evaluationResult.response?.elasticEnergyDensity || 0) / 1e3).toFixed(2)} kJ/m³
+src/components/assembly/MaterialConstitutiveWorkspace.tsx:333:                            {((evaluationResult.response?.stress[idx] || 0) / 1e6).toFixed(2)} MPa
+src/components/assembly/SparseMatrixWorkspace.tsx:23:  const sampleMatrix = useMemo(() => {
+src/components/assembly/SparseMatrixWorkspace.tsx:39:  const rcmOrderingResult = useMemo(() => {
+src/components/assembly/SparseMatrixWorkspace.tsx:40:    return MatrixOrdering.computeRCM(sampleMatrix);
+src/components/assembly/SparseMatrixWorkspace.tsx:41:  }, [sampleMatrix]);
+src/components/assembly/SparseMatrixWorkspace.tsx:43:  const memProfile = sampleMatrix.memoryProfile;
+src/components/assembly/SparseMatrixWorkspace.tsx:152:                <div className="text-2xl font-mono font-bold text-cyan-400">{sampleMatrix.rows} × {sampleMatrix.cols}</div>
+src/components/assembly/SparseMatrixWorkspace.tsx:158:                <div className="text-2xl font-mono font-bold text-emerald-400">{sampleMatrix.nnz.toLocaleString()}</div>
+src/components/assembly/SparseMatrixWorkspace.tsx:159:                <div className="text-xs text-slate-400 mt-1">Sparsity Ratio: {(sampleMatrix.sparsityRatio * 100).toFixed(1)}%</div>
+src/components/assembly/SparseMatrixWorkspace.tsx:227:                    Initial Bandwidth: <span className="text-amber-400 font-bold">{rcmOrderingResult.initialBandwidth}</span>
+src/components/assembly/SparseMatrixWorkspace.tsx:242:                      const hasEntry = sampleMatrix.get(r, c) !== 0;
+src/components/assembly/SparseMatrixWorkspace.tsx:251:                          title={`(${r}, ${c}): ${sampleMatrix.get(r, c)}`}
+src/components/assembly/FEMElementsWorkspace.tsx:43:  const registeredElements = useMemo(() => {
+src/components/assembly/FEMElementsWorkspace.tsx:44:    ElementRegistry.initialize();
+src/components/assembly/FEMElementsWorkspace.tsx:48:  const selectedDef = useMemo(() => {
+src/components/assembly/FEMElementsWorkspace.tsx:53:  useEffect(() => {
+src/components/assembly/FEMElementsWorkspace.tsx:72:  const liveStiffnessResult = useMemo(() => {
+src/components/assembly/FEMElementsWorkspace.tsx:312:                    <div><span className="text-slate-400 block mb-0.5">Integration Rule:</span><span className="text-blue-400 font-bold">{selectedDef.defaultIntegrationRuleId}</span></div>
+src/components/verification/DroneProofGatePanel.tsx:44:  const [approver, setApprover] = useState('ENG-LEAD-AUDITOR-01');
+src/components/verification/DroneProofGatePanel.tsx:48:  const [isEvaluating, setIsEvaluating] = useState(false);
+src/components/verification/DroneProofGatePanel.tsx:49:  const [logsExpanded, setLogsExpanded] = useState(true);
+src/components/verification/DroneProofGatePanel.tsx:51:  // Initializing mock/data to work with instantly
+src/components/verification/DroneProofGatePanel.tsx:53:    // 1. Build universal verification package mock
+src/components/verification/DroneProofGatePanel.tsx:92:        parameters: { boundaryClamps: 'Arm end fixtures locked' },
+src/components/verification/DroneProofGatePanel.tsx:187:    // 2. Build mock Engineering Review
+src/components/verification/DroneProofGatePanel.tsx:422:                initial={{ opacity: 0, y: 15 }} 
+src/components/verification/DroneProofGatePanel.tsx:670:                        initial={{ height: 0 }}
+src/components/verification/RobotRequirementsPanel.tsx:47:  const [searchQuery, setSearchQuery] = useState('');
+src/components/verification/RobotRequirementsPanel.tsx:48:  const [categoryFilter, setCategoryFilter] = useState('ALL');
+src/components/verification/RobotRequirementsPanel.tsx:51:  const [simulateParam, setSimulateParam] = useState('payload_mass');
+src/components/verification/RobotRequirementsPanel.tsx:52:  const [simulateNewVal, setSimulateNewVal] = useState('15');
+src/components/verification/RobotRequirementsPanel.tsx:54:  const config = useMemo(() => ({
+src/components/verification/RobotRequirementsPanel.tsx:65:  const verifierResult = useMemo(() => {
+src/components/verification/RobotRequirementsPanel.tsx:69:  const synthesizedRequirements = useMemo(() => {
+src/components/verification/RobotRequirementsPanel.tsx:73:  const categories = useMemo(() => {
+src/components/verification/RobotRequirementsPanel.tsx:79:  const filteredRequirements = useMemo(() => {
+src/components/verification/RobotRequirementsPanel.tsx:91:  const changeImpact = useMemo(() => {
+src/components/verification/RobotRequirementsPanel.tsx:92:    const numericVal = parseFloat(simulateNewVal) || 0;
+src/components/verification/RobotRequirementsPanel.tsx:115:  const epc037Result = useMemo(() => {
+src/components/verification/RobotRequirementsPanel.tsx:122:  const epc038Result = useMemo(() => {
+src/components/verification/RobotRequirementsPanel.tsx:126:  const epc039Result = useMemo(() => {
+src/components/verification/RobotRequirementsPanel.tsx:130:  const epc040Result = useMemo(() => {
+src/components/verification/RobotRequirementsPanel.tsx:134:  const robotArchitecture = useMemo(() => {
+src/components/verification/RobotRequirementsPanel.tsx:135:    return IndustrialRobotArchitecture.createDefaultIndustrialRobot({
+src/components/verification/RobotRequirementsPanel.tsx:209:                Immutable, multidisciplinary requirements verification ledger derived automatically from design parameters. Features real-time static torque calculations, dependency maps, and zero hardcoded pass-verdicts.
+src/components/verification/RobotRequirementsPanel.tsx:316:            <div className="flex items-baseline gap-1 text-slate-900 font-extrabold text-2xl">
+src/components/verification/RobotRequirementsPanel.tsx:382:            <div className="relative flex-1 md:flex-initial">
+src/components/verification/RobotRequirementsPanel.tsx:386:                placeholder="Search specs..."
+src/components/verification/DroneProofReportPanel.tsx:18:  initialPackage?: UniversalVerificationPackage;
+src/components/verification/DroneProofReportPanel.tsx:19:  initialReview?: EngineeringReviewRecord;
+src/components/verification/DroneProofReportPanel.tsx:23:  initialPackage,
+src/components/verification/DroneProofReportPanel.tsx:24:  initialReview
+src/components/verification/DroneProofReportPanel.tsx:27:  const defaultPackage: UniversalVerificationPackage = initialPackage || {
+src/components/verification/DroneProofReportPanel.tsx:195:  const defaultReview: EngineeringReviewRecord = initialReview || {
+src/components/verification/DroneProofReportPanel.tsx:246:    DroneProofReportEngine.compileReport('REP-DRONE-101', defaultPackage, defaultReview, 'CHIEF_ENGINEER_ALEX')
+src/components/verification/DroneProofReportPanel.tsx:248:  const [newReason, setNewReason] = useState('');
+src/components/verification/DroneProofReportPanel.tsx:249:  const [showRevisionForm, setShowRevisionForm] = useState(false);
+src/components/verification/DroneProofReportPanel.tsx:292:      default:
+src/components/verification/DroneProofReportPanel.tsx:387:            initial={{ opacity: 0, y: -20 }}
+src/components/verification/DroneProofReportPanel.tsx:405:                  placeholder="e.g. Recalculated structural safety factoring with standard mesh convergence curves"
+src/components/verification/DroneProofReportPanel.tsx:462:              initial={{ opacity: 0, y: 5 }}
+src/components/verification/DroneProofReportPanel.tsx:515:              initial={{ opacity: 0, y: 5 }}
+src/components/verification/DroneProofReportPanel.tsx:559:              initial={{ opacity: 0, y: 5 }}
+src/components/verification/DroneProofReportPanel.tsx:620:                    <span className="text-sm font-black">{report.baseline.mesh.elementCount.toLocaleString()}</span>
+src/components/verification/DroneProofReportPanel.tsx:642:              initial={{ opacity: 0, y: 5 }}
+src/components/verification/DroneProofReportPanel.tsx:696:              initial={{ opacity: 0, y: 5 }}
+src/components/verification/DroneProofReportPanel.tsx:711:                  <span className="text-slate-800 font-bold">{defaultReview.reviewer}</span>
+src/components/verification/DroneProofReportPanel.tsx:715:                  <span className="text-slate-800 font-bold">{defaultReview.reviewerRole}</span>
+src/components/verification/DroneProofReportPanel.tsx:719:                  <span>{new Date(defaultReview.createdAt).toUTCString()}</span>
+src/components/verification/DroneProofReportPanel.tsx:726:                {defaultReview.findings.map((finding, idx) => (
+src/components/verification/DroneProofReportPanel.tsx:751:              initial={{ opacity: 0, y: 5 }}
+src/components/verification/DroneProofReportPanel.tsx:786:              initial={{ opacity: 0, y: 5 }}
+src/components/verification/VerificationPortal.tsx:15:  const [isVerifying, setIsVerifying] = useState(false);
+src/components/verification/VerificationPortal.tsx:16:  const [expandedFindings, setExpandedFindings] = useState(false);
+src/components/verification/VerificationPortal.tsx:31:    // Here we use the mock generator from the Gate for demonstration.
+src/components/verification/VerificationPortal.tsx:32:    const mock = (IndependentVerificationEngine as any).createMockPackage ? 
+src/components/verification/VerificationPortal.tsx:75:      default: return 'text-slate-400 bg-slate-400/10 border-slate-400/20';
+src/components/verification/VerificationPortal.tsx:178:                initial={{ opacity: 0, y: 20 }}
+src/components/verification/VerificationPortal.tsx:219:                      initial={{ opacity: 0, scale: 0.95 }}
+src/components/verification/VerificationPortal.tsx:259:                        initial={{ height: 0 }}
+src/components/SimulationCaePanel.tsx:125:  const hasActiveGeometry = Boolean((canonicalDocument?.features && canonicalDocument.features.length > 0) || canonicalDocument?.evaluatedShape || activeSolid);
+src/components/SimulationCaePanel.tsx:126:  const [modelMode, setModelMode] = useState<'ACTIVE_CAD' | 'BENCHMARK'>('ACTIVE_CAD');
+src/components/SimulationCaePanel.tsx:130:  const activeMaterial = useMemo(() => 
+src/components/SimulationCaePanel.tsx:167:  const truthDescriptor = useMemo(() => {
+src/components/SimulationCaePanel.tsx:178:      isBenchmarkMode: modelMode === 'BENCHMARK'
+src/components/SimulationCaePanel.tsx:180:  }, [modelMode, hasActiveGeometry, canonicalDocument?.documentId, canonicalDocument?.revision, mesh?.meshHash, isSolving, isMeshing, solutionReport]);
+src/components/SimulationCaePanel.tsx:183:  const geometryStats = useMemo(() => {
+src/components/SimulationCaePanel.tsx:223:        if (modelMode === 'ACTIVE_CAD' && activeSolid) {
+src/components/SimulationCaePanel.tsx:280:            const displacements = analysisResults.displacementSolution || [];
+src/components/SimulationCaePanel.tsx:285:              const ux = displacements[i * 3] || 0;
+src/components/SimulationCaePanel.tsx:286:              const uy = displacements[i * 3 + 1] || 0;
+src/components/SimulationCaePanel.tsx:287:              const uz = displacements[i * 3 + 2] || 0;
+src/components/SimulationCaePanel.tsx:297:            // Realistic stress scale if baseline displacement is very small
+src/components/SimulationCaePanel.tsx:311:                stressMPa: (nodalStresses.get(n.id) || 0) / 1e6,
+src/components/SimulationCaePanel.tsx:339:                elements: new Int32Array(mesh.elements.flatMap(e => e.nodeIds.map(nid => parseInt(nid.replace(/\D/g, '')) || 0))),
+src/components/SimulationCaePanel.tsx:353:                ...(canonicalDocument.derived?.evidenceChain || []),
+src/components/SimulationCaePanel.tsx:448:                  modelMode === 'ACTIVE_CAD'
+src/components/SimulationCaePanel.tsx:459:                  modelMode === 'BENCHMARK'
+src/components/SimulationCaePanel.tsx:861:                      onChange={(e) => setLoadMagnitudeN(parseFloat(e.target.value) || 0)}
+src/components/SimulationCaePanel.tsx:932:                  <div className="text-3xl font-black text-white font-mono mt-2 flex items-baseline gap-2">
+src/components/SimulationCaePanel.tsx:943:                  <div className="text-3xl font-black text-blue-400 font-mono mt-2 flex items-baseline gap-2">
+src/components/SimulationCaePanel.tsx:965:                  <div className="text-3xl font-black text-white font-mono mt-2 flex items-baseline gap-2">
+src/components/SimulationCaePanel.tsx:1117:                  Executes automated multi-model regression benchmark suites (Box Beam, Perforated Plate) to certify solver numerical convergence.
+src/components/benchmark/MassiveAssemblyBenchmarkPanel.tsx:56:      // Update frame with default camera
+src/components/benchmark/MassiveAssemblyBenchmarkPanel.tsx:73:  useEffect(() => {
+src/components/benchmark/MassiveAssemblyBenchmarkPanel.tsx:78:  useEffect(() => {
+src/components/benchmark/MassiveAssemblyBenchmarkPanel.tsx:91:  useEffect(() => {
+src/components/benchmark/MassiveAssemblyBenchmarkPanel.tsx:733:                    <div>Used: {((metrics?.gpuMemoryUsedBytes || 0) / (1024 * 1024)).toFixed(1)} MB</div>
+src/components/benchmark/MassiveAssemblyBenchmarkPanel.tsx:747:                  placeholder="Search instances by name, path or definition ID..."
+src/components/benchmark/DeterministicRuntimePanel.tsx:16:  const [isRunningGate, setIsRunningGate] = useState(false);
+src/components/benchmark/DeterministicRuntimePanel.tsx:24:  useEffect(() => {
+src/components/benchmark/DeterministicRuntimePanel.tsx:318:                    <div>Reference (CPU): <span className="text-emerald-400">{divergenceInfo.referenceValue}</span></div>
+src/components/benchmark/DeterministicRuntimePanel.tsx:436:                  Bans <code className="text-rose-400 font-mono">Math.random()</code> in favor of seed-based PCG32 pseudo-random numbers.
+src/components/benchmark/ReproduciblePackagePanel.tsx:148:                ? 'bg-emerald-950 text-emerald-400 border border-emerald-800 cursor-default'
+src/components/benchmark/ReproduciblePackagePanel.tsx:277:                  Evaluates end-to-end package integrity, model/materials/BCs/mesh reloading, seed deterministic policy, independent execution, difference localization, and Oracle certification.
+src/components/benchmark/ReproduciblePackagePanel.tsx:307:              {(gateReport?.criteriaResults || []).map(item => (
+src/components/benchmark/ReproduciblePackagePanel.tsx:392:                  <div>Init Temp: <span className="text-slate-200">{currentPackage.boundaryConditions.initialConditions.initialTemperatureKelvin} K</span></div>
+src/components/benchmark/ReproduciblePackagePanel.tsx:426:                  <span className="text-emerald-400 font-mono text-[11px]">{currentPackage.hashes.seedHash.substring(0, 10)}...</span>
+src/components/benchmark/ReproduciblePackagePanel.tsx:429:                  <div>Master Seed: <span className="text-slate-200 font-mono">{currentPackage.seed.masterSeed}</span></div>
+src/components/benchmark/ReproduciblePackagePanel.tsx:430:                  <div>Mesh Seed: <span className="text-slate-200 font-mono">{currentPackage.seed.meshSeed}</span></div>
+src/components/benchmark/ReproduciblePackagePanel.tsx:431:                  <div>Policy: <span className="text-slate-200">{currentPackage.seed.seedPolicy}</span></div>
+src/components/benchmark/CADBenchmarkPanel.tsx:8:import { CADBenchmarkBattery } from '../../engine/benchmark/cad/CADBenchmarkBattery';
+src/components/benchmark/CADBenchmarkPanel.tsx:9:import { HardAcceptanceGate171, Gate171Report } from '../../engine/benchmark/cad/HardAcceptanceGate171';
+src/components/benchmark/CADBenchmarkPanel.tsx:15:} from '../../engine/benchmark/cad/types';
+src/components/benchmark/CADBenchmarkPanel.tsx:16:import { CAD_BENCHMARK_CASES } from '../../engine/benchmark/cad/CADBenchmarkCase';
+src/components/benchmark/CADBenchmarkPanel.tsx:44:  useEffect(() => {
+src/components/benchmark/CADBenchmarkPanel.tsx:48:  const filteredResults = (report?.results || []).filter(r => {
+src/components/benchmark/CADBenchmarkPanel.tsx:147:            {report?.passedCount || 0} / {report?.totalCases || 0} Cases
+src/components/benchmark/CADBenchmarkPanel.tsx:192:            {report?.totalDurationMs || 0} ms
+src/components/benchmark/CADBenchmarkPanel.tsx:208:                placeholder="Search benchmark cases..."
+src/components/benchmark/CADBenchmarkPanel.tsx:211:                className="w-full bg-slate-900 border border-slate-800 rounded-lg pl-8 pr-3 py-1.5 text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-indigo-500"
+src/components/benchmark/CADBenchmarkPanel.tsx:405:              <p className="text-sm">Select a benchmark test case to view detailed oracle comparison</p>
+src/components/benchmark/CompetitiveWorkflowDashboard.tsx:22:  const [isExecuting, setIsExecuting] = useState(false);
+src/components/benchmark/CompetitiveWorkflowDashboard.tsx:25:  useEffect(() => {
+src/components/benchmark/CompetitiveWorkflowDashboard.tsx:48:      default: return 'text-slate-500 bg-slate-900 border-slate-700';
+src/components/benchmark/NonlinearFEMBenchmarkPanel.tsx:15:import { HardAcceptanceGate177, HardAcceptanceGate177Verdict } from '../../engine/benchmark/fem/HardAcceptanceGate177';
+src/components/benchmark/NonlinearFEMBenchmarkPanel.tsx:16:import { BenchmarkCaseResult177 } from '../../engine/benchmark/fem/NonlinearFEMBenchmarkBattery177';
+src/components/benchmark/NonlinearFEMBenchmarkPanel.tsx:38:  // Run Hard Acceptance Gate on initial mount
+src/components/benchmark/NonlinearFEMBenchmarkPanel.tsx:39:  useEffect(() => {
+src/components/benchmark/NonlinearFEMBenchmarkPanel.tsx:44:  useEffect(() => {
+src/components/benchmark/NonlinearFEMBenchmarkPanel.tsx:49:  useEffect(() => {
+src/components/benchmark/NonlinearFEMBenchmarkPanel.tsx:75:        initialYieldStress: 2.5e8,
+src/components/benchmark/NonlinearFEMBenchmarkPanel.tsx:224:    // Node reference coordinates
+src/components/benchmark/NonlinearFEMBenchmarkPanel.tsx:232:      const ux = disp[dofOffset + 0] || 0;
+src/components/benchmark/NonlinearFEMBenchmarkPanel.tsx:233:      const uy = disp[dofOffset + 1] || 0;
+src/components/benchmark/NonlinearFEMBenchmarkPanel.tsx:614:              <p className="text-xs text-slate-400">Select a benchmark case from the left list.</p>
+src/components/benchmark/TurbulenceBenchmarkPanel.tsx:16:import { HardAcceptanceGate176, HardAcceptanceGate176Verdict } from '../../engine/benchmark/cfd/HardAcceptanceGate176';
+src/components/benchmark/TurbulenceBenchmarkPanel.tsx:17:import { TurbulenceQualificationBattery176, TurbulenceBattery176Report, TurbulenceTestCaseResult } from '../../engine/benchmark/cfd/TurbulenceQualificationBattery176';
+src/components/benchmark/TurbulenceBenchmarkPanel.tsx:64:  useEffect(() => {
+src/components/benchmark/TurbulenceBenchmarkPanel.tsx:71:  useEffect(() => {
+src/components/benchmark/TurbulenceBenchmarkPanel.tsx:239:      default:
+src/components/benchmark/TurbulenceBenchmarkPanel.tsx:469:                  Exhaustive physical benchmark cases auditing equilibrium, separation, curvature, LES coherent structures, and grid convergence.
+src/components/benchmark/TurbulenceBenchmarkPanel.tsx:506:                      <span className="text-cyan-400 font-bold">{c.referenceValue.toFixed(4)}</span>
+src/components/benchmark/GlobalBenchmarkReportPanel.tsx:13:} from '../../engine/benchmark/GlobalBenchmarkReportEngine';
+src/components/benchmark/GlobalBenchmarkReportPanel.tsx:37:  const [copied, setCopied] = useState(false);
+src/components/benchmark/GlobalBenchmarkReportPanel.tsx:40:  const [sampleSize, setSampleSize] = useState<number>(10);
+src/components/benchmark/GlobalBenchmarkReportPanel.tsx:52:  useEffect(() => {
+src/components/benchmark/GlobalBenchmarkReportPanel.tsx:59:      // Trim raw data based on sample size
+src/components/benchmark/GlobalBenchmarkReportPanel.tsx:60:      rawData = rawData.slice(0, sampleSize);
+src/components/benchmark/GlobalBenchmarkReportPanel.tsx:70:        inputSize: sampleSize * 100,
+src/components/benchmark/GlobalBenchmarkReportPanel.tsx:120:          description: "Execution solver core version does not align with active benchmark layout.",
+src/components/benchmark/GlobalBenchmarkReportPanel.tsx:180:    sampleSize, 
+src/components/benchmark/GlobalBenchmarkReportPanel.tsx:211:      default:
+src/components/benchmark/GlobalBenchmarkReportPanel.tsx:226:            Neutral, evidence-driven benchmarking. Reconstruct reports deterministically with anti-marketing integrity gates and comprehensive statistical qualification.
+src/components/benchmark/GlobalBenchmarkReportPanel.tsx:289:                  <span className="font-mono text-emerald-400 font-bold">{sampleSize}</span>
+src/components/benchmark/GlobalBenchmarkReportPanel.tsx:295:                  value={sampleSize}
+src/components/benchmark/GlobalBenchmarkReportPanel.tsx:299:                {sampleSize < 5 && (
+src/components/benchmark/GlobalBenchmarkReportPanel.tsx:302:                    <span>Sparse sample size triggers statistical warnings.</span>
+src/components/benchmark/GlobalBenchmarkReportPanel.tsx:393:                initial={{ opacity: 0, y: 15 }}
+src/components/benchmark/GlobalBenchmarkReportPanel.tsx:403:                      The GlobalBenchmarkIntegrityGate has blocked compilation of this benchmark report. Under formal rules of SECP, promotional exaggerations or fraudulent comparative statements are outright rejected.
+src/components/benchmark/GlobalBenchmarkReportPanel.tsx:415:                initial={{ opacity: 0, y: 10 }}
+src/components/benchmark/GlobalBenchmarkReportPanel.tsx:438:                        <div className="mt-2 flex items-baseline gap-2">
+src/components/benchmark/GlobalBenchmarkReportPanel.tsx:479:                          { label: 'Benchmark', val: activeReport.Score.benchmark, weight: '25%' },
+src/components/benchmark/GlobalBenchmarkReportPanel.tsx:623:                            No benchmark gaps or omissions detected. Full evidence package complete.
+src/components/benchmark/GCSBenchmarkPanel.tsx:12:} from '../../engine/benchmark/gcs/ProductionGCSBenchmarkSuite';
+src/components/benchmark/GCSBenchmarkPanel.tsx:13:import { HardAcceptanceGate173, HardGate173Report } from '../../engine/benchmark/gcs/HardAcceptanceGate173';
+src/components/benchmark/GCSBenchmarkPanel.tsx:22:  const [isRunning, setIsRunning] = useState(false);
+src/components/benchmark/GCSBenchmarkPanel.tsx:25:  const [copied, setCopied] = useState(false);
+src/components/benchmark/GCSBenchmarkPanel.tsx:119:        console.error('Error running Production GCS benchmark:', err);
+src/components/benchmark/GCSBenchmarkPanel.tsx:126:  useEffect(() => {
+src/components/benchmark/GCSBenchmarkPanel.tsx:132:  useEffect(() => {
+src/components/benchmark/GCSBenchmarkPanel.tsx:562:                Select a benchmark case from the list to view its complete audit trace.
+src/components/benchmark/CFDBenchmarkPanel.tsx:8:import { HardAcceptanceGate174, Gate174Report } from '../../engine/benchmark/cfd/HardAcceptanceGate174';
+src/components/benchmark/CFDBenchmarkPanel.tsx:9:import { HardAcceptanceGate174Adaptive, AdaptiveGate174Report } from '../../engine/benchmark/cfd/HardAcceptanceGate174Adaptive';
+src/components/benchmark/CFDBenchmarkPanel.tsx:10:import { HardAcceptanceGate175, Gate175Report } from '../../engine/benchmark/cfd/HardAcceptanceGate175';
+src/components/benchmark/CFDBenchmarkPanel.tsx:11:import { ProductionQualificationBattery175, Battery175SuiteReport } from '../../engine/benchmark/cfd/ProductionQualificationBattery175';
+src/components/benchmark/CFDBenchmarkPanel.tsx:12:import { CFDBatteryReport, CFDEvidenceRecord } from '../../engine/benchmark/cfd/types';
+src/components/benchmark/CFDBenchmarkPanel.tsx:26:  const [isRunning, setIsRunning] = useState(false);
+src/components/benchmark/CFDBenchmarkPanel.tsx:29:  const [copied, setCopied] = useState(false);
+src/components/benchmark/CFDBenchmarkPanel.tsx:58:      console.error('Error running CFD benchmarks:', err);
+src/components/benchmark/CFDBenchmarkPanel.tsx:83:        initialConditions: {
+src/components/benchmark/CFDBenchmarkPanel.tsx:92:        referenceVelocityMS: simVelocity,
+src/components/benchmark/CFDBenchmarkPanel.tsx:111:  useEffect(() => {
+src/components/benchmark/CFDBenchmarkPanel.tsx:125:  ) || [];
+src/components/benchmark/CFDBenchmarkPanel.tsx:241:                {(simSolution?.finalMassConservation?.massImbalanceKgS || 0).toExponential(2)}
+src/components/benchmark/CFDBenchmarkPanel.tsx:244:                Rel Error: {((simSolution?.finalMassConservation?.relativeMassError || 0) * 100).toFixed(4)}%
+src/components/benchmark/CFDBenchmarkPanel.tsx:254:                {(simSolution?.finalMomentumConservation?.totalMomentumResidual || 0).toExponential(2)}
+src/components/benchmark/CFDBenchmarkPanel.tsx:257:                Mx: {(simSolution?.finalMomentumConservation?.mx.netForceN || 0).toExponential(1)} | My: {(simSolution?.finalMomentumConservation?.my.netForceN || 0).toExponential(1)}
+src/components/benchmark/CFDBenchmarkPanel.tsx:267:                {simSolution?.acceptedIterations || 0} Accepted
+src/components/benchmark/CFDBenchmarkPanel.tsx:270:                {simSolution?.rejectedIterations || 0} Rejected & Safely Recovered
+src/components/RevisionManagementPanel.tsx:18:  const [engine] = useState(() => new RevisionEngine());
+src/components/RevisionManagementPanel.tsx:38:  const [baselines, setBaselines] = useState<EngineeringBaseline[]>([]);
+src/components/RevisionManagementPanel.tsx:39:  const [newBaselineId, setNewBaselineId] = useState('BASE-001');
+src/components/RevisionManagementPanel.tsx:40:  const [newBaselineName, setNewBaselineName] = useState('Critical Design Review Baseline');
+src/components/RevisionManagementPanel.tsx:41:  const [newBaselineDesc, setNewBaselineDesc] = useState('Frozen set of released CAD, drawing, and structural FEA revisions.');
+src/components/RevisionManagementPanel.tsx:42:  const [selectedBaselineA, setSelectedBaselineA] = useState('');
+src/components/RevisionManagementPanel.tsx:43:  const [selectedBaselineB, setSelectedBaselineB] = useState('');
+src/components/RevisionManagementPanel.tsx:44:  const [baselineDiffResult, setBaselineDiffResult] = useState<any>(null);
+src/components/RevisionManagementPanel.tsx:51:  const [newChangeReason, setNewChangeReason] = useState('DESIGN_CHANGE');
+src/components/RevisionManagementPanel.tsx:52:  const [newChangeDescription, setNewChangeDescription] = useState('Enlarge shaft hub diameter to accommodate increased torsional load.');
+src/components/RevisionManagementPanel.tsx:58:  const [showAddDep, setShowAddDep] = useState(false);
+src/components/RevisionManagementPanel.tsx:59:  const [depTargetObj, setDepTargetObj] = useState('');
+src/components/RevisionManagementPanel.tsx:60:  const [depTargetRev, setDepTargetRev] = useState('LATEST'); // or specific revision
+src/components/RevisionManagementPanel.tsx:61:  const [depType, setDepType] = useState('DERIVES_FROM');
+src/components/RevisionManagementPanel.tsx:64:  const [commentText, setCommentText] = useState('');
+src/components/RevisionManagementPanel.tsx:67:  const [exportPackageString, setExportPackageString] = useState('');
+src/components/RevisionManagementPanel.tsx:68:  const [importPackageString, setImportPackageString] = useState('');
+src/components/RevisionManagementPanel.tsx:78:  const [tamperTriggered, setTamperTriggered] = useState(false);
+src/components/RevisionManagementPanel.tsx:80:  // Initialize demo data
+src/components/RevisionManagementPanel.tsx:81:  useEffect(() => {
+src/components/RevisionManagementPanel.tsx:309:    // 7. Create Demo baseline
+src/components/RevisionManagementPanel.tsx:311:      baselineId: 'BASE-CDR-01',
+src/components/RevisionManagementPanel.tsx:324:      baselineHash: ''
+src/components/RevisionManagementPanel.tsx:327:    // Select the CAD model revision by default
+src/components/RevisionManagementPanel.tsx:345:  useEffect(() => {
+src/components/RevisionManagementPanel.tsx:377:          poissonsRatio: activeRevision.snapshot?.materials?.poissonsRatio || 0.33,
+src/components/RevisionManagementPanel.tsx:558:        throw new Error('No released revisions exist to form a baseline configuration package.');
+src/components/RevisionManagementPanel.tsx:562:        baselineId: newBaselineId,
+src/components/RevisionManagementPanel.tsx:569:        baselineHash: ''
+src/components/RevisionManagementPanel.tsx:1392:                        placeholder="Add review feedback notes..."
+src/components/RevisionManagementPanel.tsx:1623:                The drawing sheet sheet `DRW-ACT-201:REV-A` still safely references `CAD-ACT-101:REV-A` so manufacturing remains validated. In order to adopt the enlarged aperture, the manufacturing engineer must explicitly spawn a new revision and update its pinned references:
+src/components/RevisionManagementPanel.tsx:1692:            {/* List of active baselines */}
+src/components/RevisionManagementPanel.tsx:1698:                  {baselines.map((base) => (
+src/components/RevisionManagementPanel.tsx:1699:                    <div key={base.baselineId} className="bg-slate-950/60 p-4 border border-slate-900 rounded-xl space-y-3">
+src/components/RevisionManagementPanel.tsx:1701:                        <strong className="text-teal-400 font-mono text-xs">{base.baselineId}</strong>
+src/components/RevisionManagementPanel.tsx:1742:                      {baselines.map(b => (
+src/components/RevisionManagementPanel.tsx:1743:                        <option key={b.baselineId} value={b.baselineId}>{b.baselineId}</option>
+src/components/RevisionManagementPanel.tsx:1755:                      {baselines.map(b => (
+src/components/RevisionManagementPanel.tsx:1756:                        <option key={b.baselineId} value={b.baselineId}>{b.baselineId}</option>
+src/components/RevisionManagementPanel.tsx:1770:                {baselineDiffResult ? (
+src/components/RevisionManagementPanel.tsx:1774:                    {Object.keys(baselineDiffResult.added).length > 0 && (
+src/components/RevisionManagementPanel.tsx:1777:                        {Object.entries(baselineDiffResult.added).map(([k, v]: any) => (
+src/components/RevisionManagementPanel.tsx:1783:                    {Object.keys(baselineDiffResult.changed).length > 0 && (
+src/components/RevisionManagementPanel.tsx:1786:                        {Object.entries(baselineDiffResult.changed).map(([k, v]: any) => (
+src/components/RevisionManagementPanel.tsx:1794:                    {Object.keys(baselineDiffResult.removed).length > 0 && (
+src/components/RevisionManagementPanel.tsx:1797:                        {Object.entries(baselineDiffResult.removed).map(([k, v]: any) => (
+src/components/RevisionManagementPanel.tsx:1803:                    {Object.keys(baselineDiffResult.added).length === 0 && 
+src/components/RevisionManagementPanel.tsx:1804:                     Object.keys(baselineDiffResult.changed).length === 0 && 
+src/components/RevisionManagementPanel.tsx:1805:                     Object.keys(baselineDiffResult.removed).length === 0 && (
+src/components/RevisionManagementPanel.tsx:1811:                    Select two frozen baselines above to evaluate product configuration updates.
+src/components/RevisionManagementPanel.tsx:1891:                  placeholder="Paste exported revision JSON package here..."
+src/components/ChangeManagementPanel.tsx:15:  const [engine] = useState(() => new ChangeManagementEngine());
+src/components/ChangeManagementPanel.tsx:39:  const [benchmarkPassed, setBenchmarkPassed] = useState<boolean | null>(null);
+src/components/ChangeManagementPanel.tsx:40:  const [benchmarkChecks, setBenchmarkChecks] = useState<any[]>([]);
+src/components/ChangeManagementPanel.tsx:53:  useEffect(() => {
+src/components/ChangeManagementPanel.tsx:250:      {benchmarkPassed !== null && (
+src/components/ChangeManagementPanel.tsx:251:        <div className={`p-5 rounded-lg border flex flex-col md:flex-row md:items-center justify-between gap-4 ${benchmarkPassed ? 'bg-teal-950/10 border-teal-500/30 text-teal-400' : 'bg-rose-950/10 border-rose-500/30 text-rose-400'}`}>
+src/components/ChangeManagementPanel.tsx:253:            {benchmarkPassed ? <CheckCircle2 className="w-6 h-6 mt-0.5 flex-shrink-0 text-teal-500" /> : <XCircle className="w-6 h-6 mt-0.5 flex-shrink-0 text-rose-500" />}
+src/components/ChangeManagementPanel.tsx:255:              <h3 className="font-semibold text-lg">{benchmarkPassed ? 'Acceptance Verification Passed' : 'Acceptance Verification Failed'}</h3>
+src/components/ChangeManagementPanel.tsx:257:                All 7 structural change gates evaluated successfully. Rules regarding separation of duties, optimistic lock tokens, baseline immutability, and evidence constraints passed.
+src/components/ChangeManagementPanel.tsx:262:            {benchmarkChecks.map((c, i) => (
+src/components/ChangeManagementPanel.tsx:352:                  placeholder="e.g. Mass reduction at blades"
+src/components/ChangeManagementPanel.tsx:363:                  placeholder="Detailed engineering explanation..."
+src/components/ChangeManagementPanel.tsx:409:                      placeholder="e.g. Thickness reduced"
+src/components/ChangeManagementPanel.tsx:419:                      placeholder="e.g. Rotor center span"
+src/components/ChangeManagementPanel.tsx:430:                    placeholder="e.g. Weight reduction goals"
+src/components/ChangeManagementPanel.tsx:441:                      placeholder="e.g. Mass reduction"
+src/components/ChangeManagementPanel.tsx:451:                      placeholder="e.g. Increased fatigue risk"
+src/components/ChangeManagementPanel.tsx:821:                        placeholder="Define engineering feedback..."
+src/components/CloudCollaborationPanel.tsx:12:    CollaborationEngine.createDefaultCloudProject()
+src/components/CloudCollaborationPanel.tsx:193:                placeholder="Write engineering feedback or design comment..."
+src/components/LongRunningSimulationQualificationPanel.tsx:141:  const [selectedSim, setSelectedSim] = useState(SIMULATION_WORKLOADS[0]);
+src/components/LongRunningSimulationQualificationPanel.tsx:142:  const [isQualifying, setIsQualifying] = useState(false);
+src/components/LongRunningSimulationQualificationPanel.tsx:143:  const [simStep, setSimStep] = useState(0);
+src/components/LongRunningSimulationQualificationPanel.tsx:146:  const [isRunningGate, setIsRunningGate] = useState(false);
+src/components/LongRunningSimulationQualificationPanel.tsx:149:  const [isInterrupted, setIsInterrupted] = useState(false);
+src/components/certification/CertificationCenterPanel.tsx:45:  useEffect(() => {
+src/components/certification/CertificationCenterPanel.tsx:46:    const initialContexts: Record<string, EvaluationContext> = {};
+src/components/certification/CertificationCenterPanel.tsx:47:    const initialRecords: Record<string, CertificationRecord> = {};
+src/components/certification/CertificationCenterPanel.tsx:59:        benchmarks: [
+src/components/certification/CertificationCenterPanel.tsx:71:      initialContexts[cap.key] = ctx;
+src/components/certification/CertificationCenterPanel.tsx:72:      initialRecords[cap.key] = EngineeringTruthCertificationGate.evaluateCapability(cap.key, ctx);
+src/components/certification/CertificationCenterPanel.tsx:75:    setContexts(initialContexts);
+src/components/certification/CertificationCenterPanel.tsx:76:    setRecords(initialRecords);
+src/components/certification/CertificationCenterPanel.tsx:99:    const updatedBench = ctx.benchmarks.map(b => b.id === benchId ? { ...b, passed } : b);
+src/components/certification/CertificationCenterPanel.tsx:100:    handleContextChange(capKey, { benchmarks: updatedBench });
+src/components/certification/CertificationCenterPanel.tsx:126:      benchmarks: currentCtx.benchmarks.map(b => ({ ...b, passed: false })),
+src/components/certification/CertificationCenterPanel.tsx:175:      default:
+src/components/certification/CertificationCenterPanel.tsx:188:      default: return { percent: '0%', color: 'bg-slate-700', text: 'Unknown' };
+src/components/certification/CertificationCenterPanel.tsx:283:                initial={{ opacity: 0, y: 15 }}
+src/components/certification/CertificationCenterPanel.tsx:407:                {/* Sub-tests and benchmarks */}
+src/components/certification/CertificationCenterPanel.tsx:428:                  {activeCtx.benchmarks.map(b => (
+src/components/certification/CertificationCenterPanel.tsx:470:                        placeholder="Provide revocation reason..."
+src/components/certification/CertificationCenterPanel.tsx:551:                        initial={{ opacity: 0, y: 10 }}
+src/components/certification/IndependentAuditPackagePanel.tsx:20:  const [projectRevision, setProjectRevision] = useState("REV-189-AESTHETIC");
+src/components/certification/IndependentAuditPackagePanel.tsx:23:  // Load the initial real model audit package
+src/components/certification/IndependentAuditPackagePanel.tsx:30:    "Auditor sandbox initialized. Systems ready to accept independent artifacts."
+src/components/certification/IndependentAuditPackagePanel.tsx:32:  const [tamperActive, setTamperActive] = useState(false);
+src/components/certification/IndependentAuditPackagePanel.tsx:125:      default: return "bg-slate-500/15 text-slate-400 border border-slate-500/30";
+src/components/certification/IndependentAuditPackagePanel.tsx:140:      default:
+src/components/certification/IndependentAuditPackagePanel.tsx:278:            initial={{ opacity: 0, y: 5 }}
+src/components/certification/IndependentAuditPackagePanel.tsx:291:                    Each claim must map to backing file references, hashes, and isolated testing manifests.
+src/components/certification/IndependentAuditPackagePanel.tsx:449:                    to reproduce SECP analytical solver benchmarks inside clean Docker/Node sandboxes.
+src/components/certification/CompetitiveCapabilityMatrixPanel.tsx:52:  useEffect(() => {
+src/components/certification/CompetitiveCapabilityMatrixPanel.tsx:257:            test logs, or certified competitor reports with absolute cryptographic provenance and zero mock-falsifications.
+src/components/certification/CompetitiveCapabilityMatrixPanel.tsx:420:                  Forces a hardcoded payload mismatch in cell indices. (Fails Gate Rule 8 - Hash Integrity & Rule 7 - Reproducibility).
+src/components/certification/CompetitiveCapabilityMatrixPanel.tsx:444:                placeholder="Search capabilities..."
+src/components/certification/CompetitiveCapabilityMatrixPanel.tsx:447:                className="w-full text-xs bg-slate-950 border border-slate-800 rounded-lg pl-9 pr-4 py-2 text-slate-200 placeholder-slate-500 focus:outline-none focus:border-indigo-600 focus:ring-1 focus:ring-indigo-600 transition-all"
+src/components/certification/CompetitiveCapabilityMatrixPanel.tsx:540:            initial={{ opacity: 0, y: 15 }}
+src/components/certification/CompetitiveCapabilityMatrixPanel.tsx:608:                    No auditable evidence references declared.
+src/components/certification/CompetitiveCapabilityMatrixPanel.tsx:631:                    No physics fallback or engineering boundary limitations disclosed for this cell scope.
+src/components/certification/CompetitiveCapabilityMatrixPanel.tsx:722:                  placeholder="e.g. ENG-CHIEF-07"
+src/components/certification/CompetitiveCapabilityMatrixPanel.tsx:725:                  className="w-full text-xs bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-slate-200 placeholder-slate-600 focus:outline-none focus:border-indigo-600 focus:ring-1 focus:ring-indigo-600 transition-all"
+src/components/certification/CompetitiveCapabilityMatrixPanel.tsx:734:                  placeholder="Provide detailed context for this verification override (min 10 chars)..."
+src/components/certification/CompetitiveCapabilityMatrixPanel.tsx:737:                  className="w-full text-xs bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-slate-200 placeholder-slate-600 focus:outline-none focus:border-indigo-600 focus:ring-1 focus:ring-indigo-600 transition-all"
+src/components/certification/CompetitiveCapabilityMatrixPanel.tsx:749:                  placeholder="Add auditable file reference, symbol name, or test hash..."
+src/components/certification/CompetitiveCapabilityMatrixPanel.tsx:752:                  className="w-full text-xs bg-slate-900 border border-slate-800 rounded-lg px-3 py-1.5 text-slate-200 placeholder-slate-600 focus:outline-none"
+src/components/certification/CompetitiveCapabilityMatrixPanel.tsx:848:            Click any cell in the comparison spreadsheet above to inspect detailed evidence references, verification level standards, and documented limitations. Under standard audits, "PROVEN" demands specific source code reference hashes. "PARTIAL" discloses limitations. Simulated clusters cannot be promoted.
+src/components/certification/CompetitiveCapabilityMatrixPanel.tsx:878:export default CompetitiveCapabilityMatrixPanel;
+src/components/cam/ThreeAxisCamWorkspace.tsx:27:  const toolLibrary = useMemo(() => ThreeAxisToolpathEngine.createDefaultToolLibrary(), []);
+src/components/cam/ThreeAxisCamWorkspace.tsx:182:        const validToolpaths = generatedSetup.operations?.map(o => o.toolpath).filter(Boolean) as Toolpath[] || [];
+src/components/cam/ThreeAxisCamWorkspace.tsx:195:      console.error('Failed to initialize model setup:', err);
+src/components/cam/ThreeAxisCamWorkspace.tsx:199:  useEffect(() => {
+src/components/cam/ThreeAxisCamWorkspace.tsx:204:  const allPositions = useMemo(() => {
+src/components/cam/ThreeAxisCamWorkspace.tsx:218:  useEffect(() => {
+src/components/cam/ThreeAxisCamWorkspace.tsx:234:  useEffect(() => {
+src/components/cam/ThreeAxisCamWorkspace.tsx:533:          Operation Tree & Parameters ({setup?.operations.length || 0})
+src/components/cam/ThreeAxisCamWorkspace.tsx:812:                {simulationResult.initialStockVolumeMm3.toLocaleString()} mm³
+src/components/cam/ThreeAxisCamWorkspace.tsx:1041:                31-test reference validation suite (WCS, multi-Z stepdowns, gouge/collision guards, stock comparison)
+src/components/cam/CollisionDetectionWorkspace.tsx:21:  const benchmarkCatalog = useMemo(() => CollisionDetectionEngine.getBenchmarkCatalog(), []);
+src/components/cam/CollisionDetectionWorkspace.tsx:22:  const [selectedBenchmarkId, setSelectedBenchmarkId] = useState<string>('BENCHMARK_A');
+src/components/cam/CollisionDetectionWorkspace.tsx:29:  // Get active benchmark
+src/components/cam/CollisionDetectionWorkspace.tsx:30:  const activeBenchmark = useMemo(() => {
+src/components/cam/CollisionDetectionWorkspace.tsx:31:    return benchmarkCatalog.find(b => b.id === selectedBenchmarkId) || (benchmarkCatalog.length > 0 ? benchmarkCatalog[0] : null);
+src/components/cam/CollisionDetectionWorkspace.tsx:32:  }, [benchmarkCatalog, selectedBenchmarkId]);
+src/components/cam/CollisionDetectionWorkspace.tsx:35:  const verificationResult = useMemo(() => {
+src/components/cam/CollisionDetectionWorkspace.tsx:47:      activeBenchmark.fixture,
+src/components/cam/CollisionDetectionWorkspace.tsx:72:  const activeIncidentAtScrubber = useMemo(() => {
+src/components/cam/CollisionDetectionWorkspace.tsx:77:  useEffect(() => {
+src/components/cam/CollisionDetectionWorkspace.tsx:132:          {benchmarkCatalog.map(bm => {
+src/components/cam/CollisionDetectionWorkspace.tsx:133:            const isSelected = bm.id === selectedBenchmarkId;
+src/components/cam/CollisionDetectionWorkspace.tsx:215:                {activeBenchmark.fixture && (
+src/components/cam/CollisionDetectionWorkspace.tsx:218:                      x={activeBenchmark.fixture.aabb.min.x}
+src/components/cam/CollisionDetectionWorkspace.tsx:219:                      y={-activeBenchmark.fixture.aabb.max.z}
+src/components/cam/CollisionDetectionWorkspace.tsx:220:                      width={activeBenchmark.fixture.aabb.max.x - activeBenchmark.fixture.aabb.min.x}
+src/components/cam/CollisionDetectionWorkspace.tsx:221:                      height={activeBenchmark.fixture.aabb.max.z - activeBenchmark.fixture.aabb.min.z + 10}
+src/components/cam/CollisionDetectionWorkspace.tsx:228:                      x={activeBenchmark.fixture.aabb.min.x + 2}
+src/components/cam/CollisionDetectionWorkspace.tsx:229:                      y={-activeBenchmark.fixture.aabb.max.z + 8}
+src/components/cam/ManufacturingFeatureWorkspace.tsx:22:  const [customParams, setCustomParams] = useState({ dx: 140, dy: 90, dz: 35, holeDia: 12, pocketW: 30 });
+src/components/cam/ManufacturingFeatureWorkspace.tsx:30:  const [isRunningGate, setIsRunningGate] = useState(false);
+src/components/cam/ManufacturingFeatureWorkspace.tsx:33:  const currentSolid = useMemo(() => {
+src/components/cam/ManufacturingFeatureWorkspace.tsx:47:      default:
+src/components/cam/ManufacturingFeatureWorkspace.tsx:65:  const selectedFeature = useMemo(() => {
+src/components/cam/ManufacturingFeatureWorkspace.tsx:496:              The setup analyzer groups features by primary tool access vector to minimize fixture changes on 3-Axis / 5-Axis CNC machines.
+src/components/cam/FourAxisCamWorkspace.tsx:26:  const [selectedBenchmark, setSelectedBenchmark] = useState<'A' | 'B' | 'C' | 'D' | 'E'>('E');
+src/components/cam/FourAxisCamWorkspace.tsx:69:      default: newSetup = FourAxisToolpathEngine.createBenchmarkE(machIdx); break;
+src/components/cam/FourAxisCamWorkspace.tsx:78:  useEffect(() => {
+src/components/cam/FourAxisCamWorkspace.tsx:79:    handleGenerate(selectedBenchmark, selectedMachineIdx);
+src/components/cam/FourAxisCamWorkspace.tsx:80:  }, [selectedBenchmark, selectedMachineIdx]);
+src/components/cam/FourAxisCamWorkspace.tsx:94:  useEffect(() => {
+src/components/cam/FourAxisCamWorkspace.tsx:114:  const currentPosition = useMemo(() => {
+src/components/cam/FourAxisCamWorkspace.tsx:120:  const currentSegment = useMemo(() => {
+src/components/cam/FourAxisCamWorkspace.tsx:127:  useEffect(() => {
+src/components/cam/FourAxisCamWorkspace.tsx:192:    const chuckLen = setup.fixtureModel?.clampingLengthMm ?? 15;
+src/components/cam/FourAxisCamWorkspace.tsx:193:    const chuckRad = setup.fixtureModel?.jawClearanceRadiusMm ?? 35;
+src/components/cam/FourAxisCamWorkspace.tsx:383:              onClick={() => handleGenerate(selectedBenchmark, selectedMachineIdx)}
+src/components/cam/FourAxisCamWorkspace.tsx:456:                    selectedBenchmark === b.id
+src/components/cam/ToolLibraryWorkspace.tsx:61:  const [benchmarks, setBenchmarks] = useState<BenchmarkResult[]>([]);
+src/components/cam/ToolLibraryWorkspace.tsx:66:  const [newToolForm, setNewToolForm] = useState({
+src/components/cam/ToolLibraryWorkspace.tsx:89:  useEffect(() => {
+src/components/cam/ToolLibraryWorkspace.tsx:91:      await ToolLibraryEngine.initialize();
+src/components/cam/ToolLibraryWorkspace.tsx:107:  useEffect(() => {
+src/components/cam/ToolLibraryWorkspace.tsx:116:  useEffect(() => {
+src/components/cam/ToolLibraryWorkspace.tsx:136:  useEffect(() => {
+src/components/cam/ToolLibraryWorkspace.tsx:296:      setBenchmarks(rep.benchmarks);
+src/components/cam/ToolLibraryWorkspace.tsx:416:                placeholder="Search tools by name, ID, category..."
+src/components/cam/ToolLibraryWorkspace.tsx:419:                className="w-full bg-slate-950 border border-slate-800 rounded-lg pl-9 pr-3 py-2 text-xs text-slate-100 placeholder-slate-500 focus:outline-none focus:border-rose-500"
+src/components/cam/ToolLibraryWorkspace.tsx:889:                  {gateReport.benchmarks.map(b => (
+src/components/cam/ToolLibraryWorkspace.tsx:890:                    <div key={b.benchmarkId} className="p-3 bg-slate-950 border border-slate-800 rounded-lg space-y-1 text-xs font-mono">
+src/components/cam/StockSimulationWorkspace.tsx:5: * cross-section slicing inspector, reference benchmark runners, and Hard Gate 260 suite.
+src/components/cam/StockSimulationWorkspace.tsx:50:  // Load benchmark simulation on mount or benchmark change
+src/components/cam/StockSimulationWorkspace.tsx:51:  useEffect(() => {
+src/components/cam/StockSimulationWorkspace.tsx:75:      default:
+src/components/cam/StockSimulationWorkspace.tsx:84:  useEffect(() => {
+src/components/cam/StockSimulationWorkspace.tsx:104:    if (currentSegmentIdx >= (simResult?.totalSegments || 0)) {
+src/components/cam/StockSimulationWorkspace.tsx:139:  const currentState = useMemo(() => {
+src/components/cam/StockSimulationWorkspace.tsx:396:                  MRR: <tspan fill="#4ade80" fontWeight="bold">{currentState?.engagement?.instantaneousMRR_Cm3Min || 0} cm³/min</tspan> |
+src/components/cam/StockSimulationWorkspace.tsx:397:                  REMOVED: <tspan fill="#f43f5e" fontWeight="bold">{currentState?.percentRemoved || 0}%</tspan>
+src/components/cam/StockSimulationWorkspace.tsx:429:                Segment {currentSegmentIdx} of {simResult?.totalSegments || 0}
+src/components/cam/StockSimulationWorkspace.tsx:507:                  {currentState?.removedVolumeMm3?.toLocaleString() || 0}
+src/components/cam/StockSimulationWorkspace.tsx:514:                  {currentState?.percentRemoved || 0}%
+src/components/cam/StockSimulationWorkspace.tsx:524:                style={{ width: `${Math.min(100, currentState?.percentRemoved || 0)}%` }}
+src/components/cam/StockSimulationWorkspace.tsx:531:                <div className="font-mono text-slate-300 font-semibold">{currentState?.initialVolumeMm3?.toLocaleString() || 0} mm³</div>
+src/components/cam/StockSimulationWorkspace.tsx:535:                <div className="font-mono text-slate-300 font-semibold">{currentState?.remainingVolumeMm3?.toLocaleString() || 0} mm³</div>
+src/components/cam/StockSimulationWorkspace.tsx:551:                  {currentState?.engagement.instantaneousMRR_Cm3Min || 0}
+src/components/cam/StockSimulationWorkspace.tsx:558:                  {currentState?.engagement.chipLoadMm || 0}
+src/components/cam/StockSimulationWorkspace.tsx:565:                  {currentState?.engagement.axialDepthMm || 0}
+src/components/cam/StockSimulationWorkspace.tsx:572:                  {currentState?.engagement.radialEngagementMm || 0}
+src/components/cam/StockSimulationWorkspace.tsx:588:                (simResult?.gougeDetectedCount || 0) > 0
+src/components/cam/StockSimulationWorkspace.tsx:593:                  {(simResult?.gougeDetectedCount || 0) > 0 ? (
+src/components/cam/StockSimulationWorkspace.tsx:599:                    {(simResult?.gougeDetectedCount || 0) > 0 ? 'GOUGE / OVERCUT DETECTED' : 'GOUGE-FREE MACHINING'}
+src/components/cam/StockSimulationWorkspace.tsx:603:                  {simResult?.gougeDetectedCount || 0} Violations
+src/components/cam/StockSimulationWorkspace.tsx:611:                    +{simResult?.deviationMap?.maxPositiveDeviationMm || 0} mm
+src/components/cam/StockSimulationWorkspace.tsx:617:                    {simResult?.deviationMap?.maxNegativeDeviationMm || 0} mm
+src/components/NoiseFilteringWorkbenchPanel.tsx:54:  useEffect(() => {
+src/components/NoiseFilteringWorkbenchPanel.tsx:77:  const pseudoRand = (seed: number) => {
+src/components/NoiseFilteringWorkbenchPanel.tsx:78:    const v = Math.sin(seed * 12.9898 + 78.233) * 43758.5453;
+src/components/NoiseFilteringWorkbenchPanel.tsx:91:    const initialFlt = filterEngine.filter(raw, {
+src/components/NoiseFilteringWorkbenchPanel.tsx:99:    setFilteredCloud(initialFlt);
+src/components/NoiseFilteringWorkbenchPanel.tsx:103:  useEffect(() => {
+src/components/AIDesignAssistantWorkbenchPanel.tsx:56:  useEffect(() => {
+src/components/AIDesignAssistantWorkbenchPanel.tsx:266:                placeholder="e.g., Reduce mass while maintaining stiffness on 3-axis CNC..."
+src/components/CadViewport3D.tsx:10:import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+src/components/CadViewport3D.tsx:131:  const [wireframeMode, setWireframeMode] = useState(false);
+src/components/CadViewport3D.tsx:132:  const [showSectionPlane, setShowSectionPlane] = useState(false);
+src/components/CadViewport3D.tsx:133:  const [sectionPlaneOffset, setSectionPlaneOffset] = useState(0);
+src/components/CadViewport3D.tsx:134:  const [measureMode, setMeasureMode] = useState(false);
+src/components/CadViewport3D.tsx:141:  const [showPipelineDetails, setShowPipelineDetails] = useState(false);
+src/components/CadViewport3D.tsx:146:  const [internalEngineSimActive, setInternalEngineSimActive] = useState(true);
+src/components/CadViewport3D.tsx:147:  const [internalEngineSpeed, setInternalEngineSpeed] = useState(3); // 1 to 5
+src/components/CadViewport3D.tsx:150:  const [internalValveAngle, setInternalValveAngle] = useState(valveConfig?.openAngleDeg ?? 75);
+src/components/CadViewport3D.tsx:151:  const [internalValveExploded, setInternalValveExploded] = useState(valveConfig?.explodedFactor ?? 0);
+src/components/CadViewport3D.tsx:155:  const [internalHandleColor, setInternalHandleColor] = useState(valveConfig?.handleColor ?? '#eab308');
+src/components/CadViewport3D.tsx:156:  const [showValveControls, setShowValveControls] = useState(true);
+src/components/CadViewport3D.tsx:157:  const [dismissedBlankCanvas, setDismissedBlankCanvas] = useState(false);
+src/components/CadViewport3D.tsx:160:  useEffect(() => {
+src/components/CadViewport3D.tsx:180:  const isBlankCanvas = !activeSolid && (assemblyComponents?.length ?? 0) === 0 && (isNoProjectOrBlank || (!isEngineTab && !isValveOrFaucet));
+src/components/CadViewport3D.tsx:183:  useEffect(() => {
+src/components/CadViewport3D.tsx:233:  const [engineStats, setEngineStats] = useState({ rpm: 1260, crankAngle: 0 });
+src/components/CadViewport3D.tsx:234:  const [showEngineDiagnostics, setShowEngineDiagnostics] = useState(true);
+src/components/CadViewport3D.tsx:268:  useEffect(() => {
+src/components/CadViewport3D.tsx:272:  useEffect(() => {
+src/components/CadViewport3D.tsx:276:  useEffect(() => {
+src/components/CadViewport3D.tsx:304:      console.warn('WebGL initialization failed in CadViewport3D:', err);
+src/components/CadViewport3D.tsx:469:  useEffect(() => {
+src/components/CadViewport3D.tsx:524:        // Save references for real-time kinematics
+src/components/CadViewport3D.tsx:602:          const defaultValveType = activeProjectType === 'INDUSTRIAL_DRONE'
+src/components/CadViewport3D.tsx:610:              valveType: (valveConfig?.valveType as any) || defaultValveType,
+src/components/CadViewport3D.tsx:716:  useEffect(() => {
+src/components/CadViewport3D.tsx:784:  useEffect(() => {
+src/components/CadViewport3D.tsx:863:  useEffect(() => {
+src/components/CadViewport3D.tsx:880:            pt.position ? pt.position.x : pt.x || 0,
+src/components/CadViewport3D.tsx:881:            pt.position ? pt.position.y : pt.y || 0,
+src/components/CadViewport3D.tsx:882:            pt.position ? pt.position.z : pt.z || 0
+src/components/CadViewport3D.tsx:967:            WebGL fallback
+src/components/AccessControlPanel.tsx:19:  const [engine] = useState(() => new AccessControlEngine());
+src/components/AccessControlPanel.tsx:20:  const [projectId, setProjectId] = useState('PROJ-SECP-2026');
+src/components/AccessControlPanel.tsx:50:  useEffect(() => {
+src/components/AccessControlPanel.tsx:51:    // Initialize seed members
+src/components/AccessControlPanel.tsx:133:    // Run initial gate check
+src/components/AccessControlPanel.tsx:559:                    <span className="text-slate-400 text-[10px]">Zero-trust default: all unmapped actions rejected.</span>
+src/components/AccessControlPanel.tsx:602:                  placeholder="NEW_USER_ID"
+src/components/ProductionCadInspector.tsx:8:  const [gate] = useState(() => new HardAcceptanceGate210());
+src/components/ProductionCadInspector.tsx:58:  useEffect(() => {
+src/components/ProductionCadInspector.tsx:104:              Score: {((result?.overallScore || 0) * 100).toFixed(0)}%
+src/components/CadKernelInspector.tsx:11:  const [isRunningFidelity, setIsRunningFidelity] = useState(false);
+src/components/CadKernelInspector.tsx:13:  const [isAddingNode, setIsAddingNode] = useState(false);
+src/components/CadKernelInspector.tsx:15:  const [isRunningGate, setIsRunningGate] = useState(false);
+src/components/CadKernelInspector.tsx:17:  const [isRunningGate041, setIsRunningGate041] = useState(false);
+src/components/CadKernelInspector.tsx:19:  const [isRunningGate042, setIsRunningGate042] = useState(false);
+src/components/CadKernelInspector.tsx:133:    '-- SECP C++ CMake Build Pipeline initialized.',
+src/components/CadKernelInspector.tsx:206:  useEffect(() => {
+src/components/CadKernelInspector.tsx:466:                      <span className="font-semibold text-rose-400">{acceptanceReport041.mockFallback ? 'TRUE' : 'FALSE'}</span>
+src/components/CadKernelInspector.tsx:515:                        mockFallback: acceptanceReport041.mockFallback,
+src/components/CadKernelInspector.tsx:551:                      <span className="font-semibold text-rose-400">{acceptanceReport.mockFallback ? 'TRUE' : 'FALSE'}</span>
+src/components/CadKernelInspector.tsx:592:                        mockFallback: acceptanceReport.mockFallback,
+src/components/CadKernelInspector.tsx:726:                  onChange={e => setNewNode({ ...newNode, x: parseFloat(e.target.value) || 0 })}
+src/components/CadKernelInspector.tsx:735:                  onChange={e => setNewNode({ ...newNode, y: parseFloat(e.target.value) || 0 })}
+src/components/CadKernelInspector.tsx:744:                  onChange={e => setNewNode({ ...newNode, z: parseFloat(e.target.value) || 0 })}
+src/components/drone/DroneElectricalPanel.tsx:18:  const [throttlePercent, setThrottlePercent] = useState<number>(35); // 35% hover default
+src/components/drone/DroneCAMWorkbench.tsx:18:  useEffect(() => {
+src/components/drone/DroneAeroCfdPanel.tsx:5:  const [altitudeMeters, setAltitudeMeters] = useState<number>(1.2); // 1.2m default hover altitude
+src/components/drone/DroneProjectHome.tsx:13:  const instances = assembly?.instances || [];
+src/components/drone/DronePcbPanel.tsx:26:  useEffect(() => {
+src/components/drone/DroneInspector.tsx:21:  const instances = canonicalDocument?.assembly?.instances || [];
+src/components/drone/DroneEvidenceWorkbench.tsx:14:  useEffect(() => {
+src/components/drone/DroneBomPanel.tsx:98:            placeholder="Search part name, number, or material..."
+src/components/drone/DroneBomPanel.tsx:101:            className="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-1.5 text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-purple-500"
+src/components/cfd/HeatTransferWorkspace.tsx:52:  const [isRunning, setIsRunning] = useState(false);
+src/components/cfd/HeatTransferWorkspace.tsx:91:  const [copiedEvidence, setCopiedEvidence] = useState(false);
+src/components/cfd/HeatTransferWorkspace.tsx:93:  useEffect(() => {
+src/components/cfd/HeatTransferWorkspace.tsx:164:        // Populate initial probe
+src/components/cfd/HeatTransferWorkspace.tsx:180:        heatFlux: fluxField[idx]?.magnitude ?? fluxField[idx] ?? 0.0,
+src/components/cfd/HeatTransferWorkspace.tsx:516:                initial={{ opacity: 0, y: 10 }}
+src/components/cfd/HeatTransferWorkspace.tsx:678:                initial={{ opacity: 0, y: 10 }}
+src/components/cfd/HeatTransferWorkspace.tsx:712:                              <span className="text-slate-200">{report.referenceValue.toFixed(2)} K</span>
+src/components/cfd/HeatTransferWorkspace.tsx:734:                initial={{ opacity: 0, y: 10 }}
+src/components/cfd/HeatTransferWorkspace.tsx:818:                initial={{ opacity: 0, y: 10 }}
+src/components/cfd/HeatTransferWorkspace.tsx:857:                        {((evidence?.energyBalance?.relativeImbalance ?? 0) * 100).toFixed(5)} %
+src/components/cfd/HeatTransferWorkspace.tsx:874:                initial={{ opacity: 0, y: 10 }}
+src/components/cfd/HeatTransferWorkspace.tsx:912:                initial={{ opacity: 0, y: 10 }}
+src/components/cfd/HeatTransferWorkspace.tsx:924:                        Independent compliance oracle checking real thermal fields, energy solvers, and benchmark matching.
+src/components/cfd/ValidationGateWorkspace.tsx:27:  const [isRunning, setIsRunning] = useState(false);
+src/components/cfd/ValidationGateWorkspace.tsx:46:  const [selectedBenchmark, setSelectedBenchmark] = useState<CFDBenchmarkCase>(CFDBenchmarkSuite.BENCHMARK_A_POISEUILLE);
+src/components/cfd/ValidationGateWorkspace.tsx:56:  useEffect(() => {
+src/components/cfd/ValidationGateWorkspace.tsx:69:          initialDeltaT: deltaT,
+src/components/cfd/ValidationGateWorkspace.tsx:80:        const initialConditions = {
+src/components/cfd/ValidationGateWorkspace.tsx:91:          initialConditions,
+src/components/cfd/ValidationGateWorkspace.tsx:92:          selectedBenchmark
+src/components/cfd/ValidationGateWorkspace.tsx:310:                  value={selectedBenchmark.id}
+src/components/cfd/ValidationGateWorkspace.tsx:416:                initial={{ opacity: 0, y: 10 }}
+src/components/cfd/ValidationGateWorkspace.tsx:437:                          ? 'CFD solvers are FULLY PROVEN, convergent, conservative, deterministic and validated against independent reference datasets. Status is PRODUCTION-READY.'
+src/components/cfd/ValidationGateWorkspace.tsx:452:                        Validates initial geometry definitions, domain size boundaries, physical viscosity/density bounds.
+src/components/cfd/ValidationGateWorkspace.tsx:606:                initial={{ opacity: 0, y: 10 }}
+src/components/cfd/ValidationGateWorkspace.tsx:623:                          selectedBenchmark.id === b.id
+src/components/cfd/ValidationGateWorkspace.tsx:638:                        <p className="text-white mt-1 font-mono text-sm">{selectedBenchmark.referenceSource}</p>
+src/components/cfd/ValidationGateWorkspace.tsx:642:                        <p className="text-white mt-1 font-mono text-sm">{selectedBenchmark.referenceConditions}</p>
+src/components/cfd/ValidationGateWorkspace.tsx:650:                          {selectedBenchmark.referenceValue.toFixed(4)} ± {selectedBenchmark.referenceUncertainty.toFixed(3)}
+src/components/cfd/ValidationGateWorkspace.tsx:656:                          {evidence?.benchmarkComparison.benchmarkName === selectedBenchmark.datasetName
+src/components/cfd/ValidationGateWorkspace.tsx:657:                            ? (selectedBenchmark.referenceValue * (1.0 + (evidence.benchmarkComparison.relativeError * (evidence.failures.length > 0 ? 0.05 : -0.004)))).toFixed(4)
+src/components/cfd/ValidationGateWorkspace.tsx:658:                            : selectedBenchmark.referenceValue.toFixed(4)}
+src/components/cfd/ValidationGateWorkspace.tsx:664:                          {(evidence?.benchmarkComparison.relativeError !== undefined ? evidence.benchmarkComparison.relativeError * 100 : 0.3).toFixed(2)} %
+src/components/cfd/ValidationGateWorkspace.tsx:697:                initial={{ opacity: 0, y: 10 }}
+src/components/cfd/ValidationGateWorkspace.tsx:791:                initial={{ opacity: 0, y: 10 }}
+src/components/cfd/ValidationGateWorkspace.tsx:856:                initial={{ opacity: 0, y: 10 }}
+src/components/cfd/ValidationGateWorkspace.tsx:922:                initial={{ opacity: 0, y: 10 }}
+src/components/cfd/ValidationGateWorkspace.tsx:953:                initial={{ opacity: 0, y: 10 }}
+src/components/cfd/TransientWorkspace.tsx:14:  const [isRunning, setIsRunning] = useState(false);
+src/components/cfd/TransientWorkspace.tsx:20:  const [initialDeltaT, setInitialDeltaT] = useState<number>(0.01);
+src/components/cfd/TransientWorkspace.tsx:65:        initialDeltaT,
+src/components/cfd/TransientWorkspace.tsx:78:      const initialConditions = {
+src/components/cfd/TransientWorkspace.tsx:85:      const solverResult = TransientSolver249.solveTransient(mesh, config, initialConditions);
+src/components/cfd/TransientWorkspace.tsx:88:      const convCheck = TransientSolver249.runTemporalConvergenceCheck(mesh, config, initialConditions);
+src/components/cfd/TransientWorkspace.tsx:172:                value={initialDeltaT}
+src/components/cfd/TransientWorkspace.tsx:389:            initial={{ opacity: 0, y: 10 }}
+src/components/cfd/TransientWorkspace.tsx:404:            initial={{ opacity: 0, scale: 0.98 }}
+src/components/cfd/TransientWorkspace.tsx:622:                        <p className="text-[10px] text-slate-500 mt-1">Verified on real numerical solvers with no hardcoded fallbacks.</p>
+src/components/cfd/CompressibleWorkspace.tsx:19:  const [numCells, setNumCells] = useState(40);
+src/components/cfd/CompressibleWorkspace.tsx:20:  const [gasConstant, setGasConstant] = useState(287); // Air
+src/components/cfd/CompressibleWorkspace.tsx:21:  const [gamma, setGamma] = useState(1.4); // Air
+src/components/cfd/CompressibleWorkspace.tsx:23:  const [enableShockCapturing, setEnableShockCapturing] = useState(true);
+src/components/cfd/CompressibleWorkspace.tsx:24:  const [artificialViscosity, setArtificialViscosity] = useState(0.15);
+src/components/cfd/CompressibleWorkspace.tsx:27:  const [totalPressureInlet, setTotalPressureInlet] = useState(101325);
+src/components/cfd/CompressibleWorkspace.tsx:28:  const [totalTempInlet, setTotalTempInlet] = useState(300);
+src/components/cfd/CompressibleWorkspace.tsx:29:  const [inletVelocity, setInletVelocity] = useState(120); // m/s
+src/components/cfd/CompressibleWorkspace.tsx:30:  const [staticPressureOutlet, setStaticPressureOutlet] = useState(90000);
+src/components/cfd/CompressibleWorkspace.tsx:34:  const [isRunning, setIsRunning] = useState(false);
+src/components/cfd/CompressibleWorkspace.tsx:35:  const [iter, setIter] = useState(0);
+src/components/cfd/CompressibleWorkspace.tsx:36:  const [dt, setDt] = useState(0.0005);
+src/components/cfd/CompressibleWorkspace.tsx:37:  const [cfl, setCfl] = useState(0.5);
+src/components/cfd/CompressibleWorkspace.tsx:61:  const [benchmarkLog, setBenchmarkLog] = useState<string[]>([]);
+src/components/cfd/CompressibleWorkspace.tsx:62:  const [benchmarkStatus, setBenchmarkStatus] = useState<'idle' | 'passed' | 'failed'>('idle');
+src/components/cfd/CompressibleWorkspace.tsx:67:  const [hasRunGate, setHasRunGate] = useState(false);
+src/components/cfd/CompressibleWorkspace.tsx:70:  useEffect(() => {
+src/components/cfd/CompressibleWorkspace.tsx:81:      referencePressure: 101325,
+src/components/cfd/CompressibleWorkspace.tsx:82:      referenceTemperature: 298.15,
+src/components/cfd/CompressibleWorkspace.tsx:96:      s.initializeField(rhoInit, velInit, pressInit);
+src/components/cfd/CompressibleWorkspace.tsx:102:      const initialFields = s.getPrimitiveFields();
+src/components/cfd/CompressibleWorkspace.tsx:103:      setFields(initialFields);
+src/components/cfd/CompressibleWorkspace.tsx:113:  useEffect(() => {
+src/components/cfd/CompressibleWorkspace.tsx:152:    logs.push('🚀 Starting Compressible validation benchmark suite...');
+src/components/cfd/CompressibleWorkspace.tsx:159:      logs.push(...(bNozzle.diagnostics || []));
+src/components/cfd/CompressibleWorkspace.tsx:168:      logs.push(...(bShock.diagnostics || []));
+src/components/cfd/CompressibleWorkspace.tsx:177:      logs.push(...(bSod.diagnostics || []));
+src/components/cfd/CompressibleWorkspace.tsx:608:            {benchmarkLog.length > 0 && (
+src/components/cfd/CompressibleWorkspace.tsx:612:                  {benchmarkStatus === 'passed' && <span className="bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 text-[10px] font-bold px-2 py-0.5 rounded">ALL BENCHMARKS PASSED</span>}
+src/components/cfd/CompressibleWorkspace.tsx:615:                  {benchmarkLog.join('\n')}
+src/components/cfd/CompressibleWorkspace.tsx:681:export default CompressibleWorkspace;
+src/components/cfd/FsiWorkspace.tsx:27:  const [youngsModulus, setYoungsModulus] = useState(2.0e11); // Steel 200GPa
+src/components/cfd/FsiWorkspace.tsx:28:  const [poissonsRatio, setPoissonsRatio] = useState(0.3);
+src/components/cfd/FsiWorkspace.tsx:29:  const [fluidDensity, setFluidDensity] = useState(1.225);
+src/components/cfd/FsiWorkspace.tsx:30:  const [fluidViscosity, setFluidViscosity] = useState(1.789e-5);
+src/components/cfd/FsiWorkspace.tsx:31:  const [dt, setDt] = useState(0.001);
+src/components/cfd/FsiWorkspace.tsx:33:  const [relaxationFactor, setRelaxationFactor] = useState(0.4);
+src/components/cfd/FsiWorkspace.tsx:41:  const [isRunning, setIsRunning] = useState(false);
+src/components/cfd/FsiWorkspace.tsx:42:  const [timeStepCount, setTimeStepCount] = useState(0);
+src/components/cfd/FsiWorkspace.tsx:47:  const [activeTab, setActiveTab] = useState<'contours' | 'residuals' | 'convergence' | 'benchmarks' | 'audits'>('contours');
+src/components/cfd/FsiWorkspace.tsx:50:  const [benchmarkResults, setBenchmarkResults] = useState<FSIBenchmarkResult[]>([]);
+src/components/cfd/FsiWorkspace.tsx:53:  const [hasRunGate, setHasRunGate] = useState(false);
+src/components/cfd/FsiWorkspace.tsx:59:  useEffect(() => {
+src/components/cfd/FsiWorkspace.tsx:89:    const initialDeform = new Array(15).fill(0);
+src/components/cfd/FsiWorkspace.tsx:90:    const initialPress = new Array(15).fill(0).map((_, i) => 101325 + Math.sin(i * 0.5) * 800);
+src/components/cfd/FsiWorkspace.tsx:92:    setCurrentDeformation(initialDeform);
+src/components/cfd/FsiWorkspace.tsx:93:    setCurrentPressures(initialPress);
+src/components/cfd/FsiWorkspace.tsx:98:  useEffect(() => {
+src/components/cfd/FsiWorkspace.tsx:375:                  onClick={() => setActiveTab('benchmarks')}
+src/components/cfd/FsiWorkspace.tsx:376:                  className={`text-[10px] px-3 py-1 rounded font-bold transition ${activeTab === 'benchmarks' ? 'bg-violet-600 text-white' : 'text-slate-400'}`}
+src/components/cfd/FsiWorkspace.tsx:496:            {activeTab === 'benchmarks' && (
+src/components/cfd/FsiWorkspace.tsx:508:                {benchmarkResults.length === 0 ? (
+src/components/cfd/FsiWorkspace.tsx:510:                    Click the button above to run reference validation comparisons.
+src/components/cfd/FsiWorkspace.tsx:514:                    {benchmarkResults.map((b, idx) => (
+src/components/cfd/FsiWorkspace.tsx:597:export default FsiWorkspace;
+src/components/cfd/NavierStokesWorkspace.tsx:12:  const [isRunning, setIsRunning] = useState(false);
+src/components/cfd/NavierStokesWorkspace.tsx:58:            Execute the Navier-Stokes gate to certify that the platform solves real momentum equations rather than analytical Poiseuille fallbacks.
+src/components/cfd/NavierStokesWorkspace.tsx:114:                  initial={{ opacity: 0, x: 20 }}
+src/components/cfd/TurbulenceWorkspace.tsx:14:  const [isRunning, setIsRunning] = useState(false);
+src/components/cfd/TurbulenceWorkspace.tsx:44:      const meshCoarse = { id: 'rans-channel-structured' }; // Mock mesh handle or real mesh reference
+src/components/cfd/TurbulenceWorkspace.tsx:295:            initial={{ opacity: 0, y: 10 }}
+src/components/cfd/TurbulenceWorkspace.tsx:310:            initial={{ opacity: 0, scale: 0.98 }}
+src/components/cfd/TurbulenceWorkspace.tsx:404:                          <div className="text-sm font-mono text-slate-200 mt-0.5">{c.referenceQoIs[QuantityOfInterestType.DRAG].toFixed(2)}N</div>
+src/components/cfd/TurbulenceWorkspace.tsx:467:                        <p className="text-[10px] text-slate-500 mt-1">Verified with zero hardcoded analytical fallbacks.</p>
+src/components/cfd/FvmDiscretizationWorkspace.tsx:12:  const [isRunning, setIsRunning] = useState(false);
+src/components/cfd/FvmDiscretizationWorkspace.tsx:114:                  initial={{ opacity: 0, x: 20 }}
+src/components/cfd/CfdMeshWorkspace.tsx:12:  const [isRunning, setIsRunning] = useState(false);
+src/components/cfd/CfdMeshWorkspace.tsx:114:                  initial={{ opacity: 0, x: 20 }}
+src/components/cfd/BoundaryConditionWorkspace.tsx:12:  const [isRunning, setIsRunning] = useState(false);
+src/components/cfd/BoundaryConditionWorkspace.tsx:114:                  initial={{ opacity: 0, x: 20 }}
+src/components/cfd/ResidualEngineWorkspace.tsx:12:  const [isRunning, setIsRunning] = useState(false);
+src/components/cfd/ResidualEngineWorkspace.tsx:114:                  initial={{ opacity: 0, x: 20 }}
+src/components/cfd/MultiphaseWorkspace.tsx:25:  const [isRunning, setIsRunning] = useState(false);
+src/components/cfd/MultiphaseWorkspace.tsx:58:  const [copiedEvidence, setCopiedEvidence] = useState(false);
+src/components/cfd/MultiphaseWorkspace.tsx:64:  useEffect(() => {
+src/components/cfd/MultiphaseWorkspace.tsx:295:                  onChange={e => setSurfaceTension(parseFloat(e.target.value) || 0.0728)}
+src/components/cfd/MultiphaseWorkspace.tsx:349:                  onChange={e => setTimeStep(parseFloat(e.target.value) || 0.005)}
+src/components/cfd/MultiphaseWorkspace.tsx:372:                initial={{ opacity: 0, y: 10 }}
+src/components/cfd/MultiphaseWorkspace.tsx:460:                initial={{ opacity: 0, y: 10 }}
+src/components/cfd/MultiphaseWorkspace.tsx:464:                id="view-benchmarks"
+src/components/cfd/MultiphaseWorkspace.tsx:479:                              <span>Ref: {res.referenceValue.toFixed(4)}</span>
+src/components/cfd/MultiphaseWorkspace.tsx:502:                initial={{ opacity: 0, y: 10 }}
+src/components/cfd/MultiphaseWorkspace.tsx:554:                initial={{ opacity: 0, y: 10 }}
+src/components/cfd/MultiphaseWorkspace.tsx:602:                initial={{ opacity: 0, y: 10 }}
+src/components/cfd/MultiphaseWorkspace.tsx:638:                initial={{ opacity: 0, y: 10 }}
+src/components/cfd/MeshConvergenceWorkspace.tsx:13:  const [isRunning, setIsRunning] = useState(false);
+src/components/cfd/MeshConvergenceWorkspace.tsx:17:  const [tolerance, setTolerance] = useState<number>(0.05); // 5% default
+src/components/cfd/MeshConvergenceWorkspace.tsx:177:            initial={{ opacity: 0, y: 20 }}
+src/components/cfd/MeshConvergenceWorkspace.tsx:241:                        const coarseVal = studyResult.qoiHistory[MeshLevel.COARSE]?.[qType] ?? 0;
+src/components/cfd/MeshConvergenceWorkspace.tsx:242:                        const mediumVal = studyResult.qoiHistory[MeshLevel.MEDIUM]?.[qType] ?? 0;
+src/components/cfd/MeshConvergenceWorkspace.tsx:243:                        const fineVal = studyResult.qoiHistory[MeshLevel.FINE]?.[qType] ?? 0;
+src/components/cfd/MeshConvergenceWorkspace.tsx:301:                        const qC = studyResult.qoiHistory[MeshLevel.COARSE]?.[targetQoI] ?? 0;
+src/components/cfd/MeshConvergenceWorkspace.tsx:302:                        const qM = studyResult.qoiHistory[MeshLevel.MEDIUM]?.[targetQoI] ?? 0;
+src/components/cfd/MeshConvergenceWorkspace.tsx:303:                        const qF = studyResult.qoiHistory[MeshLevel.FINE]?.[targetQoI] ?? 0;
+src/components/cfd/PressureVelocityWorkspace.tsx:12:  const [isRunning, setIsRunning] = useState(false);
+src/components/cfd/PressureVelocityWorkspace.tsx:114:                  initial={{ opacity: 0, x: 20 }}
+src/components/TestRunnerPanel.tsx:24:  const [isRunning, setIsRunning] = useState(false);
+src/components/TestRunnerPanel.tsx:26:  const [isGateRunning, setIsGateRunning] = useState(false);
+src/components/TestRunnerPanel.tsx:28:  const [isGate045Running, setIsGate045Running] = useState(false);
+src/components/TestRunnerPanel.tsx:30:  const [isGate051Running, setIsGate051Running] = useState(false);
+src/components/TestRunnerPanel.tsx:32:  const [isGate052Running, setIsGate052Running] = useState(false);
+src/components/TestRunnerPanel.tsx:34:  const [isGate053Running, setIsGate053Running] = useState(false);
+src/components/TestRunnerPanel.tsx:36:  const [isGate054Running, setIsGate054Running] = useState(false);
+src/components/TestRunnerPanel.tsx:38:  const [isGate055Running, setIsGate055Running] = useState(false);
+src/components/TestRunnerPanel.tsx:40:  const [isGate056Running, setIsGate056Running] = useState(false);
+src/components/TestRunnerPanel.tsx:42:  const [isGate057Running, setIsGate057Running] = useState(false);
+src/components/TestRunnerPanel.tsx:44:  const [isGate058Running, setIsGate058Running] = useState(false);
+src/components/TestRunnerPanel.tsx:46:  const [isGate059Running, setIsGate059Running] = useState(false);
+src/components/TestRunnerPanel.tsx:48:  const [isGate060Running, setIsGate060Running] = useState(false);
+src/components/TestRunnerPanel.tsx:50:  const [isGate061Running, setIsGate061Running] = useState(false);
+src/components/TestRunnerPanel.tsx:52:  const [isGate062Running, setIsGate062Running] = useState(false);
+src/components/TestRunnerPanel.tsx:54:  const [isGate063Running, setIsGate063Running] = useState(false);
+src/components/TestRunnerPanel.tsx:56:  const [isGate064Running, setIsGate064Running] = useState(false);
+src/components/TestRunnerPanel.tsx:58:  const [isGate065Running, setIsGate065Running] = useState(false);
+src/components/TestRunnerPanel.tsx:60:  const [isGate066Running, setIsGate066Running] = useState(false);
+src/components/TestRunnerPanel.tsx:62:  const [isGate067Running, setIsGate067Running] = useState(false);
+src/components/TestRunnerPanel.tsx:64:  const [isGate068Running, setIsGate068Running] = useState(false);
+src/components/TestRunnerPanel.tsx:66:  const [isGate069Running, setIsGate069Running] = useState(false);
+src/components/TestRunnerPanel.tsx:68:  const [isGate070Running, setIsGate070Running] = useState(false);
+src/components/TestRunnerPanel.tsx:70:  const [isGate071Running, setIsGate071Running] = useState(false);
+src/components/TestRunnerPanel.tsx:72:  const [isGate072Running, setIsGate072Running] = useState(false);
+src/components/TestRunnerPanel.tsx:74:  const [isGate073Running, setIsGate073Running] = useState(false);
+src/components/TestRunnerPanel.tsx:76:  const [isGate074Running, setIsGate074Running] = useState(false);
+src/components/TestRunnerPanel.tsx:78:  const [isGate075Running, setIsGate075Running] = useState(false);
+src/components/TestRunnerPanel.tsx:80:  const [isGate076Running, setIsGate076Running] = useState(false);
+src/components/TestRunnerPanel.tsx:82:  const [isGate077Running, setIsGate077Running] = useState(false);
+src/components/TestRunnerPanel.tsx:84:  const [isGate078Running, setIsGate078Running] = useState(false);
+src/components/TestRunnerPanel.tsx:86:  const [isGate079Running, setIsGate079Running] = useState(false);
+src/components/TestRunnerPanel.tsx:88:  const [isGate080Running, setIsGate080Running] = useState(false);
+src/components/TestRunnerPanel.tsx:90:  const [isGate082Running, setIsGate082Running] = useState(false);
+src/components/TestRunnerPanel.tsx:92:  const [isGate083Running, setIsGate083Running] = useState(false);
+src/components/TestRunnerPanel.tsx:94:  const [isGate090Running, setIsGate090Running] = useState(false);
+src/components/TestRunnerPanel.tsx:96:  const [isGate091Running, setIsGate091Running] = useState(false);
+src/components/TestRunnerPanel.tsx:98:  const [isGate092Running, setIsGate092Running] = useState(false);
+src/components/TestRunnerPanel.tsx:100:  const [isGate093Running, setIsGate093Running] = useState(false);
+src/components/TestRunnerPanel.tsx:102:  const [isGate094Running, setIsGate094Running] = useState(false);
+src/components/TestRunnerPanel.tsx:104:  const [isGate094R1Running, setIsGate094R1Running] = useState(false);
+src/components/TestRunnerPanel.tsx:106:  const [isGate094R2Running, setIsGate094R2Running] = useState(false);
+src/components/TestRunnerPanel.tsx:108:  const [isGate095Running, setIsGate095Running] = useState(false);
+src/components/TestRunnerPanel.tsx:110:  const [isGate161Running, setIsGate161Running] = useState(false);
+src/components/TestRunnerPanel.tsx:113:  const [isGate201Running, setIsGate201Running] = useState(false);
+src/components/TestRunnerPanel.tsx:116:  const [isGate203Running, setIsGate203Running] = useState(false);
+src/components/TestRunnerPanel.tsx:119:  const [isGate202Running, setIsGate202Running] = useState(false);
+src/components/TestRunnerPanel.tsx:122:  const [isGate162Running, setIsGate162Running] = useState(false);
+src/components/TestRunnerPanel.tsx:1002:                    {Object.entries(gate045Result.verifications || {}).map(([name, status]) => (
+src/components/TestRunnerPanel.tsx:1027:                        ? 'Deterministic kinematics, real OCCT interference, and multi-body constraints verified with zero mock fallback.'
+src/components/TestRunnerPanel.tsx:1079:                    {Object.entries(gate051Result.verifications || {}).map(([name, status]) => (
+src/components/TestRunnerPanel.tsx:1104:                        ? 'Production parametric core, unit safety, design table execution, and full regressions (045.1 -> 050) verified with zero mock leakage.'
+src/components/TestRunnerPanel.tsx:1156:                    {Object.entries(gate052Result.verifications || {}).map(([name, status]) => (
+src/components/TestRunnerPanel.tsx:1181:                        ? 'Persistent topology naming, reference healing, evolution tracking, and full regressions (045.1 -> 051) verified with zero mock leakage.'
+src/components/TestRunnerPanel.tsx:1233:                    {Object.entries(gate053Result.verifications || {}).map(([name, status]) => (
+src/components/TestRunnerPanel.tsx:1258:                        ? 'Industrial constraint graph, variational solver, incremental sub-graph extraction, causality reports, and full regressions (045.1 -> 052) verified with zero mock leakage.'
+src/components/TestRunnerPanel.tsx:1311:                    {Object.entries(gate054Result.verifications || {}).map(([name, status]) => (
+src/components/TestRunnerPanel.tsx:1336:                        ? 'Class-A surface geometry engine, BSpline math core, surface operations, G0/G1/G2 continuity analysis, Zebra reflection maps, topology preservation, and full regressions (045.1 -> 053) verified with zero mock leakage.'
+src/components/TestRunnerPanel.tsx:1390:                    {Object.entries(gate055Result.verifications || {}).map(([name, status]) => (
+src/components/TestRunnerPanel.tsx:1415:                        ? 'Production assembly graph, 10 mate types, kinematic DOF solver, OCCT B-Rep interference/clearance engine, SECP-052 persistent topology references, and full regressions (045.1 -> 054) verified with zero mock leakage.'
+src/components/TestRunnerPanel.tsx:1469:                    {Object.entries(gate056Result.verifications || {}).map(([name, status]) => (
+src/components/TestRunnerPanel.tsx:1494:                        ? 'Topology-aware 14 manufacturing feature classes recognition, process planning, 4-tier DFM spectrum, and full regressions (045.1 -> 055) verified with zero mock leakage.'
+src/components/TestRunnerPanel.tsx:1548:                    {Object.entries(gate057Result.verifications || {}).map(([name, status]) => (
+src/components/TestRunnerPanel.tsx:1627:                    {Object.entries(gate058Result.verifications || {}).map(([name, status]) => (
+src/components/TestRunnerPanel.tsx:1706:                    {Object.entries(gate059Result.verifications || {}).map(([name, status]) => (
+src/components/TestRunnerPanel.tsx:1785:                    {Object.entries(gate060Result.verifications || {}).map(([name, status]) => (
+src/components/TestRunnerPanel.tsx:1863:                  {Object.entries(gate061Result.verifications || {}).map(([name, status]) => (
+src/components/TestRunnerPanel.tsx:1953:                  {JSON.stringify(gate062Result.sampleReport || gate062Result, null, 2)}
+src/components/TestRunnerPanel.tsx:1961:                  {Object.entries(gate062Result.verifications || {}).map(([name, status]) => (
+src/components/TestRunnerPanel.tsx:1979:                {gate062Result.sampleReport && (
+src/components/TestRunnerPanel.tsx:1984:                        {gate062Result.sampleReport.mean.toFixed(6)} mm
+src/components/TestRunnerPanel.tsx:1991:                          {gate062Result.sampleReport.controlLimits.ucl.toFixed(5)}
+src/components/TestRunnerPanel.tsx:1997:                          {gate062Result.sampleReport.controlLimits.lcl.toFixed(5)}
+src/components/TestRunnerPanel.tsx:2004:                        <span className="font-mono font-bold text-slate-200">{gate062Result.sampleReport.capability.cp.toFixed(3)}</span>
+src/components/TestRunnerPanel.tsx:2008:                        <span className="font-mono font-bold text-indigo-400">{gate062Result.sampleReport.capability.cpk.toFixed(3)}</span>
+src/components/TestRunnerPanel.tsx:2014:                          gate062Result.sampleReport.capability.status === 'CAPABLE' ? 'bg-emerald-400' : 'bg-rose-400'
+src/components/TestRunnerPanel.tsx:2017:                          Status: {gate062Result.sampleReport.capability.status}
+src/components/TestRunnerPanel.tsx:2021:                        {gate062Result.sampleReport.capability.interpretation}
+src/components/TestRunnerPanel.tsx:2031:                {gate062Result.sampleReport && (
+src/components/TestRunnerPanel.tsx:2036:                    {gate062Result.sampleReport.correlations.map((corr: any, idx: number) => (
+src/components/TestRunnerPanel.tsx:2060:                        gate062Result.sampleReport.mrbReviewRecommended 
+src/components/TestRunnerPanel.tsx:2064:                        <strong>MRB Control:</strong> {gate062Result.sampleReport.mrbReviewRecommended ? 'Review Recommended (Tool-Wear/Outliers Found)' : 'Process Fully Stable & In-Control'}
+src/components/TestRunnerPanel.tsx:2135:                  {Object.entries(gate063Result.verifications || {}).map(([name, status]) => (
+src/components/TestRunnerPanel.tsx:2152:                {gate063Result.sampleNcrReport && (
+src/components/TestRunnerPanel.tsx:2158:                        <div className="text-slate-400">Serial Code: <span className="text-slate-200 font-mono">{gate063Result.sampleNcrReport.partSerial}</span></div>
+src/components/TestRunnerPanel.tsx:2159:                        <div className="text-slate-400">Machine Point: <span className="text-slate-200 font-mono">{gate063Result.sampleNcrReport.machineId}</span></div>
+src/components/TestRunnerPanel.tsx:2160:                        <div className="text-slate-400">Action: <span className="text-emerald-400 font-bold">{gate063Result.sampleNcrReport.disposition}</span></div>
+src/components/TestRunnerPanel.tsx:2161:                        <div className="text-slate-400">CAPA Plan: <span className="text-slate-300 italic">{gate063Result.sampleNcrReport.capaAssigned}</span></div>
+src/components/TestRunnerPanel.tsx:2162:                        <div className="text-slate-400">Requal Status: <span className="text-emerald-400 font-bold underline">{gate063Result.sampleNcrReport.requalificationStatus}</span></div>
+src/components/TestRunnerPanel.tsx:2233:                  {Object.entries(gate064Result.verifications || {}).map(([name, status]) => (
+src/components/TestRunnerPanel.tsx:2250:                {gate064Result.sampleReleaseReport && (
+src/components/TestRunnerPanel.tsx:2256:                        <div className="text-slate-400">ID: <span className="text-slate-200 font-mono font-semibold">{gate064Result.sampleReleaseReport.releaseId}</span></div>
+src/components/TestRunnerPanel.tsx:2257:                        <div className="text-slate-400">Product: <span className="text-slate-200 font-mono">{gate064Result.sampleReleaseReport.productId}</span></div>
+src/components/TestRunnerPanel.tsx:2258:                        <div className="text-slate-400">CAD Revision: <span className="text-slate-200 font-mono">{gate064Result.sampleReleaseReport.cadRevision}</span></div>
+src/components/TestRunnerPanel.tsx:2260:                          gate064Result.sampleReleaseReport.decision === 'RELEASED'
+src/components/TestRunnerPanel.tsx:2263:                        }`}>{gate064Result.sampleReleaseReport.decision}</span></div>
+src/components/TestRunnerPanel.tsx:2264:                        <div className="text-[10px] text-slate-500 font-mono truncate mt-1 pt-1 border-t border-slate-800/60">Seal: {gate064Result.sampleReleaseReport.certificateHash}</div>
+src/components/TestRunnerPanel.tsx:2269:                        <div className="text-slate-400">Ledger: <span className="text-sky-300 font-mono font-semibold">{gate064Result.sampleReleaseReport.anchoredLedger}</span></div>
+src/components/TestRunnerPanel.tsx:2270:                        <div className="text-slate-400">Block Index: <span className="text-sky-300 font-mono font-semibold">#{gate064Result.sampleReleaseReport.ledgerBlockIndex}</span></div>
+src/components/TestRunnerPanel.tsx:2271:                        <div className="text-[10px] text-slate-500 font-mono truncate mt-1 pt-1 border-t border-slate-800/60">Anchor Sig: {gate064Result.sampleReleaseReport.ledgerAnchorSignature}</div>
+src/components/TestRunnerPanel.tsx:2342:                  {Object.entries(gate065Result.verifications || {}).map(([name, status]) => (
+src/components/TestRunnerPanel.tsx:2359:                {gate065Result.sampleAssetReport && (
+src/components/TestRunnerPanel.tsx:2365:                        <div className="text-slate-400">Asset: <span className="text-slate-200 font-mono font-semibold">{gate065Result.sampleAssetReport.assetId}</span></div>
+src/components/TestRunnerPanel.tsx:2366:                        <div className="text-slate-400">State: <span className="text-slate-200 font-mono">{gate065Result.sampleAssetReport.state}</span></div>
+src/components/TestRunnerPanel.tsx:2367:                        <div className="text-slate-400">Health Score: <span className="text-sky-400 font-mono font-bold">{gate065Result.sampleAssetReport.healthScore.toFixed(1)}%</span></div>
+src/components/TestRunnerPanel.tsx:2369:                          gate065Result.sampleAssetReport.decision === 'CONTINUE'
+src/components/TestRunnerPanel.tsx:2372:                        }`}>{gate065Result.sampleAssetReport.decision}</span></div>
+src/components/TestRunnerPanel.tsx:2373:                        <div className="text-[10px] text-slate-500 font-mono truncate mt-1 pt-1 border-t border-slate-800/60">Sig: {gate065Result.sampleAssetReport.signature}</div>
+src/components/TestRunnerPanel.tsx:2378:                        <div className="text-slate-400">Ledger: <span className="text-sky-300 font-mono font-semibold">{gate065Result.sampleAssetReport.anchor.type}</span></div>
+src/components/TestRunnerPanel.tsx:2379:                        <div className="text-slate-400">Block Index: <span className="text-sky-300 font-mono font-semibold">#{gate065Result.sampleAssetReport.anchor.block}</span></div>
+src/components/TestRunnerPanel.tsx:2380:                        <div className="text-[10px] text-slate-500 font-mono truncate mt-1 pt-1 border-t border-slate-800/60">Anchor Sig: {gate065Result.sampleAssetReport.anchor.sig}</div>
+src/components/TestRunnerPanel.tsx:2451:                  {Object.entries(gate066Result.verifications || {}).map(([name, status]) => (
+src/components/TestRunnerPanel.tsx:2468:                {gate066Result.sampleMaintenanceReport && (
+src/components/TestRunnerPanel.tsx:2474:                        <div className="text-slate-400">Asset: <span className="text-slate-200 font-mono font-semibold">{gate066Result.sampleMaintenanceReport.assetId}</span></div>
+src/components/TestRunnerPanel.tsx:2475:                        <div className="text-slate-400">Work Order: <span className="text-slate-200 font-mono">{gate066Result.sampleMaintenanceReport.workOrderId}</span></div>
+src/components/TestRunnerPanel.tsx:2476:                        <div className="text-slate-400">Verification: <span className="text-emerald-400 font-mono font-bold">{gate066Result.sampleMaintenanceReport.verification}</span></div>
+src/components/TestRunnerPanel.tsx:2478:                          gate066Result.sampleMaintenanceReport.rts === 'AUTHORIZED'
+src/components/TestRunnerPanel.tsx:2481:                        }`}>{gate066Result.sampleMaintenanceReport.rts}</span></div>
+src/components/TestRunnerPanel.tsx:2482:                        <div className="text-[10px] text-slate-500 font-mono truncate mt-1 pt-1 border-t border-slate-800/60">Signature: {gate066Result.sampleMaintenanceReport.signature}</div>
+src/components/TestRunnerPanel.tsx:2487:                        <div className="text-slate-400">Technician: <span className="text-emerald-300 font-mono font-semibold">{gate066Result.sampleMaintenanceReport.technician}</span></div>
+src/components/TestRunnerPanel.tsx:2488:                        <div className="text-slate-400">Closure Status: <span className="text-emerald-300 font-mono font-semibold">{gate066Result.sampleMaintenanceReport.status}</span></div>
+src/components/TestRunnerPanel.tsx:2559:                  {Object.entries(gate067Result.verifications || {}).map(([name, status]) => (
+src/components/TestRunnerPanel.tsx:2653:                  {Object.entries(gate068Result.verifications || {}).map(([name, status]) => (
+src/components/TestRunnerPanel.tsx:2747:                  {Object.entries(gate069Result.verifications || {}).map(([name, status]) => (
+src/components/TestRunnerPanel.tsx:2841:                  {Object.entries(gate070Result.verifications || {}).map(([name, status]) => (
+src/components/TestRunnerPanel.tsx:2935:                  {Object.entries(gate071Result.verifications || {}).map(([name, status]) => (
+src/components/TestRunnerPanel.tsx:3029:                  {Object.entries(gate072Result.verifications || {}).map(([name, status]) => (
+src/components/TestRunnerPanel.tsx:3123:                  {Object.entries(gate073Result.verifications || {}).map(([name, status]) => (
+src/components/TestRunnerPanel.tsx:3217:                  {Object.entries(gate074Result.verifications || {}).map(([name, status]) => (
+src/components/TestRunnerPanel.tsx:3277:              Zero-dependency clean-room reference solver, 7-stage Merkle-like hash chain, blind mutation classification, and negative-control calibration.
+src/components/TestRunnerPanel.tsx:3420:                        Baseline: {m.baselineHash ? m.baselineHash.substring(0, 8) : 'N/A'} → Mut: {m.mutatedInputHash ? m.mutatedInputHash.substring(0, 8) : 'N/A'}
+src/components/TestRunnerPanel.tsx:3854:                  {gate077Result.benchmarks.map((b: any) => (
+src/components/TestRunnerPanel.tsx:3855:                    <div key={b.benchmarkId} className="p-3 bg-slate-950 border border-slate-800 rounded-lg space-y-1 font-mono text-xs">
+src/components/TestRunnerPanel.tsx:3864:                        Calc: {typeof b.calculatedValue === 'number' ? b.calculatedValue.toExponential(4) : b.calculatedValue} | Target: {typeof b.referenceTargetValue === 'number' ? b.referenceTargetValue.toExponential(4) : b.referenceTargetValue}
+src/components/TestRunnerPanel.tsx:4036:                  {gate078Result.benchmarks.map((b: any) => (
+src/components/TestRunnerPanel.tsx:4037:                    <div key={b.benchmarkId} className="p-3 bg-slate-950 border border-slate-800 rounded-lg space-y-1 font-mono text-xs">
+src/components/TestRunnerPanel.tsx:4046:                        Calc: {typeof b.calculatedValue === 'number' ? b.calculatedValue.toExponential(4) : b.calculatedValue} | Target: {typeof b.referenceTargetValue === 'number' ? b.referenceTargetValue.toExponential(4) : b.referenceTargetValue}
+src/components/TestRunnerPanel.tsx:4249:                {gate079Result.benchmarks.map((b: any) => (
+src/components/TestRunnerPanel.tsx:4250:                  <div key={b.benchmarkId} className="p-3 bg-slate-950 border border-slate-800 rounded-lg space-y-1.5 text-xs font-mono">
+src/components/TestRunnerPanel.tsx:4428:                {gate080Result.benchmarks.map((b: any) => (
+src/components/TestRunnerPanel.tsx:4429:                  <div key={b.benchmarkId} className="p-3 bg-slate-950 border border-slate-800 rounded-lg space-y-1.5 text-xs font-mono">
+src/components/TestRunnerPanel.tsx:4563:                  <div className="text-slate-300 font-semibold">{gate082Result.sampleSolution?.mesh?.cells?.length} Cells</div>
+src/components/TestRunnerPanel.tsx:4564:                  <div className="text-[10px] text-emerald-400 font-bold">{gate082Result.sampleSolution?.flowRegime} (Re = {gate082Result.sampleSolution?.reynoldsNumber?.toFixed(0)})</div>
+src/components/TestRunnerPanel.tsx:4568:                  <div className="text-slate-300 font-semibold">{gate082Result.sampleSolution?.totalIterations} Iterations</div>
+src/components/TestRunnerPanel.tsx:4569:                  <div className="text-[10px] text-emerald-400 font-bold">Residual = {gate082Result.sampleSolution?.finalContinuityResidual?.toExponential(2)}</div>
+src/components/TestRunnerPanel.tsx:4573:                  <div className="text-slate-300 font-semibold">{gate082Result.sampleSolution?.monitors?.pressureDropPa?.toFixed(4)} Pa</div>
+src/components/TestRunnerPanel.tsx:4578:                  <div className="text-slate-300 font-semibold">Cd = {gate082Result.sampleSolution?.monitors?.dragCoefficientCd?.toFixed(4)}</div>
+src/components/TestRunnerPanel.tsx:4579:                  <div className="text-[10px] text-slate-400">Cl = {gate082Result.sampleSolution?.monitors?.liftCoefficientCl?.toFixed(4)}</div>
+src/components/TestRunnerPanel.tsx:4633:                {gate082Result.benchmarks?.map((b: any) => (
+src/components/TestRunnerPanel.tsx:4634:                  <div key={b.benchmarkId} className="p-3 bg-slate-950 border border-slate-800 rounded-lg space-y-1.5 text-xs font-mono">
+src/components/TestRunnerPanel.tsx:4808:                {gate083Result.benchmarks?.map((bm: any) => (
+src/components/TestRunnerPanel.tsx:4809:                  <div key={bm.benchmarkId} className="p-3 bg-slate-950 border border-slate-800 rounded-lg space-y-1.5 text-xs font-mono">
+src/components/TestRunnerPanel.tsx:5225:                    : 'Verification failure. Mismatch detected between native and reference geometry execution or audit hash error.'}
+src/components/TestRunnerPanel.tsx:5252:                      [{gate095Result.metrics.worstCase.reference.map((v: number) => v.toExponential(12)).join(', ')}]
+src/components/TestRunnerPanel.tsx:5335:                {Math.round(gate094R1Result.metrics.benchmarks[2]?.throughput).toLocaleString()} p/s
+src/components/TestRunnerPanel.tsx:5449:                    {gate094R1Result.metrics.benchmarks.map((b: any, idx: number) => (
+src/components/GPULinearAlgebraWorkbenchPanel.tsx:35:  const [backend] = useState(() => new GPULinearAlgebraBackend('AUTO'));
+src/components/GPULinearAlgebraWorkbenchPanel.tsx:59:  const [benchmarkReport, setBenchmarkReport] = useState<LinearAlgebraBenchmarkReport | null>(null);
+src/components/GPULinearAlgebraWorkbenchPanel.tsx:67:  useEffect(() => {
+src/components/GPULinearAlgebraWorkbenchPanel.tsx:770:            {benchmarkReport ? (
+src/components/GPULinearAlgebraWorkbenchPanel.tsx:776:                      {benchmarkReport.summary.maxGFLOPS.toFixed(2)} GFLOPS
+src/components/GPULinearAlgebraWorkbenchPanel.tsx:782:                      {benchmarkReport.summary.highestSpeedup.toFixed(2)}x
+src/components/GPULinearAlgebraWorkbenchPanel.tsx:788:                      {benchmarkReport.summary.averageTransferOverheadPercent.toFixed(1)}%
+src/components/GPULinearAlgebraWorkbenchPanel.tsx:813:                      {benchmarkReport.results.map((r) => (
+src/components/GPULinearAlgebraWorkbenchPanel.tsx:814:                        <tr key={r.benchmarkId} className="hover:bg-slate-800/30 transition-colors">
+src/components/GPULinearAlgebraWorkbenchPanel.tsx:831:                Click "Run Full Benchmark Suite" to benchmark dense, sparse and reduction linear algebra workloads.
+src/components/ProductionFailureRecoveryDashboard.tsx:68:  useEffect(() => {
+src/components/ProductionFailureRecoveryDashboard.tsx:135:      default:
+src/components/ProductionFailureRecoveryDashboard.tsx:155:      default:
+src/components/ProductionFailureRecoveryDashboard.tsx:168:  }) || [];
+src/components/ProductionFailureRecoveryDashboard.tsx:382:                {activeEvidencePackage?.verification.rtoActualSeconds ?? 0.045} s
+src/components/ProductionFailureRecoveryDashboard.tsx:398:                {activeEvidencePackage?.verification.dataLossAmount ?? 0} B
+src/components/ProductionFailureRecoveryDashboard.tsx:406:                {activeEvidencePackage?.verification.evidenceLossAmount ?? 0}
+src/components/ProductionFailureRecoveryDashboard.tsx:595:                placeholder="Search invariant tests..."
+src/components/FeatureTreePanel.tsx:23:  const features = useMemo(() => {
+src/components/FeatureTreePanel.tsx:40:      default: return <Box className="w-3.5 h-3.5" />;
+src/components/GenerativeDesignPanel.tsx:20:  const modelStats = useMemo(() => {
+src/components/GenerativeDesignPanel.tsx:103:            Generates 10 / 100 / 1000 candidate lattice variations using a seed-reproducible PRNG, verifies stress & deflection via canonical FEA solvers, and applies the B-Rep CAD Mutation Gate.
+src/components/GenerativeDesignPanel.tsx:186:              <span className="text-[10px] text-amber-400 block font-mono">Seed: {summary.seed} (Deterministic)</span>
+src/components/MachineTwinPanel.tsx:46:  const [machiningCoords, setMachiningCoords] = useState({
+src/components/MachineTwinPanel.tsx:70:  useEffect(() => {
+src/components/MachineTwinPanel.tsx:127:  useEffect(() => {
+src/components/MachineTwinPanel.tsx:186:      'Evaluating collision boundary tags for bed, tools, fixtures, and workpieces...',
+src/components/MachineTwinPanel.tsx:642:                  placeholder="Filter assertions..."
+src/components/MachineTwinPanel.tsx:645:                  className="bg-slate-900 border border-slate-750 text-xs px-2.5 py-1 rounded text-slate-300 focus:outline-none focus:border-cyan-500 placeholder-slate-500 font-mono"
+src/components/BranchVariantDesignPanel.tsx:17:  const [engine] = useState(() => new BranchVariantEngine());
+src/components/BranchVariantDesignPanel.tsx:64:  // Load and refresh initial state
+src/components/BranchVariantDesignPanel.tsx:84:  useEffect(() => {
+src/components/BranchVariantDesignPanel.tsx:85:    // Automatically create experimental branch in engine initially if not exists
+src/components/BranchVariantDesignPanel.tsx:113:  useEffect(() => {
+src/components/BranchVariantDesignPanel.tsx:190:      setMergeFeedback(`Merge Candidate ${candidate.mergeCandidateId} initialized. Conflict evaluation complete.`);
+src/components/BranchVariantDesignPanel.tsx:313:  // Select variant for product baseline
+src/components/BranchVariantDesignPanel.tsx:317:      setMergeFeedback(`Variant ${vId} is now officially SELECTED for product baseline! Config baselines frozen.`);
+src/components/BranchVariantDesignPanel.tsx:470:                  placeholder="e.g. LIGHTWEIGHT"
+src/components/BranchVariantDesignPanel.tsx:508:                  placeholder="Define engineering rationale..."
+src/components/BranchVariantDesignPanel.tsx:735:                              placeholder="Custom value"
+src/components/BranchVariantDesignPanel.tsx:781:                  placeholder="e.g. LIGHT-CFD-OPTIMIZED"
+src/components/FinalEngineeringClosureForensicDashboard.tsx:31:  const engine = useMemo(() => FinalEngineeringClosureForensicAuditEngine.getInstance(), []);
+src/components/FinalEngineeringClosureForensicDashboard.tsx:40:  const [isRunning, setIsRunning] = useState(false);
+src/components/FinalEngineeringClosureForensicDashboard.tsx:57:  const selectedStage = useMemo(() => {
+src/components/ParametricModelingPanel.tsx:21:  const [model, setModel] = useState<ParametricModel>(() => ParametricEngine.createDefaultParametricBox());
+src/components/ParametricModelingPanel.tsx:98:              const def = ParametricEngine.createDefaultParametricBox();
+src/components/ParametricModelingPanel.tsx:215:          {(model?.constraints || []).map(c => (
+src/components/ParametricModelingPanel.tsx:237:          <span className="text-indigo-400 font-bold">{(model?.activeSolid?.volumeM3 ?? 0.03).toFixed(6)} m³</span>
+src/components/ParametricModelingPanel.tsx:241:          <span className="text-emerald-400 font-bold">{(model?.activeSolid?.surfaceAreaM2 ?? 0.62).toFixed(4)} m²</span>
+src/components/DeterministicReproductionDashboard.tsx:75:  useEffect(() => {
+src/components/DeterministicReproductionDashboard.tsx:132:      default:
+src/components/DeterministicReproductionDashboard.tsx:150:      default:
+src/components/DeterministicReproductionDashboard.tsx:166:    }) || [];
+src/components/DeterministicReproductionDashboard.tsx:317:                <option value="UNSEEDED_DRIFT">Drift: Unseeded PRNG Randomness</option>
+src/components/DeterministicReproductionDashboard.tsx:446:                      ? `Seeded PRNG (Seed: ${activeFingerprint.randomStateFingerprint.initialSeed})`
+src/components/DeterministicReproductionDashboard.tsx:490:                  {activeComparison?.scalarDifferences.filter(s => s.passedTolerance).length || 0} /{' '}
+src/components/DeterministicReproductionDashboard.tsx:491:                  {activeComparison?.scalarDifferences.length || 0} PASSED
+src/components/DeterministicReproductionDashboard.tsx:655:                placeholder="Search determinism invariants..."
+src/components/MaterialsPanel.tsx:17:  const hasGeometry = (context?.geometry?.solids ?? 0) > 0 || Boolean(activeSolid);
+src/components/MaterialsPanel.tsx:22:  const massKg = hasGeometry ? (context?.geometry?.mass ?? 0) : 0;
+src/components/MaterialsPanel.tsx:23:  const volumeMm3 = hasGeometry ? (context?.geometry?.volume ?? 0) : 0;
+src/components/CadIndustrialModels.ts:980:  const block = new THREE.Mesh(blockGeo, new THREE.MeshStandardMaterial({ color: 0x334155, transparent: true, opacity: config.blockOpacity || 0.4, wireframe }));
+src/components/PropertiesPanel.tsx:38:  const selectedFeature = useMemo(() => {
+src/components/PropertiesPanel.tsx:39:    if (!canonicalDocument || !selectedFeatureId) return null;
+src/components/PropertiesPanel.tsx:47:  useEffect(() => {
+src/components/PropertiesPanel.tsx:62:  const parameters = selectedFeature.parameters || {};
+src/components/PropertiesPanel.tsx:77:    if (!canonicalDocument || !onCanonicalUpdate) return;
+src/components/PropertiesPanel.tsx:261:            {(selectedFeature.dependencyIds || selectedFeature.parents || []).length === 0 ? (
+src/components/PropertiesPanel.tsx:264:              (selectedFeature.dependencyIds || selectedFeature.parents || []).map((depId: string) => (
+src/components/PropertiesPanel.tsx:277:          <DetailRow label="Created In" value={`Revision ${selectedFeature.sequence || 0}`} />
+src/components/CaeCfdPanel.tsx:45:  const [modelMode, setModelMode] = useState<'ACTIVE_CAD' | 'BENCHMARK'>('ACTIVE_CAD');
+src/components/CaeCfdPanel.tsx:54:  const geometryStats = useMemo(() => {
+src/components/CaeCfdPanel.tsx:55:    if (modelMode === 'BENCHMARK') {
+src/components/CaeCfdPanel.tsx:102:  }, [modelMode, activeSolid, hasActiveGeometry, canonicalDocument]);
+src/components/CaeCfdPanel.tsx:114:  const truthDescriptor = useMemo(() => {
+src/components/CaeCfdPanel.tsx:125:      isBenchmarkMode: modelMode === 'BENCHMARK'
+src/components/CaeCfdPanel.tsx:127:  }, [modelMode, hasActiveGeometry, canonicalDocument?.documentId, canonicalDocument?.revision, solution, isSolving]);
+src/components/CaeCfdPanel.tsx:130:  const aeroForces = useMemo(() => {
+src/components/CaeCfdPanel.tsx:234:                modelMode === 'ACTIVE_CAD'
+src/components/CaeCfdPanel.tsx:245:                modelMode === 'BENCHMARK'
+src/components/IndustrialOsV3Panel.tsx:15:  const [osInstance] = useState(() => new EngineeringObjectOS());
+src/components/IndustrialOsV3Panel.tsx:16:  const [stateMachine] = useState(() => EngineeringStateMachine.getInstance());
+src/components/IndustrialOsV3Panel.tsx:17:  const [eventStore] = useState(() => EngineeringEventStore.getInstance());
+src/components/IndustrialOsV3Panel.tsx:18:  const [evidenceBus] = useState(() => EvidenceBus.getInstance());
+src/components/IndustrialOsV3Panel.tsx:21:  const [objectId, setObjectId] = useState('OBJ-CAD-190');
+src/components/IndustrialOsV3Panel.tsx:24:  const [creator, setCreator] = useState('lead-designer');
+src/components/IndustrialOsV3Panel.tsx:25:  const [partNumber, setPartNumber] = useState('SECP-190-PN');
+src/components/IndustrialOsV3Panel.tsx:31:  const [transitionReason, setTransitionReason] = useState('Design finalized and parsed');
+src/components/IndustrialOsV3Panel.tsx:32:  const [hasEvidence, setHasEvidence] = useState(false);
+src/components/IndustrialOsV3Panel.tsx:37:  const [isRunningGate, setIsRunningGate] = useState(false);
+src/components/IndustrialOsV3Panel.tsx:40:  const [searchQuery, setSearchQuery] = useState('');
+src/components/IndustrialOsV3Panel.tsx:43:  const [refreshKey, setRefreshKey] = useState(0);
+src/components/IndustrialOsV3Panel.tsx:49:  useEffect(() => {
+src/components/IndustrialOsV3Panel.tsx:55:  // Clean initialization
+src/components/IndustrialOsV3Panel.tsx:115:            // Inject mock evidenceRef for UI visual completion
+src/components/IndustrialOsV3Panel.tsx:251:              initial={{ opacity: 0, y: 5 }}
+src/components/IndustrialOsV3Panel.tsx:415:                      <div className="relative flex-1 sm:flex-initial">
+src/components/IndustrialOsV3Panel.tsx:419:                          placeholder="Search nodes..."
+src/components/IndustrialOsV3Panel.tsx:560:              initial={{ opacity: 0, y: 5 }}
+src/components/IndustrialOsV3Panel.tsx:646:              initial={{ opacity: 0, y: 5 }}
+src/components/IndustrialOsV3Panel.tsx:721:                        Click the &quot;Run 16-Point Integration Gate&quot; button to launch deterministic, non-mocked verification of the SECP Industrial OS v3 Architecture.
+src/components/IndustrialOsV3Panel.tsx:774:              initial={{ opacity: 0, y: 5 }}
+src/components/IndustrialOsV3Panel.tsx:839:        <span className="flex items-center gap-1"><ShieldCheck className="w-3.5 h-3.5 text-emerald-400" /> All 13 core systems fully unified. No mocks.</span>
+src/components/ProductionSecurityAuditDashboard.tsx:54:  const engine = useMemo(() => ProductionSecurityAuditEngine.getInstance(), []);
+src/components/ProductionSecurityAuditDashboard.tsx:67:  useEffect(() => {
+src/components/ProductionSecurityAuditDashboard.tsx:78:  const filteredTests = useMemo(() => {
+src/components/ProductionSecurityAuditDashboard.tsx:154:              {auditSummary?.passedCount ?? 0} <span className="text-xs text-slate-500">/ {auditSummary?.totalTests ?? 208}</span>
+src/components/ProductionSecurityAuditDashboard.tsx:287:                  placeholder="PIN..."
+src/components/ProductionSecurityAuditDashboard.tsx:298:                  placeholder="Reason..."
+src/components/ProductionSecurityAuditDashboard.tsx:513:                placeholder="Search across 208 invariants..."
+src/components/ProductionSecurityAuditDashboard.tsx:516:                className="w-full bg-slate-950 border border-slate-700 rounded-lg pl-9 pr-4 py-1.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500"
+src/components/EnterprisePLMPanel.tsx:10:  const [isInitializing, setIsInitializing] = useState(false);
+src/components/EnterprisePLMPanel.tsx:19:  useEffect(() => {
+src/components/EnterprisePLMPanel.tsx:25:    await MasterPLMManager.initializeEnterpriseEnvironment();
+src/components/EnterprisePLMPanel.tsx:42:      default: return 'text-slate-400 bg-slate-400/10 border-slate-400/20';
+src/components/EnterprisePLMPanel.tsx:53:      default: return <Settings className="w-3.5 h-3.5" />;
+src/components/EcoManagementPanel.tsx:17:  const [engine] = useState(() => new EcoManagementEngine());
+src/components/EcoManagementPanel.tsx:42:  const [benchmarkPassed, setBenchmarkPassed] = useState<boolean | null>(null);
+src/components/EcoManagementPanel.tsx:43:  const [benchmarkChecks, setBenchmarkChecks] = useState<any[]>([]);
+src/components/EcoManagementPanel.tsx:56:  useEffect(() => {
+src/components/EcoManagementPanel.tsx:230:      {benchmarkPassed !== null && (
+src/components/EcoManagementPanel.tsx:231:        <div className={`p-5 rounded-lg border flex flex-col md:flex-row md:items-center justify-between gap-4 ${benchmarkPassed ? 'bg-emerald-950/10 border-emerald-500/30 text-emerald-400' : 'bg-rose-950/10 border-rose-500/30 text-rose-400'}`}>
+src/components/EcoManagementPanel.tsx:233:            {benchmarkPassed ? <CheckCircle2 className="w-6 h-6 mt-0.5 flex-shrink-0 text-emerald-500" /> : <XCircle className="w-6 h-6 mt-0.5 flex-shrink-0 text-rose-500" />}
+src/components/EcoManagementPanel.tsx:235:              <h3 className="font-semibold text-lg">{benchmarkPassed ? 'Acceptance Gate Passed' : 'Acceptance Gate Failed'}</h3>
+src/components/EcoManagementPanel.tsx:242:            {benchmarkChecks.map((c, i) => (
+src/components/EcoManagementPanel.tsx:312:                placeholder="Search by ID, Title..."
+src/components/EcoManagementPanel.tsx:422:                  placeholder="Geometric parameters alterations..."
+src/components/EcoManagementPanel.tsx:435:                  placeholder="e.g. Centrifugal load margin analysis"
+src/components/EcoManagementPanel.tsx:447:                  placeholder="e.g. Modal tuning mode shape analysis"
+src/components/EcoManagementPanel.tsx:458:                  placeholder="e.g. Raw material cost optimization"
+src/components/EcoManagementPanel.tsx:589:                      onClick={() => handleTransition('RELEASED', 'Promoting baseline copy to Released revision level')}
+src/components/EcoManagementPanel.tsx:813:                        placeholder="Define review comments..."
+src/components/fem/FemVerificationWorkspace.tsx:12:  const [isRunning, setIsRunning] = useState(false);
+src/components/fem/FemVerificationWorkspace.tsx:82:                <motion.div key={selectedTest.modelName} initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} className="space-y-6">
+src/components/fem/FemVerificationWorkspace.tsx:92:                      <StatBlock label="Solver Residual" val={(selectedTest.pipelineReport.analysisResults.residualNorm || 0).toExponential(2)} />
+src/components/CertificationPanel.tsx:14:  const [downloadedCert, setDownloadedCert] = useState(false);
+src/components/CertificationPanel.tsx:17:  const [isAuditing164, setIsAuditing164] = useState(false);
+src/components/CertificationPanel.tsx:19:  const [isAuditing165, setIsAuditing165] = useState(false);
+src/components/CertificationPanel.tsx:340:                      Simulates a post-issuance engineering change order (ECO), modifying the design revision and revoking the certified baseline on the evidence ledger.
+src/components/CertificationPanel.tsx:354:                      <div className="flex items-baseline justify-between">
+src/components/DigitalThreadPanel.tsx:20:  const service = useMemo(() => DigitalThreadService.getInstance(), []);
+src/components/DigitalThreadPanel.tsx:37:  const metrics = useMemo(() => service.getMetrics('PRJ-AERO-001'), [service, renderTick]);
+src/components/DigitalThreadPanel.tsx:38:  const allNodes = useMemo(() => service.getAllNodes(), [service, renderTick]);
+src/components/DigitalThreadPanel.tsx:39:  const allEdges = useMemo(() => service.getAllEdges(), [service, renderTick]);
+src/components/DigitalThreadPanel.tsx:40:  const requirements = useMemo(() => service.getRequirementCoverage('PRJ-AERO-001'), [service, renderTick]);
+src/components/DigitalThreadPanel.tsx:41:  const consistency = useMemo(() => service.evaluateConsistency(), [service, renderTick]);
+src/components/DigitalThreadPanel.tsx:43:  const selectedNode = useMemo(() => service.getNode(selectedNodeId), [service, selectedNodeId, renderTick]);
+src/components/DigitalThreadPanel.tsx:44:  const nodeLineage = useMemo(() => {
+src/components/DigitalThreadPanel.tsx:49:  const impactReport = useMemo(() => {
+src/components/DigitalThreadPanel.tsx:54:  const projectedData = useMemo(() => {
+src/components/DigitalThreadPanel.tsx:104:      default: return 'bg-slate-900 text-slate-300 border-slate-700';
+src/components/DigitalThreadPanel.tsx:146:                service.seedAerospaceLifecycle();
+src/components/DigitalThreadPanel.tsx:152:              Re-seed Lifecycle
+src/components/DigitalThreadPanel.tsx:299:                    placeholder="Search node ID, title, or owner..."
+src/components/DigitalThreadPanel.tsx:300:                    className="bg-slate-950 border border-slate-800 rounded-lg px-3 py-1.5 text-xs text-white placeholder-slate-500 w-full focus:outline-none focus:border-indigo-500"
+src/components/DigitalThreadPanel.tsx:463:                          {(nodeLineage?.edges || [])
+src/components/DigitalThreadPanel.tsx:880:                        placeholder="Search gate assertions..."
+src/components/DigitalThreadPanel.tsx:881:                        className="bg-slate-950 border border-slate-800 rounded-lg px-3 py-1.5 text-xs text-white placeholder-slate-500 w-full focus:outline-none focus:border-indigo-500"
+src/components/DigitalThreadPanel.tsx:905:                    {(gateReport?.results || [])
+src/components/GCodeVerificationPanel.tsx:21:  const machineEngine = useMemo(() => new MachineProfileEngine(), []);
+src/components/GCodeVerificationPanel.tsx:22:  const controllerEngine = useMemo(() => new ControllerProfileEngine(), []);
+src/components/GCodeVerificationPanel.tsx:30:  const samplePrograms: Record<string, { name: string; description: string; gcode: string }> = {
+src/components/GCodeVerificationPanel.tsx:93:  const [gcodeText, setGcodeText] = useState<string>(samplePrograms.valid5Axis.gcode);
+src/components/GCodeVerificationPanel.tsx:100:  const baselineToolpath: MachineAxisToolpath = useMemo(() => ({
+src/components/GCodeVerificationPanel.tsx:109:      reference: "CAM 5-Axis Baseline",
+src/components/GCodeVerificationPanel.tsx:165:        sourceToolpathId: baselineToolpath.toolpathId,
+src/components/GCodeVerificationPanel.tsx:202:          reference: "Live Interactive Verification Run",
+src/components/GCodeVerificationPanel.tsx:209:      const verifier = new GCodeVerifierInstance(contract, machineProfile, controllerProfile, baselineToolpath);
+src/components/GCodeVerificationPanel.tsx:330:                  {Object.entries(samplePrograms).map(([key, p]) => (
+src/components/HardwareAccelerationWorkbenchPanel.tsx:24:  const [activeTab, setActiveTab] = useState<'hardware' | 'benchmark' | 'numerical' | 'evidence' | 'gate'>('hardware');
+src/components/HardwareAccelerationWorkbenchPanel.tsx:36:  useEffect(() => {
+src/components/HardwareAccelerationWorkbenchPanel.tsx:196:          onClick={() => setActiveTab('benchmark')}
+src/components/HardwareAccelerationWorkbenchPanel.tsx:198:            activeTab === 'benchmark' ? 'bg-slate-800 text-emerald-400 border border-slate-700' : 'text-slate-400 hover:text-white'
+src/components/HardwareAccelerationWorkbenchPanel.tsx:308:      {activeTab === 'benchmark' && (
+src/components/HardwareAccelerationWorkbenchPanel.tsx:431:                <div className="text-slate-600 italic">No evidence recorded yet. Run live GPU benchmarks or acceptance gate.</div>
+src/components/ShaftEngineeringWorkspace.tsx:106:  const currentShaft: ShaftDefinition = useMemo(() => {
+src/components/ShaftEngineeringWorkspace.tsx:124:  useEffect(() => {
+src/components/ShaftEngineeringWorkspace.tsx:648:                        onChange={e => handleSectionChange(idx, 'diameter', parseFloat(e.target.value) || 0)}
+src/components/ShaftEngineeringWorkspace.tsx:657:                        onChange={e => handleSectionChange(idx, 'length', parseFloat(e.target.value) || 0)}
+src/components/ShaftEngineeringWorkspace.tsx:774:                  onChange={e => setAppliedBendingMoment(parseFloat(e.target.value) || 0)}
+src/components/ShaftEngineeringWorkspace.tsx:783:                  onChange={e => setAppliedTorsionalMoment(parseFloat(e.target.value) || 0)}
+src/components/ShaftEngineeringWorkspace.tsx:792:                  onChange={e => setAppliedAxialForce(parseFloat(e.target.value) || 0)}
+src/components/NaturalLanguageCADWorkbenchPanel.tsx:19:  const [service] = useState(() => new NaturalLanguageCADService());
+src/components/NaturalLanguageCADWorkbenchPanel.tsx:20:  const [promptInput, setPromptInput] = useState('Create a motor mount with 8 mm thickness and three mounting holes.');
+src/components/NaturalLanguageCADWorkbenchPanel.tsx:21:  const [nlEditInput, setNlEditInput] = useState('change thickness to 10 mm');
+src/components/NaturalLanguageCADWorkbenchPanel.tsx:117:              placeholder="e.g., Create a motor mount with 8 mm thickness and three mounting holes."
+src/components/NaturalLanguageCADWorkbenchPanel.tsx:200:                placeholder="e.g., change thickness to 10 mm"
+src/components/WorkerParallelismWorkbenchPanel.tsx:41:  const [scheduler] = useState(() => new EngineeringWorkerScheduler(4, 300));
+src/components/WorkerParallelismWorkbenchPanel.tsx:57:  // Transfer benchmark
+src/components/WorkerParallelismWorkbenchPanel.tsx:60:  useEffect(() => {
+src/components/WorkerParallelismWorkbenchPanel.tsx:64:  useEffect(() => {
+src/components/WorkerParallelismWorkbenchPanel.tsx:69:  useEffect(() => {
+src/components/WorkerParallelismWorkbenchPanel.tsx:106:    const res = scheduler.getPool().benchmarkTransfer(10 * 1024 * 1024); // 10MB
+src/components/WorkerParallelismWorkbenchPanel.tsx:764:                  Run a workload or benchmark to generate concurrency execution intervals.
+src/components/ProcessTwinPanel.tsx:80:  const [processStats, setProcessStats] = useState({
+src/components/ProcessTwinPanel.tsx:101:  useEffect(() => {
+src/components/ProcessTwinPanel.tsx:183:  useEffect(() => {
+src/components/ProcessTwinPanel.tsx:213:      'Mapping tool offsets and dynamic fixture clamping states...',
+src/components/ProcessTwinPanel.tsx:270:  const filteredAssertions = (gateReport?.details || []).filter(item => {
+src/components/ProcessTwinPanel.tsx:660:              <div className="text-3xl font-extrabold tracking-tight font-mono text-slate-100 flex items-baseline gap-1.5">
+src/components/ProcessTwinPanel.tsx:691:              <div className="text-3xl font-extrabold tracking-tight font-mono text-slate-100 flex items-baseline gap-1.5">
+src/components/ProcessTwinPanel.tsx:724:              <div className="text-3xl font-extrabold tracking-tight font-mono text-slate-100 flex items-baseline gap-1.5">
+src/components/ProcessTwinPanel.tsx:757:              <div className="text-2xl font-extrabold tracking-tight font-mono text-slate-100 flex items-baseline gap-1.5">
+src/components/ProcessTwinPanel.tsx:788:              <div className="text-3xl font-extrabold tracking-tight font-mono text-slate-100 flex items-baseline gap-1.5">
+src/components/ProcessTwinPanel.tsx:825:              <div className="text-2xl font-extrabold tracking-tight font-mono text-slate-100 flex items-baseline gap-1.5">
+src/components/ProcessTwinPanel.tsx:951:                  fixture: { fixtureId: 'FIX-42', fixtureRevision: 'v1', fixtureConfiguration: 'CLAMP-CONFIG' },
+src/components/ProcessTwinPanel.tsx:1102:                  placeholder="Filter assertions..."
+src/components/ProcessTwinPanel.tsx:1105:                  className="bg-slate-900 border border-slate-750 text-xs px-2.5 py-1 rounded text-slate-300 focus:outline-none focus:border-indigo-500 placeholder-slate-500 font-mono"
+src/components/Professional3DViewportPanel.tsx:8:import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+src/components/Professional3DViewportPanel.tsx:127:  const [showGizmoGateModal, setShowGizmoGateModal] = useState(false);
+src/components/Professional3DViewportPanel.tsx:133:  const [showSectionGateModal, setShowSectionGateModal] = useState(false);
+src/components/Professional3DViewportPanel.tsx:139:  const [showMeasureGateModal, setShowMeasureGateModal] = useState(false);
+src/components/Professional3DViewportPanel.tsx:145:  const [showPMIGateModal, setShowPMIGateModal] = useState(false);
+src/components/Professional3DViewportPanel.tsx:151:  const [showDrawingGateModal, setShowDrawingGateModal] = useState(false);
+src/components/Professional3DViewportPanel.tsx:153:  const [showDimensionGateModal, setShowDimensionGateModal] = useState(false);
+src/components/Professional3DViewportPanel.tsx:165:  const [showGDTGateModal, setShowGDTGateModal] = useState(false);
+src/components/Professional3DViewportPanel.tsx:180:  const [sectionEnabled, setSectionEnabled] = useState(false);
+src/components/Professional3DViewportPanel.tsx:181:  const [sectionOffset, setSectionOffset] = useState(0);
+src/components/Professional3DViewportPanel.tsx:186:  const [deformationFactor, setDeformationFactor] = useState(25);
+src/components/Professional3DViewportPanel.tsx:187:  const [camOverlayEnabled, setCamOverlayEnabled] = useState(false);
+src/components/Professional3DViewportPanel.tsx:188:  const [kinematicsActive, setKinematicsActive] = useState(true);
+src/components/Professional3DViewportPanel.tsx:197:  const [revision, setRevision] = useState('REV-276.1');
+src/components/Professional3DViewportPanel.tsx:198:  const [isStaleRevision, setIsStaleRevision] = useState(false);
+src/components/Professional3DViewportPanel.tsx:203:  const [showGateModal, setShowGateModal] = useState(false);
+src/components/Professional3DViewportPanel.tsx:204:  const [showSelectionGateModal, setShowSelectionGateModal] = useState(false);
+src/components/Professional3DViewportPanel.tsx:219:      if (activeTab === 'DRAWING' && (drawingState.activeDocument?.sheets?.[0]?.views?.length ?? 0) > 0) {
+src/components/Professional3DViewportPanel.tsx:309:  useEffect(() => {
+src/components/Professional3DViewportPanel.tsx:388:      // Truthful Empty State: Grid & Datum Origin, NO fake fallback box or engine block
+src/components/Professional3DViewportPanel.tsx:489:          { distance: canonicalHit.distance, hitPoint: [canonicalHit.point?.x ?? 0, canonicalHit.point?.y ?? 0, canonicalHit.point?.z ?? 0] }
+src/components/Professional3DViewportPanel.tsx:506:      // Fallback hit tester for non-canonical demo objects
+src/components/Professional3DViewportPanel.tsx:1269:                  {(!drawingState.activeDocument?.sheets?.[0]?.views || (drawingState.activeDocument?.sheets?.[0]?.views?.length ?? 0) === 0) ? (
+src/components/Professional3DViewportPanel.tsx:1274:                    (drawingState.activeDocument?.sheets?.[0]?.views || []).map(view => (
+src/components/Professional3DViewportPanel.tsx:1303:                                  <div className="flex items-baseline gap-0.5 whitespace-nowrap bg-white px-0.5">
+src/components/Professional3DViewportPanel.tsx:1460:                    <div className="flex items-baseline gap-1.5">
+src/components/Professional3DViewportPanel.tsx:1562:                  placeholder="A"
+src/components/PluginSdkPanel.tsx:14:  useEffect(() => {
+src/components/PluginSdkPanel.tsx:32:    () => activePlugin?.defaultParameters || {}
+src/components/PluginSdkPanel.tsx:37:  // Sync default parameters when switching active plugin
+src/components/PluginSdkPanel.tsx:38:  useEffect(() => {
+src/components/PluginSdkPanel.tsx:40:      setParamInputs(activePlugin.defaultParameters);
+src/components/PluginSdkPanel.tsx:42:        setComputedOutput(activePlugin.tools[0].compute(activePlugin.defaultParameters));
+src/components/PluginSdkPanel.tsx:68:      default: return <Boxes className="w-5 h-5 text-indigo-400" />;
+src/components/IndustrialOsPanel.tsx:26:      default: return <Layers className="w-5 h-5 text-slate-400" />;
+src/components/ProvenanceLedger.tsx:26:  const [ledgerInstance] = useState(() => EngineeringEvidenceLedger.getInstance());
+src/components/ProvenanceLedger.tsx:30:  const [isVerifying, setIsVerifying] = useState(false);
+src/components/ProvenanceLedger.tsx:34:  const [newEvidenceType, setNewEvidenceType] = useState('CAD');
+src/components/ProvenanceLedger.tsx:35:  const [newObjectId, setNewObjectId] = useState('TURBINE-ROTOR-01');
+src/components/ProvenanceLedger.tsx:36:  const [newRevision, setNewRevision] = useState('REV-B');
+src/components/ProvenanceLedger.tsx:37:  const [newProducer, setNewProducer] = useState('PRINCIPAL-AERO-ENGINEER');
+src/components/ProvenanceLedger.tsx:39:  const [newPayloadJson, setNewPayloadJson] = useState(
+src/components/ProvenanceLedger.tsx:91:  const [newAuthor, setNewAuthor] = useState('Senior Production Engineer');
+src/components/ProvenanceLedger.tsx:92:  const [newAction, setNewAction] = useState('APPROVE_CAM_TOOLPATH_EXECUTION');
+src/components/ProvenanceLedger.tsx:96:  // Seed sample initial ledger entries if empty
+src/components/ProvenanceLedger.tsx:97:  useEffect(() => {
+src/components/ProvenanceLedger.tsx:164:  const graphVerification = useMemo(() => {
+src/components/ProvenanceLedger.tsx:285:  const ledgerVerificationReport = useMemo(() => {
+src/components/GearEngineeringWorkspace.tsx:82:  const currentGear1: GearDefinition = useMemo(() => {
+src/components/GearEngineeringWorkspace.tsx:123:  const currentGear2: GearDefinition = useMemo(() => {
+src/components/GearEngineeringWorkspace.tsx:163:  const activeGearPair: GearPairDefinition = useMemo(() => {
+src/components/GearEngineeringWorkspace.tsx:173:  useEffect(() => {
+src/components/GearEngineeringWorkspace.tsx:194:  useEffect(() => {
+src/components/GearEngineeringWorkspace.tsx:436:      onAddLog('Assembly Engine not initialized.');
+src/components/GearEngineeringWorkspace.tsx:611:                      onChange={e => setHelixAngle(parseFloat(e.target.value) || 0)}
+src/components/AssemblyEnginePanel.tsx:38:  defaultTab?: 'CONSTRAINTS' | 'COMPONENTS' | 'INTERFERENCE' | 'KINEMATICS' | 'GATE043';
+src/components/AssemblyEnginePanel.tsx:49:  defaultTab = 'CONSTRAINTS'
+src/components/AssemblyEnginePanel.tsx:53:  const [assemblyCore] = useState(() => new AssemblyCore());
+src/components/AssemblyEnginePanel.tsx:56:  const [activeTab, setActiveTab] = useState<'CONSTRAINTS' | 'COMPONENTS' | 'INTERFERENCE' | 'KINEMATICS' | 'GATE043'>(defaultTab);
+src/components/AssemblyEnginePanel.tsx:58:  // Sync activeTab when defaultTab changes (switching sidebar tabs)
+src/components/AssemblyEnginePanel.tsx:59:  useEffect(() => {
+src/components/AssemblyEnginePanel.tsx:60:    setActiveTab(defaultTab);
+src/components/AssemblyEnginePanel.tsx:61:  }, [defaultTab]);
+src/components/AssemblyEnginePanel.tsx:69:  useEffect(() => {
+src/components/AssemblyEnginePanel.tsx:71:      const canonicalInstances = canonicalDocument.assembly?.instances || [];
+src/components/AssemblyEnginePanel.tsx:72:      const canonicalMates = canonicalDocument.assembly?.mates || [];
+src/components/AssemblyEnginePanel.tsx:129:            offsetMm: m.offset || 0,
+src/components/AssemblyEnginePanel.tsx:134:          solverError: evalMate?.residual || 0,
+src/components/AssemblyEnginePanel.tsx:205:  useEffect(() => {
+src/components/AssemblyEnginePanel.tsx:474:            <span>Residual: <strong className="font-mono">{(solverReport.convergenceResidual ?? 0).toExponential(3)}</strong></span>
+src/components/AssemblyEnginePanel.tsx:475:            <span>Iterations: <strong className="font-mono">{solverReport.iterationsTaken ?? 0}</strong></span>
+src/components/AssemblyEnginePanel.tsx:479:            <span>Assembly Mass: <strong className="text-white">{massProps.totalMassKg ?? 0} kg</strong></span>
+src/components/AssemblyEnginePanel.tsx:480:            <span>COG: <strong className="text-white">({(massProps as any).centerOfGravity?.x ?? (massProps as any).centerOfMass?.x ?? 0}, {(massProps as any).centerOfGravity?.y ?? (massProps as any).centerOfMass?.y ?? 0}, {(massProps as any).centerOfGravity?.z ?? (massProps as any).centerOfMass?.z ?? 0})</strong></span>
+src/components/AssemblyEnginePanel.tsx:625:                    placeholder="Offset mm"
+src/components/AssemblyEnginePanel.tsx:737:                      ({comp.worldTransform?.position?.x?.toFixed(1) ?? 0}, {comp.worldTransform?.position?.y?.toFixed(1) ?? 0}, {comp.worldTransform?.position?.z?.toFixed(1) ?? 0})
+src/components/AssemblyEnginePanel.tsx:864:                        <span>Centroid: ({clash.intersectionLocation?.x ?? 0}, {clash.intersectionLocation?.y ?? 0}, {clash.intersectionLocation?.z ?? 0})</span>
+src/components/AssemblyEnginePanel.tsx:993:                  <span>Mock Fallback: <strong>{gateReport.mockFallback ? 'TRUE (FAIL)' : 'FALSE (PASS)'}</strong></span>
+src/components/MvpArchitecturePanel.tsx:28:  const [newProjectName, setNewProjectName] = useState('');
+src/components/MvpArchitecturePanel.tsx:29:  const [newPartName, setNewPartName] = useState('');
+src/components/MvpArchitecturePanel.tsx:49:  useEffect(() => {
+src/components/MvpArchitecturePanel.tsx:226:                placeholder="New project name..."
+src/components/MvpArchitecturePanel.tsx:274:                placeholder="New Part Name (e.g. Shaft, Bracket)..."
+src/components/ToolpathSimulationPanel.tsx:32:  const [isSimulating, setIsSimulating] = useState(false);
+src/components/ToolpathSimulationPanel.tsx:35:  const [currentSampleIdx, setCurrentSampleIdx] = useState(0);
+src/components/ToolpathSimulationPanel.tsx:55:        fixtureModelId: "FIX_01",
+src/components/ToolpathSimulationPanel.tsx:86:        fixture: [{ objectId: "F1", type: "FIXTURE", isActive: true, aabb: { min: { x: -60, y: -60, z: -90 }, max: { x: 60, y: 60, z: -50 } } }] as any,
+src/components/ToolpathSimulationPanel.tsx:111:  useEffect(() => {
+src/components/ToolpathSimulationPanel.tsx:179:              initial={{ opacity: 0, y: 10 }}
+src/components/ToolpathSimulationPanel.tsx:252:                      {simulationResult ? simulationResult.metrics.performance.samplesPerSec.toFixed(0) : '0'}
+src/components/ToolpathSimulationPanel.tsx:263:              initial={{ opacity: 0, x: 20 }}
+src/components/ToolpathSimulationPanel.tsx:315:              initial={{ opacity: 0, x: -20 }}
+src/components/ToolpathSimulationPanel.tsx:365:              initial={{ opacity: 0 }}
+src/components/ProductionCertificationDashboard.tsx:35:  const gate = useMemo(() => HardAcceptanceGate350.getInstance(), []);
+src/components/ProductionCertificationDashboard.tsx:36:  const engine = useMemo(() => SECPProductionCertificationEngine.getInstance(), []);
+src/components/ProductionCertificationDashboard.tsx:40:  const [searchTerm, setSearchTerm] = useState('');
+src/components/ProductionCertificationDashboard.tsx:43:  const [isRunningGate, setIsRunningGate] = useState(false);
+src/components/ProductionCertificationDashboard.tsx:45:  const certifiedScopes = useMemo(() => engine.getCertifiedScopes(), [engine]);
+src/components/ProductionCertificationDashboard.tsx:46:  const proofCases = useMemo(() => engine.getProofCases(), [engine]);
+src/components/ProductionCertificationDashboard.tsx:47:  const risks = useMemo(() => engine.getRiskRegister(), [engine]);
+src/components/ProductionCertificationDashboard.tsx:48:  const baselineDetails = useMemo(() => engine.getBaselineDetails(), [engine]);
+src/components/ProductionCertificationDashboard.tsx:59:  const filteredTests = useMemo(() => {
+src/components/ProductionCertificationDashboard.tsx:70:  const categories = useMemo(() => {
+src/components/ProductionCertificationDashboard.tsx:109:              Baseline: <strong className="text-slate-200">{baselineDetails.revision}</strong> | Git: <strong className="text-slate-200">{baselineDetails.commit.slice(0, 8)}</strong>
+src/components/ProductionCertificationDashboard.tsx:197:          <div className="mt-2 text-2xl font-black text-white flex items-baseline gap-1.5">
+src/components/ProductionCertificationDashboard.tsx:468:                  placeholder="Filter by check ID, requirement name, or details..."
+src/components/WaterFaucetWizard.tsx:63:  const [isOpen, setIsOpen] = useState(true);
+src/components/WaterFaucetWizard.tsx:64:  const [currentStep, setCurrentStep] = useState(0);
+src/components/WaterFaucetWizard.tsx:68:  const [rotorRpm, setRotorRpm] = useState(8500); // 3000 to 15000 RPM
+src/components/WaterFaucetWizard.tsx:69:  const [motorThrustN, setMotorThrustN] = useState(24.5); // N total lift
+src/components/WaterFaucetWizard.tsx:70:  const [isSimulatingStress, setIsSimulatingStress] = useState(false);
+src/components/WaterFaucetWizard.tsx:71:  const [isSimulatingFlow, setIsSimulatingFlow] = useState(false);
+src/components/WaterFaucetWizard.tsx:72:  const [stressSimRun, setStressSimRun] = useState(false);
+src/components/WaterFaucetWizard.tsx:73:  const [flowSimRun, setFlowSimRun] = useState(false);
+src/components/WaterFaucetWizard.tsx:74:  const [certified, setCertified] = useState(false);
+src/components/WaterFaucetWizard.tsx:75:  const [isCertifying, setIsCertifying] = useState(false);
+src/components/FluidPowerPanel.tsx:20:  const [modelMode, setModelMode] = useState<'ACTIVE_PROJECT' | 'DEMO_CIRCUIT'>('ACTIVE_PROJECT');
+src/components/FluidPowerPanel.tsx:22:  const defaultSys = FluidPowerEngine.getDefaultSystemComponents();
+src/components/FluidPowerPanel.tsx:23:  const [components, setComponents] = useState<FluidComponent[]>(defaultSys.components);
+src/components/FluidPowerPanel.tsx:27:  const solveResult: FluidSystemSolveResult = modelMode === 'DEMO_CIRCUIT' || hasCADGeometry
+src/components/FluidPowerPanel.tsx:76:                modelMode === 'ACTIVE_PROJECT' ? 'bg-cyan-600 text-white' : 'text-slate-400 hover:text-white'
+src/components/FluidPowerPanel.tsx:85:                modelMode === 'DEMO_CIRCUIT' ? 'bg-purple-600 text-white' : 'text-slate-400 hover:text-white'
+src/components/FluidPowerPanel.tsx:123:      {modelMode === 'ACTIVE_PROJECT' && !hasCADGeometry ? (
+src/components/AIOptimizationWorkbenchPanel.tsx:22:  const [service] = useState(() => new AIOptimizationService());
+src/components/AIOptimizationWorkbenchPanel.tsx:23:  const [gate] = useState(() => new HardAcceptanceGate309());
+src/components/ParametricFeatureWorkbenchPanel.tsx:58:  // Derive tree from document if available, otherwise fallback to local (during scan)
+src/components/ParametricFeatureWorkbenchPanel.tsx:61:  const tree = useMemo(() => {
+src/components/ParametricFeatureWorkbenchPanel.tsx:73:          confidenceScore: f.confidenceScore || 0.95,
+src/components/ParametricFeatureWorkbenchPanel.tsx:74:          parameters: Object.entries(f.parameters || {}).map(([id, value]) => ({
+src/components/ParametricFeatureWorkbenchPanel.tsx:80:          references: f.references || [],
+src/components/ParametricFeatureWorkbenchPanel.tsx:82:          dependencies: f.dependencyIds || []
+src/components/ParametricFeatureWorkbenchPanel.tsx:97:  const [isAnalyzing, setIsAnalyzing] = useState(false);
+src/components/ParametricFeatureWorkbenchPanel.tsx:98:  const [isRebuilding, setIsRebuilding] = useState(false);
+src/components/ParametricFeatureWorkbenchPanel.tsx:100:  const [searchQuery, setSearchQuery] = useState('');
+src/components/ParametricFeatureWorkbenchPanel.tsx:105:  const [showEvidenceModal, setShowEvidenceModal] = useState(false);
+src/components/ParametricFeatureWorkbenchPanel.tsx:110:  useEffect(() => {
+src/components/ParametricFeatureWorkbenchPanel.tsx:111:    // Run initial 325 scan-to-cad gate execution
+src/components/ParametricFeatureWorkbenchPanel.tsx:147:    if (!canonicalDocument || !onCanonicalUpdate) return;
+src/components/ParametricFeatureWorkbenchPanel.tsx:180:                ...(f.parameters || {}),
+src/components/ParametricFeatureWorkbenchPanel.tsx:192:      // Fallback for local tree if no canonical doc is active yet (initial RE phase)
+src/components/ParametricFeatureWorkbenchPanel.tsx:206:        version: (tree.version || 0) + 1,
+src/components/ParametricFeatureWorkbenchPanel.tsx:213:  const filteredFeatures = useMemo(() => {
+src/components/ParametricFeatureWorkbenchPanel.tsx:221:  const selectedFeature = useMemo(() => {
+src/components/ParametricFeatureWorkbenchPanel.tsx:273:                placeholder="Search features..."
+src/components/ParametricFeatureWorkbenchPanel.tsx:329:            canonicalDocument={canonicalDocument || undefined}
+src/components/ParametricFeatureWorkbenchPanel.tsx:594:              initial={{ opacity: 0, scale: 0.95 }}
+src/components/ProductionProofDashboard.tsx:34:  const engine = useMemo(() => ProductionProofEngine.getInstance(), []);
+src/components/ProductionProofDashboard.tsx:41:  const [isRunning, setIsRunning] = useState(false);
+src/components/ProductionProofDashboard.tsx:52:  const selectedStage = useMemo(() => {
+src/components/IndustrialDroneAssemblyTreePanel.tsx:27:  const instances: AssemblyInstance[] = canonicalDocument?.assembly?.instances || [];
+src/components/ErrorBoundary.tsx:6:  fallbackTitle?: string;
+src/components/ErrorBoundary.tsx:47:                {this.props.fallbackTitle || 'SECP Industrial OS — Runtime Recovery'}
+src/components/SketchEditorPanel.tsx:134:  const [engine] = useState(() => new SketchEngine());
+src/components/SketchEditorPanel.tsx:173:  const [isConstruction, setIsConstruction] = useState(false);
+src/components/SketchEditorPanel.tsx:176:  const [showCurvatureCombs, setShowCurvatureCombs] = useState(false);
+src/components/SketchEditorPanel.tsx:177:  const [showZebraStriping, setShowZebraStriping] = useState(false);
+src/components/SketchEditorPanel.tsx:180:  const [mousePos, setMousePos] = useState({ x: 350, y: 250 });
+src/components/SketchEditorPanel.tsx:182:  const [isDrawing, setIsDrawing] = useState(false);
+src/components/SketchEditorPanel.tsx:185:  const [commandSearchQuery, setCommandSearchQuery] = useState('');
+src/components/SketchEditorPanel.tsx:186:  const [showCommandSearchModal, setShowCommandSearchModal] = useState(false);
+src/components/SketchEditorPanel.tsx:191:  const [showSplitLineModal, setShowSplitLineModal] = useState(false);
+src/components/SketchEditorPanel.tsx:193:  const [splitSketchName, setSplitSketchName] = useState('Sketch9 (Vent Grid)');
+src/components/SketchEditorPanel.tsx:194:  const [splitTargetFace, setSplitTargetFace] = useState('Face1 (Hairdryer Curved Nozzle)');
+src/components/SketchEditorPanel.tsx:195:  const [splitSingleDirection, setSplitSingleDirection] = useState(true);
+src/components/SketchEditorPanel.tsx:197:  const [showDeleteFaceModal, setShowDeleteFaceModal] = useState(false);
+src/components/SketchEditorPanel.tsx:199:  const [tangentContinuation, setTangentContinuation] = useState(true);
+src/components/SketchEditorPanel.tsx:205:  const [showSurfaceModal, setShowSurfaceModal] = useState(false);
+src/components/SketchEditorPanel.tsx:207:  const [surfaceThickness, setSurfaceThickness] = useState(1.5);
+src/components/SketchEditorPanel.tsx:208:  const [surfaceKnitTolerance, setSurfaceKnitTolerance] = useState(0.01);
+src/components/SketchEditorPanel.tsx:211:  const [showMoldModal, setShowMoldModal] = useState(false);
+src/components/SketchEditorPanel.tsx:212:  const [draftAngleDeg, setDraftAngleDeg] = useState(3.0);
+src/components/SketchEditorPanel.tsx:213:  const [pullDirection, setPullDirection] = useState('Top Plane (+Z)');
+src/components/SketchEditorPanel.tsx:216:  const [rollbackIndex, setRollbackIndex] = useState(10);
+src/components/SketchEditorPanel.tsx:222:  const designTree = useMemo(() => {
+src/components/SketchEditorPanel.tsx:228:  useEffect(() => {
+src/components/SketchEditorPanel.tsx:247:  const activeCanonical = useMemo(() => {
+src/components/SketchEditorPanel.tsx:255:  const entities = useMemo(() => {
+src/components/SketchEditorPanel.tsx:259:  const gcsDiagnostics = useMemo(() => {
+src/components/SketchEditorPanel.tsx:265:      conflictingConstraints: derived.solverState.conflictingConstraintIds || [],
+src/components/SketchEditorPanel.tsx:266:      redundantConstraints: derived.solverState.redundantConstraintIds || [],
+src/components/SketchEditorPanel.tsx:680:    const defaultPath = [
+src/components/SketchEditorPanel.tsx:688:      onSweep(sketchEnts, defaultPath, { orientation: 'FOLLOW_PATH', twistAngleDeg: 0 });
+src/components/SketchEditorPanel.tsx:700:          defaultPath,
+src/components/SketchEditorPanel.tsx:723:    const defaultSections = [
+src/components/SketchEditorPanel.tsx:745:      onLoft(defaultSections, { closed: false, solidMode: true, operation: 'NEW' });
+src/components/SketchEditorPanel.tsx:756:          defaultSections,
+src/components/SketchEditorPanel.tsx:784:    if (!canonicalDocument || !onCanonicalUpdate) return;
+src/components/SketchEditorPanel.tsx:807:    if (!canonicalDocument || !onCanonicalUpdate) return;
+src/components/SketchEditorPanel.tsx:830:    if (!canonicalDocument || !onCanonicalUpdate) return;
+src/components/SketchEditorPanel.tsx:848:    if (!canonicalDocument || !onCanonicalUpdate) return;
+src/components/SketchEditorPanel.tsx:970:  const isFeatureSelected = useMemo(() => {
+src/components/SketchEditorPanel.tsx:1393:                              if (!canonicalDocument || !onCanonicalUpdate) return;
+src/components/SketchEditorPanel.tsx:1413:                      canonicalDocument={canonicalDocument || undefined}
+src/components/SketchEditorPanel.tsx:1525:                                            const updated = mutateDeleteFlatEntity(activeCanonical, cId); // This should be delete constraint but using entity delete as proxy for demo
+src/components/SketchEditorPanel.tsx:1813:                        canonicalDocument={canonicalDocument || undefined}
+src/components/SketchEditorPanel.tsx:1817:                          if (!canonicalDocument || !onCanonicalUpdate) return;
+src/components/SketchEditorPanel.tsx:1824:                          if (!canonicalDocument || !onCanonicalUpdate) return;
+src/components/SketchEditorPanel.tsx:2294:                placeholder="ابحث عن أداة SolidWorks المباشرة (e.g. Split Line, Delete Face, Loft, GCS)..."
+src/components/interop/CrossOrganizationPanel.tsx:15:  const [isVerifying, setIsVerifying] = useState(false);
+src/components/interop/CrossOrganizationPanel.tsx:150:                  initial={{ opacity: 0, x: -20 }}
+src/components/interop/CrossOrganizationPanel.tsx:227:                  initial={{ opacity: 0 }}
+src/components/interop/CrossOrganizationPanel.tsx:245:                  initial={{ opacity: 0, x: 20 }}
+src/components/interop/CrossOrganizationPanel.tsx:340:                Awaiting protocol initialization...
+src/components/interop/CrossOrganizationPanel.tsx:346:                  initial={{ opacity: 0, x: -10 }}
+src/components/BRepReconstructionWorkbenchPanel.tsx:18:  const [isProcessing, setIsProcessing] = useState(false);
+src/components/BRepReconstructionWorkbenchPanel.tsx:20:  useEffect(() => {
+src/components/BRepReconstructionWorkbenchPanel.tsx:102:                {session?.model.solids.length || 0} Solids
+src/components/BRepReconstructionWorkbenchPanel.tsx:131:                  initial={{ opacity: 0, x: -10 }}
+src/components/PatternEngineInspector.tsx:8:  const [engine] = useState(() => {
+src/components/PatternEngineInspector.tsx:226:            <span>Instance Matrix ({selectedPattern?.instances.length || 0})</span>
+src/components/FullIndustrialOSAuditDashboard.tsx:31:  const gate = useMemo(() => HardAcceptanceGate349.getInstance(), []);
+src/components/FullIndustrialOSAuditDashboard.tsx:32:  const engine = useMemo(() => FullIndustrialOSAuditEngine.getInstance(), []);
+src/components/FullIndustrialOSAuditDashboard.tsx:36:  const [searchTerm, setSearchTerm] = useState('');
+src/components/FullIndustrialOSAuditDashboard.tsx:39:  const [isAuditing, setIsAuditing] = useState(false);
+src/components/FullIndustrialOSAuditDashboard.tsx:41:  const domainAssessments = useMemo(() => engine.getDomainAssessments(), [engine]);
+src/components/FullIndustrialOSAuditDashboard.tsx:42:  const findings = useMemo(() => engine.getAuditFindings(), [engine]);
+src/components/FullIndustrialOSAuditDashboard.tsx:43:  const baselineInfo = useMemo(() => engine.getBaselineInfo(), [engine]);
+src/components/FullIndustrialOSAuditDashboard.tsx:54:  const filteredChecks = useMemo(() => {
+src/components/FullIndustrialOSAuditDashboard.tsx:65:  const categories = useMemo(() => {
+src/components/FullIndustrialOSAuditDashboard.tsx:94:              Rev: <strong className="text-slate-200">{baselineInfo.revision}</strong> | Commit: <strong className="text-slate-200">{baselineInfo.commit.slice(0, 8)}</strong>
+src/components/FullIndustrialOSAuditDashboard.tsx:158:          <div className="mt-2 text-2xl font-black text-white flex items-baseline gap-1.5">
+src/components/FullIndustrialOSAuditDashboard.tsx:267:                  { step: '05. MATH VERIFY', desc: 'Exact analytical benchmark & residual convergence', status: 'VERIFIED' },
+src/components/FullIndustrialOSAuditDashboard.tsx:417:                  placeholder="Filter by check ID, requirement name, or details..."
+src/components/FullIndustrialOSAuditDashboard.tsx:518:                To maintain authentic engineering truth, all hardware fallbacks, AI sandbox boundaries, and numerical tolerances 
+src/components/BomPanel.tsx:27:  const docInstances = canonicalDocument?.assembly?.instances || [];
+src/components/BomPanel.tsx:28:  const effectiveComponents: AssemblyComponentItem[] = useMemo(() => {
+src/components/BomPanel.tsx:38:        position: [inst.transform?.position?.x || 0, inst.transform?.position?.y || 0, inst.transform?.position?.z || 0] as [number, number, number],
+src/components/BomPanel.tsx:49:  const [modelMode, setModelMode] = useState<'ACTIVE_CAD' | 'BENCHMARK'>('ACTIVE_CAD');
+src/components/BomPanel.tsx:51:  // Dynamic BOM Rollup based on active assembly vs baseline
+src/components/BomPanel.tsx:52:  const bomData: AssemblyBomRollup | null = useMemo(() => {
+src/components/BomPanel.tsx:53:    if (modelMode === 'ACTIVE_CAD') {
+src/components/BomPanel.tsx:126:  }, [modelMode, hasAssembly, effectiveComponents, canonicalDocument]);
+src/components/BomPanel.tsx:129:  const truthDescriptor = useMemo(() => {
+src/components/BomPanel.tsx:138:      isBenchmarkMode: modelMode === 'BENCHMARK'
+src/components/BomPanel.tsx:140:  }, [modelMode, hasAssembly, canonicalDocument?.documentId, canonicalDocument?.revision, bomData]);
+src/components/BomPanel.tsx:197:                modelMode === 'ACTIVE_CAD'
+src/components/BomPanel.tsx:208:                modelMode === 'BENCHMARK'
+src/components/BomPanel.tsx:238:              Assembly: <span className="font-mono text-slate-200 font-bold">{bomData?.assemblyName || 'No Active Assembly Loaded'}</span> ({bomData?.totalItemCount || 0} Total Line Items)
+src/components/BomPanel.tsx:243:          <span>Critical Path: {bomData?.criticalPathLeadTimeDays || 0} Days</span>
+src/components/PMIPanel.tsx:48:              "Every geometry-dependent PMI has a valid canonical reference."
+src/components/GPUFEMWorkbenchPanel.tsx:28:  const [backend] = useState(() => GPUFEMBackend.getInstance());
+src/components/GPUFEMWorkbenchPanel.tsx:61:  const [benchmarks, setBenchmarks] = useState<GPUFEMBenchmarkResult[]>([]);
+src/components/GPUFEMWorkbenchPanel.tsx:63:  const [benchmarkProgress, setBenchmarkProgress] = useState<string>('');
+src/components/GPUFEMWorkbenchPanel.tsx:71:  useEffect(() => {
+src/components/GPUFEMWorkbenchPanel.tsx:73:    backend.initialize().then(() => {
+src/components/GPUFEMWorkbenchPanel.tsx:284:          id="tab-btn-benchmarks"
+src/components/GPUFEMWorkbenchPanel.tsx:360:                    onChange={(e) => setPoissonsRatio(parseFloat(e.target.value) || 0.3)}
+src/components/GPUFEMWorkbenchPanel.tsx:510:                      Linked to Thread Node <span className="font-mono text-slate-200">{lastComputeResult.evidenceRecord.digitalThreadNodeId}</span> with SHA-256 validation against independent CPU analytical reference.
+src/components/GPUFEMWorkbenchPanel.tsx:721:                  Profiles CPU reference vs GPU upload, compute, and readback durations across small, medium, large, and 3D solid topologies.
+src/components/GPUFEMWorkbenchPanel.tsx:726:                id="btn-run-fem-benchmarks"
+src/components/GPUFEMWorkbenchPanel.tsx:739:                <span className="text-xs font-mono text-cyan-300">{benchmarkProgress}</span>
+src/components/GPUFEMWorkbenchPanel.tsx:743:            {benchmarks.length > 0 && (
+src/components/GPUFEMWorkbenchPanel.tsx:761:                    {benchmarks.map((bm) => (
+src/components/GPUFEMWorkbenchPanel.tsx:762:                      <tr key={bm.benchmarkId + bm.runType} className="hover:bg-slate-800/40">
+src/components/GPUFEMWorkbenchPanel.tsx:856:                    <span className="text-[10px] text-slate-500">Verified against CPU references</span>
+src/components/GPUCFDWorkbenchPanel.tsx:30:  const [backend] = useState(() => new GPUCFDBackend());
+src/components/GPUCFDWorkbenchPanel.tsx:57:  const [benchmarks, setBenchmarks] = useState<CFDBenchmarkMetrics[]>([]);
+src/components/GPUCFDWorkbenchPanel.tsx:65:  useEffect(() => {
+src/components/GPUCFDWorkbenchPanel.tsx:67:    backend.initialize().then(() => {
+src/components/GPUCFDWorkbenchPanel.tsx:527:                    onChange={(e) => setAlphaP(parseFloat(e.target.value) || 0.3)}
+src/components/GPUCFDWorkbenchPanel.tsx:540:                    onChange={(e) => setAlphaU(parseFloat(e.target.value) || 0.7)}
+src/components/GPUCFDWorkbenchPanel.tsx:664:          {benchmarks.length > 0 ? (
+src/components/GPUCFDWorkbenchPanel.tsx:680:                  {benchmarks.map((b) => (
+src/components/BearingEngineeringWorkspace.tsx:59:  const activeBearing = useMemo(() => {
+src/components/BearingEngineeringWorkspace.tsx:74:  const fitAnalysis = useMemo(() => {
+src/components/BearingEngineeringWorkspace.tsx:87:  const kinematics = useMemo(() => {
+src/components/BearingEngineeringWorkspace.tsx:105:  const filteredCatalog = useMemo(() => {
+src/components/BearingEngineeringWorkspace.tsx:271:                  placeholder="Search 6204, 20x47, Roller..."
+src/components/BearingEngineeringWorkspace.tsx:321:                      setSelectedConfig(entry.defaultConfiguration);
+src/components/BearingEngineeringWorkspace.tsx:322:                      setSelectedMaterial(entry.defaultMaterial);
+src/components/SensorIntegrationPanel.tsx:56:  const sensorsList = React.useMemo(() => gateReport.sensorSuiteState?.sensors || [], [gateReport]);
+src/components/SensorIntegrationPanel.tsx:109:      referenceStandard: 'NIST-RTD-STANDARD-99A',
+src/components/SensorIntegrationPanel.tsx:120:      referenceStandard: 'NIST-ACCEL-STANDARD-44B',
+src/components/SensorIntegrationPanel.tsx:132:      referenceStandard: 'NIST-PRESS-STANDARD-12',
+src/components/SensorIntegrationPanel.tsx:139:    { time: '11:55:00', msg: 'SECP Sensor Gateway initialized. Connected to local OPC-UA broker.', type: 'success' },
+src/components/SensorIntegrationPanel.tsx:149:  useEffect(() => {
+src/components/SensorIntegrationPanel.tsx:231:  useEffect(() => {
+src/components/SensorIntegrationPanel.tsx:233:      const vibeAmp = sensorValues['SNS-VIBE-329']?.value ?? 0.12;
+src/components/SensorIntegrationPanel.tsx:234:      const mockTimeReadings = Array.from({ length: 64 }, (_, idx) => {
+src/components/SensorIntegrationPanel.tsx:238:      const fft = SensorQualityEngine.computeFFTSpectrum(mockTimeReadings, 1000);
+src/components/SensorIntegrationPanel.tsx:245:  useEffect(() => {
+src/components/SensorIntegrationPanel.tsx:290:      referenceStandard: calibRef,
+src/components/SensorIntegrationPanel.tsx:429:                      <div className="mt-3 flex justify-between items-baseline border-t border-gray-900 pt-2">
+src/components/SensorIntegrationPanel.tsx:681:                            <span className="text-white font-bold">{calib.referenceStandard}</span>
+src/components/SensorIntegrationPanel.tsx:751:                        placeholder="e.g., Ice triple point comparison"
+src/components/SensorIntegrationPanel.tsx:762:                        placeholder="NIST-RTD-STANDARD-99A"
+src/components/SensorIntegrationPanel.tsx:981:                    placeholder="Search specific PATCH329 assertions..."
+src/components/SensorIntegrationPanel.tsx:982:                    className="w-full bg-gray-950 border border-gray-800 pl-10 pr-4 py-2 text-xs text-white placeholder-gray-600 focus:outline-none focus:border-cyan-500"
+src/components/GenerativeEngineeringWorkbenchPanel.tsx:75:          { parameterName: 'wallThickness', min: 1.0, max: 4.5, unit: 'mm', defaultValue: 2.0 },
+src/components/GenerativeEngineeringWorkbenchPanel.tsx:76:          { parameterName: 'filletRadius', min: 0.8, max: 3.5, unit: 'mm', defaultValue: 1.5 },
+src/components/GenerativeEngineeringWorkbenchPanel.tsx:77:          { parameterName: 'latticeDensity', min: 0.3, max: 0.9, unit: 'fraction', defaultValue: 0.5 }
+src/components/GenerativeEngineeringWorkbenchPanel.tsx:177:          <span>Candidate Explorer ({session?.candidates.length || 0})</span>
+src/components/GenerativeEngineeringWorkbenchPanel.tsx:189:          <span>Pareto Trade-off Matrix ({session?.paretoFront.length || 0} Optimal)</span>
+src/components/GenerativeEngineeringWorkbenchPanel.tsx:316:                      <span>Score: <strong className="text-indigo-400">{candidate.rankScore || 0}</strong></span>
+src/components/GenerativeEngineeringWorkbenchPanel.tsx:388:                  <span className="text-indigo-400 font-bold font-mono">{selectedCandidate.rankScore || 0} pts</span>
+src/components/GenerativeEngineeringWorkbenchPanel.tsx:493:              Cryptographically bound lineage linking requirements, session seed, candidate geometry hash, solver evidence, and promotion ECO.
+src/components/WasmComputeWorkbenchPanel.tsx:4: * Features real-time module status, live domain compute lab, JS vs WASM benchmarks,
+src/components/WasmComputeWorkbenchPanel.tsx:32:  const [runtime] = useState(() => WasmComputeRuntime.getInstance());
+src/components/WasmComputeWorkbenchPanel.tsx:33:  const [planner] = useState(() => new WasmComputePlanner());
+src/components/WasmComputeWorkbenchPanel.tsx:34:  const [bridge] = useState(() => new WasmWorkerBridge());
+src/components/WasmComputeWorkbenchPanel.tsx:43:  const [benchmarks, setBenchmarks] = useState<WasmBenchmarkComparison[]>([]);
+src/components/WasmComputeWorkbenchPanel.tsx:69:  useEffect(() => {
+src/components/WasmComputeWorkbenchPanel.tsx:71:      const state = await runtime.initialize();
+src/components/WasmComputeWorkbenchPanel.tsx:85:      const boundary = planner.benchmarkBoundaryOverhead(5000);
+src/components/WasmComputeWorkbenchPanel.tsx:221:              {((memory?.getTotalAllocatedBytes() || 0) / 1024).toFixed(1)} KB Active
+src/components/WasmComputeWorkbenchPanel.tsx:311:                  {benchmarks.length > 0
+src/components/WasmComputeWorkbenchPanel.tsx:312:                    ? `${(benchmarks.reduce((acc, b) => acc + b.speedup, 0) / benchmarks.length).toFixed(2)}x`
+src/components/WasmComputeWorkbenchPanel.tsx:359:                  {benchmarks.map((b, idx) => (
+src/components/MonorepoExplorer.tsx:10:  const [copied, setCopied] = useState(false);
+src/components/HPCSchedulerWorkbenchPanel.tsx:22:  const [scheduler] = useState(() => new HPCScheduler());
+src/components/HPCSchedulerWorkbenchPanel.tsx:42:  useEffect(() => {
+src/components/DirectModelingInspector.tsx:7:    const [engine] = useState(() => new DirectModelingEngine());
+src/components/DigitalTwinPanel.tsx:34:  const [gate326Result, setGate326Result] = useState(() => HardAcceptanceGate326.runGate());
+src/components/DigitalTwinPanel.tsx:38:  useEffect(() => {
+src/components/ProductionDataIntegrityAuditDashboard.tsx:47:  const engine = useMemo(() => ProductionDataIntegrityAuditEngine.getInstance(), []);
+src/components/ProductionDataIntegrityAuditDashboard.tsx:59:  useEffect(() => {
+src/components/ProductionDataIntegrityAuditDashboard.tsx:82:  const filteredTests = useMemo(() => {
+src/components/ProductionDataIntegrityAuditDashboard.tsx:158:              {auditSummary?.passedCount ?? 0} <span className="text-xs text-slate-500">/ {auditSummary?.totalTests ?? 152}</span>
+src/components/ProductionDataIntegrityAuditDashboard.tsx:516:                placeholder="Search 152+ integrity invariants..."
+src/components/ProductionDataIntegrityAuditDashboard.tsx:519:                className="w-full bg-slate-950 border border-slate-700 rounded-lg pl-9 pr-4 py-1.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500"
+src/components/CamPanel.tsx:81:  const [modelMode, setModelMode] = useState<'ACTIVE_CAD' | 'BENCHMARK'>('ACTIVE_CAD');
+src/components/CamPanel.tsx:84:  const geometryStats = useMemo(() => {
+src/components/CamPanel.tsx:85:    if (modelMode === 'BENCHMARK') {
+src/components/CamPanel.tsx:124:  }, [modelMode, activeSolid, context.geometry, canonicalDocument]);
+src/components/CamPanel.tsx:127:  const camJob: CamJobPackage = useMemo(() => {
+src/components/CamPanel.tsx:164:        ...(canonicalDocument.derived?.evidenceChain || []),
+src/components/CamPanel.tsx:197:  const truthDescriptor = useMemo(() => {
+src/components/CamPanel.tsx:208:      isBenchmarkMode: modelMode === 'BENCHMARK'
+src/components/CamPanel.tsx:210:  }, [modelMode, hasActiveGeometry, canonicalDocument?.documentId, canonicalDocument?.revision, canonicalDocument?.derived?.cam, geometryStats, camJob]);
+src/components/CamPanel.tsx:239:                  modelMode === 'ACTIVE_CAD'
+src/components/CamPanel.tsx:250:                  modelMode === 'BENCHMARK'
+src/components/AdvancedKinematicsPanel.tsx:35:  const [assemblyCore] = useState(() => new AssemblyCore());
+src/components/AdvancedKinematicsPanel.tsx:144:  useEffect(() => {
+src/components/AdvancedKinematicsPanel.tsx:164:  useEffect(() => {
+src/components/AdvancedKinematicsPanel.tsx:204:  useEffect(() => {
+src/components/AdvancedKinematicsPanel.tsx:233:    const crankAngleDeg = jointValues['joint-crank'] || 0;
+src/components/AdvancedKinematicsPanel.tsx:692:            <span>Crank Angle: {(jointValues['joint-crank'] ?? 0).toFixed(1)}°</span>
+src/components/AdvancedKinematicsPanel.tsx:693:            <span>Piston Displacement: {(jointValues['joint-piston-slider'] ?? 0).toFixed(1)} mm</span>
+src/components/SpringEngineeringWorkspace.tsx:91:  const currentSpring: SpringDefinition = useMemo(() => {
+src/components/SpringEngineeringWorkspace.tsx:120:  const kinematicState: SpringKinematicState = useMemo(() => {
+src/components/SpringEngineeringWorkspace.tsx:125:  const clearanceReport: SpringClearanceReport = useMemo(() => {
+src/components/SpringEngineeringWorkspace.tsx:130:  useEffect(() => {
+src/components/SpringEngineeringWorkspace.tsx:151:  useEffect(() => {
+src/components/SpringEngineeringWorkspace.tsx:247:        samplePointsPerCoil: 64
+src/components/SpringEngineeringWorkspace.tsx:271:          const forceN = kinematicState ? kinematicState.restoringForceN || 0 : 0;
+src/components/SpringEngineeringWorkspace.tsx:298:      const currentForceN = kinematicState ? kinematicState.restoringForceN || 0 : 0;
+src/components/SpringEngineeringWorkspace.tsx:1079:                  onChange={e => setMatingShaftDiaMm(parseFloat(e.target.value) || 0)}
+src/components/SpringEngineeringWorkspace.tsx:1092:                  onChange={e => setMatingHousingBoreMm(parseFloat(e.target.value) || 0)}
+src/components/WebGPUWorkbenchPanel.tsx:69:  const [benchmarkResults, setBenchmarkResults] = useState<BenchmarkCaseResult[]>([]);
+src/components/WebGPUWorkbenchPanel.tsx:83:    await webgpu.initialize();
+src/components/WebGPUWorkbenchPanel.tsx:89:  useEffect(() => {
+src/components/WebGPUWorkbenchPanel.tsx:142:        jobId: `job-${selectedKernelId.toLowerCase()}-${Date.now().toString(36)}-${benchmarkResults.length + 1}`,
+src/components/WebGPUWorkbenchPanel.tsx:149:        fallbackAllowed: true,
+src/components/WebGPUWorkbenchPanel.tsx:229:      default:
+src/components/WebGPUWorkbenchPanel.tsx:316:                {memoryDiag?.activeBufferCount || 0} active buffers (0 leaks)
+src/components/WebGPUWorkbenchPanel.tsx:592:                    <div>Checked {lastJobResult.verification.elementsChecked.toLocaleString()} elements against CPU reference function.</div>
+src/components/WebGPUWorkbenchPanel.tsx:639:                Honest comparative benchmark measuring CPU reference vs WebGPU with full upload & readback latency accounting.
+src/components/WebGPUWorkbenchPanel.tsx:661:          {benchmarkResults.length > 0 ? (
+src/components/WebGPUWorkbenchPanel.tsx:677:                  {benchmarkResults.map((b, idx) => (
+src/components/PcbWorkbenchPanel.tsx:27:  const schematic = PcbEngine.getDefaultSchematic();
+src/components/PcbWorkbenchPanel.tsx:47:  useEffect(() => {
+src/components/EngineeringCorePanel.tsx:19:  const hasCADGeometry = Boolean(activeSolid || (canonicalDocument?.features && canonicalDocument.features.length > 0));
+src/components/EngineeringCorePanel.tsx:21:  const initialWidthM = activeSolid?.dimensions ? (activeSolid.dimensions.width / 1000) : (hasCADGeometry ? 0.05 : 0);
+src/components/EngineeringCorePanel.tsx:22:  const initialHeightM = activeSolid?.dimensions ? (activeSolid.dimensions.height / 1000) : (hasCADGeometry ? 0.05 : 0);
+src/components/EngineeringCorePanel.tsx:23:  const initialAreaM2 = initialWidthM * initialHeightM;
+src/components/EngineeringCorePanel.tsx:28:  const [forceMass, setForceMass] = useState(hasCADGeometry ? 150 : 0); // kg
+src/components/EngineeringCorePanel.tsx:29:  const [forceAccel, setForceAccel] = useState(9.81); // m/s²
+src/components/EngineeringCorePanel.tsx:30:  const [torqueForce, setTorqueForce] = useState(hasCADGeometry ? 2500 : 0); // N
+src/components/EngineeringCorePanel.tsx:31:  const [torqueRadius, setTorqueRadius] = useState(hasCADGeometry ? 0.35 : 0); // m
+src/components/EngineeringCorePanel.tsx:32:  const [motorRpm, setMotorRpm] = useState(hasCADGeometry ? 1750 : 0); // RPM
+src/components/EngineeringCorePanel.tsx:33:  const [beamForce, setBeamForce] = useState(hasCADGeometry ? 12000 : 0); // N
+src/components/EngineeringCorePanel.tsx:34:  const [beamArea, setBeamArea] = useState(initialAreaM2); // m²
+src/components/EngineeringCorePanel.tsx:35:  const [youngModulus, setYoungModulus] = useState(200); // GPa
+src/components/EngineeringCorePanel.tsx:38:  const [fluidDiameter, setFluidDiameter] = useState(0.05); // 50 mm
+src/components/EngineeringCorePanel.tsx:39:  const [fluidVel, setFluidVel] = useState(2.5); // m/s
+src/components/EngineeringCorePanel.tsx:40:  const [fluidDensity, setFluidDensity] = useState(998); // kg/m³ water
+src/components/EngineeringCorePanel.tsx:41:  const [fluidViscosity, setFluidViscosity] = useState(0.001002); // Pa·s
+src/components/EngineeringCorePanel.tsx:42:  const [pipeLength, setPipeLength] = useState(15); // m
+src/components/EngineeringCorePanel.tsx:43:  const [frictionFactor, setFrictionFactor] = useState(0.02);
+src/components/EngineeringCorePanel.tsx:46:  const [kCond, setKCond] = useState(50); // W/mK steel
+src/components/EngineeringCorePanel.tsx:47:  const [areaThermo, setAreaThermo] = useState(0.25); // m²
+src/components/EngineeringCorePanel.tsx:48:  const [deltaTThermo, setDeltaTThermo] = useState(75); // °C
+src/components/EngineeringCorePanel.tsx:49:  const [thicknessThermo, setThicknessThermo] = useState(0.012); // 12 mm
+src/components/EngineeringCorePanel.tsx:50:  const [alphaExpansion, setAlphaExpansion] = useState(12e-6);
+src/components/EngineeringCorePanel.tsx:53:  const [elecVoltage, setElecVoltage] = useState(24); // V
+src/components/EngineeringCorePanel.tsx:54:  const [elecCurrent, setElecCurrent] = useState(8.5); // A
+src/components/EngineeringCorePanel.tsx:55:  const [wireLen, setWireLen] = useState(25); // m
+src/components/EngineeringCorePanel.tsx:56:  const [wireGaugeMm2, setWireGaugeMm2] = useState(2.5); // mm²
+src/components/ElectricalWorkbenchPanel.tsx:16:    hasCADGeometry ? ElectricalWorkbenchEngine.getDefaultCircuitComponents() : []
+src/components/ElectricalWorkbenchPanel.tsx:21:    setComponents(ElectricalWorkbenchEngine.getDefaultCircuitComponents());
+src/components/GPUMeshingWorkbenchPanel.tsx:28:  const [backendInitialized, setBackendInitialized] = useState(false);
+src/components/GPUMeshingWorkbenchPanel.tsx:32:  const standardGeometries = useMemo(() => CADGeometryGenerator.getStandardGeometrySuite(), []);
+src/components/GPUMeshingWorkbenchPanel.tsx:36:  const [isProcessing, setIsProcessing] = useState(false);
+src/components/GPUMeshingWorkbenchPanel.tsx:44:  const [benchmarks, setBenchmarks] = useState<MeshBenchmarkMetrics[]>([]);
+src/components/GPUMeshingWorkbenchPanel.tsx:45:  const [isBenchmarking, setIsBenchmarking] = useState(false);
+src/components/GPUMeshingWorkbenchPanel.tsx:49:  const [isRunningGate, setIsRunningGate] = useState(false);
+src/components/GPUMeshingWorkbenchPanel.tsx:50:  const [gateSearchFilter, setGateSearchFilter] = useState('');
+src/components/GPUMeshingWorkbenchPanel.tsx:51:  const [gateCategoryFilter, setGateCategoryFilter] = useState('ALL');
+src/components/GPUMeshingWorkbenchPanel.tsx:53:  useEffect(() => {
+src/components/GPUMeshingWorkbenchPanel.tsx:57:        await backend.initialize();
+src/components/GPUMeshingWorkbenchPanel.tsx:63:        console.warn('GPUMeshing initialization fallback:', err);
+src/components/GPUMeshingWorkbenchPanel.tsx:118:      console.error('Meshing benchmark error:', err);
+src/components/GPUMeshingWorkbenchPanel.tsx:151:  const filteredAssertions = useMemo(() => {
+src/components/GPUMeshingWorkbenchPanel.tsx:163:  const categories = useMemo(() => {
+src/components/GPUMeshingWorkbenchPanel.tsx:368:                <span className="font-mono text-white font-semibold">{currentMesh?.numVertices ?? 0}</span>
+src/components/GPUMeshingWorkbenchPanel.tsx:372:                <span className="font-mono text-white font-semibold">{currentMesh?.numElements ?? 0}</span>
+src/components/GPUMeshingWorkbenchPanel.tsx:443:                  WGSL Kernel: mesh_surface_sample.wgsl
+src/components/GPUMeshingWorkbenchPanel.tsx:607:                  {benchmarks.length === 0 ? (
+src/components/GPUMeshingWorkbenchPanel.tsx:610:                        No benchmark results yet. Click &quot;Run Benchmark Suite&quot; to profile GPU kernels.
+src/components/GPUMeshingWorkbenchPanel.tsx:614:                    benchmarks.map((b, idx) => (
+src/components/GPUMeshingWorkbenchPanel.tsx:645:                  placeholder="Search 61 assertions..."
+src/components/AcceptanceMatrix.tsx:32:      default:
+src/components/AcceptanceMatrix.tsx:51:      default:
+src/components/SketcherPanel.tsx:103:  const activeCanonical = useMemo(() => {
+src/components/SketcherPanel.tsx:110:  const sketch = useMemo(() => {
+src/components/SketcherPanel.tsx:148:    const featureCount = canonicalDocument?.features.length ?? 0;
+src/components/SketcherPanel.tsx:164:      referenceType: 'SKETCH_ENTITY',
+src/components/SketcherPanel.tsx:182:  const [snapSettings, setSnapSettings] = useState({
+src/components/SketcherPanel.tsx:214:  const solver = useMemo(() => new IndustrialVariationalSolver(), []);
+src/components/SketcherPanel.tsx:215:  const os = useMemo(() => new EngineeringObjectOS(), []);
+src/components/SketcherPanel.tsx:216:  const eventStore = useMemo(() => EngineeringEventStore.getInstance(), []);
+src/components/SketcherPanel.tsx:650:      center: { x: 100, y: 60 }, // default rotate center
+src/components/SketcherPanel.tsx:667:    const references = Array.from(selectedIds).map(getSelectionReference);
+src/components/SketcherPanel.tsx:671:      references: references
+src/components/SketcherPanel.tsx:885:        default: label = 'C'; break;
+src/components/ComponentBrowser.tsx:14:  const [searchTerm, setSearchTerm] = useState('');
+src/components/ComponentBrowser.tsx:28:            placeholder="Search Components / PLM..."
+src/components/ComponentBrowser.tsx:46:              className="p-3 bg-slate-900 border border-slate-800 rounded group hover:border-blue-800 transition-all cursor-default"
+src/components/DistributedComputeWorkbenchPanel.tsx:19:  const [engine] = useState(() => new DistributedComputeEngine());
+src/components/DistributedComputeWorkbenchPanel.tsx:33:  useEffect(() => {
+src/components/DistributedComputeWorkbenchPanel.tsx:67:      // Calculate benchmark scaling metrics
+src/components/ApprovalWorkflowPanel.tsx:15:  const [engine] = useState(() => new ApprovalWorkflowEngine());
+src/components/ApprovalWorkflowPanel.tsx:60:  useEffect(() => {
+src/components/ApprovalWorkflowPanel.tsx:309:                placeholder="Search by ID, Object..."
+src/components/ApprovalWorkflowPanel.tsx:401:                  placeholder="e.g. ECO-2026-000001"
+src/components/ApprovalWorkflowPanel.tsx:647:                        placeholder="Define signoff rationale..."
+src/components/AssemblyWorkspace.tsx:59:  const [engine] = useState(() => new AssemblyCore());
+src/components/AssemblyWorkspace.tsx:60:  const [insertionService] = useState(() => new ComponentInsertionService(engine));
+src/components/AssemblyWorkspace.tsx:61:  const [manipulationController] = useState(() => new ManipulationController());
+src/components/AssemblyWorkspace.tsx:62:  const [snapEngine] = useState(() => new SnapEngine());
+src/components/AssemblyWorkspace.tsx:63:  const [constraintService] = useState(() => new ConstraintCreationService(engine));
+src/components/AssemblyWorkspace.tsx:66:  const instances = useMemo(() => canonicalDocument?.assembly?.instances || [], [canonicalDocument]);
+src/components/AssemblyWorkspace.tsx:67:  const constraints = useMemo(() => canonicalDocument?.assembly?.mates || canonicalDocument?.assembly?.constraints || [], [canonicalDocument]);
+src/components/AssemblyWorkspace.tsx:72:  const gate216Result = useMemo(() => {
+src/components/AssemblyWorkspace.tsx:76:  const [isDragging, setIsDragging] = useState(false);
+src/components/AssemblyWorkspace.tsx:78:  const [isConstraintMode, setIsConstraintMode] = useState(false);
+src/components/AssemblyWorkspace.tsx:110:  useEffect(() => {
+src/components/AssemblyWorkspace.tsx:158:  const gate218Result = useMemo(() => {
+src/components/AssemblyWorkspace.tsx:236:  const explodedDisplayComponents = useMemo(() => {
+src/components/AssemblyWorkspace.tsx:276:  useEffect(() => {
+src/components/AssemblyWorkspace.tsx:308:  const gate219Result = useMemo(() => {
+src/components/AssemblyWorkspace.tsx:352:  const [isSolving, setIsSolving] = useState(false);
+src/components/AssemblyWorkspace.tsx:357:  useEffect(() => {
+src/components/AssemblyWorkspace.tsx:372:  useEffect(() => {
+src/components/AssemblyWorkspace.tsx:378:  useEffect(() => {
+src/components/AssemblyWorkspace.tsx:431:        componentDofs: {} // Legacy field placeholder
+src/components/AssemblyWorkspace.tsx:455:      // Note: AssemblyCore.rebuildFromDocument will be triggered by useEffect(canonicalDocument)
+src/components/AssemblyWorkspace.tsx:876:              const anyClashesExist = (interferenceReport217?.clashes?.length || 0) > 0;
+src/components/AssemblyWorkspace.tsx:1468:                        onChange={(e) => setAbsoluteToleranceValue(parseFloat(e.target.value) || 0)}
+src/components/AssemblyWorkspace.tsx:1479:                        onChange={(e) => setClearanceToleranceValue(parseFloat(e.target.value) || 0)}
+src/components/AssemblyWorkspace.tsx:2379:                                    const val = parseFloat(e.target.value) || 0;
+src/components/AssemblyWorkspace.tsx:2491:                        onChange={(e) => setNewStepDistance(parseFloat(e.target.value) || 0)}
+src/components/AssemblyWorkspace.tsx:2787:                      placeholder="e.g. M8, DIN, ISO, Dowel..."
+src/components/AssemblyWorkspace.tsx:2908:                        // reset default sizes
+src/components/AssemblyWorkspace.tsx:3031:                        onChange={(e) => setHdwLength(parseInt(e.target.value) || 0)}
+src/components/AssemblyWorkspace.tsx:3152:                    {/* Quick placement action when selecting reference components */}
+src/components/AssemblyWorkspace.tsx:3159:                            addLog(`Mating Intelligence matched: Aligned standard ${hdwPreInsertDef.partNumber} concentrically to reference component ${refId}.`);
+src/components/NURBSReconstructionWorkbenchPanel.tsx:20:  const [isProcessing, setIsProcessing] = useState(false);
+src/components/NURBSReconstructionWorkbenchPanel.tsx:22:  useEffect(() => {
+src/components/NURBSReconstructionWorkbenchPanel.tsx:60:        referenceCloudId: 'CLOUD-001', preHealingRmseMm: 0.05, postHealingRmseMm: 0.02, 
+src/components/NURBSReconstructionWorkbenchPanel.tsx:148:                {session?.surfaces.length || 0} Surfaces
+src/components/NURBSReconstructionWorkbenchPanel.tsx:169:                  initial={{ opacity: 0, x: -10 }}
+src/components/FeatureRecognitionWorkbenchPanel.tsx:18:  const [isProcessing, setIsProcessing] = useState(false);
+src/components/FeatureRecognitionWorkbenchPanel.tsx:20:  // Mock initial load for demo
+src/components/FeatureRecognitionWorkbenchPanel.tsx:21:  useEffect(() => {
+src/components/FeatureRecognitionWorkbenchPanel.tsx:113:                {session?.features.length || 0} TOTAL
+src/components/FeatureRecognitionWorkbenchPanel.tsx:134:                  initial={{ opacity: 0, x: -10 }}
+src/components/StartCenter.tsx:33:  onLoadDemo?: (demoId: string) => void;
+src/components/StartCenter.tsx:34:  onOpenProject?: (demoId: string) => void;
+src/components/StartCenter.tsx:35:  onForkDemo?: (demoId: string, input: { name: string; projectNumber: string; description?: string }) => void;
+src/components/StartCenter.tsx:55:  const safeProducts = existingProducts || [];
+src/components/StartCenter.tsx:56:  const [showNewModal, setShowNewModal] = useState(false);
+src/components/StartCenter.tsx:60:  const [newName, setNewName] = useState('');
+src/components/StartCenter.tsx:61:  const [newNumber, setNewNumber] = useState(`PRJ-${new Date().getFullYear()}-${Math.floor(100 + Math.random() * 900)}`);
+src/components/StartCenter.tsx:64:  const [newDesc, setNewDesc] = useState('');
+src/components/StartCenter.tsx:67:  const [forkName, setForkName] = useState('');
+src/components/StartCenter.tsx:68:  const [forkNumber, setForkNumber] = useState('');
+src/components/StartCenter.tsx:98:  const handleLoadDemo = (demoId: string) => {
+src/components/StartCenter.tsx:100:      onLoadDemo(demoId);
+src/components/StartCenter.tsx:102:      onOpenProject(demoId);
+src/components/StartCenter.tsx:113:        description: `Derived user project from reference template.`
+src/components/StartCenter.tsx:142:                Select an engineering discipline to begin an isolated project, open a saved workspace, or inspect official industrial benchmark demonstrations.
+src/components/StartCenter.tsx:251:            <span className="text-xs text-slate-400">Pre-validated benchmark assemblies with cryptographic evidence</span>
+src/components/StartCenter.tsx:255:            {OFFICIAL_DEMONSTRATIONS.map((demo) => (
+src/components/StartCenter.tsx:257:                key={demo.id}
+src/components/StartCenter.tsx:263:                      {demo.projectNumber}
+src/components/StartCenter.tsx:266:                      {demo.unit}
+src/components/StartCenter.tsx:269:                  <h3 className="text-sm font-bold text-white">{demo.name}</h3>
+src/components/StartCenter.tsx:271:                    {demo.description}
+src/components/StartCenter.tsx:275:                    {demo.tags.map((tag) => (
+src/components/StartCenter.tsx:285:                    onClick={() => handleLoadDemo(demo.id)}
+src/components/StartCenter.tsx:292:                      setShowForkModal(demo.id);
+src/components/StartCenter.tsx:293:                      setForkName(`Custom ${demo.name}`);
+src/components/StartCenter.tsx:296:                    title="Fork this reference project with a brand new, isolated document identity"
+src/components/StartCenter.tsx:391:                  placeholder="e.g. Precision Planetary Gearbox"
+src/components/StartCenter.tsx:442:                  placeholder="Design objectives, tolerances, and design constraints..."
+src/components/CrossCuttingGovernanceModal.tsx:29:  initialTab?: 'ACCESS' | 'PROVENANCE' | 'DIGITAL_THREAD' | 'APPROVALS';
+src/components/CrossCuttingGovernanceModal.tsx:37:  initialTab = 'PROVENANCE'
+src/components/CrossCuttingGovernanceModal.tsx:39:  const [activeTab, setActiveTab] = useState<'ACCESS' | 'PROVENANCE' | 'DIGITAL_THREAD' | 'APPROVALS'>(initialTab);
+src/components/NewProjectWorkspace.tsx:54:        initial={{ opacity: 0, y: 20 }}

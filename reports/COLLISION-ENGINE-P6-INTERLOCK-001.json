@@ -1,0 +1,6 @@
+{
+  "reportId": "COLLISION-ENGINE-P6-INTERLOCK-001",
+  "timestampIso": "2026-10-02T08:17:49.212Z",
+  "interlockRulesVerified": "ProvenSafe/Verified state opens interlock; Stale/Failed/Sampled blocks dependent actions",
+  "verdict": "PASSED"
+}

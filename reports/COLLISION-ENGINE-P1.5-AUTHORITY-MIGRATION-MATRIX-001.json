@@ -1,0 +1,51 @@
+{
+  "missionId": "COLLISION-ENGINE-P1.5-AUTHORITY-INTEGRATION-FORENSICS-001",
+  "artifactType": "AUTHORITY_MIGRATION_MATRIX",
+  "timestamp": "2026-10-01T01:48:00.000Z",
+  "migrationPhases": {
+    "P0": "Canonical Authority Contract (COMPLETED)",
+    "P1": "Exact Narrow-Phase Mathematics & Provider (COMPLETED)",
+    "P1.5": "Authority Integration & Legacy Bypass Forensics (COMPLETED - AUDIT ONLY)",
+    "P2": "CAD B-Rep & OCCT Solid Binding (PLANNED)",
+    "P3": "CAM Toolpath & Assembly Consumer Migration (PLANNED)",
+    "P4": "Continuous Collision Detection (CCD) (PLANNED)",
+    "P5": "Kinematic Clearances & Full Legacy Retirement (PLANNED)"
+  },
+  "migrationTargets": [
+    {
+      "consumer": "src/components/cam/CollisionDetectionWorkspace.tsx",
+      "currentEngine": "src/engine/cam/collision/CollisionDetectionEngine.ts",
+      "targetAuthority": "src/engine/collision-authority/CollisionAuthority.ts",
+      "targetProvider": "ExactNarrowPhaseProvider (P1)",
+      "targetPhase": "P3"
+    },
+    {
+      "consumer": "src/components/AssemblyWorkspace.tsx",
+      "currentEngine": "src/engine/assembly/InterferenceDetectionEngine.ts",
+      "targetAuthority": "src/engine/collision-authority/CollisionAuthority.ts",
+      "targetProvider": "OCCT B-Rep Provider (P2)",
+      "targetPhase": "P3"
+    },
+    {
+      "consumer": "src/engine/cam/fiveaxis/ToolAxisOptimizer.ts",
+      "currentEngine": "src/engine/cam/fiveaxis/FiveAxisCollisionEngine.ts",
+      "targetAuthority": "src/engine/collision-authority/CollisionAuthority.ts",
+      "targetProvider": "ExactNarrowPhaseProvider / CCD Provider (P1/P4)",
+      "targetPhase": "P3/P4"
+    },
+    {
+      "consumer": "src/engine/cam/machine-sim/MachineSimulationEngine.ts",
+      "currentEngine": "src/engine/cam/machine-sim/MachineCollisionEngine.ts",
+      "targetAuthority": "src/engine/collision-authority/CollisionAuthority.ts",
+      "targetProvider": "Kinematic Machine Clearance Provider (P5)",
+      "targetPhase": "P5"
+    },
+    {
+      "consumer": "src/engine/kinematics/FiveAxisVerificationEngine.ts",
+      "currentEngine": "src/engine/kinematics/CollisionEngine.ts",
+      "targetAuthority": "src/engine/collision-authority/CollisionAuthority.ts",
+      "targetProvider": "ExactNarrowPhaseProvider (P1)",
+      "targetPhase": "P3"
+    }
+  ]
+}

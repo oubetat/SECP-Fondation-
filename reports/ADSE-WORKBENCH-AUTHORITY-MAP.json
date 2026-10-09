@@ -1,0 +1,23 @@
+{
+  "authorityMapVersion": "1.0.0",
+  "documentId": "SECP-ADSE-AUTHORITY-MAP-001",
+  "timestamp": "2026-09-29T07:40:00.000Z",
+  "authorityPath": [
+    "Workbench UI",
+    "ADSEWorkbenchBridge",
+    "Domain Engine (P0-P9)",
+    "CoreExecutionAuthority",
+    "Canonical Engineering State",
+    "DigitalThreadRegistry",
+    "VerificationRegistry",
+    "EvidenceMerkleTree",
+    "PersistenceEngine"
+  ],
+  "enforcedRules": {
+    "zeroUiOwnedEngineeringState": true,
+    "zeroUiDirectExecutionBypass": true,
+    "aiProposalNonAuthoritative": true,
+    "automaticImpactInvalidation": true,
+    "deterministicReconstruction": true
+  }
+}

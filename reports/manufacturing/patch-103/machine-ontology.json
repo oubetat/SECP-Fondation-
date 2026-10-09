@@ -1,0 +1,21 @@
+{
+  "patchId": "PATCH-103",
+  "timestamp": "2026-09-25T07:47:42.671Z",
+  "supportedTypes": [
+    "MILL_3_AXIS",
+    "MILL_4_AXIS",
+    "MILL_5_AXIS",
+    "TURNING",
+    "MILL_TURN",
+    "LATHE",
+    "ROBOTIC_MANUFACTURING"
+  ],
+  "supportedAxes": [
+    "LINEAR_X",
+    "LINEAR_Y",
+    "LINEAR_Z",
+    "ROTARY_A",
+    "ROTARY_B",
+    "ROTARY_C"
+  ]
+}

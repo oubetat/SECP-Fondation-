@@ -1,0 +1,51 @@
+{
+  "benchmarkTimestamp": 1787299360252,
+  "environment": "NodeJS / V8 Engine (Multi-threaded worker tier)",
+  "metrics": [
+    {
+      "scaleTier": 10,
+      "actualOccurrences": 11,
+      "creationTimeMs": 1.07,
+      "validationTimeMs": 0.15,
+      "queryTimeMs": 0.17,
+      "hashTimeMs": 1.5,
+      "serializationTimeMs": 0.03,
+      "graphHash": "6f5ae95efdbb242bd8a3a832247e45f5690ddc50fbda786c880459b0f94c81f9",
+      "isValid": true
+    },
+    {
+      "scaleTier": 100,
+      "actualOccurrences": 101,
+      "creationTimeMs": 4.43,
+      "validationTimeMs": 0.93,
+      "queryTimeMs": 0.05,
+      "hashTimeMs": 8.2,
+      "serializationTimeMs": 0.03,
+      "graphHash": "8b934275851f83e7a458be089bf46da8fb2ead3f5d8c4cb1cabfb4a5da283752",
+      "isValid": true
+    },
+    {
+      "scaleTier": 1000,
+      "actualOccurrences": 1001,
+      "creationTimeMs": 37.75,
+      "validationTimeMs": 28.3,
+      "queryTimeMs": 0.27,
+      "hashTimeMs": 74.89,
+      "serializationTimeMs": 0.05,
+      "graphHash": "6c5daa9b55067b59b739021427e5645ca0fb6c2e9546ee0fa3308a040441393b",
+      "isValid": true
+    },
+    {
+      "scaleTier": 5000,
+      "actualOccurrences": 5001,
+      "creationTimeMs": 136.05,
+      "validationTimeMs": 240.87,
+      "queryTimeMs": 0.91,
+      "hashTimeMs": 337.54,
+      "serializationTimeMs": 0.02,
+      "graphHash": "5dd4ab24785ce27f5fa0c01c1815c65b894deba38e1b410361b80057f3c158e5",
+      "isValid": true
+    }
+  ],
+  "allPassed": true
+}

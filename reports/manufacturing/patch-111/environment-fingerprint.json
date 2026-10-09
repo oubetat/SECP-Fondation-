@@ -1,0 +1,10 @@
+{
+  "camEngineHash": "ea3a85553f678ccf2683f95be752d6ac0277d7bbc7200bed4e82348a752abcd1",
+  "geometryKernelHash": "729eab402600bb0df69971a31b6930a31dc93657497e171d70a32645b8ed876e",
+  "simulationEngineHash": "5c31f5c265ac529e6890ada6a891d83e3b9b96901b9c51040d4c5d5a3d54169c",
+  "postProcessorHash": "9935b0947cc0da16a6975e68ef96596f6dd42f082d4b429878fe146b49e69b69",
+  "dependencyLockHash": "e8ec974290dd9386bcbc0f7e67b01426b0dcc61e375a6757ec910a582e1933db",
+  "configurationHash": "ac99667d90196cc6816703362299f95e2ee7102e2245dd90185fd987b398be9a",
+  "os": "Linux 6.6.0-cloud-run",
+  "runtime": "Node.js 22.x / TS 5.8"
+}

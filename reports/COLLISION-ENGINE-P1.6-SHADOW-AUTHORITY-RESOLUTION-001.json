@@ -1,0 +1,79 @@
+{
+  "missionId": "COLLISION-ENGINE-P1.6-AUTHORITY-MIGRATION-ENFORCEMENT-001",
+  "artifactType": "SHADOW_AUTHORITY_RESOLUTION",
+  "timestamp": "2026-10-01T01:57:00.000Z",
+  "resolutions": [
+    {
+      "shadowEngineId": "SHADOW_01_CAM_COLLISION_DETECTION_ENGINE",
+      "file": "src/engine/cam/collision/CollisionDetectionEngine.ts",
+      "disposition": "ADAPTER_TO_AUTHORITY",
+      "actionTaken": "Routed verifyToolpath segments to CollisionAuthority.evaluateSync() with ExactNarrowPhaseProvider"
+    },
+    {
+      "shadowEngineId": "SHADOW_02_CAM_FIVE_AXIS_COLLISION_ENGINE",
+      "file": "src/engine/cam/fiveaxis/FiveAxisCollisionEngine.ts",
+      "disposition": "ADAPTER_TO_AUTHORITY",
+      "actionTaken": "Routed checkSegmentCollision to CollisionAuthority.evaluateSync() with CamFiveAxisCollisionProvider"
+    },
+    {
+      "shadowEngineId": "SHADOW_03_CAM_MACHINE_COLLISION_ENGINE",
+      "file": "src/engine/cam/machine-sim/MachineCollisionEngine.ts",
+      "disposition": "ADAPTER_TO_AUTHORITY",
+      "actionTaken": "Routed evaluatePoseCollisions to CollisionAuthority.evaluateSync() with MachineSimulationCollisionProvider"
+    },
+    {
+      "shadowEngineId": "SHADOW_04_MANUFACTURING_COLLISION_DETECTOR",
+      "file": "src/engine/manufacturing/collision/CollisionDetector.ts",
+      "disposition": "RETAIN_SPECIALIZED_NON_AUTHORITATIVE",
+      "actionTaken": "Explicitly flagged as specialized diagnostic toolpath sampler"
+    },
+    {
+      "shadowEngineId": "SHADOW_05_ASSEMBLY_CLASH_DETECTION_ENGINE",
+      "file": "src/engine/assembly/clash/ClashDetectionEngine.ts",
+      "disposition": "ADAPTER_TO_AUTHORITY",
+      "actionTaken": "Classified primitive clash routines under AssemblyCollisionProvider"
+    },
+    {
+      "shadowEngineId": "SHADOW_06_ASSEMBLY_INTERFERENCE_DETECTION_ENGINE",
+      "file": "src/engine/assembly/InterferenceDetectionEngine.ts",
+      "disposition": "ADAPTER_TO_AUTHORITY",
+      "actionTaken": "Routed analyze() to CollisionAuthority.evaluateSync(), eliminated fail-open fallback CLEAR"
+    },
+    {
+      "shadowEngineId": "SHADOW_07_ASSEMBLY_INTERFERENCE_ENGINE_OCCT",
+      "file": "src/engine/assembly/AssemblyInterferenceEngine.ts",
+      "disposition": "ADAPTER_TO_AUTHORITY",
+      "actionTaken": "Routed analyzeInterference() to CollisionAuthority.evaluateSync(), enforced UNKNOWN status on OCCT exception"
+    },
+    {
+      "shadowEngineId": "SHADOW_08_ASSEMBLY_INTELLIGENCE_COLLISION",
+      "file": "src/engine/assembly-intelligence/CollisionDetectionEngine.ts",
+      "disposition": "DIAGNOSTIC_NON_AUTHORITATIVE",
+      "actionTaken": "Flagged bounding sphere heuristics as non-authoritative topology helper"
+    },
+    {
+      "shadowEngineId": "SHADOW_09_ASSEMBLY_INTELLIGENCE_DYNAMIC",
+      "file": "src/engine/assembly-intelligence/DynamicInterferenceEngine.ts",
+      "disposition": "DEPRECATED_PENDING_REMOVAL",
+      "actionTaken": "Flagged hardcoded stub as non-authoritative"
+    },
+    {
+      "shadowEngineId": "SHADOW_10_KINEMATICS_COLLISION_ENGINE",
+      "file": "src/engine/kinematics/CollisionEngine.ts",
+      "disposition": "ADAPTER_TO_AUTHORITY",
+      "actionTaken": "Routed verifyPoint() to CollisionAuthority.evaluateSync() with KinematicsCollisionProvider"
+    },
+    {
+      "shadowEngineId": "SHADOW_11_CLASSA_GOUGE_VERIFIER",
+      "file": "src/engine/classa5axis/SECP083GougeVerifier.ts",
+      "disposition": "DIAGNOSTIC_NON_AUTHORITATIVE",
+      "actionTaken": "Flagged static stub as non-authoritative diagnostic"
+    },
+    {
+      "shadowEngineId": "SHADOW_12_CAD_ASSEMBLY_INTERFERENCE_ANALYZER",
+      "file": "src/engine/cad-kernel/document/AssemblyInterferenceAnalyzer.ts",
+      "disposition": "RETAIN_SPECIALIZED_NON_AUTHORITATIVE",
+      "actionTaken": "Flagged as document-level hierarchical bounding box pre-filter"
+    }
+  ]
+}

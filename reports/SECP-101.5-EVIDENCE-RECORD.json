@@ -1,0 +1,14 @@
+{
+  "gateId": "SECP-101.5",
+  "previousGate": "SECP-101.4",
+  "previousGateStatus": "PASS",
+  "wasmKernelClosureStatus": "SEALED",
+  "cfdIntegrity": "PASS",
+  "nurbsIntegrity": "PASS",
+  "camDeprecationIntegrity": "PASS",
+  "regressionStatus": "PASS",
+  "outOfScopeProductionBlockers": [],
+  "reopenedBlockers": [],
+  "finalDecision": "PASS",
+  "finalProvenanceSHA256": "ea3a42ea9ab9b490117008ca3f20f51fb80267c46c244552afd938cca605cc49"
+}

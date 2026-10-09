@@ -1,0 +1,17 @@
+{
+  "missionId": "COLLISION-ENGINE-FORENSIC-EVIDENCE-ADJUDICATION-001",
+  "timestamp": "2026-10-01T01:14:00.000Z",
+  "productionTrace": {
+    "interactiveUI": {
+      "component": "src/components/cam/CollisionDetectionWorkspace.tsx",
+      "status": "DISCONNECTED",
+      "detail": "Renders 5-Axis toolpath collision timeline using synthetic obstacle triangles (createSampleObstacleTriangles) instead of the user's active CAD model."
+    },
+    "assemblyCAD": {
+      "component": "AssemblyInterferenceEngine",
+      "status": "PARTIALLY_CONNECTED",
+      "detail": "Called inside RobotAssemblyManager and DroneAssemblyManager, but not connected to interactive CAD assembly tree or viewport."
+    },
+    "verdict": "CONFIRMED_PRODUCTION_DISCONNECTION"
+  }
+}

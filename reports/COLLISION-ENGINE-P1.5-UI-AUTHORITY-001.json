@@ -1,0 +1,37 @@
+{
+  "missionId": "COLLISION-ENGINE-P1.5-AUTHORITY-INTEGRATION-FORENSICS-001",
+  "artifactType": "UI_AUTHORITY_AUDIT",
+  "timestamp": "2026-10-01T01:48:00.000Z",
+  "uiComponents": [
+    {
+      "componentPath": "src/components/cam/CollisionDetectionWorkspace.tsx",
+      "targetDomain": "CAM_COLLISION_DETECTION_UI",
+      "findings": {
+        "calculatesAuthoritativeCollision": false,
+        "manufacturesCollisionStatus": false,
+        "usesSyntheticObstacleFixtures": true,
+        "syntheticObstacleMethod": "CollisionDetectionEngine.createSampleObstacleTriangles(activeBenchmark.id)",
+        "callsCanonicalAuthority": false,
+        "callsLegacyEngineDirectly": true,
+        "legacyEngineCalled": "src/engine/cam/collision/CollisionDetectionEngine.ts:verifyToolpath()",
+        "convertsAnalysisFailedToSafe": false,
+        "verdict": "UI_LEGACY_DIRECT_BYPASS"
+      }
+    },
+    {
+      "componentPath": "src/components/AssemblyWorkspace.tsx",
+      "targetDomain": "ASSEMBLY_INTERFERENCE_UI",
+      "findings": {
+        "calculatesAuthoritativeCollision": false,
+        "manufacturesCollisionStatus": false,
+        "usesSyntheticObstacleFixtures": false,
+        "callsCanonicalAuthority": false,
+        "callsLegacyEngineDirectly": true,
+        "legacyEngineCalled": "src/engine/assembly/InterferenceDetectionEngine.ts:analyze()",
+        "convertsAnalysisFailedToSafe": true,
+        "convertsAnalysisFailedDetails": "InterferenceDetectionEngine.analyze() defaults to returning status: 'CLEAR' and clashes: [] for all production assemblies that do not match hardcoded test case names",
+        "verdict": "UI_SHADOW_MOCK_BYPASS_FAIL_OPEN"
+      }
+    }
+  ]
+}

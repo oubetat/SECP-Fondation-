@@ -1,0 +1,35 @@
+{
+  "verdict": "PASS",
+  "checks": [
+    {
+      "id": "VALID_QUALIFICATION_FLOW",
+      "passed": true,
+      "details": "Ti-6Al-4V successfully passed qualification for Room Temp Linear Static FEM"
+    },
+    {
+      "id": "OUTSIDE_DOMAIN_REJECTION",
+      "passed": true,
+      "details": "Successfully rejected usage at 500°C which exceeds the 350°C qualified limit"
+    },
+    {
+      "id": "INCOMPLETE_PROPERTY_REJECTION",
+      "passed": true,
+      "details": "Correctly flagged INCOMPLETE when requested properties (Hardening) are missing from qualification record"
+    },
+    {
+      "id": "INDEPENDENT_AUDIT_PASS",
+      "passed": true,
+      "details": "Third-party audit confirmed evidence completeness and fingerprint integrity"
+    },
+    {
+      "id": "PROVENANCE_REQUIREMENT_ENFORCEMENT",
+      "passed": true,
+      "details": "Policy enforcement: Rejected qualification because provenance chain is UNVERIFIED"
+    },
+    {
+      "id": "SOLVER_ADMISSION_GATE",
+      "passed": true,
+      "details": "Solver admission gate correctly admitted the qualified material for execution"
+    }
+  ]
+}

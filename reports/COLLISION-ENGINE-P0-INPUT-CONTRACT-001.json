@@ -1,0 +1,16 @@
+{
+  "contractId": "P0-INPUT-CONTRACT-001",
+  "name": "P0 Canonical Collision Input Schema",
+  "version": "1.0.0",
+  "requiredFields": [
+    "domain ('ASSEMBLY' | 'CAM_MULTI_AXIS' | 'KINEMATIC_MECHANISM' | 'NC_SIMULATION')",
+    "coordinateFrame ('WCS' | 'MCS' | 'TCS')",
+    "units ('MILLIMETERS' | 'INCHES')",
+    "toleranceProfile (linearToleranceMm, angularToleranceDeg, clearanceWarningMarginMm, safeClearanceMarginMm)"
+  ],
+  "validationRules": [
+    "Tolerance values must be non-negative finite numbers",
+    "CAM_MULTI_AXIS requires toolAssembly with positive cutter diameter",
+    "Missing required fields immediately fail-closed to ANALYSIS_FAILED"
+  ]
+}

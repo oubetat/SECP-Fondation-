@@ -1,0 +1,17 @@
+{
+  "generatedAt": "2026-10-03T10:03:22.758Z",
+  "missionId": "COLLISION-ENGINE-P7-TRUTH-THREAD-DETERMINISTIC-PERSISTENCE-001",
+  "executionId": "EXEC_COL_yczpx8mvx_1791021802765",
+  "inputHash": "803779fcdfadfed94c7bdb9a4bf39f77d3af7e7e6335462b6dd7ebc2723c0a7c",
+  "resultHash": "c6a2495a98b4740dd7ae2b04a8c3b3800762a943963e2b0c72115e2c3d4805ec",
+  "evidenceHash": "9317fd7cc3f30aaff5334ee6730f198f51d1f178b93701559e354d43ebfcf3a8",
+  "eventHash": "4b9c2de7cbb917984f5df540c5cf62b804474997e32ea7ad0d68f420ebbe3f4c",
+  "status": "ANALYSIS_FAILED",
+  "verdict": "FAILURE_PERSISTENCE_FAILED",
+  "provenance": {
+    "cadDocumentRevisionId": "REV_GEN_v1",
+    "geometryHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "algorithmVersion": "SYSTEM_VALIDATOR@1.0.0"
+  },
+  "failurePreserved": false
+}

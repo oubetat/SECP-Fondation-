@@ -1,0 +1,31 @@
+{
+  "phase": "ADSE-P7",
+  "indexType": "FORENSIC_EVIDENCE",
+  "timestamp": "2026-09-28T02:22:00Z",
+  "evidenceRecords": [
+    {
+      "evidenceId": "ev:pwr:kirchhoff_load_flow",
+      "method": "KIRCHHOFF_LOAD_FLOW_AUDIT",
+      "balanceDiscrepancyPercent": 0.000,
+      "voltageCompliance": true,
+      "authority": "SYSTEM_ARCHITECT",
+      "hashAlgorithm": "SHA-256"
+    },
+    {
+      "evidenceId": "ev:pwr:converter_efficiency",
+      "method": "CONVERTER_EFFICIENCY_AUDIT",
+      "efficiencyPercent": 90.0,
+      "lossesWatts": 22.0,
+      "authority": "SYSTEM_ARCHITECT",
+      "hashAlgorithm": "SHA-256"
+    },
+    {
+      "evidenceId": "ev:pwr:thermal_coupling",
+      "method": "P6_THERMAL_HEAT_SOURCE_MAPPING",
+      "totalHeatDissipatedWatts": 257.0,
+      "targetP6Model": "therm:avionics_bay",
+      "authority": "THERMAL_ENGINEER",
+      "hashAlgorithm": "SHA-256"
+    }
+  ]
+}

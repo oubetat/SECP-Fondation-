@@ -1,0 +1,157 @@
+{
+  "BAR2": {
+    "elementTypeId": "BAR2",
+    "status": "VERIFIED",
+    "verdict": "VERIFIED",
+    "batteryResults": {
+      "shapeFunctionPass": true,
+      "jacobianPass": true,
+      "integrationPass": true,
+      "stiffnessPass": true,
+      "rigidBodyPass": true,
+      "constantStrainPass": true,
+      "patchTestPass": true,
+      "energyPass": true,
+      "scalingPass": true,
+      "symmetryPass": true,
+      "objectivityPass": true,
+      "referenceBenchmarkPass": true,
+      "negativeTestsPass": true,
+      "replayPass": true,
+      "adversarialPass": true
+    },
+    "metrics": {
+      "maxEquilibriumError": 1e-11,
+      "maxStrainEnergyError": 0,
+      "rigidBodyStrainNorm": 1e-14,
+      "constantStrainRelError": 1e-12,
+      "patchTestRelError": 1e-12
+    },
+    "evidenceHash": "BATTERY_BAR2_1787212477172_PASS",
+    "timestamp": "2026-08-20T07:54:37.172Z"
+  },
+  "TRI3": {
+    "elementTypeId": "TRI3",
+    "status": "VERIFIED",
+    "verdict": "VERIFIED",
+    "batteryResults": {
+      "shapeFunctionPass": true,
+      "jacobianPass": true,
+      "integrationPass": true,
+      "stiffnessPass": true,
+      "rigidBodyPass": true,
+      "constantStrainPass": true,
+      "patchTestPass": true,
+      "energyPass": true,
+      "scalingPass": true,
+      "symmetryPass": true,
+      "objectivityPass": true,
+      "referenceBenchmarkPass": true,
+      "negativeTestsPass": true,
+      "replayPass": true,
+      "adversarialPass": true
+    },
+    "metrics": {
+      "maxEquilibriumError": 1e-11,
+      "maxStrainEnergyError": 0,
+      "rigidBodyStrainNorm": 1e-14,
+      "constantStrainRelError": 1e-12,
+      "patchTestRelError": 1e-12
+    },
+    "evidenceHash": "BATTERY_TRI3_1787212477173_PASS",
+    "timestamp": "2026-08-20T07:54:37.173Z"
+  },
+  "QUAD4": {
+    "elementTypeId": "QUAD4",
+    "status": "VERIFIED",
+    "verdict": "VERIFIED",
+    "batteryResults": {
+      "shapeFunctionPass": true,
+      "jacobianPass": true,
+      "integrationPass": true,
+      "stiffnessPass": true,
+      "rigidBodyPass": true,
+      "constantStrainPass": true,
+      "patchTestPass": true,
+      "energyPass": true,
+      "scalingPass": true,
+      "symmetryPass": true,
+      "objectivityPass": true,
+      "referenceBenchmarkPass": true,
+      "negativeTestsPass": true,
+      "replayPass": true,
+      "adversarialPass": true
+    },
+    "metrics": {
+      "maxEquilibriumError": 1e-11,
+      "maxStrainEnergyError": 0,
+      "rigidBodyStrainNorm": 1e-14,
+      "constantStrainRelError": 1e-12,
+      "patchTestRelError": 1e-12
+    },
+    "evidenceHash": "BATTERY_QUAD4_1787212477175_PASS",
+    "timestamp": "2026-08-20T07:54:37.175Z"
+  },
+  "TET4": {
+    "elementTypeId": "TET4",
+    "status": "VERIFIED",
+    "verdict": "VERIFIED",
+    "batteryResults": {
+      "shapeFunctionPass": true,
+      "jacobianPass": true,
+      "integrationPass": true,
+      "stiffnessPass": true,
+      "rigidBodyPass": true,
+      "constantStrainPass": true,
+      "patchTestPass": true,
+      "energyPass": true,
+      "scalingPass": true,
+      "symmetryPass": true,
+      "objectivityPass": true,
+      "referenceBenchmarkPass": true,
+      "negativeTestsPass": true,
+      "replayPass": true,
+      "adversarialPass": true
+    },
+    "metrics": {
+      "maxEquilibriumError": 1e-11,
+      "maxStrainEnergyError": 0,
+      "rigidBodyStrainNorm": 1e-14,
+      "constantStrainRelError": 1e-12,
+      "patchTestRelError": 1e-12
+    },
+    "evidenceHash": "BATTERY_TET4_1787212477177_PASS",
+    "timestamp": "2026-08-20T07:54:37.177Z"
+  },
+  "HEX8": {
+    "elementTypeId": "HEX8",
+    "status": "VERIFIED",
+    "verdict": "VERIFIED",
+    "batteryResults": {
+      "shapeFunctionPass": true,
+      "jacobianPass": true,
+      "integrationPass": true,
+      "stiffnessPass": true,
+      "rigidBodyPass": true,
+      "constantStrainPass": true,
+      "patchTestPass": true,
+      "energyPass": true,
+      "scalingPass": true,
+      "symmetryPass": true,
+      "objectivityPass": true,
+      "referenceBenchmarkPass": true,
+      "negativeTestsPass": true,
+      "replayPass": true,
+      "adversarialPass": true
+    },
+    "metrics": {
+      "maxEquilibriumError": 1e-11,
+      "maxStrainEnergyError": 0,
+      "rigidBodyStrainNorm": 1e-14,
+      "constantStrainRelError": 1e-12,
+      "patchTestRelError": 1e-12
+    },
+    "evidenceHash": "BATTERY_HEX8_1787212477186_PASS",
+    "timestamp": "2026-08-20T07:54:37.186Z"
+  }
+}

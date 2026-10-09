@@ -1,0 +1,10 @@
+{
+  "timestamp": "2026-09-30T08:48:00Z",
+  "missionId": "NACA0012-VV-FINAL-TRUTH-CLOSURE-002",
+  "audit": {
+    "inletMassFlow": 7.6,
+    "outletMassFlowRaw": 7.5975,
+    "netMassImbalanceRawPercent": 0.033,
+    "conservationVerdict": "PASS"
+  }
+}

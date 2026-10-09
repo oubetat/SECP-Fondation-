@@ -1,0 +1,6 @@
+{
+  "operationId": "OP_ROUGH_POCKET",
+  "strategy": "ADAPTIVE_POCKETING",
+  "inputGeometryHash": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
+  "outputToolpathHash": "HASH_TP_01"
+}

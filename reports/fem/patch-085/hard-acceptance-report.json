@@ -1,0 +1,41 @@
+{
+  "verdict": "VERIFIED",
+  "checks": [
+    {
+      "id": "EULER_PINNED_PINNED",
+      "description": "Euler buckling load for Pinned-Pinned column vs analytical",
+      "passed": true,
+      "details": "Num: 493496.29 N, Exact: 493480.22 N (Err: 0.003%)"
+    },
+    {
+      "id": "EULER_CANTILEVER",
+      "description": "Euler buckling load for Cantilever (Fixed-Free) column vs analytical",
+      "passed": true,
+      "details": "Num: 123370.31 N, Exact: 123370.06 N (Err: 0.000%)"
+    },
+    {
+      "id": "EULER_FIXED_FIXED",
+      "description": "Euler buckling load for Fixed-Fixed column vs analytical",
+      "passed": true,
+      "details": "Num: 1974888.34 N, Exact: 1973920.88 N (Err: 0.049%)"
+    },
+    {
+      "id": "EULER_FIXED_PINNED",
+      "description": "Euler buckling load for Fixed-Pinned column vs analytical",
+      "passed": true,
+      "details": "Num: 1009592.21 N, Exact: 1009536.43 N (Err: 0.006%)"
+    },
+    {
+      "id": "LOAD_SCALING_INVARIANCE",
+      "description": "Physical critical load invariance under reference load scaling",
+      "passed": true,
+      "details": "P_cr(1N): 493732.91 N, P_cr(100N): 493732.95 N (Diff: 7.7244e-8)"
+    },
+    {
+      "id": "BUCKLING_RESIDUAL",
+      "description": "Eigenpair residual check ||(K - lambda*KG)*phi|| = 0",
+      "passed": true,
+      "details": "Residual norm: 1.8343e-3"
+    }
+  ]
+}

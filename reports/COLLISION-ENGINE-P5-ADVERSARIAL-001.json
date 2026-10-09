@@ -1,0 +1,10 @@
+{
+  "reportId": "COLLISION-ENGINE-P5-ADVERSARIAL-001",
+  "timestampIso": "2026-10-02T08:01:27.699Z",
+  "battery": "P5 Adversarial Mutation Battery (M01-M26)",
+  "totalMutations": 26,
+  "passedMutations": 26,
+  "falseNegativesObserved": 0,
+  "scopeNote": "No false negatives were observed across the qualified P5 adversarial and benchmark scenarios.",
+  "verdict": "PASSED"
+}

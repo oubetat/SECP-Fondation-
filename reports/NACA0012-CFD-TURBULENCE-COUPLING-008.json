@@ -1,0 +1,31 @@
+{
+  "missionId": "NACA0012-VV-STRICT-CAUSAL-CLOSURE-008",
+  "timestamp": "2026-09-30T10:07:41.835Z",
+  "dataFlowSequence": [
+    {
+      "step": 1,
+      "action": "Velocity U^(n-1) & stored nut^(n-1) evaluated -> Strain rate S & Vorticity Omega computed"
+    },
+    {
+      "step": 2,
+      "action": "k & omega linear transport systems assembled using relaxed nut^(n-1) diffusion"
+    },
+    {
+      "step": 3,
+      "action": "Gauss-Seidel solves k^(n) & omega^(n) -> solutions bounded physically"
+    },
+    {
+      "step": 4,
+      "action": "Unrelaxed nut* evaluated -> under-relaxed via alpha_nut (0.3) -> stored in nut^(n)"
+    },
+    {
+      "step": 5,
+      "action": "Momentum predictor assembled using face-averaged effMu = 0.5*(mu + nut_P + mu + nut_N)"
+    },
+    {
+      "step": 6,
+      "action": "Gauss-Seidel solves U* -> Poisson solves p' -> U^(n) updated via Rhie-Chow"
+    }
+  ],
+  "mixedStateCheck": "NO MIXED-STATE OPERATOR DEFECT: Each sub-step strictly references unambiguous state indices."
+}

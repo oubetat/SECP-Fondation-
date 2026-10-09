@@ -1,0 +1,26 @@
+{
+  "entities": {
+    "Product": {
+      "title": "Engineering Product",
+      "description": "A complete SECP CAD Product containing engineering document data.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-zA-Z0-9_\\-]+$" },
+        "name": { "type": "string", "maxLength": 255 },
+        "type": { "type": "string", "enum": ["BLANK", "BALL_VALVE", "INDUSTRIAL_DRONE", "V6_ENGINE", "CUSTOM_SOLID", "IMPORTED"] },
+        "description": { "type": "string", "maxLength": 2000 },
+        "unit": { "type": "string", "maxLength": 50 },
+        "updatedAt": { "type": "string", "format": "date-time" },
+        "userId": { "type": "string", "pattern": "^[a-zA-Z0-9_\\-]+$" },
+        "projectData": { "type": "object", "description": "Serialized CAD project data" }
+      },
+      "required": ["id", "name", "type", "userId", "updatedAt"]
+    }
+  },
+  "firestore": {
+    "products/{productId}": {
+      "schema": "Product",
+      "description": "Global collection of engineering products secured by userId."
+    }
+  }
+}

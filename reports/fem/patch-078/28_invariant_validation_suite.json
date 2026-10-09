@@ -1,0 +1,18 @@
+{
+  "isValid": true,
+  "verdict": "VERIFIED",
+  "errors": [],
+  "warnings": [],
+  "invariants": {
+    "dimensionsValid": true,
+    "rowPointersLengthValid": true,
+    "rowPointersMonotonic": true,
+    "rowPointersBoundaryValid": true,
+    "columnIndicesLengthValid": true,
+    "columnIndicesBoundsValid": true,
+    "valuesLengthValid": true,
+    "noNaNOrInf": true,
+    "canonicalSorted": true,
+    "resourceLimitsRespected": true
+  }
+}

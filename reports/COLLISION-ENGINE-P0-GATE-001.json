@@ -1,0 +1,23 @@
+{
+  "contractId": "P0-GATE-001",
+  "name": "Hard Acceptance Gate P0 Scorecard",
+  "version": "1.0.0",
+  "gateStatus": "PASSED",
+  "gates": {
+    "P0-G01": { "name": "Canonical result contract exists", "status": "PASS" },
+    "P0-G02": { "name": "Canonical input contract exists", "status": "PASS" },
+    "P0-G03": { "name": "Authority boundary exists", "status": "PASS" },
+    "P0-G04": { "name": "Fail-closed semantics enforced", "status": "PASS" },
+    "P0-G05": { "name": "Unsupported capability cannot become NO_COLLISION", "status": "PASS" },
+    "P0-G06": { "name": "Exception cannot become NO_COLLISION", "status": "PASS" },
+    "P0-G07": { "name": "Approximate algorithms cannot masquerade as exact", "status": "PASS" },
+    "P0-G08": { "name": "Results are immutable", "status": "PASS" },
+    "P0-G09": { "name": "Deterministic normalization proven", "status": "PASS" },
+    "P0-G10": { "name": "Shadow authority inventory complete", "status": "PASS" },
+    "P0-G11": { "name": "No UI authority path introduced", "status": "PASS" },
+    "P0-G12": { "name": "All P0 tests pass", "status": "PASS" },
+    "P0-G13": { "name": "Build/typecheck passes", "status": "PASS" },
+    "P0-G14": { "name": "Evidence artifacts persisted", "status": "PASS" }
+  },
+  "overallVerdict": "PASS (P0 Remediation Complete)"
+}

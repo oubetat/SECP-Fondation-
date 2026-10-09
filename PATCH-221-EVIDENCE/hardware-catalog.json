@@ -1,0 +1,23 @@
+{
+  "catalog": {
+    "FASTENERS": {
+      "Bolts": ["Hex Bolt (ISO 4014)", "Socket-head Cap Screw (ISO 4762)", "Countersunk Screw (ISO 10642)", "Set Screw (ISO 4026)", "Stud (DIN 976)"],
+      "Nuts": ["Hex Nut (ISO 4032)"],
+      "Washers": ["Plain Washer (ISO 7089)", "Lock Washer (DIN 127)"],
+      "Retaining Rings": ["Retaining Ring External (DIN 471)"]
+    },
+    "PINS": {
+      "Pins": ["Dowel Pin (ISO 8734)", "Clevis Pin (ISO 2341)", "Taper Pin (ISO 2339)", "Cotter Pin (ISO 1234)"]
+    },
+    "BEARINGS": {
+      "Ball Bearings": ["Deep Groove Ball Bearing (ISO 15)", "Thrust Ball Bearing (ISO 104)", "Flanged Ball Bearing"],
+      "Roller Bearings": ["Cylindrical Roller Bearing (ISO 15)"]
+    },
+    "MECHANICAL_ELEMENTS": {
+      "Keys": ["Parallel Key (DIN 6885)", "Keyway (DIN 6885)"],
+      "Spacers": ["Spacer (DIN 988)", "Bushing Plain (DIN 1850)"],
+      "Shafts": ["Shaft Extension (DIN 748)"],
+      "Seals": ["Radial Shaft Seal (DIN 3760)", "O-Ring (ISO 3601)"]
+    }
+  }
+}

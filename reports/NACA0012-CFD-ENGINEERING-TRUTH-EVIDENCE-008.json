@@ -1,0 +1,23 @@
+{
+  "missionId": "NACA0012-VV-STRICT-CAUSAL-CLOSURE-008",
+  "timestamp": "2026-09-30T10:07:41.836Z",
+  "evidenceChain": {
+    "meshIdentity": "NACA0012 O-Grid 80x40x1 (3,240 cells), chord=1.0m, farfield=10c",
+    "physicsIdentity": "Incompressible Navier-Stokes + SST k-omega (Re=6M, AoA=10 deg, Mach=0.15)",
+    "boundaryIdentity": "Farfield Inflow/Outflow decomposition + Viscous Wall",
+    "solverConfig": "SIMPLE algorithm, FOU discretization, alpha_u=0.5, alpha_p=0.2, alpha_nut=0.3",
+    "convergenceAudit": {
+      "continuityL1": 0.000013895852311858543,
+      "continuityGatePassed": true,
+      "momentumLinf": 0.000017098185615609835,
+      "momentumGatePassed": true,
+      "velocityCorrection": 0.5314243289236794,
+      "velocityCorrectionGatePassed": false,
+      "forceStabilityPassed": true,
+      "formalConverged": false
+    },
+    "verificationStatus": "DISCRETE_OPERATORS_VERIFIED_BUT_GATE_D_OPEN",
+    "validationStatus": "BLOCKED_PENDING_CONVERGENCE_CLOSURE",
+    "governanceStatus": "G3 — BASELINE REPRODUCED BUT V&V NOT PROVEN"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "context": {
+    "modelId": "TURBINE-BLADE-01",
+    "geometryRevision": "REV-C",
+    "kernelVersion": "OpenCASCADE-7.6.0",
+    "topologyVersion": "B-REP-v2",
+    "coordinateSystem": "CARTESIAN_GLOBAL",
+    "units": "mm",
+    "toleranceProfile": {
+      "linearTolerance": 0.001,
+      "angularTolerance": 0.01,
+      "topologyTolerance": 0.000001,
+      "intersectionTolerance": 0.00001,
+      "classificationTolerance": 0.01
+    },
+    "geometryHash": "3cf384664072c63282ccd578336c1e35028c0cd03caf85b20c6de206f024428c"
+  },
+  "verifiedFeaturesCount": 2,
+  "groundingVerdict": "GROUNDED",
+  "evidenceHash": "e4a5b9b631b4b052ebb0540faa2abf117221964ceaabbec91e94218f9ce20d06",
+  "twinGraphRootHash": "aec793e5951e4340685c29d45d3e6a28b94ab823e6acefb7a618de1d462858e6",
+  "timestamp": "2026-08-21T10:25:42.482Z"
+}

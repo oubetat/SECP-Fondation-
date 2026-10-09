@@ -1,0 +1,74 @@
+[
+  {
+    "id": "EVID-CAD-01",
+    "capabilityId": "capability:cad.validation",
+    "timestamp": "2026-08-22T07:02:19.221Z",
+    "verifier": "V1",
+    "hash": "h1",
+    "metricSnapshots": {},
+    "valid": true
+  },
+  {
+    "id": "EVID-MESH-01",
+    "capabilityId": "capability:mesh.generation",
+    "timestamp": "2026-08-22T07:02:19.221Z",
+    "verifier": "V2",
+    "hash": "h2",
+    "metricSnapshots": {},
+    "valid": true
+  },
+  {
+    "id": "EVID-CFD-01",
+    "capabilityId": "capability:cfd.solve",
+    "timestamp": "2026-08-22T07:02:19.221Z",
+    "verifier": "V3",
+    "hash": "h3",
+    "metricSnapshots": {},
+    "valid": true
+  },
+  {
+    "id": "EVID-CONV-01",
+    "capabilityId": "capability:convergence.verification",
+    "timestamp": "2026-08-22T07:02:19.221Z",
+    "verifier": "V4",
+    "hash": "h4",
+    "metricSnapshots": {},
+    "valid": true
+  },
+  {
+    "id": "EVID-CONS-01",
+    "capabilityId": "capability:conservation.verification",
+    "timestamp": "2026-08-22T07:02:19.221Z",
+    "verifier": "V5",
+    "hash": "h5",
+    "metricSnapshots": {},
+    "valid": true
+  },
+  {
+    "id": "EVID-EV-01",
+    "capabilityId": "capability:evidence.generation",
+    "timestamp": "2026-08-22T07:02:19.221Z",
+    "verifier": "V6",
+    "hash": "h6",
+    "metricSnapshots": {},
+    "valid": true
+  },
+  {
+    "id": "EVID-FAIL-01",
+    "capabilityId": "capability:cfd.failing.solve",
+    "timestamp": "2026-08-22T07:02:19.348Z",
+    "verifier": "Verifier",
+    "hash": "hash",
+    "metricSnapshots": {},
+    "valid": true
+  },
+  {
+    "id": "EVID-RETRY-01",
+    "capabilityId": "capability:cfd.retry.solve",
+    "timestamp": "2026-08-22T07:02:19.372Z",
+    "verifier": "Verifier",
+    "hash": "hash",
+    "metricSnapshots": {},
+    "valid": true
+  }
+]

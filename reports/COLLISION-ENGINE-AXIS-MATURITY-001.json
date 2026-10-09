@@ -1,0 +1,56 @@
+{
+  "missionId": "COLLISION-ENGINE-FORENSIC-MATURITY-001",
+  "timestamp": "2026-10-01T01:00:00.000Z",
+  "axisMaturityMatrix": {
+    "Axis1": {
+      "kinematicModel": "PROVEN",
+      "transformPropagation": "PROVEN",
+      "collisionDetection": "PARTIAL",
+      "continuousCollision": "PARTIAL",
+      "gougeDetection": "ABSENT",
+      "holderCollision": "ABSENT",
+      "fixtureCollision": "PARTIAL",
+      "productionPath": "PARTIAL"
+    },
+    "Axis2": {
+      "kinematicModel": "PROVEN",
+      "transformPropagation": "PROVEN",
+      "collisionDetection": "PARTIAL",
+      "continuousCollision": "PARTIAL",
+      "gougeDetection": "ABSENT",
+      "holderCollision": "ABSENT",
+      "fixtureCollision": "PARTIAL",
+      "productionPath": "PARTIAL"
+    },
+    "Axis3": {
+      "kinematicModel": "PROVEN",
+      "transformPropagation": "PROVEN",
+      "collisionDetection": "PARTIAL",
+      "continuousCollision": "PARTIAL",
+      "gougeDetection": "PARTIAL (Z-depth heuristic vs stock)",
+      "holderCollision": "PARTIAL (AABB / Capsule clamp)",
+      "fixtureCollision": "PARTIAL",
+      "productionPath": "PARTIAL"
+    },
+    "Axis4": {
+      "kinematicModel": "PROVEN (Rotary table / head kinematics in FourAxisKinematics)",
+      "transformPropagation": "PROVEN",
+      "collisionDetection": "UNPROVEN",
+      "continuousCollision": "UNPROVEN",
+      "gougeDetection": "UNPROVEN",
+      "holderCollision": "UNPROVEN",
+      "fixtureCollision": "UNPROVEN",
+      "productionPath": "ABSENT"
+    },
+    "Axis5": {
+      "kinematicModel": "PROVEN (Forward & Inverse Kinematics, Table-Table / Head-Head configurations)",
+      "transformPropagation": "PROVEN",
+      "collisionDetection": "NON_AUTHORITATIVE (vertex-only & centroid-only algorithms)",
+      "continuousCollision": "NON_AUTHORITATIVE (discrete 4-25 sub-steps)",
+      "gougeDetection": "NON_AUTHORITATIVE",
+      "holderCollision": "NON_AUTHORITATIVE",
+      "fixtureCollision": "NON_AUTHORITATIVE",
+      "productionPath": "ABSENT (UI runs on synthetic demo benchmarks, not active CAD part)"
+    }
+  }
+}

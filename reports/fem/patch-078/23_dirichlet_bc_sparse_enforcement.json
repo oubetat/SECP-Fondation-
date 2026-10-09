@@ -1,0 +1,8 @@
+{
+  "method": "DIRECT_ELIMINATION",
+  "prescribedDOFs": [
+    0
+  ],
+  "matrixState": "SOLVER_READY",
+  "verified": true
+}

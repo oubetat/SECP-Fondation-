@@ -1,0 +1,69 @@
+{
+  "work_package": "WP-PHY-01",
+  "title": "Real CMM Hardware Acquisition Boundary Verification",
+  "timestamp": "2026-09-23T12:24:00.000Z",
+  "verdict": "PROVEN_ENGINEERING_CONTRACT",
+  "physical_truth_boundary_status": {
+    "hardware_acquisition_adapter": "ACTIVE",
+    "simulator_promotion_blocked": true,
+    "replay_attacks_neutralized": true,
+    "hardware_identity_binding_enforced": true,
+    "calibration_binding_enforced": true,
+    "oracle_isolation": "ZERO_ADAPTER_IMPORTS"
+  },
+  "essential_scenarios_evaluated": [
+    {
+      "case": "Case A",
+      "name": "Genuine Hardware Artifact",
+      "description": "Authentic capture from physical Zeiss Prismo with valid DAkkS calibration and matched VAST active probe",
+      "adapter_result": "VALID_PHYSICAL_CMM_DEVICE",
+      "oracle_verdict": "GENUINE_PHYSICAL_CMM_ACQUISITION",
+      "consensus": "ORACLE_ACQUISITION_AGREEMENT",
+      "elevated_to_physical_tier": true
+    },
+    {
+      "case": "Case B",
+      "name": "Protocol-Valid Simulation",
+      "description": "Syntactically valid I++ DME protocol payload sourced from simulator stand-in",
+      "adapter_result": "SIMULATOR_SOURCE_RESTRICTED",
+      "oracle_verdict": "SIMULATOR_REJECTED",
+      "consensus": "ORACLE_ACQUISITION_AGREEMENT",
+      "elevated_to_physical_tier": false,
+      "retained_classification": "COMPUTED_FROM_SYNTHETIC_DATA"
+    },
+    {
+      "case": "Case C",
+      "name": "Replay Attack",
+      "description": "Re-submission of previously processed session nonce or expired session window",
+      "adapter_result": "STALE_REPLAY_DETECTED",
+      "oracle_verdict": "CORRUPTED_OR_TAMPERED",
+      "consensus": "FAIL_CLOSED_ACQUISITION_REJECTED",
+      "elevated_to_physical_tier": false
+    },
+    {
+      "case": "Case D",
+      "name": "Hardware Identity Substitution",
+      "description": "Probe qualified on Renishaw Equator submitted as mounted on Zeiss Prismo",
+      "adapter_result": "HARDWARE_IDENTITY_MISMATCH",
+      "oracle_verdict": "CORRUPTED_OR_TAMPERED",
+      "consensus": "FAIL_CLOSED_ACQUISITION_REJECTED",
+      "elevated_to_physical_tier": false
+    },
+    {
+      "case": "Case E",
+      "name": "Calibration Substitution & Expiration",
+      "description": "Calibration certificate issued for foreign machine serial or past expiration date",
+      "adapter_result": "CALIBRATION_IDENTITY_MISMATCH / CALIBRATION_EXPIRED",
+      "oracle_verdict": "CORRUPTED_OR_TAMPERED",
+      "consensus": "FAIL_CLOSED_ACQUISITION_REJECTED",
+      "elevated_to_physical_tier": false
+    }
+  ],
+  "test_metrics": {
+    "wp_phy_01_tests_passed": 10,
+    "total_core_tests_passed": 137,
+    "suites_passed": 11,
+    "build_status": "SUCCESS"
+  },
+  "next_roadmap_step": "WP-PHY-02: Empirical Tool-Wear Validation (Spindle Load, Cutting Forces, Acoustic Emission)"
+}

@@ -1,0 +1,20 @@
+{
+  "contractId": "CONTRACT-COLLISION-TRUTH-THREAD-001",
+  "name": "Truth Thread & Cryptographic Provenance Contract",
+  "version": "1.0.0",
+  "evidencePackageSchema": {
+    "evidenceId": "String (UUIDv4)",
+    "executionTimestamp": "ISO8601 String",
+    "provenanceHashes": {
+      "cadDocumentRevisionHash": "SHA-256 Hash of canonical CAD B-Rep document",
+      "toolDefinitionHash": "SHA-256 Hash of tool geometry definition",
+      "holderDefinitionHash": "SHA-256 Hash of holder/spindle definition",
+      "machineKinematicModelHash": "SHA-256 Hash of machine kinematics and axis limits",
+      "fixtureModelHash": "SHA-256 Hash of fixture and clamping geometry",
+      "stockModelHash": "SHA-256 Hash of raw stock model",
+      "collisionAlgorithmVersion": "Semver String (e.g. 3.1.0)"
+    },
+    "verificationSignature": "HMAC / SHA-256 digest of input hashes + result payload",
+    "truthThreadEventId": "String (Registered in central EngineeringEventStore)"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "clockSource": "PTP_IEEE_1588",
+  "offsetMicroseconds": 2.1,
+  "jitterMS": 0.05,
+  "status": "LOCKED"
+}

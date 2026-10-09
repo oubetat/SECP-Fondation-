@@ -1,0 +1,12 @@
+{
+  "toolId": "T1_ENDMILL_10",
+  "toolNumber": 1,
+  "toolAssemblyId": "ASSY_T1_ER32",
+  "lengthOffsetMM": 120,
+  "radiusOffsetMM": 5,
+  "wearLengthMM": 0.002,
+  "wearRadiusMM": 0.001,
+  "lifeState": "NEW",
+  "measurementSource": "MEASURED",
+  "timestamp": 1787297983971
+}

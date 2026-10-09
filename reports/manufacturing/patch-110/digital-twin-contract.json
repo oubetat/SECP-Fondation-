@@ -1,0 +1,38 @@
+{
+  "twinId": "TWIN_5AXIS_001",
+  "twinRevision": 1,
+  "machineId": "MACH_DMG_50_01",
+  "machineRevision": 1,
+  "machineProfileId": "PROF_DMU50",
+  "controllerProfileId": "CTRL_HEIDENHAIN_TNC640",
+  "kinematicModelId": "KIN_5AXIS_TABLE_TABLE",
+  "geometryModelId": "GEO_DMU50_BODY",
+  "toolAssemblyId": "ASSY_T1_ER32",
+  "fixtureModelId": "FIX_VISE_01",
+  "telemetryProfileId": "TELEM_OPCUA_STD",
+  "synchronizationPolicy": {
+    "mode": "REAL_TIME",
+    "maxLatencyMS": 50,
+    "stalenessThresholdMS": 200,
+    "clockSyncToleranceMS": 10,
+    "reorderWindowMS": 100
+  },
+  "statePolicy": {
+    "historyCapacity": 1000,
+    "checkpointIntervalMS": 1000,
+    "hashChainingEnabled": true
+  },
+  "healthPolicy": {
+    "maxTrackingErrorMM": 0.05,
+    "maxSpindleRPMSlip": 100,
+    "temperatureWarningThresholdC": 45,
+    "temperatureFaultThresholdC": 60,
+    "maxVibrationG": 0.5
+  },
+  "uncertaintyPolicy": {
+    "sensorLinearToleranceMM": 0.001,
+    "sensorAngularToleranceDeg": 0.001,
+    "encoderResolutionMM": 0.0001,
+    "confidenceThreshold": 0.95
+  }
+}

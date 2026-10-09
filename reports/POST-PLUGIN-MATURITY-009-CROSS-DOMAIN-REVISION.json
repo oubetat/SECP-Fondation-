@@ -1,0 +1,12 @@
+{
+  "milestone": "M9",
+  "revisionSemantics": "CROSS-DOMAIN-REVISION",
+  "status": "IMPLEMENTED",
+  "staleRejection": "FAIL_CLOSED",
+  "immutability": "ENFORCED",
+  "lifecycleStates": [
+    "VALID",
+    "STALE",
+    "INVALIDATED"
+  ]
+}

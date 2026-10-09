@@ -1,0 +1,8 @@
+{
+  "defaultFeedMode": "FEED_PER_MINUTE",
+  "maxFeedRate": 25000,
+  "minFeedRate": 1,
+  "feedPerMinCode": "G94",
+  "feedPerRevCode": "G95",
+  "inverseTimeCode": "G93"
+}

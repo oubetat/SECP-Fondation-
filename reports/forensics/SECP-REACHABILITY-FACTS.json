@@ -1,0 +1,1920 @@
+{
+  "entry_points": [
+    "App.tsx",
+    "server.ts",
+    "components/",
+    "IndustrialReadinessEngine",
+    "QualityGate"
+  ],
+  "directories": [
+    {
+      "directory": "src/engine/ai",
+      "files_count": 2,
+      "reachable_from": [],
+      "unreachable": true,
+      "evidence": []
+    },
+    {
+      "directory": "src/engine/assembly",
+      "files_count": 170,
+      "reachable_from": [
+        "App.tsx",
+        "components/"
+      ],
+      "unreachable": false,
+      "evidence": [
+        "src/components/AssemblyEnginePanel.tsx:22 import { AssemblyKinematicsEngine } from '../engine/assembly/AssemblyKinematicsEngine';",
+        "src/components/AssemblyWorkspace.tsx:11 import { ComponentInsertionService, AssemblyOccurrence, EngineeringEvent } from '../engine/assembly/ComponentInsertionService';",
+        "src/components/AssemblyWorkspace.tsx:12 import { ManipulationController, ManipulationAxis, ManipulationMode } from '../engine/assembly/ManipulationController';",
+        "src/components/AssemblyWorkspace.tsx:13 import { SnapEngine } from '../engine/assembly/SnapEngine';",
+        "src/components/AssemblyWorkspace.tsx:14 import { ConstraintCreationService, ConstraintCreationRequest } from '../engine/assembly/ConstraintCreationService';",
+        "src/components/AssemblyWorkspace.tsx:18 import { GeometryReference, AssemblyConstraintType } from '../engine/assembly/AssemblyConstraintTypes';",
+        "src/components/AssemblyWorkspace.tsx:24 import { InterferenceDetectionEngine } from '../engine/assembly/InterferenceDetectionEngine';",
+        "src/components/AssemblyWorkspace.tsx:49 import { SpringGenerator } from '../engine/assembly/spring/SpringGenerator';",
+        "src/components/AssemblyWorkspace.tsx:53 import { JointConstraintSolver } from '../engine/assembly/joints/JointConstraintSolver';",
+        "src/components/BearingEngineeringWorkspace.tsx:10 import { BearingGenerator } from '../engine/assembly/bearing/BearingGenerator';",
+        "src/components/BearingEngineeringWorkspace.tsx:11 import { BearingFitEngine } from '../engine/assembly/bearing/BearingFitEngine';",
+        "src/components/BearingEngineeringWorkspace.tsx:12 import { BearingKinematicsModel } from '../engine/assembly/bearing/BearingKinematicsModel';",
+        "src/components/BearingEngineeringWorkspace.tsx:13 import { BearingPlacementEngine } from '../engine/assembly/bearing/BearingPlacementEngine';",
+        "src/components/BearingEngineeringWorkspace.tsx:14 import { BearingStandardRegistry } from '../engine/assembly/bearing/BearingStandardRegistry';",
+        "src/components/BearingEngineeringWorkspace.tsx:15 import { BearingAssemblyBridge } from '../engine/assembly/bearing/BearingAssemblyBridge';",
+        "src/components/BearingEngineeringWorkspace.tsx:29 import { AssemblyEngine } from '../engine/assembly/AssemblyCore';",
+        "src/components/BearingEngineeringWorkspace.tsx:30 import { AssemblyComponent, PartDefinition } from '../engine/assembly/AssemblyConstraintTypes';",
+        "src/components/BearingEngineeringWorkspace.tsx:9 import { BearingCatalog, CatalogBearingEntry } from '../engine/assembly/bearing/BearingCatalog';",
+        "src/components/GearEngineeringWorkspace.tsx:11 import { GearGenerator } from '../engine/assembly/gear/GearGenerator';",
+        "src/components/GearEngineeringWorkspace.tsx:12 import { GearInvoluteEngine } from '../engine/assembly/gear/GearInvoluteEngine';",
+        "src/components/GearEngineeringWorkspace.tsx:13 import { GearStandardRegistry } from '../engine/assembly/gear/GearStandardRegistry';",
+        "src/components/GearEngineeringWorkspace.tsx:14 import { GearPairKinematicsEngine } from '../engine/assembly/gear/GearPairKinematicsEngine';",
+        "src/components/GearEngineeringWorkspace.tsx:15 import { GearAssemblyBridge } from '../engine/assembly/gear/GearAssemblyBridge';",
+        "src/components/GearEngineeringWorkspace.tsx:24 import { AssemblyEngine } from '../engine/assembly/AssemblyCore';",
+        "src/components/ManipulationGizmo.tsx:3 import { ManipulationMode } from '../engine/assembly/ManipulationController';",
+        "src/components/ShaftEngineeringWorkspace.tsx:11 import { ShaftGenerator } from '../engine/assembly/shaft/ShaftGenerator';",
+        "src/components/ShaftEngineeringWorkspace.tsx:12 import { ShaftStandardRegistry } from '../engine/assembly/shaft/ShaftStandardRegistry';",
+        "src/components/ShaftEngineeringWorkspace.tsx:13 import { ShaftAssemblyBridge } from '../engine/assembly/shaft/ShaftAssemblyBridge';",
+        "src/components/ShaftEngineeringWorkspace.tsx:27 import { AssemblyEngine } from '../engine/assembly/AssemblyCore';",
+        "src/components/ShaftEngineeringWorkspace.tsx:28 import { AssemblyComponent } from '../engine/assembly/AssemblyConstraintTypes';",
+        "src/components/SpringEngineeringWorkspace.tsx:42 import { SpringGenerator } from '../engine/assembly/spring/SpringGenerator';",
+        "src/components/SpringEngineeringWorkspace.tsx:43 import { SpringStandardRegistry, StandardCatalogSpringItem } from '../engine/assembly/spring/SpringStandardRegistry';",
+        "src/components/SpringEngineeringWorkspace.tsx:44 import { SpringAssemblyBridge, SpringClearanceReport } from '../engine/assembly/spring/SpringAssemblyBridge';",
+        "src/components/SpringEngineeringWorkspace.tsx:45 import { SpringKinematicsEngine, SpringKinematicState } from '../engine/assembly/spring/SpringKinematicsEngine';",
+        "src/components/SpringEngineeringWorkspace.tsx:46 import { SpringHelicalEngine } from '../engine/assembly/spring/SpringHelicalEngine';",
+        "src/components/assembly/KinematicSolverWorkspace.tsx:23 import { KinematicPositionSolver } from '../../engine/assembly/kinematics/KinematicPositionSolver';",
+        "src/components/assembly/KinematicSolverWorkspace.tsx:24 import { KinematicVelocityEngine } from '../../engine/assembly/kinematics/KinematicVelocityEngine';",
+        "src/components/assembly/KinematicSolverWorkspace.tsx:25 import { KinematicAccelerationEngine } from '../../engine/assembly/kinematics/KinematicAccelerationEngine';",
+        "src/components/assembly/KinematicSolverWorkspace.tsx:26 import { KinematicMotionDriverEngine } from '../../engine/assembly/kinematics/KinematicMotionDriver';",
+        "src/components/assembly/KinematicSolverWorkspace.tsx:27 import { KinematicDependencyGraph } from '../../engine/assembly/kinematics/KinematicDependencyGraph';",
+        "src/components/assembly/KinematicSolverWorkspace.tsx:28 import { KinematicDOFEngine } from '../../engine/assembly/kinematics/KinematicDOFEngine';",
+        "src/components/assembly/KinematicSolverWorkspace.tsx:29 import { KinematicCollisionClearanceBridge } from '../../engine/assembly/kinematics/KinematicCollisionClearanceBridge';",
+        "src/components/assembly/MotionLinksWorkspace.tsx:26 import { MotionLinkFactory } from '../../engine/assembly/motionLinks/MotionLinkFactory';",
+        "src/components/assembly/MotionLinksWorkspace.tsx:27 import { MotionLinkMathEngine } from '../../engine/assembly/motionLinks/MotionLinkMathEngine';",
+        "src/components/assembly/MotionLinksWorkspace.tsx:28 import { MotionLinkSolver } from '../../engine/assembly/motionLinks/MotionLinkSolver';",
+        "src/components/assembly/MotionLinksWorkspace.tsx:29 import { MotionLinkDependencyGraphEngine } from '../../engine/assembly/motionLinks/MotionLinkDependencyGraph';",
+        "src/components/assembly/MotionLinksWorkspace.tsx:30 import { MotionLinkPLMBridge } from '../../engine/assembly/motionLinks/MotionLinkPLMBridge';",
+        "src/components/assembly/MotionLinksWorkspace.tsx:31 import { HardAcceptanceGate228, Gate228AuditReport } from '../../engine/assembly/motionLinks/HardAcceptanceGate228';",
+        "src/components/assembly/MotionLinksWorkspace.tsx:32 import { MechanicalJoint, ComponentKinematicState } from '../../engine/assembly/joints/MechanicalJointTypes';",
+        "src/components/assembly/MotionLinksWorkspace.tsx:33 import { MechanicalJointFactory } from '../../engine/assembly/joints/MechanicalJointFactory';",
+        "src/components/assembly/MotionLinksWorkspace.tsx:34 import { CoordinateFrameEngine } from '../../engine/assembly/joints/CoordinateFrameEngine';",
+        "src/components/benchmark/MassiveAssemblyBenchmarkPanel.tsx:10 import { MassiveAssemblyEngine } from '../../engine/assembly/massive/MassiveAssemblyEngine';",
+        "src/components/benchmark/MassiveAssemblyBenchmarkPanel.tsx:11 import { AssemblyMath } from '../../engine/assembly/massive/AssemblyMath';"
+      ]
+    },
+    {
+      "directory": "src/engine/assembly-intelligence",
+      "files_count": 18,
+      "reachable_from": [],
+      "unreachable": true,
+      "evidence": []
+    },
+    {
+      "directory": "src/engine/asset-reliability",
+      "files_count": 11,
+      "reachable_from": [],
+      "unreachable": true,
+      "evidence": []
+    },
+    {
+      "directory": "src/engine/attestation",
+      "files_count": 9,
+      "reachable_from": [
+        "App.tsx",
+        "components/"
+      ],
+      "unreachable": false,
+      "evidence": []
+    },
+    {
+      "directory": "src/engine/audit",
+      "files_count": 15,
+      "reachable_from": [
+        "App.tsx",
+        "components/"
+      ],
+      "unreachable": false,
+      "evidence": [
+        "src/components/FullIndustrialOSAuditDashboard.tsx:21 import { HardAcceptanceGate349, Gate349ExecutionReport } from '../engine/audit/HardAcceptanceGate349';",
+        "src/components/FullIndustrialOSAuditDashboard.tsx:22 import { FullIndustrialOSAuditEngine } from '../engine/audit/FullIndustrialOSAuditEngine';"
+      ]
+    },
+    {
+      "directory": "src/engine/benchmark",
+      "files_count": 103,
+      "reachable_from": [
+        "App.tsx",
+        "components/"
+      ],
+      "unreachable": false,
+      "evidence": [
+        "src/components/benchmark/BooleanAdversarialPanel.tsx:22 import { HardAcceptanceGate172, HardGate172Report } from '../../engine/benchmark/boolean/HardAcceptanceGate172';",
+        "src/components/benchmark/BooleanAdversarialPanel.tsx:23 import { BooleanAdversarialBattery } from '../../engine/benchmark/boolean/BooleanAdversarialBattery';",
+        "src/components/benchmark/BooleanAdversarialPanel.tsx:24 import { AdversarialBatteryReport } from '../../engine/benchmark/boolean/types';",
+        "src/components/benchmark/CADBenchmarkPanel.tsx:16 import { CAD_BENCHMARK_CASES } from '../../engine/benchmark/cad/CADBenchmarkCase';",
+        "src/components/benchmark/CADBenchmarkPanel.tsx:8 import { CADBenchmarkBattery } from '../../engine/benchmark/cad/CADBenchmarkBattery';",
+        "src/components/benchmark/CADBenchmarkPanel.tsx:9 import { HardAcceptanceGate171, Gate171Report } from '../../engine/benchmark/cad/HardAcceptanceGate171';",
+        "src/components/benchmark/CFDBenchmarkPanel.tsx:10 import { HardAcceptanceGate175, Gate175Report } from '../../engine/benchmark/cfd/HardAcceptanceGate175';",
+        "src/components/benchmark/CFDBenchmarkPanel.tsx:11 import { ProductionQualificationBattery175, Battery175SuiteReport } from '../../engine/benchmark/cfd/ProductionQualificationBattery175';",
+        "src/components/benchmark/CFDBenchmarkPanel.tsx:12 import { CFDBatteryReport, CFDEvidenceRecord } from '../../engine/benchmark/cfd/types';",
+        "src/components/benchmark/CFDBenchmarkPanel.tsx:8 import { HardAcceptanceGate174, Gate174Report } from '../../engine/benchmark/cfd/HardAcceptanceGate174';",
+        "src/components/benchmark/CFDBenchmarkPanel.tsx:9 import { HardAcceptanceGate174Adaptive, AdaptiveGate174Report } from '../../engine/benchmark/cfd/HardAcceptanceGate174Adaptive';",
+        "src/components/benchmark/ConservationBenchmarkPanel.tsx:31 import { HardAcceptanceGate175, Gate175Report, Gate175Check } from '../../engine/benchmark/cfd/HardAcceptanceGate175';",
+        "src/components/benchmark/ConservationBenchmarkPanel.tsx:32 import { ProductionQualificationBattery175, Battery175SuiteReport, BatteryCaseResult } from '../../engine/benchmark/cfd/ProductionQualificationBattery175';",
+        "src/components/benchmark/GCSBenchmarkPanel.tsx:13 import { HardAcceptanceGate173, HardGate173Report } from '../../engine/benchmark/gcs/HardAcceptanceGate173';",
+        "src/components/benchmark/NonlinearFEMBenchmarkPanel.tsx:15 import { HardAcceptanceGate177, HardAcceptanceGate177Verdict } from '../../engine/benchmark/fem/HardAcceptanceGate177';",
+        "src/components/benchmark/NonlinearFEMBenchmarkPanel.tsx:16 import { BenchmarkCaseResult177 } from '../../engine/benchmark/fem/NonlinearFEMBenchmarkBattery177';",
+        "src/components/benchmark/TurbulenceBenchmarkPanel.tsx:16 import { HardAcceptanceGate176, HardAcceptanceGate176Verdict } from '../../engine/benchmark/cfd/HardAcceptanceGate176';",
+        "src/components/benchmark/TurbulenceBenchmarkPanel.tsx:17 import { TurbulenceQualificationBattery176, TurbulenceBattery176Report, TurbulenceTestCaseResult } from '../../engine/benchmark/cfd/TurbulenceQualificationBattery176';"
+      ]
+    },
+    {
+      "directory": "src/engine/bom",
+      "files_count": 8,
+      "reachable_from": [],
+      "unreachable": true,
+      "evidence": []
+    },
+    {
+      "directory": "src/engine/cad",
+      "files_count": 85,
+      "reachable_from": [
+        "App.tsx",
+        "components/"
+      ],
+      "unreachable": false,
+      "evidence": [
+        "src/components/DirectModelingInspector.tsx:17 import { DirectModelingEngine } from '../engine/cad/direct/DirectModelingEngine';",
+        "src/components/DirectModelingInspector.tsx:18 import { DirectModelingOperationType, SelectionEntityType } from '../engine/cad/direct/DirectModelingTypes';",
+        "src/components/ParametricFeatureWorkbenchPanel.tsx:48 import { ParametricReconstructionTruthGate } from '../engine/cad/reverse_engineering/ParametricReconstructionTruthGate';",
+        "src/components/PatternEngineInspector.tsx:2 import { PatternEngine } from '../engine/cad/pattern/PatternEngine';",
+        "src/components/PatternEngineInspector.tsx:3 import { PatternFeature, PatternType, LinearPatternDefinition, CircularPatternDefinition } from '../engine/cad/pattern/PatternTypes';"
+      ]
+    },
+    {
+      "directory": "src/engine/cad-kernel",
+      "files_count": 202,
+      "reachable_from": [
+        "App.tsx",
+        "components/"
+      ],
+      "unreachable": false,
+      "evidence": [
+        "src/App.tsx:210 import { EngineeringDocument } from './engine/cad-kernel/document/CADDocument';",
+        "src/App.tsx:211 import { DocumentEvaluator, DocumentEvaluationResult } from './engine/cad-kernel/document/DocumentEvaluator';",
+        "src/App.tsx:218 import { SketchUIIntegration } from './engine/cad-kernel/ui-integration/SketchUIIntegration';",
+        "src/App.tsx:32 import { CanonicalDocumentUIAdapter } from './engine/cad-kernel/ui/CanonicalDocumentUIAdapter';",
+        "src/components/AssemblyWorkspace.tsx:51 import { EngineeringDocument, AssemblyInstance, AssemblyMate } from '../engine/cad-kernel/document/CADDocument';",
+        "src/components/AssemblyWorkspace.tsx:52 import { AssemblyIntentMutator } from '../engine/cad-kernel/document/AssemblyIntentMutator';",
+        "src/components/BomPanel.tsx:9 import { EngineeringDocument } from '../engine/cad-kernel/document/CADDocument';",
+        "src/components/CaeCfdPanel.tsx:25 import { EngineeringDocument, CFDModel } from '../engine/cad-kernel/document/CADDocument';",
+        "src/components/CamPanel.tsx:39 import { EngineeringDocument, CAMModel } from '../engine/cad-kernel/document/CADDocument';",
+        "src/components/CrossCuttingGovernanceModal.tsx:17 import { EngineeringDocument } from '../engine/cad-kernel/document/CADDocument';",
+        "src/components/FeatureTreePanel.tsx:3 import { EngineeringDocument } from '../engine/cad-kernel/document/CADDocument';",
+        "src/components/FeatureTreePanel.tsx:4 import { CanonicalDocumentUIAdapter } from '../engine/cad-kernel/ui/CanonicalDocumentUIAdapter';",
+        "src/components/FluidPowerPanel.tsx:9 import { EngineeringDocument } from '../engine/cad-kernel/document/CADDocument';",
+        "src/components/GenerativeDesignPanel.tsx:5 import { EngineeringDocument } from '../engine/cad-kernel/document/CADDocument';",
+        "src/components/IndustrialDroneAssemblyTreePanel.tsx:6 import { EngineeringDocument, AssemblyInstance } from '../engine/cad-kernel/document/CADDocument';",
+        "src/components/MaterialsPanel.tsx:3 import { EngineeringDocument } from '../engine/cad-kernel/document/CADDocument';",
+        "src/components/NewProjectWorkspace.tsx:4 import { SketchUIIntegration } from '../engine/cad-kernel/ui-integration/SketchUIIntegration';",
+        "src/components/ParametricFeatureWorkbenchPanel.tsx:33 import { EngineeringDocument } from '../engine/cad-kernel/document/CADDocument';",
+        "src/components/ParametricFeatureWorkbenchPanel.tsx:47 import { DocumentEvaluator } from '../engine/cad-kernel/document/DocumentEvaluator';",
+        "src/components/ParametricFeatureWorkbenchPanel.tsx:49 import { CanonicalDocumentUIAdapter } from '../engine/cad-kernel/ui/CanonicalDocumentUIAdapter';",
+        "src/components/ParametricModelingPanel.tsx:10 import { MultiDocumentPersistence } from '../engine/cad-kernel/document/MultiDocumentPersistence';",
+        "src/components/ParametricModelingPanel.tsx:9 import { BRepKernel } from '../engine/cad-kernel/brep/BRepKernel';",
+        "src/components/Professional3DViewportPanel.tsx:56 import { EngineeringDocument } from '../engine/cad-kernel/document/CADDocument';",
+        "src/components/PropertiesPanel.tsx:21 import { EngineeringDocument } from '../engine/cad-kernel/document/CADDocument';",
+        "src/components/PropertiesPanel.tsx:22 import { CanonicalDocumentUIAdapter } from '../engine/cad-kernel/ui/CanonicalDocumentUIAdapter';",
+        "src/components/SimulationCaePanel.tsx:30 import { EngineeringDocument, FEAModel } from '../engine/cad-kernel/document/CADDocument';",
+        "src/components/SketchEditorPanel.tsx:68 import { FeatureHistory } from '../engine/cad-kernel/history/FeatureHistory';",
+        "src/components/SketchEditorPanel.tsx:69 import { FeatureRegenerator } from '../engine/cad-kernel/history/FeatureRegenerator';",
+        "src/components/SketchEditorPanel.tsx:70 import { BRepHasher } from '../engine/cad-kernel/topology/BRepHasher';",
+        "src/components/SketchEditorPanel.tsx:71 import { BRepKernel } from '../engine/cad-kernel/brep/BRepKernel';",
+        "src/components/SketchEditorPanel.tsx:72 import { EngineeringDocument } from '../engine/cad-kernel/document/CADDocument';",
+        "src/components/SketchEditorPanel.tsx:73 import { SketchUIIntegration } from '../engine/cad-kernel/ui-integration/SketchUIIntegration';",
+        "src/components/SketchEditorPanel.tsx:74 import { CanonicalDocumentUIAdapter } from '../engine/cad-kernel/ui/CanonicalDocumentUIAdapter';",
+        "src/components/SketcherPanel.tsx:49 import { EngineeringDocument } from '../engine/cad-kernel/document/CADDocument';",
+        "src/components/TechnicalDrawingPanel.tsx:3 import { EngineeringDocument } from '../engine/cad-kernel/document/CADDocument';",
+        "src/components/WaterFaucetWizard.tsx:21 import { SketchUIIntegration } from '../engine/cad-kernel/ui-integration/SketchUIIntegration';",
+        "src/components/WaterFaucetWizard.tsx:23 import { DocumentEvaluationResult } from '../engine/cad-kernel/document/DocumentEvaluator';",
+        "src/components/drone/DroneCAMWorkbench.tsx:3 import { EngineeringDocument } from '../../engine/cad-kernel/document/CADDocument';",
+        "src/components/drone/DroneEvidenceWorkbench.tsx:3 import { EngineeringDocument } from '../../engine/cad-kernel/document/CADDocument';",
+        "src/components/drone/DroneInspector.tsx:3 import { EngineeringDocument, AssemblyInstance } from '../../engine/cad-kernel/document/CADDocument';",
+        "src/components/drone/DroneProjectHome.tsx:3 import { EngineeringDocument } from '../../engine/cad-kernel/document/CADDocument';"
+      ]
+    },
+    {
+      "directory": "src/engine/cam",
+      "files_count": 173,
+      "reachable_from": [
+        "App.tsx",
+        "components/"
+      ],
+      "unreachable": false,
+      "evidence": [
+        "src/App.tsx:122 import { PostProcessorWorkspace } from './engine/cam/post-processor/PostProcessorWorkspace';",
+        "src/App.tsx:200 import { GCodeVerificationWorkspace } from './engine/cam/verification/GCodeVerificationWorkspace';",
+        "src/App.tsx:201 import { MachineSimulationWorkspace } from './engine/cam/machine-sim/MachineSimulationWorkspace';",
+        "src/App.tsx:202 import { CAMProductionGateWorkspace } from './engine/cam/production-gate/CAMProductionGateWorkspace';",
+        "src/App.tsx:240 import { DroneCAMWorkflowResult } from './engine/cam/DroneCAMAdapter';",
+        "src/components/CamPanel.tsx:17 import { PostProcessorWorkspace } from '../engine/cam/post-processor/PostProcessorWorkspace';",
+        "src/components/cam/CollisionDetectionWorkspace.tsx:17 import { CollisionDetectionEngine } from '../../engine/cam/collision/CollisionDetectionEngine';",
+        "src/components/cam/CollisionDetectionWorkspace.tsx:18 import { HardAcceptanceGate259, GateExecutionSummary } from '../../engine/cam/collision/HardAcceptanceGate259';",
+        "src/components/cam/FourAxisCamWorkspace.tsx:18 import { FourAxisStockRemovalSimulator, FourAxisSimulationResult } from '../../engine/cam/fouraxis/FourAxisStockRemovalSimulator';",
+        "src/components/cam/FourAxisCamWorkspace.tsx:19 import { HardAcceptanceGate257, Gate257Summary } from '../../engine/cam/fouraxis/HardAcceptanceGate257';",
+        "src/components/cam/FourAxisCamWorkspace.tsx:20 import { MotionType } from '../../engine/cam/toolpath/ToolpathTypes';",
+        "src/components/cam/StockSimulationWorkspace.tsx:22 import { StockModelRepresentation } from '../../engine/cam/stock/StockRepresentation';",
+        "src/components/cam/StockSimulationWorkspace.tsx:23 import { StockSimulationEngine } from '../../engine/cam/stock/StockSimulationEngine';",
+        "src/components/cam/StockSimulationWorkspace.tsx:24 import { StockBenchmarks } from '../../engine/cam/stock/StockBenchmarks';",
+        "src/components/cam/StockSimulationWorkspace.tsx:25 import { HardAcceptanceGate260, Gate260Summary } from '../../engine/cam/stock/HardAcceptanceGate260';",
+        "src/components/cam/ThreeAxisCamWorkspace.tsx:19 import { StockRemovalSimulator, SimulationResult } from '../../engine/cam/toolpath/StockRemovalSimulator';",
+        "src/components/cam/ThreeAxisCamWorkspace.tsx:20 import { HardAcceptanceGate256, HardAcceptanceGate256Report } from '../../engine/cam/toolpath/HardAcceptanceGate256';",
+        "src/components/cam/ThreeAxisCamWorkspace.tsx:21 import { ManufacturingFeatureType } from '../../engine/cam/feature-recognition/FeatureTypes';",
+        "src/components/cam/ThreeAxisCamWorkspace.tsx:8 import { ThreeAxisToolpathEngine } from '../../engine/cam/toolpath/ThreeAxisToolpathEngine';",
+        "src/components/cam/ToolLibraryWorkspace.tsx:16 import { ToolLibraryEngine } from '../../engine/cam/tool-library/ToolLibraryEngine';",
+        "src/components/cam/ToolLibraryWorkspace.tsx:17 import { ToolGeometryEngine } from '../../engine/cam/tool-library/ToolGeometryEngine';",
+        "src/components/cam/ToolLibraryWorkspace.tsx:18 import { ToolAssemblyEngine } from '../../engine/cam/tool-library/ToolAssemblyEngine';",
+        "src/components/cam/ToolLibraryWorkspace.tsx:19 import { ToolCuttingCalculator, MachiningPhysicsResult } from '../../engine/cam/tool-library/ToolCuttingCalculator';",
+        "src/components/cam/ToolLibraryWorkspace.tsx:20 import { ToolValidator } from '../../engine/cam/tool-library/ToolValidator';",
+        "src/components/cam/ToolLibraryWorkspace.tsx:21 import { ToolSnapshotManager } from '../../engine/cam/tool-library/ToolSnapshotManager';",
+        "src/components/cam/ToolLibraryWorkspace.tsx:22 import { ToolEvidenceGenerator } from '../../engine/cam/tool-library/ToolEvidenceGenerator';",
+        "src/components/cam/ToolLibraryWorkspace.tsx:23 import { HardAcceptanceGate261, Gate261Report } from '../../engine/cam/tool-library/HardAcceptanceGate261';",
+        "src/components/cam/ToolLibraryWorkspace.tsx:24 import { ToolBenchmarks, BenchmarkResult } from '../../engine/cam/tool-library/ToolBenchmarks';",
+        "src/components/drone/DroneCAMWorkbench.tsx:4 import { DroneCAMAdapter, DroneCAMWorkflowResult } from '../../engine/cam/DroneCAMAdapter';",
+        "src/components/drone/DroneEvidenceWorkbench.tsx:4 import { DroneCAMAdapter, DroneCAMWorkflowResult } from '../../engine/cam/DroneCAMAdapter';"
+      ]
+    },
+    {
+      "directory": "src/engine/capabilities",
+      "files_count": 11,
+      "reachable_from": [
+        "App.tsx",
+        "components/"
+      ],
+      "unreachable": false,
+      "evidence": []
+    },
+    {
+      "directory": "src/engine/certification",
+      "files_count": 39,
+      "reachable_from": [
+        "App.tsx",
+        "components/"
+      ],
+      "unreachable": false,
+      "evidence": [
+        "src/components/CertificationPanel.tsx:7 import { HardAcceptanceGate164 } from '../engine/certification/HardAcceptanceGate164';",
+        "src/components/CertificationPanel.tsx:8 import { HardAcceptanceGate165 } from '../engine/certification/HardAcceptanceGate165';",
+        "src/components/CertificationPanel.tsx:9 import { ManufacturingCertificateEngine } from '../engine/certification/ManufacturingCertificateEngine';",
+        "src/components/ProductionCertificationDashboard.tsx:26 import { HardAcceptanceGate350, Gate350ExecutionReport } from '../engine/certification/HardAcceptanceGate350';",
+        "src/components/ProductionCertificationDashboard.tsx:27 import { SECPProductionCertificationEngine } from '../engine/certification/SECPProductionCertificationEngine';",
+        "src/components/benchmark/CertificationEnginePanel.tsx:15 import { HardAcceptanceGate186, Gate186Result } from '../../engine/certification/HardAcceptanceGate186';",
+        "src/components/benchmark/CertificationEnginePanel.tsx:16 import { CertificationLevel } from '../../engine/certification/CertificationTypes';",
+        "src/components/benchmark/GlobalBenchmarkReportPanel.tsx:14 import { EngineeringTruthCertificationGate } from '../../engine/certification/truth/CertificationFramework';"
+      ]
+    },
+    {
+      "directory": "src/engine/cfd3d",
+      "files_count": 484,
+      "reachable_from": [
+        "App.tsx",
+        "components/"
+      ],
+      "unreachable": false,
+      "evidence": [
+        "src/components/benchmark/CFDBenchmarkPanel.tsx:13 import { AdaptiveIndustrialCFDEngine } from '../../engine/cfd3d/adaptive/AdaptiveIndustrialCFDEngine';",
+        "src/components/benchmark/CFDBenchmarkPanel.tsx:14 import { CaseDefinition3D, AdaptiveCFDSolution } from '../../engine/cfd3d/adaptive/AdaptiveCFDTypes';",
+        "src/components/benchmark/CFDBenchmarkPanel.tsx:15 import { Fvm3DMeshGenerator } from '../../engine/cfd3d/Fvm3DMeshGenerator';",
+        "src/components/benchmark/ConservationBenchmarkPanel.tsx:33 import { AdaptiveIndustrialCFDEngine } from '../../engine/cfd3d/adaptive/AdaptiveIndustrialCFDEngine';",
+        "src/components/benchmark/ConservationBenchmarkPanel.tsx:34 import { CaseDefinition3D, AdaptiveCFDSolution } from '../../engine/cfd3d/adaptive/AdaptiveCFDTypes';",
+        "src/components/benchmark/ConservationBenchmarkPanel.tsx:35 import { Fvm3DMeshGenerator } from '../../engine/cfd3d/Fvm3DMeshGenerator';",
+        "src/components/benchmark/TurbulenceBenchmarkPanel.tsx:18 import { TurbulenceModelRegistry, ModelMetadata } from '../../engine/cfd3d/turbulence/registry/TurbulenceModelRegistry';",
+        "src/components/benchmark/TurbulenceBenchmarkPanel.tsx:19 import { TurbulenceComparisonEngine, MultiModelComparisonSuiteResult } from '../../engine/cfd3d/turbulence/comparison/TurbulenceComparisonEngine';",
+        "src/components/benchmark/TurbulenceBenchmarkPanel.tsx:20 import { TurbulenceModelIdentity } from '../../engine/cfd3d/turbulence/types/TurbulenceTypes';",
+        "src/components/benchmark/TurbulenceBenchmarkPanel.tsx:21 import { Fvm3DMeshGenerator } from '../../engine/cfd3d/Fvm3DMeshGenerator';",
+        "src/components/cfd/BoundaryConditionWorkspace.tsx:27 import { HardAcceptanceGate245, GateResult245 } from '../../engine/cfd3d/boundary/HardAcceptanceGate245';",
+        "src/components/cfd/CfdMeshWorkspace.tsx:28 import { HardAcceptanceGate241, GateResult241 } from '../../engine/cfd3d/mesh/HardAcceptanceGate241';",
+        "src/components/cfd/CfdMeshWorkspace.tsx:29 import { Fvm3DMeshGenerator } from '../../engine/cfd3d/Fvm3DMeshGenerator';",
+        "src/components/cfd/FvmDiscretizationWorkspace.tsx:26 import { HardAcceptanceGate242, GateResult242 } from '../../engine/cfd3d/fvm/HardAcceptanceGate242';",
+        "src/components/cfd/MeshConvergenceWorkspace.tsx:28 import { MeshConvergenceEngine, MeshConvergenceStudyConfig, QuantityOfInterestType, MeshLevel, MeshConvergenceEvidence } from '../../engine/cfd3d/solvers/MeshConvergenceEngine';",
+        "src/components/cfd/MeshConvergenceWorkspace.tsx:29 import { HardAcceptanceGate247, GateResult247 } from '../../engine/cfd3d/solvers/HardAcceptanceGate247';",
+        "src/components/cfd/NavierStokesWorkspace.tsx:28 import { HardAcceptanceGate243, GateResult243 } from '../../engine/cfd3d/solvers/HardAcceptanceGate243';",
+        "src/components/cfd/PressureVelocityWorkspace.tsx:28 import { HardAcceptanceGate244, GateResult244 } from '../../engine/cfd3d/solvers/HardAcceptanceGate244';",
+        "src/components/cfd/ResidualEngineWorkspace.tsx:28 import { HardAcceptanceGate246, GateResult246 } from '../../engine/cfd3d/solvers/HardAcceptanceGate246';",
+        "src/components/cfd/TransientWorkspace.tsx:10 import { HardAcceptanceGate249, GateResult249 } from '../../engine/cfd3d/solvers/transient/HardAcceptanceGate249';",
+        "src/components/cfd/TransientWorkspace.tsx:11 import { MeshConvergenceEngine } from '../../engine/cfd3d/solvers/MeshConvergenceEngine';",
+        "src/components/cfd/TransientWorkspace.tsx:9 import { TransientSolver249, TemporalScheme, SolverConfig249, TransientSimulationState } from '../../engine/cfd3d/solvers/transient/TransientSolver249';",
+        "src/components/cfd/TurbulenceWorkspace.tsx:10 import { HardAcceptanceGate248, GateResult248 } from '../../engine/cfd3d/solvers/HardAcceptanceGate248';",
+        "src/components/cfd/TurbulenceWorkspace.tsx:11 import { QuantityOfInterestType } from '../../engine/cfd3d/solvers/MeshConvergenceEngine';",
+        "src/components/cfd/TurbulenceWorkspace.tsx:9 import { RansSolver248, RansEvidence, TurbulenceModelType248 } from '../../engine/cfd3d/solvers/rans/RansSolver248';",
+        "src/components/cfd/ValidationGateWorkspace.tsx:22 import { MeshConvergenceEngine } from '../../engine/cfd3d/solvers/MeshConvergenceEngine';",
+        "src/components/cfd/ValidationGateWorkspace.tsx:23 import { SolverConfig249, TemporalScheme } from '../../engine/cfd3d/solvers/transient/TransientSolver249';"
+      ]
+    },
+    {
+      "directory": "src/engine/chaos",
+      "files_count": 6,
+      "reachable_from": [
+        "App.tsx",
+        "components/"
+      ],
+      "unreachable": false,
+      "evidence": [
+        "src/components/benchmark/FailureInjectionPanel.tsx:19 import { HardAcceptanceGate184 } from '../../engine/chaos/HardAcceptanceGate184';",
+        "src/components/benchmark/FailureInjectionPanel.tsx:20 import { Gate184Report } from '../../engine/chaos/ChaosTypes';"
+      ]
+    },
+    {
+      "directory": "src/engine/classa5axis",
+      "files_count": 19,
+      "reachable_from": [
+        "App.tsx",
+        "components/"
+      ],
+      "unreachable": false,
+      "evidence": []
+    },
+    {
+      "directory": "src/engine/clock",
+      "files_count": 1,
+      "reachable_from": [],
+      "unreachable": true,
+      "evidence": []
+    },
+    {
+      "directory": "src/engine/closed_loop",
+      "files_count": 2,
+      "reachable_from": [],
+      "unreachable": true,
+      "evidence": []
+    },
+    {
+      "directory": "src/engine/closure-audit",
+      "files_count": 4,
+      "reachable_from": [
+        "App.tsx",
+        "components/"
+      ],
+      "unreachable": false,
+      "evidence": [
+        "src/components/FinalEngineeringClosureForensicDashboard.tsx:23 import { FinalEngineeringClosureForensicAuditEngine } from '../engine/closure-audit/FinalEngineeringClosureForensicAuditEngine';"
+      ]
+    },
+    {
+      "directory": "src/engine/collaboration",
+      "files_count": 15,
+      "reachable_from": [
+        "App.tsx",
+        "components/"
+      ],
+      "unreachable": false,
+      "evidence": [
+        "src/components/AccessControlPanel.tsx:15 import { HardAcceptanceGate293, Gate293Report } from '../engine/collaboration/HardAcceptanceGate293';",
+        "src/components/AccessControlPanel.tsx:2 import { AccessControlEngine } from '../engine/collaboration/AccessControlEngine';",
+        "src/components/CollaborationPanel.tsx:29 import { CollaborationEngine } from '../engine/collaboration/CollaborationEngine';",
+        "src/components/CollaborationPanel.tsx:41 import { HardAcceptanceGate292, Gate292Report } from '../engine/collaboration/HardAcceptanceGate292';",
+        "src/components/DigitalThreadPanel.tsx:10 import { DigitalThreadService } from '../engine/collaboration/DigitalThreadService';",
+        "src/components/DigitalThreadPanel.tsx:17 import { HardAcceptanceGate295, Gate295SuiteReport } from '../engine/collaboration/HardAcceptanceGate295';",
+        "src/components/SupplierCollaborationPanel.tsx:28 import { SupplierCollaborationService } from '../engine/collaboration/SupplierCollaborationService';",
+        "src/components/SupplierCollaborationPanel.tsx:29 import { AccessControlEngine } from '../engine/collaboration/AccessControlEngine';",
+        "src/components/SupplierCollaborationPanel.tsx:39 import { HardAcceptanceGate294, Gate294Report } from '../engine/collaboration/HardAcceptanceGate294';"
+      ]
+    },
+    {
+      "directory": "src/engine/configuration",
+      "files_count": 6,
+      "reachable_from": [],
+      "unreachable": true,
+      "evidence": []
+    },
+    {
+      "directory": "src/engine/context",
+      "files_count": 2,
+      "reachable_from": [
+        "App.tsx",
+        "components/"
+      ],
+      "unreachable": false,
+      "evidence": [
+        "src/components/BomPanel.tsx:11 import { deriveTruthProvenance, TruthOrigin } from '../engine/context/EngineeringContext';",
+        "src/components/CaeCfdPanel.tsx:28 import { deriveTruthProvenance, TruthOrigin } from '../engine/context/EngineeringContext';",
+        "src/components/CamPanel.tsx:41 import { deriveTruthProvenance, TruthOrigin, CanonicalPickResult } from '../engine/context/EngineeringContext';",
+        "src/components/PcbWorkbenchPanel.tsx:11 import { getTruthStatusDescriptor, TruthOrigin } from '../engine/context/EngineeringContext';",
+        "src/components/SimulationCaePanel.tsx:42 import { deriveTruthProvenance, TruthOrigin, CanonicalPickResult } from '../engine/context/EngineeringContext';"
+      ]
+    },
+    {
+      "directory": "src/engine/core",
+      "files_count": 6,
+      "reachable_from": [
+        "App.tsx",
+        "components/"
+      ],
+      "unreachable": false,
+      "evidence": []
+    },
+    {
+      "directory": "src/engine/crossdomain",
+      "files_count": 6,
+      "reachable_from": [],
+      "unreachable": true,
+      "evidence": []
+    },
+    {
+      "directory": "src/engine/custody",
+      "files_count": 5,
+      "reachable_from": [
+        "App.tsx",
+        "components/"
+      ],
+      "unreachable": false,
+      "evidence": []
+    },
+    {
+      "directory": "src/engine/determinism",
+      "files_count": 9,
+      "reachable_from": [
+        "App.tsx",
+        "components/"
+      ],
+      "unreachable": false,
+      "evidence": [
+        "src/components/benchmark/DeterministicRuntimePanel.tsx:11 import { IndependentDeterminismOracle } from '../../engine/determinism/IndependentDeterminismOracle';",
+        "src/components/benchmark/DeterministicRuntimePanel.tsx:5 import { DeterministicEngineeringEngine } from '../../engine/determinism/DeterministicEngineeringEngine';"
+      ]
+    },
+    {
+      "directory": "src/engine/digital_thread",
+      "files_count": 9,
+      "reachable_from": [],
+      "unreachable": true,
+      "evidence": []
+    },
+    {
+      "directory": "src/engine/digital_twin",
+      "files_count": 19,
+      "reachable_from": [
+        "App.tsx",
+        "components/"
+      ],
+      "unreachable": false,
+      "evidence": [
+        "src/components/DigitalTwinPanel.tsx:25 import { HardAcceptanceGate326, DigitalTwinEvidencePackage } from '../engine/digital_twin/HardAcceptanceGate326';",
+        "src/components/MachineTwinPanel.tsx:32 import { HardAcceptanceGate327, HardAcceptanceGate327Report } from '../engine/digital_twin/HardAcceptanceGate327';",
+        "src/components/ProcessTwinPanel.tsx:42 import { HardAcceptanceGate328, HardAcceptanceGate328Report } from '../engine/digital_twin/HardAcceptanceGate328';",
+        "src/components/SensorIntegrationPanel.tsx:36 import { HardAcceptanceGate329, GateReport329 } from '../engine/digital_twin/HardAcceptanceGate329';"
+      ]
+    },
+    {
+      "directory": "src/engine/dimensioning",
+      "files_count": 3,
+      "reachable_from": [
+        "App.tsx",
+        "components/"
+      ],
+      "unreachable": false,
+      "evidence": [
+        "src/components/Professional3DViewportPanel.tsx:19 import { HardAcceptanceGate283, DimensionGateReport283 } from '../engine/dimensioning/HardAcceptanceGate283';",
+        "src/components/Professional3DViewportPanel.tsx:46 import { EngineeringDimensionSystem283 } from '../engine/dimensioning/EngineeringDimensionSystem283';",
+        "src/components/Professional3DViewportPanel.tsx:47 import { DimensionType283, DimensionSource283, ToleranceType283, EngineeringDimension283 } from '../engine/dimensioning/DimensionTypes283';"
+      ]
+    },
+    {
+      "directory": "src/engine/distributed-compute",
+      "files_count": 13,
+      "reachable_from": [],
+      "unreachable": true,
+      "evidence": []
+    },
+    {
+      "directory": "src/engine/drawing",
+      "files_count": 11,
+      "reachable_from": [
+        "App.tsx",
+        "components/"
+      ],
+      "unreachable": false,
+      "evidence": []
+    },
+    {
+      "directory": "src/engine/drone",
+      "files_count": 15,
+      "reachable_from": [],
+      "unreachable": true,
+      "evidence": []
+    },
+    {
+      "directory": "src/engine/eco",
+      "files_count": 8,
+      "reachable_from": [],
+      "unreachable": true,
+      "evidence": []
+    },
+    {
+      "directory": "src/engine/engineering",
+      "files_count": 16,
+      "reachable_from": [
+        "App.tsx",
+        "components/"
+      ],
+      "unreachable": false,
+      "evidence": [
+        "src/components/DeterministicReproductionDashboard.tsx:30 import { DeterministicReproductionEngine } from '../engine/engineering/DeterministicReproductionEngine';",
+        "src/components/DeterministicReproductionDashboard.tsx:31 import { HardAcceptanceGate346, Gate346CheckResult } from '../engine/engineering/HardAcceptanceGate346';",
+        "src/components/LargeModelQualificationCenterPanel.tsx:16 import { HardAcceptanceGate343 } from '../engine/engineering/HardAcceptanceGate343';",
+        "src/components/LongRunningSimulationQualificationPanel.tsx:10 import { LongRunningSimulationWorkload, LongRunningSimulationEvidencePackage } from '../engine/engineering/LongRunningSimulationTypes';",
+        "src/components/LongRunningSimulationQualificationPanel.tsx:8 import { LongRunningSimulationQualificationEngine } from '../engine/engineering/LongRunningSimulationQualificationEngine';",
+        "src/components/LongRunningSimulationQualificationPanel.tsx:9 import { HardAcceptanceGate344 } from '../engine/engineering/HardAcceptanceGate344';",
+        "src/components/ProductionFailureRecoveryDashboard.tsx:32 import { ProductionFailureRecoveryEngine } from '../engine/engineering/ProductionFailureRecoveryEngine';",
+        "src/components/ProductionFailureRecoveryDashboard.tsx:33 import { HardAcceptanceGate345, Gate345CheckResult } from '../engine/engineering/HardAcceptanceGate345';"
+      ]
+    },
+    {
+      "directory": "src/engine/engineeringCore",
+      "files_count": 5,
+      "reachable_from": [
+        "App.tsx",
+        "components/"
+      ],
+      "unreachable": false,
+      "evidence": []
+    },
+    {
+      "directory": "src/engine/engineering_ai",
+      "files_count": 103,
+      "reachable_from": [
+        "App.tsx",
+        "server.ts",
+        "components/"
+      ],
+      "unreachable": false,
+      "evidence": [
+        "server.ts:303 import { RootCauseEngine } from \"./src/engine/engineering_ai/root_cause/RootCauseEngine\";",
+        "server.ts:344 import { DesignOptimizationEngine } from \"./src/engine/engineering_ai/optimization/DesignOptimizationEngine\";",
+        "server.ts:345 import { OptimizationVerificationGate } from \"./src/engine/engineering_ai/optimization/OptimizationVerificationGate\";",
+        "server.ts:368 import { ManufacturingOptimizationEngine } from \"./src/engine/engineering_ai/manufacturing_optimization/ManufacturingOptimizationEngine\";",
+        "server.ts:369 import { ManufacturingVerificationGate } from \"./src/engine/engineering_ai/manufacturing_optimization/ManufacturingVerificationGate\";",
+        "server.ts:386 import { EngineeringCopilotCore } from \"./src/engine/engineering_ai/copilot/EngineeringCopilotCore\";",
+        "server.ts:387 import { globalToolRegistry } from \"./src/engine/engineering_ai/copilot/EngineeringToolRegistry\";",
+        "src/components/AIDesignAssistantWorkbenchPanel.tsx:21 import { AIDesignAssistantService } from '../engine/engineering_ai/design_assistant/AIDesignAssistantService';",
+        "src/components/AIDesignAssistantWorkbenchPanel.tsx:22 import { EngineeringContextResolver } from '../engine/engineering_ai/design_assistant/EngineeringContextResolver';",
+        "src/components/AIDesignAssistantWorkbenchPanel.tsx:23 import { AIEngineeringToolRegistry } from '../engine/engineering_ai/design_assistant/AIEngineeringToolRegistry';",
+        "src/components/AIDesignAssistantWorkbenchPanel.tsx:24 import { EngineeringKnowledgeService } from '../engine/engineering_ai/design_assistant/EngineeringKnowledgeService';",
+        "src/components/AIDesignAssistantWorkbenchPanel.tsx:25 import { GateResult306, HardAcceptanceGate306 } from '../engine/engineering_ai/design_assistant/HardAcceptanceGate306';",
+        "src/components/AIDesignReviewWorkbenchPanel.tsx:19 import { AIDesignReviewService } from '../engine/engineering_ai/design_review/AIDesignReviewService';",
+        "src/components/AIDesignReviewWorkbenchPanel.tsx:26 import { HardAcceptanceGate312, GateTestResult } from '../engine/engineering_ai/design_review/HardAcceptanceGate312';",
+        "src/components/AIFailureDetectionWorkbenchPanel.tsx:21 import { AIFailureDetectionService } from '../engine/engineering_ai/failure_detection/AIFailureDetectionService';",
+        "src/components/AIFailureDetectionWorkbenchPanel.tsx:27 import { HardAcceptanceGate311, GateTestResult311 } from '../engine/engineering_ai/failure_detection/HardAcceptanceGate311';",
+        "src/components/AIOptimizationWorkbenchPanel.tsx:10 import { AIOptimizationService } from '../engine/engineering_ai/optimization/AIOptimizationService';",
+        "src/components/AIOptimizationWorkbenchPanel.tsx:18 import { HardAcceptanceGate309, HardAcceptanceGate309Report } from '../engine/engineering_ai/optimization/HardAcceptanceGate309';",
+        "src/components/AIOptimizationWorkbenchPanel.tsx:19 import { OptimizationEvidencePackage } from '../engine/engineering_ai/optimization/AIOptimizationEvidenceGenerator';",
+        "src/components/AISimulationSetupWorkbenchPanel.tsx:23 import { AISimulationSetupService } from '../engine/engineering_ai/simulation_setup/AISimulationSetupService';",
+        "src/components/AISimulationSetupWorkbenchPanel.tsx:29 import { HardAcceptanceGate310, HardAcceptanceGate310Report } from '../engine/engineering_ai/simulation_setup/HardAcceptanceGate310';",
+        "src/components/DesignAlternativesWorkbenchPanel.tsx:25 import { DesignAlternativesService } from '../engine/engineering_ai/design_alternatives/DesignAlternativesService';",
+        "src/components/DesignAlternativesWorkbenchPanel.tsx:32 import { HardAcceptanceGate308, HardAcceptanceGate308Report } from '../engine/engineering_ai/design_alternatives/HardAcceptanceGate308';",
+        "src/components/EngineeringCopilotWorkbenchPanel.tsx:19 import { EngineeringCopilotService } from '../engine/engineering_ai/copilot/EngineeringCopilotService';",
+        "src/components/EngineeringCopilotWorkbenchPanel.tsx:20 import { EvidenceBus314 } from '../engine/engineering_ai/copilot/EvidenceBus314';",
+        "src/components/EngineeringCopilotWorkbenchPanel.tsx:26 import { HardAcceptanceGate314, GateTestResult314 } from '../engine/engineering_ai/copilot/HardAcceptanceGate314';",
+        "src/components/GenerativeEngineeringWorkbenchPanel.tsx:12 import { GenerativeEngineeringService } from '../engine/engineering_ai/generative/GenerativeEngineeringService';",
+        "src/components/GenerativeEngineeringWorkbenchPanel.tsx:13 import { HardAcceptanceGate313, GateTestResult313 } from '../engine/engineering_ai/generative/HardAcceptanceGate313';",
+        "src/components/MachineTwinPanel.tsx:33 import { EvidenceBus314 } from '../engine/engineering_ai/copilot/EvidenceBus314';",
+        "src/components/ProcessTwinPanel.tsx:43 import { EvidenceBus314 } from '../engine/engineering_ai/copilot/EvidenceBus314';",
+        "src/components/SensorIntegrationPanel.tsx:47 import { EvidenceBus314 } from '../engine/engineering_ai/copilot/EvidenceBus314';"
+      ]
+    },
+    {
+      "directory": "src/engine/engineering_compute",
+      "files_count": 2,
+      "reachable_from": [
+        "server.ts"
+      ],
+      "unreachable": false,
+      "evidence": []
+    },
+    {
+      "directory": "src/engine/engineering_distributed",
+      "files_count": 11,
+      "reachable_from": [
+        "App.tsx",
+        "components/"
+      ],
+      "unreachable": false,
+      "evidence": [
+        "src/components/DistributedComputeWorkbenchPanel.tsx:16 import { GateResult303, HardAcceptanceGate303 } from '../engine/engineering_distributed/HardAcceptanceGate303';",
+        "src/components/DistributedComputeWorkbenchPanel.tsx:8 import { DistributedComputeEngine } from '../engine/engineering_distributed/DistributedComputeEngine';"
+      ]
+    },
+    {
+      "directory": "src/engine/engineering_gpu",
+      "files_count": 7,
+      "reachable_from": [
+        "App.tsx",
+        "server.ts",
+        "components/"
+      ],
+      "unreachable": false,
+      "evidence": [
+        "src/components/HardwareAccelerationWorkbenchPanel.tsx:17 import { HardwareDiscoveryService } from '../engine/engineering_gpu/HardwareDiscoveryService';",
+        "src/components/HardwareAccelerationWorkbenchPanel.tsx:18 import { HardwareIndependentValidator } from '../engine/engineering_gpu/HardwareIndependentValidator';",
+        "src/components/HardwareAccelerationWorkbenchPanel.tsx:19 import { HardwareAccelerationEvidenceGenerator } from '../engine/engineering_gpu/HardwareAccelerationEvidenceGenerator';",
+        "src/components/HardwareAccelerationWorkbenchPanel.tsx:20 import { GateResult305, HardAcceptanceGate305 } from '../engine/engineering_gpu/HardAcceptanceGate305';"
+      ]
+    },
+    {
+      "directory": "src/engine/engineering_hpc",
+      "files_count": 14,
+      "reachable_from": [
+        "App.tsx",
+        "server.ts",
+        "components/"
+      ],
+      "unreachable": false,
+      "evidence": [
+        "src/components/HPCSchedulerWorkbenchPanel.tsx:19 import { GateResult304, HardAcceptanceGate304 } from '../engine/engineering_hpc/HardAcceptanceGate304';",
+        "src/components/HPCSchedulerWorkbenchPanel.tsx:9 import { HPCScheduler } from '../engine/engineering_hpc/HPCScheduler';",
+        "src/components/MassiveAssemblyPanel.tsx:17 import { HardAcceptanceGate151 } from '../engine/engineering_hpc/HardAcceptanceGate151';"
+      ]
+    },
+    {
+      "directory": "src/engine/engineering_wasm",
+      "files_count": 12,
+      "reachable_from": [
+        "App.tsx",
+        "server.ts",
+        "components/"
+      ],
+      "unreachable": false,
+      "evidence": [
+        "src/components/WasmComputeWorkbenchPanel.tsx:24 import { WasmComputeRuntime } from '../engine/engineering_wasm/WasmComputeRuntime';",
+        "src/components/WasmComputeWorkbenchPanel.tsx:25 import { WasmComputePlanner } from '../engine/engineering_wasm/WasmComputePlanner';",
+        "src/components/WasmComputeWorkbenchPanel.tsx:27 import { WasmWorkerBridge } from '../engine/engineering_wasm/WasmWorkerBridge';",
+        "src/components/WasmComputeWorkbenchPanel.tsx:28 import { GateReport302, HardAcceptanceGate302 } from '../engine/engineering_wasm/HardAcceptanceGate302';",
+        "src/components/WasmComputeWorkbenchPanel.tsx:29 import { WasmBenchmarkComparison, WasmDomain } from '../engine/engineering_wasm/WasmTypes302';"
+      ]
+    },
+    {
+      "directory": "src/engine/engineering_webgpu",
+      "files_count": 44,
+      "reachable_from": [
+        "App.tsx",
+        "server.ts",
+        "components/"
+      ],
+      "unreachable": false,
+      "evidence": [
+        "src/components/GPUCFDWorkbenchPanel.tsx:11 import { GPUCFDBackend } from '../engine/engineering_webgpu/cfd/GPUCFDBackend';",
+        "src/components/GPUCFDWorkbenchPanel.tsx:12 import { CFDMeshGenerator } from '../engine/engineering_webgpu/cfd/CFDMeshGenerator';",
+        "src/components/GPUCFDWorkbenchPanel.tsx:13 import { CFDComparisonEngine } from '../engine/engineering_webgpu/cfd/CFDComparisonEngine';",
+        "src/components/GPUCFDWorkbenchPanel.tsx:14 import { GPUCFDBenchmark } from '../engine/engineering_webgpu/cfd/GPUCFDBenchmark';",
+        "src/components/GPUCFDWorkbenchPanel.tsx:15 import { HardAcceptanceGate299, Gate299Report } from '../engine/engineering_webgpu/cfd/HardAcceptanceGate299';",
+        "src/components/GPUCFDWorkbenchPanel.tsx:16 import { GPUCFDEvidenceGenerator } from '../engine/engineering_webgpu/cfd/GPUCFDEvidenceGenerator';",
+        "src/components/GPUFEMWorkbenchPanel.tsx:10 import { GPUFEMBackend } from '../engine/engineering_webgpu/fem/GPUFEMBackend';",
+        "src/components/GPUFEMWorkbenchPanel.tsx:11 import { FEMMeshGenerator } from '../engine/engineering_webgpu/fem/FEMMeshGenerator';",
+        "src/components/GPUFEMWorkbenchPanel.tsx:12 import { FEMComparisonEngine } from '../engine/engineering_webgpu/fem/FEMComparisonEngine';",
+        "src/components/GPUFEMWorkbenchPanel.tsx:13 import { GPUFEMBenchmark } from '../engine/engineering_webgpu/fem/GPUFEMBenchmark';",
+        "src/components/GPUFEMWorkbenchPanel.tsx:14 import { HardAcceptanceGate298, Gate298Report } from '../engine/engineering_webgpu/fem/HardAcceptanceGate298';",
+        "src/components/GPUFEMWorkbenchPanel.tsx:15 import { GPUFEMEvidenceGenerator, FEMEvidenceRecord } from '../engine/engineering_webgpu/fem/GPUFEMEvidenceGenerator';",
+        "src/components/GPULinearAlgebraWorkbenchPanel.tsx:10 import { GPULinearAlgebraBackend } from '../engine/engineering_webgpu/linear_algebra/GPULinearAlgebraBackend';",
+        "src/components/GPULinearAlgebraWorkbenchPanel.tsx:11 import { GPUSparseMatrixHelper } from '../engine/engineering_webgpu/linear_algebra/GPUSparseMatrix';",
+        "src/components/GPULinearAlgebraWorkbenchPanel.tsx:25 import { GPULinearAlgebraEvidenceGenerator } from '../engine/engineering_webgpu/linear_algebra/GPULinearAlgebraEvidenceGenerator';",
+        "src/components/GPULinearAlgebraWorkbenchPanel.tsx:26 import { BackendTruthState, ComputeBackendMode } from '../engine/engineering_webgpu/WebGPUComputeTypes';",
+        "src/components/GPUMeshingWorkbenchPanel.tsx:10 import { CPUMeshingReference } from '../engine/engineering_webgpu/meshing/CPUMeshingReference';",
+        "src/components/GPUMeshingWorkbenchPanel.tsx:11 import { MeshComparisonEngine } from '../engine/engineering_webgpu/meshing/MeshComparisonEngine';",
+        "src/components/GPUMeshingWorkbenchPanel.tsx:12 import { GPUMeshingBenchmark } from '../engine/engineering_webgpu/meshing/GPUMeshingBenchmark';",
+        "src/components/GPUMeshingWorkbenchPanel.tsx:8 import { GPUMeshingBackend } from '../engine/engineering_webgpu/meshing/GPUMeshingBackend';",
+        "src/components/GPUMeshingWorkbenchPanel.tsx:9 import { CADGeometryGenerator } from '../engine/engineering_webgpu/meshing/CADGeometryGenerator';",
+        "src/components/WebGPUWorkbenchPanel.tsx:34 import { ComputeShaderManager } from '../engine/engineering_webgpu/ComputeShaderManager';",
+        "src/components/WebGPUWorkbenchPanel.tsx:35 import { GPUKernelRegistry } from '../engine/engineering_webgpu/GPUKernelRegistry';",
+        "src/components/WebGPUWorkbenchPanel.tsx:36 import { GPUBufferManager } from '../engine/engineering_webgpu/GPUBufferManager';",
+        "src/components/WebGPUWorkbenchPanel.tsx:37 import { WebGPUBenchmarkHarness } from '../engine/engineering_webgpu/WebGPUBenchmarkHarness';",
+        "src/components/WebGPUWorkbenchPanel.tsx:38 import { WebGPUEvidenceGenerator, WebGPUEvidenceDossier } from '../engine/engineering_webgpu/WebGPUEvidenceGenerator';"
+      ]
+    },
+    {
+      "directory": "src/engine/engineering_workers",
+      "files_count": 8,
+      "reachable_from": [
+        "App.tsx",
+        "components/"
+      ],
+      "unreachable": false,
+      "evidence": [
+        "src/components/WorkerParallelismWorkbenchPanel.tsx:29 import { EngineeringWorkerScheduler } from '../engine/engineering_workers/EngineeringWorkerScheduler';",
+        "src/components/WorkerParallelismWorkbenchPanel.tsx:30 import { HardAcceptanceGate301, GateReport301 } from '../engine/engineering_workers/HardAcceptanceGate301';",
+        "src/components/WorkerParallelismWorkbenchPanel.tsx:38 import { WorkerDomainCompute } from '../engine/engineering_workers/WorkerDomainCompute';"
+      ]
+    },
+    {
+      "directory": "src/engine/enterprise-trust",
+      "files_count": 21,
+      "reachable_from": [],
+      "unreachable": true,
+      "evidence": []
+    },
+    {
+      "directory": "src/engine/epc",
+      "files_count": 189,
+      "reachable_from": [
+        "App.tsx",
+        "components/"
+      ],
+      "unreachable": false,
+      "evidence": [
+        "src/components/DomainDatabaseWorkbenchPanel.tsx:17 import { EPC001Verifier } from '../engine/epc/EPC001Verifier';",
+        "src/components/GeometryKernelPanel.tsx:20 import { EPC003Verifier } from '../engine/epc/EPC003Verifier';",
+        "src/components/Visualization3DEnginePanel.tsx:17 import { EPC004Verifier } from '../engine/epc/EPC004Verifier';",
+        "src/components/verification/RobotRequirementsPanel.tsx:10 import { EPC037Verifier } from '../../engine/epc/robot/EPC037Verifier';",
+        "src/components/verification/RobotRequirementsPanel.tsx:11 import { IndustrialRobotArchitecture } from '../../engine/epc/robot/IndustrialRobotArchitecture';",
+        "src/components/verification/RobotRequirementsPanel.tsx:12 import { EPC038Verifier } from '../../engine/epc/robot/EPC038Verifier';",
+        "src/components/verification/RobotRequirementsPanel.tsx:13 import { RobotParametricLinkEngine } from '../../engine/epc/robot/RobotParametricLinkEngine';",
+        "src/components/verification/RobotRequirementsPanel.tsx:14 import { EPC039Verifier } from '../../engine/epc/robot/EPC039Verifier';",
+        "src/components/verification/RobotRequirementsPanel.tsx:15 import { RobotJointDesignEngine } from '../../engine/epc/robot/RobotJointDesignEngine';",
+        "src/components/verification/RobotRequirementsPanel.tsx:16 import { EPC040Verifier } from '../../engine/epc/robot/EPC040Verifier';",
+        "src/components/verification/RobotRequirementsPanel.tsx:17 import { RobotTransmissionEngine } from '../../engine/epc/robot/RobotTransmissionEngine';",
+        "src/components/verification/RobotRequirementsPanel.tsx:7 import { EPC036Verifier } from '../../engine/epc/robot/EPC036Verifier';",
+        "src/components/verification/RobotRequirementsPanel.tsx:8 import { IndustrialRobotSystemRequirements } from '../../engine/epc/robot/IndustrialRobotSystemRequirements';",
+        "src/components/verification/RobotRequirementsPanel.tsx:9 import { RequirementImpactEngine } from '../../engine/epc/system/RequirementImpactEngine';"
+      ]
+    },
+    {
+      "directory": "src/engine/evidence",
+      "files_count": 43,
+      "reachable_from": [
+        "App.tsx",
+        "components/"
+      ],
+      "unreachable": false,
+      "evidence": [
+        "src/components/ApprovalWorkflowPanel.tsx:11 import { EngineeringHashChain } from '../engine/evidence/EngineeringHashChain';",
+        "src/components/ChangeManagementPanel.tsx:11 import { EngineeringHashChain } from '../engine/evidence/EngineeringHashChain';",
+        "src/components/CloudSimulationPanel.tsx:17 import { EngineeringHashChain } from '../engine/evidence/EngineeringHashChain';",
+        "src/components/EcoManagementPanel.tsx:13 import { EngineeringHashChain } from '../engine/evidence/EngineeringHashChain';",
+        "src/components/ProvenanceLedger.tsx:6 import { EngineeringEvidenceLedger } from '../engine/evidence/ledger/EngineeringEvidenceLedger';",
+        "src/components/ProvenanceLedger.tsx:7 import { HardAcceptanceGate161, Gate161Report } from '../engine/evidence/ledger/HardAcceptanceGate161';",
+        "src/components/ProvenanceLedger.tsx:8 import { EvidenceLedgerEntry, EvidenceLedgerVerdict } from '../engine/evidence/ledger/types';",
+        "src/components/WasmComputeWorkbenchPanel.tsx:26 import { EngineeringHashChain } from '../engine/evidence/EngineeringHashChain';",
+        "src/components/interop/CrossOrganizationPanel.tsx:8 import { EngineeringHashChain } from '../../engine/evidence/EngineeringHashChain';"
+      ]
+    },
+    {
+      "directory": "src/engine/features",
+      "files_count": 13,
+      "reachable_from": [
+        "App.tsx",
+        "components/"
+      ],
+      "unreachable": false,
+      "evidence": []
+    },
+    {
+      "directory": "src/engine/fem",
+      "files_count": 338,
+      "reachable_from": [
+        "App.tsx",
+        "components/"
+      ],
+      "unreachable": false,
+      "evidence": [
+        "src/components/SimulationCaePanel.tsx:32 import { CadToFemModelBuilder } from '../engine/fem/verification/CadToFemModelBuilder';",
+        "src/components/SimulationCaePanel.tsx:33 import { FEMMeshGenerator } from '../engine/fem/mesh/FEMMeshGenerator';",
+        "src/components/SimulationCaePanel.tsx:34 import { FEMMeshValidator } from '../engine/fem/mesh/FEMMeshValidator';",
+        "src/components/SimulationCaePanel.tsx:35 import { MeshQualityGate } from '../engine/fem/verification/MeshQualityGate';",
+        "src/components/SimulationCaePanel.tsx:36 import { BoundaryConditionEngine } from '../engine/fem/bc/BoundaryConditionEngine';",
+        "src/components/SimulationCaePanel.tsx:37 import { FactorOfSafetyCalculator } from '../engine/fem/verification/FactorOfSafetyCalculator';",
+        "src/components/SimulationCaePanel.tsx:38 import { ResultProvenanceTracker } from '../engine/fem/verification/ResultProvenanceTracker';",
+        "src/components/SimulationCaePanel.tsx:39 import { HardAcceptanceGate240, GateReport } from '../engine/fem/verification/HardAcceptanceGate240';",
+        "src/components/SimulationCaePanel.tsx:40 import { AnalysisType } from '../engine/fem/verification/types';",
+        "src/components/SimulationCaePanel.tsx:41 import { FEMMesh } from '../engine/fem/mesh/FEMMesh';",
+        "src/components/assembly/BoundaryConditionWorkspace.tsx:14 import { HardAcceptanceGate235, HardAcceptanceGate235Report } from '../../engine/fem/bc/HardAcceptanceGate235';",
+        "src/components/assembly/FEMElementsWorkspace.tsx:10 import { ElementEvidenceEngine } from '../../engine/fem/elements/ElementEvidenceEngine';",
+        "src/components/assembly/FEMElementsWorkspace.tsx:11 import { HardAcceptanceGate232, HardGateResult232 } from '../../engine/fem/elements/HardAcceptanceGate232';",
+        "src/components/assembly/FEMElementsWorkspace.tsx:12 import { ElementQualityEvaluator } from '../../engine/fem/elements/ElementQualityEvaluator';",
+        "src/components/assembly/FEMElementsWorkspace.tsx:13 import { ElementDefinition } from '../../engine/fem/elements/types';",
+        "src/components/assembly/FEMElementsWorkspace.tsx:14 import { BAR2Element } from '../../engine/fem/elements/BAR2Element';",
+        "src/components/assembly/FEMElementsWorkspace.tsx:15 import { TRI3Element } from '../../engine/fem/elements/TRI3Element';",
+        "src/components/assembly/FEMElementsWorkspace.tsx:16 import { QUAD4Element } from '../../engine/fem/elements/QUAD4Element';",
+        "src/components/assembly/FEMElementsWorkspace.tsx:17 import { TET4Element } from '../../engine/fem/elements/TET4Element';",
+        "src/components/assembly/FEMElementsWorkspace.tsx:18 import { HEX8Element } from '../../engine/fem/elements/HEX8Element';",
+        "src/components/assembly/FEMElementsWorkspace.tsx:19 import { BeamElement } from '../../engine/fem/elements/BeamElement';",
+        "src/components/assembly/FEMElementsWorkspace.tsx:20 import { ShellElement } from '../../engine/fem/elements/ShellElement';",
+        "src/components/assembly/FEMElementsWorkspace.tsx:21 import { SolidElement } from '../../engine/fem/elements/SolidElement';",
+        "src/components/assembly/FEMElementsWorkspace.tsx:8 import { ElementRegistry } from '../../engine/fem/elements/ElementRegistry';",
+        "src/components/assembly/FEMElementsWorkspace.tsx:9 import { ElementVerificationEngine } from '../../engine/fem/elements/ElementVerificationEngine';",
+        "src/components/assembly/FEMMeshWorkspace.tsx:16 import { FEMMeshGenerator, MeshGenerationParams } from '../../engine/fem/mesh/FEMMeshGenerator';",
+        "src/components/assembly/FEMMeshWorkspace.tsx:17 import { FEMMeshValidator, ValidationReport } from '../../engine/fem/mesh/FEMMeshValidator';",
+        "src/components/assembly/FEMMeshWorkspace.tsx:18 import { FEMMeshRefiner } from '../../engine/fem/mesh/FEMMeshRefiner';",
+        "src/components/assembly/FEMMeshWorkspace.tsx:19 import { FEMMeshSerializer } from '../../engine/fem/mesh/FEMMeshSerializer';",
+        "src/components/assembly/FEMMeshWorkspace.tsx:20 import { FEMNode } from '../../engine/fem/mesh/FEMNode';",
+        "src/components/assembly/FEMMeshWorkspace.tsx:21 import { FEMElement } from '../../engine/fem/mesh/FEMElement';",
+        "src/components/assembly/FEMMeshWorkspace.tsx:22 import { FEMMesh } from '../../engine/fem/mesh/FEMMesh';",
+        "src/components/assembly/FEMMeshWorkspace.tsx:23 import { HardAcceptanceGate231, Gate231Evidence } from '../../engine/fem/mesh/HardAcceptanceGate231';",
+        "src/components/assembly/FEMMeshWorkspace.tsx:24 import { FEMMeshQualityCalculator } from '../../engine/fem/mesh/FEMMeshQuality';",
+        "src/components/assembly/GlobalStiffnessAssemblyWorkspace.tsx:16 import { HardAcceptanceGate234, HardGateResult234 } from '../../engine/fem/assembly/HardAcceptanceGate234';",
+        "src/components/assembly/LinearSolverWorkspace.tsx:14 import { HardAcceptanceGate237, Gate237Evaluation } from '../../engine/fem/solvers/HardAcceptanceGate237';",
+        "src/components/assembly/MaterialConstitutiveWorkspace.tsx:15 import { MaterialConstitutiveLibrary } from '../../engine/fem/material/constitutive/MaterialConstitutiveLibrary';",
+        "src/components/assembly/MaterialConstitutiveWorkspace.tsx:16 import { MaterialConstitutiveDefinition, MaterialPointState } from '../../engine/fem/material/constitutive/ConstitutiveTypes';",
+        "src/components/assembly/MaterialConstitutiveWorkspace.tsx:17 import { IsotropicLinearElasticModel } from '../../engine/fem/material/constitutive/IsotropicLinearElasticModel';",
+        "src/components/assembly/MaterialConstitutiveWorkspace.tsx:18 import { OrthotropicElasticModel } from '../../engine/fem/material/constitutive/OrthotropicElasticModel';",
+        "src/components/assembly/MaterialConstitutiveWorkspace.tsx:19 import { J2ConstitutivePlasticityModel } from '../../engine/fem/material/constitutive/J2ConstitutivePlasticityModel';",
+        "src/components/assembly/MaterialConstitutiveWorkspace.tsx:20 import { MaterialPointStateManager } from '../../engine/fem/material/constitutive/MaterialPointStateManager';",
+        "src/components/assembly/MaterialConstitutiveWorkspace.tsx:21 import { ConsistentTangentEngine } from '../../engine/fem/material/constitutive/ConsistentTangentEngine';",
+        "src/components/assembly/MaterialConstitutiveWorkspace.tsx:22 import { FEMConstitutivePipelineIntegrator } from '../../engine/fem/material/constitutive/FEMConstitutivePipelineIntegrator';",
+        "src/components/assembly/MaterialConstitutiveWorkspace.tsx:23 import { HardAcceptanceGate233, HardGateResult233 } from '../../engine/fem/material/constitutive/HardAcceptanceGate233';",
+        "src/components/assembly/NonlinearSolverWorkspace.tsx:28 import { HardAcceptanceGate238 } from '../../engine/fem/nonlinear/verification/HardAcceptanceGate238';",
+        "src/components/assembly/SparseMatrixWorkspace.tsx:10 import { FEMMeshGenerator } from '../../engine/fem/mesh/FEMMeshGenerator';",
+        "src/components/assembly/SparseMatrixWorkspace.tsx:4 import { SparseMatrix, SparseMatrixBuilder } from '../../engine/fem/sparse/SparseMatrix';",
+        "src/components/assembly/SparseMatrixWorkspace.tsx:5 import { SparseLinearSolver, SolverMode } from '../../engine/fem/sparse/SparseLinearSolver';",
+        "src/components/assembly/SparseMatrixWorkspace.tsx:6 import { MatrixOrdering } from '../../engine/fem/sparse/MatrixOrdering';",
+        "src/components/assembly/SparseMatrixWorkspace.tsx:7 import { HardAcceptanceGate236, Gate236Evaluation } from '../../engine/fem/sparse/HardAcceptanceGate236';",
+        "src/components/assembly/SparseMatrixWorkspace.tsx:8 import { ParallelismBoundary } from '../../engine/fem/sparse/ParallelismBoundary';",
+        "src/components/assembly/SparseMatrixWorkspace.tsx:9 import { SparseFEMEngine, SparseFEMSolveResult } from '../../engine/fem/sparse/SparseFEMEngine';",
+        "src/components/benchmark/NonlinearFEMBenchmarkPanel.tsx:17 import { MaterialModelIdentity, NonlinearKinematicsType } from '../../engine/fem/nonlinear/types/NonlinearFEMTypes';",
+        "src/components/benchmark/NonlinearFEMBenchmarkPanel.tsx:18 import { MaterialModelRegistry } from '../../engine/fem/nonlinear/materials/MaterialModelRegistry';",
+        "src/components/benchmark/NonlinearFEMBenchmarkPanel.tsx:19 import { NonlinearFEMEngine, NonlinearProblemDefinition, NonlinearSimulationResult } from '../../engine/fem/nonlinear/NonlinearFEMEngine';",
+        "src/components/fem/FemVerificationWorkspace.tsx:14 import { HardAcceptanceGate240, GateReport } from '../../engine/fem/verification/HardAcceptanceGate240';"
+      ]
+    },
+    {
+      "directory": "src/engine/gcs3d",
+      "files_count": 32,
+      "reachable_from": [
+        "App.tsx",
+        "components/"
+      ],
+      "unreachable": false,
+      "evidence": [
+        "src/components/benchmark/GCSBenchmarkPanel.tsx:14 import { Spatial3DEntity, Production3DConstraint } from '../../engine/gcs3d/Production3DGCSTypes';",
+        "src/components/benchmark/GCSBenchmarkPanel.tsx:15 import { NonlinearSpatialSolver } from '../../engine/gcs3d/NonlinearSpatialSolver';",
+        "src/components/benchmark/GCSBenchmarkPanel.tsx:16 import { ViewportDragController } from '../../engine/gcs3d/ViewportDragController';",
+        "src/components/benchmark/GCSBenchmarkPanel.tsx:17 import { DatumReferenceEngine } from '../../engine/gcs3d/DatumReferenceEngine';"
+      ]
+    },
+    {
+      "directory": "src/engine/gdt",
+      "files_count": 3,
+      "reachable_from": [
+        "App.tsx",
+        "components/"
+      ],
+      "unreachable": false,
+      "evidence": [
+        "src/components/Professional3DViewportPanel.tsx:20 import { GDTSystem284 } from '../engine/gdt/GDTSystem284';",
+        "src/components/Professional3DViewportPanel.tsx:21 import { HardAcceptanceGate284, GDTGateReport284 } from '../engine/gdt/HardAcceptanceGate284';",
+        "src/components/Professional3DViewportPanel.tsx:22 import { GDCharacteristic284, GDModifier284, GDTStatus284, DatumFeature284, GDTFeatureControl284 } from '../engine/gdt/GDTTypes284';"
+      ]
+    },
+    {
+      "directory": "src/engine/geometry",
+      "files_count": 10,
+      "reachable_from": [
+        "App.tsx",
+        "components/"
+      ],
+      "unreachable": false,
+      "evidence": [
+        "src/App.tsx:225 import { GeometryKernelManager } from './engine/geometry/GeometryKernelManager';",
+        "src/components/SketchEditorPanel.tsx:2 import { SketchEngine, SketchEntity, SketchConstraintType, SketchEntityType, ConstraintDiagnostic } from '../engine/geometry/SketchEngine';"
+      ]
+    },
+    {
+      "directory": "src/engine/geometry_twin",
+      "files_count": 12,
+      "reachable_from": [],
+      "unreachable": true,
+      "evidence": []
+    },
+    {
+      "directory": "src/engine/governance",
+      "files_count": 3,
+      "reachable_from": [],
+      "unreachable": true,
+      "evidence": []
+    },
+    {
+      "directory": "src/engine/hpc",
+      "files_count": 16,
+      "reachable_from": [
+        "App.tsx",
+        "components/"
+      ],
+      "unreachable": false,
+      "evidence": []
+    },
+    {
+      "directory": "src/engine/identity",
+      "files_count": 4,
+      "reachable_from": [
+        "App.tsx",
+        "components/"
+      ],
+      "unreachable": false,
+      "evidence": [
+        "src/components/IndustrialOsV3Panel.tsx:9 import { EngineeringObjectType } from '../engine/identity/CanonicalEngineeringIdentity';"
+      ]
+    },
+    {
+      "directory": "src/engine/impact",
+      "files_count": 7,
+      "reachable_from": [],
+      "unreachable": true,
+      "evidence": []
+    },
+    {
+      "directory": "src/engine/industrial-data-governance",
+      "files_count": 13,
+      "reachable_from": [],
+      "unreachable": true,
+      "evidence": []
+    },
+    {
+      "directory": "src/engine/industrial-os",
+      "files_count": 57,
+      "reachable_from": [
+        "App.tsx",
+        "components/"
+      ],
+      "unreachable": false,
+      "evidence": [
+        "src/components/IndustrialOsV3Panel.tsx:4 import { HardAcceptanceGate190, IntegrationTestReport } from '../engine/industrial-os/HardAcceptanceGate190';",
+        "src/components/IndustrialOsV3Panel.tsx:5 import { EngineeringObjectOS } from '../engine/industrial-os/EngineeringObjectOS';",
+        "src/components/IndustrialOsV3Panel.tsx:6 import { EngineeringStateMachine } from '../engine/industrial-os/state-machine/EngineeringStateMachine';",
+        "src/components/IndustrialOsV3Panel.tsx:7 import { EngineeringEventStore } from '../engine/industrial-os/event-model/EngineeringEventStore';",
+        "src/components/IndustrialOsV3Panel.tsx:8 import { EvidenceBus } from '../engine/industrial-os/evidence-bus/EvidenceBus';",
+        "src/components/SketcherPanel.tsx:46 import { EngineeringObjectOS } from '../engine/industrial-os/EngineeringObjectOS';",
+        "src/components/SketcherPanel.tsx:47 import { EngineeringEventStore } from '../engine/industrial-os/event-model/EngineeringEventStore';",
+        "src/components/benchmark/EngineeringOSDashboard.tsx:19 import { HardAcceptanceGate190, IntegrationTestReport } from '../../engine/industrial-os/HardAcceptanceGate190';"
+      ]
+    },
+    {
+      "directory": "src/engine/inspection_twin",
+      "files_count": 6,
+      "reachable_from": [],
+      "unreachable": true,
+      "evidence": []
+    },
+    {
+      "directory": "src/engine/integration",
+      "files_count": 14,
+      "reachable_from": [
+        "App.tsx",
+        "components/"
+      ],
+      "unreachable": false,
+      "evidence": []
+    },
+    {
+      "directory": "src/engine/integrity",
+      "files_count": 3,
+      "reachable_from": [
+        "App.tsx",
+        "components/"
+      ],
+      "unreachable": false,
+      "evidence": [
+        "src/components/ProductionDataIntegrityAuditDashboard.tsx:24 import { ProductionDataIntegrityAuditEngine } from '../engine/integrity/ProductionDataIntegrityAuditEngine';",
+        "src/components/ProductionDataIntegrityAuditDashboard.tsx:25 import { HardAcceptanceGate348, HardAcceptanceGate348Summary, IntegrityGateTestResult } from '../engine/integrity/HardAcceptanceGate348';"
+      ]
+    },
+    {
+      "directory": "src/engine/intent",
+      "files_count": 4,
+      "reachable_from": [
+        "App.tsx",
+        "components/"
+      ],
+      "unreachable": false,
+      "evidence": []
+    },
+    {
+      "directory": "src/engine/interop",
+      "files_count": 88,
+      "reachable_from": [
+        "App.tsx",
+        "components/"
+      ],
+      "unreachable": false,
+      "evidence": [
+        "src/App.tsx:226 import { NativeSECPWriter } from './engine/interop/native-secp/NativeSECPWriter';",
+        "src/App.tsx:227 import { NativeSECPReader } from './engine/interop/native-secp/NativeSECPReader';",
+        "src/components/interop/CrossOrganizationPanel.tsx:4 import { CrossOrganizationEvidenceEngine } from '../../engine/interop/organization/CrossOrganizationEvidenceEngine';",
+        "src/components/interop/CrossOrganizationPanel.tsx:5 import { OrganizationType, CrossOrganizationEvidencePackage, CrossOrganizationVerificationReport } from '../../engine/interop/organization/types';"
+      ]
+    },
+    {
+      "directory": "src/engine/kernel",
+      "files_count": 4,
+      "reachable_from": [
+        "App.tsx",
+        "components/"
+      ],
+      "unreachable": false,
+      "evidence": [
+        "src/App.tsx:207 import { EngineeringOS } from './engine/kernel/EngineeringOS';",
+        "src/components/benchmark/EngineeringOSDashboard.tsx:18 import { EngineeringOS } from '../../engine/kernel/EngineeringOS';"
+      ]
+    },
+    {
+      "directory": "src/engine/kernels",
+      "files_count": 8,
+      "reachable_from": [
+        "App.tsx",
+        "components/"
+      ],
+      "unreachable": false,
+      "evidence": []
+    },
+    {
+      "directory": "src/engine/kinematics",
+      "files_count": 12,
+      "reachable_from": [
+        "IndustrialReadinessEngine"
+      ],
+      "unreachable": false,
+      "evidence": [
+        "src/engine/release/IndustrialReadinessEngine.ts:11 import { MachineKinematicConfig, FiveAxisToolpath } from '../kinematics/KinematicTypes';",
+        "src/engine/release/IndustrialReadinessEngine.ts:6 import { FiveAxisKinematicsEngine } from '../kinematics/FiveAxisKinematicsEngine';",
+        "src/engine/release/IndustrialReadinessEngine.ts:7 import { CollisionEngine } from '../kinematics/CollisionEngine';",
+        "src/engine/release/IndustrialReadinessEngine.ts:8 import { FiveAxisVerificationEngine } from '../kinematics/FiveAxisVerificationEngine';"
+      ]
+    },
+    {
+      "directory": "src/engine/lifecycle",
+      "files_count": 6,
+      "reachable_from": [],
+      "unreachable": true,
+      "evidence": []
+    },
+    {
+      "directory": "src/engine/maintenance-governance",
+      "files_count": 13,
+      "reachable_from": [],
+      "unreachable": true,
+      "evidence": []
+    },
+    {
+      "directory": "src/engine/manufacturing",
+      "files_count": 179,
+      "reachable_from": [
+        "App.tsx",
+        "components/"
+      ],
+      "unreachable": false,
+      "evidence": [
+        "src/components/GCodeVerificationPanel.tsx:10 import { GCodeVerifierInstance } from \"../engine/manufacturing/verification/GCodeVerifierInstance\";",
+        "src/components/GCodeVerificationPanel.tsx:11 import { HardAcceptanceGate108 } from \"../engine/manufacturing/verification/HardAcceptanceGate108\";",
+        "src/components/GCodeVerificationPanel.tsx:3 import { ControllerProfileEngine } from \"../engine/manufacturing/post/ControllerProfileEngine\";",
+        "src/components/GCodeVerificationPanel.tsx:4 import { MachineProfileEngine } from \"../engine/manufacturing/post/MachineProfileEngine\";",
+        "src/components/GCodeVerificationPanel.tsx:5 import { MachineAxisToolpath } from \"../engine/manufacturing/post/types\";",
+        "src/components/ToolpathSimulationPanel.tsx:25 import { HardAcceptanceGate109 } from '../engine/manufacturing/simulation/HardAcceptanceGate109';",
+        "src/components/ToolpathSimulationPanel.tsx:26 import { ToolpathSimulationEngine } from '../engine/manufacturing/simulation/ToolpathSimulationEngine';",
+        "src/components/ToolpathSimulationPanel.tsx:27 import { MachineLibrary } from '../engine/manufacturing/kinematics/MachineLibrary';",
+        "src/components/ToolpathSimulationPanel.tsx:28 import { ControllerProfileEngine } from '../engine/manufacturing/post/ControllerProfileEngine';",
+        "src/components/ToolpathSimulationPanel.tsx:29 import { SpindleDirection } from '../engine/manufacturing/post/types';"
+      ]
+    },
+    {
+      "directory": "src/engine/manufacturing-execution",
+      "files_count": 9,
+      "reachable_from": [],
+      "unreachable": true,
+      "evidence": []
+    },
+    {
+      "directory": "src/engine/manufacturing-job",
+      "files_count": 3,
+      "reachable_from": [],
+      "unreachable": true,
+      "evidence": []
+    },
+    {
+      "directory": "src/engine/manufacturing-release",
+      "files_count": 10,
+      "reachable_from": [],
+      "unreachable": true,
+      "evidence": []
+    },
+    {
+      "directory": "src/engine/manufacturing_twin",
+      "files_count": 7,
+      "reachable_from": [],
+      "unreachable": true,
+      "evidence": []
+    },
+    {
+      "directory": "src/engine/materials",
+      "files_count": 162,
+      "reachable_from": [
+        "App.tsx",
+        "components/"
+      ],
+      "unreachable": false,
+      "evidence": [
+        "src/App.tsx:203 import { MaterialDatabaseWorkspace } from './engine/materials/MaterialDatabaseWorkspace';"
+      ]
+    },
+    {
+      "directory": "src/engine/navigation",
+      "files_count": 1,
+      "reachable_from": [],
+      "unreachable": true,
+      "evidence": []
+    },
+    {
+      "directory": "src/engine/nc",
+      "files_count": 5,
+      "reachable_from": [],
+      "unreachable": true,
+      "evidence": []
+    },
+    {
+      "directory": "src/engine/ncr",
+      "files_count": 10,
+      "reachable_from": [],
+      "unreachable": true,
+      "evidence": []
+    },
+    {
+      "directory": "src/engine/nurbs-geometry",
+      "files_count": 10,
+      "reachable_from": [],
+      "unreachable": true,
+      "evidence": []
+    },
+    {
+      "directory": "src/engine/p0-qualification",
+      "files_count": 4,
+      "reachable_from": [
+        "App.tsx",
+        "components/"
+      ],
+      "unreachable": false,
+      "evidence": []
+    },
+    {
+      "directory": "src/engine/p1-parametric-stress",
+      "files_count": 3,
+      "reachable_from": [
+        "App.tsx",
+        "components/"
+      ],
+      "unreachable": false,
+      "evidence": []
+    },
+    {
+      "directory": "src/engine/parametric",
+      "files_count": 5,
+      "reachable_from": [],
+      "unreachable": true,
+      "evidence": []
+    },
+    {
+      "directory": "src/engine/parametric-cad",
+      "files_count": 15,
+      "reachable_from": [
+        "App.tsx",
+        "components/"
+      ],
+      "unreachable": false,
+      "evidence": [
+        "src/App.tsx:124 import { CADInteroperabilityLayer } from './engine/parametric-cad/CADInteroperabilityLayer';"
+      ]
+    },
+    {
+      "directory": "src/engine/patch035",
+      "files_count": 18,
+      "reachable_from": [
+        "App.tsx",
+        "components/"
+      ],
+      "unreachable": false,
+      "evidence": [
+        "src/App.tsx:18 import { DesignCapabilityMatrix } from './engine/patch035/DesignCapabilityMatrix';",
+        "src/components/SketchEditorPanel.tsx:5 import { DesignCapabilityMatrix } from '../engine/patch035/DesignCapabilityMatrix';",
+        "src/components/SketchEditorPanel.tsx:6 import { ImplementationStatus } from '../engine/patch035/DesignWorkbenchTypes';",
+        "src/components/SketchEditorPanel.tsx:7 import { UniversalDesignWorkbenchEngine } from '../engine/patch035/UniversalDesignWorkbenchEngine';",
+        "src/components/SketchEditorPanel.tsx:8 import { FeatureTreeManager } from '../engine/patch035/FeatureTreeManager';"
+      ]
+    },
+    {
+      "directory": "src/engine/performance",
+      "files_count": 3,
+      "reachable_from": [],
+      "unreachable": true,
+      "evidence": []
+    },
+    {
+      "directory": "src/engine/persistence-proof",
+      "files_count": 4,
+      "reachable_from": [],
+      "unreachable": true,
+      "evidence": []
+    },
+    {
+      "directory": "src/engine/physics",
+      "files_count": 96,
+      "reachable_from": [
+        "App.tsx",
+        "components/"
+      ],
+      "unreachable": false,
+      "evidence": []
+    },
+    {
+      "directory": "src/engine/physics_twin",
+      "files_count": 8,
+      "reachable_from": [],
+      "unreachable": true,
+      "evidence": []
+    },
+    {
+      "directory": "src/engine/plm",
+      "files_count": 17,
+      "reachable_from": [
+        "App.tsx",
+        "components/"
+      ],
+      "unreachable": false,
+      "evidence": [
+        "src/components/EnterprisePLMPanel.tsx:3 import { EngineeringPLMEngine } from '../engine/plm/EngineeringPLMEngine';",
+        "src/components/EnterprisePLMPanel.tsx:4 import { MasterPLMManager } from '../engine/plm/MasterPLMManager';",
+        "src/components/EnterprisePLMPanel.tsx:5 import { EngineeringArtifact, EngineeringChangeOrder, ArtifactStatus } from '../engine/plm/PLMTypes';"
+      ]
+    },
+    {
+      "directory": "src/engine/plm_evidence",
+      "files_count": 5,
+      "reachable_from": [],
+      "unreachable": true,
+      "evidence": []
+    },
+    {
+      "directory": "src/engine/postprocessor",
+      "files_count": 6,
+      "reachable_from": [
+        "IndustrialReadinessEngine"
+      ],
+      "unreachable": false,
+      "evidence": [
+        "src/engine/release/IndustrialReadinessEngine.ts:10 import { GCodeVerificationEngine } from '../postprocessor/GCodeVerificationEngine';",
+        "src/engine/release/IndustrialReadinessEngine.ts:12 import { MachinePostProfile } from '../postprocessor/PostProcessorTypes';",
+        "src/engine/release/IndustrialReadinessEngine.ts:9 import { GCodePostProcessor } from '../postprocessor/GCodePostProcessor';"
+      ]
+    },
+    {
+      "directory": "src/engine/predictive",
+      "files_count": 4,
+      "reachable_from": [],
+      "unreachable": true,
+      "evidence": []
+    },
+    {
+      "directory": "src/engine/predictive_engineering",
+      "files_count": 10,
+      "reachable_from": [],
+      "unreachable": true,
+      "evidence": []
+    },
+    {
+      "directory": "src/engine/production-continuity",
+      "files_count": 17,
+      "reachable_from": [],
+      "unreachable": true,
+      "evidence": []
+    },
+    {
+      "directory": "src/engine/production-proof",
+      "files_count": 3,
+      "reachable_from": [
+        "App.tsx",
+        "components/"
+      ],
+      "unreachable": false,
+      "evidence": [
+        "src/components/ProductionProofDashboard.tsx:25 import { ProductionProofEngine } from '../engine/production-proof/ProductionProofEngine';"
+      ]
+    },
+    {
+      "directory": "src/engine/provenance",
+      "files_count": 10,
+      "reachable_from": [
+        "App.tsx",
+        "components/"
+      ],
+      "unreachable": false,
+      "evidence": [
+        "src/components/ProvenanceLedger.tsx:3 import { ProvenanceGraphBuilder } from '../engine/provenance/ProvenanceGraphBuilder';",
+        "src/components/ProvenanceLedger.tsx:4 import { ProvenanceGraphVerifier } from '../engine/provenance/ProvenanceGraphVerifier';",
+        "src/components/ProvenanceLedger.tsx:5 import { ProvenanceNodeType } from '../engine/provenance/ProvenanceGraphTypes';"
+      ]
+    },
+    {
+      "directory": "src/engine/qif",
+      "files_count": 17,
+      "reachable_from": [],
+      "unreachable": true,
+      "evidence": []
+    },
+    {
+      "directory": "src/engine/quality-metrology",
+      "files_count": 4,
+      "reachable_from": [
+        "IndustrialReadinessEngine",
+        "QualityGate"
+      ],
+      "unreachable": false,
+      "evidence": [
+        "src/engine/verification/QualityGate.ts:10 import { MetrologyEngine } from '../quality-metrology/MetrologyEngine';",
+        "src/engine/verification/QualityGate.ts:8 import { QualityVerificationCertificate } from '../quality-metrology/MetrologyTypes';"
+      ]
+    },
+    {
+      "directory": "src/engine/random",
+      "files_count": 1,
+      "reachable_from": [],
+      "unreachable": true,
+      "evidence": []
+    },
+    {
+      "directory": "src/engine/regeneration-proof",
+      "files_count": 4,
+      "reachable_from": [],
+      "unreachable": true,
+      "evidence": []
+    },
+    {
+      "directory": "src/engine/release",
+      "files_count": 4,
+      "reachable_from": [
+        "IndustrialReadinessEngine"
+      ],
+      "unreachable": false,
+      "evidence": []
+    },
+    {
+      "directory": "src/engine/rendering",
+      "files_count": 15,
+      "reachable_from": [],
+      "unreachable": true,
+      "evidence": []
+    },
+    {
+      "directory": "src/engine/reproducibility",
+      "files_count": 10,
+      "reachable_from": [
+        "App.tsx",
+        "components/"
+      ],
+      "unreachable": false,
+      "evidence": [
+        "src/components/benchmark/ReproduciblePackagePanel.tsx:10 import { IndependentReproductionEngine, IndependentRunOutput } from '../../engine/reproducibility/IndependentReproductionEngine';",
+        "src/components/benchmark/ReproduciblePackagePanel.tsx:11 import { ReproductionCompareEngine } from '../../engine/reproducibility/ReproductionCompareEngine';",
+        "src/components/benchmark/ReproduciblePackagePanel.tsx:12 import { IndependentReproductionOracle } from '../../engine/reproducibility/IndependentReproductionOracle';",
+        "src/components/benchmark/ReproduciblePackagePanel.tsx:13 import { HardAcceptanceGate183, Gate183Report } from '../../engine/reproducibility/HardAcceptanceGate183';",
+        "src/components/benchmark/ReproduciblePackagePanel.tsx:9 import { PackageBuilder } from '../../engine/reproducibility/PackageBuilder';"
+      ]
+    },
+    {
+      "directory": "src/engine/reverse_engineering",
+      "files_count": 53,
+      "reachable_from": [
+        "App.tsx",
+        "components/"
+      ],
+      "unreachable": false,
+      "evidence": [
+        "src/components/BRepReconstructionWorkbenchPanel.tsx:10 import { HardAcceptanceGate323, Gate323Report } from '../engine/reverse_engineering/surfaces/HardAcceptanceGate323';",
+        "src/components/BRepReconstructionWorkbenchPanel.tsx:11 import { NURBSReconstructionSession } from '../engine/reverse_engineering/surfaces/NURBSReconstructionTypes322';",
+        "src/components/BRepReconstructionWorkbenchPanel.tsx:8 import { BRepReconstructionEngine323 } from '../engine/reverse_engineering/surfaces/BRepReconstructionEngine323';",
+        "src/components/BRepReconstructionWorkbenchPanel.tsx:9 import { BRepReconstructionSession, BRepSolid } from '../engine/reverse_engineering/surfaces/BRepReconstructionTypes323';",
+        "src/components/FeatureRecognitionWorkbenchPanel.tsx:10 import { HardAcceptanceGate320, Gate320Report } from '../engine/reverse_engineering/features/HardAcceptanceGate320';",
+        "src/components/FeatureRecognitionWorkbenchPanel.tsx:11 import { HealedMeshDataset } from '../engine/reverse_engineering/mesh/MeshHealingEngine319';",
+        "src/components/FeatureRecognitionWorkbenchPanel.tsx:8 import { FeatureRecognitionEngine320 } from '../engine/reverse_engineering/features/FeatureRecognitionEngine320';",
+        "src/components/FeatureRecognitionWorkbenchPanel.tsx:9 import { FeatureRecognitionSession, RecognizedFeature } from '../engine/reverse_engineering/features/FeatureRecognitionTypes320';",
+        "src/components/MeshHealingWorkbenchPanel.tsx:21 import { MeshHealingEngine319 } from '../engine/reverse_engineering/mesh/MeshHealingEngine319';",
+        "src/components/MeshHealingWorkbenchPanel.tsx:22 import { HardAcceptanceGate319, GateTestResult319 } from '../engine/reverse_engineering/mesh/HardAcceptanceGate319';",
+        "src/components/MeshHealingWorkbenchPanel.tsx:23 import { HealingPolicy, HealedMeshDataset, MeshDefect } from '../engine/reverse_engineering/mesh/MeshHealingTypes319';",
+        "src/components/MeshHealingWorkbenchPanel.tsx:24 import { ScanToMeshEngine318 } from '../engine/reverse_engineering/mesh/ScanToMeshEngine318';",
+        "src/components/MeshHealingWorkbenchPanel.tsx:25 import { PointCloudImportService } from '../engine/reverse_engineering/point_cloud/PointCloudImportService';",
+        "src/components/MeshHealingWorkbenchPanel.tsx:26 import { PointCloudRegistrationEngine } from '../engine/reverse_engineering/registration/PointCloudRegistrationEngine';",
+        "src/components/NURBSReconstructionWorkbenchPanel.tsx:10 import { HardAcceptanceGate322, Gate322Report } from '../engine/reverse_engineering/surfaces/HardAcceptanceGate322';",
+        "src/components/NURBSReconstructionWorkbenchPanel.tsx:11 import { SurfaceReconstructionEngine321 } from '../engine/reverse_engineering/surfaces/SurfaceReconstructionEngine321';",
+        "src/components/NURBSReconstructionWorkbenchPanel.tsx:12 import { FeatureRecognitionEngine320 } from '../engine/reverse_engineering/features/FeatureRecognitionEngine320';",
+        "src/components/NURBSReconstructionWorkbenchPanel.tsx:13 import { HealedMeshDataset } from '../engine/reverse_engineering/mesh/MeshHealingTypes319';",
+        "src/components/NURBSReconstructionWorkbenchPanel.tsx:8 import { NURBSReconstructionEngine322 } from '../engine/reverse_engineering/surfaces/NURBSReconstructionEngine322';",
+        "src/components/NURBSReconstructionWorkbenchPanel.tsx:9 import { NURBSReconstructionSession, NURBSSurface } from '../engine/reverse_engineering/surfaces/NURBSReconstructionTypes322';",
+        "src/components/NoiseFilteringWorkbenchPanel.tsx:12 import { PointCloudImportService } from '../engine/reverse_engineering/point_cloud/PointCloudImportService';",
+        "src/components/NoiseFilteringWorkbenchPanel.tsx:13 import { PointCloudFilterEngine } from '../engine/reverse_engineering/filtering/PointCloudFilterEngine';",
+        "src/components/NoiseFilteringWorkbenchPanel.tsx:14 import { HardAcceptanceGate316, GateTestResult316 } from '../engine/reverse_engineering/filtering/HardAcceptanceGate316';",
+        "src/components/NoiseFilteringWorkbenchPanel.tsx:15 import { NativePointCloud, Point3D } from '../engine/reverse_engineering/point_cloud/PointCloudTypes315';",
+        "src/components/NoiseFilteringWorkbenchPanel.tsx:16 import { FilteredPointCloud, FilterType, FilterMode } from '../engine/reverse_engineering/filtering/PointCloudFilterTypes316';",
+        "src/components/ParametricFeatureWorkbenchPanel.tsx:43 import { FeatureCandidateEngine324 } from '../engine/reverse_engineering/features/FeatureCandidateEngine324';",
+        "src/components/ParametricFeatureWorkbenchPanel.tsx:44 import { FeatureRegenerationEngine324 } from '../engine/reverse_engineering/features/FeatureRegenerationEngine324';",
+        "src/components/ParametricFeatureWorkbenchPanel.tsx:45 import { HardAcceptanceGate324 } from '../engine/reverse_engineering/features/HardAcceptanceGate324';",
+        "src/components/ParametricFeatureWorkbenchPanel.tsx:46 import { HardAcceptanceGate325 } from '../engine/reverse_engineering/features/HardAcceptanceGate325';",
+        "src/components/PointCloudImportWorkbenchPanel.tsx:20 import { PointCloudImportService } from '../engine/reverse_engineering/point_cloud/PointCloudImportService';",
+        "src/components/PointCloudImportWorkbenchPanel.tsx:21 import { PointCloudParsers315 } from '../engine/reverse_engineering/point_cloud/PointCloudParsers315';",
+        "src/components/PointCloudImportWorkbenchPanel.tsx:22 import { PointCloudDataset, Point3D } from '../engine/reverse_engineering/point_cloud/PointCloudTypes315';",
+        "src/components/PointCloudImportWorkbenchPanel.tsx:23 import { HardAcceptanceGate315, GateTestResult315 } from '../engine/reverse_engineering/point_cloud/HardAcceptanceGate315';",
+        "src/components/RegistrationAlignmentWorkbenchPanel.tsx:18 import { PointCloudRegistrationEngine } from '../engine/reverse_engineering/registration/PointCloudRegistrationEngine';",
+        "src/components/RegistrationAlignmentWorkbenchPanel.tsx:19 import { IterativeClosestPointSolver317 } from '../engine/reverse_engineering/registration/IterativeClosestPointSolver317';",
+        "src/components/RegistrationAlignmentWorkbenchPanel.tsx:20 import { RigidTransformSolver317 } from '../engine/reverse_engineering/registration/RigidTransformSolver317';",
+        "src/components/RegistrationAlignmentWorkbenchPanel.tsx:21 import { Point3D } from '../engine/reverse_engineering/point_cloud/PointCloudTypes315';",
+        "src/components/RegistrationAlignmentWorkbenchPanel.tsx:22 import { RigidTransform, ICPConvergenceResult } from '../engine/reverse_engineering/registration/PointCloudRegistrationTypes317';",
+        "src/components/RegistrationAlignmentWorkbenchPanel.tsx:23 import { HardAcceptanceGate317, GateTestResult317 } from '../engine/reverse_engineering/registration/HardAcceptanceGate317';",
+        "src/components/ScanToMeshWorkbenchPanel.tsx:22 import { ScanToMeshEngine318 } from '../engine/reverse_engineering/mesh/ScanToMeshEngine318';",
+        "src/components/ScanToMeshWorkbenchPanel.tsx:23 import { HardAcceptanceGate318, GateTestResult318 } from '../engine/reverse_engineering/mesh/HardAcceptanceGate318';",
+        "src/components/ScanToMeshWorkbenchPanel.tsx:24 import { ScanToMeshSettings, MeshReconstructionMode, ScanMeshDataset } from '../engine/reverse_engineering/mesh/ScanMeshTypes318';",
+        "src/components/ScanToMeshWorkbenchPanel.tsx:25 import { PointCloudImportService } from '../engine/reverse_engineering/point_cloud/PointCloudImportService';",
+        "src/components/ScanToMeshWorkbenchPanel.tsx:26 import { PointCloudRegistrationEngine } from '../engine/reverse_engineering/registration/PointCloudRegistrationEngine';",
+        "src/components/ScanToMeshWorkbenchPanel.tsx:27 import { Point3D } from '../engine/reverse_engineering/point_cloud/PointCloudTypes315';",
+        "src/components/SurfaceReconstructionWorkbenchPanel.tsx:18 import { SurfaceReconstructionEngine321 } from '../engine/reverse_engineering/surfaces/SurfaceReconstructionEngine321';",
+        "src/components/SurfaceReconstructionWorkbenchPanel.tsx:19 import { HardAcceptanceGate321, Gate321Report } from '../engine/reverse_engineering/surfaces/HardAcceptanceGate321';",
+        "src/components/SurfaceReconstructionWorkbenchPanel.tsx:20 import { SurfaceReconstructionSession, ReconstructedSurface } from '../engine/reverse_engineering/surfaces/SurfaceReconstructionTypes321';",
+        "src/components/SurfaceReconstructionWorkbenchPanel.tsx:21 import { MeshHealingEngine319 } from '../engine/reverse_engineering/mesh/MeshHealingEngine319';",
+        "src/components/SurfaceReconstructionWorkbenchPanel.tsx:22 import { ScanToMeshEngine318 } from '../engine/reverse_engineering/mesh/ScanToMeshEngine318';",
+        "src/components/SurfaceReconstructionWorkbenchPanel.tsx:23 import { PointCloudImportService } from '../engine/reverse_engineering/point_cloud/PointCloudImportService';",
+        "src/components/SurfaceReconstructionWorkbenchPanel.tsx:24 import { PointCloudRegistrationEngine } from '../engine/reverse_engineering/registration/PointCloudRegistrationEngine';"
+      ]
+    },
+    {
+      "directory": "src/engine/revision",
+      "files_count": 16,
+      "reachable_from": [
+        "App.tsx",
+        "components/",
+        "IndustrialReadinessEngine",
+        "QualityGate"
+      ],
+      "unreachable": false,
+      "evidence": [
+        "src/components/ApprovalWorkflowPanel.tsx:10 import { HardAcceptanceGate291 } from '../engine/revision/HardAcceptanceGate291';",
+        "src/components/BranchVariantDesignPanel.tsx:13 import { HardAcceptanceGate288 } from '../engine/revision/HardAcceptanceGate288';",
+        "src/components/ChangeManagementPanel.tsx:10 import { HardAcceptanceGate289 } from '../engine/revision/HardAcceptanceGate289';",
+        "src/components/EcoManagementPanel.tsx:12 import { HardAcceptanceGate290 } from '../engine/revision/HardAcceptanceGate290';",
+        "src/components/RevisionManagementPanel.tsx:12 import { RevisionDiffEngine } from '../engine/revision/RevisionDiffEngine';",
+        "src/components/RevisionManagementPanel.tsx:13 import { RevisionImpactAnalyzer, ImpactedItem } from '../engine/revision/RevisionImpactAnalyzer';",
+        "src/components/RevisionManagementPanel.tsx:14 import { RevisionIntegrityChecker } from '../engine/revision/RevisionIntegrityChecker';",
+        "src/components/RevisionManagementPanel.tsx:3 import { RevisionEngine, RevisionPolicy } from '../engine/revision/RevisionEngine';"
+      ]
+    },
+    {
+      "directory": "src/engine/round-trip",
+      "files_count": 3,
+      "reachable_from": [],
+      "unreachable": true,
+      "evidence": []
+    },
+    {
+      "directory": "src/engine/runtime_telemetry",
+      "files_count": 6,
+      "reachable_from": [],
+      "unreachable": true,
+      "evidence": []
+    },
+    {
+      "directory": "src/engine/security",
+      "files_count": 3,
+      "reachable_from": [
+        "App.tsx",
+        "components/"
+      ],
+      "unreachable": false,
+      "evidence": [
+        "src/components/ProductionSecurityAuditDashboard.tsx:28 import { ProductionSecurityAuditEngine } from '../engine/security/ProductionSecurityAuditEngine';",
+        "src/components/ProductionSecurityAuditDashboard.tsx:29 import { HardAcceptanceGate347, HardAcceptanceGate347Summary, SecurityGateTestResult } from '../engine/security/HardAcceptanceGate347';"
+      ]
+    },
+    {
+      "directory": "src/engine/semantics",
+      "files_count": 10,
+      "reachable_from": [
+        "App.tsx",
+        "components/"
+      ],
+      "unreachable": false,
+      "evidence": []
+    },
+    {
+      "directory": "src/engine/serialization",
+      "files_count": 10,
+      "reachable_from": [
+        "App.tsx",
+        "components/"
+      ],
+      "unreachable": false,
+      "evidence": []
+    },
+    {
+      "directory": "src/engine/session",
+      "files_count": 2,
+      "reachable_from": [
+        "App.tsx",
+        "components/"
+      ],
+      "unreachable": false,
+      "evidence": [
+        "src/components/CrossCuttingGovernanceModal.tsx:18 import { ProjectMetadata } from '../engine/session/ProjectSession';"
+      ]
+    },
+    {
+      "directory": "src/engine/simulation",
+      "files_count": 10,
+      "reachable_from": [
+        "App.tsx",
+        "components/",
+        "IndustrialReadinessEngine",
+        "QualityGate"
+      ],
+      "unreachable": false,
+      "evidence": [
+        "src/engine/verification/QualityGate.ts:9 import { SimulationResult } from '../simulation/SimulationEngine';"
+      ]
+    },
+    {
+      "directory": "src/engine/sketch",
+      "files_count": 46,
+      "reachable_from": [
+        "App.tsx",
+        "components/"
+      ],
+      "unreachable": false,
+      "evidence": [
+        "src/components/SketchEditorPanel.tsx:90 import { CanonicalSketchAdapter } from '../engine/sketch/canonical/CanonicalSketchAdapter';",
+        "src/components/SketchEditorPanel.tsx:93 import { SketchPoint2D, SketchLine2D, SketchCircle2D, SketchArc2D, SketchEllipse2D, IndustrialSketchConstraint } from '../engine/sketch/IndustrialConstraintTypes';",
+        "src/components/SketcherPanel.tsx:44 import { SketchCreationTools } from '../engine/sketch/SketchCreationTools';",
+        "src/components/SketcherPanel.tsx:45 import { IndustrialVariationalSolver } from '../engine/sketch/IndustrialVariationalSolver';",
+        "src/components/SketcherPanel.tsx:57 import { CanonicalSketchAdapter } from '../engine/sketch/canonical/CanonicalSketchAdapter';"
+      ]
+    },
+    {
+      "directory": "src/engine/sketch034",
+      "files_count": 20,
+      "reachable_from": [
+        "App.tsx",
+        "components/"
+      ],
+      "unreachable": false,
+      "evidence": [
+        "src/components/SketchEditorPanel.tsx:10 import { FeatureCommandRegistry } from '../engine/sketch034/FeatureCommandRegistry';",
+        "src/components/SketchEditorPanel.tsx:11 import { EvidenceCommandRegistry } from '../engine/sketch034/EvidenceCommandRegistry';",
+        "src/components/SketchEditorPanel.tsx:9 import { FeatureHistoryRegenerationEngine } from '../engine/sketch034/FeatureHistoryRegenerationEngine';"
+      ]
+    },
+    {
+      "directory": "src/engine/spc",
+      "files_count": 9,
+      "reachable_from": [],
+      "unreachable": true,
+      "evidence": []
+    },
+    {
+      "directory": "src/engine/state_sync",
+      "files_count": 7,
+      "reachable_from": [],
+      "unreachable": true,
+      "evidence": []
+    },
+    {
+      "directory": "src/engine/storage",
+      "files_count": 1,
+      "reachable_from": [
+        "App.tsx",
+        "components/"
+      ],
+      "unreachable": false,
+      "evidence": []
+    },
+    {
+      "directory": "src/engine/structural-physics",
+      "files_count": 35,
+      "reachable_from": [],
+      "unreachable": true,
+      "evidence": []
+    },
+    {
+      "directory": "src/engine/surface",
+      "files_count": 5,
+      "reachable_from": [],
+      "unreachable": true,
+      "evidence": []
+    },
+    {
+      "directory": "src/engine/sync",
+      "files_count": 6,
+      "reachable_from": [
+        "App.tsx",
+        "components/"
+      ],
+      "unreachable": false,
+      "evidence": []
+    },
+    {
+      "directory": "src/engine/telemetry",
+      "files_count": 32,
+      "reachable_from": [
+        "App.tsx",
+        "components/"
+      ],
+      "unreachable": false,
+      "evidence": [
+        "src/App.tsx:63 import { EngineeringToolContextProvider } from './engine/telemetry/useEngineeringToolContext';",
+        "src/components/AssemblyEnginePanel.tsx:28 import { useEngineeringToolContext } from '../engine/telemetry/useEngineeringToolContext';",
+        "src/components/BomPanel.tsx:12 import { useEngineeringToolContext } from '../engine/telemetry/useEngineeringToolContext';",
+        "src/components/CamPanel.tsx:42 import { useEngineeringToolContext } from '../engine/telemetry/useEngineeringToolContext';",
+        "src/components/CamPanel.tsx:43 import { EngineeringToolContext } from '../engine/telemetry/EngineeringToolContext';",
+        "src/components/FluidPowerPanel.tsx:10 import { useEngineeringToolContext } from '../engine/telemetry/useEngineeringToolContext';",
+        "src/components/InteractiveEngineeringWorkbench.tsx:3 import { useEngineeringToolContext } from '../engine/telemetry/useEngineeringToolContext';",
+        "src/components/MaterialsPanel.tsx:5 import { useEngineeringToolContext } from '../engine/telemetry/useEngineeringToolContext';",
+        "src/components/MaterialsPanel.tsx:6 import { EngineeringToolContext } from '../engine/telemetry/EngineeringToolContext';",
+        "src/components/SimulationCaePanel.tsx:43 import { useEngineeringToolContext } from '../engine/telemetry/useEngineeringToolContext';",
+        "src/components/SketcherPanel.tsx:7 import { useEngineeringToolContext } from '../engine/telemetry/useEngineeringToolContext';",
+        "src/components/TechnicalDrawingPanel.tsx:5 import { useEngineeringToolContext } from '../engine/telemetry/useEngineeringToolContext';"
+      ]
+    },
+    {
+      "directory": "src/engine/tests",
+      "files_count": 1,
+      "reachable_from": [
+        "App.tsx",
+        "components/"
+      ],
+      "unreachable": false,
+      "evidence": [
+        "src/components/CadKernelInspector.tsx:4 import { KernelFidelityTestSuite, FidelityReport } from '../engine/tests/KernelFidelityTestSuite';"
+      ]
+    },
+    {
+      "directory": "src/engine/tool-qualification",
+      "files_count": 5,
+      "reachable_from": [],
+      "unreachable": true,
+      "evidence": []
+    },
+    {
+      "directory": "src/engine/topology",
+      "files_count": 12,
+      "reachable_from": [
+        "App.tsx",
+        "components/"
+      ],
+      "unreachable": false,
+      "evidence": []
+    },
+    {
+      "directory": "src/engine/trust",
+      "files_count": 17,
+      "reachable_from": [
+        "IndustrialReadinessEngine",
+        "QualityGate"
+      ],
+      "unreachable": false,
+      "evidence": []
+    },
+    {
+      "directory": "src/engine/twin_evidence",
+      "files_count": 8,
+      "reachable_from": [],
+      "unreachable": true,
+      "evidence": []
+    },
+    {
+      "directory": "src/engine/validation",
+      "files_count": 218,
+      "reachable_from": [
+        "App.tsx",
+        "components/"
+      ],
+      "unreachable": false,
+      "evidence": [
+        "src/components/AdvancedKinematicsPanel.tsx:24 import { HardAcceptanceGate045, AcceptanceGate045Report } from '../engine/validation/HardAcceptanceGate045';",
+        "src/components/AssemblyEnginePanel.tsx:23 import { HardAcceptanceGate043, AcceptanceGate043Report } from '../engine/validation/HardAcceptanceGate043';",
+        "src/components/AssemblyWorkspace.tsx:20 import { HardAcceptanceGate216 } from '../engine/validation/HardAcceptanceGate216';",
+        "src/components/AssemblyWorkspace.tsx:21 import { HardAcceptanceGate218 } from '../engine/validation/HardAcceptanceGate218';",
+        "src/components/AssemblyWorkspace.tsx:22 import { HardAcceptanceGate219 } from '../engine/validation/HardAcceptanceGate219';",
+        "src/components/AssemblyWorkspace.tsx:23 import { HardAcceptanceGate220, ProductionGateResult } from '../engine/validation/HardAcceptanceGate220';",
+        "src/components/AssemblyWorkspace.tsx:44 import { HardAcceptanceGate221, Gate221Result } from '../engine/validation/HardAcceptanceGate221';",
+        "src/components/BearingEngineeringWorkspace.tsx:28 import { HardAcceptanceGate222, Gate222Result } from '../engine/validation/HardAcceptanceGate222';",
+        "src/components/CadKernelInspector.tsx:5 import { HardAcceptanceGate040, AcceptanceGateReport } from '../engine/validation/HardAcceptanceGate040';",
+        "src/components/CadKernelInspector.tsx:6 import { HardAcceptanceGate041, AcceptanceGate041Report } from '../engine/validation/HardAcceptanceGate041';",
+        "src/components/CadKernelInspector.tsx:7 import { HardAcceptanceGate042, FinalAcceptanceGate042Report } from '../engine/validation/HardAcceptanceGate042';",
+        "src/components/DesignIntentInspector.tsx:14 import { HardAcceptanceGate209 } from '../engine/validation/HardAcceptanceGate209';",
+        "src/components/DirectModelingInspector.tsx:19 import { HardAcceptanceGate206 } from '../engine/validation/HardAcceptanceGate206';",
+        "src/components/GearEngineeringWorkspace.tsx:23 import { HardAcceptanceGate224, HardAcceptanceGate224Report } from '../engine/validation/HardAcceptanceGate224';",
+        "src/components/HybridModelingInspector.tsx:15 import { HardAcceptanceGate207 } from '../engine/validation/HardAcceptanceGate207';",
+        "src/components/PMIPanel.tsx:15 import { HardAcceptanceGate044 } from '../engine/validation/HardAcceptanceGate044';",
+        "src/components/PatternEngineInspector.tsx:4 import { HardAcceptanceGate208 } from '../engine/validation/HardAcceptanceGate208';",
+        "src/components/ProductionCadInspector.tsx:3 import { HardAcceptanceGate210 } from '../engine/validation/HardAcceptanceGate210';",
+        "src/components/ProductionCadInspector.tsx:4 import { HardAcceptanceGate210Result, ZeroCodeChallengeResult } from '../engine/validation/ProductionCadGateTypes';",
+        "src/components/ShaftEngineeringWorkspace.tsx:26 import { HardAcceptanceGate223, HardAcceptanceGate223Report } from '../engine/validation/HardAcceptanceGate223';",
+        "src/components/SpringEngineeringWorkspace.tsx:47 import { HardAcceptanceGate225, Gate225Verdict } from '../engine/validation/HardAcceptanceGate225';",
+        "src/components/TestRunnerPanel.tsx:1 import { HardAcceptanceGate075 } from '../engine/validation/HardAcceptanceGate075';",
+        "src/components/TestRunnerPanel.tsx:10 import { HardAcceptanceGate090 } from '../engine/validation/HardAcceptanceGate090';",
+        "src/components/TestRunnerPanel.tsx:11 import { HardAcceptanceGate091 } from '../engine/validation/HardAcceptanceGate091';",
+        "src/components/TestRunnerPanel.tsx:12 import { HardAcceptanceGate092 } from '../engine/validation/HardAcceptanceGate092';",
+        "src/components/TestRunnerPanel.tsx:13 import { HardAcceptanceGate093 } from '../engine/validation/HardAcceptanceGate093';",
+        "src/components/TestRunnerPanel.tsx:14 import { HardAcceptanceGate094 } from '../engine/validation/HardAcceptanceGate094';",
+        "src/components/TestRunnerPanel.tsx:15 import { HardAcceptanceGate094R1 } from '../engine/validation/HardAcceptanceGate094R1';",
+        "src/components/TestRunnerPanel.tsx:16 import { HardAcceptanceGate094R2 } from '../engine/validation/HardAcceptanceGate094R2';",
+        "src/components/TestRunnerPanel.tsx:17 import { HardAcceptanceGate095 } from '../engine/validation/HardAcceptanceGate095';",
+        "src/components/TestRunnerPanel.tsx:2 import { HardAcceptanceGate076 } from '../engine/validation/HardAcceptanceGate076';",
+        "src/components/TestRunnerPanel.tsx:3 import { HardAcceptanceGate077 } from '../engine/validation/HardAcceptanceGate077';",
+        "src/components/TestRunnerPanel.tsx:4 import { HardAcceptanceGate078 } from '../engine/validation/HardAcceptanceGate078';",
+        "src/components/TestRunnerPanel.tsx:5 import { HardAcceptanceGate079 } from '../engine/validation/HardAcceptanceGate079';",
+        "src/components/TestRunnerPanel.tsx:6 import { HardAcceptanceGate080 } from '../engine/validation/HardAcceptanceGate080';",
+        "src/components/TestRunnerPanel.tsx:7 import { HardAcceptanceGate082 } from '../engine/validation/HardAcceptanceGate082';",
+        "src/components/TestRunnerPanel.tsx:8 import { HardAcceptanceGate083 } from '../engine/validation/HardAcceptanceGate083';",
+        "src/components/TestRunnerPanel.tsx:9 import { HardAcceptanceGate084 } from '../engine/validation/HardAcceptanceGate084';",
+        "src/components/assembly/KinematicSolverWorkspace.tsx:30 import { HardAcceptanceGate229, Gate229AuditReport } from '../../engine/validation/HardAcceptanceGate229';",
+        "src/components/benchmark/ExternalValidationPanel.tsx:16 import { HardAcceptanceGate185, Gate185Result } from '../../engine/validation/HardAcceptanceGate185';"
+      ]
+    },
+    {
+      "directory": "src/engine/variants",
+      "files_count": 6,
+      "reachable_from": [],
+      "unreachable": true,
+      "evidence": []
+    },
+    {
+      "directory": "src/engine/verification",
+      "files_count": 32,
+      "reachable_from": [
+        "App.tsx",
+        "components/",
+        "IndustrialReadinessEngine",
+        "QualityGate"
+      ],
+      "unreachable": false,
+      "evidence": [
+        "src/components/interop/CrossOrganizationPanel.tsx:6 import { VerificationStatus } from '../../engine/verification/portal/types';",
+        "src/components/interop/CrossOrganizationPanel.tsx:7 import { HardAcceptanceGate168 } from '../../engine/verification/portal/HardAcceptanceGate168';",
+        "src/components/verification/DroneProofGatePanel.tsx:29 import { DroneProofGateEngine, GateDecisionRecord, DesignClassification } from '../../engine/verification/DroneProofGate';",
+        "src/components/verification/DroneProofGatePanel.tsx:30 import { DroneProofReport, DroneProofReportEngine } from '../../engine/verification/DroneProofReport';",
+        "src/components/verification/DroneProofGatePanel.tsx:31 import { UniversalVerificationPackage } from '../../engine/verification/UniversalVerificationPackage';",
+        "src/components/verification/DroneProofGatePanel.tsx:32 import { EngineeringReviewRecord } from '../../engine/verification/UniversalEngineeringReview';",
+        "src/components/verification/DroneProofReportPanel.tsx:14 import { UniversalVerificationPackage } from '../../engine/verification/UniversalVerificationPackage';",
+        "src/components/verification/DroneProofReportPanel.tsx:15 import { EngineeringReviewRecord } from '../../engine/verification/UniversalEngineeringReview';",
+        "src/components/verification/VerificationPortal.tsx:10 import { IndependentVerificationEngine } from '../../engine/verification/portal/IndependentVerificationEngine';",
+        "src/engine/release/IndustrialReadinessEngine.ts:13 import { QualityGate } from '../verification/QualityGate';"
+      ]
+    },
+    {
+      "directory": "src/engine/viewport",
+      "files_count": 73,
+      "reachable_from": [
+        "App.tsx",
+        "components/"
+      ],
+      "unreachable": false,
+      "evidence": [
+        "src/App.tsx:21 import { createCanonicalRenderData } from './engine/viewport/CanonicalRenderContract';",
+        "src/App.tsx:219 import { CanonicalIntentDispatcher277 } from './engine/viewport/CanonicalIntentDispatcher277';",
+        "src/App.tsx:22 import { CanonicalPickResult } from './engine/viewport/CanonicalPickingContract';",
+        "src/App.tsx:220 import { ExtrudeTool277 } from './engine/viewport/ExtrudeTool277';",
+        "src/App.tsx:221 import { RevolveTool277 } from './engine/viewport/RevolveTool277';",
+        "src/App.tsx:222 import { SweepTool277 } from './engine/viewport/SweepTool277';",
+        "src/App.tsx:223 import { LoftTool277 } from './engine/viewport/LoftTool277';",
+        "src/App.tsx:224 import { AssemblyMateTool277 } from './engine/viewport/AssemblyMateTool277';",
+        "src/App.tsx:23 import { classifyDerivedState, revalidateSelection, RevisionLifecycleState } from './engine/viewport/RevisionLifecycle';",
+        "src/components/CadViewport3D.tsx:15 import { CanonicalRenderData, createCanonicalRenderDataFromMesh } from '../engine/viewport/CanonicalRenderContract';",
+        "src/components/CadViewport3D.tsx:34 import { shouldDisplayHighlight } from '../engine/viewport/RevisionLifecycle';",
+        "src/components/CaeCfdPanel.tsx:26 import { CfdTool277 } from '../engine/viewport/CfdTool277';",
+        "src/components/Professional3DViewportPanel.tsx:11 import { Professional3DViewportEngine } from '../engine/viewport/Professional3DViewportEngine276';",
+        "src/components/Professional3DViewportPanel.tsx:12 import { HardAcceptanceGate276, GateReport276 } from '../engine/viewport/HardAcceptanceGate276';",
+        "src/components/Professional3DViewportPanel.tsx:13 import { HardAcceptanceGate277, SelectionGateReport } from '../engine/viewport/HardAcceptanceGate277';",
+        "src/components/Professional3DViewportPanel.tsx:14 import { HardAcceptanceGate278, GizmoGateReport } from '../engine/viewport/HardAcceptanceGate278';",
+        "src/components/Professional3DViewportPanel.tsx:15 import { HardAcceptanceGate279, SectionGateReport279 } from '../engine/viewport/HardAcceptanceGate279';",
+        "src/components/Professional3DViewportPanel.tsx:16 import { HardAcceptanceGate280, MeasurementGateReport280 } from '../engine/viewport/HardAcceptanceGate280';",
+        "src/components/Professional3DViewportPanel.tsx:17 import { HardAcceptanceGate281, PMIGateReport281 } from '../engine/viewport/HardAcceptanceGate281';",
+        "src/components/Professional3DViewportPanel.tsx:18 import { HardAcceptanceGate282, DrawingGateReport282 } from '../engine/viewport/HardAcceptanceGate282';",
+        "src/components/Professional3DViewportPanel.tsx:32 import { EngineeringContourMapper } from '../engine/viewport/EngineeringContourMapper276';",
+        "src/components/Professional3DViewportPanel.tsx:33 import { EngineeringSelectionSystem } from '../engine/viewport/EngineeringSelectionSystem277';",
+        "src/components/Professional3DViewportPanel.tsx:34 import { EngineeringHitTester } from '../engine/viewport/EngineeringHitTester277';",
+        "src/components/Professional3DViewportPanel.tsx:35 import { SelectionMode, SelectionFilter } from '../engine/viewport/SelectionTypes277';",
+        "src/components/Professional3DViewportPanel.tsx:36 import { EngineeringGizmoSystem } from '../engine/viewport/EngineeringGizmoSystem278';",
+        "src/components/Professional3DViewportPanel.tsx:37 import { TransformMode, CoordinateSystem, GizmoState278 } from '../engine/viewport/GizmoTypes278';",
+        "src/components/Professional3DViewportPanel.tsx:38 import { EngineeringSectionSystem } from '../engine/viewport/EngineeringSectionSystem279';",
+        "src/components/Professional3DViewportPanel.tsx:39 import { SectionState279 } from '../engine/viewport/SectionTypes279';",
+        "src/components/Professional3DViewportPanel.tsx:40 import { EngineeringMeasureSystem } from '../engine/viewport/EngineeringMeasureSystem280';",
+        "src/components/Professional3DViewportPanel.tsx:41 import { MeasurementState280, MeasurementType280 } from '../engine/viewport/MeasurementTypes280';",
+        "src/components/Professional3DViewportPanel.tsx:42 import { EngineeringPMISystem } from '../engine/viewport/EngineeringPMISystem281';",
+        "src/components/Professional3DViewportPanel.tsx:43 import { PMIState281, PMIAnnotationType } from '../engine/viewport/PMITypes281';",
+        "src/components/Professional3DViewportPanel.tsx:44 import { EngineeringDrawingSystem } from '../engine/viewport/EngineeringDrawingSystem282';",
+        "src/components/Professional3DViewportPanel.tsx:45 import { DrawingState282, DrawingView282 } from '../engine/viewport/DrawingTypes282';",
+        "src/components/Professional3DViewportPanel.tsx:57 import { CanonicalRenderData } from '../engine/viewport/CanonicalRenderContract';",
+        "src/components/SketchEditorPanel.tsx:94 import { RevolveTool277 } from '../engine/viewport/RevolveTool277';",
+        "src/components/SketchEditorPanel.tsx:95 import { SweepTool277 } from '../engine/viewport/SweepTool277';",
+        "src/components/SketchEditorPanel.tsx:96 import { LoftTool277 } from '../engine/viewport/LoftTool277';",
+        "src/components/SketchEditorPanel.tsx:97 import { CanonicalIntentDispatcher277 } from '../engine/viewport/CanonicalIntentDispatcher277';",
+        "src/components/SketcherPanel.tsx:58 import { CanonicalIntentDispatcher277 } from '../engine/viewport/CanonicalIntentDispatcher277';",
+        "src/components/SketcherPanel.tsx:59 import { AnyEngineeringIntent } from '../engine/viewport/EngineeringIntent277';",
+        "src/components/SketcherPanel.tsx:60 import { SelectionReference } from '../engine/viewport/SelectionTypes277';"
+      ]
+    },
+    {
+      "directory": "src/engine/workbench",
+      "files_count": 5,
+      "reachable_from": [
+        "App.tsx",
+        "components/"
+      ],
+      "unreachable": false,
+      "evidence": []
+    },
+    {
+      "directory": "src/engine/workflow",
+      "files_count": 6,
+      "reachable_from": [],
+      "unreachable": true,
+      "evidence": []
+    },
+    {
+      "directory": "src/engine/workflows",
+      "files_count": 3,
+      "reachable_from": [
+        "App.tsx",
+        "components/"
+      ],
+      "unreachable": false,
+      "evidence": [
+        "src/components/benchmark/CompetitiveWorkflowDashboard.tsx:8 import { CompetitiveWorkflowRegistry } from '../../engine/workflows/WorkflowRegistry';",
+        "src/components/benchmark/CompetitiveWorkflowDashboard.tsx:9 import { WorkflowEngine } from '../../engine/workflows/WorkflowEngine';"
+      ]
+    }
+  ],
+  "final_summary": {
+    "total_directories": 132,
+    "reachable_from_ui": 76,
+    "reachable_from_backend": 6,
+    "reachable_from_both": 5,
+    "unreachable_from_any_entry": 50,
+    "unreachable_directories": [
+      "src/engine/ai",
+      "src/engine/assembly-intelligence",
+      "src/engine/asset-reliability",
+      "src/engine/bom",
+      "src/engine/clock",
+      "src/engine/closed_loop",
+      "src/engine/configuration",
+      "src/engine/crossdomain",
+      "src/engine/digital_thread",
+      "src/engine/distributed-compute",
+      "src/engine/drone",
+      "src/engine/eco",
+      "src/engine/enterprise-trust",
+      "src/engine/geometry_twin",
+      "src/engine/governance",
+      "src/engine/impact",
+      "src/engine/industrial-data-governance",
+      "src/engine/inspection_twin",
+      "src/engine/lifecycle",
+      "src/engine/maintenance-governance",
+      "src/engine/manufacturing-execution",
+      "src/engine/manufacturing-job",
+      "src/engine/manufacturing-release",
+      "src/engine/manufacturing_twin",
+      "src/engine/navigation",
+      "src/engine/nc",
+      "src/engine/ncr",
+      "src/engine/nurbs-geometry",
+      "src/engine/parametric",
+      "src/engine/performance",
+      "src/engine/persistence-proof",
+      "src/engine/physics_twin",
+      "src/engine/plm_evidence",
+      "src/engine/predictive",
+      "src/engine/predictive_engineering",
+      "src/engine/production-continuity",
+      "src/engine/qif",
+      "src/engine/random",
+      "src/engine/regeneration-proof",
+      "src/engine/rendering",
+      "src/engine/round-trip",
+      "src/engine/runtime_telemetry",
+      "src/engine/spc",
+      "src/engine/state_sync",
+      "src/engine/structural-physics",
+      "src/engine/surface",
+      "src/engine/tool-qualification",
+      "src/engine/twin_evidence",
+      "src/engine/variants",
+      "src/engine/workflow"
+    ]
+  }
+}

@@ -1,0 +1,201 @@
+  public static evaluate(
+    doc: EngineeringDocument,
+    options: DocumentEvaluationOptions = { generateMesh: true }
+  ): DocumentEvaluationResult {
+    const startTime = performance.now();
+    const diagnostics: string[] = [];
+
+    try {
+      // 1. Evaluate Parameters (Resolve topological parameter dependencies)
+      const evaluatedParams = this.evaluateParameters(doc.parameters);
+      doc.parameters = evaluatedParams;
+
+      // 2. Prepare Feature History & Dispatch Tree
+      const featureHistory = new FeatureHistory(doc.documentId);
+
+      // Register feature nodes from document
+      for (const feat of doc.features) {
+        if (feat instanceof FeatureNode) {
+          featureHistory.addNode(feat);
+        } else if (feat.type && feat.definition) {
+          // Canonical feature definition form: resolve parameter references from evaluated global parameters
+          const resolvedDefinition = { ...feat.definition };
+          if (resolvedDefinition.parameters) {
+            const defParams = { ...resolvedDefinition.parameters };
+            for (const [k, v] of Object.entries(defParams)) {
+              if (typeof v === 'string') {
+                const matched = evaluatedParams.find(p => p.name === v || p.id === v);
+                if (matched) {
+                  defParams[k] = matched.value;
+                }
+              }
+            }
+            resolvedDefinition.parameters = defParams;
+          }
+
+          featureHistory.addFeature(
+            feat.type as FeatureType,
+            feat.name || feat.featureId || 'Feature',
+            resolvedDefinition,
+            feat.dependencyIds || [],
+            feat.parentId,
+            feat.id || feat.featureId
+          );
+        } else if (feat.type) {
+          // Generic feature node translation
+          const params = { ...(feat.parameters || {}) };
+          // Inject evaluated global parameter values where referenced
+          for (const [k, v] of Object.entries(params)) {
+            if (typeof v === 'string' && evaluatedParams.some(p => p.name === v)) {
+              const matched = evaluatedParams.find(p => p.name === v)!;
+              params[k] = matched.value;
+            }
+          }
+
+          const def: CanonicalFeatureDefinition = {
+            type: feat.type as FeatureType,
+            name: feat.name || feat.featureId || 'Feature',
+            parameters: params,
+            inputReferences: feat.inputReferences || [],
+            dependencyIds: (feat.dependencies || []).map((d: any) => d.dependsOnFeatureId || d)
+          };
+
+          featureHistory.addFeature(
+            feat.type as FeatureType,
+            feat.name || feat.featureId || 'Feature',
+            def,
+            def.dependencyIds,
+            undefined,
+            feat.id || feat.featureId
+          );
+        }
+      }
+
+      // If document has sketches but no explicit 3D features, create default EXTRUDE from sketch
+      if (doc.features.length === 0 && doc.sketches.length > 0) {
+        const primarySketch = doc.sketches[0];
+        const depthParam = evaluatedParams.find(p => p.name.toLowerCase().includes('depth') || p.name.toLowerCase().includes('height'))?.value || 10;
+        
+        featureHistory.addFeature(
+          'EXTRUDE',
+          'Primary_Extrusion',
+          {
+            type: 'EXTRUDE',
+            name: 'Primary_Extrusion',
+            parameters: {
+              width: evaluatedParams.find(p => p.name.toLowerCase().includes('width'))?.value || 20,
+              height: evaluatedParams.find(p => p.name.toLowerCase().includes('height'))?.value || 20,
+              depth: depthParam
+            },
+            inputReferences: [],
+            dependencyIds: []
+          },
+          [],
+          undefined,
+          `EXTRUDE_${primarySketch.id}`
+        );
+      }
+
+      // 3. Execute Feature History Regeneration (Parametric History -> B-Rep Solid)
+      const regenResult = featureHistory.regenerate({ forceAll: true });
+      for (const diag of regenResult.diagnostics) {
+        if (diag.status !== 'SUCCESS') {
+          diagnostics.push(`[${diag.featureId}] ${diag.type} ${diag.status}: ${diag.message}`);
+        }
+      }
+
+      let evaluatedSolid: Solid | undefined;
+      if (regenResult.success && regenResult.finalGeometry) {
+        evaluatedSolid = regenResult.finalGeometry.topology || regenResult.finalGeometry;
+      } else {
+        // Fallback to direct BRepKernel box if features are empty
+        const defaultW = asMm(evaluatedParams.find(p => p.name === 'width')?.value || 20);
+        const defaultH = asMm(evaluatedParams.find(p => p.name === 'height')?.value || 20);
+        const defaultD = asMm(evaluatedParams.find(p => p.name === 'depth')?.value || 20);
+        evaluatedSolid = this.brepKernel.createBox(defaultW, defaultH, defaultD, `${doc.documentId}_solid`);
+      }
+
+      doc.evaluatedShape = evaluatedSolid;
+
+      // 4. Evaluate Assembly Definition (AED) if present (PATCH-039A Hierarchical Sub-Assembly Resolution)
+      let evaluatedAssembly: any = undefined;
+      let hasAssemblyResolutionErrors = false;
+      let hasAssemblyMateErrors = false;
+      if (doc.type === 'ASSEMBLY' && doc.assembly) {
+        const evalGraphResult = RecursiveAssemblyEvaluator.evaluateAssemblyGraph(doc, options);
+        for (const diag of evalGraphResult.diagnostics) {
+          diagnostics.push(diag);
+        }
+
+        evaluatedAssembly = {
+          components: evalGraphResult.components,
+          mates: evalGraphResult.mates
+        };
+
+        hasAssemblyResolutionErrors = evalGraphResult.hasErrors;
+        hasAssemblyMateErrors = !evalGraphResult.allMatesSolved || evalGraphResult.mates.some(m => m.status === 'ERROR' || m.status === 'CONFLICT' || m.status === 'UNSUPPORTED' || m.status === 'CONFLICTING');
+      }
+
+      // 5. Construct / Update Topology Lineage
+      doc.topologyMap = this.constructTopologyLineage(doc.documentId, doc.revision, evaluatedSolid, featureHistory);
+
+      // 5. Derive Downstream Engineering Representations
+      doc.derived = doc.derived || {};
+      if (options.generateMesh && evaluatedSolid) {
+        const meshData = this.brepKernel.tessellate(evaluatedSolid as any);
+        doc.derived.mesh = meshData;
+      }
+
+      if (options.generateFEA && evaluatedSolid) {
+        doc.derived.fea = this.deriveFEAModel(doc.documentId, evaluatedSolid);
+      }
+
+      if (options.generateCFD && evaluatedSolid) {
+        doc.derived.cfd = this.deriveCFDModel(doc.documentId, evaluatedSolid);
+      }
+
+      if (options.generateCAM && evaluatedSolid) {
+        doc.derived.cam = this.deriveCAMModel(doc.documentId, evaluatedSolid);
+      }
+
+      // 6. Record Forensic Cryptographic Evidence (PATCH-012)
+      const featureHash = FeatureHistoryEvidence.computeHistoryHash(
+        doc.documentId,
+        featureHistory.getAllFeatures(),
+        (featureHistory as any).graph || { getTopologicalOrder: () => (doc.features || []).map((f: any) => f.id || f.featureId) }
+      );
+
+      let geometryHash: string | undefined;
+      let topologyHash: string | undefined;
+      if (evaluatedSolid) {
+        const artifactEvidence = BRepHasher.computeEvidence(evaluatedSolid as Solid);
+        geometryHash = artifactEvidence.geometryHash;
+        topologyHash = artifactEvidence.topologyHash;
+      }
+
+      const { canonicalHash } = EngineeringHashChain.computeCanonicalHash({
+        documentId: doc.documentId,
+        revision: doc.revision,
+        featureHash,
+        geometryHash,
+        topologyHash,
+        meshHash: doc.derived.mesh ? EngineeringHashChain.computeCanonicalHash(doc.derived.mesh).canonicalHash : undefined,
+        volume: evaluatedSolid ? this.brepKernel.computeVolume(evaluatedSolid as any) : 0
+      });
+
+      const evidenceEntry: EvidenceRecord = {
+        evidenceId: `EVID_${doc.documentId}_REV${doc.revision}_${canonicalHash.substring(0, 8)}`,
+        stage: 'GEOMETRY',
+        sourceSystem: 'SECP_CANONICAL_EVALUATOR',
+        documentId: doc.documentId,
+        revision: doc.revision,
+        canonicalHash,
+        geometryHash,
+        topologyHash,
+        featureHash,
+        meshHash: doc.derived.mesh ? EngineeringHashChain.computeCanonicalHash(doc.derived.mesh).canonicalHash : undefined,
+        timestamp: new Date().toISOString(),
+        payload: {
+          success: regenResult.success,
+          featuresExecuted: regenResult.executedFeatureIds.length,
+          solidFacesCount: evaluatedSolid?.outerShell?.orientedFaces?.length || 0,

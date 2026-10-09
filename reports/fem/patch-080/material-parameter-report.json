@@ -1,0 +1,21 @@
+{
+  "testedParameters": {
+    "E": 200000000000,
+    "nu": 0.3,
+    "yieldStress": 250000000,
+    "hardeningModulus": 20000000000,
+    "planeState": "3D"
+  },
+  "derivedModuli": {
+    "G": 76923076923.07692,
+    "K": 166666666666.66666,
+    "lambda": 115384615384.61539
+  },
+  "validationResult": {
+    "isValid": true,
+    "errors": [],
+    "bulkModulus": 166666666666.66666,
+    "shearModulus": 76923076923.07692,
+    "lameFirstParam": 115384615384.61539
+  }
+}

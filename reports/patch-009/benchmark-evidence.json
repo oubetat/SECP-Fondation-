@@ -1,0 +1,26 @@
+{
+  "patch": "PATCH-009",
+  "timestamp": "2026-08-18T08:10:30.000Z",
+  "suite": "src/engine/serialization/__tests__/CanonicalSerialization.benchmark.test.ts",
+  "benchmarks": [
+    {
+      "name": "Small Engineering Object",
+      "iterations": 500,
+      "description": "Object with 5 scalar fields, 3 nested parameters, and flags",
+      "status": "PASS"
+    },
+    {
+      "name": "Medium Engineering Object",
+      "iterations": 50,
+      "description": "Turbomachinery mesh with 100 3D node vectors and solver parameters",
+      "status": "PASS"
+    },
+    {
+      "name": "Large Synthetic Object",
+      "iterations": 1,
+      "description": "CAD assembly with 1,000 components containing 4x4 transformation matrices",
+      "status": "PASS"
+    }
+  ],
+  "summary": "Canonical serialization completes stably across small, medium, and large engineering structures."
+}

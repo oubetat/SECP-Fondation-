@@ -1,0 +1,4 @@
+{
+  "splinesSupported": false,
+  "fallbackStrategy": "CONTROLLED_LINEARIZATION"
+}

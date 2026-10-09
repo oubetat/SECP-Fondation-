@@ -1,0 +1,12 @@
+{
+  "reportId": "COLLISION-ENGINE-P5-MACHINE-COLLISION-001",
+  "timestampIso": "2026-10-02T08:01:27.700Z",
+  "machineComponents": [
+    "Spindle Head",
+    "C-Axis Rotary Table",
+    "A-Axis Trunnion",
+    "Enclosure Column"
+  ],
+  "kinematicChainsValidated": 4,
+  "verdict": "PASSED"
+}

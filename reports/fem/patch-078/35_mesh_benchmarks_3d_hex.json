@@ -1,0 +1,32 @@
+[
+  {
+    "meshType": "3D Hex 3x3x3 (27 elems, 192 DOFs)",
+    "numNodes": 64,
+    "totalDOFs": 192,
+    "numElements": 27,
+    "sparseNNZ": 9000,
+    "sparseDensity": 0.244140625,
+    "sparseAssemblyTimeMs": 24.893515999999977,
+    "denseAssemblyTimeMs": 0.3907759999999598,
+    "sparseMemoryBytes": 108772,
+    "denseMemoryBytes": 294912,
+    "memorySavingsPercent": 63.11713324652778,
+    "sparseSpMVTimeMs": 0.014480849999999918,
+    "denseSpMVTimeMs": 0.053475659999999155
+  },
+  {
+    "meshType": "3D Hex 6x6x6 (216 elems, 1029 DOFs)",
+    "numNodes": 343,
+    "totalDOFs": 1029,
+    "numElements": 216,
+    "sparseNNZ": 61731,
+    "sparseDensity": 0.05830053804112232,
+    "sparseAssemblyTimeMs": 277.17276600000014,
+    "denseAssemblyTimeMs": null,
+    "sparseMemoryBytes": 744892,
+    "denseMemoryBytes": 8470728,
+    "memorySavingsPercent": 91.20628120747118,
+    "sparseSpMVTimeMs": 0.10377902999999833,
+    "denseSpMVTimeMs": null
+  }
+]

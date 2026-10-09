@@ -1,0 +1,13 @@
+{
+  "axisA": {
+    "min": -120,
+    "max": 120,
+    "status": "IN_RANGE"
+  },
+  "axisC": {
+    "min": -360,
+    "max": 360,
+    "status": "IN_RANGE"
+  },
+  "continuity": "VERIFIED"
+}

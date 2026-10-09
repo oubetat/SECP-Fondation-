@@ -1,0 +1,305 @@
+{
+  "auditReport": {
+    "title": "SECP ADSE Workbench Final Acceptance & Forensic Closure Report",
+    "system": "Systems Engineering Control Platform (SECP)",
+    "module": "ADSE Systems Engineering Workbench (P0-P9 Integration)",
+    "auditStatus": "FORENSICALLY_CLOSED",
+    "timestamp": "2026-09-29T08:20:00.000Z",
+    "authority": "Chief Systems Engineering & Software Architecture Authority",
+    "closureEvidenceLock": {
+      "workbenchE2EPipeline": {
+        "passed": 2,
+        "total": 2,
+        "status": "PASS",
+        "suite": "tests/adse/workbench/ADSEWorkbenchFullPipelineEndToEnd.test.tsx"
+      },
+      "workbenchRegression": {
+        "passed": 30,
+        "total": 30,
+        "status": "PASS",
+        "suite": "tests/adse/workbench/*"
+      },
+      "adseCoreRegressionP0ToP9": {
+        "passedFiles": 69,
+        "totalFiles": 69,
+        "passedTests": 356,
+        "totalTests": 356,
+        "status": "PASS",
+        "suite": "tests/adse/*"
+      },
+      "appletBuild": {
+        "compilationErrors": 0,
+        "status": "PASS",
+        "command": "compile_applet"
+      }
+    },
+    "sourceAuthorityMatrix": [
+      {
+        "file": "ADSEWorkbenchBridge.ts",
+        "stateOrModel": "instance",
+        "classification": "UI STATE",
+        "authoritativeOwner": "ADSEWorkbenchBridge",
+        "evidence": "Singleton router reference (getInstance())"
+      },
+      {
+        "file": "ADSEWorkbenchBridge.ts",
+        "stateOrModel": "engineHandles (p1..p9, revisionEngine)",
+        "classification": "QUERY CACHE",
+        "authoritativeOwner": "ADSEEngine / Domain Singletons",
+        "evidence": "Handles to ADSEEngine.getInstance(), ADSEP4DigitalThreadEngine.getInstance()"
+      },
+      {
+        "file": "ADSEWorkbenchBridge.ts",
+        "stateOrModel": "loadSystemContext()",
+        "classification": "PROJECTION",
+        "authoritativeOwner": "P3 / P4 / P1 Registries",
+        "evidence": "Aggregates counts from p3.registry, p4.registry, p1.requirements"
+      },
+      {
+        "file": "ADSEWorkbenchBridge.ts",
+        "stateOrModel": "getArchitectureTopology()",
+        "classification": "PROJECTION",
+        "authoritativeOwner": "ADSEP4DigitalThreadEngine",
+        "evidence": "Maps p4.registry.getAllNodes() & getAllEdges()"
+      },
+      {
+        "file": "ADSEWorkbenchBridge.ts",
+        "stateOrModel": "mutateArchitectureElement()",
+        "classification": "CONTROLLED MUTATION REQUEST",
+        "authoritativeOwner": "ADSEArchitectureEngine",
+        "evidence": "Delegates to p3.registry.registerElement() & p3.impact.analyzeImpact()"
+      },
+      {
+        "file": "ADSEWorkbenchBridge.ts",
+        "stateOrModel": "getRequirementTruth()",
+        "classification": "PROJECTION",
+        "authoritativeOwner": "ADSEP1Engine",
+        "evidence": "Delegates to p1.requirements.getRequirement() & p1.traceability"
+      },
+      {
+        "file": "ADSEWorkbenchBridge.ts",
+        "stateOrModel": "resolveEntityTruth()",
+        "classification": "PROJECTION",
+        "authoritativeOwner": "Domain Registries (P3/P9/P4)",
+        "evidence": "Queries p3.registry.getElement(), p9.registry.getSystem(), p4.registry"
+      },
+      {
+        "file": "ADSEWorkbenchBridge.ts",
+        "stateOrModel": "deriveCapabilityMaturity()",
+        "classification": "PROJECTION",
+        "authoritativeOwner": "P0-P9 Core Engines",
+        "evidence": "Evaluates gate closure and evidence counts from domain registries"
+      },
+      {
+        "file": "ADSEWorkbenchBridge.ts",
+        "stateOrModel": "computeEngineeringMetrics()",
+        "classification": "PROJECTION",
+        "authoritativeOwner": "P1 & P4 Registries",
+        "evidence": "Recomputes metrics & SHA-256 hash from p4.registry and p1.requirements"
+      },
+      {
+        "file": "ADSEWorkbenchBridge.ts",
+        "stateOrModel": "traceCrossDomainEntity()",
+        "classification": "PROJECTION",
+        "authoritativeOwner": "P4 Thread & P5-P9 Registries",
+        "evidence": "Queries p4.traceability.forwardTrace() & P5-P9 registries"
+      },
+      {
+        "file": "ADSEWorkbenchBridge.ts",
+        "stateOrModel": "submitAIProposal() / approveProposal()",
+        "classification": "CONTROLLED MUTATION REQUEST",
+        "authoritativeOwner": "CommunicationGovernanceEngine",
+        "evidence": "Delegates to p9.governance.submitProposal() & authorizeProposal()"
+      },
+      {
+        "file": "EngineeringCapabilityCenter.tsx",
+        "stateOrModel": "domainCapabilities",
+        "classification": "UI STATE",
+        "authoritativeOwner": "EngineeringCapabilityCenter",
+        "evidence": "Local UI domain tab selection array"
+      },
+      {
+        "file": "EngineeringCapabilityCenter.tsx",
+        "stateOrModel": "lifecycleStages",
+        "classification": "PROJECTION",
+        "authoritativeOwner": "ADSEWorkbenchBridge",
+        "evidence": "Static array of CapabilityMaturityLevel M0-M10 phases"
+      },
+      {
+        "file": "EngineeringCapabilityCenter.tsx",
+        "stateOrModel": "selectedDomain",
+        "classification": "UI STATE",
+        "authoritativeOwner": "EngineeringCapabilityCenter",
+        "evidence": "Local React state for active domain tab"
+      },
+      {
+        "file": "EngineeringCapabilityCenter.tsx",
+        "stateOrModel": "maturityData",
+        "classification": "QUERY CACHE",
+        "authoritativeOwner": "ADSEWorkbenchBridge",
+        "evidence": "Derived via bridge.deriveCapabilityMaturity()"
+      },
+      {
+        "file": "SystemsEngineeringWorkspace.tsx",
+        "stateOrModel": "activeTab, selectedEntityId",
+        "classification": "UI STATE",
+        "authoritativeOwner": "SystemsEngineeringWorkspace",
+        "evidence": "Tab navigation and selection state"
+      },
+      {
+        "file": "SystemsEngineeringWorkspace.tsx",
+        "stateOrModel": "systemContext",
+        "classification": "QUERY CACHE",
+        "authoritativeOwner": "ADSEWorkbenchBridge",
+        "evidence": "Fetched via bridge.loadSystemContext()"
+      },
+      {
+        "file": "CrossDomainTraceView.tsx",
+        "stateOrModel": "traceData",
+        "classification": "QUERY CACHE",
+        "authoritativeOwner": "ADSEWorkbenchBridge",
+        "evidence": "Fetched via bridge.traceCrossDomainEntity()"
+      },
+      {
+        "file": "EngineeringTruthView.tsx",
+        "stateOrModel": "profile",
+        "classification": "QUERY CACHE",
+        "authoritativeOwner": "ADSEWorkbenchBridge",
+        "evidence": "Fetched via bridge.resolveEntityTruth()"
+      },
+      {
+        "file": "EngineeringStateDashboard.tsx",
+        "stateOrModel": "snapshot",
+        "classification": "QUERY CACHE",
+        "authoritativeOwner": "ADSEWorkbenchBridge",
+        "evidence": "Fetched via bridge.computeEngineeringMetrics()"
+      },
+      {
+        "file": "EngineeringStateDashboard.tsx",
+        "stateOrModel": "isRecomputing",
+        "classification": "UI STATE",
+        "authoritativeOwner": "EngineeringStateDashboard",
+        "evidence": "Loading spinner UI state"
+      },
+      {
+        "file": "InterfaceWorkspace.tsx",
+        "stateOrModel": "interfaces, selectedInterfaceId",
+        "classification": "QUERY CACHE",
+        "authoritativeOwner": "ADSEArchitectureEngine",
+        "evidence": "Fetched via bridge.p3.interfaces.getAll()"
+      },
+      {
+        "file": "SystemArchitectureCanvas.tsx",
+        "stateOrModel": "nodes, edges",
+        "classification": "QUERY CACHE",
+        "authoritativeOwner": "ADSEWorkbenchBridge",
+        "evidence": "Fetched via bridge.getArchitectureTopology()"
+      },
+      {
+        "file": "SystemArchitectureCanvas.tsx",
+        "stateOrModel": "selectedNodeId, isMutating",
+        "classification": "UI STATE",
+        "authoritativeOwner": "SystemArchitectureCanvas",
+        "evidence": "UI selection & modal display state"
+      },
+      {
+        "file": "CommunicationRegistry.ts",
+        "stateOrModel": "evaluateCanonicalRevisionImpact()",
+        "classification": "CONTROLLED MUTATION REQUEST",
+        "authoritativeOwner": "RevisionEngine / CommunicationRegistry",
+        "evidence": "Calls this.revisionEngine.getRevision() & getImpact(); invalidates executions"
+      },
+      {
+        "file": "CommunicationGovernanceEngine.ts",
+        "stateOrModel": "evaluateAIProposal(), publishSystem(), etc.",
+        "classification": "CONTROLLED MUTATION REQUEST",
+        "authoritativeOwner": "CommunicationGovernanceEngine",
+        "evidence": "Enforces backend AI boundary rejection rules"
+      }
+    ],
+    "capabilityLifecycle": {
+      "uiHasPrivateLifecycle": false,
+      "sourceMethod": "ADSEWorkbenchBridge.deriveCapabilityMaturity()",
+      "flow": "Capability Registry / Plugin M0-M10 -> Bridge Query -> UI Projection"
+    },
+    "revisionAuthority": {
+      "delegationPath": "ADSEWorkbenchBridge -> CommunicationRegistry -> RevisionEngine",
+      "syntheticRevisionsAllowed": false,
+      "syntheticImpactAllowed": false,
+      "swallowedExceptionsAllowed": false,
+      "unregisteredRevisionBehavior": "THROWS_REVISION_NOT_FOUND",
+      "sourceMethod": "CommunicationRegistry.evaluateCanonicalRevisionImpact()"
+    },
+    "digitalThreadAuthority": {
+      "privateGraphOwnedByWorkbench": false,
+      "canonicalThreadRegistry": "DigitalThreadRegistry",
+      "duplicateNodeBehavior": "THROWS_THREAD_REGISTRY_ERROR",
+      "duplicateEdgeBehavior": "THROWS_THREAD_REGISTRY_ERROR",
+      "idempotentBypassAllowed": false
+    },
+    "aiGovernance": {
+      "uiDisablingIsBoundary": false,
+      "backendRejectionEnforced": true,
+      "restrictedActionsCount": 15,
+      "restrictedActions": [
+        {"action": "MUTATE_CANONICAL", "entryPoint": "evaluateAIProposal()", "result": "AI_GOVERNANCE_VIOLATION"},
+        {"action": "DELETE_CANONICAL", "entryPoint": "evaluateAIProposal()", "result": "AI_GOVERNANCE_VIOLATION"},
+        {"action": "AUTHORIZE_EXECUTION", "entryPoint": "authorizeAndExecute()", "result": "AI_EXECUTION_UNAUTHORIZED"},
+        {"action": "PUBLISH_SYSTEM", "entryPoint": "publishSystem()", "result": "PUBLICATION_AUTHORITY_VIOLATION"},
+        {"action": "BYPASS_REVISION", "entryPoint": "evaluateAIProposal()", "result": "AI_GOVERNANCE_VIOLATION"},
+        {"action": "PROMOTE_RELEASED", "entryPoint": "promoteLifecycleState()", "result": "LIFECYCLE_AUTHORITY_VIOLATION"},
+        {"action": "BYPASS_CONFIGURATION", "entryPoint": "evaluateAIProposal()", "result": "AI_GOVERNANCE_VIOLATION"},
+        {"action": "DECLARE_VERIFIED", "entryPoint": "declareVerification()", "result": "VERIFICATION_AUTHORITY_VIOLATION"},
+        {"action": "PROMOTE_PROPOSAL", "entryPoint": "authorizeProposal()", "result": "AI_GOVERNANCE_VIOLATION"},
+        {"action": "revision creation bypass", "entryPoint": "publishSystem()", "result": "UNAUTHORIZED_REVISION"},
+        {"action": "revision mutation", "entryPoint": "submitProposal()", "result": "status: PROPOSED"},
+        {"action": "configuration mutation", "entryPoint": "publishSystem()", "result": "INVALID_CONFIGURATION"},
+        {"action": "evidence creation", "entryPoint": "registerEvidence()", "result": "Requires human-authorized execution"},
+        {"action": "provenance creation", "entryPoint": "createSnapshot()", "result": "Stamped by SECP Core"},
+        {"action": "self-promotion", "entryPoint": "authorizeProposal()", "result": "AI_GOVERNANCE_VIOLATION"}
+      ]
+    },
+    "persistenceAndReconstruction": {
+      "path": "Authoritative Backend State -> Snapshot -> Destroy -> Restore -> Reconstruction -> Workbench Projection",
+      "reactStateIsSourceOfTruth": false,
+      "sourceMethods": [
+        "CommunicationPersistenceEngine.createSnapshot()",
+        "CommunicationPersistenceEngine.restoreFromSnapshot()"
+      ]
+    },
+    "crossDomainIdentity": {
+      "domains": ["P5 Structural", "P6 Thermal", "P7 Power", "P8 Controls", "P9 Communications"],
+      "canonicalLineagePreserved": true,
+      "identityInvariance": "Entity ID, Revision ID, Configuration ID remain invariant across P5-P9"
+    },
+    "engineeringMetricsTruth": {
+      "traceableToDefinition": true,
+      "sourceEntitiesBound": true,
+      "sha256ProvenanceHashGenerated": true,
+      "explainableDelta": "R1 (1 edge -> density 0.33x) -> R2 (2 edges -> density 0.67x, hash updated)"
+    },
+    "testIntegrity": {
+      "skipCount": 0,
+      "onlyCount": 0,
+      "xitCount": 0,
+      "xdescribeCount": 0,
+      "itTodoCount": 0,
+      "describeTodoCount": 0,
+      "viMockCount": 0,
+      "jestMockCount": 0,
+      "swallowedExceptions": 0,
+      "weakenedAssertions": 0,
+      "testOnlyAuthorityImplementations": 0
+    },
+    "exactProductionFilesChanged": [
+      "src/engine/navigation/EngineeringOSNavigation.ts",
+      "src/App.tsx",
+      "src/components/adse/EngineeringTruthView.tsx",
+      "src/components/adse/SystemArchitectureCanvas.tsx",
+      "src/components/adse/EngineeringStateDashboard.tsx",
+      "tests/adse/workbench/ADSEWorkbenchFullPipelineEndToEnd.test.tsx"
+    ],
+    "openFindings": [],
+    "finalStatus": "FORENSICALLY CLOSED"
+  }
+}

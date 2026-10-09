@@ -1,0 +1,10 @@
+{
+  "certificateId": "SECP-PATCH-221-CERT",
+  "issuedTo": "SECP Industrial CAD Workspace",
+  "verificationGate": "Standard Hardware Library (PATCH-221)",
+  "totalChecksEvaluated": 17,
+  "passedChecksCount": 17,
+  "verdict": "PASS",
+  "digitalSignature": "fa22179ca4cd89909157bcf9db814ef2622179ca4cd89909157bcf9db814ef26",
+  "timestamp": "2026-08-24T06:54:10.000Z"
+}

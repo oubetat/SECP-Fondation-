@@ -1,0 +1,8 @@
+{
+  "rbacEnabled": true,
+  "roles": [
+    "OPERATOR_VIEW",
+    "ENGINEER_CALIBRATE",
+    "ADMIN_CONFIGURE"
+  ]
+}

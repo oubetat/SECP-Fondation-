@@ -1,0 +1,30 @@
+{
+  "elementTypeId": "TET4",
+  "family": "TETRAHEDRON",
+  "dimension": 3,
+  "nodeCount": 4,
+  "polynomialOrder": 1,
+  "dofsPerNode": 3,
+  "dofTypes": [
+    "UX",
+    "UY",
+    "UZ"
+  ],
+  "formulationVersion": "TET4-ISO-v1",
+  "defaultIntegrationRuleId": "TET_3D_1PT",
+  "materialModelCompatibility": [
+    "LINEAR_ELASTIC_ISOTROPIC_3D"
+  ],
+  "geometricRequirements": {
+    "minNodes": 4,
+    "maxNodes": 4,
+    "manifoldDimension": 3
+  },
+  "physicsCapabilities": {
+    "linearStatic": true,
+    "thermal": false,
+    "dynamic": true,
+    "nonlinear": false
+  },
+  "implementationStatus": "VERIFIED"
+}

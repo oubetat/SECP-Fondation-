@@ -1,0 +1,10 @@
+{
+  "reportId": "COLLISION-ENGINE-P4-TUNNELING-001",
+  "evaluatedScenarios": [
+    { "name": "Translational Tunneling (M01)", "detected": true, "samplingDependent": false },
+    { "name": "High-Speed Tunneling (M02)", "detected": true, "samplingDependent": false },
+    { "name": "Thin-Obstacle Tunneling (M03)", "detected": true, "samplingDependent": false }
+  ],
+  "tunnelingPreventionVerified": true,
+  "verdict": "PASSED"
+}

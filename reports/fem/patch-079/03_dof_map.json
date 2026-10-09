@@ -1,0 +1,27 @@
+{
+  "nodeCount": 3,
+  "totalDOFs": 3,
+  "dofMap": [
+    {
+      "nodeId": "N0",
+      "globalIndex": 0,
+      "dofs": [
+        "UX"
+      ]
+    },
+    {
+      "nodeId": "N1",
+      "globalIndex": 1,
+      "dofs": [
+        "UX"
+      ]
+    },
+    {
+      "nodeId": "N2",
+      "globalIndex": 2,
+      "dofs": [
+        "UX"
+      ]
+    }
+  ]
+}

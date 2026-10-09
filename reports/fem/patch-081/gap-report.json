@@ -1,0 +1,4 @@
+{
+  "status": "VERIFIED",
+  "signConvention": "g_n > 0 (open), g_n = 0 (contact), g_n < 0 (penetration)"
+}

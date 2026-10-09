@@ -1,0 +1,69 @@
+{
+  "auditTitle": "SECP Digital → Physical → Digital Closed-Loop Trace",
+  "auditStandard": "POST-PLUGIN-MATURITY-008R (Part C)",
+  "timestamp": "2026-09-26T08:11:00.000Z",
+  "provenWorkflow": {
+    "entityId": "PART-DRONE-ARM-880",
+    "step1_designBaseline": {
+      "revisionId": "REV-ARM-A",
+      "revisionCode": "A",
+      "lifecycleState": "RELEASED",
+      "origin": "DESIGNED"
+    },
+    "step2_manufacturingIntent": {
+      "intentId": "AM-INTENT-7E4A8F91B2C3D4E5",
+      "processType": "FDM_3D_PRINTING",
+      "layerHeightMm": 0.2,
+      "infillPercentage": 35,
+      "materialGrade": "ULTEM-9085-AEROSPACE"
+    },
+    "step3_printableArtifact": {
+      "artifactId": "ART-GCODE-5C3B1A8D9F2E7401",
+      "format": "GCODE",
+      "layerCount": 75,
+      "contentDigestVerified": true
+    },
+    "step4_physicalPart": {
+      "physicalSerialId": "PP-SN-8F92A1B3C4D5E6F7",
+      "machineSerial": "STRATA-SN-9821",
+      "materialLot": "LOT-ULTEM-2026-X"
+    },
+    "step5_metrologyScan": {
+      "scanId": "SCAN-OPT-3A4B5C6D7E8F9012",
+      "instrumentType": "OPTICAL_CMM",
+      "calibrationId": "CAL-CERT-ZEISS-2026-A1",
+      "measurementUncertaintyMm": 0.005,
+      "pointCount": 5
+    },
+    "step6_deviationAnalysis": {
+      "analysisId": "DEV-OPT-3A-9F8E7D6C5B4A",
+      "rmsDeviationMm": 0.006,
+      "complianceVerdict": "WITHIN_TOLERANCE"
+    },
+    "step7_featureReconstruction": {
+      "reconstructionPackageId": "RE-PKG-1F2E3D4C5B6A7890",
+      "reconstructedFeaturesCount": 2,
+      "origin": "REVERSE_ENGINEERED"
+    },
+    "step8_newCanonicalRevision": {
+      "revisionId": "REV-PART-DRONE-ARM-880-B",
+      "revisionCode": "B",
+      "revisionNumber": 2,
+      "lifecycleState": "RELEASED",
+      "supersedes": "REV-ARM-A"
+    },
+    "step9_merkleEvidence": {
+      "evidenceLeafRecord": "PHYSICAL_REALITY_CLOSED_LOOP_AUDIT",
+      "authorityIdentity": "DIGITAL_PHYSICAL_DIGITAL_LOOP_ENGINE",
+      "merkleRootLength": 64,
+      "status": "VERIFIED"
+    },
+    "step10_provenanceGraph": {
+      "nodeCount": 8,
+      "edgeCount": 8,
+      "lineageType": "DIRECTED_ACYCLIC_GRAPH",
+      "status": "WIRED_PRESERVED"
+    }
+  },
+  "overallVerdict": "DIGITAL_PHYSICAL_DIGITAL_CLOSED_LOOP_PROVEN"
+}

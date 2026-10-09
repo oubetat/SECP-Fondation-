@@ -1,0 +1,24 @@
+{
+  "patch": "PATCH-010",
+  "timestamp": "2026-08-18T08:16:30.000Z",
+  "suite": "src/engine/evidence/__tests__/EngineeringHashChain.test.ts",
+  "totalTests": 14,
+  "passed": 14,
+  "failed": 0,
+  "tests": [
+    "TEST 1: Same artifact produces identical canonicalHash",
+    "TEST 2: Equivalent canonical objects with permuted key order produce same canonicalHash",
+    "TEST 3: Changed artifact produces different canonicalHash",
+    "TEST 4: Genesis node produces deterministic chainHash with previousHash = null",
+    "TEST 5: Appending a second node correctly references the first chainHash",
+    "TEST 6: Three-node chain verifies successfully",
+    "TEST 7: Tampering with a node's chainHash is detected",
+    "TEST 8: Tampering with previousHash is detected",
+    "TEST 9: Changing an upstream artifact invalidates its artifact verification",
+    "TEST 10: Changing an upstream artifact invalidates downstream lineage in full lineage verification",
+    "TEST 11: Repeated execution produces identical hashes across runs",
+    "TEST 12: createdAt provenance metadata does NOT alter canonicalHash or chainHash",
+    "TEST 13: Missing identity/canonical data throws MissingArtifactIdentityError without fabricating data",
+    "TEST 14: Invalid stage throws InvalidChainStageError"
+  ]
+}

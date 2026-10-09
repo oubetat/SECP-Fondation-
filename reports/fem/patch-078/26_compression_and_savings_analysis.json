@@ -1,0 +1,6 @@
+{
+  "mesh": "2D Quad 10x10 (100 elements, 242 DOFs)",
+  "sparseBytes": 47100,
+  "denseEquivalentBytes": 468512,
+  "savingsPercentage": 89.94689570384537
+}

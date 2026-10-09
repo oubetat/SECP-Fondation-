@@ -1,0 +1,6 @@
+{
+  "policyId": "POL_HASH_SHA256",
+  "algorithm": "SHA-256",
+  "canonicalizationFormat": "RFC-8785-STRICT",
+  "floatPrecisionDecimals": 6
+}

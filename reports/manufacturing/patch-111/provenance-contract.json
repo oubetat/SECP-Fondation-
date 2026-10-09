@@ -1,0 +1,12 @@
+{
+  "provenanceId": "PROV_CONTRACT_001",
+  "projectId": "PROJ_AERO_BRACKET",
+  "manufacturingJobId": "JOB_AERO_5AXIS_01",
+  "provenanceRevision": 1,
+  "rootArtifactId": "CAD_MODEL_01",
+  "rootRevision": "REV_17",
+  "provenancePolicyId": "POL_PROV_STRICT",
+  "hashPolicyId": "POL_HASH_SHA256",
+  "identityPolicyId": "POL_ID_UNIQUE",
+  "retentionPolicyId": "POL_RET_10YEARS"
+}

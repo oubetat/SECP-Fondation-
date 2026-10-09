@@ -1,0 +1,66 @@
+{
+  "missionId": "COLLISION-ENGINE-FORENSIC-EVIDENCE-ADJUDICATION-001",
+  "timestamp": "2026-10-01T01:14:00.000Z",
+  "claims": [
+    {
+      "claimId": "CLM-001",
+      "claim": "CAM NarrowPhaseDetector tests only vertices and centroid against cylinders, omitting triangle edges and face penetration.",
+      "sourceFile": "src/engine/cam/collision/NarrowPhaseDetector.ts",
+      "sourceLines": "188-193, 258-280",
+      "implementationEvidence": "Section 1 explicitly defines pointsToCheck = [tri.v0, tri.v1, tri.v2, centroid]. Section 2 performs 5 discrete linear steps along zone segments calling closestPointOnTriangle, but does not perform exact continuous cylinder-triangle intersection.",
+      "classification": "CONFIRMED_DEFECT",
+      "confidence": "100%",
+      "notes": "Section 2 provides 5-step point sampling along the tool axis, but rapid tool orientation changes or obstacles between sample points can tunnel."
+    },
+    {
+      "claimId": "CLM-002",
+      "claim": "FiveAxisCollisionEngine completely ignores obstacle triangular faces, testing only vertex coordinates.",
+      "sourceFile": "src/engine/cam/fiveaxis/FiveAxisCollisionEngine.ts",
+      "sourceLines": "40-47",
+      "implementationEvidence": "Loops exclusively with 'for (const v of obstacle.vertices)' against cap.p0 and cap.p1. obstacle.faces is unreferenced.",
+      "classification": "CONFIRMED_DEFECT",
+      "confidence": "100%",
+      "notes": "Tools plunging through face interior without touching corner vertices report zero collision."
+    },
+    {
+      "claimId": "CLM-003",
+      "claim": "Kinematic clearance engines use hardcoded Math.max(0.1, centerDist - 30.0) without CAD geometry.",
+      "sourceFile": "src/engine/assembly/kinematics/KinematicCollisionClearanceBridge.ts & src/engine/assembly-intelligence/CollisionDetectionEngine.ts",
+      "sourceLines": "KinematicCollisionClearanceBridge.ts:62; CollisionDetectionEngine.ts:29",
+      "implementationEvidence": "Direct arithmetic subtraction of 30.0mm constant from Euclidean center distance.",
+      "classification": "CONFIRMED_DEFECT",
+      "confidence": "100%",
+      "notes": "Hardcoded 15mm radius sphere assumption per body."
+    },
+    {
+      "claimId": "CLM-004",
+      "claim": "CollisionDetectionWorkspace.tsx executes on synthetic demo test fixtures rather than active CAD document geometry.",
+      "sourceFile": "src/components/cam/CollisionDetectionWorkspace.tsx & src/engine/cam/collision/CollisionDetectionEngine.ts",
+      "sourceLines": "CollisionDetectionWorkspace.tsx:37; CollisionDetectionEngine.ts:393-429",
+      "implementationEvidence": "Explicitly invokes CollisionDetectionEngine.createSampleObstacleTriangles(activeBenchmark.id) which constructs 2-6 hardcoded triangles.",
+      "classification": "CONFIRMED_PRODUCTION_DISCONNECTION",
+      "confidence": "100%",
+      "notes": "No production callpath exists from the active CAD document to CollisionDetectionWorkspace."
+    },
+    {
+      "claimId": "CLM-005",
+      "claim": "AssemblyInterferenceEngine fails open on OCCT boolean errors, returning false NO_INTERFERENCE.",
+      "sourceFile": "src/engine/assembly/AssemblyInterferenceEngine.ts",
+      "sourceLines": "82-90, 142-154",
+      "implementationEvidence": "try/catch block swallows kernel exceptions, sets intersectSolid to null, logs console.warn, and defaults status to 'NO_INTERFERENCE'.",
+      "classification": "CONFIRMED_DEFECT",
+      "confidence": "100%",
+      "notes": "Catastrophic geometry failure is indistinguishable from clearance."
+    },
+    {
+      "claimId": "CLM-006",
+      "claim": "ContinuousCollisionDetector is discrete multi-step sampling (4 to 25 sub-steps), not analytical continuous collision.",
+      "sourceFile": "src/engine/cam/collision/ContinuousCollisionDetector.ts",
+      "sourceLines": "48-64",
+      "implementationEvidence": "Calculates numSubSteps = Math.max(4, Math.min(25, ...)) and evaluates discrete poses poseAtT.",
+      "classification": "CONFIRMED_CAPABILITY_GAP",
+      "confidence": "100%",
+      "notes": "Thin wall tunneling is possible between sub-steps."
+    }
+  ]
+}

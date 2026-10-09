@@ -1,0 +1,43 @@
+{
+  "contract": {
+    "evidenceId": "EV_TWIN_01",
+    "evidenceType": "DIGITAL_TWIN_EVIDENCE",
+    "evidenceVersion": "1.0",
+    "sourceArtifactId": "TWIN_STATE_01",
+    "sourceRevision": "1.5",
+    "eventId": "EVT_TWIN",
+    "eventType": "MACHINE_CONFIGURED",
+    "eventTimestamp": 1700000700000,
+    "recordedTimestamp": 1700000700000,
+    "producerId": "TWIN_ENGINE_110",
+    "producerType": "DIGITAL_TWIN",
+    "contentHash": "56de7571aec096000d1cc5c4e87e4fa03b3395d7563489340777a7d246e03ab6",
+    "canonicalHash": "b35dbf4a3d49c6144ca0356315cddcbcff1977a161a0183716c6745e82b06d9c",
+    "previousEvidenceHash": "f738814e8e37f9682911a7ef15a8b2fb8dc695fb8ee4f59ee4e1841146334288",
+    "chainSequence": 8,
+    "signature": "a8c6396f17051b5d38b08318c4529d4899085fa577e9ab7b518effb33bd422d9",
+    "signingIdentity": "KEY_CAM_ENG_01",
+    "verificationStatus": "COMPLETE",
+    "recordingMode": "ORIGINAL"
+  },
+  "sourceIdentity": {
+    "sourceType": "DIGITAL_TWIN",
+    "sourceId": "TWIN_110",
+    "sourceRevision": "1.5",
+    "sourceFingerprint": "FNG_TWIN_01"
+  },
+  "eventIdentity": {
+    "eventId": "EVT_TWIN",
+    "eventType": "MACHINE_CONFIGURED",
+    "eventSequence": 8,
+    "eventTimestamp": 1700000700000,
+    "sourceTimestamp": 1700000700000,
+    "recordedTimestamp": 1700000700000
+  },
+  "payload": {
+    "machineId": "DMG_MORI_NMV5000",
+    "twinId": "TWIN_DMG_MORI"
+  },
+  "context": {},
+  "attestations": []
+}

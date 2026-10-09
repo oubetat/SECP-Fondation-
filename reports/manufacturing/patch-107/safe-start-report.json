@@ -1,0 +1,6 @@
+{
+  "safeStartBlocks": [
+    "G90 G80 G40 G49",
+    "G90 G21 G17 G54 G40 G80 G49"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "reportId": "COLLISION-ENGINE-P3-STALENESS-001",
+  "stalenessChecks": [
+    {
+      "test": "Revision 2 with Geometry Snapshot 1",
+      "result": "FAIL-CLOSED (ANALYSIS_FAILED)",
+      "provenSafe": false
+    },
+    {
+      "test": "Geometry hash drift detection",
+      "result": "FAIL-CLOSED (ANALYSIS_FAILED)",
+      "provenSafe": false
+    }
+  ],
+  "verdict": "PASSED"
+}

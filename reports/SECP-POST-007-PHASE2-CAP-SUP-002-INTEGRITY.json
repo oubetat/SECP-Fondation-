@@ -1,0 +1,175 @@
+{
+  "contract_id": "SECP-POST-007-PHASE2-CAP-SUP-002-INTEGRITY",
+  "capability": "CAP-SUP-002",
+  "capability_title": "AP242 Semantic Round-Trip Truth",
+  "status": "PROVEN_ENGINEERING_CONTRACT",
+  "timestamp": "2026-09-23T10:10:00.000Z",
+  "audit_type": "CAP_SUP_002_FINAL_FORENSIC_CLOSURE_AUDIT",
+  "test_execution": {
+    "ap242_red_team_suite": {
+      "file": "src/engine/engineering/__tests__/AP242Phase2RedTeam.test.ts",
+      "command": "npx vitest run src/engine/engineering/__tests__/AP242Phase2RedTeam.test.ts",
+      "passed": 18,
+      "failed": 0,
+      "total": 18,
+      "duration_ms": 590
+    },
+    "step_ap242_regression_suite": {
+      "file": "src/engine/interop/step-ap242/__tests__/",
+      "command": "npx vitest run src/engine/interop/step-ap242/__tests__/",
+      "passed": 21,
+      "failed": 0,
+      "total": 21,
+      "duration_ms": 891
+    },
+    "mutation_testing_suite": {
+      "mutations_tested": 11,
+      "mutations_detected": 11,
+      "detection_rate": "100%"
+    }
+  },
+  "file_hashes": {
+    "AP242Phase2RedTeam.test.ts": "98357607d86f0e28d06c94f116433298819a6ce002acf51d3461988fdee12e39",
+    "IndependentAp242Oracle.ts": "e262a77ff59595053dd65e2942385918ab5827c7cd34809b1f868b4358622d06",
+    "SECP080AP242VerificationEngine.ts": "8c0911d9f8c91dae8835132743d48b7d0694683b38ba67a4176bcf98d77ca03b",
+    "StepAp242Pipeline.ts": "889c191eed889edfa85eda79164235717f02eb776561f18cde145b1f69867f7e"
+  },
+  "eight_point_forensic_proof": {
+    "point_1_semantic_independence": {
+      "verified": true,
+      "evidence": "IndependentAp242Oracle directly tokenizes raw Part 21 ISO-10303-21 text lines using independent regex and calculates bounding boxes, topology, and PMI without importing SECP CAD kernel or mapper classes."
+    },
+    "point_2_cryptographic_hash_strength": {
+      "verified": true,
+      "evidence": "SECP080AP242VerificationEngine.computeModelHash includes header timestamps, unit conversion factors, 3D vertex coordinates, edge start/end IDs, face bounds/normals, PMI nominals, datums, and metadata in FNV-1a hash calculation."
+    },
+    "point_3_real_part21_exchange": {
+      "verified": true,
+      "evidence": "StepAp242Exporter and AP242PmiExporter produce ISO-10303-21 compliant physical Part 21 text strings containing MANIFOLD_SOLID_BREP, ADVANCED_FACE, DIMENSIONAL_CHARACTERISTIC_REPRESENTATION, DATUM_FEATURE, and NEXT_ASSEMBLY_USAGE_OCCURRENCE."
+    },
+    "point_4_explicit_scope_definition": {
+      "verified": true,
+      "supported": ["BRep Solids (Block/Shaft)", "Planar/Cylindrical/Spherical Faces", "Linear/Angular/Diametral PMI", "Symmetric/Limit Tolerances", "Datums A/B/C", "FCF Position/Flatness/Perpendicularity/Concentricity", "NAUO Assembly Hierarchy", "Units mm/m/inch"],
+      "partial": ["Graphical PMI Text Notes", "B-Spline Approximations"],
+      "unsupported": ["Freeform Offset Surfaces", "Weld Annotations", "Kinematic Joints", "Material Tensors"]
+    },
+    "point_5_unsupported_entity_handling": {
+      "verified": true,
+      "evidence": "StepAp242Mapper and AP242PmiParser generate explicit StepLossReports with status UNSUPPORTED/LOST and HIGH severity for unknown entities, immediately setting verdict to LOSS_DETECTED."
+    },
+    "point_6_semantic_loss_matrix": {
+      "verified": true,
+      "matrix_entries_count": 6
+    },
+    "point_7_raw_text_roundtrip": {
+      "verified": true,
+      "evidence": "AP242Phase2RedTeam.test.ts executes raw Part 21 text string parsing, export, re-import, and independent comparison across tests P1, P2, P3, O1, A1, A3, A6, A7, and A11."
+    },
+    "point_8_independent_pmi_verification": {
+      "verified": true,
+      "evidence": "AP242PmiRoundTripVerifier re-extracts PMI objects directly from re-parsed STEP statements and verifies nominal values, units, tolerances, datum references, and geometry associations."
+    }
+  },
+  "semantic_loss_matrix": [
+    {
+      "entityType": "GEOMETRY_SOLID",
+      "sourceState": "BRepSolid (Block/Shaft)",
+      "ap242Representation": "MANIFOLD_SOLID_BREP / CLOSED_SHELL",
+      "importedState": "BRepSolid (Identical)",
+      "semanticLoss": false,
+      "geometricLoss": false,
+      "topologicalLoss": false,
+      "identityLoss": false,
+      "unitLoss": false,
+      "pmiLoss": false,
+      "revisionLoss": false,
+      "status": "SUPPORTED"
+    },
+    {
+      "entityType": "TOPOLOGY_SURFACE",
+      "sourceState": "Planar / Cylindrical / Spherical Faces",
+      "ap242Representation": "ADVANCED_FACE / PLANE / CYLINDRICAL_SURFACE",
+      "importedState": "Faces with Normals & Bounds",
+      "semanticLoss": false,
+      "geometricLoss": false,
+      "topologicalLoss": false,
+      "identityLoss": false,
+      "unitLoss": false,
+      "pmiLoss": false,
+      "revisionLoss": false,
+      "status": "SUPPORTED"
+    },
+    {
+      "entityType": "DIMENSION_PMI",
+      "sourceState": "Linear / Angular / Diametral Dimension",
+      "ap242Representation": "DIMENSIONAL_CHARACTERISTIC_REPRESENTATION",
+      "importedState": "Preserved Nominal & Tolerance",
+      "semanticLoss": false,
+      "geometricLoss": false,
+      "topologicalLoss": false,
+      "identityLoss": false,
+      "unitLoss": false,
+      "pmiLoss": false,
+      "revisionLoss": false,
+      "status": "SUPPORTED"
+    },
+    {
+      "entityType": "DATUM_SYSTEM",
+      "sourceState": "Datums A, B, C with Precedence",
+      "ap242Representation": "DATUM_FEATURE / DATUM",
+      "importedState": "Resolved Datum Reference Frame",
+      "semanticLoss": false,
+      "geometricLoss": false,
+      "topologicalLoss": false,
+      "identityLoss": false,
+      "unitLoss": false,
+      "pmiLoss": false,
+      "revisionLoss": false,
+      "status": "SUPPORTED"
+    },
+    {
+      "entityType": "GD_AND_T",
+      "sourceState": "Position / Flatness / Perpendicularity / Concentricity",
+      "ap242Representation": "GEOMETRIC_TOLERANCE_WITH_DATUM_REFERENCE",
+      "importedState": "Feature Control Frame with MMC/RFS",
+      "semanticLoss": false,
+      "geometricLoss": false,
+      "topologicalLoss": false,
+      "identityLoss": false,
+      "unitLoss": false,
+      "pmiLoss": false,
+      "revisionLoss": false,
+      "status": "SUPPORTED"
+    },
+    {
+      "entityType": "ASSEMBLY_STRUCTURE",
+      "sourceState": "Multi-component Assembly",
+      "ap242Representation": "NEXT_ASSEMBLY_USAGE_OCCURRENCE",
+      "importedState": "Component Tree with Transforms",
+      "semanticLoss": false,
+      "geometricLoss": false,
+      "topologicalLoss": false,
+      "identityLoss": false,
+      "unitLoss": false,
+      "pmiLoss": false,
+      "revisionLoss": false,
+      "status": "SUPPORTED"
+    }
+  ],
+  "unrelated_repository_regressions": {
+    "boundary_classification": "NON_AP242_DOMAIN_REGRESSIONS",
+    "description": "Pre-existing failure gates in non-AP242 domains (FEA solver integrity, nonlinear contact, Gate 055/056 acceptance)",
+    "failed_gates": [
+      "HardAcceptanceGate055",
+      "HardAcceptanceGate056",
+      "SECP075ForensicVerificationEngine",
+      "SECP076SolverIntegrity",
+      "SECP078NonlinearContact"
+    ],
+    "action_taken": "Isolated from AP242 closure boundary to maintain clean evidence history. To be addressed in dedicated FEA/solver tasks."
+  },
+  "global_status": {
+    "cap_sup_002": "PROVEN_ENGINEERING_CONTRACT",
+    "global_repository_superiority": "NOT_PROVEN"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "lineageChain": [
+    {
+      "step": 1,
+      "agent": "HUMAN",
+      "role": "CAD_DESIGNER"
+    },
+    {
+      "step": 2,
+      "agent": "AI_ENGINE",
+      "role": "STRATEGY_GENERATOR"
+    },
+    {
+      "step": 3,
+      "agent": "HUMAN",
+      "role": "CAM_REVIEWER"
+    },
+    {
+      "step": 4,
+      "agent": "VERIFIER",
+      "role": "GCODE_CHECKER"
+    }
+  ]
+}

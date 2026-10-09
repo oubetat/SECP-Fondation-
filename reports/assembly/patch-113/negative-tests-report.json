@@ -1,0 +1,87 @@
+{
+  "timestamp": 1787299360257,
+  "totalTests": 10,
+  "passedTests": 10,
+  "failedTests": 0,
+  "results": [
+    {
+      "testId": "ADV-113-01",
+      "name": "Duplicate Occurrence ID Injection",
+      "attackVector": "Inject duplicate occurrence ID into assembly topology",
+      "expectedErrorCode": "DUPLICATE_OCCURRENCE_ID",
+      "actualResult": "DUPLICATE_OCCURRENCE_ID caught",
+      "passed": true
+    },
+    {
+      "testId": "ADV-113-02",
+      "name": "Missing Part Definition Detection",
+      "attackVector": "Instantiate occurrence pointing to un-registered Part Definition",
+      "expectedErrorCode": "MISSING_PART_DEFINITION",
+      "actualResult": "MISSING_PART_DEFINITION caught",
+      "passed": true
+    },
+    {
+      "testId": "ADV-113-03",
+      "name": "Invalid Parent Occurrence Reference",
+      "attackVector": "Set parentOccurrenceId to non-existent ID",
+      "expectedErrorCode": "INVALID_PARENT_REFERENCE",
+      "actualResult": "INVALID_PARENT_REFERENCE caught",
+      "passed": true
+    },
+    {
+      "testId": "ADV-113-04",
+      "name": "Containment Cycle Detection",
+      "attackVector": "Introduce cyclic loop in containment hierarchy",
+      "expectedErrorCode": "CONTAINMENT_CYCLE",
+      "actualResult": "CONTAINMENT_CYCLE caught",
+      "passed": true
+    },
+    {
+      "testId": "ADV-113-05",
+      "name": "Invalid Transform Matrix Detection",
+      "attackVector": "Inject NaN/Infinity into 4x4 transform matrix",
+      "expectedErrorCode": "INVALID_TRANSFORM",
+      "actualResult": "INVALID_TRANSFORM caught",
+      "passed": true
+    },
+    {
+      "testId": "ADV-113-06",
+      "name": "Broken Constraint Reference",
+      "attackVector": "Constraint target occurrence does not exist in graph",
+      "expectedErrorCode": "BROKEN_REFERENCE",
+      "actualResult": "BROKEN_REFERENCE caught",
+      "passed": true
+    },
+    {
+      "testId": "ADV-113-07",
+      "name": "Geometric Mutation Tamper Detection",
+      "attackVector": "Mutate component transform and ensure hash differs deterministically",
+      "actualResult": "Hash changed (ceefe9a8 vs 95d22c0e)",
+      "passed": true
+    },
+    {
+      "testId": "ADV-113-08",
+      "name": "Graph Construction Determinism",
+      "attackVector": "Repeat independent construction runs from identical inputs",
+      "actualResult": "Hashes match perfectly (cc14d736)",
+      "passed": true
+    },
+    {
+      "testId": "ADV-113-09",
+      "name": "Concurrent Modification Protection",
+      "attackVector": "User B saves stale version over User A's updated revision",
+      "expectedErrorCode": "CONCURRENT_MODIFICATION",
+      "actualResult": "CONCURRENT_MODIFICATION thrown",
+      "passed": true
+    },
+    {
+      "testId": "ADV-113-10",
+      "name": "No Silent Revision Substitution",
+      "attackVector": "Occurrence points to unreleased/non-existent revision of a known part",
+      "expectedErrorCode": "INVALID_REVISION_REFERENCE",
+      "actualResult": "INVALID_REVISION_REFERENCE caught",
+      "passed": true
+    }
+  ],
+  "verdict": "PASS"
+}

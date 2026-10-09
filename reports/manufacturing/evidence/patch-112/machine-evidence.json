@@ -1,0 +1,43 @@
+{
+  "contract": {
+    "evidenceId": "EV_MACH_01",
+    "evidenceType": "MACHINE_EVIDENCE",
+    "evidenceVersion": "1.0",
+    "sourceArtifactId": "DMG_MORI_NMV5000",
+    "sourceRevision": "2.1",
+    "eventId": "EVT_MACH",
+    "eventType": "MACHINE_CONFIGURED",
+    "eventTimestamp": 1700000300000,
+    "recordedTimestamp": 1700000300000,
+    "producerId": "SIEMENS_840D",
+    "producerType": "CNC",
+    "contentHash": "4160c9a862d33f728abdccacf65e61ba9a192d8d1dfe2c06fdf2d7f49a138215",
+    "canonicalHash": "8b6b585f10ec5a29fd5908795572bd37b612fb995edd5f14b899c452413c70bb",
+    "previousEvidenceHash": "fd116b11c1698b492100353ed117a63e65206f08e0f1d6134b35bdb2a05a41b0",
+    "chainSequence": 4,
+    "signature": "fb0487de41c31e2ac2fedf366d67d0ae1a4c7f881d46b47bfdf25fd1cca4c3ba",
+    "signingIdentity": "KEY_CNC_CTRL_01",
+    "verificationStatus": "COMPLETE",
+    "recordingMode": "ORIGINAL"
+  },
+  "sourceIdentity": {
+    "sourceType": "CNC",
+    "sourceId": "DMG_MORI_NMV5000",
+    "sourceRevision": "2.1",
+    "sourceFingerprint": "FNG_MACH_01"
+  },
+  "eventIdentity": {
+    "eventId": "EVT_MACH",
+    "eventType": "MACHINE_CONFIGURED",
+    "eventSequence": 4,
+    "eventTimestamp": 1700000300000,
+    "sourceTimestamp": 1700000300000,
+    "recordedTimestamp": 1700000300000
+  },
+  "payload": {
+    "controller": "SIEMENS_840D_SL",
+    "machineId": "DMG_MORI_NMV5000"
+  },
+  "context": {},
+  "attestations": []
+}

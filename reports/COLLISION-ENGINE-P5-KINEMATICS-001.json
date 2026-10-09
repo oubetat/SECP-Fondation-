@@ -1,0 +1,9 @@
+{
+  "reportId": "COLLISION-ENGINE-P5-KINEMATICS-001",
+  "timestampIso": "2026-10-02T08:01:27.700Z",
+  "jointLinkKinematicStateEvaluated": true,
+  "multiAxisInterpolationTested": true,
+  "exactnessLevel": "SAMPLED",
+  "scopeNote": "Analytical kinematic transform chain and link clearance evaluated under sampled multi-axis trajectories.",
+  "verdict": "PASSED"
+}

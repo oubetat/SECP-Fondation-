@@ -1,0 +1,8 @@
+{
+  "milestone": "M9",
+  "persistenceType": "CROSS-DOMAIN-PERSISTENCE",
+  "status": "IMPLEMENTED",
+  "storageMechanism": "IndexedDB",
+  "rehydrationContinuity": "VERIFIED",
+  "replaySafety": "PROVEN"
+}

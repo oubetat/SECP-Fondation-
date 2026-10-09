@@ -1,0 +1,21 @@
+{
+  "contractId": "P1-TEST-EVIDENCE-001",
+  "name": "P1 Test Evidence Package",
+  "version": "1.0.0",
+  "suite": "src/engine/collision-authority/__tests__/ExactNarrowPhaseP1.test.ts",
+  "results": [
+    { "id": "T01", "name": "Segment crossing triangle interior returns distance 0 and isInterpenetrating = true", "verdict": "PASS" },
+    { "id": "T02", "name": "Segment separated above triangle returns exact perpendicular distance", "verdict": "PASS" },
+    { "id": "T03", "name": "Segment crossing triangle edge returns EDGE contact feature", "verdict": "PASS" },
+    { "id": "T04", "name": "Segment touching triangle vertex returns VERTEX contact feature", "verdict": "PASS" },
+    { "id": "T05", "name": "Triangle-triangle intersection correctly detects overlapping 3D triangles", "verdict": "PASS" },
+    { "id": "T06", "name": "Triangle-triangle correctly returns false for disjoint separated triangles", "verdict": "PASS" },
+    { "id": "T07", "name": "Capsule-triangle distance calculates exact clearance and penetration depth", "verdict": "PASS" },
+    { "id": "T08", "name": "Counterexample A: Face plunge without vertex contact detected as PENETRATION", "verdict": "PASS" },
+    { "id": "T09", "name": "Counterexample B: Edge intersection detected as PENETRATION", "verdict": "PASS" },
+    { "id": "T10", "name": "Counterexample D: Thin 0.1mm obstacle detected continuously", "verdict": "PASS" },
+    { "id": "T11", "name": "Numerical Robustness: Zero-area degenerate triangles handled safely", "verdict": "PASS" },
+    { "id": "T12", "name": "Numerical Robustness: Epsilon-scale contact accurately detected as touching", "verdict": "PASS" },
+    { "id": "T13", "name": "Hard Acceptance Gate P1 executes and passes all 15 gates", "verdict": "PASS" }
+  ]
+}

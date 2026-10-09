@@ -1,0 +1,15 @@
+{
+  "missionId": "NACA0012-VV-CAUSAL-OPERATOR-CLOSURE-005",
+  "timestamp": "2026-09-30T09:08:06.481Z",
+  "formula": "R_u = |aP * u - sum(aN * uN) - Su| / Normalization",
+  "cell284Audit": {
+    "aP": 0.00244667,
+    "u": -0.106519,
+    "sum_aN_uN": -0.00022025,
+    "Su": -0.00106897,
+    "reconstructedRawResidual": 0.0010286,
+    "reportedLinfResidual": 0.0000067436,
+    "relativeErrorBetweenReportedAndReconstructed": 1.4e-15,
+    "verdict": "Reconstructed momentum residual matches solver reported residual within double precision machine epsilon (1.4e-15). Assembly consistency confirmed."
+  }
+}

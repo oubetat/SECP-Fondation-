@@ -1,0 +1,11 @@
+[
+  { "item": "001", "part": "Grounded Base Plate", "revision": "A", "qty": 1 },
+  { "item": "002", "part": "Outer Gear Housing", "revision": "A", "qty": 1 },
+  { "item": "003", "part": "Drive Shaft", "revision": "B", "qty": 1 },
+  { "item": "004", "part": "Ball Bearing Unit A", "revision": "A", "qty": 1 },
+  { "item": "005", "part": "Ball Bearing Unit B", "revision": "A", "qty": 1 },
+  { "item": "006", "part": "Helical Pinion Gear", "revision": "A", "qty": 1 },
+  { "item": "007", "part": "Protective Front Cover", "revision": "A", "qty": 1 },
+  { "item": "008", "part": "Hex Socket Bolt M8", "revision": "C", "qty": 4 },
+  { "item": "009", "part": "Sealing Washer M8", "revision": "A", "qty": 4 }
+]

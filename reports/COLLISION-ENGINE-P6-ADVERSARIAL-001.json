@@ -1,0 +1,9 @@
+{
+  "reportId": "COLLISION-ENGINE-P6-ADVERSARIAL-001",
+  "timestampIso": "2026-10-02T08:17:49.212Z",
+  "battery": "P6 Adversarial Mutation Attacks (M01-M40)",
+  "totalMutations": 40,
+  "passedMutations": 40,
+  "failedMutations": 0,
+  "verdict": "PASSED"
+}

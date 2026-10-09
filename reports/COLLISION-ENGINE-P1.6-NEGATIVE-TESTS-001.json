@@ -1,0 +1,20 @@
+{
+  "missionId": "COLLISION-ENGINE-P1.6-AUTHORITY-MIGRATION-ENFORCEMENT-001",
+  "artifactType": "NEGATIVE_ENFORCEMENT_TESTS_REPORT",
+  "timestamp": "2026-10-01T01:57:00.000Z",
+  "testSuite": "src/engine/collision-authority/__tests__/P1_6_AuthorityEnforcement.test.ts",
+  "cases": [
+    {
+      "testName": "P1.6-G10: Malformed input or missing provider fails closed",
+      "result": "PASSED (status === ANALYSIS_FAILED, provenSafe === false)"
+    },
+    {
+      "testName": "P1.6-G10: Unregistered assembly components do not return false safe CLEAR",
+      "result": "PASSED (status === ANALYSIS_FAILED, provenSafe === false)"
+    },
+    {
+      "testName": "P1.6-G11: Provider with SAMPLED exactness cannot forge EXACT rating",
+      "result": "PASSED (exactnessLevel === SAMPLED)"
+    }
+  ]
+}

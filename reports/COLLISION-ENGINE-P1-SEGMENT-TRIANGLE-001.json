@@ -1,0 +1,19 @@
+{
+  "contractId": "P1-SEGMENT-TRIANGLE-001",
+  "name": "P1 Segment-Triangle Analytical Specification",
+  "version": "1.0.0",
+  "methodology": "Two-phase exact analytical solver: 1. Plane piercing with barycentric coordinates; 2. 3D segment-edge and point-face distance minimization.",
+  "topologicalFeatures": [
+    "FACE_INTERIOR",
+    "EDGE_01",
+    "EDGE_12",
+    "EDGE_20",
+    "VERTEX_0",
+    "VERTEX_1",
+    "VERTEX_2",
+    "INTERSECTING",
+    "SEPARATED",
+    "DEGENERATE"
+  ],
+  "guarantees": "Zero sample stepping; exact continuous distance min_{s in S, t in T} ||s - t||."
+}

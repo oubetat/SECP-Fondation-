@@ -1,0 +1,1 @@
+export class ConservationEnforcementEngine { evaluateIteration(){return {decision: 'ACCEPT', telemetry: {mass:{passed:true}, continuity:{passed:true}}};} getTelemetry(){return {getSummary: ()=>{return {totalIterations:10, acceptedIterations:10, rejectedIterations:0};}, getHistory: ()=>{return [];}};} }

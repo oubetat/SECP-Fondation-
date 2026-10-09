@@ -1,0 +1,8 @@
+{
+  "missionId": "COLLISION-ENGINE-FORENSIC-MATURITY-001",
+  "timestamp": "2026-10-01T01:00:00.000Z",
+  "governanceAuthority": "SECP Engineering Truth & Forensic Verification Directorate",
+  "verdict": "COLLISION_ENGINE_IMMATURE",
+  "canMakeAuthoritativeProductionClaim": false,
+  "justification": "While mathematical and kinematic foundations exist (e.g. OCCT B-Rep boolean intersection in AssemblyInterferenceEngine and 15-axis SAT in assembly clash), the multi-axis CAM and kinematic clearance engines contain severe mathematical omissions (vertex-only/centroid-only triangle tests, discrete 10-point capsule sampling, hardcoded 30mm offsets), fail-open exception handling, and complete disconnection from active CAD document geometry in the UI."
+}

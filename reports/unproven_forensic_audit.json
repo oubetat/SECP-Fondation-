@@ -1,0 +1,1190 @@
+[
+  {
+    "id": "cad_b_rep",
+    "domain": "CAD",
+    "capabilityName": "B-Rep",
+    "limitation": "Non-manifold topology healing unverified.",
+    "existingProd": [
+      {
+        "path": "src/engine/cad-kernel/brep/BRepKernel.ts",
+        "stat": {
+          "isDir": false,
+          "size": 46170,
+          "path": "src/engine/cad-kernel/brep/BRepKernel.ts"
+        }
+      }
+    ],
+    "existingTests": [
+      {
+        "path": "src/engine/benchmark/cad/__tests__/BRepBenchmark.test.ts",
+        "stat": {
+          "isDir": false,
+          "size": 637,
+          "path": "src/engine/benchmark/cad/__tests__/BRepBenchmark.test.ts"
+        }
+      }
+    ],
+    "existingReports": [
+      {
+        "path": "PATCH171_CAD_BENCHMARK_REPORT.json",
+        "stat": {
+          "isDir": false,
+          "size": 38674,
+          "path": "PATCH171_CAD_BENCHMARK_REPORT.json"
+        }
+      }
+    ]
+  },
+  {
+    "id": "cad_nurbs",
+    "domain": "CAD",
+    "capabilityName": "NURBS",
+    "limitation": "High-degree rational B-spline knot insertion unverified.",
+    "existingProd": [
+      {
+        "path": "src/engine/cad/nurbs/NURBSEngine.ts",
+        "stat": {
+          "isDir": false,
+          "size": 38460,
+          "path": "src/engine/cad/nurbs/NURBSEngine.ts"
+        }
+      },
+      {
+        "path": "src/engine/cad/nurbs/NURBSFeatureTree.ts",
+        "stat": {
+          "isDir": false,
+          "size": 6225,
+          "path": "src/engine/cad/nurbs/NURBSFeatureTree.ts"
+        }
+      }
+    ],
+    "existingTests": [
+      {
+        "path": "src/engine/cad/nurbs/__tests__/NURBSSurfaceEditing203.test.ts",
+        "stat": {
+          "isDir": false,
+          "size": 653,
+          "path": "src/engine/cad/nurbs/__tests__/NURBSSurfaceEditing203.test.ts"
+        }
+      },
+      {
+        "path": "src/engine/cad-kernel/__tests__/Nurbs.test.ts",
+        "stat": {
+          "isDir": false,
+          "size": 7422,
+          "path": "src/engine/cad-kernel/__tests__/Nurbs.test.ts"
+        }
+      },
+      {
+        "path": "src/engine/cad-kernel/__tests__/NurbsAdversarial.test.ts",
+        "stat": {
+          "isDir": false,
+          "size": 2854,
+          "path": "src/engine/cad-kernel/__tests__/NurbsAdversarial.test.ts"
+        }
+      }
+    ],
+    "existingReports": [
+      {
+        "path": "reports/digital-twin/patch-123/nurbs-report.json",
+        "stat": {
+          "isDir": false,
+          "size": 159,
+          "path": "reports/digital-twin/patch-123/nurbs-report.json"
+        }
+      }
+    ]
+  },
+  {
+    "id": "cad_boolean",
+    "domain": "CAD",
+    "capabilityName": "Boolean",
+    "limitation": "Co-planar boundary intersections require robust perturbation engine.",
+    "existingProd": [
+      {
+        "path": "src/engine/benchmark/boolean/AdversarialMutationEngine.ts",
+        "stat": {
+          "isDir": false,
+          "size": 7041,
+          "path": "src/engine/benchmark/boolean/AdversarialMutationEngine.ts"
+        }
+      },
+      {
+        "path": "src/engine/benchmark/boolean/BooleanAdversarialBattery.ts",
+        "stat": {
+          "isDir": false,
+          "size": 6513,
+          "path": "src/engine/benchmark/boolean/BooleanAdversarialBattery.ts"
+        }
+      }
+    ],
+    "existingTests": [
+      {
+        "path": "src/engine/benchmark/boolean/__tests__/BooleanAdversarialBattery.test.ts",
+        "stat": {
+          "isDir": false,
+          "size": 3381,
+          "path": "src/engine/benchmark/boolean/__tests__/BooleanAdversarialBattery.test.ts"
+        }
+      },
+      {
+        "path": "src/engine/cad-kernel/__tests__/BooleanEngine.test.ts",
+        "stat": {
+          "isDir": false,
+          "size": 8013,
+          "path": "src/engine/cad-kernel/__tests__/BooleanEngine.test.ts"
+        }
+      },
+      {
+        "path": "src/engine/cad-kernel/__tests__/BooleanAdversarial.test.ts",
+        "stat": {
+          "isDir": false,
+          "size": 2900,
+          "path": "src/engine/cad-kernel/__tests__/BooleanAdversarial.test.ts"
+        }
+      }
+    ],
+    "existingReports": [
+      {
+        "path": "PATCH172_BOOLEAN_ADVERSARIAL_BATTERY.json",
+        "stat": {
+          "isDir": false,
+          "size": 2871,
+          "path": "PATCH172_BOOLEAN_ADVERSARIAL_BATTERY.json"
+        }
+      },
+      {
+        "path": "PATCH172_BOOLEAN_ADVERSARIAL_BATTERY.md",
+        "stat": {
+          "isDir": false,
+          "size": 5084,
+          "path": "PATCH172_BOOLEAN_ADVERSARIAL_BATTERY.md"
+        }
+      }
+    ]
+  },
+  {
+    "id": "cad_topology_healing",
+    "domain": "CAD",
+    "capabilityName": "Topology Healing",
+    "limitation": "Automated gap stitching unproven for large dirty STEP imports.",
+    "existingProd": [
+      {
+        "path": "src/engine/cad/surface/healing/GapHealingEngine.ts",
+        "stat": {
+          "isDir": false,
+          "size": 3898,
+          "path": "src/engine/cad/surface/healing/GapHealingEngine.ts"
+        }
+      },
+      {
+        "path": "src/engine/cad/surface/healing/BoundaryRepairEngine.ts",
+        "stat": {
+          "isDir": false,
+          "size": 4722,
+          "path": "src/engine/cad/surface/healing/BoundaryRepairEngine.ts"
+        }
+      },
+      {
+        "path": "src/engine/cad/surface/healing/ContinuityRepairEngine.ts",
+        "stat": {
+          "isDir": false,
+          "size": 6154,
+          "path": "src/engine/cad/surface/healing/ContinuityRepairEngine.ts"
+        }
+      }
+    ],
+    "existingTests": [
+      {
+        "path": "src/engine/cad/surface/healing/__tests__/SurfaceHealing205.test.ts",
+        "stat": {
+          "isDir": false,
+          "size": 668,
+          "path": "src/engine/cad/surface/healing/__tests__/SurfaceHealing205.test.ts"
+        }
+      },
+      {
+        "path": "src/engine/benchmark/cad/__tests__/TopologyHealingBenchmark.test.ts",
+        "stat": {
+          "isDir": false,
+          "size": 614,
+          "path": "src/engine/benchmark/cad/__tests__/TopologyHealingBenchmark.test.ts"
+        }
+      },
+      {
+        "path": "src/engine/cad-kernel/healing/__tests__/TopologyHealingEngine.test.ts",
+        "stat": {
+          "isDir": false,
+          "size": 2527,
+          "path": "src/engine/cad-kernel/healing/__tests__/TopologyHealingEngine.test.ts"
+        }
+      }
+    ],
+    "existingReports": [
+      {
+        "path": "reports/digital-twin/patch-123/healing-report.json",
+        "stat": {
+          "isDir": false,
+          "size": 161,
+          "path": "reports/digital-twin/patch-123/healing-report.json"
+        }
+      }
+    ]
+  },
+  {
+    "id": "cad_gcs",
+    "domain": "CAD",
+    "capabilityName": "GCS",
+    "limitation": "Geometric constraint solver under-constrained state bifurcation unverified.",
+    "existingProd": [
+      {
+        "path": "src/engine/assembly/constraints/AssemblyConstraintSolver.ts",
+        "stat": {
+          "isDir": false,
+          "size": 24697,
+          "path": "src/engine/assembly/constraints/AssemblyConstraintSolver.ts"
+        }
+      },
+      {
+        "path": "src/engine/benchmark/gcs/GCSBenchmarkBattery.ts",
+        "stat": {
+          "isDir": false,
+          "size": 9640,
+          "path": "src/engine/benchmark/gcs/GCSBenchmarkBattery.ts"
+        }
+      }
+    ],
+    "existingTests": [
+      {
+        "path": "src/engine/benchmark/gcs/__tests__/GCSBenchmarkBattery.test.ts",
+        "stat": {
+          "isDir": false,
+          "size": 7280,
+          "path": "src/engine/benchmark/gcs/__tests__/GCSBenchmarkBattery.test.ts"
+        }
+      },
+      {
+        "path": "src/engine/benchmark/gcs/__tests__/Canonical3DGeometryContract.test.ts",
+        "stat": {
+          "isDir": false,
+          "size": 3598,
+          "path": "src/engine/benchmark/gcs/__tests__/Canonical3DGeometryContract.test.ts"
+        }
+      },
+      {
+        "path": "src/engine/gcs3d/__tests__/Constraint3DAdversarial.test.ts",
+        "stat": {
+          "isDir": false,
+          "size": 4880,
+          "path": "src/engine/gcs3d/__tests__/Constraint3DAdversarial.test.ts"
+        }
+      }
+    ],
+    "existingReports": [
+      {
+        "path": "PATCH173_GCS_BENCHMARK.json",
+        "stat": {
+          "isDir": false,
+          "size": 3582,
+          "path": "PATCH173_GCS_BENCHMARK.json"
+        }
+      },
+      {
+        "path": "PATCH173_GCS_BENCHMARK.md",
+        "stat": {
+          "isDir": false,
+          "size": 8094,
+          "path": "PATCH173_GCS_BENCHMARK.md"
+        }
+      }
+    ]
+  },
+  {
+    "id": "cad_step_ap242",
+    "domain": "CAD",
+    "capabilityName": "STEP/AP242",
+    "limitation": "Semantic PMI tessellation validation in progress.",
+    "existingProd": [
+      {
+        "path": "src/engine/interop/step-ap242/StepAp242Exporter.ts",
+        "stat": {
+          "isDir": false,
+          "size": 8218,
+          "path": "src/engine/interop/step-ap242/StepAp242Exporter.ts"
+        }
+      },
+      {
+        "path": "src/engine/interop/AP242InspectionBridge.ts",
+        "stat": {
+          "isDir": false,
+          "size": 1879,
+          "path": "src/engine/interop/AP242InspectionBridge.ts"
+        }
+      }
+    ],
+    "existingTests": [
+      {
+        "path": "src/engine/interop/step-ap242/__tests__/StepAp242Pipeline.test.ts",
+        "stat": {
+          "isDir": false,
+          "size": 2414,
+          "path": "src/engine/interop/step-ap242/__tests__/StepAp242Pipeline.test.ts"
+        }
+      },
+      {
+        "path": "src/engine/interop/step-ap242/pmi/__tests__/AP242Pmi.test.ts",
+        "stat": {
+          "isDir": false,
+          "size": 1569,
+          "path": "src/engine/interop/step-ap242/pmi/__tests__/AP242Pmi.test.ts"
+        }
+      },
+      {
+        "path": "src/engine/interop/ap242-validation/__tests__/AP242Validation.test.ts",
+        "stat": {
+          "isDir": false,
+          "size": 2854,
+          "path": "src/engine/interop/ap242-validation/__tests__/AP242Validation.test.ts"
+        }
+      }
+    ],
+    "existingReports": [
+      {
+        "path": "reports/cfd/patch-067/step-acceptance-report.json",
+        "stat": {
+          "isDir": false,
+          "size": 93,
+          "path": "reports/cfd/patch-067/step-acceptance-report.json"
+        }
+      }
+    ]
+  },
+  {
+    "id": "cad_iges",
+    "domain": "CAD",
+    "capabilityName": "IGES",
+    "limitation": "Type 144 trimmed surface support unproven.",
+    "existingProd": [
+      {
+        "path": "src/engine/interop/IGESParser.ts",
+        "stat": {
+          "isDir": false,
+          "size": 2256,
+          "path": "src/engine/interop/IGESParser.ts"
+        }
+      },
+      {
+        "path": "src/engine/interop/IGESTranslator.ts",
+        "stat": {
+          "isDir": false,
+          "size": 5975,
+          "path": "src/engine/interop/IGESTranslator.ts"
+        }
+      },
+      {
+        "path": "src/engine/interop/iges-fidelity/IGESFidelityEngine.ts",
+        "stat": {
+          "isDir": false,
+          "size": 6272,
+          "path": "src/engine/interop/iges-fidelity/IGESFidelityEngine.ts"
+        }
+      }
+    ],
+    "existingTests": [
+      {
+        "path": "src/engine/interop/iges-fidelity/__tests__/IGESFidelity.test.ts",
+        "stat": {
+          "isDir": false,
+          "size": 2799,
+          "path": "src/engine/interop/iges-fidelity/__tests__/IGESFidelity.test.ts"
+        }
+      }
+    ],
+    "existingReports": []
+  },
+  {
+    "id": "cad_jt",
+    "domain": "CAD",
+    "capabilityName": "JT",
+    "limitation": "JT compression layer not fully implemented.",
+    "existingProd": [
+      {
+        "path": "src/engine/interop/jt-fidelity/JTFidelityEngine.ts",
+        "stat": {
+          "isDir": false,
+          "size": 8659,
+          "path": "src/engine/interop/jt-fidelity/JTFidelityEngine.ts"
+        }
+      },
+      {
+        "path": "src/engine/interop/jt-fidelity/JTParserAdapter.ts",
+        "stat": {
+          "isDir": false,
+          "size": 2614,
+          "path": "src/engine/interop/jt-fidelity/JTParserAdapter.ts"
+        }
+      }
+    ],
+    "existingTests": [
+      {
+        "path": "src/engine/interop/jt-fidelity/__tests__/JTFidelity.test.ts",
+        "stat": {
+          "isDir": false,
+          "size": 3215,
+          "path": "src/engine/interop/jt-fidelity/__tests__/JTFidelity.test.ts"
+        }
+      }
+    ],
+    "existingReports": []
+  },
+  {
+    "id": "cfd_rans",
+    "domain": "CFD",
+    "capabilityName": "RANS",
+    "limitation": "Reynolds-averaged Navier-Stokes closure requires boundary layer wall model.",
+    "existingProd": [
+      {
+        "path": "src/engine/cfd3d/Fvm3DNavierStokesSolver.ts",
+        "stat": {
+          "isDir": false,
+          "size": 42065,
+          "path": "src/engine/cfd3d/Fvm3DNavierStokesSolver.ts"
+        }
+      }
+    ],
+    "existingTests": [
+      {
+        "path": "reports/cfd/patch-070/rans-verification.json",
+        "stat": {
+          "isDir": false,
+          "size": 76,
+          "path": "reports/cfd/patch-070/rans-verification.json"
+        }
+      }
+    ],
+    "existingReports": [
+      {
+        "path": "reports/cfd/patch-062/rans-foundation-report.json",
+        "stat": {
+          "isDir": false,
+          "size": 42,
+          "path": "reports/cfd/patch-062/rans-foundation-report.json"
+        }
+      },
+      {
+        "path": "reports/cfd/patch-062/rans-physics-report.json",
+        "stat": {
+          "isDir": false,
+          "size": 60,
+          "path": "reports/cfd/patch-062/rans-physics-report.json"
+        }
+      }
+    ]
+  },
+  {
+    "id": "cfd_turbulence",
+    "domain": "CFD",
+    "capabilityName": "Turbulence",
+    "limitation": "k-epsilon model structure exists; high-Re wall functions unproven.",
+    "existingProd": [
+      {
+        "path": "src/engine/benchmark/cfd/TurbulenceQualificationBattery176.ts",
+        "stat": {
+          "isDir": false,
+          "size": 23272,
+          "path": "src/engine/benchmark/cfd/TurbulenceQualificationBattery176.ts"
+        }
+      }
+    ],
+    "existingTests": [
+      {
+        "path": "src/engine/benchmark/turbulence/__tests__/TurbulenceBattery.test.ts",
+        "stat": {
+          "isDir": false,
+          "size": 2156,
+          "path": "src/engine/benchmark/turbulence/__tests__/TurbulenceBattery.test.ts"
+        }
+      },
+      {
+        "path": "src/engine/cfd3d/solvers/rans/__tests__/TurbulenceFramework.test.ts",
+        "stat": {
+          "isDir": false,
+          "size": 1793,
+          "path": "src/engine/cfd3d/solvers/rans/__tests__/TurbulenceFramework.test.ts"
+        }
+      }
+    ],
+    "existingReports": [
+      {
+        "path": "PATCH176_TURBULENCE_BENCHMARK.md",
+        "stat": {
+          "isDir": false,
+          "size": 4756,
+          "path": "PATCH176_TURBULENCE_BENCHMARK.md"
+        }
+      },
+      {
+        "path": "reports/cfd/patch-062/turbulence-production-report.json",
+        "stat": {
+          "isDir": false,
+          "size": 52,
+          "path": "reports/cfd/patch-062/turbulence-production-report.json"
+        }
+      }
+    ]
+  },
+  {
+    "id": "cfd_sst_k_omega",
+    "domain": "CFD",
+    "capabilityName": "SST k-omega",
+    "limitation": "Menter SST blending functions unverified for complex 3D separation.",
+    "existingProd": [],
+    "existingTests": [
+      {
+        "path": "src/engine/cfd3d/solvers/rans/__tests__/TurbulenceFramework.test.ts",
+        "stat": {
+          "isDir": false,
+          "size": 1793,
+          "path": "src/engine/cfd3d/solvers/rans/__tests__/TurbulenceFramework.test.ts"
+        }
+      },
+      {
+        "path": "src/engine/benchmark/turbulence/__tests__/TurbulenceBattery.test.ts",
+        "stat": {
+          "isDir": false,
+          "size": 2156,
+          "path": "src/engine/benchmark/turbulence/__tests__/TurbulenceBattery.test.ts"
+        }
+      }
+    ],
+    "existingReports": [
+      {
+        "path": "reports/cfd/patch-062/turbulence-production-report.json",
+        "stat": {
+          "isDir": false,
+          "size": 52,
+          "path": "reports/cfd/patch-062/turbulence-production-report.json"
+        }
+      }
+    ]
+  },
+  {
+    "id": "cfd_compressible_flow",
+    "domain": "CFD",
+    "capabilityName": "Compressible Flow",
+    "limitation": "Shock capturing schemes (Roe, AUSM) unproven.",
+    "existingProd": [],
+    "existingTests": [],
+    "existingReports": []
+  },
+  {
+    "id": "cfd_transient_cfd",
+    "domain": "CFD",
+    "capabilityName": "Transient CFD",
+    "limitation": "Second-order backward Euler time integration unproven for vortex shedding.",
+    "existingProd": [
+      {
+        "path": "src/engine/cfd3d/Fvm3DNavierStokesSolver.ts",
+        "stat": {
+          "isDir": false,
+          "size": 42065,
+          "path": "src/engine/cfd3d/Fvm3DNavierStokesSolver.ts"
+        }
+      }
+    ],
+    "existingTests": [],
+    "existingReports": [
+      {
+        "path": "reports/cfd/patch-070/transient-verification.json",
+        "stat": {
+          "isDir": false,
+          "size": 71,
+          "path": "reports/cfd/patch-070/transient-verification.json"
+        }
+      }
+    ]
+  },
+  {
+    "id": "cfd_mesh_independence",
+    "domain": "CFD",
+    "capabilityName": "Mesh Independence",
+    "limitation": "Richardson extrapolation & GCI index active in modal; CFD GCI unproven.",
+    "existingProd": [],
+    "existingTests": [],
+    "existingReports": [
+      {
+        "path": "reports/cfd/patch-069/discretization-uncertainty-report.json",
+        "stat": {
+          "isDir": false,
+          "size": 75,
+          "path": "reports/cfd/patch-069/discretization-uncertainty-report.json"
+        }
+      }
+    ]
+  },
+  {
+    "id": "cfd_validation",
+    "domain": "CFD",
+    "capabilityName": "Validation",
+    "limitation": "Comparison against experimental wind tunnel benchmarks unproven.",
+    "existingProd": [
+      {
+        "path": "src/engine/cfd3d/SECP082IndependentCFDVerifier.ts",
+        "stat": {
+          "isDir": false,
+          "size": 21877,
+          "path": "src/engine/cfd3d/SECP082IndependentCFDVerifier.ts"
+        }
+      }
+    ],
+    "existingTests": [
+      {
+        "path": "src/engine/cfd3d/__tests__/SECP082IndependentCFDVerifier.test.ts",
+        "stat": {
+          "isDir": false,
+          "size": 13286,
+          "path": "src/engine/cfd3d/__tests__/SECP082IndependentCFDVerifier.test.ts"
+        }
+      }
+    ],
+    "existingReports": [
+      {
+        "path": "reports/cfd/patch-064/backward-facing-step-report.json",
+        "stat": {
+          "isDir": false,
+          "size": 66,
+          "path": "reports/cfd/patch-064/backward-facing-step-report.json"
+        }
+      }
+    ]
+  },
+  {
+    "id": "fem_nonlinear_material",
+    "domain": "FEM",
+    "capabilityName": "Nonlinear Material",
+    "limitation": "von Mises elastoplasticity with isotropic hardening unproven for large strains.",
+    "existingProd": [],
+    "existingTests": [],
+    "existingReports": []
+  },
+  {
+    "id": "fem_large_deformation",
+    "domain": "FEM",
+    "capabilityName": "Large Deformation",
+    "limitation": "Total Lagrangian geometric nonlinearity formulation unproven.",
+    "existingProd": [],
+    "existingTests": [],
+    "existingReports": []
+  },
+  {
+    "id": "fem_buckling",
+    "domain": "FEM",
+    "capabilityName": "Buckling",
+    "limitation": "Linearized Euler geometric stiffness matrix eigenvalue analysis unproven.",
+    "existingProd": [],
+    "existingTests": [],
+    "existingReports": []
+  },
+  {
+    "id": "fem_fatigue",
+    "domain": "FEM",
+    "capabilityName": "Fatigue",
+    "limitation": "S-N Basquin curve and Goodman mean-stress correction unproven.",
+    "existingProd": [
+      {
+        "path": "src/engine/fem/fatigue/FatigueAnalysisEngine.ts",
+        "stat": {
+          "isDir": false,
+          "size": 9183,
+          "path": "src/engine/fem/fatigue/FatigueAnalysisEngine.ts"
+        }
+      }
+    ],
+    "existingTests": [
+      {
+        "path": "src/engine/fem/fatigue/__tests__/FatigueAnalysis.test.ts",
+        "stat": {
+          "isDir": false,
+          "size": 5041,
+          "path": "src/engine/fem/fatigue/__tests__/FatigueAnalysis.test.ts"
+        }
+      }
+    ],
+    "existingReports": [
+      {
+        "path": "reports/fem/patch-086/miner-benchmark.json",
+        "stat": {
+          "isDir": false,
+          "size": 88,
+          "path": "reports/fem/patch-086/miner-benchmark.json"
+        }
+      },
+      {
+        "path": "reports/fem/patch-086/rainflow-benchmark.json",
+        "stat": {
+          "isDir": false,
+          "size": 88,
+          "path": "reports/fem/patch-086/rainflow-benchmark.json"
+        }
+      }
+    ]
+  },
+  {
+    "id": "materials_temperature_dependence",
+    "domain": "MATERIALS",
+    "capabilityName": "Temperature Dependence",
+    "limitation": "Interpolation of thermal expansion and modulus over temperature unproven.",
+    "existingProd": [],
+    "existingTests": [],
+    "existingReports": []
+  },
+  {
+    "id": "materials_plasticity",
+    "domain": "MATERIALS",
+    "capabilityName": "Plasticity",
+    "limitation": "Ramberg-Osgood & Johnson-Cook constitutive models unproven.",
+    "existingProd": [],
+    "existingTests": [],
+    "existingReports": []
+  },
+  {
+    "id": "materials_creep",
+    "domain": "MATERIALS",
+    "capabilityName": "Creep",
+    "limitation": "Norton-Bailey secondary creep power-law rate unproven.",
+    "existingProd": [],
+    "existingTests": [],
+    "existingReports": []
+  },
+  {
+    "id": "materials_fatigue",
+    "domain": "MATERIALS",
+    "capabilityName": "Fatigue",
+    "limitation": "Morrow & Manson-Coffin strain-life fatigue parameterization unproven.",
+    "existingProd": [],
+    "existingTests": [],
+    "existingReports": [
+      {
+        "path": "reports/materials/patch-094/strain-life-report.json",
+        "stat": {
+          "isDir": false,
+          "size": 100,
+          "path": "reports/materials/patch-094/strain-life-report.json"
+        }
+      }
+    ]
+  },
+  {
+    "id": "materials_fracture",
+    "domain": "MATERIALS",
+    "capabilityName": "Fracture",
+    "limitation": "Linear elastic fracture mechanics K_IC and Paris law crack growth unproven.",
+    "existingProd": [],
+    "existingTests": [],
+    "existingReports": [
+      {
+        "path": "reports/materials/patch-095/LEFM-test.json",
+        "stat": {
+          "isDir": false,
+          "size": 106,
+          "path": "reports/materials/patch-095/LEFM-test.json"
+        }
+      }
+    ]
+  },
+  {
+    "id": "materials_heat_treatment",
+    "domain": "MATERIALS",
+    "capabilityName": "Heat Treatment",
+    "limitation": "Phase transformation TTT/CCT kinetics unproven.",
+    "existingProd": [],
+    "existingTests": [],
+    "existingReports": [
+      {
+        "path": "reports/materials/patch-096/aging-test.json",
+        "stat": {
+          "isDir": false,
+          "size": 184,
+          "path": "reports/materials/patch-096/aging-test.json"
+        }
+      }
+    ]
+  },
+  {
+    "id": "materials_uncertainty",
+    "domain": "MATERIALS",
+    "capabilityName": "Uncertainty",
+    "limitation": "A-basis & B-basis statistical property allowance unproven.",
+    "existingProd": [
+      {
+        "path": "src/engine/materials/uncertainty/MaterialUncertaintyEngine.ts",
+        "stat": {
+          "isDir": false,
+          "size": 7108,
+          "path": "src/engine/materials/uncertainty/MaterialUncertaintyEngine.ts"
+        }
+      }
+    ],
+    "existingTests": [],
+    "existingReports": [
+      {
+        "path": "reports/materials/patch-099/specimen-variability-report.json",
+        "stat": {
+          "isDir": false,
+          "size": 183,
+          "path": "reports/materials/patch-099/specimen-variability-report.json"
+        }
+      }
+    ]
+  },
+  {
+    "id": "cam_5_axis",
+    "domain": "CAM",
+    "capabilityName": "5-Axis",
+    "limitation": "Table-table & head-table kinematics singular pole crossing handling in progress.",
+    "existingProd": [],
+    "existingTests": [
+      {
+        "path": "src/engine/kinematics/__tests__/SECP087KinematicsAndSimulation.test.ts",
+        "stat": {
+          "isDir": false,
+          "size": 407,
+          "path": "src/engine/kinematics/__tests__/SECP087KinematicsAndSimulation.test.ts"
+        }
+      }
+    ],
+    "existingReports": []
+  },
+  {
+    "id": "cam_collision",
+    "domain": "CAM",
+    "capabilityName": "Collision",
+    "limitation": "Axis limit clipping active; full swept volume B-Rep collision unproven.",
+    "existingProd": [],
+    "existingTests": [],
+    "existingReports": [
+      {
+        "path": "reports/manufacturing/patch-108/collision-reverification-report.json",
+        "stat": {
+          "isDir": false,
+          "size": 140,
+          "path": "reports/manufacturing/patch-108/collision-reverification-report.json"
+        }
+      }
+    ]
+  },
+  {
+    "id": "cam_post_processing",
+    "domain": "CAM",
+    "capabilityName": "Post Processing",
+    "limitation": "ISO G-code standard post-processing (Fanuc, Heidenhain, Siemens 840D) active.",
+    "existingProd": [],
+    "existingTests": [],
+    "existingReports": [
+      {
+        "path": "reports/manufacturing/patch-107/controller-profile-report.json",
+        "stat": {
+          "isDir": false,
+          "size": 2175,
+          "path": "reports/manufacturing/patch-107/controller-profile-report.json"
+        }
+      }
+    ]
+  },
+  {
+    "id": "plm_eco",
+    "domain": "PLM",
+    "capabilityName": "ECO",
+    "limitation": "Engineering Change Order approval workflow state machine active.",
+    "existingProd": [
+      {
+        "path": "src/engine/plm/MasterPLMManager.ts",
+        "stat": {
+          "isDir": false,
+          "size": 4265,
+          "path": "src/engine/plm/MasterPLMManager.ts"
+        }
+      }
+    ],
+    "existingTests": [
+      {
+        "path": "src/verification/patch335/__tests__/PATCH-065-CanonicalPLMProjection.test.ts",
+        "stat": {
+          "isDir": false,
+          "size": 24413,
+          "path": "src/verification/patch335/__tests__/PATCH-065-CanonicalPLMProjection.test.ts"
+        }
+      }
+    ],
+    "existingReports": []
+  },
+  {
+    "id": "plm_configuration",
+    "domain": "PLM",
+    "capabilityName": "Configuration",
+    "limitation": "Effectivity date and serial range unit configuration unproven.",
+    "existingProd": [],
+    "existingTests": [],
+    "existingReports": [
+      {
+        "path": "reports/configuration/patch-118/configuration-independent-verification.json",
+        "stat": {
+          "isDir": false,
+          "size": 1790,
+          "path": "reports/configuration/patch-118/configuration-independent-verification.json"
+        }
+      }
+    ]
+  },
+  {
+    "id": "digital twin_inspection_twin",
+    "domain": "DIGITAL TWIN",
+    "capabilityName": "Inspection Twin",
+    "limitation": "CMM scan point cloud deviation colormap overlay unproven.",
+    "existingProd": [],
+    "existingTests": [],
+    "existingReports": []
+  },
+  {
+    "id": "digital twin_telemetry",
+    "domain": "DIGITAL TWIN",
+    "capabilityName": "Telemetry",
+    "limitation": "OPC UA, MQTT, and Modbus TCP high-frequency telemetry ingestion.",
+    "existingProd": [],
+    "existingTests": [
+      {
+        "path": "src/engine/telemetry/__tests__/SECP086IndustrialConnectivity.test.ts",
+        "stat": {
+          "isDir": false,
+          "size": 408,
+          "path": "src/engine/telemetry/__tests__/SECP086IndustrialConnectivity.test.ts"
+        }
+      }
+    ],
+    "existingReports": []
+  },
+  {
+    "id": "ai_geometry_reasoning",
+    "domain": "AI",
+    "capabilityName": "Geometry Reasoning",
+    "limitation": "Feature recognition (fillets, holes, pockets) via heuristic rule tree.",
+    "existingProd": [],
+    "existingTests": [
+      {
+        "path": "scripts/engineering_ai/run_patch132_verification.ts",
+        "stat": {
+          "isDir": false,
+          "size": 4653,
+          "path": "scripts/engineering_ai/run_patch132_verification.ts"
+        }
+      }
+    ],
+    "existingReports": [
+      {
+        "path": "reports/digital-twin/patch-133/acceptance_report.json",
+        "stat": {
+          "isDir": false,
+          "size": 6103,
+          "path": "reports/digital-twin/patch-133/acceptance_report.json"
+        }
+      }
+    ]
+  },
+  {
+    "id": "ai_physics_reasoning",
+    "domain": "AI",
+    "capabilityName": "Physics Reasoning",
+    "limitation": "Stress concentration heuristic assessment active.",
+    "existingProd": [],
+    "existingTests": [
+      {
+        "path": "scripts/engineering_ai/run_patch131_verification.ts",
+        "stat": {
+          "isDir": false,
+          "size": 4592,
+          "path": "scripts/engineering_ai/run_patch131_verification.ts"
+        }
+      }
+    ],
+    "existingReports": []
+  },
+  {
+    "id": "ai_diagnostics",
+    "domain": "AI",
+    "capabilityName": "Diagnostics",
+    "limitation": "Anomaly pattern classification across multi-channel sensor streams.",
+    "existingProd": [],
+    "existingTests": [],
+    "existingReports": []
+  },
+  {
+    "id": "hpc_parallel_execution",
+    "domain": "HPC",
+    "capabilityName": "Parallel Execution",
+    "limitation": "WebWorker and multithreaded task dispatcher active.",
+    "existingProd": [],
+    "existingTests": [
+      {
+        "path": "src/engine/hpc/__tests__/SECP085Performance.test.ts",
+        "stat": {
+          "isDir": false,
+          "size": 504,
+          "path": "src/engine/hpc/__tests__/SECP085Performance.test.ts"
+        }
+      },
+      {
+        "path": "scripts/engineering_compute/run_patch141_verification.ts",
+        "stat": {
+          "isDir": false,
+          "size": 2211,
+          "path": "scripts/engineering_compute/run_patch141_verification.ts"
+        }
+      }
+    ],
+    "existingReports": [
+      {
+        "path": "reports/engineering-compute/patch-141/acceptance_report.json",
+        "stat": {
+          "isDir": false,
+          "size": 2682,
+          "path": "reports/engineering-compute/patch-141/acceptance_report.json"
+        }
+      }
+    ]
+  },
+  {
+    "id": "hpc_gpu",
+    "domain": "HPC",
+    "capabilityName": "GPU",
+    "limitation": "GPU compute pipeline requires WebGPU/CUDA hardware backend.",
+    "existingProd": [],
+    "existingTests": [],
+    "existingReports": [
+      {
+        "path": "reports/engineering-hpc/patch-148/verification-report-1787316081301.json",
+        "stat": {
+          "isDir": false,
+          "size": 23382,
+          "path": "reports/engineering-hpc/patch-148/verification-report-1787316081301.json"
+        }
+      }
+    ]
+  },
+  {
+    "id": "hpc_webgpu",
+    "domain": "HPC",
+    "capabilityName": "WebGPU",
+    "limitation": "WGSL shader compilation active for viewport rendering; compute shaders unproven.",
+    "existingProd": [],
+    "existingTests": [
+      {
+        "path": "scripts/engineering_compute/run_patch143_verification.ts",
+        "stat": {
+          "isDir": false,
+          "size": 2208,
+          "path": "scripts/engineering_compute/run_patch143_verification.ts"
+        }
+      }
+    ],
+    "existingReports": [
+      {
+        "path": "reports/engineering-hpc/patch-148/verification-report-1787316103178.json",
+        "stat": {
+          "isDir": false,
+          "size": 23434,
+          "path": "reports/engineering-hpc/patch-148/verification-report-1787316103178.json"
+        }
+      }
+    ]
+  },
+  {
+    "id": "hpc_wasm",
+    "domain": "HPC",
+    "capabilityName": "WASM",
+    "limitation": "SIMD128 WebAssembly acceleration module hash verification.",
+    "existingProd": [],
+    "existingTests": [
+      {
+        "path": "src/engine/hpc/__tests__/SECP085WasmIntegrity.test.ts",
+        "stat": {
+          "isDir": false,
+          "size": 489,
+          "path": "src/engine/hpc/__tests__/SECP085WasmIntegrity.test.ts"
+        }
+      }
+    ],
+    "existingReports": [
+      {
+        "path": "reports/SECP-101.3-WASM-KERNEL-CONTRACTS.json",
+        "stat": {
+          "isDir": false,
+          "size": 3567,
+          "path": "reports/SECP-101.3-WASM-KERNEL-CONTRACTS.json"
+        }
+      }
+    ]
+  },
+  {
+    "id": "hpc_native_hpc",
+    "domain": "HPC",
+    "capabilityName": "Native HPC",
+    "limitation": "Native C++/Fortran shared object binding unproven in container sandbox.",
+    "existingProd": [],
+    "existingTests": [],
+    "existingReports": []
+  },
+  {
+    "id": "hpc_mpi",
+    "domain": "HPC",
+    "capabilityName": "MPI",
+    "limitation": "Message Passing Interface inter-node domain decomposition unproven.",
+    "existingProd": [],
+    "existingTests": [],
+    "existingReports": []
+  },
+  {
+    "id": "hpc_distributed_cfd",
+    "domain": "HPC",
+    "capabilityName": "Distributed CFD",
+    "limitation": "Partitioned mesh halo-cell exchange unproven.",
+    "existingProd": [],
+    "existingTests": [],
+    "existingReports": []
+  },
+  {
+    "id": "hpc_distributed_fem",
+    "domain": "HPC",
+    "capabilityName": "Distributed FEM",
+    "limitation": "FETI-DP domain decomposition solver unproven.",
+    "existingProd": [],
+    "existingTests": [],
+    "existingReports": []
+  },
+  {
+    "id": "hpc_scaling",
+    "domain": "HPC",
+    "capabilityName": "Scaling",
+    "limitation": "Amdahl / Gustafson strong and weak scaling benchmarks in progress.",
+    "existingProd": [
+      {
+        "path": "src/engine/hpc/benchmarks/HpcBenchmarkHarness.ts",
+        "stat": {
+          "isDir": false,
+          "size": 1386,
+          "path": "src/engine/hpc/benchmarks/HpcBenchmarkHarness.ts"
+        }
+      }
+    ],
+    "existingTests": [
+      {
+        "path": "src/engine/hpc/__tests__/SECP085Performance.test.ts",
+        "stat": {
+          "isDir": false,
+          "size": 504,
+          "path": "src/engine/hpc/__tests__/SECP085Performance.test.ts"
+        }
+      }
+    ],
+    "existingReports": []
+  }
+]

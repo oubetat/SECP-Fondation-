@@ -1,0 +1,11 @@
+{
+  "reportId": "COLLISION-ENGINE-P4-CALLPATH-001",
+  "productionPaths": [
+    { "domain": "CAM", "continuousProvider": "ContinuousSweptCollisionProvider / CamFiveAxisCollisionProvider", "verified": true },
+    { "domain": "5-Axis", "continuousProvider": "CamFiveAxisCollisionProvider", "verified": true },
+    { "domain": "Machine Sim", "continuousProvider": "MachineSimulationCollisionProvider", "verified": true },
+    { "domain": "Assembly", "continuousProvider": "AssemblyCollisionProvider", "verified": true },
+    { "domain": "Kinematics", "continuousProvider": "KinematicsCollisionProvider", "verified": true }
+  ],
+  "verdict": "PASSED"
+}

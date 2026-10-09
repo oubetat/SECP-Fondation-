@@ -1,0 +1,9 @@
+{
+  "globalStrainEnergy": 0.025,
+  "sumElementStrainEnergy": 0.024999999999999998,
+  "externalWork": 0.025,
+  "energyErrorAbsolute": 3.469446951953614e-18,
+  "energyErrorRelative": 1.3877787807259345e-16,
+  "workEnergyErrorRelative": 0,
+  "passed": true
+}

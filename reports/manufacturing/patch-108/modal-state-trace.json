@@ -1,0 +1,8 @@
+{
+  "initialState": {
+    "units": "METRIC_MM",
+    "distanceMode": "ABSOLUTE",
+    "plane": "XY_G17"
+  },
+  "transitionsTracked": 13
+}

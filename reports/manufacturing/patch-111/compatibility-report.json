@@ -1,0 +1,9 @@
+{
+  "verdict": "COMPATIBLE",
+  "checksEvaluated": [
+    "TOOL_DIAMETER_VS_STEPOVER",
+    "MACHINE_ENVELOPE",
+    "MATERIAL_RPM_LIMIT"
+  ],
+  "mismatchesCount": 0
+}

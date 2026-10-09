@@ -1,0 +1,31 @@
+{
+  "reportId": "COLLISION-ENGINE-P3-CALLPATH-001",
+  "domainPaths": [
+    {
+      "domain": "CAM",
+      "flow": "Toolpath -> Canonical CAD/Stock/Fixture -> CanonicalGeometryAdapter -> CollisionAuthority",
+      "verified": true
+    },
+    {
+      "domain": "5-Axis",
+      "flow": "Tool+Holder+Machine+Workpiece -> Canonical Geometry -> CanonicalGeometryAdapter -> CollisionAuthority",
+      "verified": true
+    },
+    {
+      "domain": "Machine Simulation",
+      "flow": "Machine Components -> Canonical Geometry -> CanonicalGeometryAdapter -> CollisionAuthority",
+      "verified": true
+    },
+    {
+      "domain": "Assembly",
+      "flow": "Assembly Components -> Canonical Geometry -> CanonicalGeometryAdapter -> CollisionAuthority",
+      "verified": true
+    },
+    {
+      "domain": "Kinematics",
+      "flow": "Canonical Bodies + Transforms -> Canonical Geometry -> CanonicalGeometryAdapter -> CollisionAuthority",
+      "verified": true
+    }
+  ],
+  "verdict": "PASSED"
+}

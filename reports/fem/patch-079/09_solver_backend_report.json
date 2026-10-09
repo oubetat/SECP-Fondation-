@@ -1,0 +1,4 @@
+{
+  "backend": "SparseDirectBackend",
+  "algorithm": "Sparse LDL^T Cholesky Factorization"
+}

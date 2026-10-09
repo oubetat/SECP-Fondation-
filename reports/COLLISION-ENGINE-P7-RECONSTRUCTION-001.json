@@ -1,0 +1,192 @@
+{
+  "generatedAt": "2026-10-03T10:03:22.758Z",
+  "missionId": "COLLISION-ENGINE-P7-TRUTH-THREAD-DETERMINISTIC-PERSISTENCE-001",
+  "executionId": "EXEC_COL_bqqd2kejh_1791021802758",
+  "inputHash": "732cdefb72b7b4f2d8d7e5803e7f3fdf8120d2d37ebe47247c1af490bef4488e",
+  "resultHash": "e84a990934d5771900db11da95f5743712dbee9fff225fb6e4d864ab7d06177c",
+  "evidenceHash": "56a24ec9934325811f9eb6fdb95600b985f49b15868d55570d1bb2568de556bf",
+  "eventHash": "afc3074bddd5bbeabe0a628a71f6a9ea14b6099944fa29e8394c478d87f556f4",
+  "status": "ANALYSIS_FAILED",
+  "verdict": "RECONSTRUCTION_PARITY_VERIFIED",
+  "provenance": {
+    "cadDocumentRevisionId": "REV_GEN_v1",
+    "geometryHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "algorithmVersion": "SYSTEM_VALIDATOR@1.0.0"
+  },
+  "reconstructionDetails": {
+    "originalResult": {
+      "executionId": "EXEC_COL_g8lo5o7xc_1791021802760",
+      "timestampIso": "2026-10-03T10:03:22.760Z",
+      "status": "ANALYSIS_FAILED",
+      "severity": "FATAL_FAILURE",
+      "exactness": "UNSUPPORTED",
+      "metrics": {
+        "minClearanceMm": 0,
+        "maxPenetrationDepthMm": 0,
+        "volumetricInterferenceMm3": 0
+      },
+      "contactManifold": [],
+      "temporalInfo": {
+        "timeOfImpactNormalized": null,
+        "criticalSubStepIndex": null
+      },
+      "failureState": {
+        "isFailed": true,
+        "failureReason": "CAM_MULTI_AXIS requires valid toolAssembly with positive cutter diameter."
+      },
+      "provenance": {
+        "cadDocumentRevisionId": "REV_GEN_v1",
+        "geometryHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "algorithmVersion": "SYSTEM_VALIDATOR@1.0.0"
+      },
+      "diagnostics": [
+        "CAM_MULTI_AXIS requires valid toolAssembly with positive cutter diameter."
+      ],
+      "provenSafe": false
+    },
+    "persistedResult": {
+      "executionId": "EXEC_COL_g8lo5o7xc_1791021802760",
+      "timestampIso": "2026-10-03T10:03:22.760Z",
+      "status": "ANALYSIS_FAILED",
+      "severity": "FATAL_FAILURE",
+      "exactness": "UNSUPPORTED",
+      "metrics": {
+        "minClearanceMm": 0,
+        "maxPenetrationDepthMm": 0,
+        "volumetricInterferenceMm3": 0
+      },
+      "contactManifold": [],
+      "temporalInfo": {
+        "timeOfImpactNormalized": null,
+        "criticalSubStepIndex": null
+      },
+      "failureState": {
+        "isFailed": true,
+        "failureReason": "CAM_MULTI_AXIS requires valid toolAssembly with positive cutter diameter."
+      },
+      "provenance": {
+        "cadDocumentRevisionId": "REV_GEN_v1",
+        "geometryHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "algorithmVersion": "SYSTEM_VALIDATOR@1.0.0"
+      },
+      "diagnostics": [
+        "CAM_MULTI_AXIS requires valid toolAssembly with positive cutter diameter."
+      ],
+      "provenSafe": false
+    },
+    "reloadedResult": {
+      "executionId": "EXEC_COL_g8lo5o7xc_1791021802760",
+      "timestampIso": "2026-10-03T10:03:22.760Z",
+      "status": "ANALYSIS_FAILED",
+      "severity": "FATAL_FAILURE",
+      "exactness": "UNSUPPORTED",
+      "metrics": {
+        "minClearanceMm": 0,
+        "maxPenetrationDepthMm": 0,
+        "volumetricInterferenceMm3": 0
+      },
+      "contactManifold": [],
+      "temporalInfo": {
+        "timeOfImpactNormalized": null,
+        "criticalSubStepIndex": null
+      },
+      "failureState": {
+        "isFailed": true,
+        "failureReason": "CAM_MULTI_AXIS requires valid toolAssembly with positive cutter diameter."
+      },
+      "provenance": {
+        "cadDocumentRevisionId": "REV_GEN_v1",
+        "geometryHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "algorithmVersion": "SYSTEM_VALIDATOR@1.0.0"
+      },
+      "diagnostics": [
+        "CAM_MULTI_AXIS requires valid toolAssembly with positive cutter diameter."
+      ],
+      "provenSafe": false
+    },
+    "reconstructedResult": {
+      "executionId": "EXEC_COL_g8lo5o7xc_1791021802760",
+      "timestampIso": "2026-10-03T10:03:22.760Z",
+      "status": "ANALYSIS_FAILED",
+      "severity": "FATAL_FAILURE",
+      "exactness": "UNSUPPORTED",
+      "metrics": {
+        "minClearanceMm": 0,
+        "maxPenetrationDepthMm": 0,
+        "volumetricInterferenceMm3": 0
+      },
+      "contactManifold": [],
+      "temporalInfo": {
+        "timeOfImpactNormalized": null,
+        "criticalSubStepIndex": null
+      },
+      "failureState": {
+        "isFailed": true,
+        "failureReason": "CAM_MULTI_AXIS requires valid toolAssembly with positive cutter diameter."
+      },
+      "provenance": {
+        "cadDocumentRevisionId": "REV_GEN_v1",
+        "geometryHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "algorithmVersion": "SYSTEM_VALIDATOR@1.0.0"
+      },
+      "diagnostics": [
+        "CAM_MULTI_AXIS requires valid toolAssembly with positive cutter diameter."
+      ],
+      "provenSafe": false
+    },
+    "reexecutedResult": {
+      "executionId": "EXEC_COL_e7c8w84kt_1791021802760",
+      "timestampIso": "2026-10-03T10:03:22.760Z",
+      "status": "ANALYSIS_FAILED",
+      "severity": "FATAL_FAILURE",
+      "exactness": "UNSUPPORTED",
+      "metrics": {
+        "minClearanceMm": 0,
+        "maxPenetrationDepthMm": 0,
+        "volumetricInterferenceMm3": 0
+      },
+      "contactManifold": [],
+      "temporalInfo": {
+        "timeOfImpactNormalized": null,
+        "criticalSubStepIndex": null
+      },
+      "failureState": {
+        "isFailed": true,
+        "failureReason": "CAM_MULTI_AXIS requires valid toolAssembly with positive cutter diameter."
+      },
+      "provenance": {
+        "cadDocumentRevisionId": "REV_GEN_v1",
+        "geometryHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "algorithmVersion": "SYSTEM_VALIDATOR@1.0.0"
+      },
+      "diagnostics": [
+        "CAM_MULTI_AXIS requires valid toolAssembly with positive cutter diameter."
+      ],
+      "provenSafe": false
+    },
+    "R0_vs_R1": {
+      "isEquivalent": true,
+      "mismatches": [],
+      "operationalDiffs": []
+    },
+    "R1_vs_R2": {
+      "isEquivalent": true,
+      "mismatches": [],
+      "operationalDiffs": []
+    },
+    "R2_vs_R3": {
+      "isEquivalent": true,
+      "mismatches": [],
+      "operationalDiffs": []
+    },
+    "R0_vs_R4": {
+      "isEquivalent": true,
+      "mismatches": [],
+      "operationalDiffs": [
+        "executionId diff: 'EXEC_COL_g8lo5o7xc_1791021802760' vs 'EXEC_COL_e7c8w84kt_1791021802760'"
+      ]
+    },
+    "isParityVerified": true,
+    "verificationStatus": "AUTHORITATIVE"
+  }
+}

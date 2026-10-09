@@ -1,0 +1,78 @@
+{
+  "contract_id": "SECP-POST-007-PHASE2-CAP-SUP-005-COLLISION-CONTRACT-AUDIT",
+  "audit_type": "FINAL_FORENSIC_CLOSURE_REVIEW",
+  "timestamp": "2026-09-23T11:15:00.000Z",
+  "audit_scope": [
+    "src/engine/manufacturing/collision/CollisionDetector.ts",
+    "src/engine/manufacturing/collision/CollisionClassifier.ts",
+    "src/engine/manufacturing/collision/BroadPhaseCollisionEngine.ts",
+    "src/engine/manufacturing/collision/NarrowPhaseCollisionEngine.ts",
+    "src/engine/manufacturing/collision/types.ts",
+    "src/engine/manufacturing/IndependentManufacturingOracle.ts"
+  ],
+  "m_col_03_forensic_finding": {
+    "historical_event": "M-COL-03 test was updated from expecting COLLISION_FREE to CLEARANCE_VIOLATION",
+    "root_cause_analysis": "The test setup used dist = 0.5mm, collisionTolerance = 0.001mm, and clearanceRequirement.minimumDistance = 1.0mm. Because 0.001mm < 0.5mm < 1.0mm, the distance is in the MARGINAL clearance state.",
+    "verdict": "CORRECTED_INCORRECT_TEST_ASSUMPTION",
+    "justification": "Updating the test expectation to CLEARANCE_VIOLATION corrected an incorrect test assumption that ignored minimum clearance requirements, aligning the test with the canonical collision contract without weakening mutation detection."
+  },
+  "canonical_distance_semantics": {
+    "distance_gt_0": "Geometric separation / positive clearance buffer between primitive hulls",
+    "distance_eq_0": "Exact surface-to-surface touching / boundary contact",
+    "distance_lt_0": "Geometric interpenetration / material overlap (|distance| = penetration depth)"
+  },
+  "boundary_behavior_matrix": [
+    { "regime": "distance > clearanceReq (1.5mm)", "clearance_state": "CLEAR", "verdict": "COLLISION_FREE" },
+    { "regime": "distance == clearanceReq (1.0mm)", "clearance_state": "CLEAR", "verdict": "COLLISION_FREE" },
+    { "regime": "collisionTol < distance < clearanceReq (0.5mm)", "clearance_state": "MARGINAL", "verdict": "CLEARANCE_VIOLATION" },
+    { "regime": "distance == collisionTol (0.001mm)", "clearance_state": "VIOLATED", "verdict": "FIXTURE_COLLISION / GOUGE" },
+    { "regime": "0 < distance < collisionTol (0.0005mm)", "clearance_state": "VIOLATED", "verdict": "FIXTURE_COLLISION / GOUGE" },
+    { "regime": "distance == 0.0mm", "clearance_state": "VIOLATED", "verdict": "FIXTURE_COLLISION / GOUGE" },
+    { "regime": "-collisionTol < distance < 0 (-0.0005mm)", "clearance_state": "VIOLATED", "verdict": "FIXTURE_COLLISION / GOUGE" },
+    { "regime": "distance == -collisionTol (-0.001mm)", "clearance_state": "VIOLATED", "verdict": "FIXTURE_COLLISION / GOUGE" },
+    { "regime": "distance < -collisionTol (-1.0mm)", "clearance_state": "VIOLATED", "verdict": "FIXTURE_COLLISION / GOUGE" }
+  ],
+  "safety_invariants": {
+    "CONFIRMED_COLLISION_IMP_NOT_SAFE": true,
+    "UNKNOWN_INSUFFICIENT_COVERAGE_IMP_NOT_SAFE": true,
+    "MISSING_REQUIRED_INPUT_IMP_NOT_SAFE": true
+  },
+  "mutation_adequacy": [
+    { "id": "M-COL-01", "name": "Confirmed collision override", "expected": "Collision verdict overrides low coverage", "detected": true, "test": "CollisionMutation.test.ts" },
+    { "id": "M-COL-02", "name": "Missing/NaN tolerance", "expected": "Fail closed to UNDETERMINED and provenSafe=false", "detected": true, "test": "CollisionMutation.test.ts" },
+    { "id": "M-COL-03", "name": "Distance sign inversion", "expected": "Classifies penetration & boundary as VIOLATED", "detected": true, "test": "CollisionMutation.test.ts" },
+    { "id": "M-COL-04", "name": "Priority suppression", "expected": "HOLDER > SPINDLE > FIXTURE > GOUGE", "detected": true, "test": "CollisionMutation.test.ts" },
+    { "id": "M-COL-05", "name": "Fixture transform removal", "expected": "Assembly fixture moves with tool pose", "detected": true, "test": "CollisionMutation.test.ts" },
+    { "id": "M-COL-06", "name": "Collision event removal", "expected": "Events list non-empty on collision", "detected": true, "test": "CollisionMutation.test.ts" },
+    { "id": "M-COL-07", "name": "Force NO_COLLISION", "expected": "Never COLLISION_FREE when events exist", "detected": true, "test": "CollisionMutation.test.ts" },
+    { "id": "M-COL-08", "name": "Force COLLISION_UNDETERMINED", "expected": "COLLISION_FREE when clean & coverage >= 0.8", "detected": true, "test": "CollisionMutation.test.ts" },
+    { "id": "M-COL-09", "name": "Force provenSafe=true", "expected": "provenSafe=false on collision/low coverage", "detected": true, "test": "CollisionMutation.test.ts" },
+    { "id": "M-COL-10", "name": "Sampling coverage manipulation", "expected": "Triggers UNDETERMINED on sample drop", "detected": true, "test": "CollisionMutation.test.ts" }
+  ],
+  "oracle_independence": {
+    "imports_secp_collision": false,
+    "imports_secp_cam": false,
+    "imports_secp_kinematics": false,
+    "shared_calculation_functions": false
+  },
+  "verification_results": {
+    "collision_manufacturing_tests": { "total": 24, "passed": 24, "failed": 0 },
+    "qif_ap242_regression_boundary": { "total": 60, "passed": 60, "failed": 0 },
+    "total_verified_tests": 84
+  },
+  "source_hashes": {
+    "CollisionDetector.ts": "a834b4916b51f5055d4c2b60e6621079965146caa4692d5db4642d71ff45a203",
+    "CollisionClassifier.ts": "8fad4c2eb2381e1e0840174c0330d7d475941f0a1184a1c149e52368a8a5eca3",
+    "BroadPhaseCollisionEngine.ts": "40cd8cee5dc4c7745b86c0513637410192cf8ee9df4965dc81020e3943c3f7a4",
+    "NarrowPhaseCollisionEngine.ts": "d853d11c0dcb25adc4d4d655f0a2648130198b689f1d17ee9159bc94a9a1a953",
+    "types.ts": "58da5ab8c77049b44a081de0b2981742c2b18a17081988f4156246a71740c6b4",
+    "IndependentManufacturingOracle.ts": "0322c7f6afddaaf8db0958ca4f4458dacbb4a441a30f2cc0a16892aec8386a15",
+    "ClosedLoopMetrologyInversionEngine.ts": "d5b4aa5a844edb49ef0a93906d2461a2b95af49ccce7eb1cee3cc39b686406aa",
+    "CollisionContractAudit.test.ts": "68e512e005b3c3ca8892bcb854015fe98718907ee5db4e026ab67752577bf60d",
+    "CollisionMutation.test.ts": "bc467a70c4cbc667f38cdd8a5a48e5e4765a25a21d43ab04779b5cc1a9e49487",
+    "ManufacturingPhase2RedTeam.test.ts": "ac223c813a0efa0ca2420c15cdb6574ca3c4b388f91d33141c72298fbae28f84",
+    "ManufacturingMutation.test.ts": "b25ed52a3aa6fcaa6cc7ed4be8c8a6d4ec571863afd174ffc6010928be8002eb"
+  },
+  "final_verdict": "PROVEN_PARTIAL",
+  "verdict_rationale": "The collision contract, safety invariants, distance semantics, boundary matrix, and mutation adequacy (10/10) are mathematically proven and fully verified (84/84 passing tests). However, because underlying geometry representations rely on simplified primitive hulls (Capsules/AABBs) and physical CNC machine telemetry is simulated rather than live hardware, the overall CAP-SUP-005 capability verdict remains strictly PROVEN_PARTIAL."
+}

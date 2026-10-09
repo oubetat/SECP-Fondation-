@@ -1,0 +1,22 @@
+{
+  "missionId": "COLLISION-ENGINE-FORENSIC-MATURITY-001",
+  "timestamp": "2026-10-01T01:00:00.000Z",
+  "failureSemanticsAudit": {
+    "AssemblyInterferenceEngine": {
+      "pattern": "try { ... } catch (err) { console.warn(...); }",
+      "verdict": "FAIL_OPEN (Kernel boolean failures silently omitted, reporting false NO_INTERFERENCE)"
+    },
+    "CAM CollisionDetectionEngine": {
+      "pattern": "Returns empty incidents / clear status if partTriangles is empty or invalid",
+      "verdict": "FAIL_OPEN on empty input without validation error"
+    },
+    "Manufacturing CollisionDetector": {
+      "pattern": "Returns TrueCollisionVerdict.COLLISION_UNDETERMINED and provenSafe: false on invalid/negative tolerances or empty points",
+      "verdict": "FAIL_CLOSED (Strict compliance)"
+    },
+    "Assembly Clash NarrowPhaseDetector": {
+      "pattern": "Returns verdict: 'INVALID' on NaN/Inf matrices or dimensions",
+      "verdict": "FAIL_CLOSED"
+    }
+  }
+}

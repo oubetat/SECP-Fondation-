@@ -1,0 +1,28 @@
+{
+  "auditTitle": "SECP Cyber-Physical Authority Integration Audit",
+  "documentId": "CPAG-VERDICT-2026-001",
+  "timestamp": "2026-09-24T05:19:25Z",
+  "auditScope": "Post-CPIS-001 Forensic Authority Reconciliation",
+  "classifications": {
+    "CYBERPHYSICAL_CONTRACT_AUTHORITY": "PARALLEL_MODEL_DETECTED",
+    "QUALITYGATE_INTEGRATION": "PARTIALLY_INTEGRATED",
+    "METROLOGY_INTEGRATION": "NOT_PROVISIONED",
+    "MACHINE_EXECUTION_INTEGRATION": "PROVEN",
+    "CERTIFICATION_AUTHORITY": "FOUND",
+    "RELEASE_AUTHORITY": "PARTIALLY_INTEGRATED",
+    "TEST_ONLY_ISOLATION": "PROVEN",
+    "CANONICAL_IDENTITY": "DUPLICATED",
+    "PARALLEL_AUTHORITY": "FOUND",
+    "PRODUCTION_BYPASS": "NONE",
+    "PHYSICAL_PROVISIONING": "NOT_PROVISIONED"
+  },
+  "findings": {
+    "cyberPhysicalContractsConsumption": "TEST_ONLY",
+    "alternateCertificateAuthority": "FOUND",
+    "hilProductionContamination": "NONE",
+    "testOnlyEscalation": "NONE",
+    "physicalAbsenceVerdict": "PARTIAL"
+  },
+  "overallVerdict": "PARALLEL_MODEL_DETECTED",
+  "verdictDescription": "The Cyber-Physical Integration Specification (CPIS-v1) and HIL Test Harness successfully establish an advanced boundary emulator and pathology test suite, but CyberPhysicalContracts is not yet wired directly into QualityGate or MetrologyEngine in the live production path. Stages 00-16 remain fully proven, while stages 17-20 honestly report NOT_PROVISIONED."
+}

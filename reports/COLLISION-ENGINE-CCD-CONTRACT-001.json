@@ -1,0 +1,23 @@
+{
+  "contractId": "CONTRACT-COLLISION-CCD-001",
+  "name": "Continuous Collision Detection (CCD) Contract",
+  "version": "1.0.0",
+  "motionModel": {
+    "primaryArchitecture": "Hybrid Swept Volume & Conservative Advancement",
+    "sweptVolumeSpecification": {
+      "type": "Bounding Convex Hull of Tool Assembly between Pose0 and Pose1 (Minkowski Sum of tool cylinder and linear trajectory segment)",
+      "mathematicalGuarantee": "Zero-tunneling guarantee: If SweptHull does not intersect obstacle BVH, entire continuous trajectory is certified collision-free."
+    },
+    "conservativeAdvancement": {
+      "condition": "When SweptHull broad-phase indicates potential contact",
+      "algorithm": "Iterative upper-bound time-of-impact calculation: dt_safe = distance(t) / max_velocity",
+      "terminationCondition": "distance <= contactTolerance (COLLISION) OR t >= 1.0 (SAFE)",
+      "maxIterations": 100,
+      "timeoutBehavior": "Return status: 'ANALYSIS_FAILED' (FAIL-CLOSED)"
+    },
+    "discreteSamplingPolicy": {
+      "status": "FORBIDDEN as sole certification method",
+      "allowedUse": "Visualization timeline scrubbing only, accompanied by a 'SAMPLED_VISUALIZATION_ONLY' flag"
+    }
+  }
+}

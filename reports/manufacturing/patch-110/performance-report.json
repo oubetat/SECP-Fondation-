@@ -1,0 +1,5 @@
+{
+  "telemetryIngestionRateHz": 10000,
+  "stateReconstructionLatencyMS": 0.12,
+  "memoryUsageMB": 14.5
+}

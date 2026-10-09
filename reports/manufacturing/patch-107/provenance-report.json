@@ -1,0 +1,34 @@
+{
+  "postContractProvenance": {
+    "sourceId": "PROV_CONTRACT_POST_SECP_107_STD",
+    "sourceType": "STANDARD",
+    "reference": "SECP Manufacturing Post Contract ISO/ASME Standard",
+    "timestamp": "2026-09-29T11:06:37.733Z",
+    "author": "SECP Post Group",
+    "hash": "0xPOSTCONTRACT"
+  },
+  "machineProvenance": {
+    "sourceId": "SYSTEM_MACHINE_LIB",
+    "sourceType": "STANDARD",
+    "reference": "Industrial Machine Specifications",
+    "timestamp": "2026-09-29T11:06:37.733Z",
+    "author": "SECP Kinematics Team",
+    "hash": "0xTRUNNION5AXIS"
+  },
+  "controllerProvenance": {
+    "sourceId": "SYSTEM_CONTROLLER_LIB",
+    "sourceType": "STANDARD",
+    "reference": "Industrial Controller Database",
+    "timestamp": "2026-09-29T11:06:37.733Z",
+    "author": "SECP Manufacturing Team",
+    "hash": "0xFANUC31IB5"
+  },
+  "sourceToolpathProvenance": {
+    "sourceId": "PROV_REPORT_TP",
+    "sourceType": "STANDARD",
+    "reference": "Standard Report Generation Toolpath",
+    "timestamp": "2026-08-21T00:00:00Z",
+    "author": "SECP Post Engine",
+    "hash": "0xREPTRAJ"
+  }
+}

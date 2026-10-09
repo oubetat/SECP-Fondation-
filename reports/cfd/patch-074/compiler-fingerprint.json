@@ -1,0 +1,1 @@
+{"compiler": "LLVM/Clang", "version": "18.1.0", "options": "-O3 -ffp-contract=fast"}

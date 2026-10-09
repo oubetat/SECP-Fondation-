@@ -1,0 +1,52 @@
+{
+  "report_id": "WP-PHY-02-FORENSIC-002",
+  "timestamp": "2026-09-23T12:59:00Z",
+  "status": "NOT_PROVEN",
+  "evidence_integrity": {
+    "hashes": {
+      "EmpiricalToolWearInferenceEngine.ts": "c85a3c057d24a92c1bd56c16ae500921a7b315b195256bc3e6740e9c9ab0761d",
+      "IndependentToolWearOracle.ts": "9732b9fb2fd7ca920990da35a8243b475bf4f371b039c3c91e322626ddcde9d8",
+      "WP_PHY_02_EmpiricalToolWearValidation.test.ts": "544f4caf150e85a441580bf83a5dc67cc6b13da576ef8251d141f1fa6ce6e0e4"
+    },
+    "coefficient_audit": [
+      { "symbol": "K_rough", "value": 0.008, "class": "DOCUMENTED_REFERENCE" },
+      { "symbol": "K_finish", "value": 0.0022, "class": "DATA_DERIVED" },
+      { "symbol": "VB_crit", "value": 0.30, "class": "DOCUMENTED_REFERENCE" },
+      { "symbol": "passive_coeff", "value": 0.15, "class": "UNJUSTIFIED" },
+      { "symbol": "rubbing_onset", "value": 0.8, "class": "UNJUSTIFIED" }
+    ]
+  },
+  "calibration_contract": {
+    "lifecycle_status": "LIFECYCLE_BREACH",
+    "required_behavior": "CALIBRATION_REQUIRED",
+    "observation": "System fallback to uncalibrated production default (0.008/0.0022) masking lack of persistent calibration state."
+  },
+  "independent_oracle": {
+    "status": "ORACLE_NOT_ESTABLISHED",
+    "contamination_level": "CRITICAL",
+    "reason": "Oracle parameters (K=0.0022, Rubbing Threshold=0.8) were synchronized with production edits during attempted test convergence."
+  },
+  "blind_validation_audit": {
+    "metrics": {
+      "rmse": 0.0068,
+      "mae": 0.0044,
+      "bias": 0.0037,
+      "ci_95_coverage": 100.0
+    },
+    "verdict": "DATA_DERIVED_OVERFIT"
+  },
+  "governance_audit": {
+    "source": "ISO 3685:1993 (Single-point turning)",
+    "applicability": "TOOL_CRITICAL_THRESHOLD_NOT_ESTABLISHED",
+    "reason": "Contract does not prove ISO 3685 applicability to current multi-tooth milling of Inconel 718 finishing operations."
+  },
+  "boundary_analysis": {
+    "limit": 0.300,
+    "uncertainty_expanded": 0.020,
+    "cases": [
+      { "measured": 0.279, "upper": 0.299, "decision": "TOOL_DEGRADED_COMPENSATE" },
+      { "measured": 0.280, "upper": 0.300, "decision": "TOOL_CRITICAL_CHANGE_REQUIRED" },
+      { "measured": 0.281, "upper": 0.301, "decision": "TOOL_CRITICAL_CHANGE_REQUIRED" }
+    ]
+  }
+}

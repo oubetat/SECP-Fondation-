@@ -1,0 +1,223 @@
+{
+  "timestamp": "2026-09-30T08:34:48.552Z",
+  "missionId": "NACA0012-CFD-GATED-VELOCITY-FORENSIC-001",
+  "iteration": 10,
+  "alpha_u": 0.5,
+  "alpha_p": 0.2,
+  "clampedCellsCount": 0,
+  "percentageClampedCells": 0,
+  "globalMaxRawCorr": 0.3659389009417249,
+  "globalMaxFinalCorr": 0.07318778018834497,
+  "maxCorrectionCell": {
+    "cellId": 284,
+    "centroid": {
+      "x": -0.0187580706827569,
+      "y": 0.010655069338359727,
+      "z": 0.1
+    },
+    "boundaryClass": "interior",
+    "aP_u": 0.0048933502947958625,
+    "aP_v": 0.0048933502947958625,
+    "aP_w": 0.0048933502947958625,
+    "d_u": 40.871792933504565,
+    "d_v": 40.871792933504565,
+    "d_w": 40.871792933504565,
+    "pPrime_cell": -3.7958348488423987,
+    "gradPPrime_x": -0.001364396051860454,
+    "gradPPrime_y": 0.0011597036423015737,
+    "gradPPrime_z": 0,
+    "rawDu": -0.27882656455465815,
+    "rawDv": 0.2369958356619048,
+    "rawDw": 0,
+    "relaxedDu": -0.05576531291093163,
+    "relaxedDv": 0.04739916713238096,
+    "relaxedDw": 0,
+    "clampedDu": -0.05576531291093163,
+    "clampedDv": 0.04739916713238096,
+    "clampedDw": 0,
+    "maxVelCorrAllowed": 0.25,
+    "clampActivated": false,
+    "criticalComparison": {
+      "rawCorrectionUnrelaxed": 0.3659389009417249,
+      "relaxedCorrection": 0.07318778018834497,
+      "clampedCorrection": 0.07318778018834497,
+      "velocityCorrectionValueEnteringMetric": 0.341778882044707,
+      "velocityCorrectionValueUsedByConvergence": 0.341778882044707
+    }
+  },
+  "top10Cells": [
+    {
+      "cellId": 284,
+      "centroid": {
+        "x": -0.0187580706827569,
+        "y": 0.010655069338359727,
+        "z": 0.1
+      },
+      "boundaryClass": "interior",
+      "rawMag": 0.3659389009417249,
+      "finalMag": 0.07318778018834497,
+      "relaxedMag": 0.07318778018834497,
+      "pPrime_cell": -3.7958348488423987,
+      "clampActivated": false
+    },
+    {
+      "cellId": 281,
+      "centroid": {
+        "x": -0.0187580706827569,
+        "y": -0.010655069338359727,
+        "z": 0.1
+      },
+      "boundaryClass": "interior",
+      "rawMag": 0.36490627644455775,
+      "finalMag": 0.07298125528891156,
+      "relaxedMag": 0.07298125528891156,
+      "pPrime_cell": -3.7986383033813818,
+      "clampActivated": false
+    },
+    {
+      "cellId": 363,
+      "centroid": {
+        "x": -0.03056364650458423,
+        "y": -0.003654509369946559,
+        "z": 0.1
+      },
+      "boundaryClass": "interior",
+      "rawMag": 0.3619280493471844,
+      "finalMag": 0.07238560986943689,
+      "relaxedMag": 0.07238560986943689,
+      "pPrime_cell": -2.6852853521246023,
+      "clampActivated": false
+    },
+    {
+      "cellId": 364,
+      "centroid": {
+        "x": -0.030563646504584232,
+        "y": 0.003654509369946563,
+        "z": 0.1
+      },
+      "boundaryClass": "interior",
+      "rawMag": 0.36071325802130033,
+      "finalMag": 0.07214265160426007,
+      "relaxedMag": 0.07214265160426007,
+      "pPrime_cell": -2.669264720936312,
+      "clampActivated": false
+    },
+    {
+      "cellId": 280,
+      "centroid": {
+        "x": -0.012627043834972883,
+        "y": -0.017449501605655393,
+        "z": 0.1
+      },
+      "boundaryClass": "interior",
+      "rawMag": 0.3580767179456635,
+      "finalMag": 0.0716153435891327,
+      "relaxedMag": 0.0716153435891327,
+      "pPrime_cell": -3.599749477203026,
+      "clampActivated": false
+    },
+    {
+      "cellId": 285,
+      "centroid": {
+        "x": -0.012627043834972882,
+        "y": 0.017449501605655393,
+        "z": 0.1
+      },
+      "boundaryClass": "interior",
+      "rawMag": 0.35712600633412067,
+      "finalMag": 0.07142520126682414,
+      "relaxedMag": 0.07142520126682414,
+      "pPrime_cell": -3.601078486493148,
+      "clampActivated": false
+    },
+    {
+      "cellId": 282,
+      "centroid": {
+        "x": -0.021833107065041844,
+        "y": -0.003594284392925289,
+        "z": 0.1
+      },
+      "boundaryClass": "interior",
+      "rawMag": 0.3566601430766194,
+      "finalMag": 0.0713320286153239,
+      "relaxedMag": 0.0713320286153239,
+      "pPrime_cell": -3.913488379218335,
+      "clampActivated": false
+    },
+    {
+      "cellId": 283,
+      "centroid": {
+        "x": -0.021833107065041844,
+        "y": 0.0035942843929252927,
+        "z": 0.1
+      },
+      "boundaryClass": "interior",
+      "rawMag": 0.3545135745532,
+      "finalMag": 0.07090271491064,
+      "relaxedMag": 0.07090271491064,
+      "pPrime_cell": -3.9091989368099593,
+      "clampActivated": false
+    },
+    {
+      "cellId": 365,
+      "centroid": {
+        "x": -0.027489721909513834,
+        "y": 0.010834682232809914,
+        "z": 0.1
+      },
+      "boundaryClass": "interior",
+      "rawMag": 0.34771412775451804,
+      "finalMag": 0.06954282555090359,
+      "relaxedMag": 0.06954282555090359,
+      "pPrime_cell": -2.6011281218095075,
+      "clampActivated": false
+    },
+    {
+      "cellId": 366,
+      "centroid": {
+        "x": -0.02136094549864066,
+        "y": 0.017747247385149094,
+        "z": 0.1
+      },
+      "boundaryClass": "interior",
+      "rawMag": 0.3449552223247542,
+      "finalMag": 0.06899104446495084,
+      "relaxedMag": 0.06899104446495084,
+      "pPrime_cell": -2.4841755488449255,
+      "clampActivated": false
+    }
+  ],
+  "boundaryLocalization": {
+    "maxByClass": {
+      "interior": 0.07318778018834497,
+      "wall-adjacent": 0.01777279473988089,
+      "inlet-adjacent": 0.0020465758750401763,
+      "outlet-adjacent": 0.0028909653096006937,
+      "far-field": 0
+    },
+    "avgByClass": {
+      "interior": 0.005427654685118309,
+      "wall-adjacent": 0.0034719433121382396,
+      "inlet-adjacent": 0.0010797150567138226,
+      "outlet-adjacent": 0.0008603593403807596,
+      "far-field": 0
+    },
+    "countByClass": {
+      "interior": 3078,
+      "wall-adjacent": 81,
+      "inlet-adjacent": 40,
+      "outlet-adjacent": 41,
+      "far-field": 0
+    }
+  },
+  "semanticClassification": {
+    "velocityCorrectionType": "B",
+    "name": "Iterative Update Norm",
+    "explanation": "velocityCorrection is evaluated as the difference between the velocity after the pressure-correction step and the velocity at the start of the iteration: change = ||u_new - u_prev||. It incorporates BOTH the update from the momentum predictor step (u_star - u_prev) and the pressure-correction step (du). It is NOT the pure velocity correction du itself."
+  },
+  "kResidualAnalysis": {
+    "kResidualValue": 1,
+    "classification": "Normalization Artifact with Zero Initial Guess",
+    "mechanism": "kSystem is initialized with a zero initial guess (x = 0). The initial residual l2 norm is therefore equal to the norm of the RHS vector. Since the RHS is extremely small in the near-converged/flat regions (below absolute tolerance 1e-6), the linear solver converges in exactly 0 Gauss-Seidel iterations. When iterations = 0, the normalized residual returned is computed as l2 / RHSNorm = 1.0. This is a classic normalization artifact of iterative solvers on highly pre-converged systems with zero starting vectors."
+  }
+}

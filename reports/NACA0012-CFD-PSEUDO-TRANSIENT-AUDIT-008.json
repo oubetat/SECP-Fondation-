@@ -1,0 +1,9 @@
+{
+  "missionId": "NACA0012-VV-STRICT-CAUSAL-CLOSURE-008",
+  "timestamp": "2026-09-30T10:07:41.835Z",
+  "audit": {
+    "transientDampingActive": false,
+    "formulation": "Pure Patankar SIMPLE steady-state FVM formulation with under-relaxation alpha_u=0.5, alpha_p=0.2",
+    "residualSemantics": "Reported momentum residual is pure steady spatial Navier-Stokes operator ||aP*u - sum(aNB*uNB) - Su|| without transient artificial masking."
+  }
+}

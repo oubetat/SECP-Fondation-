@@ -1,0 +1,12 @@
+{
+  "reportId": "REP-PRED-129-050",
+  "timestamp": "2026-08-21T09:52:32.023Z",
+  "predictionId": "PRED-050",
+  "inputStateHash": "eeedacc7a2d03cabedea9d4e4cea4eddb7cf16c33a28b7f9c909eaf258ac68c0",
+  "predictionValue": 255,
+  "uncertainty": 2.23606797749979,
+  "oodStatus": "IN_DOMAIN",
+  "physicsPlausibility": true,
+  "status": "PREDICTED",
+  "predictionRootHash": "2e22ede574fe9b6659a7d86dfba98846ca93a5c8ccc18c5717cff3260732c5ad"
+}

@@ -1,0 +1,5 @@
+{
+  "postProcessorId": "POST_HEIDENHAIN_TNC640",
+  "revision": "3.2",
+  "linkedPatch": "PATCH-107"
+}

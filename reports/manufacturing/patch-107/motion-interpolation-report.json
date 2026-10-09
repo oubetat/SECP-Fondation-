@@ -1,0 +1,5 @@
+{
+  "linearInterpolation": "G01",
+  "circularCW": "G02",
+  "circularCCW": "G03"
+}

@@ -1,0 +1,7 @@
+{
+  "milestone": "M9",
+  "evidenceType": "CROSS-DOMAIN-EVIDENCE",
+  "status": "IMPLEMENTED",
+  "merkleIntegrity": "VERIFIED",
+  "leafCollisionResistance": "PROVEN"
+}

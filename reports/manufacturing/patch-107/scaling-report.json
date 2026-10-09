@@ -1,0 +1,4 @@
+{
+  "linearComplexity": "O(N) with respect to toolpath points",
+  "memoryFootprintMB": 4.2
+}

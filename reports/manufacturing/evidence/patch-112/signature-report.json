@@ -1,0 +1,57 @@
+[
+  {
+    "evidenceId": "EV_DESIGN_01",
+    "signer": "KEY_CAD_RELEASE_01",
+    "status": "VALID"
+  },
+  {
+    "evidenceId": "EV_MAT_01",
+    "signer": "KEY_CAM_ENG_01",
+    "status": "VALID"
+  },
+  {
+    "evidenceId": "EV_TOOL_01",
+    "signer": "KEY_CAM_ENG_01",
+    "status": "VALID"
+  },
+  {
+    "evidenceId": "EV_MACH_01",
+    "signer": "KEY_CNC_CTRL_01",
+    "status": "VALID"
+  },
+  {
+    "evidenceId": "EV_FIX_01",
+    "signer": "KEY_CAM_ENG_01",
+    "status": "VALID"
+  },
+  {
+    "evidenceId": "EV_NC_01",
+    "signer": "KEY_GCODE_VERIFIER_01",
+    "status": "VALID"
+  },
+  {
+    "evidenceId": "EV_SIM_01",
+    "signer": "KEY_CAM_ENG_01",
+    "status": "VALID"
+  },
+  {
+    "evidenceId": "EV_TWIN_01",
+    "signer": "KEY_CAM_ENG_01",
+    "status": "VALID"
+  },
+  {
+    "evidenceId": "EV_EXEC_01",
+    "signer": "KEY_CNC_CTRL_01",
+    "status": "VALID"
+  },
+  {
+    "evidenceId": "EV_TEL_01",
+    "signer": "KEY_CNC_CTRL_01",
+    "status": "VALID"
+  },
+  {
+    "evidenceId": "EV_INSP_01",
+    "signer": "KEY_INSPECTOR_01",
+    "status": "VALID"
+  }
+]

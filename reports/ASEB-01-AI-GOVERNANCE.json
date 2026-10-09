@@ -1,0 +1,86 @@
+{
+  "aiGovernanceAudit": {
+    "project": "ASEB-01-XA100",
+    "targetSystemId": "SYS-XA100-EXP",
+    "testedActor": "ai:synthetic:copilot",
+    "securityBoundary": "AUTHORITATIVE_BACKEND_GOVERNANCE_ENGINE",
+    "uiDisablingReliedUpon": false,
+    "attacks": [
+      {
+        "id": "ATK-01",
+        "action": "MUTATE_CANONICAL",
+        "entryPoint": "CommunicationGovernanceEngine.evaluateAIProposal",
+        "expectedRejection": "AI_GOVERNANCE_VIOLATION",
+        "result": "REJECTED_BY_BACKEND"
+      },
+      {
+        "id": "ATK-02",
+        "action": "DELETE_CANONICAL",
+        "entryPoint": "CommunicationGovernanceEngine.evaluateAIProposal",
+        "expectedRejection": "AI_GOVERNANCE_VIOLATION",
+        "result": "REJECTED_BY_BACKEND"
+      },
+      {
+        "id": "ATK-03",
+        "action": "AUTHORIZE_EXECUTION",
+        "entryPoint": "CommunicationGovernanceEngine.authorizeAndExecute",
+        "expectedRejection": "AI_EXECUTION_UNAUTHORIZED",
+        "result": "REJECTED_BY_BACKEND"
+      },
+      {
+        "id": "ATK-04",
+        "action": "PUBLISH_SYSTEM",
+        "entryPoint": "CommunicationGovernanceEngine.publishSystem",
+        "expectedRejection": "PUBLICATION_AUTHORITY_VIOLATION",
+        "result": "REJECTED_BY_BACKEND"
+      },
+      {
+        "id": "ATK-05",
+        "action": "PROMOTE_LIFECYCLE",
+        "entryPoint": "CommunicationGovernanceEngine.promoteLifecycleState",
+        "expectedRejection": "LIFECYCLE_AUTHORITY_VIOLATION",
+        "result": "REJECTED_BY_BACKEND"
+      },
+      {
+        "id": "ATK-06",
+        "action": "DECLARE_VERIFIED",
+        "entryPoint": "CommunicationGovernanceEngine.declareVerification",
+        "expectedRejection": "VERIFICATION_AUTHORITY_VIOLATION",
+        "result": "REJECTED_BY_BACKEND"
+      },
+      {
+        "id": "ATK-07",
+        "action": "BYPASS_REVISION",
+        "entryPoint": "CommunicationGovernanceEngine.evaluateAIProposal",
+        "expectedRejection": "AI_GOVERNANCE_VIOLATION",
+        "result": "REJECTED_BY_BACKEND"
+      },
+      {
+        "id": "ATK-08",
+        "action": "BYPASS_CONFIGURATION",
+        "entryPoint": "CommunicationGovernanceEngine.evaluateAIProposal",
+        "expectedRejection": "AI_GOVERNANCE_VIOLATION",
+        "result": "REJECTED_BY_BACKEND"
+      },
+      {
+        "id": "ATK-09",
+        "action": "SELF_PROMOTE_AUTHORIZE",
+        "entryPoint": "CommunicationGovernanceEngine.authorizeProposal",
+        "expectedRejection": "AI_GOVERNANCE_VIOLATION",
+        "result": "REJECTED_BY_BACKEND"
+      },
+      {
+        "id": "ATK-10",
+        "action": "PROMOTE_RELEASED",
+        "entryPoint": "CommunicationGovernanceEngine.evaluateAIProposal",
+        "expectedRejection": "AI_GOVERNANCE_VIOLATION",
+        "result": "REJECTED_BY_BACKEND"
+      }
+    ],
+    "stateIntegrityProof": {
+      "stateBeforeHash": "a9d4f291e7b83...",
+      "stateAfterHash": "a9d4f291e7b83...",
+      "stateUnchangedConfirmed": true
+    }
+  }
+}

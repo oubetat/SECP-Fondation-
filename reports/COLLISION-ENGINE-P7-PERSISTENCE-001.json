@@ -1,0 +1,171 @@
+{
+  "generatedAt": "2026-10-03T10:03:22.758Z",
+  "missionId": "COLLISION-ENGINE-P7-TRUTH-THREAD-DETERMINISTIC-PERSISTENCE-001",
+  "executionId": "EXEC_COL_bqqd2kejh_1791021802758",
+  "inputHash": "732cdefb72b7b4f2d8d7e5803e7f3fdf8120d2d37ebe47247c1af490bef4488e",
+  "resultHash": "e84a990934d5771900db11da95f5743712dbee9fff225fb6e4d864ab7d06177c",
+  "evidenceHash": "56a24ec9934325811f9eb6fdb95600b985f49b15868d55570d1bb2568de556bf",
+  "eventHash": "afc3074bddd5bbeabe0a628a71f6a9ea14b6099944fa29e8394c478d87f556f4",
+  "status": "ANALYSIS_FAILED",
+  "verdict": "PERSISTENCE_VERIFIED",
+  "provenance": {
+    "cadDocumentRevisionId": "REV_GEN_v1",
+    "geometryHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "algorithmVersion": "SYSTEM_VALIDATOR@1.0.0"
+  },
+  "record": {
+    "recordId": "REC_EXEC_COL_bqqd2kejh_1791021802758",
+    "executionId": "EXEC_COL_bqqd2kejh_1791021802758",
+    "resultId": "RES_EXEC_COL_bqqd2kejh_1791021802758",
+    "evidenceId": "EVID_EXEC_COL_bqqd2kejh_1791021802758",
+    "eventId": "EVT_COL_EXEC_COL_bqqd2kejh_1791021802758_7",
+    "input": {
+      "domain": "CAM_MULTI_AXIS",
+      "coordinateFrame": "WCS",
+      "units": "MILLIMETERS",
+      "toleranceProfile": {
+        "linearToleranceMm": 0.01,
+        "angularToleranceDeg": 0.1,
+        "clearanceWarningMarginMm": 2,
+        "safeClearanceMarginMm": 1
+      },
+      "canonicalGeometry": {
+        "documentId": "DOC_GEN_P7_01",
+        "revisionId": "REV_GEN_v1",
+        "geometryId": "GEOM_GEN_01",
+        "geometryRevision": 1,
+        "snapshotId": "SNAP_GEN_01_v1",
+        "topologyIdentity": "TOPOLOGY_GEN_01",
+        "geometrySource": "CAD",
+        "provenance": "GEN_CAD_TEST",
+        "coordinateFrame": "WCS",
+        "units": "MILLIMETERS",
+        "bounds": {
+          "min": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "max": {
+            "x": 10,
+            "y": 10,
+            "z": 10
+          }
+        },
+        "geometryHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "motionSegment": {
+        "startTcp": {
+          "x": 100,
+          "y": 100,
+          "z": 100
+        },
+        "startOrientation": {
+          "x": 0,
+          "y": 0,
+          "z": 1
+        },
+        "endTcp": {
+          "x": 100,
+          "y": 100,
+          "z": 50
+        },
+        "endOrientation": {
+          "x": 0,
+          "y": 0,
+          "z": 1
+        },
+        "motionType": "RAPID"
+      }
+    },
+    "result": {
+      "executionId": "EXEC_COL_bqqd2kejh_1791021802758",
+      "timestampIso": "2026-10-03T10:03:22.758Z",
+      "status": "ANALYSIS_FAILED",
+      "severity": "FATAL_FAILURE",
+      "exactness": "UNSUPPORTED",
+      "metrics": {
+        "minClearanceMm": 0,
+        "maxPenetrationDepthMm": 0,
+        "volumetricInterferenceMm3": 0
+      },
+      "contactManifold": [],
+      "temporalInfo": {
+        "timeOfImpactNormalized": null,
+        "criticalSubStepIndex": null
+      },
+      "failureState": {
+        "isFailed": true,
+        "failureReason": "CAM_MULTI_AXIS requires valid toolAssembly with positive cutter diameter."
+      },
+      "provenance": {
+        "cadDocumentRevisionId": "REV_GEN_v1",
+        "geometryHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "algorithmVersion": "SYSTEM_VALIDATOR@1.0.0"
+      },
+      "diagnostics": [
+        "CAM_MULTI_AXIS requires valid toolAssembly with positive cutter diameter."
+      ],
+      "provenSafe": false
+    },
+    "evidence": {
+      "evidenceId": "EVID_EXEC_COL_bqqd2kejh_1791021802758",
+      "resultId": "RES_EXEC_COL_bqqd2kejh_1791021802758",
+      "executionId": "EXEC_COL_bqqd2kejh_1791021802758",
+      "inputHash": "732cdefb72b7b4f2d8d7e5803e7f3fdf8120d2d37ebe47247c1af490bef4488e",
+      "resultHash": "e84a990934d5771900db11da95f5743712dbee9fff225fb6e4d864ab7d06177c",
+      "geometryHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "snapshotId": "SNAP_GEN_01_v1",
+      "revisionBinding": {
+        "documentId": "DOC_GEN_P7_01",
+        "revisionId": "REV_GEN_v1",
+        "geometryId": "GEOM_GEN_01",
+        "geometryRevision": 1,
+        "snapshotId": "SNAP_GEN_01_v1",
+        "topologyIdentity": "TOPOLOGY_GEN_01",
+        "geometryHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "transformRevision": "WCS",
+        "motionRevision": "MOTION_RAPID"
+      },
+      "providerId": "EXACT_NARROW_PHASE",
+      "algorithmVersion": "SYSTEM_VALIDATOR@1.0.0",
+      "exactness": "UNSUPPORTED",
+      "status": "ANALYSIS_FAILED",
+      "provenSafe": false,
+      "timestampIso": "2026-10-03T10:03:22.758Z",
+      "evidenceHash": "56a24ec9934325811f9eb6fdb95600b985f49b15868d55570d1bb2568de556bf"
+    },
+    "event": {
+      "eventId": "EVT_COL_EXEC_COL_bqqd2kejh_1791021802758_7",
+      "eventType": "COLLISION_PERSISTED",
+      "executionId": "EXEC_COL_bqqd2kejh_1791021802758",
+      "resultId": "RES_EXEC_COL_bqqd2kejh_1791021802758",
+      "evidenceId": "EVID_EXEC_COL_bqqd2kejh_1791021802758",
+      "documentId": "DOC_GEN_P7_01",
+      "revisionId": "REV_GEN_v1",
+      "geometryId": "GEOM_GEN_01",
+      "snapshotId": "SNAP_GEN_01_v1",
+      "providerId": "EXACT_NARROW_PHASE",
+      "algorithmVersion": "SYSTEM_VALIDATOR@1.0.0",
+      "inputHash": "732cdefb72b7b4f2d8d7e5803e7f3fdf8120d2d37ebe47247c1af490bef4488e",
+      "resultHash": "e84a990934d5771900db11da95f5743712dbee9fff225fb6e4d864ab7d06177c",
+      "evidenceHash": "56a24ec9934325811f9eb6fdb95600b985f49b15868d55570d1bb2568de556bf",
+      "previousEventHash": "20ec0299fb692073f7f506fafe504e159986166687e38276319438711a1accca",
+      "eventHash": "afc3074bddd5bbeabe0a628a71f6a9ea14b6099944fa29e8394c478d87f556f4",
+      "timestampIso": "2026-10-03T10:03:22.758Z"
+    },
+    "revisionBinding": {
+      "documentId": "DOC_GEN_P7_01",
+      "revisionId": "REV_GEN_v1",
+      "geometryId": "GEOM_GEN_01",
+      "geometryRevision": 1,
+      "snapshotId": "SNAP_GEN_01_v1",
+      "topologyIdentity": "TOPOLOGY_GEN_01",
+      "geometryHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "transformRevision": "WCS",
+      "motionRevision": "MOTION_RAPID"
+    },
+    "persistedAtIso": "2026-10-03T10:03:22.759Z",
+    "canonicalHash": "6e7c5112848fe802d776d6380186e86e97c5e6fba59f62afce79683fe95dd25f"
+  }
+}

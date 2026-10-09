@@ -1,0 +1,9 @@
+{
+  "missionId": "COLLISION-ENGINE-FORENSIC-EVIDENCE-ADJUDICATION-001",
+  "timestamp": "2026-10-01T01:14:00.000Z",
+  "truthThreadRecheck": {
+    "cadRevisionHashBinding": false,
+    "immutableProvenanceAudit": false,
+    "finding": "CONFIRMED_CAPABILITY_GAP: Collision events do not link cryptographically to CAD B-Rep revisions or toolpath commit hashes."
+  }
+}

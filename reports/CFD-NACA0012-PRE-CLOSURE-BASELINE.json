@@ -1,0 +1,65 @@
+{
+  "timestamp": "2026-09-22T03:11:00Z",
+  "solverVersion": "SECP-CFD-v0.82-Diagnostic",
+  "configuration": {
+    "re": 6000000,
+    "aoa": 10,
+    "mach": 0.15,
+    "maxIterations": 500,
+    "momentumTol": 0.015,
+    "continuityTol": 0.0001,
+    "alpha_u": 0.5,
+    "alpha_p": 0.2
+  },
+  "baseline": {
+    "experimentId": "EXP-A",
+    "mesh": {
+      "type": "O-Grid",
+      "nx": 120,
+      "ny": 60,
+      "hash": "9d0546823c6917ff"
+    },
+    "monitors": {
+      "cl": 0.14557663793333994,
+      "cd": 0.022453716351357265,
+      "cm": 0.002674316883324641
+    },
+    "residuals": {
+      "momentum": {
+        "linf": 0.05530196321278935,
+        "l1": 0.002759842094077466,
+        "l2": 0.005645902124434676,
+        "normalization": "LOCAL_DIAGONAL"
+      },
+      "continuity": {
+        "linf": 0.00036621270824805513,
+        "l1": 0.002759842094077466,
+        "l2": 0.005645902124434676
+      },
+      "turbulence": {
+        "k": 0,
+        "omega": 0,
+        "status": "NOT_SOLVED"
+      }
+    },
+    "corrections": {
+      "pressure": 0.01215732965104136,
+      "velocity": 0.002977951839357889
+    },
+    "stability": {
+      "forceStabilityPassed": true
+    },
+    "conservation": {
+      "inletMassFlow": 4.825557989759821,
+      "outletMassFlowRaw": 4.9089536081185905,
+      "rawImbalance": 0.017282067386971894,
+      "scaleFactor": 0.9830115285219141,
+      "scaledImbalance": 0
+    }
+  },
+  "sourceInventory": {
+    "Fvm3DNavierStokesSolver.ts": "75662 bytes",
+    "SstKomegaModel.ts": "10900 bytes",
+    "AirfoilMeshGenerator.ts": "11267 bytes"
+  }
+}

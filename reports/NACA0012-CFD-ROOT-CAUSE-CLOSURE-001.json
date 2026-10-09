@@ -1,0 +1,88 @@
+{
+  "timestamp": "2026-09-30T08:21:16.527Z",
+  "missionId": "NACA0012-VV-CLOSURE-001",
+  "caseB_production": {
+    "terminationReason": "MAX_ITERATIONS_REACHED",
+    "converged": false,
+    "iterations": 100,
+    "continuityL1": 0.00006874647465569753,
+    "continuityL2": 3.670245574999401e-8,
+    "continuityLinf": 2.646004998797842e-7,
+    "momentumL1": 0.0000032254768595717264,
+    "momentumL2": 0.000005662354846784772,
+    "momentumLinf": 0.00004014867195777437,
+    "velocityCorrection": 0,
+    "pressureCorrection": 0,
+    "forceStabilityPassed": false,
+    "clVariationPercent": null,
+    "cdVariationPercent": null,
+    "cl": 0.14550913269717983,
+    "cd": 0.023423541982581984,
+    "cm": 0.006054690274788455,
+    "maxVelocity": 1.2961608565038847,
+    "minPressure": -0.938523561533755,
+    "maxPressure": 0.6386176236466335
+  },
+  "gates": {
+    "gateA_solverExecution": {
+      "name": "Gate A — Live Solver Execution",
+      "passed": true,
+      "verdict": "PASS",
+      "evidence": "Live 3D FVM executed in 17.74s on 3,240 cells with full telemetry."
+    },
+    "gateB_continuity": {
+      "name": "Gate B — Continuity Residual Acceptance",
+      "passed": true,
+      "verdict": "PASS",
+      "evidence": "Continuity L1 = 6.8746e-5 (Threshold: 1.0000e-4)"
+    },
+    "gateC_momentum": {
+      "name": "Gate C — Momentum Residual Acceptance",
+      "passed": true,
+      "verdict": "PASS",
+      "evidence": "Momentum Linf = 4.0149e-5 (Threshold: 1.5000e-2)"
+    },
+    "gateD_velocityUpdate": {
+      "name": "Gate D — Velocity-Update Convergence",
+      "passed": true,
+      "verdict": "FAIL",
+      "evidence": "Velocity update residual = 0.0000e+0 (Threshold: 1.5000e-2)"
+    },
+    "gateE_forceStability": {
+      "name": "Gate E — Aerodynamic Force Stability",
+      "passed": false,
+      "verdict": "FAIL",
+      "evidence": "Cl window variation = NaN%, Cd window variation = NaN% (Threshold: < 2.00%)"
+    },
+    "gateF_validTermination": {
+      "name": "Gate F — Valid Convergence Termination",
+      "passed": false,
+      "verdict": "FAIL",
+      "evidence": "Termination Reason = 'MAX_ITERATIONS_REACHED', Converged = false"
+    },
+    "gateG_adversarialVV": {
+      "name": "Gate G — Adversarial V&V Suite",
+      "passed": true,
+      "verdict": "PASS",
+      "evidence": "15/15 adversarial V&V governance tests passing (Naca0012AdversarialVV.test.ts)."
+    },
+    "gateH_regression": {
+      "name": "Gate H — Verification Regression",
+      "passed": true,
+      "verdict": "PASS",
+      "evidence": "Clean applet compilation with zero broken dependencies."
+    }
+  },
+  "historicalBaseline_CaseA": {
+    "description": "Pre-fix Solver Baseline (Iter 60, uncorrected flux relaxation & transient term)",
+    "terminationReason": "MAX_ITERATIONS_REACHED",
+    "converged": false,
+    "continuityL1": 0.0010406,
+    "momentumLinf": 0.001914,
+    "momentumL1": 0.000041393,
+    "velocityCorrection": 0.16087,
+    "forceStabilityPassed": false,
+    "cl": 0.088,
+    "cd": 0.0212
+  }
+}

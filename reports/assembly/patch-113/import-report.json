@@ -1,0 +1,36 @@
+{
+  "success": true,
+  "contract": {
+    "sourceFormat": "PLM_JSON",
+    "sourceFileName": "turbopump_r1.json",
+    "sourceFileHash": "24438ef55569d99a78dc9d590f710221c96840c2bd40bc510a30c26f00034f5e",
+    "sourceAssemblyId": "ASM_TURBO_PUMP_01",
+    "sourceRevision": "R1.0",
+    "importerVersion": "SECP-IMPORTER-113.1",
+    "importTimestamp": 1787299359359
+  },
+  "assemblyId": "ASM_TURBO_PUMP_01",
+  "assemblyRevision": "R1.0",
+  "nodeCount": 15,
+  "occurrenceCount": 15,
+  "constraintCount": 2,
+  "graphFingerprint": "SECP-AG-SHA256:24438EF55569D99A:ASM_TURBO_PUMP_01:R1.0",
+  "validationReport": {
+    "assemblyId": "ASM_TURBO_PUMP_01",
+    "assemblyRevision": "R1.0",
+    "graphValid": true,
+    "totalErrors": 0,
+    "totalWarnings": 0,
+    "nodeErrors": [],
+    "edgeErrors": [],
+    "referenceErrors": [],
+    "transformErrors": [],
+    "constraintErrors": [],
+    "configurationErrors": [],
+    "revisionErrors": [],
+    "cycleErrors": [],
+    "orphanErrors": [],
+    "allErrors": [],
+    "evaluatedAt": 1787299359361
+  }
+}

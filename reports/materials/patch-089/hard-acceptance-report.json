@@ -1,0 +1,37 @@
+{
+  "verdict": "FAIL",
+  "totalChecks": 6,
+  "passedChecks": 5,
+  "checks": [
+    {
+      "id": "UNIT_INTEGRITY_CHECK",
+      "passed": true,
+      "details": "Verified unit presence and dimension metadata"
+    },
+    {
+      "id": "CONFLICT_RESOLUTION_CHECK",
+      "passed": true,
+      "details": "Verified priority-based conflict resolution (Certificate > Standard)"
+    },
+    {
+      "id": "PHYSICAL_BOUNDS_CHECK",
+      "passed": true,
+      "details": "Detected physically impossible negative Young's Modulus"
+    },
+    {
+      "id": "INDEPENDENT_AUDIT_CHECK",
+      "passed": true,
+      "details": "Verified complete material ontology audit pass"
+    },
+    {
+      "id": "REGISTRY_LINEAGE_CHECK",
+      "passed": false,
+      "details": "Verified multi-revision registration and lineage tracking"
+    },
+    {
+      "id": "SUBSTITUTION_EQUIVALENCE_CHECK",
+      "passed": true,
+      "details": "Verified property-based substitution assessment (Result: SPECIFICATION_MATCH)"
+    }
+  ]
+}

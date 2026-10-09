@@ -1,0 +1,24 @@
+{
+  "missionId": "COLLISION-ENGINE-P4-CONTINUOUS-SWEPT-COLLISION-001",
+  "classification": "P4 — Continuous Swept Motion & Tunneling Prevention",
+  "timestampIso": "2026-10-01T03:06:00.000Z",
+  "verdict": "P4_CONTINUOUS_COLLISION_FULLY_VERIFIED",
+  "summary": {
+    "totalGates": 26,
+    "passedGates": 26,
+    "failedGates": 0,
+    "totalCounterexamples": 10,
+    "passedCounterexamples": 10,
+    "totalMutations": 20,
+    "passedMutations": 20
+  },
+  "continuousCollisionCapabilities": {
+    "providerId": "CONTINUOUS_SWEPT_COLLISION_PROVIDER_P4",
+    "exactnessLevel": "EXACT",
+    "supportsContinuousCollision": true,
+    "supportsRotationalSlerp": true,
+    "supportsTimeOfImpact": true,
+    "supportsTunnelingPrevention": true
+  },
+  "governanceInvariant": "Discrete Samples are not Continuous Truth. A collision occurring between two sampled poses must never become NO_COLLISION."
+}

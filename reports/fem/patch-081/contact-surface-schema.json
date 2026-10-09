@@ -1,0 +1,11 @@
+{
+  "type": "ContactSurface",
+  "fields": [
+    "surfaceId",
+    "bodyId",
+    "nodeIds",
+    "faceIds",
+    "role",
+    "normalConvention"
+  ]
+}

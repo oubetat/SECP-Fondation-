@@ -1,0 +1,72 @@
+{
+  "mission": "NACA0012-CFD-VV-GAP-CLOSURE-001",
+  "case": {
+    "airfoil": "NACA0012",
+    "aoaDegrees": 10.0,
+    "reynoldsNumber": 6000000,
+    "machNumber": 0.15
+  },
+  "gapSummary": {
+    "totalGapsTracked": 4,
+    "provenClosed": 0,
+    "implementedVerified": 1,
+    "partiallyClosed": 1,
+    "baselineReproducedVvUnproven": 2
+  },
+  "registeredGaps": [
+    {
+      "gapId": "GAP-CFD-NACA0012-001",
+      "name": "Momentum Residual Outer Boundary Cell Normalization Scaling",
+      "classification": "G1 — IMPLEMENTED / VERIFIED",
+      "status": "ROOT_CAUSE_IDENTIFIED_FAIL_CLOSED",
+      "description": "Momentum Linf residual (0.0553) exceeds 0.015 threshold on fine grid due to outer boundary cell volume and velocity normalization scaling in the far-field.",
+      "evidenceArtifact": "reports/CFD-NACA0012-MOMENTUM-LINF-ROOT-CAUSE.md",
+      "provenance": {
+        "geometryHash": "naca-0012-analytical-hash",
+        "revision": "REV-A",
+        "configurationId": "CONF-CFD-NACA0012-001"
+      }
+    },
+    {
+      "gapId": "GAP-CFD-NACA0012-002",
+      "name": "Systematic Mesh Convergence & GCI Monotonicity Verification",
+      "classification": "G3 — BASELINE REPRODUCED BUT V&V NOT PROVEN",
+      "status": "PARTIALLY_CLOSED",
+      "description": "3-level grid study (80x40 -> 120x60 -> 180x90) yields monotonic R = 0.473 and GCI_fine = 1.954% for CL integral quantity, but overall V&V state remains NOT_PROVEN due to residual gate.",
+      "evidenceArtifact": "reports/NACA0012-CFD-CONVERGENCE-MATRIX.json",
+      "provenance": {
+        "geometryHash": "naca-0012-analytical-hash",
+        "revision": "REV-A",
+        "configurationId": "CONF-CFD-NACA0012-001"
+      }
+    },
+    {
+      "gapId": "GAP-CFD-NACA0012-003",
+      "name": "High-Re Viscous Boundary Layer Resolution y+ < 1.0",
+      "classification": "G3 — BASELINE REPRODUCED BUT V&V NOT PROVEN",
+      "status": "ARCHITECTURALLY_GOVERNED",
+      "description": "Current mean y+ = 52.15 is appropriate for automatic blended wall functions (78.3% log-law), but low-Re wall-resolved y+ < 1 requires y1 <= 1.5e-6 m.",
+      "evidenceArtifact": "reports/NACA0012-CFD-FORENSIC-VERIFICATION.md",
+      "provenance": {
+        "geometryHash": "naca-0012-analytical-hash",
+        "revision": "REV-A",
+        "configurationId": "CONF-CFD-NACA0012-001"
+      }
+    },
+    {
+      "gapId": "GAP-CFD-NACA0012-004",
+      "name": "1st-Order Upwind Lift Underprediction against NASA TMR Reference Data",
+      "classification": "G3 — BASELINE REPRODUCED BUT V&V NOT PROVEN",
+      "status": "VALIDATION_INCOMPLETE",
+      "description": "Computed CL = 0.1481 underpredicts NASA TMR reference CL = 1.085 due to 1st-order upwind spatial discretization numerical viscosity on 180-point O-grid at 10 deg AoA.",
+      "evidenceArtifact": "reports/NACA0012-CFD-VALIDATION-EVIDENCE.json",
+      "provenance": {
+        "geometryHash": "naca-0012-analytical-hash",
+        "revision": "REV-A",
+        "configurationId": "CONF-CFD-NACA0012-001"
+      }
+    }
+  ],
+  "adversarialProtectionStatus": "PASSED (9/9 stress gates verified in tests/verification/Naca0012AdversarialVV.test.ts)",
+  "finalClosureCriterionVerdict": "G3 — BASELINE REPRODUCED BUT V&V NOT PROVEN (Truthfully recorded, fail-closed V&V enforcement active)"
+}

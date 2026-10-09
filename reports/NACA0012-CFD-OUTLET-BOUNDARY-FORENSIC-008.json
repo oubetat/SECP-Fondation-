@@ -1,0 +1,17 @@
+{
+  "missionId": "NACA0012-VV-STRICT-CAUSAL-CLOSURE-008",
+  "timestamp": "2026-09-30T10:07:41.834Z",
+  "audit": {
+    "momentumOutlet": {
+      "type": "Fixed pressure p_bc = 0, zero-gradient convective velocity extrapolation",
+      "massScalingCorrection": "Applied uniformly to outlet fluxes for global mass continuity",
+      "doubleCounting": false,
+      "staleValueInjection": false
+    },
+    "scalarTransportOutlet": {
+      "type": "Zero gradient Neumann boundary (dphi/dn = 0) with convective outflow",
+      "finding": "ScalarTransportDiscretizer treats boundary faces with Dirichlet conductance diffFlux = gamma*A/d. For farfield outlets, convective outflow dominates diffusive flux (Peclet >> 1).",
+      "impactOnNearWallTurbulence": "Farfield outlet boundary is 10 chord lengths away; influence on near-wall boundary layer (c < 1.0) is < 1e-8 relative delta."
+    }
+  }
+}

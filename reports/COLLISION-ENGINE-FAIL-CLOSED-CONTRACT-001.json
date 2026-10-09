@@ -1,0 +1,25 @@
+{
+  "contractId": "CONTRACT-COLLISION-FAIL-CLOSED-001",
+  "name": "Fail-Closed & Exception Handling Contract",
+  "version": "1.0.0",
+  "rules": [
+    {
+      "trigger": "OCCT Kernel Exception / Boolean Failure",
+      "requiredResponse": "Set status = 'ANALYSIS_FAILED', severity = 'FATAL_FAILURE', record kernel exception stack trace, and invalidate safety certification.",
+      "prohibitedResponse": "Swallowing exception and returning 'NO_INTERFERENCE' or empty clash array."
+    },
+    {
+      "trigger": "Missing or Undefined Input Geometry (null, empty, or unmeshed)",
+      "requiredResponse": "Set status = 'INVALID_GEOMETRY', severity = 'ERROR', return provenSafe: false.",
+      "prohibitedResponse": "Returning 'NO_COLLISION' or 'PASS'."
+    },
+    {
+      "trigger": "Numerical Instability / NaN / Infinity in Transforms or Coordinates",
+      "requiredResponse": "Immediate fail-closed abort with status = 'INVALID_GEOMETRY'."
+    },
+    {
+      "trigger": "Conservative Advancement / Iterative Solver Non-Convergence or Timeout",
+      "requiredResponse": "Set status = 'ANALYSIS_FAILED', severity = 'ERROR', return provenSafe: false."
+    }
+  ]
+}

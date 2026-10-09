@@ -1,0 +1,14 @@
+{
+  "testName": "Geometric hash determinism verification",
+  "executions": [
+    {
+      "parameters": { "itemName": "Hex Bolt (ISO 4014)", "diameter": "M8", "length": 30 },
+      "geometryHash": "34914fa22079ca4cd89909157bcf9db8"
+    },
+    {
+      "parameters": { "itemName": "Hex Bolt (ISO 4014)", "diameter": "M8", "length": 30 },
+      "geometryHash": "34914fa22079ca4cd89909157bcf9db8"
+    }
+  ],
+  "result": "CONGRUENT"
+}

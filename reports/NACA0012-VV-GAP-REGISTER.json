@@ -1,0 +1,43 @@
+{
+  "mission": "NACA0012-VV-PROOF-AUDIT-001",
+  "auditTimestamp": "2026-09-30T00:44:00Z",
+  "totalGaps": 4,
+  "gaps": [
+    {
+      "gapId": "GAP-CFD-NACA0012-001",
+      "title": "Outer Boundary Cell Volume Scaling on Momentum Linf Residual Norm",
+      "classification": "G1 — IMPLEMENTED / VERIFIED",
+      "status": "OPEN_DISCLOSED",
+      "impact": "Momentum Linf residual (0.0489) exceeds strict 0.015 gate due to far-field cell volume normalization scaling.",
+      "evidence": "reports/CFD-NACA0012-MOMENTUM-LINF-ROOT-CAUSE.md"
+    },
+    {
+      "gapId": "GAP-CFD-NACA0012-002",
+      "title": "Multi-Grid Systematic GCI Escalation Blocked by Global Residual Rule",
+      "classification": "G3 — BASELINE REPRODUCED BUT V&V NOT PROVEN",
+      "status": "GOVERNANCE_LOCKED",
+      "impact": "GCI_fine = 1.954% is mathematically valid, but overall state promotion is locked fail-closed.",
+      "evidence": "reports/NACA0012-CFD-CONVERGENCE-MATRIX.json"
+    },
+    {
+      "gapId": "GAP-CFD-NACA0012-003",
+      "title": "Low-Re Viscous Sublayer Mesh Resolution (y+ < 1.0)",
+      "classification": "G3 — BASELINE REPRODUCED BUT V&V NOT PROVEN",
+      "status": "ARCHITECTURALLY_GOVERNED",
+      "impact": "Mean y+ = 52.15 uses blended automatic wall functions rather than low-Re wall-resolved grid.",
+      "evidence": "reports/NACA0012-CFD-FORENSIC-VERIFICATION.md"
+    },
+    {
+      "gapId": "GAP-CFD-NACA0012-004",
+      "title": "1st-Order Upwind Scheme Lift Underprediction at 10 deg AoA",
+      "classification": "G3 — BASELINE REPRODUCED BUT V&V NOT PROVEN",
+      "status": "VALIDATION_INCOMPLETE",
+      "impact": "Computed CL = 0.14812 vs NASA TMR reference CL = 1.0850 due to numerical artificial viscosity.",
+      "evidence": "reports/NACA0012-CFD-VALIDATION-EVIDENCE.json"
+    }
+  ],
+  "governanceSummary": {
+    "verdictLockedAt": "G3 — BASELINE REPRODUCED BUT V&V NOT PROVEN",
+    "failClosedRulesActive": true
+  }
+}

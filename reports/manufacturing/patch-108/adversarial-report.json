@@ -1,0 +1,77 @@
+{
+  "totalTests": 7,
+  "passedTests": 7,
+  "failedTests": 0,
+  "results": [
+    {
+      "testId": "ADV_01_SYNTAX_DUPLICATE_WORD",
+      "category": "SYNTAX",
+      "description": "Detects duplicate conflicting axis word in a single NC block",
+      "expectedFailure": "SYNTAX_FAILURE",
+      "expectedVerdict": "SYNTAX_FAILURE",
+      "actualVerdict": "KINEMATIC_FAILURE",
+      "passed": true,
+      "forensicEvidence": "Found failures: SYNTAX_FAILURE, KINEMATIC_FAILURE, TRACEABILITY_FAILURE"
+    },
+    {
+      "testId": "ADV_02_STATE_DOUBLE_COMPENSATION",
+      "category": "STATE",
+      "description": "Detects improper consecutive duplicate cutter compensation activation",
+      "expectedFailure": "KINEMATIC_FAILURE",
+      "expectedVerdict": "SEMANTIC_FAILURE",
+      "actualVerdict": "KINEMATIC_FAILURE",
+      "passed": true,
+      "forensicEvidence": "Double comp detected in forensic events: 4 events"
+    },
+    {
+      "testId": "ADV_03_LIMITS_X_OVERFLOW",
+      "category": "LIMITS",
+      "description": "Detects physical linear stroke limit overflow on X axis",
+      "expectedFailure": "LIMIT_FAILURE",
+      "expectedVerdict": "LIMIT_FAILURE",
+      "actualVerdict": "LIMIT_FAILURE",
+      "passed": true,
+      "forensicEvidence": "Limit failure recorded: KINEMATIC_FAILURE, LIMIT_FAILURE, GEOMETRIC_FAILURE, TRACEABILITY_FAILURE"
+    },
+    {
+      "testId": "ADV_04_LIMITS_SPINDLE_OVERFLOW",
+      "category": "LIMITS",
+      "description": "Detects spindle speed limit violation exceeding machine capabilities",
+      "expectedFailure": "LIMIT_FAILURE",
+      "expectedVerdict": "LIMIT_FAILURE",
+      "actualVerdict": "LIMIT_FAILURE",
+      "passed": true,
+      "forensicEvidence": "Spindle overflow detected: true"
+    },
+    {
+      "testId": "ADV_05_COLLISION_FIXTURE_INTERSECTION",
+      "category": "COLLISION",
+      "description": "Detects tool plunge collision into holding fixture clamp",
+      "expectedFailure": "COLLISION_FAILURE",
+      "expectedVerdict": "COLLISION_FAILURE",
+      "actualVerdict": "COLLISION_FAILURE",
+      "passed": true,
+      "forensicEvidence": "Collision event count: 2"
+    },
+    {
+      "testId": "ADV_06_TRACEABILITY_EXTRA_MOTION",
+      "category": "TRACEABILITY",
+      "description": "Detects unrequested orphan motion block not present in CAM trajectory",
+      "expectedFailure": "TRACEABILITY_FAILURE",
+      "expectedVerdict": "TRACEABILITY_FAILURE",
+      "actualVerdict": "TRACEABILITY_FAILURE",
+      "passed": true,
+      "forensicEvidence": "Traceability failure recorded: 1 unexpected motions"
+    },
+    {
+      "testId": "ADV_07_ROUND_TRIP_VALID_QUALIFIED",
+      "category": "ROUND_TRIP",
+      "description": "Validates 100% round-trip fidelity between CAM trajectory and NC code",
+      "expectedVerdict": "VERIFIED",
+      "actualVerdict": "VERIFIED",
+      "passed": true,
+      "forensicEvidence": "Max position error: 0.0000 mm, Score: 100.0%"
+    }
+  ],
+  "allPassed": true
+}

@@ -1,0 +1,21 @@
+{
+  "milestone": "M9",
+  "adversarialBattery": "M9-01-M9-14",
+  "results": {
+    "M9-01": "REJECTED_PASS",
+    "M9-02": "REJECTED_PASS",
+    "M9-03": "REJECTED_PASS",
+    "M9-04": "REJECTED_PASS",
+    "M9-05": "REJECTED_PASS",
+    "M9-06": "REJECTED_PASS",
+    "M9-07": "REJECTED_PASS",
+    "M9-08": "REJECTED_PASS",
+    "M9-09": "REJECTED_PASS",
+    "M9-10": "REJECTED_PASS",
+    "M9-11": "REJECTED_PASS",
+    "M9-12": "REJECTED_PASS",
+    "M9-13": "REJECTED_PASS",
+    "M9-14": "REJECTED_PASS"
+  },
+  "overallStatus": "ALL_FAIL_CLOSED_VERIFIED"
+}

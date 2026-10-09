@@ -1,0 +1,12 @@
+{
+  "milestone": "M9",
+  "conflictMechanism": "CROSS-DOMAIN-CONFLICTS",
+  "status": "IMPLEMENTED",
+  "silentMergePrevention": "ENFORCED",
+  "resolutionAuthority": "GOVERNANCE_REQUIRED",
+  "supportedConflictTypes": [
+    "CONSTRAINT_VIOLATION",
+    "PARAMETRIC_MISMATCH",
+    "SAFETY_MARGIN_DEFICIT"
+  ]
+}

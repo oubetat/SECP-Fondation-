@@ -1,0 +1,35 @@
+{
+  "milestone": "ADSE-P5",
+  "indexTimestamp": "2026-09-28T08:15:00.000Z",
+  "provenanceRoot": "b8319e830c2420a11f26e99df48d0859a117bc56598c1a1158a18df706e2e542",
+  "testFiles": [
+    "tests/adse/p5/ADSEP5StructuralIntegration.test.ts",
+    "tests/adse/p5/ADSEP5AssemblyTruth.test.ts",
+    "tests/adse/p5/ADSEP5Constraints.test.ts",
+    "tests/adse/p5/ADSEP5Interfaces.test.ts",
+    "tests/adse/p5/ADSEP5RevisionConfiguration.test.ts",
+    "tests/adse/p5/ADSEP5ImpactAnalysis.test.ts",
+    "tests/adse/p5/ADSEP5PersistenceProof.test.ts",
+    "tests/adse/p5/ADSEP5AdversarialBattery.test.ts",
+    "tests/adse/p5/ADSEP5ReconciliationAndForensics.test.ts"
+  ],
+  "engineFiles": [
+    "src/engine/adse/p5/types.ts",
+    "src/engine/adse/p5/StructuralElementRegistry.ts",
+    "src/engine/adse/p5/AssemblyDecompositionEngine.ts",
+    "src/engine/adse/p5/StructuralConstraintEngine.ts",
+    "src/engine/adse/p5/StructuralPlacementEngine.ts",
+    "src/engine/adse/p5/StructuralInterfaceEngine.ts",
+    "src/engine/adse/p5/StructuralIntegrationConsistencyEngine.ts",
+    "src/engine/adse/p5/StructuralImpactAnalyzer.ts",
+    "src/engine/adse/p5/StructuralPersistenceEngine.ts",
+    "src/engine/adse/p5/ADSEP5StructuralEngine.ts",
+    "src/engine/adse/p5/ADSEP5ForensicAuditEngine.ts",
+    "src/engine/adse/p5/index.ts"
+  ],
+  "forensicGatesEvaluated": 24,
+  "forensicGatesPassed": 24,
+  "canonicalCapabilitiesRegistered": 24,
+  "structuralAssemblyTruthVerified": true,
+  "zeroDualCoreVerified": true
+}

@@ -1,0 +1,28 @@
+{
+  "contract_id": "SECP-POST-007-PHASE2-CAP-SUP-005-INTEGRITY",
+  "timestamp": "2026-09-23T11:06:40.000Z",
+  "truth_manifest": [
+    {
+      "file": "/src/engine/manufacturing/IndependentManufacturingOracle.ts",
+      "sha256": "0322c7f6afddaaf8db0958ca4f4458dacbb4a441a30f2cc0a16892aec8386a15",
+      "purpose": "Independent verification of kinematics and geometry without SECP engine dependency."
+    },
+    {
+      "file": "/src/engine/manufacturing/ClosedLoopMetrologyInversionEngine.ts",
+      "sha256": "d5b4aa5a844edb49ef0a93906d2461a2b95af49ccce7eb1cee3cc39b686406aa",
+      "purpose": "Implementation of Closed-Loop Feedback for Toolpath compensation."
+    },
+    {
+      "file": "/src/engine/manufacturing/__tests__/ManufacturingPhase2RedTeam.test.ts",
+      "sha256": "ac223c813a0efa0ca2420c15cdb6574ca3c4b388f91d33141c72298fbae28f84",
+      "purpose": "Adversarial test suite for manufacturing truth."
+    },
+    {
+      "file": "/src/engine/manufacturing/__tests__/ManufacturingMutation.test.ts",
+      "sha256": "b25ed52a3aa6fcaa6cc7ed4be8c8a6d4ec571863afd174ffc6010928be8002eb",
+      "purpose": "Mutation testing for robustness against malicious logic changes."
+    }
+  ],
+  "global_mfg_verdict": "PROVEN_PARTIAL",
+  "rationale": "Closed-Loop Feedback is now implemented and verified, but foundations (Kinematics/Removal) remain simplified and are currently SIMULATED_CONTRACT_PROVEN."
+}

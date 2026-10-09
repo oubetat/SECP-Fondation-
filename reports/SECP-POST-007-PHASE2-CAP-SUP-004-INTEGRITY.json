@@ -1,0 +1,31 @@
+{
+  "contract_id": "SECP-POST-007-PHASE2-CAP-SUP-004-INTEGRITY",
+  "capability": "CAP-SUP-004",
+  "capability_title": "QIF 3.0 / MBD Closed-Loop Manufacturing Truth",
+  "status": "PROVEN_ENGINEERING_CONTRACT",
+  "timestamp": "2026-09-23T10:25:00.000Z",
+  "audited_gaps_addressed": {
+    "gap_1_qif30_raw_exchange_proof": "PASSED - Standard ANSI/ISO 23952:2020 QIF 3.0 XML exchange validated against independent Qif30XsdSchemaValidator",
+    "gap_2_oracle_independence_contamination": "PASSED - Zero SECP imports verified via AST scan; Oracle invariant during internal engine bug injection",
+    "gap_3_uncertainty_guardband_matrix": "PASSED - ISO 14253-1 decision rules verified; changing uncertainty alone shifts verdict between PASS, INDETERMINATE, and FAIL",
+    "gap_4_12_node_graph_cut_testing": "PASSED - Complete 12-node Design Authority chain severed link-by-link with deterministic rejections",
+    "gap_5_cryptographic_sha256_provenance": "PASSED - True SHA-256 non-repudiation hashes verified with 100% avalanche sensitivity on single-digit mutations",
+    "gap_6_physical_measurement_truth_boundary": "PASSED - Raw CMM controller touch-trigger probe telemetry stream ingestion with thermal & stylus radius compensation",
+    "gap_7_reinspection_lifecycle_multi_rev": "PASSED - Full REV-A -> REV-B closed-loop lifecycle with authorized transition and isolated multi-revision ledger"
+  },
+  "test_execution": {
+    "total_test_suites": 8,
+    "total_tests_passed": 29,
+    "total_tests_failed": 0,
+    "suites": [
+      "QIF1RawExchangeValidator.test.ts",
+      "QIF2OracleIndependence.test.ts",
+      "QIF3UncertaintyGuardBandMatrix.test.ts",
+      "QIF4GraphCutIntegrity.test.ts",
+      "QIF5CryptoAndClosedLoop.test.ts",
+      "QIFClosedLoopForensic.test.ts",
+      "QIFMutation.test.ts",
+      "QIFPhase2RedTeam.test.ts"
+    ]
+  }
+}

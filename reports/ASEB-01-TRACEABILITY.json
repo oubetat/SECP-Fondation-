@@ -1,0 +1,87 @@
+{
+  "systemTraceability": {
+    "project": "ASEB-01-XA100",
+    "systemId": "SYS-XA100-EXP",
+    "configurationId": "CONF-BASELINE",
+    "digitalThreadNodeCount": 26,
+    "digitalThreadEdgeCount": 24,
+    "lineageChain": [
+      {
+        "tier": "P1_REQUIREMENTS",
+        "entityId": "RQ-004",
+        "title": "Flight Control Closed Loops",
+        "statement": "All 5 control loops must bind to Plant + Sensor + Controller + Actuator.",
+        "status": "BASELINED"
+      },
+      {
+        "tier": "P2_MBSE",
+        "entityId": "mbse:sub:FLIGHT_CTRL",
+        "type": "Subsystem",
+        "parent": "mbse:sys:XA100_ROOT"
+      },
+      {
+        "tier": "P3_ARCHITECTURE",
+        "entityId": "ARCH-CONTROL",
+        "type": "Subsystem",
+        "layer": "PHYSICAL"
+      },
+      {
+        "tier": "P4_DIGITAL_THREAD",
+        "nodeId": "thread:node:ACTUATOR-001",
+        "canonicalId": "ACTUATOR-001",
+        "authoritySource": "P3_ARCHITECTURE_AUTHORITY"
+      },
+      {
+        "tier": "P5_STRUCTURAL",
+        "elementId": "ACTUATOR-001",
+        "type": "ComponentInstance",
+        "definitionId": "comp:def:ControlActuator"
+      },
+      {
+        "tier": "P6_THERMAL",
+        "sourceId": "hs:ACTUATOR-001",
+        "targetRegionId": "reg:xa100:1",
+        "heatPowerWatts": 75.0
+      },
+      {
+        "tier": "P7_POWER",
+        "loadId": "load:ACTUATOR-001",
+        "connectedBusId": "bus:pwr:1",
+        "nominalDemandWatts": 250.0
+      },
+      {
+        "tier": "P8_CONTROLS",
+        "plantId": "plant:ACTUATOR-001",
+        "systemId": "CTRL-SYS-1",
+        "bandwidthHz": 25.0
+      },
+      {
+        "tier": "P9_COMMUNICATIONS",
+        "nodeId": "comm:node:ACTUATOR-001",
+        "communicationSystemId": "COMM-SYS-XA100",
+        "mediumType": "FIBER_OPTIC"
+      },
+      {
+        "tier": "EXECUTION",
+        "executionId": "EXEC-ACTUATOR-001",
+        "status": "INVALIDATED",
+        "invalidatedBy": "REV-ACTUATOR-R2"
+      },
+      {
+        "tier": "VERIFICATION",
+        "gateId": "P9-V40_TRUTH_CLOSURE",
+        "evaluatedAt": "2026-09-29T08:29:00.000Z"
+      },
+      {
+        "tier": "EVIDENCE",
+        "evidenceId": "EV-XA100-1",
+        "merkleLeafHash": "42c2f41db7fe8fc5420fa24c290441dca76e3426fd0bad1edac0097ee5681566"
+      },
+      {
+        "tier": "PERSISTENCE",
+        "snapshotId": "SNAP-XA100-MASTER",
+        "merkleRootHash": "8f3b2a19e7..."
+      }
+    ]
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "missionId": "NACA0012-VV-STRICT-CAUSAL-CLOSURE-008",
+  "timestamp": "2026-09-30T10:07:41.837Z",
+  "classification": "ROOT_CAUSE_PARTIALLY_CONFIRMED",
+  "governanceVerdict": "G3 — BASELINE REPRODUCED BUT V&V NOT PROVEN",
+  "rationale": "The discrete face diffusion asymmetry invariant violation was causally proven and corrected to enforce D_owner === D_neighbor. Under frozen numerical governance (150 max iterations, Gate D < 0.015), the non-linear coupling update velocityCorrection = 0.53142 remains above the 0.0150 threshold (converged = false, MAX_ITERATIONS_REACHED). In accordance with strict fail-closed governance, V&V is NOT closed and Gap G3 remains open."
+}

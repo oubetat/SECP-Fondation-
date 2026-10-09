@@ -1,0 +1,27 @@
+{
+  "contractId": "P0-SHADOW-AUTHORITY-001",
+  "name": "P0 Shadow Authority Inventory",
+  "version": "1.0.0",
+  "shadowAuthoritiesIdentified": [
+    {
+      "source": "src/engine/cam/collision/CollisionTypes.ts (CollisionReport, CollisionIncident)",
+      "classification": "LEGACY_CAM_RESULT",
+      "targetAction": "Will be adapted to CanonicalCollisionResult in P3/P6"
+    },
+    {
+      "source": "src/engine/assembly/AssemblyConstraintTypes.ts (AssemblyClash, AssemblyInterferenceReport)",
+      "classification": "LEGACY_ASSEMBLY_RESULT",
+      "targetAction": "Will be adapted to CanonicalCollisionResult in P2"
+    },
+    {
+      "source": "src/engine/manufacturing/collision/types.ts (CollisionDetectionReport)",
+      "classification": "LEGACY_MANUFACTURING_RESULT",
+      "targetAction": "Will be adapted to CanonicalCollisionResult in P3"
+    },
+    {
+      "source": "src/engine/assembly-intelligence/AssemblyTopologyTypes.ts (CollisionRecord)",
+      "classification": "DEPRECATED_MOCK_RESULT",
+      "targetAction": "To be deleted"
+    }
+  ]
+}

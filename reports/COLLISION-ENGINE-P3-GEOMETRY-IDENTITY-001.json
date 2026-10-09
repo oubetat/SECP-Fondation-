@@ -1,0 +1,14 @@
+{
+  "reportId": "COLLISION-ENGINE-P3-GEOMETRY-IDENTITY-001",
+  "evaluatedIdentityProperties": [
+    "documentId",
+    "revisionId",
+    "geometryId",
+    "geometryRevision",
+    "snapshotId",
+    "topologyIdentity"
+  ],
+  "verificationStatus": "PASSED",
+  "identitySeparationVerified": true,
+  "deterministicExtractionVerified": true
+}

@@ -1,0 +1,4 @@
+{
+  "status": "VERIFIED",
+  "algorithm": "AABB Broad-Phase + Closest-Point Narrow-Phase"
+}

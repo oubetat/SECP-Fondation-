@@ -1,0 +1,20 @@
+[
+  {
+    "axisName": "A",
+    "rotationDirection": "CW_POSITIVE",
+    "zeroPosition": 0,
+    "wrapMode": "STRICT_RANGE",
+    "continuousMode": false,
+    "minAngle": -120,
+    "maxAngle": 120
+  },
+  {
+    "axisName": "C",
+    "rotationDirection": "CCW_POSITIVE",
+    "zeroPosition": 0,
+    "wrapMode": "UNWRAPPED",
+    "continuousMode": true,
+    "minAngle": -99999,
+    "maxAngle": 99999
+  }
+]

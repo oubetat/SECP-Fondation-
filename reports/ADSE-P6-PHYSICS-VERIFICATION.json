@@ -1,0 +1,80 @@
+{
+  "phase": "ADSE-P6",
+  "verificationType": "PHYSICS_BOUND_REFERENCE_SOLVERS",
+  "verifiedTimestamp": "2026-09-28T08:35:30Z",
+  "cases": [
+    {
+      "caseId": "CASE-A-1D-CONDUCTION",
+      "law": "FOURIER_LAW",
+      "equation": "q = -k * A * (dT / dx)",
+      "material": "Oxygen-Free Copper C10100 (k = 390 W/m·K)",
+      "parameters": {
+        "lengthM": 0.2,
+        "areaM2": 0.005,
+        "hotBoundaryK": 373.15,
+        "coldBoundaryK": 273.15
+      },
+      "analyticalExpectedQ": 975.0,
+      "computedQ": 975.0,
+      "energyBalanceDiscrepancyPercent": 0.0,
+      "midpointExpectedTempK": 323.15,
+      "midpointComputedTempK": 323.15,
+      "status": "PASS"
+    },
+    {
+      "caseId": "CASE-B-RESISTANCE-NETWORK",
+      "law": "THERMAL_OHM_LAW",
+      "equation": "Delta_T = Q * R_eq; R_eq = sum(R_i)",
+      "layers": [
+        { "name": "TIM_layer", "resistanceK_W": 0.2 },
+        { "name": "Heat_Spreader", "resistanceK_W": 0.5 },
+        { "name": "Sink_Interface", "resistanceK_W": 0.3 }
+      ],
+      "totalReqK_W": 1.0,
+      "tSourceK": 360.0,
+      "tSinkK": 300.0,
+      "computedHeatFlowQ": 60.0,
+      "nodalTemperaturesK": {
+        "source": 360.0,
+        "postTIM": 348.0,
+        "postSpreader": 318.0,
+        "postSink": 300.0
+      },
+      "status": "PASS"
+    },
+    {
+      "caseId": "CASE-C-TRANSIENT-QUENCHING",
+      "law": "LUMPED_CAPACITANCE",
+      "equation": "T(t) = T_inf + (T_0 - T_inf) * exp(-t / tau); tau = (m * c_p) / (h * A)",
+      "parameters": {
+        "massKg": 2.0,
+        "specificHeatJ_kgK": 900.0,
+        "htcW_m2K": 100.0,
+        "surfaceAreaM2": 0.18,
+        "tInitialK": 500.0,
+        "tAmbientK": 300.0
+      },
+      "timeConstantTauSeconds": 100.0,
+      "temperaturesAtTimeSteps": {
+        "0s": 500.0,
+        "100s": 373.58,
+        "500s": 301.35
+      },
+      "status": "PASS"
+    },
+    {
+      "caseId": "CASE-D-BOUNDARY-SENSITIVITY",
+      "phenomenon": "BOUNDARY_PERTURBATION",
+      "inputChange": "Hot boundary increased from 350K to 400K (+50K)",
+      "response": "Heat flow doubled from 500W to 1000W in exact linear accordance with Fourier law",
+      "status": "PASS"
+    },
+    {
+      "caseId": "CASE-E-MATERIAL-SENSITIVITY",
+      "phenomenon": "PROPERTY_MUTATION_AND_INVALIDATION",
+      "inputChange": "Conductivity changed from Titanium (6.7 W/m·K) to Composite (1.34 W/m·K)",
+      "response": "Downstream execution automatically flagged INVALIDATED; stale result reuse blocked",
+      "status": "PASS"
+    }
+  ]
+}

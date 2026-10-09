@@ -1,0 +1,62 @@
+[
+  {
+    "artifactId": "CAD_MODEL_01",
+    "revision": 1,
+    "status": "PUBLISHED"
+  },
+  {
+    "artifactId": "FEAT_MODEL_01",
+    "revision": 1,
+    "status": "PUBLISHED"
+  },
+  {
+    "artifactId": "MAT_AL7075_T6",
+    "revision": 1,
+    "status": "PUBLISHED"
+  },
+  {
+    "artifactId": "TOOL_ENDMILL_10MM",
+    "revision": 1,
+    "status": "PUBLISHED"
+  },
+  {
+    "artifactId": "MACH_DMG_50",
+    "revision": 1,
+    "status": "PUBLISHED"
+  },
+  {
+    "artifactId": "OP_AERO_POCKET_01",
+    "revision": 1,
+    "status": "PUBLISHED"
+  },
+  {
+    "artifactId": "TOOLPATH_AERO_01",
+    "revision": 1,
+    "status": "ENGINEERING_VALIDATED"
+  },
+  {
+    "artifactId": "SIM_AERO_01",
+    "revision": 1,
+    "status": "PUBLISHED"
+  },
+  {
+    "artifactId": "POST_ENGINE_TNC640",
+    "revision": 1,
+    "status": "PUBLISHED"
+  },
+  {
+    "artifactId": "NC_O1001",
+    "revision": 1,
+    "status": "PUBLISHED"
+  },
+  {
+    "artifactId": "VERIF_NC_01",
+    "revision": 1,
+    "status": "PUBLISHED"
+  },
+  {
+    "artifactId": "TWIN_EXEC_01",
+    "revision": 1,
+    "status": "PUBLISHED"
+  }
+]

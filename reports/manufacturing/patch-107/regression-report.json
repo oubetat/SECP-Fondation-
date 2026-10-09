@@ -1,0 +1,12 @@
+{
+  "regressionStatus": "PASSED",
+  "patchesVerified": [
+    "PATCH-101",
+    "PATCH-102",
+    "PATCH-103",
+    "PATCH-104",
+    "PATCH-105",
+    "PATCH-106",
+    "PATCH-107"
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "missionId": "COLLISION-ENGINE-FORENSIC-MATURITY-001",
+  "timestamp": "2026-10-01T01:00:00.000Z",
+  "callPathAudit": {
+    "CollisionDetectionWorkspace": {
+      "entryPoint": "src/components/cam/CollisionDetectionWorkspace.tsx",
+      "targetEngine": "src/engine/cam/collision/CollisionDetectionEngine.ts",
+      "callChain": "CollisionDetectionWorkspace -> CollisionDetectionEngine.createSampleObstacleTriangles(benchmarkId) -> CollisionDetectionEngine.verifyToolpath()",
+      "isProductionAuthoritative": false,
+      "breakageReason": "Consumes synthetic static benchmark models (BENCHMARK_A, BENCHMARK_B) rather than active CAD document geometry or real user toolpaths."
+    },
+    "KinematicSolverWorkspace": {
+      "entryPoint": "src/components/assembly/KinematicSolverWorkspace.tsx",
+      "targetEngine": "src/engine/assembly/kinematics/KinematicCollisionClearanceBridge.ts",
+      "callChain": "KinematicSolverWorkspace -> MechanismSimulationEngine -> KinematicCollisionClearanceBridge.evaluateClearance()",
+      "isProductionAuthoritative": false,
+      "breakageReason": "Calls a mock clearance bridge that subtracts 30.0mm from center-to-center body distances."
+    },
+    "AssemblyInterferenceEngine": {
+      "entryPoint": "src/engine/assembly/AssemblyInterferenceEngine.ts",
+      "targetEngine": "GeometryKernel.booleanIntersect() / common() via OCCT WASM",
+      "callChain": "RobotAssemblyManager / DroneAssemblyManager -> AssemblyInterferenceEngine.analyzeInterference()",
+      "isProductionAuthoritative": false,
+      "breakageReason": "Not reachable from interactive assembly viewport or global CAM toolpath generation."
+    },
+    "ToolpathSimulationEngine": {
+      "entryPoint": "src/engine/manufacturing/simulation/ToolpathSimulationEngine.ts",
+      "targetEngine": "src/engine/manufacturing/collision/CollisionDetector.ts",
+      "callChain": "ToolpathSimulationEngine.runSimulation() -> CollisionDetector.evaluateToolpath()",
+      "isProductionAuthoritative": false,
+      "breakageReason": "Only invoked within manufacturing test suites (CollisionAvoidance.test.ts) and HardAcceptanceGate106."
+    }
+  },
+  "overallCallPathVerdict": "NO_END_TO_END_PRODUCTION_CALLPATH_PROVEN"
+}

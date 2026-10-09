@@ -1,0 +1,43 @@
+{
+  "missionId": "COLLISION-ENGINE-P1.6-AUTHORITY-MIGRATION-ENFORCEMENT-001",
+  "artifactType": "RUNTIME_ENFORCEMENT_PROOF",
+  "timestamp": "2026-10-01T01:57:00.000Z",
+  "testSuite": "src/engine/collision-authority/__tests__/P1_6_AuthorityEnforcement.test.ts",
+  "enforcementResults": [
+    {
+      "domain": "CAM_MULTI_AXIS",
+      "entryFunction": "CollisionDetectionEngine.verifyToolpath()",
+      "authorityTarget": "CollisionAuthority.evaluateSync()",
+      "providerUsed": "EXACT_NARROW_PHASE_PROVIDER_P1",
+      "status": "VERIFIED_ACTIVE"
+    },
+    {
+      "domain": "CAM_FIVE_AXIS",
+      "entryFunction": "CAMCollisionEngine.checkSegmentCollision()",
+      "authorityTarget": "CollisionAuthority.evaluateSync()",
+      "providerUsed": "CAM_FIVE_AXIS_COLLISION_PROVIDER",
+      "status": "VERIFIED_ACTIVE"
+    },
+    {
+      "domain": "NC_SIMULATION",
+      "entryFunction": "MachineCollisionEngine.evaluatePoseCollisions()",
+      "authorityTarget": "CollisionAuthority.evaluateSync()",
+      "providerUsed": "MACHINE_SIMULATION_COLLISION_PROVIDER",
+      "status": "VERIFIED_ACTIVE"
+    },
+    {
+      "domain": "ASSEMBLY",
+      "entryFunction": "AssemblyInterferenceEngine.analyzeInterference() / InterferenceDetectionEngine.analyze()",
+      "authorityTarget": "CollisionAuthority.evaluateSync()",
+      "providerUsed": "ASSEMBLY_BREP_COLLISION_PROVIDER",
+      "status": "VERIFIED_ACTIVE"
+    },
+    {
+      "domain": "KINEMATIC_MECHANISM",
+      "entryFunction": "CollisionEngine.verifyPoint()",
+      "authorityTarget": "CollisionAuthority.evaluateSync()",
+      "providerUsed": "KINEMATICS_COLLISION_PROVIDER",
+      "status": "VERIFIED_ACTIVE"
+    }
+  ]
+}

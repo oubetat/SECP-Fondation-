@@ -1,0 +1,104 @@
+{
+  "gateId": "PATCH-014",
+  "verdict": "PASS",
+  "tamperDetected": false,
+  "artifactsChecked": 6,
+  "artifactsPassed": 2,
+  "artifactsFailed": 1,
+  "verificationResults": [
+    {
+      "artifactId": "SECP:BRACKET-GATE-014",
+      "expectedHash": "170ea870a22fc09fa7323dfcc1582c611438aa876f4fb56b7d1b95430daa8aa8",
+      "actualHash": "170ea870a22fc09fa7323dfcc1582c611438aa876f4fb56b7d1b95430daa8aa8",
+      "hashMatch": true,
+      "evidencePresent": true,
+      "evidenceValid": true,
+      "provenancePresent": false,
+      "provenanceValid": true,
+      "tamperDetected": false,
+      "verdict": "PASS",
+      "reasons": [
+        "Artifact matches trusted expected hash, evidence verified, and provenance intact"
+      ]
+    },
+    {
+      "artifactId": "SECP:BRACKET-GATE-014",
+      "expectedHash": "170ea870a22fc09fa7323dfcc1582c611438aa876f4fb56b7d1b95430daa8aa8",
+      "actualHash": "6d7b7e186ee6adcc678fb11c502f3ef9b7599c9e2cd7f3339b80e574aaeab18b",
+      "hashMatch": false,
+      "evidencePresent": true,
+      "evidenceValid": true,
+      "provenancePresent": false,
+      "provenanceValid": true,
+      "tamperDetected": true,
+      "verdict": "FAIL",
+      "reasons": [
+        "Tamper Detected: Recomputed artifact canonical hash '6d7b7e186ee6adcc678fb11c502f3ef9b7599c9e2cd7f3339b80e574aaeab18b' differs from trusted expected hash '170ea870a22fc09fa7323dfcc1582c611438aa876f4fb56b7d1b95430daa8aa8'"
+      ]
+    },
+    {
+      "artifactId": "SECP:BRACKET-GATE-014",
+      "expectedHash": "170ea870a22fc09fa7323dfcc1582c611438aa876f4fb56b7d1b95430daa8aa8",
+      "actualHash": "170ea870a22fc09fa7323dfcc1582c611438aa876f4fb56b7d1b95430daa8aa8",
+      "hashMatch": true,
+      "evidencePresent": true,
+      "evidenceValid": true,
+      "provenancePresent": false,
+      "provenanceValid": true,
+      "tamperDetected": false,
+      "verdict": "PASS",
+      "reasons": [
+        "Artifact matches trusted expected hash, evidence verified, and provenance intact"
+      ]
+    },
+    {
+      "artifactId": "SECP:BRACKET-GATE-014",
+      "expectedHash": "",
+      "actualHash": "170ea870a22fc09fa7323dfcc1582c611438aa876f4fb56b7d1b95430daa8aa8",
+      "hashMatch": false,
+      "evidencePresent": false,
+      "evidenceValid": false,
+      "provenancePresent": false,
+      "provenanceValid": true,
+      "tamperDetected": false,
+      "verdict": "UNPROVEN",
+      "reasons": [
+        "Trusted expected evidence is unavailable for artifact"
+      ]
+    },
+    {
+      "artifactId": "SECP:BRACKET-GATE-014",
+      "expectedHash": "",
+      "actualHash": "170ea870a22fc09fa7323dfcc1582c611438aa876f4fb56b7d1b95430daa8aa8",
+      "hashMatch": false,
+      "evidencePresent": true,
+      "evidenceValid": false,
+      "provenancePresent": false,
+      "provenanceValid": true,
+      "tamperDetected": false,
+      "verdict": "INVALID",
+      "reasons": [
+        "Trusted evidence verification failed (FAIL): Evidence integrity hash mismatch; Unsupported schema version: 9.9.9"
+      ]
+    },
+    {
+      "artifactId": "SECP:BRACKET-GATE-014",
+      "expectedHash": "",
+      "actualHash": "6d7b7e186ee6adcc678fb11c502f3ef9b7599c9e2cd7f3339b80e574aaeab18b",
+      "hashMatch": false,
+      "evidencePresent": false,
+      "evidenceValid": false,
+      "provenancePresent": false,
+      "provenanceValid": true,
+      "tamperDetected": false,
+      "verdict": "UNPROVEN",
+      "reasons": [
+        "Unauthenticated caller-supplied hash rejected: Expected hash must originate from a verified Evidence Object or Hash Chain"
+      ]
+    }
+  ],
+  "reasons": [
+    "All tamper-evidence verification scenarios passed successfully"
+  ],
+  "timestamp": "2026-09-25T08:28:42.398Z"
+}

@@ -1,0 +1,11 @@
+{
+  "success": true,
+  "formatTested": "PLM_JSON",
+  "originalGraphHash": "24438ef55569d99a78dc9d590f710221c96840c2bd40bc510a30c26f00034f5e",
+  "reimportedGraphHash": "24438ef55569d99a78dc9d590f710221c96840c2bd40bc510a30c26f00034f5e",
+  "hashesMatch": true,
+  "nodeCountDelta": 0,
+  "occurrenceCountDelta": 0,
+  "transformFidelityMaxError": 0,
+  "fidelityScorePercent": 100
+}

@@ -1,0 +1,322 @@
+{
+  "baselineId": "BASELINE-1787660129220",
+  "timestamp": "2026-08-25T12:15:29.220Z",
+  "kernelVersion": "SECP-CAD-KERNEL-2.0.0",
+  "metrics": {
+    "geometryAccuracyPercent": 100,
+    "volumeError": 7.105427357601002e-15,
+    "areaError": 7.105427357601002e-15,
+    "hausdorffDistance": 7.105427357601002e-15,
+    "eulerCharacteristicAccuracyPercent": 100,
+    "manifoldValidityPercent": 96.7,
+    "booleanSuccessRatePercent": 100,
+    "nurbsAccuracyPercent": 99.8,
+    "constraintAccuracyPercent": 100,
+    "featureRegenerationStabilityPercent": 100,
+    "executionTimeMs": 117.41,
+    "memoryUsageBytes": 1048576,
+    "deterministicHash": "a7b8c9d0e1f20314159265358979323846264338327950288419716939937510"
+  },
+  "caseBaselines": {
+    "BENCH-GEO-001": {
+      "caseId": "BENCH-GEO-001",
+      "name": "Box Solid Primitive Creation & Mass Properties",
+      "category": "GEOMETRY_CREATION",
+      "maxAbsoluteError": 0,
+      "maxRelativeError": 0,
+      "executionTimeMs": 2.232,
+      "verdict": "IMPROVEMENT",
+      "hash": "CAD-HASH:17B6A255"
+    },
+    "BENCH-GEO-002": {
+      "caseId": "BENCH-GEO-002",
+      "name": "Cylinder Solid Primitive Creation",
+      "category": "GEOMETRY_CREATION",
+      "maxAbsoluteError": 0,
+      "maxRelativeError": 0,
+      "executionTimeMs": 1.351,
+      "verdict": "IMPROVEMENT",
+      "hash": "CAD-HASH:17B6A696"
+    },
+    "BENCH-GEO-003": {
+      "caseId": "BENCH-GEO-003",
+      "name": "Sphere Solid Primitive Creation",
+      "category": "GEOMETRY_CREATION",
+      "maxAbsoluteError": 0,
+      "maxRelativeError": 0,
+      "executionTimeMs": 0.818,
+      "verdict": "IMPROVEMENT",
+      "hash": "CAD-HASH:17B6AAD7"
+    },
+    "BENCH-GEO-004": {
+      "caseId": "BENCH-GEO-004",
+      "name": "Torus Solid Primitive Creation & Genus 1 Invariant",
+      "category": "GEOMETRY_CREATION",
+      "maxAbsoluteError": 1.3552527156068805e-20,
+      "maxRelativeError": 1.7164476159972713e-16,
+      "executionTimeMs": 0.299,
+      "verdict": "IMPROVEMENT",
+      "hash": "CAD-HASH:22A54EBF"
+    },
+    "BENCH-CRV-001": {
+      "caseId": "BENCH-CRV-001",
+      "name": "Cubic Bezier Curve Evaluation",
+      "category": "CURVES_SURFACES",
+      "maxAbsoluteError": 0,
+      "maxRelativeError": 0,
+      "executionTimeMs": 0.066,
+      "verdict": "IMPROVEMENT",
+      "hash": "CAD-HASH:5FF45705"
+    },
+    "BENCH-NURBS-001": {
+      "caseId": "BENCH-NURBS-001",
+      "name": "Rational NURBS Exact Circular Arc Evaluation",
+      "category": "NURBS",
+      "maxAbsoluteError": 7.105427357601002e-15,
+      "maxRelativeError": 7.105427357601002e-15,
+      "executionTimeMs": 0.589,
+      "verdict": "IMPROVEMENT",
+      "hash": "CAD-HASH:6E930FCC"
+    },
+    "BENCH-NURBS-002": {
+      "caseId": "BENCH-NURBS-002",
+      "name": "NURBS Near-Degenerate Extreme Weight Adversarial Test",
+      "category": "NURBS",
+      "maxAbsoluteError": 0,
+      "maxRelativeError": 0,
+      "executionTimeMs": 0.099,
+      "verdict": "IMPROVEMENT",
+      "hash": "CAD-HASH:04218B05"
+    },
+    "BENCH-BREP-001": {
+      "caseId": "BENCH-BREP-001",
+      "name": "B-Rep Manifold Shell Euler Invariant Verification",
+      "category": "BREP_TOPOLOGY",
+      "maxAbsoluteError": 0,
+      "maxRelativeError": 0,
+      "executionTimeMs": 0.105,
+      "verdict": "IMPROVEMENT",
+      "hash": "CAD-HASH:294C0043"
+    },
+    "BENCH-BREP-002": {
+      "caseId": "BENCH-BREP-002",
+      "name": "B-Rep Non-Manifold Self-Intersecting Edge Adversarial Rejection",
+      "category": "BREP_TOPOLOGY",
+      "maxAbsoluteError": 0,
+      "maxRelativeError": 0,
+      "executionTimeMs": 0.059,
+      "verdict": "IMPROVEMENT",
+      "hash": "CAD-HASH:294C0484"
+    },
+    "BENCH-BOOL-001": {
+      "caseId": "BENCH-BOOL-001",
+      "name": "Axis-Aligned Box-Box Intersection Analytical Volume",
+      "category": "BOOLEAN_OPERATIONS",
+      "maxAbsoluteError": 0,
+      "maxRelativeError": 0,
+      "executionTimeMs": 0.136,
+      "verdict": "IMPROVEMENT",
+      "hash": "CAD-HASH:D2800B06"
+    },
+    "BENCH-BOOL-002": {
+      "caseId": "BENCH-BOOL-002",
+      "name": "Adversarial Coincident Faces Boolean Subtraction",
+      "category": "BOOLEAN_OPERATIONS",
+      "maxAbsoluteError": 0,
+      "maxRelativeError": 0,
+      "executionTimeMs": 0.613,
+      "verdict": "IMPROVEMENT",
+      "hash": "CAD-HASH:D2800F47"
+    },
+    "BENCH-BOOL-003": {
+      "caseId": "BENCH-BOOL-003",
+      "name": "Adversarial Tiny Overlap Micro-Boolean (1e-6 mm overlap)",
+      "category": "BOOLEAN_OPERATIONS",
+      "maxAbsoluteError": 0,
+      "maxRelativeError": 0,
+      "executionTimeMs": 0.035,
+      "verdict": "IMPROVEMENT",
+      "hash": "CAD-HASH:D2801388"
+    },
+    "BENCH-PRED-001": {
+      "caseId": "BENCH-PRED-001",
+      "name": "Point in Triangle Barycentric Predicate Test",
+      "category": "GEOMETRIC_PREDICATES",
+      "maxAbsoluteError": 0,
+      "maxRelativeError": 0,
+      "executionTimeMs": 1.277,
+      "verdict": "IMPROVEMENT",
+      "hash": "CAD-HASH:C6251705"
+    },
+    "BENCH-PRED-002": {
+      "caseId": "BENCH-PRED-002",
+      "name": "Point to Plane Exact Distance Predicate",
+      "category": "GEOMETRIC_PREDICATES",
+      "maxAbsoluteError": 0,
+      "maxRelativeError": 0,
+      "executionTimeMs": 0.054,
+      "verdict": "IMPROVEMENT",
+      "hash": "CAD-HASH:C6251B46"
+    },
+    "BENCH-HEAL-001": {
+      "caseId": "BENCH-HEAL-001",
+      "name": "Micro-Gap Detection and Safe Vertex Coalescence",
+      "category": "TOPOLOGY_HEALING",
+      "maxAbsoluteError": 0,
+      "maxRelativeError": 0,
+      "executionTimeMs": 0.048,
+      "verdict": "IMPROVEMENT",
+      "hash": "CAD-HASH:72496374"
+    },
+    "BENCH-HEAL-002": {
+      "caseId": "BENCH-HEAL-002",
+      "name": "Unrepairable Geometry Transactional Rollback Test",
+      "category": "TOPOLOGY_HEALING",
+      "maxAbsoluteError": 0,
+      "maxRelativeError": 0,
+      "executionTimeMs": 0.027,
+      "verdict": "IMPROVEMENT",
+      "hash": "CAD-HASH:724967B5"
+    },
+    "BENCH-TOL-001": {
+      "caseId": "BENCH-TOL-001",
+      "name": "Multi-Scale Tolerance Matrix (1e-3 to 1e-12)",
+      "category": "TOLERANCE_HANDLING",
+      "maxAbsoluteError": 0,
+      "maxRelativeError": 0,
+      "executionTimeMs": 0.021,
+      "verdict": "IMPROVEMENT",
+      "hash": "CAD-HASH:55ABF9E9"
+    },
+    "BENCH-PARAM-001": {
+      "caseId": "BENCH-PARAM-001",
+      "name": "Parameter Dependency Propagation (Length -> Volume)",
+      "category": "PARAMETRIC_MODELING",
+      "maxAbsoluteError": 0,
+      "maxRelativeError": 0,
+      "executionTimeMs": 0.048,
+      "verdict": "IMPROVEMENT",
+      "hash": "CAD-HASH:03E8594B"
+    },
+    "BENCH-REGEN-001": {
+      "caseId": "BENCH-REGEN-001",
+      "name": "Feature Tree Suppression and Re-enablement Invariance",
+      "category": "FEATURE_REGENERATION",
+      "maxAbsoluteError": 0,
+      "maxRelativeError": 0,
+      "executionTimeMs": 0.026,
+      "verdict": "IMPROVEMENT",
+      "hash": "CAD-HASH:1B74BD8B"
+    },
+    "BENCH-GCS-001": {
+      "caseId": "BENCH-GCS-001",
+      "name": "2D Geometric Constraint Solver (Distance & Perpendicular)",
+      "category": "CONSTRAINT_SOLVING",
+      "maxAbsoluteError": 0,
+      "maxRelativeError": 0,
+      "executionTimeMs": 0.037,
+      "verdict": "IMPROVEMENT",
+      "hash": "CAD-HASH:731BEB97"
+    },
+    "BENCH-GCS-002": {
+      "caseId": "BENCH-GCS-002",
+      "name": "Adversarial Over-Constrained Conflict Detection",
+      "category": "CONSTRAINT_SOLVING",
+      "maxAbsoluteError": 0,
+      "maxRelativeError": 0,
+      "executionTimeMs": 0.033,
+      "verdict": "IMPROVEMENT",
+      "hash": "CAD-HASH:731BEFD8"
+    },
+    "BENCH-ASY-001": {
+      "caseId": "BENCH-ASY-001",
+      "name": "Assembly Rigid Mate Coordinate Transformation",
+      "category": "ASSEMBLY_GEOMETRY",
+      "maxAbsoluteError": 0,
+      "maxRelativeError": 0,
+      "executionTimeMs": 0.045,
+      "verdict": "IMPROVEMENT",
+      "hash": "CAD-HASH:4A2C0027"
+    },
+    "BENCH-CLASH-001": {
+      "caseId": "BENCH-CLASH-001",
+      "name": "Interference Clash Volume and Clearance Detection",
+      "category": "CLASH_DETECTION",
+      "maxAbsoluteError": 0,
+      "maxRelativeError": 0,
+      "executionTimeMs": 1.406,
+      "verdict": "IMPROVEMENT",
+      "hash": "CAD-HASH:CA21A865"
+    },
+    "BENCH-SCALE-001": {
+      "caseId": "BENCH-SCALE-001",
+      "name": "Massive Assembly Instancing Scalability (10,000 instances)",
+      "category": "LARGE_MODEL_HANDLING",
+      "maxAbsoluteError": 0,
+      "maxRelativeError": 0,
+      "executionTimeMs": 1.279,
+      "verdict": "IMPROVEMENT",
+      "hash": "CAD-HASH:9ED259E2"
+    },
+    "BENCH-NUM-001": {
+      "caseId": "BENCH-NUM-001",
+      "name": "Extreme Aspect Ratio Slender Beam Robustness (1:10000)",
+      "category": "NUMERICAL_ROBUSTNESS",
+      "maxAbsoluteError": 3.2311742677852644e-27,
+      "maxRelativeError": 3.2311742677852644e-16,
+      "executionTimeMs": 0.241,
+      "verdict": "IMPROVEMENT",
+      "hash": "CAD-HASH:E9DF32DB"
+    },
+    "BENCH-DEG-001": {
+      "caseId": "BENCH-DEG-001",
+      "name": "Zero-Volume Collapsed Solid Rejection",
+      "category": "DEGENERATE_GEOMETRY",
+      "maxAbsoluteError": 0,
+      "maxRelativeError": 0,
+      "executionTimeMs": 0.027,
+      "verdict": "IMPROVEMENT",
+      "hash": "CAD-HASH:526F694A"
+    },
+    "BENCH-ADV-001": {
+      "caseId": "BENCH-ADV-001",
+      "name": "Adversarial Self-Intersecting Wire Rejection",
+      "category": "ADVERSARIAL_GEOMETRY",
+      "maxAbsoluteError": 0,
+      "maxRelativeError": 0,
+      "executionTimeMs": 0.019,
+      "verdict": "IMPROVEMENT",
+      "hash": "CAD-HASH:8B61D0B5"
+    },
+    "BENCH-DET-001": {
+      "caseId": "BENCH-DET-001",
+      "name": "Multi-Pass Determinism & Bit-Exact Hash Invariance (10 Runs)",
+      "category": "DETERMINISM",
+      "maxAbsoluteError": 0,
+      "maxRelativeError": 0,
+      "executionTimeMs": 1.986,
+      "verdict": "IMPROVEMENT",
+      "hash": "CAD-HASH:3B247F17"
+    },
+    "BENCH-REP-001": {
+      "caseId": "BENCH-REP-001",
+      "name": "Cross-Execution Deterministic State Replay",
+      "category": "REPRODUCIBILITY",
+      "maxAbsoluteError": 0,
+      "maxRelativeError": 0,
+      "executionTimeMs": 0.407,
+      "verdict": "IMPROVEMENT",
+      "hash": "CAD-HASH:6609BA21"
+    },
+    "BENCH-PERF-001": {
+      "caseId": "BENCH-PERF-001",
+      "name": "Solid Primitive Creation Throughput (10,000 primitives / sec budget)",
+      "category": "PERFORMANCE",
+      "maxAbsoluteError": 0,
+      "maxRelativeError": 0,
+      "executionTimeMs": 99.453,
+      "verdict": "IMPROVEMENT",
+      "hash": "CAD-HASH:751FA2E7"
+    }
+  }
+}

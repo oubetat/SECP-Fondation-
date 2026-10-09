@@ -1,0 +1,12 @@
+{
+  "milestone": "M9",
+  "provenanceType": "CROSS-DOMAIN-PROVENANCE",
+  "status": "IMPLEMENTED",
+  "supportedRelationships": [
+    "DERIVED_FROM",
+    "GENERATED_FROM",
+    "VERIFIED_BY",
+    "CROSS_DOMAIN_INPUT_FROM"
+  ],
+  "graphContinuity": "VERIFIED"
+}

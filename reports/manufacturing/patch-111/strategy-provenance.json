@@ -1,0 +1,5 @@
+{
+  "strategyId": "ADAPTIVE_POCKETING",
+  "algorithm": "SURFACE_MORPH_V2",
+  "revision": "2.1"
+}

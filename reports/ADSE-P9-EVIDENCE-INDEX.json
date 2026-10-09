@@ -1,0 +1,10 @@
+[
+  {
+    "evidenceId": "EVI-P9-MASTER-FC",
+    "executionId": "exec:comm:R2",
+    "evidenceType": "CORE_EXECUTION_EVIDENCE",
+    "signedByAuthority": "CORE_EXECUTION_AUTHORITY",
+    "createdAt": "2026-09-28T11:11:59Z",
+    "status": "VERIFIED"
+  }
+]

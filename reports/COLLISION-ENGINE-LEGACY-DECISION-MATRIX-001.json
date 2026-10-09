@@ -1,0 +1,63 @@
+{
+  "contractId": "CONTRACT-COLLISION-LEGACY-MIGRATION-001",
+  "name": "Legacy Collision Engine Migration & Retirement Decision Matrix",
+  "version": "1.0.0",
+  "decisions": [
+    {
+      "legacyFile": "src/engine/assembly/AssemblyInterferenceEngine.ts",
+      "currentRole": "OCCT B-Rep boolean clash",
+      "action": "RETAIN_AND_HARDEN",
+      "remediationRequirement": "Remove try/catch fail-open swallowed errors; enforce fail-closed status: 'ANALYSIS_FAILED' on kernel exceptions.",
+      "targetDomain": "Assembly B-Rep Solid Interference (Domain 1)"
+    },
+    {
+      "legacyFile": "src/engine/cam/collision/CollisionDetectionEngine.ts",
+      "currentRole": "CAM swept motion & tool assembly checking",
+      "action": "RETAIN_AND_UPGRADE_NARROW_PHASE",
+      "remediationRequirement": "Replace vertex/centroid triangle check with exact analytical cylinder-triangle distance solver; bind to real CAD meshes instead of createSampleObstacleTriangles.",
+      "targetDomain": "CAM Multi-Axis Toolpath Collision Authority (Domain 2)"
+    },
+    {
+      "legacyFile": "src/engine/cam/fiveaxis/FiveAxisCollisionEngine.ts",
+      "currentRole": "5-Axis tool holder clearance optimization",
+      "action": "ADAPT_AND_UNIFY",
+      "remediationRequirement": "Deprecate vertex-only loop; delegate all geometric distance queries to the unified NarrowPhaseCollisionEngine.",
+      "targetDomain": "Subsumed under CAM Multi-Axis Collision Authority"
+    },
+    {
+      "legacyFile": "src/engine/manufacturing/collision/CollisionDetector.ts",
+      "currentRole": "Manufacturing G-code simulation",
+      "action": "ADAPT_AND_UNIFY",
+      "remediationRequirement": "Unify with CAM collision result schema and replace discrete 10-point sampling with analytical segment-box distance.",
+      "targetDomain": "NC Simulation Verification Engine"
+    },
+    {
+      "legacyFile": "src/engine/assembly/clash/NarrowPhaseDetector.ts",
+      "currentRole": "Gate032 SAT OBB tests",
+      "action": "RETAIN_AS_SPECIALIZED",
+      "remediationRequirement": "Retain for lightweight OBB bounding tests; explicitly mark as Level 3 bounding rather than Level 0 solid truth.",
+      "targetDomain": "Fast OBB Clash Pre-filter"
+    },
+    {
+      "legacyFile": "src/engine/assembly/kinematics/KinematicCollisionClearanceBridge.ts",
+      "currentRole": "Mechanism clearance bridge",
+      "action": "DEPRECATE_MOCK_AND_REBUILD",
+      "remediationRequirement": "Completely remove 'centerDist - 30.0'; implement real geometric bounding and mesh distance queries from kinematic rigid body meshes.",
+      "targetDomain": "Kinematic Assembly Clearance Authority (Domain 3)"
+    },
+    {
+      "legacyFile": "src/engine/assembly-intelligence/CollisionDetectionEngine.ts",
+      "currentRole": "Mock 30mm sphere clash",
+      "action": "DEPRECATE_AND_DELETE",
+      "remediationRequirement": "Delete once consumers migrate to AssemblyInterferenceEngine.",
+      "targetDomain": "Deprecated"
+    },
+    {
+      "legacyFile": "src/engine/kinematics/CollisionEngine.ts",
+      "currentRole": "AABB workpiece bounds tool tip check",
+      "action": "DEPRECATE_AND_REPLACE",
+      "remediationRequirement": "Replace with unified CAM Collision Authority.",
+      "targetDomain": "Deprecated"
+    }
+  ]
+}

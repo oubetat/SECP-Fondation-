@@ -1,0 +1,129 @@
+{
+  "$schema": "https://secp.industrial/schemas/identity-contract-v1.json",
+  "contractId": "SECP-CONTRACT-DETERMINISM-003",
+  "version": "1.0.0",
+  "title": "SECP Engineering Result Identity and Execution Occurrence Separation Contract",
+  "establishedAt": "2026-09-26T00:25:00.000Z",
+  "authority": "CoreExecutionAuthority",
+  "registry": "GenericExecutionRegistry",
+  "layers": {
+    "executionScenarioIdentity": {
+      "identifier": "executionId",
+      "preimage": [
+        "engineeringObjectId",
+        "revisionHash",
+        "geometryHash",
+        "inputDigest",
+        "pluginId",
+        "pluginVersion",
+        "executionKind",
+        "solverIdentity"
+      ],
+      "canonicalFormat": "EXEC-{SHA256(canonicalString)[0:24].toUpperCase()}",
+      "isDeterministic": true,
+      "containsWallClockMetadata": false,
+      "stableUnderReplay": true,
+      "stableUnderRehydration": true,
+      "integrityVerification": "computedExecId"
+    },
+    "engineeringResultIdentity": {
+      "identifier": "resultDigest",
+      "source": "CoreExecutionAuthority.computeResultDigest(solverResult.rawResults)",
+      "preimage": "AttestationCanonicalizer.normalizeValue(extractEngineeringOutputs(rawResults))",
+      "canonicalFormat": "SHA256(canonicalString).hex",
+      "isDeterministic": true,
+      "containsWallClockMetadata": false,
+      "excludedFields": [
+        "solvedAt",
+        "duration",
+        "executionDurationMs",
+        "processTiming",
+        "timestamp"
+      ],
+      "stableUnderReplay": true,
+      "stableUnderRehydration": true,
+      "authoritativeConsumers": [
+        "derivationBinding",
+        "GenericExecutionRegistry",
+        "ProvenanceGraph (RES-NODE-)",
+        "EvidenceLeafRecord"
+      ]
+    },
+    "executionOccurrence": {
+      "identifier": "occurrenceId",
+      "canonicalFormat": "OCC-{SHA256(executionId|timestamp|solvedAt)[0:16].toUpperCase()}",
+      "isDeterministic": false,
+      "containsWallClockMetadata": true,
+      "trackedFields": {
+        "occurrenceId": "string",
+        "executionId": "string",
+        "timestamp": "ISO-8601 string",
+        "solvedAt": "ISO-8601 string",
+        "durationMs": "number"
+      },
+      "ledger": "GenericExecutionEnvelope.occurrences[]",
+      "semantics": "Captures individual runtime invocation events without altering mathematical result identity"
+    },
+    "executionEnvelopeImmutability": {
+      "identifier": "contentDigest",
+      "source": "GenericExecutionRegistry.computeContentDigest(envelope)",
+      "preimage": [
+        "executionId",
+        "engineeringObjectId",
+        "revisionHash",
+        "geometryHash",
+        "pluginId",
+        "pluginVersion",
+        "executionKind",
+        "inputDigest",
+        "resultDigest",
+        "solverIdentity",
+        "artifactDigest",
+        "overallVerdict",
+        "rawResults (engineering outputs only)"
+      ],
+      "isDeterministic": true,
+      "stableUnderReplay": true,
+      "stableUnderRehydration": true
+    },
+    "derivedArtifactBinding": {
+      "identifier": "artifactDigest",
+      "source": "CanonicalDerivedArtifactBinding.createBinding",
+      "preimage": [
+        "cadRevisionHash",
+        "canonicalGeometryHash",
+        "artifactContentHash",
+        "scenarioId (executionId)"
+      ],
+      "isDeterministic": true,
+      "stableUnderReplay": true
+    },
+    "truthThreadEvidence": {
+      "identifier": "leafHash",
+      "source": "EvidenceMerkleTree.computeLeafHash",
+      "preimage": [
+        "entityId",
+        "partId",
+        "revisionId",
+        "cadRevisionHash",
+        "canonicalGeometryHash",
+        "artifactKind",
+        "artifactContentHash",
+        "evidenceType",
+        "authorityIdentity",
+        "sourceIdentity",
+        "executionIdentity"
+      ],
+      "isDeterministic": true,
+      "stableUnderReplay": true
+    }
+  },
+  "registryPolicy": {
+    "duplicateScenarioSameResult": "IDEMPOTENT_REPLAY_RECORD_OCCURRENCE",
+    "duplicateScenarioConflictingResult": "FAIL_CLOSED_IMMUTABLE_IDENTITY_CONFLICT",
+    "tamperedRawResults": "FAIL_CLOSED_RESULT_DIGEST_MISMATCH",
+    "tamperedExecutionId": "FAIL_CLOSED_EXECUTION_ID_MISMATCH",
+    "tamperedEvidenceLeaf": "FAIL_CLOSED_EVIDENCE_LEAF_HASH_MISMATCH",
+    "unsealedEnvelope": "FAIL_CLOSED_MISSING_AUTHORITATIVE_SEAL"
+  }
+}

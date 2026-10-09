@@ -1,0 +1,13 @@
+{
+  "reportId": "COLLISION-ENGINE-P4-DISCRETE-SAMPLING-001",
+  "isolatedComponents": [
+    {
+      "file": "src/engine/cam/collision/ContinuousCollisionDetector.ts",
+      "classification": "LEGACY_DIAGNOSTIC_SAMPLING",
+      "authorityRole": "NON_AUTHORITATIVE_FALLBACK",
+      "samplingSteps": "4 to 25 steps"
+    }
+  ],
+  "productionAuthorityStatus": "BOUND_TO_EXACT_SWEPT_CCD",
+  "verdict": "PASSED"
+}

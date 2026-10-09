@@ -1,0 +1,38 @@
+{
+  "missionId": "COLLISION-ENGINE-P2-FAIL-CLOSED-HARDENING-001",
+  "artifactType": "FAILURE_PROPAGATION_VERIFICATION",
+  "timestamp": "2026-10-01T02:08:00.000Z",
+  "invariant": "Failure / Uncertainty -> Canonical Failure Result -> provenSafe = false -> No consumer downgrade -> No authoritative CLEAR",
+  "propagationPathsVerified": [
+    {
+      "pathId": "CAM_PROPAGATION",
+      "source": "CollisionDetectionEngine.verifyToolpath() segment evaluateSync()",
+      "destination": "CollisionReport",
+      "failClosedPreserved": true
+    },
+    {
+      "pathId": "5AXIS_PROPAGATION",
+      "source": "CAMCollisionEngine.checkSegmentCollision() evaluateSync()",
+      "destination": "hasCollision: true (via fail-closed fallback)",
+      "failClosedPreserved": true
+    },
+    {
+      "pathId": "MACH_SIM_PROPAGATION",
+      "source": "MachineCollisionEngine.evaluatePoseCollisions() evaluateSync()",
+      "destination": "CollisionRecord[] containing error",
+      "failClosedPreserved": true
+    },
+    {
+      "pathId": "ASSEMBLY_PROPAGATION",
+      "source": "AssemblyInterferenceEngine.analyzeInterference() evaluateSync()",
+      "destination": "AssemblyInterferenceReport status = UNKNOWN",
+      "failClosedPreserved": true
+    },
+    {
+      "pathId": "KINEMATICS_PROPAGATION",
+      "source": "CollisionEngine.verifyPoint() evaluateSync()",
+      "destination": "ClearanceResult status = COLLISION (fail-closed state)",
+      "failClosedPreserved": true
+    }
+  ]
+}

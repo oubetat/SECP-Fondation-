@@ -1,0 +1,131 @@
+{
+  "timestamp": "2026-09-23T07:14:08.144Z",
+  "mission": "NACA0012 — EVIDENCE SERIALIZATION GAP CLOSURE",
+  "originalDefect": {
+    "description": "EVIDENCE_SERIALIZATION_GAP",
+    "symptom": "500 solver iterations executed and reported in aggregate metrics/logs, but serialized trace.length = 0 in JSON artifact",
+    "lossPoint": {
+      "producer": "Fvm3DNavierStokesSolver.solve (src/engine/cfd3d/Fvm3DNavierStokesSolver.ts:1882)",
+      "container": "CfdSolution3D.iterationHistory (src/engine/cfd3d/Fvm3DTypes.ts:371)",
+      "consumer": "run_intervention_pressure_cap.ts:137",
+      "expectedField": "solutionResult.iterationHistory",
+      "actualFieldRead": "solutionResult.history (undefined)",
+      "failureMechanism": "Evaluation of (solutionResult?.history || []) defaulted to empty array [] without throwing an integrity gate error."
+    }
+  },
+  "implementation": {
+    "filesCreatedOrModified": [
+      {
+        "path": "src/engine/cfd3d/evidence/CfdEvidenceSerializer.ts",
+        "purpose": "Canonical CFD evidence serialization engine with strict fail-fast integrity gates rejecting empty or mismatched traces."
+      },
+      {
+        "path": "src/engine/cfd3d/evidence/__tests__/CfdEvidenceSerialization.test.ts",
+        "purpose": "Unit test suite verifying history preservation, iteration ordering, numeric fidelity, gate failures on empty traces, and original artifact immutability."
+      },
+      {
+        "path": "run_intervention_pressure_cap.ts",
+        "purpose": "Updated runner to consume canonical solutionResult.iterationHistory and enforce hard failure on silent empty traces."
+      },
+      {
+        "path": "vitest.config.ts",
+        "purpose": "Node test configuration ensuring standard Node.js runtime bindings for testing."
+      }
+    ]
+  },
+  "staticSourceVerification": {
+    "cfdNumericalLogicChanged": false,
+    "benchmarkPhysicsChanged": false,
+    "convergenceCriteriaChanged": false,
+    "evidenceCaptureChanged": true,
+    "evidenceSerializationChanged": true
+  },
+  "telemetryAudit": {
+    "pressure": {
+      "rawPPrime": "DYNAMIC_CORRECT (pressureCorrection stored per iteration)",
+      "pressureCap": "DYNAMIC_CORRECT (derived from dynamic pressure threshold)",
+      "appliedPPrime": "DYNAMIC_CORRECT",
+      "pressureCapActivated": "DYNAMIC_CORRECT"
+    },
+    "velocity": {
+      "rawVelocityMax": "DYNAMIC_CORRECT (maxVelocity recorded per iteration)",
+      "velocityCap": "DYNAMIC_CORRECT (2.50 m/s threshold recorded)",
+      "postCapVelocityMax": "DYNAMIC_CORRECT",
+      "actualVelocityClampCellCount": "MISSING (numberOfVelocityClippedCells is not instrumented in cell loop)"
+    },
+    "turbulence": {
+      "kResidual": "DYNAMIC_CORRECT",
+      "omegaResidual": "DYNAMIC_CORRECT",
+      "deltaK": "DYNAMIC_CORRECT",
+      "deltaOmega": "DYNAMIC_CORRECT",
+      "deltaNuT": "DYNAMIC_CORRECT",
+      "nuTClippedCells": "DYNAMIC_CORRECT (7260/7260 tracked in solver)"
+    },
+    "validity": {
+      "nanDetected": "DYNAMIC_CORRECT",
+      "infDetected": "DYNAMIC_CORRECT",
+      "firstInvalidIteration": "DYNAMIC_CORRECT",
+      "firstInvalidCell": "MISSING"
+    },
+    "forces": {
+      "cl": "DYNAMIC_CORRECT",
+      "cd": "DYNAMIC_CORRECT",
+      "cm": "DYNAMIC_CORRECT"
+    }
+  },
+  "tests": [
+    {
+      "name": "TEST 1 — HISTORY PRESERVATION",
+      "status": "PASS",
+      "detail": "Preserves 5/5 synthetic records without loss"
+    },
+    {
+      "name": "TEST 2 — ITERATION ORDER",
+      "status": "PASS",
+      "detail": "Asserts strictly increasing iteration indexing; rejects unordered sequences"
+    },
+    {
+      "name": "TEST 3 — NUMERIC FIDELITY",
+      "status": "PASS",
+      "detail": "Exact double precision floating point preservation without semantic truncation"
+    },
+    {
+      "name": "TEST 4 — NO SILENT EMPTY TRACE",
+      "status": "PASS",
+      "detail": "Throws EVIDENCE_SERIALIZATION_FAILURE when iterations > 0 and trace.length === 0"
+    },
+    {
+      "name": "TEST 5 — TRACE/ITERATION CONSISTENCY",
+      "status": "PASS",
+      "detail": "Rejects mismatch between totalIterations and trace length"
+    },
+    {
+      "name": "TEST 6 — TELEMETRY PROVENANCE",
+      "status": "PASS",
+      "detail": "Missing fields retained as MISSING/NOT_AVAILABLE rather than false zeros"
+    },
+    {
+      "name": "TEST 7 — ORIGINAL ARTIFACT IMMUTABILITY",
+      "status": "PASS",
+      "detail": "Verified byte-identical SHA-256 match on original frozen intervention artifact"
+    }
+  ],
+  "originalArtifactImmutability": {
+    "artifactPath": "reports/CFD-NACA0012-INTERVENTION-1-PRESSURE-CAP-REMOVED.json",
+    "expectedSha256": "99b9b7d93aa32eeec26ef8290b9ab0db44c13cf64185c7446811aa62efc515e2",
+    "actualSha256": "99b9b7d93aa32eeec26ef8290b9ab0db44c13cf64185c7446811aa62efc515e2",
+    "match": true
+  },
+  "remainingTelemetryGaps": [
+    "actual velocity clamp cell count (numberOfVelocityClippedCells is uninstrumented in cell update loop; status = MISSING)",
+    "first invalid cell coordinate (status = MISSING)"
+  ],
+  "verdicts": {
+    "evidenceSerialization": "PROVEN",
+    "evidenceContract": "PROVEN",
+    "cfdPhysicalValidation": "NOT_PROVEN",
+    "naca0012Convergence": "NOT_PROVEN",
+    "rootCause": "NOT_PROVEN",
+    "gci": "NOT_PROVEN"
+  }
+}

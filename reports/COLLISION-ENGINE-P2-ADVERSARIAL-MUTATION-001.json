@@ -1,0 +1,28 @@
+{
+  "missionId": "COLLISION-ENGINE-P2-FAIL-CLOSED-HARDENING-001",
+  "artifactType": "ADVERSARIAL_MUTATION_REPORT",
+  "timestamp": "2026-10-01T02:08:00.000Z",
+  "testSuite": "src/engine/collision-authority/__tests__/P2_FailClosedAdversarial.test.ts",
+  "mutationsTested": [
+    { "id": "M01", "name": "Authority throws", "result": "PASSED (Clean fail-closed sandboxing)" },
+    { "id": "M02", "name": "Provider throws", "result": "PASSED (Clean fail-closed sandboxing)" },
+    { "id": "M03", "name": "Provider returns null", "result": "PASSED (Throws exception)" },
+    { "id": "M04", "name": "Provider returns malformed result", "result": "PASSED (Normalizes to provenSafe=false)" },
+    { "id": "M05", "name": "Failure result modified to CLEAR", "result": "PASSED (Object.isFrozen throws on edit)" },
+    { "id": "M06", "name": "Failure result modified to NO_COLLISION", "result": "PASSED (Object.isFrozen throws on edit)" },
+    { "id": "M07", "name": "provenSafe forced true", "result": "PASSED (Object.isFrozen throws on edit)" },
+    { "id": "M08", "name": "UNKNOWN converted to CLEAR", "result": "PASSED (Maintains provenSafe=false)" },
+    { "id": "M09", "name": "UNSUPPORTED converted to success", "result": "PASSED (Maintains provenSafe=false)" },
+    { "id": "M10", "name": "TIMEOUT converted to success", "result": "PASSED (Maintains provenSafe=false)" },
+    { "id": "M11", "name": "Numerical failure converted to success", "result": "PASSED (Maintains provenSafe=false)" },
+    { "id": "M12", "name": "Consumer catches exception and returns false", "result": "PASSED (Consumers preserve failure state)" },
+    { "id": "M13", "name": "Consumer catches exception and returns true", "result": "PASSED (Consumers preserve failure state)" },
+    { "id": "M14", "name": "Serialization drops failure state", "result": "PASSED (Preserves fields)" },
+    { "id": "M15", "name": "Deserialization restores unsafe default", "result": "PASSED (Preserves fields)" },
+    { "id": "M16", "name": "Exactness forged from SAMPLED -> EXACT", "result": "PASSED (Object.isFrozen throws on edit)" },
+    { "id": "M17", "name": "Verification state forged", "result": "PASSED (Object.isFrozen throws on edit)" },
+    { "id": "M18", "name": "Missing geometry -> safe result", "result": "PASSED (Maintains provenSafe=false)" },
+    { "id": "M19", "name": "Ambiguous result -> safe result", "result": "PASSED (Maintains provenSafe=false)" },
+    { "id": "M20", "name": "Provider unregistered -> safe result", "result": "PASSED (Maintains provenSafe=false)" }
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "title": "ADSE-P0 Gap Register",
+  "subsystem": "ADSE Systems Engineering Capability Layer",
+  "auditDate": "2026-09-27T04:32:00Z",
+  "registriesAudit": [
+    {
+      "registry": "ADSE Domain Registry",
+      "status": "REUSE_AND_EXTEND",
+      "authority": "SECP Core Execution & ADSE Domain Engine",
+      "actionTaken": "Established ADSEEngine system and requirement stores"
+    },
+    {
+      "registry": "Engineering Capability Registry",
+      "status": "REUSE_AND_EXTEND",
+      "authority": "CapabilityRegistry & ADSECapabilityRegistration",
+      "actionTaken": "Integrated M0->M10 maturity gate tracking"
+    },
+    {
+      "registry": "Plugin Registry",
+      "status": "REUSE",
+      "authority": "GenericExecutionRegistry",
+      "actionTaken": "Plugins bound to CoreExecutionAuthority solvers"
+    },
+    {
+      "registry": "System Object Registry",
+      "status": "EXISTS",
+      "authority": "ADSEEngine System Model",
+      "actionTaken": "System, Subsystem, Component, Interface tracking active"
+    },
+    {
+      "registry": "Interface Registry",
+      "status": "EXISTS",
+      "authority": "ADSEEngine System Interface Contract",
+      "actionTaken": "Multi-domain system interfaces implemented"
+    },
+    {
+      "registry": "Revision Registry",
+      "status": "REUSE",
+      "authority": "RevisionEngine",
+      "actionTaken": "Bound to SECP Core RevisionEngine"
+    },
+    {
+      "registry": "Verification Registry",
+      "status": "REUSE",
+      "authority": "CoreVerificationResult & IndependentVerifiers",
+      "actionTaken": "Bound to SECP Core verification gates"
+    },
+    {
+      "registry": "Evidence Registry",
+      "status": "REUSE",
+      "authority": "EvidenceMerkleTree",
+      "actionTaken": "Bound to SECP Core evidence Merkle trees"
+    },
+    {
+      "registry": "Provenance Registry",
+      "status": "REUSE",
+      "authority": "ProvenanceGraph",
+      "actionTaken": "Bound to SECP Core Provenance DAG graph"
+    }
+  ],
+  "gapsIdentified": 0,
+  "status": "CLOSED"
+}

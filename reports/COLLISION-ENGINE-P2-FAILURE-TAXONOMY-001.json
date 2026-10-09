@@ -1,0 +1,63 @@
+{
+  "missionId": "COLLISION-ENGINE-P2-FAIL-CLOSED-HARDENING-001",
+  "artifactType": "FAILURE_TAXONOMY",
+  "timestamp": "2026-10-01T02:08:00.000Z",
+  "taxonomy": [
+    {
+      "status": "CollisionStatus.ANALYSIS_FAILED",
+      "severity": "CollisionSeverity.FATAL_FAILURE",
+      "provenSafe": false,
+      "exactness": "CollisionExactness.UNSUPPORTED",
+      "isFailed": true,
+      "description": "Provider evaluation or input pre-validation explicitly failed."
+    },
+    {
+      "status": "CollisionStatus.INVALID_GEOMETRY",
+      "severity": "CollisionSeverity.FATAL_FAILURE",
+      "provenSafe": false,
+      "exactness": "CollisionExactness.UNSUPPORTED",
+      "isFailed": true,
+      "description": "Missing, NaN, non-finite, empty or corrupt geometry structures."
+    },
+    {
+      "status": "CollisionStatus.UNSUPPORTED",
+      "severity": "CollisionSeverity.FATAL_FAILURE",
+      "provenSafe": false,
+      "exactness": "CollisionExactness.UNSUPPORTED",
+      "isFailed": true,
+      "description": "Requested capability is not supported by the resolved provider."
+    },
+    {
+      "status": "CollisionStatus.TIMEOUT",
+      "severity": "CollisionSeverity.FATAL_FAILURE",
+      "provenSafe": false,
+      "exactness": "CollisionExactness.UNSUPPORTED",
+      "isFailed": true,
+      "description": "Traversal computation exceeded allocated CPU/time budget."
+    },
+    {
+      "status": "CollisionStatus.NUMERICAL_FAILURE",
+      "severity": "CollisionSeverity.FATAL_FAILURE",
+      "provenSafe": false,
+      "exactness": "CollisionExactness.UNSUPPORTED",
+      "isFailed": true,
+      "description": "Divide-by-zero, non-convergence, singular matrices, or NaN intermediates."
+    },
+    {
+      "status": "CollisionStatus.AMBIGUOUS",
+      "severity": "CollisionSeverity.ERROR",
+      "provenSafe": false,
+      "exactness": "CollisionExactness.UNSUPPORTED",
+      "isFailed": true,
+      "description": "Indeterminate state on exact boundary margins under tolerance."
+    },
+    {
+      "status": "CollisionStatus.UNKNOWN",
+      "severity": "CollisionSeverity.ERROR",
+      "provenSafe": false,
+      "exactness": "CollisionExactness.UNSUPPORTED",
+      "isFailed": true,
+      "description": "Unclassified state resulting from unexpected behavior or crash."
+    }
+  ]
+}

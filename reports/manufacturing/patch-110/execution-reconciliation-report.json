@@ -1,0 +1,12 @@
+{
+  "toolpathId": "TOOLPATH_AERO_01",
+  "gcodeProgramId": "O1001",
+  "sampleCount": 150,
+  "averagePositionDeviationMM": 0.002,
+  "maxPositionDeviationMM": 0.005,
+  "averageSpindleSlipRPM": 12,
+  "feedDeviationMMMin": 4.5,
+  "divergences": [],
+  "isWithinAcceptanceBounds": true,
+  "verdict": "SYNCHRONIZED"
+}

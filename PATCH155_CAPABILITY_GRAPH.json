@@ -1,0 +1,76 @@
+{
+  "nodes": {
+    "capability:cad.brep.boolean": {
+      "id": "capability:cad.brep.boolean",
+      "dependencies": [],
+      "dependents": [],
+      "transitiveDependencies": []
+    },
+    "capability:cad.spoofed.proven": {
+      "id": "capability:cad.spoofed.proven",
+      "dependencies": [],
+      "dependents": [],
+      "transitiveDependencies": []
+    },
+    "capability:compute.spoofed.gpu": {
+      "id": "capability:compute.spoofed.gpu",
+      "dependencies": [],
+      "dependents": [],
+      "transitiveDependencies": []
+    },
+    "capability:physics.solve.spoofed.evidence": {
+      "id": "capability:physics.solve.spoofed.evidence",
+      "dependencies": [],
+      "dependents": [],
+      "transitiveDependencies": []
+    },
+    "capability:circular.alpha": {
+      "id": "capability:circular.alpha",
+      "dependencies": [
+        "capability:circular.beta"
+      ],
+      "dependents": [],
+      "transitiveDependencies": [
+        "capability:circular.beta"
+      ]
+    },
+    "capability:circular.beta": {
+      "id": "capability:circular.beta",
+      "dependencies": [],
+      "dependents": [
+        "capability:circular.alpha"
+      ],
+      "transitiveDependencies": []
+    },
+    "capability:physics.unsupported.solver": {
+      "id": "capability:physics.unsupported.solver",
+      "dependencies": [],
+      "dependents": [],
+      "transitiveDependencies": []
+    },
+    "capability:cad.tampered.evidence": {
+      "id": "capability:cad.tampered.evidence",
+      "dependencies": [],
+      "dependents": [],
+      "transitiveDependencies": []
+    },
+    "capability:compute.hpc.remote": {
+      "id": "capability:compute.hpc.remote",
+      "dependencies": [],
+      "dependents": [],
+      "transitiveDependencies": []
+    }
+  },
+  "hasCycle": false,
+  "topologicalOrder": [
+    "capability:compute.hpc.remote",
+    "capability:cad.tampered.evidence",
+    "capability:physics.unsupported.solver",
+    "capability:circular.alpha",
+    "capability:circular.beta",
+    "capability:physics.solve.spoofed.evidence",
+    "capability:compute.spoofed.gpu",
+    "capability:cad.spoofed.proven",
+    "capability:cad.brep.boolean"
+  ]
+}

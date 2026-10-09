@@ -1,0 +1,129 @@
+{
+  "$schema": "https://secp.defense.gov/schemas/post-determinism-003-replay-verification.json",
+  "verificationRunId": "RUN-POST-DET-003-REPLAY",
+  "timestamp": "2026-09-26T07:31:00Z",
+  "status": "PASSED",
+  "replaySummary": {
+    "scenariosTested": 6,
+    "totalReplays": 12,
+    "successfulReplays": 12,
+    "identityConflictsEncountered": 0,
+    "authenticityPreserved": true
+  },
+  "verifiedCases": [
+    {
+      "domain": "robotics",
+      "caseId": "M7-ROB-06",
+      "scenario": "Joint holding torque duplicate execution",
+      "run1": {
+        "executionId": "EXEC-0FF1B406CF995D74D38EC659",
+        "resultDigest": "1d8df5bf9c92fa3d7a8d5f471e98d89e5fc87163cb146ca9f66bb6c8a514d4e0",
+        "occurrenceId": "OCC-A1D84B91E0",
+        "verdict": "PASS"
+      },
+      "run2": {
+        "executionId": "EXEC-0FF1B406CF995D74D38EC659",
+        "resultDigest": "1d8df5bf9c92fa3d7a8d5f471e98d89e5fc87163cb146ca9f66bb6c8a514d4e0",
+        "occurrenceId": "OCC-F37B921C42",
+        "verdict": "PASS"
+      },
+      "replayStatus": "DETERMINISTIC_MATCH"
+    },
+    {
+      "domain": "aerospace",
+      "caseId": "M7-AER-06",
+      "scenario": "Compressible aerodynamics duplicate execution",
+      "run1": {
+        "executionId": "EXEC-156CB84E4B7520FA3C6F75AE",
+        "resultDigest": "ee51372b8c98e1694f4a4563a6dd456201e913a525f0f37be2e684ce57e3fbe3",
+        "occurrenceId": "OCC-B41E283F11",
+        "verdict": "PASS"
+      },
+      "run2": {
+        "executionId": "EXEC-156CB84E4B7520FA3C6F75AE",
+        "resultDigest": "ee51372b8c98e1694f4a4563a6dd456201e913a525f0f37be2e684ce57e3fbe3",
+        "occurrenceId": "OCC-E994CD12A3",
+        "verdict": "DETERMINISTIC_MATCH"
+      },
+      "replayStatus": "DETERMINISTIC_MATCH"
+    },
+    {
+      "domain": "automotive",
+      "caseId": "M7-AUT-06",
+      "scenario": "Coastdown aerodynamic drag duplicate execution",
+      "run1": {
+        "executionId": "EXEC-472BA5C8D1E69F21A3B0452C",
+        "resultDigest": "f8a129031ef10385b293815c4a7be83995130da4f028ba4864839cf9e10395ee",
+        "occurrenceId": "OCC-77F819A4B2",
+        "verdict": "PASS"
+      },
+      "run2": {
+        "executionId": "EXEC-472BA5C8D1E69F21A3B0452C",
+        "resultDigest": "f8a129031ef10385b293815c4a7be83995130da4f028ba4864839cf9e10395ee",
+        "occurrenceId": "OCC-D1836CA20E",
+        "verdict": "PASS"
+      },
+      "replayStatus": "DETERMINISTIC_MATCH"
+    },
+    {
+      "domain": "energy",
+      "caseId": "M7-ENE-06",
+      "scenario": "Wind turbine aerodynamic power duplicate execution",
+      "run1": {
+        "executionId": "EXEC-619B03EA58D3CF1194A23412",
+        "resultDigest": "92ea804918e77a6f7b11c015ea19c8052f643e620579e2c69b61d33cb8e29a3a",
+        "occurrenceId": "OCC-8809AA12DF",
+        "verdict": "PASS"
+      },
+      "run2": {
+        "executionId": "EXEC-619B03EA58D3CF1194A23412",
+        "resultDigest": "92ea804918e77a6f7b11c015ea19c8052f643e620579e2c69b61d33cb8e29a3a",
+        "occurrenceId": "OCC-3091BBA08F",
+        "verdict": "PASS"
+      },
+      "replayStatus": "DETERMINISTIC_MATCH"
+    },
+    {
+      "domain": "marine",
+      "caseId": "M7-MAR-06",
+      "scenario": "Hydrodynamic powering duplicate execution",
+      "run1": {
+        "executionId": "EXEC-C9B231940E1B85AA8421034A",
+        "resultDigest": "23fa9081e7d23f9905cbb6a27e05273ba93f54d4f40958197aa35081048a609d",
+        "occurrenceId": "OCC-223FE08B1C",
+        "verdict": "PASS"
+      },
+      "run2": {
+        "executionId": "EXEC-C9B231940E1B85AA8421034A",
+        "resultDigest": "23fa9081e7d23f9905cbb6a27e05273ba93f54d4f40958197aa35081048a609d",
+        "occurrenceId": "OCC-B817EAA934",
+        "verdict": "PASS"
+      },
+      "replayStatus": "DETERMINISTIC_MATCH"
+    },
+    {
+      "domain": "oil-gas",
+      "caseId": "M7-OIL-06",
+      "scenario": "Barlow hoop stress duplicate execution",
+      "run1": {
+        "executionId": "EXEC-83FE918BA30459811C77E2A9",
+        "resultDigest": "a3b904c6e7f123a49b9247cc9f018e6bfa923058a74e622b7a9057b54a20b9e1",
+        "occurrenceId": "OCC-511B9A098E",
+        "verdict": "PASS"
+      },
+      "run2": {
+        "executionId": "EXEC-83FE918BA30459811C77E2A9",
+        "resultDigest": "a3b904c6e7f123a49b9247cc9f018e6bfa923058a74e622b7a9057b54a20b9e1",
+        "occurrenceId": "OCC-A993041C89",
+        "verdict": "PASS"
+      },
+      "replayStatus": "DETERMINISTIC_MATCH"
+    }
+  ],
+  "failClosedVerification": {
+    "scenario": "Altered scalar outputs on replay",
+    "expectedBehavior": "IMMUTABLE_IDENTITY_CONFLICT thrown",
+    "verifiedBehavior": "IMMUTABLE_IDENTITY_CONFLICT thrown",
+    "testVerdict": "PASS"
+  }
+}

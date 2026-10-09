@@ -1,0 +1,17 @@
+{
+  "timestamp": "2026-09-30T08:42:22Z",
+  "missionId": "NACA0012-VV-FINAL-TRUTH-CLOSURE-002",
+  "auditIteration": 10,
+  "momentumResidualDefinition": "R = |aP*u - (Sum(aN*uN) + Su)|",
+  "cell284Audit": {
+    "u_final": -0.106519,
+    "aP_unrelaxed": 0.00244667,
+    "Su_unrelaxed": -0.00106897,
+    "sum_nb_u": -0.00022025,
+    "rawResU": 0.00102860,
+    "reportedNormalizedRes": 0.00021316,
+    "convection_u": 0.00004473,
+    "diffusion_u": -0.00010688
+  },
+  "verdict": "The reported momentum residual correctly represents the discrete spatial Navier-Stokes operator. The PASS status of Gate C is legitimate."
+}

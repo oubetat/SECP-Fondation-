@@ -1,0 +1,1 @@
+{"crossDiffusion": "CD = 2*(1-F1)*rho*sigmaOmega2/omega * (grad_k . grad_omega)"}

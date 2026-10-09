@@ -1,0 +1,69 @@
+[
+  {
+    "nodeId": "N0",
+    "globalIndex": 0,
+    "dof": "UX",
+    "displacement": 0,
+    "reaction": -10000,
+    "associatedElements": [
+      {
+        "elementId": "E0",
+        "stress": [
+          1000000.0000000001
+        ],
+        "strain": [
+          0.000005
+        ],
+        "vonMises": 1000000.0000000001
+      }
+    ]
+  },
+  {
+    "nodeId": "N1",
+    "globalIndex": 1,
+    "dof": "UX",
+    "displacement": 0.0000025,
+    "reaction": 0,
+    "associatedElements": [
+      {
+        "elementId": "E0",
+        "stress": [
+          1000000.0000000001
+        ],
+        "strain": [
+          0.000005
+        ],
+        "vonMises": 1000000.0000000001
+      },
+      {
+        "elementId": "E1",
+        "stress": [
+          1000000.0000000001
+        ],
+        "strain": [
+          0.000005
+        ],
+        "vonMises": 1000000.0000000001
+      }
+    ]
+  },
+  {
+    "nodeId": "N2",
+    "globalIndex": 2,
+    "dof": "UX",
+    "displacement": 0.000005,
+    "reaction": 0,
+    "associatedElements": [
+      {
+        "elementId": "E1",
+        "stress": [
+          1000000.0000000001
+        ],
+        "strain": [
+          0.000005
+        ],
+        "vonMises": 1000000.0000000001
+      }
+    ]
+  }
+]

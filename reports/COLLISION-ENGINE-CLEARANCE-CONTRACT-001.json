@@ -1,0 +1,22 @@
+{
+  "contractId": "CONTRACT-COLLISION-CLEARANCE-001",
+  "name": "Geometric Clearance & Gouge Distinction Contract",
+  "version": "1.0.0",
+  "clearanceEvaluationRules": [
+    {
+      "rule": "RULE_EXACT_GEOMETRY_DISTANCE",
+      "statement": "Clearance between Body A and Body B MUST be computed from their actual canonical surface meshes or solid B-Reps.",
+      "invariant": "Two bodies with identical centroids but different geometry (e.g. 500mm blade vs 1mm screw) MUST produce distinct clearance values reflecting their true boundaries."
+    },
+    {
+      "rule": "RULE_ELIMINATE_HARDCODED_OFFSETS",
+      "statement": "All occurrences of 'centerDist - constant' (e.g. centerDist - 30.0) are strictly deprecated and prohibited in authoritative clearance calculations."
+    }
+  ],
+  "semanticDistinctions": {
+    "COLLISION": "Volumetric overlap between non-cutting components (e.g. Holder vs Part, Cutter Shank vs Fixture).",
+    "GOUGE": "Excess material removal where the active cutter envelope penetrates beyond the finished part design surface by more than the specified machining tolerance (e.g. tolerance = 0.020mm).",
+    "CLEARANCE_VIOLATION": "Minimum Euclidean distance between safe non-cutting surfaces is less than the required clearance margin (e.g. clearance < 2.0mm) without physical interpenetration.",
+    "INTENDED_CUT": "Cutter flute intersecting raw stock or machining allowance within nominal toolpath tolerances."
+  }
+}

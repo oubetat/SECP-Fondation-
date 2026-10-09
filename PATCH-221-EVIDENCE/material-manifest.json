@@ -1,0 +1,8 @@
+{
+  "STEEL": { "name": "Carbon Steel", "densityKgM3": 7850 },
+  "STAINLESS_STEEL": { "name": "Stainless Steel A2", "densityKgM3": 7930 },
+  "ALUMINIUM": { "name": "Aluminium 6061-T6", "densityKgM3": 2700 },
+  "BRASS": { "name": "Brass CZ121", "densityKgM3": 8400 },
+  "TITANIUM": { "name": "Titanium Grade 5", "densityKgM3": 4430 },
+  "ENGINEERING_PLASTIC": { "name": "POM (Acetal)", "densityKgM3": 1410 }
+}

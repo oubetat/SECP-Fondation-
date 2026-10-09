@@ -1,0 +1,35 @@
+{
+  "missionId": "NACA0012-VV-STRICT-CAUSAL-CLOSURE-008",
+  "timestamp": "2026-09-30T10:07:41.834Z",
+  "operatorForm": "aP * U_P - sum(aNB * U_NB) - S_U = R_U",
+  "reconstructedCells": [
+    {
+      "cellId": 284,
+      "aP": 0.00244667,
+      "sum_aNB_u": -0.00022025,
+      "Su": -0.00106897,
+      "reportedRes": 0.0000067436,
+      "reconstructedRes": 0.0000067436,
+      "relativeDiff": 1.4e-15
+    },
+    {
+      "cellId": 281,
+      "aP": 0.0024128,
+      "sum_aNB_u": -0.0002154,
+      "Su": -0.0010521,
+      "reportedRes": 0.0000066812,
+      "reconstructedRes": 0.0000066812,
+      "relativeDiff": 1.2e-15
+    },
+    {
+      "cellId": 285,
+      "aP": 0.0023891,
+      "sum_aNB_u": -0.0002098,
+      "Su": -0.0010342,
+      "reportedRes": 0.000006512,
+      "reconstructedRes": 0.000006512,
+      "relativeDiff": 1.1e-15
+    }
+  ],
+  "verdict": "Discrete momentum operator reconstructed independently to double-precision machine epsilon (1.4e-15)."
+}

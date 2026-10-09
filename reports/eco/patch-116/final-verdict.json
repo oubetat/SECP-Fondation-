@@ -1,0 +1,11 @@
+{
+  "verdict": "VALID",
+  "lifecycleInvalid": false,
+  "impactIncomplete": false,
+  "approvalRequirementsNotSatisfied": false,
+  "implementationMismatch": false,
+  "verificationFailed": false,
+  "evidenceTampered": false,
+  "requiredEvidenceMissing": false,
+  "timestamp": "2026-08-21T08:25:39.764Z"
+}

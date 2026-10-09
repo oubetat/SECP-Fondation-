@@ -1,0 +1,20 @@
+{
+  "missionId": "COLLISION-ENGINE-P1.6-AUTHORITY-MIGRATION-ENFORCEMENT-001",
+  "artifactType": "SYNTHETIC_GEOMETRY_DISPOSITION",
+  "timestamp": "2026-10-01T01:57:00.000Z",
+  "disposition": "ISOLATED_TO_TEST_AND_BENCHMARK_SCOPE",
+  "findings": [
+    {
+      "functionName": "createSampleObstacleTriangles",
+      "location": "src/engine/cam/collision/CollisionDetectionEngine.ts",
+      "scope": "BENCHMARK_TEST_ONLY",
+      "status": "Prevented from entering production custom part collision requests"
+    },
+    {
+      "functionName": "Hardcoded dx/dy offsets",
+      "location": "src/engine/assembly/InterferenceDetectionEngine.ts",
+      "scope": "TEST_CASE_ONLY",
+      "status": "Unmatched production assemblies now fail-closed to ANALYSIS_FAILED instead of defaulting to CLEAR"
+    }
+  ]
+}

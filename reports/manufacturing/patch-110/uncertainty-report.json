@@ -1,0 +1,8 @@
+{
+  "sensorLinearUncertaintyMM": 0.001,
+  "sensorAngularUncertaintyDeg": 0.001,
+  "kinematicTransformationErrorMM": 0.002,
+  "clockJitterMS": 1.5,
+  "combinedSpatialUncertaintyMM": 0.007319323739253512,
+  "confidenceScore": 0.9268067626074649
+}

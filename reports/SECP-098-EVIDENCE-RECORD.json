@@ -1,0 +1,32 @@
+{
+  "secp098": {
+    "status": "PASS",
+    "closureResult": "PASS",
+    "provenanceHash": "32cb3bf201f9e753",
+    "metrics": {
+      "totalLengthMm": 1379.073,
+      "segmentCount": 288,
+      "minSegmentLengthMm": 0.958401,
+      "zeroLengthSegments": 0,
+      "continuityGaps": 0,
+      "maxCoordinateDeviationMm": 0.0,
+      "stockViolations": 0,
+      "invalidSegments": 0
+    },
+    "adversarialResults": {
+      "rejectedNegativeToolDiameter": "PASS",
+      "rejectedNaNCoordinates": "PASS",
+      "detectedStockBoundaryViolation": "PASS",
+      "detectedDuplicatePoints": "PASS",
+      "deterministicReplayAdversarial": "PASS"
+    },
+    "deterministicReplay": "PASS",
+    "dependencies": {
+      "secp096": "PASS",
+      "secp097": "PASS"
+    },
+    "inheritedRegressionNote": "SECP-094-R3 engineering_kernels.wasm integrity unresolved.",
+    "timestamp": "2026-08-16T00:57:18.000Z",
+    "hardeningNotes": "Implemented strict zero-length segment detection and continuity gap categorization. Calibrated tolerances: MIN_SEGMENT=1e-7, CONTINUITY=10.0. Adversarial suite expanded to include duplicate consecutive point detection."
+  }
+}

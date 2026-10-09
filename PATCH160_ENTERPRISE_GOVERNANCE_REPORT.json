@@ -1,0 +1,49 @@
+{
+  "patchId": "PATCH-160",
+  "name": "Enterprise Governance",
+  "status": "IMPLEMENTED",
+  "engineVersion": "2.1.0",
+  "architecture": {
+    "centralEngine": "EnterpriseGovernanceEngine",
+    "services": [
+      "ApprovalGovernanceService",
+      "IdentityGovernanceService",
+      "SeparationOfDutiesEngine",
+      "GovernanceAuditService"
+    ]
+  },
+  "rolesSupported": [
+    "OWNER",
+    "ADMIN",
+    "ENGINEERING_LEAD",
+    "DESIGN_ENGINEER",
+    "SIMULATION_ENGINEER",
+    "AUDITOR"
+  ],
+  "governanceRules": [
+    {
+      "id": "GOV-SOD-001",
+      "description": "Creator cannot approve or release own work",
+      "type": "SEPARATION_OF_DUTIES"
+    },
+    {
+      "id": "GOV-ROLE-LEAD",
+      "description": "Release requires Engineering Lead approval",
+      "type": "APPROVAL_REQUIREMENT"
+    }
+  ],
+  "verdictStates": [
+    "ALLOW",
+    "DENY",
+    "REQUIRE_REVIEW",
+    "REQUIRE_EVIDENCE",
+    "POLICY_CONFLICT",
+    "UNPROVEN",
+    "INVALID"
+  ],
+  "verification": {
+    "testSuite": "run_patch160_governance.ts",
+    "result": "SUCCESS",
+    "gateVerdict": "PASS"
+  }
+}

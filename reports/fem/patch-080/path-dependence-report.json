@@ -1,0 +1,7 @@
+{
+  "name": "PATH_DEPENDENCE_VERIFICATION",
+  "passed": true,
+  "maxError": 0,
+  "tolerance": 0,
+  "details": "Path A vs Path B yielded distinct plastic history and dissipation (dissDiff=179290.41 J)."
+}

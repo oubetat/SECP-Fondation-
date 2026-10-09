@@ -1,0 +1,45 @@
+{
+  "contract": {
+    "evidenceId": "EV_TEL_01",
+    "evidenceType": "TELEMETRY_EVIDENCE",
+    "evidenceVersion": "1.0",
+    "sourceArtifactId": "TEL_LOG_01",
+    "sourceRevision": "1.0",
+    "eventId": "EVT_TEL",
+    "eventType": "OPERATION_STARTED",
+    "eventTimestamp": 1700000900000,
+    "recordedTimestamp": 1700000900000,
+    "producerId": "IOT_GATEWAY",
+    "producerType": "SENSOR",
+    "contentHash": "dc4045a12b4272905866f044d170f731bbc572f7f622c58ae671853531b0a351",
+    "canonicalHash": "7a3c6f59d2fe6b8991311b5216f9ec7d4c70662b3cbc95e6e1432453c4db4a7f",
+    "previousEvidenceHash": "abd11d3a1d3dd46a04c71029416b15caae34e1146590dfa29d56d971d1170176",
+    "chainSequence": 10,
+    "signature": "3f173d4742f086c100517c381f2804393415c9749b4986b192c4bd10f7915b2e",
+    "signingIdentity": "KEY_CNC_CTRL_01",
+    "verificationStatus": "COMPLETE",
+    "recordingMode": "ORIGINAL"
+  },
+  "sourceIdentity": {
+    "sourceType": "SENSOR",
+    "sourceId": "IOT_01",
+    "sourceRevision": "1.0",
+    "sourceFingerprint": "FNG_TEL_01"
+  },
+  "eventIdentity": {
+    "eventId": "EVT_TEL",
+    "eventType": "OPERATION_STARTED",
+    "eventSequence": 10,
+    "eventTimestamp": 1700000900000,
+    "sourceTimestamp": 1700000900000,
+    "recordedTimestamp": 1700000900000
+  },
+  "payload": {
+    "programHash": "HASH_NC_BLADE_01",
+    "quality": "GOOD",
+    "unit": "RPM",
+    "value": 12000
+  },
+  "context": {},
+  "attestations": []
+}

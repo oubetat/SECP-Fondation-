@@ -1,0 +1,44 @@
+[
+  {
+    "capability": "Cross-Domain Identity",
+    "domainA": "Robotics",
+    "domainB": "Aerospace",
+    "canonicalBinding": "CORE-AUTHORITATIVE",
+    "revisionBinding": "CANONICALLY-BOUND",
+    "executionBinding": "VERIFIED",
+    "evidenceBinding": "EVIDENCE-BACKED",
+    "provenanceBinding": "PROVENANCE-LINKED",
+    "persistence": "PERSISTENT",
+    "replay": "REPLAYABLE",
+    "adversarialProof": "M9-02, M9-13",
+    "status": "CROSS-DOMAIN-PROVEN"
+  },
+  {
+    "capability": "Cross-Domain Handoff",
+    "domainA": "Robotics",
+    "domainB": "Aerospace",
+    "canonicalBinding": "CORE-AUTHORITATIVE",
+    "revisionBinding": "CANONICALLY-BOUND",
+    "executionBinding": "VERIFIED",
+    "evidenceBinding": "EVIDENCE-BACKED",
+    "provenanceBinding": "PROVENANCE-LINKED",
+    "persistence": "PERSISTENT",
+    "replay": "REPLAYABLE",
+    "adversarialProof": "M9-05, M9-07, M9-08",
+    "status": "CROSS-DOMAIN-PROVEN"
+  },
+  {
+    "capability": "Conflict Handling",
+    "domainA": "Robotics",
+    "domainB": "Aerospace",
+    "canonicalBinding": "CORE-AUTHORITATIVE",
+    "revisionBinding": "CANONICALLY-BOUND",
+    "executionBinding": "VERIFIED",
+    "evidenceBinding": "EVIDENCE-BACKED",
+    "provenanceBinding": "PROVENANCE-LINKED",
+    "persistence": "PERSISTENT",
+    "replay": "REPLAYABLE",
+    "adversarialProof": "M9-10",
+    "status": "CROSS-DOMAIN-PROVEN"
+  }
+]

@@ -1,0 +1,25 @@
+{
+  "phase": "ADSE-P6",
+  "capabilities": [
+    {"id": "P6-CAP-001", "name": "Authoritative Thermal Model Registration", "status": "VERIFIED"},
+    {"id": "P6-CAP-002", "name": "Canonical Authority Binding (P1-P5)", "status": "VERIFIED"},
+    {"id": "P6-CAP-003", "name": "Thermal Region Geometry Derivation", "status": "VERIFIED"},
+    {"id": "P6-CAP-004", "name": "Multi-Physics Domain Isolation", "status": "VERIFIED"},
+    {"id": "P6-CAP-005", "name": "Authoritative Material Truth Mapping", "status": "VERIFIED"},
+    {"id": "P6-CAP-006", "name": "Thermal Boundary Condition Orchestration", "status": "VERIFIED"},
+    {"id": "P6-CAP-007", "name": "Steady-State Consequence Computation", "status": "VERIFIED"},
+    {"id": "P6-CAP-008", "name": "Transient Thermal Lineage Tracking", "status": "VERIFIED"},
+    {"id": "P6-CAP-009", "name": "Radiative Boundary Verification", "status": "VERIFIED"},
+    {"id": "P6-CAP-010", "name": "Convective Interface Truth Mapping", "status": "VERIFIED"},
+    {"id": "P6-CAP-011", "name": "Thermal Contact Resistance Authority", "status": "VERIFIED"},
+    {"id": "P6-CAP-012", "name": "Multi-Solver Bridge & Verification", "status": "VERIFIED"},
+    {"id": "P6-CAP-013", "name": "Solver Result Evidence Locking", "status": "VERIFIED"},
+    {"id": "P6-CAP-014", "name": "Physics-Bound Consistency Auditing", "status": "VERIFIED"},
+    {"id": "P6-CAP-015", "name": "Cross-Configuration Thermal Analysis", "status": "VERIFIED"},
+    {"id": "P6-CAP-016", "name": "Revision-Aware Thermal Baselines", "status": "VERIFIED"},
+    {"id": "P6-CAP-017", "name": "Digital Thread Provenance Export", "status": "VERIFIED"},
+    {"id": "P6-CAP-018", "name": "Forensic Thermal Reconstruction", "status": "VERIFIED"},
+    {"id": "P6-CAP-019", "name": "Multi-Physics Dependency Mapping", "status": "VERIFIED"},
+    {"id": "P6-CAP-020", "name": "Thermal Engineering Truth Publication", "status": "VERIFIED"}
+  ]
+}

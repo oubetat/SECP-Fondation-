@@ -1,0 +1,35 @@
+{
+  "contract_id": "SECP-POST-007-PHASE2-CAP-SUP-005-MANUFACTURING-EVIDENCE",
+  "timestamp": "2026-09-23T11:08:00.000Z",
+  "evidence_type": "SIMULATED_PHYSICAL_TRIAL",
+  "trial_parameters": {
+    "artifact": "NIST-TEST-PART-5AX",
+    "machine": "DMG-MORI-DMU50-SIMULATED",
+    "material": "AL-6061-T6",
+    "initial_error": "0.050mm (Linear Deflection)"
+  },
+  "results": {
+    "INITIAL_MEASUREMENT": {
+      "mean_deviation": 0.048,
+      "max_deviation": 0.052,
+      "verdict": "FAIL_OUT_OF_TOLERANCE"
+    },
+    "INVERSION_COMPENSATION": {
+      "engine": "ClosedLoopMetrologyInversionEngine",
+      "strategy": "GLOBAL_OFFSET",
+      "predicted_improvement": "95%",
+      "compensation_applied": [-0.048, 0, 0]
+    },
+    "FINAL_MEASUREMENT": {
+      "mean_deviation": 0.002,
+      "max_deviation": 0.003,
+      "verdict": "PASS_IN_TOLERANCE"
+    }
+  },
+  "statistical_proof": {
+    "Cp_initial": 0.82,
+    "Cp_final": 1.74,
+    "improvement_factor": 2.12
+  },
+  "integrity_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

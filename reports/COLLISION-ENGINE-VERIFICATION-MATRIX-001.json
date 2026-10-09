@@ -1,0 +1,37 @@
+{
+  "contractId": "CONTRACT-COLLISION-VERIFICATION-001",
+  "name": "Verification & Reverification Hierarchy",
+  "version": "1.0.0",
+  "levels": [
+    {
+      "level": "V1_MathematicalPredicates",
+      "target": "Unit verification of segment-triangle, triangle-triangle, and capsule-capsule closest point solvers.",
+      "criteria": "Analytical ground truth match to machine epsilon 1e-12."
+    },
+    {
+      "level": "V2_AdversarialGeometricCases",
+      "target": "Face penetration without vertex contact, edge-edge intersection, near-tangency, coplanar contact.",
+      "criteria": "100% detection rate on 20 benchmark geometry test cases."
+    },
+    {
+      "level": "V3_KinematicTransformPropagation",
+      "target": "5-Axis FK and IK matrix transformation of collision solids.",
+      "criteria": "World-space coordinate verification against analytical kinematics."
+    },
+    {
+      "level": "V4_ContinuousMotionAndTunneling",
+      "target": "Thin-wall barrier crossing with high rapid velocity.",
+      "criteria": "Zero tunneling failures across swept volume envelope."
+    },
+    {
+      "level": "V5_RealCADDocumentIntegration",
+      "target": "Full STEP / B-Rep import through GeometryKernel into Collision Authority.",
+      "criteria": "Active CAD document meshes directly consumed without synthetic demo fixtures."
+    },
+    {
+      "level": "V6_TruthThreadAndPersistence",
+      "target": "Serialization, document save/reload, and cryptographic provenance hash verification.",
+      "criteria": "Byte-identical reconstruction of collision report after session reload."
+    }
+  ]
+}

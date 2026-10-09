@@ -1,0 +1,13 @@
+{
+  "missionId": "COLLISION-ENGINE-FORENSIC-EVIDENCE-ADJUDICATION-001",
+  "timestamp": "2026-10-01T01:14:00.000Z",
+  "adjudicationScorecard": {
+    "CLAIM-001_VertexNarrowPhase": "CONFIRMED_DEFECT",
+    "CLAIM-002_FiveAxisGeometryCompleteness": "CONFIRMED_DEFECT",
+    "CLAIM-003_KinematicClearanceMock": "CONFIRMED_DEFECT",
+    "CLAIM-004_ProductionUISyntheticFixtures": "CONFIRMED_PRODUCTION_DISCONNECTION",
+    "CLAIM-005_FailOpenAssemblyInterference": "CONFIRMED_DEFECT",
+    "CLAIM-006_ContinuousCollisionDiscreteSampling": "CONFIRMED_CAPABILITY_GAP"
+  },
+  "verdict": "COLLISION_ENGINE_IMMATURE"
+}

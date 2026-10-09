@@ -1,0 +1,36 @@
+{
+  "missionId": "COLLISION-ENGINE-P1.5-AUTHORITY-INTEGRATION-FORENSICS-001",
+  "artifactType": "FAIL_CLOSED_AUTHORITY_BYPASS_AUDIT",
+  "timestamp": "2026-10-01T01:48:00.000Z",
+  "failOpenDefects": [
+    {
+      "defectId": "FAIL_OPEN_01_ASSEMBLY_INTERFERENCE_ENGINE_OCCT_EXCEPTION",
+      "location": "src/engine/assembly/AssemblyInterferenceEngine.ts:84-90",
+      "mechanism": "When OCCT booleanIntersect() and common() throw exceptions, intersectSolid is set to null and execution continues without registering an error. If all pairs throw, the engine returns status: 'NO_INTERFERENCE'.",
+      "verdict": "CONFIRMED_DEFECT_FAIL_OPEN"
+    },
+    {
+      "defectId": "FAIL_OPEN_02_INTERFERENCE_DETECTION_ENGINE_FALLTHROUGH",
+      "location": "src/engine/assembly/InterferenceDetectionEngine.ts:113-117",
+      "mechanism": "When assembly instances do not match hardcoded test case positions, the method unconditionally returns { status: 'CLEAR', clashes: [] } without evaluating any geometry.",
+      "verdict": "CONFIRMED_DEFECT_FAIL_OPEN"
+    },
+    {
+      "defectId": "FAIL_OPEN_03_ASSEMBLY_INTELLIGENCE_MISSING_INSTANCE",
+      "location": "src/engine/assembly-intelligence/CollisionDetectionEngine.ts:17-19",
+      "mechanism": "If either instance is missing in assembly structure, returns { hasCollision: false, minimumClearance: 100 } rather than failing closed with an error or invalid state.",
+      "verdict": "CONFIRMED_DEFECT_FAIL_OPEN"
+    },
+    {
+      "defectId": "FAIL_OPEN_04_DYNAMIC_INTERFERENCE_STATIC_RETURN",
+      "location": "src/engine/assembly-intelligence/DynamicInterferenceEngine.ts:11-14",
+      "mechanism": "Dynamic interference check returns hasTransientCollision: false unconditionally without running kinematics or geometric intersection.",
+      "verdict": "CONFIRMED_DEFECT_FAIL_OPEN"
+    }
+  ],
+  "canonicalAuthorityStatus": {
+    "collisionAuthorityFailClosed": true,
+    "exactNarrowPhaseProviderFailClosed": true,
+    "details": "CollisionAuthority enforces fail-closed semantics (returns ANALYSIS_FAILED with provenSafe=false on throw, missing provider, or invalid input)."
+  }
+}

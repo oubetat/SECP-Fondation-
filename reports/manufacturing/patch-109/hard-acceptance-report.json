@@ -1,0 +1,305 @@
+{
+  "passed": false,
+  "scorePercentage": 61.53846153846154,
+  "totalChecks": 91,
+  "passedChecks": 56,
+  "verdict": "SIMULATION_INCOMPLETE",
+  "timestamp": "2026-08-21T07:33:27.411Z",
+  "details": [
+    {
+      "checkName": "Simulation contract implemented",
+      "status": "PASS",
+      "evidence": "Verified check 109.1"
+    },
+    {
+      "checkName": "Input integrity implemented",
+      "status": "PASS",
+      "evidence": "Verified check 109.2"
+    },
+    {
+      "checkName": "Explicit initial state implemented",
+      "status": "PASS",
+      "evidence": "Verified check 109.3"
+    },
+    {
+      "checkName": "Machine state model implemented",
+      "status": "PASS",
+      "evidence": "Verified check 109.4"
+    },
+    {
+      "checkName": "Time parameterization implemented",
+      "status": "PASS",
+      "evidence": "Verified check 109.5"
+    },
+    {
+      "checkName": "Motion interpolation implemented",
+      "status": "PASS",
+      "evidence": "Verified check 109.6"
+    },
+    {
+      "checkName": "Rapid semantics handled",
+      "status": "PASS",
+      "evidence": "Verified check 109.7"
+    },
+    {
+      "checkName": "Linear motion handled",
+      "status": "PASS",
+      "evidence": "Verified check 109.8"
+    },
+    {
+      "checkName": "Rotary motion handled",
+      "status": "PASS",
+      "evidence": "Verified check 109.9"
+    },
+    {
+      "checkName": "Forward kinematics integrated",
+      "status": "PASS",
+      "evidence": "Verified check 109.10"
+    },
+    {
+      "checkName": "Inverse consistency tested",
+      "status": "PASS",
+      "evidence": "Verified check 109.11"
+    },
+    {
+      "checkName": "Tool assembly represented",
+      "status": "PASS",
+      "evidence": "Verified check 109.12"
+    },
+    {
+      "checkName": "Holder represented",
+      "status": "PASS",
+      "evidence": "Verified check 109.13"
+    },
+    {
+      "checkName": "Stock model implemented",
+      "status": "PASS",
+      "evidence": "Verified check 109.14"
+    },
+    {
+      "checkName": "Fixture model implemented",
+      "status": "PASS",
+      "evidence": "Verified check 109.15"
+    },
+    {
+      "checkName": "Material removal implemented",
+      "status": "PASS",
+      "evidence": "Verified check 109.16"
+    },
+    {
+      "checkName": "Swept volume implemented",
+      "status": "PASS",
+      "evidence": "Verified check 109.17"
+    },
+    {
+      "checkName": "Adaptive sampling implemented",
+      "status": "PASS",
+      "evidence": "Verified check 109.18"
+    },
+    {
+      "checkName": "Collision detection integrated",
+      "status": "PASS",
+      "evidence": "Verified check 109.19"
+    },
+    {
+      "checkName": "Clearance analysis implemented",
+      "status": "PASS",
+      "evidence": "Verified check 109.20"
+    },
+    {
+      "checkName": "Machine limits checked",
+      "status": "PASS",
+      "evidence": "Verified check 109.21"
+    },
+    {
+      "checkName": "Singularity detection implemented",
+      "status": "PASS",
+      "evidence": "Verified check 109.22"
+    },
+    {
+      "checkName": "Axis reversal monitored",
+      "status": "PASS",
+      "evidence": "Verified check 109.23"
+    },
+    {
+      "checkName": "Machine state trace implemented",
+      "status": "PASS",
+      "evidence": "Verified check 109.24"
+    },
+    {
+      "checkName": "Stock state hashing implemented",
+      "status": "PASS",
+      "evidence": "Verified check 109.25"
+    },
+    {
+      "checkName": "Checkpoints implemented",
+      "status": "PASS",
+      "evidence": "Verified check 109.26"
+    },
+    {
+      "checkName": "Deterministic replay implemented",
+      "status": "PASS",
+      "evidence": "Verified check 109.27"
+    },
+    {
+      "checkName": "Material-removal history implemented",
+      "status": "PASS",
+      "evidence": "Verified check 109.28"
+    },
+    {
+      "checkName": "Volume balance implemented",
+      "status": "PASS",
+      "evidence": "Verified check 109.29"
+    },
+    {
+      "checkName": "Machined surface reconstruction implemented",
+      "status": "PASS",
+      "evidence": "Verified check 109.30"
+    },
+    {
+      "checkName": "Deviation analysis implemented",
+      "status": "PASS",
+      "evidence": "Verified check 109.31"
+    },
+    {
+      "checkName": "Gouge detection implemented",
+      "status": "PASS",
+      "evidence": "Verified check 109.32"
+    },
+    {
+      "checkName": "Excess-material detection implemented",
+      "status": "PASS",
+      "evidence": "Verified check 109.33"
+    },
+    {
+      "checkName": "Simulation coverage measured",
+      "status": "PASS",
+      "evidence": "Verified check 109.34"
+    },
+    {
+      "checkName": "No silent segment skipping",
+      "status": "PASS",
+      "evidence": "Verified check 109.35"
+    },
+    {
+      "checkName": "Resource limits monitored",
+      "status": "PASS",
+      "evidence": "Verified check 109.36"
+    },
+    {
+      "checkName": "Numerical health monitored",
+      "status": "PASS",
+      "evidence": "Verified check 109.37"
+    },
+    {
+      "checkName": "Model disclosure implemented",
+      "status": "PASS",
+      "evidence": "Verified check 109.38"
+    },
+    {
+      "checkName": "Source-toolpath comparison implemented",
+      "status": "PASS",
+      "evidence": "Verified check 109.39"
+    },
+    {
+      "checkName": "NC simulation comparison implemented",
+      "status": "PASS",
+      "evidence": "Verified check 109.40"
+    },
+    {
+      "checkName": "Round-trip simulation implemented",
+      "status": "PASS",
+      "evidence": "Verified check 109.41"
+    },
+    {
+      "checkName": "Post-processing deviation detected",
+      "status": "PASS",
+      "evidence": "Verified check 109.42"
+    },
+    {
+      "checkName": "Existing machine kinematics reused",
+      "status": "PASS",
+      "evidence": "Verified check 109.43"
+    },
+    {
+      "checkName": "Existing tool library reused",
+      "status": "PASS",
+      "evidence": "Verified check 109.44"
+    },
+    {
+      "checkName": "Existing collision infrastructure reused",
+      "status": "PASS",
+      "evidence": "Verified check 109.45"
+    },
+    {
+      "checkName": "Simulation events implemented",
+      "status": "PASS",
+      "evidence": "Verified check 109.46"
+    },
+    {
+      "checkName": "Simulation metrics implemented",
+      "status": "PASS",
+      "evidence": "Verified check 109.47"
+    },
+    {
+      "checkName": "Performance measured",
+      "status": "FAIL",
+      "evidence": "Verified check 109.48"
+    },
+    {
+      "checkName": "Adversarial tests passed",
+      "status": "FAIL",
+      "evidence": "Verified check 109.49"
+    },
+    {
+      "checkName": "Negative tests passed",
+      "status": "PASS",
+      "evidence": "Verified check 109.50"
+    },
+    {
+      "checkName": "Determinism tests passed",
+      "status": "PASS",
+      "evidence": "Verified check 109.51"
+    },
+    {
+      "checkName": "Replay tests passed",
+      "status": "PASS",
+      "evidence": "Verified check 109.52"
+    },
+    {
+      "checkName": "Tamper tests passed",
+      "status": "PASS",
+      "evidence": "Verified check 109.53"
+    },
+    {
+      "checkName": "Evidence package generated",
+      "status": "PASS",
+      "evidence": "Verified check 109.54"
+    },
+    {
+      "checkName": "True verdict generated",
+      "status": "FAIL",
+      "evidence": "Verified check 109.55"
+    },
+    {
+      "checkName": "No false safety claim",
+      "status": "PASS",
+      "evidence": "Verified check 109.56"
+    },
+    {
+      "checkName": "No fixed verdict",
+      "status": "PASS",
+      "evidence": "Verified check 109.57"
+    },
+    {
+      "checkName": "No silent correction",
+      "status": "PASS",
+      "evidence": "Verified check 109.58"
+    },
+    {
+      "checkName": "No hidden assumptions",
+      "status": "PASS",
+      "evidence": "Verified check 109.59"
+    }
+  ]
+}

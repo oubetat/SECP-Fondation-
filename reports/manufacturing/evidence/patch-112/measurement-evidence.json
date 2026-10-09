@@ -1,0 +1,9 @@
+[
+  {
+    "calibrationStatus": "VALID",
+    "measuredValue": 50.002,
+    "measurementId": "M1",
+    "nominalValue": 50,
+    "unit": "mm"
+  }
+]

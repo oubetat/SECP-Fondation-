@@ -1,0 +1,42 @@
+{
+  "type": "object",
+  "properties": {
+    "position": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "minItems": 3,
+      "maxItems": 3
+    },
+    "toolAxis": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "minItems": 3,
+      "maxItems": 3
+    },
+    "toolOrientation": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "minItems": 3,
+      "maxItems": 3
+    },
+    "coordinateFrame": {
+      "type": "string"
+    },
+    "sequence": {
+      "type": "integer"
+    }
+  },
+  "required": [
+    "position",
+    "toolAxis",
+    "toolOrientation",
+    "coordinateFrame",
+    "sequence"
+  ]
+}

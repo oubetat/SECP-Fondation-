@@ -1,0 +1,12 @@
+{
+  "lifecycleStates": [
+    "UNINITIALIZED",
+    "READY",
+    "PROCESSING",
+    "GENERATED",
+    "VALIDATED",
+    "FAILED",
+    "INVALID"
+  ],
+  "currentState": "VALIDATED"
+}

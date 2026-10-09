@@ -1,0 +1,2480 @@
+{
+  "reportType": "ASSEMBLY_GRAPH_STRUCTURE",
+  "spec": "PATCH-113",
+  "assemblyId": "ASM_TURBO_PUMP_01",
+  "assemblyRevision": "R1.0",
+  "fingerprint": "SECP-AG-SHA256:24438EF55569D99A:ASM_TURBO_PUMP_01:R1.0",
+  "graphHash": "24438ef55569d99a78dc9d590f710221c96840c2bd40bc510a30c26f00034f5e",
+  "nodeCount": 15,
+  "occurrenceCount": 15,
+  "partDefinitionCount": 5,
+  "edgeCount": 31,
+  "constraintCount": 2,
+  "interfaceCount": 1,
+  "jointCount": 1,
+  "occurrences": [
+    {
+      "occurrenceId": "OCC_ASM_TURBO_PUMP_01_ROOT",
+      "name": "Aerospace High Pressure Turbo Pump Assembly Root",
+      "nodeType": "ROOT_ASSEMBLY",
+      "partId": "ASM_TURBO_PUMP_01",
+      "partRevision": "R1.0",
+      "assemblyId": "ASM_TURBO_PUMP_01",
+      "assemblyRevision": "R1.0",
+      "parentOccurrenceId": null,
+      "instancePath": "ASM_TURBO_PUMP_01",
+      "localTransform": {
+        "translation": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "rotationEulerDeg": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "matrix": [
+          [
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ]
+        ]
+      },
+      "worldTransform": {
+        "translation": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "rotationEulerDeg": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "matrix": [
+          [
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ]
+        ]
+      },
+      "configurationState": "ACTIVE",
+      "lifecycleState": "DRAFT",
+      "geometryReference": {
+        "geometryId": "GEOM_ASM_TURBO_PUMP_01_ROOT",
+        "geometryRevision": "1.0",
+        "geometryHash": "HASH_ROOT_000",
+        "topologyType": "SOLID"
+      },
+      "isFixed": true
+    },
+    {
+      "occurrenceId": "OCC_SUBASM_ROTOR",
+      "name": "Rotor Subassembly Module",
+      "nodeType": "SUBASSEMBLY",
+      "partId": "SUBASM_ROTOR",
+      "partRevision": "1.0",
+      "assemblyId": "ASM_TURBO_PUMP_01",
+      "assemblyRevision": "R1.0",
+      "parentOccurrenceId": "OCC_ASM_TURBO_PUMP_01_ROOT",
+      "instancePath": "ASM_TURBO_PUMP_01/OCC_SUBASM_ROTOR",
+      "localTransform": {
+        "translation": {
+          "x": 0,
+          "y": 0,
+          "z": 50
+        },
+        "rotationEulerDeg": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "matrix": [
+          [
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1,
+            50
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ]
+        ]
+      },
+      "worldTransform": {
+        "translation": {
+          "x": 0,
+          "y": 0,
+          "z": 50
+        },
+        "matrix": [
+          [
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1,
+            50
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ]
+        ]
+      },
+      "configurationState": "ACTIVE",
+      "lifecycleState": "DRAFT",
+      "geometryReference": {
+        "geometryId": "GEOM_SUBASM_ROTOR",
+        "geometryRevision": "1.0",
+        "geometryHash": "3f1f36143b6c7f85a5517849ebe0736387199cbcc1be219ba1b6e5166e671b73",
+        "topologyType": "SOLID"
+      },
+      "isFixed": false
+    },
+    {
+      "occurrenceId": "OCC_SHAFT_01",
+      "name": "Main Drive Shaft",
+      "nodeType": "PART",
+      "partId": "P_SHAFT_01",
+      "partRevision": "1.0",
+      "assemblyId": "ASM_TURBO_PUMP_01",
+      "assemblyRevision": "R1.0",
+      "parentOccurrenceId": "OCC_SUBASM_ROTOR",
+      "instancePath": "ASM_TURBO_PUMP_01/OCC_SUBASM_ROTOR/OCC_SHAFT_01",
+      "localTransform": {
+        "translation": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "rotationEulerDeg": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "matrix": [
+          [
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ]
+        ]
+      },
+      "worldTransform": {
+        "translation": {
+          "x": 0,
+          "y": 0,
+          "z": 50
+        },
+        "matrix": [
+          [
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1,
+            50
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ]
+        ]
+      },
+      "configurationState": "ACTIVE",
+      "lifecycleState": "DRAFT",
+      "geometryReference": {
+        "geometryId": "GEOM_P_SHAFT_01",
+        "geometryRevision": "1.0",
+        "geometryHash": "7f83484958c7ec843410ffadba6f17885b3992dea3f79c983a212030a8eb0324",
+        "topologyType": "SOLID"
+      },
+      "isFixed": false
+    },
+    {
+      "occurrenceId": "OCC_IMPELLER_01",
+      "name": "Centrifugal Impeller",
+      "nodeType": "PART",
+      "partId": "P_IMPELLER_01",
+      "partRevision": "1.0",
+      "assemblyId": "ASM_TURBO_PUMP_01",
+      "assemblyRevision": "R1.0",
+      "parentOccurrenceId": "OCC_SUBASM_ROTOR",
+      "instancePath": "ASM_TURBO_PUMP_01/OCC_SUBASM_ROTOR/OCC_IMPELLER_01",
+      "localTransform": {
+        "translation": {
+          "x": 0,
+          "y": 0,
+          "z": 180
+        },
+        "rotationEulerDeg": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "matrix": [
+          [
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1,
+            180
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ]
+        ]
+      },
+      "worldTransform": {
+        "translation": {
+          "x": 0,
+          "y": 0,
+          "z": 230
+        },
+        "matrix": [
+          [
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1,
+            230
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ]
+        ]
+      },
+      "configurationState": "ACTIVE",
+      "lifecycleState": "DRAFT",
+      "geometryReference": {
+        "geometryId": "GEOM_P_IMPELLER_01",
+        "geometryRevision": "1.0",
+        "geometryHash": "5747fa90c44de2f6f834a106072408fe9fe0e36e6a408d92f82635db7522ac1e",
+        "topologyType": "SOLID"
+      },
+      "isFixed": false
+    },
+    {
+      "occurrenceId": "OCC_BEARING_FRONT",
+      "name": "Front Bearing Support",
+      "nodeType": "PART",
+      "partId": "P_BEARING_01",
+      "partRevision": "1.0",
+      "assemblyId": "ASM_TURBO_PUMP_01",
+      "assemblyRevision": "R1.0",
+      "parentOccurrenceId": "OCC_SUBASM_ROTOR",
+      "instancePath": "ASM_TURBO_PUMP_01/OCC_SUBASM_ROTOR/OCC_BEARING_FRONT",
+      "localTransform": {
+        "translation": {
+          "x": 0,
+          "y": 0,
+          "z": 30
+        },
+        "rotationEulerDeg": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "matrix": [
+          [
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1,
+            30
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ]
+        ]
+      },
+      "worldTransform": {
+        "translation": {
+          "x": 0,
+          "y": 0,
+          "z": 80
+        },
+        "matrix": [
+          [
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1,
+            80
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ]
+        ]
+      },
+      "configurationState": "ACTIVE",
+      "lifecycleState": "DRAFT",
+      "geometryReference": {
+        "geometryId": "GEOM_P_BEARING_01",
+        "geometryRevision": "1.0",
+        "geometryHash": "d9fb411c082337450b77ee7384c7c4f89163194abdcc4f41642ac544a7a5959b",
+        "topologyType": "SOLID"
+      },
+      "isFixed": false
+    },
+    {
+      "occurrenceId": "OCC_BEARING_REAR",
+      "name": "Rear Bearing Support",
+      "nodeType": "PART",
+      "partId": "P_BEARING_01",
+      "partRevision": "1.0",
+      "assemblyId": "ASM_TURBO_PUMP_01",
+      "assemblyRevision": "R1.0",
+      "parentOccurrenceId": "OCC_SUBASM_ROTOR",
+      "instancePath": "ASM_TURBO_PUMP_01/OCC_SUBASM_ROTOR/OCC_BEARING_REAR",
+      "localTransform": {
+        "translation": {
+          "x": 0,
+          "y": 0,
+          "z": 260
+        },
+        "rotationEulerDeg": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "matrix": [
+          [
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1,
+            260
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ]
+        ]
+      },
+      "worldTransform": {
+        "translation": {
+          "x": 0,
+          "y": 0,
+          "z": 310
+        },
+        "matrix": [
+          [
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1,
+            310
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ]
+        ]
+      },
+      "configurationState": "ACTIVE",
+      "lifecycleState": "DRAFT",
+      "geometryReference": {
+        "geometryId": "GEOM_P_BEARING_01",
+        "geometryRevision": "1.0",
+        "geometryHash": "d9fb411c082337450b77ee7384c7c4f89163194abdcc4f41642ac544a7a5959b",
+        "topologyType": "SOLID"
+      },
+      "isFixed": false
+    },
+    {
+      "occurrenceId": "OCC_CASING_01",
+      "name": "Outer Inconel Pressure Casing",
+      "nodeType": "PART",
+      "partId": "P_CASING_01",
+      "partRevision": "1.0",
+      "assemblyId": "ASM_TURBO_PUMP_01",
+      "assemblyRevision": "R1.0",
+      "parentOccurrenceId": "OCC_ASM_TURBO_PUMP_01_ROOT",
+      "instancePath": "ASM_TURBO_PUMP_01/OCC_CASING_01",
+      "localTransform": {
+        "translation": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "rotationEulerDeg": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "matrix": [
+          [
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ]
+        ]
+      },
+      "worldTransform": {
+        "translation": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "matrix": [
+          [
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ]
+        ]
+      },
+      "configurationState": "ACTIVE",
+      "lifecycleState": "DRAFT",
+      "geometryReference": {
+        "geometryId": "GEOM_P_CASING_01",
+        "geometryRevision": "1.0",
+        "geometryHash": "3146820f94d31f220087175382d38766f5c3fd768804d2982fc82af01681f04b",
+        "topologyType": "SOLID"
+      },
+      "isFixed": true
+    },
+    {
+      "occurrenceId": "OCC_BOLT_FLANGE_1",
+      "name": "Flange Bolt #1",
+      "nodeType": "FASTENER",
+      "partId": "P_BOLT_M10",
+      "partRevision": "1.0",
+      "assemblyId": "ASM_TURBO_PUMP_01",
+      "assemblyRevision": "R1.0",
+      "parentOccurrenceId": "OCC_CASING_01",
+      "instancePath": "ASM_TURBO_PUMP_01/OCC_CASING_01/OCC_BOLT_FLANGE_1",
+      "localTransform": {
+        "translation": {
+          "x": 135,
+          "y": 0,
+          "z": 280
+        },
+        "rotationEulerDeg": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "matrix": [
+          [
+            1,
+            0,
+            0,
+            135
+          ],
+          [
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1,
+            280
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ]
+        ]
+      },
+      "worldTransform": {
+        "translation": {
+          "x": 135,
+          "y": 0,
+          "z": 280
+        },
+        "matrix": [
+          [
+            1,
+            0,
+            0,
+            135
+          ],
+          [
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1,
+            280
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ]
+        ]
+      },
+      "configurationState": "ACTIVE",
+      "lifecycleState": "DRAFT",
+      "geometryReference": {
+        "geometryId": "GEOM_P_BOLT_M10",
+        "geometryRevision": "1.0",
+        "geometryHash": "697e221e985b2d0bb517aa7f6043609415c9cc3179bcaa4f69c021b893653a35",
+        "topologyType": "SOLID"
+      },
+      "isFixed": false
+    },
+    {
+      "occurrenceId": "OCC_BOLT_FLANGE_2",
+      "name": "Flange Bolt #2",
+      "nodeType": "FASTENER",
+      "partId": "P_BOLT_M10",
+      "partRevision": "1.0",
+      "assemblyId": "ASM_TURBO_PUMP_01",
+      "assemblyRevision": "R1.0",
+      "parentOccurrenceId": "OCC_CASING_01",
+      "instancePath": "ASM_TURBO_PUMP_01/OCC_CASING_01/OCC_BOLT_FLANGE_2",
+      "localTransform": {
+        "translation": {
+          "x": 95.45941546018392,
+          "y": 95.4594154601839,
+          "z": 280
+        },
+        "rotationEulerDeg": {
+          "x": 0,
+          "y": 0,
+          "z": 45
+        },
+        "matrix": [
+          [
+            0.7071067811865476,
+            -0.7071067811865475,
+            0,
+            95.45941546018392
+          ],
+          [
+            0.7071067811865475,
+            0.7071067811865476,
+            0,
+            95.4594154601839
+          ],
+          [
+            0,
+            0,
+            1,
+            280
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ]
+        ]
+      },
+      "worldTransform": {
+        "translation": {
+          "x": 95.45941546,
+          "y": 95.45941546,
+          "z": 280
+        },
+        "matrix": [
+          [
+            0.70710678,
+            -0.70710678,
+            0,
+            95.45941546
+          ],
+          [
+            0.70710678,
+            0.70710678,
+            0,
+            95.45941546
+          ],
+          [
+            0,
+            0,
+            1,
+            280
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ]
+        ]
+      },
+      "configurationState": "ACTIVE",
+      "lifecycleState": "DRAFT",
+      "geometryReference": {
+        "geometryId": "GEOM_P_BOLT_M10",
+        "geometryRevision": "1.0",
+        "geometryHash": "697e221e985b2d0bb517aa7f6043609415c9cc3179bcaa4f69c021b893653a35",
+        "topologyType": "SOLID"
+      },
+      "isFixed": false
+    },
+    {
+      "occurrenceId": "OCC_BOLT_FLANGE_3",
+      "name": "Flange Bolt #3",
+      "nodeType": "FASTENER",
+      "partId": "P_BOLT_M10",
+      "partRevision": "1.0",
+      "assemblyId": "ASM_TURBO_PUMP_01",
+      "assemblyRevision": "R1.0",
+      "parentOccurrenceId": "OCC_CASING_01",
+      "instancePath": "ASM_TURBO_PUMP_01/OCC_CASING_01/OCC_BOLT_FLANGE_3",
+      "localTransform": {
+        "translation": {
+          "x": 8.266365894244634e-15,
+          "y": 135,
+          "z": 280
+        },
+        "rotationEulerDeg": {
+          "x": 0,
+          "y": 0,
+          "z": 90
+        },
+        "matrix": [
+          [
+            6.123233995736766e-17,
+            -1,
+            0,
+            8.266365894244634e-15
+          ],
+          [
+            1,
+            6.123233995736766e-17,
+            0,
+            135
+          ],
+          [
+            0,
+            0,
+            1,
+            280
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ]
+        ]
+      },
+      "worldTransform": {
+        "translation": {
+          "x": 0,
+          "y": 135,
+          "z": 280
+        },
+        "matrix": [
+          [
+            0,
+            -1,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            135
+          ],
+          [
+            0,
+            0,
+            1,
+            280
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ]
+        ]
+      },
+      "configurationState": "ACTIVE",
+      "lifecycleState": "DRAFT",
+      "geometryReference": {
+        "geometryId": "GEOM_P_BOLT_M10",
+        "geometryRevision": "1.0",
+        "geometryHash": "697e221e985b2d0bb517aa7f6043609415c9cc3179bcaa4f69c021b893653a35",
+        "topologyType": "SOLID"
+      },
+      "isFixed": false
+    },
+    {
+      "occurrenceId": "OCC_BOLT_FLANGE_4",
+      "name": "Flange Bolt #4",
+      "nodeType": "FASTENER",
+      "partId": "P_BOLT_M10",
+      "partRevision": "1.0",
+      "assemblyId": "ASM_TURBO_PUMP_01",
+      "assemblyRevision": "R1.0",
+      "parentOccurrenceId": "OCC_CASING_01",
+      "instancePath": "ASM_TURBO_PUMP_01/OCC_CASING_01/OCC_BOLT_FLANGE_4",
+      "localTransform": {
+        "translation": {
+          "x": -95.4594154601839,
+          "y": 95.45941546018392,
+          "z": 280
+        },
+        "rotationEulerDeg": {
+          "x": 0,
+          "y": 0,
+          "z": 135
+        },
+        "matrix": [
+          [
+            -0.7071067811865475,
+            -0.7071067811865476,
+            0,
+            -95.4594154601839
+          ],
+          [
+            0.7071067811865476,
+            -0.7071067811865475,
+            0,
+            95.45941546018392
+          ],
+          [
+            0,
+            0,
+            1,
+            280
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ]
+        ]
+      },
+      "worldTransform": {
+        "translation": {
+          "x": -95.45941546,
+          "y": 95.45941546,
+          "z": 280
+        },
+        "matrix": [
+          [
+            -0.70710678,
+            -0.70710678,
+            0,
+            -95.45941546
+          ],
+          [
+            0.70710678,
+            -0.70710678,
+            0,
+            95.45941546
+          ],
+          [
+            0,
+            0,
+            1,
+            280
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ]
+        ]
+      },
+      "configurationState": "ACTIVE",
+      "lifecycleState": "DRAFT",
+      "geometryReference": {
+        "geometryId": "GEOM_P_BOLT_M10",
+        "geometryRevision": "1.0",
+        "geometryHash": "697e221e985b2d0bb517aa7f6043609415c9cc3179bcaa4f69c021b893653a35",
+        "topologyType": "SOLID"
+      },
+      "isFixed": false
+    },
+    {
+      "occurrenceId": "OCC_BOLT_FLANGE_5",
+      "name": "Flange Bolt #5",
+      "nodeType": "FASTENER",
+      "partId": "P_BOLT_M10",
+      "partRevision": "1.0",
+      "assemblyId": "ASM_TURBO_PUMP_01",
+      "assemblyRevision": "R1.0",
+      "parentOccurrenceId": "OCC_CASING_01",
+      "instancePath": "ASM_TURBO_PUMP_01/OCC_CASING_01/OCC_BOLT_FLANGE_5",
+      "localTransform": {
+        "translation": {
+          "x": -135,
+          "y": 1.6532731788489267e-14,
+          "z": 280
+        },
+        "rotationEulerDeg": {
+          "x": 0,
+          "y": 0,
+          "z": 180
+        },
+        "matrix": [
+          [
+            -1,
+            -1.2246467991473532e-16,
+            0,
+            -135
+          ],
+          [
+            1.2246467991473532e-16,
+            -1,
+            0,
+            1.6532731788489267e-14
+          ],
+          [
+            0,
+            0,
+            1,
+            280
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ]
+        ]
+      },
+      "worldTransform": {
+        "translation": {
+          "x": -135,
+          "y": 0,
+          "z": 280
+        },
+        "matrix": [
+          [
+            -1,
+            0,
+            0,
+            -135
+          ],
+          [
+            0,
+            -1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1,
+            280
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ]
+        ]
+      },
+      "configurationState": "ACTIVE",
+      "lifecycleState": "DRAFT",
+      "geometryReference": {
+        "geometryId": "GEOM_P_BOLT_M10",
+        "geometryRevision": "1.0",
+        "geometryHash": "697e221e985b2d0bb517aa7f6043609415c9cc3179bcaa4f69c021b893653a35",
+        "topologyType": "SOLID"
+      },
+      "isFixed": false
+    },
+    {
+      "occurrenceId": "OCC_BOLT_FLANGE_6",
+      "name": "Flange Bolt #6",
+      "nodeType": "FASTENER",
+      "partId": "P_BOLT_M10",
+      "partRevision": "1.0",
+      "assemblyId": "ASM_TURBO_PUMP_01",
+      "assemblyRevision": "R1.0",
+      "parentOccurrenceId": "OCC_CASING_01",
+      "instancePath": "ASM_TURBO_PUMP_01/OCC_CASING_01/OCC_BOLT_FLANGE_6",
+      "localTransform": {
+        "translation": {
+          "x": -95.45941546018393,
+          "y": -95.4594154601839,
+          "z": 280
+        },
+        "rotationEulerDeg": {
+          "x": 0,
+          "y": 0,
+          "z": 225
+        },
+        "matrix": [
+          [
+            -0.7071067811865477,
+            0.7071067811865475,
+            0,
+            -95.45941546018393
+          ],
+          [
+            -0.7071067811865475,
+            -0.7071067811865477,
+            0,
+            -95.4594154601839
+          ],
+          [
+            0,
+            0,
+            1,
+            280
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ]
+        ]
+      },
+      "worldTransform": {
+        "translation": {
+          "x": -95.45941546,
+          "y": -95.45941546,
+          "z": 280
+        },
+        "matrix": [
+          [
+            -0.70710678,
+            0.70710678,
+            0,
+            -95.45941546
+          ],
+          [
+            -0.70710678,
+            -0.70710678,
+            0,
+            -95.45941546
+          ],
+          [
+            0,
+            0,
+            1,
+            280
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ]
+        ]
+      },
+      "configurationState": "ACTIVE",
+      "lifecycleState": "DRAFT",
+      "geometryReference": {
+        "geometryId": "GEOM_P_BOLT_M10",
+        "geometryRevision": "1.0",
+        "geometryHash": "697e221e985b2d0bb517aa7f6043609415c9cc3179bcaa4f69c021b893653a35",
+        "topologyType": "SOLID"
+      },
+      "isFixed": false
+    },
+    {
+      "occurrenceId": "OCC_BOLT_FLANGE_7",
+      "name": "Flange Bolt #7",
+      "nodeType": "FASTENER",
+      "partId": "P_BOLT_M10",
+      "partRevision": "1.0",
+      "assemblyId": "ASM_TURBO_PUMP_01",
+      "assemblyRevision": "R1.0",
+      "parentOccurrenceId": "OCC_CASING_01",
+      "instancePath": "ASM_TURBO_PUMP_01/OCC_CASING_01/OCC_BOLT_FLANGE_7",
+      "localTransform": {
+        "translation": {
+          "x": -2.4799097682733902e-14,
+          "y": -135,
+          "z": 280
+        },
+        "rotationEulerDeg": {
+          "x": 0,
+          "y": 0,
+          "z": 270
+        },
+        "matrix": [
+          [
+            -1.8369701987210297e-16,
+            1,
+            0,
+            -2.4799097682733902e-14
+          ],
+          [
+            -1,
+            -1.8369701987210297e-16,
+            0,
+            -135
+          ],
+          [
+            0,
+            0,
+            1,
+            280
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ]
+        ]
+      },
+      "worldTransform": {
+        "translation": {
+          "x": 0,
+          "y": -135,
+          "z": 280
+        },
+        "matrix": [
+          [
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            -1,
+            0,
+            0,
+            -135
+          ],
+          [
+            0,
+            0,
+            1,
+            280
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ]
+        ]
+      },
+      "configurationState": "ACTIVE",
+      "lifecycleState": "DRAFT",
+      "geometryReference": {
+        "geometryId": "GEOM_P_BOLT_M10",
+        "geometryRevision": "1.0",
+        "geometryHash": "697e221e985b2d0bb517aa7f6043609415c9cc3179bcaa4f69c021b893653a35",
+        "topologyType": "SOLID"
+      },
+      "isFixed": false
+    },
+    {
+      "occurrenceId": "OCC_BOLT_FLANGE_8",
+      "name": "Flange Bolt #8",
+      "nodeType": "FASTENER",
+      "partId": "P_BOLT_M10",
+      "partRevision": "1.0",
+      "assemblyId": "ASM_TURBO_PUMP_01",
+      "assemblyRevision": "R1.0",
+      "parentOccurrenceId": "OCC_CASING_01",
+      "instancePath": "ASM_TURBO_PUMP_01/OCC_CASING_01/OCC_BOLT_FLANGE_8",
+      "localTransform": {
+        "translation": {
+          "x": 95.45941546018389,
+          "y": -95.45941546018393,
+          "z": 280
+        },
+        "rotationEulerDeg": {
+          "x": 0,
+          "y": 0,
+          "z": 315
+        },
+        "matrix": [
+          [
+            0.7071067811865474,
+            0.7071067811865477,
+            0,
+            95.45941546018389
+          ],
+          [
+            -0.7071067811865477,
+            0.7071067811865474,
+            0,
+            -95.45941546018393
+          ],
+          [
+            0,
+            0,
+            1,
+            280
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ]
+        ]
+      },
+      "worldTransform": {
+        "translation": {
+          "x": 95.45941546,
+          "y": -95.45941546,
+          "z": 280
+        },
+        "matrix": [
+          [
+            0.70710678,
+            0.70710678,
+            0,
+            95.45941546
+          ],
+          [
+            -0.70710678,
+            0.70710678,
+            0,
+            -95.45941546
+          ],
+          [
+            0,
+            0,
+            1,
+            280
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ]
+        ]
+      },
+      "configurationState": "ACTIVE",
+      "lifecycleState": "DRAFT",
+      "geometryReference": {
+        "geometryId": "GEOM_P_BOLT_M10",
+        "geometryRevision": "1.0",
+        "geometryHash": "697e221e985b2d0bb517aa7f6043609415c9cc3179bcaa4f69c021b893653a35",
+        "topologyType": "SOLID"
+      },
+      "isFixed": false
+    }
+  ],
+  "nodes": [
+    {
+      "nodeId": "NODE_OCC_ASM_TURBO_PUMP_01_ROOT",
+      "nodeType": "ROOT_ASSEMBLY",
+      "name": "Aerospace High Pressure Turbo Pump Assembly Root",
+      "partId": "ASM_TURBO_PUMP_01",
+      "partRevision": "R1.0",
+      "assemblyId": "ASM_TURBO_PUMP_01",
+      "assemblyRevision": "R1.0",
+      "occurrenceId": "OCC_ASM_TURBO_PUMP_01_ROOT",
+      "parentOccurrenceId": null,
+      "configurationState": "ACTIVE",
+      "lifecycleState": "DRAFT",
+      "isLeaf": false
+    },
+    {
+      "nodeId": "NODE_OCC_SUBASM_ROTOR",
+      "nodeType": "SUBASSEMBLY",
+      "name": "Rotor Subassembly Module",
+      "partId": "SUBASM_ROTOR",
+      "partRevision": "1.0",
+      "assemblyId": "ASM_TURBO_PUMP_01",
+      "assemblyRevision": "R1.0",
+      "occurrenceId": "OCC_SUBASM_ROTOR",
+      "parentOccurrenceId": "OCC_ASM_TURBO_PUMP_01_ROOT",
+      "geometryReference": {
+        "geometryId": "GEOM_SUBASM_ROTOR",
+        "geometryRevision": "1.0",
+        "geometryHash": "3f1f36143b6c7f85a5517849ebe0736387199cbcc1be219ba1b6e5166e671b73",
+        "topologyType": "SOLID"
+      },
+      "transformReference": {
+        "translation": {
+          "x": 0,
+          "y": 0,
+          "z": 50
+        },
+        "matrix": [
+          [
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1,
+            50
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ]
+        ]
+      },
+      "configurationState": "ACTIVE",
+      "lifecycleState": "DRAFT",
+      "isLeaf": false
+    },
+    {
+      "nodeId": "NODE_OCC_SHAFT_01",
+      "nodeType": "PART",
+      "name": "Main Drive Shaft",
+      "partId": "P_SHAFT_01",
+      "partRevision": "1.0",
+      "assemblyId": "ASM_TURBO_PUMP_01",
+      "assemblyRevision": "R1.0",
+      "occurrenceId": "OCC_SHAFT_01",
+      "parentOccurrenceId": "OCC_SUBASM_ROTOR",
+      "geometryReference": {
+        "geometryId": "GEOM_P_SHAFT_01",
+        "geometryRevision": "1.0",
+        "geometryHash": "7f83484958c7ec843410ffadba6f17885b3992dea3f79c983a212030a8eb0324",
+        "topologyType": "SOLID"
+      },
+      "transformReference": {
+        "translation": {
+          "x": 0,
+          "y": 0,
+          "z": 50
+        },
+        "matrix": [
+          [
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1,
+            50
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ]
+        ]
+      },
+      "configurationState": "ACTIVE",
+      "lifecycleState": "DRAFT",
+      "isLeaf": true
+    },
+    {
+      "nodeId": "NODE_OCC_IMPELLER_01",
+      "nodeType": "PART",
+      "name": "Centrifugal Impeller",
+      "partId": "P_IMPELLER_01",
+      "partRevision": "1.0",
+      "assemblyId": "ASM_TURBO_PUMP_01",
+      "assemblyRevision": "R1.0",
+      "occurrenceId": "OCC_IMPELLER_01",
+      "parentOccurrenceId": "OCC_SUBASM_ROTOR",
+      "geometryReference": {
+        "geometryId": "GEOM_P_IMPELLER_01",
+        "geometryRevision": "1.0",
+        "geometryHash": "5747fa90c44de2f6f834a106072408fe9fe0e36e6a408d92f82635db7522ac1e",
+        "topologyType": "SOLID"
+      },
+      "transformReference": {
+        "translation": {
+          "x": 0,
+          "y": 0,
+          "z": 230
+        },
+        "matrix": [
+          [
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1,
+            230
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ]
+        ]
+      },
+      "configurationState": "ACTIVE",
+      "lifecycleState": "DRAFT",
+      "isLeaf": true
+    },
+    {
+      "nodeId": "NODE_OCC_BEARING_FRONT",
+      "nodeType": "PART",
+      "name": "Front Bearing Support",
+      "partId": "P_BEARING_01",
+      "partRevision": "1.0",
+      "assemblyId": "ASM_TURBO_PUMP_01",
+      "assemblyRevision": "R1.0",
+      "occurrenceId": "OCC_BEARING_FRONT",
+      "parentOccurrenceId": "OCC_SUBASM_ROTOR",
+      "geometryReference": {
+        "geometryId": "GEOM_P_BEARING_01",
+        "geometryRevision": "1.0",
+        "geometryHash": "d9fb411c082337450b77ee7384c7c4f89163194abdcc4f41642ac544a7a5959b",
+        "topologyType": "SOLID"
+      },
+      "transformReference": {
+        "translation": {
+          "x": 0,
+          "y": 0,
+          "z": 80
+        },
+        "matrix": [
+          [
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1,
+            80
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ]
+        ]
+      },
+      "configurationState": "ACTIVE",
+      "lifecycleState": "DRAFT",
+      "isLeaf": true
+    },
+    {
+      "nodeId": "NODE_OCC_BEARING_REAR",
+      "nodeType": "PART",
+      "name": "Rear Bearing Support",
+      "partId": "P_BEARING_01",
+      "partRevision": "1.0",
+      "assemblyId": "ASM_TURBO_PUMP_01",
+      "assemblyRevision": "R1.0",
+      "occurrenceId": "OCC_BEARING_REAR",
+      "parentOccurrenceId": "OCC_SUBASM_ROTOR",
+      "geometryReference": {
+        "geometryId": "GEOM_P_BEARING_01",
+        "geometryRevision": "1.0",
+        "geometryHash": "d9fb411c082337450b77ee7384c7c4f89163194abdcc4f41642ac544a7a5959b",
+        "topologyType": "SOLID"
+      },
+      "transformReference": {
+        "translation": {
+          "x": 0,
+          "y": 0,
+          "z": 310
+        },
+        "matrix": [
+          [
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1,
+            310
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ]
+        ]
+      },
+      "configurationState": "ACTIVE",
+      "lifecycleState": "DRAFT",
+      "isLeaf": true
+    },
+    {
+      "nodeId": "NODE_OCC_CASING_01",
+      "nodeType": "PART",
+      "name": "Outer Inconel Pressure Casing",
+      "partId": "P_CASING_01",
+      "partRevision": "1.0",
+      "assemblyId": "ASM_TURBO_PUMP_01",
+      "assemblyRevision": "R1.0",
+      "occurrenceId": "OCC_CASING_01",
+      "parentOccurrenceId": "OCC_ASM_TURBO_PUMP_01_ROOT",
+      "geometryReference": {
+        "geometryId": "GEOM_P_CASING_01",
+        "geometryRevision": "1.0",
+        "geometryHash": "3146820f94d31f220087175382d38766f5c3fd768804d2982fc82af01681f04b",
+        "topologyType": "SOLID"
+      },
+      "transformReference": {
+        "translation": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "matrix": [
+          [
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ]
+        ]
+      },
+      "configurationState": "ACTIVE",
+      "lifecycleState": "DRAFT",
+      "isLeaf": true
+    },
+    {
+      "nodeId": "NODE_OCC_BOLT_FLANGE_1",
+      "nodeType": "FASTENER",
+      "name": "Flange Bolt #1",
+      "partId": "P_BOLT_M10",
+      "partRevision": "1.0",
+      "assemblyId": "ASM_TURBO_PUMP_01",
+      "assemblyRevision": "R1.0",
+      "occurrenceId": "OCC_BOLT_FLANGE_1",
+      "parentOccurrenceId": "OCC_CASING_01",
+      "geometryReference": {
+        "geometryId": "GEOM_P_BOLT_M10",
+        "geometryRevision": "1.0",
+        "geometryHash": "697e221e985b2d0bb517aa7f6043609415c9cc3179bcaa4f69c021b893653a35",
+        "topologyType": "SOLID"
+      },
+      "transformReference": {
+        "translation": {
+          "x": 135,
+          "y": 0,
+          "z": 280
+        },
+        "matrix": [
+          [
+            1,
+            0,
+            0,
+            135
+          ],
+          [
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1,
+            280
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ]
+        ]
+      },
+      "configurationState": "ACTIVE",
+      "lifecycleState": "DRAFT",
+      "isLeaf": true
+    },
+    {
+      "nodeId": "NODE_OCC_BOLT_FLANGE_2",
+      "nodeType": "FASTENER",
+      "name": "Flange Bolt #2",
+      "partId": "P_BOLT_M10",
+      "partRevision": "1.0",
+      "assemblyId": "ASM_TURBO_PUMP_01",
+      "assemblyRevision": "R1.0",
+      "occurrenceId": "OCC_BOLT_FLANGE_2",
+      "parentOccurrenceId": "OCC_CASING_01",
+      "geometryReference": {
+        "geometryId": "GEOM_P_BOLT_M10",
+        "geometryRevision": "1.0",
+        "geometryHash": "697e221e985b2d0bb517aa7f6043609415c9cc3179bcaa4f69c021b893653a35",
+        "topologyType": "SOLID"
+      },
+      "transformReference": {
+        "translation": {
+          "x": 95.45941546,
+          "y": 95.45941546,
+          "z": 280
+        },
+        "matrix": [
+          [
+            0.70710678,
+            -0.70710678,
+            0,
+            95.45941546
+          ],
+          [
+            0.70710678,
+            0.70710678,
+            0,
+            95.45941546
+          ],
+          [
+            0,
+            0,
+            1,
+            280
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ]
+        ]
+      },
+      "configurationState": "ACTIVE",
+      "lifecycleState": "DRAFT",
+      "isLeaf": true
+    },
+    {
+      "nodeId": "NODE_OCC_BOLT_FLANGE_3",
+      "nodeType": "FASTENER",
+      "name": "Flange Bolt #3",
+      "partId": "P_BOLT_M10",
+      "partRevision": "1.0",
+      "assemblyId": "ASM_TURBO_PUMP_01",
+      "assemblyRevision": "R1.0",
+      "occurrenceId": "OCC_BOLT_FLANGE_3",
+      "parentOccurrenceId": "OCC_CASING_01",
+      "geometryReference": {
+        "geometryId": "GEOM_P_BOLT_M10",
+        "geometryRevision": "1.0",
+        "geometryHash": "697e221e985b2d0bb517aa7f6043609415c9cc3179bcaa4f69c021b893653a35",
+        "topologyType": "SOLID"
+      },
+      "transformReference": {
+        "translation": {
+          "x": 0,
+          "y": 135,
+          "z": 280
+        },
+        "matrix": [
+          [
+            0,
+            -1,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            135
+          ],
+          [
+            0,
+            0,
+            1,
+            280
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ]
+        ]
+      },
+      "configurationState": "ACTIVE",
+      "lifecycleState": "DRAFT",
+      "isLeaf": true
+    },
+    {
+      "nodeId": "NODE_OCC_BOLT_FLANGE_4",
+      "nodeType": "FASTENER",
+      "name": "Flange Bolt #4",
+      "partId": "P_BOLT_M10",
+      "partRevision": "1.0",
+      "assemblyId": "ASM_TURBO_PUMP_01",
+      "assemblyRevision": "R1.0",
+      "occurrenceId": "OCC_BOLT_FLANGE_4",
+      "parentOccurrenceId": "OCC_CASING_01",
+      "geometryReference": {
+        "geometryId": "GEOM_P_BOLT_M10",
+        "geometryRevision": "1.0",
+        "geometryHash": "697e221e985b2d0bb517aa7f6043609415c9cc3179bcaa4f69c021b893653a35",
+        "topologyType": "SOLID"
+      },
+      "transformReference": {
+        "translation": {
+          "x": -95.45941546,
+          "y": 95.45941546,
+          "z": 280
+        },
+        "matrix": [
+          [
+            -0.70710678,
+            -0.70710678,
+            0,
+            -95.45941546
+          ],
+          [
+            0.70710678,
+            -0.70710678,
+            0,
+            95.45941546
+          ],
+          [
+            0,
+            0,
+            1,
+            280
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ]
+        ]
+      },
+      "configurationState": "ACTIVE",
+      "lifecycleState": "DRAFT",
+      "isLeaf": true
+    },
+    {
+      "nodeId": "NODE_OCC_BOLT_FLANGE_5",
+      "nodeType": "FASTENER",
+      "name": "Flange Bolt #5",
+      "partId": "P_BOLT_M10",
+      "partRevision": "1.0",
+      "assemblyId": "ASM_TURBO_PUMP_01",
+      "assemblyRevision": "R1.0",
+      "occurrenceId": "OCC_BOLT_FLANGE_5",
+      "parentOccurrenceId": "OCC_CASING_01",
+      "geometryReference": {
+        "geometryId": "GEOM_P_BOLT_M10",
+        "geometryRevision": "1.0",
+        "geometryHash": "697e221e985b2d0bb517aa7f6043609415c9cc3179bcaa4f69c021b893653a35",
+        "topologyType": "SOLID"
+      },
+      "transformReference": {
+        "translation": {
+          "x": -135,
+          "y": 0,
+          "z": 280
+        },
+        "matrix": [
+          [
+            -1,
+            0,
+            0,
+            -135
+          ],
+          [
+            0,
+            -1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1,
+            280
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ]
+        ]
+      },
+      "configurationState": "ACTIVE",
+      "lifecycleState": "DRAFT",
+      "isLeaf": true
+    },
+    {
+      "nodeId": "NODE_OCC_BOLT_FLANGE_6",
+      "nodeType": "FASTENER",
+      "name": "Flange Bolt #6",
+      "partId": "P_BOLT_M10",
+      "partRevision": "1.0",
+      "assemblyId": "ASM_TURBO_PUMP_01",
+      "assemblyRevision": "R1.0",
+      "occurrenceId": "OCC_BOLT_FLANGE_6",
+      "parentOccurrenceId": "OCC_CASING_01",
+      "geometryReference": {
+        "geometryId": "GEOM_P_BOLT_M10",
+        "geometryRevision": "1.0",
+        "geometryHash": "697e221e985b2d0bb517aa7f6043609415c9cc3179bcaa4f69c021b893653a35",
+        "topologyType": "SOLID"
+      },
+      "transformReference": {
+        "translation": {
+          "x": -95.45941546,
+          "y": -95.45941546,
+          "z": 280
+        },
+        "matrix": [
+          [
+            -0.70710678,
+            0.70710678,
+            0,
+            -95.45941546
+          ],
+          [
+            -0.70710678,
+            -0.70710678,
+            0,
+            -95.45941546
+          ],
+          [
+            0,
+            0,
+            1,
+            280
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ]
+        ]
+      },
+      "configurationState": "ACTIVE",
+      "lifecycleState": "DRAFT",
+      "isLeaf": true
+    },
+    {
+      "nodeId": "NODE_OCC_BOLT_FLANGE_7",
+      "nodeType": "FASTENER",
+      "name": "Flange Bolt #7",
+      "partId": "P_BOLT_M10",
+      "partRevision": "1.0",
+      "assemblyId": "ASM_TURBO_PUMP_01",
+      "assemblyRevision": "R1.0",
+      "occurrenceId": "OCC_BOLT_FLANGE_7",
+      "parentOccurrenceId": "OCC_CASING_01",
+      "geometryReference": {
+        "geometryId": "GEOM_P_BOLT_M10",
+        "geometryRevision": "1.0",
+        "geometryHash": "697e221e985b2d0bb517aa7f6043609415c9cc3179bcaa4f69c021b893653a35",
+        "topologyType": "SOLID"
+      },
+      "transformReference": {
+        "translation": {
+          "x": 0,
+          "y": -135,
+          "z": 280
+        },
+        "matrix": [
+          [
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            -1,
+            0,
+            0,
+            -135
+          ],
+          [
+            0,
+            0,
+            1,
+            280
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ]
+        ]
+      },
+      "configurationState": "ACTIVE",
+      "lifecycleState": "DRAFT",
+      "isLeaf": true
+    },
+    {
+      "nodeId": "NODE_OCC_BOLT_FLANGE_8",
+      "nodeType": "FASTENER",
+      "name": "Flange Bolt #8",
+      "partId": "P_BOLT_M10",
+      "partRevision": "1.0",
+      "assemblyId": "ASM_TURBO_PUMP_01",
+      "assemblyRevision": "R1.0",
+      "occurrenceId": "OCC_BOLT_FLANGE_8",
+      "parentOccurrenceId": "OCC_CASING_01",
+      "geometryReference": {
+        "geometryId": "GEOM_P_BOLT_M10",
+        "geometryRevision": "1.0",
+        "geometryHash": "697e221e985b2d0bb517aa7f6043609415c9cc3179bcaa4f69c021b893653a35",
+        "topologyType": "SOLID"
+      },
+      "transformReference": {
+        "translation": {
+          "x": 95.45941546,
+          "y": -95.45941546,
+          "z": 280
+        },
+        "matrix": [
+          [
+            0.70710678,
+            0.70710678,
+            0,
+            95.45941546
+          ],
+          [
+            -0.70710678,
+            0.70710678,
+            0,
+            -95.45941546
+          ],
+          [
+            0,
+            0,
+            1,
+            280
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ]
+        ]
+      },
+      "configurationState": "ACTIVE",
+      "lifecycleState": "DRAFT",
+      "isLeaf": true
+    }
+  ],
+  "edges": [
+    {
+      "edgeId": "EDGE_CONTAINS_OCC_ASM_TURBO_PUMP_01_ROOT_TO_OCC_SUBASM_ROTOR",
+      "sourceNodeId": "NODE_OCC_ASM_TURBO_PUMP_01_ROOT",
+      "targetNodeId": "NODE_OCC_SUBASM_ROTOR",
+      "edgeType": "CONTAINS",
+      "edgeRevision": "R1.0",
+      "sourceOccurrenceId": "OCC_ASM_TURBO_PUMP_01_ROOT",
+      "targetOccurrenceId": "OCC_SUBASM_ROTOR"
+    },
+    {
+      "edgeId": "EDGE_INSTANCE_OF_OCC_SUBASM_ROTOR_TO_SUBASM_ROTOR_1.0",
+      "sourceNodeId": "NODE_OCC_SUBASM_ROTOR",
+      "targetNodeId": "PART_DEF_SUBASM_ROTOR_1.0",
+      "edgeType": "INSTANCE_OF",
+      "edgeRevision": "R1.0",
+      "sourceOccurrenceId": "OCC_SUBASM_ROTOR",
+      "metadata": {
+        "partId": "SUBASM_ROTOR",
+        "partRevision": "1.0"
+      }
+    },
+    {
+      "edgeId": "EDGE_CONTAINS_OCC_SUBASM_ROTOR_TO_OCC_SHAFT_01",
+      "sourceNodeId": "NODE_OCC_SUBASM_ROTOR",
+      "targetNodeId": "NODE_OCC_SHAFT_01",
+      "edgeType": "CONTAINS",
+      "edgeRevision": "R1.0",
+      "sourceOccurrenceId": "OCC_SUBASM_ROTOR",
+      "targetOccurrenceId": "OCC_SHAFT_01"
+    },
+    {
+      "edgeId": "EDGE_INSTANCE_OF_OCC_SHAFT_01_TO_P_SHAFT_01_1.0",
+      "sourceNodeId": "NODE_OCC_SHAFT_01",
+      "targetNodeId": "PART_DEF_P_SHAFT_01_1.0",
+      "edgeType": "INSTANCE_OF",
+      "edgeRevision": "R1.0",
+      "sourceOccurrenceId": "OCC_SHAFT_01",
+      "metadata": {
+        "partId": "P_SHAFT_01",
+        "partRevision": "1.0"
+      }
+    },
+    {
+      "edgeId": "EDGE_CONTAINS_OCC_SUBASM_ROTOR_TO_OCC_IMPELLER_01",
+      "sourceNodeId": "NODE_OCC_SUBASM_ROTOR",
+      "targetNodeId": "NODE_OCC_IMPELLER_01",
+      "edgeType": "CONTAINS",
+      "edgeRevision": "R1.0",
+      "sourceOccurrenceId": "OCC_SUBASM_ROTOR",
+      "targetOccurrenceId": "OCC_IMPELLER_01"
+    },
+    {
+      "edgeId": "EDGE_INSTANCE_OF_OCC_IMPELLER_01_TO_P_IMPELLER_01_1.0",
+      "sourceNodeId": "NODE_OCC_IMPELLER_01",
+      "targetNodeId": "PART_DEF_P_IMPELLER_01_1.0",
+      "edgeType": "INSTANCE_OF",
+      "edgeRevision": "R1.0",
+      "sourceOccurrenceId": "OCC_IMPELLER_01",
+      "metadata": {
+        "partId": "P_IMPELLER_01",
+        "partRevision": "1.0"
+      }
+    },
+    {
+      "edgeId": "EDGE_CONTAINS_OCC_SUBASM_ROTOR_TO_OCC_BEARING_FRONT",
+      "sourceNodeId": "NODE_OCC_SUBASM_ROTOR",
+      "targetNodeId": "NODE_OCC_BEARING_FRONT",
+      "edgeType": "CONTAINS",
+      "edgeRevision": "R1.0",
+      "sourceOccurrenceId": "OCC_SUBASM_ROTOR",
+      "targetOccurrenceId": "OCC_BEARING_FRONT"
+    },
+    {
+      "edgeId": "EDGE_INSTANCE_OF_OCC_BEARING_FRONT_TO_P_BEARING_01_1.0",
+      "sourceNodeId": "NODE_OCC_BEARING_FRONT",
+      "targetNodeId": "PART_DEF_P_BEARING_01_1.0",
+      "edgeType": "INSTANCE_OF",
+      "edgeRevision": "R1.0",
+      "sourceOccurrenceId": "OCC_BEARING_FRONT",
+      "metadata": {
+        "partId": "P_BEARING_01",
+        "partRevision": "1.0"
+      }
+    },
+    {
+      "edgeId": "EDGE_CONTAINS_OCC_SUBASM_ROTOR_TO_OCC_BEARING_REAR",
+      "sourceNodeId": "NODE_OCC_SUBASM_ROTOR",
+      "targetNodeId": "NODE_OCC_BEARING_REAR",
+      "edgeType": "CONTAINS",
+      "edgeRevision": "R1.0",
+      "sourceOccurrenceId": "OCC_SUBASM_ROTOR",
+      "targetOccurrenceId": "OCC_BEARING_REAR"
+    },
+    {
+      "edgeId": "EDGE_INSTANCE_OF_OCC_BEARING_REAR_TO_P_BEARING_01_1.0",
+      "sourceNodeId": "NODE_OCC_BEARING_REAR",
+      "targetNodeId": "PART_DEF_P_BEARING_01_1.0",
+      "edgeType": "INSTANCE_OF",
+      "edgeRevision": "R1.0",
+      "sourceOccurrenceId": "OCC_BEARING_REAR",
+      "metadata": {
+        "partId": "P_BEARING_01",
+        "partRevision": "1.0"
+      }
+    },
+    {
+      "edgeId": "EDGE_CONTAINS_OCC_ASM_TURBO_PUMP_01_ROOT_TO_OCC_CASING_01",
+      "sourceNodeId": "NODE_OCC_ASM_TURBO_PUMP_01_ROOT",
+      "targetNodeId": "NODE_OCC_CASING_01",
+      "edgeType": "CONTAINS",
+      "edgeRevision": "R1.0",
+      "sourceOccurrenceId": "OCC_ASM_TURBO_PUMP_01_ROOT",
+      "targetOccurrenceId": "OCC_CASING_01"
+    },
+    {
+      "edgeId": "EDGE_INSTANCE_OF_OCC_CASING_01_TO_P_CASING_01_1.0",
+      "sourceNodeId": "NODE_OCC_CASING_01",
+      "targetNodeId": "PART_DEF_P_CASING_01_1.0",
+      "edgeType": "INSTANCE_OF",
+      "edgeRevision": "R1.0",
+      "sourceOccurrenceId": "OCC_CASING_01",
+      "metadata": {
+        "partId": "P_CASING_01",
+        "partRevision": "1.0"
+      }
+    },
+    {
+      "edgeId": "EDGE_CONTAINS_OCC_CASING_01_TO_OCC_BOLT_FLANGE_1",
+      "sourceNodeId": "NODE_OCC_CASING_01",
+      "targetNodeId": "NODE_OCC_BOLT_FLANGE_1",
+      "edgeType": "CONTAINS",
+      "edgeRevision": "R1.0",
+      "sourceOccurrenceId": "OCC_CASING_01",
+      "targetOccurrenceId": "OCC_BOLT_FLANGE_1"
+    },
+    {
+      "edgeId": "EDGE_INSTANCE_OF_OCC_BOLT_FLANGE_1_TO_P_BOLT_M10_1.0",
+      "sourceNodeId": "NODE_OCC_BOLT_FLANGE_1",
+      "targetNodeId": "PART_DEF_P_BOLT_M10_1.0",
+      "edgeType": "INSTANCE_OF",
+      "edgeRevision": "R1.0",
+      "sourceOccurrenceId": "OCC_BOLT_FLANGE_1",
+      "metadata": {
+        "partId": "P_BOLT_M10",
+        "partRevision": "1.0"
+      }
+    },
+    {
+      "edgeId": "EDGE_CONTAINS_OCC_CASING_01_TO_OCC_BOLT_FLANGE_2",
+      "sourceNodeId": "NODE_OCC_CASING_01",
+      "targetNodeId": "NODE_OCC_BOLT_FLANGE_2",
+      "edgeType": "CONTAINS",
+      "edgeRevision": "R1.0",
+      "sourceOccurrenceId": "OCC_CASING_01",
+      "targetOccurrenceId": "OCC_BOLT_FLANGE_2"
+    },
+    {
+      "edgeId": "EDGE_INSTANCE_OF_OCC_BOLT_FLANGE_2_TO_P_BOLT_M10_1.0",
+      "sourceNodeId": "NODE_OCC_BOLT_FLANGE_2",
+      "targetNodeId": "PART_DEF_P_BOLT_M10_1.0",
+      "edgeType": "INSTANCE_OF",
+      "edgeRevision": "R1.0",
+      "sourceOccurrenceId": "OCC_BOLT_FLANGE_2",
+      "metadata": {
+        "partId": "P_BOLT_M10",
+        "partRevision": "1.0"
+      }
+    },
+    {
+      "edgeId": "EDGE_CONTAINS_OCC_CASING_01_TO_OCC_BOLT_FLANGE_3",
+      "sourceNodeId": "NODE_OCC_CASING_01",
+      "targetNodeId": "NODE_OCC_BOLT_FLANGE_3",
+      "edgeType": "CONTAINS",
+      "edgeRevision": "R1.0",
+      "sourceOccurrenceId": "OCC_CASING_01",
+      "targetOccurrenceId": "OCC_BOLT_FLANGE_3"
+    },
+    {
+      "edgeId": "EDGE_INSTANCE_OF_OCC_BOLT_FLANGE_3_TO_P_BOLT_M10_1.0",
+      "sourceNodeId": "NODE_OCC_BOLT_FLANGE_3",
+      "targetNodeId": "PART_DEF_P_BOLT_M10_1.0",
+      "edgeType": "INSTANCE_OF",
+      "edgeRevision": "R1.0",
+      "sourceOccurrenceId": "OCC_BOLT_FLANGE_3",
+      "metadata": {
+        "partId": "P_BOLT_M10",
+        "partRevision": "1.0"
+      }
+    },
+    {
+      "edgeId": "EDGE_CONTAINS_OCC_CASING_01_TO_OCC_BOLT_FLANGE_4",
+      "sourceNodeId": "NODE_OCC_CASING_01",
+      "targetNodeId": "NODE_OCC_BOLT_FLANGE_4",
+      "edgeType": "CONTAINS",
+      "edgeRevision": "R1.0",
+      "sourceOccurrenceId": "OCC_CASING_01",
+      "targetOccurrenceId": "OCC_BOLT_FLANGE_4"
+    },
+    {
+      "edgeId": "EDGE_INSTANCE_OF_OCC_BOLT_FLANGE_4_TO_P_BOLT_M10_1.0",
+      "sourceNodeId": "NODE_OCC_BOLT_FLANGE_4",
+      "targetNodeId": "PART_DEF_P_BOLT_M10_1.0",
+      "edgeType": "INSTANCE_OF",
+      "edgeRevision": "R1.0",
+      "sourceOccurrenceId": "OCC_BOLT_FLANGE_4",
+      "metadata": {
+        "partId": "P_BOLT_M10",
+        "partRevision": "1.0"
+      }
+    },
+    {
+      "edgeId": "EDGE_CONTAINS_OCC_CASING_01_TO_OCC_BOLT_FLANGE_5",
+      "sourceNodeId": "NODE_OCC_CASING_01",
+      "targetNodeId": "NODE_OCC_BOLT_FLANGE_5",
+      "edgeType": "CONTAINS",
+      "edgeRevision": "R1.0",
+      "sourceOccurrenceId": "OCC_CASING_01",
+      "targetOccurrenceId": "OCC_BOLT_FLANGE_5"
+    },
+    {
+      "edgeId": "EDGE_INSTANCE_OF_OCC_BOLT_FLANGE_5_TO_P_BOLT_M10_1.0",
+      "sourceNodeId": "NODE_OCC_BOLT_FLANGE_5",
+      "targetNodeId": "PART_DEF_P_BOLT_M10_1.0",
+      "edgeType": "INSTANCE_OF",
+      "edgeRevision": "R1.0",
+      "sourceOccurrenceId": "OCC_BOLT_FLANGE_5",
+      "metadata": {
+        "partId": "P_BOLT_M10",
+        "partRevision": "1.0"
+      }
+    },
+    {
+      "edgeId": "EDGE_CONTAINS_OCC_CASING_01_TO_OCC_BOLT_FLANGE_6",
+      "sourceNodeId": "NODE_OCC_CASING_01",
+      "targetNodeId": "NODE_OCC_BOLT_FLANGE_6",
+      "edgeType": "CONTAINS",
+      "edgeRevision": "R1.0",
+      "sourceOccurrenceId": "OCC_CASING_01",
+      "targetOccurrenceId": "OCC_BOLT_FLANGE_6"
+    },
+    {
+      "edgeId": "EDGE_INSTANCE_OF_OCC_BOLT_FLANGE_6_TO_P_BOLT_M10_1.0",
+      "sourceNodeId": "NODE_OCC_BOLT_FLANGE_6",
+      "targetNodeId": "PART_DEF_P_BOLT_M10_1.0",
+      "edgeType": "INSTANCE_OF",
+      "edgeRevision": "R1.0",
+      "sourceOccurrenceId": "OCC_BOLT_FLANGE_6",
+      "metadata": {
+        "partId": "P_BOLT_M10",
+        "partRevision": "1.0"
+      }
+    },
+    {
+      "edgeId": "EDGE_CONTAINS_OCC_CASING_01_TO_OCC_BOLT_FLANGE_7",
+      "sourceNodeId": "NODE_OCC_CASING_01",
+      "targetNodeId": "NODE_OCC_BOLT_FLANGE_7",
+      "edgeType": "CONTAINS",
+      "edgeRevision": "R1.0",
+      "sourceOccurrenceId": "OCC_CASING_01",
+      "targetOccurrenceId": "OCC_BOLT_FLANGE_7"
+    },
+    {
+      "edgeId": "EDGE_INSTANCE_OF_OCC_BOLT_FLANGE_7_TO_P_BOLT_M10_1.0",
+      "sourceNodeId": "NODE_OCC_BOLT_FLANGE_7",
+      "targetNodeId": "PART_DEF_P_BOLT_M10_1.0",
+      "edgeType": "INSTANCE_OF",
+      "edgeRevision": "R1.0",
+      "sourceOccurrenceId": "OCC_BOLT_FLANGE_7",
+      "metadata": {
+        "partId": "P_BOLT_M10",
+        "partRevision": "1.0"
+      }
+    },
+    {
+      "edgeId": "EDGE_CONTAINS_OCC_CASING_01_TO_OCC_BOLT_FLANGE_8",
+      "sourceNodeId": "NODE_OCC_CASING_01",
+      "targetNodeId": "NODE_OCC_BOLT_FLANGE_8",
+      "edgeType": "CONTAINS",
+      "edgeRevision": "R1.0",
+      "sourceOccurrenceId": "OCC_CASING_01",
+      "targetOccurrenceId": "OCC_BOLT_FLANGE_8"
+    },
+    {
+      "edgeId": "EDGE_INSTANCE_OF_OCC_BOLT_FLANGE_8_TO_P_BOLT_M10_1.0",
+      "sourceNodeId": "NODE_OCC_BOLT_FLANGE_8",
+      "targetNodeId": "PART_DEF_P_BOLT_M10_1.0",
+      "edgeType": "INSTANCE_OF",
+      "edgeRevision": "R1.0",
+      "sourceOccurrenceId": "OCC_BOLT_FLANGE_8",
+      "metadata": {
+        "partId": "P_BOLT_M10",
+        "partRevision": "1.0"
+      }
+    },
+    {
+      "edgeId": "EDGE_CONSTRAIN_CST_SHAFT_IMPELLER_CONC",
+      "sourceNodeId": "NODE_OCC_SHAFT_01",
+      "targetNodeId": "NODE_OCC_IMPELLER_01",
+      "edgeType": "CONSTRAINS",
+      "edgeRevision": "R1.0",
+      "sourceOccurrenceId": "OCC_SHAFT_01",
+      "targetOccurrenceId": "OCC_IMPELLER_01",
+      "metadata": {
+        "constraintType": "CONCENTRIC",
+        "constraintId": "CST_SHAFT_IMPELLER_CONC"
+      }
+    },
+    {
+      "edgeId": "EDGE_CONSTRAIN_CST_BRG1_SEAT",
+      "sourceNodeId": "NODE_OCC_SHAFT_01",
+      "targetNodeId": "NODE_OCC_BEARING_FRONT",
+      "edgeType": "CONSTRAINS",
+      "edgeRevision": "R1.0",
+      "sourceOccurrenceId": "OCC_SHAFT_01",
+      "targetOccurrenceId": "OCC_BEARING_FRONT",
+      "metadata": {
+        "constraintType": "COINCIDENT",
+        "constraintId": "CST_BRG1_SEAT"
+      }
+    },
+    {
+      "edgeId": "EDGE_INTERFACE_IFACE_ROTOR_CASING_ROT",
+      "sourceNodeId": "NODE_OCC_SUBASM_ROTOR",
+      "targetNodeId": "NODE_OCC_CASING_01",
+      "edgeType": "INTERFACES_WITH",
+      "edgeRevision": "R1.0",
+      "sourceOccurrenceId": "OCC_SUBASM_ROTOR",
+      "targetOccurrenceId": "OCC_CASING_01",
+      "metadata": {
+        "interfaceType": "ROTATIONAL",
+        "interfaceId": "IFACE_ROTOR_CASING_ROT"
+      }
+    }
+  ]
+}

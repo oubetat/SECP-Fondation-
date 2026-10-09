@@ -1,0 +1,10 @@
+{
+  "reportId": "REP-INSP-126-013",
+  "timestamp": "2026-08-21T09:31:27.424Z",
+  "twinId": "INSP-TWIN-REPORT-013",
+  "partSerial": "SN-PART-013",
+  "inputHash": "9ba0f8eeb99eb5890d14b13e37eccf7a612012af3f4f9d038beaa3c9acb36b53",
+  "rootHash": "a7692cd1a20832b96fa1f33920c6afe862926560aac29c0d67b0f9acfa3776fc",
+  "state": "EVALUATED",
+  "verdict": "PASS"
+}

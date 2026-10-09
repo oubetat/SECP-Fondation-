@@ -1,0 +1,15 @@
+{
+  "missionId": "COLLISION-ENGINE-P2-FAIL-CLOSED-HARDENING-001",
+  "artifactType": "STATUS_INTEGRITY",
+  "timestamp": "2026-10-01T02:08:00.000Z",
+  "mappings": {
+    "CollisionStatus.ANALYSIS_FAILED": { "severity": "CollisionSeverity.FATAL_FAILURE", "isFailed": true, "provenSafe": false },
+    "CollisionStatus.INVALID_GEOMETRY": { "severity": "CollisionSeverity.FATAL_FAILURE", "isFailed": true, "provenSafe": false },
+    "CollisionStatus.UNSUPPORTED": { "severity": "CollisionSeverity.FATAL_FAILURE", "isFailed": true, "provenSafe": false },
+    "CollisionStatus.TIMEOUT": { "severity": "CollisionSeverity.FATAL_FAILURE", "isFailed": true, "provenSafe": false },
+    "CollisionStatus.NUMERICAL_FAILURE": { "severity": "CollisionSeverity.FATAL_FAILURE", "isFailed": true, "provenSafe": false },
+    "CollisionStatus.UNKNOWN": { "severity": "CollisionSeverity.ERROR", "isFailed": true, "provenSafe": false },
+    "CollisionStatus.AMBIGUOUS": { "severity": "CollisionSeverity.ERROR", "isFailed": true, "provenSafe": false }
+  },
+  "enforcementStatus": "VERIFIED_COMPLIANT"
+}

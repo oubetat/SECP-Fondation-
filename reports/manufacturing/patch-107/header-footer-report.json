@@ -1,0 +1,12 @@
+{
+  "programNumber": 1007,
+  "programName": "IMPELLER_BLADE_5AXIS",
+  "footerCommands": [
+    "G80",
+    "M09",
+    "M05",
+    "G28 G91 Z0",
+    "G90",
+    "M30"
+  ]
+}

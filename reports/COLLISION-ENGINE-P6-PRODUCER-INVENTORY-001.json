@@ -1,0 +1,48 @@
+{
+  "reportId": "COLLISION-ENGINE-P6-PRODUCER-INVENTORY-001",
+  "timestampIso": "2026-10-02T08:17:49.207Z",
+  "inventory": [
+    {
+      "componentId": "CollisionAuthority",
+      "taxonomy": "A_AUTHORITATIVE_PRODUCER",
+      "description": "Canonical Collision Authority Core"
+    },
+    {
+      "componentId": "ProductionCollisionManager",
+      "taxonomy": "B_AUTHORITY_ADAPTER",
+      "description": "Production Command & Interlock Gateway"
+    },
+    {
+      "componentId": "CamFiveAxisCollisionProvider",
+      "taxonomy": "B_AUTHORITY_ADAPTER",
+      "description": "Registered CAM & 5-Axis Provider"
+    },
+    {
+      "componentId": "AssemblyCollisionProvider",
+      "taxonomy": "B_AUTHORITY_ADAPTER",
+      "description": "Registered Assembly Provider"
+    },
+    {
+      "componentId": "MachineSimulationCollisionProvider",
+      "taxonomy": "B_AUTHORITY_ADAPTER",
+      "description": "Registered Machine Sim Provider"
+    },
+    {
+      "componentId": "KinematicsCollisionProvider",
+      "taxonomy": "B_AUTHORITY_ADAPTER",
+      "description": "Registered Kinematics Provider"
+    },
+    {
+      "componentId": "TestRunnerPanel",
+      "taxonomy": "C_CONSUMER",
+      "description": "UI Execution Panel"
+    },
+    {
+      "componentId": "CadKernelInspector",
+      "taxonomy": "D_VISUALIZATION_ONLY",
+      "description": "Viewport Overlay Renderer"
+    }
+  ],
+  "unauthorizedProducersFound": 0,
+  "verdict": "PASSED"
+}

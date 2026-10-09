@@ -1,0 +1,38 @@
+{
+  "contractId": "CONTRACT-COLLISION-NARROW-PHASE-001",
+  "name": "Narrow Phase Mathematical Predicate Contract",
+  "version": "1.0.0",
+  "primitivePairSpecifications": {
+    "Cylinder_vs_Triangle": {
+      "mathematicalModel": "Exact 3D segment-to-triangle distance minus radius: min_{s in Segment, t in Triangle} ||s - t|| - R",
+      "requiredAlgorithm": "Analytical closest points between finite 3D line segment and 3D triangle (interior face, 3 edges, 3 vertices).",
+      "nature": "EXACT",
+      "contactNormal": "Unit vector along segment-triangle shortest distance vector",
+      "status": "MANDATORY_TARGET"
+    },
+    "Capsule_vs_Capsule": {
+      "mathematicalModel": "Segment-to-segment shortest distance minus sum of radii: ||pA - pB|| - (R1 + R2)",
+      "requiredAlgorithm": "Lumelsky / Ericson segment-segment analytical closest point solver with parallel segment degeneracy handling.",
+      "nature": "EXACT",
+      "status": "MANDATORY_TARGET"
+    },
+    "Triangle_vs_Triangle": {
+      "mathematicalModel": "Moller / Guigue-Devillers exact 3D triangle-triangle intersection test.",
+      "requiredAlgorithm": "Plane equation scalar triple products followed by 2D interval overlap.",
+      "nature": "EXACT",
+      "status": "MANDATORY_TARGET"
+    },
+    "BRep_vs_BRep": {
+      "mathematicalModel": "OCCT BRepAlgoAPI_Common / BRepAlgoAPI_Section",
+      "requiredAlgorithm": "Exact topological boolean intersection computing intersecting solid/face and volume/centroid.",
+      "nature": "EXACT",
+      "status": "MANDATORY_TARGET"
+    },
+    "ConvexHull_vs_ConvexHull": {
+      "mathematicalModel": "Gilbert-Johnson-Keerthi (GJK) distance solver + Expanding Polytope Algorithm (EPA) for penetration depth.",
+      "requiredAlgorithm": "Support mapping on Minkowski difference CSO.",
+      "nature": "CONSERVATIVE_EXACT",
+      "status": "MANDATORY_TARGET"
+    }
+  }
+}

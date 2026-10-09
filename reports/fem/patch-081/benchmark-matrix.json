@@ -1,0 +1,58 @@
+[
+  {
+    "id": "BENCHMARK_01_FLAT_ON_FLAT",
+    "name": "Flat-on-Flat Contact Uniform Pressure Benchmark",
+    "passed": true,
+    "maxError": 0,
+    "tolerance": 0.0001,
+    "details": "Calculated total contact force = 2.0000e+6 N vs Reference = 2.0000e+6 N."
+  },
+  {
+    "id": "BENCHMARK_02_RIGID_BLOCK_ON_DEFORMABLE",
+    "name": "Rigid Block on Deformable Elastoplastic Foundation Benchmark",
+    "passed": true,
+    "maxError": 2797.942506554203,
+    "tolerance": 0.001,
+    "details": "Solved rigid indentation. Active contacts = 2, residual = 2.7979e+3."
+  },
+  {
+    "id": "BENCHMARK_03_HERTZ_CONTACT_REFERENCE",
+    "name": "Hertzian Contact Peak Pressure & Radius Reference Benchmark",
+    "passed": true,
+    "maxError": 0,
+    "tolerance": 0.000001,
+    "details": "Analytical Hertz peak pressure p0 = 2.6450e+7 Pa, contact half-width a = 0.000024 m."
+  },
+  {
+    "id": "BENCHMARK_04_SEPARATION_RECONTACT",
+    "name": "Unilateral Separation & Re-Contact Trajectory Benchmark",
+    "passed": true,
+    "maxError": 0,
+    "tolerance": 0.000001,
+    "details": "Verified 4-phase trajectory: Approach (OPEN) -> Compression (ACTIVE) -> Unload (SEPARATION) -> Re-contact (ACTIVE)."
+  },
+  {
+    "id": "BENCHMARK_05_PENALTY_SENSITIVITY_TRADEOFF",
+    "name": "Penalty Stiffness vs Penetration Trade-Off Benchmark",
+    "passed": true,
+    "maxError": 0,
+    "tolerance": 0.000001,
+    "details": "Penetrations: k_p=1e6 -> h=1.00e+0m, k_p=1e9 -> h=1.00e-3m, k_p=1e12 -> h=1.00e-6m."
+  },
+  {
+    "id": "BENCHMARK_06_MESH_REFINEMENT_SURFACE_REVERSAL",
+    "name": "Master/Slave Surface Reversal Symmetry Benchmark",
+    "passed": true,
+    "maxError": 0,
+    "tolerance": 0.000001,
+    "details": "Contact pressure Master-Slave = 2.0000e+6 Pa vs Slave-Master = 2.0000e+6 Pa."
+  },
+  {
+    "id": "BENCHMARK_07_RIGID_BODY_OBJECTIVITY",
+    "name": "Rigid Body Translation & Rotation Objectivity Benchmark",
+    "passed": true,
+    "maxError": 0,
+    "tolerance": 0.000001,
+    "details": "Contact pressure is frame-invariant under 2D rigid translations and rotations."
+  }
+]

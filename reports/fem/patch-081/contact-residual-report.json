@@ -1,0 +1,4 @@
+{
+  "status": "VERIFIED",
+  "residualEquation": "R = f_int + f_contact - f_ext"
+}

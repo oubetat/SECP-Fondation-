@@ -1,0 +1,150 @@
+{
+  "reportId": "bom-graph-report.json",
+  "timestamp": "2026-08-21T08:10:36.324Z",
+  "status": "VERIFIED",
+  "data": {
+    "bomId": "BOM-1000",
+    "bomRevision": "1.0",
+    "configurationId": "DEFAULT",
+    "nodes": [
+      {
+        "bomNodeId": "PUMP-ASSY",
+        "itemType": "ASSEMBLY",
+        "partId": "PART-PUMP",
+        "partRevision": "1.0",
+        "assemblyId": "A-1",
+        "assemblyRevision": "1.0",
+        "occurrenceIds": [
+          "OCC-PUMP"
+        ],
+        "parentBomNodeId": null,
+        "quantity": 1,
+        "unitOfMeasure": "EA",
+        "quantityBasis": "OCCURRENCE_COUNT",
+        "configurationState": "DEFAULT",
+        "effectivity": [],
+        "lifecycleState": "RELEASED",
+        "sourcingType": "MAKE",
+        "sourceReference": {
+          "sourceType": "ASSEMBLY",
+          "sourceId": "A-1",
+          "sourceRevision": "1.0",
+          "sourceAssemblyRevision": "1.0"
+        }
+      },
+      {
+        "bomNodeId": "IMPELLER",
+        "itemType": "PART",
+        "partId": "PART-IMP",
+        "partRevision": "1.0",
+        "assemblyId": "A-1",
+        "assemblyRevision": "1.0",
+        "occurrenceIds": [
+          "OCC-IMP-1"
+        ],
+        "parentBomNodeId": "PUMP-ASSY",
+        "quantity": 1,
+        "unitOfMeasure": "EA",
+        "quantityBasis": "OCCURRENCE_COUNT",
+        "configurationState": "DEFAULT",
+        "effectivity": [],
+        "lifecycleState": "RELEASED",
+        "sourcingType": "MAKE",
+        "sourceReference": {
+          "sourceType": "ASSEMBLY",
+          "sourceId": "A-1",
+          "sourceRevision": "1.0",
+          "sourceAssemblyRevision": "1.0"
+        }
+      },
+      {
+        "bomNodeId": "BOLT-M8",
+        "itemType": "STANDARD_PART",
+        "partId": "PART-BOLT",
+        "partRevision": "1.0",
+        "assemblyId": "A-1",
+        "assemblyRevision": "1.0",
+        "occurrenceIds": [
+          "OCC-B1",
+          "OCC-B2",
+          "OCC-B3",
+          "OCC-B4",
+          "OCC-B5",
+          "OCC-B6",
+          "OCC-B7",
+          "OCC-B8"
+        ],
+        "parentBomNodeId": "PUMP-ASSY",
+        "quantity": 8,
+        "unitOfMeasure": "EA",
+        "quantityBasis": "OCCURRENCE_COUNT",
+        "configurationState": "DEFAULT",
+        "effectivity": [],
+        "lifecycleState": "RELEASED",
+        "sourcingType": "BUY",
+        "sourceReference": {
+          "sourceType": "ASSEMBLY",
+          "sourceId": "A-1",
+          "sourceRevision": "1.0",
+          "sourceAssemblyRevision": "1.0"
+        }
+      },
+      {
+        "bomNodeId": "LUBRICANT",
+        "itemType": "MATERIAL",
+        "partId": "MAT-LUBE",
+        "partRevision": "1.0",
+        "assemblyId": "A-1",
+        "assemblyRevision": "1.0",
+        "occurrenceIds": [],
+        "parentBomNodeId": "PUMP-ASSY",
+        "quantity": 0.5,
+        "unitOfMeasure": "L",
+        "quantityBasis": "MEASURED_QUANTITY",
+        "configurationState": "DEFAULT",
+        "effectivity": [],
+        "lifecycleState": "RELEASED",
+        "sourcingType": "BUY",
+        "sourceReference": {
+          "sourceType": "MATERIAL",
+          "sourceId": "MAT-1",
+          "sourceRevision": "1.0",
+          "sourceAssemblyRevision": "1.0"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "edgeId": "E1",
+        "parentNodeId": "PUMP-ASSY",
+        "childNodeId": "IMPELLER",
+        "edgeType": "REQUIRES",
+        "quantity": 1,
+        "unitOfMeasure": "EA",
+        "sequence": 10,
+        "effectivity": []
+      },
+      {
+        "edgeId": "E2",
+        "parentNodeId": "PUMP-ASSY",
+        "childNodeId": "BOLT-M8",
+        "edgeType": "REQUIRES",
+        "quantity": 8,
+        "unitOfMeasure": "EA",
+        "sequence": 20,
+        "effectivity": []
+      },
+      {
+        "edgeId": "E3",
+        "parentNodeId": "PUMP-ASSY",
+        "childNodeId": "LUBRICANT",
+        "edgeType": "CONSUMES",
+        "quantity": 0.5,
+        "unitOfMeasure": "L",
+        "sequence": 30,
+        "effectivity": []
+      }
+    ],
+    "substitutes": []
+  }
+}

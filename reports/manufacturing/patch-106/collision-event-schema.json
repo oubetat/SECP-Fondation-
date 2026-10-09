@@ -1,0 +1,50 @@
+{
+  "type": "object",
+  "properties": {
+    "eventId": {
+      "type": "string"
+    },
+    "toolpathId": {
+      "type": "string"
+    },
+    "segmentId": {
+      "type": "string"
+    },
+    "sampleIndex": {
+      "type": "integer"
+    },
+    "objectA": {
+      "type": "object"
+    },
+    "objectB": {
+      "type": "object"
+    },
+    "classification": {
+      "type": "string"
+    },
+    "severity": {
+      "type": "string"
+    },
+    "minimumDistance": {
+      "type": "number"
+    },
+    "penetrationDepth": {
+      "type": "number"
+    },
+    "location": {
+      "type": "object"
+    },
+    "machineState": {
+      "type": "object"
+    }
+  },
+  "required": [
+    "eventId",
+    "toolpathId",
+    "classification",
+    "severity",
+    "minimumDistance",
+    "location",
+    "machineState"
+  ]
+}

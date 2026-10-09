@@ -1,0 +1,79 @@
+{
+  "missionId": "COLLISION-ENGINE-P6-PRODUCTION-AUTHORITY-001",
+  "generatedAt": "2026-10-03T07:50:58.303Z",
+  "verdict": "P6_CALLPATH_FULLY_VERIFIED",
+  "traces": [
+    {
+      "domain": "CAM",
+      "entryPoint": "CollisionDetectionEngine.verifyToolpath",
+      "providerId": "EXACT_NARROW_PHASE_PROVIDER_P1",
+      "designRationale": "CAM uses exact narrow-phase for mesh overlap; swept kinematics delegated to CAM_FIVE_AXIS provider",
+      "executionId": "EXEC_COL_9pfv3gk5x_1791013858292",
+      "resultId": "EXEC_COL_9pfv3gk5x_1791013858292",
+      "documentId": "REV-A",
+      "revisionId": "1",
+      "geometryId": "GEO-REV-A",
+      "snapshotId": "SNAP-CAM",
+      "classification": "NO_COLLISION",
+      "status": "NO_COLLISION",
+      "provenSafe": true,
+      "verificationState": "PROVEN_SAFE"
+    },
+    {
+      "domain": "5-Axis",
+      "executionId": "EXEC_COL_ovausv3fz_1791013858298",
+      "resultId": "EXEC_COL_ovausv3fz_1791013858298",
+      "providerId": "CAM_FIVE_AXIS_COLLISION_PROVIDER",
+      "documentId": "5AXIS_SEG_0",
+      "revisionId": "1",
+      "geometryId": "GEO-5AXIS_SEG_0",
+      "snapshotId": "SNAP-5AXIS",
+      "classification": "NO_COLLISION",
+      "status": "NO_COLLISION",
+      "provenSafe": true,
+      "verificationState": "PROVEN_SAFE"
+    },
+    {
+      "domain": "Machine Simulation",
+      "executionId": "EXEC_COL_b7at273al_1791013858301",
+      "resultId": "EXEC_COL_b7at273al_1791013858301",
+      "providerId": "MACHINE_SIMULATION_COLLISION_PROVIDER",
+      "documentId": "MACHINE_SIM_BLOCK_0",
+      "revisionId": "1",
+      "geometryId": "GEO-MACHINE_SIM_BLOCK_0",
+      "snapshotId": "SNAP-MACH",
+      "classification": "NO_COLLISION",
+      "status": "NO_COLLISION",
+      "provenSafe": true,
+      "verificationState": "PROVEN_SAFE"
+    },
+    {
+      "domain": "Assembly",
+      "executionId": "EXEC_COL_4qatb1uye_1791013858302",
+      "resultId": "EXEC_COL_4qatb1uye_1791013858302",
+      "providerId": "ASSEMBLY_BREP_COLLISION_PROVIDER",
+      "documentId": "INTERFERENCE_ENGINE_JOB",
+      "revisionId": "1",
+      "geometryId": "GEO-INTERFERENCE_ENGINE_JOB",
+      "snapshotId": "SNAP-ASM",
+      "classification": "NO_COLLISION",
+      "status": "NO_COLLISION",
+      "provenSafe": true,
+      "verificationState": "PROVEN_SAFE"
+    },
+    {
+      "domain": "Kinematics",
+      "executionId": "EXEC_COL_exh4g2v3u_1791013858303",
+      "resultId": "EXEC_COL_exh4g2v3u_1791013858303",
+      "providerId": "KINEMATICS_COLLISION_PROVIDER",
+      "documentId": "KINEMATIC_POINT_0",
+      "revisionId": "1",
+      "geometryId": "GEO-KINEMATIC_POINT_0",
+      "snapshotId": "SNAP-KIN",
+      "classification": "NO_COLLISION",
+      "status": "NO_COLLISION",
+      "provenSafe": false,
+      "verificationState": "BLOCKED"
+    }
+  ]
+}

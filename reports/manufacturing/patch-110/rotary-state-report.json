@@ -1,0 +1,26 @@
+{
+  "A": {
+    "axisName": "A",
+    "commandedAngleDeg": 20,
+    "actualAngleDeg": 19.999488423959892,
+    "angularVelocityDegS": 10,
+    "angularAccelerationDegS2": 0,
+    "trackingErrorDeg": -0.000511576040107542,
+    "wrapState": 0,
+    "limitState": "NORMAL",
+    "timestamp": 1787297983974,
+    "provenance": "MEASURED"
+  },
+  "C": {
+    "axisName": "C",
+    "commandedAngleDeg": 120,
+    "actualAngleDeg": 119.99933674408773,
+    "angularVelocityDegS": 20,
+    "angularAccelerationDegS2": 0,
+    "trackingErrorDeg": -0.0006632559122721204,
+    "wrapState": 0,
+    "limitState": "NORMAL",
+    "timestamp": 1787297983974,
+    "provenance": "MEASURED"
+  }
+}

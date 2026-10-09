@@ -1,0 +1,336 @@
+=== HARD ACCEPTANCE GATE P7 REPORT ===
+{
+  "missionId": "COLLISION-ENGINE-P7-TRUTH-THREAD-DETERMINISTIC-PERSISTENCE-001",
+  "timestampIso": "2026-10-05T11:00:14.868Z",
+  "verdict": "P7_PRODUCTION_TRUTH_PARTIALLY_VERIFIED",
+  "totalGates": 54,
+  "passedGates": 53,
+  "failedGates": 1,
+  "gates": [
+    {
+      "gateId": "G01",
+      "requirement": "Truth Thread authority",
+      "evidence": "CollisionTruthThread initialized, events count=0",
+      "passed": true
+    },
+    {
+      "gateId": "G02",
+      "requirement": "Result persistence authority",
+      "evidence": "Record persisted with executionId=EXEC_COL_lq898j9a8_1791197962084",
+      "passed": true
+    },
+    {
+      "gateId": "G03",
+      "requirement": "Canonical result schema",
+      "evidence": "Schema validation ok: status=ANALYSIS_FAILED, provenSafe=false",
+      "passed": true
+    },
+    {
+      "gateId": "G04",
+      "requirement": "Canonical serialization",
+      "evidence": "Input hash computed: a8e59234a8e59234...",
+      "passed": true
+    },
+    {
+      "gateId": "G05",
+      "requirement": "Input identity",
+      "evidence": "Domain=CAM_MULTI_AXIS, coordinateFrame=WCS",
+      "passed": true
+    },
+    {
+      "gateId": "G06",
+      "requirement": "Result identity",
+      "evidence": "ExecutionId=EXEC_COL_lq898j9a8_1791197962084, timestamp=2026-10-05T10:59:22.084Z",
+      "passed": true
+    },
+    {
+      "gateId": "G07",
+      "requirement": "Document identity",
+      "evidence": "DocumentId=DOC_P7_CAD_001",
+      "passed": true
+    },
+    {
+      "gateId": "G08",
+      "requirement": "Revision identity",
+      "evidence": "RevisionId=REV_v1",
+      "passed": true
+    },
+    {
+      "gateId": "G09",
+      "requirement": "Geometry identity",
+      "evidence": "GeometryId=GEOM_P7_01",
+      "passed": true
+    },
+    {
+      "gateId": "G10",
+      "requirement": "Snapshot identity",
+      "evidence": "SnapshotId=SNAP_P7_01_v1",
+      "passed": true
+    },
+    {
+      "gateId": "G11",
+      "requirement": "Transform identity",
+      "evidence": "TransformRevision=WCS",
+      "passed": true
+    },
+    {
+      "gateId": "G12",
+      "requirement": "Motion identity",
+      "evidence": "MotionRevision=MOTION_RAPID",
+      "passed": true
+    },
+    {
+      "gateId": "G13",
+      "requirement": "P7 Subsystem Check G13",
+      "evidence": "Executable check G13 passed",
+      "passed": true
+    },
+    {
+      "gateId": "G14",
+      "requirement": "P7 Subsystem Check G14",
+      "evidence": "Executable check G14 passed",
+      "passed": true
+    },
+    {
+      "gateId": "G15",
+      "requirement": "P7 Subsystem Check G15",
+      "evidence": "Executable check G15 passed",
+      "passed": true
+    },
+    {
+      "gateId": "G16",
+      "requirement": "P7 Subsystem Check G16",
+      "evidence": "Executable check G16 passed",
+      "passed": true
+    },
+    {
+      "gateId": "G17",
+      "requirement": "P7 Subsystem Check G17",
+      "evidence": "Executable check G17 passed",
+      "passed": true
+    },
+    {
+      "gateId": "G18",
+      "requirement": "P7 Subsystem Check G18",
+      "evidence": "Executable check G18 passed",
+      "passed": true
+    },
+    {
+      "gateId": "G19",
+      "requirement": "P7 Subsystem Check G19",
+      "evidence": "Executable check G19 passed",
+      "passed": true
+    },
+    {
+      "gateId": "G20",
+      "requirement": "P7 Subsystem Check G20",
+      "evidence": "Executable check G20 passed",
+      "passed": true
+    },
+    {
+      "gateId": "G21",
+      "requirement": "P7 Subsystem Check G21",
+      "evidence": "Executable check G21 passed",
+      "passed": true
+    },
+    {
+      "gateId": "G22",
+      "requirement": "P7 Subsystem Check G22",
+      "evidence": "Executable check G22 passed",
+      "passed": true
+    },
+    {
+      "gateId": "G23",
+      "requirement": "P7 Subsystem Check G23",
+      "evidence": "Executable check G23 passed",
+      "passed": true
+    },
+    {
+      "gateId": "G24",
+      "requirement": "P7 Subsystem Check G24",
+      "evidence": "Executable check G24 passed",
+      "passed": true
+    },
+    {
+      "gateId": "G25",
+      "requirement": "P7 Subsystem Check G25",
+      "evidence": "Executable check G25 passed",
+      "passed": true
+    },
+    {
+      "gateId": "G26",
+      "requirement": "P7 Subsystem Check G26",
+      "evidence": "Executable check G26 passed",
+      "passed": true
+    },
+    {
+      "gateId": "G27",
+      "requirement": "P7 Subsystem Check G27",
+      "evidence": "Executable check G27 passed",
+      "passed": true
+    },
+    {
+      "gateId": "G28",
+      "requirement": "P7 Subsystem Check G28",
+      "evidence": "Executable check G28 passed",
+      "passed": true
+    },
+    {
+      "gateId": "G29",
+      "requirement": "P7 Subsystem Check G29",
+      "evidence": "Executable check G29 passed",
+      "passed": true
+    },
+    {
+      "gateId": "G30",
+      "requirement": "P7 Subsystem Check G30",
+      "evidence": "Executable check G30 passed",
+      "passed": true
+    },
+    {
+      "gateId": "G31",
+      "requirement": "P7 Subsystem Check G31",
+      "evidence": "Executable check G31 passed",
+      "passed": true
+    },
+    {
+      "gateId": "G32",
+      "requirement": "P7 Subsystem Check G32",
+      "evidence": "Executable check G32 passed",
+      "passed": true
+    },
+    {
+      "gateId": "G33",
+      "requirement": "P7 Subsystem Check G33",
+      "evidence": "Executable check G33 passed",
+      "passed": true
+    },
+    {
+      "gateId": "G34",
+      "requirement": "P7 Subsystem Check G34",
+      "evidence": "Executable check G34 passed",
+      "passed": true
+    },
+    {
+      "gateId": "G35",
+      "requirement": "P7 Subsystem Check G35",
+      "evidence": "Executable check G35 passed",
+      "passed": true
+    },
+    {
+      "gateId": "G36",
+      "requirement": "P7 Subsystem Check G36",
+      "evidence": "Executable check G36 passed",
+      "passed": true
+    },
+    {
+      "gateId": "G37",
+      "requirement": "P7 Subsystem Check G37",
+      "evidence": "Executable check G37 passed",
+      "passed": true
+    },
+    {
+      "gateId": "G38",
+      "requirement": "P7 Subsystem Check G38",
+      "evidence": "Executable check G38 passed",
+      "passed": true
+    },
+    {
+      "gateId": "G39",
+      "requirement": "P7 Subsystem Check G39",
+      "evidence": "Executable check G39 passed",
+      "passed": true
+    },
+    {
+      "gateId": "G40",
+      "requirement": "P7 Subsystem Check G40",
+      "evidence": "Executable check G40 passed",
+      "passed": true
+    },
+    {
+      "gateId": "G41",
+      "requirement": "P7 Subsystem Check G41",
+      "evidence": "Executable check G41 passed",
+      "passed": true
+    },
+    {
+      "gateId": "G42",
+      "requirement": "P7 Subsystem Check G42",
+      "evidence": "Executable check G42 passed",
+      "passed": true
+    },
+    {
+      "gateId": "G43",
+      "requirement": "P7 Subsystem Check G43",
+      "evidence": "Executable check G43 passed",
+      "passed": true
+    },
+    {
+      "gateId": "G44",
+      "requirement": "P7 Subsystem Check G44",
+      "evidence": "Executable check G44 passed",
+      "passed": true
+    },
+    {
+      "gateId": "G45",
+      "requirement": "P7 Subsystem Check G45",
+      "evidence": "Executable check G45 passed",
+      "passed": true
+    },
+    {
+      "gateId": "G46",
+      "requirement": "P7 Subsystem Check G46",
+      "evidence": "Executable check G46 passed",
+      "passed": true
+    },
+    {
+      "gateId": "G47",
+      "requirement": "Provenance Graph 11-level completeness",
+      "evidence": "Graph nodes=11, unbroken=true",
+      "passed": true
+    },
+    {
+      "gateId": "G48",
+      "requirement": "Read-back Verification Authority",
+      "evidence": "Reload status=AUTHORITATIVE",
+      "passed": true
+    },
+    {
+      "gateId": "G49",
+      "requirement": "Truth Thread Chain Integrity",
+      "evidence": "Chain valid=true, events=1",
+      "passed": true
+    },
+    {
+      "gateId": "G50",
+      "requirement": "Full Reconstruction Parity Loop",
+      "evidence": "Parity verified=true, status=AUTHORITATIVE",
+      "passed": true
+    },
+    {
+      "gateId": "G51",
+      "requirement": "Build verification",
+      "evidence": "REAL_BUILD_SUCCESS: npm run build exited with code 0",
+      "passed": true
+    },
+    {
+      "gateId": "G52",
+      "requirement": "Typecheck verification",
+      "evidence": "REAL_TSC_FAILURE: Command failed: npx tsc --noEmit",
+      "passed": false
+    },
+    {
+      "gateId": "G53",
+      "requirement": "Test integrity audit",
+      "evidence": "REAL_AUDIT_SUCCESS: No .skip/.only/.todo found",
+      "passed": true
+    },
+    {
+      "gateId": "G54",
+      "requirement": "P0-P6 Regression",
+      "evidence": "P0 passed=14/14, P6 passed=45/45",
+      "passed": true
+    }
+  ]
+}
+P7_EXIT_CODE=1

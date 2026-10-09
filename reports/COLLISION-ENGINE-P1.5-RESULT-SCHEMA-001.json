@@ -1,0 +1,48 @@
+{
+  "missionId": "COLLISION-ENGINE-P1.5-AUTHORITY-INTEGRATION-FORENSICS-001",
+  "artifactType": "RESULT_SCHEMA_AUDIT",
+  "timestamp": "2026-10-01T01:48:00.000Z",
+  "canonicalSchema": {
+    "name": "CanonicalCollisionResult",
+    "file": "src/engine/collision-authority/types.ts:109-140",
+    "statusEnum": "CollisionStatus (CLEAR | CONTACT | PENETRATION | CLEARANCE_VIOLATION | GOUGE_DETECTED | ANALYSIS_FAILED | NOT_EVALUATED)",
+    "fields": ["status", "severity", "provenSafe", "metrics", "contacts", "provenance", "executionMetadata", "witnessGeometries"]
+  },
+  "fragmentedLegacySchemas": [
+    {
+      "schemaName": "CollisionReport",
+      "file": "src/engine/cam/collision/CollisionTypes.ts:133-149",
+      "fields": ["reportId", "jobId", "state", "hasCollision", "totalCollisions", "minClearanceMm", "maxPenetrationMm", "incidents", "timeline", "provenSafe"]
+    },
+    {
+      "schemaName": "CollisionDetectionReport",
+      "file": "src/engine/manufacturing/collision/types.ts:89-106",
+      "fields": ["reportId", "verdict", "collisionEvents", "minClearance", "broadPhasePruned", "narrowPhaseChecked", "samplingCoverage", "fingerprint", "provenSafe"]
+    },
+    {
+      "schemaName": "ClashAssemblyReport",
+      "file": "src/engine/assembly/clash/ClashTypes.ts:79-94",
+      "fields": ["assemblyId", "verdict", "analysisMode", "totalEvaluatedPairs", "candidatePairsCount", "clashCount", "clearanceViolationCount", "results", "determinismHash"]
+    },
+    {
+      "schemaName": "AssemblyInterferenceReport",
+      "file": "src/engine/assembly/AssemblyConstraintTypes.ts:40-48",
+      "fields": ["status", "clashes", "totalClashVolumeMm3", "evaluatedPairsCount", "timestamp", "kernelUsed"]
+    },
+    {
+      "schemaName": "GlobalAssemblyInterferenceReport",
+      "file": "src/engine/cad-kernel/document/AssemblyInterferenceAnalyzer.ts:59-70",
+      "fields": ["totalLeafOccurrences", "evaluatedPairs", "hardCollisionsCount", "touchContactsCount", "clearanceViolationsCount", "pairwiseResults", "timestamp"]
+    },
+    {
+      "schemaName": "CollisionRecord[]",
+      "file": "src/engine/cam/machine-sim/MachineSimulationTypes.ts:38-51",
+      "fields": ["collisionId", "type", "severity", "entityA", "entityB", "location", "penetrationDepthMm", "clearanceMm"]
+    },
+    {
+      "schemaName": "ClearanceResult",
+      "file": "src/engine/kinematics/KinematicTypes.ts:60-66",
+      "fields": ["status", "minClearance", "minClearancePoseIndex", "violations"]
+    }
+  ]
+}

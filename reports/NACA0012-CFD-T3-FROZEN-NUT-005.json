@@ -1,0 +1,25 @@
+{
+  "missionId": "NACA0012-VV-CAUSAL-OPERATOR-CLOSURE-005",
+  "timestamp": "2026-09-30T09:08:06.481Z",
+  "experiments": {
+    "T3A_Normal": {
+      "nutCoupling": "nut(n) active in momentum assembly",
+      "continuityL1": 0.000009371482797070212,
+      "momentumLinf": 0.000006743571046986647,
+      "velocityCorrection": 0.022336753681882447,
+      "forceStability": true,
+      "cl": 0.14765775601480574,
+      "cd": 0.022910151287512916
+    },
+    "T3B_Lagged": {
+      "nutCoupling": "nut(n-1) lagged in momentum assembly",
+      "continuityL1": 0.00001202809313016744,
+      "momentumLinf": 0.00009595681856602532,
+      "velocityCorrection": 0.0053543475693055035,
+      "forceStability": false,
+      "cl": 0.2468206597550812,
+      "cd": 0.05669090785486243
+    }
+  },
+  "deduction": "When nut is lagged (T3-B), DU_predictor is altered directly, proving that the outer momentum step is quantitatively coupled to the turbulence eddy viscosity field."
+}

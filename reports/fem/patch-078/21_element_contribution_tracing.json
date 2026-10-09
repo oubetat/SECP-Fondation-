@@ -1,0 +1,183 @@
+{
+  "totalTracedNodes": 31,
+  "sampleTraces": [
+    {
+      "key": "0,0",
+      "trace": {
+        "globalRow": 0,
+        "globalCol": 0,
+        "totalValue": 200000000,
+        "contributions": [
+          {
+            "elementId": "BAR1D_0",
+            "localRow": 0,
+            "localCol": 0,
+            "value": 200000000
+          }
+        ]
+      }
+    },
+    {
+      "key": "0,1",
+      "trace": {
+        "globalRow": 0,
+        "globalCol": 1,
+        "totalValue": -200000000,
+        "contributions": [
+          {
+            "elementId": "BAR1D_0",
+            "localRow": 0,
+            "localCol": 1,
+            "value": -200000000
+          }
+        ]
+      }
+    },
+    {
+      "key": "1,0",
+      "trace": {
+        "globalRow": 1,
+        "globalCol": 0,
+        "totalValue": -200000000,
+        "contributions": [
+          {
+            "elementId": "BAR1D_0",
+            "localRow": 1,
+            "localCol": 0,
+            "value": -200000000
+          }
+        ]
+      }
+    },
+    {
+      "key": "1,1",
+      "trace": {
+        "globalRow": 1,
+        "globalCol": 1,
+        "totalValue": 400000000,
+        "contributions": [
+          {
+            "elementId": "BAR1D_0",
+            "localRow": 1,
+            "localCol": 1,
+            "value": 200000000
+          },
+          {
+            "elementId": "BAR1D_1",
+            "localRow": 0,
+            "localCol": 0,
+            "value": 200000000
+          }
+        ]
+      }
+    },
+    {
+      "key": "1,2",
+      "trace": {
+        "globalRow": 1,
+        "globalCol": 2,
+        "totalValue": -200000000,
+        "contributions": [
+          {
+            "elementId": "BAR1D_1",
+            "localRow": 0,
+            "localCol": 1,
+            "value": -200000000
+          }
+        ]
+      }
+    },
+    {
+      "key": "2,1",
+      "trace": {
+        "globalRow": 2,
+        "globalCol": 1,
+        "totalValue": -200000000,
+        "contributions": [
+          {
+            "elementId": "BAR1D_1",
+            "localRow": 1,
+            "localCol": 0,
+            "value": -200000000
+          }
+        ]
+      }
+    },
+    {
+      "key": "2,2",
+      "trace": {
+        "globalRow": 2,
+        "globalCol": 2,
+        "totalValue": 400000000,
+        "contributions": [
+          {
+            "elementId": "BAR1D_1",
+            "localRow": 1,
+            "localCol": 1,
+            "value": 200000000
+          },
+          {
+            "elementId": "BAR1D_2",
+            "localRow": 0,
+            "localCol": 0,
+            "value": 200000000
+          }
+        ]
+      }
+    },
+    {
+      "key": "2,3",
+      "trace": {
+        "globalRow": 2,
+        "globalCol": 3,
+        "totalValue": -200000000,
+        "contributions": [
+          {
+            "elementId": "BAR1D_2",
+            "localRow": 0,
+            "localCol": 1,
+            "value": -200000000
+          }
+        ]
+      }
+    },
+    {
+      "key": "3,2",
+      "trace": {
+        "globalRow": 3,
+        "globalCol": 2,
+        "totalValue": -200000000,
+        "contributions": [
+          {
+            "elementId": "BAR1D_2",
+            "localRow": 1,
+            "localCol": 0,
+            "value": -200000000
+          }
+        ]
+      }
+    },
+    {
+      "key": "3,3",
+      "trace": {
+        "globalRow": 3,
+        "globalCol": 3,
+        "totalValue": 400000000,
+        "contributions": [
+          {
+            "elementId": "BAR1D_2",
+            "localRow": 1,
+            "localCol": 1,
+            "value": 200000000
+          },
+          {
+            "elementId": "BAR1D_3",
+            "localRow": 0,
+            "localCol": 0,
+            "value": 200000000
+          }
+        ]
+      }
+    }
+  ]
+}

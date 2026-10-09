@@ -1,0 +1,47 @@
+{
+  "status": "PASS",
+  "suiteResults": [
+    {
+      "testId": "ADV-MATH-001",
+      "category": "TRANSFORMS",
+      "description": "Detect non-orthogonal rotation matrix (scales and shears)",
+      "passed": true,
+      "details": "Validator result for non-orthogonal matrix: false"
+    },
+    {
+      "testId": "ADV-MATH-002",
+      "category": "TRANSFORMS",
+      "description": "Rigid transform inversion numerical stability",
+      "passed": true,
+      "details": "Inversion diagonal element: 1"
+    },
+    {
+      "testId": "ADV-FRAME-001",
+      "category": "TRANSFORMS",
+      "description": "Identify and reject circular coordinate frame loops",
+      "passed": true,
+      "details": "Detected errors: Circular frame definition detected starting from frame 'A'"
+    },
+    {
+      "testId": "ADV-FRAME-002",
+      "category": "TRANSFORMS",
+      "description": "Identify multi-path transform disagreement (FRAME_INCONSISTENCY)",
+      "passed": true,
+      "details": "Error message: FRAME_INCONSISTENCY: Multiple transform paths between 'A' and 'C' yield different results"
+    },
+    {
+      "testId": "ADV-IK-001",
+      "category": "IK",
+      "description": "Detect and flag joint travel limit overflow in inverse solver",
+      "passed": true,
+      "details": "Solutions count: 1, limits state of first solution: LIMIT_VIOLATION"
+    },
+    {
+      "testId": "ADV-MACH-001",
+      "category": "MACHINE",
+      "description": "Identify and reject inverted joint travel limits",
+      "passed": true,
+      "details": "Detected errors: Inverted travel limits on axis X"
+    }
+  ]
+}

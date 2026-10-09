@@ -1,0 +1,17 @@
+{
+  "contractId": "CONTRACT-COLLISION-PERSISTENCE-001",
+  "name": "Persistence & Document Serialization Contract",
+  "version": "1.0.0",
+  "serializationRules": [
+    {
+      "entity": "CollisionReport",
+      "target": "Embedded within DocumentState.camState.collisionReports and DocumentState.assemblyState.interferenceReports",
+      "format": "Canonical JSON with lexicographically sorted keys and sorted incident arrays (sorted by segmentIndex, then entityIdA, entityIdB)",
+      "guarantee": "Deterministic byte-identical serialization across saves and reloads."
+    },
+    {
+      "entity": "ReconstructionParity",
+      "rule": "Upon document reload, collision reports are deserialized without triggering re-computation. If underlying geometry hash changes, collision state is marked 'STALE_NEEDS_REVERIFICATION'."
+    }
+  ]
+}

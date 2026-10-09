@@ -1,0 +1,33 @@
+{
+  "title": "ADSE-P0 Evidence Index",
+  "auditDate": "2026-09-27T04:32:00Z",
+  "subsystem": "ADSE Systems Engineering Capability Layer",
+  "authority": "SECP Core Execution Authority",
+  "evidenceIndex": [
+    {
+      "evidenceType": "REPRESENTATIVE_PATH_EXECUTION",
+      "capabilityId": "ADSE-AERO-FLOW-001",
+      "systemId": "SYS-AERO-001",
+      "requirementId": "REQ-MACH-SHOCK-001",
+      "status": "VERIFIED",
+      "executionGates": [
+        "DECLARE",
+        "IMPLEMENT",
+        "EXECUTE",
+        "CORE_BIND",
+        "CANONICAL_BIND",
+        "VERIFY",
+        "EVIDENCE",
+        "PERSIST",
+        "BENCHMARK",
+        "PUBLISH"
+      ],
+      "merkleLeafSigned": true
+    },
+    {
+      "evidenceType": "AI_GOVERNANCE_BOUNDARIES",
+      "status": "VERIFIED",
+      "actionRestrictionRule": "AI restricted to advisory actions; silent canonical writing blocked"
+    }
+  ]
+}

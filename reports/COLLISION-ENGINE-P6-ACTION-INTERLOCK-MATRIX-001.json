@@ -1,0 +1,78 @@
+{
+  "reportId": "COLLISION-ENGINE-P6-ACTION-INTERLOCK-MATRIX-001",
+  "timestampIso": "2026-10-02T08:17:49.207Z",
+  "interlockMatrix": [
+    {
+      "actionId": "GENERATE_TOOLPATH",
+      "actionName": "Generate CAM Toolpath",
+      "requiresCollisionQualification": true,
+      "requiredState": "PROVEN_SAFE",
+      "blockOnStates": [
+        "FAILED",
+        "STALE",
+        "INVALIDATED",
+        "UNKNOWN",
+        "SAMPLED"
+      ],
+      "description": "Toolpath generation requires proven safe cutter clearance."
+    },
+    {
+      "actionId": "RUN_SIMULATION",
+      "actionName": "Run Machine NC Simulation",
+      "requiresCollisionQualification": true,
+      "requiredState": "VERIFIED",
+      "blockOnStates": [
+        "FAILED",
+        "STALE",
+        "INVALIDATED"
+      ],
+      "description": "NC simulation requires current verified collision status."
+    },
+    {
+      "actionId": "APPROVE_COLLISION",
+      "actionName": "Approve Collision Clearance",
+      "requiresCollisionQualification": true,
+      "requiredState": "PROVEN_SAFE",
+      "blockOnStates": [
+        "FAILED",
+        "STALE",
+        "INVALIDATED",
+        "UNKNOWN",
+        "SAMPLED",
+        "UNVERIFIED"
+      ],
+      "description": "Formal collision sign-off requires proven safe status."
+    },
+    {
+      "actionId": "RELEASE_PUBLISH",
+      "actionName": "Release Engineering Revision",
+      "requiresCollisionQualification": true,
+      "requiredState": "PROVEN_SAFE",
+      "blockOnStates": [
+        "FAILED",
+        "STALE",
+        "INVALIDATED",
+        "UNKNOWN",
+        "SAMPLED"
+      ],
+      "description": "Production release requires non-stale proven safe clearance."
+    },
+    {
+      "actionId": "EXPORT_STEP",
+      "actionName": "Export STEP Geometry",
+      "requiresCollisionQualification": false,
+      "requiredState": "UNVERIFIED",
+      "blockOnStates": [],
+      "description": "Geometry export is unblocked by collision interlock unless workflow restricted."
+    },
+    {
+      "actionId": "SAVE_DOCUMENT",
+      "actionName": "Save Engineering Document",
+      "requiresCollisionQualification": false,
+      "requiredState": "UNVERIFIED",
+      "blockOnStates": [],
+      "description": "Document saving is never blocked by collision safety interlock."
+    }
+  ],
+  "verdict": "PASSED"
+}

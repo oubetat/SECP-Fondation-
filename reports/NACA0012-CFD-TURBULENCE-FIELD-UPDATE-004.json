@@ -1,0 +1,151 @@
+{
+  "missionId": "NACA0012-VV-CONVERGENCE-CONTRACT-SEMANTIC-REPAIR-004",
+  "timestamp": "2026-09-30T09:00:09.684Z",
+  "definitions": {
+    "K_LINEAR_RESIDUAL": {
+      "definition": "||A_k k - b_k|| / ||b_k|| from Gauss-Seidel linear solver",
+      "source": "SST_K_LINEAR_SOLVER",
+      "threshold": 0.001,
+      "role": "Measures inner linear solver convergence on the discrete algebraic system A_k k = b_k"
+    },
+    "K_FIELD_UPDATE": {
+      "definition": "max_i |k_i^(n+1) - k_i^n| / max(mean(k), k_epsilon)",
+      "source": "SST_K_FIELD_OUTER_DELTA",
+      "threshold": 0.01,
+      "role": "Measures outer SIMPLE iteration field variation of turbulent kinetic energy k"
+    },
+    "OMEGA_LINEAR_RESIDUAL": {
+      "definition": "||A_omega omega - b_omega|| / ||b_omega|| from Gauss-Seidel linear solver",
+      "source": "SST_OMEGA_LINEAR_SOLVER",
+      "threshold": 0.001,
+      "role": "Measures inner linear solver convergence on the discrete algebraic system A_omega omega = b_omega"
+    },
+    "OMEGA_FIELD_UPDATE": {
+      "definition": "max_i |omega_i^(n+1) - omega_i^n| / max(mean(omega), omega_epsilon)",
+      "source": "SST_OMEGA_FIELD_OUTER_DELTA",
+      "threshold": 0.01,
+      "role": "Measures outer SIMPLE iteration field variation of specific dissipation rate omega"
+    },
+    "NUT_FIELD_UPDATE": {
+      "definition": "max_i |nut_i^(n+1) - nut_i^n| / max(mean(nut), nut_epsilon)",
+      "source": "SST_NUT_FIELD_OUTER_DELTA",
+      "threshold": 0.01,
+      "role": "Measures outer SIMPLE iteration field variation of turbulent viscosity nut"
+    }
+  },
+  "finalIterationMetrics": {
+    "kLinearResidual": 0.9015881227332181,
+    "omegaLinearResidual": 0.0003335253198276163,
+    "kFieldUpdate": 0,
+    "omegaFieldUpdate": 3215.2865971192778,
+    "nutFieldUpdate": 8.578497539570876
+  },
+  "evolutionHistory": [
+    {
+      "iteration": 1,
+      "kMin": 0.0012093941884386168,
+      "kMax": 0.003748891895589414,
+      "omegaMin": 0.04362402940050072,
+      "omegaMax": 0.07985172199201729,
+      "nutMin": 0.04087849410482748,
+      "nutMax": 0.04087849410482748,
+      "maxDeltaK": 0.0025406058115613837,
+      "maxDeltaOmega": 0.03623554122449176,
+      "maxDeltaNut": 0.016644354616354634,
+      "maxRelDeltaNut": 0.289352057250001
+    },
+    {
+      "iteration": 10,
+      "kMin": 3.7006896619462354e-8,
+      "kMax": 0.04247735252391773,
+      "omegaMin": 0.001815961804865349,
+      "omegaMax": 0.6218285291894098,
+      "nutMin": 0.0016506150108036605,
+      "nutMax": 0.0036088727382330246,
+      "maxDeltaK": 0.022731363516416137,
+      "maxDeltaOmega": 0.31234805408178656,
+      "maxDeltaNut": 0.0010966096876865229,
+      "maxRelDeltaNut": 0.29990958865343004
+    },
+    {
+      "iteration": 30,
+      "kMin": 1e-10,
+      "kMax": 0.1819350716115586,
+      "omegaMin": 0.000009735517659490837,
+      "omegaMax": 5.281430437319403,
+      "nutMin": 0.0000014432061182490514,
+      "nutMax": 0.0020429171759087233,
+      "maxDeltaK": 0.0349336591363872,
+      "maxDeltaOmega": 0.9935785438550866,
+      "maxDeltaNut": 0.00048221512536986643,
+      "maxRelDeltaNut": 1.689151741163533
+    },
+    {
+      "iteration": 50,
+      "kMin": 1e-10,
+      "kMax": 0.03282419569075436,
+      "omegaMin": 4.846162705586636e-8,
+      "omegaMax": 2.9257896293564847,
+      "nutMin": 8.307718735127492e-9,
+      "nutMax": 0.002041667664476331,
+      "maxDeltaK": 0.00605003737637376,
+      "maxDeltaOmega": 1.0481578599941361,
+      "maxDeltaNut": 0.0004055575911292696,
+      "maxRelDeltaNut": 1.6738443731451254
+    },
+    {
+      "iteration": 80,
+      "kMin": 1e-10,
+      "kMax": 0.006866795435462322,
+      "omegaMin": 1e-10,
+      "omegaMax": 1.1916952970043493,
+      "nutMin": 1.0041615958100366e-10,
+      "nutMax": 0.0020416666666891567,
+      "maxDeltaK": 0.0009401811196025666,
+      "maxDeltaOmega": 0.13783040860427664,
+      "maxDeltaNut": 0.00036689293853784137,
+      "maxRelDeltaNut": 0.7053930477809639
+    },
+    {
+      "iteration": 100,
+      "kMin": 1e-10,
+      "kMax": 0.01143738855846263,
+      "omegaMin": 1e-10,
+      "omegaMax": 1.4232346945266894,
+      "nutMin": 1.0000033206316108e-10,
+      "nutMax": 0.00187528301173582,
+      "maxDeltaK": 0.001094721626455273,
+      "maxDeltaOmega": 1.4232346944266894,
+      "maxDeltaNut": 0.00030776901910192127,
+      "maxRelDeltaNut": 0.2995925707330805
+    },
+    {
+      "iteration": 120,
+      "kMin": 1e-10,
+      "kMax": 1.4539654312563903,
+      "omegaMin": 1e-10,
+      "omegaMax": 6539.60473177089,
+      "nutMin": 1.0000000026496071e-10,
+      "nutMax": 0.001170122772868402,
+      "maxDeltaK": 1.4539654311563903,
+      "maxDeltaOmega": 6539.60473177079,
+      "maxDeltaNut": 0.00021626950998210434,
+      "maxRelDeltaNut": 0.5998905957302626
+    },
+    {
+      "iteration": 150,
+      "kMin": 1e-10,
+      "kMax": 0.0002728879459405015,
+      "omegaMin": 1e-10,
+      "omegaMax": 4642.098891131626,
+      "nutMin": 1.0000000000000596e-10,
+      "nutMax": 0.00010926652447357138,
+      "maxDeltaK": 0,
+      "maxDeltaOmega": 4642.098891131526,
+      "maxDeltaNut": 0.000008578497539570875,
+      "maxRelDeltaNut": 0.34735814776554474,
+      "kLinearResidual": 0.9015881227332181,
+      "omegaLinearResidual": 0.0003335253198276163
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "staleCount": 11,
+  "requiresRegeneration": true,
+  "affectedArtifacts": [
+    "FEAT_MODEL_01",
+    "MAT_AL7075_T6",
+    "TOOL_ENDMILL_10MM",
+    "MACH_DMG_50",
+    "OP_AERO_POCKET_01",
+    "POST_ENGINE_TNC640",
+    "TWIN_EXEC_01",
+    "TOOLPATH_AERO_01",
+    "NC_O1001",
+    "SIM_AERO_01",
+    "VERIF_NC_01"
+  ]
+}

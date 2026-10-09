@@ -1,0 +1,7 @@
+{
+  "name": "LOADING_UNLOADING_CYCLE",
+  "passed": true,
+  "maxError": 0,
+  "tolerance": 0.000001,
+  "details": "Elastic unloading slope E verified with zero additional plastic strain."
+}

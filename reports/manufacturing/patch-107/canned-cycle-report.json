@@ -1,0 +1,8 @@
+{
+  "supportedCycles": [
+    "DRILL",
+    "PECK_DRILL",
+    "TAP",
+    "BORE"
+  ]
+}

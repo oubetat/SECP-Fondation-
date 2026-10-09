@@ -1,0 +1,52 @@
+[
+  {
+    "elementId": "e_BAR2",
+    "elementTypeId": "BAR2",
+    "formulationHash": "BAR2_BAR2-LIN-ELASTIC-v1",
+    "coordinatesHash": "COORDS_2pts_11",
+    "materialHash": "MAT_27",
+    "integrationHash": "RULE_DEFAULT",
+    "matrixHash": "HASH_BAR2",
+    "timestamp": "2026-08-20T07:54:37.187Z"
+  },
+  {
+    "elementId": "e_TRI3",
+    "elementTypeId": "TRI3",
+    "formulationHash": "TRI3_TRI3-CST-v1",
+    "coordinatesHash": "COORDS_3pts_19",
+    "materialHash": "MAT_27",
+    "integrationHash": "RULE_DEFAULT",
+    "matrixHash": "HASH_TRI3",
+    "timestamp": "2026-08-20T07:54:37.187Z"
+  },
+  {
+    "elementId": "e_QUAD4",
+    "elementTypeId": "QUAD4",
+    "formulationHash": "QUAD4_QUAD4-ISO-v1",
+    "coordinatesHash": "COORDS_4pts_25",
+    "materialHash": "MAT_27",
+    "integrationHash": "RULE_DEFAULT",
+    "matrixHash": "HASH_QUAD4",
+    "timestamp": "2026-08-20T07:54:37.187Z"
+  },
+  {
+    "elementId": "e_TET4",
+    "elementTypeId": "TET4",
+    "formulationHash": "TET4_TET4-ISO-v1",
+    "coordinatesHash": "COORDS_4pts_33",
+    "materialHash": "MAT_27",
+    "integrationHash": "RULE_DEFAULT",
+    "matrixHash": "HASH_TET4",
+    "timestamp": "2026-08-20T07:54:37.187Z"
+  },
+  {
+    "elementId": "e_HEX8",
+    "elementTypeId": "HEX8",
+    "formulationHash": "HEX8_HEX8-ISO-v1",
+    "coordinatesHash": "COORDS_8pts_65",
+    "materialHash": "MAT_27",
+    "integrationHash": "RULE_DEFAULT",
+    "matrixHash": "HASH_HEX8",
+    "timestamp": "2026-08-20T07:54:37.187Z"
+  }
+]

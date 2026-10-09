@@ -1,0 +1,5 @@
+{
+  "broadPhaseTimeMs": 0.2,
+  "narrowPhaseTimeMs": 0.8,
+  "totalTimeMs": 1
+}

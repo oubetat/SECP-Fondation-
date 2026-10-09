@@ -1,0 +1,16 @@
+{
+  "missionId": "COLLISION-ENGINE-P2-FAIL-CLOSED-HARDENING-001",
+  "artifactType": "EXACTNESS_FAILURE_CONSISTENCY",
+  "timestamp": "2026-10-01T02:08:00.000Z",
+  "mappings": {
+    "ExactNarrowPhaseProvider": "CollisionExactness.EXACT",
+    "AssemblyCollisionProvider": "CollisionExactness.EXACT",
+    "CamFiveAxisCollisionProvider": "CollisionExactness.EXACT",
+    "MachineSimulationCollisionProvider": "CollisionExactness.CONSERVATIVE",
+    "KinematicsCollisionProvider": "CollisionExactness.SAMPLED"
+  },
+  "rulesEnforced": [
+    "SAMPLED + failure -> CollisionExactness.UNSUPPORTED on fail-closed results",
+    "UNSUPPORTED continuous capability -> provenSafe = false static results"
+  ]
+}

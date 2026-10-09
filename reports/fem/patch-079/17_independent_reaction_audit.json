@@ -1,0 +1,19 @@
+{
+  "sumExternalForces": {
+    "fx": 10000,
+    "fy": 0,
+    "fz": 0
+  },
+  "sumReactions": {
+    "rx": -10000,
+    "ry": 0,
+    "rz": 0
+  },
+  "netResidualForces": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "residualForceNorm": 0,
+  "forceBalancePassed": true
+}

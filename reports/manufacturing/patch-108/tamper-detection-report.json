@@ -1,0 +1,5 @@
+{
+  "tamperDetectionActive": true,
+  "fingerprintValidation": "ACTIVE",
+  "status": "TAMPER_PROOF"
+}

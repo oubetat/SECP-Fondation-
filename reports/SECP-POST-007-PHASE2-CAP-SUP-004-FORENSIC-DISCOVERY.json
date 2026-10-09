@@ -1,0 +1,106 @@
+{
+  "contract_id": "SECP-POST-007-PHASE2-CAP-SUP-004-FORENSIC-DISCOVERY",
+  "capability": "CAP-SUP-004",
+  "capability_title": "QIF 3.0 / MBD Closed-Loop Manufacturing Truth",
+  "timestamp": "2026-09-23T10:15:00.000Z",
+  "discovery_status": "COMPLETED",
+  "qif_inventory": {
+    "existing_qif_implementation": {
+      "status": "MISSING",
+      "details": "No QIF XML schemas, parsers, or exporters currently exist in src/engine/."
+    },
+    "existing_xml_schemas": {
+      "status": "MISSING",
+      "details": "No QIF 3.0 ISO 23952 / ANSI QIF 3.0 XML schema definitions or XML serialization logic exist in the repository."
+    },
+    "existing_qif_parser_exporter": {
+      "status": "MISSING",
+      "details": "No dedicated QIF 3.0 Part/Product/Results parser or exporter exists."
+    },
+    "existing_pmi_model": {
+      "status": "PARTIAL",
+      "location": "src/engine/interop/step-ap242/pmi/AP242PmiTypes.ts",
+      "details": "Defines dimensions, datums, GD&T, and surface finishes for AP242, but lacks direct QIF 3.0 XML mappings."
+    },
+    "existing_gdt_model": {
+      "status": "PARTIAL",
+      "location": "src/engine/interop/AP242Types.ts",
+      "details": "Supports POSITION, FLATNESS, PERPENDICULARITY, CONCENTRICITY with MMC/RFS and datum reference frames."
+    },
+    "existing_tolerance_model": {
+      "status": "PARTIAL",
+      "location": "src/engine/quality-metrology/MetrologyTypes.ts",
+      "details": "Handles symmetric, bilateral, and limits tolerances for manufacturing specifications."
+    },
+    "existing_measurement_model": {
+      "status": "PARTIAL",
+      "location": "src/engine/quality-metrology/MetrologyEngine.ts",
+      "details": "Implements touchpoint coordinates, deviation calculations, and measurement records."
+    },
+    "existing_inspection_model": {
+      "status": "PARTIAL",
+      "location": "src/engine/interop/AP242InspectionBridge.ts",
+      "details": "Generates inspection plans from AP242 models with geometry reference association hashes."
+    },
+    "existing_metrology_model": {
+      "status": "PARTIAL",
+      "location": "src/engine/quality-metrology/MetrologyEvaluator.ts",
+      "details": "Models ZEISS CMM probes, laser trackers, digital micrometers, and optical comparators with calibration records."
+    },
+    "existing_feature_identity_system": {
+      "status": "PROVEN",
+      "location": "src/engine/cad-kernel/history/BRepNamingGraph.ts",
+      "details": "Provides persistent topological naming across geometric feature modeling operations."
+    },
+    "existing_persistent_topology_identity": {
+      "status": "PROVEN",
+      "location": "src/engine/cad-kernel/history/PersistentTopology.ts",
+      "details": "Assigns deterministic persistent UUIDs and hashes to vertices, edges, loops, faces, shells, and solids."
+    },
+    "existing_revision_system": {
+      "status": "PROVEN",
+      "location": "src/engine/viewport/RevisionLifecycle.ts",
+      "details": "Tracks design authority revision transitions (REV-A, REV-B) and prevents stale revision overrides."
+    },
+    "existing_provenance_system": {
+      "status": "PROVEN",
+      "location": "src/engine/provenance/ProvenanceGraph.ts",
+      "details": "Maintains immutable acyclic graph of engineering decisions, operations, and signatures."
+    },
+    "existing_evidence_system": {
+      "status": "PROVEN",
+      "location": "src/engine/inspection_twin/InspectionTwinEngine.ts",
+      "details": "Generates cryptographic evidence chains for inspection twins and measurement sessions."
+    },
+    "existing_uncertainty_model": {
+      "status": "PARTIAL",
+      "location": "src/engine/inspection_twin/InspectionIdentityService.ts",
+      "details": "Calculates expanded measurement uncertainty (instrument + environmental) and applies strict guard-banding."
+    },
+    "existing_quality_verdict_engine": {
+      "status": "PROVEN",
+      "location": "src/engine/inspection_twin/InspectionIdentityService.ts",
+      "details": "Evaluates PASS, OUT_OF_TOLERANCE, INDETERMINATE, CALIBRATION_FAILURE, and MEASUREMENT_INVALID verdicts."
+    },
+    "existing_manufacturing_feedback_path": {
+      "status": "PARTIAL",
+      "location": "src/engine/quality-metrology/MetrologyTypes.ts",
+      "details": "Defines ClosedLoopRecommendation for tool offsets and CAD regeneration, but lacks formal QIF closed-loop revision proposals."
+    },
+    "existing_canonical_engineering_document": {
+      "status": "PROVEN",
+      "location": "src/engine/cad-kernel/document/DocumentEvaluator.ts",
+      "details": "Single canonical root for parametric feature trees, B-Rep solids, and PMI specifications."
+    },
+    "existing_ap242_canonical_mappings": {
+      "status": "PROVEN",
+      "location": "src/engine/interop/step-ap242/StepAp242Mapper.ts",
+      "details": "Bidirectional mapping between AP242 STEP Part 21 entities and SECP B-Rep solids/PMI."
+    },
+    "existing_step_identity_mappings": {
+      "status": "PROVEN",
+      "location": "src/engine/interop/step-ap242/StepAp242Parser.ts",
+      "details": "Maps STEP entity #IDs to persistent topological IDs."
+    }
+  }
+}

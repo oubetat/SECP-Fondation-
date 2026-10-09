@@ -1,0 +1,32 @@
+[
+  {
+    "meshType": "1D Bar (50 elems)",
+    "numNodes": 51,
+    "totalDOFs": 51,
+    "numElements": 50,
+    "sparseNNZ": 151,
+    "sparseDensity": 0.058054594386774315,
+    "sparseAssemblyTimeMs": 0.30119999999999436,
+    "denseAssemblyTimeMs": 0.03498899999999594,
+    "sparseMemoryBytes": 2020,
+    "denseMemoryBytes": 20808,
+    "memorySavingsPercent": 90.29219530949635,
+    "sparseSpMVTimeMs": 0.0009997499999997218,
+    "denseSpMVTimeMs": 0.0035901400000000194
+  },
+  {
+    "meshType": "1D Bar (500 elems)",
+    "numNodes": 501,
+    "totalDOFs": 501,
+    "numElements": 500,
+    "sparseNNZ": 1501,
+    "sparseDensity": 0.00598005585635117,
+    "sparseAssemblyTimeMs": 11.580063999999993,
+    "denseAssemblyTimeMs": null,
+    "sparseMemoryBytes": 20020,
+    "denseMemoryBytes": 2008008,
+    "memorySavingsPercent": 99.0029920199521,
+    "sparseSpMVTimeMs": 0.018215340000000423,
+    "denseSpMVTimeMs": null
+  }
+]

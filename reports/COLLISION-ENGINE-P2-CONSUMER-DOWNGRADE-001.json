@@ -1,0 +1,26 @@
+{
+  "missionId": "COLLISION-ENGINE-P2-FAIL-CLOSED-HARDENING-001",
+  "artifactType": "CONSUMER_DOWNGRADE_AUDIT",
+  "timestamp": "2026-10-01T02:08:00.000Z",
+  "auditScope": "Repository-wide consumer exception handlers, catch, if (result == null), fallback blocks",
+  "findings": [
+    {
+      "file": "src/engine/assembly/AssemblyInterferenceEngine.ts",
+      "pattern": "catch(e) { intersectSolid = null; evaluationFailed = true; }",
+      "classification": "FAIL-CLOSED",
+      "comment": "OCCT exceptions safely caught and propagated as UNKNOWN / ANALYSIS_FAILED instead of silently ignoring."
+    },
+    {
+      "file": "src/engine/assembly/InterferenceDetectionEngine.ts",
+      "pattern": "fallback return ANALYSIS_FAILED / provenSafe=false",
+      "classification": "FAIL-CLOSED",
+      "comment": "Unmatched coordinates fail closed instead of returning status: CLEAR."
+    },
+    {
+      "file": "src/engine/assembly-intelligence/CollisionDetectionEngine.ts",
+      "pattern": "if (!instA || !instB) { return hasCollision: false }",
+      "classification": "LEGACY",
+      "comment": "Identified as DEFERRED_CAPABILITY_GAP. Re-routing scheduled for Phase P3."
+    }
+  ]
+}

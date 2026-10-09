@@ -1,0 +1,26 @@
+{
+  "patchId": "PATCH-106",
+  "framework": "SECP Industrial OS v2 - Collision Avoidance",
+  "architecturalRule": "DETECTED =/= AVOIDED and NOT_DETECTED =/= PROVEN_SAFE",
+  "objectTypes": [
+    "TOOL",
+    "TOOL_HOLDER",
+    "SPINDLE",
+    "MACHINE_HEAD",
+    "MACHINE_TABLE",
+    "FIXTURE",
+    "STOCK",
+    "WORKPIECE",
+    "CHECK_SURFACE",
+    "KEEP_OUT_VOLUME"
+  ],
+  "hierarchy": [
+    "CRITICAL",
+    "WARNING",
+    "CONTACT",
+    "CLEARANCE_VIOLATION",
+    "INTERFERENCE",
+    "GOUGE"
+  ],
+  "timestamp": "2026-08-21T07:04:31.986Z"
+}

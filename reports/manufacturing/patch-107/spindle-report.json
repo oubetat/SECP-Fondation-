@@ -1,0 +1,10 @@
+{
+  "maxRPM": 24000,
+  "minRPM": 50,
+  "cwMCode": "M03",
+  "ccwMCode": "M04",
+  "stopMCode": "M05",
+  "cssGCode": "G96",
+  "rpmGCode": "G97",
+  "maxSpindleSpeedGCode": "G50"
+}

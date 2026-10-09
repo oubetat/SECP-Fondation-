@@ -1,0 +1,689 @@
+{
+  "directories": [
+    {
+      "directory": "src/engine/cad",
+      "files_count": 80,
+      "files_with_tests": 0,
+      "tests_pass": 0,
+      "tests_fail": 0,
+      "stub_count": 0,
+      "mock_count": 21,
+      "last_modified_evidence": "src/engine/cad/pattern/PatternMath.ts:1",
+      "production_reachable": "YES",
+      "production_consumer": "src/engine/fem/verification/HardAcceptanceGate240.ts:import { BRepSolid, BRepShell, BRepFace } from '../../cad-kernel/topology/BRepTopology';",
+      "public_api_used_by": [ "src/engine/fem/verification/HardAcceptanceGate240.ts:import { BRepSolid, BRepShell, BRepFace } from '../../cad-kernel/topology/BRepTopology';","src/engine/fem/verification/HardAcceptanceGate240.ts:import { Orientation } from '../../cad-kernel/topology/TopologyContracts';","src/engine/fem/verification/CadToFemModelBuilder.ts:import { Solid } from '../../cad-kernel/topology/TopologyContracts';","src/engine/fem/verification/GeometryIntegrityCheck.ts:import { Solid, TopoShapeEnum } from '../../cad-kernel/topology/TopologyContracts';","src/engine/fem/verification/FemVerificationPipeline.ts:import { Solid } from '../../cad-kernel/topology/TopologyContracts';" ],
+      "classification": "PARTIALLY_READY"
+    }
+    ,
+    {
+      "directory": "src/engine/cad-kernel",
+      "files_count": 142,
+      "files_with_tests": 13,
+      "tests_pass": 0,
+      "tests_fail": 0,
+      "stub_count": 0,
+      "mock_count": 43,
+      "last_modified_evidence": "src/engine/cad-kernel/history/DraftShellRibThinAcceptanceGate.ts:1",
+      "production_reachable": "NO",
+      "production_consumer": "NONE",
+      "public_api_used_by": [ "src/engine/fem/verification/HardAcceptanceGate240.ts:import { BRepSolid, BRepShell, BRepFace } from '../../cad-kernel/topology/BRepTopology';","src/engine/fem/verification/HardAcceptanceGate240.ts:import { Orientation } from '../../cad-kernel/topology/TopologyContracts';","src/engine/fem/verification/CadToFemModelBuilder.ts:import { Solid } from '../../cad-kernel/topology/TopologyContracts';","src/engine/fem/verification/GeometryIntegrityCheck.ts:import { Solid, TopoShapeEnum } from '../../cad-kernel/topology/TopologyContracts';","src/engine/fem/verification/FemVerificationPipeline.ts:import { Solid } from '../../cad-kernel/topology/TopologyContracts';" ],
+      "classification": "DEAD_CODE"
+    }
+    ,
+    {
+      "directory": "src/engine/nurbs-geometry",
+      "files_count": 10,
+      "files_with_tests": 0,
+      "tests_pass": 0,
+      "tests_fail": 0,
+      "stub_count": 0,
+      "mock_count": 0,
+      "last_modified_evidence": "src/engine/nurbs-geometry/CoxDeBoorEvaluatorEngine.ts:1",
+      "production_reachable": "NO",
+      "production_consumer": "NONE",
+      "public_api_used_by": [ "src/engine/integration/MasterOrchestrationEngine.ts:import { NurbsSurface } from '../nurbs-geometry/NurbsTypes';","src/engine/integration/adapters/BRepIntegrationAdapter.ts:import { BRepHealingAndSewingEngine } from '../../nurbs-geometry/BRepHealingAndSewingEngine';","src/engine/integration/adapters/BRepIntegrationAdapter.ts:import { NurbsSurface, BRepShell } from '../../nurbs-geometry/NurbsTypes';","src/engine/integration/IntegrationContracts.ts:import { NurbsSurface } from '../nurbs-geometry/NurbsTypes';","src/engine/validation/HardAcceptanceGate102_3.ts:import { NurbsSurface } from '../nurbs-geometry/NurbsTypes';" ],
+      "classification": "DEAD_CODE"
+    }
+    ,
+    {
+      "directory": "src/engine/geometry",
+      "files_count": 10,
+      "files_with_tests": 0,
+      "tests_pass": 0,
+      "tests_fail": 0,
+      "stub_count": 0,
+      "mock_count": 3,
+      "last_modified_evidence": "src/engine/geometry/TopologyTypes.ts:1",
+      "production_reachable": "NO",
+      "production_consumer": "NONE",
+      "public_api_used_by": [ "src/engine/cad-kernel/history/BRepNamingGraph.ts:} from '../geometry/BRepGeometry';","src/engine/cad-kernel/healing/ToleranceHealing.ts:import { Point } from '../geometry/GeometryContracts';","src/engine/cad-kernel/predicates/TopologyPredicates.ts:import { Point, Vector, Plane } from '../geometry/GeometryContracts';","src/engine/cad-kernel/predicates/HardAcceptanceGate018.ts:import { Point, Vector, Plane, BoundingBox } from '../geometry/GeometryContracts';","src/engine/cad-kernel/predicates/GeometricRelations.ts:import { Point, Vector, Direction, Plane } from '../geometry/GeometryContracts';" ],
+      "classification": "DEAD_CODE"
+    }
+    ,
+    {
+      "directory": "src/engine/topology",
+      "files_count": 10,
+      "files_with_tests": 0,
+      "tests_pass": 0,
+      "tests_fail": 0,
+      "stub_count": 0,
+      "mock_count": 16,
+      "last_modified_evidence": "src/engine/topology/TopologyAdversarialRebindingSuite.ts:1",
+      "production_reachable": "NO",
+      "production_consumer": "NONE",
+      "public_api_used_by": [ "src/engine/cad-kernel/fea/FEAAdapter.ts:import { Solid } from '../topology/TopologyContracts';","src/engine/cad-kernel/document/DocumentEvaluator.ts:import { Solid, TopoShapeEnum } from '../topology/TopologyContracts';","src/engine/cad-kernel/document/DocumentEvaluator.ts:import { BRepHasher } from '../topology/BRepHasher';","src/engine/cad-kernel/document/HierarchicalConstraintBinder.ts:import { Solid, Shell, Face, Edge, Vertex, TopoShapeEnum } from '../topology/TopologyContracts';","src/engine/cad-kernel/document/CADDocument.ts:import { Solid, TopoShapeEnum } from '../topology/TopologyContracts';" ],
+      "classification": "DEAD_CODE"
+    }
+    ,
+    {
+      "directory": "src/engine/assembly",
+      "files_count": 157,
+      "files_with_tests": 13,
+      "tests_pass": 3,
+      "tests_fail": 0,
+      "stub_count": 0,
+      "mock_count": 6,
+      "last_modified_evidence": "src/engine/assembly/kinematics/KinematicGearKinematics.ts:1",
+      "production_reachable": "YES",
+      "production_consumer": "src/engine/fem/nonlinear/solver/NonlinearStructuralSolver.ts:import { ElementGeometryData } from '../assembly/InternalForceAssembler';",
+      "public_api_used_by": [ "src/engine/fem/nonlinear/solver/NonlinearStructuralSolver.ts:import { ElementGeometryData } from '../assembly/InternalForceAssembler';","src/engine/fem/bc/LoadAssembler.ts:import { DOFManager } from '../assembly/DOFManager';","src/engine/fem/bc/BoundaryConditionEngine.ts:import { DOFManager } from '../assembly/DOFManager';","src/engine/fem/bc/BoundaryConditionEngine.ts:import { ElementConnectivity } from '../assembly/ElementConnectivity';","src/engine/fem/bc/BoundaryConditionEngine.ts:import { ElementStiffnessProvider } from '../assembly/ElementStiffnessProvider';" ],
+      "classification": "PRODUCTION_READY"
+    }
+    ,
+    {
+      "directory": "src/engine/assembly-intelligence",
+      "files_count": 18,
+      "files_with_tests": 0,
+      "tests_pass": 0,
+      "tests_fail": 0,
+      "stub_count": 0,
+      "mock_count": 0,
+      "last_modified_evidence": "src/engine/assembly-intelligence/MechanismSimulationEngine.ts:1",
+      "production_reachable": "NO",
+      "production_consumer": "NONE",
+      "public_api_used_by": [ "src/engine/validation/HardAcceptanceGate072.ts:import { AssemblyTopologyEngine } from '../assembly-intelligence/AssemblyTopologyEngine';","src/engine/validation/HardAcceptanceGate072.ts:import { ComponentInstanceEngine } from '../assembly-intelligence/ComponentInstanceEngine';","src/engine/validation/HardAcceptanceGate072.ts:import { MateDefinitionEngine } from '../assembly-intelligence/MateDefinitionEngine';","src/engine/validation/HardAcceptanceGate072.ts:import { KinematicConstraintEngine } from '../assembly-intelligence/KinematicConstraintEngine';","src/engine/validation/HardAcceptanceGate072.ts:import { KinematicSolverEngine } from '../assembly-intelligence/KinematicSolverEngine';" ],
+      "classification": "DEAD_CODE"
+    }
+    ,
+    {
+      "directory": "src/engine/kinematics",
+      "files_count": 11,
+      "files_with_tests": 0,
+      "tests_pass": 0,
+      "tests_fail": 0,
+      "stub_count": 0,
+      "mock_count": 13,
+      "last_modified_evidence": "src/engine/kinematics/SECP087ToolpathSimulator.ts:1",
+      "production_reachable": "YES",
+      "production_consumer": "src/engine/fem/nonlinear/materials/HyperelasticMaterialModels.ts:import { DeformationGradientCalculator } from '../kinematics/DeformationGradientCalculator';",
+      "public_api_used_by": [ "src/engine/fem/nonlinear/materials/HyperelasticMaterialModels.ts:import { DeformationGradientCalculator } from '../kinematics/DeformationGradientCalculator';","src/engine/manufacturing/cam/FiveAxisToolpathGenerator.ts:import { MachineDefinition } from '../kinematics/types';","src/engine/integration/adapters/AssemblyIntegrationAdapter.ts:import { KinematicsEngine } from '../../kinematics';","src/engine/verification/KinematicsAndSimulationVerifier.ts:import { SECP087MachineKinematicsEngine } from '../kinematics/SECP087MachineKinematicsEngine';","src/engine/verification/KinematicsAndSimulationVerifier.ts:import { SECP087ToolpathSimulator } from '../kinematics/SECP087ToolpathSimulator';" ],
+      "classification": "PARTIALLY_READY"
+    }
+    ,
+    {
+      "directory": "src/engine/fem",
+      "files_count": 315,
+      "files_with_tests": 10,
+      "tests_pass": 48,
+      "tests_fail": 0,
+      "stub_count": 0,
+      "mock_count": 6,
+      "last_modified_evidence": "src/engine/fem/sparse/SparseVector.ts:1",
+      "production_reachable": "YES",
+      "production_consumer": "src/engine/cad-kernel/fea/FEAAdapter.ts:import { NodeInput, ElementInput } from '../../fem/solver/types';",
+      "public_api_used_by": [ "src/engine/cad-kernel/fea/FEAAdapter.ts:import { NodeInput, ElementInput } from '../../fem/solver/types';","src/engine/verification/ProductionGapClosureVerification.ts:import { NonlinearContactMechanicsEngine } from '../fem/nonlinear/NonlinearContactMechanicsEngine';","src/engine/benchmark/fem/NonlinearFEMBenchmarkBattery177.ts:import { NonlinearFEMEngine, NonlinearProblemDefinition, NonlinearSimulationResult } from '../../fem/nonlinear/NonlinearFEMEngine';","src/engine/benchmark/fem/NonlinearFEMBenchmarkBattery177.ts:import { MaterialModelRegistry } from '../../fem/nonlinear/materials/MaterialModelRegistry';","src/engine/benchmark/fem/NonlinearFEMBenchmarkBattery177.ts:import { DeformationGradientCalculator } from '../../fem/nonlinear/kinematics/DeformationGradientCalculator';" ],
+      "classification": "PRODUCTION_READY"
+    }
+    ,
+    {
+      "directory": "src/engine/cfd3d",
+      "files_count": 430,
+      "files_with_tests": 2,
+      "tests_pass": 0,
+      "tests_fail": 0,
+      "stub_count": 0,
+      "mock_count": 25,
+      "last_modified_evidence": "src/engine/cfd3d/coupling/CouplingIteration.ts:1",
+      "production_reachable": "YES",
+      "production_consumer": "src/engine/cad-kernel/cfd/CFDAdapter.ts:import { FvmMesh3D, BoundaryType3D, FvmCell3D, FvmFace3D } from '../../cfd3d/Fvm3DTypes';",
+      "public_api_used_by": [ "src/engine/cad-kernel/cfd/CFDAdapter.ts:import { FvmMesh3D, BoundaryType3D, FvmCell3D, FvmFace3D } from '../../cfd3d/Fvm3DTypes';","src/engine/integration/adapters/Cfd3DIntegrationAdapter.ts:import { Fvm3DNavierStokesSolver } from '../../cfd3d/Fvm3DNavierStokesSolver';","src/engine/integration/adapters/Cfd3DIntegrationAdapter.ts:import { Fvm3DMeshGenerator } from '../../cfd3d/Fvm3DMeshGenerator';","src/engine/integration/adapters/Cfd3DIntegrationAdapter.ts:import { SECP082IndependentCFDVerifier } from '../../cfd3d/SECP082IndependentCFDVerifier';","src/engine/integration/adapters/Cfd3DIntegrationAdapter.ts:import { FluidProperties3D, SolverConfig3D } from '../../cfd3d/Fvm3DTypes';" ],
+      "classification": "PRODUCTION_READY"
+    }
+    ,
+    {
+      "directory": "src/engine/structural-physics",
+      "files_count": 34,
+      "files_with_tests": 1,
+      "tests_pass": 0,
+      "tests_fail": 0,
+      "stub_count": 0,
+      "mock_count": 0,
+      "last_modified_evidence": "src/engine/structural-physics/MaterialModelEngine.ts:1",
+      "production_reachable": "NO",
+      "production_consumer": "NONE",
+      "public_api_used_by": [ "src/engine/integration/MasterOrchestrationEngine.ts:import { MeshTopologyEngine } from '../structural-physics/MeshTopologyEngine';","src/engine/integration/MasterOrchestrationEngine.ts:import { StructuralAnalysisEngine } from '../structural-physics/StructuralAnalysisEngine';","src/engine/integration/MasterOrchestrationEngine.ts:import { BoundaryCondition, LoadDefinition } from '../structural-physics/StructuralPhysicsTypes';","src/engine/integration/IntegrationContracts.ts:import { FEAMesh, BoundaryCondition, LoadDefinition, StructuralAnalysisResults } from '../structural-physics/StructuralPhysicsTypes';","src/engine/validation/SECP075ForensicVerificationEngine.ts:import { ElementFormulationEngine } from '../structural-physics/ElementFormulationEngine';" ],
+      "classification": "DEAD_CODE"
+    }
+    ,
+    {
+      "directory": "src/engine/thermal",
+      "files_count": 0,
+      "files_with_tests": 0,
+      "tests_pass": 0,
+      "tests_fail": 0,
+      "stub_count": 0,
+      "mock_count": 0,
+      "last_modified_evidence": "UNKNOWN",
+      "production_reachable": "NO",
+      "production_consumer": "NONE",
+      "public_api_used_by": [  ],
+      "classification": "UNPROVEN"
+    }
+    ,
+    {
+      "directory": "src/engine/materials",
+      "files_count": 151,
+      "files_with_tests": 0,
+      "tests_pass": 11,
+      "tests_fail": 1,
+      "stub_count": 1,
+      "mock_count": 31,
+      "last_modified_evidence": "src/engine/materials/industrial/uncertainty/MaterialUncertaintyEngine.ts:1",
+      "production_reachable": "NO",
+      "production_consumer": "NONE",
+      "public_api_used_by": [ "src/engine/fem/nonlinear/solver/NonlinearStructuralSolver.ts:import { MaterialPointStateTracker } from '../materials/MaterialPointStateTracker';","src/engine/fem/nonlinear/assembly/InternalForceAssembler.ts:import { MaterialPointStateTracker } from '../materials/MaterialPointStateTracker';","src/engine/fem/nonlinear/assembly/TangentStiffnessAssembler.ts:import { MaterialPointStateTracker } from '../materials/MaterialPointStateTracker';","src/engine/epc/optimization/DroneOptimizationSolver.ts:import { AnalysisResultsSummary } from '../../materials/OptimizationTypes272';","src/engine/epc/optimization/EngineeringOptimizationTypes.ts:} from '../../materials/OptimizationTypes272';" ],
+      "classification": "DEAD_CODE"
+    }
+    ,
+    {
+      "directory": "src/engine/cam",
+      "files_count": 171,
+      "files_with_tests": 0,
+      "tests_pass": 0,
+      "tests_fail": 0,
+      "stub_count": 0,
+      "mock_count": 228,
+      "last_modified_evidence": "src/engine/cam/feature-recognition/FeatureTopologyAnalyzer.ts:1",
+      "production_reachable": "NO",
+      "production_consumer": "NONE",
+      "public_api_used_by": [ "src/engine/drone/production/Drone001BProductionKernelEngine.ts:import { CamEngine, CamJobPackage, RecognizedFeature } from '../../camEngine';","src/engine/drone/production/Drone001BProductionTypes.ts:import { CamJobPackage } from '../../camEngine';","src/engine/validation/HardAcceptanceGate102_4.ts:import { CamEngine } from '../camEngine';","src/engine/epc/manufacturing/EPC030Verifier.ts:import { ToolpathVerificationEngine } from '../../cam/ToolpathVerificationEngine';","src/engine/epc/manufacturing/EPC030Verifier.ts:import { CandidateToolpathTrajectory, StockModel, VerifiedToolpathTrajectory, MachiningOperationConfig } from '../../cam/ToolpathTypes';" ],
+      "classification": "DEAD_CODE"
+    }
+    ,
+    {
+      "directory": "src/engine/postprocessor",
+      "files_count": 6,
+      "files_with_tests": 0,
+      "tests_pass": 0,
+      "tests_fail": 0,
+      "stub_count": 0,
+      "mock_count": 1,
+      "last_modified_evidence": "src/engine/postprocessor/GCodeParser.ts:1",
+      "production_reachable": "YES",
+      "production_consumer": "src/engine/release/IndustrialReadinessEngine.ts:import { GCodePostProcessor } from '../postprocessor/GCodePostProcessor';",
+      "public_api_used_by": [ "src/engine/release/IndustrialReadinessEngine.ts:import { GCodePostProcessor } from '../postprocessor/GCodePostProcessor';","src/engine/release/IndustrialReadinessEngine.ts:import { GCodeVerificationEngine } from '../postprocessor/GCodeVerificationEngine';","src/engine/release/IndustrialReadinessEngine.ts:import { MachinePostProfile } from '../postprocessor/PostProcessorTypes';" ],
+      "classification": "PARTIALLY_READY"
+    }
+    ,
+    {
+      "directory": "src/engine/manufacturing",
+      "files_count": 158,
+      "files_with_tests": 0,
+      "tests_pass": 27,
+      "tests_fail": 1,
+      "stub_count": 0,
+      "mock_count": 156,
+      "last_modified_evidence": "src/engine/manufacturing/verification/ModalStateEngine.ts:1",
+      "production_reachable": "NO",
+      "production_consumer": "NONE",
+      "public_api_used_by": [ "src/engine/validation/HardAcceptanceGate064.ts:import { ReleaseEligibilityEngine } from '../manufacturing-release/ReleaseEligibilityEngine';","src/engine/validation/HardAcceptanceGate064.ts:import { ReleaseEvidenceEngine } from '../manufacturing-release/ReleaseEvidenceEngine';","src/engine/validation/HardAcceptanceGate064.ts:import { DeviationApprovalEngine } from '../manufacturing-release/DeviationApprovalEngine';","src/engine/validation/HardAcceptanceGate064.ts:import { BatchReleaseEngine } from '../manufacturing-release/BatchReleaseEngine';","src/engine/validation/HardAcceptanceGate064.ts:import { SerialReleaseEngine } from '../manufacturing-release/SerialReleaseEngine';" ],
+      "classification": "DEAD_CODE"
+    }
+    ,
+    {
+      "directory": "src/engine/manufacturing-execution",
+      "files_count": 9,
+      "files_with_tests": 0,
+      "tests_pass": 0,
+      "tests_fail": 0,
+      "stub_count": 0,
+      "mock_count": 4,
+      "last_modified_evidence": "src/engine/manufacturing-execution/ShopFloorExecutionEngine.ts:1",
+      "production_reachable": "NO",
+      "production_consumer": "NONE",
+      "public_api_used_by": [ "src/engine/validation/HardAcceptanceGate060.ts:import { ExecutionSessionEngine } from '../manufacturing-execution/ExecutionSessionEngine';","src/engine/validation/HardAcceptanceGate060.ts:import { MachineExecutionStateEngine } from '../manufacturing-execution/MachineExecutionStateEngine';","src/engine/validation/HardAcceptanceGate060.ts:import { OperationExecutionEngine } from '../manufacturing-execution/OperationExecutionEngine';","src/engine/validation/HardAcceptanceGate060.ts:import { ToolConsumptionEngine } from '../manufacturing-execution/ToolConsumptionEngine';","src/engine/validation/HardAcceptanceGate060.ts:import { MaterialTraceabilityEngine } from '../manufacturing-execution/MaterialTraceabilityEngine';" ],
+      "classification": "DEAD_CODE"
+    }
+    ,
+    {
+      "directory": "src/engine/manufacturing-release",
+      "files_count": 10,
+      "files_with_tests": 0,
+      "tests_pass": 0,
+      "tests_fail": 0,
+      "stub_count": 0,
+      "mock_count": 0,
+      "last_modified_evidence": "src/engine/manufacturing-release/DeviationApprovalEngine.ts:1",
+      "production_reachable": "NO",
+      "production_consumer": "NONE",
+      "public_api_used_by": [ "src/engine/validation/HardAcceptanceGate064.ts:import { ReleaseEligibilityEngine } from '../manufacturing-release/ReleaseEligibilityEngine';","src/engine/validation/HardAcceptanceGate064.ts:import { ReleaseEvidenceEngine } from '../manufacturing-release/ReleaseEvidenceEngine';","src/engine/validation/HardAcceptanceGate064.ts:import { DeviationApprovalEngine } from '../manufacturing-release/DeviationApprovalEngine';","src/engine/validation/HardAcceptanceGate064.ts:import { BatchReleaseEngine } from '../manufacturing-release/BatchReleaseEngine';","src/engine/validation/HardAcceptanceGate064.ts:import { SerialReleaseEngine } from '../manufacturing-release/SerialReleaseEngine';" ],
+      "classification": "DEAD_CODE"
+    }
+    ,
+    {
+      "directory": "src/engine/quality-metrology",
+      "files_count": 4,
+      "files_with_tests": 0,
+      "tests_pass": 0,
+      "tests_fail": 0,
+      "stub_count": 0,
+      "mock_count": 2,
+      "last_modified_evidence": "src/engine/quality-metrology/MetrologyEngine.ts:1",
+      "production_reachable": "YES",
+      "production_consumer": "src/engine/verification/QualityGate.ts:import { QualityVerificationCertificate } from '../quality-metrology/MetrologyTypes';",
+      "public_api_used_by": [ "src/engine/verification/QualityGate.ts:import { QualityVerificationCertificate } from '../quality-metrology/MetrologyTypes';","src/engine/verification/QualityGate.ts:import { MetrologyEngine } from '../quality-metrology/MetrologyEngine';","src/engine/validation/HardAcceptanceGate064.ts:import { MetrologyEngine } from '../quality-metrology/MetrologyEngine';","src/engine/validation/HardAcceptanceGate061.ts:import { MeasurementPlanner } from '../quality-metrology/MeasurementPlanner';","src/engine/validation/HardAcceptanceGate061.ts:import { MetrologyEvaluator } from '../quality-metrology/MetrologyEvaluator';" ],
+      "classification": "PARTIALLY_READY"
+    }
+    ,
+    {
+      "directory": "src/engine/trust",
+      "files_count": 9,
+      "files_with_tests": 0,
+      "tests_pass": 0,
+      "tests_fail": 0,
+      "stub_count": 0,
+      "mock_count": 2,
+      "last_modified_evidence": "src/engine/trust/TrustTestFixtures.ts:1",
+      "production_reachable": "YES",
+      "production_consumer": "src/engine/quality-metrology/MetrologyEngine.ts:import { ProductionTrustRegistry } from '../trust/ProductionTrustRegistry';",
+      "public_api_used_by": [ "src/engine/quality-metrology/MetrologyEngine.ts:import { ProductionTrustRegistry } from '../trust/ProductionTrustRegistry';" ],
+      "classification": "PARTIALLY_READY"
+    }
+    ,
+    {
+      "directory": "src/engine/certification",
+      "files_count": 32,
+      "files_with_tests": 2,
+      "tests_pass": 0,
+      "tests_fail": 0,
+      "stub_count": 0,
+      "mock_count": 12,
+      "last_modified_evidence": "src/engine/certification/simulationTypes.ts:1",
+      "production_reachable": "YES",
+      "production_consumer": "src/engine/verification/portal/types.ts:import { EngineeringResultCertificate, ResultCertificateDocument } from '../../certification/types';",
+      "public_api_used_by": [ "src/engine/verification/portal/types.ts:import { EngineeringResultCertificate, ResultCertificateDocument } from '../../certification/types';","src/engine/validation/HardAcceptanceGate102_3.ts:import { CertificationEngine, CertificationMatrix } from '../certificationEngine';","src/engine/industrial-os/HardAcceptanceGate190.ts:import { EngineeringTruthCertificateEngine } from '../certification/truth/EngineeringTruthCertificateEngine';","src/engine/industrial-os/HardAcceptanceGate190.ts:import { IndependentAuditPackageExporter } from '../certification/truth/IndependentAuditPackage';" ],
+      "classification": "PRODUCTION_READY"
+    }
+    ,
+    {
+      "directory": "src/engine/release",
+      "files_count": 4,
+      "files_with_tests": 0,
+      "tests_pass": 0,
+      "tests_fail": 0,
+      "stub_count": 2,
+      "mock_count": 13,
+      "last_modified_evidence": "src/engine/release/IndustrialReadinessEngine.ts:1",
+      "production_reachable": "YES",
+      "production_consumer": "src/engine/validation/HardAcceptanceGateFinalCommercialClosure.ts:import { ProductionArtifactValidator, ArtifactMetrics } from '../release/ProductionArtifactValidator';",
+      "public_api_used_by": [ "src/engine/validation/HardAcceptanceGateFinalCommercialClosure.ts:import { ProductionArtifactValidator, ArtifactMetrics } from '../release/ProductionArtifactValidator';","src/engine/validation/HardAcceptanceGateFinalCommercialClosure.ts:import { ReleaseDependencyValidator } from '../release/ReleaseDependencyValidator';","src/engine/validation/HardAcceptanceGateFinalCommercialClosure.ts:import { ReleaseAdversarialSuite } from '../release/ReleaseAdversarialSuite';","src/engine/validation/HardAcceptanceGateP0.ts:import { ProductionArtifactValidator } from '../release/ProductionArtifactValidator';","src/engine/validation/HardAcceptanceGate102_3.ts:import { ReleaseDependencyValidator } from '../release/ReleaseDependencyValidator';" ],
+      "classification": "PARTIALLY_READY"
+    }
+    ,
+    {
+      "directory": "src/engine/revision",
+      "files_count": 16,
+      "files_with_tests": 0,
+      "tests_pass": 1,
+      "tests_fail": 0,
+      "stub_count": 2,
+      "mock_count": 3,
+      "last_modified_evidence": "src/engine/revision/ApprovalWorkflowEngine.ts:1",
+      "production_reachable": "YES",
+      "production_consumer": "src/engine/simulation/SimulationIdentityService.ts:import { RevisionEngine } from '../revision/RevisionEngine';",
+      "public_api_used_by": [ "src/engine/simulation/SimulationIdentityService.ts:import { RevisionEngine } from '../revision/RevisionEngine';" ],
+      "classification": "PARTIALLY_READY"
+    }
+    ,
+    {
+      "directory": "src/engine/features",
+      "files_count": 13,
+      "files_with_tests": 0,
+      "tests_pass": 0,
+      "tests_fail": 0,
+      "stub_count": 0,
+      "mock_count": 0,
+      "last_modified_evidence": "src/engine/features/FeatureTypes.ts:1",
+      "production_reachable": "NO",
+      "production_consumer": "NONE",
+      "public_api_used_by": [ "src/engine/cad-kernel/history/FeatureExecution.ts:import { SpringEvaluator } from '../../features/SpringEvaluator';","src/engine/manufacturing/ParametricManufacturingBridge.ts:import { FeatureHistoryManager } from '../features/FeatureHistory';","src/engine/manufacturing/ProductionFeatureRecognitionEngine.ts:import { DesignHistory, FeatureDefinition } from '../features/FeatureTypes';","src/engine/assembly/ParametricAssemblyBridge.ts:import { FeatureHistoryManager } from '../features/FeatureHistory';","src/engine/validation/HardAcceptanceGate102_2.ts:import { FeatureRegenerationEngine } from '../features/FeatureRegenerationEngine';" ],
+      "classification": "DEAD_CODE"
+    }
+    ,
+    {
+      "directory": "src/engine/sketch",
+      "files_count": 38,
+      "files_with_tests": 3,
+      "tests_pass": 0,
+      "tests_fail": 0,
+      "stub_count": 0,
+      "mock_count": 30,
+      "last_modified_evidence": "src/engine/sketch/InteractiveSketchEngine.ts:1",
+      "production_reachable": "NO",
+      "production_consumer": "NONE",
+      "public_api_used_by": [ "src/engine/cad-kernel/constraints/ConstraintPropagationEngine.ts:import { SketchModel } from '../../sketch/SketchModel';","src/engine/cad-kernel/constraints/ConstraintPropagationEngine.ts:import { SketchEntity } from '../../sketch/SketchEntity';","src/engine/cad-kernel/constraints/ConstraintPropagationEngine.ts:import { SketchConstraint } from '../../sketch/gcs/ConstraintModel';","src/engine/cad-kernel/constraints/ConstraintPropagationEngine.ts:import { DeterministicSolver } from '../../sketch/gcs/DeterministicSolver';","src/engine/cad-kernel/constraints/ConstraintPropagationEngine.ts:import { DegreeOfFreedomAnalyzer } from '../../sketch/gcs/DegreeOfFreedomAnalyzer';" ],
+      "classification": "DEAD_CODE"
+    }
+    ,
+    {
+      "directory": "src/engine/sketch034",
+      "files_count": 19,
+      "files_with_tests": 0,
+      "tests_pass": 0,
+      "tests_fail": 0,
+      "stub_count": 0,
+      "mock_count": 0,
+      "last_modified_evidence": "src/engine/sketch034/ReverseEngineeringEngine.ts:1",
+      "production_reachable": "NO",
+      "production_consumer": "NONE",
+      "public_api_used_by": [ "src/engine/cad-kernel/history/FeatureExecution.ts:import { SketchProfileExtractor } from '../../sketch034/SketchProfileExtractor';","src/engine/cad-kernel/brep/BRepKernel.ts:import { SketchProfileExtractor, Profile2D } from '../../sketch034/SketchProfileExtractor';" ],
+      "classification": "DEAD_CODE"
+    }
+    ,
+    {
+      "directory": "src/engine/evidence",
+      "files_count": 32,
+      "files_with_tests": 4,
+      "tests_pass": 5,
+      "tests_fail": 0,
+      "stub_count": 0,
+      "mock_count": 23,
+      "last_modified_evidence": "src/engine/evidence/EngineeringHashChainGate.ts:1",
+      "production_reachable": "YES",
+      "production_consumer": "src/engine/cad-kernel/fea/FEAAdapter.ts:import { EngineeringHashChain } from '../../evidence/EngineeringHashChain';",
+      "public_api_used_by": [ "src/engine/cad-kernel/fea/FEAAdapter.ts:import { EngineeringHashChain } from '../../evidence/EngineeringHashChain';","src/engine/cad-kernel/document/DocumentEvaluator.ts:import { EngineeringHashChain } from '../../evidence/EngineeringHashChain';","src/engine/cad-kernel/history/FeatureNode.ts:import { EngineeringHashChain } from '../../evidence/EngineeringHashChain';","src/engine/cad-kernel/history/FeatureHistoryEvidence.ts:import { EngineeringHashChain } from '../../evidence/EngineeringHashChain';","src/engine/cad-kernel/parametric/ParametricRegenerationEngine.ts:import { EngineeringHashChain } from '../../evidence/EngineeringHashChain';" ],
+      "classification": "PRODUCTION_READY"
+    }
+    ,
+    {
+      "directory": "src/engine/provenance",
+      "files_count": 7,
+      "files_with_tests": 1,
+      "tests_pass": 0,
+      "tests_fail": 0,
+      "stub_count": 0,
+      "mock_count": 0,
+      "last_modified_evidence": "src/engine/provenance/ProvenanceGraph.ts:1",
+      "production_reachable": "YES",
+      "production_consumer": "src/engine/cad-kernel/constraints/ConstraintPropagationEngine.ts:import { ProvenanceNode } from '../../provenance/ProvenanceGraphTypes';",
+      "public_api_used_by": [ "src/engine/cad-kernel/constraints/ConstraintPropagationEngine.ts:import { ProvenanceNode } from '../../provenance/ProvenanceGraphTypes';","src/engine/cad-kernel/modeling/ModelEditTransaction.ts:import { ProvenanceGraph } from '../../provenance/ProvenanceGraph';","src/engine/cad-kernel/modeling/ModelEditTransaction.ts:import { ProvenanceGraphBuilder } from '../../provenance/ProvenanceGraphBuilder';","src/engine/cad-kernel/modeling/HybridModelingEngine.ts:import { ProvenanceGraph } from '../../provenance/ProvenanceGraph';","src/engine/verification/TamperEvidenceVerifier.ts:import { ProvenanceGraph } from '../provenance/ProvenanceGraph';" ],
+      "classification": "PRODUCTION_READY"
+    }
+    ,
+    {
+      "directory": "src/engine/plm",
+      "files_count": 17,
+      "files_with_tests": 0,
+      "tests_pass": 0,
+      "tests_fail": 0,
+      "stub_count": 0,
+      "mock_count": 1,
+      "last_modified_evidence": "src/engine/plm/EngineeringPLMEngine.ts:1",
+      "production_reachable": "NO",
+      "production_consumer": "NONE",
+      "public_api_used_by": [ "src/engine/cad-kernel/document/DocumentEvaluator.ts:import { CanonicalPLMProjectionAdapter } from '../../plm/CanonicalPLMProjectionAdapter';","src/engine/validation/HardAcceptanceGate088.ts:import { EngineeringPLMEngine } from '../plm/EngineeringPLMEngine';","src/engine/validation/HardAcceptanceGate088.ts:import { MasterPLMManager } from '../plm/MasterPLMManager';","src/engine/validation/HardAcceptanceGate088.ts:import { EngineeringArtifact, EngineeringChangeOrder, ReleaseManifest } from '../plm/PLMTypes';","src/engine/epc/MultidisciplinaryModelTypes.ts:import { ArtifactStatus } from '../plm/PLMTypes';" ],
+      "classification": "DEAD_CODE"
+    }
+    ,
+    {
+      "directory": "src/engine/plm_evidence",
+      "files_count": 5,
+      "files_with_tests": 0,
+      "tests_pass": 0,
+      "tests_fail": 0,
+      "stub_count": 0,
+      "mock_count": 0,
+      "last_modified_evidence": "src/engine/plm_evidence/HardAcceptanceGate121.ts:1",
+      "production_reachable": "NO",
+      "production_consumer": "NONE",
+      "public_api_used_by": [  ],
+      "classification": "DEAD_CODE"
+    }
+    ,
+    {
+      "directory": "src/engine/interop",
+      "files_count": 68,
+      "files_with_tests": 4,
+      "tests_pass": 0,
+      "tests_fail": 0,
+      "stub_count": 0,
+      "mock_count": 84,
+      "last_modified_evidence": "src/engine/interop/step-ap242/pmi/AP242PmiExporter.ts:1",
+      "production_reachable": "NO",
+      "production_consumer": "NONE",
+      "public_api_used_by": [ "src/engine/validation/HardAcceptanceGateJTFidelity.ts:import { JTFidelityResult } from '../interop/jt-fidelity/JTFidelityTypes';","src/engine/validation/HardAcceptanceGateP1.ts:} from '../interop/RealCadCorpusEngine';","src/engine/validation/HardAcceptanceGate102_1.ts:import { STEPAP242Translator } from '../interop/STEPAP242Translator';","src/engine/validation/HardAcceptanceGate102_1.ts:import { AP242TestFixtures } from '../interop/AP242TestFixtures';","src/engine/validation/HardAcceptanceGate102_1.ts:import { AP242SemanticModel } from '../interop/AP242Types';" ],
+      "classification": "DEAD_CODE"
+    }
+    ,
+    {
+      "directory": "src/engine/epdm",
+      "files_count": 0,
+      "files_with_tests": 0,
+      "tests_pass": 0,
+      "tests_fail": 0,
+      "stub_count": 0,
+      "mock_count": 0,
+      "last_modified_evidence": "UNKNOWN",
+      "production_reachable": "NO",
+      "production_consumer": "NONE",
+      "public_api_used_by": [  ],
+      "classification": "UNPROVEN"
+    }
+    ,
+    {
+      "directory": "src/engine/gcs3d",
+      "files_count": 27,
+      "files_with_tests": 2,
+      "tests_pass": 0,
+      "tests_fail": 0,
+      "stub_count": 0,
+      "mock_count": 0,
+      "last_modified_evidence": "src/engine/gcs3d/AssemblySpatialGCS.ts:1",
+      "production_reachable": "NO",
+      "production_consumer": "NONE",
+      "public_api_used_by": [ "src/engine/cad-kernel/constraints/ConstraintPropagationEngine.ts:import { Model3D, Geometry3DEntity } from '../../gcs3d/Constraint3DTypes';","src/engine/cad-kernel/constraints/ConstraintPropagationEngine.ts:import { Constraint3D } from '../../gcs3d/Constraint3DModel';","src/engine/cad-kernel/constraints/ConstraintPropagationEngine.ts:import { Constraint3DSolver } from '../../gcs3d/Constraint3DSolver';","src/engine/cad-kernel/constraints/ConstraintPropagationEngine.ts:import { DegreeOfFreedom3DAnalyzer } from '../../gcs3d/DegreeOfFreedom3DAnalyzer';","src/engine/benchmark/gcs/ProductionGCSBenchmarkSuite.ts:} from '../../gcs3d/Production3DGCSTypes';" ],
+      "classification": "DEAD_CODE"
+    }
+    ,
+    {
+      "directory": "src/engine/classa5axis",
+      "files_count": 19,
+      "files_with_tests": 0,
+      "tests_pass": 0,
+      "tests_fail": 0,
+      "stub_count": 0,
+      "mock_count": 2,
+      "last_modified_evidence": "src/engine/classa5axis/SECP083AuditClassification.ts:1",
+      "production_reachable": "YES",
+      "production_consumer": "src/engine/integration/adapters/FiveAxisCamAdapter.ts:import { SECP083FiveAxisToolpathEngine } from '../../classa5axis/SECP083FiveAxisToolpathEngine';",
+      "public_api_used_by": [ "src/engine/integration/adapters/FiveAxisCamAdapter.ts:import { SECP083FiveAxisToolpathEngine } from '../../classa5axis/SECP083FiveAxisToolpathEngine';","src/engine/integration/adapters/FiveAxisCamAdapter.ts:import { SECP083FiveAxisPostProcessor } from '../../classa5axis/SECP083FiveAxisPostProcessor';","src/engine/integration/adapters/FiveAxisCamAdapter.ts:import { SECP083GougeVerifier } from '../../classa5axis/SECP083GougeVerifier';","src/engine/integration/adapters/FiveAxisCamAdapter.ts:import { SECP083MachineKinematicsVerifier } from '../../classa5axis/SECP083MachineKinematicsVerifier';","src/engine/integration/adapters/FiveAxisCamAdapter.ts:import { SECP083IndependentToolpathVerifier } from '../../classa5axis/SECP083IndependentToolpathVerifier';" ],
+      "classification": "PARTIALLY_READY"
+    }
+    ,
+    {
+      "directory": "src/engine/engineering_ai",
+      "files_count": 103,
+      "files_with_tests": 0,
+      "tests_pass": 0,
+      "tests_fail": 0,
+      "stub_count": 0,
+      "mock_count": 23,
+      "last_modified_evidence": "src/engine/engineering_ai/optimization/DesignOptimizationEngine.ts:1",
+      "production_reachable": "NO",
+      "production_consumer": "NONE",
+      "public_api_used_by": [ "src/engine/manufacturing/ExternalCamValidationEngine.ts:import { EvidenceBus314 } from '../engineering_ai/copilot/EvidenceBus314';","src/engine/manufacturing/HardAcceptanceGate339.ts:import { EvidenceBus314 } from '../engineering_ai/copilot/EvidenceBus314';","src/engine/interop/HardAcceptanceGate337.ts:import { EvidenceBus314 } from '../engineering_ai/copilot/EvidenceBus314';","src/engine/interop/ExternalCadInteroperabilityEngine.ts:import { EvidenceBus314 } from '../engineering_ai/copilot/EvidenceBus314';","src/engine/engineering/LargeAssemblyQualificationEngine.ts:import { EvidenceBus314 } from '../engineering_ai/copilot/EvidenceBus314';" ],
+      "classification": "DEAD_CODE"
+    }
+    ,
+    {
+      "directory": "src/engine/engineering_gpu",
+      "files_count": 7,
+      "files_with_tests": 0,
+      "tests_pass": 0,
+      "tests_fail": 0,
+      "stub_count": 0,
+      "mock_count": 0,
+      "last_modified_evidence": "src/engine/engineering_gpu/HardwareAccelerationTypes305.ts:1",
+      "production_reachable": "NO",
+      "production_consumer": "NONE",
+      "public_api_used_by": [ "src/engine/engineering_webgpu/types.ts:import { BackendType, PrecisionMode } from '../engineering_gpu/types';","src/engine/engineering_wasm/types.ts:import { BackendType, PrecisionMode } from '../engineering_gpu/types';","src/engine/engineering_hpc/types.ts:import { BackendType, PrecisionMode } from '../engineering_gpu/types';","src/engine/engineering_hpc/mpi_types.ts:import { PrecisionMode } from '../engineering_gpu/types';" ],
+      "classification": "DEAD_CODE"
+    }
+    ,
+    {
+      "directory": "src/engine/engineering_hpc",
+      "files_count": 14,
+      "files_with_tests": 0,
+      "tests_pass": 0,
+      "tests_fail": 0,
+      "stub_count": 0,
+      "mock_count": 4,
+      "last_modified_evidence": "src/engine/engineering_hpc/HPCScheduler.ts:1",
+      "production_reachable": "NO",
+      "production_consumer": "NONE",
+      "public_api_used_by": [  ],
+      "classification": "DEAD_CODE"
+    }
+    ,
+    {
+      "directory": "src/engine/engineering_wasm",
+      "files_count": 12,
+      "files_with_tests": 0,
+      "tests_pass": 0,
+      "tests_fail": 0,
+      "stub_count": 0,
+      "mock_count": 0,
+      "last_modified_evidence": "src/engine/engineering_wasm/WasmComputeRuntime.ts:1",
+      "production_reachable": "NO",
+      "production_consumer": "NONE",
+      "public_api_used_by": [  ],
+      "classification": "DEAD_CODE"
+    }
+    ,
+    {
+      "directory": "src/engine/engineering_webgpu",
+      "files_count": 43,
+      "files_with_tests": 0,
+      "tests_pass": 0,
+      "tests_fail": 0,
+      "stub_count": 0,
+      "mock_count": 5,
+      "last_modified_evidence": "src/engine/engineering_webgpu/ComputeBackend.ts:1",
+      "production_reachable": "NO",
+      "production_consumer": "NONE",
+      "public_api_used_by": [  ],
+      "classification": "DEAD_CODE"
+    }
+    ,
+    {
+      "directory": "src/engine/benchmark",
+      "files_count": 79,
+      "files_with_tests": 7,
+      "tests_pass": 0,
+      "tests_fail": 0,
+      "stub_count": 0,
+      "mock_count": 17,
+      "last_modified_evidence": "src/engine/benchmark/turbulence/TurbulenceAdversarialSuite.ts:1",
+      "production_reachable": "NO",
+      "production_consumer": "NONE",
+      "public_api_used_by": [ "src/engine/industrial-os/HardAcceptanceGate190.ts:import { GlobalBenchmarkReportGenerator } from '../benchmark/GlobalBenchmarkReportEngine';" ],
+      "classification": "DEAD_CODE"
+    }
+    ,
+    {
+      "directory": "src/engine/validation",
+      "files_count": 201,
+      "files_with_tests": 8,
+      "tests_pass": 0,
+      "tests_fail": 0,
+      "stub_count": 12,
+      "mock_count": 238,
+      "last_modified_evidence": "src/engine/validation/cad-forensics/CADForensicTypes.ts:1",
+      "production_reachable": "YES",
+      "production_consumer": "src/engine/interop/InteropFidelityTypes.ts:import { ValidationDomain } from '../validation/IndustrialValidationSuite';",
+      "public_api_used_by": [ "src/engine/interop/InteropFidelityTypes.ts:import { ValidationDomain } from '../validation/IndustrialValidationSuite';","src/engine/kinematics/SECP087DeterministicReplay.ts:import { SystemProvenanceEngine } from '../validation/SystemProvenanceEngine';","src/engine/epc/manufacturing/EPC030Verifier.ts:import { SystemProvenanceEngine } from '../../validation/SystemProvenanceEngine';","src/engine/materials/industrial/benchmark/MaterialQualificationBattery178.ts:import { MaterialValidationEngine } from '../validation/MaterialValidationEngine';","src/engine/certification/CertificationTypes.ts:import { ExternalValidationManifest } from '../validation/ValidationTypes';" ],
+      "classification": "PARTIALLY_READY"
+    }
+    ,
+    {
+      "directory": "src/engine/spc",
+      "files_count": 9,
+      "files_with_tests": 0,
+      "tests_pass": 0,
+      "tests_fail": 0,
+      "stub_count": 0,
+      "mock_count": 1,
+      "last_modified_evidence": "src/engine/spc/OutOfControlRuleEngine.ts:1",
+      "production_reachable": "NO",
+      "production_consumer": "NONE",
+      "public_api_used_by": [ "src/engine/validation/HardAcceptanceGate062.ts:import { SPCObservation, ProcessBaseline, ProcessCapability, OutOfControlSignal, DriftState } from '../spc/SPCTypes';","src/engine/validation/HardAcceptanceGate062.ts:import { ProcessBaselineEngine } from '../spc/ProcessBaselineEngine';","src/engine/validation/HardAcceptanceGate062.ts:import { ControlChartEngine } from '../spc/ControlChartEngine';","src/engine/validation/HardAcceptanceGate062.ts:import { CapabilityAnalysisEngine } from '../spc/CapabilityAnalysisEngine';","src/engine/validation/HardAcceptanceGate062.ts:import { ProcessDriftEngine } from '../spc/ProcessDriftEngine';" ],
+      "classification": "DEAD_CODE"
+    }
+    ,
+    {
+      "directory": "src/engine/digital_thread",
+      "files_count": 5,
+      "files_with_tests": 1,
+      "tests_pass": 0,
+      "tests_fail": 0,
+      "stub_count": 0,
+      "mock_count": 5,
+      "last_modified_evidence": "src/engine/digital_thread/IndependentQuantitativeLossOracle.ts:1",
+      "production_reachable": "NO",
+      "production_consumer": "NONE",
+      "public_api_used_by": [  ],
+      "classification": "DEAD_CODE"
+    }
+    ,
+    {
+      "directory": "src/engine/digital_twin",
+      "files_count": 19,
+      "files_with_tests": 0,
+      "tests_pass": 1,
+      "tests_fail": 0,
+      "stub_count": 0,
+      "mock_count": 19,
+      "last_modified_evidence": "src/engine/digital_twin/HardAcceptanceGate329.ts:1",
+      "production_reachable": "NO",
+      "production_consumer": "NONE",
+      "public_api_used_by": [  ],
+      "classification": "DEAD_CODE"
+    }
+    ,
+    {
+      "directory": "src/engine/physics",
+      "files_count": 70,
+      "files_with_tests": 6,
+      "tests_pass": 0,
+      "tests_fail": 0,
+      "stub_count": 0,
+      "mock_count": 13,
+      "last_modified_evidence": "src/engine/physics/materials/MaterialModel.ts:1",
+      "production_reachable": "NO",
+      "production_consumer": "NONE",
+      "public_api_used_by": [ "src/engine/cfd3d/fvm/FVMField.ts:import { UnitsEngine } from '../../physics/units/UnitsEngine';","src/engine/cfd3d/coupling/CouplingIteration.ts:import { ConvergenceStatus } from '../../physics/convergence/ConvergenceTypes';","src/engine/epc/dynamics/FlightDynamicsEngine.ts:} from '../../physics/dynamics/RigidBodyTypes';","src/engine/epc/dynamics/FlightDynamicsEngine.ts:import { RigidBodyDynamicsEngine } from '../../physics/dynamics/RigidBodyDynamicsEngine';","src/engine/epc/dynamics/EPC027EvidenceGenerator.ts:import { RigidBodyProperties } from '../../physics/dynamics/RigidBodyTypes';" ],
+      "classification": "DEAD_CODE"
+    }
+  ],
+  "final_summary": {
+    "total_engine_files": 2594,
+    "production_reachable_files": 1323,
+    "scaffold_files": 0,
+    "dead_code_files": 1271,
+    "unproven_files": 0,
+    "confirmed_production_engines": [ "assembly","fem","cfd3d","certification","evidence","provenance" ],
+    "confirmed_scaffold_engines": [ "" ],
+    "single_most_critical_gap": "Transitive reachability for core CAD and FEM kernels is not fully proven via industrial entry points.",
+    "single_most_solid_layer": "verification: extensive test coverage and direct reachability from QualityGate."
+  }
+}

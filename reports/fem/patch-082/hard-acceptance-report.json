@@ -1,0 +1,44 @@
+{
+  "verdict": "VERIFIED",
+  "totalChecks": 6,
+  "passedChecks": 6,
+  "failedChecks": 0,
+  "checks": [
+    {
+      "id": "RIGID_ROTATION_90",
+      "description": "Objectivity check for 90° rigid rotation",
+      "passed": true,
+      "details": "Strain is exactly zero"
+    },
+    {
+      "id": "RIGID_ROTATION_180",
+      "description": "Objectivity check for 180° rigid rotation",
+      "passed": true,
+      "details": "Strain is exactly zero"
+    },
+    {
+      "id": "PURE_STRETCH",
+      "description": "Jacobian check for pure stretch (lambda=1.5)",
+      "passed": true,
+      "details": "Jacobian = 1.5"
+    },
+    {
+      "id": "SIMPLE_SHEAR",
+      "description": "Jacobian check for simple shear (gamma=0.5)",
+      "passed": true,
+      "details": "Jacobian is exactly 1.0"
+    },
+    {
+      "id": "INVERSION_DETECTION",
+      "description": "Detection of element inversion (Negative Jacobian)",
+      "passed": true,
+      "details": "Negative J detected: -1"
+    },
+    {
+      "id": "POLAR_CONSISTENCY",
+      "description": "Consistency check for polar decomposition F = RU",
+      "passed": true,
+      "details": "F = RU exactly"
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "reportId": "SECP-GAP-03-FORENSIC-DISCOVERY",
+  "timestamp": "2026-09-28T03:35:30Z",
+  "engine": "SECP Revision & Execution Core",
+  "classification": "CASE_B_QUERY_BASED_IMPACT_CONTRACT",
+  "forensicFindings": {
+    "revisionCreation": {
+      "authority": "RevisionEngine",
+      "hashFormula": "sha256(entityId + revisionCode + contentHash + dependencyHash + parentRevisionId)",
+      "immutabilityEnforced": true
+    },
+    "dependencyTracking": {
+      "model": "DependencySnapshot",
+      "fields": ["entityId", "revisionId", "type", "isFloating"]
+    },
+    "impactAnalysis": {
+      "authority": "RevisionImpactAnalyzer",
+      "algorithm": "BFS Breadth-First Search over all revisions",
+      "supportedEntityTypes": ["PART", "ASSEMBLY", "DRAWING", "FEM_STUDY", "CFD_STUDY", "CAM_JOB", "EVIDENCE", "CONTROL_SYSTEM"],
+      "outputStatuses": ["STALE", "AFFECTED", "VALID"]
+    },
+    "observerPushMechanism": {
+      "exists": false,
+      "type": "NONE (SECP uses query/pull contract via RevisionEngine.getImpact())"
+    },
+    "executionBinding": {
+      "authority": "CoreExecutionAuthority",
+      "executionIdComputation": "Deterministic hash containing revisionHash",
+      "identityIsolation": true,
+      "bindingVerification": "GenericExecutionRegistry.verifyResultBinding checks expectedRevisionHash"
+    },
+    "persistence": {
+      "historicalLedger": "GenericExecutionRegistry -> IndexedDbEngine (SECP_AUTHORITATIVE_EXECUTION_LEDGER)",
+      "immutableHistory": true,
+      "staleResultHandling": "Preserved for audit, rejected for current truth queries"
+    }
+  }
+}

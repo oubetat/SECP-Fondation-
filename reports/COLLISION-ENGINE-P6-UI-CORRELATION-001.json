@@ -1,0 +1,7 @@
+{
+  "reportId": "COLLISION-ENGINE-P6-UI-CORRELATION-001",
+  "timestampIso": "2026-10-02T08:17:49.210Z",
+  "uiRule5Enforced": "UI Observes Truth; UI Does Not Create Truth",
+  "correlationVerified": true,
+  "verdict": "PASSED"
+}

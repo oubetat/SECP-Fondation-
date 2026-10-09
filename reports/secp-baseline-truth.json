@@ -1,0 +1,4404 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-09-17T07:23:43.093Z",
+  "summary": {
+    "working": 39,
+    "failed": 0,
+    "unproven": 42,
+    "simulated": 0,
+    "productionReady": 15
+  },
+  "capabilities": [
+    {
+      "id": "cad_geometry",
+      "domain": "CAD",
+      "capability": "Geometry",
+      "status": "WORKING",
+      "implementationEvidence": [
+        {
+          "id": "E-SRC-cad_geometry-1",
+          "type": "SOURCE",
+          "reference": "src/engine/geometry/",
+          "description": "Discovered source module (711 lines, markers: NONE)",
+          "verified": true
+        },
+        {
+          "id": "E-SRC-cad_geometry-2",
+          "type": "SOURCE",
+          "reference": "src/engine/cadKernel.ts",
+          "description": "Discovered source module (644 lines, markers: NONE)",
+          "verified": true
+        }
+      ],
+      "executionEvidence": [
+        {
+          "id": "E-EXEC-cad_geometry-1",
+          "type": "EXECUTION",
+          "reference": "src/engine/cadKernel.ts",
+          "description": "Verified executable logic in: src/engine/cadKernel.ts",
+          "verified": true
+        }
+      ],
+      "testEvidence": [
+        {
+          "id": "E-GATE-cad_geometry-1",
+          "type": "GATE",
+          "reference": "src/engine/validation/GeometryValidationEngine.ts",
+          "description": "Discovered validation gate: src/engine/validation/GeometryValidationEngine.ts",
+          "verified": true
+        }
+      ],
+      "adversarialEvidence": [],
+      "limitations": [
+        "Evaluated at basic primitive & topological edge levels."
+      ],
+      "confidence": "HIGH",
+      "provenance": {
+        "sourceFiles": [
+          "src/engine/geometry/",
+          "src/engine/cadKernel.ts"
+        ],
+        "tests": [],
+        "gates": [
+          "src/engine/validation/GeometryValidationEngine.ts"
+        ]
+      },
+      "timestamp": "2026-09-17T07:23:42.929Z"
+    },
+    {
+      "id": "cad_b_rep",
+      "domain": "CAD",
+      "capability": "B-Rep",
+      "status": "UNPROVEN",
+      "implementationEvidence": [
+        {
+          "id": "E-SRC-cad_b_rep-1",
+          "type": "SOURCE",
+          "reference": "src/engine/topology/",
+          "description": "Discovered source module (3302 lines, markers: HARDCODED_VERDICT_PATTERN)",
+          "verified": true
+        }
+      ],
+      "executionEvidence": [],
+      "testEvidence": [
+        {
+          "id": "E-GATE-cad_b_rep-1",
+          "type": "GATE",
+          "reference": "src/engine/validation/CadFidelityValidator.ts",
+          "description": "Discovered validation gate: src/engine/validation/CadFidelityValidator.ts",
+          "verified": true
+        }
+      ],
+      "adversarialEvidence": [],
+      "limitations": [
+        "Non-manifold topology healing unverified."
+      ],
+      "confidence": "LOW",
+      "provenance": {
+        "sourceFiles": [
+          "src/engine/topology/"
+        ],
+        "tests": [],
+        "gates": [
+          "src/engine/validation/CadFidelityValidator.ts"
+        ]
+      },
+      "timestamp": "2026-09-17T07:23:42.931Z"
+    },
+    {
+      "id": "cad_nurbs",
+      "domain": "CAD",
+      "capability": "NURBS",
+      "status": "UNPROVEN",
+      "implementationEvidence": [
+        {
+          "id": "E-SRC-cad_nurbs-1",
+          "type": "SOURCE",
+          "reference": "src/engine/nurbs-geometry/",
+          "description": "Discovered source module (985 lines, markers: NONE)",
+          "verified": true
+        },
+        {
+          "id": "E-SRC-cad_nurbs-2",
+          "type": "SOURCE",
+          "reference": "src/engine/surface/",
+          "description": "Discovered source module (748 lines, markers: NONE)",
+          "verified": true
+        }
+      ],
+      "executionEvidence": [],
+      "testEvidence": [],
+      "adversarialEvidence": [],
+      "limitations": [
+        "High-degree rational B-spline knot insertion unverified."
+      ],
+      "confidence": "LOW",
+      "provenance": {
+        "sourceFiles": [
+          "src/engine/nurbs-geometry/",
+          "src/engine/surface/"
+        ],
+        "tests": [],
+        "gates": []
+      },
+      "timestamp": "2026-09-17T07:23:42.933Z"
+    },
+    {
+      "id": "cad_boolean",
+      "domain": "CAD",
+      "capability": "Boolean",
+      "status": "UNPROVEN",
+      "implementationEvidence": [],
+      "executionEvidence": [],
+      "testEvidence": [],
+      "adversarialEvidence": [],
+      "limitations": [
+        "Co-planar boundary intersections require robust perturbation engine."
+      ],
+      "confidence": "NONE",
+      "provenance": {
+        "sourceFiles": [],
+        "tests": [],
+        "gates": []
+      },
+      "timestamp": "2026-09-17T07:23:42.933Z"
+    },
+    {
+      "id": "cad_topology_healing",
+      "domain": "CAD",
+      "capability": "Topology Healing",
+      "status": "UNPROVEN",
+      "implementationEvidence": [
+        {
+          "id": "E-SRC-cad_topology_healing-1",
+          "type": "SOURCE",
+          "reference": "src/engine/topology/",
+          "description": "Discovered source module (3302 lines, markers: HARDCODED_VERDICT_PATTERN)",
+          "verified": true
+        }
+      ],
+      "executionEvidence": [],
+      "testEvidence": [],
+      "adversarialEvidence": [],
+      "limitations": [
+        "Automated gap stitching unproven for large dirty STEP imports."
+      ],
+      "confidence": "LOW",
+      "provenance": {
+        "sourceFiles": [
+          "src/engine/topology/"
+        ],
+        "tests": [],
+        "gates": []
+      },
+      "timestamp": "2026-09-17T07:23:42.935Z"
+    },
+    {
+      "id": "cad_parametric_modeling",
+      "domain": "CAD",
+      "capability": "Parametric Modeling",
+      "status": "WORKING",
+      "implementationEvidence": [
+        {
+          "id": "E-SRC-cad_parametric_modeling-1",
+          "type": "SOURCE",
+          "reference": "src/engine/parametric-cad/",
+          "description": "Discovered source module (1344 lines, markers: NONE)",
+          "verified": true
+        },
+        {
+          "id": "E-SRC-cad_parametric_modeling-2",
+          "type": "SOURCE",
+          "reference": "src/engine/parametric.ts",
+          "description": "Discovered source module (99 lines, markers: NONE)",
+          "verified": true
+        },
+        {
+          "id": "E-SRC-cad_parametric_modeling-3",
+          "type": "SOURCE",
+          "reference": "src/engine/featureTree.ts",
+          "description": "Discovered source module (16 lines, markers: NONE)",
+          "verified": true
+        }
+      ],
+      "executionEvidence": [
+        {
+          "id": "E-EXEC-cad_parametric_modeling-1",
+          "type": "EXECUTION",
+          "reference": "src/engine/parametric.ts",
+          "description": "Verified executable logic in: src/engine/parametric.ts",
+          "verified": true
+        }
+      ],
+      "testEvidence": [],
+      "adversarialEvidence": [],
+      "limitations": [
+        "Cyclic feature dependency resolution unverified."
+      ],
+      "confidence": "MEDIUM",
+      "provenance": {
+        "sourceFiles": [
+          "src/engine/parametric-cad/",
+          "src/engine/parametric.ts",
+          "src/engine/featureTree.ts"
+        ],
+        "tests": [],
+        "gates": []
+      },
+      "timestamp": "2026-09-17T07:23:42.937Z"
+    },
+    {
+      "id": "cad_gcs",
+      "domain": "CAD",
+      "capability": "GCS",
+      "status": "UNPROVEN",
+      "implementationEvidence": [
+        {
+          "id": "E-SRC-cad_gcs-1",
+          "type": "SOURCE",
+          "reference": "src/engine/sketcher.ts",
+          "description": "Discovered source module (149 lines, markers: NONE)",
+          "verified": true
+        }
+      ],
+      "executionEvidence": [],
+      "testEvidence": [],
+      "adversarialEvidence": [],
+      "limitations": [
+        "Geometric constraint solver under-constrained state bifurcation unverified."
+      ],
+      "confidence": "LOW",
+      "provenance": {
+        "sourceFiles": [
+          "src/engine/sketcher.ts"
+        ],
+        "tests": [],
+        "gates": []
+      },
+      "timestamp": "2026-09-17T07:23:42.937Z"
+    },
+    {
+      "id": "cad_assembly",
+      "domain": "CAD",
+      "capability": "Assembly",
+      "status": "WORKING",
+      "implementationEvidence": [
+        {
+          "id": "E-SRC-cad_assembly-1",
+          "type": "SOURCE",
+          "reference": "src/engine/assembly.ts",
+          "description": "Discovered source module (389 lines, markers: NONE)",
+          "verified": true
+        },
+        {
+          "id": "E-SRC-cad_assembly-2",
+          "type": "SOURCE",
+          "reference": "src/engine/assembly/",
+          "description": "Discovered source module (38945 lines, markers: HARDCODED_VERDICT_PATTERN)",
+          "verified": true
+        },
+        {
+          "id": "E-SRC-cad_assembly-3",
+          "type": "SOURCE",
+          "reference": "src/engine/assembly-intelligence/",
+          "description": "Discovered source module (834 lines, markers: NONE)",
+          "verified": true
+        }
+      ],
+      "executionEvidence": [
+        {
+          "id": "E-EXEC-cad_assembly-1",
+          "type": "EXECUTION",
+          "reference": "src/engine/assembly.ts",
+          "description": "Verified executable logic in: src/engine/assembly.ts",
+          "verified": true
+        }
+      ],
+      "testEvidence": [],
+      "adversarialEvidence": [],
+      "limitations": [
+        "Mating kinematic degree-of-freedom solver is basic."
+      ],
+      "confidence": "MEDIUM",
+      "provenance": {
+        "sourceFiles": [
+          "src/engine/assembly.ts",
+          "src/engine/assembly/",
+          "src/engine/assembly-intelligence/"
+        ],
+        "tests": [],
+        "gates": []
+      },
+      "timestamp": "2026-09-17T07:23:42.967Z"
+    },
+    {
+      "id": "cad_step_ap242",
+      "domain": "CAD",
+      "capability": "STEP/AP242",
+      "status": "UNPROVEN",
+      "implementationEvidence": [],
+      "executionEvidence": [],
+      "testEvidence": [
+        {
+          "id": "E-GATE-cad_step_ap242-1",
+          "type": "GATE",
+          "reference": "src/engine/validation/SECP080AP242VerificationEngine.ts",
+          "description": "Discovered validation gate: src/engine/validation/SECP080AP242VerificationEngine.ts",
+          "verified": true
+        }
+      ],
+      "adversarialEvidence": [
+        {
+          "id": "E-ADV-cad_step_ap242-1",
+          "type": "TEST",
+          "reference": "src/engine/validation/SECP080AdversarialEngine.ts",
+          "description": "Adversarial / perturbation harness: src/engine/validation/SECP080AdversarialEngine.ts",
+          "verified": true
+        }
+      ],
+      "limitations": [
+        "Semantic PMI tessellation validation in progress."
+      ],
+      "confidence": "NONE",
+      "provenance": {
+        "sourceFiles": [],
+        "tests": [],
+        "gates": [
+          "src/engine/validation/SECP080AP242VerificationEngine.ts"
+        ]
+      },
+      "timestamp": "2026-09-17T07:23:42.967Z"
+    },
+    {
+      "id": "cad_iges",
+      "domain": "CAD",
+      "capability": "IGES",
+      "status": "UNPROVEN",
+      "implementationEvidence": [],
+      "executionEvidence": [],
+      "testEvidence": [],
+      "adversarialEvidence": [],
+      "limitations": [
+        "Type 144 trimmed surface support unproven."
+      ],
+      "confidence": "NONE",
+      "provenance": {
+        "sourceFiles": [],
+        "tests": [],
+        "gates": []
+      },
+      "timestamp": "2026-09-17T07:23:42.967Z"
+    },
+    {
+      "id": "cad_jt",
+      "domain": "CAD",
+      "capability": "JT",
+      "status": "UNPROVEN",
+      "implementationEvidence": [],
+      "executionEvidence": [],
+      "testEvidence": [],
+      "adversarialEvidence": [],
+      "limitations": [
+        "JT compression layer not fully implemented."
+      ],
+      "confidence": "NONE",
+      "provenance": {
+        "sourceFiles": [],
+        "tests": [],
+        "gates": []
+      },
+      "timestamp": "2026-09-17T07:23:42.967Z"
+    },
+    {
+      "id": "physics_units",
+      "domain": "PHYSICS",
+      "capability": "Units",
+      "status": "WORKING",
+      "implementationEvidence": [
+        {
+          "id": "E-SRC-physics_units-1",
+          "type": "SOURCE",
+          "reference": "src/engine/units.ts",
+          "description": "Discovered source module (143 lines, markers: NONE)",
+          "verified": true
+        }
+      ],
+      "executionEvidence": [
+        {
+          "id": "E-EXEC-physics_units-1",
+          "type": "EXECUTION",
+          "reference": "src/engine/units.ts",
+          "description": "Verified executable logic in: src/engine/units.ts",
+          "verified": true
+        }
+      ],
+      "testEvidence": [],
+      "adversarialEvidence": [],
+      "limitations": [
+        "SI and Imperial conversions verified; custom thermodynamic unit scales unproven."
+      ],
+      "confidence": "MEDIUM",
+      "provenance": {
+        "sourceFiles": [
+          "src/engine/units.ts"
+        ],
+        "tests": [],
+        "gates": []
+      },
+      "timestamp": "2026-09-17T07:23:42.967Z"
+    },
+    {
+      "id": "physics_materials",
+      "domain": "PHYSICS",
+      "capability": "Materials",
+      "status": "WORKING",
+      "implementationEvidence": [
+        {
+          "id": "E-SRC-physics_materials-1",
+          "type": "SOURCE",
+          "reference": "src/engine/materials.ts",
+          "description": "Discovered source module (213 lines, markers: NONE)",
+          "verified": true
+        }
+      ],
+      "executionEvidence": [
+        {
+          "id": "E-EXEC-physics_materials-1",
+          "type": "EXECUTION",
+          "reference": "src/engine/materials.ts",
+          "description": "Verified executable logic in: src/engine/materials.ts",
+          "verified": true
+        }
+      ],
+      "testEvidence": [],
+      "adversarialEvidence": [],
+      "limitations": [
+        "Linear isotropic material properties implemented; hyperelastic/anisotropic unproven."
+      ],
+      "confidence": "MEDIUM",
+      "provenance": {
+        "sourceFiles": [
+          "src/engine/materials.ts"
+        ],
+        "tests": [],
+        "gates": []
+      },
+      "timestamp": "2026-09-17T07:23:42.968Z"
+    },
+    {
+      "id": "physics_mesh",
+      "domain": "PHYSICS",
+      "capability": "Mesh",
+      "status": "WORKING",
+      "implementationEvidence": [
+        {
+          "id": "E-SRC-physics_mesh-1",
+          "type": "SOURCE",
+          "reference": "src/engine/simulationFramework.ts",
+          "description": "Discovered source module (144 lines, markers: NONE)",
+          "verified": true
+        }
+      ],
+      "executionEvidence": [
+        {
+          "id": "E-EXEC-physics_mesh-1",
+          "type": "EXECUTION",
+          "reference": "src/engine/validation/SECP077CleanRoomKernel.ts",
+          "description": "Verified executable logic in: src/engine/validation/SECP077CleanRoomKernel.ts",
+          "verified": true
+        }
+      ],
+      "testEvidence": [
+        {
+          "id": "E-TST-physics_mesh-1",
+          "type": "TEST",
+          "reference": "src/engine/validation/__tests__/SECP077ForensicModalIsolation.test.ts",
+          "description": "Discovered test suite candidate: src/engine/validation/__tests__/SECP077ForensicModalIsolation.test.ts",
+          "verified": true
+        },
+        {
+          "id": "E-GATE-physics_mesh-1",
+          "type": "GATE",
+          "reference": "src/engine/validation/SECP077CleanRoomKernel.ts",
+          "description": "Discovered validation gate: src/engine/validation/SECP077CleanRoomKernel.ts",
+          "verified": true
+        }
+      ],
+      "adversarialEvidence": [],
+      "limitations": [
+        "Unstructured tetrahedral boundary layer meshing unproven."
+      ],
+      "confidence": "HIGH",
+      "provenance": {
+        "sourceFiles": [
+          "src/engine/simulationFramework.ts"
+        ],
+        "tests": [
+          "src/engine/validation/__tests__/SECP077ForensicModalIsolation.test.ts"
+        ],
+        "gates": [
+          "src/engine/validation/SECP077CleanRoomKernel.ts"
+        ]
+      },
+      "timestamp": "2026-09-17T07:23:42.968Z"
+    },
+    {
+      "id": "physics_solver_infrastructure",
+      "domain": "PHYSICS",
+      "capability": "Solver Infrastructure",
+      "status": "PRODUCTION_READY",
+      "implementationEvidence": [
+        {
+          "id": "E-SRC-physics_solver_infrastructure-1",
+          "type": "SOURCE",
+          "reference": "src/engine/simulationFramework.ts",
+          "description": "Discovered source module (144 lines, markers: NONE)",
+          "verified": true
+        },
+        {
+          "id": "E-SRC-physics_solver_infrastructure-2",
+          "type": "SOURCE",
+          "reference": "src/engine/validation/SECP075CleanRoomKernel.ts",
+          "description": "Discovered source module (525 lines, markers: NONE)",
+          "verified": true
+        }
+      ],
+      "executionEvidence": [
+        {
+          "id": "E-EXEC-physics_solver_infrastructure-1",
+          "type": "EXECUTION",
+          "reference": "src/engine/validation/SECP075LinearAlgebra.ts",
+          "description": "Verified executable logic in: src/engine/validation/SECP075LinearAlgebra.ts",
+          "verified": true
+        }
+      ],
+      "testEvidence": [
+        {
+          "id": "E-TST-physics_solver_infrastructure-1",
+          "type": "TEST",
+          "reference": "src/engine/validation/__tests__/SECP076SolverIntegrity.test.ts",
+          "description": "Discovered test suite candidate: src/engine/validation/__tests__/SECP076SolverIntegrity.test.ts",
+          "verified": true
+        },
+        {
+          "id": "E-GATE-physics_solver_infrastructure-1",
+          "type": "GATE",
+          "reference": "src/engine/validation/SECP076SolverIntegrityKernel.ts",
+          "description": "Discovered validation gate: src/engine/validation/SECP076SolverIntegrityKernel.ts",
+          "verified": true
+        }
+      ],
+      "adversarialEvidence": [
+        {
+          "id": "E-ADV-physics_solver_infrastructure-1",
+          "type": "TEST",
+          "reference": "src/engine/validation/SECP076PerturbationEngine.ts",
+          "description": "Adversarial / perturbation harness: src/engine/validation/SECP076PerturbationEngine.ts",
+          "verified": true
+        }
+      ],
+      "limitations": [
+        "Direct and PCG solvers active; algebraic multigrid unproven."
+      ],
+      "confidence": "HIGH",
+      "provenance": {
+        "sourceFiles": [
+          "src/engine/simulationFramework.ts",
+          "src/engine/validation/SECP075CleanRoomKernel.ts"
+        ],
+        "tests": [
+          "src/engine/validation/__tests__/SECP076SolverIntegrity.test.ts"
+        ],
+        "gates": [
+          "src/engine/validation/SECP076SolverIntegrityKernel.ts"
+        ]
+      },
+      "timestamp": "2026-09-17T07:23:42.968Z"
+    },
+    {
+      "id": "physics_convergence",
+      "domain": "PHYSICS",
+      "capability": "Convergence",
+      "status": "PRODUCTION_READY",
+      "implementationEvidence": [
+        {
+          "id": "E-SRC-physics_convergence-1",
+          "type": "SOURCE",
+          "reference": "src/engine/validation/SECP075ForensicVerificationEngine.ts",
+          "description": "Discovered source module (857 lines, markers: NONE)",
+          "verified": true
+        }
+      ],
+      "executionEvidence": [
+        {
+          "id": "E-EXEC-physics_convergence-1",
+          "type": "EXECUTION",
+          "reference": "src/engine/validation/SECP075CleanRoomKernel.ts",
+          "description": "Verified executable logic in: src/engine/validation/SECP075CleanRoomKernel.ts",
+          "verified": true
+        }
+      ],
+      "testEvidence": [
+        {
+          "id": "E-TST-physics_convergence-1",
+          "type": "TEST",
+          "reference": "src/engine/validation/__tests__/SECP075ForensicVerificationEngine.test.ts",
+          "description": "Discovered test suite candidate: src/engine/validation/__tests__/SECP075ForensicVerificationEngine.test.ts",
+          "verified": true
+        },
+        {
+          "id": "E-GATE-physics_convergence-1",
+          "type": "GATE",
+          "reference": "src/engine/validation/HardAcceptanceGate075.ts",
+          "description": "Discovered validation gate: src/engine/validation/HardAcceptanceGate075.ts",
+          "verified": true
+        }
+      ],
+      "adversarialEvidence": [
+        {
+          "id": "E-ADV-physics_convergence-1",
+          "type": "TEST",
+          "reference": "src/engine/validation/SECP075AdversarialEngine.ts",
+          "description": "Adversarial / perturbation harness: src/engine/validation/SECP075AdversarialEngine.ts",
+          "verified": true
+        }
+      ],
+      "limitations": [
+        "Monotonic energy norm convergence verified on standard test geometries."
+      ],
+      "confidence": "HIGH",
+      "provenance": {
+        "sourceFiles": [
+          "src/engine/validation/SECP075ForensicVerificationEngine.ts"
+        ],
+        "tests": [
+          "src/engine/validation/__tests__/SECP075ForensicVerificationEngine.test.ts"
+        ],
+        "gates": [
+          "src/engine/validation/HardAcceptanceGate075.ts"
+        ]
+      },
+      "timestamp": "2026-09-17T07:23:42.969Z"
+    },
+    {
+      "id": "physics_conservation",
+      "domain": "PHYSICS",
+      "capability": "Conservation",
+      "status": "WORKING",
+      "implementationEvidence": [
+        {
+          "id": "E-SRC-physics_conservation-1",
+          "type": "SOURCE",
+          "reference": "src/engine/cfd3d/SECP082IndependentCFDVerifier.ts",
+          "description": "Discovered source module (523 lines, markers: NONE)",
+          "verified": true
+        }
+      ],
+      "executionEvidence": [
+        {
+          "id": "E-EXEC-physics_conservation-1",
+          "type": "EXECUTION",
+          "reference": "src/engine/cfd3d/SECP082IndependentCFDVerifier.ts",
+          "description": "Verified executable logic in: src/engine/cfd3d/SECP082IndependentCFDVerifier.ts",
+          "verified": true
+        }
+      ],
+      "testEvidence": [
+        {
+          "id": "E-TST-physics_conservation-1",
+          "type": "TEST",
+          "reference": "src/engine/cfd3d/__tests__/SECP082IndependentCFDVerifier.test.ts",
+          "description": "Discovered test suite candidate: src/engine/cfd3d/__tests__/SECP082IndependentCFDVerifier.test.ts",
+          "verified": true
+        },
+        {
+          "id": "E-GATE-physics_conservation-1",
+          "type": "GATE",
+          "reference": "src/engine/validation/HardAcceptanceGate082.ts",
+          "description": "Discovered validation gate: src/engine/validation/HardAcceptanceGate082.ts",
+          "verified": true
+        }
+      ],
+      "adversarialEvidence": [],
+      "limitations": [
+        "Boundary flux mass imbalance detection active; energy conservation unproven."
+      ],
+      "confidence": "HIGH",
+      "provenance": {
+        "sourceFiles": [
+          "src/engine/cfd3d/SECP082IndependentCFDVerifier.ts"
+        ],
+        "tests": [
+          "src/engine/cfd3d/__tests__/SECP082IndependentCFDVerifier.test.ts"
+        ],
+        "gates": [
+          "src/engine/validation/HardAcceptanceGate082.ts"
+        ]
+      },
+      "timestamp": "2026-09-17T07:23:42.969Z"
+    },
+    {
+      "id": "cfd_finite_volume",
+      "domain": "CFD",
+      "capability": "Finite Volume",
+      "status": "WORKING",
+      "implementationEvidence": [
+        {
+          "id": "E-SRC-cfd_finite_volume-1",
+          "type": "SOURCE",
+          "reference": "src/engine/cfdEngine.ts",
+          "description": "Discovered source module (126 lines, markers: NONE)",
+          "verified": true
+        },
+        {
+          "id": "E-SRC-cfd_finite_volume-2",
+          "type": "SOURCE",
+          "reference": "src/engine/cfd3d/",
+          "description": "Discovered source module (45171 lines, markers: HARDCODED_VERDICT_PATTERN)",
+          "verified": true
+        }
+      ],
+      "executionEvidence": [
+        {
+          "id": "E-EXEC-cfd_finite_volume-1",
+          "type": "EXECUTION",
+          "reference": "src/engine/cfd3d/SECP082IndependentCFDVerifier.ts",
+          "description": "Verified executable logic in: src/engine/cfd3d/SECP082IndependentCFDVerifier.ts",
+          "verified": true
+        }
+      ],
+      "testEvidence": [
+        {
+          "id": "E-TST-cfd_finite_volume-1",
+          "type": "TEST",
+          "reference": "src/engine/cfd3d/__tests__/SECP082IndependentCFDVerifier.test.ts",
+          "description": "Discovered test suite candidate: src/engine/cfd3d/__tests__/SECP082IndependentCFDVerifier.test.ts",
+          "verified": true
+        },
+        {
+          "id": "E-GATE-cfd_finite_volume-1",
+          "type": "GATE",
+          "reference": "src/engine/validation/HardAcceptanceGate082.ts",
+          "description": "Discovered validation gate: src/engine/validation/HardAcceptanceGate082.ts",
+          "verified": true
+        }
+      ],
+      "adversarialEvidence": [],
+      "limitations": [
+        "Cell-centered collocated finite volume discretization for structured/hex grids."
+      ],
+      "confidence": "HIGH",
+      "provenance": {
+        "sourceFiles": [
+          "src/engine/cfdEngine.ts",
+          "src/engine/cfd3d/"
+        ],
+        "tests": [
+          "src/engine/cfd3d/__tests__/SECP082IndependentCFDVerifier.test.ts"
+        ],
+        "gates": [
+          "src/engine/validation/HardAcceptanceGate082.ts"
+        ]
+      },
+      "timestamp": "2026-09-17T07:23:43.011Z"
+    },
+    {
+      "id": "cfd_flux",
+      "domain": "CFD",
+      "capability": "Flux",
+      "status": "WORKING",
+      "implementationEvidence": [
+        {
+          "id": "E-SRC-cfd_flux-1",
+          "type": "SOURCE",
+          "reference": "src/engine/cfd3d/SECP082IndependentCFDVerifier.ts",
+          "description": "Discovered source module (523 lines, markers: NONE)",
+          "verified": true
+        },
+        {
+          "id": "E-SRC-cfd_flux-2",
+          "type": "SOURCE",
+          "reference": "src/engine/cfdEngine.ts",
+          "description": "Discovered source module (126 lines, markers: NONE)",
+          "verified": true
+        }
+      ],
+      "executionEvidence": [
+        {
+          "id": "E-EXEC-cfd_flux-1",
+          "type": "EXECUTION",
+          "reference": "src/engine/cfd3d/SECP082IndependentCFDVerifier.ts",
+          "description": "Verified executable logic in: src/engine/cfd3d/SECP082IndependentCFDVerifier.ts",
+          "verified": true
+        }
+      ],
+      "testEvidence": [
+        {
+          "id": "E-TST-cfd_flux-1",
+          "type": "TEST",
+          "reference": "src/engine/cfd3d/__tests__/SECP082IndependentCFDVerifier.test.ts",
+          "description": "Discovered test suite candidate: src/engine/cfd3d/__tests__/SECP082IndependentCFDVerifier.test.ts",
+          "verified": true
+        },
+        {
+          "id": "E-GATE-cfd_flux-1",
+          "type": "GATE",
+          "reference": "src/engine/validation/HardAcceptanceGate082.ts",
+          "description": "Discovered validation gate: src/engine/validation/HardAcceptanceGate082.ts",
+          "verified": true
+        }
+      ],
+      "adversarialEvidence": [],
+      "limitations": [
+        "Rhie-Chow momentum flux interpolation active."
+      ],
+      "confidence": "HIGH",
+      "provenance": {
+        "sourceFiles": [
+          "src/engine/cfd3d/SECP082IndependentCFDVerifier.ts",
+          "src/engine/cfdEngine.ts"
+        ],
+        "tests": [
+          "src/engine/cfd3d/__tests__/SECP082IndependentCFDVerifier.test.ts"
+        ],
+        "gates": [
+          "src/engine/validation/HardAcceptanceGate082.ts"
+        ]
+      },
+      "timestamp": "2026-09-17T07:23:43.012Z"
+    },
+    {
+      "id": "cfd_pressure_velocity_coupling",
+      "domain": "CFD",
+      "capability": "Pressure-Velocity Coupling",
+      "status": "WORKING",
+      "implementationEvidence": [
+        {
+          "id": "E-SRC-cfd_pressure_velocity_coupling-1",
+          "type": "SOURCE",
+          "reference": "src/engine/cfdEngine.ts",
+          "description": "Discovered source module (126 lines, markers: NONE)",
+          "verified": true
+        }
+      ],
+      "executionEvidence": [
+        {
+          "id": "E-EXEC-cfd_pressure_velocity_coupling-1",
+          "type": "EXECUTION",
+          "reference": "src/engine/cfdEngine.ts",
+          "description": "Verified executable logic in: src/engine/cfdEngine.ts",
+          "verified": true
+        }
+      ],
+      "testEvidence": [],
+      "adversarialEvidence": [],
+      "limitations": [
+        "SIMPLE algorithm implemented; PISO and SIMPLEC unproven."
+      ],
+      "confidence": "MEDIUM",
+      "provenance": {
+        "sourceFiles": [
+          "src/engine/cfdEngine.ts"
+        ],
+        "tests": [],
+        "gates": []
+      },
+      "timestamp": "2026-09-17T07:23:43.012Z"
+    },
+    {
+      "id": "cfd_linear_solvers",
+      "domain": "CFD",
+      "capability": "Linear Solvers",
+      "status": "PRODUCTION_READY",
+      "implementationEvidence": [
+        {
+          "id": "E-SRC-cfd_linear_solvers-1",
+          "type": "SOURCE",
+          "reference": "src/engine/validation/SECP075LinearAlgebra.ts",
+          "description": "Discovered source module (451 lines, markers: NONE)",
+          "verified": true
+        }
+      ],
+      "executionEvidence": [
+        {
+          "id": "E-EXEC-cfd_linear_solvers-1",
+          "type": "EXECUTION",
+          "reference": "src/engine/validation/SECP075LinearAlgebra.ts",
+          "description": "Verified executable logic in: src/engine/validation/SECP075LinearAlgebra.ts",
+          "verified": true
+        }
+      ],
+      "testEvidence": [
+        {
+          "id": "E-TST-cfd_linear_solvers-1",
+          "type": "TEST",
+          "reference": "src/engine/validation/__tests__/SECP076SolverIntegrity.test.ts",
+          "description": "Discovered test suite candidate: src/engine/validation/__tests__/SECP076SolverIntegrity.test.ts",
+          "verified": true
+        },
+        {
+          "id": "E-GATE-cfd_linear_solvers-1",
+          "type": "GATE",
+          "reference": "src/engine/validation/SECP076SolverIntegrityKernel.ts",
+          "description": "Discovered validation gate: src/engine/validation/SECP076SolverIntegrityKernel.ts",
+          "verified": true
+        }
+      ],
+      "adversarialEvidence": [
+        {
+          "id": "E-ADV-cfd_linear_solvers-1",
+          "type": "TEST",
+          "reference": "src/engine/validation/SECP076PerturbationEngine.ts",
+          "description": "Adversarial / perturbation harness: src/engine/validation/SECP076PerturbationEngine.ts",
+          "verified": true
+        }
+      ],
+      "limitations": [
+        "BiCGSTAB & Conjugate Gradient active with Jacobi preconditioning."
+      ],
+      "confidence": "HIGH",
+      "provenance": {
+        "sourceFiles": [
+          "src/engine/validation/SECP075LinearAlgebra.ts"
+        ],
+        "tests": [
+          "src/engine/validation/__tests__/SECP076SolverIntegrity.test.ts"
+        ],
+        "gates": [
+          "src/engine/validation/SECP076SolverIntegrityKernel.ts"
+        ]
+      },
+      "timestamp": "2026-09-17T07:23:43.012Z"
+    },
+    {
+      "id": "cfd_laminar_flow",
+      "domain": "CFD",
+      "capability": "Laminar Flow",
+      "status": "WORKING",
+      "implementationEvidence": [
+        {
+          "id": "E-SRC-cfd_laminar_flow-1",
+          "type": "SOURCE",
+          "reference": "src/engine/cfdEngine.ts",
+          "description": "Discovered source module (126 lines, markers: NONE)",
+          "verified": true
+        }
+      ],
+      "executionEvidence": [
+        {
+          "id": "E-EXEC-cfd_laminar_flow-1",
+          "type": "EXECUTION",
+          "reference": "src/engine/cfdEngine.ts",
+          "description": "Verified executable logic in: src/engine/cfdEngine.ts",
+          "verified": true
+        }
+      ],
+      "testEvidence": [],
+      "adversarialEvidence": [],
+      "limitations": [
+        "2D/3D low-Reynolds poiseuille/cavity flow verified."
+      ],
+      "confidence": "MEDIUM",
+      "provenance": {
+        "sourceFiles": [
+          "src/engine/cfdEngine.ts"
+        ],
+        "tests": [],
+        "gates": []
+      },
+      "timestamp": "2026-09-17T07:23:43.012Z"
+    },
+    {
+      "id": "cfd_rans",
+      "domain": "CFD",
+      "capability": "RANS",
+      "status": "UNPROVEN",
+      "implementationEvidence": [
+        {
+          "id": "E-SRC-cfd_rans-1",
+          "type": "SOURCE",
+          "reference": "src/engine/cfdEngine.ts",
+          "description": "Discovered source module (126 lines, markers: NONE)",
+          "verified": true
+        }
+      ],
+      "executionEvidence": [],
+      "testEvidence": [],
+      "adversarialEvidence": [],
+      "limitations": [
+        "Reynolds-averaged Navier-Stokes closure requires boundary layer wall model."
+      ],
+      "confidence": "LOW",
+      "provenance": {
+        "sourceFiles": [
+          "src/engine/cfdEngine.ts"
+        ],
+        "tests": [],
+        "gates": []
+      },
+      "timestamp": "2026-09-17T07:23:43.012Z"
+    },
+    {
+      "id": "cfd_turbulence",
+      "domain": "CFD",
+      "capability": "Turbulence",
+      "status": "UNPROVEN",
+      "implementationEvidence": [
+        {
+          "id": "E-SRC-cfd_turbulence-1",
+          "type": "SOURCE",
+          "reference": "src/engine/cfdEngine.ts",
+          "description": "Discovered source module (126 lines, markers: NONE)",
+          "verified": true
+        }
+      ],
+      "executionEvidence": [],
+      "testEvidence": [],
+      "adversarialEvidence": [],
+      "limitations": [
+        "k-epsilon model structure exists; high-Re wall functions unproven."
+      ],
+      "confidence": "LOW",
+      "provenance": {
+        "sourceFiles": [
+          "src/engine/cfdEngine.ts"
+        ],
+        "tests": [],
+        "gates": []
+      },
+      "timestamp": "2026-09-17T07:23:43.012Z"
+    },
+    {
+      "id": "cfd_sst_k_omega",
+      "domain": "CFD",
+      "capability": "SST k-omega",
+      "status": "UNPROVEN",
+      "implementationEvidence": [
+        {
+          "id": "E-SRC-cfd_sst_k_omega-1",
+          "type": "SOURCE",
+          "reference": "src/engine/cfdEngine.ts",
+          "description": "Discovered source module (126 lines, markers: NONE)",
+          "verified": true
+        }
+      ],
+      "executionEvidence": [],
+      "testEvidence": [],
+      "adversarialEvidence": [],
+      "limitations": [
+        "Menter SST blending functions unverified for complex 3D separation."
+      ],
+      "confidence": "LOW",
+      "provenance": {
+        "sourceFiles": [
+          "src/engine/cfdEngine.ts"
+        ],
+        "tests": [],
+        "gates": []
+      },
+      "timestamp": "2026-09-17T07:23:43.012Z"
+    },
+    {
+      "id": "cfd_compressible_flow",
+      "domain": "CFD",
+      "capability": "Compressible Flow",
+      "status": "WORKING",
+      "implementationEvidence": [
+        {
+          "id": "E-SRC-cfd_compressible_flow-1",
+          "type": "SOURCE",
+          "reference": "src/engine/cfd3d/solvers/compressible/CompressibleFlowSolver.ts",
+          "description": "Discovered source module (379 lines, markers: NONE)",
+          "verified": true
+        },
+        {
+          "id": "E-SRC-cfd_compressible_flow-2",
+          "type": "SOURCE",
+          "reference": "src/engine/cfd3d/solvers/compressible/CompressibleFluxCalculator.ts",
+          "description": "Discovered source module (131 lines, markers: NONE)",
+          "verified": true
+        },
+        {
+          "id": "E-SRC-cfd_compressible_flow-3",
+          "type": "SOURCE",
+          "reference": "src/engine/cfd3d/solvers/compressible/EquationOfState.ts",
+          "description": "Discovered source module (112 lines, markers: NONE)",
+          "verified": true
+        }
+      ],
+      "executionEvidence": [
+        {
+          "id": "E-EXEC-cfd_compressible_flow-1",
+          "type": "EXECUTION",
+          "reference": "src/engine/cfd3d/solvers/compressible/CompressibleFlowSolver.ts",
+          "description": "Verified executable logic in: src/engine/cfd3d/solvers/compressible/CompressibleFlowSolver.ts",
+          "verified": true
+        },
+        {
+          "id": "E-EXEC-cfd_compressible_flow-2",
+          "type": "EXECUTION",
+          "reference": "src/engine/cfd3d/solvers/compressible/HardAcceptanceGate253.ts",
+          "description": "Verified executable logic in: src/engine/cfd3d/solvers/compressible/HardAcceptanceGate253.ts",
+          "verified": true
+        }
+      ],
+      "testEvidence": [
+        {
+          "id": "E-TST-cfd_compressible_flow-1",
+          "type": "TEST",
+          "reference": "src/engine/cfd3d/solvers/compressible/__tests__/CompressibleFlow.test.ts",
+          "description": "Discovered test suite candidate: src/engine/cfd3d/solvers/compressible/__tests__/CompressibleFlow.test.ts",
+          "verified": true
+        },
+        {
+          "id": "E-GATE-cfd_compressible_flow-1",
+          "type": "GATE",
+          "reference": "src/engine/cfd3d/solvers/compressible/HardAcceptanceGate253.ts",
+          "description": "Discovered validation gate: src/engine/cfd3d/solvers/compressible/HardAcceptanceGate253.ts",
+          "verified": true
+        }
+      ],
+      "adversarialEvidence": [],
+      "limitations": [
+        "Lax-Friedrichs and Roe shock capturing active with positivity verification."
+      ],
+      "confidence": "HIGH",
+      "provenance": {
+        "sourceFiles": [
+          "src/engine/cfd3d/solvers/compressible/CompressibleFlowSolver.ts",
+          "src/engine/cfd3d/solvers/compressible/CompressibleFluxCalculator.ts",
+          "src/engine/cfd3d/solvers/compressible/EquationOfState.ts"
+        ],
+        "tests": [
+          "src/engine/cfd3d/solvers/compressible/__tests__/CompressibleFlow.test.ts"
+        ],
+        "gates": [
+          "src/engine/cfd3d/solvers/compressible/HardAcceptanceGate253.ts"
+        ]
+      },
+      "timestamp": "2026-09-17T07:23:43.013Z"
+    },
+    {
+      "id": "cfd_heat_transfer",
+      "domain": "CFD",
+      "capability": "Heat Transfer",
+      "status": "WORKING",
+      "implementationEvidence": [
+        {
+          "id": "E-SRC-cfd_heat_transfer-1",
+          "type": "SOURCE",
+          "reference": "src/engine/thermalCae.ts",
+          "description": "Discovered source module (90 lines, markers: NONE)",
+          "verified": true
+        }
+      ],
+      "executionEvidence": [
+        {
+          "id": "E-EXEC-cfd_heat_transfer-1",
+          "type": "EXECUTION",
+          "reference": "src/engine/thermalCae.ts",
+          "description": "Verified executable logic in: src/engine/thermalCae.ts",
+          "verified": true
+        }
+      ],
+      "testEvidence": [],
+      "adversarialEvidence": [],
+      "limitations": [
+        "Conduction & simple convection active; radiative radiation enclosure unproven."
+      ],
+      "confidence": "MEDIUM",
+      "provenance": {
+        "sourceFiles": [
+          "src/engine/thermalCae.ts"
+        ],
+        "tests": [],
+        "gates": []
+      },
+      "timestamp": "2026-09-17T07:23:43.013Z"
+    },
+    {
+      "id": "cfd_transient_cfd",
+      "domain": "CFD",
+      "capability": "Transient CFD",
+      "status": "UNPROVEN",
+      "implementationEvidence": [
+        {
+          "id": "E-SRC-cfd_transient_cfd-1",
+          "type": "SOURCE",
+          "reference": "src/engine/cfdEngine.ts",
+          "description": "Discovered source module (126 lines, markers: NONE)",
+          "verified": true
+        }
+      ],
+      "executionEvidence": [],
+      "testEvidence": [],
+      "adversarialEvidence": [],
+      "limitations": [
+        "Second-order backward Euler time integration unproven for vortex shedding."
+      ],
+      "confidence": "LOW",
+      "provenance": {
+        "sourceFiles": [
+          "src/engine/cfdEngine.ts"
+        ],
+        "tests": [],
+        "gates": []
+      },
+      "timestamp": "2026-09-17T07:23:43.014Z"
+    },
+    {
+      "id": "cfd_mesh_independence",
+      "domain": "CFD",
+      "capability": "Mesh Independence",
+      "status": "UNPROVEN",
+      "implementationEvidence": [],
+      "executionEvidence": [],
+      "testEvidence": [
+        {
+          "id": "E-TST-cfd_mesh_independence-1",
+          "type": "TEST",
+          "reference": "src/engine/validation/__tests__/SECP077ForensicModalIsolation.test.ts",
+          "description": "Discovered test suite candidate: src/engine/validation/__tests__/SECP077ForensicModalIsolation.test.ts",
+          "verified": true
+        }
+      ],
+      "adversarialEvidence": [],
+      "limitations": [
+        "Richardson extrapolation & GCI index active in modal; CFD GCI unproven."
+      ],
+      "confidence": "LOW",
+      "provenance": {
+        "sourceFiles": [],
+        "tests": [
+          "src/engine/validation/__tests__/SECP077ForensicModalIsolation.test.ts"
+        ],
+        "gates": []
+      },
+      "timestamp": "2026-09-17T07:23:43.014Z"
+    },
+    {
+      "id": "cfd_verification",
+      "domain": "CFD",
+      "capability": "Verification",
+      "status": "WORKING",
+      "implementationEvidence": [
+        {
+          "id": "E-SRC-cfd_verification-1",
+          "type": "SOURCE",
+          "reference": "src/engine/cfd3d/SECP082IndependentCFDVerifier.ts",
+          "description": "Discovered source module (523 lines, markers: NONE)",
+          "verified": true
+        }
+      ],
+      "executionEvidence": [
+        {
+          "id": "E-EXEC-cfd_verification-1",
+          "type": "EXECUTION",
+          "reference": "src/engine/cfd3d/SECP082IndependentCFDVerifier.ts",
+          "description": "Verified executable logic in: src/engine/cfd3d/SECP082IndependentCFDVerifier.ts",
+          "verified": true
+        }
+      ],
+      "testEvidence": [
+        {
+          "id": "E-TST-cfd_verification-1",
+          "type": "TEST",
+          "reference": "src/engine/cfd3d/__tests__/SECP082IndependentCFDVerifier.test.ts",
+          "description": "Discovered test suite candidate: src/engine/cfd3d/__tests__/SECP082IndependentCFDVerifier.test.ts",
+          "verified": true
+        },
+        {
+          "id": "E-GATE-cfd_verification-1",
+          "type": "GATE",
+          "reference": "src/engine/validation/HardAcceptanceGate082.ts",
+          "description": "Discovered validation gate: src/engine/validation/HardAcceptanceGate082.ts",
+          "verified": true
+        }
+      ],
+      "adversarialEvidence": [],
+      "limitations": [
+        "Method of Manufactured Solutions (MMS) framework unproven."
+      ],
+      "confidence": "HIGH",
+      "provenance": {
+        "sourceFiles": [
+          "src/engine/cfd3d/SECP082IndependentCFDVerifier.ts"
+        ],
+        "tests": [
+          "src/engine/cfd3d/__tests__/SECP082IndependentCFDVerifier.test.ts"
+        ],
+        "gates": [
+          "src/engine/validation/HardAcceptanceGate082.ts"
+        ]
+      },
+      "timestamp": "2026-09-17T07:23:43.014Z"
+    },
+    {
+      "id": "cfd_validation",
+      "domain": "CFD",
+      "capability": "Validation",
+      "status": "UNPROVEN",
+      "implementationEvidence": [
+        {
+          "id": "E-SRC-cfd_validation-1",
+          "type": "SOURCE",
+          "reference": "src/engine/cfd3d/SECP082IndependentCFDVerifier.ts",
+          "description": "Discovered source module (523 lines, markers: NONE)",
+          "verified": true
+        }
+      ],
+      "executionEvidence": [],
+      "testEvidence": [
+        {
+          "id": "E-GATE-cfd_validation-1",
+          "type": "GATE",
+          "reference": "src/engine/validation/HardAcceptanceGate082.ts",
+          "description": "Discovered validation gate: src/engine/validation/HardAcceptanceGate082.ts",
+          "verified": true
+        }
+      ],
+      "adversarialEvidence": [],
+      "limitations": [
+        "Comparison against experimental wind tunnel benchmarks unproven."
+      ],
+      "confidence": "LOW",
+      "provenance": {
+        "sourceFiles": [
+          "src/engine/cfd3d/SECP082IndependentCFDVerifier.ts"
+        ],
+        "tests": [],
+        "gates": [
+          "src/engine/validation/HardAcceptanceGate082.ts"
+        ]
+      },
+      "timestamp": "2026-09-17T07:23:43.014Z"
+    },
+    {
+      "id": "fem_fem_core",
+      "domain": "FEM",
+      "capability": "FEM Core",
+      "status": "PRODUCTION_READY",
+      "implementationEvidence": [
+        {
+          "id": "E-SRC-fem_fem_core-1",
+          "type": "SOURCE",
+          "reference": "src/engine/structuralFem.ts",
+          "description": "Discovered source module (112 lines, markers: NONE)",
+          "verified": true
+        },
+        {
+          "id": "E-SRC-fem_fem_core-2",
+          "type": "SOURCE",
+          "reference": "src/engine/validation/SECP075CleanRoomKernel.ts",
+          "description": "Discovered source module (525 lines, markers: NONE)",
+          "verified": true
+        }
+      ],
+      "executionEvidence": [
+        {
+          "id": "E-EXEC-fem_fem_core-1",
+          "type": "EXECUTION",
+          "reference": "src/engine/validation/SECP075CleanRoomKernel.ts",
+          "description": "Verified executable logic in: src/engine/validation/SECP075CleanRoomKernel.ts",
+          "verified": true
+        }
+      ],
+      "testEvidence": [
+        {
+          "id": "E-TST-fem_fem_core-1",
+          "type": "TEST",
+          "reference": "src/engine/validation/__tests__/SECP075ForensicVerificationEngine.test.ts",
+          "description": "Discovered test suite candidate: src/engine/validation/__tests__/SECP075ForensicVerificationEngine.test.ts",
+          "verified": true
+        },
+        {
+          "id": "E-GATE-fem_fem_core-1",
+          "type": "GATE",
+          "reference": "src/engine/validation/HardAcceptanceGate075.ts",
+          "description": "Discovered validation gate: src/engine/validation/HardAcceptanceGate075.ts",
+          "verified": true
+        }
+      ],
+      "adversarialEvidence": [
+        {
+          "id": "E-ADV-fem_fem_core-1",
+          "type": "TEST",
+          "reference": "src/engine/validation/SECP075AdversarialEngine.ts",
+          "description": "Adversarial / perturbation harness: src/engine/validation/SECP075AdversarialEngine.ts",
+          "verified": true
+        }
+      ],
+      "limitations": [
+        "Isoparametric trilinear HEX8 and linear TET4 stiffness assembly."
+      ],
+      "confidence": "HIGH",
+      "provenance": {
+        "sourceFiles": [
+          "src/engine/structuralFem.ts",
+          "src/engine/validation/SECP075CleanRoomKernel.ts"
+        ],
+        "tests": [
+          "src/engine/validation/__tests__/SECP075ForensicVerificationEngine.test.ts"
+        ],
+        "gates": [
+          "src/engine/validation/HardAcceptanceGate075.ts"
+        ]
+      },
+      "timestamp": "2026-09-17T07:23:43.015Z"
+    },
+    {
+      "id": "fem_element_library",
+      "domain": "FEM",
+      "capability": "Element Library",
+      "status": "PRODUCTION_READY",
+      "implementationEvidence": [
+        {
+          "id": "E-SRC-fem_element_library-1",
+          "type": "SOURCE",
+          "reference": "src/engine/structuralFem.ts",
+          "description": "Discovered source module (112 lines, markers: NONE)",
+          "verified": true
+        },
+        {
+          "id": "E-SRC-fem_element_library-2",
+          "type": "SOURCE",
+          "reference": "src/engine/validation/SECP077CleanRoomKernel.ts",
+          "description": "Discovered source module (1340 lines, markers: NONE)",
+          "verified": true
+        }
+      ],
+      "executionEvidence": [
+        {
+          "id": "E-EXEC-fem_element_library-1",
+          "type": "EXECUTION",
+          "reference": "src/engine/validation/SECP077CleanRoomKernel.ts",
+          "description": "Verified executable logic in: src/engine/validation/SECP077CleanRoomKernel.ts",
+          "verified": true
+        }
+      ],
+      "testEvidence": [
+        {
+          "id": "E-TST-fem_element_library-1",
+          "type": "TEST",
+          "reference": "src/engine/validation/__tests__/SECP077SolidMultiphysics.test.ts",
+          "description": "Discovered test suite candidate: src/engine/validation/__tests__/SECP077SolidMultiphysics.test.ts",
+          "verified": true
+        },
+        {
+          "id": "E-GATE-fem_element_library-1",
+          "type": "GATE",
+          "reference": "src/engine/validation/HardAcceptanceGate077.ts",
+          "description": "Discovered validation gate: src/engine/validation/HardAcceptanceGate077.ts",
+          "verified": true
+        }
+      ],
+      "adversarialEvidence": [
+        {
+          "id": "E-ADV-fem_element_library-1",
+          "type": "TEST",
+          "reference": "src/engine/validation/SECP077AdversarialEngine.ts",
+          "description": "Adversarial / perturbation harness: src/engine/validation/SECP077AdversarialEngine.ts",
+          "verified": true
+        }
+      ],
+      "limitations": [
+        "HEX8 and TET4 active; quadratic serendipity/shell elements unproven."
+      ],
+      "confidence": "HIGH",
+      "provenance": {
+        "sourceFiles": [
+          "src/engine/structuralFem.ts",
+          "src/engine/validation/SECP077CleanRoomKernel.ts"
+        ],
+        "tests": [
+          "src/engine/validation/__tests__/SECP077SolidMultiphysics.test.ts"
+        ],
+        "gates": [
+          "src/engine/validation/HardAcceptanceGate077.ts"
+        ]
+      },
+      "timestamp": "2026-09-17T07:23:43.015Z"
+    },
+    {
+      "id": "fem_sparse_matrix",
+      "domain": "FEM",
+      "capability": "Sparse Matrix",
+      "status": "PRODUCTION_READY",
+      "implementationEvidence": [
+        {
+          "id": "E-SRC-fem_sparse_matrix-1",
+          "type": "SOURCE",
+          "reference": "src/engine/validation/SECP075LinearAlgebra.ts",
+          "description": "Discovered source module (451 lines, markers: NONE)",
+          "verified": true
+        }
+      ],
+      "executionEvidence": [
+        {
+          "id": "E-EXEC-fem_sparse_matrix-1",
+          "type": "EXECUTION",
+          "reference": "src/engine/validation/SECP075LinearAlgebra.ts",
+          "description": "Verified executable logic in: src/engine/validation/SECP075LinearAlgebra.ts",
+          "verified": true
+        }
+      ],
+      "testEvidence": [
+        {
+          "id": "E-TST-fem_sparse_matrix-1",
+          "type": "TEST",
+          "reference": "src/engine/validation/__tests__/SECP076SolverIntegrity.test.ts",
+          "description": "Discovered test suite candidate: src/engine/validation/__tests__/SECP076SolverIntegrity.test.ts",
+          "verified": true
+        },
+        {
+          "id": "E-GATE-fem_sparse_matrix-1",
+          "type": "GATE",
+          "reference": "src/engine/validation/SECP076SolverIntegrityKernel.ts",
+          "description": "Discovered validation gate: src/engine/validation/SECP076SolverIntegrityKernel.ts",
+          "verified": true
+        }
+      ],
+      "adversarialEvidence": [
+        {
+          "id": "E-ADV-fem_sparse_matrix-1",
+          "type": "TEST",
+          "reference": "src/engine/validation/SECP076PerturbationEngine.ts",
+          "description": "Adversarial / perturbation harness: src/engine/validation/SECP076PerturbationEngine.ts",
+          "verified": true
+        }
+      ],
+      "limitations": [
+        "CSR (Compressed Sparse Row) and COO storage formats verified."
+      ],
+      "confidence": "HIGH",
+      "provenance": {
+        "sourceFiles": [
+          "src/engine/validation/SECP075LinearAlgebra.ts"
+        ],
+        "tests": [
+          "src/engine/validation/__tests__/SECP076SolverIntegrity.test.ts"
+        ],
+        "gates": [
+          "src/engine/validation/SECP076SolverIntegrityKernel.ts"
+        ]
+      },
+      "timestamp": "2026-09-17T07:23:43.016Z"
+    },
+    {
+      "id": "fem_structural_solver",
+      "domain": "FEM",
+      "capability": "Structural Solver",
+      "status": "PRODUCTION_READY",
+      "implementationEvidence": [
+        {
+          "id": "E-SRC-fem_structural_solver-1",
+          "type": "SOURCE",
+          "reference": "src/engine/structuralFem.ts",
+          "description": "Discovered source module (112 lines, markers: NONE)",
+          "verified": true
+        }
+      ],
+      "executionEvidence": [
+        {
+          "id": "E-EXEC-fem_structural_solver-1",
+          "type": "EXECUTION",
+          "reference": "src/engine/validation/SECP076SolverIntegrityKernel.ts",
+          "description": "Verified executable logic in: src/engine/validation/SECP076SolverIntegrityKernel.ts",
+          "verified": true
+        }
+      ],
+      "testEvidence": [
+        {
+          "id": "E-TST-fem_structural_solver-1",
+          "type": "TEST",
+          "reference": "src/engine/validation/__tests__/SECP076SolverIntegrity.test.ts",
+          "description": "Discovered test suite candidate: src/engine/validation/__tests__/SECP076SolverIntegrity.test.ts",
+          "verified": true
+        },
+        {
+          "id": "E-GATE-fem_structural_solver-1",
+          "type": "GATE",
+          "reference": "src/engine/validation/HardAcceptanceGate076.ts",
+          "description": "Discovered validation gate: src/engine/validation/HardAcceptanceGate076.ts",
+          "verified": true
+        }
+      ],
+      "adversarialEvidence": [
+        {
+          "id": "E-ADV-fem_structural_solver-1",
+          "type": "TEST",
+          "reference": "src/engine/validation/SECP076PerturbationEngine.ts",
+          "description": "Adversarial / perturbation harness: src/engine/validation/SECP076PerturbationEngine.ts",
+          "verified": true
+        }
+      ],
+      "limitations": [
+        "Linear static elastic displacement and von Mises stress extraction."
+      ],
+      "confidence": "HIGH",
+      "provenance": {
+        "sourceFiles": [
+          "src/engine/structuralFem.ts"
+        ],
+        "tests": [
+          "src/engine/validation/__tests__/SECP076SolverIntegrity.test.ts"
+        ],
+        "gates": [
+          "src/engine/validation/HardAcceptanceGate076.ts"
+        ]
+      },
+      "timestamp": "2026-09-17T07:23:43.016Z"
+    },
+    {
+      "id": "fem_nonlinear_material",
+      "domain": "FEM",
+      "capability": "Nonlinear Material",
+      "status": "UNPROVEN",
+      "implementationEvidence": [
+        {
+          "id": "E-SRC-fem_nonlinear_material-1",
+          "type": "SOURCE",
+          "reference": "src/engine/structuralFem.ts",
+          "description": "Discovered source module (112 lines, markers: NONE)",
+          "verified": true
+        }
+      ],
+      "executionEvidence": [],
+      "testEvidence": [],
+      "adversarialEvidence": [],
+      "limitations": [
+        "von Mises elastoplasticity with isotropic hardening unproven for large strains."
+      ],
+      "confidence": "LOW",
+      "provenance": {
+        "sourceFiles": [
+          "src/engine/structuralFem.ts"
+        ],
+        "tests": [],
+        "gates": []
+      },
+      "timestamp": "2026-09-17T07:23:43.016Z"
+    },
+    {
+      "id": "fem_contact",
+      "domain": "FEM",
+      "capability": "Contact",
+      "status": "PRODUCTION_READY",
+      "implementationEvidence": [
+        {
+          "id": "E-SRC-fem_contact-1",
+          "type": "SOURCE",
+          "reference": "src/engine/validation/SECP078CleanRoomKernel.ts",
+          "description": "Discovered source module (934 lines, markers: NONE)",
+          "verified": true
+        }
+      ],
+      "executionEvidence": [
+        {
+          "id": "E-EXEC-fem_contact-1",
+          "type": "EXECUTION",
+          "reference": "src/engine/validation/SECP078CleanRoomKernel.ts",
+          "description": "Verified executable logic in: src/engine/validation/SECP078CleanRoomKernel.ts",
+          "verified": true
+        }
+      ],
+      "testEvidence": [
+        {
+          "id": "E-TST-fem_contact-1",
+          "type": "TEST",
+          "reference": "src/engine/validation/__tests__/SECP078NonlinearContact.test.ts",
+          "description": "Discovered test suite candidate: src/engine/validation/__tests__/SECP078NonlinearContact.test.ts",
+          "verified": true
+        },
+        {
+          "id": "E-GATE-fem_contact-1",
+          "type": "GATE",
+          "reference": "src/engine/validation/HardAcceptanceGate078.ts",
+          "description": "Discovered validation gate: src/engine/validation/HardAcceptanceGate078.ts",
+          "verified": true
+        }
+      ],
+      "adversarialEvidence": [
+        {
+          "id": "E-ADV-fem_contact-1",
+          "type": "TEST",
+          "reference": "src/engine/validation/SECP078AdversarialEngine.ts",
+          "description": "Adversarial / perturbation harness: src/engine/validation/SECP078AdversarialEngine.ts",
+          "verified": true
+        }
+      ],
+      "limitations": [
+        "Penalty-based node-to-segment contact with normal impenetrability."
+      ],
+      "confidence": "HIGH",
+      "provenance": {
+        "sourceFiles": [
+          "src/engine/validation/SECP078CleanRoomKernel.ts"
+        ],
+        "tests": [
+          "src/engine/validation/__tests__/SECP078NonlinearContact.test.ts"
+        ],
+        "gates": [
+          "src/engine/validation/HardAcceptanceGate078.ts"
+        ]
+      },
+      "timestamp": "2026-09-17T07:23:43.017Z"
+    },
+    {
+      "id": "fem_large_deformation",
+      "domain": "FEM",
+      "capability": "Large Deformation",
+      "status": "UNPROVEN",
+      "implementationEvidence": [
+        {
+          "id": "E-SRC-fem_large_deformation-1",
+          "type": "SOURCE",
+          "reference": "src/engine/structuralFem.ts",
+          "description": "Discovered source module (112 lines, markers: NONE)",
+          "verified": true
+        }
+      ],
+      "executionEvidence": [],
+      "testEvidence": [],
+      "adversarialEvidence": [],
+      "limitations": [
+        "Total Lagrangian geometric nonlinearity formulation unproven."
+      ],
+      "confidence": "LOW",
+      "provenance": {
+        "sourceFiles": [
+          "src/engine/structuralFem.ts"
+        ],
+        "tests": [],
+        "gates": []
+      },
+      "timestamp": "2026-09-17T07:23:43.017Z"
+    },
+    {
+      "id": "fem_thermal",
+      "domain": "FEM",
+      "capability": "Thermal",
+      "status": "WORKING",
+      "implementationEvidence": [
+        {
+          "id": "E-SRC-fem_thermal-1",
+          "type": "SOURCE",
+          "reference": "src/engine/thermalCae.ts",
+          "description": "Discovered source module (90 lines, markers: NONE)",
+          "verified": true
+        },
+        {
+          "id": "E-SRC-fem_thermal-2",
+          "type": "SOURCE",
+          "reference": "src/engine/validation/SECP077CleanRoomKernel.ts",
+          "description": "Discovered source module (1340 lines, markers: NONE)",
+          "verified": true
+        }
+      ],
+      "executionEvidence": [
+        {
+          "id": "E-EXEC-fem_thermal-1",
+          "type": "EXECUTION",
+          "reference": "src/engine/thermalCae.ts",
+          "description": "Verified executable logic in: src/engine/thermalCae.ts",
+          "verified": true
+        }
+      ],
+      "testEvidence": [
+        {
+          "id": "E-TST-fem_thermal-1",
+          "type": "TEST",
+          "reference": "src/engine/validation/__tests__/SECP077SolidMultiphysics.test.ts",
+          "description": "Discovered test suite candidate: src/engine/validation/__tests__/SECP077SolidMultiphysics.test.ts",
+          "verified": true
+        },
+        {
+          "id": "E-GATE-fem_thermal-1",
+          "type": "GATE",
+          "reference": "src/engine/validation/HardAcceptanceGate077.ts",
+          "description": "Discovered validation gate: src/engine/validation/HardAcceptanceGate077.ts",
+          "verified": true
+        }
+      ],
+      "adversarialEvidence": [],
+      "limitations": [
+        "Coupled steady-state thermoelastic stress analysis active."
+      ],
+      "confidence": "HIGH",
+      "provenance": {
+        "sourceFiles": [
+          "src/engine/thermalCae.ts",
+          "src/engine/validation/SECP077CleanRoomKernel.ts"
+        ],
+        "tests": [
+          "src/engine/validation/__tests__/SECP077SolidMultiphysics.test.ts"
+        ],
+        "gates": [
+          "src/engine/validation/HardAcceptanceGate077.ts"
+        ]
+      },
+      "timestamp": "2026-09-17T07:23:43.018Z"
+    },
+    {
+      "id": "fem_modal",
+      "domain": "FEM",
+      "capability": "Modal",
+      "status": "PRODUCTION_READY",
+      "implementationEvidence": [
+        {
+          "id": "E-SRC-fem_modal-1",
+          "type": "SOURCE",
+          "reference": "src/engine/validation/SECP077CleanRoomKernel.ts",
+          "description": "Discovered source module (1340 lines, markers: NONE)",
+          "verified": true
+        }
+      ],
+      "executionEvidence": [
+        {
+          "id": "E-EXEC-fem_modal-1",
+          "type": "EXECUTION",
+          "reference": "src/engine/validation/SECP077CleanRoomKernel.ts",
+          "description": "Verified executable logic in: src/engine/validation/SECP077CleanRoomKernel.ts",
+          "verified": true
+        }
+      ],
+      "testEvidence": [
+        {
+          "id": "E-TST-fem_modal-1",
+          "type": "TEST",
+          "reference": "src/engine/validation/__tests__/SECP077ForensicModalIsolation.test.ts",
+          "description": "Discovered test suite candidate: src/engine/validation/__tests__/SECP077ForensicModalIsolation.test.ts",
+          "verified": true
+        },
+        {
+          "id": "E-GATE-fem_modal-1",
+          "type": "GATE",
+          "reference": "src/engine/validation/HardAcceptanceGate077.ts",
+          "description": "Discovered validation gate: src/engine/validation/HardAcceptanceGate077.ts",
+          "verified": true
+        }
+      ],
+      "adversarialEvidence": [
+        {
+          "id": "E-ADV-fem_modal-1",
+          "type": "TEST",
+          "reference": "src/engine/validation/SECP077AdversarialEngine.ts",
+          "description": "Adversarial / perturbation harness: src/engine/validation/SECP077AdversarialEngine.ts",
+          "verified": true
+        }
+      ],
+      "limitations": [
+        "Generalized eigenpair solver with Rayleigh quotient validation."
+      ],
+      "confidence": "HIGH",
+      "provenance": {
+        "sourceFiles": [
+          "src/engine/validation/SECP077CleanRoomKernel.ts"
+        ],
+        "tests": [
+          "src/engine/validation/__tests__/SECP077ForensicModalIsolation.test.ts"
+        ],
+        "gates": [
+          "src/engine/validation/HardAcceptanceGate077.ts"
+        ]
+      },
+      "timestamp": "2026-09-17T07:23:43.018Z"
+    },
+    {
+      "id": "fem_buckling",
+      "domain": "FEM",
+      "capability": "Buckling",
+      "status": "UNPROVEN",
+      "implementationEvidence": [
+        {
+          "id": "E-SRC-fem_buckling-1",
+          "type": "SOURCE",
+          "reference": "src/engine/structuralFem.ts",
+          "description": "Discovered source module (112 lines, markers: NONE)",
+          "verified": true
+        }
+      ],
+      "executionEvidence": [],
+      "testEvidence": [],
+      "adversarialEvidence": [],
+      "limitations": [
+        "Linearized Euler geometric stiffness matrix eigenvalue analysis unproven."
+      ],
+      "confidence": "LOW",
+      "provenance": {
+        "sourceFiles": [
+          "src/engine/structuralFem.ts"
+        ],
+        "tests": [],
+        "gates": []
+      },
+      "timestamp": "2026-09-17T07:23:43.018Z"
+    },
+    {
+      "id": "fem_fatigue",
+      "domain": "FEM",
+      "capability": "Fatigue",
+      "status": "UNPROVEN",
+      "implementationEvidence": [
+        {
+          "id": "E-SRC-fem_fatigue-1",
+          "type": "SOURCE",
+          "reference": "src/engine/materials.ts",
+          "description": "Discovered source module (213 lines, markers: NONE)",
+          "verified": true
+        }
+      ],
+      "executionEvidence": [],
+      "testEvidence": [],
+      "adversarialEvidence": [],
+      "limitations": [
+        "S-N Basquin curve and Goodman mean-stress correction unproven."
+      ],
+      "confidence": "LOW",
+      "provenance": {
+        "sourceFiles": [
+          "src/engine/materials.ts"
+        ],
+        "tests": [],
+        "gates": []
+      },
+      "timestamp": "2026-09-17T07:23:43.018Z"
+    },
+    {
+      "id": "materials_material_ontology",
+      "domain": "MATERIALS",
+      "capability": "Material Ontology",
+      "status": "WORKING",
+      "implementationEvidence": [
+        {
+          "id": "E-SRC-materials_material_ontology-1",
+          "type": "SOURCE",
+          "reference": "src/engine/materials.ts",
+          "description": "Discovered source module (213 lines, markers: NONE)",
+          "verified": true
+        }
+      ],
+      "executionEvidence": [
+        {
+          "id": "E-EXEC-materials_material_ontology-1",
+          "type": "EXECUTION",
+          "reference": "src/engine/materials.ts",
+          "description": "Verified executable logic in: src/engine/materials.ts",
+          "verified": true
+        }
+      ],
+      "testEvidence": [],
+      "adversarialEvidence": [],
+      "limitations": [
+        "Hierarchical isotropic metal and composite property ontology."
+      ],
+      "confidence": "MEDIUM",
+      "provenance": {
+        "sourceFiles": [
+          "src/engine/materials.ts"
+        ],
+        "tests": [],
+        "gates": []
+      },
+      "timestamp": "2026-09-17T07:23:43.019Z"
+    },
+    {
+      "id": "materials_material_database",
+      "domain": "MATERIALS",
+      "capability": "Material Database",
+      "status": "WORKING",
+      "implementationEvidence": [
+        {
+          "id": "E-SRC-materials_material_database-1",
+          "type": "SOURCE",
+          "reference": "src/engine/materials.ts",
+          "description": "Discovered source module (213 lines, markers: NONE)",
+          "verified": true
+        }
+      ],
+      "executionEvidence": [
+        {
+          "id": "E-EXEC-materials_material_database-1",
+          "type": "EXECUTION",
+          "reference": "src/engine/materials.ts",
+          "description": "Verified executable logic in: src/engine/materials.ts",
+          "verified": true
+        }
+      ],
+      "testEvidence": [],
+      "adversarialEvidence": [],
+      "limitations": [
+        "Standard aerospace & industrial alloy database (Al6061, Ti6Al4V, Steel 4140, Inconel 718)."
+      ],
+      "confidence": "MEDIUM",
+      "provenance": {
+        "sourceFiles": [
+          "src/engine/materials.ts"
+        ],
+        "tests": [],
+        "gates": []
+      },
+      "timestamp": "2026-09-17T07:23:43.019Z"
+    },
+    {
+      "id": "materials_temperature_dependence",
+      "domain": "MATERIALS",
+      "capability": "Temperature Dependence",
+      "status": "UNPROVEN",
+      "implementationEvidence": [
+        {
+          "id": "E-SRC-materials_temperature_dependence-1",
+          "type": "SOURCE",
+          "reference": "src/engine/materials.ts",
+          "description": "Discovered source module (213 lines, markers: NONE)",
+          "verified": true
+        }
+      ],
+      "executionEvidence": [],
+      "testEvidence": [],
+      "adversarialEvidence": [],
+      "limitations": [
+        "Interpolation of thermal expansion and modulus over temperature unproven."
+      ],
+      "confidence": "LOW",
+      "provenance": {
+        "sourceFiles": [
+          "src/engine/materials.ts"
+        ],
+        "tests": [],
+        "gates": []
+      },
+      "timestamp": "2026-09-17T07:23:43.019Z"
+    },
+    {
+      "id": "materials_plasticity",
+      "domain": "MATERIALS",
+      "capability": "Plasticity",
+      "status": "UNPROVEN",
+      "implementationEvidence": [
+        {
+          "id": "E-SRC-materials_plasticity-1",
+          "type": "SOURCE",
+          "reference": "src/engine/materials.ts",
+          "description": "Discovered source module (213 lines, markers: NONE)",
+          "verified": true
+        }
+      ],
+      "executionEvidence": [],
+      "testEvidence": [],
+      "adversarialEvidence": [],
+      "limitations": [
+        "Ramberg-Osgood & Johnson-Cook constitutive models unproven."
+      ],
+      "confidence": "LOW",
+      "provenance": {
+        "sourceFiles": [
+          "src/engine/materials.ts"
+        ],
+        "tests": [],
+        "gates": []
+      },
+      "timestamp": "2026-09-17T07:23:43.019Z"
+    },
+    {
+      "id": "materials_creep",
+      "domain": "MATERIALS",
+      "capability": "Creep",
+      "status": "UNPROVEN",
+      "implementationEvidence": [
+        {
+          "id": "E-SRC-materials_creep-1",
+          "type": "SOURCE",
+          "reference": "src/engine/materials.ts",
+          "description": "Discovered source module (213 lines, markers: NONE)",
+          "verified": true
+        }
+      ],
+      "executionEvidence": [],
+      "testEvidence": [],
+      "adversarialEvidence": [],
+      "limitations": [
+        "Norton-Bailey secondary creep power-law rate unproven."
+      ],
+      "confidence": "LOW",
+      "provenance": {
+        "sourceFiles": [
+          "src/engine/materials.ts"
+        ],
+        "tests": [],
+        "gates": []
+      },
+      "timestamp": "2026-09-17T07:23:43.019Z"
+    },
+    {
+      "id": "materials_fatigue",
+      "domain": "MATERIALS",
+      "capability": "Fatigue",
+      "status": "UNPROVEN",
+      "implementationEvidence": [
+        {
+          "id": "E-SRC-materials_fatigue-1",
+          "type": "SOURCE",
+          "reference": "src/engine/materials.ts",
+          "description": "Discovered source module (213 lines, markers: NONE)",
+          "verified": true
+        }
+      ],
+      "executionEvidence": [],
+      "testEvidence": [],
+      "adversarialEvidence": [],
+      "limitations": [
+        "Morrow & Manson-Coffin strain-life fatigue parameterization unproven."
+      ],
+      "confidence": "LOW",
+      "provenance": {
+        "sourceFiles": [
+          "src/engine/materials.ts"
+        ],
+        "tests": [],
+        "gates": []
+      },
+      "timestamp": "2026-09-17T07:23:43.019Z"
+    },
+    {
+      "id": "materials_fracture",
+      "domain": "MATERIALS",
+      "capability": "Fracture",
+      "status": "UNPROVEN",
+      "implementationEvidence": [
+        {
+          "id": "E-SRC-materials_fracture-1",
+          "type": "SOURCE",
+          "reference": "src/engine/materials.ts",
+          "description": "Discovered source module (213 lines, markers: NONE)",
+          "verified": true
+        }
+      ],
+      "executionEvidence": [],
+      "testEvidence": [],
+      "adversarialEvidence": [],
+      "limitations": [
+        "Linear elastic fracture mechanics K_IC and Paris law crack growth unproven."
+      ],
+      "confidence": "LOW",
+      "provenance": {
+        "sourceFiles": [
+          "src/engine/materials.ts"
+        ],
+        "tests": [],
+        "gates": []
+      },
+      "timestamp": "2026-09-17T07:23:43.019Z"
+    },
+    {
+      "id": "materials_heat_treatment",
+      "domain": "MATERIALS",
+      "capability": "Heat Treatment",
+      "status": "UNPROVEN",
+      "implementationEvidence": [
+        {
+          "id": "E-SRC-materials_heat_treatment-1",
+          "type": "SOURCE",
+          "reference": "src/engine/materials.ts",
+          "description": "Discovered source module (213 lines, markers: NONE)",
+          "verified": true
+        }
+      ],
+      "executionEvidence": [],
+      "testEvidence": [],
+      "adversarialEvidence": [],
+      "limitations": [
+        "Phase transformation TTT/CCT kinetics unproven."
+      ],
+      "confidence": "LOW",
+      "provenance": {
+        "sourceFiles": [
+          "src/engine/materials.ts"
+        ],
+        "tests": [],
+        "gates": []
+      },
+      "timestamp": "2026-09-17T07:23:43.020Z"
+    },
+    {
+      "id": "materials_provenance",
+      "domain": "MATERIALS",
+      "capability": "Provenance",
+      "status": "WORKING",
+      "implementationEvidence": [
+        {
+          "id": "E-SRC-materials_provenance-1",
+          "type": "SOURCE",
+          "reference": "src/engine/provenanceEngine.ts",
+          "description": "Discovered source module (150 lines, markers: NONE)",
+          "verified": true
+        },
+        {
+          "id": "E-SRC-materials_provenance-2",
+          "type": "SOURCE",
+          "reference": "src/engine/materials.ts",
+          "description": "Discovered source module (213 lines, markers: NONE)",
+          "verified": true
+        }
+      ],
+      "executionEvidence": [
+        {
+          "id": "E-EXEC-materials_provenance-1",
+          "type": "EXECUTION",
+          "reference": "src/engine/provenanceEngine.ts",
+          "description": "Verified executable logic in: src/engine/provenanceEngine.ts",
+          "verified": true
+        }
+      ],
+      "testEvidence": [
+        {
+          "id": "E-GATE-materials_provenance-1",
+          "type": "GATE",
+          "reference": "src/engine/validation/ProductionProvenanceEngine.ts",
+          "description": "Discovered validation gate: src/engine/validation/ProductionProvenanceEngine.ts",
+          "verified": true
+        }
+      ],
+      "adversarialEvidence": [],
+      "limitations": [
+        "Cryptographic material batch lot attestation active."
+      ],
+      "confidence": "HIGH",
+      "provenance": {
+        "sourceFiles": [
+          "src/engine/provenanceEngine.ts",
+          "src/engine/materials.ts"
+        ],
+        "tests": [],
+        "gates": [
+          "src/engine/validation/ProductionProvenanceEngine.ts"
+        ]
+      },
+      "timestamp": "2026-09-17T07:23:43.020Z"
+    },
+    {
+      "id": "materials_uncertainty",
+      "domain": "MATERIALS",
+      "capability": "Uncertainty",
+      "status": "UNPROVEN",
+      "implementationEvidence": [
+        {
+          "id": "E-SRC-materials_uncertainty-1",
+          "type": "SOURCE",
+          "reference": "src/engine/materials.ts",
+          "description": "Discovered source module (213 lines, markers: NONE)",
+          "verified": true
+        }
+      ],
+      "executionEvidence": [],
+      "testEvidence": [],
+      "adversarialEvidence": [],
+      "limitations": [
+        "A-basis & B-basis statistical property allowance unproven."
+      ],
+      "confidence": "LOW",
+      "provenance": {
+        "sourceFiles": [
+          "src/engine/materials.ts"
+        ],
+        "tests": [],
+        "gates": []
+      },
+      "timestamp": "2026-09-17T07:23:43.020Z"
+    },
+    {
+      "id": "cam_toolpath",
+      "domain": "CAM",
+      "capability": "Toolpath",
+      "status": "WORKING",
+      "implementationEvidence": [
+        {
+          "id": "E-SRC-cam_toolpath-1",
+          "type": "SOURCE",
+          "reference": "src/engine/camEngine.ts",
+          "description": "Discovered source module (399 lines, markers: NONE)",
+          "verified": true
+        },
+        {
+          "id": "E-SRC-cam_toolpath-2",
+          "type": "SOURCE",
+          "reference": "src/engine/cam/",
+          "description": "Discovered source module (37714 lines, markers: HARDCODED_VERDICT_PATTERN)",
+          "verified": true
+        }
+      ],
+      "executionEvidence": [
+        {
+          "id": "E-EXEC-cam_toolpath-1",
+          "type": "EXECUTION",
+          "reference": "src/engine/camEngine.ts",
+          "description": "Verified executable logic in: src/engine/camEngine.ts",
+          "verified": true
+        }
+      ],
+      "testEvidence": [],
+      "adversarialEvidence": [],
+      "limitations": [
+        "Planar zig-zag and contour parallel 2.5D toolpath generation."
+      ],
+      "confidence": "MEDIUM",
+      "provenance": {
+        "sourceFiles": [
+          "src/engine/camEngine.ts",
+          "src/engine/cam/"
+        ],
+        "tests": [],
+        "gates": []
+      },
+      "timestamp": "2026-09-17T07:23:43.048Z"
+    },
+    {
+      "id": "cam_3_axis",
+      "domain": "CAM",
+      "capability": "3-Axis",
+      "status": "WORKING",
+      "implementationEvidence": [
+        {
+          "id": "E-SRC-cam_3_axis-1",
+          "type": "SOURCE",
+          "reference": "src/engine/camEngine.ts",
+          "description": "Discovered source module (399 lines, markers: NONE)",
+          "verified": true
+        }
+      ],
+      "executionEvidence": [
+        {
+          "id": "E-EXEC-cam_3_axis-1",
+          "type": "EXECUTION",
+          "reference": "src/engine/camEngine.ts",
+          "description": "Verified executable logic in: src/engine/camEngine.ts",
+          "verified": true
+        }
+      ],
+      "testEvidence": [],
+      "adversarialEvidence": [],
+      "limitations": [
+        "Ball-end mill surface gouge-free rastering active."
+      ],
+      "confidence": "MEDIUM",
+      "provenance": {
+        "sourceFiles": [
+          "src/engine/camEngine.ts"
+        ],
+        "tests": [],
+        "gates": []
+      },
+      "timestamp": "2026-09-17T07:23:43.048Z"
+    },
+    {
+      "id": "cam_5_axis",
+      "domain": "CAM",
+      "capability": "5-Axis",
+      "status": "UNPROVEN",
+      "implementationEvidence": [
+        {
+          "id": "E-SRC-cam_5_axis-1",
+          "type": "SOURCE",
+          "reference": "src/engine/classa5axis/",
+          "description": "Discovered source module (1732 lines, markers: NONE)",
+          "verified": true
+        }
+      ],
+      "executionEvidence": [],
+      "testEvidence": [
+        {
+          "id": "E-TST-cam_5_axis-1",
+          "type": "TEST",
+          "reference": "src/engine/kinematics/__tests__/SECP087KinematicsAndSimulation.test.ts",
+          "description": "Discovered test suite candidate: src/engine/kinematics/__tests__/SECP087KinematicsAndSimulation.test.ts",
+          "verified": true
+        },
+        {
+          "id": "E-GATE-cam_5_axis-1",
+          "type": "GATE",
+          "reference": "src/engine/validation/HardAcceptanceGate087.ts",
+          "description": "Discovered validation gate: src/engine/validation/HardAcceptanceGate087.ts",
+          "verified": true
+        }
+      ],
+      "adversarialEvidence": [],
+      "limitations": [
+        "Table-table & head-table kinematics singular pole crossing handling in progress."
+      ],
+      "confidence": "LOW",
+      "provenance": {
+        "sourceFiles": [
+          "src/engine/classa5axis/"
+        ],
+        "tests": [
+          "src/engine/kinematics/__tests__/SECP087KinematicsAndSimulation.test.ts"
+        ],
+        "gates": [
+          "src/engine/validation/HardAcceptanceGate087.ts"
+        ]
+      },
+      "timestamp": "2026-09-17T07:23:43.049Z"
+    },
+    {
+      "id": "cam_kinematics",
+      "domain": "CAM",
+      "capability": "Kinematics",
+      "status": "WORKING",
+      "implementationEvidence": [
+        {
+          "id": "E-SRC-cam_kinematics-1",
+          "type": "SOURCE",
+          "reference": "src/engine/kinematics.ts",
+          "description": "Discovered source module (129 lines, markers: NONE)",
+          "verified": true
+        },
+        {
+          "id": "E-SRC-cam_kinematics-2",
+          "type": "SOURCE",
+          "reference": "src/engine/kinematics/",
+          "description": "Discovered source module (2344 lines, markers: NONE)",
+          "verified": true
+        }
+      ],
+      "executionEvidence": [
+        {
+          "id": "E-EXEC-cam_kinematics-1",
+          "type": "EXECUTION",
+          "reference": "src/engine/kinematics.ts",
+          "description": "Verified executable logic in: src/engine/kinematics.ts",
+          "verified": true
+        }
+      ],
+      "testEvidence": [
+        {
+          "id": "E-TST-cam_kinematics-1",
+          "type": "TEST",
+          "reference": "src/engine/kinematics/__tests__/SECP087KinematicsAndSimulation.test.ts",
+          "description": "Discovered test suite candidate: src/engine/kinematics/__tests__/SECP087KinematicsAndSimulation.test.ts",
+          "verified": true
+        },
+        {
+          "id": "E-GATE-cam_kinematics-1",
+          "type": "GATE",
+          "reference": "src/engine/validation/HardAcceptanceGate087.ts",
+          "description": "Discovered validation gate: src/engine/validation/HardAcceptanceGate087.ts",
+          "verified": true
+        }
+      ],
+      "adversarialEvidence": [],
+      "limitations": [
+        "Forward and inverse kinematic Denavit-Hartenberg parameterization."
+      ],
+      "confidence": "HIGH",
+      "provenance": {
+        "sourceFiles": [
+          "src/engine/kinematics.ts",
+          "src/engine/kinematics/"
+        ],
+        "tests": [
+          "src/engine/kinematics/__tests__/SECP087KinematicsAndSimulation.test.ts"
+        ],
+        "gates": [
+          "src/engine/validation/HardAcceptanceGate087.ts"
+        ]
+      },
+      "timestamp": "2026-09-17T07:23:43.051Z"
+    },
+    {
+      "id": "cam_collision",
+      "domain": "CAM",
+      "capability": "Collision",
+      "status": "UNPROVEN",
+      "implementationEvidence": [
+        {
+          "id": "E-SRC-cam_collision-1",
+          "type": "SOURCE",
+          "reference": "src/engine/camEngine.ts",
+          "description": "Discovered source module (399 lines, markers: NONE)",
+          "verified": true
+        },
+        {
+          "id": "E-SRC-cam_collision-2",
+          "type": "SOURCE",
+          "reference": "src/engine/kinematics/",
+          "description": "Discovered source module (2344 lines, markers: NONE)",
+          "verified": true
+        }
+      ],
+      "executionEvidence": [],
+      "testEvidence": [],
+      "adversarialEvidence": [],
+      "limitations": [
+        "Axis limit clipping active; full swept volume B-Rep collision unproven."
+      ],
+      "confidence": "LOW",
+      "provenance": {
+        "sourceFiles": [
+          "src/engine/camEngine.ts",
+          "src/engine/kinematics/"
+        ],
+        "tests": [],
+        "gates": []
+      },
+      "timestamp": "2026-09-17T07:23:43.053Z"
+    },
+    {
+      "id": "cam_post_processing",
+      "domain": "CAM",
+      "capability": "Post Processing",
+      "status": "UNPROVEN",
+      "implementationEvidence": [
+        {
+          "id": "E-SRC-cam_post_processing-1",
+          "type": "SOURCE",
+          "reference": "src/engine/postprocessor/",
+          "description": "Discovered source module (607 lines, markers: NONE)",
+          "verified": true
+        },
+        {
+          "id": "E-SRC-cam_post_processing-2",
+          "type": "SOURCE",
+          "reference": "src/engine/nc/",
+          "description": "Discovered source module (768 lines, markers: NONE)",
+          "verified": true
+        }
+      ],
+      "executionEvidence": [],
+      "testEvidence": [],
+      "adversarialEvidence": [],
+      "limitations": [
+        "ISO G-code standard post-processing (Fanuc, Heidenhain, Siemens 840D) active."
+      ],
+      "confidence": "LOW",
+      "provenance": {
+        "sourceFiles": [
+          "src/engine/postprocessor/",
+          "src/engine/nc/"
+        ],
+        "tests": [],
+        "gates": []
+      },
+      "timestamp": "2026-09-17T07:23:43.054Z"
+    },
+    {
+      "id": "cam_g_code_verification",
+      "domain": "CAM",
+      "capability": "G-code Verification",
+      "status": "WORKING",
+      "implementationEvidence": [
+        {
+          "id": "E-SRC-cam_g_code_verification-1",
+          "type": "SOURCE",
+          "reference": "src/engine/nc/",
+          "description": "Discovered source module (768 lines, markers: NONE)",
+          "verified": true
+        },
+        {
+          "id": "E-SRC-cam_g_code_verification-2",
+          "type": "SOURCE",
+          "reference": "src/engine/camEngine.ts",
+          "description": "Discovered source module (399 lines, markers: NONE)",
+          "verified": true
+        }
+      ],
+      "executionEvidence": [
+        {
+          "id": "E-EXEC-cam_g_code_verification-1",
+          "type": "EXECUTION",
+          "reference": "src/engine/camEngine.ts",
+          "description": "Verified executable logic in: src/engine/camEngine.ts",
+          "verified": true
+        }
+      ],
+      "testEvidence": [],
+      "adversarialEvidence": [],
+      "limitations": [
+        "Modal state tracking and feed rate limits check."
+      ],
+      "confidence": "MEDIUM",
+      "provenance": {
+        "sourceFiles": [
+          "src/engine/nc/",
+          "src/engine/camEngine.ts"
+        ],
+        "tests": [],
+        "gates": []
+      },
+      "timestamp": "2026-09-17T07:23:43.055Z"
+    },
+    {
+      "id": "cam_toolpath_simulation",
+      "domain": "CAM",
+      "capability": "Toolpath Simulation",
+      "status": "WORKING",
+      "implementationEvidence": [
+        {
+          "id": "E-SRC-cam_toolpath_simulation-1",
+          "type": "SOURCE",
+          "reference": "src/engine/assembly/KinematicSimulationEngine.ts",
+          "description": "Discovered source module (153 lines, markers: NONE)",
+          "verified": true
+        }
+      ],
+      "executionEvidence": [
+        {
+          "id": "E-EXEC-cam_toolpath_simulation-1",
+          "type": "EXECUTION",
+          "reference": "src/engine/assembly/KinematicSimulationEngine.ts",
+          "description": "Verified executable logic in: src/engine/assembly/KinematicSimulationEngine.ts",
+          "verified": true
+        }
+      ],
+      "testEvidence": [],
+      "adversarialEvidence": [],
+      "limitations": [
+        "Time-stepped discrete kinematic motion replay active."
+      ],
+      "confidence": "MEDIUM",
+      "provenance": {
+        "sourceFiles": [
+          "src/engine/assembly/KinematicSimulationEngine.ts"
+        ],
+        "tests": [],
+        "gates": []
+      },
+      "timestamp": "2026-09-17T07:23:43.055Z"
+    },
+    {
+      "id": "cam_cam_provenance",
+      "domain": "CAM",
+      "capability": "CAM Provenance",
+      "status": "WORKING",
+      "implementationEvidence": [
+        {
+          "id": "E-SRC-cam_cam_provenance-1",
+          "type": "SOURCE",
+          "reference": "src/engine/provenanceEngine.ts",
+          "description": "Discovered source module (150 lines, markers: NONE)",
+          "verified": true
+        }
+      ],
+      "executionEvidence": [
+        {
+          "id": "E-EXEC-cam_cam_provenance-1",
+          "type": "EXECUTION",
+          "reference": "src/engine/provenanceEngine.ts",
+          "description": "Verified executable logic in: src/engine/provenanceEngine.ts",
+          "verified": true
+        }
+      ],
+      "testEvidence": [
+        {
+          "id": "E-GATE-cam_cam_provenance-1",
+          "type": "GATE",
+          "reference": "src/engine/validation/ProductionProvenanceEngine.ts",
+          "description": "Discovered validation gate: src/engine/validation/ProductionProvenanceEngine.ts",
+          "verified": true
+        }
+      ],
+      "adversarialEvidence": [],
+      "limitations": [
+        "Cryptographic checksum over issued G-code tape files."
+      ],
+      "confidence": "HIGH",
+      "provenance": {
+        "sourceFiles": [
+          "src/engine/provenanceEngine.ts"
+        ],
+        "tests": [],
+        "gates": [
+          "src/engine/validation/ProductionProvenanceEngine.ts"
+        ]
+      },
+      "timestamp": "2026-09-17T07:23:43.055Z"
+    },
+    {
+      "id": "plm_assembly_graph",
+      "domain": "PLM",
+      "capability": "Assembly Graph",
+      "status": "WORKING",
+      "implementationEvidence": [
+        {
+          "id": "E-SRC-plm_assembly_graph-1",
+          "type": "SOURCE",
+          "reference": "src/engine/assembly.ts",
+          "description": "Discovered source module (389 lines, markers: NONE)",
+          "verified": true
+        },
+        {
+          "id": "E-SRC-plm_assembly_graph-2",
+          "type": "SOURCE",
+          "reference": "src/engine/plm/",
+          "description": "Discovered source module (4932 lines, markers: NONE)",
+          "verified": true
+        }
+      ],
+      "executionEvidence": [
+        {
+          "id": "E-EXEC-plm_assembly_graph-1",
+          "type": "EXECUTION",
+          "reference": "src/engine/assembly.ts",
+          "description": "Verified executable logic in: src/engine/assembly.ts",
+          "verified": true
+        }
+      ],
+      "testEvidence": [],
+      "adversarialEvidence": [],
+      "limitations": [
+        "Hierarchical DAG product structure active."
+      ],
+      "confidence": "MEDIUM",
+      "provenance": {
+        "sourceFiles": [
+          "src/engine/assembly.ts",
+          "src/engine/plm/"
+        ],
+        "tests": [],
+        "gates": []
+      },
+      "timestamp": "2026-09-17T07:23:43.058Z"
+    },
+    {
+      "id": "plm_bom",
+      "domain": "PLM",
+      "capability": "BOM",
+      "status": "WORKING",
+      "implementationEvidence": [
+        {
+          "id": "E-SRC-plm_bom-1",
+          "type": "SOURCE",
+          "reference": "src/engine/bomEngine.ts",
+          "description": "Discovered source module (235 lines, markers: NONE)",
+          "verified": true
+        },
+        {
+          "id": "E-SRC-plm_bom-2",
+          "type": "SOURCE",
+          "reference": "src/engine/plm/",
+          "description": "Discovered source module (4932 lines, markers: NONE)",
+          "verified": true
+        }
+      ],
+      "executionEvidence": [
+        {
+          "id": "E-EXEC-plm_bom-1",
+          "type": "EXECUTION",
+          "reference": "src/engine/bomEngine.ts",
+          "description": "Verified executable logic in: src/engine/bomEngine.ts",
+          "verified": true
+        }
+      ],
+      "testEvidence": [],
+      "adversarialEvidence": [],
+      "limitations": [
+        "Multi-level indented bill of materials and roll-up cost aggregation."
+      ],
+      "confidence": "MEDIUM",
+      "provenance": {
+        "sourceFiles": [
+          "src/engine/bomEngine.ts",
+          "src/engine/plm/"
+        ],
+        "tests": [],
+        "gates": []
+      },
+      "timestamp": "2026-09-17T07:23:43.062Z"
+    },
+    {
+      "id": "plm_revision",
+      "domain": "PLM",
+      "capability": "Revision",
+      "status": "WORKING",
+      "implementationEvidence": [
+        {
+          "id": "E-SRC-plm_revision-1",
+          "type": "SOURCE",
+          "reference": "src/engine/provenanceEngine.ts",
+          "description": "Discovered source module (150 lines, markers: NONE)",
+          "verified": true
+        },
+        {
+          "id": "E-SRC-plm_revision-2",
+          "type": "SOURCE",
+          "reference": "src/engine/plm/",
+          "description": "Discovered source module (4932 lines, markers: NONE)",
+          "verified": true
+        }
+      ],
+      "executionEvidence": [
+        {
+          "id": "E-EXEC-plm_revision-1",
+          "type": "EXECUTION",
+          "reference": "src/engine/provenanceEngine.ts",
+          "description": "Verified executable logic in: src/engine/provenanceEngine.ts",
+          "verified": true
+        }
+      ],
+      "testEvidence": [],
+      "adversarialEvidence": [],
+      "limitations": [
+        "Major/minor semantic revision control with immutable freeze states."
+      ],
+      "confidence": "MEDIUM",
+      "provenance": {
+        "sourceFiles": [
+          "src/engine/provenanceEngine.ts",
+          "src/engine/plm/"
+        ],
+        "tests": [],
+        "gates": []
+      },
+      "timestamp": "2026-09-17T07:23:43.065Z"
+    },
+    {
+      "id": "plm_eco",
+      "domain": "PLM",
+      "capability": "ECO",
+      "status": "WORKING",
+      "implementationEvidence": [
+        {
+          "id": "E-SRC-plm_eco-1",
+          "type": "SOURCE",
+          "reference": "src/engine/ncr/",
+          "description": "Discovered source module (858 lines, markers: NONE)",
+          "verified": true
+        }
+      ],
+      "executionEvidence": [
+        {
+          "id": "E-EXEC-plm_eco-1",
+          "type": "EXECUTION",
+          "reference": "src/engine/ncr/ChangeImpactEngine.ts",
+          "description": "Verified executable logic in: src/engine/ncr/ChangeImpactEngine.ts",
+          "verified": true
+        }
+      ],
+      "testEvidence": [],
+      "adversarialEvidence": [],
+      "limitations": [
+        "Engineering Change Order approval workflow state machine active."
+      ],
+      "confidence": "MEDIUM",
+      "provenance": {
+        "sourceFiles": [
+          "src/engine/ncr/"
+        ],
+        "tests": [],
+        "gates": []
+      },
+      "timestamp": "2026-09-17T07:23:43.066Z"
+    },
+    {
+      "id": "plm_change_impact",
+      "domain": "PLM",
+      "capability": "Change Impact",
+      "status": "WORKING",
+      "implementationEvidence": [
+        {
+          "id": "E-SRC-plm_change_impact-1",
+          "type": "SOURCE",
+          "reference": "src/engine/ncr/ChangeImpactEngine.ts",
+          "description": "Discovered source module (95 lines, markers: NONE)",
+          "verified": true
+        }
+      ],
+      "executionEvidence": [
+        {
+          "id": "E-EXEC-plm_change_impact-1",
+          "type": "EXECUTION",
+          "reference": "src/engine/ncr/ChangeImpactEngine.ts",
+          "description": "Verified executable logic in: src/engine/ncr/ChangeImpactEngine.ts",
+          "verified": true
+        }
+      ],
+      "testEvidence": [],
+      "adversarialEvidence": [],
+      "limitations": [
+        "Downstream tooling & assembly impact graph propagation."
+      ],
+      "confidence": "MEDIUM",
+      "provenance": {
+        "sourceFiles": [
+          "src/engine/ncr/ChangeImpactEngine.ts"
+        ],
+        "tests": [],
+        "gates": []
+      },
+      "timestamp": "2026-09-17T07:23:43.066Z"
+    },
+    {
+      "id": "plm_configuration",
+      "domain": "PLM",
+      "capability": "Configuration",
+      "status": "UNPROVEN",
+      "implementationEvidence": [
+        {
+          "id": "E-SRC-plm_configuration-1",
+          "type": "SOURCE",
+          "reference": "src/engine/plm/",
+          "description": "Discovered source module (4932 lines, markers: NONE)",
+          "verified": true
+        }
+      ],
+      "executionEvidence": [],
+      "testEvidence": [],
+      "adversarialEvidence": [],
+      "limitations": [
+        "Effectivity date and serial range unit configuration unproven."
+      ],
+      "confidence": "LOW",
+      "provenance": {
+        "sourceFiles": [
+          "src/engine/plm/"
+        ],
+        "tests": [],
+        "gates": []
+      },
+      "timestamp": "2026-09-17T07:23:43.069Z"
+    },
+    {
+      "id": "plm_lifecycle_traceability",
+      "domain": "PLM",
+      "capability": "Lifecycle Traceability",
+      "status": "WORKING",
+      "implementationEvidence": [
+        {
+          "id": "E-SRC-plm_lifecycle_traceability-1",
+          "type": "SOURCE",
+          "reference": "src/engine/provenanceEngine.ts",
+          "description": "Discovered source module (150 lines, markers: NONE)",
+          "verified": true
+        }
+      ],
+      "executionEvidence": [
+        {
+          "id": "E-EXEC-plm_lifecycle_traceability-1",
+          "type": "EXECUTION",
+          "reference": "src/engine/provenanceEngine.ts",
+          "description": "Verified executable logic in: src/engine/provenanceEngine.ts",
+          "verified": true
+        }
+      ],
+      "testEvidence": [
+        {
+          "id": "E-GATE-plm_lifecycle_traceability-1",
+          "type": "GATE",
+          "reference": "src/engine/validation/EvidenceLineage.ts",
+          "description": "Discovered validation gate: src/engine/validation/EvidenceLineage.ts",
+          "verified": true
+        }
+      ],
+      "adversarialEvidence": [],
+      "limitations": [
+        "As-designed to as-manufactured digital thread traceability."
+      ],
+      "confidence": "HIGH",
+      "provenance": {
+        "sourceFiles": [
+          "src/engine/provenanceEngine.ts"
+        ],
+        "tests": [],
+        "gates": [
+          "src/engine/validation/EvidenceLineage.ts"
+        ]
+      },
+      "timestamp": "2026-09-17T07:23:43.069Z"
+    },
+    {
+      "id": "digital twin_geometry_twin",
+      "domain": "DIGITAL TWIN",
+      "capability": "Geometry Twin",
+      "status": "WORKING",
+      "implementationEvidence": [
+        {
+          "id": "E-SRC-digital twin_geometry_twin-1",
+          "type": "SOURCE",
+          "reference": "src/engine/digitalTwinEngine.ts",
+          "description": "Discovered source module (114 lines, markers: NONE)",
+          "verified": true
+        }
+      ],
+      "executionEvidence": [
+        {
+          "id": "E-EXEC-digital twin_geometry_twin-1",
+          "type": "EXECUTION",
+          "reference": "src/engine/digitalTwinEngine.ts",
+          "description": "Verified executable logic in: src/engine/digitalTwinEngine.ts",
+          "verified": true
+        }
+      ],
+      "testEvidence": [],
+      "adversarialEvidence": [],
+      "limitations": [
+        "Mesh/B-Rep synchronized to nominal CAD geometry."
+      ],
+      "confidence": "MEDIUM",
+      "provenance": {
+        "sourceFiles": [
+          "src/engine/digitalTwinEngine.ts"
+        ],
+        "tests": [],
+        "gates": []
+      },
+      "timestamp": "2026-09-17T07:23:43.069Z"
+    },
+    {
+      "id": "digital twin_physics_twin",
+      "domain": "DIGITAL TWIN",
+      "capability": "Physics Twin",
+      "status": "WORKING",
+      "implementationEvidence": [
+        {
+          "id": "E-SRC-digital twin_physics_twin-1",
+          "type": "SOURCE",
+          "reference": "src/engine/digitalTwinEngine.ts",
+          "description": "Discovered source module (114 lines, markers: NONE)",
+          "verified": true
+        }
+      ],
+      "executionEvidence": [
+        {
+          "id": "E-EXEC-digital twin_physics_twin-1",
+          "type": "EXECUTION",
+          "reference": "src/engine/digitalTwinEngine.ts",
+          "description": "Verified executable logic in: src/engine/digitalTwinEngine.ts",
+          "verified": true
+        }
+      ],
+      "testEvidence": [],
+      "adversarialEvidence": [],
+      "limitations": [
+        "Reduced-order model (ROM) surrogate execution active."
+      ],
+      "confidence": "MEDIUM",
+      "provenance": {
+        "sourceFiles": [
+          "src/engine/digitalTwinEngine.ts"
+        ],
+        "tests": [],
+        "gates": []
+      },
+      "timestamp": "2026-09-17T07:23:43.069Z"
+    },
+    {
+      "id": "digital twin_manufacturing_twin",
+      "domain": "DIGITAL TWIN",
+      "capability": "Manufacturing Twin",
+      "status": "WORKING",
+      "implementationEvidence": [
+        {
+          "id": "E-SRC-digital twin_manufacturing_twin-1",
+          "type": "SOURCE",
+          "reference": "src/engine/digitalTwinEngine.ts",
+          "description": "Discovered source module (114 lines, markers: NONE)",
+          "verified": true
+        },
+        {
+          "id": "E-SRC-digital twin_manufacturing_twin-2",
+          "type": "SOURCE",
+          "reference": "src/engine/manufacturing/",
+          "description": "Discovered source module (26304 lines, markers: HARDCODED_VERDICT_PATTERN)",
+          "verified": true
+        }
+      ],
+      "executionEvidence": [
+        {
+          "id": "E-EXEC-digital twin_manufacturing_twin-1",
+          "type": "EXECUTION",
+          "reference": "src/engine/digitalTwinEngine.ts",
+          "description": "Verified executable logic in: src/engine/digitalTwinEngine.ts",
+          "verified": true
+        }
+      ],
+      "testEvidence": [],
+      "adversarialEvidence": [],
+      "limitations": [
+        "Tool wear & machine spindle thermal drift tracking active."
+      ],
+      "confidence": "MEDIUM",
+      "provenance": {
+        "sourceFiles": [
+          "src/engine/digitalTwinEngine.ts",
+          "src/engine/manufacturing/"
+        ],
+        "tests": [],
+        "gates": []
+      },
+      "timestamp": "2026-09-17T07:23:43.085Z"
+    },
+    {
+      "id": "digital twin_inspection_twin",
+      "domain": "DIGITAL TWIN",
+      "capability": "Inspection Twin",
+      "status": "UNPROVEN",
+      "implementationEvidence": [
+        {
+          "id": "E-SRC-digital twin_inspection_twin-1",
+          "type": "SOURCE",
+          "reference": "src/engine/quality-metrology/",
+          "description": "Discovered source module (684 lines, markers: NONE)",
+          "verified": true
+        }
+      ],
+      "executionEvidence": [],
+      "testEvidence": [],
+      "adversarialEvidence": [],
+      "limitations": [
+        "CMM scan point cloud deviation colormap overlay unproven."
+      ],
+      "confidence": "LOW",
+      "provenance": {
+        "sourceFiles": [
+          "src/engine/quality-metrology/"
+        ],
+        "tests": [],
+        "gates": []
+      },
+      "timestamp": "2026-09-17T07:23:43.085Z"
+    },
+    {
+      "id": "digital twin_telemetry",
+      "domain": "DIGITAL TWIN",
+      "capability": "Telemetry",
+      "status": "UNPROVEN",
+      "implementationEvidence": [],
+      "executionEvidence": [],
+      "testEvidence": [
+        {
+          "id": "E-TST-digital twin_telemetry-1",
+          "type": "TEST",
+          "reference": "src/engine/telemetry/__tests__/SECP086IndustrialConnectivity.test.ts",
+          "description": "Discovered test suite candidate: src/engine/telemetry/__tests__/SECP086IndustrialConnectivity.test.ts",
+          "verified": true
+        },
+        {
+          "id": "E-GATE-digital twin_telemetry-1",
+          "type": "GATE",
+          "reference": "src/engine/validation/HardAcceptanceGate086.ts",
+          "description": "Discovered validation gate: src/engine/validation/HardAcceptanceGate086.ts",
+          "verified": true
+        }
+      ],
+      "adversarialEvidence": [
+        {
+          "id": "E-ADV-digital twin_telemetry-1",
+          "type": "TEST",
+          "reference": "src/engine/telemetry/__tests__/SECP086Adversarial.test.ts",
+          "description": "Adversarial / perturbation harness: src/engine/telemetry/__tests__/SECP086Adversarial.test.ts",
+          "verified": true
+        }
+      ],
+      "limitations": [
+        "OPC UA, MQTT, and Modbus TCP high-frequency telemetry ingestion."
+      ],
+      "confidence": "LOW",
+      "provenance": {
+        "sourceFiles": [],
+        "tests": [
+          "src/engine/telemetry/__tests__/SECP086IndustrialConnectivity.test.ts"
+        ],
+        "gates": [
+          "src/engine/validation/HardAcceptanceGate086.ts"
+        ]
+      },
+      "timestamp": "2026-09-17T07:23:43.086Z"
+    },
+    {
+      "id": "digital twin_state_synchronization",
+      "domain": "DIGITAL TWIN",
+      "capability": "State Synchronization",
+      "status": "WORKING",
+      "implementationEvidence": [
+        {
+          "id": "E-SRC-digital twin_state_synchronization-1",
+          "type": "SOURCE",
+          "reference": "src/engine/digitalTwinEngine.ts",
+          "description": "Discovered source module (114 lines, markers: NONE)",
+          "verified": true
+        }
+      ],
+      "executionEvidence": [
+        {
+          "id": "E-EXEC-digital twin_state_synchronization-1",
+          "type": "EXECUTION",
+          "reference": "src/engine/digitalTwinEngine.ts",
+          "description": "Verified executable logic in: src/engine/digitalTwinEngine.ts",
+          "verified": true
+        }
+      ],
+      "testEvidence": [],
+      "adversarialEvidence": [],
+      "limitations": [
+        "Kalman filter state estimation and parameter update active."
+      ],
+      "confidence": "MEDIUM",
+      "provenance": {
+        "sourceFiles": [
+          "src/engine/digitalTwinEngine.ts"
+        ],
+        "tests": [],
+        "gates": []
+      },
+      "timestamp": "2026-09-17T07:23:43.086Z"
+    },
+    {
+      "id": "ai_geometry_reasoning",
+      "domain": "AI",
+      "capability": "Geometry Reasoning",
+      "status": "UNPROVEN",
+      "implementationEvidence": [
+        {
+          "id": "E-SRC-ai_geometry_reasoning-1",
+          "type": "SOURCE",
+          "reference": "src/engine/ai/",
+          "description": "Discovered source module (127 lines, markers: NONE)",
+          "verified": true
+        }
+      ],
+      "executionEvidence": [],
+      "testEvidence": [],
+      "adversarialEvidence": [],
+      "limitations": [
+        "Feature recognition (fillets, holes, pockets) via heuristic rule tree."
+      ],
+      "confidence": "LOW",
+      "provenance": {
+        "sourceFiles": [
+          "src/engine/ai/"
+        ],
+        "tests": [],
+        "gates": []
+      },
+      "timestamp": "2026-09-17T07:23:43.086Z"
+    },
+    {
+      "id": "ai_physics_reasoning",
+      "domain": "AI",
+      "capability": "Physics Reasoning",
+      "status": "UNPROVEN",
+      "implementationEvidence": [
+        {
+          "id": "E-SRC-ai_physics_reasoning-1",
+          "type": "SOURCE",
+          "reference": "src/engine/ai/",
+          "description": "Discovered source module (127 lines, markers: NONE)",
+          "verified": true
+        }
+      ],
+      "executionEvidence": [],
+      "testEvidence": [],
+      "adversarialEvidence": [],
+      "limitations": [
+        "Stress concentration heuristic assessment active."
+      ],
+      "confidence": "LOW",
+      "provenance": {
+        "sourceFiles": [
+          "src/engine/ai/"
+        ],
+        "tests": [],
+        "gates": []
+      },
+      "timestamp": "2026-09-17T07:23:43.086Z"
+    },
+    {
+      "id": "ai_diagnostics",
+      "domain": "AI",
+      "capability": "Diagnostics",
+      "status": "UNPROVEN",
+      "implementationEvidence": [
+        {
+          "id": "E-SRC-ai_diagnostics-1",
+          "type": "SOURCE",
+          "reference": "src/engine/ai/",
+          "description": "Discovered source module (127 lines, markers: NONE)",
+          "verified": true
+        }
+      ],
+      "executionEvidence": [],
+      "testEvidence": [],
+      "adversarialEvidence": [],
+      "limitations": [
+        "Anomaly pattern classification across multi-channel sensor streams."
+      ],
+      "confidence": "LOW",
+      "provenance": {
+        "sourceFiles": [
+          "src/engine/ai/"
+        ],
+        "tests": [],
+        "gates": []
+      },
+      "timestamp": "2026-09-17T07:23:43.086Z"
+    },
+    {
+      "id": "ai_root_cause",
+      "domain": "AI",
+      "capability": "Root Cause",
+      "status": "WORKING",
+      "implementationEvidence": [
+        {
+          "id": "E-SRC-ai_root_cause-1",
+          "type": "SOURCE",
+          "reference": "src/engine/ncr/RootCauseAnalysisEngine.ts",
+          "description": "Discovered source module (82 lines, markers: NONE)",
+          "verified": true
+        }
+      ],
+      "executionEvidence": [
+        {
+          "id": "E-EXEC-ai_root_cause-1",
+          "type": "EXECUTION",
+          "reference": "src/engine/ncr/RootCauseAnalysisEngine.ts",
+          "description": "Verified executable logic in: src/engine/ncr/RootCauseAnalysisEngine.ts",
+          "verified": true
+        }
+      ],
+      "testEvidence": [],
+      "adversarialEvidence": [],
+      "limitations": [
+        "5-Why and Ishikawa fishbone automated causality ranking active."
+      ],
+      "confidence": "MEDIUM",
+      "provenance": {
+        "sourceFiles": [
+          "src/engine/ncr/RootCauseAnalysisEngine.ts"
+        ],
+        "tests": [],
+        "gates": []
+      },
+      "timestamp": "2026-09-17T07:23:43.086Z"
+    },
+    {
+      "id": "ai_optimization",
+      "domain": "AI",
+      "capability": "Optimization",
+      "status": "WORKING",
+      "implementationEvidence": [
+        {
+          "id": "E-SRC-ai_optimization-1",
+          "type": "SOURCE",
+          "reference": "src/engine/generativeDesignEngine.ts",
+          "description": "Discovered source module (171 lines, markers: NONE)",
+          "verified": true
+        }
+      ],
+      "executionEvidence": [
+        {
+          "id": "E-EXEC-ai_optimization-1",
+          "type": "EXECUTION",
+          "reference": "src/engine/generativeDesignEngine.ts",
+          "description": "Verified executable logic in: src/engine/generativeDesignEngine.ts",
+          "verified": true
+        }
+      ],
+      "testEvidence": [],
+      "adversarialEvidence": [],
+      "limitations": [
+        "SIMP topology optimization algorithm active."
+      ],
+      "confidence": "MEDIUM",
+      "provenance": {
+        "sourceFiles": [
+          "src/engine/generativeDesignEngine.ts"
+        ],
+        "tests": [],
+        "gates": []
+      },
+      "timestamp": "2026-09-17T07:23:43.086Z"
+    },
+    {
+      "id": "ai_copilot",
+      "domain": "AI",
+      "capability": "Copilot",
+      "status": "WORKING",
+      "implementationEvidence": [
+        {
+          "id": "E-SRC-ai_copilot-1",
+          "type": "SOURCE",
+          "reference": "src/engine/aiCopilotEngine.ts",
+          "description": "Discovered source module (38 lines, markers: NONE)",
+          "verified": true
+        }
+      ],
+      "executionEvidence": [
+        {
+          "id": "E-EXEC-ai_copilot-1",
+          "type": "EXECUTION",
+          "reference": "src/engine/aiCopilotEngine.ts",
+          "description": "Verified executable logic in: src/engine/aiCopilotEngine.ts",
+          "verified": true
+        }
+      ],
+      "testEvidence": [],
+      "adversarialEvidence": [],
+      "limitations": [
+        "Context-aware engineering command interpreter active."
+      ],
+      "confidence": "MEDIUM",
+      "provenance": {
+        "sourceFiles": [
+          "src/engine/aiCopilotEngine.ts"
+        ],
+        "tests": [],
+        "gates": []
+      },
+      "timestamp": "2026-09-17T07:23:43.086Z"
+    },
+    {
+      "id": "ai_evidence_constrained_ai",
+      "domain": "AI",
+      "capability": "Evidence-Constrained AI",
+      "status": "PRODUCTION_READY",
+      "implementationEvidence": [
+        {
+          "id": "E-SRC-ai_evidence_constrained_ai-1",
+          "type": "SOURCE",
+          "reference": "src/engine/validation/EngineeringDecisionEngine.ts",
+          "description": "Discovered source module (125 lines, markers: NONE)",
+          "verified": true
+        }
+      ],
+      "executionEvidence": [
+        {
+          "id": "E-EXEC-ai_evidence_constrained_ai-1",
+          "type": "EXECUTION",
+          "reference": "src/engine/validation/EngineeringDecisionEngine.ts",
+          "description": "Verified executable logic in: src/engine/validation/EngineeringDecisionEngine.ts",
+          "verified": true
+        }
+      ],
+      "testEvidence": [
+        {
+          "id": "E-GATE-ai_evidence_constrained_ai-1",
+          "type": "GATE",
+          "reference": "src/engine/validation/AntiFabricationGate.ts",
+          "description": "Discovered validation gate: src/engine/validation/AntiFabricationGate.ts",
+          "verified": true
+        }
+      ],
+      "adversarialEvidence": [
+        {
+          "id": "E-ADV-ai_evidence_constrained_ai-1",
+          "type": "TEST",
+          "reference": "src/engine/validation/VerdictIntegrityAudit.ts",
+          "description": "Adversarial / perturbation harness: src/engine/validation/VerdictIntegrityAudit.ts",
+          "verified": true
+        }
+      ],
+      "limitations": [
+        "Zero-hallucination constraint: recommendations rejected without cryptographic evidence backing."
+      ],
+      "confidence": "HIGH",
+      "provenance": {
+        "sourceFiles": [
+          "src/engine/validation/EngineeringDecisionEngine.ts"
+        ],
+        "tests": [],
+        "gates": [
+          "src/engine/validation/AntiFabricationGate.ts"
+        ]
+      },
+      "timestamp": "2026-09-17T07:23:43.087Z"
+    },
+    {
+      "id": "hpc_parallel_execution",
+      "domain": "HPC",
+      "capability": "Parallel Execution",
+      "status": "UNPROVEN",
+      "implementationEvidence": [],
+      "executionEvidence": [],
+      "testEvidence": [
+        {
+          "id": "E-TST-hpc_parallel_execution-1",
+          "type": "TEST",
+          "reference": "src/engine/hpc/__tests__/SECP085Performance.test.ts",
+          "description": "Discovered test suite candidate: src/engine/hpc/__tests__/SECP085Performance.test.ts",
+          "verified": true
+        },
+        {
+          "id": "E-GATE-hpc_parallel_execution-1",
+          "type": "GATE",
+          "reference": "src/engine/validation/HardAcceptanceGate085.ts",
+          "description": "Discovered validation gate: src/engine/validation/HardAcceptanceGate085.ts",
+          "verified": true
+        }
+      ],
+      "adversarialEvidence": [
+        {
+          "id": "E-ADV-hpc_parallel_execution-1",
+          "type": "TEST",
+          "reference": "src/engine/hpc/__tests__/SECP085Adversarial.test.ts",
+          "description": "Adversarial / perturbation harness: src/engine/hpc/__tests__/SECP085Adversarial.test.ts",
+          "verified": true
+        }
+      ],
+      "limitations": [
+        "WebWorker and multithreaded task dispatcher active."
+      ],
+      "confidence": "LOW",
+      "provenance": {
+        "sourceFiles": [],
+        "tests": [
+          "src/engine/hpc/__tests__/SECP085Performance.test.ts"
+        ],
+        "gates": [
+          "src/engine/validation/HardAcceptanceGate085.ts"
+        ]
+      },
+      "timestamp": "2026-09-17T07:23:43.087Z"
+    },
+    {
+      "id": "hpc_gpu",
+      "domain": "HPC",
+      "capability": "GPU",
+      "status": "UNPROVEN",
+      "implementationEvidence": [],
+      "executionEvidence": [],
+      "testEvidence": [
+        {
+          "id": "E-GATE-hpc_gpu-1",
+          "type": "GATE",
+          "reference": "src/engine/validation/HardAcceptanceGate085.ts",
+          "description": "Discovered validation gate: src/engine/validation/HardAcceptanceGate085.ts",
+          "verified": true
+        }
+      ],
+      "adversarialEvidence": [],
+      "limitations": [
+        "GPU compute pipeline requires WebGPU/CUDA hardware backend."
+      ],
+      "confidence": "NONE",
+      "provenance": {
+        "sourceFiles": [],
+        "tests": [],
+        "gates": [
+          "src/engine/validation/HardAcceptanceGate085.ts"
+        ]
+      },
+      "timestamp": "2026-09-17T07:23:43.087Z"
+    },
+    {
+      "id": "hpc_webgpu",
+      "domain": "HPC",
+      "capability": "WebGPU",
+      "status": "WORKING",
+      "implementationEvidence": [
+        {
+          "id": "E-SRC-hpc_webgpu-1",
+          "type": "SOURCE",
+          "reference": "src/engine/engineering_webgpu/ComputeBackend.ts",
+          "description": "Discovered source module (82 lines, markers: NONE)",
+          "verified": true
+        },
+        {
+          "id": "E-SRC-hpc_webgpu-2",
+          "type": "SOURCE",
+          "reference": "src/engine/engineering_webgpu/ComputeShaderManager.ts",
+          "description": "Discovered source module (942 lines, markers: NONE)",
+          "verified": true
+        }
+      ],
+      "executionEvidence": [
+        {
+          "id": "E-EXEC-hpc_webgpu-1",
+          "type": "EXECUTION",
+          "reference": "src/engine/engineering_webgpu/ComputeBackend.ts",
+          "description": "Verified executable logic in: src/engine/engineering_webgpu/ComputeBackend.ts",
+          "verified": true
+        },
+        {
+          "id": "E-EXEC-hpc_webgpu-2",
+          "type": "EXECUTION",
+          "reference": "src/engine/engineering_webgpu/HardAcceptanceGate143.ts",
+          "description": "Verified executable logic in: src/engine/engineering_webgpu/HardAcceptanceGate143.ts",
+          "verified": true
+        }
+      ],
+      "testEvidence": [
+        {
+          "id": "E-TST-hpc_webgpu-1",
+          "type": "TEST",
+          "reference": "src/engine/engineering_webgpu/__tests__/WebGPUCompute.test.ts",
+          "description": "Discovered test suite candidate: src/engine/engineering_webgpu/__tests__/WebGPUCompute.test.ts",
+          "verified": true
+        },
+        {
+          "id": "E-GATE-hpc_webgpu-1",
+          "type": "GATE",
+          "reference": "src/engine/engineering_webgpu/HardAcceptanceGate143.ts",
+          "description": "Discovered validation gate: src/engine/engineering_webgpu/HardAcceptanceGate143.ts",
+          "verified": true
+        }
+      ],
+      "adversarialEvidence": [],
+      "limitations": [
+        "WGSL shader compilation active; deterministic tree reduction verified with CPU fallback."
+      ],
+      "confidence": "HIGH",
+      "provenance": {
+        "sourceFiles": [
+          "src/engine/engineering_webgpu/ComputeBackend.ts",
+          "src/engine/engineering_webgpu/ComputeShaderManager.ts"
+        ],
+        "tests": [
+          "src/engine/engineering_webgpu/__tests__/WebGPUCompute.test.ts"
+        ],
+        "gates": [
+          "src/engine/engineering_webgpu/HardAcceptanceGate143.ts"
+        ]
+      },
+      "timestamp": "2026-09-17T07:23:43.088Z"
+    },
+    {
+      "id": "hpc_wasm",
+      "domain": "HPC",
+      "capability": "WASM",
+      "status": "UNPROVEN",
+      "implementationEvidence": [],
+      "executionEvidence": [],
+      "testEvidence": [
+        {
+          "id": "E-TST-hpc_wasm-1",
+          "type": "TEST",
+          "reference": "src/engine/hpc/__tests__/SECP085WasmIntegrity.test.ts",
+          "description": "Discovered test suite candidate: src/engine/hpc/__tests__/SECP085WasmIntegrity.test.ts",
+          "verified": true
+        },
+        {
+          "id": "E-GATE-hpc_wasm-1",
+          "type": "GATE",
+          "reference": "src/engine/validation/HardAcceptanceGate085.ts",
+          "description": "Discovered validation gate: src/engine/validation/HardAcceptanceGate085.ts",
+          "verified": true
+        }
+      ],
+      "adversarialEvidence": [],
+      "limitations": [
+        "SIMD128 WebAssembly acceleration module hash verification."
+      ],
+      "confidence": "LOW",
+      "provenance": {
+        "sourceFiles": [],
+        "tests": [
+          "src/engine/hpc/__tests__/SECP085WasmIntegrity.test.ts"
+        ],
+        "gates": [
+          "src/engine/validation/HardAcceptanceGate085.ts"
+        ]
+      },
+      "timestamp": "2026-09-17T07:23:43.088Z"
+    },
+    {
+      "id": "hpc_native_hpc",
+      "domain": "HPC",
+      "capability": "Native HPC",
+      "status": "UNPROVEN",
+      "implementationEvidence": [
+        {
+          "id": "E-SRC-hpc_native_hpc-1",
+          "type": "SOURCE",
+          "reference": "src/engine/hpc/",
+          "description": "Discovered source module (1336 lines, markers: NONE)",
+          "verified": true
+        }
+      ],
+      "executionEvidence": [],
+      "testEvidence": [],
+      "adversarialEvidence": [],
+      "limitations": [
+        "Native C++/Fortran shared object binding unproven in container sandbox."
+      ],
+      "confidence": "LOW",
+      "provenance": {
+        "sourceFiles": [
+          "src/engine/hpc/"
+        ],
+        "tests": [],
+        "gates": []
+      },
+      "timestamp": "2026-09-17T07:23:43.089Z"
+    },
+    {
+      "id": "hpc_mpi",
+      "domain": "HPC",
+      "capability": "MPI",
+      "status": "UNPROVEN",
+      "implementationEvidence": [
+        {
+          "id": "E-SRC-hpc_mpi-1",
+          "type": "SOURCE",
+          "reference": "src/engine/distributed-compute/",
+          "description": "Discovered source module (419 lines, markers: NONE)",
+          "verified": true
+        }
+      ],
+      "executionEvidence": [],
+      "testEvidence": [],
+      "adversarialEvidence": [],
+      "limitations": [
+        "Message Passing Interface inter-node domain decomposition unproven."
+      ],
+      "confidence": "LOW",
+      "provenance": {
+        "sourceFiles": [
+          "src/engine/distributed-compute/"
+        ],
+        "tests": [],
+        "gates": []
+      },
+      "timestamp": "2026-09-17T07:23:43.089Z"
+    },
+    {
+      "id": "hpc_distributed_cfd",
+      "domain": "HPC",
+      "capability": "Distributed CFD",
+      "status": "UNPROVEN",
+      "implementationEvidence": [
+        {
+          "id": "E-SRC-hpc_distributed_cfd-1",
+          "type": "SOURCE",
+          "reference": "src/engine/distributed-compute/",
+          "description": "Discovered source module (419 lines, markers: NONE)",
+          "verified": true
+        }
+      ],
+      "executionEvidence": [],
+      "testEvidence": [],
+      "adversarialEvidence": [],
+      "limitations": [
+        "Partitioned mesh halo-cell exchange unproven."
+      ],
+      "confidence": "LOW",
+      "provenance": {
+        "sourceFiles": [
+          "src/engine/distributed-compute/"
+        ],
+        "tests": [],
+        "gates": []
+      },
+      "timestamp": "2026-09-17T07:23:43.090Z"
+    },
+    {
+      "id": "hpc_distributed_fem",
+      "domain": "HPC",
+      "capability": "Distributed FEM",
+      "status": "UNPROVEN",
+      "implementationEvidence": [
+        {
+          "id": "E-SRC-hpc_distributed_fem-1",
+          "type": "SOURCE",
+          "reference": "src/engine/distributed-compute/",
+          "description": "Discovered source module (419 lines, markers: NONE)",
+          "verified": true
+        }
+      ],
+      "executionEvidence": [],
+      "testEvidence": [],
+      "adversarialEvidence": [],
+      "limitations": [
+        "FETI-DP domain decomposition solver unproven."
+      ],
+      "confidence": "LOW",
+      "provenance": {
+        "sourceFiles": [
+          "src/engine/distributed-compute/"
+        ],
+        "tests": [],
+        "gates": []
+      },
+      "timestamp": "2026-09-17T07:23:43.090Z"
+    },
+    {
+      "id": "hpc_scaling",
+      "domain": "HPC",
+      "capability": "Scaling",
+      "status": "UNPROVEN",
+      "implementationEvidence": [],
+      "executionEvidence": [],
+      "testEvidence": [
+        {
+          "id": "E-TST-hpc_scaling-1",
+          "type": "TEST",
+          "reference": "src/engine/hpc/__tests__/SECP085Performance.test.ts",
+          "description": "Discovered test suite candidate: src/engine/hpc/__tests__/SECP085Performance.test.ts",
+          "verified": true
+        },
+        {
+          "id": "E-GATE-hpc_scaling-1",
+          "type": "GATE",
+          "reference": "src/engine/validation/HardAcceptanceGate085.ts",
+          "description": "Discovered validation gate: src/engine/validation/HardAcceptanceGate085.ts",
+          "verified": true
+        }
+      ],
+      "adversarialEvidence": [],
+      "limitations": [
+        "Amdahl / Gustafson strong and weak scaling benchmarks in progress."
+      ],
+      "confidence": "LOW",
+      "provenance": {
+        "sourceFiles": [],
+        "tests": [
+          "src/engine/hpc/__tests__/SECP085Performance.test.ts"
+        ],
+        "gates": [
+          "src/engine/validation/HardAcceptanceGate085.ts"
+        ]
+      },
+      "timestamp": "2026-09-17T07:23:43.090Z"
+    },
+    {
+      "id": "forensic engineering_evidence",
+      "domain": "FORENSIC ENGINEERING",
+      "capability": "Evidence",
+      "status": "PRODUCTION_READY",
+      "implementationEvidence": [
+        {
+          "id": "E-SRC-forensic engineering_evidence-1",
+          "type": "SOURCE",
+          "reference": "src/engine/validation/VerdictContract.ts",
+          "description": "Discovered source module (31 lines, markers: NONE)",
+          "verified": true
+        },
+        {
+          "id": "E-SRC-forensic engineering_evidence-2",
+          "type": "SOURCE",
+          "reference": "src/engine/validation/EvidenceLineage.ts",
+          "description": "Discovered source module (9 lines, markers: NONE)",
+          "verified": true
+        }
+      ],
+      "executionEvidence": [
+        {
+          "id": "E-EXEC-forensic engineering_evidence-1",
+          "type": "EXECUTION",
+          "reference": "src/engine/validation/VerdictEvaluator.ts",
+          "description": "Verified executable logic in: src/engine/validation/VerdictEvaluator.ts",
+          "verified": true
+        }
+      ],
+      "testEvidence": [
+        {
+          "id": "E-TST-forensic engineering_evidence-1",
+          "type": "TEST",
+          "reference": "src/engine/validation/__tests__/VerdictIntegrityAdversarial.test.ts",
+          "description": "Discovered test suite candidate: src/engine/validation/__tests__/VerdictIntegrityAdversarial.test.ts",
+          "verified": true
+        },
+        {
+          "id": "E-GATE-forensic engineering_evidence-1",
+          "type": "GATE",
+          "reference": "src/engine/validation/VerdictEvaluator.ts",
+          "description": "Discovered validation gate: src/engine/validation/VerdictEvaluator.ts",
+          "verified": true
+        }
+      ],
+      "adversarialEvidence": [
+        {
+          "id": "E-ADV-forensic engineering_evidence-1",
+          "type": "TEST",
+          "reference": "src/engine/validation/__tests__/GateFailureInjection.test.ts",
+          "description": "Adversarial / perturbation harness: src/engine/validation/__tests__/GateFailureInjection.test.ts",
+          "verified": true
+        }
+      ],
+      "limitations": [
+        "Complete mathematical metric-to-verdict evidence trail required."
+      ],
+      "confidence": "HIGH",
+      "provenance": {
+        "sourceFiles": [
+          "src/engine/validation/VerdictContract.ts",
+          "src/engine/validation/EvidenceLineage.ts"
+        ],
+        "tests": [
+          "src/engine/validation/__tests__/VerdictIntegrityAdversarial.test.ts"
+        ],
+        "gates": [
+          "src/engine/validation/VerdictEvaluator.ts"
+        ]
+      },
+      "timestamp": "2026-09-17T07:23:43.091Z"
+    },
+    {
+      "id": "forensic engineering_hashing",
+      "domain": "FORENSIC ENGINEERING",
+      "capability": "Hashing",
+      "status": "PRODUCTION_READY",
+      "implementationEvidence": [
+        {
+          "id": "E-SRC-forensic engineering_hashing-1",
+          "type": "SOURCE",
+          "reference": "src/engine/core/DeterminismEvaluator.ts",
+          "description": "Discovered source module (397 lines, markers: NONE)",
+          "verified": true
+        },
+        {
+          "id": "E-SRC-forensic engineering_hashing-2",
+          "type": "SOURCE",
+          "reference": "src/engine/provenanceEngine.ts",
+          "description": "Discovered source module (150 lines, markers: NONE)",
+          "verified": true
+        }
+      ],
+      "executionEvidence": [
+        {
+          "id": "E-EXEC-forensic engineering_hashing-1",
+          "type": "EXECUTION",
+          "reference": "src/engine/core/DeterminismEvaluator.ts",
+          "description": "Verified executable logic in: src/engine/core/DeterminismEvaluator.ts",
+          "verified": true
+        }
+      ],
+      "testEvidence": [
+        {
+          "id": "E-TST-forensic engineering_hashing-1",
+          "type": "TEST",
+          "reference": "src/engine/core/__tests__/DeterminismContract.test.ts",
+          "description": "Discovered test suite candidate: src/engine/core/__tests__/DeterminismContract.test.ts",
+          "verified": true
+        },
+        {
+          "id": "E-TST-forensic engineering_hashing-2",
+          "type": "TEST",
+          "reference": "src/engine/core/__tests__/DeterminismEvaluator.test.ts",
+          "description": "Discovered test suite candidate: src/engine/core/__tests__/DeterminismEvaluator.test.ts",
+          "verified": true
+        },
+        {
+          "id": "E-GATE-forensic engineering_hashing-1",
+          "type": "GATE",
+          "reference": "src/engine/validation/DeterminismGate.ts",
+          "description": "Discovered validation gate: src/engine/validation/DeterminismGate.ts",
+          "verified": true
+        }
+      ],
+      "adversarialEvidence": [
+        {
+          "id": "E-ADV-forensic engineering_hashing-1",
+          "type": "TEST",
+          "reference": "src/engine/core/__tests__/DeterminismEvaluator.test.ts",
+          "description": "Adversarial / perturbation harness: src/engine/core/__tests__/DeterminismEvaluator.test.ts",
+          "verified": true
+        }
+      ],
+      "limitations": [
+        "Canonicalized SHA-256 state hashing with key-sorting and type disambiguation."
+      ],
+      "confidence": "HIGH",
+      "provenance": {
+        "sourceFiles": [
+          "src/engine/core/DeterminismEvaluator.ts",
+          "src/engine/provenanceEngine.ts"
+        ],
+        "tests": [
+          "src/engine/core/__tests__/DeterminismContract.test.ts",
+          "src/engine/core/__tests__/DeterminismEvaluator.test.ts"
+        ],
+        "gates": [
+          "src/engine/validation/DeterminismGate.ts"
+        ]
+      },
+      "timestamp": "2026-09-17T07:23:43.091Z"
+    },
+    {
+      "id": "forensic engineering_provenance",
+      "domain": "FORENSIC ENGINEERING",
+      "capability": "Provenance",
+      "status": "WORKING",
+      "implementationEvidence": [
+        {
+          "id": "E-SRC-forensic engineering_provenance-1",
+          "type": "SOURCE",
+          "reference": "src/engine/provenanceEngine.ts",
+          "description": "Discovered source module (150 lines, markers: NONE)",
+          "verified": true
+        },
+        {
+          "id": "E-SRC-forensic engineering_provenance-2",
+          "type": "SOURCE",
+          "reference": "src/engine/validation/VerdictProvenance.ts",
+          "description": "Discovered source module (14 lines, markers: NONE)",
+          "verified": true
+        }
+      ],
+      "executionEvidence": [
+        {
+          "id": "E-EXEC-forensic engineering_provenance-1",
+          "type": "EXECUTION",
+          "reference": "src/engine/provenanceEngine.ts",
+          "description": "Verified executable logic in: src/engine/provenanceEngine.ts",
+          "verified": true
+        }
+      ],
+      "testEvidence": [
+        {
+          "id": "E-TST-forensic engineering_provenance-1",
+          "type": "TEST",
+          "reference": "src/engine/validation/__tests__/VerdictIntegrityAdversarial.test.ts",
+          "description": "Discovered test suite candidate: src/engine/validation/__tests__/VerdictIntegrityAdversarial.test.ts",
+          "verified": true
+        },
+        {
+          "id": "E-GATE-forensic engineering_provenance-1",
+          "type": "GATE",
+          "reference": "src/engine/validation/ProductionProvenanceEngine.ts",
+          "description": "Discovered validation gate: src/engine/validation/ProductionProvenanceEngine.ts",
+          "verified": true
+        }
+      ],
+      "adversarialEvidence": [],
+      "limitations": [
+        "Immutable execution provenance graph and artifact hash linking."
+      ],
+      "confidence": "HIGH",
+      "provenance": {
+        "sourceFiles": [
+          "src/engine/provenanceEngine.ts",
+          "src/engine/validation/VerdictProvenance.ts"
+        ],
+        "tests": [
+          "src/engine/validation/__tests__/VerdictIntegrityAdversarial.test.ts"
+        ],
+        "gates": [
+          "src/engine/validation/ProductionProvenanceEngine.ts"
+        ]
+      },
+      "timestamp": "2026-09-17T07:23:43.091Z"
+    },
+    {
+      "id": "forensic engineering_chain_of_custody",
+      "domain": "FORENSIC ENGINEERING",
+      "capability": "Chain of Custody",
+      "status": "PRODUCTION_READY",
+      "implementationEvidence": [
+        {
+          "id": "E-SRC-forensic engineering_chain_of_custody-1",
+          "type": "SOURCE",
+          "reference": "src/engine/validation/SECP075CryptographicChain.ts",
+          "description": "Discovered source module (45 lines, markers: NONE)",
+          "verified": true
+        },
+        {
+          "id": "E-SRC-forensic engineering_chain_of_custody-2",
+          "type": "SOURCE",
+          "reference": "src/engine/provenanceEngine.ts",
+          "description": "Discovered source module (150 lines, markers: NONE)",
+          "verified": true
+        }
+      ],
+      "executionEvidence": [
+        {
+          "id": "E-EXEC-forensic engineering_chain_of_custody-1",
+          "type": "EXECUTION",
+          "reference": "src/engine/validation/SECP075CryptographicChain.ts",
+          "description": "Verified executable logic in: src/engine/validation/SECP075CryptographicChain.ts",
+          "verified": true
+        }
+      ],
+      "testEvidence": [
+        {
+          "id": "E-TST-forensic engineering_chain_of_custody-1",
+          "type": "TEST",
+          "reference": "src/engine/validation/__tests__/SECP075ForensicVerificationEngine.test.ts",
+          "description": "Discovered test suite candidate: src/engine/validation/__tests__/SECP075ForensicVerificationEngine.test.ts",
+          "verified": true
+        },
+        {
+          "id": "E-GATE-forensic engineering_chain_of_custody-1",
+          "type": "GATE",
+          "reference": "src/engine/validation/HardAcceptanceGate075.ts",
+          "description": "Discovered validation gate: src/engine/validation/HardAcceptanceGate075.ts",
+          "verified": true
+        }
+      ],
+      "adversarialEvidence": [
+        {
+          "id": "E-ADV-forensic engineering_chain_of_custody-1",
+          "type": "TEST",
+          "reference": "src/engine/validation/SECP075AdversarialEngine.ts",
+          "description": "Adversarial / perturbation harness: src/engine/validation/SECP075AdversarialEngine.ts",
+          "verified": true
+        }
+      ],
+      "limitations": [
+        "Forward-secure append-only cryptographic ledger blocks."
+      ],
+      "confidence": "HIGH",
+      "provenance": {
+        "sourceFiles": [
+          "src/engine/validation/SECP075CryptographicChain.ts",
+          "src/engine/provenanceEngine.ts"
+        ],
+        "tests": [
+          "src/engine/validation/__tests__/SECP075ForensicVerificationEngine.test.ts"
+        ],
+        "gates": [
+          "src/engine/validation/HardAcceptanceGate075.ts"
+        ]
+      },
+      "timestamp": "2026-09-17T07:23:43.092Z"
+    },
+    {
+      "id": "forensic engineering_cryptographic_attestation",
+      "domain": "FORENSIC ENGINEERING",
+      "capability": "Cryptographic Attestation",
+      "status": "PRODUCTION_READY",
+      "implementationEvidence": [
+        {
+          "id": "E-SRC-forensic engineering_cryptographic_attestation-1",
+          "type": "SOURCE",
+          "reference": "src/engine/validation/SECP077CryptographicChain.ts",
+          "description": "Discovered source module (149 lines, markers: NONE)",
+          "verified": true
+        },
+        {
+          "id": "E-SRC-forensic engineering_cryptographic_attestation-2",
+          "type": "SOURCE",
+          "reference": "src/engine/core/DeterminismContract.ts",
+          "description": "Discovered source module (131 lines, markers: NONE)",
+          "verified": true
+        }
+      ],
+      "executionEvidence": [
+        {
+          "id": "E-EXEC-forensic engineering_cryptographic_attestation-1",
+          "type": "EXECUTION",
+          "reference": "src/engine/core/DeterminismEvaluator.ts",
+          "description": "Verified executable logic in: src/engine/core/DeterminismEvaluator.ts",
+          "verified": true
+        }
+      ],
+      "testEvidence": [
+        {
+          "id": "E-TST-forensic engineering_cryptographic_attestation-1",
+          "type": "TEST",
+          "reference": "src/engine/core/__tests__/DeterminismEvaluator.test.ts",
+          "description": "Discovered test suite candidate: src/engine/core/__tests__/DeterminismEvaluator.test.ts",
+          "verified": true
+        },
+        {
+          "id": "E-GATE-forensic engineering_cryptographic_attestation-1",
+          "type": "GATE",
+          "reference": "src/engine/validation/DeterminismGate.ts",
+          "description": "Discovered validation gate: src/engine/validation/DeterminismGate.ts",
+          "verified": true
+        }
+      ],
+      "adversarialEvidence": [
+        {
+          "id": "E-ADV-forensic engineering_cryptographic_attestation-1",
+          "type": "TEST",
+          "reference": "src/engine/core/__tests__/DeterminismEvaluator.test.ts",
+          "description": "Adversarial / perturbation harness: src/engine/core/__tests__/DeterminismEvaluator.test.ts",
+          "verified": true
+        }
+      ],
+      "limitations": [
+        "Attestation of engineering determinism boundaries and seed states."
+      ],
+      "confidence": "HIGH",
+      "provenance": {
+        "sourceFiles": [
+          "src/engine/validation/SECP077CryptographicChain.ts",
+          "src/engine/core/DeterminismContract.ts"
+        ],
+        "tests": [
+          "src/engine/core/__tests__/DeterminismEvaluator.test.ts"
+        ],
+        "gates": [
+          "src/engine/validation/DeterminismGate.ts"
+        ]
+      },
+      "timestamp": "2026-09-17T07:23:43.092Z"
+    },
+    {
+      "id": "forensic engineering_result_certification",
+      "domain": "FORENSIC ENGINEERING",
+      "capability": "Result Certification",
+      "status": "PRODUCTION_READY",
+      "implementationEvidence": [
+        {
+          "id": "E-SRC-forensic engineering_result_certification-1",
+          "type": "SOURCE",
+          "reference": "src/engine/certificationEngine.ts",
+          "description": "Discovered source module (78 lines, markers: NONE)",
+          "verified": true
+        },
+        {
+          "id": "E-SRC-forensic engineering_result_certification-2",
+          "type": "SOURCE",
+          "reference": "src/engine/validation/VerdictEvaluator.ts",
+          "description": "Discovered source module (85 lines, markers: NONE)",
+          "verified": true
+        }
+      ],
+      "executionEvidence": [
+        {
+          "id": "E-EXEC-forensic engineering_result_certification-1",
+          "type": "EXECUTION",
+          "reference": "src/engine/certificationEngine.ts",
+          "description": "Verified executable logic in: src/engine/certificationEngine.ts",
+          "verified": true
+        }
+      ],
+      "testEvidence": [
+        {
+          "id": "E-TST-forensic engineering_result_certification-1",
+          "type": "TEST",
+          "reference": "src/engine/validation/__tests__/VerdictIntegrityAdversarial.test.ts",
+          "description": "Discovered test suite candidate: src/engine/validation/__tests__/VerdictIntegrityAdversarial.test.ts",
+          "verified": true
+        },
+        {
+          "id": "E-GATE-forensic engineering_result_certification-1",
+          "type": "GATE",
+          "reference": "src/engine/validation/VerdictEvaluator.ts",
+          "description": "Discovered validation gate: src/engine/validation/VerdictEvaluator.ts",
+          "verified": true
+        }
+      ],
+      "adversarialEvidence": [
+        {
+          "id": "E-ADV-forensic engineering_result_certification-1",
+          "type": "TEST",
+          "reference": "src/engine/validation/__tests__/GateFailureInjection.test.ts",
+          "description": "Adversarial / perturbation harness: src/engine/validation/__tests__/GateFailureInjection.test.ts",
+          "verified": true
+        }
+      ],
+      "limitations": [
+        "Zero-tolerance certification: single metric failure rejects entire assembly."
+      ],
+      "confidence": "HIGH",
+      "provenance": {
+        "sourceFiles": [
+          "src/engine/certificationEngine.ts",
+          "src/engine/validation/VerdictEvaluator.ts"
+        ],
+        "tests": [
+          "src/engine/validation/__tests__/VerdictIntegrityAdversarial.test.ts"
+        ],
+        "gates": [
+          "src/engine/validation/VerdictEvaluator.ts"
+        ]
+      },
+      "timestamp": "2026-09-17T07:23:43.093Z"
+    }
+  ],
+  "criticalFindings": [
+    "[Finding] Hardcoded verdict pattern detected in source: src/engine/topology/",
+    "[Finding] Hardcoded verdict pattern detected in source: src/engine/topology/",
+    "[Finding] Hardcoded verdict pattern detected in source: src/engine/assembly/",
+    "[Finding] Hardcoded verdict pattern detected in source: src/engine/cfd3d/",
+    "[Finding] Hardcoded PASS/verdict detected in gate: src/engine/validation/HardAcceptanceGate076.ts",
+    "[Finding] Hardcoded verdict pattern detected in source: src/engine/cam/",
+    "[Finding] Hardcoded verdict pattern detected in source: src/engine/manufacturing/"
+  ],
+  "limitations": [
+    "Evaluated at basic primitive & topological edge levels.",
+    "Non-manifold topology healing unverified.",
+    "High-degree rational B-spline knot insertion unverified.",
+    "Co-planar boundary intersections require robust perturbation engine.",
+    "Automated gap stitching unproven for large dirty STEP imports.",
+    "Cyclic feature dependency resolution unverified.",
+    "Geometric constraint solver under-constrained state bifurcation unverified.",
+    "Mating kinematic degree-of-freedom solver is basic.",
+    "Semantic PMI tessellation validation in progress.",
+    "Type 144 trimmed surface support unproven.",
+    "JT compression layer not fully implemented.",
+    "SI and Imperial conversions verified; custom thermodynamic unit scales unproven.",
+    "Linear isotropic material properties implemented; hyperelastic/anisotropic unproven.",
+    "Unstructured tetrahedral boundary layer meshing unproven.",
+    "Direct and PCG solvers active; algebraic multigrid unproven.",
+    "Monotonic energy norm convergence verified on standard test geometries.",
+    "Boundary flux mass imbalance detection active; energy conservation unproven.",
+    "Cell-centered collocated finite volume discretization for structured/hex grids.",
+    "Rhie-Chow momentum flux interpolation active.",
+    "SIMPLE algorithm implemented; PISO and SIMPLEC unproven.",
+    "BiCGSTAB & Conjugate Gradient active with Jacobi preconditioning.",
+    "2D/3D low-Reynolds poiseuille/cavity flow verified.",
+    "Reynolds-averaged Navier-Stokes closure requires boundary layer wall model.",
+    "k-epsilon model structure exists; high-Re wall functions unproven.",
+    "Menter SST blending functions unverified for complex 3D separation.",
+    "Lax-Friedrichs and Roe shock capturing active with positivity verification.",
+    "Conduction & simple convection active; radiative radiation enclosure unproven.",
+    "Second-order backward Euler time integration unproven for vortex shedding.",
+    "Richardson extrapolation & GCI index active in modal; CFD GCI unproven.",
+    "Method of Manufactured Solutions (MMS) framework unproven.",
+    "Comparison against experimental wind tunnel benchmarks unproven.",
+    "Isoparametric trilinear HEX8 and linear TET4 stiffness assembly.",
+    "HEX8 and TET4 active; quadratic serendipity/shell elements unproven.",
+    "CSR (Compressed Sparse Row) and COO storage formats verified.",
+    "Linear static elastic displacement and von Mises stress extraction.",
+    "von Mises elastoplasticity with isotropic hardening unproven for large strains.",
+    "Penalty-based node-to-segment contact with normal impenetrability.",
+    "Total Lagrangian geometric nonlinearity formulation unproven.",
+    "Coupled steady-state thermoelastic stress analysis active.",
+    "Generalized eigenpair solver with Rayleigh quotient validation.",
+    "Linearized Euler geometric stiffness matrix eigenvalue analysis unproven.",
+    "S-N Basquin curve and Goodman mean-stress correction unproven.",
+    "Hierarchical isotropic metal and composite property ontology.",
+    "Standard aerospace & industrial alloy database (Al6061, Ti6Al4V, Steel 4140, Inconel 718).",
+    "Interpolation of thermal expansion and modulus over temperature unproven.",
+    "Ramberg-Osgood & Johnson-Cook constitutive models unproven.",
+    "Norton-Bailey secondary creep power-law rate unproven.",
+    "Morrow & Manson-Coffin strain-life fatigue parameterization unproven.",
+    "Linear elastic fracture mechanics K_IC and Paris law crack growth unproven.",
+    "Phase transformation TTT/CCT kinetics unproven.",
+    "Cryptographic material batch lot attestation active.",
+    "A-basis & B-basis statistical property allowance unproven.",
+    "Planar zig-zag and contour parallel 2.5D toolpath generation.",
+    "Ball-end mill surface gouge-free rastering active.",
+    "Table-table & head-table kinematics singular pole crossing handling in progress.",
+    "Forward and inverse kinematic Denavit-Hartenberg parameterization.",
+    "Axis limit clipping active; full swept volume B-Rep collision unproven.",
+    "ISO G-code standard post-processing (Fanuc, Heidenhain, Siemens 840D) active.",
+    "Modal state tracking and feed rate limits check.",
+    "Time-stepped discrete kinematic motion replay active.",
+    "Cryptographic checksum over issued G-code tape files.",
+    "Hierarchical DAG product structure active.",
+    "Multi-level indented bill of materials and roll-up cost aggregation.",
+    "Major/minor semantic revision control with immutable freeze states.",
+    "Engineering Change Order approval workflow state machine active.",
+    "Downstream tooling & assembly impact graph propagation.",
+    "Effectivity date and serial range unit configuration unproven.",
+    "As-designed to as-manufactured digital thread traceability.",
+    "Mesh/B-Rep synchronized to nominal CAD geometry.",
+    "Reduced-order model (ROM) surrogate execution active.",
+    "Tool wear & machine spindle thermal drift tracking active.",
+    "CMM scan point cloud deviation colormap overlay unproven.",
+    "OPC UA, MQTT, and Modbus TCP high-frequency telemetry ingestion.",
+    "Kalman filter state estimation and parameter update active.",
+    "Feature recognition (fillets, holes, pockets) via heuristic rule tree.",
+    "Stress concentration heuristic assessment active.",
+    "Anomaly pattern classification across multi-channel sensor streams.",
+    "5-Why and Ishikawa fishbone automated causality ranking active.",
+    "SIMP topology optimization algorithm active.",
+    "Context-aware engineering command interpreter active.",
+    "Zero-hallucination constraint: recommendations rejected without cryptographic evidence backing.",
+    "WebWorker and multithreaded task dispatcher active.",
+    "GPU compute pipeline requires WebGPU/CUDA hardware backend.",
+    "WGSL shader compilation active; deterministic tree reduction verified with CPU fallback.",
+    "SIMD128 WebAssembly acceleration module hash verification.",
+    "Native C++/Fortran shared object binding unproven in container sandbox.",
+    "Message Passing Interface inter-node domain decomposition unproven.",
+    "Partitioned mesh halo-cell exchange unproven.",
+    "FETI-DP domain decomposition solver unproven.",
+    "Amdahl / Gustafson strong and weak scaling benchmarks in progress.",
+    "Complete mathematical metric-to-verdict evidence trail required.",
+    "Canonicalized SHA-256 state hashing with key-sorting and type disambiguation.",
+    "Immutable execution provenance graph and artifact hash linking.",
+    "Forward-secure append-only cryptographic ledger blocks.",
+    "Attestation of engineering determinism boundaries and seed states.",
+    "Zero-tolerance certification: single metric failure rejects entire assembly."
+  ],
+  "evidenceCoverage": {
+    "implementation": 117,
+    "execution": 56,
+    "tests": 69,
+    "adversarial": 18,
+    "externalValidation": 0
+  }
+}

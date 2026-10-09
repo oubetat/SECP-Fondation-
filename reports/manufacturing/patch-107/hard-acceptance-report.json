@@ -1,0 +1,76 @@
+{
+  "passed": true,
+  "scorePercentage": 100,
+  "totalChecks": 13,
+  "passedChecks": 13,
+  "merkleRootHash": "0x4b3c94f1",
+  "verdict": "QUALIFIED",
+  "timestamp": "2026-09-29T11:06:37.746Z",
+  "details": [
+    {
+      "checkName": "PostProcessor Contract & Initialization",
+      "status": "PASS",
+      "evidence": "Ready with contract POST_GATE_107"
+    },
+    {
+      "checkName": "Machine & Controller Profile Validation",
+      "status": "PASS",
+      "evidence": "Machine limits validated for 5 axes. Controller words: 22"
+    },
+    {
+      "checkName": "Dialect Model & Versioning",
+      "status": "PASS",
+      "evidence": "Dialect: FANUC_LIKE, Status: IMPLEMENTED, Rev: 1"
+    },
+    {
+      "checkName": "Post Processing Execution & NC Generation",
+      "status": "PASS",
+      "evidence": "Generated 23 blocks, raw length 925 chars"
+    },
+    {
+      "checkName": "NC Syntax Validation",
+      "status": "PASS",
+      "evidence": "Checked 23 blocks with 0 syntax errors"
+    },
+    {
+      "checkName": "NC Semantic & Axis Limit Validation",
+      "status": "PASS",
+      "evidence": "0 axis limit, spindle, or feed violations across all blocks"
+    },
+    {
+      "checkName": "Round-Trip Machine Reconstruction",
+      "status": "PASS",
+      "evidence": "Max position delta: 0.000000 mm <= 0.002 mm, Max angular delta: 0.000000 deg"
+    },
+    {
+      "checkName": "Kinematic Pose Reconstruction",
+      "status": "PASS",
+      "evidence": "Kinematic reconstruction verdict: KINEMATICALLY_VALIDATED"
+    },
+    {
+      "checkName": "NC Collision Re-Verification",
+      "status": "PASS",
+      "evidence": "Collision re-verification status: COLLISION_FREE, Min clearance: 0.00 mm"
+    },
+    {
+      "checkName": "NC Program Qualification Gate",
+      "status": "PASS",
+      "evidence": "Safety Status: QUALIFIED, Program Status: QUALIFIED"
+    },
+    {
+      "checkName": "Deterministic Merkle Fingerprinting",
+      "status": "PASS",
+      "evidence": "Merkle Root: 0x467d9b67"
+    },
+    {
+      "checkName": "Source Traceability & Audit Trail",
+      "status": "PASS",
+      "evidence": "Post trace recorded 6 discrete conversion steps"
+    },
+    {
+      "checkName": "Post Processor Adversarial Test Suite",
+      "status": "PASS",
+      "evidence": "Passed 5/5 adversarial tests (overflow, NaN, tool cap, spindle RPM, determinism)"
+    }
+  ]
+}

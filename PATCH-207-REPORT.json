@@ -1,0 +1,45 @@
+{
+  "verdict": "PROVEN",
+  "checks": [
+    {
+      "name": "Parametric -> Direct Workflow on Real B-Rep",
+      "status": "PASS"
+    },
+    {
+      "name": "Direct -> Parametric Conversion & Equivalence Proof",
+      "status": "PASS"
+    },
+    {
+      "name": "Geometry Equivalence Engine Precision",
+      "status": "PASS"
+    },
+    {
+      "name": "Pattern/Mirror Conflict Detection",
+      "status": "PASS"
+    },
+    {
+      "name": "Multi-Level Editing (Level 1 Parameter - Level 5 Vertex)",
+      "status": "PASS"
+    },
+    {
+      "name": "Parameter Rebuild with Direct Override Layer Preservation",
+      "status": "PASS"
+    },
+    {
+      "name": "Rebuild Conflict Handling & Clean Rollback",
+      "status": "PASS"
+    },
+    {
+      "name": "Dependency Analysis & Simulation Invalidation",
+      "status": "PASS"
+    },
+    {
+      "name": "Transaction Undo Across Hybrid Modes",
+      "status": "PASS"
+    },
+    {
+      "name": "Evidence Bus & Chain-of-Custody Integration",
+      "status": "PASS"
+    }
+  ]
+}

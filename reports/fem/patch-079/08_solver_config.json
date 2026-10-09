@@ -1,0 +1,6 @@
+{
+  "solverType": "SPARSE_CHOLESKY",
+  "residualTolerance": 1e-8,
+  "constraintTolerance": 1e-10,
+  "energyTolerance": 0.000001
+}

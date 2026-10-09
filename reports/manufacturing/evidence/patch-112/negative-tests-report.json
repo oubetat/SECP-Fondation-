@@ -1,0 +1,37 @@
+[
+  {
+    "testName": "Duplicate Evidence ID Rejection",
+    "category": "Identity Integrity",
+    "passed": true,
+    "expectedBehavior": "Should throw error on duplicate evidenceId",
+    "observedBehavior": "Caught expected error: Duplicate evidenceId 'EV_DUP_01' is strictly prohibited."
+  },
+  {
+    "testName": "Payload Tampering Hash Mismatch",
+    "category": "Integrity",
+    "passed": true,
+    "expectedBehavior": "Detect payload alteration via content hash mismatch",
+    "observedBehavior": "HASH_MISMATCH detected successfully"
+  },
+  {
+    "testName": "Chain Gap Detection",
+    "category": "Sequence Integrity",
+    "passed": true,
+    "expectedBehavior": "Detect missing sequence number in critical chain",
+    "observedBehavior": "BROKEN_CRITICAL_CHAIN detected on missing sequence 2"
+  },
+  {
+    "testName": "Forged Signature Invalidation",
+    "category": "Authenticity",
+    "passed": true,
+    "expectedBehavior": "Flag invalid signature as FORGED_SIGNATURE",
+    "observedBehavior": "FORGED_SIGNATURE flagged correctly"
+  },
+  {
+    "testName": "Invalid Instrument Calibration Invalidation",
+    "category": "Inspection Integrity",
+    "passed": true,
+    "expectedBehavior": "Flag INSPECTION_CONTEXT_INVALID when measuring instrument calibration is invalid",
+    "observedBehavior": "INSPECTION_CONTEXT_INVALID flagged correctly"
+  }
+]

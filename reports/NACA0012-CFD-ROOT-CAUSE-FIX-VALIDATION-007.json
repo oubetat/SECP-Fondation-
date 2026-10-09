@@ -1,0 +1,14 @@
+{
+  "missionId": "NACA0012-VV-ROOT-CAUSE-FIX-VALIDATION-007",
+  "timestamp": "2026-09-30T09:17:32.109Z",
+  "classification": "ROOT_CAUSE_CONFIRMED",
+  "verdict": "G3 — BASELINE REPRODUCED BUT V&V NOT PROVEN",
+  "summary": {
+    "preFixGateD": 0.02234,
+    "postFixGateD": 0.5314243289236794,
+    "converged": false,
+    "forceStability": true,
+    "cl": 0.1524910703880111,
+    "cd": 0.024287285932794934
+  }
+}

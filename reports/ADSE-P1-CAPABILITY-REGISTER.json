@@ -1,0 +1,48 @@
+{
+  "title": "ADSE-P1 Capability Register",
+  "auditDate": "2026-09-27T04:42:00Z",
+  "capabilities": [
+    {
+      "capabilityId": "ADSE_REQUIREMENTS",
+      "pluginId": "secp-adse-core",
+      "name": "ADSE Authoritative Requirements Management",
+      "domain": "SYSTEMS_ENGINEERING",
+      "maturity": "M5",
+      "coreBound": true,
+      "canonicalBound": true,
+      "executable": true,
+      "verified": true,
+      "persisted": true,
+      "benchmarkValidated": true,
+      "published": true
+    },
+    {
+      "capabilityId": "ADSE_SYSTEM_MODEL",
+      "pluginId": "secp-adse-core",
+      "name": "ADSE System Architecture & Decomposition",
+      "domain": "SYSTEMS_ENGINEERING",
+      "maturity": "M5",
+      "coreBound": true,
+      "canonicalBound": true,
+      "executable": true,
+      "verified": true,
+      "persisted": true,
+      "benchmarkValidated": true,
+      "published": true
+    },
+    {
+      "capabilityId": "ADSE_REQUIREMENT_TRACEABILITY",
+      "pluginId": "secp-adse-core",
+      "name": "ADSE Multi-Domain Traceability",
+      "domain": "SYSTEMS_ENGINEERING",
+      "maturity": "M5",
+      "coreBound": true,
+      "canonicalBound": true,
+      "executable": true,
+      "verified": true,
+      "persisted": true,
+      "benchmarkValidated": true,
+      "published": true
+    }
+  ]
+}

@@ -1,0 +1,2585 @@
+{
+  "registry": [
+    [
+      "OBJ-CAD-190",
+      {
+        "id": "OBJ-CAD-190",
+        "identity": {
+          "identityId": "aa9c98d0e412468f4a1ffbec7b151963aeba857916657f0b13f715665c7ae8ce",
+          "objectType": "ASSEMBLY",
+          "projectId": "PROJECT-190",
+          "revisionId": "REV-B",
+          "objectVersion": 2,
+          "parentIdentityId": "74e2b923d92d3ba16d3b64f85f9e39f5895ae40cd38491443ad034cf5933ffbf",
+          "contentHash": "b8d133db7596528b9e2e36efa7abc38e7e0644c42f682c8c9ceae7fad1544ce8",
+          "timestamp": "2026-08-27T07:56:05.947Z",
+          "createdBy": "auditor-190",
+          "classification": "INTERNAL",
+          "tags": []
+        },
+        "status": "DRAFT",
+        "createdAt": "2026-08-27T07:56:05.896Z",
+        "updatedAt": "2026-08-27T07:56:05.947Z",
+        "createdBy": "auditor-190",
+        "dependencies": [],
+        "metadata": {
+          "partNumber": "SECP-190-BASE",
+          "massKg": 12.5,
+          "material": "Titanium-6Al-4V",
+          "revisionCode": "REV-A"
+        },
+        "provenance": {
+          "author": "auditor-190",
+          "action": "REVISED: Unification testing revision",
+          "timestamp": "2026-08-27T07:56:05.947Z",
+          "hash": "6bd9f2d91323c7878b07dbba218d397c5e20890a1c57b2014b14be43b22a8368",
+          "parentRevisionId": "1"
+        },
+        "evidenceRefs": [],
+        "dependencyVersionSnapshot": {}
+      }
+    ],
+    [
+      "OBJ-MESH-190",
+      {
+        "id": "OBJ-MESH-190",
+        "identity": {
+          "identityId": "9bfbc910866a1606f9d5328f96f11e6caf511dc61351e6d15f82534730731242",
+          "objectType": "MESH",
+          "projectId": "PROJECT-190",
+          "revisionId": "1",
+          "objectVersion": 1,
+          "contentHash": "5a016d487f7b3f69087d0177630257b757e04444e0d28b2b58acd962e87a00be",
+          "timestamp": "2026-08-27T07:56:05.901Z",
+          "createdBy": "auditor-190",
+          "classification": "INTERNAL",
+          "tags": []
+        },
+        "status": "INVALIDATED",
+        "createdAt": "2026-08-27T07:56:05.902Z",
+        "updatedAt": "2026-08-27T07:56:05.949Z",
+        "createdBy": "auditor-190",
+        "dependencies": [
+          "OBJ-CAD-190"
+        ],
+        "metadata": {
+          "elementCount": 154320,
+          "meshType": "TET10",
+          "targetEntityId": "OBJ-CAD-190",
+          "revisionCode": "REV-A"
+        },
+        "provenance": {
+          "author": "auditor-190",
+          "action": "REGISTER",
+          "timestamp": "2026-08-27T07:56:05.902Z",
+          "hash": "5a016d487f7b3f69087d0177630257b757e04444e0d28b2b58acd962e87a00be"
+        },
+        "evidenceRefs": [
+          "ev-190-dummy"
+        ],
+        "dependencyVersionSnapshot": {}
+      }
+    ],
+    [
+      "PART-GATE-194",
+      {
+        "id": "PART-GATE-194",
+        "identity": {
+          "identityId": "229a9ecfb796e15c7cd0accd9611f01e6196235958e81bfae6123caa62aed7a2",
+          "objectType": "DESIGN",
+          "projectId": "PROJECT-PARAMETRIC-195",
+          "revisionId": "1",
+          "objectVersion": 1,
+          "contentHash": "583f06f3477597e563314d4ac9094bc0fd6e9e25950365a70c8a5669aaf18caf",
+          "timestamp": "2026-08-27T07:56:06.683Z",
+          "createdBy": "gate194-tester",
+          "classification": "INTERNAL",
+          "tags": []
+        },
+        "status": "ACTIVE",
+        "createdAt": "2026-08-27T07:56:06.687Z",
+        "updatedAt": "2026-08-27T07:56:06.706Z",
+        "createdBy": "gate194-tester",
+        "dependencies": [],
+        "metadata": {
+          "name": "Parametric Part Model",
+          "type": "PART"
+        },
+        "provenance": {
+          "author": "gate194-tester",
+          "action": "REGISTER",
+          "timestamp": "2026-08-27T07:56:06.687Z",
+          "hash": "583f06f3477597e563314d4ac9094bc0fd6e9e25950365a70c8a5669aaf18caf"
+        },
+        "evidenceRefs": [],
+        "dependencyVersionSnapshot": {}
+      }
+    ],
+    [
+      "feat-ext-1787817366709-npj",
+      {
+        "id": "feat-ext-1787817366709-npj",
+        "identity": {
+          "identityId": "eff29f7423a2cdf7604d29a05b90f4889eba3714788f3861390c8665f34c01b1",
+          "objectType": "DESIGN",
+          "projectId": "PROJECT-PARAMETRIC-195",
+          "revisionId": "1",
+          "objectVersion": 1,
+          "contentHash": "427235fcd02752957735a9d24d2b62ca055499086b4a74544ae1628d6437d628",
+          "timestamp": "2026-08-27T07:56:06.711Z",
+          "createdBy": "gate194-tester",
+          "classification": "INTERNAL",
+          "tags": []
+        },
+        "status": "ACTIVE",
+        "createdAt": "2026-08-27T07:56:06.712Z",
+        "updatedAt": "2026-08-27T07:56:06.715Z",
+        "createdBy": "gate194-tester",
+        "dependencies": [],
+        "metadata": {
+          "name": "Extrude001",
+          "type": "EXTRUDE",
+          "params": {
+            "depth": 50
+          }
+        },
+        "provenance": {
+          "author": "gate194-tester",
+          "action": "REGISTER",
+          "timestamp": "2026-08-27T07:56:06.712Z",
+          "hash": "427235fcd02752957735a9d24d2b62ca055499086b4a74544ae1628d6437d628"
+        },
+        "evidenceRefs": [],
+        "dependencyVersionSnapshot": {}
+      }
+    ],
+    [
+      "PART-GATE-195-1",
+      {
+        "id": "PART-GATE-195-1",
+        "identity": {
+          "identityId": "ee5527e57df870d45d9f787c6ad96d4e422a5b963de517a6905db851b0b8fd66",
+          "objectType": "DESIGN",
+          "projectId": "PROJECT-PARAMETRIC-195",
+          "revisionId": "1",
+          "objectVersion": 1,
+          "contentHash": "583f06f3477597e563314d4ac9094bc0fd6e9e25950365a70c8a5669aaf18caf",
+          "timestamp": "2026-08-27T07:56:07.245Z",
+          "createdBy": "gate-engineer",
+          "classification": "INTERNAL",
+          "tags": []
+        },
+        "status": "ACTIVE",
+        "createdAt": "2026-08-27T07:56:07.249Z",
+        "updatedAt": "2026-08-27T07:56:07.257Z",
+        "createdBy": "gate-engineer",
+        "dependencies": [],
+        "metadata": {
+          "name": "Parametric Part Model",
+          "type": "PART"
+        },
+        "provenance": {
+          "author": "gate-engineer",
+          "action": "REGISTER",
+          "timestamp": "2026-08-27T07:56:07.249Z",
+          "hash": "583f06f3477597e563314d4ac9094bc0fd6e9e25950365a70c8a5669aaf18caf"
+        },
+        "evidenceRefs": [],
+        "dependencyVersionSnapshot": {}
+      }
+    ],
+    [
+      "feat-ext-1787817367260-9rt",
+      {
+        "id": "feat-ext-1787817367260-9rt",
+        "identity": {
+          "identityId": "000ad46678a336bc7068feaca7c8bfc193df8ba4b45353ca87fd848e5e6a2285",
+          "objectType": "DESIGN",
+          "projectId": "PROJECT-PARAMETRIC-195",
+          "revisionId": "1",
+          "objectVersion": 1,
+          "contentHash": "aafaf3c0adb3ea8725de5cd825aec23561693e91845bac9790e4729d6e80d9d3",
+          "timestamp": "2026-08-27T07:56:07.263Z",
+          "createdBy": "gate-engineer",
+          "classification": "INTERNAL",
+          "tags": []
+        },
+        "status": "ACTIVE",
+        "createdAt": "2026-08-27T07:56:07.264Z",
+        "updatedAt": "2026-08-27T07:56:07.267Z",
+        "createdBy": "gate-engineer",
+        "dependencies": [],
+        "metadata": {
+          "name": "BaseExtrude",
+          "type": "EXTRUDE",
+          "params": {
+            "depth": 40
+          }
+        },
+        "provenance": {
+          "author": "gate-engineer",
+          "action": "REGISTER",
+          "timestamp": "2026-08-27T07:56:07.264Z",
+          "hash": "aafaf3c0adb3ea8725de5cd825aec23561693e91845bac9790e4729d6e80d9d3"
+        },
+        "evidenceRefs": [],
+        "dependencyVersionSnapshot": {}
+      }
+    ],
+    [
+      "feat-hol-1787817367272-5m4",
+      {
+        "id": "feat-hol-1787817367272-5m4",
+        "identity": {
+          "identityId": "282d65735a6268d442729f7719064b27dd3a802e751aa5544f6d985a9c74eb9e",
+          "objectType": "DESIGN",
+          "projectId": "PROJECT-PARAMETRIC-195",
+          "revisionId": "1",
+          "objectVersion": 1,
+          "contentHash": "66a203c024b3b341cfe209679ad29992af4c2b14da596a7878bfe3222e26849e",
+          "timestamp": "2026-08-27T07:56:07.273Z",
+          "createdBy": "gate-engineer",
+          "classification": "INTERNAL",
+          "tags": []
+        },
+        "status": "ACTIVE",
+        "createdAt": "2026-08-27T07:56:07.273Z",
+        "updatedAt": "2026-08-27T07:56:07.276Z",
+        "createdBy": "gate-engineer",
+        "dependencies": [],
+        "metadata": {
+          "name": "MainHole",
+          "type": "HOLE",
+          "params": {
+            "holeType": "SIMPLE",
+            "diameter": 16,
+            "depth": 40
+          }
+        },
+        "provenance": {
+          "author": "gate-engineer",
+          "action": "REGISTER",
+          "timestamp": "2026-08-27T07:56:07.273Z",
+          "hash": "66a203c024b3b341cfe209679ad29992af4c2b14da596a7878bfe3222e26849e"
+        },
+        "evidenceRefs": [],
+        "dependencyVersionSnapshot": {}
+      }
+    ],
+    [
+      "feat-dft-1787817367290-jnq",
+      {
+        "id": "feat-dft-1787817367290-jnq",
+        "identity": {
+          "identityId": "3e08ce1e97ed8eb537e2ac074ccca3f0141a43509024f574837c68933c637e30",
+          "objectType": "DESIGN",
+          "projectId": "PROJECT-PARAMETRIC-195",
+          "revisionId": "1",
+          "objectVersion": 1,
+          "contentHash": "95183693805bf9cf09e11e93dd1c89611a4fd6d94d6c61a9df607a99f837e799",
+          "timestamp": "2026-08-27T07:56:07.290Z",
+          "createdBy": "gate-engineer",
+          "classification": "INTERNAL",
+          "tags": []
+        },
+        "status": "ACTIVE",
+        "createdAt": "2026-08-27T07:56:07.292Z",
+        "updatedAt": "2026-08-27T07:56:07.297Z",
+        "createdBy": "gate-engineer",
+        "dependencies": [],
+        "metadata": {
+          "name": "BodyDraft",
+          "type": "DRAFT",
+          "params": {
+            "draftAngle": 5
+          }
+        },
+        "provenance": {
+          "author": "gate-engineer",
+          "action": "REGISTER",
+          "timestamp": "2026-08-27T07:56:07.292Z",
+          "hash": "95183693805bf9cf09e11e93dd1c89611a4fd6d94d6c61a9df607a99f837e799"
+        },
+        "evidenceRefs": [],
+        "dependencyVersionSnapshot": {}
+      }
+    ],
+    [
+      "feat-rib-1787817367301-reg",
+      {
+        "id": "feat-rib-1787817367301-reg",
+        "identity": {
+          "identityId": "24c0190e9a922edd5b92d96966e57f29b70768fadf870ce6f21aac4c0d6a1bc7",
+          "objectType": "DESIGN",
+          "projectId": "PROJECT-PARAMETRIC-195",
+          "revisionId": "1",
+          "objectVersion": 1,
+          "contentHash": "deeb7214931bcddf50b13a4a1cb417e560847d35c6edfe1429a1e117902f481a",
+          "timestamp": "2026-08-27T07:56:07.301Z",
+          "createdBy": "gate-engineer",
+          "classification": "INTERNAL",
+          "tags": []
+        },
+        "status": "ACTIVE",
+        "createdAt": "2026-08-27T07:56:07.302Z",
+        "updatedAt": "2026-08-27T07:56:07.306Z",
+        "createdBy": "gate-engineer",
+        "dependencies": [],
+        "metadata": {
+          "name": "SupportRib",
+          "type": "RIB",
+          "params": {
+            "thickness": 4
+          }
+        },
+        "provenance": {
+          "author": "gate-engineer",
+          "action": "REGISTER",
+          "timestamp": "2026-08-27T07:56:07.302Z",
+          "hash": "deeb7214931bcddf50b13a4a1cb417e560847d35c6edfe1429a1e117902f481a"
+        },
+        "evidenceRefs": [],
+        "dependencyVersionSnapshot": {}
+      }
+    ],
+    [
+      "feat-hol-1787817367309-m83",
+      {
+        "id": "feat-hol-1787817367309-m83",
+        "identity": {
+          "identityId": "87c5b647f6e1b8fcbeafa099de794910b068dcb317140be3d08d890da57272ac",
+          "objectType": "DESIGN",
+          "projectId": "PROJECT-PARAMETRIC-195",
+          "revisionId": "1",
+          "objectVersion": 1,
+          "contentHash": "7f2dd501b112951c5843c3afd1b981712ebbda0dd90079ed3350ee42b07c3e72",
+          "timestamp": "2026-08-27T07:56:07.310Z",
+          "createdBy": "gate-engineer",
+          "classification": "INTERNAL",
+          "tags": []
+        },
+        "status": "ACTIVE",
+        "createdAt": "2026-08-27T07:56:07.310Z",
+        "updatedAt": "2026-08-27T07:56:07.313Z",
+        "createdBy": "gate-engineer",
+        "dependencies": [],
+        "metadata": {
+          "name": "RibHole",
+          "type": "HOLE",
+          "params": {
+            "holeType": "SIMPLE",
+            "diameter": 6,
+            "depth": 4
+          }
+        },
+        "provenance": {
+          "author": "gate-engineer",
+          "action": "REGISTER",
+          "timestamp": "2026-08-27T07:56:07.310Z",
+          "hash": "7f2dd501b112951c5843c3afd1b981712ebbda0dd90079ed3350ee42b07c3e72"
+        },
+        "evidenceRefs": [],
+        "dependencyVersionSnapshot": {}
+      }
+    ],
+    [
+      "CLEAR_ROLLBACK",
+      {
+        "id": "CLEAR_ROLLBACK",
+        "identity": {
+          "identityId": "37c3e7c76d2261383db2deeb47305bba84a72b2a9f3840e60b70eddbe39fc10e",
+          "objectType": "DESIGN",
+          "projectId": "PROJECT-PARAMETRIC-195",
+          "revisionId": "1",
+          "objectVersion": 1,
+          "contentHash": "208c5dd10770d24b42a4870d93845ba295a514769f08d0cd827ef87d5132a1ec",
+          "timestamp": "2026-08-27T07:56:07.323Z",
+          "createdBy": "gate-engineer",
+          "classification": "INTERNAL",
+          "tags": []
+        },
+        "status": "ACTIVE",
+        "createdAt": "2026-08-27T07:56:07.324Z",
+        "updatedAt": "2026-08-27T07:56:07.326Z",
+        "createdBy": "gate-engineer",
+        "dependencies": [],
+        "metadata": {
+          "name": "CLEAR_ROLLBACK",
+          "type": "FEATURE",
+          "params": {}
+        },
+        "provenance": {
+          "author": "gate-engineer",
+          "action": "REGISTER",
+          "timestamp": "2026-08-27T07:56:07.324Z",
+          "hash": "208c5dd10770d24b42a4870d93845ba295a514769f08d0cd827ef87d5132a1ec"
+        },
+        "evidenceRefs": [],
+        "dependencyVersionSnapshot": {}
+      }
+    ],
+    [
+      "PART-REORDER-195",
+      {
+        "id": "PART-REORDER-195",
+        "identity": {
+          "identityId": "8acd05acc0cc941e2ea0f0fef072066e433384b05b6aa1c3bd72845fd65a3f47",
+          "objectType": "DESIGN",
+          "projectId": "PROJECT-PARAMETRIC-195",
+          "revisionId": "1",
+          "objectVersion": 1,
+          "contentHash": "583f06f3477597e563314d4ac9094bc0fd6e9e25950365a70c8a5669aaf18caf",
+          "timestamp": "2026-08-27T07:56:07.337Z",
+          "createdBy": "reorder-eng",
+          "classification": "INTERNAL",
+          "tags": []
+        },
+        "status": "ACTIVE",
+        "createdAt": "2026-08-27T07:56:07.337Z",
+        "updatedAt": "2026-08-27T07:56:07.340Z",
+        "createdBy": "reorder-eng",
+        "dependencies": [],
+        "metadata": {
+          "name": "Parametric Part Model",
+          "type": "PART"
+        },
+        "provenance": {
+          "author": "reorder-eng",
+          "action": "REGISTER",
+          "timestamp": "2026-08-27T07:56:07.337Z",
+          "hash": "583f06f3477597e563314d4ac9094bc0fd6e9e25950365a70c8a5669aaf18caf"
+        },
+        "evidenceRefs": [],
+        "dependencyVersionSnapshot": {}
+      }
+    ],
+    [
+      "feat-ext-1787817367342-2v3",
+      {
+        "id": "feat-ext-1787817367342-2v3",
+        "identity": {
+          "identityId": "2fcc5df7ee925512892a580c0c6cdefcfa7298d080b3eeff553905520541c8f4",
+          "objectType": "DESIGN",
+          "projectId": "PROJECT-PARAMETRIC-195",
+          "revisionId": "1",
+          "objectVersion": 1,
+          "contentHash": "62bf6c3b5f705d35b71892277aeb43efba137e3b6f1b7afeb0a9f7b2e776cbb1",
+          "timestamp": "2026-08-27T07:56:07.342Z",
+          "createdBy": "reorder-eng",
+          "classification": "INTERNAL",
+          "tags": []
+        },
+        "status": "ACTIVE",
+        "createdAt": "2026-08-27T07:56:07.343Z",
+        "updatedAt": "2026-08-27T07:56:07.347Z",
+        "createdBy": "reorder-eng",
+        "dependencies": [],
+        "metadata": {
+          "name": "ExtrudeA",
+          "type": "EXTRUDE",
+          "params": {
+            "depth": 20
+          }
+        },
+        "provenance": {
+          "author": "reorder-eng",
+          "action": "REGISTER",
+          "timestamp": "2026-08-27T07:56:07.343Z",
+          "hash": "62bf6c3b5f705d35b71892277aeb43efba137e3b6f1b7afeb0a9f7b2e776cbb1"
+        },
+        "evidenceRefs": [],
+        "dependencyVersionSnapshot": {}
+      }
+    ],
+    [
+      "feat-ext-1787817367349-zqr",
+      {
+        "id": "feat-ext-1787817367349-zqr",
+        "identity": {
+          "identityId": "1531f73090b0f592642f85e09e569828e31f9a7562edcae50d798cd9d54c7bf0",
+          "objectType": "DESIGN",
+          "projectId": "PROJECT-PARAMETRIC-195",
+          "revisionId": "1",
+          "objectVersion": 1,
+          "contentHash": "90d856eac4bbf6dfe400534f7f03cadb7bebb214b6d52ad3f1a7dce788784bf0",
+          "timestamp": "2026-08-27T07:56:07.349Z",
+          "createdBy": "reorder-eng",
+          "classification": "INTERNAL",
+          "tags": []
+        },
+        "status": "ACTIVE",
+        "createdAt": "2026-08-27T07:56:07.350Z",
+        "updatedAt": "2026-08-27T07:56:07.353Z",
+        "createdBy": "reorder-eng",
+        "dependencies": [],
+        "metadata": {
+          "name": "ExtrudeB",
+          "type": "EXTRUDE",
+          "params": {
+            "depth": 10
+          }
+        },
+        "provenance": {
+          "author": "reorder-eng",
+          "action": "REGISTER",
+          "timestamp": "2026-08-27T07:56:07.350Z",
+          "hash": "90d856eac4bbf6dfe400534f7f03cadb7bebb214b6d52ad3f1a7dce788784bf0"
+        },
+        "evidenceRefs": [],
+        "dependencyVersionSnapshot": {}
+      }
+    ],
+    [
+      "feat-hol-1787817367360-m5a",
+      {
+        "id": "feat-hol-1787817367360-m5a",
+        "identity": {
+          "identityId": "a797ad6e3a2108e39da836b66a1e4b48c267dba7db64d482ba5c37e710e7c9f1",
+          "objectType": "DESIGN",
+          "projectId": "PROJECT-PARAMETRIC-195",
+          "revisionId": "1",
+          "objectVersion": 1,
+          "contentHash": "08812fe9a880f66aead7b7163f01015699a3502143dce606a314d1bc11d7666c",
+          "timestamp": "2026-08-27T07:56:07.360Z",
+          "createdBy": "reorder-eng",
+          "classification": "INTERNAL",
+          "tags": []
+        },
+        "status": "ACTIVE",
+        "createdAt": "2026-08-27T07:56:07.360Z",
+        "updatedAt": "2026-08-27T07:56:07.365Z",
+        "createdBy": "reorder-eng",
+        "dependencies": [],
+        "metadata": {
+          "name": "HoleA",
+          "type": "HOLE",
+          "params": {
+            "holeType": "SIMPLE",
+            "diameter": 8,
+            "depth": 20
+          }
+        },
+        "provenance": {
+          "author": "reorder-eng",
+          "action": "REGISTER",
+          "timestamp": "2026-08-27T07:56:07.360Z",
+          "hash": "08812fe9a880f66aead7b7163f01015699a3502143dce606a314d1bc11d7666c"
+        },
+        "evidenceRefs": [],
+        "dependencyVersionSnapshot": {}
+      }
+    ],
+    [
+      "PART-CASCADE-195",
+      {
+        "id": "PART-CASCADE-195",
+        "identity": {
+          "identityId": "3ed83ea680245edc6c2b38ca01fe2e0d321cb8e406274d46bf6efa2071c82c7d",
+          "objectType": "DESIGN",
+          "projectId": "PROJECT-PARAMETRIC-195",
+          "revisionId": "1",
+          "objectVersion": 1,
+          "contentHash": "583f06f3477597e563314d4ac9094bc0fd6e9e25950365a70c8a5669aaf18caf",
+          "timestamp": "2026-08-27T07:56:07.368Z",
+          "createdBy": "cascade-eng",
+          "classification": "INTERNAL",
+          "tags": []
+        },
+        "status": "ACTIVE",
+        "createdAt": "2026-08-27T07:56:07.369Z",
+        "updatedAt": "2026-08-27T07:56:07.372Z",
+        "createdBy": "cascade-eng",
+        "dependencies": [],
+        "metadata": {
+          "name": "Parametric Part Model",
+          "type": "PART"
+        },
+        "provenance": {
+          "author": "cascade-eng",
+          "action": "REGISTER",
+          "timestamp": "2026-08-27T07:56:07.369Z",
+          "hash": "583f06f3477597e563314d4ac9094bc0fd6e9e25950365a70c8a5669aaf18caf"
+        },
+        "evidenceRefs": [],
+        "dependencyVersionSnapshot": {}
+      }
+    ],
+    [
+      "feat-ext-1787817367374-c96",
+      {
+        "id": "feat-ext-1787817367374-c96",
+        "identity": {
+          "identityId": "1784f3bd825a025da5c47fe3a7eec4bfd980a5740f1285f33d1c52d89c3f5a6e",
+          "objectType": "DESIGN",
+          "projectId": "PROJECT-PARAMETRIC-195",
+          "revisionId": "1",
+          "objectVersion": 1,
+          "contentHash": "549eb1817a0ffc99d7e680a81825c7af264d1c7b65a1682074607c1f94ce79ef",
+          "timestamp": "2026-08-27T07:56:07.374Z",
+          "createdBy": "cascade-eng",
+          "classification": "INTERNAL",
+          "tags": []
+        },
+        "status": "ACTIVE",
+        "createdAt": "2026-08-27T07:56:07.374Z",
+        "updatedAt": "2026-08-27T07:56:07.377Z",
+        "createdBy": "cascade-eng",
+        "dependencies": [],
+        "metadata": {
+          "name": "Base",
+          "type": "EXTRUDE",
+          "params": {
+            "depth": 30
+          }
+        },
+        "provenance": {
+          "author": "cascade-eng",
+          "action": "REGISTER",
+          "timestamp": "2026-08-27T07:56:07.374Z",
+          "hash": "549eb1817a0ffc99d7e680a81825c7af264d1c7b65a1682074607c1f94ce79ef"
+        },
+        "evidenceRefs": [],
+        "dependencyVersionSnapshot": {}
+      }
+    ],
+    [
+      "feat-hol-1787817367379-7sk",
+      {
+        "id": "feat-hol-1787817367379-7sk",
+        "identity": {
+          "identityId": "21d6ff1e1de8d6d19a050d48a2a0ed7749938ad71c2f9b20205e91bb196c43e8",
+          "objectType": "DESIGN",
+          "projectId": "PROJECT-PARAMETRIC-195",
+          "revisionId": "1",
+          "objectVersion": 1,
+          "contentHash": "62bb2bf960afaafe1818fc7a134b83a872b1046144192a41a36ea3a02c64de62",
+          "timestamp": "2026-08-27T07:56:07.379Z",
+          "createdBy": "cascade-eng",
+          "classification": "INTERNAL",
+          "tags": []
+        },
+        "status": "ACTIVE",
+        "createdAt": "2026-08-27T07:56:07.379Z",
+        "updatedAt": "2026-08-27T07:56:07.382Z",
+        "createdBy": "cascade-eng",
+        "dependencies": [],
+        "metadata": {
+          "name": "Hole",
+          "type": "HOLE",
+          "params": {
+            "holeType": "SIMPLE",
+            "diameter": 10,
+            "depth": 30
+          }
+        },
+        "provenance": {
+          "author": "cascade-eng",
+          "action": "REGISTER",
+          "timestamp": "2026-08-27T07:56:07.379Z",
+          "hash": "62bb2bf960afaafe1818fc7a134b83a872b1046144192a41a36ea3a02c64de62"
+        },
+        "evidenceRefs": [],
+        "dependencyVersionSnapshot": {}
+      }
+    ],
+    [
+      "feat-dft-1787817367384-3oq",
+      {
+        "id": "feat-dft-1787817367384-3oq",
+        "identity": {
+          "identityId": "5b20596eff3adab56aa55c00c20d0fa22242588bab8e2cb6c100ed83b45ab993",
+          "objectType": "DESIGN",
+          "projectId": "PROJECT-PARAMETRIC-195",
+          "revisionId": "1",
+          "objectVersion": 1,
+          "contentHash": "b104b242f5920f0a7d03e05a36963c5e1b55d60c2dd50c8b52aa07a392bbbf59",
+          "timestamp": "2026-08-27T07:56:07.384Z",
+          "createdBy": "cascade-eng",
+          "classification": "INTERNAL",
+          "tags": []
+        },
+        "status": "ACTIVE",
+        "createdAt": "2026-08-27T07:56:07.384Z",
+        "updatedAt": "2026-08-27T07:56:07.387Z",
+        "createdBy": "cascade-eng",
+        "dependencies": [],
+        "metadata": {
+          "name": "Draft",
+          "type": "DRAFT",
+          "params": {
+            "draftAngle": 3
+          }
+        },
+        "provenance": {
+          "author": "cascade-eng",
+          "action": "REGISTER",
+          "timestamp": "2026-08-27T07:56:07.384Z",
+          "hash": "b104b242f5920f0a7d03e05a36963c5e1b55d60c2dd50c8b52aa07a392bbbf59"
+        },
+        "evidenceRefs": [],
+        "dependencyVersionSnapshot": {}
+      }
+    ],
+    [
+      "PART-FAIL-195",
+      {
+        "id": "PART-FAIL-195",
+        "identity": {
+          "identityId": "49b0646552870759d2a4652972056effec6dc4deb242417a2b5e6fb662649d48",
+          "objectType": "DESIGN",
+          "projectId": "PROJECT-PARAMETRIC-195",
+          "revisionId": "1",
+          "objectVersion": 1,
+          "contentHash": "583f06f3477597e563314d4ac9094bc0fd6e9e25950365a70c8a5669aaf18caf",
+          "timestamp": "2026-08-27T07:56:07.393Z",
+          "createdBy": "fail-eng",
+          "classification": "INTERNAL",
+          "tags": []
+        },
+        "status": "ACTIVE",
+        "createdAt": "2026-08-27T07:56:07.393Z",
+        "updatedAt": "2026-08-27T07:56:07.395Z",
+        "createdBy": "fail-eng",
+        "dependencies": [],
+        "metadata": {
+          "name": "Parametric Part Model",
+          "type": "PART"
+        },
+        "provenance": {
+          "author": "fail-eng",
+          "action": "REGISTER",
+          "timestamp": "2026-08-27T07:56:07.393Z",
+          "hash": "583f06f3477597e563314d4ac9094bc0fd6e9e25950365a70c8a5669aaf18caf"
+        },
+        "evidenceRefs": [],
+        "dependencyVersionSnapshot": {}
+      }
+    ],
+    [
+      "feat-ext-1787817367397-lo3",
+      {
+        "id": "feat-ext-1787817367397-lo3",
+        "identity": {
+          "identityId": "7ed5da6ef8f7b69c3000b3199bb7f04129f0c770633512592c8b477923aef646",
+          "objectType": "DESIGN",
+          "projectId": "PROJECT-PARAMETRIC-195",
+          "revisionId": "1",
+          "objectVersion": 1,
+          "contentHash": "1715888434b05565ac3d3861cf6391e341bc8208d0683c5977986a4805a6d40c",
+          "timestamp": "2026-08-27T07:56:07.397Z",
+          "createdBy": "fail-eng",
+          "classification": "INTERNAL",
+          "tags": []
+        },
+        "status": "ACTIVE",
+        "createdAt": "2026-08-27T07:56:07.397Z",
+        "updatedAt": "2026-08-27T07:56:07.400Z",
+        "createdBy": "fail-eng",
+        "dependencies": [],
+        "metadata": {
+          "name": "FailBase",
+          "type": "EXTRUDE",
+          "params": {
+            "depth": 20
+          }
+        },
+        "provenance": {
+          "author": "fail-eng",
+          "action": "REGISTER",
+          "timestamp": "2026-08-27T07:56:07.397Z",
+          "hash": "1715888434b05565ac3d3861cf6391e341bc8208d0683c5977986a4805a6d40c"
+        },
+        "evidenceRefs": [],
+        "dependencyVersionSnapshot": {}
+      }
+    ],
+    [
+      "feat-hol-1787817367405-q54",
+      {
+        "id": "feat-hol-1787817367405-q54",
+        "identity": {
+          "identityId": "8628448675878604515a6d5085c2d7b08decb558081cd7d9af1663e63cf2c5ed",
+          "objectType": "DESIGN",
+          "projectId": "PROJECT-PARAMETRIC-195",
+          "revisionId": "1",
+          "objectVersion": 1,
+          "contentHash": "fed1421702feef873c42fa08688cf5278c67bcbbee705adb07853332ddb98aea",
+          "timestamp": "2026-08-27T07:56:07.406Z",
+          "createdBy": "fail-eng",
+          "classification": "INTERNAL",
+          "tags": []
+        },
+        "status": "ACTIVE",
+        "createdAt": "2026-08-27T07:56:07.406Z",
+        "updatedAt": "2026-08-27T07:56:07.408Z",
+        "createdBy": "fail-eng",
+        "dependencies": [],
+        "metadata": {
+          "name": "FailChild",
+          "type": "HOLE",
+          "params": {
+            "holeType": "SIMPLE",
+            "diameter": 5,
+            "depth": 20
+          }
+        },
+        "provenance": {
+          "author": "fail-eng",
+          "action": "REGISTER",
+          "timestamp": "2026-08-27T07:56:07.406Z",
+          "hash": "fed1421702feef873c42fa08688cf5278c67bcbbee705adb07853332ddb98aea"
+        },
+        "evidenceRefs": [],
+        "dependencyVersionSnapshot": {}
+      }
+    ],
+    [
+      "PART-REPLAYED-195",
+      {
+        "id": "PART-REPLAYED-195",
+        "identity": {
+          "identityId": "0ef28f35c102cc439e809eaae8c1d687c1721b1a9dc2d0c6edce6f5e2686ec84",
+          "objectType": "DESIGN",
+          "projectId": "PROJECT-PARAMETRIC-195",
+          "revisionId": "1",
+          "objectVersion": 1,
+          "contentHash": "583f06f3477597e563314d4ac9094bc0fd6e9e25950365a70c8a5669aaf18caf",
+          "timestamp": "2026-08-27T07:56:07.414Z",
+          "createdBy": "replay-agent",
+          "classification": "INTERNAL",
+          "tags": []
+        },
+        "status": "ACTIVE",
+        "createdAt": "2026-08-27T07:56:07.414Z",
+        "updatedAt": "2026-08-27T07:56:07.416Z",
+        "createdBy": "replay-agent",
+        "dependencies": [],
+        "metadata": {
+          "name": "Parametric Part Model",
+          "type": "PART"
+        },
+        "provenance": {
+          "author": "replay-agent",
+          "action": "REGISTER",
+          "timestamp": "2026-08-27T07:56:07.414Z",
+          "hash": "583f06f3477597e563314d4ac9094bc0fd6e9e25950365a70c8a5669aaf18caf"
+        },
+        "evidenceRefs": [],
+        "dependencyVersionSnapshot": {}
+      }
+    ],
+    [
+      "PART-DEL-195",
+      {
+        "id": "PART-DEL-195",
+        "identity": {
+          "identityId": "628189208238d43ec86e222ff9ef577abf2abc5d2d42c1c5bbacc894d9108176",
+          "objectType": "DESIGN",
+          "projectId": "PROJECT-PARAMETRIC-195",
+          "revisionId": "1",
+          "objectVersion": 1,
+          "contentHash": "583f06f3477597e563314d4ac9094bc0fd6e9e25950365a70c8a5669aaf18caf",
+          "timestamp": "2026-08-27T07:56:07.476Z",
+          "createdBy": "del-eng",
+          "classification": "INTERNAL",
+          "tags": []
+        },
+        "status": "ACTIVE",
+        "createdAt": "2026-08-27T07:56:07.477Z",
+        "updatedAt": "2026-08-27T07:56:07.480Z",
+        "createdBy": "del-eng",
+        "dependencies": [],
+        "metadata": {
+          "name": "Parametric Part Model",
+          "type": "PART"
+        },
+        "provenance": {
+          "author": "del-eng",
+          "action": "REGISTER",
+          "timestamp": "2026-08-27T07:56:07.477Z",
+          "hash": "583f06f3477597e563314d4ac9094bc0fd6e9e25950365a70c8a5669aaf18caf"
+        },
+        "evidenceRefs": [],
+        "dependencyVersionSnapshot": {}
+      }
+    ],
+    [
+      "feat-ext-1787817367483-sz2",
+      {
+        "id": "feat-ext-1787817367483-sz2",
+        "identity": {
+          "identityId": "5fee314bf27e766bf36eb0fba6ac6583fe0258884770528eb94f384829072abd",
+          "objectType": "DESIGN",
+          "projectId": "PROJECT-PARAMETRIC-195",
+          "revisionId": "1",
+          "objectVersion": 1,
+          "contentHash": "ab9f364f774f3fe57b868c6f90c372cd9c0afecdef17829230631d4a552b1b53",
+          "timestamp": "2026-08-27T07:56:07.483Z",
+          "createdBy": "del-eng",
+          "classification": "INTERNAL",
+          "tags": []
+        },
+        "status": "ACTIVE",
+        "createdAt": "2026-08-27T07:56:07.483Z",
+        "updatedAt": "2026-08-27T07:56:07.515Z",
+        "createdBy": "del-eng",
+        "dependencies": [],
+        "metadata": {
+          "name": "ToDelete",
+          "type": "EXTRUDE",
+          "params": {
+            "depth": 20
+          }
+        },
+        "provenance": {
+          "author": "del-eng",
+          "action": "REGISTER",
+          "timestamp": "2026-08-27T07:56:07.483Z",
+          "hash": "ab9f364f774f3fe57b868c6f90c372cd9c0afecdef17829230631d4a552b1b53"
+        },
+        "evidenceRefs": [],
+        "dependencyVersionSnapshot": {}
+      }
+    ],
+    [
+      "feat-hol-1787817367518-ya1",
+      {
+        "id": "feat-hol-1787817367518-ya1",
+        "identity": {
+          "identityId": "210475ee822d83e16c43a81cb88d4016309099188e20b0c06a3089597f9858fe",
+          "objectType": "DESIGN",
+          "projectId": "PROJECT-PARAMETRIC-195",
+          "revisionId": "1",
+          "objectVersion": 1,
+          "contentHash": "6a63290687d046eef5816044c69486547050dd55bcfd3495a5e4e81bedf32060",
+          "timestamp": "2026-08-27T07:56:07.518Z",
+          "createdBy": "del-eng",
+          "classification": "INTERNAL",
+          "tags": []
+        },
+        "status": "ACTIVE",
+        "createdAt": "2026-08-27T07:56:07.518Z",
+        "updatedAt": "2026-08-27T07:56:07.521Z",
+        "createdBy": "del-eng",
+        "dependencies": [],
+        "metadata": {
+          "name": "DependentHole",
+          "type": "HOLE",
+          "params": {
+            "holeType": "SIMPLE",
+            "diameter": 5,
+            "depth": 20
+          }
+        },
+        "provenance": {
+          "author": "del-eng",
+          "action": "REGISTER",
+          "timestamp": "2026-08-27T07:56:07.518Z",
+          "hash": "6a63290687d046eef5816044c69486547050dd55bcfd3495a5e4e81bedf32060"
+        },
+        "evidenceRefs": [],
+        "dependencyVersionSnapshot": {}
+      }
+    ],
+    [
+      "PART-UNDO-195",
+      {
+        "id": "PART-UNDO-195",
+        "identity": {
+          "identityId": "718a54948b2bb87618f5d6e1a5bf1dec76593b4581d13c2af78e6b60211238b1",
+          "objectType": "DESIGN",
+          "projectId": "PROJECT-PARAMETRIC-195",
+          "revisionId": "1",
+          "objectVersion": 1,
+          "contentHash": "583f06f3477597e563314d4ac9094bc0fd6e9e25950365a70c8a5669aaf18caf",
+          "timestamp": "2026-08-27T07:56:07.525Z",
+          "createdBy": "undo-eng",
+          "classification": "INTERNAL",
+          "tags": []
+        },
+        "status": "ACTIVE",
+        "createdAt": "2026-08-27T07:56:07.525Z",
+        "updatedAt": "2026-08-27T07:56:07.529Z",
+        "createdBy": "undo-eng",
+        "dependencies": [],
+        "metadata": {
+          "name": "Parametric Part Model",
+          "type": "PART"
+        },
+        "provenance": {
+          "author": "undo-eng",
+          "action": "REGISTER",
+          "timestamp": "2026-08-27T07:56:07.525Z",
+          "hash": "583f06f3477597e563314d4ac9094bc0fd6e9e25950365a70c8a5669aaf18caf"
+        },
+        "evidenceRefs": [],
+        "dependencyVersionSnapshot": {}
+      }
+    ],
+    [
+      "feat-ext-1787817367532-qia",
+      {
+        "id": "feat-ext-1787817367532-qia",
+        "identity": {
+          "identityId": "4c4f2791f44328c29660e111d0a3bbbfdeda7ff76c0fdd62c84af8c67e2d3c97",
+          "objectType": "DESIGN",
+          "projectId": "PROJECT-PARAMETRIC-195",
+          "revisionId": "1",
+          "objectVersion": 1,
+          "contentHash": "2b67536da803ceee59afb53b8d575f80ab4e86a0c06abc2b224e5b52b828f98c",
+          "timestamp": "2026-08-27T07:56:07.532Z",
+          "createdBy": "undo-eng",
+          "classification": "INTERNAL",
+          "tags": []
+        },
+        "status": "ACTIVE",
+        "createdAt": "2026-08-27T07:56:07.532Z",
+        "updatedAt": "2026-08-27T07:56:07.536Z",
+        "createdBy": "undo-eng",
+        "dependencies": [],
+        "metadata": {
+          "name": "ExtrudeU",
+          "type": "EXTRUDE",
+          "params": {
+            "depth": 10
+          }
+        },
+        "provenance": {
+          "author": "undo-eng",
+          "action": "REGISTER",
+          "timestamp": "2026-08-27T07:56:07.532Z",
+          "hash": "2b67536da803ceee59afb53b8d575f80ab4e86a0c06abc2b224e5b52b828f98c"
+        },
+        "evidenceRefs": [],
+        "dependencyVersionSnapshot": {}
+      }
+    ],
+    [
+      "feat-hol-1787817367539-pu4",
+      {
+        "id": "feat-hol-1787817367539-pu4",
+        "identity": {
+          "identityId": "8d0280b27fb5258f927cdc14d6c1eb275eba0610116a52d5d31d6a4295af55e8",
+          "objectType": "DESIGN",
+          "projectId": "PROJECT-PARAMETRIC-195",
+          "revisionId": "1",
+          "objectVersion": 1,
+          "contentHash": "3b3ea78be38dcb2bca277d2f8ed90831009fb2a70d311a1b1c73b9392d38de77",
+          "timestamp": "2026-08-27T07:56:07.539Z",
+          "createdBy": "undo-eng",
+          "classification": "INTERNAL",
+          "tags": []
+        },
+        "status": "ACTIVE",
+        "createdAt": "2026-08-27T07:56:07.539Z",
+        "updatedAt": "2026-08-27T07:56:07.542Z",
+        "createdBy": "undo-eng",
+        "dependencies": [],
+        "metadata": {
+          "name": "HoleU",
+          "type": "HOLE",
+          "params": {
+            "holeType": "SIMPLE",
+            "diameter": 4,
+            "depth": 10
+          }
+        },
+        "provenance": {
+          "author": "undo-eng",
+          "action": "REGISTER",
+          "timestamp": "2026-08-27T07:56:07.539Z",
+          "hash": "3b3ea78be38dcb2bca277d2f8ed90831009fb2a70d311a1b1c73b9392d38de77"
+        },
+        "evidenceRefs": [],
+        "dependencyVersionSnapshot": {}
+      }
+    ],
+    [
+      "PART-DET-1",
+      {
+        "id": "PART-DET-1",
+        "identity": {
+          "identityId": "f9d8671b2e5ec072aa91b093cbe98552100598676d8bf88e8e92f202914b9f2a",
+          "objectType": "DESIGN",
+          "projectId": "PROJECT-PARAMETRIC-195",
+          "revisionId": "1",
+          "objectVersion": 1,
+          "contentHash": "583f06f3477597e563314d4ac9094bc0fd6e9e25950365a70c8a5669aaf18caf",
+          "timestamp": "2026-08-27T07:56:07.554Z",
+          "createdBy": "det",
+          "classification": "INTERNAL",
+          "tags": []
+        },
+        "status": "ACTIVE",
+        "createdAt": "2026-08-27T07:56:07.554Z",
+        "updatedAt": "2026-08-27T07:56:07.556Z",
+        "createdBy": "det",
+        "dependencies": [],
+        "metadata": {
+          "name": "Parametric Part Model",
+          "type": "PART"
+        },
+        "provenance": {
+          "author": "det",
+          "action": "REGISTER",
+          "timestamp": "2026-08-27T07:56:07.554Z",
+          "hash": "583f06f3477597e563314d4ac9094bc0fd6e9e25950365a70c8a5669aaf18caf"
+        },
+        "evidenceRefs": [],
+        "dependencyVersionSnapshot": {}
+      }
+    ],
+    [
+      "PART-DET-2",
+      {
+        "id": "PART-DET-2",
+        "identity": {
+          "identityId": "aad1d16b339ea734b2a88b77df5762d851c371dfdbdd414d2dc28bcf571651e8",
+          "objectType": "DESIGN",
+          "projectId": "PROJECT-PARAMETRIC-195",
+          "revisionId": "1",
+          "objectVersion": 1,
+          "contentHash": "583f06f3477597e563314d4ac9094bc0fd6e9e25950365a70c8a5669aaf18caf",
+          "timestamp": "2026-08-27T07:56:07.559Z",
+          "createdBy": "det",
+          "classification": "INTERNAL",
+          "tags": []
+        },
+        "status": "ACTIVE",
+        "createdAt": "2026-08-27T07:56:07.559Z",
+        "updatedAt": "2026-08-27T07:56:07.561Z",
+        "createdBy": "det",
+        "dependencies": [],
+        "metadata": {
+          "name": "Parametric Part Model",
+          "type": "PART"
+        },
+        "provenance": {
+          "author": "det",
+          "action": "REGISTER",
+          "timestamp": "2026-08-27T07:56:07.559Z",
+          "hash": "583f06f3477597e563314d4ac9094bc0fd6e9e25950365a70c8a5669aaf18caf"
+        },
+        "evidenceRefs": [],
+        "dependencyVersionSnapshot": {}
+      }
+    ],
+    [
+      "feat-ext-1787817367567-xd2",
+      {
+        "id": "feat-ext-1787817367567-xd2",
+        "identity": {
+          "identityId": "a960bb8f59083f485be62180dea675dd297438069c4dc299bfbed480e6dd5682",
+          "objectType": "DESIGN",
+          "projectId": "PROJECT-PARAMETRIC-195",
+          "revisionId": "1",
+          "objectVersion": 1,
+          "contentHash": "554da2174eef5beb679a4c36d3099cd0405b55b3f2750b20f729624e35484f69",
+          "timestamp": "2026-08-27T07:56:07.567Z",
+          "createdBy": "det",
+          "classification": "INTERNAL",
+          "tags": []
+        },
+        "status": "ACTIVE",
+        "createdAt": "2026-08-27T07:56:07.568Z",
+        "updatedAt": "2026-08-27T07:56:07.570Z",
+        "createdBy": "det",
+        "dependencies": [],
+        "metadata": {
+          "name": "DetExtrude",
+          "type": "EXTRUDE",
+          "params": {
+            "depth": 35
+          }
+        },
+        "provenance": {
+          "author": "det",
+          "action": "REGISTER",
+          "timestamp": "2026-08-27T07:56:07.568Z",
+          "hash": "554da2174eef5beb679a4c36d3099cd0405b55b3f2750b20f729624e35484f69"
+        },
+        "evidenceRefs": [],
+        "dependencyVersionSnapshot": {}
+      }
+    ],
+    [
+      "feat-ext-1787822107686-ozf",
+      {
+        "id": "feat-ext-1787822107686-ozf",
+        "identity": {
+          "identityId": "4c85a7824558eb8a25289c3793e06359a595a2ffc87b79bec6fde4f5eb07dd63",
+          "objectType": "DESIGN",
+          "projectId": "PROJECT-PARAMETRIC-195",
+          "revisionId": "1",
+          "objectVersion": 1,
+          "contentHash": "427235fcd02752957735a9d24d2b62ca055499086b4a74544ae1628d6437d628",
+          "timestamp": "2026-08-27T09:15:07.692Z",
+          "createdBy": "gate194-tester",
+          "classification": "INTERNAL",
+          "tags": []
+        },
+        "status": "ACTIVE",
+        "createdAt": "2026-08-27T09:15:07.697Z",
+        "updatedAt": "2026-08-27T09:15:07.744Z",
+        "createdBy": "gate194-tester",
+        "dependencies": [],
+        "metadata": {
+          "name": "Extrude001",
+          "type": "EXTRUDE",
+          "params": {
+            "depth": 50
+          }
+        },
+        "provenance": {
+          "author": "gate194-tester",
+          "action": "REGISTER",
+          "timestamp": "2026-08-27T09:15:07.697Z",
+          "hash": "427235fcd02752957735a9d24d2b62ca055499086b4a74544ae1628d6437d628"
+        },
+        "evidenceRefs": [],
+        "dependencyVersionSnapshot": {}
+      }
+    ]
+  ],
+  "auditLog": [
+    {
+      "id": "EVENT-ab2f803236f77099ed1cfa738a5cf94e",
+      "eventType": "OBJECT_CREATED",
+      "objectId": "OBJ-CAD-190",
+      "timestamp": "2026-08-27T07:56:05.898Z",
+      "author": "auditor-190",
+      "payload": {
+        "objectType": "ASSEMBLY",
+        "version": 1,
+        "revision": "1",
+        "status": "DRAFT",
+        "metadata": {
+          "partNumber": "SECP-190-BASE",
+          "massKg": 12.5,
+          "material": "Titanium-6Al-4V",
+          "revisionCode": "REV-A"
+        }
+      },
+      "signature": "342d7e5e0865a31ae9d9d12ee6d5072326d1033b01b3dcedaaf89b83b183bdcb"
+    },
+    {
+      "id": "EVENT-1edb92a417a4628829e9624be6026053",
+      "eventType": "OBJECT_CREATED",
+      "objectId": "OBJ-MESH-190",
+      "timestamp": "2026-08-27T07:56:05.904Z",
+      "author": "auditor-190",
+      "payload": {
+        "objectType": "MESH",
+        "version": 1,
+        "revision": "1",
+        "status": "DRAFT",
+        "metadata": {
+          "elementCount": 154320,
+          "meshType": "TET10",
+          "targetEntityId": "OBJ-CAD-190",
+          "revisionCode": "REV-A"
+        }
+      },
+      "signature": "adee4b0834ed6b2ecc3c35c38356e2bf7e74aea8927c327d5fa34948ec0111c5"
+    },
+    {
+      "id": "EVENT-1edc5689e10eb298d45f3bc380699b2f",
+      "eventType": "OBJECT_STATE_CHANGED",
+      "objectId": "OBJ-CAD-190",
+      "timestamp": "2026-08-27T07:56:05.910Z",
+      "author": "auditor-190",
+      "payload": {
+        "fromStatus": "DRAFT",
+        "toStatus": "ACTIVE",
+        "reason": "Initial design completion for test suite"
+      },
+      "signature": "188190078147130a25dea4b99b3f43b5a3c48573090591b8ef443071602c923d"
+    },
+    {
+      "id": "EVENT-6b9c8294f8dc9fa14106d500500cd940",
+      "eventType": "OBJECT_STATE_CHANGED",
+      "objectId": "OBJ-MESH-190",
+      "timestamp": "2026-08-27T07:56:05.943Z",
+      "author": "auditor-190",
+      "payload": {
+        "fromStatus": "DRAFT",
+        "toStatus": "ACTIVE",
+        "reason": "Mesh refinement completed, ready for verification"
+      },
+      "signature": "e6307cd7d6c5ce3319f00af0a9db9fd85d5a4a0a3dc703adbc1cbf80064f9bef"
+    },
+    {
+      "id": "EVENT-c5d2148e5945ebad55af8afbae515ad9",
+      "eventType": "OBJECT_STATE_CHANGED",
+      "objectId": "OBJ-MESH-190",
+      "timestamp": "2026-08-27T07:56:05.946Z",
+      "author": "auditor-190",
+      "payload": {
+        "fromStatus": "ACTIVE",
+        "toStatus": "VALIDATED"
+      },
+      "signature": "a0f480b22ba7d1fdf2210b35f97e5748a474cb1a73a21b06b3c8bec13e46998d"
+    },
+    {
+      "id": "EVENT-57fbdd3755847317433b94048adeea8b",
+      "eventType": "OBJECT_INVALIDATED",
+      "objectId": "OBJ-MESH-190",
+      "timestamp": "2026-08-27T07:56:05.950Z",
+      "author": "SYSTEM",
+      "payload": {
+        "reason": "Cascading invalidation from upstream object OBJ-CAD-190"
+      },
+      "signature": "7dd5bc152c8196106d2b6329f5a0652c5334381148dd67a8409252990b1d5716"
+    },
+    {
+      "id": "EVENT-843f8dd5d19248a1f22ef2b61746f59d",
+      "eventType": "OBJECT_REVISED",
+      "objectId": "OBJ-CAD-190",
+      "timestamp": "2026-08-27T07:56:05.951Z",
+      "author": "auditor-190",
+      "payload": {
+        "parentRevision": "1",
+        "newRevision": "REV-B",
+        "changeLog": "Unification testing revision"
+      },
+      "signature": "0510bc493895c6b4aa8f18a2883b1b56fe68b39a6d208c452cb5cd57e32210e4"
+    },
+    {
+      "id": "EVENT-45e74713e2527bbdd780e834214dcfb2",
+      "eventType": "OBJECT_CREATED",
+      "objectId": "PART-GATE-194",
+      "timestamp": "2026-08-27T07:56:06.690Z",
+      "author": "gate194-tester",
+      "payload": {
+        "objectType": "DESIGN",
+        "version": 1,
+        "revision": "1",
+        "status": "DRAFT",
+        "metadata": {
+          "name": "Parametric Part Model",
+          "type": "PART"
+        }
+      },
+      "signature": "ebd7de3787624c12c8a78943f62bce924bf04cc8237a4923308539e52da4b0ff"
+    },
+    {
+      "id": "EVENT-11c8d37371e5e4f3f3f00ba9142f455e",
+      "eventType": "OBJECT_STATE_CHANGED",
+      "objectId": "PART-GATE-194",
+      "timestamp": "2026-08-27T07:56:06.708Z",
+      "author": "gate194-tester",
+      "payload": {
+        "fromStatus": "DRAFT",
+        "toStatus": "ACTIVE",
+        "reason": "System initialization"
+      },
+      "signature": "c3c290dc901ed4746f6298c6e7cf6dae6b8993d588b97e9bb8af2e947f92ff8f"
+    },
+    {
+      "id": "EVENT-19544b1c1ce986226270f98b6c5c2200",
+      "eventType": "OBJECT_CREATED",
+      "objectId": "feat-ext-1787817366709-npj",
+      "timestamp": "2026-08-27T07:56:06.714Z",
+      "author": "gate194-tester",
+      "payload": {
+        "objectType": "DESIGN",
+        "version": 1,
+        "revision": "1",
+        "status": "DRAFT",
+        "metadata": {
+          "name": "Extrude001",
+          "type": "EXTRUDE",
+          "params": {
+            "depth": 50
+          }
+        }
+      },
+      "signature": "2510b104de0c64be087bec24573e73ba08fc7eff503c54bf6b115ebb16c58890"
+    },
+    {
+      "id": "EVENT-dd22916eda05c31fe4f319082c8c48ba",
+      "eventType": "OBJECT_STATE_CHANGED",
+      "objectId": "feat-ext-1787817366709-npj",
+      "timestamp": "2026-08-27T07:56:06.717Z",
+      "author": "gate194-tester",
+      "payload": {
+        "fromStatus": "DRAFT",
+        "toStatus": "ACTIVE",
+        "reason": "Feature Creation"
+      },
+      "signature": "19e83b4fc217f19a7e32b2e2a91d678b9d13919b7d3962f67172824dbbefab0b"
+    },
+    {
+      "id": "EVENT-09e963f850817c776b377ca5e6dea0c0",
+      "eventType": "OBJECT_CREATED",
+      "objectId": "PART-GATE-195-1",
+      "timestamp": "2026-08-27T07:56:07.253Z",
+      "author": "gate-engineer",
+      "payload": {
+        "objectType": "DESIGN",
+        "version": 1,
+        "revision": "1",
+        "status": "DRAFT",
+        "metadata": {
+          "name": "Parametric Part Model",
+          "type": "PART"
+        }
+      },
+      "signature": "9fb0988d48c8fa7e8a46838a6f0bb568d508505f83328fd05b66814b55b7822a"
+    },
+    {
+      "id": "EVENT-1bbe94be9398188913f509d97a59a3f9",
+      "eventType": "OBJECT_STATE_CHANGED",
+      "objectId": "PART-GATE-195-1",
+      "timestamp": "2026-08-27T07:56:07.259Z",
+      "author": "gate-engineer",
+      "payload": {
+        "fromStatus": "DRAFT",
+        "toStatus": "ACTIVE",
+        "reason": "System initialization"
+      },
+      "signature": "dcd4bbd82e56aea023a2f0ba0b1580362f65362307b931f3ce9a3f7bbac797bc"
+    },
+    {
+      "id": "EVENT-60eb73bb2c168b2c12530ee417e11e5d",
+      "eventType": "OBJECT_CREATED",
+      "objectId": "feat-ext-1787817367260-9rt",
+      "timestamp": "2026-08-27T07:56:07.266Z",
+      "author": "gate-engineer",
+      "payload": {
+        "objectType": "DESIGN",
+        "version": 1,
+        "revision": "1",
+        "status": "DRAFT",
+        "metadata": {
+          "name": "BaseExtrude",
+          "type": "EXTRUDE",
+          "params": {
+            "depth": 40
+          }
+        }
+      },
+      "signature": "158721d46e6b1c47d61939bd5592e838d11b5b774babfbc9986c6cb27c128de1"
+    },
+    {
+      "id": "EVENT-827c4429a765b291e6f5499a644e6aab",
+      "eventType": "OBJECT_STATE_CHANGED",
+      "objectId": "feat-ext-1787817367260-9rt",
+      "timestamp": "2026-08-27T07:56:07.269Z",
+      "author": "gate-engineer",
+      "payload": {
+        "fromStatus": "DRAFT",
+        "toStatus": "ACTIVE",
+        "reason": "Feature Creation"
+      },
+      "signature": "1f3e9b6a0c19d59663c521315cd17ab147bb52236d57b06915cb1889f6f49cf8"
+    },
+    {
+      "id": "EVENT-9e1152d64f53a2a5ee609626ba45930e",
+      "eventType": "OBJECT_CREATED",
+      "objectId": "feat-hol-1787817367272-5m4",
+      "timestamp": "2026-08-27T07:56:07.275Z",
+      "author": "gate-engineer",
+      "payload": {
+        "objectType": "DESIGN",
+        "version": 1,
+        "revision": "1",
+        "status": "DRAFT",
+        "metadata": {
+          "name": "MainHole",
+          "type": "HOLE",
+          "params": {
+            "holeType": "SIMPLE",
+            "diameter": 16,
+            "depth": 40
+          }
+        }
+      },
+      "signature": "77be4a1023d9bceb3355dd548fbc9aa152033f9fb3d7fecb57cbbd09f7e89097"
+    },
+    {
+      "id": "EVENT-7f030597774810d19d14da22e2ce06ca",
+      "eventType": "OBJECT_STATE_CHANGED",
+      "objectId": "feat-hol-1787817367272-5m4",
+      "timestamp": "2026-08-27T07:56:07.278Z",
+      "author": "gate-engineer",
+      "payload": {
+        "fromStatus": "DRAFT",
+        "toStatus": "ACTIVE",
+        "reason": "Feature Creation"
+      },
+      "signature": "534f9ab6fcd4b04f13d561e881c91a1d6a54d069d8a76e80717ca4bfb96f70e8"
+    },
+    {
+      "id": "EVENT-da0192bfb118c5956503de344e1f96d3",
+      "eventType": "OBJECT_CREATED",
+      "objectId": "feat-dft-1787817367290-jnq",
+      "timestamp": "2026-08-27T07:56:07.295Z",
+      "author": "gate-engineer",
+      "payload": {
+        "objectType": "DESIGN",
+        "version": 1,
+        "revision": "1",
+        "status": "DRAFT",
+        "metadata": {
+          "name": "BodyDraft",
+          "type": "DRAFT",
+          "params": {
+            "draftAngle": 5
+          }
+        }
+      },
+      "signature": "4f0487945feea1f97f8383982618b28d99d13dba985f1569a735c2e249491acd"
+    },
+    {
+      "id": "EVENT-4e0fa1dff648e63ebd9309bc452dc413",
+      "eventType": "OBJECT_STATE_CHANGED",
+      "objectId": "feat-dft-1787817367290-jnq",
+      "timestamp": "2026-08-27T07:56:07.299Z",
+      "author": "gate-engineer",
+      "payload": {
+        "fromStatus": "DRAFT",
+        "toStatus": "ACTIVE",
+        "reason": "Feature Creation"
+      },
+      "signature": "248525a039db715b1bf1e9b52703e94892b8fabe9ea8f9188ea04e370d7befff"
+    },
+    {
+      "id": "EVENT-a4200b5ae4aa75b09cfafba5eb31cc6a",
+      "eventType": "OBJECT_CREATED",
+      "objectId": "feat-rib-1787817367301-reg",
+      "timestamp": "2026-08-27T07:56:07.304Z",
+      "author": "gate-engineer",
+      "payload": {
+        "objectType": "DESIGN",
+        "version": 1,
+        "revision": "1",
+        "status": "DRAFT",
+        "metadata": {
+          "name": "SupportRib",
+          "type": "RIB",
+          "params": {
+            "thickness": 4
+          }
+        }
+      },
+      "signature": "74bbe2605fef09772c0347c5244bc7fd4ddb65b711de2ff575960e3be7c5bccb"
+    },
+    {
+      "id": "EVENT-296cc407d7883fcd3b8f0673e749ad05",
+      "eventType": "OBJECT_STATE_CHANGED",
+      "objectId": "feat-rib-1787817367301-reg",
+      "timestamp": "2026-08-27T07:56:07.307Z",
+      "author": "gate-engineer",
+      "payload": {
+        "fromStatus": "DRAFT",
+        "toStatus": "ACTIVE",
+        "reason": "Feature Creation"
+      },
+      "signature": "a461617e3eb29fd4cb2f62545f79d73440e9e4a958f375cf77ee69e9cd3a0bb4"
+    },
+    {
+      "id": "EVENT-fe7a99a7d75aa2491a7189f5dd4b7bb0",
+      "eventType": "OBJECT_CREATED",
+      "objectId": "feat-hol-1787817367309-m83",
+      "timestamp": "2026-08-27T07:56:07.312Z",
+      "author": "gate-engineer",
+      "payload": {
+        "objectType": "DESIGN",
+        "version": 1,
+        "revision": "1",
+        "status": "DRAFT",
+        "metadata": {
+          "name": "RibHole",
+          "type": "HOLE",
+          "params": {
+            "holeType": "SIMPLE",
+            "diameter": 6,
+            "depth": 4
+          }
+        }
+      },
+      "signature": "7341c5faebb9fc75abc917b796465470e540be4e9cf15ebd46cc184753540c45"
+    },
+    {
+      "id": "EVENT-2e6a07fba199c8577436742d39309161",
+      "eventType": "OBJECT_STATE_CHANGED",
+      "objectId": "feat-hol-1787817367309-m83",
+      "timestamp": "2026-08-27T07:56:07.316Z",
+      "author": "gate-engineer",
+      "payload": {
+        "fromStatus": "DRAFT",
+        "toStatus": "ACTIVE",
+        "reason": "Feature Creation"
+      },
+      "signature": "b786a6483b08b5a74712f545ef82981451f53307fe02c8bf2a79092c0341aa1f"
+    },
+    {
+      "id": "EVENT-88d5fa3817e55bef245aa28d062d27b1",
+      "eventType": "OBJECT_CREATED",
+      "objectId": "CLEAR_ROLLBACK",
+      "timestamp": "2026-08-27T07:56:07.325Z",
+      "author": "gate-engineer",
+      "payload": {
+        "objectType": "DESIGN",
+        "version": 1,
+        "revision": "1",
+        "status": "DRAFT",
+        "metadata": {
+          "name": "CLEAR_ROLLBACK",
+          "type": "FEATURE",
+          "params": {}
+        }
+      },
+      "signature": "257f7ffc2f45e8df93fec838f3a10204e2692f9368530781cb37cd050541fa02"
+    },
+    {
+      "id": "EVENT-c7fe5b794d80394bde3ca3c5a292d780",
+      "eventType": "OBJECT_STATE_CHANGED",
+      "objectId": "CLEAR_ROLLBACK",
+      "timestamp": "2026-08-27T07:56:07.328Z",
+      "author": "gate-engineer",
+      "payload": {
+        "fromStatus": "DRAFT",
+        "toStatus": "ACTIVE",
+        "reason": "Feature Creation"
+      },
+      "signature": "9b0868f2b006c57181cd24854975e377e5106a47bf884a2fc02e3acbda3d28ac"
+    },
+    {
+      "id": "EVENT-83f028651b8e87e0c0059d816c90f836",
+      "eventType": "OBJECT_CREATED",
+      "objectId": "PART-REORDER-195",
+      "timestamp": "2026-08-27T07:56:07.339Z",
+      "author": "reorder-eng",
+      "payload": {
+        "objectType": "DESIGN",
+        "version": 1,
+        "revision": "1",
+        "status": "DRAFT",
+        "metadata": {
+          "name": "Parametric Part Model",
+          "type": "PART"
+        }
+      },
+      "signature": "c2f364b2abe8de80045448ee2cf9c1abe17abbfb29b16fbaeb02d392aca1319b"
+    },
+    {
+      "id": "EVENT-9244f4c37ecdd769ec87b7bcc2bb37e7",
+      "eventType": "OBJECT_STATE_CHANGED",
+      "objectId": "PART-REORDER-195",
+      "timestamp": "2026-08-27T07:56:07.342Z",
+      "author": "reorder-eng",
+      "payload": {
+        "fromStatus": "DRAFT",
+        "toStatus": "ACTIVE",
+        "reason": "System initialization"
+      },
+      "signature": "71fd679700d43b38282d0d9be76945b2938787d284d4ae2ed76e61a24ad20671"
+    },
+    {
+      "id": "EVENT-bc13a4eb5fc29f07eb56c9ee022c7dc7",
+      "eventType": "OBJECT_CREATED",
+      "objectId": "feat-ext-1787817367342-2v3",
+      "timestamp": "2026-08-27T07:56:07.345Z",
+      "author": "reorder-eng",
+      "payload": {
+        "objectType": "DESIGN",
+        "version": 1,
+        "revision": "1",
+        "status": "DRAFT",
+        "metadata": {
+          "name": "ExtrudeA",
+          "type": "EXTRUDE",
+          "params": {
+            "depth": 20
+          }
+        }
+      },
+      "signature": "eb46e9ec12145fad28b62c0f4575e1a2980051cc2c9db21169c2513dfe444616"
+    },
+    {
+      "id": "EVENT-51c6b5b095a5786522eb76b6867f795d",
+      "eventType": "OBJECT_STATE_CHANGED",
+      "objectId": "feat-ext-1787817367342-2v3",
+      "timestamp": "2026-08-27T07:56:07.348Z",
+      "author": "reorder-eng",
+      "payload": {
+        "fromStatus": "DRAFT",
+        "toStatus": "ACTIVE",
+        "reason": "Feature Creation"
+      },
+      "signature": "7f4448981f7df678e67fbc7765d33def3c6fc61857467b21119569a5d2caad4f"
+    },
+    {
+      "id": "EVENT-4d38dbbea29f3141c6d18e17f88a6c12",
+      "eventType": "OBJECT_CREATED",
+      "objectId": "feat-ext-1787817367349-zqr",
+      "timestamp": "2026-08-27T07:56:07.351Z",
+      "author": "reorder-eng",
+      "payload": {
+        "objectType": "DESIGN",
+        "version": 1,
+        "revision": "1",
+        "status": "DRAFT",
+        "metadata": {
+          "name": "ExtrudeB",
+          "type": "EXTRUDE",
+          "params": {
+            "depth": 10
+          }
+        }
+      },
+      "signature": "c4fedf04deaef93a9d8b93130def60ab306d62a0ded9ac06075a009facd62f9c"
+    },
+    {
+      "id": "EVENT-2d334d3eaf5262e88b23b2928f341c13",
+      "eventType": "OBJECT_STATE_CHANGED",
+      "objectId": "feat-ext-1787817367349-zqr",
+      "timestamp": "2026-08-27T07:56:07.354Z",
+      "author": "reorder-eng",
+      "payload": {
+        "fromStatus": "DRAFT",
+        "toStatus": "ACTIVE",
+        "reason": "Feature Creation"
+      },
+      "signature": "9a389153f0f97041e0830650270ec443351384c4ea40cbe0f207c9b2237b06fa"
+    },
+    {
+      "id": "EVENT-d9cb581c4fa72728690514afd7ba41d0",
+      "eventType": "OBJECT_CREATED",
+      "objectId": "feat-hol-1787817367360-m5a",
+      "timestamp": "2026-08-27T07:56:07.363Z",
+      "author": "reorder-eng",
+      "payload": {
+        "objectType": "DESIGN",
+        "version": 1,
+        "revision": "1",
+        "status": "DRAFT",
+        "metadata": {
+          "name": "HoleA",
+          "type": "HOLE",
+          "params": {
+            "holeType": "SIMPLE",
+            "diameter": 8,
+            "depth": 20
+          }
+        }
+      },
+      "signature": "c6268c6f04da3afc57558f7bc11f8a35db2be023d6955b9d8606339d58ee2294"
+    },
+    {
+      "id": "EVENT-caffa5a59d55bce59667fb87b119152f",
+      "eventType": "OBJECT_STATE_CHANGED",
+      "objectId": "feat-hol-1787817367360-m5a",
+      "timestamp": "2026-08-27T07:56:07.366Z",
+      "author": "reorder-eng",
+      "payload": {
+        "fromStatus": "DRAFT",
+        "toStatus": "ACTIVE",
+        "reason": "Feature Creation"
+      },
+      "signature": "a73821ada4d7a4dbb2cd2288f45ffbf2c73dc3c2d6fa33a716ea97626ace5551"
+    },
+    {
+      "id": "EVENT-f9e0eb69a8785958c26ef8dd1087b3ad",
+      "eventType": "OBJECT_CREATED",
+      "objectId": "PART-CASCADE-195",
+      "timestamp": "2026-08-27T07:56:07.371Z",
+      "author": "cascade-eng",
+      "payload": {
+        "objectType": "DESIGN",
+        "version": 1,
+        "revision": "1",
+        "status": "DRAFT",
+        "metadata": {
+          "name": "Parametric Part Model",
+          "type": "PART"
+        }
+      },
+      "signature": "9c704628f845af03bd37222de65ab0d387aac37d219dce89f87f6c8a99199de8"
+    },
+    {
+      "id": "EVENT-86760b7d73a8bafee3320e439ec67328",
+      "eventType": "OBJECT_STATE_CHANGED",
+      "objectId": "PART-CASCADE-195",
+      "timestamp": "2026-08-27T07:56:07.373Z",
+      "author": "cascade-eng",
+      "payload": {
+        "fromStatus": "DRAFT",
+        "toStatus": "ACTIVE",
+        "reason": "System initialization"
+      },
+      "signature": "690e4d4e38de4426a40aa8c97ae2ca93ddf99bb88e9dbb0010a9737ea2ffb2ae"
+    },
+    {
+      "id": "EVENT-365b776afb51fc3821a194e846823475",
+      "eventType": "OBJECT_CREATED",
+      "objectId": "feat-ext-1787817367374-c96",
+      "timestamp": "2026-08-27T07:56:07.376Z",
+      "author": "cascade-eng",
+      "payload": {
+        "objectType": "DESIGN",
+        "version": 1,
+        "revision": "1",
+        "status": "DRAFT",
+        "metadata": {
+          "name": "Base",
+          "type": "EXTRUDE",
+          "params": {
+            "depth": 30
+          }
+        }
+      },
+      "signature": "d551d29ae06a0ac6fd81266f544b06767007d8773732bc5c0aba846d6798fc93"
+    },
+    {
+      "id": "EVENT-21c5a7337b5e8887a84b8865303d7596",
+      "eventType": "OBJECT_STATE_CHANGED",
+      "objectId": "feat-ext-1787817367374-c96",
+      "timestamp": "2026-08-27T07:56:07.378Z",
+      "author": "cascade-eng",
+      "payload": {
+        "fromStatus": "DRAFT",
+        "toStatus": "ACTIVE",
+        "reason": "Feature Creation"
+      },
+      "signature": "2e97572fc14c22d0a912fe61b633e7dba01d088dd006fe044614405f738c1374"
+    },
+    {
+      "id": "EVENT-cc7406024d3a13a82516ada4fe2a2887",
+      "eventType": "OBJECT_CREATED",
+      "objectId": "feat-hol-1787817367379-7sk",
+      "timestamp": "2026-08-27T07:56:07.381Z",
+      "author": "cascade-eng",
+      "payload": {
+        "objectType": "DESIGN",
+        "version": 1,
+        "revision": "1",
+        "status": "DRAFT",
+        "metadata": {
+          "name": "Hole",
+          "type": "HOLE",
+          "params": {
+            "holeType": "SIMPLE",
+            "diameter": 10,
+            "depth": 30
+          }
+        }
+      },
+      "signature": "786f58fc7b4b33c4841931413a33415afb9899013cdf8e383753106d41d6336a"
+    },
+    {
+      "id": "EVENT-fdfad7f1989ed6344e67791701a6057b",
+      "eventType": "OBJECT_STATE_CHANGED",
+      "objectId": "feat-hol-1787817367379-7sk",
+      "timestamp": "2026-08-27T07:56:07.383Z",
+      "author": "cascade-eng",
+      "payload": {
+        "fromStatus": "DRAFT",
+        "toStatus": "ACTIVE",
+        "reason": "Feature Creation"
+      },
+      "signature": "56300622fe8d765d21d70591c0e5a3f91f3650cebd75bf273a41b0a8ca1a8540"
+    },
+    {
+      "id": "EVENT-c69dac616ada79a55c2cd8b9cc22b982",
+      "eventType": "OBJECT_CREATED",
+      "objectId": "feat-dft-1787817367384-3oq",
+      "timestamp": "2026-08-27T07:56:07.386Z",
+      "author": "cascade-eng",
+      "payload": {
+        "objectType": "DESIGN",
+        "version": 1,
+        "revision": "1",
+        "status": "DRAFT",
+        "metadata": {
+          "name": "Draft",
+          "type": "DRAFT",
+          "params": {
+            "draftAngle": 3
+          }
+        }
+      },
+      "signature": "dd07eb36b130b4b4e69ee170ab1544d069390acf69a2a1af5eb843807e360ca7"
+    },
+    {
+      "id": "EVENT-02b702588c47fc396a970b84a396a7e2",
+      "eventType": "OBJECT_STATE_CHANGED",
+      "objectId": "feat-dft-1787817367384-3oq",
+      "timestamp": "2026-08-27T07:56:07.388Z",
+      "author": "cascade-eng",
+      "payload": {
+        "fromStatus": "DRAFT",
+        "toStatus": "ACTIVE",
+        "reason": "Feature Creation"
+      },
+      "signature": "d371fdc14d46c2235ec1e6ebbadbc1abcc098365ee243021de80c5bc4e758e1a"
+    },
+    {
+      "id": "EVENT-5e30b1f6117586c199f1a4d7786fc1c2",
+      "eventType": "OBJECT_CREATED",
+      "objectId": "PART-FAIL-195",
+      "timestamp": "2026-08-27T07:56:07.394Z",
+      "author": "fail-eng",
+      "payload": {
+        "objectType": "DESIGN",
+        "version": 1,
+        "revision": "1",
+        "status": "DRAFT",
+        "metadata": {
+          "name": "Parametric Part Model",
+          "type": "PART"
+        }
+      },
+      "signature": "ae210c335530a71917380d4b312f24ff8a62d7ba9b21238214d93ac1c503e622"
+    },
+    {
+      "id": "EVENT-23f62711fd3dfa23d7fe659cc064f028",
+      "eventType": "OBJECT_STATE_CHANGED",
+      "objectId": "PART-FAIL-195",
+      "timestamp": "2026-08-27T07:56:07.396Z",
+      "author": "fail-eng",
+      "payload": {
+        "fromStatus": "DRAFT",
+        "toStatus": "ACTIVE",
+        "reason": "System initialization"
+      },
+      "signature": "31a2ba296ec07650d7f2af6b0c8c38d9998caf5c7b3f3995e148eb0bc9a7b353"
+    },
+    {
+      "id": "EVENT-2cf5307508069b0f1771a63a8e83051c",
+      "eventType": "OBJECT_CREATED",
+      "objectId": "feat-ext-1787817367397-lo3",
+      "timestamp": "2026-08-27T07:56:07.399Z",
+      "author": "fail-eng",
+      "payload": {
+        "objectType": "DESIGN",
+        "version": 1,
+        "revision": "1",
+        "status": "DRAFT",
+        "metadata": {
+          "name": "FailBase",
+          "type": "EXTRUDE",
+          "params": {
+            "depth": 20
+          }
+        }
+      },
+      "signature": "d839570dd829fe11add10ffd1edf2500493bc3579e36393e1a43b18776a961b2"
+    },
+    {
+      "id": "EVENT-d6aabff18f0885be7254ec5d1792708a",
+      "eventType": "OBJECT_STATE_CHANGED",
+      "objectId": "feat-ext-1787817367397-lo3",
+      "timestamp": "2026-08-27T07:56:07.405Z",
+      "author": "fail-eng",
+      "payload": {
+        "fromStatus": "DRAFT",
+        "toStatus": "ACTIVE",
+        "reason": "Feature Creation"
+      },
+      "signature": "8e2aa5f8bb583f707087411ad81731be6c54561ccb1a8190dd3d45d807356565"
+    },
+    {
+      "id": "EVENT-e1cf6d273fef2fadfccd3b4c55e07ec5",
+      "eventType": "OBJECT_CREATED",
+      "objectId": "feat-hol-1787817367405-q54",
+      "timestamp": "2026-08-27T07:56:07.407Z",
+      "author": "fail-eng",
+      "payload": {
+        "objectType": "DESIGN",
+        "version": 1,
+        "revision": "1",
+        "status": "DRAFT",
+        "metadata": {
+          "name": "FailChild",
+          "type": "HOLE",
+          "params": {
+            "holeType": "SIMPLE",
+            "diameter": 5,
+            "depth": 20
+          }
+        }
+      },
+      "signature": "cf15d28acd1429c7651eb9b858c6f1665c89babad4b5e685f7cd837bcb664f2e"
+    },
+    {
+      "id": "EVENT-84202ac32358d074b0ed7b9a4a96e4cf",
+      "eventType": "OBJECT_STATE_CHANGED",
+      "objectId": "feat-hol-1787817367405-q54",
+      "timestamp": "2026-08-27T07:56:07.410Z",
+      "author": "fail-eng",
+      "payload": {
+        "fromStatus": "DRAFT",
+        "toStatus": "ACTIVE",
+        "reason": "Feature Creation"
+      },
+      "signature": "fe0980ebfc4729f89eabb016ce2f079ea5b8a136ac1c615d0556a68b344f952f"
+    },
+    {
+      "id": "EVENT-f3d0652d8d32869d115556d1eafb7c1d",
+      "eventType": "OBJECT_CREATED",
+      "objectId": "PART-REPLAYED-195",
+      "timestamp": "2026-08-27T07:56:07.415Z",
+      "author": "replay-agent",
+      "payload": {
+        "objectType": "DESIGN",
+        "version": 1,
+        "revision": "1",
+        "status": "DRAFT",
+        "metadata": {
+          "name": "Parametric Part Model",
+          "type": "PART"
+        }
+      },
+      "signature": "0dee5f4ba5d83b2a45ac2b5a746e0351b1d02e44e9e2d48c16242770815e73ea"
+    },
+    {
+      "id": "EVENT-2ea69a600d822d252bf8dcacd762a547",
+      "eventType": "OBJECT_STATE_CHANGED",
+      "objectId": "PART-REPLAYED-195",
+      "timestamp": "2026-08-27T07:56:07.418Z",
+      "author": "replay-agent",
+      "payload": {
+        "fromStatus": "DRAFT",
+        "toStatus": "ACTIVE",
+        "reason": "System initialization"
+      },
+      "signature": "cfe9fa00962ffb9b509ce61a3364333fe177d58add901b176a1bfeede7d1fd42"
+    },
+    {
+      "id": "EVENT-521176fe65eef47d8816cc4a0b4c043f",
+      "eventType": "OBJECT_CREATED",
+      "objectId": "PART-DEL-195",
+      "timestamp": "2026-08-27T07:56:07.479Z",
+      "author": "del-eng",
+      "payload": {
+        "objectType": "DESIGN",
+        "version": 1,
+        "revision": "1",
+        "status": "DRAFT",
+        "metadata": {
+          "name": "Parametric Part Model",
+          "type": "PART"
+        }
+      },
+      "signature": "f52685b09a7246407c00a12436359fe4bf115b1a3ee4046fe4354086507386f9"
+    },
+    {
+      "id": "EVENT-d488e7143964158f99c49be1743e1fec",
+      "eventType": "OBJECT_STATE_CHANGED",
+      "objectId": "PART-DEL-195",
+      "timestamp": "2026-08-27T07:56:07.483Z",
+      "author": "del-eng",
+      "payload": {
+        "fromStatus": "DRAFT",
+        "toStatus": "ACTIVE",
+        "reason": "System initialization"
+      },
+      "signature": "6af896fc68c6ac2a67d6d2a5fefd4e51d40fe609bc2660f0186d4ab4b1158099"
+    },
+    {
+      "id": "EVENT-7f305912a176a162ab0ca31c06379bcf",
+      "eventType": "OBJECT_CREATED",
+      "objectId": "feat-ext-1787817367483-sz2",
+      "timestamp": "2026-08-27T07:56:07.514Z",
+      "author": "del-eng",
+      "payload": {
+        "objectType": "DESIGN",
+        "version": 1,
+        "revision": "1",
+        "status": "DRAFT",
+        "metadata": {
+          "name": "ToDelete",
+          "type": "EXTRUDE",
+          "params": {
+            "depth": 20
+          }
+        }
+      },
+      "signature": "886f8cc5a8331ff296545de793e3f1530ddb902eb1483c976f1d27fad15a69ef"
+    },
+    {
+      "id": "EVENT-4eeff12bcfc33a84301c7e5bf3ee015c",
+      "eventType": "OBJECT_STATE_CHANGED",
+      "objectId": "feat-ext-1787817367483-sz2",
+      "timestamp": "2026-08-27T07:56:07.517Z",
+      "author": "del-eng",
+      "payload": {
+        "fromStatus": "DRAFT",
+        "toStatus": "ACTIVE",
+        "reason": "Feature Creation"
+      },
+      "signature": "817773cef3452b07850181d19127c4c3f3f1d56fbbb152e513a57509fcd3095d"
+    },
+    {
+      "id": "EVENT-9e93ad9a0c6e222f24a8ffebba4e2711",
+      "eventType": "OBJECT_CREATED",
+      "objectId": "feat-hol-1787817367518-ya1",
+      "timestamp": "2026-08-27T07:56:07.520Z",
+      "author": "del-eng",
+      "payload": {
+        "objectType": "DESIGN",
+        "version": 1,
+        "revision": "1",
+        "status": "DRAFT",
+        "metadata": {
+          "name": "DependentHole",
+          "type": "HOLE",
+          "params": {
+            "holeType": "SIMPLE",
+            "diameter": 5,
+            "depth": 20
+          }
+        }
+      },
+      "signature": "2e8f9fc3035155eee722be48805a3eec850459fc7788f8e20f8dbc9372d71f4d"
+    },
+    {
+      "id": "EVENT-134f62f6badd27d106f3d690804246d2",
+      "eventType": "OBJECT_STATE_CHANGED",
+      "objectId": "feat-hol-1787817367518-ya1",
+      "timestamp": "2026-08-27T07:56:07.522Z",
+      "author": "del-eng",
+      "payload": {
+        "fromStatus": "DRAFT",
+        "toStatus": "ACTIVE",
+        "reason": "Feature Creation"
+      },
+      "signature": "77598d5e14c6328f92843366bef59fe9b2796550548e66000e015b12ddc4e7b3"
+    },
+    {
+      "id": "EVENT-8735d8dfe63b8816b3b240a7700c28cf",
+      "eventType": "OBJECT_CREATED",
+      "objectId": "PART-UNDO-195",
+      "timestamp": "2026-08-27T07:56:07.528Z",
+      "author": "undo-eng",
+      "payload": {
+        "objectType": "DESIGN",
+        "version": 1,
+        "revision": "1",
+        "status": "DRAFT",
+        "metadata": {
+          "name": "Parametric Part Model",
+          "type": "PART"
+        }
+      },
+      "signature": "8fdbeb6dbbeba21df8100c373d5e340b78872e92aefa521860ff52a79f836e8b"
+    },
+    {
+      "id": "EVENT-6729f16a3d47127918ec94ddfaae9e4b",
+      "eventType": "OBJECT_STATE_CHANGED",
+      "objectId": "PART-UNDO-195",
+      "timestamp": "2026-08-27T07:56:07.531Z",
+      "author": "undo-eng",
+      "payload": {
+        "fromStatus": "DRAFT",
+        "toStatus": "ACTIVE",
+        "reason": "System initialization"
+      },
+      "signature": "28bde859fbf27b58e069bbeb2733a561716502b98734b19751d42b741832760e"
+    },
+    {
+      "id": "EVENT-27bb7ae25e556cbc532ed1e58ecf9475",
+      "eventType": "OBJECT_CREATED",
+      "objectId": "feat-ext-1787817367532-qia",
+      "timestamp": "2026-08-27T07:56:07.535Z",
+      "author": "undo-eng",
+      "payload": {
+        "objectType": "DESIGN",
+        "version": 1,
+        "revision": "1",
+        "status": "DRAFT",
+        "metadata": {
+          "name": "ExtrudeU",
+          "type": "EXTRUDE",
+          "params": {
+            "depth": 10
+          }
+        }
+      },
+      "signature": "c0ae843ce45fba054286ab94179e9f2b0ec0efa0e5b3427f7875c382811d5650"
+    },
+    {
+      "id": "EVENT-d177732f245fc4cfd8b581904f6ac3f7",
+      "eventType": "OBJECT_STATE_CHANGED",
+      "objectId": "feat-ext-1787817367532-qia",
+      "timestamp": "2026-08-27T07:56:07.538Z",
+      "author": "undo-eng",
+      "payload": {
+        "fromStatus": "DRAFT",
+        "toStatus": "ACTIVE",
+        "reason": "Feature Creation"
+      },
+      "signature": "f58e8b49824fae2f7da5a70d475aefa860f0e255df18a2865c74893d28b00518"
+    },
+    {
+      "id": "EVENT-2b44856db6eabf895dde17f457f0eef1",
+      "eventType": "OBJECT_CREATED",
+      "objectId": "feat-hol-1787817367539-pu4",
+      "timestamp": "2026-08-27T07:56:07.541Z",
+      "author": "undo-eng",
+      "payload": {
+        "objectType": "DESIGN",
+        "version": 1,
+        "revision": "1",
+        "status": "DRAFT",
+        "metadata": {
+          "name": "HoleU",
+          "type": "HOLE",
+          "params": {
+            "holeType": "SIMPLE",
+            "diameter": 4,
+            "depth": 10
+          }
+        }
+      },
+      "signature": "ed4370b4972e9adc892e8b8bc609ce8805e7dd209300593f4539ea11c59c592b"
+    },
+    {
+      "id": "EVENT-0a8317fa3465d97412d2e51f43bec958",
+      "eventType": "OBJECT_STATE_CHANGED",
+      "objectId": "feat-hol-1787817367539-pu4",
+      "timestamp": "2026-08-27T07:56:07.543Z",
+      "author": "undo-eng",
+      "payload": {
+        "fromStatus": "DRAFT",
+        "toStatus": "ACTIVE",
+        "reason": "Feature Creation"
+      },
+      "signature": "59fb2354c13b5824145818e9077db9ba18396ca4fd228864e62bea2818a82ed0"
+    },
+    {
+      "id": "EVENT-68a507bd9529637e5a0c6fd3aa34a61f",
+      "eventType": "OBJECT_CREATED",
+      "objectId": "PART-DET-1",
+      "timestamp": "2026-08-27T07:56:07.555Z",
+      "author": "det",
+      "payload": {
+        "objectType": "DESIGN",
+        "version": 1,
+        "revision": "1",
+        "status": "DRAFT",
+        "metadata": {
+          "name": "Parametric Part Model",
+          "type": "PART"
+        }
+      },
+      "signature": "114782eec6bdd49eeb6519e0ac7273da5fc2c81da299833686dadc7729ffa8c3"
+    },
+    {
+      "id": "EVENT-99c07743920cd2ccbbf00ee424d115b4",
+      "eventType": "OBJECT_STATE_CHANGED",
+      "objectId": "PART-DET-1",
+      "timestamp": "2026-08-27T07:56:07.558Z",
+      "author": "det",
+      "payload": {
+        "fromStatus": "DRAFT",
+        "toStatus": "ACTIVE",
+        "reason": "System initialization"
+      },
+      "signature": "79f41cfa57d547bb06ba4d433795ee211ddaa13fe444f7829906007e4f47ef50"
+    },
+    {
+      "id": "EVENT-a47d93eb4bc8f04038ae0088d15eb8da",
+      "eventType": "OBJECT_CREATED",
+      "objectId": "PART-DET-2",
+      "timestamp": "2026-08-27T07:56:07.560Z",
+      "author": "det",
+      "payload": {
+        "objectType": "DESIGN",
+        "version": 1,
+        "revision": "1",
+        "status": "DRAFT",
+        "metadata": {
+          "name": "Parametric Part Model",
+          "type": "PART"
+        }
+      },
+      "signature": "4c24ea1785755513bbfbeb8e64def5f7cf0535f97622449797b0f8cd716a1860"
+    },
+    {
+      "id": "EVENT-d1c4d3be90132a37120a724fed87bd23",
+      "eventType": "OBJECT_STATE_CHANGED",
+      "objectId": "PART-DET-2",
+      "timestamp": "2026-08-27T07:56:07.562Z",
+      "author": "det",
+      "payload": {
+        "fromStatus": "DRAFT",
+        "toStatus": "ACTIVE",
+        "reason": "System initialization"
+      },
+      "signature": "52af7e2e1cf9f7acf56dd3c8b90cabd544974a3f16657ac68b641095a73c4dea"
+    },
+    {
+      "id": "EVENT-edd29cfe8bec98fd38db660aa689348c",
+      "eventType": "OBJECT_CREATED",
+      "objectId": "feat-ext-1787817367567-xd2",
+      "timestamp": "2026-08-27T07:56:07.569Z",
+      "author": "det",
+      "payload": {
+        "objectType": "DESIGN",
+        "version": 1,
+        "revision": "1",
+        "status": "DRAFT",
+        "metadata": {
+          "name": "DetExtrude",
+          "type": "EXTRUDE",
+          "params": {
+            "depth": 35
+          }
+        }
+      },
+      "signature": "fb8d96798760725ffcad5e930f164160435ba3de643594a1a62c360ff685fbb5"
+    },
+    {
+      "id": "EVENT-ad2ca356789d1e25cf9aabba9395747d",
+      "eventType": "OBJECT_STATE_CHANGED",
+      "objectId": "feat-ext-1787817367567-xd2",
+      "timestamp": "2026-08-27T07:56:07.571Z",
+      "author": "det",
+      "payload": {
+        "fromStatus": "DRAFT",
+        "toStatus": "ACTIVE",
+        "reason": "Feature Creation"
+      },
+      "signature": "5f1a3fabf6d7df568f3f77f5ce9b45b4268f3a97695ca1091421b8319aa90311"
+    },
+    {
+      "id": "EVENT-0c25e40d7e96dc2f1691465c487c0e91",
+      "eventType": "OBJECT_CREATED",
+      "objectId": "feat-ext-1787822107686-ozf",
+      "timestamp": "2026-08-27T09:15:07.736Z",
+      "author": "gate194-tester",
+      "payload": {
+        "objectType": "DESIGN",
+        "version": 1,
+        "revision": "1",
+        "status": "DRAFT",
+        "metadata": {
+          "name": "Extrude001",
+          "type": "EXTRUDE",
+          "params": {
+            "depth": 50
+          }
+        }
+      },
+      "signature": "dab713eebefde6b19bd5e8f4f6722807882748d5f9792caa773005989f476c7a"
+    },
+    {
+      "id": "EVENT-e3f1c4090c3f3dc61d5ed6e331ca542b",
+      "eventType": "OBJECT_STATE_CHANGED",
+      "objectId": "feat-ext-1787822107686-ozf",
+      "timestamp": "2026-08-27T09:15:07.746Z",
+      "author": "gate194-tester",
+      "payload": {
+        "fromStatus": "DRAFT",
+        "toStatus": "ACTIVE",
+        "reason": "Feature Creation"
+      },
+      "signature": "f279435a3e0f1b938533cc158bb481842b5a4bbd6fa47657d1e53d0815e18994"
+    }
+  ],
+  "lineage": [
+    [
+      "OBJ-CAD-190",
+      [
+        "1",
+        "REV-B"
+      ]
+    ],
+    [
+      "OBJ-MESH-190",
+      [
+        "1"
+      ]
+    ],
+    [
+      "PART-GATE-194",
+      [
+        "1"
+      ]
+    ],
+    [
+      "feat-ext-1787817366709-npj",
+      [
+        "1"
+      ]
+    ],
+    [
+      "PART-GATE-195-1",
+      [
+        "1"
+      ]
+    ],
+    [
+      "feat-ext-1787817367260-9rt",
+      [
+        "1"
+      ]
+    ],
+    [
+      "feat-hol-1787817367272-5m4",
+      [
+        "1"
+      ]
+    ],
+    [
+      "feat-dft-1787817367290-jnq",
+      [
+        "1"
+      ]
+    ],
+    [
+      "feat-rib-1787817367301-reg",
+      [
+        "1"
+      ]
+    ],
+    [
+      "feat-hol-1787817367309-m83",
+      [
+        "1"
+      ]
+    ],
+    [
+      "CLEAR_ROLLBACK",
+      [
+        "1"
+      ]
+    ],
+    [
+      "PART-REORDER-195",
+      [
+        "1"
+      ]
+    ],
+    [
+      "feat-ext-1787817367342-2v3",
+      [
+        "1"
+      ]
+    ],
+    [
+      "feat-ext-1787817367349-zqr",
+      [
+        "1"
+      ]
+    ],
+    [
+      "feat-hol-1787817367360-m5a",
+      [
+        "1"
+      ]
+    ],
+    [
+      "PART-CASCADE-195",
+      [
+        "1"
+      ]
+    ],
+    [
+      "feat-ext-1787817367374-c96",
+      [
+        "1"
+      ]
+    ],
+    [
+      "feat-hol-1787817367379-7sk",
+      [
+        "1"
+      ]
+    ],
+    [
+      "feat-dft-1787817367384-3oq",
+      [
+        "1"
+      ]
+    ],
+    [
+      "PART-FAIL-195",
+      [
+        "1"
+      ]
+    ],
+    [
+      "feat-ext-1787817367397-lo3",
+      [
+        "1"
+      ]
+    ],
+    [
+      "feat-hol-1787817367405-q54",
+      [
+        "1"
+      ]
+    ],
+    [
+      "PART-REPLAYED-195",
+      [
+        "1"
+      ]
+    ],
+    [
+      "PART-DEL-195",
+      [
+        "1"
+      ]
+    ],
+    [
+      "feat-ext-1787817367483-sz2",
+      [
+        "1"
+      ]
+    ],
+    [
+      "feat-hol-1787817367518-ya1",
+      [
+        "1"
+      ]
+    ],
+    [
+      "PART-UNDO-195",
+      [
+        "1"
+      ]
+    ],
+    [
+      "feat-ext-1787817367532-qia",
+      [
+        "1"
+      ]
+    ],
+    [
+      "feat-hol-1787817367539-pu4",
+      [
+        "1"
+      ]
+    ],
+    [
+      "PART-DET-1",
+      [
+        "1"
+      ]
+    ],
+    [
+      "PART-DET-2",
+      [
+        "1"
+      ]
+    ],
+    [
+      "feat-ext-1787817367567-xd2",
+      [
+        "1"
+      ]
+    ],
+    [
+      "feat-ext-1787822107686-ozf",
+      [
+        "1"
+      ]
+    ]
+  ]
+}

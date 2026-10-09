@@ -1,0 +1,12 @@
+{
+  "reportId": "COLLISION-ENGINE-P3-CACHE-INTEGRITY-001",
+  "invalidationKeys": [
+    "documentId",
+    "revisionId",
+    "geometryId",
+    "snapshotId",
+    "transformRevision"
+  ],
+  "staleCacheProtection": "ACTIVE_FAIL_CLOSED",
+  "verdict": "PASSED"
+}

@@ -1,0 +1,635 @@
+{
+  "reportType": "TRANSFORM_HIERARCHY_COMPOSITION",
+  "assemblyId": "ASM_TURBO_PUMP_01",
+  "coordinateSystems": [
+    {
+      "name": "WORLD_COORDINATE_SYSTEM",
+      "origin": [
+        0,
+        0,
+        0
+      ],
+      "handedness": "RIGHT_HANDED"
+    },
+    {
+      "name": "ROTOR_LOCAL_FRAME",
+      "origin": [
+        0,
+        0,
+        50
+      ],
+      "parent": "WORLD_COORDINATE_SYSTEM"
+    },
+    {
+      "name": "IMPELLER_LOCAL_FRAME",
+      "origin": [
+        0,
+        0,
+        180
+      ],
+      "parent": "ROTOR_LOCAL_FRAME"
+    }
+  ],
+  "occurrencesTransforms": [
+    {
+      "occurrenceId": "OCC_ASM_TURBO_PUMP_01_ROOT",
+      "instancePath": "ASM_TURBO_PUMP_01",
+      "localTransform": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "worldTransform": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "worldMatrix": [
+        [
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "occurrenceId": "OCC_SUBASM_ROTOR",
+      "instancePath": "ASM_TURBO_PUMP_01/OCC_SUBASM_ROTOR",
+      "localTransform": {
+        "x": 0,
+        "y": 0,
+        "z": 50
+      },
+      "worldTransform": {
+        "x": 0,
+        "y": 0,
+        "z": 50
+      },
+      "worldMatrix": [
+        [
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          50
+        ],
+        [
+          0,
+          0,
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "occurrenceId": "OCC_SHAFT_01",
+      "instancePath": "ASM_TURBO_PUMP_01/OCC_SUBASM_ROTOR/OCC_SHAFT_01",
+      "localTransform": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "worldTransform": {
+        "x": 0,
+        "y": 0,
+        "z": 50
+      },
+      "worldMatrix": [
+        [
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          50
+        ],
+        [
+          0,
+          0,
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "occurrenceId": "OCC_IMPELLER_01",
+      "instancePath": "ASM_TURBO_PUMP_01/OCC_SUBASM_ROTOR/OCC_IMPELLER_01",
+      "localTransform": {
+        "x": 0,
+        "y": 0,
+        "z": 180
+      },
+      "worldTransform": {
+        "x": 0,
+        "y": 0,
+        "z": 230
+      },
+      "worldMatrix": [
+        [
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          230
+        ],
+        [
+          0,
+          0,
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "occurrenceId": "OCC_BEARING_FRONT",
+      "instancePath": "ASM_TURBO_PUMP_01/OCC_SUBASM_ROTOR/OCC_BEARING_FRONT",
+      "localTransform": {
+        "x": 0,
+        "y": 0,
+        "z": 30
+      },
+      "worldTransform": {
+        "x": 0,
+        "y": 0,
+        "z": 80
+      },
+      "worldMatrix": [
+        [
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          80
+        ],
+        [
+          0,
+          0,
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "occurrenceId": "OCC_BEARING_REAR",
+      "instancePath": "ASM_TURBO_PUMP_01/OCC_SUBASM_ROTOR/OCC_BEARING_REAR",
+      "localTransform": {
+        "x": 0,
+        "y": 0,
+        "z": 260
+      },
+      "worldTransform": {
+        "x": 0,
+        "y": 0,
+        "z": 310
+      },
+      "worldMatrix": [
+        [
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          310
+        ],
+        [
+          0,
+          0,
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "occurrenceId": "OCC_CASING_01",
+      "instancePath": "ASM_TURBO_PUMP_01/OCC_CASING_01",
+      "localTransform": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "worldTransform": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "worldMatrix": [
+        [
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "occurrenceId": "OCC_BOLT_FLANGE_1",
+      "instancePath": "ASM_TURBO_PUMP_01/OCC_CASING_01/OCC_BOLT_FLANGE_1",
+      "localTransform": {
+        "x": 135,
+        "y": 0,
+        "z": 280
+      },
+      "worldTransform": {
+        "x": 135,
+        "y": 0,
+        "z": 280
+      },
+      "worldMatrix": [
+        [
+          1,
+          0,
+          0,
+          135
+        ],
+        [
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          280
+        ],
+        [
+          0,
+          0,
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "occurrenceId": "OCC_BOLT_FLANGE_2",
+      "instancePath": "ASM_TURBO_PUMP_01/OCC_CASING_01/OCC_BOLT_FLANGE_2",
+      "localTransform": {
+        "x": 95.45941546018392,
+        "y": 95.4594154601839,
+        "z": 280
+      },
+      "worldTransform": {
+        "x": 95.45941546,
+        "y": 95.45941546,
+        "z": 280
+      },
+      "worldMatrix": [
+        [
+          0.70710678,
+          -0.70710678,
+          0,
+          95.45941546
+        ],
+        [
+          0.70710678,
+          0.70710678,
+          0,
+          95.45941546
+        ],
+        [
+          0,
+          0,
+          1,
+          280
+        ],
+        [
+          0,
+          0,
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "occurrenceId": "OCC_BOLT_FLANGE_3",
+      "instancePath": "ASM_TURBO_PUMP_01/OCC_CASING_01/OCC_BOLT_FLANGE_3",
+      "localTransform": {
+        "x": 8.266365894244634e-15,
+        "y": 135,
+        "z": 280
+      },
+      "worldTransform": {
+        "x": 0,
+        "y": 135,
+        "z": 280
+      },
+      "worldMatrix": [
+        [
+          0,
+          -1,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          135
+        ],
+        [
+          0,
+          0,
+          1,
+          280
+        ],
+        [
+          0,
+          0,
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "occurrenceId": "OCC_BOLT_FLANGE_4",
+      "instancePath": "ASM_TURBO_PUMP_01/OCC_CASING_01/OCC_BOLT_FLANGE_4",
+      "localTransform": {
+        "x": -95.4594154601839,
+        "y": 95.45941546018392,
+        "z": 280
+      },
+      "worldTransform": {
+        "x": -95.45941546,
+        "y": 95.45941546,
+        "z": 280
+      },
+      "worldMatrix": [
+        [
+          -0.70710678,
+          -0.70710678,
+          0,
+          -95.45941546
+        ],
+        [
+          0.70710678,
+          -0.70710678,
+          0,
+          95.45941546
+        ],
+        [
+          0,
+          0,
+          1,
+          280
+        ],
+        [
+          0,
+          0,
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "occurrenceId": "OCC_BOLT_FLANGE_5",
+      "instancePath": "ASM_TURBO_PUMP_01/OCC_CASING_01/OCC_BOLT_FLANGE_5",
+      "localTransform": {
+        "x": -135,
+        "y": 1.6532731788489267e-14,
+        "z": 280
+      },
+      "worldTransform": {
+        "x": -135,
+        "y": 0,
+        "z": 280
+      },
+      "worldMatrix": [
+        [
+          -1,
+          0,
+          0,
+          -135
+        ],
+        [
+          0,
+          -1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          280
+        ],
+        [
+          0,
+          0,
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "occurrenceId": "OCC_BOLT_FLANGE_6",
+      "instancePath": "ASM_TURBO_PUMP_01/OCC_CASING_01/OCC_BOLT_FLANGE_6",
+      "localTransform": {
+        "x": -95.45941546018393,
+        "y": -95.4594154601839,
+        "z": 280
+      },
+      "worldTransform": {
+        "x": -95.45941546,
+        "y": -95.45941546,
+        "z": 280
+      },
+      "worldMatrix": [
+        [
+          -0.70710678,
+          0.70710678,
+          0,
+          -95.45941546
+        ],
+        [
+          -0.70710678,
+          -0.70710678,
+          0,
+          -95.45941546
+        ],
+        [
+          0,
+          0,
+          1,
+          280
+        ],
+        [
+          0,
+          0,
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "occurrenceId": "OCC_BOLT_FLANGE_7",
+      "instancePath": "ASM_TURBO_PUMP_01/OCC_CASING_01/OCC_BOLT_FLANGE_7",
+      "localTransform": {
+        "x": -2.4799097682733902e-14,
+        "y": -135,
+        "z": 280
+      },
+      "worldTransform": {
+        "x": 0,
+        "y": -135,
+        "z": 280
+      },
+      "worldMatrix": [
+        [
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          -1,
+          0,
+          0,
+          -135
+        ],
+        [
+          0,
+          0,
+          1,
+          280
+        ],
+        [
+          0,
+          0,
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "occurrenceId": "OCC_BOLT_FLANGE_8",
+      "instancePath": "ASM_TURBO_PUMP_01/OCC_CASING_01/OCC_BOLT_FLANGE_8",
+      "localTransform": {
+        "x": 95.45941546018389,
+        "y": -95.45941546018393,
+        "z": 280
+      },
+      "worldTransform": {
+        "x": 95.45941546,
+        "y": -95.45941546,
+        "z": 280
+      },
+      "worldMatrix": [
+        [
+          0.70710678,
+          0.70710678,
+          0,
+          95.45941546
+        ],
+        [
+          -0.70710678,
+          0.70710678,
+          0,
+          -95.45941546
+        ],
+        [
+          0,
+          0,
+          1,
+          280
+        ],
+        [
+          0,
+          0,
+          0,
+          1
+        ]
+      ]
+    }
+  ]
+}

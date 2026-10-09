@@ -1,0 +1,41 @@
+export enum ModeClassification {
+  POSITIVE_BUCKLING_FACTOR = 'POSITIVE_BUCKLING_FACTOR',
+  ZERO = 'ZERO',
+  NEAR_ZERO = 'NEAR_ZERO',
+  NEGATIVE = 'NEGATIVE',
+  INVALID = 'INVALID'
+}
+
+export enum NormalizationPolicy {
+  MAX_COMPONENT = 'MAX_COMPONENT',
+  EUCLIDEAN = 'EUCLIDEAN'
+}
+
+export interface BucklingEigenPair {
+  modeId: number;
+  eigenvalue: number;       // lambda
+  loadFactor: number;       // lambda_cr
+  criticalLoad: number;     // F_cr = lambda_cr * F_ref
+  eigenvector: number[];    // phi
+  residual: number;
+  rayleighQuotient: number;
+  classification: ModeClassification;
+}
+
+export enum BucklingVerdict {
+  CONVERGED = 'CONVERGED',
+  NOT_CONVERGED = 'NOT_CONVERGED',
+  VERIFIED = 'VERIFIED',
+  PREBUCKLING_EQUILIBRIUM_FAILURE = 'PREBUCKLING_EQUILIBRIUM_FAILURE',
+  BUCKLING_RESIDUAL_FAILURE = 'BUCKLING_RESIDUAL_FAILURE',
+  NEGATIVE_EIGENVALUE = 'NEGATIVE_EIGENVALUE',
+  ZERO_MODE = 'ZERO_MODE',
+  MECHANISM_DETECTED = 'MECHANISM_DETECTED',
+  INVALID_EIGENPAIR = 'INVALID_EIGENPAIR',
+  SINGULAR_SYSTEM = 'SINGULAR_SYSTEM',
+  INVALID_LOAD = 'INVALID_LOAD',
+  INVALID_MATERIAL = 'INVALID_MATERIAL',
+  MESH_CONVERGENCE_FAILURE = 'MESH_CONVERGENCE_FAILURE',
+  REFERENCE_VALIDATION_FAILURE = 'REFERENCE_VALIDATION_FAILURE',
+  NUMERICAL_FAILURE = 'NUMERICAL_FAILURE'
+}

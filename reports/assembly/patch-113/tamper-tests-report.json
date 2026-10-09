@@ -1,0 +1,13 @@
+{
+  "reportType": "TAMPER_DETECTION_TESTS",
+  "testsExecuted": [
+    {
+      "testId": "ADV-113-07",
+      "name": "Geometric Mutation Tamper Detection",
+      "attackVector": "Mutate component transform and ensure hash differs deterministically",
+      "actualResult": "Hash changed (ceefe9a8 vs 95d22c0e)",
+      "passed": true
+    }
+  ],
+  "tamperProofVerdict": "VERIFIED"
+}

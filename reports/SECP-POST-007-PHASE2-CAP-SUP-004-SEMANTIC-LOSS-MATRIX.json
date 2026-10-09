@@ -1,0 +1,93 @@
+{
+  "contract_id": "SECP-POST-007-PHASE2-CAP-SUP-004-SEMANTIC-LOSS-MATRIX",
+  "capability": "CAP-SUP-004",
+  "capability_title": "QIF 3.0 / MBD Closed-Loop Manufacturing Truth",
+  "timestamp": "2026-09-23T10:18:00.000Z",
+  "matrix": [
+    {
+      "dimension": "geometry",
+      "status": "PRESERVED",
+      "details": "Persistent topology IDs (vertices, edges, faces, cylinders, planes) mapped directly to QIF Features."
+    },
+    {
+      "dimension": "topology",
+      "status": "PRESERVED",
+      "details": "Topology persistent UUIDs preserved across QIF Feature representations."
+    },
+    {
+      "dimension": "PMI",
+      "status": "PRESERVED",
+      "details": "Linear, angular, and diametral dimensions mapped to QIF Characteristics with nominals and limits."
+    },
+    {
+      "dimension": "GD_AND_T",
+      "status": "PRESERVED",
+      "details": "Position, Flatness, Perpendicularity, Concentricity mapped with material conditions and datum reference frames."
+    },
+    {
+      "dimension": "tolerance",
+      "status": "PRESERVED",
+      "details": "Symmetric, bilateral, and limit tolerances mapped with upper/lower deviations."
+    },
+    {
+      "dimension": "datum",
+      "status": "PRESERVED",
+      "details": "Datums A, B, C with primary, secondary, tertiary precedence and target geometry references preserved."
+    },
+    {
+      "dimension": "units",
+      "status": "PRESERVED",
+      "details": "Millimeter, Meter, and Inch units normalized with explicit scale factors."
+    },
+    {
+      "dimension": "identity",
+      "status": "PRESERVED",
+      "details": "Deterministic persistent IDs used for all features, characteristics, and results."
+    },
+    {
+      "dimension": "revision",
+      "status": "PRESERVED",
+      "details": "Design revision IDs (REV-A, REV-B) explicitly bound to measurement contexts."
+    },
+    {
+      "dimension": "inspection_plan",
+      "status": "PRESERVED",
+      "details": "Complete QIF InspectionPlan generated from MBD specifications."
+    },
+    {
+      "dimension": "measurement",
+      "status": "PRESERVED",
+      "details": "CMM touch trigger / digital micrometer actual values, deviations, and timestamps recorded."
+    },
+    {
+      "dimension": "uncertainty",
+      "status": "PRESERVED",
+      "details": "Expanded uncertainty U = k * sqrt(u_inst^2 + u_env^2 + u_rep^2) explicitly calculated and applied."
+    },
+    {
+      "dimension": "instrument",
+      "status": "PRESERVED",
+      "details": "Instrument type, resolution, inherent uncertainty, and calibration standards recorded."
+    },
+    {
+      "dimension": "calibration",
+      "status": "PRESERVED",
+      "details": "Calibration records with expiration dates strictly validated."
+    },
+    {
+      "dimension": "provenance",
+      "status": "PRESERVED",
+      "details": "Cryptographic evidence hashes bound to every measurement result and feedback proposal."
+    },
+    {
+      "dimension": "verdict",
+      "status": "PRESERVED",
+      "details": "Guard-banded PASS, FAIL, INDETERMINATE, CALIBRATION_EXPIRED, and DESIGN_AUTHORITY_UNRESOLVED verdicts computed."
+    },
+    {
+      "dimension": "feedback",
+      "status": "PRESERVED",
+      "details": "Engineering revision proposals (REV-A -> REV-B) generated without direct CAD state mutation."
+    }
+  ]
+}

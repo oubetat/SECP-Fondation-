@@ -1,0 +1,32 @@
+[
+  {
+    "element": "BAR2",
+    "dofs": 2,
+    "isSymmetric": true,
+    "matrixHash": "BAR2_2x2_1.500000_200000000000_0.01"
+  },
+  {
+    "element": "TRI3",
+    "dofs": 6,
+    "isSymmetric": true,
+    "matrixHash": "TRI3_6x6_A0.500000_E200000000000_NU0.3"
+  },
+  {
+    "element": "QUAD4",
+    "dofs": 8,
+    "isSymmetric": true,
+    "matrixHash": "QUAD4_8x8_200000000000_0.3_4GP"
+  },
+  {
+    "element": "TET4",
+    "dofs": 12,
+    "isSymmetric": true,
+    "matrixHash": "TET4_12x12_V0.166667_E200000000000_NU0.3"
+  },
+  {
+    "element": "HEX8",
+    "dofs": 24,
+    "isSymmetric": true,
+    "matrixHash": "HEX8_24x24_E200000000000_NU0.3_8GP"
+  }
+]

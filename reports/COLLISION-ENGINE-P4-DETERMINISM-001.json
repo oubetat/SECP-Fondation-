@@ -1,0 +1,6 @@
+{
+  "reportId": "COLLISION-ENGINE-P4-DETERMINISM-001",
+  "repeatedRunsExactMatch": true,
+  "toiDeterminismVerified": true,
+  "verdict": "PASSED"
+}

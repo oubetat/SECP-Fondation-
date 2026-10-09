@@ -1,0 +1,24 @@
+{
+  "contractId": "P0-CAPABILITY-CONTRACT-001",
+  "name": "P0 Collision Capability Declaration Schema",
+  "version": "1.0.0",
+  "fields": {
+    "providerId": "Unique String Identifier",
+    "providerName": "Human-readable Name",
+    "algorithmVersion": "Semver String",
+    "exactnessLevel": "Enum (EXACT | CONSERVATIVE | APPROXIMATE | SAMPLED | UNSUPPORTED)",
+    "limitations": "Array<String> (Mandatory explicit limitation list)",
+    "featureFlags": [
+      "supportsStaticCollision",
+      "supportsContinuousCollision",
+      "supportsMeshMesh",
+      "supportsToolStock",
+      "supportsToolFixture",
+      "supportsHolderCollision",
+      "supportsMachineCollision",
+      "supportsBRep",
+      "supportsGouge",
+      "supportsClearance"
+    ]
+  }
+}

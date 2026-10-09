@@ -1,0 +1,35 @@
+{
+  "verdict": "PASS",
+  "checks": [
+    {
+      "id": "PROVENANCE_RECORD_VALID_FLOW",
+      "passed": true,
+      "details": "High-quality Ti-6Al-4V provenance record successfully certified and passed independent auditor"
+    },
+    {
+      "id": "PROVENANCE_GRAPH_CYCLE_REJECTION",
+      "passed": true,
+      "details": "Properly rejected and flagged a cyclic loop in the material genealogy chain"
+    },
+    {
+      "id": "PROVENANCE_IDENTITY_CONFLICT_DETECTION",
+      "passed": true,
+      "details": "Correctly caught and flagged identity conflict with mismatched heat numbers"
+    },
+    {
+      "id": "PROVENANCE_CERTIFICATE_CONFLICT_DETECTION",
+      "passed": true,
+      "details": "Correctly flagged conflict between certificate record and physical material batch reference"
+    },
+    {
+      "id": "PROPERTY_VALIDITY_DOMAIN_OUTSIDE",
+      "passed": true,
+      "details": "Successfully detected high thermal loading condition (400°C) as OUTSIDE_VALIDITY_DOMAIN"
+    },
+    {
+      "id": "LOT_SPLIT_LINEAGE_VALID",
+      "passed": true,
+      "details": "Accurately generated split nodes and child genealogy lineages for split stock plates"
+    }
+  ]
+}

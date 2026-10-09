@@ -1,0 +1,28 @@
+{
+  "reportId": "COLLISION-ENGINE-P4-ADVERSARIAL-001",
+  "totalMutations": 20,
+  "executedMutations": [
+    "M01_remove_continuous_provider",
+    "M02_provider_throws",
+    "M03_provider_returns_null",
+    "M04_toi_becomes_nan",
+    "M05_toi_outside_range",
+    "M06_invalid_quaternion",
+    "M07_missing_rotation",
+    "M08_missing_translation",
+    "M09_missing_motion_interval",
+    "M10_zero_duration_interval",
+    "M11_discrete_fallback_injected",
+    "M12_sampling_count_reduced",
+    "M13_swept_replaced_with_centerline",
+    "M14_canonical_geometry_detached",
+    "M15_stale_geometry_injected",
+    "M16_wrong_transform_revision",
+    "M17_timeout",
+    "M18_numerical_ambiguity",
+    "M19_failure_converted_to_no_collision",
+    "M20_provenSafe_forced_true"
+  ],
+  "provenSafeForgedCount": 0,
+  "verdict": "PASSED"
+}

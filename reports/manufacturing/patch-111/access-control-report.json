@@ -1,0 +1,10 @@
+{
+  "rbacEnabled": true,
+  "permissions": [
+    "READ_PROVENANCE",
+    "CREATE_PROVENANCE",
+    "APPROVE_ARTIFACT",
+    "VERIFY_PROVENANCE",
+    "ADMINISTER_POLICY"
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "timestamp": "2026-09-23T07:33:50.935Z",
+  "missionId": "SECP-POST-FORENSIC-002",
+  "missionTitle": "REAL GAP CLOSURE & ENGINEERING READINESS MISSION",
+  "baselineVerification": {
+    "censusJsonExpectedSha256": "e58e4c4b6085a87cbd67567cd5a222799aaa64e8dc6e70517094dedcafad51d4",
+    "censusJsonActualSha256": "e58e4c4b6085a87cbd67567cd5a222799aaa64e8dc6e70517094dedcafad51d4",
+    "censusMdExpectedSha256": "69f27c657c544c0cc289d68c43e9018922e7b7d84ea8655760be174e21a477dd",
+    "censusMdActualSha256": "69f27c657c544c0cc289d68c43e9018922e7b7d84ea8655760be174e21a477dd",
+    "baselineIntegrityStatus": "VERIFIED_MATCH"
+  },
+  "scope": {
+    "totalSourceFiles": 4377,
+    "categoryCFullClosureCount": 2,
+    "categoryBScoredCount": 208,
+    "categoryDScoredCount": 483
+  },
+  "verdicts": {
+    "explicitStubs": {
+      "open": 0,
+      "closed": 2
+    },
+    "realPartials": {
+      "closedProven": 0,
+      "provenPartial": 208,
+      "requiredGap": 0,
+      "notProven": 0
+    },
+    "adapters": {
+      "LEGITIMATE_INFRASTRUCTURE": 21,
+      "PRODUCTION_ADAPTER": 462,
+      "REQUIRED_IMPLEMENTATION": 0,
+      "LEGACY_TO_REMOVE": 0,
+      "DEAD_CODE": 0,
+      "NOT_PROVEN": 0
+    },
+    "uiBackendTruth": {
+      "proven": 16,
+      "gaps": 0
+    },
+    "femReadiness": {
+      "provenCapabilities": 26,
+      "requiredGaps": 0
+    },
+    "cfdReadiness": {
+      "physicalValidation": "NOT_PROVEN",
+      "naca0012Convergence": "NOT_PROVEN",
+      "evidencePipeline": "PROVEN"
+    },
+    "overallReadiness": "CLOSURE_MATRIX_ESTABLISHED"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "contract": {
+    "evidenceId": "EV_NC_01",
+    "evidenceType": "NC_PROGRAM_EVIDENCE",
+    "evidenceVersion": "1.0",
+    "sourceArtifactId": "NC_BLADE_01",
+    "sourceRevision": "1.0",
+    "eventId": "EVT_NC",
+    "eventType": "PROGRAM_VERIFIED",
+    "eventTimestamp": 1700000500000,
+    "recordedTimestamp": 1700000500000,
+    "producerId": "GCODE_VERIFIER_108",
+    "producerType": "VERIFIER",
+    "contentHash": "e8becdb02e5068f4bf6706d609c4337888c75728b10de77e7fc2f267cfad26e9",
+    "canonicalHash": "032b8d8546579178daeaafc6e5b2dbc5bd95f95a343f2f4544cf29279286c4c9",
+    "previousEvidenceHash": "468e55ff210e457e33690192b0281c2984e2864095b131082d1969c7b8b90f30",
+    "chainSequence": 6,
+    "signature": "54f45621b096ec817f580e6ca33da75c4d42842cd085f98a96b54472e0114bd2",
+    "signingIdentity": "KEY_GCODE_VERIFIER_01",
+    "verificationStatus": "COMPLETE",
+    "recordingMode": "ORIGINAL"
+  },
+  "sourceIdentity": {
+    "sourceType": "VERIFIER",
+    "sourceId": "GCODE_VERIFIER_108",
+    "sourceRevision": "1.0",
+    "sourceFingerprint": "FNG_NC_01"
+  },
+  "eventIdentity": {
+    "eventId": "EVT_NC",
+    "eventType": "PROGRAM_VERIFIED",
+    "eventSequence": 6,
+    "eventTimestamp": 1700000500000,
+    "sourceTimestamp": 1700000500000,
+    "recordedTimestamp": 1700000500000
+  },
+  "payload": {
+    "programHash": "HASH_NC_BLADE_01",
+    "programId": "NC_BLADE_01",
+    "verdict": "VERIFIED"
+  },
+  "context": {},
+  "attestations": []
+}

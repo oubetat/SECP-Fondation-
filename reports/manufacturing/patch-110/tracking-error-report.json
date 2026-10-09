@@ -1,0 +1,37 @@
+{
+  "X": {
+    "axisName": "X",
+    "currentError": 0.00048744114187115883,
+    "maxError": 0.0019723530970239267,
+    "rmsError": 0.0012313270410117658,
+    "sampleCount": 5
+  },
+  "Y": {
+    "axisName": "Y",
+    "currentError": 0.0006323169693231989,
+    "maxError": 0.0016716185777561066,
+    "rmsError": 0.001106394215007595,
+    "sampleCount": 5
+  },
+  "Z": {
+    "axisName": "Z",
+    "currentError": -0.0018843096790170932,
+    "maxError": 0.0018843096790170932,
+    "rmsError": 0.0014263125013985619,
+    "sampleCount": 5
+  },
+  "A": {
+    "axisName": "A",
+    "currentError": -0.000511576040107542,
+    "maxError": 0.0009844063735506836,
+    "rmsError": 0.0006358344715290256,
+    "sampleCount": 5
+  },
+  "C": {
+    "axisName": "C",
+    "currentError": -0.0006632559122721204,
+    "maxError": 0.0009331191679358142,
+    "rmsError": 0.0005830662915434741,
+    "sampleCount": 5
+  }
+}

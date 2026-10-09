@@ -1,0 +1,467 @@
+[
+  {
+    "id": "EVENT-b76137bd-40db-414c-9638-73d64bdd9673",
+    "eventType": "WORKFLOW_STARTED",
+    "timestamp": "2026-08-22T07:02:19.244Z",
+    "sequence": 315,
+    "actor": {
+      "type": "SYSTEM",
+      "id": "workflow-engine"
+    },
+    "source": {
+      "service": "workflow-engine",
+      "component": "orchestrator",
+      "version": "1.0"
+    },
+    "objectRefs": [
+      "workflow:engineering.truth"
+    ],
+    "payload": {
+      "executionId": "EXEC-2982d5fc-9bbb-446b-a4d4-b53b4f73a9df",
+      "correlationId": "CORR-d73df3c8-783a-4a21-b32b-e1c8c719c89d",
+      "workflowId": "workflow:engineering.truth",
+      "timestamp": "2026-08-22T07:02:19.244Z"
+    },
+    "correlationId": "EXEC-2982d5fc-9bbb-446b-a4d4-b53b4f73a9df",
+    "schemaVersion": "1.0",
+    "provenance": {
+      "signature": "5275b8a0073259f9eae6c0fb7bcb7df817b883e1d3ac84707fa420df940f3f11",
+      "payloadHash": "130480bfa6c4eb9ea27e674664acfa0a91e00226faf81ad8ca9be59a30e68512",
+      "previousEventHash": "6a671b974918b73f25fc677c65a8d08375039b16206d5e8eef0a2db7b5c5f06b"
+    }
+  },
+  {
+    "id": "EVENT-8591fa5d-f765-413d-a213-97681d52fa26",
+    "eventType": "TASK_STARTED",
+    "timestamp": "2026-08-22T07:02:19.251Z",
+    "sequence": 317,
+    "actor": {
+      "type": "SYSTEM",
+      "id": "workflow-engine"
+    },
+    "source": {
+      "service": "workflow-engine",
+      "component": "orchestrator",
+      "version": "1.0"
+    },
+    "objectRefs": [
+      "workflow:engineering.truth"
+    ],
+    "payload": {
+      "executionId": "EXEC-2982d5fc-9bbb-446b-a4d4-b53b4f73a9df",
+      "taskId": "task:cad",
+      "attempt": 1,
+      "workflowId": "workflow:engineering.truth",
+      "timestamp": "2026-08-22T07:02:19.251Z"
+    },
+    "correlationId": "EXEC-2982d5fc-9bbb-446b-a4d4-b53b4f73a9df",
+    "schemaVersion": "1.0",
+    "provenance": {
+      "signature": "a9040115279b65096df119bdb3c7971a6c06edfd5218b4f33a2a72a1bba6054b",
+      "payloadHash": "bc028726ea04957f39295f075dd65eb23d055d84c495fe0322c2cf6aa48c7ace",
+      "previousEventHash": "2643a23d64a4c644a013f4d4e751b354937cf21587fb07adde31478be3779f2a"
+    }
+  },
+  {
+    "id": "EVENT-c5061df8-1181-4d61-9f02-58053a4dcfc8",
+    "eventType": "TASK_COMPLETED",
+    "timestamp": "2026-08-22T07:02:19.255Z",
+    "sequence": 318,
+    "actor": {
+      "type": "SYSTEM",
+      "id": "workflow-engine"
+    },
+    "source": {
+      "service": "workflow-engine",
+      "component": "orchestrator",
+      "version": "1.0"
+    },
+    "objectRefs": [
+      "workflow:engineering.truth"
+    ],
+    "payload": {
+      "executionId": "EXEC-2982d5fc-9bbb-446b-a4d4-b53b4f73a9df",
+      "taskId": "task:cad",
+      "attempt": 1,
+      "output": {
+        "validated": true
+      },
+      "workflowId": "workflow:engineering.truth",
+      "timestamp": "2026-08-22T07:02:19.255Z"
+    },
+    "correlationId": "EXEC-2982d5fc-9bbb-446b-a4d4-b53b4f73a9df",
+    "schemaVersion": "1.0",
+    "provenance": {
+      "signature": "32566e5721a3069440cd7b291a6fe89e7dc78dfaa1d61d933291a149d50b5ab5",
+      "payloadHash": "f3a907f2ad8f2261de2d882a4b079f42ed246298ca7464242f38f399d7307038",
+      "previousEventHash": "bc028726ea04957f39295f075dd65eb23d055d84c495fe0322c2cf6aa48c7ace"
+    }
+  },
+  {
+    "id": "EVENT-c5b09149-994b-4653-8b0f-eeb08aeae3c3",
+    "eventType": "TASK_STARTED",
+    "timestamp": "2026-08-22T07:02:19.266Z",
+    "sequence": 321,
+    "actor": {
+      "type": "SYSTEM",
+      "id": "workflow-engine"
+    },
+    "source": {
+      "service": "workflow-engine",
+      "component": "orchestrator",
+      "version": "1.0"
+    },
+    "objectRefs": [
+      "workflow:engineering.truth"
+    ],
+    "payload": {
+      "executionId": "EXEC-2982d5fc-9bbb-446b-a4d4-b53b4f73a9df",
+      "taskId": "task:mesh",
+      "attempt": 1,
+      "workflowId": "workflow:engineering.truth",
+      "timestamp": "2026-08-22T07:02:19.266Z"
+    },
+    "correlationId": "EXEC-2982d5fc-9bbb-446b-a4d4-b53b4f73a9df",
+    "schemaVersion": "1.0",
+    "provenance": {
+      "signature": "f09b3d497e3e275aa945f542b657a1451273e7970de6bf24de478d480ab056d6",
+      "payloadHash": "3e0e72441e5f11e488b8dfec965c5afb4829dca05208d1b886f862ec9a44328a",
+      "previousEventHash": "aa16f6cc774beee1cbfd8760749cdf99ca30f825817e0b0581d2301af8cf8691"
+    }
+  },
+  {
+    "id": "EVENT-37fa9d8b-dce0-41f5-89f4-42daed4924b6",
+    "eventType": "TASK_COMPLETED",
+    "timestamp": "2026-08-22T07:02:19.269Z",
+    "sequence": 322,
+    "actor": {
+      "type": "SYSTEM",
+      "id": "workflow-engine"
+    },
+    "source": {
+      "service": "workflow-engine",
+      "component": "orchestrator",
+      "version": "1.0"
+    },
+    "objectRefs": [
+      "workflow:engineering.truth"
+    ],
+    "payload": {
+      "executionId": "EXEC-2982d5fc-9bbb-446b-a4d4-b53b4f73a9df",
+      "taskId": "task:mesh",
+      "attempt": 1,
+      "output": {
+        "elements": 1200000
+      },
+      "workflowId": "workflow:engineering.truth",
+      "timestamp": "2026-08-22T07:02:19.269Z"
+    },
+    "correlationId": "EXEC-2982d5fc-9bbb-446b-a4d4-b53b4f73a9df",
+    "schemaVersion": "1.0",
+    "provenance": {
+      "signature": "3db2ab1a2b41dc39980d9e3db93d97468f85b57cb7760b2a9f1ac846b460583c",
+      "payloadHash": "8c5addd098be46aa897e767ca879b781ab554b0437a0b31580d2367cfb9499f3",
+      "previousEventHash": "3e0e72441e5f11e488b8dfec965c5afb4829dca05208d1b886f862ec9a44328a"
+    }
+  },
+  {
+    "id": "EVENT-853e9b31-398f-408f-bc38-70338232149e",
+    "eventType": "TASK_STARTED",
+    "timestamp": "2026-08-22T07:02:19.277Z",
+    "sequence": 325,
+    "actor": {
+      "type": "SYSTEM",
+      "id": "workflow-engine"
+    },
+    "source": {
+      "service": "workflow-engine",
+      "component": "orchestrator",
+      "version": "1.0"
+    },
+    "objectRefs": [
+      "workflow:engineering.truth"
+    ],
+    "payload": {
+      "executionId": "EXEC-2982d5fc-9bbb-446b-a4d4-b53b4f73a9df",
+      "taskId": "task:cfd",
+      "attempt": 1,
+      "workflowId": "workflow:engineering.truth",
+      "timestamp": "2026-08-22T07:02:19.277Z"
+    },
+    "correlationId": "EXEC-2982d5fc-9bbb-446b-a4d4-b53b4f73a9df",
+    "schemaVersion": "1.0",
+    "provenance": {
+      "signature": "c43c888741755521d09e096b802cc40744e7a366790f22d84e0f3b5133dccacf",
+      "payloadHash": "071ded1f4b2e892d6b6290c1b16adb1c34efcd2e8e3934e0bf75e73633259e01",
+      "previousEventHash": "c2b0fde876485b1e09ad91407956341bd734cf9dba55543f658f9d0b58e4c474"
+    }
+  },
+  {
+    "id": "EVENT-d52c4b34-d327-4da6-98af-dc696bb99acb",
+    "eventType": "TASK_COMPLETED",
+    "timestamp": "2026-08-22T07:02:19.280Z",
+    "sequence": 326,
+    "actor": {
+      "type": "SYSTEM",
+      "id": "workflow-engine"
+    },
+    "source": {
+      "service": "workflow-engine",
+      "component": "orchestrator",
+      "version": "1.0"
+    },
+    "objectRefs": [
+      "workflow:engineering.truth"
+    ],
+    "payload": {
+      "executionId": "EXEC-2982d5fc-9bbb-446b-a4d4-b53b4f73a9df",
+      "taskId": "task:cfd",
+      "attempt": 1,
+      "output": {
+        "converged": true,
+        "iterations": 150
+      },
+      "workflowId": "workflow:engineering.truth",
+      "timestamp": "2026-08-22T07:02:19.280Z"
+    },
+    "correlationId": "EXEC-2982d5fc-9bbb-446b-a4d4-b53b4f73a9df",
+    "schemaVersion": "1.0",
+    "provenance": {
+      "signature": "e1e3e57099a30c8b198e6dfd024c6b936aaca2317e2ed0f8c3e147d78c694268",
+      "payloadHash": "e1b287f9625696c7348203864561975d003e6971a43d9547b81931093cd6d391",
+      "previousEventHash": "071ded1f4b2e892d6b6290c1b16adb1c34efcd2e8e3934e0bf75e73633259e01"
+    }
+  },
+  {
+    "id": "EVENT-b9ec8afe-4ea6-4599-9594-27ad8d12f59f",
+    "eventType": "TASK_STARTED",
+    "timestamp": "2026-08-22T07:02:19.288Z",
+    "sequence": 329,
+    "actor": {
+      "type": "SYSTEM",
+      "id": "workflow-engine"
+    },
+    "source": {
+      "service": "workflow-engine",
+      "component": "orchestrator",
+      "version": "1.0"
+    },
+    "objectRefs": [
+      "workflow:engineering.truth"
+    ],
+    "payload": {
+      "executionId": "EXEC-2982d5fc-9bbb-446b-a4d4-b53b4f73a9df",
+      "taskId": "task:cons",
+      "attempt": 1,
+      "workflowId": "workflow:engineering.truth",
+      "timestamp": "2026-08-22T07:02:19.288Z"
+    },
+    "correlationId": "EXEC-2982d5fc-9bbb-446b-a4d4-b53b4f73a9df",
+    "schemaVersion": "1.0",
+    "provenance": {
+      "signature": "23f690788aadc7d200e26baf0fe10d574159cb68302f827349de00253e47382f",
+      "payloadHash": "91c45227735dde4e17371a7ba3bac7b4f990fb0670c41557bcb48062e6433832",
+      "previousEventHash": "11d19beff7a91aa52758885d9a9dc9b2a33293b0ef1d13fb16b4f91076414e05"
+    }
+  },
+  {
+    "id": "EVENT-c116f3a2-de2c-4f3e-94d4-13e173f44142",
+    "eventType": "TASK_STARTED",
+    "timestamp": "2026-08-22T07:02:19.291Z",
+    "sequence": 330,
+    "actor": {
+      "type": "SYSTEM",
+      "id": "workflow-engine"
+    },
+    "source": {
+      "service": "workflow-engine",
+      "component": "orchestrator",
+      "version": "1.0"
+    },
+    "objectRefs": [
+      "workflow:engineering.truth"
+    ],
+    "payload": {
+      "executionId": "EXEC-2982d5fc-9bbb-446b-a4d4-b53b4f73a9df",
+      "taskId": "task:conv",
+      "attempt": 1,
+      "workflowId": "workflow:engineering.truth",
+      "timestamp": "2026-08-22T07:02:19.291Z"
+    },
+    "correlationId": "EXEC-2982d5fc-9bbb-446b-a4d4-b53b4f73a9df",
+    "schemaVersion": "1.0",
+    "provenance": {
+      "signature": "ee55576164a73bca8f006b18d8e2b7aaa73e3ab69eccf59d4e08cd92ac4f5431",
+      "payloadHash": "5baa71bd7176c6c15ae6d5dd7dbf3fef02f6904ae8ff6f2285f2cffc286f66a8",
+      "previousEventHash": "91c45227735dde4e17371a7ba3bac7b4f990fb0670c41557bcb48062e6433832"
+    }
+  },
+  {
+    "id": "EVENT-a26c8d39-5ae0-45bc-99db-36ec811f57b7",
+    "eventType": "TASK_COMPLETED",
+    "timestamp": "2026-08-22T07:02:19.294Z",
+    "sequence": 331,
+    "actor": {
+      "type": "SYSTEM",
+      "id": "workflow-engine"
+    },
+    "source": {
+      "service": "workflow-engine",
+      "component": "orchestrator",
+      "version": "1.0"
+    },
+    "objectRefs": [
+      "workflow:engineering.truth"
+    ],
+    "payload": {
+      "executionId": "EXEC-2982d5fc-9bbb-446b-a4d4-b53b4f73a9df",
+      "taskId": "task:cons",
+      "attempt": 1,
+      "output": {
+        "massBalancePreserved": true
+      },
+      "workflowId": "workflow:engineering.truth",
+      "timestamp": "2026-08-22T07:02:19.294Z"
+    },
+    "correlationId": "EXEC-2982d5fc-9bbb-446b-a4d4-b53b4f73a9df",
+    "schemaVersion": "1.0",
+    "provenance": {
+      "signature": "dbeb966a470927eed1aba03a7911bf54c1a4f0a654f6488afaaed88c270fec9c",
+      "payloadHash": "25e23cbb7eccd9588ce2fb38f0e92c7280b41440ba835c76ff1733e1a3b9bff4",
+      "previousEventHash": "5baa71bd7176c6c15ae6d5dd7dbf3fef02f6904ae8ff6f2285f2cffc286f66a8"
+    }
+  },
+  {
+    "id": "EVENT-6ff99e3e-b4a5-4f1a-9af3-b639c47dda98",
+    "eventType": "TASK_COMPLETED",
+    "timestamp": "2026-08-22T07:02:19.300Z",
+    "sequence": 333,
+    "actor": {
+      "type": "SYSTEM",
+      "id": "workflow-engine"
+    },
+    "source": {
+      "service": "workflow-engine",
+      "component": "orchestrator",
+      "version": "1.0"
+    },
+    "objectRefs": [
+      "workflow:engineering.truth"
+    ],
+    "payload": {
+      "executionId": "EXEC-2982d5fc-9bbb-446b-a4d4-b53b4f73a9df",
+      "taskId": "task:conv",
+      "attempt": 1,
+      "output": {
+        "convergencePassed": true
+      },
+      "workflowId": "workflow:engineering.truth",
+      "timestamp": "2026-08-22T07:02:19.300Z"
+    },
+    "correlationId": "EXEC-2982d5fc-9bbb-446b-a4d4-b53b4f73a9df",
+    "schemaVersion": "1.0",
+    "provenance": {
+      "signature": "57126f238fc5f89cbc84e9d0faffe28ff9d88b9e63faf141bf2823c6fdaf985d",
+      "payloadHash": "d9b37a9e673c9f352a63f6d56726b79ccf8ffce951f16c0d775a4db70571194b",
+      "previousEventHash": "630d33bbdd7abd2732f69b1e976836f8ff969ea0842b2c89417a4851d410fb6e"
+    }
+  },
+  {
+    "id": "EVENT-ec560fc2-e17c-40fe-aa1a-774f510647a3",
+    "eventType": "TASK_STARTED",
+    "timestamp": "2026-08-22T07:02:19.305Z",
+    "sequence": 335,
+    "actor": {
+      "type": "SYSTEM",
+      "id": "workflow-engine"
+    },
+    "source": {
+      "service": "workflow-engine",
+      "component": "orchestrator",
+      "version": "1.0"
+    },
+    "objectRefs": [
+      "workflow:engineering.truth"
+    ],
+    "payload": {
+      "executionId": "EXEC-2982d5fc-9bbb-446b-a4d4-b53b4f73a9df",
+      "taskId": "task:ev",
+      "attempt": 1,
+      "workflowId": "workflow:engineering.truth",
+      "timestamp": "2026-08-22T07:02:19.305Z"
+    },
+    "correlationId": "EXEC-2982d5fc-9bbb-446b-a4d4-b53b4f73a9df",
+    "schemaVersion": "1.0",
+    "provenance": {
+      "signature": "bd6dd301b3091ed7cf287a824aaaac3ea6119de363f0fad86f380676868f61f7",
+      "payloadHash": "c1c77f64ef2a450ab96c8cc3c53ed676a55f102b57fe535c433b92628f8bf338",
+      "previousEventHash": "29ff47dcdfeafef99daf6edac096de0b4d0675ac3333e14050bdda1970771ffd"
+    }
+  },
+  {
+    "id": "EVENT-abe39dc4-0f90-4845-bdae-adcc3de7036c",
+    "eventType": "TASK_COMPLETED",
+    "timestamp": "2026-08-22T07:02:19.308Z",
+    "sequence": 336,
+    "actor": {
+      "type": "SYSTEM",
+      "id": "workflow-engine"
+    },
+    "source": {
+      "service": "workflow-engine",
+      "component": "orchestrator",
+      "version": "1.0"
+    },
+    "objectRefs": [
+      "workflow:engineering.truth"
+    ],
+    "payload": {
+      "executionId": "EXEC-2982d5fc-9bbb-446b-a4d4-b53b4f73a9df",
+      "taskId": "task:ev",
+      "attempt": 1,
+      "output": {
+        "signedEvidenceHash": "sha256-signed-evidence-hash"
+      },
+      "workflowId": "workflow:engineering.truth",
+      "timestamp": "2026-08-22T07:02:19.308Z"
+    },
+    "correlationId": "EXEC-2982d5fc-9bbb-446b-a4d4-b53b4f73a9df",
+    "schemaVersion": "1.0",
+    "provenance": {
+      "signature": "545c33cc7fc9c784f918f0770619af5e6de18f4a22ac872bbcba83b68119db47",
+      "payloadHash": "60068d0c94f441b9cc642700e9578113b5c8221f0f20fc38da71b59934f440c6",
+      "previousEventHash": "c1c77f64ef2a450ab96c8cc3c53ed676a55f102b57fe535c433b92628f8bf338"
+    }
+  },
+  {
+    "id": "EVENT-ce6b61ea-e2e8-4101-9b00-79756df31e64",
+    "eventType": "WORKFLOW_COMPLETED",
+    "timestamp": "2026-08-22T07:02:19.314Z",
+    "sequence": 338,
+    "actor": {
+      "type": "SYSTEM",
+      "id": "workflow-engine"
+    },
+    "source": {
+      "service": "workflow-engine",
+      "component": "orchestrator",
+      "version": "1.0"
+    },
+    "objectRefs": [
+      "workflow:engineering.truth"
+    ],
+    "payload": {
+      "executionId": "EXEC-2982d5fc-9bbb-446b-a4d4-b53b4f73a9df",
+      "verdict": "PASS",
+      "workflowId": "workflow:engineering.truth",
+      "timestamp": "2026-08-22T07:02:19.314Z"
+    },
+    "correlationId": "EXEC-2982d5fc-9bbb-446b-a4d4-b53b4f73a9df",
+    "schemaVersion": "1.0",
+    "provenance": {
+      "signature": "bfcdedb2cc0e88fad058b5f92dd88cca6dc2863191f3f08a579c399523f35450",
+      "payloadHash": "87acaeddd1d26910cc266296d4b16090c437e5839c5f0b2e5471dd89a6f36f74",
+      "previousEventHash": "90cd6e9312eda11b866355602cd8225df4a53c61f9a91b5300e63d964d294e27"
+    }
+  }
+]

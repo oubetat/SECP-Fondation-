@@ -1,0 +1,49 @@
+{
+  "revisionImpactProof": {
+    "project": "ASEB-01-XA100",
+    "systemId": "SYS-XA100-EXP",
+    "baselineRevision": {
+      "revisionId": "REV-ACTUATOR-R1",
+      "revisionCode": "REV-R1",
+      "entityId": "COMM-SYS-XA100",
+      "lifecycleState": "RELEASED",
+      "boundExecutions": [
+        {
+          "executionId": "EXEC-ACTUATOR-001",
+          "initialStatus": "VERIFIED"
+        }
+      ]
+    },
+    "mutatedRevision": {
+      "revisionId": "REV-ACTUATOR-R2",
+      "revisionCode": "REV-R2",
+      "parentRevisionId": "REV-ACTUATOR-R1",
+      "entityId": "COMM-SYS-XA100",
+      "lifecycleState": "RELEASED",
+      "diff": {
+        "torqueNm": {
+          "oldValue": 120,
+          "newValue": 180
+        }
+      }
+    },
+    "impactAnalysis": {
+      "analyzer": "RevisionImpactAnalyzer / CommunicationRegistry",
+      "directImpactsCount": 1,
+      "downstreamImpactsCount": 1,
+      "invalidatedExecutions": [
+        {
+          "executionId": "EXEC-ACTUATOR-001",
+          "previousStatus": "VERIFIED",
+          "newStatus": "INVALIDATED",
+          "reason": "Canonical revision mutation REV-R1 -> REV-R2"
+        }
+      ]
+    },
+    "persistenceProof": {
+      "postDestroyReconstructionStatus": "INVALIDATED",
+      "staleCacheDetected": false,
+      "truthInvariance": "VERIFIED_ACCURATE"
+    }
+  }
+}

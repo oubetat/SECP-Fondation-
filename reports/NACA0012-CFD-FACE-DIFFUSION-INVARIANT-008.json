@@ -1,0 +1,21 @@
+{
+  "missionId": "NACA0012-VV-STRICT-CAUSAL-CLOSURE-008",
+  "timestamp": "2026-09-30T10:07:41.834Z",
+  "formulationComparison": {
+    "arithmeticAveraging": {
+      "formula": "effMu_f = 0.5 * (effMu_owner + effMu_neighbor)",
+      "faceUniquenessInvariant": "SATISFIED (D_owner(f) === D_neighbor(f) to machine precision 0.0)",
+      "fluxConservationStatus": "CONSERVATIVE"
+    },
+    "harmonicAveraging": {
+      "formula": "effMu_f = (2 * effMu_owner * effMu_neighbor) / (effMu_owner + effMu_neighbor)",
+      "applicability": "Recommended for discontinuous permeability / sharp material interfaces. For continuous turbulent shear layers, arithmetic mean is standard in collocated FVM."
+    }
+  },
+  "verificationAudit": {
+    "totalInternalFaces": 6320,
+    "facesWithD_ownerEqualsD_neighbor": 6320,
+    "invariantViolationCount": 0,
+    "maximumRelativeDiscrepancy": 0
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "crossDomainIdentity": {
+    "project": "ASEB-01-XA100",
+    "systemId": "SYS-XA100-EXP",
+    "inspectedEntity": "ACTUATOR-001",
+    "canonicalEntityId": "ACTUATOR-001",
+    "revisionId": "REV-R1",
+    "configurationId": "CONF-BASELINE",
+    "domainBindings": {
+      "P5_STRUCTURAL": {
+        "elementId": "ACTUATOR-001",
+        "type": "ComponentInstance",
+        "definitionId": "comp:def:ControlActuator",
+        "bindingState": "CORE_BOUND"
+      },
+      "P6_THERMAL": {
+        "sourceId": "hs:ACTUATOR-001",
+        "canonicalArchitectureId": "ACTUATOR-001",
+        "targetRegionId": "reg:xa100:1",
+        "heatPowerWatts": 75.0,
+        "bindingState": "CORE_BOUND"
+      },
+      "P7_POWER": {
+        "loadId": "load:ACTUATOR-001",
+        "canonicalComponentId": "ACTUATOR-001",
+        "connectedBusId": "bus:pwr:1",
+        "nominalDemandWatts": 250.0,
+        "bindingState": "CORE_BOUND"
+      },
+      "P8_CONTROLS": {
+        "plantId": "plant:ACTUATOR-001",
+        "canonicalArchitectureId": "ACTUATOR-001",
+        "systemId": "CTRL-SYS-1",
+        "bandwidthHz": 25.0,
+        "bindingState": "CORE_BOUND"
+      },
+      "P9_COMMUNICATIONS": {
+        "nodeId": "comm:node:ACTUATOR-001",
+        "p3ComponentId": "ACTUATOR-001",
+        "communicationSystemId": "COMM-SYS-XA100",
+        "bindingState": "CORE_BOUND"
+      }
+    },
+    "identityInvarianceProof": {
+      "canonicalIdMismatchDetected": false,
+      "revisionDriftDetected": false,
+      "configurationDriftDetected": false,
+      "verdict": "STRICT_IDENTITY_INVARIANCE_CONFIRMED"
+    }
+  }
+}

@@ -1,0 +1,121 @@
+[
+  {
+    "transformationId": "TR_CAD_MODEL_01_FEAT_MODEL_01",
+    "input": "CAD_MODEL_01",
+    "output": "FEAT_MODEL_01",
+    "edgeType": "DERIVED_FROM",
+    "timestamp": "2026-08-21T07:47:34.211Z"
+  },
+  {
+    "transformationId": "TR_CAD_MODEL_01_MAT_AL7075_T6",
+    "input": "CAD_MODEL_01",
+    "output": "MAT_AL7075_T6",
+    "edgeType": "USED",
+    "timestamp": "2026-08-21T07:47:34.211Z"
+  },
+  {
+    "transformationId": "TR_CAD_MODEL_01_TOOL_ENDMILL_10MM",
+    "input": "CAD_MODEL_01",
+    "output": "TOOL_ENDMILL_10MM",
+    "edgeType": "USED",
+    "timestamp": "2026-08-21T07:47:34.211Z"
+  },
+  {
+    "transformationId": "TR_CAD_MODEL_01_MACH_DMG_50",
+    "input": "CAD_MODEL_01",
+    "output": "MACH_DMG_50",
+    "edgeType": "USED",
+    "timestamp": "2026-08-21T07:47:34.211Z"
+  },
+  {
+    "transformationId": "TR_FEAT_MODEL_01_OP_AERO_POCKET_01",
+    "input": "FEAT_MODEL_01",
+    "output": "OP_AERO_POCKET_01",
+    "edgeType": "DERIVED_FROM",
+    "timestamp": "2026-08-21T07:47:34.211Z"
+  },
+  {
+    "transformationId": "TR_MAT_AL7075_T6_OP_AERO_POCKET_01",
+    "input": "MAT_AL7075_T6",
+    "output": "OP_AERO_POCKET_01",
+    "edgeType": "DERIVED_FROM",
+    "timestamp": "2026-08-21T07:47:34.211Z"
+  },
+  {
+    "transformationId": "TR_TOOL_ENDMILL_10MM_OP_AERO_POCKET_01",
+    "input": "TOOL_ENDMILL_10MM",
+    "output": "OP_AERO_POCKET_01",
+    "edgeType": "DERIVED_FROM",
+    "timestamp": "2026-08-21T07:47:34.211Z"
+  },
+  {
+    "transformationId": "TR_MACH_DMG_50_OP_AERO_POCKET_01",
+    "input": "MACH_DMG_50",
+    "output": "OP_AERO_POCKET_01",
+    "edgeType": "DERIVED_FROM",
+    "timestamp": "2026-08-21T07:47:34.211Z"
+  },
+  {
+    "transformationId": "TR_OP_AERO_POCKET_01_TOOLPATH_AERO_01",
+    "input": "OP_AERO_POCKET_01",
+    "output": "TOOLPATH_AERO_01",
+    "edgeType": "GENERATED",
+    "timestamp": "2026-08-21T07:47:34.211Z"
+  },
+  {
+    "transformationId": "TR_TOOLPATH_AERO_01_SIM_AERO_01",
+    "input": "TOOLPATH_AERO_01",
+    "output": "SIM_AERO_01",
+    "edgeType": "SIMULATED_FROM",
+    "timestamp": "2026-08-21T07:47:34.212Z"
+  },
+  {
+    "transformationId": "TR_MACH_DMG_50_POST_ENGINE_TNC640",
+    "input": "MACH_DMG_50",
+    "output": "POST_ENGINE_TNC640",
+    "edgeType": "USED",
+    "timestamp": "2026-08-21T07:47:34.212Z"
+  },
+  {
+    "transformationId": "TR_TOOLPATH_AERO_01_NC_O1001",
+    "input": "TOOLPATH_AERO_01",
+    "output": "NC_O1001",
+    "edgeType": "POST_PROCESSED_FROM",
+    "timestamp": "2026-08-21T07:47:34.212Z"
+  },
+  {
+    "transformationId": "TR_POST_ENGINE_TNC640_NC_O1001",
+    "input": "POST_ENGINE_TNC640",
+    "output": "NC_O1001",
+    "edgeType": "POST_PROCESSED_FROM",
+    "timestamp": "2026-08-21T07:47:34.212Z"
+  },
+  {
+    "transformationId": "TR_NC_O1001_VERIF_NC_01",
+    "input": "NC_O1001",
+    "output": "VERIF_NC_01",
+    "edgeType": "VERIFIED_FROM",
+    "timestamp": "2026-08-21T07:47:34.212Z"
+  },
+  {
+    "transformationId": "TR_SIM_AERO_01_VERIF_NC_01",
+    "input": "SIM_AERO_01",
+    "output": "VERIF_NC_01",
+    "edgeType": "VERIFIED_FROM",
+    "timestamp": "2026-08-21T07:47:34.212Z"
+  },
+  {
+    "transformationId": "TR_VERIF_NC_01_TWIN_EXEC_01",
+    "input": "VERIF_NC_01",
+    "output": "TWIN_EXEC_01",
+    "edgeType": "EXECUTED_FROM",
+    "timestamp": "2026-08-21T07:47:34.212Z"
+  },
+  {
+    "transformationId": "TR_MACH_DMG_50_TWIN_EXEC_01",
+    "input": "MACH_DMG_50",
+    "output": "TWIN_EXEC_01",
+    "edgeType": "EXECUTED_FROM",
+    "timestamp": "2026-08-21T07:47:34.212Z"
+  }
+]

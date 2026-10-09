@@ -1,0 +1,23 @@
+{
+  "contractId": "P0-RESULT-CONTRACT-001",
+  "name": "P0 Canonical Collision Result Schema",
+  "version": "1.0.0",
+  "statusTaxonomy": [
+    "NO_COLLISION",
+    "CONTACT",
+    "PENETRATION",
+    "CLEARANCE_VIOLATION",
+    "GOUGE",
+    "HOLDER_COLLISION",
+    "FIXTURE_COLLISION",
+    "MACHINE_COLLISION",
+    "STOCK_COLLISION",
+    "INTERFERENCE",
+    "ANALYSIS_FAILED",
+    "INVALID_GEOMETRY",
+    "UNKNOWN"
+  ],
+  "severityLevels": ["NONE", "CLEARANCE_WARNING", "ERROR", "CRITICAL_COLLISION", "FATAL_FAILURE"],
+  "exactnessLevels": ["EXACT", "CONSERVATIVE", "APPROXIMATE", "SAMPLED", "UNSUPPORTED"],
+  "immutability": "Deep Object.freeze enforced on all returned structures"
+}

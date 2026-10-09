@@ -1,0 +1,7 @@
+{
+  "name": "PURE_SHEAR_ANALYTICAL",
+  "passed": true,
+  "maxError": 1.9312384272308712e-16,
+  "tolerance": 0.00001,
+  "details": "Pure shear yield at tau_y = sigma_y / sqrt(3). Max error: 1.9312e-16"
+}

@@ -1,0 +1,226 @@
+{
+  "timestamp": "2026-09-23T07:18:31.173Z",
+  "audit": "NACA0012 — FINAL TELEMETRY PROVENANCE VERIFICATION",
+  "auditType": "READ_ONLY_SOURCE_AUDIT",
+  "table": [
+    {
+      "field": "rawPPrime",
+      "source": "Fvm3DNavierStokesSolver.ts:1115 (Math.abs(p_prime[c]))",
+      "isDynamic": true,
+      "perIteration": true,
+      "serializerPreserves": true,
+      "finalStatus": "DYNAMIC_CORRECT"
+    },
+    {
+      "field": "pressureCap",
+      "source": "run_intervention_pressure_cap.ts:138 / config (3.0*q_inf/alpha_p)",
+      "isDynamic": true,
+      "perIteration": true,
+      "serializerPreserves": true,
+      "finalStatus": "DYNAMIC_CORRECT"
+    },
+    {
+      "field": "appliedPPrime",
+      "source": "Fvm3DNavierStokesSolver.ts:1113 (deltaP = alpha_p * p_prime[c])",
+      "isDynamic": true,
+      "perIteration": true,
+      "serializerPreserves": true,
+      "finalStatus": "DYNAMIC_CORRECT"
+    },
+    {
+      "field": "pressureCapActivated",
+      "source": "Fvm3DNavierStokesSolver.ts (Poisson solver limiter flag)",
+      "isDynamic": true,
+      "perIteration": true,
+      "serializerPreserves": true,
+      "finalStatus": "DYNAMIC_CORRECT"
+    },
+    {
+      "field": "rawVelocityMax",
+      "source": "Fvm3DNavierStokesSolver.ts:1186 (maxV from cell speed)",
+      "isDynamic": true,
+      "perIteration": true,
+      "serializerPreserves": true,
+      "finalStatus": "DYNAMIC_CORRECT"
+    },
+    {
+      "field": "velocityCap",
+      "source": "Fvm3DNavierStokesSolver.ts:1150 (2.5 * max(Uinf, 1.0))",
+      "isDynamic": true,
+      "perIteration": true,
+      "serializerPreserves": true,
+      "finalStatus": "DYNAMIC_CORRECT"
+    },
+    {
+      "field": "postCapVelocityMax",
+      "source": "Fvm3DNavierStokesSolver.ts:1153 (clamped cell speed)",
+      "isDynamic": true,
+      "perIteration": true,
+      "serializerPreserves": true,
+      "finalStatus": "DYNAMIC_CORRECT"
+    },
+    {
+      "field": "numberOfVelocityClippedCells",
+      "source": "None (Fvm3DNavierStokesSolver.ts:1150-1157 lacks cell counter)",
+      "isDynamic": false,
+      "perIteration": false,
+      "serializerPreserves": false,
+      "finalStatus": "MISSING"
+    },
+    {
+      "field": "kResidual",
+      "source": "Fvm3DNavierStokesSolver.ts:638 (kResult.finalResidual.normalized)",
+      "isDynamic": true,
+      "perIteration": true,
+      "serializerPreserves": true,
+      "finalStatus": "DYNAMIC_CORRECT"
+    },
+    {
+      "field": "omegaResidual",
+      "source": "Fvm3DNavierStokesSolver.ts:642 (omegaResult.finalResidual.normalized)",
+      "isDynamic": true,
+      "perIteration": true,
+      "serializerPreserves": true,
+      "finalStatus": "DYNAMIC_CORRECT"
+    },
+    {
+      "field": "deltaK",
+      "source": "Fvm3DNavierStokesSolver.ts:580 (maxKDelta = max|boundK - k[c]|)",
+      "isDynamic": true,
+      "perIteration": true,
+      "serializerPreserves": true,
+      "finalStatus": "DYNAMIC_CORRECT"
+    },
+    {
+      "field": "deltaOmega",
+      "source": "Fvm3DNavierStokesSolver.ts:581 (maxOmegaDelta = max|boundOmega - omega[c]|)",
+      "isDynamic": true,
+      "perIteration": true,
+      "serializerPreserves": true,
+      "finalStatus": "DYNAMIC_CORRECT"
+    },
+    {
+      "field": "deltaNuT",
+      "source": "Fvm3DNavierStokesSolver.ts:612 (maxDeltaNut = max|relaxedNewNut - oldNut|)",
+      "isDynamic": true,
+      "perIteration": true,
+      "serializerPreserves": true,
+      "finalStatus": "DYNAMIC_CORRECT"
+    },
+    {
+      "field": "numberOfNutClippedCells",
+      "source": "Fvm3DNavierStokesSolver.ts:597-618 (clippedCount for rawNut >= 1e4*mu)",
+      "isDynamic": true,
+      "perIteration": true,
+      "serializerPreserves": true,
+      "finalStatus": "DYNAMIC_CORRECT"
+    },
+    {
+      "field": "nanDetected",
+      "source": "Fvm3DNavierStokesSolver.ts:1159 & CfdEvidenceSerializer.ts",
+      "isDynamic": true,
+      "perIteration": true,
+      "serializerPreserves": true,
+      "finalStatus": "DYNAMIC_CORRECT"
+    },
+    {
+      "field": "infDetected",
+      "source": "Fvm3DNavierStokesSolver.ts:1159 & CfdEvidenceSerializer.ts",
+      "isDynamic": true,
+      "perIteration": true,
+      "serializerPreserves": true,
+      "finalStatus": "DYNAMIC_CORRECT"
+    },
+    {
+      "field": "firstInvalidIteration",
+      "source": "Fvm3DNavierStokesSolver.ts:1159 / runner (iter at first divergence)",
+      "isDynamic": true,
+      "perIteration": false,
+      "serializerPreserves": true,
+      "finalStatus": "DYNAMIC_CORRECT"
+    },
+    {
+      "field": "firstInvalidCell",
+      "source": "None (cell coordinate not persisted in telemetry struct)",
+      "isDynamic": false,
+      "perIteration": false,
+      "serializerPreserves": false,
+      "finalStatus": "MISSING"
+    },
+    {
+      "field": "CL",
+      "source": "Fvm3DNavierStokesSolver.ts:1326 (iterCl from surface pressure+shear)",
+      "isDynamic": true,
+      "perIteration": true,
+      "serializerPreserves": true,
+      "finalStatus": "DYNAMIC_CORRECT"
+    },
+    {
+      "field": "CD",
+      "source": "Fvm3DNavierStokesSolver.ts:1327 (iterCd from surface pressure+shear)",
+      "isDynamic": true,
+      "perIteration": true,
+      "serializerPreserves": true,
+      "finalStatus": "DYNAMIC_CORRECT"
+    },
+    {
+      "field": "Cm",
+      "source": "Fvm3DNavierStokesSolver.ts:1328 (iterCm from quarter-chord moment)",
+      "isDynamic": true,
+      "perIteration": true,
+      "serializerPreserves": true,
+      "finalStatus": "DYNAMIC_CORRECT"
+    }
+  ],
+  "specialAudits": {
+    "kResidualAndOmegaResidual": {
+      "location": "src/engine/cfd3d/Fvm3DNavierStokesSolver.ts:638-645",
+      "isTransportEquationResidual": true,
+      "updatedEveryIteration": true,
+      "canZeroOccurLegitimately": false,
+      "canDefaultInitializationSurvive": false,
+      "serializerPreservesExactSource": true,
+      "kResidualStatus": "DYNAMIC_CORRECT",
+      "omegaResidualStatus": "DYNAMIC_CORRECT"
+    },
+    "numberOfNutClippedCells": {
+      "location": "src/engine/cfd3d/Fvm3DNavierStokesSolver.ts:597-618",
+      "counterResetPerIteration": true,
+      "counterIncrementedPerClippedCell": true,
+      "counterStoredInIterationTelemetry": true,
+      "serializerPreservesExactSource": true,
+      "status": "DYNAMIC_CORRECT"
+    },
+    "numberOfVelocityClippedCells": {
+      "location": "src/engine/cfd3d/Fvm3DNavierStokesSolver.ts:1150-1157",
+      "presentInSource": false,
+      "status": "MISSING"
+    },
+    "firstInvalidCell": {
+      "presentInSource": false,
+      "status": "MISSING"
+    },
+    "serializerIntegrity": {
+      "inventsTelemetry": false,
+      "replacesMissingWithZero": false,
+      "altersNumericalValues": false,
+      "reordersIterations": false,
+      "silentlyDropsFields": false,
+      "silentlyAcceptsEmptyTrace": false,
+      "status": "PROVEN"
+    }
+  },
+  "verdicts": {
+    "evidenceSerialization": "PROVEN",
+    "telemetryProvenance": "PROVEN",
+    "kResidual": "DYNAMIC_CORRECT",
+    "omegaResidual": "DYNAMIC_CORRECT",
+    "nuTClipping": "DYNAMIC_CORRECT",
+    "velocityClampCellCount": "MISSING",
+    "firstInvalidCell": "MISSING",
+    "cfdPhysicalValidation": "NOT_PROVEN",
+    "naca0012Convergence": "NOT_PROVEN",
+    "rootCause": "NOT_PROVEN",
+    "gci": "NOT_PROVEN"
+  }
+}

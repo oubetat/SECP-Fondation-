@@ -1,0 +1,13 @@
+{
+  "missionId": "COLLISION-ENGINE-FORENSIC-MATURITY-001",
+  "timestamp": "2026-10-01T01:00:00.000Z",
+  "testEvidenceAudit": {
+    "unitTests": [
+      { "file": "src/engine/assembly/clash/__tests__/ClashDetectionEngine.test.ts", "coverage": "OBB SAT box tests, sphere tests", "provedInvariant": "Proves 15-axis SAT separates non-intersecting boxes" },
+      { "file": "src/engine/manufacturing/__tests__/CollisionAvoidance.test.ts", "coverage": "Toolpath collision avoidance", "provedInvariant": "Proves capsule-AABB distance query" },
+      { "file": "src/engine/manufacturing/__tests__/CollisionMutation.test.ts", "coverage": "Tolerance mutation injection", "provedInvariant": "Proves fail-closed behavior on corrupted tolerance policies" },
+      { "file": "src/verification/patch256_259_302/__tests__/PATCH-256-259-302-ForensicClosure.test.ts", "coverage": "HardAcceptanceGate259 execution", "provedInvariant": "Proves gate suite runs without unhandled exceptions" }
+    ],
+    "criticalGap": "Zero unit tests exist testing a tool cylinder penetrating through the middle of a triangle face where all 3 vertices are outside the cylinder."
+  }
+}

@@ -1,0 +1,70 @@
+
+> secp-cad-workbench@1.0.0 build
+> ./node_modules/.bin/vite build && ./node_modules/.bin/esbuild server.ts --bundle --platform=node --format=cjs --packages=external --sourcemap --outfile=dist/server.cjs
+
+vite v6.4.3 building for production...
+transforming...
+✓ 4339 modules transformed.
+rendering chunks...
+[plugin vite:reporter] 
+(!) /app/applet/src/lib/crypto-shim.ts is dynamically imported by /app/applet/src/engine/kernels/occt/loader.ts but also statically imported by /app/applet/src/engine/assembly/ClearanceAnalysisEngine.ts, /app/applet/src/engine/assembly/ExplodedViewEngine.ts, /app/applet/src/engine/attestation/AttestationCanonicalizer.ts, /app/applet/src/engine/attestation/AttestationSigner.ts, /app/applet/src/engine/cad-kernel/modeling/FilletEngine.ts, /app/applet/src/engine/capabilities/CapabilityDriftDetector.ts, /app/applet/src/engine/certification/truth/CertificateCanonicalizer.ts, /app/applet/src/engine/certification/truth/CompetitiveCapabilityMatrix.ts, /app/applet/src/engine/certification/truth/EngineeringTruthCertificateEngine.ts, /app/applet/src/engine/certification/truth/EngineeringTruthCertificateVerifier.ts, /app/applet/src/engine/certification/truth/EvidenceMerkleTree.ts, /app/applet/src/engine/cfd3d/Fvm3DNavierStokesSolver.ts, /app/applet/src/engine/crossdomain/CrossDomainConflictEngine.ts, /app/applet/src/engine/crossdomain/CrossDomainWorkflowEngine.ts, /app/applet/src/engine/epc/evidence/EvidenceIntegrityService.ts, /app/applet/src/engine/evidence/EngineeringHashChain.ts, /app/applet/src/engine/evidence/ledger/EvidenceHasher.ts, /app/applet/src/engine/execution/CoreExecutionAuthority.ts, /app/applet/src/engine/execution/CoreExecutionAuthorityInternal.ts, /app/applet/src/engine/execution/GenericExecutionRegistry.ts, /app/applet/src/engine/fem/material/MaterialStateHasher.ts, /app/applet/src/engine/gcs3d/NonlinearSpatialSolver.ts, /app/applet/src/engine/identity/EngineeringIdentityFactory.ts, /app/applet/src/engine/industrial-os/EngineeringObjectOS.ts, /app/applet/src/engine/industrial-os/capabilities/CapabilityIdentity.ts, /app/applet/src/engine/industrial-os/event-model/EngineeringEventStore.ts, /app/applet/src/engine/industrial-os/evidence-bus/EvidenceBus.ts, /app/applet/src/engine/industrial-os/governance/ApprovalGovernanceService.ts, /app/applet/src/engine/industrial-os/governance/EnterpriseGovernanceEngine.ts, /app/applet/src/engine/industrial-os/policy/EngineeringPolicyEngine.ts, /app/applet/src/engine/industrial-os/workflows/EngineeringWorkflowEngine.ts, /app/applet/src/engine/interop/native-secp/NativeSECPCanonicalizer.ts, /app/applet/src/engine/interop/organization/CrossOrganizationEvidenceEngine.ts, /app/applet/src/engine/manufacturing/simulation/ToolpathSimulationEngine.ts, /app/applet/src/engine/nurbs-geometry/SurfaceTrimmingEngine.ts, /app/applet/src/engine/persistence-proof/PersistencePositiveProofs.ts, /app/applet/src/engine/plm/CanonicalPLMProjectionAdapter.ts, /app/applet/src/engine/quality-metrology/MetrologyEngine.ts, /app/applet/src/engine/regeneration-proof/RegenerationPositiveProofs.ts, /app/applet/src/engine/regeneration-proof/RegenerationProofVerifier.ts, /app/applet/src/engine/revision/ApprovalWorkflowEngine.ts, /app/applet/src/engine/revision/BranchVariantEngine.ts, /app/applet/src/engine/revision/ChangeManagementEngine.ts, /app/applet/src/engine/revision/EcoManagementEngine.ts, /app/applet/src/engine/revision/HardAcceptanceGate291.ts, /app/applet/src/engine/revision/RevisionCanonicalizer.ts, /app/applet/src/engine/revision/RevisionEngine.ts, /app/applet/src/engine/round-trip/RoundTripCoordinator.ts, /app/applet/src/engine/semantics/CanonicalMutationVerifier.ts, /app/applet/src/engine/semantics/SuccessResolver.ts, /app/applet/src/engine/trust/ProductionTrustRegistry.ts, /app/applet/src/engine/validation/HardAcceptanceGate052.ts, /app/applet/src/engine/validation/HardAcceptanceGate053.ts, /app/applet/src/engine/validation/HardAcceptanceGate054.ts, /app/applet/src/engine/validation/HardAcceptanceGate055.ts, /app/applet/src/engine/validation/HardAcceptanceGate056.ts, /app/applet/src/engine/validation/HardAcceptanceGate057.ts, /app/applet/src/engine/validation/HardAcceptanceGate058.ts, /app/applet/src/engine/verification/DroneProofGate.ts, /app/applet/src/engine/verification/DroneProofReport.ts, /app/applet/src/engine/verification/EngineeringProofHierarchy.ts, /app/applet/src/engine/verification/UniversalVerificationPackage.ts, /app/applet/src/engine/verification/portal/IndependentVerificationEngine.ts, /app/applet/src/engine/workbench/InvalidationPipelineEngine.ts, dynamic import will not move module into another chunk.
+
+[plugin vite:reporter] 
+(!) /app/applet/src/lib/fs-shim.ts is dynamically imported by /app/applet/src/engine/kernels/occt/loader.ts but also statically imported by /app/applet/src/engine/manufacturing/cam/generateReports104.ts, dynamic import will not move module into another chunk.
+
+[plugin vite:reporter] 
+(!) /app/applet/src/lib/path-shim.ts is dynamically imported by /app/applet/src/engine/kernels/occt/loader.ts but also statically imported by /app/applet/src/engine/manufacturing/cam/generateReports104.ts, dynamic import will not move module into another chunk.
+
+[plugin vite:reporter] 
+(!) /app/applet/src/engine/validation/HardAcceptanceGate042.ts is dynamically imported by /app/applet/src/components/TestRunnerPanel.tsx but also statically imported by /app/applet/src/components/CadKernelInspector.tsx, dynamic import will not move module into another chunk.
+
+[plugin vite:reporter] 
+(!) /app/applet/src/engine/validation/HardAcceptanceGate045.ts is dynamically imported by /app/applet/src/components/TestRunnerPanel.tsx but also statically imported by /app/applet/src/components/AdvancedKinematicsPanel.tsx, dynamic import will not move module into another chunk.
+
+[plugin vite:reporter] 
+(!) /app/applet/src/engine/storage/IndexedDbEngine.ts is dynamically imported by /app/applet/src/engine/execution/GenericExecutionRegistry.ts, /app/applet/src/engine/execution/GenericExecutionRegistry.ts but also statically imported by /app/applet/src/engine/projectStorage.ts, dynamic import will not move module into another chunk.
+
+computing gzip size...
+dist/index.html                                           4.27 kB │ gzip:     1.71 kB
+dist/assets/index-DX2GmUgn.css                          253.21 kB │ gzip:    30.18 kB
+dist/assets/HardAcceptanceGate063-BK6je_Ap.js             0.18 kB │ gzip:     0.14 kB
+dist/assets/HardAcceptanceGate068-E8-Xb3yg.js             0.18 kB │ gzip:     0.14 kB
+dist/assets/HardAcceptanceGate069-BWt-Rmbd.js             0.18 kB │ gzip:     0.14 kB
+dist/assets/HardAcceptanceGate070-DdCzN38-.js             0.18 kB │ gzip:     0.14 kB
+dist/assets/HardAcceptanceGate051-DcKGZF2M.js             0.19 kB │ gzip:     0.14 kB
+dist/assets/__vite-browser-external_url-DFyQL8VY.js       0.26 kB │ gzip:     0.21 kB
+dist/assets/FirestoreStorageService-CFnCB2d1.js           1.87 kB │ gzip:     0.94 kB
+dist/assets/HardAcceptanceGate067-D6i8MvUc.js             4.41 kB │ gzip:     1.81 kB
+dist/assets/HardAcceptanceGate065-Cz5_myDR.js             6.39 kB │ gzip:     2.51 kB
+dist/assets/HardAcceptanceGate071-JjGeWt7c.js             6.84 kB │ gzip:     2.69 kB
+dist/assets/HardAcceptanceGate066-Cv3H2h_r.js             7.57 kB │ gzip:     2.98 kB
+dist/assets/HardAcceptanceGate161-C34E_2CR.js             8.62 kB │ gzip:     3.19 kB
+dist/assets/HardAcceptanceGate073-u7y7gZ1d.js             8.89 kB │ gzip:     3.76 kB
+dist/assets/HardAcceptanceGate072-BYHElM2W.js             8.92 kB │ gzip:     3.29 kB
+dist/assets/HardAcceptanceGate061-DktqcgSC.js            10.14 kB │ gzip:     3.14 kB
+dist/assets/HardAcceptanceGate053-DgKKHdT6.js            11.89 kB │ gzip:     3.75 kB
+dist/assets/HardAcceptanceGate074-Bf0erXP_.js            14.15 kB │ gzip:     5.17 kB
+dist/assets/HardAcceptanceGate162-BBknOyt7.js            14.20 kB │ gzip:     3.81 kB
+dist/assets/HardAcceptanceGate055-Cii5IEBA.js            14.90 kB │ gzip:     4.41 kB
+dist/assets/HardAcceptanceGate060-2lulayOS.js            19.49 kB │ gzip:     5.96 kB
+dist/assets/HardAcceptanceGate054-BqnPSs0n.js            20.58 kB │ gzip:     5.07 kB
+dist/assets/MetrologyEngine-D-b_wHCN.js                  21.29 kB │ gzip:     6.47 kB
+dist/assets/HardAcceptanceGate062-CVTElcqs.js            21.62 kB │ gzip:     7.42 kB
+dist/assets/HardAcceptanceGate064-C_bI1t08.js            23.02 kB │ gzip:     5.94 kB
+dist/assets/HardAcceptanceGate059-DfXG4_cL.js            26.08 kB │ gzip:     7.69 kB
+dist/assets/HardAcceptanceGate056-DhsGwIll.js            28.33 kB │ gzip:     6.70 kB
+dist/assets/HardAcceptanceGate057-BZTh5qvS.js            44.46 kB │ gzip:    10.40 kB
+dist/assets/HardAcceptanceGate058-Eyf_CuEB.js            45.45 kB │ gzip:    10.74 kB
+dist/assets/HardAcceptanceGate052-BYbFQCAQ.js            46.52 kB │ gzip:    11.69 kB
+dist/assets/index-BSwiJr-9.js                        14,216.89 kB │ gzip: 2,885.50 kB
+
+(!) Some chunks are larger than 3000 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 54.60s
+
+  dist/server.cjs      120.8kb
+  dist/server.cjs.map  232.5kb
+
+⚡ Done in 65ms

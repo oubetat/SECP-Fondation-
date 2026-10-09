@@ -1,0 +1,37 @@
+{
+  "contractId": "P0-FAIL-CLOSED-001",
+  "name": "P0 Fail-Closed Transition Matrix",
+  "version": "1.0.0",
+  "transitions": [
+    {
+      "cause": "Null / Undefined Input",
+      "transition": "ANALYSIS_FAILED",
+      "severity": "FATAL_FAILURE",
+      "provenSafe": false
+    },
+    {
+      "cause": "Invalid / Negative Tolerance",
+      "transition": "ANALYSIS_FAILED",
+      "severity": "FATAL_FAILURE",
+      "provenSafe": false
+    },
+    {
+      "cause": "Missing Tool Assembly in CAM Domain",
+      "transition": "ANALYSIS_FAILED",
+      "severity": "FATAL_FAILURE",
+      "provenSafe": false
+    },
+    {
+      "cause": "Underlying Kernel / Solver Exception",
+      "transition": "ANALYSIS_FAILED",
+      "severity": "FATAL_FAILURE",
+      "provenSafe": false
+    },
+    {
+      "cause": "Inconsistent Metrics (Positive Penetration reported with NO_COLLISION)",
+      "transition": "PENETRATION",
+      "severity": "CRITICAL_COLLISION",
+      "provenSafe": false
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "significanceLevels": [
+    "COSMETIC",
+    "METADATA_ONLY",
+    "ENGINEERING_RELEVANT",
+    "MANUFACTURING_RELEVANT",
+    "VERIFICATION_RELEVANT",
+    "CRITICAL"
+  ]
+}

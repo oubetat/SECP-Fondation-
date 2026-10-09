@@ -1,0 +1,38 @@
+{
+  "missionId": "COLLISION-ENGINE-P1.5-AUTHORITY-INTEGRATION-FORENSICS-001",
+  "artifactType": "EXACTNESS_PROPAGATION_AUDIT",
+  "timestamp": "2026-10-01T01:48:00.000Z",
+  "findings": {
+    "canonicalAuthorityExactnessSupport": {
+      "exactnessTaxonomy": ["EXACT", "CONSERVATIVE", "APPROXIMATE", "SAMPLED", "UNSUPPORTED"],
+      "propagatedInCanonicalResult": true,
+      "provenSafeRequiresExactOrConservative": true
+    },
+    "legacyExactnessMisrepresentations": [
+      {
+        "engine": "CollisionDetectionEngine (CAM)",
+        "declaredExactness": "DetectionMode = 'EXACT'",
+        "actualMath": "Discrete 10-point linear sampling on tool cylinder + vertex/centroid triangle check",
+        "verdict": "MISREPRESENTED_AS_EXACT"
+      },
+      {
+        "engine": "FiveAxisCollisionEngine",
+        "declaredExactness": "Swept Volume Clearance",
+        "actualMath": "Obstacle vertices checked against capsule centerline segments only",
+        "verdict": "MISREPRESENTED_AS_EXACT"
+      },
+      {
+        "engine": "MachineCollisionEngine",
+        "declaredExactness": "Continuous Multi-Body Swept Interference Checker",
+        "actualMath": "AABB clamp bounding center overlap",
+        "verdict": "APPROXIMATE_AABB_ONLY"
+      },
+      {
+        "engine": "InterferenceDetectionEngine (Assembly)",
+        "declaredExactness": "Real B-Rep Exact Interference Suite",
+        "actualMath": "Hardcoded test-case string/offset branches",
+        "verdict": "SYNTHETIC_MOCK_DISGUISED_AS_BREP"
+      }
+    ]
+  }
+}

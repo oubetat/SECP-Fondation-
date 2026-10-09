@@ -1,0 +1,8 @@
+{
+  "contractId": "P1-CAPSULE-TRIANGLE-001",
+  "name": "P1 Capsule-Triangle Analytical Distance Specification",
+  "version": "1.0.0",
+  "formula": "clearance = dist(Segment(p1, p2), Triangle(v0, v1, v2)) - radius",
+  "penetrationFormula": "penetration = max(0, -clearance)",
+  "touchingThreshold": "1e-6 mm (configurable contact tolerance)"
+}

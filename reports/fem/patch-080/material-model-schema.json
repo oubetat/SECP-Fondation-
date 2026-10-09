@@ -1,0 +1,16 @@
+{
+  "modelType": "J2_ISOTROPIC_ELASTOPLASTIC",
+  "parameters": [
+    "E",
+    "nu",
+    "yieldStress",
+    "hardeningModulus",
+    "planeState"
+  ],
+  "validations": [
+    "E > 0",
+    "-1 < nu < 0.5",
+    "yieldStress > 0",
+    "hardeningModulus >= 0"
+  ]
+}

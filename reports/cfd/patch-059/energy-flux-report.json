@@ -1,0 +1,5 @@
+{
+  "patch": "PATCH-059",
+  "convectiveFluxType": "Explicit Energy Advection",
+  "facePairingStatus": "PAIRING_VERIFIED"
+}

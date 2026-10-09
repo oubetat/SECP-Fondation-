@@ -1,0 +1,65 @@
+{
+  "phase": "ADSE-P7",
+  "batteryName": "REAL_PHYSICS_AND_ELECTRICAL_ENGINEERING_BATTERY",
+  "timestamp": "2026-09-28T02:22:00Z",
+  "cases": [
+    {
+      "caseId": "CASE_A_SINGLE_LOOP",
+      "voltageV": 28.0,
+      "loadWatts": 280.0,
+      "currentA": 10.0,
+      "lineLossWatts": 5.0,
+      "totalPowerWatts": 285.0,
+      "terminalVoltageV": 27.5,
+      "discrepancyPercent": 0.000,
+      "status": "PASSED"
+    },
+    {
+      "caseId": "CASE_B_BRANCHED_BUS",
+      "branchCurrentsA": [5.0, 10.0, 20.0],
+      "totalBusCurrentA": 35.0,
+      "totalLoadWatts": 980.0,
+      "kirchhoffCurrentLawSatisfied": true,
+      "status": "PASSED"
+    },
+    {
+      "caseId": "CASE_C_CONVERTER_EFFICIENCY",
+      "topology": "DC_DC_BUCK_28V_12V",
+      "efficiencyPercent": 90.0,
+      "outputPowerWatts": 180.0,
+      "inputPowerWatts": 202.0,
+      "conversionLossWatts": 22.0,
+      "status": "PASSED"
+    },
+    {
+      "caseId": "CASE_D_STORAGE_DISCHARGE",
+      "capacityWh": 1000.0,
+      "dischargeCurrentA": 10.0,
+      "durationHours": 2.0,
+      "energyDrawnWh": 564.0,
+      "finalSocPercent": 43.6,
+      "status": "PASSED"
+    },
+    {
+      "caseId": "CASE_E_PEAK_SURGE",
+      "surgePowerWatts": 2240.0,
+      "surgeCurrentA": 80.0,
+      "lineLossWatts": 320.0,
+      "terminalVoltageV": 24.0,
+      "status": "PASSED"
+    },
+    {
+      "caseId": "CASE_F_CONFIGURATION_SENSITIVITY",
+      "mutation": "UPSTREAM_SOURCE_MUTATION",
+      "invalidationTriggered": true,
+      "status": "PASSED"
+    },
+    {
+      "caseId": "CASE_G_THERMAL_COUPLING",
+      "electricalDissipationWatts": 257.0,
+      "mappedToP6HeatSource": true,
+      "targetP6Model": "therm:radar:pod",
+      "status": "PASSED"
+    }
+  ]
+}

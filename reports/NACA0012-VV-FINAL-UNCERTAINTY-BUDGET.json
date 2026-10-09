@@ -1,0 +1,45 @@
+{
+  "mission": "NACA0012-VV-FINAL-TRUTH-CLOSURE-001",
+  "auditTimestamp": "2026-09-30T00:52:00Z",
+  "uncertaintyBudget": {
+    "liftCoefficientCl": {
+      "numericalUncertainty": {
+        "gridDiscretizationUgrid": 0.00289,
+        "iterativeConvergenceUiter": 0.00014,
+        "totalUncertaintyUnum": 0.00303
+      },
+      "inputParameterUncertaintyUinput": 0.001,
+      "experimentalUncertaintyUexp": 0.02,
+      "combinedValidationUncertaintyUval": 0.02025,
+      "comparisonErrorE": 0.93688,
+      "validationRatio": 46.26,
+      "status": "UNVALIDATED_LIFT_DEFICIT"
+    },
+    "dragCoefficientCd": {
+      "numericalUncertainty": {
+        "gridDiscretizationUgrid": 0.00018,
+        "iterativeConvergenceUiter": 0.00003,
+        "totalUncertaintyUnum": 0.00021
+      },
+      "inputParameterUncertaintyUinput": 0.00008,
+      "experimentalUncertaintyUexp": 0.0008,
+      "combinedValidationUncertaintyUval": 0.00083,
+      "comparisonErrorE": 0.00011,
+      "validationRatio": 0.133,
+      "status": "VALIDATED"
+    },
+    "pitchingMomentCm": {
+      "numericalUncertainty": {
+        "gridDiscretizationUgrid": 0.00035,
+        "iterativeConvergenceUiter": 0.00005,
+        "totalUncertaintyUnum": 0.0004
+      },
+      "inputParameterUncertaintyUinput": 0.00015,
+      "experimentalUncertaintyUexp": 0.002,
+      "combinedValidationUncertaintyUval": 0.00204,
+      "comparisonErrorE": 0.00138,
+      "validationRatio": 0.676,
+      "status": "VALIDATED"
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "elementsCount": 10,
+  "totalDOFs": 11,
+  "nnz": 31,
+  "assemblyTimeMs": 0.14893100000017512,
+  "usedDenseFallback": false
+}

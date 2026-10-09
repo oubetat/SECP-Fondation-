@@ -1,0 +1,29 @@
+{
+  "milestone": "ADSE-P4",
+  "indexTimestamp": "2026-09-28T08:05:00.000Z",
+  "provenanceRoot": "a9d832c25679e954efcbb421df61f96408269e96191c4966d5815cf1b6a18cb4",
+  "testFiles": [
+    "tests/adse/p4/ADSEP4DigitalThread.test.ts",
+    "tests/adse/p4/ADSEP4AdversarialBattery.test.ts",
+    "tests/adse/p4/ADSEP4PersistenceProof.test.ts",
+    "tests/adse/p4/ADSEP4ReconciliationAndForensics.test.ts"
+  ],
+  "engineFiles": [
+    "src/engine/adse/p4/types.ts",
+    "src/engine/adse/p4/DigitalThreadRegistry.ts",
+    "src/engine/adse/p4/DigitalThreadRevisionEngine.ts",
+    "src/engine/adse/p4/DigitalThreadConfigurationEngine.ts",
+    "src/engine/adse/p4/DigitalThreadTraceabilityEngine.ts",
+    "src/engine/adse/p4/DigitalThreadImpactAnalyzer.ts",
+    "src/engine/adse/p4/DigitalThreadConsistencyEngine.ts",
+    "src/engine/adse/p4/DigitalThreadPersistenceEngine.ts",
+    "src/engine/adse/p4/ADSEP4DigitalThreadEngine.ts",
+    "src/engine/adse/p4/ADSEP4ForensicAuditEngine.ts",
+    "src/engine/adse/p4/index.ts"
+  ],
+  "forensicGatesEvaluated": 20,
+  "forensicGatesPassed": 20,
+  "canonicalCapabilitiesRegistered": 20,
+  "truthChainEndToEndVerified": true,
+  "zeroDualCoreVerified": true
+}

@@ -1,0 +1,36 @@
+{
+  "contractId": "CONTRACT-COLLISION-GEOMETRY-001",
+  "name": "Geometric Truth & Representation Contract",
+  "version": "1.0.0",
+  "representationHierarchy": {
+    "Level0_CanonicalBRep": {
+      "format": "OpenCASCADE (OCCT) TopoDS_Shape / ShapeHandle",
+      "purpose": "Primary engineering truth for solid parts, static assembly interference, exact volume",
+      "authority": "AUTHORITATIVE_PRIMARY",
+      "allowedOperations": ["booleanIntersect", "common", "section", "exactPointProjection"]
+    },
+    "Level1_ExactTessellation": {
+      "format": "Indexed Triangle Mesh { vertices: Float64Array, indices: Uint32Array, normals: Float64Array }",
+      "purpose": "Surface-to-surface distance, CAM toolpath verification, gouge detection",
+      "authority": "AUTHORITATIVE_SURFACE (When chordal deviation <= 0.005mm and angular deviation <= 0.5 deg)",
+      "allowedOperations": ["Cylinder-Triangle exact distance", "Triangle-Triangle intersection", "Spatial BVH"]
+    },
+    "Level2_ConvexSweptHull": {
+      "format": "GJK/EPA Polytope / Swept Capsule Volume",
+      "purpose": "Continuous motion sweep approximation between trajectory poses",
+      "authority": "CONSERVATIVE_BOUNDING (Guaranteed superset of true swept geometry)",
+      "allowedOperations": ["GJK/EPA distance query", "Conservative advancement"]
+    },
+    "Level3_HierarchicalBoundingVolume": {
+      "format": "Dynamic Binary Spatial BVH (AABB / OBB)",
+      "purpose": "Broad-phase pair rejection and ray/frustum acceleration",
+      "authority": "ACCELERATION_ONLY (Non-authoritative; zero false negatives guaranteed)",
+      "allowedOperations": ["AABB overlap", "Ray-box intersection"]
+    }
+  },
+  "forbiddenPractices": [
+    "Using Level 3 Bounding Volumes to claim exact clearance or collision status",
+    "Sampling only triangle vertices while ignoring face/edge geometry in Level 1",
+    "Decoupling mesh tessellation from the underlying B-Rep revision hash"
+  ]
+}

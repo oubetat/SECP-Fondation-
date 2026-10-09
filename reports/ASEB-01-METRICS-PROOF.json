@@ -1,0 +1,34 @@
+{
+  "engineeringMetricsProof": {
+    "project": "ASEB-01-XA100",
+    "systemId": "SYS-XA100-EXP",
+    "configurationId": "CONF-BASELINE",
+    "recomputationSource": "ADSEWorkbenchBridge.computeEngineeringMetrics()",
+    "metrics": {
+      "totalRequirements": {
+        "definition": "Count of registered requirements in P1 for active configuration",
+        "query": "p1.requirements.getAllRequirements()",
+        "value": 40,
+        "verifiedValue": 40
+      },
+      "verificationCoveragePercent": {
+        "definition": "Percentage of closed verification gates in active configuration",
+        "query": "p9.verification.evaluateAllGates()",
+        "value": 100
+      },
+      "crossDomainCouplingDensity": {
+        "definition": "Ratio of digital thread edges to digital thread nodes",
+        "query": "edges.length / nodes.length",
+        "r1BaselineValue": 0.33,
+        "r2MutatedValue": 0.67,
+        "explainableDelta": "R2 introduced 1 additional dependency edge (COMM-SYS-XA100 -> ACTUATOR-001) causing density shift from 0.33x to 0.67x"
+      }
+    },
+    "provenanceIntegrity": {
+      "provenanceHashAlgorithm": "SHA-256",
+      "r1Hash": "355e9569e389fa19cc1d749e301624694bcd8c0a5929492f75071bd84599bc98",
+      "r2Hash": "42c2f41db7fe8fc5420fa24c290441dca76e3426fd0bad1edac0097ee5681566",
+      "deterministicRecalculationVerified": true
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "programId": "O1001",
+  "programLine": 1,
+  "activeToolNumber": 1,
+  "activeOffsetId": "G54",
+  "modalState": {
+    "motionMode": "G00",
+    "planeSelection": "G17",
+    "feedMode": "G94",
+    "distanceMode": "G90"
+  },
+  "feedRateMMMin": 1500,
+  "actualFeedRateMMMin": 0,
+  "spindleSpeedRPM": 0,
+  "machineMode": "AUTO",
+  "alarmCodes": [],
+  "timestamp": 1787297983971,
+  "provenance": "CONFIGURED"
+}

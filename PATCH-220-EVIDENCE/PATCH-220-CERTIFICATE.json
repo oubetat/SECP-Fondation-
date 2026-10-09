@@ -1,0 +1,10 @@
+{
+  "certificateId": "SECP-PATCH-220-CERT",
+  "issuedTo": "SECP Industrial CAD Workspace",
+  "verificationGate": "Assembly Production Gate (PATCH-220)",
+  "totalChecksEvaluated": 17,
+  "passedChecksCount": 17,
+  "verdict": "PASS",
+  "digitalSignature": "fa22079ca4cd89909157bcf9db814ef2622079ca4cd89909157bcf9db814ef26",
+  "timestamp": "2026-08-24T06:14:59.000Z"
+}

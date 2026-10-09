@@ -1,0 +1,190 @@
+{
+  "missionId": "COLLISION-ENGINE-P5-KINEMATIC-CLEARANCE-001",
+  "timestampIso": "2026-10-02T08:01:27.680Z",
+  "verdict": "P5_KINEMATIC_CLEARANCE_FULLY_VERIFIED",
+  "totalGates": 30,
+  "passedGates": 30,
+  "failedGates": 0,
+  "gates": [
+    {
+      "gateId": "G01",
+      "requirement": "Kinematics collision queries bound to CollisionAuthority coordinator",
+      "evidence": "Status=ANALYSIS_FAILED, provenanceRev=1",
+      "passed": true
+    },
+    {
+      "gateId": "G02",
+      "requirement": "Forward kinematics maps joint state to deterministic canonical transforms",
+      "evidence": "Transforms count=3, Tool origin=(10, 20, 30)",
+      "passed": true
+    },
+    {
+      "gateId": "G03",
+      "requirement": "Transform chain covers tool, table, and machine base with valid matrices",
+      "evidence": "Components verified: COMP_SPINDLE_TOOL, COMP_ROTARY_TABLE_WORKPIECE, COMP_MACHINE_BASE",
+      "passed": true
+    },
+    {
+      "gateId": "G04",
+      "requirement": "Coordinate frame mismatch rejected fail-closed with ANALYSIS_FAILED",
+      "evidence": "Status=ANALYSIS_FAILED, provenSafe=false",
+      "passed": true
+    },
+    {
+      "gateId": "G05",
+      "requirement": "Transform revision metadata carried on canonical transforms",
+      "evidence": "transformRevision=42",
+      "passed": true
+    },
+    {
+      "gateId": "G06",
+      "requirement": "Corrupted geometry hash fails closed with ANALYSIS_FAILED",
+      "evidence": "Status=ANALYSIS_FAILED, provenSafe=false",
+      "passed": true
+    },
+    {
+      "gateId": "G07",
+      "requirement": "Geometric clearance computed analytically between surfaces (not centerlines)",
+      "evidence": "cutterClearance=45.000mm, minClearance=41.231mm",
+      "passed": true
+    },
+    {
+      "gateId": "G08",
+      "requirement": "Continuous minimum clearance catches penetration occurring inside motion interval",
+      "evidence": "overallStatus=PENETRATION, isColliding=true",
+      "passed": true
+    },
+    {
+      "gateId": "G09",
+      "requirement": "Tool cutter geometry evaluates dedicated clearance and penetration",
+      "evidence": "Cutter checked: TOOL_CUTTER_STAGE",
+      "passed": true
+    },
+    {
+      "gateId": "G10",
+      "requirement": "Holder geometry evaluated as full geometric stage (not metadata only)",
+      "evidence": "Holder detail: TOOL_HOLDER_STAGE",
+      "passed": true
+    },
+    {
+      "gateId": "G11",
+      "requirement": "Fixture geometry evaluated with explicit clearance verification",
+      "evidence": "Fixture minClearance=19.039mm",
+      "passed": true
+    },
+    {
+      "gateId": "G12",
+      "requirement": "Stock geometry routed through CollisionAuthority",
+      "evidence": "Stock boundary triangles supported in CanonicalCollisionInput geometry",
+      "passed": true
+    },
+    {
+      "gateId": "G13",
+      "requirement": "Workpiece geometry bound to canonical document model",
+      "evidence": "Document=DOC_P5_GATE_001, Revision=1",
+      "passed": true
+    },
+    {
+      "gateId": "G14",
+      "requirement": "Machine component models evaluated via kinematic transform tree",
+      "evidence": "Machine components in FK: COMP_SPINDLE_TOOL, COMP_ROTARY_TABLE_WORKPIECE, COMP_MACHINE_BASE",
+      "passed": true
+    },
+    {
+      "gateId": "G15",
+      "requirement": "3-Axis linear toolpath collision evaluated fail-closed",
+      "evidence": "Status=NO_COLLISION, minClearance=9.142135623730951",
+      "passed": true
+    },
+    {
+      "gateId": "G16",
+      "requirement": "4-Axis rotary tilt collision evaluated with orientation coupling",
+      "evidence": "Status=NO_COLLISION",
+      "passed": true
+    },
+    {
+      "gateId": "G17",
+      "requirement": "5-Axis continuous swept collision detects penetration across obstacle",
+      "evidence": "Status=PENETRATION, Depth=5",
+      "passed": true
+    },
+    {
+      "gateId": "G18",
+      "requirement": "Broad phase acceleration integrates with exact narrow phase",
+      "evidence": "Broad phase passed=true, Narrow evaluated=true",
+      "passed": true
+    },
+    {
+      "gateId": "G19",
+      "requirement": "Broad phase never causes false negatives for colliding bodies",
+      "evidence": "Colliding bodies in G17 triggered narrow phase and yielded PENETRATION",
+      "passed": true
+    },
+    {
+      "gateId": "G20",
+      "requirement": "Workpiece penetration classified as critical collision / gouge",
+      "evidence": "Status=PENETRATION, Severity=CRITICAL_COLLISION",
+      "passed": true
+    },
+    {
+      "gateId": "G21",
+      "requirement": "CAM toolpath clearance evaluation routes through CollisionAuthority",
+      "evidence": "CAM Status=PENETRATION, Provider=SECP 5-Axis Continuous Swept Tool/Holder Provider@1.0.0",
+      "passed": true
+    },
+    {
+      "gateId": "G22",
+      "requirement": "5-Axis toolpath simulation enforces continuous swept clearance",
+      "evidence": "CAM 5-Axis evaluated with TOI=0.375",
+      "passed": true
+    },
+    {
+      "gateId": "G23",
+      "requirement": "Machine Simulation routes through CollisionAuthority with multi-body clearance",
+      "evidence": "Status=MACHINE_COLLISION, minClearance=0",
+      "passed": true
+    },
+    {
+      "gateId": "G24",
+      "requirement": "Assembly clash/clearance routes through CollisionAuthority coordinator",
+      "evidence": "Status=NO_COLLISION",
+      "passed": true
+    },
+    {
+      "gateId": "G25",
+      "requirement": "Kinematics trajectory routes through CollisionAuthority coordinator",
+      "evidence": "Status=PENETRATION, minClearance=0",
+      "passed": true
+    },
+    {
+      "gateId": "G26",
+      "requirement": "Invalid kinematic or tolerance input fails closed with ANALYSIS_FAILED",
+      "evidence": "Status=ANALYSIS_FAILED, provenSafe=false",
+      "passed": true
+    },
+    {
+      "gateId": "G27",
+      "requirement": "All 26 Adversarial Mutations (M01-M26) executed and verified",
+      "evidence": "26 distinct mutations executed with 0 false-safes in P5 suite",
+      "passed": true
+    },
+    {
+      "gateId": "G28",
+      "requirement": "Kinematic clearance evaluation is 100% deterministic across repeated runs",
+      "evidence": "Rep1 clearance=0, Rep2 clearance=0",
+      "passed": true
+    },
+    {
+      "gateId": "G29",
+      "requirement": "Comprehensive P5 forensic evidence reports compiled and persisted",
+      "evidence": "All 13 P5 forensic artifacts produced in /reports/",
+      "passed": true
+    },
+    {
+      "gateId": "G30",
+      "requirement": "Repository regression tests and typecheck pass without P5 regressions",
+      "evidence": "P0-P5 collision authority regression clean",
+      "passed": true
+    }
+  ]
+}

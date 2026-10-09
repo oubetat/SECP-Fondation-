@@ -1,0 +1,27 @@
+{
+  "contractId": "CONTRACT-COLLISION-BENCHMARK-001",
+  "name": "Authoritative Benchmark Suite Matrix (B01-B20)",
+  "version": "1.0.0",
+  "benchmarks": [
+    { "id": "B01", "name": "Vertex-Only Miss (Plate Center Plunge)", "expectedClassification": "PENETRATION", "toleranceMm": 0.005 },
+    { "id": "B02", "name": "Edge-Only Cross Intersection", "expectedClassification": "PENETRATION", "toleranceMm": 0.005 },
+    { "id": "B03", "name": "Deep Face Penetration (Complex Mesh)", "expectedClassification": "PENETRATION", "toleranceMm": 0.005 },
+    { "id": "B04", "name": "Thin-Wall Rapid Tunneling (0.5mm wall, 50mm rapid jump)", "expectedClassification": "PENETRATION", "toleranceMm": 0.010 },
+    { "id": "B05", "name": "Exact Tangency / Touching (0.000mm distance)", "expectedClassification": "CONTACT", "toleranceMm": 0.001 },
+    { "id": "B06", "name": "Near-Clearance Warning (1.5mm distance, safe margin 2.0mm)", "expectedClassification": "CLEARANCE_VIOLATION", "toleranceMm": 0.010 },
+    { "id": "B07", "name": "Intended Cutting Flute vs Stock", "expectedClassification": "NO_COLLISION (Intended Cut)", "toleranceMm": 0.020 },
+    { "id": "B08", "name": "Cutter Shank vs Fixture Clamp", "expectedClassification": "FIXTURE_COLLISION", "toleranceMm": 0.010 },
+    { "id": "B09", "name": "Tool Holder Lower vs Part Sidewall", "expectedClassification": "HOLDER_COLLISION", "toleranceMm": 0.010 },
+    { "id": "B10", "name": "Spindle Nose vs Rotary Table Face", "expectedClassification": "MACHINE_COLLISION", "toleranceMm": 0.010 },
+    { "id": "B11", "name": "3-Axis Standard Pocketing (XYZ Cartesian)", "expectedClassification": "NO_COLLISION", "toleranceMm": 0.010 },
+    { "id": "B12", "name": "4-Axis Rotary Toolpath (A-Axis Tilt)", "expectedClassification": "NO_COLLISION", "toleranceMm": 0.010 },
+    { "id": "B13", "name": "Simultaneous 5-Axis Impeller Blade Milling", "expectedClassification": "NO_COLLISION", "toleranceMm": 0.010 },
+    { "id": "B14", "name": "Invalid / Non-Manifold B-Rep Geometry", "expectedClassification": "INVALID_GEOMETRY", "toleranceMm": 0.0 },
+    { "id": "B15", "name": "OCCT Boolean Kernel Crash Injection", "expectedClassification": "ANALYSIS_FAILED", "toleranceMm": 0.0 },
+    { "id": "B16", "name": "Real Production STEP Model (Turbine Assembly)", "expectedClassification": "NO_COLLISION", "toleranceMm": 0.005 },
+    { "id": "B17", "name": "Document Save / Close / Reopen Cycle", "expectedClassification": "IDENTICAL_REPORT_PARITY", "toleranceMm": 0.0 },
+    { "id": "B18", "name": "Deterministic Replay (100 sequential runs)", "expectedClassification": "BYTE_IDENTICAL_HASH", "toleranceMm": 0.0 },
+    { "id": "B19", "name": "Degenerate Zero-Area Triangle Robustness", "expectedClassification": "NO_CRASH_FAIL_CLOSED", "toleranceMm": 0.001 },
+    { "id": "B20", "name": "Cross-Engine Interoperability Test", "expectedClassification": "UNIFIED_RESULT_CONSISTENCY", "toleranceMm": 0.005 }
+  ]
+}

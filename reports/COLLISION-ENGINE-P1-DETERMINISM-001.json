@@ -1,0 +1,10 @@
+{
+  "contractId": "P1-DETERMINISM-001",
+  "name": "P1 Determinism & Geometric Witness Ordering Specification",
+  "version": "1.0.0",
+  "rules": [
+    "Identical inputs produce bit-exact identical floating point distance numbers",
+    "Contact manifold sorting order is deterministic (entityIdA, entityIdB, penetrationDepth)",
+    "No random perturbation or unseeded heuristics permitted"
+  ]
+}

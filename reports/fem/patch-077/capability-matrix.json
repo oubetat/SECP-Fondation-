@@ -1,0 +1,62 @@
+[
+  {
+    "elementTypeId": "BAR2",
+    "family": "BAR",
+    "dimension": "1D",
+    "nodes": 2,
+    "dofsPerNode": 1,
+    "linearStatic": "YES",
+    "thermal": "NO",
+    "dynamic": "YES",
+    "nonlinear": "NO",
+    "status": "VERIFIED"
+  },
+  {
+    "elementTypeId": "TRI3",
+    "family": "TRIANGLE",
+    "dimension": "2D",
+    "nodes": 3,
+    "dofsPerNode": 2,
+    "linearStatic": "YES",
+    "thermal": "NO",
+    "dynamic": "YES",
+    "nonlinear": "NO",
+    "status": "VERIFIED"
+  },
+  {
+    "elementTypeId": "QUAD4",
+    "family": "QUADRILATERAL",
+    "dimension": "2D",
+    "nodes": 4,
+    "dofsPerNode": 2,
+    "linearStatic": "YES",
+    "thermal": "NO",
+    "dynamic": "YES",
+    "nonlinear": "NO",
+    "status": "VERIFIED"
+  },
+  {
+    "elementTypeId": "TET4",
+    "family": "TETRAHEDRON",
+    "dimension": "3D",
+    "nodes": 4,
+    "dofsPerNode": 3,
+    "linearStatic": "YES",
+    "thermal": "NO",
+    "dynamic": "YES",
+    "nonlinear": "NO",
+    "status": "VERIFIED"
+  },
+  {
+    "elementTypeId": "HEX8",
+    "family": "HEXAHEDRON",
+    "dimension": "3D",
+    "nodes": 8,
+    "dofsPerNode": 3,
+    "linearStatic": "YES",
+    "thermal": "NO",
+    "dynamic": "YES",
+    "nonlinear": "NO",
+    "status": "VERIFIED"
+  }
+]

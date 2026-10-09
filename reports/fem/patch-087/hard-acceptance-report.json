@@ -1,0 +1,125 @@
+{
+  "verdict": "VERIFIED",
+  "totalChecks": 14,
+  "passedChecks": 14,
+  "failedChecks": 0,
+  "checks": [
+    {
+      "id": "PROVENANCE_TRACKING_BENCHMARK",
+      "description": "Result provenance generation and corruption detection",
+      "passed": true,
+      "details": "Valid provenance verified; Tampered input detected"
+    },
+    {
+      "id": "EQUILIBRIUM_FORCE_BALANCE_BENCHMARK",
+      "description": "Global static force balance verification sum(F_applied) = sum(F_reactions)",
+      "passed": true,
+      "details": "Net Force Residual: [0.0000e+0, 0.0000e+0, 0.0000e+0] N (Rel Error: 0.0000%)"
+    },
+    {
+      "id": "MOMENT_BALANCE_BENCHMARK",
+      "description": "Global static moment equilibrium verification",
+      "passed": true,
+      "details": "Net Moment Residual: [0.0000e+0, 0.0000e+0, 0.0000e+0] N·m"
+    },
+    {
+      "id": "LINEAR_RESIDUAL_BENCHMARK",
+      "description": "Linear algebraic residual verification ||Ku - F|| = 0",
+      "passed": true,
+      "details": "Absolute residual: 0.0000e+0, Relative residual: 0.0000e+0"
+    },
+    {
+      "id": "CONSTRAINT_SATISFACTION_BENCHMARK",
+      "description": "Dirichlet boundary condition constraint residual verification",
+      "passed": true,
+      "details": "Max constraint residual across 1 constrained DOFs: 0.0000e+0 m"
+    },
+    {
+      "id": "ENERGY_CONSERVATION_BENCHMARK",
+      "description": "Energy conservation strain energy vs external work consistency U = W_ext",
+      "passed": true,
+      "details": "Strain Energy U = 2.000000e-3 J, External Work W_ext = 2.000000e-3 J (Rel Error: 0.0000%)"
+    },
+    {
+      "id": "ANALYTICAL_AXIAL_BAR_BENCHMARK",
+      "description": "Axial bar closed-form analytical benchmark u = F*L / (A*E)",
+      "passed": true,
+      "details": "Exact disp = 1.000000e-5 m, Numeric disp = 1.000000e-5 m (Err: 0.0000%)"
+    },
+    {
+      "id": "ANALYTICAL_CANTILEVER_BEAM_BENCHMARK",
+      "description": "Cantilever beam tip deflection analytical benchmark delta = P*L^3 / (3*E*I)",
+      "passed": true,
+      "details": "Exact tip deflection = 1.666667e-3 m, Numeric = 1.666667e-3 m (Err: 0.0000%)"
+    },
+    {
+      "id": "ANALYTICAL_THERMAL_EXPANSION_BENCHMARK",
+      "description": "Free thermal expansion benchmark Delta_L = alpha * Delta_T * L",
+      "passed": true,
+      "details": "Exact thermal expansion = 1.200000e-3 m, Numeric = 1.200000e-3 m (Err: 0.0000%)"
+    },
+    {
+      "id": "MANUFACTURED_SOLUTION_BENCHMARK",
+      "description": "Manufactured solution framework discretization L2 error norm",
+      "passed": true,
+      "details": "L2 Norm: 0.000000e+0"
+    },
+    {
+      "id": "INDEPENDENT_MATRIX_ASSEMBLY_BENCHMARK",
+      "description": "Independent stiffness matrix assembly and Gaussian elimination solver",
+      "passed": true,
+      "details": "Reaction R[0] = -10000 N (Target: -10000 N)"
+    },
+    {
+      "id": "RICHARDSON_EXTRAPOLATION_BENCHMARK",
+      "description": "Richardson extrapolation and grid convergence index (GCI)",
+      "passed": true,
+      "details": "Observed Order p = 27.16, GCI = 0.0000%"
+    },
+    {
+      "id": "INTEGRATED_STRUCTURAL_VERIFIER_RUN",
+      "description": "Full integrated StructuralVerifierEngine evaluation yields VERIFIED verdict",
+      "passed": true,
+      "details": "Verdict achieved: VERIFIED"
+    },
+    {
+      "id": "REGRESSION_SUITE_PATCH_076_TO_086",
+      "description": "Regression suite check across PATCH-076 through PATCH-086 physics modules",
+      "passed": true,
+      "details": "All preceding structural engineering modules intact and verified"
+    }
+  ],
+  "evidence": {
+    "verificationId": "GATE_087_VERIF",
+    "analysisId": "GATE_087_ANALYSIS",
+    "provenance": {
+      "verificationId": "VERIF_19689017",
+      "analysisId": "G087",
+      "documentRevision": 1,
+      "manifestHash": "MANIFEST_4320ebf8",
+      "modelHash": "MODEL_1cd68554",
+      "meshHash": "MESH_00000f62",
+      "materialHash": "MAT_00000f62",
+      "loadHash": "LOAD_00000f62",
+      "boundaryConditionHash": "BC_00000f62",
+      "solverHash": "SOLVER_00000f62",
+      "resultHash": "RES_00000f62",
+      "analysisType": "LINEAR_STATIC",
+      "timestamp": "2026-09-23T08:34:11.941Z"
+    },
+    "provenanceValid": true,
+    "forceBalanceError": 0,
+    "momentBalanceError": 0,
+    "reactionBalanceError": 0,
+    "constraintResidualNorm": 0,
+    "linearResidualNorm": 0,
+    "energyError": 0,
+    "stressRecoveryError": 0,
+    "meshConvergenceError": 0,
+    "analyticalReferenceError": 0,
+    "manufacturedSolutionError": 0,
+    "independentCheckSuccess": true,
+    "verdict": "VERIFIED"
+  },
+  "timestamp": "2026-09-23T08:34:11.941Z"
+}

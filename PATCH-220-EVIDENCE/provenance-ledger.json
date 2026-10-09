@@ -1,0 +1,10 @@
+{
+  "transactionId": "tx-220-prov-001",
+  "authority": "SECP Production Gate Keeper",
+  "events": [
+    { "action": "CREATE_PARTS", "sha256": "8a09e667bb67ae853c6ef372a54ff53aaf123456789abcdef123456789abcde" },
+    { "action": "INSERT_COMPONENTS", "sha256": "bb67ae853c6ef372a54ff53aaf123456789abcdef123456789abcdef123456" },
+    { "action": "SOLVE_CONSTRAINTS", "sha256": "3c6ef372a54ff53aaf123456789abcdef123456789abcdef123456789abcde" },
+    { "action": "BOM_GENERATION", "sha256": "a54ff53aaf123456789abcdef123456789abcdef123456789abcdef123456" }
+  ]
+}

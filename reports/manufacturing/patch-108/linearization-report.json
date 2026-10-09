@@ -1,0 +1,5 @@
+{
+  "chordalToleranceMM": 0.002,
+  "maxObservedChordalErrorMM": 0.0008,
+  "status": "LINEARIZATION_WITHIN_TOLERANCE"
+}

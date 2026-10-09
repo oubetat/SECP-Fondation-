@@ -1,0 +1,19 @@
+{
+  "patch": "PATCH-008",
+  "timestamp": "2026-08-18T08:05:43.000Z",
+  "suite": "src/engine/identity/__tests__/CanonicalEngineeringIdentity.adversarial.test.ts",
+  "totalTests": 9,
+  "passed": 9,
+  "failed": 0,
+  "tests": [
+    "ADVERSARIAL 1: Same artifact with different timestamp produces same canonical identity",
+    "ADVERSARIAL 2: Same artifact with different runtime UUID produces same canonical identity",
+    "ADVERSARIAL 3: ExternalId differences do not mutate core artifact identifier",
+    "ADVERSARIAL 4: Geometry and Mesh with same artifactId are NOT the same identity",
+    "ADVERSARIAL 5: Revisions r001 and r002 are distinct revisions, original artifact identity unchanged",
+    "ADVERSARIAL 6: artifactId containing newline or control characters is rejected",
+    "ADVERSARIAL 7: Invalid namespace 'FAKE' is rejected",
+    "ADVERSARIAL 8: Unsupported schemaVersion is rejected",
+    "ADVERSARIAL 9: CanonicalEngineeringIdentityGate evaluates to PASS"
+  ]
+}

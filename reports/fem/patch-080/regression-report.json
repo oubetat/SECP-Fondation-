@@ -1,0 +1,7 @@
+{
+  "name": "PURE_ELASTIC_REGRESSION",
+  "passed": true,
+  "maxError": 0,
+  "tolerance": 1e-10,
+  "details": "Matches linear elastic Hookean response with zero plastic error: 0.0000e+0"
+}

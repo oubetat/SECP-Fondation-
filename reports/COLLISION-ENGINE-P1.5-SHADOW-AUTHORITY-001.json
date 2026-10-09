@@ -1,0 +1,115 @@
+{
+  "missionId": "COLLISION-ENGINE-P1.5-AUTHORITY-INTEGRATION-FORENSICS-001",
+  "artifactType": "SHADOW_AUTHORITY_INVENTORY",
+  "timestamp": "2026-10-01T01:48:00.000Z",
+  "shadowAuthorities": [
+    {
+      "id": "SHADOW_01_CAM_COLLISION_DETECTION_ENGINE",
+      "location": "src/engine/cam/collision/CollisionDetectionEngine.ts",
+      "method": "verifyToolpath()",
+      "returnType": "{ report: CollisionReport; evidence: CollisionEvidencePackage; events: IndustrialOSEvent[] }",
+      "authorityLevel": "DECLARES_OWN_AUTHORITY",
+      "exactness": "CLAIMS_EXACT_BUT_USES_SAMPLING",
+      "consumers": ["components/cam/CollisionDetectionWorkspace.tsx", "HardAcceptanceGate259.ts"]
+    },
+    {
+      "id": "SHADOW_02_CAM_FIVE_AXIS_COLLISION_ENGINE",
+      "location": "src/engine/cam/fiveaxis/FiveAxisCollisionEngine.ts",
+      "method": "CAMCollisionEngine.checkSegmentCollision()",
+      "returnType": "{ hasCollision: boolean; collisionEvent?: CollisionEvent; minClearanceMm: number }",
+      "authorityLevel": "DECLARES_OWN_AUTHORITY",
+      "exactness": "VERTEX_ONLY_SAMPLING",
+      "consumers": ["ToolAxisOptimizer.ts", "True5AxisToolpathEngine.ts", "NCSimulationEngine.ts"]
+    },
+    {
+      "id": "SHADOW_03_CAM_MACHINE_COLLISION_ENGINE",
+      "location": "src/engine/cam/machine-sim/MachineCollisionEngine.ts",
+      "method": "evaluatePoseCollisions()",
+      "returnType": "CollisionRecord[]",
+      "authorityLevel": "DECLARES_OWN_AUTHORITY",
+      "exactness": "AABB_CENTER_OVERLAP",
+      "consumers": ["MachineSimulationEngine.ts"]
+    },
+    {
+      "id": "SHADOW_04_MANUFACTURING_COLLISION_DETECTOR",
+      "location": "src/engine/manufacturing/collision/CollisionDetector.ts",
+      "method": "evaluateToolpath()",
+      "returnType": "CollisionDetectionReport",
+      "authorityLevel": "DECLARES_OWN_AUTHORITY",
+      "exactness": "ADAPTIVE_SAMPLING",
+      "consumers": ["CollisionAvoidanceAdversarialSuite.ts", "CollisionAvoidanceEngine.ts"]
+    },
+    {
+      "id": "SHADOW_05_ASSEMBLY_CLASH_DETECTION_ENGINE",
+      "location": "src/engine/assembly/clash/ClashDetectionEngine.ts",
+      "method": "detectClashes()",
+      "returnType": "ClashAssemblyReport",
+      "authorityLevel": "DECLARES_OWN_AUTHORITY",
+      "exactness": "PRIMITIVE_ANALYTICAL_NO_BREP",
+      "consumers": ["AssemblyBattery.ts"]
+    },
+    {
+      "id": "SHADOW_06_ASSEMBLY_INTERFERENCE_DETECTION_ENGINE",
+      "location": "src/engine/assembly/InterferenceDetectionEngine.ts",
+      "method": "analyze()",
+      "returnType": "AssemblyInterferenceReport",
+      "authorityLevel": "DECLARES_OWN_AUTHORITY",
+      "exactness": "HARDCODED_OFFSETS_AND_MOCK_STRINGS",
+      "consumers": ["components/AssemblyWorkspace.tsx", "HardAcceptanceGate217.ts"]
+    },
+    {
+      "id": "SHADOW_07_ASSEMBLY_INTERFERENCE_ENGINE_OCCT",
+      "location": "src/engine/assembly/AssemblyInterferenceEngine.ts",
+      "method": "analyzeInterference()",
+      "returnType": "AssemblyInterferenceReport",
+      "authorityLevel": "DECLARES_OWN_AUTHORITY",
+      "exactness": "OCCT_BREP_BOOLEAN",
+      "consumers": ["HardAcceptanceGate043.ts", "HardAcceptanceGate046.ts"]
+    },
+    {
+      "id": "SHADOW_08_ASSEMBLY_INTELLIGENCE_COLLISION",
+      "location": "src/engine/assembly-intelligence/CollisionDetectionEngine.ts",
+      "method": "checkStaticInterference()",
+      "returnType": "CollisionRecord",
+      "authorityLevel": "DECLARES_OWN_AUTHORITY",
+      "exactness": "HARDCODED_DISTANCE_MINUS_30",
+      "consumers": ["HardAcceptanceGate072.ts"]
+    },
+    {
+      "id": "SHADOW_09_ASSEMBLY_INTELLIGENCE_DYNAMIC",
+      "location": "src/engine/assembly-intelligence/DynamicInterferenceEngine.ts",
+      "method": "checkDynamicCollisions()",
+      "returnType": "{ hasTransientCollision: boolean; collisionSteps: any[] }",
+      "authorityLevel": "DECLARES_OWN_AUTHORITY",
+      "exactness": "HARDCODED_FALSE_STUB",
+      "consumers": ["HardAcceptanceGate072.ts"]
+    },
+    {
+      "id": "SHADOW_10_KINEMATICS_COLLISION_ENGINE",
+      "location": "src/engine/kinematics/CollisionEngine.ts",
+      "method": "verifyPath()",
+      "returnType": "{ collisions: CollisionEvent[]; gougingEvents: GougingEvent[]; clearanceResult: ClearanceResult }",
+      "authorityLevel": "DECLARES_OWN_AUTHORITY",
+      "exactness": "AABB_BOUNDS_TIP_ONLY",
+      "consumers": ["FiveAxisVerificationEngine.ts", "IndustrialReadinessEngine.ts"]
+    },
+    {
+      "id": "SHADOW_11_CLASSA_GOUGE_VERIFIER",
+      "location": "src/engine/classa5axis/SECP083GougeVerifier.ts",
+      "method": "verifyGougesAndClearance()",
+      "returnType": "{ gougeCount: number; totalPointsChecked: number; holderCollisionCount: number; shankCollisionCount: number; minimumClearanceMm: number }",
+      "authorityLevel": "DECLARES_OWN_AUTHORITY",
+      "exactness": "HARDCODED_ZERO_STUB",
+      "consumers": ["FiveAxisCamAdapter.ts"]
+    },
+    {
+      "id": "SHADOW_12_CAD_ASSEMBLY_INTERFERENCE_ANALYZER",
+      "location": "src/engine/cad-kernel/document/AssemblyInterferenceAnalyzer.ts",
+      "method": "analyzeAssemblyInterference()",
+      "returnType": "GlobalAssemblyInterferenceReport",
+      "authorityLevel": "DECLARES_OWN_AUTHORITY",
+      "exactness": "HIERARCHICAL_BOUNDING_BOX",
+      "consumers": ["PATCH-039C-HierarchicalKinematicsAndInterference.test.ts"]
+    }
+  ]
+}

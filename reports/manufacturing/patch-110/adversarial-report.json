@@ -1,0 +1,85 @@
+{
+  "passed": true,
+  "results": [
+    {
+      "testId": "ADV-110-01",
+      "name": "Stale Telemetry Classification",
+      "passed": true,
+      "expectedVerdict": "STALE_CLASSIFIED",
+      "actualVerdict": "STALE_CLASSIFIED",
+      "evidence": "Telemetry with age 5000ms correctly classified as STALE vs 200ms threshold."
+    },
+    {
+      "testId": "ADV-110-02",
+      "name": "Rejection of NaN/Infinity Telemetry",
+      "passed": true,
+      "expectedVerdict": "REJECTED",
+      "actualVerdict": "REJECTED",
+      "evidence": "Ingested 1 NaN and 1 Infinity packets rejected."
+    },
+    {
+      "testId": "ADV-110-03",
+      "name": "Unit Mismatch Rejection",
+      "passed": true,
+      "expectedVerdict": "INVALID_UNIT_REJECTED",
+      "actualVerdict": "INVALID_UNIT_REJECTED",
+      "evidence": "Packet with unit 'gallons' rejected against strict domain unit whitelist."
+    },
+    {
+      "testId": "ADV-110-04",
+      "name": "Duplicate Telemetry Suppression",
+      "passed": true,
+      "expectedVerdict": "DUPLICATE_SUPPRESSED",
+      "actualVerdict": "DUPLICATE_SUPPRESSED",
+      "evidence": "Duplicate packet with identical sensor, sequence, and timestamp suppressed."
+    },
+    {
+      "testId": "ADV-110-05",
+      "name": "Out-of-Order Packet Chronological Reconciliation",
+      "passed": true,
+      "expectedVerdict": "CHRONOLOGICALLY_SORTED",
+      "actualVerdict": "CHRONOLOGICALLY_SORTED",
+      "evidence": "Packets ordered chronologically; final state evaluates to t3 timestamp position."
+    },
+    {
+      "testId": "ADV-110-06",
+      "name": "Tool Configuration Drift Detection",
+      "passed": true,
+      "expectedVerdict": "CONFIGURATION_DRIFT",
+      "actualVerdict": "CONFIGURATION_DRIFT",
+      "evidence": "Tool mismatch (T2 vs T1) accurately classified as CONFIGURATION_DRIFT."
+    },
+    {
+      "testId": "ADV-110-07",
+      "name": "Axis State Divergence Detection",
+      "passed": true,
+      "expectedVerdict": "STATE_DIVERGENCE",
+      "actualVerdict": "STATE_DIVERGENCE",
+      "evidence": "50.0mm position deviation triggered CRITICAL divergence and STATE_DIVERGENCE verdict."
+    },
+    {
+      "testId": "ADV-110-08",
+      "name": "Cryptographic State Hash Chain Verification",
+      "passed": true,
+      "expectedVerdict": "CHAIN_VALID",
+      "actualVerdict": "CHAIN_VALID",
+      "evidence": "Immutable append-only state trace successfully validated through SHA-256 hash chaining."
+    },
+    {
+      "testId": "ADV-110-09",
+      "name": "Thermal Fault Anomaly Detection",
+      "passed": true,
+      "expectedVerdict": "THERMAL_FAULT_DETECTED",
+      "actualVerdict": "THERMAL_FAULT_DETECTED",
+      "evidence": "65°C bearing temperature (>60°C fault threshold) escalated spindle health to FAULT."
+    },
+    {
+      "testId": "ADV-110-10",
+      "name": "Offline Mode Telemetry Gating",
+      "passed": true,
+      "expectedVerdict": "OFFLINE_GATED",
+      "actualVerdict": "OFFLINE_GATED",
+      "evidence": "Twin in OFFLINE state rejected live updates and flagged watchdog disconnect event."
+    }
+  ]
+}

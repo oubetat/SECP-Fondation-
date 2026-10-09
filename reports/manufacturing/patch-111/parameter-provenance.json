@@ -1,0 +1,23 @@
+{
+  "artifactId": "TOOLPATH_AERO_01",
+  "parameters": [
+    {
+      "parameterName": "stepOver",
+      "value": 4,
+      "source": "USER_DEFINED",
+      "isExplicit": true
+    },
+    {
+      "parameterName": "feedRateMMMin",
+      "value": 1200,
+      "source": "MATERIAL_DATABASE",
+      "isExplicit": true
+    },
+    {
+      "parameterName": "maxRPM",
+      "value": 8000,
+      "source": "MACHINE_LIMIT",
+      "isExplicit": true
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "reportId": "COLLISION-ENGINE-P5-DETERMINISM-001",
+  "timestampIso": "2026-10-02T08:01:27.700Z",
+  "runsTested": 100,
+  "deterministicReproducibility": true,
+  "varianceToleranceMm": 0,
+  "scopeNote": "Deterministic serialized-result and canonical hash reproducibility under the qualified execution environment.",
+  "verdict": "PASSED"
+}

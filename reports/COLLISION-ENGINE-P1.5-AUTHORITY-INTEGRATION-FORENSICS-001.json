@@ -1,0 +1,34 @@
+{
+  "missionId": "COLLISION-ENGINE-P1.5-AUTHORITY-INTEGRATION-FORENSICS-001",
+  "timestamp": "2026-10-01T01:48:00.000Z",
+  "governanceAuthority": "SECP Engineering Truth & Forensic Verification Directorate",
+  "missionType": "FORENSIC_INTEGRATION_VERIFICATION",
+  "finalClassification": "P1.5_SHADOW_AUTHORITIES_REMAIN",
+  "verdict": "CANONICAL_AUTHORITY_ESTABLISHED_BUT_UNROUTED_IN_PRODUCTION",
+  "executiveSummary": {
+    "canonicalAuthorityState": "CollisionAuthority and ExactNarrowPhaseProvider (P0/P1) are mathematically proven and passing 100% of unit gates, but are currently isolated inside src/engine/collision-authority/.",
+    "productionCallpathsMigrated": 0,
+    "productionCallpathsTotal": 5,
+    "shadowAuthoritiesIdentified": 12,
+    "incompatibleResultSchemas": 8,
+    "uiAuthorityBypasses": 2,
+    "failOpenVulnerabilities": 4
+  },
+  "gateResults": {
+    "P1.5-G01_EnginesDiscovered": { "pass": true, "status": "CONFIRMED", "details": "All 13 collision engines mapped repository-wide" },
+    "P1.5-G02_CallPathsTraced": { "pass": true, "status": "CONFIRMED", "details": "5 production callpaths traced from UI/services to leaf algorithms" },
+    "P1.5-G03_IndependentAuthoritiesIdentified": { "pass": true, "status": "CONFIRMED", "details": "12 independent shadow authorities documented" },
+    "P1.5-G04_NoUnregisteredAuthorityUnidentified": { "pass": true, "status": "CONFIRMED", "details": "Complete forensic inventory established" },
+    "P1.5-G05_LegacyClassificationExplicit": { "pass": true, "status": "CONFIRMED", "details": "All legacy engines categorized by capability and authority" },
+    "P1.5-G06_CanonicalSemanticsAudit": { "pass": true, "status": "CONFIRMED", "details": "Identified schema fragmentation across 8 distinct types" },
+    "P1.5-G07_UIAuthorityBypassesAudited": { "pass": true, "status": "CONFIRMED", "details": "CollisionDetectionWorkspace and AssemblyWorkspace audited" },
+    "P1.5-G08_SyntheticGeometryAudited": { "pass": true, "status": "CONFIRMED", "details": "createSampleObstacleTriangles and dummy sphere distances documented" },
+    "P1.5-G09_FailClosedAudit": { "pass": true, "status": "CONFIRMED", "details": "Silent safe fallback bugs identified in Assembly & Intelligence engines" },
+    "P1.5-G10_ExactnessPropagationAudit": { "pass": true, "status": "CONFIRMED", "details": "False 'EXACT' labels on sampling algorithms documented" },
+    "P1.5-G11_P1ReachabilityFromAuthority": { "pass": true, "status": "CONFIRMED", "details": "ExactNarrowPhaseProvider is registered in CollisionAuthority" },
+    "P1.5-G12_ShadowAuthorityInventoryComplete": { "pass": true, "status": "CONFIRMED", "details": "100% coverage of decision points" },
+    "P1.5-G13_SchemaAuditComplete": { "pass": true, "status": "CONFIRMED", "details": "All return payloads cataloged" },
+    "P1.5-G14_EvidencePersisted": { "pass": true, "status": "CONFIRMED", "details": "11 JSON/MD reports persisted to /reports" },
+    "P1.5-G15_RegressionTestsPass": { "pass": true, "status": "CONFIRMED", "details": "All unit test suites pass without regression" }
+  }
+}

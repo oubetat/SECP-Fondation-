@@ -1,0 +1,6 @@
+{
+  "patch": "PATCH-059",
+  "metric": "Max Local Energy Imbalance",
+  "policy": "Local Control Volume Conservation",
+  "status": "VERIFIED_IN_GATE"
+}

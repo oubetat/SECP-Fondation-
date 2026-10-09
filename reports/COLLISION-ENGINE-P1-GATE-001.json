@@ -1,0 +1,24 @@
+{
+  "contractId": "P1-GATE-001",
+  "name": "Hard Acceptance Gate P1 Scorecard",
+  "version": "1.0.0",
+  "status": "PASSED",
+  "gates": {
+    "P1-G01": { "name": "Segment-triangle mathematics independently verified", "status": "PASS" },
+    "P1-G02": { "name": "Triangle-triangle mathematics independently verified", "status": "PASS" },
+    "P1-G03": { "name": "Capsule-triangle mathematics independently verified", "status": "PASS" },
+    "P1-G04": { "name": "No vertex-only authoritative decision remains (Counterexample A resolved)", "status": "PASS" },
+    "P1-G05": { "name": "No centroid-only authoritative decision remains (Counterexample C resolved)", "status": "PASS" },
+    "P1-G06": { "name": "No fixed discrete segment sampling presented as exact (Counterexample D resolved)", "status": "PASS" },
+    "P1-G07": { "name": "Degenerate geometry fails safely without NaN or crash", "status": "PASS" },
+    "P1-G08": { "name": "Near-contact numerical behavior deterministic and documented", "status": "PASS" },
+    "P1-G09": { "name": "All confirmed forensic counterexamples have regression coverage", "status": "PASS" },
+    "P1-G10": { "name": "Exactness declaration accurate (EXACT backed by analytical math)", "status": "PASS" },
+    "P1-G11": { "name": "All P1 results route through P0 authority contract", "status": "PASS" },
+    "P1-G12": { "name": "No silent exception -> NO_COLLISION path exists", "status": "PASS" },
+    "P1-G13": { "name": "All P1 tests pass with zero skipped tests", "status": "PASS" },
+    "P1-G14": { "name": "TypeScript/build validation passes", "status": "PASS" },
+    "P1-G15": { "name": "All P1 evidence artifacts persisted", "status": "PASS" }
+  },
+  "overallVerdict": "PASS (P1 Exact Narrow-Phase Mathematics Verified)"
+}

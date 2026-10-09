@@ -1,0 +1,6 @@
+{
+  "toolChangeMCode": "M06",
+  "spindleStopBeforeChange": true,
+  "coolantOffBeforeChange": true,
+  "safeZRetract": 50
+}

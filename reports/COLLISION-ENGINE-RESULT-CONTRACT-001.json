@@ -1,0 +1,60 @@
+{
+  "contractId": "CONTRACT-COLLISION-RESULT-001",
+  "name": "Canonical Single Result Contract",
+  "version": "1.0.0",
+  "resultSchema": {
+    "status": {
+      "type": "Enum",
+      "allowedValues": [
+        "NO_COLLISION",
+        "CONTACT",
+        "PENETRATION",
+        "CLEARANCE_VIOLATION",
+        "GOUGE",
+        "HOLDER_COLLISION",
+        "FIXTURE_COLLISION",
+        "MACHINE_COLLISION",
+        "STOCK_COLLISION",
+        "INTERFERENCE",
+        "ANALYSIS_FAILED",
+        "INVALID_GEOMETRY",
+        "UNKNOWN"
+      ]
+    },
+    "severity": {
+      "type": "Enum",
+      "allowedValues": ["NONE", "CLEARANCE_WARNING", "ERROR", "CRITICAL_COLLISION", "FATAL_FAILURE"]
+    },
+    "metrics": {
+      "minClearanceMm": "Float64 (>= 0.0, Infinity if disjoint without bound)",
+      "maxPenetrationDepthMm": "Float64 (>= 0.0)",
+      "volumetricInterferenceMm3": "Float64 (>= 0.0)"
+    },
+    "contactManifold": {
+      "type": "Array<ContactPoint>",
+      "fields": {
+        "positionWCS": "{ x: Float64, y: Float64, z: Float64 }",
+        "normalWCS": "{ x: Float64, y: Float64, z: Float64 } (Unit vector pointing from BodyB to BodyA)",
+        "penetrationDepthMm": "Float64",
+        "entityIdA": "String (Canonical Face/Edge/Component ID)",
+        "entityIdB": "String (Canonical Face/Edge/Component ID)"
+      }
+    },
+    "temporalInfo": {
+      "timeOfImpactNormalized": "Float64 (0.0 to 1.0 along trajectory, null if static)",
+      "criticalSubStepIndex": "Integer",
+      "criticalPose": "ToolPose"
+    },
+    "diagnostics": {
+      "algorithm": "String",
+      "evaluationDurationMs": "Float64",
+      "kernelMessages": "Array<String>",
+      "errorDetails": "String | null"
+    }
+  },
+  "invariantRules": [
+    "status === 'NO_COLLISION' REQUIRES metrics.maxPenetrationDepthMm === 0.0 AND metrics.minClearanceMm >= safeMargin",
+    "status in ['ANALYSIS_FAILED', 'INVALID_GEOMETRY', 'UNKNOWN'] MUST set severity to at least 'ERROR'",
+    "Exceptions or unhandled kernel states MUST NEVER return status === 'NO_COLLISION'"
+  ]
+}

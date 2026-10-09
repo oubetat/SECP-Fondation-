@@ -1,0 +1,25 @@
+{
+  "missionId": "NACA0012-VV-FINAL-TRUTH-CLOSURE-003",
+  "timestamp": "2026-09-30T08:53:55.040Z",
+  "traceDescription": "SST k -> SST omega -> nut -> mu_eff -> diffusion coefficient -> aP/aN -> momentum RHS -> U*",
+  "mechanismProof": {
+    "diffusionCoeffFormula": "D_f = (mu + nut) * face.area / d_PN",
+    "aN_formula": "aN = D_f + max(-F_outward, 0)",
+    "aP_formula": "aP = sum(aN) + F_outward_sum (unrelaxed); aP_u = aP / alpha_u",
+    "influenceFraction": "In the boundary layer, nut ~ 1e-4 to 1e-3, mu = 2.04e-7. Turbulent viscosity increases D_f by ~1000x relative to laminar, dominating the diagonal aP and coupling turbulence perturbations directly into the momentum predictor."
+  },
+  "iteration150Snapshot": {
+    "meanK": 0.00013644402297025075,
+    "maxK": 0.0002728879459405015,
+    "minK": 1e-10,
+    "meanOmega": 2321.049445565863,
+    "maxOmega": 4642.098891131626,
+    "minOmega": 1e-10,
+    "maxNut": 0.00010926652447357138,
+    "minNut": 1.0000000000000596e-10,
+    "maxDeltaNut": 0.000008578497539570875,
+    "maxRelDeltaNut": 0.34735814776554474,
+    "maxDeltaK": 0,
+    "maxDeltaOmega": 4642.098891131526
+  }
+}

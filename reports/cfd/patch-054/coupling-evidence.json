@@ -1,0 +1,53 @@
+{
+  "patchId": "PATCH-054",
+  "timestamp": "2026-08-19T00:00:00.000Z",
+  "evidenceRecord": {
+    "evidenceId": "EVID-COUPLING-BENCHMARK_GATE_054-SIMPLE_COUPLING_INCOMPRESSIBLE_3D",
+    "patchId": "PATCH-054",
+    "caseId": "BENCHMARK_GATE_054",
+    "schemeId": "SIMPLE_COUPLING_INCOMPRESSIBLE_3D",
+    "schemeVersion": "1.0.0",
+    "flowAssumptions": {
+      "constantDensity": true,
+      "incompressible": true,
+      "singlePhase": true,
+      "noCompressibilityCorrection": true,
+      "noTurbulence": true,
+      "noEnergyCoupling": true,
+      "noTransient": true
+    },
+    "meshHash": "MESH_HEX_2X2X2_HASH",
+    "physicsModel": {
+      "density": 1.225,
+      "viscosity": 0.0000181
+    },
+    "pressureReference": {
+      "type": "FIXED_CELL",
+      "referenceCellId": 0,
+      "referencePressure": 101325
+    },
+    "relaxationFactors": {
+      "pressureRelaxation": 0.3,
+      "velocityRelaxation": 0.7
+    },
+    "iterations": 1,
+    "residualHistoryHash": "14600022a3d5cfe6bac26515cda475cdedd3e19eefed9bae10dc683cc0e64789",
+    "continuityResult": {
+      "absoluteResidual": 0.019512556313229887,
+      "normalizedResidual": 0.002439069539153736,
+      "maxCellImbalance": 0.009756278156612279
+    },
+    "globalMassBalance": {
+      "inletMassFlow": 12.249999999999998,
+      "outletMassFlow": 12.250000000000004,
+      "netMassImbalance": 5.329070518200751e-15,
+      "relativeImbalance": 4.3502616475108164e-16
+    },
+    "verdict": "PASS",
+    "timestamp": "2026-08-19T00:00:00.000Z",
+    "provenance": {
+      "source": "SECP_COUPLING_FRAMEWORK",
+      "revision": "1.0.0"
+    }
+  }
+}

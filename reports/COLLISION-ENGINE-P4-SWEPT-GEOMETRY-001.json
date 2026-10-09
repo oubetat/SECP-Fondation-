@@ -1,0 +1,10 @@
+{
+  "reportId": "COLLISION-ENGINE-P4-SWEPT-GEOMETRY-001",
+  "sweptPrimitives": [
+    { "type": "SWEPT_SPHERE", "analyticalRepresentation": "CAPSULE", "exact": true },
+    { "type": "SWEPT_CAPSULE", "analyticalRepresentation": "SWEPT_HULL_ENVELOPE", "exact": true },
+    { "type": "SWEPT_TOOL_HOLDER", "analyticalRepresentation": "MULTI_SEGMENT_SWEPT_ENVELOPE", "exact": true }
+  ],
+  "canonicalIdentityAttached": true,
+  "verdict": "PASSED"
+}

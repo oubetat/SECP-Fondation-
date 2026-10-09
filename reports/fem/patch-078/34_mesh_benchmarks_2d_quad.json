@@ -1,0 +1,32 @@
+[
+  {
+    "meshType": "2D Quad 5x5 (25 elems, 72 DOFs)",
+    "numNodes": 36,
+    "totalDOFs": 72,
+    "numElements": 25,
+    "sparseNNZ": 1024,
+    "sparseDensity": 0.19753086419753085,
+    "sparseAssemblyTimeMs": 2.505865999999969,
+    "denseAssemblyTimeMs": 0.10428600000000188,
+    "sparseMemoryBytes": 12580,
+    "denseMemoryBytes": 41472,
+    "memorySavingsPercent": 69.66628086419753,
+    "sparseSpMVTimeMs": 0.002898770000000468,
+    "denseSpMVTimeMs": 0.009875630000000229
+  },
+  {
+    "meshType": "2D Quad 20x20 (400 elems, 882 DOFs)",
+    "numNodes": 441,
+    "totalDOFs": 882,
+    "numElements": 400,
+    "sparseNNZ": 14884,
+    "sparseDensity": 0.019132974429378707,
+    "sparseAssemblyTimeMs": 42.11975199999995,
+    "denseAssemblyTimeMs": null,
+    "sparseMemoryBytes": 182140,
+    "denseMemoryBytes": 6223392,
+    "memorySavingsPercent": 97.07330021955872,
+    "sparseSpMVTimeMs": 0.024848220000000084,
+    "denseSpMVTimeMs": null
+  }
+]

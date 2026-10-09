@@ -1,0 +1,20 @@
+{
+  "phase": "ADSE-P6",
+  "testSuite": "tests/adse/p6/ADSEP6PersistenceProof.test.ts",
+  "verifiedTimestamp": "2026-09-28T08:35:30Z",
+  "configurationId": "CONF-BLOCK-2",
+  "steps": [
+    { "step": 1, "action": "CREATE_MATERIALS", "result": "1 Material Binding Registered (Inconel 718, k=11.4 W/mK)" },
+    { "step": 2, "action": "CREATE_MODEL", "result": "1 Thermal Model Registered (therm:combustor:liner)" },
+    { "step": 3, "action": "CREATE_REGIONS", "result": "2 Canonical Regions Registered (inner wall 900K, outer casing 600K)" },
+    { "step": 4, "action": "CREATE_INTERFACE", "result": "1 Thermal Interface Registered bound to p5:iface:strut_weld_joint" },
+    { "step": 5, "action": "CREATE_PATHS", "result": "1 3-Segment Thermal Dissipation Path Registered" },
+    { "step": 6, "action": "CREATE_BOUNDARIES_AND_LOADS", "result": "1 Heat Source (15kW), 1 Heat Sink (50kW, 450K), 1 Convection BC (120 W/m2K)" },
+    { "step": 7, "action": "CREATE_SNAPSHOT", "result": "Snapshot serialized with 64-char Merkle root" },
+    { "step": 8, "action": "DESTROY_MEMORY", "result": "p6.clear() executed; all maps cleared to 0 items" },
+    { "step": 9, "action": "RECONSTRUCT", "result": "Complete state re-instantiated from snapshot" },
+    { "step": 10, "action": "VERIFY_RECONSTRUCTION", "result": "All model, region, interface, boundary, and material records recovered intact" },
+    { "step": 11, "action": "FORENSIC_AUDIT", "result": "Post-reconstruction audit: 0 critical findings, 0 error findings, 100% consistent" }
+  ],
+  "proofStatus": "VERIFIED_DETERMINISTIC"
+}

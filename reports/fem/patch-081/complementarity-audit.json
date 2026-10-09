@@ -1,0 +1,19 @@
+{
+  "isValid": true,
+  "maxComplementarityViolation": 0.001,
+  "totalNormalForceSlave": [
+    0,
+    1000000
+  ],
+  "totalNormalForceMaster": [
+    0,
+    -1000000
+  ],
+  "actionReactionError": 0,
+  "pressureIntegralResultant": 1000000,
+  "nodalForceResultant": 1000000,
+  "pressureIntegralError": 0,
+  "totalContactWork": 500,
+  "spuriousTangentialDissipation": 0,
+  "errors": []
+}

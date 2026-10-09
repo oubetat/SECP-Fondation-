@@ -1,0 +1,11 @@
+{
+  "reportId": "COLLISION-ENGINE-P4-TOI-001",
+  "toiGuarantees": {
+    "normalizedInterval": "[0.0, 1.0]",
+    "rootFindingTolerance": 1e-6,
+    "firstImpactPropertyVerified": true,
+    "nonPenetratingPriorToToi": true,
+    "degenerateHandlingVerified": true
+  },
+  "verdict": "PASSED"
+}

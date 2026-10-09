@@ -1,0 +1,9 @@
+{
+  "linearPrecision": 4,
+  "rotaryPrecision": 3,
+  "feedPrecision": 1,
+  "spindlePrecision": 0,
+  "stripTrailingZeros": false,
+  "forceExplicitSign": false,
+  "decimalSeparator": "."
+}

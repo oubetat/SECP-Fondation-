@@ -1,0 +1,17 @@
+{
+  "missionId": "COLLISION-ENGINE-FORENSIC-EVIDENCE-ADJUDICATION-001",
+  "timestamp": "2026-10-01T01:14:00.000Z",
+  "authorityAnalysis": {
+    "fragmentationState": "7 uncoordinated collision engines exist with disjoint data structures and incompatible result types.",
+    "clusterMapping": [
+      { "cluster": "Assembly B-Rep Interference", "file": "src/engine/assembly/AssemblyInterferenceEngine.ts", "authorityStatus": "PARTIALLY_AUTHORITATIVE", "domain": "Assembly volumetric interference" },
+      { "cluster": "CAM Toolpath Collision", "file": "src/engine/cam/collision/CollisionDetectionEngine.ts", "authorityStatus": "NON_AUTHORITATIVE", "domain": "CAM tool assembly swept motion" },
+      { "cluster": "5-Axis CAM Clearance", "file": "src/engine/cam/fiveaxis/FiveAxisCollisionEngine.ts", "authorityStatus": "NON_AUTHORITATIVE", "domain": "5-Axis tool holder optimization" },
+      { "cluster": "Manufacturing Simulation", "file": "src/engine/manufacturing/collision/CollisionDetector.ts", "authorityStatus": "NON_AUTHORITATIVE", "domain": "G-code simulation & post-processor verification" },
+      { "cluster": "Assembly Clash (SAT)", "file": "src/engine/assembly/clash/NarrowPhaseDetector.ts", "authorityStatus": "NON_AUTHORITATIVE", "domain": "Gate032 OBB clash tests" },
+      { "cluster": "Kinematic Clearance Bridge", "file": "src/engine/assembly/kinematics/KinematicCollisionClearanceBridge.ts", "authorityStatus": "UNPROVEN / MOCK", "domain": "Mechanism clearance checking" },
+      { "cluster": "Assembly Intelligence", "file": "src/engine/assembly-intelligence/CollisionDetectionEngine.ts", "authorityStatus": "UNPROVEN / MOCK", "domain": "Assembly topology interference" }
+    ],
+    "interoperability": "ZERO: No unified CollisionResult schema or bridge exists between CAM, Assembly, and Kinematics."
+  }
+}

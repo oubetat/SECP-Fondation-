@@ -1,0 +1,24 @@
+{
+  "reportId": "COLLISION-ENGINE-P4-CCD-INVENTORY-001",
+  "inventory": [
+    {
+      "component": "ContinuousSweptCollisionProvider",
+      "status": "AUTHORITATIVE_EXACT",
+      "method": "Exact Analytical Swept Sphere/Capsule/Envelope + SLERP",
+      "tunnelingImmune": true
+    },
+    {
+      "component": "CamFiveAxisCollisionProvider",
+      "status": "AUTHORITATIVE_EXACT",
+      "method": "Continuous Swept Tool/Holder Segment",
+      "tunnelingImmune": true
+    },
+    {
+      "component": "Legacy ContinuousCollisionDetector",
+      "status": "DISCRETE_TEMPORAL_SAMPLING",
+      "method": "Sub-step pose evaluation (4-25 steps)",
+      "tunnelingImmune": false
+    }
+  ],
+  "verdict": "PASSED"
+}

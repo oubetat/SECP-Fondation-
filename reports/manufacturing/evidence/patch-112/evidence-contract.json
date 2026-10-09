@@ -1,0 +1,21 @@
+{
+  "evidenceId": "EV_DESIGN_01",
+  "evidenceType": "DESIGN_EVIDENCE",
+  "evidenceVersion": "1.0",
+  "sourceArtifactId": "CAD_TURBINE_V3",
+  "sourceRevision": "3.2",
+  "eventId": "EVT_JOB_CR",
+  "eventType": "JOB_CREATED",
+  "eventTimestamp": 1700000000000,
+  "recordedTimestamp": 1700000000000,
+  "producerId": "NX_CAD_KERNEL",
+  "producerType": "CAD",
+  "contentHash": "89723a9eb34516104802dda04970ef27f456fee672de2805a897385d93aaba66",
+  "canonicalHash": "1189ca87cc328a15fb255e0a9a7eb630c2c94ad7743357315ae39d5c0fb51f33",
+  "previousEvidenceHash": "GENESIS_EVIDENCE_HASH_0000000000000000000000000000000000000000",
+  "chainSequence": 1,
+  "signature": "645f91e9fdf692d70ac7fdc5b6bfb2bcd5e28fbd35c632f569d63e4db846320a",
+  "signingIdentity": "KEY_CAD_RELEASE_01",
+  "verificationStatus": "COMPLETE",
+  "recordingMode": "ORIGINAL"
+}

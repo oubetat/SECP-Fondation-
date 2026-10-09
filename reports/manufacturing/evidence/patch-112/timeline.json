@@ -1,0 +1,68 @@
+[
+  {
+    "seq": 1,
+    "type": "DESIGN_EVIDENCE",
+    "event": "JOB_CREATED",
+    "timestamp": 1700000000000
+  },
+  {
+    "seq": 2,
+    "type": "MATERIAL_EVIDENCE",
+    "event": "MATERIAL_LOADED",
+    "timestamp": 1700000100000
+  },
+  {
+    "seq": 3,
+    "type": "TOOL_EVIDENCE",
+    "event": "TOOL_INSTALLED",
+    "timestamp": 1700000200000
+  },
+  {
+    "seq": 4,
+    "type": "MACHINE_EVIDENCE",
+    "event": "MACHINE_CONFIGURED",
+    "timestamp": 1700000300000
+  },
+  {
+    "seq": 5,
+    "type": "ENVIRONMENT_EVIDENCE",
+    "event": "FIXTURE_INSTALLED",
+    "timestamp": 1700000400000
+  },
+  {
+    "seq": 6,
+    "type": "NC_PROGRAM_EVIDENCE",
+    "event": "PROGRAM_VERIFIED",
+    "timestamp": 1700000500000
+  },
+  {
+    "seq": 7,
+    "type": "SIMULATION_EVIDENCE",
+    "event": "PROGRAM_VERIFIED",
+    "timestamp": 1700000600000
+  },
+  {
+    "seq": 8,
+    "type": "DIGITAL_TWIN_EVIDENCE",
+    "event": "MACHINE_CONFIGURED",
+    "timestamp": 1700000700000
+  },
+  {
+    "seq": 9,
+    "type": "EXECUTION_EVIDENCE",
+    "event": "EXECUTION_STARTED",
+    "timestamp": 1700000800000
+  },
+  {
+    "seq": 10,
+    "type": "TELEMETRY_EVIDENCE",
+    "event": "OPERATION_STARTED",
+    "timestamp": 1700000900000
+  },
+  {
+    "seq": 11,
+    "type": "INSPECTION_EVIDENCE",
+    "event": "INSPECTION_COMPLETED",
+    "timestamp": 1700001000000
+  }
+]

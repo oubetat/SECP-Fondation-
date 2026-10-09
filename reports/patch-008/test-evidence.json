@@ -1,0 +1,45 @@
+{
+  "patch": "PATCH-008",
+  "timestamp": "2026-08-18T08:05:43.000Z",
+  "suites": [
+    {
+      "name": "src/engine/identity/__tests__/CanonicalEngineeringIdentity.test.ts",
+      "totalTests": 16,
+      "passed": 16,
+      "failed": 0,
+      "tests": [
+        "TEST 1: create GEOMETRY identity",
+        "TEST 2: create MATERIAL identity",
+        "TEST 3: create MESH child of GEOMETRY",
+        "TEST 4: create SIMULATION child of MESH",
+        "TEST 5: create RESULT child of SIMULATION",
+        "TEST 6: create EVIDENCE child of RESULT",
+        "TEST 7: parse(format(identity)) is strictly reversible",
+        "TEST 8: sameIdentity(A,B) = true for semantically identical identities",
+        "TEST 9: sameIdentity(A,B) = false for different artifact IDs",
+        "TEST 10: reject empty artifactId",
+        "TEST 11: reject unsupported artifactType",
+        "TEST 12: reject invalid namespace in validation",
+        "TEST 13: timestamp must not participate in canonical identity",
+        "TEST 14: random runtime ID must not be canonical identity",
+        "TEST 15: externalId must not replace artifactId",
+        "TEST 16: revision does not change artifact identity"
+      ]
+    },
+    {
+      "name": "src/engine/identity/__tests__/EngineeringIdentityFactory.test.ts",
+      "totalTests": 4,
+      "passed": 4,
+      "failed": 0,
+      "tests": [
+        "Factory creates deep frozen immutable objects",
+        "Factory creates chained child hierarchies correctly",
+        "Legacy adapter converts legacy descriptors without deleting original keys",
+        "Legacy adapter infers artifact types accurately"
+      ]
+    }
+  ],
+  "totalTests": 20,
+  "passed": 20,
+  "failed": 0
+}

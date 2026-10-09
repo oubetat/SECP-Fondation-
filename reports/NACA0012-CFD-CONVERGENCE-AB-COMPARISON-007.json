@@ -1,0 +1,26 @@
+{
+  "missionId": "NACA0012-VV-ROOT-CAUSE-FIX-VALIDATION-007",
+  "timestamp": "2026-09-30T09:17:32.109Z",
+  "comparison": {
+    "CaseA_PreFix": {
+      "continuityL1": 0.0000093715,
+      "momentumLinf": 0.0000067436,
+      "velocityCorrection": 0.02234,
+      "forceStabilityPassed": true,
+      "cl": 0.1477,
+      "cd": 0.0229,
+      "terminationReason": "MAX_ITERATIONS_REACHED",
+      "converged": false
+    },
+    "CaseB_PostFix": {
+      "continuityL1": 0.000013895852311858543,
+      "momentumLinf": 0.000017098185615609835,
+      "velocityCorrection": 0.5314243289236794,
+      "forceStabilityPassed": true,
+      "cl": 0.1524910703880111,
+      "cd": 0.024287285932794934,
+      "terminationReason": "MAX_ITERATIONS_REACHED",
+      "converged": false
+    }
+  }
+}

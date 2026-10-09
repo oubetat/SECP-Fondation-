@@ -1,0 +1,50 @@
+[
+  {
+    "id": "ADVERSARIAL_01_MISSED_CONTACT",
+    "name": "Far-Field Slave Node Search Rejection",
+    "passed": true,
+    "expectedFailureType": "CONTACT_SEARCH_FAILURE",
+    "detectedFailureType": "CONTACT_SEARCH_FAILURE",
+    "details": "Far-field slave node at (100,100) correctly rejected by search AABB."
+  },
+  {
+    "id": "ADVERSARIAL_02_INVERTED_NORMAL",
+    "name": "Inverted Normal Surface Convention Reversal",
+    "passed": true,
+    "expectedFailureType": "CONTACT_GEOMETRY_FAILURE",
+    "detectedFailureType": "CONTACT_GEOMETRY_FAILURE",
+    "details": "Normal [0,1] vs Inverted [0,-1]."
+  },
+  {
+    "id": "ADVERSARIAL_03_ZERO_AREA_FACET",
+    "name": "Degenerate Collapsed Zero-Length Facet Detection",
+    "passed": true,
+    "expectedFailureType": "CONTACT_GEOMETRY_FAILURE",
+    "detectedFailureType": "CONTACT_GEOMETRY_FAILURE",
+    "details": "Coincident facet endpoints correctly identified as DEGENERATE."
+  },
+  {
+    "id": "ADVERSARIAL_04_EXTREME_PENALTY",
+    "name": "Negative Penalty Stiffness Parameter Validation",
+    "passed": true,
+    "expectedFailureType": "INVALID_PARAMETER",
+    "detectedFailureType": "INVALID_PARAMETER",
+    "details": "Negative penalty stiffness parameter k_p < 0 correctly caught and rejected."
+  },
+  {
+    "id": "ADVERSARIAL_05_NAN_INF_GEOMETRY",
+    "name": "NaN Coordinate Safety & Exception Handling",
+    "passed": true,
+    "expectedFailureType": "CONTACT_GEOMETRY_FAILURE",
+    "detectedFailureType": "CONTACT_GEOMETRY_FAILURE",
+    "details": "NaN input coordinates safely handled without crashing solver."
+  },
+  {
+    "id": "ADVERSARIAL_06_CORRUPTED_STATE_HASH",
+    "name": "Cryptographic Contact State Tampering Detection",
+    "passed": true,
+    "expectedFailureType": "CONTACT_STATE_FAILURE",
+    "detectedFailureType": "CONTACT_STATE_FAILURE",
+    "details": "Tampered contact state detected via SHA-256 state hash mismatch."
+  }
+]

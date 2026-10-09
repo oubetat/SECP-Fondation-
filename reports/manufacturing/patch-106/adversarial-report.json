@@ -1,0 +1,51 @@
+{
+  "suiteId": "ADV_SUITE_PATCH_106",
+  "timestamp": "2026-08-21T07:04:31.986Z",
+  "totalChecks": 6,
+  "passedChecks": 6,
+  "passed": true,
+  "checks": [
+    {
+      "id": "ADV_HOLDER_CLAMP_COLLISION",
+      "name": "Tool Holder to Fixture Clamp Interference Catch",
+      "category": "DETECTION",
+      "passed": true,
+      "message": "Successfully detected tool holder collision with fixture clamp."
+    },
+    {
+      "id": "ADV_INTERMEDIATE_SWEPT_COLLISION",
+      "name": "Continuous Swept Intermediate Collision Catch",
+      "category": "SWEPT_MOTION",
+      "passed": true,
+      "message": "Caught collision at intermediate pose C(0.5) where start and end points were both clear."
+    },
+    {
+      "id": "ADV_ROTARY_SWEEP_COLLISION",
+      "name": "5-Axis Rotary Orientation Transition Collision Catch",
+      "category": "DETECTION",
+      "passed": true,
+      "message": "Correctly flagged collision caused by rotary tool tilt during 5-axis posture transition."
+    },
+    {
+      "id": "ADV_WORKPIECE_GOUGE_CLASSIFICATION",
+      "name": "Workpiece Floor Level Gouge Classification",
+      "category": "CLASSIFICATION",
+      "passed": true,
+      "message": "Properly classified deep tool plunge as GOUGE rather than valid machining contact."
+    },
+    {
+      "id": "ADV_AVOIDANCE_REVERIFICATION",
+      "name": "Collision Avoidance Multi-Candidate Re-Verification",
+      "category": "AVOIDANCE",
+      "passed": true,
+      "message": "Avoidance generated candidate via PATH_SHIFT and passed 100% collision-free re-verification."
+    },
+    {
+      "id": "ADV_DETERMINISTIC_REPRODUCIBILITY",
+      "name": "Deterministic Collision Hash and Reproducibility",
+      "category": "NUMERICAL",
+      "passed": true,
+      "message": "100% reproducible hash confirmed (FGP-106-TP-FGP-TP_ADV_HOLDER_COL...)"
+    }
+  ]
+}

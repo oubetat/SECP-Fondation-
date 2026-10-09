@@ -1,0 +1,57 @@
+{
+  "missionId": "COLLISION-ENGINE-P2-FAIL-CLOSED-HARDENING-001",
+  "artifactType": "PRODUCTION_CALLPATH_PROPAGATION",
+  "timestamp": "2026-10-01T02:08:00.000Z",
+  "callpaths": [
+    {
+      "pathId": "CAM_PATH",
+      "entryPoint": "CollisionDetectionEngine.verifyToolpath()",
+      "providerId": "EXACT_NARROW_PHASE_PROVIDER_P1",
+      "failureType": "MALFORMED_TOOL_RADIUS",
+      "authorityResult": "CollisionStatus.ANALYSIS_FAILED",
+      "consumerResult": "report.provenSafe = false",
+      "provenSafe": false,
+      "downgradeDetected": false
+    },
+    {
+      "pathId": "5AXIS_PATH",
+      "entryPoint": "CAMCollisionEngine.checkSegmentCollision()",
+      "providerId": "CAM_FIVE_AXIS_COLLISION_PROVIDER",
+      "failureType": "PROVIDER_THROW",
+      "authorityResult": "CollisionStatus.ANALYSIS_FAILED",
+      "consumerResult": "hasCollision: true",
+      "provenSafe": false,
+      "downgradeDetected": false
+    },
+    {
+      "pathId": "MACHINE_SIM_PATH",
+      "entryPoint": "MachineCollisionEngine.evaluatePoseCollisions()",
+      "providerId": "MACHINE_SIMULATION_COLLISION_PROVIDER",
+      "failureType": "PROVIDER_THROW",
+      "authorityResult": "CollisionStatus.ANALYSIS_FAILED",
+      "consumerResult": "CollisionRecord[] error",
+      "provenSafe": false,
+      "downgradeDetected": false
+    },
+    {
+      "pathId": "ASSEMBLY_PATH",
+      "entryPoint": "AssemblyInterferenceEngine.analyzeInterference()",
+      "providerId": "ASSEMBLY_BREP_COLLISION_PROVIDER",
+      "failureType": "OCCT_BOOLEAN_THROW",
+      "authorityResult": "CollisionStatus.UNKNOWN",
+      "consumerResult": "status = UNKNOWN",
+      "provenSafe": false,
+      "downgradeDetected": false
+    },
+    {
+      "pathId": "KINEMATICS_PATH",
+      "entryPoint": "CollisionEngine.verifyPoint()",
+      "providerId": "KINEMATICS_COLLISION_PROVIDER",
+      "failureType": "PROVIDER_THROW",
+      "authorityResult": "CollisionStatus.ANALYSIS_FAILED",
+      "consumerResult": "status = COLLISION",
+      "provenSafe": false,
+      "downgradeDetected": false
+    }
+  ]
+}

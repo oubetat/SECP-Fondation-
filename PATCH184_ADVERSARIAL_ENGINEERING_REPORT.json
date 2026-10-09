@@ -1,0 +1,217 @@
+{
+  "timestamp": "2026-08-23T14:39:33.711Z",
+  "batteryVersion": "1.0.0",
+  "executiveVerdict": "FAIL",
+  "scenarios": [
+    {
+      "scenarioId": "ADV-GEO-001",
+      "capability": "CAD/Geometry",
+      "category": "Geometry Corruption",
+      "input": {
+        "vertexId": "v-corrupt-1",
+        "x": "NaN"
+      },
+      "expectedBehavior": "Reject vertex with NaN coordinates",
+      "actualBehavior": "Correctly identified INVALID_GEOMETRY",
+      "evidence": {
+        "status": "INVALID",
+        "topologyValid": true,
+        "geometryReferencesValid": false,
+        "incidenceValid": true,
+        "orientationValid": true,
+        "manifoldStatus": "UNPROVEN",
+        "diagnostics": [
+          {
+            "code": "INVALID_GEOMETRY",
+            "severity": "ERROR",
+            "entityType": "VERTEX",
+            "entityId": "v-corrupt-1",
+            "message": "Vertex geometry coordinates are invalid"
+          }
+        ]
+      },
+      "verdict": "PASS",
+      "reproducibility": "100%",
+      "tamperStatus": "CLEAN",
+      "qualificationStatus": "QUALIFIED"
+    },
+    {
+      "scenarioId": "ADV-BOO-001",
+      "capability": "CAD/Boolean",
+      "category": "Boolean Adversarial",
+      "input": {
+        "operandA": null,
+        "operandB": null
+      },
+      "expectedBehavior": "Robustly handle or reject null operands",
+      "actualBehavior": "Threw error on null operands",
+      "evidence": {
+        "detected": true
+      },
+      "verdict": "PASS",
+      "reproducibility": "100%",
+      "tamperStatus": "CLEAN",
+      "qualificationStatus": "QUALIFIED"
+    },
+    {
+      "scenarioId": "ADV-CFD-001",
+      "capability": "CFD/Verification",
+      "category": "CFD Adversarial",
+      "input": {
+        "log": "FATAL",
+        "status": "CONVERGED",
+        "residualMismatch": true
+      },
+      "expectedBehavior": "Detect contradiction between log failure and converged status",
+      "actualBehavior": "Detected discrepancies: LOG_CONVERGENCE_CONTRADICTION: raw log indicates failure but parsed status claims CONVERGED, RESIDUAL_REPORT_CONTRADICTION: raw residual (0.1) != reported (1e-7)",
+      "evidence": {
+        "isConsistent": false,
+        "discrepancies": [
+          "LOG_CONVERGENCE_CONTRADICTION: raw log indicates failure but parsed status claims CONVERGED",
+          "RESIDUAL_REPORT_CONTRADICTION: raw residual (0.1) != reported (1e-7)"
+        ]
+      },
+      "verdict": "PASS",
+      "reproducibility": "100%",
+      "tamperStatus": "CLEAN",
+      "qualificationStatus": "QUALIFIED"
+    },
+    {
+      "scenarioId": "ADV-FEM-001",
+      "capability": "FEM/Solvers",
+      "category": "FEM Adversarial",
+      "input": {
+        "matrix": "Singular (Zero)",
+        "rhs": "[1, 1]"
+      },
+      "expectedBehavior": "Throw UNEXPECTED_SINGULARITY error",
+      "actualBehavior": "Correctly threw singularity error",
+      "evidence": {
+        "errorDetected": true
+      },
+      "verdict": "PASS",
+      "reproducibility": "100%",
+      "tamperStatus": "CLEAN",
+      "qualificationStatus": "QUALIFIED"
+    },
+    {
+      "scenarioId": "ADV-MAT-001",
+      "capability": "Material/Physics",
+      "category": "Material Adversarial",
+      "input": {
+        "name": "Impossible_Polymer",
+        "youngsModulus": 200000000000,
+        "poissonsRatio": 0.6
+      },
+      "expectedBehavior": "Flag material with invalid Poisson ratio (> 0.5)",
+      "actualBehavior": "Rejected material due to physical impossibility",
+      "evidence": {
+        "poissonsRatio": 0.6
+      },
+      "verdict": "PASS",
+      "reproducibility": "100%",
+      "tamperStatus": "CLEAN",
+      "qualificationStatus": "QUALIFIED"
+    },
+    {
+      "scenarioId": "ADV-PLM-001",
+      "capability": "PLM/Governance",
+      "category": "Policy Violation",
+      "input": {
+        "ecoId": "ECO-UNAPPROVED-999",
+        "status": "DRAFT"
+      },
+      "expectedBehavior": "Block release generation for unapproved ECO",
+      "actualBehavior": "Correctly blocked unapproved release",
+      "evidence": {
+        "ecoStatus": "DRAFT",
+        "blocked": true
+      },
+      "verdict": "PASS",
+      "reproducibility": "100%",
+      "tamperStatus": "CLEAN",
+      "qualificationStatus": "QUALIFIED"
+    },
+    {
+      "scenarioId": "ADV-ASM-001",
+      "capability": "Assembly/PLM",
+      "category": "Assembly Adversarial",
+      "input": "Cyclic dependency A <-> B",
+      "expectedBehavior": "Handle or detect cyclic dependencies in assembly graph",
+      "actualBehavior": "Processed graph without infinite loop",
+      "evidence": "Graph traversal check",
+      "verdict": "PASS",
+      "reproducibility": "100%",
+      "tamperStatus": "CLEAN",
+      "qualificationStatus": "QUALIFIED"
+    },
+    {
+      "scenarioId": "ADV-EVI-001",
+      "capability": "Evidence/Forensics",
+      "category": "Evidence Tampering",
+      "input": {
+        "original": "INFO",
+        "tampered": "TAMPER"
+      },
+      "expectedBehavior": "Flag FORENSIC_FAILED when a TAMPER incident exists",
+      "actualBehavior": "Correctly detected internal tampering/critical incident",
+      "evidence": {
+        "caseIdentity": {
+          "caseId": "CASE-001",
+          "requester": "user",
+          "rootEvidenceHash": "HASH",
+          "timestamp": "now"
+        },
+        "rootHash": "0000000000000000000000000000000000000000000000000000000000000000",
+        "artifactCount": 0,
+        "custodyChainIntact": true,
+        "timelineConsistent": true,
+        "incidents": [
+          {
+            "incidentId": "inc-1-6d9dae413e9ddf77",
+            "caseId": "CASE-001",
+            "evidenceId": "EV-001",
+            "category": "Convergence",
+            "severity": "TAMPER",
+            "detectedAt": "2026-08-23T14:39:33.710Z",
+            "expected": "Residual < 1e-6",
+            "observed": "Residual = 1e-7",
+            "affectedArtifacts": [],
+            "hashes": {},
+            "provenanceChain": [],
+            "reproductionNotes": "Baseline run",
+            "status": "PRESERVED"
+          }
+        ],
+        "crossChecksConsistent": true,
+        "replayMatch": true,
+        "signatureValid": true,
+        "verdict": "FORENSIC_FAILED"
+      },
+      "verdict": "TAMPER_DETECTED",
+      "reproducibility": "100%",
+      "tamperStatus": "DETECTED",
+      "qualificationStatus": "QUALIFIED"
+    },
+    {
+      "scenarioId": "ADV-DET-001",
+      "capability": "Determinism/Engine",
+      "category": "Determinism Attack",
+      "input": "Asynchronous out-of-order execution",
+      "expectedBehavior": "Maintain deterministic hash regardless of internal process ordering",
+      "actualBehavior": "Execution environment is currently single-threaded/synchronous",
+      "evidence": "N/A",
+      "verdict": "UNPROVEN",
+      "reproducibility": "UNPROVEN",
+      "tamperStatus": "CLEAN",
+      "qualificationStatus": "UNPROVEN"
+    }
+  ],
+  "summary": {
+    "totalScenarios": 9,
+    "passedCount": 8,
+    "failedCount": 1,
+    "unprovenCount": 1,
+    "tamperDetectionRate": 1
+  }
+}

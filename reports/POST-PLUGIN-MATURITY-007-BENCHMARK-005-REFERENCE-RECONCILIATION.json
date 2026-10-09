@@ -1,0 +1,68 @@
+{
+  "$schema": "https://secp.defense.gov/schemas/post-plugin-maturity-007-benchmark-005-reference-reconciliation.json",
+  "reportId": "SECP-POST-PLUGIN-MATURITY-007-BENCHMARK-005-REFERENCE-RECONCILIATION",
+  "auditDate": "2026-09-26T00:46:00Z",
+  "status": "RECONCILED_AND_VERIFIED",
+  "domains": [
+    {
+      "domain": "robotics",
+      "referenceAuthority": "Craig, J.J. (2005) Introduction to Robotics: Mechanics and Control, Pearson 3rd Ed. / ISO 9283:1998",
+      "referenceLevel": "LEVEL_2_PUBLISHED_ANALYTICAL",
+      "physicalInvariant": "Rigid metric link lengths l_i >= 0, payload mass m >= 0",
+      "boundaryContract": "l_1 < 0 || l_2 < 0 -> PHYSICAL_CONSTRAINT_VIOLATION; m = 0 -> valid (zero gravity torque)",
+      "reconciledCases": ["M7-ROB-01", "M7-ROB-02", "M7-ROB-03", "M7-ROB-04", "M7-ROB-05", "M7-ROB-06"],
+      "adversarialCase": "M7-ROB-05",
+      "finalStatus": "EXPECTED_INVALID_CORRECTLY_REJECTED"
+    },
+    {
+      "domain": "aerospace",
+      "referenceAuthority": "ICAO Doc 7488/3 / ISO 2533:1975 Standard Atmosphere Tables",
+      "referenceLevel": "LEVEL_2_PUBLISHED_ANALYTICAL",
+      "physicalInvariant": "Standard atmospheric model valid domain 0 <= h <= 80,000 m",
+      "boundaryContract": "h < 0 -> PHYSICAL_CONSTRAINT_VIOLATION; h = 0 -> valid (sea level); h > 80,000 -> PHYSICAL_CONSTRAINT_VIOLATION",
+      "reconciledCases": ["M7-AER-01", "M7-AER-02", "M7-AER-03", "M7-AER-04", "M7-AER-05", "M7-AER-06"],
+      "adversarialCase": "M7-AER-05",
+      "finalStatus": "EXPECTED_INVALID_CORRECTLY_REJECTED"
+    },
+    {
+      "domain": "automotive",
+      "referenceAuthority": "SAE J2263 Road Load / Hucho, W.-H. (1998) Aerodynamics of Road Vehicles 4th Ed",
+      "referenceLevel": "LEVEL_2_PUBLISHED_ANALYTICAL",
+      "physicalInvariant": "Aerodynamic drag coefficient C_d >= 0 (2nd Law of Thermodynamics)",
+      "boundaryContract": "C_d < 0 -> PHYSICAL_CONSTRAINT_VIOLATION; v = 0 -> valid (static vehicle); A <= 0 -> PHYSICAL_CONSTRAINT_VIOLATION",
+      "reconciledCases": ["M7-AUT-01", "M7-AUT-02", "M7-AUT-03", "M7-AUT-04", "M7-AUT-05", "M7-AUT-06"],
+      "adversarialCase": "M7-AUT-05",
+      "finalStatus": "EXPECTED_INVALID_CORRECTLY_REJECTED"
+    },
+    {
+      "domain": "energy",
+      "referenceAuthority": "IEC 61400-1:2019 Wind Turbines / Betz, A. (1919) 1D Actuator Disk Momentum Theory",
+      "referenceLevel": "LEVEL_2_PUBLISHED_ANALYTICAL",
+      "physicalInvariant": "Wind power extraction efficiency C_p <= 16/27 (~0.59259)",
+      "boundaryContract": "C_p > 16/27 -> PHYSICAL_CONSTRAINT_VIOLATION; v_wind = 0 -> valid (calm air); eta > 100% -> PHYSICAL_CONSTRAINT_VIOLATION",
+      "reconciledCases": ["M7-ENE-01", "M7-ENE-02", "M7-ENE-03", "M7-ENE-04", "M7-ENE-05", "M7-ENE-06"],
+      "adversarialCase": "M7-ENE-05",
+      "finalStatus": "EXPECTED_INVALID_CORRECTLY_REJECTED"
+    },
+    {
+      "domain": "marine",
+      "referenceAuthority": "ITTC 1957 Model-Ship Correlation Line / SNAME Principles of Naval Architecture Vol II",
+      "referenceLevel": "LEVEL_2_PUBLISHED_ANALYTICAL",
+      "physicalInvariant": "Froude scaling number F_n = v / sqrt(g*L) requires L > 0",
+      "boundaryContract": "L <= 0 -> PHYSICAL_CONSTRAINT_VIOLATION; displacement <= 0 -> PHYSICAL_CONSTRAINT_VIOLATION",
+      "reconciledCases": ["M7-MAR-01", "M7-MAR-02", "M7-MAR-03", "M7-MAR-04", "M7-MAR-05", "M7-MAR-06"],
+      "adversarialCase": "M7-MAR-05",
+      "finalStatus": "EXPECTED_INVALID_CORRECTLY_REJECTED"
+    },
+    {
+      "domain": "oil-gas",
+      "referenceAuthority": "ASME B31.8-2020 Gas Transmission and Distribution Piping / API Specification 5L",
+      "referenceLevel": "LEVEL_2_PUBLISHED_ANALYTICAL",
+      "physicalInvariant": "Barlow hoop stress sigma_h = (P*D)/(2*t) requires t > 0, D > 0, P >= 0",
+      "boundaryContract": "t <= 0 -> PHYSICAL_CONSTRAINT_VIOLATION; P = 0 -> valid (zero stress baseline); P < 0 -> PHYSICAL_CONSTRAINT_VIOLATION",
+      "reconciledCases": ["M7-OIL-01", "M7-OIL-02", "M7-OIL-03", "M7-OIL-04", "M7-OIL-05", "M7-OIL-06"],
+      "adversarialCase": "M7-OIL-05",
+      "finalStatus": "EXPECTED_INVALID_CORRECTLY_REJECTED"
+    }
+  ]
+}

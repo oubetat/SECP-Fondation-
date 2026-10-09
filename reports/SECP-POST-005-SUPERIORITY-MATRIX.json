@@ -1,0 +1,132 @@
+{
+  "mission": "SECP-POST-005-SUPERIORITY-MATRIX",
+  "auditStandard": "Evidence-First Forensic Delta & Anti-Cosmetic Capability Proof",
+  "canonicalGapAuthority": "reports/SECP-POST-FORENSIC-004-GAP-REGISTER.json",
+  "date": "2026-09-23",
+  "summary": {
+    "CLOSED_PROVEN": 12,
+    "PROVEN_PARTIAL": 0,
+    "REQUIRED_GAP": 1,
+    "NOT_PROVEN": 0,
+    "NEWLY_DISCOVERED_GAP": 0
+  },
+  "matrix": [
+    {
+      "gapId": "SECP-GAP-001",
+      "beforeCapability": "FilletEngine.applyFillet returned input solid unmodified (line 115: return solid; // Placeholder), creating zero blend faces and leaving topology unchanged.",
+      "afterCapability": "FilletEngine constructs true B-Rep blend surfaces, splits shared edges, integrates blend faces into outer shell, and validates manifold topology via BRepValidator.",
+      "executableProof": "src/verification/post005/__tests__/POST-005-EngineeringCapability.test.ts (Positive blend face count, material non-identity, and negative radius rejection tests)",
+      "evidence": "result.resultSolid !== solid; result.outerShell.orientedFaces.length increments from 2 to 3; filletFacesCreated === 1",
+      "verdict": "CLOSED_PROVEN",
+      "remainingLimitation": "Variable-radius fillets and complex vertex blend corners require advanced multi-edge surface smoothing in future CAD passes."
+    },
+    {
+      "gapId": "SECP-GAP-002",
+      "beforeCapability": "NurbsKnotInsertion.insertKnotCurve returned curve where curve.evaluate(u) returned hardcoded (0,0,0) coordinate vector.",
+      "afterCapability": "NurbsKnotInsertion executes exact Cox-de Boor knot insertion recurrence, generating valid control points and preserving parametric curve geometry across entire domain.",
+      "executableProof": "src/verification/post005/__tests__/POST-005-EngineeringCapability.test.ts (20-point domain comparison against standalone independent mathematical De Boor reference)",
+      "evidence": "Position error < 1e-5 between original curve, refined curve, and independent reference evaluator across u in [0, 1]",
+      "verdict": "CLOSED_PROVEN",
+      "remainingLimitation": "Arbitrary degree surface tensor-product knot insertion is implemented separately for surfaces."
+    },
+    {
+      "gapId": "SECP-GAP-003",
+      "beforeCapability": "MOLD_TOOLING_SPLIT contract in registry halted at Intent breakpoint without executing MoldEngine, declaring actuallyGenerated = 'None / UI Stub'.",
+      "afterCapability": "MOLD_TOOLING_SPLIT contract executes MoldEngine.performMoldSplit, generating Core and Cavity solids, calculating shutoff surfaces, and verifying draft angle moldability.",
+      "executableProof": "src/verification/post005/__tests__/POST-005-EngineeringCapability.test.ts (Draft angle verification, core/cavity volume conservation)",
+      "evidence": "V_core + V_cavity + V_part === V_moldBlock; draft moldability check rejects undercut angles",
+      "verdict": "CLOSED_PROVEN",
+      "remainingLimitation": "Complex multi-piece side action slides are handled as composite split operations."
+    },
+    {
+      "gapId": "SECP-GAP-004",
+      "beforeCapability": "IndustrialOsV3Panel injected fake token string 'ev-manual-sandbox' into EngineeringObjectOS registry, bypassing EvidenceBus verification.",
+      "afterCapability": "Synthetic token removed; EngineeringObjectOS.attachEvidence enforces strict verification of EvidenceEnvelope origin via EvidenceBus.publishSync().",
+      "executableProof": "src/verification/post005/__tests__/POST-005-CanonicalTruth.test.ts (Adversarial rejection of 'ev-manual-sandbox' and unregistered token IDs; verified transition to VALIDATED)",
+      "evidence": "Throws ADVERSARIAL_INJECTION_REJECTED on unverified tokens; object.evidenceRefs contains verified envelope ID published to EvidenceBus",
+      "verdict": "CLOSED_PROVEN",
+      "remainingLimitation": "Asynchronous multi-signature verification is handled synchronously within local bus instances."
+    },
+    {
+      "gapId": "SECP-GAP-005",
+      "beforeCapability": "BRepReconstructionWorkbenchPanel loaded static mock identifiers ('NURBS-SESSION-MOCK', 'SURF-MOCK') on initial component mount.",
+      "afterCapability": "Panel mounts using canonical parametric geometry dataset with deterministic cryptographic provenance.",
+      "executableProof": "src/verification/post005/__tests__/POST-005-CfdTelemetryAndDemo.test.ts (AST and initialization scan)",
+      "evidence": "Static AST audit confirms complete eradication of 'NURBS-SESSION-MOCK' from production codebase",
+      "verdict": "CLOSED_PROVEN",
+      "remainingLimitation": "UI state is purely presentational and synchronized with backend sessions."
+    },
+    {
+      "gapId": "SECP-GAP-006",
+      "beforeCapability": "FeatureRecognitionWorkbenchPanel initialized with demo comment and mock healed mesh ID 'MESH-319-HEALED'.",
+      "afterCapability": "Panel initializes with canonical healed mesh dataset and real feature detection workflow.",
+      "executableProof": "src/verification/post005/__tests__/POST-005-CfdTelemetryAndDemo.test.ts (AST and initialization scan)",
+      "evidence": "Static AST audit confirms eradication of demo comment and dummy mesh ID from production codebase",
+      "verdict": "CLOSED_PROVEN",
+      "remainingLimitation": "Live point cloud scanning requires external sensor stream or file upload."
+    },
+    {
+      "gapId": "SECP-GAP-007",
+      "beforeCapability": "StructuralPhysicsManifest declared missing file StiffnessMatrixEngine, causing missing file architectural inconsistency.",
+      "afterCapability": "StiffnessMatrixEngine implemented with 1D/3D bar element stiffness assembly, sparse matrix representation, and matrix symmetry verification.",
+      "executableProof": "src/verification/post005/__tests__/POST-005-EngineeringCapability.test.ts (Matrix assembly, symmetry check, trace positivity)",
+      "evidence": "props.isSymmetric === true; props.trace > 0; kGlobal.dimension === 9 for 3-node bar",
+      "verdict": "CLOSED_PROVEN",
+      "remainingLimitation": "Higher-order quadratic tetrahedral elements are assembled through specialized solid element routines."
+    },
+    {
+      "gapId": "SECP-GAP-008",
+      "beforeCapability": "StructuralPhysicsManifest declared missing file DisplacementAnalysisEngine, causing missing file architectural inconsistency.",
+      "afterCapability": "DisplacementAnalysisEngine implemented for nodal displacement field summarization, extreme tracking, and shape function spatial interpolation.",
+      "executableProof": "src/verification/post005/__tests__/POST-005-EngineeringCapability.test.ts (Summary statistics, spatial interpolation at element midpoint)",
+      "evidence": "midpointDisp.x === 0.00125 for nodes at u1=0, u2=0.0025 at element midpoint x=0.5",
+      "verdict": "CLOSED_PROVEN",
+      "remainingLimitation": "3D volumetric stress-strain recovery is computed in post-processing passes."
+    },
+    {
+      "gapId": "SECP-GAP-009",
+      "beforeCapability": "FEAValidationEngine.validateResults returned hardcoded literal true without checking solver results or physical equilibrium.",
+      "afterCapability": "FEAValidationEngine evaluates solver output against residual norm tolerances, boundary condition displacement adherence, and numerical finiteness.",
+      "executableProof": "src/verification/post005/__tests__/POST-005-CanonicalTruth.test.ts (Accepts valid results; rejects residual > tol; rejects fixed node motion; rejects NaN)",
+      "evidence": "reportValid.verdict === 'ACCEPT'; reportHighRes.verdict === 'REJECT'; reportBCViolation.verdict === 'REJECT'",
+      "verdict": "CLOSED_PROVEN",
+      "remainingLimitation": "Non-linear contact equilibrium checks require incremental load-step validation."
+    },
+    {
+      "gapId": "SECP-GAP-010",
+      "beforeCapability": "MissionSimulationEngine returned result with evidenceHash: 'TODO-HASH' and mock flight controller loops.",
+      "afterCapability": "MissionSimulationEngine computes deterministic SHA-256 evidence hash over mission definition, telemetry trajectory, power consumption, and requirement proofs.",
+      "executableProof": "src/verification/post005/__tests__/POST-005-CanonicalTruth.test.ts (SHA-256 format check, run-to-run reproducibility test, and single parameter mutation sensitivity test)",
+      "evidence": "result1.evidenceHash === result2.evidenceHash; resultMutated.evidenceHash !== result1.evidenceHash; matches /^[a-f0-9]{64}$/",
+      "verdict": "CLOSED_PROVEN",
+      "remainingLimitation": "Turbulent gust wind fields introduce stochastic trajectories requiring seeded pseudo-random generators for determinism."
+    },
+    {
+      "gapId": "SECP-GAP-011",
+      "beforeCapability": "NACA0012 transonic benchmark physical validation unproven on fine grids.",
+      "afterCapability": "Remains OPEN awaiting complete telemetry instrumentation verification and POST-006 numerical tuning.",
+      "executableProof": "Governed by POST-005 dependency rule (GAP-012 and GAP-013 must be verified prior to solver tuning)",
+      "evidence": "Designated as REQUIRED_GAP in accordance with canonical register and POST-005 specification",
+      "verdict": "REQUIRED_GAP",
+      "remainingLimitation": "Physical convergence and GCI validation on transonic shock captures scheduled for POST-006."
+    },
+    {
+      "gapId": "SECP-GAP-012",
+      "beforeCapability": "Fvm3DNavierStokesSolver clamped velocity exceeding maxAllowedSpeed but never incremented or exported limiter counters in telemetry.",
+      "afterCapability": "Limiter hits (velocityClamped, pressureClamped, turbulenceClamped) are counted per cell event and exported in ConvergenceAudit3D solver telemetry.",
+      "executableProof": "src/verification/post005/__tests__/POST-005-CfdTelemetryAndDemo.test.ts (Exact counter increment on clamped cells; zero count on un-clamped cells)",
+      "evidence": "audit.limiters.velocityClamped increments 1:1 with clamped cell count and is exported in ConvergenceAudit3D",
+      "verdict": "CLOSED_PROVEN",
+      "remainingLimitation": "Sub-cell flux limiters (e.g., Venkatakrishnan) have separate limiter diagnostics."
+    },
+    {
+      "gapId": "SECP-GAP-013",
+      "beforeCapability": "Fvm3DNavierStokesSolver threw generic Error on non-finite values without spatial cell coordinates or structured diagnostic context.",
+      "afterCapability": "Solver captures structured firstInvalidCell diagnostic recording cell ID, coordinates, iteration, pressure, velocity, and reason at divergence point.",
+      "executableProof": "src/verification/post005/__tests__/POST-005-CfdTelemetryAndDemo.test.ts (Captures cell 0 as FIRST invalid cell in multi-cell NaN divergence scenario)",
+      "evidence": "err.diagnostic.firstInvalidCell contains cellId, coordinates, iteration, pressure, velocity, reason",
+      "verdict": "CLOSED_PROVEN",
+      "remainingLimitation": "Multi-cell divergence clusters are summarized by the primary failure cell."
+    }
+  ]
+}

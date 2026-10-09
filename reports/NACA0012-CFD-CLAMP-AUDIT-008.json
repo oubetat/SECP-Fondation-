@@ -1,0 +1,10 @@
+{
+  "missionId": "NACA0012-VV-STRICT-CAUSAL-CLOSURE-008",
+  "timestamp": "2026-09-30T10:07:41.836Z",
+  "clampTelemetry": {
+    "maxVelocityClamped": false,
+    "maxVelocityThreshold": 2.5,
+    "last20IterationsClamps": 0,
+    "verdict": "No convergence-masking clamps active in final iteration envelope."
+  }
+}

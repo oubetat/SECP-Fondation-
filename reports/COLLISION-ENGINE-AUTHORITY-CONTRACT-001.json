@@ -1,0 +1,33 @@
+{
+  "contractId": "CONTRACT-COLLISION-AUTHORITY-001",
+  "name": "SECP Collision Authority Contract",
+  "version": "1.0.0",
+  "authorityScope": {
+    "authoritativeInputGeometry": [
+      "CAD B-Rep via ShapeHandle (OCCT Primary)",
+      "Exact Tessellated Triangulation (Tessellation Level 1, max chordal error <= 0.005mm)",
+      "Parametric Tool Assembly Definition (Cutter, Shank, Holder Lower/Upper, Spindle Nose)",
+      "Kinematic Machine Assembly Mesh Envelopes",
+      "Stock Geometry (Initial Solid B-Rep / Dynamic In-Process Mesh)",
+      "Fixture & Workholding Solids (STEP / B-Rep)"
+    ],
+    "authoritativeStateInputs": [
+      "Canonical Kinematic Joint Values [q0..qn]",
+      "Forward Kinematics Transformation Tree (World Space 4x4 Row-Major Float64 Matrices)",
+      "Toolpath Segment Definition (Start Pose, End Pose, Motion Type, Feed, Spindle RPM)"
+    ],
+    "coordinateSystem": "Right-Handed Cartesian WCS (World Coordinate System, Millimeters)",
+    "numericalPolicy": {
+      "linearPrecisionMm": 1e-5,
+      "angularPrecisionRad": 1e-6,
+      "volumePrecisionMm3": 1e-4,
+      "floatType": "Float64 (Double Precision)"
+    },
+    "forbiddenInputs": [
+      "Hardcoded mock distances (e.g. centerDist - 30.0)",
+      "Synthetic benchmark generators in production paths",
+      "Vertex-only distance approximations on 2D/3D surface meshes",
+      "Memory-only unhashed geometry snapshots"
+    ]
+  }
+}

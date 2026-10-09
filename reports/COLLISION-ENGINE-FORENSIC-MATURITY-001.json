@@ -1,0 +1,45 @@
+{
+  "missionId": "COLLISION-ENGINE-FORENSIC-MATURITY-001",
+  "timestamp": "2026-10-01T01:00:00.000Z",
+  "governanceAuthority": "SECP Engineering Truth & Forensic Verification Directorate",
+  "overallVerdict": "COLLISION_ENGINE_IMMATURE",
+  "authoritativeClaimStatus": "REJECTED (Collision Engine is not production-grade)",
+  "subsystemMaturity": {
+    "assemblyBrepInterferenceOCCT": {
+      "classification": "PARTIALLY_AUTHORITATIVE",
+      "maturityLevel": "M6 — CANONICALLY BOUND",
+      "strengths": "Uses real OCCT WASM booleanIntersect and common operations to compute exact volumetric intersection and centroid.",
+      "criticalDefects": "Fail-open error handling (catches kernel exceptions and silently returns NO_INTERFERENCE); not bound to interactive viewport."
+    },
+    "camCollisionDetectionEngine": {
+      "classification": "NON_AUTHORITATIVE",
+      "maturityLevel": "M3 — UNIT VERIFIED",
+      "strengths": "Structured BVH broad-phase and continuous multi-step swept motion sampling.",
+      "criticalDefects": "Narrow phase tests only triangle vertices and centroid (omits edges/interior face cuts); UI runs exclusively on hardcoded synthetic demo triangles."
+    },
+    "fiveAxisCAMCollisionEngine": {
+      "classification": "NON_AUTHORITATIVE",
+      "maturityLevel": "M2 — EXECUTABLE",
+      "strengths": "Tool holder and spindle nose capsule geometry hierarchy.",
+      "criticalDefects": "Obstacle mesh faces are completely ignored (loops only over vertices); swept test only checks endpoints p0 and p1."
+    },
+    "manufacturingCollisionDetector": {
+      "classification": "NON_AUTHORITATIVE",
+      "maturityLevel": "M3 — UNIT VERIFIED",
+      "strengths": "Capsule-capsule analytical segment distance; clean fail-closed tolerance validation.",
+      "criticalDefects": "Narrow phase restricted to capsule and AABB (no triangle mesh or B-Rep support); capsule-AABB uses 10 discrete sample points."
+    },
+    "assemblyClashNarrowPhaseSAT": {
+      "classification": "NON_AUTHORITATIVE",
+      "maturityLevel": "M3 — UNIT VERIFIED",
+      "strengths": "Exact 15-axis SAT for OBBs and analytical sphere-sphere tests.",
+      "criticalDefects": "Gate-only execution (HardAcceptanceGate032); cylinders and meshes silently fall back to bounding box tests."
+    },
+    "kinematicCollisionClearanceBridge": {
+      "classification": "UNPROVEN",
+      "maturityLevel": "M1 — CODE EXISTS (MOCK)",
+      "strengths": "Kinematic model type bindings.",
+      "criticalDefects": "Hardcoded distance - 30.0 mock formula; no geometric CAD model consumption."
+    }
+  }
+}

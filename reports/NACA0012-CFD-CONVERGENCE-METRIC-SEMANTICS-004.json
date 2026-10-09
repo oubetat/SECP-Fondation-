@@ -1,0 +1,38 @@
+{
+  "missionId": "NACA0012-VV-CONVERGENCE-CONTRACT-SEMANTIC-REPAIR-004",
+  "timestamp": "2026-09-30T09:00:09.685Z",
+  "classification": "ROOT_CAUSE_CONFIRMED",
+  "governanceStatus": "G3 — BASELINE REPRODUCED BUT V&V NOT PROVEN",
+  "semanticAudit": {
+    "metricProvenanceSeparation": {
+      "linearResidualPreserved": true,
+      "kLinearResidualSource": "SST_K_LINEAR_SOLVER",
+      "omegaLinearResidualSource": "SST_OMEGA_LINEAR_SOLVER",
+      "fieldUpdateSeparated": true,
+      "kFieldUpdateSource": "SST_K_FIELD_OUTER_DELTA",
+      "omegaFieldUpdateSource": "SST_OMEGA_FIELD_OUTER_DELTA",
+      "nutFieldUpdateSource": "SST_NUT_FIELD_OUTER_DELTA"
+    },
+    "convergenceContractSpecification": {
+      "rules": [
+        "1. Continuity Residual L1 < 1e-4",
+        "2. Momentum Residual Linf < 1.5e-2",
+        "3. Velocity Update Gate D ||U^(n+1) - U^n|| / Uinf < 0.015",
+        "4. Turbulence Field Updates (kFieldUpdate < 0.01, omegaFieldUpdate < 0.01, nutFieldUpdate < 0.01)",
+        "5. Force Stability across 20-iteration window (Cl delta < 2.0%, Cd delta < 2.0%)",
+        "6. Valid termination with terminationReason == 'CONVERGED' (not 'MAX_ITERATIONS_REACHED')"
+      ],
+      "gateDFrozen": true,
+      "gateDThreshold": 0.015,
+      "noFalseClosure": true
+    },
+    "scorecard": {
+      "continuity": "PASS (9.37e-6 < 1e-4)",
+      "momentum": "PASS (6.74e-6 < 1.5e-2)",
+      "velocityUpdate": "FAIL (0.02234 > 0.01500)",
+      "forceStability": "PASS (Cl delta = 0.78% < 2.00%)",
+      "termination": "FAIL (MAX_ITERATIONS_REACHED)",
+      "converged": false
+    }
+  }
+}

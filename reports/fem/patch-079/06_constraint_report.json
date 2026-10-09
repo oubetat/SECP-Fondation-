@@ -1,0 +1,9 @@
+{
+  "constraintsEnforced": [
+    {
+      "nodeId": "N0",
+      "dof": "UX",
+      "value": 0
+    }
+  ]
+}

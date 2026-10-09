@@ -1,0 +1,52 @@
+[
+  {
+    "eventId": "EVT_0",
+    "type": "SIMULATION_STARTED",
+    "timestamp": 1787297607411,
+    "simulationId": "SIM_REPORT_01",
+    "machineStateHash": "",
+    "stockStateHash": "STOCK_STATE_-3d34f780",
+    "evidenceReference": "Simulation engine initialized"
+  },
+  {
+    "eventId": "EVT_1",
+    "type": "COLLISION_DETECTED",
+    "timestamp": 1787297607412,
+    "simulationId": "SIM_REPORT_01",
+    "machineStateHash": "",
+    "stockStateHash": "STOCK_STATE_-3d34f780",
+    "evidenceReference": "Collision detected",
+    "data": {
+      "collisionReport": {
+        "reportId": "COL_REP_50637",
+        "timestamp": "2026-08-21T07:33:27.412Z",
+        "collisionModelId": "SIM_COL_MDL",
+        "toolpathId": "SIM_SEG",
+        "verdict": "COLLISION_UNDETERMINED",
+        "collisionEvents": [],
+        "minClearance": 50,
+        "broadPhasePruned": 44,
+        "narrowPhaseChecked": 0,
+        "samplingCoverage": 0.75,
+        "fingerprint": {
+          "toolpathFingerprint": "TP-FGP-SIM_SEG",
+          "collisionModelFingerprint": "MDL-FGP-SIM_COL_MDL-REV1",
+          "samplingPolicyFingerprint": "SMP-FGP-S1-C1",
+          "engineRevision": "106.1.0",
+          "eventSetHash": "EVTS-0-",
+          "deterministicHash": "FGP-106-TP-FGP-SIM_SEG-MDL-FGP-SIM_COL_MDL-REV1-EVTS-0-"
+        },
+        "provenSafe": false
+      }
+    }
+  },
+  {
+    "eventId": "EVT_2",
+    "type": "SIMULATION_COMPLETED",
+    "timestamp": 1787297607413,
+    "simulationId": "SIM_REPORT_01",
+    "machineStateHash": "",
+    "stockStateHash": "STOCK_STATE_-3d34f780",
+    "evidenceReference": "Simulation finished successfully"
+  }
+]

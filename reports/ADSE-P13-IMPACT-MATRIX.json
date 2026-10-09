@@ -1,0 +1,34 @@
+{
+  "phase": "ADSE-P13",
+  "title": "ADSE P13 Configuration Change Downstream Impact Matrix",
+  "analysisMethod": "Walk of P4 Digital Thread nodes and registered local item dependencies",
+  "impactPaths": [
+    {
+      "sourceItemType": "HARDWARE",
+      "impactPath": "Mechanical -> System -> Safety Claims -> Safety Controls -> Baselines"
+    },
+    {
+      "sourceItemType": "SOFTWARE",
+      "impactPath": "Interfaces -> Requirements -> Simulations -> Verification Gates -> Evidences"
+    },
+    {
+      "sourceItemType": "INTERFACE",
+      "impactPath": "System -> Manufacturing -> Metrology -> Baseline Releases"
+    }
+  ],
+  "verificationBenchResult": {
+    "testCase": "P13-BENCH-001 (Upgrade CI-VALVE-01)",
+    "impactReport": {
+      "affectedItemIds": ["CI-VALVE-01"],
+      "dependencyImpactCount": 2,
+      "revisionImpactCount": 1,
+      "verificationImpactCount": 1,
+      "evidenceImpactCount": 1,
+      "cascadeResult": {
+        "safetyClaimsInvalidated": ["CLAIM-O2-VALVE-SEALS"],
+        "safetyControlsInvalidated": ["COMP-O2-VALVE"],
+        "baselinesInvalidated": ["BL-O2-SYSTEM-A1"]
+      }
+    }
+  }
+}

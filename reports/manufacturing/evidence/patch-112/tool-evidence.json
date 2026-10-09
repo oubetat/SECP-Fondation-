@@ -1,0 +1,45 @@
+{
+  "contract": {
+    "evidenceId": "EV_TOOL_01",
+    "evidenceType": "TOOL_EVIDENCE",
+    "evidenceVersion": "1.0",
+    "sourceArtifactId": "TOOL_BALL_6MM",
+    "sourceRevision": "1.0",
+    "eventId": "EVT_TOOL",
+    "eventType": "TOOL_INSTALLED",
+    "eventTimestamp": 1700000200000,
+    "recordedTimestamp": 1700000200000,
+    "producerId": "ZOLLER_PRESETTER",
+    "producerType": "CAM",
+    "contentHash": "5a5012c3a30571f32d4b2554d8c0a01b6ef3123b876c09e8b76250f5615aa98e",
+    "canonicalHash": "fd116b11c1698b492100353ed117a63e65206f08e0f1d6134b35bdb2a05a41b0",
+    "previousEvidenceHash": "1b0d106545e31477499b3dc0c6b9f3294436902014b6fef73911941bc2084605",
+    "chainSequence": 3,
+    "signature": "c237c36064acf4d7f4961389c6a636907dd1bb684bb0724ae28177653bffcf1f",
+    "signingIdentity": "KEY_CAM_ENG_01",
+    "verificationStatus": "COMPLETE",
+    "recordingMode": "ORIGINAL"
+  },
+  "sourceIdentity": {
+    "sourceType": "CAM",
+    "sourceId": "TOOL_PRES_01",
+    "sourceRevision": "1.0",
+    "sourceFingerprint": "FNG_TOOL_01"
+  },
+  "eventIdentity": {
+    "eventId": "EVT_TOOL",
+    "eventType": "TOOL_INSTALLED",
+    "eventSequence": 3,
+    "eventTimestamp": 1700000200000,
+    "sourceTimestamp": 1700000200000,
+    "recordedTimestamp": 1700000200000
+  },
+  "payload": {
+    "activeToolId": "TOOL_BALL_6MM",
+    "cuttingTimeMinutes": 42,
+    "diameter": 6,
+    "toolId": "TOOL_BALL_6MM"
+  },
+  "context": {},
+  "attestations": []
+}

@@ -1,0 +1,33 @@
+{
+  "milestone": "ADSE-P5",
+  "auditTimestamp": "2026-09-28T08:15:00.000Z",
+  "provenanceRoot": "b8319e830c2420a11f26e99df48d0859a117bc56598c1a1158a18df706e2e542",
+  "activeGaps": [],
+  "resolvedGaps": [
+    {
+      "gapId": "GAP-P5-001",
+      "description": "Definition vs Instance separation in structural assembly models",
+      "resolution": "Enforced PartDefinition/PartInstance and ComponentDefinition/ComponentInstance typing with mandatory definitionId reference in StructuralElementRegistry.",
+      "verifiedBy": "P5-V4"
+    },
+    {
+      "gapId": "GAP-P5-002",
+      "description": "Spatial placement transforms mutating canonical state from UI viewers",
+      "resolution": "Implemented StructuralPlacementEngine with explicit unauthorized transform mutation barrier blocking UI/visualization callers.",
+      "verifiedBy": "P5-V7"
+    },
+    {
+      "gapId": "GAP-P5-003",
+      "description": "Physical assembly constraint contradiction detection",
+      "resolution": "Implemented StructuralConstraintEngine detecting Parallel vs Perpendicular contradictions and cross-configuration constraint leaks.",
+      "verifiedBy": "P5-V6"
+    },
+    {
+      "gapId": "GAP-P5-004",
+      "description": "P3 Architectural interface alignment with physical structural connections",
+      "resolution": "Implemented StructuralInterfaceEngine mapping structural interfaces to bolted/welded joints, detecting unmapped interfaces and orphan joints.",
+      "verifiedBy": "P5-V8"
+    }
+  ],
+  "zeroGapsRemaining": true
+}

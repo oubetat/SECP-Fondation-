@@ -1,0 +1,8 @@
+{
+  "supportedPlanes": [
+    "G17 (XY)",
+    "G18 (XZ)",
+    "G19 (YZ)"
+  ],
+  "arcToleranceMM": 0.001
+}

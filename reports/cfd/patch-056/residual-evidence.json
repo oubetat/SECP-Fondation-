@@ -1,0 +1,15 @@
+{
+  "solverId": "cfd-engine-v2",
+  "solverVersion": "2.0.0",
+  "equation": "MASS",
+  "normType": "L2",
+  "normalizationPolicy": "INITIAL_RESIDUAL",
+  "initialResidual": 0.00001,
+  "finalResidual": 0.00001,
+  "iterationCount": 1,
+  "residualHistoryHash": "rh-hash-1f2806f",
+  "stateHash": "initial-state",
+  "diagnostics": [],
+  "timestamp": "2026-08-19T11:07:20.192Z",
+  "provenanceSignature": "secp056-hash-61de8e2d"
+}

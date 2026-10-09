@@ -1,0 +1,67 @@
+{
+  "phase": "ADSE-P13",
+  "title": "Configuration Truth Engine Evidence Index",
+  "auditDate": "2026-09-29T11:05:00Z",
+  "closureStatus": "PENDING",
+  "independentObservedFailures": [
+    {
+      "suiteId": "PROMPT-056",
+      "testFile": "src/engine/tool-qualification/__tests__/PROMPT-056-ForensicRootCauseTruth.test.ts",
+      "observedStatus": "16/17 PASS, 1 FAIL (HardAcceptanceGate056 Final Proof)",
+      "classification": "Isolated non-P13 failure; pre-existing status not independently baseline-proven.",
+      "causalDependencyToP13": false
+    }
+  ],
+  "testExecutionSummary": {
+    "testFilesPassed": 81,
+    "totalTestFiles": 81,
+    "testsPassed": 422,
+    "totalTests": 422,
+    "compilationErrors": 0,
+    "exitCode": 0
+  },
+  "benchmarkEvidence": [
+    {
+      "benchmarkId": "P13-BENCH-001",
+      "name": "Configuration Truth Lifecycle (Registration, Baseline, G14 Safety Integration, Invalidation Cascade, Persistence & Reconstruction)",
+      "status": "PASS",
+      "testFile": "tests/adse/benchmark/ADSEP13ConfigurationTruthBenchmark.test.ts"
+    }
+  ],
+  "forensicGateResults": {
+    "G01_ArchitectureBoundary": "PASS",
+    "G02_ConfigurationIdentity": "PASS",
+    "G03_ConfigurationItemCanonicalBinding": "PASS",
+    "G04_RevisionAuthority": "PASS",
+    "G05_BaselineAuthority": "PASS",
+    "G06_BaselineImmutability": "PASS",
+    "G07_ChangeControl": "PASS",
+    "G08_DependencyIntegrity": "PASS",
+    "G09_ConfigurationImpactAnalysis": "PASS",
+    "G10_ApplicabilityIntegrity": "PASS",
+    "G11_VariantIntegrity": "PASS",
+    "G12_CompatibilityValidation": "PASS",
+    "G13_P11Integration": "PASS",
+    "G14_P12SafetyIntegration": "PASS",
+    "G15_EvidenceInvalidation": "PASS",
+    "G16_DigitalThreadIntegrity": "PASS",
+    "G17_AIGovernance": "PASS",
+    "G18_PersistenceReconstruction": "PASS",
+    "G19_AdversarialConfigurationAttacks": "PASS",
+    "G20_EvidenceQuality": "PASS"
+  },
+  "sourceArtifacts": [
+    "src/engine/adse/p13/types.ts",
+    "src/engine/adse/p13/ConfigurationRegistry.ts",
+    "src/engine/adse/p13/ConfigurationAuthorityEngine.ts",
+    "src/engine/adse/p13/ConfigurationBaselineEngine.ts",
+    "src/engine/adse/p13/ConfigurationChangeEngine.ts",
+    "src/engine/adse/p13/ConfigurationImpactEngine.ts",
+    "src/engine/adse/p13/ConfigurationApplicabilityEngine.ts",
+    "src/engine/adse/p13/ConfigurationCompatibilityEngine.ts",
+    "src/engine/adse/p13/ConfigurationGovernanceEngine.ts",
+    "src/engine/adse/p13/ConfigurationPersistenceEngine.ts",
+    "src/engine/adse/p13/ADSEP13Engine.ts",
+    "src/engine/adse/workbench/ADSEWorkbenchBridge.ts"
+  ]
+}

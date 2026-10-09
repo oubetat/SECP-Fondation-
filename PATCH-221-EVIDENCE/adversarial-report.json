@@ -1,0 +1,10 @@
+{
+  "testSuite": "Boundary adversarial robustness verification",
+  "failuresIntercepted": [
+    { "input": "Standard Not Found", "status": "REJECTED" },
+    { "input": "Invalid Size Length", "status": "REJECTED" },
+    { "input": "Incompatible Thread Range", "status": "REJECTED" },
+    { "input": "Unsupported Material Group", "status": "REJECTED" },
+    { "input": "Duplicate Part Number Signature", "status": "REJECTED" }
+  ]
+}

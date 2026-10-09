@@ -1,0 +1,11 @@
+{
+  "patch": "PATCH-059",
+  "formulation": "TOTAL_ENERGY",
+  "includesPressureWorkInConvective": true,
+  "supportedFormulations": [
+    "INTERNAL_ENERGY",
+    "TOTAL_ENERGY",
+    "ENTHALPY",
+    "TOTAL_ENTHALPY"
+  ]
+}

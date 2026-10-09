@@ -1,0 +1,100 @@
+{
+  "manifestVersion": "1.0.0",
+  "documentId": "SECP-ADSE-WORKBENCH-LOCK-001",
+  "status": "LOCKED_AND_VERIFIED",
+  "timestamp": "2026-09-29T07:40:00.000Z",
+  "totalPhases": 10,
+  "phases": {
+    "P0": {
+      "name": "Representative Path & Canonical Architecture",
+      "status": "CLOSED",
+      "closureReport": "reports/ADSE-P0-FORENSIC-CLOSURE-AUDIT.md",
+      "capabilityRegister": "reports/ADSE-P0-CAPABILITY-REGISTER.json",
+      "testDirectory": "tests/adse/p0/",
+      "gates": ["P0-V1", "P0-V2", "P0-V3", "P0-V4"],
+      "persistenceVerified": true
+    },
+    "P1": {
+      "name": "System Model & Requirements Engineering",
+      "status": "CLOSED",
+      "closureReport": "reports/ADSE-P1-REQUIREMENTS-CONTRACT.md",
+      "capabilityRegister": "reports/ADSE-P1-CAPABILITY-REGISTER.json",
+      "testDirectory": "tests/adse/p1/",
+      "gates": ["P1-V5", "P1-V6", "P1-V7", "P1-V8"],
+      "persistenceVerified": true
+    },
+    "P2": {
+      "name": "MBSE & Semantic Modeling",
+      "status": "CLOSED",
+      "closureReport": "reports/ADSE-P2-FORENSIC-CLOSURE.md",
+      "capabilityRegister": "reports/ADSE-P2-EVIDENCE-INDEX.json",
+      "testDirectory": "tests/adse/p2/",
+      "gates": ["P2-V9", "P2-V10", "P2-V11", "P2-V12"],
+      "persistenceVerified": true
+    },
+    "P3": {
+      "name": "System Architecture & Decomposition",
+      "status": "CLOSED",
+      "closureReport": "reports/ADSE-P3-FORENSIC-CLOSURE.md",
+      "capabilityRegister": "reports/ADSE-P3-CAPABILITY-REGISTER.json",
+      "testDirectory": "tests/adse/p3/",
+      "gates": ["P3-V13", "P3-V14", "P3-V15", "P3-V16"],
+      "persistenceVerified": true
+    },
+    "P4": {
+      "name": "Digital Thread & Cryptographic Traceability",
+      "status": "CLOSED",
+      "closureReport": "reports/ADSE-P4-FORENSIC-CLOSURE.md",
+      "capabilityRegister": "reports/ADSE-P4-CAPABILITY-REGISTER.json",
+      "testDirectory": "tests/adse/p4/",
+      "gates": ["P4-V17", "P4-V18", "P4-V19", "P4-V20"],
+      "persistenceVerified": true
+    },
+    "P5": {
+      "name": "Structural & Physical Assembly Integration",
+      "status": "CLOSED",
+      "closureReport": "reports/ADSE-P5-FORENSIC-CLOSURE.md",
+      "capabilityRegister": "reports/ADSE-P5-CAPABILITY-REGISTER.json",
+      "testDirectory": "tests/adse/p5/",
+      "gates": ["P5-V21", "P5-V22", "P5-V23", "P5-V24"],
+      "persistenceVerified": true
+    },
+    "P6": {
+      "name": "Thermal Multiphysics Integration",
+      "status": "CLOSED",
+      "closureReport": "reports/ADSE-P6-FORENSIC-CLOSURE.md",
+      "capabilityRegister": "reports/ADSE-P6-CAPABILITY-REGISTER.json",
+      "testDirectory": "tests/adse/p6/",
+      "gates": ["P6-V25", "P6-V26", "P6-V27", "P6-V28"],
+      "persistenceVerified": true
+    },
+    "P7": {
+      "name": "Electrical Power Integration",
+      "status": "CLOSED",
+      "closureReport": "reports/ADSE-P7-FORENSIC-CLOSURE.md",
+      "capabilityRegister": "reports/ADSE-P7-CAPABILITY-REGISTER.json",
+      "testDirectory": "tests/adse/p7/",
+      "gates": ["P7-V29", "P7-V30", "P7-V31", "P7-V32"],
+      "persistenceVerified": true
+    },
+    "P8": {
+      "name": "Controls & Embedded Systems Integration",
+      "status": "CLOSED",
+      "closureReport": "reports/ADSE-P8-FINAL-FORENSIC-CLOSURE.md",
+      "capabilityRegister": "reports/ADSE-P8-INTEGRATION-RECONCILIATION.json",
+      "testDirectory": "tests/adse/p8/",
+      "gates": ["P8-V33", "P8-V34", "P8-V35", "P8-V36"],
+      "persistenceVerified": true
+    },
+    "P9": {
+      "name": "Communications, Cyber-Physical Networks & AI Governance",
+      "status": "CLOSED",
+      "closureReport": "reports/ADSE-P9-FORENSIC-CLOSURE.md",
+      "capabilityRegister": "reports/ADSE-P9-CAPABILITY-REGISTER.json",
+      "testDirectory": "tests/adse/p9/",
+      "gates": ["P9-V37", "P9-V38", "P9-V39", "P9-V40"],
+      "persistenceVerified": true
+    }
+  },
+  "overallVerdict": "ALL_PHASES_LOCKED_CANONICALLY_CLOSED"
+}

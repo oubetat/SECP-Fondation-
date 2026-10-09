@@ -1,0 +1,18 @@
+{
+  "numNodes": 4,
+  "degreeStats": {
+    "maxDegree": 2,
+    "minDegree": 0,
+    "avgDegree": 1
+  },
+  "connectedComponents": [
+    [
+      0,
+      1,
+      2
+    ],
+    [
+      3
+    ]
+  ]
+}

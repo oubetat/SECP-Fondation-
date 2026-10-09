@@ -1,0 +1,183 @@
+{
+  "$schema": "https://secp.defense.gov/schemas/post-plugin-maturity-007-benchmark-005-constraint-matrix.json",
+  "contractId": "SECP-POST-PLUGIN-MATURITY-007-BENCHMARK-005-CONSTRAINT-MATRIX",
+  "version": "1.0.0",
+  "status": "AUTHORITATIVE_ENFORCED_AND_VERIFIED",
+  "authorityBoundary": "CoreExecutionAuthority (Authoritative Domain Solvers)",
+  "errorTaxonomy": "PHYSICAL_CONSTRAINT_VIOLATION",
+  "domainConstraints": [
+    {
+      "domain": "robotics",
+      "solverId": "ROBOTICS-KINEMATICS-SOLVER-V1",
+      "pluginId": "secp-plugin-robotics",
+      "executionKind": "joint-torque",
+      "standard": "Craig, J.J. (2005) Introduction to Robotics / ISO 9283:1998",
+      "invariants": [
+        {
+          "parameter": "link1LengthMm, link2LengthMm",
+          "condition": "link1LengthMm >= 0 && link2LengthMm >= 0",
+          "physicalBasis": "Metric length of rigid articulated manipulator links must be non-negative real numbers.",
+          "violationCaseId": "M7-ROB-05",
+          "enforcementAction": "REJECT_WITH_PHYSICAL_CONSTRAINT_VIOLATION"
+        },
+        {
+          "parameter": "payloadMassKg",
+          "condition": "payloadMassKg >= 0",
+          "physicalBasis": "Payload mass must be non-negative in gravitational torque dynamics (m >= 0). Zero payload is valid boundary limit.",
+          "boundaryCaseId": "M7-ROB-03",
+          "enforcementAction": "ALLOW_ZERO_REJECT_NEGATIVE"
+        },
+        {
+          "parameter": "jointMaxAccelDegS2",
+          "condition": "jointMaxAccelDegS2 >= 0",
+          "physicalBasis": "Joint angular acceleration magnitude must be non-negative.",
+          "enforcementAction": "REJECT_WITH_PHYSICAL_CONSTRAINT_VIOLATION"
+        }
+      ]
+    },
+    {
+      "domain": "aerospace",
+      "solverId": "AEROSPACE-FLOW-SOLVER-V1",
+      "pluginId": "secp-plugin-aerospace",
+      "executionKind": "mach-flow",
+      "standard": "ISO 2533:1975 Standard Atmosphere / ICAO Doc 7488/3",
+      "invariants": [
+        {
+          "parameter": "altitudeM",
+          "condition": "altitudeM >= 0 && altitudeM <= 80000",
+          "physicalBasis": "Standard atmospheric model troposphere/stratosphere valid domain extends from sea level (0 m) to mesopause ceiling (80,000 m). Sub-surface altitude (h < 0) is physically non-atmospheric.",
+          "violationCaseId": "M7-AER-05",
+          "boundaryCaseId": "M7-AER-01",
+          "enforcementAction": "REJECT_WITH_PHYSICAL_CONSTRAINT_VIOLATION"
+        },
+        {
+          "parameter": "velocityMs",
+          "condition": "velocityMs >= 0",
+          "physicalBasis": "Airspeed magnitude must be non-negative real value.",
+          "enforcementAction": "REJECT_WITH_PHYSICAL_CONSTRAINT_VIOLATION"
+        }
+      ]
+    },
+    {
+      "domain": "automotive",
+      "solverId": "AUTOMOTIVE-DRAG-SOLVER-V1",
+      "pluginId": "secp-plugin-automotive",
+      "executionKind": "aero-drag",
+      "standard": "SAE J2263 / Hucho (1998) Aerodynamics of Road Vehicles",
+      "invariants": [
+        {
+          "parameter": "dragCoefficientCd",
+          "condition": "dragCoefficientCd >= 0",
+          "physicalBasis": "Aerodynamic drag coefficient for passive road vehicles must be non-negative. Cd < 0 represents spontaneous propulsion from air resistance, violating the 2nd Law of Thermodynamics.",
+          "violationCaseId": "M7-AUT-05",
+          "enforcementAction": "REJECT_WITH_PHYSICAL_CONSTRAINT_VIOLATION"
+        },
+        {
+          "parameter": "frontalAreaM2",
+          "condition": "frontalAreaM2 > 0",
+          "physicalBasis": "Physical road vehicle frontal projected area must be strictly positive.",
+          "enforcementAction": "REJECT_WITH_PHYSICAL_CONSTRAINT_VIOLATION"
+        },
+        {
+          "parameter": "speedKmH",
+          "condition": "speedKmH >= 0",
+          "physicalBasis": "Road speed magnitude must be non-negative. Speed = 0 represents static vehicle boundary condition.",
+          "boundaryCaseId": "M7-AUT-03",
+          "enforcementAction": "ALLOW_ZERO_REJECT_NEGATIVE"
+        }
+      ]
+    },
+    {
+      "domain": "energy",
+      "solverId": "ENERGY-TURBINE-SOLVER-V1",
+      "pluginId": "secp-plugin-energy",
+      "executionKind": "wind-power",
+      "standard": "IEC 61400-1:2019 / Betz Physical Law (1919) 1D Actuator Disk Momentum Theory",
+      "invariants": [
+        {
+          "parameter": "powerCoefficientCp",
+          "condition": "powerCoefficientCp >= 0 && powerCoefficientCp <= 16/27",
+          "physicalBasis": "Betz's Law (1919) establishes the maximum theoretical aerodynamic power extraction efficiency of an open-flow wind turbine as Cp_max = 16/27 (~0.59259). Cp > 16/27 violates linear momentum and energy conservation.",
+          "violationCaseId": "M7-ENE-05",
+          "enforcementAction": "REJECT_WITH_PHYSICAL_CONSTRAINT_VIOLATION"
+        },
+        {
+          "parameter": "rotorRadiusM",
+          "condition": "rotorRadiusM > 0",
+          "physicalBasis": "Rotor radius must be strictly positive for physical turbine rotor.",
+          "enforcementAction": "REJECT_WITH_PHYSICAL_CONSTRAINT_VIOLATION"
+        },
+        {
+          "parameter": "windSpeedMS",
+          "condition": "windSpeedMS >= 0",
+          "physicalBasis": "Wind speed magnitude must be non-negative. Wind speed = 0 represents calm air boundary condition.",
+          "boundaryCaseId": "M7-ENE-03",
+          "enforcementAction": "ALLOW_ZERO_REJECT_NEGATIVE"
+        },
+        {
+          "parameter": "generatorEfficiencyPct",
+          "condition": "generatorEfficiencyPct > 0 && generatorEfficiencyPct <= 100",
+          "physicalBasis": "Electromechanical generator efficiency must not exceed 100% (1st Law of Thermodynamics).",
+          "enforcementAction": "REJECT_WITH_PHYSICAL_CONSTRAINT_VIOLATION"
+        }
+      ]
+    },
+    {
+      "domain": "marine",
+      "solverId": "MARINE-HYDROSTATICS-SOLVER-V1",
+      "pluginId": "secp-plugin-marine",
+      "executionKind": "hydrostatics",
+      "standard": "ITTC 1957 Model-Ship Correlation Line / SNAME Principles of Naval Architecture",
+      "invariants": [
+        {
+          "parameter": "waterlineLengthM",
+          "condition": "waterlineLengthM > 0",
+          "physicalBasis": "Froude scaling number Fn = V / sqrt(g*L) requires strictly positive waterline length L > 0. Non-positive length produces mathematical square-root singularities or zero division.",
+          "violationCaseId": "M7-MAR-05",
+          "enforcementAction": "REJECT_WITH_PHYSICAL_CONSTRAINT_VIOLATION"
+        },
+        {
+          "parameter": "displacementTons",
+          "condition": "displacementTons > 0",
+          "physicalBasis": "Vessel buoyant displacement mass must be strictly positive.",
+          "enforcementAction": "REJECT_WITH_PHYSICAL_CONSTRAINT_VIOLATION"
+        }
+      ]
+    },
+    {
+      "domain": "oil-gas",
+      "solverId": "OIL-GAS-PIPELINE-SOLVER-V1",
+      "pluginId": "secp-plugin-oil-gas",
+      "executionKind": "barlow-stress",
+      "standard": "ASME B31.8-2020 Gas Piping / API Specification 5L",
+      "invariants": [
+        {
+          "parameter": "wallThicknessMm",
+          "condition": "wallThicknessMm > 0",
+          "physicalBasis": "Barlow hoop stress equation sigma_h = (P*D)/(2*t) exhibits division-by-zero infinite stress singularity when wall thickness t <= 0.",
+          "violationCaseId": "M7-OIL-05",
+          "enforcementAction": "REJECT_WITH_PHYSICAL_CONSTRAINT_VIOLATION"
+        },
+        {
+          "parameter": "outerDiameterMm",
+          "condition": "outerDiameterMm > 0",
+          "physicalBasis": "Pipe outer diameter must be strictly positive.",
+          "enforcementAction": "REJECT_WITH_PHYSICAL_CONSTRAINT_VIOLATION"
+        },
+        {
+          "parameter": "internalPressureMPa",
+          "condition": "internalPressureMPa >= 0",
+          "physicalBasis": "Internal burst gauge pressure must be non-negative (P >= 0). P = 0 represents unpressurized pipeline baseline (safety factor = 0).",
+          "boundaryCaseId": "M7-OIL-03",
+          "enforcementAction": "ALLOW_ZERO_REJECT_NEGATIVE"
+        },
+        {
+          "parameter": "materialYieldStrengthMPa, safetyFactorASME",
+          "condition": "materialYieldStrengthMPa > 0 && safetyFactorASME > 0",
+          "physicalBasis": "Material yield stress and ASME safety factor must be positive real numbers.",
+          "enforcementAction": "REJECT_WITH_PHYSICAL_CONSTRAINT_VIOLATION"
+        }
+      ]
+    }
+  ]
+}

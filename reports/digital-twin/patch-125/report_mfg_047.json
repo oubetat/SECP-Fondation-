@@ -1,0 +1,11 @@
+{
+  "reportId": "REP-MFG-125-047",
+  "timestamp": "2026-08-21T09:22:45.200Z",
+  "twinId": "MFG-TWIN-REPORT-047",
+  "productId": "AEROSPACE-COMPONENT-47",
+  "material": "TITANIUM-6AL-4V",
+  "inputHash": "f5ed43e97566b96a1da6d15837b79374601ceb4a55b3d7426bea0d3829c097fa",
+  "rootHash": "2ec9afbc3a6c0002b8e8995ebf3b45d0d6b9c2161813aa73b20671b958ee52b2",
+  "state": "READY",
+  "verdict": "MANUFACTURING_TRUTH_VERIFIED"
+}

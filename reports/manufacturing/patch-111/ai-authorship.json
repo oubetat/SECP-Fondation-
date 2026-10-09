@@ -1,0 +1,7 @@
+{
+  "aiEngine": "GEMINI_2.5_CAM",
+  "modelId": "gemini-2.5-pro",
+  "promptPolicyId": "POL_PROMPT_OPT_SPEED",
+  "statusGatingEnforced": true,
+  "autoValidationAllowed": false
+}

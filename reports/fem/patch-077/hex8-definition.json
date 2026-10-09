@@ -1,0 +1,30 @@
+{
+  "elementTypeId": "HEX8",
+  "family": "HEXAHEDRON",
+  "dimension": 3,
+  "nodeCount": 8,
+  "polynomialOrder": 1,
+  "dofsPerNode": 3,
+  "dofTypes": [
+    "UX",
+    "UY",
+    "UZ"
+  ],
+  "formulationVersion": "HEX8-ISO-v1",
+  "defaultIntegrationRuleId": "GAUSS_HEX_2X2X2",
+  "materialModelCompatibility": [
+    "LINEAR_ELASTIC_ISOTROPIC_3D"
+  ],
+  "geometricRequirements": {
+    "minNodes": 8,
+    "maxNodes": 8,
+    "manifoldDimension": 3
+  },
+  "physicsCapabilities": {
+    "linearStatic": true,
+    "thermal": false,
+    "dynamic": true,
+    "nonlinear": false
+  },
+  "implementationStatus": "VERIFIED"
+}

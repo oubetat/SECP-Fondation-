@@ -1,0 +1,253 @@
+{
+  "reportId": "GEO-ACC-1787660129220",
+  "timestamp": "2026-08-25T12:15:29.220Z",
+  "overallAccuracyPercent": 100,
+  "volumeErrorMax": 7.105427357601002e-15,
+  "areaErrorMax": 7.105427357601002e-15,
+  "hausdorffDistanceMax": 7.105427357601002e-15,
+  "primitiveAccuracyPercent": 100,
+  "nurbsAccuracyPercent": 99.8,
+  "booleanAccuracyPercent": 100,
+  "evaluations": [
+    {
+      "caseId": "BENCH-GEO-001",
+      "category": "GEOMETRY_CREATION",
+      "volumeError": 0,
+      "areaError": 0,
+      "hausdorffDistance": 0,
+      "verdict": "IMPROVEMENT"
+    },
+    {
+      "caseId": "BENCH-GEO-002",
+      "category": "GEOMETRY_CREATION",
+      "volumeError": 0,
+      "areaError": 0,
+      "hausdorffDistance": 0,
+      "verdict": "IMPROVEMENT"
+    },
+    {
+      "caseId": "BENCH-GEO-003",
+      "category": "GEOMETRY_CREATION",
+      "volumeError": 0,
+      "areaError": 0,
+      "hausdorffDistance": 0,
+      "verdict": "IMPROVEMENT"
+    },
+    {
+      "caseId": "BENCH-GEO-004",
+      "category": "GEOMETRY_CREATION",
+      "volumeError": 1.3552527156068805e-20,
+      "areaError": 0,
+      "hausdorffDistance": 1.3552527156068805e-20,
+      "verdict": "IMPROVEMENT"
+    },
+    {
+      "caseId": "BENCH-CRV-001",
+      "category": "CURVES_SURFACES",
+      "volumeError": 0,
+      "areaError": 0,
+      "hausdorffDistance": 0,
+      "verdict": "IMPROVEMENT"
+    },
+    {
+      "caseId": "BENCH-NURBS-001",
+      "category": "NURBS",
+      "volumeError": 7.105427357601002e-15,
+      "areaError": 7.105427357601002e-15,
+      "hausdorffDistance": 7.105427357601002e-15,
+      "verdict": "IMPROVEMENT"
+    },
+    {
+      "caseId": "BENCH-NURBS-002",
+      "category": "NURBS",
+      "volumeError": 0,
+      "areaError": 0,
+      "hausdorffDistance": 0,
+      "verdict": "IMPROVEMENT"
+    },
+    {
+      "caseId": "BENCH-BREP-001",
+      "category": "BREP_TOPOLOGY",
+      "volumeError": 0,
+      "areaError": 0,
+      "hausdorffDistance": 0,
+      "verdict": "IMPROVEMENT"
+    },
+    {
+      "caseId": "BENCH-BREP-002",
+      "category": "BREP_TOPOLOGY",
+      "volumeError": 0,
+      "areaError": 0,
+      "hausdorffDistance": 0,
+      "verdict": "IMPROVEMENT"
+    },
+    {
+      "caseId": "BENCH-BOOL-001",
+      "category": "BOOLEAN_OPERATIONS",
+      "volumeError": 0,
+      "areaError": 0,
+      "hausdorffDistance": 0,
+      "verdict": "IMPROVEMENT"
+    },
+    {
+      "caseId": "BENCH-BOOL-002",
+      "category": "BOOLEAN_OPERATIONS",
+      "volumeError": 0,
+      "areaError": 0,
+      "hausdorffDistance": 0,
+      "verdict": "IMPROVEMENT"
+    },
+    {
+      "caseId": "BENCH-BOOL-003",
+      "category": "BOOLEAN_OPERATIONS",
+      "volumeError": 0,
+      "areaError": 0,
+      "hausdorffDistance": 0,
+      "verdict": "IMPROVEMENT"
+    },
+    {
+      "caseId": "BENCH-PRED-001",
+      "category": "GEOMETRIC_PREDICATES",
+      "volumeError": 0,
+      "areaError": 0,
+      "hausdorffDistance": 0,
+      "verdict": "IMPROVEMENT"
+    },
+    {
+      "caseId": "BENCH-PRED-002",
+      "category": "GEOMETRIC_PREDICATES",
+      "volumeError": 0,
+      "areaError": 0,
+      "hausdorffDistance": 0,
+      "verdict": "IMPROVEMENT"
+    },
+    {
+      "caseId": "BENCH-HEAL-001",
+      "category": "TOPOLOGY_HEALING",
+      "volumeError": 0,
+      "areaError": 0,
+      "hausdorffDistance": 0,
+      "verdict": "IMPROVEMENT"
+    },
+    {
+      "caseId": "BENCH-HEAL-002",
+      "category": "TOPOLOGY_HEALING",
+      "volumeError": 0,
+      "areaError": 0,
+      "hausdorffDistance": 0,
+      "verdict": "IMPROVEMENT"
+    },
+    {
+      "caseId": "BENCH-TOL-001",
+      "category": "TOLERANCE_HANDLING",
+      "volumeError": 0,
+      "areaError": 0,
+      "hausdorffDistance": 0,
+      "verdict": "IMPROVEMENT"
+    },
+    {
+      "caseId": "BENCH-PARAM-001",
+      "category": "PARAMETRIC_MODELING",
+      "volumeError": 0,
+      "areaError": 0,
+      "hausdorffDistance": 0,
+      "verdict": "IMPROVEMENT"
+    },
+    {
+      "caseId": "BENCH-REGEN-001",
+      "category": "FEATURE_REGENERATION",
+      "volumeError": 0,
+      "areaError": 0,
+      "hausdorffDistance": 0,
+      "verdict": "IMPROVEMENT"
+    },
+    {
+      "caseId": "BENCH-GCS-001",
+      "category": "CONSTRAINT_SOLVING",
+      "volumeError": 0,
+      "areaError": 0,
+      "hausdorffDistance": 0,
+      "verdict": "IMPROVEMENT"
+    },
+    {
+      "caseId": "BENCH-GCS-002",
+      "category": "CONSTRAINT_SOLVING",
+      "volumeError": 0,
+      "areaError": 0,
+      "hausdorffDistance": 0,
+      "verdict": "IMPROVEMENT"
+    },
+    {
+      "caseId": "BENCH-ASY-001",
+      "category": "ASSEMBLY_GEOMETRY",
+      "volumeError": 0,
+      "areaError": 0,
+      "hausdorffDistance": 0,
+      "verdict": "IMPROVEMENT"
+    },
+    {
+      "caseId": "BENCH-CLASH-001",
+      "category": "CLASH_DETECTION",
+      "volumeError": 0,
+      "areaError": 0,
+      "hausdorffDistance": 0,
+      "verdict": "IMPROVEMENT"
+    },
+    {
+      "caseId": "BENCH-SCALE-001",
+      "category": "LARGE_MODEL_HANDLING",
+      "volumeError": 0,
+      "areaError": 0,
+      "hausdorffDistance": 0,
+      "verdict": "IMPROVEMENT"
+    },
+    {
+      "caseId": "BENCH-NUM-001",
+      "category": "NUMERICAL_ROBUSTNESS",
+      "volumeError": 3.2311742677852644e-27,
+      "areaError": 3.2311742677852644e-27,
+      "hausdorffDistance": 3.2311742677852644e-27,
+      "verdict": "IMPROVEMENT"
+    },
+    {
+      "caseId": "BENCH-DEG-001",
+      "category": "DEGENERATE_GEOMETRY",
+      "volumeError": 0,
+      "areaError": 0,
+      "hausdorffDistance": 0,
+      "verdict": "IMPROVEMENT"
+    },
+    {
+      "caseId": "BENCH-ADV-001",
+      "category": "ADVERSARIAL_GEOMETRY",
+      "volumeError": 0,
+      "areaError": 0,
+      "hausdorffDistance": 0,
+      "verdict": "IMPROVEMENT"
+    },
+    {
+      "caseId": "BENCH-DET-001",
+      "category": "DETERMINISM",
+      "volumeError": 0,
+      "areaError": 0,
+      "hausdorffDistance": 0,
+      "verdict": "IMPROVEMENT"
+    },
+    {
+      "caseId": "BENCH-REP-001",
+      "category": "REPRODUCIBILITY",
+      "volumeError": 0,
+      "areaError": 0,
+      "hausdorffDistance": 0,
+      "verdict": "IMPROVEMENT"
+    },
+    {
+      "caseId": "BENCH-PERF-001",
+      "category": "PERFORMANCE",
+      "volumeError": 0,
+      "areaError": 0,
+      "hausdorffDistance": 0,
+      "verdict": "IMPROVEMENT"
+    }
+  ]
+}

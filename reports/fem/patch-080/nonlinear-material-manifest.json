@@ -1,0 +1,8 @@
+{
+  "patch": "PATCH-080",
+  "name": "Nonlinear Material Constitutive Infrastructure",
+  "version": "2.0.0",
+  "formulation": "J2_VON_MISES_ELASTOPLASTICITY_WITH_ISOTROPIC_HARDENING",
+  "status": "VERIFIED",
+  "timestamp": "2026-09-25T07:58:58.479Z"
+}

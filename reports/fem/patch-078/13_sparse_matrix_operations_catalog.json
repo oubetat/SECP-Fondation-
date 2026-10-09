@@ -1,0 +1,44 @@
+{
+  "operations": [
+    {
+      "name": "SpMV",
+      "signature": "spmv(A, x, yOut)",
+      "complexity": "O(nnz)"
+    },
+    {
+      "name": "Transpose",
+      "signature": "transpose(A)",
+      "complexity": "O(nnz + cols)"
+    },
+    {
+      "name": "Addition",
+      "signature": "add(A, B)",
+      "complexity": "O(nnz_A + nnz_B)"
+    },
+    {
+      "name": "Scalar Multiply",
+      "signature": "scale(A, alpha)",
+      "complexity": "O(nnz)"
+    },
+    {
+      "name": "Frobenius Norm",
+      "signature": "frobeniusNorm(A)",
+      "complexity": "O(nnz)"
+    },
+    {
+      "name": "Infinity Norm",
+      "signature": "infNorm(A)",
+      "complexity": "O(nnz)"
+    },
+    {
+      "name": "1-Norm",
+      "signature": "oneNorm(A)",
+      "complexity": "O(nnz)"
+    },
+    {
+      "name": "Symmetry Check",
+      "signature": "isSymmetric(A, tol)",
+      "complexity": "O(nnz * log k)"
+    }
+  ]
+}

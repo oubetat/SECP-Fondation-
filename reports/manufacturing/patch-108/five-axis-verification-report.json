@@ -1,0 +1,8 @@
+{
+  "kinematicType": "TABLE_TABLE_TRUNNION",
+  "rotaryAxes": [
+    "A",
+    "C"
+  ],
+  "status": "5AXIS_KINEMATICS_VERIFIED"
+}

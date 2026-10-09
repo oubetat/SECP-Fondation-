@@ -1,0 +1,9 @@
+{
+  "reportId": "REP-SYNC-128-028",
+  "timestamp": "2026-08-21T09:45:36.387Z",
+  "syncSessionId": "SYNC-028",
+  "sourceStateHash": "43ccb04ecde11382ae8f8764ccf03674f44383ddf192c1fc55a2bcc2c9f1e251",
+  "targetStateHash": "43ccb04ecde11382ae8f8764ccf03674f44383ddf192c1fc55a2bcc2c9f1e251",
+  "status": "COMPLETED",
+  "eventChainHash": "7a4b1382cda42df4bfb5a9218c61ed56a116122356ef63f9df8baa80bba5bfad"
+}

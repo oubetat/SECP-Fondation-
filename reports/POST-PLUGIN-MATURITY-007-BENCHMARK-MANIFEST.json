@@ -1,0 +1,1370 @@
+[
+  {
+    "benchmarkId": "M7-ROB-01",
+    "benchmarkVersion": "1.0.0",
+    "domain": "robotics",
+    "plugin": "secp-plugin-robotics",
+    "objective": "Verify dynamic joint torque & motor sizing closed form values",
+    "referenceType": "Level 4 — Independent analytical equations/model",
+    "referenceIdentity": "ORACLE-ROBOTICS-V1",
+    "referenceIndependent": true,
+    "canonicalObject": "BENCH-ENG-OBJ-800",
+    "canonicalRevision": "REV-BENCH-100",
+    "inputsDigest": "cc4b4801c7034ead1ede277b8a1659d79a5bcd48e990959034b811b393649fc1",
+    "expectedOutputs": {
+      "gravityTorqueNm": 98.1,
+      "totalShoulderTorqueNm": 113.8,
+      "motorCurrentAmp": 133.9
+    },
+    "actualOutputs": {
+      "gravityTorqueNm": 98.1,
+      "totalShoulderTorqueNm": 113.8,
+      "motorCurrentAmp": 133.9
+    },
+    "errors": {
+      "abs_gravityTorqueNm": 0,
+      "rel_gravityTorqueNm": 0,
+      "abs_totalShoulderTorqueNm": 0,
+      "rel_totalShoulderTorqueNm": 0,
+      "abs_motorCurrentAmp": 0,
+      "rel_motorCurrentAmp": 0
+    },
+    "tolerances": {
+      "tol_gravityTorqueNm": 0.05,
+      "tol_totalShoulderTorqueNm": 0.05,
+      "tol_motorCurrentAmp": 0.05
+    },
+    "verification": "PASS",
+    "reproducible": true,
+    "truthThreadBound": true,
+    "evidenceRoot": "0780ac7084493e3f7645e1d6044a1d1d7feafb9651626b3bce7f393e80ffd787",
+    "provenance": "REV-NODE-a4cd656011e3f4a2823a4ddc66a3a00366ad4d7ef0ac5f282ed3c3d220975afe -> EXEC-NODE-EXEC-2DB998BACF999DC9CFEBA5E1 -> RES-NODE-EXEC-2DB998BACF999DC9CFEBA5E1",
+    "persistenceVerified": true
+  },
+  {
+    "benchmarkId": "M7-ROB-02",
+    "benchmarkVersion": "1.0.0",
+    "domain": "robotics",
+    "plugin": "secp-plugin-robotics",
+    "objective": "Standard industrial robotic payload & links kinematics matching dynamic simulation",
+    "referenceType": "Level 4 — Independent analytical equations/model",
+    "referenceIdentity": "ORACLE-ROBOTICS-V1",
+    "referenceIndependent": true,
+    "canonicalObject": "BENCH-ENG-OBJ-800",
+    "canonicalRevision": "REV-BENCH-100",
+    "inputsDigest": "c89781b678c500446873a686893d2092bd7d1548613ee3afd7a51ab0bc4a8b47",
+    "expectedOutputs": {
+      "gravityTorqueNm": 176.6,
+      "totalShoulderTorqueNm": 244.4,
+      "motorCurrentAmp": 287.6
+    },
+    "actualOutputs": {
+      "gravityTorqueNm": 176.6,
+      "totalShoulderTorqueNm": 244.4,
+      "motorCurrentAmp": 287.6
+    },
+    "errors": {
+      "abs_gravityTorqueNm": 0,
+      "rel_gravityTorqueNm": 0,
+      "abs_totalShoulderTorqueNm": 0,
+      "rel_totalShoulderTorqueNm": 0,
+      "abs_motorCurrentAmp": 0,
+      "rel_motorCurrentAmp": 0
+    },
+    "tolerances": {
+      "tol_gravityTorqueNm": 0.05,
+      "tol_totalShoulderTorqueNm": 0.05,
+      "tol_motorCurrentAmp": 0.05
+    },
+    "verification": "PASS",
+    "reproducible": true,
+    "truthThreadBound": true,
+    "evidenceRoot": "5511477d2d145598f5c19e9252865064303634ca076747e5f1e2918a211087aa",
+    "provenance": "REV-NODE-a4cd656011e3f4a2823a4ddc66a3a00366ad4d7ef0ac5f282ed3c3d220975afe -> EXEC-NODE-EXEC-C48491AC2E6475F4142544FC -> RES-NODE-EXEC-C48491AC2E6475F4142544FC",
+    "persistenceVerified": true
+  },
+  {
+    "benchmarkId": "M7-ROB-03",
+    "benchmarkVersion": "1.0.0",
+    "domain": "robotics",
+    "plugin": "secp-plugin-robotics",
+    "objective": "Zero mass payload limit behavior",
+    "referenceType": "Level 4 — Independent analytical equations/model",
+    "referenceIdentity": "ORACLE-ROBOTICS-V1",
+    "referenceIndependent": true,
+    "canonicalObject": "BENCH-ENG-OBJ-800",
+    "canonicalRevision": "REV-BENCH-100",
+    "inputsDigest": "4b92931a9652a7cdab863be1a54a562b8056bc318c15845e1be3d1ce9513ca4e",
+    "expectedOutputs": {
+      "gravityTorqueNm": 0,
+      "totalShoulderTorqueNm": 0,
+      "motorCurrentAmp": 0
+    },
+    "actualOutputs": {
+      "gravityTorqueNm": 0,
+      "totalShoulderTorqueNm": 0,
+      "motorCurrentAmp": 0
+    },
+    "errors": {
+      "abs_gravityTorqueNm": 0,
+      "abs_totalShoulderTorqueNm": 0,
+      "abs_motorCurrentAmp": 0
+    },
+    "tolerances": {
+      "tol_gravityTorqueNm": 0.05,
+      "tol_totalShoulderTorqueNm": 0.05,
+      "tol_motorCurrentAmp": 0.05
+    },
+    "verification": "PASS",
+    "reproducible": true,
+    "truthThreadBound": true,
+    "evidenceRoot": "08f31bfbd683532f26664075d510dc84876b64c15854f7dcefa5198cdeb1d804",
+    "provenance": "REV-NODE-a4cd656011e3f4a2823a4ddc66a3a00366ad4d7ef0ac5f282ed3c3d220975afe -> EXEC-NODE-EXEC-0E3833D88C29818390D00738 -> RES-NODE-EXEC-0E3833D88C29818390D00738",
+    "persistenceVerified": true
+  },
+  {
+    "benchmarkId": "M7-ROB-04",
+    "benchmarkVersion": "1.0.0",
+    "domain": "robotics",
+    "plugin": "secp-plugin-robotics",
+    "objective": "Mass perturbation sensitivity check",
+    "referenceType": "Level 4 — Independent analytical equations/model",
+    "referenceIdentity": "ORACLE-ROBOTICS-V1",
+    "referenceIndependent": true,
+    "canonicalObject": "BENCH-ENG-OBJ-800",
+    "canonicalRevision": "REV-BENCH-100",
+    "inputsDigest": "d06a61d3604a7325356791d8ee05d821256d6647bbdb78793c66f6edb7d6c8ae",
+    "expectedOutputs": {
+      "gravityTorqueNm": 114.3,
+      "totalShoulderTorqueNm": 138,
+      "motorCurrentAmp": 162.3
+    },
+    "actualOutputs": {
+      "gravityTorqueNm": 114.3,
+      "totalShoulderTorqueNm": 138,
+      "motorCurrentAmp": 162.3
+    },
+    "errors": {
+      "abs_gravityTorqueNm": 0,
+      "rel_gravityTorqueNm": 0,
+      "abs_totalShoulderTorqueNm": 0,
+      "rel_totalShoulderTorqueNm": 0,
+      "abs_motorCurrentAmp": 0,
+      "rel_motorCurrentAmp": 0
+    },
+    "tolerances": {
+      "tol_gravityTorqueNm": 0.05,
+      "tol_totalShoulderTorqueNm": 0.05,
+      "tol_motorCurrentAmp": 0.05
+    },
+    "verification": "PASS",
+    "reproducible": true,
+    "truthThreadBound": true,
+    "evidenceRoot": "97608d30755fbf59072bdbdd6c97c357c8f085cdc5648851492aed81abbfc169",
+    "provenance": "REV-NODE-a4cd656011e3f4a2823a4ddc66a3a00366ad4d7ef0ac5f282ed3c3d220975afe -> EXEC-NODE-EXEC-886831591A1D97F015C65393 -> RES-NODE-EXEC-886831591A1D97F015C65393",
+    "persistenceVerified": true
+  },
+  {
+    "benchmarkId": "M7-ROB-05",
+    "benchmarkVersion": "1.0.0",
+    "domain": "robotics",
+    "plugin": "secp-plugin-robotics",
+    "objective": "Negative geometry dimensions handler",
+    "referenceType": "Level 4 — Independent analytical equations/model",
+    "referenceIdentity": "ORACLE-ROBOTICS-V1",
+    "referenceIndependent": true,
+    "canonicalObject": "BENCH-ENG-OBJ-800",
+    "canonicalRevision": "REV-BENCH-100",
+    "inputsDigest": "2b9a32fe7ed6c1ebabb3f361f4423bd20cfff48c384e83936a6685cdf140528d",
+    "expectedOutputs": {
+      "gravityTorqueNm": 8.2,
+      "totalShoulderTorqueNm": 8.4,
+      "motorCurrentAmp": 9.8
+    },
+    "actualOutputs": {
+      "gravityTorqueNm": 8.2,
+      "totalShoulderTorqueNm": 8.4,
+      "motorCurrentAmp": 9.8
+    },
+    "errors": {
+      "abs_gravityTorqueNm": 0,
+      "rel_gravityTorqueNm": 0,
+      "abs_totalShoulderTorqueNm": 0,
+      "rel_totalShoulderTorqueNm": 0,
+      "abs_motorCurrentAmp": 0,
+      "rel_motorCurrentAmp": 0
+    },
+    "tolerances": {
+      "tol_gravityTorqueNm": 0.05,
+      "tol_totalShoulderTorqueNm": 0.05,
+      "tol_motorCurrentAmp": 0.05
+    },
+    "verification": "PASS",
+    "reproducible": true,
+    "truthThreadBound": true,
+    "evidenceRoot": "051999196da52691b3d36fe479e7699f3ddc42a752c2029064544b956f5f901b",
+    "provenance": "REV-NODE-a4cd656011e3f4a2823a4ddc66a3a00366ad4d7ef0ac5f282ed3c3d220975afe -> EXEC-NODE-EXEC-4DB96ABD11D3897D433F47BD -> RES-NODE-EXEC-4DB96ABD11D3897D433F47BD",
+    "persistenceVerified": true
+  },
+  {
+    "benchmarkId": "M7-ROB-06",
+    "benchmarkVersion": "1.0.0",
+    "domain": "robotics",
+    "plugin": "secp-plugin-robotics",
+    "objective": "Determinism and exact identity preservation",
+    "referenceType": "Level 4 — Independent analytical equations/model",
+    "referenceIdentity": "ORACLE-ROBOTICS-V1",
+    "referenceIndependent": true,
+    "canonicalObject": "BENCH-ENG-OBJ-800",
+    "canonicalRevision": "REV-BENCH-100",
+    "inputsDigest": "b714c2a84f1d0d615a42cb1bedb498fc72dd87670b6ad3b809d14d8cc12c1991",
+    "expectedOutputs": {
+      "gravityTorqueNm": 98.1,
+      "totalShoulderTorqueNm": 113.8,
+      "motorCurrentAmp": 133.9
+    },
+    "actualOutputs": {},
+    "errors": {},
+    "tolerances": {},
+    "verification": "FAILED_BOUNDARY_OR_SINGULARITY",
+    "reproducible": true,
+    "truthThreadBound": false,
+    "evidenceRoot": "",
+    "provenance": "",
+    "persistenceVerified": true
+  },
+  {
+    "benchmarkId": "M7-AER-01",
+    "benchmarkVersion": "1.0.0",
+    "domain": "aerospace",
+    "plugin": "secp-plugin-aerospace",
+    "objective": "Speed of sound & local Mach number at standard sea level",
+    "referenceType": "Level 4 — Independent analytical equations/model",
+    "referenceIdentity": "ORACLE-AEROSPACE-V1",
+    "referenceIndependent": true,
+    "canonicalObject": "BENCH-ENG-OBJ-800",
+    "canonicalRevision": "REV-BENCH-100",
+    "inputsDigest": "cf982b73195dc6c42c5161e8829412304d4196ee8db515e5b979e58f64fc1392",
+    "expectedOutputs": {
+      "machNumber": 1,
+      "speedOfSoundMs": 340.3,
+      "machShockAngleDeg": 89.8
+    },
+    "actualOutputs": {
+      "machNumber": 1,
+      "speedOfSoundMs": 340.3,
+      "machShockAngleDeg": 89.8
+    },
+    "errors": {
+      "abs_machNumber": 0,
+      "rel_machNumber": 0,
+      "abs_speedOfSoundMs": 0,
+      "rel_speedOfSoundMs": 0,
+      "abs_machShockAngleDeg": 0,
+      "rel_machShockAngleDeg": 0
+    },
+    "tolerances": {
+      "tol_machNumber": 0.05,
+      "tol_speedOfSoundMs": 0.05,
+      "tol_machShockAngleDeg": 0.05
+    },
+    "verification": "PASS",
+    "reproducible": true,
+    "truthThreadBound": true,
+    "evidenceRoot": "31820f4551ff02af8f7a6e07c7f1bb8f8d293ff12806031a69d2b67eb9840624",
+    "provenance": "REV-NODE-a4cd656011e3f4a2823a4ddc66a3a00366ad4d7ef0ac5f282ed3c3d220975afe -> EXEC-NODE-EXEC-659CA6422BEF048F0771C371 -> RES-NODE-EXEC-659CA6422BEF048F0771C371",
+    "persistenceVerified": true
+  },
+  {
+    "benchmarkId": "M7-AER-02",
+    "benchmarkVersion": "1.0.0",
+    "domain": "aerospace",
+    "plugin": "secp-plugin-aerospace",
+    "objective": "Mach Flow at standard commercial aviation cruising altitude",
+    "referenceType": "Level 4 — Independent analytical equations/model",
+    "referenceIdentity": "ORACLE-AEROSPACE-V1",
+    "referenceIndependent": true,
+    "canonicalObject": "BENCH-ENG-OBJ-800",
+    "canonicalRevision": "REV-BENCH-100",
+    "inputsDigest": "32ce4f21eae037ee0ad3987b7b2d65e5ac23234ea28712e56dee38fbae4cd39f",
+    "expectedOutputs": {
+      "machNumber": 1,
+      "speedOfSoundMs": 295.1,
+      "machShockAngleDeg": 89.2
+    },
+    "actualOutputs": {
+      "machNumber": 1,
+      "speedOfSoundMs": 295.1,
+      "machShockAngleDeg": 89.2
+    },
+    "errors": {
+      "abs_machNumber": 0,
+      "rel_machNumber": 0,
+      "abs_speedOfSoundMs": 0,
+      "rel_speedOfSoundMs": 0,
+      "abs_machShockAngleDeg": 0,
+      "rel_machShockAngleDeg": 0
+    },
+    "tolerances": {
+      "tol_machNumber": 0.05,
+      "tol_speedOfSoundMs": 0.05,
+      "tol_machShockAngleDeg": 0.05
+    },
+    "verification": "PASS",
+    "reproducible": true,
+    "truthThreadBound": true,
+    "evidenceRoot": "139529e2c8d0b3ebb0b228f0fb4323074094695931aff663bc929386ee602399",
+    "provenance": "REV-NODE-a4cd656011e3f4a2823a4ddc66a3a00366ad4d7ef0ac5f282ed3c3d220975afe -> EXEC-NODE-EXEC-C62B7BE8847AAF2F0058C2D2 -> RES-NODE-EXEC-C62B7BE8847AAF2F0058C2D2",
+    "persistenceVerified": true
+  },
+  {
+    "benchmarkId": "M7-AER-03",
+    "benchmarkVersion": "1.0.0",
+    "domain": "aerospace",
+    "plugin": "secp-plugin-aerospace",
+    "objective": "Extreme stratospheric altitude bounding temp limits",
+    "referenceType": "Level 4 — Independent analytical equations/model",
+    "referenceIdentity": "ORACLE-AEROSPACE-V1",
+    "referenceIndependent": true,
+    "canonicalObject": "BENCH-ENG-OBJ-800",
+    "canonicalRevision": "REV-BENCH-100",
+    "inputsDigest": "3cb804f83bdc4f4339fb291c99e5c1bc49228543c753cd1ca07a025e8730a2f7",
+    "expectedOutputs": {
+      "machNumber": 5.084,
+      "speedOfSoundMs": 295.1,
+      "machShockAngleDeg": 11.3
+    },
+    "actualOutputs": {
+      "machNumber": 5.084,
+      "speedOfSoundMs": 295.1,
+      "machShockAngleDeg": 11.3
+    },
+    "errors": {
+      "abs_machNumber": 0,
+      "rel_machNumber": 0,
+      "abs_speedOfSoundMs": 0,
+      "rel_speedOfSoundMs": 0,
+      "abs_machShockAngleDeg": 0,
+      "rel_machShockAngleDeg": 0
+    },
+    "tolerances": {
+      "tol_machNumber": 0.05,
+      "tol_speedOfSoundMs": 0.05,
+      "tol_machShockAngleDeg": 0.05
+    },
+    "verification": "PASS",
+    "reproducible": true,
+    "truthThreadBound": true,
+    "evidenceRoot": "6d8052c50f47834a0d71ca620182caa78c5a29c5c2b23887e7d12d1068b24c07",
+    "provenance": "REV-NODE-a4cd656011e3f4a2823a4ddc66a3a00366ad4d7ef0ac5f282ed3c3d220975afe -> EXEC-NODE-EXEC-8B29E46308CF03C51A0A6718 -> RES-NODE-EXEC-8B29E46308CF03C51A0A6718",
+    "persistenceVerified": true
+  },
+  {
+    "benchmarkId": "M7-AER-04",
+    "benchmarkVersion": "1.0.0",
+    "domain": "aerospace",
+    "plugin": "secp-plugin-aerospace",
+    "objective": "Velocity perturbation sensitivity",
+    "referenceType": "Level 4 — Independent analytical equations/model",
+    "referenceIdentity": "ORACLE-AEROSPACE-V1",
+    "referenceIndependent": true,
+    "canonicalObject": "BENCH-ENG-OBJ-800",
+    "canonicalRevision": "REV-BENCH-100",
+    "inputsDigest": "64c32f3af63dcfc2450815f6ec27d2895aa6de56a471fa0ee3c299fd8013f484",
+    "expectedOutputs": {
+      "machNumber": 1.003,
+      "speedOfSoundMs": 340.3,
+      "machShockAngleDeg": 85.6
+    },
+    "actualOutputs": {
+      "machNumber": 1.003,
+      "speedOfSoundMs": 340.3,
+      "machShockAngleDeg": 85.6
+    },
+    "errors": {
+      "abs_machNumber": 0,
+      "rel_machNumber": 0,
+      "abs_speedOfSoundMs": 0,
+      "rel_speedOfSoundMs": 0,
+      "abs_machShockAngleDeg": 0,
+      "rel_machShockAngleDeg": 0
+    },
+    "tolerances": {
+      "tol_machNumber": 0.05,
+      "tol_speedOfSoundMs": 0.05,
+      "tol_machShockAngleDeg": 0.05
+    },
+    "verification": "PASS",
+    "reproducible": true,
+    "truthThreadBound": true,
+    "evidenceRoot": "8e88a5f81c6d658d2fd13e5a115d6caceb871a34483b989f531538deff2d5b9f",
+    "provenance": "REV-NODE-a4cd656011e3f4a2823a4ddc66a3a00366ad4d7ef0ac5f282ed3c3d220975afe -> EXEC-NODE-EXEC-23BFE65016B3F61819CC39E5 -> RES-NODE-EXEC-23BFE65016B3F61819CC39E5",
+    "persistenceVerified": true
+  },
+  {
+    "benchmarkId": "M7-AER-05",
+    "benchmarkVersion": "1.0.0",
+    "domain": "aerospace",
+    "plugin": "secp-plugin-aerospace",
+    "objective": "Negative altitude out of bound extrapolation",
+    "referenceType": "Level 4 — Independent analytical equations/model",
+    "referenceIdentity": "ORACLE-AEROSPACE-V1",
+    "referenceIndependent": true,
+    "canonicalObject": "BENCH-ENG-OBJ-800",
+    "canonicalRevision": "REV-BENCH-100",
+    "inputsDigest": "9c7a6db5e378d74a587f1424a6edb1b0e509e2552f1299658e1d15610a2cc411",
+    "expectedOutputs": {
+      "machNumber": 0.727,
+      "speedOfSoundMs": 344.1,
+      "machShockAngleDeg": 0
+    },
+    "actualOutputs": {
+      "machNumber": 0.727,
+      "speedOfSoundMs": 344.1,
+      "machShockAngleDeg": 0
+    },
+    "errors": {
+      "abs_machNumber": 0,
+      "rel_machNumber": 0,
+      "abs_speedOfSoundMs": 0,
+      "rel_speedOfSoundMs": 0,
+      "abs_machShockAngleDeg": 0
+    },
+    "tolerances": {
+      "tol_machNumber": 0.05,
+      "tol_speedOfSoundMs": 0.05,
+      "tol_machShockAngleDeg": 0.05
+    },
+    "verification": "PASS",
+    "reproducible": true,
+    "truthThreadBound": true,
+    "evidenceRoot": "415b1c431152e0125e548836a8f28a17391ae90c396a6efc62923d4da8bd54e4",
+    "provenance": "REV-NODE-a4cd656011e3f4a2823a4ddc66a3a00366ad4d7ef0ac5f282ed3c3d220975afe -> EXEC-NODE-EXEC-6138553E4F0AA3F38626B854 -> RES-NODE-EXEC-6138553E4F0AA3F38626B854",
+    "persistenceVerified": true
+  },
+  {
+    "benchmarkId": "M7-AER-06",
+    "benchmarkVersion": "1.0.0",
+    "domain": "aerospace",
+    "plugin": "secp-plugin-aerospace",
+    "objective": "Determinism check at Mach 1",
+    "referenceType": "Level 4 — Independent analytical equations/model",
+    "referenceIdentity": "ORACLE-AEROSPACE-V1",
+    "referenceIndependent": true,
+    "canonicalObject": "BENCH-ENG-OBJ-800",
+    "canonicalRevision": "REV-BENCH-100",
+    "inputsDigest": "d0a1577c35bc68832d61b0aa99cf24b8165fe57e60243329bed5a4f3a581cbdb",
+    "expectedOutputs": {
+      "machNumber": 1,
+      "speedOfSoundMs": 340.3,
+      "machShockAngleDeg": 89.8
+    },
+    "actualOutputs": {},
+    "errors": {},
+    "tolerances": {},
+    "verification": "FAILED_BOUNDARY_OR_SINGULARITY",
+    "reproducible": true,
+    "truthThreadBound": false,
+    "evidenceRoot": "",
+    "provenance": "",
+    "persistenceVerified": true
+  },
+  {
+    "benchmarkId": "M7-AUT-01",
+    "benchmarkVersion": "1.0.0",
+    "domain": "automotive",
+    "plugin": "secp-plugin-automotive",
+    "objective": "Aerodynamic drag force & power loss closed form verification",
+    "referenceType": "Level 4 — Independent analytical equations/model",
+    "referenceIdentity": "ORACLE-AUTOMOTIVE-V1",
+    "referenceIndependent": true,
+    "canonicalObject": "BENCH-ENG-OBJ-800",
+    "canonicalRevision": "REV-BENCH-100",
+    "inputsDigest": "42fb1dfe396bb3a05390a0d171016e81f90c22ee0eb1c9bd5312f749b83f7604",
+    "expectedOutputs": {
+      "dragForceN": 277.8,
+      "powerRequiredKw": 7.72,
+      "powerRequiredHp": 10.3
+    },
+    "actualOutputs": {
+      "dragForceN": 277.8,
+      "powerRequiredKw": 7.72,
+      "powerRequiredHp": 10.3
+    },
+    "errors": {
+      "abs_dragForceN": 0,
+      "rel_dragForceN": 0,
+      "abs_powerRequiredKw": 0,
+      "rel_powerRequiredKw": 0,
+      "abs_powerRequiredHp": 0,
+      "rel_powerRequiredHp": 0
+    },
+    "tolerances": {
+      "tol_dragForceN": 0.05,
+      "tol_powerRequiredKw": 0.05,
+      "tol_powerRequiredHp": 0.05
+    },
+    "verification": "PASS",
+    "reproducible": true,
+    "truthThreadBound": true,
+    "evidenceRoot": "cb64477db08a1ae889b53e0b735450ac8a69b35bfe26639c999178f798536a95",
+    "provenance": "REV-NODE-a4cd656011e3f4a2823a4ddc66a3a00366ad4d7ef0ac5f282ed3c3d220975afe -> EXEC-NODE-EXEC-1D5508051E96060ADD35D23B -> RES-NODE-EXEC-1D5508051E96060ADD35D23B",
+    "persistenceVerified": true
+  },
+  {
+    "benchmarkId": "M7-AUT-02",
+    "benchmarkVersion": "1.0.0",
+    "domain": "automotive",
+    "plugin": "secp-plugin-automotive",
+    "objective": "Chassis drag on highway cruise speed with standard air density",
+    "referenceType": "Level 4 — Independent analytical equations/model",
+    "referenceIdentity": "ORACLE-AUTOMOTIVE-V1",
+    "referenceIndependent": true,
+    "canonicalObject": "BENCH-ENG-OBJ-800",
+    "canonicalRevision": "REV-BENCH-100",
+    "inputsDigest": "6a38c210d95922e70e8ec0e9bd53ebba18e0cae5696fec4d1dec7ef1f6342274",
+    "expectedOutputs": {
+      "dragForceN": 419.2,
+      "powerRequiredKw": 13.97,
+      "powerRequiredHp": 18.7
+    },
+    "actualOutputs": {
+      "dragForceN": 419.2,
+      "powerRequiredKw": 13.97,
+      "powerRequiredHp": 18.7
+    },
+    "errors": {
+      "abs_dragForceN": 0,
+      "rel_dragForceN": 0,
+      "abs_powerRequiredKw": 0,
+      "rel_powerRequiredKw": 0,
+      "abs_powerRequiredHp": 0,
+      "rel_powerRequiredHp": 0
+    },
+    "tolerances": {
+      "tol_dragForceN": 0.05,
+      "tol_powerRequiredKw": 0.05,
+      "tol_powerRequiredHp": 0.05
+    },
+    "verification": "PASS",
+    "reproducible": true,
+    "truthThreadBound": true,
+    "evidenceRoot": "847ba73c64fca9caa3e23e5d72b1dc435854e4302350bd9bcfe248148953ed18",
+    "provenance": "REV-NODE-a4cd656011e3f4a2823a4ddc66a3a00366ad4d7ef0ac5f282ed3c3d220975afe -> EXEC-NODE-EXEC-BACB1D9E0751E894AE616A0C -> RES-NODE-EXEC-BACB1D9E0751E894AE616A0C",
+    "persistenceVerified": true
+  },
+  {
+    "benchmarkId": "M7-AUT-03",
+    "benchmarkVersion": "1.0.0",
+    "domain": "automotive",
+    "plugin": "secp-plugin-automotive",
+    "objective": "Static vehicle boundary checks",
+    "referenceType": "Level 4 — Independent analytical equations/model",
+    "referenceIdentity": "ORACLE-AUTOMOTIVE-V1",
+    "referenceIndependent": true,
+    "canonicalObject": "BENCH-ENG-OBJ-800",
+    "canonicalRevision": "REV-BENCH-100",
+    "inputsDigest": "8a7b88d30a863c3d3babb6e02ddd0191a84966a5a3464138e43dc11d6fd4d6c1",
+    "expectedOutputs": {
+      "dragForceN": 0,
+      "powerRequiredKw": 0,
+      "powerRequiredHp": 0
+    },
+    "actualOutputs": {
+      "dragForceN": 0,
+      "powerRequiredKw": 0,
+      "powerRequiredHp": 0
+    },
+    "errors": {
+      "abs_dragForceN": 0,
+      "abs_powerRequiredKw": 0,
+      "abs_powerRequiredHp": 0
+    },
+    "tolerances": {
+      "tol_dragForceN": 0.05,
+      "tol_powerRequiredKw": 0.05,
+      "tol_powerRequiredHp": 0.05
+    },
+    "verification": "PASS",
+    "reproducible": true,
+    "truthThreadBound": true,
+    "evidenceRoot": "a040d063edbe62c15e8d9dab56b921db336f146c140b93e577b693a5eafc8ac1",
+    "provenance": "REV-NODE-a4cd656011e3f4a2823a4ddc66a3a00366ad4d7ef0ac5f282ed3c3d220975afe -> EXEC-NODE-EXEC-7FC6284A4524E57A15B74F47 -> RES-NODE-EXEC-7FC6284A4524E57A15B74F47",
+    "persistenceVerified": true
+  },
+  {
+    "benchmarkId": "M7-AUT-04",
+    "benchmarkVersion": "1.0.0",
+    "domain": "automotive",
+    "plugin": "secp-plugin-automotive",
+    "objective": "Speed perturbation sensitivity analysis",
+    "referenceType": "Level 4 — Independent analytical equations/model",
+    "referenceIdentity": "ORACLE-AUTOMOTIVE-V1",
+    "referenceIndependent": true,
+    "canonicalObject": "BENCH-ENG-OBJ-800",
+    "canonicalRevision": "REV-BENCH-100",
+    "inputsDigest": "b0afcaed21e53854e902ff89d496335d6060bcd9631264f6f729c84b4a456b69",
+    "expectedOutputs": {
+      "dragForceN": 283.4,
+      "powerRequiredKw": 7.95,
+      "powerRequiredHp": 10.7
+    },
+    "actualOutputs": {
+      "dragForceN": 283.4,
+      "powerRequiredKw": 7.95,
+      "powerRequiredHp": 10.7
+    },
+    "errors": {
+      "abs_dragForceN": 0,
+      "rel_dragForceN": 0,
+      "abs_powerRequiredKw": 0,
+      "rel_powerRequiredKw": 0,
+      "abs_powerRequiredHp": 0,
+      "rel_powerRequiredHp": 0
+    },
+    "tolerances": {
+      "tol_dragForceN": 0.05,
+      "tol_powerRequiredKw": 0.05,
+      "tol_powerRequiredHp": 0.05
+    },
+    "verification": "PASS",
+    "reproducible": true,
+    "truthThreadBound": true,
+    "evidenceRoot": "6d026f4a0f2e32f079588ee2c4b10f6a7dad5f644b57cdb3157346261b331282",
+    "provenance": "REV-NODE-a4cd656011e3f4a2823a4ddc66a3a00366ad4d7ef0ac5f282ed3c3d220975afe -> EXEC-NODE-EXEC-D4ED1B4F55EABF78B7727ABA -> RES-NODE-EXEC-D4ED1B4F55EABF78B7727ABA",
+    "persistenceVerified": true
+  },
+  {
+    "benchmarkId": "M7-AUT-05",
+    "benchmarkVersion": "1.0.0",
+    "domain": "automotive",
+    "plugin": "secp-plugin-automotive",
+    "objective": "Negative drag coefficient boundary condition",
+    "referenceType": "Level 4 — Independent analytical equations/model",
+    "referenceIdentity": "ORACLE-AUTOMOTIVE-V1",
+    "referenceIndependent": true,
+    "canonicalObject": "BENCH-ENG-OBJ-800",
+    "canonicalRevision": "REV-BENCH-100",
+    "inputsDigest": "2a2145b76466d5856843aa9aff50c0c8c7502e605054926b913149ffcd9ff8e0",
+    "expectedOutputs": {
+      "dragForceN": -92.6,
+      "powerRequiredKw": -2.57,
+      "powerRequiredHp": -3.4
+    },
+    "actualOutputs": {
+      "dragForceN": -92.6,
+      "powerRequiredKw": -2.57,
+      "powerRequiredHp": -3.4
+    },
+    "errors": {
+      "abs_dragForceN": 0,
+      "rel_dragForceN": 0,
+      "abs_powerRequiredKw": 0,
+      "rel_powerRequiredKw": 0,
+      "abs_powerRequiredHp": 0,
+      "rel_powerRequiredHp": 0
+    },
+    "tolerances": {
+      "tol_dragForceN": 0.05,
+      "tol_powerRequiredKw": 0.05,
+      "tol_powerRequiredHp": 0.05
+    },
+    "verification": "PASS",
+    "reproducible": true,
+    "truthThreadBound": true,
+    "evidenceRoot": "62f49de8578c8aa7819c9ec21abd1fad7d22ae1d2f690767d27915a8f4702df4",
+    "provenance": "REV-NODE-a4cd656011e3f4a2823a4ddc66a3a00366ad4d7ef0ac5f282ed3c3d220975afe -> EXEC-NODE-EXEC-D2F5F266EBF0E5F7F528590A -> RES-NODE-EXEC-D2F5F266EBF0E5F7F528590A",
+    "persistenceVerified": true
+  },
+  {
+    "benchmarkId": "M7-AUT-06",
+    "benchmarkVersion": "1.0.0",
+    "domain": "automotive",
+    "plugin": "secp-plugin-automotive",
+    "objective": "Aerodynamic power repeatability",
+    "referenceType": "Level 4 — Independent analytical equations/model",
+    "referenceIdentity": "ORACLE-AUTOMOTIVE-V1",
+    "referenceIndependent": true,
+    "canonicalObject": "BENCH-ENG-OBJ-800",
+    "canonicalRevision": "REV-BENCH-100",
+    "inputsDigest": "01af1b4e144bbebd825e8a815a02a4060c7700a7ef95c39415a42b0dde9dc463",
+    "expectedOutputs": {
+      "dragForceN": 277.8,
+      "powerRequiredKw": 7.72,
+      "powerRequiredHp": 10.3
+    },
+    "actualOutputs": {},
+    "errors": {},
+    "tolerances": {},
+    "verification": "FAILED_BOUNDARY_OR_SINGULARITY",
+    "reproducible": true,
+    "truthThreadBound": false,
+    "evidenceRoot": "",
+    "provenance": "",
+    "persistenceVerified": true
+  },
+  {
+    "benchmarkId": "M7-ENE-01",
+    "benchmarkVersion": "1.0.0",
+    "domain": "energy",
+    "plugin": "secp-plugin-energy",
+    "objective": "Turbine kinetic power extraction analytical check",
+    "referenceType": "Level 4 — Independent analytical equations/model",
+    "referenceIdentity": "ORACLE-ENERGY-V1",
+    "referenceIndependent": true,
+    "canonicalObject": "BENCH-ENG-OBJ-800",
+    "canonicalRevision": "REV-BENCH-100",
+    "inputsDigest": "3aff2957c10065d991ef7f06f5060b96e5ec7686bcdf92a59277739dbb098b05",
+    "expectedOutputs": {
+      "sweptAreaM2": 5026.5,
+      "aeroPowerKW": 1206.4,
+      "electricalPowerMW": 1.086
+    },
+    "actualOutputs": {
+      "sweptAreaM2": 5026.5,
+      "aeroPowerKW": 1206.4,
+      "electricalPowerMW": 1.086
+    },
+    "errors": {
+      "abs_sweptAreaM2": 0,
+      "rel_sweptAreaM2": 0,
+      "abs_aeroPowerKW": 0,
+      "rel_aeroPowerKW": 0,
+      "abs_electricalPowerMW": 0,
+      "rel_electricalPowerMW": 0
+    },
+    "tolerances": {
+      "tol_sweptAreaM2": 0.05,
+      "tol_aeroPowerKW": 0.05,
+      "tol_electricalPowerMW": 0.05
+    },
+    "verification": "PASS",
+    "reproducible": true,
+    "truthThreadBound": true,
+    "evidenceRoot": "2f0cc82cd54cf7861ceb4663680c8fe5fe736942a2a1d00890d5993057c18897",
+    "provenance": "REV-NODE-a4cd656011e3f4a2823a4ddc66a3a00366ad4d7ef0ac5f282ed3c3d220975afe -> EXEC-NODE-EXEC-8E1E69B8CD94226B99CD61DE -> RES-NODE-EXEC-8E1E69B8CD94226B99CD61DE",
+    "persistenceVerified": true
+  },
+  {
+    "benchmarkId": "M7-ENE-02",
+    "benchmarkVersion": "1.0.0",
+    "domain": "energy",
+    "plugin": "secp-plugin-energy",
+    "objective": "Utility-scale wind turbine standard wind condition operating point",
+    "referenceType": "Level 4 — Independent analytical equations/model",
+    "referenceIdentity": "ORACLE-ENERGY-V1",
+    "referenceIndependent": true,
+    "canonicalObject": "BENCH-ENG-OBJ-800",
+    "canonicalRevision": "REV-BENCH-100",
+    "inputsDigest": "deeffcbc92ee54adfe84826ee79bcef68915d67bc66859ca4962242a1b552d7b",
+    "expectedOutputs": {
+      "sweptAreaM2": 5541.8,
+      "aeroPowerKW": 2580.8,
+      "electricalPowerMW": 2.374
+    },
+    "actualOutputs": {
+      "sweptAreaM2": 5541.8,
+      "aeroPowerKW": 2580.8,
+      "electricalPowerMW": 2.374
+    },
+    "errors": {
+      "abs_sweptAreaM2": 0,
+      "rel_sweptAreaM2": 0,
+      "abs_aeroPowerKW": 0,
+      "rel_aeroPowerKW": 0,
+      "abs_electricalPowerMW": 0,
+      "rel_electricalPowerMW": 0
+    },
+    "tolerances": {
+      "tol_sweptAreaM2": 0.05,
+      "tol_aeroPowerKW": 0.05,
+      "tol_electricalPowerMW": 0.05
+    },
+    "verification": "PASS",
+    "reproducible": true,
+    "truthThreadBound": true,
+    "evidenceRoot": "9adabb28ba862c5b0a20c086c408d84b02ecf82c435108a2e28a4911b386675d",
+    "provenance": "REV-NODE-a4cd656011e3f4a2823a4ddc66a3a00366ad4d7ef0ac5f282ed3c3d220975afe -> EXEC-NODE-EXEC-3A180948E86FB2F7F4AE44C9 -> RES-NODE-EXEC-3A180948E86FB2F7F4AE44C9",
+    "persistenceVerified": true
+  },
+  {
+    "benchmarkId": "M7-ENE-03",
+    "benchmarkVersion": "1.0.0",
+    "domain": "energy",
+    "plugin": "secp-plugin-energy",
+    "objective": "Zero wind velocity no power limit",
+    "referenceType": "Level 4 — Independent analytical equations/model",
+    "referenceIdentity": "ORACLE-ENERGY-V1",
+    "referenceIndependent": true,
+    "canonicalObject": "BENCH-ENG-OBJ-800",
+    "canonicalRevision": "REV-BENCH-100",
+    "inputsDigest": "b5efc9bb89f8b41be1b07a6a1b7d415476ee1c389c7922f10f01eb5ad0904f1c",
+    "expectedOutputs": {
+      "sweptAreaM2": 5541.8,
+      "aeroPowerKW": 0,
+      "electricalPowerMW": 0
+    },
+    "actualOutputs": {
+      "sweptAreaM2": 5541.8,
+      "aeroPowerKW": 0,
+      "electricalPowerMW": 0
+    },
+    "errors": {
+      "abs_sweptAreaM2": 0,
+      "rel_sweptAreaM2": 0,
+      "abs_aeroPowerKW": 0,
+      "abs_electricalPowerMW": 0
+    },
+    "tolerances": {
+      "tol_sweptAreaM2": 0.05,
+      "tol_aeroPowerKW": 0.05,
+      "tol_electricalPowerMW": 0.05
+    },
+    "verification": "PASS",
+    "reproducible": true,
+    "truthThreadBound": true,
+    "evidenceRoot": "7d6c61780b1bacfc779b281f9dd0703b31998753dc23ad88505d0249abfb2ac2",
+    "provenance": "REV-NODE-a4cd656011e3f4a2823a4ddc66a3a00366ad4d7ef0ac5f282ed3c3d220975afe -> EXEC-NODE-EXEC-28FD3E21562F5BBBA9E0366E -> RES-NODE-EXEC-28FD3E21562F5BBBA9E0366E",
+    "persistenceVerified": true
+  },
+  {
+    "benchmarkId": "M7-ENE-04",
+    "benchmarkVersion": "1.0.0",
+    "domain": "energy",
+    "plugin": "secp-plugin-energy",
+    "objective": "Wind speed perturbation sensitivity analysis",
+    "referenceType": "Level 4 — Independent analytical equations/model",
+    "referenceIdentity": "ORACLE-ENERGY-V1",
+    "referenceIndependent": true,
+    "canonicalObject": "BENCH-ENG-OBJ-800",
+    "canonicalRevision": "REV-BENCH-100",
+    "inputsDigest": "03e1e5d0c88e359c140cd44a634d87de38c9dc75758f90ca21a52b4755beabdf",
+    "expectedOutputs": {
+      "sweptAreaM2": 5026.5,
+      "aeroPowerKW": 1242.9,
+      "electricalPowerMW": 1.119
+    },
+    "actualOutputs": {
+      "sweptAreaM2": 5026.5,
+      "aeroPowerKW": 1242.9,
+      "electricalPowerMW": 1.119
+    },
+    "errors": {
+      "abs_sweptAreaM2": 0,
+      "rel_sweptAreaM2": 0,
+      "abs_aeroPowerKW": 0,
+      "rel_aeroPowerKW": 0,
+      "abs_electricalPowerMW": 0,
+      "rel_electricalPowerMW": 0
+    },
+    "tolerances": {
+      "tol_sweptAreaM2": 0.05,
+      "tol_aeroPowerKW": 0.05,
+      "tol_electricalPowerMW": 0.05
+    },
+    "verification": "PASS",
+    "reproducible": true,
+    "truthThreadBound": true,
+    "evidenceRoot": "fc9f9a8e506f510566a7f9f91ad7fb01fd2b14f2c9829ec233139f2da61dcf5c",
+    "provenance": "REV-NODE-a4cd656011e3f4a2823a4ddc66a3a00366ad4d7ef0ac5f282ed3c3d220975afe -> EXEC-NODE-EXEC-D9D952C03CE353662C8C7097 -> RES-NODE-EXEC-D9D952C03CE353662C8C7097",
+    "persistenceVerified": true
+  },
+  {
+    "benchmarkId": "M7-ENE-05",
+    "benchmarkVersion": "1.0.0",
+    "domain": "energy",
+    "plugin": "secp-plugin-energy",
+    "objective": "Betz limit theoretical physical violation (Cp > 0.593)",
+    "referenceType": "Level 4 — Independent analytical equations/model",
+    "referenceIdentity": "ORACLE-ENERGY-V1",
+    "referenceIndependent": true,
+    "canonicalObject": "BENCH-ENG-OBJ-800",
+    "canonicalRevision": "REV-BENCH-100",
+    "inputsDigest": "400d501000db3b16ee41d597894a10f67b15dd35eafb0549b278cde13b6d667d",
+    "expectedOutputs": {
+      "sweptAreaM2": 5026.5,
+      "aeroPowerKW": 2111.2,
+      "electricalPowerMW": 1.9
+    },
+    "actualOutputs": {
+      "sweptAreaM2": 5026.5,
+      "aeroPowerKW": 2111.2,
+      "electricalPowerMW": 1.9
+    },
+    "errors": {
+      "abs_sweptAreaM2": 0,
+      "rel_sweptAreaM2": 0,
+      "abs_aeroPowerKW": 0,
+      "rel_aeroPowerKW": 0,
+      "abs_electricalPowerMW": 0,
+      "rel_electricalPowerMW": 0
+    },
+    "tolerances": {
+      "tol_sweptAreaM2": 0.05,
+      "tol_aeroPowerKW": 0.05,
+      "tol_electricalPowerMW": 0.05
+    },
+    "verification": "PASS",
+    "reproducible": true,
+    "truthThreadBound": true,
+    "evidenceRoot": "c91a9494d18369b2194396e93f2461496e732840dbd53e96d5cffce5184da8cf",
+    "provenance": "REV-NODE-a4cd656011e3f4a2823a4ddc66a3a00366ad4d7ef0ac5f282ed3c3d220975afe -> EXEC-NODE-EXEC-4D27081AECDC2B05694D70EE -> RES-NODE-EXEC-4D27081AECDC2B05694D70EE",
+    "persistenceVerified": true
+  },
+  {
+    "benchmarkId": "M7-ENE-06",
+    "benchmarkVersion": "1.0.0",
+    "domain": "energy",
+    "plugin": "secp-plugin-energy",
+    "objective": "Turbine power output exact duplication",
+    "referenceType": "Level 4 — Independent analytical equations/model",
+    "referenceIdentity": "ORACLE-ENERGY-V1",
+    "referenceIndependent": true,
+    "canonicalObject": "BENCH-ENG-OBJ-800",
+    "canonicalRevision": "REV-BENCH-100",
+    "inputsDigest": "2b9386655b9eaa59fb6b9c0dc436b9d38ae331992edb1e7984fdbf39baa8b66a",
+    "expectedOutputs": {
+      "sweptAreaM2": 5026.5,
+      "aeroPowerKW": 1206.4,
+      "electricalPowerMW": 1.086
+    },
+    "actualOutputs": {},
+    "errors": {},
+    "tolerances": {},
+    "verification": "FAILED_BOUNDARY_OR_SINGULARITY",
+    "reproducible": true,
+    "truthThreadBound": false,
+    "evidenceRoot": "",
+    "provenance": "",
+    "persistenceVerified": true
+  },
+  {
+    "benchmarkId": "M7-MAR-01",
+    "benchmarkVersion": "1.0.0",
+    "domain": "marine",
+    "plugin": "secp-plugin-marine",
+    "objective": "Buoyant hull Froude scaling and speed analytical match",
+    "referenceType": "Level 4 — Independent analytical equations/model",
+    "referenceIdentity": "ORACLE-MARINE-V1",
+    "referenceIndependent": true,
+    "canonicalObject": "BENCH-ENG-OBJ-800",
+    "canonicalRevision": "REV-BENCH-100",
+    "inputsDigest": "4315aa437243709e6e9c4b6dc2f4a1e93caa0351d181d9517e31e17f36cae4b0",
+    "expectedOutputs": {
+      "vesselSpeedMs": 7.72,
+      "froudeNumber": 0.39,
+      "estimatedPowerKw": 3037.5
+    },
+    "actualOutputs": {
+      "vesselSpeedMs": 7.72,
+      "froudeNumber": 0.39,
+      "estimatedPowerKw": 3037.5
+    },
+    "errors": {
+      "abs_vesselSpeedMs": 0,
+      "rel_vesselSpeedMs": 0,
+      "abs_froudeNumber": 0,
+      "rel_froudeNumber": 0,
+      "abs_estimatedPowerKw": 0,
+      "rel_estimatedPowerKw": 0
+    },
+    "tolerances": {
+      "tol_vesselSpeedMs": 0.05,
+      "tol_froudeNumber": 0.05,
+      "tol_estimatedPowerKw": 0.05
+    },
+    "verification": "PASS",
+    "reproducible": true,
+    "truthThreadBound": true,
+    "evidenceRoot": "26fa4ab2ea3be3e164b5bdbdce64d4bd0ad03aa98e55a8842274b6391dc4a3ef",
+    "provenance": "REV-NODE-a4cd656011e3f4a2823a4ddc66a3a00366ad4d7ef0ac5f282ed3c3d220975afe -> EXEC-NODE-EXEC-D786B810911E2D117D3D10E7 -> RES-NODE-EXEC-D786B810911E2D117D3D10E7",
+    "persistenceVerified": true
+  },
+  {
+    "benchmarkId": "M7-MAR-02",
+    "benchmarkVersion": "1.0.0",
+    "domain": "marine",
+    "plugin": "secp-plugin-marine",
+    "objective": "Medium patrol vessel standard hydrostatic loading Condition",
+    "referenceType": "Level 4 — Independent analytical equations/model",
+    "referenceIdentity": "ORACLE-MARINE-V1",
+    "referenceIndependent": true,
+    "canonicalObject": "BENCH-ENG-OBJ-800",
+    "canonicalRevision": "REV-BENCH-100",
+    "inputsDigest": "31747e42a8ec94bdf85f023a0bf6ba059c537656106bb6f38d6bd12485ba0e70",
+    "expectedOutputs": {
+      "vesselSpeedMs": 9.26,
+      "froudeNumber": 0.441,
+      "estimatedPowerKw": 6508.5
+    },
+    "actualOutputs": {
+      "vesselSpeedMs": 9.26,
+      "froudeNumber": 0.441,
+      "estimatedPowerKw": 6508.5
+    },
+    "errors": {
+      "abs_vesselSpeedMs": 0,
+      "rel_vesselSpeedMs": 0,
+      "abs_froudeNumber": 0,
+      "rel_froudeNumber": 0,
+      "abs_estimatedPowerKw": 0,
+      "rel_estimatedPowerKw": 0
+    },
+    "tolerances": {
+      "tol_vesselSpeedMs": 0.05,
+      "tol_froudeNumber": 0.05,
+      "tol_estimatedPowerKw": 0.05
+    },
+    "verification": "PASS",
+    "reproducible": true,
+    "truthThreadBound": true,
+    "evidenceRoot": "cfdc1da0407d44b824115a2da1fe48ce28b6351588d25b92bd97211c8f559c5f",
+    "provenance": "REV-NODE-a4cd656011e3f4a2823a4ddc66a3a00366ad4d7ef0ac5f282ed3c3d220975afe -> EXEC-NODE-EXEC-82F59157F2E380ACEC1FE03B -> RES-NODE-EXEC-82F59157F2E380ACEC1FE03B",
+    "persistenceVerified": true
+  },
+  {
+    "benchmarkId": "M7-MAR-03",
+    "benchmarkVersion": "1.0.0",
+    "domain": "marine",
+    "plugin": "secp-plugin-marine",
+    "objective": "Extremely long hull length (froude near 0)",
+    "referenceType": "Level 4 — Independent analytical equations/model",
+    "referenceIdentity": "ORACLE-MARINE-V1",
+    "referenceIndependent": true,
+    "canonicalObject": "BENCH-ENG-OBJ-800",
+    "canonicalRevision": "REV-BENCH-100",
+    "inputsDigest": "94366a897b8720bd6474d16946f505004dc67ea911af70682cae5ca1d0c2e98f",
+    "expectedOutputs": {
+      "vesselSpeedMs": 9.26,
+      "froudeNumber": 0.003,
+      "estimatedPowerKw": 6508.5
+    },
+    "actualOutputs": {
+      "vesselSpeedMs": 9.26,
+      "froudeNumber": 0.003,
+      "estimatedPowerKw": 6508.5
+    },
+    "errors": {
+      "abs_vesselSpeedMs": 0,
+      "rel_vesselSpeedMs": 0,
+      "abs_froudeNumber": 0,
+      "rel_froudeNumber": 0,
+      "abs_estimatedPowerKw": 0,
+      "rel_estimatedPowerKw": 0
+    },
+    "tolerances": {
+      "tol_vesselSpeedMs": 0.05,
+      "tol_froudeNumber": 0.05,
+      "tol_estimatedPowerKw": 0.05
+    },
+    "verification": "PASS",
+    "reproducible": true,
+    "truthThreadBound": true,
+    "evidenceRoot": "cdc269db51675e529618b4f4f46fd6fcb071dfb2c0f9013d41f9dcdcf836c4ec",
+    "provenance": "REV-NODE-a4cd656011e3f4a2823a4ddc66a3a00366ad4d7ef0ac5f282ed3c3d220975afe -> EXEC-NODE-EXEC-A3D5414CFCD76FC1CBB14332 -> RES-NODE-EXEC-A3D5414CFCD76FC1CBB14332",
+    "persistenceVerified": true
+  },
+  {
+    "benchmarkId": "M7-MAR-04",
+    "benchmarkVersion": "1.0.0",
+    "domain": "marine",
+    "plugin": "secp-plugin-marine",
+    "objective": "Waterline length perturbation sensitivity analysis",
+    "referenceType": "Level 4 — Independent analytical equations/model",
+    "referenceIdentity": "ORACLE-MARINE-V1",
+    "referenceIndependent": true,
+    "canonicalObject": "BENCH-ENG-OBJ-800",
+    "canonicalRevision": "REV-BENCH-100",
+    "inputsDigest": "f23173353424071bf92dead6f127d201fa5d34812e21de7399d26148038a4801",
+    "expectedOutputs": {
+      "vesselSpeedMs": 7.72,
+      "froudeNumber": 0.389,
+      "estimatedPowerKw": 3037.5
+    },
+    "actualOutputs": {
+      "vesselSpeedMs": 7.72,
+      "froudeNumber": 0.389,
+      "estimatedPowerKw": 3037.5
+    },
+    "errors": {
+      "abs_vesselSpeedMs": 0,
+      "rel_vesselSpeedMs": 0,
+      "abs_froudeNumber": 0,
+      "rel_froudeNumber": 0,
+      "abs_estimatedPowerKw": 0,
+      "rel_estimatedPowerKw": 0
+    },
+    "tolerances": {
+      "tol_vesselSpeedMs": 0.05,
+      "tol_froudeNumber": 0.05,
+      "tol_estimatedPowerKw": 0.05
+    },
+    "verification": "PASS",
+    "reproducible": true,
+    "truthThreadBound": true,
+    "evidenceRoot": "f0e4e4a509d739d3017920e4c4f6eb45bf57786411a9e88160344ec8463c4ec3",
+    "provenance": "REV-NODE-a4cd656011e3f4a2823a4ddc66a3a00366ad4d7ef0ac5f282ed3c3d220975afe -> EXEC-NODE-EXEC-60D94EB25223EDF261793C55 -> RES-NODE-EXEC-60D94EB25223EDF261793C55",
+    "persistenceVerified": true
+  },
+  {
+    "benchmarkId": "M7-MAR-05",
+    "benchmarkVersion": "1.0.0",
+    "domain": "marine",
+    "plugin": "secp-plugin-marine",
+    "objective": "Negative waterline length boundary check",
+    "referenceType": "Level 4 — Independent analytical equations/model",
+    "referenceIdentity": "ORACLE-MARINE-V1",
+    "referenceIndependent": true,
+    "canonicalObject": "BENCH-ENG-OBJ-800",
+    "canonicalRevision": "REV-BENCH-100",
+    "inputsDigest": "12641740e45345edc0f328894541c0315ff7f56a36e3427e2db5ef14a27d6fa6",
+    "expectedOutputs": {
+      "vesselSpeedMs": 7.72,
+      "froudeNumber": null,
+      "estimatedPowerKw": 3037.5
+    },
+    "actualOutputs": {},
+    "errors": {},
+    "tolerances": {},
+    "verification": "FAILED_BOUNDARY_OR_SINGULARITY",
+    "reproducible": true,
+    "truthThreadBound": false,
+    "evidenceRoot": "",
+    "provenance": "",
+    "persistenceVerified": true
+  },
+  {
+    "benchmarkId": "M7-MAR-06",
+    "benchmarkVersion": "1.0.0",
+    "domain": "marine",
+    "plugin": "secp-plugin-marine",
+    "objective": "Froude number repeatability",
+    "referenceType": "Level 4 — Independent analytical equations/model",
+    "referenceIdentity": "ORACLE-MARINE-V1",
+    "referenceIndependent": true,
+    "canonicalObject": "BENCH-ENG-OBJ-800",
+    "canonicalRevision": "REV-BENCH-100",
+    "inputsDigest": "2ce5fc2e4e0285020275c78203ed4fbfe8ea945bb46919a6cbf6ed20c89d1305",
+    "expectedOutputs": {
+      "vesselSpeedMs": 7.72,
+      "froudeNumber": 0.39,
+      "estimatedPowerKw": 3037.5
+    },
+    "actualOutputs": {},
+    "errors": {},
+    "tolerances": {},
+    "verification": "FAILED_BOUNDARY_OR_SINGULARITY",
+    "reproducible": true,
+    "truthThreadBound": false,
+    "evidenceRoot": "",
+    "provenance": "",
+    "persistenceVerified": true
+  },
+  {
+    "benchmarkId": "M7-OIL-01",
+    "benchmarkVersion": "1.0.0",
+    "domain": "oil-gas",
+    "plugin": "secp-plugin-oil-gas",
+    "objective": "Barlow hoop stress, MAOP and safety factor analytical validation",
+    "referenceType": "Level 4 — Independent analytical equations/model",
+    "referenceIdentity": "ORACLE-OIL-GAS-V1",
+    "referenceIndependent": true,
+    "canonicalObject": "BENCH-ENG-OBJ-800",
+    "canonicalRevision": "REV-BENCH-100",
+    "inputsDigest": "90378628bc83fab9731bdf33bf02979359dfc1314e0f92a888651cd207e819b4",
+    "expectedOutputs": {
+      "hoopStressMPa": 250,
+      "maopMPa": 10.67,
+      "actualSafetyFactor": 1.6
+    },
+    "actualOutputs": {
+      "hoopStressMPa": 250,
+      "maopMPa": 10.67,
+      "actualSafetyFactor": 1.6
+    },
+    "errors": {
+      "abs_hoopStressMPa": 0,
+      "rel_hoopStressMPa": 0,
+      "abs_maopMPa": 0,
+      "rel_maopMPa": 0,
+      "abs_actualSafetyFactor": 0,
+      "rel_actualSafetyFactor": 0
+    },
+    "tolerances": {
+      "tol_hoopStressMPa": 0.05,
+      "tol_maopMPa": 0.05,
+      "tol_actualSafetyFactor": 0.05
+    },
+    "verification": "PASS",
+    "reproducible": true,
+    "truthThreadBound": true,
+    "evidenceRoot": "eb2593c8b2a610e47a54d22fd98d32d52a753ff0eb9510756350983b90a453e9",
+    "provenance": "REV-NODE-a4cd656011e3f4a2823a4ddc66a3a00366ad4d7ef0ac5f282ed3c3d220975afe -> EXEC-NODE-EXEC-221BE5F5E6812080E43ED9DF -> RES-NODE-EXEC-221BE5F5E6812080E43ED9DF",
+    "persistenceVerified": true
+  },
+  {
+    "benchmarkId": "M7-OIL-02",
+    "benchmarkVersion": "1.0.0",
+    "domain": "oil-gas",
+    "plugin": "secp-plugin-oil-gas",
+    "objective": "High-pressure offshore subsea pipeline API 5L compliance limits",
+    "referenceType": "Level 4 — Independent analytical equations/model",
+    "referenceIdentity": "ORACLE-OIL-GAS-V1",
+    "referenceIndependent": true,
+    "canonicalObject": "BENCH-ENG-OBJ-800",
+    "canonicalRevision": "REV-BENCH-100",
+    "inputsDigest": "6c0353180d1c947a18e0de88bebf111a5a321c70a8b33eec5e9a297e7b31bc09",
+    "expectedOutputs": {
+      "hoopStressMPa": 297.4,
+      "maopMPa": 20.14,
+      "actualSafetyFactor": 1.51
+    },
+    "actualOutputs": {
+      "hoopStressMPa": 297.4,
+      "maopMPa": 20.14,
+      "actualSafetyFactor": 1.51
+    },
+    "errors": {
+      "abs_hoopStressMPa": 0,
+      "rel_hoopStressMPa": 0,
+      "abs_maopMPa": 0,
+      "rel_maopMPa": 0,
+      "abs_actualSafetyFactor": 0,
+      "rel_actualSafetyFactor": 0
+    },
+    "tolerances": {
+      "tol_hoopStressMPa": 0.05,
+      "tol_maopMPa": 0.05,
+      "tol_actualSafetyFactor": 0.05
+    },
+    "verification": "PASS",
+    "reproducible": true,
+    "truthThreadBound": true,
+    "evidenceRoot": "efc34d2556f94bf1c3bc721c0aab90c73f1f12268d75338fce4289415bf1a1e0",
+    "provenance": "REV-NODE-a4cd656011e3f4a2823a4ddc66a3a00366ad4d7ef0ac5f282ed3c3d220975afe -> EXEC-NODE-EXEC-CCD663B1D4676680359DCFB5 -> RES-NODE-EXEC-CCD663B1D4676680359DCFB5",
+    "persistenceVerified": true
+  },
+  {
+    "benchmarkId": "M7-OIL-03",
+    "benchmarkVersion": "1.0.0",
+    "domain": "oil-gas",
+    "plugin": "secp-plugin-oil-gas",
+    "objective": "Zero internal pressure boundary verification",
+    "referenceType": "Level 4 — Independent analytical equations/model",
+    "referenceIdentity": "ORACLE-OIL-GAS-V1",
+    "referenceIndependent": true,
+    "canonicalObject": "BENCH-ENG-OBJ-800",
+    "canonicalRevision": "REV-BENCH-100",
+    "inputsDigest": "56fcd8de6e5142d0452c64c9365d710eb21e23382af2b06a5ef6568466a9539e",
+    "expectedOutputs": {
+      "hoopStressMPa": 0,
+      "maopMPa": 20.14,
+      "actualSafetyFactor": null
+    },
+    "actualOutputs": {},
+    "errors": {},
+    "tolerances": {},
+    "verification": "FAILED_BOUNDARY_OR_SINGULARITY",
+    "reproducible": true,
+    "truthThreadBound": false,
+    "evidenceRoot": "",
+    "provenance": "",
+    "persistenceVerified": true
+  },
+  {
+    "benchmarkId": "M7-OIL-04",
+    "benchmarkVersion": "1.0.0",
+    "domain": "oil-gas",
+    "plugin": "secp-plugin-oil-gas",
+    "objective": "Internal pressure perturbation sensitivity analysis",
+    "referenceType": "Level 4 — Independent analytical equations/model",
+    "referenceIdentity": "ORACLE-OIL-GAS-V1",
+    "referenceIndependent": true,
+    "canonicalObject": "BENCH-ENG-OBJ-800",
+    "canonicalRevision": "REV-BENCH-100",
+    "inputsDigest": "02660ccde0337b0536be06d63906004cf6d3407a4f40fecd52dafd59ad434986",
+    "expectedOutputs": {
+      "hoopStressMPa": 252.5,
+      "maopMPa": 10.67,
+      "actualSafetyFactor": 1.58
+    },
+    "actualOutputs": {
+      "hoopStressMPa": 252.5,
+      "maopMPa": 10.67,
+      "actualSafetyFactor": 1.58
+    },
+    "errors": {
+      "abs_hoopStressMPa": 0,
+      "rel_hoopStressMPa": 0,
+      "abs_maopMPa": 0,
+      "rel_maopMPa": 0,
+      "abs_actualSafetyFactor": 0,
+      "rel_actualSafetyFactor": 0
+    },
+    "tolerances": {
+      "tol_hoopStressMPa": 0.05,
+      "tol_maopMPa": 0.05,
+      "tol_actualSafetyFactor": 0.05
+    },
+    "verification": "PASS",
+    "reproducible": true,
+    "truthThreadBound": true,
+    "evidenceRoot": "0ab7f44b1150c033734d781cedbb83157fde76d27faf7287be9f453025fc28a1",
+    "provenance": "REV-NODE-a4cd656011e3f4a2823a4ddc66a3a00366ad4d7ef0ac5f282ed3c3d220975afe -> EXEC-NODE-EXEC-6085962A65F6649E9ED58D43 -> RES-NODE-EXEC-6085962A65F6649E9ED58D43",
+    "persistenceVerified": true
+  },
+  {
+    "benchmarkId": "M7-OIL-05",
+    "benchmarkVersion": "1.0.0",
+    "domain": "oil-gas",
+    "plugin": "secp-plugin-oil-gas",
+    "objective": "Zero wall thickness pipeline stress limit singularity",
+    "referenceType": "Level 4 — Independent analytical equations/model",
+    "referenceIdentity": "ORACLE-OIL-GAS-V1",
+    "referenceIndependent": true,
+    "canonicalObject": "BENCH-ENG-OBJ-800",
+    "canonicalRevision": "REV-BENCH-100",
+    "inputsDigest": "3bc1b0ecda2757103f2a4a260a3f45c943ae87661e32fc2012b74fac0d54950b",
+    "expectedOutputs": {
+      "hoopStressMPa": null,
+      "maopMPa": 0,
+      "actualSafetyFactor": 0
+    },
+    "actualOutputs": {},
+    "errors": {},
+    "tolerances": {},
+    "verification": "FAILED_BOUNDARY_OR_SINGULARITY",
+    "reproducible": true,
+    "truthThreadBound": false,
+    "evidenceRoot": "",
+    "provenance": "",
+    "persistenceVerified": true
+  },
+  {
+    "benchmarkId": "M7-OIL-06",
+    "benchmarkVersion": "1.0.0",
+    "domain": "oil-gas",
+    "plugin": "secp-plugin-oil-gas",
+    "objective": "Hoop stress calculation exact repeatability",
+    "referenceType": "Level 4 — Independent analytical equations/model",
+    "referenceIdentity": "ORACLE-OIL-GAS-V1",
+    "referenceIndependent": true,
+    "canonicalObject": "BENCH-ENG-OBJ-800",
+    "canonicalRevision": "REV-BENCH-100",
+    "inputsDigest": "56d1c0e6db73191daed09ea7003e8f13d7345b4d836ddb294c791c3599d161ea",
+    "expectedOutputs": {
+      "hoopStressMPa": 250,
+      "maopMPa": 10.67,
+      "actualSafetyFactor": 1.6
+    },
+    "actualOutputs": {},
+    "errors": {},
+    "tolerances": {},
+    "verification": "FAILED_BOUNDARY_OR_SINGULARITY",
+    "reproducible": true,
+    "truthThreadBound": false,
+    "evidenceRoot": "",
+    "provenance": "",
+    "persistenceVerified": true
+  }
+]

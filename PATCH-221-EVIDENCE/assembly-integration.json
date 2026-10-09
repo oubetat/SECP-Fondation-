@@ -1,0 +1,12 @@
+{
+  "assemblyId": "asm-master-221",
+  "integrationRecords": [
+    {
+      "instanceId": "inst-hdw-hdb01-a",
+      "partId": "ISO-4014-M8X30-STEEL",
+      "position": { "x": 100, "y": 200, "z": 10 },
+      "alignedTo": "inst-plate-hole-1",
+      "concentric": "SOLVED"
+    }
+  ]
+}

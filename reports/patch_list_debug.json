@@ -1,0 +1,1100 @@
+[
+  {
+    "id": "PATCH-001",
+    "label": "Domain Database",
+    "internalId": "PATCH-SECP-001",
+    "name": "Domain Model & Metadata"
+  },
+  {
+    "id": "PATCH-002",
+    "label": "Unit Engine",
+    "internalId": "PATCH-SECP-002",
+    "name": "Dimension & Unit Solver"
+  },
+  {
+    "id": "PATCH-003",
+    "label": "Geometry Kernel",
+    "internalId": "PATCH-SECP-003",
+    "name": "Solid B-Rep Modeler"
+  },
+  {
+    "id": "PATCH-004",
+    "label": "3D Visualization Engine",
+    "internalId": "PATCH-SECP-004",
+    "name": "3D WebGL Viewport & Measurement Tool"
+  },
+  {
+    "id": "PATCH-034",
+    "label": "📏 Sketch Editor",
+    "internalId": "PATCH-SECP-034",
+    "name": "2D Parametric Sketcher"
+  },
+  {
+    "id": "PATCH-035",
+    "label": "🏆 Drone Proof Gate",
+    "internalId": "PATCH-SECP-035",
+    "name": "Drone Proof Report & Acceptance Gate"
+  },
+  {
+    "id": "PATCH-036",
+    "label": "🤖 Robot Requirements",
+    "internalId": "PATCH-SECP-036",
+    "name": "Robot Requirements & Acceptance Gate"
+  },
+  {
+    "id": "PATCH-005",
+    "label": "Parametric",
+    "internalId": "PATCH-SECP-005",
+    "name": "Expression & Solver"
+  },
+  {
+    "id": "PATCH-006",
+    "label": "Sketcher",
+    "internalId": "PATCH-SECP-006",
+    "name": "2D Constraint Solver"
+  },
+  {
+    "id": "PATCH-007",
+    "label": "Feature Tree",
+    "internalId": "PATCH-SECP-007",
+    "name": "History Modeler"
+  },
+  {
+    "id": "PATCH-008",
+    "label": "Assembly",
+    "internalId": "PATCH-SECP-008",
+    "name": "Hierarchy Solver"
+  },
+  {
+    "id": "PATCH-009",
+    "label": "Materials",
+    "internalId": "PATCH-SECP-009",
+    "name": "Materials DB"
+  },
+  {
+    "id": "PATCH-010",
+    "label": "Engineering Core",
+    "internalId": "PATCH-SECP-010",
+    "name": "Core Solid & Topology Foundations"
+  },
+  {
+    "id": "PATCH-011",
+    "label": "Kinematics",
+    "internalId": "PATCH-SECP-011",
+    "name": "Joint & Motion Solver"
+  },
+  {
+    "id": "PATCH-012",
+    "label": "Electrical",
+    "internalId": "PATCH-SECP-012",
+    "name": "Schematic Capture"
+  },
+  {
+    "id": "PATCH-013",
+    "label": "PCB Workbench",
+    "internalId": "PATCH-SECP-013",
+    "name": "ECAD Editor"
+  },
+  {
+    "id": "PATCH-014",
+    "label": "Hydraulics",
+    "internalId": "PATCH-SECP-014",
+    "name": "Fluid Circuit Solver"
+  },
+  {
+    "id": "PATCH-015",
+    "label": "Simulation",
+    "internalId": "PATCH-SECP-015",
+    "name": "Finite Element Stress Solver"
+  },
+  {
+    "id": "PATCH-018",
+    "label": "CFD Fluid Flow",
+    "internalId": "PATCH-SECP-018",
+    "name": "Navier-Stokes Solver"
+  },
+  {
+    "id": "PATCH-019",
+    "label": "BOM Engine",
+    "internalId": "PATCH-SECP-019",
+    "name": "Bill of Materials Builder"
+  },
+  {
+    "id": "PATCH-020",
+    "label": "CAM",
+    "internalId": "PATCH-SECP-020",
+    "name": "CNC G-Code Generator"
+  },
+  {
+    "id": "PATCH-021",
+    "label": "Technical Drawings",
+    "internalId": "PATCH-SECP-021",
+    "name": "2D Drafting & ISO/ASME Projections"
+  },
+  {
+    "id": "PATCH-022",
+    "label": "Quality Control",
+    "internalId": "PATCH-SECP-022",
+    "name": "Versioning Provenance Ledger"
+  },
+  {
+    "id": "PATCH-023",
+    "label": "Digital Twin",
+    "internalId": "PATCH-SECP-023",
+    "name": "Cyber-Physical Telemetry"
+  },
+  {
+    "id": "PATCH-024",
+    "label": "AI Copilot",
+    "internalId": "PATCH-SECP-024",
+    "name": "Grounded Engineering Agent"
+  },
+  {
+    "id": "PATCH-025",
+    "label": "Generative Design",
+    "internalId": "PATCH-SECP-025",
+    "name": "Topology & Stress Optimizer"
+  },
+  {
+    "id": "PATCH-026",
+    "label": "Plugin SDK",
+    "internalId": "PATCH-SECP-026",
+    "name": "Extensibility API Library"
+  },
+  {
+    "id": "PATCH-027",
+    "label": "Cloud Collab",
+    "internalId": "PATCH-SECP-027",
+    "name": "Real-time Session Controller"
+  },
+  {
+    "id": "PATCH-028",
+    "label": "Marketplace",
+    "internalId": "PATCH-SECP-028",
+    "name": "SaaS Component Store"
+  },
+  {
+    "id": "PATCH-029",
+    "label": "Certification",
+    "internalId": "PATCH-SECP-029",
+    "name": "Regulatory Compliance Audit"
+  },
+  {
+    "id": "PATCH-030",
+    "label": "Manufacturing",
+    "internalId": "PATCH-SECP-030",
+    "name": "Industrial CNC Controller"
+  },
+  {
+    "id": "PATCH-031",
+    "label": "Next-Gen 3D",
+    "internalId": "PATCH-SECP-031",
+    "name": "WebGPU Engine Preview"
+  },
+  {
+    "id": "PATCH-043",
+    "label": "Assembly Constraints",
+    "internalId": "PATCH-SECP-043",
+    "name": "Contact Joint Solver"
+  },
+  {
+    "id": "PATCH-044",
+    "label": "PMI & GD&T",
+    "internalId": "PATCH-SECP-044",
+    "name": "Semantic PMI & Associative GD&T"
+  },
+  {
+    "id": "PATCH-045",
+    "label": "Advanced Kinematics",
+    "internalId": "PATCH-SECP-045",
+    "name": "Dynamic Multi-Body Physics"
+  },
+  {
+    "id": "PATCH-084",
+    "label": "Integration Workbench",
+    "internalId": "PATCH-SECP-084",
+    "name": "SECP Production Control Center"
+  },
+  {
+    "id": "PATCH-088",
+    "label": "Enterprise PLM",
+    "internalId": "PATCH-SECP-088",
+    "name": "ECO Lifecycle Manager"
+  },
+  {
+    "id": "PATCH-082",
+    "label": "🧪 Execute Batch",
+    "internalId": "PATCH-SECP-082",
+    "name": "Test Runner Panel & CAD Kernel Inspector"
+  },
+  {
+    "id": "PATCH-286",
+    "label": "📂 Project Workspace",
+    "internalId": "PATCH-SECP-286",
+    "name": "Real Engineering Project Workspace"
+  },
+  {
+    "id": "PATCH-287",
+    "label": "⚙️ Revision Management",
+    "internalId": "PATCH-SECP-287",
+    "name": "Real Engineering Revision System"
+  },
+  {
+    "id": "PATCH-288",
+    "label": "🌿 Branch & Variant",
+    "internalId": "PATCH-SECP-288",
+    "name": "Real Engineering Branch & Variant System"
+  },
+  {
+    "id": "PATCH-289",
+    "label": "🔄 Change Management",
+    "internalId": "PATCH-SECP-289",
+    "name": "Real Engineering Change Management"
+  },
+  {
+    "id": "PATCH-290",
+    "label": "📋 Change Order (ECO)",
+    "internalId": "PATCH-SECP-290",
+    "name": "Real Engineering Change Order System"
+  },
+  {
+    "id": "PATCH-291",
+    "label": "🔐 Approval Workflow",
+    "internalId": "PATCH-SECP-291",
+    "name": "Real Engineering Approval Workflow"
+  },
+  {
+    "id": "PATCH-292",
+    "label": "👥 Multi-user Collaboration",
+    "internalId": "PATCH-SECP-292",
+    "name": "Real Engineering Multi-user Collaboration"
+  },
+  {
+    "id": "PATCH-293",
+    "label": "🔐 Access Control",
+    "internalId": "PATCH-SECP-293",
+    "name": "Real Engineering Access Control Engine"
+  },
+  {
+    "id": "PATCH-294",
+    "label": "🏭 Supplier Collaboration",
+    "internalId": "PATCH-SECP-294",
+    "name": "Real Engineering Supplier Collaboration & TDP Portal"
+  },
+  {
+    "id": "PATCH-295",
+    "label": "🧵 Digital Thread",
+    "internalId": "PATCH-SECP-295",
+    "name": "Real Engineering Digital Thread & Lifecycle Lineage"
+  },
+  {
+    "id": "PATCH-296",
+    "label": "⚡ Real WebGPU",
+    "internalId": "PATCH-SECP-296",
+    "name": "Real WebGPU Compute Backend & Hardware Acceleration"
+  },
+  {
+    "id": "PATCH-297",
+    "label": "📐 GPU Linear Algebra",
+    "internalId": "PATCH-SECP-297",
+    "name": "Real GPU Linear Algebra, Dense/Sparse BLAS & CSR SpMV"
+  },
+  {
+    "id": "PATCH-298",
+    "label": "🔥 GPU FEM Kernels",
+    "internalId": "PATCH-SECP-298",
+    "name": "WebGPU FEM Computational Kernels (QUAD4, TET4, HEX8)"
+  },
+  {
+    "id": "PATCH-299",
+    "label": "💨 GPU CFD Kernels",
+    "internalId": "PATCH-SECP-299",
+    "name": "WebGPU CFD Computational Kernels (FVM, SIMPLE, RANS)"
+  },
+  {
+    "id": "PATCH-300",
+    "label": "🕸️ GPU Meshing",
+    "internalId": "PATCH-SECP-300",
+    "name": "WebGPU Mesh Generation & Quality Analysis"
+  },
+  {
+    "id": "PATCH-301",
+    "label": "🧵 Worker Parallelism",
+    "internalId": "PATCH-SECP-301",
+    "name": "Web Workers Parallelism, Pool, DAG Scheduling & Concurrency"
+  },
+  {
+    "id": "PATCH-302",
+    "label": "⚡ WASM Native Compute",
+    "internalId": "PATCH-SECP-302",
+    "name": "WebAssembly Native Engineering Compute, SIMD 128 & ABI V1"
+  },
+  {
+    "id": "PATCH-303",
+    "label": "🌐 Distributed Compute",
+    "internalId": "PATCH-SECP-303",
+    "name": "Distributed Compute Engine, Multi-Node Orchestrator & Task DAG"
+  },
+  {
+    "id": "PATCH-304",
+    "label": "🚀 HPC Scheduler",
+    "internalId": "PATCH-SECP-304",
+    "name": "HPC Scheduler, Resource-Aware Placement & Fair-Share Quotas"
+  },
+  {
+    "id": "PATCH-305",
+    "label": "⚡ Hardware Gate",
+    "internalId": "PATCH-SECP-305",
+    "name": "Hardware Acceleration Gate, WebGPU Dispatch & Numerical Validation"
+  },
+  {
+    "id": "PATCH-108",
+    "label": "NC Verification",
+    "internalId": "PATCH-SECP-108",
+    "name": "G-code Verification & Safety Gate"
+  },
+  {
+    "id": "PATCH-109",
+    "label": "CAM Simulation",
+    "internalId": "PATCH-SECP-109",
+    "name": "Toolpath Simulation & Material Removal"
+  },
+  {
+    "id": "PATCH-150",
+    "label": "Cloud Simulation",
+    "internalId": "PATCH-SECP-150",
+    "name": "HPC Orchestrator & Safety Gate"
+  },
+  {
+    "id": "PATCH-151",
+    "label": "Massive Assembly",
+    "internalId": "PATCH-SECP-151",
+    "name": "Geometry Instancing & Scale"
+  },
+  {
+    "id": "PATCH-168",
+    "label": "Verification Portal",
+    "internalId": "PATCH-SECP-168",
+    "name": "Independent Forensic Audit"
+  },
+  {
+    "id": "PATCH-169",
+    "label": "Cross-Org Evidence",
+    "internalId": "PATCH-SECP-169",
+    "name": "Inter-Organization Trust Protocol"
+  },
+  {
+    "id": "PATCH-170",
+    "label": "Truth Certificate",
+    "internalId": "PATCH-SECP-170",
+    "name": "Unified Engineering Certification"
+  },
+  {
+    "id": "PATCH-206",
+    "label": "Direct Modeling",
+    "internalId": "PATCH-SECP-206",
+    "name": "Direct Modeling Engine"
+  },
+  {
+    "id": "PATCH-207",
+    "label": "Hybrid Modeling",
+    "internalId": "PATCH-SECP-207",
+    "name": "Parametric + Direct Hybrid Engine"
+  },
+  {
+    "id": "PATCH-208",
+    "label": "Pattern Engine",
+    "internalId": "PATCH-SECP-208",
+    "name": "Parametric Pattern Engine"
+  },
+  {
+    "id": "PATCH-209",
+    "label": "Design Intent",
+    "internalId": "PATCH-SECP-209",
+    "name": "Design Intent Inference Engine"
+  },
+  {
+    "id": "PATCH-210",
+    "label": "Production CAD",
+    "internalId": "PATCH-SECP-210",
+    "name": "Production CAD Acceptance Gate"
+  },
+  {
+    "id": "PATCH-211",
+    "label": "Assembly Workspace",
+    "internalId": "PATCH-SECP-211",
+    "name": "Engineering Assembly Workbench"
+  },
+  {
+    "id": "PATCH-212",
+    "label": "Component Insertion",
+    "internalId": "PATCH-SECP-212",
+    "name": "Advanced Occurrence Manager"
+  },
+  {
+    "id": "PATCH-213",
+    "label": "3D Manipulation",
+    "internalId": "PATCH-SECP-213",
+    "name": "Interactive Transform Gizmo"
+  },
+  {
+    "id": "PATCH-214",
+    "label": "Assembly Constraints",
+    "internalId": "PATCH-SECP-214",
+    "name": "Geometric GCS Solver"
+  },
+  {
+    "id": "PATCH-222",
+    "label": "Bearings Subsystem",
+    "internalId": "PATCH-SECP-222",
+    "name": "Precision Rolling & Plain Bearing Subsystem"
+  },
+  {
+    "id": "PATCH-223",
+    "label": "Shaft Modeler",
+    "internalId": "PATCH-SECP-223",
+    "name": "Parametric Stepped Shaft & Spindle Designer"
+  },
+  {
+    "id": "PATCH-224",
+    "label": "Gear Engineering",
+    "internalId": "PATCH-SECP-224",
+    "name": "Involute Gear & Transmission Subsystem"
+  },
+  {
+    "id": "PATCH-225",
+    "label": "Spring Engineering",
+    "internalId": "PATCH-SECP-225",
+    "name": "Parametric Springs & Elastic Elements Subsystem"
+  },
+  {
+    "id": "PATCH-226",
+    "label": "Fasteners & Joints",
+    "internalId": "PATCH-SECP-226",
+    "name": "Parametric Fasteners & Bolted Joint Subsystem"
+  },
+  {
+    "id": "PATCH-227",
+    "label": "Mechanical Joints",
+    "internalId": "PATCH-SECP-227",
+    "name": "Mechanical Joints & Kinematic Subsystem"
+  },
+  {
+    "id": "PATCH-228",
+    "label": "Motion Links",
+    "internalId": "PATCH-SECP-228",
+    "name": "Motion Links & Kinematic Coupling Engine"
+  },
+  {
+    "id": "PATCH-229",
+    "label": "Kinematic Solver",
+    "internalId": "PATCH-SECP-229",
+    "name": "Kinematic Solver & Multi-Body Motion Engine"
+  },
+  {
+    "id": "PATCH-230",
+    "label": "Mechanism Simulation",
+    "internalId": "PATCH-SECP-230",
+    "name": "Mechanism Simulation & Time-Step Integration"
+  },
+  {
+    "id": "PATCH-231",
+    "label": "General FEM Mesh",
+    "internalId": "PATCH-SECP-231",
+    "name": "General FEM Mesh Generation & Quality Analysis"
+  },
+  {
+    "id": "PATCH-232",
+    "label": "Element Library",
+    "internalId": "PATCH-SECP-232",
+    "name": "FEM Element Formulations Library & Mathematical Solvers"
+  },
+  {
+    "id": "PATCH-233",
+    "label": "Material Models",
+    "internalId": "PATCH-SECP-233",
+    "name": "Constitutive Material Engine & Gate 233"
+  },
+  {
+    "id": "PATCH-234",
+    "label": "Global Assembly",
+    "internalId": "PATCH-SECP-234",
+    "name": "Global Stiffness Assembly Engine & Gate 234"
+  },
+  {
+    "id": "PATCH-235",
+    "label": "Boundary Conditions",
+    "internalId": "PATCH-SECP-235",
+    "name": "Boundary Condition Engine & Gate 235"
+  },
+  {
+    "id": "PATCH-236",
+    "label": "Sparse Matrix Backend",
+    "internalId": "PATCH-SECP-236",
+    "name": "Sparse Matrix Backend Engine & Gate 236"
+  },
+  {
+    "id": "PATCH-237",
+    "label": "Linear Solvers",
+    "internalId": "PATCH-SECP-237",
+    "name": "Linear Solvers Engine & Gate 237"
+  },
+  {
+    "id": "PATCH-238",
+    "label": "Nonlinear Solver",
+    "internalId": "PATCH-SECP-238",
+    "name": "Nonlinear Structural Solver Engine & Gate 238"
+  },
+  {
+    "id": "PATCH-239",
+    "label": "Contact Solver",
+    "internalId": "PATCH-SECP-239",
+    "name": "Mechanical Contact Solver Engine & Gate 239"
+  },
+  {
+    "id": "PATCH-240",
+    "label": "Verification Gate",
+    "internalId": "PATCH-SECP-240",
+    "name": "FEM Verification Gate & Industrial Validation"
+  },
+  {
+    "id": "PATCH-241",
+    "label": "General CFD Mesh",
+    "internalId": "PATCH-SECP-241",
+    "name": "General CFD Mesh Interface & Topology Engine"
+  },
+  {
+    "id": "PATCH-242",
+    "label": "FVM Discretization",
+    "internalId": "PATCH-SECP-242",
+    "name": "Finite Volume Discretization & Flux Engine"
+  },
+  {
+    "id": "PATCH-243",
+    "label": "Navier-Stokes",
+    "internalId": "PATCH-SECP-243",
+    "name": "Incompressible Navier-Stokes Numerical Solver"
+  },
+  {
+    "id": "PATCH-244",
+    "label": "SIMPLE Coupling",
+    "internalId": "PATCH-SECP-244",
+    "name": "Pressure-Velocity Coupling & SIMPLE Engine"
+  },
+  {
+    "id": "PATCH-245",
+    "label": "Boundary System",
+    "internalId": "PATCH-SECP-245",
+    "name": "General Boundary Condition System & Mapping"
+  },
+  {
+    "id": "PATCH-246",
+    "label": "Residual Engine",
+    "internalId": "PATCH-SECP-246",
+    "name": "Residual Engine & Convergence Auditor"
+  },
+  {
+    "id": "PATCH-247",
+    "label": "Mesh Convergence",
+    "internalId": "PATCH-SECP-247",
+    "name": "Mesh Convergence & Richardson GCI"
+  },
+  {
+    "id": "PATCH-248",
+    "label": "Turbulence RANS",
+    "internalId": "PATCH-SECP-248",
+    "name": "Reynolds-Averaged Navier-Stokes Solver"
+  },
+  {
+    "id": "PATCH-249",
+    "label": "Transient Solver",
+    "internalId": "PATCH-SECP-249",
+    "name": "Transient Navier-Stokes Solver Engine"
+  },
+  {
+    "id": "PATCH-250",
+    "label": "Validation Gate",
+    "internalId": "PATCH-SECP-250",
+    "name": "CFD Validation Gate & Verdict Engine"
+  },
+  {
+    "id": "PATCH-251",
+    "label": "Heat Transfer",
+    "internalId": "PATCH-SECP-251",
+    "name": "Heat Transfer & Energy Equation Solver"
+  },
+  {
+    "id": "PATCH-252",
+    "label": "💧 Multiphase CFD",
+    "internalId": "PATCH-SECP-252",
+    "name": "Multiphase Fluid VOF Interface Solver"
+  },
+  {
+    "id": "PATCH-253",
+    "label": "🌪️ Compressible Flow",
+    "internalId": "PATCH-SECP-253",
+    "name": "Compressible Coupled Euler & Energy Solver"
+  },
+  {
+    "id": "PATCH-254",
+    "label": "🤝 FSI Multiphysics",
+    "internalId": "PATCH-SECP-254",
+    "name": "Fluid-Structure Interaction Partitioned Solver"
+  },
+  {
+    "id": "PATCH-255",
+    "label": "⚙️ Feature Recognition",
+    "internalId": "PATCH-SECP-255",
+    "name": "Manufacturing Feature Recognition & Setup Planning"
+  },
+  {
+    "id": "PATCH-256",
+    "label": "3-Axis CAM Toolpath",
+    "internalId": "PATCH-SECP-256",
+    "name": "3-Axis CAM Interactive Workspace & Toolpath Engine"
+  },
+  {
+    "id": "PATCH-257",
+    "label": "4-Axis CAM Milling",
+    "internalId": "PATCH-SECP-257",
+    "name": "4-Axis CAM Milling Workspace & Rotary Kinematics"
+  },
+  {
+    "id": "PATCH-258",
+    "label": "5-Axis Kinematics",
+    "internalId": "PATCH-SECP-258",
+    "name": "5-Axis CAM Kinematics & Transformation Workspace"
+  },
+  {
+    "id": "PATCH-259",
+    "label": "Collision Detection",
+    "internalId": "PATCH-SECP-259",
+    "name": "CAM Collision Detection & Verification Gate 259"
+  },
+  {
+    "id": "PATCH-260",
+    "label": "Stock Simulation",
+    "internalId": "PATCH-SECP-260",
+    "name": "Volumetric Stock Removal Simulation & Gate 260"
+  },
+  {
+    "id": "PATCH-261",
+    "label": "Tool Library",
+    "internalId": "PATCH-SECP-261",
+    "name": "Industrial Tool Library & Machining Physics & Gate 261"
+  },
+  {
+    "id": "PATCH-262",
+    "label": "Post Processor",
+    "internalId": "PATCH-SECP-262",
+    "name": "CAM Post Processor & NC Code Generation & Gate 262"
+  },
+  {
+    "id": "PATCH-263",
+    "label": "🛡️ G-Code Verification",
+    "internalId": "PATCH-SECP-263",
+    "name": "Semantic G-Code & NC Verification Engine"
+  },
+  {
+    "id": "PATCH-264",
+    "label": "🤖 Machine Simulation",
+    "internalId": "PATCH-SECP-264",
+    "name": "Real Multi-Axis CNC Machine Simulation & Digital Twin"
+  },
+  {
+    "id": "PATCH-265",
+    "label": "🏆 CAM Production Gate",
+    "internalId": "PATCH-SECP-265",
+    "name": "Hard CAM Production Acceptance Gate & No-Code Workflow"
+  },
+  {
+    "id": "PATCH-266",
+    "label": "🧪 Material Intelligence",
+    "internalId": "PATCH-SECP-266",
+    "name": "Engineering Material Database & Provenance Kernel"
+  },
+  {
+    "id": "PATCH-276",
+    "label": "👁️ Professional 3D",
+    "internalId": "PATCH-SECP-276",
+    "name": "Professional 3D Engineering Viewport & Visualization"
+  },
+  {
+    "id": "PATCH-171",
+    "label": "CAD Benchmark",
+    "internalId": "PATCH-SECP-171",
+    "name": "CAD Benchmark Battery & Oracles"
+  },
+  {
+    "id": "PATCH-172",
+    "label": "Boolean Adversarial",
+    "internalId": "PATCH-SECP-172",
+    "name": "Boolean Adversarial Battery & Gate 172"
+  },
+  {
+    "id": "PATCH-173",
+    "label": "GCS Benchmark",
+    "internalId": "PATCH-SECP-173",
+    "name": "GCS Constraint Solver Benchmark"
+  },
+  {
+    "id": "PATCH-174",
+    "label": "CFD Benchmark",
+    "internalId": "PATCH-SECP-174",
+    "name": "CFD Benchmark Battery & Gate 174"
+  },
+  {
+    "id": "PATCH-175",
+    "label": "Conservation Battery",
+    "internalId": "PATCH-SECP-175",
+    "name": "CFD Conservation Battery & Gate 175"
+  },
+  {
+    "id": "PATCH-176",
+    "label": "Turbulence Benchmark",
+    "internalId": "PATCH-SECP-176",
+    "name": "CFD Turbulence Benchmark Battery & Gate 176"
+  },
+  {
+    "id": "PATCH-177",
+    "label": "Nonlinear FEM 2.0",
+    "internalId": "PATCH-SECP-177",
+    "name": "Nonlinear FEM 2.0 Benchmark Battery & Gate 177"
+  },
+  {
+    "id": "PATCH-178",
+    "label": "Materials Engine",
+    "internalId": "PATCH-SECP-178",
+    "name": "Industrial Materials Engine & Gate 178"
+  },
+  {
+    "id": "PATCH-179",
+    "label": "True 5-Axis CAM",
+    "internalId": "PATCH-SECP-179",
+    "name": "True Simultaneous 5-Axis CAM Engine & Gate 179"
+  },
+  {
+    "id": "PATCH-180",
+    "label": "Massive Assembly Engine",
+    "internalId": "PATCH-SECP-180",
+    "name": "Massive Assembly Engine (50k+ Components) & Gate 180"
+  },
+  {
+    "id": "PATCH-181",
+    "label": "Engineering Data OS",
+    "internalId": "PATCH-SECP-181",
+    "name": "Engineering Data OS & Gate 181"
+  },
+  {
+    "id": "PATCH-182",
+    "label": "Deterministic Runtime",
+    "internalId": "PATCH-SECP-182",
+    "name": "Deterministic Engineering Runtime & Gate 182"
+  },
+  {
+    "id": "PATCH-183",
+    "label": "Reproducible Package",
+    "internalId": "PATCH-SECP-183",
+    "name": "Reproducible Engineering Package & Gate 183"
+  },
+  {
+    "id": "PATCH-184",
+    "label": "Industrial Failure Injection",
+    "internalId": "PATCH-SECP-184",
+    "name": "Industrial Failure Injection & Chaos Framework & Gate 184"
+  },
+  {
+    "id": "PATCH-185",
+    "label": "External Validation",
+    "internalId": "PATCH-SECP-185",
+    "name": "External Validation Package & Independent Oracle & Gate 185"
+  },
+  {
+    "id": "PATCH-185-REPORT",
+    "label": "Global Benchmark Report",
+    "internalId": "PATCH-SECP-185-REPORT",
+    "name": "Global Engineering Benchmark Integrity Report"
+  },
+  {
+    "id": "PATCH-186",
+    "label": "Certification Engine",
+    "internalId": "PATCH-SECP-186",
+    "name": "Engineering Certification Engine & Truth Certification & Gate 186"
+  },
+  {
+    "id": "PATCH-187",
+    "label": "Capability Dashboard",
+    "internalId": "PATCH-SECP-187",
+    "name": "Industrial Capability Dashboard & Domain Maturity Matrix & Gate 187"
+  },
+  {
+    "id": "PATCH-188",
+    "label": "Competitive Workflow",
+    "internalId": "PATCH-SECP-188",
+    "name": "Competitive Engineering Workflows & Industrial Qualification & Gate 188"
+  },
+  {
+    "id": "PATCH-189",
+    "label": "Independent Audit",
+    "internalId": "PATCH-SECP-189",
+    "name": "Independent Audit Package & Third-Party Qualification & Gate 189"
+  },
+  {
+    "id": "PATCH-190",
+    "label": "Engineering OS",
+    "internalId": "PATCH-SECP-190",
+    "name": "SECP Engineering OS Architecture 2.0 & Digital Thread & Gate 190"
+  },
+  {
+    "id": "PATCH-306",
+    "label": "🤖 AI Design Assistant",
+    "internalId": "PATCH-SECP-306",
+    "name": "AI Design Assistant & Engineering Solvers"
+  },
+  {
+    "id": "PATCH-307",
+    "label": "💬 Natural Language CAD",
+    "internalId": "PATCH-SECP-307",
+    "name": "Natural Language CAD & Native Parametric Feature Trees"
+  },
+  {
+    "id": "PATCH-308",
+    "label": "🌿 Design Alternatives",
+    "internalId": "PATCH-SECP-308",
+    "name": "Design Alternatives & Multi-Objective Space Exploration"
+  },
+  {
+    "id": "PATCH-309",
+    "label": "⚡ AI Optimization",
+    "internalId": "PATCH-SECP-309",
+    "name": "AI Optimization & Real Engineering Solvers"
+  },
+  {
+    "id": "PATCH-310",
+    "label": "🧪 AI Simulation Setup",
+    "internalId": "PATCH-SECP-310",
+    "name": "AI Simulation Setup & Physics Assembly"
+  },
+  {
+    "id": "PATCH-311",
+    "label": "🛡️ AI Failure Detection",
+    "internalId": "PATCH-SECP-311",
+    "name": "AI Failure Detection & Engineering Grounding & Gate 311"
+  },
+  {
+    "id": "PATCH-312",
+    "label": "📋 AI Design Review",
+    "internalId": "PATCH-SECP-312",
+    "name": "AI Design Review & B-Rep Verification & Gate 312"
+  },
+  {
+    "id": "PATCH-313",
+    "label": "⚡ Generative Engineering",
+    "internalId": "PATCH-SECP-313",
+    "name": "Generative Engineering & Pareto Analysis & Gate 313"
+  },
+  {
+    "id": "PATCH-314",
+    "label": "🤖 Engineering Copilot",
+    "internalId": "PATCH-SECP-314",
+    "name": "Engineering Copilot & Evidence Bus Grounding & Gate 314"
+  },
+  {
+    "id": "PATCH-315",
+    "label": "🌐 Point Cloud Import",
+    "internalId": "PATCH-SECP-315",
+    "name": "Point Cloud Import & Spatial Indexing & Gate 315"
+  },
+  {
+    "id": "PATCH-316",
+    "label": "🧹 Noise Filtering",
+    "internalId": "PATCH-SECP-316",
+    "name": "Noise Filtering & Statistical Outliers & Gate 316"
+  },
+  {
+    "id": "PATCH-317",
+    "label": "🎯 Alignment & Registration",
+    "internalId": "PATCH-SECP-317",
+    "name": "Multi-Scan Point Cloud Registration & Alignment & Gate 317"
+  },
+  {
+    "id": "PATCH-318",
+    "label": "🕸️ Scan-to-Mesh",
+    "internalId": "PATCH-SECP-318",
+    "name": "Scan-to-Mesh Surface Reconstruction & Gate 318"
+  },
+  {
+    "id": "PATCH-319",
+    "label": "🩹 Mesh Healing",
+    "internalId": "PATCH-SECP-319",
+    "name": "Mesh Healing Engine & Gate 319"
+  },
+  {
+    "id": "PATCH-320",
+    "label": "🔍 Feature Recognition",
+    "internalId": "PATCH-SECP-320",
+    "name": "Geometric Feature Recognition & Gate 320"
+  },
+  {
+    "id": "PATCH-321",
+    "label": "📐 Surface Reconstruction",
+    "internalId": "PATCH-SECP-321",
+    "name": "Surface Reconstruction & Gate 321"
+  },
+  {
+    "id": "PATCH-322",
+    "label": "🧶 NURBS Reconstruction",
+    "internalId": "PATCH-SECP-322",
+    "name": "NURBS Reconstruction & Gate 322"
+  },
+  {
+    "id": "PATCH-323",
+    "label": "📦 B-Rep Reconstruction",
+    "internalId": "PATCH-SECP-323",
+    "name": "B-Rep Topology Solidification & Gate 323"
+  },
+  {
+    "id": "PATCH-324",
+    "label": "🌳 Parametric Tree",
+    "internalId": "PATCH-SECP-324",
+    "name": "Parametric Feature Tree Reconstruction"
+  },
+  {
+    "id": "PATCH-327",
+    "label": "🤖 Machine Twin",
+    "internalId": "PATCH-SECP-327",
+    "name": "Machine Digital Twin & Kinematics & Evidence Gate"
+  },
+  {
+    "id": "PATCH-328",
+    "label": "⚙️ Process Twin",
+    "internalId": "PATCH-SECP-328",
+    "name": "Process Digital Twin & Quality Evidence Gate"
+  },
+  {
+    "id": "PATCH-329",
+    "label": "🔌 Sensor Integration",
+    "internalId": "PATCH-SECP-329",
+    "name": "Industrial Sensor Integration & Verification Gate"
+  },
+  {
+    "id": "PATCH-343",
+    "label": "Model Qualification",
+    "internalId": "PATCH-SECP-343",
+    "name": "Large CAD Model Qualification Center & Gate 343"
+  },
+  {
+    "id": "PATCH-344",
+    "label": "⏱️ Long-Run Simulation",
+    "internalId": "PATCH-SECP-344",
+    "name": "Long-Running Simulation Qualification Engine & Gate 344"
+  },
+  {
+    "id": "PATCH-345",
+    "label": "🛡️ Failure Recovery",
+    "internalId": "PATCH-SECP-345",
+    "name": "Production Failure Recovery Engine & Hard Acceptance Gate 345"
+  },
+  {
+    "id": "PATCH-346",
+    "label": "🔁 Deterministic Reprod",
+    "internalId": "PATCH-SECP-346",
+    "name": "Deterministic Reproduction Engine & Hard Acceptance Gate 346"
+  },
+  {
+    "id": "PATCH-347",
+    "label": "🔐 Security Audit",
+    "internalId": "PATCH-SECP-347",
+    "name": "Production Engineering Security Qualification Engine & Gate 347"
+  },
+  {
+    "id": "PATCH-348",
+    "label": "📑 Data Integrity",
+    "internalId": "PATCH-SECP-348",
+    "name": "Production Data Integrity Audit Engine & Hard Acceptance Gate 348"
+  },
+  {
+    "id": "PATCH-349",
+    "label": "🏆 Full OS Audit",
+    "internalId": "PATCH-SECP-349",
+    "name": "Full Industrial OS Audit Engine & System-Level Truth Gate 349"
+  },
+  {
+    "id": "PATCH-350",
+    "label": "🏅 Final Certification",
+    "internalId": "PATCH-SECP-350",
+    "name": "SECP Production Certification Gate 350 & Final Truth Seal"
+  },
+  {
+    "id": "PATCH-351",
+    "label": "🛡️ Production Proof",
+    "internalId": "PATCH-SECP-351",
+    "name": "SECP Production Proof Qualification Engine (P0→P12)"
+  },
+  {
+    "id": "PATCH-352",
+    "label": "🔍 Forensic Closure Audit",
+    "internalId": "PATCH-SECP-352",
+    "name": "Final Engineering Closure Forensic Audit Engine"
+  },
+  {
+    "id": "MVP-ARCH",
+    "label": "MVP Infrastructure",
+    "internalId": "SECP-MVP",
+    "name": "Core Base Architecture"
+  },
+  {
+    "id": "DRONE-HOME",
+    "label": "Project Home",
+    "internalId": "SECP-DRONE-HOME",
+    "name": "Drone Project Overview"
+  },
+  {
+    "id": "DRONE-ASSEMBLY",
+    "label": "Assembly Explorer",
+    "internalId": "SECP-DRONE-ASM",
+    "name": "3D Assembly & BOM"
+  },
+  {
+    "id": "DRONE-ELECTRICAL",
+    "label": "Electrical Power & ESCs",
+    "internalId": "SECP-DRONE-ELEC",
+    "name": "6S Power Bus, ESCs & Motors"
+  },
+  {
+    "id": "DRONE-PCB",
+    "label": "Avionics PCB & Flight Controller",
+    "internalId": "SECP-DRONE-PCB",
+    "name": "4-Layer Flight Controller Layout"
+  },
+  {
+    "id": "DRONE-AERO",
+    "label": "Aerodynamics & Rotor CFD",
+    "internalId": "SECP-DRONE-AERO",
+    "name": "Blade Element Momentum & Downwash"
+  },
+  {
+    "id": "DRONE-FASTENERS",
+    "label": "Fasteners & Bolted Joints",
+    "internalId": "SECP-DRONE-FAST",
+    "name": "M3 Fasteners & Clamping Verification"
+  },
+  {
+    "id": "DRONE-BOM",
+    "label": "Mass Budget & BOM",
+    "internalId": "SECP-DRONE-BOM",
+    "name": "Mass Properties & Component Catalog"
+  },
+  {
+    "id": "DRONE-CAM",
+    "label": "Manufacturing (CAM)",
+    "internalId": "SECP-DRONE-CAM",
+    "name": "CNC Toolpath Generation"
+  },
+  {
+    "id": "DRONE-EVIDENCE",
+    "label": "Engineering Evidence",
+    "internalId": "SECP-DRONE-EVID",
+    "name": "Manufacturing Provenance"
+  }
+]

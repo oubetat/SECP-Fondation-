@@ -1,0 +1,31 @@
+{
+  "standardsSupported": [
+    {
+      "standard": "ISO",
+      "authority": "International Organization for Standardization",
+      "compliance": "VERIFIED"
+    },
+    {
+      "standard": "DIN",
+      "authority": "Deutsches Institut für Normung",
+      "compliance": "VERIFIED"
+    },
+    {
+      "standard": "ANSI",
+      "authority": "American National Standards Institute",
+      "compliance": "VERIFIED"
+    },
+    {
+      "standard": "ASME",
+      "authority": "American Society of Mechanical Engineers",
+      "compliance": "PARTIAL"
+    },
+    {
+      "standard": "JIS",
+      "authority": "Japanese Industrial Standards",
+      "compliance": "PARTIAL"
+    }
+  ],
+  "totalDefinitions": 24,
+  "lastUpdated": "2026-08-24T06:54:10.000Z"
+}

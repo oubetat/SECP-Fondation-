@@ -1,0 +1,208 @@
+
+[1m[30m[46m RUN [49m[39m[22m [36mv4.1.10 [39m[90m/app/applet[39m
+
+[90mstderr[2m | src/engine/cad-kernel/history/__tests__/DraftShellRibThinCanonicalConvergence.test.ts[2m > [22m[2mPROMPT-028: Draft / Shell / Rib / Thin Canonical Feature Convergence[2m > [22m[2m1. Canonical DRAFT Feature[2m > [22m[2mdispatches DraftIntent through CanonicalIntentDispatcher277 and passes BRepMutationGate277
+[22m[39mDRAFT ACTION EXCEPTION STACK: TypeError: Cannot read properties of undefined (reading 'map')
+    at BRepKernel.computeVolume (/app/applet/src/engine/cad-kernel/brep/BRepKernel.ts:1146:53)
+    at Function.captureSnapshot (/app/applet/src/engine/cad-kernel/brep/BRepMutationGate277.ts:67:23)
+    at DraftAction277.execute (/app/applet/src/engine/viewport/DraftAction277.ts:31:41)
+    at Function.dispatch (/app/applet/src/engine/viewport/CanonicalIntentDispatcher277.ts:107:29)
+    at /app/applet/src/engine/cad-kernel/history/__tests__/DraftShellRibThinCanonicalConvergence.test.ts:91:57
+    at file:///app/applet/node_modules/@vitest/runner/dist/chunk-artifact.js:302:11
+    at file:///app/applet/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:26
+    at file:///app/applet/node_modules/@vitest/runner/dist/chunk-artifact.js:2326:20
+    at new Promise (<anonymous>)
+    at runWithCancel (file:///app/applet/node_modules/@vitest/runner/dist/chunk-artifact.js:2323:10)
+
+[90mstderr[2m | src/engine/cad-kernel/history/__tests__/DraftShellRibThinCanonicalConvergence.test.ts[2m > [22m[2mPROMPT-028: Draft / Shell / Rib / Thin Canonical Feature Convergence[2m > [22m[2m1. Canonical DRAFT Feature[2m > [22m[2mdispatches DraftIntent through CanonicalIntentDispatcher277 and passes BRepMutationGate277
+[22m[39mDISPATCHER CATCH EXCEPTION STACK: TypeError: Cannot read properties of undefined (reading 'map')
+    at BRepKernel.computeVolume (/app/applet/src/engine/cad-kernel/brep/BRepKernel.ts:1146:53)
+    at Function.captureSnapshot (/app/applet/src/engine/cad-kernel/brep/BRepMutationGate277.ts:67:23)
+    at DraftAction277.execute (/app/applet/src/engine/viewport/DraftAction277.ts:31:41)
+    at Function.dispatch (/app/applet/src/engine/viewport/CanonicalIntentDispatcher277.ts:107:29)
+    at /app/applet/src/engine/cad-kernel/history/__tests__/DraftShellRibThinCanonicalConvergence.test.ts:91:57
+    at file:///app/applet/node_modules/@vitest/runner/dist/chunk-artifact.js:302:11
+    at file:///app/applet/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:26
+    at file:///app/applet/node_modules/@vitest/runner/dist/chunk-artifact.js:2326:20
+    at new Promise (<anonymous>)
+    at runWithCancel (file:///app/applet/node_modules/@vitest/runner/dist/chunk-artifact.js:2323:10)
+
+[90mstderr[2m | src/engine/cad-kernel/history/__tests__/DraftShellRibThinCanonicalConvergence.test.ts[2m > [22m[2mPROMPT-028: Draft / Shell / Rib / Thin Canonical Feature Convergence[2m > [22m[2m1. Canonical DRAFT Feature[2m > [22m[2mdispatches DraftIntent through CanonicalIntentDispatcher277 and passes BRepMutationGate277
+[22m[39m=== DRAFT ERROR STRING ===: ENGINEERING_FAILURE: Cannot read properties of undefined (reading 'map')
+
+[90mstderr[2m | src/engine/cad-kernel/history/__tests__/DraftShellRibThinCanonicalConvergence.test.ts[2m > [22m[2mPROMPT-028: Draft / Shell / Rib / Thin Canonical Feature Convergence[2m > [22m[2m2. Canonical SHELL Feature[2m > [22m[2mdispatches ShellIntent through CanonicalIntentDispatcher277 and passes BRepMutationGate277
+[22m[39mDISPATCHER CATCH EXCEPTION STACK: TypeError: Cannot read properties of undefined (reading 'map')
+    at BRepKernel.computeVolume (/app/applet/src/engine/cad-kernel/brep/BRepKernel.ts:1146:53)
+    at Function.captureSnapshot (/app/applet/src/engine/cad-kernel/brep/BRepMutationGate277.ts:67:23)
+    at ShellAction277.execute (/app/applet/src/engine/viewport/ShellAction277.ts:28:39)
+    at Function.dispatch (/app/applet/src/engine/viewport/CanonicalIntentDispatcher277.ts:107:29)
+    at /app/applet/src/engine/cad-kernel/history/__tests__/DraftShellRibThinCanonicalConvergence.test.ts:136:57
+    at file:///app/applet/node_modules/@vitest/runner/dist/chunk-artifact.js:302:11
+    at file:///app/applet/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:26
+    at file:///app/applet/node_modules/@vitest/runner/dist/chunk-artifact.js:2326:20
+    at new Promise (<anonymous>)
+    at runWithCancel (file:///app/applet/node_modules/@vitest/runner/dist/chunk-artifact.js:2323:10)
+
+[90mstderr[2m | src/engine/cad-kernel/history/__tests__/DraftShellRibThinCanonicalConvergence.test.ts[2m > [22m[2mPROMPT-028: Draft / Shell / Rib / Thin Canonical Feature Convergence[2m > [22m[2m2. Canonical SHELL Feature[2m > [22m[2mdispatches ShellIntent through CanonicalIntentDispatcher277 and passes BRepMutationGate277
+[22m[39m=== SHELL ERROR ===: ENGINEERING_FAILURE: Cannot read properties of undefined (reading 'map')
+
+[90mstderr[2m | src/engine/cad-kernel/history/__tests__/DraftShellRibThinCanonicalConvergence.test.ts[2m > [22m[2mPROMPT-028: Draft / Shell / Rib / Thin Canonical Feature Convergence[2m > [22m[2m3. Canonical RIB Feature[2m > [22m[2mdispatches RibIntent through CanonicalIntentDispatcher277 and passes BRepMutationGate277
+[22m[39m=== RIB ERROR ===: MUTATION_GATE_FAILURE: Additive operation resulted in volume reduction (Expected >= 0, Got -106199.999952).
+
+[90mstderr[2m | src/engine/cad-kernel/history/__tests__/DraftShellRibThinCanonicalConvergence.test.ts[2m > [22m[2mPROMPT-028: Draft / Shell / Rib / Thin Canonical Feature Convergence[2m > [22m[2m4. Canonical THIN Feature[2m > [22m[2mdispatches ThinIntent through CanonicalIntentDispatcher277 and passes BRepMutationGate277
+[22m[39m=== THIN ERROR ===: MUTATION_GATE_FAILURE: Additive operation resulted in volume reduction (Expected >= 0, Got -107999.999952).
+
+[90mstderr[2m | src/engine/cad-kernel/history/__tests__/DraftShellRibThinCanonicalConvergence.test.ts[2m > [22m[2mPROMPT-028: Draft / Shell / Rib / Thin Canonical Feature Convergence[2m > [22m[2m6. Independent Acceptance Gate Verification (4 Independent Verdicts)[2m > [22m[2mevaluates all 4 features independently and returns PASS for each feature
+[22m[39mDRAFT ACTION EXCEPTION STACK: TypeError: Cannot read properties of undefined (reading 'map')
+    at BRepKernel.computeVolume (/app/applet/src/engine/cad-kernel/brep/BRepKernel.ts:1146:53)
+    at Function.captureSnapshot (/app/applet/src/engine/cad-kernel/brep/BRepMutationGate277.ts:67:23)
+    at DraftAction277.execute (/app/applet/src/engine/viewport/DraftAction277.ts:31:41)
+    at Function.dispatch (/app/applet/src/engine/viewport/CanonicalIntentDispatcher277.ts:107:29)
+    at DraftShellRibThinAcceptanceGate.evaluateDraft (/app/applet/src/engine/cad-kernel/history/DraftShellRibThinAcceptanceGate.ts:63:54)
+    at DraftShellRibThinAcceptanceGate.evaluateAll (/app/applet/src/engine/cad-kernel/history/DraftShellRibThinAcceptanceGate.ts:307:36)
+    at /app/applet/src/engine/cad-kernel/history/__tests__/DraftShellRibThinCanonicalConvergence.test.ts:251:33
+    at file:///app/applet/node_modules/@vitest/runner/dist/chunk-artifact.js:302:11
+    at file:///app/applet/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:26
+    at file:///app/applet/node_modules/@vitest/runner/dist/chunk-artifact.js:2326:20
+
+[90mstderr[2m | src/engine/cad-kernel/history/__tests__/DraftShellRibThinCanonicalConvergence.test.ts[2m > [22m[2mPROMPT-028: Draft / Shell / Rib / Thin Canonical Feature Convergence[2m > [22m[2m6. Independent Acceptance Gate Verification (4 Independent Verdicts)[2m > [22m[2mevaluates all 4 features independently and returns PASS for each feature
+[22m[39mDISPATCHER CATCH EXCEPTION STACK: TypeError: Cannot read properties of undefined (reading 'map')
+    at BRepKernel.computeVolume (/app/applet/src/engine/cad-kernel/brep/BRepKernel.ts:1146:53)
+    at Function.captureSnapshot (/app/applet/src/engine/cad-kernel/brep/BRepMutationGate277.ts:67:23)
+    at DraftAction277.execute (/app/applet/src/engine/viewport/DraftAction277.ts:31:41)
+    at Function.dispatch (/app/applet/src/engine/viewport/CanonicalIntentDispatcher277.ts:107:29)
+    at DraftShellRibThinAcceptanceGate.evaluateDraft (/app/applet/src/engine/cad-kernel/history/DraftShellRibThinAcceptanceGate.ts:63:54)
+    at DraftShellRibThinAcceptanceGate.evaluateAll (/app/applet/src/engine/cad-kernel/history/DraftShellRibThinAcceptanceGate.ts:307:36)
+    at /app/applet/src/engine/cad-kernel/history/__tests__/DraftShellRibThinCanonicalConvergence.test.ts:251:33
+    at file:///app/applet/node_modules/@vitest/runner/dist/chunk-artifact.js:302:11
+    at file:///app/applet/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:26
+    at file:///app/applet/node_modules/@vitest/runner/dist/chunk-artifact.js:2326:20
+
+[90mstderr[2m | src/engine/cad-kernel/history/__tests__/DraftShellRibThinCanonicalConvergence.test.ts[2m > [22m[2mPROMPT-028: Draft / Shell / Rib / Thin Canonical Feature Convergence[2m > [22m[2m6. Independent Acceptance Gate Verification (4 Independent Verdicts)[2m > [22m[2mevaluates all 4 features independently and returns PASS for each feature
+[22m[39mDISPATCHER CATCH EXCEPTION STACK: TypeError: Cannot read properties of undefined (reading 'map')
+    at BRepKernel.computeVolume (/app/applet/src/engine/cad-kernel/brep/BRepKernel.ts:1146:53)
+    at Function.captureSnapshot (/app/applet/src/engine/cad-kernel/brep/BRepMutationGate277.ts:67:23)
+    at ShellAction277.execute (/app/applet/src/engine/viewport/ShellAction277.ts:28:39)
+    at Function.dispatch (/app/applet/src/engine/viewport/CanonicalIntentDispatcher277.ts:107:29)
+    at DraftShellRibThinAcceptanceGate.evaluateShell (/app/applet/src/engine/cad-kernel/history/DraftShellRibThinAcceptanceGate.ts:128:54)
+    at DraftShellRibThinAcceptanceGate.evaluateAll (/app/applet/src/engine/cad-kernel/history/DraftShellRibThinAcceptanceGate.ts:308:36)
+    at processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at /app/applet/src/engine/cad-kernel/history/__tests__/DraftShellRibThinCanonicalConvergence.test.ts:251:22
+    at file:///app/applet/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20
+
+ [31m❯[39m src/engine/cad-kernel/history/__tests__/DraftShellRibThinCanonicalConvergence.test.ts [2m([22m[2m14 tests[22m[2m | [22m[31m5 failed[39m[2m)[22m[32m 87[2mms[22m[39m
+       [32m✓[39m creates and validates a canonical DraftIntent[32m 4[2mms[22m[39m
+       [32m✓[39m executes real B-Rep taper mutation in DraftEvaluator[32m 2[2mms[22m[39m
+[31m       [31m×[31m dispatches DraftIntent through CanonicalIntentDispatcher277 and passes BRepMutationGate277[39m[32m 27[2mms[22m[39m
+       [32m✓[39m creates and validates a canonical ShellIntent[32m 1[2mms[22m[39m
+       [32m✓[39m executes real B-Rep offset cavity mutation in ShellEvaluator with verified wall thickness[32m 1[2mms[22m[39m
+[31m       [31m×[31m dispatches ShellIntent through CanonicalIntentDispatcher277 and passes BRepMutationGate277[39m[32m 11[2mms[22m[39m
+       [32m✓[39m creates and validates a canonical RibIntent[32m 1[2mms[22m[39m
+       [32m✓[39m executes real B-Rep structural web addition in RibEvaluator[32m 1[2mms[22m[39m
+[31m       [31m×[31m dispatches RibIntent through CanonicalIntentDispatcher277 and passes BRepMutationGate277[39m[32m 8[2mms[22m[39m
+       [32m✓[39m creates and validates a canonical ThinIntent[32m 1[2mms[22m[39m
+       [32m✓[39m executes real thin-wall B-Rep geometry creation in ThinEvaluator[32m 1[2mms[22m[39m
+[31m       [31m×[31m dispatches ThinIntent through CanonicalIntentDispatcher277 and passes BRepMutationGate277[39m[32m 5[2mms[22m[39m
+       [32m✓[39m fails BRepMutationGate277 if snapshot shows zero B-Rep mutation[32m 1[2mms[22m[39m
+[31m       [31m×[31m evaluates all 4 features independently and returns PASS for each feature[39m[32m 22[2mms[22m[39m
+
+[31m⎯⎯⎯⎯⎯⎯⎯[39m[1m[41m Failed Tests 5 [49m[22m[31m⎯⎯⎯⎯⎯⎯⎯[39m
+
+[41m[1m FAIL [22m[49m src/engine/cad-kernel/history/__tests__/DraftShellRibThinCanonicalConvergence.test.ts[2m > [22mPROMPT-028: Draft / Shell / Rib / Thin Canonical Feature Convergence[2m > [22m1. Canonical DRAFT Feature[2m > [22mdispatches DraftIntent through CanonicalIntentDispatcher277 and passes BRepMutationGate277
+[31m[1mAssertionError[22m: expected 'ENGINEERING_FAILURE: Cannot read prop…' to be undefined[39m
+
+[32m- Expected:[39m
+undefined
+
+[31m+ Received:[39m
+"ENGINEERING_FAILURE: Cannot read properties of undefined (reading 'map')"
+
+[36m [2m❯[22m src/engine/cad-kernel/history/__tests__/DraftShellRibThinCanonicalConvergence.test.ts:[2m94:28[22m[39m
+    [90m 92|[39m       console[33m.[39m[34merror[39m([32m'=== DRAFT ERROR STRING ===:'[39m[33m,[39m result[33m.[39merror)[33m;[39m
+    [90m 93|[39m
+    [90m 94|[39m       [34mexpect[39m(result[33m.[39merror)[33m.[39m[34mtoBeUndefined[39m()[33m;[39m
+    [90m   |[39m                            [31m^[39m
+    [90m 95|[39m       [34mexpect[39m(result[33m.[39msuccess)[33m.[39m[34mtoBe[39m([35mtrue[39m)[33m;[39m
+    [90m 96|[39m       [34mexpect[39m(result[33m.[39mdocument)[33m.[39m[34mtoBeDefined[39m()[33m;[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/5]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m src/engine/cad-kernel/history/__tests__/DraftShellRibThinCanonicalConvergence.test.ts[2m > [22mPROMPT-028: Draft / Shell / Rib / Thin Canonical Feature Convergence[2m > [22m2. Canonical SHELL Feature[2m > [22mdispatches ShellIntent through CanonicalIntentDispatcher277 and passes BRepMutationGate277
+[31m[1mAssertionError[22m: expected false to be true // Object.is equality[39m
+
+[32m- Expected[39m
+[31m+ Received[39m
+
+[32m- true[39m
+[31m+ false[39m
+
+[36m [2m❯[22m src/engine/cad-kernel/history/__tests__/DraftShellRibThinCanonicalConvergence.test.ts:[2m139:30[22m[39m
+    [90m137|[39m       if (result.error) console.error('=== SHELL ERROR ===:', result.e…
+    [90m138|[39m
+    [90m139|[39m       [34mexpect[39m(result[33m.[39msuccess)[33m.[39m[34mtoBe[39m([35mtrue[39m)[33m;[39m
+    [90m   |[39m                              [31m^[39m
+    [90m140|[39m       [34mexpect[39m(result[33m.[39mdocument)[33m.[39m[34mtoBeDefined[39m()[33m;[39m
+    [90m141|[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/5]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m src/engine/cad-kernel/history/__tests__/DraftShellRibThinCanonicalConvergence.test.ts[2m > [22mPROMPT-028: Draft / Shell / Rib / Thin Canonical Feature Convergence[2m > [22m3. Canonical RIB Feature[2m > [22mdispatches RibIntent through CanonicalIntentDispatcher277 and passes BRepMutationGate277
+[31m[1mAssertionError[22m: expected false to be true // Object.is equality[39m
+
+[32m- Expected[39m
+[31m+ Received[39m
+
+[32m- true[39m
+[31m+ false[39m
+
+[36m [2m❯[22m src/engine/cad-kernel/history/__tests__/DraftShellRibThinCanonicalConvergence.test.ts:[2m182:30[22m[39m
+    [90m180|[39m       if (result.error) console.error('=== RIB ERROR ===:', result.err…
+    [90m181|[39m
+    [90m182|[39m       [34mexpect[39m(result[33m.[39msuccess)[33m.[39m[34mtoBe[39m([35mtrue[39m)[33m;[39m
+    [90m   |[39m                              [31m^[39m
+    [90m183|[39m       [34mexpect[39m(result[33m.[39mdocument)[33m.[39m[34mtoBeDefined[39m()[33m;[39m
+    [90m184|[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/5]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m src/engine/cad-kernel/history/__tests__/DraftShellRibThinCanonicalConvergence.test.ts[2m > [22mPROMPT-028: Draft / Shell / Rib / Thin Canonical Feature Convergence[2m > [22m4. Canonical THIN Feature[2m > [22mdispatches ThinIntent through CanonicalIntentDispatcher277 and passes BRepMutationGate277
+[31m[1mAssertionError[22m: expected false to be true // Object.is equality[39m
+
+[32m- Expected[39m
+[31m+ Received[39m
+
+[32m- true[39m
+[31m+ false[39m
+
+[36m [2m❯[22m src/engine/cad-kernel/history/__tests__/DraftShellRibThinCanonicalConvergence.test.ts:[2m225:30[22m[39m
+    [90m223|[39m       if (result.error) console.error('=== THIN ERROR ===:', result.er…
+    [90m224|[39m
+    [90m225|[39m       [34mexpect[39m(result[33m.[39msuccess)[33m.[39m[34mtoBe[39m([35mtrue[39m)[33m;[39m
+    [90m   |[39m                              [31m^[39m
+    [90m226|[39m       [34mexpect[39m(result[33m.[39mdocument)[33m.[39m[34mtoBeDefined[39m()[33m;[39m
+    [90m227|[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/5]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m src/engine/cad-kernel/history/__tests__/DraftShellRibThinCanonicalConvergence.test.ts[2m > [22mPROMPT-028: Draft / Shell / Rib / Thin Canonical Feature Convergence[2m > [22m6. Independent Acceptance Gate Verification (4 Independent Verdicts)[2m > [22mevaluates all 4 features independently and returns PASS for each feature
+[31m[1mAssertionError[22m: expected 'FAIL' to be 'PASS' // Object.is equality[39m
+
+Expected: [32m"PASS"[39m
+Received: [31m"FAIL"[39m
+
+[36m [2m❯[22m src/engine/cad-kernel/history/__tests__/DraftShellRibThinCanonicalConvergence.test.ts:[2m254:42[22m[39m
+    [90m252|[39m
+    [90m253|[39m       [34mexpect[39m(report[33m.[39mdraftReport[33m.[39mcapability)[33m.[39m[34mtoBe[39m([32m'DRAFT'[39m)[33m;[39m
+    [90m254|[39m       [34mexpect[39m(report[33m.[39mdraftReport[33m.[39mverdict)[33m.[39m[34mtoBe[39m([32m'PASS'[39m)[33m;[39m
+    [90m   |[39m                                          [31m^[39m
+    [90m255|[39m
+    [90m256|[39m       [34mexpect[39m(report[33m.[39mshellReport[33m.[39mcapability)[33m.[39m[34mtoBe[39m([32m'SHELL'[39m)[33m;[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/5]⎯[22m[39m
+
+
+[2m Test Files [22m [1m[31m1 failed[39m[22m[90m (1)[39m
+[2m      Tests [22m [1m[31m5 failed[39m[22m[2m | [22m[1m[32m9 passed[39m[22m[90m (14)[39m
+[2m   Start at [22m 08:42:18
+[2m   Duration [22m 1.45s[2m (transform 972ms, setup 0ms, import 1.17s, tests 87ms, environment 0ms)[22m
+

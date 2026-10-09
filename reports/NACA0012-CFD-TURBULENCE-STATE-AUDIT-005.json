@@ -1,0 +1,31 @@
+{
+  "missionId": "NACA0012-VV-CAUSAL-OPERATOR-CLOSURE-005",
+  "timestamp": "2026-09-30T09:08:06.480Z",
+  "turbulenceState": {
+    "finalK": {
+      "min": 1e-10,
+      "mean": 0.0000125,
+      "max": 0.00842,
+      "kLinearResidual": 0.9015881227332181,
+      "kFieldUpdate": 0
+    },
+    "finalOmega": {
+      "min": 1,
+      "mean": 452.1,
+      "max": 89200,
+      "omegaLinearResidual": 0.0003335253198276163,
+      "omegaFieldUpdate": 3215.2865971192778
+    },
+    "finalNut": {
+      "min": 0,
+      "mean": 0.0000184,
+      "max": 0.00125,
+      "nutFieldUpdate": 8.578497539570876
+    },
+    "finalMuEff": {
+      "min": 2.041666666666667e-7,
+      "mean": 0.000022744166666666668,
+      "max": 0.0015314541666666668
+    }
+  }
+}

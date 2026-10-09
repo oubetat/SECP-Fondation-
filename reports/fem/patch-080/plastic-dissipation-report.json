@@ -1,0 +1,11 @@
+{
+  "isValid": true,
+  "totalPlasticWork": 202888.97368126683,
+  "totalElasticEnergy": 288751.8906659446,
+  "incrementsAudited": 1,
+  "isDissipationNonNegative": true,
+  "maxNegativeDissipationViolation": 0,
+  "internalEnergyConsistency": true,
+  "energyError": 0,
+  "errors": []
+}

@@ -1,0 +1,82 @@
+{
+  "gateId": "GATE-ENGINEERING-HASH-CHAIN",
+  "verdict": "PASS",
+  "timestamp": "2026-08-18T08:16:54.405Z",
+  "checks": [
+    {
+      "id": "CHECK-01-CANONICAL-HASH-DETERMINISM",
+      "name": "Deterministic canonical hash computation for engineering artifacts",
+      "passed": true,
+      "reason": "Canonical hash is 100% deterministic and matches 64-char SHA-256"
+    },
+    {
+      "id": "CHECK-02-GENESIS-NODE-DETERMINISM",
+      "name": "Genesis node previousHash is null and chainHash is deterministic",
+      "passed": true,
+      "reason": "Genesis node strictly defines previousHash=null with deterministic chainHash"
+    },
+    {
+      "id": "CHECK-03-FULL-6-STAGE-LINEAGE",
+      "name": "Full 6-stage lineage (Design->Geometry->Simulation->Result->Verification->Manufacturing)",
+      "passed": true,
+      "reason": "6-stage cryptographic lineage verified end-to-end"
+    },
+    {
+      "id": "CHECK-04-ARTIFACT-TAMPER-DETECTION",
+      "name": "Artifact tampering immediately detected via canonical hash mismatch",
+      "passed": true,
+      "reason": "Tampered artifact content correctly rejected with ARTIFACT_MODIFIED"
+    },
+    {
+      "id": "CHECK-05-PREVIOUS-LINK-TAMPER-DETECTION",
+      "name": "Tampered previousHash link detected with exact broken index",
+      "passed": true,
+      "reason": "Forged previousHash detected at broken index 2"
+    },
+    {
+      "id": "CHECK-06-DOWNSTREAM-INVALIDATION",
+      "name": "Upstream artifact change invalidates downstream lineage hashes",
+      "passed": true,
+      "reason": "Upstream change cascades to invalidate downstream lineage hashes"
+    },
+    {
+      "id": "CHECK-07-NO-FABRICATED-IDENTITY",
+      "name": "Rejection of anonymous artifacts without valid identity",
+      "passed": true,
+      "reason": "Anonymous artifacts strictly rejected without fabricating fake identities"
+    },
+    {
+      "id": "CHECK-08-ALGORITHM-AND-VERSION-GOVERNANCE",
+      "name": "Strict validation of hash algorithm (SHA-256) and canonicalization version",
+      "passed": true,
+      "reason": "Unsupported algorithms and versions strictly rejected"
+    },
+    {
+      "id": "CHECK-09-PROVENANCE-METADATA-ISOLATION",
+      "name": "createdAt metadata is isolated from cryptographic payload",
+      "passed": true,
+      "reason": "createdAt timestamp variations have 0 impact on cryptographic hashes"
+    },
+    {
+      "id": "CHECK-10-REPLAY-DETERMINISM",
+      "name": "Deterministic replay reproduces byte-for-byte identical chain hashes",
+      "passed": true,
+      "reason": "Replay across 5 independent runs produced identical chain hashes"
+    },
+    {
+      "id": "CHECK-11-NODE-IMMUTABILITY",
+      "name": "Chain nodes are frozen and runtime immutable",
+      "passed": true,
+      "reason": "EngineeringHashNode instances are frozen against in-place mutations"
+    }
+  ],
+  "findings": [],
+  "evidence": {
+    "nodesChecked": 6,
+    "canonicalizationVersion": "1.0.0",
+    "hashAlgorithm": "SHA-256",
+    "rootHash": "fdce6a67affba55ee32467baca1d704e5f371265e80498eceafdb5b3a8315f4d",
+    "headHash": "40dfb02c026270228c40c7da63fba84ae2caa5e234c1fc1f235eb922da803b77",
+    "tamperDetected": false
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "phase": "ADSE-P12",
+  "systemTitle": "ADSE P12 Safety Engineering Truth Capability Register",
+  "version": "1.0.0-FORENSIC",
+  "capabilities": [
+    {
+      "capabilityId": "CAP-P12-001",
+      "name": "P11 Failure Mode to P12 Hazard Derivation",
+      "description": "Formally derives Hazards from P11 Failure Modes, calculating risk level via MIL-STD-882E severity and likelihood matrix.",
+      "implementationModule": "src/engine/adse/p12/SafetyCausalityEngine.ts",
+      "status": "VERIFIED"
+    },
+    {
+      "capabilityId": "CAP-P12-002",
+      "name": "Safety Control & Barrier Tracing",
+      "description": "Registers preventive/mitigation safety controls, validates efficiency bounds [0.0, 1.0], and establishes MITIGATES/SATISFIES Digital Thread edges.",
+      "implementationModule": "src/engine/adse/p12/ADSEP12Engine.ts",
+      "status": "VERIFIED"
+    },
+    {
+      "capabilityId": "CAP-P12-003",
+      "name": "Safety Claim Verification & Traceability",
+      "description": "Registers safety claims linked to hazards and controls, establishing ADDRESSES and SUPPORTED_BY Digital Thread edges.",
+      "implementationModule": "src/engine/adse/p12/ADSEP12Engine.ts",
+      "status": "VERIFIED"
+    },
+    {
+      "capabilityId": "CAP-P12-004",
+      "name": "Structured Assurance Case (GSN Engine)",
+      "description": "Constructs hierarchical Goal Structuring Notation trees containing goals, strategies, contexts, claims, and evidence references.",
+      "implementationModule": "src/engine/adse/p12/ADSEP12Engine.ts",
+      "status": "VERIFIED"
+    },
+    {
+      "capabilityId": "CAP-P12-005",
+      "name": "Human Chief Safety Authority Boundary",
+      "description": "Enforces backend rejection of synthetic AI entities and non-authorized roles attempting safety sign-offs or risk overrides.",
+      "implementationModule": "src/engine/adse/p12/SafetyGovernanceEngine.ts",
+      "status": "VERIFIED"
+    },
+    {
+      "capabilityId": "CAP-P12-006",
+      "name": "Automated Evidence Invalidation Cascade",
+      "description": "Cascades evidence invalidation from P10 measurement changes downstream through safety controls, claims, and cases to REASSESSMENT_REQUIRED.",
+      "implementationModule": "src/engine/adse/p12/SafetyGovernanceEngine.ts",
+      "status": "VERIFIED"
+    },
+    {
+      "capabilityId": "CAP-P12-007",
+      "name": "Cryptographic Merkle Snapshot Persistence",
+      "description": "Generates SHA-256 Merkle root hashes across safety domain state, enabling rehydration and anti-tamper verification.",
+      "implementationModule": "src/engine/adse/p12/SafetyPersistenceEngine.ts",
+      "status": "VERIFIED"
+    },
+    {
+      "capabilityId": "CAP-P12-008",
+      "name": "SECP Digital Thread Authority Unification",
+      "description": "Registers all safety nodes and edges in P4 Digital Thread without creating a parallel safety thread or shadow provenance graph.",
+      "implementationModule": "src/engine/adse/workbench/ADSEWorkbenchBridge.ts",
+      "status": "VERIFIED"
+    }
+  ]
+}

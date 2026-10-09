@@ -1,0 +1,15 @@
+{
+  "assemblyTimeMs": 1.9784270000000106,
+  "factorizationTimeMs": 0.06858999999997195,
+  "solveTimeMs": 0.08305500000000166,
+  "recoveryTimeMs": 0.9054300000000239,
+  "verificationTimeMs": 0.31349599999998645,
+  "totalTimeMs": 4.537706000000014,
+  "matrixMemoryBytes": 60,
+  "factorizationMemoryBytes": 52,
+  "solutionMemoryBytes": 48,
+  "peakMemoryBytes": 160,
+  "originalNNZ": 4,
+  "factorNNZ": 3,
+  "fillInRatio": 0.75
+}

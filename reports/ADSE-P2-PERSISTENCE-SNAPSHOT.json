@@ -1,0 +1,42 @@
+{
+  "elements": [
+    {
+      "mbseId": "mbse:sys:FLIGHT_CONTROL",
+      "elementType": "System",
+      "displayName": "Flight Control System",
+      "category": "STRUCTURE",
+      "configurationId": "CONF-LATEST",
+      "revisionId": "REV-MBSE-mbse:sys:FLIGHT_CONTROL",
+      "coreBindingState": "UNBOUND",
+      "revisionHash": "838af52485e8bb63759ef0cf99f5309833ae48e62d62c45791b97a3b23a201f9",
+      "metadata": {}
+    },
+    {
+      "mbseId": "mbse:sub:PITCH_ACTUATOR",
+      "elementType": "Subsystem",
+      "displayName": "Pitch Actuator",
+      "category": "STRUCTURE",
+      "configurationId": "CONF-LATEST",
+      "revisionId": "REV-MBSE-mbse:sub:PITCH_ACTUATOR",
+      "coreBindingState": "UNBOUND",
+      "revisionHash": "966a5dfb3cf075469e9b6d31520f0d3d20137769e7b795038fa97917910d0be4",
+      "metadata": {
+        "massKg": 12.5,
+        "voltageV": 28
+      }
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipId": "REL-COMPOSES-mbse:sys:FLIGHT_CONTROL->mbse:sub:PITCH_ACTUATOR",
+      "relationshipType": "COMPOSES",
+      "sourceMbseId": "mbse:sys:FLIGHT_CONTROL",
+      "targetMbseId": "mbse:sub:PITCH_ACTUATOR",
+      "configurationId": "CONF-LATEST",
+      "revisionId": "REV-MBSE-mbse:sys:FLIGHT_CONTROL",
+      "cardinality": "1:1",
+      "provenanceId": "PROV-MBSE-62355e1e82cc",
+      "isCustomValid": true
+    }
+  ]
+}

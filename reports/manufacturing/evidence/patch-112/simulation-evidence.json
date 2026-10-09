@@ -1,0 +1,43 @@
+{
+  "contract": {
+    "evidenceId": "EV_SIM_01",
+    "evidenceType": "SIMULATION_EVIDENCE",
+    "evidenceVersion": "1.0",
+    "sourceArtifactId": "SIM_RES_01",
+    "sourceRevision": "2.0",
+    "eventId": "EVT_SIM",
+    "eventType": "PROGRAM_VERIFIED",
+    "eventTimestamp": 1700000600000,
+    "recordedTimestamp": 1700000600000,
+    "producerId": "SIM_ENGINE_109",
+    "producerType": "SIMULATOR",
+    "contentHash": "16d33104f27b467819cfcb9b00e9a2b6c056b0b1a16dc5ed3a2cde51ffa62546",
+    "canonicalHash": "f738814e8e37f9682911a7ef15a8b2fb8dc695fb8ee4f59ee4e1841146334288",
+    "previousEvidenceHash": "032b8d8546579178daeaafc6e5b2dbc5bd95f95a343f2f4544cf29279286c4c9",
+    "chainSequence": 7,
+    "signature": "746648efd7c3bc8382a085df25b397b877a4b5564e465d858eddb5f3253162e9",
+    "signingIdentity": "KEY_CAM_ENG_01",
+    "verificationStatus": "COMPLETE",
+    "recordingMode": "ORIGINAL"
+  },
+  "sourceIdentity": {
+    "sourceType": "SIMULATOR",
+    "sourceId": "SIM_ENGINE_109",
+    "sourceRevision": "2.0",
+    "sourceFingerprint": "FNG_SIM_01"
+  },
+  "eventIdentity": {
+    "eventId": "EVT_SIM",
+    "eventType": "PROGRAM_VERIFIED",
+    "eventSequence": 7,
+    "eventTimestamp": 1700000600000,
+    "sourceTimestamp": 1700000600000,
+    "recordedTimestamp": 1700000600000
+  },
+  "payload": {
+    "collisionsDetected": 0,
+    "simulationResultHash": "HASH_SIM_01"
+  },
+  "context": {},
+  "attestations": []
+}

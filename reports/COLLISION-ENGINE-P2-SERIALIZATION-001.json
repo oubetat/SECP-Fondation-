@@ -1,0 +1,13 @@
+{
+  "missionId": "COLLISION-ENGINE-P2-FAIL-CLOSED-HARDENING-001",
+  "artifactType": "SERIALIZATION_VERIFICATION",
+  "timestamp": "2026-10-01T02:08:00.000Z",
+  "persistenceRoundTrip": {
+    "creation": "Canonical failure result with status CollisionStatus.ANALYSIS_FAILED",
+    "serialization": "JSON.stringify()",
+    "deserialization": "JSON.parse()",
+    "preservesFailureStatus": true,
+    "preservesProvenSafe": true,
+    "provenSafeFalseMaintained": true
+  }
+}

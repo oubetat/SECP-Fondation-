@@ -1,0 +1,9 @@
+{
+  "structure": {
+    "values": "Float64Array of length NNZ",
+    "columnIndices": "Int32Array of length NNZ (bounds: 0 <= c < cols)",
+    "rowPointers": "Int32Array of length rows + 1 ([0]=0, [rows]=NNZ, monotonic)"
+  },
+  "accessComplexity": "O(log(nnz_in_row)) binary search on canonical slice",
+  "spmvComplexity": "O(nnz) linear pass"
+}

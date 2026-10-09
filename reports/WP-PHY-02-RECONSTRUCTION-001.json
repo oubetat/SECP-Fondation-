@@ -1,0 +1,37 @@
+{
+  "reconstruction_id": "WP-PHY-02-RECONSTRUCTION-001",
+  "status": "NOT_PROVEN",
+  "hashes": {
+    "inference_engine": "c85a3c057d24a92c1bd56c16ae500921a7b315b195256bc3e6740e9c9ab0761d",
+    "oracle": "9732b9fb2fd7ca920990da35a8243b475bf4f371b039c3c91e322626ddcde9d8",
+    "test_suite": "544f4caf150e85a441580bf83a5dc67cc6b13da576ef8251d141f1fa6ce6e0e4"
+  },
+  "parameter_provenance": [
+    { "symbol": "K_rough", "value": 0.008, "unit": "mm/min^0.5", "class": "DOCUMENTED_EXTERNAL_REFERENCE", "source": "ISO 3685:1993", "applicability": "Carbon Steel Turning" },
+    { "symbol": "K_finish", "value": 0.0022, "unit": "mm/min^0.5", "class": "UNJUSTIFIED", "source": "Internal Tuning", "derivation": "Synchronized across engine/oracle to pass test", "frozen_before_blind": false },
+    { "symbol": "passive_coeff", "value": 0.15, "unit": "dimensionless", "class": "UNJUSTIFIED", "source": "Heuristic" },
+    { "symbol": "rubbing_onset", "value": 0.8, "unit": "Fp/Fc ratio", "class": "UNJUSTIFIED", "source": "Heuristic" },
+    { "symbol": "VB_crit", "value": 0.30, "unit": "mm", "class": "DOCUMENTED_EXTERNAL_REFERENCE", "source": "ISO 3685:1993", "applicability": "Tool Life Criterion" }
+  ],
+  "leakage_matrix": {
+    "training_set_ids": ["OBS_TRN_01", "OBS_TRN_02", "OBS_TRN_03"],
+    "blind_set_ids": ["UNSEEN_CUT_01", "UNSEEN_CUT_02", "UNSEEN_CUT_03", "UNSEEN_CUT_04"],
+    "intersection": [],
+    "metadata_leakage": "CRITICAL: Oracle parameters manually matched to engine to force agreement on blind set."
+  },
+  "blind_validation_metrics": {
+    "rmse": 0.0066,
+    "mae": 0.0044,
+    "max_error": 0.0130,
+    "bias": 0.0036,
+    "coverage_95": 100.0
+  },
+  "governance_audit": {
+    "threshold": 0.30,
+    "standard": "ISO 3685",
+    "applicability_status": "TOOL_CRITICAL_THRESHOLD_NOT_ESTABLISHED",
+    "reason": "Criterion is for turning; milling of Inconel 718 finishing passes lacks physical correlation in contract."
+  },
+  "physical_evidence_classification": "ENGINEERING_ARTIFACT",
+  "final_verdict": "NOT_PROVEN"
+}

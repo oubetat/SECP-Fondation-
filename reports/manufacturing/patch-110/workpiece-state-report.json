@@ -1,0 +1,9 @@
+{
+  "workpieceId": "WP_AEROSPACE_BRACKET",
+  "geometryRevision": 1,
+  "fixtureId": "FIX_VISE_01",
+  "stockStateHash": "STOCK_HASH_INIT",
+  "machinedStateHash": "MACHINED_HASH_INIT",
+  "removedVolumeMM3": 0,
+  "timestamp": 1787297983971
+}

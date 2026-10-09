@@ -1,0 +1,16 @@
+{
+  "reportId": "COLLISION-ENGINE-P3-REGRESSION-001",
+  "collisionAuthorityTests": {
+    "total": 52,
+    "passed": 52,
+    "failed": 0,
+    "skipped": 0
+  },
+  "p3AdversarialTests": {
+    "total": 21,
+    "passed": 21,
+    "failed": 0,
+    "skipped": 0
+  },
+  "verdict": "PASSED"
+}

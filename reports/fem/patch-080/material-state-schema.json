@@ -1,0 +1,16 @@
+{
+  "fields": [
+    "stress",
+    "totalStrain",
+    "elasticStrain",
+    "plasticStrain",
+    "equivalentPlasticStrain",
+    "plasticDissipation",
+    "elasticEnergy",
+    "internalVariables",
+    "materialStatus",
+    "stepId",
+    "incrementId",
+    "stateHash"
+  ]
+}

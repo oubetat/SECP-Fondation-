@@ -1,0 +1,37 @@
+{
+  "missionId": "COLLISION-ENGINE-P1.5-AUTHORITY-INTEGRATION-FORENSICS-001",
+  "artifactType": "SYNTHETIC_GEOMETRY_AUDIT",
+  "timestamp": "2026-10-01T01:48:00.000Z",
+  "syntheticGeometryOccurrences": [
+    {
+      "identifier": "createSampleObstacleTriangles",
+      "location": "src/engine/cam/collision/CollisionDetectionEngine.ts:393-429",
+      "classification": "DEMO_ONLY",
+      "description": "Hardcodes triangular coordinates for base block (X[-30..30], Y[-30..30], Z[-20..0]), boss (X[-10..10], Y[-10..10], Z[0..20]), and pocket sidewalls. Consumed by CAM UI workspace demo mode and HardAcceptanceGate259."
+    },
+    {
+      "identifier": "distance - 30.0",
+      "location": "src/engine/assembly-intelligence/CollisionDetectionEngine.ts:29",
+      "classification": "LEGACY_NON_AUTHORITATIVE",
+      "description": "Approximates component geometry with a hardcoded radius of 15.0mm (sum of radii = 30.0mm). Ignores real component mesh and bounding boxes."
+    },
+    {
+      "identifier": "dx === 40 / dx === 20 / dx === 2 hardcoded branches",
+      "location": "src/engine/assembly/InterferenceDetectionEngine.ts:50-111",
+      "classification": "TEST_ONLY",
+      "description": "Hardcoded test-branch lookup table mimicking real OCCT interference results for specific test IDs."
+    },
+    {
+      "identifier": "SECP083GougeVerifier static stub",
+      "location": "src/engine/classa5axis/SECP083GougeVerifier.ts:9-15",
+      "classification": "LEGACY_NON_AUTHORITATIVE",
+      "description": "Static stub returning hardcoded gougeCount=0, holderCollisionCount=0, minimumClearanceMm=12.5."
+    },
+    {
+      "identifier": "DynamicInterferenceEngine static stub",
+      "location": "src/engine/assembly-intelligence/DynamicInterferenceEngine.ts:11-14",
+      "classification": "LEGACY_NON_AUTHORITATIVE",
+      "description": "Static stub returning hasTransientCollision=false."
+    }
+  ]
+}

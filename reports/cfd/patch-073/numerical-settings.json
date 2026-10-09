@@ -1,0 +1,1 @@
+{"spatialScheme": "SecondOrderUpwind", "temporalScheme": "EulerImplicit", "cfl": 0.8}

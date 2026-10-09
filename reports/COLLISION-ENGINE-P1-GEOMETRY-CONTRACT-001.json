@@ -1,0 +1,19 @@
+{
+  "contractId": "P1-GEOMETRY-CONTRACT-001",
+  "name": "P1 Geometric Primitive Contract",
+  "version": "1.0.0",
+  "primitives": {
+    "Triangle3DExact": {
+      "definition": "Non-degenerate 3D simplex defined by 3 vertices (v0, v1, v2) with Float64 coordinates",
+      "degeneracyCondition": "||(v1 - v0) x (v2 - v0)||^2 < 1e-12"
+    },
+    "Segment3D": {
+      "definition": "Continuous finite 3D line segment S(t) = P1 + t*(P2 - P1), t in [0, 1]",
+      "degeneracyCondition": "||P2 - P1||^2 < 1e-12"
+    },
+    "Capsule3D": {
+      "definition": "Minkowski sum of finite 3D line segment and 3D sphere of radius R >= 0",
+      "degeneracyCondition": "radius < 0 (Invalid), length < 1e-6 (Sphere)"
+    }
+  }
+}

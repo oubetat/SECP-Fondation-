@@ -1,0 +1,12 @@
+{
+  "reportId": "COLLISION-ENGINE-P3-REVISION-BINDING-001",
+  "scenarios": {
+    "R01_RevisionA_GeometryA": "PASS",
+    "R02_RevisionB_GeometryA": "REJECT",
+    "R03_RevisionA_GeometryB": "REJECT",
+    "R04_DeletedRevision_OldGeometry": "REJECT",
+    "R05_ModifiedGeometry_UnchangedMetadata": "REJECT",
+    "R06_StaleCachedGeometry": "REJECT"
+  },
+  "verdict": "PASSED"
+}

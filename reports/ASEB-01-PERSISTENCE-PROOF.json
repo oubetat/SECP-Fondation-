@@ -1,0 +1,32 @@
+{
+  "persistenceProof": {
+    "project": "ASEB-01-XA100",
+    "systemId": "SYS-XA100-EXP",
+    "snapshotEngine": "CommunicationPersistenceEngine",
+    "snapshot": {
+      "id": "SNAP-XA100-FINAL",
+      "persistedByAuthority": "SECP_MASTER_AUTHORITY",
+      "entityCounts": {
+        "systems": 1,
+        "nodes": 13,
+        "interfaces": 12,
+        "links": 18,
+        "executions": 36,
+        "evidences": 35
+      },
+      "merkleRootHash": "42c2f41db7fe8fc5420fa24c290441dca76e3426fd0bad1edac0097ee5681566",
+      "createdAt": "2026-09-29T08:29:00.000Z"
+    },
+    "destructionTest": {
+      "runtimeMemoryCleared": true,
+      "bridgeInstanceReset": true,
+      "registryEmptyConfirmed": true
+    },
+    "reconstructionVerification": {
+      "merkleRootIntegrityVerified": true,
+      "restoredEntitiesCount": 115,
+      "parityMatch": "100% BIT-EXACT",
+      "invalidatedExecutionsPreserved": true
+    }
+  }
+}

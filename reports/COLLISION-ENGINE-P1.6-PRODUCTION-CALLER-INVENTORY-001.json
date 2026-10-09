@@ -1,0 +1,69 @@
+{
+  "missionId": "COLLISION-ENGINE-P1.6-AUTHORITY-MIGRATION-ENFORCEMENT-001",
+  "artifactType": "PRODUCTION_CALLER_INVENTORY",
+  "timestamp": "2026-10-01T02:00:00.000Z",
+  "callers": [
+    {
+      "methodName": "verifyToolpath",
+      "engineFile": "src/engine/cam/collision/CollisionDetectionEngine.ts",
+      "callers": [
+        "src/components/cam/CollisionDetectionWorkspace.tsx:38",
+        "src/engine/cam/collision/HardAcceptanceGate259.ts:327",
+        "src/verification/patch256_259_302/__tests__/PATCH-256-259-302-ForensicClosure.test.ts:55"
+      ],
+      "authorityDelegated": true,
+      "canonicalProvider": "EXACT_NARROW_PHASE_PROVIDER_P1"
+    },
+    {
+      "methodName": "checkSegmentCollision",
+      "engineFile": "src/engine/cam/fiveaxis/FiveAxisCollisionEngine.ts",
+      "callers": [
+        "src/engine/cam/fiveaxis/NCSimulationEngine.ts",
+        "src/engine/cam/fiveaxis/ToolAxisOptimizer.ts",
+        "src/engine/cam/fiveaxis/True5AxisToolpathEngine.ts"
+      ],
+      "authorityDelegated": true,
+      "canonicalProvider": "CAM_FIVE_AXIS_COLLISION_PROVIDER"
+    },
+    {
+      "methodName": "evaluatePoseCollisions",
+      "engineFile": "src/engine/cam/machine-sim/MachineCollisionEngine.ts",
+      "callers": [
+        "src/engine/cam/machine-sim/MachineSimulationEngine.ts:62"
+      ],
+      "authorityDelegated": true,
+      "canonicalProvider": "MACHINE_SIMULATION_COLLISION_PROVIDER"
+    },
+    {
+      "methodName": "analyzeInterference",
+      "engineFile": "src/engine/assembly/AssemblyInterferenceEngine.ts",
+      "callers": [
+        "src/components/AssemblyWorkspace.tsx:530",
+        "src/engine/validation/HardAcceptanceGate043.ts:363",
+        "src/engine/validation/HardAcceptanceGate046.ts:370"
+      ],
+      "authorityDelegated": true,
+      "canonicalProvider": "ASSEMBLY_BREP_COLLISION_PROVIDER"
+    },
+    {
+      "methodName": "analyze",
+      "engineFile": "src/engine/assembly/InterferenceDetectionEngine.ts",
+      "callers": [
+        "src/components/AssemblyWorkspace.tsx:530",
+        "src/engine/validation/HardAcceptanceGate217.ts:91"
+      ],
+      "authorityDelegated": true,
+      "canonicalProvider": "ASSEMBLY_BREP_COLLISION_PROVIDER"
+    },
+    {
+      "methodName": "verifyPoint",
+      "engineFile": "src/engine/kinematics/CollisionEngine.ts",
+      "callers": [
+        "src/engine/kinematics/FiveAxisVerificationEngine.ts:22",
+        "src/engine/release/IndustrialReadinessEngine.ts:95"
+      ],
+      "authorityDelegated": true,
+      "canonicalProvider": "KINEMATICS_COLLISION_PROVIDER"
+    }
+  ]
+}

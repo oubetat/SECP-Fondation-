@@ -1,0 +1,57 @@
+{
+  "postProcessorTrace": {
+    "postProcessorId": "POST_SECP_107_STD",
+    "machineProfileId": "MACHINE_TRUNNION_5AXIS_01",
+    "controllerProfileId": "FANUC_31i_B5",
+    "sourceToolpathId": "TP_REPORT_107",
+    "startedAt": "2026-09-29T11:06:37.733Z",
+    "completedAt": "2026-09-29T11:06:37.733Z",
+    "entries": [
+      {
+        "step": "INITIALIZATION",
+        "inputSummary": "Contract: POST_SECP_107_STD | Machine: MACHINE_TRUNNION_5AXIS_01 | Controller: FANUC_31i_B5",
+        "transformation": "Initialize Post Processor Instance",
+        "decision": "Profiles validated and instance set to READY",
+        "outputSummary": "Post processor ready for execution"
+      },
+      {
+        "step": "IR_SYNTHESIS_START",
+        "inputSummary": "Total toolpath points: 4",
+        "transformation": "Converting machine axis trajectory to NC IR commands",
+        "decision": "Iterate sequential points and emit discrete high-level IR nodes",
+        "outputSummary": "Beginning IR command conversion"
+      },
+      {
+        "step": "TOOL_CHANGE_IR_T1",
+        "inputSummary": "Point 0: Request tool 1",
+        "transformation": "Emit TOOL_CHANGE intermediate command",
+        "decision": "Tool number transition detected",
+        "outputSummary": "T1 queued"
+      },
+      {
+        "step": "IR_SYNTHESIS_COMPLETE",
+        "inputSummary": "Processed 4 points",
+        "transformation": "IR commands compiled",
+        "decision": "IR valid and complete",
+        "outputSummary": "Generated 9 IR commands with 0 errors, 0 warnings"
+      },
+      {
+        "step": "NC_FORMATTING_START",
+        "inputSummary": "IR contains 9 commands",
+        "transformation": "Formatting IR to controller dialect syntax",
+        "decision": "Formatting for dialect FANUC_LIKE (Controller: FANUC_31i_B5)",
+        "outputSummary": "Initializing header and safe-start blocks"
+      },
+      {
+        "step": "NC_FORMATTING_COMPLETE",
+        "inputSummary": "Processed 9 IR commands",
+        "transformation": "Generated NCBlocks and consolidated raw G-Code text",
+        "decision": "Complete NC program formed",
+        "outputSummary": "Total 23 NC blocks formatted"
+      }
+    ],
+    "totalBlocksGenerated": 23,
+    "totalConversionsApplied": 0,
+    "errorsFound": []
+  }
+}

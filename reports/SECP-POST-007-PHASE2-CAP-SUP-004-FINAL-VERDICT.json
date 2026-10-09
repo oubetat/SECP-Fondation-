@@ -1,0 +1,72 @@
+{
+  "contract_id": "SECP-POST-007-PHASE2-CAP-SUP-004-FINAL-VERDICT",
+  "capability_id": "CAP-SUP-004",
+  "capability_title": "QIF 3.0 / MBD Closed-Loop Manufacturing Truth",
+  "timestamp": "2026-09-23T11:05:00.000Z",
+  "final_verdict": "PROVEN_PARTIAL",
+  "reason_for_verdict": "PROVEN_ENGINEERING_CONTRACT is forbidden because official W3C QIF 3.0 XSD schemas and physical CMM hardware protocols are not available in this execution environment. The internal QIF semantic contract and closed-loop engine pass 100% of internal tests (42/42). However, global repository regression is NOT_ESTABLISHED because the full repository test suite execution timed out or was cancelled before completion.",
+  "status_matrix": {
+    "RAW_QIF_STANDARD": "PARTIAL",
+    "ORACLE_INDEPENDENCE": "PASS",
+    "GRAPH_CUT": "PASS",
+    "CALIBRATION": "PASS",
+    "UNCERTAINTY": "PASS",
+    "REVISION_LOOP": "PASS",
+    "CRYPTO_PROVENANCE": "PASS",
+    "MUTATION": "PASS",
+    "PHYSICAL_TELEMETRY": "SIMULATED_CONTRACT_PROVEN",
+    "CAP_SUP_004_QIF_REGRESSION": "PASS",
+    "GLOBAL_REPOSITORY_REGRESSION": "NOT_ESTABLISHED"
+  },
+  "repository_status_explanation": "Full repository Vitest execution did not reach a final authoritative summary. Therefore repository-wide regression status is not established.",
+  "external_standard_evidence_matrix": {
+    "qif_3_0_schema_validation": "PARTIAL",
+    "iso_23952_alignment": "PARTIAL",
+    "asme_y14_5_semantic_alignment": "PROVEN",
+    "iso_14253_1_decision_rule_alignment": "PROVEN",
+    "physical_cmm_interoperability": "NOT_PROVEN"
+  },
+  "evidence": {
+    "oracle_independence": {
+      "static_imports_count": 0,
+      "indirect_secp_dependencies": 0,
+      "raw_xml_independent_parser": true,
+      "mapper_bug_invariance_proven": true
+    },
+    "graph_cut": {
+      "total_cuts": 12,
+      "successful_rejections": 12
+    },
+    "calibration_semantics": {
+      "supported_verdicts": [
+        "VALID",
+        "EXPIRED_CALIBRATION",
+        "INVALID_CALIBRATION",
+        "MISSING_CALIBRATION",
+        "UNKNOWN_CALIBRATION",
+        "OUTSIDE_CALIBRATION_INTERVAL",
+        "WRONG_INSTRUMENT",
+        "WRONG_UNIT",
+        "FUTURE_CALIBRATION"
+      ]
+    },
+    "uncertainty_decision_rules": {
+      "decision_rule": "GUARD_BANDED_95_CONFIDENCE",
+      "evaluations": ["PASS", "FAIL", "INDETERMINATE", "MISSING_UNCERTAINTY", "INVALID_UNCERTAINTY"]
+    },
+    "revision_loop": {
+      "cycle_proven": "REV-A -> inspection -> result-A -> feedback proposal -> authorized REV-B -> new inspection -> result-B",
+      "cross_revision_rejections_proven": true
+    },
+    "crypto_provenance": {
+      "sha256_field_integrity": "PROVEN"
+    },
+    "mutation_score": "20/20",
+    "test_counts": {
+      "qif_suite_files": 8,
+      "qif_suite_tests": 42,
+      "qif_suite_passing": 42,
+      "qif_suite_failing": 0
+    }
+  }
+}

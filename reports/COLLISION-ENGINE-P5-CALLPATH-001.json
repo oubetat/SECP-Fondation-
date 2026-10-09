@@ -1,0 +1,281 @@
+{
+  "reportId": "COLLISION-ENGINE-P5-CALLPATH-001",
+  "mission": "P5 Kinematic Clearance Production Runtime Call-Path Traces",
+  "timestampIso": "2026-10-02T08:01:27.666Z",
+  "productionPathsEvaluated": [
+    "CAM",
+    "5-Axis",
+    "Machine Simulation",
+    "Assembly",
+    "Kinematics"
+  ],
+  "traces": [
+    {
+      "executionId": "EXEC-TRACE-P5-CAM-001",
+      "caller": "ProductionEngine::CAMPipeline",
+      "authorityId": "CollisionAuthority@3.0.0-SECP",
+      "providerId": "CAM_FIVE_AXIS_COLLISION_PROVIDER",
+      "algorithmVersion": "SECP 5-Axis Continuous Swept Tool/Holder Provider@1.0.0",
+      "documentId": "DOC_CAM_TOOL_01",
+      "revisionId": "1",
+      "geometryId": "GEO-DOC_CAM_TOOL_01",
+      "geometryHash": "HASH_CAM_99182",
+      "snapshotId": "SNAP_DOC_CAM_TOOL_01_REV1",
+      "motionId": "MOTION_CAM_001",
+      "resultId": "EXEC_COL_otjoajr30_1790928087660",
+      "classification": "NO_COLLISION",
+      "TOI": null,
+      "verificationState": "PROVEN_SAFE",
+      "canonicalChain": [
+        {
+          "stage": "Canonical Geometry",
+          "id": "GEO-DOC_CAM_TOOL_01",
+          "hash": "HASH_CAM_99182",
+          "status": "RESOLVED_VALID"
+        },
+        {
+          "stage": "Canonical Transform / Kinematic State",
+          "frame": "WCS",
+          "units": "MILLIMETERS",
+          "status": "CANONICAL_ALIGNED"
+        },
+        {
+          "stage": "CollisionAuthority",
+          "action": "DISPATCH_TO_REGISTERED_PROVIDER",
+          "status": "AUTHORIZED"
+        },
+        {
+          "stage": "Registered Provider",
+          "providerId": "CAM_FIVE_AXIS_COLLISION_PROVIDER",
+          "exactness": "EXACT",
+          "status": "NARROW_PHASE_EXECUTED"
+        },
+        {
+          "stage": "Collision Result",
+          "status": "NO_COLLISION",
+          "status_code": "RESULT_SEALED"
+        },
+        {
+          "stage": "Verification",
+          "provenSafe": true,
+          "hash": "HASH_CAM_99182",
+          "status": "VERIFIED_AUTHORITATIVE"
+        }
+      ]
+    },
+    {
+      "executionId": "EXEC-TRACE-P5-5_AXIS-001",
+      "caller": "ProductionEngine::5-AxisPipeline",
+      "authorityId": "CollisionAuthority@3.0.0-SECP",
+      "providerId": "CAM_FIVE_AXIS_COLLISION_PROVIDER",
+      "algorithmVersion": "SECP 5-Axis Continuous Swept Tool/Holder Provider@1.0.0",
+      "documentId": "DOC_5AXIS_HOLDER_01",
+      "revisionId": "1",
+      "geometryId": "GEO-DOC_5AXIS_HOLDER_01",
+      "geometryHash": "HASH_5AXIS_33819",
+      "snapshotId": "SNAP_DOC_5AXIS_HOLDER_01_REV1",
+      "motionId": "MOTION_5-Axis_001",
+      "resultId": "EXEC_COL_3md77jejg_1790928087663",
+      "classification": "NO_COLLISION",
+      "TOI": null,
+      "verificationState": "PROVEN_SAFE",
+      "canonicalChain": [
+        {
+          "stage": "Canonical Geometry",
+          "id": "GEO-DOC_5AXIS_HOLDER_01",
+          "hash": "HASH_5AXIS_33819",
+          "status": "RESOLVED_VALID"
+        },
+        {
+          "stage": "Canonical Transform / Kinematic State",
+          "frame": "WCS",
+          "units": "MILLIMETERS",
+          "status": "CANONICAL_ALIGNED"
+        },
+        {
+          "stage": "CollisionAuthority",
+          "action": "DISPATCH_TO_REGISTERED_PROVIDER",
+          "status": "AUTHORIZED"
+        },
+        {
+          "stage": "Registered Provider",
+          "providerId": "CAM_FIVE_AXIS_COLLISION_PROVIDER",
+          "exactness": "EXACT",
+          "status": "NARROW_PHASE_EXECUTED"
+        },
+        {
+          "stage": "Collision Result",
+          "status": "NO_COLLISION",
+          "status_code": "RESULT_SEALED"
+        },
+        {
+          "stage": "Verification",
+          "provenSafe": true,
+          "hash": "HASH_5AXIS_33819",
+          "status": "VERIFIED_AUTHORITATIVE"
+        }
+      ]
+    },
+    {
+      "executionId": "EXEC-TRACE-P5-MACHINE_SIMULATION-001",
+      "caller": "ProductionEngine::MachineSimulationPipeline",
+      "authorityId": "CollisionAuthority@3.0.0-SECP",
+      "providerId": "MACHINE_SIMULATION_COLLISION_PROVIDER",
+      "algorithmVersion": "SECP Machine Kinematic Simulation Collision Provider@1.0.0",
+      "documentId": "DOC_MACH_SPINDLE_01",
+      "revisionId": "1",
+      "geometryId": "GEO-DOC_MACH_SPINDLE_01",
+      "geometryHash": "HASH_MACH_77211",
+      "snapshotId": "SNAP_DOC_MACH_SPINDLE_01_REV1",
+      "motionId": "MOTION_Machine_Simulation_001",
+      "resultId": "EXEC_COL_624jxyt5o_1790928087664",
+      "classification": "NO_COLLISION",
+      "TOI": null,
+      "verificationState": "PROVEN_SAFE",
+      "canonicalChain": [
+        {
+          "stage": "Canonical Geometry",
+          "id": "GEO-DOC_MACH_SPINDLE_01",
+          "hash": "HASH_MACH_77211",
+          "status": "RESOLVED_VALID"
+        },
+        {
+          "stage": "Canonical Transform / Kinematic State",
+          "frame": "WCS",
+          "units": "MILLIMETERS",
+          "status": "CANONICAL_ALIGNED"
+        },
+        {
+          "stage": "CollisionAuthority",
+          "action": "DISPATCH_TO_REGISTERED_PROVIDER",
+          "status": "AUTHORIZED"
+        },
+        {
+          "stage": "Registered Provider",
+          "providerId": "MACHINE_SIMULATION_COLLISION_PROVIDER",
+          "exactness": "EXACT",
+          "status": "NARROW_PHASE_EXECUTED"
+        },
+        {
+          "stage": "Collision Result",
+          "status": "NO_COLLISION",
+          "status_code": "RESULT_SEALED"
+        },
+        {
+          "stage": "Verification",
+          "provenSafe": true,
+          "hash": "HASH_MACH_77211",
+          "status": "VERIFIED_AUTHORITATIVE"
+        }
+      ]
+    },
+    {
+      "executionId": "EXEC-TRACE-P5-ASSEMBLY-001",
+      "caller": "ProductionEngine::AssemblyClearancePipeline",
+      "authorityId": "CollisionAuthority@3.0.0-SECP",
+      "providerId": "ASSEMBLY_BREP_COLLISION_PROVIDER",
+      "algorithmVersion": "SECP Assembly B-Rep & Spatial Clearance Engine@1.0.0",
+      "documentId": "DOC_ASM_FIXTURE_01",
+      "revisionId": "1",
+      "geometryId": "GEO-DOC_ASM_FIXTURE_01",
+      "geometryHash": "HASH_ASM_55410",
+      "snapshotId": "SNAP_DOC_ASM_FIXTURE_01_REV1",
+      "motionId": "MOTION_Assembly_001",
+      "resultId": "EXEC_COL_zgl5zil8b_1790928087665",
+      "classification": "NO_COLLISION",
+      "TOI": null,
+      "verificationState": "PROVEN_SAFE",
+      "canonicalChain": [
+        {
+          "stage": "Canonical Geometry",
+          "id": "GEO-DOC_ASM_FIXTURE_01",
+          "hash": "HASH_ASM_55410",
+          "status": "RESOLVED_VALID"
+        },
+        {
+          "stage": "Canonical Transform / Kinematic State",
+          "frame": "WCS",
+          "units": "MILLIMETERS",
+          "status": "CANONICAL_ALIGNED"
+        },
+        {
+          "stage": "CollisionAuthority",
+          "action": "DISPATCH_TO_REGISTERED_PROVIDER",
+          "status": "AUTHORIZED"
+        },
+        {
+          "stage": "Registered Provider",
+          "providerId": "ASSEMBLY_BREP_COLLISION_PROVIDER",
+          "exactness": "EXACT",
+          "status": "NARROW_PHASE_EXECUTED"
+        },
+        {
+          "stage": "Collision Result",
+          "status": "NO_COLLISION",
+          "status_code": "RESULT_SEALED"
+        },
+        {
+          "stage": "Verification",
+          "provenSafe": true,
+          "hash": "HASH_ASM_55410",
+          "status": "VERIFIED_AUTHORITATIVE"
+        }
+      ]
+    },
+    {
+      "executionId": "EXEC-TRACE-P5-KINEMATICS-001",
+      "caller": "ProductionEngine::KinematicMechanismPipeline",
+      "authorityId": "CollisionAuthority@3.0.0-SECP",
+      "providerId": "KINEMATICS_COLLISION_PROVIDER",
+      "algorithmVersion": "SECP Kinematic Joint & Link Interference Provider@1.0.0",
+      "documentId": "DOC_KIN_ROBOT_01",
+      "revisionId": "1",
+      "geometryId": "GEO-DOC_KIN_ROBOT_01",
+      "geometryHash": "HASH_KIN_11902",
+      "snapshotId": "SNAP_DOC_KIN_ROBOT_01_REV1",
+      "motionId": "MOTION_Kinematics_001",
+      "resultId": "EXEC_COL_azr278led_1790928087665",
+      "classification": "NO_COLLISION",
+      "TOI": null,
+      "verificationState": "CLEARANCE_VERIFIED",
+      "canonicalChain": [
+        {
+          "stage": "Canonical Geometry",
+          "id": "GEO-DOC_KIN_ROBOT_01",
+          "hash": "HASH_KIN_11902",
+          "status": "RESOLVED_VALID"
+        },
+        {
+          "stage": "Canonical Transform / Kinematic State",
+          "frame": "WCS",
+          "units": "MILLIMETERS",
+          "status": "CANONICAL_ALIGNED"
+        },
+        {
+          "stage": "CollisionAuthority",
+          "action": "DISPATCH_TO_REGISTERED_PROVIDER",
+          "status": "AUTHORIZED"
+        },
+        {
+          "stage": "Registered Provider",
+          "providerId": "KINEMATICS_COLLISION_PROVIDER",
+          "exactness": "SAMPLED",
+          "status": "NARROW_PHASE_EXECUTED"
+        },
+        {
+          "stage": "Collision Result",
+          "status": "NO_COLLISION",
+          "status_code": "RESULT_SEALED"
+        },
+        {
+          "stage": "Verification",
+          "provenSafe": false,
+          "hash": "HASH_KIN_11902",
+          "status": "VERIFIED_AUTHORITATIVE"
+        }
+      ]
+    }
+  ],
+  "chainVerification": "Canonical Geometry -> Kinematic State -> CollisionAuthority -> Registered Provider -> Sealed Result -> Verification",
+  "verdict": "PASSED"
+}

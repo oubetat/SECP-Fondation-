@@ -1,0 +1,17 @@
+{
+  "persistenceId": "ADSE-P9-PERSISTENCE-PROOF",
+  "snapshotsChecked": [
+    "SNAPSHOT-MASTER-P9-TRUTH-CHAIN"
+  ],
+  "verificationParity": {
+    "systems": "MATCH",
+    "nodes": "MATCH",
+    "links": "MATCH",
+    "flows": "MATCH",
+    "executions": "MATCH",
+    "results": "MATCH",
+    "provenance": "MATCH",
+    "digitalThread": "MATCH"
+  },
+  "verdict": "PASS"
+}

@@ -1,0 +1,35 @@
+{
+  "X": {
+    "axisName": "X",
+    "commandedPosition": 100,
+    "actualPosition": 100.00048744114187,
+    "velocity": 100,
+    "acceleration": 0,
+    "trackingError": 0.00048744114187115883,
+    "limitState": "NORMAL",
+    "timestamp": 1787297983974,
+    "provenance": "MEASURED"
+  },
+  "Y": {
+    "axisName": "Y",
+    "commandedPosition": 50,
+    "actualPosition": 50.00063231696932,
+    "velocity": 100,
+    "acceleration": 0,
+    "trackingError": 0.0006323169693231989,
+    "limitState": "NORMAL",
+    "timestamp": 1787297983974,
+    "provenance": "MEASURED"
+  },
+  "Z": {
+    "axisName": "Z",
+    "commandedPosition": -20,
+    "actualPosition": -20.001884309679017,
+    "velocity": 100,
+    "acceleration": 0,
+    "trackingError": -0.0018843096790170932,
+    "limitState": "NORMAL",
+    "timestamp": 1787297983974,
+    "provenance": "MEASURED"
+  }
+}

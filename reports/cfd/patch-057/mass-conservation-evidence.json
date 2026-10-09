@@ -1,0 +1,17 @@
+{
+  "caseId": "secp-mass-cons-gate",
+  "meshHash": "gate-mesh-hash",
+  "fieldStateHash": "gate-state-hash",
+  "boundaryConditionHash": "bc-hash",
+  "materialStateHash": "material-hash",
+  "policyHash": "policy-hash",
+  "totalInflow": 1,
+  "totalOutflow": 1,
+  "accumulation": 0,
+  "globalImbalance": 0,
+  "maxLocalImbalance": 0,
+  "verdict": "CONSERVATIVE",
+  "diagnostics": [],
+  "timestamp": "2026-08-19T11:12:52.528Z",
+  "provenanceSignature": "secp057-hash-72b7ec99"
+}

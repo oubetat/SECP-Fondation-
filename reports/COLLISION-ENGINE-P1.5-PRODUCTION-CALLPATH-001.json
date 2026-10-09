@@ -1,0 +1,79 @@
+{
+  "missionId": "COLLISION-ENGINE-P1.5-AUTHORITY-INTEGRATION-FORENSICS-001",
+  "artifactType": "PRODUCTION_CALLPATH_TRACE",
+  "timestamp": "2026-10-01T01:48:00.000Z",
+  "callpaths": [
+    {
+      "callpathId": "CALLPATH_01_CAM_WORKSPACE_UI",
+      "entryPoint": "src/components/cam/CollisionDetectionWorkspace.tsx:38",
+      "targetDomain": "CAM_COLLISION_VERIFICATION",
+      "trace": [
+        "UI: CollisionDetectionWorkspace.tsx (line 38)",
+        "Engine: src/engine/cam/collision/CollisionDetectionEngine.ts:verifyToolpath()",
+        "Sub-Engine: ContinuousCollisionDetector.ts:testSweptMotion()",
+        "Leaf Solver: NarrowPhaseDetector.ts:testAssemblyToTriangle() (Vertex/Centroid sampling)",
+        "Result: CollisionReport (Legacy CAM Schema)"
+      ],
+      "callsCanonicalAuthority": false,
+      "canonicalAuthorityBypassed": true,
+      "verdict": "SHADOW_AUTHORITY_BYPASS"
+    },
+    {
+      "callpathId": "CALLPATH_02_ASSEMBLY_WORKSPACE_UI",
+      "entryPoint": "src/components/AssemblyWorkspace.tsx:530",
+      "targetDomain": "ASSEMBLY_INTERFERENCE",
+      "trace": [
+        "UI: AssemblyWorkspace.tsx (line 530)",
+        "Engine: src/engine/assembly/InterferenceDetectionEngine.ts:analyze()",
+        "Leaf Solver: Hardcoded distance offset checks (dx===40, dx===20) with fallback to CLEAR",
+        "Result: AssemblyInterferenceReport (Legacy Assembly Schema)"
+      ],
+      "callsCanonicalAuthority": false,
+      "canonicalAuthorityBypassed": true,
+      "verdict": "SHADOW_AUTHORITY_BYPASS_WITH_MOCK_FALLBACK"
+    },
+    {
+      "callpathId": "CALLPATH_03_5AXIS_CAM_OPTIMIZATION",
+      "entryPoint": "src/engine/cam/fiveaxis/ToolAxisOptimizer.ts / NCSimulationEngine.ts",
+      "targetDomain": "CAM_FIVE_AXIS",
+      "trace": [
+        "Application Service: NCSimulationEngine.ts / ToolAxisOptimizer.ts",
+        "Engine: src/engine/cam/fiveaxis/FiveAxisCollisionEngine.ts:checkSegmentCollision()",
+        "Sub-Engine: ToolSweptVolumeEngine.ts:buildSweptCapsules()",
+        "Leaf Solver: DistancePointToSegment on obstacle vertices only",
+        "Result: { hasCollision: boolean, minClearanceMm: number }"
+      ],
+      "callsCanonicalAuthority": false,
+      "canonicalAuthorityBypassed": true,
+      "verdict": "SHADOW_AUTHORITY_BYPASS"
+    },
+    {
+      "callpathId": "CALLPATH_04_MACHINE_SIMULATION",
+      "entryPoint": "src/engine/cam/machine-sim/MachineSimulationEngine.ts:62",
+      "targetDomain": "MACHINE_SIMULATION_COLLISION",
+      "trace": [
+        "Application Service: MachineSimulationEngine.ts:simulateStep()",
+        "Engine: src/engine/cam/machine-sim/MachineCollisionEngine.ts:evaluatePoseCollisions()",
+        "Leaf Solver: ToolAssemblyModel AABB clamp bounding center overlap",
+        "Result: CollisionRecord[]"
+      ],
+      "callsCanonicalAuthority": false,
+      "canonicalAuthorityBypassed": true,
+      "verdict": "SHADOW_AUTHORITY_BYPASS"
+    },
+    {
+      "callpathId": "CALLPATH_05_KINEMATICS_VERIFICATION",
+      "entryPoint": "src/engine/kinematics/FiveAxisVerificationEngine.ts:19",
+      "targetDomain": "KINEMATICS_MULTI_AXIS",
+      "trace": [
+        "Application Service: FiveAxisVerificationEngine.ts:verifyToolpathAsync()",
+        "Engine: src/engine/kinematics/CollisionEngine.ts:verifyPath()",
+        "Leaf Solver: AABB workpiece bounds tip inclusion",
+        "Result: ClearanceResult"
+      ],
+      "callsCanonicalAuthority": false,
+      "canonicalAuthorityBypassed": true,
+      "verdict": "SHADOW_AUTHORITY_BYPASS"
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+{
+  "rtcpSupported": true,
+  "rtcpGCode": "G43.4",
+  "mode": "TOOL_CENTER_POINT_CONTROL"
+}

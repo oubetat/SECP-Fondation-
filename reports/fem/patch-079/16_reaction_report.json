@@ -1,0 +1,10 @@
+{
+  "reactions": [
+    {
+      "nodeId": "N0",
+      "dof": "UX",
+      "globalDOFIndex": 0,
+      "reactionForce": -10000
+    }
+  ]
+}

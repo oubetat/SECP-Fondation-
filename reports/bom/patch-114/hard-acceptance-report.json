@@ -1,0 +1,41 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "checkId": "GATE-114-01",
+      "name": "BOM Graph Validation & Part Separation",
+      "passed": true,
+      "details": "Passed without errors"
+    },
+    {
+      "checkId": "GATE-114-02",
+      "name": "Deterministic Quantity Roll-Up",
+      "passed": true,
+      "details": "Totals calculated properly. Node-2: 2"
+    },
+    {
+      "checkId": "GATE-114-03",
+      "name": "Semantic BOM Diff Engine",
+      "passed": true,
+      "details": "Detected CHANGED_QUANTITY accurately"
+    },
+    {
+      "checkId": "GATE-114-04",
+      "name": "Where-Used Impact Analysis",
+      "passed": true,
+      "details": "Found parent dependencies accurately"
+    },
+    {
+      "checkId": "GATE-114-05",
+      "name": "Deterministic Hashing & Tamper Detection",
+      "passed": true,
+      "details": "Hashes differentiate state: 40fb2734 != 8ede90eb"
+    },
+    {
+      "checkId": "GATE-114-06",
+      "name": "Containment Cycle Prevention",
+      "passed": true,
+      "details": "Detected BOM_CYCLE securely"
+    }
+  ]
+}

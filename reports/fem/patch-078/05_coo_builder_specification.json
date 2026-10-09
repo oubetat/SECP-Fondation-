@@ -1,0 +1,9 @@
+{
+  "methods": [
+    "add(row, col, val)",
+    "addBlock(rowIndices, colIndices, blockData)",
+    "toCSR(zeroPolicy, tolerance)"
+  ],
+  "duplicateAccumulation": "Deterministic summation: A_ij = sum(v_k)",
+  "sortingStrategy": "Deterministic lexicographical sort by (row asc, col asc)"
+}

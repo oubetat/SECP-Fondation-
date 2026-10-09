@@ -1,0 +1,8 @@
+{
+  "reportId": "COLLISION-ENGINE-P6-REVISION-SAFETY-001",
+  "timestampIso": "2026-10-02T08:17:49.207Z",
+  "rule4Enforced": "No Current Revision -> STALE Result",
+  "revisionChangeTested": "REV 1 -> REV 2",
+  "staleInvalidationConfirmed": true,
+  "verdict": "PASSED"
+}

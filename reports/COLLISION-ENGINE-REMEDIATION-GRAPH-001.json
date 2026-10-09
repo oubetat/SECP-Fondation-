@@ -1,0 +1,52 @@
+{
+  "contractId": "CONTRACT-COLLISION-REMEDIATION-GRAPH-001",
+  "name": "Remediation Dependency Execution Graph",
+  "version": "1.0.0",
+  "phases": [
+    {
+      "phaseId": "P0_AuthorityAndContracts",
+      "dependencies": [],
+      "description": "Establish unified CollisionResult schema and Authority Contract types."
+    },
+    {
+      "phaseId": "P1_NarrowPhaseExactMath",
+      "dependencies": ["P0_AuthorityAndContracts"],
+      "description": "Implement exact analytical Segment-Triangle, Triangle-Triangle, and Capsule-AABB distance solvers."
+    },
+    {
+      "phaseId": "P2_FailClosedHardening",
+      "dependencies": ["P0_AuthorityAndContracts"],
+      "description": "Remove try/catch swallows in AssemblyInterferenceEngine; enforce ANALYSIS_FAILED and INVALID_GEOMETRY semantics."
+    },
+    {
+      "phaseId": "P3_CanonicalGeometryBinding",
+      "dependencies": ["P0_AuthorityAndContracts", "P1_NarrowPhaseExactMath"],
+      "description": "Bind CAM and Kinematic collision pipelines to real CAD B-Rep tessellations with chordal error bounds."
+    },
+    {
+      "phaseId": "P4_ContinuousMotionSweptHulls",
+      "dependencies": ["P1_NarrowPhaseExactMath", "P3_CanonicalGeometryBinding"],
+      "description": "Implement zero-tunneling Swept Convex Hull pre-filter and Conservative Advancement for continuous toolpaths."
+    },
+    {
+      "phaseId": "P5_KinematicClearanceRebuild",
+      "dependencies": ["P3_CanonicalGeometryBinding"],
+      "description": "Replace mock 30mm offsets with real rigid body mesh distance queries in KinematicCollisionClearanceBridge."
+    },
+    {
+      "phaseId": "P6_UIProductionBinding",
+      "dependencies": ["P3_CanonicalGeometryBinding", "P4_ContinuousMotionSweptHulls"],
+      "description": "Connect CollisionDetectionWorkspace directly to active document CAD models, replacing createSampleObstacleTriangles."
+    },
+    {
+      "phaseId": "P7_TruthThreadAndPersistence",
+      "dependencies": ["P0_AuthorityAndContracts", "P6_UIProductionBinding"],
+      "description": "Integrate SHA-256 provenance hashing and canonical document JSON serialization with sorted keys."
+    },
+    {
+      "phaseId": "P8_BenchmarkBatteryExecution",
+      "dependencies": ["P1_NarrowPhaseExactMath", "P2_FailClosedHardening", "P4_ContinuousMotionSweptHulls", "P5_KinematicClearanceRebuild", "P6_UIProductionBinding", "P7_TruthThreadAndPersistence"],
+      "description": "Execute full B01-B20 benchmark qualification battery and achieve 100% pass rate."
+    }
+  ]
+}

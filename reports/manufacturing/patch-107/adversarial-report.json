@@ -1,0 +1,46 @@
+{
+  "totalAdversarialTests": 5,
+  "passedCount": 5,
+  "tests": [
+    {
+      "testName": "Axis Overflow Limit Rejection",
+      "category": "AXIS",
+      "passed": true,
+      "expectedFailureCodeOrVerdict": "POST_AXIS_LIMIT_FAILURE / Error Caught",
+      "actualOutcome": "Successfully caught and rejected axis overflow",
+      "evidence": "Point 1: X position 9999 exceeds machine limit [-600, 600]"
+    },
+    {
+      "testName": "NaN / Infinite Numeric Rejection",
+      "category": "NUMERIC",
+      "passed": true,
+      "expectedFailureCodeOrVerdict": "POST_INPUT_INVALID",
+      "actualOutcome": "Caught NaN values during input validation",
+      "evidence": "Point 0 contains NaN coordinate values"
+    },
+    {
+      "testName": "Tool Changer Capacity Violation",
+      "category": "TOOL",
+      "passed": true,
+      "expectedFailureCodeOrVerdict": "TOOL_CONFIGURATION_FAILURE / SEMANTIC_INVALID",
+      "actualOutcome": "Caught invalid tool number in semantic validator",
+      "evidence": "Block 100: Tool T999 exceeds tool changer capacity (40)"
+    },
+    {
+      "testName": "Spindle Speed RPM Over-Limit Detection",
+      "category": "MOTION",
+      "passed": true,
+      "expectedFailureCodeOrVerdict": "SPINDLE_CONFIGURATION_FAILURE",
+      "actualOutcome": "Caught excessive spindle RPM during IR compilation",
+      "evidence": "Spindle speed 99999 RPM at point 0 violates machine limits [50, 24000]"
+    },
+    {
+      "testName": "Deterministic Output & Fingerprint Invariance",
+      "category": "DETERMINISM",
+      "passed": true,
+      "expectedFailureCodeOrVerdict": "EXACT_BIT_EQUALITY",
+      "actualOutcome": "Two distinct runs produced bit-exact identical NC text and Merkle root",
+      "evidence": "Run1 Root: 0x245b1235 | Run2 Root: 0x245b1235"
+    }
+  ]
+}

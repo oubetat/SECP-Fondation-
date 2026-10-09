@@ -1,0 +1,9 @@
+{
+  "missionId": "COLLISION-ENGINE-P2-FAIL-CLOSED-HARDENING-001",
+  "artifactType": "UNSUPPORTED_CAPABILITY_VERIFICATION",
+  "timestamp": "2026-10-01T02:08:00.000Z",
+  "findings": {
+    "ExactNarrowPhaseProvider": "Does not support supportsContinuousCollision. Requesting continuous motion results in fail-closed output (provenSafe=false).",
+    "AssemblyCollisionProvider": "Does not support supportsContinuousCollision or machine simulation envelopes. Fails closed to ANALYSIS_FAILED."
+  }
+}

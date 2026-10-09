@@ -1,0 +1,12 @@
+{
+  "missionId": "NACA0012-VV-FINAL-TRUTH-CLOSURE-003",
+  "timestamp": "2026-09-30T08:53:55.041Z",
+  "kResidualAnalysis": {
+    "observedValue": 0.9015881227332181,
+    "threshold": 0.01,
+    "linearSolverSweeps": 5,
+    "actualOuterDeltaK": 0,
+    "actualRelOuterDeltaK": 0,
+    "explanation": "The value 0.901588 represents the normalized linear solver residual (||r_5|| / ||r_0||) of the discrete SST k transport matrix after 5 Gauss-Seidel sweeps per outer SIMPLE iteration. Because the k-equation is weakly diagonally dominant compared to omega (which has strong quadratic destruction beta*omega^2), 5 linear sweeps achieve only a 10% reduction of the linear residual per outer iteration. However, the outer-loop field change of k is small and bounded, and omega converges to 3.33e-4 in the same 5 sweeps."
+  }
+}

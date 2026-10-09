@@ -1,0 +1,48 @@
+{
+  "mission": "POST-PLUGIN-MATURITY-008R",
+  "status": "CLOSED",
+  "closureDate": "2026-09-26T08:24:45Z",
+  "authoritativeEngine": "PhysicalRealityContinuityEngine",
+  "requirements": {
+    "additiveManufacturingIntent": {
+      "status": "PROVEN",
+      "physicalConstraintsEnforced": [
+        "layerHeightMm_bounds",
+        "infillPercent_bounds",
+        "nozzleDiameterMm_bounds",
+        "temperature_bounds",
+        "printSpeed_bounds"
+      ]
+    },
+    "physicalRealizationTracking": {
+      "status": "PROVEN",
+      "pmaAttestationBinding": true,
+      "machineTelemetryCaptured": true
+    },
+    "metrologyScanIngestion": {
+      "status": "PROVEN",
+      "instrumentCalibrationEnforced": true,
+      "expiryValidationEnforced": true,
+      "uncertaintyThresholdEnforced": true
+    },
+    "reverseEngineeringReconstruction": {
+      "status": "PROVEN",
+      "icpRegistration": true,
+      "reconstructionConfidenceCalculated": true,
+      "measuredVsReconstructedDisambiguated": true
+    },
+    "deviationAnalysisAndGDnT": {
+      "status": "PROVEN",
+      "toleranceBandsEvaluated": true,
+      "shrinkageRatiosCalculated": true
+    },
+    "closedLoopCompensation": {
+      "status": "PROVEN",
+      "newRevisionCreated": true,
+      "merkleEvidenceBound": true,
+      "separationOfDutiesEnforced": true,
+      "provenanceGraphUpdated": true
+    }
+  },
+  "testSuite": "src/engine/manufacturing/__tests__/M8PhysicalRealityIntegration.test.ts"
+}

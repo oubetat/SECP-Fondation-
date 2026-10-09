@@ -1,0 +1,79 @@
+{
+  "patch": "PATCH-149",
+  "title": "Solver Scaling Benchmark — HPC Evidence Layer",
+  "timestamp": "2026-08-21T12:51:16.204Z",
+  "summary": {
+    "totalTests": 5,
+    "passedTests": 5,
+    "score": 100,
+    "verdict": "PASS",
+    "qualificationState": "QUALIFIED"
+  },
+  "results": [
+    {
+      "gateId": "149-TEST-01-StrongScaling",
+      "description": "Validate Strong Scaling Speedup and Efficiency calculations",
+      "passed": true,
+      "verdict": "SCALING_MEASURED",
+      "details": "Speedup(4): 3.27, Efficiency(4): 0.82"
+    },
+    {
+      "gateId": "149-TEST-05-MeasurementOverhead",
+      "description": "Audit measurement instrumentation cost budget",
+      "passed": true,
+      "verdict": "OVERHEAD_QUALIFIED",
+      "details": "Measured Overhead: 0.65% (Limit: 5%)"
+    },
+    {
+      "gateId": "149-TEST-06-ShadowExecution",
+      "description": "Validate compute-only shadow execution vs full production flow",
+      "passed": true,
+      "verdict": "IO_TAX_DECOMPOSED",
+      "details": "Full: 31.5s, Shadow: 28.5s, I/O Tax: 2.4s"
+    },
+    {
+      "gateId": "149-TEST-07-IterationStability",
+      "description": "Audit solver iteration stability during scaling",
+      "passed": true,
+      "verdict": "ITERATIONS_STABLE",
+      "details": "Stability Index: 1.00 (Stable <= 1.2)"
+    },
+    {
+      "gateId": "149-TEST-04-Qualification",
+      "description": "Final qualification gate for PATCH-149 REV.A — Operational Reality",
+      "passed": true,
+      "verdict": "QUALIFIED_EVIDENCE",
+      "details": "State: QUALIFIED, Checks Passed: 21/22"
+    }
+  ],
+  "qualification": {
+    "qualificationId": "QUAL-149-REVA-1787316676203",
+    "timestamp": "2026-08-21T12:51:16.203Z",
+    "state": "QUALIFIED",
+    "checks": {
+      "workloadIdentity": true,
+      "solverIdentity": true,
+      "hardwareIdentity": true,
+      "numericalEquivalence": true,
+      "rawMeasurementIntegrity": true,
+      "strongScalingIntegrity": true,
+      "weakScalingIntegrity": false,
+      "communicationScaling": true,
+      "loadBalance": true,
+      "memoryScaling": true,
+      "iterationStability": true,
+      "preconditionerScaling": true,
+      "regressionDetection": true,
+      "comparabilityContract": true,
+      "provenanceCompleteness": true,
+      "evidenceIntegrity": true,
+      "ioCacheStateValidation": true,
+      "measurementOverheadAccounting": true,
+      "shadowExecutionIntegrity": true,
+      "iterationStabilityValidation": true,
+      "rawMeasurementPreservation": true,
+      "performanceEnvironmentIntegrity": true
+    },
+    "criticalFailures": []
+  }
+}

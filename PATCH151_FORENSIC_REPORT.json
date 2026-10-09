@@ -1,0 +1,117 @@
+{
+  "benchmarkIdentity": {
+    "id": "PATCH-151-FORENSIC-01",
+    "timestamp": "2026-08-21T13:30:50.077Z"
+  },
+  "workloadIdentity": {
+    "instances": 46000,
+    "uniqueGeometries": 50
+  },
+  "environmentFingerprint": {
+    "OS": "Linux",
+    "CPU": "unknown",
+    "CPUCores": 2,
+    "RAM": "4.0 GB",
+    "GPU": "VIRTUALIZED_GPU",
+    "GPUDriver": "MESA_NATIVE_DRV",
+    "runtime": "NodeJS",
+    "runtimeVersion": "v22.23.1",
+    "WebGPU": "UNAVAILABLE_IN_CONSOLE_RUNTIME",
+    "buildHash": "build-hpc-secp-151-forensic-alpha"
+  },
+  "rawMeasurements": {
+    "TOTAL_INSTANCES": 46000,
+    "UNIQUE_GEOMETRIES": 50,
+    "instanceCountVerified": 46000,
+    "uniqueDefinitionCountVerified": 50,
+    "measuredReuseRatio": 920,
+    "baselineGeometryMemoryMB": 391000,
+    "instancedGeometryMemoryMB": 425,
+    "memorySavingsMB": 390575,
+    "memoryReductionRatio": 0.9989130434782608,
+    "isDefinitionUnmutated": true,
+    "incrementalUpdateTimeMs": 0.028631000000018503,
+    "fullRebuildTimeMs": 62.37199099999998,
+    "speedupRatio": 2178.477559287474,
+    "coldDurationMs": 1.8520859999999857,
+    "warm1DurationMs": 1.6801230000000942,
+    "warm2DurationMs": 1.8525599999999258,
+    "stdDevMs": 4.095978079344703,
+    "environmentFingerprint": {
+      "OS": "Linux",
+      "CPU": "unknown",
+      "CPUCores": 2,
+      "RAM": "4.0 GB",
+      "GPU": "VIRTUALIZED_GPU",
+      "GPUDriver": "MESA_NATIVE_DRV",
+      "runtime": "NodeJS",
+      "runtimeVersion": "v22.23.1",
+      "WebGPU": "UNAVAILABLE_IN_CONSOLE_RUNTIME",
+      "buildHash": "build-hpc-secp-151-forensic-alpha"
+    }
+  },
+  "memoryMeasurements": {
+    "budgetMB": 4096,
+    "residentMB": 151.90234375,
+    "peakMB": 60.76171875,
+    "savingsMB": 390575,
+    "ratio": 0.9989130434782608
+  },
+  "instancingEvidence": {
+    "definitionIntegrity": true,
+    "definitionSafety": true
+  },
+  "streamingEvidence": {
+    "blocks": 46,
+    "aggregateTimeMs": 34.002611000000115,
+    "averageBlockTimeMs": 0.7391871956521764
+  },
+  "incrementalUpdateEvidence": {
+    "targetInstance": "INST-42764",
+    "timeMs": 0.028631000000018503,
+    "fullRebuildTimeMs": 62.37199099999998,
+    "speedup": 2178.477559287474,
+    "affectedNodesCount": 3
+  },
+  "reproducibilityEvidence": {
+    "runs": 5,
+    "meanMs": 6.451370800000018,
+    "stdDevMs": 4.095978079344703
+  },
+  "tamperEvidence": {
+    "originalHash": "5072d06e9f0cecb754f77c02a19a8ef5be0a4f9018abb9f9bfbeb3b8256f604c",
+    "tamperedHash": "69d901838fb75a10c88feb91c87a271cc6fe32faa702b8eafc31662c96116fbf",
+    "tamperDetected": true
+  },
+  "dashboardComparison": [
+    {
+      "metric": "Reuse Ratio",
+      "dashboardValue": "920:1",
+      "measuredValue": "920:1",
+      "diff": "0.00",
+      "status": "MATCH"
+    },
+    {
+      "metric": "Savings (Avoided RAM)",
+      "dashboardValue": "391,000 MB",
+      "measuredValue": "390575 MB",
+      "diff": "0.00",
+      "status": "MATCH"
+    },
+    {
+      "metric": "Memory Budget",
+      "dashboardValue": "4096 MB",
+      "measuredValue": "4096 MB",
+      "diff": "0.00",
+      "status": "MATCH"
+    },
+    {
+      "metric": "GPU Memory Saving",
+      "dashboardValue": "98%",
+      "measuredValue": "UNPROVEN_IN_CONSOLE",
+      "diff": "N/A",
+      "status": "UNPROVEN_IN_TEST"
+    }
+  ],
+  "verdict": "PASS"
+}

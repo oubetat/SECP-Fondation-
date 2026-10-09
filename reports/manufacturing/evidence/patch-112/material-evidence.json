@@ -1,0 +1,44 @@
+{
+  "contract": {
+    "evidenceId": "EV_MAT_01",
+    "evidenceType": "MATERIAL_EVIDENCE",
+    "evidenceVersion": "1.0",
+    "sourceArtifactId": "MAT_INCONEL_718",
+    "sourceRevision": "1.0",
+    "eventId": "EVT_MAT",
+    "eventType": "MATERIAL_LOADED",
+    "eventTimestamp": 1700000100000,
+    "recordedTimestamp": 1700000100000,
+    "producerId": "MES_SYS",
+    "producerType": "MES",
+    "contentHash": "23e287ed69f5f2c6e8884aa8d7b880c42a081108774ec32815ff22cb808454f9",
+    "canonicalHash": "1b0d106545e31477499b3dc0c6b9f3294436902014b6fef73911941bc2084605",
+    "previousEvidenceHash": "1189ca87cc328a15fb255e0a9a7eb630c2c94ad7743357315ae39d5c0fb51f33",
+    "chainSequence": 2,
+    "signature": "7dad5d3c13bbffe871313622e7425b0e64546027118d9e0429f15370fd1ec89a",
+    "signingIdentity": "KEY_CAM_ENG_01",
+    "verificationStatus": "COMPLETE",
+    "recordingMode": "ORIGINAL"
+  },
+  "sourceIdentity": {
+    "sourceType": "MES",
+    "sourceId": "MES_INV_01",
+    "sourceRevision": "1.0",
+    "sourceFingerprint": "FNG_MAT_01"
+  },
+  "eventIdentity": {
+    "eventId": "EVT_MAT",
+    "eventType": "MATERIAL_LOADED",
+    "eventSequence": 2,
+    "eventTimestamp": 1700000100000,
+    "sourceTimestamp": 1700000100000,
+    "recordedTimestamp": 1700000100000
+  },
+  "payload": {
+    "batch": "BATCH_9981",
+    "materialId": "INCONEL_718",
+    "state": "QUALIFIED"
+  },
+  "context": {},
+  "attestations": []
+}

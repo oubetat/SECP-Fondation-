@@ -1,0 +1,101 @@
+{
+  "rootComponentId": "COMP_BASE_01",
+  "components": {
+    "COMP_BASE_01": {
+      "componentId": "COMP_BASE_01",
+      "componentType": "BASE",
+      "name": "Mineral Cast Machine Bed",
+      "geometryId": "GEO_BASE_CASTING",
+      "kinematicNodeId": "NODE_BASE",
+      "configurationRevision": 1,
+      "status": "ACTIVE"
+    },
+    "COMP_COLUMN_01": {
+      "componentId": "COMP_COLUMN_01",
+      "componentType": "COLUMN",
+      "name": "Y-Axis Moving Column",
+      "parentId": "COMP_BASE_01",
+      "geometryId": "GEO_COLUMN_Y",
+      "kinematicNodeId": "NODE_Y_AXIS",
+      "configurationRevision": 1,
+      "status": "ACTIVE"
+    },
+    "COMP_HEAD_01": {
+      "componentId": "COMP_HEAD_01",
+      "componentType": "HEAD",
+      "name": "Z-Axis Spindle Headstock",
+      "parentId": "COMP_COLUMN_01",
+      "geometryId": "GEO_HEAD_Z",
+      "kinematicNodeId": "NODE_Z_AXIS",
+      "configurationRevision": 1,
+      "status": "ACTIVE"
+    },
+    "COMP_SPINDLE_01": {
+      "componentId": "COMP_SPINDLE_01",
+      "componentType": "SPINDLE",
+      "name": "HSK-A63 20,000 RPM Motor Spindle",
+      "parentId": "COMP_HEAD_01",
+      "geometryId": "GEO_SPINDLE_MOTOR",
+      "kinematicNodeId": "NODE_SPINDLE",
+      "configurationRevision": 1,
+      "status": "ACTIVE"
+    },
+    "COMP_TABLE_01": {
+      "componentId": "COMP_TABLE_01",
+      "componentType": "TABLE",
+      "name": "X-Axis Machine Table",
+      "parentId": "COMP_BASE_01",
+      "geometryId": "GEO_TABLE_X",
+      "kinematicNodeId": "NODE_X_AXIS",
+      "configurationRevision": 1,
+      "status": "ACTIVE"
+    },
+    "COMP_TRUNNION_A_01": {
+      "componentId": "COMP_TRUNNION_A_01",
+      "componentType": "ROTARY_TABLE",
+      "name": "A-Axis Swivel Trunnion (+/- 115 deg)",
+      "parentId": "COMP_TABLE_01",
+      "geometryId": "GEO_TRUNNION_A",
+      "kinematicNodeId": "NODE_A_AXIS",
+      "configurationRevision": 1,
+      "status": "ACTIVE"
+    },
+    "COMP_ROTARY_C_01": {
+      "componentId": "COMP_ROTARY_C_01",
+      "componentType": "ROTARY_TABLE",
+      "name": "C-Axis Rotary Platter (360 deg)",
+      "parentId": "COMP_TRUNNION_A_01",
+      "geometryId": "GEO_PLATTER_C",
+      "kinematicNodeId": "NODE_C_AXIS",
+      "configurationRevision": 1,
+      "status": "ACTIVE"
+    },
+    "COMP_ATC_01": {
+      "componentId": "COMP_ATC_01",
+      "componentType": "TOOL_CHANGER",
+      "name": "30-Pocket Chain Tool Magazine",
+      "parentId": "COMP_BASE_01",
+      "geometryId": "GEO_ATC_MAGAZINE",
+      "configurationRevision": 1,
+      "status": "ACTIVE"
+    },
+    "COMP_SENSOR_TEMP_01": {
+      "componentId": "COMP_SENSOR_TEMP_01",
+      "componentType": "SENSOR",
+      "name": "Spindle Bearing PT100 Temp Sensor",
+      "parentId": "COMP_SPINDLE_01",
+      "geometryId": "GEO_SENSOR_PT100",
+      "configurationRevision": 1,
+      "status": "ACTIVE"
+    },
+    "COMP_SENSOR_VIB_01": {
+      "componentId": "COMP_SENSOR_VIB_01",
+      "componentType": "SENSOR",
+      "name": "Triaxial Spindle Accelerometer",
+      "parentId": "COMP_SPINDLE_01",
+      "geometryId": "GEO_SENSOR_ACCEL",
+      "configurationRevision": 1,
+      "status": "ACTIVE"
+    }
+  }
+}

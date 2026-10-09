@@ -1,0 +1,40 @@
+{
+  "verdict": "PASS",
+  "checks": [
+    {
+      "id": "THERMAL_CYCLE_VALIDITY",
+      "passed": true,
+      "details": "Successfully validated time monotonicity and temperature sequence of the Q&T process cycle"
+    },
+    {
+      "id": "HARDNESS_PROPERTY_SCHEMA",
+      "passed": true,
+      "details": "Hardness is correctly represented with an explicit value (32) and scale (HRC)"
+    },
+    {
+      "id": "PROCESS_COMPLIANCE_INSIDE_WINDOW",
+      "passed": true,
+      "details": "Successfully verified process compliance within the specified temperature/time/cooling-rate process window"
+    },
+    {
+      "id": "PROCESS_COMPLIANCE_OUTSIDE_WINDOW",
+      "passed": true,
+      "details": "Successfully flagged non-compliant process when heat treat temperature fell outside the specification window"
+    },
+    {
+      "id": "INDEPENDENT_AUDITOR_VERIFICATION",
+      "passed": true,
+      "details": "Passed third-party auditor check verifying material consistency, calibration status, and lot traceability"
+    },
+    {
+      "id": "DETERMINISTIC_FINGERPRINTING",
+      "passed": true,
+      "details": "Generated distinct immutable fingerprints: Process: process-fp-AISI-4140_2_QUENCH_AND_TEMPER_COND-4140-ANN_COND-4140-QT_cycle-fingerprint-4140_FURNACE-IPSEN-04_BATCH-4140-QT-009, Condition: cond-fp-AISI-4140_2_QuenchedTempered873K600C_PROC-4140-QT-01_32_HRC_950000000"
+    },
+    {
+      "id": "PROPERTY_REFERENCE_INTEGRITY",
+      "passed": true,
+      "details": "Verified initial and target conditions are mapped correctly without silent reference pollution"
+    }
+  ]
+}

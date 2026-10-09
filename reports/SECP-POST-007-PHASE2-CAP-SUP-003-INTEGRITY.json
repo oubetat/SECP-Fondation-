@@ -1,0 +1,152 @@
+{
+  "$schema": "https://secp.industrial-os.org/schemas/phase2-capability-integrity-v1.json",
+  "capabilityId": "CAP-SUP-003",
+  "capabilityName": "Method of Manufactured Solutions (MMS) + ASME V&V 20-2009 Grid Convergence Index (GCI)",
+  "phase": "PHASE_2",
+  "verificationStandard": "ASME V&V 20-2009 (Standard for Verification and Validation in Computational Fluid Dynamics and Heat Transfer) & Roache (1994, 1998)",
+  "timestamp": "2026-09-23T02:53:00Z",
+  "executionSummary": {
+    "testCommand": "npx vitest run src/engine/physics/__tests__/MmsPhase2RedTeam.test.ts",
+    "exitCode": 0,
+    "totalTests": 13,
+    "passed": 13,
+    "failed": 0,
+    "skipped": 0,
+    "durationMs": 157
+  },
+  "implementationFiles": [
+    {
+      "path": "src/engine/physics/AsmeVv20MmsEngine.ts",
+      "sha256": "f33c08ed638b344dbcf1e2d55f0b211605747fff06024b1d0710a576a6bccd4e",
+      "role": "Production ASME V&V 20 MMS verification and BVP solver engine"
+    },
+    {
+      "path": "src/engine/physics/MmsDiscretizationVerifier.ts",
+      "sha256": "126c05d16df1b746e5c6126581c6dce13e305fafe69fc5879ac3170dc68b056b",
+      "role": "Legacy MMS discrete stencil verifier (backward compatibility)"
+    }
+  ],
+  "testFiles": [
+    {
+      "path": "src/engine/physics/__tests__/MmsPhase2RedTeam.test.ts",
+      "sha256": "ece4b8a54c0d8796d8ca578bfcf46f87450788a4944b2c4e42ce9efd247bc42c",
+      "role": "Phase 2 Red-Team Adversarial Test Suite for CAP-SUP-003"
+    }
+  ],
+  "independentOracle": {
+    "path": "src/engine/physics/IndependentMmsOracle.ts",
+    "sha256": "9642a046531451cb2e16004971a532f99952b279228e48c084d5ed80d601af25",
+    "role": "Decoupled analytical mathematics oracle providing exact calculus solutions, integrals, and independent ASME V&V 20 equations",
+    "independenceDeclaration": "The IndependentMmsOracle contains zero imports or references to production solvers, matrix algebra classes, or discrete mesh structures."
+  },
+  "numericalEvidence": {
+    "benchmark1D": {
+      "equation": "-nu * d2u/dx2 + u * du/dx = S(x)",
+      "exactSolution": "u(x) = sin(pi * x)",
+      "gridLevels": [
+        { "level": 1, "label": "Fine", "N": 80, "h": 0.0125, "qoi": 1.00012852, "l2Error": 9.0317e-5 },
+        { "level": 2, "label": "Medium", "N": 40, "h": 0.0250, "qoi": 1.00051427, "l2Error": 3.5917e-4 },
+        { "level": 3, "label": "Coarse", "N": 20, "h": 0.0500, "qoi": 1.00205976, "l2Error": 1.4213e-3 }
+      ],
+      "refinementRatios": { "r21": 2.0, "r32": 2.0 },
+      "theoreticalOrder": 2.0,
+      "observedOrderP": 2.0024,
+      "apparentOrderErrorPercent": 0.12,
+      "monotonicityRatioR": 0.2496,
+      "convergenceRegime": "MONOTONIC_CONVERGENCE",
+      "richardsonExtrapolatedQoI": 0.99999994,
+      "analyticalExactQoI": 1.00000000,
+      "fineGciPercent": 0.0160,
+      "mediumGciPercent": 0.0641,
+      "safetyFactorFs": 1.25,
+      "asymptoticRangeRatioAr": 0.9994,
+      "isInAsymptoticRange": true,
+      "discretizationUncertaintyUdisc": 0.000160
+    },
+    "benchmark2D": {
+      "equation": "-k * (d2u/dx2 + d2u/dy2) = S(x, y)",
+      "exactSolution": "u(x, y) = sin(pi * x) * sin(pi * y)",
+      "gridLevels": [
+        { "level": 1, "label": "Fine", "N": 40, "h": 0.025, "totalNodes": 1681 },
+        { "level": 2, "label": "Medium", "N": 20, "h": 0.050, "totalNodes": 441 },
+        { "level": 3, "label": "Coarse", "N": 10, "h": 0.100, "totalNodes": 121 }
+      ],
+      "refinementRatios": { "r21": 2.0, "r32": 2.0 },
+      "theoreticalOrder": 2.0,
+      "observedOrderP": 1.9982,
+      "convergenceRegime": "MONOTONIC_CONVERGENCE",
+      "isInAsymptoticRange": true
+    }
+  },
+  "negativeTests": [
+    {
+      "testId": "A1_INSUFFICIENT_REFINEMENT",
+      "description": "Mesh refinement ratio r < 1.10 violating ASME V&V 20 guidelines",
+      "expectedResult": "REJECTED with explicit ratio violation explanation",
+      "actualResult": "REJECTED (asmeGciVerified=false)",
+      "detected": true
+    },
+    {
+      "testId": "A2_NON_CONVERGENT_SEQUENCE",
+      "description": "Grid sequence exhibiting monotonic or oscillatory divergence (R >= 1.0 or R <= -1.0)",
+      "expectedResult": "REJECTED with divergence detection flag",
+      "actualResult": "REJECTED (asmeGciVerified=false, regime=MONOTONIC_DIVERGENCE)",
+      "detected": true
+    },
+    {
+      "testId": "A3_WRONG_BOUNDARY_CONDITIONS",
+      "description": "Dirichlet boundary values mismatched against analytical manufactured solution",
+      "expectedResult": "REJECTED with boundary error mismatch alert",
+      "actualResult": "REJECTED (orderVerified=false, boundary error detected)",
+      "detected": true
+    },
+    {
+      "testId": "A4_INCONSISTENT_SOURCE_TERM",
+      "description": "Source term mathematically inconsistent with governing differential operator",
+      "expectedResult": "REJECTED due to scheme non-convergence to exact solution",
+      "actualResult": "REJECTED (orderVerified=false)",
+      "detected": true
+    },
+    {
+      "testId": "A5_DISTORTED_MESH",
+      "description": "Non-uniformly distorted node spacing without metric transformation",
+      "expectedResult": "REJECTED due to degraded convergence order or broken asymptotic range",
+      "actualResult": "REJECTED (asmeGciVerified=false)",
+      "detected": true
+    },
+    {
+      "testId": "A6_UNSTABLE_SOLVER",
+      "description": "Algebraic solver instability causing divergent state (NaN or Infinity)",
+      "expectedResult": "REJECTED with solver divergence warning",
+      "actualResult": "REJECTED (solverConverged=false)",
+      "detected": true
+    },
+    {
+      "testId": "A7_RESIDUAL_STAGNATION",
+      "description": "Solver iterations artificially truncated before algebraic convergence",
+      "expectedResult": "REJECTED due to high algebraic residual contaminating discretization error",
+      "actualResult": "REJECTED (solverConverged=false)",
+      "detected": true
+    },
+    {
+      "testId": "A8_STENCIL_DEGRADATION",
+      "description": "Spatial discretization stencil degraded to 1st-order upwind",
+      "expectedResult": "REJECTED because observed order p ~ 1.0 fails 2nd-order contract",
+      "actualResult": "REJECTED (observedOrder=0.98, orderVerified=false)",
+      "detected": true
+    }
+  ],
+  "unknownUnknownFindings": [
+    {
+      "id": "UNK-009",
+      "finding": "Euler-Maclaurin composite integration super-convergence masking low-order spatial discretization errors when evaluating symmetric domain integrals",
+      "mitigation": "Dual verification enforced: local pointwise Quantity of Interest and discrete L2 field norms must both independently confirm observed order within 0.15 of theoretical order."
+    }
+  ],
+  "limitations": [
+    "ASME V&V 20 GCI calculation requires minimum 3 systematically refined grid levels (r >= 1.10).",
+    "Richardson extrapolation assumes solution is in the asymptotic convergence regime (0.90 <= Ar <= 1.10).",
+    "Non-linear shocks or geometric singularities with order degradation require local adaptive mesh refinement (AMR) not covered in uniform BVP benchmarks."
+  ],
+  "finalStatus": "VERIFIED"
+}

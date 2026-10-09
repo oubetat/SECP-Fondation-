@@ -1,0 +1,44 @@
+{
+  "missionId": "COLLISION-ENGINE-FORENSIC-EVIDENCE-ADJUDICATION-001",
+  "timestamp": "2026-10-01T01:14:00.000Z",
+  "counterexamples": [
+    {
+      "name": "Case A — FiveAxisCollisionEngine Face Penetration Miss",
+      "targetEngine": "src/engine/cam/fiveaxis/FiveAxisCollisionEngine.ts",
+      "obstacle": {
+        "meshId": "PLATE_100x100",
+        "vertices": [
+          { "x": 0, "y": 0, "z": 0 },
+          { "x": 100, "y": 0, "z": 0 },
+          { "x": 100, "y": 100, "z": 0 },
+          { "x": 0, "y": 100, "z": 0 }
+        ],
+        "faces": [[0, 1, 2], [0, 2, 3]]
+      },
+      "toolMotion": {
+        "p0": { "x": 50, "y": 50, "z": 20 },
+        "p1": { "x": 50, "y": 50, "z": -20 },
+        "toolRadius": 5.0,
+        "toolLength": 40.0
+      },
+      "actualBehavior": "Distance from (50,50,0) to all four vertices is sqrt(50^2 + 50^2) = 70.71 mm. Because 70.71 mm > effRadius (5.0 mm), engine reports clearance = 65.71 mm and hasCollision = false.",
+      "expectedBehavior": "Tool punctures through plate center at Z=0; true penetration depth = 20.0 mm; hasCollision = true.",
+      "verdict": "CONFIRMED_MATHEMATICAL_COUNTEREXAMPLE"
+    },
+    {
+      "name": "Case B — Kinematic Clearance Bridge Dimension Invariance",
+      "targetEngine": "src/engine/assembly/kinematics/KinematicCollisionClearanceBridge.ts",
+      "bodyPair1": {
+        "description": "Two 500mm turbine blades placed with centers 100mm apart (400mm severe interpenetration)",
+        "centerDistance": 100.0,
+        "engineOutput": "minClearanceMm = 100.0 - 30.0 = 70.0 mm -> status: PASS (NO COLLISION)"
+      },
+      "bodyPair2": {
+        "description": "Two 1mm screws placed with centers 20mm apart (19mm safe clearance)",
+        "centerDistance": 20.0,
+        "engineOutput": "minClearanceMm = max(0.1, 20.0 - 30.0) = 0.1 mm -> status: FAIL (FALSE COLLISION)"
+      },
+      "verdict": "CONFIRMED_MATHEMATICAL_COUNTEREXAMPLE"
+    }
+  ]
+}

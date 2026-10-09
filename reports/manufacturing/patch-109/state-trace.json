@@ -1,0 +1,39 @@
+[
+  {
+    "timestamp": 0,
+    "axisPositions": {
+      "X": 0,
+      "Y": 0,
+      "Z": 10,
+      "a": 0,
+      "b": 0,
+      "c": 0
+    },
+    "rotaryPositions": {
+      "a": 0,
+      "b": 0,
+      "c": 0
+    },
+    "toolPose": {
+      "position": {
+        "x": 0,
+        "y": 0,
+        "z": 10
+      },
+      "orientation": {
+        "x": 0,
+        "y": 0,
+        "z": 1
+      }
+    },
+    "activeTool": "T1",
+    "feed": 1000,
+    "spindleRPM": 10000,
+    "spindleDirection": "CW",
+    "coolantState": {},
+    "workOffset": "G54",
+    "toolOffset": 0,
+    "collisionState": false,
+    "stockStateHash": "STOCK_STATE_-3d34f780"
+  }
+]

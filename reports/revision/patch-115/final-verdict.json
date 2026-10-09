@@ -1,0 +1,9 @@
+{
+  "verdict": "VALID",
+  "hashMismatch": false,
+  "dependencyIntegrityFailed": false,
+  "illegalLifecycleState": false,
+  "requiredEvidenceMissing": 0,
+  "independentVerificationFailed": false,
+  "timestamp": "2026-08-21T08:15:02.793Z"
+}

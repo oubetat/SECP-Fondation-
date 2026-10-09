@@ -1,0 +1,7 @@
+{
+  "reportId": "COLLISION-ENGINE-P4-ROTATIONAL-SWEEP-001",
+  "interpolationMethod": "Spherical Linear Interpolation (SLERP)",
+  "singularityHandling": "Euler / Axis Antipodal Check",
+  "rotationOnlyCollisionVerified": true,
+  "verdict": "PASSED"
+}

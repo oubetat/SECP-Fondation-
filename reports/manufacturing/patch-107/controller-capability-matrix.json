@@ -1,0 +1,22 @@
+{
+  "supports3AxisLinear": true,
+  "supports5AxisSimultaneous": true,
+  "supportsArcs": true,
+  "supportedArcPlanes": [
+    "XY_G17",
+    "XZ_G18",
+    "YZ_G19"
+  ],
+  "supportsSplines": false,
+  "supportsNURBS": true,
+  "supportsTCP": true,
+  "supportsRTCP": true,
+  "supportsSubprograms": true,
+  "supportsMacros": "SUPPORTED",
+  "supportsCutterComp2D": true,
+  "supportsCutterComp3D": true,
+  "supportsCannedCycles": true,
+  "supportsInverseTimeFeed": true,
+  "maxBlockLength": 512,
+  "modalGCodeSupport": true
+}

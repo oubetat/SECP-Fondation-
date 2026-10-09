@@ -1,0 +1,14 @@
+{
+  "reportType": "ASSEMBLY_AUDIT_TRAIL",
+  "assemblyId": "ASM_TURBO_PUMP_01",
+  "auditTrail": [
+    {
+      "assemblyChangeId": "AUDIT_INIT_001",
+      "actorId": "CHIEF_PROPULSION_ENGINEER",
+      "timestamp": 1787295759356,
+      "operation": "CREATE",
+      "beforeHash": "GENESIS",
+      "afterHash": "24438ef55569d99a78dc9d590f710221c96840c2bd40bc510a30c26f00034f5e"
+    }
+  ]
+}

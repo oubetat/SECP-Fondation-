@@ -1,0 +1,11 @@
+{
+  "fields": [
+    "blockNumber",
+    "sequenceNumber",
+    "lineText",
+    "words",
+    "comment",
+    "machineState",
+    "modalState"
+  ]
+}

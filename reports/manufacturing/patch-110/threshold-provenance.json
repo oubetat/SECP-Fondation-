@@ -1,0 +1,7 @@
+{
+  "spindleTempWarningC": 45,
+  "spindleTempFaultC": 60,
+  "maxVibrationG": 0.5,
+  "maxTrackingErrorMM": 0.05,
+  "provenanceSource": "MANUFACTURER_ENGINEERING_SPEC_2026"
+}

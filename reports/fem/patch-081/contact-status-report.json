@@ -1,0 +1,8 @@
+{
+  "status": "VERIFIED",
+  "trackedStatuses": [
+    "OPEN",
+    "ACTIVE",
+    "SEPARATING"
+  ]
+}

@@ -1,0 +1,50 @@
+[
+  {
+    "artifactId": "CAD_MODEL_01",
+    "contentHash": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef"
+  },
+  {
+    "artifactId": "FEAT_MODEL_01",
+    "contentHash": "dff416bd1abf0b025dee955cf38dcd98dd60a85a97186c49c91de27063ac817d"
+  },
+  {
+    "artifactId": "MAT_AL7075_T6",
+    "contentHash": "161d01d02ac96771b120caef79598b99408d24f3a7a04c1902ed2f9ade03e3ca"
+  },
+  {
+    "artifactId": "TOOL_ENDMILL_10MM",
+    "contentHash": "83b11ff527ac088de4c115b62ca59f85aeaf01d50a2817dae60176e877c9b93e"
+  },
+  {
+    "artifactId": "MACH_DMG_50",
+    "contentHash": "20354f46fde60cb7d036ff46662cff878aeb85821f8cdbb5aa914ee951831f30"
+  },
+  {
+    "artifactId": "OP_AERO_POCKET_01",
+    "contentHash": "68e0a6f26b108a9012c6cfa1045de4004212d7952162a4f6c490131c99a925e0"
+  },
+  {
+    "artifactId": "TOOLPATH_AERO_01",
+    "contentHash": "eb7f98f4939e37caacc8ca57bdd88848bc22c4f6060e9a51d304957e4b58edeb"
+  },
+  {
+    "artifactId": "SIM_AERO_01",
+    "contentHash": "0bb46f20cb6dd183960e5c290a1e8a2b71bf5c689d53730cb9b41ed2d56ca221"
+  },
+  {
+    "artifactId": "POST_ENGINE_TNC640",
+    "contentHash": "8047991b07d1ea8a3032f441cae399981aa5f15182238c2367581b1b7e7e44cb"
+  },
+  {
+    "artifactId": "NC_O1001",
+    "contentHash": "da3bb5fa1ef29cb18fe92544c594ba6d6aee8adca72b48b2382a44e14986d564"
+  },
+  {
+    "artifactId": "VERIF_NC_01",
+    "contentHash": "82a046a4b62f9766a4cb341baafb50962612add8814f9d72270a93cf0ceae1db"
+  },
+  {
+    "artifactId": "TWIN_EXEC_01",
+    "contentHash": "eb10cad5df607e1d67be7c78128de1b391c323a8969595f142370866c9cfc2a0"
+  }
+]

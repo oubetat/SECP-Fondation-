@@ -1,0 +1,52 @@
+{
+  "missionId": "COLLISION-ENGINE-P1.5-AUTHORITY-INTEGRATION-FORENSICS-001",
+  "artifactType": "LEGACY_BYPASS_AUDIT",
+  "timestamp": "2026-10-01T01:48:00.000Z",
+  "legacyEngines": [
+    {
+      "engineName": "CollisionDetectionEngine (CAM)",
+      "file": "src/engine/cam/collision/CollisionDetectionEngine.ts",
+      "status": "UNREGISTERED_INDEPENDENT_ENGINE",
+      "callsCanonicalAuthority": false,
+      "registeredLegacyAdapter": false,
+      "exactnessClaim": "Claims DetectionMode='EXACT' but executes NarrowPhaseDetector.ts with 10-point and centroid sampling",
+      "remediationRequired": "Wrap as registered LegacyAdapter declaring CollisionExactness.APPROXIMATE or replace with ExactNarrowPhaseProvider"
+    },
+    {
+      "engineName": "FiveAxisCollisionEngine (CAM 5-Axis)",
+      "file": "src/engine/cam/fiveaxis/FiveAxisCollisionEngine.ts",
+      "status": "UNREGISTERED_INDEPENDENT_ENGINE",
+      "callsCanonicalAuthority": false,
+      "registeredLegacyAdapter": false,
+      "exactnessClaim": "Claims 5-axis collision checking but checks only obstacle vertices against capsule centerlines (ignores faces and edges)",
+      "remediationRequired": "Route tool assembly poses through CollisionAuthority.evaluateSync() with ExactNarrowPhaseProvider"
+    },
+    {
+      "engineName": "MachineCollisionEngine (Machine Sim)",
+      "file": "src/engine/cam/machine-sim/MachineCollisionEngine.ts",
+      "status": "UNREGISTERED_INDEPENDENT_ENGINE",
+      "callsCanonicalAuthority": false,
+      "registeredLegacyAdapter": false,
+      "exactnessClaim": "Uses approximate bounding center overlaps for tool assembly vs clamps",
+      "remediationRequired": "Route to CollisionAuthority once machine kinematics provider is implemented"
+    },
+    {
+      "engineName": "InterferenceDetectionEngine (Assembly)",
+      "file": "src/engine/assembly/InterferenceDetectionEngine.ts",
+      "status": "HARDCODED_MOCK_ENGINE",
+      "callsCanonicalAuthority": false,
+      "registeredLegacyAdapter": false,
+      "exactnessClaim": "Hardcoded dx offset checks matching test suites; returns CLEAR on unknown assemblies",
+      "remediationRequired": "Deprecate and route AssemblyWorkspace to canonical AssemblyInterferenceEngine/CollisionAuthority"
+    },
+    {
+      "engineName": "CollisionEngine (Kinematics)",
+      "file": "src/engine/kinematics/CollisionEngine.ts",
+      "status": "UNREGISTERED_INDEPENDENT_ENGINE",
+      "callsCanonicalAuthority": false,
+      "registeredLegacyAdapter": false,
+      "exactnessClaim": "AABB bounding box for tool tip only; marks holder collision as NOT_AVAILABLE",
+      "remediationRequired": "Wrap as legacy adapter declaring limitations or route to CollisionAuthority"
+    }
+  ]
+}

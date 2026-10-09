@@ -1,0 +1,32 @@
+{
+  "missionId": "COLLISION-ENGINE-P1.6-AUTHORITY-MIGRATION-ENFORCEMENT-001",
+  "artifactType": "CALLPATH_VERIFICATION_REPORT",
+  "timestamp": "2026-10-01T01:57:00.000Z",
+  "migratedCallpaths": [
+    {
+      "id": "CALLPATH_01_CAM_WORKSPACE_UI",
+      "status": "MIGRATED_AND_VERIFIED",
+      "callChain": "CollisionDetectionWorkspace.tsx -> CollisionDetectionEngine.verifyToolpath() -> CollisionAuthority.evaluateSync() -> ExactNarrowPhaseProvider"
+    },
+    {
+      "id": "CALLPATH_02_ASSEMBLY_WORKSPACE_UI",
+      "status": "MIGRATED_AND_VERIFIED",
+      "callChain": "AssemblyWorkspace.tsx -> InterferenceDetectionEngine.analyze() / AssemblyInterferenceEngine.analyzeInterference() -> CollisionAuthority.evaluateSync() -> AssemblyCollisionProvider"
+    },
+    {
+      "id": "CALLPATH_03_5AXIS_CAM_OPTIMIZATION",
+      "status": "MIGRATED_AND_VERIFIED",
+      "callChain": "NCSimulationEngine.ts / ToolAxisOptimizer.ts -> CAMCollisionEngine.checkSegmentCollision() -> CollisionAuthority.evaluateSync() -> CamFiveAxisCollisionProvider"
+    },
+    {
+      "id": "CALLPATH_04_MACHINE_SIMULATION",
+      "status": "MIGRATED_AND_VERIFIED",
+      "callChain": "MachineSimulationEngine.ts -> MachineCollisionEngine.evaluatePoseCollisions() -> CollisionAuthority.evaluateSync() -> MachineSimulationCollisionProvider"
+    },
+    {
+      "id": "CALLPATH_05_KINEMATICS_VERIFICATION",
+      "status": "MIGRATED_AND_VERIFIED",
+      "callChain": "FiveAxisVerificationEngine.ts -> KinematicCollisionEngine.verifyPoint() -> CollisionAuthority.evaluateSync() -> KinematicsCollisionProvider"
+    }
+  ]
+}

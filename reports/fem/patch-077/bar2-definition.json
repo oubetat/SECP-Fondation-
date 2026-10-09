@@ -1,0 +1,28 @@
+{
+  "elementTypeId": "BAR2",
+  "family": "BAR",
+  "dimension": 1,
+  "nodeCount": 2,
+  "polynomialOrder": 1,
+  "dofsPerNode": 1,
+  "dofTypes": [
+    "UX"
+  ],
+  "formulationVersion": "BAR2-LIN-ELASTIC-v1",
+  "defaultIntegrationRuleId": "GAUSS_1D_2PT",
+  "materialModelCompatibility": [
+    "LINEAR_ELASTIC_1D"
+  ],
+  "geometricRequirements": {
+    "minNodes": 2,
+    "maxNodes": 2,
+    "manifoldDimension": 1
+  },
+  "physicsCapabilities": {
+    "linearStatic": true,
+    "thermal": false,
+    "dynamic": true,
+    "nonlinear": false
+  },
+  "implementationStatus": "VERIFIED"
+}

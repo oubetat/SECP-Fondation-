@@ -1,0 +1,19 @@
+{
+  "milestone": "M9",
+  "identityType": "CROSS-DOMAIN-IDENTITY",
+  "status": "IMPLEMENTED",
+  "invariants": {
+    "executionIdUniqueness": "TRUE",
+    "canonicalIdentityPreservation": "TRUE",
+    "collisionResistance": "TRUE"
+  },
+  "provenIdentityFields": [
+    "engineeringObjectId",
+    "revisionId",
+    "revisionHash",
+    "geometryHash",
+    "executionId",
+    "inputDigest",
+    "resultDigest"
+  ]
+}

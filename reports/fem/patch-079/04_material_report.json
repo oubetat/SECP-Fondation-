@@ -1,0 +1,18 @@
+{
+  "materialsUsed": [
+    {
+      "elementId": "E0",
+      "material": {
+        "E": 200000000000,
+        "area": 0.01
+      }
+    },
+    {
+      "elementId": "E1",
+      "material": {
+        "E": 200000000000,
+        "area": 0.01
+      }
+    }
+  ]
+}

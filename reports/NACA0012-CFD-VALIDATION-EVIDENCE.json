@@ -1,0 +1,60 @@
+{
+  "mission": "NACA0012-CFD-VV-GAP-CLOSURE-001",
+  "referenceDataset": {
+    "source": "NASA Langley Turbulence Modeling Resource (TMR) / Ladson (1988) Wind Tunnel Benchmark",
+    "publicationId": "NASA TM-4074 / AGARD-AR-138",
+    "caseName": "NACA 0012 Airfoil High-Re Aerodynamic Coefficient Benchmark",
+    "referenceConditions": {
+      "aoaDegrees": 10.0,
+      "reynoldsNumber": 6000000,
+      "machNumber": 0.15
+    },
+    "experimentalValues": {
+      "CL": 1.085,
+      "CD": 0.0122,
+      "Cm": -0.013
+    },
+    "uncertainties": {
+      "CL_exp": 0.02,
+      "CD_exp": 0.0008,
+      "Cm_exp": 0.002
+    }
+  },
+  "computedResults": {
+    "grid": "180x90 Fine O-Grid",
+    "cellCount": 16200,
+    "CL": 0.14812,
+    "CD": 0.01231,
+    "Cm": -0.01438
+  },
+  "validationComparison": {
+    "clDiscrepancy": -0.93688,
+    "clErrorPercent": -86.3,
+    "clErrorInUncertainties": 46.844,
+    "clStatus": "UNVALIDATED_UNDERPREDICTED",
+    "cdDiscrepancy": 0.00011,
+    "cdErrorPercent": 0.9,
+    "cdErrorInUncertainties": 0.1375,
+    "cdStatus": "VALIDATED",
+    "cmDiscrepancy": -0.00138,
+    "cmErrorPercent": 10.615,
+    "cmErrorInUncertainties": 0.69,
+    "cmStatus": "VALIDATED"
+  },
+  "discrepancyRootCause": "1st-order upwind spatial discretization on 180-point circumferential O-grid introduces numerical artificial viscosity at 10 deg AoA, smoothing suction peak near leading edge (x/c = 0.02..0.10)",
+  "vvSemantics": {
+    "solverExecuted": "PASS",
+    "numericallyConverged": "PASS",
+    "gridConverged": "NOT_PROVEN",
+    "verified": "NOT_PROVEN",
+    "validated": "NOT_PROVEN",
+    "industriallyValidated": "NOT_PROVEN"
+  },
+  "provenance": {
+    "geometryHash": "naca-0012-analytical-hash",
+    "revision": "REV-A",
+    "configurationId": "CONF-CFD-NACA0012-001",
+    "evidenceId": "EV-NACA0012-VALIDATION-001",
+    "timestamp": "2026-09-30T00:18:22Z"
+  }
+}

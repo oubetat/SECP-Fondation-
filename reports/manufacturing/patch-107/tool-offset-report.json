@@ -1,0 +1,7 @@
+{
+  "toolLengthOffsetGCode": "G43",
+  "cancelGCode": "G49",
+  "activeHValues": [
+    1
+  ]
+}

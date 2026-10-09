@@ -1,0 +1,148 @@
+[
+  {
+    "elementTypeId": "BAR2",
+    "family": "BAR",
+    "dimension": 1,
+    "nodeCount": 2,
+    "polynomialOrder": 1,
+    "dofsPerNode": 1,
+    "dofTypes": [
+      "UX"
+    ],
+    "formulationVersion": "BAR2-LIN-ELASTIC-v1",
+    "defaultIntegrationRuleId": "GAUSS_1D_2PT",
+    "materialModelCompatibility": [
+      "LINEAR_ELASTIC_1D"
+    ],
+    "geometricRequirements": {
+      "minNodes": 2,
+      "maxNodes": 2,
+      "manifoldDimension": 1
+    },
+    "physicsCapabilities": {
+      "linearStatic": true,
+      "thermal": false,
+      "dynamic": true,
+      "nonlinear": false
+    },
+    "implementationStatus": "VERIFIED"
+  },
+  {
+    "elementTypeId": "TRI3",
+    "family": "TRIANGLE",
+    "dimension": 2,
+    "nodeCount": 3,
+    "polynomialOrder": 1,
+    "dofsPerNode": 2,
+    "dofTypes": [
+      "UX",
+      "UY"
+    ],
+    "formulationVersion": "TRI3-CST-v1",
+    "defaultIntegrationRuleId": "TRI_2D_1PT",
+    "materialModelCompatibility": [
+      "LINEAR_ELASTIC_ISOTROPIC_2D"
+    ],
+    "geometricRequirements": {
+      "minNodes": 3,
+      "maxNodes": 3,
+      "manifoldDimension": 2
+    },
+    "physicsCapabilities": {
+      "linearStatic": true,
+      "thermal": false,
+      "dynamic": true,
+      "nonlinear": false
+    },
+    "implementationStatus": "VERIFIED"
+  },
+  {
+    "elementTypeId": "QUAD4",
+    "family": "QUADRILATERAL",
+    "dimension": 2,
+    "nodeCount": 4,
+    "polynomialOrder": 1,
+    "dofsPerNode": 2,
+    "dofTypes": [
+      "UX",
+      "UY"
+    ],
+    "formulationVersion": "QUAD4-ISO-v1",
+    "defaultIntegrationRuleId": "GAUSS_QUAD_2X2",
+    "materialModelCompatibility": [
+      "LINEAR_ELASTIC_ISOTROPIC_2D"
+    ],
+    "geometricRequirements": {
+      "minNodes": 4,
+      "maxNodes": 4,
+      "manifoldDimension": 2
+    },
+    "physicsCapabilities": {
+      "linearStatic": true,
+      "thermal": false,
+      "dynamic": true,
+      "nonlinear": false
+    },
+    "implementationStatus": "VERIFIED"
+  },
+  {
+    "elementTypeId": "TET4",
+    "family": "TETRAHEDRON",
+    "dimension": 3,
+    "nodeCount": 4,
+    "polynomialOrder": 1,
+    "dofsPerNode": 3,
+    "dofTypes": [
+      "UX",
+      "UY",
+      "UZ"
+    ],
+    "formulationVersion": "TET4-ISO-v1",
+    "defaultIntegrationRuleId": "TET_3D_1PT",
+    "materialModelCompatibility": [
+      "LINEAR_ELASTIC_ISOTROPIC_3D"
+    ],
+    "geometricRequirements": {
+      "minNodes": 4,
+      "maxNodes": 4,
+      "manifoldDimension": 3
+    },
+    "physicsCapabilities": {
+      "linearStatic": true,
+      "thermal": false,
+      "dynamic": true,
+      "nonlinear": false
+    },
+    "implementationStatus": "VERIFIED"
+  },
+  {
+    "elementTypeId": "HEX8",
+    "family": "HEXAHEDRON",
+    "dimension": 3,
+    "nodeCount": 8,
+    "polynomialOrder": 1,
+    "dofsPerNode": 3,
+    "dofTypes": [
+      "UX",
+      "UY",
+      "UZ"
+    ],
+    "formulationVersion": "HEX8-ISO-v1",
+    "defaultIntegrationRuleId": "GAUSS_HEX_2X2X2",
+    "materialModelCompatibility": [
+      "LINEAR_ELASTIC_ISOTROPIC_3D"
+    ],
+    "geometricRequirements": {
+      "minNodes": 8,
+      "maxNodes": 8,
+      "manifoldDimension": 3
+    },
+    "physicsCapabilities": {
+      "linearStatic": true,
+      "thermal": false,
+      "dynamic": true,
+      "nonlinear": false
+    },
+    "implementationStatus": "VERIFIED"
+  }
+]

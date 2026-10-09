@@ -1,0 +1,12 @@
+{
+  "type": "ContactPair",
+  "fields": [
+    "pairId",
+    "slaveSurfaceId",
+    "masterSurfaceId",
+    "formulation",
+    "enforcement",
+    "normalBehavior",
+    "parameters"
+  ]
+}

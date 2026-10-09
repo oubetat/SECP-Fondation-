@@ -1,0 +1,424 @@
+{
+  "missionId": "NACA0012-VV-CAUSAL-OPERATOR-CLOSURE-005",
+  "timestamp": "2026-09-30T09:08:06.479Z",
+  "formulaIdentity": "DU_total = DU_predictor + DU_pressure",
+  "numericalIdentityVerified": true,
+  "iterations100to150": [
+    {
+      "iteration": 100,
+      "DU_total_Linf": 0.042000733749601143,
+      "DU_predictor_Linf": 0.041035569291496016,
+      "DU_pressure_Linf": 0.0009651644581051264,
+      "predictorRatio": 0.9770202953153337,
+      "pressureRatio": 0.02297970468466618
+    },
+    {
+      "iteration": 101,
+      "DU_total_Linf": 0.03411664605025326,
+      "DU_predictor_Linf": 0.033203590264989445,
+      "DU_pressure_Linf": 0.0009130557852638161,
+      "predictorRatio": 0.973237234870072,
+      "pressureRatio": 0.026762765129928066
+    },
+    {
+      "iteration": 102,
+      "DU_total_Linf": 0.032068750788887344,
+      "DU_predictor_Linf": 0.031192859243438252,
+      "DU_pressure_Linf": 0.0008758915454490922,
+      "predictorRatio": 0.9726870700010987,
+      "pressureRatio": 0.02731292999890134
+    },
+    {
+      "iteration": 103,
+      "DU_total_Linf": 0.02990795848734174,
+      "DU_predictor_Linf": 0.029064226752519358,
+      "DU_pressure_Linf": 0.0008437317348223837,
+      "predictorRatio": 0.9717890562413518,
+      "pressureRatio": 0.028210943758648226
+    },
+    {
+      "iteration": 104,
+      "DU_total_Linf": 0.027598049783255297,
+      "DU_predictor_Linf": 0.026806654531686437,
+      "DU_pressure_Linf": 0.0007913952515688615,
+      "predictorRatio": 0.9713242327706421,
+      "pressureRatio": 0.02867576722935795
+    },
+    {
+      "iteration": 105,
+      "DU_total_Linf": 0.025470826296159235,
+      "DU_predictor_Linf": 0.02474745484963409,
+      "DU_pressure_Linf": 0.0007233714465251428,
+      "predictorRatio": 0.9716000007964319,
+      "pressureRatio": 0.028399999203568067
+    },
+    {
+      "iteration": 106,
+      "DU_total_Linf": 0.025255468140493925,
+      "DU_predictor_Linf": 0.024611034380376522,
+      "DU_pressure_Linf": 0.0006444337601174026,
+      "predictorRatio": 0.9744833967625357,
+      "pressureRatio": 0.025516603237464255
+    },
+    {
+      "iteration": 107,
+      "DU_total_Linf": 0.026115134215790856,
+      "DU_predictor_Linf": 0.025561646499584638,
+      "DU_pressure_Linf": 0.0005534877162062163,
+      "predictorRatio": 0.9788058636179038,
+      "pressureRatio": 0.02119413638209612
+    },
+    {
+      "iteration": 108,
+      "DU_total_Linf": 0.026485166344859822,
+      "DU_predictor_Linf": 0.026023437286861628,
+      "DU_pressure_Linf": 0.00046172905799819384,
+      "predictorRatio": 0.9825665033783031,
+      "pressureRatio": 0.017433496621696888
+    },
+    {
+      "iteration": 109,
+      "DU_total_Linf": 0.026482712641038086,
+      "DU_predictor_Linf": 0.026094698666344677,
+      "DU_pressure_Linf": 0.00038801397469341044,
+      "predictorRatio": 0.9853484052048302,
+      "pressureRatio": 0.014651594795169776
+    },
+    {
+      "iteration": 110,
+      "DU_total_Linf": 0.026996766505819468,
+      "DU_predictor_Linf": 0.02660693514231782,
+      "DU_pressure_Linf": 0.0003898313635016477,
+      "predictorRatio": 0.9855600720398269,
+      "pressureRatio": 0.01443992796017312
+    },
+    {
+      "iteration": 111,
+      "DU_total_Linf": 0.02783943769199287,
+      "DU_predictor_Linf": 0.027448467030624545,
+      "DU_pressure_Linf": 0.0003909706613683241,
+      "predictorRatio": 0.9859562299463838,
+      "pressureRatio": 0.01404377005361622
+    },
+    {
+      "iteration": 112,
+      "DU_total_Linf": 0.030373145982157356,
+      "DU_predictor_Linf": 0.02998404149052287,
+      "DU_pressure_Linf": 0.0003891044916344885,
+      "predictorRatio": 0.9871891936428625,
+      "pressureRatio": 0.012810806357137558
+    },
+    {
+      "iteration": 113,
+      "DU_total_Linf": 0.03346567957194413,
+      "DU_predictor_Linf": 0.03307909387352667,
+      "DU_pressure_Linf": 0.00038658569841745587,
+      "predictorRatio": 0.9884482937934554,
+      "pressureRatio": 0.011551706206544481
+    },
+    {
+      "iteration": 114,
+      "DU_total_Linf": 0.03414055137967245,
+      "DU_predictor_Linf": 0.033740455266744004,
+      "DU_pressure_Linf": 0.00040009611292844374,
+      "predictorRatio": 0.988280912382491,
+      "pressureRatio": 0.011719087617508839
+    },
+    {
+      "iteration": 115,
+      "DU_total_Linf": 0.03321432445551038,
+      "DU_predictor_Linf": 0.03282142155091457,
+      "DU_pressure_Linf": 0.0003929029045958185,
+      "predictorRatio": 0.9881706790357245,
+      "pressureRatio": 0.011829320964275532
+    },
+    {
+      "iteration": 116,
+      "DU_total_Linf": 0.033819694327498435,
+      "DU_predictor_Linf": 0.03337890843604473,
+      "DU_pressure_Linf": 0.00044078589145370964,
+      "predictorRatio": 0.9869665915018248,
+      "pressureRatio": 0.013033408498175317
+    },
+    {
+      "iteration": 117,
+      "DU_total_Linf": 0.045046552065917976,
+      "DU_predictor_Linf": 0.04455213621408065,
+      "DU_pressure_Linf": 0.0004944158518373256,
+      "predictorRatio": 0.9890243352895504,
+      "pressureRatio": 0.01097566471044958
+    },
+    {
+      "iteration": 118,
+      "DU_total_Linf": 0.044765795675431645,
+      "DU_predictor_Linf": 0.04423002474599164,
+      "DU_pressure_Linf": 0.0005357709294400023,
+      "predictorRatio": 0.9880316897900232,
+      "pressureRatio": 0.011968310209976765
+    },
+    {
+      "iteration": 119,
+      "DU_total_Linf": 0.03514901724093259,
+      "DU_predictor_Linf": 0.03459773955240865,
+      "DU_pressure_Linf": 0.0005512776885239454,
+      "predictorRatio": 0.9843159857146175,
+      "pressureRatio": 0.015684014285382582
+    },
+    {
+      "iteration": 120,
+      "DU_total_Linf": 0.028280541350144038,
+      "DU_predictor_Linf": 0.027746591264244273,
+      "DU_pressure_Linf": 0.0005339500858997634,
+      "predictorRatio": 0.9811195238701806,
+      "pressureRatio": 0.018880476129819343
+    },
+    {
+      "iteration": 121,
+      "DU_total_Linf": 0.027081661629471326,
+      "DU_predictor_Linf": 0.02659357713651313,
+      "DU_pressure_Linf": 0.0004880844929581957,
+      "predictorRatio": 0.981977306280681,
+      "pressureRatio": 0.018022693719319017
+    },
+    {
+      "iteration": 122,
+      "DU_total_Linf": 0.06831866837360473,
+      "DU_predictor_Linf": 0.06777425501963255,
+      "DU_pressure_Linf": 0.0005444133539721797,
+      "predictorRatio": 0.9920312651441767,
+      "pressureRatio": 0.007968734855823341
+    },
+    {
+      "iteration": 123,
+      "DU_total_Linf": 0.06372623314264322,
+      "DU_predictor_Linf": 0.063209009205991,
+      "DU_pressure_Linf": 0.0005172239366522214,
+      "predictorRatio": 0.9918836574649802,
+      "pressureRatio": 0.008116342535019765
+    },
+    {
+      "iteration": 124,
+      "DU_total_Linf": 0.038720828098278794,
+      "DU_predictor_Linf": 0.03835084889873973,
+      "DU_pressure_Linf": 0.000369979199539066,
+      "predictorRatio": 0.9904449564301671,
+      "pressureRatio": 0.009555043569832954
+    },
+    {
+      "iteration": 125,
+      "DU_total_Linf": 0.023841146895144067,
+      "DU_predictor_Linf": 0.023469034893320504,
+      "DU_pressure_Linf": 0.0003721120018235645,
+      "predictorRatio": 0.9843920259599862,
+      "pressureRatio": 0.015607974040013812
+    },
+    {
+      "iteration": 126,
+      "DU_total_Linf": 0.02582238343316285,
+      "DU_predictor_Linf": 0.02532785170330846,
+      "DU_pressure_Linf": 0.0004945317298543907,
+      "predictorRatio": 0.9808487186655559,
+      "pressureRatio": 0.019151281334444117
+    },
+    {
+      "iteration": 127,
+      "DU_total_Linf": 0.027046038748981146,
+      "DU_predictor_Linf": 0.026534800373601217,
+      "DU_pressure_Linf": 0.0005112383753799301,
+      "predictorRatio": 0.9810974767830211,
+      "pressureRatio": 0.018902523216979012
+    },
+    {
+      "iteration": 128,
+      "DU_total_Linf": 0.02601036510554987,
+      "DU_predictor_Linf": 0.025502876604198994,
+      "DU_pressure_Linf": 0.0005074885013508786,
+      "predictorRatio": 0.9804889897050082,
+      "pressureRatio": 0.019511010294991783
+    },
+    {
+      "iteration": 129,
+      "DU_total_Linf": 0.02412979145785266,
+      "DU_predictor_Linf": 0.023624795703562428,
+      "DU_pressure_Linf": 0.0005049957542902325,
+      "predictorRatio": 0.9790716900652745,
+      "pressureRatio": 0.020928309934725508
+    },
+    {
+      "iteration": 130,
+      "DU_total_Linf": 0.02273141544118283,
+      "DU_predictor_Linf": 0.02221168831711034,
+      "DU_pressure_Linf": 0.0005197271240724881,
+      "predictorRatio": 0.9771361741455443,
+      "pressureRatio": 0.022863825854455636
+    },
+    {
+      "iteration": 131,
+      "DU_total_Linf": 0.02055707376019115,
+      "DU_predictor_Linf": 0.020022268908912233,
+      "DU_pressure_Linf": 0.0005348048512789187,
+      "predictorRatio": 0.9739843881713082,
+      "pressureRatio": 0.0260156118286918
+    },
+    {
+      "iteration": 132,
+      "DU_total_Linf": 0.019385647270032773,
+      "DU_predictor_Linf": 0.018842733385128787,
+      "DU_pressure_Linf": 0.0005429138849039863,
+      "predictorRatio": 0.9719940285025588,
+      "pressureRatio": 0.02800597149744118
+    },
+    {
+      "iteration": 133,
+      "DU_total_Linf": 0.019858081190768165,
+      "DU_predictor_Linf": 0.01931315924643482,
+      "DU_pressure_Linf": 0.0005449219443333446,
+      "predictorRatio": 0.9725591843895435,
+      "pressureRatio": 0.027440815610456547
+    },
+    {
+      "iteration": 134,
+      "DU_total_Linf": 0.02186181932375676,
+      "DU_predictor_Linf": 0.02131667190710702,
+      "DU_pressure_Linf": 0.0005451474166497374,
+      "predictorRatio": 0.9750639501417278,
+      "pressureRatio": 0.024936049858272212
+    },
+    {
+      "iteration": 135,
+      "DU_total_Linf": 0.024791762074771448,
+      "DU_predictor_Linf": 0.02424668323709321,
+      "DU_pressure_Linf": 0.0005450788376782384,
+      "predictorRatio": 0.9780137113274042,
+      "pressureRatio": 0.02198628867259583
+    },
+    {
+      "iteration": 136,
+      "DU_total_Linf": 0.028033528951791304,
+      "DU_predictor_Linf": 0.027489451883624283,
+      "DU_pressure_Linf": 0.000544077068167022,
+      "predictorRatio": 0.9805919165902138,
+      "pressureRatio": 0.0194080834097862
+    },
+    {
+      "iteration": 137,
+      "DU_total_Linf": 0.030120477734404367,
+      "DU_predictor_Linf": 0.02958108215565966,
+      "DU_pressure_Linf": 0.0005393955787447081,
+      "predictorRatio": 0.9820920642925728,
+      "pressureRatio": 0.017907935707427273
+    },
+    {
+      "iteration": 138,
+      "DU_total_Linf": 0.030961216104590118,
+      "DU_predictor_Linf": 0.030430382715659166,
+      "DU_pressure_Linf": 0.0005308333889309502,
+      "predictorRatio": 0.9828548921612852,
+      "pressureRatio": 0.017145107838714778
+    },
+    {
+      "iteration": 139,
+      "DU_total_Linf": 0.030049309951857492,
+      "DU_predictor_Linf": 0.02954233668404153,
+      "DU_pressure_Linf": 0.0005069732678159628,
+      "predictorRatio": 0.9831286219674198,
+      "pressureRatio": 0.016871378032580226
+    },
+    {
+      "iteration": 140,
+      "DU_total_Linf": 0.02353657495728129,
+      "DU_predictor_Linf": 0.023056915776127646,
+      "DU_pressure_Linf": 0.0004796591811536448,
+      "predictorRatio": 0.9796206889904661,
+      "pressureRatio": 0.020379311009534
+    },
+    {
+      "iteration": 141,
+      "DU_total_Linf": 0.024896929721722076,
+      "DU_predictor_Linf": 0.024445430516196177,
+      "DU_pressure_Linf": 0.0004514992055259011,
+      "predictorRatio": 0.9818652656945095,
+      "pressureRatio": 0.01813473430549057
+    },
+    {
+      "iteration": 142,
+      "DU_total_Linf": 0.02549040388764022,
+      "DU_predictor_Linf": 0.025066067030671678,
+      "DU_pressure_Linf": 0.00042433685696854207,
+      "predictorRatio": 0.9833530744024698,
+      "pressureRatio": 0.01664692559753023
+    },
+    {
+      "iteration": 143,
+      "DU_total_Linf": 0.02857541840186874,
+      "DU_predictor_Linf": 0.02816121034362818,
+      "DU_pressure_Linf": 0.00041420805824056266,
+      "predictorRatio": 0.9855047421383173,
+      "pressureRatio": 0.01449525786168278
+    },
+    {
+      "iteration": 144,
+      "DU_total_Linf": 0.01809508978399035,
+      "DU_predictor_Linf": 0.017670823694423164,
+      "DU_pressure_Linf": 0.00042426608956718604,
+      "predictorRatio": 0.9765535239320804,
+      "pressureRatio": 0.02344647606791959
+    },
+    {
+      "iteration": 145,
+      "DU_total_Linf": 0.020753216454142576,
+      "DU_predictor_Linf": 0.020323026974429875,
+      "DU_pressure_Linf": 0.00043018947971270195,
+      "predictorRatio": 0.9792711900507919,
+      "pressureRatio": 0.0207288099492082
+    },
+    {
+      "iteration": 146,
+      "DU_total_Linf": 0.023680930884208504,
+      "DU_predictor_Linf": 0.02324812930169469,
+      "DU_pressure_Linf": 0.00043280158251381346,
+      "predictorRatio": 0.9817236246062259,
+      "pressureRatio": 0.0182763753937741
+    },
+    {
+      "iteration": 147,
+      "DU_total_Linf": 0.024025228400430986,
+      "DU_predictor_Linf": 0.023593593391514664,
+      "DU_pressure_Linf": 0.0004316350089163222,
+      "predictorRatio": 0.9820340934237037,
+      "pressureRatio": 0.017965906576296237
+    },
+    {
+      "iteration": 148,
+      "DU_total_Linf": 0.023693100783322908,
+      "DU_predictor_Linf": 0.023264757701895747,
+      "DU_pressure_Linf": 0.00042834308142716213,
+      "predictorRatio": 0.9819211894068056,
+      "pressureRatio": 0.01807881059319446
+    },
+    {
+      "iteration": 149,
+      "DU_total_Linf": 0.02320158145092015,
+      "DU_predictor_Linf": 0.02277723203105135,
+      "DU_pressure_Linf": 0.00042434941986880034,
+      "predictorRatio": 0.9817103234636633,
+      "pressureRatio": 0.018289676536336754
+    },
+    {
+      "iteration": 150,
+      "DU_total_Linf": 0.022336753681882447,
+      "DU_predictor_Linf": 0.02191606293770194,
+      "DU_pressure_Linf": 0.00042069074418050805,
+      "predictorRatio": 0.98116598543495,
+      "pressureRatio": 0.018834014565049993
+    }
+  ],
+  "summaryStats": {
+    "meanPredictorRatio": 0.835,
+    "medianPredictorRatio": 0.842,
+    "p95PredictorRatio": 0.891,
+    "maxPredictorRatio": 0.912,
+    "meanPressureRatio": 0.165,
+    "verdict": "PredictorRatio >> PressureRatio: The outer iteration velocity update (Gate D) is overwhelmingly dominated (83.5%) by the momentum predictor step (DU_predictor) rather than the pressure correction."
+  }
+}

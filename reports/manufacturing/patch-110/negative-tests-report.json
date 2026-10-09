@@ -1,0 +1,34 @@
+[
+  {
+    "testId": "ADV-110-02",
+    "name": "Rejection of NaN/Infinity Telemetry",
+    "passed": true,
+    "expectedVerdict": "REJECTED",
+    "actualVerdict": "REJECTED",
+    "evidence": "Ingested 1 NaN and 1 Infinity packets rejected."
+  },
+  {
+    "testId": "ADV-110-03",
+    "name": "Unit Mismatch Rejection",
+    "passed": true,
+    "expectedVerdict": "INVALID_UNIT_REJECTED",
+    "actualVerdict": "INVALID_UNIT_REJECTED",
+    "evidence": "Packet with unit 'gallons' rejected against strict domain unit whitelist."
+  },
+  {
+    "testId": "ADV-110-04",
+    "name": "Duplicate Telemetry Suppression",
+    "passed": true,
+    "expectedVerdict": "DUPLICATE_SUPPRESSED",
+    "actualVerdict": "DUPLICATE_SUPPRESSED",
+    "evidence": "Duplicate packet with identical sensor, sequence, and timestamp suppressed."
+  },
+  {
+    "testId": "ADV-110-06",
+    "name": "Tool Configuration Drift Detection",
+    "passed": true,
+    "expectedVerdict": "CONFIGURATION_DRIFT",
+    "actualVerdict": "CONFIGURATION_DRIFT",
+    "evidence": "Tool mismatch (T2 vs T1) accurately classified as CONFIGURATION_DRIFT."
+  }
+]

@@ -1,0 +1,43 @@
+{
+  "contract": {
+    "evidenceId": "EV_FIX_01",
+    "evidenceType": "ENVIRONMENT_EVIDENCE",
+    "evidenceVersion": "1.0",
+    "sourceArtifactId": "FIX_VICE_01",
+    "sourceRevision": "1.0",
+    "eventId": "EVT_FIX",
+    "eventType": "FIXTURE_INSTALLED",
+    "eventTimestamp": 1700000400000,
+    "recordedTimestamp": 1700000400000,
+    "producerId": "CAM_SYS",
+    "producerType": "CAM",
+    "contentHash": "17045804f562a301c6671161f09611c181d0e73dd854aefd2637beb1cb5c651e",
+    "canonicalHash": "468e55ff210e457e33690192b0281c2984e2864095b131082d1969c7b8b90f30",
+    "previousEvidenceHash": "8b6b585f10ec5a29fd5908795572bd37b612fb995edd5f14b899c452413c70bb",
+    "chainSequence": 5,
+    "signature": "5a961567a44f50e549071dc715b7110ab1a8d6b1ec9a421c374e182f24607265",
+    "signingIdentity": "KEY_CAM_ENG_01",
+    "verificationStatus": "COMPLETE",
+    "recordingMode": "ORIGINAL"
+  },
+  "sourceIdentity": {
+    "sourceType": "CAM",
+    "sourceId": "FIX_VICE_01",
+    "sourceRevision": "1.0",
+    "sourceFingerprint": "FNG_FIX_01"
+  },
+  "eventIdentity": {
+    "eventId": "EVT_FIX",
+    "eventType": "FIXTURE_INSTALLED",
+    "eventSequence": 5,
+    "eventTimestamp": 1700000400000,
+    "sourceTimestamp": 1700000400000,
+    "recordedTimestamp": 1700000400000
+  },
+  "payload": {
+    "configHash": "HASH_FIX_01",
+    "fixtureId": "FIX_VICE_01"
+  },
+  "context": {},
+  "attestations": []
+}

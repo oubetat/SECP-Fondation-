@@ -1,0 +1,14 @@
+{
+  "class": "SparseVector",
+  "operations": [
+    "dot(dense | sparse)",
+    "norm2()",
+    "scale(alpha)",
+    "toDense()",
+    "fromDense(dense, tol)"
+  ],
+  "timeComplexity": {
+    "dotSparse": "O(nnz_a + nnz_b) two-pointer merge",
+    "dotDense": "O(nnz) direct index lookup"
+  }
+}

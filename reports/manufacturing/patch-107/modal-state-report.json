@@ -1,0 +1,15 @@
+{
+  "motionGCode": "G01",
+  "planeGCode": "G17",
+  "distanceModeGCode": "G90",
+  "feedModeGCode": "G94",
+  "unitsGCode": "G21",
+  "cutterCompGCode": "G40",
+  "workOffsetGCode": "G54",
+  "activeTool": 1,
+  "toolLengthOffsetActive": true,
+  "spindleState": "CW",
+  "activeSpindleRPM": 8000,
+  "activeFeedRate": 1200,
+  "coolantActive": true
+}

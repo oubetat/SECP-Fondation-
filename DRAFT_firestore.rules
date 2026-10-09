@@ -1,0 +1,64 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Default deny
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Reusable helpers
+    function isSignedIn() {
+      return request.auth != null && request.auth.token.email_verified == true;
+    }
+
+    function isOwner(resourceData) {
+      return isSignedIn() && resourceData.ownerId == request.auth.uid;
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function existing() {
+      return resource.data;
+    }
+
+    // Validation Blueprint for Product
+    function isValidProduct(data) {
+      return data.keys().hasAll(['id', 'name', 'type', 'description', 'unit', 'updatedAt', 'ownerId']) &&
+             data.keys().size() <= 8 && // Allowing for optional projectData
+             data.id is string && data.id.size() <= 128 &&
+             data.name is string && data.name.size() <= 255 &&
+             data.type in ['BLANK', 'BALL_VALVE', 'INDUSTRIAL_DRONE', 'V6_ENGINE', 'CUSTOM_SOLID', 'IMPORTED'] &&
+             data.description is string && data.description.size() <= 1000 &&
+             data.unit in ['mm', 'inch', 'm'] &&
+             data.updatedAt is string && // We'll use string format for now as per blueprint
+             data.ownerId == request.auth.uid;
+    }
+
+    match /products/{productId} {
+      allow get: if isOwner(existing());
+      allow list: if isSignedIn() && resource.data.ownerId == request.auth.uid;
+      
+      allow create: if isValidId(productId) && 
+                     isValidProduct(incoming()) &&
+                     incoming().id == productId;
+                     
+      allow update: if isOwner(existing()) &&
+                     isValidProduct(incoming()) &&
+                     incoming().id == existing().id &&
+                     incoming().ownerId == existing().ownerId &&
+                     (
+                       // Action: Update Metadata or Project Data
+                       incoming().diff(existing()).affectedKeys().hasAny(['name', 'description', 'type', 'unit', 'updatedAt', 'projectData'])
+                     );
+                     
+      allow delete: if isOwner(existing());
+    }
+  }
+}

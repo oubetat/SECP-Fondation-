@@ -1,0 +1,194 @@
+{
+  "timestamp": "2026-08-23T14:30:46.429Z",
+  "benchmarkVersion": "1.0.0",
+  "executiveVerdict": "PARTIALLY_REPRODUCIBLE",
+  "baselineRuns": [
+    {
+      "runId": "run-1787495446427-cad",
+      "scenarioId": "SCEN-REP-001",
+      "timestamp": "2026-08-23T14:30:46.427Z",
+      "engineVersion": "2.0.0",
+      "environmentFingerprint": "4912b7a10333eb363c79ef3ea54fc83acbfefaa716f78e501f89df9ffb850223",
+      "inputs": {
+        "inputHash": "7b05a4d60d6922c43c71f57ba54fe8baf456de45e59890de1f857ff26e451fc2",
+        "canonicalInputHash": "7b05a4d60d6922c43c71f57ba54fe8baf456de45e59890de1f857ff26e451fc2",
+        "params": {
+          "type": "CYLINDER",
+          "params": {
+            "radius": 10,
+            "height": 50
+          },
+          "material": "STAINLESS_316"
+        }
+      },
+      "configuration": {
+        "solverConfigHash": "NA",
+        "materialConfigHash": "b62b830bc4b35bcf3c7001baa54fff3a3753a593b3fcc6351f846de3c7a19dcd"
+      },
+      "results": {
+        "resultHash": "HASH-CAD-OK-123",
+        "evidenceRootHash": "EV-CAD-ROOT-456",
+        "numericalValues": {
+          "volume": 15707.96,
+          "area": 3769.91
+        }
+      }
+    },
+    {
+      "runId": "run-1787495446428-cfd",
+      "scenarioId": "SCEN-REP-002",
+      "timestamp": "2026-08-23T14:30:46.428Z",
+      "engineVersion": "2.0.0",
+      "environmentFingerprint": "4912b7a10333eb363c79ef3ea54fc83acbfefaa716f78e501f89df9ffb850223",
+      "inputs": {
+        "inputHash": "4973a0ea6c2c256b3c70efeba54ff4bac3167e9315b239561f84f082cb8683fa",
+        "canonicalInputHash": "4973a0ea6c2c256b3c70efeba54ff4bac3167e9315b239561f84f082cb8683fa",
+        "params": {
+          "mesh": "AIRFOIL_MESH_V1",
+          "fluid": "AIR",
+          "velocity": 100
+        }
+      },
+      "configuration": {
+        "solverConfigHash": "59ca0d10a0bb86723c7072f3a54fd9ba75715b38057c29dc1f84abfa40b66220",
+        "meshConfigHash": "MESH-H1"
+      },
+      "results": {
+        "resultHash": "HASH-CFD-OK-789",
+        "evidenceRootHash": "EV-CFD-ROOT-012",
+        "numericalValues": {
+          "lift": 1.23,
+          "drag": 0.045,
+          "residual": 1.2e-7
+        }
+      }
+    },
+    {
+      "runId": "run-1787495446429-plm",
+      "scenarioId": "SCEN-REP-003",
+      "timestamp": "2026-08-23T14:30:46.429Z",
+      "engineVersion": "2.0.0",
+      "environmentFingerprint": "4912b7a10333eb363c79ef3ea54fc83acbfefaa716f78e501f89df9ffb850223",
+      "inputs": {
+        "inputHash": "5a5b29ea160e32743c71fa53a54ffeba03de4a10164ab1021f85829a8f464d6e",
+        "canonicalInputHash": "5a5b29ea160e32743c71fa53a54ffeba03de4a10164ab1021f85829a8f464d6e",
+        "params": {
+          "partId": "P-101",
+          "bom": [
+            {
+              "subPartId": "SP-1",
+              "qty": 2
+            },
+            {
+              "subPartId": "SP-2",
+              "qty": 1
+            }
+          ]
+        }
+      },
+      "configuration": {
+        "solverConfigHash": "NA"
+      },
+      "results": {
+        "resultHash": "HASH-PLM-OK-345",
+        "evidenceRootHash": "EV-PLM-ROOT-678"
+      }
+    },
+    {
+      "runId": "run-1787495446429-cad",
+      "scenarioId": "SCEN-REP-ADV-001",
+      "timestamp": "2026-08-23T14:30:46.429Z",
+      "engineVersion": "2.0.0",
+      "environmentFingerprint": "4912b7a10333eb363c79ef3ea54fc83acbfefaa716f78e501f89df9ffb850223",
+      "inputs": {
+        "inputHash": "7b05a4d60d6922c43c71f57ba54fe8baf456de45e59890de1f857ff26e451fc2",
+        "canonicalInputHash": "7b05a4d60d6922c43c71f57ba54fe8baf456de45e59890de1f857ff26e451fc2",
+        "params": {
+          "type": "CYLINDER",
+          "params": {
+            "radius": 10,
+            "height": 50
+          },
+          "material": "STAINLESS_316"
+        }
+      },
+      "configuration": {
+        "solverConfigHash": "NA",
+        "materialConfigHash": "b62b830bc4b35bcf3c7001baa54fff3a3753a593b3fcc6351f846de3c7a19dcd"
+      },
+      "results": {
+        "resultHash": "HASH-CAD-OK-123",
+        "evidenceRootHash": "EV-CAD-ROOT-456",
+        "numericalValues": {
+          "volume": 15707.96,
+          "area": 3769.91
+        }
+      }
+    }
+  ],
+  "replayResults": [
+    {
+      "runId": "run-1787495446427-cad",
+      "verdict": "EXACTLY_REPRODUCIBLE",
+      "numericalError": {
+        "absolute": 0,
+        "relative": 0,
+        "maxDeviation": 0
+      },
+      "hashMatch": true,
+      "evidenceMatch": true
+    },
+    {
+      "runId": "run-1787495446428-cfd",
+      "verdict": "EXACTLY_REPRODUCIBLE",
+      "numericalError": {
+        "absolute": 0,
+        "relative": 0,
+        "maxDeviation": 0
+      },
+      "hashMatch": true,
+      "evidenceMatch": true
+    },
+    {
+      "runId": "run-1787495446429-plm",
+      "verdict": "EXACTLY_REPRODUCIBLE",
+      "hashMatch": true,
+      "evidenceMatch": true
+    },
+    {
+      "runId": "run-1787495446429-cad",
+      "verdict": "INPUT_MISMATCH",
+      "hashMatch": false,
+      "evidenceMatch": false,
+      "mismatchedKeys": [
+        "inputs.params"
+      ]
+    }
+  ],
+  "matrix": [
+    {
+      "domain": "CAD",
+      "sameRuntime": "EXACTLY_REPRODUCIBLE",
+      "restartedRuntime": "EXACTLY_REPRODUCIBLE",
+      "sameVersion": "EXACTLY_REPRODUCIBLE",
+      "crossVersion": "UNPROVEN",
+      "verdict": "EXACTLY_REPRODUCIBLE"
+    },
+    {
+      "domain": "CFD",
+      "sameRuntime": "NUMERICALLY_REPRODUCIBLE",
+      "restartedRuntime": "NUMERICALLY_REPRODUCIBLE",
+      "sameVersion": "NUMERICALLY_REPRODUCIBLE",
+      "crossVersion": "UNPROVEN",
+      "verdict": "NUMERICALLY_REPRODUCIBLE"
+    },
+    {
+      "domain": "PLM",
+      "sameRuntime": "EXACTLY_REPRODUCIBLE",
+      "restartedRuntime": "EXACTLY_REPRODUCIBLE",
+      "sameVersion": "EXACTLY_REPRODUCIBLE",
+      "crossVersion": "UNPROVEN",
+      "verdict": "EXACTLY_REPRODUCIBLE"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "twinId": "TWIN_5AXIS_001",
+  "machineId": "MACH_DMG_50_01",
+  "manufacturer": "DMG MORI",
+  "machineModel": "DMU 50 3rd Gen",
+  "machineSerialReference": "SN-98421-2026",
+  "configurationRevision": 1,
+  "instanceFingerprint": "FINGERPRINT_DMU50_A"
+}

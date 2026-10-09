@@ -1,0 +1,119 @@
+{
+  "changedArtifactId": "CAD_MODEL_01",
+  "changeSignificance": "CRITICAL",
+  "affectedArtifactIds": [
+    "FEAT_MODEL_01",
+    "MAT_AL7075_T6",
+    "TOOL_ENDMILL_10MM",
+    "MACH_DMG_50",
+    "OP_AERO_POCKET_01",
+    "POST_ENGINE_TNC640",
+    "TWIN_EXEC_01",
+    "TOOLPATH_AERO_01",
+    "NC_O1001",
+    "SIM_AERO_01",
+    "VERIF_NC_01"
+  ],
+  "affectedArtifactTypes": [
+    "MANUFACTURING_FEATURE",
+    "MATERIAL",
+    "TOOL",
+    "MACHINE",
+    "CAM_OPERATION",
+    "POST_PROCESSOR",
+    "DIGITAL_TWIN_STATE",
+    "TOOLPATH",
+    "NC_PROGRAM",
+    "SIMULATION",
+    "GCODE_VERIFICATION"
+  ],
+  "staleDerivativesCount": 11,
+  "requiresRegeneration": true,
+  "impactGraph": [
+    {
+      "source": "CAD_MODEL_01",
+      "target": "FEAT_MODEL_01",
+      "impactType": "CRITICAL"
+    },
+    {
+      "source": "CAD_MODEL_01",
+      "target": "MAT_AL7075_T6",
+      "impactType": "CRITICAL"
+    },
+    {
+      "source": "CAD_MODEL_01",
+      "target": "TOOL_ENDMILL_10MM",
+      "impactType": "CRITICAL"
+    },
+    {
+      "source": "CAD_MODEL_01",
+      "target": "MACH_DMG_50",
+      "impactType": "CRITICAL"
+    },
+    {
+      "source": "FEAT_MODEL_01",
+      "target": "OP_AERO_POCKET_01",
+      "impactType": "CRITICAL"
+    },
+    {
+      "source": "MAT_AL7075_T6",
+      "target": "OP_AERO_POCKET_01",
+      "impactType": "CRITICAL"
+    },
+    {
+      "source": "TOOL_ENDMILL_10MM",
+      "target": "OP_AERO_POCKET_01",
+      "impactType": "CRITICAL"
+    },
+    {
+      "source": "MACH_DMG_50",
+      "target": "OP_AERO_POCKET_01",
+      "impactType": "CRITICAL"
+    },
+    {
+      "source": "OP_AERO_POCKET_01",
+      "target": "TOOLPATH_AERO_01",
+      "impactType": "CRITICAL"
+    },
+    {
+      "source": "TOOLPATH_AERO_01",
+      "target": "SIM_AERO_01",
+      "impactType": "CRITICAL"
+    },
+    {
+      "source": "MACH_DMG_50",
+      "target": "POST_ENGINE_TNC640",
+      "impactType": "CRITICAL"
+    },
+    {
+      "source": "TOOLPATH_AERO_01",
+      "target": "NC_O1001",
+      "impactType": "CRITICAL"
+    },
+    {
+      "source": "POST_ENGINE_TNC640",
+      "target": "NC_O1001",
+      "impactType": "CRITICAL"
+    },
+    {
+      "source": "NC_O1001",
+      "target": "VERIF_NC_01",
+      "impactType": "CRITICAL"
+    },
+    {
+      "source": "SIM_AERO_01",
+      "target": "VERIF_NC_01",
+      "impactType": "CRITICAL"
+    },
+    {
+      "source": "VERIF_NC_01",
+      "target": "TWIN_EXEC_01",
+      "impactType": "CRITICAL"
+    },
+    {
+      "source": "MACH_DMG_50",
+      "target": "TWIN_EXEC_01",
+      "impactType": "CRITICAL"
+    }
+  ]
+}

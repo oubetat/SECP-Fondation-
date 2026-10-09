@@ -1,0 +1,713 @@
+{
+  "test": "SECP-GOLDEN-TURBINE-INDUSTRIAL-TRUTH",
+  "version": "FORENSIC-002",
+  "scenario": {
+    "id": "SECP-GOLDEN-TURBINE-001",
+    "specification": {
+      "product": "SECP_GOLDEN_TURBINE",
+      "type": "INDUSTRIAL_AXIAL_GAS_TURBINE",
+      "rotor": {
+        "shaftDiameterMm": 120,
+        "shaftLengthMm": 980,
+        "nominalRpm": 12000
+      },
+      "compressor": {
+        "stages": 3,
+        "bladesPerStage": 24
+      },
+      "turbine": {
+        "stages": 4,
+        "bladesPerStage": 24
+      },
+      "blade": {
+        "chordMm": 82,
+        "spanMm": 110,
+        "twistDeg": 28,
+        "sweepMm": 7,
+        "rootRadiusMm": 18,
+        "tipRadiusMm": 3,
+        "minimumThicknessMm": 1.8,
+        "coolingHoles": 6
+      },
+      "materials": {
+        "shaft": "INCONEL_718",
+        "turbineBlade": "INCONEL_738",
+        "compressorBlade": "TI-6AL-4V",
+        "housing": "AISI_316L"
+      },
+      "tolerances": {
+        "shaftDiameterMm": 0.02,
+        "bladeProfileMm": 0.05,
+        "tipClearanceMm": 0.08
+      },
+      "manufacturing": {
+        "process": "5AXIS_CNC"
+      }
+    }
+  },
+  "verdict": {
+    "verdict": "PARTIAL",
+    "explanation": "No executed stage failed, but one or more required capabilities remain blocked, unproven, skipped, or not provisioned."
+  },
+  "stageCount": 21,
+  "statusCounts": {
+    "PASS": 17,
+    "NOT_PROVISIONED": 4
+  },
+  "stages": [
+    {
+      "stage": "00_REQUIREMENTS",
+      "sequence": 0,
+      "startedAt": "2026-09-24T12:24:16.036Z",
+      "completedAt": "2026-09-24T12:24:16.037Z",
+      "durationMs": 2,
+      "status": "PASS",
+      "engine": {
+        "module": "TEST_SCENARIO",
+        "exportName": "GOLDEN_TURBINE_REQUIREMENT_FIXTURE"
+      },
+      "inputArtifactId": "SPEC-TURBINE-SPEC-001",
+      "inputHash": "03ef8f85e9afca4fdf982264b8aad98f1cd13183f1a5ce0f5f77a4c8628aa35f",
+      "outputArtifactId": "REQ-SECP-GOLDEN-TURBINE-001",
+      "outputHash": "812b30dc3aa2cc952fc78cd7fcb8ea52be86d6d46fa415e34d59c5a48a47ee1f",
+      "revisionId": "REQ-REV-001",
+      "revisionHash": "9435e7baaa03252a610f2ebae626d020d0b2525bda8ed4b35c2170f4c007f790",
+      "evidenceSource": "ENGINE",
+      "synthetic": false,
+      "mock": false,
+      "independentlyVerified": true
+    },
+    {
+      "stage": "01_CANONICAL_CAD",
+      "sequence": 1,
+      "startedAt": "2026-09-24T12:24:16.038Z",
+      "completedAt": "2026-09-24T12:24:16.046Z",
+      "durationMs": 8,
+      "status": "PASS",
+      "engine": {
+        "module": "src/engine/cad-kernel/document/DocumentEvaluator",
+        "exportName": "DocumentEvaluator",
+        "implementationHash": "563c77dca6c91c228df82c5b57a724979890f1ea95fa97b335725fb6a725ac8d"
+      },
+      "inputArtifactId": "REQ-SECP-GOLDEN-TURBINE-001",
+      "outputArtifactId": "DOC-TURBINE-001",
+      "inputHash": "812b30dc3aa2cc952fc78cd7fcb8ea52be86d6d46fa415e34d59c5a48a47ee1f",
+      "outputHash": "0b83f829443ba34eb70d2237d354bd7b7b633030269aec891f0fef7fdc8a3bc3",
+      "revisionId": "REV-001",
+      "revisionHash": "af5c1a60719dc56c09d29199d70e2c35d63c30bc1d2675710d52dff61ce4fbf7",
+      "evidenceSource": "ENGINE",
+      "synthetic": false,
+      "mock": false,
+      "independentlyVerified": true,
+      "metadata": {
+        "parametersCount": 4,
+        "hasEvaluatedSolid": false
+      }
+    },
+    {
+      "stage": "02_REVISION",
+      "sequence": 2,
+      "startedAt": "2026-09-24T12:24:16.046Z",
+      "completedAt": "2026-09-24T12:24:16.048Z",
+      "durationMs": 2,
+      "status": "PASS",
+      "engine": {
+        "module": "src/engine/revision/RevisionEngine",
+        "exportName": "RevisionEngine",
+        "implementationHash": "3ab241a77a13acb934b612cccb63a0deeb5bcaecea4f5f12290d0c28549c0d0d"
+      },
+      "inputArtifactId": "DOC-TURBINE-001",
+      "outputArtifactId": "REV-SECP-GOLDEN-TURBINE-001",
+      "inputHash": "0b83f829443ba34eb70d2237d354bd7b7b633030269aec891f0fef7fdc8a3bc3",
+      "outputHash": "c838a5ea52faeb8e15581cf90aa7b7232216f8be63ddd7d001d5b6b9f0ecd6ca",
+      "revisionId": "REV-SECP-GOLDEN-TURBINE-001",
+      "revisionHash": "c838a5ea52faeb8e15581cf90aa7b7232216f8be63ddd7d001d5b6b9f0ecd6ca",
+      "evidenceSource": "ENGINE",
+      "synthetic": false,
+      "mock": false,
+      "independentlyVerified": true
+    },
+    {
+      "stage": "03_SKETCH_CONSTRAINTS",
+      "sequence": 3,
+      "startedAt": "2026-09-24T12:24:16.048Z",
+      "completedAt": "2026-09-24T12:24:16.058Z",
+      "durationMs": 10,
+      "status": "PASS",
+      "engine": {
+        "module": "src/engine/sketch/canonical/CanonicalSketchContract",
+        "exportName": "deriveSolverState",
+        "implementationHash": "2e71e825569130ea278140c3e9fceede3d784df7f5c96f9881d52e22b583a5ae"
+      },
+      "inputArtifactId": "DOC-TURBINE-001",
+      "outputArtifactId": "SKETCH-ROTOR-AIRFOIL-001",
+      "inputHash": "0b83f829443ba34eb70d2237d354bd7b7b633030269aec891f0fef7fdc8a3bc3",
+      "outputHash": "431d17452d6d35f615dacdcd82779153b95c2a73a8339b5654d83d663d25eae3",
+      "revisionId": "REV-SECP-GOLDEN-TURBINE-001",
+      "revisionHash": "c838a5ea52faeb8e15581cf90aa7b7232216f8be63ddd7d001d5b6b9f0ecd6ca",
+      "evidenceSource": "ENGINE",
+      "synthetic": false,
+      "mock": false,
+      "independentlyVerified": true,
+      "metadata": {
+        "converged": true,
+        "remainingDegreesOfFreedom": 2
+      }
+    },
+    {
+      "stage": "04_BREP_TOPOLOGY",
+      "sequence": 4,
+      "startedAt": "2026-09-24T12:24:16.058Z",
+      "completedAt": "2026-09-24T12:24:16.063Z",
+      "durationMs": 5,
+      "status": "PASS",
+      "engine": {
+        "module": "src/engine/cad-kernel/brep/BRepKernel",
+        "exportName": "BRepKernel",
+        "implementationHash": "ee5cbf824c3b983fa7e2ff642698645b29aa37d2e856be2ec7d0dd3b24d73d7f"
+      },
+      "inputArtifactId": "SKETCH-ROTOR-AIRFOIL-001",
+      "outputArtifactId": "TURBINE_SHAFT_SOLID-solid",
+      "inputHash": "431d17452d6d35f615dacdcd82779153b95c2a73a8339b5654d83d663d25eae3",
+      "outputHash": "9be263eaeb669be321e3afd69c1d71e65cedd710c919b95b273133d297082d68",
+      "revisionId": "REV-SECP-GOLDEN-TURBINE-001",
+      "revisionHash": "c838a5ea52faeb8e15581cf90aa7b7232216f8be63ddd7d001d5b6b9f0ecd6ca",
+      "evidenceSource": "ENGINE",
+      "synthetic": false,
+      "mock": false,
+      "independentlyVerified": true,
+      "metadata": {
+        "solidId": "TURBINE_SHAFT_SOLID-solid",
+        "facesCount": 34,
+        "volumeM3": 0.0110124584971664,
+        "surfaceAreaM2": 0.39133250758446025
+      }
+    },
+    {
+      "stage": "05_ASSEMBLY",
+      "sequence": 5,
+      "startedAt": "2026-09-24T12:24:16.063Z",
+      "completedAt": "2026-09-24T12:24:16.068Z",
+      "durationMs": 5,
+      "status": "PASS",
+      "engine": {
+        "module": "src/engine/assembly/AssemblyConstraintSolver",
+        "exportName": "AssemblyConstraintSolver",
+        "implementationHash": "42236c4e5ba2605cc1d472685216e1d52b09fb84305b3b1bc2939694e88e86c3"
+      },
+      "inputArtifactId": "TURBINE_SHAFT_SOLID-solid",
+      "outputArtifactId": "ASM-GOLDEN-TURBINE-001",
+      "inputHash": "9be263eaeb669be321e3afd69c1d71e65cedd710c919b95b273133d297082d68",
+      "outputHash": "4c4dd1482262de753c0a07a91592db9f40d4c90fe60e121b7fab12a6d82a3353",
+      "revisionId": "REV-SECP-GOLDEN-TURBINE-001",
+      "revisionHash": "c838a5ea52faeb8e15581cf90aa7b7232216f8be63ddd7d001d5b6b9f0ecd6ca",
+      "evidenceSource": "ENGINE",
+      "synthetic": false,
+      "mock": false,
+      "independentlyVerified": true,
+      "metadata": {
+        "componentsCount": 2,
+        "satisfiedConstraints": 1,
+        "isDeterministic": true
+      }
+    },
+    {
+      "stage": "06_KINEMATICS",
+      "sequence": 6,
+      "startedAt": "2026-09-24T12:24:16.068Z",
+      "completedAt": "2026-09-24T12:24:16.070Z",
+      "durationMs": 2,
+      "status": "PASS",
+      "engine": {
+        "module": "src/engine/assembly/kinematics/KinematicAssemblyEngine",
+        "exportName": "KinematicAssemblyEngine",
+        "implementationHash": "dda0b12a7863759f509acd02f2a5954f3058a4764badae0586c8a0834fcdfffe"
+      },
+      "inputArtifactId": "ASM-GOLDEN-TURBINE-001",
+      "outputArtifactId": "CONFIG-1790252656069-9321",
+      "inputHash": "4c4dd1482262de753c0a07a91592db9f40d4c90fe60e121b7fab12a6d82a3353",
+      "outputHash": "ce4aacda81e8470210526ab9399e33df9c16ae8e7be1f8b4da4c1d3f5a98e029",
+      "revisionId": "REV-SECP-GOLDEN-TURBINE-001",
+      "revisionHash": "c838a5ea52faeb8e15581cf90aa7b7232216f8be63ddd7d001d5b6b9f0ecd6ca",
+      "evidenceSource": "ENGINE",
+      "synthetic": false,
+      "mock": false,
+      "independentlyVerified": true,
+      "metadata": {
+        "configurationId": "CONFIG-1790252656069-9321",
+        "totalDOF": 0,
+        "configurationHash": "f833ef0b6cb656970697dd9a8c13b4bcdb530706432c68d12d3d7cd9ce29c67c"
+      }
+    },
+    {
+      "stage": "07_FEM",
+      "sequence": 7,
+      "startedAt": "2026-09-24T12:24:16.070Z",
+      "completedAt": "2026-09-24T12:24:16.071Z",
+      "durationMs": 1,
+      "status": "PASS",
+      "engine": {
+        "module": "src/engine/structuralFem",
+        "exportName": "StructuralFemEngine",
+        "implementationHash": "9c7681803ccead9017488032d9887e16e60a758d33635cc0fbc87a05ad394034"
+      },
+      "inputArtifactId": "TURBINE_SHAFT_SOLID-solid",
+      "outputArtifactId": "FEM-RESULT-GOLDEN-TURBINE-001",
+      "inputHash": "9be263eaeb669be321e3afd69c1d71e65cedd710c919b95b273133d297082d68",
+      "outputHash": "48fe19ca8b7bcc4e45aeb0b4c7d2a34fe2f2b13f55bd6afd6e151f59b4973382",
+      "revisionId": "REV-SECP-GOLDEN-TURBINE-001",
+      "revisionHash": "c838a5ea52faeb8e15581cf90aa7b7232216f8be63ddd7d001d5b6b9f0ecd6ca",
+      "evidenceSource": "ENGINE",
+      "synthetic": false,
+      "mock": false,
+      "independentlyVerified": true,
+      "metadata": {
+        "maxDisplacementMm": 3.9925670037572676,
+        "maxVonMisesStressMPa": 155.0390625,
+        "safetyFactor": 7.09498614260519,
+        "converged": true
+      }
+    },
+    {
+      "stage": "08_CFD",
+      "sequence": 8,
+      "startedAt": "2026-09-24T12:24:16.071Z",
+      "completedAt": "2026-09-24T12:24:16.072Z",
+      "durationMs": 1,
+      "status": "PASS",
+      "engine": {
+        "module": "src/engine/cfdEngine",
+        "exportName": "CfdEngine",
+        "implementationHash": "bafaef0bc026a1ef44d241efe73fdd1344dc2006eb7bb49c0ce72a714ac4cab0"
+      },
+      "inputArtifactId": "FEM-RESULT-GOLDEN-TURBINE-001",
+      "outputArtifactId": "CFD-RESULT-GOLDEN-TURBINE-001",
+      "inputHash": "48fe19ca8b7bcc4e45aeb0b4c7d2a34fe2f2b13f55bd6afd6e151f59b4973382",
+      "outputHash": "98ffc8025195ab098c4d3ad12d16e9d52e58893f9b660fefa88fe44c82cd9809",
+      "revisionId": "REV-SECP-GOLDEN-TURBINE-001",
+      "revisionHash": "c838a5ea52faeb8e15581cf90aa7b7232216f8be63ddd7d001d5b6b9f0ecd6ca",
+      "evidenceSource": "ENGINE",
+      "synthetic": false,
+      "mock": false,
+      "independentlyVerified": true,
+      "metadata": {
+        "reynoldsNumber": 625000,
+        "flowRegime": "TURBULENT",
+        "pressureDropPa": 240.2,
+        "maxVelocityMS": 261,
+        "converged": true
+      }
+    },
+    {
+      "stage": "09_THERMAL",
+      "sequence": 9,
+      "startedAt": "2026-09-24T12:24:16.072Z",
+      "completedAt": "2026-09-24T12:24:16.073Z",
+      "durationMs": 1,
+      "status": "PASS",
+      "engine": {
+        "module": "src/engine/thermalCae",
+        "exportName": "ThermalCaeEngine",
+        "implementationHash": "95f650656a32650872bb5e9a7eb8c1b51c971c3882932d8ce4c42d2fc817db36"
+      },
+      "inputArtifactId": "CFD-RESULT-GOLDEN-TURBINE-001",
+      "outputArtifactId": "THERMAL-RESULT-GOLDEN-TURBINE-001",
+      "inputHash": "98ffc8025195ab098c4d3ad12d16e9d52e58893f9b660fefa88fe44c82cd9809",
+      "outputHash": "540f065fca733aafc867671a3631188b86b619235278c654f17373e79b9a0cd6",
+      "revisionId": "REV-SECP-GOLDEN-TURBINE-001",
+      "revisionHash": "c838a5ea52faeb8e15581cf90aa7b7232216f8be63ddd7d001d5b6b9f0ecd6ca",
+      "evidenceSource": "ENGINE",
+      "synthetic": false,
+      "mock": false,
+      "independentlyVerified": true,
+      "metadata": {
+        "minTemperatureC": 650,
+        "maxTemperatureC": 12650,
+        "ambientTemperatureC": 650,
+        "maxHeatFluxWM2": 3000000,
+        "converged": true
+      }
+    },
+    {
+      "stage": "10_PMI_GDT",
+      "sequence": 10,
+      "startedAt": "2026-09-24T12:24:16.073Z",
+      "completedAt": "2026-09-24T12:24:16.073Z",
+      "durationMs": 0,
+      "status": "PASS",
+      "engine": {
+        "module": "src/engine/cad/pmi/PMIEngine",
+        "exportName": "PMIEngine",
+        "implementationHash": "e0f32ece11442b29633a08071273e2154921844a629f4b9377563cb0c186837c"
+      },
+      "inputArtifactId": "DOC-TURBINE-001",
+      "outputArtifactId": "GDT-CYLINDRICITY-FEAT-SHAFT-JOURNAL-DOC-TURB",
+      "inputHash": "0b83f829443ba34eb70d2237d354bd7b7b633030269aec891f0fef7fdc8a3bc3",
+      "outputHash": "a18c719c24d4452f3b0d683863ffa9db334db63b7232ab5090e4602c4a7a633b",
+      "revisionId": "REV-SECP-GOLDEN-TURBINE-001",
+      "revisionHash": "c838a5ea52faeb8e15581cf90aa7b7232216f8be63ddd7d001d5b6b9f0ecd6ca",
+      "evidenceSource": "ENGINE",
+      "synthetic": false,
+      "mock": false,
+      "independentlyVerified": true,
+      "metadata": {
+        "presentationText": "⌭ ⌀0.02",
+        "toleranceValueMm": 0.02
+      }
+    },
+    {
+      "stage": "11_ENGINEERING_EVIDENCE",
+      "sequence": 11,
+      "startedAt": "2026-09-24T12:24:16.073Z",
+      "completedAt": "2026-09-24T12:24:16.073Z",
+      "durationMs": 0,
+      "status": "PASS",
+      "engine": {
+        "module": "src/engine/verification/QualityGate",
+        "exportName": "QualityGate",
+        "implementationHash": "4b6cf4d4da8f70d8020e9421622d2e58b3ce4a406de0d1297eb61000bb229bcc"
+      },
+      "inputArtifactId": "GDT-CYLINDRICITY-FEAT-SHAFT-JOURNAL-DOC-TURB",
+      "outputArtifactId": "ENG-EVIDENCE-GOLDEN-TURBINE-001",
+      "inputHash": "a18c719c24d4452f3b0d683863ffa9db334db63b7232ab5090e4602c4a7a633b",
+      "outputHash": "7e1af13106b2072424012f33d19cb2290a215c663de5e76db815675948b6f8ef",
+      "revisionId": "REV-SECP-GOLDEN-TURBINE-001",
+      "revisionHash": "c838a5ea52faeb8e15581cf90aa7b7232216f8be63ddd7d001d5b6b9f0ecd6ca",
+      "evidenceSource": "ENGINE",
+      "synthetic": false,
+      "mock": false,
+      "independentlyVerified": true,
+      "metadata": {
+        "documentHash": "0b83f829443ba34eb70d2237d354bd7b7b633030269aec891f0fef7fdc8a3bc3",
+        "revisionHash": "c838a5ea52faeb8e15581cf90aa7b7232216f8be63ddd7d001d5b6b9f0ecd6ca",
+        "topologyHash": "9be263eaeb669be321e3afd69c1d71e65cedd710c919b95b273133d297082d68",
+        "femHash": "48fe19ca8b7bcc4e45aeb0b4c7d2a34fe2f2b13f55bd6afd6e151f59b4973382",
+        "cfdHash": "98ffc8025195ab098c4d3ad12d16e9d52e58893f9b660fefa88fe44c82cd9809",
+        "thermalHash": "540f065fca733aafc867671a3631188b86b619235278c654f17373e79b9a0cd6",
+        "pmiHash": "a18c719c24d4452f3b0d683863ffa9db334db63b7232ab5090e4602c4a7a633b",
+        "certifiedTimestamp": "2026-09-24T12:24:16.073Z"
+      }
+    },
+    {
+      "stage": "12_DFM",
+      "sequence": 12,
+      "startedAt": "2026-09-24T12:24:16.074Z",
+      "completedAt": "2026-09-24T12:24:16.075Z",
+      "durationMs": 1,
+      "status": "PASS",
+      "engine": {
+        "module": "src/engine/manufacturing/ProductionDFMDecisionEngine",
+        "exportName": "ProductionDFMDecisionEngine",
+        "implementationHash": "a6e15bf6287f2e8c7ecb7a056b8eac93c731f394529e297c622bc77d9778fe10"
+      },
+      "inputArtifactId": "ENG-EVIDENCE-GOLDEN-TURBINE-001",
+      "outputArtifactId": "DFM-GOLDEN-TURBINE-001",
+      "inputHash": "7e1af13106b2072424012f33d19cb2290a215c663de5e76db815675948b6f8ef",
+      "outputHash": "1356c748f3f0f99c755d4f4403746c8b83364a7dca359bec3ac0f0713c73d77e",
+      "revisionId": "REV-SECP-GOLDEN-TURBINE-001",
+      "revisionHash": "c838a5ea52faeb8e15581cf90aa7b7232216f8be63ddd7d001d5b6b9f0ecd6ca",
+      "evidenceSource": "ENGINE",
+      "synthetic": false,
+      "mock": false,
+      "independentlyVerified": true,
+      "metadata": {
+        "status": "PRODUCTION_READY",
+        "complexity": 69,
+        "violationsCount": 0,
+        "warningsCount": 0
+      }
+    },
+    {
+      "stage": "13_CAM",
+      "sequence": 13,
+      "startedAt": "2026-09-24T12:24:16.075Z",
+      "completedAt": "2026-09-24T12:24:16.077Z",
+      "durationMs": 2,
+      "status": "PASS",
+      "engine": {
+        "module": "src/engine/camEngine",
+        "exportName": "CamEngine",
+        "implementationHash": "5049821f48c69a63856ce7ecdddb674694701a6858e383f0d4ed7632626438e6"
+      },
+      "inputArtifactId": "DFM-GOLDEN-TURBINE-001",
+      "outputArtifactId": "CAM-JOB-GOLDEN-TURBINE-001",
+      "inputHash": "1356c748f3f0f99c755d4f4403746c8b83364a7dca359bec3ac0f0713c73d77e",
+      "outputHash": "56233e901985b880d47442984e90e1c8a79b57874ccb2512f1d2a80a7d5d1f0f",
+      "revisionId": "REV-SECP-GOLDEN-TURBINE-001",
+      "revisionHash": "c838a5ea52faeb8e15581cf90aa7b7232216f8be63ddd7d001d5b6b9f0ecd6ca",
+      "evidenceSource": "ENGINE",
+      "synthetic": false,
+      "mock": false,
+      "independentlyVerified": true,
+      "metadata": {
+        "jobId": "CAM-JOB-GOLDEN-TURBINE-001",
+        "gCodeLinesCount": 153,
+        "toolpathPointsCount": 144,
+        "clDataHash": "ea6ea30f83ec6b8b9e647e08c43e2452ea6ea30f83ec6b8b9e647e08c43e2452",
+        "provenanceSignature": "5bb900794ded6d050c111693564b4cc95bb900794ded6d050c111693564b4cc9"
+      }
+    },
+    {
+      "stage": "14_TOOLPATH",
+      "sequence": 14,
+      "startedAt": "2026-09-24T12:24:16.077Z",
+      "completedAt": "2026-09-24T12:24:16.077Z",
+      "durationMs": 0,
+      "status": "PASS",
+      "engine": {
+        "module": "src/engine/manufacturing/cam/ToolpathValidator",
+        "exportName": "ToolpathValidator",
+        "implementationHash": "5d58f47e53413a77d912f77197fe2e5130663c227ba42bb5c7b140053ccfeb04"
+      },
+      "inputArtifactId": "CAM-JOB-GOLDEN-TURBINE-001",
+      "outputArtifactId": "TP-CAM-JOB-GOLDEN-TURBINE-001",
+      "inputHash": "56233e901985b880d47442984e90e1c8a79b57874ccb2512f1d2a80a7d5d1f0f",
+      "outputHash": "a385e778763117588ee3c8006740edbc0e022763d2ca329990883fb472dffeda",
+      "revisionId": "REV-SECP-GOLDEN-TURBINE-001",
+      "revisionHash": "c838a5ea52faeb8e15581cf90aa7b7232216f8be63ddd7d001d5b6b9f0ecd6ca",
+      "evidenceSource": "ENGINE",
+      "synthetic": false,
+      "mock": false,
+      "independentlyVerified": true,
+      "metadata": {
+        "toolpathId": "TP-CAM-JOB-GOLDEN-TURBINE-001",
+        "derivedFromCamJob": "CAM-JOB-GOLDEN-TURBINE-001",
+        "pointsCount": 144,
+        "cycleTimeSec": 120,
+        "feedRateMmMin": 450,
+        "spindleRpm": 8500
+      }
+    },
+    {
+      "stage": "15_MACHINE_VERIFICATION",
+      "sequence": 15,
+      "startedAt": "2026-09-24T12:24:16.077Z",
+      "completedAt": "2026-09-24T12:24:16.077Z",
+      "durationMs": 0,
+      "status": "PASS",
+      "engine": {
+        "module": "src/engine/cam/machine-sim/MachineSimulationEngine",
+        "exportName": "MachineSimulationEngine",
+        "implementationHash": "fd9196dea621f1239248b33a5e62c0bbf27780641800d6d9c2558a6b58314c46"
+      },
+      "inputArtifactId": "TP-CAM-JOB-GOLDEN-TURBINE-001",
+      "outputArtifactId": "MVERIF-GOLDEN-TURBINE-001",
+      "inputHash": "a385e778763117588ee3c8006740edbc0e022763d2ca329990883fb472dffeda",
+      "outputHash": "9e9a8728cee515ef09bed9ecd39b5fbb170f999a57e0b2d4b07a878128de72b7",
+      "revisionId": "REV-SECP-GOLDEN-TURBINE-001",
+      "revisionHash": "c838a5ea52faeb8e15581cf90aa7b7232216f8be63ddd7d001d5b6b9f0ecd6ca",
+      "evidenceSource": "ENGINE",
+      "synthetic": false,
+      "mock": false,
+      "independentlyVerified": true,
+      "metadata": {
+        "machineModel": "DMG_MORI_5AXIS_DMU_50",
+        "simulationVerdict": "CLEARED_NO_COLLISIONS",
+        "axisStrokeChecks": "PASSED",
+        "rotaryContinuity": "PASSED",
+        "feedRateLimits": "WITHIN_ENVELOPE"
+      }
+    },
+    {
+      "stage": "16_MANUFACTURING",
+      "sequence": 16,
+      "startedAt": "2026-09-24T12:24:16.077Z",
+      "completedAt": "2026-09-24T12:24:16.077Z",
+      "durationMs": 0,
+      "status": "PASS",
+      "engine": {
+        "module": "src/engine/manufacturing/ProductionProcessPlanningEngine",
+        "exportName": "ProductionProcessPlanningEngine",
+        "implementationHash": "8a0126d33e365e47efadeb19b254b367b8e341571ace661c31e64cd808cdb54d"
+      },
+      "inputArtifactId": "TP-CAM-JOB-GOLDEN-TURBINE-001",
+      "outputArtifactId": "MFG-PLAN-GOLDEN-TURBINE-001",
+      "inputHash": "a385e778763117588ee3c8006740edbc0e022763d2ca329990883fb472dffeda",
+      "outputHash": "e4f7f3e55b8e01ce3559e17c3b849613fabb03214b78361169ef4ba5c7cefa61",
+      "revisionId": "REV-SECP-GOLDEN-TURBINE-001",
+      "revisionHash": "c838a5ea52faeb8e15581cf90aa7b7232216f8be63ddd7d001d5b6b9f0ecd6ca",
+      "evidenceSource": "ENGINE",
+      "synthetic": false,
+      "mock": false,
+      "independentlyVerified": true,
+      "metadata": {
+        "setupCount": 2,
+        "primaryFixtureType": "5AXIS_TRUNNION",
+        "is5AxisFeasible": true
+      }
+    },
+    {
+      "stage": "17_PHYSICAL_METROLOGY",
+      "sequence": 17,
+      "startedAt": "2026-09-24T12:24:16.077Z",
+      "completedAt": "2026-09-24T12:24:16.078Z",
+      "durationMs": 1,
+      "status": "NOT_PROVISIONED",
+      "reason": "PHYSICAL_METROLOGY_TRUST_BOUNDARY_NOT_PROVISIONED"
+    },
+    {
+      "stage": "18_CERTIFICATION",
+      "sequence": 18,
+      "startedAt": "2026-09-24T12:24:16.078Z",
+      "completedAt": "2026-09-24T12:24:16.078Z",
+      "durationMs": 0,
+      "status": "NOT_PROVISIONED",
+      "reason": "VERIFIED_PHYSICAL_METROLOGY_NOT_PROVISIONED_FOR_PRODUCTION_RELEASE"
+    },
+    {
+      "stage": "19_RELEASE",
+      "sequence": 19,
+      "startedAt": "2026-09-24T12:24:16.078Z",
+      "completedAt": "2026-09-24T12:24:16.078Z",
+      "durationMs": 0,
+      "status": "NOT_PROVISIONED",
+      "reason": "CERTIFICATION_NOT_PROVISIONED_FOR_PHYSICAL_RELEASE"
+    },
+    {
+      "stage": "20_PRODUCTION_PROOF",
+      "sequence": 20,
+      "startedAt": "2026-09-24T12:24:16.078Z",
+      "completedAt": "2026-09-24T12:24:16.078Z",
+      "durationMs": 0,
+      "status": "NOT_PROVISIONED",
+      "reason": "RELEASE_ARTIFACT_NOT_PROVISIONED"
+    }
+  ],
+  "adversarial": [
+    {
+      "attack": "GEOMETRY_HASH_MUTATION",
+      "status": "BLOCKED",
+      "reason": "Geometric tamper detected by canonical hash verification"
+    },
+    {
+      "attack": "REVISION_SUBSTITUTION",
+      "status": "BLOCKED",
+      "reason": "Revision substitution blocked: NOT_FOUND"
+    },
+    {
+      "attack": "TOPOLOGY_SUBSTITUTION",
+      "status": "BLOCKED",
+      "reason": "Substituted degenerate topology rejected: non-physical zero volume"
+    },
+    {
+      "attack": "MATERIAL_SUBSTITUTION",
+      "status": "BLOCKED",
+      "reason": "Negative/unphysical modulus caught during FEM calculation"
+    },
+    {
+      "attack": "SIMULATION_RESULT_SUBSTITUTION",
+      "status": "BLOCKED",
+      "reason": "Invalid physical viscosity rejected: [INVALID_PHYSICAL_VISCOSITY_ERROR] Fluid kinematic viscosity must be strictly positive"
+    },
+    {
+      "attack": "TOOLPATH_MUTATION",
+      "status": "BLOCKED",
+      "reason": "Toolpath modification invalidates hash reference to verified CAM job"
+    },
+    {
+      "attack": "MACHINE_PROGRAM_MUTATION",
+      "status": "BLOCKED",
+      "reason": "Machine program mutation rejected by deterministic G-code hash comparison"
+    },
+    {
+      "attack": "METROLOGY_REPLAY",
+      "status": "BLOCKED",
+      "reason": "Replay/Fabrication caught by authoritative store gate: PROVENANCE_BREACH: MOCK_CERTIFICATE_CANNOT_BE_PRODUCTION: Mock certificates cannot inject production provenance or physical telemetry grade into authoritative store."
+    },
+    {
+      "attack": "INSTRUMENT_SUBSTITUTION",
+      "status": "BLOCKED",
+      "reason": "Unenrolled instrument rejected by ProductionTrustRegistry"
+    },
+    {
+      "attack": "CALIBRATION_MUTATION",
+      "status": "BLOCKED",
+      "reason": "Mutated calibration ID invalidates cryptographic acquisition envelope signature"
+    },
+    {
+      "attack": "CERTIFICATE_SUBSTITUTION",
+      "status": "BLOCKED",
+      "reason": "Forged certificate rejected by QualityGate: RELEASE_DENIED: Certificate binds to revision B5C6D7E8_TAMPERED, but part is at A1B2C3D4"
+    },
+    {
+      "attack": "RELEASE_PACKAGE_MUTATION",
+      "status": "BLOCKED",
+      "reason": "Release package mutation breaks provenance digest chain"
+    },
+    {
+      "attack": "SERIAL_IDENTITY_SUBSTITUTION",
+      "status": "BLOCKED",
+      "reason": "Serial identity substitution mismatch detected by FactoryProvisioningAuthority"
+    }
+  ],
+  "forensicLineage": [
+    {
+      "step": "CAD_TO_BREP_VOLUME_PROPAGATION",
+      "passed": true,
+      "message": "B-Rep Volume changes proportionally from 0.011012 m3 to 0.024778 m3 (Ratio: 2.2500, expected exactly 2.2500)",
+      "observedChanges": {
+        "originalVolume": 0.0110124584971664,
+        "mutatedVolume": 0.024778031618624404,
+        "actualRatio": 2.2500000000000004,
+        "expectedRatio": 2.25
+      }
+    },
+    {
+      "step": "BREP_TO_DFM_LINEAGE_PROPAGATION",
+      "passed": true,
+      "message": "DFM Assessment payload and hash mutated successfully (Original Hash: 1356c748f3f0, Mutated Hash: c5080707ae73)",
+      "observedChanges": {
+        "origDfmHash": "1356c748f3f0f99c755d4f4403746c8b83364a7dca359bec3ac0f0713c73d77e",
+        "mutDfmHash": "c5080707ae73834ca6ccf520d22d1606b73dd7c108cecb0370294d87af44bcf4",
+        "mutAssessmentStatus": "PRODUCTION_READY"
+      }
+    },
+    {
+      "step": "DFM_TO_CAM_GCODE_LINEAGE_PROPAGATION",
+      "passed": true,
+      "message": "CAM G-Code coordinates and clDataHash successfully mutated (Original clDataHash: ea6ea30f83ec, Mutated clDataHash: ffc8bc8a62f0)",
+      "observedChanges": {
+        "origClDataHash": "ea6ea30f83ec6b8b9e647e08c43e2452ea6ea30f83ec6b8b9e647e08c43e2452",
+        "mutClDataHash": "ffc8bc8a62f07ac87700ec502d5ab60affc8bc8a62f07ac87700ec502d5ab60a"
+      }
+    },
+    {
+      "step": "CAM_TO_TOOLPATH_CRYPTOGRAPHIC_LINEAGE",
+      "passed": true,
+      "message": "Verified Toolpath is bound specifically to the mutated CAM job (Original Toolpath Hash: a385e7787631, Mutated Toolpath Hash: d5bee3376458)",
+      "observedChanges": {
+        "origToolpathHash": "a385e778763117588ee3c8006740edbc0e022763d2ca329990883fb472dffeda",
+        "mutToolpathHash": "d5bee3376458191cdc178b813d0352a19022135b3d286cf28c8c99be3bfd6c57"
+      }
+    },
+    {
+      "step": "TOOLPATH_TO_MACHINE_VERIFICATION_CONTINUITY",
+      "passed": true,
+      "message": "Machine Verification Engine successfully instantiated and consumes the G-code output from the mutated CAM job.",
+      "observedChanges": {
+        "machineModel": "DMG_MORI_5AXIS_DMU_50"
+      }
+    },
+    {
+      "step": "MACHINE_VERIFICATION_TO_MANUFACTURING_CONTINUITY",
+      "passed": true,
+      "message": "Manufacturing planning successfully verified 5-axis process feasibility for mutated topology features.",
+      "observedChanges": {
+        "is5AxisFeasible": true
+      }
+    }
+  ],
+  "physicalTruth": {
+    "physicalMetrology": "NOT_PROVISIONED",
+    "physicalTrustBoundary": "MUST_NOT_BE_INFERRED_FROM_TEST_FIXTURES",
+    "fieldProven": false
+  },
+  "antiFabricationRules": {
+    "syntheticEvidenceCanPass": false,
+    "mockEvidenceCanPass": false,
+    "localJsonGeometryCanPassAsCad": false,
+    "hardcodedSolverResultCanPass": false,
+    "environmentVariableCanProvePhysicalTruth": false,
+    "localSha256ChainCanProveEngineeringTruth": false
+  }
+}

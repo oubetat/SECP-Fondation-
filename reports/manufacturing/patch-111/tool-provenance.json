@@ -1,0 +1,8 @@
+{
+  "toolId": "T1_ENDMILL_10",
+  "toolRevision": "1.0",
+  "diameter": 10,
+  "length": 75,
+  "material": "CARBIDE",
+  "holder": "ER32"
+}

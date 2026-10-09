@@ -1,0 +1,24 @@
+{
+  "contract_id": "SECP-POST-007-UNKNOWN-UNKNOWN-REGISTER",
+  "timestamp": "2026-09-23T10:18:00.000Z",
+  "unknown_unknowns": [
+    {
+      "gap_id": "UNK-QIF-001",
+      "domain": "Metrology Environment",
+      "title": "Dynamic Thermal Expansion Compensation",
+      "description": "CMM measurements performed at non-standard ambient temperatures (>20°C) require dynamic material linear thermal expansion coefficient compensation (alpha * deltaT * L) inside measurement uncertainty budgets."
+    },
+    {
+      "gap_id": "UNK-QIF-002",
+      "domain": "Sensor Provenance",
+      "title": "Optical & Laser Scanner Point Cloud Noise Tensors",
+      "description": "Non-contact laser scanners produce dense point clouds with anisotropic optical reflection noise, requiring 3D surface mesh fitting uncertainty tensors rather than scalar point uncertainties."
+    },
+    {
+      "gap_id": "UNK-QIF-003",
+      "domain": "Statistical Process Control (SPC)",
+      "title": "Cp / Cpk Multi-Batch Machine Drift Correlation",
+      "description": "Closing the loop across hundreds of manufactured parts requires real-time SPC Cp/Cpk trend analysis to trigger preventive tool-wear offset proposals before out-of-tolerance parts are produced."
+    }
+  ]
+}

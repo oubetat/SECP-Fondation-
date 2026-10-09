@@ -1,0 +1,60 @@
+{
+  "missionId": "COLLISION-ENGINE-FORENSIC-MATURITY-001",
+  "timestamp": "2026-10-01T01:00:00.000Z",
+  "geometricForensics": {
+    "broadPhase": {
+      "algorithmsFound": [
+        { "name": "SpatialBVHNode", "file": "src/engine/cam/collision/BroadPhaseDetector.ts", "type": "Centroid-Split Binary AABB Tree", "verdict": "REAL_ALGORITHM" },
+        { "name": "BroadPhaseCollisionEngine", "file": "src/engine/manufacturing/collision/BroadPhaseCollisionEngine.ts", "type": "O(N*M) Pair-wise AABB", "verdict": "PARTIAL_ALGORITHM" },
+        { "name": "AssemblyInterferenceEngine", "file": "src/engine/assembly/AssemblyInterferenceEngine.ts", "type": "Pair-wise AABB from OCCT BoundingBox", "verdict": "REAL_ALGORITHM" }
+      ]
+    },
+    "narrowPhase": {
+      "algorithmsFound": [
+        {
+          "name": "AssemblyInterferenceEngine",
+          "file": "src/engine/assembly/AssemblyInterferenceEngine.ts",
+          "type": "OCCT WASM B-Rep Boolean Intersect / Common",
+          "returnsContactManifold": false,
+          "returnsVolumetricOverlap": true,
+          "returnsCentroid": true,
+          "toleranceModel": "0.001 mm3 volume threshold, 0.05 mm touching threshold"
+        },
+        {
+          "name": "CAM NarrowPhaseDetector",
+          "file": "src/engine/cam/collision/NarrowPhaseDetector.ts",
+          "type": "Cylinder vs Triangle (Vertex & Centroid Sampling Only)",
+          "criticalDefect": "Omits triangle edges and face interior penetration; misses cuts through large triangles.",
+          "returnsContactManifold": false,
+          "returnsPointAndNormal": true
+        },
+        {
+          "name": "5-Axis CAM CAMCollisionEngine",
+          "file": "src/engine/cam/fiveaxis/FiveAxisCollisionEngine.ts",
+          "type": "Cylinder vs Mesh (Vertex-Only Distance)",
+          "criticalDefect": "Completely ignores triangle faces; a tool plunging through a mesh face reports zero collision.",
+          "returnsContactManifold": false
+        },
+        {
+          "name": "Manufacturing NarrowPhaseCollisionEngine",
+          "file": "src/engine/manufacturing/collision/NarrowPhaseCollisionEngine.ts",
+          "type": "Capsule-Capsule & Capsule-AABB (10-point sample clamp)",
+          "returnsContactManifold": false,
+          "returnsClosestPoints": true
+        },
+        {
+          "name": "Assembly Clash NarrowPhaseDetector",
+          "file": "src/engine/assembly/clash/NarrowPhaseDetector.ts",
+          "type": "15-Axis SAT for OBBs",
+          "returnsContactManifold": true,
+          "returnsPenetrationDepth": true
+        }
+      ]
+    },
+    "continuousCollision": {
+      "ccdMode": "DISCRETE_MULTI_STEP_SAMPLING (4 to 25 steps)",
+      "isAnalyticalSweptVolume": false,
+      "tunnelingRisk": "HIGH for rapid small tool movements crossing thin plates between sub-steps."
+    }
+  }
+}

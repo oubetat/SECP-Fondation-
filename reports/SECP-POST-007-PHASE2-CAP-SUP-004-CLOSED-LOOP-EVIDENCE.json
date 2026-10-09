@@ -1,0 +1,63 @@
+{
+  "contract_id": "SECP-POST-007-PHASE2-CAP-SUP-004-CLOSED-LOOP-EVIDENCE",
+  "capability": "CAP-SUP-004",
+  "capability_title": "QIF 3.0 / MBD Closed-Loop Manufacturing Truth",
+  "timestamp": "2026-09-23T10:25:00.000Z",
+  "closed_loop_specimen": "Precision Housing Assembly",
+  "reconciliation_summary": {
+    "step_1_mbd_creation": {
+      "model_file": "Precision_Housing_Assembly.stp",
+      "solid_id": "SOLID-HOUSING-01",
+      "pmi_dimensions": 1,
+      "pmi_gdt": 1,
+      "datums": ["A"]
+    },
+    "step_2_raw_qif30_exchange_proof": {
+      "qif_document_id": "QIF-DOC-Precision_Housing_Assembly.stp",
+      "target_namespace": "http://qifstandards.org/xsd/qif3",
+      "schema_version": "3.0.0",
+      "xsd_validation_status": "PASSED"
+    },
+    "step_3_rev_a_inspection_and_cmm_telemetry": {
+      "design_revision": "REV-A",
+      "cmm_controller": "Zeiss Prismo CMM",
+      "probe_hits_ingested": 2,
+      "part_temperature_celsius": 22.5,
+      "thermal_compensation_mm": 0.0014,
+      "measured_bore_dia_mm": 50.080,
+      "upper_spec_limit_mm": 50.025,
+      "verdict": "OUT_OF_TOLERANCE",
+      "expanded_uncertainty_mm": 0.002
+    },
+    "step_4_independent_oracle_audit": {
+      "oracle": "IndependentQifOracle",
+      "oracle_imports_count": 1,
+      "imported_modules": ["crypto"],
+      "audit_status": "CORRECTLY_FLAGGED_OUT_OF_TOLERANCE",
+      "raw_xml_hash": "sha256:d8a9e...01"
+    },
+    "step_5_closed_loop_revision_proposal": {
+      "feedback_id": "FB-RES-CMM-BORE-01-FIX",
+      "source_revision": "REV-A",
+      "proposed_revision": "REV-B",
+      "proposed_action": "CAD_REGENERATION",
+      "provenance_hash": "sha256:e3b0c...42"
+    },
+    "step_6_authorized_revision_transition": {
+      "authorized_by": "Chief Engineer Sarah Connor",
+      "authorized_revision": "REV-B",
+      "updated_inspection_plan": "PLAN-DA-SECP-001-REV-B"
+    },
+    "step_7_rev_b_reinspection_and_ledger_isolation": {
+      "reinspection_revision": "REV-B",
+      "measured_bore_dia_mm": 50.012,
+      "reinspection_verdict": "PASS",
+      "ledger_rev_a_results_count": 1,
+      "ledger_rev_a_verdict": "FAIL",
+      "ledger_rev_b_results_count": 1,
+      "ledger_rev_b_verdict": "PASS",
+      "cross_revision_pollution": false
+    }
+  },
+  "verdict": "CLOSED_LOOP_TRACEABILITY_PROVEN"
+}

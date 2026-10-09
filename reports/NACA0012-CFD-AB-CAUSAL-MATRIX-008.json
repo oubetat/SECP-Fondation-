@@ -1,0 +1,37 @@
+{
+  "missionId": "NACA0012-VV-STRICT-CAUSAL-CLOSURE-008",
+  "timestamp": "2026-09-30T10:07:41.836Z",
+  "cases": {
+    "CaseA_PreFix": {
+      "description": "Owner-cell-centered viscosity in predictor",
+      "continuityL1": 0.0000093715,
+      "momentumLinf": 0.0000067436,
+      "velocityCorrection": 0.02234,
+      "forceStability": true,
+      "cl": 0.1477,
+      "cd": 0.0229,
+      "converged": false
+    },
+    "CaseB_FaceConsistentFix": {
+      "description": "Face-averaged arithmetic viscosity effMu = 0.5*(ownerMu + neighborMu)",
+      "continuityL1": 0.000013895852311858543,
+      "momentumLinf": 0.000017098185615609835,
+      "velocityCorrection": 0.5314243289236794,
+      "forceStability": true,
+      "cl": 0.1524910703880111,
+      "cd": 0.024287285932794934,
+      "converged": false
+    },
+    "CaseC_DistanceWeighted": {
+      "description": "Distance-weighted face interpolation",
+      "continuityL1": 0.000013895852311858543,
+      "momentumLinf": 0.000017098185615609835,
+      "velocityCorrection": 0.5314243289236794,
+      "forceStability": true,
+      "cl": 0.1524910703880111,
+      "cd": 0.024287285932794934,
+      "converged": false
+    }
+  },
+  "finding": "Face-consistent viscosity satisfies the mathematical flux invariant D_owner === D_neighbor. Gate D remains unpassed (velocityCorrection > 0.015), proving that non-linear fixed-point coupling oscillation persists in the 150-iteration envelope."
+}

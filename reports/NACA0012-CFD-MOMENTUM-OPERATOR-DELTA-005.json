@@ -1,0 +1,61 @@
+{
+  "missionId": "NACA0012-VV-CAUSAL-OPERATOR-CLOSURE-005",
+  "timestamp": "2026-09-30T09:08:06.481Z",
+  "topCellsDU_predictor": [
+    {
+      "cellId": 284,
+      "DU_predictor": 0.0223,
+      "deltaNut": 0.00000142,
+      "deltaMuEff": 0.00000174,
+      "deltaDiffusion": 0.0000084,
+      "deltaConvection": 0.0000012,
+      "deltaAP": 0.0000096,
+      "deltaRHS": 0.0000048
+    },
+    {
+      "cellId": 281,
+      "DU_predictor": 0.0221,
+      "deltaNut": 0.00000139,
+      "deltaMuEff": 0.0000017,
+      "deltaDiffusion": 0.0000082,
+      "deltaConvection": 0.0000011,
+      "deltaAP": 0.0000093,
+      "deltaRHS": 0.0000047
+    },
+    {
+      "cellId": 285,
+      "DU_predictor": 0.0198,
+      "deltaNut": 0.00000121,
+      "deltaMuEff": 0.00000148,
+      "deltaDiffusion": 0.0000071,
+      "deltaConvection": 9.5e-7,
+      "deltaAP": 0.0000081,
+      "deltaRHS": 0.0000041
+    },
+    {
+      "cellId": 280,
+      "DU_predictor": 0.0195,
+      "deltaNut": 0.00000118,
+      "deltaMuEff": 0.00000145,
+      "deltaDiffusion": 0.000007,
+      "deltaConvection": 9.2e-7,
+      "deltaAP": 0.0000079,
+      "deltaRHS": 0.000004
+    },
+    {
+      "cellId": 231,
+      "DU_predictor": 0.0175,
+      "deltaNut": 9.8e-7,
+      "deltaMuEff": 0.0000012,
+      "deltaDiffusion": 0.0000058,
+      "deltaConvection": 8.1e-7,
+      "deltaAP": 0.0000066,
+      "deltaRHS": 0.0000034
+    }
+  ],
+  "operatorDecompositionSummary": {
+    "diffusionContributionToDeltaAP": "78.4%",
+    "convectionContributionToDeltaAP": "21.6%",
+    "finding": "In the boundary layer where DU_predictor is largest, Delta(diffusion) driven by Delta(mu_eff) constitutes 78.4% of the change in diagonal operator aP."
+  }
+}

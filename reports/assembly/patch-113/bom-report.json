@@ -1,0 +1,121 @@
+{
+  "assemblyId": "ASM_TURBO_PUMP_01",
+  "assemblyRevision": "R1.0",
+  "configurationId": "DEFAULT",
+  "generatedAt": 1787299359354,
+  "totalUniqueParts": 6,
+  "totalQuantity": 14,
+  "totalMassKg": 30.32,
+  "items": [
+    {
+      "itemNumber": 1,
+      "partId": "P_BEARING_01",
+      "partRevision": "1.0",
+      "partName": "Hybrid Ceramic Angular Contact Ball Bearing",
+      "nodeType": "PART",
+      "quantity": 2,
+      "occurrenceIds": [
+        "OCC_BEARING_FRONT",
+        "OCC_BEARING_REAR"
+      ],
+      "unit": "mm",
+      "materialName": "Silicon Nitride Si3N4",
+      "unitMassKg": 0.85,
+      "totalMassKg": 1.7,
+      "isSubassembly": false,
+      "isSuppressed": false
+    },
+    {
+      "itemNumber": 2,
+      "partId": "P_BOLT_M10",
+      "partRevision": "1.0",
+      "partName": "A286 High Strength Hex Flange Bolt M10x45",
+      "nodeType": "FASTENER",
+      "quantity": 8,
+      "occurrenceIds": [
+        "OCC_BOLT_FLANGE_1",
+        "OCC_BOLT_FLANGE_2",
+        "OCC_BOLT_FLANGE_3",
+        "OCC_BOLT_FLANGE_4",
+        "OCC_BOLT_FLANGE_5",
+        "OCC_BOLT_FLANGE_6",
+        "OCC_BOLT_FLANGE_7",
+        "OCC_BOLT_FLANGE_8"
+      ],
+      "unit": "mm",
+      "materialName": "A286 Stainless",
+      "unitMassKg": 0.065,
+      "totalMassKg": 0.52,
+      "isSubassembly": false,
+      "isSuppressed": false
+    },
+    {
+      "itemNumber": 3,
+      "partId": "P_CASING_01",
+      "partRevision": "1.0",
+      "partName": "Inconel 718 Main Casing",
+      "nodeType": "PART",
+      "quantity": 1,
+      "occurrenceIds": [
+        "OCC_CASING_01"
+      ],
+      "unit": "mm",
+      "materialName": "Inconel 718 Superalloy",
+      "unitMassKg": 18.5,
+      "totalMassKg": 18.5,
+      "isSubassembly": false,
+      "isSuppressed": false
+    },
+    {
+      "itemNumber": 4,
+      "partId": "P_IMPELLER_01",
+      "partRevision": "1.0",
+      "partName": "5-Axis Milled Shrouded Impeller",
+      "nodeType": "PART",
+      "quantity": 1,
+      "occurrenceIds": [
+        "OCC_IMPELLER_01"
+      ],
+      "unit": "mm",
+      "materialName": "Titanium Grade 5",
+      "unitMassKg": 3.4,
+      "totalMassKg": 3.4,
+      "isSubassembly": false,
+      "isSuppressed": false
+    },
+    {
+      "itemNumber": 5,
+      "partId": "P_SHAFT_01",
+      "partRevision": "1.0",
+      "partName": "Titanium Ti-6Al-4V Main Drive Shaft",
+      "nodeType": "PART",
+      "quantity": 1,
+      "occurrenceIds": [
+        "OCC_SHAFT_01"
+      ],
+      "unit": "mm",
+      "materialName": "Titanium Grade 5",
+      "unitMassKg": 6.2,
+      "totalMassKg": 6.2,
+      "isSubassembly": false,
+      "isSuppressed": false
+    },
+    {
+      "itemNumber": 6,
+      "partId": "SUBASM_ROTOR",
+      "partRevision": "1.0",
+      "partName": "Rotor Subassembly Module",
+      "nodeType": "SUBASSEMBLY",
+      "quantity": 1,
+      "occurrenceIds": [
+        "OCC_SUBASM_ROTOR"
+      ],
+      "unit": "mm",
+      "materialName": "GENERIC_METAL",
+      "unitMassKg": 0,
+      "totalMassKg": 0,
+      "isSubassembly": true,
+      "isSuppressed": false
+    }
+  ]
+}

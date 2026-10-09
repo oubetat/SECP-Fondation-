@@ -1,0 +1,348 @@
+=== RUNNING HARD ACCEPTANCE GATE 172 ===
+============================================================
+PATCH-172 BOOLEAN ADVERSARIAL QUALIFICATION
+============================================================
+Total Cases:           32
+Passed:                12
+Failed:                0
+Unproven:              0
+Invalid:               1
+Degenerate:            0
+Numerical Failures:    11
+Topology Failures:     8
+Non-Deterministic:     0
+Timeouts:              0
+
+Determinism:           100.0%
+Topology Integrity:    75.0%
+Geometric Invariants:  65.6%
+Anti-Fabrication:      100.0%
+Regression Coverage:   100.0%
+
+FINAL VERDICT:         FAIL
+============================================================
+
+=== GATE CHECKS ===
+[PASS] GATE172_CHECK_01_CATEGORY_COVERAGE: All 8 adversarial categories (A to H) contain active, executed test cases
+[PASS] GATE172_CHECK_02_DETERMINISM: All test cases produced 100% identical output hashes across sequential runs
+[FAIL] GATE172_CHECK_03_TOPOLOGY_INTEGRITY: Detected 8 topological corruption failures
+[FAIL] GATE172_CHECK_04_GEOMETRIC_INVARIANTS: Detected 11 geometric invariant violations
+[PASS] GATE172_CHECK_05_MUTATION_DETECTION: 100% of injected adversarial mutations (6/6) caught and rejected
+[PASS] GATE172_CHECK_06_TANGENCY_AND_COINCIDENCE: Tangency face/edge/vertex contacts and coincident operands processed without spurious topology
+[PASS] GATE172_CHECK_07_REAL_MEASURED_STRESS: Directly measured wall-clock latencies and heap usage across all 4 stress scales
+[PASS] GATE172_CHECK_08_CRYPTOGRAPHIC_ATTESTATION: All 32 cases sealed with canonical SHA-256 cryptographic signatures
+
+=== CATEGORY BREAKDOWN ===
+A_BASIC_BOOLEAN: total=9, passed=2, failed=0, unproven=0, invalid=0
+B_TANGENCY_CASES: total=4, passed=1, failed=0, unproven=0, invalid=0
+C_COINCIDENT_GEOMETRY: total=4, passed=3, failed=0, unproven=0, invalid=0
+D_NEAR_DEGENERATE_GEOMETRY: total=4, passed=0, failed=0, unproven=0, invalid=0
+E_NESTED_SOLIDS: total=4, passed=4, failed=0, unproven=0, invalid=0
+F_COMPLEX_CHAINS: total=2, passed=1, failed=0, unproven=0, invalid=0
+G_REPEATED_OPERATIONS: total=2, passed=0, failed=0, unproven=0, invalid=0
+H_RANDOMIZED_ADVERSARIAL: total=3, passed=1, failed=0, unproven=0, invalid=1
+
+=== MUTATION REPORT DETAILS ===
+[DETECTED] PERTURB_VERTEX: Displaced corner vertex by (+5, 0, +5)
+[DETECTED] INVERT_FACE_ORIENTATION: Inverted orientation of top face from FORWARD to REVERSED
+  Issues: Edge mut_box_2_e_001_101 has inconsistent orientation across adjacent faces (mut_box_2_f_top,mut_box_2_f_front); Edge mut_box_2_e_101_111 has inconsistent orientation across adjacent faces (mut_box_2_f_top,mut_box_2_f_right); Edge mut_box_2_e_111_011 has inconsistent orientation across adjacent faces (mut_box_2_f_top,mut_box_2_f_back); Edge mut_box_2_e_011_001 has inconsistent orientation across adjacent faces (mut_box_2_f_top,mut_box_2_f_left)
+[DETECTED] DUPLICATE_FACE: Appended duplicate bottom face into outer shell
+  Issues: Duplicate face reference detected: mut_box_3_f_bottom; Non-manifold edge mut_box_3_e_010_000 shared by 3 faces (mut_box_3_f_bottom,mut_box_3_f_left,mut_box_3_f_bottom); Non-manifold edge mut_box_3_e_110_010 shared by 3 faces (mut_box_3_f_bottom,mut_box_3_f_back,mut_box_3_f_bottom); Non-manifold edge mut_box_3_e_100_110 shared by 3 faces (mut_box_3_f_bottom,mut_box_3_f_right,mut_box_3_f_bottom); Non-manifold edge mut_box_3_e_000_100 shared by 3 faces (mut_box_3_f_bottom,mut_box_3_f_front,mut_box_3_f_bottom)
+[DETECTED] INTRODUCE_TINY_GAP: Disconnected start vertex with 1e-4 coordinate gap
+  Issues: Edge disconnected_edge_slit is open/boundary (used by only 1 face: mut_box_4_f_bottom); Edge mut_box_4_e_010_000 is open/boundary (used by only 1 face: mut_box_4_f_left)
+[DETECTED] CORRUPT_LOOP_TOPOLOGY: Cleared all oriented edges from face outer loop
+  Issues: Face mut_box_5_f_bottom loop loop_mut_box_5_f_bottom has fewer than 3 edges (degenerate loop); Edge mut_box_5_e_000_100 is open/boundary (used by only 1 face: mut_box_5_f_front); Edge mut_box_5_e_110_010 is open/boundary (used by only 1 face: mut_box_5_f_back); Edge mut_box_5_e_010_000 is open/boundary (used by only 1 face: mut_box_5_f_left); Edge mut_box_5_e_100_110 is open/boundary (used by only 1 face: mut_box_5_f_right)
+[DETECTED] ZERO_VOLUME_COLLAPSE: Collapsed bounding height to 0 (2D degenerate planar solid)
+  Issues: Calculated volume is 0.0000 m3 (degenerate solid)
+[CASE_A01_BOX_UNION_BOX] Category: A_BASIC_BOOLEAN -> Verdict: PASS
+  -> Independent geometric and topological invariants strictly verified
+[CASE_A02_BOX_INTERSECTION_BOX] Category: A_BASIC_BOOLEAN -> Verdict: NUMERICAL_FAILURE
+  -> Intersection volume 166.6667 satisfies intersection upper bound 1000.0000
+  -> Target volume mismatch: expected=500.0000, actual=166.6667, error=3.33e+2
+[CASE_A03_BOX_DIFFERENCE_BOX] Category: A_BASIC_BOOLEAN -> Verdict: NUMERICAL_FAILURE
+  -> Difference volume 833.3333 satisfies difference bounds [0, 1000.0000]
+  -> Target volume mismatch: expected=500.0000, actual=833.3333, error=3.33e+2
+[CASE_A04_CYLINDER_UNION_BOX] Category: A_BASIC_BOOLEAN -> Verdict: TOPOLOGY_FAILURE
+  -> Edge e_canon_v_canon_10.0000_10.0000_0.0000_v_canon_9.9946_10.0000_0.0000 is open/boundary (used by only 1 face: box_a4_f_bottom_box_a4_f_bottom_s0_a_box_a4_f_bottom_s1_a_box_a4_f_bottom_s2_a_box_a4_f_bottom_s3_a_box_a4_f_bottom_s4_a_box_a4_f_bottom_s15_a)
+  -> Edge e_canon_v_canon_10.0000_10.0000_0.0000_v_canon_10.0000_9.9946_0.0000 is open/boundary (used by only 1 face: box_a4_f_bottom_box_a4_f_bottom_s0_a_box_a4_f_bottom_s1_a_box_a4_f_bottom_s2_a_box_a4_f_bottom_s3_a_box_a4_f_bottom_s4_a_box_a4_f_bottom_s15_a)
+  -> Edge e_canon_v_canon_8.0054_10.0000_0.0000_v_canon_9.9946_10.0000_0.0000 is open/boundary (used by only 1 face: box_a4_f_bottom_box_a4_f_bottom_s0_a_box_a4_f_bottom_s1_a_box_a4_f_bottom_s2_a_box_a4_f_bottom_s3_a_box_a4_f_bottom_s4_a_box_a4_f_bottom_s15_b)
+  -> Edge e_canon_v_canon_10.0000_8.0054_0.0000_v_canon_10.0000_9.9946_0.0000 is open/boundary (used by only 1 face: box_a4_f_bottom_box_a4_f_bottom_s0_a_box_a4_f_bottom_s1_a_box_a4_f_bottom_s2_a_box_a4_f_bottom_s3_a_box_a4_f_bottom_s4_b_box_a4_f_bottom_s15_a)
+  -> Edge e_canon_v_canon_10.0000_6.3774_0.0000_v_canon_10.0000_8.0054_0.0000 is open/boundary (used by only 1 face: box_a4_f_bottom_box_a4_f_bottom_s0_a_box_a4_f_bottom_s1_a_box_a4_f_bottom_s2_a_box_a4_f_bottom_s3_b_box_a4_f_bottom_s15_a)
+  -> Edge e_canon_v_canon_10.0000_4.5784_0.0000_v_canon_10.0000_5.4216_0.0000 is open/boundary (used by only 1 face: box_a4_f_bottom_box_a4_f_bottom_s0_a_box_a4_f_bottom_s1_a_box_a4_f_bottom_s2_b_box_a4_f_bottom_s14_a)
+  -> Edge e_canon_v_canon_10.0000_5.4216_0.0000_v_canon_10.0000_6.3774_0.0000 is open/boundary (used by only 1 face: box_a4_f_bottom_box_a4_f_bottom_s0_a_box_a4_f_bottom_s1_a_box_a4_f_bottom_s2_b_box_a4_f_bottom_s14_b_box_a4_f_bottom_s15_a)
+  -> Edge e_canon_v_canon_10.0000_0.0000_0.0000_v_canon_10.0000_0.0054_0.0000 is open/boundary (used by only 1 face: box_a4_f_bottom_box_a4_f_bottom_s0_a_box_a4_f_bottom_s1_b_box_a4_f_bottom_s11_a)
+  -> Edge e_canon_v_canon_10.0000_0.0000_0.0000_v_canon_9.9946_0.0000_0.0000 is open/boundary (used by only 1 face: box_a4_f_bottom_box_a4_f_bottom_s0_a_box_a4_f_bottom_s1_b_box_a4_f_bottom_s11_a)
+  -> Edge e_canon_v_canon_10.0000_0.0054_0.0000_v_canon_10.0000_1.9946_0.0000 is open/boundary (used by only 1 face: box_a4_f_bottom_box_a4_f_bottom_s0_a_box_a4_f_bottom_s1_b_box_a4_f_bottom_s11_b_box_a4_f_bottom_s12_a)
+  -> Edge e_canon_v_canon_10.0000_1.9946_0.0000_v_canon_10.0000_3.6226_0.0000 is open/boundary (used by only 1 face: box_a4_f_bottom_box_a4_f_bottom_s0_a_box_a4_f_bottom_s1_b_box_a4_f_bottom_s11_b_box_a4_f_bottom_s12_b_box_a4_f_bottom_s13_a)
+  -> Edge e_canon_v_canon_10.0000_3.6226_0.0000_v_canon_10.0000_4.5784_0.0000 is open/boundary (used by only 1 face: box_a4_f_bottom_box_a4_f_bottom_s0_a_box_a4_f_bottom_s1_b_box_a4_f_bottom_s11_b_box_a4_f_bottom_s12_b_box_a4_f_bottom_s13_b_box_a4_f_bottom_s14_a)
+  -> Edge e_canon_v_canon_6.3774_10.0000_0.0000_v_canon_8.0054_10.0000_0.0000 is open/boundary (used by only 1 face: box_a4_f_bottom_box_a4_f_bottom_s0_b_box_a4_f_bottom_s1_a_box_a4_f_bottom_s2_a_box_a4_f_bottom_s3_a_box_a4_f_bottom_s4_a)
+  -> Edge e_canon_v_canon_4.5784_10.0000_0.0000_v_canon_5.4216_10.0000_0.0000 is open/boundary (used by only 1 face: box_a4_f_bottom_box_a4_f_bottom_s0_b_box_a4_f_bottom_s1_b_box_a4_f_bottom_s2_a_box_a4_f_bottom_s3_a_box_a4_f_bottom_s4_a_box_a4_f_bottom_s5_a)
+  -> Edge e_canon_v_canon_5.4216_10.0000_0.0000_v_canon_6.3774_10.0000_0.0000 is open/boundary (used by only 1 face: box_a4_f_bottom_box_a4_f_bottom_s0_b_box_a4_f_bottom_s1_b_box_a4_f_bottom_s2_a_box_a4_f_bottom_s3_a_box_a4_f_bottom_s4_a_box_a4_f_bottom_s5_b)
+  -> Edge e_canon_v_canon_0.0000_10.0000_0.0000_v_canon_0.0000_9.9946_0.0000 is open/boundary (used by only 1 face: box_a4_f_bottom_box_a4_f_bottom_s0_b_box_a4_f_bottom_s1_b_box_a4_f_bottom_s2_b_box_a4_f_bottom_s3_a_box_a4_f_bottom_s4_a_box_a4_f_bottom_s5_a_box_a4_f_bottom_s6_a_box_a4_f_bottom_s7_a_box_a4_f_bottom_s8_a)
+  -> Edge e_canon_v_canon_0.0000_10.0000_0.0000_v_canon_0.0054_10.0000_0.0000 is open/boundary (used by only 1 face: box_a4_f_bottom_box_a4_f_bottom_s0_b_box_a4_f_bottom_s1_b_box_a4_f_bottom_s2_b_box_a4_f_bottom_s3_a_box_a4_f_bottom_s4_a_box_a4_f_bottom_s5_a_box_a4_f_bottom_s6_a_box_a4_f_bottom_s7_a_box_a4_f_bottom_s8_a)
+  -> Edge e_canon_v_canon_0.0054_10.0000_0.0000_v_canon_1.9946_10.0000_0.0000 is open/boundary (used by only 1 face: box_a4_f_bottom_box_a4_f_bottom_s0_b_box_a4_f_bottom_s1_b_box_a4_f_bottom_s2_b_box_a4_f_bottom_s3_a_box_a4_f_bottom_s4_a_box_a4_f_bottom_s5_a_box_a4_f_bottom_s6_a_box_a4_f_bottom_s7_a_box_a4_f_bottom_s8_b)
+  -> Edge e_canon_v_canon_1.9946_10.0000_0.0000_v_canon_3.6226_10.0000_0.0000 is open/boundary (used by only 1 face: box_a4_f_bottom_box_a4_f_bottom_s0_b_box_a4_f_bottom_s1_b_box_a4_f_bottom_s2_b_box_a4_f_bottom_s3_a_box_a4_f_bottom_s4_a_box_a4_f_bottom_s5_a_box_a4_f_bottom_s6_a_box_a4_f_bottom_s7_b)
+  -> Edge e_canon_v_canon_3.6226_10.0000_0.0000_v_canon_4.5784_10.0000_0.0000 is open/boundary (used by only 1 face: box_a4_f_bottom_box_a4_f_bottom_s0_b_box_a4_f_bottom_s1_b_box_a4_f_bottom_s2_b_box_a4_f_bottom_s3_a_box_a4_f_bottom_s4_a_box_a4_f_bottom_s5_a_box_a4_f_bottom_s6_b)
+  -> Edge e_canon_v_canon_0.0000_8.0054_0.0000_v_canon_0.0000_9.9946_0.0000 is open/boundary (used by only 1 face: box_a4_f_bottom_box_a4_f_bottom_s0_b_box_a4_f_bottom_s1_b_box_a4_f_bottom_s2_b_box_a4_f_bottom_s3_b_box_a4_f_bottom_s4_a_box_a4_f_bottom_s5_a_box_a4_f_bottom_s6_a_box_a4_f_bottom_s7_a_box_a4_f_bottom_s8_a)
+  -> Edge e_canon_v_canon_0.0000_6.3774_0.0000_v_canon_0.0000_8.0054_0.0000 is open/boundary (used by only 1 face: box_a4_f_bottom_box_a4_f_bottom_s0_b_box_a4_f_bottom_s1_b_box_a4_f_bottom_s2_b_box_a4_f_bottom_s3_b_box_a4_f_bottom_s4_b_box_a4_f_bottom_s5_a_box_a4_f_bottom_s6_a_box_a4_f_bottom_s7_a_box_a4_f_bottom_s8_a)
+  -> Edge e_canon_v_canon_0.0000_4.5784_0.0000_v_canon_0.0000_5.4216_0.0000 is open/boundary (used by only 1 face: box_a4_f_bottom_box_a4_f_bottom_s0_b_box_a4_f_bottom_s1_b_box_a4_f_bottom_s2_b_box_a4_f_bottom_s3_b_box_a4_f_bottom_s4_b_box_a4_f_bottom_s5_b_box_a4_f_bottom_s6_a_box_a4_f_bottom_s7_a_box_a4_f_bottom_s8_a_box_a4_f_bottom_s9_a)
+  -> Edge e_canon_v_canon_0.0000_5.4216_0.0000_v_canon_0.0000_6.3774_0.0000 is open/boundary (used by only 1 face: box_a4_f_bottom_box_a4_f_bottom_s0_b_box_a4_f_bottom_s1_b_box_a4_f_bottom_s2_b_box_a4_f_bottom_s3_b_box_a4_f_bottom_s4_b_box_a4_f_bottom_s5_b_box_a4_f_bottom_s6_a_box_a4_f_bottom_s7_a_box_a4_f_bottom_s8_a_box_a4_f_bottom_s9_b)
+  -> Edge e_canon_v_canon_0.0000_0.0000_0.0000_v_canon_0.0000_0.0054_0.0000 is open/boundary (used by only 1 face: box_a4_f_bottom_box_a4_f_bottom_s0_b_box_a4_f_bottom_s1_b_box_a4_f_bottom_s2_b_box_a4_f_bottom_s3_b_box_a4_f_bottom_s4_b_box_a4_f_bottom_s5_b_box_a4_f_bottom_s6_b_box_a4_f_bottom_s7_a_box_a4_f_bottom_s8_a_box_a4_f_bottom_s9_a_box_a4_f_bottom_s10_a_box_a4_f_bottom_s11_a_box_a4_f_bottom_s12_a)
+  -> Edge e_canon_v_canon_0.0000_0.0000_0.0000_v_canon_0.0054_0.0000_0.0000 is open/boundary (used by only 1 face: box_a4_f_bottom_box_a4_f_bottom_s0_b_box_a4_f_bottom_s1_b_box_a4_f_bottom_s2_b_box_a4_f_bottom_s3_b_box_a4_f_bottom_s4_b_box_a4_f_bottom_s5_b_box_a4_f_bottom_s6_b_box_a4_f_bottom_s7_a_box_a4_f_bottom_s8_a_box_a4_f_bottom_s9_a_box_a4_f_bottom_s10_a_box_a4_f_bottom_s11_a_box_a4_f_bottom_s12_a)
+  -> Edge e_canon_v_canon_0.0000_0.0054_0.0000_v_canon_0.0000_1.9946_0.0000 is open/boundary (used by only 1 face: box_a4_f_bottom_box_a4_f_bottom_s0_b_box_a4_f_bottom_s1_b_box_a4_f_bottom_s2_b_box_a4_f_bottom_s3_b_box_a4_f_bottom_s4_b_box_a4_f_bottom_s5_b_box_a4_f_bottom_s6_b_box_a4_f_bottom_s7_a_box_a4_f_bottom_s8_a_box_a4_f_bottom_s9_a_box_a4_f_bottom_s10_a_box_a4_f_bottom_s11_a_box_a4_f_bottom_s12_b)
+  -> Edge e_canon_v_canon_0.0000_1.9946_0.0000_v_canon_0.0000_3.6226_0.0000 is open/boundary (used by only 1 face: box_a4_f_bottom_box_a4_f_bottom_s0_b_box_a4_f_bottom_s1_b_box_a4_f_bottom_s2_b_box_a4_f_bottom_s3_b_box_a4_f_bottom_s4_b_box_a4_f_bottom_s5_b_box_a4_f_bottom_s6_b_box_a4_f_bottom_s7_a_box_a4_f_bottom_s8_a_box_a4_f_bottom_s9_a_box_a4_f_bottom_s10_a_box_a4_f_bottom_s11_b)
+  -> Edge e_canon_v_canon_0.0000_3.6226_0.0000_v_canon_0.0000_4.5784_0.0000 is open/boundary (used by only 1 face: box_a4_f_bottom_box_a4_f_bottom_s0_b_box_a4_f_bottom_s1_b_box_a4_f_bottom_s2_b_box_a4_f_bottom_s3_b_box_a4_f_bottom_s4_b_box_a4_f_bottom_s5_b_box_a4_f_bottom_s6_b_box_a4_f_bottom_s7_a_box_a4_f_bottom_s8_a_box_a4_f_bottom_s9_a_box_a4_f_bottom_s10_b)
+  -> Edge e_canon_v_canon_0.0054_0.0000_0.0000_v_canon_1.9946_0.0000_0.0000 is open/boundary (used by only 1 face: box_a4_f_bottom_box_a4_f_bottom_s0_b_box_a4_f_bottom_s1_b_box_a4_f_bottom_s2_b_box_a4_f_bottom_s3_b_box_a4_f_bottom_s4_b_box_a4_f_bottom_s5_b_box_a4_f_bottom_s6_b_box_a4_f_bottom_s7_b_box_a4_f_bottom_s8_a_box_a4_f_bottom_s9_a_box_a4_f_bottom_s10_a_box_a4_f_bottom_s11_a_box_a4_f_bottom_s12_a)
+  -> Edge e_canon_v_canon_1.9946_0.0000_0.0000_v_canon_3.6226_0.0000_0.0000 is open/boundary (used by only 1 face: box_a4_f_bottom_box_a4_f_bottom_s0_b_box_a4_f_bottom_s1_b_box_a4_f_bottom_s2_b_box_a4_f_bottom_s3_b_box_a4_f_bottom_s4_b_box_a4_f_bottom_s5_b_box_a4_f_bottom_s6_b_box_a4_f_bottom_s7_b_box_a4_f_bottom_s8_b_box_a4_f_bottom_s9_a_box_a4_f_bottom_s10_a_box_a4_f_bottom_s11_a_box_a4_f_bottom_s12_a)
+  -> Edge e_canon_v_canon_4.5784_0.0000_0.0000_v_canon_5.4216_0.0000_0.0000 is open/boundary (used by only 1 face: box_a4_f_bottom_box_a4_f_bottom_s0_b_box_a4_f_bottom_s1_b_box_a4_f_bottom_s2_b_box_a4_f_bottom_s3_b_box_a4_f_bottom_s4_b_box_a4_f_bottom_s5_b_box_a4_f_bottom_s6_b_box_a4_f_bottom_s7_b_box_a4_f_bottom_s8_b_box_a4_f_bottom_s9_b_box_a4_f_bottom_s10_a_box_a4_f_bottom_s11_a_box_a4_f_bottom_s12_a_box_a4_f_bottom_s13_a)
+  -> Edge e_canon_v_canon_3.6226_0.0000_0.0000_v_canon_4.5784_0.0000_0.0000 is open/boundary (used by only 1 face: box_a4_f_bottom_box_a4_f_bottom_s0_b_box_a4_f_bottom_s1_b_box_a4_f_bottom_s2_b_box_a4_f_bottom_s3_b_box_a4_f_bottom_s4_b_box_a4_f_bottom_s5_b_box_a4_f_bottom_s6_b_box_a4_f_bottom_s7_b_box_a4_f_bottom_s8_b_box_a4_f_bottom_s9_b_box_a4_f_bottom_s10_a_box_a4_f_bottom_s11_a_box_a4_f_bottom_s12_a_box_a4_f_bottom_s13_b)
+  -> Edge e_canon_v_canon_8.0054_0.0000_0.0000_v_canon_9.9946_0.0000_0.0000 is open/boundary (used by only 1 face: box_a4_f_bottom_box_a4_f_bottom_s0_b_box_a4_f_bottom_s1_b_box_a4_f_bottom_s2_b_box_a4_f_bottom_s3_b_box_a4_f_bottom_s4_b_box_a4_f_bottom_s5_b_box_a4_f_bottom_s6_b_box_a4_f_bottom_s7_b_box_a4_f_bottom_s8_b_box_a4_f_bottom_s9_b_box_a4_f_bottom_s10_b_box_a4_f_bottom_s11_a_box_a4_f_bottom_s12_a_box_a4_f_bottom_s13_a_box_a4_f_bottom_s14_a_box_a4_f_bottom_s15_a)
+  -> Edge e_canon_v_canon_6.3774_0.0000_0.0000_v_canon_8.0054_0.0000_0.0000 is open/boundary (used by only 1 face: box_a4_f_bottom_box_a4_f_bottom_s0_b_box_a4_f_bottom_s1_b_box_a4_f_bottom_s2_b_box_a4_f_bottom_s3_b_box_a4_f_bottom_s4_b_box_a4_f_bottom_s5_b_box_a4_f_bottom_s6_b_box_a4_f_bottom_s7_b_box_a4_f_bottom_s8_b_box_a4_f_bottom_s9_b_box_a4_f_bottom_s10_b_box_a4_f_bottom_s11_a_box_a4_f_bottom_s12_a_box_a4_f_bottom_s13_a_box_a4_f_bottom_s14_a_box_a4_f_bottom_s15_b)
+  -> Edge e_canon_v_canon_5.4216_0.0000_0.0000_v_canon_6.3774_0.0000_0.0000 is open/boundary (used by only 1 face: box_a4_f_bottom_box_a4_f_bottom_s0_b_box_a4_f_bottom_s1_b_box_a4_f_bottom_s2_b_box_a4_f_bottom_s3_b_box_a4_f_bottom_s4_b_box_a4_f_bottom_s5_b_box_a4_f_bottom_s6_b_box_a4_f_bottom_s7_b_box_a4_f_bottom_s8_b_box_a4_f_bottom_s9_b_box_a4_f_bottom_s10_b_box_a4_f_bottom_s11_a_box_a4_f_bottom_s12_a_box_a4_f_bottom_s13_a_box_a4_f_bottom_s14_b)
+  -> Edge e_canon_v_canon_10.0000_10.0000_10.0000_v_canon_10.0000_9.9946_10.0000 is open/boundary (used by only 1 face: box_a4_f_top_box_a4_f_top_s0_a_box_a4_f_top_s1_a_box_a4_f_top_s2_a_box_a4_f_top_s3_a_box_a4_f_top_s4_a_box_a4_f_top_s15_a)
+  -> Edge e_canon_v_canon_10.0000_10.0000_10.0000_v_canon_9.9946_10.0000_10.0000 is open/boundary (used by only 1 face: box_a4_f_top_box_a4_f_top_s0_a_box_a4_f_top_s1_a_box_a4_f_top_s2_a_box_a4_f_top_s3_a_box_a4_f_top_s4_a_box_a4_f_top_s15_a)
+  -> Edge e_canon_v_canon_8.0054_10.0000_10.0000_v_canon_9.9946_10.0000_10.0000 is open/boundary (used by only 1 face: box_a4_f_top_box_a4_f_top_s0_a_box_a4_f_top_s1_a_box_a4_f_top_s2_a_box_a4_f_top_s3_a_box_a4_f_top_s4_a_box_a4_f_top_s15_b)
+  -> Edge e_canon_v_canon_10.0000_8.0054_10.0000_v_canon_10.0000_9.9946_10.0000 is open/boundary (used by only 1 face: box_a4_f_top_box_a4_f_top_s0_a_box_a4_f_top_s1_a_box_a4_f_top_s2_a_box_a4_f_top_s3_a_box_a4_f_top_s4_b_box_a4_f_top_s15_a)
+  -> Edge e_canon_v_canon_10.0000_6.3774_10.0000_v_canon_10.0000_8.0054_10.0000 is open/boundary (used by only 1 face: box_a4_f_top_box_a4_f_top_s0_a_box_a4_f_top_s1_a_box_a4_f_top_s2_a_box_a4_f_top_s3_b_box_a4_f_top_s15_a)
+  -> Edge e_canon_v_canon_10.0000_4.5784_10.0000_v_canon_10.0000_5.4216_10.0000 is open/boundary (used by only 1 face: box_a4_f_top_box_a4_f_top_s0_a_box_a4_f_top_s1_a_box_a4_f_top_s2_b_box_a4_f_top_s14_a)
+  -> Edge e_canon_v_canon_10.0000_5.4216_10.0000_v_canon_10.0000_6.3774_10.0000 is open/boundary (used by only 1 face: box_a4_f_top_box_a4_f_top_s0_a_box_a4_f_top_s1_a_box_a4_f_top_s2_b_box_a4_f_top_s14_b_box_a4_f_top_s15_a)
+  -> Edge e_canon_v_canon_10.0000_0.0000_10.0000_v_canon_9.9946_0.0000_10.0000 is open/boundary (used by only 1 face: box_a4_f_top_box_a4_f_top_s0_a_box_a4_f_top_s1_b_box_a4_f_top_s11_a)
+  -> Edge e_canon_v_canon_10.0000_0.0000_10.0000_v_canon_10.0000_0.0054_10.0000 is open/boundary (used by only 1 face: box_a4_f_top_box_a4_f_top_s0_a_box_a4_f_top_s1_b_box_a4_f_top_s11_a)
+  -> Edge e_canon_v_canon_10.0000_0.0054_10.0000_v_canon_10.0000_1.9946_10.0000 is open/boundary (used by only 1 face: box_a4_f_top_box_a4_f_top_s0_a_box_a4_f_top_s1_b_box_a4_f_top_s11_b_box_a4_f_top_s12_a)
+  -> Edge e_canon_v_canon_10.0000_1.9946_10.0000_v_canon_10.0000_3.6226_10.0000 is open/boundary (used by only 1 face: box_a4_f_top_box_a4_f_top_s0_a_box_a4_f_top_s1_b_box_a4_f_top_s11_b_box_a4_f_top_s12_b_box_a4_f_top_s13_a)
+  -> Edge e_canon_v_canon_10.0000_3.6226_10.0000_v_canon_10.0000_4.5784_10.0000 is open/boundary (used by only 1 face: box_a4_f_top_box_a4_f_top_s0_a_box_a4_f_top_s1_b_box_a4_f_top_s11_b_box_a4_f_top_s12_b_box_a4_f_top_s13_b_box_a4_f_top_s14_a)
+  -> Edge e_canon_v_canon_6.3774_10.0000_10.0000_v_canon_8.0054_10.0000_10.0000 is open/boundary (used by only 1 face: box_a4_f_top_box_a4_f_top_s0_b_box_a4_f_top_s1_a_box_a4_f_top_s2_a_box_a4_f_top_s3_a_box_a4_f_top_s4_a)
+  -> Edge e_canon_v_canon_4.5784_10.0000_10.0000_v_canon_5.4216_10.0000_10.0000 is open/boundary (used by only 1 face: box_a4_f_top_box_a4_f_top_s0_b_box_a4_f_top_s1_b_box_a4_f_top_s2_a_box_a4_f_top_s3_a_box_a4_f_top_s4_a_box_a4_f_top_s5_a)
+  -> Edge e_canon_v_canon_5.4216_10.0000_10.0000_v_canon_6.3774_10.0000_10.0000 is open/boundary (used by only 1 face: box_a4_f_top_box_a4_f_top_s0_b_box_a4_f_top_s1_b_box_a4_f_top_s2_a_box_a4_f_top_s3_a_box_a4_f_top_s4_a_box_a4_f_top_s5_b)
+  -> Edge e_canon_v_canon_0.0000_10.0000_10.0000_v_canon_0.0054_10.0000_10.0000 is open/boundary (used by only 1 face: box_a4_f_top_box_a4_f_top_s0_b_box_a4_f_top_s1_b_box_a4_f_top_s2_b_box_a4_f_top_s3_a_box_a4_f_top_s4_a_box_a4_f_top_s5_a_box_a4_f_top_s6_a_box_a4_f_top_s7_a_box_a4_f_top_s8_a)
+  -> Edge e_canon_v_canon_0.0000_10.0000_10.0000_v_canon_0.0000_9.9946_10.0000 is open/boundary (used by only 1 face: box_a4_f_top_box_a4_f_top_s0_b_box_a4_f_top_s1_b_box_a4_f_top_s2_b_box_a4_f_top_s3_a_box_a4_f_top_s4_a_box_a4_f_top_s5_a_box_a4_f_top_s6_a_box_a4_f_top_s7_a_box_a4_f_top_s8_a)
+  -> Edge e_canon_v_canon_0.0054_10.0000_10.0000_v_canon_1.9946_10.0000_10.0000 is open/boundary (used by only 1 face: box_a4_f_top_box_a4_f_top_s0_b_box_a4_f_top_s1_b_box_a4_f_top_s2_b_box_a4_f_top_s3_a_box_a4_f_top_s4_a_box_a4_f_top_s5_a_box_a4_f_top_s6_a_box_a4_f_top_s7_a_box_a4_f_top_s8_b)
+  -> Edge e_canon_v_canon_1.9946_10.0000_10.0000_v_canon_3.6226_10.0000_10.0000 is open/boundary (used by only 1 face: box_a4_f_top_box_a4_f_top_s0_b_box_a4_f_top_s1_b_box_a4_f_top_s2_b_box_a4_f_top_s3_a_box_a4_f_top_s4_a_box_a4_f_top_s5_a_box_a4_f_top_s6_a_box_a4_f_top_s7_b)
+  -> Edge e_canon_v_canon_3.6226_10.0000_10.0000_v_canon_4.5784_10.0000_10.0000 is open/boundary (used by only 1 face: box_a4_f_top_box_a4_f_top_s0_b_box_a4_f_top_s1_b_box_a4_f_top_s2_b_box_a4_f_top_s3_a_box_a4_f_top_s4_a_box_a4_f_top_s5_a_box_a4_f_top_s6_b)
+  -> Edge e_canon_v_canon_0.0000_8.0054_10.0000_v_canon_0.0000_9.9946_10.0000 is open/boundary (used by only 1 face: box_a4_f_top_box_a4_f_top_s0_b_box_a4_f_top_s1_b_box_a4_f_top_s2_b_box_a4_f_top_s3_b_box_a4_f_top_s4_a_box_a4_f_top_s5_a_box_a4_f_top_s6_a_box_a4_f_top_s7_a_box_a4_f_top_s8_a)
+  -> Edge e_canon_v_canon_0.0000_6.3774_10.0000_v_canon_0.0000_8.0054_10.0000 is open/boundary (used by only 1 face: box_a4_f_top_box_a4_f_top_s0_b_box_a4_f_top_s1_b_box_a4_f_top_s2_b_box_a4_f_top_s3_b_box_a4_f_top_s4_b_box_a4_f_top_s5_a_box_a4_f_top_s6_a_box_a4_f_top_s7_a_box_a4_f_top_s8_a)
+  -> Edge e_canon_v_canon_0.0000_4.5784_10.0000_v_canon_0.0000_5.4216_10.0000 is open/boundary (used by only 1 face: box_a4_f_top_box_a4_f_top_s0_b_box_a4_f_top_s1_b_box_a4_f_top_s2_b_box_a4_f_top_s3_b_box_a4_f_top_s4_b_box_a4_f_top_s5_b_box_a4_f_top_s6_a_box_a4_f_top_s7_a_box_a4_f_top_s8_a_box_a4_f_top_s9_a)
+  -> Edge e_canon_v_canon_0.0000_5.4216_10.0000_v_canon_0.0000_6.3774_10.0000 is open/boundary (used by only 1 face: box_a4_f_top_box_a4_f_top_s0_b_box_a4_f_top_s1_b_box_a4_f_top_s2_b_box_a4_f_top_s3_b_box_a4_f_top_s4_b_box_a4_f_top_s5_b_box_a4_f_top_s6_a_box_a4_f_top_s7_a_box_a4_f_top_s8_a_box_a4_f_top_s9_b)
+  -> Edge e_canon_v_canon_0.0000_0.0000_10.0000_v_canon_0.0054_0.0000_10.0000 is open/boundary (used by only 1 face: box_a4_f_top_box_a4_f_top_s0_b_box_a4_f_top_s1_b_box_a4_f_top_s2_b_box_a4_f_top_s3_b_box_a4_f_top_s4_b_box_a4_f_top_s5_b_box_a4_f_top_s6_b_box_a4_f_top_s7_a_box_a4_f_top_s8_a_box_a4_f_top_s9_a_box_a4_f_top_s10_a_box_a4_f_top_s11_a_box_a4_f_top_s12_a)
+  -> Edge e_canon_v_canon_0.0000_0.0000_10.0000_v_canon_0.0000_0.0054_10.0000 is open/boundary (used by only 1 face: box_a4_f_top_box_a4_f_top_s0_b_box_a4_f_top_s1_b_box_a4_f_top_s2_b_box_a4_f_top_s3_b_box_a4_f_top_s4_b_box_a4_f_top_s5_b_box_a4_f_top_s6_b_box_a4_f_top_s7_a_box_a4_f_top_s8_a_box_a4_f_top_s9_a_box_a4_f_top_s10_a_box_a4_f_top_s11_a_box_a4_f_top_s12_a)
+  -> Edge e_canon_v_canon_0.0000_0.0054_10.0000_v_canon_0.0000_1.9946_10.0000 is open/boundary (used by only 1 face: box_a4_f_top_box_a4_f_top_s0_b_box_a4_f_top_s1_b_box_a4_f_top_s2_b_box_a4_f_top_s3_b_box_a4_f_top_s4_b_box_a4_f_top_s5_b_box_a4_f_top_s6_b_box_a4_f_top_s7_a_box_a4_f_top_s8_a_box_a4_f_top_s9_a_box_a4_f_top_s10_a_box_a4_f_top_s11_a_box_a4_f_top_s12_b)
+  -> Edge e_canon_v_canon_0.0000_1.9946_10.0000_v_canon_0.0000_3.6226_10.0000 is open/boundary (used by only 1 face: box_a4_f_top_box_a4_f_top_s0_b_box_a4_f_top_s1_b_box_a4_f_top_s2_b_box_a4_f_top_s3_b_box_a4_f_top_s4_b_box_a4_f_top_s5_b_box_a4_f_top_s6_b_box_a4_f_top_s7_a_box_a4_f_top_s8_a_box_a4_f_top_s9_a_box_a4_f_top_s10_a_box_a4_f_top_s11_b)
+  -> Edge e_canon_v_canon_0.0000_3.6226_10.0000_v_canon_0.0000_4.5784_10.0000 is open/boundary (used by only 1 face: box_a4_f_top_box_a4_f_top_s0_b_box_a4_f_top_s1_b_box_a4_f_top_s2_b_box_a4_f_top_s3_b_box_a4_f_top_s4_b_box_a4_f_top_s5_b_box_a4_f_top_s6_b_box_a4_f_top_s7_a_box_a4_f_top_s8_a_box_a4_f_top_s9_a_box_a4_f_top_s10_b)
+  -> Edge e_canon_v_canon_0.0054_0.0000_10.0000_v_canon_1.9946_0.0000_10.0000 is open/boundary (used by only 1 face: box_a4_f_top_box_a4_f_top_s0_b_box_a4_f_top_s1_b_box_a4_f_top_s2_b_box_a4_f_top_s3_b_box_a4_f_top_s4_b_box_a4_f_top_s5_b_box_a4_f_top_s6_b_box_a4_f_top_s7_b_box_a4_f_top_s8_a_box_a4_f_top_s9_a_box_a4_f_top_s10_a_box_a4_f_top_s11_a_box_a4_f_top_s12_a)
+  -> Edge e_canon_v_canon_1.9946_0.0000_10.0000_v_canon_3.6226_0.0000_10.0000 is open/boundary (used by only 1 face: box_a4_f_top_box_a4_f_top_s0_b_box_a4_f_top_s1_b_box_a4_f_top_s2_b_box_a4_f_top_s3_b_box_a4_f_top_s4_b_box_a4_f_top_s5_b_box_a4_f_top_s6_b_box_a4_f_top_s7_b_box_a4_f_top_s8_b_box_a4_f_top_s9_a_box_a4_f_top_s10_a_box_a4_f_top_s11_a_box_a4_f_top_s12_a)
+  -> Edge e_canon_v_canon_4.5784_0.0000_10.0000_v_canon_5.4216_0.0000_10.0000 is open/boundary (used by only 1 face: box_a4_f_top_box_a4_f_top_s0_b_box_a4_f_top_s1_b_box_a4_f_top_s2_b_box_a4_f_top_s3_b_box_a4_f_top_s4_b_box_a4_f_top_s5_b_box_a4_f_top_s6_b_box_a4_f_top_s7_b_box_a4_f_top_s8_b_box_a4_f_top_s9_b_box_a4_f_top_s10_a_box_a4_f_top_s11_a_box_a4_f_top_s12_a_box_a4_f_top_s13_a)
+  -> Edge e_canon_v_canon_3.6226_0.0000_10.0000_v_canon_4.5784_0.0000_10.0000 is open/boundary (used by only 1 face: box_a4_f_top_box_a4_f_top_s0_b_box_a4_f_top_s1_b_box_a4_f_top_s2_b_box_a4_f_top_s3_b_box_a4_f_top_s4_b_box_a4_f_top_s5_b_box_a4_f_top_s6_b_box_a4_f_top_s7_b_box_a4_f_top_s8_b_box_a4_f_top_s9_b_box_a4_f_top_s10_a_box_a4_f_top_s11_a_box_a4_f_top_s12_a_box_a4_f_top_s13_b)
+  -> Edge e_canon_v_canon_8.0054_0.0000_10.0000_v_canon_9.9946_0.0000_10.0000 is open/boundary (used by only 1 face: box_a4_f_top_box_a4_f_top_s0_b_box_a4_f_top_s1_b_box_a4_f_top_s2_b_box_a4_f_top_s3_b_box_a4_f_top_s4_b_box_a4_f_top_s5_b_box_a4_f_top_s6_b_box_a4_f_top_s7_b_box_a4_f_top_s8_b_box_a4_f_top_s9_b_box_a4_f_top_s10_b_box_a4_f_top_s11_a_box_a4_f_top_s12_a_box_a4_f_top_s13_a_box_a4_f_top_s14_a_box_a4_f_top_s15_a)
+  -> Edge e_canon_v_canon_6.3774_0.0000_10.0000_v_canon_8.0054_0.0000_10.0000 is open/boundary (used by only 1 face: box_a4_f_top_box_a4_f_top_s0_b_box_a4_f_top_s1_b_box_a4_f_top_s2_b_box_a4_f_top_s3_b_box_a4_f_top_s4_b_box_a4_f_top_s5_b_box_a4_f_top_s6_b_box_a4_f_top_s7_b_box_a4_f_top_s8_b_box_a4_f_top_s9_b_box_a4_f_top_s10_b_box_a4_f_top_s11_a_box_a4_f_top_s12_a_box_a4_f_top_s13_a_box_a4_f_top_s14_a_box_a4_f_top_s15_b)
+  -> Edge e_canon_v_canon_5.4216_0.0000_10.0000_v_canon_6.3774_0.0000_10.0000 is open/boundary (used by only 1 face: box_a4_f_top_box_a4_f_top_s0_b_box_a4_f_top_s1_b_box_a4_f_top_s2_b_box_a4_f_top_s3_b_box_a4_f_top_s4_b_box_a4_f_top_s5_b_box_a4_f_top_s6_b_box_a4_f_top_s7_b_box_a4_f_top_s8_b_box_a4_f_top_s9_b_box_a4_f_top_s10_b_box_a4_f_top_s11_a_box_a4_f_top_s12_a_box_a4_f_top_s13_a_box_a4_f_top_s14_b)
+  -> Edge e_canon_v_canon_0.0000_0.0000_0.0000_v_canon_10.0000_0.0000_0.0000 is open/boundary (used by only 1 face: box_a4_f_front)
+  -> Edge e_canon_v_canon_0.0000_0.0000_10.0000_v_canon_10.0000_0.0000_10.0000 is open/boundary (used by only 1 face: box_a4_f_front)
+  -> Edge e_canon_v_canon_0.0000_10.0000_0.0000_v_canon_10.0000_10.0000_0.0000 is open/boundary (used by only 1 face: box_a4_f_back)
+  -> Edge e_canon_v_canon_0.0000_10.0000_10.0000_v_canon_10.0000_10.0000_10.0000 is open/boundary (used by only 1 face: box_a4_f_back)
+  -> Edge e_canon_v_canon_0.0000_0.0000_0.0000_v_canon_0.0000_10.0000_0.0000 is open/boundary (used by only 1 face: box_a4_f_left)
+  -> Edge e_canon_v_canon_0.0000_0.0000_10.0000_v_canon_0.0000_10.0000_10.0000 is open/boundary (used by only 1 face: box_a4_f_left)
+  -> Edge e_canon_v_canon_10.0000_0.0000_0.0000_v_canon_10.0000_10.0000_0.0000 is open/boundary (used by only 1 face: box_a4_f_right)
+  -> Edge e_canon_v_canon_10.0000_0.0000_10.0000_v_canon_10.0000_10.0000_10.0000 is open/boundary (used by only 1 face: box_a4_f_right)
+[CASE_A05_CYLINDER_INTERSECTION_BOX] Category: A_BASIC_BOOLEAN -> Verdict: PASS
+  -> Independent geometric and topological invariants strictly verified
+[CASE_A06_CYLINDER_DIFFERENCE_BOX] Category: A_BASIC_BOOLEAN -> Verdict: TOPOLOGY_FAILURE
+  -> Non-manifold edge e_canon_v_canon_5.0000_16.0958_20.0000_v_canon_5.0000_3.9042_20.0000 shared by 3 faces (cyl_a6_f_top_cyl_a6_f_top_s0_a,cyl_a6_f_top_cyl_a6_f_top_s0_b_cyl_a6_f_top_s1_b,box_b6_f_left_box_b6_f_left_s2_a_box_b6_f_left_s3_a)
+  -> Non-manifold edge e_canon_v_canon_15.0000_16.0958_20.0000_v_canon_15.0000_3.9042_20.0000 shared by 3 faces (cyl_a6_f_top_cyl_a6_f_top_s0_b_cyl_a6_f_top_s1_a,cyl_a6_f_top_cyl_a6_f_top_s0_b_cyl_a6_f_top_s1_b,box_b6_f_right_box_b6_f_right_s2_a_box_b6_f_right_s3_a)
+  -> Edge e_canon_v_canon_13.0615_17.3910_20.0000_v_canon_15.0000_16.0958_20.0000 is open/boundary (used by only 1 face: cyl_a6_f_top_cyl_a6_f_top_s0_b_cyl_a6_f_top_s1_b)
+  -> Edge e_canon_v_canon_10.0000_18.0000_20.0000_v_canon_13.0615_17.3910_20.0000 is open/boundary (used by only 1 face: cyl_a6_f_top_cyl_a6_f_top_s0_b_cyl_a6_f_top_s1_b)
+  -> Edge e_canon_v_canon_10.0000_18.0000_20.0000_v_canon_6.9385_17.3910_20.0000 is open/boundary (used by only 1 face: cyl_a6_f_top_cyl_a6_f_top_s0_b_cyl_a6_f_top_s1_b)
+  -> Edge e_canon_v_canon_5.0000_16.0958_20.0000_v_canon_6.9385_17.3910_20.0000 is open/boundary (used by only 1 face: cyl_a6_f_top_cyl_a6_f_top_s0_b_cyl_a6_f_top_s1_b)
+  -> Edge e_canon_v_canon_5.0000_3.9042_20.0000_v_canon_6.9385_2.6090_20.0000 is open/boundary (used by only 1 face: cyl_a6_f_top_cyl_a6_f_top_s0_b_cyl_a6_f_top_s1_b)
+  -> Edge e_canon_v_canon_10.0000_2.0000_20.0000_v_canon_6.9385_2.6090_20.0000 is open/boundary (used by only 1 face: cyl_a6_f_top_cyl_a6_f_top_s0_b_cyl_a6_f_top_s1_b)
+  -> Edge e_canon_v_canon_10.0000_2.0000_20.0000_v_canon_13.0615_2.6090_20.0000 is open/boundary (used by only 1 face: cyl_a6_f_top_cyl_a6_f_top_s0_b_cyl_a6_f_top_s1_b)
+  -> Edge e_canon_v_canon_13.0615_2.6090_20.0000_v_canon_15.0000_3.9042_20.0000 is open/boundary (used by only 1 face: cyl_a6_f_top_cyl_a6_f_top_s0_b_cyl_a6_f_top_s1_b)
+[CASE_A07_SPHERE_UNION_BOX] Category: A_BASIC_BOOLEAN -> Verdict: NUMERICAL_FAILURE
+  -> Union volume violation: actual=0.0000 outside bounds [1000.0000, 1000.0000]
+[CASE_A08_SPHERE_INTERSECTION_BOX] Category: A_BASIC_BOOLEAN -> Verdict: TOPOLOGY_FAILURE
+  -> Edge e_canon_v_canon_0.0000_8.0000_0.0000_v_canon_4.0000_6.9282_0.0000 is open/boundary (used by only 1 face: box_a8_f_bottom_box_a8_f_bottom_s0_a_box_a8_f_bottom_s1_a_box_a8_f_bottom_s2_a)
+  -> Edge e_canon_v_canon_4.0000_6.9282_0.0000_v_canon_6.9282_4.0000_0.0000 is open/boundary (used by only 1 face: box_a8_f_bottom_box_a8_f_bottom_s0_a_box_a8_f_bottom_s1_a_box_a8_f_bottom_s2_a)
+  -> Edge e_canon_v_canon_6.9282_4.0000_0.0000_v_canon_8.0000_0.0000_0.0000 is open/boundary (used by only 1 face: box_a8_f_bottom_box_a8_f_bottom_s0_a_box_a8_f_bottom_s1_a_box_a8_f_bottom_s2_a)
+  -> Edge e_canon_v_canon_7.3910_0.0000_3.0615_v_canon_8.0000_0.0000_0.0000 is open/boundary (used by only 1 face: box_a8_f_front_box_a8_f_front_s0_b_box_a8_f_front_s2_a_box_a8_f_front_s4_a_box_a8_f_front_s6_a)
+  -> Edge e_canon_v_canon_5.6569_0.0000_5.6569_v_canon_7.3910_0.0000_3.0615 is open/boundary (used by only 1 face: box_a8_f_front_box_a8_f_front_s0_b_box_a8_f_front_s2_a_box_a8_f_front_s4_a_box_a8_f_front_s6_a)
+  -> Edge e_canon_v_canon_3.0615_0.0000_7.3910_v_canon_5.6569_0.0000_5.6569 is open/boundary (used by only 1 face: box_a8_f_front_box_a8_f_front_s0_b_box_a8_f_front_s2_a_box_a8_f_front_s4_a_box_a8_f_front_s6_a)
+  -> Edge e_canon_v_canon_0.0000_0.0000_8.0000_v_canon_3.0615_0.0000_7.3910 is open/boundary (used by only 1 face: box_a8_f_front_box_a8_f_front_s0_b_box_a8_f_front_s2_a_box_a8_f_front_s4_a_box_a8_f_front_s6_a)
+  -> Edge e_canon_v_canon_0.0000_0.0000_8.0000_v_canon_0.0000_3.0615_7.3910 is open/boundary (used by only 1 face: box_a8_f_left_box_a8_f_left_s0_b_box_a8_f_left_s2_a_box_a8_f_left_s4_a_box_a8_f_left_s6_a)
+  -> Edge e_canon_v_canon_0.0000_3.0615_7.3910_v_canon_0.0000_5.6569_5.6569 is open/boundary (used by only 1 face: box_a8_f_left_box_a8_f_left_s0_b_box_a8_f_left_s2_a_box_a8_f_left_s4_a_box_a8_f_left_s6_a)
+  -> Edge e_canon_v_canon_0.0000_5.6569_5.6569_v_canon_0.0000_7.3910_3.0615 is open/boundary (used by only 1 face: box_a8_f_left_box_a8_f_left_s0_b_box_a8_f_left_s2_a_box_a8_f_left_s4_a_box_a8_f_left_s6_a)
+  -> Edge e_canon_v_canon_0.0000_7.3910_3.0615_v_canon_0.0000_8.0000_0.0000 is open/boundary (used by only 1 face: box_a8_f_left_box_a8_f_left_s0_b_box_a8_f_left_s2_a_box_a8_f_left_s4_a_box_a8_f_left_s6_a)
+  -> Edge sph_b8_e_top_0 is open/boundary (used by only 1 face: sph_b8_f_top_0)
+  -> Edge sph_b8_e_h_0_0 has inconsistent orientation across adjacent faces (sph_b8_f_top_0,sph_b8_f_mid_0_0)
+  -> Edge sph_b8_e_top_1 is open/boundary (used by only 1 face: sph_b8_f_top_0)
+  -> Edge e_canon_v_canon_0.0000_0.0000_8.0000_v_canon_2.6513_1.5307_7.3910 is open/boundary (used by only 1 face: sph_b8_f_top_1)
+  -> Edge e_canon_v_canon_1.5307_2.6513_7.3910_v_canon_2.6513_1.5307_7.3910 has inconsistent orientation across adjacent faces (sph_b8_f_top_1,sph_b8_f_mid_0_1)
+  -> Edge e_canon_v_canon_0.0000_0.0000_8.0000_v_canon_1.5307_2.6513_7.3910 is open/boundary (used by only 1 face: sph_b8_f_top_1)
+  -> Edge sph_b8_e_top_2 is open/boundary (used by only 1 face: sph_b8_f_top_2)
+  -> Edge sph_b8_e_h_0_2 has inconsistent orientation across adjacent faces (sph_b8_f_top_2,sph_b8_f_mid_0_2)
+  -> Edge sph_b8_e_top_3 is open/boundary (used by only 1 face: sph_b8_f_top_2)
+  -> Edge sph_b8_e_mid_0_1 is open/boundary (used by only 1 face: sph_b8_f_mid_0_0)
+  -> Edge sph_b8_e_mid_0_0 is open/boundary (used by only 1 face: sph_b8_f_mid_0_0)
+  -> Edge e_canon_v_canon_1.5307_2.6513_7.3910_v_canon_2.8284_4.8990_5.6569 is open/boundary (used by only 1 face: sph_b8_f_mid_0_1)
+  -> Edge e_canon_v_canon_2.6513_1.5307_7.3910_v_canon_4.8990_2.8284_5.6569 is open/boundary (used by only 1 face: sph_b8_f_mid_0_1)
+  -> Edge sph_b8_e_mid_0_3 is open/boundary (used by only 1 face: sph_b8_f_mid_0_2)
+  -> Edge sph_b8_e_mid_0_2 is open/boundary (used by only 1 face: sph_b8_f_mid_0_2)
+  -> Edge sph_b8_e_mid_1_1 is open/boundary (used by only 1 face: sph_b8_f_mid_1_0)
+  -> Edge sph_b8_e_mid_1_0 is open/boundary (used by only 1 face: sph_b8_f_mid_1_0)
+  -> Edge e_canon_v_canon_2.8284_4.8990_5.6569_v_canon_3.6955_6.4008_3.0615 is open/boundary (used by only 1 face: sph_b8_f_mid_1_1)
+  -> Edge e_canon_v_canon_3.6955_6.4008_3.0615_v_canon_6.4008_3.6955_3.0615 is open/boundary (used by only 1 face: sph_b8_f_mid_1_1)
+  -> Edge e_canon_v_canon_4.8990_2.8284_5.6569_v_canon_6.4008_3.6955_3.0615 is open/boundary (used by only 1 face: sph_b8_f_mid_1_1)
+  -> Edge sph_b8_e_mid_1_3 is open/boundary (used by only 1 face: sph_b8_f_mid_1_2)
+  -> Edge sph_b8_e_mid_1_2 is open/boundary (used by only 1 face: sph_b8_f_mid_1_2)
+  -> Edge sph_b8_e_h_3_0 is open/boundary (used by only 1 face: sph_b8_f_mid_2_0)
+  -> Edge sph_b8_e_mid_2_0 is open/boundary (used by only 1 face: sph_b8_f_mid_2_0)
+  -> Edge sph_b8_e_h_2_1 is open/boundary (used by only 1 face: sph_b8_f_mid_2_1)
+  -> Edge sph_b8_e_h_3_1 is open/boundary (used by only 1 face: sph_b8_f_mid_2_1)
+  -> Edge sph_b8_e_mid_2_3 is open/boundary (used by only 1 face: sph_b8_f_mid_2_2)
+  -> Edge sph_b8_e_h_3_2 is open/boundary (used by only 1 face: sph_b8_f_mid_2_2)
+  -> Outer shell shell_bool_intersection_box_a8_sph_b8 has negative signed volume (-98.6366) indicating inverted outward normal
+[CASE_A09_SPHERE_DIFFERENCE_BOX] Category: A_BASIC_BOOLEAN -> Verdict: NUMERICAL_FAILURE
+  -> Difference volume violation: actual=477.4775 not in [0, 0.0000]
+[CASE_B01_TANGENT_FACE_CONTACT] Category: B_TANGENCY_CASES -> Verdict: NUMERICAL_FAILURE
+  -> Union volume 1666.6667 satisfies inclusion-exclusion bounds
+  -> Target volume mismatch: expected=2000.0000, actual=1666.6667, error=3.33e+2
+[CASE_B02_TANGENT_EDGE_CONTACT] Category: B_TANGENCY_CASES -> Verdict: TOPOLOGY_FAILURE
+  -> Edge e_canon_v_canon_0.0000_10.0000_0.0000_v_canon_10.0000_10.0000_0.0000 is open/boundary (used by only 1 face: box_tan_e1_f_bottom)
+  -> Edge e_canon_v_canon_10.0000_0.0000_0.0000_v_canon_10.0000_10.0000_0.0000 is open/boundary (used by only 1 face: box_tan_e1_f_bottom)
+  -> Edge e_canon_v_canon_10.0000_0.0000_10.0000_v_canon_10.0000_10.0000_10.0000 is open/boundary (used by only 1 face: box_tan_e1_f_top)
+  -> Edge e_canon_v_canon_0.0000_10.0000_10.0000_v_canon_10.0000_10.0000_10.0000 is open/boundary (used by only 1 face: box_tan_e1_f_top)
+  -> Edge e_canon_v_canon_10.0000_0.0000_0.0000_v_canon_10.0000_0.0000_10.0000 is open/boundary (used by only 1 face: box_tan_e1_f_front)
+  -> Edge box_tan_e1_e_110_010 is open/boundary (used by only 1 face: box_tan_e1_f_back)
+  -> Edge box_tan_e1_e_010_011 is open/boundary (used by only 1 face: box_tan_e1_f_back)
+  -> Edge box_tan_e1_e_111_011 is open/boundary (used by only 1 face: box_tan_e1_f_back)
+  -> Edge e_canon_v_canon_0.0000_10.0000_0.0000_v_canon_0.0000_10.0000_10.0000 is open/boundary (used by only 1 face: box_tan_e1_f_left)
+  -> Edge box_tan_e1_e_100_110 is open/boundary (used by only 1 face: box_tan_e1_f_right)
+  -> Edge box_tan_e1_e_101_111 is open/boundary (used by only 1 face: box_tan_e1_f_right)
+  -> Edge box_tan_e1_e_100_101 is open/boundary (used by only 1 face: box_tan_e1_f_right)
+  -> Edge e_canon_v_canon_10.0000_10.0000_0.0000_v_canon_10.0000_20.0000_0.0000 is open/boundary (used by only 1 face: box_tan_e2_f_bottom)
+  -> Edge e_canon_v_canon_10.0000_10.0000_0.0000_v_canon_20.0000_10.0000_0.0000 is open/boundary (used by only 1 face: box_tan_e2_f_bottom)
+  -> Edge e_canon_v_canon_10.0000_10.0000_10.0000_v_canon_20.0000_10.0000_10.0000 is open/boundary (used by only 1 face: box_tan_e2_f_top)
+  -> Edge e_canon_v_canon_10.0000_10.0000_10.0000_v_canon_10.0000_20.0000_10.0000 is open/boundary (used by only 1 face: box_tan_e2_f_top)
+  -> Edge box_tan_e2_e_000_100 is open/boundary (used by only 1 face: box_tan_e2_f_front)
+  -> Edge box_tan_e2_e_100_101 is open/boundary (used by only 1 face: box_tan_e2_f_front)
+  -> Edge box_tan_e2_e_001_101 is open/boundary (used by only 1 face: box_tan_e2_f_front)
+  -> Edge e_canon_v_canon_10.0000_20.0000_0.0000_v_canon_10.0000_20.0000_10.0000 is open/boundary (used by only 1 face: box_tan_e2_f_back)
+  -> Edge box_tan_e2_e_010_000 is open/boundary (used by only 1 face: box_tan_e2_f_left)
+  -> Edge box_tan_e2_e_011_001 is open/boundary (used by only 1 face: box_tan_e2_f_left)
+  -> Edge box_tan_e2_e_010_011 is open/boundary (used by only 1 face: box_tan_e2_f_left)
+  -> Edge e_canon_v_canon_20.0000_10.0000_0.0000_v_canon_20.0000_10.0000_10.0000 is open/boundary (used by only 1 face: box_tan_e2_f_right)
+[CASE_B03_TANGENT_VERTEX_CONTACT] Category: B_TANGENCY_CASES -> Verdict: PASS
+  -> Independent geometric and topological invariants strictly verified
+[CASE_B04_TANGENT_INTERSECTION_EMPTY] Category: B_TANGENCY_CASES -> Verdict: NUMERICAL_FAILURE
+  -> Intersection volume 333.3333 satisfies intersection upper bound 1000.0000
+  -> Target volume mismatch: expected=0.0000, actual=333.3333, error=3.33e+2
+[CASE_C01_IDENTICAL_UNION] Category: C_COINCIDENT_GEOMETRY -> Verdict: PASS
+  -> Independent geometric and topological invariants strictly verified
+[CASE_C02_IDENTICAL_INTERSECTION] Category: C_COINCIDENT_GEOMETRY -> Verdict: PASS
+  -> Independent geometric and topological invariants strictly verified
+[CASE_C03_IDENTICAL_DIFFERENCE] Category: C_COINCIDENT_GEOMETRY -> Verdict: PASS
+  -> Independent geometric and topological invariants strictly verified
+[CASE_C04_COINCIDENT_BOTTOM_FACE] Category: C_COINCIDENT_GEOMETRY -> Verdict: NUMERICAL_FAILURE
+  -> Union volume 1833.3333 satisfies inclusion-exclusion bounds
+  -> Target volume mismatch: expected=1500.0000, actual=1833.3333, error=3.33e+2
+[CASE_D01_TINY_GAP_1E7] Category: D_NEAR_DEGENERATE_GEOMETRY -> Verdict: NUMERICAL_FAILURE
+  -> Union volume 1666.6667 satisfies inclusion-exclusion bounds
+  -> Target volume mismatch: expected=2000.0000, actual=1666.6667, error=3.33e+2
+[CASE_D02_TINY_OVERLAP_1E7] Category: D_NEAR_DEGENERATE_GEOMETRY -> Verdict: TOPOLOGY_FAILURE
+  -> Edge box_ov_1_e_100_110 is open/boundary (used by only 1 face: box_ov_1_f_right)
+  -> Edge box_ov_1_e_110_111 is open/boundary (used by only 1 face: box_ov_1_f_right)
+  -> Edge box_ov_1_e_101_111 is open/boundary (used by only 1 face: box_ov_1_f_right)
+  -> Edge box_ov_1_e_100_101 is open/boundary (used by only 1 face: box_ov_1_f_right)
+[CASE_D03_VERY_THIN_SOLID_1E5] Category: D_NEAR_DEGENERATE_GEOMETRY -> Verdict: TOPOLOGY_FAILURE
+  -> Non-manifold edge e_canon_v_canon_0.0000_0.0000_0.0000_v_canon_0.0000_10.0000_0.0000 shared by 4 faces (box_thin_1_f_bottom_box_thin_1_f_bottom_s2_a,box_thin_1_f_top_box_thin_1_f_top_s2_a,box_thin_1_f_left,box_thin_1_f_left)
+  -> Non-manifold edge e_canon_v_canon_0.0000_10.0000_0.0000_v_canon_5.0000_10.0000_0.0000 shared by 4 faces (box_thin_1_f_bottom_box_thin_1_f_bottom_s2_a,box_thin_1_f_top_box_thin_1_f_top_s2_a,box_thin_1_f_back_box_thin_1_f_back_s1_a,box_thin_1_f_back_box_thin_1_f_back_s1_a)
+  -> Non-manifold edge e_canon_v_canon_5.0000_0.0000_0.0000_v_canon_5.0000_10.0000_0.0000 shared by 3 faces (box_thin_1_f_bottom_box_thin_1_f_bottom_s2_a,box_thin_1_f_top_box_thin_1_f_top_s2_a,box_thin_2_f_left_box_thin_2_f_left_s1_b)
+  -> Non-manifold edge e_canon_v_canon_0.0000_0.0000_0.0000_v_canon_5.0000_0.0000_0.0000 shared by 4 faces (box_thin_1_f_bottom_box_thin_1_f_bottom_s2_a,box_thin_1_f_top_box_thin_1_f_top_s2_a,box_thin_1_f_front_box_thin_1_f_front_s1_a,box_thin_1_f_front_box_thin_1_f_front_s1_a)
+  -> Edge e_canon_v_canon_5.0000_0.0000_0.0000_v_canon_5.0000_0.0000_0.0000 has inconsistent orientation across adjacent faces (box_thin_1_f_front_box_thin_1_f_front_s1_a,box_thin_2_f_front_box_thin_2_f_front_s1_a)
+  -> Edge e_canon_v_canon_0.0000_0.0000_0.0000_v_canon_0.0000_0.0000_0.0000 has inconsistent orientation across adjacent faces (box_thin_1_f_front_box_thin_1_f_front_s1_a,box_thin_1_f_left)
+  -> Edge e_canon_v_canon_0.0000_10.0000_0.0000_v_canon_0.0000_10.0000_0.0000 has inconsistent orientation across adjacent faces (box_thin_1_f_back_box_thin_1_f_back_s1_a,box_thin_1_f_left)
+  -> Non-manifold edge e_canon_v_canon_5.0000_10.0000_0.0000_v_canon_5.0000_10.0000_0.0000 shared by 3 faces (box_thin_1_f_back_box_thin_1_f_back_s1_a,box_thin_1_f_back_box_thin_1_f_back_s1_b,box_thin_2_f_back_box_thin_2_f_back_s1_a)
+  -> Non-manifold edge e_canon_v_canon_10.0000_10.0000_0.0000_v_canon_5.0000_10.0000_0.0000 shared by 3 faces (box_thin_1_f_back_box_thin_1_f_back_s1_b,box_thin_1_f_back_box_thin_1_f_back_s1_b,box_thin_2_f_back_box_thin_2_f_back_s1_b_box_thin_2_f_back_s2_a)
+  -> Edge e_canon_v_canon_10.0000_10.0000_0.0000_v_canon_10.0000_10.0000_0.0000 is open/boundary (used by only 1 face: box_thin_1_f_back_box_thin_1_f_back_s1_b)
+  -> Edge e_canon_v_canon_10.0000_0.0000_0.0000_v_canon_10.0000_10.0000_0.0000 is open/boundary (used by only 1 face: box_thin_2_f_bottom_box_thin_2_f_bottom_s2_b)
+  -> Edge e_canon_v_canon_15.0000_0.0000_10.0000_v_canon_5.0000_0.0000_10.0000 is open/boundary (used by only 1 face: box_thin_2_f_top)
+  -> Edge e_canon_v_canon_15.0000_10.0000_10.0000_v_canon_5.0000_10.0000_10.0000 is open/boundary (used by only 1 face: box_thin_2_f_top)
+  -> Edge e_canon_v_canon_10.0000_0.0000_10.0000_v_canon_5.0000_0.0000_10.0000 is open/boundary (used by only 1 face: box_thin_2_f_front_box_thin_2_f_front_s1_b_box_thin_2_f_front_s2_a)
+  -> Edge e_canon_v_canon_10.0000_0.0000_0.0000_v_canon_5.0000_0.0000_0.0000 is open/boundary (used by only 1 face: box_thin_2_f_front_box_thin_2_f_front_s1_b_box_thin_2_f_front_s2_a)
+  -> Edge e_canon_v_canon_10.0000_0.0000_10.0000_v_canon_15.0000_0.0000_10.0000 is open/boundary (used by only 1 face: box_thin_2_f_front_box_thin_2_f_front_s1_b_box_thin_2_f_front_s2_b)
+  -> Edge e_canon_v_canon_10.0000_10.0000_10.0000_v_canon_5.0000_10.0000_10.0000 is open/boundary (used by only 1 face: box_thin_2_f_back_box_thin_2_f_back_s1_b_box_thin_2_f_back_s2_a)
+  -> Edge e_canon_v_canon_10.0000_10.0000_10.0000_v_canon_15.0000_10.0000_10.0000 is open/boundary (used by only 1 face: box_thin_2_f_back_box_thin_2_f_back_s1_b_box_thin_2_f_back_s2_b)
+[CASE_D04_SLIGHT_ROTATION_1E5] Category: D_NEAR_DEGENERATE_GEOMETRY -> Verdict: TOPOLOGY_FAILURE
+  -> Edge e_canon_v_canon_10.0000_10.0000_0.0000_v_canon_5.0000_10.0000_0.0000 has inconsistent orientation across adjacent faces (box_tilt_1_f_bottom_box_tilt_1_f_bottom_s1_b,box_tilt_2_f_bottom_box_tilt_2_f_bottom_s2_a)
+  -> Edge e_canon_v_canon_10.0000_0.0000_0.0000_v_canon_10.0000_10.0000_0.0000 has inconsistent orientation across adjacent faces (box_tilt_1_f_bottom_box_tilt_1_f_bottom_s1_b,box_tilt_2_f_bottom_box_tilt_2_f_bottom_s2_a)
+  -> Non-manifold edge e_canon_v_canon_10.0000_0.0000_0.0000_v_canon_5.0000_0.0000_0.0000 shared by 4 faces (box_tilt_1_f_bottom_box_tilt_1_f_bottom_s1_b,box_tilt_1_f_front_box_tilt_1_f_front_s2_b,box_tilt_2_f_bottom_box_tilt_2_f_bottom_s2_a,box_tilt_2_f_front_box_tilt_2_f_front_s2_a)
+  -> Edge e_canon_v_canon_5.0000_0.0000_0.0000_v_canon_5.0000_10.0000_0.0000 has inconsistent orientation across adjacent faces (box_tilt_1_f_bottom_box_tilt_1_f_bottom_s1_b,box_tilt_2_f_bottom_box_tilt_2_f_bottom_s2_a)
+  -> Edge e_canon_v_canon_10.0000_0.0000_0.0000_v_canon_10.0000_0.0000_10.0000 has inconsistent orientation across adjacent faces (box_tilt_1_f_front_box_tilt_1_f_front_s2_b,box_tilt_2_f_front_box_tilt_2_f_front_s2_a)
+  -> Edge e_canon_v_canon_10.0000_0.0000_10.0000_v_canon_5.0000_0.0000_10.0000 has inconsistent orientation across adjacent faces (box_tilt_1_f_front_box_tilt_1_f_front_s2_b,box_tilt_2_f_front_box_tilt_2_f_front_s2_a)
+  -> Edge e_canon_v_canon_5.0000_0.0000_0.0000_v_canon_5.0000_0.0000_10.0000 has inconsistent orientation across adjacent faces (box_tilt_1_f_front_box_tilt_1_f_front_s2_b,box_tilt_2_f_front_box_tilt_2_f_front_s2_a)
+  -> Edge box_tilt_1_e_100_110 is open/boundary (used by only 1 face: box_tilt_1_f_right)
+  -> Edge box_tilt_1_e_110_111 is open/boundary (used by only 1 face: box_tilt_1_f_right)
+  -> Edge box_tilt_1_e_101_111 is open/boundary (used by only 1 face: box_tilt_1_f_right)
+  -> Edge box_tilt_1_e_100_101 is open/boundary (used by only 1 face: box_tilt_1_f_right)
+  -> Edge box_tilt_2_e_010_000 is open/boundary (used by only 1 face: box_tilt_2_f_left)
+  -> Edge box_tilt_2_e_000_001 is open/boundary (used by only 1 face: box_tilt_2_f_left)
+  -> Edge box_tilt_2_e_011_001 is open/boundary (used by only 1 face: box_tilt_2_f_left)
+  -> Edge box_tilt_2_e_010_011 is open/boundary (used by only 1 face: box_tilt_2_f_left)
+[CASE_E01_NESTED_SUBTRACTION_HOLE] Category: E_NESTED_SOLIDS -> Verdict: PASS
+  -> Independent geometric and topological invariants strictly verified
+[CASE_E02_REVERSE_NESTED_DIFFERENCE] Category: E_NESTED_SOLIDS -> Verdict: PASS
+  -> Independent geometric and topological invariants strictly verified
+[CASE_E03_NESTED_INTERSECTION] Category: E_NESTED_SOLIDS -> Verdict: PASS
+  -> Independent geometric and topological invariants strictly verified
+[CASE_E04_NESTED_UNION] Category: E_NESTED_SOLIDS -> Verdict: PASS
+  -> Independent geometric and topological invariants strictly verified
+[CASE_F01_CHAIN_UNION_THEN_DIFFERENCE] Category: F_COMPLEX_CHAINS -> Verdict: NUMERICAL_FAILURE
+  -> Union volume 1833.3333 satisfies inclusion-exclusion bounds
+  -> Target volume mismatch: expected=1500.0000, actual=1833.3333, error=3.33e+2
+[CASE_F02_CHAIN_MULTI_STEP_INTERSECTION] Category: F_COMPLEX_CHAINS -> Verdict: PASS
+  -> Independent geometric and topological invariants strictly verified
+[CASE_G01_REPEATED_UNION_STABILITY] Category: G_REPEATED_OPERATIONS -> Verdict: NUMERICAL_FAILURE
+  -> Union volume 1833.3333 satisfies inclusion-exclusion bounds
+  -> Target volume mismatch: expected=1500.0000, actual=1833.3333, error=3.33e+2
+[CASE_G02_REPEATED_DIFFERENCE_STABILITY] Category: G_REPEATED_OPERATIONS -> Verdict: NUMERICAL_FAILURE
+  -> Difference volume 833.3333 satisfies difference bounds [0, 1000.0000]
+  -> Target volume mismatch: expected=500.0000, actual=833.3333, error=3.33e+2
+[CASE_H01_RANDOMIZED_DISPLACEMENTS_SEED_42] Category: H_RANDOMIZED_ADVERSARIAL -> Verdict: TOPOLOGY_FAILURE
+  -> Edge e_canon_v_canon_0.0000_10.0000_0.0000_v_canon_10.0000_10.0000_0.0000 is open/boundary (used by only 1 face: box_rnd_a1_f_bottom)
+  -> Edge e_canon_v_canon_10.0000_0.0000_0.0000_v_canon_10.0000_10.0000_0.0000 is open/boundary (used by only 1 face: box_rnd_a1_f_bottom)
+  -> Edge e_canon_v_canon_0.0000_0.0000_10.0000_v_canon_0.0016_0.0000_10.0000 is open/boundary (used by only 1 face: box_rnd_a1_f_top_box_rnd_a1_f_top_s0_a_box_rnd_a1_f_top_s1_a)
+  -> Edge e_canon_v_canon_0.0000_0.0000_10.0000_v_canon_0.0000_2.6229_10.0000 is open/boundary (used by only 1 face: box_rnd_a1_f_top_box_rnd_a1_f_top_s0_a_box_rnd_a1_f_top_s1_a)
+  -> Edge e_canon_v_canon_0.0016_0.0000_10.0000_v_canon_10.0000_0.0000_10.0000 is open/boundary (used by only 1 face: box_rnd_a1_f_top_box_rnd_a1_f_top_s0_a_box_rnd_a1_f_top_s1_b)
+  -> Edge e_canon_v_canon_0.0000_10.0000_10.0000_v_canon_0.0000_2.6229_10.0000 is open/boundary (used by only 1 face: box_rnd_a1_f_top_box_rnd_a1_f_top_s0_b_box_rnd_a1_f_top_s1_a)
+  -> Edge e_canon_v_canon_10.0000_0.0000_0.0000_v_canon_10.0000_0.0000_10.0000 is open/boundary (used by only 1 face: box_rnd_a1_f_front)
+  -> Edge e_canon_v_canon_0.0000_0.0000_10.0000_v_canon_10.0000_0.0000_10.0000 is open/boundary (used by only 1 face: box_rnd_a1_f_front)
+  -> Edge e_canon_v_canon_0.0000_10.0000_0.0000_v_canon_0.0016_10.0000_0.0000 is open/boundary (used by only 1 face: box_rnd_a1_f_back_box_rnd_a1_f_back_s0_a_box_rnd_a1_f_back_s1_a)
+  -> Edge e_canon_v_canon_0.0000_10.0000_0.0000_v_canon_0.0000_10.0000_3.6771 is open/boundary (used by only 1 face: box_rnd_a1_f_back_box_rnd_a1_f_back_s0_a_box_rnd_a1_f_back_s1_a)
+  -> Edge e_canon_v_canon_0.0016_10.0000_0.0000_v_canon_10.0000_10.0000_0.0000 is open/boundary (used by only 1 face: box_rnd_a1_f_back_box_rnd_a1_f_back_s0_a_box_rnd_a1_f_back_s1_b)
+  -> Edge e_canon_v_canon_0.0000_10.0000_10.0000_v_canon_0.0000_10.0000_3.6771 is open/boundary (used by only 1 face: box_rnd_a1_f_back_box_rnd_a1_f_back_s0_b_box_rnd_a1_f_back_s1_a)
+  -> Edge e_canon_v_canon_0.0000_0.0000_10.0000_v_canon_0.0000_10.0000_10.0000 is open/boundary (used by only 1 face: box_rnd_a1_f_left)
+  -> Edge e_canon_v_canon_0.0000_10.0000_0.0000_v_canon_0.0000_10.0000_10.0000 is open/boundary (used by only 1 face: box_rnd_a1_f_left)
+  -> Edge e_canon_v_canon_10.0000_0.0000_0.0000_v_canon_10.0000_2.6229_0.0000 is open/boundary (used by only 1 face: box_rnd_a1_f_right_box_rnd_a1_f_right_s0_a_box_rnd_a1_f_right_s1_a)
+  -> Edge e_canon_v_canon_10.0000_0.0000_0.0000_v_canon_10.0000_0.0000_3.6771 is open/boundary (used by only 1 face: box_rnd_a1_f_right_box_rnd_a1_f_right_s0_a_box_rnd_a1_f_right_s1_a)
+  -> Edge e_canon_v_canon_10.0000_10.0000_0.0000_v_canon_10.0000_2.6229_0.0000 is open/boundary (used by only 1 face: box_rnd_a1_f_right_box_rnd_a1_f_right_s0_a_box_rnd_a1_f_right_s1_b)
+  -> Edge e_canon_v_canon_10.0000_0.0000_10.0000_v_canon_10.0000_0.0000_3.6771 is open/boundary (used by only 1 face: box_rnd_a1_f_right_box_rnd_a1_f_right_s0_b_box_rnd_a1_f_right_s1_a)
+  -> Edge e_canon_v_canon_10.0016_10.0000_3.6771_v_canon_10.0016_2.6229_3.6771 is open/boundary (used by only 1 face: box_rnd_b1_f_bottom_box_rnd_b1_f_bottom_s0_a_box_rnd_b1_f_bottom_s1_b)
+  -> Edge e_canon_v_canon_0.0016_12.6229_3.6771_v_canon_10.0000_12.6229_3.6771 is open/boundary (used by only 1 face: box_rnd_b1_f_bottom_box_rnd_b1_f_bottom_s0_b_box_rnd_b1_f_bottom_s1_a)
+  -> Edge e_canon_v_canon_10.0000_12.6229_3.6771_v_canon_10.0016_12.6229_3.6771 is open/boundary (used by only 1 face: box_rnd_b1_f_bottom_box_rnd_b1_f_bottom_s0_b_box_rnd_b1_f_bottom_s1_b)
+  -> Edge e_canon_v_canon_10.0016_10.0000_3.6771_v_canon_10.0016_12.6229_3.6771 is open/boundary (used by only 1 face: box_rnd_b1_f_bottom_box_rnd_b1_f_bottom_s0_b_box_rnd_b1_f_bottom_s1_b)
+  -> Edge e_canon_v_canon_0.0016_2.6229_13.6771_v_canon_10.0016_2.6229_13.6771 is open/boundary (used by only 1 face: box_rnd_b1_f_top)
+  -> Edge e_canon_v_canon_0.0016_12.6229_13.6771_v_canon_0.0016_2.6229_13.6771 is open/boundary (used by only 1 face: box_rnd_b1_f_top)
+  -> Edge e_canon_v_canon_10.0016_2.6229_10.0000_v_canon_10.0016_2.6229_3.6771 is open/boundary (used by only 1 face: box_rnd_b1_f_front_box_rnd_b1_f_front_s0_a_box_rnd_b1_f_front_s1_b)
+  -> Edge e_canon_v_canon_0.0016_2.6229_13.6771_v_canon_10.0000_2.6229_13.6771 is open/boundary (used by only 1 face: box_rnd_b1_f_front_box_rnd_b1_f_front_s0_b_box_rnd_b1_f_front_s1_a)
+  -> Edge e_canon_v_canon_10.0016_2.6229_10.0000_v_canon_10.0016_2.6229_13.6771 is open/boundary (used by only 1 face: box_rnd_b1_f_front_box_rnd_b1_f_front_s0_b_box_rnd_b1_f_front_s1_b)
+  -> Edge e_canon_v_canon_10.0000_2.6229_13.6771_v_canon_10.0016_2.6229_13.6771 is open/boundary (used by only 1 face: box_rnd_b1_f_front_box_rnd_b1_f_front_s0_b_box_rnd_b1_f_front_s1_b)
+  -> Edge e_canon_v_canon_0.0016_12.6229_3.6771_v_canon_10.0016_12.6229_3.6771 is open/boundary (used by only 1 face: box_rnd_b1_f_back)
+  -> Edge e_canon_v_canon_0.0016_12.6229_13.6771_v_canon_0.0016_12.6229_3.6771 is open/boundary (used by only 1 face: box_rnd_b1_f_back)
+  -> Edge e_canon_v_canon_0.0016_12.6229_10.0000_v_canon_0.0016_12.6229_3.6771 is open/boundary (used by only 1 face: box_rnd_b1_f_left_box_rnd_b1_f_left_s0_a_box_rnd_b1_f_left_s1_b)
+  -> Edge e_canon_v_canon_0.0016_10.0000_13.6771_v_canon_0.0016_2.6229_13.6771 is open/boundary (used by only 1 face: box_rnd_b1_f_left_box_rnd_b1_f_left_s0_b_box_rnd_b1_f_left_s1_a)
+  -> Edge e_canon_v_canon_0.0016_10.0000_13.6771_v_canon_0.0016_12.6229_13.6771 is open/boundary (used by only 1 face: box_rnd_b1_f_left_box_rnd_b1_f_left_s0_b_box_rnd_b1_f_left_s1_b)
+  -> Edge e_canon_v_canon_0.0016_12.6229_10.0000_v_canon_0.0016_12.6229_13.6771 is open/boundary (used by only 1 face: box_rnd_b1_f_left_box_rnd_b1_f_left_s0_b_box_rnd_b1_f_left_s1_b)
+  -> Edge e_canon_v_canon_10.0016_12.6229_3.6771_v_canon_10.0016_2.6229_3.6771 is open/boundary (used by only 1 face: box_rnd_b1_f_right)
+  -> Edge e_canon_v_canon_10.0016_2.6229_13.6771_v_canon_10.0016_2.6229_3.6771 is open/boundary (used by only 1 face: box_rnd_b1_f_right)
+[CASE_H02_RANDOMIZED_INTERSECTION_SEED_1337] Category: H_RANDOMIZED_ADVERSARIAL -> Verdict: PASS
+  -> Independent geometric and topological invariants strictly verified
+[CASE_H03_MALFORMED_INPUT_REJECTION] Category: H_RANDOMIZED_ADVERSARIAL -> Verdict: INVALID_INPUT
+  -> Shape B validation error: Solid missing outer shell

@@ -1,0 +1,95 @@
+{
+  "generatedAt": "2026-10-03T10:03:22.758Z",
+  "missionId": "COLLISION-ENGINE-P7-TRUTH-THREAD-DETERMINISTIC-PERSISTENCE-001",
+  "executionId": "EXEC_COL_bqqd2kejh_1791021802758",
+  "inputHash": "732cdefb72b7b4f2d8d7e5803e7f3fdf8120d2d37ebe47247c1af490bef4488e",
+  "resultHash": "e84a990934d5771900db11da95f5743712dbee9fff225fb6e4d864ab7d06177c",
+  "evidenceHash": "56a24ec9934325811f9eb6fdb95600b985f49b15868d55570d1bb2568de556bf",
+  "eventHash": "afc3074bddd5bbeabe0a628a71f6a9ea14b6099944fa29e8394c478d87f556f4",
+  "status": "ANALYSIS_FAILED",
+  "verdict": "CONSUMER_TRACE_VERIFIED",
+  "provenance": {
+    "cadDocumentRevisionId": "REV_GEN_v1",
+    "geometryHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "algorithmVersion": "SYSTEM_VALIDATOR@1.0.0"
+  },
+  "provenanceGraph": {
+    "documentId": "DOC_GEN_P7_01",
+    "revisionId": "REV_GEN_v1",
+    "geometryId": "GEOM_GEN_01",
+    "snapshotId": "SNAP_GEN_01_v1",
+    "executionId": "EXEC_COL_bqqd2kejh_1791021802758",
+    "resultId": "RES_EXEC_COL_bqqd2kejh_1791021802758",
+    "evidenceId": "EVID_EXEC_COL_bqqd2kejh_1791021802758",
+    "eventId": "EVT_COL_EXEC_COL_bqqd2kejh_1791021802758_7",
+    "nodes": [
+      {
+        "level": "DOCUMENT",
+        "id": "DOC_GEN_P7_01",
+        "hash": "DOC_GEN_P7_01",
+        "verified": true
+      },
+      {
+        "level": "REVISION",
+        "id": "REV_GEN_v1",
+        "hash": "REV_GEN_v1",
+        "verified": true
+      },
+      {
+        "level": "GEOMETRY",
+        "id": "GEOM_GEN_01",
+        "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "verified": true
+      },
+      {
+        "level": "SNAPSHOT",
+        "id": "SNAP_GEN_01_v1",
+        "hash": "SNAP_GEN_01_v1",
+        "verified": true
+      },
+      {
+        "level": "INPUT",
+        "id": "EXEC_COL_bqqd2kejh_1791021802758",
+        "hash": "732cdefb72b7b4f2d8d7e5803e7f3fdf8120d2d37ebe47247c1af490bef4488e",
+        "verified": true
+      },
+      {
+        "level": "EXECUTION",
+        "id": "EXEC_COL_bqqd2kejh_1791021802758",
+        "hash": "EXEC_COL_bqqd2kejh_1791021802758",
+        "verified": true
+      },
+      {
+        "level": "PROVIDER",
+        "id": "EXACT_NARROW_PHASE",
+        "hash": "EXACT_NARROW_PHASE",
+        "verified": true
+      },
+      {
+        "level": "RESULT",
+        "id": "RES_EXEC_COL_bqqd2kejh_1791021802758",
+        "hash": "e84a990934d5771900db11da95f5743712dbee9fff225fb6e4d864ab7d06177c",
+        "verified": true
+      },
+      {
+        "level": "VERIFICATION",
+        "id": "VERIF_EXEC_COL_bqqd2kejh_1791021802758",
+        "hash": "56a24ec9934325811f9eb6fdb95600b985f49b15868d55570d1bb2568de556bf",
+        "verified": true
+      },
+      {
+        "level": "EVIDENCE",
+        "id": "EVID_EXEC_COL_bqqd2kejh_1791021802758",
+        "hash": "56a24ec9934325811f9eb6fdb95600b985f49b15868d55570d1bb2568de556bf",
+        "verified": true
+      },
+      {
+        "level": "EVENT",
+        "id": "EVT_COL_EXEC_COL_bqqd2kejh_1791021802758_7",
+        "hash": "afc3074bddd5bbeabe0a628a71f6a9ea14b6099944fa29e8394c478d87f556f4",
+        "verified": true
+      }
+    ],
+    "isUnbrokenChain": true
+  }
+}

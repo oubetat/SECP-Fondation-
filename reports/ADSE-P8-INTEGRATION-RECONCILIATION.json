@@ -1,0 +1,83 @@
+{
+  "reportId": "ADSE-P8-INTEGRATION-RECONCILIATION",
+  "status": "IMPLEMENTATION_COMPLETE_FORENSIC_CLOSURE_PENDING",
+  "statusDescription": "🟡 IMPLEMENTATION COMPLETE / FORENSIC CLOSURE PENDING",
+  "timestamp": "2026-09-28T10:31:00Z",
+  "engine": "ADSE-P8 Controls Integration & Dynamic Engineering Truth",
+  "auditManifest": {
+    "overallStatus": "IMPLEMENTATION_COMPLETE",
+    "closureStatus": "FORENSIC_CLOSURE_PENDING",
+    "assertionsVerified": {
+      "coreExecutionIntegration": true,
+      "independentVerificationBoundary": true,
+      "evidenceChainBinding": true,
+      "provenanceAutoWiring": true,
+      "modelDurablePersistence": true,
+      "officialDigitalThreadLineage": true,
+      "p8LocalResultInvalidation": true,
+      "executionIdentityIsolation": true,
+      "canonicalRevisionInvalidationPropagation": false
+    },
+    "gapStatus": {
+      "GAP_01_ModelPersistence": "CLOSED (ControlPersistenceEngine implemented)",
+      "GAP_02_P4DigitalThreadBinding": "CLOSED (Official P4 Node/Edge registration integrated)",
+      "GAP_03_ResultInvalidation": "LOCAL INVALIDATION ONLY (Canonical invalidation propagation not proven)"
+    }
+  },
+  "runtimeDependencyGraph": {
+    "path": "P8 -> CoreExecutionAuthority -> GenericExecutionRegistry -> IndexedDbEngine",
+    "classification": {
+      "PRE_EXISTING_TRANSITIVE_EXECUTION_PATH_TYPECHECK_BLOCKER": [
+        "src/engine/execution/GenericExecutionRegistry.ts",
+        "src/engine/storage/IndexedDbEngine.ts",
+        "src/engine/crossdomain/CrossDomainConflictEngine.ts",
+        "src/engine/crossdomain/CrossDomainWorkflowEngine.ts",
+        "src/engine/evidence/EngineeringHashChain.ts"
+      ],
+      "PRE_EXISTING_OUT_OF_PATH_ERROR": [
+        "src/engine/cad/*",
+        "src/engine/validation/*",
+        "src/engine/projectStorage.ts",
+        "src/lib/firebase.ts",
+        "src/engine/trust/TrustTestFixtures.ts"
+      ]
+    }
+  },
+  "persistenceAudit": {
+    "authoritativeExecutionLedger": {
+      "status": "PROVEN",
+      "path": "GenericExecutionRegistry -> IndexedDbEngine",
+      "key": "SECP_AUTHORITATIVE_EXECUTION_LEDGER"
+    },
+    "p8ModelDurablePersistence": {
+      "status": "PROVEN",
+      "findings": "ControlPersistenceEngine produces cryptographic snapshots and enables deterministic reconstruction."
+    }
+  },
+  "digitalThreadAudit": {
+    "officialP4Binding": {
+      "status": "PROVEN",
+      "findings": "Authoritative SystemModel nodes and IMPLEMENTED_BY/REVISED_BY edges registered in DigitalThreadRegistry without global clear."
+    }
+  },
+  "invalidationAudit": {
+    "p8LocalMechanism": {
+      "status": "PROVEN",
+      "findings": "updateSystem/Controller/Plant/Law triggers invalidateResults() locally when revisions or dependencies change."
+    },
+    "executionIdentityIsolation": {
+      "status": "PROVEN",
+      "findings": "CoreExecutionAuthority computes executionId incorporating revisionHash, preventing stale result reuse for new revisions."
+    },
+    "canonicalPropagation": {
+      "status": "NOT_PROVEN",
+      "findings": "Global revision changes in RevisionEngine do not push invalidation events to P8 without local registry calls."
+    }
+  },
+  "verificationsExecuted": [
+    { "testFile": "tests/adse/p8/ADSEP8GapClosure.test.ts", "passed": 4, "total": 4 },
+    { "testFile": "tests/adse/p8/ADSEP8AdversarialBattery.test.ts", "passed": 8, "total": 8 },
+    { "testFile": "tests/adse/p6/ (Thermal Suite)", "passed": 41, "total": 41 },
+    { "testFile": "tests/adse/ (P0-P8 Full Regression)", "passed": 273, "total": 273 }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "tolerances": {
+    "linearPositionToleranceMM": 0.005,
+    "angularOrientationToleranceDeg": 0.05,
+    "axisToleranceMM": 0.005,
+    "rotaryAxisToleranceDeg": 0.05,
+    "arcRadiusToleranceMM": 0.005,
+    "chordalErrorToleranceMM": 0.002,
+    "minimumSafeClearanceMM": 2,
+    "feedTolerancePercent": 2,
+    "spindleToleranceRPM": 20
+  },
+  "verdict": "WITHIN_TOLERANCE"
+}

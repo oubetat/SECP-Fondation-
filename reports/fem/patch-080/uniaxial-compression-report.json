@@ -1,0 +1,7 @@
+{
+  "name": "UNIAXIAL_COMPRESSION_ANALYTICAL",
+  "passed": true,
+  "maxError": 0,
+  "tolerance": 0.000001,
+  "details": "Symmetric compressive yield stress verified. Rel error: 0.0000e+0"
+}

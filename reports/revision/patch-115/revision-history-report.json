@@ -1,0 +1,53 @@
+{
+  "reportId": "revision-history-report.json",
+  "timestamp": "2026-08-21T08:15:02.787Z",
+  "status": "VERIFIED",
+  "data": {
+    "revisionId": "PART-001:R3",
+    "entityId": "PART-001",
+    "entityType": "PART",
+    "revisionCode": "R3",
+    "revisionNumber": 3,
+    "lifecycleState": "RELEASED",
+    "createdAt": "2026-08-21T08:15:02.785Z",
+    "createdBy": "ENG-1",
+    "releasedAt": "2026-08-21T08:15:02.786Z",
+    "releasedBy": "APPROVER-1",
+    "supersedesRevisionId": "PART-001:R2",
+    "effectivity": [
+      {
+        "type": "DATE",
+        "start": "2026-01-01"
+      }
+    ],
+    "configurationScope": [
+      "DEFAULT"
+    ],
+    "dependencies": [
+      {
+        "entityId": "MAT-1",
+        "revisionId": "MAT-1:R2"
+      }
+    ],
+    "approvals": [
+      {
+        "approvalId": "APP-100",
+        "revisionId": "PART-001:R3",
+        "role": "LEAD",
+        "actorId": "APPROVER-1",
+        "decision": "APPROVED",
+        "timestamp": "2026-08-21T08:15:02.786Z",
+        "reason": "Validation passed"
+      }
+    ],
+    "content": {
+      "geometryHash": "ab89c...",
+      "parameters": {
+        "mass": 2.5
+      }
+    },
+    "contentHash": "MOCK_CONTENT_HASH",
+    "dependencyHash": "MOCK_DEP_HASH",
+    "revisionHash": "MOCK_REV_HASH"
+  }
+}

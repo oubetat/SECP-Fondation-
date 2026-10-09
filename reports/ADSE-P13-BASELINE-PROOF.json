@@ -1,0 +1,17 @@
+{
+  "phase": "ADSE-P13",
+  "title": "ADSE P13 Baseline Cryptographic Sealing & Immutability Proof",
+  "baselineSchema": "ConfigurationBaseline",
+  "immutabilityVerification": {
+    "testCase": "G05 & G06 Baseline Immutability",
+    "verificationSteps": [
+      "1. Create Configuration Baseline with unique evidence references",
+      "2. Calculate SHA-256 Merkle root over evidence references (evidenceRootHash)",
+      "3. Attempt to mutate the list of configuration items in-place",
+      "4. Compare original hash with new calculated hash",
+      "5. Rejects modification with BASELINE_IMMUTABILITY_VIOLATION"
+    ],
+    "status": "PASS",
+    "exceptionThrown": "BASELINE_IMMUTABILITY_VIOLATION: Baseline is cryptographically sealed. Direct modifications are strictly prohibited."
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "inventoryVersion": "1.0.0",
+  "documentId": "SECP-ADSE-UI-INVENTORY-001",
+  "timestamp": "2026-09-29T07:40:00.000Z",
+  "totalAuditedComponents": 48,
+  "stateOwnershipClassification": {
+    "presentationOnly": 22,
+    "controlledProjection": 21,
+    "controlledMutationSurface": 5,
+    "uiOwnedCanonicalState": 0
+  },
+  "integratedDomains": [
+    "P0_FOUNDATION",
+    "P1_REQUIREMENTS",
+    "P2_MBSE",
+    "P3_ARCHITECTURE",
+    "P4_DIGITAL_THREAD",
+    "P5_STRUCTURAL",
+    "P6_THERMAL",
+    "P7_POWER",
+    "P8_CONTROL",
+    "P9_COMMUNICATION"
+  ],
+  "zeroParallelStateRuleEnforced": true
+}

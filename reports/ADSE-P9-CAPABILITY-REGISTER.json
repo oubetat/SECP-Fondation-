@@ -1,0 +1,38 @@
+[
+  {
+    "capabilityId": "P9_COMMUNICATION_SYSTEM_AUTHORIZATION",
+    "displayName": "Communication System Authorization",
+    "status": "AUTHORIZED",
+    "verificationGate": "P9-V1"
+  },
+  {
+    "capabilityId": "P9_BANDWIDTH_BUDGETING",
+    "displayName": "Bandwidth Budgeting & Margin Analysis",
+    "status": "AUTHORIZED",
+    "verificationGate": "P9-V13"
+  },
+  {
+    "capabilityId": "P9_LATENCY_BUDGETING",
+    "displayName": "End-to-End Latency Analysis",
+    "status": "AUTHORIZED",
+    "verificationGate": "P9-V14"
+  },
+  {
+    "capabilityId": "P9_QUEUE_BUFFER_ANALYSIS",
+    "displayName": "Queue and Buffer Delay Estimation",
+    "status": "AUTHORIZED",
+    "verificationGate": "P9-V15"
+  },
+  {
+    "capabilityId": "P9_RELIABILITY_AVAILABILITY_MODELING",
+    "displayName": "Path Reliability & Availability Modeling",
+    "status": "AUTHORIZED",
+    "verificationGate": "P9-V16_P9-V17"
+  },
+  {
+    "capabilityId": "P9_DURABLE_PERSISTENCE",
+    "displayName": "Cryptographic Persistence Snapshot & Reconstruction",
+    "status": "AUTHORIZED",
+    "verificationGate": "P9-V34"
+  }
+]

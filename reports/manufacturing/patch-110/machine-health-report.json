@@ -1,0 +1,14 @@
+{
+  "overallHealth": "HEALTHY",
+  "axisHealth": {
+    "X": "HEALTHY",
+    "Y": "HEALTHY",
+    "Z": "HEALTHY"
+  },
+  "spindleHealth": "HEALTHY",
+  "toolHealth": "HEALTHY",
+  "controllerHealth": "HEALTHY",
+  "sensorHealth": "HEALTHY",
+  "diagnostics": [],
+  "timestamp": 1787297983974
+}

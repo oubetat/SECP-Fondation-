@@ -1,0 +1,20 @@
+{
+  "patch": "PATCH-010",
+  "timestamp": "2026-08-18T08:16:30.000Z",
+  "suite": "src/engine/evidence/__tests__/EngineeringHashChain.adversarial.test.ts",
+  "totalTests": 10,
+  "passed": 10,
+  "failed": 0,
+  "tests": [
+    "ADVERSARIAL A: Change one character in the canonical payload is detected",
+    "ADVERSARIAL B: Change artifact ID inside node is detected",
+    "ADVERSARIAL C: Change artifact type inside node is detected",
+    "ADVERSARIAL D: Change canonicalization version is detected and rejected",
+    "ADVERSARIAL E: Change previousHash is detected",
+    "ADVERSARIAL F: Reordering chain nodes breaks linkage",
+    "ADVERSARIAL G: Deleting an intermediate node breaks lineage continuity",
+    "ADVERSARIAL H: Inserting an unauthorized node breaks downstream linkage",
+    "ADVERSARIAL I: Replacing artifact with modified fields is detected during artifact verification",
+    "ADVERSARIAL J: Attempting to graft old previous hash into new context is detected"
+  ]
+}

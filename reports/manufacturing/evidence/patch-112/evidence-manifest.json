@@ -1,0 +1,116 @@
+{
+  "jobId": "JOB_TURBINE_BLADE_01",
+  "evidenceItems": [
+    {
+      "evidenceId": "EV_DESIGN_01",
+      "type": "DESIGN_EVIDENCE",
+      "hash": "1189ca87cc328a15fb255e0a9a7eb630c2c94ad7743357315ae39d5c0fb51f33",
+      "source": "CAD",
+      "timestamp": 1700000000000,
+      "chainSequence": 1,
+      "signatureStatus": "VALID",
+      "verificationStatus": "COMPLETE"
+    },
+    {
+      "evidenceId": "EV_MAT_01",
+      "type": "MATERIAL_EVIDENCE",
+      "hash": "1b0d106545e31477499b3dc0c6b9f3294436902014b6fef73911941bc2084605",
+      "source": "MES",
+      "timestamp": 1700000100000,
+      "chainSequence": 2,
+      "signatureStatus": "VALID",
+      "verificationStatus": "COMPLETE"
+    },
+    {
+      "evidenceId": "EV_TOOL_01",
+      "type": "TOOL_EVIDENCE",
+      "hash": "fd116b11c1698b492100353ed117a63e65206f08e0f1d6134b35bdb2a05a41b0",
+      "source": "CAM",
+      "timestamp": 1700000200000,
+      "chainSequence": 3,
+      "signatureStatus": "VALID",
+      "verificationStatus": "COMPLETE"
+    },
+    {
+      "evidenceId": "EV_MACH_01",
+      "type": "MACHINE_EVIDENCE",
+      "hash": "8b6b585f10ec5a29fd5908795572bd37b612fb995edd5f14b899c452413c70bb",
+      "source": "CNC",
+      "timestamp": 1700000300000,
+      "chainSequence": 4,
+      "signatureStatus": "VALID",
+      "verificationStatus": "COMPLETE"
+    },
+    {
+      "evidenceId": "EV_FIX_01",
+      "type": "ENVIRONMENT_EVIDENCE",
+      "hash": "468e55ff210e457e33690192b0281c2984e2864095b131082d1969c7b8b90f30",
+      "source": "CAM",
+      "timestamp": 1700000400000,
+      "chainSequence": 5,
+      "signatureStatus": "VALID",
+      "verificationStatus": "COMPLETE"
+    },
+    {
+      "evidenceId": "EV_NC_01",
+      "type": "NC_PROGRAM_EVIDENCE",
+      "hash": "032b8d8546579178daeaafc6e5b2dbc5bd95f95a343f2f4544cf29279286c4c9",
+      "source": "VERIFIER",
+      "timestamp": 1700000500000,
+      "chainSequence": 6,
+      "signatureStatus": "VALID",
+      "verificationStatus": "COMPLETE"
+    },
+    {
+      "evidenceId": "EV_SIM_01",
+      "type": "SIMULATION_EVIDENCE",
+      "hash": "f738814e8e37f9682911a7ef15a8b2fb8dc695fb8ee4f59ee4e1841146334288",
+      "source": "SIMULATOR",
+      "timestamp": 1700000600000,
+      "chainSequence": 7,
+      "signatureStatus": "VALID",
+      "verificationStatus": "COMPLETE"
+    },
+    {
+      "evidenceId": "EV_TWIN_01",
+      "type": "DIGITAL_TWIN_EVIDENCE",
+      "hash": "b35dbf4a3d49c6144ca0356315cddcbcff1977a161a0183716c6745e82b06d9c",
+      "source": "DIGITAL_TWIN",
+      "timestamp": 1700000700000,
+      "chainSequence": 8,
+      "signatureStatus": "VALID",
+      "verificationStatus": "COMPLETE"
+    },
+    {
+      "evidenceId": "EV_EXEC_01",
+      "type": "EXECUTION_EVIDENCE",
+      "hash": "abd11d3a1d3dd46a04c71029416b15caae34e1146590dfa29d56d971d1170176",
+      "source": "CNC",
+      "timestamp": 1700000800000,
+      "chainSequence": 9,
+      "signatureStatus": "VALID",
+      "verificationStatus": "COMPLETE"
+    },
+    {
+      "evidenceId": "EV_TEL_01",
+      "type": "TELEMETRY_EVIDENCE",
+      "hash": "7a3c6f59d2fe6b8991311b5216f9ec7d4c70662b3cbc95e6e1432453c4db4a7f",
+      "source": "SENSOR",
+      "timestamp": 1700000900000,
+      "chainSequence": 10,
+      "signatureStatus": "VALID",
+      "verificationStatus": "COMPLETE"
+    },
+    {
+      "evidenceId": "EV_INSP_01",
+      "type": "INSPECTION_EVIDENCE",
+      "hash": "a2a49f2fa8f1ebcd29b9c0b12b3392d49d5a4cbf37d3686689d95350bf97b21d",
+      "source": "INSPECTION_SYSTEM",
+      "timestamp": 1700001000000,
+      "chainSequence": 11,
+      "signatureStatus": "VALID",
+      "verificationStatus": "COMPLETE"
+    }
+  ],
+  "manifestHash": "58824ebffb782e3a73f027309346571c968aaeb30e8e2abb8da390dc92a8c10a"
+}

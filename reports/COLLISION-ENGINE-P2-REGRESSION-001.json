@@ -1,0 +1,14 @@
+{
+  "missionId": "COLLISION-ENGINE-P2-FAIL-CLOSED-HARDENING-001",
+  "artifactType": "REGRESSION_REPORT",
+  "timestamp": "2026-10-01T02:08:00.000Z",
+  "testExecutionSummary": {
+    "totalTestFiles": 4,
+    "totalTests": 49,
+    "passed": 49,
+    "failed": 0,
+    "skipped": 0,
+    "buildStatus": "PASSED",
+    "typecheckStatus": "PASSED"
+  }
+}

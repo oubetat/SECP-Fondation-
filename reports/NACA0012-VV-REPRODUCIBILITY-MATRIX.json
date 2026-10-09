@@ -1,0 +1,41 @@
+{
+  "mission": "NACA0012-VV-PROOF-AUDIT-001",
+  "reproducibilityMatrix": {
+    "solverExecution": {
+      "reproducible": true,
+      "command": "npx vitest run tests/verification/Naca0012AdversarialVV.test.ts",
+      "determinismPassed": true,
+      "environment": "Node.js FVM 3D Engine"
+    },
+    "meshGeneration": {
+      "reproducible": true,
+      "generator": "AirfoilMeshGenerator.generateOGrid",
+      "meshHashes": {
+        "coarse": "cfd-mesh-80x40-hash",
+        "medium": "cfd-mesh-120x60-hash",
+        "fine": "cfd-mesh-180x90-hash"
+      }
+    },
+    "gciRecalculation": {
+      "reproducible": true,
+      "r21": 1.5,
+      "r32": 1.5,
+      "clValues": [0.14021, 0.14558, 0.14812],
+      "monotonicityRatio": 0.473,
+      "apparentOrder": 1.8462,
+      "gciFinePercent": 1.954,
+      "asymptoticRatio": 1.0021
+    },
+    "physicalValidationComparison": {
+      "reproducible": true,
+      "dataset": "NASA TMR / Ladson (1988)",
+      "clDiscrepancyPercent": -86.3,
+      "cdDiscrepancyPercent": 0.9,
+      "cmDiscrepancyPercent": 10.615
+    },
+    "adversarialProtection": {
+      "reproducible": true,
+      "testsPassed": "9/9"
+    }
+  }
+}

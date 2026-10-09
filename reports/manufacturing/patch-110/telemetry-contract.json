@@ -1,0 +1,13 @@
+{
+  "profileId": "TELEM_OPCUA_STD",
+  "sensors": [
+    "ENC_X",
+    "ENC_Y",
+    "ENC_Z",
+    "ENC_A",
+    "ENC_C",
+    "SPINDLE_TACH",
+    "TEMP_SPINDLE",
+    "ACCEL_SPINDLE"
+  ]
+}

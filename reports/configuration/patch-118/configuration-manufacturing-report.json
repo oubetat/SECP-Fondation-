@@ -1,0 +1,51 @@
+{
+  "reportName": "configuration-manufacturing-report.json",
+  "timestamp": "2026-08-21T08:38:21.618Z",
+  "patch": "PATCH-118",
+  "configurationId": "CONFIG-TURBINE-SPEC-01",
+  "configurationVersion": "v1.0",
+  "verdict": "VALID",
+  "configurationHash": "685f6bbc682b7028ec9081d08335fd0cef2fb1971398db55e75d127f5ef619fd",
+  "evidenceChain": {
+    "inputContextHash": "bd23f51fc084fa3b38ddbdbf53ab39388f11de913064a693aee08a2b239d118a",
+    "selectionsHash": "ad6365809a48339aff0ee71fcd7beb082397bbd6698fb28b310712e426d24546",
+    "ruleEvaluationHash": "0f666a881415791f18701fb4dcddd17201250b04ee9bd2974cf91985bb6994f8",
+    "revisionResolutionHash": "eac0c626cc311aee30f9c706b474d3e79104b6c79924009cbc724e4bcf6976cb",
+    "bomResolutionHash": "ca1e9973a946a337c7d348aab404ff7cf99df127f373fa781172c85314172843",
+    "assemblyResolutionHash": "a4d69a5c3769cb3dd9c6f95c29d972643cbc1853ff087a9d8e8089756340a0a7",
+    "effectivityHash": "4a80f2220991cff2513fa5fc82cae8ccbbcf2144ec17f002011f253ef210ad60",
+    "finalConfigurationHash": "685f6bbc682b7028ec9081d08335fd0cef2fb1971398db55e75d127f5ef619fd"
+  },
+  "resolvedComponents": [
+    {
+      "componentId": "PART-BLADE-CERAMIC-01",
+      "entityType": "PART",
+      "revisionId": "R12",
+      "baseQuantity": 12,
+      "resolvedQuantity": 24,
+      "inclusionReason": "Satisfied BOM/Assembly requirement for PROD-TURBINE-9000",
+      "isSuppressed": false
+    }
+  ],
+  "resolvedOptions": [
+    {
+      "optionId": "OPT-FUEL",
+      "value": "HYDROGEN",
+      "source": "USER"
+    },
+    {
+      "optionId": "OPT-BLADE",
+      "value": "CERAMIC",
+      "source": "USER"
+    },
+    {
+      "optionId": "OPT-SENSORS",
+      "value": true,
+      "source": "RULE"
+    }
+  ],
+  "resolvedRules": [
+    "RULE-REG-01"
+  ],
+  "unresolvedItems": []
+}

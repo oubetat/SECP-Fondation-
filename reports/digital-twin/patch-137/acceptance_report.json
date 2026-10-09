@@ -1,0 +1,48 @@
+{
+  "patch": "PATCH-137",
+  "title": "Manufacturing Optimization — Engineering AI Layer",
+  "timestamp": "2026-08-21T10:50:58.506Z",
+  "summary": {
+    "totalTests": 5,
+    "passedTests": 5,
+    "score": 100,
+    "verdict": "PASS"
+  },
+  "results": [
+    {
+      "gateId": "GATE-137-KINEMATICS",
+      "description": "Reject processes with kinematic violations (axis limits, singularities)",
+      "passed": true,
+      "verdict": "INFEASIBLE",
+      "details": "Successfully caught kinematic violation."
+    },
+    {
+      "gateId": "GATE-137-COLLISION",
+      "description": "Reject processes with fatal collisions",
+      "passed": true,
+      "verdict": "COLLISION_DETECTED",
+      "details": "Successfully caught fatal collision."
+    },
+    {
+      "gateId": "GATE-137-HARD-CONSTRAINT",
+      "description": "Enforce hard manufacturing constraints (e.g., spindle power)",
+      "passed": true,
+      "verdict": "INFEASIBLE",
+      "details": "Successfully enforced spindle power limit."
+    },
+    {
+      "gateId": "GATE-137-VERIFICATION",
+      "description": "Require independent G-Code and Machine Twin verification",
+      "passed": true,
+      "verdict": "VERIFICATION_FAILURE",
+      "details": "Correctly rejected unverified process."
+    },
+    {
+      "gateId": "GATE-137-PROVENANCE",
+      "description": "Ensure optimization provenance is deterministic and hashed",
+      "passed": true,
+      "verdict": "PASS",
+      "details": "Hashes are consistent."
+    }
+  ]
+}

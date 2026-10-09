@@ -1,0 +1,31 @@
+{
+  "patch": "PATCH-009",
+  "timestamp": "2026-08-18T08:10:30.000Z",
+  "suite": "src/engine/serialization/__tests__/CanonicalSerialization.adversarial.test.ts",
+  "totalTests": 21,
+  "passed": 21,
+  "failed": 0,
+  "tests": [
+    "ADVERSARIAL A: Object insertion order invariance across permutations",
+    "ADVERSARIAL B: Deep nested objects with reversed keys produce identical outputs",
+    "ADVERSARIAL C: Unicode composed and decomposed representations match canonically",
+    "ADVERSARIAL D: Rejects prototype pollution attempts via dangerous keys",
+    "ADVERSARIAL E: Explicit __proto__ property blocked",
+    "ADVERSARIAL F: constructor property as key blocked for safety",
+    "ADVERSARIAL G: Complex multi-node cyclic graph detected and rejected",
+    "ADVERSARIAL H: Deeply nested tree (depth 50) serializes deterministically",
+    "ADVERSARIAL I: NaN is rejected",
+    "ADVERSARIAL J: +Infinity is rejected",
+    "ADVERSARIAL K: -Infinity is rejected",
+    "ADVERSARIAL L: -0 is normalized to 0",
+    "ADVERSARIAL M: Huge finite number is preserved deterministically",
+    "ADVERSARIAL N: Tiny finite number is preserved deterministically",
+    "ADVERSARIAL O: Huge BigInt serialized into typed marker structure",
+    "ADVERSARIAL P: Function injection is rejected",
+    "ADVERSARIAL Q: Symbol is rejected",
+    "ADVERSARIAL R: Array with reordered elements produces non-identical outputs",
+    "ADVERSARIAL S: Date object in input is untouched after serialization",
+    "ADVERSARIAL T: Deep input object remains untouched after serialization",
+    "CanonicalSerializationGate evaluates to PASS"
+  ]
+}

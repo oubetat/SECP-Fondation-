@@ -1,0 +1,17 @@
+{
+  "missionId": "COLLISION-ENGINE-P1.6-AUTHORITY-MIGRATION-ENFORCEMENT-001",
+  "artifactType": "UI_MIGRATION_REPORT",
+  "timestamp": "2026-10-01T01:57:00.000Z",
+  "uiComponentsAudited": [
+    {
+      "componentPath": "src/components/cam/CollisionDetectionWorkspace.tsx",
+      "migrationStatus": "MIGRATED_VIA_SERVICE",
+      "details": "UI invokes CollisionDetectionEngine.verifyToolpath() which routes through CollisionAuthority.evaluateSync(). Demo benchmark cases are clearly isolated under benchmark catalog."
+    },
+    {
+      "componentPath": "src/components/AssemblyWorkspace.tsx",
+      "migrationStatus": "MIGRATED_VIA_SERVICE",
+      "details": "UI invokes InterferenceDetectionEngine.analyze() which routes through CollisionAuthority.evaluateSync(). Fail-closed status (ANALYSIS_FAILED / UNKNOWN) is rendered safely in UI."
+    }
+  ]
+}

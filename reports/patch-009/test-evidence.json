@@ -1,0 +1,55 @@
+{
+  "patch": "PATCH-009",
+  "timestamp": "2026-08-18T08:10:30.000Z",
+  "suites": [
+    {
+      "name": "src/engine/serialization/__tests__/CanonicalSerializer.test.ts",
+      "totalTests": 24,
+      "passed": 24,
+      "failed": 0,
+      "tests": [
+        "TEST 01: Object key order invariance",
+        "TEST 02: Nested object key ordering",
+        "TEST 03: Array order preservation",
+        "TEST 04: String Unicode NFC normalization",
+        "TEST 05: Case preservation",
+        "TEST 06: null preservation",
+        "TEST 07: boolean preservation",
+        "TEST 08: string vs number separation",
+        "TEST 09: -0 normalization",
+        "TEST 10: NaN rejection",
+        "TEST 11: Infinity rejection",
+        "TEST 12: BigInt deterministic representation",
+        "TEST 13: Date serialization",
+        "TEST 14: Serializer does not inject runtime timestamps",
+        "TEST 15: Undefined object policy (omit)",
+        "TEST 16: Undefined array rejection",
+        "TEST 17: Unsupported Function rejection",
+        "TEST 18: Circular reference detection",
+        "TEST 19: Input immutability",
+        "TEST 20: Canonical output has no unnecessary whitespace",
+        "TEST 21: Canonical validation",
+        "TEST 22: Schema version is 1.0.0",
+        "TEST 23: CanonicalEngineeringIdentity integration",
+        "TEST 24: All eight EngineeringArtifactType examples serialize deterministically"
+      ]
+    },
+    {
+      "name": "src/engine/serialization/__tests__/CanonicalNormalizer.test.ts",
+      "totalTests": 6,
+      "passed": 6,
+      "failed": 0,
+      "tests": [
+        "normalizes primitives correctly and freezes complex outputs",
+        "normalizes bigints into typed markers",
+        "normalizes Dates into ISO-8601 UTC strings",
+        "rejects invalid Date objects",
+        "rejects undefined at root",
+        "recursively normalizes nested structures and preserves array order"
+      ]
+    }
+  ],
+  "totalTests": 30,
+  "passed": 30,
+  "failed": 0
+}

@@ -1,0 +1,41 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "checkId": "GATE-115-01",
+      "name": "Definition / Revision separation & Identity",
+      "passed": true,
+      "details": "Revision created with stable identity and hashes"
+    },
+    {
+      "checkId": "GATE-115-02",
+      "name": "Semantic Revision Diff Engine",
+      "passed": true,
+      "details": "Detected PARAMETER_CHANGED accurately"
+    },
+    {
+      "checkId": "GATE-115-03",
+      "name": "Lifecycle state machine & Legal Transition",
+      "passed": true,
+      "details": "Transitioned to RELEASED legally"
+    },
+    {
+      "checkId": "GATE-115-04",
+      "name": "Immutable Released Revision",
+      "passed": true,
+      "details": "Prevented mutation of released revision"
+    },
+    {
+      "checkId": "GATE-115-05",
+      "name": "Dependency Hash & Tamper Detection",
+      "passed": true,
+      "details": "Tampered dependency was caught by hash verification"
+    },
+    {
+      "checkId": "GATE-115-06",
+      "name": "Canonical Serialization & Deterministic Hashing",
+      "passed": true,
+      "details": "Identical content produces identical canonical hash"
+    }
+  ]
+}

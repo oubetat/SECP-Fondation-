@@ -1,0 +1,51 @@
+{
+  "patch": "PATCH-010",
+  "name": "Engineering Hash Chain",
+  "timestamp": "2026-08-18T08:16:30.000Z",
+  "hashAlgorithm": "SHA-256",
+  "canonicalizationVersion": "1.0.0",
+  "modules": [
+    {
+      "file": "src/engine/evidence/types/EngineeringHashChainTypes.ts",
+      "types": [
+        "EngineeringChainStage",
+        "EngineeringHashNode",
+        "AppendNodeInput",
+        "EngineeringHashChainVerificationResult",
+        "EngineeringArtifactVerificationResult",
+        "FullLineageVerificationResult"
+      ]
+    },
+    {
+      "file": "src/engine/evidence/EngineeringHashChainErrors.ts",
+      "classes": [
+        "EngineeringHashChainError",
+        "MissingArtifactIdentityError",
+        "InvalidChainStageError",
+        "BrokenChainLinkageError",
+        "ChainTamperingError",
+        "UnsupportedHashAlgorithmError",
+        "UnsupportedCanonicalizationVersionError"
+      ]
+    },
+    {
+      "file": "src/engine/evidence/EngineeringHashChain.ts",
+      "methods": [
+        "append",
+        "computeCanonicalHash",
+        "computeChainHash",
+        "verify",
+        "verifyNode",
+        "verifyArtifact",
+        "verifyFullLineage",
+        "getHead",
+        "getRoot"
+      ]
+    },
+    {
+      "file": "src/engine/evidence/EngineeringHashChainGate.ts",
+      "checksCount": 11,
+      "gateId": "GATE-ENGINEERING-HASH-CHAIN"
+    }
+  ]
+}

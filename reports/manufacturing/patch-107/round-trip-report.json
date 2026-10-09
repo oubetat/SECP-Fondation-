@@ -1,0 +1,9 @@
+{
+  "isIdenticalWithinTolerance": true,
+  "positionToleranceMM": 0.002,
+  "angularToleranceDeg": 0.005,
+  "maxObservedPositionDeltaMM": 0,
+  "maxObservedAngularDeltaDeg": 0,
+  "pointsEvaluated": 4,
+  "roundTripVerdict": "ROUND_TRIP_VALIDATED"
+}

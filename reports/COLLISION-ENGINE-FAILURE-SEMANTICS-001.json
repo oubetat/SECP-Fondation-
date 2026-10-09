@@ -1,0 +1,20 @@
+{
+  "missionId": "COLLISION-ENGINE-FORENSIC-EVIDENCE-ADJUDICATION-001",
+  "timestamp": "2026-10-01T01:14:00.000Z",
+  "failureSemanticsAdjudication": [
+    {
+      "file": "src/engine/assembly/AssemblyInterferenceEngine.ts",
+      "line": 142,
+      "code": "} catch (err: any) { console.warn(`[Interference] Error analyzing pair ${compA.name} x ${compB.name}:`, err); }",
+      "consequence": "Any OCCT kernel crash or boolean failure suppresses the error and returns NO_INTERFERENCE.",
+      "classification": "FAIL_OPEN (CONFIRMED_DEFECT)"
+    },
+    {
+      "file": "src/engine/manufacturing/collision/CollisionDetector.ts",
+      "line": 80,
+      "code": "if (!tol || tol.collisionTolerance < 0 ...) return { verdict: TrueCollisionVerdict.COLLISION_UNDETERMINED, provenSafe: false };",
+      "consequence": "Invalid tolerances return undetermined with provenSafe: false.",
+      "classification": "FAIL_CLOSED (COMPLIANT)"
+    }
+  ]
+}

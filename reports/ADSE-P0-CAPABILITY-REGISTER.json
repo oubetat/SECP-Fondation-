@@ -1,0 +1,51 @@
+{
+  "title": "ADSE-P0 Capability Register",
+  "auditDate": "2026-09-27T04:32:00Z",
+  "capabilities": [
+    {
+      "capabilityId": "ADSE-AERO-FLOW-001",
+      "pluginId": "secp-plugin-aerospace",
+      "name": "Aerospace Atmospheric Mach Flow Capability",
+      "domain": "AEROSPACE",
+      "maturity": "M10",
+      "coreBound": true,
+      "canonicalBound": true,
+      "executable": true,
+      "verified": true,
+      "persisted": true,
+      "benchmarkValidated": true,
+      "published": true,
+      "evidenceLeafRef": "VERIFIED_EVIDENCE_LEAF"
+    },
+    {
+      "capabilityId": "ROB-KIN-001",
+      "pluginId": "secp-plugin-robotics",
+      "name": "Robotics Kinematics & Torque Capability",
+      "domain": "ROBOTICS",
+      "maturity": "M8",
+      "coreBound": true,
+      "canonicalBound": true,
+      "executable": true,
+      "verified": true,
+      "persisted": true,
+      "benchmarkValidated": true,
+      "published": true,
+      "evidenceLeafRef": "VERIFIED_EVIDENCE_LEAF"
+    },
+    {
+      "capabilityId": "AUTO-DRAG-001",
+      "pluginId": "secp-plugin-automotive",
+      "name": "Automotive Aero Drag & Power Capability",
+      "domain": "AUTOMOTIVE",
+      "maturity": "M8",
+      "coreBound": true,
+      "canonicalBound": true,
+      "executable": true,
+      "verified": true,
+      "persisted": true,
+      "benchmarkValidated": true,
+      "published": true,
+      "evidenceLeafRef": "VERIFIED_EVIDENCE_LEAF"
+    }
+  ]
+}

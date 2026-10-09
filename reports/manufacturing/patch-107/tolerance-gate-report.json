@@ -1,0 +1,5 @@
+{
+  "positionToleranceMM": 0.002,
+  "angularToleranceDeg": 0.005,
+  "gateVerdict": "ROUND_TRIP_VALIDATED"
+}

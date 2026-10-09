@@ -1,0 +1,6 @@
+{
+  "reportId": "COLLISION-ENGINE-P6-DETERMINISM-001",
+  "timestampIso": "2026-10-02T08:17:49.212Z",
+  "deterministicReproducibility": true,
+  "verdict": "PASSED"
+}

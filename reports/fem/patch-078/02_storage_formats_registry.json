@@ -1,0 +1,28 @@
+{
+  "formats": [
+    {
+      "name": "CSR",
+      "class": "CSRStorage",
+      "description": "Row-oriented primary format for SpMV and triangular solvers",
+      "status": "ACTIVE_PRIMARY"
+    },
+    {
+      "name": "CSC",
+      "class": "CSCStorage",
+      "description": "Column-oriented format for transpose and column-based operations",
+      "status": "ACTIVE_SECONDARY"
+    },
+    {
+      "name": "COO",
+      "class": "COOBuilder",
+      "description": "Triplet list format for flexible FEM element stiffness accumulation",
+      "status": "ACTIVE_ASSEMBLER"
+    },
+    {
+      "name": "BCSR",
+      "class": "BlockSparseStorage",
+      "description": "Block compressed row storage for vector multi-DOF structural nodes",
+      "status": "FOUNDATION"
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "passed": true,
+  "scorePercentage": 100,
+  "totalChecks": 12,
+  "passedChecks": 12,
+  "verdict": "MANUFACTURING_VERIFIED",
+  "timestamp": "2026-08-21T07:54:21.247Z",
+  "details": [
+    {
+      "checkName": "Evidence contract implemented",
+      "status": "PASS",
+      "evidence": "Contract ID: EV_DESIGN_100"
+    },
+    {
+      "checkName": "Evidence identity implemented",
+      "status": "PASS",
+      "evidence": "ID: EV_DESIGN_100"
+    },
+    {
+      "checkName": "Source identity implemented",
+      "status": "PASS",
+      "evidence": "Source: CAD"
+    },
+    {
+      "checkName": "Event identity implemented",
+      "status": "PASS",
+      "evidence": "Event: JOB_CREATED"
+    },
+    {
+      "checkName": "Canonicalization & Hash policy implemented",
+      "status": "PASS",
+      "evidence": "ContentHash: 3c58f612d5190f6fe056cf6ac55a2af9a44acb5d043315447af1108e628cde30"
+    },
+    {
+      "checkName": "Hash chain & sequence integrity implemented",
+      "status": "PASS",
+      "evidence": "PrevHash: c6187a078101601ae62862d12a70f18c25e77cf3ca60549f300bc1f2393879df"
+    },
+    {
+      "checkName": "Signature verification implemented",
+      "status": "PASS",
+      "evidence": "SigStatus: VALID"
+    },
+    {
+      "checkName": "Corroboration engine & conflict detection implemented",
+      "status": "PASS",
+      "evidence": "Verdict: CORROBORATED"
+    },
+    {
+      "checkName": "Evidence bundle & manifest integrity implemented",
+      "status": "PASS",
+      "evidence": "BundleHash: 3b0be3ed4f14bd74979def99eb6cace5cc6a488f7983def077cb2260cdee3fea"
+    },
+    {
+      "checkName": "Independent verifier & forensic replay implemented",
+      "status": "PASS",
+      "evidence": "Reproducible: true"
+    },
+    {
+      "checkName": "Adversarial evidence suite executed & passed",
+      "status": "PASS",
+      "evidence": "Passed 8/8 security tests"
+    },
+    {
+      "checkName": "True calculated verdict generated (No fixed return 'PASS')",
+      "status": "PASS",
+      "evidence": "OverallStatus: MANUFACTURING_VERIFIED, Score: 100%"
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "assemblyId": "asm-master-220",
+  "name": "SECP Production Assembly",
+  "version": "1.0.0",
+  "description": "Golden verification assembly project housing main drive helical units.",
+  "constraintsCount": 3,
+  "componentsCount": 15
+}

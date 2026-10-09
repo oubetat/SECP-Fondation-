@@ -1,0 +1,8 @@
+{
+  "unconstrainedRigidBodyPass": true,
+  "invalidMaterialPass": true,
+  "invalidLoadPass": true,
+  "conflictingConstraintsPass": true,
+  "corruptedSolutionDetectionPass": true,
+  "allPassed": true
+}

@@ -1,0 +1,14 @@
+{
+  "missionId": "NACA0012-VV-CAUSAL-OPERATOR-CLOSURE-005",
+  "timestamp": "2026-09-30T09:08:06.483Z",
+  "experiment": {
+    "description": "Fixed background viscosity (no non-linear k-omega feedback)",
+    "continuityL1": 0.00002610395430654063,
+    "momentumLinf": 0.0000331686361340955,
+    "velocityCorrection": 0.10329255224094334,
+    "forceStability": false,
+    "cl": 0.15257753472888455,
+    "cd": 0.023050039980060052
+  },
+  "deduction": "Without active eddy viscosity feedback, laminar momentum updates at Re=6M fail to stabilize the near-wall velocity gradients, demonstrating that the coupled SST model is physically essential for stability."
+}

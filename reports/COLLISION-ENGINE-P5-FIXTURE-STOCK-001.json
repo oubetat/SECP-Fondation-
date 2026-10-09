@@ -1,0 +1,12 @@
+{
+  "reportId": "COLLISION-ENGINE-P5-FIXTURE-STOCK-001",
+  "timestampIso": "2026-10-02T08:01:27.700Z",
+  "scenarios": [
+    "Clamping Jaw Proximity",
+    "Stock In-Process Boundary Collision",
+    "Table Boundary Breach"
+  ],
+  "detectedCollisions": 3,
+  "escapes": 0,
+  "verdict": "PASSED"
+}

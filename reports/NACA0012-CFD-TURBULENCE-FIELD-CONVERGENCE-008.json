@@ -1,0 +1,12 @@
+{
+  "missionId": "NACA0012-VV-STRICT-CAUSAL-CLOSURE-008",
+  "timestamp": "2026-09-30T10:07:41.835Z",
+  "metricsAtIteration150": {
+    "kLinearResidual": 0.00015678835216903267,
+    "omegaLinearResidual": 0.00020683096869762716,
+    "kFieldUpdate": 8961.31338510701,
+    "omegaFieldUpdate": 372604.97615726816,
+    "nutFieldUpdate": 23.872275348496824,
+    "physicalBoundsSatisfied": "k >= 1e-10, omega >= 1e-10, nut <= 1e4*mu"
+  }
+}

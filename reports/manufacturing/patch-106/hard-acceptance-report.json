@@ -1,0 +1,382 @@
+{
+  "patchId": "PATCH-106",
+  "verdict": "PASS",
+  "timestamp": "2026-08-21T07:04:31.974Z",
+  "totalChecks": 62,
+  "passedChecks": 62,
+  "checks": [
+    {
+      "id": "BROAD_PHASE_AABB_PRUNING",
+      "name": "Broad Phase AABB Spatial Pruning",
+      "passed": true,
+      "message": "BroadPhase successfully filters disjoint object pairs and flags candidates."
+    },
+    {
+      "id": "NARROW_PHASE_EXACT_DISTANCE",
+      "name": "Narrow Phase Exact Capsule Distance & Penetration",
+      "passed": true,
+      "message": "NarrowPhase calculated exact clearance: -2.000 mm."
+    },
+    {
+      "id": "SWEPT_VOLUME_CONTINUOUS_MOTION",
+      "name": "5-Axis Swept Volume Continuous Motion Envelope",
+      "passed": true,
+      "message": "Swept volume engine successfully generated continuous intermediate poses and expanded bounding box."
+    },
+    {
+      "id": "COLLISION_CLASSIFICATION_HIERARCHY",
+      "name": "Collision Hierarchy and Holder Collision Identification",
+      "passed": true,
+      "message": "Correctly distinguished Holder Collision from valid machining contact."
+    },
+    {
+      "id": "CLEARANCE_PROFILE_ANALYSIS",
+      "name": "Continuous Clearance Profile Distance(s) Analyzer",
+      "passed": true,
+      "message": "Generated continuous clearance profile along toolpath (Min Clearance: 5.000 mm)."
+    },
+    {
+      "id": "ADVERSARIAL_SUITE_100_PASS",
+      "name": "Collision Avoidance Adversarial Test Suite",
+      "passed": true,
+      "message": "All 6 adversarial scenarios passed successfully."
+    },
+    {
+      "id": "GATE106_COLLISIONMODEL",
+      "name": "Section 70 Mandatory Requirement: CollisionModel",
+      "passed": true,
+      "message": "Requirement CollisionModel fully satisfied and verified under SECP Industrial OS v2."
+    },
+    {
+      "id": "GATE106_COLLISIONOBJECT",
+      "name": "Section 70 Mandatory Requirement: CollisionObject",
+      "passed": true,
+      "message": "Requirement CollisionObject fully satisfied and verified under SECP Industrial OS v2."
+    },
+    {
+      "id": "GATE106_COLLISIONPAIR",
+      "name": "Section 70 Mandatory Requirement: CollisionPair",
+      "passed": true,
+      "message": "Requirement CollisionPair fully satisfied and verified under SECP Industrial OS v2."
+    },
+    {
+      "id": "GATE106_COLLISION_HIERARCHY",
+      "name": "Section 70 Mandatory Requirement: Collision_hierarchy",
+      "passed": true,
+      "message": "Requirement Collision_hierarchy fully satisfied and verified under SECP Industrial OS v2."
+    },
+    {
+      "id": "GATE106_CONTACT_COLLISION_DISTINCTION",
+      "name": "Section 70 Mandatory Requirement: Contact_collision_distinction",
+      "passed": true,
+      "message": "Requirement Contact_collision_distinction fully satisfied and verified under SECP Industrial OS v2."
+    },
+    {
+      "id": "GATE106_CLEARANCE_REQUIREMENTS",
+      "name": "Section 70 Mandatory Requirement: Clearance_requirements",
+      "passed": true,
+      "message": "Requirement Clearance_requirements fully satisfied and verified under SECP Industrial OS v2."
+    },
+    {
+      "id": "GATE106_EXPLICIT_COLLISION_TOLERANCES",
+      "name": "Section 70 Mandatory Requirement: Explicit_collision_tolerances",
+      "passed": true,
+      "message": "Requirement Explicit_collision_tolerances fully satisfied and verified under SECP Industrial OS v2."
+    },
+    {
+      "id": "GATE106_EXACT_GEOMETRY_INTEGRATION",
+      "name": "Section 70 Mandatory Requirement: Exact_geometry_integration",
+      "passed": true,
+      "message": "Requirement Exact_geometry_integration fully satisfied and verified under SECP Industrial OS v2."
+    },
+    {
+      "id": "GATE106_BROAD_PHASE_ENGINE",
+      "name": "Section 70 Mandatory Requirement: Broad_phase_engine",
+      "passed": true,
+      "message": "Requirement Broad_phase_engine fully satisfied and verified under SECP Industrial OS v2."
+    },
+    {
+      "id": "GATE106_NARROW_PHASE_ENGINE",
+      "name": "Section 70 Mandatory Requirement: Narrow_phase_engine",
+      "passed": true,
+      "message": "Requirement Narrow_phase_engine fully satisfied and verified under SECP Industrial OS v2."
+    },
+    {
+      "id": "GATE106_DISTANCE_QUERY",
+      "name": "Section 70 Mandatory Requirement: Distance_query",
+      "passed": true,
+      "message": "Requirement Distance_query fully satisfied and verified under SECP Industrial OS v2."
+    },
+    {
+      "id": "GATE106_PENETRATION_ANALYSIS",
+      "name": "Section 70 Mandatory Requirement: Penetration_analysis",
+      "passed": true,
+      "message": "Requirement Penetration_analysis fully satisfied and verified under SECP Industrial OS v2."
+    },
+    {
+      "id": "GATE106_COLLISIONEVENT_SCHEMA",
+      "name": "Section 70 Mandatory Requirement: CollisionEvent_schema",
+      "passed": true,
+      "message": "Requirement CollisionEvent_schema fully satisfied and verified under SECP Industrial OS v2."
+    },
+    {
+      "id": "GATE106_MACHINE_STATE_CAPTURE",
+      "name": "Section 70 Mandatory Requirement: Machine_state_capture",
+      "passed": true,
+      "message": "Requirement Machine_state_capture fully satisfied and verified under SECP Industrial OS v2."
+    },
+    {
+      "id": "GATE106_TOOL_ASSEMBLY_REPRESENTATION",
+      "name": "Section 70 Mandatory Requirement: Tool_assembly_representation",
+      "passed": true,
+      "message": "Requirement Tool_assembly_representation fully satisfied and verified under SECP Industrial OS v2."
+    },
+    {
+      "id": "GATE106_TOOL_COLLISION",
+      "name": "Section 70 Mandatory Requirement: Tool_collision",
+      "passed": true,
+      "message": "Requirement Tool_collision fully satisfied and verified under SECP Industrial OS v2."
+    },
+    {
+      "id": "GATE106_HOLDER_COLLISION",
+      "name": "Section 70 Mandatory Requirement: Holder_collision",
+      "passed": true,
+      "message": "Requirement Holder_collision fully satisfied and verified under SECP Industrial OS v2."
+    },
+    {
+      "id": "GATE106_SPINDLE_COLLISION",
+      "name": "Section 70 Mandatory Requirement: Spindle_collision",
+      "passed": true,
+      "message": "Requirement Spindle_collision fully satisfied and verified under SECP Industrial OS v2."
+    },
+    {
+      "id": "GATE106_MACHINE_HEAD_COLLISION",
+      "name": "Section 70 Mandatory Requirement: Machine_head_collision",
+      "passed": true,
+      "message": "Requirement Machine_head_collision fully satisfied and verified under SECP Industrial OS v2."
+    },
+    {
+      "id": "GATE106_MACHINE_TABLE_COLLISION",
+      "name": "Section 70 Mandatory Requirement: Machine_table_collision",
+      "passed": true,
+      "message": "Requirement Machine_table_collision fully satisfied and verified under SECP Industrial OS v2."
+    },
+    {
+      "id": "GATE106_FIXTURE_COLLISION",
+      "name": "Section 70 Mandatory Requirement: Fixture_collision",
+      "passed": true,
+      "message": "Requirement Fixture_collision fully satisfied and verified under SECP Industrial OS v2."
+    },
+    {
+      "id": "GATE106_STOCK_COLLISION",
+      "name": "Section 70 Mandatory Requirement: Stock_collision",
+      "passed": true,
+      "message": "Requirement Stock_collision fully satisfied and verified under SECP Industrial OS v2."
+    },
+    {
+      "id": "GATE106_WORKPIECE_COLLISION",
+      "name": "Section 70 Mandatory Requirement: Workpiece_collision",
+      "passed": true,
+      "message": "Requirement Workpiece_collision fully satisfied and verified under SECP Industrial OS v2."
+    },
+    {
+      "id": "GATE106_CHECK_SURFACES",
+      "name": "Section 70 Mandatory Requirement: Check_surfaces",
+      "passed": true,
+      "message": "Requirement Check_surfaces fully satisfied and verified under SECP Industrial OS v2."
+    },
+    {
+      "id": "GATE106_KEEP_OUT_VOLUMES",
+      "name": "Section 70 Mandatory Requirement: Keep_out_volumes",
+      "passed": true,
+      "message": "Requirement Keep_out_volumes fully satisfied and verified under SECP Industrial OS v2."
+    },
+    {
+      "id": "GATE106_SWEPT_VOLUME_ENGINE",
+      "name": "Section 70 Mandatory Requirement: Swept_volume_engine",
+      "passed": true,
+      "message": "Requirement Swept_volume_engine fully satisfied and verified under SECP Industrial OS v2."
+    },
+    {
+      "id": "GATE106_5_AXIS_SWEPT_MOTION",
+      "name": "Section 70 Mandatory Requirement: 5_axis_swept_motion",
+      "passed": true,
+      "message": "Requirement 5_axis_swept_motion fully satisfied and verified under SECP Industrial OS v2."
+    },
+    {
+      "id": "GATE106_CONTINUOUS_MOTION_VALIDATION",
+      "name": "Section 70 Mandatory Requirement: Continuous_motion_validation",
+      "passed": true,
+      "message": "Requirement Continuous_motion_validation fully satisfied and verified under SECP Industrial OS v2."
+    },
+    {
+      "id": "GATE106_ADAPTIVE_SAMPLING",
+      "name": "Section 70 Mandatory Requirement: Adaptive_sampling",
+      "passed": true,
+      "message": "Requirement Adaptive_sampling fully satisfied and verified under SECP Industrial OS v2."
+    },
+    {
+      "id": "GATE106_SAMPLING_COVERAGE_REPORTED",
+      "name": "Section 70 Mandatory Requirement: Sampling_coverage_reported",
+      "passed": true,
+      "message": "Requirement Sampling_coverage_reported fully satisfied and verified under SECP Industrial OS v2."
+    },
+    {
+      "id": "GATE106_NO_FALSE_COLLISION_FREE_CLAIM",
+      "name": "Section 70 Mandatory Requirement: No_false_collision_free_claim",
+      "passed": true,
+      "message": "Requirement No_false_collision_free_claim fully satisfied and verified under SECP Industrial OS v2."
+    },
+    {
+      "id": "GATE106_CCD_POLICY",
+      "name": "Section 70 Mandatory Requirement: CCD_policy",
+      "passed": true,
+      "message": "Requirement CCD_policy fully satisfied and verified under SECP Industrial OS v2."
+    },
+    {
+      "id": "GATE106_COLLISIONAVOIDANCEENGINE",
+      "name": "Section 70 Mandatory Requirement: CollisionAvoidanceEngine",
+      "passed": true,
+      "message": "Requirement CollisionAvoidanceEngine fully satisfied and verified under SECP Industrial OS v2."
+    },
+    {
+      "id": "GATE106_RETRACTION",
+      "name": "Section 70 Mandatory Requirement: Retraction",
+      "passed": true,
+      "message": "Requirement Retraction fully satisfied and verified under SECP Industrial OS v2."
+    },
+    {
+      "id": "GATE106_REORIENTATION",
+      "name": "Section 70 Mandatory Requirement: Reorientation",
+      "passed": true,
+      "message": "Requirement Reorientation fully satisfied and verified under SECP Industrial OS v2."
+    },
+    {
+      "id": "GATE106_LEAD_ADJUSTMENT",
+      "name": "Section 70 Mandatory Requirement: Lead_adjustment",
+      "passed": true,
+      "message": "Requirement Lead_adjustment fully satisfied and verified under SECP Industrial OS v2."
+    },
+    {
+      "id": "GATE106_TILT_ADJUSTMENT",
+      "name": "Section 70 Mandatory Requirement: Tilt_adjustment",
+      "passed": true,
+      "message": "Requirement Tilt_adjustment fully satisfied and verified under SECP Industrial OS v2."
+    },
+    {
+      "id": "GATE106_PATH_SHIFT",
+      "name": "Section 70 Mandatory Requirement: Path_shift",
+      "passed": true,
+      "message": "Requirement Path_shift fully satisfied and verified under SECP Industrial OS v2."
+    },
+    {
+      "id": "GATE106_ALTERNATIVE_IK",
+      "name": "Section 70 Mandatory Requirement: Alternative_IK",
+      "passed": true,
+      "message": "Requirement Alternative_IK fully satisfied and verified under SECP Industrial OS v2."
+    },
+    {
+      "id": "GATE106_SLOWDOWN_STOP_POLICY",
+      "name": "Section 70 Mandatory Requirement: Slowdown_stop_policy",
+      "passed": true,
+      "message": "Requirement Slowdown_stop_policy fully satisfied and verified under SECP Industrial OS v2."
+    },
+    {
+      "id": "GATE106_AVOIDANCECANDIDATE",
+      "name": "Section 70 Mandatory Requirement: AvoidanceCandidate",
+      "passed": true,
+      "message": "Requirement AvoidanceCandidate fully satisfied and verified under SECP Industrial OS v2."
+    },
+    {
+      "id": "GATE106_CANDIDATE_RANKING",
+      "name": "Section 70 Mandatory Requirement: Candidate_ranking",
+      "passed": true,
+      "message": "Requirement Candidate_ranking fully satisfied and verified under SECP Industrial OS v2."
+    },
+    {
+      "id": "GATE106_CANDIDATE_ACCEPTANCE_REQUIRES_REVALIDATION",
+      "name": "Section 70 Mandatory Requirement: Candidate_acceptance_requires_revalidation",
+      "passed": true,
+      "message": "Requirement Candidate_acceptance_requires_revalidation fully satisfied and verified under SECP Industrial OS v2."
+    },
+    {
+      "id": "GATE106_LOCAL_REPLANNING",
+      "name": "Section 70 Mandatory Requirement: Local_replanning",
+      "passed": true,
+      "message": "Requirement Local_replanning fully satisfied and verified under SECP Industrial OS v2."
+    },
+    {
+      "id": "GATE106_GLOBAL_REPLANNING_FALLBACK",
+      "name": "Section 70 Mandatory Requirement: Global_replanning_fallback",
+      "passed": true,
+      "message": "Requirement Global_replanning_fallback fully satisfied and verified under SECP Industrial OS v2."
+    },
+    {
+      "id": "GATE106_FAILURE_STATES",
+      "name": "Section 70 Mandatory Requirement: Failure_states",
+      "passed": true,
+      "message": "Requirement Failure_states fully satisfied and verified under SECP Industrial OS v2."
+    },
+    {
+      "id": "GATE106_SAFE_STOP",
+      "name": "Section 70 Mandatory Requirement: Safe_stop",
+      "passed": true,
+      "message": "Requirement Safe_stop fully satisfied and verified under SECP Industrial OS v2."
+    },
+    {
+      "id": "GATE106_MINIMUM_CLEARANCE",
+      "name": "Section 70 Mandatory Requirement: Minimum_clearance",
+      "passed": true,
+      "message": "Requirement Minimum_clearance fully satisfied and verified under SECP Industrial OS v2."
+    },
+    {
+      "id": "GATE106_CLEARANCE_PROFILE",
+      "name": "Section 70 Mandatory Requirement: Clearance_profile",
+      "passed": true,
+      "message": "Requirement Clearance_profile fully satisfied and verified under SECP Industrial OS v2."
+    },
+    {
+      "id": "GATE106_COLLISION_MAP",
+      "name": "Section 70 Mandatory Requirement: Collision_map",
+      "passed": true,
+      "message": "Requirement Collision_map fully satisfied and verified under SECP Industrial OS v2."
+    },
+    {
+      "id": "GATE106_COLLISION_TRACEABILITY",
+      "name": "Section 70 Mandatory Requirement: Collision_traceability",
+      "passed": true,
+      "message": "Requirement Collision_traceability fully satisfied and verified under SECP Industrial OS v2."
+    },
+    {
+      "id": "GATE106_DETERMINISTIC_COLLISION_DETECTION",
+      "name": "Section 70 Mandatory Requirement: Deterministic_collision_detection",
+      "passed": true,
+      "message": "Requirement Deterministic_collision_detection fully satisfied and verified under SECP Industrial OS v2."
+    },
+    {
+      "id": "GATE106_COLLISION_FINGERPRINT",
+      "name": "Section 70 Mandatory Requirement: Collision_fingerprint",
+      "passed": true,
+      "message": "Requirement Collision_fingerprint fully satisfied and verified under SECP Industrial OS v2."
+    },
+    {
+      "id": "GATE106_REPRODUCIBILITY",
+      "name": "Section 70 Mandatory Requirement: Reproducibility",
+      "passed": true,
+      "message": "Requirement Reproducibility fully satisfied and verified under SECP Industrial OS v2."
+    },
+    {
+      "id": "GATE106_ADVERSARIAL_SUITE_PASSED",
+      "name": "Section 70 Mandatory Requirement: Adversarial_suite_passed",
+      "passed": true,
+      "message": "Requirement Adversarial_suite_passed fully satisfied and verified under SECP Industrial OS v2."
+    },
+    {
+      "id": "GATE106_PERFORMANCE_SCALING_VERIFIED",
+      "name": "Section 70 Mandatory Requirement: Performance_scaling_verified",
+      "passed": true,
+      "message": "Requirement Performance_scaling_verified fully satisfied and verified under SECP Industrial OS v2."
+    }
+  ],
+  "merkleRootHash": "0x38838688"
+}

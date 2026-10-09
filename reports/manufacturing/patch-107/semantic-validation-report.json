@@ -1,0 +1,9 @@
+{
+  "isValid": true,
+  "errors": [],
+  "warnings": [],
+  "axisLimitViolations": [],
+  "spindleLimitViolations": [],
+  "feedLimitViolations": [],
+  "semanticVerdict": "SEMANTICALLY_VALIDATED"
+}

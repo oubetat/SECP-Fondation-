@@ -1,0 +1,94 @@
+src/components/drone/DroneBomPanel.tsx:98:            placeholder="Search part name, number, or material..."
+src/components/drone/DroneBomPanel.tsx:101:            className="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-1.5 text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-purple-500"
+src/components/ParametricModelingPanel.tsx:21:  const [model, setModel] = useState<ParametricModel>(() => ParametricEngine.createDefaultParametricBox());
+src/components/ParametricModelingPanel.tsx:98:              const def = ParametricEngine.createDefaultParametricBox();
+src/components/ParametricModelingPanel.tsx:215:          {(model?.constraints || []).map(c => (
+src/components/ParametricModelingPanel.tsx:237:          <span className="text-indigo-400 font-bold">{(model?.activeSolid?.volumeM3 ?? 0.03).toFixed(6)} m³</span>
+src/components/ParametricModelingPanel.tsx:241:          <span className="text-emerald-400 font-bold">{(model?.activeSolid?.surfaceAreaM2 ?? 0.62).toFixed(4)} m²</span>
+src/components/MaterialsPanel.tsx:17:  const hasGeometry = (context?.geometry?.solids ?? 0) > 0 || Boolean(activeSolid);
+src/components/MaterialsPanel.tsx:22:  const massKg = hasGeometry ? (context?.geometry?.mass ?? 0) : 0;
+src/components/MaterialsPanel.tsx:23:  const volumeMm3 = hasGeometry ? (context?.geometry?.volume ?? 0) : 0;
+src/components/CaeCfdPanel.tsx:45:  const [modelMode, setModelMode] = useState<'ACTIVE_CAD' | 'BENCHMARK'>('ACTIVE_CAD');
+src/components/CaeCfdPanel.tsx:54:  const geometryStats = useMemo(() => {
+src/components/CaeCfdPanel.tsx:55:    if (modelMode === 'BENCHMARK') {
+src/components/CaeCfdPanel.tsx:102:  }, [modelMode, activeSolid, hasActiveGeometry, canonicalDocument]);
+src/components/CaeCfdPanel.tsx:114:  const truthDescriptor = useMemo(() => {
+src/components/CaeCfdPanel.tsx:125:      isBenchmarkMode: modelMode === 'BENCHMARK'
+src/components/CaeCfdPanel.tsx:127:  }, [modelMode, hasActiveGeometry, canonicalDocument?.documentId, canonicalDocument?.revision, solution, isSolving]);
+src/components/CaeCfdPanel.tsx:130:  const aeroForces = useMemo(() => {
+src/components/CaeCfdPanel.tsx:234:                modelMode === 'ACTIVE_CAD'
+src/components/CaeCfdPanel.tsx:245:                modelMode === 'BENCHMARK'
+src/components/GCodeVerificationPanel.tsx:21:  const machineEngine = useMemo(() => new MachineProfileEngine(), []);
+src/components/GCodeVerificationPanel.tsx:22:  const controllerEngine = useMemo(() => new ControllerProfileEngine(), []);
+src/components/GCodeVerificationPanel.tsx:30:  const samplePrograms: Record<string, { name: string; description: string; gcode: string }> = {
+src/components/GCodeVerificationPanel.tsx:93:  const [gcodeText, setGcodeText] = useState<string>(samplePrograms.valid5Axis.gcode);
+src/components/GCodeVerificationPanel.tsx:100:  const baselineToolpath: MachineAxisToolpath = useMemo(() => ({
+src/components/GCodeVerificationPanel.tsx:109:      reference: "CAM 5-Axis Baseline",
+src/components/GCodeVerificationPanel.tsx:165:        sourceToolpathId: baselineToolpath.toolpathId,
+src/components/GCodeVerificationPanel.tsx:202:          reference: "Live Interactive Verification Run",
+src/components/GCodeVerificationPanel.tsx:209:      const verifier = new GCodeVerifierInstance(contract, machineProfile, controllerProfile, baselineToolpath);
+src/components/GCodeVerificationPanel.tsx:330:                  {Object.entries(samplePrograms).map(([key, p]) => (
+src/components/FluidPowerPanel.tsx:20:  const [modelMode, setModelMode] = useState<'ACTIVE_PROJECT' | 'DEMO_CIRCUIT'>('ACTIVE_PROJECT');
+src/components/FluidPowerPanel.tsx:22:  const defaultSys = FluidPowerEngine.getDefaultSystemComponents();
+src/components/FluidPowerPanel.tsx:23:  const [components, setComponents] = useState<FluidComponent[]>(defaultSys.components);
+src/components/FluidPowerPanel.tsx:27:  const solveResult: FluidSystemSolveResult = modelMode === 'DEMO_CIRCUIT' || hasCADGeometry
+src/components/FluidPowerPanel.tsx:76:                modelMode === 'ACTIVE_PROJECT' ? 'bg-cyan-600 text-white' : 'text-slate-400 hover:text-white'
+src/components/FluidPowerPanel.tsx:85:                modelMode === 'DEMO_CIRCUIT' ? 'bg-purple-600 text-white' : 'text-slate-400 hover:text-white'
+src/components/FluidPowerPanel.tsx:123:      {modelMode === 'ACTIVE_PROJECT' && !hasCADGeometry ? (
+src/components/BomPanel.tsx:27:  const docInstances = canonicalDocument?.assembly?.instances || [];
+src/components/BomPanel.tsx:28:  const effectiveComponents: AssemblyComponentItem[] = useMemo(() => {
+src/components/BomPanel.tsx:38:        position: [inst.transform?.position?.x || 0, inst.transform?.position?.y || 0, inst.transform?.position?.z || 0] as [number, number, number],
+src/components/BomPanel.tsx:49:  const [modelMode, setModelMode] = useState<'ACTIVE_CAD' | 'BENCHMARK'>('ACTIVE_CAD');
+src/components/BomPanel.tsx:51:  // Dynamic BOM Rollup based on active assembly vs baseline
+src/components/BomPanel.tsx:52:  const bomData: AssemblyBomRollup | null = useMemo(() => {
+src/components/BomPanel.tsx:53:    if (modelMode === 'ACTIVE_CAD') {
+src/components/BomPanel.tsx:126:  }, [modelMode, hasAssembly, effectiveComponents, canonicalDocument]);
+src/components/BomPanel.tsx:129:  const truthDescriptor = useMemo(() => {
+src/components/BomPanel.tsx:138:      isBenchmarkMode: modelMode === 'BENCHMARK'
+src/components/BomPanel.tsx:140:  }, [modelMode, hasAssembly, canonicalDocument?.documentId, canonicalDocument?.revision, bomData]);
+src/components/BomPanel.tsx:197:                modelMode === 'ACTIVE_CAD'
+src/components/BomPanel.tsx:208:                modelMode === 'BENCHMARK'
+src/components/BomPanel.tsx:238:              Assembly: <span className="font-mono text-slate-200 font-bold">{bomData?.assemblyName || 'No Active Assembly Loaded'}</span> ({bomData?.totalItemCount || 0} Total Line Items)
+src/components/BomPanel.tsx:243:          <span>Critical Path: {bomData?.criticalPathLeadTimeDays || 0} Days</span>
+src/components/CamPanel.tsx:81:  const [modelMode, setModelMode] = useState<'ACTIVE_CAD' | 'BENCHMARK'>('ACTIVE_CAD');
+src/components/CamPanel.tsx:84:  const geometryStats = useMemo(() => {
+src/components/CamPanel.tsx:85:    if (modelMode === 'BENCHMARK') {
+src/components/CamPanel.tsx:124:  }, [modelMode, activeSolid, context.geometry, canonicalDocument]);
+src/components/CamPanel.tsx:127:  const camJob: CamJobPackage = useMemo(() => {
+src/components/CamPanel.tsx:164:        ...(canonicalDocument.derived?.evidenceChain || []),
+src/components/CamPanel.tsx:197:  const truthDescriptor = useMemo(() => {
+src/components/CamPanel.tsx:208:      isBenchmarkMode: modelMode === 'BENCHMARK'
+src/components/CamPanel.tsx:210:  }, [modelMode, hasActiveGeometry, canonicalDocument?.documentId, canonicalDocument?.revision, canonicalDocument?.derived?.cam, geometryStats, camJob]);
+src/components/CamPanel.tsx:239:                  modelMode === 'ACTIVE_CAD'
+src/components/CamPanel.tsx:250:                  modelMode === 'BENCHMARK'
+src/components/PcbWorkbenchPanel.tsx:27:  const schematic = PcbEngine.getDefaultSchematic();
+src/components/PcbWorkbenchPanel.tsx:47:  useEffect(() => {
+src/components/EngineeringCorePanel.tsx:19:  const hasCADGeometry = Boolean(activeSolid || (canonicalDocument?.features && canonicalDocument.features.length > 0));
+src/components/EngineeringCorePanel.tsx:21:  const initialWidthM = activeSolid?.dimensions ? (activeSolid.dimensions.width / 1000) : (hasCADGeometry ? 0.05 : 0);
+src/components/EngineeringCorePanel.tsx:22:  const initialHeightM = activeSolid?.dimensions ? (activeSolid.dimensions.height / 1000) : (hasCADGeometry ? 0.05 : 0);
+src/components/EngineeringCorePanel.tsx:23:  const initialAreaM2 = initialWidthM * initialHeightM;
+src/components/EngineeringCorePanel.tsx:28:  const [forceMass, setForceMass] = useState(hasCADGeometry ? 150 : 0); // kg
+src/components/EngineeringCorePanel.tsx:29:  const [forceAccel, setForceAccel] = useState(9.81); // m/s²
+src/components/EngineeringCorePanel.tsx:30:  const [torqueForce, setTorqueForce] = useState(hasCADGeometry ? 2500 : 0); // N
+src/components/EngineeringCorePanel.tsx:31:  const [torqueRadius, setTorqueRadius] = useState(hasCADGeometry ? 0.35 : 0); // m
+src/components/EngineeringCorePanel.tsx:32:  const [motorRpm, setMotorRpm] = useState(hasCADGeometry ? 1750 : 0); // RPM
+src/components/EngineeringCorePanel.tsx:33:  const [beamForce, setBeamForce] = useState(hasCADGeometry ? 12000 : 0); // N
+src/components/EngineeringCorePanel.tsx:34:  const [beamArea, setBeamArea] = useState(initialAreaM2); // m²
+src/components/EngineeringCorePanel.tsx:35:  const [youngModulus, setYoungModulus] = useState(200); // GPa
+src/components/EngineeringCorePanel.tsx:38:  const [fluidDiameter, setFluidDiameter] = useState(0.05); // 50 mm
+src/components/EngineeringCorePanel.tsx:39:  const [fluidVel, setFluidVel] = useState(2.5); // m/s
+src/components/EngineeringCorePanel.tsx:40:  const [fluidDensity, setFluidDensity] = useState(998); // kg/m³ water
+src/components/EngineeringCorePanel.tsx:41:  const [fluidViscosity, setFluidViscosity] = useState(0.001002); // Pa·s
+src/components/EngineeringCorePanel.tsx:42:  const [pipeLength, setPipeLength] = useState(15); // m
+src/components/EngineeringCorePanel.tsx:43:  const [frictionFactor, setFrictionFactor] = useState(0.02);
+src/components/EngineeringCorePanel.tsx:46:  const [kCond, setKCond] = useState(50); // W/mK steel
+src/components/EngineeringCorePanel.tsx:47:  const [areaThermo, setAreaThermo] = useState(0.25); // m²
+src/components/EngineeringCorePanel.tsx:48:  const [deltaTThermo, setDeltaTThermo] = useState(75); // °C
+src/components/EngineeringCorePanel.tsx:49:  const [thicknessThermo, setThicknessThermo] = useState(0.012); // 12 mm
+src/components/EngineeringCorePanel.tsx:50:  const [alphaExpansion, setAlphaExpansion] = useState(12e-6);
+src/components/EngineeringCorePanel.tsx:53:  const [elecVoltage, setElecVoltage] = useState(24); // V
+src/components/EngineeringCorePanel.tsx:54:  const [elecCurrent, setElecCurrent] = useState(8.5); // A
+src/components/EngineeringCorePanel.tsx:55:  const [wireLen, setWireLen] = useState(25); // m
+src/components/EngineeringCorePanel.tsx:56:  const [wireGaugeMm2, setWireGaugeMm2] = useState(2.5); // mm²
+src/components/ElectricalWorkbenchPanel.tsx:16:    hasCADGeometry ? ElectricalWorkbenchEngine.getDefaultCircuitComponents() : []
+src/components/ElectricalWorkbenchPanel.tsx:21:    setComponents(ElectricalWorkbenchEngine.getDefaultCircuitComponents());

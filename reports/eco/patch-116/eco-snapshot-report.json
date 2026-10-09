@@ -1,0 +1,14 @@
+{
+  "reportId": "eco-snapshot-report.json",
+  "timestamp": "2026-08-21T08:25:39.751Z",
+  "status": "VERIFIED",
+  "data": {
+    "ecoId": "ECO-ID-1787300739750-214",
+    "ecoNumber": "ECO-2026-000001",
+    "ecrId": "ECR-2026-001",
+    "title": "FFKM Valve Seal Upgrade",
+    "reason": "SAFETY",
+    "status": "RELEASED",
+    "verifiedAt": "2026-08-21T08:25:39.751Z"
+  }
+}

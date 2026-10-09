@@ -1,0 +1,17 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /products/{productId} {
+      // Allow read if the user is authenticated and owns the product
+      allow read: if request.auth != null && resource.data.userId == request.auth.uid;
+      
+      // Allow create/update if the user is authenticated and is setting their own userId
+      allow write: if request.auth != null 
+                  && request.resource.data.userId == request.auth.uid
+                  && (resource == null || resource.data.userId == request.auth.uid);
+      
+      // Allow delete if the user is authenticated and owns the product
+      allow delete: if request.auth != null && resource.data.userId == request.auth.uid;
+    }
+  }
+}

@@ -1,0 +1,1 @@
+{"executable": "secp-cfd-solver", "compiler": "LLVM/Clang", "flags": "-O3"}

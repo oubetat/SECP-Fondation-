@@ -1,0 +1,14 @@
+{
+  "slicesVersion": "1.0.0",
+  "documentId": "SECP-ADSE-VERTICAL-SLICES-001",
+  "timestamp": "2026-09-29T07:40:00.000Z",
+  "slices": [
+    { "id": "WUX-V9", "domain": "P5_STRUCTURAL", "status": "PROVEN", "coreBound": true },
+    { "id": "WUX-V10", "domain": "P6_THERMAL", "status": "PROVEN", "coreBound": true },
+    { "id": "WUX-V11", "domain": "P7_POWER", "status": "PROVEN", "coreBound": true },
+    { "id": "WUX-V12", "domain": "P8_CONTROL", "status": "PROVEN", "coreBound": true },
+    { "id": "WUX-V13", "domain": "P9_COMMUNICATION", "status": "PROVEN", "coreBound": true }
+  ],
+  "mockUsage": "NONE",
+  "allSlicesPassed": true
+}

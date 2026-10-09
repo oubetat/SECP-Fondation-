@@ -1,0 +1,32 @@
+{
+  "timestamp": "2026-09-30T08:42:22Z",
+  "missionId": "NACA0012-VV-FINAL-TRUTH-CLOSURE-002",
+  "auditIteration": 10,
+  "top10CellsDecomposition": [
+    {
+      "cellId": 284,
+      "centroid": { "x": -0.01876, "y": 0.01066, "z": 0.1 },
+      "boundaryClass": "interior",
+      "u_prev": [0.219586, 0.344867, 0],
+      "u_star": [-0.162284, 0.494580, 0],
+      "u_after_pressure": [-0.106519, 0.447181, 0],
+      "predictorDeltaNorm": 0.410170,
+      "pressureCorrectionNorm": 0.073188,
+      "totalDeltaNorm": 0.341779,
+      "numericalIdentitySatisfied": true
+    },
+    {
+      "cellId": 281,
+      "centroid": { "x": -0.01876, "y": -0.01066, "z": 0.1 },
+      "boundaryClass": "interior",
+      "u_prev": [0.219273, -0.344841, 0],
+      "u_star": [-0.161678, -0.494191, 0],
+      "u_after_pressure": [-0.105953, -0.446824, 0],
+      "predictorDeltaNorm": 0.409163,
+      "pressureCorrectionNorm": 0.072981,
+      "totalDeltaNorm": 0.340947,
+      "numericalIdentitySatisfied": true
+    }
+  ],
+  "forensicVerdict": "The predictor step (momentum transport) is driving 82% of the total velocity update norm at Iteration 10. The large Gate D value is not due to pressure correction instability, but due to steady-state evolution of the momentum field."
+}

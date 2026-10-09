@@ -1,0 +1,7 @@
+{
+  "benchmarks": [
+    "1D Axial Bar",
+    "2D CST"
+  ],
+  "passed": true
+}

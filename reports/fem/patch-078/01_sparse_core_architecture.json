@@ -1,0 +1,15 @@
+{
+  "patch": "PATCH-078",
+  "title": "Sparse Matrix Engine & CSR Core Architecture",
+  "pipeline": "Element Ke -> Global DOF Map -> Direct COO Assembly -> Canonical CSR -> SpMV / Preconditioners",
+  "primaryFormat": "CSR (Compressed Sparse Row)",
+  "secondaryFormats": [
+    "CSC (Compressed Sparse Column)",
+    "COO (Coordinate List)",
+    "BCSR (Block Compressed Sparse Row)"
+  ],
+  "numericPrecision": "Float64 (64-bit IEEE 754)",
+  "indexWidth": "Int32 (32-bit signed integer)",
+  "zeroDenseFallbackInProduction": true,
+  "deterministicOrdering": "Row ascending, Column ascending"
+}

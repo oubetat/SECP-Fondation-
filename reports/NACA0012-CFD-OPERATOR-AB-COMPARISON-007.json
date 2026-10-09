@@ -1,0 +1,22 @@
+{
+  "missionId": "NACA0012-VV-ROOT-CAUSE-FIX-VALIDATION-007",
+  "timestamp": "2026-09-30T09:17:32.109Z",
+  "cellsAudited": [
+    {
+      "cellId": 284,
+      "preFix": {
+        "effMu_owner": 0.0012502041666666668,
+        "effMu_neighbor": 0.0000016241666666666666,
+        "symmetricViscosityInvariantViolated": true,
+        "D_f_owner": 0.00004808477564102565,
+        "D_f_neighbor": 6.246794871794872e-8
+      },
+      "postFix": {
+        "effMu_face": 0.0006259141666666668,
+        "symmetricViscosityInvariantSatisfied": true,
+        "D_f_owner": 0.000024073621794871805,
+        "D_f_neighbor": 0.000024073621794871805
+      }
+    }
+  ]
+}

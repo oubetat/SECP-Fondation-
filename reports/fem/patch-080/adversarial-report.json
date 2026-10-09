@@ -1,0 +1,72 @@
+{
+  "allPassed": true,
+  "totalTests": 8,
+  "passedTests": 8,
+  "failedTests": 0,
+  "results": [
+    {
+      "testId": "ADV_NEG_E",
+      "category": "PARAMETER",
+      "description": "Rejection of negative Young's modulus E",
+      "passed": true,
+      "verdict": "INVALID_PARAMETERS",
+      "details": "Correctly rejected: Invalid J2 material parameters: Young's modulus E must be finite and positive (got -200000000000)"
+    },
+    {
+      "testId": "ADV_INVALID_NU",
+      "category": "PARAMETER",
+      "description": "Rejection of Poisson ratio nu >= 0.5",
+      "passed": true,
+      "verdict": "INVALID_PARAMETERS",
+      "details": "Correctly rejected: Invalid J2 material parameters: Poisson's ratio nu must be in (-1.0, 0.5) for positive definite elasticity (got 0.55)"
+    },
+    {
+      "testId": "ADV_NEG_YIELD",
+      "category": "PARAMETER",
+      "description": "Rejection of negative yield stress",
+      "passed": true,
+      "verdict": "INVALID_PARAMETERS",
+      "details": "Correctly rejected: Invalid J2 material parameters: Initial yield stress yieldStress must be finite and positive (got -100000000)"
+    },
+    {
+      "testId": "ADV_NEG_HARDENING",
+      "category": "PARAMETER",
+      "description": "Rejection of negative hardening modulus H",
+      "passed": true,
+      "verdict": "INVALID_PARAMETERS",
+      "details": "Correctly rejected: Invalid J2 material parameters: Hardening modulus H must be non-negative (got -1000000000)"
+    },
+    {
+      "testId": "ADV_NAN_STRAIN",
+      "category": "CONSTITUTIVE",
+      "description": "Detection and safe rejection of NaN strain increment",
+      "passed": true,
+      "verdict": "INVALID_PARAMETERS",
+      "details": "NaN or Inf in strainIncrement at 1"
+    },
+    {
+      "testId": "ADV_INF_STRAIN",
+      "category": "CONSTITUTIVE",
+      "description": "Detection and safe rejection of Infinity strain increment",
+      "passed": true,
+      "verdict": "INVALID_PARAMETERS",
+      "details": "NaN or Inf in strainIncrement at 0"
+    },
+    {
+      "testId": "ADV_CORRUPTED_STATE",
+      "category": "STATE",
+      "description": "State validator detects negative kappa & strain split violations",
+      "passed": true,
+      "verdict": "INVALID_STATE",
+      "details": "Detected violations: Invalid equivalent plastic strain kappa: -0.5; Strain additive split violation at component 0: total=0, e+p=0.05"
+    },
+    {
+      "testId": "ADV_HASH_ALTERATION",
+      "category": "HASH",
+      "description": "Cryptographic hash reflects any stress/state mutation",
+      "passed": true,
+      "verdict": "VERIFIED",
+      "details": "Original=dff298fbf2da..., Tampered=7217a274be3f..."
+    }
+  ]
+}

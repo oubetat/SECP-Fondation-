@@ -1,0 +1,8 @@
+{
+  "policies": [
+    "RETAIN",
+    "PRUNE"
+  ],
+  "defaultPolicy": "RETAIN",
+  "description": "RETAIN preserves structural non-zeros from sparsity pattern; PRUNE strips entries with |val| <= tol"
+}

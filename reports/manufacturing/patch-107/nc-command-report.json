@@ -1,0 +1,321 @@
+{
+  "totalCommandsEmitted": 23,
+  "commandsSample": [
+    {
+      "blockNumber": 10,
+      "sequenceNumber": 1,
+      "lineText": "N10 O1007 (IMPELLER_BLADE_5AXIS)",
+      "words": [
+        {
+          "letter": "O",
+          "value": 1007,
+          "rawText": "O1007"
+        }
+      ],
+      "comment": "IMPELLER_BLADE_5AXIS",
+      "modalState": {
+        "motionGCode": "G00",
+        "planeGCode": "G17",
+        "distanceModeGCode": "G90",
+        "feedModeGCode": "G94",
+        "unitsGCode": "G21",
+        "cutterCompGCode": "G40",
+        "workOffsetGCode": "G54",
+        "activeTool": 0,
+        "toolLengthOffsetActive": false,
+        "spindleState": "STOP",
+        "activeSpindleRPM": 0,
+        "activeFeedRate": 0,
+        "coolantActive": false
+      }
+    },
+    {
+      "blockNumber": 20,
+      "sequenceNumber": 2,
+      "lineText": "N20(Part Program: IMPELLER_BLADE_5AXIS)",
+      "words": [],
+      "comment": "Part Program: IMPELLER_BLADE_5AXIS",
+      "modalState": {
+        "motionGCode": "G00",
+        "planeGCode": "G17",
+        "distanceModeGCode": "G90",
+        "feedModeGCode": "G94",
+        "unitsGCode": "G21",
+        "cutterCompGCode": "G40",
+        "workOffsetGCode": "G54",
+        "activeTool": 0,
+        "toolLengthOffsetActive": false,
+        "spindleState": "STOP",
+        "activeSpindleRPM": 0,
+        "activeFeedRate": 0,
+        "coolantActive": false
+      }
+    },
+    {
+      "blockNumber": 30,
+      "sequenceNumber": 3,
+      "lineText": "N30(Source Toolpath: TP_REPORT_107 Rev 1)",
+      "words": [],
+      "comment": "Source Toolpath: TP_REPORT_107 Rev 1",
+      "modalState": {
+        "motionGCode": "G00",
+        "planeGCode": "G17",
+        "distanceModeGCode": "G90",
+        "feedModeGCode": "G94",
+        "unitsGCode": "G21",
+        "cutterCompGCode": "G40",
+        "workOffsetGCode": "G54",
+        "activeTool": 0,
+        "toolLengthOffsetActive": false,
+        "spindleState": "STOP",
+        "activeSpindleRPM": 0,
+        "activeFeedRate": 0,
+        "coolantActive": false
+      }
+    },
+    {
+      "blockNumber": 40,
+      "sequenceNumber": 4,
+      "lineText": "N40(SECP Industrial OS - Verified NC Program: IMPELLER_BLADE_5AXIS)",
+      "words": [],
+      "comment": "SECP Industrial OS - Verified NC Program: IMPELLER_BLADE_5AXIS",
+      "modalState": {
+        "motionGCode": "G00",
+        "planeGCode": "G17",
+        "distanceModeGCode": "G90",
+        "feedModeGCode": "G94",
+        "unitsGCode": "G21",
+        "cutterCompGCode": "G40",
+        "workOffsetGCode": "G54",
+        "activeTool": 0,
+        "toolLengthOffsetActive": false,
+        "spindleState": "STOP",
+        "activeSpindleRPM": 0,
+        "activeFeedRate": 0,
+        "coolantActive": false
+      }
+    },
+    {
+      "blockNumber": 50,
+      "sequenceNumber": 5,
+      "lineText": "N50(Machine: High-Precision 5-Axis Trunnion VMC | Controller: Fanuc Series 31i-B5)",
+      "words": [],
+      "comment": "Machine: High-Precision 5-Axis Trunnion VMC | Controller: Fanuc Series 31i-B5",
+      "modalState": {
+        "motionGCode": "G00",
+        "planeGCode": "G17",
+        "distanceModeGCode": "G90",
+        "feedModeGCode": "G94",
+        "unitsGCode": "G21",
+        "cutterCompGCode": "G40",
+        "workOffsetGCode": "G54",
+        "activeTool": 0,
+        "toolLengthOffsetActive": false,
+        "spindleState": "STOP",
+        "activeSpindleRPM": 0,
+        "activeFeedRate": 0,
+        "coolantActive": false
+      }
+    },
+    {
+      "blockNumber": 60,
+      "sequenceNumber": 6,
+      "lineText": "N60 G90 G80 G40 G49 (Safe Start Initialization)",
+      "words": [
+        {
+          "letter": "G",
+          "value": "90",
+          "rawText": "G90"
+        },
+        {
+          "letter": "G",
+          "value": "80",
+          "rawText": "G80"
+        },
+        {
+          "letter": "G",
+          "value": "40",
+          "rawText": "G40"
+        },
+        {
+          "letter": "G",
+          "value": "49",
+          "rawText": "G49"
+        }
+      ],
+      "comment": "Safe Start Initialization",
+      "modalState": {
+        "motionGCode": "G00",
+        "planeGCode": "G17",
+        "distanceModeGCode": "G90",
+        "feedModeGCode": "G94",
+        "unitsGCode": "G21",
+        "cutterCompGCode": "G40",
+        "workOffsetGCode": "G54",
+        "activeTool": 0,
+        "toolLengthOffsetActive": false,
+        "spindleState": "STOP",
+        "activeSpindleRPM": 0,
+        "activeFeedRate": 0,
+        "coolantActive": false
+      }
+    },
+    {
+      "blockNumber": 70,
+      "sequenceNumber": 7,
+      "lineText": "N70 G90 G21 G17 G54 G40 G80 G49 (Default Modal Initialization)",
+      "words": [
+        {
+          "letter": "G",
+          "value": "90",
+          "rawText": "G90"
+        },
+        {
+          "letter": "G",
+          "value": "21",
+          "rawText": "G21"
+        },
+        {
+          "letter": "G",
+          "value": "17",
+          "rawText": "G17"
+        },
+        {
+          "letter": "G",
+          "value": "54",
+          "rawText": "G54"
+        },
+        {
+          "letter": "G",
+          "value": "40",
+          "rawText": "G40"
+        },
+        {
+          "letter": "G",
+          "value": "80",
+          "rawText": "G80"
+        },
+        {
+          "letter": "G",
+          "value": "49",
+          "rawText": "G49"
+        }
+      ],
+      "comment": "Default Modal Initialization",
+      "modalState": {
+        "motionGCode": "G00",
+        "planeGCode": "G17",
+        "distanceModeGCode": "G90",
+        "feedModeGCode": "G94",
+        "unitsGCode": "G21",
+        "cutterCompGCode": "G40",
+        "workOffsetGCode": "G54",
+        "activeTool": 0,
+        "toolLengthOffsetActive": false,
+        "spindleState": "STOP",
+        "activeSpindleRPM": 0,
+        "activeFeedRate": 0,
+        "coolantActive": false
+      }
+    },
+    {
+      "blockNumber": 80,
+      "sequenceNumber": 8,
+      "lineText": "N80 G00 Z200.0000 (Safe Retract Z)",
+      "words": [
+        {
+          "letter": "G",
+          "value": "00",
+          "rawText": "G00"
+        },
+        {
+          "letter": "Z",
+          "value": 200,
+          "rawText": "Z200.0000"
+        }
+      ],
+      "comment": "Safe Retract Z",
+      "modalState": {
+        "motionGCode": "G00",
+        "planeGCode": "G17",
+        "distanceModeGCode": "G90",
+        "feedModeGCode": "G94",
+        "unitsGCode": "G21",
+        "cutterCompGCode": "G40",
+        "workOffsetGCode": "G54",
+        "activeTool": 0,
+        "toolLengthOffsetActive": false,
+        "spindleState": "STOP",
+        "activeSpindleRPM": 0,
+        "activeFeedRate": 0,
+        "coolantActive": false
+      }
+    },
+    {
+      "blockNumber": 90,
+      "sequenceNumber": 9,
+      "lineText": "N90 M05 M09 (Spindle & Coolant Stop)",
+      "words": [
+        {
+          "letter": "M",
+          "value": "05",
+          "rawText": "M05"
+        },
+        {
+          "letter": "M",
+          "value": "09",
+          "rawText": "M09"
+        }
+      ],
+      "comment": "Spindle & Coolant Stop",
+      "modalState": {
+        "motionGCode": "G00",
+        "planeGCode": "G17",
+        "distanceModeGCode": "G90",
+        "feedModeGCode": "G94",
+        "unitsGCode": "G21",
+        "cutterCompGCode": "G40",
+        "workOffsetGCode": "G54",
+        "activeTool": 0,
+        "toolLengthOffsetActive": false,
+        "spindleState": "STOP",
+        "activeSpindleRPM": 0,
+        "activeFeedRate": 0,
+        "coolantActive": false
+      }
+    },
+    {
+      "blockNumber": 100,
+      "sequenceNumber": 10,
+      "lineText": "N100 T1 M06 (Tool Change to T1)",
+      "words": [
+        {
+          "letter": "T",
+          "value": 1,
+          "rawText": "T1"
+        },
+        {
+          "letter": "M",
+          "value": "06",
+          "rawText": "M06"
+        }
+      ],
+      "comment": "Tool Change to T1",
+      "modalState": {
+        "motionGCode": "G00",
+        "planeGCode": "G17",
+        "distanceModeGCode": "G90",
+        "feedModeGCode": "G94",
+        "unitsGCode": "G21",
+        "cutterCompGCode": "G40",
+        "workOffsetGCode": "G54",
+        "activeTool": 0,
+        "toolLengthOffsetActive": false,
+        "spindleState": "STOP",
+        "activeSpindleRPM": 0,
+        "activeFeedRate": 0,
+        "coolantActive": false
+      }
+    }
+  ]
+}

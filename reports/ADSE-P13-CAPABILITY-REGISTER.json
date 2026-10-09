@@ -1,0 +1,77 @@
+{
+  "phase": "ADSE-P13",
+  "systemTitle": "ADSE P13 Configuration Truth Capability Register",
+  "version": "1.0.0-FORENSIC",
+  "capabilities": [
+    {
+      "capabilityId": "CAP-P13-001",
+      "name": "Configuration Item Canonical Binding",
+      "description": "Formally binds configurations to canonical elements, preventing shadow model duplicates.",
+      "implementationModule": "src/engine/adse/p13/ConfigurationRegistry.ts",
+      "status": "VERIFIED"
+    },
+    {
+      "capabilityId": "CAP-P13-002",
+      "name": "Revision Authority Mapping",
+      "description": "Binds P13 items to active RevisionEngine structures, maintaining strict subordination to SECP Revision Authority.",
+      "implementationModule": "src/engine/adse/p13/ConfigurationAuthorityEngine.ts",
+      "status": "VERIFIED"
+    },
+    {
+      "capabilityId": "CAP-P13-003",
+      "name": "Immutable Configuration Baselining",
+      "description": "Seals baselines with a cryptographic Merkle root hash of all consolidated evidence, blocking silent mutations.",
+      "implementationModule": "src/engine/adse/p13/ConfigurationBaselineEngine.ts",
+      "status": "VERIFIED"
+    },
+    {
+      "capabilityId": "CAP-P13-004",
+      "name": "Formal Change Control Workflows",
+      "description": "Enforces formal change request cycles, blocking direct mutation of baseline items.",
+      "implementationModule": "src/engine/adse/p13/ConfigurationChangeEngine.ts",
+      "status": "VERIFIED"
+    },
+    {
+      "capabilityId": "CAP-P13-005",
+      "name": "Downstream Multi-Domain Impact Analysis",
+      "description": "Walks the Digital Thread to compute downstream mechanical, system, requirement, interface, simulation, manufacturing, metrology, and safety impacts.",
+      "implementationModule": "src/engine/adse/p13/ConfigurationImpactEngine.ts",
+      "status": "VERIFIED"
+    },
+    {
+      "capabilityId": "CAP-P13-006",
+      "name": "Applicability & Effectivity Engine",
+      "description": "Validates serial-number ranges and mission profile applicability, preventing overlapping/contradictory ranges.",
+      "implementationModule": "src/engine/adse/p13/ConfigurationApplicabilityEngine.ts",
+      "status": "VERIFIED"
+    },
+    {
+      "capabilityId": "CAP-P13-007",
+      "name": "Configuration Compatibility Validation",
+      "description": "Detects incompatible revisions, incompatible interfaces, invalid dependencies, invalid variant combinations, and stale evidence.",
+      "implementationModule": "src/engine/adse/p13/ConfigurationCompatibilityEngine.ts",
+      "status": "VERIFIED"
+    },
+    {
+      "capabilityId": "CAP-P13-008",
+      "name": "AI Governance Boundary Enforcement",
+      "description": "Enforces human-only permissions at the backend boundary for configuration signing, releasing, or bypassing.",
+      "implementationModule": "src/engine/adse/p13/ConfigurationGovernanceEngine.ts",
+      "status": "VERIFIED"
+    },
+    {
+      "capabilityId": "CAP-P13-009",
+      "name": "Merkle Snapshot Persistence & Rehydration",
+      "description": "Provides secure, deterministic snapshotting and reconstruction parity via cryptographic Merkle validation checks.",
+      "implementationModule": "src/engine/adse/p13/ConfigurationPersistenceEngine.ts",
+      "status": "VERIFIED"
+    },
+    {
+      "capabilityId": "CAP-P13-010",
+      "name": "P12 Safety invalidation Cascade Integration",
+      "description": "Cascades configuration changes downstream to automatically invalidate and reassess matching P12 Safety Claims and Controls.",
+      "implementationModule": "src/engine/adse/p13/ADSEP13Engine.ts",
+      "status": "VERIFIED"
+    }
+  ]
+}

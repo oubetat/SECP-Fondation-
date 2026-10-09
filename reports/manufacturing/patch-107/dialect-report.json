@@ -1,0 +1,10 @@
+{
+  "dialect": "FANUC_LIKE",
+  "status": "IMPLEMENTED",
+  "supportedDialects": [
+    "FANUC_LIKE",
+    "SIEMENS_LIKE",
+    "HEIDENHAIN_LIKE",
+    "ISO_NC"
+  ]
+}

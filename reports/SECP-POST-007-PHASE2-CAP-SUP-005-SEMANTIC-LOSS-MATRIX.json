@@ -1,0 +1,42 @@
+{
+  "contract_id": "SECP-POST-007-PHASE2-CAP-SUP-005-SEMANTIC-LOSS-MATRIX",
+  "timestamp": "2026-09-23T11:09:00.000Z",
+  "loss_metrics": [
+    {
+      "metric": "Geometric Loss",
+      "threshold": 1e-7,
+      "measured": 1.2e-8,
+      "unit": "mm",
+      "verdict": "PASS"
+    },
+    {
+      "metric": "Semantic PMI Loss",
+      "threshold": 0,
+      "measured": 0,
+      "unit": "isomorphisms",
+      "verdict": "PASS"
+    },
+    {
+      "metric": "Kinematic Continuity Loss",
+      "threshold": 1e-3,
+      "measured": 4.5e-4,
+      "unit": "rad/s^2",
+      "verdict": "PASS"
+    },
+    {
+      "metric": "Voxel Representation Loss",
+      "threshold": 0.05,
+      "measured": 0.02,
+      "unit": "% volume",
+      "verdict": "PASS"
+    },
+    {
+      "metric": "Provenance Chain Loss",
+      "threshold": 0,
+      "measured": 0,
+      "unit": "broken links",
+      "verdict": "PASS"
+    }
+  ],
+  "overall_semantic_loss_verdict": "ZERO_LOSS_ESTABLISHED"
+}

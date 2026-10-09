@@ -1,0 +1,15 @@
+{
+  "inputVector": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "outputVector": [
+    6,
+    23,
+    80,
+    -4
+  ],
+  "verifiedAgainstReference": true
+}

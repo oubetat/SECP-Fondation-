@@ -1,0 +1,126 @@
+{
+  "$schema": "https://secp.industrial-os.org/schemas/secp-post007-phase3-charter-v1.json",
+  "mission": "SECP-POST-007-PHASE3-PHYSICAL-ENGINEERING-TRUTH",
+  "title": "POST-007 Phase 3: Physical Engineering Truth & Industrial Superiority Charter",
+  "timestamp": "2026-09-23T11:33:00.000Z",
+  "foundational_shift": "Transitioning from algorithmic simulation to Cyber-Physical Engineering Truth OS. Verification is anchored in physical reality, empirical telemetry, independent reference datasets, and zero-loss end-to-end digital-physical thread accounting.",
+  "mandate": {
+    "track_a_gap_closure": {
+      "focus": "Closing the 5 empirical/hardware gaps exposed in CAP-SUP-005 without reopening already-proven analytical contracts",
+      "work_packages": [
+        {
+          "id": "WP-PHY-01",
+          "name": "Real Metrology Acquisition & Hardware Driver Protocol Interface",
+          "reference_standards": ["I++ DME v1.7", "Renishaw UCC / Equator Protocol", "QIF 3.0 ISO 23952:2020"],
+          "gap_addressed": "Eliminating SIMULATED_PHYSICAL_ACQUISITION via structured CMM / optical scanner protocol drivers with live calibration validity and GUM uncertainty."
+        },
+        {
+          "id": "WP-PHY-02",
+          "name": "Empirical Tool-Wear Validation & Sensor Telemetry Dataset Integration",
+          "reference_standards": ["ISO 3685:1993 (Tool-life testing with single-point turning tools)", "MTConnect ANSI/MTC1.4", "OPC UA IEC 62541"],
+          "gap_addressed": "Moving beyond synthetic Usui flank wear to empirical cutting datasets (spindle load, feed force, vibration, tool wear microscope ground truth)."
+        },
+        {
+          "id": "WP-PHY-03",
+          "name": "Closed Physical Loop Machining & Re-Measurement Cycle",
+          "reference_standards": ["ISO 23247-4:2021", "NIST Digital Thread Closed-Loop Manufacturing Architecture"],
+          "gap_addressed": "End-to-end physical trial: CAD REV-A -> CAM -> Machining -> Physical CMM -> QIF -> Inversion -> REV-B -> Re-machining -> Residual convergence."
+        },
+        {
+          "id": "WP-PHY-04",
+          "name": "Independent External Reference Benchmark & Oracle Separation",
+          "reference_standards": ["NIST MBE PMICheck Reference Datasets", "PTB Metrology Benchmarks"],
+          "gap_addressed": "Validating SECP algorithms against externally certified reference datasets and independent external oracles rather than internal self-consistency."
+        },
+        {
+          "id": "WP-PHY-05",
+          "name": "Machine Execution Safety Contract & Controller Gateway",
+          "reference_standards": ["ISO 14649 (STEP-NC)", "ISO 23125 (Machine tools safety)"],
+          "gap_addressed": "Pre-execution cryptographic handshake: machine kinematics, controller identity, fixture coordinates, work offsets (G54-G59), limits, and rollback capability."
+        }
+      ]
+    },
+    "track_b_end_to_end_superiority": {
+      "focus": "Architecting and mathematically verifying the unbroken 16-stage Cyber-Physical Lifecycle with strict 11-dimensional Loss Accounting across every boundary",
+      "lifecycle_thread_stages": [
+        "STAGE-01: Requirement (Formal SysML/ReqIF Specification)",
+        "STAGE-02: Canonical CAD (Watertight Manifold B-Rep Solid)",
+        "STAGE-03: Semantic PMI / GD&T (ISO 1101 / ASME Y14.5)",
+        "STAGE-04: Multi-Physics Simulation (FEA / CFD / Dynamics)",
+        "STAGE-05: Parametric Optimization (Design for Manufacturing)",
+        "STAGE-06: CAM / Toolpath Planning (5-Axis Multi-Pass)",
+        "STAGE-07: Machine Execution Safety Gateway (Controller/Kinematics)",
+        "STAGE-08: Physical Cutting Process (In-Process Telemetry)",
+        "STAGE-09: Physical Measurement Acquisition (CMM / Optical)",
+        "STAGE-10: Quality Information Interchange (QIF 3.0 / AP-242)",
+        "STAGE-11: Uncertainty Propagation (ISO GUM / ISO 14253-1)",
+        "STAGE-12: Signed Deviation Field Computation",
+        "STAGE-13: Empirical Tool-Wear & Deflection Inference",
+        "STAGE-14: Inverse Toolpath Compensation (Reversible Delta)",
+        "STAGE-15: Canonical Revision Proposal & Provenance Rollback",
+        "STAGE-16: Re-Manufacturing & Digital Twin Health State"
+      ],
+      "loss_accounting_dimensions": [
+        {
+          "dimension": "IDENTITY_LOSS",
+          "definition": "Loss of entity UID (face, edge, vertex, feature, tolerance) during file transfer or regeneration.",
+          "target": "ZERO_TOLERANCE (Identities are persistently anchored)"
+        },
+        {
+          "dimension": "SEMANTIC_LOSS",
+          "definition": "Loss of intent, datum references, or GD&T relationships during conversion.",
+          "target": "ZERO_TOLERANCE (100% semantic preservation via formal semantic AST)"
+        },
+        {
+          "dimension": "GEOMETRIC_LOSS",
+          "definition": "Shape approximation or discretization errors (e.g. meshing chordal deviation).",
+          "target": "BOUNDED (Hausdorff distance <= eps, explicitly tracked)"
+        },
+        {
+          "dimension": "NUMERICAL_LOSS",
+          "definition": "Floating point round-off, truncation, or solver precision degradation.",
+          "target": "BOUNDED (Machine precision eps <= 1e-12)"
+        },
+        {
+          "dimension": "UNCERTAINTY_LOSS",
+          "definition": "Dropping or ignoring measurement uncertainty bounds during decision making.",
+          "target": "ZERO_TOLERANCE (ISO 14253-1 guard-bands strictly propagated)"
+        },
+        {
+          "dimension": "PROVENANCE_LOSS",
+          "definition": "Severing the cryptographic chain of custody, authorship, or time-stamping.",
+          "target": "ZERO_TOLERANCE (SHA-256 DAG immutable signature chain)"
+        },
+        {
+          "dimension": "REVISION_LOSS",
+          "definition": "Applying data or compensation derived from Revision X onto Revision Y.",
+          "target": "ZERO_TOLERANCE (Strict revision matching gate)"
+        },
+        {
+          "dimension": "TEMPORAL_LOSS",
+          "definition": "Loss of sequence order, calibration validity intervals, or telemetry timestamps.",
+          "target": "ZERO_TOLERANCE (IEEE 1588 / UTC ISO 8601 monotonic sequencing)"
+        },
+        {
+          "dimension": "COORDINATE_FRAME_LOSS",
+          "definition": "Confusion between Machine Coordinate System (MCS), Workpiece (WCS), or Sensor Frame.",
+          "target": "ZERO_TOLERANCE (Explicit SE(3) transform tree binding)"
+        },
+        {
+          "dimension": "UNIT_LOSS",
+          "definition": "Implicit imperial/metric conversions or dimensional inconsistency.",
+          "target": "ZERO_TOLERANCE (Canonical SI units enforced at boundary)"
+        },
+        {
+          "dimension": "AUTHORIZATION_LOSS",
+          "definition": "Automated execution without required engineering role sign-off or governance token.",
+          "target": "ZERO_TOLERANCE (Cryptographic multi-sig governance token)"
+        }
+      ]
+    }
+  },
+  "metrics_philosophy": {
+    "anti_metric": "Raw test count vanity (500, 1000, 10000 tests)",
+    "true_metric": "Capability -> Evidence -> Independent Verification -> Physical Validation -> Repeatability -> Traceability -> Zero Boundary Loss"
+  }
+}

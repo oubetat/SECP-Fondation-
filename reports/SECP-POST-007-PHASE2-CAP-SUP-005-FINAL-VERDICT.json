@@ -1,0 +1,89 @@
+{
+  "capability_id": "CAP-SUP-005",
+  "canonical_name": "Closed-Loop Metrology Inversion Engine & True Collision Avoidance",
+  "domain": "Manufacturing / Quality Metrology / CAM / Kinematics",
+  "audit_type": "FINAL_CLOSED_LOOP_METROLOGY_TRUTH_AUDIT",
+  "timestamp": "2026-09-23T11:23:30.000Z",
+  "final_verdict": "PROVEN_PARTIAL",
+  "verdict_reasoning": "The mathematical, algorithmic, and governance contracts for collision detection, metrology metadata binding, tool-wear inference, toolpath compensation, and closed-loop replay are fully proven with 100% mutation detection across 14 metrology and 10 collision mutations. However, physical CMM data acquisition remains SIMULATED_PHYSICAL_ACQUISITION (no live hardware CMM probe) and tool-wear inference is analytical (Usui/Taylor model) without physical cutting sensor telemetry. Under the strict SECP Engineering Truth constitution, the complete capability cannot be claimed as industrial-grade world-class without physical-world closure, mandating a final verdict of PROVEN_PARTIAL.",
+  "subsystem_contracts": {
+    "collision_avoidance_contract": {
+      "verdict": "PROVEN_ENGINEERING_CONTRACT",
+      "scope": "Analytical primitive hulls (Capsules/AABBs) with continuous adaptive sampling and deterministic priority hierarchy"
+    },
+    "metrology_binding_contract": {
+      "verdict": "PROVEN_ENGINEERING_CONTRACT",
+      "scope": "Strict 9-tuple metadata binding (part, serial/lot, design revision, feature identity, tolerance, datum/frame, uncertainty, instrument/calibration, provenance)"
+    },
+    "tool_wear_inference_contract": {
+      "verdict": "PROVEN_PARTIAL",
+      "scope": "Analytical reference model (Usui flank wear) independently verified by math oracle; live sensor telemetry unproven"
+    },
+    "toolpath_inversion_and_compensation_contract": {
+      "verdict": "PROVEN_ENGINEERING_CONTRACT",
+      "scope": "Immutable CAD authority preservation, new revision proposal generation, non-mutation of canonical CAD, reversibility token, exact vector tracking"
+    },
+    "closed_loop_replay_contract": {
+      "verdict": "PROVEN_PARTIAL",
+      "scope": "Deterministic replay mathematically verified with ISO 14253-1 decision rules; physical machining simulated"
+    }
+  },
+  "physical_reality_status": {
+    "cmm_data_acquisition": "SIMULATED_PHYSICAL_ACQUISITION",
+    "cutting_process_telemetry": "SIMULATED_PROCESS_DYNAMICS",
+    "tool_wear_verification": "ANALYTICAL_REFERENCE_MODEL_ONLY"
+  },
+  "mutation_detection_summary": {
+    "collision_mutations": {
+      "tested": 10,
+      "detected": 10,
+      "suite": "src/engine/manufacturing/__tests__/CollisionMutation.test.ts"
+    },
+    "metrology_mutations": {
+      "tested": 14,
+      "detected": 14,
+      "suite": "src/engine/manufacturing/__tests__/ClosedLoopMetrologyMutation.test.ts",
+      "detected_cases": [
+        "M-MET-01: Invert deviation",
+        "M-MET-02: Invert compensation vector",
+        "M-MET-03: Remove measurement uncertainty",
+        "M-MET-04: Stale revision",
+        "M-MET-05: Wrong tool ID",
+        "M-MET-06: Wrong coordinate frame",
+        "M-MET-07: Wrong unit",
+        "M-MET-08: Remove design-authority link",
+        "M-MET-09: Bypass revision",
+        "M-MET-10: Force PASS",
+        "M-MET-11: Force compensation",
+        "M-MET-12: Suppress residual error",
+        "M-MET-13: Corrupt measurement provenance",
+        "M-MET-14: Alter calibration status"
+      ]
+    }
+  },
+  "regression_boundary_verification": {
+    "boundary_type": "RELATED_DOMAIN_BOUNDARY",
+    "global_repository_regression": false,
+    "scope": "CAM, Kinematics, Post-Processor, Manufacturing Features, QIF, AP-242, Collision, Closed-Loop Metrology",
+    "test_files_count": 23,
+    "total_tests_passed": 147,
+    "total_tests_failed": 0
+  },
+  "source_and_test_hashes": {
+    "ClosedLoopMetrologyInversionEngine.ts": "dee3e2b86809acd1cbb73182df02715c5255a9ce523953bf26bafe46bf04ceb3",
+    "IndependentManufacturingOracle.ts": "88973acae22d8213623dbb92ec09ea72fcef78e8974a676837039dd061eb5370",
+    "CollisionDetector.ts": "a834b4916b51f5055d4c2b60e6621079965146caa4692d5db4642d71ff45a203",
+    "CollisionClassifier.ts": "8fad4c2eb2381e1e0840174c0330d7d475941f0a1184a1c149e52368a8a5eca3",
+    "ClosedLoopMetrologyAudit.test.ts": "9fa7aa6ca868a8fc9b96e91d44ec348d6d4657cd3715115dea6902816df94238",
+    "ClosedLoopMetrologyMutation.test.ts": "e16f11566d167cf41fe6436394f4177afbacc37c859af8ee14019752787b4eec",
+    "CollisionContractAudit.test.ts": "68e512e005b3c3ca8892bcb854015fe98718907ee5db4e026ab67752577bf60d",
+    "CollisionMutation.test.ts": "bc467a70c4cbc667f38cdd8a5a48e5e4765a25a21d43ab04779b5cc1a9e49487",
+    "ManufacturingPhase2RedTeam.test.ts": "ac223c813a0efa0ca2420c15cdb6574ca3c4b388f91d33141c72298fbae28f84",
+    "ManufacturingMutation.test.ts": "b25ed52a3aa6fcaa6cc7ed4be8c8a6d4ec571863afd174ffc6010928be8002eb"
+  },
+  "unresolved_unknowns": [
+    "UK-MFG-01: Live hardware CMM driver integration (Renishaw UCC / Zeiss I++ DME over TCP/IP)",
+    "UK-MFG-02: Live spindle load and dynamometer cut-force sensor telemetry for empirical tool wear calibration",
+    "UK-MFG-03: Arbitrary NURBS/B-Rep mesh narrow-phase collision beyond analytical primitive capsules and AABBs"
+  ]
+}

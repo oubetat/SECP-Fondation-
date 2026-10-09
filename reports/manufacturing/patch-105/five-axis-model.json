@@ -1,0 +1,16 @@
+{
+  "patchId": "PATCH-105",
+  "coreSimultaneous5Axis": true,
+  "interpolationModes": [
+    "SLERP",
+    "LINEAR_VECTOR",
+    "AXIS_ANGLE",
+    "MACHINE_DEFINED"
+  ],
+  "rotaryAxesConventions": [
+    "TABLE_TABLE",
+    "HEAD_HEAD",
+    "HEAD_TABLE"
+  ],
+  "timestamp": "2026-08-23T07:34:33.753Z"
+}

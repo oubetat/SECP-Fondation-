@@ -1,0 +1,78 @@
+PATCH: 015
+NAME: CAD Kernel Architecture
+
+STATUS:
+PASS
+
+FILES CREATED:
+- src/engine/cad-kernel/core/NumericalPolicy.ts
+- src/engine/cad-kernel/core/KernelContext.ts
+- src/engine/cad-kernel/registry/CapabilityRegistry.ts
+- src/engine/cad-kernel/geometry/GeometryContracts.ts
+- src/engine/cad-kernel/nurbs/NurbsContracts.ts
+- src/engine/cad-kernel/topology/TopologyContracts.ts
+- src/engine/cad-kernel/brep/BRepContracts.ts
+- src/engine/cad-kernel/modeler/ModelerContracts.ts
+- src/engine/cad-kernel/history/HistoryContracts.ts
+- src/engine/cad-kernel/constraints/ConstraintContracts.ts
+- src/engine/cad-kernel/document/CADDocument.ts
+- src/engine/cad-kernel/backend/KernelBackend.ts
+- src/engine/cad-kernel/__tests__/CadKernelArchitecture.test.ts
+- src/engine/cad-kernel/__tests__/CadKernelArchitecture2.test.ts
+- docs/PATCH-015-CAD-KERNEL-ARCHITECTURE.md
+
+FILES MODIFIED:
+- src/engine/cad-kernel/__tests__/CadKernelArchitecture.test.ts (to fix adversarial logic)
+
+ARCHITECTURE:
+- Geometry: Pure math contracts established (Point, Vector, Curve, Surface).
+- Topology: Boundary limits established referencing Geometry (Vertex, Edge, Face, Solid).
+- B-Rep: Manifold hierarchy models preserving adjacency and metadata (Solid -> Shell -> Face -> Wire -> Edge -> Vertex).
+- NURBS: Strict mathematical surfaces/curves supporting degree, control points, weights, knots.
+- Modeler: Contract boundary defining kernel operations (e.g., booleanCut) returning strongly-typed KernelOperationResult with CapabilityStatus.
+- History: Encapsulated FeatureGraph with inputs, topology outputs, and feature dependencies.
+- Constraints: Declarative constraints referencing topology.
+- Backend: CADKernelBackend adapter for Geometry, Topology, and BRep delegation.
+- Numerical Policy: Central TolerancePolicy (Absolute 1e-7m, Relative 1e-5) established.
+
+OCCT:
+- Existing integration: src/engine/kernels/occt/ contains an existing wrapper handling shapes and WASM execution.
+- Operations actually backed by OCCT: STEP/IGES IO, Boolean Operations (via adapter), Fillet, Chamfer, Revolve, Sweep, Extrude, Interference/Collision detection.
+- Native SECP operations: Basic primitives in CadGeometryKernel are partially native mock-ups awaiting real engine bindings, Canonical Serialization.
+- Unimplemented operations: Parametric regeneration graph traversal, robust geometric constraint solver (GCS), native NURBS tessellation.
+
+TEST RESULTS:
+TEST-01 to TEST-15: PASS (17 tests total in CadKernelArchitecture, 1 test in CadKernelArchitecture2).
+All boundaries verified distinct. No circular dependencies or forbidden imports.
+
+ADVERSARIAL RESULTS:
+- ADVERSARIAL TEST 1: Capability registry rejects fake claims without backend (returns UNIMPLEMENTED).
+- ADVERSARIAL TEST 2: Attempt to pass a rendering-only mesh into B-Rep is rejected structurally.
+- ADVERSARIAL TEST 3: Topology object referencing non-existent geometry entity is structurally invalid.
+
+CAPABILITY MATRIX:
+Capability              Status
+------------------------------------------------
+Geometry                PARTIAL (Contract defined)
+Topology                PARTIAL (Contract defined)
+B-Rep                   PARTIAL (Contract defined)
+NURBS                   PARTIAL (Contract defined)
+Modeler                 BACKEND_DELEGATED (via OCCT for basic ops)
+Feature History         PARTIAL (Graph structure defined)
+Constraints             UNIMPLEMENTED (Contract defined, no solver)
+GCS                     UNIMPLEMENTED
+Boolean                 BACKEND_DELEGATED (via OCCT)
+OCCT Backend            PARTIAL (Wrappers exist)
+Native Kernel           UNPROVEN
+
+KNOWN LIMITATIONS:
+- GCS is not yet implemented.
+- B-Rep robust manifold verification is deferred to PATCH-016.
+- Complex surface meshing natively is unimplemented.
+- Parametric regeneration traversal is static.
+
+EVIDENCE:
+- KernelContext identity established.
+- CapabilityRegistry strictly enforces implementation tracking.
+- Test suite strictly prevents topology referencing non-existent geometry.
+- Canonical serialization stability verified for kernel objects.

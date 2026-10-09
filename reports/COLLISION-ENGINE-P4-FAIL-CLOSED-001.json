@@ -1,0 +1,13 @@
+{
+  "reportId": "COLLISION-ENGINE-P4-FAIL-CLOSED-001",
+  "evaluatedFailureConditions": [
+    "MISSING_MOTION_SEGMENT",
+    "NAN_COORDINATES",
+    "INVALID_QUATERNION",
+    "SOLVER_TIMEOUT",
+    "NUMERICAL_AMBIGUITY"
+  ],
+  "provenSafeForgedCount": 0,
+  "allFailClosedVerified": true,
+  "verdict": "PASSED"
+}

@@ -1,0 +1,82 @@
+{
+  "reportType": "ASSEMBLY_CONSTRAINTS_AND_JOINTS",
+  "assemblyId": "ASM_TURBO_PUMP_01",
+  "constraints": [
+    {
+      "constraintId": "CST_SHAFT_IMPELLER_CONC",
+      "name": "Shaft to Impeller Concentric Alignment",
+      "constraintType": "CONCENTRIC",
+      "sourceOccurrenceId": "OCC_SHAFT_01",
+      "targetOccurrenceId": "OCC_IMPELLER_01",
+      "sourceRef": {
+        "occurrenceId": "OCC_SHAFT_01",
+        "topologyType": "AXIS",
+        "topologyCanonicalPath": "Shaft/CylinderAxis_01"
+      },
+      "targetRef": {
+        "occurrenceId": "OCC_IMPELLER_01",
+        "topologyType": "AXIS",
+        "topologyCanonicalPath": "Impeller/BoreAxis_01"
+      },
+      "status": "VALID"
+    },
+    {
+      "constraintId": "CST_BRG1_SEAT",
+      "name": "Bearing 1 Front Shoulder Coincident",
+      "constraintType": "COINCIDENT",
+      "sourceOccurrenceId": "OCC_SHAFT_01",
+      "targetOccurrenceId": "OCC_BEARING_FRONT",
+      "sourceRef": {
+        "occurrenceId": "OCC_SHAFT_01",
+        "topologyType": "FACE",
+        "topologyCanonicalPath": "Shaft/ShoulderFace_01"
+      },
+      "targetRef": {
+        "occurrenceId": "OCC_BEARING_FRONT",
+        "topologyType": "FACE",
+        "topologyCanonicalPath": "Bearing/InnerRingFace_01"
+      },
+      "offsetMm": 0,
+      "status": "VALID"
+    }
+  ],
+  "interfaces": [
+    {
+      "interfaceId": "IFACE_ROTOR_CASING_ROT",
+      "name": "Rotor-Stator Hydrodynamic Clearance Interface",
+      "interfaceType": "ROTATIONAL",
+      "sourceOccurrenceId": "OCC_SUBASM_ROTOR",
+      "targetOccurrenceId": "OCC_CASING_01",
+      "sourceGeometryRefs": [
+        {
+          "occurrenceId": "OCC_SUBASM_ROTOR",
+          "topologyType": "FACE"
+        }
+      ],
+      "targetGeometryRefs": [
+        {
+          "occurrenceId": "OCC_CASING_01",
+          "topologyType": "FACE"
+        }
+      ],
+      "status": "ACTIVE"
+    }
+  ],
+  "joints": [
+    {
+      "jointId": "JNT_ROTOR_REVOLUTE",
+      "name": "High Speed Rotor Revolute Joint",
+      "jointType": "REVOLUTE",
+      "parentOccurrenceId": "OCC_CASING_01",
+      "childOccurrenceId": "OCC_SUBASM_ROTOR",
+      "dofCount": 1,
+      "currentValue": 0,
+      "axisVector": {
+        "x": 0,
+        "y": 0,
+        "z": 1
+      },
+      "actuatorType": "MOTORIZED"
+    }
+  ]
+}

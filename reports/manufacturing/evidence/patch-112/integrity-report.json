@@ -1,0 +1,70 @@
+{
+  "verifierResult": {
+    "overallStatus": "INSUFFICIENT",
+    "scorePercentage": 100,
+    "layerResults": [
+      {
+        "layer": 1,
+        "layerName": "Layer 1 — Identity",
+        "passed": true,
+        "issues": []
+      },
+      {
+        "layer": 2,
+        "layerName": "Layer 2 — Integrity",
+        "passed": true,
+        "issues": []
+      },
+      {
+        "layer": 3,
+        "layerName": "Layer 3 — Authenticity",
+        "passed": true,
+        "issues": []
+      },
+      {
+        "layer": 4,
+        "layerName": "Layer 4 — Temporal Consistency",
+        "passed": true,
+        "issues": []
+      },
+      {
+        "layer": 5,
+        "layerName": "Layer 5 — Dependency Consistency",
+        "passed": true,
+        "issues": []
+      },
+      {
+        "layer": 6,
+        "layerName": "Layer 6 — Cross-Source Corroboration",
+        "passed": true,
+        "issues": []
+      },
+      {
+        "layer": 7,
+        "layerName": "Layer 7 — Physical-Digital Consistency",
+        "passed": true,
+        "issues": []
+      },
+      {
+        "layer": 8,
+        "layerName": "Layer 8 — Inspection Consistency",
+        "passed": true,
+        "issues": []
+      }
+    ],
+    "criticalFailures": [
+      "CRITICAL_EVIDENCE_MISSING"
+    ],
+    "completeness": {
+      "required": 11,
+      "present": 10,
+      "percentage": 91
+    }
+  },
+  "independentResult": {
+    "reproducible": true,
+    "verdict": "MANUFACTURING_VERIFIED",
+    "failedChecks": [],
+    "recordCount": 11
+  }
+}

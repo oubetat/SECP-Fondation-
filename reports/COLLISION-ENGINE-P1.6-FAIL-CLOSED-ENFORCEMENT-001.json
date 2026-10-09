@@ -1,0 +1,25 @@
+{
+  "missionId": "COLLISION-ENGINE-P1.6-AUTHORITY-MIGRATION-ENFORCEMENT-001",
+  "artifactType": "FAIL_CLOSED_ENFORCEMENT_REPORT",
+  "timestamp": "2026-10-01T01:57:00.000Z",
+  "enforcedRules": [
+    {
+      "condition": "OCCT B-Rep boolean exception",
+      "previousBehavior": "Ignored, set solid to null, returned status: NO_INTERFERENCE",
+      "enforcedBehavior": "Enforces status: UNKNOWN, provenSafe: false",
+      "status": "ENFORCED"
+    },
+    {
+      "condition": "Unrecognized assembly components without geometry",
+      "previousBehavior": "Defaulted to status: CLEAR, clashes: []",
+      "enforcedBehavior": "Enforces status: ANALYSIS_FAILED, provenSafe: false",
+      "status": "ENFORCED"
+    },
+    {
+      "condition": "Missing tool assembly or negative tolerances",
+      "previousBehavior": "Engine exception or inconsistent report",
+      "enforcedBehavior": "Enforces status: ANALYSIS_FAILED via CollisionAuthority.validateInput()",
+      "status": "ENFORCED"
+    }
+  ]
+}

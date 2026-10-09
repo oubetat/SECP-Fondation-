@@ -1,0 +1,50 @@
+[
+  {
+    "artifactId": "CAD_MODEL_01",
+    "agentType": "HUMAN"
+  },
+  {
+    "artifactId": "FEAT_MODEL_01",
+    "agentType": "CAM_ENGINE"
+  },
+  {
+    "artifactId": "MAT_AL7075_T6",
+    "agentType": "SYSTEM"
+  },
+  {
+    "artifactId": "TOOL_ENDMILL_10MM",
+    "agentType": "SYSTEM"
+  },
+  {
+    "artifactId": "MACH_DMG_50",
+    "agentType": "SYSTEM"
+  },
+  {
+    "artifactId": "OP_AERO_POCKET_01",
+    "agentType": "CAM_ENGINE"
+  },
+  {
+    "artifactId": "TOOLPATH_AERO_01",
+    "agentType": "CAM_ENGINE"
+  },
+  {
+    "artifactId": "SIM_AERO_01",
+    "agentType": "SIMULATOR"
+  },
+  {
+    "artifactId": "POST_ENGINE_TNC640",
+    "agentType": "SYSTEM"
+  },
+  {
+    "artifactId": "NC_O1001",
+    "agentType": "POST_PROCESSOR"
+  },
+  {
+    "artifactId": "VERIF_NC_01",
+    "agentType": "VERIFIER"
+  },
+  {
+    "artifactId": "TWIN_EXEC_01",
+    "agentType": "SYSTEM"
+  }
+]

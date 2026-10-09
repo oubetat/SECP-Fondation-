@@ -1,0 +1,23 @@
+{
+  "caseId": "secp-momentum-gate",
+  "meshHash": "gate-mesh-hash",
+  "fieldStateHash": "gate-state-hash",
+  "boundaryConditionHash": "bc-hash",
+  "materialStateHash": "material-hash",
+  "physicsModelHash": "physics-hash",
+  "policyHash": "policy-hash",
+  "globalImbalance": [
+    0,
+    0,
+    0
+  ],
+  "maxLocalImbalance": [
+    0,
+    0,
+    0
+  ],
+  "verdict": "CONSERVATIVE",
+  "diagnostics": [],
+  "timestamp": "2026-08-19T11:21:11.547Z",
+  "provenanceSignature": "secp058-hash-24b8484f"
+}

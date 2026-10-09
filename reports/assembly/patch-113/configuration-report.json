@@ -1,0 +1,33 @@
+{
+  "reportType": "ASSEMBLY_CONFIGURATIONS",
+  "assemblyId": "ASM_TURBO_PUMP_01",
+  "activeConfigurationId": "DEFAULT",
+  "configurations": [
+    {
+      "configurationId": "DEFAULT",
+      "name": "Default Configuration",
+      "description": "Baseline master configuration",
+      "isDefault": true,
+      "occurrenceStates": {
+        "OCC_ASM_TURBO_PUMP_01_ROOT": "ACTIVE",
+        "OCC_SUBASM_ROTOR": "ACTIVE",
+        "OCC_SHAFT_01": "ACTIVE",
+        "OCC_IMPELLER_01": "ACTIVE",
+        "OCC_BEARING_FRONT": "ACTIVE",
+        "OCC_BEARING_REAR": "ACTIVE",
+        "OCC_CASING_01": "ACTIVE",
+        "OCC_BOLT_FLANGE_1": "ACTIVE",
+        "OCC_BOLT_FLANGE_2": "ACTIVE",
+        "OCC_BOLT_FLANGE_3": "ACTIVE",
+        "OCC_BOLT_FLANGE_4": "ACTIVE",
+        "OCC_BOLT_FLANGE_5": "ACTIVE",
+        "OCC_BOLT_FLANGE_6": "ACTIVE",
+        "OCC_BOLT_FLANGE_7": "ACTIVE",
+        "OCC_BOLT_FLANGE_8": "ACTIVE"
+      },
+      "parameterOverrides": {},
+      "suppressedConstraints": [],
+      "suppressedInterfaces": []
+    }
+  ]
+}

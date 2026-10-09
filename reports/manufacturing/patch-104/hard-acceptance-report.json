@@ -1,0 +1,55 @@
+{
+  "verdict": "PASS",
+  "checks": [
+    {
+      "id": "PLANAR_TOOLPATH_GENERATION",
+      "passed": true,
+      "details": "Planar strategy correctly computed 16 segments of 3-axis motion."
+    },
+    {
+      "id": "DETERMINISTIC_FINGERPRINTS",
+      "passed": true,
+      "details": "Deterministic state confirmed: Fingerprints match exactly (TP-FINGERPRINT-OP_FACE_01-1-PLANAR-16)"
+    },
+    {
+      "id": "CONTOUR_DEPTH_COMPUTATION",
+      "passed": true,
+      "details": "Contour profiling multi-level slicing and vertical constraint validation verified successfully."
+    },
+    {
+      "id": "AXIS_ORIENTATION_CONSTRAINT",
+      "passed": true,
+      "details": "Gated 3-axis vertical toolpath validation correctly blocked non-vertical tool axis vectors."
+    },
+    {
+      "id": "SPINDLE_LIMIT_ENFORCEMENT",
+      "passed": true,
+      "details": "Limits check successfully triggers failure on spindle RPM exceeding machine maximum."
+    },
+    {
+      "id": "WEIGHT_LIMIT_VERIFICATION",
+      "passed": true,
+      "details": "Weight threshold limits correctly caught heavy workpiece assembly configurations."
+    },
+    {
+      "id": "GOUGE_DETECTION_LOGIC",
+      "passed": true,
+      "details": "Gouge check correctly identifies physical tool intrusion below design workpiece floor boundary."
+    },
+    {
+      "id": "DANGEROUS_STICKOUT_WARNING",
+      "passed": true,
+      "details": "Stiffness checker successfully flagged dangerous stickout-to-rigidity ratio."
+    },
+    {
+      "id": "TOOL_REACH_VERIFICATION",
+      "passed": true,
+      "details": "Reachability validator successfully caught insufficient tool assembly stickout limits."
+    },
+    {
+      "id": "ENVELOPE_BOUNDARY_SAFETY",
+      "passed": true,
+      "details": "Workpiece envelope limits properly guarded the machine kinematic perimeter."
+    }
+  ]
+}

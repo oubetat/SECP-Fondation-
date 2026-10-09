@@ -1,0 +1,35 @@
+{
+  "scenarios": [
+    {
+      "name": "Scenario 1: Circular Dependency Cycle",
+      "type": "ADVERSARIAL",
+      "status": "PASS",
+      "detail": "Successfully blocked cycle registration (WORKFLOW_INVALID)."
+    },
+    {
+      "name": "Scenario 2: Unknown Task Dependency",
+      "type": "ADVERSARIAL",
+      "status": "PASS",
+      "detail": "Successfully blocked registration referencing non-existent tasks."
+    },
+    {
+      "name": "Scenario 3: Failed Task Propagation",
+      "type": "ADVERSARIAL",
+      "status": "PASS",
+      "detail": "Prevented execution of downstream steps when required upstream task fails."
+    },
+    {
+      "name": "Scenario 4: Task Retry Policy",
+      "type": "ADVERSARIAL",
+      "status": "PASS",
+      "detail": "Successfully recovered from transient failures and recorded retry history."
+    },
+    {
+      "name": "Scenario 5: Unproven Missing Evidence",
+      "type": "ADVERSARIAL",
+      "status": "PASS",
+      "detail": "Properly set workflow verdict to UNPROVEN when required evidence is missing."
+    }
+  ],
+  "adversarialSuccess": true
+}

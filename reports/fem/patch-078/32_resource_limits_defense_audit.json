@@ -1,0 +1,7 @@
+{
+  "maxRows": 5000000,
+  "maxCols": 5000000,
+  "maxNNZ": 200000000,
+  "maxMemoryBytes": 4294967296,
+  "status": "ACTIVE_ENFORCED"
+}

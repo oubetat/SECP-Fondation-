@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "1.0.0",
+  "commandTypes": [
+    "RAPID_MOVE",
+    "LINEAR_MOVE",
+    "ARC_MOVE",
+    "TOOL_CHANGE",
+    "SPINDLE_START",
+    "COOLANT_ON",
+    "DWELL",
+    "CANNED_CYCLE"
+  ]
+}

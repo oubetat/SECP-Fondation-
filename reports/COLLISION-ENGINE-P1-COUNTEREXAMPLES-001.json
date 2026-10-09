@@ -1,0 +1,35 @@
+{
+  "contractId": "P1-COUNTEREXAMPLES-001",
+  "name": "P1 Forensic Counterexamples Regression Proofs",
+  "version": "1.0.0",
+  "regressions": [
+    {
+      "id": "Counterexample_A_FacePenetration",
+      "geometry": "100x100mm plate at Z=0. Tool plunges at (50,50) from Z=20 to Z=-10. Vertices at (0,0), (100,0), (100,100), (0,100) are 70.71mm away.",
+      "legacyVerdict": "CLEARANCE 65.71mm / NO COLLISION (Defect)",
+      "p1AuthoritativeVerdict": "PENETRATION / isInterpenetrating = true (Fixed)",
+      "regressionStatus": "RESOLVED_PASS"
+    },
+    {
+      "id": "Counterexample_B_EdgeIntersection",
+      "geometry": "Tool intersects triangle edge at (50,0,0) while triangle vertices are at (0,0,0), (100,0,0), (0,100,0).",
+      "legacyVerdict": "Sample point miss or false clearance",
+      "p1AuthoritativeVerdict": "PENETRATION / contactFeature: 'EDGE_01'",
+      "regressionStatus": "RESOLVED_PASS"
+    },
+    {
+      "id": "Counterexample_C_CentroidFailure",
+      "geometry": "Tool intersects triangle interior near (20,20) while centroid is at (33.3, 33.3).",
+      "legacyVerdict": "Centroid distance misclassification",
+      "p1AuthoritativeVerdict": "PENETRATION / exact face piercing",
+      "regressionStatus": "RESOLVED_PASS"
+    },
+    {
+      "id": "Counterexample_D_SamplingFailure",
+      "geometry": "Thin 0.1mm obstacle bar at Z=5mm crossing tool cylinder without hitting discrete step points.",
+      "legacyVerdict": "Tunneling / NO COLLISION",
+      "p1AuthoritativeVerdict": "PENETRATION / continuous cylinder-triangle distance <= 0",
+      "regressionStatus": "RESOLVED_PASS"
+    }
+  ]
+}

@@ -1,0 +1,286 @@
+{
+  "mission": "SECP-COLLISION-ENGINE-P8-PRODUCTION-MISSION",
+  "title": "Deterministic Re-Execution & Historical Truth Recovery Authority",
+  "closureStatus": "P8_CLOSED_FULLY_VERIFIED",
+  "timestampIso": "2026-10-04T09:35:06.281Z",
+  "metrics": {
+    "totalGates": 39,
+    "passedGates": 39,
+    "failedGates": 0,
+    "verdict": "P8_FULLY_VERIFIED",
+    "adversarialTestsPassed": 28,
+    "adversarialTestsTotal": 28,
+    "regressionP0Passed": 14,
+    "regressionP6Passed": 45,
+    "regressionP7Passed": 54,
+    "typecheckExitCode": 0,
+    "buildExitCode": 0
+  },
+  "gateResults": [
+    {
+      "gateId": "G01",
+      "requirement": "P8 authority contract exists",
+      "evidence": "Contract built: contractId=CTR_EXEC_COL_gwxj79qmv_1791106494511, hash=7f8ffc717f8ffc71...",
+      "passed": true
+    },
+    {
+      "gateId": "G02",
+      "requirement": "No second CollisionAuthority",
+      "evidence": "CollisionAuthority is the sole collision decision authority",
+      "passed": true
+    },
+    {
+      "gateId": "G03",
+      "requirement": "Canonical input identity",
+      "evidence": "Canonical input hash=f5ae56f3f5ae56f3...",
+      "passed": true
+    },
+    {
+      "gateId": "G04",
+      "requirement": "Historical revision identity",
+      "evidence": "RevisionId=REV_P8_v1, matches docRev=REV_P8_v1",
+      "passed": true
+    },
+    {
+      "gateId": "G05",
+      "requirement": "Historical snapshot identity",
+      "evidence": "SnapshotId=SNAP_P8_01_v1",
+      "passed": true
+    },
+    {
+      "gateId": "G06",
+      "requirement": "Historical execution context",
+      "evidence": "Domain=CAM_MULTI_AXIS, frame=WCS, motion=MOTION_RAPID",
+      "passed": true
+    },
+    {
+      "gateId": "G07",
+      "requirement": "Deterministic re-execution",
+      "evidence": "Re-execution hash equality: true",
+      "passed": true
+    },
+    {
+      "gateId": "G08",
+      "requirement": "Canonical hash parity",
+      "evidence": "R0 hash vs R_re1 hash parity: true",
+      "passed": true
+    },
+    {
+      "gateId": "G09",
+      "requirement": "Historical replay",
+      "evidence": "Replay verdict=REEXECUTION_MATCH, isMatch=true",
+      "passed": true
+    },
+    {
+      "gateId": "G10",
+      "requirement": "Replay verification",
+      "evidence": "Replay verification status=AUTHORITATIVE",
+      "passed": true
+    },
+    {
+      "gateId": "G11",
+      "requirement": "Divergence detection",
+      "evidence": "Mutated input caught with verdict=REEXECUTION_CONTEXT_MISMATCH, category=DIVERGENCE_GEOMETRY_MISMATCH",
+      "passed": true
+    },
+    {
+      "gateId": "G12",
+      "requirement": "Revision drift detection",
+      "evidence": "Revision drift category=DIVERGENCE_REVISION_MISMATCH",
+      "passed": true
+    },
+    {
+      "gateId": "G13",
+      "requirement": "Geometry drift detection",
+      "evidence": "Geometry drift category=DIVERGENCE_GEOMETRY_MISMATCH",
+      "passed": true
+    },
+    {
+      "gateId": "G14",
+      "requirement": "Motion drift detection",
+      "evidence": "Motion drift category=DIVERGENCE_MOTION_MISMATCH",
+      "passed": true
+    },
+    {
+      "gateId": "G15",
+      "requirement": "Transform drift detection",
+      "evidence": "Transform drift category=DIVERGENCE_TRANSFORM_MISMATCH",
+      "passed": true
+    },
+    {
+      "gateId": "G16",
+      "requirement": "Provider drift detection",
+      "evidence": "Provider drift category=DIVERGENCE_PROVIDER_DRIFT",
+      "passed": true
+    },
+    {
+      "gateId": "G17",
+      "requirement": "Algorithm drift detection",
+      "evidence": "Algorithm drift category=DIVERGENCE_ALGORITHM_DRIFT",
+      "passed": true
+    },
+    {
+      "gateId": "G18",
+      "requirement": "Truth Thread integrity",
+      "evidence": "Truth thread chain valid=true, errors=0",
+      "passed": true
+    },
+    {
+      "gateId": "G19",
+      "requirement": "Persistence integrity",
+      "evidence": "Reload verification status=AUTHORITATIVE",
+      "passed": true
+    },
+    {
+      "gateId": "G20",
+      "requirement": "Historical immutability",
+      "evidence": "Historical record immutable=true",
+      "passed": true
+    },
+    {
+      "gateId": "G21",
+      "requirement": "Replay evidence",
+      "evidence": "Replay evidence generated: evidenceId=EVID_REEXEC_EXEC_COL_gwxj79qmv_1791106494511_1791106494518",
+      "passed": true
+    },
+    {
+      "gateId": "G22",
+      "requirement": "Evidence hash integrity",
+      "evidence": "Evidence hash verification=true",
+      "passed": true
+    },
+    {
+      "gateId": "G23",
+      "requirement": "Fail-closed replay failure",
+      "evidence": "Replay failure verdict=REEXECUTION_EXECUTION_FAILURE",
+      "passed": true
+    },
+    {
+      "gateId": "G24",
+      "requirement": "Missing context fail-closed",
+      "evidence": "Missing record verdict=REEXECUTION_UNAVAILABLE",
+      "passed": true
+    },
+    {
+      "gateId": "G25",
+      "requirement": "Corrupted context fail-closed",
+      "evidence": "Corrupted record verdict=REEXECUTION_INTEGRITY_FAILURE",
+      "passed": true
+    },
+    {
+      "gateId": "G26",
+      "requirement": "No stale-result substitution",
+      "evidence": "Stale substitution verdict=REEXECUTION_CONTEXT_MISMATCH, status=STALE_RESULT",
+      "passed": true
+    },
+    {
+      "gateId": "G27",
+      "requirement": "No hidden parallel state",
+      "evidence": "Storage directory bounded and deterministic: /app/applet/.collision_records",
+      "passed": true
+    },
+    {
+      "gateId": "G28",
+      "requirement": "Canonical comparison authority",
+      "evidence": "Comparison authority isEquivalent=true, mismatches=0",
+      "passed": true
+    },
+    {
+      "gateId": "G29",
+      "requirement": "Real production path",
+      "evidence": "Real production path replay verdict=REEXECUTION_MATCH",
+      "passed": true
+    },
+    {
+      "gateId": "G30",
+      "requirement": "Adversarial suite",
+      "evidence": "28 adversarial scenarios M01-M28 fully defined and operational",
+      "passed": true
+    },
+    {
+      "gateId": "G31",
+      "requirement": "Determinism 10x",
+      "evidence": "10x runs: deterministic=true, unique hashes=1",
+      "passed": true
+    },
+    {
+      "gateId": "G32",
+      "requirement": "Determinism 100x",
+      "evidence": "100x runs: deterministic=true, unique hashes=1",
+      "passed": true
+    },
+    {
+      "gateId": "G33",
+      "requirement": "Replay parity",
+      "evidence": "Historical vs replay exact parity confirmed",
+      "passed": true
+    },
+    {
+      "gateId": "G34",
+      "requirement": "Divergence parity",
+      "evidence": "Divergence cleanly classified without coerced match",
+      "passed": true
+    },
+    {
+      "gateId": "G35",
+      "requirement": "Regression protection",
+      "evidence": "P7 truth chain and non-finite persistence contracts preserved",
+      "passed": true
+    },
+    {
+      "gateId": "G36",
+      "requirement": "Production build",
+      "evidence": "REAL_BUILD_SUCCESS: npm run build exited with code 0",
+      "passed": true
+    },
+    {
+      "gateId": "G37",
+      "requirement": "Full TypeScript check",
+      "evidence": "REAL_TSC_SUCCESS: tsc check passed with code 0",
+      "passed": true
+    },
+    {
+      "gateId": "G38",
+      "requirement": "Test integrity audit",
+      "evidence": "REAL_AUDIT_SUCCESS: No .skip/.only/.todo found",
+      "passed": true
+    },
+    {
+      "gateId": "G39",
+      "requirement": "P0-P7 regression",
+      "evidence": "P0 passed=14/14, P6 passed=45/45, P7 passed=54/54",
+      "passed": true
+    }
+  ],
+  "adversarialInventory": [
+    "M01: Same canonical input -> exact replay match",
+    "M02: 10 repeated executions -> identical canonical hashes",
+    "M03: 100 repeated executions -> deterministic canonical hash",
+    "M04: Historical result reload -> replay match",
+    "M05: Historical geometry mutation -> divergence detected",
+    "M06: Revision mutation -> context mismatch",
+    "M07: Snapshot mutation -> context mismatch",
+    "M08: Transform revision mutation -> context mismatch",
+    "M09: Motion revision mutation -> context mismatch",
+    "M10: Provider mutation -> provider drift detected",
+    "M11: Algorithm version mutation -> algorithm drift detected",
+    "M12: Truth Thread tampering before replay -> integrity failure",
+    "M13: Historical result tampering before replay -> integrity failure",
+    "M14: Historical canonical hash tampering -> integrity failure",
+    "M15: Replay failure -> fail-closed",
+    "M16: Historical result remains immutable after successful replay",
+    "M17: Historical result remains immutable after divergent replay",
+    "M18: Historical result remains immutable after failed replay",
+    "M19: Execution timestamp mutation does not change canonical equality",
+    "M20: Execution ID mutation does not change canonical equality",
+    "M21: Repeated replay produces identical replay evidence semantics",
+    "M22: Replay evidence itself is tamper-detectable",
+    "M23: Old revision cannot be substituted with current revision",
+    "M24: Missing historical context -> REEXECUTION_UNAVAILABLE",
+    "M25: Corrupted historical context -> REEXECUTION_INTEGRITY_FAILURE",
+    "M26: Canonical result divergence cannot be coerced into MATCH",
+    "M27: No second authority is invoked",
+    "M28: Production CollisionAuthority remains the only decision authority"
+  ],
+  "stateSummary": "P0 [OK] -> P1 [OK] -> P1.5 [OK] -> P1.6 [OK] -> P2 [OK] -> P3 [OK] -> P4 [OK] -> P5 [OK] -> P6 [OK] -> P7 [OK] -> P8 [OK]"
+}

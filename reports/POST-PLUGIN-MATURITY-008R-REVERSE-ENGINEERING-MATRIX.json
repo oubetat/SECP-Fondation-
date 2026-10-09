@@ -1,0 +1,48 @@
+{
+  "auditTitle": "SECP Reverse Engineering Authority Matrix",
+  "auditStandard": "POST-PLUGIN-MATURITY-008R (Part A)",
+  "timestamp": "2026-09-26T08:11:00.000Z",
+  "pipelineStages": [
+    {
+      "stage": "RAW_MEASUREMENT_CAPTURE",
+      "originType": "MEASURED",
+      "instrumentTypes": ["OPTICAL_CMM", "LASER_SCANNER", "TACTILE_PROBE", "CT_XRAY"],
+      "calibrationMandatory": true,
+      "uncertaintyMandatory": true,
+      "canonicalBinding": "PHYSICAL_PART_SERIAL",
+      "status": "AUTHORITATIVE_ENFORCED"
+    },
+    {
+      "stage": "DEVIATION_ANALYSIS",
+      "originType": "MEASURED_VS_DESIGNED",
+      "metrics": ["meanDeviationMm", "rmsDeviationMm", "inTolerancePercentage", "complianceVerdict"],
+      "toleranceBands": "EXPLICIT_CAD_TOLERANCE",
+      "canonicalBinding": "SOURCE_DESIGN_REVISION_HASH",
+      "status": "AUTHORITATIVE_ENFORCED"
+    },
+    {
+      "stage": "FEATURE_RECONSTRUCTION",
+      "originType": "RECONSTRUCTED",
+      "supportedGeometries": ["PLANAR_FACE", "CYLINDRICAL_BORE", "SPHERICAL_CAP", "FREEFORM_NURBS"],
+      "residualFittingEnforced": true,
+      "canonicalBinding": "RECONSTRUCTION_PACKAGE_DIGEST",
+      "status": "AUTHORITATIVE_ENFORCED"
+    },
+    {
+      "stage": "CANONICAL_REVISION_PROMOTION",
+      "originType": "REVERSE_ENGINEERED",
+      "governanceEngine": "RevisionEngine",
+      "approvalRole": "CHIEF_METROLOGIST",
+      "separationOfDutiesEnforced": true,
+      "canonicalBinding": "NEW_CANONICAL_REVISION_HASH",
+      "status": "AUTHORITATIVE_ENFORCED"
+    }
+  ],
+  "epistemologicalOriginRules": {
+    "inferredToMeasuredPromotion": "FAIL_CLOSED_REJECTED",
+    "measuredToDesignOverwrite": "FAIL_CLOSED_REJECTED",
+    "reconstructedBypassGovernance": "FAIL_CLOSED_REJECTED",
+    "tamperedMeasurementDetection": "CRYPTO_HASH_VERIFIED"
+  },
+  "overallVerdict": "REVERSE_ENGINEERING_AUTHORITY_CLOSED"
+}

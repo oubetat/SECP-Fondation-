@@ -1,0 +1,11 @@
+{
+  "reportId": "REP-MFG-125-010",
+  "timestamp": "2026-08-21T09:22:45.194Z",
+  "twinId": "MFG-TWIN-REPORT-010",
+  "productId": "AEROSPACE-COMPONENT-10",
+  "material": "AL-7075-T6",
+  "inputHash": "6f9af92eff368c17c0bc60b20212f107a59929f103f5e2378c86fc5d2b1b4a18",
+  "rootHash": "df304bc53489d8c060a2a2562bdd514a77fdf28b5ad52700a8173a6d9386fbae",
+  "state": "READY",
+  "verdict": "MANUFACTURING_TRUTH_VERIFIED"
+}

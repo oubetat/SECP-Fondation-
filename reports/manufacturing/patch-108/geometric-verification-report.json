@@ -1,0 +1,6 @@
+{
+  "gougeDetected": false,
+  "overcutDetected": false,
+  "undermachiningDetected": false,
+  "status": "GEOMETRIC_INTENT_PRESERVED"
+}

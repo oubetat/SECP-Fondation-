@@ -1,0 +1,29 @@
+{
+  "verdict": "VERIFIED",
+  "checks": [
+    {
+      "id": "1D_STEADY_CONDUCTION",
+      "description": "Steady 1D conduction with Dirichlet boundaries",
+      "passed": true,
+      "details": "Linear temperature profile verified"
+    },
+    {
+      "id": "THERMAL_PATCH_TEST",
+      "description": "Constant gradient patch test and energy balance",
+      "passed": true,
+      "details": "Relative imbalance: 0.0000e+0"
+    },
+    {
+      "id": "ENERGY_CONSERVATION",
+      "description": "Heat generation balances boundary flux",
+      "passed": true,
+      "details": "Generated: 2000, Imbalance: 0.0000e+0"
+    },
+    {
+      "id": "TRANSIENT_DECAY",
+      "description": "Single-DOF thermal decay transient validation",
+      "passed": true,
+      "details": "Backward Euler step verified"
+    }
+  ]
+}

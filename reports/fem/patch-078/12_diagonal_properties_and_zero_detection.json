@@ -1,0 +1,7 @@
+{
+  "diagonalCount": 4,
+  "hasZeroDiagonal": false,
+  "minNnzPerRow": 1,
+  "maxNnzPerRow": 3,
+  "avgNnzPerRow": 2
+}

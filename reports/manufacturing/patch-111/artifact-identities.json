@@ -1,0 +1,62 @@
+[
+  {
+    "artifactId": "CAD_MODEL_01",
+    "type": "CAD_MODEL",
+    "revision": 1
+  },
+  {
+    "artifactId": "FEAT_MODEL_01",
+    "type": "MANUFACTURING_FEATURE",
+    "revision": 1
+  },
+  {
+    "artifactId": "MAT_AL7075_T6",
+    "type": "MATERIAL",
+    "revision": 1
+  },
+  {
+    "artifactId": "TOOL_ENDMILL_10MM",
+    "type": "TOOL",
+    "revision": 1
+  },
+  {
+    "artifactId": "MACH_DMG_50",
+    "type": "MACHINE",
+    "revision": 1
+  },
+  {
+    "artifactId": "OP_AERO_POCKET_01",
+    "type": "CAM_OPERATION",
+    "revision": 1
+  },
+  {
+    "artifactId": "TOOLPATH_AERO_01",
+    "type": "TOOLPATH",
+    "revision": 1
+  },
+  {
+    "artifactId": "SIM_AERO_01",
+    "type": "SIMULATION",
+    "revision": 1
+  },
+  {
+    "artifactId": "POST_ENGINE_TNC640",
+    "type": "POST_PROCESSOR",
+    "revision": 1
+  },
+  {
+    "artifactId": "NC_O1001",
+    "type": "NC_PROGRAM",
+    "revision": 1
+  },
+  {
+    "artifactId": "VERIF_NC_01",
+    "type": "GCODE_VERIFICATION",
+    "revision": 1
+  },
+  {
+    "artifactId": "TWIN_EXEC_01",
+    "type": "DIGITAL_TWIN_STATE",
+    "revision": 1
+  }
+]

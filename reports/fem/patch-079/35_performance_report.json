@@ -1,0 +1,32 @@
+[
+  {
+    "meshType": "1D_BAR",
+    "nodeCount": 11,
+    "elementCount": 10,
+    "dofCount": 11,
+    "nnz": 28,
+    "assemblyTimeMs": 0.18323500000002468,
+    "factorizationTimeMs": 0.01995899999997164,
+    "solveTimeMs": 0.00932999999997719,
+    "totalTimeMs": 0.4979640000000245,
+    "matrixMemoryBytes": 380,
+    "factorizationMemoryBytes": 308,
+    "fillInRatio": 0.6785714285714286,
+    "verified": true
+  },
+  {
+    "meshType": "2D_QUAD4",
+    "nodeCount": 16,
+    "elementCount": 9,
+    "dofCount": 32,
+    "nnz": 280,
+    "assemblyTimeMs": 6.301850999999999,
+    "factorizationTimeMs": 0.4867980000000216,
+    "solveTimeMs": 0.044855000000040945,
+    "totalTimeMs": 11.540495999999962,
+    "matrixMemoryBytes": 3460,
+    "factorizationMemoryBytes": 2016,
+    "fillInRatio": 0.5428571428571428,
+    "verified": false
+  }
+]

@@ -1,0 +1,44 @@
+{
+  "modelType": "BAR1D",
+  "expectedDisplacements": [
+    {
+      "nodeId": "N0",
+      "dof": "UX",
+      "value": 0
+    },
+    {
+      "nodeId": "N1",
+      "dof": "UX",
+      "value": 0.0000025
+    },
+    {
+      "nodeId": "N2",
+      "dof": "UX",
+      "value": 0.000005
+    }
+  ],
+  "expectedReactions": [
+    {
+      "nodeId": "N0",
+      "dof": "UX",
+      "value": -10000
+    }
+  ],
+  "expectedCenterStresses": [
+    {
+      "elementId": "E0",
+      "stress": [
+        1000000
+      ],
+      "vonMises": 1000000
+    },
+    {
+      "elementId": "E1",
+      "stress": [
+        1000000
+      ],
+      "vonMises": 1000000
+    }
+  ],
+  "expectedStrainEnergy": 0.025
+}

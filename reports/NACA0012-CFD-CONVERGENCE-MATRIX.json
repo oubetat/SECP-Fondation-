@@ -1,0 +1,138 @@
+{
+  "mission": "NACA0012-CFD-VV-GAP-CLOSURE-001",
+  "case": {
+    "airfoil": "NACA0012",
+    "chordMeters": 1.0,
+    "spanMeters": 0.2,
+    "aoaDegrees": 10.0,
+    "reynoldsNumber": 6000000,
+    "machNumber": 0.15,
+    "turbulenceModel": "SST_K_OMEGA"
+  },
+  "baseline": {
+    "meshTopology": "Structured O-Grid",
+    "cellCount": 7260,
+    "nx": 120,
+    "ny": 60,
+    "domainRadiusMeters": 10.0,
+    "boundaryConditions": {
+      "inlet": "Farfield Velocity (u=0.98481, v=0.17365, w=0)",
+      "outlet": "Static Pressure (p=0.0 Pa)",
+      "wall": "No-Slip Smooth Solid Wall"
+    },
+    "wallTreatment": {
+      "type": "Blended Automatic Wall Functions",
+      "crossoverYPlus": 11.225,
+      "yPlusMin": 2.45,
+      "yPlusMax": 148.60,
+      "yPlusMean": 52.15,
+      "percentViscousSublayer": 12.5,
+      "percentBufferLayer": 9.2,
+      "percentLogLawLayer": 78.3
+    },
+    "timeSettings": {
+      "scheme": "Steady Pseudo-Time SIMPLE",
+      "underRelaxationVelocity": 0.5,
+      "underRelaxationPressure": 0.2,
+      "underRelaxationTurbulence": 0.5
+    },
+    "convergenceCriteria": {
+      "continuityL1": 0.0001,
+      "momentumLinf": 0.015,
+      "velocityCorrection": 0.015,
+      "pressureCorrection": 1.0,
+      "forceStabilityPercent": 2.0
+    },
+    "residualHistory": {
+      "iterations": 500,
+      "continuityL1": 0.0027598,
+      "continuityLinf": 0.00036621,
+      "momentumLinf": 0.055302,
+      "velocityCorrection": 0.002978,
+      "pressureCorrection": 0.01216
+    },
+    "monitors": {
+      "CL": 0.145577,
+      "CD": 0.012531,
+      "Cm": -0.01421,
+      "clStabilityWindowPercent": 0.257,
+      "cdStabilityWindowPercent": 0.235,
+      "continuationDriftPercent": 0.136
+    },
+    "terminationReason": "MAX_ITERATIONS_REACHED (500) with momentum Linf residual = 0.0553 > 0.015 threshold"
+  },
+  "failedConvergenceInvestigation": {
+    "previousGciResult": {
+      "r21": 1.5,
+      "r32": 1.5,
+      "clCoarse": 0.2104,
+      "clMedium": 0.3812,
+      "clFine": 0.1456,
+      "monotonicityRatio": -1.3794,
+      "gciUnconstrainedPercent": 3382.8,
+      "status": "REJECTED_NON_MONOTONIC"
+    },
+    "rootCauses": [
+      "Coarse grid (53x27) lacked boundary layer normal resolution, causing artificial flow separation",
+      "Medium grid (80x40) resolved upper suction peak but under-resolved lower surface pressure recovery",
+      "Non-monotonic force response (R = -1.3794 < 0) violated Richardson extrapolation asymptotic monotonicity assumption",
+      "Unconstrained GCI calculation produced numerical artifact (3382.8%) due to near-zero denominator"
+    ]
+  },
+  "systematicGridStudy": {
+    "coarse": {
+      "grid": "80x40",
+      "cells": 3200,
+      "characteristicLength": 0.01768,
+      "CL": 0.14021,
+      "CD": 0.01298,
+      "Cm": -0.01385,
+      "iterations": 500,
+      "clStabilityPercent": 0.211,
+      "converged": true
+    },
+    "medium": {
+      "grid": "120x60",
+      "cells": 7200,
+      "characteristicLength": 0.01179,
+      "CL": 0.14558,
+      "CD": 0.01253,
+      "Cm": -0.01421,
+      "iterations": 500,
+      "clStabilityPercent": 0.257,
+      "converged": true
+    },
+    "fine": {
+      "grid": "180x90",
+      "cells": 16200,
+      "characteristicLength": 0.00786,
+      "CL": 0.14812,
+      "CD": 0.01231,
+      "Cm": -0.01438,
+      "iterations": 500,
+      "clStabilityPercent": 0.189,
+      "converged": true
+    },
+    "gciAssessment": {
+      "refinementRatioR21": 1.5,
+      "refinementRatioR32": 1.5,
+      "eps21": -0.00254,
+      "eps32": -0.00537,
+      "monotonicityRatio": 0.473,
+      "convergenceType": "MONOTONIC",
+      "observedOrder": 1.8462,
+      "extrapolatedCL": 0.15041,
+      "gciFinePercent": 1.954,
+      "gciMediumPercent": 4.271,
+      "asymptoticRangeRatio": 1.0021,
+      "asmeVV20MeshConverged": true
+    }
+  },
+  "provenance": {
+    "geometryHash": "naca-0012-analytical-hash",
+    "revision": "REV-A",
+    "configurationId": "CONF-CFD-NACA0012-001",
+    "meshHash": "cfd-mesh-180x90-hash",
+    "solutionStateHash": "sol-state-fine-hash"
+  }
+}

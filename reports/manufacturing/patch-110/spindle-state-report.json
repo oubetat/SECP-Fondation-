@@ -1,0 +1,12 @@
+{
+  "commandedRPM": 12000,
+  "actualRPM": 11998.375582596127,
+  "direction": "STOP",
+  "loadPercent": 0,
+  "temperatureC": 34.5,
+  "vibrationG": 0.08,
+  "status": "STOPPED",
+  "slipRPM": -1.6244174038729398,
+  "timestamp": 1787297983974,
+  "provenance": "CONFIGURED"
+}

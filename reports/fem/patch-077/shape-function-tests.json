@@ -1,0 +1,27 @@
+[
+  {
+    "element": "BAR2",
+    "partitionOfUnity": true,
+    "nodalProperty": true
+  },
+  {
+    "element": "TRI3",
+    "partitionOfUnity": true,
+    "nodalProperty": true
+  },
+  {
+    "element": "QUAD4",
+    "partitionOfUnity": true,
+    "nodalProperty": true
+  },
+  {
+    "element": "TET4",
+    "partitionOfUnity": true,
+    "nodalProperty": true
+  },
+  {
+    "element": "HEX8",
+    "partitionOfUnity": true,
+    "nodalProperty": true
+  }
+]

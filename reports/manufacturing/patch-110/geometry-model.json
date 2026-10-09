@@ -1,0 +1,6 @@
+{
+  "status": "SEPARATED_FROM_VISUALIZATION",
+  "geometryId": "GEO_DMU50_BODY",
+  "toleranceMM": 0.001,
+  "representation": "BREP_AND_EXACT_SOLID"
+}

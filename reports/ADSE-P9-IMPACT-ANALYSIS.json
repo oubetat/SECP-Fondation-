@@ -1,0 +1,9 @@
+{
+  "impactAnalysisId": "ADSE-P9-IMPACT-ANALYSIS",
+  "analyzersActive": [
+    "RevisionImpactAnalyzer"
+  ],
+  "invalidationWired": true,
+  "invalidationSequence": "Revision Change -> Dependency Analysis -> Impact Detection -> Invalidation",
+  "verdict": "PASS"
+}

@@ -1,0 +1,85 @@
+{
+  "passed": true,
+  "results": [
+    {
+      "testId": "ADV-111-01",
+      "name": "Orphan Artifact Lineage Rejection",
+      "passed": true,
+      "expectedVerdict": "ORPHAN_PROVENANCE_DETECTED",
+      "actualVerdict": "ORPHAN_PROVENANCE_DETECTED",
+      "evidence": "Unlinked toolpath ORPHAN_TP_99 correctly identified as orphan provenance."
+    },
+    {
+      "testId": "ADV-111-02",
+      "name": "Cryptographic Hash Chain Tamper Detection",
+      "passed": true,
+      "expectedVerdict": "PROVENANCE_INTEGRITY_FAILURE",
+      "actualVerdict": "PROVENANCE_INTEGRITY_FAILURE",
+      "evidence": "Payload modification at sequence 2 flagged PROVENANCE_INTEGRITY_FAILURE."
+    },
+    {
+      "testId": "ADV-111-03",
+      "name": "Downstream Stale Derivative Invalidation",
+      "passed": true,
+      "expectedVerdict": "STALE_DERIVATIVE_FLAGGED",
+      "actualVerdict": "STALE_DERIVATIVE_FLAGGED",
+      "evidence": "Upstream CAD update flagged 11 downstream derivatives as STALE_DERIVATIVE."
+    },
+    {
+      "testId": "ADV-111-04",
+      "name": "Approval Invalidation on Hash Shift",
+      "passed": true,
+      "expectedVerdict": "APPROVAL_INVALIDATED",
+      "actualVerdict": "APPROVAL_INVALIDATED",
+      "evidence": "Modification after approval grant triggered APPROVAL_INVALIDATED."
+    },
+    {
+      "testId": "ADV-111-05",
+      "name": "AI Authorship Status Isolation",
+      "passed": true,
+      "expectedVerdict": "AI_GENERATED",
+      "actualVerdict": "AI_GENERATED",
+      "evidence": "AI-generated CAM strategy created with explicit AI_GENERATED status gating."
+    },
+    {
+      "testId": "ADV-111-06",
+      "name": "Provenance Gap Detection on Partial Chain",
+      "passed": true,
+      "expectedVerdict": "PROVENANCE_GAP",
+      "actualVerdict": "PROVENANCE_GAP",
+      "evidence": "Partial lineage correctly detected 10 critical provenance gaps."
+    },
+    {
+      "testId": "ADV-111-07",
+      "name": "Backward Forensic Lineage Trace",
+      "passed": true,
+      "expectedVerdict": "FULL_TRACE_RESOLVED",
+      "actualVerdict": "FULL_TRACE_RESOLVED",
+      "evidence": "Backward trace resolved 12 lineage steps from Twin State back to Root CAD."
+    },
+    {
+      "testId": "ADV-111-08",
+      "name": "CAM Compatibility Violation Detection",
+      "passed": true,
+      "expectedVerdict": "INCOMPATIBLE",
+      "actualVerdict": "INCOMPATIBLE",
+      "evidence": "StepOver 25mm > Tool Diameter 10mm correctly flagged INCOMPATIBLE."
+    },
+    {
+      "testId": "ADV-111-09",
+      "name": "Retrospective Provenance Disclosure",
+      "passed": true,
+      "expectedVerdict": "RETROSPECTIVE_DISCLOSED",
+      "actualVerdict": "RETROSPECTIVE_DISCLOSED",
+      "evidence": "Audit event recorded with explicit RETROSPECTIVE flag."
+    },
+    {
+      "testId": "ADV-111-10",
+      "name": "Environmental Fingerprint Locking",
+      "passed": true,
+      "expectedVerdict": "FINGERPRINT_LOCKED",
+      "actualVerdict": "FINGERPRINT_LOCKED",
+      "evidence": "Software environment locked with SHA-256 kernel and engine hashes."
+    }
+  ]
+}

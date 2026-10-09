@@ -1,0 +1,66 @@
+{
+  "patch": "PATCH-149",
+  "title": "Solver Scaling Benchmark — HPC Evidence Layer",
+  "timestamp": "2026-08-21T12:45:11.288Z",
+  "summary": {
+    "totalTests": 4,
+    "passedTests": 4,
+    "score": 100,
+    "verdict": "PASS",
+    "qualificationState": "QUALIFIED"
+  },
+  "results": [
+    {
+      "gateId": "149-TEST-01-StrongScaling",
+      "description": "Validate Strong Scaling Speedup and Efficiency calculations",
+      "passed": true,
+      "verdict": "SCALING_MEASURED",
+      "details": "Speedup(4): 3.27, Efficiency(4): 0.82"
+    },
+    {
+      "gateId": "149-TEST-02-CommOverhead",
+      "description": "Measure and record communication vs compute ratio",
+      "passed": true,
+      "verdict": "COMM_PROFILED",
+      "details": "Comm/Compute Ratio: 0.0500"
+    },
+    {
+      "gateId": "149-TEST-03-MemoryScaling",
+      "description": "Audit memory consumption and per-DOF memory efficiency",
+      "passed": true,
+      "verdict": "MEMORY_AUDITED",
+      "details": "Memory per DOF: 0.0048 MB"
+    },
+    {
+      "gateId": "149-TEST-04-Qualification",
+      "description": "Final qualification gate for PATCH-149 — Solver Scaling Benchmark",
+      "passed": true,
+      "verdict": "QUALIFIED_EVIDENCE",
+      "details": "State: QUALIFIED, Checks Passed: 15/16"
+    }
+  ],
+  "qualification": {
+    "qualificationId": "QUAL-149-1787316311287",
+    "timestamp": "2026-08-21T12:45:11.287Z",
+    "state": "QUALIFIED",
+    "checks": {
+      "workloadIdentity": true,
+      "solverIdentity": true,
+      "hardwareIdentity": true,
+      "numericalEquivalence": true,
+      "rawMeasurementIntegrity": true,
+      "strongScalingIntegrity": true,
+      "weakScalingIntegrity": false,
+      "communicationScaling": true,
+      "loadBalance": true,
+      "memoryScaling": true,
+      "iterationStability": true,
+      "preconditionerScaling": true,
+      "regressionDetection": true,
+      "comparabilityContract": true,
+      "provenanceCompleteness": true,
+      "evidenceIntegrity": true
+    },
+    "criticalFailures": []
+  }
+}

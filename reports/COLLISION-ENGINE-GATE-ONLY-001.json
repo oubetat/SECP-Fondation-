@@ -1,0 +1,20 @@
+{
+  "missionId": "COLLISION-ENGINE-FORENSIC-MATURITY-001",
+  "timestamp": "2026-10-01T01:00:00.000Z",
+  "engineCategorization": {
+    "GATE_ONLY_ENGINES": [
+      "src/engine/assembly/clash/ClashDetectionEngine.ts (HardAcceptanceGate032)",
+      "src/engine/manufacturing/collision/CollisionDetector.ts (HardAcceptanceGate106, RoundTripVerifier)",
+      "src/engine/cam/collision/ContinuousCollisionDetector.ts (HardAcceptanceGate259)",
+      "src/engine/kinematics/CollisionEngine.ts (HardAcceptanceGate230)"
+    ],
+    "PRODUCTION_ENGINES": [
+      "src/engine/assembly/AssemblyInterferenceEngine.ts (Called by RobotAssemblyManager/DroneAssemblyManager in EPC)"
+    ],
+    "SHARED_ENGINES": [],
+    "DEAD_OR_ISOLATED_ENGINES": [
+      "src/engine/assembly-intelligence/CollisionDetectionEngine.ts (Hardcoded 30mm sphere mock; uncalled in production UI)",
+      "src/engine/cam/fiveaxis/FiveAxisCollisionEngine.ts (Vertex-only distance; isolated from main CAM toolpath execution)"
+    ]
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "absoluteNormL2": 0,
+  "absoluteNormInf": 0,
+  "relativeResidual": 0,
+  "maxResidualEntry": {
+    "index": 0,
+    "value": 0
+  },
+  "passed": true
+}

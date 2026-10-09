@@ -1,0 +1,73 @@
+{
+  "patch": "PATCH-009",
+  "name": "Canonical Serialization",
+  "timestamp": "2026-08-18T08:10:30.000Z",
+  "modules": [
+    {
+      "file": "src/engine/serialization/CanonicalSerializationTypes.ts",
+      "interfaces": [
+        "CanonicalSerializationResult",
+        "BigIntRepresentation",
+        "CanonicalSerializationValidationResult",
+        "PrimitiveCanonicalValue",
+        "CanonicalNode"
+      ]
+    },
+    {
+      "file": "src/engine/serialization/CanonicalSerializationErrors.ts",
+      "classes": [
+        "CanonicalSerializationError",
+        "CircularReferenceError",
+        "NonFiniteNumberError",
+        "UndefinedInArrayError",
+        "UnsupportedTypeError",
+        "PrototypePollutionAttemptError",
+        "InvalidCanonicalStructureError"
+      ]
+    },
+    {
+      "file": "src/engine/serialization/CanonicalNormalizer.ts",
+      "policies": {
+        "unicode": "NFC",
+        "casePreserved": true,
+        "keyOrdering": "lexicographical_codepoint",
+        "arrayOrdering": "preserved",
+        "negativeZeroNormalized": true,
+        "nonFiniteRejected": true,
+        "bigIntRepresentation": "typed_marker",
+        "dateNormalization": "iso8601_utc",
+        "undefinedInObject": "omit",
+        "undefinedInArray": "reject",
+        "unsupportedTypes": "reject",
+        "cycleDetection": "ancestor_set",
+        "prototypeSafety": "blocked"
+      }
+    },
+    {
+      "file": "src/engine/serialization/CanonicalSerializationValidator.ts",
+      "validations": [
+        "json_syntax",
+        "no_unnecessary_whitespace",
+        "strict_key_ordering",
+        "nfc_normalization"
+      ]
+    },
+    {
+      "file": "src/engine/serialization/CanonicalSerializer.ts",
+      "methods": [
+        "serialize",
+        "normalize",
+        "validate",
+        "byteLength"
+      ],
+      "schemaVersion": "1.0.0",
+      "byteEncoder": "TextEncoder",
+      "hashingProhibited": true,
+      "timestampGenerationProhibited": true
+    },
+    {
+      "file": "src/engine/serialization/CanonicalSerializationGate.ts",
+      "checksCount": 15
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+{
+  "programmedRPM": 10000,
+  "maxMachineRPM": 15000,
+  "status": "WITHIN_LIMITS"
+}

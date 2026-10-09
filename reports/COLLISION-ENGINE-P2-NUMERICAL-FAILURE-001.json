@@ -1,0 +1,9 @@
+{
+  "missionId": "COLLISION-ENGINE-P2-FAIL-CLOSED-HARDENING-001",
+  "artifactType": "NUMERICAL_FAILURE_VERIFICATION",
+  "timestamp": "2026-10-01T02:08:00.000Z",
+  "findings": {
+    "arithmeticOverflowUnderflow": "Arithmetical non-convergence triggers NUMERICAL_FAILURE.",
+    "provenSafeRequirements": "NUMERICAL_FAILURE maps to isFailed: true and provenSafe: false, ensuring arithmetic anomalies fail closed."
+  }
+}

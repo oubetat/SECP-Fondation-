@@ -1,0 +1,54 @@
+{
+  "reportId": "SECP-GAP-03-CANONICAL-INVALIDATION",
+  "timestamp": "2026-09-28T03:39:30Z",
+  "status": "PROVEN_AND_FORENSICALLY_CLOSED",
+  "engine": "SECP Core Revision & ADSE-P8 Controls Engine",
+  "evidenceChain": {
+    "step1_canonicalRevisionR1": {
+      "authority": "RevisionEngine.createRevision",
+      "status": "PROVEN"
+    },
+    "step2_executionE1": {
+      "authority": "CoreExecutionAuthority.execute",
+      "status": "PROVEN"
+    },
+    "step3_identityIsolation": {
+      "authority": "CoreExecutionAuthority.computeExecutionIdentity",
+      "status": "PROVEN"
+    },
+    "step4_canonicalRevisionR2Mutation": {
+      "authority": "RevisionEngine.checkoutRevision",
+      "status": "PROVEN"
+    },
+    "step5_impactAnalysis": {
+      "authority": "RevisionImpactAnalyzer.analyzeImpact",
+      "status": "PROVEN"
+    },
+    "step6_p8ResultInvalidation": {
+      "authority": "ADSEP8ControlEngine.evaluateCanonicalImpact",
+      "status": "PROVEN"
+    },
+    "step7_staleTruthRejection": {
+      "authority": "GenericExecutionRegistry.verifyResultBinding",
+      "status": "PROVEN",
+      "failureReason": "REVISION_MISMATCH"
+    },
+    "step8_persistenceAndReconstruction": {
+      "authority": "ControlPersistenceEngine.createSnapshot & restoreFromSnapshot",
+      "status": "PROVEN",
+      "reconstructedStatus": "INVALIDATED"
+    },
+    "step9_executionE2": {
+      "authority": "CoreExecutionAuthority.execute",
+      "status": "PROVEN",
+      "executionIdDifferent": true,
+      "revisionHashMatchesR2": true
+    }
+  },
+  "testExecutionSummary": {
+    "canonicalInvalidationSuite": { "file": "tests/adse/p8/ADSEP8CanonicalRevisionInvalidation.test.ts", "passed": 3, "total": 3 },
+    "gapClosureSuite": { "file": "tests/adse/p8/ADSEP8GapClosure.test.ts", "passed": 4, "total": 4 },
+    "adversarialBattery": { "file": "tests/adse/p8/ADSEP8AdversarialBattery.test.ts", "passed": 8, "total": 8 },
+    "fullAdseSuite": { "files": 58, "passed": 276, "total": 276 }
+  }
+}

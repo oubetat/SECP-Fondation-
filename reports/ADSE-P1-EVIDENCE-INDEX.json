@@ -1,0 +1,23 @@
+{
+  "title": "ADSE-P1 Evidence Index",
+  "auditDate": "2026-09-27T04:42:00Z",
+  "subsystem": "ADSE Requirements & System Model Layer",
+  "authority": "SECP Core Revision & Evidence Authority",
+  "evidenceIndex": [
+    {
+      "evidenceType": "REQUIREMENT_REVISION_BINDING",
+      "status": "VERIFIED",
+      "assertion": "Requirement creation forces SECP Core Revision entry"
+    },
+    {
+      "evidenceType": "TRACEABILITY_LINEAGE_INTEGRITY",
+      "status": "VERIFIED",
+      "assertion": "Traceability links survive system configuration changes"
+    },
+    {
+      "evidenceType": "AI_ADVISORY_ENFORCEMENT",
+      "status": "VERIFIED",
+      "assertion": "AI restricted to proposal role; unauthorized write attempts blocked"
+    }
+  ]
+}
