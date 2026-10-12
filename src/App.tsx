@@ -207,6 +207,7 @@ import { MassiveAssemblyBenchmarkPanel } from './components/benchmark/MassiveAss
 import { CFDBenchmarkPanel } from './components/benchmark/CFDBenchmarkPanel';
 import { NonlinearFEMBenchmarkPanel } from './components/benchmark/NonlinearFEMBenchmarkPanel';
 import { BooleanAdversarialPanel } from './components/benchmark/BooleanAdversarialPanel';
+import { TurbulenceBenchmarkPanel } from './components/benchmark/TurbulenceBenchmarkPanel';
 import { VerificationPortal } from './components/verification/VerificationPortal';
 import { MonorepoExplorer } from './components/MonorepoExplorer';
 import { SketchConvergenceMatrix } from './components/SketchConvergenceMatrix';
@@ -604,6 +605,7 @@ export default function App() {
         { id: 'true_5axis_benchmark', name: '5-Axis CAM Collision Benchmark', icon: Compass, description: 'Extreme kinematic toolpath collision stress test battery', component: <True5AxisCAMPanel /> },
         { id: 'massive_assembly_benchmark', name: 'Massive Assembly Benchmark (100K Parts)', icon: Grid, description: 'Memory consumption and frame rate performance under extreme assembly loads', component: <MassiveAssemblyBenchmarkPanel /> },
         { id: 'cfd_benchmark', name: 'CFD Fluid Flow Analytical Benchmark', icon: Wind, description: 'Poiseuille, Couette, Lid-Driven Cavity & NACA 0012 validation benchmarks', component: <CFDBenchmarkPanel /> },
+        { id: 'turbulence_benchmark', name: 'CFD Turbulence Framework & Gate 176', icon: Flame, description: 'PATCH-176 Independent Turbulence Benchmark Closure & Hard Acceptance Gate', component: <TurbulenceBenchmarkPanel /> },
         { id: 'fem_benchmark', name: 'Nonlinear FEM Standard Benchmark', icon: Activity, description: 'Cantilever beam, spherical shell snap-through & plastic necking benchmarks', component: <NonlinearFEMBenchmarkPanel /> },
         { id: 'boolean_adversarial', name: 'B-Rep Boolean Adversarial Suite', icon: Box, description: 'Near-tangent, coplanar, vertex-on-edge & micro-feature boolean torture tests', component: <BooleanAdversarialPanel /> },
         { id: 'verification_portal', name: 'Verification & Independent Audit Portal', icon: CheckCircle2, description: 'Third-party auditor package export and verification portal', component: <VerificationPortal /> }

@@ -50,7 +50,7 @@ describe('PATCH-038D — Canonical UI Assembly Intent Mutation', () => {
 
   it('TEST 1: UI Intent -> AssemblyIntentMutator -> canonicalDocument.assembly updated without direct runtime mutation', () => {
     const doc = createBaseAssemblyDocument();
-    expect(doc.assembly?.mates.length).toBe(0);
+    expect(doc.assembly?.mates?.length).toBe(0);
 
     const action: AssemblyIntentAction = {
       type: 'ADD_MATE',
@@ -71,12 +71,12 @@ describe('PATCH-038D — Canonical UI Assembly Intent Mutation', () => {
     expect(updatedDoc.revision).toBe(2);
 
     // 2. Old document untouched (SOT purity)
-    expect(doc.assembly?.mates.length).toBe(0);
+    expect(doc.assembly?.mates?.length).toBe(0);
 
     // 3. New document contains updated mate intent
-    expect(updatedDoc.assembly?.mates.length).toBe(1);
-    expect(updatedDoc.assembly?.mates[0].mateId).toBe('mate-slider-coincident');
-    expect(updatedDoc.assembly?.mates[0].type).toBe('COINCIDENT');
+    expect(updatedDoc.assembly?.mates?.length).toBe(1);
+    expect(updatedDoc.assembly?.mates?.[0]?.mateId).toBe('mate-slider-coincident');
+    expect(updatedDoc.assembly?.mates?.[0]?.type).toBe('COINCIDENT');
   });
 
   it('TEST 2: DocumentEvaluator re-evaluates updated canonicalDocument and produces updated evaluatedAssembly', () => {
@@ -197,7 +197,7 @@ describe('PATCH-038D — Canonical UI Assembly Intent Mutation', () => {
         instanceBId: 'inst-base'
       }
     });
-    expect(doc.assembly?.mates.length).toBe(1);
+    expect(doc.assembly?.mates?.length).toBe(1);
 
     // 4. UPDATE_MATE
     doc = AssemblyIntentMutator.apply(doc, {
@@ -207,7 +207,7 @@ describe('PATCH-038D — Canonical UI Assembly Intent Mutation', () => {
         offset: 5
       }
     });
-    const mate = doc.assembly?.mates.find(m => m.mateId === 'mate-concentric-pin');
+    const mate = doc.assembly?.mates?.find(m => m.mateId === 'mate-concentric-pin');
     expect(mate?.offset).toBe(5);
 
     // 5. SUPPRESS_INSTANCE
@@ -224,7 +224,7 @@ describe('PATCH-038D — Canonical UI Assembly Intent Mutation', () => {
       type: 'REMOVE_MATE',
       mateId: 'mate-concentric-pin'
     });
-    expect(doc.assembly?.mates.length).toBe(0);
+    expect(doc.assembly?.mates?.length).toBe(0);
 
     // 7. REMOVE_INSTANCE
     doc = AssemblyIntentMutator.apply(doc, {
@@ -248,7 +248,7 @@ describe('PATCH-038D — Canonical UI Assembly Intent Mutation', () => {
         instanceBId: 'inst-base'
       }
     });
-    expect(doc.assembly?.mates.length).toBe(1);
+    expect(doc.assembly?.mates?.length).toBe(1);
 
     // Remove inst-slider
     doc = AssemblyIntentMutator.apply(doc, {
@@ -258,8 +258,8 @@ describe('PATCH-038D — Canonical UI Assembly Intent Mutation', () => {
 
     // The referencing mate must be cleanly removed to avoid dangling references
     expect(doc.assembly?.instances.length).toBe(1);
-    expect(doc.assembly?.mates.length).toBe(0);
-    expect(doc.assembly?.mates.some(m => m.instanceAId === 'inst-slider' || m.instanceBId === 'inst-slider')).toBe(false);
+    expect(doc.assembly?.mates?.length).toBe(0);
+    expect(doc.assembly?.mates?.some(m => m.instanceAId === 'inst-slider' || m.instanceBId === 'inst-slider')).toBe(false);
   });
 
   it('TEST 6: Unit Contract compliance boundary verification', () => {

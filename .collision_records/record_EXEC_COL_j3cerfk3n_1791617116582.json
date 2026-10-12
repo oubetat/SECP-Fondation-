@@ -1,0 +1,263 @@
+{
+  "recordId": "REC_EXEC_COL_j3cerfk3n_1791617116582",
+  "executionId": "EXEC_COL_j3cerfk3n_1791617116582",
+  "resultId": "RES_EXEC_COL_j3cerfk3n_1791617116582",
+  "evidenceId": "EVID_EXEC_COL_j3cerfk3n_1791617116582",
+  "eventId": "EVT_EXEC_COL_j3cerfk3n_1791617116582_2",
+  "input": {
+    "domain": "CAM_MULTI_AXIS",
+    "coordinateFrame": "WCS",
+    "units": "MILLIMETERS",
+    "toleranceProfile": {
+      "linearToleranceMm": 0.01,
+      "angularToleranceDeg": 0.1,
+      "clearanceWarningMarginMm": 2,
+      "safeClearanceMarginMm": 1
+    },
+    "canonicalGeometry": {
+      "documentId": "DOC_P7_CAD_001",
+      "revisionId": "REV_v1",
+      "geometryId": "GEOM_P7_01",
+      "geometryRevision": 1,
+      "snapshotId": "SNAP_P7_01_v1",
+      "topologyIdentity": "TOPOLOGY_P7_01",
+      "geometrySource": "CAD",
+      "provenance": "P7_CAD_TEST",
+      "coordinateFrame": "WCS",
+      "units": "MILLIMETERS",
+      "bounds": {
+        "min": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "max": {
+          "x": 10,
+          "y": 10,
+          "z": 10
+        }
+      },
+      "geometryHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tessellatedTriangles": [
+        {
+          "a": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "b": {
+            "x": 10,
+            "y": 10,
+            "z": 0
+          },
+          "c": {
+            "x": 10,
+            "y": 0,
+            "z": 0
+          }
+        },
+        {
+          "a": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "b": {
+            "x": 0,
+            "y": 10,
+            "z": 0
+          },
+          "c": {
+            "x": 10,
+            "y": 10,
+            "z": 0
+          }
+        }
+      ]
+    },
+    "toolAssembly": {
+      "cutterDiameterMm": 10,
+      "fluteLengthMm": 30,
+      "stickoutMm": 50,
+      "shankDiameterMm": 10
+    },
+    "motionSegment": {
+      "startTcp": {
+        "x": 100,
+        "y": 100,
+        "z": 100
+      },
+      "startOrientation": {
+        "x": 0,
+        "y": 0,
+        "z": 1
+      },
+      "endTcp": {
+        "x": 100,
+        "y": 100,
+        "z": 50
+      },
+      "endOrientation": {
+        "x": 0,
+        "y": 0,
+        "z": 1
+      },
+      "motionType": "RAPID"
+    },
+    "geometry": {
+      "documentId": "DOC_P7_CAD_001",
+      "revisionId": "REV_v1",
+      "geometryId": "GEOM_P7_01",
+      "geometryRevision": 1,
+      "snapshotId": "SNAP_P7_01_v1",
+      "topologyIdentity": "TOPOLOGY_P7_01",
+      "geometrySource": "CAD",
+      "provenance": "P7_CAD_TEST",
+      "coordinateFrame": "WCS",
+      "units": "MILLIMETERS",
+      "bounds": {
+        "min": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "max": {
+          "x": 10,
+          "y": 10,
+          "z": 10
+        }
+      },
+      "geometryHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tessellatedTriangles": [
+        {
+          "a": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "b": {
+            "x": 10,
+            "y": 10,
+            "z": 0
+          },
+          "c": {
+            "x": 10,
+            "y": 0,
+            "z": 0
+          }
+        },
+        {
+          "a": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "b": {
+            "x": 0,
+            "y": 10,
+            "z": 0
+          },
+          "c": {
+            "x": 10,
+            "y": 10,
+            "z": 0
+          }
+        }
+      ]
+    }
+  },
+  "result": {
+    "executionId": "EXEC_COL_j3cerfk3n_1791617116582",
+    "timestampIso": "2026-10-10T07:25:16.582Z",
+    "status": "ANALYSIS_FAILED",
+    "severity": "FATAL_FAILURE",
+    "exactness": "UNSUPPORTED",
+    "metrics": {
+      "minClearanceMm": 0,
+      "maxPenetrationDepthMm": 0,
+      "volumetricInterferenceMm3": 0
+    },
+    "contactManifold": [],
+    "temporalInfo": {
+      "timeOfImpactNormalized": null,
+      "criticalSubStepIndex": null
+    },
+    "failureState": {
+      "isFailed": true,
+      "failureReason": "Geometry Hash Mismatch: Stale or modified geometry detected. Expected STABLE_EMPTY_HASH but received e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "provenance": {
+      "cadDocumentRevisionId": "REV_v1",
+      "geometryHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "algorithmVersion": "SYSTEM_VALIDATOR@1.0.0"
+    },
+    "diagnostics": [],
+    "provenSafe": false
+  },
+  "evidence": {
+    "evidenceId": "EVID_EXEC_COL_j3cerfk3n_1791617116582",
+    "resultId": "RES_EXEC_COL_j3cerfk3n_1791617116582",
+    "executionId": "EXEC_COL_j3cerfk3n_1791617116582",
+    "inputHash": "a8e59234a8e59234a8e59234a8e59234a8e59234a8e59234a8e59234a8e59234",
+    "resultHash": "7ddfd39e7ddfd39e7ddfd39e7ddfd39e7ddfd39e7ddfd39e7ddfd39e7ddfd39e",
+    "geometryHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "snapshotId": "SNAP_P7_01_v1",
+    "revisionBinding": {
+      "documentId": "DOC_P7_CAD_001",
+      "revisionId": "REV_v1",
+      "geometryId": "GEOM_P7_01",
+      "geometryRevision": 1,
+      "snapshotId": "SNAP_P7_01_v1",
+      "topologyIdentity": "TOPOLOGY_P7_01",
+      "geometryHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "transformRevision": "WCS",
+      "motionRevision": "MOTION_RAPID"
+    },
+    "providerId": "EXACT_NARROW_PHASE",
+    "algorithmVersion": "SYSTEM_VALIDATOR@1.0.0",
+    "exactness": "UNSUPPORTED",
+    "status": "ANALYSIS_FAILED",
+    "provenSafe": false,
+    "timestampIso": "2026-10-10T07:25:16.582Z",
+    "evidenceHash": "f436b189f436b189f436b189f436b189f436b189f436b189f436b189f436b189"
+  },
+  "event": {
+    "eventId": "EVT_EXEC_COL_j3cerfk3n_1791617116582_2",
+    "eventType": "COLLISION_PERSISTED",
+    "executionId": "EXEC_COL_j3cerfk3n_1791617116582",
+    "resultId": "RES_EXEC_COL_j3cerfk3n_1791617116582",
+    "evidenceId": "EVID_EXEC_COL_j3cerfk3n_1791617116582",
+    "inputHash": "a8e59234a8e59234a8e59234a8e59234a8e59234a8e59234a8e59234a8e59234",
+    "resultHash": "7ddfd39e7ddfd39e7ddfd39e7ddfd39e7ddfd39e7ddfd39e7ddfd39e7ddfd39e",
+    "evidenceHash": "f436b189f436b189f436b189f436b189f436b189f436b189f436b189f436b189",
+    "revisionBinding": {
+      "documentId": "DOC_P7_CAD_001",
+      "revisionId": "REV_v1",
+      "geometryId": "GEOM_P7_01",
+      "geometryRevision": 1,
+      "snapshotId": "SNAP_P7_01_v1",
+      "topologyIdentity": "TOPOLOGY_P7_01",
+      "geometryHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "transformRevision": "WCS",
+      "motionRevision": "MOTION_RAPID"
+    },
+    "timestampIso": "2026-10-10T07:25:16.582Z",
+    "providerId": "EXACT_NARROW_PHASE",
+    "algorithmVersion": "SYSTEM_VALIDATOR@1.0.0",
+    "previousEventId": "EVT_EXEC_COL_ia1pfm5fp_1791617116579_1",
+    "eventHash": "e74eac11e74eac11e74eac11e74eac11e74eac11e74eac11e74eac11e74eac11"
+  },
+  "revisionBinding": {
+    "documentId": "DOC_P7_CAD_001",
+    "revisionId": "REV_v1",
+    "geometryId": "GEOM_P7_01",
+    "geometryRevision": 1,
+    "snapshotId": "SNAP_P7_01_v1",
+    "topologyIdentity": "TOPOLOGY_P7_01",
+    "geometryHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "transformRevision": "WCS",
+    "motionRevision": "MOTION_RAPID"
+  },
+  "persistedAtIso": "2026-10-10T07:25:16.582Z",
+  "canonicalHash": "85654f8085654f8085654f8085654f8085654f8085654f8085654f8085654f80"
+}

@@ -36,6 +36,7 @@ function applyUIActionToDocument(doc: EngineeringDocument, sketchEnts: any[], de
 
   // Create canonical feature definitions
   const sketchFeat = {
+    id: 'F_SKETCH_1',
     featureId: 'F_SKETCH_1',
     type: 'SKETCH',
     name: 'UI_Sketch',
@@ -52,6 +53,7 @@ function applyUIActionToDocument(doc: EngineeringDocument, sketchEnts: any[], de
   };
 
   const extrudeFeat = {
+    id: 'F_EXTRUDE_1',
     featureId: 'F_EXTRUDE_1',
     parentId: 'F_SKETCH_1',
     dependencyIds: ['F_SKETCH_1'],
@@ -69,7 +71,7 @@ function applyUIActionToDocument(doc: EngineeringDocument, sketchEnts: any[], de
   };
 
   // Push to document state
-  doc.features = [sketchFeat, extrudeFeat];
+  doc.features = [sketchFeat as any, extrudeFeat as any];
   
   // Evaluate the canonical document
   return DocumentEvaluator.evaluate(doc);
@@ -99,7 +101,7 @@ describe('PATCH-034-UI-INTEGRATION-001 — Genuine UI Parameter Injection to Doc
     const result20 = applyUIActionToDocument(doc20, uiSketchEntities, 20);
     
     expect(result20.success).toBe(true);
-    expect(result20.document.features.length).toBe(2);
+    expect(result20.document?.features?.length).toBe(2);
     expect(result20.evaluatedShape).toBeDefined();
 
     // 4. Measure volume and hash of Document State 20

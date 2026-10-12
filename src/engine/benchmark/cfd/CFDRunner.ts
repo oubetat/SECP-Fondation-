@@ -201,6 +201,7 @@ export class CFDRunner {
     } else {
       actualVerdict = 'PASS';
     }
+    console.log(`[CFD-VERDICT-DEBUG] ${caseDef.id}: actualVerdict=${actualVerdict}, sol=${!!solution}, falseConv=${convergenceDiag.isFalseConvergenceDetected}, errTol=${errorNorm?.withinTolerance}, isDet=${detResult.isDeterministic}`);
 
     // Hashes & Signatures using real pureSha256
     const meshPayload = `${mesh.meshId}:${mesh.cells.length}:${mesh.faces.length}`;

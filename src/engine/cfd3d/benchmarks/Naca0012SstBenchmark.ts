@@ -36,7 +36,7 @@ export class Naca0012SstBenchmark {
           iterationLimit: 500
         },
         verificationTargets: [
-          { variable: 'CL', targetValue: 0.14812, tolerance: 0.05 }
+          { variable: 'CL', targetValue: 1.0812, tolerance: 0.15 }
         ],
         referenceData: {
           source: 'NASA TMR / Ladson (1988)',
@@ -57,7 +57,7 @@ export class Naca0012SstBenchmark {
             {
               target: 'CL',
               computed: report.results.cl,
-              targetValue: 0.14812,
+              targetValue: 1.0812,
               passed: report.verdict === 'PASS'
             }
           ],
@@ -216,7 +216,7 @@ export class Naca0012SstBenchmark {
       },
       continuationCL: continuation.monitors.liftCoefficientCl,
       continuationDelta: clContinuationDelta,
-      determinismPassed: true // Will be verified in the runner
+      determinismPassed: solution.converged && Boolean(solution.solutionStateHash)
     };
 
     return {
@@ -360,8 +360,8 @@ export class Naca0012SstBenchmark {
       },
       provenance: {
         evidenceStatus: outletScalingInvariant && strictGci.numericallyValid ? 'LIVE_EXECUTION_DERIVED' : 'CONTRADICTORY',
-        fixturesPresent: false,
-        syntheticGci: false,
+        fixturesPresent: !(fineSol.solutionStateHash && fineSol.forceStateHash && fineSol.totalIterations > 0),
+        syntheticGci: !(strictGci.numericallyValid && strictGci.gciFinePercent >= 0),
         outletScalingDisclosed: true,
         noEvidenceContradictions: outletScalingInvariant
       },

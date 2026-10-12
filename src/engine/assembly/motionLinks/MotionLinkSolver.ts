@@ -164,6 +164,23 @@ export class MotionLinkSolver {
         if (link.limits.maxFollowerVelocity !== undefined && Math.abs(followerVel) > link.limits.maxFollowerVelocity) {
           link.state = 'LIMIT_VIOLATION';
           link.diagnosticMessage = `VELOCITY LIMIT VIOLATION: Velocity ${Math.abs(followerVel).toFixed(2)} exceeds max ${link.limits.maxFollowerVelocity}`;
+          globalStatus = 'LIMIT_EXCEEDED';
+          globalDiagnostic = link.diagnosticMessage;
+        }
+
+        if (link.limits.maxFollowerAcceleration !== undefined && Math.abs(followerAcc) > link.limits.maxFollowerAcceleration) {
+          link.state = 'LIMIT_VIOLATION';
+          link.diagnosticMessage = `ACCELERATION LIMIT VIOLATION: Acceleration ${Math.abs(followerAcc).toFixed(2)} exceeds max ${link.limits.maxFollowerAcceleration}`;
+          globalStatus = 'LIMIT_EXCEEDED';
+          globalDiagnostic = link.diagnosticMessage;
+        }
+
+        const followerJerk = evalResult.jerk !== undefined ? evalResult.jerk : (followerJoint ? (followerAcc - followerJoint.currentAcceleration) : 0);
+        if (link.limits.maxFollowerJerk !== undefined && Math.abs(followerJerk) > link.limits.maxFollowerJerk) {
+          link.state = 'LIMIT_VIOLATION';
+          link.diagnosticMessage = `JERK LIMIT VIOLATION: Jerk ${Math.abs(followerJerk).toFixed(2)} exceeds max ${link.limits.maxFollowerJerk}`;
+          globalStatus = 'LIMIT_EXCEEDED';
+          globalDiagnostic = link.diagnosticMessage;
         }
       }
 

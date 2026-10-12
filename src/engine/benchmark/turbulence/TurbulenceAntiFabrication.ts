@@ -35,7 +35,13 @@ export class TurbulenceAntiFabricationAuditor {
       }
     }
 
-    const auditVerdict: AntiFabricationAuditRecord['auditVerdict'] = flaggedItems.length > 0 ? 'PASS' : 'PASS'; // Anti-fabrication audit passes if the system correctly identifies and flags these limitations rather than hiding them
+    const hasFabrication =
+      hardcodedMetricsDetected ||
+      fabricatedReferenceConstantsFound ||
+      fakeConvergenceResidualsFound ||
+      syntheticTimeoutSimulationFound;
+
+    const auditVerdict: AntiFabricationAuditRecord['auditVerdict'] = hasFabrication ? 'FAIL' : 'PASS';
 
     return {
       hardcodedMetricsDetected,

@@ -41,6 +41,7 @@ describe('PATCH-039B: Hierarchical Assembly Constraints & Topological Entity Bin
       evaluatedShape: {
         id: 'SHAPE_VALVE',
         shapeType: TopoShapeEnum.SOLID,
+        innerShells: [],
         outerShell: {
           id: 'SHELL_VALVE',
           shapeType: TopoShapeEnum.SHELL,

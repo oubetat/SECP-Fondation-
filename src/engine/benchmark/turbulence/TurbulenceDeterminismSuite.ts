@@ -9,6 +9,7 @@ import { DeterminismResult } from './types';
 import { Fvm3DMeshGenerator } from '../../cfd3d/Fvm3DMeshGenerator';
 import { Fvm3DNavierStokesSolver } from '../../cfd3d/Fvm3DNavierStokesSolver';
 import { BoundaryConditionSpec3D, FluidProperties3D, SolverConfig3D } from '../../cfd3d/Fvm3DTypes';
+import { pureSha256 } from '../../../polyfills/crypto';
 
 export class TurbulenceDeterminismSuite {
   public static verifyDeterminism(): DeterminismResult {
@@ -46,12 +47,9 @@ export class TurbulenceDeterminismSuite {
         dp: sol.monitors.pressureDropPa.toFixed(8)
       });
 
-      // Simple deterministic hash calculation
-      let hashNum = 0;
-      for (let i = 0; i < payload.length; i++) {
-        hashNum = (hashNum * 31 + payload.charCodeAt(i)) & 0xffffffff;
-      }
-      const hashStr = `TURB-HASH-${Math.abs(hashNum).toString(16).padStart(8, '0')}`;
+      // Cryptographic deterministic SHA-256 hash calculation over simulation outputs
+      const sha256Hex = pureSha256(payload);
+      const hashStr = `TURB-SHA256-${sha256Hex.slice(0, 16).toUpperCase()}`;
       hashList.push(hashStr);
     }
 

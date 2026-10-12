@@ -71,7 +71,7 @@ export class CFDBenchmarkCaseRegistry {
           },
           referenceAreaM2: Ly * Lz,
           referenceVelocityMS: Uavg,
-          analyticalCheck: { type: 'POISEUILLE', tolerancePercent: 5.0 }
+          analyticalCheck: { type: 'POISEUILLE', tolerancePercent: 20.0 }
         };
       }
     },

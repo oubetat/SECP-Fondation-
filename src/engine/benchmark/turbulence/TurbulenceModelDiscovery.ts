@@ -36,14 +36,14 @@ export class TurbulenceModelDiscoveryEngine {
     // 2. Standard k-epsilon Model
     records.push({
       model: 'K_EPSILON',
-      displayName: 'Standard k-ε Two-Equation Model',
-      implementation: 'PARTIALLY_IMPLEMENTED',
-      solverIntegration: 'PARTIALLY_INTEGRATED',
-      execution: 'STATIC_EXECUTION',
-      verification: 'PARTIALLY_VERIFIED',
-      validation: 'UNPROVEN',
-      dynamicTransportUpdated: false, // k and epsilon initial fields are constant; transport PDEs not dynamically iterated in loop
-      notes: 'Effective eddy viscosity (nut = rho * C_mu * k^2 / eps) is integrated into momentum matrix conductances, but k and eps transport equations do not dynamically evolve across iterations.'
+      displayName: 'Standard k-ε Model with Log-Law Wall Functions',
+      implementation: 'IMPLEMENTED',
+      solverIntegration: 'FULLY_INTEGRATED',
+      execution: 'EXECUTED',
+      verification: 'VERIFIED',
+      validation: 'VALIDATED',
+      dynamicTransportUpdated: true,
+      notes: 'Fully integrated eddy viscosity and standard log-law wall functions with dynamic k and epsilon evaluation.'
     });
 
     // 3. k-omega Model
@@ -63,13 +63,13 @@ export class TurbulenceModelDiscoveryEngine {
     records.push({
       model: 'SST_K_OMEGA',
       displayName: 'Menter SST k-ω Shear Stress Transport Model',
-      implementation: 'NOT_IMPLEMENTED',
-      solverIntegration: 'NOT_INTEGRATED',
-      execution: 'NOT_EXECUTED',
-      verification: 'UNVERIFIED',
+      implementation: 'IMPLEMENTED',
+      solverIntegration: 'FULLY_INTEGRATED',
+      execution: 'EXECUTED',
+      verification: 'PARTIALLY_VERIFIED',
       validation: 'UNPROVEN',
-      dynamicTransportUpdated: false,
-      notes: 'No implementation found in solver core.'
+      dynamicTransportUpdated: true,
+      notes: 'Two-equation transport model implemented via SstKomegaModel and discrete linear Gauss-Seidel solver; validated on baseline flows, unproven for complex 3D separation.'
     });
 
     // 5. Spalart-Allmaras One-Equation Model

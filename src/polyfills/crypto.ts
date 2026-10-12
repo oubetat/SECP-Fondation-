@@ -15,7 +15,7 @@ function sha256(ascii: string | Uint8Array): Uint8Array {
   let result = '';
 
   const words: number[] = [];
-  const asciiBitLength = typeof ascii === 'string' ? ascii[lengthProperty] * 8 : ascii.length * 8;
+  const asciiBitLength = ascii.length * 8;
 
   // Initial hash value: first 32 bits of fractional parts of square roots of first 8 primes
   const hash = [

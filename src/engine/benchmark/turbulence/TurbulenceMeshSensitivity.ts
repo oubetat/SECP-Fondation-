@@ -47,12 +47,15 @@ export class TurbulenceMeshSensitivityEngine {
         for (const n of sol.turbulence.nut) if (n > maxNut) maxNut = n;
       }
 
+      const totalWallArea = sol.mesh.faces.filter(f => f.boundaryType === 'WALL').reduce((sum, f) => sum + f.area, 0);
+      const tauW = (sol.monitors.viscousDragForceN || sol.monitors.dragForceN) / Math.max(totalWallArea, 1e-10);
+
       return {
         meshLevel: level,
         cellCount: sol.mesh.cells.length,
         maxVelocityMS: maxU,
         pressureDropPa: sol.monitors.pressureDropPa,
-        wallShearPa: sol.monitors.viscousDragForceN,
+        wallShearPa: tauW,
         maxNutPaS: maxNut,
         continuityResidual: sol.finalContinuityResidual,
         massErrorPercent: sol.globalMassImbalanceNorm * 100

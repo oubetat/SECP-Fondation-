@@ -75,7 +75,7 @@ export class TurbulenceCaseRegistry {
         wallTurbulenceIntensity: 5.0
       },
       solverConfig: {
-        maxIterations: 30,
+        maxIterations: 90,
         continuityTol: 1e-4,
         momentumTol: 1e-4,
         underRelaxationVelocity: 0.7,
@@ -89,7 +89,7 @@ export class TurbulenceCaseRegistry {
     });
 
     // Case B: Fully Developed Pipe Flow (Re_D = 40,000)
-    const pipeMesh = Fvm3DMeshGenerator.generateBoxMesh(0.5, 0.02, 0.02, 15, 5, 5);
+    const pipeMesh = Fvm3DMeshGenerator.generateBoxMesh(0.3, 0.02, 0.02, 12, 4, 4);
     const waterFluid: FluidProperties3D = { densityKgM3: 1000.0, viscosityPaS: 0.001 };
     const dhPipe = 0.02; // Hydraulic diameter = 4A/P = 0.02m
     const rePipe = (1000.0 * 2.0 * dhPipe) / 0.001; // Re = 40,000.0
@@ -107,7 +107,7 @@ export class TurbulenceCaseRegistry {
         wallTurbulenceIntensity: 5.0
       },
       solverConfig: {
-        maxIterations: 30,
+        maxIterations: 120,
         continuityTol: 1e-4,
         momentumTol: 1e-4,
         underRelaxationVelocity: 0.7,
@@ -138,7 +138,7 @@ export class TurbulenceCaseRegistry {
         wallTurbulenceIntensity: 5.0
       },
       solverConfig: {
-        maxIterations: 30,
+        maxIterations: 65,
         continuityTol: 1e-4,
         momentumTol: 1e-4,
         underRelaxationVelocity: 0.7,
@@ -165,7 +165,7 @@ export class TurbulenceCaseRegistry {
         wallTurbulenceIntensity: 5.0
       },
       solverConfig: {
-        maxIterations: 30,
+        maxIterations: 55,
         continuityTol: 1e-4,
         momentumTol: 1e-4,
         underRelaxationVelocity: 0.7,

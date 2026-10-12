@@ -11,7 +11,7 @@ describe('PATCH-037 — Assembly SOT Integration Audit', () => {
     expect(doc.type).toBe('ASSEMBLY');
     expect(doc.assembly).toBeDefined();
     expect(doc.assembly?.instances.length).toBeGreaterThan(0);
-    expect(doc.assembly?.mates.length).toBeGreaterThan(0);
+    expect(doc.assembly?.mates?.length).toBeGreaterThan(0);
   });
 
   it('should verify that DocumentEvaluator successfully evaluates an assembly document', () => {
@@ -21,7 +21,7 @@ describe('PATCH-037 — Assembly SOT Integration Audit', () => {
     expect(result.success).toBe(true);
     expect(result.evaluatedAssembly).toBeDefined();
     expect(result.evaluatedAssembly?.components.length).toBe(doc.assembly?.instances.length);
-    expect(result.evaluatedAssembly?.mates.length).toBe(doc.assembly?.mates.length);
+    expect(result.evaluatedAssembly?.mates.length).toBe(doc.assembly?.mates?.length);
   });
 
   it('should verify that assembly component objects are derived from the SOT instances', () => {

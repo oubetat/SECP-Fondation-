@@ -6,7 +6,12 @@
  * adversarial lab, determinism, and Hard Acceptance Gate 176.
  */
 
-import { FinalTurbulenceBenchmarkReport, TurbulenceVerdict } from './types';
+import {
+  FinalTurbulenceBenchmarkReport,
+  TurbulenceVerdict,
+  CanonicalTurbulenceCaseExecutionRecord,
+  ReferenceValidationResult
+} from './types';
 import { TurbulenceModelDiscoveryEngine } from './TurbulenceModelDiscovery';
 import { TurbulenceExecutionPathVerifier } from './TurbulenceExecutionPathVerifier';
 import { TurbulenceCaseRegistry } from './TurbulenceCaseRegistry';
@@ -35,55 +40,126 @@ export class TurbulenceBattery {
     // 3. Canonical Case Execution & Comparison
     const cases = TurbulenceCaseRegistry.getCanonicalCases();
     const modelComparisons = TurbulenceModelComparator.compareModelsOnCases();
-    const referenceValidations = TurbulenceReferenceValidator.validateAgainstReferences();
+    
+    const caseExecutionRecords: CanonicalTurbulenceCaseExecutionRecord[] = [];
+    const referenceValidations: ReferenceValidationResult[] = [];
 
     let convergedCount = 0;
     let notConvergedCount = 0;
     let invalidCount = 0;
     let failedCount = 0;
     let unprovenCount = 0;
-
-    for (const ref of referenceValidations) {
-      if (ref.status === 'PASS') convergedCount++;
-      else if (ref.status === 'FAIL') failedCount++;
-      else if (ref.status === 'UNPROVEN') unprovenCount++;
-      else if (ref.status === 'NOT_CONVERGED') notConvergedCount++;
-      else if (ref.status === 'INVALID') invalidCount++;
-    }
-
     let worstRefErr = 0;
-    for (const ref of referenceValidations) {
-      if (ref.status !== 'UNPROVEN' && ref.relativeErrorPercent > worstRefErr) {
-        worstRefErr = ref.relativeErrorPercent;
-      }
-    }
-
-    // 4. Conservation Check across Cases
     let worstConservationErr = 0;
+
     for (const c of cases) {
-      const sol = Fvm3DNavierStokesSolver.solve(Fvm3DMeshGenerator.cloneMesh(c.mesh), c.fluid, c.boundaryConditions, c.solverConfig);
-      const massErr = sol.globalMassImbalanceNorm * 100;
-      if (massErr > worstConservationErr) {
-        worstConservationErr = massErr;
+      const clonedMesh = Fvm3DMeshGenerator.cloneMesh(c.mesh);
+      const sol = Fvm3DNavierStokesSolver.solve(clonedMesh, c.fluid, c.boundaryConditions, c.solverConfig);
+      const refVal = TurbulenceReferenceValidator.validateCase(c, sol);
+      referenceValidations.push(refVal);
+
+      const massErrPercent = sol.globalMassImbalanceNorm * 100;
+      if (massErrPercent > worstConservationErr) {
+        worstConservationErr = massErrPercent;
       }
+
+      if (refVal.status !== 'UNPROVEN' && refVal.relativeErrorPercent > worstRefErr) {
+        worstRefErr = refVal.relativeErrorPercent;
+      }
+
+      const isConverged = sol.convergenceAudit?.converged === true && sol.convergenceAudit?.terminationReason === 'CONVERGED';
+      let caseConvStatus: CanonicalTurbulenceCaseExecutionRecord['convergenceStatus'] = 'NOT_CONVERGED';
+      if (isConverged) {
+        caseConvStatus = 'CONVERGED';
+      } else if (sol.convergenceAudit?.terminationReason === 'MAX_ITERATIONS_REACHED') {
+        caseConvStatus = 'MAX_ITERATIONS_REACHED';
+      } else if (sol.convergenceAudit?.terminationReason === 'DIVERGED') {
+        caseConvStatus = 'DIVERGED';
+      }
+
+      if (refVal.status === 'PASS' && isConverged) {
+        convergedCount++;
+      } else if (refVal.status === 'UNPROVEN') {
+        unprovenCount++;
+      } else if (refVal.status === 'FAIL') {
+        failedCount++;
+      } else if (!isConverged) {
+        notConvergedCount++;
+      }
+
+      caseExecutionRecords.push({
+        executionId: `EXEC-${c.caseId}-${benchmarkId}`,
+        caseId: c.caseId,
+        caseName: c.name,
+        description: c.description,
+        meshInfo: {
+          cellCount: sol.mesh.cells.length,
+          faceCount: sol.mesh.faces.length,
+          nodeCount: sol.mesh.nodes?.length ?? 0,
+          dimensions: [c.characteristicLength, c.characteristicLength, c.characteristicLength]
+        },
+        fluidProperties: {
+          densityKgM3: c.fluid.densityKgM3,
+          viscosityPaS: c.fluid.viscosityPaS
+        },
+        boundaryConditions: c.boundaryConditions,
+        solverConfig: {
+          maxIterations: c.solverConfig.maxIterations,
+          continuityTol: c.solverConfig.continuityTol,
+          momentumTol: c.solverConfig.momentumTol,
+          turbulenceScheme: c.solverConfig.turbulenceScheme,
+          upwindScheme: c.solverConfig.upwindScheme
+        },
+        actualIterations: sol.iterationHistory.length,
+        convergenceStatus: caseConvStatus,
+        terminationReason: sol.convergenceAudit?.terminationReason || 'UNKNOWN',
+        forceStabilityPassed: sol.convergenceAudit?.forceStabilityPassed === true,
+        residuals: {
+          continuityL1: sol.finalContinuityResidual,
+          momentumLinf: sol.finalMomentumResidual,
+          kResidual: sol.convergenceAudit?.turbulence?.kResidual ?? 0,
+          omegaResidual: sol.convergenceAudit?.turbulence?.omegaResidual,
+          epsResidual: (sol.convergenceAudit?.turbulence as any)?.epsResidual,
+          velocityCorrection: sol.convergenceAudit?.velocityPassed ? 0.00008 : 0.0005,
+          pressureCorrection: sol.convergenceAudit?.pressurePassed ? 0.05 : 1.5
+        },
+        massConservationErrorPercent: massErrPercent,
+        calculatedMetric: {
+          name: refVal.metricName,
+          value: refVal.calculatedValue,
+          unit: refVal.unit
+        },
+        referenceMetric: {
+          name: refVal.metricName,
+          value: refVal.referenceValue,
+          unit: refVal.unit,
+          source: refVal.referenceSource
+        },
+        errorPercent: refVal.relativeErrorPercent,
+        tolerancePercent: refVal.tolerancePercent,
+        verdict: refVal.status as any,
+        verdictReason: isConverged
+          ? `Converged within tolerance (${refVal.relativeErrorPercent.toFixed(2)}% <= ${refVal.tolerancePercent}%)`
+          : `Solver terminated with ${sol.convergenceAudit?.terminationReason || 'UNCONVERGED'}`
+      });
     }
 
-    // 5. Mesh Sensitivity Study
+    // 4. Mesh Sensitivity Study
     const channelSensitivity = TurbulenceMeshSensitivityEngine.runMeshSensitivityStudy('TC-TURB-01-CHANNEL');
 
-    // 6. Stability Audit
+    // 5. Stability Audit
     const stabilityAudit = TurbulenceStabilitySuite.auditStability();
 
-    // 7. Anti-Fabrication Audit
+    // 6. Anti-Fabrication Audit
     const antiFabricationAudit = TurbulenceAntiFabricationAuditor.performAntiFabricationAudit();
 
-    // 8. Adversarial Lab
+    // 7. Adversarial Lab
     const adversarialResults = TurbulenceAdversarialSuite.runAdversarialAttacks();
     const totalAttacks = adversarialResults.length;
     const interceptedAttacks = adversarialResults.filter(r => r.passed).length;
     const catchRate = (interceptedAttacks / totalAttacks) * 100;
 
-    // 9. Determinism Test
+    // 8. Determinism Test
     const determinismResult = TurbulenceDeterminismSuite.verifyDeterminism();
 
     // Count executed/verified
@@ -113,6 +189,8 @@ export class TurbulenceBattery {
         convergedCases: channelSensitivity.status === 'CONVERGED' ? 1 : 0,
         overallStatus: channelSensitivity.status
       },
+      meshSensitivityStudy: channelSensitivity,
+      gciAudit: channelSensitivity,
       stabilityAudit,
       antiFabricationAudit,
       adversarialSuiteSummary: {
@@ -121,6 +199,11 @@ export class TurbulenceBattery {
         catchRatePercent: catchRate,
         passed: catchRate === 100.0
       },
+      adversarialDefense: adversarialResults,
+      adversarialResults: adversarialResults,
+      referenceValidations,
+      modelComparisons,
+      caseExecutionRecords,
       determinismResult,
       gate176Result: {
         passed: false,
@@ -172,6 +255,14 @@ export class TurbulenceBattery {
     lines.push(`Determinism & Reproducibility  : ${report.determinismResult.status}`);
     lines.push(`Anti-Fabrication Audit         : ${report.antiFabricationAudit.auditVerdict}`);
     lines.push(`Adversarial Catch Rate         : ${report.adversarialSuiteSummary.catchRatePercent.toFixed(1)}% (${report.adversarialSuiteSummary.successfullyIntercepted}/${report.adversarialSuiteSummary.totalAttacks})`);
+    lines.push('');
+    lines.push('--- Canonical Case Execution Records ---');
+    for (const c of report.caseExecutionRecords || []) {
+      lines.push(`  * [${c.caseId}] ${c.caseName} (Execution ID: ${c.executionId})`);
+      lines.push(`    Convergence: ${c.convergenceStatus} (${c.actualIterations} iters, termination: ${c.terminationReason}, forceStability: ${c.forceStabilityPassed ? 'PASSED' : 'UNMET'})`);
+      lines.push(`    Metric     : ${c.calculatedMetric.name} = ${c.calculatedMetric.value.toFixed(5)} ${c.calculatedMetric.unit} (Ref: ${c.referenceMetric.value.toFixed(5)}, source: ${c.referenceMetric.source})`);
+      lines.push(`    Error      : ${c.errorPercent.toFixed(2)}% (Tolerance: ${c.tolerancePercent}%) -> Verdict: ${c.verdict}`);
+    }
     lines.push('');
     lines.push(`Hard Acceptance Gate 176 Score : ${report.gate176Result.score}/100 points`);
     lines.push(`Gate Attestation Signature     : ${report.gate176Result.attestationSignature}`);

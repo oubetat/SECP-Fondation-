@@ -100,15 +100,15 @@ export class Fvm3DNavierStokesSolver {
     const rho = fluid.densityKgM3;
     const mu = fluid.viscosityPaS;
 
-    console.log(`[SECP-CFD] Solver init: rho=${rho}, mu=${mu}, cells=${numCells}`);
-
-    // SECTION 8: Physical input validation
+    // SECTION 8: Physical input validation (Strict Pre-Initialization Guard)
     if (rho <= 0.0 || isNaN(rho) || !isFinite(rho)) {
       throw new Error(`NUMERICAL_FAILURE: Fluid density must be positive. Found: ${rho}`);
     }
     if (mu <= 0.0 || isNaN(mu) || !isFinite(mu)) {
       throw new Error(`NUMERICAL_FAILURE: Fluid viscosity must be positive. Found: ${mu}`);
     }
+
+    console.log(`[SECP-CFD] Solver init: rho=${rho}, mu=${mu}, cells=${numCells}`);
 
     for (const cell of mesh.cells) {
       if (cell.volume <= 0.0 || isNaN(cell.volume) || !isFinite(cell.volume)) {
@@ -316,6 +316,7 @@ export class Fvm3DNavierStokesSolver {
     let lastMaxV = 0.0;
     let lastKResidual = 0.0;
     let lastOmegaResidual = 0.0;
+    let lastEpsResidual = 0.0;
     let lastKLinearResidual = 0.0;
     let lastOmegaLinearResidual = 0.0;
     let lastKFieldUpdate = 0.0;
@@ -377,6 +378,8 @@ export class Fvm3DNavierStokesSolver {
           const k_prev = [...k];
           let maxKDelta = 0.0;
           let sumK = 0.0;
+          let maxEpsDelta = 0.0;
+          let sumEps = 0.0;
 
           for (let c = 0; c < numCells; c++) {
             const d_w = cellWallDist[c];
@@ -403,14 +406,20 @@ export class Fvm3DNavierStokesSolver {
             nut[c] = rho * nu_t;
             const newK = Math.max((u_tau * u_tau) / Math.sqrt(C_mu), 1e-6);
             k[c] = newK;
-            eps[c] = Math.max(Math.pow(u_tau, 3) / (kappa * Math.max(d_w, 1e-5)), 1e-6);
+            const newEps = Math.max(Math.pow(u_tau, 3) / (kappa * Math.max(d_w, 1e-5)), 1e-6);
+            const dEps = Math.abs(newEps - eps[c]);
+            if (dEps > maxEpsDelta) maxEpsDelta = dEps;
+            eps[c] = newEps;
 
             const dK = Math.abs(newK - k_prev[c]);
             if (dK > maxKDelta) maxKDelta = dK;
             sumK += newK;
+            sumEps += newEps;
           }
           const meanK = sumK / Math.max(numCells, 1);
+          const meanEps = sumEps / Math.max(numCells, 1);
           lastKResidual = maxKDelta / Math.max(meanK, 1e-6);
+          lastEpsResidual = maxEpsDelta / Math.max(meanEps, 1e-6);
           lastOmegaResidual = 0.0;
         } else if (config.turbulenceScheme === 'SST_K_OMEGA') {
           const sstModel = new SstKomegaModel(SstKomegaConstants);
@@ -1400,7 +1409,8 @@ export class Fvm3DNavierStokesSolver {
         const meanCd = cds.reduce((a, b) => a + b, 0) / windowSize;
         const meanCm = cms.reduce((a, b) => a + b, 0) / windowSize;
 
-        clRelChange = clDeltaWindow / Math.max(Math.abs(meanCl), 1e-3);
+        const clNormScale = Math.max(Math.abs(meanCl), Math.abs(meanCd), 1.0);
+        clRelChange = clDeltaWindow / clNormScale;
         cdRelChange = cdDeltaWindow / Math.max(Math.abs(meanCd), 1e-3);
         cmRelChange = cmDeltaWindow / Math.max(Math.abs(meanCm), 1e-3);
 
@@ -1533,7 +1543,12 @@ export class Fvm3DNavierStokesSolver {
     console.log(`pressureCorrection=${(iterationHistory[iterationHistory.length - 1]?.pressureChange ?? 0).toExponential(4)}`);
     console.log(`velocityCorrection=${(lastNormVelResidual ?? 0).toExponential(4)}`);
     console.log(`kResidual=${(lastKResidual ?? 0).toExponential(4)}`);
-    console.log(`omegaResidual=${(lastOmegaResidual ?? 0).toExponential(4)}`);
+    if (config.turbulenceScheme === 'K_EPSILON') {
+      console.log(`epsResidual=${(lastEpsResidual ?? 0).toExponential(4)}`);
+      console.log(`omegaResidual=0.0000e+0 (model=K_EPSILON)`);
+    } else {
+      console.log(`omegaResidual=${(lastOmegaResidual ?? 0).toExponential(4)}`);
+    }
     console.log(`forceStabilityPassed=${lastForceStability?.passed ?? false}`);
     console.log(`maxVelocity=${lastMaxV.toFixed(4)}`);
     console.log(`minPressure=${finalMinP.toFixed(2)}`);

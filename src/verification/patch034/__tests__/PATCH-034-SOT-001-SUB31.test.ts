@@ -23,8 +23,8 @@ describe('PATCH-034-SOT-001: Sub-Batch 3.1 Verification', () => {
   it('proves handleNewBlankProject canonical baseline creates a valid clean EngineeringDocument', () => {
     const blankDoc = SketchUIIntegration.createEmptyDocument('DOC_BLANK_TEST');
     expect(blankDoc.documentId).toBe('DOC_BLANK_TEST');
-    expect(blankDoc.features.length).toBe(0);
-    expect(blankDoc.sketches.length).toBe(0);
+    expect(blankDoc.features?.length).toBe(0);
+    expect(blankDoc.sketches?.length).toBe(0);
     expect(blankDoc.revision).toBe(1);
     expect(blankDoc.topologyMap).toBeDefined();
   });
@@ -33,10 +33,10 @@ describe('PATCH-034-SOT-001: Sub-Batch 3.1 Verification', () => {
     const res = SketchUIIntegration.createPrimitiveDocument('BOX', 'DOC_PRIM_BOX');
     expect(res.success).toBe(true);
     expect(res.document).toBeDefined();
-    expect(res.document.features.length).toBe(2);
-    expect(res.document.features[0].type).toBe('SKETCH');
-    expect(res.document.features[1].type).toBe('EXTRUDE');
-    expect(res.document.features[1].dependencyIds).toContain(res.document.features[0].featureId);
+    expect(res.document?.features?.length).toBe(2);
+    expect(res.document?.features?.[0]?.type).toBe('SKETCH');
+    expect(res.document?.features?.[1]?.type).toBe('EXTRUDE');
+    expect(res.document?.features?.[1]?.dependencyIds).toContain(res.document?.features?.[0]?.featureId);
 
     expect(res.evaluatedShape).toBeDefined();
     expect(res.evaluatedShape?.shapeType).toBe(TopoShapeEnum.SOLID);
@@ -55,9 +55,9 @@ describe('PATCH-034-SOT-001: Sub-Batch 3.1 Verification', () => {
   it('proves CYLINDER primitive is created through Canonical EngineeringDocument and evaluates to valid B-Rep solid', () => {
     const res = SketchUIIntegration.createPrimitiveDocument('CYLINDER', 'DOC_PRIM_CYL');
     expect(res.success).toBe(true);
-    expect(res.document.features.length).toBe(2);
-    expect(res.document.features[0].type).toBe('SKETCH');
-    expect(res.document.features[1].type).toBe('EXTRUDE');
+    expect(res.document?.features?.length).toBe(2);
+    expect(res.document?.features?.[0]?.type).toBe('SKETCH');
+    expect(res.document?.features?.[1]?.type).toBe('EXTRUDE');
 
     expect(res.evaluatedShape).toBeDefined();
     expect(res.evaluatedShape?.shapeType).toBe(TopoShapeEnum.SOLID);
@@ -73,7 +73,7 @@ describe('PATCH-034-SOT-001: Sub-Batch 3.1 Verification', () => {
   it('proves SPHERE primitive is created through Canonical EngineeringDocument pipeline', () => {
     const res = SketchUIIntegration.createPrimitiveDocument('SPHERE', 'DOC_PRIM_SPHERE');
     expect(res.success).toBe(true);
-    expect(res.document.features.length).toBe(2);
+    expect(res.document?.features?.length).toBe(2);
     expect(res.evaluatedShape).toBeDefined();
   });
 });

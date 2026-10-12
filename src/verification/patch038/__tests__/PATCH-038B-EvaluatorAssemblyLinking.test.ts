@@ -100,7 +100,7 @@ describe('PATCH-038B — Evaluator Assembly Linking & Child Geometry Derivation'
     expect(vol1).toBeCloseTo(0.000008, 8); 
 
     // 2. Modify child document parameter directly: width = 80mm
-    const widthParam = childPart.parameters.find(p => p.name === 'width')!;
+    const widthParam = childPart.parameters?.find(p => p.name === 'width')!;
     widthParam.value = 80;
     widthParam.expression = '80';
 
@@ -285,9 +285,9 @@ describe('PATCH-038B — Evaluator Assembly Linking & Child Geometry Derivation'
 
     expect(evalResult.success).toBe(true);
     // The child document must have evidence stamped by canonical DocumentEvaluator
-    expect(childPart.evidence.length).toBeGreaterThan(0);
-    const lastEvidence = childPart.evidence[childPart.evidence.length - 1];
-    expect(lastEvidence.sourceSystem).toBe('SECP_CANONICAL_EVALUATOR');
+    expect(childPart.evidence?.length).toBeGreaterThan(0);
+    const lastEvidence = childPart.evidence?.[childPart.evidence.length - 1];
+    expect(lastEvidence?.sourceSystem).toBe('SECP_CANONICAL_EVALUATOR');
     expect(lastEvidence.stage).toBe('GEOMETRY');
     expect(lastEvidence.topologyHash).toBeDefined();
 

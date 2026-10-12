@@ -6,6 +6,7 @@
  */
 
 import { FinalTurbulenceBenchmarkReport } from './types';
+import { pureSha256 } from '../../../polyfills/crypto';
 
 export interface Gate176CriteriaResult {
   id: string;
@@ -23,6 +24,16 @@ export class HardAcceptanceGate176 {
     attestationSignature: string;
   } {
     const criteria: Gate176CriteriaResult[] = [];
+
+    // Pre-flight Evidence Integrity Audit (Fail-Closed if required evidence arrays are absent)
+    const hasValidEvidenceArrays =
+      Array.isArray(report.referenceValidations) &&
+      report.referenceValidations.length >= 4 &&
+      Array.isArray(report.caseExecutionRecords) &&
+      report.caseExecutionRecords.length >= 4 &&
+      report.meshSensitivityStudy !== undefined &&
+      Array.isArray(report.adversarialDefense) &&
+      report.adversarialDefense.length >= 6;
 
     // Criterion 1: Turbulence Model Discovery & Explicit Classification
     const modelsDiscovered = report.discoveredModels.length >= 6;
@@ -129,29 +140,89 @@ export class HardAcceptanceGate176 {
     });
 
     const totalScore = criteria.reduce((sum, c) => sum + c.score, 0);
-    const overallPassed = totalScore === 100.0;
+    // Evidence integrity check
+    const overallPassed = totalScore === 100.0 && hasValidEvidenceArrays;
 
-    // Cryptographic Attestation Signature
-    const payload = JSON.stringify({
-      gate: 'HARD-ACCEPTANCE-GATE-176',
-      score: totalScore,
-      passed: overallPassed,
-      timestamp: report.timestamp,
-      benchmarkId: report.benchmarkId
-    });
-
-    let hashNum = 0;
-    for (let i = 0; i < payload.length; i++) {
-      hashNum = (hashNum * 31 + payload.charCodeAt(i)) & 0xffffffff;
-    }
-
-    const attestationSignature = `SECP-GATE176-SIG-${Math.abs(hashNum).toString(16).padStart(8, '0').toUpperCase()}`;
+    // Cryptographic Evidence Attestation Signature over complete canonical evidence
+    const evidencePayload = HardAcceptanceGate176.buildEvidencePayload(report, totalScore, overallPassed, hasValidEvidenceArrays);
+    const sha256Hex = pureSha256(evidencePayload);
+    const attestationSignature = `SECP-GATE176-SIG-SHA256-${sha256Hex.slice(0, 16).toUpperCase()}`;
 
     return {
       passed: overallPassed,
-      score: totalScore,
+      score: hasValidEvidenceArrays ? totalScore : 0,
       criteriaResults: criteria,
       attestationSignature
+    };
+  }
+
+  public static buildEvidencePayload(
+    report: FinalTurbulenceBenchmarkReport,
+    score?: number,
+    passed?: boolean,
+    evidenceIntegrityVerified?: boolean
+  ): string {
+    return JSON.stringify({
+      gate: 'HARD-ACCEPTANCE-GATE-176',
+      benchmarkId: report.benchmarkId,
+      timestamp: report.timestamp,
+      score: score ?? report.gate176Result?.score ?? 100,
+      passed: passed ?? report.gate176Result?.passed ?? true,
+      evidenceIntegrityVerified: evidenceIntegrityVerified ?? true,
+      canonicalSummary: report.canonicalCasesSummary,
+      worstReferenceErrorPercent: report.worstReferenceErrorPercent,
+      worstConservationErrorPercent: report.worstConservationErrorPercent,
+      cases: (report.referenceValidations || []).map(r => ({
+        id: r.caseId,
+        calc: r.calculatedValue,
+        ref: r.referenceValue,
+        err: r.relativeErrorPercent,
+        status: r.status
+      })),
+      caseExecutionRecords: (report.caseExecutionRecords || []).map(c => ({
+        caseId: c.caseId,
+        executionId: c.executionId,
+        convergenceStatus: c.convergenceStatus,
+        actualIterations: c.actualIterations,
+        continuityL1: c.residuals?.continuityL1,
+        forceStabilityPassed: c.forceStabilityPassed,
+        massConservationErrorPercent: c.massConservationErrorPercent,
+        calcMetric: c.calculatedMetric?.value,
+        refMetric: c.referenceMetric?.value,
+        errPercent: c.errorPercent,
+        verdict: c.verdict
+      })),
+      meshGci: report.meshSensitivitySummary?.overallStatus,
+      adversarialIntercepted: report.adversarialSuiteSummary?.successfullyIntercepted,
+      determinismHashes: report.determinismResult?.hashList
+    });
+  }
+
+  public static verifyAttestation(
+    report: FinalTurbulenceBenchmarkReport,
+    signatureToCheck?: string
+  ): {
+    isValid: boolean;
+    computedSignature: string;
+    details: string;
+  } {
+    const payload = HardAcceptanceGate176.buildEvidencePayload(
+      report,
+      report.gate176Result?.score,
+      report.gate176Result?.passed,
+      true
+    );
+    const sha256Hex = pureSha256(payload);
+    const computedSignature = `SECP-GATE176-SIG-SHA256-${sha256Hex.slice(0, 16).toUpperCase()}`;
+    const targetSig = signatureToCheck || report.gate176Result?.attestationSignature;
+    const isValid = Boolean(targetSig && targetSig === computedSignature);
+
+    return {
+      isValid,
+      computedSignature,
+      details: isValid
+        ? `Cryptographic signature matches byte-exact report payload hash (${computedSignature}).`
+        : `Signature mismatch: Expected ${computedSignature}, found ${targetSig || 'NONE'}.`
     };
   }
 }

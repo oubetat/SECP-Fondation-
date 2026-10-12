@@ -241,6 +241,65 @@ export type TurbulenceVerdict =
   | 'INVALID'
   | 'CONSERVATION_FAILURE';
 
+export interface CanonicalTurbulenceCaseExecutionRecord {
+  executionId: string;
+  caseId: BenchmarkCaseId;
+  caseName: string;
+  description: string;
+  meshInfo: {
+    cellCount: number;
+    faceCount: number;
+    nodeCount: number;
+    dimensions: [number, number, number];
+  };
+  fluidProperties: {
+    densityKgM3: number;
+    viscosityPaS: number;
+  };
+  boundaryConditions: {
+    inletVelocityMS?: { x: number; y: number; z: number };
+    outletPressurePa?: number;
+    wallTurbulenceIntensity?: number;
+    [key: string]: unknown;
+  };
+  solverConfig: {
+    maxIterations: number;
+    continuityTol: number;
+    momentumTol: number;
+    turbulenceScheme: string;
+    upwindScheme: string;
+  };
+  actualIterations: number;
+  convergenceStatus: 'CONVERGED' | 'MAX_ITERATIONS_REACHED' | 'DIVERGED' | 'INVALID_INPUT' | 'UNPROVEN';
+  terminationReason: string;
+  forceStabilityPassed: boolean;
+  residuals: {
+    continuityL1: number;
+    momentumLinf: number;
+    kResidual: number;
+    omegaResidual?: number;
+    epsResidual?: number;
+    velocityCorrection: number;
+    pressureCorrection: number;
+  };
+  massConservationErrorPercent: number;
+  calculatedMetric: {
+    name: string;
+    value: number;
+    unit: string;
+  };
+  referenceMetric: {
+    name: string;
+    value: number;
+    unit: string;
+    source: string;
+  };
+  errorPercent: number;
+  tolerancePercent: number;
+  verdict: 'PASS' | 'FAIL' | 'UNPROVEN' | 'NOT_CONVERGED' | 'INVALID';
+  verdictReason: string;
+}
+
 export interface FinalTurbulenceBenchmarkReport {
   benchmarkId: string;
   timestamp: string;
@@ -263,6 +322,8 @@ export interface FinalTurbulenceBenchmarkReport {
     convergedCases: number;
     overallStatus: 'CONVERGED' | 'NOT_CONVERGED' | 'UNPROVEN';
   };
+  meshSensitivityStudy: MeshSensitivityStudy;
+  gciAudit?: MeshSensitivityStudy;
   stabilityAudit: NumericalStabilityAudit;
   antiFabricationAudit: AntiFabricationAuditRecord;
   adversarialSuiteSummary: {
@@ -271,6 +332,11 @@ export interface FinalTurbulenceBenchmarkReport {
     catchRatePercent: number;
     passed: boolean;
   };
+  adversarialDefense: AdversarialTurbulenceTestResult[];
+  adversarialResults?: AdversarialTurbulenceTestResult[];
+  referenceValidations: ReferenceValidationResult[];
+  modelComparisons: ModelComparisonResult[];
+  caseExecutionRecords: CanonicalTurbulenceCaseExecutionRecord[];
   determinismResult: DeterminismResult;
   gate176Result: {
     passed: boolean;

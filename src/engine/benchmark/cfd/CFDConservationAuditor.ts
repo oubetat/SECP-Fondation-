@@ -23,22 +23,31 @@ export class CFDConservationAuditor {
     let totalOutflowKgS = 0.0;
 
     const rho = fluid.densityKgM3;
+    const hasFaceFluxes = Array.isArray(solution.faceFluxes) && solution.faceFluxes.length === mesh.faces.length;
 
     for (const face of mesh.faces) {
       if (face.boundaryType === 'INLET') {
-        const u = face.u_bc ?? 0;
-        const v = face.v_bc ?? 0;
-        const w = face.w_bc ?? 0;
-        const vn = u * face.normal.x + v * face.normal.y + w * face.normal.z;
-        totalInflowKgS += Math.abs(rho * vn * face.area);
-      } else if (face.boundaryType === 'OUTLET') {
-        const c = face.ownerCellId;
-        if (c >= 0 && c < solution.velocity.u.length) {
-          const u = solution.velocity.u[c];
-          const v = solution.velocity.v[c];
-          const w = solution.velocity.w[c];
+        if (hasFaceFluxes) {
+          totalInflowKgS += Math.abs(solution.faceFluxes[face.faceId]);
+        } else {
+          const u = face.u_bc ?? 0;
+          const v = face.v_bc ?? 0;
+          const w = face.w_bc ?? 0;
           const vn = u * face.normal.x + v * face.normal.y + w * face.normal.z;
-          totalOutflowKgS += Math.abs(rho * vn * face.area);
+          totalInflowKgS += Math.abs(rho * vn * face.area);
+        }
+      } else if (face.boundaryType === 'OUTLET') {
+        if (hasFaceFluxes) {
+          totalOutflowKgS += Math.abs(solution.faceFluxes[face.faceId]);
+        } else {
+          const c = face.ownerCellId;
+          if (c >= 0 && c < solution.velocity.u.length) {
+            const u = solution.velocity.u[c];
+            const v = solution.velocity.v[c];
+            const w = solution.velocity.w[c];
+            const vn = u * face.normal.x + v * face.normal.y + w * face.normal.z;
+            totalOutflowKgS += Math.abs(rho * vn * face.area);
+          }
         }
       }
     }

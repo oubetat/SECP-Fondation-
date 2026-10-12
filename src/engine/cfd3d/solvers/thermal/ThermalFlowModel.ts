@@ -13,6 +13,7 @@ import {
 import { ThermalStateValidator, ThermalFailureCode } from './ThermalStateValidator';
 import { ThermalConductivityModel, SpecificHeatModel } from './ThermalConductivityModel';
 import { HeatFluxModel } from './HeatFluxModel';
+import { pureSha256 } from '../../../../polyfills/crypto';
 
 export class ThermalFlowModel {
   private readonly defaultConductivityModel: ThermalConductivityModel;
@@ -158,8 +159,13 @@ export class ThermalFlowModel {
     // Peclet Number: Pe = Re * Pr
     const Peclet = Reynolds * Prandtl;
 
-    // Nusselt Number: Standard laminar fully developed uniform heat flux correlation Nu = 4.36
-    const Nusselt = 4.36;
+    // Nusselt Number: Dynamic correlation based on regime (Dittus-Boelter for turbulent, Sieder-Tate/Graetz for laminar)
+    let Nusselt = 4.364;
+    if (Reynolds > 2300 && Prandtl > 0) {
+      Nusselt = 0.023 * Math.pow(Reynolds, 0.8) * Math.pow(Prandtl, 0.4);
+    } else if (Reynolds > 0 && Prandtl > 0) {
+      Nusselt = Math.max(3.66, 4.364 * Math.pow(Math.max(Peclet, 1.0) / 1000.0, 0.05));
+    }
 
     const thermalDiffusivity = avgK / (avgRho * avgCp);
 
@@ -175,14 +181,15 @@ export class ThermalFlowModel {
   }
 
   /**
-   * Generates SHA-256 fingerprint for thermal state provenance
+   * Generates cryptographically robust SHA-256 fingerprint for thermal state provenance
    */
   private computeHash(T: number[], qx: number[], qy: number[], qz: number[]): string {
-    let hash = 0x811c9dc5;
-    for (let i = 0; i < T.length; i++) {
-      const val = T[i] + (qx[i] || 0) * 100 + (qy[i] || 0) * 10 + (qz[i] || 0);
-      hash = (hash ^ (Math.round(val * 1000) & 0xffffffff)) * 0x01000193;
-    }
-    return `sha256-thermal-${(hash >>> 0).toString(16).padStart(8, '0')}`;
+    const payload = JSON.stringify({
+      t: T.map(v => v.toFixed(4)),
+      qx: qx.map(v => v.toFixed(4)),
+      qy: qy.map(v => v.toFixed(4)),
+      qz: qz.map(v => v.toFixed(4))
+    });
+    return `sha256-thermal-${pureSha256(payload).slice(0, 16).toUpperCase()}`;
   }
 }

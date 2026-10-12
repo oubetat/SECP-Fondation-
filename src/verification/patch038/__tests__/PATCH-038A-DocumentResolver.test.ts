@@ -24,7 +24,7 @@ describe('PATCH-038A — Document Resolver & Multi-Document Registry', () => {
     expect(resolved).toBeDefined();
     expect(resolved?.documentId).toBe('DOC_PART_CYLINDER_001');
     expect(resolved?.type).toBe('PART');
-    expect(resolved?.parameters.find(p => p.name === 'radius')?.value).toBe(25);
+    expect(resolved?.parameters?.find(p => p.name === 'radius')?.value).toBe(25);
   });
 
   it('TEST B: unknown documentId produces deterministic missing-reference behavior', () => {

@@ -39,7 +39,7 @@ describe('PATCH-034-SOT-002-SUB32 — Intent Decoupling & Canonical Evaluation C
           }
         }
       ],
-      revision: baseDoc.revision + 1
+      revision: Number(baseDoc.revision) + 1
     };
 
     const resA = DocumentEvaluator.evaluate(docA);
@@ -78,7 +78,7 @@ describe('PATCH-034-SOT-002-SUB32 — Intent Decoupling & Canonical Evaluation C
           }
         }
       ],
-      revision: baseDoc.revision + 2
+      revision: Number(baseDoc.revision) + 2
     };
 
     const resB = DocumentEvaluator.evaluate(docB);

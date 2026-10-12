@@ -192,14 +192,20 @@ export class DOFResolver {
     value: number,
     cs: CoordinateSystem
   ): number {
-    // Scale value based on axis alignment with global axis
-    let axis: Vector3D = { x: 1, y: 0, z: 0 };
-    if (dof === 'UX' || dof === 'ROTX') axis = cs.xAxis;
-    if (dof === 'UY' || dof === 'ROTY') axis = cs.yAxis;
-    if (dof === 'UZ' || dof === 'ROTZ') axis = cs.zAxis;
-
-    const globalProj = Math.abs(axis.x + axis.y + axis.z);
-    return value * (globalProj > 1e-6 ? globalProj : 1.0);
+    // Exact directional cosine (dot product) with the target global axis
+    if (dof === 'UX' || dof === 'ROTX') {
+      // Local X-axis projected onto global X-axis: dot(cs.xAxis, [1,0,0]) = cs.xAxis.x
+      return value * cs.xAxis.x;
+    }
+    if (dof === 'UY' || dof === 'ROTY') {
+      // Local Y-axis projected onto global Y-axis: dot(cs.yAxis, [0,1,0]) = cs.yAxis.y
+      return value * cs.yAxis.y;
+    }
+    if (dof === 'UZ' || dof === 'ROTZ') {
+      // Local Z-axis projected onto global Z-axis: dot(cs.zAxis, [0,0,1]) = cs.zAxis.z
+      return value * cs.zAxis.z;
+    }
+    return value;
   }
 
   private static nodeSupportsRotationalDOFs(nodeId: string, mesh: FEMMesh): boolean {

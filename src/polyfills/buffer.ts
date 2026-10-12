@@ -88,7 +88,7 @@ if (typeof window !== 'undefined') {
   }
 }
 
-if (typeof globalThis !== 'undefined') {
+if (typeof globalThis !== 'undefined' && typeof (globalThis as any).Buffer === 'undefined') {
   (globalThis as any).Buffer = Buffer;
   if (!(globalThis as any).process) {
     (globalThis as any).process = { env: { NODE_ENV: 'development' }, cwd: () => '/' };

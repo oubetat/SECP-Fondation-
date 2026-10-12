@@ -51,15 +51,18 @@ export class TurbulenceAdversarialSuite {
       });
     } catch (e: unknown) {
       const errMessage = e instanceof Error ? e.message : String(e);
+      const isGuardException = errMessage.includes('NUMERICAL_FAILURE: Fluid viscosity must be positive');
       results.push({
         testId: 'ADV-TURB-01',
         testName: 'Incompatible Boundary Condition (Negative Viscosity)',
         attackVector: 'Negative viscosity mu = -1.81e-5 Pa.s injected into fluid properties',
         expectedOutcome: 'INVALID',
-        actualOutcome: 'INVALID',
+        actualOutcome: isGuardException ? 'INVALID' : 'UNEXPECTED_ERROR',
         detectedBy: 'Solver Pre-validation Gate',
-        passed: true,
-        details: `Correctly intercepted exception: ${errMessage}`
+        passed: isGuardException,
+        details: isGuardException
+          ? `Strict Pre-Initialization Interception Verified: ${errMessage}`
+          : `Unexpected failure mode: ${errMessage}`
       });
     }
 
@@ -162,7 +165,12 @@ export class TurbulenceAdversarialSuite {
     });
 
     // Attack 6: Reference Mismatch Attack (Fake reference value)
-    const calculatedF = 0.0315;
+    const U6 = bcNormal.inletVelocityMS.x;
+    const rho6 = fluid.densityKgM3;
+    const wallArea6 = mesh.faces.filter(f => f.boundaryType === 'WALL').reduce((sum, f) => sum + f.area, 0);
+    const viscousForce6 = solNormal.monitors.viscousDragForceN || solNormal.monitors.dragForceN;
+    const tau_w6 = viscousForce6 / Math.max(wallArea6, 1e-10);
+    const calculatedF = (8.0 * tau_w6) / Math.max(rho6 * U6 * U6, 1e-10);
     const forgedRefF = 0.500; // 15x higher than actual physical value
     const relErr = Math.abs((calculatedF - forgedRefF) / forgedRefF) * 100;
     const passed6 = relErr > 50.0;

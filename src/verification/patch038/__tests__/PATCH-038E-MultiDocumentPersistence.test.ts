@@ -95,7 +95,7 @@ describe('PATCH-038E — Multi-Document Persistence & Rehydration', () => {
 
     const rehydratedBase = rehydratedResolver.resolve('PART_BASE_PLATE')!;
     expect(rehydratedBase.documentId).toBe('PART_BASE_PLATE');
-    expect(rehydratedBase.parameters.find(p => p.name === 'width')?.value).toBe(100);
+    expect(rehydratedBase.parameters?.find(p => p.name === 'width')?.value).toBe(100);
   });
 
   it('TEST 02: Assembly transforms survive persistence', () => {
@@ -125,8 +125,8 @@ describe('PATCH-038E — Multi-Document Persistence & Rehydration', () => {
     const bundle = MultiDocumentPersistence.serialize(parentDoc, resolver);
     const { rootDocument: rehydrated } = MultiDocumentPersistence.deserialize(bundle);
 
-    expect(rehydrated.assembly?.mates.length).toBe(2);
-    const mateDist = rehydrated.assembly?.mates.find(m => m.mateId === 'mate-bracket-dist');
+    expect(rehydrated.assembly?.mates?.length).toBe(2);
+    const mateDist = rehydrated.assembly?.mates?.find(m => m.mateId === 'mate-bracket-dist');
     expect(mateDist).toBeDefined();
     expect(mateDist?.type).toBe('DISTANCE');
     expect(mateDist?.instanceAId).toBe('inst-bracket');
@@ -372,7 +372,7 @@ describe('PATCH-038E — Multi-Document Persistence & Rehydration', () => {
     const parentDoc = createParentAssemblyDoc('DOC_ASM_IDS');
     parentDoc.revision = 7;
     parentDoc.assembly!.instances[0].instanceId = 'custom-inst-id-alpha';
-    parentDoc.assembly!.mates[0].mateId = 'custom-mate-id-omega';
+    parentDoc.assembly!.mates![0].mateId = 'custom-mate-id-omega';
 
     const resolver = new InMemoryDocumentResolver();
     resolver.register(createChildBoxDoc('PART_BASE_PLATE'));
@@ -384,7 +384,7 @@ describe('PATCH-038E — Multi-Document Persistence & Rehydration', () => {
     expect(rehydrated.documentId).toBe('DOC_ASM_IDS');
     expect(rehydrated.revision).toBe(7);
     expect(rehydrated.assembly?.instances[0].instanceId).toBe('custom-inst-id-alpha');
-    expect(rehydrated.assembly?.mates[0].mateId).toBe('custom-mate-id-omega');
+    expect(rehydrated.assembly?.mates?.[0]?.mateId).toBe('custom-mate-id-omega');
   });
 
   it('TEST 14: Malformed persisted references and data are rejected', () => {
@@ -475,7 +475,7 @@ describe('PATCH-038E — Multi-Document Persistence & Rehydration', () => {
     resolver.register(childBracket);
 
     // Mutate child feature parameter (depth 10 -> 80)
-    const paramDepth = childBase.parameters.find(p => p.name === 'depth')!;
+    const paramDepth = childBase.parameters?.find(p => p.name === 'depth')!;
     paramDepth.value = 80;
 
     // Serialize mutated system
@@ -534,7 +534,7 @@ describe('PATCH-038E — Multi-Document Persistence & Rehydration', () => {
 
     expect(doc.revision).toBe(3);
     expect(doc.assembly?.instances.length).toBe(3);
-    expect(doc.assembly?.mates.length).toBe(3);
+    expect(doc.assembly?.mates?.length).toBe(3);
 
     // 3. Persist to JSON
     const jsonString = MultiDocumentPersistence.serializeToJson(doc, resolver);

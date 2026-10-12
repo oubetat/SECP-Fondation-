@@ -77,9 +77,9 @@ describe('PHASE 8 — PROMPT-034 — ASSEMBLY TRANSFORM REGENERATION PROOF', () 
 
     // Verification 01: Canonical Document now holds the solved position
     const movable = updatedDoc.assembly?.instances.find(i => i.instanceId === 'INST-MOVABLE');
-    expect(movable?.position.x).toBe(0); // Revolute at origin (0,0,0) in our simplified solver logic
-    expect(movable?.position.y).toBe(0);
-    expect(movable?.position.z).toBe(0);
+    expect(movable?.position?.x).toBe(0); // Revolute at origin (0,0,0) in our simplified solver logic
+    expect(movable?.position?.y).toBe(0);
+    expect(movable?.position?.z).toBe(0);
     expect(updatedDoc.revision).toBe(2);
   });
 
@@ -97,7 +97,7 @@ describe('PHASE 8 — PROMPT-034 — ASSEMBLY TRANSFORM REGENERATION PROOF', () 
 
     // 3. Capture State 1
     const inst1 = engine.getInstance('INST-MOVABLE');
-    const pos1 = { ...inst1?.placementTransform.translation };
+    const pos1 = { ...(inst1?.placementTransform?.translation || {}) } as any;
 
     // 4. DESTROY AGAIN
     engine = null;
@@ -108,7 +108,7 @@ describe('PHASE 8 — PROMPT-034 — ASSEMBLY TRANSFORM REGENERATION PROOF', () 
 
     // 6. FINAL PROOF: Regenerated state MUST match solved document state exactly
     const instRegen = regeneratedEngine.getInstance('INST-MOVABLE');
-    const posRegen = instRegen?.placementTransform.translation;
+    const posRegen = instRegen?.placementTransform?.translation;
 
     expect(posRegen?.[0]).toBe(0);
     expect(posRegen?.[1]).toBe(0);

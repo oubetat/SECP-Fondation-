@@ -171,7 +171,7 @@ describe('PATCH-035-SOT-CONTROL — ActiveSolid Write-Path Elimination & Canonic
         volumeM3: 0.0001,
         surfaceAreaM2: 0.01,
         centerOfGravity: { x: 0, y: 0, z: 0 },
-        mesh: { vertices: [], normals: [], indices: [], facesCount: 0 }
+        mesh: { vertices: [], normals: [], indices: [], facesCount: 0 } as any
       },
       assemblyComponents: [],
       assemblyMates: []
@@ -220,7 +220,7 @@ describe('PATCH-035-SOT-CONTROL — ActiveSolid Write-Path Elimination & Canonic
           volumeM3: 0.0001,
           surfaceAreaM2: 0.01,
           centerOfGravity: { x: 0, y: 0, z: 0 },
-          mesh: { vertices: [], normals: [], indices: [], facesCount: 0 }
+          mesh: { vertices: [], normals: [], indices: [], facesCount: 0 } as any
         },
         assemblyComponents: [],
         assemblyMates: []
