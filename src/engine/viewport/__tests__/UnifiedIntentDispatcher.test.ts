@@ -34,7 +34,7 @@ describe('PROMPT-012 — Unified Intent Dispatcher & Tool Pipeline', () => {
   it('Rejects intent with an unsupported tool ID', async () => {
     const rogueIntent: AnyEngineeringIntent = {
       intentId: 'ROGUE_1',
-      toolId: 'MY_ROGUE_TOOL',
+      toolId: 'MY_ROGUE_TOOL' as any,
       documentId: testDoc.documentId,
       parameters: {},
       timestamp: new Date().toISOString()

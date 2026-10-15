@@ -308,4 +308,168 @@ describe('Workbench State Ownership & Invalidation Architecture Audit', () => {
       expect(report.compliantWorkbenches).toBeGreaterThan(0);
     });
   });
+
+  describe('7. Rigorous Transactional Atomicity & Adversarial Invariant Suite', () => {
+    it('GATE 1: should atomically rollback document in-place when mutatorFn fails midway with no partial state and no revision bump', () => {
+      const initialFeatureCount = sampleDoc.features.length;
+      const initialRev = sampleDoc.revision;
+      let subscriberNotified = false;
+
+      engine.subscribeInvalidation(() => {
+        subscriberNotified = true;
+      });
+
+      // Populate derived cache beforehand to verify it is NOT touched on rollback
+      engine.setDerivedCache('DOC-AUDIT-101', 'evaluated B-Rep', { meshId: 'PRE_MUTATION_BREP' });
+
+      // Attempt a mutatorFn that writes half-way and throws
+      expect(() => {
+        engine.mutateCanonicalDocument(
+          'DOC-AUDIT-101',
+          (doc) => {
+            // Partial write 1
+            doc.features.push({
+              featureId: 'HALF_BAKED_FEATURE',
+              name: 'Corrupted Feature',
+              type: 'INVALID',
+              parameters: {},
+            });
+            // Explode midway
+            throw new Error('Geometric kernel panic: Non-manifold topology detected midway!');
+          },
+          'Corrupted Mutation Attempt',
+          'PARAMETRIC_WORKBENCH'
+        );
+      }).toThrow(/Canonical mutation transaction failed and was rolled back atomically/);
+
+      // Verify document was restored in-place
+      expect(sampleDoc.features).toHaveLength(initialFeatureCount);
+      expect(sampleDoc.features.some((f: any) => f.featureId === 'HALF_BAKED_FEATURE')).toBe(false);
+      expect(sampleDoc.revision).toBe(initialRev);
+
+      // Verify subscriber was NEVER notified of aborted transaction
+      expect(subscriberNotified).toBe(false);
+
+      // Verify derived cache was preserved (not falsely invalidated)
+      expect(engine.getDerivedCache('DOC-AUDIT-101', 'evaluated B-Rep')).toEqual({
+        meshId: 'PRE_MUTATION_BREP',
+      });
+    });
+
+    it('GATE 2: should reject non-canonical direct mutation attempts on CANONICAL_SOT without any state or revision change', () => {
+      const initialRev = sampleDoc.revision;
+      const initialFeatures = [...sampleDoc.features];
+
+      const audit = engine.auditStateMutation({
+        workbenchId: 'ROGUE_BYPASS_WORKBENCH',
+        entityName: 'EngineeringDocument',
+        modifiesSOT: false, // Illegal direct access without canonical SOT flow
+      });
+
+      expect(audit.verdict).toBe('ARCHITECTURAL_GAP');
+      expect(audit.isAcceptable).toBe(false);
+      expect(sampleDoc.revision).toBe(initialRev);
+      expect(sampleDoc.features).toEqual(initialFeatures);
+    });
+
+    it('GATE 3: should commit session with multiple staged changes in a single atomic revision bump and invalidate all derived artifacts', () => {
+      const session = engine.createSession(
+        'PATTERN_WORKBENCH',
+        'PatternEngine session',
+        'DOC-AUDIT-101'
+      );
+
+      // Stage 5 separate changes in session
+      for (let i = 1; i <= 5; i++) {
+        engine.stageSessionChange(session.sessionId, { instanceIndex: i, offsetMm: i * 10 });
+      }
+
+      const initialRev = sampleDoc.revision as number;
+
+      // Seed derived cache
+      engine.setDerivedCache('DOC-AUDIT-101', 'evaluated B-Rep', { brep: 'stale' });
+      engine.setDerivedCache('DOC-AUDIT-101', 'render mesh', { mesh: 'stale' });
+      engine.setDerivedCache('DOC-AUDIT-101', 'selection', { selectedFace: 12 });
+      engine.setDerivedCache('DOC-AUDIT-101', 'feature tree projection', { tree: 'stale' });
+
+      let invalidationEvents: StandardStateEntity[] = [];
+      engine.subscribeInvalidation((_, entities) => {
+        invalidationEvents = entities;
+      });
+
+      const commitResult = engine.commitSessionToCanonicalSOT(
+        session.sessionId,
+        'DOC-AUDIT-101',
+        (doc, staged) => {
+          doc.features.push({
+            featureId: 'PATTERN-BATCH-1',
+            name: 'Linear Pattern Array',
+            type: 'PATTERN',
+            parameters: { instances: staged },
+          });
+        }
+      );
+
+      // Exactly ONE revision increment
+      expect(commitResult.revision).toBe(initialRev + 1);
+      expect(session.isCommitted).toBe(true);
+
+      // Invalidation occurred across all 4 derived artifacts
+      expect(invalidationEvents).toEqual([
+        'evaluated B-Rep',
+        'render mesh',
+        'selection',
+        'feature tree projection',
+      ]);
+    });
+
+    it('GATE 4: should discard/rollback uncommitted session with zero impact on Canonical SOT, revision, or document state', () => {
+      const session = engine.createSession(
+        'DIRECT_MODELING_WORKBENCH',
+        'DirectModeling transaction',
+        'DOC-AUDIT-101'
+      );
+
+      // Stage heavy modifications
+      engine.stageSessionChange(session.sessionId, { deltaX: 100, deltaY: -50, deltaZ: 25 });
+      engine.stageSessionChange(session.sessionId, { deltaX: 200, deltaY: -100, deltaZ: 50 });
+
+      const initialRev = sampleDoc.revision;
+      const initialFeatureCount = sampleDoc.features.length;
+
+      // Discard session
+      const discardResult = engine.discardSession(session.sessionId);
+      expect(discardResult.discardedSession.sessionId).toBe(session.sessionId);
+      expect(engine.getActiveSession(session.sessionId)).toBeUndefined();
+
+      // Zero impact on document
+      expect(sampleDoc.revision).toBe(initialRev);
+      expect(sampleDoc.features).toHaveLength(initialFeatureCount);
+    });
+
+    it('GATE 5: should strictly prevent consumption of stale derived state by wiping derived cache on canonical mutation', () => {
+      engine.setDerivedCache('DOC-AUDIT-101', 'evaluated B-Rep', { vertices: [0, 1, 2] });
+      engine.setDerivedCache('DOC-AUDIT-101', 'render mesh', { triangles: [1, 2, 3] });
+      engine.setDerivedCache('DOC-AUDIT-101', 'selection', { faceId: 'FACE-99' });
+
+      expect(engine.getDerivedCache('DOC-AUDIT-101', 'evaluated B-Rep')).toBeDefined();
+      expect(engine.getDerivedCache('DOC-AUDIT-101', 'render mesh')).toBeDefined();
+      expect(engine.getDerivedCache('DOC-AUDIT-101', 'selection')).toBeDefined();
+
+      // Execute legitimate canonical mutation
+      engine.mutateCanonicalDocument(
+        'DOC-AUDIT-101',
+        (doc) => {
+          doc.parameters = [{ id: 'P1', name: 'Length', value: 100 }];
+        },
+        'Update Parameter P1',
+        'PARAMETER_WORKBENCH'
+      );
+
+      // Verify all stale caches are completely wiped
+      expect(engine.getDerivedCache('DOC-AUDIT-101', 'evaluated B-Rep')).toBeUndefined();
+      expect(engine.getDerivedCache('DOC-AUDIT-101', 'render mesh')).toBeUndefined();
+      expect(engine.getDerivedCache('DOC-AUDIT-101', 'selection')).toBeUndefined();
+    });
+  });
 });

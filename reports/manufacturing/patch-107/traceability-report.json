@@ -4,8 +4,8 @@
     "machineProfileId": "MACHINE_TRUNNION_5AXIS_01",
     "controllerProfileId": "FANUC_31i_B5",
     "sourceToolpathId": "TP_REPORT_107",
-    "startedAt": "2026-09-29T11:06:37.733Z",
-    "completedAt": "2026-09-29T11:06:37.733Z",
+    "startedAt": "2026-10-13T08:44:21.765Z",
+    "completedAt": "2026-10-13T08:44:21.766Z",
     "entries": [
       {
         "step": "INITIALIZATION",

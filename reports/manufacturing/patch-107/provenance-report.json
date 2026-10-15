@@ -3,7 +3,7 @@
     "sourceId": "PROV_CONTRACT_POST_SECP_107_STD",
     "sourceType": "STANDARD",
     "reference": "SECP Manufacturing Post Contract ISO/ASME Standard",
-    "timestamp": "2026-09-29T11:06:37.733Z",
+    "timestamp": "2026-10-13T08:44:21.765Z",
     "author": "SECP Post Group",
     "hash": "0xPOSTCONTRACT"
   },
@@ -11,7 +11,7 @@
     "sourceId": "SYSTEM_MACHINE_LIB",
     "sourceType": "STANDARD",
     "reference": "Industrial Machine Specifications",
-    "timestamp": "2026-09-29T11:06:37.733Z",
+    "timestamp": "2026-10-13T08:44:21.765Z",
     "author": "SECP Kinematics Team",
     "hash": "0xTRUNNION5AXIS"
   },
@@ -19,7 +19,7 @@
     "sourceId": "SYSTEM_CONTROLLER_LIB",
     "sourceType": "STANDARD",
     "reference": "Industrial Controller Database",
-    "timestamp": "2026-09-29T11:06:37.733Z",
+    "timestamp": "2026-10-13T08:44:21.765Z",
     "author": "SECP Manufacturing Team",
     "hash": "0xFANUC31IB5"
   },

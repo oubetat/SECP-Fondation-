@@ -87,7 +87,7 @@ export class JacobiSolver implements LinearSolver {
     const initialRes = IterativeSolverUtils.computeResidual(matrix, rhs, xCurr);
     const residualHistory: number[] = [initialRes.norms.l2];
 
-    if (IterativeSolverUtils.isConverged(initialRes.norms, initialRes.norms, config)) {
+    if (IterativeSolverUtils.isConverged(initialRes.norms, initialRes.norms, config, 0)) {
       return {
         solution: xCurr,
         status: 'CONVERGED',
@@ -138,7 +138,7 @@ export class JacobiSolver implements LinearSolver {
         break;
       }
 
-      if (IterativeSolverUtils.isConverged(currentRes.norms, initialRes.norms, config)) {
+      if (IterativeSolverUtils.isConverged(currentRes.norms, initialRes.norms, config, iter)) {
         status = 'CONVERGED';
         return {
           solution: xCurr,

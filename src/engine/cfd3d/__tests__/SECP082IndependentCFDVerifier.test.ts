@@ -97,7 +97,9 @@ describe('SECP-082 Independent CFD Verifier Forensic Test Suite', () => {
     expect(res.inletMassFlowKgS).toBeCloseTo(12.25, 6);
     expect(res.outletMassFlowKgS).toBeCloseTo(12.25, 6);
     expect(res.globalMassImbalance).toBeLessThan(1e-10);
-    expect(res.independentVerdict).toBe('VERIFIED_PHYSICAL_CONSERVATION');
+    expect(res.numericalConsistencyPassed).toBe(true);
+    expect(res.gate6PhysicalPlausibility).toBe(true);
+    expect(res.independentVerdict).toBe('VERIFIED_NUMERICAL_CONSISTENCY');
   });
 
   // Test B — Cell-center != Boundary Velocity
@@ -202,7 +204,9 @@ describe('SECP-082 Independent CFD Verifier Forensic Test Suite', () => {
 
     expect(res.globalMassImbalance).toBe(0.0);
     expect(res.gate3GlobalMassConservation).toBe(true);
-    expect(res.independentVerdict).toBe('VERIFIED_PHYSICAL_CONSERVATION');
+    expect(res.numericalConsistencyPassed).toBe(true);
+    expect(res.gate6PhysicalPlausibility).toBe(true);
+    expect(res.independentVerdict).toBe('VERIFIED_NUMERICAL_CONSISTENCY');
   });
 
   // Test F — Sign Consistency
@@ -409,5 +413,152 @@ describe('SECP-082 Independent CFD Verifier Forensic Test Suite', () => {
     expect(res.gate5MutationDetection).toBe(false);
     expect(res.independentVerdict).toBe('FORGED_RESIDUAL_DETECTED');
     expect(res.passed).toBe(false);
+  });
+
+  // Test M — Phase 3 Unconverged NACA0012 Scenario (Gate 6 catches lack of convergence)
+  test('SECP-082 Test M - Unconverged solution rejected by Gate 6', () => {
+    const mesh = createTestMesh(
+      [createTestCell(0, [0, 1], 1.0, { x: 0.5, y: 0.5, z: 0.5 })],
+      [
+        createTestFace(0, 0, -1, { x: -1, y: 0, z: 0 }, 1.0, 'INLET', 1.0, 0, 0),
+        createTestFace(1, 0, -1, { x: 1, y: 0, z: 0 }, 1.0, 'OUTLET')
+      ]
+    );
+
+    const unconvergedSolution = {
+      u: [1.0],
+      v: [0.0],
+      w: [0.0],
+      p: [0.0],
+      faceFluxes: [-1.225, 1.225],
+      finalContinuityResidual: 7.0e-7,
+      converged: false, // Explicitly unconverged
+      convergenceAudit: {
+        terminationReason: 'MAX_ITERATIONS_REACHED'
+      },
+      cl: 0.0255, // Erroneous lift at AoA=2 deg
+      cd: 0.008,
+      aoaDeg: 2.0
+    };
+
+    const verifier = new SECP082IndependentCFDVerifier();
+    const res = verifier.verifyPhysicalConservation(mesh, unconvergedSolution, 1.225, 1.8e-5);
+
+    // Tier 1 numerical consistency passes
+    expect(res.gate1BoundaryFluxCompliance).toBe(true);
+    expect(res.gate2InternalFluxReconstruction).toBe(true);
+    expect(res.gate3GlobalMassConservation).toBe(true);
+    expect(res.gate4ContinuityResidualConsistency).toBe(true);
+    expect(res.gate5MutationDetection).toBe(true);
+    expect(res.numericalConsistencyPassed).toBe(true);
+
+    // Tier 2 physical plausibility MUST FAIL
+    expect(res.gate6PhysicalPlausibility).toBe(false);
+    expect(res.physicalPlausibilityPassed).toBe(false);
+    expect(res.independentVerdict).toBe('UNCONVERGED_SOLUTION');
+    expect(res.passed).toBe(false);
+    expect(res.physicalDiagnostics.failureReasons.length).toBeGreaterThan(0);
+  });
+
+  // Test N — Aerodynamic lift slope violation caught by Gate 6
+  test('SECP-082 Test N - Aerodynamic lift slope violation caught by Gate 6', () => {
+    const mesh = createTestMesh(
+      [createTestCell(0, [0, 1], 1.0, { x: 0.5, y: 0.5, z: 0.5 })],
+      [
+        createTestFace(0, 0, -1, { x: -1, y: 0, z: 0 }, 1.0, 'INLET', 1.0, 0, 0),
+        createTestFace(1, 0, -1, { x: 1, y: 0, z: 0 }, 1.0, 'OUTLET')
+      ]
+    );
+
+    const solution = {
+      u: [1.0],
+      v: [0.0],
+      w: [0.0],
+      p: [0.0],
+      faceFluxes: [-1.225, 1.225],
+      finalContinuityResidual: 1e-7,
+      converged: true,
+      cl: 0.0255, // Lift slope dCl/d(alpha) = 0.01275 / deg, well below thin airfoil theory minimum 0.03
+      cd: 0.012,
+      aoaDeg: 2.0
+    };
+
+    const verifier = new SECP082IndependentCFDVerifier();
+    const res = verifier.verifyPhysicalConservation(mesh, solution, 1.225, 1.8e-5);
+
+    expect(res.numericalConsistencyPassed).toBe(true);
+    expect(res.gate6PhysicalPlausibility).toBe(false);
+    expect(res.independentVerdict).toBe('PHYSICAL_UNPLAUSIBILITY_DETECTED');
+    expect(res.passed).toBe(false);
+  });
+
+  // Test O — Negative drag caught by Gate 6
+  test('SECP-082 Test O - Negative drag violation caught by Gate 6', () => {
+    const mesh = createTestMesh(
+      [createTestCell(0, [0, 1], 1.0, { x: 0.5, y: 0.5, z: 0.5 })],
+      [
+        createTestFace(0, 0, -1, { x: -1, y: 0, z: 0 }, 1.0, 'INLET', 1.0, 0, 0),
+        createTestFace(1, 0, -1, { x: 1, y: 0, z: 0 }, 1.0, 'OUTLET')
+      ]
+    );
+
+    const solution = {
+      u: [1.0],
+      v: [0.0],
+      w: [0.0],
+      p: [0.0],
+      faceFluxes: [-1.225, 1.225],
+      finalContinuityResidual: 1e-7,
+      converged: true,
+      cl: 0.22,
+      cd: -0.05, // Unphysical negative drag
+      aoaDeg: 2.0
+    };
+
+    const verifier = new SECP082IndependentCFDVerifier();
+    const res = verifier.verifyPhysicalConservation(mesh, solution, 1.225, 1.8e-5);
+
+    expect(res.numericalConsistencyPassed).toBe(true);
+    expect(res.gate6PhysicalPlausibility).toBe(false);
+    expect(res.independentVerdict).toBe('PHYSICAL_UNPLAUSIBILITY_DETECTED');
+    expect(res.passed).toBe(false);
+  });
+
+  // Test P — Fully converged aerodynamic solution satisfies both Tier 1 and Tier 2
+  test('SECP-082 Test P - Fully converged aerodynamic solution passes both tiers', () => {
+    const mesh = createTestMesh(
+      [createTestCell(0, [0, 1], 1.0, { x: 0.5, y: 0.5, z: 0.5 })],
+      [
+        createTestFace(0, 0, -1, { x: -1, y: 0, z: 0 }, 1.0, 'INLET', 1.0, 0, 0),
+        createTestFace(1, 0, -1, { x: 1, y: 0, z: 0 }, 1.0, 'OUTLET')
+      ]
+    );
+
+    const solution = {
+      u: [1.0],
+      v: [0.0],
+      w: [0.0],
+      p: [0.0],
+      faceFluxes: [-1.225, 1.225],
+      finalContinuityResidual: 1e-7,
+      converged: true,
+      cl: 0.22, // Thin-airfoil theoretical expectation at AoA=2 deg
+      cd: 0.012,
+      aoaDeg: 2.0
+    };
+
+    const verifier = new SECP082IndependentCFDVerifier();
+    const res = verifier.verifyPhysicalConservation(mesh, solution, 1.225, 1.8e-5);
+
+    expect(res.gate1BoundaryFluxCompliance).toBe(true);
+    expect(res.gate2InternalFluxReconstruction).toBe(true);
+    expect(res.gate3GlobalMassConservation).toBe(true);
+    expect(res.gate4ContinuityResidualConsistency).toBe(true);
+    expect(res.gate5MutationDetection).toBe(true);
+    expect(res.gate6PhysicalPlausibility).toBe(true);
+    expect(res.numericalConsistencyPassed).toBe(true);
+    expect(res.physicalPlausibilityPassed).toBe(true);
+    expect(res.independentVerdict).toBe('VERIFIED_NUMERICAL_CONSISTENCY');
+    expect(res.passed).toBe(true);
   });
 });

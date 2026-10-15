@@ -43,9 +43,17 @@ export class ScalarTransportDiscretizer {
         const gamma_f = config.gamma[owner];
         const diffFlux = (gamma_f * face.area) / Math.max(d_bc, 1e-6);
 
-        // Fixed value boundary (Wall = 0 for k, specific for omega)
+        // Fixed value boundary (Wall = 0 for k, analytical log-law/Wilcox wall value for omega)
         matrix.add(owner, owner, diffFlux);
-        // Source term b remains 0 for k wall, but could be adjusted for others
+        const isWall = !face.boundaryType || face.boundaryType === 'WALL' || face.boundaryType === 'WALL_NO_SLIP';
+        if (config.phiName === 'omega' && isWall) {
+          const nu = (config.gamma[owner] || 1.8e-5) / Math.max(config.rho[owner] || 1.2, 1e-6);
+          const omegaWall = (60.0 * nu) / (0.075 * Math.pow(Math.max(d_bc, 1e-5), 2));
+          b[owner] += diffFlux * Math.min(omegaWall, 1e8);
+        } else if (config.phiName === 'omega') {
+          const phiFarfield = Math.max(phi[owner], 1.0);
+          b[owner] += diffFlux * phiFarfield;
+        }
         continue;
       }
 

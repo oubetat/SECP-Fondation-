@@ -15,6 +15,31 @@
 
 import { CfdSolution3D, FvmMesh3D, FluidProperties3D } from './Fvm3DTypes';
 
+export interface PhysicalPlausibilityDiagnostics {
+  converged: boolean;
+  terminationReason?: string;
+  cl?: number;
+  cd?: number;
+  aoaDeg?: number;
+  expectedClRange?: [number, number];
+  failureReasons: string[];
+}
+
+export type IndependentCFDVerdict =
+  | 'VERIFIED_NUMERICAL_CONSISTENCY'
+  | 'VERIFIED_PHYSICAL_CONSERVATION'
+  | 'CONVERGED'
+  | 'NOT_CONVERGED'
+  | 'CONSERVATION_VIOLATION'
+  | 'CONSERVATIVE_ONLY'
+  | 'INVALID'
+  | 'FORGED_RESIDUAL_DETECTED'
+  | 'PREMATURE_CONVERGENCE_DETECTED'
+  | 'MISSING_INLET_BC_VELOCITY'
+  | 'INTERNAL_FLUX_RECONSTRUCTION_FAILURE'
+  | 'PHYSICAL_UNPLAUSIBILITY_DETECTED'
+  | 'UNCONVERGED_SOLUTION';
+
 export interface IndependentCfdAuditResult {
   independentContinuityResidual: number;
   globalMassImbalance: number;
@@ -26,10 +51,12 @@ export interface IndependentCfdAuditResult {
   momentumResidualY: number;
   momentumResidualZ: number;
   boundaryConditionCompliance: boolean;
-  physicalConservationPassed: boolean;
+  physicalConservationPassed: boolean; // Retained as backward-compatible alias for numericalConsistencyPassed
+  numericalConsistencyPassed: boolean;
+  physicalPlausibilityPassed: boolean;
   pressureGradientValid: boolean;
   recomputedPressureDropPa: number;
-  independentVerdict: 'VERIFIED_PHYSICAL_CONSERVATION' | 'CONVERGED' | 'NOT_CONVERGED' | 'CONSERVATION_VIOLATION' | 'CONSERVATIVE_ONLY' | 'INVALID' | 'FORGED_RESIDUAL_DETECTED' | 'PREMATURE_CONVERGENCE_DETECTED' | 'MISSING_INLET_BC_VELOCITY' | 'INTERNAL_FLUX_RECONSTRUCTION_FAILURE';
+  independentVerdict: IndependentCFDVerdict;
 
   passed: boolean;
 
@@ -44,12 +71,16 @@ export interface IndependentCfdAuditResult {
   pressureCorrectionContribution: number;
   fluxInconsistencyRatio: number;
 
-  // 5 Independent Verification Gates
+  // 6 Independent Verification Gates
   gate1BoundaryFluxCompliance: boolean;
   gate2InternalFluxReconstruction: boolean;
   gate3GlobalMassConservation: boolean;
   gate4ContinuityResidualConsistency: boolean;
   gate5MutationDetection: boolean;
+  gate6PhysicalPlausibility: boolean;
+
+  // Gate 6 Physical Diagnostics
+  physicalDiagnostics: PhysicalPlausibilityDiagnostics;
 }
 
 export class SECP082IndependentCFDVerifier {
@@ -423,17 +454,93 @@ export class SECP082IndependentCFDVerifier {
 
     const gate5MutationDetection = !forgedResidualDetected && !prematureConvergence;
 
-    // Final physical conservation pass requirement
-    const physicalConservationPassed = (
+    // -------------------------------------------------------------
+    // PHASE 5: Dual-Tier Evaluation & Gate 6 Physical Plausibility
+    // -------------------------------------------------------------
+    // Tier 1: Numerical Consistency (Gates 1 through 5)
+    const numericalConsistencyPassed = (
       gate1BoundaryFluxCompliance &&
       gate2InternalFluxReconstruction &&
       gate3GlobalMassConservation &&
       gate4ContinuityResidualConsistency &&
       gate5MutationDetection
     );
+    // Backward-compatibility alias
+    const physicalConservationPassed = numericalConsistencyPassed;
+
+    // Tier 2: Physical & Aerodynamic Plausibility (Gate 6)
+    const failureReasons: string[] = [];
+
+    // 1. Convergence Integrity Check
+    const convergenceAudit = solution.convergenceAudit;
+    const terminationReason = convergenceAudit?.terminationReason;
+    const isExplicitlyUnconverged = solution.converged === false || 
+      terminationReason === 'MAX_ITERATIONS_REACHED' || 
+      terminationReason === 'DIVERGED' || 
+      terminationReason === 'FAILED';
+
+    if (isExplicitlyUnconverged) {
+      failureReasons.push(`Solution is unconverged (converged=${solution.converged}, terminationReason=${terminationReason || 'NONE'})`);
+    }
+
+    // 2. Aerodynamic Forces & Coefficients Plausibility
+    const cl: number | undefined = solution.cl ?? solution.liftCoefficient ?? solution.monitors?.liftCoefficientCl ?? solution.monitors?.forces?.coefficients?.CL ?? solution.forces?.coefficients?.CL;
+    const cd: number | undefined = solution.cd ?? solution.dragCoefficient ?? solution.monitors?.dragCoefficientCd ?? solution.monitors?.forces?.coefficients?.CD ?? solution.forces?.coefficients?.CD;
+    const aoaDeg: number | undefined = solution.aoaDeg ?? solution.angleOfAttackDeg ?? solution.monitors?.reference?.angleOfAttackDeg ?? solution.reference?.angleOfAttackDeg;
+
+    let expectedClRange: [number, number] | undefined = undefined;
+
+    if (cd !== undefined) {
+      if (cd <= 0 || !isFinite(cd)) {
+        failureReasons.push(`Physical violation: Drag coefficient Cd must be strictly positive (Cd=${cd})`);
+      }
+      if (cd > 5.0) {
+        failureReasons.push(`Physical violation: Drag coefficient Cd exceeds plausible upper bound (Cd=${cd} > 5.0)`);
+      }
+    }
+
+    if (cl !== undefined) {
+      if (Math.abs(cl) > 3.5 || !isFinite(cl)) {
+        failureReasons.push(`Physical violation: Lift coefficient |Cl| exceeds plausible upper bound (|Cl|=${Math.abs(cl)} > 3.5)`);
+      }
+
+      if (aoaDeg !== undefined && Math.abs(aoaDeg) > 0.05) {
+        // Sign correspondence
+        if (aoaDeg > 0 && cl < -0.001) {
+          failureReasons.push(`Physical violation: Sign mismatch between AoA (${aoaDeg} deg) and Cl (${cl})`);
+        } else if (aoaDeg < 0 && cl > 0.001) {
+          failureReasons.push(`Physical violation: Sign mismatch between AoA (${aoaDeg} deg) and Cl (${cl})`);
+        }
+
+        // Pre-stall linear regime slope sanity: dCl/d(alpha) in [0.03, 0.15] per degree
+        if (Math.abs(aoaDeg) <= 12.0) {
+          const minExpectedCl = Math.sign(aoaDeg) * Math.abs(aoaDeg) * 0.03;
+          const maxExpectedCl = Math.sign(aoaDeg) * Math.abs(aoaDeg) * 0.15;
+          const [lo, hi] = minExpectedCl < maxExpectedCl ? [minExpectedCl, maxExpectedCl] : [maxExpectedCl, minExpectedCl];
+          expectedClRange = [lo, hi];
+
+          if (cl < lo || cl > hi) {
+            failureReasons.push(`Physical violation: Lift coefficient Cl=${cl.toFixed(4)} deviates from thin airfoil theoretical slope [${lo.toFixed(4)}, ${hi.toFixed(4)}] at AoA=${aoaDeg} deg`);
+          }
+        }
+      }
+    }
+
+    // 3. Velocity / Pressure Extremal Bounds Sanity
+    let maxV = 0.0;
+    for (let c = 0; c < numCells; c++) {
+      const magV = Math.sqrt((u[c] || 0) ** 2 + (v[c] || 0) ** 2 + (w[c] || 0) ** 2);
+      if (magV > maxV) maxV = magV;
+    }
+    if (maxV > 1e4) {
+      failureReasons.push(`Physical violation: Flow field contains unphysical velocity magnitude (${maxV.toExponential(2)} m/s)`);
+    }
+
+    const gate6PhysicalPlausibility = failureReasons.length === 0;
+    const physicalPlausibilityPassed = gate6PhysicalPlausibility;
 
     // Determine Forensic Verdict with Engineering Rigor
-    let independentVerdict: 'VERIFIED_PHYSICAL_CONSERVATION' | 'CONVERGED' | 'NOT_CONVERGED' | 'CONSERVATION_VIOLATION' | 'CONSERVATIVE_ONLY' | 'INVALID' | 'FORGED_RESIDUAL_DETECTED' | 'PREMATURE_CONVERGENCE_DETECTED' | 'MISSING_INLET_BC_VELOCITY' | 'INTERNAL_FLUX_RECONSTRUCTION_FAILURE' = 'VERIFIED_PHYSICAL_CONSERVATION';
+    let independentVerdict: IndependentCFDVerdict = 'VERIFIED_NUMERICAL_CONSISTENCY';
 
     if (forgedResidualDetected) {
       independentVerdict = 'FORGED_RESIDUAL_DETECTED';
@@ -445,15 +552,13 @@ export class SECP082IndependentCFDVerifier {
       independentVerdict = 'INVALID';
     } else if (gate3GlobalMassConservation && !gate4ContinuityResidualConsistency) {
       independentVerdict = 'CONSERVATIVE_ONLY';
-    } else if (!physicalConservationPassed) {
+    } else if (!numericalConsistencyPassed) {
       independentVerdict = 'NOT_CONVERGED';
+    } else if (!gate6PhysicalPlausibility) {
+      independentVerdict = isExplicitlyUnconverged ? 'UNCONVERGED_SOLUTION' : 'PHYSICAL_UNPLAUSIBILITY_DETECTED';
     }
 
-
-
-
-    const passed = physicalConservationPassed && (independentVerdict === 'VERIFIED_PHYSICAL_CONSERVATION');
-
+    const passed = numericalConsistencyPassed && gate6PhysicalPlausibility;
 
     return {
       independentContinuityResidual,
@@ -467,6 +572,8 @@ export class SECP082IndependentCFDVerifier {
       momentumResidualZ: maxMomResZ,
       boundaryConditionCompliance: bcCompliance,
       physicalConservationPassed,
+      numericalConsistencyPassed,
+      physicalPlausibilityPassed,
       pressureGradientValid: !isNaN(recomputedPressureDropPa) && isFinite(recomputedPressureDropPa),
       recomputedPressureDropPa,
       independentVerdict,
@@ -483,12 +590,24 @@ export class SECP082IndependentCFDVerifier {
       pressureCorrectionContribution,
       fluxInconsistencyRatio,
 
-      // Gates
+      // 6 Verification Gates
       gate1BoundaryFluxCompliance,
       gate2InternalFluxReconstruction,
       gate3GlobalMassConservation,
       gate4ContinuityResidualConsistency,
-      gate5MutationDetection
+      gate5MutationDetection,
+      gate6PhysicalPlausibility,
+
+      // Physical diagnostics
+      physicalDiagnostics: {
+        converged: !isExplicitlyUnconverged,
+        terminationReason,
+        cl,
+        cd,
+        aoaDeg,
+        expectedClRange,
+        failureReasons
+      }
     };
   }
 
@@ -496,9 +615,9 @@ export class SECP082IndependentCFDVerifier {
    * Generates a complete forensic audit string according to SECP-082 specification
    */
   public static generateForensicReport(result: IndependentCfdAuditResult): string {
-    return [
+    const lines = [
       '==============================================================',
-      'SECP-082 FORENSIC FLUX AUDIT',
+      'SECP-082 FORENSIC FLUX & PHYSICAL PLAUSIBILITY AUDIT',
       '==============================================================',
       `- Boundary Mass Imbalance: ${result.globalMassImbalance.toExponential(6)}`,
       `- Internal Closure Residual: ${result.internalClosureResidual.toExponential(6)}`,
@@ -514,9 +633,23 @@ export class SECP082IndependentCFDVerifier {
       `- Global Conservation (Gate 3): ${result.gate3GlobalMassConservation ? 'PASS' : 'FAIL'}`,
       `- Continuity Consistency (Gate 4): ${result.gate4ContinuityResidualConsistency ? 'PASS' : 'FAIL'}`,
       `- Mutation Rejection (Gate 5): ${result.gate5MutationDetection ? 'PASS' : 'FAIL'}`,
+      `- Physical Plausibility (Gate 6): ${result.gate6PhysicalPlausibility ? 'PASS' : 'FAIL'}`,
+      '--------------------------------------------------------------',
+      `SECP-082 NUMERICAL CONSISTENCY: ${result.numericalConsistencyPassed ? 'PASS' : 'FAIL'}`,
+      `SECP-082 PHYSICAL PLAUSIBILITY: ${result.physicalPlausibilityPassed ? 'PASS' : 'FAIL'}`,
       '==============================================================',
       `SECP-082 VERDICT: ${result.passed ? 'PASS' : 'FAIL'} (${result.independentVerdict})`,
       '=============================================================='
-    ].join('\n');
+    ];
+
+    if (result.physicalDiagnostics.failureReasons.length > 0) {
+      lines.push('GATE 6 FAILURE DIAGNOSTICS:');
+      for (const reason of result.physicalDiagnostics.failureReasons) {
+        lines.push(`  * ${reason}`);
+      }
+      lines.push('==============================================================');
+    }
+
+    return lines.join('\n');
   }
 }

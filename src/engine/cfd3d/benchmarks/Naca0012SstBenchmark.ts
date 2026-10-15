@@ -140,11 +140,13 @@ export class Naca0012SstBenchmark {
       upwindScheme: 'FIRST_ORDER_UPWIND' as const
     };
 
-    const solution = Fvm3DNavierStokesSolver.solve(fvmMesh, fluid, config, 1.0, Uinf);
+    const spanM = 0.2;
+    const referenceAreaM2 = 1.0 * spanM;
+    const solution = Fvm3DNavierStokesSolver.solve(fvmMesh, fluid, config, referenceAreaM2, Uinf);
 
     // SECP-CFD-FORENSIC-017: Diagnostic Continuation (+50 iters)
     const hotStartConfig = { ...config, maxIterations: 50 };
-    const continuation = Fvm3DNavierStokesSolver.solve(fvmMesh, fluid, hotStartConfig, 1.0, Uinf, undefined, {
+    const continuation = Fvm3DNavierStokesSolver.solve(fvmMesh, fluid, hotStartConfig, referenceAreaM2, Uinf, undefined, {
        u: solution.velocity.u,
        v: solution.velocity.v,
        w: solution.velocity.w,

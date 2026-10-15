@@ -260,7 +260,8 @@ export class MetrologyEngine {
   private static verifyEnvelopeIntegrity(
     envelope: AuthenticatedAcquisitionEnvelope, 
     inst: InstrumentDefinition | undefined,
-    driverIdOrConnection?: string | MeasurementDriverConnection
+    driverIdOrConnection?: string | MeasurementDriverConnection,
+    isProductionRelease: boolean = true
   ): { isProdPhysical: boolean } {
     // Replay prevention: same acquisitionId must not be processed across different sessions
     const sessionOwner = this.processedAcquisitions.get(envelope.acquisitionId);
@@ -323,7 +324,7 @@ export class MetrologyEngine {
       throw new Error('PROVENANCE_BREACH: Asymmetric signature verification failed.');
     }
 
-    if (driverType !== 'PRODUCTION') {
+    if (isProductionRelease && driverType !== 'PRODUCTION') {
       throw new Error('PROVENANCE_BREACH: Production releases require signatures from a production hardware-anchored trust authority.');
     }
 
@@ -344,7 +345,7 @@ export class MetrologyEngine {
       throw new Error(`PROVENANCE_BREACH: Calibration ID mismatch. Expected ${inst.calibration.calibrationId}, got ${envelope.calibrationId}`);
     }
 
-    return { isProdPhysical: true };
+    return { isProdPhysical: driverType === 'PRODUCTION' };
   }
 
   /**
@@ -494,7 +495,8 @@ export class MetrologyEngine {
         throw new Error(`PROVENANCE_BREACH: Session ID mismatch. Expected ${session.sessionId}, got ${envelope.sessionId}`);
       }
 
-      const verification = this.verifyEnvelopeIntegrity(envelope, inst, driverId);
+      const isProductionRelease = session.evidenceGrade === 'LEVEL_3_PHYSICAL_TELEMETRY' || session.evidenceGrade === 'PROD_PHYSICAL';
+      const verification = this.verifyEnvelopeIntegrity(envelope, inst, driverId, isProductionRelease);
       isProdPhysical = verification.isProdPhysical;
       this.processedAcquisitions.set(envelope.acquisitionId, session.sessionId);
     } else if (session.evidenceGrade === 'LEVEL_3_PHYSICAL_TELEMETRY') {

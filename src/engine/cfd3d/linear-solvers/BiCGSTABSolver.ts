@@ -72,7 +72,7 @@ export class BiCGSTABSolver implements LinearSolver {
     const initialRes = IterativeSolverUtils.computeResidual(matrix, rhs, x);
     const residualHistory: number[] = [initialRes.norms.l2];
 
-    if (IterativeSolverUtils.isConverged(initialRes.norms, initialRes.norms, config)) {
+    if (IterativeSolverUtils.isConverged(initialRes.norms, initialRes.norms, config, 0)) {
       return {
         solution: x,
         status: 'CONVERGED',
@@ -176,7 +176,7 @@ export class BiCGSTABSolver implements LinearSolver {
         break;
       }
 
-      if (IterativeSolverUtils.isConverged(currentRes.norms, initialRes.norms, config)) {
+      if (IterativeSolverUtils.isConverged(currentRes.norms, initialRes.norms, config, iter)) {
         status = 'CONVERGED';
         return {
           solution: x,

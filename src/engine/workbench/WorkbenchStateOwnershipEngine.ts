@@ -128,6 +128,156 @@ export type InvalidationCallback = (
   invalidatedEntities: StandardStateEntity[]
 ) => void;
 
+/**
+ * Cycle-safe, prototype-preserving deep cloner for CAD & B-Rep structures.
+ * Preserves topological incidence, class prototypes, arrays, maps, sets, dates.
+ */
+function deepCloneCAD<T>(source: T, seen = new Map<any, any>()): T {
+  if (source === null || typeof source !== 'object') {
+    return source;
+  }
+
+  if (seen.has(source)) {
+    return seen.get(source);
+  }
+
+  if (source instanceof Date) {
+    return new Date(source.getTime()) as any;
+  }
+
+  if (source instanceof RegExp) {
+    return new RegExp(source.source, source.flags) as any;
+  }
+
+  if (source instanceof Map) {
+    const copyMap = new Map();
+    seen.set(source, copyMap);
+    source.forEach((val, key) => {
+      copyMap.set(deepCloneCAD(key, seen), deepCloneCAD(val, seen));
+    });
+    return copyMap as any;
+  }
+
+  if (source instanceof Set) {
+    const copySet = new Set();
+    seen.set(source, copySet);
+    source.forEach((val) => {
+      copySet.add(deepCloneCAD(val, seen));
+    });
+    return copySet as any;
+  }
+
+  if (Array.isArray(source)) {
+    const copyArr: any[] = [];
+    seen.set(source, copyArr);
+    for (let i = 0; i < source.length; i++) {
+      copyArr[i] = deepCloneCAD(source[i], seen);
+    }
+    return copyArr as any;
+  }
+
+  // Preserve class prototype (BRepSolid, TopoShape, custom geometric instances)
+  const proto = Object.getPrototypeOf(source);
+  const copyObj = Object.create(proto || Object.prototype);
+  seen.set(source, copyObj);
+
+  // Copy own properties and symbols
+  const keys = Reflect.ownKeys(source);
+  for (const key of keys) {
+    const descriptor = Object.getOwnPropertyDescriptor(source, key);
+    if (descriptor) {
+      if ('value' in descriptor) {
+        try {
+          copyObj[key] = deepCloneCAD(descriptor.value, seen);
+        } catch {
+          try {
+            Object.defineProperty(copyObj, key, {
+              ...descriptor,
+              value: deepCloneCAD(descriptor.value, seen),
+            });
+          } catch {
+            // Ignore if non-configurable
+          }
+        }
+      } else {
+        try {
+          Object.defineProperty(copyObj, key, descriptor);
+        } catch {
+          // Ignore accessor error
+        }
+      }
+    }
+  }
+
+  return copyObj;
+}
+
+/**
+ * Reverts an existing CAD entity/object in-place to the exact state of snapshotObj.
+ * Restores all properties, removes any added corrupted keys, and preserves object identity.
+ */
+function restoreCADEntityInPlace(targetObj: any, snapshotObj: any, visited = new Set<any>()): void {
+  if (!targetObj || !snapshotObj || typeof targetObj !== 'object' || typeof snapshotObj !== 'object') {
+    return;
+  }
+  if (visited.has(targetObj)) return;
+  visited.add(targetObj);
+
+  // 1. Delete extra properties added to targetObj during the failed mutation
+  const targetKeys = Reflect.ownKeys(targetObj);
+  for (const key of targetKeys) {
+    if (!Reflect.has(snapshotObj, key)) {
+      try {
+        delete (targetObj as any)[key];
+      } catch {
+        // Ignore if non-configurable
+      }
+    }
+  }
+
+  // 2. Revert / restore properties from snapshotObj
+  const snapshotKeys = Reflect.ownKeys(snapshotObj);
+  for (const key of snapshotKeys) {
+    const targetVal = (targetObj as any)[key];
+    const snapVal = (snapshotObj as any)[key];
+
+    if (
+      targetVal &&
+      snapVal &&
+      typeof targetVal === 'object' &&
+      typeof snapVal === 'object' &&
+      !Array.isArray(snapVal) &&
+      !(snapVal instanceof Date) &&
+      !(snapVal instanceof RegExp) &&
+      !(snapVal instanceof Map) &&
+      !(snapVal instanceof Set)
+    ) {
+      restoreCADEntityInPlace(targetVal, snapVal, visited);
+    } else {
+      try {
+        (targetObj as any)[key] = deepCloneCAD(snapVal);
+      } catch {
+        try {
+          Object.defineProperty(targetObj, key, {
+            value: deepCloneCAD(snapVal),
+            writable: true,
+            configurable: true,
+            enumerable: true,
+          });
+        } catch {
+          // Ignore
+        }
+      }
+    }
+  }
+}
+
+export interface DocumentSnapshotRecord {
+  documentSnapshot: EngineeringDocument;
+  shapeReference?: any;
+  solidReference?: any;
+}
+
 export class WorkbenchStateOwnershipEngine {
   private static instance: WorkbenchStateOwnershipEngine;
 
@@ -164,15 +314,14 @@ export class WorkbenchStateOwnershipEngine {
   }
 
   /**
-   * Seed standard classification taxonomy
+   * Seed standard classification taxonomy and system workbenches
    */
   private seedStandardClassifications() {
-    const defaultWorkbench = 'GLOBAL_WORKBENCH_REGISTRY';
-    const mapping: Record<StandardStateEntity, StateCategory> = {
+    const defaultMapping: Record<StandardStateEntity, StateCategory> = {
       'EngineeringDocument': 'CANONICAL_SOT',
       'evaluated B-Rep': 'DERIVED',
       'render mesh': 'DERIVED',
-      'selection': 'DERIVED', // Derived / UI
+      'selection': 'DERIVED',
       'feature tree projection': 'DERIVED',
       'PatternEngine session': 'SESSION',
       'DirectModeling transaction': 'SESSION',
@@ -182,9 +331,127 @@ export class WorkbenchStateOwnershipEngine {
       'legacy FeatureTreeManager': 'LEGACY',
     };
 
-    const map = new Map<string, StateCategory>();
-    Object.entries(mapping).forEach(([entity, cat]) => map.set(entity, cat));
-    this.workbenchRegistrations.set(defaultWorkbench, map);
+    const workbenchesToSeed: Array<{ id: string; entities: Array<{ name: string; category?: StateCategory }> }> = [
+      {
+        id: 'GLOBAL_WORKBENCH_REGISTRY',
+        entities: Object.entries(defaultMapping).map(([name, category]) => ({ name, category: category as StateCategory })),
+      },
+      {
+        id: 'DESIGN',
+        entities: [
+          { name: 'EngineeringDocument', category: 'CANONICAL_SOT' },
+          { name: 'evaluated B-Rep', category: 'DERIVED' },
+          { name: 'render mesh', category: 'DERIVED' },
+          { name: 'selection', category: 'DERIVED' },
+          { name: 'feature tree projection', category: 'DERIVED' },
+        ],
+      },
+      {
+        id: 'PARAMETRIC_FEATURE_WORKBENCH',
+        entities: [
+          { name: 'EngineeringDocument', category: 'CANONICAL_SOT' },
+          { name: 'evaluated B-Rep', category: 'DERIVED' },
+          { name: 'render mesh', category: 'DERIVED' },
+          { name: 'feature tree projection', category: 'DERIVED' },
+        ],
+      },
+      {
+        id: 'FEATURE_TREE_WORKBENCH',
+        entities: [
+          { name: 'EngineeringDocument', category: 'CANONICAL_SOT' },
+          { name: 'feature tree projection', category: 'DERIVED' },
+          { name: 'selection', category: 'DERIVED' },
+        ],
+      },
+      {
+        id: 'PARAMETRIC_WORKBENCH',
+        entities: [
+          { name: 'EngineeringDocument', category: 'CANONICAL_SOT' },
+          { name: 'evaluated B-Rep', category: 'DERIVED' },
+          { name: 'render mesh', category: 'DERIVED' },
+        ],
+      },
+      {
+        id: 'PATTERN_WORKBENCH',
+        entities: [
+          { name: 'PatternEngine session', category: 'SESSION' },
+          { name: 'EngineeringDocument', category: 'CANONICAL_SOT' },
+          { name: 'evaluated B-Rep', category: 'DERIVED' },
+        ],
+      },
+      {
+        id: 'DIRECT_MODELING_WORKBENCH',
+        entities: [
+          { name: 'DirectModeling transaction', category: 'SESSION' },
+          { name: 'EngineeringDocument', category: 'CANONICAL_SOT' },
+          { name: 'evaluated B-Rep', category: 'DERIVED' },
+        ],
+      },
+      {
+        id: 'VIEWPORT_WORKBENCH',
+        entities: [
+          { name: 'render mesh', category: 'DERIVED' },
+          { name: 'selection', category: 'DERIVED' },
+          { name: 'evaluated B-Rep', category: 'DERIVED' },
+          { name: 'UI panel state', category: 'UI' },
+        ],
+      },
+      {
+        id: 'UI_PANEL_WORKBENCH',
+        entities: [
+          { name: 'UI panel state', category: 'UI' },
+        ],
+      },
+      {
+        id: 'GOVERNANCE',
+        entities: [
+          { name: 'EngineeringDocument', category: 'CANONICAL_SOT' },
+        ],
+      },
+      {
+        id: 'SIMULATION',
+        entities: [
+          { name: 'EngineeringDocument', category: 'CANONICAL_SOT' },
+          { name: 'evaluated B-Rep', category: 'DERIVED' },
+          { name: 'render mesh', category: 'DERIVED' },
+        ],
+      },
+      {
+        id: 'MANUFACTURING',
+        entities: [
+          { name: 'EngineeringDocument', category: 'CANONICAL_SOT' },
+          { name: 'evaluated B-Rep', category: 'DERIVED' },
+          { name: 'render mesh', category: 'DERIVED' },
+        ],
+      },
+      {
+        id: 'DOCUMENTATION',
+        entities: [
+          { name: 'EngineeringDocument', category: 'CANONICAL_SOT' },
+          { name: 'feature tree projection', category: 'DERIVED' },
+        ],
+      },
+      {
+        id: 'GENERAL_WORKBENCH',
+        entities: [
+          { name: 'EngineeringDocument', category: 'CANONICAL_SOT' },
+          { name: 'evaluated B-Rep', category: 'DERIVED' },
+        ],
+      },
+      {
+        id: 'LEGACY_BRIDGE',
+        entities: [
+          { name: 'legacy FeatureTreeManager', category: 'LEGACY' },
+          { name: 'EngineeringDocument', category: 'CANONICAL_SOT' },
+        ],
+      },
+    ];
+
+    for (const wb of workbenchesToSeed) {
+      const map = new Map<string, StateCategory>();
+      wb.entities.forEach(e => map.set(e.name, e.category || this.classifyState(e.name)));
+      this.workbenchRegistrations.set(wb.id, map);
+    }
   }
 
   /**
@@ -335,9 +602,77 @@ export class WorkbenchStateOwnershipEngine {
     return auditResult;
   }
 
+
+
+  /**
+   * Create an isolated deep snapshot of an EngineeringDocument to ensure transactional atomicity.
+   * Deep clones all CAD structures and retains original shape/solid identity references for in-place restoration.
+   */
+  private createDocumentSnapshot(doc: EngineeringDocument): DocumentSnapshotRecord {
+    return {
+      documentSnapshot: deepCloneCAD(doc),
+      shapeReference: doc.evaluatedShape,
+      solidReference: doc.evaluatedSolid,
+    };
+  }
+
+  /**
+   * In-place atomic restoration of an EngineeringDocument to its snapshot state.
+   * Restores all internal fields of evaluatedShape and evaluatedSolid in-place,
+   * reverses any added or deleted keys, and preserves object identity for downstream references.
+   */
+  private restoreDocumentSnapshot(target: EngineeringDocument, snapshotRecord: DocumentSnapshotRecord): void {
+    const { documentSnapshot, shapeReference, solidReference } = snapshotRecord;
+
+    // 1. In-place restoration of evaluatedShape
+    if (shapeReference && documentSnapshot.evaluatedShape) {
+      restoreCADEntityInPlace(shapeReference, documentSnapshot.evaluatedShape);
+      target.evaluatedShape = shapeReference;
+    } else if (documentSnapshot.evaluatedShape) {
+      target.evaluatedShape = deepCloneCAD(documentSnapshot.evaluatedShape);
+    } else {
+      delete target.evaluatedShape;
+    }
+
+    // 2. In-place restoration of evaluatedSolid
+    if (solidReference && documentSnapshot.evaluatedSolid) {
+      restoreCADEntityInPlace(solidReference, documentSnapshot.evaluatedSolid);
+      target.evaluatedSolid = solidReference;
+    } else if (documentSnapshot.evaluatedSolid) {
+      target.evaluatedSolid = deepCloneCAD(documentSnapshot.evaluatedSolid);
+    } else {
+      delete target.evaluatedSolid;
+    }
+
+    // 3. Clear extra keys on target
+    const targetKeys = Reflect.ownKeys(target);
+    for (const key of targetKeys) {
+      if (key === 'evaluatedShape' || key === 'evaluatedSolid') continue;
+      if (!Reflect.has(documentSnapshot, key)) {
+        try {
+          delete (target as any)[key];
+        } catch {
+          // ignore
+        }
+      }
+    }
+
+    // 4. Restore all other fields from snapshot
+    const snapKeys = Reflect.ownKeys(documentSnapshot);
+    for (const key of snapKeys) {
+      if (key === 'evaluatedShape' || key === 'evaluatedSolid') continue;
+      (target as any)[key] = deepCloneCAD((documentSnapshot as any)[key]);
+    }
+  }
+
   /**
    * Apply a Canonical Mutation to EngineeringDocument:
    * Increments revision and invalidates all derived state (evaluated B-Rep, render mesh, selection, feature tree projection).
+   * GUARANTEES TRANSACTIONAL ATOMICITY:
+   * If mutatorFn throws or fails midway, the document is rolled back in place to its exact pre-mutation state,
+   * including in-place rollback of B-Rep geometry and topology,
+   * revision is NOT incremented, derived caches are NOT touched, subscribers are NOT notified,
+   * and the failure is audited as an aborted transaction before rethrowing.
    */
   public mutateCanonicalDocument(
     docId: string,
@@ -350,15 +685,41 @@ export class WorkbenchStateOwnershipEngine {
       throw new Error(`Canonical EngineeringDocument '${docId}' not found in WorkbenchStateOwnershipEngine.`);
     }
 
+    // Capture deep snapshot for transactional rollback guarantees
+    const snapshotRecord = this.createDocumentSnapshot(doc);
+
+    // Execute mutator in isolated transactional block
+    try {
+      mutatorFn(doc);
+    } catch (err: any) {
+      // Rollback document state in-place to pre-mutation snapshot
+      this.restoreDocumentSnapshot(doc, snapshotRecord);
+
+      // Audit aborted transaction to preserve full forensic history
+      const abortedAudit: StateMutationAuditResult = {
+        workbenchId,
+        entityName: 'EngineeringDocument',
+        classification: 'CANONICAL_SOT',
+        verdict: 'ARCHITECTURAL_GAP',
+        isAcceptable: false,
+        invalidatedEntities: [],
+        details: `Transactional abort & rollback: mutatorFn failed midway (${err?.message || String(err)}). Document restored to rev ${doc.revision}.`,
+        timestamp: new Date().toISOString(),
+      };
+      this.auditLogs.push(abortedAudit);
+
+      throw new Error(
+        `Canonical mutation transaction failed and was rolled back atomically: ${err?.message || String(err)}`
+      );
+    }
+
+    // Only audit and commit upon successful completion of mutatorFn
     const audit = this.auditStateMutation({
       workbenchId,
       entityName: 'EngineeringDocument',
       modifiesSOT: true,
       mutationType: mutationDescription,
     });
-
-    // Perform mutation
-    mutatorFn(doc);
 
     // Increment revision
     const currentRev = typeof doc.revision === 'number' ? doc.revision : parseInt(String(doc.revision), 10) || 1;
@@ -430,6 +791,81 @@ export class WorkbenchStateOwnershipEngine {
   }
 
   /**
+   * Session Management: Discard / Rollback an uncommitted session.
+   * Completely purges transient staged changes and removes the session from memory.
+   * Guarantees zero side effects on Canonical SOT.
+   */
+  public discardSession(sessionId: string): { discardedSession: ActiveSession; audit: StateMutationAuditResult } {
+    const session = this.activeSessions.get(sessionId);
+    if (!session) {
+      throw new Error(`Session '${sessionId}' not found for discard.`);
+    }
+    if (session.isCommitted) {
+      throw new Error(`Cannot discard already committed session '${sessionId}'.`);
+    }
+
+    this.activeSessions.delete(sessionId);
+
+    const audit: StateMutationAuditResult = {
+      workbenchId: session.workbenchId,
+      entityName: session.sessionType,
+      classification: 'SESSION',
+      verdict: 'SESSION_MUTATION',
+      isAcceptable: true,
+      invalidatedEntities: [],
+      details: `Session '${sessionId}' (${session.sessionType}) discarded with ${session.stagedChanges.length} staged changes. Zero SOT impact.`,
+      timestamp: new Date().toISOString(),
+    };
+    this.auditLogs.push(audit);
+
+    return { discardedSession: session, audit };
+  }
+
+  /**
+   * Retrieve active session by ID
+   */
+  public getActiveSession(sessionId: string): ActiveSession | undefined {
+    return this.activeSessions.get(sessionId);
+  }
+
+  /**
+   * Derived state cache management: Store evaluated derived state
+   */
+  public setDerivedCache(docId: string, entity: StandardStateEntity, value: any): void {
+    let docMap = this.derivedCaches.get(docId);
+    if (!docMap) {
+      docMap = new Map();
+      this.derivedCaches.set(docId, docMap);
+    }
+    docMap.set(entity, value);
+  }
+
+  /**
+   * Derived state cache management: Retrieve cached derived state
+   */
+  public getDerivedCache(docId: string, entity: StandardStateEntity): any | undefined {
+    return this.derivedCaches.get(docId)?.get(entity);
+  }
+
+  /**
+   * Explicitly invalidate derived state caches for a document and notify subscribers
+   */
+  public invalidateDerivedCache(docId: string, entity?: StandardStateEntity): void {
+    if (entity) {
+      this.derivedCaches.get(docId)?.delete(entity);
+    } else {
+      this.derivedCaches.delete(docId);
+    }
+    const doc = this.canonicalDocuments.get(docId);
+    if (doc) {
+      const invalidatedList: StandardStateEntity[] = entity
+        ? [entity]
+        : ['evaluated B-Rep', 'render mesh', 'selection', 'feature tree projection'];
+      this.notifyInvalidation(doc, invalidatedList);
+    }
+  }
+
+  /**
    * Commit a Session to the Canonical SOT (EngineeringDocument)
    * Converts transient Session state into a Canonical Mutation.
    */
@@ -468,7 +904,7 @@ export class WorkbenchStateOwnershipEngine {
       targetDoc.documentId,
       (doc) => {
         doc.features = legacyFeatures.map((f) => ({
-          featureId: f.id,
+          id: f.id,
           name: f.operation.command,
           type: f.operation.domain,
           status: f.status,

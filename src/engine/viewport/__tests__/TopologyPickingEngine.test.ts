@@ -1,7 +1,7 @@
 import { describe, it, test, expect, beforeEach } from 'vitest';
 import * as THREE from 'three';
 import { TopologyPickingEngine, PickingContext } from '../TopologyPickingEngine';
-import { EngineeringDocument } from '../../../types/domainModel';
+import { EngineeringDocument } from '../../cad-kernel/document/CADDocument';
 
 describe('TopologyPickingEngine', () => {
   let engine: TopologyPickingEngine;

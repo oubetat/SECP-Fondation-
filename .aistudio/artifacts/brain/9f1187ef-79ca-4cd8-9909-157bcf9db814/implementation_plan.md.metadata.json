@@ -1,0 +1,6 @@
+{
+  "summary": "Implementation plan for refactoring SECP082IndependentCFDVerifier to resolve the CFD_VERIFIER_BLIND_TO_PHYSICS finding. Upgrades verdict semantics to VERIFIED_NUMERICAL_CONSISTENCY, introduces Gate 6 Physical Plausibility, and establishes clear separation between numerical self-consistency and physical aerodynamic validation.",
+  "updatedAt": "2026-10-15T07:26:57.696573093Z",
+  "requestFeedback": true,
+  "userFacing": true
+}

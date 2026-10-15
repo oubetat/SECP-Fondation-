@@ -34,8 +34,13 @@ export class IterativeSolverUtils {
   public static isConverged(
     norms: ResidualNorms,
     initialNorms: ResidualNorms,
-    config: SolverConfiguration
+    config: SolverConfiguration,
+    iteration: number = 1
   ): boolean {
+    if (iteration === 0) {
+      // Pre-loop verification: Only declare convergence at iteration 0 if residual is strictly at zero precision
+      return norms.l2 < 1e-15;
+    }
     if (norms.l2 <= config.absoluteTolerance) return true;
     if (initialNorms.l2 > 1e-14 && (norms.l2 / initialNorms.l2) <= config.relativeTolerance) return true;
     if (norms.normalized <= config.relativeTolerance) return true;

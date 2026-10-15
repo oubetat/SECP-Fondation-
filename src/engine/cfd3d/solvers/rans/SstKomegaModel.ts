@@ -131,7 +131,7 @@ export class SstKomegaModel implements TurbulenceModel {
     return { valid: errors.length === 0, errors };
   }
 
-  public evaluate(state: TurbulenceModelState, meanFlow: RansFieldState, material: { density: number, viscosity: number }): TurbulenceModelState {
+  public evaluate(state: TurbulenceModelState, meanFlow?: RansFieldState, material?: { density: number, viscosity: number }): TurbulenceModelState {
     const size = state.turbulentViscosity.length;
     const k = state.fields['k'];
     const omega = state.fields['omega'];
@@ -142,10 +142,13 @@ export class SstKomegaModel implements TurbulenceModel {
     const F2: number[] = [];
     const production: number[] = [];
     const dissipation: number[] = [];
+    const omegaProduction: number[] = [];
+    const omegaDissipation: number[] = [];
     const crossDiffusion: number[] = [];
 
-    const density = material.density;
-    const nu = material.viscosity / density;
+    const density = material?.density ?? 1.2;
+    const viscosity = material?.viscosity ?? 1.8e-5;
+    const nu = viscosity / density;
 
     for (let i = 0; i < size; i++) {
       const ki = k[i];
@@ -155,22 +158,22 @@ export class SstKomegaModel implements TurbulenceModel {
       // 1. Strain Rate S and Vorticity Omega
       // S = sqrt(2 * Sij * Sij)
       // Omega = sqrt(2 * Wij * Wij)
-      // For now, if gradients aren't fully available, we use a more realistic fallback
-      // than a constant 100.
-      const gradU = meanFlow.gradients?.grad_U?.[i] || [[0, 0, 0], [0, 0, 0], [0, 0, 0]];
+      const gradU = meanFlow?.gradients?.grad_U?.[i] || (state.gradients?.grad_U as any)?.[i];
       
       let s2 = 0;
       let w2 = 0;
-      for (let r = 0; r < 3; r++) {
-        for (let c = 0; c < 3; c++) {
-          const Sij = 0.5 * (gradU[r][c] + gradU[c][r]);
-          const Wij = 0.5 * (gradU[r][c] - gradU[c][r]);
-          s2 += Sij * Sij;
-          w2 += Wij * Wij;
+      if (gradU) {
+        for (let r = 0; r < 3; r++) {
+          for (let c = 0; c < 3; c++) {
+            const Sij = 0.5 * (gradU[r][c] + gradU[c][r]);
+            const Wij = 0.5 * (gradU[r][c] - gradU[c][r]);
+            s2 += Sij * Sij;
+            w2 += Wij * Wij;
+          }
         }
       }
-      const S = Math.sqrt(2.0 * s2);
-      const Omega = Math.sqrt(2.0 * w2);
+      const S = gradU ? Math.sqrt(2.0 * s2) : 100.0;
+      const Omega = gradU ? Math.sqrt(2.0 * w2) : 100.0;
 
       // 2. CD_komega
       const gradK = state.gradients?.grad_k?.[i] || [0, 0, 0];
@@ -213,10 +216,10 @@ export class SstKomegaModel implements TurbulenceModel {
       // 8. Omega Source Terms (Production + Dissipation + Cross-Diffusion)
       const alpha = f1Val * this.constants.alpha1 + (1.0 - f1Val) * this.constants.alpha2;
       const beta = f1Val * this.constants.beta1 + (1.0 - f1Val) * this.constants.beta2;
-      const p_omega = (alpha * density * S * S); // Simplified production
+      const p_omega = (alpha * density * S * S);
       const d_omega = (beta * density * oi * oi);
-      
-      // We will store these to be used in assembleTransportEquations
+      omegaProduction.push(p_omega);
+      omegaDissipation.push(d_omega);
     }
 
     return {
@@ -227,7 +230,12 @@ export class SstKomegaModel implements TurbulenceModel {
       diagnostics: {
         meanF1: F1.reduce((a, b) => a + b, 0) / size,
         meanF2: F2.reduce((a, b) => a + b, 0) / size,
-        meanCD: crossDiffusion.reduce((a, b) => a + b, 0) / size
+        meanCD: crossDiffusion.reduce((a, b) => a + b, 0) / size,
+        F1,
+        F2,
+        omegaProduction,
+        omegaDissipation,
+        crossDiffusion
       },
       stateHash: `sst-evaluated-state-hash-${Date.now()}`
     };
@@ -240,23 +248,42 @@ export class SstKomegaModel implements TurbulenceModel {
     const density = new Array(size).fill(material.density);
     const u = meanFlow.meanVelocity.map(v => ({ x: v[0], y: v[1], z: v[2] }));
 
-    // k-equation config
+    const diag = state.diagnostics || {};
+    const F1_arr = (diag.F1 as number[]) || new Array(size).fill(1.0);
+    const p_om_arr = (diag.omegaProduction as number[]) || [];
+    const d_om_arr = (diag.omegaDissipation as number[]) || [];
+    const cd_arr = (diag.crossDiffusion as number[]) || [];
+
+    // k-equation config with blended diffusion coefficient sigmaK = F1*sigmaK1 + (1-F1)*sigmaK2
     const kConfig: ScalarTransportConfig = {
       phiName: 'k',
       rho: density,
       u: u,
-      gamma: state.turbulentViscosity.map((mt, i) => (material.viscosity + mt * this.constants.sigmaK1)), // Simplified gamma
+      gamma: state.turbulentViscosity.map((mt, i) => {
+        const f1 = F1_arr[i] ?? 1.0;
+        const sigmaK = f1 * this.constants.sigmaK1 + (1.0 - f1) * this.constants.sigmaK2;
+        return material.viscosity + mt * sigmaK;
+      }),
       source: state.production.map((p, i) => p - state.dissipation[i]),
       relaxation: 0.7
     };
 
-    // omega-equation config
+    // omega-equation config with blended diffusion sigmaOmega and full source terms (P_omega - D_omega + CD)
     const omegaConfig: ScalarTransportConfig = {
       phiName: 'omega',
       rho: density,
       u: u,
-      gamma: state.turbulentViscosity.map((mt, i) => (material.viscosity + mt * this.constants.sigmaOmega1)), // Simplified gamma
-      source: state.fields['omega'].map((oi, i) => 0.5 * state.production[i] / Math.max(state.fields['k'][i], 1e-10) - 0.5 * oi * oi), // Very simplified source
+      gamma: state.turbulentViscosity.map((mt, i) => {
+        const f1 = F1_arr[i] ?? 1.0;
+        const sigmaOmega = f1 * this.constants.sigmaOmega1 + (1.0 - f1) * this.constants.sigmaOmega2;
+        return material.viscosity + mt * sigmaOmega;
+      }),
+      source: (omega as number[]).map((oi, i) => {
+        const p_om = p_om_arr[i] ?? (state.production[i] * 0.5 / Math.max((k as number[])[i], 1e-10));
+        const d_om = d_om_arr[i] ?? (this.constants.beta1 * material.density * oi * oi);
+        const cd = cd_arr[i] ?? 0.0;
+        return p_om - d_om + cd;
+      }),
       relaxation: 0.5
     };
 
@@ -282,10 +309,13 @@ export class SstKomegaModel implements TurbulenceModel {
   }
 
   public verify(state: TurbulenceModelState): boolean {
-    return true;
+    const result = SstIndependentVerifier.verify(state);
+    return result.isValid && state.validity;
   }
 
   public evidence(state: TurbulenceModelState): TurbulenceModelEvidence {
+    const verification = SstIndependentVerifier.verify(state);
+    const isValid = verification.isValid && state.validity;
     return {
       modelId: this.modelId,
       modelVersion: this.version,
@@ -298,12 +328,12 @@ export class SstKomegaModel implements TurbulenceModel {
       closureHash: 'closure-064',
       wallTreatmentHash: 'wall-064',
       diagnosticsHash: 'diag-064',
-      verificationHash: 'verification-064',
+      verificationHash: isValid ? 'verification-valid' : 'verification-invalid',
       replayHash: 'replay-064',
-      applicability: 'valid',
-      capabilityStatus: 'VERIFIED',
-      verdict: 'VERIFIED',
-      failureCodes: []
+      applicability: isValid ? 'valid' : 'invalid',
+      capabilityStatus: isValid ? 'VERIFIED' : 'FAILED',
+      verdict: isValid ? 'VERIFIED' : 'FAILED',
+      failureCodes: verification.diagnostics as any
     };
   }
 }

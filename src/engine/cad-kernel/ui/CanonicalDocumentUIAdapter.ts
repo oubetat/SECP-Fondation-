@@ -14,6 +14,7 @@ import { CapabilityTruthGate } from '../registry/CapabilityTruthGate';
 import { SketchUIIntegration, ExtrudeActionOptions } from '../ui-integration/SketchUIIntegration';
 import { AssemblyIntentMutator, AssemblyIntentAction } from '../document/AssemblyIntentMutator';
 import { BRepHasher } from '../topology/BRepHasher';
+import { WorkbenchStateOwnershipEngine } from '../../workbench/WorkbenchStateOwnershipEngine';
 
 export interface ExecutionResult {
   success: boolean;
@@ -59,22 +60,32 @@ export class CanonicalDocumentUIAdapter {
     const beforeHash = doc.evaluatedShape ? BRepHasher.computeEvidence(doc.evaluatedShape as any).geometryHash : undefined;
 
     try {
-      // Execute transaction through canonical SketchUIIntegration pipeline
-      const evalResult = SketchUIIntegration.applyExtrudeAction(doc, sketchEnts, depth, options);
-
-      if (!evalResult.success) {
-        return {
-          result: {
-            success: false,
-            status: 'FAILED',
-            documentId: doc.documentId,
-            documentRevision: doc.revision,
-            actionId: `ACT_SKETCH_${Date.now()}`,
-            error: evalResult.diagnostics.join(' | ')
-          },
-          evaluation: evalResult
-        };
+      const engine = WorkbenchStateOwnershipEngine.getInstance();
+      if (!engine.getCanonicalDocument(doc.documentId)) {
+        engine.registerCanonicalDocument(doc);
       }
+
+      let evalResult!: DocumentEvaluationResult;
+
+      const { updatedDoc } = engine.mutateCanonicalDocument(
+        doc.documentId,
+        (targetDoc) => {
+          evalResult = SketchUIIntegration.applyExtrudeAction(targetDoc, sketchEnts, depth, options);
+          if (!evalResult.success) {
+            throw new Error(evalResult.diagnostics?.join(' | ') || 'Sketch operation failed');
+          }
+          targetDoc.features = evalResult.document.features;
+          targetDoc.sketches = evalResult.document.sketches;
+          targetDoc.evaluatedShape = evalResult.document.evaluatedShape;
+          targetDoc.evaluatedSolid = evalResult.document.evaluatedSolid;
+          targetDoc.derived = evalResult.document.derived;
+          targetDoc.evidence = evalResult.document.evidence;
+        },
+        `Sketch Feature Action: depth=${depth}`,
+        'DESIGN'
+      );
+
+      evalResult.document = updatedDoc;
 
       const afterHash = evalResult.document.evaluatedShape ? BRepHasher.computeEvidence(evalResult.document.evaluatedShape as any).geometryHash : undefined;
       const latestEvidence = evalResult.document.evidence?.[evalResult.document.evidence.length - 1];
@@ -141,22 +152,32 @@ export class CanonicalDocumentUIAdapter {
     const beforeHash = doc.evaluatedShape ? BRepHasher.computeEvidence(doc.evaluatedShape as any).geometryHash : undefined;
 
     try {
-      // Execute extrusion pipeline through SOT mutator
-      const evalResult = SketchUIIntegration.applyExtrudeAction(doc, sketchEnts, depth, options);
-
-      if (!evalResult.success) {
-        return {
-          result: {
-            success: false,
-            status: 'FAILED',
-            documentId: doc.documentId,
-            documentRevision: doc.revision,
-            actionId: `ACT_EXTRUDE_${Date.now()}`,
-            error: evalResult.diagnostics.join(' | ')
-          },
-          evaluation: evalResult
-        };
+      const engine = WorkbenchStateOwnershipEngine.getInstance();
+      if (!engine.getCanonicalDocument(doc.documentId)) {
+        engine.registerCanonicalDocument(doc);
       }
+
+      let evalResult!: DocumentEvaluationResult;
+
+      const { updatedDoc } = engine.mutateCanonicalDocument(
+        doc.documentId,
+        (targetDoc) => {
+          evalResult = SketchUIIntegration.applyExtrudeAction(targetDoc, sketchEnts, depth, options);
+          if (!evalResult.success) {
+            throw new Error(evalResult.diagnostics?.join(' | ') || 'Extrude operation failed');
+          }
+          targetDoc.features = evalResult.document.features;
+          targetDoc.sketches = evalResult.document.sketches;
+          targetDoc.evaluatedShape = evalResult.document.evaluatedShape;
+          targetDoc.evaluatedSolid = evalResult.document.evaluatedSolid;
+          targetDoc.derived = evalResult.document.derived;
+          targetDoc.evidence = evalResult.document.evidence;
+        },
+        `Extrude Feature: depth=${depth}`,
+        'DESIGN'
+      );
+
+      evalResult.document = updatedDoc;
 
       const afterHash = evalResult.document.evaluatedShape ? BRepHasher.computeEvidence(evalResult.document.evaluatedShape as any).geometryHash : undefined;
       const latestEvidence = evalResult.document.evidence?.[evalResult.document.evidence.length - 1];
@@ -219,25 +240,35 @@ export class CanonicalDocumentUIAdapter {
     }
 
     try {
-      const updatedDoc = AssemblyIntentMutator.apply(doc, action);
-      const evalResult = DocumentEvaluator.evaluate(updatedDoc, {
-        generateMesh: true,
-        context: { resolver }
-      });
-
-      if (!evalResult.success) {
-        return {
-          result: {
-            success: false,
-            status: 'FAILED',
-            documentId: doc.documentId,
-            documentRevision: doc.revision,
-            actionId: `ACT_ASSY_${Date.now()}`,
-            error: evalResult.diagnostics.join(' | ')
-          },
-          evaluation: evalResult
-        };
+      const engine = WorkbenchStateOwnershipEngine.getInstance();
+      if (!engine.getCanonicalDocument(doc.documentId)) {
+        engine.registerCanonicalDocument(doc);
       }
+
+      let evalResult!: DocumentEvaluationResult;
+
+      const { updatedDoc } = engine.mutateCanonicalDocument(
+        doc.documentId,
+        (targetDoc) => {
+          const resDoc = AssemblyIntentMutator.apply(targetDoc, action);
+          targetDoc.assembly = resDoc.assembly;
+          evalResult = DocumentEvaluator.evaluate(targetDoc, {
+            generateMesh: true,
+            context: { resolver }
+          });
+          if (!evalResult.success) {
+            throw new Error(evalResult.diagnostics?.join(' | ') || 'Assembly evaluation failed');
+          }
+          targetDoc.evaluatedShape = evalResult.document.evaluatedShape;
+          targetDoc.evaluatedSolid = evalResult.document.evaluatedSolid;
+          targetDoc.derived = evalResult.document.derived;
+          targetDoc.evidence = evalResult.document.evidence;
+        },
+        `Assembly Action: ${action.type || 'MATE'}`,
+        'ASSEMBLY_WORKBENCH'
+      );
+
+      evalResult.document = updatedDoc;
 
       const latestEvidence = evalResult.document.evidence?.[evalResult.document.evidence.length - 1];
 
@@ -311,11 +342,19 @@ export class CanonicalDocumentUIAdapter {
       }
     };
 
-    const updatedDoc: EngineeringDocument = {
-      ...doc,
-      revision: (typeof doc.revision === 'number' ? doc.revision + 1 : 1),
-      features: [...(doc.features || []), newFeature]
-    };
+    const engine = WorkbenchStateOwnershipEngine.getInstance();
+    if (!engine.getCanonicalDocument(doc.documentId)) {
+      engine.registerCanonicalDocument(doc);
+    }
+
+    const { updatedDoc } = engine.mutateCanonicalDocument(
+      doc.documentId,
+      (targetDoc) => {
+        targetDoc.features = [...(targetDoc.features || []), newFeature];
+      },
+      `Add Feature: ${newFeature.name} (${newFeature.type})`,
+      'FEATURE_TREE_WORKBENCH'
+    );
 
     // Re-evaluate the document to ensure consistency
     const evaluation = DocumentEvaluator.evaluate(updatedDoc);
@@ -429,16 +468,26 @@ export class CanonicalDocumentUIAdapter {
       return { result: { success: false, status: 'FAILED', documentId: doc.documentId, documentRevision: doc.revision, actionId: `ACT_SUPPRESS_${Date.now()}`, error: 'Feature not found' } };
     }
 
-    // Clone and mutate (In a real system, this would be a formal transaction)
-    const updatedFeatures = doc.features.map((f: any) => {
-      const id = f.featureId || f.id;
-      if (id === featureId) {
-        return { ...f, suppressed: !f.suppressed };
-      }
-      return f;
-    });
+    const engine = WorkbenchStateOwnershipEngine.getInstance();
+    if (!engine.getCanonicalDocument(doc.documentId)) {
+      engine.registerCanonicalDocument(doc);
+    }
 
-    const updatedDoc = { ...doc, features: updatedFeatures, revision: Number(doc.revision) + 1 };
+    const { updatedDoc } = engine.mutateCanonicalDocument(
+      doc.documentId,
+      (targetDoc) => {
+        targetDoc.features = targetDoc.features.map((f: any) => {
+          const id = f.featureId || f.id;
+          if (id === featureId) {
+            return { ...f, suppressed: !f.suppressed };
+          }
+          return f;
+        });
+      },
+      `Toggle Suppression: Feature ${featureId}`,
+      'FEATURE_TREE_WORKBENCH'
+    );
+
     const evalResult = DocumentEvaluator.evaluate(updatedDoc);
 
     return {
@@ -465,8 +514,20 @@ export class CanonicalDocumentUIAdapter {
       return { result: { success: false, status: 'FAILED', documentId: doc.documentId, documentRevision: doc.revision, actionId: `ACT_DELETE_${Date.now()}`, error: 'Feature not found' } };
     }
 
-    const updatedFeatures = doc.features.filter((f: any) => (f.featureId || f.id) !== featureId);
-    const updatedDoc = { ...doc, features: updatedFeatures, revision: Number(doc.revision) + 1 };
+    const engine = WorkbenchStateOwnershipEngine.getInstance();
+    if (!engine.getCanonicalDocument(doc.documentId)) {
+      engine.registerCanonicalDocument(doc);
+    }
+
+    const { updatedDoc } = engine.mutateCanonicalDocument(
+      doc.documentId,
+      (targetDoc) => {
+        targetDoc.features = targetDoc.features.filter((f: any) => (f.featureId || f.id) !== featureId);
+      },
+      `Delete Feature: ${featureId}`,
+      'FEATURE_TREE_WORKBENCH'
+    );
+
     const evalResult = DocumentEvaluator.evaluate(updatedDoc);
 
     return {
@@ -497,26 +558,36 @@ export class CanonicalDocumentUIAdapter {
       return { result: { success: false, status: 'FAILED', documentId: doc.documentId, documentRevision: doc.revision, actionId: `ACT_UPDATE_PARAM_${Date.now()}`, error: 'Feature not found' } };
     }
 
-    const updatedFeatures = doc.features.map((f: any) => {
-      const id = f.featureId || f.id;
-      if (id === featureId) {
-        // Handle both flat parameters and nested definition.parameters if they exist
-        const updatedParams = { ...(f.parameters || {}), [paramId]: newValue };
-        const updatedDef = f.definition ? { 
-          ...f.definition, 
-          parameters: { ...(f.definition.parameters || {}), [paramId]: newValue }
-        } : undefined;
+    const engine = WorkbenchStateOwnershipEngine.getInstance();
+    if (!engine.getCanonicalDocument(doc.documentId)) {
+      engine.registerCanonicalDocument(doc);
+    }
 
-        return { 
-          ...f, 
-          parameters: updatedParams,
-          definition: updatedDef || f.definition
-        };
-      }
-      return f;
-    });
+    const { updatedDoc } = engine.mutateCanonicalDocument(
+      doc.documentId,
+      (targetDoc) => {
+        targetDoc.features = targetDoc.features.map((f: any) => {
+          const id = f.featureId || f.id;
+          if (id === featureId) {
+            const updatedParams = { ...(f.parameters || {}), [paramId]: newValue };
+            const updatedDef = f.definition ? { 
+              ...f.definition, 
+              parameters: { ...(f.definition.parameters || {}), [paramId]: newValue }
+            } : undefined;
 
-    const updatedDoc = { ...doc, features: updatedFeatures, revision: Number(doc.revision) + 1 };
+            return { 
+              ...f, 
+              parameters: updatedParams,
+              definition: updatedDef || f.definition
+            };
+          }
+          return f;
+        });
+      },
+      `Update Parameter ${paramId} on Feature ${featureId}`,
+      'PARAMETRIC_WORKBENCH'
+    );
+
     const evalResult = DocumentEvaluator.evaluate(updatedDoc);
 
     return {

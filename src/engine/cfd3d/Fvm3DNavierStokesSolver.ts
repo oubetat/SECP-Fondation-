@@ -509,9 +509,9 @@ export class Fvm3DNavierStokesSolver {
 
           const gsSolver = new GaussSeidelSolver();
           const linConfig = {
-            absoluteTolerance: 1e-6,
+            absoluteTolerance: 1e-12,
             relativeTolerance: 1e-3,
-            maxIterations: 5,
+            maxIterations: 10,
             divergenceThreshold: 1e6,
             stagnationWindow: 20
           };
@@ -1194,7 +1194,7 @@ export class Fvm3DNavierStokesSolver {
         w[c] = w_star[c] - dw;
 
         // Velocity magnitude limiter to ensure stability against transient pressure surges
-        const maxAllowedSpeed = 2.5 * Math.max(referenceVelocityMS, 1.0);
+        const maxAllowedSpeed = 5.0 * Math.max(referenceVelocityMS, 1.0);
         const currentSpeed = Math.sqrt(u[c] * u[c] + v[c] * v[c] + w[c] * w[c]);
         if (currentSpeed > maxAllowedSpeed && currentSpeed > 0) {
           limiters.velocityClamped++;
@@ -1458,12 +1458,16 @@ export class Fvm3DNavierStokesSolver {
       lastMaxV = maxV;
 
       const minIterations = 30;
+      const isTurbulent = config.turbulenceScheme !== 'NONE' && config.turbulenceScheme !== 'LAMINAR';
+      const turbulenceConverged = !isTurbulent || (kSolveConverged && (config.turbulenceScheme === 'K_EPSILON' || omegaSolveConverged));
+
       if (iter >= minIterations &&
           convergenceTrace.continuity.passed &&
           convergenceTrace.momentum.passed &&
           convergenceTrace.velocity.passed &&
           convergenceTrace.pressure.passed &&
-          convergenceTrace.forceStability.passed) {
+          convergenceTrace.forceStability.passed &&
+          turbulenceConverged) {
         converged = true;
         terminationReason = 'CONVERGED';
         terminationIteration = iter;

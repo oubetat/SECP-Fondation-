@@ -41,6 +41,15 @@ export class AirfoilMeshGenerator {
       airfoilPoints.push({ x: geo.points[i].x, y: geo.points[i].yUpper, z: 0 });
     }
 
+    // بعد السطر الذي ينشئ airfoilPoints
+    // أضف: إغلاق الذيل بفتحة دقيقة (blunt TE)
+    const minTeGap = 0.002 * chord;
+    const halfGap = minTeGap / 2;
+    if (airfoilPoints.length > 0) {
+      airfoilPoints[0].y = -halfGap;
+      airfoilPoints[airfoilPoints.length - 1].y = halfGap;
+    }
+
     const nI = airfoilPoints.length; // Actually numSurfacePoints
     const nJ = numNormalLayers;
     const nK = numSpanwiseLayers;

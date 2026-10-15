@@ -99,10 +99,10 @@ export class Cfd3DIntegrationAdapter {
     const verificationResult: IndependentVerificationResult = {
       passed: audit.passed,
       verifierName: 'SECP082IndependentCFDVerifier',
-      checksPerformed: 5,
+      checksPerformed: 6,
       residualMetric: audit.independentContinuityResidual,
       tolerance: 1e-3,
-      verifierDetails: `Independent CFD Audit: ContinuityResidual=${audit.independentContinuityResidual.toExponential(3)}, MassBalancePassed=${audit.physicalConservationPassed}, Verdict=${audit.independentVerdict}`
+      verifierDetails: `Independent CFD Audit: ContinuityResidual=${audit.independentContinuityResidual.toExponential(3)}, NumericalConsistency=${audit.numericalConsistencyPassed}, PhysicalPlausibility=${audit.physicalPlausibilityPassed}, Verdict=${audit.independentVerdict}`
     };
 
     // 5. Build Visualization Contract
