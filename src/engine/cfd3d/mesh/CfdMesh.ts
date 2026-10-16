@@ -120,7 +120,8 @@ export class CfdMeshMetrics {
                   ad.y * (bd.z * cd.x - bd.x * cd.z) +
                   ad.z * (bd.x * cd.y - bd.y * cd.x);
       
-      cell.volume = Math.abs(stp) / 6.0;
+      // Signed scalar triple product / 6 (enables true negative volume detection for inverted cells)
+      cell.volume = stp / 6.0;
     } else {
       // Default fallback or more complex algorithm for Polyhedra
       cell.volume = 1.0; // Placeholder for non-Tet in P241 skeleton

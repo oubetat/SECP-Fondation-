@@ -5,6 +5,7 @@
 
 import { FvmMesh3D, FvmCell3D, FvmFace3D, Vector3D, BoundaryType3D } from '../Fvm3DTypes';
 import { AirfoilGeometryEngine, AirfoilGeometry } from '../geometry/AirfoilGeometryEngine';
+import { Fvm3DMeshGenerator } from '../Fvm3DMeshGenerator';
 
 export interface OGridConfig {
   airfoilDesignation: string;
@@ -29,7 +30,8 @@ export class AirfoilMeshGenerator {
   public static generateOGrid(config: OGridConfig): FvmMesh3D {
     const { airfoilDesignation, chord, span, farFieldRadius, numSurfacePoints, numNormalLayers, numSpanwiseLayers, firstCellHeight, growthRate } = config;
 
-    const geo = AirfoilGeometryEngine.generateNaca4(airfoilDesignation, chord, numSurfacePoints / 2);
+    const numPointsHalf = Math.max(10, Math.round(numSurfacePoints / 2));
+    const geo = AirfoilGeometryEngine.generateNaca4(airfoilDesignation, chord, numPointsHalf);
     // Combine upper and lower points into a single circumferential loop
     const airfoilPoints: Vector3D[] = [];
     // Lower surface (TE to LE)
@@ -41,16 +43,19 @@ export class AirfoilMeshGenerator {
       airfoilPoints.push({ x: geo.points[i].x, y: geo.points[i].yUpper, z: 0 });
     }
 
-    // بعد السطر الذي ينشئ airfoilPoints
-    // أضف: إغلاق الذيل بفتحة دقيقة (blunt TE)
-    const minTeGap = 0.002 * chord;
-    const halfGap = minTeGap / 2;
+    // Enforce minimum blunt trailing edge gap if geometry closes below threshold
+    const minTeGap = 0.00252 * chord;
     if (airfoilPoints.length > 0) {
-      airfoilPoints[0].y = -halfGap;
-      airfoilPoints[airfoilPoints.length - 1].y = halfGap;
+      const lastIdx = airfoilPoints.length - 1;
+      const currentGap = Math.abs(airfoilPoints[lastIdx].y - airfoilPoints[0].y);
+      if (currentGap < minTeGap) {
+        const halfGap = minTeGap / 2;
+        airfoilPoints[0].y = -halfGap;
+        airfoilPoints[lastIdx].y = halfGap;
+      }
     }
 
-    const nI = airfoilPoints.length; // Actually numSurfacePoints
+    const nI = airfoilPoints.length; // Closed loop vertex count (numSurfacePoints + 1)
     const nJ = numNormalLayers;
     const nK = numSpanwiseLayers;
 
@@ -115,7 +120,20 @@ export class AirfoilMeshGenerator {
             (p2.x * p3.y - p3.x * p2.y) +
             (p3.x * p0.y - p0.x * p3.y)
           );
-          const dz = nodes[k+1][j][i].z - nodes[k][j][i].z;
+          const dz = Math.abs(nodes[k+1][j][i].z - nodes[k][j][i].z);
+
+          // Compute genuine cell aspect ratio
+          const ds1 = Math.sqrt((p1.x - p0.x) ** 2 + (p1.y - p0.y) ** 2);
+          const ds2 = Math.sqrt((p2.x - p3.x) ** 2 + (p2.y - p3.y) ** 2);
+          const ds = 0.5 * (ds1 + ds2);
+
+          const dr1 = Math.sqrt((p3.x - p0.x) ** 2 + (p3.y - p0.y) ** 2);
+          const dr2 = Math.sqrt((p2.x - p1.x) ** 2 + (p2.y - p1.y) ** 2);
+          const dr = 0.5 * (dr1 + dr2);
+
+          const maxDim = Math.max(ds, dr, dz);
+          const minDim = Math.max(Math.min(ds, dr, dz), 1e-12);
+          const cellAspect = maxDim / minDim;
 
           cells.push({
             cellId: id,
@@ -129,7 +147,7 @@ export class AirfoilMeshGenerator {
             neighborCellIds: [],
             boundaryFaceIds: [],
             skewness: 0,
-            aspectRatio: 1.0, // TBD
+            aspectRatio: cellAspect,
             nonOrthogonalityDeg: 0
           });
         }
@@ -271,17 +289,10 @@ export class AirfoilMeshGenerator {
       meshId: `o-grid-${airfoilDesignation}-${numSurfacePoints}x${numNormalLayers}`,
       cells,
       faces,
-      quality: {
-        totalCells: cells.length,
-        totalFaces: faces.length,
-        totalBoundaryFaces: faces.filter(f => f.neighborCellId === -1).length,
-        minCellVolume: 0, maxCellVolume: 0, maxSkewness: 0, maxAspectRatio: 0, maxNonOrthogonalityDeg: 0,
-        hasPositiveVolumes: true, hasNonzeroAreas: true, isClosedTopology: true, isNeighborConsistent: true,
-        hasDegenerateCells: false, meshQualityStatus: 'GOOD', passed: true
-      },
+      quality: Fvm3DMeshGenerator.auditMeshQuality(cells, faces),
       boundingBox: {
-        min: { x: -farFieldRadius, y: -farFieldRadius, z: 0 },
-        max: { x: farFieldRadius + chord, y: farFieldRadius, z: span }
+        min: { x: 0.5 * chord - farFieldRadius, y: -farFieldRadius, z: 0 },
+        max: { x: 0.5 * chord + farFieldRadius, y: farFieldRadius, z: span }
       }
     };
   }
