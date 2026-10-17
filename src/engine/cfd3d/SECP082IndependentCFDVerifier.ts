@@ -536,6 +536,47 @@ export class SECP082IndependentCFDVerifier {
       failureReasons.push(`Physical violation: Flow field contains unphysical velocity magnitude (${maxV.toExponential(2)} m/s)`);
     }
 
+    // 4. Pressure Envelope Check (Always active)
+    const fluidProps = solution.fluid ?? { densityKgM3: 1.225 };
+    const rho_fluid = fluidProps.densityKgM3;
+    const Uinf = solution.monitors?.referenceVelocityMS ?? solution.monitors?.reference?.Uinf ?? 1.0;
+    const pRef = solution.monitors?.reference?.pressurePa ?? 0;
+    
+    if (p.length > 0 && Uinf > 1e-6) {
+      const q_inf = 0.5 * rho_fluid * Uinf * Uinf;
+      
+      // Cp range [-15, 1.05]
+      const Cp_min = -15;
+      const Cp_max = 1.05;
+
+      for (let i = 0; i < p.length; i++) {
+        const Cp = (p[i] - pRef) / q_inf;
+        
+        if (Cp < Cp_min || Cp > Cp_max) {
+          failureReasons.push(
+            `Physical violation: Cell ${i} Cp=${Cp.toFixed(2)} ` +
+            `outside physical envelope [${Cp_min}, ${Cp_max}]`
+          );
+        }
+      }
+    }
+    if (solution.converged === true) {
+      const actualMomRes = Math.max(maxMomResX, maxMomResY, maxMomResZ);
+      // Uinf is needed here; derived from monitors or fallback
+      const Uinf_local = solution.monitors?.referenceVelocityMS ?? solution.monitors?.reference?.Uinf ?? 1.0;
+      const refMomentumFlux = Math.max(inletMassFlowKgS * Uinf_local, 1e-6);
+      const normalizedMomRes = actualMomRes / refMomentumFlux;
+
+      const PLAUSIBLE_NORMALIZED_MOMENTUM_TOL = 1e-3; // 0.1%
+      if (normalizedMomRes > PLAUSIBLE_NORMALIZED_MOMENTUM_TOL) {
+        failureReasons.push(
+          `Convergence claim contradicts independent momentum residual: ` +
+          `‖r_mom‖∞ = ${actualMomRes.toExponential(2)} N ` +
+          `(${(normalizedMomRes * 100).toFixed(2)}% of ref flux, threshold 0.1%)`
+        );
+      }
+    }
+
     const gate6PhysicalPlausibility = failureReasons.length === 0;
     const physicalPlausibilityPassed = gate6PhysicalPlausibility;
 

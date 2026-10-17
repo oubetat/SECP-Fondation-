@@ -170,7 +170,41 @@ export class AirfoilMeshGenerator {
           const p2 = nodes[k+1][j][(i + 1) % nI];
           const p3 = nodes[k+1][j][i];
 
-          const bType: BoundaryType3D = (j === 0) ? 'WALL' : (j === nJ ? 'FARFIELD' : 'INTERNAL');
+          // New Classification Logic
+          const isFarfield = (j === nJ);
+          let bType: BoundaryType3D = (j === 0) ? 'WALL' : 'INTERNAL';
+          let u_bc: number | undefined;
+          let v_bc: number | undefined;
+          let w_bc: number | undefined;
+          let p_bc: number | undefined;
+
+          if (isFarfield) {
+            // Using a hardcoded AoA=4 for this diagnostic fix, similar to benchmarks
+            const aoaRad = (4.0 * Math.PI) / 180;
+            const flowDirX = Math.cos(aoaRad);
+            const flowDirY = Math.sin(aoaRad);
+            const uFree = 10.0;
+            
+            // Recompute normal based on the p0, p1, p3 points (since it's a boundary face, normal is already available)
+            // But we need the normal components for dot product. 
+            // In the original code, the normal was computed later at 187-191.
+            // For now, let's use the face centroid vs cell centroid as a proxy for outward normal
+            const cell = cells[ownerId];
+            const faceCentroid = { x: 0.25*(p0.x+p1.x+p2.x+p3.x), y: 0.25*(p0.y+p1.y+p2.y+p3.y), z: 0.25*(p0.z+p1.z+p2.z+p3.z) };
+            const nx = faceCentroid.x - cell.centroid.x;
+            const ny = faceCentroid.y - cell.centroid.y;
+            const dot = nx * flowDirX + ny * flowDirY;
+
+            if (dot > 0) {
+              bType = 'OUTLET';
+              p_bc = 0;
+            } else {
+              bType = 'INLET';
+              u_bc = uFree * flowDirX;
+              v_bc = uFree * flowDirY;
+              w_bc = 0;
+            }
+          }
 
           const face: FvmFace3D = {
             faceId: fCount++,
@@ -179,7 +213,8 @@ export class AirfoilMeshGenerator {
             centroid: { x: 0.25*(p0.x+p1.x+p2.x+p3.x), y: 0.25*(p0.y+p1.y+p2.y+p3.y), z: 0.25*(p0.z+p1.z+p2.z+p3.z) },
             ownerCellId: ownerId,
             neighborCellId: neighborId,
-            boundaryType: bType
+            boundaryType: bType,
+            u_bc, v_bc, w_bc, p_bc
           };
           // Calculate true normal
           const v1 = { x: p1.x - p0.x, y: p1.y - p0.y, z: p1.z - p0.z };

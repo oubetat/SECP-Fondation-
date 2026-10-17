@@ -561,4 +561,56 @@ describe('SECP-082 Independent CFD Verifier Forensic Test Suite', () => {
     expect(res.independentVerdict).toBe('VERIFIED_NUMERICAL_CONSISTENCY');
     expect(res.passed).toBe(true);
   });
+
+  it('Gate 6 - per-cell check catches local pressure anomaly', () => {
+    // Cell A: u=75, p=-3445 (Ratio ~1.0, PASS)
+    // Cell B: u=10, p=-3000 (Ratio ~49, FAIL)
+    const mesh = createTestMesh(
+        [createTestCell(0, [], 1.0), createTestCell(1, [], 1.0)],
+        []
+    );
+    const solution = {
+        mesh,
+        converged: true,
+        u: [75, 10], v: [0, 0], w: [0, 0],
+        pressure: [-3445, -3000],
+        monitors: { reference: { Uinf: 10, rho: 1.225 } },
+        fluid: { densityKgM3: 1.225 },
+        faceFluxes: []
+    };
+    
+    const verifier = new SECP082IndependentCFDVerifier();
+    const result = verifier.verifyPhysicalConservation(mesh, solution, 1.225, 1.8e-5);
+    
+    // Should fail due to Cell 1 anomaly
+    expect(result.gate6PhysicalPlausibility).toBe(false);
+    const anomaly = result.physicalDiagnostics.failureReasons.find(r => r.includes('Cell 1'));
+    expect(anomaly).toBeDefined();
+  });
+
+  it('Gate 6 - stagnation point (u=0) passes Cp envelope', () => {
+    // Cp = (p - pRef) / q_inf
+    // p = pRef + q_inf => Cp = 1.0
+    // 1.0 is within [-15, 1.05] -> PASS
+    const mesh = createTestMesh(
+        [createTestCell(0, [], 1.0)],
+        []
+    );
+    const solution = {
+        mesh,
+        converged: true,
+        u: [0], v: [0], w: [0],
+        pressure: [61.25], // pRef=0, q_inf=61.25, so p=61.25
+        monitors: { 
+            reference: { Uinf: 10, rho: 1.225, pressurePa: 0 } 
+        },
+        fluid: { densityKgM3: 1.225 },
+        faceFluxes: []
+    };
+    
+    const verifier = new SECP082IndependentCFDVerifier();
+    const result = verifier.verifyPhysicalConservation(mesh, solution, 1.225, 1.8e-5);
+    
+    expect(result.gate6PhysicalPlausibility).toBe(true);
+  });
 });

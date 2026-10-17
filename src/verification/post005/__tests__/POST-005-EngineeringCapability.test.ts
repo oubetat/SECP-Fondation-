@@ -109,7 +109,7 @@ describe('POST-005 Track B: Engineering Capability Verification', () => {
 
     // 1. Valid Fillet execution on shared edge
     const result = filletEngine.execute(solid, { edgeIds: [edgeId], radius: 0.05 }, gTol);
-    expect(['SUCCESS', 'PARTIAL']).toContain(result.status);
+    expect(result.status).toBe('SUCCESS');
     expect(result.resultSolid).toBeDefined();
     expect(result.resultSolid).not.toBe(solid); // Material non-identity proof
 

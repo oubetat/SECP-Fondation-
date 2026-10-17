@@ -105,6 +105,6 @@ describe('BRepEulerOps — Euler Operators & Topological Fillet Rewiring Engine'
     expect(result.success).toBe(true);
     expect(result.solid).toBeDefined();
     expect(result.newFaces.length).toBe(3); // 1 blend face + 2 trimmed parent faces
-    expect(result.eulerCharacteristic).toBe(0); // V=12, E=19, F=7 -> Chi=0 for filleted shell
+    expect(result.eulerCharacteristic).toBe(2); // V=10, E=15, F=7 -> Chi=2 for 2-manifold filleted shell
   });
 });

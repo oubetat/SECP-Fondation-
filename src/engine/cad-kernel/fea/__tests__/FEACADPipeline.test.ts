@@ -76,4 +76,53 @@ describe('PATCH-KERNEL-007 — CAD -> FEA Pipeline Verification', () => {
     expect(feaB.evidenceHash).toEqual(deterministicFeaB.evidenceHash);
     expect(feaB.displacements).toEqual(deterministicFeaB.displacements);
   });
+
+  it('GAP-001 & PATCH-KERNEL-007: executes Filleted BRep -> FEAMesh -> LinearStructuralSolver with strict physical convergence', async () => {
+    const box = brepKernel.createBox(0.1, 0.02, 0.02, 'Fillet_Base_Box');
+    const edgeId = box.outerShell.orientedFaces[0].face.outerLoop.orientedEdges[0].edge.id;
+
+    const filletEngine = new (await import('../../modeling/FilletEngine')).FilletEngine();
+    const filletResult = filletEngine.execute(box, { edgeIds: [edgeId], radius: 0.005 });
+
+    expect(filletResult.status).toBe('SUCCESS');
+    expect(filletResult.resultSolid).toBeDefined();
+    expect(filletResult.filletFacesCreated).toBeGreaterThan(0);
+
+    const filletedSolid = filletResult.resultSolid!;
+
+    // 1. Mesh from filleted B-Rep
+    const meshFillet = FEAAdapter.meshFromBRep(filletedSolid, { elementKind: 'TRI3' });
+    expect(meshFillet.nodes.length).toBeGreaterThan(8);
+    expect(meshFillet.elements.length).toBeGreaterThan(12);
+    expect(meshFillet.boundaryNodes.fixedNodeIds.length).toBeGreaterThan(0);
+    expect(meshFillet.boundaryNodes.loadNodeIds.length).toBeGreaterThan(0);
+
+    // 2. Structural Model Assembly
+    const modelFillet = StructuralModel.fromMesh(meshFillet, { id: 'Fillet_FEA_Model' });
+    expect(modelFillet.nodes.length).toBe(meshFillet.nodes.length);
+    expect(modelFillet.elements.length).toBe(meshFillet.elements.length);
+
+    // 3. Physical FEM Solver Execution
+    const feaFillet = solver.solve(modelFillet);
+    expect(feaFillet.converged).toBe(true);
+    expect(feaFillet.verified).toBe(true);
+    expect(feaFillet.status).toBe('VERIFIED');
+    expect(feaFillet.residualMetrics.passed).toBe(true);
+    expect(feaFillet.residualMetrics.relativeResidual).toBeLessThan(1e-8);
+    expect(feaFillet.elementResults.length).toBeGreaterThan(0);
+
+    // 4. Physical Sanity: finite displacements and positive strain energy
+    const maxDisp = Math.max(...feaFillet.displacements.map(Math.abs));
+    expect(maxDisp).toBeGreaterThan(0);
+    expect(maxDisp).toBeLessThan(0.01);
+    expect(feaFillet.energyMetrics.globalStrainEnergy).toBeGreaterThan(0);
+
+    // 5. SECP Cryptographic Determinism: Replay must yield exact same evidenceHash
+    const replayMesh = FEAAdapter.meshFromBRep(filletedSolid, { elementKind: 'TRI3' });
+    const replayModel = StructuralModel.fromMesh(replayMesh, { id: 'Fillet_FEA_Model' });
+    const replayFea = solver.solve(replayModel);
+
+    expect(feaFillet.evidenceHash).toEqual(replayFea.evidenceHash);
+    expect(feaFillet.displacements).toEqual(replayFea.displacements);
+  });
 });

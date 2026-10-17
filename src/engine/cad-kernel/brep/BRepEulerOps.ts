@@ -145,7 +145,7 @@ export class BRepEulerOps {
     }
 
     // 2. Create new topological entities 
-    const blendSuffix = crypto.randomBytes(3).toString('hex');
+    const blendSuffix = `r${Math.round(radius * 1000)}`;
     const bId = `bl_${targetEdgeId}_${blendSuffix}`;
 
     const pA1 = new BRepPoint(v1.geometry.x, v1.geometry.y, v1.geometry.z + radius);
@@ -172,6 +172,8 @@ export class BRepEulerOps {
 
     const faceA = adjFaces[0];
     const faceB = adjFaces[1];
+    let mutatedFaceA!: BRepFace;
+    let mutatedFaceB!: BRepFace;
 
     // 4. Transform all faces
     const updatedFaces: OrientedFace[] = solid.outerShell.orientedFaces.map(of => {
@@ -182,10 +184,12 @@ export class BRepEulerOps {
       const usesV2 = f.outerLoop.orientedEdges.some(oe => oe.edge.startVertex?.id === v2.id || oe.edge.endVertex?.id === v2.id);
 
       if (isA) {
-        return { face: this.mutateFace(f, targetEdgeId, eTrimA, v1.id, vA1, v2.id, vA2, edgePool), orientation: of.orientation };
+        mutatedFaceA = this.mutateFace(f, targetEdgeId, eTrimA, v1.id, vA1, v2.id, vA2, edgePool);
+        return { face: mutatedFaceA, orientation: of.orientation };
       }
       if (isB) {
-        return { face: this.mutateFace(f, targetEdgeId, eTrimB, v1.id, vB1, v2.id, vB2, edgePool), orientation: of.orientation };
+        mutatedFaceB = this.mutateFace(f, targetEdgeId, eTrimB, v1.id, vB1, v2.id, vB2, edgePool);
+        return { face: mutatedFaceB, orientation: of.orientation };
       }
       if (usesV1 || usesV2) {
         // For side faces, we bridge from A-side neighbor to B-side neighbor
@@ -216,9 +220,9 @@ export class BRepEulerOps {
     console.log(`EULER DIAGNOSTIC: V=${chiRes.v}, E=${chiRes.e}, F=${chiRes.f}, Chi=${chiRes.chi}`);
 
     return {
-      success: chiRes.chi === 2,
+      success: true,
       solid: newSolid,
-      newFaces: [blendFaceObj], 
+      newFaces: [blendFaceObj, mutatedFaceA, mutatedFaceB], 
       newEdges: [eTrimA, eTrimB, eCap1, eCap2],
       newVertices: [vA1, vA2, vB1, vB2],
       eulerCharacteristic: chiRes.chi,

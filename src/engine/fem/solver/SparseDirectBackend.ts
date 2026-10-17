@@ -61,7 +61,7 @@ export class SparseDirectBackend implements LinearSolverBackend {
     const D = new Float64Array(n);
     const L_rows: { col: number; val: number }[][] = Array.from({ length: n }, () => []);
 
-    // Fill initial entries from A into L structure
+    const A_rows: Map<number, number>[] = Array.from({ length: n }, () => new Map());
     for (let i = 0; i < n; i++) {
       const rowStart = csr.rowPointers[i];
       const rowEnd = csr.rowPointers[i + 1];
@@ -72,57 +72,47 @@ export class SparseDirectBackend implements LinearSolverBackend {
           if (j === i) {
             D[i] += val;
           } else {
-            L_rows[i].push({ col: j, val });
+            A_rows[i].set(j, val);
           }
         }
       }
     }
 
-    // Sparse LDL^T factorization
+    // Sparse LDL^T factorization with dynamic fill-in
     // K = L D L^T where L is unit lower triangular (L_ii = 1)
     // For each row i:
     // L_ij = (A_ij - sum_{k < j} L_ik * D_k * L_jk) / D_j
     // D_i = A_ii - sum_{k < i} L_ik^2 * D_k
     for (let i = 0; i < n; i++) {
-      // Process row i
-      // First, sort L_rows[i] by column index
-      L_rows[i].sort((a, b) => a.col - b.col);
-
-      // Compute L_ij for j < i
-      const row_i_map = new Map<number, number>();
-      for (const item of L_rows[i]) {
-        row_i_map.set(item.col, item.val);
-      }
-
-      for (let idx = 0; idx < L_rows[i].length; idx++) {
-        const j = L_rows[i][idx].col;
-
+      const row_i_map = new Map<number, number>(A_rows[i]);
+      for (let j = 0; j < i; j++) {
         let sum = 0;
-        // sum over k < j of L_ik * D_k * L_jk
         for (const item_k of L_rows[j]) {
           const k = item_k.col;
           const L_ik = row_i_map.get(k);
           if (L_ik !== undefined) {
-            const L_jk = item_k.val;
-            sum += L_ik * D[k] * L_jk;
+            sum += L_ik * D[k] * item_k.val;
           }
         }
 
-        const A_ij = row_i_map.get(j)!;
-        const L_ij = (A_ij - sum) / D[j];
-        row_i_map.set(j, L_ij);
-        L_rows[i][idx].val = L_ij;
+        const A_ij = row_i_map.get(j) || 0;
+        const diff = A_ij - sum;
+        if (Math.abs(diff) > 1e-15) {
+          const L_ij = diff / D[j];
+          row_i_map.set(j, L_ij);
+          L_rows[i].push({ col: j, val: L_ij });
+        } else {
+          row_i_map.delete(j);
+        }
       }
 
-      // Compute D_i = A_ii - sum_{k < i} L_ik^2 * D_k
+      L_rows[i].sort((a, b) => a.col - b.col);
+
       let d_sum = 0;
       for (const item of L_rows[i]) {
-        const k = item.col;
-        const L_ik = item.val;
-        d_sum += L_ik * L_ik * D[k];
+        d_sum += item.val * item.val * D[item.col];
       }
-
-      D[i] = D[i] - d_sum;
+      D[i] -= d_sum;
 
       // Singularity & Zero Pivot Check
       if (!Number.isFinite(D[i]) || Math.abs(D[i]) < 1e-12) {

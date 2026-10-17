@@ -36,6 +36,9 @@ import {
 } from '../../engine/certification/simulationTypes';
 import { CryptographicAttestationEngine } from '../../engine/attestation/CryptographicAttestationEngine';
 import { SigningKeyPair } from '../../engine/attestation/types';
+import { CanonicalDerivedArtifactBinding } from '../../engine/topology/CanonicalDerivedArtifactBinding';
+import { sealEnvelope, initializeAuthorityHandshake } from '../../engine/simulation/SimulationAuthorityInternal';
+import { SimulationExecutionRegistry } from '../../engine/simulation/SimulationExecutionRegistry';
 
 // ============================================================================
 // Deterministic Test Helpers & Canonical Document Builders
@@ -587,6 +590,31 @@ describe('P6-001 — Engineering Evidence Authority & Causal Lineage Proof', () 
       solverTerminationState: 'CONVERGED'
     });
 
+    const derivedBinding = CanonicalDerivedArtifactBinding.createBinding({
+      cadRevisionHash: 'REV-01',
+      canonicalGeometryHash: modelHash,
+      artifactKind: 'SIMULATION_RESULT',
+      derivationIdentity: 'SimulationEngine',
+      artifactContentHash: 'HASH-CFD-CONVERGED-RES'
+    });
+
+    const mutableResult = {
+      ...resultManifest,
+      derivedArtifactBinding: derivedBinding,
+      provenanceHash: derivedBinding.artifactDigest,
+      resultHash: derivedBinding.artifactDigest
+    };
+
+    const authEnvelope = sealEnvelope({
+      provenanceHash: derivedBinding.artifactDigest,
+      result: mutableResult,
+      authoritativeRevisionHash: 'REV-01',
+      authoritativeGeometryHash: modelHash,
+      timestamp: '2026-08-22T00:00:00.000Z'
+    }, initializeAuthorityHandshake());
+
+    SimulationExecutionRegistry.registerExecution(authEnvelope);
+
     const matrix = simEngine.buildSimulationVerificationMatrix({
       verificationId: 'MAT-CFD-001',
       simulationId: simId,
@@ -610,13 +638,13 @@ describe('P6-001 — Engineering Evidence Authority & Causal Lineage Proof', () 
         subjectId: docCAD.documentId,
         subjectType: 'CFD_RESULT',
         revision: 'REV-01',
-        artifactHash: resultManifest.resultHash
+        artifactHash: mutableResult.resultHash
       },
       evidence: {
         evidenceId: matrix.verificationId,
         evidenceType: 'SIMULATION_MATRIX',
         payload: { claims: matrix.claims },
-        resultHash: resultManifest.resultHash
+        resultHash: mutableResult.resultHash
       },
       executionContext: {
         executionId: executionManifest.executionId,
@@ -624,9 +652,9 @@ describe('P6-001 — Engineering Evidence Authority & Causal Lineage Proof', () 
         solverVersion: executionManifest.solverVersion,
         engineeringIdentity: 'SECP-SIMULATION-AUTHORITY',
         inputs: inputManifest,
-        outputs: resultManifest,
+        outputs: mutableResult,
         inputHash: inputManifest.inputHash,
-        outputHash: resultManifest.resultHash
+        outputHash: mutableResult.resultHash
       },
       keyPair
     });
@@ -646,13 +674,15 @@ describe('P6-001 — Engineering Evidence Authority & Causal Lineage Proof', () 
     const certResult = simEngine.createSimulationCertificate({
       input: inputManifest,
       execution: executionManifest,
-      result: resultManifest,
+      result: mutableResult,
       matrix,
       attestation: attestationResult.attestation,
       policy,
       issuer: 'SECP-AEROSPACE-AUTHORITY',
       keyPair
     });
+
+    console.log('CERT RESULT ERRORS:', certResult.errors, 'SUCCESS:', certResult.success);
 
     expect(certResult.success).toBe(true);
     expect(certResult.certificate?.certificationStatus).toBe('CERTIFIED');
@@ -662,7 +692,7 @@ describe('P6-001 — Engineering Evidence Authority & Causal Lineage Proof', () 
     const certVerify = simEngine.verifySimulationCertificate(certResult.certificate!, {
       currentInput: inputManifest,
       currentExecution: executionManifest,
-      currentResult: resultManifest,
+      currentResult: mutableResult,
       currentMatrix: matrix,
       currentAttestation: attestationResult.attestation,
       currentPolicy: policy
