@@ -1,0 +1,15 @@
+{
+  "auditId": "SECP-CFD-THREE-MESH-REFINEMENT-004",
+  "timestamp": "2026-10-19T07:07:25Z",
+  "gapId": "SECP-GAP-011",
+  "threeMeshRefinement": {
+    "meshes": [
+      { "level": "COARSE", "cells": 1025 },
+      { "level": "MEDIUM", "cells": 2135 },
+      { "level": "FINE", "cells": 4095 }
+    ],
+    "gciStatus": "UNVERIFIED_ASYMPTOTIC_RANGE",
+    "reason": "GCI calculation is deferred because coarse and medium mesh solutions did not achieve strict residual convergence criteria within max iterations."
+  },
+  "verdict": "PARTIAL_IMPROVED"
+}

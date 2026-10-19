@@ -1,0 +1,42 @@
+{
+  "auditId": "SECP-CFD-CONVERGENCE-ACCEPTANCE-004",
+  "timestamp": "2026-10-19T07:07:25Z",
+  "gapId": "SECP-GAP-011",
+  "meshConvergenceData": [
+    {
+      "level": "COARSE",
+      "cells": 1025,
+      "iterations": 200,
+      "terminationReason": "MAX_ITERATIONS_REACHED",
+      "converged": false,
+      "Cl": 0.39755827148021056,
+      "Cd": 0.06126532145686622,
+      "forceStabilityPassed": true
+    },
+    {
+      "level": "MEDIUM",
+      "cells": 2135,
+      "iterations": 200,
+      "terminationReason": "MAX_ITERATIONS_REACHED",
+      "converged": false,
+      "Cl": 0.3962224768549087,
+      "Cd": 0.051644094926921,
+      "forceStabilityPassed": true
+    },
+    {
+      "level": "FINE",
+      "cells": 4095,
+      "iterations": 200,
+      "terminationReason": "MAX_ITERATIONS_REACHED",
+      "converged": false,
+      "Cl": 0.36071030307062957,
+      "Cd": 0.04000846761750983,
+      "forceStabilityPassed": true
+    }
+  ],
+  "acceptanceEvaluation": {
+    "residualConvergenceProven": false,
+    "reason": "All meshes terminated at MAX_ITERATIONS_REACHED with Converged=false, precluding formal residual convergence proof."
+  },
+  "verdict": "PARTIAL_IMPROVED"
+}

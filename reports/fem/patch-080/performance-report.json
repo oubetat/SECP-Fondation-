@@ -1,0 +1,7 @@
+{
+  "name": "PERFORMANCE_AND_SCALING",
+  "passed": true,
+  "maxError": 0,
+  "tolerance": 2000,
+  "details": "Evaluated 6,111 plastic constitutive points in 32.71 ms (~186807 points/sec)."
+}

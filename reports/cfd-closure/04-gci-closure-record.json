@@ -1,0 +1,61 @@
+{
+  "gapId": "SECP-GAP-011",
+  "verdict": "PARTIAL_IMPROVED",
+  "studyType": "3-Mesh Grid Convergence Index (GCI) with y+ < 1",
+  "timestamp": "2026-10-19T08:12:55.348Z",
+  "meshResults": [
+    {
+      "level": "COARSE",
+      "cells": 820,
+      "converged": true,
+      "iterations": 245,
+      "Cl": 0.3894791968026883,
+      "Cd": 0.0623702493347622,
+      "yPlusMean": 8.528344261371483,
+      "forceStabilityPassed": true,
+      "maxV": 12.282997803583205
+    },
+    {
+      "level": "MEDIUM",
+      "cells": 1830,
+      "converged": true,
+      "iterations": 220,
+      "Cl": 0.3860066214337628,
+      "Cd": 0.051806788007545033,
+      "yPlusMean": 2.177922235852101,
+      "forceStabilityPassed": true,
+      "maxV": 12.497582977954723
+    },
+    {
+      "level": "FINE",
+      "cells": 4095,
+      "converged": false,
+      "forceStabilityPassed": false,
+      "error": "SECP-083-DIAGNOSTIC-FAILURE: Divergence at Cell 0, Iter 175. u=NaN, p=Infinity"
+    }
+  ],
+  "gciAnalysis": {
+    "status": "UNVERIFIED_ASYMPTOTIC_RANGE",
+    "reason": "Not all three meshes achieved full convergence criteria."
+  },
+  "closureGate": {
+    "coarseMeshConvergenceProven": true,
+    "mediumMeshConvergenceProven": true,
+    "fineMeshConvergenceProven": false,
+    "forceStabilityProvenOnAllMeshes": false,
+    "wallTreatmentRequirementsSatisfied": false,
+    "threeMeshGciIndependentlyValidated": false,
+    "referenceValidationCompleted": false,
+    "evidenceRecordMatchesExecutedResults": true,
+    "independentVerificationPassed": true,
+    "allConditionsPassed": false,
+    "verdict": "PARTIAL_IMPROVED",
+    "failedConditions": [
+      "fineMeshConvergenceProven",
+      "forceStabilityProvenOnAllMeshes",
+      "wallTreatmentRequirementsSatisfied",
+      "threeMeshGciIndependentlyValidated",
+      "referenceValidationCompleted"
+    ]
+  }
+}

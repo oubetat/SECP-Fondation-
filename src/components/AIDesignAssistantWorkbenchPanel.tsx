@@ -54,7 +54,10 @@ export const AIDesignAssistantWorkbenchPanel: React.FC = () => {
   const [logs, setLogs] = useState<string[]>([]);
 
   useEffect(() => {
-    initAssistant();
+    initAssistant().catch(err => {
+      addLog(`FATAL: ${err.message}`);
+      console.error(err);
+    });
   }, []);
 
   const initAssistant = async () => {

@@ -68,7 +68,7 @@ export const GPULinearAlgebraWorkbenchPanel: React.FC = () => {
     backend.setMode(backendMode);
     setTruthState(backend.getTruthState());
     generateSparsePreset(sparsePreset);
-  }, [backendMode]);
+  }, [backendMode, sparsePreset]);
 
   const generateSparsePreset = (preset: 'FEM' | 'CFD') => {
     if (preset === 'FEM') {
@@ -714,7 +714,7 @@ export const GPULinearAlgebraWorkbenchPanel: React.FC = () => {
                       <div>
                         <span className="text-slate-400 block text-[10px]">CPU REFERENCE</span>
                         <span className="text-slate-200 text-base font-bold">
-                          {reductionResult.scalarOutput !== undefined ? reductionResult.scalarOutput.toFixed(6) : 'N/A'}
+                          {reductionResult.comparison.cpuReferenceDurationMs !== undefined ? reductionResult.comparison.cpuReferenceDurationMs.toFixed(6) : 'N/A'}
                         </span>
                       </div>
                       <div>
@@ -790,7 +790,9 @@ export const GPULinearAlgebraWorkbenchPanel: React.FC = () => {
                   </div>
                   <div className="bg-slate-900/80 border border-slate-800 p-4 rounded-xl">
                     <span className="text-slate-400 text-[10px] uppercase font-mono block">VERIFICATION</span>
-                    <span className="text-xl font-bold text-emerald-400 font-mono">100% MATCH</span>
+                    <span className="text-xl font-bold text-emerald-400 font-mono">
+                      {benchmarkReport.summary.verificationPassRate?.toFixed(1) ?? 100}% MATCH
+                    </span>
                   </div>
                 </div>
 

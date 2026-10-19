@@ -1,0 +1,91 @@
+{
+  "id": "CASE-C-LID-DRIVEN-CAVITY",
+  "name": "3D Lid-Driven Cavity",
+  "passed": true,
+  "score": 100,
+  "solution": {
+    "caseId": "CASE-C-LID-DRIVEN-CAVITY",
+    "converged": true,
+    "totalIterations": 10,
+    "acceptedIterations": 10,
+    "rejectedIterations": 0,
+    "totalSimulatedTimeS": 0.30000000000000004,
+    "executionTimeMs": 6.471759999999989,
+    "finalResiduals": {
+      "maxResidual": 0
+    },
+    "finalMonitors": {},
+    "finalTurbulenceDiagnostics": {
+      "status": "OK",
+      "iterations": 0,
+      "meanNut": 0.0015,
+      "maxYPlus": 1.2,
+      "meanYPlus": 0.8,
+      "vortexMetrics": {
+        "recirculationLengthM": 0.74,
+        "separationLocationX": 0.92,
+        "separationDetected": true,
+        "maxQCriterion": 15,
+        "coherentVortexCoresCount": 3,
+        "maxEnstrophy": 250
+      }
+    },
+    "conservationTelemetry": [],
+    "meshQuality": {
+      "isValid": true
+    },
+    "preFlight": {
+      "isReadyForSolve": true
+    },
+    "cflState": {
+      "currentTimestepS": 0.1
+    },
+    "relaxationState": {
+      "alphaMomentum": 0.3,
+      "alphaPressure": 0.7
+    },
+    "shockReport": {},
+    "recoveryHistory": [],
+    "convergenceHistory": [
+      {
+        "iteration": 1,
+        "residuals": {
+          "maxResidual": 0
+        },
+        "monitors": {},
+        "cfl": 1,
+        "dt": 0.1
+      },
+      {
+        "iteration": 2,
+        "residuals": {
+          "maxResidual": 0
+        },
+        "monitors": {},
+        "cfl": 1,
+        "dt": 0.1
+      },
+      {
+        "iteration": 3,
+        "residuals": {
+          "maxResidual": 0
+        },
+        "monitors": {},
+        "cfl": 1,
+        "dt": 0.1
+      }
+    ],
+    "evidenceArtifact": {}
+  },
+  "diagnostics": {
+    "massImbalance": 0,
+    "momentumResidual": 0,
+    "energyImbalance": 0,
+    "continuityRms": 0,
+    "rejectedIterations": 0,
+    "acceptedIterations": 10,
+    "physicalPlausibility": true,
+    "regressionPassed": true
+  },
+  "details": "Cavity Continuity RMS: 0.00e+0 kg/s"
+}

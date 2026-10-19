@@ -47,6 +47,17 @@ export class MultidisciplinaryModelRegistry {
   }
 
   /**
+   * Retrieves all models registered in the system.
+   */
+  public getAllModels(): MultidisciplinaryModel[] {
+    const allModels: MultidisciplinaryModel[] = [];
+    for (const revisions of this.modelsMap.values()) {
+      allModels.push(...revisions);
+    }
+    return allModels;
+  }
+
+  /**
    * Retrieves a model by ID and optionally revision.
    */
   public getModel(modelId: string, revision?: string): MultidisciplinaryModel | undefined {

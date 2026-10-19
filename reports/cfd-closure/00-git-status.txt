@@ -1,0 +1,1 @@
+No .git in AI Studio container

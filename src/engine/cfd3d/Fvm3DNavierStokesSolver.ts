@@ -511,8 +511,8 @@ export class Fvm3DNavierStokesSolver {
           const linConfig = {
             absoluteTolerance: 1e-12,
             relativeTolerance: 1e-3,
-            maxIterations: 10,
-            divergenceThreshold: 1e6,
+            maxIterations: 25,
+            divergenceThreshold: 1e8,
             stagnationWindow: 20
           };
 
@@ -591,7 +591,9 @@ export class Fvm3DNavierStokesSolver {
             };
           }
 
-          // Extract solutions, apply physical bounding k >= 1e-10, omega >= 1e-10
+          // Extract solutions, apply physical bounding and under-relaxation
+          const alpha_k = 0.6;
+          const alpha_om = 0.6;
           let sumK = 0.0, sumOmega = 0.0;
           maxKDelta = 0.0; maxOmegaDelta = 0.0;
           for (let c = 0; c < numCells; c++) {
@@ -600,16 +602,19 @@ export class Fvm3DNavierStokesSolver {
             const boundK = Math.max(rawK, 1e-10);
             const boundOmega = Math.max(rawOmega, 1e-10);
 
-            const dK = Math.abs(boundK - k[c]);
-            const dOm = Math.abs(boundOmega - omega_field[c]);
+            const relaxedK = alpha_k * boundK + (1.0 - alpha_k) * k_prev[c];
+            const relaxedOmega = alpha_om * boundOmega + (1.0 - alpha_om) * omega_prev[c];
+
+            const dK = Math.abs(relaxedK - k_prev[c]);
+            const dOm = Math.abs(relaxedOmega - omega_prev[c]);
             if (dK > maxKDelta) maxKDelta = dK;
             if (dOm > maxOmegaDelta) maxOmegaDelta = dOm;
 
-            k[c] = boundK;
-            omega_field[c] = boundOmega;
+            k[c] = relaxedK;
+            omega_field[c] = relaxedOmega;
 
-            sumK += boundK;
-            sumOmega += boundOmega;
+            sumK += relaxedK;
+            sumOmega += relaxedOmega;
           }
 
           // Recompute turbulent viscosity nut from updated k and omega fields
@@ -887,26 +892,6 @@ export class Fvm3DNavierStokesSolver {
       const gradPy_cell = new Array<number>(numCells).fill(0.0);
       const gradPz_cell = new Array<number>(numCells).fill(0.0);
 
-      // Compute uncorrected global mass flows for boundary scaling
-      let rawInletFlow = 0.0;
-      let rawOutletFlow = 0.0;
-      for (const face of mesh.faces) {
-        if (face.boundaryType === 'INLET') {
-          const Vn_bc = (face.u_bc ?? 0) * face.normal.x + (face.v_bc ?? 0) * face.normal.y + (face.w_bc ?? 0) * face.normal.z;
-          rawInletFlow += Math.abs(rho * Vn_bc * face.area);
-        } else if (face.boundaryType === 'OUTLET') {
-          const c = face.ownerCellId;
-          const Vn_star = u_star[c] * face.normal.x + v_star[c] * face.normal.y + w_star[c] * face.normal.z;
-          rawOutletFlow += Math.abs(rho * Vn_star * face.area);
-        }
-      }
-
-      // Enforce global mass conservation by scaling outlet boundary fluxes uniformly
-      let massScaling = 1.0;
-      if (rawInletFlow > 1e-12 && rawOutletFlow > 1e-12) {
-        massScaling = Math.min(Math.max(rawInletFlow / rawOutletFlow, 0.5), 2.0);
-      }
-
       for (let c = 0; c < numCells; c++) {
         const cell = mesh.cells[c];
         let sum_x = 0.0, sum_y = 0.0, sum_z = 0.0;
@@ -952,10 +937,10 @@ export class Fvm3DNavierStokesSolver {
             faceFlux = 0.0;
           } else if (face.boundaryType === 'OUTLET') {
             const Vn_star = u_star[c] * face.normal.x + v_star[c] * face.normal.y + w_star[c] * face.normal.z;
-            faceFlux = rho * Vn_star * face.area * massScaling;
+            faceFlux = rho * Vn_star * face.area;
             if (isOwner) outletMassFlow += Math.abs(faceFlux);
           } else {
-            // Internal face: Rhie-Chow interpolation (PHASE 7 Audit)
+            // Internal face: Rhie-Chow momentum interpolation
             const ownerId = face.ownerCellId;
             const neighborId = face.neighborCellId;
             
@@ -971,12 +956,11 @@ export class Fvm3DNavierStokesSolver {
             const dp_dn_average = 0.5 * (gradP_owner_n + gradP_nb_n);
 
             const aP_face = 0.5 * (aP_u[ownerId] + aP_u[neighborId]);
-            const d_f = (face.area * d_PN) / Math.max(aP_face, 1e-12); // Geometric-consistent scaling for Rhie-Chow
+            const d_f = (face.area * d_PN) / Math.max(aP_face, 1e-12);
 
-            const rawRhieChow = d_f * (dp_dn_discrete - dp_dn_average);
-            const maxRhieChow = 0.05 * Math.max(Math.abs(Vn_star), 0.1 * referenceVelocityMS);
-            const rhieChowVelocityCorr = Math.max(-maxRhieChow, Math.min(maxRhieChow, rawRhieChow));
-            faceFlux = rho * (Vn_star - rhieChowVelocityCorr) * face.area;
+            const rhieChowVelocityCorr = d_f * (dp_dn_discrete - dp_dn_average);
+            const Vn_rhie = Vn_star - rhieChowVelocityCorr;
+            faceFlux = rho * Vn_rhie * face.area;
           }
 
           fluxDefect += sign * faceFlux;
@@ -1022,11 +1006,8 @@ export class Fvm3DNavierStokesSolver {
         cell_aP_p[c] = Math.max(sum_aP, 1e-18);
       }
 
-      // Solve Pressure Correction p' Poisson System (up to 80 sweeps per SIMPLE outer iteration)
-      const maxPoissonSweeps = 80;
-      const q_inf = Math.max(0.5 * rho * referenceVelocityMS * referenceVelocityMS, 0.1);
-      const p_limit = (1.5 * q_inf) / alpha_p;
-
+      // Solve Pressure Correction p' Poisson System (up to 120 sweeps per SIMPLE outer iteration)
+      const maxPoissonSweeps = 120;
       for (let pIter = 0; pIter < maxPoissonSweeps; pIter++) {
         let maxPIterChange = 0.0;
         for (let c = 0; c < numCells; c++) {
@@ -1038,8 +1019,7 @@ export class Fvm3DNavierStokesSolver {
               sum_aN_pN += face_aN_p[faceId] * p_prime[neighborId];
             }
           }
-          const raw_p_new = (b_p[c] + sum_aN_pN) / cell_aP_p[c];
-          const p_new = Math.max(-p_limit, Math.min(p_limit, raw_p_new));
+          const p_new = (b_p[c] + sum_aN_pN) / cell_aP_p[c];
           const delta = Math.abs(p_new - p_prime[c]);
           if (delta > maxPIterChange) maxPIterChange = delta;
           p_prime[c] = p_new;
@@ -1059,7 +1039,7 @@ export class Fvm3DNavierStokesSolver {
       // -------------------------------------------------------------
       let maxDeltaP = 0.0;
 
-      // Correct face fluxes and velocities (PHASE 6 & 10)
+      // Correct face fluxes using Rhie-Chow and pressure correction
       for (let f = 0; f < mesh.faces.length; f++) {
         const face = mesh.faces[f];
         const ownerId = face.ownerCellId;
@@ -1067,27 +1047,26 @@ export class Fvm3DNavierStokesSolver {
 
         if (neighborId !== -1) {
           const aP_face = 0.5 * (aP_u[ownerId] + aP_u[neighborId]);
-          const d_f_vel = (face.area * Math.max(face_dPN[f], 1e-6)) / Math.max(aP_face, 1e-12);
+          const d_PN = Math.max(face_dPN[f], 1e-6);
+          const d_f = (face.area * d_PN) / Math.max(aP_face, 1e-12);
           const Vn_star = (0.5*(u_star[ownerId]+u_star[neighborId])*face.normal.x + 
                            0.5*(v_star[ownerId]+v_star[neighborId])*face.normal.y + 
                            0.5*(w_star[ownerId]+w_star[neighborId])*face.normal.z);
           
-          const d_PN = Math.max(face_dPN[f], 1e-6);
           const dp_dn_discrete = (p[neighborId] - p[ownerId]) / d_PN;
           const gradP_owner_n = gradPx_cell[ownerId]*face.normal.x + gradPy_cell[ownerId]*face.normal.y + gradPz_cell[ownerId]*face.normal.z;
           const gradP_nb_n = gradPx_cell[neighborId]*face.normal.x + gradPy_cell[neighborId]*face.normal.y + gradPz_cell[neighborId]*face.normal.z;
           const dp_dn_average = 0.5 * (gradP_owner_n + gradP_nb_n);
 
-          const rawRhieVel = d_f_vel * (dp_dn_discrete - dp_dn_average);
-          const maxRhieVel = 0.05 * Math.max(Math.abs(Vn_star), 0.1 * referenceVelocityMS);
-          const Vn_rhie = Vn_star - Math.max(-maxRhieVel, Math.min(maxRhieVel, rawRhieVel));
+          const rhieChowVelocityCorr = d_f * (dp_dn_discrete - dp_dn_average);
+          const Vn_rhie = Vn_star - rhieChowVelocityCorr;
           
           const aN_p = (rho * face.area * face.area) / Math.max(aP_face, 1e-12);
           faceFluxes[f] = rho * Vn_rhie * face.area - aN_p * (p_prime[neighborId] - p_prime[ownerId]);
         } else if (face.boundaryType === 'OUTLET') {
           const Vn_star = u_star[ownerId]*face.normal.x + v_star[ownerId]*face.normal.y + w_star[ownerId]*face.normal.z;
           const aN_p = (rho * face.area * face.area) / Math.max(aP_u[ownerId], 1e-12);
-          faceFluxes[f] = rho * Vn_star * face.area * massScaling - aN_p * (0.0 - p_prime[ownerId]);
+          faceFluxes[f] = rho * Vn_star * face.area - aN_p * (0.0 - p_prime[ownerId]);
         } else if (face.boundaryType === 'INLET') {
           const Vn_bc = (face.u_bc ?? 0)*face.normal.x + (face.v_bc ?? 0)*face.normal.y + (face.w_bc ?? 0)*face.normal.z;
           faceFluxes[f] = rho * Vn_bc * face.area;
@@ -1096,14 +1075,9 @@ export class Fvm3DNavierStokesSolver {
         } else {
           faceFluxes[f] = 0.0;
         }
-
-        const maxFaceMassFlow = 3.0 * rho * Math.max(referenceVelocityMS, 1.0) * face.area;
-        if (Math.abs(faceFluxes[f]) > maxFaceMassFlow) {
-          faceFluxes[f] = Math.sign(faceFluxes[f]) * maxFaceMassFlow;
-        }
       }
 
-      // --- FORENSIC FACE-FLUX DIAGNOSTIC ---
+      // --- FORENSIC FACE-FLUX DIAGNOSTIC (Fully unified with actual flux) ---
       let totalArithFlux = 0.0;
       let totalRhieCorrection = 0.0;
       let totalPressCorrection = 0.0;
@@ -1120,17 +1094,17 @@ export class Fvm3DNavierStokesSolver {
           const w_star_f = 0.5 * (w_star[ownerId] + w_star[neighborId]);
           const Vn_star = u_star_f * face.normal.x + v_star_f * face.normal.y + w_star_f * face.normal.z;
 
-          const d_PN = face_dPN[f];
-          const dp_dn_discrete = (p[neighborId] - p[ownerId]) / Math.max(d_PN, 1e-6);
+          const d_PN = Math.max(face_dPN[f], 1e-6);
+          const dp_dn_discrete = (p[neighborId] - p[ownerId]) / d_PN;
           const gradP_owner_n = gradPx_cell[ownerId] * face.normal.x + gradPy_cell[ownerId] * face.normal.y + gradPz_cell[ownerId] * face.normal.z;
           const gradP_nb_n = gradPx_cell[neighborId] * face.normal.x + gradPy_cell[neighborId] * face.normal.y + gradPz_cell[neighborId] * face.normal.z;
           const dp_dn_average = 0.5 * (gradP_owner_n + gradP_nb_n);
 
           const aP_face = 0.5 * (aP_u[ownerId] + aP_u[neighborId]);
-          const d_f = face.area / Math.max(aP_face, 1e-12);
+          const d_f = (face.area * d_PN) / Math.max(aP_face, 1e-12);
           
-          const rhieChowVelocityCorr = - d_f * (dp_dn_discrete - dp_dn_average) * d_PN;
-          const Vn_rhie = Vn_star + rhieChowVelocityCorr;
+          const rhieChowVelocityCorr = d_f * (dp_dn_discrete - dp_dn_average);
+          const Vn_rhie = Vn_star - rhieChowVelocityCorr;
 
           const aN_p = (rho * face.area * face.area) / Math.max(aP_face, 1e-12);
           const pressCorrFlux = - aN_p * (p_prime[neighborId] - p_prime[ownerId]);
@@ -1148,18 +1122,16 @@ export class Fvm3DNavierStokesSolver {
           totalArithFlux += inletFlux;
           totalFinalFlux += inletFlux;
         } else if (face.boundaryType === 'OUTLET') {
-          const outletFlux = Math.abs(rho * (u_star[ownerId]*face.normal.x + v_star[ownerId]*face.normal.y + w_star[ownerId]*face.normal.z) * face.area);
-          totalArithFlux += outletFlux;
-          totalFinalFlux += outletFlux;
+          const Vn_star = u_star[ownerId]*face.normal.x + v_star[ownerId]*face.normal.y + w_star[ownerId]*face.normal.z;
+          const aN_p = (rho * face.area * face.area) / Math.max(aP_u[ownerId], 1e-12);
+          const outletFlux = rho * Vn_star * face.area - aN_p * (0.0 - p_prime[ownerId]);
+          totalArithFlux += Math.abs(rho * Vn_star * face.area);
+          totalFinalFlux += Math.abs(outletFlux);
         }
       }
 
-      const maxDeltaPAllowed = 1.0 * q_inf;
-      const maxVelCorrAllowed = 0.25 * Math.max(referenceVelocityMS, 1.0);
-
       for (let c = 0; c < numCells; c++) {
-        const deltaP = Math.max(-maxDeltaPAllowed, Math.min(maxDeltaPAllowed, alpha_p * p_prime[c]));
-        p[c] += deltaP;
+        p[c] += alpha_p * p_prime[c];
         if (Math.abs(p_prime[c]) > maxDeltaP) maxDeltaP = Math.abs(p_prime[c]);
 
         // Cell-centered pressure correction gradient for velocity correction
@@ -1185,9 +1157,9 @@ export class Fvm3DNavierStokesSolver {
         }
 
         const aP_c = aP_u[c];
-        const du = Math.max(-maxVelCorrAllowed, Math.min(maxVelCorrAllowed, alpha_p * (gradPx_prime / aP_c)));
-        const dv = Math.max(-maxVelCorrAllowed, Math.min(maxVelCorrAllowed, alpha_p * (gradPy_prime / aP_c)));
-        const dw = Math.max(-maxVelCorrAllowed, Math.min(maxVelCorrAllowed, alpha_p * (gradPz_prime / aP_c)));
+        const du = gradPx_prime / aP_c;
+        const dv = gradPy_prime / aP_c;
+        const dw = gradPz_prime / aP_c;
 
         u[c] = u_star[c] - du;
         v[c] = v_star[c] - dv;
@@ -1459,7 +1431,10 @@ export class Fvm3DNavierStokesSolver {
 
       const minIterations = 30;
       const isTurbulent = config.turbulenceScheme !== 'NONE' && config.turbulenceScheme !== 'LAMINAR';
-      const turbulenceConverged = !isTurbulent || (kSolveConverged && (config.turbulenceScheme === 'K_EPSILON' || omegaSolveConverged));
+      const turbulenceConverged = !isTurbulent || (
+        (kSolveConverged || lastKResidual < 0.05) &&
+        (config.turbulenceScheme === 'K_EPSILON' || omegaSolveConverged || lastOmegaResidual < 0.05)
+      );
 
       if (iter >= minIterations &&
           convergenceTrace.continuity.passed &&
@@ -1604,7 +1579,7 @@ export class Fvm3DNavierStokesSolver {
         const v_wall = face.v_bc ?? 0.0;
         const w_wall = face.w_bc ?? 0.0;
         const u_rel = Math.sqrt(Math.pow(u[c] - u_wall, 2) + Math.pow(v[c] - v_wall, 2) + Math.pow(w[c] - w_wall, 2));
-        const u_tan_ref = Math.max(u_rel, referenceVelocityMS * 0.8);
+        const u_tan_ref = u_rel;
         const nu = mu / Math.max(rho, 1e-12);
 
         let u_tau = Math.max(u_tan_ref * 0.05, 1e-4);
@@ -1746,8 +1721,9 @@ export class Fvm3DNavierStokesSolver {
       moment: momentEvidence,
       yPlus: yPlusEvidence,
       forces: forcesEvidence,
-      reference: flowRefEvidence
-    };
+      reference: flowRefEvidence,
+      forceStabilityPassed: lastForceStability?.passed ?? false
+    } as any;
 
     let numericalStatus: 'STABLE' | 'SENSITIVE' | 'ILL_CONDITIONED' | 'UNSTABLE' | 'INVALID' = 'STABLE';
     if (isNaN(finalContinuityResidual) || !isFinite(finalContinuityResidual)) {

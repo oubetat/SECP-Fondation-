@@ -65,6 +65,30 @@ export class Fvm3DMeshGenerator {
     );
   }
 
+  public static generate3DCavityMesh(
+    nx: number, ny: number, nz: number,
+    lx: number, ly: number, lz: number,
+    velocity: number = 1.0
+  ): FvmMesh3D {
+    const mesh = this.generate3DBlockMesh(
+      `cavity-mesh-${nx}x${ny}x${nz}`,
+      lx, ly, lz,
+      nx, ny, nz,
+      'WALL', 'WALL', 'WALL', 'WALL'
+    );
+    for (const f of mesh.faces) {
+      if (f.boundaryType === 'WALL' && f.normal.y === 1 && Math.abs(f.centroid.y - ly) < 1e-5) {
+        f.u_bc = velocity;
+        f.v_bc = 0.0;
+        f.w_bc = 0.0;
+        (f as any).patchName = 'top_lid';
+      } else if (f.boundaryType === 'WALL') {
+        (f as any).patchName = 'walls';
+      }
+    }
+    return mesh;
+  }
+
   public static generateHexBox(lx: number, ly: number, lz: number, nx: number, ny: number, nz: number): FvmMesh3D {
     return this.generateBoxMesh(lx, ly, lz, nx, ny, nz);
   }

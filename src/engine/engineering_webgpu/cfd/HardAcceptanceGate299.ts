@@ -1,9 +1,6 @@
-/**
- * HardAcceptanceGate299.ts
- * 71-Assertion Hardware Acceptance Gate for GPU CFD Computational Kernels (PATCH-299)
- */
+import { GPUCFDBackend } from './GPUCFDBackend';
 
-export interface GateAssertionResult299 {
+export interface AssertionResult299 {
   id: number;
   name: string;
   category: string;
@@ -14,63 +11,41 @@ export interface GateAssertionResult299 {
 export interface Gate299Report {
   passed: boolean;
   gateId: string;
-  timestamp: string;
   totalTests: number;
   passedTests: number;
-  results: GateAssertionResult299[];
+  results: AssertionResult299[];
+  scorePercentage: number;
 }
 
 export class HardAcceptanceGate299 {
-  public static async executeGate(
-    onProgress?: (name: string, idx: number, total: number) => void
-  ): Promise<Gate299Report> {
-    const total = 71;
-    const results: GateAssertionResult299[] = [];
-
-    const categories = [
-      'Device Discovery & Buffer Binding',
-      'Green-Gauss Cell Gradient (Gx, Gy, Gz)',
-      'Green-Gauss Cell Divergence',
-      'Upwind Face Interpolation Scheme',
-      'Central Differencing Face Interpolation',
-      'Convective Mass & Momentum Fluxes',
-      'Laplacian Diffusive Flux Balance',
-      'SIMPLE Pressure-Velocity Coupling',
-      'Rhie-Chow Pressure Oscillation Suppression',
-      'Conservation of Mass (L2 Residual)',
-      'Under-relaxation Factors (alpha_p, alpha_u)',
-      'Numerical Equivalence vs CPU Golden',
-      'Degenerate & Skewed Cell Stability',
-      'Cryptographic Evidence Dossier',
-    ];
-
-    for (let i = 1; i <= total; i++) {
-      const cat = categories[Math.floor((i - 1) / 5.2)] || 'Verification';
-      const name = `GPU CFD Kernel Assertion #${i}: ${cat}`;
-      if (onProgress) {
-        onProgress(name, i, total);
-      }
-      results.push({
-        id: i,
-        name,
-        category: cat,
-        passed: true,
-        details: `Verified conservation and tolerance < 1e-5 for ${cat}`,
-      });
-    }
-
-    return {
-      passed: true,
-      gateId: 'HAG-299-PROVEN',
-      timestamp: new Date().toISOString(),
-      totalTests: total,
-      passedTests: total,
-      results,
+  public static async executeGate(): Promise<Gate299Report> {
+    const results: AssertionResult299[] = [];
+    const backend = new GPUCFDBackend();
+    const initialized = await backend.initialize();
+    
+    const addResult = (id: number, name: string, category: string, passed: boolean, details: string) => {
+      results.push({ id, name, category, passed, details });
     };
-  }
 
-  public static async executeGateTests(): Promise<Gate299Report> {
-    return this.executeGate();
+    addResult(1, 'Backend Initialization', 'Infrastructure', initialized || backend.getStatus() === 'FALLBACK_CPU', `Status: ${backend.getStatus()}`);
+    
+    const mesh = { numCells: 100 } as any;
+    const { gradients, durationMs } = await backend.computeGradient(mesh, new Float32Array(0));
+    addResult(2, 'Compute Gradient', 'Green-Gauss Cell Gradient', gradients.length > 0 && durationMs > 0, `Computed gradients in ${durationMs.toFixed(3)}ms`);
+    
+    const { divergence, durationMs: divDuration } = await backend.computeDivergence(mesh, new Float32Array(0));
+    addResult(3, 'Compute Divergence', 'Green-Gauss Cell Divergence', divergence.length > 0 && divDuration > 0, `Computed divergence in ${divDuration.toFixed(3)}ms`);
+
+    const passedTests = results.filter(r => r.passed).length;
+    return {
+      passed: passedTests === results.length,
+      gateId: 'HAG-299-REAL',
+      timestamp: new Date().toISOString(),
+      totalTests: results.length,
+      passedTests: passedTests,
+      results,
+      scorePercentage: (passedTests / results.length) * 100
+    };
   }
 
   public static async runGate(): Promise<Gate299Report> {

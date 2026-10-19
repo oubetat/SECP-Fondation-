@@ -35,7 +35,6 @@ import {
   WorkerTaskModel,
   SchedulerPolicy
 } from '../engine/engineering_workers/WorkerTypes301';
-import { WorkerDomainCompute } from '../engine/engineering_workers/WorkerDomainCompute';
 
 export const WorkerParallelismWorkbenchPanel: React.FC = () => {
   const [scheduler] = useState(() => new EngineeringWorkerScheduler(0, 300));
@@ -92,6 +91,8 @@ export const WorkerParallelismWorkbenchPanel: React.FC = () => {
       const points = await scheduler.runScalingBenchmark(25000, 8);
       setScalingPoints(points);
       updateTelemetry();
+    } catch (err) {
+      console.error('Scaling benchmark failed:', err);
     } finally {
       setIsBenchmarking(false);
     }
@@ -103,6 +104,8 @@ export const WorkerParallelismWorkbenchPanel: React.FC = () => {
       const report = await HardAcceptanceGate301.executeBattery();
       setGateReport(report);
       updateTelemetry();
+    } catch (err) {
+      console.error('Gate 301 execution failed:', err);
     } finally {
       setIsRunningGate(false);
     }
@@ -122,7 +125,12 @@ export const WorkerParallelismWorkbenchPanel: React.FC = () => {
     setActiveWorkload('CFD');
     setWorkloadLogs(['Partitioning fluid mesh (12,000 cells) across workers...']);
     const totalCells = 12000;
-    const numPartitions = workerCount;
+    const numPartitions = workerCount ?? scheduler.getPool().getWorkerCount();
+    if (numPartitions === 0) {
+      setWorkloadLogs(['ERROR: No workers available. Select worker count first.']);
+      setActiveWorkload(null);
+      return;
+    }
     const cellsPerPart = Math.floor(totalCells / numPartitions);
 
     const tasks: WorkerTaskModel[] = [];
@@ -180,7 +188,12 @@ export const WorkerParallelismWorkbenchPanel: React.FC = () => {
     setActiveWorkload('FEM');
     setWorkloadLogs(['Partitioning structural quad mesh (8,000 elements) across workers...']);
     const totalElem = 8000;
-    const numPartitions = workerCount;
+    const numPartitions = workerCount ?? scheduler.getPool().getWorkerCount();
+    if (numPartitions === 0) {
+      setWorkloadLogs(['ERROR: No workers available. Select worker count first.']);
+      setActiveWorkload(null);
+      return;
+    }
     const elemPerPart = Math.floor(totalElem / numPartitions);
 
     const tasks: WorkerTaskModel[] = [];
@@ -619,6 +632,12 @@ export const WorkerParallelismWorkbenchPanel: React.FC = () => {
               <p className="text-xs text-slate-400 mt-3">
                 Discretizes momentum advection, pressure correction (SIMPLE), and L2-norm reduction.
               </p>
+              <div className="grid grid-cols-2 gap-2 mt-3">
+                <input type="number" placeholder="Density (kg/m³)" value={cfdDensity ?? ''} className="bg-slate-800 border border-slate-700 rounded p-2 text-xs text-white" onChange={e => setCfdDensity(e.target.value ? Number(e.target.value) : null)} />
+                <input type="number" placeholder="Viscosity (Pa·s)" value={cfdViscosity ?? ''} className="bg-slate-800 border border-slate-700 rounded p-2 text-xs text-white" onChange={e => setCfdViscosity(e.target.value ? Number(e.target.value) : null)} />
+                <input type="number" placeholder="Velocity (m/s)" value={cfdVelocity ?? ''} className="bg-slate-800 border border-slate-700 rounded p-2 text-xs text-white" onChange={e => setCfdVelocity(e.target.value ? Number(e.target.value) : null)} />
+                <input type="number" placeholder="Pressure (Pa)" value={cfdPressure ?? ''} className="bg-slate-800 border border-slate-700 rounded p-2 text-xs text-white" onChange={e => setCfdPressure(e.target.value ? Number(e.target.value) : null)} />
+              </div>
               <button
                 onClick={runParallelCFDWorkload}
                 disabled={activeWorkload !== null}

@@ -1,0 +1,23 @@
+{
+  "patch": "PATCH-055",
+  "title": "SECP Industrial OS v2 — Linear Solvers Capability Report",
+  "timestamp": "2026-10-16T07:24:46.757Z",
+  "verdict": "PASS",
+  "supportedSolvers": [
+    "direct-lu-solver",
+    "jacobi-solver",
+    "gauss-seidel-solver",
+    "conjugate-gradient-solver",
+    "bicgstab-solver"
+  ],
+  "preconditioners": [
+    "identity-preconditioner",
+    "jacobi-preconditioner"
+  ],
+  "capabilities": {
+    "sparseMatrixStorage": "CSR/Row-oriented Map Abstraction (Non-dense)",
+    "residualCalculation": "Exact r = b - A*x evaluated every iteration",
+    "convergencePolicies": "Absolute & Relative tolerance with divergence & stagnation detection",
+    "determinism": "100% bitwise reproducible execution"
+  }
+}

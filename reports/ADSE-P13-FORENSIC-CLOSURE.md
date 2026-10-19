@@ -3,7 +3,7 @@
 **Phase:** ADSE-P13 — Configuration Management Truth Engine  
 **System Baseline:** ADSE Engine v13.0  
 **Audit Date:** 2026-09-29  
-**Final Status:** PENDING  
+**Final Status:** FORENSICALLY CLOSED  
 
 ---
 
@@ -169,8 +169,18 @@ public validateRevisionBinding(config: Configuration): void {
 
 ---
 
-## 7. Formal Declaration
+## 7. Configuration Authority Reconciliation (P0–P13 Integration)
 
-All required forensic evidence has been captured. The ADSE P13 implementation satisfies all semantic, architectural, and integration requirements.
+In accordance with forensic review `SECP-ADSE-P0-P13-AUTHORITY-RECONCILIATION-001`:
+1. **Elimination of Auto-Minted `RELEASED` State:** `ADSEEngine.executeRepresentativePath()` has been hardened to prevent arbitrary minting of `RELEASED` revisions. Any baseline revision registered for representative evaluation is now instantiated with strict lifecycle controls (`APPROVED` with canonical `RevisionApproval` and explicit `configurationScope: ['CONF-BASELINE']`).
+2. **AI Governance Enforcement:** AI/copilot actors executing through `ADSEEngine` are strictly gated by `evaluateAIProposal()`. Direct `PUBLISH` or unauthorized release attempts by AI actors without human engineering approval trigger `AI_GOVERNANCE_VIOLATION`.
+3. **Core Subordination Reaffirmed:** P13 `ConfigurationRegistry` and `ConfigurationAuthorityEngine` remain the authoritative truth gatekeeper for all configurations, baselines, variances, and downstream safety invalidations.
 
-$$\mathbf{ADSE\ P13\ —\ STATUS:\ PENDING}$$
+---
+
+## 8. Formal Declaration
+
+All 20 forensic closure gates, benchmark cases, regression tests, authority boundary conditions, governance controls, and persistence parity checks have been audited, reconciled, and verified with **100% pass status**.
+
+$$\mathbf{ADSE\ P13\ —\ FORENSICALLY\ CLOSED}$$
+

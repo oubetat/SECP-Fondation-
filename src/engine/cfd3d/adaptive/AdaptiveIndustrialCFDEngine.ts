@@ -151,8 +151,8 @@ export class AdaptiveIndustrialCFDEngine {
 
       for (let cId = 0; cId < numCells; cId++) {
         const cell = mesh.cells[cId];
-        let dU_conv = 0;
-        let dU_diff = 0;
+        let dU_conv = 0, dV_conv = 0, dW_conv = 0;
+        let dU_diff = 0, dV_diff = 0, dW_diff = 0;
         let massImbalanceCell = 0;
         const cellNut = turbulenceStates[cId]?.nut || 0.0;
         const muEff = mu + (rho * cellNut);
@@ -163,42 +163,65 @@ export class AdaptiveIndustrialCFDEngine {
           const neighId = face.neighborCellId;
           const sign = isOwner ? 1.0 : -1.0;
 
-          let faceU = u[cId];
+          let faceU = u[cId], faceV = v[cId], faceW = w[cId];
           let faceP = p[cId];
 
           if (neighId !== -1) {
             const otherId = isOwner ? neighId : face.ownerCellId;
             faceU = 0.5 * (u[cId] + u[otherId]);
+            faceV = 0.5 * (v[cId] + v[otherId]);
+            faceW = 0.5 * (w[cId] + w[otherId]);
             faceP = 0.5 * (p[cId] + p[otherId]);
-            const dPN = Math.max(1e-6, Math.abs(mesh.cells[otherId].centroid.x - cell.centroid.x));
+
+            const dPN = Math.max(1e-6, Math.hypot(
+              mesh.cells[otherId].centroid.x - cell.centroid.x,
+              mesh.cells[otherId].centroid.y - cell.centroid.y,
+              mesh.cells[otherId].centroid.z - cell.centroid.z
+            ));
             const neighNut = turbulenceStates[otherId]?.nut || 0.0;
             const faceMuEff = 0.5 * (muEff + mu + (rho * neighNut));
+
             dU_diff += (faceMuEff * face.area * (u[otherId] - u[cId])) / dPN;
+            dV_diff += (faceMuEff * face.area * (v[otherId] - v[cId])) / dPN;
+            dW_diff += (faceMuEff * face.area * (w[otherId] - w[cId])) / dPN;
           } else {
-            if (face.boundaryType === 'INLET' && face.u_bc !== undefined) {
-              faceU = face.u_bc;
-            } else if (face.boundaryType && face.boundaryType.startsWith('WALL')) {
-              faceU = 0.0;
+            if (face.boundaryType === 'INLET') {
+              faceU = face.u_bc ?? u[cId];
+              faceV = face.v_bc ?? 0.0;
+              faceW = face.w_bc ?? 0.0;
+            } else if (face.boundaryType === 'WALL' || (face.boundaryType && face.boundaryType.startsWith('WALL'))) {
+              faceU = face.u_bc ?? 0.0;
+              faceV = face.v_bc ?? 0.0;
+              faceW = face.w_bc ?? 0.0;
               const dy = Math.max(1e-6, Math.abs(face.centroid.y - cell.centroid.y));
-              dU_diff -= (muEff * face.area * u[cId]) / dy;
+              const dz = Math.max(1e-6, Math.abs(face.centroid.z - cell.centroid.z));
+              dU_diff -= (muEff * face.area * (u[cId] - faceU)) / Math.max(1e-6, Math.abs(face.centroid.x - cell.centroid.x) + dy);
+              dV_diff -= (muEff * face.area * (v[cId] - faceV)) / Math.max(dy, 1e-6);
+              dW_diff -= (muEff * face.area * (w[cId] - faceW)) / Math.max(dz, 1e-6);
             }
           }
 
-          const massFlux = rho * face.area * (face.normal.x * faceU);
+          const massFlux = rho * face.area * (
+            face.normal.x * faceU + face.normal.y * faceV + face.normal.z * faceW
+          );
           massImbalanceCell += sign * massFlux;
+
           dU_conv -= sign * massFlux * faceU;
+          dV_conv -= sign * massFlux * faceV;
+          dW_conv -= sign * massFlux * faceW;
         }
 
         massResiduals[cId] = massImbalanceCell;
 
-        // Momentum relaxation update
         const vol = Math.max(1e-12, cell.volume);
         const targetU = u[cId] + (currentDt / (rho * vol)) * (dU_conv + dU_diff);
+        const targetV = v[cId] + (currentDt / (rho * vol)) * (dV_conv + dV_diff);
+        const targetW = w[cId] + (currentDt / (rho * vol)) * (dW_conv + dW_diff);
 
-        // Under-relaxed step
         u[cId] = u[cId] + alphaU * (targetU - u[cId]);
+        v[cId] = v[cId] + alphaU * (targetV - v[cId]);
+        w[cId] = w[cId] + alphaU * (targetW - w[cId]);
 
-        // Continuity pressure correction
         const pCorrection = - (massImbalanceCell / (rho * vol + 1e-12)) * (currentDt * 50.0);
         p[cId] = p[cId] + alphaP * pCorrection;
       }

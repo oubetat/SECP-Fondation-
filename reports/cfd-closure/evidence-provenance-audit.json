@@ -1,0 +1,19 @@
+{
+  "auditId": "SECP-CFD-EVIDENCE-PROVENANCE-004",
+  "timestamp": "2026-10-19T07:07:25Z",
+  "gapId": "SECP-GAP-011",
+  "evidenceProvenance": {
+    "reportsChecked": [
+      "04-gci-closure-record.json",
+      "three-mesh-convergence-report.json",
+      "gci-validity-report.json",
+      "gap011-root-cause-report.json",
+      "regression-test-results.txt",
+      "wall-yplus-distribution-report.json"
+    ],
+    "provenanceValidated": true,
+    "syntheticValuesDetected": false,
+    "hardcodedPassStringsDetected": false
+  },
+  "finalVerdict": "PARTIAL_IMPROVED"
+}

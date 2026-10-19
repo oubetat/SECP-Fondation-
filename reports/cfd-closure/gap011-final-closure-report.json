@@ -1,0 +1,36 @@
+{
+  "gapId": "SECP-GAP-011",
+  "title": "NACA0012 SST CFD Convergence and GCI Closure",
+  "status": "PARTIAL_IMPROVED",
+  "timestamp": "2026-10-19T08:15:00.000Z",
+  "summary": {
+    "coarseMesh": {
+      "cells": 820,
+      "converged": true,
+      "iterations": 245,
+      "terminationReason": "CONVERGED",
+      "Cl": 0.3895,
+      "Cd": 0.0624,
+      "yPlusMean": 8.53
+    },
+    "mediumMesh": {
+      "cells": 1830,
+      "converged": true,
+      "iterations": 220,
+      "terminationReason": "CONVERGED",
+      "Cl": 0.3860,
+      "Cd": 0.0518,
+      "yPlusMean": 2.18
+    },
+    "fineMesh": {
+      "cells": 4095,
+      "converged": false,
+      "iterations": 175,
+      "terminationReason": "DIVERGENCE_NAN",
+      "error": "SECP-083-DIAGNOSTIC-FAILURE: Divergence at Cell 0, Iter 175. u=NaN, p=Infinity"
+    }
+  },
+  "rootCauseProven": "Fine O-grid near-wall cell stretching (first cell height 1e-4) without sufficient turbulence viscosity under-relaxation leads to convective stiffness instability and velocity/pressure blowup around iteration 75-175.",
+  "gciStatus": "UNVERIFIED_ASYMPTOTIC_RANGE",
+  "reason": "Coarse and medium meshes successfully achieved strict residual convergence (terminationReason = CONVERGED), but fine mesh experienced divergence before reaching convergence criteria."
+}

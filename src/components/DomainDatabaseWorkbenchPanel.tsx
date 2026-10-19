@@ -14,24 +14,35 @@ import {
   Share2, 
   Search 
 } from 'lucide-react';
+import { MultidisciplinaryModelRegistry } from '../engine/epc/MultidisciplinaryModelRegistry';
+import { MultidisciplinaryModel } from '../engine/epc/MultidisciplinaryModelTypes';
 import { EPC001Verifier } from '../engine/epc/EPC001Verifier';
 
 export const DomainDatabaseWorkbenchPanel: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'ENTITIES' | 'RELATIONS' | 'SCHEMA_TYPES' | 'GATE001'>('ENTITIES');
-  const [entities, setEntities] = useState<any[]>([]);
+  const [entities, setEntities] = useState<MultidisciplinaryModel[]>([]);
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [feedback, setFeedback] = useState<string>('');
   const [gateResults, setGateResults] = useState<any[] | null>(null);
 
+  const [registry] = useState(() => new MultidisciplinaryModelRegistry());
+
   const handleLoadDemoEntities = () => {
-    const demoEntities = [
-      { id: 'ENT-PART-001', type: 'SOLID_PART', name: 'Turbine Rotor Disc', revision: 'REV-C.4', checksum: 'sha256:8f4b12...a9', fieldsCount: 18, relations: 4 },
-      { id: 'ENT-ASM-002', type: 'ASSEMBLY_NODE', name: 'High-Pressure Compressor Stage', revision: 'REV-B.1', checksum: 'sha256:3a1e94...c2', fieldsCount: 24, relations: 12 },
-      { id: 'ENT-MAT-003', type: 'MATERIAL_RECORD', name: 'Inconel 718 Superalloy', revision: 'REV-A.0', checksum: 'sha256:e7d018...f5', fieldsCount: 32, relations: 6 },
-      { id: 'ENT-PMI-004', type: 'GD&T_ANNOTATION', name: 'Rotor Hub Coaxiality 0.02mm', revision: 'REV-C.0', checksum: 'sha256:91c82b...11', fieldsCount: 14, relations: 2 }
+    const demoModels: MultidisciplinaryModel[] = [
+      { 
+        modelId: 'ENT-PART-001', 
+        modelType: 'CAD', 
+        name: 'Turbine Rotor Disc', 
+        modelRevision: 'REV-C.4', 
+        contentHash: 'sha256:8f4b12...a9', 
+        configurationId: 'CFG-001',
+        provenance: { hash: 'sha256:8f4b12...a9' } as any
+      } as any
     ];
-    setEntities(demoEntities);
-    setFeedback('Loaded 4 authoritative engineering domain records into the in-memory schema repository.');
+    
+    demoModels.forEach(m => registry.registerModel(m));
+    setEntities(registry.getAllModels());
+    setFeedback('Loaded demo models into the registry.');
   };
 
   const handleRunGate001 = () => {
@@ -59,8 +70,8 @@ export const DomainDatabaseWorkbenchPanel: React.FC = () => {
 
   const filteredEntities = entities.filter(e => 
     e.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
-    e.id.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    e.type.toLowerCase().includes(searchQuery.toLowerCase())
+    e.modelId.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    e.modelType.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   return (
@@ -181,25 +192,21 @@ export const DomainDatabaseWorkbenchPanel: React.FC = () => {
                   <div key={entity.id} className="p-4 bg-slate-950/60 border border-slate-850 rounded-xl space-y-2 font-mono text-xs">
                     <div className="flex items-center justify-between">
                       <span className="font-bold text-slate-200">{entity.name}</span>
-                      <span className="px-2 py-0.5 rounded bg-blue-950 text-blue-300 border border-blue-800 text-[10px]">{entity.revision}</span>
+                      <span className="px-2 py-0.5 rounded bg-blue-950 text-blue-300 border border-blue-800 text-[10px]">{entity.modelRevision}</span>
                     </div>
 
                     <div className="space-y-1 text-slate-400 text-[11px]">
                       <div className="flex justify-between">
                         <span>Identifier:</span>
-                        <strong className="text-slate-300">{entity.id}</strong>
+                        <strong className="text-slate-300">{entity.modelId}</strong>
                       </div>
                       <div className="flex justify-between">
                         <span>Schema Type:</span>
-                        <strong className="text-cyan-400">{entity.type}</strong>
-                      </div>
-                      <div className="flex justify-between">
-                        <span>Fields / Properties:</span>
-                        <strong className="text-slate-300">{entity.fieldsCount} Typed Fields</strong>
+                        <strong className="text-cyan-400">{entity.modelType}</strong>
                       </div>
                       <div className="flex justify-between">
                         <span>Integrity Hash:</span>
-                        <span className="text-slate-500 text-[10px]">{entity.checksum}</span>
+                        <span className="text-slate-500 text-[10px]">{entity.contentHash}</span>
                       </div>
                     </div>
                   </div>

@@ -301,7 +301,7 @@ export class ProductionQualificationBattery175 {
         physicalPlausibility: solution.finalPhysicalBounds?.isValid ?? true,
         regressionPassed: true
       },
-      details: `Pressure drop: ${(solution.finalMonitors.totalPressureDropPa).toFixed(2)} Pa, Mass Conserved: ${passed}`
+      details: `Pressure drop: ${(solution.finalMonitors.totalPressureDropPa || 0).toFixed(2)} Pa, Mass Conserved: ${passed}`
     };
   }
 

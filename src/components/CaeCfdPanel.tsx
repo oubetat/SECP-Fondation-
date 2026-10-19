@@ -21,9 +21,9 @@ import {
   Database,
   ArrowRight
 } from 'lucide-react';
-import { CfdEngine, CfdFlowResult } from '../engine/cfdEngine';
+import { CaeCfdService } from '../engine/engineering_cfd/CaeCfdService';
+import { HardAcceptanceGate377, Gate377Report } from '../engine/engineering_cfd/HardAcceptanceGate377';
 import { EngineeringDocument, CFDModel } from '../engine/cad-kernel/document/CADDocument';
-import { CfdTool277 } from '../engine/viewport/CfdTool277';
 import { CadSolidEntity } from '../cadKernel';
 import { deriveTruthProvenance, TruthOrigin } from '../engine/context/EngineeringContext';
 
@@ -140,50 +140,44 @@ export function CaeCfdPanel({
     };
   }, [solution, density, inletVelocity, geometryStats]);
 
-  const handleRunSimulation = () => {
+  const [gateReport, setGateReport] = useState<Gate377Report | null>(null);
+
+  const handleRunSimulation = async () => {
     setIsSolving(true);
-    setTimeout(async () => {
-      try {
-        const res = CfdEngine.solveIncompressibleRANS(
-          null,
-          Number(inletVelocity),
-          Number(fluidViscosity),
-          Number(maxSteps),
-          Number(density)
-        );
-        setSolution(res);
-        setVtkOutput(null);
+    setGateReport(null);
+    try {
+      const service = CaeCfdService.getInstance();
+      const res = await service.runSimulation({
+        inletVelocity: Number(inletVelocity),
+        fluidViscosity: Number(fluidViscosity),
+        maxSteps: Number(maxSteps),
+        density: Number(density)
+      });
+      setSolution(res);
+      setVtkOutput(null);
 
-        // Commit to canonical document via Canonical Intent Dispatcher Pipeline
-        if (canonicalDocument && onUpdateCanonicalDocument) {
-          const cfdTool = new CfdTool277();
-          const intent = cfdTool.createIntent(canonicalDocument.documentId, {
-            inletVelocity,
-            fluidDensity: density,
-            viscosity: fluidViscosity,
-            convergenceIterations: maxSteps,
-            cellCount: res.points?.length || 250,
-            results: {
-              reynoldsNumber: res.reynoldsNumber,
-              pressureDropPa: res.pressureDropPa || (res.pressureDropKPa * 1000),
-              flowRegime: res.flowRegime,
-              maxVelocity: res.maxVelocityMS
-            }
-          });
+      // Run HAG
+      const report = HardAcceptanceGate377.runAcceptanceSuite(res);
+      setGateReport(report);
 
-          const dispatchResult = await cfdTool.execute(intent, canonicalDocument);
-          if (dispatchResult.success && dispatchResult.document) {
-            onUpdateCanonicalDocument(dispatchResult.document);
-          } else {
-            console.error('CFD Canonical Intent Dispatch Failed:', dispatchResult.error);
-          }
+      // Commit to canonical document via Service
+      if (report.passed && canonicalDocument && onUpdateCanonicalDocument) {
+        const updatedDoc = await service.commitToCanonicalDocument(canonicalDocument, {
+          inletVelocity: Number(inletVelocity),
+          fluidViscosity: Number(fluidViscosity),
+          maxSteps: Number(maxSteps),
+          density: Number(density)
+        }, res);
+        
+        if (updatedDoc) {
+          onUpdateCanonicalDocument(updatedDoc);
         }
-      } catch (e: any) {
-        console.error('CFD Simulation error:', e);
-      } finally {
-        setIsSolving(false);
       }
-    }, 500);
+    } catch (e: any) {
+      console.error('CFD Simulation error:', e);
+    } finally {
+      setIsSolving(false);
+    }
   };
 
   const handleExportVTK = () => {

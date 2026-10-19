@@ -18,7 +18,7 @@ import {
 import { CoreExecutionAuthority } from '../../execution/CoreExecutionAuthority';
 import { CoreExecutionRequest, GenericExecutionEnvelope } from '../../execution/CoreExecutionTypes';
 import { RevisionEngine } from '../../revision/RevisionEngine';
-import { Revision, RevisionLifecycleState } from '../../revision/types';
+import { Revision, RevisionLifecycleState, RevisionApproval, RevisionEntityType } from '../../revision/types';
 import { CapabilityRegistry } from '../../capabilities/CapabilityRegistry';
 
 export class ADSEEngine {
@@ -197,6 +197,21 @@ export class ADSEEngine {
       });
     }
 
+    // 0. AI Governance & Actor Authority Enforcement
+    const isAI = params.actor.toLowerCase().includes('ai') || 
+                 params.actor.toLowerCase().includes('copilot') || 
+                 params.actor.toLowerCase().includes('assistant');
+    if (isAI) {
+      this.evaluateAIProposal({
+        actor: params.actor,
+        requestedAction: 'REQUEST_EXECUTION',
+        capabilityId: params.pluginId,
+        systemId: params.systemId,
+        proposedChanges: params.parameters
+      });
+    }
+
+    // 1. STAGE: DECLARE
     gateResults.DECLARE = { stage: 'DECLARE', passed: true, timestamp: new Date().toISOString(), reason: 'System & Requirement explicitly declared' };
 
     // 2. STAGE: IMPLEMENT
@@ -206,20 +221,34 @@ export class ADSEEngine {
     let activeRev = this.revisionEngine.getLatestRevision(params.engineeringObjectId);
     if (!activeRev) {
       const { code, number } = this.revisionEngine.generateNextRevisionCode(params.engineeringObjectId);
+      const approvalRecord: RevisionApproval = {
+        approvalId: `APP-REP-${Date.now()}`,
+        revisionId: `${params.engineeringObjectId}:REV-${code}`,
+        role: 'CONFIGURATION_AUTHORITY',
+        actorId: params.actor,
+        decision: 'APPROVED',
+        timestamp: new Date().toISOString(),
+        reason: 'Authorized configuration revision baseline for representative path qualification'
+      };
       activeRev = this.revisionEngine.createRevision({
         revisionId: `${params.engineeringObjectId}:REV-${code}`,
         entityId: params.engineeringObjectId,
-        entityType: 'PART',
+        entityType: RevisionEntityType.PART,
         revisionCode: code,
         revisionNumber: number,
-        lifecycleState: RevisionLifecycleState.RELEASED,
+        lifecycleState: RevisionLifecycleState.APPROVED,
         createdAt: new Date().toISOString(),
         createdBy: params.actor,
         effectivity: [],
-        configurationScope: [],
+        configurationScope: ['CONF-BASELINE'],
         dependencies: [],
-        approvals: [],
-        comments: [],
+        approvals: [approvalRecord],
+        comments: [{
+          commentId: `COM-INIT-${code}`,
+          author: params.actor,
+          text: 'Initial configuration baseline registration for representative path',
+          timestamp: new Date().toISOString()
+        }],
         validationState: 'UNPROVEN',
         evidenceReferences: [],
         contentHash: createHash('sha256').update(JSON.stringify({ geometry: params.engineeringObjectId })).digest('hex'),
@@ -296,11 +325,15 @@ export class ADSEEngine {
     // 10. STAGE: PUBLISH
     const priorStages: EngineeringGateStage[] = ['DECLARE', 'IMPLEMENT', 'EXECUTE', 'CORE_BIND', 'CANONICAL_BIND', 'VERIFY', 'EVIDENCE', 'PERSIST', 'BENCHMARK'];
     const allPassed = priorStages.every(stage => gateResults[stage].passed);
+    const isHumanAuthorized = !isAI;
+    const canPublish = allPassed && isHumanAuthorized;
     gateResults.PUBLISH = { 
       stage: 'PUBLISH', 
-      passed: allPassed, 
+      passed: canPublish, 
       timestamp: new Date().toISOString(), 
-      reason: allPassed ? 'Capability successfully published at M10 maturity' : 'Gate failure present' 
+      reason: canPublish 
+        ? 'Capability successfully published at M10 maturity' 
+        : (!isHumanAuthorized ? 'AI actor prohibited from publishing without human engineering approval (AI_GOVERNANCE_VIOLATION)' : 'Gate failure present') 
     };
 
     // Update Requirement Verification Status

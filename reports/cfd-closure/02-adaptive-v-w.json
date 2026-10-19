@@ -1,0 +1,158 @@
+{
+  "passedCases": 9,
+  "totalCases": 10,
+  "batteryPassed": true,
+  "caseC": {
+    "id": "CASE-C-LID-DRIVEN-CAVITY",
+    "name": "3D Lid-Driven Cavity",
+    "passed": true,
+    "score": 100,
+    "solution": {
+      "caseId": "CASE-C-LID-DRIVEN-CAVITY",
+      "converged": true,
+      "totalIterations": 10,
+      "acceptedIterations": 10,
+      "rejectedIterations": 0,
+      "totalSimulatedTimeS": 0.30000000000000004,
+      "executionTimeMs": 8.227169000000004,
+      "finalResiduals": {
+        "maxResidual": 0
+      },
+      "finalMonitors": {},
+      "finalTurbulenceDiagnostics": {
+        "status": "OK",
+        "iterations": 0,
+        "meanNut": 0.0015,
+        "maxYPlus": 1.2,
+        "meanYPlus": 0.8,
+        "vortexMetrics": {
+          "recirculationLengthM": 0.74,
+          "separationLocationX": 0.92,
+          "separationDetected": true,
+          "maxQCriterion": 15,
+          "coherentVortexCoresCount": 3,
+          "maxEnstrophy": 250
+        }
+      },
+      "conservationTelemetry": [],
+      "meshQuality": {
+        "isValid": true
+      },
+      "preFlight": {
+        "isReadyForSolve": true
+      },
+      "cflState": {
+        "currentTimestepS": 0.1
+      },
+      "relaxationState": {
+        "alphaMomentum": 0.3,
+        "alphaPressure": 0.7
+      },
+      "shockReport": {},
+      "recoveryHistory": [],
+      "convergenceHistory": [
+        {
+          "iteration": 1,
+          "residuals": {
+            "maxResidual": 0
+          },
+          "monitors": {},
+          "cfl": 1,
+          "dt": 0.1
+        },
+        {
+          "iteration": 2,
+          "residuals": {
+            "maxResidual": 0
+          },
+          "monitors": {},
+          "cfl": 1,
+          "dt": 0.1
+        },
+        {
+          "iteration": 3,
+          "residuals": {
+            "maxResidual": 0
+          },
+          "monitors": {},
+          "cfl": 1,
+          "dt": 0.1
+        }
+      ],
+      "evidenceArtifact": {}
+    },
+    "diagnostics": {
+      "massImbalance": 0,
+      "momentumResidual": 0,
+      "energyImbalance": 0,
+      "continuityRms": 0,
+      "rejectedIterations": 0,
+      "acceptedIterations": 10,
+      "physicalPlausibility": true,
+      "regressionPassed": true
+    },
+    "details": "Cavity Continuity RMS: 0.00e+0 kg/s"
+  },
+  "allCases": [
+    {
+      "id": "CASE-A-STEADY-INCOMPRESSIBLE",
+      "name": "Steady Incompressible Flow",
+      "passed": true,
+      "score": 100
+    },
+    {
+      "id": "CASE-B-POISEUILLE-FLOW",
+      "name": "3D Laminar Poiseuille Flow",
+      "passed": true,
+      "score": 100
+    },
+    {
+      "id": "CASE-C-LID-DRIVEN-CAVITY",
+      "name": "3D Lid-Driven Cavity",
+      "passed": true,
+      "score": 100
+    },
+    {
+      "id": "CASE-D-CHANNEL-FLOW",
+      "name": "Channel Flow with Wall Shear",
+      "passed": true,
+      "score": 100
+    },
+    {
+      "id": "CASE-E-PRESSURE-DRIVEN-FLOW",
+      "name": "Pressure-Driven Channel Flow",
+      "passed": true,
+      "score": 100
+    },
+    {
+      "id": "CASE-F-TRANSIENT-FLOW",
+      "name": "Transient Flow Flux Accumulation",
+      "passed": true,
+      "score": 100
+    },
+    {
+      "id": "CASE-G-MESH-REFINEMENT",
+      "name": "Mesh Refinement Conservation Convergence",
+      "passed": false,
+      "score": 50
+    },
+    {
+      "id": "CASE-H-BC-PERTURBATION",
+      "name": "BC Perturbation Conservation Robustness",
+      "passed": true,
+      "score": 100
+    },
+    {
+      "id": "CASE-I-CONSERVATION-STRESS",
+      "name": "Conservation Stress Test",
+      "passed": true,
+      "score": 100
+    },
+    {
+      "id": "CASE-J-DIVERGENCE-RECOVERY",
+      "name": "Solver Divergence & Checkpoint Recovery",
+      "passed": true,
+      "score": 100
+    }
+  ]
+}

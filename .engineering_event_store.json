@@ -1,0 +1,760 @@
+[
+  {
+    "id": "EVENT-c22eb041d982ff6a1d48ef443c0e848f",
+    "eventType": "OBJECT_CREATED",
+    "timestamp": "2026-10-17T08:10:35.702Z",
+    "sequence": 1,
+    "actor": {
+      "id": "SECP_CAD_KERNEL",
+      "type": "ENGINE",
+      "role": "KERNEL_EVALUATOR"
+    },
+    "source": {
+      "service": "CAD_KERNEL",
+      "component": "CanonicalPLMProjectionAdapter",
+      "version": "1.0"
+    },
+    "objectRefs": [
+      "P5-CAD-CAM-05",
+      "ART-P5-CAD-CAM-05"
+    ],
+    "entityIdentityId": "ART-P5-CAD-CAM-05",
+    "entityType": "CAD_GEOMETRY",
+    "entityRevision": "REV-A",
+    "payload": {
+      "artifactId": "ART-P5-CAD-CAM-05",
+      "documentId": "P5-CAD-CAM-05",
+      "revision": "REV-A",
+      "geometryHash": "b4202f8c08bbbbe2fd8e8a05c6cb06fe9c57d0bb0c5adeb1eefb9e51fc5100db",
+      "topologyHash": "da52c8ca672e64ec03aeef395bc6f77de15d19ccbd6a6622b66907d1f8ac43ba",
+      "dependencyHash": "DEP-EMPTY-ROOT",
+      "provenanceReference": "EVID_P5-CAD-CAM-05_REV1_0efe00c4",
+      "childDependencies": []
+    },
+    "correlationId": "CORR-ART-P5-CAD-CAM-05-REV-A",
+    "schemaVersion": "1.0",
+    "provenance": {
+      "signature": "4da001f2bcdacb4fbc2fb75ddd909cfac5087a89d661126e122a3db64c7da302",
+      "payloadHash": "27e23043a5faacf46cbddb2f8f5ce1f17ed66fce98230aa5f05247192f1b90e5"
+    }
+  },
+  {
+    "id": "EVENT-cd0a9464403c2357bdb5c2e9dcc29b39",
+    "eventType": "OBJECT_CREATED",
+    "timestamp": "2026-10-17T08:10:35.706Z",
+    "sequence": 2,
+    "actor": {
+      "id": "SECP_CAD_KERNEL",
+      "type": "ENGINE",
+      "role": "KERNEL_EVALUATOR"
+    },
+    "source": {
+      "service": "CAD_KERNEL",
+      "component": "CanonicalPLMProjectionAdapter",
+      "version": "1.0"
+    },
+    "objectRefs": [
+      "P5-CAD-CAM-05",
+      "ART-P5-CAD-CAM-05"
+    ],
+    "entityIdentityId": "ART-P5-CAD-CAM-05",
+    "entityType": "CAD_GEOMETRY",
+    "entityRevision": "REV-A",
+    "payload": {
+      "artifactId": "ART-P5-CAD-CAM-05",
+      "documentId": "P5-CAD-CAM-05",
+      "revision": "REV-A",
+      "geometryHash": "b4202f8c08bbbbe2fd8e8a05c6cb06fe9c57d0bb0c5adeb1eefb9e51fc5100db",
+      "dependencyHash": "DEP-EMPTY-ROOT",
+      "provenanceReference": "EV_CAM_P5-CAD-CAM-05_REV1",
+      "childDependencies": []
+    },
+    "correlationId": "CORR-ART-P5-CAD-CAM-05-REV-A",
+    "schemaVersion": "1.0",
+    "provenance": {
+      "signature": "d5524084f57070fdf8b006923c1ecad3650b87b15f34d54fe2a816f23546306b",
+      "payloadHash": "974551a9c1d6a3ca7d9d8bd16854119ec72aba881826ec64d964a79e4a1c4b13",
+      "previousEventHash": "27e23043a5faacf46cbddb2f8f5ce1f17ed66fce98230aa5f05247192f1b90e5"
+    }
+  },
+  {
+    "id": "EVENT-a90372d52d89646a4d0eb8e2ab5e55f8",
+    "eventType": "OBJECT_REVISED",
+    "timestamp": "2026-10-17T08:10:35.710Z",
+    "sequence": 3,
+    "actor": {
+      "id": "SECP_CAD_KERNEL",
+      "type": "ENGINE",
+      "role": "KERNEL_EVALUATOR"
+    },
+    "source": {
+      "service": "CAD_KERNEL",
+      "component": "CanonicalPLMProjectionAdapter",
+      "version": "1.0"
+    },
+    "objectRefs": [
+      "P5-CAD-CAM-05",
+      "ART-P5-CAD-CAM-05"
+    ],
+    "entityIdentityId": "ART-P5-CAD-CAM-05",
+    "entityType": "CAD_GEOMETRY",
+    "entityRevision": "REV-B",
+    "payload": {
+      "artifactId": "ART-P5-CAD-CAM-05",
+      "documentId": "P5-CAD-CAM-05",
+      "revision": "REV-B",
+      "geometryHash": "170d06e12cbc38dd0ca932ba01dd79dec0f55cb6b92495eec6370853e19edf2c",
+      "topologyHash": "da52c8ca672e64ec03aeef395bc6f77de15d19ccbd6a6622b66907d1f8ac43ba",
+      "dependencyHash": "DEP-EMPTY-ROOT",
+      "provenanceReference": "EVID_P5-CAD-CAM-05_REV2_946f412d",
+      "childDependencies": []
+    },
+    "correlationId": "CORR-ART-P5-CAD-CAM-05-REV-B",
+    "schemaVersion": "1.0",
+    "provenance": {
+      "signature": "70524485008d94c2028e047f64c3bf8cce1389d00284a7e9618fe5d045316f9b",
+      "payloadHash": "f419afb87facf1a758cf52a243dce1415724d8933606c5b16eb0cd2cfa5de912",
+      "previousEventHash": "974551a9c1d6a3ca7d9d8bd16854119ec72aba881826ec64d964a79e4a1c4b13"
+    }
+  },
+  {
+    "id": "EVENT-fa76fd34f070e8fe81245cec68d2de06",
+    "eventType": "OBJECT_REVISED",
+    "timestamp": "2026-10-17T08:10:35.710Z",
+    "sequence": 4,
+    "actor": {
+      "id": "SECP_CAD_KERNEL",
+      "type": "ENGINE",
+      "role": "KERNEL_EVALUATOR"
+    },
+    "source": {
+      "service": "CAD_KERNEL",
+      "component": "CanonicalPLMProjectionAdapter",
+      "version": "1.0"
+    },
+    "objectRefs": [
+      "P5-CAD-CAM-05",
+      "ART-P5-CAD-CAM-05"
+    ],
+    "entityIdentityId": "ART-P5-CAD-CAM-05",
+    "entityType": "CAD_GEOMETRY",
+    "entityRevision": "REV-B",
+    "payload": {
+      "artifactId": "ART-P5-CAD-CAM-05",
+      "documentId": "P5-CAD-CAM-05",
+      "revision": "REV-B",
+      "geometryHash": "170d06e12cbc38dd0ca932ba01dd79dec0f55cb6b92495eec6370853e19edf2c",
+      "topologyHash": "da52c8ca672e64ec03aeef395bc6f77de15d19ccbd6a6622b66907d1f8ac43ba",
+      "dependencyHash": "DEP-EMPTY-ROOT",
+      "provenanceReference": "EVID_P5-CAD-CAM-05_REV2_946f412d",
+      "childDependencies": []
+    },
+    "correlationId": "CORR-ART-P5-CAD-CAM-05-REV-B",
+    "schemaVersion": "1.0",
+    "provenance": {
+      "signature": "05270d72d37cbc9142d8b85efaa9fdce16444df33af13e61ec4a08a4690cae55",
+      "payloadHash": "f419afb87facf1a758cf52a243dce1415724d8933606c5b16eb0cd2cfa5de912",
+      "previousEventHash": "f419afb87facf1a758cf52a243dce1415724d8933606c5b16eb0cd2cfa5de912"
+    }
+  },
+  {
+    "id": "EVENT-17dc1aa60a8cfd076286d714f8aa3412",
+    "eventType": "OBJECT_CREATED",
+    "timestamp": "2026-10-19T07:03:58.052Z",
+    "sequence": 5,
+    "actor": {
+      "id": "SECP_CAD_KERNEL",
+      "type": "ENGINE",
+      "role": "KERNEL_EVALUATOR"
+    },
+    "source": {
+      "service": "CAD_KERNEL",
+      "component": "CanonicalPLMProjectionAdapter",
+      "version": "1.0"
+    },
+    "objectRefs": [
+      "DOC-P6-CFD",
+      "ART-DOC-P6-CFD"
+    ],
+    "entityIdentityId": "ART-DOC-P6-CFD",
+    "entityType": "CAD_GEOMETRY",
+    "entityRevision": "REV-A",
+    "payload": {
+      "artifactId": "ART-DOC-P6-CFD",
+      "documentId": "DOC-P6-CFD",
+      "revision": "REV-A",
+      "geometryHash": "457f24e35f859362f88f07fb4c943e6ee34cf60c71904a3b92a31927061489c2",
+      "topologyHash": "da52c8ca672e64ec03aeef395bc6f77de15d19ccbd6a6622b66907d1f8ac43ba",
+      "dependencyHash": "DEP-EMPTY-ROOT",
+      "provenanceReference": "EVID_DOC-P6-CFD_REV1_025ac818",
+      "childDependencies": []
+    },
+    "correlationId": "CORR-ART-DOC-P6-CFD-REV-A",
+    "schemaVersion": "1.0",
+    "provenance": {
+      "signature": "030969042a4e04c286f05e91eaae04896eea41c907024f4cb607450b5f602ba9",
+      "payloadHash": "416a37c1d8878cf16c703ff4263e667be509959e61853b9dc0acda5a1ea1a3d2",
+      "previousEventHash": "f419afb87facf1a758cf52a243dce1415724d8933606c5b16eb0cd2cfa5de912"
+    }
+  },
+  {
+    "id": "EVENT-ba23b00c9e4166ac210d3262ec640f97",
+    "eventType": "OBJECT_REVISED",
+    "timestamp": "2026-10-19T07:04:25.554Z",
+    "sequence": 6,
+    "actor": {
+      "id": "SECP_CAD_KERNEL",
+      "type": "ENGINE",
+      "role": "KERNEL_EVALUATOR"
+    },
+    "source": {
+      "service": "CAD_KERNEL",
+      "component": "CanonicalPLMProjectionAdapter",
+      "version": "1.0"
+    },
+    "objectRefs": [
+      "DOC_REORDER",
+      "ART-DOC_REORDER"
+    ],
+    "entityIdentityId": "ART-DOC_REORDER",
+    "entityType": "CAD_GEOMETRY",
+    "entityRevision": "REV-B",
+    "payload": {
+      "artifactId": "ART-DOC_REORDER",
+      "documentId": "DOC_REORDER",
+      "revision": "REV-B",
+      "geometryHash": "83636d745d6596787034c9c951f2c1119b526ad7b0ab8b006631ac6af781796f",
+      "topologyHash": "da52c8ca672e64ec03aeef395bc6f77de15d19ccbd6a6622b66907d1f8ac43ba",
+      "dependencyHash": "DEP-EMPTY-ROOT",
+      "provenanceReference": "EVID_DOC_REORDER_REV2_6fc0855f",
+      "childDependencies": []
+    },
+    "correlationId": "CORR-ART-DOC_REORDER-REV-B",
+    "schemaVersion": "1.0",
+    "provenance": {
+      "signature": "29a7091a108fc0e916a56d59eae1e914483789978a827d77adaa3d2bf45442fd",
+      "payloadHash": "5980742644a508e841486bb822c87c71f05a6509242cbad1c163275ffb6a42f9",
+      "previousEventHash": "416a37c1d8878cf16c703ff4263e667be509959e61853b9dc0acda5a1ea1a3d2"
+    }
+  },
+  {
+    "id": "EVENT-b864e0ee50c7fd38efabafd58ade58a6",
+    "eventType": "OBJECT_CREATED",
+    "timestamp": "2026-10-19T07:04:25.566Z",
+    "sequence": 7,
+    "actor": {
+      "id": "SECP_CAD_KERNEL",
+      "type": "ENGINE",
+      "role": "KERNEL_EVALUATOR"
+    },
+    "source": {
+      "service": "CAD_KERNEL",
+      "component": "CanonicalPLMProjectionAdapter",
+      "version": "1.0"
+    },
+    "objectRefs": [
+      "DOC_REORDER",
+      "ART-DOC_REORDER"
+    ],
+    "entityIdentityId": "ART-DOC_REORDER",
+    "entityType": "CAD_GEOMETRY",
+    "entityRevision": "REV-A",
+    "payload": {
+      "artifactId": "ART-DOC_REORDER",
+      "documentId": "DOC_REORDER",
+      "revision": "REV-A",
+      "geometryHash": "83636d745d6596787034c9c951f2c1119b526ad7b0ab8b006631ac6af781796f",
+      "topologyHash": "da52c8ca672e64ec03aeef395bc6f77de15d19ccbd6a6622b66907d1f8ac43ba",
+      "dependencyHash": "DEP-EMPTY-ROOT",
+      "provenanceReference": "EVID_DOC_REORDER_REV1_1452d31e",
+      "childDependencies": []
+    },
+    "correlationId": "CORR-ART-DOC_REORDER-REV-A",
+    "schemaVersion": "1.0",
+    "provenance": {
+      "signature": "a160c5d50aa0ed7f83524170ae3b0da9fc77502531f696c6542b430b018d475e",
+      "payloadHash": "e2a0a94e8c4edb841944cb9b9eb405727bfcef8a19a248e6393a190db6ff7c16",
+      "previousEventHash": "5980742644a508e841486bb822c87c71f05a6509242cbad1c163275ffb6a42f9"
+    }
+  },
+  {
+    "id": "EVENT-76567aa625f6fe7c253d52c568b5e441",
+    "eventType": "OBJECT_REVISED",
+    "timestamp": "2026-10-19T07:04:25.573Z",
+    "sequence": 8,
+    "actor": {
+      "id": "SECP_CAD_KERNEL",
+      "type": "ENGINE",
+      "role": "KERNEL_EVALUATOR"
+    },
+    "source": {
+      "service": "CAD_KERNEL",
+      "component": "CanonicalPLMProjectionAdapter",
+      "version": "1.0"
+    },
+    "objectRefs": [
+      "DOC_TESSELLATION",
+      "ART-DOC_TESSELLATION"
+    ],
+    "entityIdentityId": "ART-DOC_TESSELLATION",
+    "entityType": "CAD_GEOMETRY",
+    "entityRevision": "REV-B",
+    "payload": {
+      "artifactId": "ART-DOC_TESSELLATION",
+      "documentId": "DOC_TESSELLATION",
+      "revision": "REV-B",
+      "geometryHash": "83636d745d6596787034c9c951f2c1119b526ad7b0ab8b006631ac6af781796f",
+      "topologyHash": "da52c8ca672e64ec03aeef395bc6f77de15d19ccbd6a6622b66907d1f8ac43ba",
+      "dependencyHash": "DEP-EMPTY-ROOT",
+      "provenanceReference": "EVID_DOC_TESSELLATION_REV2_477a5d8c",
+      "childDependencies": []
+    },
+    "correlationId": "CORR-ART-DOC_TESSELLATION-REV-B",
+    "schemaVersion": "1.0",
+    "provenance": {
+      "signature": "f5f3051f0bfac7b61464af78dc3f19d8773de64f6349916afd66427cf1c497bf",
+      "payloadHash": "a228725a69fa69ea3d54c85c45dc228f70518b6a62fbf97eeb9229c60e7bad6b",
+      "previousEventHash": "e2a0a94e8c4edb841944cb9b9eb405727bfcef8a19a248e6393a190db6ff7c16"
+    }
+  },
+  {
+    "id": "EVENT-b146aed768e9b9c6d9ec30e8ab558c72",
+    "eventType": "OBJECT_CREATED",
+    "timestamp": "2026-10-19T07:04:25.575Z",
+    "sequence": 9,
+    "actor": {
+      "id": "SECP_CAD_KERNEL",
+      "type": "ENGINE",
+      "role": "KERNEL_EVALUATOR"
+    },
+    "source": {
+      "service": "CAD_KERNEL",
+      "component": "CanonicalPLMProjectionAdapter",
+      "version": "1.0"
+    },
+    "objectRefs": [
+      "DOC_TESSELLATION",
+      "ART-DOC_TESSELLATION"
+    ],
+    "entityIdentityId": "ART-DOC_TESSELLATION",
+    "entityType": "CAD_GEOMETRY",
+    "entityRevision": "REV-A",
+    "payload": {
+      "artifactId": "ART-DOC_TESSELLATION",
+      "documentId": "DOC_TESSELLATION",
+      "revision": "REV-A",
+      "geometryHash": "83636d745d6596787034c9c951f2c1119b526ad7b0ab8b006631ac6af781796f",
+      "topologyHash": "da52c8ca672e64ec03aeef395bc6f77de15d19ccbd6a6622b66907d1f8ac43ba",
+      "dependencyHash": "DEP-EMPTY-ROOT",
+      "provenanceReference": "EVID_DOC_TESSELLATION_REV1_464873cc",
+      "childDependencies": []
+    },
+    "correlationId": "CORR-ART-DOC_TESSELLATION-REV-A",
+    "schemaVersion": "1.0",
+    "provenance": {
+      "signature": "412a7c96ceadca135ba6f12547efdcd9bf5495f990f334cbd2ba65e390071577",
+      "payloadHash": "b0e1d8e72858ad61fea177cf5584e7f433d151b2af85b0d07ed750c462551b6f",
+      "previousEventHash": "a228725a69fa69ea3d54c85c45dc228f70518b6a62fbf97eeb9229c60e7bad6b"
+    }
+  },
+  {
+    "id": "EVENT-e63e6ad010b572937533f42a133f6219",
+    "eventType": "OBJECT_REVISED",
+    "timestamp": "2026-10-19T07:04:25.580Z",
+    "sequence": 10,
+    "actor": {
+      "id": "SECP_CAD_KERNEL",
+      "type": "ENGINE",
+      "role": "KERNEL_EVALUATOR"
+    },
+    "source": {
+      "service": "CAD_KERNEL",
+      "component": "CanonicalPLMProjectionAdapter",
+      "version": "1.0"
+    },
+    "objectRefs": [
+      "DOC_MESH_MISMATCH",
+      "ART-DOC_MESH_MISMATCH"
+    ],
+    "entityIdentityId": "ART-DOC_MESH_MISMATCH",
+    "entityType": "CAD_GEOMETRY",
+    "entityRevision": "REV-B",
+    "payload": {
+      "artifactId": "ART-DOC_MESH_MISMATCH",
+      "documentId": "DOC_MESH_MISMATCH",
+      "revision": "REV-B",
+      "geometryHash": "83636d745d6596787034c9c951f2c1119b526ad7b0ab8b006631ac6af781796f",
+      "topologyHash": "da52c8ca672e64ec03aeef395bc6f77de15d19ccbd6a6622b66907d1f8ac43ba",
+      "dependencyHash": "DEP-EMPTY-ROOT",
+      "provenanceReference": "EVID_DOC_MESH_MISMATCH_REV2_643f9916",
+      "childDependencies": []
+    },
+    "correlationId": "CORR-ART-DOC_MESH_MISMATCH-REV-B",
+    "schemaVersion": "1.0",
+    "provenance": {
+      "signature": "9e602777bfd7db43dcfdbac50b430c8bedce72cb0df9b529049debe949628e9d",
+      "payloadHash": "3ecdf2b6ee34800e2a7dd7c7ebfab1b7db7dae8bb7fc009b7574ff1726014bee",
+      "previousEventHash": "b0e1d8e72858ad61fea177cf5584e7f433d151b2af85b0d07ed750c462551b6f"
+    }
+  },
+  {
+    "id": "EVENT-b77509eafba8f231540c4451a8957813",
+    "eventType": "OBJECT_CREATED",
+    "timestamp": "2026-10-19T07:04:25.585Z",
+    "sequence": 11,
+    "actor": {
+      "id": "SECP_CAD_KERNEL",
+      "type": "ENGINE",
+      "role": "KERNEL_EVALUATOR"
+    },
+    "source": {
+      "service": "CAD_KERNEL",
+      "component": "CanonicalPLMProjectionAdapter",
+      "version": "1.0"
+    },
+    "objectRefs": [
+      "DOC_MESH_MISMATCH",
+      "ART-DOC_MESH_MISMATCH"
+    ],
+    "entityIdentityId": "ART-DOC_MESH_MISMATCH",
+    "entityType": "CAD_GEOMETRY",
+    "entityRevision": "REV-A",
+    "payload": {
+      "artifactId": "ART-DOC_MESH_MISMATCH",
+      "documentId": "DOC_MESH_MISMATCH",
+      "revision": "REV-A",
+      "geometryHash": "83636d745d6596787034c9c951f2c1119b526ad7b0ab8b006631ac6af781796f",
+      "topologyHash": "da52c8ca672e64ec03aeef395bc6f77de15d19ccbd6a6622b66907d1f8ac43ba",
+      "dependencyHash": "DEP-EMPTY-ROOT",
+      "provenanceReference": "EVID_DOC_MESH_MISMATCH_REV1_b8666092",
+      "childDependencies": []
+    },
+    "correlationId": "CORR-ART-DOC_MESH_MISMATCH-REV-A",
+    "schemaVersion": "1.0",
+    "provenance": {
+      "signature": "7c6dfdba75e725d384eae043322f0e56ac3b921c7534a029995de7ef6eac95ff",
+      "payloadHash": "45a30b16346db18e4bc0e581bea9765533e7f57a58a141a5f7facde2a9636f7a",
+      "previousEventHash": "3ecdf2b6ee34800e2a7dd7c7ebfab1b7db7dae8bb7fc009b7574ff1726014bee"
+    }
+  },
+  {
+    "id": "EVENT-824dd2399363f59f9aefb5fa6d5d9d72",
+    "eventType": "OBJECT_REVISED",
+    "timestamp": "2026-10-19T07:04:44.195Z",
+    "sequence": 12,
+    "actor": {
+      "id": "SECP_CAD_KERNEL",
+      "type": "ENGINE",
+      "role": "KERNEL_EVALUATOR"
+    },
+    "source": {
+      "service": "CAD_KERNEL",
+      "component": "CanonicalPLMProjectionAdapter",
+      "version": "1.0"
+    },
+    "objectRefs": [
+      "DOC-A",
+      "ART-DOC-A"
+    ],
+    "entityIdentityId": "ART-DOC-A",
+    "entityType": "CAD_GEOMETRY",
+    "entityRevision": "REV-B",
+    "payload": {
+      "artifactId": "ART-DOC-A",
+      "documentId": "DOC-A",
+      "revision": "REV-B",
+      "geometryHash": "83636d745d6596787034c9c951f2c1119b526ad7b0ab8b006631ac6af781796f",
+      "topologyHash": "da52c8ca672e64ec03aeef395bc6f77de15d19ccbd6a6622b66907d1f8ac43ba",
+      "dependencyHash": "DEP-EMPTY-ROOT",
+      "provenanceReference": "EVID_DOC-A_REV2_b118d4fc",
+      "childDependencies": []
+    },
+    "correlationId": "CORR-ART-DOC-A-REV-B",
+    "schemaVersion": "1.0",
+    "provenance": {
+      "signature": "c02b73033cf8090e796f2d4399879b9f7077ae0b607836c7ebdc1c1da7524cbf",
+      "payloadHash": "fe68b259bed386ebbb5f31753a44cada549edab9ba86c836573eab07845723d2",
+      "previousEventHash": "45a30b16346db18e4bc0e581bea9765533e7f57a58a141a5f7facde2a9636f7a"
+    }
+  },
+  {
+    "id": "EVENT-83c2119637cc562d452ac15a122e0040",
+    "eventType": "OBJECT_CREATED",
+    "timestamp": "2026-10-19T07:04:44.205Z",
+    "sequence": 13,
+    "actor": {
+      "id": "SECP_CAD_KERNEL",
+      "type": "ENGINE",
+      "role": "KERNEL_EVALUATOR"
+    },
+    "source": {
+      "service": "CAD_KERNEL",
+      "component": "CanonicalPLMProjectionAdapter",
+      "version": "1.0"
+    },
+    "objectRefs": [
+      "DOC-A",
+      "ART-DOC-A"
+    ],
+    "entityIdentityId": "ART-DOC-A",
+    "entityType": "CAD_GEOMETRY",
+    "entityRevision": "REV-A",
+    "payload": {
+      "artifactId": "ART-DOC-A",
+      "documentId": "DOC-A",
+      "revision": "REV-A",
+      "geometryHash": "83636d745d6596787034c9c951f2c1119b526ad7b0ab8b006631ac6af781796f",
+      "topologyHash": "da52c8ca672e64ec03aeef395bc6f77de15d19ccbd6a6622b66907d1f8ac43ba",
+      "dependencyHash": "DEP-EMPTY-ROOT",
+      "provenanceReference": "EVID_DOC-A_REV1_30651ccb",
+      "childDependencies": []
+    },
+    "correlationId": "CORR-ART-DOC-A-REV-A",
+    "schemaVersion": "1.0",
+    "provenance": {
+      "signature": "39eaa95f71a2672f13aa1ad4838d8f5b0163a90585d1db4e690b66280709cad3",
+      "payloadHash": "2df1def16d952661fd5b8a54fed0b65f6d67bd51b410bb37082df3002b277a27",
+      "previousEventHash": "fe68b259bed386ebbb5f31753a44cada549edab9ba86c836573eab07845723d2"
+    }
+  },
+  {
+    "id": "EVENT-8b8c3168907528622837240e630b5c1a",
+    "eventType": "OBJECT_REVISED",
+    "timestamp": "2026-10-19T07:04:44.211Z",
+    "sequence": 14,
+    "actor": {
+      "id": "SECP_CAD_KERNEL",
+      "type": "ENGINE",
+      "role": "KERNEL_EVALUATOR"
+    },
+    "source": {
+      "service": "CAD_KERNEL",
+      "component": "CanonicalPLMProjectionAdapter",
+      "version": "1.0"
+    },
+    "objectRefs": [
+      "DOC-FLANGE",
+      "ART-DOC-FLANGE"
+    ],
+    "entityIdentityId": "ART-DOC-FLANGE",
+    "entityType": "CAD_GEOMETRY",
+    "entityRevision": "REV-B",
+    "payload": {
+      "artifactId": "ART-DOC-FLANGE",
+      "documentId": "DOC-FLANGE",
+      "revision": "REV-B",
+      "geometryHash": "83636d745d6596787034c9c951f2c1119b526ad7b0ab8b006631ac6af781796f",
+      "topologyHash": "da52c8ca672e64ec03aeef395bc6f77de15d19ccbd6a6622b66907d1f8ac43ba",
+      "dependencyHash": "DEP-EMPTY-ROOT",
+      "provenanceReference": "EVID_DOC-FLANGE_REV2_aa349ca3",
+      "childDependencies": []
+    },
+    "correlationId": "CORR-ART-DOC-FLANGE-REV-B",
+    "schemaVersion": "1.0",
+    "provenance": {
+      "signature": "c53589f65b07dba6f26540021190c6c7fc4852e97476a377d6205b6898628b35",
+      "payloadHash": "682a90354db865789fca3d0ddc5273a9cd58787605c4e02e7de47d0691172d1d",
+      "previousEventHash": "2df1def16d952661fd5b8a54fed0b65f6d67bd51b410bb37082df3002b277a27"
+    }
+  },
+  {
+    "id": "EVENT-70dd8fb895b73ee193053a46b0659d15",
+    "eventType": "OBJECT_CREATED",
+    "timestamp": "2026-10-19T07:04:44.213Z",
+    "sequence": 15,
+    "actor": {
+      "id": "SECP_CAD_KERNEL",
+      "type": "ENGINE",
+      "role": "KERNEL_EVALUATOR"
+    },
+    "source": {
+      "service": "CAD_KERNEL",
+      "component": "CanonicalPLMProjectionAdapter",
+      "version": "1.0"
+    },
+    "objectRefs": [
+      "DOC-FLANGE",
+      "ART-DOC-FLANGE"
+    ],
+    "entityIdentityId": "ART-DOC-FLANGE",
+    "entityType": "CAD_GEOMETRY",
+    "entityRevision": "REV-A",
+    "payload": {
+      "artifactId": "ART-DOC-FLANGE",
+      "documentId": "DOC-FLANGE",
+      "revision": "REV-A",
+      "geometryHash": "83636d745d6596787034c9c951f2c1119b526ad7b0ab8b006631ac6af781796f",
+      "topologyHash": "da52c8ca672e64ec03aeef395bc6f77de15d19ccbd6a6622b66907d1f8ac43ba",
+      "dependencyHash": "DEP-EMPTY-ROOT",
+      "provenanceReference": "EVID_DOC-FLANGE_REV1_09aa0123",
+      "childDependencies": []
+    },
+    "correlationId": "CORR-ART-DOC-FLANGE-REV-A",
+    "schemaVersion": "1.0",
+    "provenance": {
+      "signature": "8414be456faab3673c4b650c582935c81cedeefb0e6a1cd883defc8c51d4dd25",
+      "payloadHash": "68bcce855ad77ab821b249c6bcba53dbaff494d37d35bafa2c915323e5c5023d",
+      "previousEventHash": "682a90354db865789fca3d0ddc5273a9cd58787605c4e02e7de47d0691172d1d"
+    }
+  },
+  {
+    "id": "EVENT-894e873181ee2eeeaeccf8da1cf2d272",
+    "eventType": "OBJECT_REVISED",
+    "timestamp": "2026-10-19T07:04:52.926Z",
+    "sequence": 16,
+    "actor": {
+      "id": "SECP_CAD_KERNEL",
+      "type": "ENGINE",
+      "role": "KERNEL_EVALUATOR"
+    },
+    "source": {
+      "service": "CAD_KERNEL",
+      "component": "CanonicalPLMProjectionAdapter",
+      "version": "1.0"
+    },
+    "objectRefs": [
+      "DOC_REORDER_TEST",
+      "ART-DOC_REORDER_TEST"
+    ],
+    "entityIdentityId": "ART-DOC_REORDER_TEST",
+    "entityType": "CAD_GEOMETRY",
+    "entityRevision": "REV-B",
+    "payload": {
+      "artifactId": "ART-DOC_REORDER_TEST",
+      "documentId": "DOC_REORDER_TEST",
+      "revision": "REV-B",
+      "geometryHash": "83636d745d6596787034c9c951f2c1119b526ad7b0ab8b006631ac6af781796f",
+      "topologyHash": "da52c8ca672e64ec03aeef395bc6f77de15d19ccbd6a6622b66907d1f8ac43ba",
+      "dependencyHash": "DEP-EMPTY-ROOT",
+      "provenanceReference": "EVID_DOC_REORDER_TEST_REV2_a6122354",
+      "childDependencies": []
+    },
+    "correlationId": "CORR-ART-DOC_REORDER_TEST-REV-B",
+    "schemaVersion": "1.0",
+    "provenance": {
+      "signature": "3077f4581e9f877552bac52dfb04dce820b851fa3cf99e371b1ed23f0b0d700c",
+      "payloadHash": "29868859c971a0db644b0c093671f41ebb8044fa37b7a4a258d493c04a0b878c",
+      "previousEventHash": "68bcce855ad77ab821b249c6bcba53dbaff494d37d35bafa2c915323e5c5023d"
+    }
+  },
+  {
+    "id": "EVENT-a70371cbf3f0c582a89444c329972894",
+    "eventType": "OBJECT_CREATED",
+    "timestamp": "2026-10-19T07:04:52.938Z",
+    "sequence": 17,
+    "actor": {
+      "id": "SECP_CAD_KERNEL",
+      "type": "ENGINE",
+      "role": "KERNEL_EVALUATOR"
+    },
+    "source": {
+      "service": "CAD_KERNEL",
+      "component": "CanonicalPLMProjectionAdapter",
+      "version": "1.0"
+    },
+    "objectRefs": [
+      "DOC_REORDER_TEST",
+      "ART-DOC_REORDER_TEST"
+    ],
+    "entityIdentityId": "ART-DOC_REORDER_TEST",
+    "entityType": "CAD_GEOMETRY",
+    "entityRevision": "REV-A",
+    "payload": {
+      "artifactId": "ART-DOC_REORDER_TEST",
+      "documentId": "DOC_REORDER_TEST",
+      "revision": "REV-A",
+      "geometryHash": "83636d745d6596787034c9c951f2c1119b526ad7b0ab8b006631ac6af781796f",
+      "topologyHash": "da52c8ca672e64ec03aeef395bc6f77de15d19ccbd6a6622b66907d1f8ac43ba",
+      "dependencyHash": "DEP-EMPTY-ROOT",
+      "provenanceReference": "EVID_DOC_REORDER_TEST_REV1_3624c061",
+      "childDependencies": []
+    },
+    "correlationId": "CORR-ART-DOC_REORDER_TEST-REV-A",
+    "schemaVersion": "1.0",
+    "provenance": {
+      "signature": "7f330a718f8ef29864b5fbee873b176968eb6272a629a3f96dabd5a36e4eb652",
+      "payloadHash": "5435ac0bbe2e06233adf286775745d12a1950d1baa0053cd4812f5bdaee19479",
+      "previousEventHash": "29868859c971a0db644b0c093671f41ebb8044fa37b7a4a258d493c04a0b878c"
+    }
+  },
+  {
+    "id": "EVENT-ba348a5bec8ba68fc787c258a2965cb0",
+    "eventType": "OBJECT_REVISED",
+    "timestamp": "2026-10-19T07:05:49.706Z",
+    "sequence": 18,
+    "actor": {
+      "id": "SECP_CAD_KERNEL",
+      "type": "ENGINE",
+      "role": "KERNEL_EVALUATOR"
+    },
+    "source": {
+      "service": "CAD_KERNEL",
+      "component": "CanonicalPLMProjectionAdapter",
+      "version": "1.0"
+    },
+    "objectRefs": [
+      "DOC_NO_DUP",
+      "ART-DOC_NO_DUP"
+    ],
+    "entityIdentityId": "ART-DOC_NO_DUP",
+    "entityType": "CAD_GEOMETRY",
+    "entityRevision": "REV-B",
+    "payload": {
+      "artifactId": "ART-DOC_NO_DUP",
+      "documentId": "DOC_NO_DUP",
+      "revision": "REV-B",
+      "geometryHash": "83636d745d6596787034c9c951f2c1119b526ad7b0ab8b006631ac6af781796f",
+      "topologyHash": "da52c8ca672e64ec03aeef395bc6f77de15d19ccbd6a6622b66907d1f8ac43ba",
+      "dependencyHash": "DEP-EMPTY-ROOT",
+      "provenanceReference": "EVID_DOC_NO_DUP_REV2_4532f62f",
+      "childDependencies": []
+    },
+    "correlationId": "CORR-ART-DOC_NO_DUP-REV-B",
+    "schemaVersion": "1.0",
+    "provenance": {
+      "signature": "7a17cc5700b3c147f367dc4a4bf2d041539d27f27f217735addd55eec2f7bd8e",
+      "payloadHash": "7457f19ce9667ab95b69385a97d9009bcccb2c77cf36a5659db4ddc2a822a6b3",
+      "previousEventHash": "5435ac0bbe2e06233adf286775745d12a1950d1baa0053cd4812f5bdaee19479"
+    }
+  },
+  {
+    "id": "EVENT-104cb6b2818cca63ce4d56dedf63a64c",
+    "eventType": "OBJECT_REVISED",
+    "timestamp": "2026-10-19T07:05:49.716Z",
+    "sequence": 19,
+    "actor": {
+      "id": "SECP_CAD_KERNEL",
+      "type": "ENGINE",
+      "role": "KERNEL_EVALUATOR"
+    },
+    "source": {
+      "service": "CAD_KERNEL",
+      "component": "CanonicalPLMProjectionAdapter",
+      "version": "1.0"
+    },
+    "objectRefs": [
+      "DOC_NO_DUP",
+      "ART-DOC_NO_DUP"
+    ],
+    "entityIdentityId": "ART-DOC_NO_DUP",
+    "entityType": "CAD_GEOMETRY",
+    "entityRevision": "REV-B",
+    "payload": {
+      "artifactId": "ART-DOC_NO_DUP",
+      "documentId": "DOC_NO_DUP",
+      "revision": "REV-B",
+      "geometryHash": "83636d745d6596787034c9c951f2c1119b526ad7b0ab8b006631ac6af781796f",
+      "topologyHash": "da52c8ca672e64ec03aeef395bc6f77de15d19ccbd6a6622b66907d1f8ac43ba",
+      "dependencyHash": "DEP-EMPTY-ROOT",
+      "provenanceReference": "EVID_DOC_NO_DUP_REV2_4532f62f",
+      "childDependencies": []
+    },
+    "correlationId": "CORR-ART-DOC_NO_DUP-REV-B",
+    "schemaVersion": "1.0",
+    "provenance": {
+      "signature": "408a63df21ea49d3134f5ede149947f5ddfe6805f5e0174740be4ffc21b1f05c",
+      "payloadHash": "7457f19ce9667ab95b69385a97d9009bcccb2c77cf36a5659db4ddc2a822a6b3",
+      "previousEventHash": "7457f19ce9667ab95b69385a97d9009bcccb2c77cf36a5659db4ddc2a822a6b3"
+    }
+  }
+]

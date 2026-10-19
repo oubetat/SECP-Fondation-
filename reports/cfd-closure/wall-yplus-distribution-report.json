@@ -1,0 +1,26 @@
+{
+  "timestamp": "2026-10-19T07:47:58.069Z",
+  "wallYPlusReports": [
+    {
+      "level": "COARSE",
+      "cells": 1025,
+      "yPlusMean": 8.348921628800358,
+      "yPlusMax": 27.138562157444408,
+      "yPlusP95": 22.811320923773707
+    },
+    {
+      "level": "MEDIUM",
+      "cells": 2135,
+      "yPlusMean": 2.1252473959328175,
+      "yPlusMax": 8.99993829430392,
+      "yPlusP95": 6.006125514405779
+    },
+    {
+      "level": "FINE",
+      "cells": 4095,
+      "yPlusMean": 0.6447918196696991,
+      "yPlusMax": 3.2223791236017223,
+      "yPlusP95": 2.1028527622893005
+    }
+  ]
+}

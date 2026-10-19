@@ -61,7 +61,7 @@ export const FeatureRecognitionWorkbenchPanel: React.FC = () => {
       minCoverageRatio: 0.85
     });
     
-    engine.detectPrimitives(newSession, dummyMesh);
+    engine.detectPrimitives(newSession, canonicalMesh);
     engine.classify(newSession);
     engine.commit(newSession);
 

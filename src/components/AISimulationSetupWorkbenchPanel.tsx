@@ -27,6 +27,7 @@ import {
   SimulationExecutionPackage 
 } from '../engine/engineering_ai/simulation_setup/AISimulationSetupTypes310';
 import { HardAcceptanceGate310, HardAcceptanceGate310Report } from '../engine/engineering_ai/simulation_setup/HardAcceptanceGate310';
+import { HPCScheduler } from '../engine/engineering_hpc/HPCScheduler';
 
 export const AISimulationSetupWorkbenchPanel: React.FC = () => {
   const [service] = useState(() => new AISimulationSetupService());
@@ -46,29 +47,57 @@ export const AISimulationSetupWorkbenchPanel: React.FC = () => {
   const cases = useMemo(() => service.getAllCases(), [service, tick]);
   const activeCase = useMemo(() => cases.find(c => c.caseId === activeCaseId) || (cases.length > 0 ? cases[0] : null), [cases, activeCaseId]);
 
-  const handleLoadDemoCase = () => {
-    const demoCase = service.createSimulationCase({
-      cadPartId: 'PART-TURBINE-BLADE-01',
-      intentDescription: 'Static structural FEA of turbine blade under 12,000 RPM centrifugal load and 850°C thermal boundary',
-      physicsDomain: 'STRUCTURAL',
-      material: { name: 'Inconel 718', youngsModulusGpa: 205, poissonsRatio: 0.29, yieldStrengthMpa: 1100, densityKgM3: 8190 },
-      boundaryConditions: [
-        { id: 'BC-01', type: 'FIXED_SUPPORT', targetFaceId: 'FACE-ROOT-01', value: 0 },
-        { id: 'BC-02', type: 'CENTRIFUGAL_LOAD', targetFaceId: 'BODY-MAIN', value: 12000, unit: 'RPM' },
-        { id: 'BC-03', type: 'TEMPERATURE_BOUNDARY', targetFaceId: 'SURFACE-AIRFOIL', value: 850, unit: 'degC' }
-      ]
-    });
+  const [scheduler] = useState(() => new HPCScheduler());
 
-    setActiveCaseId(demoCase.caseId);
-    setFeedback(`Constructed authoritative multi-physics simulation case ${demoCase.caseId}.`);
+  const handleAssembleCase = () => {
+    // 1. Create session (implicitly handled as in createSimulationCase)
+    const session = service.createSession('PRJ-WORKBENCH', 'REV-A-01');
+    
+    // 2. Use user inputs
+    const newCase = service.proposeSimulationCaseFromIntent(session, promptIntent, physicsDomain as any);
+    
+    // 3. Update state
+    setActiveCaseId(newCase.caseId);
+    setFeedback(`Constructed simulation case ${newCase.caseId} from intent.`);
     refresh();
   };
 
-  const handleRunGate310 = () => {
-    const report = HardAcceptanceGate310.evaluate();
+  const handleExecuteSolver = async () => {
+    if (!activeCase) return;
+    
+    setFeedback(`Dispatching ${activeCase.caseId} to HPC Solver Execution Pipeline...`);
+    
+    try {
+      // Submit job
+      const job = scheduler.submitJob({
+        projectId: activeCase.projectId,
+        workloadType: activeCase.simulationType === 'CFD' ? 'CFD_SOLVE' : 'FEM_SOLVE',
+        resourceRequest: {
+          cpus: 4,
+          memoryGb: 16,
+          gpus: 0,
+          gpuType: 'NONE',
+          gpuMemoryGb: 0,
+          wasmWorkers: 4,
+          nodes: 1,
+          storageGb: 50,
+          requestedWallTimeSec: 3600
+        }
+      });
+      
+      // Execute job
+      const result = await scheduler.executeScheduledJob(job.jobId);
+      setFeedback(`Solver executed successfully: ${result.status}. Validation: ${result.validationStatus}.`);
+      refresh();
+    } catch (err: any) {
+      setFeedback(`Solver execution failed: ${err.message}`);
+    }
+  };
+
+  const handleRunGate310 = async () => {
+    const report = await HardAcceptanceGate310.runGate();
     setGateReport(report);
     setActiveTab('GATE310');
-    setFeedback(`Gate 310 evaluated: ${report.passed ? 'PASSED (100%)' : 'FAILED'} (${report.passedCount}/${report.totalAssertions} assertions).`);
   };
 
   return (
@@ -185,7 +214,7 @@ export const AISimulationSetupWorkbenchPanel: React.FC = () => {
 
               <div className="flex gap-2 pt-2">
                 <button
-                  onClick={handleLoadDemoCase}
+                  onClick={handleAssembleCase}
                   className="w-full py-2 bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs rounded transition flex items-center justify-center gap-2"
                 >
                   <Sparkles className="w-3.5 h-3.5" /> Assemble Physics Case
@@ -228,7 +257,7 @@ export const AISimulationSetupWorkbenchPanel: React.FC = () => {
                 <div className="p-3 bg-emerald-950/20 border border-emerald-900/40 rounded-lg flex items-center justify-between">
                   <span className="text-emerald-400 text-xs font-sans">Ready for High-Performance Solver Execution</span>
                   <button
-                    onClick={() => setFeedback(`Dispatched ${activeCase.caseId} to HPC Solver Execution Pipeline.`)}
+                    onClick={handleExecuteSolver}
                     className="px-3 py-1 bg-emerald-600 hover:bg-emerald-500 text-white rounded text-xs font-bold"
                   >
                     Execute Solver
@@ -239,7 +268,7 @@ export const AISimulationSetupWorkbenchPanel: React.FC = () => {
               <div className="text-center py-12 text-xs text-slate-500 space-y-3">
                 <p>No active simulation cases currently assembled.</p>
                 <button
-                  onClick={handleLoadDemoCase}
+                  onClick={handleAssembleCase}
                   className="px-4 py-2 rounded-lg bg-blue-600/20 hover:bg-blue-600/30 text-blue-300 border border-blue-500/30 text-xs font-semibold inline-block"
                 >
                   Load Demo Simulation Case

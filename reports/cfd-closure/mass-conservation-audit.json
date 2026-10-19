@@ -1,0 +1,23 @@
+{
+  "auditId": "SECP-CFD-MASS-CONSERVATION-005",
+  "timestamp": "2026-10-19T08:12:56.000Z",
+  "gapId": "SECP-GAP-011",
+  "massFlowAnalysis": {
+    "coarse": {
+      "inletMassFlow": 2.45,
+      "outletMassFlow": 2.43,
+      "relativeImbalance": 0.008,
+      "localContinuitySatisfied": true
+    },
+    "medium": {
+      "inletMassFlow": 2.45,
+      "outletMassFlow": 2.44,
+      "relativeImbalance": 0.004,
+      "localContinuitySatisfied": true
+    },
+    "fine": {
+      "status": "DIVERGED_BEFORE_STEADY_STATE"
+    }
+  },
+  "verdict": "PARTIAL_IMPROVED"
+}

@@ -1,0 +1,55 @@
+{
+  "benchmarkId": "NACA0012-AERODYNAMIC-BENCHMARK",
+  "airfoil": "NACA0012",
+  "flowConditions": {
+    "densityKgM3": 1.225,
+    "viscosityPaS": 1.7894e-5,
+    "inletVelocityMS": { "x": 9.976, "y": 0.697, "z": 0.0 },
+    "machNumber": 0.029,
+    "reynoldsNumber": 684586
+  },
+  "laminar": {
+    "converged": true,
+    "iterations": 96,
+    "liftCoefficientCl": 0.5070441144110354,
+    "dragCoefficientCd": 0.10319530166072341,
+    "maxVelocityMS": 11.449579118551743,
+    "minPressurePa": -29.437914549563605,
+    "maxPressurePa": 19.131183742152743,
+    "mesh": {
+      "surfacePoints": 40,
+      "normalLayers": 20,
+      "spanwiseLayers": 1,
+      "totalCells": 820
+    }
+  },
+  "sst": {
+    "converged": false,
+    "iterations": 500,
+    "liftCoefficientCl": 0.5207767812306409,
+    "dragCoefficientCd": 0.09964934608418444,
+    "yPlusMean": 342.91057798462117,
+    "maxVelocityMS": 22.732753476843744,
+    "mesh": {
+      "surfacePoints": 60,
+      "normalLayers": 30,
+      "spanwiseLayers": 1,
+      "totalCells": 1830
+    }
+  },
+  "referenceNASA": {
+    "source": "NASA Langley Turbulence Modeling Resource (TMR) - NACA 0012 Validation Case",
+    "targetCl": 0.44,
+    "targetCd": 0.008,
+    "alphaDeg": 4.0
+  },
+  "quantifiedDeviations": {
+    "clPercentDeviation": 18.36,
+    "cdPercentDeviation": 1145.6,
+    "clAcceptableRange": [0.42, 0.50],
+    "clAchieved": 0.5208,
+    "primaryRootCause": "Coarse mesh first cell height (y+ mean = 342.9) induces unresolved boundary layer skin friction resulting in elevated Cd"
+  },
+  "verdict": "PARTIAL_IMPROVED",
+  "timestamp": "2026-10-18T08:04:00Z"
+}
