@@ -275,7 +275,11 @@ export default function App() {
 
   // Sidebar States
   const [sidebarCollapsed, setSidebarCollapsed] = useState<boolean>(false);
-  const [expandedStudioIds, setExpandedStudioIds] = useState<string[]>(['collision_studio', 'cad_studio']);
+  const [expandedStudioIds, setExpandedStudioIds] = useState<string[]>([
+    'collision_studio', 'cad_studio', 'assembly_studio', 'elements_studio', 
+    'cam_studio', 'cae_studio', 'cfd_studio', 'reverse_studio', 'ai_studio', 
+    'plm_studio', 'drone_studio', 'ecad_studio', 'hpc_studio', 'cert_studio'
+  ]);
 
   // Custom Projects Persistence (localStorage fallback since Firebase was declined)
   const [customProjects, setCustomProjects] = useState<ProjectModel[]>(() => {
@@ -613,44 +617,10 @@ export default function App() {
     }
   ], [activeProject, activeSolid, assemblyComponents, canonicalDocument, droneCamResult]);
 
-  // Filtered Studios based on Active Project Type (Project Isolation)
+  // Show all 15 specialized studios without project type restrictions so users can access PCB, CFD, HPC, etc. anytime
   const filteredStudios = useMemo(() => {
-    if (!activeProject) return studios;
-
-    // 1. Drone Project Isolation
-    if (activeProject.type === 'INDUSTRIAL_DRONE' || activeProject.type === 'AEROSPACE_DRONE') {
-      return studios.filter(s => 
-        s.id === 'drone_studio' || 
-        s.id === 'cert_studio' || 
-        s.id === 'plm_studio' ||
-        s.id === 'ai_studio'
-      );
-    }
-
-    // 2. Part/Assembly Project Isolation
-    if (activeProject.type === 'PART' || activeProject.type === 'SHEET_METAL' || activeProject.type === 'BLANK') {
-      return studios.filter(s => 
-        s.id === 'cad_studio' || 
-        s.id === 'elements_studio' || 
-        s.id === 'cae_studio' || 
-        s.id === 'cam_studio' ||
-        s.id === 'ai_studio' ||
-        s.id === 'plm_studio'
-      );
-    }
-
-    if (activeProject.type === 'ASSEMBLY') {
-      return studios.filter(s => 
-        s.id === 'assembly_studio' || 
-        s.id === 'cad_studio' || 
-        s.id === 'plm_studio' ||
-        s.id === 'cert_studio'
-      );
-    }
-
-    // Default: Show all engineering studios but exclude specialized ones if not matching
-    return studios.filter(s => s.id !== 'drone_studio');
-  }, [studios, activeProject]);
+    return studios;
+  }, [studios]);
 
   // Active Studio
   const activeStudio = useMemo(() => {

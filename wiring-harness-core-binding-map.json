@@ -1,0 +1,26 @@
+{
+  "mapId": "SECP-WH-BINDING-001",
+  "timestamp": "2026-10-20T01:30:00Z",
+  "bindings": [
+    {
+      "harnessEntity": "Harness",
+      "secpCoreEntity": "EngineeringCore / ProjectAssembly",
+      "bindingType": "HIERARCHICAL_CONTAINMENT"
+    },
+    {
+      "harnessEntity": "Connector",
+      "secpCoreEntity": "PcbComponent / CadPart",
+      "bindingType": "INTERFACE_MAPPING"
+    },
+    {
+      "harnessEntity": "Wire",
+      "secpCoreEntity": "ElectricalNet",
+      "bindingType": "TOPOLOGICAL_REFERENCE"
+    },
+    {
+      "harnessEntity": "Evidence",
+      "secpCoreEntity": "EngineeringEvidenceLedger",
+      "bindingType": "CRYPTOGRAPHIC_BINDING"
+    }
+  ]
+}

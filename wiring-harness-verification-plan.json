@@ -1,0 +1,21 @@
+{
+  "planId": "SECP-WH-PLAN-001",
+  "timestamp": "2026-10-20T01:30:00Z",
+  "testCases": [
+    "WH-001: Valid harness creation",
+    "WH-002: Unconnected terminal detection",
+    "WH-003: Miswiring rejection",
+    "WH-004: Invalid path length detection",
+    "WH-005: Invalid bend radius detection",
+    "WH-006: Chassis clash detection",
+    "WH-007: Missing data handling (NOT_PROVEN)",
+    "WH-008: Incompatible connector/terminal detection",
+    "WH-009: Model version change invalidating old evidence",
+    "WH-010: Ruleset change invalidating evidence",
+    "WH-011: Data sorting invariance (deterministic hash stability)",
+    "WH-012: Semantic engineering change altering fingerprint",
+    "WH-013: Incomplete branch topology detection",
+    "WH-014: Existing SECP regression tests persistence",
+    "WH-015: Save and restore model round-trip persistence"
+  ]
+}
