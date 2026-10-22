@@ -1,0 +1,27 @@
+{
+  "patchId": "PATCH-254",
+  "title": "FSI Integration Map",
+  "integrationPath": [
+    {
+      "layer": "Workspace UI",
+      "component": "FsiWorkspace.tsx",
+      "consumes": "FSISolver.ts"
+    },
+    {
+      "layer": "Solver Facade",
+      "component": "FSISolver.ts",
+      "delegatesTo": "TwoWayFSICouplingEngine.ts"
+    },
+    {
+      "layer": "Coupling Core",
+      "component": "TwoWayFSICouplingEngine.ts",
+      "coordinates": ["CFD Pressure Field", "FEM/Stiffness Response", "Mesh Morphing"]
+    },
+    {
+      "layer": "Audit & Evidence",
+      "component": "FSIConservationAudit.ts & FSIBenchmarkSuite.ts",
+      "produces": "Provenance Evidence & Conservation Reports"
+    }
+  ],
+  "timestamp": "2026-10-22T01:45:00Z"
+}

@@ -1,0 +1,47 @@
+{
+  "gapRegisterId": "SECP-ELECTRICAL-GAP-REGISTER-001",
+  "version": "1.1.0",
+  "timestamp": "2026-10-22T07:23:00.000Z",
+  "gaps": [
+    {
+      "gapId": "GAP-ELEC-001",
+      "gate": "E2",
+      "title": "Absence of Diode Element in Reference Circuit Model",
+      "status": "RESOLVED",
+      "resolution": "Extended ComponentType to include 'DIODE' and added optional physical parameters (saturationCurrent, idealityFactor, temperatureKelvin) with canonical hash integration.",
+      "targetFile": "src/engine/engineeringCore/ReferenceCircuitModel.ts"
+    },
+    {
+      "gapId": "GAP-ELEC-002",
+      "gate": "E2",
+      "title": "Nonlinear Companion Stamping & Analytical Jacobian",
+      "status": "RESOLVED",
+      "resolution": "Implemented Shockley diode physical model with analytical derivative gd = (Is / (n*Vt)) * exp(Vd / (n*Vt)) and companion model MNA stamp (+gd on diagonal, -gd on off-diagonal, -Ieq on anode RHS, +Ieq on cathode RHS).",
+      "targetFile": "src/engine/engineeringCore/NodalCircuitSolver.ts"
+    },
+    {
+      "gapId": "GAP-ELEC-003",
+      "gate": "E2",
+      "title": "Newton-Raphson Iteration with Damping / Limiting",
+      "status": "RESOLVED",
+      "resolution": "Implemented damped Newton-Raphson iteration loop with SPICE-style pnjlim junction voltage limiting, preventing exponential overflow and achieving convergence in <= 15 iterations.",
+      "targetFile": "src/engine/engineeringCore/NodalCircuitSolver.ts"
+    },
+    {
+      "gapId": "GAP-ELEC-004",
+      "gate": "E3",
+      "title": "Independent Analytical Reference Verification for Nonlinear Circuits",
+      "status": "RESOLVED",
+      "resolution": "Implemented independent bracketed bisection & Newton root-finder in ElectricalCoreEngine.solveDiodeCircuitIndependentReference and verified MNA solver against it with 2.17e-10 V agreement.",
+      "targetFile": "src/engine/engineeringCore/tests/nonlinear_electrical_verification.test.ts"
+    },
+    {
+      "gapId": "GAP-ELEC-005",
+      "gate": "E5",
+      "title": "Failure Closed Diagnostics for Divergence and Non-Finite States",
+      "status": "RESOLVED",
+      "resolution": "Added explicit error states (SINGULAR_MATRIX, MISSING_REFERENCE_NODE, INVALID_INPUT, DIVERGENCE, NUMERICAL_OVERFLOW) with descriptive diagnostic payloads and failure-closed enforcement.",
+      "targetFile": "src/engine/engineeringCore/NodalCircuitSolver.ts"
+    }
+  ]
+}

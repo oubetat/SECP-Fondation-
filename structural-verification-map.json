@@ -1,0 +1,68 @@
+{
+  "task": "SECP-ENGINE-STRENGTHENING-001D",
+  "benchmarks": [
+    {
+      "benchmarkId": "S1",
+      "name": "Simply Supported Beam / Strip Navier Limit",
+      "formulation": "1D Euler-Bernoulli beam under uniform load: w_max = 5*q*L^4 / (384*E*I)",
+      "targetTolerancePercent": 0.5,
+      "testBinding": "Benchmark S1 in structural_integrity_verification.test.ts"
+    },
+    {
+      "benchmarkId": "S2",
+      "name": "Cantilever Beam Tip Load",
+      "formulation": "1D Cantilever beam under concentrated tip load P: w_tip = P*L^3 / (3*E*I), sigma_root = P*L*h / (2*I)",
+      "targetTolerancePercent": 0.5,
+      "testBinding": "Benchmark S2 in structural_integrity_verification.test.ts"
+    },
+    {
+      "benchmarkId": "S3",
+      "name": "Simply Supported Rectangular Plate under Uniform Load",
+      "formulation": "2D Kirchhoff plate Navier double-sine series solution: w_max = alpha * q * a^4 / D",
+      "targetTolerancePercent": 2.0,
+      "testBinding": "Benchmark S3 in structural_integrity_verification.test.ts"
+    },
+    {
+      "benchmarkId": "S4",
+      "name": "Clamped Rectangular Plate under Uniform Load",
+      "formulation": "2D Kirchhoff plate Timoshenko / Roark clamped solution: w_max = beta * q * a^4 / D",
+      "targetTolerancePercent": 3.0,
+      "testBinding": "Benchmark S4 in structural_integrity_verification.test.ts"
+    },
+    {
+      "benchmarkId": "S5",
+      "name": "Point Load on Plate (Concentrated Component Weight)",
+      "formulation": "Localized central point load P: w_center = alpha_p * P * a^2 / D",
+      "targetTolerancePercent": 3.0,
+      "testBinding": "Benchmark S5 in structural_integrity_verification.test.ts"
+    },
+    {
+      "benchmarkId": "S6",
+      "name": "Four Corner Standoff Supported Board",
+      "formulation": "PCB supported at 4 discrete corner standoffs with free edges under uniform load",
+      "targetTolerancePercent": 5.0,
+      "testBinding": "Benchmark S6 in structural_integrity_verification.test.ts"
+    },
+    {
+      "benchmarkId": "S7",
+      "name": "Static Equilibrium & Transverse Reaction Force Balance",
+      "formulation": "|sum(R_z) - F_total| / F_total < 1e-4 across all support types",
+      "targetTolerancePercent": 0.01,
+      "testBinding": "Benchmark S7 in structural_integrity_verification.test.ts"
+    },
+    {
+      "benchmarkId": "S8",
+      "name": "Mesh Refinement & Spatial Convergence",
+      "formulation": "Monotonic reduction in relative error as grid is refined from 11x11 to 21x21 to 41x41",
+      "targetTolerancePercent": 1.0,
+      "testBinding": "Benchmark S8 in structural_integrity_verification.test.ts"
+    },
+    {
+      "benchmarkId": "S9",
+      "name": "Adversarial Inputs and Boundary Condition Diagnostics",
+      "formulation": "Fail-closed rejection of unconstrained plates (0 supports), negative thickness, zero modulus, and non-physical dimensions",
+      "targetTolerancePercent": 0.0,
+      "testBinding": "Benchmark S9 in structural_integrity_verification.test.ts"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "capabilities": [
+    { "capability": "Electrical Power MNA", "status": "VERIFIED_BY_INDEPENDENT_REFERENCE" },
+    { "capability": "PCB Copper SI", "status": "VERIFIED_WITHIN_DECLARED_SCOPE" },
+    { "capability": "Thermal Junction", "status": "VERIFIED_WITHIN_DECLARED_SCOPE" },
+    { "capability": "MCAD Clearance", "status": "VERIFIED_WITHIN_DECLARED_SCOPE" },
+    { "capability": "Cryptographic Ledger", "status": "VERIFIED_WITHIN_DECLARED_SCOPE" },
+    { "capability": "Structural Deflection", "status": "VERIFIED_WITHIN_MODEL" },
+    { "capability": "Signal Integrity", "status": "VERIFIED_WITHIN_MODEL" }
+  ]
+}

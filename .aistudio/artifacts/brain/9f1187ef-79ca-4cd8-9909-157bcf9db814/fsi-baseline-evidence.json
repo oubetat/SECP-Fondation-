@@ -1,0 +1,25 @@
+{
+  "auditId": "FSI-FEM-000-BASELINE",
+  "timestamp": "2026-10-22T02:22:00Z",
+  "components": {
+    "TwoWayFSICouplingEngine": {
+      "stiffnessModel": "ARTIFICIAL",
+      "scalingFactor": "1e-7",
+      "integrationStatus": "PARTIAL",
+      "notes": "Uses artificial stiffness instead of real FEM stiffness matrix."
+    },
+    "FSIInterfaceMapper": {
+      "integrationStatus": "PROTOTYPE",
+      "notes": "Basic geometric proximity mapping; requires refinement for force-face to structural-node mapping."
+    },
+    "StructuralFemEngine": {
+      "status": "AVAILABLE",
+      "notes": "Full FEM foundation exists in /src/engine/structural-physics/ but is not linked to FSI coupling loop."
+    }
+  },
+  "gaps": [
+    "Artificial stiffness factor (1e-7) must be replaced by FEM Stiffness Matrix.",
+    "Mapping logic needs robust face-to-node proximity identification.",
+    "Structural mesh needs to be coupled to fluid boundary elements explicitly."
+  ]
+}

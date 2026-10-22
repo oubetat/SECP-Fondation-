@@ -8,7 +8,7 @@ export class ElementFormulationEngine {
   /**
    * Formulates the local stiffness matrix for various element types.
    */
-  public static formulateElementStiffness(elem: MeshElement, nodes: MeshNode[]): number[][] {
+  public static formulateElementStiffness(elem: MeshElement, nodes: MeshNode[], materials: Map<string, MaterialProperties>): number[][] {
     if (elem.type === 'BAR_1D') {
       const n1 = nodes.find(n => n.id === elem.nodeIds[0]);
       const n2 = nodes.find(n => n.id === elem.nodeIds[1]);
@@ -19,7 +19,9 @@ export class ElementFormulationEngine {
       const dy = n2.y - n1.y;
       const dz = n2.z - n1.z;
       const L = Math.sqrt(dx * dx + dy * dy + dz * dz);
-      const E = 200e9; // Default Young's modulus if not found
+      
+      const mat = materials.get(elem.materialId);
+      const E = mat ? mat.youngsModulus : 200e9; 
       const A = elem.crossSectionArea || 0.01;
 
       const k = (E * A) / L;

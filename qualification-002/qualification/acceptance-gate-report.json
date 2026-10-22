@@ -1,0 +1,79 @@
+[
+  {
+    "gateId": "Q002-01",
+    "name": "Baseline Integrity",
+    "status": "PASS",
+    "evidence": "engine-capability-register.json",
+    "notes": "All execution paths mapped and verified."
+  },
+  {
+    "gateId": "Q002-02",
+    "name": "Qualification Scope Integrity",
+    "status": "PASS",
+    "evidence": "qualification-scope.json",
+    "notes": "Scope explicitly bounded to linear MNA, 2D steady thermal, Kirchhoff plate, and Picard electrothermal coupling."
+  },
+  {
+    "gateId": "Q002-03",
+    "name": "Reference Independence",
+    "status": "PASS",
+    "evidence": "reference-independence-register.json",
+    "notes": "Analytical solutions and independent nodal formulation used as references."
+  },
+  {
+    "gateId": "Q002-04",
+    "name": "Numerical Integrity",
+    "status": "PASS",
+    "evidence": "electrical/thermal/structural benchmark reports",
+    "notes": "Solvers converged within strict numerical tolerances without NaN/Infinity anomalies."
+  },
+  {
+    "gateId": "Q002-05",
+    "name": "Physical Consistency",
+    "status": "PASS",
+    "evidence": "conservation reports",
+    "notes": "KCL/KVL, thermal energy balance, and structural equilibrium satisfied."
+  },
+  {
+    "gateId": "Q002-06",
+    "name": "Multidomain Integrity",
+    "status": "PASS",
+    "evidence": "multidomain-benchmark-report.json",
+    "notes": "Electrothermal bidirectional feedback and power transfer verified."
+  },
+  {
+    "gateId": "Q002-07",
+    "name": "Adversarial Robustness",
+    "status": "PASS",
+    "evidence": "adversarial reports",
+    "notes": "Invalid inputs, singular matrices, and unphysical parameters correctly rejected."
+  },
+  {
+    "gateId": "Q002-08",
+    "name": "Revision & Cache Integrity",
+    "status": "PASS",
+    "evidence": "revision-integrity-report.json",
+    "notes": "Model changes invalidate stale results and update hashes."
+  },
+  {
+    "gateId": "Q002-09",
+    "name": "Evidence Integrity",
+    "status": "PASS",
+    "evidence": "evidence manifests",
+    "notes": "All evidence records tied to real execution logs and git revisions."
+  },
+  {
+    "gateId": "Q002-10",
+    "name": "Regression Integrity",
+    "status": "PASS",
+    "evidence": "regression-report.json",
+    "notes": "No regressions introduced across existing engineering test suites."
+  },
+  {
+    "gateId": "Q002-11",
+    "name": "Scope Qualification",
+    "status": "PASS",
+    "evidence": "final-qualification-report.json",
+    "notes": "Qualified within declared linear and steady-state multidomain scope."
+  }
+]

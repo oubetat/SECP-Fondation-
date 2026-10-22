@@ -1,0 +1,56 @@
+{
+  "registerId": "SECP-ELECTROTHERMAL-CAPABILITY-001C",
+  "task": "SECP-ENGINE-STRENGTHENING-001C",
+  "baselineCapabilities": [
+    {
+      "domain": "Electrical",
+      "capability": "Nonlinear Newton-Raphson Circuit MNA",
+      "status": "OPERATIONAL",
+      "reference": "SECP-ENGINE-STRENGTHENING-001A"
+    },
+    {
+      "domain": "Thermal",
+      "capability": "Spatial 2D Finite Volume Multilayer Conductance Matrix",
+      "status": "OPERATIONAL",
+      "reference": "SECP-ENGINE-STRENGTHENING-001B"
+    },
+    {
+      "domain": "Cross-Domain",
+      "capability": "Static 1-Way Joule Heat to Lumped Junction Temperature",
+      "status": "LEGACY_OPERATIONAL",
+      "reference": "MultidomainPcbIntegrationEngine.verifyThermalDissipation"
+    }
+  ],
+  "targetCapabilities": [
+    {
+      "capabilityId": "CAP-ET-01",
+      "title": "Bi-directional Electrothermal Feedback Loop",
+      "description": "Iterative co-simulation updating circuit parameters R(T) and diode saturation parameters from spatial thermal field temperatures until convergence.",
+      "status": "IMPLEMENTING"
+    },
+    {
+      "capabilityId": "CAP-ET-02",
+      "title": "Relaxed Picard / Fixed-Point Iteration",
+      "description": "Numerical damping via under-relaxation parameter theta in (0, 1] to prevent oscillation in stiff nonlinear electrothermal regimes.",
+      "status": "IMPLEMENTING"
+    },
+    {
+      "capabilityId": "CAP-ET-03",
+      "title": "Rigorous Tri-Residual Convergence",
+      "description": "Simultaneous satisfaction of delta_T < 1e-3 K, delta_R / R < 1e-4, and KCL current residual <= 1e-7 A.",
+      "status": "IMPLEMENTING"
+    },
+    {
+      "capabilityId": "CAP-ET-04",
+      "title": "Global Energy Conservation Verification",
+      "description": "Auditing that total Joule heat generated across the circuit exactly equals heat expelled across convective boundaries and sinks (relative error <= 0.1%).",
+      "status": "IMPLEMENTING"
+    },
+    {
+      "capabilityId": "CAP-ET-05",
+      "title": "Independent Analytical Reference Parity",
+      "description": "Verification against closed-form algebraic root solution of self-heating resistor without invoking numerical co-simulation engine.",
+      "status": "IMPLEMENTING"
+    }
+  ]
+}

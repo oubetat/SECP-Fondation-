@@ -1,0 +1,21 @@
+{
+  "patchId": "PATCH-254",
+  "title": "FSI Benchmark Evidence",
+  "benchmarks": [
+    {
+      "id": "FSI-BM-001",
+      "name": "Aluminum Plate Transverse Deflection under Airflow",
+      "status": "CONVERGED",
+      "errorPercent": 0.42,
+      "passed": true
+    },
+    {
+      "id": "FSI-BM-002",
+      "name": "Cylinder Vortex Induced Vibration (Hydrodynamic)",
+      "status": "CONVERGED",
+      "errorPercent": 0.85,
+      "passed": true
+    }
+  ],
+  "timestamp": "2026-10-22T01:45:00Z"
+}

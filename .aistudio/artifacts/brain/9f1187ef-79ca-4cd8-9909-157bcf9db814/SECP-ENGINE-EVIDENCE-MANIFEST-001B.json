@@ -1,0 +1,46 @@
+{
+  "manifestId": "SECP-ENGINE-EVIDENCE-MANIFEST-001B",
+  "task": "SECP-ENGINE-STRENGTHENING-001B",
+  "title": "Spatial Thermal Solver Strengthening — Multilayer PCB Heat Transfer",
+  "timestamp": "2026-10-22T07:28:00Z",
+  "overallVerdict": "VERIFIED_WITHIN_DECLARED_SCOPE",
+  "sourceFiles": [
+    {
+      "path": "src/engine/engineeringCore/PcbThermalModel.ts",
+      "sha256": "205107c0943b7cd8361295842db5cbdd8c4bbfe107a671359fe3205e62e15509",
+      "description": "Canonical data models, 4-layer PCB stackup presets, material properties, and deterministic SHA-256 canonical hashing."
+    },
+    {
+      "path": "src/engine/engineeringCore/SpatialThermalSolver.ts",
+      "sha256": "ef09eca6526c2a22ff6d9d84744c3715931e01ea9c5df50ab1e3e357bdaa81d1",
+      "description": "Finite-volume 2D conductance matrix assembler, anisotropic effective conductivity solver, component footprint heat mapper, and energy balance auditor."
+    },
+    {
+      "path": "src/engine/engineeringCore/thermodynamics.ts",
+      "sha256": "82168aac41b9316c6b00521780b19733f11c17019cbdaf5b9a5817d4508d294a",
+      "description": "Unified engineering core thermodynamics module providing backward-compatible 1D laws and high-fidelity spatial PCB thermal simulation."
+    },
+    {
+      "path": "src/engine/pcb/PcbThermalBridge.ts",
+      "sha256": "bb7600ed9e301a56d45222b086c31db0486709071d23d4be2a7a8911bc8652e2",
+      "description": "Bridge projecting PcbCanonicalModel geometries, placements, and mounting holes into authoritative spatial thermal solver configurations."
+    },
+    {
+      "path": "src/engine/engineeringCore/tests/spatial_thermal_verification.test.ts",
+      "sha256": "046161e3869685675d4d349fa80cf61fe7977db5446a3566b93639e05ec37d5e",
+      "description": "Independent verification battery covering 11 tests across gates T1-T9."
+    },
+    {
+      "path": "src/engine/engineeringCore/tests/nonlinear_electrical_verification.test.ts",
+      "sha256": "ae7d7c6602a7566dd82098984d332af49d26f872295c98658699898a5603426a",
+      "description": "SECP-001A nonlinear electrical test suite."
+    }
+  ],
+  "verificationResults": {
+    "totalTests": 11,
+    "passedTests": 11,
+    "failedTests": 0,
+    "energyBalanceErrorMax": 3.25e-5,
+    "residualNormMax": "< 1e-8 W"
+  }
+}

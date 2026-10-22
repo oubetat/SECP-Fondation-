@@ -1,0 +1,102 @@
+{
+  "registerId": "SECP-PHASE5-SOLVER-VAL-001",
+  "platform": "SolidEdge Cloud Platform (SECP) — Engineering Truth OS",
+  "phase": "Phase 5 — Aircraft & Industrial Qualification",
+  "timestamp": "2026-10-21T08:00:00.000Z",
+  "solvers": [
+    {
+      "solverId": "SOLVER-MNA-DC-001",
+      "solverName": "Modified Nodal Analysis (MNA) Circuit Solver",
+      "sourceFile": "src/engine/engineeringCore/NodalCircuitSolver.ts",
+      "mathematicalBasis": "Linear algebraic system G * V = I with conductance matrix G and current injections I",
+      "governingLaws": ["Kirchhoff's Current Law (KCL)", "Kirchhoff's Voltage Law (KVL)", "Ohm's Law"],
+      "validityEnvelope": {
+        "analysisType": "DC_STEADY_STATE",
+        "componentTypesSupported": ["Resistors", "Independent DC Voltage Sources", "Independent DC Current Sources"],
+        "linearOnly": true,
+        "maxNodesTested": 1000,
+        "numericalResidualThresholdWatts": 1e-9
+      },
+      "explicitExclusionsAndLimits": [
+        "Does NOT model AC frequency response or reactive impedance (Capacitors, Inductors).",
+        "Does NOT model non-linear semiconductor switching dynamics (MOSFET/BJT switching losses, reverse recovery).",
+        "Does NOT model electromagnetic transients, transmission line reflections, or lightning surges (DO-160 Sec 22).",
+        "Power balance verification proves numerical convergence of the DC network, NOT real-world hardware adequacy."
+      ],
+      "boundaryBreachVerdict": "FAIL_CLOSED_OR_NOT_PROVEN"
+    },
+    {
+      "solverId": "SOLVER-TRACE-VDROP-002",
+      "solverName": "PCB Copper Trace Conduction & Voltage Drop Evaluator",
+      "sourceFile": "src/engine/crossdomain/MultidomainPcbIntegrationEngine.ts",
+      "mathematicalBasis": "R = rho * (L / (W * T)) * [1 + alpha * (T - 20)]; V_drop = I * R",
+      "governingLaws": ["ASTM B193 Electrical Resistivity of Metallic Materials", "Ohm's Law"],
+      "validityEnvelope": {
+        "conductorMaterial": "Electrodeposited Copper (rho_0 = 1.72e-8 Ohm*m, alpha = 0.00393 /K)",
+        "geometry": "Rectangular cross-section with uniform width and thickness",
+        "steadyStateDC": true,
+        "deratingStandard": "IPC-2152 basic conductor sizing"
+      },
+      "explicitExclusionsAndLimits": [
+        "Does NOT model skin effect, eddy currents, or high-frequency AC impedance.",
+        "Does NOT account for non-uniform etch factor (trapezoidal trace cross-sections) or surface roughness losses.",
+        "Does NOT account for microvia current crowding or localized voiding."
+      ],
+      "boundaryBreachVerdict": "FAIL_CLOSED_OR_NOT_PROVEN"
+    },
+    {
+      "solverId": "SOLVER-THERMAL-LUMPED-003",
+      "solverName": "Lumped Parameter Theta-JA Junction Temperature Estimator",
+      "sourceFile": "src/engine/crossdomain/MultidomainPcbIntegrationEngine.ts",
+      "mathematicalBasis": "T_junction = T_ambient + P_dissipated * Theta_JA",
+      "governingLaws": ["Fourier Conduction 1D Equivalent Lumped Resistance Network"],
+      "modelClassification": "LUMPED_PARAMETER_0D_1D",
+      "validityEnvelope": {
+        "thermalCoupling": "Decoupled component nodes; steady-state DC dissipation",
+        "ambientRangeCelsius": [-40.0, 85.0],
+        "coolingRegime": "Nominal still air convection or fixed heatsink Theta_JA rating"
+      },
+      "explicitExclusionsAndLimits": [
+        "CANNOT be described or treated as 3D spatial CFD or Finite Element Thermal Analysis.",
+        "Does NOT model 3D conjugate heat transfer, spatial thermal plumes, or component-to-component thermal proximity heating.",
+        "Does NOT model transient thermal impedance curves (Z_theta(t)) under pulsed duty cycles.",
+        "Does NOT model radiation heat transfer in high-altitude rarefied atmospheres."
+      ],
+      "boundaryBreachVerdict": "FAIL_CLOSED_OR_NOT_PROVEN"
+    },
+    {
+      "solverId": "SOLVER-HARNESS-AMPACITY-004",
+      "solverName": "Wiring Harness Ampacity & Voltage Drop Checker",
+      "sourceFile": "src/engine/wiring-harness/WiringHarnessElectricalVerifier.ts",
+      "mathematicalBasis": "Tabulated lookup from AWG resistance tables + empirical temperature derating",
+      "governingLaws": ["IEC 60228", "MIL-W-5088L / SAE AS50881 baseline charts"],
+      "validityEnvelope": {
+        "conductorGauges": "AWG 10 to AWG 28 stranded copper wire",
+        "insulationRatings": ["PTFE (200°C)", "ETFE (150°C)", "PVC (105°C)"]
+      },
+      "explicitExclusionsAndLimits": [
+        "Does NOT model bundle internal temperature gradients where inner wires run significantly hotter than outer sheath.",
+        "Does NOT model altitude pressure derating for dielectric breakdown (Paschen's Law / corona discharge).",
+        "Does NOT compute mechanical bend stress or fatigue life in dynamic flex points."
+      ],
+      "boundaryBreachVerdict": "FAIL_CLOSED_OR_NOT_PROVEN"
+    },
+    {
+      "solverId": "SOLVER-MCAD-KEEPOUT-005",
+      "solverName": "3D Bounding-Box Enclosure Clearance & Standoff Verifier",
+      "sourceFile": "src/engine/pcb/PcbGeometryKernel.ts",
+      "mathematicalBasis": "Axis-Aligned Bounding Box (AABB) and Oriented Bounding Box (OBB) spatial separation tests",
+      "governingLaws": ["Euclidean Rigid Solid Geometry"],
+      "validityEnvelope": {
+        "geometryType": "Rigid geometric boundary envelopes and cylindrical standoff coaxial alignment",
+        "toleranceMm": 0.05
+      },
+      "explicitExclusionsAndLimits": [
+        "Does NOT calculate structural stress, strain, or yield failure under mechanical shock/vibration.",
+        "Geometric standoff alignment does NOT prove structural endurance under sinusoidal or random vibration.",
+        "Does NOT model thermal expansion mismatch (CTE) causing solder joint shear fatigue."
+      ],
+      "boundaryBreachVerdict": "FAIL_CLOSED_OR_NOT_PROVEN"
+    }
+  ]
+}

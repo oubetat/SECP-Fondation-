@@ -1,0 +1,98 @@
+{
+  "reportId": "SECP-ELEC-NUMERICAL-VALIDATION-001A",
+  "task": "SECP-ENGINE-STRENGTHENING-001A",
+  "title": "Nonlinear Electrical Solver Numerical Validation Report",
+  "timestamp": "2026-10-22T07:24:00.000Z",
+  "verdict": "VERIFIED_WITHIN_DECLARED_SCOPE",
+  "solverConfiguration": {
+    "algorithm": "Damped Newton-Raphson with SPICE pnjlim",
+    "jacobianFormulation": "Analytical partial derivatives",
+    "linearSolver": "Gaussian Elimination with partial row pivoting",
+    "convergenceTolerances": {
+      "reltol": 1e-4,
+      "abstolV": 1e-6,
+      "abstolI": 1e-7
+    },
+    "maxIterations": 100
+  },
+  "benchmarks": [
+    {
+      "benchmarkId": "BENCH-001",
+      "name": "Diode Forward Bias vs Independent Oracle (5V, 1kOhm)",
+      "independentOracle": {
+        "method": "Scalar bracketed bisection & high-precision Newton root-finder",
+        "diodeVoltage": 0.6925436329,
+        "diodeCurrent": 0.004307456367
+      },
+      "solverResult": {
+        "diodeVoltage": 0.6925436331,
+        "diodeCurrent": 0.004307456331,
+        "iterations": 14,
+        "voltageResidual": 2.1701e-10,
+        "currentResidual": 3.6158e-11
+      },
+      "passStatus": "PASS"
+    },
+    {
+      "benchmarkId": "BENCH-002",
+      "name": "Diode Reverse Bias (-5V, 1kOhm)",
+      "theoreticalExpectation": {
+        "diodeVoltage": -5.0,
+        "diodeCurrent": -1e-14
+      },
+      "solverResult": {
+        "diodeVoltage": -4.99999999999,
+        "diodeCurrent": -1e-14,
+        "iterations": 1,
+        "voltageResidual": 1.0e-11,
+        "currentResidual": 0.0
+      },
+      "passStatus": "PASS"
+    },
+    {
+      "benchmarkId": "BENCH-003",
+      "name": "Nonlinear Wheatstone Bridge with Active Diode Cross-Arm",
+      "circuit": "10V supply, 1k/2k/3k/4k arms with cross-arm diode Nx -> Ny",
+      "solverResult": {
+        "diodeVoltage": 0.5484,
+        "diodeCurrent": 0.000184,
+        "iterations": 14,
+        "maxKclResidual": 1.30e-9,
+        "powerImbalance": 7.76e-10
+      },
+      "passStatus": "PASS"
+    },
+    {
+      "benchmarkId": "BENCH-004",
+      "name": "Adversarial SPICE pnjlim Overflow Protection (100V Supply, 10kOhm)",
+      "solverResult": {
+        "diodeVoltage": 0.7495,
+        "diodeCurrent": 0.009925,
+        "iterations": 15,
+        "numericalOverflow": false,
+        "converged": true
+      },
+      "passStatus": "PASS"
+    }
+  ],
+  "conservationSummary": {
+    "kcl": {
+      "metric": "Max nodal current imbalance across all nodes",
+      "worstCaseObserved": 1.30e-9,
+      "threshold": 1.0e-7,
+      "status": "PASS"
+    },
+    "kvl": {
+      "metric": "Max loop voltage imbalance",
+      "worstCaseObserved": 0.0,
+      "threshold": 1.0e-9,
+      "status": "PASS"
+    },
+    "powerConservation": {
+      "metric": "|P_supplied - (Sum P_resistors + Sum P_diodes)|",
+      "worstCaseObserved": 7.76e-10,
+      "threshold": 1.0e-7,
+      "status": "PASS"
+    }
+  }
+}

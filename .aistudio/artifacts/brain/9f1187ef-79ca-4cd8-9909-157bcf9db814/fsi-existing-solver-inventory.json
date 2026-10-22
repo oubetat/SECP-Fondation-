@@ -1,0 +1,20 @@
+# SECP Structural FEM Foundation Inventory
+
+## 1. Core Structural Engine Capability
+- **Solver Engine:** `StructuralAnalysisEngine`
+- **Assembly:** `GlobalAssemblyEngine`, `StiffnessMatrixEngine`
+- **Element Formulation:** `ElementFormulationEngine`, `ShapeFunctionEngine`
+- **Solvers:** `PCGSolverEngine`, `LinearSystemSolverEngine`
+
+## 2. Capability Audit
+The SECP platform possesses a comprehensive FEM foundation, contrary to the preliminary assessment which was limited to an analytical cantilever beam model in `structuralFem.ts`.
+
+| Capability | Status | Implementation File |
+| :--- | :--- | :--- |
+| Global Stiffness Matrix Assembly | **AVAILABLE** | `GlobalAssemblyEngine.ts` |
+| Element Stiffness Formulation | **AVAILABLE** | `ElementFormulationEngine.ts` |
+| Linear System Solver | **AVAILABLE** | `PCGSolverEngine.ts` |
+| Mesh Support | **AVAILABLE** | `FEAMesh`, `StructuralPhysicsTypes.ts` |
+
+## 3. Integration Potential
+The `TwoWayFSICouplingEngine` should be re-architected to replace its arbitrary `stiffness = E * 1e-7` calculation with a call to `StiffnessMatrixEngine.computeElementStiffness` and `GlobalAssemblyEngine.assembleSystemWithoutBoundaryPenalty` to generate a real structural reaction force based on the current FEM state, not an analytical approximation.

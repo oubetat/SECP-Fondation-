@@ -1,7 +1,21 @@
 /**
- * SECP Engineering Calculation Core — Thermodynamics Engine
- * Conduction, Convection, Thermal Stress, Heat Capacity.
+ * SECP Engineering Calculation Core — Thermodynamics & Spatial Thermal Engine
+ * 1D Fourier & Newton Relations, Continuum Laws, and Multilayer Spatial PCB Solvers.
  */
+
+import {
+  PcbThermalBoardConfig,
+  PcbStackupLayer,
+  computePcbThermalCanonicalHash
+} from './PcbThermalModel';
+import {
+  SpatialThermalSolver,
+  SpatialThermalFieldResult,
+  PcbEffectiveConductivityResult
+} from './SpatialThermalSolver';
+
+export * from './PcbThermalModel';
+export * from './SpatialThermalSolver';
 
 export class ThermodynamicsEngine {
   /** Fourier Conduction Heat Flow Q = k * A * (T1 - T2) / L (Watts) */
@@ -40,5 +54,21 @@ export class ThermodynamicsEngine {
     deltaTCelsius: number
   ): number {
     return massKg * specificHeatJKgK * deltaTCelsius;
+  }
+
+  /**
+   * Solves 2D/multilayer PCB heat spreading and conjugate boundary heat transfer.
+   */
+  public static solvePcbThermalField(config: PcbThermalBoardConfig): SpatialThermalFieldResult {
+    const result = SpatialThermalSolver.solve(config);
+    result.canonicalHash = computePcbThermalCanonicalHash(config);
+    return result;
+  }
+
+  /**
+   * Computes anisotropic effective thermal conductivity for multilayer stackup.
+   */
+  public static calculateMultilayerEffectiveConductivity(layers: PcbStackupLayer[]): PcbEffectiveConductivityResult {
+    return SpatialThermalSolver.calculateEffectiveConductivity(layers);
   }
 }

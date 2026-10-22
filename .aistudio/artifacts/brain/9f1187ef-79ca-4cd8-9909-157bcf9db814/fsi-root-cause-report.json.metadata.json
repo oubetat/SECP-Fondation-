@@ -1,0 +1,6 @@
+{
+  "summary":  "Report on root cause of FSI force imbalance: Mismatch between number of boundary force faces and structural nodes.",
+  "updatedAt":  "2026-10-22T08:57:39.421714866Z",
+  "requestFeedback":  true,
+  "userFacing":  true
+}

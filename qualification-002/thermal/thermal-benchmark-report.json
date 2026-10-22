@@ -1,0 +1,7 @@
+{
+  "benchmarkId": "Q002-T-001",
+  "status": "QUALIFIED",
+  "maxTemperatureC": 85.5,
+  "maxErrorPct": 0.01,
+  "timestamp": "2026-10-22T08:33:50.222Z"
+}

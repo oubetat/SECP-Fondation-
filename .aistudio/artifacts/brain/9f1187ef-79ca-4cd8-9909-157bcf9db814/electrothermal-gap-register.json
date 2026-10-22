@@ -1,0 +1,30 @@
+{
+  "gapRegisterId": "SECP-ELECTROTHERMAL-GAPS-001C",
+  "task": "SECP-ENGINE-STRENGTHENING-001C",
+  "gaps": [
+    {
+      "gapId": "GAP-ET-01",
+      "name": "Missing Temperature Dependency in Circuit Model",
+      "impact": "CircuitComponent did not carry temperature coefficient alpha or reference temperature T_ref, preventing resistance updating during simulation.",
+      "resolution": "Extend CircuitComponent or provide ElectrothermalCouplingContract with temperature coefficient alpha, T_ref, and spatial footprint mapping."
+    },
+    {
+      "gapId": "GAP-ET-02",
+      "name": "Absence of Fixed-Point Co-Simulation Loop",
+      "impact": "Electrical and thermal domains were solved in complete isolation or in a single forward pass without feedback.",
+      "resolution": "Construct ElectrothermalSolver that iteratively exchanges power losses and temperatures until residuals satisfy stopping criteria."
+    },
+    {
+      "gapId": "GAP-ET-03",
+      "name": "Numerical Instability in High Heat Flux Regimes",
+      "impact": "Without under-relaxation, steep positive temperature coefficients can cause fixed-voltage or fixed-current iterations to ping-pong or diverge.",
+      "resolution": "Implement under-relaxation theta in (0, 1] applied to either heat source updates or temperature field updates."
+    },
+    {
+      "gapId": "GAP-ET-04",
+      "name": "Lack of Explicit Cross-Domain Energy Balance Audit",
+      "impact": "Potential divergence or non-physical power leaks go undetected.",
+      "resolution": "Compute total electrical power generated P_elec = sum(V_i * I_i) and total thermal heat flux Q_out = sum(Q_conv) + sum(Q_sink), verifying |P_elec - Q_out| / P_elec <= 1e-3."
+    }
+  ]
+}

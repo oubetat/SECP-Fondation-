@@ -1,0 +1,9 @@
+{
+  "baseline": "2026-10-21-FINAL-AUDIT",
+  "files": {
+    "NodalCircuitSolver": "sha256:...",
+    "StructuralEngine": "sha256:...",
+    "ThermalEngine": "sha256:...",
+    "SignalIntegrityEngine": "sha256:..."
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "benchmarkId": "Q002-MD-001",
+  "status": "QUALIFIED",
+  "coSimulationIterations": 4,
+  "converged": true,
+  "timestamp": "2026-10-22T08:33:50.223Z"
+}

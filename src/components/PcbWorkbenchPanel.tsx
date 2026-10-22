@@ -6,8 +6,14 @@ import {
   PcbDesign,
   MechanicalEnclosureIntegration
 } from '../engine/pcbEngine';
-import { Cpu, Layers, Box, CheckCircle2, AlertTriangle, RefreshCw, Zap, Sliders, ArrowRight, ShieldCheck, Award } from 'lucide-react';
+import {
+  MultidomainPcbIntegrationEngine,
+  MultidomainPcbHardAcceptanceGate,
+  MultidomainPcbGateReport
+} from '../engine/crossdomain/MultidomainPcbIntegrationEngine';
+import { Cpu, Layers, Box, CheckCircle2, AlertTriangle, RefreshCw, Zap, Sliders, ArrowRight, ShieldCheck, Award, Network, Flame, HardDrive } from 'lucide-react';
 import { DronePcbPanel } from './drone/DronePcbPanel';
+import { MultidomainSynchronousWorkbench } from './MultidomainSynchronousWorkbench';
 import { getTruthStatusDescriptor, TruthOrigin } from '../engine/context/EngineeringContext';
 
 export interface PcbWorkbenchPanelProps {
@@ -27,12 +33,19 @@ export const PcbWorkbenchPanel: React.FC<PcbWorkbenchPanelProps> = ({
   const [pcb, setPcb] = useState<PcbDesign | null>(null);
   const [schematic, setSchematic] = useState<{ components: SchematicComponent[]; nets: SchematicNet[] } | null>(null);
 
-  const [activeTab, setActiveTab] = useState<'SCHEMATIC' | 'PCB_2D' | 'MCAD_3D' | 'GATE_326'>('PCB_2D');
+  const [activeTab, setActiveTab] = useState<'SCHEMATIC' | 'PCB_2D' | 'MCAD_3D' | 'GATE_326' | 'MULTIDOMAIN_PHASE4'>('PCB_2D');
   const [gateReport, setGateReport] = useState<any | null>(null);
+  const [multidomainReport, setMultidomainReport] = useState<MultidomainPcbGateReport | null>(null);
 
   const handleRunGate = () => {
     const report = PcbEngine.runHardAcceptanceGate();
     setGateReport(report);
+  };
+
+  const handleRunMultidomainGate = () => {
+    const assembly = MultidomainPcbIntegrationEngine.createReferenceBenchmarkAssembly();
+    const report = MultidomainPcbHardAcceptanceGate.runGate(assembly);
+    setMultidomainReport(report);
   };
 
   useEffect(() => {
@@ -308,6 +321,18 @@ export const PcbWorkbenchPanel: React.FC<PcbWorkbenchPanelProps> = ({
             >
               <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
               <span>4. DRC & Gate Suite (19)</span>
+            </button>
+            <button
+              onClick={() => {
+                if (!multidomainReport) handleRunMultidomainGate();
+                setActiveTab('MULTIDOMAIN_PHASE4');
+              }}
+              className={`px-4 py-2 rounded-lg font-semibold transition cursor-pointer flex items-center gap-1.5 ${
+                activeTab === 'MULTIDOMAIN_PHASE4' ? 'bg-indigo-600 text-white' : 'text-slate-400 hover:text-slate-200'
+              }`}
+            >
+              <Network className="w-3.5 h-3.5 text-cyan-400" />
+              <span>5. Multidomain PCB (Phase 4)</span>
             </button>
           </div>
 
@@ -665,6 +690,11 @@ export const PcbWorkbenchPanel: React.FC<PcbWorkbenchPanelProps> = ({
             </div>
           )}
         </div>
+      )}
+
+      {/* 5. MULTIDOMAIN INTEGRATION (PHASE 4) VIEW */}
+      {activeTab === 'MULTIDOMAIN_PHASE4' && (
+        <MultidomainSynchronousWorkbench />
       )}
         </>
       )}

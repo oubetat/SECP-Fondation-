@@ -1,0 +1,47 @@
+{
+  "task": "SECP-ENGINE-STRENGTHENING-001D",
+  "gaps": [
+    {
+      "id": "GAP-STRUC-001",
+      "severity": "CRITICAL",
+      "description": "Boundary condition ignorance: mountingType parameter in PcbStructuralDeflectionEngine is completely ignored; FOUR_CORNERS_SUPPORTED and FOUR_EDGES_CLAMPED produce identical outputs.",
+      "remediation": "Implement discrete 2D Kirchhoff plate matrix solver supporting distinct edge and point support boundary conditions."
+    },
+    {
+      "id": "GAP-STRUC-002",
+      "severity": "HIGH",
+      "description": "Physical formulation gap: Plate flexural rigidity D = E*h^3 / (12*(1-nu^2)) is omitted; 1D beam bending I = W*h^3/12 is used instead of 2D bi-harmonic plate equation.",
+      "remediation": "Implement true 2D Kirchhoff plate flexural rigidity with Poisson's ratio coupling and bi-harmonic operator nabla^4 w = q/D."
+    },
+    {
+      "id": "GAP-STRUC-003",
+      "severity": "HIGH",
+      "description": "Lack of discrete component load mapping: Components placed at (x,y) with non-zero mass are not mapped to spatial point loads on the substrate.",
+      "remediation": "Integrate component placement mass mapping into nodal load vector {F} alongside distributed uniform pressure."
+    },
+    {
+      "id": "GAP-STRUC-004",
+      "severity": "HIGH",
+      "description": "No stress tensor recovery: Engine only outputs a single scalar bending stress; no sigma_xx, sigma_yy, tau_xy, or von Mises stress field.",
+      "remediation": "Compute spatial curvature tensor field from discrete displacement gradients and recover complete 2D surface stress tensor and von Mises stress."
+    },
+    {
+      "id": "GAP-STRUC-005",
+      "severity": "MEDIUM",
+      "description": "No numerical solver diagnostics: No matrix condition check, no singularity rejection for unconstrained plates, no algebraic residual norm ||Kw - F||.",
+      "remediation": "Implement Gaussian elimination / Cholesky factorization with pivot check, singular matrix error diagnostics, and algebraic residual tracking."
+    },
+    {
+      "id": "GAP-STRUC-006",
+      "severity": "MEDIUM",
+      "description": "No static equilibrium / reaction verification: Engine does not verify that total reaction forces balance total applied vertical loads.",
+      "remediation": "Calculate reaction forces at constrained support points and enforce |sum(R_z) - F_total| / F_total < 1e-4."
+    },
+    {
+      "id": "GAP-STRUC-007",
+      "severity": "MEDIUM",
+      "description": "No mesh refinement convergence verification: No mechanism to evaluate error reduction across finer spatial grids.",
+      "remediation": "Implement grid refinement test suite evaluating monotonic convergence on analytical benchmark plates (Navier and Timoshenko solutions)."
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "reportId": "SECP-ELECTROTHERMAL-DEPENDENCY-001C",
+  "task": "SECP-ENGINE-STRENGTHENING-001C",
+  "canonicalIntegrity": {
+    "electricalCore": {
+      "path": "src/engine/engineeringCore/NodalCircuitSolver.ts",
+      "status": "CANONICAL_REUSED",
+      "isSecondEngine": false
+    },
+    "referenceCircuitModel": {
+      "path": "src/engine/engineeringCore/ReferenceCircuitModel.ts",
+      "status": "CANONICAL_REUSED",
+      "isSecondEngine": false
+    },
+    "spatialThermalSolver": {
+      "path": "src/engine/engineeringCore/SpatialThermalSolver.ts",
+      "status": "CANONICAL_REUSED",
+      "isSecondEngine": false
+    },
+    "pcbThermalModel": {
+      "path": "src/engine/engineeringCore/PcbThermalModel.ts",
+      "status": "CANONICAL_REUSED",
+      "isSecondEngine": false
+    },
+    "multidomainBridge": {
+      "path": "src/engine/crossdomain/MultidomainPcbIntegrationEngine.ts",
+      "status": "CANONICAL_INTEGRATED",
+      "isSecondEngine": false
+    }
+  },
+  "couplingStrategy": {
+    "architecture": "Iterative Loose/Picard Coupling over Canonical Solvers",
+    "solverExecution": "Synchronous deterministic iterative loop with under-relaxation",
+    "mockUsage": "NONE (0% mocks)",
+    "verificationMethod": "Analytical benchmark parity & adversarial regression suite"
+  }
+}

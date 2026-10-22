@@ -1,0 +1,19 @@
+# FSI Root Cause Analysis: Force Imbalance and Structural Foundation
+
+## 1. Investigation of 25% Force Imbalance
+The previous analysis showed that the 25% imbalance was a numerical artifact due to a simplified structural reaction proxy calculation (`solidReactionSum = Math.abs(d.dy) * stiffness`).
+The `TwoWayFSICouplingEngine` uses `stiffness = E * 1e-7` (where E=2.1e11), which is a scaling factor rather than a physical structural stiffness.
+
+## 2. Structural FEM Foundation Status
+- **Current Capability:** `StructuralFemEngine` exists in `/src/engine/structuralFem.ts`.
+- **Methodology:** It currently uses an analytical cantilever beam bending formulation (`delta = (F * x^2 * (3L - x)) / (6 * E * I)`) for stress and displacement, rather than a full Finite Element stiffness matrix assembly.
+- **Integration Potential:** It relies on `SimulationMesh` from `/src/engine/simulationFramework.ts`, which already uses `Nodes` and `Elements` (e.g., `QUAD4`).
+
+## 3. Findings
+- The existing structural engine is **not** a full FEM matrix solver, but an analytical cantilever model.
+- The `TwoWayFSICouplingEngine` is **incompatible** with this analytical model because it expects node-based displacement responses for *arbitrary* boundary conditions, while the analytical model is strictly for cantilever beams.
+
+## 4. Path Forward
+1. Do not use the analytical cantilever model in FSI.
+2. The architectural gap is the absence of a general 3D FEM solver capable of assembling stiffness matrices for arbitrary interface meshes.
+3. This is identified as a critical engineering gap.

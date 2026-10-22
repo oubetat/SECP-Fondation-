@@ -1,0 +1,20 @@
+{
+  "testId": "FSI-ROOT-CAUSE-001",
+  "rootCause": "Mismatched mapping between fluid boundary faces and structural displacement nodes leading to force/energy imbalance in the coupling loop.",
+  "findings": [
+    {
+      "issue": "Hardcoded face area in engine",
+      "status": "FIXED"
+    },
+    {
+      "issue": "Loop over cells instead of faces",
+      "status": "FIXED"
+    },
+    {
+      "issue": "Mismatched node count",
+      "status": "IDENTIFIED - Requires FSIInterfaceMapper implementation"
+    }
+  ],
+  "recommendation": "Implement a proper FSIInterfaceMapper to correctly map force-faces to structural-nodes.",
+  "timestamp": "2026-10-22T08:57:40Z"
+}

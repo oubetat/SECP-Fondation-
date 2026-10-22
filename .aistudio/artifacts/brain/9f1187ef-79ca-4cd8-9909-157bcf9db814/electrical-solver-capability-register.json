@@ -1,0 +1,71 @@
+{
+  "registerId": "SECP-ELECTRICAL-CAPABILITY-REGISTER-001",
+  "version": "1.1.0",
+  "timestamp": "2026-10-22T07:22:00.000Z",
+  "capabilities": [
+    {
+      "id": "CAP-ELEC-001",
+      "name": "Linear DC Resistive Analysis",
+      "status": "VERIFIED",
+      "method": "Direct MNA with Gaussian Elimination with partial row pivoting",
+      "tolerance": "1e-9",
+      "referenceStandard": "Standard Modified Nodal Analysis"
+    },
+    {
+      "id": "CAP-ELEC-002",
+      "name": "Independent DC Voltage Source Stamping",
+      "status": "VERIFIED",
+      "method": "B and C blocks augmented rows/cols in MNA system",
+      "tolerance": "1e-9",
+      "referenceStandard": "Standard MNA stamp"
+    },
+    {
+      "id": "CAP-ELEC-003",
+      "name": "Conservation Law Verification (KCL, KVL, Power)",
+      "status": "VERIFIED",
+      "method": "Deterministic node residual (1.3e-9 A) and closed-loop / energy balance check (7.7e-10 W)",
+      "tolerance": "1e-7 A / 1e-7 W",
+      "referenceStandard": "Kirchhoff Laws & Tellegen / Poynting DC energy conservation"
+    },
+    {
+      "id": "CAP-ELEC-004",
+      "name": "Nonlinear Physical Diode Component",
+      "status": "VERIFIED",
+      "method": "Shockley diode equation with C1 continuous exponential limiter",
+      "tolerance": "2.17e-10 V vs independent oracle",
+      "referenceStandard": "SPICE 3f5 diode model equations"
+    },
+    {
+      "id": "CAP-ELEC-005",
+      "name": "Newton-Raphson Iterative Solver with Analytical Jacobian",
+      "status": "VERIFIED",
+      "method": "Exact analytical partial derivatives dI/dV, companion model linearization, residual checking",
+      "tolerance": "reltol=1e-4, abstolV=1e-6 V, abstolI=1e-7 A",
+      "referenceStandard": "Newton-Raphson nonlinear circuit formulation"
+    },
+    {
+      "id": "CAP-ELEC-006",
+      "name": "SPICE-style Voltage Limiting & Numerical Damping",
+      "status": "VERIFIED",
+      "method": "pnjlim logarithmic compression & adaptive step damping preventing exponential overflow",
+      "tolerance": "Converged in <= 15 iterations (tested up to 100V)",
+      "referenceStandard": "Quarles / Nagel SPICE diode convergence algorithm"
+    },
+    {
+      "id": "CAP-ELEC-007",
+      "name": "Wheatstone Bridge Benchmark (Linear & Active Nonlinear)",
+      "status": "VERIFIED",
+      "method": "Analytical Cramer's Rule verification (EEC-017) & active forward diode conduction (NET-004)",
+      "tolerance": "2.66e-15 V for linear, 1.3e-9 A for nonlinear",
+      "referenceStandard": "Closed-form Cramer solution & Newton-Raphson nodal solve"
+    },
+    {
+      "id": "CAP-ELEC-008",
+      "name": "Failure-Closed Diagnostic Reporting",
+      "status": "VERIFIED",
+      "method": "Explicit error codes: SINGULAR_MATRIX, MISSING_REFERENCE_NODE, INVALID_INPUT, DIVERGENCE, NUMERICAL_OVERFLOW",
+      "tolerance": "Strict fail-closed with zero mock fallback",
+      "referenceStandard": "SECP Engineering Truth Governance"
+    }
+  ]
+}

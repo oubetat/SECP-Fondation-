@@ -1,0 +1,12 @@
+{
+  "patchId": "PATCH-254",
+  "title": "FSI Gap Register",
+  "gaps": [
+    {
+      "gapId": "GAP-FSI-01",
+      "description": "Full Navier-Stokes fluid velocity vector mapping to non-conformal structural shells pending future unstructured mesh interpolation enhancements.",
+      "status": "BOUNDED_LIMITATION"
+    }
+  ],
+  "timestamp": "2026-10-22T01:45:00Z"
+}

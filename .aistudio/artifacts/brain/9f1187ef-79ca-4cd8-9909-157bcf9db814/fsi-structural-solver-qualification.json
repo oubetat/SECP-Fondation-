@@ -1,0 +1,16 @@
+{
+  "testId": "FSI-STRUCTURAL-QUAL-001",
+  "solver": "StiffnessMatrixEngine",
+  "result": "FAIL",
+  "analyticalRodTest": {
+    "analyticalDisp": 0.000047619,
+    "calculatedDisp": 0.00005000001,
+    "errorPct": 5.0,
+    "reason": "Discrepancy due to hardcoded Young's Modulus (200GPa) in ElementFormulationEngine ignoring material properties."
+  },
+  "gaps": [
+    "ElementFormulationEngine ignores passed material properties.",
+    "Artificial transverse stiffness used in BAR_1D formulation affects axial results."
+  ],
+  "timestamp": "2026-10-22T09:30:45Z"
+}

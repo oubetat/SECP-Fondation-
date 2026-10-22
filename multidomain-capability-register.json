@@ -1,0 +1,12 @@
+{
+  "task": "SECP-ENGINE-STRENGTHENING-001E",
+  "capabilityRegister": {
+    "electricalMnaSolver": { "status": "VERIFIED", "scope": "DC/Nonlinear MNA circuit solver with Newton-Raphson" },
+    "spatialThermalSolver": { "status": "VERIFIED", "scope": "2D/3D conductive and convective PCB heat transfer" },
+    "structuralPlateSolver": { "status": "VERIFIED", "scope": "2D Kirchhoff-Love thin plate bending and stress tensor recovery" },
+    "electrothermalCoSimulation": { "status": "VERIFIED", "scope": "Iterative Picard electrothermal coupling with R(T) feedback" },
+    "thermomechanicalCoupling": { "status": "BLOCKED", "scope": "Thermal strain expansion and stress coupling (unsupported in solver)" },
+    "revisionInvalidation": { "status": "VERIFIED", "scope": "SHA-256 canonical hashing and cascading cache invalidation" },
+    "evidenceAttestation": { "status": "VERIFIED", "scope": "Cryptographic evidence manifests tied to input revisions" }
+  }
+}

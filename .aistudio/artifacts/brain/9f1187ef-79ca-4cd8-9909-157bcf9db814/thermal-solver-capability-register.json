@@ -1,0 +1,62 @@
+{
+  "registerId": "SECP-TH-CAPABILITY-001",
+  "task": "SECP-ENGINE-STRENGTHENING-001B",
+  "generatedAt": "2026-10-22T07:22:30Z",
+  "baselineCapabilities": [
+    {
+      "id": "CAP-TH-001",
+      "name": "1D Lumped Fourier Conduction",
+      "status": "OPERATIONAL",
+      "scope": "Single slab steady-state Q = k*A*dT/L",
+      "limitations": "Zero spatial resolution, no 2D/3D heat spreading"
+    },
+    {
+      "id": "CAP-TH-002",
+      "name": "Newton Cooling Boundary",
+      "status": "OPERATIONAL",
+      "scope": "Lumped surface heat loss Q = h*A*(Ts - Tinf)",
+      "limitations": "Constant temperature assumption across entire boundary area"
+    },
+    {
+      "id": "CAP-TH-003",
+      "name": "Linear FEM Continuum Solver",
+      "status": "OPERATIONAL",
+      "scope": "Generic mesh steady & backward-Euler transient solve",
+      "limitations": "No native PCB stackup, no copper plane spreading, no package thermal resistance model"
+    }
+  ],
+  "targetCapabilities": [
+    {
+      "id": "CAP-TH-TGT-001",
+      "name": "Spatial 2D/2.5D Multilayer Conductance Network Solver",
+      "status": "PLANNED",
+      "governingEquation": "div(k * grad(T)) + Q_gen - q_conv = 0",
+      "discretization": "Finite Volume Method / Conservation-law Conductance Matrix [K]{T} = {Q_eff}"
+    },
+    {
+      "id": "CAP-TH-TGT-002",
+      "name": "PCB Multilayer Anisotropic Effective Conductivity Formulation",
+      "status": "PLANNED",
+      "governingEquation": "k_inplane = sum(k_i * t_i) / t_total, k_throughplane = t_total / sum(t_i / k_i)",
+      "features": "Explicit copper weights (1oz, 2oz, etc.), dielectric layers (FR4, polyimide), thermal vias enhancement"
+    },
+    {
+      "id": "CAP-TH-TGT-003",
+      "name": "Localized Footprint Heat Source Mapping & Boundary Integration",
+      "status": "PLANNED",
+      "features": "Converts component placement (x, y, w, h, P_diss) into cell-weighted volumetric heat generation without double-counting; natural convection & forced convection top/bottom/edges; fixed temperature heat sinks / chassis mounts"
+    },
+    {
+      "id": "CAP-TH-TGT-004",
+      "name": "Component Package Thermal Hierarchy (Junction-Case-Board)",
+      "status": "PLANNED",
+      "features": "Computes T_board(x, y), T_case = T_board + P * R_theta_CS, T_junction = T_case + P * R_theta_JC"
+    },
+    {
+      "id": "CAP-TH-TGT-005",
+      "name": "Energy Conservation & Heat Balance Auditing",
+      "status": "PLANNED",
+      "criteria": "|Q_generated - (Q_convection + Q_conduction_boundaries)| / Q_generated < 1e-4"
+    }
+  ]
+}

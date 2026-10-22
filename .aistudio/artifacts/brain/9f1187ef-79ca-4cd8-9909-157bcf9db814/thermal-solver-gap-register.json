@@ -1,0 +1,43 @@
+{
+  "gapRegisterId": "SECP-TH-GAP-001",
+  "task": "SECP-ENGINE-STRENGTHENING-001B",
+  "date": "2026-10-22T07:22:45Z",
+  "gaps": [
+    {
+      "id": "GAP-TH-001",
+      "gate": "T1",
+      "title": "Absence of spatial multilayer PCB heat spreading formulation",
+      "impact": "Engine cannot model thermal gradients across PCB surfaces or hot spot dissipation through copper layers.",
+      "closurePlan": "Implement MultilayerPcbThermalStackup and SpatialThermalSolver with harmonic/effective in-plane & through-plane conductivity."
+    },
+    {
+      "id": "GAP-TH-002",
+      "gate": "T2",
+      "title": "Lack of discrete conservative finite-volume conductance network",
+      "impact": "Thermal simulations cannot guarantee nodal energy conservation at discrete boundaries.",
+      "closurePlan": "Discretize domain into cells with exact face flux balance: sum(G_ij * (T_i - T_j)) + h*A*(T_i - T_inf) = Q_i."
+    },
+    {
+      "id": "GAP-TH-003",
+      "gate": "T3",
+      "title": "No component junction-to-case-to-board calculation hierarchy",
+      "impact": "Semiconductor thermal limits (T_j <= 125C, 150C) are unverified against spatial board temperature fields.",
+      "closurePlan": "Implement standard JEDEC 2-resistor / multi-resistor package thermal model (R_theta_JC, R_theta_CS)."
+    },
+    {
+      "id": "GAP-TH-004",
+      "gate": "T4",
+      "title": "Singular matrix and unconstrained domain vulnerabilities",
+      "impact": "Pure Neumann boundary conditions (adiabatic with no convective or Dirichlet sink) result in infinite temperature / singular matrix.",
+      "closurePlan": "Implement strict matrix condition checking, singularity detection, and failure-closed validation error reporting."
+    },
+    {
+      "id": "GAP-TH-005",
+      "gate": "T5",
+      "title": "Absence of automated grid convergence & analytical slab benchmark suite",
+      "impact": "Lack of independent mathematical proof verifying spatial solver against exact analytical Fourier solutions.",
+      "closurePlan": "Construct 11 comprehensive tests in spatial_thermal_verification.test.ts verifying analytical 1D/2D solutions, grid refinement, energy balance, and failure modes."
+    }
+  ],
+  "closureTarget": "SECP-ENGINE-STRENGTHENING-001B"
+}

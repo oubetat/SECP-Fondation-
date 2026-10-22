@@ -1,0 +1,17 @@
+{
+  "task": "SECP-ENGINE-STRENGTHENING-001E",
+  "gaps": [
+    {
+      "id": "GAP-MULTI-001",
+      "severity": "HIGH",
+      "description": "Thermomechanical coupling is unimplemented: Temperature field from thermal solver is not converted into thermal expansion strain vectors [alpha * Delta T] for the structural stiffness solver.",
+      "remediation": "Classified as BLOCKED / UNSUPPORTED for thermomechanical scope until thermal strain tensor integration is implemented."
+    },
+    {
+      "id": "GAP-MULTI-002",
+      "severity": "MEDIUM",
+      "description": "Dynamic geometry feedback (structural deflection altering electrical trace lengths or thermal boundary convective coefficients) is unsupported.",
+      "remediation": "Maintained as static geometry assumption within declared scope."
+    }
+  ]
+}

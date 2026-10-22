@@ -1,0 +1,26 @@
+{
+  "task": "SECP-ENGINE-STRENGTHENING-001E",
+  "physicalContract": {
+    "stableComponentIdentity": "Strict refDes and canonical UUID linkage",
+    "canonicalGeometry": "Millimeter coordinates (xMm, yMm, zMm) relative to board origin (0,0)",
+    "materialIdentity": "Standardized material database keys (FR4, COPPER, ALUMINUM, ROGERS)",
+    "transferredQuantities": [
+      {
+        "name": "Component Power Loss",
+        "sourceDomain": "Electrical",
+        "destinationDomain": "Thermal",
+        "units": "Watts (W)",
+        "mappingRule": "P = I^2 * R mapped to spatial (x,y) centroid",
+        "verificationRequirement": "Power balance conservation check"
+      },
+      {
+        "name": "Junction/Board Temperature",
+        "sourceDomain": "Thermal",
+        "destinationDomain": "Electrical",
+        "units": "Celsius (°C)",
+        "mappingRule": "Interpolated local temperature at component centroid mapped to R(T) feedback",
+        "verificationRequirement": "Picard iteration convergence check"
+      }
+    ]
+  }
+}

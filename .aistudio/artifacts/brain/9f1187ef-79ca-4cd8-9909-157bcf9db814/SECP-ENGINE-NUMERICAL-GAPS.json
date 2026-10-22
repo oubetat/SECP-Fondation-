@@ -1,0 +1,19 @@
+{
+  "numericalGaps": [
+    {
+      "engine": "Structural",
+      "gap": "Model is Beam-Plate approximation, lacks full 3D FEA.",
+      "impact": "Low for static load, high for dynamic vibrational analysis."
+    },
+    {
+      "engine": "Thermal",
+      "gap": "1D Conduction-Convection model ignores lateral heat spreading.",
+      "impact": "High for complex board layouts and hotspot prediction."
+    },
+    {
+      "engine": "Electrical",
+      "gap": "MNA solver lacks non-linear device modeling (e.g. diodes, transistors).",
+      "impact": "Critical for power supply and transient analysis."
+    }
+  ]
+}

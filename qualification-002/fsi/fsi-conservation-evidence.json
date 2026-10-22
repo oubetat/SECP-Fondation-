@@ -1,0 +1,8 @@
+{
+  "status": "FAILED",
+  "totalInterfaceForceFluidN": 101325.00000000001,
+  "totalInterfaceForceSolidN": 75993.75000000001,
+  "forceImbalancePct": 24.999999999999996,
+  "energyConservationErrorPct": 12.499999999999998,
+  "timestamp": "2026-10-22T09:06:28.695Z"
+}

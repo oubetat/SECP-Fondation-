@@ -1,0 +1,69 @@
+{
+  "scopeId": "SECP-PHASE5-SCOPE-001",
+  "platform": "SolidEdge Cloud Platform (SECP) — Engineering Truth OS",
+  "phase": "Phase 5 — Aircraft & Industrial Qualification",
+  "timestamp": "2026-10-21T08:00:00.000Z",
+  "targetReferenceSystem": {
+    "systemIdentifier": "SECP-REF-ECU-001",
+    "name": "Industrial / Aircraft Electronic Control Unit (ECU) Reference Assembly",
+    "subsystemEnsemble": {
+      "pcbAssembly": {
+        "description": "4-Layer Rigid FR4/Polyimide Controller Board",
+        "keyComponents": ["Microcontroller MCU", "Solid-State Power MOSFETs", "CAN/ARINC Transceivers", "Bypass Capacitors", "Sense Resistors"],
+        "governingStandard": "IPC-2221B / IPC-6012 Class 3 rules"
+      },
+      "electricalArchitecture": {
+        "nominalBusVoltage": "28V DC (Aerospace) / 24V DC (Industrial)",
+        "regulatedRails": ["5.0V DC Logic/Analog", "3.3V DC Digital Core"],
+        "maxContinuousCurrentAmps": 10.0,
+        "maxAllowableVoltageDropPercent": 3.0
+      },
+      "wiringHarness": {
+        "connectorInterface": "MIL-DTL-38999 Series III Circular Connector",
+        "wireTypes": ["M22759/16 PTFE-insulated stranded copper (18 AWG power, 22 AWG signals)"],
+        "governingStandard": "MIL-W-5088L / SAE AS50881"
+      },
+      "mechanicalEnclosure": {
+        "material": "6061-T6 Anodized Aluminum Enclosure",
+        "features": ["Mounting standoffs (4x M3)", "Lid with 10mm clearance", "Connector cutout", "Conductive gasket groove"],
+        "clearanceThresholdMm": 3.0
+      },
+      "thermalManagement": {
+        "coolingMethod": "Conduction to chassis + Natural/Forced ambient convection",
+        "ambientOperatingRangeCelsius": [-40.0, 85.0],
+        "maxPermissibleJunctionTempCelsius": 105.0
+      }
+    }
+  },
+  "qualificationBoundaries": {
+    "inScope": [
+      "Rigid PCB Canonical Model integrity and layout rule checking",
+      "DC steady-state electrical nodal analysis (MNA) & power balance",
+      "Copper trace DC resistance and voltage drop under thermal operating points",
+      "Wiring harness interconnect parity, pinout consistency, and wire ampacity",
+      "MCAD 3D clearance, standoff alignment, and enclosure keepout boundaries",
+      "Lumped-parameter steady-state component junction temperature estimation",
+      "Unified cross-domain manufacturing BOM reconciliation",
+      "Cryptographic SHA-256 Merkle tree evidence binding and deterministic hashing",
+      "Fail-Closed acceptance gates and adversarial fault injection verification"
+    ],
+    "explicitlyOutOfScope": [
+      "Full aircraft flight dynamics, aerodynamic loading, and airframe CFD",
+      "DO-178C software compilation binary verification and object code structural coverage",
+      "DO-160 Section 22 direct and indirect lightning strike transient electromagnetic simulation",
+      "3D spatial Navier-Stokes conjugate heat transfer in vacuum / low-pressure environments",
+      "Dynamic random vibration modal FEA fatigue simulation (MIL-STD-810H / DO-160 Section 8)",
+      "Official regulatory certification sign-off from civil aviation authorities (FAA, EASA, CAAC)"
+    ]
+  },
+  "qualificationVerdictCategories": {
+    "NOT_ASSESSED": "Requirements defined but no analysis or tests executed.",
+    "PARTIALLY_ASSESSED": "Subset of domain analyses executed.",
+    "VERIFICATION_IN_PROGRESS": "Test suites actively executing.",
+    "VERIFICATION_FAILED": "One or more mandatory engineering thresholds breached.",
+    "EVIDENCE_INCOMPLETE": "Missing required artifacts, digests, or unapproved assumptions.",
+    "QUALIFICATION_BLOCKED": "Critical gap or unresolvable cross-domain conflict detected.",
+    "QUALIFIED_WITH_LIMITATIONS": "Acceptable within tightly defined operational envelopes with declared exclusions.",
+    "QUALIFIED_WITHIN_DECLARED_SCOPE": "Fully backed by verified engineering evidence within the declared operational envelope."
+  }
+}

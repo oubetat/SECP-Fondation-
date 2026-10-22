@@ -1,0 +1,36 @@
+{
+  "patchId": "PATCH-254",
+  "title": "FSI Multiphysics Capability Audit",
+  "platform": "SECP Engineering Truth OS",
+  "capabilities": [
+    {
+      "capabilityId": "FSI-CAP-01",
+      "name": "Two-Way Partitioned Gauss-Seidel FSI Coupling",
+      "status": "PROVEN",
+      "implementationFile": "src/engine/cfd3d/coupling/TwoWayFSICouplingEngine.ts",
+      "verificationStatus": "VERIFIED"
+    },
+    {
+      "capabilityId": "FSI-CAP-02",
+      "name": "Aitken Under-Relaxation for Iterative Stability",
+      "status": "PROVEN",
+      "implementationFile": "src/engine/cfd3d/coupling/TwoWayFSICouplingEngine.ts",
+      "verificationStatus": "VERIFIED"
+    },
+    {
+      "capabilityId": "FSI-CAP-03",
+      "name": "Radial Basis Function / Centroid Mesh Morphing",
+      "status": "PROVEN",
+      "implementationFile": "src/engine/cfd3d/coupling/TwoWayFSICouplingEngine.ts",
+      "verificationStatus": "VERIFIED"
+    },
+    {
+      "capabilityId": "FSI-CAP-04",
+      "name": "Interface Conservation & Force Equilibrium Audit",
+      "status": "PROVEN",
+      "implementationFile": "src/engine/cfd3d/solvers/fsi/FSIConservationAudit.ts",
+      "verificationStatus": "VERIFIED"
+    }
+  ],
+  "timestamp": "2026-10-22T01:45:00Z"
+}

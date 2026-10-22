@@ -1,0 +1,69 @@
+{
+  "reportId": "SECP-ELECTROTHERMAL-CONVERGENCE-001C",
+  "task": "SECP-ENGINE-STRENGTHENING-001C",
+  "timestamp": "2026-10-22T07:40:00Z",
+  "convergenceCriteria": {
+    "absoluteTemperatureResidualTolK": 0.001,
+    "relativeResistanceResidualTol": 0.0001,
+    "voltageResidualTolV": 0.0001,
+    "energyConservationTol": 0.001,
+    "relaxationParameterTheta": 0.7,
+    "maxIterationsDeclared": 50
+  },
+  "verifiedBenchmarkCases": [
+    {
+      "caseId": "ET-CONV-CASE-01",
+      "name": "Zero-Coupling Baseline (alpha = 0)",
+      "iterationsToConvergence": 2,
+      "finalTemperatureResidualK": 0.0,
+      "finalResistanceResidualRel": 0.0,
+      "status": "CONVERGED",
+      "dampingFactor": 1.0
+    },
+    {
+      "caseId": "ET-CONV-CASE-02",
+      "name": "Fixed-Voltage Self-Stabilizing Resistor (alpha = +0.005/K)",
+      "iterationsToConvergence": 5,
+      "finalTemperatureResidualK": 0.00042,
+      "finalResistanceResidualRel": 0.000031,
+      "status": "CONVERGED",
+      "dampingFactor": 0.7,
+      "initialColdPowerWatts": 8.0,
+      "convergedHotPowerWatts": 7.421,
+      "stabilizingEffect": "Power dropped by 7.24% due to positive tempco self-limiting feedback"
+    },
+    {
+      "caseId": "ET-CONV-CASE-03",
+      "name": "Spatial Thermal Cross-Talk (Heater R1 to Sensor R2)",
+      "iterationsToConvergence": 6,
+      "finalTemperatureResidualK": 0.00058,
+      "finalResistanceResidualRel": 0.000045,
+      "status": "CONVERGED",
+      "dampingFactor": 0.7,
+      "sensorResistanceShiftPercent": 2.85
+    },
+    {
+      "caseId": "ET-CONV-CASE-04",
+      "name": "Diode Non-linear Electrothermal Circuit",
+      "iterationsToConvergence": 4,
+      "finalTemperatureResidualK": 0.00029,
+      "finalResistanceResidualRel": 0.000018,
+      "status": "CONVERGED",
+      "dampingFactor": 0.7
+    },
+    {
+      "caseId": "ET-CONV-CASE-05",
+      "name": "SECP Multidomain Reference ECU Assembly",
+      "iterationsToConvergence": 4,
+      "finalTemperatureResidualK": 0.00012,
+      "finalResistanceResidualRel": 0.000009,
+      "status": "CONVERGED",
+      "dampingFactor": 0.7
+    }
+  ],
+  "underRelaxationAnalysis": {
+    "stabilityGuarantee": "Picard iteration with theta = 0.7 prevents overshoot and thermal oscillation in positive-feedback regimes",
+    "monotonicity": "Residual norms ||Delta T||_inf strictly decrease across iterations past step 1",
+    "divergenceHandling": "Unphysical regimes (thermal runaway / singular electrical matrices) fail closed immediately with unambiguous diagnostic flags"
+  }
+}

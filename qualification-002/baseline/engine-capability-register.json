@@ -1,0 +1,100 @@
+[
+  {
+    "capabilityId": "CAP-ELEC-01",
+    "domain": "electrical",
+    "implementationStatus": "IMPLEMENTED",
+    "executionStatus": "EXECUTED",
+    "verificationStatus": "VERIFIED",
+    "sourceReferences": [
+      "src/engine/engineeringCore/NodalCircuitSolver.ts",
+      "src/engine/engineeringCore/CircuitTopologySolver.ts"
+    ],
+    "testReferences": [
+      "src/engine/engineeringCore/tests/adversarial_electrical_tests.ts",
+      "src/engine/engineeringCore/tests/nonlinear_electrical_verification.test.ts"
+    ],
+    "evidenceReferences": [
+      "qualification-002/electrical/electrical-benchmark-report.json"
+    ],
+    "knownLimitations": [
+      "Linear DC MNA supported; nonlinear diodes via iterative linearization with convergence tolerance."
+    ],
+    "qualificationScope": [
+      "Linear resistor networks, voltage/current sources, nodal MNA matrix assembly."
+    ],
+    "blockers": []
+  },
+  {
+    "capabilityId": "CAP-THERM-01",
+    "domain": "thermal",
+    "implementationStatus": "IMPLEMENTED",
+    "executionStatus": "EXECUTED",
+    "verificationStatus": "VERIFIED",
+    "sourceReferences": [
+      "src/engine/engineeringCore/SpatialThermalSolver.ts",
+      "src/engine/engineeringCore/PcbThermalModel.ts"
+    ],
+    "testReferences": [
+      "src/engine/engineeringCore/tests/spatial_thermal_verification.test.ts"
+    ],
+    "evidenceReferences": [
+      "qualification-002/thermal/thermal-benchmark-report.json"
+    ],
+    "knownLimitations": [
+      "2D finite-difference steady-state thermal conduction across multi-layer stackup with top/bottom convection."
+    ],
+    "qualificationScope": [
+      "Multi-layer PCB steady state thermal fields, boundary conditions, lumped and spatial thermal distribution."
+    ],
+    "blockers": []
+  },
+  {
+    "capabilityId": "CAP-STRUCT-01",
+    "domain": "structural",
+    "implementationStatus": "IMPLEMENTED",
+    "executionStatus": "EXECUTED",
+    "verificationStatus": "VERIFIED",
+    "sourceReferences": [
+      "src/engine/engineeringCore/StructuralPlateSolver.ts",
+      "src/engine/pcb/PcbStructuralDeflectionEngine.ts"
+    ],
+    "testReferences": [
+      "src/engine/engineeringCore/tests/structural_integrity_verification.test.ts"
+    ],
+    "evidenceReferences": [
+      "qualification-002/structural/structural-benchmark-report.json"
+    ],
+    "knownLimitations": [
+      "Kirchhoff plate bending approximation for PCB deflections; linear elasticity."
+    ],
+    "qualificationScope": [
+      "Uniform transverse load plate deflection, boundary fixation, stress estimates."
+    ],
+    "blockers": []
+  },
+  {
+    "capabilityId": "CAP-MD-01",
+    "domain": "multidomain",
+    "implementationStatus": "IMPLEMENTED",
+    "executionStatus": "EXECUTED",
+    "verificationStatus": "VERIFIED",
+    "sourceReferences": [
+      "src/engine/engineeringCore/ElectrothermalSolver.ts",
+      "src/engine/engineeringCore/ElectrothermalCouplingContract.ts"
+    ],
+    "testReferences": [
+      "src/engine/engineeringCore/tests/electrothermal_coupling_verification.test.ts",
+      "src/engine/engineeringCore/tests/multidomain_system_verification.test.ts"
+    ],
+    "evidenceReferences": [
+      "qualification-002/multidomain/multidomain-benchmark-report.json"
+    ],
+    "knownLimitations": [
+      "Iterative Picard under-relaxation electrothermal co-simulation with temperature-dependent resistivity."
+    ],
+    "qualificationScope": [
+      "Electrical power loss transfer to thermal board model, temperature field feedback to resistor values."
+    ],
+    "blockers": []
+  }
+]

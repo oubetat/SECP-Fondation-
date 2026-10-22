@@ -1,0 +1,50 @@
+{
+  "reportId": "SECP-TH-REG-001B",
+  "task": "SECP-ENGINE-STRENGTHENING-001B",
+  "date": "2026-10-22T07:27:45Z",
+  "baselineSuites": [
+    {
+      "suite": "Nonlinear Electrical Verification Battery (SECP-001A)",
+      "command": "npx vitest run src/engine/engineeringCore/tests/nonlinear_electrical_verification.test.ts",
+      "assertions": 19,
+      "passed": 19,
+      "failed": 0,
+      "status": "PASS"
+    },
+    {
+      "suite": "Nodal Circuit Solver Phase 4 Battery",
+      "command": "npx tsx src/engine/engineeringCore/tests/verify_nodal_solver_phase4.ts",
+      "assertions": 13,
+      "passed": 13,
+      "failed": 0,
+      "status": "PASS"
+    },
+    {
+      "suite": "Thermal FEM Foundation Battery",
+      "command": "npx vitest run src/engine/fem/thermal",
+      "assertions": 4,
+      "passed": 4,
+      "failed": 0,
+      "status": "PASS"
+    },
+    {
+      "suite": "PCB Structural Deflection & Stress Verification",
+      "command": "npx tsx src/engine/pcb/tests/structural_deflection_verification.test.ts",
+      "assertions": 4,
+      "passed": 4,
+      "failed": 0,
+      "status": "PASS"
+    },
+    {
+      "suite": "Spatial Multilayer PCB Thermal Solver (New 001B Suite)",
+      "command": "npx vitest run src/engine/engineeringCore/tests/spatial_thermal_verification.test.ts",
+      "assertions": 11,
+      "passed": 11,
+      "failed": 0,
+      "status": "PASS"
+    }
+  ],
+  "totalRegressionAssertions": 51,
+  "passedRegressionAssertions": 51,
+  "regressionVerdict": "ZERO_REGRESSIONS_CONFIRMED"
+}

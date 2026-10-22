@@ -1,0 +1,18 @@
+{
+  "evidenceManifest": [
+    {
+      "evidenceId": "EVID-REQ-ELEC-002",
+      "requirementId": "REQ-ECU-ELEC-002",
+      "result": "PASSED",
+      "designRevision": "SEC-REF-ECU-V1.0",
+      "engineVersion": "V1.0.0"
+    },
+    {
+      "evidenceId": "EVID-REQ-MECH-001",
+      "requirementId": "REQ-MECH-001",
+      "result": "PASSED",
+      "designRevision": "SEC-REF-ECU-V1.0",
+      "engineVersion": "V1.0.0"
+    }
+  ]
+}

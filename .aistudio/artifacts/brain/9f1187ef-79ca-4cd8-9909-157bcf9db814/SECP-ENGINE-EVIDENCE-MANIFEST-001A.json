@@ -1,0 +1,40 @@
+{
+  "manifestId": "SECP-ENGINE-EVIDENCE-MANIFEST-001A",
+  "task": "SECP-ENGINE-STRENGTHENING-001A",
+  "title": "Nonlinear Electrical Engine Evidence Manifest",
+  "timestamp": "2026-10-22T07:26:00.000Z",
+  "verdict": "VERIFIED_WITHIN_DECLARED_SCOPE",
+  "fileFingerprints": {
+    "src/engine/engineeringCore/ReferenceCircuitModel.ts": {
+      "sha256": "3caefc64b12ac619bb9f8c43f05f1c0bef09bc7843ca0cf3ff018dd56904f80e",
+      "purpose": "Circuit canonical definition, ComponentType enum, physical diode parameters, canonical hashing"
+    },
+    "src/engine/engineeringCore/NodalCircuitSolver.ts": {
+      "sha256": "7dd2d3df8c9e9bc7fea8a7f207bf9f2e60b66c17f5b27133a5f85b79c2d17ac8",
+      "purpose": "Modified Nodal Analysis solver with damped Newton-Raphson nonlinear engine and SPICE pnjlim limiting"
+    },
+    "src/engine/engineeringCore/electrical.ts": {
+      "sha256": "60bb9d4f62a5df99d5adeeb329bc9a1222971eea059f15f805f6ab21debff139",
+      "purpose": "Shockley physical equations, analytical dynamic conductance, and independent numerical root-finder"
+    },
+    "src/engine/engineeringCore/tests/nonlinear_electrical_verification.test.ts": {
+      "sha256": "d71278e94dc8480d94462609ef87eea0b0158ac2b88c95c538d0dc6a03656865",
+      "purpose": "Full verification battery (NET-001 to NET-008) covering Gates E1 through E9"
+    },
+    "src/engine/engineeringCore/tests/verify_nodal_solver_phase4.ts": {
+      "sha256": "2e9fc96db698e815c73403afc90bd4c58b7629a094dff93539329211b6aeabc3",
+      "purpose": "Phase 4 linear benchmark battery (EEC-017 to EEC-026)"
+    }
+  },
+  "gatesSummary": {
+    "E1_LinearRegression": "PASS (All 24 existing linear assertions pass with zero degradation)",
+    "E2_GenuineNonlinearFormulation": "PASS (Shockley diode model, companion linearization, analytical Jacobian dg/dv)",
+    "E3_IndependentReferenceVerification": "PASS (Independent non-MNA oracle agrees within 2.17e-10 V and 3.62e-11 A)",
+    "E4_ConservationLaws": "PASS (KCL residual <= 1.30e-9 A, KVL <= 1e-9 V, Power balance <= 7.76e-10 W)",
+    "E5_FailureSafety": "PASS (SINGULAR_MATRIX, MISSING_REFERENCE_NODE, INVALID_INPUT, DIVERGENCE, NUMERICAL_OVERFLOW)",
+    "E6_RevisionIntegrity": "PASS (SHA-256 model hash mutation sensitivity and evidence invalidation verified)",
+    "E7_PlatformIntegration": "PASS (Canonical engineeringCore pathway in place; zero duplicate solvers or parallel state)",
+    "E8_ReproducibleEvidence": "PASS (Reproducible via standalone tsx execution and compile_applet build)",
+    "E9_RegressionPass": "PASS (43/43 total assertions pass cleanly across 6 test suites)"
+  }
+}

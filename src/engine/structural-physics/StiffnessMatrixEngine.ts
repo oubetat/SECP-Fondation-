@@ -44,11 +44,9 @@ export class StiffnessMatrixEngine {
     });
 
     return ElementFormulationEngine.formulateElementStiffness(
-      element.type,
-      nodeCoords,
-      material,
-      element.thickness ?? 0.01,
-      element.crossSectionArea ?? 0.01
+      element,
+      mesh.nodes.filter(n => element.nodeIds.includes(n.id)),
+      materials
     );
   }
 

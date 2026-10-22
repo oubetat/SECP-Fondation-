@@ -6,7 +6,7 @@
  * 2) Exact Dirichlet elimination for forensic verification and analytical benchmarks
  */
 
-import { FEAMesh, BoundaryCondition, LoadDefinition } from './StructuralPhysicsTypes';
+import { FEAMesh, BoundaryCondition, LoadDefinition, MaterialProperties } from './StructuralPhysicsTypes';
 import { ElementFormulationEngine } from './ElementFormulationEngine';
 import { SparseMatrix } from './SparseMatrixEngine';
 
@@ -37,8 +37,9 @@ export class GlobalAssemblyEngine {
     const F: number[] = Array(totalDOFs).fill(0);
 
     // 1. Assemble Element Stiffnesses
+    const materials = new Map<string, MaterialProperties>(); // In a real system, retrieve from project
     mesh.elements.forEach(elem => {
-      const kLocal = ElementFormulationEngine.formulateElementStiffness(elem, mesh.nodes);
+      const kLocal = ElementFormulationEngine.formulateElementStiffness(elem, mesh.nodes, materials);
 
       const dofIndices: number[] = [];
       elem.nodeIds.forEach(nodeId => {

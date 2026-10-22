@@ -25,6 +25,7 @@ export * from './pcb/PcbGeometryKernel';
 export * from './pcb/PcbDrcDfmVerifier';
 export * from './pcb/PcbSchematicConsistencyVerifier';
 export * from './pcb/PcbVerificationService';
+export * from './crossdomain/MultidomainPcbIntegrationEngine';
 
 export interface SchematicComponent {
   id: string;
