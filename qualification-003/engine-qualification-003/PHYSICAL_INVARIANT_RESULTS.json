@@ -1,0 +1,36 @@
+{
+  "task": "SECP-ENGINE-QUALIFICATION-003",
+  "invariants": [
+    {
+      "domain": "Electrical",
+      "invariant": "Kirchhoff Current Law (KCL)",
+      "residual": 0,
+      "status": "PASS"
+    },
+    {
+      "domain": "Thermal",
+      "invariant": "Conservation of Energy (Pin = Qout)",
+      "imbalancePercent": 0,
+      "status": "PASS"
+    },
+    {
+      "domain": "Structural",
+      "invariant": "Static Reaction Equilibrium (sum F = 0)",
+      "errorN": 0,
+      "status": "PASS"
+    },
+    {
+      "domain": "CFD",
+      "invariant": "Pre-Asymptotic Oscillatory Convergence (R < 0)",
+      "R": -0.29850746268656747,
+      "meshConverged": false,
+      "status": "PASS"
+    },
+    {
+      "domain": "Coupled",
+      "invariant": "1-Way Normal Force Interface Transfer",
+      "forceN": 80,
+      "status": "PASS"
+    }
+  ]
+}

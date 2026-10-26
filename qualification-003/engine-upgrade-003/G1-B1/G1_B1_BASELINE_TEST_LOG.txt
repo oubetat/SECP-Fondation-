@@ -1,0 +1,18 @@
+================================================================
+SECP-ENGINE-UPGRADE-003-G1-B1: BASELINE TEST LOG
+UTC Timestamp: 2026-10-24T07:49:32.682Z
+================================================================
+
+[TEST]: Production Engine Unit Tests (PATCH-068)
+Command: npx vitest run src/engine/cfd3d/solvers/adaptive/__tests__/
+Result: PASSED (9/9 tests)
+- Multi-Constraint Initial Selection: PASS
+- Growth/Shrink Enforcement: PASS
+- Step Doubling Error Estimation: PASS
+- Zero/Negative Timestep Handling: PASS
+- Infinite/NaN Error Rejection: PASS
+
+[TEST]: Stub Performance in Benchmark
+Command: npx tsx run_secp_engine_upgrade_001.ts (Gate G3)
+Result: PASSED (but with fixed 0.1s steps)
+Forensic Finding: Stub returns 0.1s regardless of flow physics.

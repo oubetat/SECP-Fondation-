@@ -1,0 +1,7 @@
+{
+  "gateId": "SECP-ENGINE-UPGRADE-003-G1-B7",
+  "verdict": "PASS_WITHIN_DECLARED_SCOPE",
+  "timestampUTC": "2026-10-24T07:55:55.967Z",
+  "summary": "PhysicalResidualMonitor implementation verified. Residual tracking and basic aerodynamic monitoring are now active.",
+  "monitorSha256": "3f834ce998139b6aac9e51382cf4dd76b683bc1554db7df4d1196163054c57be"
+}

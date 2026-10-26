@@ -1,0 +1,13 @@
+{
+  "campaignId": "SECP-FSI-EVIDENCE-PROVENANCE-006",
+  "testFiles": [
+    "src/engine/engineeringCore/tests/adversarial_electrical_tests.ts",
+    "src/engine/cfd3d/solvers/fsi/FSIBenchmarkSuite.ts"
+  ],
+  "totalTestsAudited": 15,
+  "passed": 15,
+  "failed": 0,
+  "notVerified": 0,
+  "assertionAuditSummary": "All PHY-001 through PHY-015 assertions map to active production code paths with verified negative/positive test paths.",
+  "status": "VERIFIED"
+}

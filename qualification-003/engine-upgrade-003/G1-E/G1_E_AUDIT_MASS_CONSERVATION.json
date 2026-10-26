@@ -1,0 +1,14 @@
+{
+  "auditArea": "AUDIT B — MASS CONSERVATION",
+  "status": "PASSED",
+  "recordedInletMassFlow": 0.049000000000000016,
+  "recordedOutletMassFlow": 0.04885739923570018,
+  "recalculatedImbalancePercent": 0.2910219679588537,
+  "independentManualImbalancePercent": 0.2910219679588537,
+  "denominatorRule": "max(inletMassFlow, 1e-12)",
+  "signConvention": "Inward flux positive for inlet, outward flux positive for outlet",
+  "units": "kg/s",
+  "declaredAcceptanceThresholdPercent": 1,
+  "thresholdSatisfied": true,
+  "independentCalculationVerified": true
+}

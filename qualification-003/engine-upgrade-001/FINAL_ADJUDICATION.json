@@ -1,0 +1,31 @@
+{
+  "campaignId": "SECP-ENGINE-UPGRADE-001",
+  "verdict": "PASS_WITHIN_DECLARED_SCOPE",
+  "timestampUTC": "2026-10-24T07:12:55.975Z",
+  "executionDurationMs": 1033,
+  "processExitCode": 0,
+  "commandLine": "npx tsx run_secp_engine_upgrade_001.ts",
+  "gatesMatrix": {
+    "G0_Baseline": "PASS",
+    "G1_ForensicIntegrity": "PASS",
+    "G2_Structural": "PASS",
+    "G3_FSI": "PASS",
+    "G4_Electrical": "PASS",
+    "G5_Thermal": "PASS",
+    "G6_Multidomain": "PASS",
+    "G7_Regression": "PASS",
+    "G8_Adversarial": "PASS",
+    "G9_EvidenceIntegrity": "PASS",
+    "G10_FinalAdjudication": "PASS"
+  },
+  "summaryMetrics": {
+    "isolatedDefectsFixed": 4,
+    "manifestFilesVerified": 21,
+    "structuralKeSymmetryMaxError": 0,
+    "fsiFineMeshContinuumErrorPercent": 0.5933471488417175,
+    "electricalWheatstoneImbalanceVolts": 0,
+    "thermalEnergyImbalanceRatio": 0,
+    "electrothermalPicardIterations": 11
+  },
+  "manifestSha256": "8d6f7c669eee41827b56d3452d3dc6e62c80d2d76fe8ea19bf5241f22dcb2a36"
+}

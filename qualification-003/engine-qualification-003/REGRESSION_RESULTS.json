@@ -1,0 +1,209 @@
+{
+  "task": "SECP-ENGINE-QUALIFICATION-003",
+  "totalRequired": 18,
+  "totalExecuted": 18,
+  "totalPassed": 18,
+  "totalFailed": 0,
+  "totalSkipped": 0,
+  "totalNotVerified": 0,
+  "records": [
+    {
+      "gateId": "GATE-003-01",
+      "domain": "BASELINE",
+      "name": "Prior Qualification Final Baseline Integrity Audit",
+      "command": "npx tsx qualification-003/engine-qualification-003/run_engine_qualification_003.ts",
+      "exitCode": 0,
+      "expectedResult": "All 7 SECP-002-FINAL closure artifacts exist with PASS_WITHIN_DECLARED_SCOPE verdict",
+      "actualResult": "Verified 7 prior final artifacts, Integrity=VALID",
+      "verdict": "PASS",
+      "discrepancyPercent": 0
+    },
+    {
+      "gateId": "GATE-003-02",
+      "domain": "BASELINE",
+      "name": "Critical Core Source Code SHA-256 Manifest Seal",
+      "command": "npx tsx qualification-003/engine-qualification-003/run_engine_qualification_003.ts",
+      "exitCode": 0,
+      "expectedResult": "Verified SHA-256 hashes for 14 production engine source files",
+      "actualResult": "14 files hashed, FEMCore=634c0be341ee...",
+      "verdict": "PASS",
+      "discrepancyPercent": 0
+    },
+    {
+      "gateId": "GATE-003-03",
+      "domain": "CONTRACTS",
+      "name": "Multi-Domain Interface & Unit Schema Audit",
+      "command": "npx tsx qualification-003/engine-qualification-003/run_engine_qualification_003.ts",
+      "exitCode": 0,
+      "expectedResult": "9 Domain contracts audited, zero dimensional unit mismatch, zero silent fallbacks",
+      "actualResult": "Audited 9 domain contracts, Units=SI_STRICT, Fallback=DENIED",
+      "verdict": "PASS",
+      "discrepancyPercent": 0
+    },
+    {
+      "gateId": "GATE-003-04",
+      "domain": "PROPAGATION",
+      "name": "Chain A: Electrothermal Iterative Feedback Loop (Picard Co-Simulation)",
+      "command": "npx tsx qualification-003/engine-qualification-003/run_engine_qualification_003.ts",
+      "exitCode": 0,
+      "expectedResult": "CONVERGED, EnergyConserved=true, Tj > 25°C, R > 10 Ohms",
+      "actualResult": "Status=CONVERGED, Iterations=11, Tj=213.89°C, R=17.42 Ohm, EnergyImbalance=0.0000%",
+      "verdict": "PASS",
+      "discrepancyPercent": 0
+    },
+    {
+      "gateId": "GATE-003-05",
+      "domain": "PROPAGATION",
+      "name": "Chain B: Thermal-Structural Expansion & Constrained Reaction Stress",
+      "command": "npx tsx qualification-003/engine-qualification-003/run_engine_qualification_003.ts",
+      "exitCode": 0,
+      "expectedResult": "Static equilibrium sum F=0, Reaction matches analytical stress R=sigma*A",
+      "actualResult": "deltaT=188.89K, sigma=-453.33MPa, u2=2.2667mm, R1=-45.33kN, eqError=0.00e+0",
+      "verdict": "PASS",
+      "discrepancyPercent": 0.001999999999977658
+    },
+    {
+      "gateId": "GATE-003-06",
+      "domain": "PROPAGATION",
+      "name": "Chain C: CFD Boundary Pressure to Structural Interface Load Transfer",
+      "command": "npx tsx qualification-003/engine-qualification-003/run_engine_qualification_003.ts",
+      "exitCode": 0,
+      "expectedResult": "Fn = p * A = 80.0 N transferred to structural FEA with exact reaction equilibrium",
+      "actualResult": "p=8000Pa, Fn=80N, Structural Reaction R_x=-80N, eqError=0.00e+0",
+      "verdict": "PASS",
+      "discrepancyPercent": 0
+    },
+    {
+      "gateId": "GATE-003-07",
+      "domain": "PROPAGATION",
+      "name": "Chain D: Partitioned 1-Way FSI Interface Normal Force Mapping",
+      "command": "npx tsx qualification-003/engine-qualification-003/run_engine_qualification_003.ts",
+      "exitCode": 0,
+      "expectedResult": "Partitioned force transfer verified; 2-Way fluid mesh recomputation explicitly QUARANTINED",
+      "actualResult": "Fn=80N mapped, 2-Way Deformed Fluid Mesh Recomputation Status=QUARANTINED",
+      "verdict": "PASS",
+      "discrepancyPercent": 0
+    },
+    {
+      "gateId": "GATE-003-08",
+      "domain": "INVALIDATION",
+      "name": "Upstream Electrical Voltage Mutation (24V -> 36V) Stale Evidence Rejection",
+      "command": "npx tsx qualification-003/engine-qualification-003/run_engine_qualification_003.ts",
+      "exitCode": 0,
+      "expectedResult": "EvidenceIntegrityChecker returns verdict=INVALID, payloadHashMatch=false for REV-A record with REV-B state",
+      "actualResult": "Stale check verdict=INVALID, payloadHashMatch=false, Rejection=PROVEN",
+      "verdict": "PASS",
+      "discrepancyPercent": 0
+    },
+    {
+      "gateId": "GATE-003-09",
+      "domain": "INVALIDATION",
+      "name": "Upstream Thermal Conductivity Mutation (k=385 -> 200) Stale Evidence Rejection",
+      "command": "npx tsx qualification-003/engine-qualification-003/run_engine_qualification_003.ts",
+      "exitCode": 0,
+      "expectedResult": "EvidenceIntegrityChecker returns verdict=INVALID for REV-A record with REV-C state",
+      "actualResult": "Stale check verdict=INVALID, Rejection=PROVEN",
+      "verdict": "PASS",
+      "discrepancyPercent": 0
+    },
+    {
+      "gateId": "GATE-003-10",
+      "domain": "INVALIDATION",
+      "name": "Upstream Structural Boundary Load Mutation Stale Evidence Rejection",
+      "command": "npx tsx qualification-003/engine-qualification-003/run_engine_qualification_003.ts",
+      "exitCode": 0,
+      "expectedResult": "EvidenceIntegrityChecker returns verdict=INVALID for REV-A record with REV-D state",
+      "actualResult": "Stale check verdict=INVALID, Rejection=PROVEN",
+      "verdict": "PASS",
+      "discrepancyPercent": 0
+    },
+    {
+      "gateId": "GATE-003-11",
+      "domain": "INVALIDATION",
+      "name": "Re-computation & Evidence Persistence for Mutated Revision (REV-B)",
+      "command": "npx tsx qualification-003/engine-qualification-003/run_engine_qualification_003.ts",
+      "exitCode": 0,
+      "expectedResult": "Mutated state re-solved and registered in Evidence Ledger with verdict=VALID",
+      "actualResult": "REV-B EvidenceId=EVID-21924A5B..., verdict=VALID",
+      "verdict": "PASS",
+      "discrepancyPercent": 0
+    },
+    {
+      "gateId": "GATE-003-12",
+      "domain": "FAIL_CLOSED",
+      "name": "Invalid Electrical Input Rejection (Negative Resistance R = -10 Ohm)",
+      "command": "npx tsx qualification-003/engine-qualification-003/run_engine_qualification_003.ts",
+      "exitCode": 0,
+      "expectedResult": "Solver fails closed with exception or INVALID_INPUT/SINGULAR_MATRIX status",
+      "actualResult": "Negative resistance handled, status=FAIL_CLOSED_PROTECTED",
+      "verdict": "PASS",
+      "discrepancyPercent": 0
+    },
+    {
+      "gateId": "GATE-003-13",
+      "domain": "FAIL_CLOSED",
+      "name": "Invalid Structural Input Rejection (Negative Young's Modulus E = -200 GPa)",
+      "command": "npx tsx qualification-003/engine-qualification-003/run_engine_qualification_003.ts",
+      "exitCode": 0,
+      "expectedResult": "FEMCore fails closed with exception or failure verdict",
+      "actualResult": "Negative Young's modulus handled, status=FAIL_CLOSED_PROTECTED",
+      "verdict": "PASS",
+      "discrepancyPercent": 0
+    },
+    {
+      "gateId": "GATE-003-14",
+      "domain": "FAIL_CLOSED",
+      "name": "Floating Electrical Circuit Rejection (Missing Ground Reference Node)",
+      "command": "npx tsx qualification-003/engine-qualification-003/run_engine_qualification_003.ts",
+      "exitCode": 0,
+      "expectedResult": "NodalCircuitSolver fails closed with MISSING_REFERENCE_NODE or exception",
+      "actualResult": "Floating node handled, status=FAIL_CLOSED_PROTECTED",
+      "verdict": "PASS",
+      "discrepancyPercent": 0
+    },
+    {
+      "gateId": "GATE-003-15",
+      "domain": "FAIL_CLOSED",
+      "name": "Iterative Electrothermal Non-Convergence & Thermal Runaway Guard",
+      "command": "npx tsx qualification-003/engine-qualification-003/run_engine_qualification_003.ts",
+      "exitCode": 0,
+      "expectedResult": "ElectrothermalSolver catches runaway divergence and returns NON_CONVERGED or THERMAL_RUNAWAY",
+      "actualResult": "Runaway caught, Status=NON_CONVERGED, Success=false",
+      "verdict": "PASS",
+      "discrepancyPercent": 0
+    },
+    {
+      "gateId": "GATE-003-16",
+      "domain": "INVARIANTS",
+      "name": "Electrical Kirchhoff Current Law (KCL) & Power Conservation",
+      "command": "npx tsx qualification-003/engine-qualification-003/run_engine_qualification_003.ts",
+      "exitCode": 0,
+      "expectedResult": "KCL nodal residual = 0.000, Total Electrical Power P = V * I = 24.0 W",
+      "actualResult": "v1=12V, v2=6V, i_R1=1A, i_R2=1A, kclResidual=0.00e+0",
+      "verdict": "PASS",
+      "discrepancyPercent": 0
+    },
+    {
+      "gateId": "GATE-003-17",
+      "domain": "INVARIANTS",
+      "name": "Thermal Substrate Conservation of Energy (Sum Pin = Sum Qout)",
+      "command": "npx tsx qualification-003/engine-qualification-003/run_engine_qualification_003.ts",
+      "exitCode": 0,
+      "expectedResult": "Heat flux output matches electrical dissipation within <= 0.001% imbalance",
+      "actualResult": "Energy imbalance=0.0000%, EnergyConserved=true",
+      "verdict": "PASS",
+      "discrepancyPercent": 0
+    },
+    {
+      "gateId": "GATE-003-18",
+      "domain": "INVARIANTS",
+      "name": "CFD Pre-Asymptotic Oscillatory Convergence (R < 0) Diagnostic Seal",
+      "command": "npx tsx qualification-003/engine-qualification-003/run_engine_qualification_003.ts",
+      "exitCode": 0,
+      "expectedResult": "R=-0.2985 < 0 detected, Monotonic GCI claims strictly REJECTED (meshConverged=false)",
+      "actualResult": "R=-0.2985, meshConverged=false, Classification=OSCILLATORY_CONVERGENCE",
+      "verdict": "PASS",
+      "discrepancyPercent": 29.850746268656746
+    }
+  ]
+}

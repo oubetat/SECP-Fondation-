@@ -1,0 +1,21 @@
+{
+  "campaign": "SECP-FSI-INTEGRATED-PHYSICS-QUALIFICATION-001",
+  "classification": "P0 — Numerical Correctness and Physics Integrity",
+  "verdict": "QUALIFIED_WITHIN_DECLARED_SCOPE",
+  "evidenceArtifacts": [
+    "qualification-manifest.json",
+    "model-definition.json",
+    "independent-reference-results.json",
+    "structural-benchmark-results.json",
+    "fluid-benchmark-results.json",
+    "interface-transfer-audit.json",
+    "dynamic-mesh-integrity.json",
+    "coupling-convergence.json",
+    "adversarial-test-results.json",
+    "regression-test-results.json",
+    "defect-register.json",
+    "source-hashes.json",
+    "closure-verdict.json"
+  ],
+  "timestamp": "2026-10-23T07:42:21.566Z"
+}

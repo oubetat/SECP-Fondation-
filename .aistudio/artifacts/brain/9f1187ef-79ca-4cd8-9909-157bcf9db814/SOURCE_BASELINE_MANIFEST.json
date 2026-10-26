@@ -1,0 +1,20 @@
+{
+  "task": "SECP-ENGINE-QUALIFICATION-003",
+  "timestamp": "2026-10-25T08:15:11.571Z",
+  "sourceHashes": {
+    "src/engine/engineeringCore/NodalCircuitSolver.ts": "cef7812a59ce4c227e46c3f81267f2cd65cfa600711102378831a47267063dd0",
+    "src/engine/engineeringCore/SpatialThermalSolver.ts": "ef09eca6526c2a22ff6d9d84744c3715931e01ea9c5df50ab1e3e357bdaa81d1",
+    "src/engine/engineeringCore/PcbThermalModel.ts": "205107c0943b7cd8361295842db5cbdd8c4bbfe107a671359fe3205e62e15509",
+    "src/engine/fem/core/FEMCore.ts": "634c0be341eec5a4265a465dc5ecb0db6c51d71d5389255978b0e6b0862e678e",
+    "src/engine/fem/core/Bar1DFormulation.ts": "dd8940c46267e6b638a7cb778b545e947b8c5705888f86090c078c13c22618e3",
+    "src/engine/engineeringCore/ElectrothermalSolver.ts": "a6145e82614cd8f0f3e3404f5cef9f5e2cb5fd9a57a5dc13490f04ca570cef14",
+    "src/engine/engineeringCore/ElectrothermalCouplingContract.ts": "d172f548473aaa4e46180ca6d8e1aea99a259593b6d7e3f7c23e28f5628e5117",
+    "src/engine/cfd3d/adaptive/AdaptiveIndustrialCFDEngine.ts": "27f58f8fa8d6849df24de0b078447b7f0e0d33fe127c0a210fa38d6dd13a5651",
+    "src/engine/cfd3d/coupling/TwoWayFSICouplingEngine.ts": "05122916ea7743bc6f94f385351b3280e7afa3d99fcd6ba38d218be6d519615b",
+    "src/engine/evidence/ledger/EngineeringEvidenceLedger.ts": "43ea18ae555096451b6cb0ff75c246a65a1eb5fa522f5663d20011d09d63b030",
+    "src/engine/evidence/ledger/EvidenceIntegrityChecker.ts": "55ba35d20612144c7c194e16ae3d0eb2dc5939b43edf10cb92bb8ffb5cc8784e",
+    "src/engine/execution/CoreExecutionAuthority.ts": "a1b5a621758e87b1d9ac1970947fc2244826e0fe83d96840fa2afea1b8c6e156",
+    "src/engine/workbench/InvalidationPipelineEngine.ts": "24b34d7f1ce7090c7706ad87b0cb06cf55eca99b92f6a1b9593b5a514946aeac",
+    "src/engine/intent/DesignIntentGraph.ts": "ac6d284f7786d955f6fa8fcb8834097276ae5619045d72d71a27ff030f6213f2"
+  }
+}

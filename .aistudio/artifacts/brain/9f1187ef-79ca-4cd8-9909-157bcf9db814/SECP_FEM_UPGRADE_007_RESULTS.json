@@ -1,0 +1,177 @@
+{
+  "campaignId": "SECP-FEM-UPGRADE-007",
+  "title": "Structural Dynamics & Modal Analysis Engine Expansion",
+  "status": "QUALIFIED_WITHIN_DECLARED_SCOPE",
+  "summary": {
+    "totalTests": 10,
+    "passedTests": 10,
+    "failedTests": 0
+  },
+  "sourceHashes": {
+    "src/engine/fem/dynamics/MassMatrixEngine.ts": "b0a65640e8a7127b42e5c8e7f47a8e243da8876a8abc12d6d518beeb9e4fe301",
+    "src/engine/fem/dynamics/StructuralModalSolver.ts": "5235934568b34fce2d8f9e01a85b1a845c04a69adc9d91f3a6fe18a3c9cd5df8",
+    "src/engine/fem/dynamics/ModalVerificationEngine.ts": "4f2f15053809afad5f42f18d19bbc0b26c8d2d2244b1c3da5845e1b766f78d4d"
+  },
+  "testRecords": [
+    {
+      "testId": "MODAL-001",
+      "status": "PASS",
+      "testDescription": "BAR_1D mass conservation (total mass = rho * A * L)",
+      "formulation": "BAR_1D",
+      "referenceValue": 0.0007850000000000001,
+      "computedValue": 0.0007850000000000001,
+      "absoluteError": 0,
+      "relativeError": 0,
+      "tolerance": 1e-8,
+      "units": "tonne",
+      "evidence": {
+        "formula": "sum(M_diag) = rho * A * L",
+        "details": "Expected = 7.8500e-4, Computed = 7.8500e-4"
+      }
+    },
+    {
+      "testId": "MODAL-002",
+      "status": "PASS",
+      "testDescription": "Axial Bar fundamental natural frequency f_1 vs exact analytical formula",
+      "formulation": "BAR_1D",
+      "referenceValue": 1293.0485382587128,
+      "computedValue": 1295.1266556823616,
+      "absoluteError": 2.0781174236487914,
+      "relativeError": 0.0016071457197169826,
+      "tolerance": 0.05,
+      "units": "Hz",
+      "evidence": {
+        "formula": "f_1 = (1 / 4L) * sqrt(E / rho)",
+        "details": "Analytical = 1293.05 Hz, Numerical = 1295.13 Hz (Err = 0.16%)"
+      }
+    },
+    {
+      "testId": "MODAL-003",
+      "status": "PASS",
+      "testDescription": "Axial Bar monotonic mesh convergence (Error_16 < Error_4)",
+      "formulation": "BAR_1D",
+      "referenceValue": 8.323745355875644,
+      "computedValue": 0.5193445009692823,
+      "absoluteError": 7.804400854906362,
+      "relativeError": 0.06239312698371803,
+      "tolerance": 1,
+      "units": "Hz",
+      "evidence": {
+        "formula": "Err(N=16) < Err(N=4)",
+        "details": "Err(N=4) = 8.3237 Hz, Err(N=16) = 0.5193 Hz"
+      }
+    },
+    {
+      "testId": "MODAL-004",
+      "status": "PASS",
+      "testDescription": "Euler-Bernoulli cantilever beam fundamental bending frequency f_1 vs exact analytical formula",
+      "formulation": "FRAME_2D",
+      "referenceValue": 8.35516366106841,
+      "computedValue": 8.355181677192906,
+      "absoluteError": 0.000018016124496256225,
+      "relativeError": 0.0000021562862472944576,
+      "tolerance": 0.01,
+      "units": "Hz",
+      "evidence": {
+        "formula": "f_1 = (3.516015 / 2*pi*L^2) * sqrt(E*I / rho*A)",
+        "details": "Analytical = 8.3552 Hz, Numerical = 8.3552 Hz (Err = 0.000%)"
+      }
+    },
+    {
+      "testId": "MODAL-005",
+      "status": "PASS",
+      "testDescription": "Mode shapes mass orthogonality (Phi^T * M * Phi = I, max off-diag error <= 1e-5)",
+      "formulation": "FRAME_2D",
+      "referenceValue": 0,
+      "computedValue": 6.38378239159465e-16,
+      "absoluteError": 6.38378239159465e-16,
+      "relativeError": 6.38378239159465e-16,
+      "tolerance": 0.00001,
+      "units": "dimensionless",
+      "evidence": {
+        "formula": "max|Phi_i^T * M * Phi_j - delta_ij| <= 1e-5",
+        "details": "Max mass orth err = 6.3838e-16, Max stiff orth err = 5.9605e-7"
+      }
+    },
+    {
+      "testId": "MODAL-006",
+      "status": "PASS",
+      "testDescription": "Physical Stiffness Scaling Law (4*K => 2*f)",
+      "formulation": "FRAME_2D",
+      "referenceValue": 2,
+      "computedValue": 2,
+      "absoluteError": 0,
+      "relativeError": 0,
+      "tolerance": 0.0001,
+      "units": "ratio",
+      "evidence": {
+        "formula": "f(4*E) / f(E) = sqrt(4) = 2.0",
+        "details": "f(E) = 8.36 Hz, f(4E) = 16.71 Hz, Ratio = 2.000000"
+      }
+    },
+    {
+      "testId": "MODAL-007",
+      "status": "PASS",
+      "testDescription": "Physical Mass Scaling Law (4*M => f / 2)",
+      "formulation": "FRAME_2D",
+      "referenceValue": 0.5,
+      "computedValue": 0.5,
+      "absoluteError": 0,
+      "relativeError": 0,
+      "tolerance": 0.0001,
+      "units": "ratio",
+      "evidence": {
+        "formula": "f(4*rho) / f(rho) = 1 / sqrt(4) = 0.5",
+        "details": "f(rho) = 8.36 Hz, f(4*rho) = 4.18 Hz, Ratio = 0.500000"
+      }
+    },
+    {
+      "testId": "MODAL-008",
+      "status": "PASS",
+      "testDescription": "Unconstrained 2D frame rigid body modes identification (3 rigid body modes: Ux, Uy, Rz)",
+      "formulation": "FRAME_2D",
+      "referenceValue": 3,
+      "computedValue": 3,
+      "absoluteError": 0,
+      "relativeError": 0,
+      "tolerance": 0,
+      "units": "count",
+      "evidence": {
+        "formula": "N_rigid = 3 for 2D unconstrained frame",
+        "details": "Identified 3 rigid body modes with frequency f < 1e-3 Hz"
+      }
+    },
+    {
+      "testId": "MODAL-009",
+      "status": "PASS",
+      "testDescription": "Zero/negative density material rejection guard [INVALID_DENSITY]",
+      "formulation": "BAR_1D",
+      "referenceValue": 1,
+      "computedValue": 1,
+      "absoluteError": 0,
+      "relativeError": 0,
+      "tolerance": 0,
+      "units": "boolean",
+      "evidence": {
+        "formula": "rho <= 0 => throw [INVALID_DENSITY]",
+        "details": "Guard caught: true"
+      }
+    },
+    {
+      "testId": "MODAL-010",
+      "status": "PASS",
+      "testDescription": "Lumped vs Consistent mass matrix frequency bounds (f_consistent >= f_lumped)",
+      "formulation": "FRAME_2D",
+      "referenceValue": 1,
+      "computedValue": 1,
+      "absoluteError": 0,
+      "relativeError": 0,
+      "tolerance": 0,
+      "units": "boolean",
+      "evidence": {
+        "formula": "f_consistent >= f_exact >= f_lumped",
+        "details": "f_consistent = 8.36 Hz, f_lumped = 8.09 Hz"
+      }
+    }
+  ]
+}

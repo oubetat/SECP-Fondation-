@@ -14,7 +14,12 @@ import {
 import { Cpu, Layers, Box, CheckCircle2, AlertTriangle, RefreshCw, Zap, Sliders, ArrowRight, ShieldCheck, Award, Network, Flame, HardDrive } from 'lucide-react';
 import { DronePcbPanel } from './drone/DronePcbPanel';
 import { MultidomainSynchronousWorkbench } from './MultidomainSynchronousWorkbench';
+import { CadViewport3D } from './CadViewport3D';
 import { getTruthStatusDescriptor, TruthOrigin } from '../engine/context/EngineeringContext';
+import { PcbThermalBridge } from '../engine/pcb/PcbThermalBridge';
+import { PcbSignalIntegrityEngine } from '../engine/pcb/PcbSignalIntegrityEngine';
+import { SpatialThermalFieldResult } from '../engine/engineeringCore/SpatialThermalSolver';
+import { SignalIntegrityResult } from '../engine/pcb/PcbSignalIntegrityEngine';
 
 export interface PcbWorkbenchPanelProps {
   canonicalDocument?: any;
@@ -36,6 +41,10 @@ export const PcbWorkbenchPanel: React.FC<PcbWorkbenchPanelProps> = ({
   const [activeTab, setActiveTab] = useState<'SCHEMATIC' | 'PCB_2D' | 'MCAD_3D' | 'GATE_326' | 'MULTIDOMAIN_PHASE4'>('PCB_2D');
   const [gateReport, setGateReport] = useState<any | null>(null);
   const [multidomainReport, setMultidomainReport] = useState<MultidomainPcbGateReport | null>(null);
+  const [thermalResults, setThermalResults] = useState<SpatialThermalFieldResult | null>(null);
+  const [siResults, setSiResults] = useState<Record<string, SignalIntegrityResult>>({});
+  const [showHeatmap, setShowHeatmap] = useState<boolean>(false);
+  const [isSolvingThermal, setIsSolvingThermal] = useState<boolean>(false);
 
   const handleRunGate = () => {
     const report = PcbEngine.runHardAcceptanceGate();
@@ -46,6 +55,42 @@ export const PcbWorkbenchPanel: React.FC<PcbWorkbenchPanelProps> = ({
     const assembly = MultidomainPcbIntegrationEngine.createReferenceBenchmarkAssembly();
     const report = MultidomainPcbHardAcceptanceGate.runGate(assembly);
     setMultidomainReport(report);
+  };
+
+  const handleRunThermalAnalysis = async () => {
+    if (!pcb) return;
+    setIsSolvingThermal(true);
+    // Mock power dissipations for demonstration: MCU (2W), LDO (0.5W), Connector (0.1W)
+    const powerMap: Record<string, number> = {
+      'U1': 2.5,
+      'R1': 0.05,
+      'C1': 0.01,
+      'J1': 0.2
+    };
+    
+    // Simulate solving delay
+    await new Promise(resolve => setTimeout(resolve, 800));
+    
+    const canonical = PcbEngine.getCanonicalModel(pcb.boardWidthMm, pcb.boardHeightMm, pcb.thicknessMm);
+    const results = PcbThermalBridge.solvePcb(canonical, powerMap, 25.0);
+    setThermalResults(results);
+    setShowHeatmap(true);
+    setIsSolvingThermal(false);
+  };
+
+  const handleRunSIAnalysis = () => {
+    if (!pcb) return;
+    const results: Record<string, SignalIntegrityResult> = {};
+    pcb.traces.forEach(trace => {
+      const si = PcbSignalIntegrityEngine.calculateMicrostrip({
+        traceWidthMm: trace.widthMm,
+        traceThicknessUm: 35, // standard 1oz copper
+        dielectricHeightMm: 0.2, // core height
+        relativePermittivity: 4.3 // FR4
+      });
+      results[trace.id] = si;
+    });
+    setSiResults(results);
   };
 
   useEffect(() => {
@@ -160,7 +205,29 @@ export const PcbWorkbenchPanel: React.FC<PcbWorkbenchPanelProps> = ({
       ctx.textAlign = 'center';
       ctx.fillText(comp.refDes, cx, cy + 3);
     });
-  }, [activeTab, pcb]);
+
+    // Draw Heatmap Overlay if active
+    if (showHeatmap && thermalResults) {
+      ctx.globalAlpha = 0.5;
+      const resX = thermalResults.gridX;
+      const resY = thermalResults.gridY;
+      const cellW = (pcb.boardWidthMm * scale) / resX;
+      const cellH = (pcb.boardHeightMm * scale) / resY;
+
+      for (let y = 0; y < resY; y++) {
+        for (let x = 0; x < resX; x++) {
+          const temp = thermalResults.temperatureMatrix[y][x];
+          const norm = Math.max(0, Math.min(1, (temp - 25) / (thermalResults.maxTemperatureC - 25 || 1)));
+          
+          // Color mapping: Blue (25C) -> Red (Max)
+          const hue = (1 - norm) * 240;
+          ctx.fillStyle = `hsl(${hue}, 100%, 50%)`;
+          ctx.fillRect(offsetX + x * cellW, offsetY + y * cellH, cellW + 0.5, cellH + 0.5);
+        }
+      }
+      ctx.globalAlpha = 1.0;
+    }
+  }, [activeTab, pcb, showHeatmap, thermalResults]);
 
   const handleRegeneratePcb = () => {
     const w = boardWidth ?? 100;
@@ -467,7 +534,6 @@ export const PcbWorkbenchPanel: React.FC<PcbWorkbenchPanelProps> = ({
             </div>
           </div>
 
-          {/* 2D PCB Graphic Canvas */}
           <div className="lg:col-span-8 bg-slate-950 border border-slate-800 rounded-lg p-4 space-y-3">
             <div className="text-[11px] font-mono text-slate-400 flex justify-between items-center border-b border-slate-800 pb-2">
               <span>2D PCB Copper Routing & Silkscreen Layer</span>
@@ -479,6 +545,78 @@ export const PcbWorkbenchPanel: React.FC<PcbWorkbenchPanelProps> = ({
               height={260}
               className="w-full h-64 bg-slate-900 rounded border border-slate-800"
             />
+            
+            {/* High-Fidelity Simulation Dashboard */}
+            <div className="grid grid-cols-2 gap-4 mt-2">
+              <div className="p-3 bg-slate-900 border border-slate-800 rounded-xl space-y-3">
+                <div className="flex items-center justify-between">
+                  <h4 className="text-[11px] font-bold text-amber-400 uppercase tracking-tight flex items-center gap-1.5">
+                    <Flame className="w-3.5 h-3.5" />
+                    Spatial Thermal Field
+                  </h4>
+                  <button
+                    onClick={handleRunThermalAnalysis}
+                    disabled={isSolvingThermal}
+                    className="px-2 py-0.5 bg-slate-800 hover:bg-slate-700 text-[10px] font-bold rounded border border-slate-700 transition"
+                  >
+                    {isSolvingThermal ? 'Solving...' : 'Execute Solver'}
+                  </button>
+                </div>
+                {thermalResults ? (
+                  <div className="flex items-center justify-between text-[10px] font-mono">
+                    <div className="space-y-1">
+                      <span className="text-slate-500 block uppercase">Max Junction</span>
+                      <span className="text-rose-400 font-bold">{thermalResults.maxTemperatureC.toFixed(1)} °C</span>
+                    </div>
+                    <div className="space-y-1">
+                      <span className="text-slate-500 block uppercase">Board Average</span>
+                      <span className="text-emerald-400 font-bold">{thermalResults.averageTemperatureC.toFixed(1)} °C</span>
+                    </div>
+                    <label className="flex items-center gap-1.5 cursor-pointer">
+                      <input 
+                        type="checkbox" 
+                        checked={showHeatmap} 
+                        onChange={() => setShowHeatmap(!showHeatmap)} 
+                        className="w-3 h-3 accent-amber-500"
+                      />
+                      <span className="text-slate-300">Overlay Map</span>
+                    </label>
+                  </div>
+                ) : (
+                  <p className="text-[10px] text-slate-500 italic">No thermal data. Run solver to evaluate heat sinks.</p>
+                )}
+              </div>
+
+              <div className="p-3 bg-slate-900 border border-slate-800 rounded-xl space-y-3">
+                <div className="flex items-center justify-between">
+                  <h4 className="text-[11px] font-bold text-cyan-400 uppercase tracking-tight flex items-center gap-1.5">
+                    <Zap className="w-3.5 h-3.5" />
+                    Signal Integrity (SI)
+                  </h4>
+                  <button
+                    onClick={handleRunSIAnalysis}
+                    className="px-2 py-0.5 bg-slate-800 hover:bg-slate-700 text-[10px] font-bold rounded border border-slate-700 transition"
+                  >
+                    Check Impedance
+                  </button>
+                </div>
+                {Object.keys(siResults).length > 0 ? (
+                  <div className="max-h-20 overflow-y-auto space-y-1.5 pr-1">
+                    {Object.entries(siResults).map(([id, res]) => (
+                      <div key={id} className="flex justify-between items-center text-[9px] font-mono p-1 bg-slate-950 rounded border border-slate-800">
+                        <span className="text-slate-400">Net: {pcb.traces.find(t => t.id === id)?.netName}</span>
+                        <div className="flex gap-2">
+                          <span className={res.isCompliant50Ohms ? 'text-emerald-400' : 'text-amber-400'}>{res.impedanceOhms} Ω</span>
+                          <span className="text-slate-500">({res.propagationDelayPsPerMm} ps/mm)</span>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <p className="text-[10px] text-slate-500 italic">Characteristic impedance not verified. Run SI check.</p>
+                )}
+              </div>
+            </div>
           </div>
         </div>
       )}
@@ -549,25 +687,52 @@ export const PcbWorkbenchPanel: React.FC<PcbWorkbenchPanelProps> = ({
               </div>
             </div>
 
-            {/* Assembly Structural Diagram */}
-            <div className="p-6 bg-slate-900 border border-slate-800 rounded-lg text-center font-mono text-xs space-y-4">
-              <div className="text-slate-400">Complete Device CAD Mechanical Assembly Hierarchy:</div>
-              <div className="flex flex-wrap items-center justify-center gap-3">
-                <span className="p-2.5 bg-blue-950 border border-blue-800 text-blue-300 rounded font-bold">
-                  Lower Case Enclosure
-                </span>
-                <ArrowRight className="w-4 h-4 text-slate-500" />
-                <span className="p-2.5 bg-amber-950 border border-amber-800 text-amber-300 rounded font-bold">
-                  M3 Standoff Pillars (x4)
-                </span>
-                <ArrowRight className="w-4 h-4 text-slate-500" />
-                <span className="p-2.5 bg-emerald-950 border border-emerald-800 text-emerald-300 rounded font-bold">
-                  3D PCB Substrate & Components
-                </span>
-                <ArrowRight className="w-4 h-4 text-slate-500" />
-                <span className="p-2.5 bg-purple-950 border border-purple-800 text-purple-300 rounded font-bold">
-                  Upper Snap Lid
-                </span>
+            {/* Assembly Structural Diagram & 3D Viewport */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
+              <div className="bg-slate-900 border border-slate-800 rounded-lg overflow-hidden h-80 relative">
+                <CadViewport3D 
+                  activeProjectType="CUSTOM_SOLID"
+                  activeSolid={{
+                    id: 'PCB_SUBSTRATE',
+                    name: 'PCB Substrate & Enclosure',
+                    type: 'BOX',
+                    dimensions: { dx: pcb.boardWidthMm / 1000, dy: pcb.boardHeightMm / 1000, dz: pcb.thicknessMm / 1000 },
+                    colorHex: '#064e3b'
+                  }}
+                  simulationResults={thermalResults ? {
+                    type: 'THERMAL',
+                    values: thermalResults.temperatureMatrix.flat(),
+                    minValue: 25,
+                    maxValue: thermalResults.maxTemperatureC,
+                    unit: '°C'
+                  } : null}
+                />
+                {!thermalResults && (
+                  <div className="absolute top-3 left-3 bg-slate-900/80 px-2 py-1 rounded text-[10px] text-slate-400 font-bold border border-slate-800">
+                    MECHANICAL_INSPECTION_MODE
+                  </div>
+                )}
+              </div>
+
+              <div className="p-6 bg-slate-900 border border-slate-800 rounded-lg text-center font-mono text-xs space-y-4 flex flex-col justify-center">
+                <div className="text-slate-400">Complete Device CAD Mechanical Assembly Hierarchy:</div>
+                <div className="flex flex-wrap items-center justify-center gap-3">
+                  <span className="p-2.5 bg-blue-950 border border-blue-800 text-blue-300 rounded font-bold">
+                    Lower Case Enclosure
+                  </span>
+                  <ArrowRight className="w-4 h-4 text-slate-500" />
+                  <span className="p-2.5 bg-amber-950 border border-amber-800 text-amber-300 rounded font-bold">
+                    M3 Standoff Pillars (x4)
+                  </span>
+                  <ArrowRight className="w-4 h-4 text-slate-500" />
+                  <span className="p-2.5 bg-emerald-950 border border-emerald-800 text-emerald-300 rounded font-bold">
+                    3D PCB Substrate & Components
+                  </span>
+                  <ArrowRight className="w-4 h-4 text-slate-500" />
+                  <span className="p-2.5 bg-purple-950 border border-purple-800 text-purple-300 rounded font-bold">
+                    Upper Snap Lid
+                  </span>
+                </div>
               </div>
             </div>
           </div>

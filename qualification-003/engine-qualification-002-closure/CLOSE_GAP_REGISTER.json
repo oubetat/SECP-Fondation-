@@ -1,0 +1,46 @@
+{
+  "taskId": "SECP-ENGINE-QUALIFICATION-002-CLOSE-001",
+  "timestampUTC": "2026-10-25T07:56:24.847Z",
+  "gaps": [
+    {
+      "gapId": "CLOSE-GAP-01",
+      "title": "CFD Pressure Drop Multi-Grid Anomaly Classification",
+      "affectedEngine": "src/engine/cfd3d/diagnostics/GciEngine.ts",
+      "evidence": "dpCoarse=0.0522, dpMed=0.0790, dpFine=0.0710 yields R = -0.2985 < 0",
+      "severity": "HIGH",
+      "remediation": "Reclassified convergence mode as OSCILLATORY_CONVERGENCE due to pre-asymptotic 8x2x2 mesh resolution (y+ ~ 1700). Monotonic claims strictly rejected when R < 0.",
+      "closureTest": "GATE-CLOSE-03",
+      "status": "CLOSED_WITH_EXPLICIT_CLASSIFICATION"
+    },
+    {
+      "gapId": "CLOSE-GAP-02",
+      "title": "Analytical Poiseuille Navier-Stokes Benchmark Comparison",
+      "affectedEngine": "src/engine/cfd3d/Fvm3DNavierStokesSolver.ts",
+      "evidence": "Previous test checked only boundary mass imbalance without analytical pressure gradient or velocity profile ratio.",
+      "severity": "MEDIUM",
+      "remediation": "Bound validation to exact Hagen-Poiseuille analytical pressure drop (DeltaP = 12*mu*L*u/H^2 = 3.0e-4 Pa) and centerline velocity ratio (u_max/u_mean = 1.5).",
+      "closureTest": "GATE-CLOSE-04",
+      "status": "CLOSED_WITH_ANALYTICAL_PROOF"
+    },
+    {
+      "gapId": "CLOSE-GAP-03",
+      "title": "Real Consumption Path Stale Evidence Invalidation",
+      "affectedEngine": "src/engine/evidence/ledger/EngineeringEvidenceLedger.ts",
+      "evidence": "Previous test checked string SHA-256 inequality in isolation.",
+      "severity": "HIGH",
+      "remediation": "Executed full-cycle ledger registration, input mutation (REV-A to REV-B), verification against EvidenceIntegrityChecker returning INVALID/STALE_EVIDENCE_REJECTED, and re-solve binding to REV-B.",
+      "closureTest": "GATE-CLOSE-06",
+      "status": "CLOSED_THROUGH_LEDGER_PATH"
+    },
+    {
+      "gapId": "CLOSE-GAP-04",
+      "title": "Fluid-Structure Interaction (FSI) Scope Boundary Clarification",
+      "affectedEngine": "src/engine/cfd3d/coupling/TwoWayFSICouplingEngine.ts",
+      "evidence": "Need clear distinction between 1-way boundary force mapping and full 2-way deformed mesh recomputation.",
+      "severity": "MEDIUM",
+      "remediation": "Qualified 1-way boundary normal force transfer (F_n = integral p n dA = 80.0 N); explicitly documented full 2-way deformed mesh recomputation scope boundaries.",
+      "closureTest": "GATE-CLOSE-12",
+      "status": "CLOSED_WITH_DECLARED_SCOPE_BOUNDS"
+    }
+  ]
+}

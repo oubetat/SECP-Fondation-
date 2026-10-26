@@ -1,0 +1,73 @@
+{
+  "taskId": "SECP-ENGINE-QUALIFICATION-002",
+  "timestampUTC": "2026-10-25T07:43:11.660Z",
+  "engines": [
+    {
+      "domain": "Electrical",
+      "engineClass": "NodalCircuitSolver",
+      "file": "src/engine/engineeringCore/NodalCircuitSolver.ts",
+      "sha256": "cef7812a59ce4c227e46c3f81267f2cd65cfa600711102378831a47267063dd0",
+      "capabilities": [
+        "Linear MNA Resistive Networks",
+        "KCL Residual Tracking",
+        "KVL Loop Verification",
+        "Power Balance Conservation"
+      ],
+      "status": "QUALIFIED_WITHIN_SCOPE",
+      "scopeBoundary": "DC and static linear networks; switching power electronics quarantined"
+    },
+    {
+      "domain": "Thermal",
+      "engineClass": "SpatialThermalSolver",
+      "file": "src/engine/engineeringCore/SpatialThermalSolver.ts",
+      "sha256": "ef09eca6526c2a22ff6d9d84744c3715931e01ea9c5df50ab1e3e357bdaa81d1",
+      "capabilities": [
+        "2D Multilayer Conduction",
+        "Top/Bottom Convection",
+        "Junction/Case Thermal Resistance Modeling"
+      ],
+      "status": "QUALIFIED_WITHIN_SCOPE",
+      "scopeBoundary": "Planar multilayer substrate heat transfer; 3D complex radiation view factors quarantined"
+    },
+    {
+      "domain": "Structural",
+      "engineClass": "FEMCore",
+      "file": "src/engine/fem/core/FEMCore.ts",
+      "sha256": "634c0be341eec5a4265a465dc5ecb0db6c51d71d5389255978b0e6b0862e678e",
+      "capabilities": [
+        "1D Axial Bar Formulation",
+        "2D Plane Stress CST",
+        "Global Assembly",
+        "Reactions & Equilibrium Verification"
+      ],
+      "status": "QUALIFIED_WITHIN_SCOPE",
+      "scopeBoundary": "Linear elastic infinitesimal strain; non-linear plasticity and contact mechanics quarantined"
+    },
+    {
+      "domain": "CFD",
+      "engineClass": "AdaptiveIndustrialCFDEngine",
+      "file": "src/engine/cfd3d/adaptive/AdaptiveIndustrialCFDEngine.ts",
+      "sha256": "27f58f8fa8d6849df24de0b078447b7f0e0d33fe127c0a210fa38d6dd13a5651",
+      "capabilities": [
+        "3D Incompressible FVM SIMPLE",
+        "k-epsilon / SST k-omega Models",
+        "Scalar GCI Verification"
+      ],
+      "status": "QUALIFIED_WITHIN_SCOPE",
+      "scopeBoundary": "Incompressible internal/external flows; supersonic compressible shock capture quarantined"
+    },
+    {
+      "domain": "Multidomain Integration",
+      "engineClass": "ElectrothermalSolver",
+      "file": "src/engine/engineeringCore/ElectrothermalSolver.ts",
+      "sha256": "a6145e82614cd8f0f3e3404f5cef9f5e2cb5fd9a57a5dc13490f04ca570cef14",
+      "capabilities": [
+        "Bidirectional Picard Iterative Co-simulation",
+        "Joule Heating Feedback R(T)",
+        "Energy Balance Conservation"
+      ],
+      "status": "QUALIFIED_WITHIN_SCOPE",
+      "scopeBoundary": "Electrothermal resistive feedback; electromagnetic induction quarantined"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "testName": "G1-F Evidence Binding Verification",
+  "status": "PASSED",
+  "checks": [
+    {
+      "check": "All 16 required G1-F artifacts present and readable",
+      "passed": true
+    },
+    {
+      "check": "Artifact hashes match evidence manifest",
+      "passed": true
+    },
+    {
+      "check": "Regression results reflect actual execution exit code 0",
+      "passed": true
+    }
+  ]
+}

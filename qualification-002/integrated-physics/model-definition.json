@@ -1,0 +1,32 @@
+{
+  "campaign": "SECP-FSI-INTEGRATED-PHYSICS-QUALIFICATION-001",
+  "models": [
+    {
+      "id": "MODEL-PLATE-001",
+      "description": "Clamped Rectangular Plate under Uniform Pressure",
+      "lengthM": 1,
+      "widthM": 0.5,
+      "thicknessM": 0.01,
+      "pressurePa": 100000,
+      "status": "SCOPE_LIMITED_PLATE_BENDING_ABSENT"
+    },
+    {
+      "id": "MODEL-BEAM-001",
+      "description": "Euler-Bernoulli Cantilever Beam under Tip Transverse Load",
+      "lengthM": 1,
+      "widthM": 0.05,
+      "heightM": 0.1,
+      "tipLoadN": 10000,
+      "status": "VERIFIED_INDEPENDENT_ANALYTICAL"
+    },
+    {
+      "id": "MODEL-FSI-001",
+      "description": "3D FVM Navier-Stokes Box Mesh Coupled to 1D/2D Beam/Plate Interface",
+      "fluidMesh": "Hexahedral FVM",
+      "structuralInterface": "Station-based FEA",
+      "coupling": "Two-Way Partitioned Gauss-Seidel with Aitken Dynamic Relaxation",
+      "status": "QUALIFIED_WITHIN_DECLARED_SCOPE"
+    }
+  ],
+  "timestamp": "2026-10-23T07:42:21.566Z"
+}

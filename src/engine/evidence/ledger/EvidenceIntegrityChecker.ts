@@ -167,4 +167,19 @@ export class EvidenceIntegrityChecker {
     }
     return { verdict: 'VALID' };
   }
+
+  /**
+   * High-level verification of evidence against a provided state.
+   */
+  public static verifyEvidence(record: any, currentState: any): { verdict: string; payloadHashMatch: boolean } {
+    // Basic implementation for the workbench demonstration
+    const recomputedHash = EvidenceHasher.hashObject(currentState);
+    const recordedHash = record.payloadHash || EvidenceHasher.hashObject(record.payload);
+    const match = recomputedHash === recordedHash;
+    
+    return {
+      verdict: match ? 'VALID' : 'INVALID',
+      payloadHashMatch: match
+    };
+  }
 }

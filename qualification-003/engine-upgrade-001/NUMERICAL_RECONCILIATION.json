@@ -1,0 +1,36 @@
+{
+  "structuralFsiBeamConvergence": [
+    {
+      "stations": 10,
+      "displacementMm": 1.9748976433157108,
+      "errorVsEulerBernoulliPercent": 9.04328643335815,
+      "errorVs2DContinuumPercent": 0.9186126725034309,
+      "converged": true
+    },
+    {
+      "stations": 20,
+      "displacementMm": 1.9798372370655628,
+      "errorVsEulerBernoulliPercent": 8.815786433364964,
+      "errorVs2DContinuumPercent": 0.6707913217483266,
+      "converged": true
+    },
+    {
+      "stations": 40,
+      "displacementMm": 1.9810721355057177,
+      "errorVsEulerBernoulliPercent": 8.758911433242691,
+      "errorVs2DContinuumPercent": 0.6088359839244989,
+      "converged": true
+    },
+    {
+      "stations": 80,
+      "displacementMm": 1.9813808601282503,
+      "errorVsEulerBernoulliPercent": 8.744692682636696,
+      "errorVs2DContinuumPercent": 0.5933471488417175,
+      "converged": true
+    }
+  ],
+  "referenceStandardMm": 1.9932075,
+  "fineMeshErrorPercent": 0.5933471488417175,
+  "tolerancePercent": 1,
+  "agreesWithinTolerance": true
+}

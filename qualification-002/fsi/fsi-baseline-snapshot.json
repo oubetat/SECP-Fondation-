@@ -1,0 +1,13 @@
+{
+  "timestamp": "2026-10-23T07:20:54.652Z",
+  "baselineHashes": {
+    "src/engine/cfd3d/solvers/fsi/index.ts": "b77c3db6c625bfc0e0a2e0b4dfc4799328b02a6551ecc9f701829989dee1d8cd",
+    "src/engine/cfd3d/solvers/fsi/FSIRelaxationManager.ts": "c2ce79e3c8bb7159cd4fd688272fb6d3b7444b758ba781fa8710b4e9b7078123",
+    "src/engine/cfd3d/solvers/fsi/DynamicMeshManager.ts": "97b17f66d2889a7a809ae3253c4f5a210f5ae033c3572e54470d7a4c65070204",
+    "src/engine/cfd3d/solvers/fsi/FSIConservationAudit.ts": "9de6c12ccd3d5c1e60f72c5c0d77ffc72494cdb9f4246cb1dc32eb87ddb0e74a",
+    "src/engine/cfd3d/solvers/fsi/FSIInterfaceMapper.ts": "f4804bc9f0e5a43df17e83a96d6f51394580e79ace25fc21ea6d834a5ff5355f",
+    "src/engine/cfd3d/solvers/fsi/HardAcceptanceGate254.ts": "7ba285425ff313b2fbef4799b365c875d69fee6fb48e7ee6c34eeacf6c955160",
+    "src/engine/cfd3d/coupling/TwoWayFSICouplingEngine.ts": "2c04cf3849fcd636680205a93c0916ede2df5334701e1fbdf200b4e6aa165fc8",
+    "src/engine/structural-physics/StructuralAnalysisEngine.ts": "b944824d5b49c78728792cc5cb5b4838e6116810613915f74637420c785f919d"
+  }
+}

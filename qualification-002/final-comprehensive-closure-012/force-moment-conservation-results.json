@@ -1,0 +1,43 @@
+[
+  {
+    "status": "VERIFIED",
+    "totalInterfaceForceFluidN": 100,
+    "totalInterfaceForceSolidN": 100,
+    "forceImbalancePct": 0,
+    "energyConservationErrorPct": 0,
+    "forceTransferBalance": {
+      "fluidForceSumN": {
+        "fx": 100,
+        "fy": 0,
+        "fz": 0
+      },
+      "structuralLoadSumN": {
+        "fx": 100,
+        "fy": 0,
+        "fz": 0
+      },
+      "transferErrorPct": 0,
+      "passed": true
+    },
+    "structuralEquilibrium": {
+      "appliedLoadSumN": {
+        "fx": 100,
+        "fy": 0,
+        "fz": 0
+      },
+      "boundaryReactionSumN": {
+        "fx": -100,
+        "fy": 0,
+        "fz": 0
+      },
+      "equilibriumErrorPct": 0,
+      "passed": true
+    },
+    "couplingConvergence": {
+      "residualDisplacementM": 0.000001,
+      "toleranceM": 0.0001,
+      "isConverged": true
+    },
+    "timestamp": "2026-10-23T17:30:39.294Z"
+  }
+]

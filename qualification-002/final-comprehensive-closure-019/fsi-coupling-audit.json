@@ -1,0 +1,12 @@
+{
+  "partitionedGaussSeidelTwoWay": true,
+  "aitkenDynamicUnderRelaxationActive": true,
+  "interfaceLoadTransferVerified": true,
+  "interfaceDisplacementTransferVerified": true,
+  "verticalForceConservationExact": true,
+  "rootMomentConservationExact": true,
+  "failClosedNonFiniteProtection": true,
+  "scaleInvariantVolumeInversionProtection": true,
+  "atomicRollbackProtection": true,
+  "status": "PASS"
+}

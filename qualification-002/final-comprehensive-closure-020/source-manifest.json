@@ -1,0 +1,72 @@
+[
+  {
+    "path": "src/engine/cfd3d/solvers/fsi/DynamicMeshManager.ts",
+    "sizeBytes": 9592,
+    "sha256": "9a34f0ca6423297e62d137e9678c3baaecfde9269ab1afc5dda34cd3c6193b45"
+  },
+  {
+    "path": "src/engine/cfd3d/solvers/fsi/FSIBenchmarkSuite.ts",
+    "sizeBytes": 2147,
+    "sha256": "f7ffacf65f9bb093933977084a8bbc8fe67d851b05add1fb5305f73809a51865"
+  },
+  {
+    "path": "src/engine/cfd3d/coupling/TwoWayFSICouplingEngine.ts",
+    "sizeBytes": 13814,
+    "sha256": "05122916ea7743bc6f94f385351b3280e7afa3d99fcd6ba38d218be6d519615b"
+  },
+  {
+    "path": "src/engine/structural-physics/StructuralAnalysisEngine.ts",
+    "sizeBytes": 5324,
+    "sha256": "b944824d5b49c78728792cc5cb5b4838e6116810613915f74637420c785f919d"
+  },
+  {
+    "path": "src/engine/structural-physics/GlobalAssemblyEngine.ts",
+    "sizeBytes": 5224,
+    "sha256": "a5328e9dfc1afc2fcc20578da11945c294d105db6097735a0e7daab302d40cf6"
+  },
+  {
+    "path": "src/engine/structural-physics/ElementFormulationEngine.ts",
+    "sizeBytes": 4167,
+    "sha256": "750ba47aabe92a2da7f48a7a6b1e287035e539f206820d016e13c6b10f526e9b"
+  },
+  {
+    "path": "src/engine/structural-physics/StructuralPhysicsTypes.ts",
+    "sizeBytes": 3284,
+    "sha256": "54b05f47eef7cd1674b506caa42b219b6df8e1a4d5c362936f7dd9b3c80df01d"
+  },
+  {
+    "path": "src/engine/structural-physics/ShapeFunctionIsoparametricEngine.ts",
+    "sizeBytes": 5287,
+    "sha256": "8bb48729fa179d860018b8ad90de927975c0c9e05a1f5f1c8cb6dd7da043bd47"
+  },
+  {
+    "path": "test_independent_reference_019.ts",
+    "sizeBytes": 4137,
+    "sha256": "e8c4f439224d115b04c661de1183ed624c30a9d84f7f06de04973bb18654f074"
+  },
+  {
+    "path": "test_secp_fsi_qualification_017.ts",
+    "sizeBytes": 9471,
+    "sha256": "0d5f9568c1844dfd9913d99deaed39c1c756e5640f8b53c54486e452c2f01aaf"
+  },
+  {
+    "path": "test_adversarial_suite_019.ts",
+    "sizeBytes": 6926,
+    "sha256": "051b57ea829f192f1abf7b94e10fad740c156da88e96a676da07516b2e854ed7"
+  },
+  {
+    "path": "evaluate_exact_timoshenko_2d.ts",
+    "sizeBytes": 2329,
+    "sha256": "e6b1116090e30e7ccb55be7d5074e546db7c24df68b500c80bbe3400cffa0f4e"
+  },
+  {
+    "path": "run_secp_qualification_019.ts",
+    "sizeBytes": 6456,
+    "sha256": "0797619fb36d5d76da108395ed8e1fd2473a072d5d32bcbd85cff73da1d857c4"
+  },
+  {
+    "path": "run_secp_qualification_020.ts",
+    "sizeBytes": 29887,
+    "sha256": "ab98ae9e54b0a25f553f4874e586525dca9d24e6162f97fd95fdfa5af18be973"
+  }
+]

@@ -1758,6 +1758,7 @@ export class Fvm3DNavierStokesSolver {
     const invariantSatisfied = invariantDiff <= 1e-9;
     const scaledImbalance = Math.abs(rawInletFlowCheck - scaledOutlet);
     const scaledRelImbalance = scaledImbalance / Math.max(rawInletFlowCheck, 1e-12);
+    globalMassImbalanceNorm = rawRelImbalance;
 
     const continuityAudit: ContinuityAudit3D = {
       local: {

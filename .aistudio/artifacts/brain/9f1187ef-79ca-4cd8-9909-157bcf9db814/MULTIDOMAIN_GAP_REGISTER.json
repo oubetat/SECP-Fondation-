@@ -1,0 +1,33 @@
+{
+  "taskId": "SECP-ENGINE-QUALIFICATION-002",
+  "timestampUTC": "2026-10-25T07:43:11.661Z",
+  "gaps": [
+    {
+      "gapId": "GAP-MD-01",
+      "title": "UPGRADE-004 Multi-Mesh Pressure Drop Non-Monotonicity Masking",
+      "severity": "HIGH",
+      "domain": "CFD Multi-Grid Diagnostics",
+      "description": "Test 11 in UPGRADE-004 checked only distinctness (a !== b && b !== c) rather than enforcing 0 < R < 1. The observed pressure drops (0.0522, 0.0790, 0.0710) had R = -0.2985 (oscillatory), caused by boundary-layer under-resolution on the 8x2x2 mesh.",
+      "remediationAction": "Re-characterized multi-mesh convergence to strictly evaluate observed order and flag oscillatory convergence when R < 0. Documented pre-asymptotic mesh limitation.",
+      "resolutionStatus": "RESOLVED_AND_EXPLAINED"
+    },
+    {
+      "gapId": "GAP-MD-02",
+      "title": "Poiseuille Benchmark Restricted to Boundary Mass Conservation",
+      "severity": "MEDIUM",
+      "domain": "CFD Analytical Validation",
+      "description": "Poiseuille verification previously tested only inlet vs outlet mass flow delta, without comparing to the exact Navier-Stokes parabolic velocity profile or analytical pressure gradient.",
+      "remediationAction": "Added analytical Navier-Stokes Hagen-Poiseuille formulation and pressure gradient comparison to the qualification suite.",
+      "resolutionStatus": "RESOLVED"
+    },
+    {
+      "gapId": "GAP-MD-03",
+      "title": "Quarantine of Untested Non-linear Switching and Plasticity Engines",
+      "severity": "MEDIUM",
+      "domain": "System Governance",
+      "description": "StructuralFemEngine.ts contained simplified analytical beam bending equations with hardcoded dummy residuals. Real FEM solver is in src/engine/fem/. High-frequency RF and plastic hardening must remain explicitly quarantined.",
+      "remediationAction": "Formally bound qualification to src/engine/fem/ (FEMCore) and src/engine/engineeringCore/NodalCircuitSolver.ts. Quarantined simplified stubs and unverified non-linear models.",
+      "resolutionStatus": "RESOLVED_AND_QUARANTINED"
+    }
+  ]
+}

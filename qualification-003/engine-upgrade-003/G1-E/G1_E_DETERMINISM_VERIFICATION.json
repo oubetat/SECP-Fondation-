@@ -1,0 +1,16 @@
+{
+  "testSuiteName": "G1-E Hash Determinism Verification Suite",
+  "status": "PASSED",
+  "runA": {
+    "hash": "397724ce590d67a10b861ae98c938a1cd1bdc140e045aa8194c2dac9a897e443",
+    "iterations": 47,
+    "verdict": "PASS"
+  },
+  "runB": {
+    "hash": "397724ce590d67a10b861ae98c938a1cd1bdc140e045aa8194c2dac9a897e443",
+    "iterations": 47,
+    "verdict": "PASS"
+  },
+  "hashes100PercentIdentical": true,
+  "canonicalPayloadExcludesDynamicTimestamp": true
+}

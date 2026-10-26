@@ -1,0 +1,5 @@
+{
+  "summary":  "Forensic baseline for the FEM engine (Stage G1-A). Includes engine paths, execution sequence, solver details, element formulations, and identified gaps. Verified with SHA-256 source hashes.",
+  "updatedAt":  "2026-10-25T08:38:20.177952562Z",
+  "userFacing":  true
+}

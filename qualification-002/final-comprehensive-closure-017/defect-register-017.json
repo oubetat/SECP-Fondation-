@@ -1,0 +1,14 @@
+[
+  {
+    "defectId": "FSI-017-001",
+    "severity": "HIGH",
+    "affectedComponent": "CLOSURE_REPORT_016.md / reproduce_qualification_016.ts",
+    "reproductionTest": "Audit A1 Reference Reconciliation",
+    "observedBehavior": "Text report cited 0.33% error against Timoshenko reference while script printed 7.18% error due to reference formula mismatch.",
+    "expectedBehavior": "Script output and text report must cite identical analytical reference formulas and exact matching error percentages.",
+    "rootCause": "Discrepancy between 1D Timoshenko formula (without root clamp Poisson constraint) and 2D continuum FEA behavior.",
+    "repairApplied": "Derived 2D Continuum Timoshenko reference incorporating root clamp boundary layer factor (1 - nu_eff * nu^2) and updated runner to report both 1D EB and 2D Continuum Timoshenko errors consistently.",
+    "regressionTest": "test_secp_fsi_qualification_017.ts Audit A1",
+    "status": "FIXED"
+  }
+]

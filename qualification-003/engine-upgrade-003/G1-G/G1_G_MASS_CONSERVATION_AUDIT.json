@@ -1,0 +1,12 @@
+{
+  "gateId": "G1-G-MASS-CONSERVATION",
+  "productionValue": 0.03492028396398958,
+  "independentValue": 0.03492028396398958,
+  "absoluteDiscrepancy": 0,
+  "acceptanceThreshold": 1,
+  "thresholdSource": "Standard industrial CFD channel conservation limit (< 1.0%)",
+  "unitsVerified": true,
+  "boundaryCoverageVerified": true,
+  "independentCalculationVerified": true,
+  "verdict": "VERIFIED"
+}

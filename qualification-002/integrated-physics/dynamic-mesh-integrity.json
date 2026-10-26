@@ -1,0 +1,9 @@
+{
+  "meshAudit": {
+    "isValid": true
+  },
+  "morphedCellsCount": 108,
+  "minCellVolume": 0.004629629629629629,
+  "maxAspectRatio": 1,
+  "passed": true
+}

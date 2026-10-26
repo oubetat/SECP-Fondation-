@@ -1,0 +1,11 @@
+{
+  "elementStiffnessMatrixSymmetric": true,
+  "maxSymmetryDeviation": 0,
+  "rigidBodyTranslationXResidual": 0,
+  "rigidBodyTranslationYResidual": 0,
+  "rigidBodyRotationResidual": 2.794384544492862e-11,
+  "nullspaceDimension": 3,
+  "elasticRank": 5,
+  "hourglassParasiticModes": 0,
+  "status": "PASS"
+}

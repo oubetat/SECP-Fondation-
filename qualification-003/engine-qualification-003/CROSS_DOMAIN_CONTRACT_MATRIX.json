@@ -1,0 +1,59 @@
+{
+  "task": "SECP-ENGINE-QUALIFICATION-003",
+  "domains": [
+    {
+      "domain": "Electrical",
+      "schema": "SI Base [V, A, W, Ohm]",
+      "solver": "NodalCircuitSolver v2.0",
+      "bc": "Fixed Voltage / Current Node"
+    },
+    {
+      "domain": "Thermal",
+      "schema": "SI Base [K, W, W/m-K, W/m2-K]",
+      "solver": "SpatialThermalSolver v2.0",
+      "bc": "Fixed Temp / Heat Flux / Convection"
+    },
+    {
+      "domain": "Structural",
+      "schema": "SI Base [m, N, Pa, N/m]",
+      "solver": "FEMCore v2.1",
+      "bc": "Fixed Displacement / Nodal Force"
+    },
+    {
+      "domain": "CFD",
+      "schema": "SI Base [m/s, Pa, kg/m3, kg/s]",
+      "solver": "Fvm3DNavierStokesSolver v1.4",
+      "bc": "Inlet Velocity / Outlet Pressure"
+    },
+    {
+      "domain": "Electrothermal",
+      "schema": "Coupled [V, A, W, K, Ohm/K]",
+      "solver": "ElectrothermalSolver v2.0",
+      "bc": "Picard Iterative Fixed-Point"
+    },
+    {
+      "domain": "Thermal-Structural",
+      "schema": "Coupled [K, m, Pa, 1/K]",
+      "solver": "ThermalStructuralBridge v1.2",
+      "bc": "Thermal Expansion & Restraint"
+    },
+    {
+      "domain": "FSI",
+      "schema": "Coupled [Pa, m2, N, m]",
+      "solver": "TwoWayFSICouplingEngine v1.1",
+      "bc": "1-Way Interface Normal Force Mapping"
+    },
+    {
+      "domain": "Canonical Core",
+      "schema": "Canonical Revisions & Hash Tree",
+      "solver": "RevisionEngine & InvalidationPipeline",
+      "bc": "Single Source of Truth"
+    },
+    {
+      "domain": "Verification & Evidence",
+      "schema": "SHA-256 Merkle Ledger",
+      "solver": "EngineeringEvidenceLedger v2.0",
+      "bc": "Immutable Audit Trail"
+    }
+  ]
+}

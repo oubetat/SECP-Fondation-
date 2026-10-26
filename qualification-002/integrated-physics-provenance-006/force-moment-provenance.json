@@ -1,0 +1,47 @@
+{
+  "campaignId": "SECP-FSI-EVIDENCE-PROVENANCE-006",
+  "referencePointM": {
+    "x": 0.5,
+    "y": 0,
+    "z": 0
+  },
+  "rawInputs": {
+    "interfaceNodesCount": 10,
+    "appliedPressurePa": 100000,
+    "areaPerNodeM2": 0.05,
+    "fluidTractionPerNodeN": {
+      "fx": 0,
+      "fy": -5066.25,
+      "fz": 0
+    }
+  },
+  "recomputedResultants": {
+    "fluidTotalForceN": {
+      "fx": 0,
+      "fy": -50662.5,
+      "fz": 0
+    },
+    "fluidTotalMomentNm": {
+      "mx": 0,
+      "my": 0,
+      "mz": -25331.25
+    },
+    "structuralReactionN": {
+      "fx": 0,
+      "fy": 50662.463104,
+      "fz": 0
+    },
+    "structuralReactionMomentNm": {
+      "mx": 0,
+      "my": 0,
+      "mz": -25331.23
+    }
+  },
+  "verificationOutcomes": {
+    "forceImbalancePct": 0.0000728,
+    "relativeMomentErrorPct": 0.0000789,
+    "energyConservationStatus": "NOT_VERIFIED_DIRECTLY",
+    "energyConservationReason": "No work-energy integral computed; static force and moment resultants verified independently."
+  },
+  "status": "VERIFIED"
+}

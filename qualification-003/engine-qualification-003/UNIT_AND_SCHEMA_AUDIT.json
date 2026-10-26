@@ -1,0 +1,62 @@
+{
+  "task": "SECP-ENGINE-QUALIFICATION-003",
+  "unitsSystem": "SI_BASE_UNITS",
+  "dimensionalConsistency": "VERIFIED_STRICT",
+  "implicitFallbackAllowed": false,
+  "lostErrorConversion": false,
+  "auditResults": [
+    {
+      "domain": "Electrical",
+      "units": [
+        "V",
+        "A",
+        "W",
+        "Ohm"
+      ],
+      "status": "VALID"
+    },
+    {
+      "domain": "Thermal",
+      "units": [
+        "K",
+        "W",
+        "W/m-K",
+        "W/m2-K"
+      ],
+      "status": "VALID"
+    },
+    {
+      "domain": "Structural",
+      "units": [
+        "m",
+        "N",
+        "Pa",
+        "N/m"
+      ],
+      "status": "VALID"
+    },
+    {
+      "domain": "CFD",
+      "units": [
+        "m/s",
+        "Pa",
+        "kg/m3",
+        "kg/s"
+      ],
+      "status": "VALID"
+    },
+    {
+      "domain": "Coupled",
+      "units": [
+        "V",
+        "A",
+        "W",
+        "K",
+        "Pa",
+        "N",
+        "m"
+      ],
+      "status": "VALID"
+    }
+  ]
+}

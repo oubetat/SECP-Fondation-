@@ -1,0 +1,37 @@
+{
+  "campaignId": "SECP-FSI-EVIDENCE-REPRODUCTION-007",
+  "artifacts": [
+    {
+      "artifact": "artifact-integrity.json",
+      "computedHash": "c364d628ef95bd2582a78d1391c99c0acec03e89c84790e0e62c59d04a05877e"
+    },
+    {
+      "artifact": "closure-verdict.json",
+      "computedHash": "f840971242b8b994917a9f5bd64d016cfa8d582d03a559ac35de94676d8f449e"
+    },
+    {
+      "artifact": "source-hash-reconciliation.json",
+      "computedHash": "2d72cee568623c85619f61fc561fe8146e4c494cd1e310433bd30dddaa6de0ef"
+    },
+    {
+      "artifact": "fsi-state-hash-audit.json",
+      "computedHash": "07fdd66fb121b578f0aa4f844437e0069bee29d794a8133899fe9a3c9f4182fa"
+    },
+    {
+      "artifact": "force-moment-provenance.json",
+      "computedHash": "361307bbdbc19fd0e68d5d7d161619ad31ba6e8c1e9215c4afee7051aeb89d30"
+    },
+    {
+      "artifact": "structural-result-provenance.json",
+      "computedHash": "21e43c2839ba33e619fdaefe01aca133503f75f77e27ba252d854949decd5ea3"
+    },
+    {
+      "artifact": "adversarial-test-provenance.json",
+      "computedHash": "45959321bd263f21c6ede1b2072774f656b95f3b7f312862f27b968ee3c22d9e"
+    },
+    {
+      "artifact": "provenance-manifest.json",
+      "computedHash": "973c1f3e062a45e82b88c2ac91713c228a69d4296b69b30b1d2059be40730955"
+    }
+  ]
+}

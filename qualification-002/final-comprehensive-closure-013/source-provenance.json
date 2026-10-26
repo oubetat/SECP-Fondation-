@@ -1,0 +1,18 @@
+[
+  {
+    "file": "src/engine/cfd3d/solvers/fsi/DynamicMeshManager.ts",
+    "sha256": "9a34f0ca6423297e62d137e9678c3baaecfde9269ab1afc5dda34cd3c6193b45"
+  },
+  {
+    "file": "src/engine/cfd3d/coupling/TwoWayFSICouplingEngine.ts",
+    "sha256": "1a9d4edce31d888dd1ec8e705a09e21af5703ec1bb0d78c83961d30789466435"
+  },
+  {
+    "file": "src/engine/cfd3d/solvers/fsi/FSIBenchmarkSuite.ts",
+    "sha256": "f7ffacf65f9bb093933977084a8bbc8fe67d851b05add1fb5305f73809a51865"
+  },
+  {
+    "file": "src/engine/cfd3d/solvers/fsi/FSISolver.ts",
+    "sha256": "46ffe6e577e07e00eca522e4f95a7267886b7c8d615f7b315cd2c500f87aca07"
+  }
+]

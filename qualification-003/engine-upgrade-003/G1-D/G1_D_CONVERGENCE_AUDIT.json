@@ -1,0 +1,25 @@
+{
+  "statusesVerified": {
+    "CONVERGED": "CONVERGED",
+    "NOT_CONVERGED": "NOT_CONVERGED",
+    "ABORTED": "ABORTED"
+  },
+  "maxIterationsReachedHandling": {
+    "correctlyClassifiedAsNotConverged": true,
+    "verdictAssigned": "FAIL",
+    "criteriaIndependentlySatisfiedBeforeTermination": false
+  },
+  "residualsEvaluated": [
+    "continuityL2",
+    "continuityLInf",
+    "momentumXL2",
+    "momentumYL2",
+    "momentumZL2",
+    "maxResidual"
+  ],
+  "physicalAcceptanceCriteria": [
+    "forceStabilityPassed",
+    "massFlowImbalancePercent <= 1.0%",
+    "residuals <= residualTolerance"
+  ]
+}

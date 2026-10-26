@@ -1,0 +1,14 @@
+{
+  "appliedLoadSumN": {
+    "fx": 0,
+    "fy": -50662.5,
+    "fz": 0
+  },
+  "boundaryReactionSumN": {
+    "fx": 0,
+    "fy": 50662.46310486882,
+    "fz": 0
+  },
+  "equilibriumErrorPct": 0.00007282532678603163,
+  "passed": true
+}

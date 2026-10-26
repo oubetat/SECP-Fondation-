@@ -37,6 +37,16 @@ export class MaterialModelEngine {
     return this.materials[id] || this.materials['MAT-STEEL'];
   }
 
+  public static registerMaterial(mat: MaterialProperties): void {
+    if (typeof mat.youngsModulus !== 'number' || !Number.isFinite(mat.youngsModulus) || mat.youngsModulus <= 0) {
+      throw new Error(`Invalid Young's Modulus: ${mat.youngsModulus}. Must be positive and finite.`);
+    }
+    if (typeof mat.poissonsRatio !== 'number' || !Number.isFinite(mat.poissonsRatio) || mat.poissonsRatio <= -1 || mat.poissonsRatio >= 0.5) {
+      throw new Error(`Invalid Poisson's Ratio: ${mat.poissonsRatio}. Must be in (-1, 0.5).`);
+    }
+    this.materials[mat.id] = mat;
+  }
+
   public static getAllMaterials(): MaterialProperties[] {
     return Object.values(this.materials);
   }

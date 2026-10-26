@@ -1,0 +1,33 @@
+{
+  "task": "SECP-ENGINE-QUALIFICATION-003",
+  "mutationsTested": [
+    {
+      "input": "Voltage (24V -> 36V)",
+      "revA": "REV-A",
+      "revB": "REV-B",
+      "rejected": true,
+      "status": "PASS"
+    },
+    {
+      "input": "Thermal Conductivity (k=385 -> 200 W/m-K)",
+      "revA": "REV-A",
+      "revC": "REV-C",
+      "rejected": true,
+      "status": "PASS"
+    },
+    {
+      "input": "Structural Boundary Load (F=20kN -> 50kN)",
+      "revA": "REV-A",
+      "revD": "REV-D",
+      "rejected": true,
+      "status": "PASS"
+    },
+    {
+      "input": "Re-solve & Persistence for Mutated Revision",
+      "target": "REV-B",
+      "registered": true,
+      "verifyVerdict": "VALID",
+      "status": "PASS"
+    }
+  ]
+}

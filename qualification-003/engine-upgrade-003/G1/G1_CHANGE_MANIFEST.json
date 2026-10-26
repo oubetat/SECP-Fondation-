@@ -1,0 +1,18 @@
+{
+  "taskId": "SECP-ENGINE-UPGRADE-003-G1-A",
+  "timestampUTC": "2026-10-24T07:42:19.583Z",
+  "file": "src/engine/cfd3d/adaptive/PreFlightValidator.ts",
+  "before": {
+    "sizeBytes": 91,
+    "sha256": "13217983c21a4176cf9889aa0914ae9bbd1f978a3c8e47d15a5fbc40d24bf51a",
+    "implementation": "export class PreFlightValidator { static validateCase(){return {isReadyForSolve: true};} }",
+    "classification": "UNCONDITIONAL_PASS_STUB"
+  },
+  "after": {
+    "sizeBytes": 9698,
+    "sha256": "7a2e476ed5b5dffb1840e8c55530106b64ab095d2b69090a1283b36cac28e36f",
+    "implementation": "Full production 10-point physics, thermodynamics, bounding box, cell volume, and kinematics validator",
+    "classification": "PRODUCTION_FAIL_CLOSED_VALIDATOR"
+  },
+  "defectResolved": "G0 crash: TypeError: Cannot read properties of undefined (reading every) at AdaptiveCFDBenchmarkSuite.ts:89:76"
+}

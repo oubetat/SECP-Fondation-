@@ -1,0 +1,19 @@
+{
+  "auditArea": "AUDIT E — RECOVERY",
+  "status": "PASSED",
+  "checkpointSavedIteration": 5,
+  "restoredStateFieldsVerified": [
+    "u",
+    "v",
+    "w",
+    "p",
+    "k",
+    "omega",
+    "nut",
+    "eps",
+    "dt"
+  ],
+  "fieldsMatchRestored": true,
+  "missingCheckpointHandledDecisively": true,
+  "failClosedTerminationConfirmed": true
+}

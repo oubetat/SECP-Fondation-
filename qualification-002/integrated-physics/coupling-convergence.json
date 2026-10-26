@@ -1,0 +1,32 @@
+{
+  "convergence": {
+    "residualDisplacementM": 0,
+    "toleranceM": 0.0001,
+    "isConverged": true
+  },
+  "stopReason": "CONVERGED",
+  "iterations": 3,
+  "relaxationHistory": [
+    {
+      "iteration": 0,
+      "omega": 0.5,
+      "residualNorm": 0.01737466597236139,
+      "maxResidualComponent": 0.010060114921101832,
+      "isFinite": true
+    },
+    {
+      "iteration": 1,
+      "omega": 1,
+      "residualNorm": 0.008687332986180695,
+      "maxResidualComponent": 0.005030057460550916,
+      "isFinite": true
+    },
+    {
+      "iteration": 2,
+      "omega": 1,
+      "residualNorm": 0,
+      "maxResidualComponent": 0,
+      "isFinite": true
+    }
+  ]
+}

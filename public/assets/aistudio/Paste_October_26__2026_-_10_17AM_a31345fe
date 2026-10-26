@@ -1,0 +1,970 @@
+SECP-FEM-UPGRADE-010
+
+Nonlinear Material Mechanics & Elastoplasticity
+
+الترقية العاشرة — ميكانيكا المواد اللاخطية واللدونة الهندسية
+
+معرّف المهمة: SECP-FEM-UPGRADE-010
+المجال: Finite Element Method — Nonlinear Material Mechanics
+الأولوية: توسيع الفيزياء الميكانيكية لمحرك FEM.
+الهدف: تمكين SECP من تمثيل المواد التي لا تتبع علاقة الإجهاد والانفعال الخطية، مع دعم اللدونة وتراكم التشوه الدائم بعد تجاوز حد الخضوع، وتوفير تحقق عددي وفيزيائي مستقل لكل نتيجة.
+
+هذه الترقية امتداد للترقية 009، لكنها ليست مشروطة بافتراض نجاحها. يجب على وكيل البرمجة فحص المستودع وتحديد ما هو موجود فعلًا. وإذا لم تكن الصياغة الهندسية اللاخطية مكتملة، فعليه إما تنفيذ نموذج مادي محدود ومتسق يمكن التحقق منه ضمن أساس هندسي صالح، أو إعلان التبعية BLOCKED بدل دمج قوانين مادية مع صياغة غير متوافقة.
+
+المبدأ الحاكم: لا نضيف اسم «Plasticity» إلى المحرك فحسب؛ بل ننفذ قانونًا ماديًا محددًا، ونثبت صحته من خلال اختبارات مستقلة، ونتتبع تطور الحالة المادية، ونمنع نشر أي نتيجة فاشلة أو قديمة.
+
+
+---
+
+المهمة التنفيذية — جاهزة للنسخ إلى وكيل البرمجة
+
+TASK ID:
+SECP-FEM-UPGRADE-010
+
+TITLE:
+Nonlinear Material Mechanics, J2 Plasticity & Material State Evolution
+
+CLASSIFICATION:
+Nonlinear Structural Mechanics / Constitutive Modeling
+
+MISSION:
+Extend the existing SECP FEM engine with a real, mathematically
+consistent nonlinear material capability.
+
+Implement a clearly scoped elastoplastic constitutive model with:
+- elastic response;
+- yield-surface evaluation;
+- plastic flow;
+- return mapping;
+- consistent material tangent;
+- persistent integration-point state;
+- nonlinear equilibrium integration;
+- independent constitutive verification;
+- tamper-evident, fail-closed evidence.
+
+The initial target is small-strain, rate-independent J2
+(von Mises) elastoplasticity with isotropic hardening.
+
+This task does NOT automatically qualify:
+- finite-strain plasticity;
+- large-rotation elastoplastic beams;
+- hyperelasticity;
+- viscoelasticity;
+- creep;
+- damage;
+- fracture;
+- anisotropic plasticity;
+- cyclic plasticity with kinematic hardening;
+- temperature-dependent plasticity.
+
+Do not claim support for any model that is not implemented,
+verified, and explicitly declared.
+
+Do not create a second FEM core or a parallel canonical model.
+
+Do not weaken existing assertions, security gates, or verification
+requirements to obtain a passing verdict.
+
+============================================================
+PHASE 0 — REPOSITORY FORENSICS
+============================================================
+
+Inspect the actual repository before implementation.
+
+Determine whether the following are genuinely implemented:
+
+1. Linear-elastic material contracts.
+2. Material property validation.
+3. Existing element formulations and their strain measures.
+4. Integration-point or element-state storage.
+5. Global internal-force assembly.
+6. Consistent tangent-stiffness assembly.
+7. Nonlinear equilibrium iteration.
+8. Load stepping and failed-increment rollback.
+9. Boundary-condition enforcement and reaction recovery.
+10. Result invalidation after material or mesh modification.
+11. Verification and evidence persistence.
+12. Existing FEM tests and qualification campaigns.
+
+Inspect, where present:
+
+FEMTypes.ts
+FEMElementFormulation.ts
+GlobalAssemblyEngine.ts
+FEMCore.ts
+FieldRecoveryEngine.ts
+FEMVerificationEngine.ts
+FEMEvidenceEngine.ts
+SparseMatrix.ts
+SparsePCGSolver.ts
+BoundaryConditionEngine.ts
+LinearSystemEngine.ts
+
+Also inspect the actual element implementations, material contracts,
+nonlinear solver, canonical model, and related tests.
+
+Record:
+- actual repository state;
+- implemented dependencies;
+- missing dependencies;
+- existing verified capabilities;
+- files requiring modification;
+- compatibility risks.
+
+Do not assume that UPGRADE-003 through UPGRADE-009 exist.
+Their task specifications are not evidence of implementation.
+
+If the existing engine lacks a valid integration-point state model
+or nonlinear tangent assembly, implement the smallest correct
+prerequisite needed for this task.
+
+If the required strain formulation is incompatible with the
+proposed constitutive model, stop and report BLOCKED or implement
+a correctly scoped compatible formulation.
+
+Do not mix constitutive stress and strain measures from incompatible
+formulations.
+
+============================================================
+PHASE 1 — DECLARE THE CONSTITUTIVE MODEL
+============================================================
+
+Implement the following initial model:
+
+MODEL:
+Small-strain, rate-independent, isotropic J2 elastoplasticity
+with associative flow and isotropic hardening.
+
+ASSUMPTIONS:
+- infinitesimal strain;
+- infinitesimal rotation as required by the selected formulation;
+- homogeneous isotropic material;
+- elastic isotropic response;
+- von Mises yield criterion;
+- associative plastic flow;
+- isotropic hardening;
+- no damage or material failure;
+- no temperature dependence;
+- no strain-rate dependence.
+
+Material parameters:
+
+E       = Young's modulus
+nu      = Poisson's ratio
+sigma_y0 = initial yield stress
+H       = linear isotropic hardening modulus
+
+Required validation:
+
+E > 0
+-1 < nu < 0.5
+sigma_y0 > 0
+H >= 0
+
+Reject NaN, Infinity, missing values, invalid units, and inconsistent
+material definitions.
+
+The material contract must declare:
+- model identifier;
+- model version;
+- parameter units;
+- supported strain measure;
+- supported stress measure;
+- state variables;
+- hardening law;
+- admissible parameter domain;
+- numerical tolerances;
+- limitations.
+
+Do not silently substitute default material parameters.
+
+============================================================
+PHASE 2 — ELASTIC CONSTITUTIVE RESPONSE
+============================================================
+
+Implement the isotropic elastic stiffness tensor for the supported
+element formulation.
+
+For 3D isotropic elasticity, define:
+
+mu = E / (2 * (1 + nu))
+
+lambda = E * nu / ((1 + nu) * (1 - 2 * nu))
+
+Use a clearly documented Voigt convention:
+
+epsilon =
+[epsilon_xx,
+ epsilon_yy,
+ epsilon_zz,
+ gamma_xy,
+ gamma_yz,
+ gamma_xz]
+
+where shear components are engineering shear strains.
+
+Use a matching stress convention:
+
+sigma =
+[sigma_xx,
+ sigma_yy,
+ sigma_zz,
+ tau_xy,
+ tau_yz,
+ tau_xz]
+
+The elastic matrix must be consistent with this convention.
+
+Implement:
+
+sigma_trial = sigma_n + D_e * delta_epsilon
+
+for the supported small-strain incremental formulation, with precise
+documentation of the strain increment and state-update conventions.
+
+For a plane-stress formulation, implement a genuinely consistent
+plane-stress constitutive update. Do not simply take the 3D matrix and
+delete rows and columns.
+
+If plane stress is not implemented, explicitly reject it for this
+material model.
+
+Plane strain and 3D formulations must be declared separately and
+verified independently.
+
+============================================================
+PHASE 3 — J2 YIELD FUNCTION
+============================================================
+
+Implement the von Mises yield criterion.
+
+Decompose stress into:
+
+sigma = s + p * I
+
+where:
+
+p = trace(sigma) / 3
+
+s = sigma - p * I
+
+The von Mises equivalent stress is:
+
+q = sqrt(3/2 * s:s)
+
+For isotropic hardening, define:
+
+f = q - (sigma_y0 + H * kappa)
+
+where kappa is the accumulated equivalent plastic strain under
+the selected model.
+
+Yield conditions:
+
+f <= tolerance:
+    admissible elastic state, subject to numerical tolerance
+
+f > tolerance:
+    plastic correction required
+
+The implementation must distinguish:
+- elastic trial state;
+- plastic correction;
+- converged constitutive state;
+- constitutive integration failure.
+
+A yield test must not mutate the committed material state.
+
+Use explicit numerical tolerances and avoid classifying states solely
+from rounded display values.
+
+============================================================
+PHASE 4 — RETURN-MAPPING ALGORITHM
+============================================================
+
+Implement a mathematically consistent radial-return algorithm for
+the declared J2 model.
+
+For a plastic trial state, compute a plastic multiplier increment
+using the documented flow and hardening conventions.
+
+For the standard small-strain, isotropic-hardening formulation,
+the equivalent-stress correction must be consistent with:
+
+delta_gamma = f_trial / (3 * mu + H)
+
+for the specified equivalent-plastic-strain normalization.
+
+Verify the normalization and derivation against the actual definitions
+used by the implementation. Do not copy this expression into a
+different flow convention without re-deriving it.
+
+The plastic correction must update:
+- corrected stress;
+- plastic strain tensor;
+- accumulated equivalent plastic strain;
+- any required internal variables.
+
+For the associative J2 model, the plastic strain increment is
+deviatoric under the selected small-strain formulation.
+
+Preserve the plastic strain tensor's trace within numerical tolerance.
+
+Check the post-update yield condition:
+
+f_updated approximately <= yield_tolerance
+
+The implementation must handle:
+- elastic loading;
+- initial yielding;
+- continued plastic loading;
+- unloading;
+- reloading;
+- zero strain increment;
+- nearly hydrostatic stress;
+- very small plastic corrections;
+- invalid material state;
+- non-finite intermediate values.
+
+For unloading, the material must return to the elastic response
+when the updated trial state lies inside the yield surface.
+
+For isotropic hardening, demonstrate that the yield-surface size
+evolves according to the declared hardening law.
+
+Do not use an arbitrary stress clamp as a substitute for return mapping.
+
+============================================================
+PHASE 5 — CONSISTENT ALGORITHMIC TANGENT
+============================================================
+
+Implement the algorithmic material tangent required by the selected
+return-mapping algorithm.
+
+The tangent must be derived from the discrete constitutive update,
+not obtained by reusing the elastic matrix after plastic yielding.
+
+For the supported model, implement the consistent tangent for the
+declared stress/strain and engineering-shear conventions.
+
+The tangent must be integrated into the element formulation so that
+the global Newton iteration receives a consistent linearization of
+the internal-force residual.
+
+Verify the tangent numerically.
+
+For every supported constitutive branch, compare the analytical
+algorithmic tangent against a finite-difference derivative of the
+updated stress:
+
+C_alg[:,j] approximately equals
+
+(sigma_updated(epsilon + h*e_j)
+ - sigma_updated(epsilon - h*e_j)) / (2*h)
+
+Use independent trial copies of the same committed material state
+for both perturbations.
+
+Never advance or mutate the production material state during the
+finite-difference comparison.
+
+Use scale-aware perturbations and report:
+- absolute discrepancy;
+- normalized discrepancy;
+- perturbation size;
+- stress state;
+- loading branch;
+- pass/fail verdict.
+
+Do not hide tangent errors by loosening tolerances without justification.
+
+============================================================
+PHASE 6 — MATERIAL STATE AND TRANSACTIONAL UPDATES
+============================================================
+
+Create a robust material integration-point state contract.
+
+The state must include, as required by the declared model:
+
+- committed stress;
+- committed plastic strain tensor;
+- accumulated equivalent plastic strain;
+- integration-point identity;
+- material identity/version;
+- state version;
+- state provenance.
+
+The exact state fields must be documented.
+
+Enforce the transactional sequence:
+
+COMMITTED STATE
+    -> TRIAL STATE
+    -> CONSTITUTIVE UPDATE
+    -> GLOBAL EQUILIBRIUM ITERATIONS
+    -> CONVERGED LOAD INCREMENT
+    -> COMMIT MATERIAL STATE
+
+During a failed Newton iteration or failed load increment:
+
+- do not commit trial plastic strain;
+- do not increase accumulated plastic strain;
+- do not overwrite the last converged stress state;
+- do not allow retries to accumulate plasticity more than once.
+
+The material state must be updated from the last committed state
+during each equilibrium trial, not repeatedly accumulated from
+previous unsuccessful iterations.
+
+Commit state only after the global equilibrium increment converges.
+
+A failed increment must be rolled back atomically.
+
+Add explicit tests for this transaction behavior.
+
+If the existing architecture cannot support reliable state rollback,
+implement the required minimal mechanism before claiming plasticity
+support.
+
+============================================================
+PHASE 7 — ELEMENT AND GLOBAL ASSEMBLY INTEGRATION
+============================================================
+
+Integrate the constitutive model into a compatible continuum element.
+
+Priority:
+
+1. Existing 3D continuum element, if genuinely implemented and valid.
+2. Otherwise, an existing compatible plane-strain element.
+3. Otherwise, implement the smallest suitable continuum prerequisite
+   and explicitly limit the scope.
+
+Do not claim continuum plasticity through an axial bar implementation
+alone.
+
+For each integration point:
+
+1. Calculate the strain increment using the selected kinematics.
+2. Evaluate the constitutive update from the committed state.
+3. Obtain updated stress and algorithmic tangent.
+4. Assemble the internal-force contribution.
+5. Assemble the element tangent.
+6. Preserve the trial state until global convergence.
+7. Commit the material state only after the load increment converges.
+
+For small-strain continuum elements:
+
+F_int = integral(B^T * sigma dV)
+
+K_t = integral(B^T * C_alg * B dV)
+
+This expression is appropriate only for the declared small-strain
+formulation with the compatible strain-displacement matrix.
+
+If the implementation includes additional nonlinear geometric terms,
+they must be derived and included consistently. Do not mix the
+small-strain constitutive tangent with an incompatible finite-strain
+formulation.
+
+Use appropriate quadrature for the supported element.
+
+Validate integration-point ordering and state identity.
+
+Do not share mutable material state between unrelated elements
+or integration points.
+
+============================================================
+PHASE 8 — GLOBAL NONLINEAR EQUILIBRIUM
+============================================================
+
+Integrate the material model with the existing nonlinear equilibrium
+solver, if one exists and is verified.
+
+The global residual is:
+
+R(u) = F_external - F_internal(u, state)
+
+The Newton correction must use a tangent consistent with the
+implemented material update.
+
+For each load increment:
+
+1. preserve the last converged displacement and material states;
+2. create trial states;
+3. assemble internal forces and tangent;
+4. compute the residual;
+5. solve for the displacement correction;
+6. reevaluate constitutive responses from committed states;
+7. test global convergence;
+8. commit all affected material states atomically after convergence.
+
+Convergence criteria must include:
+- global residual;
+- displacement correction;
+- finite-value checks;
+- linear solver status;
+- constitutive integration status;
+- essential boundary-condition compliance.
+
+Do not declare global convergence if any integration point failed.
+
+Do not commit a partial set of material states.
+
+If load cutback is supported, retry from the last converged global
+and material state.
+
+If convergence cannot be achieved, preserve the failure diagnostics
+and return a failed or partial verdict.
+
+============================================================
+PHASE 9 — MATERIAL FIELD RECOVERY
+============================================================
+
+Expose the material fields actually calculated by the model.
+
+At each supported integration point, report:
+
+- total strain tensor;
+- elastic strain tensor, where consistently defined;
+- plastic strain tensor;
+- stress tensor;
+- von Mises equivalent stress;
+- accumulated equivalent plastic strain;
+- yield function value;
+- elastic/plastic branch;
+- integration-point identity;
+- constitutive convergence status.
+
+For supported element-level recovery, provide documented averaging
+or extrapolation rules.
+
+Never present extrapolated or averaged nodal stress as if it were
+the exact integration-point stress.
+
+Distinguish:
+- integration-point values;
+- extrapolated values;
+- averaged nodal values.
+
+Report unsupported quantities explicitly.
+
+Do not use zero as a placeholder for an unavailable field.
+
+============================================================
+PHASE 10 — INDEPENDENT CONSTITUTIVE VERIFICATION
+============================================================
+
+Create a real test suite, following the existing repository conventions.
+
+Suggested location:
+
+src/engine/fem/core/__tests__/FEMUpgrade010Plasticity.test.ts
+
+Required constitutive tests:
+
+MAT-001 — Elastic isotropic response.
+Verify against independent analytical calculations.
+
+MAT-002 — Elastic uniaxial loading.
+Verify the expected stress-strain slope.
+
+MAT-003 — First yield.
+Verify the yield point and the transition into plastic response.
+
+MAT-004 — Plastic uniaxial loading.
+Verify the hardening response against an independent calculation.
+
+MAT-005 — Perfect plasticity.
+Set H = 0 and verify the expected yield-surface behavior.
+
+MAT-006 — Isotropic hardening.
+Verify the evolution of the yield stress.
+
+MAT-007 — Elastic unloading.
+Verify elastic unloading slope and zero additional plastic strain.
+
+MAT-008 — Reloading.
+Verify the response under the declared isotropic-hardening model.
+
+MAT-009 — Hydrostatic stress.
+Verify that the J2 equivalent stress is zero for a purely hydrostatic
+stress state.
+
+MAT-010 — Pure shear.
+Verify the von Mises equivalent stress and yield transition.
+
+MAT-011 — Plastic incompressibility.
+Verify that the plastic strain increment has approximately zero trace.
+
+MAT-012 — Post-return yield condition.
+Verify the corrected stress lies on or inside the updated yield surface.
+
+MAT-013 — Consistent tangent.
+Verify analytical and finite-difference tangents.
+
+MAT-014 — State immutability.
+Verify trial calculations do not mutate committed state.
+
+MAT-015 — Invalid parameters.
+Reject invalid material constants and malformed state.
+
+MAT-016 — Unloading and reloading history.
+Verify state evolution over a sequence of independently calculated
+loading increments.
+
+MAT-017 — State serialization.
+Verify round-trip persistence without loss of required state fields.
+
+MAT-018 — Deterministic replay.
+Repeat a fixed loading history and compare results within declared
+tolerances.
+
+MAT-019 — Plane-stress enforcement, only if implemented.
+Verify the out-of-plane stress condition and constitutive consistency.
+
+MAT-020 — Regression.
+Run the relevant existing FEM tests and campaigns.
+
+All analytical references must be derived independently from the
+production implementation.
+
+Do not calculate expected answers by calling the production
+constitutive update.
+
+============================================================
+PHASE 11 — STRUCTURAL INTEGRATION TESTS
+============================================================
+
+Required tests:
+
+STR-001 — Single-element elastic regression.
+Verify unchanged behavior for an elastic problem that does not yield.
+
+STR-002 — Single-element elastoplastic response.
+Verify stress, plastic strain, and reactions against an independent
+reference.
+
+STR-003 — Multi-element material-state separation.
+Verify each integration point maintains independent state.
+
+STR-004 — Global equilibrium after yielding.
+Verify force balance and the final residual.
+
+STR-005 — Load-increment refinement.
+Compare results with progressively refined load steps.
+
+STR-006 — Nonlinear tangent integration.
+Verify the global tangent using an independent finite-difference
+residual check on a small model.
+
+STR-007 — Failed-increment rollback.
+Verify displacement and material state return to the last converged
+increment.
+
+STR-008 — Mesh/material invalidation.
+Verify old results cannot be published after material or mesh changes.
+
+STR-009 — Boundary-condition integrity.
+Verify constrained DOFs remain correct throughout equilibrium
+iterations.
+
+STR-010 — Unsupported element rejection.
+Verify unsupported formulations cannot silently use the plastic model.
+
+============================================================
+PHASE 12 — ADVERSARIAL TESTING
+============================================================
+
+Add adversarial tests:
+
+ADV-MAT-001 — NaN material parameter.
+ADV-MAT-002 — Infinite material parameter.
+ADV-MAT-003 — Non-positive Young's modulus.
+ADV-MAT-004 — Invalid Poisson ratio.
+ADV-MAT-005 — Negative initial yield stress.
+ADV-MAT-006 — Negative hardening modulus.
+ADV-MAT-007 — Non-finite strain increment.
+ADV-MAT-008 — Corrupted plastic-strain state.
+ADV-MAT-009 — Negative accumulated equivalent plastic strain.
+ADV-MAT-010 — Invalid integration-point identity.
+ADV-MAT-011 — Constitutive nonconvergence.
+ADV-MAT-012 — Global nonlinear nonconvergence.
+ADV-MAT-013 — Partial state-commit attempt.
+ADV-MAT-014 — Repeated failed iteration causing double accumulation.
+ADV-MAT-015 — Material modified after solution.
+ADV-MAT-016 — Evidence digest mismatch.
+ADV-MAT-017 — Unsupported strain measure.
+ADV-MAT-018 — Invalid quadrature or integration-point mapping.
+ADV-MAT-019 — Incorrect stress/strain convention.
+ADV-MAT-020 — Trial-state mutation during tangent calculation.
+
+All adversarial failures must fail closed.
+
+No fallback to a linear elastic answer when the plastic update fails.
+
+No conversion of constitutive failure into a successful global result.
+
+No evidence publication when mandatory verification fails.
+
+============================================================
+PHASE 13 — EVIDENCE, CANONICAL INTEGRATION, AND PROVENANCE
+============================================================
+
+Integrate with the existing SECP canonical model and evidence pipeline.
+
+Every accepted result must identify:
+
+- material model and version;
+- material parameters and units;
+- mesh identity/digest;
+- element formulation and version;
+- integration scheme;
+- integration-point state version;
+- load case and loading history;
+- boundary conditions;
+- solver configuration;
+- convergence tolerances;
+- constitutive residuals or yield consistency metrics;
+- global equilibrium residual;
+- tangent verification results;
+- independent reference comparisons;
+- test outcomes;
+- limitations;
+- result digest;
+- evidence hashes;
+- final verdict.
+
+Material or mesh changes must invalidate dependent results.
+
+Trial material states must not be published as committed states.
+
+A hash proves integrity of the hashed artifact, not the correctness
+of the constitutive law.
+
+The final verdict must be generated from actual verification outcomes.
+
+Allowed verdicts:
+
+FAILED
+PARTIAL
+IMPLEMENTED_NOT_QUALIFIED
+QUALIFIED_WITHIN_DECLARED_SCOPE
+
+QUALIFIED_WITHIN_DECLARED_SCOPE is permitted only when all mandatory
+tests pass and every claimed capability has supporting evidence.
+
+============================================================
+PHASE 14 — BENCHMARK AND REGRESSION
+============================================================
+
+Measure real executions.
+
+Report:
+
+- element count;
+- integration-point count;
+- total and free DOFs;
+- material model;
+- load increments;
+- constitutive updates;
+- nonlinear iterations;
+- linear solver calls;
+- elapsed solve time;
+- constitutive update time, if measured;
+- tangent assembly time, if measured;
+- peak memory, if measured;
+- final global residual;
+- maximum equivalent stress;
+- maximum accumulated equivalent plastic strain;
+- yield-consistency error;
+- tangent finite-difference discrepancy;
+- failed increments;
+- cutback count;
+- reference-solution discrepancy.
+
+Compare against the existing linear-elastic model on a case that
+remains elastic.
+
+For that case, verify that the new model reproduces the compatible
+linear-elastic result within a justified tolerance.
+
+Do not invent benchmark results.
+
+Do not claim industrial qualification from small demonstration models.
+
+============================================================
+PHASE 15 — DELIVERABLES
+============================================================
+
+Deliver:
+
+1. Production constitutive implementation.
+2. Explicit material-model contract.
+3. Verified stress/strain convention.
+4. Return-mapping implementation.
+5. Consistent algorithmic tangent.
+6. Transactional integration-point state management.
+7. Global nonlinear solver integration.
+8. Material field recovery.
+9. Unit and integration tests.
+10. Adversarial tests.
+11. Regression results.
+12. Independent analytical verification.
+13. SECP_FEM_UPGRADE_010_RESULTS.json
+14. SECP_FEM_UPGRADE_010_REPORT.md
+
+The JSON must contain machine-readable:
+- test results;
+- numerical discrepancies;
+- benchmark measurements;
+- artifact hashes;
+- unresolved limitations;
+- final verdict.
+
+The Markdown report must identify:
+- what was actually implemented;
+- supported elements and kinematics;
+- material law and assumptions;
+- commands executed;
+- actual pass/fail results;
+- independent reference calculations;
+- tangent verification;
+- state-rollback verification;
+- regression outcomes;
+- known limitations;
+- evidence paths and hashes;
+- final verdict.
+
+Never mark an unexecuted test as passed.
+
+Never infer physical correctness from build success alone.
+
+Never claim all FEM elements support plasticity merely because the
+material model exists.
+
+============================================================
+EXECUTION ORDER
+============================================================
+
+1. Inspect the actual repository.
+2. Establish verified prerequisites.
+3. Declare the supported material model and strain formulation.
+4. Implement elastic and J2 constitutive response.
+5. Implement return mapping.
+6. Implement and verify the algorithmic tangent.
+7. Implement transactional material state.
+8. Integrate with a compatible continuum element.
+9. Integrate with global nonlinear equilibrium.
+10. Implement material field recovery.
+11. Run independent constitutive tests.
+12. Run structural integration tests.
+13. Run adversarial and regression tests.
+14. Verify evidence and invalidation behavior.
+15. Benchmark actual executions.
+16. Produce machine-readable evidence and the report.
+17. Assign the verdict from the evidence.
+
+FINAL ACCEPTANCE PRINCIPLE:
+
+Correct constitutive physics first.
+Consistent numerical linearization second.
+Transactional state integrity third.
+Independent verification fourth.
+Evidence-backed qualification last.
+
+Never optimize for test count at the expense of physical correctness.
+
+
+---
+
+ما القدرات الجديدة التي ستضيفها الترقية 010؟
+
+إذا نُفذت واجتازت التأهيل ضمن نطاقها المعلن، فستضيف إلى SECP قدرات لا يوفرها النموذج المرن الخطي وحده.
+
+القدرة	النموذج المرن الخطي	نموذج اللدونة بعد الترقية
+
+السلوك المرن	مدعوم	مدعوم
+تحديد بداية الخضوع	غير ممثل في النموذج الخطي البسيط	مدعوم وفق معيار فون ميزس
+التشوه الدائم	غير ممثل	مدعوم
+تصلب المادة	لا يتضمن قانون خضوع	تصلب متساوي الخواص وفق النموذج المحدد
+التفريغ بعد الخضوع	استجابة خطية دون تاريخ لدن	تفريغ مرن مع الاحتفاظ بالحالة اللدنة
+تاريخ التحميل	لا يلزم عادةً الاحتفاظ بتاريخ مادي	الحالة الداخلية تتطور عبر خطوات التحميل
+إجهاد فون ميزس	قد يُحسب كمؤشر بعد الحل	يُستخدم أيضًا في معيار الخضوع
+حالة المادة عند نقاط التكامل	ليست ضرورية في نموذج مرن بسيط	تصبح جزءًا أساسيًا من الحل
+التحقق العددي	التحقق من الصلابة والاستجابة الخطية	تحقق إضافي من الخضوع، والعودة، والمماس، وتطور الحالة
+
+
+مثال فيزيائي مبسط
+
+لنفترض عينة فولاذية ذات منحنى إجهاد–انفعال مثالي مرن ثم لدن:
+
+1. عند التحميل الأول، يرتفع الإجهاد خطيًا مع الانفعال.
+
+
+2. عندما يصل الإجهاد إلى حد الخضوع، يبدأ تراكم الانفعال اللدن.
+
+
+3. مع استمرار التحميل، يتطور الإجهاد وفق قانون التصلب المختار.
+
+
+4. عند إزالة الحمل، ينخفض الإجهاد على المسار المرن.
+
+
+5. بعد إزالة الحمل بالكامل، يبقى انفعال دائم إذا تجاوزت العينة حد الخضوع.
+
+
+
+الترقية 010 تهدف إلى تمثيل هذه الظواهر حسابيًا، لا مجرد رسم منحنى تقريبي لها.
+
+لكن يجب الانتباه إلى أن J2 مع التصلب المتساوي الخواص لا يمثل جميع أنواع سلوك الفولاذ أو المعادن؛ فهو لا يشمل تلقائيًا تأثير باوشنغر، أو التصلب الحركي، أو الضرر، أو الكسر، أو الاعتماد على درجة الحرارة.
+
+
+---
+
+معايير القبول الحاسمة
+
+لا أوصي بإغلاق الترقية إلا بعد التحقق من الأدلة التالية:
+
+1. صحة قانون المادة
+
+تُقارن استجابة النموذج بحسابات تحليلية مستقلة في الحالات المرنة، وبداية الخضوع، والتحميل اللدن، والتفريغ.
+
+2. صحة خوارزمية Return Mapping
+
+بعد التصحيح، يجب أن تقع الحالة على سطح الخضوع أو داخله ضمن التسامح العددي المعلن، مع تحديث متسق للانفعال اللدن.
+
+3. صحة المماس الخوارزمي
+
+تُقارن المصفوفة المماسية التحليلية بالمشتقة العددية للإجهاد المحدث. هذا اختبار بالغ الأهمية لأن المماس غير الصحيح قد يفسد تقارب الحل العام حتى عندما يبدو قانون المادة مقبولًا.
+
+4. سلامة الحالة المادية
+
+يجب ألا تتراكم اللدونة عدة مرات أثناء محاولات نيوتن الفاشلة. ولا تُعتمد الحالة إلا بعد تقارب خطوة التحميل كاملة.
+
+5. صحة الاتزان العام
+
+يجب التحقق من الاتزان وردود الأفعال، ومن تقارب الحل مع تحسين تقسيم خطوات التحميل.
+
+6. النزاهة والأدلة
+
+أي تعديل في المادة أو الشبكة يبطل النتائج التابعة لها. ولا يجوز نشر نتيجة فاشلة أو غير مكتملة باعتبارها مؤهلة.
+
+
+---
+
+ما يأتي بعد الترقية 010؟
+
+المسار الطبيعي لتوسيع الفيزياء سيكون:
+
+الترقية	المجال	القيمة الفيزيائية
+
+011	Contact & Constraint Mechanics	التلامس، والانفصال، والقيود الميكانيكية
+012	Advanced Shell Mechanics	سلوك الصفائح والقشريات الرقيقة، إذا لم يكن مؤهلًا بالفعل
+013	Fracture & Fatigue Mechanics	نمو الشقوق، ومؤشرات الكسر، والتعب وفق نماذج معلنة
+014	Thermal–Structural Coupling	التمدد الحراري والتأثير المتبادل بين الحرارة والاستجابة الميكانيكية
+015	Independent FEM Qualification	تأهيل مستقل للنماذج العددية والفيزيائية المنفذة
+
+
+هذا ترتيب مقترح لتوسيع القدرات، وليس دليلًا على أن هذه المحركات غير موجودة أو غير منفذة في المستودع. يجب فحص الواقع البرمجي قبل تحديد الترقية التالية نهائيًا.
+
+توصيتي المعمارية: اجعل الترقية 010 أول توسعة مادية لاخطية مكتملة ومحددة النطاق، وركّز على اتساق قانون المادة والمماس وحالة نقاط التكامل. هذه العناصر هي ما سيحوّل دعم اللدونة من ميزة اسمية إلى قدرة هندسية يمكن الاعتماد عليها ضمن نطاق تأهيل واضح.

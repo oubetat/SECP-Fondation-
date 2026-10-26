@@ -1,0 +1,18 @@
+[
+  {
+    "id": "FSI-BM-001",
+    "name": "Cantilever Beam Transverse Deflection (Analytical vs Numerical)",
+    "category": "Structural Validation",
+    "status": "CONVERGED",
+    "errorPercent": 128.89772225628678,
+    "passed": false
+  },
+  {
+    "id": "FSI-BM-002",
+    "name": "Cylinder Stability Audit (Hydrodynamic Coupling)",
+    "category": "Fluid Structure Interaction",
+    "status": "CONVERGED",
+    "errorPercent": 1.2,
+    "passed": true
+  }
+]

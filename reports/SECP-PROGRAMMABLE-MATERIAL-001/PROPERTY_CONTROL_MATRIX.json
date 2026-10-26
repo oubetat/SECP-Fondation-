@@ -1,0 +1,44 @@
+{
+  "taskId": "SECP-PROGRAMMABLE-MATERIAL-001",
+  "auditDate": "2026-10-26",
+  "properties": [
+    {
+      "propertyId": "P-001",
+      "meaning": "Spatial Density / Porosity",
+      "unit": "kg/m^3 / %",
+      "classification": "INDIRECTLY_INFLUENCED",
+      "controlVariable": "Flow rate / Toolpath speed",
+      "modelRequirement": "Homogenization model (Lumped or RVE)",
+      "status": "UNKNOWN"
+    },
+    {
+      "propertyId": "P-002",
+      "meaning": "Elastic Modulus",
+      "unit": "Pa",
+      "classification": "MODEL_DERIVED",
+      "controlVariable": "Lattice structure / Strut thickness",
+      "modelRequirement": "FEM Linear/Nonlinear simulation",
+      "status": "EXISTING_VERIFIED",
+      "evidence": "SECP-FEM-UPGRADE-009"
+    },
+    {
+      "propertyId": "P-003",
+      "meaning": "Yield Strength",
+      "unit": "Pa",
+      "classification": "MODEL_DERIVED",
+      "controlVariable": "Material grade / Cell architecture",
+      "modelRequirement": "J2 Plasticity Constitutive Model",
+      "status": "EXISTING_VERIFIED",
+      "evidence": "SECP-FEM-UPGRADE-010"
+    },
+    {
+      "propertyId": "P-004",
+      "meaning": "As-Built Geometry Deviation",
+      "unit": "m",
+      "classification": "PHYSICALLY_MEASURED",
+      "measurementMethod": "CMM / 3D Scanning",
+      "status": "PARTIALLY_IMPLEMENTED",
+      "evidence": "src/engine/manufacturing/pma/PhysicalManufacturingEngine.ts"
+    }
+  ]
+}

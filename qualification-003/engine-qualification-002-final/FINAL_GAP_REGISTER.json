@@ -1,0 +1,42 @@
+{
+  "taskId": "SECP-ENGINE-QUALIFICATION-002-CLOSE-002",
+  "timestampUTC": "2026-10-25T08:02:05.212Z",
+  "gaps": [
+    {
+      "gapId": "GAP-FINAL-01",
+      "title": "CFD Multi-Grid Pressure Drop Oscillatory Convergence Classification",
+      "affectedEngine": "src/engine/cfd3d/diagnostics/GciEngine.ts",
+      "evidence": "dpCoarse=0.0522, dpMed=0.0790, dpFine=0.0710 yields R = -0.2985 < 0",
+      "remediation": "Reclassified as OSCILLATORY_CONVERGENCE (pre-asymptotic 8x2x2 mesh with y+ ~ 1700). Monotonic GCI claims strictly rejected.",
+      "closureTest": "GATE-FINAL-02",
+      "status": "CLOSED_WITH_EXPLICIT_CLASSIFICATION"
+    },
+    {
+      "gapId": "GAP-FINAL-02",
+      "title": "Poiseuille Navier-Stokes Analytical Comparison",
+      "affectedEngine": "src/engine/cfd3d/Fvm3DNavierStokesSolver.ts",
+      "evidence": "Exact Hagen-Poiseuille DeltaP = 3.00e-4 Pa and velocity ratio uMax/uMean = 1.5000 verified.",
+      "remediation": "Bound validation to analytical Navier-Stokes formulas and separate mass conservation checks.",
+      "closureTest": "GATE-FINAL-03",
+      "status": "CLOSED_WITH_ANALYTICAL_PROOF"
+    },
+    {
+      "gapId": "GAP-FINAL-03",
+      "title": "Real Consumption Path Stale Evidence Invalidation",
+      "affectedEngine": "src/engine/evidence/ledger/EngineeringEvidenceLedger.ts",
+      "evidence": "Full-cycle ledger registration, input mutation (REV-A to REV-B), verification against EvidenceIntegrityChecker returning INVALID, and re-solve binding to REV-B.",
+      "remediation": "Proven through real consumption path in EngineeringEvidenceLedger & EvidenceIntegrityChecker.",
+      "closureTest": "GATE-FINAL-04",
+      "status": "CLOSED_THROUGH_REAL_CONSUMPTION_PATH"
+    },
+    {
+      "gapId": "GAP-FINAL-04",
+      "title": "Forensic Explanation of FEMCore SHA-256 Hash Distinction",
+      "affectedEngine": "src/engine/fem/core/FEMCore.ts",
+      "evidence": "FEMCore.ts SHA256 is 634c0be3..., Bar1DFormulation.ts SHA256 is dd8940c...",
+      "remediation": "Clarified in Stage A forensic audit that prior text listed Bar1DFormulation hash under FEMCore label; both source files remain unchanged.",
+      "closureTest": "GATE-FINAL-01",
+      "status": "CLOSED_WITH_FORENSIC_PROOF"
+    }
+  ]
+}

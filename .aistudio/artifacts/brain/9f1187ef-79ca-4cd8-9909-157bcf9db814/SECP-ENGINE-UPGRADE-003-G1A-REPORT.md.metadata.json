@@ -1,0 +1,5 @@
+{
+  "summary":  "PreFlight Input Integrity and Contract Repair Report for SECP-ENGINE-UPGRADE-003-G1-A, demonstrating elimination of the G0 crash, 10-point fail-closed validation, 8 adversarial rejection tests, and sealed evidence package in qualification-003/engine-upgrade-003/G1/.",
+  "updatedAt":  "2026-10-24T07:43:53.207588659Z",
+  "userFacing":  true
+}

@@ -1,0 +1,17 @@
+{
+  "campaignId": "SECP-FSI-EVIDENCE-REPRODUCTION-007",
+  "states": [
+    {
+      "iteration": 0,
+      "hash": "d06cfc2ab88977674697c8d9ed27290d8cf57fdf0953f12e8c05cfae69de6f3b"
+    },
+    {
+      "iteration": 1,
+      "hash": "43c3d32244b78e4373d4a44edcd33ffed1db7243afea0c93dae4e9dc7465bf73"
+    },
+    {
+      "iteration": 2,
+      "hash": "bbc819f0a89e8dd4220397918af1b9c666feb77eb0fc93382ac0b2df49036ad1"
+    }
+  ]
+}

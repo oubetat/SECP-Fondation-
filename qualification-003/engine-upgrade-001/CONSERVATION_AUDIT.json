@@ -1,0 +1,8 @@
+{
+  "structuralVerticalForceImbalancePct": 3.38e-10,
+  "structuralMomentImbalancePct": 5.94e-10,
+  "electricalPowerImbalanceWatts": 0,
+  "thermalEnergyImbalanceRatio": 0,
+  "electrothermalCouplingEnergyConserved": true,
+  "status": "ALL_CONSERVATION_AUDITS_PASSED"
+}

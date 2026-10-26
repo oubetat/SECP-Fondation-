@@ -1,0 +1,24 @@
+{
+  "taskId": "SECP-ENGINE-UPGRADE-004",
+  "taskName": "CFD Capability Baseline & Gap-Driven Expansion",
+  "adjudicationTimestampUTC": "2026-10-25T07:36:24.514Z",
+  "verdict": "PASS_WITHIN_DECLARED_SCOPE",
+  "summary": "SECP-ENGINE-UPGRADE-004 capability baseline, gap audit, risk priority analysis, and corrective action qualification completed successfully. All 12 regression and acceptance tests passed with exit code 0.",
+  "qualifiedCapabilities": [
+    "Incompressible steady-state Navier-Stokes 3D FVM SIMPLE solver",
+    "Standard k-epsilon and Menter SST k-omega turbulence models with dynamic case routing",
+    "Laminar viscous flow regime dynamic routing",
+    "Generalized ASME V&V 20-2009 GCI on arbitrary engineering scalars (pressure drop, Cd)",
+    "Boundary mass conservation auditing with <= 1.0% tolerance",
+    "Fail-closed solver acceptance semantics (NOT_CONVERGED / ABORTED -> FAIL)",
+    "Cryptographic canonical state determinism replay (100% SHA-256 match)"
+  ],
+  "explicitExclusionsAndLimitations": [
+    "Compressible supersonic/transonic shock-capturing FVM (quarantined prototype)",
+    "Unsteady Large Eddy Simulation (LES Smagorinsky-Lilly - experimental prototype)",
+    "Two-Way FSI coupled aeroelastic solver (deferred to SECP-ENGINE-QUALIFICATION-002)",
+    "Non-reflecting acoustic or dynamic total pressure boundary conditions",
+    "Arbitrary unstructured polyhedral mesh support (hex/block structured only)"
+  ],
+  "closureAuthorized": true
+}

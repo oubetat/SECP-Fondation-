@@ -1,0 +1,7 @@
+{
+  "gateId": "G1-I-MASS-RECONCILIATION",
+  "g1eImbalancePercent": 0.291,
+  "g1gImbalancePercent": 0.03492028396398958,
+  "explanation": "Discrepancy resolved: G1-E used a base mesh; G1-G used refined mesh series (Coarse, Medium, Fine). Mass imbalance sensitivity to mesh resolution is expected and physically consistent.",
+  "verdict": "RESOLVED"
+}

@@ -1,0 +1,31 @@
+{
+  "taskId": "SECP-ENGINE-UPGRADE-004",
+  "documentTitle": "CFD Corrective Action Plan & Implementation Record",
+  "timestampUTC": "2026-10-25T07:31:00Z",
+  "remediations": [
+    {
+      "gapId": "GAP-02",
+      "actionTitle": "Turbulence Scheme & Flow Regime Dynamic Routing",
+      "targetFile": "src/engine/cfd3d/adaptive/AdaptiveIndustrialCFDEngine.ts",
+      "affectedLines": "129-131",
+      "description": "Replaced hardcoded 'K_EPSILON' with dynamic routing from caseDef.turbulenceModelIdentity and caseDef.flowRegime. Automatically routes LAMINAR (useTurbulenceModel: false) and SST_K_OMEGA (turbulenceScheme: 'SST_K_OMEGA'), defaulting to K_EPSILON.",
+      "regressionSafeguards": "Backwards-compatible; default cases without explicit model identity continue to use K_EPSILON with identical behavior."
+    },
+    {
+      "gapId": "GAP-01",
+      "actionTitle": "Generalized Scalar Grid Convergence Contract in GciEngine",
+      "targetFile": "src/engine/cfd3d/diagnostics/GciEngine.ts",
+      "affectedLines": "244-315",
+      "description": "Implemented GciEngine.evaluateScalarContract to calculate Richardson extrapolation and ASME V&V 20 GCI over arbitrary engineering scalar fields (pressure drop, drag coefficient, mass imbalance, etc.) avoiding divide-by-zero on symmetric lift-neutral cases.",
+      "regressionSafeguards": "Existing evaluateStrictContract method remains intact for backwards compatibility."
+    },
+    {
+      "gapId": "GAP-06",
+      "actionTitle": "Automated Analytical Poiseuille Flow Benchmark Verification",
+      "targetFile": "qualification-003/engine-upgrade-004/run_cfd_upgrade_004_acceptance.ts",
+      "description": "Implemented automated analytical benchmark runner comparing FVM discrete velocity profiles with exact Hagen-Poiseuille parabolic solution u(y) = 4*umax*(y/H)*(1 - y/H), verifying relative L2 error <= 5.0%.",
+      "regressionSafeguards": "Executed as an isolated test case in the acceptance pipeline."
+    }
+  ],
+  "zeroWeakeningCertification": "No thresholds, assertions, convergence tolerances, or fail-closed abort rules were softened or removed."
+}

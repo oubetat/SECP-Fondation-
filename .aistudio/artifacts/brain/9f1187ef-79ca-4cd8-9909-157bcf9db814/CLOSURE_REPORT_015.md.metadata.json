@@ -1,0 +1,5 @@
+{
+  "summary":  "Updated SECP-FSI-QUALIFICATION-015 closure report artifact under PASS_WITHIN_DECLARED_SCOPE. Includes source SHA-256 verification, QUAD_2D SRI rank & symmetry audit, moment balance proof, and adversarial fault-injection results.",
+  "updatedAt":  "2026-10-23T18:04:21.209611783Z",
+  "userFacing":  true
+}

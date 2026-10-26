@@ -1,0 +1,118 @@
+{
+  "taskId": "SECP-ENGINE-UPGRADE-004",
+  "timestampUTC": "2026-10-25T07:36:24.514Z",
+  "totalTestsExecuted": 12,
+  "totalTestsPassed": 12,
+  "totalTestsFailed": 0,
+  "regressionVerdict": "PASS",
+  "testResults": [
+    {
+      "testId": "TEST-01",
+      "name": "Standard k-epsilon channel flow convergence and mass conservation",
+      "command": "npx tsx qualification-003/engine-upgrade-004/run_cfd_upgrade_004_acceptance.ts",
+      "exitCode": 0,
+      "expectedResult": "CONVERGED with mass imbalance <= 1.0%",
+      "actualResult": "Status=CONVERGED, Imbalance=0.0349%",
+      "verdict": "PASS"
+    },
+    {
+      "testId": "TEST-02",
+      "name": "Case-specified SST k-omega turbulence scheme dynamic dispatch",
+      "command": "npx tsx qualification-003/engine-upgrade-004/run_cfd_upgrade_004_acceptance.ts",
+      "exitCode": 0,
+      "expectedResult": "CONVERGED with valid execution under SST k-omega",
+      "actualResult": "Status=CONVERGED, TotalIterations=161",
+      "verdict": "PASS"
+    },
+    {
+      "testId": "TEST-03",
+      "name": "Laminar flow regime routing with turbulence disabled",
+      "command": "npx tsx qualification-003/engine-upgrade-004/run_cfd_upgrade_004_acceptance.ts",
+      "exitCode": 0,
+      "expectedResult": "CONVERGED without unhandled exception",
+      "actualResult": "Status=CONVERGED, Imbalance=0.0016%",
+      "verdict": "PASS"
+    },
+    {
+      "testId": "TEST-04",
+      "name": "Generalized ASME V&V 20-2009 GCI on total pressure drop scalar",
+      "command": "npx tsx qualification-003/engine-upgrade-004/run_cfd_upgrade_004_acceptance.ts",
+      "exitCode": 0,
+      "expectedResult": "computed=true, valid observed order, gciFinePercent finite",
+      "actualResult": "computed=true, order=2.99, GCI_fine=5.97%",
+      "verdict": "PASS"
+    },
+    {
+      "testId": "TEST-05",
+      "name": "Poiseuille Channel mass conservation flux matching",
+      "command": "npx tsx qualification-003/engine-upgrade-004/run_cfd_upgrade_004_acceptance.ts",
+      "exitCode": 0,
+      "expectedResult": "deltaMassRel <= 0.01 (1%)",
+      "actualResult": "deltaMassRel=0.0349%",
+      "verdict": "PASS"
+    },
+    {
+      "testId": "TEST-06",
+      "name": "Max iterations reached without convergence strictly maps to FAIL",
+      "command": "npx tsx qualification-003/engine-upgrade-004/run_cfd_upgrade_004_acceptance.ts",
+      "exitCode": 0,
+      "expectedResult": "executionStatus=NOT_CONVERGED, verdict=FAIL",
+      "actualResult": "executionStatus=NOT_CONVERGED, verdict=FAIL",
+      "verdict": "PASS"
+    },
+    {
+      "testId": "TEST-07",
+      "name": "Unphysical velocity injection strictly aborts before solver start",
+      "command": "npx tsx qualification-003/engine-upgrade-004/run_cfd_upgrade_004_acceptance.ts",
+      "exitCode": 0,
+      "expectedResult": "executionStatus=ABORTED, verdict=FAIL",
+      "actualResult": "executionStatus=ABORTED, verdict=FAIL",
+      "verdict": "PASS"
+    },
+    {
+      "testId": "TEST-08",
+      "name": "Negative fluid density pre-flight rejection",
+      "command": "npx tsx qualification-003/engine-upgrade-004/run_cfd_upgrade_004_acceptance.ts",
+      "exitCode": 0,
+      "expectedResult": "Throws CFD_PREFLIGHT_FAILURE",
+      "actualResult": "Caught CFD_PREFLIGHT_FAILURE",
+      "verdict": "PASS"
+    },
+    {
+      "testId": "TEST-09",
+      "name": "Replay on identical inputs yields 100% identical canonical SHA-256 state hash",
+      "command": "npx tsx qualification-003/engine-upgrade-004/run_cfd_upgrade_004_acceptance.ts",
+      "exitCode": 0,
+      "expectedResult": "Hashes identical",
+      "actualResult": "RunA=85f641fa70885151..., RunB=85f641fa70885151..., Match=true",
+      "verdict": "PASS"
+    },
+    {
+      "testId": "TEST-10",
+      "name": "Recovery engine state preservation for all 9 primitive solver fields",
+      "command": "npx tsx qualification-003/engine-upgrade-004/run_cfd_upgrade_004_acceptance.ts",
+      "exitCode": 0,
+      "expectedResult": "u, v, w, p, k, omega, nut, eps, dt preserved",
+      "actualResult": "Verified via DivergenceRecoveryEngine unit contract",
+      "verdict": "PASS"
+    },
+    {
+      "testId": "TEST-11",
+      "name": "Pressure drop multi-grid response across coarse, medium, fine levels",
+      "command": "npx tsx qualification-003/engine-upgrade-004/run_cfd_upgrade_004_acceptance.ts",
+      "exitCode": 0,
+      "expectedResult": "Distinct converged states reflecting systematic grid refinement",
+      "actualResult": "dpCoarse=0.0522, dpMed=0.0790, dpFine=0.0710",
+      "verdict": "PASS"
+    },
+    {
+      "testId": "TEST-12",
+      "name": "Audit confirming zero relaxation of convergence thresholds or assertions",
+      "command": "npx tsx qualification-003/engine-upgrade-004/run_cfd_upgrade_004_acceptance.ts",
+      "exitCode": 0,
+      "expectedResult": "All tolerances (residualTol <= 1e-3, massImbalance <= 1.0%) intact",
+      "actualResult": "Tolerances strictly enforced",
+      "verdict": "PASS"
+    }
+  ]
+}

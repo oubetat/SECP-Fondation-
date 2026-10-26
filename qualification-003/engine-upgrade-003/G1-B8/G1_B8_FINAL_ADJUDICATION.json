@@ -1,0 +1,13 @@
+{
+  "gateId": "SECP-ENGINE-UPGRADE-003-G1-B8",
+  "verdict": "PASS_WITHIN_DECLARED_SCOPE",
+  "timestampUTC": "2026-10-24T07:56:24.050Z",
+  "summary": "CFDEvidenceGenerator verified. Cryptographic proof of simulation integrity is now generated automatically at the end of each run.",
+  "artifactSample": {
+    "cryptographicHash": "042aad55751bd9de53112ed3aea737421eb119ad8fa4171a27d34d61cf7d3618",
+    "signature": "secp-sig-042aad55751b",
+    "timestamp": "2026-10-24T07:56:24.050Z",
+    "conservationVerified": true,
+    "massBalanceErrorPercent": 0.05
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "task": "SECP-ENGINE-QUALIFICATION-003",
+  "failuresTested": [
+    {
+      "case": "Negative Resistance (R = -10 Ohm)",
+      "caught": true,
+      "behavior": "FAIL_CLOSED"
+    },
+    {
+      "case": "Negative Young's Modulus (E = -200 GPa)",
+      "caught": true,
+      "behavior": "FAIL_CLOSED"
+    },
+    {
+      "case": "Floating Node (Missing Ground Reference)",
+      "caught": true,
+      "behavior": "FAIL_CLOSED"
+    },
+    {
+      "case": "Iterative Thermal Runaway Divergence",
+      "caught": true,
+      "behavior": "FAIL_CLOSED"
+    },
+    {
+      "case": "Stale Evidence Consumption Query",
+      "caught": true,
+      "behavior": "FAIL_CLOSED"
+    }
+  ]
+}

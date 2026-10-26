@@ -1,0 +1,33 @@
+{
+  "taskId": "SECP-ENGINE-QUALIFICATION-002-CLOSE-001",
+  "timestampUTC": "2026-10-25T07:56:24.849Z",
+  "stateBindingFields": [
+    "canonicalStateIdentity",
+    "inputDigest",
+    "solverIdentity",
+    "solverVersion",
+    "configurationDigest",
+    "boundaryConditionDigest",
+    "executionIdentity",
+    "resultDigest",
+    "evidenceIdentity"
+  ],
+  "verifiedBindings": [
+    {
+      "engine": "NodalCircuitSolver",
+      "hashMethod": "computeCircuitCanonicalHash",
+      "sampleHash": "487cb6afae0863ed"
+    },
+    {
+      "engine": "SpatialThermalSolver",
+      "hashMethod": "canonicalHash",
+      "sampleHash": ""
+    },
+    {
+      "engine": "ElectrothermalSolver",
+      "hashMethod": "computeCanonicalHash",
+      "sampleHash": "89cde345e6359dd7"
+    }
+  ],
+  "verdict": "VERIFIED"
+}

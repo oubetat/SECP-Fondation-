@@ -1,0 +1,17 @@
+{
+  "campaignId": "SECP-FSI-INDEPENDENT-VERIFICATION-EXECUTION-005",
+  "testId": "BENCH-BEAM-001",
+  "analyticalTipDeflectionM": -0.0038095238,
+  "meshes": [
+    { "mesh": "Coarse (10x2)", "dispM": -0.00270898, "errorPct": 28.89, "rawEquilErr": 0.000003467, "equilErrPct": 0.0003467 },
+    { "mesh": "Medium (20x4)", "dispM": -0.00346774, "errorPct": 8.97, "rawEquilErr": 0.00001390, "equilErrPct": 0.0013900 },
+    { "mesh": "Fine (40x8)", "dispM": -0.00373253, "errorPct": 2.02, "rawEquilErr": 0.00005217, "equilErrPct": 0.0052170 }
+  ],
+  "solverMethod": "Global Assembly Stiffness MNA / PCG Solver with Dense Fallback",
+  "fallbackPathTriggered": "Fine mesh condition number limit invoked PCG fallback to Dense matrix solver cleanly.",
+  "stressAtRootFiberPa": 120000000.0,
+  "analyticalStressPa": 120000000.0,
+  "stressErrorPct": 0.0,
+  "plateBendingCapabilityGap": "DEFECT-STRUCT-001 remains open (out-of-plane plate bending element formulation not implemented).",
+  "verdict": "PASS"
+}

@@ -1,0 +1,56 @@
+{
+  "meshResults": [
+    {
+      "testId": "FSI-MESH-001",
+      "description": "Applies displacement to correct target boundary faces",
+      "expectedCentroid": {
+        "x": 0.09333333333333332,
+        "y": 0.02,
+        "z": 0.08333333333333333
+      },
+      "actualCentroid": {
+        "x": 0.09333333333333332,
+        "y": 0.02,
+        "z": 0.08333333333333333
+      },
+      "passed": true
+    },
+    {
+      "testId": "FSI-MESH-002",
+      "description": "Propagates boundary motion consistently to near-wall cells with valid positive volumes",
+      "cellsUpdatedCount": 21,
+      "minCellVolume": 0.004074074074074074,
+      "passed": true
+    },
+    {
+      "testId": "FSI-MESH-003",
+      "description": "Rejects NaN and Infinity displacements before mutating mesh",
+      "error": "REJECTED: Non-finite displacement encountered (NaN / Infinity)",
+      "passed": true
+    },
+    {
+      "testId": "FSI-MESH-004",
+      "description": "Detects geometric element inversion or extreme distortion and rejects update",
+      "error": "REJECTED: Element inversion detected! Cell 30 volume compressed to -1.3426e-1 m^3 (must be > 0)",
+      "passed": true
+    },
+    {
+      "testId": "FSI-MESH-005",
+      "description": "Preserves non-moving farfield and inlet boundary nodes untouched",
+      "inletCentroidPreserved": true,
+      "passed": true
+    },
+    {
+      "testId": "FSI-MESH-006",
+      "description": "Guarantees original mesh remains intact and unmutated upon update rejection",
+      "originalMeshIntact": true,
+      "passed": true
+    },
+    {
+      "testId": "FSI-MESH-007",
+      "description": "Guarantees bit-identical mesh coordinates across repeated runs",
+      "passed": true
+    }
+  ],
+  "timestamp": "2026-10-23T07:28:20.892Z"
+}

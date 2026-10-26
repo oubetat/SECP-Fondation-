@@ -1,0 +1,16 @@
+{
+  "divergenceDetected": true,
+  "divergenceReason": "NaN_OR_INF_DETECTED",
+  "recoverySuccessful": true,
+  "checkpointRestoredIteration": 5,
+  "restoredFieldsVerified": {
+    "u": true,
+    "v": true,
+    "w": true,
+    "p": true
+  },
+  "failedRecoveryBehavior": {
+    "handledDecisively": true,
+    "failClosedTerminationVerified": true
+  }
+}

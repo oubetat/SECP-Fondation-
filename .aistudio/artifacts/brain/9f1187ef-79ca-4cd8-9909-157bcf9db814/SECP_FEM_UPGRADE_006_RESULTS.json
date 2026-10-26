@@ -1,0 +1,182 @@
+{
+  "campaignId": "SECP-FEM-UPGRADE-006",
+  "title": "Linear Buckling & Eigenvalue Stability Engine Qualification",
+  "status": "QUALIFIED_WITHIN_DECLARED_SCOPE",
+  "summary": {
+    "totalTests": 9,
+    "passedTests": 9,
+    "failedTests": 0
+  },
+  "benchmarkComparison": {
+    "pinnedPinnedPcrN": {
+      "fem": 2072.6848453563866,
+      "analytical": 2072.616924228765,
+      "errorPct": "0.003"
+    },
+    "fixedFreePcrN": {
+      "fem": 518.155299758916,
+      "analytical": 518.1542310571913,
+      "errorPct": "0.000"
+    },
+    "fixedPinnedPcrN": {
+      "fem": 4240.6282708966055,
+      "analytical": 4240.0488686377485,
+      "errorPct": "0.014"
+    },
+    "fixedFixedPcrN": {
+      "fem": 8290.949189197694,
+      "analytical": 8290.46769691506,
+      "errorPct": "0.006"
+    }
+  },
+  "sourceHashes": {
+    "src/engine/fem/buckling/BucklingTypes.ts": "5498e24db0c8378111c449b3c744509e70cb8079b30cab86e76f382bd519ca19",
+    "src/engine/fem/buckling/GeometricStiffnessEngine.ts": "b6c61848815e469a5918828c4683714bf305ddd66e4ba4deef57da54c4e15cd8",
+    "src/engine/fem/buckling/BucklingEigenSolver.ts": "ceb7c2a92e574892998bb3a1932a6d59b3660775450c8f93f9576282410cc3e4",
+    "src/engine/fem/buckling/LinearBucklingAnalysis.ts": "2c72b58be79e68b9f9648f88b30b45543a9923aa62194930cfdc74136e0a3dbd",
+    "src/engine/fem/core/FEMCore.ts": "cf65650ce03db96ea19680103815d5987ed371a6bf80417b14e595afedb5f924"
+  },
+  "testRecords": [
+    {
+      "testId": "BUCK-FORM-001",
+      "status": "PASS",
+      "testDescription": "BEAM_2D local geometric stiffness exact symmetry (Kg = Kg^T)",
+      "elementType": "BEAM_2D",
+      "referenceValue": 0,
+      "computedValue": 0,
+      "absoluteError": 0,
+      "relativeError": 0,
+      "tolerance": 1e-10,
+      "units": "N/mm",
+      "evidence": {
+        "formula": "max|Kg[r,c] - Kg[c,r]| <= 1e-10",
+        "details": "Max asymmetry = 0.0000e+0"
+      }
+    },
+    {
+      "testId": "BUCK-EIG-001",
+      "status": "PASS",
+      "testDescription": "Generalized eigenvalue solver exact eigenvalue calculation",
+      "referenceValue": 10,
+      "computedValue": 10,
+      "absoluteError": 0,
+      "relativeError": 0,
+      "tolerance": 0.000001,
+      "units": "dimensionless",
+      "evidence": {
+        "formula": "lambda = K / K_G = 10.0",
+        "details": "Computed lambda = 10.000000"
+      }
+    },
+    {
+      "testId": "EULER-001",
+      "status": "PASS",
+      "testDescription": "Pinned-Pinned Euler column critical load (K_eff = 1.0)",
+      "elementType": "BEAM_2D",
+      "referenceValue": 2072.616924228765,
+      "computedValue": 2072.6848453563866,
+      "absoluteError": 0.06792112762150282,
+      "relativeError": 0.00003277070973777594,
+      "tolerance": 0.005,
+      "units": "N",
+      "evidence": {
+        "formula": "P_cr = pi^2 * E * I / L^2",
+        "details": "FEM P_cr = 2072.68 N, Analytical = 2072.62 N"
+      }
+    },
+    {
+      "testId": "EULER-002",
+      "status": "PASS",
+      "testDescription": "Fixed-Free cantilever Euler column critical load (K_eff = 2.0)",
+      "elementType": "BEAM_2D",
+      "referenceValue": 518.1542310571913,
+      "computedValue": 518.155299758916,
+      "absoluteError": 0.0010687017247619224,
+      "relativeError": 0.0000020625166421616357,
+      "tolerance": 0.005,
+      "units": "N",
+      "evidence": {
+        "formula": "P_cr = pi^2 * E * I / (4 * L^2)",
+        "details": "FEM P_cr = 518.16 N, Analytical = 518.15 N"
+      }
+    },
+    {
+      "testId": "EULER-003",
+      "status": "PASS",
+      "testDescription": "Fixed-Pinned Euler column critical load (K_eff = 0.699156)",
+      "elementType": "BEAM_2D",
+      "referenceValue": 4240.0488686377485,
+      "computedValue": 4240.6282708966055,
+      "absoluteError": 0.5794022588570442,
+      "relativeError": 0.00013664990117040696,
+      "tolerance": 0.01,
+      "units": "N",
+      "evidence": {
+        "formula": "P_cr = pi^2 * E * I / (0.699156 * L)^2",
+        "details": "FEM P_cr = 4240.63 N, Analytical = 4240.05 N"
+      }
+    },
+    {
+      "testId": "EULER-004",
+      "status": "PASS",
+      "testDescription": "Fixed-Fixed Euler column critical load (K_eff = 0.5)",
+      "elementType": "BEAM_2D",
+      "referenceValue": 8290.46769691506,
+      "computedValue": 8290.949189197694,
+      "absoluteError": 0.48149228263355326,
+      "relativeError": 0.00005807781903700316,
+      "tolerance": 0.01,
+      "units": "N",
+      "evidence": {
+        "formula": "P_cr = 4 * pi^2 * E * I / L^2",
+        "details": "FEM P_cr = 8290.95 N, Analytical = 8290.47 N"
+      }
+    },
+    {
+      "testId": "EULER-006",
+      "status": "PASS",
+      "testDescription": "16-element mesh refinement convergence (< 0.1% error)",
+      "elementType": "BEAM_2D",
+      "referenceValue": 2072.616924228765,
+      "computedValue": 2072.6284821012823,
+      "absoluteError": 0.011557872517187207,
+      "relativeError": 0.000005576463446803113,
+      "tolerance": 0.001,
+      "units": "N",
+      "evidence": {
+        "formula": "Error(N=16) = |P_FEM - P_analytical| / P_analytical < 0.001",
+        "details": "N=16 FEM P_cr = 2072.628 N, Rel Error = 0.0006%"
+      }
+    },
+    {
+      "testId": "ADV-BUCK-001",
+      "status": "PASS",
+      "testDescription": "Tensile stress state rejection guard",
+      "referenceValue": 1,
+      "computedValue": 1,
+      "absoluteError": 0,
+      "relativeError": 0,
+      "tolerance": 0,
+      "units": "boolean",
+      "evidence": {
+        "formula": "No compression N < 0 => throw [NO_COMPRESSIVE_STRESS_STATE]",
+        "details": "Rejection caught: true"
+      }
+    },
+    {
+      "testId": "ADV-BUCK-004",
+      "status": "PASS",
+      "testDescription": "Unsupported element formulation rejection guard",
+      "referenceValue": 1,
+      "computedValue": 1,
+      "absoluteError": 0,
+      "relativeError": 0,
+      "tolerance": 0,
+      "units": "boolean",
+      "evidence": {
+        "formula": "Formulation not in [BEAM_2D, FRAME_2D] => throw [UNSUPPORTED_ELEMENT_FOR_BUCKLING]",
+        "details": "Rejection caught: true"
+      }
+    }
+  ]
+}

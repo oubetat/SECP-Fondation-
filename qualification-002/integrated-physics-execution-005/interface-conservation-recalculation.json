@@ -1,0 +1,27 @@
+{
+  "campaignId": "SECP-FSI-INDEPENDENT-VERIFICATION-EXECUTION-005",
+  "referencePointM": { "x": 0.5, "y": 0.0, "z": 0.0 },
+  "coordinateSystem": "Cartesian Right-Handed (X along span, Y transverse, Z out-of-plane)",
+  "fluidSideResultants": {
+    "totalForceN": { "fx": 0.0, "fy": -50662.5, "fz": 0.0 },
+    "totalMomentNm": { "mx": 0.0, "my": 0.0, "mz": -25331.25 }
+  },
+  "structuralSideResultants": {
+    "totalReactionN": { "fx": 0.0, "fy": 50662.463104, "fz": 0.0 },
+    "totalReactionMomentNm": { "mx": 0.0, "my": 0.0, "mz": -25331.23 }
+  },
+  "signedResiduals": {
+    "forceResidualN": { "fx": 0.0, "fy": 0.036895, "fz": 0.0 },
+    "momentResidualNm": { "mx": 0.0, "my": 0.0, "mz": 0.02 }
+  },
+  "normalizationFormula": "Relative Error % = (|Fluid - Structural| / |Fluid|) * 100",
+  "tolerances": { "forceTolerancePct": 0.01, "momentTolerancePct": 0.01 },
+  "outcomes": {
+    "forceBalancePassed": true,
+    "forceImbalancePct": 0.0000728,
+    "momentBalancePassed": true,
+    "relativeMomentErrorPct": 0.0000789,
+    "energyConservationStatus": "NOT_VERIFIED_DIRECTLY",
+    "energyConservationNote": "Energy conservation remains NOT_VERIFIED_DIRECTLY as no transient work-energy integral is evaluated; static force and moment balances are rigorously satisfied."
+  }
+}

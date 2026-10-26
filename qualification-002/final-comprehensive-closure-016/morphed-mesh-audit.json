@@ -1,0 +1,9 @@
+{
+  "macroMeshInversionRejected": true,
+  "macroInversionErrorMessage": "REJECTED: Element inversion/degeneracy! Cell 0 volume -1.2500e-3 (Threshold: 1.2500e-7, Original: 1.2500e-3)",
+  "microMeshInversionRejected": true,
+  "microInversionErrorMessage": "REJECTED: Element inversion/degeneracy! Cell 0 volume -1.2500e-12 (Threshold: 1.2500e-16, Original: 1.2500e-12)",
+  "scaleInvarianceVerified": true,
+  "atomicRollbackPrePostSnapshotIdentical": true,
+  "status": "PASS"
+}

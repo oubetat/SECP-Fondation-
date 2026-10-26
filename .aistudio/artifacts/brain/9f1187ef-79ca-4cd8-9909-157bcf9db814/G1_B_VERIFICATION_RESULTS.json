@@ -1,0 +1,197 @@
+{
+  "campaignId": "SECP-FEM-QUALIFICATION-001-G1-B",
+  "timestamp": "2026-10-26T08:14:53.156Z",
+  "totalTests": 6,
+  "passed": 6,
+  "failed": 0,
+  "results": [
+    {
+      "testId": "FEM-G1-B-001",
+      "name": "Single element tension (FL/AE)",
+      "status": "PASS",
+      "analytical": {
+        "delta": 0.47619047619047616
+      },
+      "numerical": {
+        "delta": 0.47619047619047616
+      },
+      "error": 0,
+      "tolerance": 1e-7,
+      "evidence": {
+        "modelHash": "b7054a2fa7e37f5b20a468b7f5ff91f8d02ce9cd62b44edcf6b21843964401f8",
+        "meshHash": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+        "materialHash": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+        "formulationHash": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+        "assemblyHash": "2fab7b63f628217fc94468c7638f32c401ff9c1fa1fe9d2d2abcae8e6b65ded1",
+        "matrixHash": "06ee1ddbb5281fae992ac4f4131b28bbbf675c7c10f52d777abd7af7f95772fd",
+        "loadHash": "9d70adb4d596cd212a1ed4d588265ac7fbbcf40a79c23cd8a0048afc8a9d6017",
+        "solverHash": "64b7fa537760f25e44c56b43bd04c6c248cd8b8e4a2133c6a2f41ebe1c0a506d",
+        "solutionHash": "64b7fa537760f25e44c56b43bd04c6c248cd8b8e4a2133c6a2f41ebe1c0a506d",
+        "fieldHash": "eec131e9bc50636ee280ae32caa56cfb48dc58f3872e9a1569d525f526ba1c7c",
+        "verificationHash": "56a2dc02bb3bade641cc9196d151b73294a7b9ff8f8f47db034f9eef51b721df",
+        "solverType": "DIRECT_PARTITIONED",
+        "bcMethod": "DIRECT_ELIMINATION",
+        "sparseMetrics": {
+          "totalDOFs": 2,
+          "nnz": 4,
+          "sparsityRatio": 0
+        },
+        "timestamp": "2026-10-26T08:14:53.151Z"
+      }
+    },
+    {
+      "testId": "FEM-G1-B-002",
+      "name": "Single element compression (sign check)",
+      "status": "PASS",
+      "analytical": {
+        "delta": -0.23809523809523808
+      },
+      "numerical": {
+        "delta": -0.23809523809523808
+      },
+      "error": 0,
+      "tolerance": 1e-7,
+      "evidence": {
+        "modelHash": "abae5486081254cf70555eeb352ffffbf7494da88c5b3d8e52adc54c1ece8773",
+        "meshHash": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+        "materialHash": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+        "formulationHash": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+        "assemblyHash": "2fab7b63f628217fc94468c7638f32c401ff9c1fa1fe9d2d2abcae8e6b65ded1",
+        "matrixHash": "06ee1ddbb5281fae992ac4f4131b28bbbf675c7c10f52d777abd7af7f95772fd",
+        "loadHash": "1ec84b0da56585188f37337d4787d12f0cc50463d2f8f7da7c13b8109ade4e28",
+        "solverHash": "82c1adb664f32df818bf8aa9134a24a0c423ef703ba60a9eb883a8cfc9114138",
+        "solutionHash": "82c1adb664f32df818bf8aa9134a24a0c423ef703ba60a9eb883a8cfc9114138",
+        "fieldHash": "0f6f29e6b47a84b103268614e295b6bad36c6aefbeb7d49aac96f63dae561d83",
+        "verificationHash": "b2bdbf61948e216942fa57c564148d005bd967010cf8008365002b7cefb6506c",
+        "solverType": "DIRECT_PARTITIONED",
+        "bcMethod": "DIRECT_ELIMINATION",
+        "sparseMetrics": {
+          "totalDOFs": 2,
+          "nnz": 4,
+          "sparsityRatio": 0
+        },
+        "timestamp": "2026-10-26T08:14:53.152Z"
+      }
+    },
+    {
+      "testId": "FEM-G1-B-003",
+      "name": "Multi-element assembly (internal node balance)",
+      "status": "PASS",
+      "analytical": {
+        "u2": 0.23809523809523808,
+        "u3": 0.47619047619047616
+      },
+      "numerical": {
+        "u2": 0.23809523809523808,
+        "u3": 0.47619047619047616
+      },
+      "error": 0,
+      "tolerance": 1e-7,
+      "evidence": {
+        "modelHash": "96cd04e53c04588ed1aeb11fecc750cb7bc543e749ce729f94243f87ed3085ae",
+        "meshHash": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+        "materialHash": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+        "formulationHash": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+        "assemblyHash": "0b2d5e2ee4c2e7e979f846f7ecb8ac53790dd3a365fe81800dfb0721ea2b49b2",
+        "matrixHash": "a2b52eb49a3e96b1f2f049f91ec4e5751f1e5b9fb8ae027e22bc739edf05be1e",
+        "loadHash": "d0876ce714ec82b6b2ce0c9ebc63ecef7e62eff62564e4d531bd0f200b96e6e2",
+        "solverHash": "1500e1b4c0ad898371eec7c452059bab7047fa01918aa706a176a6bcfcce1035",
+        "solutionHash": "1500e1b4c0ad898371eec7c452059bab7047fa01918aa706a176a6bcfcce1035",
+        "fieldHash": "f18fcd7adec2f160cd06aac65249b46766092577937d7fb414294e4870672eee",
+        "verificationHash": "56a2dc02bb3bade641cc9196d151b73294a7b9ff8f8f47db034f9eef51b721df",
+        "solverType": "DIRECT_PARTITIONED",
+        "bcMethod": "DIRECT_ELIMINATION",
+        "sparseMetrics": {
+          "totalDOFs": 3,
+          "nnz": 7,
+          "sparsityRatio": 0.2222222222222222
+        },
+        "timestamp": "2026-10-26T08:14:53.154Z"
+      }
+    },
+    {
+      "testId": "FEM-G1-B-004",
+      "name": "CST Plane Stress basic patch",
+      "status": "PASS",
+      "analytical": {
+        "info": "Positive displacement expected"
+      },
+      "numerical": {
+        "u2x": 0.2
+      },
+      "error": 0,
+      "tolerance": 1e-7,
+      "evidence": {
+        "modelHash": "4422a71b43b1a59d040c1518fb5607cbb6362d5558e7d09f8874b3971d51266e",
+        "meshHash": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+        "materialHash": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+        "formulationHash": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+        "assemblyHash": "e540905d679fff7aa43163a1ca9a73381924fd03ce003f038fb948a6bcc2cc9c",
+        "matrixHash": "48c5a0d319cba227cad099fea736d6831c3805c90707a3035640e378b8a97da9",
+        "loadHash": "5191a982f46edda665c8a6f6d01a6fb02bc57f7be0d77284edef695bcb1494eb",
+        "solverHash": "2162d6bf053360f46b1ff7c8bcf4af3f15af72aa51911cb3e9cdc0876f425efd",
+        "solutionHash": "2162d6bf053360f46b1ff7c8bcf4af3f15af72aa51911cb3e9cdc0876f425efd",
+        "fieldHash": "0fb93012f94a7ab99ae3ab597f720adab0f7539da9e2bf0b66bfbebfbfe41f1c",
+        "verificationHash": "f6b9df558f1c30fdca185d3385626935399f54ff1ee41df60113f609162881a4",
+        "solverType": "DIRECT_PARTITIONED",
+        "bcMethod": "DIRECT_ELIMINATION",
+        "sparseMetrics": {
+          "totalDOFs": 6,
+          "nnz": 28,
+          "sparsityRatio": 0.2222222222222222
+        },
+        "timestamp": "2026-10-26T08:14:53.156Z"
+      }
+    },
+    {
+      "testId": "FEM-G1-B-005",
+      "name": "CST stiffness matrix symmetry check",
+      "status": "PASS",
+      "analytical": {
+        "symmetric": true
+      },
+      "numerical": {
+        "symmetric": true
+      },
+      "error": 0,
+      "tolerance": 0,
+      "evidence": {}
+    },
+    {
+      "testId": "FEM-G1-B-006",
+      "name": "Global reaction force balance",
+      "status": "PASS",
+      "analytical": {
+        "sumF": 0
+      },
+      "numerical": {
+        "sumFx": 0,
+        "sumFy": 0,
+        "sumFz": 0
+      },
+      "error": 0,
+      "tolerance": 0.00001,
+      "evidence": {
+        "modelHash": "b7054a2fa7e37f5b20a468b7f5ff91f8d02ce9cd62b44edcf6b21843964401f8",
+        "meshHash": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+        "materialHash": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+        "formulationHash": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+        "assemblyHash": "2fab7b63f628217fc94468c7638f32c401ff9c1fa1fe9d2d2abcae8e6b65ded1",
+        "matrixHash": "06ee1ddbb5281fae992ac4f4131b28bbbf675c7c10f52d777abd7af7f95772fd",
+        "loadHash": "9d70adb4d596cd212a1ed4d588265ac7fbbcf40a79c23cd8a0048afc8a9d6017",
+        "solverHash": "64b7fa537760f25e44c56b43bd04c6c248cd8b8e4a2133c6a2f41ebe1c0a506d",
+        "solutionHash": "64b7fa537760f25e44c56b43bd04c6c248cd8b8e4a2133c6a2f41ebe1c0a506d",
+        "fieldHash": "eec131e9bc50636ee280ae32caa56cfb48dc58f3872e9a1569d525f526ba1c7c",
+        "verificationHash": "56a2dc02bb3bade641cc9196d151b73294a7b9ff8f8f47db034f9eef51b721df",
+        "solverType": "DIRECT_PARTITIONED",
+        "bcMethod": "DIRECT_ELIMINATION",
+        "sparseMetrics": {
+          "totalDOFs": 2,
+          "nnz": 4,
+          "sparsityRatio": 0
+        },
+        "timestamp": "2026-10-26T08:14:53.156Z"
+      }
+    }
+  ]
+}

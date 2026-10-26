@@ -1,0 +1,21 @@
+{
+  "taskId": "SECP-ENGINE-QUALIFICATION-002-CLOSE-001",
+  "timestampUTC": "2026-10-25T07:56:24.850Z",
+  "couplingsVerified": [
+    {
+      "coupling": "Electrothermal Picard Iteration",
+      "status": "CONVERGED",
+      "energyImbalance": 0
+    },
+    {
+      "coupling": "Thermal-Structural Expansion",
+      "status": "PASS",
+      "error": 0
+    },
+    {
+      "coupling": "FSI Boundary Force Mapping",
+      "normalForceN": 80,
+      "status": "QUALIFIED_1WAY_MAPPING"
+    }
+  ]
+}

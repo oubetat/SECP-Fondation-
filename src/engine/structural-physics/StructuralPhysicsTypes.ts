@@ -73,6 +73,7 @@ export interface NodeResults {
   stress: { xx: number; yy: number; zz: number; xy: number; yz: number; xz: number };
   vonMises: number; // Pascals (Pa)
   safetyFactor: number;
+  reactionForce?: { x: number; y: number; z: number }; // Newtons (N)
 }
 
 export interface StructuralAnalysisResults {
@@ -84,6 +85,10 @@ export interface StructuralAnalysisResults {
   yieldExceeded: boolean;
   converged: boolean;
   residualNorm: number;
+  reactions?: { nodeId: number; fx: number; fy: number; fz: number }[];
+  totalReaction?: { fx: number; fy: number; fz: number };
+  totalAppliedLoad?: { fx: number; fy: number; fz: number };
+  equilibriumError?: number;
 }
 
 export interface DesignFeedback {

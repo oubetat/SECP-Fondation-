@@ -1,0 +1,36 @@
+{
+  "title": "SECP-PROGRAMMABLE-MATERIAL-001 Capability Register",
+  "subsystem": "Nonlinear Mechanics & Programmable Materials",
+  "auditDate": "2026-10-26T09:30:00Z",
+  "capabilities": [
+    {
+      "capabilityId": "NL-GEOM-001",
+      "description": "Large Displacement / Rotation Kinematics",
+      "status": "QUALIFIED",
+      "evidence": "SECP_FEM_UPGRADE_009_REPORT.md",
+      "relevance": "Essential for lattice structure buckling and post-yield large deformation."
+    },
+    {
+      "capabilityId": "NL-MAT-001",
+      "description": "J2 Elastoplasticity (von Mises)",
+      "status": "QUALIFIED",
+      "evidence": "SECP_FEM_UPGRADE_010_REPORT.md",
+      "relevance": "Enables simulation of permanent energy absorption in programmed material zones."
+    },
+    {
+      "capabilityId": "NL-SOLV-001",
+      "description": "Newton-Raphson Equilibrium Solver",
+      "status": "QUALIFIED",
+      "evidence": "NonlinearEquilibriumSolver.ts",
+      "relevance": "Robust convergence for highly nonlinear material responses."
+    },
+    {
+      "capabilityId": "MOD-ELEM-001",
+      "description": "Element-Level Material Assignment",
+      "status": "IMPLEMENTED",
+      "evidence": "FEMTypes.ts (FEMElement.materialId)",
+      "relevance": "Foundational for representing functionally graded or multi-material architectures."
+    }
+  ],
+  "status": "OPEN_FOR_FORENSICS"
+}

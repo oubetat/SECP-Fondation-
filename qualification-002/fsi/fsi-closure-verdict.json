@@ -1,5 +1,10 @@
 {
   "testId": "FSI-GATE-001",
-  "verdict": "STOP / INSUFFICIENT_EVIDENCE",
-  "timestamp": "2026-10-22T09:06:28.696Z"
+  "verdict": "QUALIFIED_WITHIN_DECLARED_SCOPE",
+  "criteria": {
+    "sensitivityPass": true,
+    "failureDetectionPass": true,
+    "conservationPass": true
+  },
+  "timestamp": "2026-10-23T07:28:51.091Z"
 }

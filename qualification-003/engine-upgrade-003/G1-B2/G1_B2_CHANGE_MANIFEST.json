@@ -1,0 +1,13 @@
+{
+  "taskId": "SECP-ENGINE-UPGRADE-003-G1-B2",
+  "timestampUTC": "2026-10-24T07:53:03.452Z",
+  "file": "src/engine/cfd3d/adaptive/BoundaryConditionValidator.ts",
+  "before": {
+    "sha256": "9211c6d370138971f496155554605f63920fb63bf652e9603f0b2fca70",
+    "implementation": "Hollow stub returning isValid: true unconditionally"
+  },
+  "after": {
+    "sha256": "00df599b8b052806fe3e25857ff3ed2e13a349a656b86e516b75cb44c7f63bba",
+    "implementation": "Bridge binding Adaptive orchestrator to production BoundaryConditionValidator.ts with patch synthesis and type mapping."
+  }
+}

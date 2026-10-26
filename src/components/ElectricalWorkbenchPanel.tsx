@@ -267,6 +267,17 @@ export const ElectricalWorkbenchPanel: React.FC<ElectricalWorkbenchPanelProps> =
                 {components.length > 0 ? `${solveResult.sensorSignalVolts.toFixed(2)} V` : 'UNAVAILABLE'}
               </span>
             </div>
+
+            <div className="flex justify-between border-t border-slate-800 pt-2">
+              <span className="text-slate-400 flex items-center gap-1.5">
+                <Flame className="w-3 h-3 text-amber-500" />
+                Harness Thermal Load:
+              </span>
+              <span className={`font-bold ${components.length > 0 && solveResult.totalCurrentDrawA > 8 ? 'text-rose-400 animate-pulse' : 'text-amber-300'}`}>
+                {components.length > 0 ? `+${(solveResult.totalCurrentDrawA * solveResult.totalCurrentDrawA * 0.05 * 2.5).toFixed(1)} °C` : 'UNAVAILABLE'}
+              </span>
+            </div>
+
             {components.length === 0 && (
               <div className="pt-2 mt-2 border-t border-slate-800 text-[9px] text-slate-600 uppercase font-bold tracking-tighter">
                 NO_CANONICAL_CIRCUIT_METRICS

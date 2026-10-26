@@ -1,0 +1,33 @@
+{
+  "campaignId": "SECP-FSI-INDEPENDENT-VERIFICATION-EVIDENCE-RECONCILIATION-004",
+  "testId": "BENCH-BEAM-001",
+  "description": "Cantilever Beam Bending under Transverse End Load — Reference Accuracy & Equilibrium Normalization",
+  "referenceAnalyticalTipDeflectionM": -0.0038095238,
+  "meshStudies": [
+    {
+      "meshName": "Coarse (10x2)",
+      "computedTipDeflectionM": -0.00270898,
+      "displacementErrorPct": 28.89,
+      "rawEquilibriumError": 0.000003467,
+      "normalizedEquilibriumErrorPct": 0.0003467
+    },
+    {
+      "meshName": "Medium (20x4)",
+      "computedTipDeflectionM": -0.00346774,
+      "displacementErrorPct": 8.97,
+      "rawEquilibriumError": 0.00001390,
+      "normalizedEquilibriumErrorPct": 0.0013900
+    },
+    {
+      "meshName": "Fine (40x8)",
+      "computedTipDeflectionM": -0.00373253,
+      "displacementErrorPct": 2.02,
+      "rawEquilibriumError": 0.00005217,
+      "normalizedEquilibriumErrorPct": 0.0052170
+    }
+  ],
+  "equilibriumErrorClarification": "The coarse mesh equilibrium error was cited as 0.00035% (raw 0.000003467), while the fine mesh equilibrium error is 0.0052% (raw 0.00005217). Both satisfy equilibrium within strict engineering tolerances (< 0.01%). The discrepancy in previous summary reports resulted from mixing coarse mesh reaction residual with fine mesh metrics.",
+  "stressVerificationNote": "Maximum normal stress calculated at root fiber: 120.0 MPa (Analytical: 120.0 MPa, error < 0.01%).",
+  "verdict": "PASS",
+  "timestamp": "2026-10-23T07:54:00.000Z"
+}

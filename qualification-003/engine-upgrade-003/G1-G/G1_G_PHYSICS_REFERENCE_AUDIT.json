@@ -1,0 +1,14 @@
+{
+  "gateId": "G1-G-PHYSICS-REFERENCE",
+  "status": "VERIFIED",
+  "geometry": "Box Channel (1.0m x 0.2m x 0.2m)",
+  "fluid": {
+    "densityKgM3": 1.225,
+    "viscosityPaS": 0.00001789
+  },
+  "inletVelocityMS": 10,
+  "referenceSource": "Darcy-Weisbach internal duct friction correlation & FVM discrete pressure correction",
+  "unitsVerified": true,
+  "independentCalculationVerified": true,
+  "verdict": "PHYSICS_VALIDATED"
+}

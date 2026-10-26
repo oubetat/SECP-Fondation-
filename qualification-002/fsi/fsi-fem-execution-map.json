@@ -1,0 +1,48 @@
+{
+  "qualificationTask": "SECP-ENGINE-QUALIFICATION-002-FSI-STRUCTURAL-SOLVER-QUALIFICATION-001",
+  "scope": "src/engine/structural-physics/",
+  "entryPoint": "StructuralAnalysisEngine.runFEA",
+  "pipelineSteps": [
+    {
+      "step": 1,
+      "component": "GlobalAssemblyEngine.assembleSystemWithoutBoundaryPenalty",
+      "role": "Assembles unconstrained global stiffness matrix K_unconstrained and nodal force vector F_applied"
+    },
+    {
+      "step": 2,
+      "component": "ElementFormulationEngine.formulateElementStiffness",
+      "role": "Evaluates local element stiffness for BAR_1D, QUAD_2D (isoparametric Quad4), HEX8 via Gauss quadrature"
+    },
+    {
+      "step": 3,
+      "component": "MaterialModelEngine",
+      "role": "Provides verified linear elastic material constants (E, nu, rho, yieldStrength)"
+    },
+    {
+      "step": 4,
+      "component": "BoundaryConditionEngine & GlobalAssemblyEngine penalty enforcement",
+      "role": "Applies Dirichlet boundary constraints via penalty formulation (PENALTY = 1e15)"
+    },
+    {
+      "step": 5,
+      "component": "LinearSolverAbstraction & PCGSolverEngine",
+      "role": "Solves algebraic system K * u = F using Direct Dense / Preconditioned Conjugate Gradient"
+    },
+    {
+      "step": 6,
+      "component": "StructuralAnalysisEngine (Reactions & Equilibrium)",
+      "role": "Computes nodal internal forces F_int = K_unpenalized * u, recovers reaction forces R = F_int - F_applied, and verifies equilibrium error"
+    },
+    {
+      "step": 7,
+      "component": "StrainAnalysisEngine & StressRecoveryEngine & VonMisesEvaluationEngine",
+      "role": "Computes physical strain tensors, axial/bending stresses, and equivalent von Mises profiles"
+    },
+    {
+      "step": 8,
+      "component": "FEAValidationEngine",
+      "role": "Audits numerical finiteness, residual norms, boundary condition satisfaction, and physical realism"
+    }
+  ],
+  "timestamp": "2026-10-23T07:05:55.473Z"
+}

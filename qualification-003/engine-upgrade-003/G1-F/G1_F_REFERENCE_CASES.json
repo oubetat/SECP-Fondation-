@@ -1,0 +1,30 @@
+{
+  "caseA": {
+    "name": "Incompressible Laminar/Turbulent Channel Flow (Poiseuille/Boundary Layer)",
+    "geometry": "Box Channel (1.0m x 0.2m x 0.2m)",
+    "fluid": {
+      "density": 1.225,
+      "viscosity": 0.00001789
+    },
+    "inletVelocity": 10,
+    "expectedReynoldsNumber": -136401,
+    "referenceSource": "Analytic pipe/channel turbulent friction factor & pressure drop correlation"
+  },
+  "caseB": {
+    "name": "External Flow over Flat Plate / Block",
+    "geometry": "Box Obstruction",
+    "fluid": {
+      "density": 1.225,
+      "viscosity": 0.00001789
+    },
+    "referenceSource": "Empirical drag coefficient correlation for blunt bodies"
+  },
+  "caseC": {
+    "name": "Adversarial & Unphysical Ingestion Cases",
+    "cases": [
+      "NaN velocity injection",
+      "Extreme Mach 145 velocity",
+      "Zero-flow reference floor safety"
+    ]
+  }
+}

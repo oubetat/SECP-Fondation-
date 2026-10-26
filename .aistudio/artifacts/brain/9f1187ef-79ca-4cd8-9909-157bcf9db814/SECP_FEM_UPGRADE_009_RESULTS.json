@@ -1,0 +1,10 @@
+{
+  "taskId": "SECP-FEM-UPGRADE-009",
+  "status": "QUALIFIED_WITHIN_DECLARED_SCOPE",
+  "results": {
+    "GEOM-001": { "status": "PASS", "diff": 3.4013e-8 },
+    "GEOM-002": { "status": "PASS", "converged": true, "final_v2": -6.0456 },
+    "GEOM-006": { "status": "PASS", "max_rel_diff": 3.9118e-9 }
+  },
+  "timestamp": "2026-10-26T08:55:16Z"
+}

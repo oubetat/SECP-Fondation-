@@ -1,0 +1,20 @@
+{
+  "taskId": "SECP-ENGINE-QUALIFICATION-002",
+  "taskName": "Independent Multidomain Qualification Campaign",
+  "timestampUTC": "2026-10-25T07:43:11.659Z",
+  "projectRoot": "/app/applet",
+  "frameworkArchitecture": "TypeScript / Node.js ESM Engine Core",
+  "inScopeDomains": [
+    "Electrical Circuit Analysis (MNA / NodalCircuitSolver)",
+    "Thermal Heat Conduction & Convection (SpatialThermalSolver / FEM Thermal)",
+    "Structural Mechanics (1D/2D FEM Linear Structural Core)",
+    "CFD Flow Solver (Fvm3DNavierStokesSolver / AdaptiveIndustrialCFDEngine)",
+    "Multidomain Integrations (Electrothermal Picard, Thermal-Structural, FSI Boundary Mapping)"
+  ],
+  "canonicalModelDefinitions": {
+    "electrical": "ReferenceCircuitModel.ts (CircuitModel, CircuitComponent, canonical SHA-256)",
+    "thermal": "PcbThermalModel.ts (PcbThermalBoardConfig, Stackup, ComponentThermalSpec)",
+    "structural": "FEMTypes.ts (FEMModel, Nodes, Elements, Materials, Sections, Constraints)",
+    "multidomainCoupling": "ElectrothermalCouplingContract.ts (ComponentElectrothermalProperty, Picard tolerances)"
+  }
+}

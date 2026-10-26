@@ -1,0 +1,11 @@
+
+ RUN  v1.6.1 /app/applet
+
+ ✓ src/engine/cfd3d/solvers/adaptive/__tests__/AdaptiveFramework.test.ts  (4 tests) 5ms
+ ✓ src/engine/cfd3d/solvers/adaptive/__tests__/AdaptiveAdversarial.test.ts  (5 tests) 6ms
+
+ Test Files  2 passed (2)
+      Tests  9 passed (9)
+   Start at  07:42:33
+   Duration  1.15s (transform 94ms, setup 0ms, collect 108ms, tests 11ms, environment 0ms, prepare 265ms)
+

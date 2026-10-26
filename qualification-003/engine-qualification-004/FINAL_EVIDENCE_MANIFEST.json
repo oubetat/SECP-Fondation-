@@ -1,0 +1,81 @@
+{
+  "task": "SECP-ENGINE-QUALIFICATION-004",
+  "timestamp": "2026-10-25T08:29:32.799Z",
+  "artifacts": [
+    {
+      "file": "CHANGE_LIFECYCLE_BASELINE.json",
+      "sizeBytes": 1049,
+      "sha256": "c692f20da487d6a043ae2281c78e9a536588ea4aca9813702bd765c3a3af7082"
+    },
+    {
+      "file": "CHANGE_EXECUTION_CALL_GRAPH.json",
+      "sizeBytes": 1384,
+      "sha256": "4312370fff7358614737f552c84cd44fc0859f5073ac0f3217dbe71a2c6ba59e"
+    },
+    {
+      "file": "CHANGE_SOURCE_MANIFEST.json",
+      "sizeBytes": 2096,
+      "sha256": "5e0def6fc4608ab5c73b47a957376da30b02ef5bda61b9115c5bae65435b6a70"
+    },
+    {
+      "file": "CHANGE_IMPACT_RESULTS.json",
+      "sizeBytes": 807,
+      "sha256": "5264f04159afdb47c537ed2fa941e55d11f605940e6179f05c5a396614e1061d"
+    },
+    {
+      "file": "DEPENDENCY_INVALIDATION_MATRIX.json",
+      "sizeBytes": 697,
+      "sha256": "6ca6f371243ed15aa80fa8a0fedb881cac3c06112a4684581c772368d9836e71"
+    },
+    {
+      "file": "RECOMPUTATION_INTEGRITY_RESULTS.json",
+      "sizeBytes": 387,
+      "sha256": "35afd013afa798db64ce8238ae55ddf755aca5df42c1d4e68ced8505f4af7383"
+    },
+    {
+      "file": "REQUIREMENT_TRACEABILITY_RESULTS.json",
+      "sizeBytes": 1110,
+      "sha256": "b1ad99e282d792f08436230d795392b48bc9d746ba185157784eb0aefcb01d22"
+    },
+    {
+      "file": "ORPHANED_EVIDENCE_AND_REQUIREMENTS.json",
+      "sizeBytes": 145,
+      "sha256": "e5a1d7482c378bce7883fc6e8b80df317a63baa0d1d30a1a8214ca30239cc4f0"
+    },
+    {
+      "file": "RELEASE_GATE_ADVERSARIAL_RESULTS.json",
+      "sizeBytes": 1522,
+      "sha256": "0dea4f529e3375b5bdb38c99cfca5fb25747c0c36635b085bf0e72a9bfa59de4"
+    },
+    {
+      "file": "RELEASE_DENIAL_AUDIT.json",
+      "sizeBytes": 180,
+      "sha256": "01cafef52fe7202dc8686530e33a750e09abc3d4ea87fc928870f785da5fc512"
+    },
+    {
+      "file": "ENGINEERING_REPLAY_RESULTS.json",
+      "sizeBytes": 198,
+      "sha256": "43fdd7eb38935a4173fb07efa5ba96ce9f768d13f2f8c81cbf4cd4a947843008"
+    },
+    {
+      "file": "PROVENANCE_INTEGRITY_RESULTS.json",
+      "sizeBytes": 156,
+      "sha256": "7671864137abb5c4a2ca64a5f6ba505779c81a11f7ce962822b6e6ad1ae85a1a"
+    },
+    {
+      "file": "REGRESSION_RESULTS.json",
+      "sizeBytes": 10667,
+      "sha256": "074044db53eddbbd51cfdeeb676c46d20fed438a475aff3aa9e6a9335f9c6d94"
+    },
+    {
+      "file": "FINAL_ADJUDICATION.json",
+      "sizeBytes": 0,
+      "sha256": "NOT_FOUND"
+    },
+    {
+      "file": "FINAL_REPORT.md",
+      "sizeBytes": 0,
+      "sha256": "NOT_FOUND"
+    }
+  ]
+}

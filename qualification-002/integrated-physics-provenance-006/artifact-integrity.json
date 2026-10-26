@@ -1,0 +1,62 @@
+{
+  "campaignId": "SECP-FSI-EVIDENCE-PROVENANCE-006",
+  "timestamp": "2026-10-23T08:35:23.055Z",
+  "artifacts": [
+    {
+      "artifactName": "source-hash-verification.json",
+      "absolutePath": "/app/applet/qualification-002/integrated-physics-execution-005/source-hash-verification.json",
+      "sizeBytes": 2494,
+      "sha256": "e22fa4f8723f41d15ac8f06d26fdb45de6b4be96708adcd571a4042957e1ad06",
+      "validJson": true
+    },
+    {
+      "artifactName": "fsi-causality-execution.json",
+      "absolutePath": "/app/applet/qualification-002/integrated-physics-execution-005/fsi-causality-execution.json",
+      "sizeBytes": 2284,
+      "sha256": "5b7c85ec8ef6f57017c404c9116163aba40b968df0ff4946db35f508af0d13ac",
+      "validJson": true
+    },
+    {
+      "artifactName": "interface-conservation-recalculation.json",
+      "absolutePath": "/app/applet/qualification-002/integrated-physics-execution-005/interface-conservation-recalculation.json",
+      "sizeBytes": 1277,
+      "sha256": "82ccea1493a2e2f3732df3c7e671b3522c03fe4f3eb7638e614ccf394923a5f6",
+      "validJson": true
+    },
+    {
+      "artifactName": "structural-reference-reexecution.json",
+      "absolutePath": "/app/applet/qualification-002/integrated-physics-execution-005/structural-reference-reexecution.json",
+      "sizeBytes": 993,
+      "sha256": "bf6b83b4797cdd943ac60ee28fe082a05216e26bc5655dc2facb3d4d319457cc",
+      "validJson": true
+    },
+    {
+      "artifactName": "adversarial-execution-results.json",
+      "absolutePath": "/app/applet/qualification-002/integrated-physics-execution-005/adversarial-execution-results.json",
+      "sizeBytes": 2309,
+      "sha256": "56fff7595d6546b61008379ad9d60c430edf9be2473fdcd776bba6233c3947fb",
+      "validJson": true
+    },
+    {
+      "artifactName": "execution-manifest.json",
+      "absolutePath": "/app/applet/qualification-002/integrated-physics-execution-005/execution-manifest.json",
+      "sizeBytes": 690,
+      "sha256": "2aac66d9736e6896e50d141bb91ec642cfb38ea8abf70ef6e754c78b9b8f2ea1",
+      "validJson": true
+    },
+    {
+      "artifactName": "execution-logs/audit_execution.log",
+      "absolutePath": "/app/applet/qualification-002/integrated-physics-execution-005/execution-logs/audit_execution.log",
+      "sizeBytes": 1207,
+      "sha256": "8c5555c4fd048cd123b27ea0149a9f40650503778bd37c7efe9a88b1a663e1b0",
+      "validJson": true
+    },
+    {
+      "artifactName": "closure-verdict.json",
+      "absolutePath": "/app/applet/qualification-002/integrated-physics-execution-005/closure-verdict.json",
+      "sizeBytes": 903,
+      "sha256": "7574c967d0d69bff8b419d3e9a17653983fcc6710d138e838ec6dac0466d0263",
+      "validJson": true
+    }
+  ]
+}

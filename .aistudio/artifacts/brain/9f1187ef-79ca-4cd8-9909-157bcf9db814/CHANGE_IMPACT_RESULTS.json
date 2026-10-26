@@ -1,0 +1,37 @@
+{
+  "task": "SECP-ENGINE-QUALIFICATION-004",
+  "cases": [
+    {
+      "id": "CASE_A",
+      "input": "Electrical Voltage (24V -> 36V)",
+      "rev": "REV-B",
+      "recomputed": [
+        "NodalCircuitSolver",
+        "ElectrothermalSolver"
+      ],
+      "staleEvidenceRejected": true,
+      "status": "PASS"
+    },
+    {
+      "id": "CASE_B",
+      "input": "Thermal Conductivity (k=385 -> 200 W/m-K)",
+      "rev": "REV-C",
+      "recomputed": [
+        "SpatialThermalSolver",
+        "ElectrothermalSolver"
+      ],
+      "staleEvidenceRejected": true,
+      "status": "PASS"
+    },
+    {
+      "id": "CASE_C",
+      "input": "Structural Load (20kN -> 50kN)",
+      "rev": "REV-D",
+      "recomputed": [
+        "FEMCore"
+      ],
+      "staleEvidenceRejected": true,
+      "status": "PASS"
+    }
+  ]
+}

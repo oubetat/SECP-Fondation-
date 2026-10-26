@@ -1,0 +1,21 @@
+{
+  "gateId": "G1-G-REGRESSION-AND-EVIDENCE",
+  "totalTestsExecuted": 12,
+  "totalTestsPassed": 12,
+  "totalTestsFailed": 0,
+  "evidenceFilesVerifiedPresent": [
+    "G1_G_BASELINE_INTEGRITY_AUDIT.json",
+    "G1_G_PHYSICS_REFERENCE_AUDIT.json",
+    "G1_G_MASS_CONSERVATION_AUDIT.json",
+    "G1_G_MESH_CONVERGENCE_GCI_AUDIT.json",
+    "G1_G_SOLVER_ACCEPTANCE_AUDIT.json",
+    "G1_G_REPRODUCIBILITY_AUDIT.json",
+    "G1_G_REGRESSION_AND_EVIDENCE_AUDIT.json",
+    "G1_G_DEFECT_REGISTER.json",
+    "G1_G_CORRECTIVE_ACTIONS.json",
+    "G1_G_EVIDENCE_MANIFEST.json",
+    "G1_G_INDEPENDENT_FINAL_ADJUDICATION.json",
+    "G1_G_FINAL_CLOSURE_REPORT.md"
+  ],
+  "verdict": "VERIFIED"
+}

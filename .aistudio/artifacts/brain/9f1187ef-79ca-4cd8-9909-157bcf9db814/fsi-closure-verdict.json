@@ -1,0 +1,69 @@
+{
+  "campaignId": "SECP-ENGINE-QUALIFICATION-002-FSI-PHYSICS-RECOVERY-001",
+  "testId": "FSI-GATE-001",
+  "verdict": "QUALIFIED_WITHIN_DECLARED_SCOPE",
+  "scope": {
+    "fluidDomain": "3D Finite Volume Navier-Stokes (FVM) with pressure-velocity coupling",
+    "structuralDomain": "1D/2D structural interface boundary solved via StructuralAnalysisEngine.runFEA",
+    "couplingScheme": "Two-Way Partitioned Gauss-Seidel with Aitken Dynamic Under-Relaxation",
+    "meshMotion": "ALE dynamic mesh morphing with volume compression and element inversion auditing"
+  },
+  "subsystems": {
+    "relaxationManager": {
+      "status": "QUALIFIED",
+      "testsPassed": 6,
+      "totalTests": 6,
+      "aitkenDynamicOmega": true,
+      "clampingEnforced": true,
+      "divergenceDetected": true,
+      "nonFiniteRejected": true,
+      "deterministic": true
+    },
+    "dynamicMeshManager": {
+      "status": "QUALIFIED",
+      "testsPassed": 7,
+      "totalTests": 7,
+      "aleSmoothing": true,
+      "inversionDetection": true,
+      "atomicRollback": true,
+      "boundaryPreservation": true,
+      "deterministic": true
+    },
+    "structuralFEAIntegration": {
+      "status": "QUALIFIED",
+      "engine": "StructuralAnalysisEngine.runFEA",
+      "scalarStiffnessEliminated": true,
+      "equilibriumErrorPct": 0.000073,
+      "couplingIterations": 3
+    },
+    "conservationAudit": {
+      "status": "VERIFIED",
+      "forceTransferErrorPct": 0.0,
+      "structuralEquilibriumErrorPct": 0.000073,
+      "forceImbalancePct": 0.000073
+    },
+    "adversarialRobustness": {
+      "status": "QUALIFIED",
+      "materialSensitivity": "PASS (strict inverse deflection scaling E=1e10 -> 211mm, E=2.1e11 -> 10.06mm, E=5e11 -> 4.23mm)",
+      "adversarialExhaustionRejection": "PASS (rejected false convergence when tolerance unmet)"
+    }
+  },
+  "historicalTransitions": [
+    {
+      "stage": "SECP-ENGINE-QUALIFICATION-002-FSI-BASELINE",
+      "verdict": "STOP / INSUFFICIENT_EVIDENCE",
+      "cause": "25% force imbalance caused by artificial scalar stiffness line (stiffness = E * 1e-7) and empty stubs"
+    },
+    {
+      "stage": "SECP-FSI-IMPLEMENTATION-INTEGRITY-AUDIT-001",
+      "verdict": "STOP / INSUFFICIENT_EVIDENCE",
+      "cause": "Forensic audit uncovered 6 empty stubs and mock returns in fsi/index.ts"
+    },
+    {
+      "stage": "SECP-ENGINE-QUALIFICATION-002-FSI-PHYSICS-RECOVERY-001",
+      "verdict": "QUALIFIED_WITHIN_DECLARED_SCOPE",
+      "cause": "All 18 battery tests passed with live physical computation, exact equilibrium (0.000073%), Aitken dynamic relaxation, and ALE mesh inversion rollback"
+    }
+  ],
+  "timestamp": "2026-10-23T07:31:00.000Z"
+}

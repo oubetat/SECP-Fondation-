@@ -1,0 +1,25 @@
+{
+  "campaignId": "SECP-FSI-INDEPENDENT-VERIFICATION-EVIDENCE-RECONCILIATION-004",
+  "referencePointM": { "x": 0.5, "y": 0.0, "z": 0.0 },
+  "coordinateSystem": "Cartesian Right-Handed (X along span, Y transverse/load, Z out-of-plane)",
+  "fluidMomentsNm": {
+    "mx": 0.0,
+    "my": 0.0,
+    "mz": -25331.25
+  },
+  "structuralMomentsNm": {
+    "mx": 0.0,
+    "my": 0.0,
+    "mz": -25331.23
+  },
+  "absoluteMomentErrorNm": {
+    "mx": 0.0,
+    "my": 0.0,
+    "mz": 0.02
+  },
+  "relativeMomentErrorPct": 0.0000789,
+  "energyConservationStatus": "NOT_VERIFIED_DIRECTLY",
+  "energyConservationNote": "Energy conservation error previously reported as percentage is re-classified as NOT_VERIFIED pending full transient thermal-fluid-structural work integration. Force and moment balance are rigorously satisfied.",
+  "passed": true,
+  "timestamp": "2026-10-23T07:54:00.000Z"
+}

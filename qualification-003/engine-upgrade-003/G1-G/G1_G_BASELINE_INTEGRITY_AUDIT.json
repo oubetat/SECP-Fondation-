@@ -1,0 +1,32 @@
+{
+  "gateId": "G1-G-BASELINE-INTEGRITY",
+  "timestampUTC": "2026-10-24T08:34:26.253Z",
+  "status": "VERIFIED",
+  "inspectedFiles": [
+    "src/engine/cfd3d/Fvm3DNavierStokesSolver.ts",
+    "src/engine/cfd3d/adaptive/AdaptiveIndustrialCFDEngine.ts"
+  ],
+  "sourceFingerprints": {
+    "src/engine/cfd3d/Fvm3DNavierStokesSolver.ts": "34e23bcc9200f76bfe505dba831362efdcbbfdcd60db9e1665197eb74f3195a0",
+    "src/engine/cfd3d/adaptive/AdaptiveIndustrialCFDEngine.ts": "a8f54e2548955beba2c13373b036a942d535a84a6ed0930f800636918be3f299"
+  },
+  "g1fArtifactsInspected": [
+    "G1_F_BASELINE_AUDIT.json",
+    "G1_F_CORRECTIVE_ACTIONS.json",
+    "G1_F_EVIDENCE_BINDING_VERIFICATION.json",
+    "G1_F_EVIDENCE_MANIFEST.json",
+    "G1_F_GCI_ANALYSIS.md",
+    "G1_F_INDEPENDENT_CLOSURE_REPORT.md",
+    "G1_F_INDEPENDENT_FINAL_ADJUDICATION.json",
+    "G1_F_MASS_CONSERVATION.json",
+    "G1_F_MESH_CONVERGENCE_RESULTS.json",
+    "G1_F_MESH_MANIFEST.json",
+    "G1_F_PHYSICS_VALIDATION.json",
+    "G1_F_REFERENCE_CASES.json",
+    "G1_F_REFERENCE_METHODS.md",
+    "G1_F_REGRESSION_RESULTS.json",
+    "G1_F_REPRODUCIBILITY_AUDIT.json",
+    "G1_F_SOLVER_ACCEPTANCE.json"
+  ],
+  "findings": "Baseline source code and G1-F evidence artifacts verified present and unaltered."
+}

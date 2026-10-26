@@ -1,0 +1,29 @@
+[
+  {
+    "id": "FSI-BM-013-1",
+    "name": "Cantilever Mesh Refinement Study (10, 20, 40 stations)",
+    "category": "Structural Validation",
+    "status": "CONVERGED",
+    "convergenceStudy": [
+      {
+        "stations": 10,
+        "displacementMm": 4.9699417944896265,
+        "errorPercent": 128.89772225628678,
+        "converged": true
+      },
+      {
+        "stations": 20,
+        "displacementMm": 5.824231763150787,
+        "errorPercent": 168.2432590973305,
+        "converged": true
+      },
+      {
+        "stations": 40,
+        "displacementMm": 6.085836973267693,
+        "errorPercent": 180.2918582967274,
+        "converged": true
+      }
+    ],
+    "passed": false
+  }
+]

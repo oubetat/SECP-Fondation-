@@ -1,0 +1,33 @@
+{
+  "taskId": "SECP-ENGINE-QUALIFICATION-002",
+  "timestampUTC": "2026-10-25T07:43:11.661Z",
+  "risks": [
+    {
+      "riskId": "RISK-01",
+      "description": "Coarse grid CFD simulations producing pre-asymptotic oscillatory results",
+      "severity": 4,
+      "occurrence": 3,
+      "detection": 2,
+      "rpn": 24,
+      "mitigation": "Enforce ASME V&V 20-2009 strict GCI checks and reject monotonic claims when R < 0."
+    },
+    {
+      "riskId": "RISK-02",
+      "description": "Electrothermal runaway under positive temperature coefficient resistors at high voltages",
+      "severity": 4,
+      "occurrence": 2,
+      "detection": 1,
+      "rpn": 8,
+      "mitigation": "Picard under-relaxation (factor 0.7) and fail-closed max temperature abort guards in ElectrothermalSolver."
+    },
+    {
+      "riskId": "RISK-03",
+      "description": "Stale multidomain evidence reuse across modified geometry or component parameters",
+      "severity": 5,
+      "occurrence": 2,
+      "detection": 1,
+      "rpn": 10,
+      "mitigation": "Cryptographic SHA-256 canonical hashing across all model components; any input change invalidates cached evidence."
+    }
+  ]
+}

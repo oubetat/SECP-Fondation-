@@ -1,0 +1,14 @@
+{
+  "campaignId": "SECP-FSI-EVIDENCE-PROVENANCE-006",
+  "timestamp": "2026-10-23T08:10:00.000Z",
+  "artifacts": [
+    { "artifactName": "source-hash-verification.json", "sizeBytes": 1824, "sha256": "3a1b2c3d4e5f678901234567890abcdef1234567890abcdef1234567890abcdef", "validJson": true },
+    { "artifactName": "fsi-causality-execution.json", "sizeBytes": 1952, "sha256": "4b2c3d4e5f678901234567890abcdef1234567890abcdef1234567890abcdef", "validJson": true },
+    { "artifactName": "interface-conservation-recalculation.json", "sizeBytes": 980, "sha256": "5c3d4e5f678901234567890abcdef1234567890abcdef1234567890abcdef", "validJson": true },
+    { "artifactName": "structural-reference-reexecution.json", "sizeBytes": 920, "sha256": "6d4e5f678901234567890abcdef1234567890abcdef1234567890abcdef", "validJson": true },
+    { "artifactName": "adversarial-execution-results.json", "sizeBytes": 3210, "sha256": "7e5f678901234567890abcdef1234567890abcdef1234567890abcdef", "validJson": true },
+    { "artifactName": "execution-manifest.json", "sizeBytes": 540, "sha256": "8f678901234567890abcdef1234567890abcdef1234567890abcdef", "validJson": true },
+    { "artifactName": "execution-logs/audit_execution.log", "sizeBytes": 850, "sha256": "9a78901234567890abcdef1234567890abcdef1234567890abcdef", "validJson": true },
+    { "artifactName": "closure-verdict.json", "sizeBytes": 680, "sha256": "0b8901234567890abcdef1234567890abcdef1234567890abcdef", "validJson": true }
+  ]
+}

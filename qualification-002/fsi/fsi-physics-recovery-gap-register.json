@@ -1,0 +1,10 @@
+{
+  "gaps": [
+    {
+      "gapId": "GAP-SCOPE-LIMITATION",
+      "severity": "INFO",
+      "description": "Current FSI integration is qualified for 3D FVM Navier-Stokes fluid with 1D/2D structural boundary interface. 3D solid continuum elements (HEX8/TET4) require SECP077CleanRoomKernel volumetric coupling."
+    }
+  ],
+  "timestamp": "2026-10-23T07:28:20.965Z"
+}

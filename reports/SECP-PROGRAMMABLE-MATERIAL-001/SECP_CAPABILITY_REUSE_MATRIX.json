@@ -1,0 +1,35 @@
+{
+  "taskId": "SECP-PROGRAMMABLE-MATERIAL-001",
+  "auditDate": "2026-10-26",
+  "reuseMatrix": [
+    {
+      "area": "Canonical Model",
+      "implementation": "src/engine/fem/core/FEMTypes.ts",
+      "status": "EXISTING_VERIFIED",
+      "relevance": "Supports element-level material assignment (materialId)."
+    },
+    {
+      "area": "Nonlinear Solver",
+      "implementation": "src/engine/fem/core/NonlinearEquilibriumSolver.ts",
+      "status": "EXISTING_VERIFIED",
+      "relevance": "Qualified (009) for large deformation snapshots."
+    },
+    {
+      "area": "Material State",
+      "implementation": "src/engine/fem/core/MaterialStateManager.ts",
+      "status": "EXISTING_VERIFIED",
+      "relevance": "Qualified (010) for transactional plasticity updates."
+    },
+    {
+      "area": "Manufacturing Attestation",
+      "implementation": "src/engine/manufacturing/pma/HardAcceptanceGatePMA001.ts",
+      "status": "PARTIALLY_IMPLEMENTED",
+      "relevance": "Validates G-Code and Telemetry provenance."
+    },
+    {
+      "area": "Spatial Field Mapping",
+      "status": "MISSING",
+      "relevance": "Required to map continuous material gradients to mesh elements."
+    }
+  ]
+}

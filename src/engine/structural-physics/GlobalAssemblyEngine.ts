@@ -66,10 +66,9 @@ export class GlobalAssemblyEngine {
       }
     });
 
-    // 3. Numerical Stabilization (Add epsilon to diagonal to prevent singularities in mechanisms)
-    const EPSILON = 1.0;
-    for (let i = 0; i < totalDOFs; i++) {
-      K.add(i, i, EPSILON);
+    // 3. Numerical Integrity Check: Ensure total DOFs are consistent
+    if (totalDOFs === 0) {
+       throw new Error('REJECTED: Global assembly generated zero DOFs. Check mesh validity.');
     }
 
     return { K, F, dofsPerNode };

@@ -1,0 +1,53 @@
+{
+  "task": "SECP-ENGINE-UPGRADE-003-G1-F",
+  "artifacts": [
+    {
+      "filename": "G1_F_BASELINE_AUDIT.json",
+      "sha256": "276bf21b7433ec2a276815a4685dd09e0cfa50ca672239bacae79964efd3f7c9"
+    },
+    {
+      "filename": "G1_F_CORRECTIVE_ACTIONS.json",
+      "sha256": "392acf530ec6489fc417d6745c9f62adfc335f0ec65e911c5addb382ca76c1b1"
+    },
+    {
+      "filename": "G1_F_GCI_ANALYSIS.md",
+      "sha256": "bdbd7aea6429117d3dc129aec85f21f77e0a8fd547efe54418a25d284c0a79d7"
+    },
+    {
+      "filename": "G1_F_MASS_CONSERVATION.json",
+      "sha256": "4c92d40a8722a043cae4e8c841d80411f5608388b4fb4ff9729142e9a6b596b1"
+    },
+    {
+      "filename": "G1_F_MESH_CONVERGENCE_RESULTS.json",
+      "sha256": "e61bf07d3a8e660f87d0af7b6443209419366f4d327b29c5bf5dcb253d7308f2"
+    },
+    {
+      "filename": "G1_F_MESH_MANIFEST.json",
+      "sha256": "a96be5b8accc9068625c3493caff202157126078ac2da13bd65a148eaa1d3d0d"
+    },
+    {
+      "filename": "G1_F_PHYSICS_VALIDATION.json",
+      "sha256": "bd6098295b4bd5f99d13c8f7c0a3fa8a614851374d50e3b4f764e9774919e425"
+    },
+    {
+      "filename": "G1_F_REFERENCE_CASES.json",
+      "sha256": "e24c52cff0241b8aaf5bb8f9867e5d977a0822776259e44d6c513fc9002cfaae"
+    },
+    {
+      "filename": "G1_F_REFERENCE_METHODS.md",
+      "sha256": "ad956514e6abb85375853aeee1dc16bf3ab31df6799dbac61eee6ef491d94565"
+    },
+    {
+      "filename": "G1_F_REGRESSION_RESULTS.json",
+      "sha256": "ed119368b966d3d8077dc7b662625b0c32545e16c16432bc09726cfee3e85edc"
+    },
+    {
+      "filename": "G1_F_REPRODUCIBILITY_AUDIT.json",
+      "sha256": "a168c915e37720ffd15875483981d5dcfcc4a8cdc4e81e881dbb94988c750bc7"
+    },
+    {
+      "filename": "G1_F_SOLVER_ACCEPTANCE.json",
+      "sha256": "db6c8566b9dbfe893028e06a5f9b01250222ff7474a55554224e801e9ab4c355"
+    }
+  ]
+}

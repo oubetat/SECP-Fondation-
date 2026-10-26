@@ -1,0 +1,59 @@
+{
+  "auditArea": "AUDIT A — SOURCE AND CHANGE INTEGRITY",
+  "status": "PASSED",
+  "baselineManifestRead": true,
+  "changeManifestRead": true,
+  "sourceHashesVerified": [
+    {
+      "path": "src/engine/cfd3d/adaptive/AdaptiveIndustrialCFDEngine.ts",
+      "recordedSha256": "a8f54e2548955beba2c13373b036a942d535a84a6ed0930f800636918be3f299",
+      "currentSha256": "a8f54e2548955beba2c13373b036a942d535a84a6ed0930f800636918be3f299",
+      "matches": true
+    },
+    {
+      "path": "src/engine/cfd3d/adaptive/CFDEvidenceGenerator.ts",
+      "recordedSha256": "68ec913b8a027ac51302aa22034f554a6ca0e4a1fec71a1ae5546694981a8c9b",
+      "currentSha256": "68ec913b8a027ac51302aa22034f554a6ca0e4a1fec71a1ae5546694981a8c9b",
+      "matches": true
+    },
+    {
+      "path": "src/engine/cfd3d/adaptive/PhysicalResidualMonitor.ts",
+      "recordedSha256": "3f834ce998139b6aac9e51382cf4dd76b683bc1554db7df4d1196163054c57be",
+      "currentSha256": "3f834ce998139b6aac9e51382cf4dd76b683bc1554db7df4d1196163054c57be",
+      "matches": true
+    },
+    {
+      "path": "src/engine/cfd3d/adaptive/DivergenceRecoveryEngine.ts",
+      "recordedSha256": "47907a299ad0d198668da9178f493c26aa31337a1fa9324d884ea7916fad074e",
+      "currentSha256": "47907a299ad0d198668da9178f493c26aa31337a1fa9324d884ea7916fad074e",
+      "matches": true
+    },
+    {
+      "path": "src/engine/cfd3d/adaptive/AdaptiveCFLTimeController.ts",
+      "recordedSha256": "dd930efc7a89584a6bf1d94be391f579382c47ccdd9e0a2d8d3335824fcf51b0",
+      "currentSha256": "dd930efc7a89584a6bf1d94be391f579382c47ccdd9e0a2d8d3335824fcf51b0",
+      "matches": true
+    },
+    {
+      "path": "src/engine/cfd3d/conservation/enforcement/ConservationEnforcementEngine.ts",
+      "recordedSha256": "c436001d38f3ad9e8d29dbc659611cb3304b9c2969f5836bb98d9d7f39bae9cc",
+      "currentSha256": "c436001d38f3ad9e8d29dbc659611cb3304b9c2969f5836bb98d9d7f39bae9cc",
+      "matches": true
+    },
+    {
+      "path": "src/engine/cfd3d/conservation/GlobalMassBalance.ts",
+      "recordedSha256": "79215d893b13e792ee543e6af3ae57f27921b0d50285fea08acc976ea20d3d13",
+      "currentSha256": "79215d893b13e792ee543e6af3ae57f27921b0d50285fea08acc976ea20d3d13",
+      "matches": true
+    },
+    {
+      "path": "src/engine/cfd3d/Fvm3DNavierStokesSolver.ts",
+      "recordedSha256": "34e23bcc9200f76bfe505dba831362efdcbbfdcd60db9e1665197eb74f3195a0",
+      "currentSha256": "34e23bcc9200f76bfe505dba831362efdcbbfdcd60db9e1665197eb74f3195a0",
+      "matches": true
+    }
+  ],
+  "allSourceHashesMatch": true,
+  "thresholdsWeakened": false,
+  "notes": "No test thresholds or acceptance criteria were weakened."
+}

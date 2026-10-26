@@ -1,0 +1,10 @@
+{
+  "lengthL_m": 1,
+  "widthB_m": 0.1,
+  "heightH_m": 0.1,
+  "youngsModulusE_Pa": 70000000000,
+  "poissonsRatioNu": 0.3,
+  "uniformPressureP_Pa": 101325,
+  "shearFactorFs": 1.2,
+  "decayFactorPoissonRoot": 0.09
+}

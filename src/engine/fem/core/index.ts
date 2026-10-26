@@ -1,5 +1,7 @@
 export * from "./FEMTypes";
 export * from "./MathUtils";
+export * from "./SparseMatrix";
+export * from "./SparsePCGSolver";
 export * from "./FEMDOFManager";
 export * from "./FEMElementFormulation";
 export * from "./Bar1DFormulation";

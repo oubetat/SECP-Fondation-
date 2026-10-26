@@ -1,0 +1,23 @@
+{
+  "task": "SECP-ENGINE-QUALIFICATION-004",
+  "matrix": [
+    {
+      "mutation": "Voltage Input Change",
+      "electricalResult": "INVALIDATED_AND_RECOMPUTED",
+      "thermalResult": "INVALIDATED_AND_RECOMPUTED",
+      "structuralResult": "INVARIANT_PRESERVED"
+    },
+    {
+      "mutation": "Thermal Property Change",
+      "electricalResult": "INVARIANT_PRESERVED",
+      "thermalResult": "INVALIDATED_AND_RECOMPUTED",
+      "structuralResult": "INVALIDATED_AND_RECOMPUTED"
+    },
+    {
+      "mutation": "Structural Load Change",
+      "electricalResult": "INVARIANT_PRESERVED",
+      "thermalResult": "INVARIANT_PRESERVED",
+      "structuralResult": "INVALIDATED_AND_RECOMPUTED"
+    }
+  ]
+}

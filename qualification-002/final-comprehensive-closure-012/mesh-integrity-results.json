@@ -1,0 +1,12 @@
+[
+  {
+    "id": "FSI-MESH-001",
+    "success": true
+  },
+  {
+    "id": "FSI-MESH-004",
+    "success": true,
+    "expected": "REJECTED",
+    "actual": "REJECTED: Element inversion/degeneracy detected! Cell 0 volume -7.2000e-2 m^3 (original: 8.0000e-3)"
+  }
+]

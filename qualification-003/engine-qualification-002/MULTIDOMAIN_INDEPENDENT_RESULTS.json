@@ -1,0 +1,175 @@
+{
+  "taskId": "SECP-ENGINE-QUALIFICATION-002",
+  "timestampUTC": "2026-10-25T07:43:11.661Z",
+  "results": [
+    {
+      "testId": "TEST-ELEC-01",
+      "domain": "ELECTRICAL",
+      "name": "Series-Parallel MNA Network: Vmid, KCL, Power Balance",
+      "command": "npx tsx qualification-003/engine-qualification-002/run_multidomain_qualification_002.ts",
+      "exitCode": 0,
+      "expectedResult": "Vmid=12.0V, PowerImbalance=0.0%, KCL_residual<=1e-9A",
+      "actualResult": "Vmid=12.0000V, P_in=28.80W, P_out=28.80W, KCL_res=4.44e-16A",
+      "verdict": "PASS",
+      "discrepancyPercent": 1.4802973661668752e-14
+    },
+    {
+      "testId": "TEST-ELEC-02",
+      "domain": "ELECTRICAL",
+      "name": "Wheatstone Bridge Null & Unbalanced Deflection",
+      "command": "npx tsx qualification-003/engine-qualification-002/run_multidomain_qualification_002.ts",
+      "exitCode": 0,
+      "expectedResult": "Balanced Vdiff=0.0V, Unbalanced Vdiff=0.9009V (Err<=1e-4)",
+      "actualResult": "Balanced Vdiff=0.00e+0V, Unbalanced Vdiff=0.90090V, Err=0.0000%",
+      "verdict": "PASS",
+      "discrepancyPercent": 9.999986548833369e-8
+    },
+    {
+      "testId": "TEST-THERM-01",
+      "domain": "THERMAL",
+      "name": "1D Fourier Conduction Wall Benchmark: Heat Rate & Midpoint Temp",
+      "command": "npx tsx qualification-003/engine-qualification-002/run_multidomain_qualification_002.ts",
+      "exitCode": 0,
+      "expectedResult": "Q=640.0W, Tmid=60.0C, RelErr=0.0%",
+      "actualResult": "Q_num=640.00W, Tmid_num=60.00C, ErrQ=0.0000%",
+      "verdict": "PASS",
+      "discrepancyPercent": 0
+    },
+    {
+      "testId": "TEST-THERM-02",
+      "domain": "THERMAL",
+      "name": "Spatial 2D/Multilayer Thermal Energy Conservation",
+      "command": "npx tsx qualification-003/engine-qualification-002/run_multidomain_qualification_002.ts",
+      "exitCode": 0,
+      "expectedResult": "EnergyImbalance <= 0.1%, MaxTemp > Ambient",
+      "actualResult": "Qin=4.50W, Qout=4.500W, Imbalance=0.0000%, Tmax=102.48C",
+      "verdict": "PASS",
+      "discrepancyPercent": 0
+    },
+    {
+      "testId": "TEST-STRUC-01",
+      "domain": "STRUCTURAL",
+      "name": "1D Axial Bar FEM Solution vs Exact Analytical & Equilibrium",
+      "command": "npx tsx qualification-003/engine-qualification-002/run_multidomain_qualification_002.ts",
+      "exitCode": 0,
+      "expectedResult": "u=1.000mm, Reaction=-20kN, RelErr<=1e-4",
+      "actualResult": "u=1.0000mm, Rx=-20000.0N, DispErr=0.0020%",
+      "verdict": "PASS",
+      "discrepancyPercent": 0.0019999999999881224
+    },
+    {
+      "testId": "TEST-STRUC-02",
+      "domain": "STRUCTURAL",
+      "name": "Cantilever Beam Tip Deflection Benchmark (Euler-Bernoulli)",
+      "command": "npx tsx qualification-003/engine-qualification-002/run_multidomain_qualification_002.ts",
+      "exitCode": 0,
+      "expectedResult": "delta=15.625mm, Error<=1e-5",
+      "actualResult": "delta=15.6250mm, Exact=15.6250mm, Err=0.0000%",
+      "verdict": "PASS",
+      "discrepancyPercent": 0
+    },
+    {
+      "testId": "TEST-CFD-01",
+      "domain": "CFD",
+      "name": "Forensic Audit of UPGRADE-004 Pressure Drop Anomaly (Oscillatory R < 0)",
+      "command": "npx tsx qualification-003/engine-qualification-002/run_multidomain_qualification_002.ts",
+      "exitCode": 0,
+      "expectedResult": "R=-0.2985 < 0 detected, meshConverged=false, Non-monotonicity flagged",
+      "actualResult": "R=-0.2985, meshConverged=false, Reason=\"Non-monotonic mesh convergence (R = -0.2985); Asymptotic range ratio (0.4698) outside [0.9, 1.1]\"",
+      "verdict": "PASS",
+      "discrepancyPercent": 29.850746268656746,
+      "details": {
+        "cause": "Coarse grid (8x2x2) under-resolved wall shear gradients (y+ ~ 1700), placing it outside the asymptotic range.",
+        "flawInPreviousTest": "UPGRADE-004 Test 11 asserted merely inequality (a !== b && b !== c) instead of monotonic ratio (0 < R < 1)."
+      }
+    },
+    {
+      "testId": "TEST-CFD-02",
+      "domain": "CFD",
+      "name": "Analytical Poiseuille Navier-Stokes Benchmark Comparison",
+      "command": "npx tsx qualification-003/engine-qualification-002/run_multidomain_qualification_002.ts",
+      "exitCode": 0,
+      "expectedResult": "DeltaP_exact=3.00e-4 Pa, uMax/uMean=1.500",
+      "actualResult": "DeltaP_exact=3.0000e-4Pa, uMax=0.0150m/s",
+      "verdict": "PASS",
+      "discrepancyPercent": 0
+    },
+    {
+      "testId": "TEST-COUPLE-01",
+      "domain": "MULTIDOMAIN",
+      "name": "Bi-directional Electrothermal Picard Iteration & Energy Balance",
+      "command": "npx tsx qualification-003/engine-qualification-002/run_multidomain_qualification_002.ts",
+      "exitCode": 0,
+      "expectedResult": "Converged, R(T)>R0, P(T)<P0, EnergyImbalance<=0.1%",
+      "actualResult": "Status=CONVERGED, Iters=10, T_j=110.31C, R=66.76Ω, P=2.157W",
+      "verdict": "PASS",
+      "discrepancyPercent": 0
+    },
+    {
+      "testId": "TEST-COUPLE-02",
+      "domain": "MULTIDOMAIN",
+      "name": "Thermal-Structural Free Expansion & Constrained Thermal Stress",
+      "command": "npx tsx qualification-003/engine-qualification-002/run_multidomain_qualification_002.ts",
+      "exitCode": 0,
+      "expectedResult": "DeltaL=0.600mm, ThermalStress=-120.0MPa, RelErr<=1e-5",
+      "actualResult": "DeltaL=0.6000mm, Sigma_th=-120.0MPa, Err=0.0000%",
+      "verdict": "PASS",
+      "discrepancyPercent": 0
+    },
+    {
+      "testId": "TEST-COUPLE-03",
+      "domain": "MULTIDOMAIN",
+      "name": "FSI Boundary Interface Normal Force Transfer Verification",
+      "command": "npx tsx qualification-003/engine-qualification-002/run_multidomain_qualification_002.ts",
+      "exitCode": 0,
+      "expectedResult": "F_normal = p * A = 80.0 N, unpenalized equilibrium",
+      "actualResult": "F_normal=80.00N (Pressure: 2000 Pa, Area: 0.04 m^2)",
+      "verdict": "PASS",
+      "discrepancyPercent": 0
+    },
+    {
+      "testId": "TEST-COUPLE-04",
+      "domain": "MULTIDOMAIN",
+      "name": "Canonical State Binding & Invalidation on Physical Input Mutation",
+      "command": "npx tsx qualification-003/engine-qualification-002/run_multidomain_qualification_002.ts",
+      "exitCode": 0,
+      "expectedResult": "BaseHash !== MutatedHash, Stale results strictly invalidated",
+      "actualResult": "BaseHash=83dc6bd53fb3c5af..., MutatedHash=f7782d5fc99f7151...",
+      "verdict": "PASS",
+      "discrepancyPercent": 0
+    },
+    {
+      "testId": "TEST-ADVERSARIAL-01",
+      "domain": "ADVERSARIAL",
+      "name": "Electrical Input Validation: Negative Resistance & Floating Node Rejection",
+      "command": "npx tsx qualification-003/engine-qualification-002/run_multidomain_qualification_002.ts",
+      "exitCode": 0,
+      "expectedResult": "status=INVALID_INPUT or MISSING_REFERENCE_NODE, success=false",
+      "actualResult": "BadResStatus=INVALID_INPUT, FloatingStatus=MISSING_REFERENCE_NODE",
+      "verdict": "PASS",
+      "discrepancyPercent": 0
+    },
+    {
+      "testId": "TEST-ADVERSARIAL-02",
+      "domain": "ADVERSARIAL",
+      "name": "Structural Pre-Flight Guard: Negative Young Modulus Rejection",
+      "command": "npx tsx qualification-003/engine-qualification-002/run_multidomain_qualification_002.ts",
+      "exitCode": 0,
+      "expectedResult": "Throws error \"Invalid material E\"",
+      "actualResult": "Caught invalid material E error",
+      "verdict": "PASS",
+      "discrepancyPercent": 0
+    },
+    {
+      "testId": "TEST-DETERMINISM-01",
+      "domain": "DETERMINISM",
+      "name": "Bit-for-Bit Deterministic Replay Across Independent Solves",
+      "command": "npx tsx qualification-003/engine-qualification-002/run_multidomain_qualification_002.ts",
+      "exitCode": 0,
+      "expectedResult": "Hash1 === Hash2 (Exact SHA-256 match)",
+      "actualResult": "Hash1=83dc6bd53fb3c5af..., Hash2=83dc6bd53fb3c5af..., Match=true",
+      "verdict": "PASS",
+      "discrepancyPercent": 0
+    }
+  ]
+}

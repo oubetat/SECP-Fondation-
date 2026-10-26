@@ -1,0 +1,7 @@
+{
+  "gateId": "G1-G-REPRODUCIBILITY",
+  "runAHash": "81f818b64b9140cfa1c95a8bdf5be320df0ef15bc0701e6fe99f7b74fa7ec605",
+  "runBHash": "81f818b64b9140cfa1c95a8bdf5be320df0ef15bc0701e6fe99f7b74fa7ec605",
+  "hashes100PercentIdentical": true,
+  "verdict": "VERIFIED"
+}

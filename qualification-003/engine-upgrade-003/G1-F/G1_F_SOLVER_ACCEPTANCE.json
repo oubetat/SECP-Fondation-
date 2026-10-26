@@ -1,0 +1,22 @@
+{
+  "testSuiteName": "G1-F Solver Acceptance & Fail-Closed Verification",
+  "status": "PASSED",
+  "tests": [
+    {
+      "testId": "T01-Converged",
+      "status": "CONVERGED",
+      "verdict": "PASS"
+    },
+    {
+      "testId": "T02-Timeout",
+      "status": "NOT_CONVERGED",
+      "verdict": "FAIL"
+    },
+    {
+      "testId": "T03-UnphysicalAbort",
+      "status": "ABORTED",
+      "verdict": "FAIL"
+    }
+  ],
+  "failClosedSemanticsVerified": true
+}

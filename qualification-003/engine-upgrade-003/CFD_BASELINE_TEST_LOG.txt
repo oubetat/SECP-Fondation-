@@ -1,0 +1,47 @@
+================================================================
+SECP-ENGINE-UPGRADE-003-G0: CFD BASELINE TEST EXECUTION LOG
+Timestamp: 2026-10-24T07:36:33.201Z
+================================================================
+
+[TEST SUITE 1]: AdaptiveCFDBenchmarkSuite.runAll()
+Command: npx tsx -e "AdaptiveCFDBenchmarkSuite.runAll()"
+Result: CRASHED (FAIL_CLOSED)
+Output:
+[MESH-BLOCK-DEBUG] lx=1, ly=0.2, lz=0.2, nx=8, ny=4, nz=4
+SUITE_FAILED: TypeError: Cannot read properties of undefined (reading 'every')
+    at Function.runAll (/app/applet/src/engine/benchmark/cfd/AdaptiveCFDBenchmarkSuite.ts:89:76)
+Forensic Finding: Stub 'PreFlightValidator.ts' returned minimal object without 'checkedItems' array.
+
+----------------------------------------------------------------
+[TEST SUITE 2]: Real Adaptive Solver Framework Test (PATCH-068)
+Command: npx vitest run src/engine/cfd3d/solvers/adaptive/__tests__/AdaptiveFramework.test.ts
+Result: PASSED (4/4 tests green)
+- Verify Multi-Constraint Initial Timestep Selection: PASS
+- Verify Adaptive Growth and Shrink Boundary Enforcements: PASS
+- Verify Temporal Error Estimation via Step-Doubling: PASS
+- Verify Step Acceptance Policy: PASS
+Duration: 767ms
+
+----------------------------------------------------------------
+[TEST SUITE 3]: Real Adaptive Solver Adversarial Test (PATCH-068)
+Command: npx vitest run src/engine/cfd3d/solvers/adaptive/__tests__/AdaptiveAdversarial.test.ts
+Result: PASSED (5/5 tests green)
+- Zero/Negative Timestep Handling: PASS
+- Infinite/NaN Error Estimation Rejection: PASS
+- Rapid Growth Clamping: PASS
+- Oscillating Timestep Stabilization: PASS
+- Boundary Value Monotonicity: PASS
+Duration: 806ms
+
+----------------------------------------------------------------
+[TEST SUITE 4]: Boundary Condition Adversarial Test (PATCH-060)
+Command: npx vitest run src/engine/cfd3d/boundary/__tests__/BoundaryConditionAdversarial.test.ts
+Result: FAILED (30 tests failed)
+Output: TypeError: Cannot read properties of undefined (reading 'INCOMPRESSIBLE_NAVIER_STOKES')
+Forensic Finding: BoundaryConditionTypes.ts has missing enum definitions or mismatched exports with test harness.
+
+================================================================
+AUDIT SUMMARY:
+Baseline successfully captured across all 9 targeted files.
+No source files were modified, deleted, or replaced.
+================================================================

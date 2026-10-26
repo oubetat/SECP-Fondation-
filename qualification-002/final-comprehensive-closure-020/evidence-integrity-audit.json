@@ -1,0 +1,115 @@
+{
+  "executionRecordVerified": true,
+  "artifactCompletenessVerified": true,
+  "total019ArtifactsInspected": 10,
+  "totalManifestEntriesAudited": 13,
+  "duplicatePathsFound": false,
+  "hashMismatches": 0,
+  "hashAuditLog": [
+    {
+      "path": "src/engine/cfd3d/solvers/fsi/DynamicMeshManager.ts",
+      "manifestHash": "9a34f0ca6423297e62d137e9678c3baaecfde9269ab1afc5dda34cd3c6193b45",
+      "actualHash": "9a34f0ca6423297e62d137e9678c3baaecfde9269ab1afc5dda34cd3c6193b45",
+      "manifestSize": 9592,
+      "actualSize": 9592,
+      "match": true
+    },
+    {
+      "path": "src/engine/cfd3d/solvers/fsi/FSIBenchmarkSuite.ts",
+      "manifestHash": "f7ffacf65f9bb093933977084a8bbc8fe67d851b05add1fb5305f73809a51865",
+      "actualHash": "f7ffacf65f9bb093933977084a8bbc8fe67d851b05add1fb5305f73809a51865",
+      "manifestSize": 2147,
+      "actualSize": 2147,
+      "match": true
+    },
+    {
+      "path": "src/engine/cfd3d/coupling/TwoWayFSICouplingEngine.ts",
+      "manifestHash": "05122916ea7743bc6f94f385351b3280e7afa3d99fcd6ba38d218be6d519615b",
+      "actualHash": "05122916ea7743bc6f94f385351b3280e7afa3d99fcd6ba38d218be6d519615b",
+      "manifestSize": 13814,
+      "actualSize": 13814,
+      "match": true
+    },
+    {
+      "path": "src/engine/structural-physics/StructuralAnalysisEngine.ts",
+      "manifestHash": "b944824d5b49c78728792cc5cb5b4838e6116810613915f74637420c785f919d",
+      "actualHash": "b944824d5b49c78728792cc5cb5b4838e6116810613915f74637420c785f919d",
+      "manifestSize": 5324,
+      "actualSize": 5324,
+      "match": true
+    },
+    {
+      "path": "src/engine/structural-physics/GlobalAssemblyEngine.ts",
+      "manifestHash": "a5328e9dfc1afc2fcc20578da11945c294d105db6097735a0e7daab302d40cf6",
+      "actualHash": "a5328e9dfc1afc2fcc20578da11945c294d105db6097735a0e7daab302d40cf6",
+      "manifestSize": 5224,
+      "actualSize": 5224,
+      "match": true
+    },
+    {
+      "path": "src/engine/structural-physics/ElementFormulationEngine.ts",
+      "manifestHash": "750ba47aabe92a2da7f48a7a6b1e287035e539f206820d016e13c6b10f526e9b",
+      "actualHash": "750ba47aabe92a2da7f48a7a6b1e287035e539f206820d016e13c6b10f526e9b",
+      "manifestSize": 4167,
+      "actualSize": 4167,
+      "match": true
+    },
+    {
+      "path": "src/engine/structural-physics/StructuralPhysicsTypes.ts",
+      "manifestHash": "54b05f47eef7cd1674b506caa42b219b6df8e1a4d5c362936f7dd9b3c80df01d",
+      "actualHash": "54b05f47eef7cd1674b506caa42b219b6df8e1a4d5c362936f7dd9b3c80df01d",
+      "manifestSize": 3284,
+      "actualSize": 3284,
+      "match": true
+    },
+    {
+      "path": "src/engine/structural-physics/ShapeFunctionIsoparametricEngine.ts",
+      "manifestHash": "8bb48729fa179d860018b8ad90de927975c0c9e05a1f5f1c8cb6dd7da043bd47",
+      "actualHash": "8bb48729fa179d860018b8ad90de927975c0c9e05a1f5f1c8cb6dd7da043bd47",
+      "manifestSize": 5287,
+      "actualSize": 5287,
+      "match": true
+    },
+    {
+      "path": "test_independent_reference_019.ts",
+      "manifestHash": "e8c4f439224d115b04c661de1183ed624c30a9d84f7f06de04973bb18654f074",
+      "actualHash": "e8c4f439224d115b04c661de1183ed624c30a9d84f7f06de04973bb18654f074",
+      "manifestSize": 4137,
+      "actualSize": 4137,
+      "match": true
+    },
+    {
+      "path": "test_secp_fsi_qualification_017.ts",
+      "manifestHash": "0d5f9568c1844dfd9913d99deaed39c1c756e5640f8b53c54486e452c2f01aaf",
+      "actualHash": "0d5f9568c1844dfd9913d99deaed39c1c756e5640f8b53c54486e452c2f01aaf",
+      "manifestSize": 9471,
+      "actualSize": 9471,
+      "match": true
+    },
+    {
+      "path": "test_adversarial_suite_019.ts",
+      "manifestHash": "051b57ea829f192f1abf7b94e10fad740c156da88e96a676da07516b2e854ed7",
+      "actualHash": "051b57ea829f192f1abf7b94e10fad740c156da88e96a676da07516b2e854ed7",
+      "manifestSize": 6926,
+      "actualSize": 6926,
+      "match": true
+    },
+    {
+      "path": "evaluate_exact_timoshenko_2d.ts",
+      "manifestHash": "e6b1116090e30e7ccb55be7d5074e546db7c24df68b500c80bbe3400cffa0f4e",
+      "actualHash": "e6b1116090e30e7ccb55be7d5074e546db7c24df68b500c80bbe3400cffa0f4e",
+      "manifestSize": 2329,
+      "actualSize": 2329,
+      "match": true
+    },
+    {
+      "path": "run_secp_qualification_019.ts",
+      "manifestHash": "0797619fb36d5d76da108395ed8e1fd2473a072d5d32bcbd85cff73da1d857c4",
+      "actualHash": "0797619fb36d5d76da108395ed8e1fd2473a072d5d32bcbd85cff73da1d857c4",
+      "manifestSize": 6456,
+      "actualSize": 6456,
+      "match": true
+    }
+  ],
+  "status": "PASS"
+}

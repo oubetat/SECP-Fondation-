@@ -1,4 +1,8 @@
-import { MeshElement, MeshNode } from './StructuralPhysicsTypes';
+import { MeshElement, MeshNode, MaterialProperties } from './StructuralPhysicsTypes';
+import { MaterialModelEngine } from './MaterialModelEngine';
+import { ConstitutiveMatrixEngine } from './ConstitutiveMatrixEngine';
+import { GaussQuadratureEngine } from './GaussQuadratureEngine';
+import { ShapeFunctionIsoparametricEngine } from './ShapeFunctionIsoparametricEngine';
 
 export class ElementFormulationEngine {
   public static integrateElementK(): number[][] {
@@ -8,7 +12,11 @@ export class ElementFormulationEngine {
   /**
    * Formulates the local stiffness matrix for various element types.
    */
-  public static formulateElementStiffness(elem: MeshElement, nodes: MeshNode[], materials: Map<string, MaterialProperties>): number[][] {
+  public static formulateElementStiffness(
+    elem: MeshElement,
+    nodes: MeshNode[],
+    materials?: Map<string, MaterialProperties>
+  ): number[][] {
     if (elem.type === 'BAR_1D') {
       const n1 = nodes.find(n => n.id === elem.nodeIds[0]);
       const n2 = nodes.find(n => n.id === elem.nodeIds[1]);
@@ -20,7 +28,10 @@ export class ElementFormulationEngine {
       const dz = n2.z - n1.z;
       const L = Math.sqrt(dx * dx + dy * dy + dz * dz);
       
-      const mat = materials.get(elem.materialId);
+      const mat = materials?.get(elem.materialId) || MaterialModelEngine.getMaterial(elem.materialId);
+      if (mat) {
+        ConstitutiveMatrixEngine.validateMaterial(mat);
+      }
       const E = mat ? mat.youngsModulus : 200e9; 
       const A = elem.crossSectionArea || 0.01;
 
@@ -39,27 +50,64 @@ export class ElementFormulationEngine {
       const cosZ = dz / L;
 
       const lambda = [cosX, cosY, cosZ];
-      const kTrans = k * 0.01; // 1% transverse stiffness to stabilize mechanisms
 
       for (let i = 0; i < 3; i++) {
         for (let j = 0; j < 3; j++) {
-          // Axial component
+          // Axial component ONLY - True truss behavior
           const valAxial = k * lambda[i] * lambda[j];
           
-          // Transverse component (simplified: isotropic in plane perpendicular to axis)
-          // Kronecker delta - lambda_i * lambda_j gives the transverse projection
-          const delta = (i === j) ? 1 : 0;
-          const valTrans = kTrans * (delta - lambda[i] * lambda[j]);
-          
-          const totalVal = valAxial + valTrans;
-
-          K[i][j] = totalVal;
-          K[i + 3][j + 3] = totalVal;
-          K[i][j + 3] = -totalVal;
-          K[i + 3][j] = -totalVal;
+          K[i][j] = valAxial;
+          K[i + 3][j + 3] = valAxial;
+          K[i][j + 3] = -valAxial;
+          K[i + 3][j] = -valAxial;
         }
       }
       return K;
+    }
+
+    if (elem.type === 'QUAD_2D') {
+      const quadNodes = elem.nodeIds.map(nid => nodes.find(n => n.id === nid)).filter(Boolean) as MeshNode[];
+      if (quadNodes.length === 4) {
+        const mat = materials?.get(elem.materialId) || MaterialModelEngine.getMaterial(elem.materialId);
+        const D = ConstitutiveMatrixEngine.getPlaneStressMatrix(mat);
+        const thickness = elem.thickness || 1.0;
+        const K = Array.from({ length: 8 }, () => Array(8).fill(0));
+
+        // Use Selective Reduced Integration (SRI) to eliminate shear locking
+        // while maintaining element stability against hourglass modes.
+        const gauss2x2 = GaussQuadratureEngine.getQuadPoints(2);
+        const gauss1x1 = GaussQuadratureEngine.getQuadPoints(1);
+
+        // 1. Normal Stiffness: 2x2 Gauss Integration
+        for (const pt of gauss2x2) {
+          const { detJ, B } = ShapeFunctionIsoparametricEngine.evaluateQuad4(pt.xi, pt.eta, quadNodes);
+          const factor = detJ * pt.weight * thickness;
+          for (let i = 0; i < 8; i++) {
+            for (let j = 0; j < 8; j++) {
+              let s = 0;
+              for (let r = 0; r < 2; r++) {
+                for (let k = 0; k < 2; k++) {
+                  s += B[r][i] * D[r][k] * B[k][j];
+                }
+              }
+              K[i][j] += s * factor;
+            }
+          }
+        }
+
+        // 2. Shear Stiffness: 1x1 Gauss Integration (Reduced)
+        for (const pt of gauss1x1) {
+          const { detJ, B } = ShapeFunctionIsoparametricEngine.evaluateQuad4(pt.xi, pt.eta, quadNodes);
+          const factor = detJ * pt.weight * thickness;
+          for (let i = 0; i < 8; i++) {
+            for (let j = 0; j < 8; j++) {
+              const s = B[2][i] * D[2][2] * B[2][j];
+              K[i][j] += s * factor;
+            }
+          }
+        }
+        return K;
+      }
     }
 
     // Fallback for other types

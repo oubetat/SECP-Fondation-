@@ -1,0 +1,72 @@
+{
+  "declaredReferencesMm": {
+    "eulerBernoulli1D": 2.1712499999999997,
+    "net2DClampedContinuum": 1.9932074999999996
+  },
+  "stationReconciliationTable": [
+    {
+      "stations": 10,
+      "rawDisplacementMm": 1.9748976433157108,
+      "declaredEBRefMm": 2.1712499999999997,
+      "declared2DClampedRefMm": 1.9932074999999996,
+      "recordedEBErrPercent": 9.04328643335815,
+      "recalculatedEBErrPercent": 9.043286433358153,
+      "ebErrDiff": 3.552713678800501e-15,
+      "recorded2DErrPercent": 0.9186126725034309,
+      "recalculated2DErrPercent": 0.9186126725034275,
+      "continuumErrDiff": 3.4416913763379853e-15,
+      "verticalForceBalanceErrPercent": 3.552706666288921e-11,
+      "rootMomentBalanceErrPercent": 3.287016627577067e-11,
+      "agreesWithinTolerance": true
+    },
+    {
+      "stations": 20,
+      "rawDisplacementMm": 1.9798372370655628,
+      "declaredEBRefMm": 2.1712499999999997,
+      "declared2DClampedRefMm": 1.9932074999999996,
+      "recordedEBErrPercent": 8.815786433364964,
+      "recalculatedEBErrPercent": 8.81578643336497,
+      "ebErrDiff": 5.329070518200751e-15,
+      "recorded2DErrPercent": 0.6707913217483266,
+      "recalculated2DErrPercent": 0.6707913217483266,
+      "continuumErrDiff": 0,
+      "verticalForceBalanceErrPercent": 6.821771264223295e-12,
+      "rootMomentBalanceErrPercent": 2.4235240017635394e-11,
+      "agreesWithinTolerance": true
+    },
+    {
+      "stations": 40,
+      "rawDisplacementMm": 1.9810721355057177,
+      "declaredEBRefMm": 2.1712499999999997,
+      "declared2DClampedRefMm": 1.9932074999999996,
+      "recordedEBErrPercent": 8.758911433242691,
+      "recalculatedEBErrPercent": 8.758911433242694,
+      "ebErrDiff": 3.552713678800501e-15,
+      "recorded2DErrPercent": 0.6088359839244989,
+      "recalculated2DErrPercent": 0.6088359839244974,
+      "continuumErrDiff": 1.4432899320127035e-15,
+      "verticalForceBalanceErrPercent": 6.387332146870127e-11,
+      "rootMomentBalanceErrPercent": 8.925749138346902e-11,
+      "agreesWithinTolerance": true
+    },
+    {
+      "stations": 80,
+      "rawDisplacementMm": 1.9813808601282503,
+      "declaredEBRefMm": 2.1712499999999997,
+      "declared2DClampedRefMm": 1.9932074999999996,
+      "recordedEBErrPercent": 8.744692682636696,
+      "recalculatedEBErrPercent": 8.744692682636703,
+      "ebErrDiff": 7.105427357601002e-15,
+      "recorded2DErrPercent": 0.5933471488417175,
+      "recalculated2DErrPercent": 0.5933471488417166,
+      "continuumErrDiff": 8.881784197001252e-16,
+      "verticalForceBalanceErrPercent": 3.37623821490125e-10,
+      "rootMomentBalanceErrPercent": 5.944096534992041e-10,
+      "agreesWithinTolerance": true
+    }
+  ],
+  "numericalDiscrepancyCount": 0,
+  "discrepancyTolerance": 1e-10,
+  "agreesAcrossAllArtifacts": true,
+  "status": "PASS"
+}

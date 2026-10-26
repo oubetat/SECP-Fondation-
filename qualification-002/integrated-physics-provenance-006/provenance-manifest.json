@@ -1,0 +1,9 @@
+{
+  "campaignId": "SECP-FSI-EVIDENCE-PROVENANCE-006",
+  "repositoryRoot": "/app/applet",
+  "sourcePackage": "qualification-002/integrated-physics-execution-005",
+  "targetPackage": "qualification-002/integrated-physics-provenance-006",
+  "totalArtifactsAudited": 8,
+  "status": "VERIFIED",
+  "timestamp": "2026-10-23T08:35:23.055Z"
+}

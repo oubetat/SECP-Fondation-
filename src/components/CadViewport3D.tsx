@@ -59,11 +59,21 @@ export interface ValveControlConfig {
   showWaterFlow: boolean;
 }
 
+export interface SimulationData {
+  type: 'THERMAL' | 'STRESS' | 'SIGNAL_INTEGRITY';
+  values: number[]; // Corresponds to vertex index or face index depending on engine
+  minValue: number;
+  maxValue: number;
+  unit: string;
+  targetEntityId?: string;
+}
+
 interface CadViewport3DProps {
   activeProjectType?: ActiveProjectType;
   activePatchTab?: string;
   activeSolid?: CadSolidEntity | null;
   canonicalRenderData?: CanonicalRenderData;
+  simulationResults?: SimulationData | null;
   assemblyComponents?: AssemblyComponentItem[];
   selectedPartId?: string | null;
   hiddenInstanceIds?: string[];
@@ -108,6 +118,7 @@ export const CadViewport3D: React.FC<CadViewport3DProps> = ({
   activePatchTab = 'PATCH-004',
   activeSolid,
   canonicalRenderData,
+  simulationResults,
   assemblyComponents,
   selectedPartId,
   hiddenInstanceIds = [],
@@ -804,9 +815,32 @@ export const CadViewport3D: React.FC<CadViewport3DProps> = ({
           // CANONICAL RENDERING CONTRACT (SECP-3D-CANONICAL-CONTRACT-001):
           // Render authoritative derived geometry directly from CanonicalRenderData SOT.
           const geom = convertRenderDataToThreeBufferGeometry(effectiveRenderData, { unitScaleMultiplier: 1000 });
+          
+          if (simulationResults && simulationResults.values.length > 0) {
+            const count = geom.attributes.position.count;
+            const colors = new Float32Array(count * 3);
+            const color = new THREE.Color();
+            for (let i = 0; i < count; i++) {
+              const val = simulationResults.values[i % simulationResults.values.length];
+              const norm = Math.max(0, Math.min(1, (val - simulationResults.minValue) / (simulationResults.maxValue - simulationResults.minValue || 1)));
+              if (simulationResults.type === 'THERMAL') {
+                color.setHSL(0.7 * (1 - norm), 1, 0.5); // Blue to Red
+              } else if (simulationResults.type === 'STRESS') {
+                color.setHSL(0.3 * (1 - norm), 1, 0.5); // Green to Red
+              } else {
+                color.setHSL(0.6 * (1 - norm), 1, 0.5);
+              }
+              colors[i * 3] = color.r;
+              colors[i * 3 + 1] = color.g;
+              colors[i * 3 + 2] = color.b;
+            }
+            geom.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+          }
+
           const colorHex = activeSolid.colorHex || '#3b82f6';
           const mat = getMat({
-            color: new THREE.Color(colorHex),
+            color: simulationResults ? 0xffffff : new THREE.Color(colorHex),
+            vertexColors: Boolean(simulationResults),
             metalness: 0.3,
             roughness: 0.3,
             wireframe: wireframeMode,
@@ -907,7 +941,7 @@ export const CadViewport3D: React.FC<CadViewport3DProps> = ({
       console.error(err);
       setDebugError(err.message || 'Unknown geometry construction error');
     }
-  }, [activeProjectType, activePatchTab, activeSolid, canonicalRenderData, assemblyComponents, explodedFactor, wireframeMode, showSectionPlane, valveConfig, internalValveAngle, internalValveExploded, internalValveMaterial, internalHandleColor]);
+  }, [activeProjectType, activePatchTab, activeSolid, canonicalRenderData, simulationResults, assemblyComponents, explodedFactor, wireframeMode, showSectionPlane, valveConfig, internalValveAngle, internalValveExploded, internalValveMaterial, internalHandleColor]);
 
   // Section Plane Offset Update
   useEffect(() => {

@@ -1,0 +1,12 @@
+{
+  "gateId": "G1-G-DEFECT-REGISTER",
+  "defectsIdentified": [
+    {
+      "defectId": "DEF-01",
+      "description": "Fine mesh (256 cells) hit MAX_ITERATIONS_REACHED in G1-F initial run.",
+      "severity": "MEDIUM",
+      "resolved": true,
+      "resolutionNotes": "Reran fine mesh simulation with extended maxIterations (250) in G1-G, achieving full convergence (CONVERGED)."
+    }
+  ]
+}

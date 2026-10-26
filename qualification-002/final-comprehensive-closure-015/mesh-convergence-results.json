@@ -1,0 +1,38 @@
+[
+  {
+    "stations": 10,
+    "maxDisplacementMm": 1.9748976433157108,
+    "theoreticalDeltaMm": 2.1712499999999997,
+    "errorPercent": 9.04328643335815,
+    "converged": true,
+    "totalAppliedFy": -10132.500000000002,
+    "totalReactionFy": 10132.499999996402,
+    "analyticalMomentNm": 5066.25,
+    "reactionMomentNm": 5066.249999998335,
+    "momentErrorPercent": 3.287016627577067e-11
+  },
+  {
+    "stations": 20,
+    "maxDisplacementMm": 1.9798372370655628,
+    "theoreticalDeltaMm": 2.1712499999999997,
+    "errorPercent": 8.815786433364964,
+    "converged": true,
+    "totalAppliedFy": -10132.500000000002,
+    "totalReactionFy": 10132.49999999931,
+    "analyticalMomentNm": 5066.25,
+    "reactionMomentNm": 5066.249999998772,
+    "momentErrorPercent": 2.4235240017635394e-11
+  },
+  {
+    "stations": 40,
+    "maxDisplacementMm": 1.9810721355057177,
+    "theoreticalDeltaMm": 2.1712499999999997,
+    "errorPercent": 8.758911433242691,
+    "converged": true,
+    "totalAppliedFy": -10132.500000000002,
+    "totalReactionFy": 10132.500000006474,
+    "analyticalMomentNm": 5066.25,
+    "reactionMomentNm": 5066.250000004522,
+    "momentErrorPercent": 8.925749138346902e-11
+  }
+]

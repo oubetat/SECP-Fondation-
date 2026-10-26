@@ -1,0 +1,19 @@
+{
+  "campaignId": "SECP-FSI-INDEPENDENT-VERIFICATION-EVIDENCE-RECONCILIATION-004",
+  "timestamp": "2026-10-23T07:54:00.000Z",
+  "sourceHashes": {
+    "src/engine/cfd3d/solvers/fsi/index.ts": "6e218504a2283c76b094c0015667b06d8cb09d27dd6ca3802c8f34d6db94f88e",
+    "src/engine/cfd3d/solvers/fsi/FSIRelaxationManager.ts": "527140548817f0581477a00b98c9af24bf255007dcaa3e0ab9b7a19be36c3157",
+    "src/engine/cfd3d/solvers/fsi/DynamicMeshManager.ts": "e618e5f5377e14ba7a9fdf929a47735fca40204dd351125ec76e29af27b1f927",
+    "src/engine/cfd3d/solvers/fsi/FSIConservationAudit.ts": "9c963208cfadb2b3c43ec4cc15af98359ef74d410c9aad22e2e9e65d9fb47e3d",
+    "src/engine/cfd3d/solvers/fsi/FSIInterfaceMapper.ts": "f4804bc9f0e5a43df17e83a96d6f51394580e79ace25fc21ea6d834a5ff5355f",
+    "src/engine/cfd3d/solvers/fsi/HardAcceptanceGate254.ts": "66bd1e4a99b8ecdd5a06aaff27cf46d696554287ed56374163bda2d85e6bd8d6",
+    "src/engine/cfd3d/solvers/fsi/FSISolver.ts": "cf6bee3852ae9d8490c5099a39b6dd7bfcc91039a97f5fde0914c49a6614a1e4",
+    "src/engine/cfd3d/solvers/fsi/FSIBenchmarkSuite.ts": "e93912a0f8bb5635b77999700e0b4d94e0c5105643b2a2bad749833945dea67d",
+    "src/engine/cfd3d/coupling/TwoWayFSICouplingEngine.ts": "7d86b3ad941fdc4cf41c043925671f115ff43119995aec27c8a955e1fe779fda",
+    "src/engine/structural-physics/StructuralAnalysisEngine.ts": "b944824d5b49c78728792cc5cb5b4838e6116810613915f74637420c785f919d",
+    "src/engine/structural-physics/GlobalAssemblyEngine.ts": "7b24b6a9aa841e11b5b3b9085765e2aa252f2899aeac12221c3ba3a3e506ce4c",
+    "src/engine/structural-physics/ElementFormulationEngine.ts": "e014f27ef5979f8b73339d805650885a02b6f6b4ccfd0d3a16bf17e6d77a1588",
+    "src/engine/structural-physics/MaterialModelEngine.ts": "7f76f7225d4b0b801e8a0dd8f0d5455ea4a39e1d5ecc755f3f0bd8863449c2b8"
+  }
+}

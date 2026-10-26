@@ -1,0 +1,43 @@
+{
+  "gateId": "SECP-ENGINE-UPGRADE-003-G1-E0",
+  "timestampUTC": "2026-10-24T08:17:00.000Z",
+  "baselineState": "PRE_REPAIR_FREEZE",
+  "auditReferences": [
+    "qualification-003/engine-upgrade-003/G1-D/G1_D_SOURCE_AUDIT.md",
+    "qualification-003/engine-upgrade-003/G1-D/G1_D_MASS_BALANCE_RECALCULATION.json",
+    "qualification-003/engine-upgrade-003/G1-D/G1_D_CONVERGENCE_AUDIT.json",
+    "qualification-003/engine-upgrade-003/G1-D/G1_D_RECOVERY_AUDIT.json",
+    "qualification-003/engine-upgrade-003/G1-D/G1_D_EVIDENCE_BINDING.json",
+    "qualification-003/engine-upgrade-003/G1-D/G1_D_FINAL_ADJUDICATION.json"
+  ],
+  "sourceFilesUnderRepair": [
+    {
+      "path": "src/engine/cfd3d/adaptive/AdaptiveIndustrialCFDEngine.ts",
+      "targetDefect": "Ensure convergence status, total iterations, and evidence generation are strictly unified"
+    },
+    {
+      "path": "src/engine/cfd3d/adaptive/CFDEvidenceGenerator.ts",
+      "targetDefect": "Separate deterministic canonical numerical state hash from dynamic execution timestamp metadata"
+    },
+    {
+      "path": "src/engine/cfd3d/adaptive/PhysicalResidualMonitor.ts",
+      "targetDefect": "Harmonize boundary flux mass imbalance calculation formula with GlobalMassBalance"
+    },
+    {
+      "path": "src/engine/cfd3d/adaptive/DivergenceRecoveryEngine.ts",
+      "targetDefect": "Ensure complete solver field state restoration including turbulence and time-step state"
+    },
+    {
+      "path": "src/engine/cfd3d/conservation/enforcement/ConservationEnforcementEngine.ts",
+      "targetDefect": "Ensure exact real-time iteration counts and conservation metrics are recorded"
+    },
+    {
+      "path": "src/engine/cfd3d/conservation/GlobalMassBalance.ts",
+      "targetDefect": "Standardize global boundary mass flux balance definitions and normalized metrics"
+    },
+    {
+      "path": "src/engine/cfd3d/Fvm3DNavierStokesSolver.ts",
+      "targetDefect": "Unify continuity audit boundary mass imbalance and global mass imbalance norm definitions"
+    }
+  ]
+}

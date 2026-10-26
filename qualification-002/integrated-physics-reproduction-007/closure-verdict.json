@@ -1,0 +1,10 @@
+{
+  "campaignId": "SECP-FSI-EVIDENCE-REPRODUCTION-007",
+  "verdict": "QUALIFIED_WITHIN_DECLARED_SCOPE",
+  "summary": "Evidence independently reproduced and source-bound.",
+  "defects": {
+    "DEFECT-STRUCT-001": "OPEN",
+    "EnergyConservation": "NOT_VERIFIED_DIRECTLY"
+  },
+  "timestamp": "2026-10-23T08:35:40.214Z"
+}

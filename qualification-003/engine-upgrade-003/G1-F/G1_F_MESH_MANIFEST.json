@@ -1,0 +1,19 @@
+{
+  "meshLevels": [
+    {
+      "level": "COARSE",
+      "cells": 32,
+      "faces": 132
+    },
+    {
+      "level": "MEDIUM",
+      "cells": 108,
+      "faces": 405
+    },
+    {
+      "level": "FINE",
+      "cells": 256,
+      "faces": 912
+    }
+  ]
+}

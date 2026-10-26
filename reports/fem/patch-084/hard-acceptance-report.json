@@ -1,0 +1,29 @@
+{
+  "verdict": "VERIFIED",
+  "checks": [
+    {
+      "id": "1D_BAR_CANTILEVER",
+      "description": "Cantilever bar natural frequencies vs analytical",
+      "passed": true,
+      "details": "f1: 2.5161 Hz (Err: 0.64%)"
+    },
+    {
+      "id": "RIGID_BODY_MODES",
+      "description": "Detection of unconstrained rigid body modes",
+      "passed": true,
+      "details": "Rigid body mode detected at ~0 Hz"
+    },
+    {
+      "id": "ORTHOGONALITY",
+      "description": "Mass orthogonality phi1^T * M * phi2 = 0",
+      "passed": true,
+      "details": "Inner product: 5.5511e-17"
+    },
+    {
+      "id": "RAYLEIGH_QUOTIENT",
+      "description": "Rayleigh quotient verification",
+      "passed": true,
+      "details": "Relative error: 6.8232e-16"
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "testId": "BENCH-BEAM-001",
+  "tipDispM": -0.00373253,
+  "solverPath": "PCG -> Dense (Fallback Triggered)",
+  "status": "PASS"
+}

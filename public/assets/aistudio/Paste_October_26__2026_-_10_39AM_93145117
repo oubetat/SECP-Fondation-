@@ -1,0 +1,820 @@
+هذه هي المهمة الأولى من امتداد Programmable Material Engineering لمنصة SECP. صممتها كمرحلة تحقيق وتأهيل تقني قبل أي تنفيذ، حتى لا نبني محركًا على افتراضات غير مثبتة أو نكرر قدرات موجودة بالفعل في المنصة.
+
+SECP-PROGRAMMABLE-MATERIAL-001
+
+Technology Forensics & Feasibility Qualification
+
+Classification: Read-Only Forensic Audit + Engineering Feasibility Assessment
+Phase: V1 — Technology Definition
+Execution Mode: Evidence-Driven / Fail-Closed
+Code Modification: PROHIBITED
+New Engine Creation: PROHIBITED
+Architectural Duplication: PROHIBITED
+
+انسخ المهمة التالية وأرسلها إلى وكيل البرمجة الذي يستطيع الوصول إلى مستودع SECP.
+
+TASK ID:
+SECP-PROGRAMMABLE-MATERIAL-001
+
+TITLE:
+Technology Forensics & Feasibility Qualification
+
+PROGRAM:
+SECP Advanced Material Manufacturing Extension
+Programmable Material Engineering
+
+PHASE:
+V1 — Technology Definition
+
+MISSION:
+Determine whether the material-manufacturing technology presented
+in the supplied source can be represented, analyzed, manufactured,
+measured, verified, and governed within SECP's existing architecture.
+
+This is a forensic and feasibility task, not an implementation task.
+
+The objective is to establish the exact technology, its demonstrated
+capabilities, its physical constraints, the existing SECP capabilities
+that can be reused, the genuine architectural gaps, and the minimum
+independently verifiable experiment required before implementation.
+
+No implementation may begin until this task produces an evidence-backed
+feasibility decision and the decision is explicitly approved.
+
+============================================================
+0. NON-NEGOTIABLE GOVERNANCE
+============================================================
+
+0.1 READ-ONLY REQUIREMENT
+
+Do not modify source code, tests, configuration, schemas, registries,
+canonical models, solver behavior, build settings, or security controls.
+
+Do not create new engines, plugins, registries, canonical authorities,
+or parallel state stores.
+
+Do not alter existing tests or acceptance thresholds.
+
+Do not weaken assertions, skip failing tests, introduce mocks as physical
+evidence, or change verification criteria to obtain a passing result.
+
+You may create a forensic report and other documentation artifacts only
+if doing so does not modify protected implementation files.
+
+Before inspection, record:
+- Repository root, if accessible.
+- Current working directory.
+- Available version-control metadata, if accessible.
+- Relevant existing working-tree changes.
+- Source files and artifacts inspected.
+- Commands executed and their outcomes.
+
+If the repository or video source is unavailable, report that limitation.
+Do not fabricate inspection results or infer that an inspection occurred.
+
+Do not assume Git metadata exists. If it does not, record the limitation
+and use available file hashes and other verifiable provenance.
+
+0.2 EVIDENCE CLASSIFICATION
+
+Every substantive finding must be classified as one of:
+
+A. DIRECTLY_OBSERVED
+   Directly visible in the supplied source or inspected implementation.
+
+B. SOURCE_DOCUMENTED
+   Explicitly documented by a traceable technical source.
+
+C. INDEPENDENTLY_VERIFIED
+   Reproduced through a documented independent calculation, test,
+   measurement, or authoritative implementation.
+
+D. INFERRED
+   Reasonable engineering inference that has not been independently proven.
+
+E. UNKNOWN
+   Evidence is missing or insufficient.
+
+F. CONTRADICTED
+   Available evidence conflicts with the claim.
+
+Do not promote an inference into a verified fact.
+
+For each material claim, record:
+- Claim ID.
+- Exact claim.
+- Classification.
+- Source reference or file path.
+- Relevant page, timestamp, section, symbol, or line range.
+- Evidence supporting the claim.
+- Limitations.
+- Confidence and unresolved questions.
+
+Marketing descriptions alone are not proof of physical performance.
+
+============================================================
+1. TECHNOLOGY FORENSICS
+============================================================
+
+Inspect the supplied video and any accompanying technical documentation
+that is actually accessible.
+
+Identify the exact manufacturing technology demonstrated.
+
+Do not assume the technology is Foam Additive Manufacturing (FAM),
+Oniro technology, functionally graded manufacturing, lattice fabrication,
+multi-material printing, or any other specific process until the evidence
+supports that identification.
+
+Investigate which category best describes the demonstrated process:
+
+- Spatially controlled cellular or foam structure.
+- Functionally graded material manufacturing.
+- Lattice or architected material manufacturing.
+- Spatially varying porosity or density.
+- Multi-material deposition or mixing.
+- Process-induced microstructure control.
+- Another specifically identified manufacturing process.
+
+These categories are not interchangeable.
+
+For the identified process, establish:
+
+1. Process name and terminology used by the source.
+2. Manufacturer, research organization, or originating institution,
+   if identifiable.
+3. Material family and feedstock, if documented.
+4. Manufacturing method and process sequence.
+5. Which process parameters are directly controllable.
+6. Which resulting properties are directly controllable.
+7. Which properties are only indirectly influenced.
+8. Which properties are derived through models.
+9. Which properties require physical measurement.
+10. Spatial control mechanism and its resolution.
+11. Minimum and maximum supported feature sizes, if documented.
+12. Supported material and process parameter ranges.
+13. Repeatability and manufacturing variability evidence.
+14. Available metrology and validation techniques.
+15. Known failure modes and operating limitations.
+
+Distinguish clearly between:
+
+- A parameter the machine accepts.
+- A physical structure the process can produce.
+- A property predicted by a model.
+- A property measured from a manufactured specimen.
+- A property validated across multiple specimens or conditions.
+
+Do not claim that a material property is programmable merely because
+a corresponding parameter appears in software or a demonstration.
+
+If the supplied video does not establish a fact, mark it UNKNOWN and
+identify the additional evidence needed.
+
+============================================================
+2. TECHNICAL SOURCE VERIFICATION
+============================================================
+
+Where external research is permitted and available, seek primary sources:
+
+- Peer-reviewed publications.
+- Technical papers and supplementary data.
+- Official process documentation.
+- Equipment specifications.
+- Experimental datasets.
+- Material characterization reports.
+- Published repeatability or uncertainty studies.
+
+Prefer primary sources over promotional summaries.
+
+For every external source, record:
+- Full title.
+- Author or issuing organization.
+- Publication date, if available.
+- Source URL or persistent identifier.
+- Exact claims supported by the source.
+- Relevant figures, tables, sections, or page numbers.
+- Whether the source presents simulation, a single experiment,
+  repeated experiments, or production-scale validation.
+
+Separate the original video evidence from independently researched
+technical evidence.
+
+Do not represent an external publication as evidence that the same
+performance has been demonstrated by SECP.
+
+If primary sources cannot be located, explicitly document the gap.
+
+============================================================
+3. CONTROLLED, DERIVED, AND MEASURED PROPERTY MATRIX
+============================================================
+
+Produce a traceable property matrix.
+
+Evaluate candidate properties only when relevant to the identified
+technology, including:
+
+- Density.
+- Porosity.
+- Cell size and geometry.
+- Cell orientation.
+- Wall thickness.
+- Elastic modulus.
+- Strength.
+- Anisotropy.
+- Thermal conductivity.
+- Permeability.
+- Damping.
+- Energy absorption.
+
+Do not assume every listed property applies to the technology.
+
+For each applicable property, record:
+
+- Property ID.
+- Physical meaning.
+- SI unit.
+- Directly controlled process variable, if any.
+- Whether the relationship is direct or indirect.
+- Required constitutive or homogenization model.
+- Calibration data requirements.
+- Expected spatial resolution.
+- Measurement method.
+- Measurement uncertainty.
+- Validity range.
+- Known coupling with other properties.
+- Evidence classification.
+- Unresolved limitations.
+
+Use these classifications:
+
+DIRECTLY_CONTROLLED
+INDIRECTLY_INFLUENCED
+MODEL_DERIVED
+PHYSICALLY_MEASURED
+NOT_SUPPORTED
+UNKNOWN
+
+A property may have more than one relevant classification in its
+lifecycle. Explain the distinction rather than forcing a false single
+classification.
+
+Explicitly investigate coupled properties.
+
+For example, density, porosity, stiffness, strength, conductivity,
+and energy absorption must not be treated as independently assignable
+variables unless the evidence supports that independence.
+
+Do not invent constitutive equations or material-property relationships.
+
+If a relationship requires calibration, identify the necessary data
+and mark the relationship UNVALIDATED until supported.
+
+============================================================
+4. DEFINE ONE INITIAL QUALIFICATION USE CASE
+============================================================
+
+Select one narrow use case supported by the available evidence.
+
+Do not attempt to qualify every material family or manufacturing process.
+
+The use case must define:
+
+- Engineering objective.
+- Intended application.
+- Base material or feedstock.
+- Manufacturing process.
+- Target geometry.
+- Spatially varying feature or property.
+- Intended physical performance.
+- Applicable constraints.
+- Relevant failure modes.
+- Required physical measurements.
+- Independent reference for comparison.
+- Acceptance criteria.
+- Evidence required for acceptance.
+
+Prefer a simple specimen with an analytical solution, trusted reference
+dataset, or independently characterized physical baseline.
+
+If the source does not support a specific material or application,
+do not invent one. Instead, state what information is required to select
+a valid qualification case.
+
+Define the baseline specimen and the proposed variable specimen.
+
+Identify what measurable difference should occur if the programmable
+material concept is physically effective.
+
+Explain how to distinguish a genuine material effect from:
+- Geometric differences.
+- Manufacturing defects.
+- Measurement noise.
+- Numerical discretization.
+- Model calibration error.
+- Specimen-to-specimen variability.
+
+============================================================
+5. SECP EXISTING-CAPABILITY AUDIT
+============================================================
+
+Inspect the accessible SECP codebase and documentation.
+
+Do not assume any capability exists merely because a file name,
+interface, test name, or roadmap entry suggests it exists.
+
+For each relevant capability, identify:
+- Existing implementation.
+- Canonical authority.
+- Input and output contracts.
+- Revision and provenance behavior.
+- Verification behavior.
+- Evidence production.
+- Persistence behavior.
+- Test coverage.
+- Known limitations.
+- Direct integration path for the proposed use case.
+
+Audit at least these capability areas where applicable:
+
+A. Canonical model and engineering identity.
+B. Revision and dependency invalidation.
+C. Material definitions and constitutive models.
+D. Spatial geometry and field representation.
+E. Mesh and field-to-mesh mapping.
+F. Structural analysis and material constitutive behavior.
+G. Thermal analysis.
+H. Manufacturing intent and process constraints.
+I. Manufacturing execution or toolpath representation.
+J. Physical specimen identity.
+K. Metrology and measured-data ingestion.
+L. Independent verification.
+M. Evidence provenance and integrity.
+N. Engineering Truth Thread.
+O. Cross-domain integration.
+P. ADSE and Engineering Possibility Discovery integration.
+
+Use the following reuse classifications:
+
+EXISTING_VERIFIED
+EXISTING_WITH_LIMITATIONS
+EXISTS_BUT_UNVERIFIED
+PARTIALLY_IMPLEMENTED
+MISSING
+NOT_APPLICABLE
+UNKNOWN_DUE_TO_ACCESS_LIMITATION
+
+For every classification, cite the implementation or evidence supporting it.
+
+Where practical, run existing relevant tests without changing them.
+Record exact commands, exit codes, and results.
+
+Do not execute an entire expensive test campaign without justification.
+Select tests that directly establish the capabilities under assessment.
+
+If a test passes, state precisely what it proves and what it does not prove.
+
+A passing software test does not establish physical manufacturing
+accuracy or measured material performance.
+
+============================================================
+6. ARCHITECTURAL CONTRACT REQUIREMENTS
+============================================================
+
+Do not implement these contracts in V1.
+
+Assess whether the following responsibilities already exist in SECP
+and whether they can be reused without creating parallel authority:
+
+1. Material Definition
+   Base material identity, constitutive model, property validity domain,
+   units, calibration provenance, and revision binding.
+
+2. Spatial Material Field
+   Spatial representation, interpolation, units, resolution, coordinate
+   system, boundary behavior, and mapping to the canonical geometry
+   or computational mesh.
+
+3. Microstructure Model
+   Cellular or lattice parameters, relevant homogenization assumptions,
+   calibration evidence, and validity limits.
+
+4. Manufacturing Process Model
+   Machine/process parameters, material compatibility, minimum features,
+   spatial-gradient constraints, orientation constraints, tolerances,
+   and post-processing assumptions.
+
+5. Material Verification
+   Predicted values, measured values, uncertainty, independent references,
+   deviations, and acceptance verdicts.
+
+These are functional responsibilities, not authorization to create five
+new registries or engines.
+
+Identify the existing authoritative owner for each responsibility.
+If no valid owner exists, report the gap without implementing it.
+
+Any future design must preserve:
+
+- A single canonical authority.
+- Explicit revision identity.
+- Dependency-aware invalidation.
+- Reproducible computations.
+- Traceable evidence.
+- Separation of target, predicted, and measured states.
+- Fail-closed verification.
+- No silent replacement of measured values with predictions.
+
+============================================================
+7. PHYSICS AND NUMERICAL FEASIBILITY
+============================================================
+
+Determine whether the current SECP physics capabilities can correctly
+represent the selected material behavior.
+
+Do not conclude that a solver supports programmable materials merely
+because it accepts a material-property object.
+
+Assess the actual governing equations and constitutive implementation.
+
+Depending on the selected use case, investigate:
+
+- Spatially varying material coefficients.
+- Anisotropic constitutive tensors.
+- Nonlinear material behavior.
+- Temperature-dependent properties.
+- Porous-medium behavior.
+- Field interpolation and integration.
+- Material interfaces and discontinuities.
+- Mesh resolution sensitivity.
+- Numerical convergence.
+- Conservation laws, where applicable.
+- Boundary-condition correctness.
+- Solver stability.
+- Independent reference agreement.
+
+Only evaluate physics relevant to the selected use case.
+
+Identify the smallest numerical benchmark that would demonstrate that
+the spatial material field changes the physical computation correctly.
+
+Require at least:
+1. A homogeneous baseline.
+2. A simple spatially varying case.
+3. An independent analytical or trusted reference.
+4. A numerical convergence or resolution-sensitivity check.
+5. A test that would fail if the field were ignored by the solver.
+
+Do not run or invent results for these benchmarks in V1 unless the
+necessary implementation and inputs already exist.
+
+State whether the existing code can support the benchmark, what evidence
+already exists, and what remains unproven.
+
+============================================================
+8. MANUFACTURING FEASIBILITY
+============================================================
+
+Assess the selected process against real manufacturing constraints.
+
+Where supported by technical evidence, consider:
+
+- Minimum cell size.
+- Minimum wall thickness.
+- Maximum supported spatial gradient.
+- Machine resolution.
+- Material compatibility.
+- Deposition or forming limits.
+- Build orientation.
+- Toolpath or process-planning limits.
+- Thermal history.
+- Defects and variability.
+- Tolerances.
+- Post-processing.
+- Inspection accessibility.
+- Repeatability.
+
+Do not substitute successful toolpath generation for manufacturing
+feasibility.
+
+Define the intended future process verdicts:
+
+FEASIBLE_WITHIN_DECLARED_PROCESS_LIMITS
+INFEASIBLE
+INDETERMINATE
+
+Specify the evidence necessary to assign each verdict.
+
+If process-specific limits are unknown, report INDETERMINATE rather
+than inventing limits.
+
+============================================================
+9. PHYSICAL VERIFICATION AND METROLOGY PLAN
+============================================================
+
+Design a proposed physical qualification experiment.
+
+This is a plan only. Do not claim that a specimen has been manufactured
+or tested.
+
+The plan must specify:
+
+- Specimen geometry and identification.
+- Baseline and variable specimens.
+- Manufacturing process and recorded parameters.
+- Number of specimens and rationale.
+- Required environmental and test conditions.
+- Measurement instruments or methods.
+- Spatial sampling strategy.
+- Calibration requirements.
+- Measurement uncertainty.
+- Repeatability assessment.
+- Independent reference.
+- Acceptance criteria.
+- Failure handling.
+- Evidence capture and provenance.
+
+Select measurement methods appropriate to the actual process and
+properties. Do not prescribe CT, microscopy, mechanical testing,
+thermal testing, or any other method without explaining its relevance.
+
+Distinguish:
+- Target material field.
+- Predicted as-manufactured field.
+- Measured as-built field.
+
+Define how these three states will be compared without silently
+collapsing them into a single value.
+
+Specify how measurements will be bound to:
+- Specimen identity.
+- Manufacturing run.
+- Material batch.
+- Instrument and calibration.
+- Test procedure.
+- Raw measurement data.
+- Processing software and version.
+- Uncertainty.
+- Canonical design revision.
+- Final verification verdict.
+
+If physical access, equipment, or suitable reference specimens are
+unavailable, state the limitation and define the evidence still required
+before physical qualification can be claimed.
+
+============================================================
+10. MINIMUM INDEPENDENT QUALIFICATION CAMPAIGN
+============================================================
+
+Propose a small, staged campaign that can disprove the concept.
+
+The campaign must include:
+
+A. Material-definition validation.
+B. Spatial-field validation.
+C. Independent physics comparison.
+D. Manufacturing feasibility assessment.
+E. Physical property measurement.
+F. Target-versus-predicted-versus-measured comparison.
+G. Reproducibility assessment.
+H. Adversarial invalid-input tests.
+I. Evidence and revision-integrity checks.
+
+For each test, provide:
+- Test ID.
+- Hypothesis.
+- Inputs.
+- Procedure.
+- Expected physical or numerical behavior.
+- Independent oracle.
+- Acceptance criterion.
+- Failure condition.
+- Required evidence artifact.
+- Whether the test can be performed now or requires future implementation
+  or physical equipment.
+
+Do not invent numerical acceptance thresholds without a defensible
+reference. If the threshold is unknown, identify how it must be derived
+before the test can be considered executable.
+
+Include adversarial cases appropriate to the selected technology, such as:
+- Negative or physically impossible material parameters.
+- Values outside a calibrated validity domain.
+- Inconsistent units.
+- Missing calibration evidence.
+- Spatial-field discontinuities.
+- Unsupported resolution.
+- Stale field data after a geometry or revision change.
+- A solver that ignores the material field.
+- Manufacturing requests outside documented process limits.
+- Conflicting target and measured values.
+- Corrupted, incomplete, or revision-mismatched evidence.
+
+Use only cases applicable to the actual technology.
+
+============================================================
+11. RISK REGISTER
+============================================================
+
+Create a prioritized risk register.
+
+Each risk must include:
+- Risk ID.
+- Description.
+- Probability classification and justification.
+- Impact classification and justification.
+- Supporting evidence.
+- Detectability.
+- Mitigation.
+- Required proof of mitigation.
+- Residual risk.
+- Responsible future workstream.
+
+Include, where applicable:
+- Technology misidentification.
+- Unsupported controllability claims.
+- Uncalibrated material-property relations.
+- Incorrect field-to-mesh mapping.
+- Solver integration that only changes visualization.
+- Manufacturing infeasibility.
+- Measurement uncertainty.
+- Material variability.
+- Invalid cross-domain assumptions.
+- Stale evidence after design changes.
+- Duplicate canonical authority.
+- Overstated qualification status.
+
+Do not use numerical risk scores unless the scoring method is defined.
+
+============================================================
+12. REQUIRED DELIVERABLES
+============================================================
+
+Produce a forensic evidence package containing:
+
+1. EXECUTIVE_FORENSIC_REPORT.md
+   Concise decision, scope, key evidence, limitations, and next action.
+
+2. TECHNOLOGY_IDENTIFICATION.md
+   Exact identification or explicit unresolved identification.
+
+3. CLAIM_EVIDENCE_REGISTER
+   Machine-readable format where practical, with source references and
+   evidence classifications.
+
+4. PROPERTY_CONTROL_MATRIX
+   Directly controlled, indirectly influenced, model-derived,
+   physically measured, unsupported, and unknown properties.
+
+5. INITIAL_QUALIFICATION_USE_CASE.md
+   One bounded engineering use case or a justified explanation of why
+   a use case cannot yet be selected.
+
+6. SECP_CAPABILITY_REUSE_MATRIX
+   Existing implementations, evidence, limitations, and genuine gaps.
+
+7. PHYSICS_AND_MANUFACTURING_FEASIBILITY.md
+   Physics, numerical, process, and manufacturing constraints.
+
+8. PHYSICAL_VERIFICATION_PLAN.md
+   Proposed specimen campaign, metrology, uncertainty, and acceptance
+   criteria derivation.
+
+9. MINIMUM_QUALIFICATION_TEST_PLAN.md
+   Independent test hypotheses, oracles, criteria, and required artifacts.
+
+10. RISK_REGISTER
+    Prioritized risks and mitigation evidence.
+
+11. EVIDENCE_MANIFEST
+    Paths, hashes where practical, source references, commands,
+    outcomes, and artifact relationships.
+
+12. FINAL_DECISION.md
+    Formal decision and explicit conditions for proceeding.
+
+Do not create implementation files, engine stubs, placeholder tests,
+fake evidence, or empty artifacts intended to imply completed work.
+
+If a deliverable cannot be completed because evidence or repository
+access is unavailable, mark it BLOCKED and state exactly why.
+
+============================================================
+13. FINAL DECISION RULES
+============================================================
+
+Select exactly one final verdict:
+
+FEASIBLE
+FEASIBLE_WITH_GAPS
+NOT_YET_FEASIBLE
+
+FEASIBLE:
+Use only if the technology is sufficiently identified, the initial
+use case is supported, the required physical behavior is understood,
+and existing capabilities or a justified implementation path can
+support an independently verifiable qualification campaign.
+
+This verdict does not mean the technology has already been implemented
+or physically qualified in SECP.
+
+FEASIBLE_WITH_GAPS:
+Use when the technology and use case are sufficiently understood to
+define a credible qualification path, but specific implementation,
+calibration, process, or measurement gaps remain.
+
+List each gap, the evidence needed to close it, and the blocking
+acceptance criterion.
+
+NOT_YET_FEASIBLE:
+Use when the technology cannot be reliably identified, essential
+physical behavior or process limits are unknown, or the available
+evidence cannot support a defensible qualification plan.
+
+State exactly what additional source material, experiments, or access
+is required to reconsider the decision.
+
+The verdict must be derived from the evidence, not from schedule pressure
+or a desire to proceed.
+
+============================================================
+14. EXIT GATE
+============================================================
+
+V1 may close only when:
+
+- The technology is identified with traceable evidence, or the
+  unresolved identification is explicitly documented.
+- Demonstrated capabilities are separated from assumptions.
+- Controlled, derived, and measured properties are distinguished.
+- One bounded use case is defined, or the reason it cannot be defined
+  is documented.
+- Existing SECP capabilities are mapped to actual implementation evidence.
+- Genuine gaps are separated from capabilities that can be reused.
+- Physics and manufacturing feasibility are assessed.
+- A physical verification plan exists or its blockers are explicit.
+- Independent acceptance criteria are defined or their derivation is
+  specified.
+- Risks and unresolved uncertainties are documented.
+- The final verdict is justified.
+- No protected implementation files have been modified.
+
+If any exit condition is unmet, report:
+V1_STATUS = BLOCKED or V1_STATUS = PARTIAL
+
+Do not declare V1 closed because the report exists.
+
+============================================================
+15. FINAL RESPONSE FORMAT
+============================================================
+
+Return:
+
+1. Final verdict.
+2. What was directly established.
+3. What remains inferred or unknown.
+4. What existing SECP capabilities can be reused, with evidence.
+5. The genuine blockers.
+6. The minimum independent qualification experiment.
+7. The required next decision.
+8. Changed files, if any.
+9. Commands executed and exact outcomes.
+10. Confirmation that no implementation code was modified.
+
+Never claim that V1 proves physical manufacturing performance.
+
+Never claim the material technology is integrated into SECP unless
+integration is independently demonstrated.
+
+Never begin V2 implementation as part of this task.
+
+END OF TASK.
+
+
+---
+
+ما الذي نريد أن نعرفه فعليًا من V1؟
+
+المهمة ليست مجرد كتابة تقرير عن مادة جديدة؛ إنها تجيب عن خمسة أسئلة حاسمة:
+
+1. ما التقنية التي يعرضها الفيديو فعلًا؟ نريد تحديدًا موثقًا، لا استنتاجًا من شكل الفيديو أو اسمه.
+
+
+2. ما الذي يمكن التحكم فيه ماديًا؟ يجب التمييز بين متغيرات التصنيع والخصائص الناتجة عنها والخصائص التي لا يمكن إثباتها إلا بالقياس.
+
+
+3. ما الذي تملكه SECP بالفعل؟ حتى نعيد استخدام النواة والمحركات وسلسلة الأدلة الموجودة، ولا نبني نظامًا موازيًا.
+
+
+4. هل تستطيع الفيزياء الحالية التعامل مع هذه المادة؟ ليس بمجرد عرض حقل كثافة أو تمريره إلى المحرك، بل بإثبات تأثيره الصحيح في الحسابات.
+
+
+5. كيف سنثبت نجاح التصنيع الحقيقي؟ عبر مقارنة الحالة المستهدفة والمتوقعة والمقاسة، وربط النتائج بالقطعة الفعلية والمراجعة الهندسية.
+
+
+
+بوابة الانتقال إلى V2
+
+لن نبدأ تصميم نموذج المادة القابل للبرمجة قبل أن نعرف التقنية المحددة، وحدودها الفيزيائية، ونموذج استخدامها الأول، والفجوات الحقيقية في SECP.
+
+مهم: لم أتحقق في هذه الرسالة من الفيديو نفسه أو من مستودع SECP؛ لذلك هذه مهمة تنفيذية لوكيل لديه إمكانية الوصول إلى المصدر والمستودع، وليست ادعاءً بأن التقنية أو قدرات المنصة قد تم التحقق منها بالفعل.

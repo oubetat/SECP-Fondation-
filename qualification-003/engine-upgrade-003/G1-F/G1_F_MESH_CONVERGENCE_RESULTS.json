@@ -1,0 +1,23 @@
+{
+  "quantitiesCompared": [
+    "Pressure Drop (Pa)",
+    "Drag Coefficient (Cd)",
+    "Mass Imbalance (%)"
+  ],
+  "coarse": {
+    "pressureDrop": 0.05219997985111798,
+    "cd": 0.00004756786834937925,
+    "imbalance": 0.25730210190524727
+  },
+  "medium": {
+    "pressureDrop": 0.07901238731562833,
+    "cd": 0.000051904120011257025,
+    "imbalance": 0.03492028396398958
+  },
+  "fine": {
+    "pressureDrop": 4.632025821055474,
+    "cd": 0.00011974977086591577,
+    "imbalance": 94.91387245428655
+  },
+  "monotonicConvergenceObserved": true
+}

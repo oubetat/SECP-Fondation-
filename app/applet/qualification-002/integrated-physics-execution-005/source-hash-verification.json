@@ -1,0 +1,26 @@
+{
+  "campaignId": "SECP-FSI-INDEPENDENT-VERIFICATION-EXECUTION-005",
+  "timestamp": "2026-10-23T08:04:00.000Z",
+  "artifactVerification": [
+    { "artifact": "convergence-iteration-trace.json", "sizeBytes": 1952, "validJson": true },
+    { "artifact": "interface-moment-audit.json", "sizeBytes": 782, "validJson": true },
+    { "artifact": "structural-reference-accuracy.json", "sizeBytes": 1320, "validJson": true },
+    { "artifact": "adversarial-assertion-audit.json", "sizeBytes": 4210, "validJson": true },
+    { "artifact": "source-binding.json", "sizeBytes": 1824, "validJson": true },
+    { "artifact": "reconciliation-defect-register.json", "sizeBytes": 462, "validJson": true },
+    { "artifact": "closure-verdict.json", "sizeBytes": 680, "validJson": true }
+  ],
+  "sourceHashVerification": {
+    "src/engine/cfd3d/solvers/fsi/index.ts": { "computedHash": "6e218504a2283c76b094c0015667b06d8cb09d27dd6ca3802c8f34d6db94f88e", "status": "MATCH" },
+    "src/engine/cfd3d/solvers/fsi/FSIRelaxationManager.ts": { "computedHash": "527140548817f0581477a00b98c9af24bf255007dcaa3e0ab9b7a19be36c3157", "status": "MATCH" },
+    "src/engine/cfd3d/solvers/fsi/DynamicMeshManager.ts": { "computedHash": "e618e5f5377e14ba7a9fdf929a47735fca40204dd351125ec76e29af27b1f927", "status": "MATCH" },
+    "src/engine/cfd3d/solvers/fsi/FSIConservationAudit.ts": { "computedHash": "9c963208cfadb2b3c43ec4cc15af98359ef74d410c9aad22e2e9e65d9fb47e3d", "status": "MATCH" },
+    "src/engine/cfd3d/solvers/fsi/FSIInterfaceMapper.ts": { "computedHash": "f4804bc9f0e5a43df17e83a96d6f51394580e79ace25fc21ea6d834a5ff5355f", "status": "MATCH" },
+    "src/engine/cfd3d/coupling/TwoWayFSICouplingEngine.ts": { "computedHash": "7d86b3ad941fdc4cf41c043925671f115ff43119995aec27c8a955e1fe779fda", "status": "MATCH" },
+    "src/engine/structural-physics/StructuralAnalysisEngine.ts": { "computedHash": "b944824d5b49c78728792cc5cb5b4838e6116810613915f74637420c785f919d", "status": "MATCH" },
+    "src/engine/structural-physics/GlobalAssemblyEngine.ts": { "computedHash": "7b24b6a9aa841e11b5b3b9085765e2aa252f2899aeac12221c3ba3a3e506ce4c", "status": "MATCH" },
+    "src/engine/structural-physics/ElementFormulationEngine.ts": { "computedHash": "e014f27ef5979f8b73339d805650885a02b6f6b4ccfd0d3a16bf17e6d77a1588", "status": "MATCH" },
+    "src/engine/structural-physics/MaterialModelEngine.ts": { "computedHash": "7f76f7225d4b0b801e8a0dd8f0d5455ea4a39e1d5ecc755f3f0bd8863449c2b8", "status": "MATCH" }
+  },
+  "hashMismatches": 0
+}

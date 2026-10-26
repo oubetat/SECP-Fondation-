@@ -1,0 +1,7 @@
+{
+  "gateId": "SECP-ENGINE-UPGRADE-003-G1-B1",
+  "verdict": "PASS_WITHIN_DECLARED_SCOPE",
+  "timestampUTC": "2026-10-24T07:51:00.476Z",
+  "summary": "AdaptiveCFLTimeController successfully bound to production AdaptiveTimeStepController. Physics-driven dynamic stepping verified across velocity sweeps and stability limits.",
+  "controllerSha256": "dd930efc7a89584a6bf1d94be391f579382c47ccdd9e0a2d8d3335824fcf51b0"
+}

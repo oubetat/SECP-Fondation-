@@ -1,0 +1,78 @@
+{
+  "taskId": "SECP-ENGINE-QUALIFICATION-002-CLOSE-002",
+  "timestampUTC": "2026-10-25T08:02:05.212Z",
+  "closureArtifacts": [
+    {
+      "file": "qualification-003/engine-qualification-002-closure/CLOSE_ADVERSARIAL_RESULTS.json",
+      "sha256": "a557df28bbf174a9d0af243a11704b22ee539ea5e588a0c3e27e045cf8f51092",
+      "sizeBytes": 727,
+      "status": "VALID_AND_PARSEABLE"
+    },
+    {
+      "file": "qualification-003/engine-qualification-002-closure/CLOSE_BASELINE_MANIFEST.json",
+      "sha256": "5dddf24e8da9a173aa551d14ff7b2d0d2ac05d14bcf9a34328e7fb311be6200d",
+      "sizeBytes": 1128,
+      "status": "VALID_AND_PARSEABLE"
+    },
+    {
+      "file": "qualification-003/engine-qualification-002-closure/CLOSE_CANONICAL_BINDING_AUDIT.json",
+      "sha256": "27b116fd43a703fb4cdb935ead9fae77856d09406070271c71412e65a1d0cb1b",
+      "sizeBytes": 795,
+      "status": "VALID_AND_PARSEABLE"
+    },
+    {
+      "file": "qualification-003/engine-qualification-002-closure/CLOSE_CFD_RECONCILIATION.json",
+      "sha256": "a32d6105478c2f32c6764047c348a5ab82bf9920c215f7dbd379d2e8b1077c09",
+      "sizeBytes": 1209,
+      "status": "VALID_AND_PARSEABLE"
+    },
+    {
+      "file": "qualification-003/engine-qualification-002-closure/CLOSE_COUPLING_VERIFICATION.json",
+      "sha256": "de3c1ff9c57c0a165f9cf339817558b17c62f2b3075528a749f6795c2810a734",
+      "sizeBytes": 486,
+      "status": "VALID_AND_PARSEABLE"
+    },
+    {
+      "file": "qualification-003/engine-qualification-002-closure/CLOSE_EXECUTIVE_REPORT.md",
+      "sha256": "ac4a6117a0f878a23ed9aebbeb7b96e4fa201256342031f02dd49df5c91e6b17",
+      "sizeBytes": 5035,
+      "status": "VALID_AND_PARSEABLE"
+    },
+    {
+      "file": "qualification-003/engine-qualification-002-closure/CLOSE_FINAL_ADJUDICATION.json",
+      "sha256": "eece7cea29e1706de786251fe48c210312d74bdc191a9bb5dc25f062a5905593",
+      "sizeBytes": 1913,
+      "status": "VALID_AND_PARSEABLE"
+    },
+    {
+      "file": "qualification-003/engine-qualification-002-closure/CLOSE_FINAL_EVIDENCE_MANIFEST.json",
+      "sha256": "071974e259fe5c8c37dbde73c94d8df2e796054a276169589b77b234dbcc2ec9",
+      "sizeBytes": 1328,
+      "status": "VALID_AND_PARSEABLE"
+    },
+    {
+      "file": "qualification-003/engine-qualification-002-closure/CLOSE_GAP_REGISTER.json",
+      "sha256": "673de56cd5a9421e2efabfff2532318c2f6427838c0e3dbb02d48e03f4b6e651",
+      "sizeBytes": 2551,
+      "status": "VALID_AND_PARSEABLE"
+    },
+    {
+      "file": "qualification-003/engine-qualification-002-closure/CLOSE_POISEUILLE_VALIDATION.json",
+      "sha256": "cb042523fd32b63cbfcff1c05d265282972c5f72426549f9177897197e5f47fa",
+      "sizeBytes": 512,
+      "status": "VALID_AND_PARSEABLE"
+    },
+    {
+      "file": "qualification-003/engine-qualification-002-closure/CLOSE_REGRESSION_RESULTS.json",
+      "sha256": "79014a05d83bcc47ea60eef6c7c4ab5517a42accbd775baeea2466a7497385b4",
+      "sizeBytes": 8611,
+      "status": "VALID_AND_PARSEABLE"
+    },
+    {
+      "file": "qualification-003/engine-qualification-002-closure/CLOSE_STALE_EVIDENCE_INVALIDATION.json",
+      "sha256": "94e4c3e365780042c1af1045cc984f8c67223fa0284fa5acb93cc94a4386f1e6",
+      "sizeBytes": 549,
+      "status": "VALID_AND_PARSEABLE"
+    }
+  ]
+}

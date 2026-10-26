@@ -1,0 +1,24 @@
+{
+  "testSuiteName": "G1-E Mass Conservation Acceptance Suite",
+  "status": "PASSED",
+  "formulaDefinition": {
+    "inletMassFlowKgS": "sum(rho * |u_dot_n| * Area) for INLET faces",
+    "outletMassFlowKgS": "sum(rho * |u_dot_n| * Area) for OUTLET faces",
+    "massImbalancePercent": "Math.abs(inletMassFlow - outletMassFlow) / max(inletMassFlow, 1e-12) * 100"
+  },
+  "measuredMetrics": {
+    "inletMassFlowKgS": 0.049000000000000016,
+    "outletMassFlowKgS": 0.04885739923570018,
+    "productionImbalancePercent": 0.2910219679588537,
+    "independentManualImbalancePercent": 0.2910219679588537,
+    "errorBetweenProdAndManualPercent": 0
+  },
+  "acceptanceThresholdPercent": 1,
+  "thresholdSatisfied": true,
+  "testsPassed": [
+    "Standard channel flow flux balance test",
+    "Multi-patch boundary classification check",
+    "Zero-flow reference floor safety check",
+    "Independent face-by-face flux recalculation match"
+  ]
+}

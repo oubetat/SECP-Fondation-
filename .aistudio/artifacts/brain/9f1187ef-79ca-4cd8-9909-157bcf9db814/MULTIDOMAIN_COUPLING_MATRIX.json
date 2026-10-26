@@ -1,0 +1,42 @@
+{
+  "taskId": "SECP-ENGINE-QUALIFICATION-002",
+  "timestampUTC": "2026-10-25T07:43:11.661Z",
+  "matrix": [
+    {
+      "sourceDomain": "Electrical",
+      "targetDomain": "Thermal",
+      "physicsMechanism": "Joule Dissipation (P = I^2 * R)",
+      "couplingType": "TWO_WAY_ITERATIVE",
+      "governingLaw": "Q_heat = P_elec; feedback R(T) = R0 * (1 + alpha * DeltaT)",
+      "validationStatus": "QUALIFIED_WITHIN_SCOPE",
+      "solverEngine": "ElectrothermalSolver.ts"
+    },
+    {
+      "sourceDomain": "Thermal",
+      "targetDomain": "Structural",
+      "physicsMechanism": "Thermal Expansion & Induced Thermal Stress",
+      "couplingType": "ONE_WAY_MAPPING",
+      "governingLaw": "epsilon_th = alpha * DeltaT; sigma_th = -E * alpha * DeltaT (constrained)",
+      "validationStatus": "QUALIFIED_WITHIN_SCOPE",
+      "solverEngine": "AnalyticalVerificationSuite.ts / FEMCore.ts"
+    },
+    {
+      "sourceDomain": "CFD",
+      "targetDomain": "Structural",
+      "physicsMechanism": "Fluid Boundary Pressure Load (FSI)",
+      "couplingType": "PARTITIONED_GAUSS_SEIDEL",
+      "governingLaw": "F_normal = integral(p * n * dA); Aitken under-relaxation",
+      "validationStatus": "QUALIFIED_WITHIN_SCOPE",
+      "solverEngine": "TwoWayFSICouplingEngine.ts"
+    },
+    {
+      "sourceDomain": "CFD",
+      "targetDomain": "Thermal",
+      "physicsMechanism": "Convective Heat Transfer",
+      "couplingType": "ONE_WAY_CONVECTION",
+      "governingLaw": "q\" = h * (T_wall - T_fluid)",
+      "validationStatus": "QUALIFIED_WITHIN_SCOPE",
+      "solverEngine": "SpatialThermalSolver.ts"
+    }
+  ]
+}

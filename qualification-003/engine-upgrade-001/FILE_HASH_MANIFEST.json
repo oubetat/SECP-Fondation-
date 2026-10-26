@@ -1,0 +1,107 @@
+[
+  {
+    "path": "src/engine/structural-physics/StructuralAnalysisEngine.ts",
+    "sizeBytes": 6725,
+    "sha256": "be09494264392ddc3e22739805f47290e765d0261e086ebf3288bf2136d404ba"
+  },
+  {
+    "path": "src/engine/structural-physics/GlobalAssemblyEngine.ts",
+    "sizeBytes": 5224,
+    "sha256": "a5328e9dfc1afc2fcc20578da11945c294d105db6097735a0e7daab302d40cf6"
+  },
+  {
+    "path": "src/engine/structural-physics/ElementFormulationEngine.ts",
+    "sizeBytes": 4167,
+    "sha256": "750ba47aabe92a2da7f48a7a6b1e287035e539f206820d016e13c6b10f526e9b"
+  },
+  {
+    "path": "src/engine/structural-physics/StrainAnalysisEngine.ts",
+    "sizeBytes": 3085,
+    "sha256": "07aebba40a53532edc4b0a2d6b4d079e694f6388b28ef1be3a2df4933767e080"
+  },
+  {
+    "path": "src/engine/structural-physics/StressRecoveryEngine.ts",
+    "sizeBytes": 1124,
+    "sha256": "bb44749c3883871a81a34f21d0273dd80f23e950dc52202968de0aff05e778cf"
+  },
+  {
+    "path": "src/engine/structural-physics/ConstitutiveMatrixEngine.ts",
+    "sizeBytes": 2838,
+    "sha256": "7aca5f708782e6acdc6a298bac2cb85f33a2660bec077b699a7099d94c18a5c0"
+  },
+  {
+    "path": "src/engine/structural-physics/ShapeFunctionIsoparametricEngine.ts",
+    "sizeBytes": 5287,
+    "sha256": "8bb48729fa179d860018b8ad90de927975c0c9e05a1f5f1c8cb6dd7da043bd47"
+  },
+  {
+    "path": "src/engine/structural-physics/StructuralPhysicsTypes.ts",
+    "sizeBytes": 3284,
+    "sha256": "54b05f47eef7cd1674b506caa42b219b6df8e1a4d5c362936f7dd9b3c80df01d"
+  },
+  {
+    "path": "src/engine/cfd3d/coupling/TwoWayFSICouplingEngine.ts",
+    "sizeBytes": 13814,
+    "sha256": "05122916ea7743bc6f94f385351b3280e7afa3d99fcd6ba38d218be6d519615b"
+  },
+  {
+    "path": "src/engine/cfd3d/solvers/fsi/DynamicMeshManager.ts",
+    "sizeBytes": 9592,
+    "sha256": "9a34f0ca6423297e62d137e9678c3baaecfde9269ab1afc5dda34cd3c6193b45"
+  },
+  {
+    "path": "src/engine/cfd3d/solvers/fsi/FSIConservationAudit.ts",
+    "sizeBytes": 5824,
+    "sha256": "0758004ea3c6e3b4c52323b48cd8f0fd3dffe3d121c834d42632a7a28dd605b5"
+  },
+  {
+    "path": "src/engine/cfd3d/solvers/fsi/FSIRelaxationManager.ts",
+    "sizeBytes": 7364,
+    "sha256": "527140548817f0581477a00b98c9af24bf255007dcaa3e0ab9b7a19be36c3157"
+  },
+  {
+    "path": "src/engine/cfd3d/solvers/fsi/FSIInterface.ts",
+    "sizeBytes": 6907,
+    "sha256": "bce955752fbb1aac2861749b4ca4db9c52c2125710085658faaf760ab7925c77"
+  },
+  {
+    "path": "src/engine/cfd3d/solvers/fsi/FSIPhysicsModel.ts",
+    "sizeBytes": 3686,
+    "sha256": "12d715ef64ed112deba41327b46ecb377a797b07d8ac37890c613d285f6be5e7"
+  },
+  {
+    "path": "src/engine/cfd3d/solvers/fsi/FSICouplingManager.ts",
+    "sizeBytes": 5040,
+    "sha256": "6ce89d6191512fa16b57cbdab5adfed84049fe2373220353bb60a74b79632216"
+  },
+  {
+    "path": "src/engine/cfd3d/solvers/fsi/FSISolver.ts",
+    "sizeBytes": 4253,
+    "sha256": "8ed3a0504fa5d8db10cedbabd4873b406f96dcd5969ce273f306588432beb357"
+  },
+  {
+    "path": "src/engine/cfd3d/solvers/fsi/FSIBenchmarkSuite.ts",
+    "sizeBytes": 4801,
+    "sha256": "7ea91fe31ec5471f44c3295635b6ff42a2059848add8e75303b87f28c79db4f1"
+  },
+  {
+    "path": "src/engine/engineeringCore/NodalCircuitSolver.ts",
+    "sizeBytes": 27288,
+    "sha256": "cef7812a59ce4c227e46c3f81267f2cd65cfa600711102378831a47267063dd0"
+  },
+  {
+    "path": "src/engine/engineeringCore/SpatialThermalSolver.ts",
+    "sizeBytes": 20424,
+    "sha256": "ef09eca6526c2a22ff6d9d84744c3715931e01ea9c5df50ab1e3e357bdaa81d1"
+  },
+  {
+    "path": "src/engine/engineeringCore/ElectrothermalSolver.ts",
+    "sizeBytes": 20389,
+    "sha256": "a6145e82614cd8f0f3e3404f5cef9f5e2cb5fd9a57a5dc13490f04ca570cef14"
+  },
+  {
+    "path": "run_secp_engine_upgrade_001.ts",
+    "sizeBytes": 35052,
+    "sha256": "5883fd005e2d7695f17838c04a1ee2c0d5dbb46903ffc8ec8935b144e43eb229"
+  }
+]

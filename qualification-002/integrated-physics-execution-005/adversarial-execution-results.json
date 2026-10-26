@@ -1,0 +1,25 @@
+{
+  "campaignId": "SECP-FSI-INDEPENDENT-VERIFICATION-EXECUTION-005",
+  "assertionsAudited": 15,
+  "passedCount": 15,
+  "failedCount": 0,
+  "notVerifiedCount": 0,
+  "tests": [
+    { "testId": "PHY-001", "function": "StructuralAnalysisEngine.runFEA", "status": "PASS", "note": "Valid model passes" },
+    { "testId": "PHY-002", "function": "GlobalAssemblyEngine.assembleStiffnessMatrix", "status": "PASS", "note": "Singular matrix rejected" },
+    { "testId": "PHY-003", "function": "StructuralAnalysisEngine.runFEA", "status": "PASS", "note": "Non-zero load yields non-zero disp" },
+    { "testId": "PHY-004", "function": "StructuralAnalysisEngine.runFEA", "status": "PASS", "note": "NaN/Inf load vector aborted" },
+    { "testId": "PHY-005", "function": "GlobalAssemblyEngine.checkSingularity", "status": "PASS", "note": "Unconstrained axial DOF flagged" },
+    { "testId": "PHY-006", "function": "FSIConservationAudit.verifyConservation", "status": "PASS", "note": "Inverted force sign failed audit" },
+    { "testId": "PHY-007", "function": "DynamicMeshManager.checkElementQuality", "status": "PASS", "note": "Inverted Jacobian rejected" },
+    { "testId": "PHY-008", "function": "DynamicMeshManager.rollbackMesh", "status": "PASS", "note": "Atomic rollback restored mesh" },
+    { "testId": "PHY-009", "function": "TwoWayFSICouplingEngine.solve", "status": "PASS", "note": "Iteration exhaustion set isConverged=false" },
+    { "testId": "PHY-010", "function": "TwoWayFSICouplingEngine.verifyStiffnessScaling", "status": "PASS", "note": "Young modulus ratio 1.9999978" },
+    { "testId": "PHY-011", "function": "StructuralAnalysisEngine.runMeshRefinement", "status": "PASS", "note": "Monotonic convergence demonstrated" },
+    { "testId": "PHY-012", "function": "FSIConservationAudit.verifyForceTransfer", "status": "PASS", "note": "Corrupted force magnitude detected" },
+    { "testId": "PHY-013", "function": "TwoWayFSICouplingEngine.solve", "status": "PASS", "note": "Structural failure aborted FSI" },
+    { "testId": "PHY-014", "function": "EvidenceHashVerifier.verifyProvenance", "status": "PASS", "note": "Stale hash flagged" },
+    { "testId": "PHY-015", "function": "DeterministicReproductionEngine.replay", "status": "PASS", "note": "Bit-identical replay verified" }
+  ],
+  "status": "VERIFIED"
+}

@@ -1,0 +1,28 @@
+{
+  "testId": "FSI-STRUCT-INTEGRATION-001",
+  "description": "Coupling execution using genuine StructuralAnalysisEngine.runFEA without scalar stiffness line",
+  "parameters": {
+    "youngsModulusPa": 210000000000,
+    "fsiTolerance": 0.0001,
+    "maxIterations": 15
+  },
+  "results": {
+    "fsiIterCompleted": 3,
+    "stopReason": "CONVERGED",
+    "isConverged": true,
+    "residualDisplacementM": 0,
+    "totalAppliedLoad": {
+      "fx": 0,
+      "fy": -50662.5,
+      "fz": 0
+    },
+    "totalReaction": {
+      "fx": 0,
+      "fy": 50662.46310486882,
+      "fz": 0
+    },
+    "equilibriumError": 7.282532678603163e-7
+  },
+  "verdict": "PASS",
+  "timestamp": "2026-10-23T07:28:20.917Z"
+}

@@ -1,0 +1,80 @@
+{
+  "taskId": "SECP-ENGINE-UPGRADE-004",
+  "documentTitle": "CFD Risk Priority Matrix",
+  "timestampUTC": "2026-10-25T07:30:00Z",
+  "scoringFormula": "RPN = Severity (1-10) * Occurrence (1-10) * Detection (1-10)",
+  "riskTiers": {
+    "CRITICAL": "RPN >= 200 (Mandatory immediate remediation prior to qualification)",
+    "HIGH": "125 <= RPN < 200 (Mandatory remediation or strict bounding assertion)",
+    "MEDIUM": "60 <= RPN < 125 (Targeted engineering enhancement)",
+    "LOW": "RPN < 60 (Documented limitation or quarantine)"
+  },
+  "riskEntries": [
+    {
+      "gapId": "GAP-02",
+      "title": "Adaptive Orchestrator Turbulence Scheme Hardcoding",
+      "severity": 8,
+      "occurrence": 9,
+      "detection": 3,
+      "rpn": 216,
+      "riskTier": "CRITICAL",
+      "engineeringImpact": "Engine silently ignores case-specified SST k-omega or laminar request, running k-epsilon instead, leading to unphysical separation predictions.",
+      "mitigationStrategy": "Update AdaptiveIndustrialCFDEngine lines 129-131 to inspect caseDef.turbulenceModelIdentity and caseDef.flowRegime, routing K_EPSILON, SST_K_OMEGA, or LAMINAR accordingly."
+    },
+    {
+      "gapId": "GAP-01",
+      "title": "GCI Engine Hardcoded to Aerodynamic CL Metric",
+      "severity": 7,
+      "occurrence": 7,
+      "detection": 4,
+      "rpn": 196,
+      "riskTier": "HIGH",
+      "engineeringImpact": "Internal duct and channel flows evaluate CL nominally near 0.0, causing apparent order or asymptotic range arithmetic degradation.",
+      "mitigationStrategy": "Generalize GCI calculation to support arbitrary scalar quantities (e.g. pressureDropPa, dragCoefficientCd, massImbalancePercent) with safe zero-value normalization."
+    },
+    {
+      "gapId": "GAP-04",
+      "title": "Global Momentum Balance Telemetry Decoupling",
+      "severity": 6,
+      "occurrence": 6,
+      "detection": 3,
+      "rpn": 108,
+      "riskTier": "MEDIUM",
+      "engineeringImpact": "Evidence artifact seals mass conservation but lacks automated momentum flux imbalance certificate.",
+      "mitigationStrategy": "Compute and bind global momentum imbalance norm into evidence telemetry alongside mass balance."
+    },
+    {
+      "gapId": "GAP-03",
+      "title": "Advanced Dynamic Boundary Conditions Omission",
+      "severity": 6,
+      "occurrence": 5,
+      "detection": 3,
+      "rpn": 90,
+      "riskTier": "MEDIUM",
+      "engineeringImpact": "Users cannot model total pressure inlets or convective supersonic boundaries.",
+      "mitigationStrategy": "Explicitly define and bound declared qualification scope to INLET (velocity), OUTLET (pressure), WALL, and SYMMETRY."
+    },
+    {
+      "gapId": "GAP-06",
+      "title": "Analytical Benchmark End-to-End Test Disconnection",
+      "severity": 5,
+      "occurrence": 4,
+      "detection": 3,
+      "rpn": 60,
+      "riskTier": "MEDIUM",
+      "engineeringImpact": "Benchmark validation relies on manual inspection rather than continuous gate testing.",
+      "mitigationStrategy": "Create an automated acceptance harness that runs analytical Poiseuille channel flow and compares exact parabolic velocity profile."
+    },
+    {
+      "gapId": "GAP-05",
+      "title": "Compressible Solver Quarantined Prototype",
+      "severity": 8,
+      "occurrence": 2,
+      "detection": 2,
+      "rpn": 32,
+      "riskTier": "LOW",
+      "engineeringImpact": "Risk of improper production reliance on un-discretized compressible solver.",
+      "mitigationStrategy": "Formally quarantine CompressibleNavierStokesEngine as NON_QUALIFIED in baseline; forbid production claims."
+    }
+  ]
+}

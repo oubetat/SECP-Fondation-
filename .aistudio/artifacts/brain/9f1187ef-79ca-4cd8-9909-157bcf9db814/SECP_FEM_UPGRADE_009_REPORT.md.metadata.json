@@ -1,0 +1,5 @@
+{
+  "summary":  "Executive report for SECP-FEM-UPGRADE-009: Geometrically Nonlinear Mechanics & Large-Deformation Physics.\nThis report documents the implementation of the Newton-Raphson equilibrium solver, the extension of the FEM formulation contract for nonlinear support, and the verification of the 2D Truss element under large displacements and rotations.\nAll GEOM tests (Linear Parity, Snap-Through, Tangent FD) passed successfully, demonstrating mathematical consistency and numerical stability.",
+  "updatedAt":  "2026-10-26T08:55:21.838498581Z",
+  "userFacing":  true
+}

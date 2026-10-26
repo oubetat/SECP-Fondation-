@@ -1,0 +1,28 @@
+{
+  "testId": "BENCH-PLATE-001",
+  "description": "Fully Clamped Rectangular Plate under Uniform Distributed Pressure",
+  "specifications": {
+    "lengthM": 1,
+    "widthM": 0.5,
+    "thicknessM": 0.01,
+    "youngsModulusPa": 210000000000,
+    "poissonsRatio": 0.3,
+    "pressurePa": 100000,
+    "boundaryConditions": "All 4 edges fully clamped (w = dw/dn = 0)"
+  },
+  "independentAnalyticalReference": {
+    "source": "S. Timoshenko & S. Woinowsky-Krieger, Theory of Plates and Shells, 2nd ed., Chapter 5, Table 35",
+    "flexuralRigidityNm": 19230.769230769234,
+    "aspectRatio": 2,
+    "alphaCoeff": 0.00254,
+    "betaCoeff": 0.497,
+    "maxDeflectionM": 0.0008255,
+    "maxBendingStressPa": 124250000
+  },
+  "platformAudit": {
+    "elementFormulationEvaluated": "PLATE_BENDING",
+    "supportedInEngine": false,
+    "verdict": "GAP_IDENTIFIED_NOT_FABRICATED"
+  },
+  "timestamp": "2026-10-23T07:42:19.436Z"
+}

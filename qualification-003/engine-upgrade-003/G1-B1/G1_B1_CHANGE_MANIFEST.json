@@ -1,0 +1,13 @@
+{
+  "taskId": "SECP-ENGINE-UPGRADE-003-G1-B1",
+  "timestampUTC": "2026-10-24T07:51:00.476Z",
+  "file": "src/engine/cfd3d/adaptive/AdaptiveCFLTimeController.ts",
+  "before": {
+    "sha256": "919b5bfce722ebc0eb9fb811a2c34bc1605f63920fb63bf652e9603f0b2fca70",
+    "implementation": "Hollow stub returning fixed 0.1s"
+  },
+  "after": {
+    "sha256": "dd930efc7a89584a6bf1d94be391f579382c47ccdd9e0a2d8d3335824fcf51b0",
+    "implementation": "Production wrapper binding src/engine/cfd3d/solvers/adaptive/AdaptiveTimeStepController.ts"
+  }
+}

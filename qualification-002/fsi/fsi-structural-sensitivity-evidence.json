@@ -1,0 +1,50 @@
+{
+  "sensitivityCases": [
+    {
+      "testId": "FEM-SENS-001",
+      "parameter": "Load F",
+      "action": "Double Load from 10,000 N to 20,000 N",
+      "expectedRatio": 2,
+      "measuredDispRatio": 2,
+      "measuredStressRatio": 2,
+      "passed": true
+    },
+    {
+      "testId": "FEM-SENS-002",
+      "parameter": "Young Modulus E",
+      "action": "Double E from 200 GPa to 400 GPa",
+      "expectedRatio": 0.5,
+      "measuredDispRatio": 0.5000001012499802,
+      "passed": true
+    },
+    {
+      "testId": "FEM-SENS-003",
+      "parameter": "Cross Section Area A",
+      "action": "Double A from 0.001 m^2 to 0.002 m^2",
+      "expectedRatio": 0.5,
+      "measuredDispRatio": 0.5000001012499802,
+      "measuredStressRatio": 0.50000000125,
+      "passed": true
+    },
+    {
+      "testId": "FEM-SENS-004",
+      "parameter": "Load Direction",
+      "action": "Invert axial force sign from +10,000 N to -10,000 N",
+      "expectedSignDisplacement": -1,
+      "expectedSignReaction": 1,
+      "measuredDisp": -0.0000500000097499999,
+      "measuredReaction": 9999.99994999998,
+      "passed": true
+    },
+    {
+      "testId": "FEM-SENS-005",
+      "parameter": "Boundary Conditions",
+      "action": "Completely remove Dirichlet boundary conditions (unconstrained body)",
+      "expectedBehavior": "Singularity detected or rejected by verification gate",
+      "observedBehavior": "Rejected by FEA validation as unstable/non-physical",
+      "passed": true
+    }
+  ],
+  "allSensitivityPassed": true,
+  "timestamp": "2026-10-23T07:05:55.479Z"
+}

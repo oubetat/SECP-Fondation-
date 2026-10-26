@@ -1,0 +1,9 @@
+{
+  "testName": "Case A Channel Flow Pressure Drop & Drag Validation",
+  "status": "PASSED",
+  "measuredPressureDropPa": 0.07901238731562833,
+  "measuredDragCd": 0.000051904120011257025,
+  "measuredLiftCl": 2.6225311901917306e-7,
+  "errorEvaluationMethod": "Normalized relative error against empirical duct friction correlation",
+  "acceptanceCriteriaSatisfied": true
+}

@@ -1,0 +1,21 @@
+{
+  "taskId": "SECP-ENGINE-QUALIFICATION-002-CLOSE-001",
+  "timestampUTC": "2026-10-25T07:56:24.849Z",
+  "ledgerRegistrationRevA": {
+    "entryHash": "sha256-entry-1AE44F16",
+    "verdict": "VALID"
+  },
+  "inputMutation": {
+    "ParameterChanged": "Voltage 12V -> 18V",
+    "NewRevision": "REV-B"
+  },
+  "staleEvidenceRejection": {
+    "tamperedVerdict": "INVALID",
+    "payloadHashMatch": false
+  },
+  "recomputedRegistrationRevB": {
+    "entryHash": "sha256-entry-F0F4CBE",
+    "verdict": "VALID"
+  },
+  "verdict": "PASS_STALE_EVIDENCE_REJECTED"
+}

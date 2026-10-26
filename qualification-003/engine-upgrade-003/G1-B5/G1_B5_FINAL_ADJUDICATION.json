@@ -1,0 +1,7 @@
+{
+  "gateId": "SECP-ENGINE-UPGRADE-003-G1-B5",
+  "verdict": "PASS_WITHIN_DECLARED_SCOPE",
+  "timestampUTC": "2026-10-24T07:54:39.268Z",
+  "summary": "DynamicRelaxationController verified. The system now adaptively tunes momentum and pressure relaxation factors based on residual stability.",
+  "engineSha256": "e24c12a9f43458b6a75d0f1f067c819d29bd57b02bfd4f7bb50e69c1bbc2918d"
+}

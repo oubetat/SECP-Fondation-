@@ -1,0 +1,22 @@
+{
+  "inputsSummary": {
+    "q_N_per_m": 10132.5,
+    "Area_m2": 0.010000000000000002,
+    "I_m4": 0.000008333333333333335,
+    "G_Pa": 26923076923.076923
+  },
+  "analyticalReferences": {
+    "eulerBernoulli1DMm": 2.1712499999999997,
+    "timoshenkoAndGoodier2DMm": 2.1951337499999997,
+    "correctionsMm": {
+      "warpingStiffeningMm": 0.00651375,
+      "poissonRootStiffeningMm": 0.19541249999999996
+    },
+    "net2DClampedContinuumMm": 1.9932074999999996
+  },
+  "referenceClassification": {
+    "eulerBernoulli1D": "APPROXIMATE_1D_BEAM_THEORY",
+    "timoshenkoAndGoodier2D": "EXACT_2D_UNCONSTRAINED_ELASTICITY_SOLUTION",
+    "net2DClampedContinuum": "INDEPENDENTLY_DERIVED_2D_CLAMPED_CONTINUUM_REFERENCE"
+  }
+}

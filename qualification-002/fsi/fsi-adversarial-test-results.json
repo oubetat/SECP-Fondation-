@@ -1,0 +1,30 @@
+{
+  "sensitivityPass": true,
+  "sensitivityCases": [
+    {
+      "E": 10000000000,
+      "maxDisp": 0.2112581617174987,
+      "converged": true,
+      "iterations": 3
+    },
+    {
+      "E": 210000000000,
+      "maxDisp": 0.010060114921101832,
+      "converged": true,
+      "iterations": 3
+    },
+    {
+      "E": 500000000000,
+      "maxDisp": 0.004225250756852685,
+      "converged": true,
+      "iterations": 3
+    }
+  ],
+  "adversarialFailureInjection": {
+    "youngsModulus": 100,
+    "iterations": 2,
+    "converged": false,
+    "stopReason": "MAX_ITERATIONS_EXCEEDED",
+    "passed": true
+  }
+}

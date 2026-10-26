@@ -1,0 +1,34 @@
+[
+  {
+    "riskId": "RISK-PM-001",
+    "description": "Architectural split between high-performance Core and Feature-rich Contact stacks prevents unified simulation.",
+    "probability": "HIGH",
+    "impact": "CRITICAL",
+    "mitigation": "Unify the data models or create a bridge interface that allows ContactManager to work with SparseMatrix and FEMTypes.",
+    "status": "OPEN"
+  },
+  {
+    "riskId": "RISK-PM-002",
+    "description": "Lack of primary video source for technology forensics leads to misidentification of manufacturing limits.",
+    "probability": "MEDIUM",
+    "impact": "HIGH",
+    "mitigation": "Re-request source from user; use 'FAIL-CLOSED' identification (UNKNOWN) for V1.",
+    "status": "OPEN"
+  },
+  {
+    "riskId": "RISK-PM-003",
+    "description": "Numerical instability at sharp material property gradients (material discontinuities).",
+    "probability": "MEDIUM",
+    "impact": "MEDIUM",
+    "mitigation": "Implement a 'Grading Filter' or smoothing kernel in the Grading Engine.",
+    "status": "OPEN"
+  },
+  {
+    "riskId": "RISK-PM-004",
+    "description": "Homogenization error: RVE lattice models may not represent physical behavior at specimen boundaries.",
+    "probability": "HIGH",
+    "impact": "MEDIUM",
+    "mitigation": "Perform full-scale lattice simulation for initial small qualification specimens to establish baseline error.",
+    "status": "OPEN"
+  }
+]

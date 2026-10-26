@@ -1,0 +1,6 @@
+{
+  "task": "SECP-ENGINE-QUALIFICATION-004",
+  "auditVerdict": "FAIL_CLOSED_RELEASE_GATE_VERIFIED",
+  "denialsPreservedInAuditLog": true,
+  "canonicalStateMutatedOnDenial": false
+}

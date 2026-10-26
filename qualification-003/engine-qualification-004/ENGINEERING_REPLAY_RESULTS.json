@@ -1,0 +1,7 @@
+{
+  "task": "SECP-ENGINE-QUALIFICATION-004",
+  "bitForBitMatched": true,
+  "numericalReproducible": true,
+  "canonicalHashMatch": true,
+  "reproducibilityVerdict": "100% BIT-FOR-BIT DETERMINISTIC"
+}

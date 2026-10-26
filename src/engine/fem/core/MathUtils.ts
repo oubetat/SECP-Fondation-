@@ -33,11 +33,29 @@ export class Matrix {
     return new Matrix(r, c);
   }
 
+  public static identity(n: number): Matrix {
+    const res = new Matrix(n, n);
+    for (let i = 0; i < n; i++) {
+      res.set(i, i, 1.0);
+    }
+    return res;
+  }
+
   public addMatrix(other: Matrix): Matrix {
     const res = new Matrix(this.rows, this.cols);
     for (let i = 0; i < this.rows; i++) {
       for (let j = 0; j < this.cols; j++) {
         res.set(i, j, this.get(i, j) + other.get(i, j));
+      }
+    }
+    return res;
+  }
+
+  public subtractMatrix(other: Matrix): Matrix {
+    const res = new Matrix(this.rows, this.cols);
+    for (let i = 0; i < this.rows; i++) {
+      for (let j = 0; j < this.cols; j++) {
+        res.set(i, j, this.get(i, j) - other.get(i, j));
       }
     }
     return res;

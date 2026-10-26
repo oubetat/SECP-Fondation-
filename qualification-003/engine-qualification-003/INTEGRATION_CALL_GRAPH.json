@@ -1,0 +1,55 @@
+{
+  "task": "SECP-ENGINE-QUALIFICATION-003",
+  "executionChain": [
+    {
+      "step": 1,
+      "component": "CADDocument / DesignIntentGraph",
+      "action": "Canonical Parameter Mutation (e.g., Vin 24V -> 36V)"
+    },
+    {
+      "step": 2,
+      "component": "RevisionEngine / InvalidationPipelineEngine",
+      "action": "Revision Increment & Downstream Dependency Invalidation"
+    },
+    {
+      "step": 3,
+      "component": "NodalCircuitSolver",
+      "action": "Electrical MNA Solution [G]{V} = {I}"
+    },
+    {
+      "step": 4,
+      "component": "SpatialThermalSolver",
+      "action": "2D Substrate Thermal Conduction/Convection Solution [K_th]{T} = {Q}"
+    },
+    {
+      "step": 5,
+      "component": "ElectrothermalSolver",
+      "action": "Picard Fixed-Point Iteration R(T) = R0[1 + alpha(T - Tref)]"
+    },
+    {
+      "step": 6,
+      "component": "FEMCore",
+      "action": "Thermal-Structural Expansion & Stress Solution [K]{u} = {F_th}"
+    },
+    {
+      "step": 7,
+      "component": "TwoWayFSICouplingEngine",
+      "action": "1-Way Interface Normal Force Transfer (Fn = p * A)"
+    },
+    {
+      "step": 8,
+      "component": "EvidenceIntegrityChecker",
+      "action": "Stale Evidence Invalidation & Digest Verification"
+    },
+    {
+      "step": 9,
+      "component": "EngineeringEvidenceLedger",
+      "action": "Immutable Merkle Record Registration & Custody Binding"
+    },
+    {
+      "step": 10,
+      "component": "HardAcceptanceGate161 / ReleaseGate",
+      "action": "Release Adjudication (PASS_WITHIN_DECLARED_SCOPE)"
+    }
+  ]
+}

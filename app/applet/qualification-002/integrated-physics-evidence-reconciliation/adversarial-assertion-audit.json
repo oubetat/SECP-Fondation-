@@ -1,0 +1,22 @@
+{
+  "campaignId": "SECP-FSI-INDEPENDENT-VERIFICATION-EVIDENCE-RECONCILIATION-004",
+  "auditedAssertions": [
+    { "testId": "PHY-001", "functionExercised": "StructuralAnalysisEngine.runFEA", "assertion": "Valid model yields pass verdict", "expected": "Pass", "observed": "Pass", "passed": true },
+    { "testId": "PHY-002", "functionExercised": "GlobalAssemblyEngine.assembleStiffnessMatrix", "assertion": "Detect unconstrained rigid body mechanism", "expected": "Singular matrix rejection", "observed": "Singular matrix rejected", "passed": true },
+    { "testId": "PHY-003", "functionExercised": "StructuralAnalysisEngine.runFEA", "assertion": "Non-zero load produces non-zero displacement", "expected": "Displacement != 0", "observed": "Displacement = -3.73mm", "passed": true },
+    { "testId": "PHY-004", "functionExercised": "StructuralAnalysisEngine.runFEA", "assertion": "NaN or Infinite load vector trapping", "expected": "Safe abort", "observed": "Trapped and aborted safely", "passed": true },
+    { "testId": "PHY-005", "functionExercised": "GlobalAssemblyEngine.checkSingularity", "assertion": "Unconstrained axial DOF instability detection", "expected": "Instability flagged", "observed": "Instability flagged", "passed": true },
+    { "testId": "PHY-006", "functionExercised": "FSIConservationAudit.verifyConservation", "assertion": "Inverted force sign fails conservation audit", "expected": "Audit failure", "observed": "Audit failure reported", "passed": true },
+    { "testId": "PHY-007", "functionExercised": "DynamicMeshManager.checkElementQuality", "assertion": "Inverted element Jacobian detection", "expected": "Reject deformation", "observed": "Deformation rejected (Jacobian < 0)", "passed": true },
+    { "testId": "PHY-008", "functionExercised": "DynamicMeshManager.rollbackMesh", "assertion": "Atomic rollback restores original intact mesh", "expected": "Mesh unmodified", "observed": "Original mesh fully restored", "passed": true },
+    { "testId": "PHY-009", "functionExercised": "TwoWayFSICouplingEngine.solve", "assertion": "Iteration exhaustion prevents false convergence", "expected": "isConverged = false", "observed": "isConverged = false on exhaustion", "passed": true },
+    { "testId": "PHY-010", "functionExercised": "TwoWayFSICouplingEngine.verifyStiffnessScaling", "assertion": "Double Young's modulus halves displacement (ratio = 2.0)", "expected": "Ratio = 2.0 +/- 0.001", "observed": "Ratio = 1.9999978", "passed": true },
+    { "testId": "PHY-011", "functionExercised": "StructuralAnalysisEngine.runMeshRefinement", "assertion": "Monotonic convergence across coarse, medium, fine", "expected": "Error decreases", "observed": "Error 28.89% -> 8.97% -> 2.02%", "passed": true },
+    { "testId": "PHY-012", "functionExercised": "FSIConservationAudit.verifyForceTransfer", "assertion": "Corrupted force magnitude triggers audit failure", "expected": "Failure detected", "observed": "Failure detected", "passed": true },
+    { "testId": "PHY-013", "functionExercised": "TwoWayFSICouplingEngine.solve", "assertion": "Structural solver failure aborts FSI coupling", "expected": "Abort with SOLVER_FAILURE", "observed": "Aborted safely", "passed": true },
+    { "testId": "PHY-014", "functionExercised": "EvidenceHashVerifier.verifyProvenance", "assertion": "Stale input hash invalidates evidence", "expected": "Obsolescence flagged", "observed": "Obsolescence flagged", "passed": true },
+    { "testId": "PHY-015", "functionExercised": "DeterministicReproductionEngine.replay", "assertion": "Bit-identical deterministic replay", "expected": "Identical outputs", "observed": "Bit-identical outputs verified", "passed": true }
+  ],
+  "allAssertionsVerified": true,
+  "timestamp": "2026-10-23T07:54:00.000Z"
+}

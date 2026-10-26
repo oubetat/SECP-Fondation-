@@ -1,0 +1,21 @@
+{
+  "testSuiteName": "G1-E Complete State Divergence Recovery Verification",
+  "status": "PASSED",
+  "checkpointIteration": 5,
+  "restoredIteration": 5,
+  "fieldsRestoredAndVerified": [
+    "velocity.u",
+    "velocity.v",
+    "velocity.w",
+    "pressure.p",
+    "turbulence.k",
+    "turbulence.omega",
+    "turbulence.nut",
+    "turbulence.eps",
+    "timestep.dt"
+  ],
+  "failedRecoveryHandlingVerified": {
+    "handledDecisively": true,
+    "failClosedAbortTriggered": true
+  }
+}

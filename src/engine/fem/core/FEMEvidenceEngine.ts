@@ -24,6 +24,10 @@ export class FEMEvidenceEngine {
       solutionHash,
       fieldHash: this.hashData(Array.from(solveResult.displacements.entries())),
       verificationHash: this.hashData([solveResult.equilibrium, solveResult.energy]),
+      solverType: solveResult.solverTypeUsed,
+      bcMethod: solveResult.bcMethodUsed,
+      sparseMetrics: solveResult.sparseMetrics,
+      solverDiagnostics: solveResult.solverDiagnostics,
       timestamp: new Date().toISOString()
     };
   }

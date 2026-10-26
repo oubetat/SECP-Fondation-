@@ -1,0 +1,19 @@
+{
+  "taskId": "SECP-ENGINE-UPGRADE-003-G1-B1",
+  "timestampUTC": "2026-10-24T07:51:00.476Z",
+  "validFlowResponse": {
+    "initialDt": 0.1,
+    "firstAdaptedDt": 0.05,
+    "stabilizedDt": 0.000016770308998813055,
+    "stabilizedCFL": 0.44999999999999996
+  },
+  "velocityResponse": {
+    "previousDt": 0.000016770308998813055,
+    "highVelocityDt": 0.000008385154499406528,
+    "decreasedAsExpected": true
+  },
+  "adversarialResponse": {
+    "negativeVolumeHandled": true,
+    "resultCFL": 0
+  }
+}

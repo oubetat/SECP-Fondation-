@@ -241,4 +241,77 @@ export class GciEngine {
       monotonicityRatio: calc.monotonicityRatio
     };
   }
+
+  /**
+   * Generalized ASME V&V 20-2009 evaluation for arbitrary engineering scalars
+   * (e.g. pressure drop, drag coefficient, mass imbalance) avoiding divide-by-zero on symmetric CL=0.
+   */
+  public static evaluateScalarContract(
+    scalarName: string,
+    phiFine: number,
+    phiMedium: number,
+    phiCoarse: number,
+    r21: number,
+    r32: number,
+    convergedFine: boolean,
+    convergedMedium: boolean,
+    convergedCoarse: boolean
+  ): {
+    scalarName: string;
+    computed: boolean;
+    meshConverged: boolean;
+    observedOrder: number;
+    extrapolatedValue: number;
+    gciFinePercent: number;
+    monotonicityRatio: number;
+    asymptoticRange: number;
+    rejectionReason?: string;
+  } {
+    if (!convergedFine || !convergedMedium || !convergedCoarse) {
+      return {
+        scalarName,
+        computed: false,
+        meshConverged: false,
+        observedOrder: 0,
+        extrapolatedValue: 0,
+        gciFinePercent: 0,
+        monotonicityRatio: 0,
+        asymptoticRange: 0,
+        rejectionReason: 'One or more grid levels failed solver convergence.'
+      };
+    }
+
+    const calc = this.calculate({
+      phi: [phiFine, phiMedium, phiCoarse],
+      h: [1.0, r21, r21 * r32],
+      r: [r21, r32]
+    });
+
+    const isMonotonic = calc.monotonicityRatio > 0 && calc.monotonicityRatio < 1.0;
+    const isGciAcceptable = calc.gci_fine <= 10.0;
+    const isAsymptoticValid = calc.asymptoticCheck >= 0.9 && calc.asymptoticCheck <= 1.1;
+    const meshConverged = isMonotonic && isGciAcceptable && isAsymptoticValid;
+
+    let rejectionReason: string | undefined = undefined;
+    if (!meshConverged) {
+      const reasons: string[] = [];
+      if (!isMonotonic) reasons.push(`Non-monotonic mesh convergence (R = ${calc.monotonicityRatio.toFixed(4)})`);
+      if (!isGciAcceptable) reasons.push(`Fine grid GCI (${calc.gci_fine.toFixed(2)}%) exceeds 10.0% threshold`);
+      if (!isAsymptoticValid) reasons.push(`Asymptotic range ratio (${calc.asymptoticCheck.toFixed(4)}) outside [0.9, 1.1]`);
+      rejectionReason = reasons.join('; ');
+    }
+
+    return {
+      scalarName,
+      computed: true,
+      meshConverged,
+      observedOrder: calc.p_order,
+      extrapolatedValue: calc.phi_extrapolated,
+      gciFinePercent: calc.gciFinePercent,
+      monotonicityRatio: calc.monotonicityRatio,
+      asymptoticRange: calc.asymptoticCheck,
+      rejectionReason
+    };
+  }
 }
+

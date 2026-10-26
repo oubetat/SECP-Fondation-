@@ -1,0 +1,21 @@
+{
+  "campaignId": "SECP-FSI-INDEPENDENT-VERIFICATION-EXECUTION-005",
+  "timestamp": "2026-10-23T08:04:00.000Z",
+  "workingDirectory": "/app/applet",
+  "artifactsGenerated": [
+    "source-hash-verification.json",
+    "fsi-causality-execution.json",
+    "interface-conservation-recalculation.json",
+    "structural-reference-reexecution.json",
+    "adversarial-execution-results.json",
+    "execution-logs/audit_execution.log",
+    "closure-verdict.json"
+  ],
+  "verifiedChecksCount": 5,
+  "failedChecksCount": 0,
+  "notVerifiedChecksCount": 1,
+  "unresolvedDefects": [
+    "DEFECT-STRUCT-001 (Out-of-plane plate bending capability gap)"
+  ],
+  "verdict": "QUALIFIED_WITHIN_DECLARED_SCOPE"
+}

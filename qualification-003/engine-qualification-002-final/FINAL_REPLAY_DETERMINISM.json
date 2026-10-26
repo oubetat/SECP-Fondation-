@@ -1,0 +1,15 @@
+{
+  "taskId": "SECP-ENGINE-QUALIFICATION-002-CLOSE-002",
+  "timestampUTC": "2026-10-25T08:02:05.215Z",
+  "hashedPayloadComponents": [
+    "inputsAndConfiguration",
+    "solverModelVersion",
+    "executionStatus",
+    "numericalResults",
+    "evidencePayload"
+  ],
+  "deterministicReplayMatch": true,
+  "runA_hash": "b20de6c2e5ddc934",
+  "runB_hash": "b20de6c2e5ddc934",
+  "verdict": "100% BIT-FOR-BIT DETERMINISTIC"
+}

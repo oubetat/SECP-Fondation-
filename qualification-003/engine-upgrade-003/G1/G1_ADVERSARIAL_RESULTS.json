@@ -1,0 +1,58 @@
+[
+  {
+    "testName": "Adv-1: Null Case Definition",
+    "rejectedSafely": true,
+    "diagnosticRisks": [
+      "Null case definition"
+    ]
+  },
+  {
+    "testName": "Adv-2: Missing Fluid Properties Object",
+    "rejectedSafely": true,
+    "diagnosticRisks": [
+      "Missing fluid specification"
+    ]
+  },
+  {
+    "testName": "Adv-3: Negative Fluid Density (-1.2 kg/m³)",
+    "rejectedSafely": true,
+    "diagnosticRisks": [
+      "Unphysical fluid density: -1.2"
+    ]
+  },
+  {
+    "testName": "Adv-4: Non-Finite Density (NaN)",
+    "rejectedSafely": true,
+    "diagnosticRisks": [
+      "Unphysical fluid density: NaN"
+    ]
+  },
+  {
+    "testName": "Adv-5: Zero Dynamic Viscosity (0 Pa·s)",
+    "rejectedSafely": true,
+    "diagnosticRisks": [
+      "Unphysical fluid viscosity: 0"
+    ]
+  },
+  {
+    "testName": "Adv-6: Unphysical Specific Heat Ratio (gamma = 0.8 <= 1.0)",
+    "rejectedSafely": true,
+    "diagnosticRisks": [
+      "Unphysical specific heat ratio: 0.8"
+    ]
+  },
+  {
+    "testName": "Adv-7: Degenerate 2D Mesh with Zero Span in Z",
+    "rejectedSafely": true,
+    "diagnosticRisks": [
+      "Flat or point domain geometry detected."
+    ]
+  },
+  {
+    "testName": "Adv-8: Inverted Cell Volume (V <= 0)",
+    "rejectedSafely": true,
+    "diagnosticRisks": [
+      "Inverted or degenerate cells detected in mesh."
+    ]
+  }
+]

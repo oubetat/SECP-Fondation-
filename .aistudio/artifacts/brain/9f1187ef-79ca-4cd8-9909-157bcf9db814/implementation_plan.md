@@ -1,58 +1,76 @@
-# GAP-011 Absolute Closure & 3-Mesh Grid Convergence Study (GCI)
+# SECP-FSI-INDEPENDENT-REQUALIFICATION-013
 
-## Overview & Goal
-Perform a rigorous 3-mesh Grid Convergence Index (GCI) study for NACA0012 transonic flow (Alpha = 4.0°, Re = 6.8e5) with refined boundary layer resolution ($y^+ < 1$, first cell height $\le 10^{-5}\text{ m}$) to achieve exact NASA TMR drag polar matching ($C_l \approx 0.44$, $C_d \approx 0.008$), yielding complete verification and absolute PROVEN closure for GAP-011.
-
----
-
-## User Review & Critical Decisions
+This mission transitions the SECP FSI system from "physically active" to "industrially qualified." We will replace the current heuristic benchmark with a multi-resolution convergence study, execute adversarial failure tests, and verify global conservation of loads and moments to establish a definitive capability register.
 
 > [!IMPORTANT]
-> - **Confirmed Choice**: Perform 3-mesh grid convergence study (GCI) with $y^+ < 1$ for exact NASA TMR drag polar matching.
-> - **Verification Standard**: Zero tolerance for unverified boundary layers; rigorous grid refinement hierarchy (Coarse, Medium, Fine).
+> This is a forensic qualification task. We are moving from a single-point success criteria to a gradient-based convergence proof.
 
----
+- **Confirmed Decision (Phase 1)**: Use fixed refinement levels (10, 20, 40 stations) to demonstrate the $O(h)$ or $O(h^2)$ error reduction trend.
+- **Confirmed Decision (Phase 1)**: Implement a relative volume threshold in `DynamicMeshManager` (e.g., reject if $V < 0.01\% V_{initial}$) to ensure scale-invariant mesh safety.
+- **Recommended Default**: Persist complete Aitken traces and residual history in the evidence package to allow for independent stability analysis.
 
 ## 1. Overview & Core Concept
-- **What It Does**: Implements an automated 3-level grid refinement loop across coarse, medium, and fine O-grids around NACA0012 with wall-normal spacing scaled down to $y^+ \sim 1$.
-- **Target Audience**: Aerospace CFD validation engineers and SECP Industrial OS verification auditors.
-- **Key Value**: Absolute mathematical and physical closure of GAP-011 with verified GCI error bounds.
 
----
+The goal is to provide **Engineering Truth** regarding the accuracy and limits of the FSI solver. Instead of reporting "Passed/Failed," we will report the "Convergence Rate" and "Residual Equilibrium Error." This establishes trust for industrial users who need to know exactly how much to trust the simulation results at a given mesh resolution.
+
+### Key Value
+- **Transparency**: Clear documentation of the 128% error as a discretization artifact.
+- **Reliability**: Proven rejection of non-physical states (inverted meshes).
+- **Auditability**: Cryptographically hashed link between source code and reported results.
 
 ## 2. User Experience & Visual Design
-- **Key User Flows**: Execution script runs 3 consecutive Navier-Stokes solves, evaluates discretization error, computes Richardson extrapolation, and exports formal GCI evidence record.
-- **Visual Identity & Theme**: Industrial engineering diagnostic dark mode with real-time residual convergence curves and $y^+$ distribution heatmaps.
 
----
+As a principal engineering task, the "UI" is the **Evidence Package** and the **Final Verdict Dashboard**.
+
+- **Qualification Dashboard**:
+    - **Convergence Plot**: ASCII representation or data table showing Error % dropping as Mesh Density increases.
+    - **Stability Heatmap**: Status indicators for different physics regimes (e.g., Low vs. High Young's Modulus).
+    - **Integrity Badges**: Green/Red indicators for SHA-256 matches and Conservation Balance.
+
+- **Visual Theme**: Utilitarian, high-density information layout (SECP Industrial Style).
 
 ## 3. Key Product Decisions & Trade-Offs
-- **Decision**: 3-mesh Richardson extrapolation over single-mesh tuning.
-- **Why**: Proves numerical asymptotic range and grid independence according to AIAA CFD standards.
 
----
+- **Decision 1: Element Formulation Verification**
+    - *Chosen Approach*: Retain `QUAD_2D` but explicitly test for "Shear Locking" by varying the aspect ratio of the cantilever elements.
+    - *Why*: This identifies if the 128% error is due to discretization or a fundamental limitation of the element shape function.
+
+- **Decision 2: Rejection Thresholds**
+    - *Chosen Approach*: Move from absolute `1e-18` to a relative `1e-4` of initial volume.
+    - *Why*: Avoids failure in micro-scale models while maintaining safety in macro-scale industrial parts.
 
 ## 4. Technical Architecture & Data Strategy
 
-```
-┌─────────────────────────┐     ┌─────────────────────────┐     ┌─────────────────────────┐
-│  Coarse Mesh (y+ ~ 300) │     │  Medium Mesh (y+ ~ 30)  │     │   Fine Mesh (y+ ~ 1)    │
-└────────────┬────────────┘     └────────────┬────────────┘     └────────────┬────────────┘
-             │                               │                               │
-             ▼                               ▼                               ▼
-┌─────────────────────────────────────────────────────────────────────────────────────┐
-│                       FVM Navier-Stokes Solver & SST K-Omega                        │
-└────────────────────────────────────────────┬────────────────────────────────────────┘
-                                             │
-                                             ▼
-┌─────────────────────────────────────────────────────────────────────────────────────┐
-│                   Richardson Extrapolation & GCI Discretization Error               │
-└────────────────────────────────────────────┬────────────────────────────────────────┘
-                                             │
-                                             ▼
-┌─────────────────────────────────────────────────────────────────────────────────────┐
-│                          Absolute Closure Record (GAP-011)                          │
-└─────────────────────────────────────────────────────────────────────────────────────┘
+```drawio
+┌─────────────────────────────────────────────────────────┐
+│            FSI Qualification Engine (013)               │
+├─────────────────────────────────────────────────────────┤
+│  ┌──────────────────┐      ┌─────────────────────────┐  │
+│  │ Mesh Generator   │─────▶│ Convergence Study Unit   │  │
+│  │ (10, 20, 40 sta) │      │ (Analytical vs Num)     │  │
+│  └──────────────────┘      └────────────┬────────────┘  │
+│                                         │               │
+│  ┌──────────────────┐      ┌────────────▼────────────┐  │
+│  │ Adversarial Unit │─────▶│ Conservation Auditor    │  │
+│  │ (Fail Injection) │      │ (Force/Moment Balance)  │  │
+│  └──────────────────┘      └────────────┬────────────┘  │
+│                                         │               │
+│  ┌──────────────────────────────────────▼────────────┐  │
+│  │           Evidence & Provenance Manager           │  │
+│  │ (SHA-256 Hashes, JSON Evidence, Final Verdict)    │  │
+│  └───────────────────────────────────────────────────┘  │
+└─────────────────────────────────────────────────────────┘
 ```
 
-- **Data Model**: `GciConvergenceReport` containing mesh cell counts, $C_l$, $C_d$, $y^+_{mean}$, apparent order $p$, and extrapolated grid-converged value $f_{ext}^0$.
+### Data Model & State
+- **Qualification Result**:
+    - `meshTrace`: Array of `{ resolution, error, wallTime }`.
+    - `conservationAudit`: `{ forceBalanceError, momentBalanceError }`.
+    - `adversarialReport`: List of successful rejections for (Inf, NaN, InvertedMesh).
+    - `provenance`: Mapping of file paths to SHA-256 hashes.
+
+### Interactive Component Mapping
+- **`run_secp_requalification_013.ts`**: The main entry point that orchestrates the sweep across resolutions and failure cases.
+- **`FSIQualificationReporter.ts`**: (New) Dedicated utility to generate the high-fidelity markdown and JSON evidence.
+- **`DynamicMeshManager.ts`**: (Update) Implement relative volume checks.
+- **`TwoWayFSICouplingEngine.ts`**: (Update) Ensure full iteration history is exposed for auditing.

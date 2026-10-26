@@ -1,0 +1,65 @@
+{
+  "task": "SECP-ENGINE-QUALIFICATION-003",
+  "timestamp": "2026-10-25T08:15:11.571Z",
+  "repositoryRoot": "/app/applet",
+  "nodeVersion": "v22.23.3",
+  "platform": "linux",
+  "qualificationBaseline": "SECP-ENGINE-QUALIFICATION-002-CLOSE-002 (PASS_WITHIN_DECLARED_SCOPE)",
+  "componentInventory": [
+    {
+      "name": "NodalCircuitSolver",
+      "status": "PRODUCTION_QUALIFIED",
+      "file": "src/engine/engineeringCore/NodalCircuitSolver.ts"
+    },
+    {
+      "name": "SpatialThermalSolver",
+      "status": "PRODUCTION_QUALIFIED",
+      "file": "src/engine/engineeringCore/SpatialThermalSolver.ts"
+    },
+    {
+      "name": "FEMCore",
+      "status": "PRODUCTION_QUALIFIED",
+      "file": "src/engine/fem/core/FEMCore.ts"
+    },
+    {
+      "name": "Bar1DFormulation",
+      "status": "PRODUCTION_QUALIFIED",
+      "file": "src/engine/fem/core/Bar1DFormulation.ts"
+    },
+    {
+      "name": "ElectrothermalSolver",
+      "status": "PRODUCTION_QUALIFIED",
+      "file": "src/engine/engineeringCore/ElectrothermalSolver.ts"
+    },
+    {
+      "name": "AdaptiveIndustrialCFDEngine",
+      "status": "PRODUCTION_QUALIFIED",
+      "file": "src/engine/cfd3d/adaptive/AdaptiveIndustrialCFDEngine.ts"
+    },
+    {
+      "name": "TwoWayFSICouplingEngine",
+      "status": "PARTITIONED_1WAY_QUALIFIED",
+      "file": "src/engine/cfd3d/coupling/TwoWayFSICouplingEngine.ts"
+    },
+    {
+      "name": "EngineeringEvidenceLedger",
+      "status": "PRODUCTION_QUALIFIED",
+      "file": "src/engine/evidence/ledger/EngineeringEvidenceLedger.ts"
+    },
+    {
+      "name": "EvidenceIntegrityChecker",
+      "status": "PRODUCTION_QUALIFIED",
+      "file": "src/engine/evidence/ledger/EvidenceIntegrityChecker.ts"
+    },
+    {
+      "name": "CoreExecutionAuthority",
+      "status": "PRODUCTION_QUALIFIED",
+      "file": "src/engine/execution/CoreExecutionAuthority.ts"
+    },
+    {
+      "name": "InvalidationPipelineEngine",
+      "status": "PRODUCTION_QUALIFIED",
+      "file": "src/engine/workbench/InvalidationPipelineEngine.ts"
+    }
+  ]
+}

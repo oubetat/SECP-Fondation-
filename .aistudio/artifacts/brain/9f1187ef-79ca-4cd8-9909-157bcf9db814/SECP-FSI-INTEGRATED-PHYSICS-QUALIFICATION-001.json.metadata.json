@@ -1,0 +1,5 @@
+{
+  "summary":  "Executive evidence report for SECP-FSI-INTEGRATED-PHYSICS-QUALIFICATION-001. Summarizes the four integrated benchmark tests (clamped plate with honest gap recording, Euler-Bernoulli cantilever beam with mesh refinement convergence, full closed-loop two-way FSI, and the 15-case adversarial battery PHY-001 to PHY-015). Demonstrates zero synthetic models, authentic physical defect remediation, and certified qualification within declared scope.",
+  "updatedAt":  "2026-10-23T07:36:14.600613828Z",
+  "userFacing":  true
+}

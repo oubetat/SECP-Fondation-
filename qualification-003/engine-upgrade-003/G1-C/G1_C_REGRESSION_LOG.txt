@@ -1,0 +1,8 @@
+G1-C REGRESSION LOG
+Timestamp: 2026-10-24T08:05:39.198Z
+Test 1 (Stable Case): PASSED (Iterations: 50, Imbalance: 0.4655%)
+Test 2 (Unconverged Max Iterations): PASSED (Verdict: FAIL, Iterations: 5)
+Test 3 (Unphysical Velocity Abort): PASSED (Status: ABORTED, Verdict: FAIL)
+Test 4 (Recovery Backtrack): PASSED (Restored state verified)
+Test 5 (Determinism): PASSED
+All G1-C acceptance criteria satisfied.

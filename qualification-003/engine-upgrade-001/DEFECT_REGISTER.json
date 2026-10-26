@@ -1,0 +1,41 @@
+{
+  "defects": [
+    {
+      "defectId": "DEFECT-STR-001",
+      "severity": "HIGH",
+      "component": "src/engine/structural-physics/StructuralAnalysisEngine.ts",
+      "reproduction": "FEA solve on QUAD_2D elements yielded 0.0 for strainXX, stressXX, vonMises.",
+      "rootCause": "Nodal post-processing only supported BAR_1D element type.",
+      "repairApplied": "Added calculate2DQuadStrain in StrainAnalysisEngine and calculate2DQuadStress in StressRecoveryEngine, averaging to nodes in StructuralAnalysisEngine.",
+      "status": "FIXED_AND_VERIFIED"
+    },
+    {
+      "defectId": "DEFECT-FSI-001",
+      "severity": "MEDIUM",
+      "component": "src/engine/cfd3d/solvers/fsi/FSIInterface.ts, FSIPhysicsModel.ts, FSICouplingManager.ts",
+      "reproduction": "Files were empty placeholder classes with zero methods.",
+      "rootCause": "Incomplete scaffolding during initial refactoring.",
+      "repairApplied": "Implemented concrete production classes with interface geometry, physics parameters, partitioned coupling coordinator, and work auditing.",
+      "status": "FIXED_AND_VERIFIED"
+    },
+    {
+      "defectId": "DEFECT-FSI-002",
+      "severity": "MEDIUM",
+      "component": "src/engine/cfd3d/solvers/fsi/FSISolver.ts",
+      "reproduction": "runFullSimulation reported hardcoded maxPressureDropPa (1250) and dummy provenance hash.",
+      "rootCause": "Mock placeholder values left in simulation runner.",
+      "repairApplied": "Replaced with live mesh pressure-drop calculation and real cryptographic SHA-256 provenance hash.",
+      "status": "FIXED_AND_VERIFIED"
+    },
+    {
+      "defectId": "DEFECT-FSI-003",
+      "severity": "LOW",
+      "component": "src/engine/cfd3d/solvers/fsi/FSIBenchmarkSuite.ts",
+      "reproduction": "Convergence criteria used relaxed <50% tolerance against 1D Euler-Bernoulli without 2D continuum standard.",
+      "rootCause": "Outdated benchmark tolerances prior to qualification 019.",
+      "repairApplied": "Updated multi-resolution sweep to 80 stations, evaluating both 1D EB and exact 2D continuum (1.993208 mm) with <1% strict pass criteria.",
+      "status": "FIXED_AND_VERIFIED"
+    }
+  ],
+  "status": "ALL_DEFECTS_FIXED"
+}

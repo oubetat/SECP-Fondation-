@@ -1,0 +1,25 @@
+{
+  "experimentId": "EXP-PM-001",
+  "title": "Functionally Graded Lattice Beam Qualification",
+  "objectives": [
+    "Verify multi-material assembly logic",
+    "Validate sequential yielding of programmed zones",
+    "Assess global stability of heterogeneous nonlinear structures"
+  ],
+  "setup": {
+    "geometry": "3D Cantilever Beam (discretized into 10-20 material zones)",
+    "physics": "Large Deformation + J2 Plasticity",
+    "boundaryConditions": "Fixed at base, prescribed displacement at tip"
+  },
+  "programming": {
+    "variable": "Initial Yield Stress (sigma_y0)",
+    "function": "Linear ramp from 250 MPa (base) to 100 MPa (tip)",
+    "discretization": "Zone-based material model assignment"
+  },
+  "successCriteria": {
+    "yieldProgression": "Plasticity must initiate at the tip and propagate toward the base as load increases.",
+    "forceDisplacement": "Global response must match integrated analytical predictions for a graded beam.",
+    "convergence": "Newton-Raphson must maintain quadratic convergence during zone-by-zone yield transitions."
+  },
+  "status": "DRAFT_PENDING_UNBLOCK"
+}

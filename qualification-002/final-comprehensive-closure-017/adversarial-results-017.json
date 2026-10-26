@@ -1,0 +1,8 @@
+{
+  "volumetricInversionRejected": true,
+  "volumetricInversionErrorMessage": "REJECTED: Element inversion/degeneracy! Cell 0 volume -1.2500e-3 (Threshold: 1.2500e-7, Original: 1.2500e-3)",
+  "nanInputRejected": true,
+  "nanInputErrorMessage": "REJECTED: Non-finite displacement encountered (NaN / Infinity)",
+  "atomicRollbackByteForByteMatch": true,
+  "status": "PASS"
+}

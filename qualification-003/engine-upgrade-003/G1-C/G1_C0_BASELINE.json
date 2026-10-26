@@ -1,0 +1,46 @@
+{
+  "gateId": "SECP-ENGINE-UPGRADE-003-G1-C0",
+  "timestampUTC": "2026-10-24T08:03:00.000Z",
+  "auditVerdict": "NOT_QUALIFIED — NUMERICAL INTEGRITY AND EVIDENCE GAPS",
+  "filesAudited": [
+    "src/engine/cfd3d/adaptive/AdaptiveIndustrialCFDEngine.ts",
+    "src/engine/cfd3d/adaptive/DivergenceRecoveryEngine.ts",
+    "src/engine/cfd3d/adaptive/AdaptiveCFLTimeController.ts",
+    "src/engine/cfd3d/adaptive/PhysicalResidualMonitor.ts",
+    "src/engine/cfd3d/adaptive/CFDEvidenceGenerator.ts",
+    "src/engine/cfd3d/conservation/enforcement/ConservationEnforcementEngine.ts",
+    "src/engine/cfd3d/conservation/GlobalMassBalance.ts"
+  ],
+  "identifiedDefects": [
+    {
+      "id": "DEFECT-001",
+      "component": "ConservationEnforcementEngine.ts",
+      "severity": "CRITICAL",
+      "description": "getSummary() returns hardcoded totalIterations: 10, misleading telemetry and evidence generators regardless of actual loop execution iterations."
+    },
+    {
+      "id": "DEFECT-002",
+      "component": "CFDEvidenceGenerator.ts",
+      "severity": "CRITICAL",
+      "description": "Unchecked property access on finalMonitors (finalMonitors.massFlowImbalancePercent) causing uncaught TypeError exception on early abort before monitor initialization."
+    },
+    {
+      "id": "DEFECT-003",
+      "component": "AdaptiveIndustrialCFDEngine.ts & PhysicalResidualMonitor.ts",
+      "severity": "HIGH",
+      "description": "Unphysical 3944.89% mass imbalance in explicit simple update loop due to uncoupled velocity field update and lack of mass-conserving pressure Poisson correction."
+    },
+    {
+      "id": "DEFECT-004",
+      "component": "AdaptiveIndustrialCFDEngine.ts & DivergenceRecoveryEngine.ts",
+      "severity": "CRITICAL",
+      "description": "Divergence recovery failure or abort leads to incomplete evidence generation, or continues loop with corrupted/NaN state if recovery checkpoints are absent."
+    },
+    {
+      "id": "DEFECT-005",
+      "component": "Adjudication Gate Integrity",
+      "severity": "CRITICAL",
+      "description": "Unconverged run (converged=false, massImbalance=3944%) was falsely adjudicated as PASS_WITHIN_DECLARED_SCOPE based solely on non-crashing completion."
+    }
+  ]
+}

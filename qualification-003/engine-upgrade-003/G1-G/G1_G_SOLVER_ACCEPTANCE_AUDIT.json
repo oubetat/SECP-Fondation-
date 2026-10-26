@@ -1,0 +1,11 @@
+{
+  "gateId": "G1-G-SOLVER-ACCEPTANCE",
+  "convergedRunStatus": "CONVERGED",
+  "convergedRunVerdict": "PASS",
+  "timeoutRunStatus": "NOT_CONVERGED",
+  "timeoutRunVerdict": "FAIL",
+  "abortedRunStatus": "ABORTED",
+  "abortedRunVerdict": "FAIL",
+  "failClosedSemanticsEnforced": true,
+  "verdict": "VERIFIED"
+}

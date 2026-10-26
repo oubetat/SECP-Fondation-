@@ -1,0 +1,107 @@
+{
+  "campaignId": "SECP-FEM-UPGRADE-002",
+  "classification": "Stress–Strain Recovery & Structural Field Verification",
+  "adjudication": "QUALIFIED_AND_ACCEPTED",
+  "timestamp": "2026-10-26T08:14:55.411Z",
+  "executionDurationMs": 15,
+  "totalTests": 6,
+  "passed": 6,
+  "failed": 0,
+  "testResults": [
+    {
+      "testId": "STR-FIELD-001",
+      "name": "Bar Axial Tension Stress & Strain Verification",
+      "status": "PASS",
+      "analytical": {
+        "epsilon_ref": 0.0005,
+        "sigma_ref": 105,
+        "vonMises_ref": 105
+      },
+      "numerical": {
+        "epsilon": 0.0005,
+        "sigma": 105,
+        "vonMises": 105
+      },
+      "error": {
+        "strainError": 0,
+        "stressError": 0
+      },
+      "units": {
+        "strain": "dimensionless",
+        "stress": "MPa",
+        "strainEnergy": "N*mm"
+      },
+      "details": "Recovered strain and stress matched exact closed-form analytical equations within 1e-8 error."
+    },
+    {
+      "testId": "STR-FIELD-002",
+      "name": "Bar Axial Compression Sign and Invariant Verification",
+      "status": "PASS",
+      "analytical": {
+        "epsilon_ref": -0.001,
+        "sigma_ref": -70,
+        "vonMises_ref": 70
+      },
+      "numerical": {
+        "epsilon": -0.001,
+        "sigma": -70,
+        "vonMises": 70
+      },
+      "details": "Correctly preserved negative sign for axial compression while ensuring non-negative scalar Von Mises."
+    },
+    {
+      "testId": "STR-FIELD-003",
+      "name": "CST2D Element in Uniform Plane Stress State",
+      "status": "PASS",
+      "analytical": {
+        "sigma_x": 100,
+        "sigma_y": 0,
+        "epsilon_x": 0.0005,
+        "epsilon_y": -0.000125,
+        "vonMises": 100
+      },
+      "numerical": {
+        "sigma_x": 100,
+        "sigma_y": 0,
+        "epsilon_x": 0.0005,
+        "epsilon_y": -0.000125,
+        "vonMises": 100
+      },
+      "details": "Recovered plane stress tensor and Poisson transverse contraction matched theoretical mechanics."
+    },
+    {
+      "testId": "STR-FIELD-004",
+      "name": "Kinematic and Constitutive Energy Consistency",
+      "status": "PASS",
+      "metrics": {
+        "elementStrainEnergy": 59.52380952380952,
+        "globalStrainEnergy": 59.52380952380952,
+        "externalWork": 59.523809523809526
+      },
+      "details": "Internal strain energy density integrated over volume strictly matched external work."
+    },
+    {
+      "testId": "STR-FIELD-005",
+      "name": "Robustness against Invalid Physical / Material Inputs",
+      "status": "PASS",
+      "metrics": {
+        "caughtNegativeYoungsModulus": true,
+        "caughtNegativeJacobian": true
+      },
+      "details": "Safely rejected unphysical materials (E <= 0) and collinear degenerate elements."
+    },
+    {
+      "testId": "STR-FIELD-006",
+      "name": "Nodal Stress Averaging & Discontinuity Tracking",
+      "status": "PASS",
+      "metrics": {
+        "totalElements": 2,
+        "totalNodes": 4,
+        "maxVonMisesStress": 100.00000000000001,
+        "maxVonMisesElementId": "e2",
+        "sharedNodeDiscontinuity": 4.0194366942304644e-14
+      },
+      "details": "Nodal stress averaging completed with inter-element stress jump tracked at shared nodes."
+    }
+  ]
+}

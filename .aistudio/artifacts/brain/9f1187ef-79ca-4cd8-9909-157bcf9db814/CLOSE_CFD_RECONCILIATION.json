@@ -1,0 +1,36 @@
+{
+  "taskId": "SECP-ENGINE-QUALIFICATION-002-CLOSE-001",
+  "timestampUTC": "2026-10-25T07:56:24.848Z",
+  "pressureDropData": {
+    "coarsePa": 0.0522,
+    "mediumPa": 0.079,
+    "finePa": 0.071,
+    "gridSizes": {
+      "coarse": "8x2x2",
+      "medium": "12x3x3",
+      "fine": "16x4x4"
+    },
+    "refinementRatios": {
+      "r32": 1.5,
+      "r21": 1.3333333333333333
+    },
+    "deltasPa": {
+      "eps32": -0.026799999999999997,
+      "eps21": 0.008000000000000007
+    },
+    "monotonicityRatio": -0.29850746268656747
+  },
+  "forensicDiagnosis": "Oscillatory convergence (R = -0.2985 < 0) caused by coarse grid (8x2x2) placing boundary layer centroid at y+ ~ 1700 (pre-asymptotic regime).",
+  "verdict": "OSCILLATORY_CONVERGENCE_CLASSIFIED_CORRECTLY",
+  "gciReport": {
+    "scalarName": "totalPressureDropPa",
+    "computed": true,
+    "meshConverged": false,
+    "observedOrder": 4.202418091379716,
+    "extrapolatedValue": 0.06759574468085106,
+    "gciFinePercent": 5.993407252022789,
+    "monotonicityRatio": -0.29850746268656747,
+    "asymptoticRange": 0.4698062810825208,
+    "rejectionReason": "Non-monotonic mesh convergence (R = -0.2985); Asymptotic range ratio (0.4698) outside [0.9, 1.1]"
+  }
+}

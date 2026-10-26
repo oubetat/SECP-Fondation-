@@ -1,0 +1,11 @@
+{
+  "fsiIterationsCompleted": 3,
+  "isConverged": true,
+  "stopReason": "CONVERGED",
+  "equilibriumErrorNorm": 7.021226756891464e-13,
+  "appliedVerticalLoadFy": -10132.500000000002,
+  "reactionVerticalLoadFy": 10132.500000006474,
+  "verticalForceBalanceErrorPercent": 6.387332146870127e-11,
+  "morphedMeshCellCount": 50,
+  "status": "PASS"
+}

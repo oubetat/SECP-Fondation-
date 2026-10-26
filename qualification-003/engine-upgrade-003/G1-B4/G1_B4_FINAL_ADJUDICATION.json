@@ -1,0 +1,7 @@
+{
+  "gateId": "SECP-ENGINE-UPGRADE-003-G1-B4",
+  "verdict": "PASS_WITHIN_DECLARED_SCOPE",
+  "timestampUTC": "2026-10-24T07:54:08.696Z",
+  "summary": "DivergenceRecoveryEngine implementation verified. Numerical instability markers are correctly detected and state recovery via checkpoints is functional.",
+  "engineSha256": "bc697b800720fe53e6b2ce60c74665edc65eb10d1aa47a746ac6c292d87690dd"
+}

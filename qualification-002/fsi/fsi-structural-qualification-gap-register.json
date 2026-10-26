@@ -1,0 +1,12 @@
+{
+  "campaignId": "SECP-ENGINE-QUALIFICATION-002-FSI-STRUCTURAL-SOLVER-QUALIFICATION-001",
+  "verdict": "QUALIFIED_FOR_BAR_AND_QUAD",
+  "gaps": [
+    {
+      "gapId": "GAP-SCOPE-LIMITATION",
+      "severity": "INFO",
+      "description": "Structural solver qualification is currently established for 1D axial truss/bar elements and 2D membrane quad elements. 3D solid continuum elements (TET4/HEX8) require integration with SECP077CleanRoomKernel before qualifying 3D solid FSI."
+    }
+  ],
+  "timestamp": "2026-10-23T07:05:55.481Z"
+}

@@ -1,0 +1,22 @@
+{
+  "task": "SECP-ENGINE-QUALIFICATION-004",
+  "timestamp": "2026-10-25T08:29:32.792Z",
+  "sourceHashes": {
+    "src/engine/engineeringCore/NodalCircuitSolver.ts": "cef7812a59ce4c227e46c3f81267f2cd65cfa600711102378831a47267063dd0",
+    "src/engine/engineeringCore/SpatialThermalSolver.ts": "ef09eca6526c2a22ff6d9d84744c3715931e01ea9c5df50ab1e3e357bdaa81d1",
+    "src/engine/engineeringCore/PcbThermalModel.ts": "205107c0943b7cd8361295842db5cbdd8c4bbfe107a671359fe3205e62e15509",
+    "src/engine/fem/core/FEMCore.ts": "634c0be341eec5a4265a465dc5ecb0db6c51d71d5389255978b0e6b0862e678e",
+    "src/engine/engineeringCore/ElectrothermalSolver.ts": "a6145e82614cd8f0f3e3404f5cef9f5e2cb5fd9a57a5dc13490f04ca570cef14",
+    "src/engine/cfd3d/adaptive/AdaptiveIndustrialCFDEngine.ts": "27f58f8fa8d6849df24de0b078447b7f0e0d33fe127c0a210fa38d6dd13a5651",
+    "src/engine/cfd3d/coupling/TwoWayFSICouplingEngine.ts": "05122916ea7743bc6f94f385351b3280e7afa3d99fcd6ba38d218be6d519615b",
+    "src/engine/evidence/ledger/EngineeringEvidenceLedger.ts": "43ea18ae555096451b6cb0ff75c246a65a1eb5fa522f5663d20011d09d63b030",
+    "src/engine/evidence/ledger/EvidenceIntegrityChecker.ts": "55ba35d20612144c7c194e16ae3d0eb2dc5939b43edf10cb92bb8ffb5cc8784e",
+    "src/engine/execution/CoreExecutionAuthority.ts": "a1b5a621758e87b1d9ac1970947fc2244826e0fe83d96840fa2afea1b8c6e156",
+    "src/engine/workbench/InvalidationPipelineEngine.ts": "24b34d7f1ce7090c7706ad87b0cb06cf55eca99b92f6a1b9593b5a514946aeac",
+    "src/engine/revision/RevisionEngine.ts": "2efaad191bcf2259322f1be7be4757bcf69c93844739776fc38d3887147a3f03",
+    "src/engine/revision/EcoManagementEngine.ts": "3f67a437d42221f939cfdab97d1a604c2fe304664d033e96c6349e56e4714cf6",
+    "src/engine/revision/ChangeManagementEngine.ts": "c36666f126fd0ba63f795322ae98d038b84c04aecb5ee9e6240171b9925142f1",
+    "src/engine/revision/ApprovalWorkflowEngine.ts": "83c39031d9a7388b4ed2f01702bfecbbbea7b0ca7614651df67dbeb27179a799",
+    "src/engine/verification/portal/IndependentVerificationEngine.ts": "122cd44d6f54a7cb2b0f9a2a7c045f2a12f4e08572d5f3589dbcd30a75e8128e"
+  }
+}

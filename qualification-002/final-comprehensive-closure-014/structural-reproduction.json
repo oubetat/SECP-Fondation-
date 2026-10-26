@@ -1,0 +1,74 @@
+[
+  {
+    "stations": 10,
+    "maxDisplacementMm": 0.9554604923473938,
+    "theoreticalDeltaMm": 2.1712499999999997,
+    "errorPercent": 55.9949111181396,
+    "converged": true,
+    "totalAppliedFy": -10132.500000000002,
+    "totalReactionFy": 10132.500000005308,
+    "analyticalMomentNm": 5066.25,
+    "reactionMomentNm": 4215.120000003109,
+    "momentErrorPercent": 16.799999999938624,
+    "r1": {
+      "nodeId": 1,
+      "fx": -42151.20000003127,
+      "fy": 4055.9009715607244,
+      "fz": 0
+    },
+    "r2": {
+      "nodeId": 2,
+      "fx": 42151.20000003092,
+      "fy": 6076.599028444583,
+      "fz": 0
+    }
+  },
+  {
+    "stations": 20,
+    "maxDisplacementMm": 1.0524048704829714,
+    "theoreticalDeltaMm": 2.1712499999999997,
+    "errorPercent": 51.53000020803815,
+    "converged": true,
+    "totalAppliedFy": -10132.500000000002,
+    "totalReactionFy": 10132.500000005854,
+    "analyticalMomentNm": 5066.25,
+    "reactionMomentNm": 4053.0000000035093,
+    "momentErrorPercent": 19.999999999930733,
+    "r1": {
+      "nodeId": 1,
+      "fx": -40530.00000003549,
+      "fy": 4052.999911881516,
+      "fz": 0
+    },
+    "r2": {
+      "nodeId": 2,
+      "fx": 40530.00000003469,
+      "fy": 6079.500088124338,
+      "fz": 0
+    }
+  },
+  {
+    "stations": 40,
+    "maxDisplacementMm": 1.0960297818183562,
+    "theoreticalDeltaMm": 2.1712499999999997,
+    "errorPercent": 49.52079300779015,
+    "converged": true,
+    "totalAppliedFy": -10132.500000000002,
+    "totalReactionFy": 10132.500000020711,
+    "analyticalMomentNm": 5066.25,
+    "reactionMomentNm": 4053.0000000103437,
+    "momentErrorPercent": 19.999999999795833,
+    "r1": {
+      "nodeId": 1,
+      "fx": -40530.000000099084,
+      "fy": 4052.9922368150546,
+      "fz": 0
+    },
+    "r2": {
+      "nodeId": 2,
+      "fx": 40530.000000107786,
+      "fy": 6079.507763205656,
+      "fz": 0
+    }
+  }
+]

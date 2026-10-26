@@ -1,0 +1,28 @@
+[
+  {
+    "testId": "TEST-1-STABLE-CASE",
+    "passed": true,
+    "metrics": {
+      "iterations": 50,
+      "massImbalance": 0.4655347490116988,
+      "verdict": "FAIL"
+    }
+  },
+  {
+    "testId": "TEST-2-UNCONVERGED-CASE",
+    "passed": true,
+    "metrics": {
+      "iterations": 5,
+      "executionStatus": "FAILED",
+      "verdict": "FAIL"
+    }
+  },
+  {
+    "testId": "TEST-4-RECOVERY-ENGINE",
+    "passed": true
+  },
+  {
+    "testId": "TEST-5-DETERMINISM",
+    "passed": true
+  }
+]

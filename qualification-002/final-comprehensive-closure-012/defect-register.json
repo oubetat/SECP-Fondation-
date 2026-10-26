@@ -1,0 +1,44 @@
+[
+  {
+    "id": "FSI-DEF-001",
+    "component": "DynamicMeshManager.ts",
+    "description": "Weak element inversion check based only on volume.",
+    "severity": "CRITICAL",
+    "status": "OPEN"
+  },
+  {
+    "id": "FSI-DEF-002",
+    "component": "DynamicMeshManager.ts",
+    "description": "Centroid-only updates without vertex coordinate propagation.",
+    "severity": "MAJOR",
+    "status": "OPEN"
+  },
+  {
+    "id": "FSI-DEF-003",
+    "component": "FSIRelaxationManager.ts",
+    "description": "Convergence criteria lacks force residual validation.",
+    "severity": "MAJOR",
+    "status": "OPEN"
+  },
+  {
+    "id": "FSI-DEF-005",
+    "component": "GlobalAssemblyEngine.ts / ElementFormulationEngine.ts",
+    "description": "Presence of artificial stiffness (EPSILON and kTrans) masking numerical issues.",
+    "severity": "CRITICAL",
+    "status": "OPEN"
+  },
+  {
+    "id": "FSI-DEF-007",
+    "component": "FSIInterfaceMapper.ts",
+    "description": "Naive 1:1 mapping between fluid face IDs and structural node IDs.",
+    "severity": "CRITICAL",
+    "status": "OPEN"
+  },
+  {
+    "id": "FSI-DEF-011",
+    "component": "FSIBenchmarkSuite.ts",
+    "description": "Hardcoded success percentages in benchmarks.",
+    "severity": "CRITICAL",
+    "status": "OPEN"
+  }
+]

@@ -1,0 +1,81 @@
+{
+  "taskId": "SECP-ENGINE-UPGRADE-003-G1-A",
+  "timestampUTC": "2026-10-24T07:42:19.583Z",
+  "status": "ALL_TESTS_PASSED",
+  "canonicalValidCase": {
+    "readyForSolve": true,
+    "totalChecks": 10,
+    "allPassed": true,
+    "checks": [
+      {
+        "code": "CHK_FLUID_DENSITY",
+        "name": "Fluid Density Sanity",
+        "passed": true,
+        "message": "Fluid density is valid: 1.225 kg/m³"
+      },
+      {
+        "code": "CHK_FLUID_VISCOSITY",
+        "name": "Fluid Dynamic Viscosity Sanity",
+        "passed": true,
+        "message": "Fluid dynamic viscosity is valid: 0.0000181 Pa·s"
+      },
+      {
+        "code": "CHK_SPECIFIC_HEAT_RATIO",
+        "name": "Specific Heat Ratio (Gamma)",
+        "passed": true,
+        "message": "Specific heat ratio gamma is valid: 1.4"
+      },
+      {
+        "code": "CHK_THERMODYNAMICS",
+        "name": "Thermodynamic Speed of Sound",
+        "passed": true,
+        "message": "Thermodynamic speed of sound evaluated: 340.3 m/s (gamma=1.4, R=287.058, T=288.15K)"
+      },
+      {
+        "code": "CHK_REFERENCE_VELOCITY",
+        "name": "Reference Velocity Sanity",
+        "passed": true,
+        "message": "Reference velocity is valid: 15 m/s"
+      },
+      {
+        "code": "CHK_REFERENCE_LENGTH",
+        "name": "Reference Characteristic Length",
+        "passed": true,
+        "message": "Reference length is valid: 1 m"
+      },
+      {
+        "code": "CHK_MESH_CELLS",
+        "name": "Mesh Control Volume Topology",
+        "passed": true,
+        "message": "Mesh topology valid: 128 cells, 464 faces"
+      },
+      {
+        "code": "CHK_CELL_VOLUMES",
+        "name": "Cell Volume Positivity",
+        "passed": true,
+        "message": "All cells have strictly positive finite volumes."
+      },
+      {
+        "code": "CHK_DOMAIN_BOUNDING_BOX",
+        "name": "Domain Bounding Box Non-Degeneracy",
+        "passed": true,
+        "message": "Domain bounding box spans: Dx=0.875m, Dy=0.150m, Dz=0.150m"
+      },
+      {
+        "code": "CHK_BOUNDARY_CONDITIONS_DEF",
+        "name": "Boundary Conditions Definition",
+        "passed": true,
+        "message": "Boundary conditions are specified."
+      }
+    ]
+  },
+  "solverFailClosedTest": {
+    "executed": true,
+    "solverBlockedExecution": true,
+    "thrownError": "CFD_PREFLIGHT_FAILURE: Pre-flight checks failed. Unphysical fluid density: -5"
+  },
+  "benchmarkCase1Replay": {
+    "crashed": false,
+    "p1Passed": true
+  }
+}

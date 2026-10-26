@@ -1,0 +1,608 @@
+[
+  {
+    "task": "engine-upgrade-003",
+    "filename": "CFD_BASELINE_TEST_LOG.txt",
+    "path": "qualification-003/engine-upgrade-003/CFD_BASELINE_TEST_LOG.txt",
+    "sha256": "4a848b3a5dcdcf502b5ff545e490ef7e4ea2bdcab18b9ddad9e38b14fcb62b0e"
+  },
+  {
+    "task": "engine-upgrade-003",
+    "filename": "CFD_DEPENDENCY_AND_CALL_GRAPH.md",
+    "path": "qualification-003/engine-upgrade-003/CFD_DEPENDENCY_AND_CALL_GRAPH.md",
+    "sha256": "2e220b4e4c2ecb0eb1cfb1b760e0cd30aa9ffb83e20909259152333531c988b5"
+  },
+  {
+    "task": "engine-upgrade-003",
+    "filename": "CFD_G0_ADJUDICATION.json",
+    "path": "qualification-003/engine-upgrade-003/CFD_G0_ADJUDICATION.json",
+    "sha256": "468eab989cd58dc52c836d6a484ae2a8d47c86c178f0d0f1766553d5688b1c31"
+  },
+  {
+    "task": "engine-upgrade-003",
+    "filename": "CFD_INFRASTRUCTURE_BASELINE.json",
+    "path": "qualification-003/engine-upgrade-003/CFD_INFRASTRUCTURE_BASELINE.json",
+    "sha256": "4d09ab29d50941dbc40cb8a8da03b19979a60f6eafc422d1d940fad0b36b337c"
+  },
+  {
+    "task": "engine-upgrade-003",
+    "filename": "CFD_STUB_AND_GAP_REGISTER.json",
+    "path": "qualification-003/engine-upgrade-003/CFD_STUB_AND_GAP_REGISTER.json",
+    "sha256": "3cba4db20a76a3c131cc0b4fc2be64ec81350980c727c65bd90a3923366519c9"
+  },
+  {
+    "task": "G1",
+    "filename": "G1_ADVERSARIAL_RESULTS.json",
+    "path": "qualification-003/engine-upgrade-003/G1/G1_ADVERSARIAL_RESULTS.json",
+    "sha256": "3b4c6eca0df9e42ce763115102503abed565c1189269d3d3a77eb6c794e0a4c6"
+  },
+  {
+    "task": "G1",
+    "filename": "G1_CHANGE_MANIFEST.json",
+    "path": "qualification-003/engine-upgrade-003/G1/G1_CHANGE_MANIFEST.json",
+    "sha256": "577caaf791ffb867c83edb14320225e5dcae7fa1ed8950643e42ff719ce6d434"
+  },
+  {
+    "task": "G1",
+    "filename": "G1_CONTRACT_COMPATIBILITY.md",
+    "path": "qualification-003/engine-upgrade-003/G1/G1_CONTRACT_COMPATIBILITY.md",
+    "sha256": "de2212b054c2f7bc58239dd3f076623f37bc47306654aa16f46e2ea02c26f842"
+  },
+  {
+    "task": "G1",
+    "filename": "G1_FINAL_ADJUDICATION.json",
+    "path": "qualification-003/engine-upgrade-003/G1/G1_FINAL_ADJUDICATION.json",
+    "sha256": "c01d64a184c9c723dff6a7c9399824908564cca5c43b96dd33efcf500958fc61"
+  },
+  {
+    "task": "G1",
+    "filename": "G1_REGRESSION_LOG.txt",
+    "path": "qualification-003/engine-upgrade-003/G1/G1_REGRESSION_LOG.txt",
+    "sha256": "b24c386bd4304206dad75f37bd0ea1b9c4b73dd2fb0584163e412a9407d16248"
+  },
+  {
+    "task": "G1",
+    "filename": "G1_TEST_RESULTS.json",
+    "path": "qualification-003/engine-upgrade-003/G1/G1_TEST_RESULTS.json",
+    "sha256": "289bec15c4b198151c156c7c1a18281085fb1ccfc889f5e316a54d5ff20b4641"
+  },
+  {
+    "task": "G1-B1",
+    "filename": "G1_B1_BASELINE.json",
+    "path": "qualification-003/engine-upgrade-003/G1-B1/G1_B1_BASELINE.json",
+    "sha256": "67f5ffd6a9b44316605d815f2378d0713cca244540c01f560b690391ca28b8a4"
+  },
+  {
+    "task": "G1-B1",
+    "filename": "G1_B1_BASELINE_TEST_LOG.txt",
+    "path": "qualification-003/engine-upgrade-003/G1-B1/G1_B1_BASELINE_TEST_LOG.txt",
+    "sha256": "2315d313d5a78b662009322657d3f086999d63dcbdf2705ba0709b01cb1277e3"
+  },
+  {
+    "task": "G1-B1",
+    "filename": "G1_B1_CALL_GRAPH.md",
+    "path": "qualification-003/engine-upgrade-003/G1-B1/G1_B1_CALL_GRAPH.md",
+    "sha256": "04738ea135dc6075917152f86ce7e86364a21606078233517584a4eccfc8a607"
+  },
+  {
+    "task": "G1-B1",
+    "filename": "G1_B1_CHANGE_MANIFEST.json",
+    "path": "qualification-003/engine-upgrade-003/G1-B1/G1_B1_CHANGE_MANIFEST.json",
+    "sha256": "5b12b21ebfbbfe36c9c001ffefe6c60739e4c458260899c77dd1e15cafd21a95"
+  },
+  {
+    "task": "G1-B1",
+    "filename": "G1_B1_CONTRACT_ANALYSIS.md",
+    "path": "qualification-003/engine-upgrade-003/G1-B1/G1_B1_CONTRACT_ANALYSIS.md",
+    "sha256": "11f52627904ec81f6bbcc7741dc99b6a6166c4de4eb7f149daf82353c5c87e66"
+  },
+  {
+    "task": "G1-B1",
+    "filename": "G1_B1_FINAL_ADJUDICATION.json",
+    "path": "qualification-003/engine-upgrade-003/G1-B1/G1_B1_FINAL_ADJUDICATION.json",
+    "sha256": "802750b4ea90d932ff8bbf0dc0d3e2c1cd6816de6320f1a9123ee63e5e6b4a39"
+  },
+  {
+    "task": "G1-B1",
+    "filename": "G1_B1_TEST_RESULTS.json",
+    "path": "qualification-003/engine-upgrade-003/G1-B1/G1_B1_TEST_RESULTS.json",
+    "sha256": "4441f0bdc2b6e403ddd1751418f82e00ac20989e0319c6b5cda9b130ac858c6e"
+  },
+  {
+    "task": "G1-B2",
+    "filename": "G1_B2_CHANGE_MANIFEST.json",
+    "path": "qualification-003/engine-upgrade-003/G1-B2/G1_B2_CHANGE_MANIFEST.json",
+    "sha256": "1f7e7f608905cda0bc6d283aa3bf638c652f0cdcf3f3ae1433408211b89a9fd8"
+  },
+  {
+    "task": "G1-B2",
+    "filename": "G1_B2_FINAL_ADJUDICATION.json",
+    "path": "qualification-003/engine-upgrade-003/G1-B2/G1_B2_FINAL_ADJUDICATION.json",
+    "sha256": "c057462debc30a36fd8a654ea779dbbccd13ff34127f9830e593fade1a0412f4"
+  },
+  {
+    "task": "G1-B2",
+    "filename": "G1_B2_TEST_RESULTS.json",
+    "path": "qualification-003/engine-upgrade-003/G1-B2/G1_B2_TEST_RESULTS.json",
+    "sha256": "78d7a4b91a1cf3c6dab3ae1ba224024483877071f532b8196451a1552af57b15"
+  },
+  {
+    "task": "G1-B3",
+    "filename": "G1_B3_CHANGE_MANIFEST.json",
+    "path": "qualification-003/engine-upgrade-003/G1-B3/G1_B3_CHANGE_MANIFEST.json",
+    "sha256": "6572fc9d007245f165a530252c768e9bc38e1cac30a6a093973b5a1a6f318ea2"
+  },
+  {
+    "task": "G1-B3",
+    "filename": "G1_B3_FINAL_ADJUDICATION.json",
+    "path": "qualification-003/engine-upgrade-003/G1-B3/G1_B3_FINAL_ADJUDICATION.json",
+    "sha256": "a99acd7ff0799359d0e536e099bc9f0cdce91cb7cdcf38954a240b34ca5e19be"
+  },
+  {
+    "task": "G1-B3",
+    "filename": "G1_B3_TEST_RESULTS.json",
+    "path": "qualification-003/engine-upgrade-003/G1-B3/G1_B3_TEST_RESULTS.json",
+    "sha256": "e4862d2c19a690a95cb973f00ae0a6378a387db2aea2ad443f0c125dcb41e073"
+  },
+  {
+    "task": "G1-B4",
+    "filename": "G1_B4_CHANGE_MANIFEST.json",
+    "path": "qualification-003/engine-upgrade-003/G1-B4/G1_B4_CHANGE_MANIFEST.json",
+    "sha256": "66ef059040775e773dbb35561d14d32857e832e4b1225df72cf65da9c50d6d95"
+  },
+  {
+    "task": "G1-B4",
+    "filename": "G1_B4_FINAL_ADJUDICATION.json",
+    "path": "qualification-003/engine-upgrade-003/G1-B4/G1_B4_FINAL_ADJUDICATION.json",
+    "sha256": "ee1f1c985ac9362d1cf5df537c0411bb8f0ce87b75a91be4e07da055023d039e"
+  },
+  {
+    "task": "G1-B4",
+    "filename": "G1_B4_TEST_RESULTS.json",
+    "path": "qualification-003/engine-upgrade-003/G1-B4/G1_B4_TEST_RESULTS.json",
+    "sha256": "f251065460d8ad78b320d6345df6a18c3e3aa3989a81032c765546048fd538da"
+  },
+  {
+    "task": "G1-B5",
+    "filename": "G1_B5_CHANGE_MANIFEST.json",
+    "path": "qualification-003/engine-upgrade-003/G1-B5/G1_B5_CHANGE_MANIFEST.json",
+    "sha256": "0928d54fa70cf38ea8c2c04c887c8a025addea10b2059d2026789460cbae40b4"
+  },
+  {
+    "task": "G1-B5",
+    "filename": "G1_B5_FINAL_ADJUDICATION.json",
+    "path": "qualification-003/engine-upgrade-003/G1-B5/G1_B5_FINAL_ADJUDICATION.json",
+    "sha256": "20f8c3cec1c723ad64f5dd55d077cb0f62f6a95a5c8f9b1246095bae0d4517d7"
+  },
+  {
+    "task": "G1-B5",
+    "filename": "G1_B5_TEST_RESULTS.json",
+    "path": "qualification-003/engine-upgrade-003/G1-B5/G1_B5_TEST_RESULTS.json",
+    "sha256": "657ae25f3be42548f3a0aa1eb0a3e19f46b92f2f8933d4967bde053bb7bbf742"
+  },
+  {
+    "task": "G1-B6",
+    "filename": "G1_B6_CHANGE_MANIFEST.json",
+    "path": "qualification-003/engine-upgrade-003/G1-B6/G1_B6_CHANGE_MANIFEST.json",
+    "sha256": "bb8f7d27c55cd2fe6f9c82653ef50694395c4cd015eec0958daabe243e4ac2a1"
+  },
+  {
+    "task": "G1-B6",
+    "filename": "G1_B6_FINAL_ADJUDICATION.json",
+    "path": "qualification-003/engine-upgrade-003/G1-B6/G1_B6_FINAL_ADJUDICATION.json",
+    "sha256": "eca2a053d416fe93a5cda28783c99bc1e8dc503c465d2765ae1c2324fde0300c"
+  },
+  {
+    "task": "G1-B6",
+    "filename": "G1_B6_TEST_RESULTS.json",
+    "path": "qualification-003/engine-upgrade-003/G1-B6/G1_B6_TEST_RESULTS.json",
+    "sha256": "85107d98438867709fcceb9a65131e73fc5ac220826840b7fd61e220a1cf69e6"
+  },
+  {
+    "task": "G1-B7",
+    "filename": "G1_B7_CHANGE_MANIFEST.json",
+    "path": "qualification-003/engine-upgrade-003/G1-B7/G1_B7_CHANGE_MANIFEST.json",
+    "sha256": "f6a773da7bf3fc83113d275a70290f3533efeee1ae168bce7a41942f3227fb03"
+  },
+  {
+    "task": "G1-B7",
+    "filename": "G1_B7_FINAL_ADJUDICATION.json",
+    "path": "qualification-003/engine-upgrade-003/G1-B7/G1_B7_FINAL_ADJUDICATION.json",
+    "sha256": "75784e9034bdb2503d04965e18e2f424b1503a43a8a2db8c9418eaf42593bd3d"
+  },
+  {
+    "task": "G1-B7",
+    "filename": "G1_B7_TEST_RESULTS.json",
+    "path": "qualification-003/engine-upgrade-003/G1-B7/G1_B7_TEST_RESULTS.json",
+    "sha256": "2f93ab83429f57bcd96995655887c6681259b2be5c9a9c0b764b9007452954e8"
+  },
+  {
+    "task": "G1-B8",
+    "filename": "G1_B8_FINAL_ADJUDICATION.json",
+    "path": "qualification-003/engine-upgrade-003/G1-B8/G1_B8_FINAL_ADJUDICATION.json",
+    "sha256": "62d04311098de0de50c6f7a11c01bb6a333930b9a72d012a42f4fc76d872ef17"
+  },
+  {
+    "task": "G1-C",
+    "filename": "G1_C0_BASELINE.json",
+    "path": "qualification-003/engine-upgrade-003/G1-C/G1_C0_BASELINE.json",
+    "sha256": "e704d19e8e64f0fa1f85edd4a7b88c11fbb11be1f8c9c316044694e10a511413"
+  },
+  {
+    "task": "G1-C",
+    "filename": "G1_C0_SOURCE_AUDIT.md",
+    "path": "qualification-003/engine-upgrade-003/G1-C/G1_C0_SOURCE_AUDIT.md",
+    "sha256": "ef080efb7558ed54266eb919ace37bf2a6dba13a87a9bce4a9edc4db9baadd26"
+  },
+  {
+    "task": "G1-C",
+    "filename": "G1_C1_CHANGE_MANIFEST.json",
+    "path": "qualification-003/engine-upgrade-003/G1-C/G1_C1_CHANGE_MANIFEST.json",
+    "sha256": "73ce477eedaf7cfde4745b3eb6e3b24cd6ea98054158827fc71784c3e73fb5d2"
+  },
+  {
+    "task": "G1-C",
+    "filename": "G1_C2_ADVERSARIAL_RESULTS.json",
+    "path": "qualification-003/engine-upgrade-003/G1-C/G1_C2_ADVERSARIAL_RESULTS.json",
+    "sha256": "a1d4a645ff30889d8c29e6bb81bda9e0d78af5cf11fbf5ce99fa9424d3850379"
+  },
+  {
+    "task": "G1-C",
+    "filename": "G1_C2_TEST_RESULTS.json",
+    "path": "qualification-003/engine-upgrade-003/G1-C/G1_C2_TEST_RESULTS.json",
+    "sha256": "681bc8ec4668d4f6e9e8690e0dee9f640cd7da4151849a48d763bea6f4ec5fcc"
+  },
+  {
+    "task": "G1-C",
+    "filename": "G1_C_FINAL_ADJUDICATION.json",
+    "path": "qualification-003/engine-upgrade-003/G1-C/G1_C_FINAL_ADJUDICATION.json",
+    "sha256": "50b3faaad890d0174519a4d9852a81d47f7d0d25c2c0080822173756706ff0d1"
+  },
+  {
+    "task": "G1-C",
+    "filename": "G1_C_REGRESSION_LOG.txt",
+    "path": "qualification-003/engine-upgrade-003/G1-C/G1_C_REGRESSION_LOG.txt",
+    "sha256": "389a56d5079f43d7298415314a6e66a696fd9d9eb7c70895d326ca35a34e6d39"
+  },
+  {
+    "task": "G1-D",
+    "filename": "G1_D_CONVERGENCE_AUDIT.json",
+    "path": "qualification-003/engine-upgrade-003/G1-D/G1_D_CONVERGENCE_AUDIT.json",
+    "sha256": "867a638d6ac1d2402fed0e60396bd2cc9e081b2b063355e1166567d278c9fe0f"
+  },
+  {
+    "task": "G1-D",
+    "filename": "G1_D_EVIDENCE_BINDING.json",
+    "path": "qualification-003/engine-upgrade-003/G1-D/G1_D_EVIDENCE_BINDING.json",
+    "sha256": "7ad57843a195eece38fdff815b8a5acff64cea1d6110cd88f1484c7ef7a86a53"
+  },
+  {
+    "task": "G1-D",
+    "filename": "G1_D_FINAL_ADJUDICATION.json",
+    "path": "qualification-003/engine-upgrade-003/G1-D/G1_D_FINAL_ADJUDICATION.json",
+    "sha256": "b3930e84dedf51976552d3b27bba60fb84973fd3258e4ba3289892de1e206446"
+  },
+  {
+    "task": "G1-D",
+    "filename": "G1_D_MASS_BALANCE_RECALCULATION.json",
+    "path": "qualification-003/engine-upgrade-003/G1-D/G1_D_MASS_BALANCE_RECALCULATION.json",
+    "sha256": "04269596be1f0c32137434ac7933743385be31c56e68ccc2b2f98ef42ed42634"
+  },
+  {
+    "task": "G1-D",
+    "filename": "G1_D_RECOVERY_AUDIT.json",
+    "path": "qualification-003/engine-upgrade-003/G1-D/G1_D_RECOVERY_AUDIT.json",
+    "sha256": "2983257af69df1613916840a61fc39bbce11d3e2d7703fb878281235b33de237"
+  },
+  {
+    "task": "G1-D",
+    "filename": "G1_D_SOURCE_AUDIT.md",
+    "path": "qualification-003/engine-upgrade-003/G1-D/G1_D_SOURCE_AUDIT.md",
+    "sha256": "272cbf198e2bbaecbad75b0f9f2871f56c00608f4bce21f840b149a374231edf"
+  },
+  {
+    "task": "G1-E",
+    "filename": "G1_E_AUDIT_CONVERGENCE.json",
+    "path": "qualification-003/engine-upgrade-003/G1-E/G1_E_AUDIT_CONVERGENCE.json",
+    "sha256": "7ee52e5f5939b3eb98dbbf9e3a3d066caa5ff3291bcc168ace0e77691d094344"
+  },
+  {
+    "task": "G1-E",
+    "filename": "G1_E_AUDIT_DETERMINISM.json",
+    "path": "qualification-003/engine-upgrade-003/G1-E/G1_E_AUDIT_DETERMINISM.json",
+    "sha256": "a62024df2a610772fe69cc33318af0296152e8331cf4e524e32b85259f746241"
+  },
+  {
+    "task": "G1-E",
+    "filename": "G1_E_AUDIT_MASS_CONSERVATION.json",
+    "path": "qualification-003/engine-upgrade-003/G1-E/G1_E_AUDIT_MASS_CONSERVATION.json",
+    "sha256": "baceb26d9efbc1fb799a19845806ad6c32ecc1ed16896e08405650baa9e7c48a"
+  },
+  {
+    "task": "G1-E",
+    "filename": "G1_E_AUDIT_RECOVERY.json",
+    "path": "qualification-003/engine-upgrade-003/G1-E/G1_E_AUDIT_RECOVERY.json",
+    "sha256": "ddd6105ef8067f71742fc05f34d5fb7cec09c35fd675c41202317a94bec9f413"
+  },
+  {
+    "task": "G1-E",
+    "filename": "G1_E_AUDIT_REGRESSION_AND_BINDING.json",
+    "path": "qualification-003/engine-upgrade-003/G1-E/G1_E_AUDIT_REGRESSION_AND_BINDING.json",
+    "sha256": "b5eec6ce747f9cd0704ff227fc8f645a1305075b5e51c10b1611f0c59f7692ee"
+  },
+  {
+    "task": "G1-E",
+    "filename": "G1_E_AUDIT_SOURCE_INTEGRITY.json",
+    "path": "qualification-003/engine-upgrade-003/G1-E/G1_E_AUDIT_SOURCE_INTEGRITY.json",
+    "sha256": "618217c0c258ff59ca94a9e4c7ae0f5c15333db8bc06efae91bad0dd868bb75f"
+  },
+  {
+    "task": "G1-E",
+    "filename": "G1_E_BASELINE_MANIFEST.json",
+    "path": "qualification-003/engine-upgrade-003/G1-E/G1_E_BASELINE_MANIFEST.json",
+    "sha256": "64a817480617ba910cdb12519c7fd70a3b209dc12d00f1049a60788d32ea5246"
+  },
+  {
+    "task": "G1-E",
+    "filename": "G1_E_CHANGE_MANIFEST.json",
+    "path": "qualification-003/engine-upgrade-003/G1-E/G1_E_CHANGE_MANIFEST.json",
+    "sha256": "efaa277e35524e464dc36979f65e01c2ca52af1cc01d940611ad4937685a06e5"
+  },
+  {
+    "task": "G1-E",
+    "filename": "G1_E_CONVERGENCE_VERIFICATION.json",
+    "path": "qualification-003/engine-upgrade-003/G1-E/G1_E_CONVERGENCE_VERIFICATION.json",
+    "sha256": "6566102cafafdc6471dfc5962e8da06998636a22048b2f6bfded5d1646c179da"
+  },
+  {
+    "task": "G1-E",
+    "filename": "G1_E_DETERMINISM_VERIFICATION.json",
+    "path": "qualification-003/engine-upgrade-003/G1-E/G1_E_DETERMINISM_VERIFICATION.json",
+    "sha256": "c3fecae065f393da18162d313492cd7703eb5e60c7d37a9b8d5cb06e171516be"
+  },
+  {
+    "task": "G1-E",
+    "filename": "G1_E_EVIDENCE_BINDING_VERIFICATION.json",
+    "path": "qualification-003/engine-upgrade-003/G1-E/G1_E_EVIDENCE_BINDING_VERIFICATION.json",
+    "sha256": "ecb174bb05776220de65f9e985f34d7af9498f72c45eb179b146c8ca4e138c28"
+  },
+  {
+    "task": "G1-E",
+    "filename": "G1_E_FINAL_ADJUDICATION.json",
+    "path": "qualification-003/engine-upgrade-003/G1-E/G1_E_FINAL_ADJUDICATION.json",
+    "sha256": "f9f6e2f38c75c342903ef2b35cebad976c9272fa135a48fe9a5d611e24d569ea"
+  },
+  {
+    "task": "G1-E",
+    "filename": "G1_E_FINAL_CLOSURE_REPORT.md",
+    "path": "qualification-003/engine-upgrade-003/G1-E/G1_E_FINAL_CLOSURE_REPORT.md",
+    "sha256": "6d422f69ac31f7023597be7724d0e3c38be7a216f852aea9c1d3b7ed60b2e144"
+  },
+  {
+    "task": "G1-E",
+    "filename": "G1_E_INDEPENDENT_CLOSURE_REPORT.md",
+    "path": "qualification-003/engine-upgrade-003/G1-E/G1_E_INDEPENDENT_CLOSURE_REPORT.md",
+    "sha256": "98639917da1be292febed72f15a1616c93a278ce06792e835201a8c6817678f3"
+  },
+  {
+    "task": "G1-E",
+    "filename": "G1_E_INDEPENDENT_FINAL_ADJUDICATION.json",
+    "path": "qualification-003/engine-upgrade-003/G1-E/G1_E_INDEPENDENT_FINAL_ADJUDICATION.json",
+    "sha256": "3c282bb099afabd2d4cf4cfceeb78ab995f1c35fbdc9de4699cde40de59214d3"
+  },
+  {
+    "task": "G1-E",
+    "filename": "G1_E_MASS_CONSERVATION_VERIFICATION.json",
+    "path": "qualification-003/engine-upgrade-003/G1-E/G1_E_MASS_CONSERVATION_VERIFICATION.json",
+    "sha256": "961994835c33d0010da6fc9828e85daf7322dd06766e186ebf3e6e87f84a407d"
+  },
+  {
+    "task": "G1-E",
+    "filename": "G1_E_RECOVERY_VERIFICATION.json",
+    "path": "qualification-003/engine-upgrade-003/G1-E/G1_E_RECOVERY_VERIFICATION.json",
+    "sha256": "b55ede992b9a9c9190192b2144f089f9e16465d9c5f5b6d0c87ed3f6822c26b8"
+  },
+  {
+    "task": "G1-E",
+    "filename": "G1_E_REGRESSION_RESULTS.json",
+    "path": "qualification-003/engine-upgrade-003/G1-E/G1_E_REGRESSION_RESULTS.json",
+    "sha256": "dcfa0c0e6ea2268df415031e48c06a29ce3282ccddf07f2ca600947a3e203184"
+  },
+  {
+    "task": "G1-F",
+    "filename": "G1_F_BASELINE_AUDIT.json",
+    "path": "qualification-003/engine-upgrade-003/G1-F/G1_F_BASELINE_AUDIT.json",
+    "sha256": "276bf21b7433ec2a276815a4685dd09e0cfa50ca672239bacae79964efd3f7c9"
+  },
+  {
+    "task": "G1-F",
+    "filename": "G1_F_CORRECTIVE_ACTIONS.json",
+    "path": "qualification-003/engine-upgrade-003/G1-F/G1_F_CORRECTIVE_ACTIONS.json",
+    "sha256": "392acf530ec6489fc417d6745c9f62adfc335f0ec65e911c5addb382ca76c1b1"
+  },
+  {
+    "task": "G1-F",
+    "filename": "G1_F_EVIDENCE_BINDING_VERIFICATION.json",
+    "path": "qualification-003/engine-upgrade-003/G1-F/G1_F_EVIDENCE_BINDING_VERIFICATION.json",
+    "sha256": "f8dbeed9f7991a2c865164be6d3f7a14757b58468cf41bd7168867309deea64c"
+  },
+  {
+    "task": "G1-F",
+    "filename": "G1_F_EVIDENCE_MANIFEST.json",
+    "path": "qualification-003/engine-upgrade-003/G1-F/G1_F_EVIDENCE_MANIFEST.json",
+    "sha256": "44536a5fff518ffd2d8860abe1e220ac47f74cb168cbaf58b86d2563f287fee0"
+  },
+  {
+    "task": "G1-F",
+    "filename": "G1_F_GCI_ANALYSIS.md",
+    "path": "qualification-003/engine-upgrade-003/G1-F/G1_F_GCI_ANALYSIS.md",
+    "sha256": "bdbd7aea6429117d3dc129aec85f21f77e0a8fd547efe54418a25d284c0a79d7"
+  },
+  {
+    "task": "G1-F",
+    "filename": "G1_F_INDEPENDENT_CLOSURE_REPORT.md",
+    "path": "qualification-003/engine-upgrade-003/G1-F/G1_F_INDEPENDENT_CLOSURE_REPORT.md",
+    "sha256": "457b0c80b93c7f97bd0af108c1148f0e0be1a7d97d5039fce15fdc3ce4af8752"
+  },
+  {
+    "task": "G1-F",
+    "filename": "G1_F_INDEPENDENT_FINAL_ADJUDICATION.json",
+    "path": "qualification-003/engine-upgrade-003/G1-F/G1_F_INDEPENDENT_FINAL_ADJUDICATION.json",
+    "sha256": "2741179db1665cd3e41516ef04b4b38457275dfb8c9392d146f6e0c2c0a0e403"
+  },
+  {
+    "task": "G1-F",
+    "filename": "G1_F_MASS_CONSERVATION.json",
+    "path": "qualification-003/engine-upgrade-003/G1-F/G1_F_MASS_CONSERVATION.json",
+    "sha256": "4c92d40a8722a043cae4e8c841d80411f5608388b4fb4ff9729142e9a6b596b1"
+  },
+  {
+    "task": "G1-F",
+    "filename": "G1_F_MESH_CONVERGENCE_RESULTS.json",
+    "path": "qualification-003/engine-upgrade-003/G1-F/G1_F_MESH_CONVERGENCE_RESULTS.json",
+    "sha256": "e61bf07d3a8e660f87d0af7b6443209419366f4d327b29c5bf5dcb253d7308f2"
+  },
+  {
+    "task": "G1-F",
+    "filename": "G1_F_MESH_MANIFEST.json",
+    "path": "qualification-003/engine-upgrade-003/G1-F/G1_F_MESH_MANIFEST.json",
+    "sha256": "a96be5b8accc9068625c3493caff202157126078ac2da13bd65a148eaa1d3d0d"
+  },
+  {
+    "task": "G1-F",
+    "filename": "G1_F_PHYSICS_VALIDATION.json",
+    "path": "qualification-003/engine-upgrade-003/G1-F/G1_F_PHYSICS_VALIDATION.json",
+    "sha256": "bd6098295b4bd5f99d13c8f7c0a3fa8a614851374d50e3b4f764e9774919e425"
+  },
+  {
+    "task": "G1-F",
+    "filename": "G1_F_REFERENCE_CASES.json",
+    "path": "qualification-003/engine-upgrade-003/G1-F/G1_F_REFERENCE_CASES.json",
+    "sha256": "e24c52cff0241b8aaf5bb8f9867e5d977a0822776259e44d6c513fc9002cfaae"
+  },
+  {
+    "task": "G1-F",
+    "filename": "G1_F_REFERENCE_METHODS.md",
+    "path": "qualification-003/engine-upgrade-003/G1-F/G1_F_REFERENCE_METHODS.md",
+    "sha256": "ad956514e6abb85375853aeee1dc16bf3ab31df6799dbac61eee6ef491d94565"
+  },
+  {
+    "task": "G1-F",
+    "filename": "G1_F_REGRESSION_RESULTS.json",
+    "path": "qualification-003/engine-upgrade-003/G1-F/G1_F_REGRESSION_RESULTS.json",
+    "sha256": "ed119368b966d3d8077dc7b662625b0c32545e16c16432bc09726cfee3e85edc"
+  },
+  {
+    "task": "G1-F",
+    "filename": "G1_F_REPRODUCIBILITY_AUDIT.json",
+    "path": "qualification-003/engine-upgrade-003/G1-F/G1_F_REPRODUCIBILITY_AUDIT.json",
+    "sha256": "a168c915e37720ffd15875483981d5dcfcc4a8cdc4e81e881dbb94988c750bc7"
+  },
+  {
+    "task": "G1-F",
+    "filename": "G1_F_SOLVER_ACCEPTANCE.json",
+    "path": "qualification-003/engine-upgrade-003/G1-F/G1_F_SOLVER_ACCEPTANCE.json",
+    "sha256": "db6c8566b9dbfe893028e06a5f9b01250222ff7474a55554224e801e9ab4c355"
+  },
+  {
+    "task": "G1-Final",
+    "filename": "G1_FINAL_ADJUDICATION.json",
+    "path": "qualification-003/engine-upgrade-003/G1-Final/G1_FINAL_ADJUDICATION.json",
+    "sha256": "4e952884a0e898b4244664948db046a44bd1fdd041cc606a81c590d2d1b63dca"
+  },
+  {
+    "task": "G1-Final",
+    "filename": "G1_INTEGRATION_SOLUTION.json",
+    "path": "qualification-003/engine-upgrade-003/G1-Final/G1_INTEGRATION_SOLUTION.json",
+    "sha256": "f495f65248bf1978e9ccd41edfec6b87477d3e99f67e7d466d9d156a119c5af9"
+  },
+  {
+    "task": "G1-G",
+    "filename": "G1_G_BASELINE_INTEGRITY_AUDIT.json",
+    "path": "qualification-003/engine-upgrade-003/G1-G/G1_G_BASELINE_INTEGRITY_AUDIT.json",
+    "sha256": "24cef9c2a1007ba48ed3309d454186fea1cf7535579ca41c5503bd54ac27eea7"
+  },
+  {
+    "task": "G1-G",
+    "filename": "G1_G_CORRECTIVE_ACTIONS.json",
+    "path": "qualification-003/engine-upgrade-003/G1-G/G1_G_CORRECTIVE_ACTIONS.json",
+    "sha256": "e5326bf1770ef329aa6a3683ad41ce46f30456ab376a35809c57c680b7c5ce2a"
+  },
+  {
+    "task": "G1-G",
+    "filename": "G1_G_DEFECT_REGISTER.json",
+    "path": "qualification-003/engine-upgrade-003/G1-G/G1_G_DEFECT_REGISTER.json",
+    "sha256": "f13bf2485db220914faf85a700d4ca068420508f8a04db851f082a5d03059794"
+  },
+  {
+    "task": "G1-G",
+    "filename": "G1_G_EVIDENCE_MANIFEST.json",
+    "path": "qualification-003/engine-upgrade-003/G1-G/G1_G_EVIDENCE_MANIFEST.json",
+    "sha256": "d3abfbba984293acf371ad252a2649f58ece09e8291f2398be493cb91ec4379f"
+  },
+  {
+    "task": "G1-G",
+    "filename": "G1_G_FINAL_CLOSURE_REPORT.md",
+    "path": "qualification-003/engine-upgrade-003/G1-G/G1_G_FINAL_CLOSURE_REPORT.md",
+    "sha256": "f00214dbbe51497d1bec806a0a1c3838e9f5aa12a076ebadee380288ab06e2f5"
+  },
+  {
+    "task": "G1-G",
+    "filename": "G1_G_INDEPENDENT_FINAL_ADJUDICATION.json",
+    "path": "qualification-003/engine-upgrade-003/G1-G/G1_G_INDEPENDENT_FINAL_ADJUDICATION.json",
+    "sha256": "1718b1631454b6e2ae8de879b9cbf32333814d73ae2151cf75727d9e62753c20"
+  },
+  {
+    "task": "G1-G",
+    "filename": "G1_G_MASS_CONSERVATION_AUDIT.json",
+    "path": "qualification-003/engine-upgrade-003/G1-G/G1_G_MASS_CONSERVATION_AUDIT.json",
+    "sha256": "c64c6dbfc019de88c75d3036a9d532cce581fe41ab8e7b2e08ce4b94946cc5d0"
+  },
+  {
+    "task": "G1-G",
+    "filename": "G1_G_MESH_CONVERGENCE_GCI_AUDIT.json",
+    "path": "qualification-003/engine-upgrade-003/G1-G/G1_G_MESH_CONVERGENCE_GCI_AUDIT.json",
+    "sha256": "7a55dd22b20069b9e2a5d8eee49fc9214700e8cf4bc4633fe26ea10890002d47"
+  },
+  {
+    "task": "G1-G",
+    "filename": "G1_G_PHYSICS_REFERENCE_AUDIT.json",
+    "path": "qualification-003/engine-upgrade-003/G1-G/G1_G_PHYSICS_REFERENCE_AUDIT.json",
+    "sha256": "4476f41d644af3a1e9b2cccd903b856d3117b2c35fa73ea62e6b9a438e2e3a4f"
+  },
+  {
+    "task": "G1-G",
+    "filename": "G1_G_REGRESSION_AND_EVIDENCE_AUDIT.json",
+    "path": "qualification-003/engine-upgrade-003/G1-G/G1_G_REGRESSION_AND_EVIDENCE_AUDIT.json",
+    "sha256": "52e04ac286046355a8e2a2f4a91613dc9037810fd9cb18bba79eb57cfbf4c042"
+  },
+  {
+    "task": "G1-G",
+    "filename": "G1_G_REPRODUCIBILITY_AUDIT.json",
+    "path": "qualification-003/engine-upgrade-003/G1-G/G1_G_REPRODUCIBILITY_AUDIT.json",
+    "sha256": "acf56a4fdbeadcd97399cecdfb94e827ed0f3b72de0b899f58496eb9be2a6187"
+  },
+  {
+    "task": "G1-G",
+    "filename": "G1_G_SOLVER_ACCEPTANCE_AUDIT.json",
+    "path": "qualification-003/engine-upgrade-003/G1-G/G1_G_SOLVER_ACCEPTANCE_AUDIT.json",
+    "sha256": "d9c55befe7c921bef9c934ca31788c251298c2fbff16f2d055732f5fb9fc041b"
+  },
+  {
+    "task": "G1-H",
+    "filename": "G1_H_RECONCILIATION_REPORT.json",
+    "path": "qualification-003/engine-upgrade-003/G1-H/G1_H_RECONCILIATION_REPORT.json",
+    "sha256": "930e1c5b68ab32b122ffa05d29a1f032970d703df61f70c48b94fd882bad056e"
+  },
+  {
+    "task": "G1-I",
+    "filename": "G1_I_INDEPENDENT_FINAL_ADJUDICATION.json",
+    "path": "qualification-003/engine-upgrade-003/G1-I/G1_I_INDEPENDENT_FINAL_ADJUDICATION.json",
+    "sha256": "6afd7c666375cc03ea133a79485f84f1862e6aeddee57b3282be9966559b581f"
+  },
+  {
+    "task": "G1-I",
+    "filename": "G1_I_MASS_RECONCILIATION.json",
+    "path": "qualification-003/engine-upgrade-003/G1-I/G1_I_MASS_RECONCILIATION.json",
+    "sha256": "83c1dcaa493e93a9fd372c09985f7805a04dedb9b0c284d7aa3aacdc84a1ed26"
+  }
+]

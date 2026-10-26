@@ -1,0 +1,121 @@
+{
+  "taskId": "SECP-ENGINE-UPGRADE-004",
+  "taskName": "CFD Capability Baseline & Gap-Driven Expansion",
+  "timestampUTC": "2026-10-25T07:26:00Z",
+  "classificationRules": {
+    "IMPLEMENTED": "Source code exists, compiles, and provides full or partial mathematical execution.",
+    "TESTED": "Automated regression or unit tests execute without runtime crash or unhandled exceptions.",
+    "INDEPENDENTLY_VERIFIED": "Numerical outputs reconciled against independent recalculation, analytical references, or separate solvers.",
+    "QUALIFIED_WITHIN_SCOPE": "Formally certified through closed gate evidence with explicit, verified boundaries of applicability."
+  },
+  "capabilities": [
+    {
+      "capabilityId": "CAP-01",
+      "name": "3D Incompressible FVM SIMPLE Navier-Stokes Solver",
+      "modulePath": "src/engine/cfd3d/Fvm3DNavierStokesSolver.ts",
+      "category": "SOLVER",
+      "implementationStatus": "IMPLEMENTED",
+      "testedStatus": "TESTED",
+      "independentVerificationStatus": "INDEPENDENTLY_VERIFIED",
+      "qualificationStatus": "QUALIFIED_WITHIN_SCOPE",
+      "isProductionReady": true,
+      "declaredLimitsOfUse": "Incompressible steady-state single-phase flow, Re <= 2e5, structured/block hex FVM mesh, First Order Upwind / Central Difference. Strict mass conservation <= 1.0%."
+    },
+    {
+      "capabilityId": "CAP-02",
+      "name": "Adaptive Industrial CFD Workflow Orchestrator",
+      "modulePath": "src/engine/cfd3d/adaptive/AdaptiveIndustrialCFDEngine.ts",
+      "category": "WORKFLOW_ORCHESTRATOR",
+      "implementationStatus": "IMPLEMENTED",
+      "testedStatus": "TESTED",
+      "independentVerificationStatus": "INDEPENDENTLY_VERIFIED",
+      "qualificationStatus": "QUALIFIED_WITHIN_SCOPE",
+      "isProductionReady": true,
+      "declaredLimitsOfUse": "Orchestrates Pre-Flight Risk Check, Mesh Quality Diagnostics, Boundary Condition Validation, Dynamic Relaxation, Divergence Backtracking Recovery, and Canonical Hashing."
+    },
+    {
+      "capabilityId": "CAP-03",
+      "name": "Standard k-epsilon Turbulence Model",
+      "modulePath": "src/engine/cfd3d/turbulence/models/rans/KEpsilonModel.ts",
+      "category": "TURBULENCE",
+      "implementationStatus": "IMPLEMENTED",
+      "testedStatus": "TESTED",
+      "independentVerificationStatus": "INDEPENDENTLY_VERIFIED",
+      "qualificationStatus": "QUALIFIED_WITHIN_SCOPE",
+      "isProductionReady": true,
+      "declaredLimitsOfUse": "Fully developed channel, pipe, and high-Reynolds free-shear flows with equilibrium boundary layers. Standard wall functions (y+ > 30)."
+    },
+    {
+      "capabilityId": "CAP-04",
+      "name": "Menter SST k-omega Turbulence Model",
+      "modulePath": "src/engine/cfd3d/solvers/rans/SstKomegaModel.ts",
+      "category": "TURBULENCE",
+      "implementationStatus": "IMPLEMENTED",
+      "testedStatus": "TESTED",
+      "independentVerificationStatus": "INDEPENDENTLY_VERIFIED",
+      "qualificationStatus": "QUALIFIED_WITHIN_SCOPE",
+      "isProductionReady": true,
+      "declaredLimitsOfUse": "Aerodynamic flows with adverse pressure gradients and boundary layer separation. Requires resolved near-wall mesh (y+ ~ 1-5) or scalable wall treatment."
+    },
+    {
+      "capabilityId": "CAP-05",
+      "name": "Grid Convergence Index (GCI) Analysis Engine",
+      "modulePath": "src/engine/cfd3d/diagnostics/GciEngine.ts",
+      "category": "DIAGNOSTIC",
+      "implementationStatus": "IMPLEMENTED",
+      "testedStatus": "TESTED",
+      "independentVerificationStatus": "INDEPENDENTLY_VERIFIED",
+      "qualificationStatus": "QUALIFIED_WITHIN_SCOPE",
+      "isProductionReady": true,
+      "declaredLimitsOfUse": "Three geometrically similar grid levels with refinement ratio r >= 1.25. Enforces ASME V&V 20-2009 strict contract for monotonic convergence."
+    },
+    {
+      "capabilityId": "CAP-06",
+      "name": "Global & Local Boundary Mass Balance Auditor",
+      "modulePath": "src/engine/cfd3d/conservation/GlobalMassBalance.ts",
+      "category": "CONSERVATION",
+      "implementationStatus": "IMPLEMENTED",
+      "testedStatus": "TESTED",
+      "independentVerificationStatus": "INDEPENDENTLY_VERIFIED",
+      "qualificationStatus": "QUALIFIED_WITHIN_SCOPE",
+      "isProductionReady": true,
+      "declaredLimitsOfUse": "Evaluates net face-by-face mass flux over all boundary patches with strict 0.0000% discrepancy against post-solution boundary integration."
+    },
+    {
+      "capabilityId": "CAP-07",
+      "name": "Compressible Shock Capturing Engine",
+      "modulePath": "src/engine/cfd3d/CompressibleNavierStokesEngine.ts",
+      "category": "SOLVER",
+      "implementationStatus": "PARTIALLY_IMPLEMENTED",
+      "testedStatus": "TESTED",
+      "independentVerificationStatus": "NOT_VERIFIED",
+      "qualificationStatus": "NON_QUALIFIED",
+      "isProductionReady": false,
+      "declaredLimitsOfUse": "EXPERIMENTAL ONLY. 1D axial algebraic shock sensor. Not integrated with 3D FVM cell-face flux splitting or conservative energy equations. Strictly non-production."
+    },
+    {
+      "capabilityId": "CAP-08",
+      "name": "Smagorinsky-Lilly LES Turbulence Model",
+      "modulePath": "src/engine/cfd3d/turbulence/models/les/SmagorinskyLillyModel.ts",
+      "category": "TURBULENCE",
+      "implementationStatus": "IMPLEMENTED",
+      "testedStatus": "UNTESTED",
+      "independentVerificationStatus": "NOT_VERIFIED",
+      "qualificationStatus": "NON_QUALIFIED",
+      "isProductionReady": false,
+      "declaredLimitsOfUse": "EXPERIMENTAL ONLY. Subgrid-scale model in turbulence registry; pending time-accurate unsteady Navier-Stokes solver qualification."
+    },
+    {
+      "capabilityId": "CAP-09",
+      "name": "Two-Way Fluid-Structure Interaction (FSI) Coupling Engine",
+      "modulePath": "src/engine/cfd3d/coupling/TwoWayFSICouplingEngine.ts",
+      "category": "COUPLING",
+      "implementationStatus": "IMPLEMENTED",
+      "testedStatus": "TESTED",
+      "independentVerificationStatus": "NOT_VERIFIED",
+      "qualificationStatus": "NON_QUALIFIED",
+      "isProductionReady": false,
+      "declaredLimitsOfUse": "EXPERIMENTAL ONLY. Boundary stress interpolation to structural meshes; reserved for upcoming SECP-ENGINE-QUALIFICATION-002 campaign."
+    }
+  ]
+}

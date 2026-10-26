@@ -1,0 +1,35 @@
+{
+  "taskId": "SECP-PROGRAMMABLE-MATERIAL-001",
+  "auditDate": "2026-10-26",
+  "claims": [
+    {
+      "claimId": "CL-001",
+      "claim": "Nonlinear structural response simulation capability",
+      "classification": "INDEPENDENTLY_VERIFIED",
+      "sourceReference": "SECP_FEM_UPGRADE_009_REPORT.md",
+      "evidence": "Success of GEOM-002 (Snap-through) and tangent finite difference verification."
+    },
+    {
+      "claimId": "CL-002",
+      "claim": "Elastoplastic material state tracking",
+      "classification": "INDEPENDENTLY_VERIFIED",
+      "sourceReference": "SECP_FEM_UPGRADE_010_REPORT.md",
+      "evidence": "Success of MAT-003 (Yield transition) and MAT-013 (Algorithmic tangent)."
+    },
+    {
+      "claimId": "CL-003",
+      "claim": "Programmable manufacturing process demonstrated in video",
+      "classification": "UNKNOWN",
+      "sourceReference": "supplied source",
+      "evidence": "MISSING",
+      "limitations": "Source video file not found in workspace."
+    },
+    {
+      "claimId": "CL-004",
+      "claim": "Element-level material assignment support",
+      "classification": "DIRECTLY_OBSERVED",
+      "sourceReference": "src/engine/fem/core/FEMTypes.ts",
+      "evidence": "FEMElement interface includes materialId field."
+    }
+  ]
+}

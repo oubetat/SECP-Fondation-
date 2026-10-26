@@ -1,0 +1,67 @@
+{
+  "module": "src/engine/fem/core",
+  "timestamp": "2026-10-24T10:02:19.604Z",
+  "totalFiles": 15,
+  "files": [
+    {
+      "file": "src/engine/fem/core/Bar1DFormulation.ts",
+      "sha256": "dd8940c46267e6b638a7cb778b545e947b8c5705888f86090c078c13c22618e3"
+    },
+    {
+      "file": "src/engine/fem/core/BoundaryConditionEngine.ts",
+      "sha256": "bb62be77a625ca4ec0a540318701f2f52453344d016b229e9c99a09cca48923e"
+    },
+    {
+      "file": "src/engine/fem/core/CST2DFormulation.ts",
+      "sha256": "e8e37db3b80f1ff80721ea28a33d6fe62f04df56fccf8ad1933ddecbafb8a9ae"
+    },
+    {
+      "file": "src/engine/fem/core/FEMCore.ts",
+      "sha256": "634c0be341eec5a4265a465dc5ecb0db6c51d71d5389255978b0e6b0862e678e"
+    },
+    {
+      "file": "src/engine/fem/core/FEMDOFManager.ts",
+      "sha256": "8c4f1009320dc6e9d23bb8cb12b001579dae0ae5ac5803736000466c0f4ac39c"
+    },
+    {
+      "file": "src/engine/fem/core/FEMElementFormulation.ts",
+      "sha256": "f73c40e3e6d9357e38f46f9fd4b5d7d874bd4d860ece1a556d25cafdbe5c0e3b"
+    },
+    {
+      "file": "src/engine/fem/core/FEMEvidenceEngine.ts",
+      "sha256": "640f79bf25c1164cd2c3e4dac17eb2dcb40a3e30bfcfc02ff8949302d696be77"
+    },
+    {
+      "file": "src/engine/fem/core/FEMTypes.ts",
+      "sha256": "7db48026cbf36d8f56b8570acc972fa83f86b58dd86e4d75e289db186b1b79d1"
+    },
+    {
+      "file": "src/engine/fem/core/FEMVerificationEngine.ts",
+      "sha256": "85da8a309d5e804a7417f109220aa12e9152b632bb5cb8b84866e3f795ab3f77"
+    },
+    {
+      "file": "src/engine/fem/core/FieldRecoveryEngine.ts",
+      "sha256": "480377aa2790d6c5abb4573e4276f800469eab99bf7197c69788095a9932d209"
+    },
+    {
+      "file": "src/engine/fem/core/GlobalAssemblyEngine.ts",
+      "sha256": "c117a55f5fd965c7f1fe29216c14ffa397aa024511d9c1f3978e21363f8575c1"
+    },
+    {
+      "file": "src/engine/fem/core/HardAcceptanceGate076.ts",
+      "sha256": "433f7611b7aeb38228540c6f6befe5fb8375e202e30fd09d9b14892db82ce3d5"
+    },
+    {
+      "file": "src/engine/fem/core/LinearSystemEngine.ts",
+      "sha256": "579a098997861dd63d0658b849b8ab9d3e4bc83a891ecfdd7d86d1df3c28676f"
+    },
+    {
+      "file": "src/engine/fem/core/MathUtils.ts",
+      "sha256": "6224447288386e2699e275d71b861ccd6940ce342170ec5d5b5e496c5e801eb3"
+    },
+    {
+      "file": "src/engine/fem/core/index.ts",
+      "sha256": "1f71e46746e8928af85289846098c566970c8f80335bc5b4944b521b78d48c01"
+    }
+  ]
+}

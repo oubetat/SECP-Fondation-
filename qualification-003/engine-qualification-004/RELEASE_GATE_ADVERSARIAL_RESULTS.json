@@ -1,0 +1,63 @@
+{
+  "task": "SECP-ENGINE-QUALIFICATION-004",
+  "totalAdversarialCases": 8,
+  "passed": 8,
+  "failed": 0,
+  "cases": [
+    {
+      "case": 1,
+      "condition": "Fully Verified Revision (REV-A)",
+      "verdict": "APPROVED",
+      "status": "PASS"
+    },
+    {
+      "case": 2,
+      "condition": "Missing Mandatory Evidence",
+      "verdict": "DENIED",
+      "reason": "MISSING_REQUIRED_EVIDENCE",
+      "status": "PASS"
+    },
+    {
+      "case": 3,
+      "condition": "Failed Verification (Energy Imbalance Violation)",
+      "verdict": "DENIED",
+      "reason": "VERIFICATION_FAILED",
+      "status": "PASS"
+    },
+    {
+      "case": 4,
+      "condition": "Stale Evidence from Earlier Revision",
+      "verdict": "DENIED",
+      "reason": "STALE_EVIDENCE_REJECTED",
+      "status": "PASS"
+    },
+    {
+      "case": 5,
+      "condition": "Tampered Evidence Payload Digest",
+      "verdict": "DENIED",
+      "reason": "PAYLOAD_HASH_MISMATCH",
+      "status": "PASS"
+    },
+    {
+      "case": 6,
+      "condition": "Unresolved Mandatory Requirement",
+      "verdict": "DENIED",
+      "reason": "UNRESOLVED_REQUIREMENT",
+      "status": "PASS"
+    },
+    {
+      "case": 7,
+      "condition": "Non-Convergent Solver / Thermal Runaway",
+      "verdict": "DENIED",
+      "reason": "SOLVER_NON_CONVERGENCE",
+      "status": "PASS"
+    },
+    {
+      "case": 8,
+      "condition": "Missing/Invalid Dependency Result",
+      "verdict": "DENIED",
+      "reason": "DEPENDENCY_RESULT_INVALID",
+      "status": "PASS"
+    }
+  ]
+}

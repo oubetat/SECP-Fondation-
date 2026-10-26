@@ -1,0 +1,17 @@
+{
+  "campaignId": "SECP-FSI-EVIDENCE-PROVENANCE-006",
+  "verdict": "QUALIFIED_WITHIN_DECLARED_SCOPE",
+  "summary": "All provenance checks, source hash bindings, FSI state continuity audits, force/moment resultant recalculations, structural PCG/Dense solver fallback audits, and adversarial assertions have been independently verified with reproducible, source-bound evidence.",
+  "declaredScope": {
+    "qualified": [
+      "1D axial truss/bar elements (BAR_1D)",
+      "2D in-plane membrane quadrilateral elements (QUAD_2D)",
+      "3D FVM Navier-Stokes fluid flow with pressure-velocity coupling",
+      "Two-way partitioned FSI coupling with Aitken under-relaxation and ALE dynamic mesh morphing"
+    ],
+    "unqualified": [
+      "Out-of-plane plate bending (Kirchhoff/Mindlin plates) — DEFECT-STRUCT-001 remains open"
+    ]
+  },
+  "timestamp": "2026-10-23T08:35:23.059Z"
+}

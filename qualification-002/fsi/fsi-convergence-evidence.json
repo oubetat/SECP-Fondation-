@@ -1,4 +1,5 @@
 {
-  "converged": true,
-  "iterations": 2
+  "converged": false,
+  "iterations": 2,
+  "stopReason": "MAX_ITERATIONS_EXCEEDED"
 }

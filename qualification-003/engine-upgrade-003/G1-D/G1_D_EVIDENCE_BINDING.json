@@ -1,0 +1,18 @@
+{
+  "executionStatusMatchesTermination": {
+    "solConvergedStatus": "CONVERGED",
+    "solUnconvergedStatus": "NOT_CONVERGED",
+    "solAbortedStatus": "ABORTED"
+  },
+  "verdictMatchesConvergenceAndConservation": {
+    "solConvergedVerdict": "FAIL",
+    "solUnconvergedVerdict": "FAIL",
+    "solAbortedVerdict": "FAIL"
+  },
+  "iterationCountMatchesExecuted": {
+    "solUnconvergedExecuted": 5,
+    "matched": false
+  },
+  "hashBindingVerified": true,
+  "deterministicReplayCanonicalFieldsMatch": true
+}

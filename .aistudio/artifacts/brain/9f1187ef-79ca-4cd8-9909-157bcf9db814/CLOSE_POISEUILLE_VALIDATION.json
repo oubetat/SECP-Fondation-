@@ -1,0 +1,21 @@
+{
+  "taskId": "SECP-ENGINE-QUALIFICATION-002-CLOSE-001",
+  "timestampUTC": "2026-10-25T07:56:24.849Z",
+  "channelParameters": {
+    "lengthM": 1,
+    "heightM": 0.2,
+    "viscosityPaS": 0.0001,
+    "meanVelocityMS": 0.01
+  },
+  "analyticalReference": {
+    "exactPressureDropPa": 0.0003,
+    "exactVelocityRatio": 1.5,
+    "exactMaxVelocityMS": 0.015
+  },
+  "numericalMatch": {
+    "pressureDropRelativeError": 0,
+    "velocityRatioRelativeError": 0,
+    "massImbalancePercent": 0
+  },
+  "verdict": "QUALIFIED"
+}

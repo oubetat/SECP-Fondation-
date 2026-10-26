@@ -1,0 +1,26 @@
+{
+  "campaignId": "SECP-FSI-EVIDENCE-PROVENANCE-006",
+  "testId": "BENCH-BEAM-001",
+  "solverProvenance": {
+    "primarySolver": "Preconditioned Conjugate Gradient (PCG)",
+    "fallbackTriggered": true,
+    "fallbackPath": "Dense Matrix Solver (LU decomposition via Gaussian elimination)",
+    "reason": "Condition number limit exceeded on fine mesh (40x8 elements / 369 nodes)."
+  },
+  "errorMetrics": {
+    "coarseMeshDeflectionErrorPct": 28.89,
+    "mediumMeshDeflectionErrorPct": 8.97,
+    "fineMeshDeflectionErrorPct": 2.02,
+    "maxRootStressPa": 120000000,
+    "analyticalStressPa": 120000000,
+    "stressErrorPct": 0
+  },
+  "openDefects": [
+    {
+      "defectId": "DEFECT-STRUCT-001",
+      "status": "OPEN_SCOPE_LIMITATION",
+      "description": "Out-of-plane plate bending element formulation not implemented."
+    }
+  ],
+  "status": "VERIFIED"
+}

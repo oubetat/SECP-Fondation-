@@ -1,0 +1,30 @@
+[
+  {
+    "file": "source-manifest-017.json",
+    "sha256": "7cbc1a4c463f11f47a2162ffd0e5484817a3fce30bd7ac91dace6fa15d3875b7"
+  },
+  {
+    "file": "sri-element-audit-017.json",
+    "sha256": "575944f29230ee0b88f1097e2105238e0945fc77ffea6452d2bf82808b2487f3"
+  },
+  {
+    "file": "mesh-convergence-study-017.json",
+    "sha256": "3be80e01ed8780f74ae2ea4a0ed314d52298ed9ccca46ff67aa9799eff171cfe"
+  },
+  {
+    "file": "fsi-coupling-audit-017.json",
+    "sha256": "202cb9349f2f23794dc7d8e4a6395c36d9fdc8bb22d83b773987df0f8612d150"
+  },
+  {
+    "file": "adversarial-results-017.json",
+    "sha256": "34d2f5d4be369f6f8842ae7074ac6150d4a297e2a73fc3436f9a4e467a89c41d"
+  },
+  {
+    "file": "defect-register-017.json",
+    "sha256": "a896f4e3cab81cfd2b1b453015572fe6308995b2d3addc76e7e65cb4fc1defa9"
+  },
+  {
+    "file": "reference-derivation-017.md",
+    "sha256": "7ce9b746a04c27233ef5e237eeaac76ed8a73d58b314f1e7bc7683a517b708f9"
+  }
+]

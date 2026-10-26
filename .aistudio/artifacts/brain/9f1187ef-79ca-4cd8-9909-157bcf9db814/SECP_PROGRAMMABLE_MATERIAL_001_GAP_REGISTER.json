@@ -1,0 +1,36 @@
+{
+  "title": "SECP-PROGRAMMABLE-MATERIAL-001 Gap Register",
+  "subsystem": "Nonlinear Mechanics & Programmable Materials",
+  "auditDate": "2026-10-26T09:30:00Z",
+  "gaps": [
+    {
+      "gapId": "GAP-PM-001",
+      "description": "Multi-Constitutive Global Assembly",
+      "impact": "CRITICAL",
+      "status": "OPEN",
+      "recommendation": "Refactor GlobalAssemblyEngine.assembleNonlinear to resolve material models per-element materialId instead of a single global instance."
+    },
+    {
+      "gapId": "GAP-PM-002",
+      "description": "Spatial Grading Engine",
+      "impact": "MAJOR",
+      "status": "OPEN",
+      "recommendation": "Implement a field-function evaluator to map spatial distributions (e.g. density, stiffness) to element-level properties."
+    },
+    {
+      "gapId": "GAP-PM-003",
+      "description": "Lattice Homogenization Layer",
+      "impact": "MODERATE",
+      "status": "OPEN",
+      "recommendation": "Develop a Periodic Boundary Condition (PBC) solver for RVE simulation of microstructures."
+    },
+    {
+      "gapId": "GAP-PM-004",
+      "description": "Forensic Source Evidence (Video)",
+      "impact": "BLOCKER",
+      "status": "PENDING_SOURCE",
+      "recommendation": "Retrieve the supplied technology demonstration video to identify specific process variables and feedstock."
+    }
+  ],
+  "status": "ACTION_REQUIRED"
+}

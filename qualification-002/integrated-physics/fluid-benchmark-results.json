@@ -1,0 +1,29 @@
+{
+  "testId": "BENCH-FLUID-FSI-001",
+  "mesh": {
+    "type": "3D Hexahedral FVM Box Mesh",
+    "dimensions": {
+      "lx": 1,
+      "ly": 1,
+      "lz": 0.5
+    },
+    "resolution": {
+      "nx": 6,
+      "ny": 6,
+      "nz": 3
+    },
+    "totalCells": 108,
+    "totalFaces": 396
+  },
+  "boundaryConditions": {
+    "inlet": "Prescribed inflow",
+    "outlet": "Atmospheric pressure",
+    "flexibleWall": "Bottom boundary wall interacting with structural beam/plate"
+  },
+  "couplingState": {
+    "converged": true,
+    "iterations": 3,
+    "stopReason": "CONVERGED"
+  },
+  "timestamp": "2026-10-23T07:42:21.519Z"
+}

@@ -1,0 +1,41 @@
+{
+  "gateId": "G1-G-EVIDENCE-MANIFEST",
+  "artifacts": [
+    {
+      "filename": "G1_G_BASELINE_INTEGRITY_AUDIT.json",
+      "sha256": "24cef9c2a1007ba48ed3309d454186fea1cf7535579ca41c5503bd54ac27eea7"
+    },
+    {
+      "filename": "G1_G_CORRECTIVE_ACTIONS.json",
+      "sha256": "e5326bf1770ef329aa6a3683ad41ce46f30456ab376a35809c57c680b7c5ce2a"
+    },
+    {
+      "filename": "G1_G_DEFECT_REGISTER.json",
+      "sha256": "f13bf2485db220914faf85a700d4ca068420508f8a04db851f082a5d03059794"
+    },
+    {
+      "filename": "G1_G_MASS_CONSERVATION_AUDIT.json",
+      "sha256": "c64c6dbfc019de88c75d3036a9d532cce581fe41ab8e7b2e08ce4b94946cc5d0"
+    },
+    {
+      "filename": "G1_G_MESH_CONVERGENCE_GCI_AUDIT.json",
+      "sha256": "7a55dd22b20069b9e2a5d8eee49fc9214700e8cf4bc4633fe26ea10890002d47"
+    },
+    {
+      "filename": "G1_G_PHYSICS_REFERENCE_AUDIT.json",
+      "sha256": "4476f41d644af3a1e9b2cccd903b856d3117b2c35fa73ea62e6b9a438e2e3a4f"
+    },
+    {
+      "filename": "G1_G_REGRESSION_AND_EVIDENCE_AUDIT.json",
+      "sha256": "52e04ac286046355a8e2a2f4a91613dc9037810fd9cb18bba79eb57cfbf4c042"
+    },
+    {
+      "filename": "G1_G_REPRODUCIBILITY_AUDIT.json",
+      "sha256": "acf56a4fdbeadcd97399cecdfb94e827ed0f3b72de0b899f58496eb9be2a6187"
+    },
+    {
+      "filename": "G1_G_SOLVER_ACCEPTANCE_AUDIT.json",
+      "sha256": "d9c55befe7c921bef9c934ca31788c251298c2fbff16f2d055732f5fb9fc041b"
+    }
+  ]
+}

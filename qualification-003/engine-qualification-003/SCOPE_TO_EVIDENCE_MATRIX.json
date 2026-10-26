@@ -1,0 +1,72 @@
+{
+  "task": "SECP-ENGINE-QUALIFICATION-003",
+  "qualifiedDomains": [
+    {
+      "domain": "Electrical Engineering",
+      "solver": "NodalCircuitSolver v2.0",
+      "evidence": "GATE-003-16 PASS"
+    },
+    {
+      "domain": "Thermal Engineering",
+      "solver": "SpatialThermalSolver v2.0",
+      "evidence": "GATE-003-17 PASS"
+    },
+    {
+      "domain": "Structural Mechanics",
+      "solver": "FEMCore v2.1",
+      "evidence": "GATE-003-05 PASS"
+    },
+    {
+      "domain": "CFD Pressure Drop Diagnostic",
+      "solver": "GciEngine v1.0",
+      "evidence": "GATE-003-18 PASS"
+    },
+    {
+      "domain": "Electrothermal Coupling",
+      "solver": "ElectrothermalSolver v2.0",
+      "evidence": "GATE-003-04 PASS"
+    },
+    {
+      "domain": "Thermal-Structural Coupling",
+      "solver": "ThermalStructuralBridge v1.2",
+      "evidence": "GATE-003-05 PASS"
+    },
+    {
+      "domain": "1-Way Interface Load Mapping",
+      "solver": "TwoWayFSICouplingEngine v1.1",
+      "evidence": "GATE-003-06 PASS"
+    },
+    {
+      "domain": "Evidence Ledger & Invalidation",
+      "solver": "EngineeringEvidenceLedger v2.0",
+      "evidence": "GATE-003-08..11 PASS"
+    }
+  ],
+  "quarantinedDomains": [
+    {
+      "domain": "RF / High-Frequency Electromagnetics",
+      "reason": "Full Maxwell 3D vector wave solver non-qualified",
+      "status": "QUARANTINED"
+    },
+    {
+      "domain": "Non-Linear Structural Plasticity & Contact Mechanics",
+      "reason": "Plasticity yield & contact boundary non-qualified",
+      "status": "QUARANTINED"
+    },
+    {
+      "domain": "Supersonic Compressible Shock Dynamics",
+      "reason": "Transonic/supersonic shock capturing non-qualified",
+      "status": "QUARANTINED"
+    },
+    {
+      "domain": "3D Participating Media Thermal Radiation",
+      "reason": "View factors & ray-tracing radiation non-qualified",
+      "status": "QUARANTINED"
+    },
+    {
+      "domain": "Full 2-Way Deformed Fluid Mesh Recomputation FSI",
+      "reason": "Fluid mesh ALE morphing re-solve non-qualified",
+      "status": "QUARANTINED"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "campaign": "SECP-ENGINE-QUALIFICATION-002-FSI-PHYSICS-RECOVERY-001",
+  "classification": "Critical Engineering Remediation",
+  "objective": "Replace synthetic behavior in FSI pipeline with actual physics calculations using existing SECP engines without creating a parallel core or relaxing acceptance criteria.",
+  "status": "COMPLETED",
+  "targetFiles": [
+    "src/engine/cfd3d/solvers/fsi/index.ts",
+    "src/engine/cfd3d/solvers/fsi/FSIRelaxationManager.ts",
+    "src/engine/cfd3d/solvers/fsi/DynamicMeshManager.ts",
+    "src/engine/cfd3d/solvers/fsi/FSIConservationAudit.ts",
+    "src/engine/cfd3d/solvers/fsi/FSIInterfaceMapper.ts",
+    "src/engine/cfd3d/solvers/fsi/HardAcceptanceGate254.ts",
+    "src/engine/cfd3d/solvers/fsi/FSISolver.ts",
+    "src/engine/cfd3d/solvers/fsi/FSIBenchmarkSuite.ts",
+    "src/engine/cfd3d/coupling/TwoWayFSICouplingEngine.ts",
+    "src/engine/structural-physics/StructuralAnalysisEngine.ts"
+  ],
+  "evidenceFiles": [
+    "qualification-002/fsi/fsi-relaxation-test-results.json",
+    "qualification-002/fsi/fsi-dynamic-mesh-test-results.json",
+    "qualification-002/fsi/fsi-structural-integration-evidence.json",
+    "qualification-002/fsi/fsi-interface-conservation-evidence.json",
+    "qualification-002/fsi/fsi-structural-equilibrium-evidence.json",
+    "qualification-002/fsi/fsi-coupling-convergence-evidence.json",
+    "qualification-002/fsi/fsi-sensitivity-evidence.json",
+    "qualification-002/fsi/fsi-adversarial-test-results.json",
+    "qualification-002/fsi/fsi-physics-recovery-gap-register.json",
+    "qualification-002/fsi/fsi-closure-verdict.json"
+  ],
+  "verificationVerdict": "QUALIFIED_WITHIN_DECLARED_SCOPE",
+  "timestamp": "2026-10-23T07:31:00.000Z"
+}

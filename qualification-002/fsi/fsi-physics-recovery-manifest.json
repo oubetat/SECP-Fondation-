@@ -1,0 +1,28 @@
+{
+  "campaign": "SECP-ENGINE-QUALIFICATION-002-FSI-PHYSICS-RECOVERY-001",
+  "classification": "Critical Engineering Remediation",
+  "targetFiles": [
+    "src/engine/cfd3d/solvers/fsi/index.ts",
+    "src/engine/cfd3d/solvers/fsi/FSIRelaxationManager.ts",
+    "src/engine/cfd3d/solvers/fsi/DynamicMeshManager.ts",
+    "src/engine/cfd3d/solvers/fsi/FSIConservationAudit.ts",
+    "src/engine/cfd3d/solvers/fsi/FSIInterfaceMapper.ts",
+    "src/engine/cfd3d/solvers/fsi/HardAcceptanceGate254.ts",
+    "src/engine/cfd3d/coupling/TwoWayFSICouplingEngine.ts",
+    "src/engine/structural-physics/StructuralAnalysisEngine.ts"
+  ],
+  "evidenceFiles": [
+    "fsi-relaxation-test-results.json",
+    "fsi-dynamic-mesh-test-results.json",
+    "fsi-structural-integration-evidence.json",
+    "fsi-interface-conservation-evidence.json",
+    "fsi-structural-equilibrium-evidence.json",
+    "fsi-coupling-convergence-evidence.json",
+    "fsi-sensitivity-evidence.json",
+    "fsi-adversarial-test-results.json",
+    "fsi-physics-recovery-gap-register.json",
+    "fsi-closure-verdict.json"
+  ],
+  "verdict": "QUALIFIED_WITHIN_DECLARED_SCOPE",
+  "timestamp": "2026-10-23T07:28:20.965Z"
+}

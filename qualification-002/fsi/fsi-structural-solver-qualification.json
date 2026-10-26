@@ -1,0 +1,32 @@
+{
+  "testId": "FSI-FEM-001",
+  "description": "Analytical Tensile Rod Solution Verification",
+  "inputs": {
+    "lengthM": 1,
+    "crossSectionAreaM2": 0.001,
+    "youngsModulusPa": 200000000000,
+    "appliedForceN": 10000,
+    "materialId": "MAT-STEEL"
+  },
+  "referenceAnalytical": {
+    "displacementM": 0.00005,
+    "axialStressPa": 10000000,
+    "reactionForceN": -10000
+  },
+  "numericalMeasured": {
+    "displacementM": 0.0000500000097499999,
+    "axialStressPa": 9999999.94999999,
+    "reactionForceN": -9999.99994999998,
+    "equilibriumError": 5.00000205647666e-9
+  },
+  "relativeErrors": {
+    "displacementRelError": 1.94999998001091e-7,
+    "stressRelError": 5.00000100582838e-9,
+    "reactionRelError": 5.00000205647666e-9
+  },
+  "tolerances": {
+    "maxAllowedRelError": 0.001
+  },
+  "verdict": "PASS",
+  "timestamp": "2026-10-23T07:05:55.476Z"
+}

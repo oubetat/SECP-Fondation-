@@ -1,17 +1,20 @@
 [
   {
     "E": 10000000000,
-    "maxDisp": 0.7599375000000002,
-    "converged": true
+    "maxDisp": 0.2112581617174987,
+    "converged": true,
+    "iterations": 3
   },
   {
     "E": 210000000000,
-    "maxDisp": 0.036187500000000004,
-    "converged": true
+    "maxDisp": 0.010060114921101832,
+    "converged": true,
+    "iterations": 3
   },
   {
     "E": 500000000000,
-    "maxDisp": 0.015198750000000004,
-    "converged": true
+    "maxDisp": 0.004225250756852685,
+    "converged": true,
+    "iterations": 3
   }
 ]

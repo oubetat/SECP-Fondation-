@@ -1,0 +1,47 @@
+[
+  {
+    "file": "src/engine/cfd3d/solvers/fsi/DynamicMeshManager.ts",
+    "size": 9592,
+    "sha256": "9a34f0ca6423297e62d137e9678c3baaecfde9269ab1afc5dda34cd3c6193b45"
+  },
+  {
+    "file": "src/engine/cfd3d/coupling/TwoWayFSICouplingEngine.ts",
+    "size": 13759,
+    "sha256": "1a9d4edce31d888dd1ec8e705a09e21af5703ec1bb0d78c83961d30789466435"
+  },
+  {
+    "file": "src/engine/cfd3d/solvers/fsi/FSIBenchmarkSuite.ts",
+    "size": 2147,
+    "sha256": "f7ffacf65f9bb093933977084a8bbc8fe67d851b05add1fb5305f73809a51865"
+  },
+  {
+    "file": "src/engine/cfd3d/solvers/fsi/FSISolver.ts",
+    "size": 3482,
+    "sha256": "46ffe6e577e07e00eca522e4f95a7267886b7c8d615f7b315cd2c500f87aca07"
+  },
+  {
+    "file": "src/engine/structural-physics/StructuralAnalysisEngine.ts",
+    "size": 5324,
+    "sha256": "b944824d5b49c78728792cc5cb5b4838e6116810613915f74637420c785f919d"
+  },
+  {
+    "file": "src/engine/structural-physics/GlobalAssemblyEngine.ts",
+    "size": 5224,
+    "sha256": "a5328e9dfc1afc2fcc20578da11945c294d105db6097735a0e7daab302d40cf6"
+  },
+  {
+    "file": "src/engine/structural-physics/ElementFormulationEngine.ts",
+    "size": 3709,
+    "sha256": "6ccf80744e525a2668b434c313ab9e27999bf4674a08706623178c3c97728ccc"
+  },
+  {
+    "file": "src/engine/structural-physics/StructuralPhysicsTypes.ts",
+    "size": 3284,
+    "sha256": "54b05f47eef7cd1674b506caa42b219b6df8e1a4d5c362936f7dd9b3c80df01d"
+  },
+  {
+    "file": "src/engine/structural-physics/ShapeFunctionIsoparametricEngine.ts",
+    "size": 5287,
+    "sha256": "8bb48729fa179d860018b8ad90de927975c0c9e05a1f5f1c8cb6dd7da043bd47"
+  }
+]

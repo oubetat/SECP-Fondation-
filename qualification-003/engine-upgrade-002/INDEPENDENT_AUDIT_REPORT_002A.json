@@ -1,0 +1,252 @@
+{
+  "campaignId": "SECP-ENGINE-UPGRADE-002-A",
+  "targetAuditCampaign": "SECP-ENGINE-UPGRADE-001",
+  "adjudicationVerdict": "INDEPENDENT_AUDIT_PASS",
+  "timestampUTC": "2026-10-24T07:22:23.792Z",
+  "cryptographicVerification": {
+    "manifestHashMatch": true,
+    "allFilesMatch": true,
+    "totalFilesAudited": 21,
+    "fileAuditResults": [
+      {
+        "path": "src/engine/structural-physics/StructuralAnalysisEngine.ts",
+        "recordedSize": 6725,
+        "actualSize": 6725,
+        "sizeMatches": true,
+        "recordedSha256": "be09494264392ddc3e22739805f47290e765d0261e086ebf3288bf2136d404ba",
+        "actualSha256": "be09494264392ddc3e22739805f47290e765d0261e086ebf3288bf2136d404ba",
+        "hashMatches": true
+      },
+      {
+        "path": "src/engine/structural-physics/GlobalAssemblyEngine.ts",
+        "recordedSize": 5224,
+        "actualSize": 5224,
+        "sizeMatches": true,
+        "recordedSha256": "a5328e9dfc1afc2fcc20578da11945c294d105db6097735a0e7daab302d40cf6",
+        "actualSha256": "a5328e9dfc1afc2fcc20578da11945c294d105db6097735a0e7daab302d40cf6",
+        "hashMatches": true
+      },
+      {
+        "path": "src/engine/structural-physics/ElementFormulationEngine.ts",
+        "recordedSize": 4167,
+        "actualSize": 4167,
+        "sizeMatches": true,
+        "recordedSha256": "750ba47aabe92a2da7f48a7a6b1e287035e539f206820d016e13c6b10f526e9b",
+        "actualSha256": "750ba47aabe92a2da7f48a7a6b1e287035e539f206820d016e13c6b10f526e9b",
+        "hashMatches": true
+      },
+      {
+        "path": "src/engine/structural-physics/StrainAnalysisEngine.ts",
+        "recordedSize": 3085,
+        "actualSize": 3085,
+        "sizeMatches": true,
+        "recordedSha256": "07aebba40a53532edc4b0a2d6b4d079e694f6388b28ef1be3a2df4933767e080",
+        "actualSha256": "07aebba40a53532edc4b0a2d6b4d079e694f6388b28ef1be3a2df4933767e080",
+        "hashMatches": true
+      },
+      {
+        "path": "src/engine/structural-physics/StressRecoveryEngine.ts",
+        "recordedSize": 1124,
+        "actualSize": 1124,
+        "sizeMatches": true,
+        "recordedSha256": "bb44749c3883871a81a34f21d0273dd80f23e950dc52202968de0aff05e778cf",
+        "actualSha256": "bb44749c3883871a81a34f21d0273dd80f23e950dc52202968de0aff05e778cf",
+        "hashMatches": true
+      },
+      {
+        "path": "src/engine/structural-physics/ConstitutiveMatrixEngine.ts",
+        "recordedSize": 2838,
+        "actualSize": 2838,
+        "sizeMatches": true,
+        "recordedSha256": "7aca5f708782e6acdc6a298bac2cb85f33a2660bec077b699a7099d94c18a5c0",
+        "actualSha256": "7aca5f708782e6acdc6a298bac2cb85f33a2660bec077b699a7099d94c18a5c0",
+        "hashMatches": true
+      },
+      {
+        "path": "src/engine/structural-physics/ShapeFunctionIsoparametricEngine.ts",
+        "recordedSize": 5287,
+        "actualSize": 5287,
+        "sizeMatches": true,
+        "recordedSha256": "8bb48729fa179d860018b8ad90de927975c0c9e05a1f5f1c8cb6dd7da043bd47",
+        "actualSha256": "8bb48729fa179d860018b8ad90de927975c0c9e05a1f5f1c8cb6dd7da043bd47",
+        "hashMatches": true
+      },
+      {
+        "path": "src/engine/structural-physics/StructuralPhysicsTypes.ts",
+        "recordedSize": 3284,
+        "actualSize": 3284,
+        "sizeMatches": true,
+        "recordedSha256": "54b05f47eef7cd1674b506caa42b219b6df8e1a4d5c362936f7dd9b3c80df01d",
+        "actualSha256": "54b05f47eef7cd1674b506caa42b219b6df8e1a4d5c362936f7dd9b3c80df01d",
+        "hashMatches": true
+      },
+      {
+        "path": "src/engine/cfd3d/coupling/TwoWayFSICouplingEngine.ts",
+        "recordedSize": 13814,
+        "actualSize": 13814,
+        "sizeMatches": true,
+        "recordedSha256": "05122916ea7743bc6f94f385351b3280e7afa3d99fcd6ba38d218be6d519615b",
+        "actualSha256": "05122916ea7743bc6f94f385351b3280e7afa3d99fcd6ba38d218be6d519615b",
+        "hashMatches": true
+      },
+      {
+        "path": "src/engine/cfd3d/solvers/fsi/DynamicMeshManager.ts",
+        "recordedSize": 9592,
+        "actualSize": 9592,
+        "sizeMatches": true,
+        "recordedSha256": "9a34f0ca6423297e62d137e9678c3baaecfde9269ab1afc5dda34cd3c6193b45",
+        "actualSha256": "9a34f0ca6423297e62d137e9678c3baaecfde9269ab1afc5dda34cd3c6193b45",
+        "hashMatches": true
+      },
+      {
+        "path": "src/engine/cfd3d/solvers/fsi/FSIConservationAudit.ts",
+        "recordedSize": 5824,
+        "actualSize": 5824,
+        "sizeMatches": true,
+        "recordedSha256": "0758004ea3c6e3b4c52323b48cd8f0fd3dffe3d121c834d42632a7a28dd605b5",
+        "actualSha256": "0758004ea3c6e3b4c52323b48cd8f0fd3dffe3d121c834d42632a7a28dd605b5",
+        "hashMatches": true
+      },
+      {
+        "path": "src/engine/cfd3d/solvers/fsi/FSIRelaxationManager.ts",
+        "recordedSize": 7364,
+        "actualSize": 7364,
+        "sizeMatches": true,
+        "recordedSha256": "527140548817f0581477a00b98c9af24bf255007dcaa3e0ab9b7a19be36c3157",
+        "actualSha256": "527140548817f0581477a00b98c9af24bf255007dcaa3e0ab9b7a19be36c3157",
+        "hashMatches": true
+      },
+      {
+        "path": "src/engine/cfd3d/solvers/fsi/FSIInterface.ts",
+        "recordedSize": 6907,
+        "actualSize": 6907,
+        "sizeMatches": true,
+        "recordedSha256": "bce955752fbb1aac2861749b4ca4db9c52c2125710085658faaf760ab7925c77",
+        "actualSha256": "bce955752fbb1aac2861749b4ca4db9c52c2125710085658faaf760ab7925c77",
+        "hashMatches": true
+      },
+      {
+        "path": "src/engine/cfd3d/solvers/fsi/FSIPhysicsModel.ts",
+        "recordedSize": 3686,
+        "actualSize": 3686,
+        "sizeMatches": true,
+        "recordedSha256": "12d715ef64ed112deba41327b46ecb377a797b07d8ac37890c613d285f6be5e7",
+        "actualSha256": "12d715ef64ed112deba41327b46ecb377a797b07d8ac37890c613d285f6be5e7",
+        "hashMatches": true
+      },
+      {
+        "path": "src/engine/cfd3d/solvers/fsi/FSICouplingManager.ts",
+        "recordedSize": 5040,
+        "actualSize": 5040,
+        "sizeMatches": true,
+        "recordedSha256": "6ce89d6191512fa16b57cbdab5adfed84049fe2373220353bb60a74b79632216",
+        "actualSha256": "6ce89d6191512fa16b57cbdab5adfed84049fe2373220353bb60a74b79632216",
+        "hashMatches": true
+      },
+      {
+        "path": "src/engine/cfd3d/solvers/fsi/FSISolver.ts",
+        "recordedSize": 4253,
+        "actualSize": 4253,
+        "sizeMatches": true,
+        "recordedSha256": "8ed3a0504fa5d8db10cedbabd4873b406f96dcd5969ce273f306588432beb357",
+        "actualSha256": "8ed3a0504fa5d8db10cedbabd4873b406f96dcd5969ce273f306588432beb357",
+        "hashMatches": true
+      },
+      {
+        "path": "src/engine/cfd3d/solvers/fsi/FSIBenchmarkSuite.ts",
+        "recordedSize": 4801,
+        "actualSize": 4801,
+        "sizeMatches": true,
+        "recordedSha256": "7ea91fe31ec5471f44c3295635b6ff42a2059848add8e75303b87f28c79db4f1",
+        "actualSha256": "7ea91fe31ec5471f44c3295635b6ff42a2059848add8e75303b87f28c79db4f1",
+        "hashMatches": true
+      },
+      {
+        "path": "src/engine/engineeringCore/NodalCircuitSolver.ts",
+        "recordedSize": 27288,
+        "actualSize": 27288,
+        "sizeMatches": true,
+        "recordedSha256": "cef7812a59ce4c227e46c3f81267f2cd65cfa600711102378831a47267063dd0",
+        "actualSha256": "cef7812a59ce4c227e46c3f81267f2cd65cfa600711102378831a47267063dd0",
+        "hashMatches": true
+      },
+      {
+        "path": "src/engine/engineeringCore/SpatialThermalSolver.ts",
+        "recordedSize": 20424,
+        "actualSize": 20424,
+        "sizeMatches": true,
+        "recordedSha256": "ef09eca6526c2a22ff6d9d84744c3715931e01ea9c5df50ab1e3e357bdaa81d1",
+        "actualSha256": "ef09eca6526c2a22ff6d9d84744c3715931e01ea9c5df50ab1e3e357bdaa81d1",
+        "hashMatches": true
+      },
+      {
+        "path": "src/engine/engineeringCore/ElectrothermalSolver.ts",
+        "recordedSize": 20389,
+        "actualSize": 20389,
+        "sizeMatches": true,
+        "recordedSha256": "a6145e82614cd8f0f3e3404f5cef9f5e2cb5fd9a57a5dc13490f04ca570cef14",
+        "actualSha256": "a6145e82614cd8f0f3e3404f5cef9f5e2cb5fd9a57a5dc13490f04ca570cef14",
+        "hashMatches": true
+      },
+      {
+        "path": "run_secp_engine_upgrade_001.ts",
+        "recordedSize": 35052,
+        "actualSize": 35052,
+        "sizeMatches": true,
+        "recordedSha256": "5883fd005e2d7695f17838c04a1ee2c0d5dbb46903ffc8ec8935b144e43eb229",
+        "actualSha256": "5883fd005e2d7695f17838c04a1ee2c0d5dbb46903ffc8ec8935b144e43eb229",
+        "hashMatches": true
+      }
+    ]
+  },
+  "referenceDerivationAudit": {
+    "delta_EB_mm": 2.1712499999999997,
+    "shear_term_mm": 0.02388375,
+    "warping_correction_mm": 0.00651375,
+    "poisson_root_correction_mm": 0.19541249999999996,
+    "delta_2D_Continuum_mm": 1.9932074999999996,
+    "statedReference_mm": 1.9932075,
+    "discrepancy_mm": 4.440892098500626e-16,
+    "status": "MATHEMATICALLY_EXACT"
+  },
+  "benchmarkStudyAudit": {
+    "fsi001Passed": true,
+    "fsi002Passed": true,
+    "convergenceStudy": [
+      {
+        "stations": 10,
+        "displacementMm": 1.9748976433157108,
+        "errorVsEulerBernoulliPercent": 9.04328643335815,
+        "errorVs2DContinuumPercent": 0.9186126725034309,
+        "converged": true
+      },
+      {
+        "stations": 20,
+        "displacementMm": 1.9798372370655628,
+        "errorVsEulerBernoulliPercent": 8.815786433364964,
+        "errorVs2DContinuumPercent": 0.6707913217483266,
+        "converged": true
+      },
+      {
+        "stations": 40,
+        "displacementMm": 1.9810721355057177,
+        "errorVsEulerBernoulliPercent": 8.758911433242691,
+        "errorVs2DContinuumPercent": 0.6088359839244989,
+        "converged": true
+      },
+      {
+        "stations": 80,
+        "displacementMm": 1.9813808601282503,
+        "errorVsEulerBernoulliPercent": 8.744692682636696,
+        "errorVs2DContinuumPercent": 0.5933471488417175,
+        "converged": true
+      }
+    ]
+  },
+  "physicsConservationAudit": {
+    "electricalPowerBalanced": true,
+    "thermalEnergyConserved": true,
+    "electrothermalEnergyConserved": true,
+    "electrothermalIterations": 11
+  }
+}

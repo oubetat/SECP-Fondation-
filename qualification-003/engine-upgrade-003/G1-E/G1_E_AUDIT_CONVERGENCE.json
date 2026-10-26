@@ -1,0 +1,12 @@
+{
+  "auditArea": "AUDIT C — CONVERGENCE",
+  "status": "PASSED",
+  "convergedRunStatus": "CONVERGED",
+  "convergedRunVerdict": "PASS",
+  "maxIterationsTimeoutStatus": "NOT_CONVERGED",
+  "maxIterationsTimeoutVerdict": "FAIL",
+  "unphysicalStateAbortStatus": "ABORTED",
+  "unphysicalStateAbortVerdict": "FAIL",
+  "forceStabilityAloneCannotCauseConvergence": true,
+  "failClosedForUnphysicalStatesVerified": true
+}

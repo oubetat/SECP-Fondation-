@@ -1,0 +1,50 @@
+{
+  "task": "SECP-ENGINE-QUALIFICATION-004",
+  "executionChain": [
+    {
+      "step": 1,
+      "component": "ChangeManagementEngine / EcoManagementEngine",
+      "action": "Initiate Engineering Change Order (ECO)"
+    },
+    {
+      "step": 2,
+      "component": "RevisionEngine",
+      "action": "Canonical Revision Increment (REV-A -> REV-B)"
+    },
+    {
+      "step": 3,
+      "component": "InvalidationPipelineEngine",
+      "action": "Change Impact Analysis & Dependency Invalidation"
+    },
+    {
+      "step": 4,
+      "component": "CoreExecutionAuthority",
+      "action": "Recompute Affected Solvers (Electrical/Thermal/FEA)"
+    },
+    {
+      "step": 5,
+      "component": "IndependentVerificationEngine",
+      "action": "Run Physical Verification & Acceptance Criteria Checks"
+    },
+    {
+      "step": 6,
+      "component": "EngineeringEvidenceLedger",
+      "action": "Register Merkle Evidence Entry for REV-B"
+    },
+    {
+      "step": 7,
+      "component": "EvidenceIntegrityChecker",
+      "action": "Verify Payload Hash & Merkle Chain Continuity"
+    },
+    {
+      "step": 8,
+      "component": "ApprovalWorkflowEngine",
+      "action": "Check Mandatory Release Gates (8 Adversarial Cases)"
+    },
+    {
+      "step": 9,
+      "component": "HardAcceptanceGate161 / ReleaseGate",
+      "action": "Authorize Release Seal (PASS_WITHIN_DECLARED_SCOPE)"
+    }
+  ]
+}

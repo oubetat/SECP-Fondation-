@@ -1,0 +1,14 @@
+[
+  {
+    "id": "CAP-FSI-001",
+    "name": "Out-of-plane plate bending",
+    "status": "UNSUPPORTED",
+    "reason": "ElementFormulationEngine lacks Kirchhoff-Love or Reissner-Mindlin plate elements. DEFECT-STRUCT-001 remains open."
+  },
+  {
+    "id": "CAP-FSI-002",
+    "name": "Non-matching mesh interface interpolation",
+    "status": "SUPPORTED_PROXIMITY",
+    "reason": "Implemented via nearest-node proximity search in FSIInterfaceMapper."
+  }
+]

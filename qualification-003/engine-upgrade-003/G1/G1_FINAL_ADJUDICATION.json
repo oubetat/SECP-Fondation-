@@ -1,0 +1,10 @@
+{
+  "gateId": "SECP-ENGINE-UPGRADE-003-G1-A",
+  "verdict": "PASS",
+  "timestampUTC": "2026-10-24T07:42:19.584Z",
+  "summary": "PreFlightValidator successfully repaired from hollow stub to full 10-point fail-closed validation engine. Contract compatibility restored with AdaptiveCFDTypes and AdaptiveCFDBenchmarkSuite.",
+  "preFlightFileSha256": "7a2e476ed5b5dffb1840e8c55530106b64ab095d2b69090a1283b36cac28e36f",
+  "adversarialCasesTested": 8,
+  "adversarialCasesRejectedSafely": 8,
+  "solverFailClosedVerified": true
+}

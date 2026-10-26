@@ -1,0 +1,81 @@
+{
+  "testId": "BENCH-BEAM-001",
+  "description": "Slender Cantilever Beam Bending under Transverse End Point Load",
+  "referenceTheory": "Euler-Bernoulli Elastic Beam Theory (Exact Analytical)",
+  "parameters": {
+    "lengthM": 1,
+    "widthM": 0.05,
+    "heightM": 0.1,
+    "tipLoadN": 10000,
+    "youngsModulusPa": 210000000000,
+    "secondMomentOfAreaM4": 0.000004166666666666668
+  },
+  "analyticalValues": {
+    "tipDeflectionM": -0.0038095238095238087,
+    "reactionForceN": 10000,
+    "bendingMomentNm": 10000,
+    "maxNormalStressPa": 119999999.99999997
+  },
+  "numericalConvergenceStudy": [
+    {
+      "refinement": "Coarse (10x2)",
+      "numElements": 20,
+      "numNodes": 33,
+      "computedTipDispM": -0.0027089815811220733,
+      "analyticalTipDispM": -0.0038095238095238087,
+      "relativeErrorPct": 28.889233495545565,
+      "totalAppliedLoadN": {
+        "fx": 0,
+        "fy": -10000,
+        "fz": 0
+      },
+      "totalReactionN": {
+        "fx": -4.685716703534126e-9,
+        "fy": 9999.965325227677,
+        "fz": 0
+      },
+      "equilibriumError": 0.000003467477232334236
+    },
+    {
+      "refinement": "Medium (20x4)",
+      "numElements": 80,
+      "numNodes": 105,
+      "computedTipDispM": -0.0034677498648067414,
+      "analyticalTipDispM": -0.0038095238095238087,
+      "relativeErrorPct": 8.971566048823016,
+      "totalAppliedLoadN": {
+        "fx": 0,
+        "fy": -10000,
+        "fz": 0
+      },
+      "totalReactionN": {
+        "fx": -6.999471224844456e-9,
+        "fy": 9999.860997908327,
+        "fz": 0
+      },
+      "equilibriumError": 0.000013900209167331939
+    },
+    {
+      "refinement": "Fine (40x8)",
+      "numElements": 320,
+      "numNodes": 369,
+      "computedTipDispM": -0.0037325291395252052,
+      "analyticalTipDispM": -0.0038095238095238087,
+      "relativeErrorPct": 2.02111008746334,
+      "totalAppliedLoadN": {
+        "fx": 0,
+        "fy": -10000,
+        "fz": 0
+      },
+      "totalReactionN": {
+        "fx": -1.047010300680995e-7,
+        "fy": 9999.478305994422,
+        "fz": 0
+      },
+      "equilibriumError": 0.00005216940055779664
+    }
+  ],
+  "equilibriumVerified": true,
+  "verdict": "PASS",
+  "timestamp": "2026-10-23T07:42:21.502Z"
+}

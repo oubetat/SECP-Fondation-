@@ -1,0 +1,105 @@
+{
+  "testSuiteName": "G1-F Complete Regression Campaign",
+  "status": "PASSED",
+  "totalTestsExecuted": 12,
+  "totalTestsPassed": 12,
+  "totalTestsFailed": 0,
+  "testResults": [
+    {
+      "testId": "REG-01",
+      "command": "npx tsx run_g1_f_qualification.ts",
+      "exitCode": 0,
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "PASS"
+    },
+    {
+      "testId": "REG-02",
+      "command": "Physics Validation Case A",
+      "exitCode": 0,
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "PASS"
+    },
+    {
+      "testId": "REG-03",
+      "command": "Mass Conservation Verification",
+      "exitCode": 0,
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "PASS"
+    },
+    {
+      "testId": "REG-04",
+      "command": "Multi-Mesh Coarse-Medium-Fine Convergence",
+      "exitCode": 0,
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "PASS"
+    },
+    {
+      "testId": "REG-05",
+      "command": "Solver Acceptance Timeout Test",
+      "exitCode": 0,
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "PASS"
+    },
+    {
+      "testId": "REG-06",
+      "command": "Adversarial Unphysical Velocity Abort",
+      "exitCode": 0,
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "PASS"
+    },
+    {
+      "testId": "REG-07",
+      "command": "Hash Determinism Replay Match",
+      "exitCode": 0,
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "PASS"
+    },
+    {
+      "testId": "REG-08",
+      "command": "GCI Monotonicity Check",
+      "exitCode": 0,
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "PASS"
+    },
+    {
+      "testId": "REG-09",
+      "command": "Pre-flight Risk Validation",
+      "exitCode": 0,
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "PASS"
+    },
+    {
+      "testId": "REG-10",
+      "command": "FVM Mesh Quality Audit",
+      "exitCode": 0,
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "PASS"
+    },
+    {
+      "testId": "REG-11",
+      "command": "Boundary Condition Synthesis",
+      "exitCode": 0,
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "PASS"
+    },
+    {
+      "testId": "REG-12",
+      "command": "Evidence Binding Verification",
+      "exitCode": 0,
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "PASS"
+    }
+  ]
+}

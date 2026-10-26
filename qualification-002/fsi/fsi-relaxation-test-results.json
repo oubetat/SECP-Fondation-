@@ -1,0 +1,49 @@
+{
+  "relaxResults": [
+    {
+      "testId": "FSI-RELAX-001",
+      "description": "Calculates dynamic relaxation factor from actual residuals using Aitken formula",
+      "initialOmega": 0.5,
+      "computedAitkenOmega": 0.7125984251968506,
+      "residualNorm": 0.33911649915626346,
+      "passed": true
+    },
+    {
+      "testId": "FSI-RELAX-002",
+      "description": "Enforces strict upper and lower bounds on relaxation factor",
+      "bounds": [
+        0.1,
+        0.8
+      ],
+      "clampedOmega": 0.5000000005,
+      "passed": true
+    },
+    {
+      "testId": "FSI-RELAX-003",
+      "description": "Rejects NaN / Infinity displacement inputs and sets numerical error state",
+      "observedStopReason": "NON_FINITE_NUMERICAL_ERROR",
+      "passed": true
+    },
+    {
+      "testId": "FSI-RELAX-004",
+      "description": "Detects exploding residual and reports divergence",
+      "observedStopReason": "DIVERGED",
+      "passed": true
+    },
+    {
+      "testId": "FSI-RELAX-005",
+      "description": "Refuses to declare convergence when residual exceeds tolerance, regardless of iteration count",
+      "residualNorm": 0.14142135623730953,
+      "tolerance": 1e-12,
+      "isConverged": false,
+      "passed": true
+    },
+    {
+      "testId": "FSI-RELAX-006",
+      "description": "Guarantees bit-identical deterministic replay for identical inputs",
+      "difference": 0,
+      "passed": true
+    }
+  ],
+  "timestamp": "2026-10-23T07:28:20.877Z"
+}

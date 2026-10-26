@@ -1,0 +1,9 @@
+{
+  "auditArea": "AUDIT D — DETERMINISM",
+  "status": "PASSED",
+  "runAHash": "b1cafbf6cb62eca890cef6c4b2fc7d5e1c40c67c61758b551ff91316b7b961a6",
+  "runBHash": "b1cafbf6cb62eca890cef6c4b2fc7d5e1c40c67c61758b551ff91316b7b961a6",
+  "hashesMatch": true,
+  "volatileMetadataExcludedFromCanonicalHash": true,
+  "volatileMetadataRetainedInEvidence": true
+}

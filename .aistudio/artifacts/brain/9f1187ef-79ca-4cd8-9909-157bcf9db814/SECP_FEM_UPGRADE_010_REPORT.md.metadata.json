@@ -1,0 +1,5 @@
+{
+  "summary":  "Executive report for SECP-FEM-UPGRADE-010: Nonlinear Material Mechanics & Elastoplasticity.\nThis report details the implementation of the J2 (von Mises) elastoplastic constitutive model with isotropic hardening and a radial return algorithm.\nKey highlights include the implementation of a mathematically consistent algorithmic tangent stiffness matrix, transactional material state management, and full integration with the nonlinear equilibrium solver.\nVerification tests confirmed perfect agreement between analytical tangents and numerical finite differences, as well as robust structural convergence under plastic loading.",
+  "updatedAt":  "2026-10-26T09:27:19.815348119Z",
+  "userFacing":  true
+}

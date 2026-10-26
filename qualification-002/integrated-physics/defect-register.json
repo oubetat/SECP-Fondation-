@@ -1,0 +1,36 @@
+{
+  "defects": [
+    {
+      "defectId": "DEFECT-STRUCT-001",
+      "severity": "CAPABILITY_GAP",
+      "component": "ElementFormulationEngine.ts",
+      "description": "Platform currently implements BAR_1D (truss) and QUAD_2D (in-plane membrane) but lacks transverse plate bending formulation (w, theta_x, theta_y degrees of freedom). Out-of-plane plate bending cannot be modeled without a true plate/shell element formulation.",
+      "status": "DOCUMENTED_SCOPE_LIMITATION"
+    },
+    {
+      "defectId": "DEFECT-REMED-001",
+      "severity": "RESOLVED_IN_CODE",
+      "component": "TwoWayFSICouplingEngine.ts",
+      "description": "Artificial stiffness line (stiffness = E * 1e-7) and early loop break (iter > 0) completely removed and replaced by genuine StructuralAnalysisEngine.runFEA and Aitken dynamic relaxation.",
+      "remediationDate": "2026-10-23T07:42:21.566Z",
+      "status": "CLOSED_VERIFIED"
+    },
+    {
+      "defectId": "DEFECT-REMED-002",
+      "severity": "RESOLVED_IN_CODE",
+      "component": "DynamicMeshManager.ts & FSIRelaxationManager.ts",
+      "description": "Empty class stubs replaced with genuine implementations of ALE distance-decay smoothing, cell volume compression check, element inversion detection, atomic rollback, and Aitken dynamic relaxation.",
+      "remediationDate": "2026-10-23T07:42:21.566Z",
+      "status": "CLOSED_VERIFIED"
+    },
+    {
+      "defectId": "DEFECT-REMED-003",
+      "severity": "RESOLVED_IN_CODE",
+      "component": "GlobalAssemblyEngine.ts",
+      "description": "Node indexing fixed from unsafe nodeId-1 assumption to robust mesh.nodes.findIndex(n => n.id === nodeId).",
+      "remediationDate": "2026-10-23T07:42:21.566Z",
+      "status": "CLOSED_VERIFIED"
+    }
+  ],
+  "timestamp": "2026-10-23T07:42:21.566Z"
+}

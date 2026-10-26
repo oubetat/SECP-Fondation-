@@ -1,13 +1,98 @@
-import { FEMModel, DOFComponent } from "./FEMTypes";
+/**
+ * SECP Industrial OS — Engineering Truth OS
+ * FEMCore.ts
+ * 
+ * Authoritative point of entry for the SECP FEM Structural Physics Engine.
+ * Upgraded to support:
+ * 1. Sparse Storage & Assembly via SparseMatrix (CSR/DOK).
+ * 2. Iterative Preconditioned Conjugate Gradient (PCG) solver directly on sparse systems.
+ * 3. Exact Boundary Condition Partitioning (Direct Elimination) to prevent penalty ill-conditioning.
+ * 4. 2D Euler-Bernoulli Beam (BEAM_2D) and 2D Frame (FRAME_2D) element formulations with rotational DOFs (RZ).
+ * 5. Comprehensive numerical failure diagnosis (non-SPD, divergence, singularities).
+ * 6. Complete backward compatibility with existing SECP verification gates and evidence engines.
+ */
+
+import { FEMModel, DOFComponent, StructuralFieldRecovery } from "./FEMTypes";
 import { FEMElementFormulation } from "./FEMElementFormulation";
 import { FEMDOFManager } from "./FEMDOFManager";
-import { GlobalAssemblyEngine } from "./GlobalAssemblyEngine";
-import { BoundaryConditionEngine } from "./BoundaryConditionEngine";
+import { GlobalAssemblyEngine, SparseAssemblyResult } from "./GlobalAssemblyEngine";
+import { BoundaryConditionEngine, PartitionedSystem, PenaltySystem } from "./BoundaryConditionEngine";
 import { LinearSystemEngine } from "./LinearSystemEngine";
 import { FieldRecoveryEngine } from "./FieldRecoveryEngine";
 import { FEMVerificationEngine } from "./FEMVerificationEngine";
 import { Bar1DFormulation } from "./Bar1DFormulation";
 import { CST2DFormulation } from "./CST2DFormulation";
+import { Beam2DFormulation } from "./Beam2DFormulation";
+import { Frame2DFormulation } from "./Frame2DFormulation";
+import { T62DFormulation } from "./T62DFormulation";
+import { Q42DFormulation } from "./Q42DFormulation";
+import { TET43DFormulation } from "./TET43DFormulation";
+import { SparseMatrix } from "./SparseMatrix";
+import { PCGOptions, PCGDiagnostics } from "./SparsePCGSolver";
+import { Matrix } from "./MathUtils";
+import { Truss2DFormulation } from "./Truss2DFormulation";
+import { TET4PlasticFormulation } from "./TET4PlasticFormulation";
+import { NonlinearAnalysisResult, NonlinearEquilibriumSolver, NonlinearSolverOptions } from "./NonlinearEquilibriumSolver";
+
+export interface FEMSolveOptions {
+  /**
+   * Linear solver to use.
+   * - 'SPARSE_PCG': Preconditioned Conjugate Gradient operating directly on CSR SparseMatrix.
+   * - 'DIRECT_DENSE': Legacy LU decomposition with partial pivoting on dense matrix.
+   * - 'DIRECT_PARTITIONED': Direct LU solver on the partitioned K_ff submatrix.
+   * - 'AUTO': Automatically selects based on system dimension (default).
+   */
+  solverType?: 'SPARSE_PCG' | 'DIRECT_DENSE' | 'DIRECT_PARTITIONED' | 'AUTO';
+
+  /**
+   * Boundary condition enforcement method.
+   * - 'DIRECT_ELIMINATION': Exact equation partitioning into free and constrained DOFs (recommended).
+   * - 'PENALTY': Legacy penalty method.
+   */
+  bcMethod?: 'DIRECT_ELIMINATION' | 'PENALTY';
+
+  /**
+   * Options for Sparse PCG solver.
+   */
+  pcgOptions?: PCGOptions;
+
+  /**
+   * Penalty stiffness (only used if bcMethod === 'PENALTY').
+   */
+  customPenalty?: number;
+
+  /**
+   * Equilibrium verification tolerance.
+   */
+  equilibriumTolerance?: number;
+
+  /**
+   * Energy verification tolerance.
+   */
+  energyTolerance?: number;
+}
+
+export interface FEMSolveResult {
+  U: number[];
+  displacements: Map<string, { [key in DOFComponent]?: number }>;
+  reactions: number[];
+  K_global: Matrix;
+  K_sparse: SparseMatrix;
+  F_global: number[];
+  trace: readonly any[];
+  equilibrium: { ok: boolean; sumFx: number; sumFy: number; sumFz: number; residualNorm: number; error?: string };
+  energy: { ok: boolean; strainEnergy: number; externalWork: number; diff: number };
+  solverTypeUsed: 'SPARSE_PCG' | 'DIRECT_DENSE' | 'DIRECT_PARTITIONED';
+  bcMethodUsed: 'DIRECT_ELIMINATION' | 'PENALTY';
+  solverMetrics?: any;
+  sparseMetrics: {
+    totalDOFs: number;
+    nnz: number;
+    sparsityRatio: number;
+  };
+  solverDiagnostics?: PCGDiagnostics;
+  fields: StructuralFieldRecovery;
+}
 
 export class FEMCore {
   private dofManager = new FEMDOFManager();
@@ -21,52 +106,208 @@ export class FEMCore {
   constructor() {
     this.formulations.set("BAR_1D", new Bar1DFormulation());
     this.formulations.set("CST_2D", new CST2DFormulation());
+    this.formulations.set("BEAM_2D", new Beam2DFormulation());
+    this.formulations.set("FRAME_2D", new Frame2DFormulation());
+    this.formulations.set("T6_2D", new T62DFormulation());
+    this.formulations.set("Q4_2D", new Q42DFormulation());
+    this.formulations.set("TET4_3D", new TET43DFormulation());
+    this.formulations.set("TRUSS_2D_NL", new Truss2DFormulation());
+    this.formulations.set("TET4_PLASTIC", new TET4PlasticFormulation());
   }
 
-  solve(model: FEMModel) {
-    // 1. Determine DOFs
-    const requiredDOFs = new Set<DOFComponent>();
-    for (const elem of model.elements.values()) {
-      const form = this.formulations.get(elem.formulationId);
-      if (form) {
-        form.getRequiredDOFs().forEach(d => requiredDOFs.add(d));
-      }
+  public registerFormulation(id: string, formulation: FEMElementFormulation): void {
+    this.formulations.set(id, formulation);
+  }
+
+  public solve(model: FEMModel, options: FEMSolveOptions = {}): FEMSolveResult {
+    // 1. Determine and Build DOFs dynamically per node
+    this.dofManager.buildDOFs(model, this.formulations);
+    const totalDOFs = this.dofManager.getTotalDOFCount();
+
+    if (totalDOFs === 0) {
+      throw new Error(`[EMPTY_MODEL_ERROR] No degrees of freedom registered in model.`);
     }
-    this.dofManager.buildDOFs(model, Array.from(requiredDOFs));
 
-    // 2. Global Assembly
-    const { K: K_global, F: F_global, trace } = this.assemblyEngine.assemble(model, this.dofManager, this.formulations);
+    // 2. Sparse Global Assembly (Zero dense allocation during assembly)
+    const assembly: SparseAssemblyResult = this.assemblyEngine.assembleSparse(
+      model,
+      this.dofManager,
+      this.formulations
+    );
 
-    // 3. Apply Boundary Conditions
-    const { modifiedK, modifiedF } = this.bcEngine.applyConstraints(K_global, F_global, model, this.dofManager);
+    const K_sparse = assembly.K_sparse;
+    const F_global = Array.from(assembly.F);
 
-    // 4. Solve
-    const U = this.solver.solve(modifiedK, modifiedF);
+    // Determine Solver and BC strategy
+    const requestedSolver = options.solverType ?? 'AUTO';
+    const requestedBC = options.bcMethod ?? (requestedSolver === 'DIRECT_DENSE' ? 'PENALTY' : 'DIRECT_ELIMINATION');
 
-    // 5. Recover Fields & Reactions
-    const displacements = this.recoveryEngine.recoverDisplacements(U, model, this.dofManager);
-    const reactions = this.recoveryEngine.computeReactions(K_global, U, F_global, this.dofManager);
+    let effectiveSolver: 'SPARSE_PCG' | 'DIRECT_DENSE' | 'DIRECT_PARTITIONED';
+    if (requestedSolver === 'AUTO') {
+      // For small benchmark models (< 40 DOFs), direct partitioned solve is exact and instant.
+      // For larger meshes, sparse PCG scales linearly in O(nnz).
+      effectiveSolver = totalDOFs > 40 ? 'SPARSE_PCG' : 'DIRECT_PARTITIONED';
+    } else {
+      effectiveSolver = requestedSolver;
+    }
 
-    // 6. Verify Equilibrium & Energy
-    const eqStatus = this.verificationEngine.verifyEquilibrium(F_global, reactions, this.dofManager);
-    if (!eqStatus.ok) throw new Error(eqStatus.error);
+    let U_vec: Float64Array | number[];
+    let pcgDiag: PCGDiagnostics | undefined;
 
-    const enStatus = this.verificationEngine.verifyEnergy(K_global, U, F_global, reactions);
-    // Depending on tolerance, it might fail. Let's record it.
+    // 3. Execution branch based on BC method and solver
+    if (requestedBC === 'DIRECT_ELIMINATION') {
+      // Direct Elimination / Equation Partitioning
+      const partition: PartitionedSystem = this.bcEngine.partitionSystem(
+        K_sparse,
+        assembly.F,
+        model,
+        this.dofManager
+      );
+
+      if (partition.freeDOFs.length === 0) {
+        // Fully prescribed system - all displacements are known exactly from boundary conditions
+        U_vec = this.bcEngine.reconstructFullDisplacement(new Float64Array(0), partition);
+      } else if (effectiveSolver === 'SPARSE_PCG') {
+        const pcgResult = this.solver.solveSparsePCG(
+          partition.K_ff,
+          partition.F_f_effective,
+          options.pcgOptions
+        );
+        pcgDiag = pcgResult.diagnostics;
+        U_vec = this.bcEngine.reconstructFullDisplacement(pcgResult.x, partition);
+      } else {
+        // Direct partitioned solve
+        const u_f = this.solver.solveDirectSparse(partition.K_ff, partition.F_f_effective);
+        U_vec = this.bcEngine.reconstructFullDisplacement(u_f, partition);
+        effectiveSolver = 'DIRECT_PARTITIONED';
+      }
+    } else {
+      // Legacy Penalty Method
+      const K_dense = K_sparse.toDense();
+      const penaltySys: PenaltySystem = this.bcEngine.applyConstraints(
+        K_dense,
+        F_global,
+        model,
+        this.dofManager,
+        options.customPenalty
+      );
+
+      const u_dense = this.solver.solve(penaltySys.modifiedK, penaltySys.modifiedF);
+      U_vec = u_dense;
+      effectiveSolver = 'DIRECT_DENSE';
+    }
+
+    const U = Array.from(U_vec);
+
+    // 4. Recover Displacements, Reactions, and Stress/Strain Fields
+    const displacements = this.recoveryEngine.recoverDisplacements(U_vec, model, this.dofManager);
+    const reactionsFloat = this.recoveryEngine.computeReactions(K_sparse, U_vec, assembly.F, this.dofManager);
+    const reactions = Array.from(reactionsFloat);
+
+    // 4b. Recover Stress & Strain Tensors across all elements and nodes
+    const fields = this.recoveryEngine.recoverFullStructuralFields(
+      U_vec,
+      model,
+      this.dofManager,
+      this.formulations
+    );
+
+    // 5. Verification: Equilibrium & Energy Conservation
+    const eqTol = options.equilibriumTolerance ?? 1e-4;
+    const enTol = options.energyTolerance ?? 1e-4;
+
+    const eqStatus = this.verificationEngine.verifyEquilibrium(assembly.F, reactionsFloat, this.dofManager, eqTol);
+    if (!eqStatus.ok) {
+      throw new Error(`[EQUILIBRIUM_VERIFICATION_FAILURE] ${eqStatus.error}`);
+    }
+
+    const enStatus = this.verificationEngine.verifyEnergy(K_sparse, U_vec, assembly.F, reactionsFloat, enTol);
+
+    // Compute sparse metrics
+    const nnz = K_sparse.getNNZ();
+    const totalPossible = totalDOFs * totalDOFs;
+    const sparsityRatio = totalPossible > 0 ? 1.0 - (nnz / totalPossible) : 0;
 
     return {
       U,
       displacements,
       reactions,
-      K_global,
+      K_global: K_sparse.toDense(), // Provided for full backward compatibility with legacy gate inspectors
+      K_sparse,
       F_global,
-      trace,
+      trace: assembly.trace,
       equilibrium: eqStatus,
-      energy: enStatus
+      energy: enStatus,
+      solverTypeUsed: effectiveSolver,
+      bcMethodUsed: requestedBC,
+      sparseMetrics: {
+        totalDOFs,
+        nnz,
+        sparsityRatio
+      },
+      solverDiagnostics: pcgDiag,
+      fields
     };
   }
 
-  getDOFManager() {
+  public async solveNonlinear(model: FEMModel, options: NonlinearSolverOptions = {}): Promise<NonlinearAnalysisResult & { fields: StructuralFieldRecovery, reactions: number[], equilibrium: any }> {
+    this.dofManager.buildDOFs(model, this.formulations);
+    const solver = new NonlinearEquilibriumSolver();
+    const result = await solver.solve(model, this.dofManager, this.formulations, options);
+
+    // 1. Recover fields for the final converged state
+    const fields = this.recoveryEngine.recoverFullStructuralFields(
+      result.U,
+      model,
+      this.dofManager,
+      this.formulations
+    );
+
+    // Add plastic fields to the recovery if state manager exists
+    // (This is a simplified extension of FieldRecoveryEngine logic)
+    for (const [elemId, states] of result.stateManager["committedState"].elementStates.entries()) {
+      const field = fields.elementFields.get(elemId);
+      if (field) {
+        // @ts-ignore
+        field.equivalentPlasticStrain = states[0].equivalentPlasticStrain;
+        // @ts-ignore
+        field.plasticStrain = states[0].plasticStrain;
+      }
+    }
+
+    // 2. Recover Reactions from internal forces: R = Fint - Fext
+    const totalDOFs = this.dofManager.getTotalDOFCount();
+    const F_total = new Float64Array(totalDOFs);
+    for (const load of model.loads) {
+      const dof = this.dofManager.getDOF(load.nodeId, load.dof);
+      if (dof) F_total[dof.globalId] += load.value;
+    }
+
+    const reactions = new Float64Array(totalDOFs);
+    for (let i = 0; i < totalDOFs; i++) {
+      reactions[i] = result.Fint[i] - F_total[i];
+    }
+
+    // 3. Verify Equilibrium
+    const eqStatus = this.verificationEngine.verifyEquilibrium(F_total, reactions, this.dofManager);
+
+    return {
+      ...result,
+      fields,
+      reactions: Array.from(reactions),
+      equilibrium: eqStatus
+    };
+  }
+
+  public getDOFManager(): FEMDOFManager {
     return this.dofManager;
+  }
+
+  public getBoundaryConditionEngine(): BoundaryConditionEngine {
+    return this.bcEngine;
+  }
+
+  public getAssemblyEngine(): GlobalAssemblyEngine {
+    return this.assemblyEngine;
   }
 }

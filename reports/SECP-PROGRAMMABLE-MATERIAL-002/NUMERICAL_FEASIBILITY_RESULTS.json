@@ -1,0 +1,33 @@
+{
+  "taskId": "SECP-PROGRAMMABLE-MATERIAL-002",
+  "benchmark": {
+    "title": "1D Tensile Bar with Elastic Gradient",
+    "geometry": { "L": 100.0, "A": 1.0 },
+    "load": { "F": 1000.0 }
+  },
+  "results": [
+    {
+      "caseId": "CASE-001-HOMOGENEOUS",
+      "material": { "E": 100000.0 },
+      "analyticalTipDisp": 1.0,
+      "secpActualTipDisp": 1.0,
+      "discrepancy": 0.0,
+      "status": "PASS",
+      "evidence": "Reproduced via SECP Linear Solver (VERIFIED_CAPABILITY)"
+    },
+    {
+      "caseId": "CASE-002-GRADIENT",
+      "material": { "E_function": "100000 + 1000*x" },
+      "analyticalTipDisp": 0.693147,
+      "secpActualTipDisp": 1.0,
+      "discrepancy": 0.306853,
+      "status": "FAIL",
+      "failureMode": "ARCHITECTURE_IGNORES_SPATIAL_FIELD",
+      "diagnostic": "GlobalAssemblyEngine assembled all elements using the base material modulus (100,000) because no coordinate-based property override exists in the assembly loop."
+    }
+  ],
+  "adversarialChecks": {
+    "staleRevision": "DETECTED - MaterialStateManager lacks revision binding for spatial fields.",
+    "outOfRange": "UNHANDLED - No validation logic for spatially varying property bounds."
+  }
+}

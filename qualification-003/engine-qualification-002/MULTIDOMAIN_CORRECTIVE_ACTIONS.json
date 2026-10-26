@@ -1,0 +1,33 @@
+{
+  "taskId": "SECP-ENGINE-QUALIFICATION-002",
+  "timestampUTC": "2026-10-25T07:43:11.661Z",
+  "actions": [
+    {
+      "actionId": "CAP-01",
+      "title": "Strict Monotonicity Gate Enforcement in Multi-Mesh CFD Audits",
+      "description": "Require R = eps21 / eps32 to be strictly in (0, 1) before declaring monotonic mesh convergence. Correctly classify R < 0 as oscillatory convergence.",
+      "filesAffected": [
+        "qualification-003/engine-qualification-002/run_multidomain_qualification_002.ts"
+      ],
+      "verificationMethod": "Test TEST-CFD-01 executes GciEngine scalar contract and asserts oscillatory detection."
+    },
+    {
+      "actionId": "CAP-02",
+      "title": "Analytical Benchmark Binding for CFD Poiseuille Flow",
+      "description": "Bind CFD validation to analytical Navier-Stokes formulas (dp = 12*mu*L*u/H^2) in addition to mass conservation.",
+      "filesAffected": [
+        "qualification-003/engine-qualification-002/run_multidomain_qualification_002.ts"
+      ],
+      "verificationMethod": "Test TEST-CFD-02 checks exact analytical pressure gradient and velocity ratio."
+    },
+    {
+      "actionId": "CAP-03",
+      "title": "Cryptographic Determinism and Canonical State Invalidation Protocol",
+      "description": "Enforce that all multidomain co-simulations generate SHA-256 state hashes that automatically invalidate upon model mutation.",
+      "filesAffected": [
+        "src/engine/engineeringCore/ElectrothermalSolver.ts"
+      ],
+      "verificationMethod": "Tests TEST-COUPLE-04 and TEST-DETERMINISM-01 verify hash invalidation and determinism."
+    }
+  ]
+}

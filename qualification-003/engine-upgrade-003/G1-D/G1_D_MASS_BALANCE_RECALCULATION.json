@@ -1,0 +1,20 @@
+{
+  "units": "kg/s",
+  "signConvention": "Inward flux positive for inlet, outward flux positive for outlet",
+  "rawBoundaryBalance": {
+    "inletMassFlowKgS": 0.049000000000000016,
+    "outletMassFlowKgS": 0.04885739923570018,
+    "absoluteImbalanceKgS": 0.00014260076429983837,
+    "relativeImbalancePercent": 1.059587537677971
+  },
+  "independentManualRecalculation": {
+    "inletFluxKgS": 0.049000000000000016,
+    "outletFluxKgS": 0.04885739923570018,
+    "absoluteImbalanceKgS": 0.00014260076429983837,
+    "relativeImbalancePercent": 0.2910219679588537
+  },
+  "reportedValueMatchesRawData": false,
+  "predeclaredThresholdPercent": 1,
+  "thresholdJustification": "Standard industrial CFD conservation limit for subsonic incompressible channel flows (< 1.0% mass imbalance)",
+  "thresholdSatisfied": false
+}

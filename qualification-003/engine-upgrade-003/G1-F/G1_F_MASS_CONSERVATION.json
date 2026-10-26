@@ -1,0 +1,9 @@
+{
+  "testName": "Independent Mass Conservation Boundary Flux Verification",
+  "status": "PASSED",
+  "inletMassFlowKgS": 0.04900000000000001,
+  "outletMassFlowKgS": 0.048982889060857654,
+  "massImbalancePercent": 0.03492028396398958,
+  "acceptanceThresholdPercent": 1,
+  "thresholdSatisfied": true
+}

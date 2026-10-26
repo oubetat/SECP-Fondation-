@@ -1,0 +1,10 @@
+{
+  "appliedVerticalForceN": -10132.500000000002,
+  "reactionVerticalForceN": 10132.500000006474,
+  "verticalForceBalanceErrorPercent": 6.387332146870127e-11,
+  "analyticalRootMomentNm": 5066.25,
+  "reactionCouplingMomentNm": 5066.250000004522,
+  "momentBalanceErrorPercent": 8.925749138346902e-11,
+  "equilibriumErrorNorm": 7.021226756891464e-13,
+  "status": "PASS"
+}

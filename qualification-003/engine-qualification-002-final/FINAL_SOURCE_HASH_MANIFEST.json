@@ -1,0 +1,39 @@
+{
+  "taskId": "SECP-ENGINE-QUALIFICATION-002-CLOSE-002",
+  "timestampUTC": "2026-10-25T08:02:05.213Z",
+  "totalEngineFiles": 8,
+  "fileManifest": [
+    {
+      "file": "src/engine/engineeringCore/NodalCircuitSolver.ts",
+      "sha256": "cef7812a59ce4c227e46c3f81267f2cd65cfa600711102378831a47267063dd0"
+    },
+    {
+      "file": "src/engine/engineeringCore/SpatialThermalSolver.ts",
+      "sha256": "ef09eca6526c2a22ff6d9d84744c3715931e01ea9c5df50ab1e3e357bdaa81d1"
+    },
+    {
+      "file": "src/engine/fem/core/FEMCore.ts",
+      "sha256": "634c0be341eec5a4265a465dc5ecb0db6c51d71d5389255978b0e6b0862e678e"
+    },
+    {
+      "file": "src/engine/fem/core/Bar1DFormulation.ts",
+      "sha256": "dd8940c46267e6b638a7cb778b545e947b8c5705888f86090c078c13c22618e3"
+    },
+    {
+      "file": "src/engine/engineeringCore/ElectrothermalSolver.ts",
+      "sha256": "a6145e82614cd8f0f3e3404f5cef9f5e2cb5fd9a57a5dc13490f04ca570cef14"
+    },
+    {
+      "file": "src/engine/cfd3d/adaptive/AdaptiveIndustrialCFDEngine.ts",
+      "sha256": "27f58f8fa8d6849df24de0b078447b7f0e0d33fe127c0a210fa38d6dd13a5651"
+    },
+    {
+      "file": "src/engine/cfd3d/coupling/TwoWayFSICouplingEngine.ts",
+      "sha256": "05122916ea7743bc6f94f385351b3280e7afa3d99fcd6ba38d218be6d519615b"
+    },
+    {
+      "file": "src/engine/evidence/ledger/EngineeringEvidenceLedger.ts",
+      "sha256": "43ea18ae555096451b6cb0ff75c246a65a1eb5fa522f5663d20011d09d63b030"
+    }
+  ]
+}

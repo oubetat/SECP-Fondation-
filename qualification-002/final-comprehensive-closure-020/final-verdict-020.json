@@ -1,0 +1,63 @@
+{
+  "missionId": "SECP-FSI-QUALIFICATION-020",
+  "qualificationArtifactDirectory": "qualification-002/final-comprehensive-closure-020/",
+  "verdict": "PASS_WITHIN_DECLARED_SCOPE",
+  "qualificationTimestampUTC": "2026-10-23T18:28:24.615Z",
+  "executionDurationMs": 427,
+  "processExitCode": 0,
+  "commandLine": "npx tsx run_secp_qualification_020.ts",
+  "declaredScopeAndValidityLimits": {
+    "applicableDomain": "2D Planar Thin-Beam Structural FSI Bending (L/h >= 10)",
+    "materialModel": "Isotropic Linear Elasticity",
+    "elementFormulation": "QUAD_2D Selective Reduced Integration (SRI: 2x2 Normal, 1x1 Shear)",
+    "couplingScheme": "Partitioned Gauss-Seidel Two-Way FSI with Aitken Dynamic Under-Relaxation & ALE Morphing",
+    "outOfScopeCapabilities": [
+      "Out-of-Plane 3D Shell Bending (UNSUPPORTED)",
+      "Large-Deformation Geometric Non-Linearity (UNSUPPORTED)",
+      "Hyperelastic / Non-Linear Constitutive Laws (UNSUPPORTED)"
+    ]
+  },
+  "summary": {
+    "eulerBernoulliReferenceMm": 2.1712499999999997,
+    "net2DClampedContinuumReferenceMm": 1.9932074999999996,
+    "fineMeshNumericalDeflectionMm": 1.9813808601282503,
+    "relativeErrorVsEulerBernoulliPercent": 8.744692682636696,
+    "relativeErrorVs2DClampedContinuumPercent": 0.5933471488417175,
+    "rootMomentEquilibriumErrorPercent": 5.944096534992041e-10,
+    "verticalForceEquilibriumErrorPercent": 3.37623821490125e-10,
+    "evidenceIntegrityVerified": true,
+    "sourceManifestVerified": true,
+    "noOpenDefects": true
+  },
+  "phaseAuditChecklist": [
+    {
+      "phase": "PHASE 1 — Execution Record Verification",
+      "status": "PASS"
+    },
+    {
+      "phase": "PHASE 2 — Artifact Completeness & Manifest Verification",
+      "status": "PASS"
+    },
+    {
+      "phase": "PHASE 3 — Numerical Reconciliation Verification",
+      "status": "PASS"
+    },
+    {
+      "phase": "PHASE 4 — Reference Derivation Validity Verification",
+      "status": "PASS"
+    },
+    {
+      "phase": "PHASE 5 — Test Assertion & Fault Injection Verification",
+      "status": "PASS"
+    },
+    {
+      "phase": "PHASE 6 — Production Scope Boundary Verification",
+      "status": "PASS"
+    },
+    {
+      "phase": "PHASE 7 — Final Adjudication & Evidence Sealing",
+      "status": "PASS"
+    }
+  ],
+  "sourceManifestHash": "2e84b5e5a6e8aa415f9be2123d5b470abc13d590d6147f0e88287e0263ea9e6a"
+}

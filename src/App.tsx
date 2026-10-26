@@ -184,6 +184,7 @@ import { IndustrialDroneAssemblyTreePanel } from './components/IndustrialDroneAs
 import { PcbWorkbenchPanel } from './components/PcbWorkbenchPanel';
 import { ElectricalWorkbenchPanel } from './components/ElectricalWorkbenchPanel';
 import { SensorIntegrationPanel } from './components/SensorIntegrationPanel';
+import { InteractiveEngineeringWorkbench } from './components/InteractiveEngineeringWorkbench';
 
 // 14. Hardware Acceleration & Compute
 import { WebGPUWorkbenchPanel } from './components/WebGPUWorkbenchPanel';
@@ -568,6 +569,7 @@ export default function App() {
       shortLabel: '⚡ ECAD & PCB',
       icon: Zap,
       workbenches: [
+        { id: 'interactive_multidomain', name: 'SECP Multi-Domain Co-Simulation Workstation', icon: Cpu, description: 'Live interactive Picard electrothermal, thermal-structural FEA, CFD 1-way FSI & SECP-003 qualification center', badge: 'Interactive Co-Sim', component: <InteractiveEngineeringWorkbench /> },
         { id: 'pcb_workbench', name: 'ECAD PCB 3D Geometric Layout', icon: Cpu, description: 'Import IPC-2581/ODB++, 3D trace geometry, component clearances & keepouts', component: <PcbWorkbenchPanel /> },
         { id: 'electrical_workbench', name: 'Electrical Schematic & Harness Design', icon: Zap, description: 'Wiring harness routing, connector pinouts & circuit simulation', component: <ElectricalWorkbenchPanel /> },
         { id: 'sensor_integration', name: 'Sensor Integration & Signal Processing', icon: Radio, description: 'Strain gauges, thermocouples, accelerometers & DAQ calibration', component: <SensorIntegrationPanel /> }

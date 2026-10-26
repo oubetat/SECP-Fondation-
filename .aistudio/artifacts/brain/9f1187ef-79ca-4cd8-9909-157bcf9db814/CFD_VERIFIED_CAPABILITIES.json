@@ -1,0 +1,56 @@
+{
+  "taskId": "SECP-ENGINE-UPGRADE-004",
+  "documentTitle": "CFD Verified Capabilities Matrix",
+  "timestampUTC": "2026-10-25T07:28:00Z",
+  "verifiedCapabilities": [
+    {
+      "capability": "Global Boundary Mass Conservation",
+      "metric": "Boundary Mass Flow Imbalance (%)",
+      "acceptanceThreshold": "<= 1.0%",
+      "verifiedResult": "0.0349% to 0.2910% across coarse/medium/fine grids",
+      "discrepancyProdVsManual": "0.00000000% error",
+      "evidenceReference": "G1_E_MASS_CONSERVATION_VERIFICATION.json & G1_G_MASS_CONSERVATION_AUDIT.json",
+      "verdict": "VERIFIED_QUALIFIED"
+    },
+    {
+      "capability": "Solver Termination & Fail-Closed Gate Semantics",
+      "metric": "Status vs Verdict Mapping",
+      "acceptanceThreshold": "CONVERGED strictly required for PASS; MAX_ITERATIONS_REACHED -> NOT_CONVERGED / FAIL; Unphysical -> ABORTED / FAIL",
+      "verifiedResult": "solTimeout -> NOT_CONVERGED / FAIL; solAborted -> ABORTED / FAIL; solConverged -> CONVERGED / PASS",
+      "evidenceReference": "G1_E_CONVERGENCE_VERIFICATION.json & G1_G_SOLVER_ACCEPTANCE_AUDIT.json",
+      "verdict": "VERIFIED_QUALIFIED"
+    },
+    {
+      "capability": "Cryptographic State Determinism Replay",
+      "metric": "Canonical SHA-256 State Hash Match",
+      "acceptanceThreshold": "100% identical hash on deterministic replays",
+      "verifiedResult": "RunA and RunB produced identical hash 397724ce590d67a10b861ae98c938a1cd1bdc140e045aa8194c2dac9a897e443",
+      "evidenceReference": "G1_E_DETERMINISM_VERIFICATION.json & G1_G_REPRODUCIBILITY_AUDIT.json",
+      "verdict": "VERIFIED_QUALIFIED"
+    },
+    {
+      "capability": "Divergence Recovery & Full State Backtracking",
+      "metric": "Restoration of complete solver fields (u, v, w, p, k, omega, nut, eps, dt)",
+      "acceptanceThreshold": "Exact field-by-field restoration; fail-closed abort if missing checkpoint",
+      "verifiedResult": "All 9 field arrays verified restored; empty checkpoint trigger caused immediate safe fail-closed abort",
+      "evidenceReference": "G1_E_RECOVERY_VERIFICATION.json",
+      "verdict": "VERIFIED_QUALIFIED"
+    },
+    {
+      "capability": "Multi-Mesh Grid Convergence (Coarse, Medium, Fine)",
+      "metric": "Monotonicity & Asymptotic Grid Convergence",
+      "acceptanceThreshold": "Monotonic convergence 0 < R < 1.0 for converged grid series",
+      "verifiedResult": "Monotonic pressure drop and mass balance convergence verified on 32, 108, and 256 cell grids",
+      "evidenceReference": "G1_G_MESH_CONVERGENCE_GCI_AUDIT.json",
+      "verdict": "VERIFIED_QUALIFIED"
+    },
+    {
+      "capability": "Darcy-Weisbach Internal Duct Pressure Drop",
+      "metric": "Analytical correlation vs Discrete FVM",
+      "acceptanceThreshold": "Physical agreement within declared duct friction factor regime",
+      "verifiedResult": "Pressure drop and velocity profile physically aligned with analytical reference",
+      "evidenceReference": "G1_F_PHYSICS_VALIDATION.json & G1_G_PHYSICS_REFERENCE_AUDIT.json",
+      "verdict": "VERIFIED_QUALIFIED"
+    }
+  ]
+}

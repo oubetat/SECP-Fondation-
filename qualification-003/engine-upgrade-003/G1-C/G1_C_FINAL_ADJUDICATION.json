@@ -1,0 +1,12 @@
+{
+  "gateId": "SECP-ENGINE-UPGRADE-003-G1-C",
+  "verdict": "PASS_WITHIN_DECLARED_SCOPE",
+  "timestampUTC": "2026-10-24T08:05:39.198Z",
+  "summary": "G1-C Numerical Integrity & Evidence Adjudication complete. Unconverged and aborted simulations strictly yield FAIL verdicts, hardcoded iteration telemetry has been removed, and pressure gradient coupling has been restored.",
+  "testSummary": {
+    "acceptanceTestsPassed": 4,
+    "acceptanceTestsTotal": 4,
+    "adversarialTestsPassed": 1,
+    "adversarialTestsTotal": 1
+  }
+}

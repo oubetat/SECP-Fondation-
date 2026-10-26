@@ -1,0 +1,77 @@
+{
+  "taskId": "SECP-ENGINE-UPGRADE-004",
+  "documentTitle": "CFD Gap Register",
+  "timestampUTC": "2026-10-25T07:29:00Z",
+  "auditFocusAreas": [
+    "1. Grid Independence & GCI Reliability",
+    "2. Turbulence Model Validity & Dispatch",
+    "3. Boundary Condition Spectrum & Physical Consistency",
+    "4. Mass & Momentum Conservation Enforcement",
+    "5. Numerical Robustness & Adversarial Safety",
+    "6. Analytical & Benchmark Reference Coverage"
+  ],
+  "gaps": [
+    {
+      "gapId": "GAP-01",
+      "focusArea": "1. Grid Independence & GCI Reliability",
+      "title": "GCI Engine Scalar Metric Hardcoded to CL (Aerodynamic Lift)",
+      "description": "GciEngine.evaluateStrictContract is currently hardcoded to CL. For internal channel flow, symmetric bodies, or bluff shapes where CL is nominally 0.0, evaluating (f1 - f2) / max(|f1|, 1e-12) causes numerical degradation or artificial relative uncertainty explosions. GCI must accept generalized engineering scalars (total pressure drop deltaP, drag coefficient Cd, skin friction coefficient Cf).",
+      "rootCause": "Initial GciEngine implementation was developed for aerodynamic airfoil benchmarks (e.g. NACA 0012) without generalized scalar selector.",
+      "severity": "HIGH",
+      "status": "OPEN",
+      "remediationRequired": true
+    },
+    {
+      "gapId": "GAP-02",
+      "focusArea": "2. Turbulence Model Validity & Dispatch",
+      "title": "Adaptive Orchestrator Bypasses Case-Specified Turbulence Scheme",
+      "description": "AdaptiveIndustrialCFDEngine.runSimulation hardcodes turbulenceScheme: 'K_EPSILON', ignoring caseDef.turbulenceModelIdentity ('SST_K_OMEGA', 'LAMINAR', 'K_EPSILON') and caseDef.flowRegime ('LAMINAR'). Even though Fvm3DNavierStokesSolver supports SST k-omega and laminar flow, the orchestrator does not route them.",
+      "rootCause": "Hardcoded config object in AdaptiveIndustrialCFDEngine lines 129-131.",
+      "severity": "CRITICAL",
+      "status": "OPEN",
+      "remediationRequired": true
+    },
+    {
+      "gapId": "GAP-03",
+      "focusArea": "3. Boundary Condition Spectrum & Physical Consistency",
+      "title": "Absence of Dynamic Pressure Inlet & Convective Outlet Boundaries",
+      "description": "Fvm3DNavierStokesSolver supports INLET, OUTLET, WALL, and SYMMETRY. Advanced boundaries such as Stagnation/Total Pressure Inlet and Convective Outflow are not yet implemented in 3D FVM cell-face equations.",
+      "rootCause": "Core FVM solver focused on standard Dirichlet velocity inlet and fixed pressure outlet.",
+      "severity": "MEDIUM",
+      "status": "DEFERRED_OUT_OF_SCOPE",
+      "remediationRequired": false,
+      "notes": "Standard INLET/OUTLET/WALL/SYMMETRY are fully sufficient for the declared qualification scope."
+    },
+    {
+      "gapId": "GAP-04",
+      "focusArea": "4. Mass & Momentum Conservation Enforcement",
+      "title": "Global Momentum Balance Telemetry Decoupled from CFDEvidenceGenerator",
+      "description": "Global mass balance is strictly verified (0.0000% error), but GlobalMomentumBalance diagnostics are not automatically sealed inside CFDEvidenceGenerator artifact JSON payload.",
+      "rootCause": "Evidence schema priority was assigned to continuity and mass conservation in G1-E.",
+      "severity": "MEDIUM",
+      "status": "OPEN",
+      "remediationRequired": true
+    },
+    {
+      "gapId": "GAP-05",
+      "focusArea": "5. Numerical Robustness & Adversarial Safety",
+      "title": "Compressible Solver Quarantined as Non-Discretized Experimental Prototype",
+      "description": "CompressibleNavierStokesEngine uses 1D axial algebraic relations rather than conservative 3D FVM cell-face shock capturing. It is not integrated into AdaptiveIndustrialCFDEngine and must be strictly quarantined from production claims.",
+      "rootCause": "Preliminary research prototype created prior to formal qualification.",
+      "severity": "LOW",
+      "status": "QUARANTINED_NON_QUALIFIED",
+      "remediationRequired": false,
+      "notes": "Formally declared NON_QUALIFIED in baseline; no production claims permitted."
+    },
+    {
+      "gapId": "GAP-06",
+      "focusArea": "6. Analytical & Benchmark Reference Coverage",
+      "title": "Analytical Benchmark Suites Lack Automated End-to-End Pipeline Harness",
+      "description": "PoiseuilleFlowBenchmark, LidDrivenCavityBenchmark, and ZpgFlatPlateBenchmark exist as standalone classes in src/engine/cfd3d/benchmarks/ but lack a unified automated execution runner tied to the qualification gate.",
+      "rootCause": "Benchmarks were executed independently in earlier upgrade phases.",
+      "severity": "MEDIUM",
+      "status": "OPEN",
+      "remediationRequired": true
+    }
+  ]
+}

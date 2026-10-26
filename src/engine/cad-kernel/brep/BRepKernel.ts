@@ -1146,8 +1146,9 @@ export class BRepKernel {
     let vol6 = 0;
     const faces = solid?.outerShell?.orientedFaces || [];
     for (const of of faces) {
-      if (!of?.face?.outerLoop?.orientedEdges) continue;
-      const verts = of.face.outerLoop.orientedEdges.map(oe =>
+      const edges = of?.face?.outerLoop?.orientedEdges;
+      if (!edges) continue;
+      const verts = edges.map(oe =>
         oe?.orientation === Orientation.FORWARD
           ? (oe?.edge?.startVertex?.geometry || { x: 0, y: 0, z: 0 })
           : (oe?.edge?.endVertex?.geometry || { x: 0, y: 0, z: 0 })
@@ -1173,8 +1174,9 @@ export class BRepKernel {
     let totalArea = 0;
     const faces = solid?.outerShell?.orientedFaces || [];
     for (const of of faces) {
-      if (!of?.face?.outerLoop?.orientedEdges) continue;
-      const verts = of.face.outerLoop.orientedEdges.map(oe =>
+      const edges = of?.face?.outerLoop?.orientedEdges;
+      if (!edges) continue;
+      const verts = edges.map(oe =>
         oe?.orientation === Orientation.FORWARD
           ? (oe?.edge?.startVertex?.geometry || { x: 0, y: 0, z: 0 })
           : (oe?.edge?.endVertex?.geometry || { x: 0, y: 0, z: 0 })

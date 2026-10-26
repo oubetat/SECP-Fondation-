@@ -1,0 +1,76 @@
+{
+  "task": "SECP-ENGINE-QUALIFICATION-003",
+  "timestamp": "2026-10-25T08:15:11.576Z",
+  "artifacts": [
+    {
+      "file": "SYSTEM_BASELINE.json",
+      "sizeBytes": 2036,
+      "sha256": "a2a51c51b31b7b8e273416b884485b52bf89571973f530b6904264725feddfc2"
+    },
+    {
+      "file": "INTEGRATION_CALL_GRAPH.json",
+      "sizeBytes": 1570,
+      "sha256": "6116876786d5c32366abdc9d20648f465ce74d32d4400c9d01f282fc2611539c"
+    },
+    {
+      "file": "SOURCE_BASELINE_MANIFEST.json",
+      "sizeBytes": 1849,
+      "sha256": "60f1c40eb7fe9825f928b4d26aef9dae5492eda3dc1f49d6a2edef4423b5426e"
+    },
+    {
+      "file": "CROSS_DOMAIN_CONTRACT_MATRIX.json",
+      "sizeBytes": 1685,
+      "sha256": "71fe259813faed3526cb122ecbb4739a59e4b68a0928dbfc13e35eb796084658"
+    },
+    {
+      "file": "UNIT_AND_SCHEMA_AUDIT.json",
+      "sizeBytes": 989,
+      "sha256": "7aa6f6d0c46c5af2fcbffa6cf7ab6705e85dfadb393d7f69238adba17d788e1c"
+    },
+    {
+      "file": "DEPENDENCY_PROPAGATION_RESULTS.json",
+      "sizeBytes": 838,
+      "sha256": "92cd5293235e712f5f396ae37c4abb3b1bf7bd261c1fa7bea7c58a742136aafb"
+    },
+    {
+      "file": "MUTATION_INVALIDATION_RESULTS.json",
+      "sizeBytes": 730,
+      "sha256": "0ff420cae87d4d6be325746ee6bb31f117e12d9ebedf91347379811671df2b1f"
+    },
+    {
+      "file": "FAILURE_PROPAGATION_RESULTS.json",
+      "sizeBytes": 676,
+      "sha256": "95049739f3ae283f335799bddf02d40a62f54c758661945b71396e4764ac74d4"
+    },
+    {
+      "file": "PHYSICAL_INVARIANT_RESULTS.json",
+      "sizeBytes": 835,
+      "sha256": "aff09005853470965105eaff2dd73674e09ca4a129e8ffdcec499245b9c88706"
+    },
+    {
+      "file": "ADVERSARIAL_RESULTS.json",
+      "sizeBytes": 727,
+      "sha256": "36c318ca9fcc6ea6769fbe9621250d02b3590e2634311c3d5a52185628866727"
+    },
+    {
+      "file": "REGRESSION_RESULTS.json",
+      "sizeBytes": 9674,
+      "sha256": "575f1c5a3232965aa4808687b81c160412b8b61852d3f511f969de28c78c7047"
+    },
+    {
+      "file": "SCOPE_TO_EVIDENCE_MATRIX.json",
+      "sizeBytes": 2081,
+      "sha256": "fe482a6ec8a922b69b2b5f005dbdfb1af3e8acf005b92660d6b8e9d2dbaffef7"
+    },
+    {
+      "file": "FINAL_ADJUDICATION.json",
+      "sizeBytes": 0,
+      "sha256": "NOT_FOUND"
+    },
+    {
+      "file": "FINAL_REPORT.md",
+      "sizeBytes": 0,
+      "sha256": "NOT_FOUND"
+    }
+  ]
+}

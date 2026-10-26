@@ -1,0 +1,158 @@
+{
+  "auditCampaign": "SECP-FSI-IMPLEMENTATION-INTEGRITY-AUDIT-001",
+  "timestamp": "2026-10-23T07:16:22.827Z",
+  "governanceStatus": "STOP / INSUFFICIENT_EVIDENCE",
+  "scope": [
+    "src/engine/cfd3d/solvers/fsi/",
+    "src/engine/cfd3d/coupling/",
+    "src/engine/structural-physics/"
+  ],
+  "summary": {
+    "totalFilesAudited": 62,
+    "emptyStubsCount": 6,
+    "mockOrSyntheticCount": 2,
+    "partialImplementationCount": 2,
+    "implementedAndTestedCount": 23,
+    "implementedUnverifiedCount": 22,
+    "typeContractsCount": 5,
+    "unusedCount": 2
+  },
+  "emptyStubFiles": [
+    {
+      "file": "src/engine/cfd3d/solvers/fsi/DynamicMeshManager.ts",
+      "claimed_capability": "Dynamic mesh ALE coordinate updates, boundary displacement smoothing, mesh quality monitoring, inversion detection",
+      "actual_implementation": "Empty class definition (2 lines: export class DynamicMeshManager {})",
+      "production_callers": ["src/engine/cfd3d/solvers/fsi/index.ts"],
+      "tests": [],
+      "verdict": "NOT_IMPLEMENTED"
+    },
+    {
+      "file": "src/engine/cfd3d/solvers/fsi/FSIRelaxationManager.ts",
+      "claimed_capability": "Aitken dynamic under-relaxation, interface residual monitoring, divergence detection, adaptive relaxation factor computation",
+      "actual_implementation": "Empty class definition (2 lines: export class FSIRelaxationManager {})",
+      "production_callers": ["src/engine/cfd3d/solvers/fsi/index.ts"],
+      "tests": [],
+      "verdict": "NOT_IMPLEMENTED"
+    },
+    {
+      "file": "src/engine/cfd3d/solvers/fsi/FSICouplingManager.ts",
+      "claimed_capability": "Orchestration of fluid and structural solvers, convergence iteration loops, time stepping",
+      "actual_implementation": "Empty class definition (2 lines: export class FSICouplingManager {})",
+      "production_callers": ["src/engine/cfd3d/solvers/fsi/index.ts"],
+      "tests": [],
+      "verdict": "NOT_IMPLEMENTED"
+    },
+    {
+      "file": "src/engine/cfd3d/solvers/fsi/FSIInterface.ts",
+      "claimed_capability": "Geometric boundary representation and data structures for fluid-solid interface",
+      "actual_implementation": "Empty class definition (2 lines: export class FSIInterface {})",
+      "production_callers": [
+        "src/engine/cfd3d/coupling/TwoWayFSICouplingEngine.ts",
+        "src/engine/cfd3d/solvers/fsi/FSIInterfaceMapper.ts",
+        "src/engine/cfd3d/solvers/fsi/index.ts"
+      ],
+      "tests": [],
+      "verdict": "NOT_IMPLEMENTED"
+    },
+    {
+      "file": "src/engine/cfd3d/solvers/fsi/FSIPhysicsModel.ts",
+      "claimed_capability": "Physical model configuration and fluid-structure domain material property container",
+      "actual_implementation": "Empty class definition (2 lines: export class FSIPhysicsModel {})",
+      "production_callers": ["src/components/cfd/FsiWorkspace.tsx", "src/engine/cfd3d/solvers/fsi/index.ts"],
+      "tests": [],
+      "verdict": "NOT_IMPLEMENTED"
+    },
+    {
+      "file": "src/engine/cfd3d/solvers/fsi/HardAcceptanceGate254.ts",
+      "claimed_capability": "Hard acceptance gate evaluation for PATCH-254 FSI qualification",
+      "actual_implementation": "Empty class definition (2 lines: export class HardAcceptanceGate254 {})",
+      "production_callers": ["src/components/cfd/FsiWorkspace.tsx", "src/engine/cfd3d/solvers/fsi/index.ts"],
+      "tests": [],
+      "verdict": "NOT_IMPLEMENTED"
+    }
+  ],
+  "mockOrSyntheticEngines": [
+    {
+      "file": "src/engine/cfd3d/solvers/fsi/index.ts",
+      "claimed_capability": "FSI solver entry point, benchmark evaluation, and gate execution",
+      "actual_implementation": "Mock FSISolver returning synthetic sine wave displacements, HardAcceptanceGate254 returning hardcoded PASS with mock metrics, and FSIBenchmarkSuite returning static PASS results.",
+      "production_callers": ["src/components/cfd/FsiWorkspace.tsx"],
+      "tests": [],
+      "verdict": "SYNTHETIC_MOCK"
+    },
+    {
+      "file": "src/engine/cfd3d/coupling/TwoWayFSICouplingEngine.ts",
+      "claimed_capability": "Two-way partitioned fluid-structure interaction solver with dynamic mesh morphing and Aitken relaxation",
+      "actual_implementation": "Employs arbitrary scalar stiffness line (stiffness = structuralYoungsModulusPa * 1e-7) and breaks iteration loop after iter 1 (if resDisp < fsiTolerance || iter > 0).",
+      "production_callers": [
+        "src/engine/cfd3d/solvers/fsi/FSISolver.ts",
+        "run_coupling_diagnostics.ts",
+        "run_fsi_independent_acceptance_gate.ts"
+      ],
+      "tests": ["run_coupling_diagnostics.ts", "run_fsi_independent_acceptance_gate.ts"],
+      "verdict": "NEEDS_INTEGRATION"
+    }
+  ],
+  "partialImplementations": [
+    {
+      "file": "src/engine/cfd3d/solvers/fsi/FSIConservationAudit.ts",
+      "claimed_capability": "Audit fluid-structure interface force and energy conservation",
+      "actual_implementation": "Calculates fluid force sum and compares against solid reaction sum, but uses scalar stiffness multiplier rather than true FEM reaction forces.",
+      "verdict": "PARTIAL"
+    },
+    {
+      "file": "src/engine/cfd3d/solvers/fsi/FSIInterfaceMapper.ts",
+      "claimed_capability": "Spatial mapping of boundary forces from fluid faces to structural nodes, and structural displacements to fluid nodes",
+      "actual_implementation": "1:1 proximity heuristic based on faceId; lacks conservative interpolation or RBF kernel.",
+      "verdict": "PARTIAL"
+    }
+  ],
+  "verifiedFEMEngines": [
+    "src/engine/structural-physics/StructuralAnalysisEngine.ts",
+    "src/engine/structural-physics/GlobalAssemblyEngine.ts",
+    "src/engine/structural-physics/ElementFormulationEngine.ts",
+    "src/engine/structural-physics/MaterialModelEngine.ts",
+    "src/engine/structural-physics/ConstitutiveMatrixEngine.ts",
+    "src/engine/structural-physics/ShapeFunctionIsoparametricEngine.ts",
+    "src/engine/structural-physics/GaussQuadratureEngine.ts",
+    "src/engine/structural-physics/LinearSolverAbstraction.ts",
+    "src/engine/structural-physics/PCGSolverEngine.ts",
+    "src/engine/structural-physics/FEAValidationEngine.ts",
+    "src/engine/structural-physics/RealNafemsBenchmarkEngine.ts",
+    "src/engine/structural-physics/StrainAnalysisEngine.ts",
+    "src/engine/structural-physics/StressRecoveryEngine.ts",
+    "src/engine/structural-physics/VonMisesEvaluationEngine.ts"
+  ],
+  "prioritizedRemediationRoadmap": [
+    {
+      "priority": 1,
+      "component": "Structural FEA Engine Qualification",
+      "action": "Completed in SECP-ENGINE-QUALIFICATION-002-FSI-STRUCTURAL-SOLVER-QUALIFICATION-001 (Analytical rod test error < 0.0001%, NAFEMS Quad4 PASS).",
+      "status": "RESOLVED_IN_STAGE_2"
+    },
+    {
+      "priority": 2,
+      "component": "TwoWayFSICouplingEngine Integration",
+      "action": "Wire StructuralAnalysisEngine.runFEA into the iterative partitioned Gauss-Seidel loop, replacing stiffness = E * 1e-7 with actual FEA solution and unpenalized reaction forces.",
+      "status": "PENDING_STAGE_3"
+    },
+    {
+      "priority": 3,
+      "component": "DynamicMeshManager Implementation",
+      "action": "Implement Laplacian / Spring boundary smoothing for fluid mesh vertex coordinates, check Jacobian determinant for inversion, and reject collapsed elements.",
+      "status": "PENDING_STAGE_3"
+    },
+    {
+      "priority": 4,
+      "component": "FSIRelaxationManager Implementation",
+      "action": "Implement genuine Aitken dynamic under-relaxation computing omega_k = -omega_{k-1} * (r_{k-1}^T * (r_k - r_{k-1})) / ||r_k - r_{k-1}||^2, residual monitoring, and divergence detection.",
+      "status": "PENDING_STAGE_3"
+    },
+    {
+      "priority": 5,
+      "component": "FSI Solvers Index & Acceptance Gate Refactoring",
+      "action": "Eliminate hardcoded arrays and empty stubs in index.ts; delegate directly to validated TwoWayFSICouplingEngine and actual gate criteria.",
+      "status": "PENDING_STAGE_3"
+    }
+  ]
+}

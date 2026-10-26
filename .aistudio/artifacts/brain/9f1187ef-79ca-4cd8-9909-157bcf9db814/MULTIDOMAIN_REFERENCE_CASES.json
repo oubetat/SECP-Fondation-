@@ -1,0 +1,112 @@
+{
+  "taskId": "SECP-ENGINE-QUALIFICATION-002",
+  "timestampUTC": "2026-10-25T07:43:11.660Z",
+  "cases": [
+    {
+      "caseId": "CASE-ELEC-01",
+      "domain": "Electrical",
+      "description": "Series-Parallel resistor network with 24V supply and 20 Ohm equivalent resistance",
+      "analyticalSolution": {
+        "Vmid": 12,
+        "Itot": 1.2,
+        "Ptotal": 28.8,
+        "KclResidual": 0
+      },
+      "units": {
+        "voltage": "V",
+        "current": "A",
+        "power": "W"
+      },
+      "toleranceRel": 0.00001
+    },
+    {
+      "caseId": "CASE-ELEC-02",
+      "domain": "Electrical",
+      "description": "Wheatstone bridge balanced null condition and unbalanced deflection voltage",
+      "analyticalSolution": {
+        "balancedVdiff": 0,
+        "unbalancedVdiff": 0.9009009
+      },
+      "units": {
+        "voltage": "V"
+      },
+      "toleranceRel": 0.0001
+    },
+    {
+      "caseId": "CASE-THERM-01",
+      "domain": "Thermal",
+      "description": "1D Fourier conduction slab of thickness 0.05m, k=40 W/(m*K), DeltaT=80 C",
+      "analyticalSolution": {
+        "heatRateWatts": 640,
+        "midTempC": 60
+      },
+      "units": {
+        "heatRate": "W",
+        "temperature": "C"
+      },
+      "toleranceRel": 0.00001
+    },
+    {
+      "caseId": "CASE-STRUC-01",
+      "domain": "Structural",
+      "description": "1D axial bar in uniform tension, L=1.0m, A=1e-4 m^2, E=200 GPa, F=20 kN",
+      "analyticalSolution": {
+        "displacementM": 0.001,
+        "stressPa": 200000000,
+        "reactionN": -20000
+      },
+      "units": {
+        "displacement": "m",
+        "stress": "Pa",
+        "reaction": "N"
+      },
+      "toleranceRel": 0.00001
+    },
+    {
+      "caseId": "CASE-STRUC-02",
+      "domain": "Structural",
+      "description": "Cantilever beam under 1000 N tip load, L=1.0m, E=200 GPa, I=1.0667e-7 m^4",
+      "analyticalSolution": {
+        "tipDeflectionM": 0.015625,
+        "momentNm": 1000
+      },
+      "units": {
+        "deflection": "m",
+        "moment": "N*m"
+      },
+      "toleranceRel": 0.00001
+    },
+    {
+      "caseId": "CASE-CFD-01",
+      "domain": "CFD",
+      "description": "Forensic multi-mesh pressure drop convergence anomaly audit (dpCoarse=0.0522, dpMed=0.0790, dpFine=0.0710)",
+      "analyticalSolution": {
+        "monotonicityRatioR": -0.2985,
+        "convergenceMode": "OSCILLATORY",
+        "meshConverged": false
+      },
+      "units": {
+        "pressureDrop": "Pa",
+        "ratio": "dimensionless"
+      },
+      "toleranceRel": 0.0001
+    },
+    {
+      "caseId": "CASE-COUPLE-01",
+      "domain": "Multidomain",
+      "description": "Coupled electrothermal Picard co-simulation of Joule heated resistor with copper alpha=0.00393 K^-1",
+      "analyticalSolution": {
+        "deltaTC": 37.89,
+        "convergedTempC": 62.89,
+        "convergedROhms": 57.45,
+        "convergedPowerWatts": 2.5065
+      },
+      "units": {
+        "temperature": "C",
+        "resistance": "Ohms",
+        "power": "W"
+      },
+      "toleranceRel": 0.001
+    }
+  ]
+}

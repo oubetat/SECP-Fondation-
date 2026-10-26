@@ -1,0 +1,19 @@
+{
+  "invertedElementRejection": {
+    "tested": true,
+    "passed": true
+  },
+  "nonFiniteNanRejection": {
+    "tested": true,
+    "passed": true
+  },
+  "forceBalanceEquilibrium": {
+    "tested": true,
+    "passed": true
+  },
+  "corruptedReferenceRejection": {
+    "tested": true,
+    "passed": true
+  },
+  "status": "ALL_ADVERSARIAL_TESTS_PASSED"
+}

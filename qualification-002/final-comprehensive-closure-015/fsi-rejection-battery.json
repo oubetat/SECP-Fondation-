@@ -1,0 +1,23 @@
+{
+  "invertedElementRejection": {
+    "tested": true,
+    "rejected": true,
+    "reason": "REJECTED: Element inversion/degeneracy! Cell 0 volume -1.2500e-3 (Threshold: 1.2500e-7, Original: 1.2500e-3)",
+    "status": "PASS"
+  },
+  "relativeVolumeThresholdEnforced": {
+    "tested": true,
+    "minVolumeRatio": 0.0001,
+    "status": "PASS"
+  },
+  "nanInfinityRejection": {
+    "tested": true,
+    "rejectedNanInput": true,
+    "status": "PASS"
+  },
+  "atomicRollbackVerified": {
+    "tested": true,
+    "originalMeshPreserved": true,
+    "status": "PASS"
+  }
+}

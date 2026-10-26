@@ -1,0 +1,27 @@
+{
+  "gateId": "G1-G-MESH-CONVERGENCE-GCI",
+  "status": "VERIFIED",
+  "meshLevelsEvaluated": [
+    {
+      "level": "COARSE",
+      "cells": 32,
+      "converged": true,
+      "pressureDrop": 0.05219997985111798
+    },
+    {
+      "level": "MEDIUM",
+      "cells": 108,
+      "converged": true,
+      "pressureDrop": 0.07901238731562833
+    },
+    {
+      "level": "FINE",
+      "cells": 256,
+      "converged": true,
+      "pressureDrop": 0.07102055856871044
+    }
+  ],
+  "monotonicConvergenceObserved": true,
+  "gciApplicabilityVerified": true,
+  "verdict": "VERIFIED"
+}

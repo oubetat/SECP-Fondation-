@@ -1,0 +1,137 @@
+{
+  "taskId": "SECP-ENGINE-UPGRADE-004",
+  "documentTitle": "CFD Physics Model Register",
+  "timestampUTC": "2026-10-25T07:27:00Z",
+  "governingEquations": [
+    {
+      "modelName": "3D Incompressible Navier-Stokes Equations",
+      "equationFormulation": {
+        "continuity": "div(u) = 0",
+        "momentum": "rho * div(u (x) u) = -grad(p) + div( (mu + mu_t) * (grad(u) + grad(u)^T) )"
+      },
+      "assumptions": [
+        "Newtonian fluid with constant density rho and dynamic viscosity mu",
+        "Steady-state or pseudo-transient under-relaxed iteration",
+        "Boussinesq eddy-viscosity hypothesis for turbulent stresses tau_ij = 2*mu_t*S_ij - (2/3)*rho*k*delta_ij"
+      ],
+      "status": "QUALIFIED_WITHIN_SCOPE",
+      "validityRange": "Mach < 0.3, Re <= 200,000"
+    },
+    {
+      "modelName": "Compressible Ideal Gas Navier-Stokes Equations",
+      "equationFormulation": {
+        "continuity": "div(rho * u) = 0",
+        "momentum": "div(rho * u (x) u + p * I) = div(tau)",
+        "energy": "div( (E + p) * u ) = div(tau * u - q)",
+        "stateEquation": "p = rho * R * T"
+      },
+      "assumptions": [
+        "Calorically perfect gas, gamma = 1.4, R = 287.058 J/(kg*K)",
+        "Sarkar & Zeman compressibility corrections"
+      ],
+      "status": "NON_QUALIFIED",
+      "validityRange": "Experimental only; not qualified for production simulations"
+    }
+  ],
+  "pressureVelocityCoupling": [
+    {
+      "schemeName": "SIMPLE (Semi-Implicit Method for Pressure-Linked Equations)",
+      "formulation": "Pressure correction p' derived from discrete continuity defect; Rhie-Chow face flux interpolation to suppress checkerboarding.",
+      "relaxationParameters": {
+        "velocityUnderRelaxationAlphaU": 0.7,
+        "pressureUnderRelaxationAlphaP": 0.3
+      },
+      "status": "QUALIFIED_WITHIN_SCOPE"
+    }
+  ],
+  "discretizationSchemes": [
+    {
+      "name": "First-Order Upwind (FOU)",
+      "type": "Convective Flux Discretization",
+      "truncationError": "O(Delta x) - unconditionally bounded, dissipative",
+      "status": "QUALIFIED_WITHIN_SCOPE"
+    },
+    {
+      "name": "Second-Order Upwind (SOU)",
+      "type": "Convective Flux Discretization",
+      "truncationError": "O(Delta x^2) - high-resolution, requires gradient limiters",
+      "status": "IMPLEMENTED"
+    },
+    {
+      "name": "Central Differencing (CD)",
+      "type": "Diffusive Flux Discretization",
+      "truncationError": "O(Delta x^2) - second-order accurate",
+      "status": "QUALIFIED_WITHIN_SCOPE"
+    }
+  ],
+  "turbulenceModels": [
+    {
+      "identifier": "K_EPSILON",
+      "fullName": "Standard k-epsilon Model (Launder & Sharma 1974)",
+      "equations": "2-equation RANS: transport of turbulent kinetic energy k and dissipation rate epsilon",
+      "constants": {
+        "C_mu": 0.09,
+        "C1_eps": 1.44,
+        "C2_eps": 1.92,
+        "sigma_k": 1.0,
+        "sigma_eps": 1.3
+      },
+      "wallTreatment": "Standard equilibrium log-law wall functions",
+      "status": "QUALIFIED_WITHIN_SCOPE",
+      "validityRegime": "High Reynolds number attached boundary layers, duct/channel flows"
+    },
+    {
+      "identifier": "SST_K_OMEGA",
+      "fullName": "Menter Shear Stress Transport (k-omega SST 1994)",
+      "equations": "2-equation RANS: blends k-omega near walls with k-epsilon in free stream using F1 blending function",
+      "constants": {
+        "a1": 0.31,
+        "betaStar": 0.09,
+        "kappa": 0.41
+      },
+      "wallTreatment": "Low-Re integration near wall (y+ ~ 1) with automatic wall blending",
+      "status": "QUALIFIED_WITHIN_SCOPE",
+      "validityRegime": "Adverse pressure gradient flows, boundary layer separation, airfoil profiles"
+    },
+    {
+      "identifier": "K_OMEGA_STANDARD",
+      "fullName": "Standard k-omega Model (Wilcox 2006)",
+      "equations": "2-equation RANS: transport of k and specific dissipation rate omega",
+      "status": "IMPLEMENTED",
+      "validityRegime": "Subsonic attached boundary layers; sensitive to freestream omega"
+    },
+    {
+      "identifier": "LES_SMAGORINSKY",
+      "fullName": "Smagorinsky-Lilly Subgrid Scale Model",
+      "equations": "Filtered Navier-Stokes: eddy viscosity mu_sgs = rho * (Cs * Delta)^2 * |S|",
+      "status": "NON_QUALIFIED",
+      "validityRegime": "Experimental research only"
+    }
+  ],
+  "boundaryConditions": [
+    {
+      "type": "INLET",
+      "velocity": "Dirichlet: specified 3D vector (u_bc, v_bc, w_bc)",
+      "pressure": "Neumann: zero normal gradient (dp/dn = 0)",
+      "status": "QUALIFIED_WITHIN_SCOPE"
+    },
+    {
+      "type": "OUTLET",
+      "velocity": "Neumann: zero normal gradient (du/dn = 0) with global mass flow correction",
+      "pressure": "Dirichlet: specified gauge pressure p_bc = 0",
+      "status": "QUALIFIED_WITHIN_SCOPE"
+    },
+    {
+      "type": "WALL",
+      "velocity": "Dirichlet: no-slip u = 0, v = 0, w = 0 (or wall function shear stress tau_w)",
+      "pressure": "Neumann: zero normal gradient (dp/dn = 0)",
+      "status": "QUALIFIED_WITHIN_SCOPE"
+    },
+    {
+      "type": "SYMMETRY",
+      "velocity": "Zero normal component (u . n = 0), zero tangential gradient",
+      "pressure": "Neumann: zero normal gradient (dp/dn = 0)",
+      "status": "QUALIFIED_WITHIN_SCOPE"
+    }
+  ]
+}

@@ -1,0 +1,199 @@
+{
+  "campaignId": "SECP-FEM-UPGRADE-003",
+  "title": "Beam & Frame Element Formulation Expansion",
+  "status": "QUALIFIED_AND_VERIFIED",
+  "summary": {
+    "totalTests": 12,
+    "passedTests": 12,
+    "failedTests": 0
+  },
+  "sourceHashes": {
+    "src/engine/fem/core/Beam2DFormulation.ts": "7f8abf4c519c35643cb15622bd21f2dc317aa3b83cb66ee0ea6d340538be0839",
+    "src/engine/fem/core/Frame2DFormulation.ts": "f1bacf5c3df4a83aa583084190e83dc3a827067bec9a2d91b185a7c513401e51",
+    "src/engine/fem/core/FEMTypes.ts": "0b7ee8e6b4bc7abade563fb0dc640bc0b6eac5deb7679ad50108f39062a8f13f",
+    "src/engine/fem/core/FEMDOFManager.ts": "a9c63c80958236c5fc499a47ba79bf0eefabbcb9486d66c639ac63eda7ff2958",
+    "src/engine/fem/core/FEMCore.ts": "cf65650ce03db96ea19680103815d5987ed371a6bf80417b14e595afedb5f924"
+  },
+  "testRecords": [
+    {
+      "testId": "BEAM-001",
+      "status": "PASS",
+      "testDescription": "Cantilever beam under end point load",
+      "referenceValue": -158.73015873015873,
+      "computedValue": -158.7301587301588,
+      "absoluteError": 5.684341886080802e-14,
+      "relativeError": 3.581135388230905e-16,
+      "tolerance": 0.00001,
+      "units": "mm",
+      "evidence": {
+        "formula": "delta_tip = P * L^3 / (3 * E * I)",
+        "details": "Computed tip UY = -158.730159 mm, Ref = -158.730159 mm"
+      }
+    },
+    {
+      "testId": "BEAM-002",
+      "status": "PASS",
+      "testDescription": "Simply supported beam under uniform distributed load w",
+      "referenceValue": -41.666666666666664,
+      "computedValue": -41.66666666666667,
+      "absoluteError": 7.105427357601002e-15,
+      "relativeError": 1.7053025658242405e-16,
+      "tolerance": 0.0001,
+      "units": "mm",
+      "evidence": {
+        "formula": "delta_mid = 5 * w * L^4 / (384 * E * I)",
+        "details": "Computed midspan UY = -41.666667 mm, Ref = -41.666667 mm"
+      }
+    },
+    {
+      "testId": "BEAM-003",
+      "status": "PASS",
+      "testDescription": "Beam axial tension test (EA/L comparison)",
+      "referenceValue": 0.25,
+      "computedValue": 0.25,
+      "absoluteError": 0,
+      "relativeError": 0,
+      "tolerance": 0.000001,
+      "units": "mm",
+      "evidence": {
+        "formula": "delta = P * L / (E * A)",
+        "details": "Computed axial UX = 0.250000 mm, Ref = 0.250000 mm"
+      }
+    },
+    {
+      "testId": "BEAM-004",
+      "status": "PASS",
+      "testDescription": "Pure rotation / tip moment test",
+      "referenceValue": 0.05,
+      "computedValue": 0.05,
+      "absoluteError": 0,
+      "relativeError": 0,
+      "tolerance": 0.000001,
+      "units": "rad",
+      "evidence": {
+        "formula": "theta_tip = M0 * L / (E * I)",
+        "details": "Computed tip RZ = 0.050000 rad, Ref = 0.050000 rad"
+      }
+    },
+    {
+      "testId": "FRAME-001",
+      "status": "PASS",
+      "testDescription": "Horizontal frame member under axial tension",
+      "referenceValue": 1,
+      "computedValue": 1,
+      "absoluteError": 0,
+      "relativeError": 0,
+      "tolerance": 0.000001,
+      "units": "mm",
+      "evidence": {
+        "formula": "u2 = P * L / (E * A)",
+        "details": "Computed UX = 1.000000 mm, Ref = 1.000000 mm"
+      }
+    },
+    {
+      "testId": "FRAME-002",
+      "status": "PASS",
+      "testDescription": "Inclined frame element at 45 degrees",
+      "referenceValue": 0.7071067811865476,
+      "computedValue": 0.7071067811865477,
+      "absoluteError": 1.1102230246251565e-16,
+      "relativeError": 1.570092458683775e-16,
+      "tolerance": 0.00001,
+      "units": "mm",
+      "evidence": {
+        "formula": "delta_axial = P * L / (E * A)",
+        "details": "Computed magnitude = 0.707107 mm, Ref = 0.707107 mm"
+      }
+    },
+    {
+      "testId": "FRAME-003",
+      "status": "PASS",
+      "testDescription": "Vertical frame column under transverse x-load",
+      "referenceValue": 83.33333333333333,
+      "computedValue": 83.33333333333333,
+      "absoluteError": 0,
+      "relativeError": 0,
+      "tolerance": 0.00001,
+      "units": "mm",
+      "evidence": {
+        "formula": "delta_x = Fx * L^3 / (3 * E * I)",
+        "details": "Computed tip UX = 83.333333 mm, Ref = 83.333333 mm"
+      }
+    },
+    {
+      "testId": "FRAME-004",
+      "status": "PASS",
+      "testDescription": "Simple 2D portal frame static force balance",
+      "referenceValue": 0,
+      "computedValue": 1.1425527191022411e-11,
+      "absoluteError": 1.1425527191022411e-11,
+      "relativeError": 1.1425527191022412e-14,
+      "tolerance": 0.0001,
+      "units": "N",
+      "evidence": {
+        "formula": "sum F_ext + sum R = 0",
+        "details": "Portal frame residual norm = 1.1426e-11 N"
+      }
+    },
+    {
+      "testId": "LOAD-001",
+      "status": "PASS",
+      "testDescription": "Transverse distributed load resultant balance",
+      "referenceValue": 5000,
+      "computedValue": 5000,
+      "absoluteError": 0,
+      "relativeError": 0,
+      "tolerance": 0.00001,
+      "units": "N",
+      "evidence": {
+        "formula": "sum R_y = w * L",
+        "details": "Reaction total = 5000.0000 N, Ref = 5000.0000 N"
+      }
+    },
+    {
+      "testId": "BC-001",
+      "status": "PASS",
+      "testDescription": "Prescribed settlement boundary condition enforcement",
+      "referenceValue": -5,
+      "computedValue": -5,
+      "absoluteError": 0,
+      "relativeError": 0,
+      "tolerance": 1e-8,
+      "units": "mm",
+      "evidence": {
+        "formula": "u_prescribed = -5.0 mm",
+        "details": "Computed UY = -5.00000000 mm"
+      }
+    },
+    {
+      "testId": "SOLVER-001",
+      "status": "PASS",
+      "testDescription": "Unconstrained / singular system diagnostic rejection",
+      "referenceValue": 1,
+      "computedValue": 1,
+      "absoluteError": 0,
+      "relativeError": 0,
+      "tolerance": 0,
+      "units": "boolean",
+      "evidence": {
+        "formula": "det(K) = 0 => Singular System Exception",
+        "details": "System correctly caught unconstrained singularity: true"
+      }
+    },
+    {
+      "testId": "NUM-001",
+      "status": "PASS",
+      "testDescription": "Degenerate zero-length geometry guard",
+      "referenceValue": 1,
+      "computedValue": 1,
+      "absoluteError": 0,
+      "relativeError": 0,
+      "tolerance": 0,
+      "units": "boolean",
+      "evidence": {
+        "formula": "L <= 0 => throw [ZERO_LENGTH_ELEMENT]",
+        "details": "Zero-length guard threw expected error: true"
+      }
+    }
+  ]
+}
