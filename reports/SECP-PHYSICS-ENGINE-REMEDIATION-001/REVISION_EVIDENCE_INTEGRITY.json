@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "1.0.0",
+  "campaign": "SECP-PHYSICS-ENGINE-REMEDIATION-001",
+  "timestamp": "2026-10-28T08:28:44.507Z",
+  "cryptographicHashes": {
+    "src/engine/fem/core/TET43DFormulation.ts": "d268395e21388c12bcef2bf932aef3369d184906d9ffa8400437b54c2fb502f8",
+    "src/engine/fem/core/J2Plasticity3D.ts": "b46cd7c5034848d3e8971a438c84b978ac47871370ab81b0f78a0a936c159f8a",
+    "src/engine/fem/core/FieldRecoveryEngine.ts": "95b5dfd8425b243fff714ca7f541591d83d26040cf9c03bb24fe881314d1e618",
+    "src/engine/fem/core/NonlinearEquilibriumSolver.ts": "8a6e823ff3cd52b2dbefc6ede3afcc769630460a5b7775228389fdc6e3602324",
+    "src/engine/fem/core/GlobalAssemblyEngine.ts": "33b4b367eb8c32d8c02ee3cf8ec66c7c280e05b32c05fe3f69ef5386d9886df8",
+    "src/engine/fem/core/SparsePCGSolver.ts": "0bb607f4bd5813574a4421301ddbfaa32def802978e10da7185f9e6eb6eae18d",
+    "src/engine/fem/sparse/COOBuilder.ts": "d8f88f2ed49b26a314bc16f92a7bb1c7078cf934fc6c49f50c86758271fbe6da",
+    "src/engine/fem/assembly/SparseMatrixBuilder.ts": "a3b12ea6ea110eae4f502c9d82a57b49466b0dc7492e2d73876c1e18e49426dd",
+    "src/engine/fem/verification/FemVerificationPipeline.ts": "c87b96cf6fff5d9d413a319c138949e32f518b5ba477de7f428b48d96decbead",
+    "src/engine/fem/verification/HardAcceptanceGate240.ts": "d550c0dd7c1bd35bc7e0be043bbfd4af23b91b462f17c0a1a9eb2370148063df",
+    "src/engine/structuralFem.ts": "011582dec1f6d8297ad1bdd4a689539cdba00e8201a42de3b0b716581a1cd1b6",
+    "src/engine/cfd3d/__tests__/SECP082IndependentCFDVerifier.test.ts": "92b2bcf8575ae630fe92d17ca5eae214ea8a9efdf87d48d6b84bf61658bef0d7",
+    "src/engine/engineeringCore/tests/electrothermal_coupling_verification.test.ts": "580cc71192cb5baa09c47365c91b063bc2612af6b3379c8296f1810cce8e1bcb"
+  },
+  "integritySummary": {
+    "totalFilesTracked": 13,
+    "allFilesResolved": true,
+    "algorithm": "SHA-256"
+  }
+}

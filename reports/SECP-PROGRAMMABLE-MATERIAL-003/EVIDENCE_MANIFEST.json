@@ -1,0 +1,29 @@
+{
+  "taskId": "SECP-PROGRAMMABLE-MATERIAL-003",
+  "version": "1.0.0",
+  "classification": "ARCHITECTURE_DESIGN_ONLY",
+  "sourceInspection": [
+    "/src/engine/fem/core/FEMTypes.ts",
+    "/src/engine/fem/core/ConstitutiveModel.ts",
+    "/src/engine/fem/core/MaterialStateManager.ts",
+    "/src/engine/fem/core/GlobalAssemblyEngine.ts",
+    "/src/engine/fem/core/NonlinearEquilibriumSolver.ts",
+    "/src/engine/fem/core/TET4PlasticFormulation.ts"
+  ],
+  "independentCalculations": [
+    "TEST-002 1D Gradient Analytical Derivation: Delta L = ln(2) = 0.693147 mm"
+  ],
+  "executedTests": [],
+  "artifactsProduced": [
+    "ARCHITECTURE_DECISION_RECORD.md",
+    "EXISTING_EXECUTION_CONTRACT.md",
+    "SPATIAL_MATERIAL_FIELD_SCHEMA.json",
+    "FEM_INTEGRATION_CONTRACT.md",
+    "ARCHITECTURE_OPTIONS_MATRIX.json",
+    "NUMERICAL_QUALIFICATION_SPEC.md",
+    "ADVERSARIAL_AND_INVALIDATION_SPEC.md",
+    "CAPABILITY_REUSE_MATRIX.json",
+    "IMPLEMENTATION_SEQUENCE.md",
+    "FINAL_DECISION.md"
+  ]
+}

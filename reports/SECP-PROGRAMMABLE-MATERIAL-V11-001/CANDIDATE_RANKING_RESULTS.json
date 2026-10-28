@@ -1,0 +1,7 @@
+{
+  "rankingCriteria": "Minimum Strain Energy (Maximum Stiffness)",
+  "rankedCandidates": [
+    { "id": "AI-CAND-001", "score": 0.020, "rank": 1 },
+    { "id": "AI-CAND-002", "score": 0.033, "rank": 2 }
+  ]
+}

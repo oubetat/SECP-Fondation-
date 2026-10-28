@@ -1,0 +1,26 @@
+{
+  "task_id": "SECP-PROGRAMMABLE-MATERIAL-V6-001",
+  "status": "VERIFIED_PASS",
+  "profile_validations": [
+    {
+      "profile_id": "PROF_SLM_500",
+      "synthetic_profile": true,
+      "qualification_status": "SYNTHETIC_TEST_PROFILE",
+      "validation_result": "PASS"
+    },
+    {
+      "profile_id": "PROF_EOS_M290",
+      "synthetic_profile": false,
+      "qualification_status": "MACHINE_PROFILE_QUALIFIED",
+      "qualified_machine_id": "EOS_M290_001",
+      "validation_result": "PASS"
+    },
+    {
+      "profile_id": "INVALID_DECLARATION_TEST",
+      "synthetic_profile": false,
+      "qualification_status": "SYNTHETIC_TEST_PROFILE",
+      "error_code": "INVALID_PROFILE_DECLARATION",
+      "validation_result": "REJECTED"
+    }
+  ]
+}

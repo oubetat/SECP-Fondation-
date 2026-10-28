@@ -1,0 +1,32 @@
+{
+  "campaignId": "SECP-PHYSICS-EXPANSION-002",
+  "timestamp": "2026-10-28T09:35:45.524Z",
+  "totalAdversarialCases": 4,
+  "allPassed": true,
+  "cases": [
+    {
+      "testId": "ADV-EXP002-01-UNCONSTRAINED-THERMAL",
+      "description": "Bidirectional electrothermal solve without any prescribed thermal BC",
+      "expectThrow": true,
+      "executed": true
+    },
+    {
+      "testId": "ADV-EXP002-02-NEGATIVE-C10-MOONEY-RIVLIN",
+      "description": "Mooney-Rivlin hyperelastic parameters with negative C10",
+      "expectThrow": true,
+      "executed": true
+    },
+    {
+      "testId": "ADV-EXP002-03-ZERO-BULK-MODULUS",
+      "description": "Mooney-Rivlin hyperelastic model with zero bulk modulus K = 0",
+      "expectThrow": true,
+      "executed": true
+    },
+    {
+      "testId": "ADV-EXP002-04-TRIAL-STATE-ROLLBACK-VERIFICATION",
+      "description": "Verify that failed Newton-Raphson trial iterations discard un-converged state changes",
+      "expectThrow": false,
+      "executed": true
+    }
+  ]
+}

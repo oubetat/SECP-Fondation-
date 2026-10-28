@@ -1,0 +1,31 @@
+{
+  "schemaVersion": "1.0.0",
+  "timestamp": "2026-10-28T08:28:44.507Z",
+  "engines": [
+    "src/engine/fem/core/NonlinearEquilibriumSolver.ts",
+    "src/engine/fem/core/J2Plasticity3D.ts",
+    "src/engine/fem/core/TET4PlasticFormulation.ts"
+  ],
+  "featuresVerified": [
+    {
+      "name": "Newton-Raphson Iterative Equilibrium",
+      "residualNormCriteria": "||R(u)|| / ||F_ext|| < 1e-4",
+      "displacementIncrementNorm": "||Delta u|| / ||u|| < 1e-4",
+      "maximumIterations": 25
+    },
+    {
+      "name": "J2 von Mises Return Mapping Algorithm",
+      "yieldCondition": "f(sigma, sigma_y) = ||s|| - sqrt(2/3)*sigma_y <= 0",
+      "flowRule": "Associative normality rule Delta eps_p = Delta gamma * n",
+      "hardeningModel": "Linear isotropic hardening sigma_y(p) = sigma_y0 + H * p",
+      "elasticTrialCheck": "FAILED",
+      "plasticPlasticMultiplier": "FAILED"
+    },
+    {
+      "name": "Consistent Elastoplastic Tangent Operator",
+      "symmetry": "Guaranteed symmetric for associative J2 plasticity",
+      "degradation": "Stiffness reduction following plastic flow activation"
+    }
+  ],
+  "verdict": "NONLINEAR_FEM_VERIFIED"
+}

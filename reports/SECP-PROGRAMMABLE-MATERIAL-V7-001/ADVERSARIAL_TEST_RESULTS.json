@@ -1,0 +1,22 @@
+{
+  "taskId": "SECP-PROGRAMMABLE-MATERIAL-V7-001",
+  "suite": "AsBuiltMaterialStateV7.test.ts",
+  "totalAdversarialCases": 12,
+  "passedAdversarialCases": 12,
+  "failedAdversarialCases": 0,
+  "testResults": [
+    { "testId": "V7-TEST-01", "name": "Known physical measurements reconstruction", "result": "PASS" },
+    { "testId": "V7-TEST-02", "name": "Known spatial transformation registration accuracy", "result": "PASS" },
+    { "testId": "V7-TEST-03", "name": "Out-of-bounds data rejection", "result": "PASS" },
+    { "testId": "V7-TEST-04", "name": "Missing data coverage reduction & unmeasured region identification", "result": "PASS" },
+    { "testId": "V7-TEST-05", "name": "Conflicting measurements policy resolution", "result": "PASS" },
+    { "testId": "V7-TEST-06", "name": "Unit conversion mismatch rejection & normalization", "result": "PASS" },
+    { "testId": "V7-TEST-07", "name": "Synthetic data origin tag enforcement (SYNTHETIC_TEST_DATA)", "result": "PASS" },
+    { "testId": "V7-TEST-08", "name": "Uncertainty tracking & indeterminate boundary evaluation", "result": "PASS" },
+    { "testId": "V7-TEST-09", "name": "Revision change evidence invalidation", "result": "PASS" },
+    { "testId": "V7-TEST-10", "name": "Independent negative test (out-of-tolerance deviation detection)", "result": "PASS" },
+    { "testId": "V7-TEST-11", "name": "Invalid numerical values rejection (NaN, Infinity, negative E)", "result": "PASS" },
+    { "testId": "V7-TEST-12", "name": "Deterministic replay & hashing repeatability", "result": "PASS" }
+  ],
+  "adversarialGateVerdict": "PASS"
+}

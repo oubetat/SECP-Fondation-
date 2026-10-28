@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "1.0.0",
+  "timestamp": "2026-10-28T08:28:44.507Z",
+  "category": "QUANTUM_AND_TOPOLOGICAL_PHYSICS",
+  "overallStatus": "NOT_IMPLEMENTED",
+  "findings": {
+    "quantumEnginesCount": 0,
+    "quantumSourceFiles": [],
+    "occurrencesInCodebase": [
+      {
+        "file": "src/engine/fem/verification/HardAcceptanceGate133.ts",
+        "context": "Adversarial negative injection keyword test verifying that phantom physics inputs are rejected.",
+        "isImplementation": false
+      }
+    ]
+  },
+  "prohibitedClaims": [
+    "Do not claim quantum mechanics simulation capabilities.",
+    "Do not claim topological insulator or Chern number quantum topological states.",
+    "Do not claim quantum DFT (Density Functional Theory) or electronic band structure engines."
+  ],
+  "declaredScope": "SECP is strictly a classical continuum mechanics, CAD B-Rep geometry, and multiphysics platform."
+}

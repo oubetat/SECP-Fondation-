@@ -1,0 +1,18 @@
+{
+  "verificationType": "HARD_CONSTRAINT_ENFORCEMENT",
+  "testCases": [
+    {
+      "testId": "STRESS-LIMIT-FAIL",
+      "threshold": 5.0,
+      "computedStress": 10.0,
+      "status": "REJECTED",
+      "reason": "CONSTRAINT_VIOLATION: MAX_STRESS_LIMIT"
+    },
+    {
+      "testId": "STRESS-LIMIT-PASS",
+      "threshold": 500.0,
+      "computedStress": 10.0,
+      "status": "ACCEPTED"
+    }
+  ]
+}

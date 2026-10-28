@@ -1,0 +1,26 @@
+{
+  "taskId": "SECP-PROGRAMMABLE-MATERIAL-V7-001",
+  "generatedAt": "2026-10-27T08:07:30Z",
+  "evidenceFiles": [
+    { "file": "EXISTING_AS_BUILT_ARCHITECTURE_AUDIT.md", "type": "AUDIT_REPORT", "status": "VERIFIED" },
+    { "file": "AS_BUILT_MATERIAL_STATE_CONTRACT.md", "type": "DATA_CONTRACT", "status": "VERIFIED" },
+    { "file": "AS_BUILT_MATERIAL_STATE_SCHEMA.json", "type": "SCHEMA_JSON", "status": "VERIFIED" },
+    { "file": "MEASUREMENT_INGESTION_AUDIT.md", "type": "AUDIT_REPORT", "status": "VERIFIED" },
+    { "file": "MEASUREMENT_VALIDATION_RESULTS.json", "type": "TEST_RESULTS", "status": "VERIFIED" },
+    { "file": "SPATIAL_REGISTRATION_RESULTS.json", "type": "TEST_RESULTS", "status": "VERIFIED" },
+    { "file": "RECONSTRUCTION_METHOD_REPORT.md", "type": "TECHNICAL_REPORT", "status": "VERIFIED" },
+    { "file": "AS_BUILT_RECONSTRUCTION_RESULTS.json", "type": "TEST_RESULTS", "status": "VERIFIED" },
+    { "file": "COVERAGE_AND_UNCERTAINTY_RESULTS.json", "type": "TEST_RESULTS", "status": "VERIFIED" },
+    { "file": "INTENDED_VS_AS_BUILT_COMPARISON.json", "type": "COMPARISON_REPORT", "status": "VERIFIED" },
+    { "file": "ADVERSARIAL_TEST_RESULTS.json", "type": "TEST_RESULTS", "status": "VERIFIED" },
+    { "file": "REVISION_VALIDITY_RESULTS.json", "type": "EVIDENCE_REPORT", "status": "VERIFIED" },
+    { "file": "REGRESSION_RESULTS.json", "type": "REGRESSION_REPORT", "status": "VERIFIED" },
+    { "file": "CAPABILITY_SUPPORT_MATRIX.json", "type": "MATRIX_REPORT", "status": "VERIFIED" },
+    { "file": "SOURCE_CHANGE_MANIFEST.json", "type": "MANIFEST", "status": "VERIFIED" },
+    { "file": "EVIDENCE_MANIFEST.json", "type": "MANIFEST", "status": "VERIFIED" },
+    { "file": "KNOWN_LIMITATIONS.md", "type": "LIMITATIONS_REPORT", "status": "VERIFIED" },
+    { "file": "FINAL_DECISION.md", "type": "ADJUDICATION_REPORT", "status": "VERIFIED" }
+  ],
+  "verificationCommand": "npx vitest run src/engine/fem/core/__tests__/AsBuiltMaterialStateV7.test.ts",
+  "evidencePackageStatus": "COMPLETE_AND_VERIFIED"
+}

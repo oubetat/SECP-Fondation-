@@ -1,0 +1,81 @@
+{
+  "task": "SECP-PROGRAMMABLE-MATERIAL-V3-001",
+  "phase": "V3",
+  "evidenceRoot": "reports/SECP-PROGRAMMABLE-MATERIAL-V3-001/",
+  "claims": [
+    {
+      "claimId": "CLM-V3-01",
+      "statement": "Spatial material field contract enforces valid IDs, bounds, physical validity, and domain limits.",
+      "evidenceFiles": [
+        "src/engine/fem/core/SpatialMaterialField.ts",
+        "reports/SECP-PROGRAMMABLE-MATERIAL-V3-001/FIELD_CONTRACT_VALIDATION.json",
+        "src/engine/fem/core/__tests__/SpatialMaterialFieldV3.test.ts"
+      ],
+      "status": "VERIFIED"
+    },
+    {
+      "claimId": "CLM-V3-02",
+      "statement": "Constant spatial field produces bit-exact equivalence with baseline homogeneous material formulation.",
+      "evidenceFiles": [
+        "src/engine/fem/core/__tests__/SpatialMaterialFieldV3.test.ts:V3-BENCH-A",
+        "reports/SECP-PROGRAMMABLE-MATERIAL-V3-001/NUMERICAL_QUALIFICATION_RESULTS.json"
+      ],
+      "status": "VERIFIED"
+    },
+    {
+      "claimId": "CLM-V3-03",
+      "statement": "Spatially graded Young's modulus converges to continuous analytical reference solution within 0.05% relative error.",
+      "evidenceFiles": [
+        "src/engine/fem/core/__tests__/SpatialMaterialFieldV3.test.ts:V3-BENCH-B",
+        "src/engine/fem/core/__tests__/SpatialMaterialFieldV3.test.ts:V3-BENCH-E",
+        "reports/SECP-PROGRAMMABLE-MATERIAL-V3-001/NUMERICAL_QUALIFICATION_RESULTS.json"
+      ],
+      "status": "VERIFIED"
+    },
+    {
+      "claimId": "CLM-V3-04",
+      "statement": "Spatial gradient reversal alters displacement and curvature response consistently with independent analytical derivation.",
+      "evidenceFiles": [
+        "src/engine/fem/core/__tests__/SpatialMaterialFieldV3.test.ts:V3-BENCH-C",
+        "reports/SECP-PROGRAMMABLE-MATERIAL-V3-001/NUMERICAL_QUALIFICATION_RESULTS.json"
+      ],
+      "status": "VERIFIED"
+    },
+    {
+      "claimId": "CLM-V3-05",
+      "statement": "Multi-element 3D tetrahedral continuum supports continuous spatial field gradation with exact equilibrium.",
+      "evidenceFiles": [
+        "src/engine/fem/core/__tests__/SpatialMaterialFieldV3.test.ts:V3-BENCH-F",
+        "reports/SECP-PROGRAMMABLE-MATERIAL-V3-001/NUMERICAL_QUALIFICATION_RESULTS.json"
+      ],
+      "status": "VERIFIED"
+    },
+    {
+      "claimId": "CLM-V3-06",
+      "statement": "All 13 adversarial scenarios fail closed with explicit diagnostic errors and zero silent corruption.",
+      "evidenceFiles": [
+        "src/engine/fem/core/__tests__/SpatialMaterialFieldV3.test.ts",
+        "reports/SECP-PROGRAMMABLE-MATERIAL-V3-001/ADVERSARIAL_TEST_RESULTS.json"
+      ],
+      "status": "VERIFIED"
+    },
+    {
+      "claimId": "CLM-V3-07",
+      "statement": "Modification of spatial field revision or distribution reliably invalidates cached evidence.",
+      "evidenceFiles": [
+        "src/engine/fem/core/FEMEvidenceEngine.ts",
+        "src/engine/fem/core/__tests__/SpatialMaterialFieldV3.test.ts:PMV3-ADV-009",
+        "reports/SECP-PROGRAMMABLE-MATERIAL-V3-001/REVISION_INVALIDATION_RESULTS.json"
+      ],
+      "status": "VERIFIED"
+    },
+    {
+      "claimId": "CLM-V3-08",
+      "statement": "Zero regressions across entire core FEM test suite (90/90 tests passing).",
+      "evidenceFiles": [
+        "reports/SECP-PROGRAMMABLE-MATERIAL-V3-001/REGRESSION_RESULTS.json"
+      ],
+      "status": "VERIFIED"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "taskId": "SECP-PROGRAMMABLE-MATERIAL-V8-001",
+  "testSuite": "SpatialMaterialDeviationV8.test.ts",
+  "totalAdversarialCases": 13,
+  "passedAdversarialCases": 13,
+  "failedAdversarialCases": 0,
+  "testResults": [
+    { "testId": "V8-TEST-01", "name": "Zero deviation benchmark", "result": "PASS" },
+    { "testId": "V8-TEST-02", "name": "Uniform constant deviation benchmark", "result": "PASS" },
+    { "testId": "V8-TEST-03", "name": "Spatial gradient field deviation benchmark", "result": "PASS" },
+    { "testId": "V8-TEST-04", "name": "Localized non-conforming hotspot detection (no global averaging mask)", "result": "PASS" },
+    { "testId": "V8-TEST-05", "name": "Upper & lower acceptance threshold evaluation (ABSOLUTE_RANGE)", "result": "PASS" },
+    { "testId": "V8-TEST-06", "name": "Unmeasured region handling (V8-ARCH-02)", "result": "PASS" },
+    { "testId": "V8-TEST-07", "name": "Unit mismatch & normalization checks", "result": "PASS" },
+    { "testId": "V8-TEST-08", "name": "Mismatched coordinate frames & registration failure handling", "result": "PASS" },
+    { "testId": "V8-TEST-09", "name": "Division-by-zero protection when p_intended = 0", "result": "PASS" },
+    { "testId": "V8-TEST-10", "name": "Invalid numerical inputs handling", "result": "PASS" },
+    { "testId": "V8-TEST-11", "name": "Uncertainty overlapping threshold evaluation (INDETERMINATE)", "result": "PASS" },
+    { "testId": "V8-TEST-12", "name": "Deterministic replay & evidence hash repeatability", "result": "PASS" },
+    { "testId": "V8-TEST-13", "name": "Revision stale evidence invalidation in FEMEvidenceEngine", "result": "PASS" }
+  ],
+  "adversarialVerdict": "PASS"
+}

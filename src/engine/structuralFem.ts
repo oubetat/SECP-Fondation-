@@ -21,11 +21,22 @@ export interface StructuralFemResult {
   safetyFactor: number;
   nodeResults: StructuralNodeResult[];
   validationReport: SimulationValidationReport;
+  solverModel: 'ANALYTICAL_EULER_BERNOULLI_BEAM';
+  isApproximateAnalytical: boolean;
+  isQualifiedContinuumFEM: boolean;
+  productionRoutingNotice: string;
 }
 
 export class StructuralFemEngine {
+  public static readonly SOLVER_CLASSIFICATION = 'ANALYTICAL_EULER_BERNOULLI_BEAM';
+  public static readonly IS_QUALIFIED_CONTINUUM_FEM = false;
+  public static readonly CONTINUUM_ROUTING_TARGET = 'src/engine/fem/core/GlobalAssemblyEngine.ts';
+
   /**
-   * Solves 2D/3D Elastic Structural FEA using Stiffness Matrix Formulation
+   * Evaluates approximate 1D Euler-Bernoulli analytical cantilever beam bending.
+   * NOTE: This engine provides fast closed-form estimates for slender members.
+   * For true continuum 3D stress tensors and certified qualification,
+   * production callers MUST route to GlobalAssemblyEngine + TET43DFormulation.
    */
   public static solveStructuralFea(
     mesh: SimulationMesh,
@@ -105,7 +116,11 @@ export class StructuralFemEngine {
       yieldStrengthMPa,
       safetyFactor,
       nodeResults,
-      validationReport
+      validationReport,
+      solverModel: 'ANALYTICAL_EULER_BERNOULLI_BEAM',
+      isApproximateAnalytical: true,
+      isQualifiedContinuumFEM: false,
+      productionRoutingNotice: 'Approximate 1D Euler-Bernoulli beam analytical model. For verified 3D continuum solid mechanics, route to src/engine/fem/core/GlobalAssemblyEngine.ts and TET43DFormulation.ts.'
     };
   }
 }

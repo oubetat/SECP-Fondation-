@@ -1,0 +1,11 @@
+{
+  "phase": "V10 - Engineering Optimization",
+  "capabilities": [
+    { "id": "V10-CAP-01", "name": "Iterative Design Mutation", "status": "SUPPORTED" },
+    { "id": "V10-CAP-02", "name": "Physics-Constrained Optimization", "status": "SUPPORTED" },
+    { "id": "V10-CAP-03", "name": "Hard Constraint Enforcement", "status": "SUPPORTED" },
+    { "id": "V10-CAP-04", "name": "Multi-Objective Scalarization", "status": "SUPPORTED" },
+    { "id": "V10-CAP-05", "name": "Manufacturability-Aware Search", "status": "SUPPORTED" },
+    { "id": "V10-CAP-06", "name": "Revision-Bound Optimization Lineage", "status": "SUPPORTED" }
+  ]
+}

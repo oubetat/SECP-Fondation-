@@ -1,0 +1,47 @@
+{
+  "taskId": "SECP-PROGRAMMABLE-MATERIAL-V8-001",
+  "capabilityMatrix": [
+    {
+      "capability": "Intended vs As-Built Pointwise Spatial Field Comparison",
+      "status": "IMPLEMENTED_AND_TESTED",
+      "implementationRef": "SpatialMaterialDeviationEngine.computeSpatialDeviation",
+      "evidenceRef": "DEVIATION_NUMERICAL_RESULTS.json"
+    },
+    {
+      "capability": "Signed, Absolute, and Relative Deviation Metrics",
+      "status": "IMPLEMENTED_AND_TESTED",
+      "implementationRef": "SpatialMaterialDeviationEngine.computeSpatialDeviation",
+      "evidenceRef": "DEVIATION_NUMERICAL_RESULTS.json"
+    },
+    {
+      "capability": "Unmeasured Domain Isolation (V8-ARCH-02)",
+      "status": "IMPLEMENTED_AND_TESTED",
+      "implementationRef": "SpatialMaterialDeviationEngine.computeSpatialDeviation",
+      "evidenceRef": "COVERAGE_AND_UNCERTAINTY_RESULTS.json"
+    },
+    {
+      "capability": "Localized Failure Preservation (V8-ARCH-05)",
+      "status": "IMPLEMENTED_AND_TESTED",
+      "implementationRef": "SpatialMaterialDeviationEngine.computeSpatialDeviation",
+      "evidenceRef": "REGIONAL_DEVIATION_RESULTS.json"
+    },
+    {
+      "capability": "Formal Acceptance Criteria Contract Gatekeeping",
+      "status": "IMPLEMENTED_AND_TESTED",
+      "implementationRef": "SpatialMaterialDeviationEngine.evaluatePointConformance",
+      "evidenceRef": "ACCEPTANCE_CRITERIA_AUDIT.md"
+    },
+    {
+      "capability": "Uncertainty-Aware Boundary Evaluation (INDETERMINATE)",
+      "status": "IMPLEMENTED_AND_TESTED",
+      "implementationRef": "SpatialMaterialDeviationEngine.evaluatePointConformance",
+      "evidenceRef": "COVERAGE_AND_UNCERTAINTY_RESULTS.json"
+    },
+    {
+      "capability": "Revision-Bound Stale Evidence Invalidation",
+      "status": "IMPLEMENTED_AND_TESTED",
+      "implementationRef": "FEMEvidenceEngine.isEvidenceStale",
+      "evidenceRef": "REVISION_INVALIDATION_RESULTS.json"
+    }
+  ]
+}

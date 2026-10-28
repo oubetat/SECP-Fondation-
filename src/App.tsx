@@ -212,6 +212,7 @@ import { TurbulenceBenchmarkPanel } from './components/benchmark/TurbulenceBench
 import { VerificationPortal } from './components/verification/VerificationPortal';
 import { MonorepoExplorer } from './components/MonorepoExplorer';
 import { SketchConvergenceMatrix } from './components/SketchConvergenceMatrix';
+import { PMEStudio } from './components/pme/PMEStudio';
 
 interface ProjectModel {
   id: string;
@@ -279,7 +280,7 @@ export default function App() {
   const [expandedStudioIds, setExpandedStudioIds] = useState<string[]>([
     'collision_studio', 'cad_studio', 'assembly_studio', 'elements_studio', 
     'cam_studio', 'cae_studio', 'cfd_studio', 'reverse_studio', 'ai_studio', 
-    'plm_studio', 'drone_studio', 'ecad_studio', 'hpc_studio', 'cert_studio'
+    'plm_studio', 'drone_studio', 'ecad_studio', 'hpc_studio', 'cert_studio', 'pme_studio'
   ]);
 
   // Custom Projects Persistence (localStorage fallback since Firebase was declined)
@@ -615,6 +616,18 @@ export default function App() {
         { id: 'fem_benchmark', name: 'Nonlinear FEM Standard Benchmark', icon: Activity, description: 'Cantilever beam, spherical shell snap-through & plastic necking benchmarks', component: <NonlinearFEMBenchmarkPanel /> },
         { id: 'boolean_adversarial', name: 'B-Rep Boolean Adversarial Suite', icon: Box, description: 'Near-tangent, coplanar, vertex-on-edge & micro-feature boolean torture tests', component: <BooleanAdversarialPanel /> },
         { id: 'verification_portal', name: 'Verification & Independent Audit Portal', icon: CheckCircle2, description: 'Third-party auditor package export and verification portal', component: <VerificationPortal /> }
+      ]
+    },
+
+    // 15. Programmable Material Engineering Studio (PME)
+    {
+      id: 'pme_studio',
+      name: 'Programmable Material Engineering Studio',
+      shortLabel: '🧪 PME Studio',
+      icon: Database,
+      badge: 'V1-V12',
+      workbenches: [
+        { id: 'pme_main', name: 'PME Master Workspace', icon: Database, description: 'Unified workspace for Material Intelligence, Spatial Design, Simulation & Industrial Qualification', badge: 'PME Hub', component: <PMEStudio /> }
       ]
     }
   ], [activeProject, activeSolid, assemblyComponents, canonicalDocument, droneCamResult]);

@@ -1,0 +1,11 @@
+{
+  "task_id": "SECP-PROGRAMMABLE-MATERIAL-V6-001",
+  "modified_files": [
+    "src/engine/fem/core/FEMEvidenceEngine.ts",
+    "src/engine/fem/core/FEMTypes.ts"
+  ],
+  "created_files": [
+    "src/engine/fem/core/ManufacturingConstraintEngine.ts",
+    "src/engine/fem/core/__tests__/ManufacturingConstraintV6.test.ts"
+  ]
+}

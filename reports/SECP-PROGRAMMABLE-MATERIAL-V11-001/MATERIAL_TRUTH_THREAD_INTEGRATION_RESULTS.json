@@ -1,0 +1,8 @@
+{
+  "integrationStatus": "SUCCESSFUL",
+  "mechanisms": [
+    { "id": "TRUTH-01", "name": "AI Request Registration", "status": "INTEGRATED" },
+    { "id": "TRUTH-02", "name": "Candidate Lineage Tracking", "status": "INTEGRATED" },
+    { "id": "TRUTH-03", "name": "Result Hashing & Validation", "status": "INTEGRATED" }
+  ]
+}

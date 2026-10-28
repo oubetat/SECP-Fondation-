@@ -1,0 +1,17 @@
+{
+  "taskId": "SECP-PROGRAMMABLE-MATERIAL-006",
+  "version": "1.0.0",
+  "modifiedFiles": [
+    {
+      "path": "/src/engine/fem/core/TET43DFormulation.ts",
+      "changeType": "EXTENDED",
+      "description": "Added spatial material property evaluation at element centroids for computeMatrices and computeStressStrain in 3D tetrahedral elements."
+    }
+  ],
+  "addedFiles": [
+    {
+      "path": "/src/engine/fem/core/__tests__/SpatialMaterialMapping3D006.test.ts",
+      "description": "Automated test suite for 3D spatial material mapping verification."
+    }
+  ]
+}

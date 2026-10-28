@@ -1,0 +1,95 @@
+{
+  "testSuite": "SECP-PROGRAMMABLE-MATERIAL-V4-001",
+  "category": "ADVERSARIAL_TEST_RESULTS",
+  "timestamp": "2026-10-27T07:35:00.000Z",
+  "tests": [
+    {
+      "testId": "V4-ADV-001",
+      "description": "Missing Canonical Geometry ID",
+      "expectedStatus": "REJECTED",
+      "actualStatus": "REJECTED",
+      "passed": true
+    },
+    {
+      "testId": "V4-ADV-002",
+      "description": "Missing Geometry Revision ID",
+      "expectedStatus": "REJECTED",
+      "actualStatus": "REJECTED",
+      "passed": true
+    },
+    {
+      "testId": "V4-ADV-003",
+      "description": "Geometry ID mismatch between assignment and model",
+      "expectedDiagnostic": "[GEOMETRY_MISMATCH]",
+      "actualDiagnostic": "[GEOMETRY_MISMATCH]",
+      "passed": true
+    },
+    {
+      "testId": "V4-ADV-004",
+      "description": "Geometry Revision mismatch between assignment and model",
+      "expectedDiagnostic": "[GEOMETRY_REVISION_MISMATCH]",
+      "actualDiagnostic": "[GEOMETRY_REVISION_MISMATCH]",
+      "passed": true
+    },
+    {
+      "testId": "V4-ADV-005",
+      "description": "Spatial field canonical geometry mismatch",
+      "expectedDiagnostic": "[FIELD_GEOMETRY_MISMATCH]",
+      "actualDiagnostic": "[FIELD_GEOMETRY_MISMATCH]",
+      "passed": true
+    },
+    {
+      "testId": "V4-ADV-006",
+      "description": "Spatial field revision mismatch",
+      "expectedDiagnostic": "[FIELD_REVISION_MISMATCH]",
+      "actualDiagnostic": "[FIELD_REVISION_MISMATCH]",
+      "passed": true
+    },
+    {
+      "testId": "V4-ADV-007",
+      "description": "Spatial field base material mismatch",
+      "expectedDiagnostic": "[SPATIAL_FIELD_MATERIAL_MISMATCH]",
+      "actualDiagnostic": "[SPATIAL_FIELD_MATERIAL_MISMATCH]",
+      "passed": true
+    },
+    {
+      "testId": "V4-ADV-008",
+      "description": "Non-existent base material in model",
+      "expectedDiagnostic": "[MATERIAL_NOT_FOUND]",
+      "actualDiagnostic": "[MATERIAL_NOT_FOUND]",
+      "passed": true
+    },
+    {
+      "testId": "V4-ADV-009",
+      "description": "Non-existent spatial field ID in model",
+      "expectedDiagnostic": "[SPATIAL_FIELD_NOT_FOUND]",
+      "actualDiagnostic": "[SPATIAL_FIELD_NOT_FOUND]",
+      "passed": true
+    },
+    {
+      "testId": "V4-ADV-010",
+      "description": "Unsupported formulation assigned spatial field",
+      "expectedDiagnostic": "[UNSUPPORTED_FORMULATION_SPATIAL_FIELD]",
+      "actualDiagnostic": "[UNSUPPORTED_FORMULATION_SPATIAL_FIELD]",
+      "passed": true
+    },
+    {
+      "testId": "V4-ADV-011",
+      "description": "Out-of-bounds evaluation with FAIL_CLOSED policy",
+      "expectedDiagnostic": "[SPATIAL_FIELD_OUT_OF_DOMAIN]",
+      "actualDiagnostic": "[SPATIAL_FIELD_OUT_OF_DOMAIN]",
+      "passed": true
+    },
+    {
+      "testId": "V4-ADV-012",
+      "description": "Revision mutation detection via FEMEvidenceEngine.isEvidenceStale",
+      "expectedStale": true,
+      "actualStale": true,
+      "passed": true
+    }
+  ],
+  "totalTests": 12,
+  "passedCount": 12,
+  "failedCount": 0,
+  "verdict": "ALL_ADVERSARIAL_GATES_PASSED"
+}

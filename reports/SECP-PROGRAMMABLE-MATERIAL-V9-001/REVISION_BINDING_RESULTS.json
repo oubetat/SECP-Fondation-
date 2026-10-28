@@ -1,0 +1,27 @@
+{
+  "taskID": "SECP-PROGRAMMABLE-MATERIAL-V9-001",
+  "verificationType": "REVISION_BINDING",
+  "timestamp": "2026-10-27T08:26:00.000Z",
+  "status": "PASSED",
+  "testCases": [
+    {
+      "testId": "REV-BIND-01",
+      "description": "Geometry Revision Binding across all truth thread nodes",
+      "geometryRevision": "REV-A",
+      "boundNodesCount": 6,
+      "result": "PASS"
+    },
+    {
+      "testId": "REV-BIND-02",
+      "description": "USES_REVISION edge creation from material definitions & fields to geometry node",
+      "edgesCreated": 2,
+      "result": "PASS"
+    },
+    {
+      "testId": "REV-BIND-03",
+      "description": "REGISTERED_TO edge creation from As-Built state to geometry node",
+      "edgeType": "REGISTERED_TO",
+      "result": "PASS"
+    }
+  ]
+}

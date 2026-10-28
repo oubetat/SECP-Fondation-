@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "1.0.0",
+  "timestamp": "2026-10-28T08:28:44.507Z",
+  "testSuite": "src/engine/engineeringCore/tests/electrothermal_coupling_verification.test.ts",
+  "testsPassed": 12,
+  "testsTotal": 12,
+  "governingPhysics": {
+    "electricalConduction": "div(sigma(T) * grad(V)) = 0",
+    "jouleDissipationRate": "q_joule = sigma(T) * |grad(V)|^2 [W/m^3]",
+    "thermalConduction": "-div(k * grad(T)) = q_joule",
+    "energyConservation": "Total Joule heat dissipation equals boundary conductive heat loss"
+  },
+  "verdict": "ELECTROTHERMAL_COUPLING_VERIFIED"
+}

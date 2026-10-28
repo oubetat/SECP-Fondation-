@@ -1,0 +1,5 @@
+{
+  "perturbationRangePercent": 5,
+  "solverStabilityMaintained": true,
+  "status": "ROBUST"
+}

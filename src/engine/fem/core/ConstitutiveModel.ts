@@ -10,7 +10,8 @@ export interface ConstitutiveResult {
 export interface ConstitutiveModel {
   update(
     strainIncrement: number[],
-    previousState: IntegrationPointState
+    previousState: IntegrationPointState,
+    temperature?: number // [C]
   ): ConstitutiveResult;
 
   getInitialState(): IntegrationPointState;

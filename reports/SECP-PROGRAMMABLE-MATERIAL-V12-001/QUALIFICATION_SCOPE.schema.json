@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "QualificationScope",
+  "type": "object",
+  "properties": {
+    "scopeId": {
+      "type": "string"
+    },
+    "revision": {
+      "type": "string"
+    },
+    "intendedUse": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "scopeId",
+    "revision",
+    "intendedUse"
+  ]
+}

@@ -1,0 +1,23 @@
+[
+  {
+    "meshScaleFactor": 0.8,
+    "nodeCount": 8,
+    "elementCount": 5,
+    "maxTemperatureC": 374.69896696153086,
+    "converged": true
+  },
+  {
+    "meshScaleFactor": 1,
+    "nodeCount": 8,
+    "elementCount": 5,
+    "maxTemperatureC": 374.69896696153086,
+    "converged": true
+  },
+  {
+    "meshScaleFactor": 1.2,
+    "nodeCount": 8,
+    "elementCount": 5,
+    "maxTemperatureC": 374.69896696153086,
+    "converged": true
+  }
+]

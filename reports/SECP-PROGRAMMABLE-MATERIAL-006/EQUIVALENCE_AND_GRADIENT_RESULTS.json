@@ -1,0 +1,17 @@
+{
+  "taskId": "SECP-PROGRAMMABLE-MATERIAL-006",
+  "results": [
+    {
+      "testId": "PME-006-01",
+      "name": "TET4_3D Homogeneous Equivalence",
+      "status": "PASS",
+      "notes": "Constant field matches baseline elasticity exactly."
+    },
+    {
+      "testId": "PME-006-02",
+      "name": "TET4_3D Spatial Gradient Effect",
+      "status": "PASS",
+      "notes": "Graded field E(x) = 100k(1+0.1x) successfully stiffened the element, reducing axial displacement compared to baseline."
+    }
+  ]
+}

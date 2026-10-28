@@ -1,0 +1,18 @@
+{
+  "task_id": "SECP-PROGRAMMABLE-MATERIAL-V5-001",
+  "status": "VERIFIED_PASS",
+  "adversarial_tests": [
+    { "id": "V5-ADV-001", "name": "Invalid Modulus Rejection", "expected_code": "SPATIAL_FIELD_BOUNDS_ERROR", "status": "PASS" },
+    { "id": "V5-ADV-002", "name": "Invalid Poisson Ratio Rejection", "expected_code": "SPATIAL_FIELD_BOUNDS_ERROR", "status": "PASS" },
+    { "id": "V5-ADV-003", "name": "Missing Required Property E", "expected_code": "SPATIAL_FIELD_MISSING_PROPERTY", "status": "PASS" },
+    { "id": "V5-ADV-004", "name": "Base Material Mismatch", "expected_code": "SPATIAL_FIELD_MATERIAL_MISMATCH", "status": "PASS" },
+    { "id": "V5-ADV-005", "name": "Unregistered Spatial Field ID", "expected_code": "SPATIAL_FIELD_NOT_FOUND", "status": "PASS" },
+    { "id": "V5-ADV-006", "name": "Non-supported Formulation", "expected_code": "UNSUPPORTED_FORMULATION_SPATIAL_FIELD", "status": "PASS" },
+    { "id": "V5-ADV-007", "name": "Revision Invalidation Detection", "expected_code": "STALE_EVIDENCE_DETECTED", "status": "PASS" },
+    { "id": "V5-ADV-008", "name": "Coordinate Frame Transformation", "expected_code": "N/A", "status": "PASS" },
+    { "id": "V5-ADV-009", "name": "Non-finite Expression Evaluation", "expected_code": "SPATIAL_FIELD_ERROR", "status": "PASS" },
+    { "id": "V5-ADV-010", "name": "Multiphysics Non-claim Verification", "expected_code": "SPATIAL_FIELD_MISSING_PROPERTY", "status": "PASS" },
+    { "id": "V5-ADV-011", "name": "Zero-Length Element Protection", "expected_code": "ZERO_LENGTH_ELEMENT", "status": "PASS" },
+    { "id": "V5-ADV-012", "name": "Energy Conservation & Equilibrium", "expected_code": "N/A", "status": "PASS" }
+  ]
+}

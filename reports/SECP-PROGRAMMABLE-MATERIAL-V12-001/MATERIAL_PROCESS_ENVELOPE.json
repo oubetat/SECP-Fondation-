@@ -1,0 +1,9 @@
+{
+  "material": "Ti-6Al-4V",
+  "youngsModulusRange": [
+    50,
+    110
+  ],
+  "units": "GPa",
+  "maxStressMPa": 950
+}

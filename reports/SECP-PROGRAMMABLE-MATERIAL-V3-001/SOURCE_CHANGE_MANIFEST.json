@@ -1,0 +1,37 @@
+{
+  "task": "SECP-PROGRAMMABLE-MATERIAL-V3-001",
+  "phase": "V3",
+  "scope": "Spatial Material Field Engineering",
+  "changes": [
+    {
+      "filePath": "src/engine/fem/core/SpatialMaterialField.ts",
+      "action": "ENHANCE",
+      "description": "Added coordinate domain validation, outOfDomainBehavior policies, valueCategory categorization (TARGET, PREDICTED, MEASURED), physical parameter sanity enforcement (E > 0, -1 < nu < 0.5, rho > 0), and cryptographic SHA-256 state hashing."
+    },
+    {
+      "filePath": "src/engine/fem/core/Bar1DFormulation.ts",
+      "action": "ENHANCE",
+      "description": "Implemented strict fail-closed validation for element.spatialFieldId: verified field presence in model, verified base material match, threw error if property E is undefined, and preserved legacy baseline without regressions."
+    },
+    {
+      "filePath": "src/engine/fem/core/TET43DFormulation.ts",
+      "action": "ENHANCE",
+      "description": "Implemented strict fail-closed validation for element.spatialFieldId in computeMatrices and computeStressStrain: verified field presence, base material match, missing property E, added spatial Poisson's ratio (nu) evaluation, and preserved legacy baseline."
+    },
+    {
+      "filePath": "src/engine/fem/core/TET4PlasticFormulation.ts",
+      "action": "ENHANCE",
+      "description": "Enforced fail-closed rejection of spatial field binding with explicit [UNSUPPORTED_FORMULATION_SPATIAL_FIELD] error, classifying capability as NOT_YET_IMPLEMENTED."
+    },
+    {
+      "filePath": "src/engine/fem/core/FEMEvidenceEngine.ts",
+      "action": "ENHANCE",
+      "description": "Implemented canonical serialization for Map, Set, and spatial material fields, added spatialFieldHash to evidence packages, and implemented isEvidenceStale for mutation detection."
+    },
+    {
+      "filePath": "src/engine/fem/core/__tests__/SpatialMaterialFieldV3.test.ts",
+      "action": "CREATE",
+      "description": "Built complete numerical benchmark suite (Tests A-F) and 13 adversarial / invalidation tests (PMV3-ADV-001 to PMV3-ADV-013)."
+    }
+  ]
+}

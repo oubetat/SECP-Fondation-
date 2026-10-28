@@ -1,0 +1,20 @@
+{
+  "taskId": "SECP-PROGRAMMABLE-MATERIAL-005",
+  "fieldValidation": [
+    {
+      "testId": "FIELD-VAL-01",
+      "description": "Analytic expression evaluation at valid coordinates",
+      "status": "PASS"
+    },
+    {
+      "testId": "FIELD-VAL-02",
+      "description": "Bounds violation detection (lower/upper bound checks)",
+      "status": "PASS"
+    },
+    {
+      "testId": "FIELD-VAL-03",
+      "description": "Non-finite value rejection (NaN/Inf)",
+      "status": "PASS"
+    }
+  ]
+}

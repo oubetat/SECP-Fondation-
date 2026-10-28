@@ -1,0 +1,20 @@
+{
+  "taskId": "SECP-PROGRAMMABLE-MATERIAL-V8-001",
+  "evaluatedAt": "2026-10-27T08:14:00Z",
+  "asBuiltStateId": "ABState_Mock_001",
+  "propertyId": "E",
+  "unit": "MPa",
+  "acceptanceCriteria": {
+    "criteriaId": "CRIT_SYM_10PCT",
+    "thresholdType": "SYMMETRIC_DELTA",
+    "maxSymmetricDelta": 10500.0,
+    "unit": "MPa",
+    "sourceSpecification": "SPEC-TEST-V8-01"
+  },
+  "numericalResults": [
+    { "pointIndex": 0, "x": 0, "y": 0, "z": 0, "intended": 210000, "actual": 215000, "signedDeviation": 5000, "absDeviation": 5000, "relDeviation": 0.0238095, "status": "CONFORMING" },
+    { "pointIndex": 1, "x": 10, "y": 0, "z": 0, "intended": 210000, "actual": 215000, "signedDeviation": 5000, "absDeviation": 5000, "relDeviation": 0.0238095, "status": "CONFORMING" },
+    { "pointIndex": 2, "x": 20, "y": 0, "z": 0, "intended": 210000, "actual": 215000, "signedDeviation": 5000, "absDeviation": 5000, "relDeviation": 0.0238095, "status": "CONFORMING" }
+  ],
+  "verificationStatus": "PASS"
+}

@@ -1,0 +1,4 @@
+{
+  "status": "NOT_APPLICABLE_IN_TEST_CASE",
+  "reason": "Test model does not contain manufacturing gradients. Adversarial tests confirm the linkage is active."
+}

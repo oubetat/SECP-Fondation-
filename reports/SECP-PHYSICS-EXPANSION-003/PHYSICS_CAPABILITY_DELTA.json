@@ -1,0 +1,14 @@
+{
+  "expansion002": [
+    "2D/3D Mechanical FEM",
+    "J2 Radial Return Plasticity",
+    "Large Deformation Total Lagrangian"
+  ],
+  "expansion003Additions": [
+    "3D Electrostatic Maxwell Solver",
+    "Bidirectional Electro-Thermal Joule Heating",
+    "Picard Multiphysics Staggered Iteration",
+    "Deformed Mesh Field Transfer"
+  ],
+  "verificationStatus": "FULLY_QUALIFIED"
+}

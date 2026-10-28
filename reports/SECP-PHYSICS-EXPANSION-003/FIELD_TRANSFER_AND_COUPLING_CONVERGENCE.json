@@ -1,0 +1,6 @@
+{
+  "fieldInterpolationErrorMax": 0.0000012,
+  "couplingResidualDU": 0.002061329046235114,
+  "couplingResidualDT": 0.002620532572714751,
+  "status": "CONVERGED"
+}

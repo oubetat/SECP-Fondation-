@@ -1,0 +1,16 @@
+{
+  "requestId": "REQ-EX-001",
+  "evaluatedCount": 2,
+  "results": [
+    {
+      "candidateId": "AI-CAND-001",
+      "feasibility": "FEASIBLE",
+      "metric": { "strainEnergy": 0.020 }
+    },
+    {
+      "candidateId": "AI-CAND-002",
+      "feasibility": "FEASIBLE",
+      "metric": { "strainEnergy": 0.033 }
+    }
+  ]
+}

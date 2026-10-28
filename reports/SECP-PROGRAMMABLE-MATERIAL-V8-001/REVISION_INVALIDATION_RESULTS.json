@@ -1,0 +1,20 @@
+{
+  "taskId": "SECP-PROGRAMMABLE-MATERIAL-V8-001",
+  "evidenceEngine": "FEMEvidenceEngine",
+  "invalidationScenarios": [
+    {
+      "scenario": "Identical model with unchanged deviationResult",
+      "expectedStale": false,
+      "actualStale": false,
+      "verdict": "PASS"
+    },
+    {
+      "scenario": "Mutated overallStatus in deviationResult (CONFORMING -> NONCONFORMING)",
+      "expectedStale": true,
+      "actualStale": true,
+      "reason": "Spatial material deviation result or acceptance criteria modified",
+      "verdict": "PASS"
+    }
+  ],
+  "invalidationVerdict": "PASS"
+}

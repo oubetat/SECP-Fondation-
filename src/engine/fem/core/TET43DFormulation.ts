@@ -15,10 +15,35 @@ import { Matrix } from "./MathUtils";
 import { DOFComponent, ElementMatrixResult, ElementStressStrainResult, FEMElement, FEMModel, IntegrationPointResult } from "./FEMTypes";
 import { FEMElementFormulation } from "./FEMElementFormulation";
 import { FEMDOFManager } from "./FEMDOFManager";
+import { CoordinateFrameTransformEngine } from "./GeometryMaterialAssignment";
 
 export class TET43DFormulation implements FEMElementFormulation {
   getRequiredDOFs(): DOFComponent[] {
     return [DOFComponent.UX, DOFComponent.UY, DOFComponent.UZ];
+  }
+
+  private resolveEvaluationPoint(
+    element: FEMElement,
+    model: FEMModel,
+    globalPoint: { x: number; y: number; z: number }
+  ): { x: number; y: number; z: number } {
+    let frame = model.geometryMetadata?.coordinateFrame;
+    if (model.materialAssignments) {
+      if (element.assignmentId && model.materialAssignments.has(element.assignmentId)) {
+        frame = model.materialAssignments.get(element.assignmentId)!.coordinateFrame;
+      } else {
+        for (const assignment of model.materialAssignments.values()) {
+          if (assignment.spatialFieldId === element.spatialFieldId) {
+            frame = assignment.coordinateFrame;
+            break;
+          }
+        }
+      }
+    }
+    if (frame && frame.frameType !== 'GLOBAL_CARTESIAN') {
+      return CoordinateFrameTransformEngine.toLocal(globalPoint, frame);
+    }
+    return globalPoint;
   }
 
   /**
@@ -88,12 +113,39 @@ export class TET43DFormulation implements FEMElementFormulation {
       throw new Error(`[INVALID_MATERIAL] Invalid Poisson ratio nu=${material?.nu} for element '${element.elementId}'`);
     }
 
-    const E = material.E;
-    const nu = material.nu;
-
     const x = nodes.map(n => n!.x);
     const y = nodes.map(n => n!.y);
     const z = nodes.map(n => n!.z);
+
+    let E = material.E;
+    let nu = material.nu;
+    if (element.spatialFieldId) {
+      if (!model.spatialMaterialFields || !model.spatialMaterialFields.has(element.spatialFieldId)) {
+        throw new Error(`[SPATIAL_FIELD_NOT_FOUND] Spatial material field '${element.spatialFieldId}' not found in model for element '${element.elementId}'.`);
+      }
+      const field = model.spatialMaterialFields.get(element.spatialFieldId)!;
+      if (field.baseMaterialId && field.baseMaterialId !== element.materialId) {
+        throw new Error(`[SPATIAL_FIELD_MATERIAL_MISMATCH] Field base material '${field.baseMaterialId}' does not match element material '${element.materialId}' on element '${element.elementId}'.`);
+      }
+      const cx = (x[0] + x[1] + x[2] + x[3]) / 4.0;
+      const cy = (y[0] + y[1] + y[2] + y[3]) / 4.0;
+      const cz = (z[0] + z[1] + z[2] + z[3]) / 4.0;
+      const evalPoint = this.resolveEvaluationPoint(element, model, { x: cx, y: cy, z: cz });
+      const props = field.evaluate(evalPoint);
+      if (props.E === undefined) {
+        throw new Error(`[SPATIAL_FIELD_MISSING_PROPERTY] Spatial field '${element.spatialFieldId}' does not define mandatory property 'E' required by TET43DFormulation for element '${element.elementId}'.`);
+      }
+      if (props.E <= 0 || !Number.isFinite(props.E)) {
+        throw new Error(`[INVALID_SPATIAL_FIELD_PROPERTY] Spatial field '${element.spatialFieldId}' evaluated to invalid Young's modulus E=${props.E} at evaluation point on element '${element.elementId}'.`);
+      }
+      E = props.E;
+      if (props.nu !== undefined) {
+        if (props.nu < -1 || props.nu >= 0.5 || !Number.isFinite(props.nu)) {
+          throw new Error(`[INVALID_SPATIAL_FIELD_PROPERTY] Spatial field '${element.spatialFieldId}' evaluated to invalid Poisson ratio nu=${props.nu} at evaluation point on element '${element.elementId}'.`);
+        }
+        nu = props.nu;
+      }
+    }
 
     // 3D Jacobian matrix J = [ x2-x1  y2-y1  z2-z1 ; x3-x1 y3-y1 z3-z1 ; x4-x1 y4-y1 z4-z1 ]
     const J11 = x[1] - x[0], J12 = y[1] - y[0], J13 = z[1] - z[0];
@@ -232,12 +284,39 @@ export class TET43DFormulation implements FEMElementFormulation {
       throw new Error(`[INVALID_MATERIAL] Invalid Poisson ratio nu=${material?.nu}`);
     }
 
-    const E = material.E;
-    const nu = material.nu;
-
     const x = nodes.map(n => n.x);
     const y = nodes.map(n => n.y);
     const z = nodes.map(n => n.z);
+
+    let E = material.E;
+    let nu = material.nu;
+    if (element.spatialFieldId) {
+      if (!model.spatialMaterialFields || !model.spatialMaterialFields.has(element.spatialFieldId)) {
+        throw new Error(`[SPATIAL_FIELD_NOT_FOUND] Spatial material field '${element.spatialFieldId}' not found in model for element '${element.elementId}'.`);
+      }
+      const field = model.spatialMaterialFields.get(element.spatialFieldId)!;
+      if (field.baseMaterialId && field.baseMaterialId !== element.materialId) {
+        throw new Error(`[SPATIAL_FIELD_MATERIAL_MISMATCH] Field base material '${field.baseMaterialId}' does not match element material '${element.materialId}' on element '${element.elementId}'.`);
+      }
+      const cx = (x[0] + x[1] + x[2] + x[3]) / 4.0;
+      const cy = (y[0] + y[1] + y[2] + y[3]) / 4.0;
+      const cz = (z[0] + z[1] + z[2] + z[3]) / 4.0;
+      const evalPoint = this.resolveEvaluationPoint(element, model, { x: cx, y: cy, z: cz });
+      const props = field.evaluate(evalPoint);
+      if (props.E === undefined) {
+        throw new Error(`[SPATIAL_FIELD_MISSING_PROPERTY] Spatial field '${element.spatialFieldId}' does not define mandatory property 'E' required by TET43DFormulation for element '${element.elementId}'.`);
+      }
+      if (props.E <= 0 || !Number.isFinite(props.E)) {
+        throw new Error(`[INVALID_SPATIAL_FIELD_PROPERTY] Spatial field '${element.spatialFieldId}' evaluated to invalid Young's modulus E=${props.E} at evaluation point on element '${element.elementId}'.`);
+      }
+      E = props.E;
+      if (props.nu !== undefined) {
+        if (props.nu < -1 || props.nu >= 0.5 || !Number.isFinite(props.nu)) {
+          throw new Error(`[INVALID_SPATIAL_FIELD_PROPERTY] Spatial field '${element.spatialFieldId}' evaluated to invalid Poisson ratio nu=${props.nu} at evaluation point on element '${element.elementId}'.`);
+        }
+        nu = props.nu;
+      }
+    }
 
     const u_e = new Float64Array(12);
     for (let i = 0; i < 4; i++) {

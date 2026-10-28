@@ -1,0 +1,35 @@
+{
+  "testSuite": "SECP-PROGRAMMABLE-MATERIAL-V4-001",
+  "category": "COORDINATE_FRAME_VALIDATION",
+  "timestamp": "2026-10-27T07:35:00.000Z",
+  "cases": [
+    {
+      "caseId": "FRAME_TRANSFORM_3D_SE3",
+      "description": "Forward and inverse SE(3) transformation with 90-deg Z-rotation and 3D translation",
+      "translation": { "x": 100.0, "y": 50.0, "z": 25.0 },
+      "rotationMatrix": [
+        [0.0, -1.0, 0.0],
+        [1.0, 0.0, 0.0],
+        [0.0, 0.0, 1.0]
+      ],
+      "inputGlobalPoint": { "x": 90.0, "y": 70.0, "z": 30.0 },
+      "computedLocalPoint": { "x": 20.0, "y": 10.0, "z": 5.0 },
+      "reconstructedGlobalPoint": { "x": 90.0, "y": 70.0, "z": 30.0 },
+      "inversionError": 0.0,
+      "passed": true
+    },
+    {
+      "caseId": "FRAME_INVARIANCE_SOLVE_COMPARISON",
+      "description": "Comparison between origin model and translated assembly model under local linear gradient",
+      "gradientFormula": "E(x_local) = 100000 + 1000 * x_local",
+      "localEvaluationCentroidX": 50.0,
+      "expectedLocalE": 150000.0,
+      "modelA_OriginDisplacement_mm": 0.333333333333,
+      "modelB_TranslatedDisplacement_mm": 0.333333333333,
+      "displacementDelta": 0.0,
+      "numericalTolerance": 1e-12,
+      "passed": true
+    }
+  ],
+  "verdict": "VERIFIED_FRAME_INVARIANT"
+}

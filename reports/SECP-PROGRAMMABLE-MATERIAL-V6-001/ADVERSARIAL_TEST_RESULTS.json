@@ -1,0 +1,18 @@
+{
+  "task_id": "SECP-PROGRAMMABLE-MATERIAL-V6-001",
+  "status": "VERIFIED_PASS",
+  "adversarial_tests": [
+    { "id": "V6-ADV-001", "name": "Rejects Empty Profile ID", "expected_code": "INVALID_PROFILE", "status": "PASS" },
+    { "id": "V6-ADV-002", "name": "Rejects Non-Positive Wall Thickness", "expected_code": "INVALID_PROFILE_VALUE", "status": "PASS" },
+    { "id": "V6-ADV-003", "name": "Rejects Non-Positive Spatial Gradient", "expected_code": "INVALID_PROFILE_VALUE", "status": "PASS" },
+    { "id": "V6-ADV-004", "name": "Rejects Empty Material Compatibility", "expected_code": "INVALID_PROFILE", "status": "PASS" },
+    { "id": "V6-ADV-005", "name": "Rejects False Qualified Machine Claim", "expected_code": "INVALID_PROFILE_DECLARATION", "status": "PASS" },
+    { "id": "V6-ADV-006", "name": "Rejects Unnormalized Build Vector", "expected_code": "INVALID_BUILD_DIRECTION", "status": "PASS" },
+    { "id": "V6-ADV-007", "name": "Audits Missing Machine ID on Qualified Profile", "expected_code": "INVALID_PROFILE_DECLARATION", "status": "PASS" },
+    { "id": "V6-ADV-008", "name": "Validates Qualified Machine Profile", "expected_code": "N/A", "status": "PASS" },
+    { "id": "V6-ADV-009", "name": "Computes Deterministic Profile Hash", "expected_code": "N/A", "status": "PASS" },
+    { "id": "V6-ADV-010", "name": "Detects Profile Limit Modification Hash Shift", "expected_code": "N/A", "status": "PASS" },
+    { "id": "V6-ADV-011", "name": "3D Continuum Mesh Manufacturability Audit", "expected_code": "N/A", "status": "PASS" },
+    { "id": "V6-ADV-012", "name": "End-to-End Solve + Audit + Evidence Integration", "expected_code": "N/A", "status": "PASS" }
+  ]
+}

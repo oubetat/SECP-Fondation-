@@ -1,0 +1,18 @@
+{
+  "taskID": "SECP-PROGRAMMABLE-MATERIAL-V9-001",
+  "verificationType": "AUTHORIZATION_TESTS",
+  "timestamp": "2026-10-27T08:26:00.000Z",
+  "status": "PASSED",
+  "tests": [
+    {
+      "testId": "AUTH-01",
+      "description": "Unsigned decision node insertion attempt without evidence hash",
+      "result": "REJECTED_SAFELY"
+    },
+    {
+      "testId": "AUTH-02",
+      "description": "Adjudication decision bypass without evaluated deviation result",
+      "result": "REJECTED_SAFELY"
+    }
+  ]
+}

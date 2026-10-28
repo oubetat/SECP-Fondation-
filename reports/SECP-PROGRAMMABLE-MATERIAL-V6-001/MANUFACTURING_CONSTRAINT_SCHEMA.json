@@ -1,0 +1,68 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ManufacturingConstraintProfile",
+  "type": "object",
+  "required": [
+    "profileId",
+    "profileVersion",
+    "processType",
+    "unitSystem",
+    "syntheticProfile",
+    "minWallThickness",
+    "minFeatureSize",
+    "maxSpatialGradient",
+    "processResolution",
+    "materialCompatibility",
+    "qualificationStatus"
+  ],
+  "properties": {
+    "profileId": { "type": "string", "minLength": 1 },
+    "profileVersion": { "type": "string", "minLength": 1 },
+    "processType": {
+      "type": "string",
+      "enum": [
+        "ADDITIVE_PBF",
+        "ADDITIVE_DED",
+        "SUBTRACTIVE_CNC",
+        "GRADED_MATERIAL_DEPOSITION",
+        "HYBRID_ADDITIVE_SUBTRACTIVE"
+      ]
+    },
+    "unitSystem": {
+      "type": "string",
+      "enum": ["SI_MM_MPA", "SI_M_PA"]
+    },
+    "syntheticProfile": { "type": "boolean" },
+    "minWallThickness": { "type": "number", "exclusiveMinimum": 0 },
+    "minFeatureSize": { "type": "number", "exclusiveMinimum": 0 },
+    "minCellSize": { "type": "number", "exclusiveMinimum": 0 },
+    "maxSpatialGradient": { "type": "number", "exclusiveMinimum": 0 },
+    "processResolution": { "type": "number", "exclusiveMinimum": 0 },
+    "buildDirection": {
+      "type": "object",
+      "required": ["x", "y", "z"],
+      "properties": {
+        "x": { "type": "number" },
+        "y": { "type": "number" },
+        "z": { "type": "number" }
+      }
+    },
+    "minOverhangAngle": { "type": "number", "minimum": 0, "maximum": 90 },
+    "materialCompatibility": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1
+    },
+    "qualificationStatus": {
+      "type": "string",
+      "enum": [
+        "SYNTHETIC_TEST_PROFILE",
+        "PROCESS_MODEL_EVALUATED",
+        "MACHINE_PROFILE_QUALIFIED",
+        "PHYSICALLY_MANUFACTURED_AND_MEASURED"
+      ]
+    },
+    "qualifiedMachineId": { "type": "string" },
+    "qualificationSource": { "type": "string" }
+  }
+}

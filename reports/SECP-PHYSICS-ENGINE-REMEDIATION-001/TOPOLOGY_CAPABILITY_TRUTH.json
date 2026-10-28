@@ -1,0 +1,37 @@
+{
+  "schemaVersion": "1.0.0",
+  "timestamp": "2026-10-28T08:28:44.507Z",
+  "category": "TOPOLOGY_AND_DIFFERENTIAL_GEOMETRY",
+  "implementedCapabilities": [
+    {
+      "name": "CAD B-Rep Boundary Representation Topology",
+      "status": "FULLY_IMPLEMENTED_AND_VERIFIED",
+      "details": "Vertex, Edge, Loop, Face, Shell, Solid hierarchy. Manifold orientation checking, Euler-Poincare characteristic chi = V - E + F = 2 for closed genus-0 solids.",
+      "source": "src/engine/cad-kernel/topology/BRepTopology.ts"
+    },
+    {
+      "name": "Differential Geometry & Surface Curvature",
+      "status": "FULLY_IMPLEMENTED_AND_VERIFIED",
+      "details": "NURBS surface evaluation, first and second fundamental forms, principal curvatures k1, k2, Gaussian curvature K = k1*k2, Mean curvature H = 0.5*(k1+k2).",
+      "source": "src/engine/cad-kernel/geometry/DifferentialGeometry.ts"
+    }
+  ],
+  "unimplementedCapabilities": [
+    {
+      "name": "Persistent Homology & Topological Data Analysis",
+      "status": "NOT_IMPLEMENTED",
+      "details": "No filtration complexes (Vietoris-Rips, Cech) or persistence barcode algorithms exist in SECP."
+    },
+    {
+      "name": "Algebraic Topology & Betti Number Invariants",
+      "status": "NOT_IMPLEMENTED",
+      "details": "No simplicial or singular homology boundary operators or Betti number matrix reductions exist."
+    },
+    {
+      "name": "Gauss-Bonnet Global Integral Verification",
+      "status": "NOT_IMPLEMENTED",
+      "details": "Global integral of Gaussian curvature integral(K dA) = 2*pi*chi is not calculated."
+    }
+  ],
+  "boundaryStatement": "CAD geometric/B-Rep topology is real and verified; algebraic/differential topology data analysis is not present and excluded from qualified scope."
+}

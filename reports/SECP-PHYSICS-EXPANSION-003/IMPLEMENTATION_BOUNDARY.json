@@ -1,0 +1,21 @@
+{
+  "campaign": "SECP-PHYSICS-EXPANSION-003",
+  "runId": "RUN-SECP-003-1793182654205",
+  "timestamp": "2026-10-28T10:17:34.205Z",
+  "domains": [
+    "Electrical",
+    "Thermal",
+    "Mechanical"
+  ],
+  "coupling": "Bidirectional Thermo-Electro-Mechanical Picard Iteration",
+  "meshFeedback": "Geometric Feedback (Deformed Coordinates)",
+  "constitutive": [
+    "J2 Plasticity with Thermal Softening",
+    "Hyperelastic Neo-Hookean 3D",
+    "Hyperelastic Mooney-Rivlin 3D"
+  ],
+  "limitations": [
+    "Quasi-static thermal-electrical coupling",
+    "Continuous solid domain (no contact surfaces)"
+  ]
+}

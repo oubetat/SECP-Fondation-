@@ -1,0 +1,7 @@
+{
+  "testFile": "/src/engine/fem/core/__tests__/MaterialAIExplorationV11.test.ts",
+  "totalTests": 5,
+  "passed": 5,
+  "failed": 0,
+  "command": "npx vitest run src/engine/fem/core/__tests__/MaterialAIExplorationV11.test.ts"
+}

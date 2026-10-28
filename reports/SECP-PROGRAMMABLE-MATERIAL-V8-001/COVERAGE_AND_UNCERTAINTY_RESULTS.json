@@ -1,0 +1,16 @@
+{
+  "taskId": "SECP-PROGRAMMABLE-MATERIAL-V8-001",
+  "coverageEvaluation": {
+    "totalDomainNodes": 5,
+    "measuredNodes": 2,
+    "unmeasuredNodes": 3,
+    "coverageRatio": 0.4,
+    "coverageThreshold": 0.8,
+    "gateStatus": "INSUFFICIENT_COVERAGE"
+  },
+  "uncertaintyEvaluation": {
+    "meanMeasurementUncertainty": 500.0,
+    "uncertaintyOverlapStatus": "INDETERMINATE_BOUNDARY_DETECTED",
+    "indeterminatePointsCount": 1
+  }
+}

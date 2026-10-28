@@ -1,0 +1,653 @@
+المهمة التالية يجب أن تكون توسعة فيزيائية جديدة فعلًا، لا إعادة تنفيذ `SECP-PHYSICS-EXPANSION-002` ولا مجرد إضافة اختبارات حول المحركات الموجودة. سنبني على ما أُنجز في اللدونة ثلاثية الأبعاد، والهايبر-إلاستيسيتي، والحل اللاخطي، والاقتران الكهروحراري، مع الحفاظ على مبدأ SECP: الفيزياء تحسب، والنواة تحكم، والحالة القانونية هي المرجع، والدليل يُشتق من التنفيذ الحقيقي.
+
+أقترح أن تكون التوسعة التالية هي `SECP-PHYSICS-EXPANSION-003`، وتركّز على ثلاث قفزات مترابطة:
+
+* ميكانيكا لاخطية أكثر اكتمالًا: الاستقرار، والتلامس، والقيود، ومسارات التحميل والتفريغ.
+
+* تطور المادة حراريًا وميكانيكيًا: انتقال الحالة المادية مع الحرارة والتشوه، مع عدم خلط اللدونة المثبتة برمجيًا بسلوك مادي لم يُنمذج بعد.
+
+* اقتران حراري–كهربائي–ميكانيكي حقيقي: انتقال الحرارة إلى الخواص الميكانيكية والمقاومة الكهربائية، ثم إعادة تأثير التشوه ودرجة الحرارة على الحل الكهربائي والحراري.
+
+هذه ليست دعوى بأن كل هذه القدرات موجودة الآن؛ بل هي حدود المهمة الجديدة التي يجب تنفيذها والتحقق منها دون تجاوز ما تثبته النتائج.
+
+### المهمة التنفيذية الرسمية — جاهزة للإرسال إلى وكيل البرمجة
+
+# SECP-PHYSICS-EXPANSION-003
+## Nonlinear Thermo-Electro-Mechanical Coupling, Material Evolution & Structural Stability
+
+**Classification:** Physics Engine Expansion
+**Execution Mode:** Implementation + Numerical Verification + Independent Evidence + Regression Protection
+**Priority:** P0 — Engineering-Critical
+**Repository:** `/app/applet`
+**Predecessor:** `SECP-PHYSICS-EXPANSION-002`
+**Acceptance Policy:** Fail-Closed, Evidence-Backed, No Cosmetic Closure
+
+---
+
+# 1. MISSION
+
+Extend the existing SECP physics infrastructure into a more complete, revision-bound nonlinear engineering computation capability by implementing and verifying:
+
+1. Nonlinear structural equilibrium and stability under incremental loading.
+2. Reliable material-state evolution through elastic, plastic, thermal, unloading, and failed-trial states.
+3. Consistent bidirectional coupling between electrical conduction, Joule heating, temperature-dependent material properties, and mechanically induced changes in geometry or material response.
+4. Independent conservation, convergence, sensitivity, and failure-recovery verification.
+5. Production-path integration through the existing canonical engineering and evidence architecture.
+
+This is a real physics expansion, not a UI exercise, test-count exercise, or replacement of existing implementations with simplified models.
+
+The task MUST extend the existing SECP architecture. It MUST NOT create a parallel physics core, a second canonical model, an independent authority registry, or a disconnected simulation state system.
+
+## 1.1 Governing execution sequence
+
+`INSPECT → BASELINE → IMPLEMENT → INTEGRATE → TEST → VERIFY → ADVERSARIAL TEST → INDEPENDENT RECONCILIATION → EVIDENCE → PERSIST → REGRESSION → ACCEPTANCE`
+
+No stage may be marked complete merely because a later stage ran.
+
+---
+
+# 2. REQUIRED BASELINE INSPECTION
+
+Before changing code, inspect and map the actual implementations and call paths for at least:
+
+- `src/engine/fem/core/NonlinearEquilibriumSolver.ts`
+- `src/engine/fem/core/FEMCore.ts`
+- `src/engine/fem/core/GlobalAssemblyEngine.ts`
+- `src/engine/fem/core/MaterialStateManager.ts`
+- `src/engine/fem/core/ConstitutiveModel.ts`
+- `src/engine/fem/core/ConstitutiveTangentVerifier.ts`
+- `src/engine/fem/core/J2Plasticity3D.ts`
+- `src/engine/fem/core/HyperelasticNeoHookean3D.ts`
+- `src/engine/fem/core/HyperelasticMooneyRivlin3D.ts`
+- `src/engine/fem/core/TET4LargeDeformationPlasticFormulation.ts`
+- `src/engine/engineeringCore/SpatialThermalSolver.ts`
+- `src/engine/engineeringCore/ElectrothermalSolver.ts`
+- `src/engine/physics/electromagnetics/ElectrostaticSolver3D.ts`
+- `src/engine/physics/electromagnetics/BidirectionalElectrothermalSolver3D.ts`
+- `scripts/run_secp_physics_expansion_002.ts`
+- `scripts/reconcile_secp_expansion_002.ts`
+- `src/engine/fem/core/__tests__/FEMUpgrade011HyperelasticLargeDeform.test.ts`
+- `src/engine/fem/core/__tests__/FEMUpgrade012Expansion002.test.ts`
+- `src/engine/physics/electromagnetics/__tests__/ElectrostaticSolver3D.test.ts`
+
+The list is a minimum inspection boundary, not permission to assume that all listed APIs exist or are correctly connected.
+
+Produce a baseline inventory containing:
+
+- Existing capability and mathematical formulation.
+- Actual solver and production execution path.
+- Material-state ownership and commit/rollback semantics.
+- Existing coupling direction and field-transfer mechanism.
+- Existing test and verification coverage.
+- Known numerical limitations.
+- Files to modify and the reason for each modification.
+
+Do not rewrite functioning modules merely to produce a larger diff.
+
+## 2.1 Mandatory predecessor regression
+
+Before implementing new functionality:
+
+1. Run the existing `EXPANSION-002` test suite.
+2. Run its campaign and reconciliation scripts.
+3. Record actual exit codes and machine-readable results.
+4. Preserve the existing Neo-Hookean and Mooney–Rivlin tangent-verification behavior.
+5. Record any baseline failure before making changes.
+
+The predecessor's reported 14/14 test result is a baseline claim to reproduce, not an automatic acceptance of the new task.
+
+---
+
+# 3. WORKSTREAM A — NONLINEAR STRUCTURAL EQUILIBRIUM AND STABILITY
+
+## A1. Incremental equilibrium
+
+Extend the existing nonlinear solver where justified to support or rigorously verify:
+
+- Incremental load application.
+- Newton–Raphson equilibrium iterations.
+- Residual-force and displacement-increment convergence criteria.
+- Consistent tangent assembly.
+- Adaptive load-step reduction when convergence fails.
+- Retry limits and deterministic termination.
+- Detection of singular, ill-conditioned, or invalid systems.
+- Fail-closed termination when equilibrium cannot be established.
+
+Convergence MUST require declared numerical criteria. Reaching the maximum iteration count is not convergence.
+
+## A2. Loading, unloading, and path dependence
+
+Construct reproducible tests for:
+
+- Elastic loading and unloading.
+- Yield initiation.
+- Plastic loading and continued hardening.
+- Partial unloading and reloading.
+- Failed increment followed by reduced-step retry.
+- Rejected trial state followed by restoration of the last committed state.
+
+Verify that plastic history variables are neither lost during valid commits nor accidentally retained after rejected trials.
+
+## A3. Structural stability
+
+Investigate the existing formulation's ability to identify:
+
+- Loss of positive definiteness or relevant tangent stiffness.
+- Singular equilibrium systems.
+- Excessive deformation and invalid element states.
+- Potential limit-point or instability behavior where the selected formulation can support a meaningful test.
+
+Do not claim buckling, post-buckling, snap-through, or robust path-following capability unless the corresponding numerical method is actually implemented and verified.
+
+If arc-length or another continuation method is required for a selected instability benchmark, treat it as an explicitly scoped implementation item rather than silently substituting ordinary load stepping.
+
+## A4. Boundary conditions and rigid-body modes
+
+Verify:
+
+- Essential boundary conditions are enforced by the authoritative solver path.
+- Unconstrained rigid-body modes are detected rather than hidden by arbitrary regularization.
+- Over-constrained and contradictory boundary conditions fail closed.
+- Boundary-condition changes do not leave stale matrix, residual, or solver state.
+
+---
+
+# 4. WORKSTREAM B — MATERIAL EVOLUTION AND CONSTITUTIVE CONSISTENCY
+
+## B1. Preserve existing constitutive models
+
+Preserve the existing 3D J2 elastoplasticity, Neo-Hookean, and Mooney–Rivlin implementations unless a mathematically justified defect is found.
+
+For each correction, document:
+
+- The original equation or algorithm.
+- The identified defect.
+- The mathematical correction.
+- Before/after numerical evidence.
+- Regression impact.
+
+Changing a material parameter solely to make a test pass is prohibited.
+
+## B2. Consistent tangent verification
+
+Verify the constitutive stress–tangent relationship across multiple independent deformation states, including where mathematically admissible:
+
+- Uniaxial tension.
+- Equibiaxial deformation.
+- Pure shear.
+- Combined shear and compression.
+- Small perturbations around a nontrivial deformation state.
+
+Use finite-difference perturbations with justified step sizes and documented tolerances.
+
+Record, per model and deformation state:
+
+- Maximum absolute error.
+- Maximum relative error.
+- Norm definition.
+- Perturbation step.
+- Tolerance.
+- Pass/fail decision.
+- Validity of the selected deformation state.
+
+A corrupted-tangent test MUST demonstrate that an intentionally incorrect tangent is rejected. It MUST NOT modify the verifier to accept the corrupted result.
+
+## B3. Material history and transactional state
+
+Verify that each integration-point or element state has explicit semantics for:
+
+- Initial state.
+- Trial state.
+- Committed state.
+- Rejected state.
+- Rollback.
+- Revision association.
+
+A failed global equilibrium iteration MUST NOT partially commit material history.
+
+The state manager must remain the authoritative owner of material history; no solver or UI module may maintain a competing material-state authority.
+
+## B4. Thermal effects on material properties
+
+Introduce a temperature-dependent constitutive response only where supported by a declared material law.
+
+Potential properties include:
+
+- Young's modulus.
+- Yield stress.
+- Hardening parameters.
+- Thermal expansion coefficient.
+- Electrical conductivity.
+
+Each property requires explicit units, valid temperature range, interpolation rules, and out-of-range behavior.
+
+Do not invent generic temperature-dependent curves and present them as measured material data.
+
+If no validated material dataset exists, use clearly labelled synthetic verification data and retain the status `SOFTWARE_VERIFIED_WITHIN_DECLARED_SCOPE`.
+
+## B5. Scope boundary for material evolution
+
+Do not claim phase transformation, creep, viscoplasticity, fatigue, fracture, damage, or residual-stress prediction merely because a generic state variable has been added.
+
+Any such mechanism requires a declared governing model, integration algorithm, verification tests, and evidence before it can be reported as implemented.
+
+---
+
+# 5. WORKSTREAM C — BIDIRECTIONAL THERMO-ELECTRO-MECHANICAL COUPLING
+
+## C1. Required physical dependency chain
+
+Implement or complete the following dependency chain through the existing engine architecture:
+
+`Electrical Potential → Electric Field / Current Density → Joule Heating → Temperature Field → Temperature-Dependent Properties → Mechanical Response → Updated Geometry / Material State → Electrical and Thermal Re-evaluation`
+
+The actual dependencies MUST be consistent with the governing equations and selected approximation.
+
+A sequential chain of independent calculations is not sufficient to claim fully coupled multiphysics.
+
+If the implementation uses staggered coupling, identify it as such. Do not label it monolithic or fully implicit unless that method is implemented.
+
+## C2. Electrical field
+
+For the supported conduction model, establish and document the governing equation, such as:
+
+`∇ · (σ(T, ε, state) ∇V) = 0`
+
+where the dependence on temperature, strain, or state must only be included if implemented and physically justified.
+
+Verify:
+
+- Electrical boundary conditions.
+- Current continuity.
+- Potential reference and gauge handling.
+- Conductivity validity.
+- Current-density computation.
+- Electrical power calculation.
+- Singular or disconnected-domain detection.
+
+## C3. Thermal field
+
+Use the actual implemented heat-transfer model, with explicit declaration of whether it is steady-state or transient.
+
+For a transient thermal model, verify the appropriate energy balance, including heat capacity, conduction, sources, and boundary heat fluxes.
+
+For a steady-state model, verify the corresponding conduction and source balance.
+
+Joule heating MUST be computed from the electrical solution using a consistent formulation, for example:
+
+`q_J = J · E`
+
+or its mathematically equivalent conductivity-based form under the selected assumptions.
+
+Do not substitute a fixed heat source while claiming that the electrical field drives the thermal field.
+
+## C4. Mechanical feedback
+
+Where the supported formulation permits, couple temperature-dependent constitutive response and thermal expansion to the structural equilibrium solve.
+
+If geometry-dependent electrical feedback is claimed, demonstrate that the electrical discretization or geometry-dependent operators are actually updated after deformation.
+
+If the current electrical model cannot support deformed-geometry feedback, report this as a specific limitation and implement only the valid coupling supported by the architecture.
+
+Do not simulate feedback by changing displayed values or by manually feeding a previous result into a field that is not connected to the governing equations.
+
+## C5. Coupling iteration and convergence
+
+For staggered coupling, define:
+
+- Coupling variables.
+- Field-transfer mechanism.
+- Iteration order.
+- Under-relaxation method, if used.
+- Residual definitions.
+- Convergence tolerances.
+- Maximum iterations.
+- Divergence detection.
+- Rollback behavior.
+- Failure reporting.
+
+Test both a convergent case and a deliberately difficult or nonconvergent case.
+
+Convergence MUST be demonstrated through residuals or field changes with declared tolerances, not inferred from a fixed iteration count.
+
+## C6. Conservation and energy accounting
+
+Independently calculate and compare:
+
+- Electrical input and dissipated power.
+- Integrated Joule heat.
+- Thermal boundary losses or heat flux.
+- Thermal storage, when transient.
+- Mechanical work and relevant energy terms where supported.
+
+Report dimensional units and residual definitions.
+
+An equality produced by assigning one output directly from another is not an independent conservation proof. At least one side of each claimed balance must be independently assembled or integrated from the underlying fields and governing equations.
+
+---
+
+# 6. WORKSTREAM D — MESH, TIME/LOAD-STEP AND NUMERICAL SENSITIVITY
+
+Create reproducible sensitivity campaigns that vary one numerical factor at a time.
+
+## D1. Mesh sensitivity
+
+Use at least three systematically refined meshes with documented:
+
+- Element type.
+- Node and element counts.
+- Mesh-generation rule.
+- Boundary-condition preservation.
+- Solver tolerances.
+- Quantity-of-interest definitions.
+
+Evaluate suitable quantities, including:
+
+- Peak and representative temperature.
+- Total electrical power.
+- Integrated heat generation.
+- Representative displacement or stress.
+- Plastic strain where applicable.
+
+Do not describe a mesh study as converged merely because the last two values are closer than the first two.
+
+Investigate non-monotonic behavior, singular stress concentrations, under-resolved gradients, and boundary-condition inconsistencies.
+
+Where applicable, calculate relative changes and estimate discretization error using a method whose assumptions are satisfied.
+
+## D2. Load-step and coupling-step sensitivity
+
+Compare results under different load increments or coupling tolerances.
+
+Demonstrate that the reported engineering quantities are not artifacts of a single chosen step size or relaxation factor.
+
+## D3. Numerical reproducibility
+
+Repeat deterministic benchmark cases and record whether differences are within declared tolerances.
+
+If nondeterminism is expected from parallel execution or solver ordering, document its source and establish a suitable reproducibility envelope.
+
+---
+
+# 7. WORKSTREAM E — INDEPENDENT BENCHMARKS
+
+Use analytically solvable or independently established reference problems wherever feasible.
+
+Required benchmark categories:
+
+1. A small-strain elastic benchmark with a known solution.
+2. A finite-deformation hyperelastic benchmark with a defensible reference.
+3. A J2 yield and plastic-history benchmark with independently calculated expected behavior.
+4. A conduction/Joule-heating benchmark with independently calculable power.
+5. A coupled thermo-electrical benchmark with a justified reference solution.
+6. A thermal-expansion structural benchmark if thermal-mechanical coupling is implemented.
+
+For each benchmark, provide:
+
+- Reference problem and source or derivation.
+- Governing assumptions.
+- Material constants and units.
+- Geometry and boundary conditions.
+- Expected solution.
+- SECP result.
+- Error metric and tolerance.
+- Pass/fail decision.
+- Limitations.
+
+Do not use another function from the same implementation as the sole independent reference for the implementation being verified.
+
+If a suitable reference cannot be established, classify the result as an internal consistency test rather than an independent benchmark.
+
+---
+
+# 8. WORKSTREAM F — ADVERSARIAL TESTING AND FAILURE RECOVERY
+
+Implement adversarial tests covering at least:
+
+- Invalid or nonphysical material parameters.
+- Singular or disconnected electrical systems.
+- Invalid deformation gradients.
+- Inverted or degenerate elements.
+- Over-constrained or under-constrained mechanical systems.
+- NaN and infinite values in input fields.
+- Nonconvergent nonlinear iterations.
+- Nonconvergent coupling iterations.
+- Invalid field transfers or mismatched field dimensions.
+- Stale or mismatched revision bindings.
+- Failed trial-state rollback.
+- Corrupted constitutive tangent.
+- Corrupted or inconsistent evidence metadata.
+- Partial failure during coupled execution.
+
+For each case, verify the expected rejection path and ensure that failed execution does not publish a successful result or corrupt previously committed state.
+
+## 8.1 Mutation testing
+
+Introduce controlled mutations in selected governing equations, tangent terms, convergence criteria, field transfers, or state-commit paths.
+
+The corresponding tests MUST detect the mutation.
+
+Report:
+
+- Mutations attempted.
+- Mutations killed.
+- Mutations surviving.
+- Mutations not applicable.
+- Reason and evidence for each classification.
+
+A test suite with a high pass count is not sufficient if meaningful numerical defects survive its assertions.
+
+---
+
+# 9. WORKSTREAM G — SECP CANONICAL INTEGRATION AND EVIDENCE
+
+Integrate through the existing authoritative production path.
+
+Verify the actual path from:
+
+`Engineering Intent / Boundary Conditions → Canonical Revision → Physics Setup → Solver Execution → Field Results → Verification → Evidence Binding → Persistence / Publication`
+
+The exact path must reflect the existing repository implementation.
+
+Requirements:
+
+- No direct UI-to-kernel bypass.
+- No parallel canonical model.
+- No unbound result objects presented as authoritative engineering results.
+- No fabricated revision IDs, evidence hashes, or solver-execution records.
+- No success status before verification and evidence generation succeed.
+- No publication of results from failed or stale executions.
+- Material state, geometry, solver configuration, and derived evidence must bind to the appropriate canonical revision and input hashes.
+
+Where the current architecture does not provide a required binding or authoritative execution path, record the precise gap instead of inventing a successful trace.
+
+---
+
+# 10. REQUIRED TEST AND CAMPAIGN DELIVERABLES
+
+Create a dedicated test suite, for example:
+
+`src/engine/fem/core/__tests__/FEMUpgrade013Expansion003.test.ts`
+
+Add additional test files only where separation improves clarity.
+
+Create the campaign runner:
+
+`scripts/run_secp_physics_expansion_003.ts`
+
+Create the independent reconciliation runner:
+
+`scripts/reconcile_secp_expansion_003.ts`
+
+The campaign runner and reconciliation runner MUST have separate responsibilities.
+
+The campaign runner performs the actual computations and produces results. The reconciliation runner reads the persisted artifacts independently, validates their schemas, recomputes or checks critical derived values where practical, verifies hashes, and determines the final acceptance status.
+
+Do not let the reconciliation runner silently rewrite failed results into passing results.
+
+---
+
+# 11. REQUIRED EVIDENCE PACKAGE
+
+Persist the following artifacts under:
+
+`reports/SECP-PHYSICS-EXPANSION-003/`
+
+1. `IMPLEMENTATION_BOUNDARY.json`
+2. `BASELINE_REGRESSION_RESULTS.json`
+3. `PHYSICS_CAPABILITY_DELTA.json`
+4. `MATHEMATICAL_FORMULATION_REGISTER.json`
+5. `NONLINEAR_EQUILIBRIUM_RESULTS.json`
+6. `STRUCTURAL_STABILITY_RESULTS.json`
+7. `MATERIAL_HISTORY_AND_ROLLBACK_RESULTS.json`
+8. `CONSTITUTIVE_TANGENT_VERIFICATION.json`
+9. `THERMO_ELECTRO_MECHANICAL_COUPLING_RESULTS.json`
+10. `FIELD_TRANSFER_AND_COUPLING_CONVERGENCE.json`
+11. `CONSERVATION_AND_ENERGY_BALANCE.json`
+12. `MESH_AND_LOAD_STEP_SENSITIVITY.json`
+13. `INDEPENDENT_BENCHMARK_RESULTS.json`
+14. `ADVERSARIAL_TEST_RESULTS.json`
+15. `MUTATION_RESULTS.json`
+16. `PRODUCTION_EXECUTION_TRACE.json`
+17. `CANONICAL_REVISION_BINDINGS.json`
+18. `NUMERICAL_LIMITATIONS_AND_UNRESOLVED_GAPS.json`
+19. `SOURCE_AND_ARTIFACT_SHA256_MANIFEST.json`
+20. `FINAL_ACCEPTANCE_DECISION.md`
+
+Every applicable numerical artifact must contain the actual measured values, units, tolerances, expected values, observed values, and pass/fail decision.
+
+The provenance manifest must include full 64-character SHA-256 values for the exact files and artifacts it covers. Hashes must be computed from the persisted bytes, not copied from an earlier run.
+
+The report must distinguish source-code hashes from result-artifact hashes.
+
+Do not write a successful acceptance decision before the reconciliation runner has completed.
+
+---
+
+# 12. ACCEPTANCE GATES
+
+## Gate 0 — Baseline integrity
+
+- Predecessor tests and campaign executed.
+- Existing failures recorded.
+- No unreported baseline regression.
+
+## Gate 1 — Mathematical correctness
+
+- Governing equations and units documented.
+- Constitutive tangents verified within declared tolerances.
+- Independent reference problems pass where applicable.
+- No unexplained material-parameter manipulation.
+
+## Gate 2 — Nonlinear mechanics
+
+- Incremental equilibrium behavior verified.
+- Failure and retry behavior demonstrated.
+- Material history commit/rollback verified.
+- Unsupported stability claims excluded.
+
+## Gate 3 — Multiphysics coupling
+
+- Every claimed coupling direction has an actual execution path.
+- Coupling residuals satisfy declared tolerances.
+- Energy balances are independently evaluated.
+- Nonconvergent cases fail closed.
+
+## Gate 4 — Numerical robustness
+
+- Mesh and step sensitivity assessed.
+- Adversarial tests pass.
+- Meaningful mutations are detected or explicitly explained.
+- Invalid numerical states cannot be silently accepted.
+
+## Gate 5 — Canonical production integration
+
+- Execution path is traceable.
+- Results bind to the correct canonical revision and input hashes.
+- No disconnected or parallel state authority.
+- Failed or stale computations cannot be published as verified.
+
+## Gate 6 — Independent reconciliation
+
+- Required artifacts exist and parse correctly.
+- Key numerical values reconcile with the actual run.
+- Hashes validate against persisted bytes.
+- No missing critical result is replaced with a narrative assertion.
+
+## Gate 7 — Final decision
+
+Allowed decisions:
+
+- `PASS_WITHIN_DECLARED_SCOPE`
+- `CONDITIONAL_PASS_WITH_EXPLICIT_LIMITATIONS`
+- `FAIL`
+
+A conditional pass requires explicit identification of every unresolved acceptance condition. A failed critical physics or provenance gate MUST NOT be overridden by a high aggregate test count.
+
+---
+
+# 13. PROHIBITED SHORTCUTS
+
+The following are strictly prohibited:
+
+- Weakening assertions or widening tolerances without mathematical justification.
+- Disabling failing tests.
+- Altering material constants merely to obtain a passing result.
+- Replacing a failed benchmark with an easier unannounced case.
+- Counting a mock, stub, or synthetic field as a production physics result.
+- Claiming full bidirectional coupling when only one-way field transfer exists.
+- Claiming mesh convergence from insufficient or contradictory evidence.
+- Claiming physical validation from software-only tests.
+- Claiming industrial qualification without the relevant qualification campaign and evidence.
+- Generating placeholder artifacts or manually editing measured results.
+- Declaring `PRODUCTION_READY` merely because code compiles.
+- Modifying unrelated engines or introducing a new core to bypass an existing limitation.
+- Re-running a failing command indefinitely without isolating the cause.
+
+Every failure must be classified as a mathematical defect, implementation defect, integration defect, test defect, benchmark defect, or evidence defect.
+
+---
+
+# 14. FINAL REPORT FORMAT
+
+Deliver a concise but technically complete report containing:
+
+1. Executive summary of the actual capability delta.
+2. Files changed and reasons for each change.
+3. Mathematical formulations implemented.
+4. Production execution path.
+5. Exact test commands, exit codes, and counts.
+6. Numerical results with units and tolerances.
+7. Independent benchmark comparisons.
+8. Coupling and conservation results.
+9. Mesh/load-step sensitivity findings.
+10. Adversarial and mutation results.
+11. Canonical revision and evidence provenance.
+12. Known limitations and unimplemented physics.
+13. Full artifact inventory and SHA-256 manifest.
+14. Final gate-by-gate decision.
+15. Explicit statement of what is implemented, numerically verified, independently verified, production-path verified, and physically validated.
+
+Do not claim a capability was completed if its critical gate failed. Do not discard valid progress merely because a different capability remains incomplete.
+
+# FINAL DIRECTIVE
+
+Execute the task in the existing SECP repository. Begin with baseline inspection and regression. Implement the highest-value missing physics supported by the existing architecture, then verify it with independent numerical evidence.
+
+The objective is to advance SECP from isolated verified physics capabilities toward a more coherent nonlinear multiphysics engineering system while preserving canonical truth, numerical integrity, fail-closed behavior, and tamper-evident evidence.
+
+**No cosmetic closure. No unsupported claims. No unnecessary architectural duplication. Every accepted capability must be traceable to equations, implementation, execution, verification, and evidence.**
+
+### لماذا هذه التوسعة هي التالية؟
+
+لأن `EXPANSION-002` أضاف نماذج مهمة، لكن نتائج إعادة التوفيق نفسها كشفت نقاطًا تستحق أن تُبنى عليها الخطوة التالية:
+
+* Mooney–Rivlin: بعد تعديل المماس، أظهر تقرير إعادة التوفيق أخطاء صغيرة جدًا عبر أربع حالات تشوه؛ يجب الحفاظ على ذلك كاختبار ارتداد دائم.
+
+* J2 Plasticity: ظهرت حالة خضوع وتطور للمتغير الداخلي، مع اختبار للتراجع عن الحالة التجريبية؛ التوسعة الجديدة تربط هذه الآلية بمسارات تحميل وتفريغ واتزان لاخطي أوسع.
+
+* الاقتران الكهروحراري: وصل تغير الحرارة بين التكرارات إلى أقل من كلفن في آخر دورة، لكن هذا وحده لا يثبت صحة جميع الحقول أو تقارب الشبكة.
+
+* حساسية الشبكة: القدرة الكهربائية ودرجة الحرارة تغيرتا بوضوح بين الشبكات المبلغ عنها؛ لذلك يجب فحص دقة الشبكة قبل وصف النتائج بأنها متقاربة.
+
+الهدف هنا ليس إضافة أسماء قدرات جديدة إلى SECP، بل جعل القدرات الفيزيائية الموجودة تتفاعل ضمن مسار حسابي متماسك، مع إثبات مستقل لما نجح وما بقي محدودًا.

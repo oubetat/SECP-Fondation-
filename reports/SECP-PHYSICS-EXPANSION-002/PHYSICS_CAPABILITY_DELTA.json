@@ -1,0 +1,38 @@
+{
+  "campaignId": "SECP-PHYSICS-EXPANSION-002",
+  "timestamp": "2026-10-28T09:35:45.524Z",
+  "addedCapabilities": [
+    {
+      "capabilityId": "CAP-3D-FINITE-STRAIN-ELASTOPLASTICITY",
+      "name": "3D Large Deformation J2 Elastoplasticity with Radial Return & Consistent Tangent",
+      "status": "NUMERICALLY_VERIFIED",
+      "implementationFiles": [
+        "src/engine/fem/core/TET4LargeDeformationPlasticFormulation.ts"
+      ]
+    },
+    {
+      "capabilityId": "CAP-3D-MOONEY-RIVLIN-HYPERELASTICITY",
+      "name": "Compressible Mooney-Rivlin 3D Hyperelastic Model with Parameter Admissibility",
+      "status": "NUMERICALLY_VERIFIED",
+      "implementationFiles": [
+        "src/engine/fem/core/HyperelasticMooneyRivlin3D.ts"
+      ]
+    },
+    {
+      "capabilityId": "CAP-CONSTITUTIVE-TANGENT-VERIFIER",
+      "name": "Finite-Difference Constitutive Tangent Verification Engine",
+      "status": "NUMERICALLY_VERIFIED",
+      "implementationFiles": [
+        "src/engine/fem/core/ConstitutiveTangentVerifier.ts"
+      ]
+    },
+    {
+      "capabilityId": "CAP-BIDIRECTIONAL-ELECTROTHERMAL-FEEDBACK",
+      "name": "3D Bidirectional Electrothermal Picard Feedback Iteration",
+      "status": "NUMERICALLY_VERIFIED",
+      "implementationFiles": [
+        "src/engine/physics/electromagnetics/BidirectionalElectrothermalSolver3D.ts"
+      ]
+    }
+  ]
+}

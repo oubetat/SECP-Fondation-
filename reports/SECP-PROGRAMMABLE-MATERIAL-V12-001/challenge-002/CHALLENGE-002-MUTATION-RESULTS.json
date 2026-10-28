@@ -1,0 +1,23 @@
+[
+  {
+    "mutationId": "MUT-01",
+    "description": "Remove physical evidence blocker field while evidence is missing",
+    "rejectedByFailClosed": true,
+    "rejectionReason": "General fail-closed protection triggered.",
+    "status": "PROTECTED_SUCCESSFULLY"
+  },
+  {
+    "mutationId": "MUT-02",
+    "description": "Corrupt numerical verification status to invalid value",
+    "rejectedByFailClosed": true,
+    "rejectionReason": "Fail-closed gate detected invalid numerical status and blocked release.",
+    "status": "PROTECTED_SUCCESSFULLY"
+  },
+  {
+    "mutationId": "MUT-03",
+    "description": "Bypass unresolved critical findings register",
+    "rejectedByFailClosed": true,
+    "rejectionReason": "General fail-closed protection triggered.",
+    "status": "PROTECTED_SUCCESSFULLY"
+  }
+]

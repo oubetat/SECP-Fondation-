@@ -1,0 +1,11 @@
+{
+  "taskId": "SECP-PROGRAMMABLE-MATERIAL-004",
+  "adversarialTests": [
+    {
+      "testId": "ADV-FIELD-001",
+      "description": "Out of bounds property value evaluation",
+      "assertion": "Throws SPATIAL_FIELD_BOUNDS_ERROR",
+      "status": "PASS"
+    }
+  ]
+}

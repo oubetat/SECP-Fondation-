@@ -1,0 +1,21 @@
+{
+  "taskId": "SECP-PROGRAMMABLE-MATERIAL-V7-001",
+  "auditTimestamp": "2026-10-27T08:07:00Z",
+  "dataOrigin": "SYNTHETIC_TEST_DATA",
+  "validationSummary": {
+    "totalDatasetsTested": 5,
+    "passedDatasets": 4,
+    "failedDatasets": 1,
+    "totalPointsProcessed": 25,
+    "validPoints": 18,
+    "rejectedPoints": 4,
+    "conflictingPoints": 2,
+    "outOfBoundsPoints": 1
+  },
+  "unitNormalizationsTested": [
+    { "input": { "value": 210000000000, "unit": "Pa" }, "output": { "value": 210000, "unit": "MPa" }, "status": "PASS" },
+    { "input": { "value": 210, "unit": "GPa" }, "output": { "value": 210000, "unit": "MPa" }, "status": "PASS" },
+    { "input": { "value": 7.85, "unit": "g/cm3" }, "output": { "value": 7850, "unit": "kg/m3" }, "status": "PASS" }
+  ],
+  "gateVerdict": "PASS"
+}

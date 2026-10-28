@@ -1,0 +1,72 @@
+{
+  "task": "SECP-PROGRAMMABLE-MATERIAL-V3-001",
+  "contract": "SpatialMaterialFieldContract",
+  "validationStatus": "VERIFIED_FAIL_CLOSED",
+  "fields": [
+    {
+      "attribute": "fieldId",
+      "required": true,
+      "validation": "Non-empty string, rejects whitespace",
+      "status": "PASS"
+    },
+    {
+      "attribute": "canonicalGeometryId",
+      "required": true,
+      "validation": "Non-empty string",
+      "status": "PASS"
+    },
+    {
+      "attribute": "canonicalRevisionId",
+      "required": true,
+      "validation": "Non-empty string, binds revision identity",
+      "status": "PASS"
+    },
+    {
+      "attribute": "baseMaterialId",
+      "required": true,
+      "validation": "Non-empty string, verified against element materialId",
+      "status": "PASS"
+    },
+    {
+      "attribute": "propertySpecs",
+      "required": true,
+      "validation": "Map with size >= 1, key matching spec.propertyName",
+      "status": "PASS"
+    },
+    {
+      "attribute": "valueCategory",
+      "required": false,
+      "supportedValues": ["TARGET", "PREDICTED", "MEASURED"],
+      "status": "PASS"
+    },
+    {
+      "attribute": "domain",
+      "required": false,
+      "validation": "Bounding box min <= max",
+      "status": "PASS"
+    },
+    {
+      "attribute": "outOfDomainBehavior",
+      "required": false,
+      "supportedValues": ["FAIL_CLOSED", "CLAMP"],
+      "default": "FAIL_CLOSED",
+      "status": "PASS"
+    },
+    {
+      "attribute": "coordinateSystem",
+      "required": false,
+      "supportedValues": ["GLOBAL_CARTESIAN"],
+      "default": "GLOBAL_CARTESIAN",
+      "status": "PASS"
+    },
+    {
+      "attribute": "physicalSanityRules",
+      "rules": [
+        "E lower bound and evaluated value > 0",
+        "nu bounds and evaluated value in (-1.0, 0.5)",
+        "density lower bound and evaluated value > 0"
+      ],
+      "status": "PASS"
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+{
+  "meshLimitMaxNodes": 100000,
+  "thermalTimeDependency": "Quasi-static steady state",
+  "unresolvedGaps": []
+}

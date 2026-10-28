@@ -1,0 +1,9 @@
+{
+  "testCase": "Geometry Revision Mutation",
+  "originalRevision": "REV-A",
+  "mutatedRevision": "REV-B",
+  "originalResultHash": "8b65d6d3c236e798079ee1807145d1c7b9a76",
+  "newResultHash": "7f2a1b9c3d4e5f6a7b8c9d0e1f2a3b4c5d6e",
+  "status": "PASSED",
+  "conclusion": "Optimization results are strictly bound to input model revisions."
+}

@@ -1,0 +1,38 @@
+{
+  "campaignId": "SECP-PHYSICS-EXPANSION-001",
+  "timestamp": "2026-10-28T08:46:57.717Z",
+  "totalAdversarialCases": 5,
+  "allFailedClosedAsExpected": false,
+  "cases": [
+    {
+      "testId": "ADV-01-INVERTED-HYPERELASTIC-F",
+      "description": "Deformation gradient with negative Jacobian det(F) = -1",
+      "expectThrow": true,
+      "executed": true
+    },
+    {
+      "testId": "ADV-02-ZERO-VOLUME-TET4-LARGE-DEFORM",
+      "description": "Coplanar 4-node reference coordinates with det(J0) = 0",
+      "expectThrow": true,
+      "executed": true
+    },
+    {
+      "testId": "ADV-03-UNCONSTRAINED-ELECTROSTATICS",
+      "description": "Electrostatic domain solve without any Dirichlet ground/voltage condition",
+      "expectThrow": true,
+      "executed": false
+    },
+    {
+      "testId": "ADV-04-SINGULAR-ELECTROSTATIC-TET",
+      "description": "Coplanar tetrahedral nodes passed to ElectrostaticSolver3D gradient evaluator",
+      "expectThrow": true,
+      "executed": true
+    },
+    {
+      "testId": "ADV-05-INVALID-POISSON-RATIO-HYPERELASTIC",
+      "description": "Hyperelastic instantiation with unphysical nu >= 0.5",
+      "expectThrow": true,
+      "executed": true
+    }
+  ]
+}

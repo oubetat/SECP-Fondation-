@@ -1,0 +1,25 @@
+{
+  "taskId": "SECP-PROGRAMMABLE-MATERIAL-V7-001",
+  "evidenceEngine": "FEMEvidenceEngine",
+  "revisionBindingRules": {
+    "asBuiltStateHashIncludedInModelHash": true,
+    "staleCheckOnAsBuiltStateHash": true,
+    "staleReasonIfModified": "As-Built actual material state or dataset modified"
+  },
+  "verificationScenarios": [
+    {
+      "scenario": "Unmodified model & as-built state",
+      "expectedStale": false,
+      "actualStale": false,
+      "verdict": "PASS"
+    },
+    {
+      "scenario": "Engineering revision updated REV_A -> REV_B in asBuiltState",
+      "expectedStale": true,
+      "actualStale": true,
+      "reason": "As-Built actual material state or dataset modified",
+      "verdict": "PASS"
+    }
+  ],
+  "gateVerdict": "PASS"
+}

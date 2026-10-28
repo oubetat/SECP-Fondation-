@@ -17,6 +17,23 @@ export class COOBuilder {
     this.entries.set(key, curr + val);
   }
 
+  public addBlock(rowIndices: number[], colIndices: number[], block: number[][]): void {
+    for (let i = 0; i < rowIndices.length; i++) {
+      const r = rowIndices[i];
+      if (r < 0 || r >= this.rows) continue;
+      const rowBlock = block[i];
+      if (!rowBlock) continue;
+      for (let j = 0; j < colIndices.length; j++) {
+        const c = colIndices[j];
+        if (c < 0 || c >= this.cols) continue;
+        const val = rowBlock[j];
+        if (val !== undefined && val !== 0) {
+          this.add(r, c, val);
+        }
+      }
+    }
+  }
+
   public toCSR(policy: 'RETAIN' | 'PRUNE' = 'RETAIN', tol: number = 0.0): CSRStorage {
     // Sort keys by row then col for canonical CSR
     const sortedKeys = Array.from(this.entries.keys())

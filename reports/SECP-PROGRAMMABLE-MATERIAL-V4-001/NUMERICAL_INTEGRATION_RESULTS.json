@@ -1,0 +1,33 @@
+{
+  "testSuite": "SECP-PROGRAMMABLE-MATERIAL-V4-001",
+  "category": "NUMERICAL_INTEGRATION_RESULTS",
+  "timestamp": "2026-10-27T07:35:00.000Z",
+  "benchmarks": [
+    {
+      "benchmarkId": "V4-BENCH-04-TET4",
+      "modelType": "3D Linear Tetrahedral Continuum Solid (TET4_3D)",
+      "elementCount": 1,
+      "nodeCount": 4,
+      "dofCount": 12,
+      "fieldFunction": "E(x) = 200000 * (1 + 0.01 * x)",
+      "centroid": { "x": 2.5, "y": 2.5, "z": 2.5 },
+      "evaluatedE_MPa": 205000.0,
+      "evaluatedNu": 0.28,
+      "displacementUX_mm": 0.000062423719,
+      "equilibriumResidual": 0.0,
+      "solverType": "DIRECT_PARTITIONED",
+      "passed": true
+    },
+    {
+      "benchmarkId": "V4-BENCH-05-HOMO-EQUIV",
+      "modelType": "1D Uniaxial Bar Benchmark",
+      "classicalDisplacementUX_mm": 0.5714285714285714,
+      "geometryBoundDisplacementUX_mm": 0.5714285714285714,
+      "analyticalExpectedUX_mm": 0.5714285714285714,
+      "absoluteError": 0.0,
+      "relativeError": 0.0,
+      "passed": true
+    }
+  ],
+  "verdict": "NUMERICALLY_EXACT_AND_STABLE"
+}

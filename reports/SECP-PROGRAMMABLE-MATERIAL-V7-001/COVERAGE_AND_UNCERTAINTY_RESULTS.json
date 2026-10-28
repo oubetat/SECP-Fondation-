@@ -1,0 +1,21 @@
+{
+  "taskId": "SECP-PROGRAMMABLE-MATERIAL-V7-001",
+  "datasetId": "DS_001",
+  "samplingRadius": 15.0,
+  "coverageMetrics": {
+    "totalDomainNodes": 3,
+    "coveredNodes": 2,
+    "unmeasuredNodes": 1,
+    "coverageRatio": 0.6666666666666666,
+    "unmeasuredVolumeRatio": 0.33333333333333337
+  },
+  "unmeasuredRegions": [
+    { "min": [499, 499, 499], "max": [501, 501, 501] }
+  ],
+  "uncertaintyMetrics": {
+    "sensorAccuracy": 500.0,
+    "meanPropagatedUncertainty": 500.0,
+    "unit": "MPa"
+  },
+  "gateStatus": "BLOCKED_INCOMPLETE_COVERAGE_DETECTED"
+}

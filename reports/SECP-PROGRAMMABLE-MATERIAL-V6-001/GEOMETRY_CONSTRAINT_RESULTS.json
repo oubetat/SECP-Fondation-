@@ -1,0 +1,27 @@
+{
+  "task_id": "SECP-PROGRAMMABLE-MATERIAL-V6-001",
+  "status": "VERIFIED_PASS",
+  "geometry_checks": [
+    {
+      "rule": "RULE_MIN_FEATURE_SIZE",
+      "test_case": "Bar element length = 100 mm >= min 1.0 mm",
+      "measured_mm": 100.0,
+      "limit_mm": 1.0,
+      "severity": "PASS"
+    },
+    {
+      "rule": "RULE_MIN_WALL_THICKNESS",
+      "test_case": "Section area = 25 mm2 -> sqrt(25) = 5 mm >= min 1.0 mm",
+      "measured_mm": 5.0,
+      "limit_mm": 1.0,
+      "severity": "PASS"
+    },
+    {
+      "rule": "RULE_MIN_FEATURE_SIZE",
+      "test_case": "Sub-resolution bar length = 0.4 mm < min 0.8 mm",
+      "measured_mm": 0.4,
+      "limit_mm": 0.8,
+      "severity": "VIOLATION_DETECTED"
+    }
+  ]
+}

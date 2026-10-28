@@ -1,0 +1,45 @@
+{
+  "auditId": "SECP-PHYSICS-ENGINE-FORENSIC-001",
+  "timestamp": "2026-10-28T07:57:17.646Z",
+  "couplings": [
+    {
+      "domains": [
+        "CFD Fluid Dynamics",
+        "Structural FEM Mechanics"
+      ],
+      "implementationFile": "src/engine/cfd3d/coupling/TwoWayFSICouplingEngine.ts",
+      "method": "Partitioned Gauss-Seidel with Aitken Dynamic Under-Relaxation",
+      "dataExchanged": "Boundary Normal Forces (p * A * n) -> Nodal Displacements (dx, dy, dz)",
+      "direction": "TWO_WAY_COUPLED",
+      "numericalFeedback": true,
+      "convergenceControl": "Interface displacement residual < 1e-4 & force residual < 1e-4",
+      "status": "AUTHENTIC_NUMERICAL_FEEDBACK"
+    },
+    {
+      "domains": [
+        "MNA Electrical Circuits",
+        "2D FVM Thermal Conduction"
+      ],
+      "implementationFile": "src/engine/engineeringCore/ElectrothermalSolver.ts",
+      "method": "Relaxed Fixed-Point Picard Iteration",
+      "dataExchanged": "Component Power Dissipation P_i -> Spatial Temperature Field T(x,y) -> Temperature-Dependent Resistance R_i(T)",
+      "direction": "TWO_WAY_COUPLED",
+      "numericalFeedback": true,
+      "convergenceControl": "Delta_T < 0.05 K, Delta_R/R < 1e-4, Energy balance error <= 0.1%",
+      "status": "AUTHENTIC_NUMERICAL_FEEDBACK"
+    },
+    {
+      "domains": [
+        "Material Field rho(x,y,z)",
+        "Structural FEM Stiffness Matrix"
+      ],
+      "implementationFile": "src/engine/fem/core/GlobalAssemblyEngine.ts",
+      "method": "Direct Spatial Modulus Interpolation E(x_c, y_c, z_c) = E_0 * rho^n",
+      "dataExchanged": "Local density/modulus scalar -> Element stiffness matrix K_e",
+      "direction": "ONE_WAY_FEEDFORWARD",
+      "numericalFeedback": false,
+      "convergenceControl": "Direct assembly",
+      "status": "AUTHENTIC_NUMERICAL_FEEDFORWARD"
+    }
+  ]
+}

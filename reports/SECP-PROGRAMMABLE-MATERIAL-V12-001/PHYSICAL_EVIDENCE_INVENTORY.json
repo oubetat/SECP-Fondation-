@@ -1,0 +1,5 @@
+{
+  "physicalEvidenceStatus": "ABSENT",
+  "inventory": [],
+  "note": "No physical L-PBF machine logs or CMM metrology files provided in repository. Triggering fail-closed blocker."
+}

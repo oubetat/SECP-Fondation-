@@ -1,0 +1,6 @@
+{
+  "testCase": "Post-Exploration Model Mutation",
+  "action": "Change geometry revision from REV-A to REV-B",
+  "result": "Exploration resultHash invalidated",
+  "status": "PASSED"
+}

@@ -1,0 +1,87 @@
+{
+  "timestamp": "2026-10-28T07:09:54.948Z",
+  "environment": {
+    "nodeVersion": "v22.23.4",
+    "platform": "linux",
+    "testRunner": "Vitest v1.6.1"
+  },
+  "claims": [
+    {
+      "claimId": "CLM-PME-01",
+      "capability": "Spatial Material Fields & Anisotropic Elasticity",
+      "requirementId": "REQ-PME-01",
+      "classification": "EXECUTION_VERIFIED",
+      "command": "npx vitest run tests/verification/materials/benchmark/MaterialsBenchmark.test.ts",
+      "exitCode": 0,
+      "testsExecuted": 10,
+      "testsPassed": 10,
+      "durationMs": 2898,
+      "verifiedAssertions": [
+        "Spatial modulus interpolation across gyroid density bounds (30% to 85%)",
+        "Elastic-plastic hardening curve adherence",
+        "Constitutive tensor symmetry and positive definiteness"
+      ]
+    },
+    {
+      "claimId": "CLM-PME-02",
+      "capability": "Two-Way FSI Coupling & Force Stability",
+      "requirementId": "REQ-PME-02",
+      "classification": "EXECUTION_VERIFIED",
+      "command": "npx vitest run tests/verification/CfdForceStabilityClosure.test.ts",
+      "exitCode": 0,
+      "testsExecuted": 2,
+      "testsPassed": 2,
+      "durationMs": 2906,
+      "verifiedAssertions": [
+        "Strict Physical Input Guard: Rejection of non-positive kinematic viscosity",
+        "Gauss-Seidel iterative partitioned convergence with Aitken dynamic under-relaxation",
+        "Interface displacement-force equilibrium conservation"
+      ]
+    },
+    {
+      "claimId": "CLM-PME-03",
+      "capability": "Material Qualification & Standards Adjudication",
+      "requirementId": "REQ-PME-03",
+      "classification": "EXECUTION_VERIFIED",
+      "command": "npx vitest run src/engine/materials/__tests__/MaterialQualification.test.ts",
+      "exitCode": 0,
+      "testsExecuted": 5,
+      "testsPassed": 5,
+      "durationMs": 2219,
+      "verifiedAssertions": [
+        "Evaluation against ISO 13314 cellular mechanical testing criteria",
+        "ASTM F3301 additive manufacturing post-processing tolerance conformance",
+        "Automatic generation of qualified evidence certificates"
+      ]
+    },
+    {
+      "claimId": "CLM-PME-04",
+      "capability": "Material Pedigree, Provenance & Immutable Hash Ledger",
+      "requirementId": "REQ-PME-04",
+      "classification": "EXECUTION_VERIFIED",
+      "command": "npx vitest run src/engine/materials/__tests__/MaterialProvenance.test.ts",
+      "exitCode": 0,
+      "testsExecuted": 5,
+      "testsPassed": 5,
+      "durationMs": 2084,
+      "verifiedAssertions": [
+        "Cryptographic SHA-256 state hashing across revision transitions",
+        "Immutable provenance chaining and tamper detection",
+        "Bidirectional traceability from requirement to material test artifact"
+      ]
+    },
+    {
+      "claimId": "CLM-PME-05",
+      "capability": "Physical Manufacturing Metrology & CMM CT Scan Verification",
+      "requirementId": "REQ-PME-05",
+      "classification": "BLOCKED",
+      "command": "N/A (External Physical Device)",
+      "exitCode": -1,
+      "testsExecuted": 0,
+      "testsPassed": 0,
+      "durationMs": 0,
+      "verifiedAssertions": [],
+      "blockerReason": "Missing authentic L-PBF machine telemetry and physical CMM/CT inspection scan files. Fail-closed gate activated."
+    }
+  ]
+}

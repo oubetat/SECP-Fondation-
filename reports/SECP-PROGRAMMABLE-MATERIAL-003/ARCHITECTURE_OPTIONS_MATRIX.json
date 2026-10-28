@@ -1,0 +1,37 @@
+{
+  "options": [
+    {
+      "optionId": "OPTION_A",
+      "name": "Global Constitutive Extension",
+      "description": "Pass (x, y, z) directly into ConstitutiveModel.update(strain, state, location)",
+      "correctness": "HIGH",
+      "compatibility": "MEDIUM",
+      "stateManagement": "GOOD",
+      "performance": "HIGH",
+      "riskOfDuplicatedAuthority": "LOW",
+      "recommendation": "REJECT_EXCEPT_AS_HELPER"
+    },
+    {
+      "optionId": "OPTION_B",
+      "name": "Element-Level Material Map Resolution",
+      "description": "Resolve spatial properties inside element formulations using Gauss point coordinates and query the field adapter",
+      "correctness": "HIGH",
+      "compatibility": "HIGH",
+      "stateManagement": "EXCELLENT",
+      "performance": "HIGH",
+      "riskOfDuplicatedAuthority": "LOW",
+      "recommendation": "RECOMMENDED"
+    },
+    {
+      "optionId": "OPTION_C",
+      "name": "Separate Field-Evaluation Adapter Layer",
+      "description": "Dedicated pre-processing pass evaluating fields onto discrete integration point property caches before assembly",
+      "correctness": "MEDIUM",
+      "compatibility": "HIGH",
+      "stateManagement": "POOR",
+      "performance": "MEDIUM",
+      "riskOfDuplicatedAuthority": "MEDIUM",
+      "recommendation": "REJECT"
+    }
+  ]
+}

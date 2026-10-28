@@ -1,0 +1,11 @@
+{
+  "problemId": "OPT-COMPLIANCE-001",
+  "problemRevision": "REV-1.0",
+  "baseline": {
+    "variableValues": { "E_VAR": 210000 },
+    "objectives": { "MIN_STRAIN_ENERGY": 0.0238 },
+    "constraints": { "MAX_STRESS_LIMIT": { "satisfied": true, "value": 10.0 } },
+    "feasibility": "FEASIBLE"
+  },
+  "timestamp": "2026-10-27T08:34:00.000Z"
+}

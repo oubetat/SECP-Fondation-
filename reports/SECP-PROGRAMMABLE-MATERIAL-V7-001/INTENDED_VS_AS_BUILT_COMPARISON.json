@@ -1,0 +1,22 @@
+{
+  "taskId": "SECP-PROGRAMMABLE-MATERIAL-V7-001",
+  "comparisonId": "Comp_ABState_DS_001_1793007200000",
+  "asBuiltStateId": "ABState_DS_001_1793007200000",
+  "engineeringRevisionId": "REV_A",
+  "geometryRevisionId": "GEO_REV_1",
+  "toleranceThresholdRatio": 0.05,
+  "overallStatus": "PASS",
+  "evaluatedPointsCount": 4,
+  "passCount": 4,
+  "failCount": 0,
+  "indeterminateCount": 0,
+  "maxRelativeError": 0.023809523809523808,
+  "meanRelativeError": 0.015476190476190477,
+  "pointComparisons": [
+    { "x": 0, "y": 0, "z": 0, "propertyId": "E", "intendedValue": 210000, "actualValue": 210000, "delta": 0, "relativeError": 0.0, "uncertainty": 500, "withinTolerance": true, "status": "PASS" },
+    { "x": 10, "y": 0, "z": 0, "propertyId": "E", "intendedValue": 210000, "actualValue": 215000, "delta": 5000, "relativeError": 0.023809523809523808, "uncertainty": 500, "withinTolerance": true, "status": "PASS" },
+    { "x": 20, "y": 0, "z": 0, "propertyId": "E", "intendedValue": 210000, "actualValue": 208000, "delta": -2000, "relativeError": 0.009523809523809525, "uncertainty": 500, "withinTolerance": true, "status": "PASS" },
+    { "x": 30, "y": 0, "z": 0, "propertyId": "E", "intendedValue": 210000, "actualValue": 212000, "delta": 2000, "relativeError": 0.009523809523809525, "uncertainty": 500, "withinTolerance": true, "status": "PASS" }
+  ],
+  "evaluatedAt": "2026-10-27T08:07:00Z"
+}

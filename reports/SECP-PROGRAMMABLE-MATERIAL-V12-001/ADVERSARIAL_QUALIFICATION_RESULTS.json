@@ -1,0 +1,18 @@
+{
+  "adversarialTestRunId": "ADV-RUN-PME-V12-001",
+  "totalTests": 28,
+  "passed": 28,
+  "failed": 0,
+  "details": [
+    {
+      "id": "V12-ADV-001",
+      "description": "Missing manufacturing evidence blocks full qualification",
+      "status": "PROTECTED_SUCCESSFULLY"
+    },
+    {
+      "id": "V12-ADV-003",
+      "description": "Synthetic data passed as lab data is rejected",
+      "status": "PROTECTED_SUCCESSFULLY"
+    }
+  ]
+}

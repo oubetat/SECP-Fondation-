@@ -1,0 +1,32 @@
+{
+  "taskID": "SECP-PROGRAMMABLE-MATERIAL-V9-001",
+  "verificationType": "REGRESSION_SUITE_EXECUTION",
+  "timestamp": "2026-10-27T08:26:00.000Z",
+  "summary": {
+    "totalTestFiles": 17,
+    "passedTestFiles": 17,
+    "failedTestFiles": 0,
+    "totalTests": 195,
+    "passedTests": 195,
+    "failedTests": 0
+  },
+  "testFiles": [
+    { "name": "GeometryMaterialIntegrationV4.test.ts", "tests": 21, "status": "PASS" },
+    { "name": "SpatialMaterialFieldV3.test.ts", "tests": 19, "status": "PASS" },
+    { "name": "GeometryMaterialPhysicsV5.test.ts", "tests": 19, "status": "PASS" },
+    { "name": "FEMUpgrade003BeamFrame.test.ts", "tests": 11, "status": "PASS" },
+    { "name": "FEMUpgrade004Continuum.test.ts", "tests": 12, "status": "PASS" },
+    { "name": "FEMUpgrade003Convergence.test.ts", "tests": 11, "status": "PASS" },
+    { "name": "MaterialTruthThreadV9.test.ts", "tests": 22, "status": "PASS" },
+    { "name": "ManufacturingConstraintV6.test.ts", "tests": 18, "status": "PASS" },
+    { "name": "FEMUpgrade001Acceptance.test.ts", "tests": 11, "status": "PASS" },
+    { "name": "FEMUpgrade002StressField.test.ts", "tests": 6, "status": "PASS" },
+    { "name": "SpatialMaterialDeviationV8.test.ts", "tests": 13, "status": "PASS" },
+    { "name": "FEMUpgrade005Solid3D.test.ts", "tests": 6, "status": "PASS" },
+    { "name": "AsBuiltMaterialStateV7.test.ts", "tests": 12, "status": "PASS" },
+    { "name": "SpatialMaterialMapping004.test.ts", "tests": 4, "status": "PASS" },
+    { "name": "SpatialMaterialMapping3D006.test.ts", "tests": 2, "status": "PASS" },
+    { "name": "FEMCore.test.ts", "tests": 2, "status": "PASS" },
+    { "name": "MathUtils.test.ts", "tests": 6, "status": "PASS" }
+  ]
+}

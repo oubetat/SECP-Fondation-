@@ -1,0 +1,17 @@
+{
+  "requestId": "REQ-EX-001",
+  "candidatesGenerated": 2,
+  "candidates": [
+    {
+      "id": "AI-CAND-001",
+      "reasoning": "Increased stiffness to reduce deflection.",
+      "vars": { "E": 250000 }
+    },
+    {
+      "id": "AI-CAND-002",
+      "reasoning": "Decreased stiffness for energy absorption.",
+      "vars": { "E": 150000 }
+    }
+  ],
+  "status": "SUCCESS"
+}

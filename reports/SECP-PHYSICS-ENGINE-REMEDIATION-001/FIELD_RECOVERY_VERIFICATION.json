@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "1.0.0",
+  "timestamp": "2026-10-28T08:28:44.507Z",
+  "targetPipeline": "src/engine/fem/verification/FemVerificationPipeline.ts",
+  "priorHeuristicLine": "stress = Math.sqrt(ux*ux + uy*uy + uz*uz) * E * 0.005;",
+  "remediatedFormulation": {
+    "strainKinematics": "eps = B * u (evaluated from tetrahedral Jacobian J and shape function derivatives)",
+    "constitutiveLaw": "3D Hookean isotropic elasticity sigma = lambda * tr(eps) * I + 2 * mu * eps",
+    "equivalentStress": "von Mises equivalent stress sigma_vm = sqrt(0.5 * [(s11-s22)^2 + (s22-s33)^2 + (s33-s11)^2 + 6*(s12^2 + s23^2 + s13^2)])",
+    "nodalAveraging": "Area/volume weighted tensor accumulation across incident tetrahedral elements"
+  },
+  "numericalValidation": {
+    "benchmarkCase": "Unit Regular Tetrahedron Uniaxial Tension (eps_x = 0.001)",
+    "computedSigmaX": 169.3097014925373,
+    "analyticalSigmaX": 169.3097014925373,
+    "sigmaXRelativeError": 0,
+    "computedVonMises": 82.08955223880594,
+    "analyticalVonMises": 82.08955223880595,
+    "vonMisesRelativeError": 1.7311404834882444e-16,
+    "verdict": "MATHEMATICALLY_VERIFIED"
+  },
+  "wholePipelineVerification": {
+    "gate": "HardAcceptanceGate240",
+    "modelsSolved": 2,
+    "verdict": "PASS"
+  }
+}

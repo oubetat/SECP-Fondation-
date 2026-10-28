@@ -1,0 +1,59 @@
+{
+  "taskId": "SECP-PROGRAMMABLE-MATERIAL-V7-001",
+  "capabilityMatrix": [
+    {
+      "capability": "Measurement Dataset Ingestion & Validation",
+      "status": "SUPPORTED",
+      "implementationRef": "AsBuiltMaterialStateEngine.validateMeasurementDataset",
+      "evidenceRef": "MEASUREMENT_VALIDATION_RESULTS.json"
+    },
+    {
+      "capability": "Unit Conversion & Normalization",
+      "status": "SUPPORTED",
+      "implementationRef": "AsBuiltMaterialStateEngine.normalizePropertyValue",
+      "evidenceRef": "MEASUREMENT_VALIDATION_RESULTS.json"
+    },
+    {
+      "capability": "3D Spatial Registration & Landmark Alignment",
+      "status": "SUPPORTED",
+      "implementationRef": "AsBuiltMaterialStateEngine.registerDatasetToGeometry",
+      "evidenceRef": "SPATIAL_REGISTRATION_RESULTS.json"
+    },
+    {
+      "capability": "IDW Spatial Material State Reconstruction",
+      "status": "SUPPORTED",
+      "implementationRef": "AsBuiltMaterialStateEngine.reconstructAsBuiltState",
+      "evidenceRef": "AS_BUILT_RECONSTRUCTION_RESULTS.json"
+    },
+    {
+      "capability": "Spatial Coverage & Unmeasured Region Tracking",
+      "status": "SUPPORTED",
+      "implementationRef": "AsBuiltMaterialStateEngine.reconstructAsBuiltState",
+      "evidenceRef": "COVERAGE_AND_UNCERTAINTY_RESULTS.json"
+    },
+    {
+      "capability": "Measurement Uncertainty Tracking",
+      "status": "SUPPORTED",
+      "implementationRef": "AsBuiltMaterialStateEngine.reconstructAsBuiltState",
+      "evidenceRef": "COVERAGE_AND_UNCERTAINTY_RESULTS.json"
+    },
+    {
+      "capability": "Intended vs As-Built Property Comparison",
+      "status": "SUPPORTED",
+      "implementationRef": "AsBuiltMaterialStateEngine.compareIntendedVsAsBuilt",
+      "evidenceRef": "INTENDED_VS_AS_BUILT_COMPARISON.json"
+    },
+    {
+      "capability": "Revision-Bound Stale Evidence Invalidation",
+      "status": "SUPPORTED",
+      "implementationRef": "FEMEvidenceEngine.isEvidenceStale",
+      "evidenceRef": "REVISION_VALIDITY_RESULTS.json"
+    },
+    {
+      "capability": "Direct Live Hardware Sensor Streaming",
+      "status": "NOT_IMPLEMENTED_HARDWARE_ABSENT",
+      "implementationRef": "N/A",
+      "evidenceRef": "KNOWN_LIMITATIONS.md"
+    }
+  ]
+}

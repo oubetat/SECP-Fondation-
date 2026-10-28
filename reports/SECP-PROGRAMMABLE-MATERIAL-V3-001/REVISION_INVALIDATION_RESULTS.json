@@ -1,0 +1,59 @@
+{
+  "task": "SECP-PROGRAMMABLE-MATERIAL-V3-001",
+  "audit": "Revision Binding & Stale Evidence Invalidation Audit",
+  "status": "VERIFIED",
+  "invalidationScenarios": [
+    {
+      "scenario": "SPATIAL_FIELD_REVISION_INCREMENT",
+      "initialState": {
+        "fieldId": "F_REV",
+        "revisionId": "REV_100",
+        "evidenceHash": "computed"
+      },
+      "mutation": "Cloned field with canonicalRevisionId 'REV_101'",
+      "detectionEngine": "FEMEvidenceEngine.isEvidenceStale",
+      "detected": true,
+      "reason": "Spatial material fields or revisions modified",
+      "verdict": "PASS"
+    },
+    {
+      "scenario": "SPATIAL_FIELD_DISTRIBUTION_MODIFICATION",
+      "initialState": {
+        "fieldId": "F_EXPR",
+        "expression": "E0 * (1 + 0.01*x)",
+        "evidenceHash": "computed"
+      },
+      "mutation": "Modified expression to E0 * (1 + 0.02*x)",
+      "detectionEngine": "FEMEvidenceEngine.isEvidenceStale",
+      "detected": true,
+      "reason": "Spatial material fields or revisions modified",
+      "verdict": "PASS"
+    },
+    {
+      "scenario": "GEOMETRY_COORDINATE_DRIFT",
+      "initialState": {
+        "nodeId": "N2",
+        "x": 50,
+        "evidenceHash": "computed"
+      },
+      "mutation": "Shifted node N2 to x=75",
+      "detectionEngine": "FEMEvidenceEngine.isEvidenceStale",
+      "detected": true,
+      "reason": "Mesh geometry or nodes modified",
+      "verdict": "PASS"
+    },
+    {
+      "scenario": "BASE_MATERIAL_MODIFICATION",
+      "initialState": {
+        "materialId": "M1",
+        "E": 100000,
+        "evidenceHash": "computed"
+      },
+      "mutation": "Modified base material E to 120000",
+      "detectionEngine": "FEMEvidenceEngine.isEvidenceStale",
+      "detected": true,
+      "reason": "Base material definitions modified",
+      "verdict": "PASS"
+    }
+  ]
+}

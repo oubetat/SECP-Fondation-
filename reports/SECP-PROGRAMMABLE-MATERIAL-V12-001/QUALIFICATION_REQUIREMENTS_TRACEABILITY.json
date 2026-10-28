@@ -1,0 +1,32 @@
+{
+  "requirements": [
+    {
+      "requirementId": "REQ-PME-01",
+      "description": "Spatial material field must be correctly mapped to FEM element stiffness matrices.",
+      "verificationMethod": "NUMERICAL_VERIFICATION",
+      "acceptanceCriteria": "Stiffness matrix residual < 1e-6",
+      "status": "PASS"
+    },
+    {
+      "requirementId": "REQ-PME-02",
+      "description": "Nonlinear solver must satisfy force equilibrium within tolerance.",
+      "verificationMethod": "SOFTWARE_TEST",
+      "acceptanceCriteria": "Max force residual < 1e-4",
+      "status": "PASS"
+    },
+    {
+      "requirementId": "REQ-PME-03",
+      "description": "Manufacturing constraints must reject unsupported overhang angles (<45 deg).",
+      "verificationMethod": "SOFTWARE_TEST",
+      "acceptanceCriteria": "100% rejection of invalid overhang geometries",
+      "status": "PASS"
+    },
+    {
+      "requirementId": "REQ-PME-04",
+      "description": "Physical CMM metrology data must confirm as-built geometry within +/- 0.05mm.",
+      "verificationMethod": "PHYSICAL_METROLOGY",
+      "acceptanceCriteria": "Max deviation <= 0.05mm",
+      "status": "BLOCKED_BY_PHYSICAL_EVIDENCE"
+    }
+  ]
+}

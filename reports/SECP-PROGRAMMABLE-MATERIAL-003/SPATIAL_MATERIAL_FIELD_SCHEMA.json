@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SpatialMaterialField",
+  "description": "Revision-bound spatial material property distribution for SECP Programmable Materials",
+  "type": "object",
+  "properties": {
+    "fieldId": { "type": "string" },
+    "canonicalGeometryId": { "type": "string" },
+    "canonicalRevisionId": { "type": "string" },
+    "baseMaterialId": { "type": "string" },
+    "coordinateSystem": {
+      "type": "string",
+      "enum": ["CARTESIAN_3D", "CYLINDRICAL", "PARAMETRIC"]
+    },
+    "units": {
+      "type": "object",
+      "properties": {
+        "length": { "type": "string", "default": "mm" },
+        "stress": { "type": "string", "default": "MPa" }
+      },
+      "required": ["length", "stress"]
+    },
+    "domainBounds": {
+      "type": "object",
+      "properties": {
+        "min": { "type": "array", "items": { "type": "number" }, "minItems": 3, "maxItems": 3 },
+        "max": { "type": "array", "items": { "type": "number" }, "minItems": 3, "maxItems": 3 }
+      },
+      "required": ["min", "max"]
+    },
+    "propertyFields": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "propertyName": { "type": "string", "enum": ["E", "nu", "yieldStress", "hardeningModulus", "density"] },
+          "evaluationType": { "type": "string", "enum": ["ANALYTIC_EXPRESSION", "VOXEL_GRID", "POINT_CLOUD", "GRADIENT_1D"] },
+          "expressionOrRef": { "type": "string" },
+          "bounds": {
+            "type": "object",
+            "properties": {
+              "lower": { "type": "number" },
+              "upper": { "type": "number" }
+            },
+            "required": ["lower", "upper"]
+          }
+        },
+        "required": ["propertyName", "evaluationType", "expressionOrRef", "bounds"]
+      }
+    },
+    "missingDataBehavior": {
+      "type": "string",
+      "enum": ["FAIL_CLOSED", "FALLBACK_TO_BASE", "EXTRAPOLATE"],
+      "default": "FAIL_CLOSED"
+    },
+    "provenance": {
+      "type": "object",
+      "properties": {
+        "author": { "type": "string" },
+        "timestamp": { "type": "string", "format": "date-time" },
+        "hash": { "type": "string" }
+      },
+      "required": ["author", "timestamp", "hash"]
+    }
+  },
+  "required": [
+    "fieldId",
+    "canonicalGeometryId",
+    "canonicalRevisionId",
+    "baseMaterialId",
+    "coordinateSystem",
+    "domainBounds",
+    "propertyFields",
+    "provenance"
+  ]
+}

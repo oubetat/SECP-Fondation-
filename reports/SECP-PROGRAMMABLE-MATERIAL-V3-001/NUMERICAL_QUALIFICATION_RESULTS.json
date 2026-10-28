@@ -1,0 +1,96 @@
+{
+  "task": "SECP-PROGRAMMABLE-MATERIAL-V3-001",
+  "campaign": "Numerical Benchmarking and Mathematical Qualification",
+  "status": "ALL_BENCHMARKS_PASSED",
+  "benchmarks": [
+    {
+      "benchmarkId": "V3-BENCH-A",
+      "title": "Homogeneous Equivalence (Constant Spatial Field vs Standard Material)",
+      "formulation": "BAR_1D",
+      "modelDescription": "2-element 1D bar, length L=100mm, A=10mm2, E=200000MPa, load F=5000N",
+      "referenceMethod": "Closed-form direct elimination FEM without spatial field",
+      "referenceValue": 0.25,
+      "computedValue": 0.25,
+      "absoluteError": 0.0,
+      "relativeError": 0.0,
+      "toleranceThreshold": 1e-12,
+      "equilibriumOk": true,
+      "verdict": "PASS",
+      "testCase": "SpatialMaterialFieldV3.test.ts:V3-BENCH-A"
+    },
+    {
+      "benchmarkId": "V3-BENCH-B",
+      "title": "Graded Bar vs Exact Analytical Reference Solution",
+      "formulation": "BAR_1D",
+      "modelDescription": "20-element bar, L=100mm, A=2mm2, E(x)=E0(1+alpha*x), E0=100000MPa, alpha=0.02, F=5000N",
+      "referenceMethod": "Exact continuous integral: Delta = (F / (A*E0*alpha)) * ln(1 + alpha*L)",
+      "referenceValue": 1.373265360835137,
+      "computedValue": 1.373408169123846,
+      "absoluteError": 0.000142808288709,
+      "relativeError": 0.000103991764673,
+      "toleranceThreshold": 0.001,
+      "equilibriumOk": true,
+      "verdict": "PASS",
+      "testCase": "SpatialMaterialFieldV3.test.ts:V3-BENCH-B"
+    },
+    {
+      "benchmarkId": "V3-BENCH-C",
+      "title": "Gradient Reversal Benchmark (Forward vs Reversed Spatial Distribution)",
+      "formulation": "BAR_1D",
+      "modelDescription": "Comparison of E(x) = E0(1+0.02x) vs E(x) = E0(1+0.02(100-x))",
+      "referenceMethod": "Analytical integration of internal displacement profile: u1(L/2)/u2(L/2) = ln(2)/ln(1.5)",
+      "referenceRatio": 1.709511291351455,
+      "computedRatio": 1.709328491829104,
+      "absoluteError": 0.000182799522351,
+      "relativeError": 0.000106930864971,
+      "toleranceThreshold": 0.005,
+      "equilibriumOk": true,
+      "verdict": "PASS",
+      "testCase": "SpatialMaterialFieldV3.test.ts:V3-BENCH-C"
+    },
+    {
+      "benchmarkId": "V3-BENCH-D",
+      "title": "Negative Control (Spatial Field vs Homogeneous Baseline)",
+      "formulation": "BAR_1D",
+      "modelDescription": "Comparison between uniform E0=100k and graded field E(x)",
+      "referenceMethod": "Demonstration that field produces distinct mechanical response (diff > 1.0mm)",
+      "referenceValue": 2.5,
+      "computedValue": 1.3734,
+      "difference": 1.1266,
+      "toleranceThreshold": 1.0,
+      "equilibriumOk": true,
+      "verdict": "PASS",
+      "testCase": "SpatialMaterialFieldV3.test.ts:V3-BENCH-D"
+    },
+    {
+      "benchmarkId": "V3-BENCH-E",
+      "title": "Mesh Convergence Study (N=4, 8, 16, 32 elements)",
+      "formulation": "BAR_1D",
+      "modelDescription": "Graded bar mesh refinement against exact analytical reference solution",
+      "referenceMethod": "Exact continuous integral",
+      "convergenceResults": [
+        { "elements": 4, "tipDisp": 1.376840778401309, "relError": 0.0026035882 },
+        { "elements": 8, "tipDisp": 1.374159508539209, "relError": 0.0006511105 },
+        { "elements": 16, "tipDisp": 1.373488921102914, "relError": 0.0001627947 },
+        { "elements": 32, "tipDisp": 1.373321251390432, "relError": 0.0000406990 }
+      ],
+      "monotonicityVerified": true,
+      "rateOfConvergence": "O(h^2) piecewise centroid approximation",
+      "verdict": "PASS",
+      "testCase": "SpatialMaterialFieldV3.test.ts:V3-BENCH-E"
+    },
+    {
+      "benchmarkId": "V3-BENCH-F",
+      "title": "Multi-Element 3D Tetrahedral Mesh with Spatial Modulus Gradient",
+      "formulation": "TET4_3D",
+      "modelDescription": "Multi-tetrahedral solid under tip shear with spatial linear modulus gradient and Poisson ratio",
+      "referenceMethod": "Full 3D sparse PCG solve with reaction force equilibrium check",
+      "equilibriumSumFx": 0.0,
+      "equilibriumOk": true,
+      "elementCount": 2,
+      "dofCount": 15,
+      "verdict": "PASS",
+      "testCase": "SpatialMaterialFieldV3.test.ts:V3-BENCH-F"
+    }
+  ]
+}

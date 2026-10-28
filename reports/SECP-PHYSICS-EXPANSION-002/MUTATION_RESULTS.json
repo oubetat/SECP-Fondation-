@@ -1,0 +1,31 @@
+{
+  "campaignId": "SECP-PHYSICS-EXPANSION-002",
+  "timestamp": "2026-10-28T09:35:45.524Z",
+  "totalMutationsTested": 3,
+  "mutationsKilled": 3,
+  "mutationsSurvived": 0,
+  "mutationScore": 1,
+  "campaign": [
+    {
+      "mutationId": "MUT-EXP002-01-INVERT-ALGORITHMIC-TANGENT-SIGN",
+      "target": "TET4LargeDeformationPlasticFormulation.performRadialReturn",
+      "mutationDescription": "Invert sign of elastoplastic plastic flow tensor term in D_alg",
+      "detectedByTest": "Newton-Raphson elastoplastic convergence rate fails or diverges",
+      "survived": false
+    },
+    {
+      "mutationId": "MUT-EXP002-02-OMIT-TEMPERATURE-FEEDBACK",
+      "target": "BidirectionalElectrothermalSolver3D.solve",
+      "mutationDescription": "Set temperature coefficient alpha_T = 0 during conductivity update",
+      "detectedByTest": "Thermal residual delta_T drops to zero in iteration 1, failing feedback test",
+      "survived": false
+    },
+    {
+      "mutationId": "MUT-EXP002-03-OMIT-C10-C01-ADMISSIBILITY",
+      "target": "HyperelasticMooneyRivlin3D.constructor",
+      "mutationDescription": "Disable check C10 + C01 > 0",
+      "detectedByTest": "Adversarial test ADV-EXP002-02 immediately detects missing guard",
+      "survived": false
+    }
+  ]
+}

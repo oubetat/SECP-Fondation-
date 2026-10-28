@@ -1,0 +1,9 @@
+{
+  "problemId": "OPT-COMPLIANCE-001",
+  "candidates": [
+    { "id": "ITER_0_BASE", "E": 210000, "U": 0.0238, "status": "FEASIBLE" },
+    { "id": "ITER_1_E_VAR_UP", "E": 220000, "U": 0.0227, "status": "FEASIBLE" },
+    { "id": "ITER_1_E_VAR_DOWN", "E": 200000, "U": 0.0250, "status": "FEASIBLE" },
+    { "id": "ITER_2_E_VAR_UP", "E": 230000, "U": 0.0217, "status": "FEASIBLE" }
+  ]
+}

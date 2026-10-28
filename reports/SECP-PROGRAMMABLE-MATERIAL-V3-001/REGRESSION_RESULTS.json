@@ -1,0 +1,81 @@
+{
+  "task": "SECP-PROGRAMMABLE-MATERIAL-V3-001",
+  "command": "npx vitest run src/engine/fem/core/__tests__/",
+  "executionSummary": {
+    "totalTestFiles": 11,
+    "passedTestFiles": 11,
+    "failedTestFiles": 0,
+    "totalTests": 90,
+    "passedTests": 90,
+    "failedTests": 0,
+    "durationMs": 5180
+  },
+  "testFiles": [
+    {
+      "file": "src/engine/fem/core/__tests__/SpatialMaterialFieldV3.test.ts",
+      "tests": 19,
+      "passed": 19,
+      "failed": 0
+    },
+    {
+      "file": "src/engine/fem/core/__tests__/SpatialMaterialMapping004.test.ts",
+      "tests": 4,
+      "passed": 4,
+      "failed": 0
+    },
+    {
+      "file": "src/engine/fem/core/__tests__/SpatialMaterialMapping3D006.test.ts",
+      "tests": 2,
+      "passed": 2,
+      "failed": 0
+    },
+    {
+      "file": "src/engine/fem/core/__tests__/FEMCore.test.ts",
+      "tests": 2,
+      "passed": 2,
+      "failed": 0
+    },
+    {
+      "file": "src/engine/fem/core/__tests__/FEMUpgrade001Acceptance.test.ts",
+      "tests": 11,
+      "passed": 11,
+      "failed": 0
+    },
+    {
+      "file": "src/engine/fem/core/__tests__/FEMUpgrade002StressField.test.ts",
+      "tests": 6,
+      "passed": 6,
+      "failed": 0
+    },
+    {
+      "file": "src/engine/fem/core/__tests__/FEMUpgrade003BeamFrame.test.ts",
+      "tests": 11,
+      "passed": 11,
+      "failed": 0
+    },
+    {
+      "file": "src/engine/fem/core/__tests__/FEMUpgrade003Convergence.test.ts",
+      "tests": 11,
+      "passed": 11,
+      "failed": 0
+    },
+    {
+      "file": "src/engine/fem/core/__tests__/FEMUpgrade004Continuum.test.ts",
+      "tests": 12,
+      "passed": 12,
+      "failed": 0
+    },
+    {
+      "file": "src/engine/fem/core/__tests__/FEMUpgrade005Solid3D.test.ts",
+      "tests": 6,
+      "passed": 6,
+      "failed": 0
+    },
+    {
+      "file": "src/engine/fem/core/__tests__/MathUtils.test.ts",
+      "tests": 6,
+      "passed": 6,
+      "failed": 0
+    }
+  ]
+}

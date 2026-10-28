@@ -1,0 +1,9 @@
+{
+  "changedFiles": [
+    "/src/engine/fem/core/AIMaterialExplorationEngine.ts",
+    "/server.ts",
+    "/metadata.json",
+    "/package.json",
+    "/src/engine/fem/core/__tests__/MaterialAIExplorationV11.test.ts"
+  ]
+}

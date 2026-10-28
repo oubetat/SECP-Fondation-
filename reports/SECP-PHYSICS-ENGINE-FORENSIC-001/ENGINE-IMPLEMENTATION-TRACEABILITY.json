@@ -1,0 +1,51 @@
+{
+  "auditId": "SECP-PHYSICS-ENGINE-FORENSIC-001",
+  "timestamp": "2026-10-28T07:57:17.646Z",
+  "engineTraceability": [
+    {
+      "domain": "Structural Mechanics",
+      "canonicalEngine": "src/engine/fem/core/GlobalAssemblyEngine.ts",
+      "auxiliarySolver": "src/engine/fem/core/SparsePCGSolver.ts",
+      "legacySimEngine": "src/engine/structuralFem.ts (1D Beam approximation)",
+      "uiComponent": "src/components/fem/FemVerificationWorkspace.tsx",
+      "dispatchPath": "UI -> FemVerificationWorkspace -> HardAcceptanceGate240 -> FemVerificationPipeline -> BoundaryConditionEngine -> Sparse Solver",
+      "status": "AUTHENTIC_NUMERICAL_PIPELINE"
+    },
+    {
+      "domain": "Nonlinear Mechanics",
+      "canonicalEngine": "src/engine/fem/core/NonlinearEquilibriumSolver.ts",
+      "auxiliarySolver": "src/engine/fem/core/J2Plasticity3D.ts",
+      "legacySimEngine": "None",
+      "uiComponent": "src/components/pme/PhysicsSimulation.tsx",
+      "dispatchPath": "UI -> PhysicsSimulation -> NonlinearEquilibriumSolver.solve() -> Newton-Raphson loop -> SparsePCG",
+      "status": "AUTHENTIC_NUMERICAL_PIPELINE"
+    },
+    {
+      "domain": "Fluid Mechanics",
+      "canonicalEngine": "src/engine/cfd3d/Fvm3DNavierStokesSolver.ts",
+      "auxiliarySolver": "src/engine/cfd3d/coupling/SimpleCoupling.ts",
+      "legacySimEngine": "None",
+      "uiComponent": "src/components/cfd/NavierStokesWorkspace.tsx",
+      "dispatchPath": "UI -> NavierStokesWorkspace -> Fvm3DNavierStokesSolver -> SIMPLE Pressure-Velocity -> Flux update",
+      "status": "AUTHENTIC_NUMERICAL_PIPELINE"
+    },
+    {
+      "domain": "Fluid-Structure Interaction",
+      "canonicalEngine": "src/engine/cfd3d/coupling/TwoWayFSICouplingEngine.ts",
+      "auxiliarySolver": "src/engine/cfd3d/solvers/fsi/FSIRelaxationManager.ts",
+      "legacySimEngine": "None",
+      "uiComponent": "src/components/cfd/FsiWorkspace.tsx",
+      "dispatchPath": "UI -> FsiWorkspace -> TwoWayFSICouplingEngine.solveTwoWayFSI() -> Partitioned Loop -> StructuralAnalysisEngine -> Aitken Relaxation -> DynamicMeshManager",
+      "status": "AUTHENTIC_NUMERICAL_PIPELINE"
+    },
+    {
+      "domain": "Electrothermal Multiphysics",
+      "canonicalEngine": "src/engine/engineeringCore/ElectrothermalSolver.ts",
+      "auxiliarySolver": "src/engine/engineeringCore/SpatialThermalSolver.ts",
+      "legacySimEngine": "None",
+      "uiComponent": "src/components/InteractiveEngineeringWorkbench.tsx",
+      "dispatchPath": "UI -> InteractiveEngineeringWorkbench -> ElectrothermalSolver.solve() -> Picard Iteration -> NodalCircuitSolver + SpatialThermalSolver",
+      "status": "AUTHENTIC_NUMERICAL_PIPELINE"
+    }
+  ]
+}

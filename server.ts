@@ -10,6 +10,9 @@ import { HardAcceptanceGateP0 } from './src/engine/collision-authority/HardAccep
 import { HardAcceptanceGateP6 } from './src/engine/collision-authority/HardAcceptanceGateP6';
 import { HardAcceptanceGateP7 } from './src/engine/collision-authority/HardAcceptanceGateP7';
 import { HardAcceptanceGateP8 } from './src/engine/collision-authority/HardAcceptanceGateP8';
+import { AIMaterialExplorationEngine } from './src/engine/fem/core/AIMaterialExplorationEngine';
+import { FEMModel } from './src/engine/fem/core/FEMTypes';
+import { SpatialMaterialField } from './src/engine/fem/core/SpatialMaterialField';
 
 async function startServer() {
   const app = express();
@@ -238,6 +241,45 @@ async function startServer() {
       res.json({ success: true, timestampIso: new Date().toISOString(), results });
     } catch (err: any) {
       res.status(500).json({ success: false, error: err?.message || String(err) });
+    }
+  });
+
+  // 7. AI Material Exploration Endpoint (Phase V11)
+  app.post('/api/material/explore', async (req, res) => {
+    try {
+      const { model, request } = req.body;
+      if (!model || !request) {
+        return res.status(400).json({ success: false, error: 'Missing model or exploration request' });
+      }
+
+      // Reconstruct Map objects for the engine if they were serialized as plain objects
+      const reconstructedModel: FEMModel = {
+        ...model,
+        nodes: new Map(Object.entries(model.nodes || {})),
+        elements: new Map(Object.entries(model.elements || {})),
+        materials: new Map(Object.entries(model.materials || {})),
+        sections: new Map(Object.entries(model.sections || {})),
+        spatialMaterialFields: model.spatialMaterialFields ? new Map(Object.entries(model.spatialMaterialFields).map(([k, v]: [string, any]) => {
+           // Basic reconstruction of SpatialMaterialField instance if needed
+           const propertySpecs = new Map(Object.entries(v.propertySpecs || {}));
+           return [k, new SpatialMaterialField(v.fieldId, v.canonicalGeometryId, v.canonicalRevisionId, v.baseMaterialId, propertySpecs as any, v.domain, v.outOfDomainBehavior, v.coordinateSystem)];
+        })) : undefined
+      };
+
+      const aiEngine = new AIMaterialExplorationEngine();
+      const result = await aiEngine.explore(reconstructedModel, request);
+
+      res.json({
+        success: true,
+        timestampIso: new Date().toISOString(),
+        result
+      });
+    } catch (err: any) {
+      console.error("[AI_EXPLORATION_API_ERROR]", err);
+      res.status(500).json({
+        success: false,
+        error: err?.message || String(err)
+      });
     }
   });
 

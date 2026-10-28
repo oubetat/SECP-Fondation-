@@ -1,0 +1,9 @@
+{
+  "referenceType": "ANALYTICAL_BAR_STIFFNESS",
+  "problemId": "OPT-COMPLIANCE-001",
+  "variable": "E_VAR",
+  "computedBest": 300000,
+  "analyticalOptimum": 300000,
+  "error": 0.0,
+  "status": "VERIFIED"
+}

@@ -1,0 +1,128 @@
+[
+  {
+    "mutationNumber": 1,
+    "name": "missing_mandatory_evidence",
+    "description": "Physical evidence status marked missing but attempting full qualification",
+    "detectedAndRejected": true,
+    "rejectionReason": "Fail-closed rule V12-ARCH-002: Cannot qualify within scope without verified physical evidence",
+    "verdictOutcome": "REJECTED_FAIL_CLOSED",
+    "testPassed": true
+  },
+  {
+    "mutationNumber": 2,
+    "name": "altered_evidence_after_baseline",
+    "description": "Numerical verification altered to corrupted status",
+    "detectedAndRejected": true,
+    "rejectionReason": "Numerical verification status not passed",
+    "verdictOutcome": "REJECTED_FAIL_CLOSED",
+    "testPassed": true
+  },
+  {
+    "mutationNumber": 3,
+    "name": "malformed_json",
+    "description": "Passing a primitive non-object string instead of JSON object",
+    "detectedAndRejected": true,
+    "rejectionReason": "Empty or invalid qualification payload",
+    "verdictOutcome": "REJECTED_FAIL_CLOSED",
+    "testPassed": true
+  },
+  {
+    "mutationNumber": 4,
+    "name": "missing_required_schema_fields",
+    "description": "Stripping mandatory qualificationId field",
+    "detectedAndRejected": true,
+    "rejectionReason": "Missing mandatory schema field: qualificationId",
+    "verdictOutcome": "REJECTED_FAIL_CLOSED",
+    "testPassed": true
+  },
+  {
+    "mutationNumber": 5,
+    "name": "unknown_verdict_values",
+    "description": "Setting verdict to unapproved string 'ARBITRARY_SUPER_PASS'",
+    "detectedAndRejected": true,
+    "rejectionReason": "Illegal verdict value: ARBITRARY_SUPER_PASS",
+    "verdictOutcome": "REJECTED_FAIL_CLOSED",
+    "testPassed": true
+  },
+  {
+    "mutationNumber": 6,
+    "name": "missing_test_execution_records",
+    "description": "Software verification marked NOT_RUN",
+    "detectedAndRejected": true,
+    "rejectionReason": "Software verification status not passed",
+    "verdictOutcome": "REJECTED_FAIL_CLOSED",
+    "testPassed": true
+  },
+  {
+    "mutationNumber": 7,
+    "name": "stale_revision_references",
+    "description": "Revision binding tagged as stale",
+    "detectedAndRejected": true,
+    "rejectionReason": "Stale revision binding reference detected",
+    "verdictOutcome": "REJECTED_FAIL_CLOSED",
+    "testPassed": true
+  },
+  {
+    "mutationNumber": 8,
+    "name": "broken_requirement_to_evidence_links",
+    "description": "Unresolved requirements while attempting full qualification",
+    "detectedAndRejected": true,
+    "rejectionReason": "Fail-closed rule V12-ARCH-002: Cannot qualify within scope without verified physical evidence",
+    "verdictOutcome": "REJECTED_FAIL_CLOSED",
+    "testPassed": true
+  },
+  {
+    "mutationNumber": 9,
+    "name": "unsupported_numerical_claims",
+    "description": "Numerical verification status set to FAILED",
+    "detectedAndRejected": true,
+    "rejectionReason": "Numerical verification status not passed",
+    "verdictOutcome": "REJECTED_FAIL_CLOSED",
+    "testPassed": true
+  },
+  {
+    "mutationNumber": 10,
+    "name": "missing_physical_evidence",
+    "description": "Physical evidence status BLOCKED but claiming QUALIFIED_WITHIN_SCOPE",
+    "detectedAndRejected": true,
+    "rejectionReason": "Fail-closed rule V12-ARCH-002: Cannot qualify within scope without verified physical evidence",
+    "verdictOutcome": "REJECTED_FAIL_CLOSED",
+    "testPassed": true
+  },
+  {
+    "mutationNumber": 11,
+    "name": "corrupted_spatial_material_fields",
+    "description": "Spatial material tensor with negative Young's modulus",
+    "detectedAndRejected": true,
+    "rejectionReason": "Spatial field contains invalid negative or NaN material parameters",
+    "verdictOutcome": "REJECTED_FAIL_CLOSED",
+    "testPassed": true
+  },
+  {
+    "mutationNumber": 12,
+    "name": "contradicting_test_results",
+    "description": "Test execution record has failCount = 2",
+    "detectedAndRejected": true,
+    "rejectionReason": "Contradicting test results: failCount > 0 while claiming pass",
+    "verdictOutcome": "REJECTED_FAIL_CLOSED",
+    "testPassed": true
+  },
+  {
+    "mutationNumber": 13,
+    "name": "challenge_phase_exception",
+    "description": "Simulating null exception in payload",
+    "detectedAndRejected": true,
+    "rejectionReason": "Empty or invalid qualification payload",
+    "verdictOutcome": "REJECTED_FAIL_CLOSED",
+    "testPassed": true
+  },
+  {
+    "mutationNumber": 14,
+    "name": "empty_or_incomplete_challenge_result",
+    "description": "Passing empty object {}",
+    "detectedAndRejected": true,
+    "rejectionReason": "Empty or invalid qualification payload",
+    "verdictOutcome": "REJECTED_FAIL_CLOSED",
+    "testPassed": true
+  }
+]

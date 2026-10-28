@@ -1,0 +1,10 @@
+{
+  "task_id": "SECP-PROGRAMMABLE-MATERIAL-V5-001",
+  "status": "VERIFIED_PASS",
+  "revision_validity": {
+    "geometry_revision_check": "PASS",
+    "assignment_revision_check": "PASS",
+    "field_revision_check": "PASS",
+    "stale_evidence_invalidation_verified": true
+  }
+}

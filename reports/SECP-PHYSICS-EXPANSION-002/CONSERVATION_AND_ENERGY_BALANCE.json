@@ -1,0 +1,22 @@
+{
+  "campaignId": "SECP-PHYSICS-EXPANSION-002",
+  "timestamp": "2026-10-28T09:35:45.524Z",
+  "checks": [
+    {
+      "domain": "3D Electrothermal Multiphysics",
+      "quantity": "Global Power Dissipation Conservation (P_elec == P_therm)",
+      "totalElectricalPowerWatts": 2620.736944700887,
+      "totalThermalPowerWatts": 2620.736944700887,
+      "relativeImbalanceRatio": 0,
+      "tolerance": 0.000001,
+      "isConserved": true
+    },
+    {
+      "domain": "3D Finite Strain Elastoplasticity",
+      "quantity": "Hardening Strain Energy Plastic Dissipation Integrity",
+      "equivalentPlasticStrain": 0.0016561138875629392,
+      "yieldFlag": true,
+      "dissipationPositive": true
+    }
+  ]
+}

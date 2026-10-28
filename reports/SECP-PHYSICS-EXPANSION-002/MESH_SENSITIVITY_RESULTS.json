@@ -1,0 +1,32 @@
+{
+  "campaignId": "SECP-PHYSICS-EXPANSION-002",
+  "timestamp": "2026-10-28T09:35:45.524Z",
+  "description": "Mesh h-refinement sensitivity study for 3D electrothermal feedback solver",
+  "levels": [
+    {
+      "numLayers": 1,
+      "nodeCount": 8,
+      "elementCount": 5,
+      "totalElectricalPowerW": 8999.999999999996,
+      "peakTemperatureC": 20,
+      "convergedIterations": 2
+    },
+    {
+      "numLayers": 2,
+      "nodeCount": 12,
+      "elementCount": 10,
+      "totalElectricalPowerW": 4258.091561096131,
+      "peakTemperatureC": 632.7193032610098,
+      "convergedIterations": 7
+    },
+    {
+      "numLayers": 4,
+      "nodeCount": 20,
+      "elementCount": 20,
+      "totalElectricalPowerW": 3918.0579092034295,
+      "peakTemperatureC": 565.0567615975776,
+      "convergedIterations": 10
+    }
+  ],
+  "converged": true
+}

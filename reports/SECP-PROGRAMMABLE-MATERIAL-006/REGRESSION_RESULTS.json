@@ -1,0 +1,9 @@
+{
+  "taskId": "SECP-PROGRAMMABLE-MATERIAL-006",
+  "regressionStatus": "PASSED",
+  "testSuitesRun": [
+    "SpatialMaterialMapping3D006.test.ts",
+    "SpatialMaterialMapping004.test.ts",
+    "FEMUpgrade001Acceptance.test.ts"
+  ]
+}

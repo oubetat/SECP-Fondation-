@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "1.0.0",
+  "timestamp": "2026-10-28T08:28:44.507Z",
+  "unresolvedFindings": [
+    {
+      "gapId": "GAP-PHY-001",
+      "title": "Absence of Physical Manufacturing Metrology Data (L-PBF & CMM)",
+      "severity": "CRITICAL_BLOCKER_FOR_INDUSTRIAL_QUALIFICATION",
+      "category": "PHYSICAL_METROLOGY",
+      "description": "No physical Laser Powder Bed Fusion (L-PBF) build logs, in-situ melt pool thermal camera telemetry, or Coordinate Measuring Machine (CMM) dimensional scan data exist. All evidence is purely mathematical and computational in software.",
+      "impact": "Strictly blocks verdict from being INDUSTRIALLY_QUALIFIED. Verdict is capped at SOFTWARE_VERIFIED_WITHIN_DECLARED_SCOPE.",
+      "remediationPath": "Integrate physical laser sintering machine telemetry and AS9102 First Article Inspection reports when physical specimens are fabricated."
+    },
+    {
+      "gapId": "GAP-PHY-002",
+      "title": "Absence of Algebraic Topology & Persistent Homology Algorithms",
+      "severity": "DOCUMENTED_OUT_OF_SCOPE",
+      "category": "THEORETICAL_MATHEMATICS",
+      "description": "Persistent homology barcodes and Betti number computation are not implemented in the CAD kernel.",
+      "impact": "Excludes algebraic topology claims from platform specifications.",
+      "remediationPath": "Documented clearly in TOPOLOGY_CAPABILITY_TRUTH.json as NOT_IMPLEMENTED."
+    },
+    {
+      "gapId": "GAP-PHY-003",
+      "title": "Absence of Quantum & Solid-State DFT Physics Engines",
+      "severity": "DOCUMENTED_OUT_OF_SCOPE",
+      "category": "QUANTUM_PHYSICS",
+      "description": "Quantum physical models do not exist in SECP. Classical continuum mechanics is strictly enforced.",
+      "impact": "Excludes quantum mechanical claims from platform specifications.",
+      "remediationPath": "Documented clearly in QUANTUM_CAPABILITY_TRUTH.json as NOT_IMPLEMENTED."
+    }
+  ]
+}

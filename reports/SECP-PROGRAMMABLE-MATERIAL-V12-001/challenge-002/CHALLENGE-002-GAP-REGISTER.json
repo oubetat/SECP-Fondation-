@@ -1,0 +1,11 @@
+{
+  "gaps": [
+    {
+      "gapId": "GAP-PME-01",
+      "category": "Physical Evidence",
+      "description": "Absence of physical L-PBF manufacturing logs and CMM metrology inspection data in the repository.",
+      "impact": "Restricts industrial qualification to SOFTWARE_VERIFIED_ONLY.",
+      "remediation": "Ingest certified CMM metrology datasets and machine execution logs in future revision."
+    }
+  ]
+}

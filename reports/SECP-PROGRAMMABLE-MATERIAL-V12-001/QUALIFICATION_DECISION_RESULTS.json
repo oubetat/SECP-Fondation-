@@ -1,0 +1,15 @@
+{
+  "qualificationId": "QUAL-PME-V12-001",
+  "declaredScopeId": "PME-QUAL-SCOPE-001",
+  "softwareVerificationStatus": "PASSED",
+  "numericalVerificationStatus": "PASSED",
+  "physicalEvidenceStatus": "BLOCKED",
+  "verdict": "SOFTWARE_VERIFIED_ONLY",
+  "decisionRationale": [
+    "All PME V1-V11 software engines and spatial field algorithms passed numerical verification and unit tests.",
+    "Physical manufacturing, laboratory metrology, and destructive testing evidence are absent from the repository workspace.",
+    "In strict compliance with fail-closed governance rules (V12-ARCH-002, V12-ARCH-003), the verdict is restricted to SOFTWARE_VERIFIED_ONLY."
+  ],
+  "releaseEligible": false,
+  "decisionTimestamp": "2026-10-27T09:51:47.108Z"
+}

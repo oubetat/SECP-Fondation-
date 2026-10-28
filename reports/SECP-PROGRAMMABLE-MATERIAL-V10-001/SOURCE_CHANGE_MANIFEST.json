@@ -1,0 +1,7 @@
+{
+  "changedFiles": [
+    "/src/engine/fem/core/EngineeringOptimizationEngine.ts",
+    "/src/engine/fem/core/SpatialMaterialField.ts",
+    "/src/engine/fem/core/__tests__/MaterialOptimizationV10.test.ts"
+  ]
+}

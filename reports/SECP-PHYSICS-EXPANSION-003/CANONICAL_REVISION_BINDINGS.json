@@ -1,0 +1,42 @@
+{
+  "runId": "RUN-SECP-003-1793182654205",
+  "timestamp": "2026-10-28T10:17:34.205Z",
+  "sourceBindings": [
+    {
+      "relativePath": "src/engine/physics/electromagnetics/UnifiedThermoElectroMechanicalSolver3D.ts",
+      "exists": true,
+      "byteLength": 7227,
+      "sha256": "987b96e04a9552e541ba3ac561a6d56cec809ae487f43f7989093bf3a4f08a82"
+    },
+    {
+      "relativePath": "src/engine/physics/electromagnetics/BidirectionalElectrothermalSolver3D.ts",
+      "exists": true,
+      "byteLength": 13070,
+      "sha256": "cda3ab4419ba1c156752057c437818f768e840026b34c00a6ada2b6a3e6426d4"
+    },
+    {
+      "relativePath": "src/engine/physics/electromagnetics/ElectrostaticSolver3D.ts",
+      "exists": true,
+      "byteLength": 11132,
+      "sha256": "9e6ed835be30ed2bc7e4ca170fee72fd58db559558e45b495a7ff43e6b81c199"
+    },
+    {
+      "relativePath": "src/engine/fem/core/TET4LargeDeformationPlasticFormulation.ts",
+      "exists": true,
+      "byteLength": 10954,
+      "sha256": "477d41db93ba24a8eb0fc3482147cbd50cdd517f3a80040ddcfe54d3238e2272"
+    },
+    {
+      "relativePath": "src/engine/fem/core/NonlinearEquilibriumSolver.ts",
+      "exists": true,
+      "byteLength": 8503,
+      "sha256": "2d43f82f7c8844412a6b032f2c22e9567cd45746fdbfbc9c62c74333131decc5"
+    },
+    {
+      "relativePath": "src/engine/fem/core/HyperelasticMooneyRivlin3D.ts",
+      "exists": true,
+      "byteLength": 8108,
+      "sha256": "7e8bdb14f5cc0663994b9499f9ec8d564c9c6997f0afc66307f7c30d635a2914"
+    }
+  ]
+}

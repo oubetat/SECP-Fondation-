@@ -1,0 +1,22 @@
+{
+  "task_id": "SECP-PROGRAMMABLE-MATERIAL-V6-001",
+  "status": "VERIFIED_PASS",
+  "spatial_gradient_checks": [
+    {
+      "rule": "RULE_MAX_SPATIAL_GRADIENT",
+      "test_case": "Steep gradient E(x) = 100k + 5000x -> |grad E| = 5000 MPa/mm",
+      "measured_MPa_per_mm": 5000.0,
+      "limit_MPa_per_mm": 1000.0,
+      "exceedance_MPa_per_mm": 4000.0,
+      "severity": "VIOLATION_DETECTED"
+    },
+    {
+      "rule": "RULE_MAX_SPATIAL_GRADIENT",
+      "test_case": "Graded field E(x) = 100k + 1000x -> |grad E| = 1000 MPa/mm",
+      "measured_MPa_per_mm": 1000.0,
+      "limit_MPa_per_mm": 2000.0,
+      "exceedance_MPa_per_mm": 0.0,
+      "severity": "PASS"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "standards": [
+    {
+      "standardId": "ISO 13314",
+      "title": "Mechanical testing of metals - Porous and cellular metallic materials"
+    },
+    {
+      "standardId": "ASTM F3301",
+      "title": "Additive manufacturing - Post-processing of directed energy deposition parts"
+    }
+  ]
+}

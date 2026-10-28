@@ -1,0 +1,34 @@
+{
+  "capabilities": [
+    {
+      "capabilityId": "CAP-01",
+      "name": "Nonlinear Solver & Newton-Raphson",
+      "classification": "VERIFIED_REUSABLE",
+      "reference": "/src/engine/fem/core/NonlinearEquilibriumSolver.ts"
+    },
+    {
+      "capabilityId": "CAP-02",
+      "name": "Sparse Assembly Engine",
+      "classification": "VERIFIED_REUSABLE",
+      "reference": "/src/engine/fem/core/GlobalAssemblyEngine.ts"
+    },
+    {
+      "capabilityId": "CAP-03",
+      "name": "Material State Manager (Commit/Rollback)",
+      "classification": "VERIFIED_REUSABLE",
+      "reference": "/src/engine/fem/core/MaterialStateManager.ts"
+    },
+    {
+      "capabilityId": "CAP-04",
+      "name": "J2 Plasticity Constitutive Model",
+      "classification": "REUSABLE_WITH_ADAPTER",
+      "reference": "/src/engine/fem/core/J2Plasticity3D.ts"
+    },
+    {
+      "capabilityId": "CAP-05",
+      "name": "Spatial Material Field Evaluator",
+      "classification": "IMPLEMENTATION_GAP_CONFIRMED",
+      "reference": "New component / adapter required"
+    }
+  ]
+}

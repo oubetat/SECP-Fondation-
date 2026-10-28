@@ -1,4 +1,7 @@
 import { Matrix } from "./MathUtils";
+import { SpatialMaterialField } from "./SpatialMaterialField";
+import { CoordinateFrameContract, GeometryMaterialAssignment } from "./GeometryMaterialAssignment";
+import { ManufacturingConstraintProfile } from "./ManufacturingConstraintEngine";
 
 export enum DOFComponent {
   UX = "UX",
@@ -18,9 +21,15 @@ export interface FEMNode {
 
 export interface FEMMaterial {
   materialId: string;
-  E: number; // Young's modulus
+  E: number; // Young's modulus [MPa]
   nu: number; // Poisson's ratio
   density?: number;
+  yieldStress?: number; // [MPa]
+  tangentModulus?: number; // [MPa] (Hardening H)
+  alphaE?: number; // Temperature coeff for E [1/K]
+  alphaY?: number; // Temperature coeff for yield [1/K]
+  thermalExpansionCoeff?: number; // [1/K]
+  refTempC?: number; // [C]
 }
 
 export interface FEMSection {
@@ -39,6 +48,8 @@ export interface FEMElement {
   sectionId: string;
   formulationId: string;
   distributedLoad?: number; // Transverse uniform distributed load w (N/mm or N/m)
+  spatialFieldId?: string;
+  assignmentId?: string;
 }
 
 export interface Load {
@@ -53,6 +64,10 @@ export interface BoundaryCondition {
   value: number;
 }
 
+import { AsBuiltMaterialState } from "./AsBuiltMaterialStateEngine";
+import { SpatialMaterialDeviationResult } from "./SpatialMaterialDeviationEngine";
+import { MaterialTruthThread } from "./MaterialTruthThreadEngine";
+
 export interface FEMModel {
   nodes: Map<string, FEMNode>;
   elements: Map<string, FEMElement>;
@@ -60,6 +75,18 @@ export interface FEMModel {
   sections: Map<string, FEMSection>;
   loads: Load[];
   boundaryConditions: BoundaryCondition[];
+  spatialMaterialFields?: Map<string, SpatialMaterialField>;
+  materialAssignments?: Map<string, GeometryMaterialAssignment>;
+  manufacturingProfile?: ManufacturingConstraintProfile;
+  asBuiltState?: AsBuiltMaterialState;
+  deviationResult?: SpatialMaterialDeviationResult;
+  truthThread?: MaterialTruthThread;
+  geometryMetadata?: {
+    geometryId: string;
+    geometryRevision: string;
+    coordinateFrame?: CoordinateFrameContract;
+  };
+  nodalTemperatures?: Map<string, number>; // [C]
 }
 
 export interface DOF {

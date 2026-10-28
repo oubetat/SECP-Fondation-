@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "1.0.0",
+  "timestamp": "2026-10-28T08:28:44.507Z",
+  "targetFile": "src/engine/structuralFem.ts",
+  "priorDeceptiveBehavior": {
+    "claimedTitle": "Structural Finite Element Method (FEM) Solver",
+    "claimedEquation": "[K]{u} = {F} -> Stress -> Displacement -> Safety Factor",
+    "actualComputation": "1D Euler-Bernoulli beam analytical deflection formula (F * x^2 * (3L - x)) / (6*E*I)",
+    "artificialConstants": "Hardcoded residual errors (1.42e-4, 8.5e-7)"
+  },
+  "remediationActionsTaken": [
+    "Added explicit solverModel: \"ANALYTICAL_EULER_BERNOULLI_BEAM\" to result interface and return payload.",
+    "Added isApproximateAnalytical: true flag.",
+    "Added isQualifiedContinuumFEM: false flag to result payload and static class property.",
+    "Added productionRoutingNotice warning callers to route 3D continuum structural problems to GlobalAssemblyEngine and TET43DFormulation.",
+    "Preserved binary API compatibility for drone integration tests while eliminating false continuum FEM qualification claims."
+  ],
+  "isolationStatus": "ISOLATED_AND_BOUNDED",
+  "verdict": "LEGACY_DISPOSITION_COMPLETE"
+}

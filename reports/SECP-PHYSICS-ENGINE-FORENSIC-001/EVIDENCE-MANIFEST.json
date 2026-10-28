@@ -1,0 +1,68 @@
+{
+  "manifestVersion": "1.0.0",
+  "auditId": "SECP-PHYSICS-ENGINE-FORENSIC-001",
+  "timestamp": "2026-10-28T07:57:17.648Z",
+  "totalEntries": 10,
+  "entries": [
+    {
+      "filename": "AUDIT-EXECUTION-LOG.json",
+      "path": "reports/SECP-PHYSICS-ENGINE-FORENSIC-001/AUDIT-EXECUTION-LOG.json",
+      "sizeBytes": 1619,
+      "sha256": "ea936d2b1f7659f00c8620f84aeb0b29c2ce909a662a5d04489a8b5043f5d0cc"
+    },
+    {
+      "filename": "ENGINE-IMPLEMENTATION-TRACEABILITY.json",
+      "path": "reports/SECP-PHYSICS-ENGINE-FORENSIC-001/ENGINE-IMPLEMENTATION-TRACEABILITY.json",
+      "sizeBytes": 2669,
+      "sha256": "aa68bf2bffd7de109dc3bc623547f58ef3d9dc7f580495e58b27fa84d70c1bbd"
+    },
+    {
+      "filename": "FINAL-AUDIT-DECISION.md",
+      "path": "reports/SECP-PHYSICS-ENGINE-FORENSIC-001/FINAL-AUDIT-DECISION.md",
+      "sizeBytes": 3900,
+      "sha256": "1ef1a7f0d05c046f571e14c1ed96d93233811edf04af6037323829259ba1dbc0"
+    },
+    {
+      "filename": "MOCK-STUB-FALLBACK-REGISTER.json",
+      "path": "reports/SECP-PHYSICS-ENGINE-FORENSIC-001/MOCK-STUB-FALLBACK-REGISTER.json",
+      "sizeBytes": 1839,
+      "sha256": "6bfa8a6da199b32370d305f613b1727c1691d20fe6b8b339edbe5f92ea80aec9"
+    },
+    {
+      "filename": "MULTIPHYSICS-COUPLING-MATRIX.json",
+      "path": "reports/SECP-PHYSICS-ENGINE-FORENSIC-001/MULTIPHYSICS-COUPLING-MATRIX.json",
+      "sizeBytes": 1838,
+      "sha256": "76a2cd104624fc039322383faa07c146a0c5e0e3f5c9da3d2f5de3265022c5ca"
+    },
+    {
+      "filename": "NUMERICAL-VERIFICATION-MATRIX.json",
+      "path": "reports/SECP-PHYSICS-ENGINE-FORENSIC-001/NUMERICAL-VERIFICATION-MATRIX.json",
+      "sizeBytes": 2515,
+      "sha256": "f29d12a6e300a03f2d590bcd1deb9af7940d870347dce0c0d0379dc8bb09f489"
+    },
+    {
+      "filename": "PHYSICS-CAPABILITY-MATRIX.json",
+      "path": "reports/SECP-PHYSICS-ENGINE-FORENSIC-001/PHYSICS-CAPABILITY-MATRIX.json",
+      "sizeBytes": 6940,
+      "sha256": "d6a151802d67d6745bb0fcf18bbbb0e138326b9ab1810e1c51a7e7db9c5a3c0e"
+    },
+    {
+      "filename": "PHYSICS-ENGINE-INVENTORY.md",
+      "path": "reports/SECP-PHYSICS-ENGINE-FORENSIC-001/PHYSICS-ENGINE-INVENTORY.md",
+      "sizeBytes": 5683,
+      "sha256": "e69d4c0ea593bedcc8abe7371ce66c4a684fde8cc5d4405390ac713a30e3bdfe"
+    },
+    {
+      "filename": "PRODUCTION-EXECUTION-PATHS.md",
+      "path": "reports/SECP-PHYSICS-ENGINE-FORENSIC-001/PRODUCTION-EXECUTION-PATHS.md",
+      "sizeBytes": 2440,
+      "sha256": "f313c83e019fbff5e66675c43c140fa8949eeabd04b4bde3abd10775ef776d58"
+    },
+    {
+      "filename": "UNVERIFIED-CLAIMS-AND-GAPS.json",
+      "path": "reports/SECP-PHYSICS-ENGINE-FORENSIC-001/UNVERIFIED-CLAIMS-AND-GAPS.json",
+      "sizeBytes": 2158,
+      "sha256": "9f3198edd2744b7140386fa54a092eee29f3cdf0654286c2632562a48906e2d6"
+    }
+  ]
+}

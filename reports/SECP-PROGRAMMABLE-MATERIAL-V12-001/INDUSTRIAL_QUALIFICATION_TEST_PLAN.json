@@ -1,0 +1,9 @@
+{
+  "planId": "TEST-PLAN-PME-001",
+  "suites": [
+    "Software Unit Tests",
+    "Numerical Convergence Tests",
+    "Adversarial Injection Tests",
+    "Physical Metrology Checks"
+  ]
+}

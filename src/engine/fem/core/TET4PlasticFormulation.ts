@@ -23,8 +23,9 @@ export class TET4PlasticFormulation implements FEMElementFormulation {
     model: FEMModel,
     dofManager: FEMDOFManager
   ): ElementMatrixResult {
-    // Linear elastic version for initial assembly (reuse logic or refer to TET43D)
-    // For simplicity, we implement it here but it's identical to the elastic TET4.
+    if (element.spatialFieldId) {
+      throw new Error(`[UNSUPPORTED_FORMULATION_SPATIAL_FIELD] TET4PlasticFormulation does not currently support spatial material fields (Capability status: NOT_YET_IMPLEMENTED). Element: '${element.elementId}'.`);
+    }
     const nodes = element.nodeIds.map(id => model.nodes.get(id)!);
     const material = model.materials.get(element.materialId)!;
     const x = nodes.map(n => n.x);
@@ -61,6 +62,9 @@ export class TET4PlasticFormulation implements FEMElementFormulation {
     stateManager?: MaterialStateManager,
     materialModel?: ConstitutiveModel
   ): ElementNonlinearResult {
+    if (element.spatialFieldId) {
+      throw new Error(`[UNSUPPORTED_FORMULATION_SPATIAL_FIELD] TET4PlasticFormulation does not currently support spatial material fields (Capability status: NOT_YET_IMPLEMENTED). Element: '${element.elementId}'.`);
+    }
     const nodes = element.nodeIds.map(id => model.nodes.get(id)!);
     const x = nodes.map(n => n.x);
     const y = nodes.map(n => n.y);

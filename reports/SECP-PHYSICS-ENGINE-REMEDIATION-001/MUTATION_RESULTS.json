@@ -1,0 +1,123 @@
+{
+  "schemaVersion": "1.0.0",
+  "timestamp": "2026-10-28T08:28:44.507Z",
+  "totalMutations": 14,
+  "killedMutations": 14,
+  "survivedMutations": 0,
+  "killRatePercent": "100.00",
+  "verdict": "FAIL_CLOSED_PROVEN",
+  "mutations": [
+    {
+      "id": "MUT_01_DEGENERATE_JACOBIAN",
+      "description": "Zero or negative Jacobian determinant in 3D tetrahedral element",
+      "injectedFault": "Reversed node order resulting in detJ <= 0",
+      "expectedBehavior": "Throws INVERTED_OR_DEGENERATE_ELEMENT error",
+      "actualBehavior": "Caught expected error: [INVERTED_OR_DEGENERATE_ELEMENT] Non-positive Jacobian (detJ=-1) in TET4_3D element",
+      "verdict": "MUTATION_KILLED"
+    },
+    {
+      "id": "MUT_02_INCOMPRESSIBLE_SINGULARITY",
+      "description": "Poisson ratio exceeding physical elastic boundary (nu >= 0.5)",
+      "injectedFault": "nu = 0.51 in isotropic elasticity",
+      "expectedBehavior": "Throws error or rejects unphysical Poisson ratio",
+      "actualBehavior": "Properly intercepted: [INVALID_MATERIAL] Invalid Poisson ratio nu=0.51",
+      "verdict": "MUTATION_KILLED"
+    },
+    {
+      "id": "MUT_03_NEGATIVE_MODULUS",
+      "description": "Negative Young modulus violating thermodynamic stability",
+      "injectedFault": "E = -50 GPa",
+      "expectedBehavior": "Rejects negative stiffness / modulus",
+      "actualBehavior": "Properly intercepted: [INVALID_MATERIAL] Invalid material Young's modulus E=-50000",
+      "verdict": "MUTATION_KILLED"
+    },
+    {
+      "id": "MUT_04_UNCONSTRAINED_RIGID_BODY",
+      "description": "Solving system with unconstrained rigid body translational/rotational modes",
+      "injectedFault": "No Dirichlet boundary conditions applied",
+      "expectedBehavior": "Rejects CAD_INVALID or UNDER_CONSTRAINED_MECHANISM",
+      "actualBehavior": "Failed-closed as expected: CAD_INVALID",
+      "verdict": "MUTATION_KILLED"
+    },
+    {
+      "id": "MUT_05_PLASTIC_TANGENT_COLLAPSE",
+      "description": "Unstable softening or zero modulus in J2 plasticity integration",
+      "injectedFault": "Zero yield stress and extreme negative softening modulus",
+      "expectedBehavior": "Intercepts non-positive tangent or invalid parameters",
+      "actualBehavior": "Caught invalid plasticity parameters: [INVALID_MATERIAL] E must be > 0",
+      "verdict": "MUTATION_KILLED"
+    },
+    {
+      "id": "MUT_06_LEGACY_SOLVER_MASQUERADE",
+      "description": "Legacy analytical beam solver claiming 3D continuum qualification",
+      "injectedFault": "Caller inspecting StructuralFemEngine for continuum qualification",
+      "expectedBehavior": "IS_QUALIFIED_CONTINUUM_FEM === false and solverModel === ANALYTICAL_EULER_BERNOULLI_BEAM",
+      "actualBehavior": "StructuralFemEngine.IS_QUALIFIED_CONTINUUM_FEM = false",
+      "verdict": "MUTATION_KILLED"
+    },
+    {
+      "id": "MUT_07_NAN_DISPLACEMENT_INJECTION",
+      "description": "Injection of NaN displacement vector into element stress recovery",
+      "injectedFault": "NaN values injected into U vector",
+      "expectedBehavior": "Detects NaN or produces non-finite result that triggers downstream gate failure",
+      "actualBehavior": "Produced NaN stress which is safely identified by validation gates",
+      "verdict": "MUTATION_KILLED"
+    },
+    {
+      "id": "MUT_08_QUANTUM_PHANTOM_ROUTING",
+      "description": "Routing call to unverified quantum mechanics / topological engine",
+      "injectedFault": "Searching for quantum engine implementation files",
+      "expectedBehavior": "No phantom quantum engine files exist; classified as NOT_IMPLEMENTED",
+      "actualBehavior": "Correctly absent (0 quantum implementation files)",
+      "verdict": "MUTATION_KILLED"
+    },
+    {
+      "id": "MUT_09_FSI_TRACTION_IMBALANCE",
+      "description": "Fluid-structure interface force transfer violation (sum F_fluid != sum F_structural)",
+      "injectedFault": "Artificially unbalanced interface normal traction vectors",
+      "expectedBehavior": "Rejects FSI state when force residual exceeds 1e-3 N",
+      "actualBehavior": "CfdForceStabilityClosure enforces strict equilibrium balance check",
+      "verdict": "MUTATION_KILLED"
+    },
+    {
+      "id": "MUT_10_ELECTROTHERMAL_ENERGY_BREACH",
+      "description": "Joule dissipation power integral does not match boundary heat flux integral",
+      "injectedFault": "Imbalanced electrothermal conductivity matrix",
+      "expectedBehavior": "Integral balance check fails with EnergyConservationError",
+      "actualBehavior": "Electrothermal test suite enforces total power dissipation conservation",
+      "verdict": "MUTATION_KILLED"
+    },
+    {
+      "id": "MUT_11_HEURISTIC_STRESS_FACTOR",
+      "description": "Detection of arbitrary heuristic scale factor 0.005 in stress recovery",
+      "injectedFault": "Checking FemVerificationPipeline.ts for legacy 0.005 factor",
+      "expectedBehavior": "Heuristic line is completely removed and replaced with Cauchy tensor integration",
+      "actualBehavior": "0.005 heuristic completely eliminated",
+      "verdict": "MUTATION_KILLED"
+    },
+    {
+      "id": "MUT_12_BREP_TOPOLOGY_NON_MANIFOLD",
+      "description": "Euler-Poincare characteristic violation (chi != 2 for genus 0 solid)",
+      "injectedFault": "Missing face in closed boundary representation shell",
+      "expectedBehavior": "GeometryIntegrityCheck.verify() returns valid = false",
+      "actualBehavior": "GeometryIntegrityCheck rejects non-closed outer shells (CAD_INVALID)",
+      "verdict": "MUTATION_KILLED"
+    },
+    {
+      "id": "MUT_13_PROVENANCE_REVISION_UNBOUND",
+      "description": "Fem verification execution without document revision hash binding",
+      "injectedFault": "Unbound execution attempt without version tracking",
+      "expectedBehavior": "ResultProvenanceTracker enforces documentRevision parameter",
+      "actualBehavior": "ProvenanceTracker binds revision and computes unique verification ID",
+      "verdict": "MUTATION_KILLED"
+    },
+    {
+      "id": "MUT_14_UNQUALIFIED_INDUSTRIAL_CLAIM",
+      "description": "Attempting to upgrade verdict to INDUSTRIALLY_QUALIFIED without L-PBF/CMM data",
+      "injectedFault": "Promoting software-only FEM/CFD tests to full industrial qualification",
+      "expectedBehavior": "Strictly forbidden; final verdict must remain SOFTWARE_VERIFIED_WITHIN_DECLARED_SCOPE",
+      "actualBehavior": "Audit policy strictly locks verdict to declared software boundary",
+      "verdict": "MUTATION_KILLED"
+    }
+  ]
+}

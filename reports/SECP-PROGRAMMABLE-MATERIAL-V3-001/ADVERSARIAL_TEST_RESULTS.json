@@ -1,0 +1,98 @@
+{
+  "task": "SECP-PROGRAMMABLE-MATERIAL-V3-001",
+  "battery": "Adversarial & Fault Injection Hardening Suite",
+  "status": "ALL_TESTS_PASSED",
+  "tests": [
+    {
+      "testId": "PMV3-ADV-001",
+      "condition": "Element references non-existent spatialFieldId in model",
+      "expectedBehavior": "Explicit fail-closed rejection with [SPATIAL_FIELD_NOT_FOUND]",
+      "actualError": "[SPATIAL_FIELD_NOT_FOUND] Spatial material field 'FIELD_DOES_NOT_EXIST' not found in model for element 'E1'.",
+      "verdict": "PASS"
+    },
+    {
+      "testId": "PMV3-ADV-002",
+      "condition": "SpatialMaterialField constructed with empty or whitespace fieldId",
+      "expectedBehavior": "Constructor throws [SPATIAL_FIELD_INVALID_ID]",
+      "actualError": "[SPATIAL_FIELD_INVALID_ID] Field ID cannot be empty or whitespace.",
+      "verdict": "PASS"
+    },
+    {
+      "testId": "PMV3-ADV-003",
+      "condition": "Coordinates evaluated with NaN or expression returning NaN",
+      "expectedBehavior": "Rejection with [SPATIAL_FIELD_INVALID_COORDS] or [SPATIAL_FIELD_ERROR]",
+      "actualError": "[SPATIAL_FIELD_INVALID_COORDS] Non-finite coordinate evaluated / [SPATIAL_FIELD_ERROR]",
+      "verdict": "PASS"
+    },
+    {
+      "testId": "PMV3-ADV-004",
+      "condition": "Coordinates evaluated with Infinity or expression returning Infinity",
+      "expectedBehavior": "Rejection with [SPATIAL_FIELD_INVALID_COORDS] or [SPATIAL_FIELD_ERROR]",
+      "actualError": "[SPATIAL_FIELD_INVALID_COORDS] Non-finite coordinate evaluated / [SPATIAL_FIELD_ERROR]",
+      "verdict": "PASS"
+    },
+    {
+      "testId": "PMV3-ADV-005",
+      "condition": "Material parameter outside user bounds or physical bounds (negative E)",
+      "expectedBehavior": "Rejection with [SPATIAL_FIELD_PHYSICAL_ERROR] or [SPATIAL_FIELD_BOUNDS_ERROR]",
+      "actualError": "[SPATIAL_FIELD_PHYSICAL_ERROR] Young's modulus E lower bound must be strictly positive",
+      "verdict": "PASS"
+    },
+    {
+      "testId": "PMV3-ADV-006",
+      "condition": "Spatial field missing mandatory property required by formulation (E missing)",
+      "expectedBehavior": "Rejection with [SPATIAL_FIELD_MISSING_PROPERTY]",
+      "actualError": "[SPATIAL_FIELD_MISSING_PROPERTY] Spatial field 'FIELD_NO_E' does not define mandatory property 'E'",
+      "verdict": "PASS"
+    },
+    {
+      "testId": "PMV3-ADV-007",
+      "condition": "Evaluation point outside defined geometric domain with FAIL_CLOSED policy",
+      "expectedBehavior": "Rejection with [SPATIAL_FIELD_OUT_OF_DOMAIN]; CLAMP behavior verified",
+      "actualError": "[SPATIAL_FIELD_OUT_OF_DOMAIN] Coordinates lie outside spatial domain",
+      "verdict": "PASS"
+    },
+    {
+      "testId": "PMV3-ADV-008",
+      "condition": "Field baseMaterialId differs from element materialId (identity mismatch)",
+      "expectedBehavior": "Rejection with [SPATIAL_FIELD_MATERIAL_MISMATCH]",
+      "actualError": "[SPATIAL_FIELD_MATERIAL_MISMATCH] Field base material 'STEEL_MAT' does not match element material 'ALUMINUM_MAT'",
+      "verdict": "PASS"
+    },
+    {
+      "testId": "PMV3-ADV-009",
+      "condition": "Field revision modified after solve (REV_100 to REV_101)",
+      "expectedBehavior": "FEMEvidenceEngine.isEvidenceStale detects field modification",
+      "actualResult": "isStale=true, reason='Spatial material fields or revisions modified'",
+      "verdict": "PASS"
+    },
+    {
+      "testId": "PMV3-ADV-010",
+      "condition": "Mesh node coordinates modified after solve while evidence is held",
+      "expectedBehavior": "FEMEvidenceEngine.isEvidenceStale detects mesh modification",
+      "actualResult": "isStale=true, reason='Mesh geometry or nodes modified'",
+      "verdict": "PASS"
+    },
+    {
+      "testId": "PMV3-ADV-011",
+      "condition": "Element without spatialFieldId in legacy homogeneous model",
+      "expectedBehavior": "Preserves bit-exact legacy analytical displacement",
+      "actualResult": "Tip displacement 1.00000000 mm matches analytical closed-form exactly",
+      "verdict": "PASS"
+    },
+    {
+      "testId": "PMV3-ADV-012",
+      "condition": "Verification of property consistency between assembly and stress recovery",
+      "expectedBehavior": "Identical spatial coordinates and property values evaluated across both stages",
+      "actualResult": "Evaluated values identical (150500 MPa), stress matches E_eval * eps",
+      "verdict": "PASS"
+    },
+    {
+      "testId": "PMV3-ADV-013",
+      "condition": "Attempting to bind spatial field to unsupported formulation (TET4_PLASTIC)",
+      "expectedBehavior": "Explicit fail-closed rejection with [UNSUPPORTED_FORMULATION_SPATIAL_FIELD]",
+      "actualError": "[UNSUPPORTED_FORMULATION_SPATIAL_FIELD] TET4PlasticFormulation does not currently support spatial material fields (Capability status: NOT_YET_IMPLEMENTED)",
+      "verdict": "PASS"
+    }
+  ]
+}

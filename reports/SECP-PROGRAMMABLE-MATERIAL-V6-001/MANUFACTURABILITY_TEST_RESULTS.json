@@ -1,0 +1,12 @@
+{
+  "task_id": "SECP-PROGRAMMABLE-MATERIAL-V6-001",
+  "status": "VERIFIED_PASS",
+  "benchmarks": [
+    { "id": "BM-01", "name": "Fully Manufacturable Design", "status": "PASS", "qualification_level": "SYNTHETIC_TEST_EVALUATED" },
+    { "id": "BM-02", "name": "Minimum Feature Size Violation", "status": "FAIL_DETECTED", "rule_id": "RULE_MIN_FEATURE_SIZE" },
+    { "id": "BM-03", "name": "Minimum Wall Thickness Violation", "status": "FAIL_DETECTED", "rule_id": "RULE_MIN_WALL_THICKNESS" },
+    { "id": "BM-04", "name": "Spatial Property Gradient Exceedance", "status": "FAIL_DETECTED", "rule_id": "RULE_MAX_SPATIAL_GRADIENT" },
+    { "id": "BM-05", "name": "Material Process Incompatibility", "status": "FAIL_DETECTED", "rule_id": "RULE_MATERIAL_COMPATIBILITY" },
+    { "id": "BM-06", "name": "Profile Modification Evidence Invalidation", "status": "PASS", "stale_evidence_detected": true }
+  ]
+}

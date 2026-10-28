@@ -1,0 +1,10 @@
+{
+  "taskId": "SECP-PROGRAMMABLE-MATERIAL-004",
+  "invalidationChecks": [
+    {
+      "checkId": "REV-CHECK-01",
+      "description": "Spatial field revision binding metadata integration",
+      "status": "VERIFIED_DESIGN"
+    }
+  ]
+}

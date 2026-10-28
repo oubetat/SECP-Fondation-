@@ -2,10 +2,35 @@ import { Matrix } from "./MathUtils";
 import { DOFComponent, ElementMatrixResult, ElementStressStrainResult, FEMElement, FEMModel } from "./FEMTypes";
 import { FEMElementFormulation } from "./FEMElementFormulation";
 import { FEMDOFManager } from "./FEMDOFManager";
+import { CoordinateFrameTransformEngine } from "./GeometryMaterialAssignment";
 
 export class Bar1DFormulation implements FEMElementFormulation {
   getRequiredDOFs(): DOFComponent[] {
     return [DOFComponent.UX];
+  }
+
+  private resolveEvaluationPoint(
+    element: FEMElement,
+    model: FEMModel,
+    globalPoint: { x: number; y: number; z: number }
+  ): { x: number; y: number; z: number } {
+    let frame = model.geometryMetadata?.coordinateFrame;
+    if (model.materialAssignments) {
+      if (element.assignmentId && model.materialAssignments.has(element.assignmentId)) {
+        frame = model.materialAssignments.get(element.assignmentId)!.coordinateFrame;
+      } else {
+        for (const assignment of model.materialAssignments.values()) {
+          if (assignment.spatialFieldId === element.spatialFieldId) {
+            frame = assignment.coordinateFrame;
+            break;
+          }
+        }
+      }
+    }
+    if (frame && frame.frameType !== 'GLOBAL_CARTESIAN') {
+      return CoordinateFrameTransformEngine.toLocal(globalPoint, frame);
+    }
+    return globalPoint;
   }
 
   computeMatrices(
@@ -30,7 +55,29 @@ export class Bar1DFormulation implements FEMElementFormulation {
     
     if (L <= 0 || !Number.isFinite(L)) throw new Error("[ZERO_LENGTH_ELEMENT] Zero or invalid length element");
 
-    const E = material.E;
+    let E = material.E;
+    if (element.spatialFieldId) {
+      if (!model.spatialMaterialFields || !model.spatialMaterialFields.has(element.spatialFieldId)) {
+        throw new Error(`[SPATIAL_FIELD_NOT_FOUND] Spatial material field '${element.spatialFieldId}' not found in model for element '${element.elementId}'.`);
+      }
+      const field = model.spatialMaterialFields.get(element.spatialFieldId)!;
+      if (field.baseMaterialId && field.baseMaterialId !== element.materialId) {
+        throw new Error(`[SPATIAL_FIELD_MATERIAL_MISMATCH] Field base material '${field.baseMaterialId}' does not match element material '${element.materialId}' on element '${element.elementId}'.`);
+      }
+      const midX = (node1.x + node2.x) / 2.0;
+      const midY = (node1.y + node2.y) / 2.0;
+      const midZ = (node1.z + node2.z) / 2.0;
+      const evalPoint = this.resolveEvaluationPoint(element, model, { x: midX, y: midY, z: midZ });
+      const props = field.evaluate(evalPoint);
+      if (props.E === undefined) {
+        throw new Error(`[SPATIAL_FIELD_MISSING_PROPERTY] Spatial field '${element.spatialFieldId}' does not define mandatory property 'E' required by Bar1DFormulation for element '${element.elementId}'.`);
+      }
+      if (props.E <= 0 || !Number.isFinite(props.E)) {
+        throw new Error(`[INVALID_SPATIAL_FIELD_PROPERTY] Spatial field '${element.spatialFieldId}' evaluated to invalid Young's modulus E=${props.E} at evaluation point on element '${element.elementId}'.`);
+      }
+      E = props.E;
+    }
+
     const A = section.area;
     const k = (E * A) / L;
 
@@ -72,6 +119,29 @@ export class Bar1DFormulation implements FEMElementFormulation {
 
     if (L <= 0 || !Number.isFinite(L)) throw new Error("[ZERO_LENGTH_ELEMENT] Zero length bar element");
 
+    let E = material.E;
+    if (element.spatialFieldId) {
+      if (!model.spatialMaterialFields || !model.spatialMaterialFields.has(element.spatialFieldId)) {
+        throw new Error(`[SPATIAL_FIELD_NOT_FOUND] Spatial material field '${element.spatialFieldId}' not found in model for element '${element.elementId}'.`);
+      }
+      const field = model.spatialMaterialFields.get(element.spatialFieldId)!;
+      if (field.baseMaterialId && field.baseMaterialId !== element.materialId) {
+        throw new Error(`[SPATIAL_FIELD_MATERIAL_MISMATCH] Field base material '${field.baseMaterialId}' does not match element material '${element.materialId}' on element '${element.elementId}'.`);
+      }
+      const midX = (node1.x + node2.x) / 2.0;
+      const midY = (node1.y + node2.y) / 2.0;
+      const midZ = (node1.z + node2.z) / 2.0;
+      const evalPoint = this.resolveEvaluationPoint(element, model, { x: midX, y: midY, z: midZ });
+      const props = field.evaluate(evalPoint);
+      if (props.E === undefined) {
+        throw new Error(`[SPATIAL_FIELD_MISSING_PROPERTY] Spatial field '${element.spatialFieldId}' does not define mandatory property 'E' required by Bar1DFormulation for element '${element.elementId}'.`);
+      }
+      if (props.E <= 0 || !Number.isFinite(props.E)) {
+        throw new Error(`[INVALID_SPATIAL_FIELD_PROPERTY] Spatial field '${element.spatialFieldId}' evaluated to invalid Young's modulus E=${props.E} at evaluation point on element '${element.elementId}'.`);
+      }
+      E = props.E;
+    }
+
     const dof1 = dofManager.getDOF(node1.nodeId, DOFComponent.UX);
     const dof2 = dofManager.getDOF(node2.nodeId, DOFComponent.UX);
 
@@ -91,7 +161,7 @@ export class Bar1DFormulation implements FEMElementFormulation {
     const epsilon_x = (cx * (u2 - u1)) / L;
 
     // Constitutive relation: sigma = E * epsilon
-    const sigma_x = material.E * epsilon_x;
+    const sigma_x = E * epsilon_x;
 
     // Equivalent Von Mises stress for uniaxial state
     const vonMisesStress = Math.abs(sigma_x);

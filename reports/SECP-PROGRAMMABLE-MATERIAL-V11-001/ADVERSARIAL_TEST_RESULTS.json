@@ -1,0 +1,12 @@
+{
+  "totalScenarios": 20,
+  "executed": 5,
+  "passed": 5,
+  "results": [
+    { "id": "V11-ADV-001", "name": "Malformed JSON Payload", "status": "PASS" },
+    { "id": "V11-ADV-012", "name": "Explainability/Reality Conflict", "status": "PASS" },
+    { "id": "V11-ADV-016", "name": "Core Authority Bypass", "status": "PASS" },
+    { "id": "V11-ADV-017", "name": "Post-Evaluation Mutation", "status": "PASS" },
+    { "id": "V11-ADV-020", "name": "Search Space Exhaustion", "status": "PASS" }
+  ]
+}

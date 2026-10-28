@@ -1,0 +1,139 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "MaterialTruthThreadSchema",
+  "type": "object",
+  "required": [
+    "threadId",
+    "modelId",
+    "nodes",
+    "edges",
+    "threadHash",
+    "createdTimestamp",
+    "lastUpdatedTimestamp",
+    "graphValidationStatus"
+  ],
+  "properties": {
+    "threadId": {
+      "type": "string",
+      "description": "Unique deterministic identifier for the material truth thread graph."
+    },
+    "modelId": {
+      "type": "string",
+      "description": "ID of the canonical FEM model."
+    },
+    "geometryRevision": {
+      "type": "string",
+      "description": "Canonical geometry revision string."
+    },
+    "nodes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/TruthThreadNode"
+      }
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/TruthThreadEdge"
+      }
+    },
+    "threadHash": {
+      "type": "string",
+      "description": "Merkle root SHA-256 hash over all nodes and edges in canonical order."
+    },
+    "createdTimestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "lastUpdatedTimestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "graphValidationStatus": {
+      "type": "string",
+      "enum": ["VALID", "INVALIDATED", "CORRUPTED_HASH", "DANGLING_EDGES", "CYCLE_DETECTED"]
+    }
+  },
+  "definitions": {
+    "TruthThreadNode": {
+      "type": "object",
+      "required": [
+        "nodeId",
+        "nodeType",
+        "provenanceCategory",
+        "label",
+        "revision",
+        "contentHash",
+        "isValid",
+        "payload"
+      ],
+      "properties": {
+        "nodeId": { "type": "string" },
+        "nodeType": {
+          "type": "string",
+          "enum": [
+            "GEOMETRY",
+            "MATERIAL_DEFINITION",
+            "SPATIAL_FIELD",
+            "MANUFACTURING_PROFILE",
+            "MEASUREMENT_DATASET",
+            "AS_BUILT_STATE",
+            "DEVIATION_RESULT",
+            "CONFORMANCE_DECISION",
+            "EVIDENCE_PACKAGE"
+          ]
+        },
+        "provenanceCategory": {
+          "type": "string",
+          "enum": [
+            "INTENDED",
+            "PREDICTED",
+            "MANUFACTURED",
+            "MEASURED",
+            "AS_BUILT",
+            "DEVIATION_ANALYSIS",
+            "CONFORMANCE_DECISION"
+          ]
+        },
+        "label": { "type": "string" },
+        "revision": { "type": "string" },
+        "contentHash": { "type": "string" },
+        "isValid": { "type": "boolean" },
+        "invalidationReason": { "type": "string" },
+        "invalidatedByNodeId": { "type": "string" },
+        "payload": { "type": "object" }
+      }
+    },
+    "TruthThreadEdge": {
+      "type": "object",
+      "required": [
+        "edgeId",
+        "edgeType",
+        "sourceNodeId",
+        "targetNodeId",
+        "createdTimestamp"
+      ],
+      "properties": {
+        "edgeId": { "type": "string" },
+        "edgeType": {
+          "type": "string",
+          "enum": [
+            "DERIVED_FROM",
+            "USES_REVISION",
+            "MATERIALIZED_AS",
+            "MEASURED_FROM",
+            "REGISTERED_TO",
+            "RECONSTRUCTED_FROM",
+            "COMPARED_AGAINST",
+            "VERIFIED_BY",
+            "SUPPORTED_BY_EVIDENCE",
+            "INVALIDATED_BY_CHANGE"
+          ]
+        },
+        "sourceNodeId": { "type": "string" },
+        "targetNodeId": { "type": "string" },
+        "createdTimestamp": { "type": "string", "format": "date-time" }
+      }
+    }
+  }
+}

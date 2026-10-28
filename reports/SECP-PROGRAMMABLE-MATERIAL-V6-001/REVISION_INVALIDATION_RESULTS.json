@@ -1,0 +1,10 @@
+{
+  "task_id": "SECP-PROGRAMMABLE-MATERIAL-V6-001",
+  "status": "VERIFIED_PASS",
+  "invalidation_checks": {
+    "profile_limit_change_invalidates_evidence": true,
+    "spatial_field_change_invalidates_evidence": true,
+    "geometry_revision_change_invalidates_evidence": true,
+    "stale_evidence_reuse_prevented": true
+  }
+}

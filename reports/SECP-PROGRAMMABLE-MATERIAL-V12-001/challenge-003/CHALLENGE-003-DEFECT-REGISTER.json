@@ -1,0 +1,36 @@
+{
+  "defects": [
+    {
+      "defectId": "DEF-CH3-01",
+      "component": "run_secp_pme_v12_challenge_002.ts",
+      "description": "TypeError on uninitialized unresolvedCriticalFindings array during property access.",
+      "severity": "MEDIUM",
+      "status": "RESOLVED",
+      "resolution": "Replaced direct property access with explicit optionality and safe unpack checking."
+    },
+    {
+      "defectId": "DEF-CH3-02",
+      "component": "run_secp_pme_v12_challenge_003.ts (line 141)",
+      "description": "Tautology bug ('|| true') in mutation check that forced detected=true unconditionally.",
+      "severity": "CRITICAL",
+      "status": "RESOLVED",
+      "resolution": "Removed '|| true' completely and implemented strict validateQualificationVerdict() engine checking all 14 failure modes."
+    },
+    {
+      "defectId": "DEF-CH3-03",
+      "component": "CHALLENGE-003-HASH-RECONCILIATION.json",
+      "description": "Mismatch count reported 0 despite 3 files failing baseline match due to missing-from-baseline filter.",
+      "severity": "HIGH",
+      "status": "RESOLVED",
+      "resolution": "Implemented full multi-state classification (MATCHED, MODIFIED, NEW_AFTER_BASELINE) with transparent accounting."
+    },
+    {
+      "defectId": "DEF-CH3-04",
+      "component": "CHALLENGE-003-EVIDENCE-MANIFEST.json",
+      "description": "Manifest was an incomplete 4-line stub without entry lists.",
+      "severity": "MEDIUM",
+      "status": "RESOLVED",
+      "resolution": "Generated comprehensive schema-compliant manifest containing all 64 file paths, sizes, and SHA-256 hashes."
+    }
+  ]
+}

@@ -1,5 +1,6 @@
 {
-  "name": "SECP Industrial OS v3 — Spatial Safety & Collision Authority Platform",
-  "description": "Production-grade multi-axis industrial safety operating system with exact CAD-kernel collision authority, continuous swept CCD, cryptographic Truth Thread persistence, and deterministic historical replay.",
-  "requestFramePermissions": []
+  "name": "SECP Industrial OS v3 — Programmable Material Engineering & AI Exploration Platform",
+  "description": "Production-grade industrial OS with exact CAD-kernel authority, AI-driven material exploration, physics-constrained optimization, and cryptographic Truth Thread provenance.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

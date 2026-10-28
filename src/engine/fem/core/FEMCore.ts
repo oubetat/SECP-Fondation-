@@ -32,7 +32,10 @@ import { PCGOptions, PCGDiagnostics } from "./SparsePCGSolver";
 import { Matrix } from "./MathUtils";
 import { Truss2DFormulation } from "./Truss2DFormulation";
 import { TET4PlasticFormulation } from "./TET4PlasticFormulation";
+import { TET4LargeDeformationFormulation } from "./TET4LargeDeformationFormulation";
+import { TET4LargeDeformationPlasticFormulation } from "./TET4LargeDeformationPlasticFormulation";
 import { NonlinearAnalysisResult, NonlinearEquilibriumSolver, NonlinearSolverOptions } from "./NonlinearEquilibriumSolver";
+import { GeometryMaterialValidator } from "./GeometryMaterialValidator";
 
 export interface FEMSolveOptions {
   /**
@@ -113,6 +116,10 @@ export class FEMCore {
     this.formulations.set("TET4_3D", new TET43DFormulation());
     this.formulations.set("TRUSS_2D_NL", new Truss2DFormulation());
     this.formulations.set("TET4_PLASTIC", new TET4PlasticFormulation());
+    const largeDeformFormulation = new TET4LargeDeformationFormulation();
+    this.formulations.set("TET4_LARGE_DEFORM", largeDeformFormulation);
+    this.formulations.set("TET4_HYPERELASTIC", largeDeformFormulation);
+    this.formulations.set("TET4_LARGE_DEFORM_PLASTIC", new TET4LargeDeformationPlasticFormulation());
   }
 
   public registerFormulation(id: string, formulation: FEMElementFormulation): void {
@@ -120,6 +127,9 @@ export class FEMCore {
   }
 
   public solve(model: FEMModel, options: FEMSolveOptions = {}): FEMSolveResult {
+    // 0. Pre-flight verification of geometry-material assignments
+    GeometryMaterialValidator.preFlightCheck(model);
+
     // 1. Determine and Build DOFs dynamically per node
     this.dofManager.buildDOFs(model, this.formulations);
     const totalDOFs = this.dofManager.getTotalDOFCount();

@@ -1,0 +1,5 @@
+{
+  "status": "PARTIALLY_SUPPORTED",
+  "mechanism": "Weighted Scalarization",
+  "verification": "Multi-variable grid search verification passed."
+}

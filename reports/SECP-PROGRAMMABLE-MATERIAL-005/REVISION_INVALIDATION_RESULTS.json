@@ -1,0 +1,8 @@
+{
+  "taskId": "SECP-PROGRAMMABLE-MATERIAL-005",
+  "revisionAudit": {
+    "canonicalRevisionBinding": "VERIFIED_IN_CONTRACT",
+    "staleResultPrevention": "FAIL_CLOSED_DESIGN",
+    "notes": "SpatialMaterialField strictly binds canonicalGeometryId and canonicalRevisionId to field identity."
+  }
+}

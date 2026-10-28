@@ -1,0 +1,15 @@
+{
+  "taskID": "SECP-PROGRAMMABLE-MATERIAL-V9-001",
+  "verificationType": "PROVENANCE_CLASSIFICATION",
+  "timestamp": "2026-10-27T08:26:00.000Z",
+  "status": "PASSED",
+  "classifiedCategories": [
+    { "category": "INTENDED", "enforcedNodeTypes": ["GEOMETRY", "MATERIAL_DEFINITION", "SPATIAL_FIELD"], "verified": true },
+    { "category": "PREDICTED", "enforcedNodeTypes": ["SPATIAL_FIELD"], "verified": true },
+    { "category": "MANUFACTURED", "enforcedNodeTypes": ["MANUFACTURING_PROFILE"], "verified": true },
+    { "category": "MEASURED", "enforcedNodeTypes": ["MEASUREMENT_DATASET"], "verified": true },
+    { "category": "AS_BUILT", "enforcedNodeTypes": ["AS_BUILT_STATE"], "verified": true },
+    { "category": "DEVIATION_ANALYSIS", "enforcedNodeTypes": ["DEVIATION_RESULT"], "verified": true },
+    { "category": "CONFORMANCE_DECISION", "enforcedNodeTypes": ["CONFORMANCE_DECISION", "EVIDENCE_PACKAGE"], "verified": true }
+  ]
+}

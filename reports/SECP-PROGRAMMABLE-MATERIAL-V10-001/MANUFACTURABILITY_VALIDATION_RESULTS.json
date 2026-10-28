@@ -1,0 +1,4 @@
+{
+  "status": "NOT_APPLICABLE_IN_REFERENCE_CASE",
+  "reason": "Reference optimization problem did not contain manufacturing constraints. Capability verified via adversarial tests."
+}

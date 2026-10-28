@@ -1,0 +1,44 @@
+{
+  "claims": [
+    {
+      "claimId": "CLM-PME-01",
+      "capability": "Spatial Material Fields",
+      "implementationPath": "src/components/pme/SpatialMaterialDesigner.tsx",
+      "testPath": "tests/verification/materials/benchmark/MaterialsBenchmark.test.ts",
+      "classification": "PROVEN",
+      "evidenceRef": "EXISTING_CAPABILITIES_FORENSIC_AUDIT.md"
+    },
+    {
+      "claimId": "CLM-PME-02",
+      "capability": "Nonlinear FEM / Physics",
+      "implementationPath": "src/engine/fem/core/structuralFem.ts",
+      "testPath": "src/engine/fem/__tests__/",
+      "classification": "PROVEN",
+      "evidenceRef": "QUALIFICATION_REQUIREMENTS_TRACEABILITY.json"
+    },
+    {
+      "claimId": "CLM-PME-03",
+      "capability": "Two-Way FSI Coupling",
+      "implementationPath": "src/engine/cfd3d/solvers/fsi/TwoWayFSICouplingEngine.ts",
+      "testPath": "tests/verification/CfdForceStabilityClosure.test.ts",
+      "classification": "PROVEN",
+      "evidenceRef": "EXISTING_CAPABILITY_STATUS.json"
+    },
+    {
+      "claimId": "CLM-PME-04",
+      "capability": "Manufacturing Constraints",
+      "implementationPath": "src/components/pme/ManufacturingConstraints.tsx",
+      "testPath": "src/engine/materials/",
+      "classification": "PROVEN",
+      "evidenceRef": "ACCEPTANCE_CRITERIA_REGISTER.json"
+    },
+    {
+      "claimId": "CLM-PME-05",
+      "capability": "Physical Manufacturing Metrology",
+      "implementationPath": "None (External Data)",
+      "testPath": "None",
+      "classification": "BLOCKED",
+      "evidenceRef": "PHYSICAL_EVIDENCE_INVENTORY.json"
+    }
+  ]
+}

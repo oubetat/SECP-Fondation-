@@ -1,0 +1,6 @@
+{
+  "testFile": "/src/engine/fem/core/__tests__/MaterialOptimizationV10.test.ts",
+  "totalTests": 15,
+  "passed": 15,
+  "failed": 0
+}

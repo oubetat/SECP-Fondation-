@@ -1,0 +1,25 @@
+{
+  "taskId": "SECP-PROGRAMMABLE-MATERIAL-V8-001",
+  "generatedAt": "2026-10-27T08:15:00Z",
+  "evidenceFiles": [
+    { "file": "EXISTING_DEVIATION_ANALYSIS_AUDIT.md", "type": "AUDIT_REPORT", "status": "VERIFIED" },
+    { "file": "SPATIAL_DEVIATION_CONTRACT.md", "type": "DATA_CONTRACT", "status": "VERIFIED" },
+    { "file": "SPATIAL_DEVIATION_SCHEMA.json", "type": "SCHEMA_JSON", "status": "VERIFIED" },
+    { "file": "SPATIAL_CORRESPONDENCE_METHOD.md", "type": "TECHNICAL_REPORT", "status": "VERIFIED" },
+    { "file": "DEVIATION_NUMERICAL_RESULTS.json", "type": "TEST_RESULTS", "status": "VERIFIED" },
+    { "file": "REGIONAL_DEVIATION_RESULTS.json", "type": "TEST_RESULTS", "status": "VERIFIED" },
+    { "file": "COVERAGE_AND_UNCERTAINTY_RESULTS.json", "type": "TEST_RESULTS", "status": "VERIFIED" },
+    { "file": "ACCEPTANCE_CRITERIA_AUDIT.md", "type": "AUDIT_REPORT", "status": "VERIFIED" },
+    { "file": "CONFORMANCE_DECISION_RESULTS.json", "type": "DECISION_REPORT", "status": "VERIFIED" },
+    { "file": "ADVERSARIAL_TEST_RESULTS.json", "type": "TEST_RESULTS", "status": "VERIFIED" },
+    { "file": "REVISION_INVALIDATION_RESULTS.json", "type": "EVIDENCE_REPORT", "status": "VERIFIED" },
+    { "file": "REGRESSION_RESULTS.json", "type": "REGRESSION_REPORT", "status": "VERIFIED" },
+    { "file": "CAPABILITY_SUPPORT_MATRIX.json", "type": "MATRIX_REPORT", "status": "VERIFIED" },
+    { "file": "SOURCE_CHANGE_MANIFEST.json", "type": "MANIFEST", "status": "VERIFIED" },
+    { "file": "EVIDENCE_MANIFEST.json", "type": "MANIFEST", "status": "VERIFIED" },
+    { "file": "KNOWN_LIMITATIONS.md", "type": "LIMITATIONS_REPORT", "status": "VERIFIED" },
+    { "file": "FINAL_DECISION.md", "type": "ADJUDICATION_REPORT", "status": "VERIFIED" }
+  ],
+  "verificationCommand": "npx vitest run src/engine/fem/core/__tests__/SpatialMaterialDeviationV8.test.ts",
+  "evidencePackageStatus": "COMPLETE_AND_VERIFIED"
+}

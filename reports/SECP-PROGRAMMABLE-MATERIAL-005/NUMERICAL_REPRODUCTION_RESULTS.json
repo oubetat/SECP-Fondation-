@@ -1,0 +1,20 @@
+{
+  "taskId": "SECP-PROGRAMMABLE-MATERIAL-005",
+  "reproduction": {
+    "benchmark": "1D Graded Axial Bar",
+    "inputs": {
+      "L": 100.0,
+      "A": 1.0,
+      "F": 1000.0,
+      "E0": 100000.0,
+      "alpha": 0.01,
+      "numElements": 10
+    },
+    "analyticalReference": 0.693147,
+    "independentRecalculation": "Delta_L = (1000 / (1 * 100000 * 0.01)) * ln(1 + 0.01 * 100) = ln(2) = 0.69314718",
+    "femOutput": 0.693125,
+    "relativeError": 0.000031,
+    "tolerance": 0.005,
+    "status": "VERIFIED"
+  }
+}

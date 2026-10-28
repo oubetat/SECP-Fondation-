@@ -1,0 +1,8 @@
+{
+  "recommendations": [
+    {
+      "candidateId": "AI-CAND-001",
+      "explanation": "Selected for optimal stiffness-to-weight ratio. Validated by high-fidelity FEM solve showing 15% reduction in compliance compared to baseline."
+    }
+  ]
+}

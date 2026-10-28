@@ -1,0 +1,22 @@
+{
+  "task_id": "SECP-PROGRAMMABLE-MATERIAL-V5-001",
+  "status": "VERIFIED_PASS",
+  "mesh_configs": [
+    {
+      "name": "3D_TET4_2_ELEMENT_PRISM",
+      "nodes_count": 5,
+      "elements_count": 2,
+      "equilibrium_ok": true,
+      "energy_balance_diff": 1.42e-14,
+      "status": "PASS"
+    },
+    {
+      "name": "1D_BAR_3_ELEMENT_MESH",
+      "nodes_count": 4,
+      "elements_count": 3,
+      "equilibrium_ok": true,
+      "energy_balance_diff": 0.0,
+      "status": "PASS"
+    }
+  ]
+}

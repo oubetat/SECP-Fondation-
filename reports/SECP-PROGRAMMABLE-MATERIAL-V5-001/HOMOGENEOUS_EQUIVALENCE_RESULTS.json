@@ -1,0 +1,19 @@
+{
+  "task_id": "SECP-PROGRAMMABLE-MATERIAL-V5-001",
+  "benchmark_id": "BENCHMARK_A_HOMOGENEOUS_EQUIVALENCE",
+  "status": "VERIFIED_PASS",
+  "baseline_solution": {
+    "tip_displacement_mm": 0.25,
+    "reaction_force_N": -1000.0,
+    "element_stress_MPa": 100.0,
+    "strain_energy_Nmm": 125.0
+  },
+  "spatial_field_solution": {
+    "tip_displacement_mm": 0.25,
+    "reaction_force_N": -1000.0,
+    "element_stress_MPa": 100.0,
+    "strain_energy_Nmm": 125.0
+  },
+  "relative_error": 0.0,
+  "bit_exact": true
+}

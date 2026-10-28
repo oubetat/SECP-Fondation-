@@ -1,0 +1,9 @@
+{
+  "constitutiveLaws": [
+    "J2 von Mises Isotropic Hardening with Linear Thermal Softening"
+  ],
+  "kinematics": "Total Lagrangian Finite Deformation Green-Lagrange Strain Tensor",
+  "electricalFieldEquation": "\\nabla \\cdot (\\sigma(T) \\nabla V) = 0",
+  "thermalHeatEquation": "\\nabla \\cdot (k \\nabla T) + \\sigma(T) |\\nabla V|^2 = 0",
+  "mechanicalEquilibrium": "\\nabla \\cdot (F \\cdot S) + f = 0"
+}

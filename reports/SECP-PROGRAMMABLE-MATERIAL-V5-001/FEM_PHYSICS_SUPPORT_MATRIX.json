@@ -1,0 +1,36 @@
+{
+  "task_id": "SECP-PROGRAMMABLE-MATERIAL-V5-001",
+  "audit_timestamp": "2026-10-27T07:50:20Z",
+  "support_matrix": [
+    {
+      "formulation_id": "BAR_1D",
+      "physics_domain": "1D Linear Elasticity",
+      "spatial_properties_supported": ["E"],
+      "status": "SUPPORTED_AND_NUMERICALLY_VERIFIED"
+    },
+    {
+      "formulation_id": "TET4_3D",
+      "physics_domain": "3D Isotropic Elasticity",
+      "spatial_properties_supported": ["E", "nu"],
+      "status": "SUPPORTED_AND_NUMERICALLY_VERIFIED"
+    },
+    {
+      "formulation_id": "TET4_PLASTIC",
+      "physics_domain": "3D J2 Elastoplasticity",
+      "spatial_properties_supported": [],
+      "status": "NOT_YET_IMPLEMENTED_FAIL_CLOSED"
+    },
+    {
+      "formulation_id": "CST_2D",
+      "physics_domain": "2D Continuum Elasticity",
+      "spatial_properties_supported": [],
+      "status": "NOT_YET_IMPLEMENTED_FAIL_CLOSED"
+    },
+    {
+      "formulation_id": "BEAM_2D",
+      "physics_domain": "2D Frame/Beam Mechanics",
+      "spatial_properties_supported": [],
+      "status": "NOT_YET_IMPLEMENTED_FAIL_CLOSED"
+    }
+  ]
+}

@@ -28,6 +28,7 @@ export interface NonlinearSolverOptions {
   initialLoadFactor?: number;
   minLoadFactor?: number;
   materialModel?: ConstitutiveModel; // Optional material law
+  nodalTemperatures?: Map<string, number>; // [C]
   onIteration?: (step: number, iteration: number, residualNorm: number) => void;
 }
 

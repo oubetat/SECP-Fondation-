@@ -1,0 +1,22 @@
+{
+  "campaignId": "SECP-PHYSICS-EXPANSION-001",
+  "timestamp": "2026-10-28T08:46:57.717Z",
+  "contracts": [
+    {
+      "contractId": "ELECTRO-THERMAL-CONTINUUM-COUPLING",
+      "sourceField": "ElectrostaticSolver3D (Joule heat density q = sigma * |E|^2)",
+      "targetDomain": "SpatialThermalSolver (volumetric heat generation source Q_dot)",
+      "governingEquation": "-div(k * grad(T)) = q",
+      "conservationCheck": "integral(q dV) == V^2 / R",
+      "validationStatus": "NUMERICALLY_VERIFIED"
+    },
+    {
+      "contractId": "LARGE-DEFORMATION-STRESS-PUSH-FORWARD",
+      "sourceField": "2nd Piola-Kirchhoff Stress S in reference configuration",
+      "targetDomain": "True Cauchy Stress sigma in deformed configuration",
+      "governingEquation": "sigma = (1/J) * F * S * F^T",
+      "conservationCheck": "Angular momentum conservation (symmetry of sigma)",
+      "validationStatus": "NUMERICALLY_VERIFIED"
+    }
+  ]
+}

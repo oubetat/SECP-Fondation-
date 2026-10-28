@@ -1,0 +1,76 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "OptimizationProblemSchema",
+  "type": "object",
+  "required": [
+    "problemId",
+    "problemRevision",
+    "variables",
+    "objectives",
+    "constraints",
+    "strategy"
+  ],
+  "properties": {
+    "problemId": { "type": "string" },
+    "problemRevision": { "type": "string" },
+    "description": { "type": "string" },
+    "variables": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["variableId", "targetNodeId", "propertyName", "range"],
+        "properties": {
+          "variableId": { "type": "string" },
+          "targetNodeId": { "type": "string" },
+          "propertyName": { "type": "string" },
+          "range": {
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 2,
+            "items": { "type": "number" }
+          },
+          "initialValue": { "type": "number" },
+          "stepSize": { "type": "number" }
+        }
+      }
+    },
+    "objectives": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["objectiveId", "type", "metric"],
+        "properties": {
+          "objectiveId": { "type": "string" },
+          "type": { "enum": ["MINIMIZE", "MAXIMIZE"] },
+          "metric": { "enum": ["MASS", "STRAIN_ENERGY", "MAX_STRESS", "MAX_DISPLACEMENT"] },
+          "unit": { "type": "string" },
+          "weight": { "type": "number", "default": 1.0 }
+        }
+      }
+    },
+    "constraints": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["constraintId", "type", "limitType", "threshold"],
+        "properties": {
+          "constraintId": { "type": "string" },
+          "type": { "enum": ["PHYSICS", "MANUFACTURING", "GEOMETRIC"] },
+          "limitType": { "enum": ["UPPER_BOUND", "LOWER_BOUND", "EQUALITY"] },
+          "threshold": { "type": "number" },
+          "tolerance": { "type": "number", "default": 1e-6 },
+          "sourceId": { "type": "string" }
+        }
+      }
+    },
+    "strategy": {
+      "type": "object",
+      "required": ["strategyType"],
+      "properties": {
+        "strategyType": { "enum": ["GRID_SEARCH", "COORDINATE_DESCENT", "PARETO_EXPLORATION"] },
+        "maxIterations": { "type": "integer", "default": 100 },
+        "convergenceTolerance": { "type": "number", "default": 1e-4 }
+      }
+    }
+  }
+}

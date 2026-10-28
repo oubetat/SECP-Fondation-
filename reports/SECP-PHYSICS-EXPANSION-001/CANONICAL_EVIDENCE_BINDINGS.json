@@ -1,0 +1,30 @@
+{
+  "campaignId": "SECP-PHYSICS-EXPANSION-001",
+  "timestamp": "2026-10-28T08:46:57.717Z",
+  "sourceBindings": [
+    {
+      "path": "src/engine/fem/core/HyperelasticNeoHookean3D.ts",
+      "sha256": "2620df072eb5a5779639b4ee25ca574d8b47e8f8d7b35a4c8b493b3581dc9c21"
+    },
+    {
+      "path": "src/engine/fem/core/TET4LargeDeformationFormulation.ts",
+      "sha256": "ecd6a14604c93f3736eb68e39f9339bb42101dadaa894df8f954c73555f7e5dc"
+    },
+    {
+      "path": "src/engine/fem/core/FEMCore.ts",
+      "sha256": "99847d614ee4296bce7155a9a09d0a2c2c564b34d4f8f0fd1686af9a16568699"
+    },
+    {
+      "path": "src/engine/physics/electromagnetics/ElectrostaticSolver3D.ts",
+      "sha256": "9e6ed835be30ed2bc7e4ca170fee72fd58db559558e45b495a7ff43e6b81c199"
+    },
+    {
+      "path": "src/engine/fem/core/__tests__/FEMUpgrade011HyperelasticLargeDeform.test.ts",
+      "sha256": "565ac20772c9652c97575f94674127fa844d945c98a257115026693778956c88"
+    },
+    {
+      "path": "src/engine/physics/electromagnetics/__tests__/ElectrostaticSolver3D.test.ts",
+      "sha256": "7071a59f05c23ab68f38386c14d3378757e080127ec7a38fe8c1c08757b62d29"
+    }
+  ]
+}

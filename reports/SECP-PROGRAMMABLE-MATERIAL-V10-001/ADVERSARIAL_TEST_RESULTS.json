@@ -1,0 +1,12 @@
+{
+  "totalScenarios": 18,
+  "executed": 6,
+  "passed": 6,
+  "highlights": [
+    { "id": "V10-ADV-001", "name": "NaN Payload", "status": "PASS" },
+    { "id": "V10-ADV-003", "name": "Constraint Violation Blocking", "status": "PASS" },
+    { "id": "V10-ADV-004", "name": "Solver Failure Recovery", "status": "PASS" },
+    { "id": "V10-ADV-007", "name": "Mutation Invalidation", "status": "PASS" },
+    { "id": "V10-ADV-016", "name": "Ghost Optimization Bypass", "status": "PASS" }
+  ]
+}

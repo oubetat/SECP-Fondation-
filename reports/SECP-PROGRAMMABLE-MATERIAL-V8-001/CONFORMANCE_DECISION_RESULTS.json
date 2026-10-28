@@ -1,0 +1,14 @@
+{
+  "taskId": "SECP-PROGRAMMABLE-MATERIAL-V8-001",
+  "conformanceDecisionId": "Dec_V8_001_1793007200000",
+  "engineeringRevisionId": "REV_B",
+  "asBuiltStateId": "ABState_Mock_001",
+  "overallStatus": "CONFORMING",
+  "evaluatedPointsCount": 3,
+  "conformingCount": 3,
+  "nonConformingCount": 0,
+  "indeterminateCount": 0,
+  "coverageRatio": 1.0,
+  "evaluatedAt": "2026-10-27T08:14:00Z",
+  "decisionVerdict": "PASS"
+}

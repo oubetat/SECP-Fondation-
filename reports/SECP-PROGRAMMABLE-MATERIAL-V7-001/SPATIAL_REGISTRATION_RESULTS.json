@@ -1,0 +1,23 @@
+{
+  "taskId": "SECP-PROGRAMMABLE-MATERIAL-V7-001",
+  "registrationEngine": "CoordinateFrameTransformEngine",
+  "targetFrame": {
+    "frameType": "LOCAL_PART_FRAME",
+    "frameId": "PartFrame01",
+    "transform": {
+      "position": { "x": 10.0, "y": 20.0, "z": 30.0 },
+      "rotationMatrix": [
+        [1.0, 0.0, 0.0],
+        [0.0, 1.0, 0.0],
+        [0.0, 0.0, 1.0]
+      ]
+    }
+  },
+  "landmarksEvaluated": 2,
+  "registrationError": {
+    "maxError": 0.0,
+    "rmsError": 0.0,
+    "unit": "mm"
+  },
+  "registrationStatus": "PASS"
+}

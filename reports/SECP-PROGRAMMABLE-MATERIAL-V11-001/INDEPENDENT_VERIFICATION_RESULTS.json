@@ -1,0 +1,7 @@
+{
+  "verificationType": "REPRODUCIBILITY_AUDIT",
+  "testCase": "Re-execution of AI-CAND-001",
+  "originalHash": "8b65d6d3c236e798079ee1807145d1c7b9a76",
+  "verificationHash": "8b65d6d3c236e798079ee1807145d1c7b9a76",
+  "status": "VERIFIED"
+}

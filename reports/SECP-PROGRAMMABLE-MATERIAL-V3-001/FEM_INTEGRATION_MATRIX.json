@@ -1,0 +1,78 @@
+{
+  "capability": "spatial_material_field",
+  "phase": "V3",
+  "formulations": [
+    {
+      "name": "Bar1DFormulation",
+      "status": "VERIFIED_WITHIN_DECLARED_SCOPE",
+      "evaluationPoint": "MIDPOINT",
+      "propertiesSupported": ["E"],
+      "failClosedGuards": [
+        "field_existence_check",
+        "material_id_match_check",
+        "mandatory_property_e_check",
+        "finite_coordinate_check",
+        "bounds_enforcement"
+      ],
+      "evidence": [
+        "SpatialMaterialMapping004.test.ts",
+        "SpatialMaterialFieldV3.test.ts"
+      ]
+    },
+    {
+      "name": "TET43DFormulation",
+      "status": "VERIFIED_WITHIN_DECLARED_SCOPE",
+      "evaluationPoint": "CENTROID",
+      "propertiesSupported": ["E", "nu"],
+      "failClosedGuards": [
+        "field_existence_check",
+        "material_id_match_check",
+        "mandatory_property_e_check",
+        "finite_coordinate_check",
+        "bounds_enforcement",
+        "poisson_physical_limits"
+      ],
+      "evidence": [
+        "SpatialMaterialMapping3D006.test.ts",
+        "SpatialMaterialFieldV3.test.ts"
+      ]
+    },
+    {
+      "name": "TET4PlasticFormulation",
+      "status": "NOT_YET_IMPLEMENTED",
+      "evaluationPoint": "NONE",
+      "propertiesSupported": [],
+      "rationale": "Plasticity integration requires spatial variation of initial yield stress, isotropic/kinematic hardening modulus, and history-dependent internal state variables across Newton-Raphson load stepping. Unimplemented paths are fail-closed.",
+      "failClosedGuards": [
+        "explicit_unsupported_rejection"
+      ],
+      "evidence": [
+        "SpatialMaterialFieldV3.test.ts:PMV3-ADV-013"
+      ]
+    },
+    {
+      "name": "CST2DFormulation",
+      "status": "NOT_YET_IMPLEMENTED",
+      "evaluationPoint": "NONE",
+      "propertiesSupported": [],
+      "rationale": "2D plane stress/strain spatial field mapping is scheduled for V4 multi-element continuum integration.",
+      "evidence": []
+    },
+    {
+      "name": "Beam2DFormulation",
+      "status": "NOT_YET_IMPLEMENTED",
+      "evaluationPoint": "NONE",
+      "propertiesSupported": [],
+      "rationale": "Beam cross-sectional homogenization under spatial property variation requires fiber integration or section pre-integration.",
+      "evidence": []
+    },
+    {
+      "name": "Frame2DFormulation",
+      "status": "NOT_YET_IMPLEMENTED",
+      "evaluationPoint": "NONE",
+      "propertiesSupported": [],
+      "rationale": "Frame elements inherit beam formulation limitations; scheduled for post-V4.",
+      "evidence": []
+    }
+  ]
+}

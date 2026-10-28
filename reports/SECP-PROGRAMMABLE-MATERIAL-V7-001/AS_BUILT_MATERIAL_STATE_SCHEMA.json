@@ -1,0 +1,71 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "AsBuiltMaterialStateSchema",
+  "description": "Schema for SECP-PROGRAMMABLE-MATERIAL-V7-001 As-Built Material State Data Contract",
+  "type": "object",
+  "required": [
+    "asBuiltStateId",
+    "datasetId",
+    "partInstanceId",
+    "engineeringRevisionId",
+    "geometryRevisionId",
+    "reconstructionMethod",
+    "reconstructedPoints",
+    "coverageRatio",
+    "registrationError",
+    "stateHash"
+  ],
+  "properties": {
+    "asBuiltStateId": { "type": "string" },
+    "datasetId": { "type": "string" },
+    "partInstanceId": { "type": "string" },
+    "engineeringRevisionId": { "type": "string" },
+    "geometryRevisionId": { "type": "string" },
+    "intendedFieldId": { "type": "string" },
+    "reconstructionMethod": {
+      "type": "string",
+      "enum": ["POINTWISE", "IDW_INTERPOLATION", "VOXEL_GRID"]
+    },
+    "reconstructedPoints": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["x", "y", "z", "reconstructedProperties", "isMeasured", "qualityStatus"],
+        "properties": {
+          "x": { "type": "number" },
+          "y": { "type": "number" },
+          "z": { "type": "number" },
+          "reconstructedProperties": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "object",
+              "required": ["value", "uncertainty", "isInterpolated"],
+              "properties": {
+                "value": { "type": "number" },
+                "uncertainty": { "type": "number" },
+                "isInterpolated": { "type": "boolean" }
+              }
+            }
+          },
+          "isMeasured": { "type": "boolean" },
+          "qualityStatus": {
+            "type": "string",
+            "enum": ["VALIDATED", "OUT_OF_BOUNDS", "UNMEASURED"]
+          }
+        }
+      }
+    },
+    "coverageRatio": { "type": "number", "minimum": 0, "maximum": 1 },
+    "unmeasuredVolumeRatio": { "type": "number", "minimum": 0, "maximum": 1 },
+    "registrationError": {
+      "type": "object",
+      "required": ["maxError", "rmsError"],
+      "properties": {
+        "maxError": { "type": "number" },
+        "rmsError": { "type": "number" }
+      }
+    },
+    "stateHash": { "type": "string" },
+    "createdAt": { "type": "string" }
+  }
+}

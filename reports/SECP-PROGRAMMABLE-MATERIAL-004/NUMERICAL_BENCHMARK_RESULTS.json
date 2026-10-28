@@ -1,0 +1,29 @@
+{
+  "taskId": "SECP-PROGRAMMABLE-MATERIAL-004",
+  "benchmarks": [
+    {
+      "testId": "PME-004-02",
+      "name": "Homogeneous Equivalence",
+      "analytical": 1.0,
+      "femOutput": 1.0,
+      "relativeError": 0.0,
+      "status": "PASS"
+    },
+    {
+      "testId": "PME-004-03",
+      "name": "Graded Bar Benchmark (N=10)",
+      "analytical": 0.693147,
+      "femOutput": 0.693125,
+      "relativeError": 0.000031,
+      "status": "PASS"
+    },
+    {
+      "testId": "PME-004-04",
+      "name": "Negative Control Test",
+      "analytical": 0.693147,
+      "femOutputWithoutField": 1.0,
+      "discrepancy": 0.306853,
+      "status": "PASS_DIAGNOSTIC"
+    }
+  ]
+}

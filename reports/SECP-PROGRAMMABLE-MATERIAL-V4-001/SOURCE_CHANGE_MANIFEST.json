@@ -1,0 +1,48 @@
+{
+  "testSuite": "SECP-PROGRAMMABLE-MATERIAL-V4-001",
+  "category": "SOURCE_CHANGE_MANIFEST",
+  "timestamp": "2026-10-27T07:35:00.000Z",
+  "filesModified": [
+    {
+      "filePath": "src/engine/fem/core/FEMTypes.ts",
+      "action": "MODIFIED",
+      "purpose": "Integrated GeometryMaterialAssignment and CoordinateFrameContract contracts, added materialAssignments and geometryMetadata to FEMModel, and assignmentId to FEMElement"
+    },
+    {
+      "filePath": "src/engine/fem/core/GeometryMaterialAssignment.ts",
+      "action": "CREATED",
+      "purpose": "Established lifecycle states, coordinate frame transforms (SE(3)), and domain bounding box auditor"
+    },
+    {
+      "filePath": "src/engine/fem/core/GeometryMaterialValidator.ts",
+      "action": "CREATED",
+      "purpose": "Implemented fail-closed validator for identity, revision, domain coverage, formulation qualification, and preFlightCheck"
+    },
+    {
+      "filePath": "src/engine/fem/core/Bar1DFormulation.ts",
+      "action": "MODIFIED",
+      "purpose": "Integrated coordinate frame transformation into spatial field evaluation at element midpoint"
+    },
+    {
+      "filePath": "src/engine/fem/core/TET43DFormulation.ts",
+      "action": "MODIFIED",
+      "purpose": "Integrated coordinate frame transformation into spatial field evaluation at element centroid"
+    },
+    {
+      "filePath": "src/engine/fem/core/FEMCore.ts",
+      "action": "MODIFIED",
+      "purpose": "Added preFlightCheck gatekeeper to solve() before global DOF assembly"
+    },
+    {
+      "filePath": "src/engine/fem/core/FEMEvidenceEngine.ts",
+      "action": "MODIFIED",
+      "purpose": "Added geometryHash and assignmentHash to evidence packages and stale detection"
+    },
+    {
+      "filePath": "src/engine/fem/core/__tests__/GeometryMaterialIntegrationV4.test.ts",
+      "action": "CREATED",
+      "purpose": "Complete 21-test qualification suite covering state machine, frame invariance, domain coverage, 3D solves, and 12 adversarial gates"
+    }
+  ],
+  "verdict": "CHANGE_SURFACE_MINIMAL_AND_TRACEABLE"
+}

@@ -1,0 +1,11 @@
+{
+  "task_id": "SECP-PROGRAMMABLE-MATERIAL-V5-001",
+  "benchmark_id": "BENCHMARK_B_GRADED_MATERIAL",
+  "status": "VERIFIED_PASS",
+  "analytical_exact_tip_disp_mm": 0.06931471805599453,
+  "secp_fem_single_elem_disp_mm": 0.06666666666666667,
+  "secp_fem_32_elem_disp_mm": 0.06931089231023412,
+  "single_elem_error_pct": 3.82,
+  "multi_elem_32_error_pct": 0.0055,
+  "convergence_trend": "MONOTONIC_QUADRATIC_CONVERGENCE"
+}

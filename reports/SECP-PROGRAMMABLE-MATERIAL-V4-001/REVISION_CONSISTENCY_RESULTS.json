@@ -1,0 +1,40 @@
+{
+  "testSuite": "SECP-PROGRAMMABLE-MATERIAL-V4-001",
+  "category": "REVISION_CONSISTENCY_RESULTS",
+  "timestamp": "2026-10-27T07:35:00.000Z",
+  "revisionTests": [
+    {
+      "testId": "REV_MATCH_ALL_COHERENT",
+      "modelGeometryRevision": "REV_2026_A",
+      "assignmentGeometryRevision": "REV_2026_A",
+      "fieldGeometryRevision": "REV_2026_A",
+      "result": "ACCEPTED",
+      "passed": true
+    },
+    {
+      "testId": "REV_MISMATCH_MODEL_VS_ASSIGNMENT",
+      "modelGeometryRevision": "REV_2026_A",
+      "assignmentGeometryRevision": "REV_2026_B",
+      "result": "REJECTED",
+      "diagnosticCode": "[GEOMETRY_REVISION_MISMATCH]",
+      "passed": true
+    },
+    {
+      "testId": "REV_MISMATCH_FIELD_VS_ASSIGNMENT",
+      "assignmentGeometryRevision": "REV_2026",
+      "fieldGeometryRevision": "REV_2025",
+      "result": "REJECTED",
+      "diagnosticCode": "[FIELD_REVISION_MISMATCH]",
+      "passed": true
+    },
+    {
+      "testId": "REV_MUTATION_EVIDENCE_STALENESS",
+      "evidencePackageTimestamp": "2026-10-27T07:35:00.000Z",
+      "mutatedField": "geometryMetadata.geometryRevision",
+      "staleDetected": true,
+      "staleReason": "Geometry metadata or coordinate frame modified",
+      "passed": true
+    }
+  ],
+  "verdict": "REVISION_CONSISTENCY_ENFORCED"
+}

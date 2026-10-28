@@ -1,0 +1,146 @@
+{
+  "auditId": "SECP-PHYSICS-ENGINE-FORENSIC-001",
+  "timestamp": "2026-10-28T07:57:17.644Z",
+  "capabilities": [
+    {
+      "id": "CAP-TOPO-01",
+      "family": "Topology and Geometric Invariants",
+      "name": "B-Rep Manifold Euler Characteristic Validation",
+      "classification": "VERIFIED_IMPLEMENTATION",
+      "governingRelation": "chi = V - E + F = 2(S - G)",
+      "sourceFile": "src/engine/cad-kernel/brep/BRepValidator.ts",
+      "verifiedByTest": "EPC019.test.ts",
+      "limitations": "Applies to polyhedral boundary representation topology, not algebraic topology complexes."
+    },
+    {
+      "id": "CAP-TOPO-02",
+      "family": "Topology and Geometric Invariants",
+      "name": "Differential Geometry Gaussian & Principal Curvature",
+      "classification": "VERIFIED_IMPLEMENTATION",
+      "governingRelation": "K = (LN - M^2) / (EG - F^2)",
+      "sourceFile": "src/engine/classa5axis/SECP083CurvatureAnalyzer.ts",
+      "verifiedByTest": "HardAcceptanceGate083.ts",
+      "limitations": "Restricted to parametric NURBS and B-Spline surface patches."
+    },
+    {
+      "id": "CAP-TOPO-03",
+      "family": "Topology and Geometric Invariants",
+      "name": "Algebraic Topology (Homology, Betti Numbers, Gauss-Bonnet)",
+      "classification": "NOT_FOUND",
+      "governingRelation": "H_k(X), beta_k = rank(H_k), integral_M K dA = 2 pi chi",
+      "sourceFile": "None",
+      "verifiedByTest": "None",
+      "limitations": "No algebraic topology complexes or persistent homology engines exist in codebase."
+    },
+    {
+      "id": "CAP-TOPO-04",
+      "family": "Topology and Geometric Invariants",
+      "name": "Density-Based Structural Topology Optimization (SIMP)",
+      "classification": "VERIFIED_IMPLEMENTATION",
+      "governingRelation": "E_e = E_min + x_e^p (E_0 - E_min)",
+      "sourceFile": "src/engine/materials/TopologyOptimizationEngine274.ts",
+      "verifiedByTest": "TopologyTestBattery274.ts",
+      "limitations": "Standard 2D/3D SIMP formulation with sensitivity filtering."
+    },
+    {
+      "id": "CAP-FEM-01",
+      "family": "Continuum Mechanics and Nonlinear Physics",
+      "name": "Linear Continuum FEM (1D/2D/3D Sparse Assembler)",
+      "classification": "VERIFIED_IMPLEMENTATION",
+      "governingRelation": "[K]{u} = {F}, K = int B^T C B dV",
+      "sourceFile": "src/engine/fem/core/GlobalAssemblyEngine.ts",
+      "verifiedByTest": "FEMUpgrade004Continuum.test.ts (12 tests passed)",
+      "limitations": "Infinitesimal strain linear elasticity."
+    },
+    {
+      "id": "CAP-FEM-02",
+      "family": "Continuum Mechanics and Nonlinear Physics",
+      "name": "J2 Plasticity & Hardening Mechanics",
+      "classification": "VERIFIED_IMPLEMENTATION",
+      "governingRelation": "f = sigma_vm - sigma_y(ep_bar) <= 0",
+      "sourceFile": "src/engine/fem/core/J2Plasticity3D.ts",
+      "verifiedByTest": "FEMUpgrade005Solid3D.test.ts (6 tests passed)",
+      "limitations": "Isotropic/kinematic hardening with radial return mapping."
+    },
+    {
+      "id": "CAP-FEM-03",
+      "family": "Continuum Mechanics and Nonlinear Physics",
+      "name": "Newton-Raphson Nonlinear Structural Equilibrium",
+      "classification": "PARTIALLY_VERIFIED",
+      "governingRelation": "K_t Delta_u = F_ext - F_int, R -> 0",
+      "sourceFile": "src/engine/fem/core/NonlinearEquilibriumSolver.ts",
+      "verifiedByTest": "FEMUpgrade003Convergence.test.ts",
+      "limitations": "Supports moderate strain; co-rotational large deformation frames limited to specific 1D/2D formulations."
+    },
+    {
+      "id": "CAP-FEM-04",
+      "family": "Continuum Mechanics and Nonlinear Physics",
+      "name": "Legacy Beam Bending Formulation (PATCH-016)",
+      "classification": "MOCK_OR_SYNTHETIC",
+      "governingRelation": "delta = F x^2 (3L - x) / (6 E I)",
+      "sourceFile": "src/engine/structuralFem.ts",
+      "verifiedByTest": "None (Analytical Cantilever Formula)",
+      "limitations": "Analytical beam formula labeled as FEM; hardcoded residual values."
+    },
+    {
+      "id": "CAP-CFD-01",
+      "family": "Fluid Mechanics and Vortical Flow",
+      "name": "3D Finite Volume Navier-Stokes Solver",
+      "classification": "VERIFIED_IMPLEMENTATION",
+      "governingRelation": "div(rho v v) = -grad(p) + div(tau)",
+      "sourceFile": "src/engine/cfd3d/Fvm3DNavierStokesSolver.ts",
+      "verifiedByTest": "SECP082IndependentCFDVerifier.test.ts (18 tests passed)",
+      "limitations": "FVM structured/unstructured grids; SIMPLE pressure-velocity coupling."
+    },
+    {
+      "id": "CAP-CFD-02",
+      "family": "Fluid Mechanics and Vortical Flow",
+      "name": "Vorticity Vector & Circulation",
+      "classification": "VERIFIED_IMPLEMENTATION",
+      "governingRelation": "omega = curl(v)",
+      "sourceFile": "src/engine/cfd3d/Fvm3DNavierStokesSolver.ts",
+      "verifiedByTest": "SECP082CfdBenchmarks.ts",
+      "limitations": "Cell-centered velocity gradient curl calculation."
+    },
+    {
+      "id": "CAP-CFD-03",
+      "family": "Fluid Mechanics and Vortical Flow",
+      "name": "Two-Way Fluid-Structure Interaction (FSI)",
+      "classification": "VERIFIED_IMPLEMENTATION",
+      "governingRelation": "Partitioned Gauss-Seidel with Aitken relaxation",
+      "sourceFile": "src/engine/cfd3d/coupling/TwoWayFSICouplingEngine.ts",
+      "verifiedByTest": "CfdForceStabilityClosure.test.ts (2 tests passed)",
+      "limitations": "Station-mapped boundary interface with dynamic mesh morphing."
+    },
+    {
+      "id": "CAP-QTM-01",
+      "family": "Quantum and Topological Materials Physics",
+      "name": "Quantum Hall, Band Structure, Topological Insulators",
+      "classification": "NOT_FOUND",
+      "governingRelation": "H psi = E psi, sigma_xy = nu e^2 / h, Omega = curl(A_k)",
+      "sourceFile": "None",
+      "verifiedByTest": "None",
+      "limitations": "Zero quantum physics solvers exist in repository."
+    },
+    {
+      "id": "CAP-PME-01",
+      "family": "Programmable Material Engineering",
+      "name": "Continuous Spatial Modulus Fields E(x,y,z)",
+      "classification": "VERIFIED_IMPLEMENTATION",
+      "governingRelation": "E(x,y,z) = E_0 * rho(x,y,z)^n",
+      "sourceFile": "src/engine/fem/core/SpatialMaterialField.ts",
+      "verifiedByTest": "MaterialsBenchmark.test.ts (10 tests passed)",
+      "limitations": "Software and numerical integration verified; physical metrology blocked."
+    },
+    {
+      "id": "CAP-MUL-01",
+      "family": "Multiphysics Coupling",
+      "name": "Iterative Bi-Directional Electrothermal Solver",
+      "classification": "VERIFIED_IMPLEMENTATION",
+      "governingRelation": "[G(T)]{V} = {I}, [K_th]{T} = {Q(P)}, R(T) = R_0[1 + alpha Delta T]",
+      "sourceFile": "src/engine/engineeringCore/ElectrothermalSolver.ts",
+      "verifiedByTest": "electrothermal_coupling_verification.test.ts (12 tests passed)",
+      "limitations": "Couples MNA electrical circuit with 2D FVM PCB thermal conduction."
+    }
+  ]
+}

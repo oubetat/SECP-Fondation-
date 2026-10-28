@@ -1,0 +1,54 @@
+{
+  "inspectedAt": "2026-10-28T09:35:45.524Z",
+  "inspectedFiles": [
+    {
+      "path": "src/engine/fem/core/TET4LargeDeformationFormulation.ts",
+      "implements": [
+        "TotalLagrangianKinematics",
+        "GreenLagrangeStrain",
+        "GeometricStiffnessKgeo",
+        "CauchyStressPushForward"
+      ],
+      "status": "PRODUCTION_READY"
+    },
+    {
+      "path": "src/engine/fem/core/HyperelasticNeoHookean3D.ts",
+      "implements": [
+        "CompressibleNeoHookeanPotential",
+        "ExactVoigtTangentCmat",
+        "C_BasedFiniteDifferenceSupport"
+      ],
+      "status": "PRODUCTION_READY"
+    },
+    {
+      "path": "src/engine/fem/core/HyperelasticMooneyRivlin3D.ts",
+      "implements": [
+        "MooneyRivlinPotential",
+        "ExplicitParameterAdmissibility",
+        "ExactVoigtTangentCmat"
+      ],
+      "status": "PRODUCTION_READY"
+    },
+    {
+      "path": "src/engine/fem/core/TET4LargeDeformationPlasticFormulation.ts",
+      "implements": [
+        "FiniteDeformationElastoplasticity",
+        "RadialReturnJ2",
+        "ConsistentAlgorithmicTangentDalg",
+        "TrialStateRollback"
+      ],
+      "status": "PRODUCTION_READY"
+    },
+    {
+      "path": "src/engine/physics/electromagnetics/BidirectionalElectrothermalSolver3D.ts",
+      "implements": [
+        "3DElectricalConduction",
+        "TemperatureDependentConductivity",
+        "JouleHeatingDensityTransfer",
+        "3DThermalConduction",
+        "UnderRelaxedPicardFeedback"
+      ],
+      "status": "PRODUCTION_READY"
+    }
+  ]
+}

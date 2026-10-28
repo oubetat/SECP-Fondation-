@@ -1,0 +1,39 @@
+{
+  "campaignId": "SECP-PHYSICS-EXPANSION-001",
+  "timestamp": "2026-10-28T08:46:57.717Z",
+  "registeredSolvers": [
+    {
+      "formulationKey": "TET4_LARGE_DEFORM",
+      "solverEngine": "NonlinearEquilibriumSolver",
+      "supportedPhysics": [
+        "NonlinearContinuumMechanics",
+        "FiniteDeformation",
+        "GeometricStiffness"
+      ],
+      "integrationClass": "TET4LargeDeformationFormulation",
+      "tangentAssembly": "SparseMatrix / DirectPartitioning / PCG"
+    },
+    {
+      "formulationKey": "TET4_HYPERELASTIC",
+      "solverEngine": "NonlinearEquilibriumSolver",
+      "supportedPhysics": [
+        "Hyperelasticity",
+        "Elastomers",
+        "FiniteStrain"
+      ],
+      "integrationClass": "HyperelasticNeoHookean3D",
+      "tangentAssembly": "SparseMatrix / DirectPartitioning / PCG"
+    },
+    {
+      "formulationKey": "ELECTROSTATIC_3D",
+      "solverEngine": "ElectrostaticSolver3D",
+      "supportedPhysics": [
+        "Electrostatics",
+        "CapacitanceExtraction",
+        "JouleDissipationCoupling"
+      ],
+      "integrationClass": "ElectrostaticSolver3D",
+      "tangentAssembly": "DirectPartitionedElimination"
+    }
+  ]
+}

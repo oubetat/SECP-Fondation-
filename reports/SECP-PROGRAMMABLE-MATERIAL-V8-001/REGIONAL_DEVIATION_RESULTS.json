@@ -1,0 +1,20 @@
+{
+  "taskId": "SECP-PROGRAMMABLE-MATERIAL-V8-001",
+  "asBuiltStateId": "ABState_Mock_001",
+  "propertyId": "E",
+  "regionalSummary": {
+    "totalEvaluatedPoints": 4,
+    "conformingPointsCount": 3,
+    "nonConformingPointsCount": 1,
+    "indeterminatePointsCount": 0,
+    "unmeasuredPointsCount": 0,
+    "coverageRatio": 1.0,
+    "maxPositiveDeviation": 40000.0,
+    "maxNegativeDeviation": 0.0,
+    "maxAbsoluteDeviation": 40000.0,
+    "rmsDeviation": 20000.0,
+    "meanDeviation": 10000.0,
+    "worstCasePoint": { "x": 30, "y": 0, "z": 0, "delta": 40000.0 }
+  },
+  "overallVerdict": "NONCONFORMING_LOCALIZED_FAILURE_DETECTED"
+}

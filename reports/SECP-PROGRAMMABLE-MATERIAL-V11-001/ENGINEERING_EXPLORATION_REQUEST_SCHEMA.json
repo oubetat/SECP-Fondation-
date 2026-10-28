@@ -1,0 +1,56 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "EngineeringExplorationRequestSchema",
+  "type": "object",
+  "required": [
+    "requestId",
+    "engineeringIntent",
+    "targetProperties",
+    "designSpace",
+    "constraints",
+    "budget"
+  ],
+  "properties": {
+    "requestId": { "type": "string" },
+    "engineeringIntent": { "type": "string" },
+    "targetProperties": {
+      "type": "array",
+      "items": { "enum": ["E", "nu", "density", "yieldStress"] }
+    },
+    "designSpace": {
+      "type": "object",
+      "required": ["geometryRevision", "variableBounds"],
+      "properties": {
+        "geometryRevision": { "type": "string" },
+        "variableBounds": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "required": ["min", "max"],
+            "properties": {
+              "min": { "type": "number" },
+              "max": { "type": "number" },
+              "unit": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "constraints": {
+      "type": "object",
+      "properties": {
+        "maxStress": { "type": "number" },
+        "maxDisplacement": { "type": "number" },
+        "minSafetyFactor": { "type": "number" }
+      }
+    },
+    "budget": {
+      "type": "object",
+      "required": ["maxCandidates"],
+      "properties": {
+        "maxCandidates": { "type": "integer", "default": 10 },
+        "feedbackLoops": { "type": "integer", "default": 3 }
+      }
+    }
+  }
+}

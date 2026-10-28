@@ -1,0 +1,38 @@
+{
+  "testRunner": "Vitest v1.6.1",
+  "suites": [
+    {
+      "name": "FEMUpgrade012Expansion002.test.ts",
+      "total": 4,
+      "passed": 4,
+      "failed": 0
+    },
+    {
+      "name": "ElectrostaticSolver3D.test.ts",
+      "total": 4,
+      "passed": 4,
+      "failed": 0
+    },
+    {
+      "name": "FEMCore.test.ts",
+      "total": 2,
+      "passed": 2,
+      "failed": 0
+    },
+    {
+      "name": "FEMUpgrade013Expansion003.test.ts",
+      "total": 3,
+      "passed": 3,
+      "failed": 0
+    },
+    {
+      "name": "ConstitutiveThermalSoftening.test.ts",
+      "total": 2,
+      "passed": 2,
+      "failed": 0
+    }
+  ],
+  "totalTests": 15,
+  "passRatePercent": 100,
+  "status": "ALL_PASSED"
+}

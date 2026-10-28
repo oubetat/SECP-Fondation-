@@ -1,0 +1,7 @@
+{
+  "taskId": "SECP-PROGRAMMABLE-MATERIAL-006",
+  "adversarialChecks": {
+    "boundsEnforcement": "PASSED via SpatialMaterialField contract",
+    "revisionInvalidation": "VERIFIED_DESIGN_REUSED"
+  }
+}

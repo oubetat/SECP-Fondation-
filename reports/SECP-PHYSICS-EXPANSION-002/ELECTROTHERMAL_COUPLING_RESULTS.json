@@ -1,0 +1,102 @@
+{
+  "campaignId": "SECP-PHYSICS-EXPANSION-002",
+  "timestamp": "2026-10-28T09:35:45.524Z",
+  "status": "CONVERGED",
+  "totalIterations": 11,
+  "finalTempResidualK": 0.0009624836570765183,
+  "totalElectricalPowerWatts": 2620.736944700887,
+  "totalThermalHeatWatts": 2620.736944700887,
+  "couplingContract": {
+    "sourceDomain": "ELECTRICAL_CONDUCTION_3D",
+    "destinationDomain": "THERMAL_HEAT_TRANSFER_3D",
+    "fieldIdentity": "VOLUMETRIC_JOULE_HEAT_DENSITY",
+    "siUnits": "W/m^3",
+    "mappingMethod": "DIRECT_ELEMENT_VOLUMETRIC_ALLOCATION",
+    "relaxationFactor": 0.7,
+    "convergenceToleranceK": 0.001,
+    "energyConserved": true,
+    "energyImbalanceRatio": 0.000001,
+    "sourceRevision": "REV-ELEC-3D-001",
+    "destinationRevision": "REV-THERM-3D-001",
+    "lineageHash": "HASH-CONTRACT-ELECTROTHERMAL-3D"
+  },
+  "iterationHistory": [
+    {
+      "iteration": 1,
+      "maxDeltaTK": 5643.503289473701,
+      "maxElectricalPowerW": 8999.999999999996,
+      "minConductivitySm": 10000,
+      "maxConductivitySm": 10000
+    },
+    {
+      "iteration": 2,
+      "maxDeltaTK": 3314.4075745649093,
+      "maxElectricalPowerW": 1202.7051560192122,
+      "minConductivitySm": 798.901510423166,
+      "maxConductivitySm": 2061.1370365858133
+    },
+    {
+      "iteration": 3,
+      "maxDeltaTK": 325.39655774274297,
+      "maxElectricalPowerW": 2397.8766054428665,
+      "minConductivitySm": 1738.5399508420483,
+      "maxConductivitySm": 3861.5885779376104
+    },
+    {
+      "iteration": 4,
+      "maxDeltaTK": 54.227135626849076,
+      "maxElectricalPowerW": 2660.1342448935948,
+      "minConductivitySm": 1965.9525388135726,
+      "maxConductivitySm": 4223.820814450054
+    },
+    {
+      "iteration": 5,
+      "maxDeltaTK": 11.489789538004288,
+      "maxElectricalPowerW": 2612.524515590345,
+      "minConductivitySm": 1924.2931112086603,
+      "maxConductivitySm": 4158.808779717859
+    },
+    {
+      "iteration": 6,
+      "maxDeltaTK": 2.3351702234217555,
+      "maxElectricalPowerW": 2622.4192295619087,
+      "minConductivitySm": 1932.9996226288245,
+      "maxConductivitySm": 4172.312833689365
+    },
+    {
+      "iteration": 7,
+      "maxDeltaTK": 0.488217774694931,
+      "maxElectricalPowerW": 2620.394998787806,
+      "minConductivitySm": 1931.2379018481568,
+      "maxConductivitySm": 4169.540239982572
+    },
+    {
+      "iteration": 8,
+      "maxDeltaTK": 0.09848488231614283,
+      "maxElectricalPowerW": 2620.808330972369,
+      "minConductivitySm": 1931.603695638574,
+      "maxConductivitySm": 4170.103044638949
+    },
+    {
+      "iteration": 9,
+      "maxDeltaTK": 0.02126249665798241,
+      "maxElectricalPowerW": 2620.7232357658568,
+      "minConductivitySm": 1931.5302162314752,
+      "maxConductivitySm": 4169.986161026299
+    },
+    {
+      "iteration": 10,
+      "maxDeltaTK": 0.004169985858879954,
+      "maxElectricalPowerW": 2620.740526854066,
+      "minConductivitySm": 1931.5456917670567,
+      "maxConductivitySm": 4170.009608533318
+    },
+    {
+      "iteration": 11,
+      "maxDeltaTK": 0.0009624836570765183,
+      "maxElectricalPowerW": 2620.736944700887,
+      "minConductivitySm": 1931.5426500199999,
+      "maxConductivitySm": 4170.004659608755
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "campaignId": "SECP-PHYSICS-EXPANSION-002",
+  "timestamp": "2026-10-28T09:35:45.524Z",
+  "bindings": [
+    {
+      "file": "src/engine/fem/core/ConstitutiveTangentVerifier.ts",
+      "sha256": "c44f5d843fb00c4e372c86d55eae258ca92109b90b1d5a146c01405cd3ebdc4e"
+    },
+    {
+      "file": "src/engine/fem/core/HyperelasticMooneyRivlin3D.ts",
+      "sha256": "75c91ce2501f035596d8fd68daebe119e89a9877210cf728d57f6ff4e8be5311"
+    },
+    {
+      "file": "src/engine/fem/core/TET4LargeDeformationPlasticFormulation.ts",
+      "sha256": "c5aed0161f3cef387d7834ee56cda6cfb695d7e7711caabaaeede7c0b95efe12"
+    },
+    {
+      "file": "src/engine/physics/electromagnetics/BidirectionalElectrothermalSolver3D.ts",
+      "sha256": "cda3ab4419ba1c156752057c437818f768e840026b34c00a6ada2b6a3e6426d4"
+    },
+    {
+      "file": "src/engine/fem/core/__tests__/FEMUpgrade012Expansion002.test.ts",
+      "sha256": "d8d7e85aed31bf6ab1a27c3a9698f23da9e2727a70d83400139bf27f1fdf2ef6"
+    }
+  ]
+}

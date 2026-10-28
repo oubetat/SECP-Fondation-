@@ -1,0 +1,13 @@
+{
+  "scopeId": "PME-QUAL-SCOPE-001",
+  "revision": "1.0.0",
+  "intendedUse": "Spatially Graded Aerospace Structural Bracket",
+  "material": "Ti-6Al-4V Spatially Graded Lattice",
+  "process": "Laser Powder Bed Fusion (L-PBF)",
+  "ambientConditions": "Standard Room Temperature (293K)",
+  "exclusions": [
+    "High-temperature creep (>600C)",
+    "Cryogenic operation (<77K)",
+    "Dynamic ballistic impact"
+  ]
+}

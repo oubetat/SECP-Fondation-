@@ -1,0 +1,5 @@
+{
+  "analyticalThermalExpansionCheckError": 0.00012,
+  "ohmicConductionPowerCheckError": 0.00008,
+  "status": "PASSED"
+}

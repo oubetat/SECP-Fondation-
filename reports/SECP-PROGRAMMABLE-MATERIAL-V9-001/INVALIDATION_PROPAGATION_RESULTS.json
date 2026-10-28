@@ -1,0 +1,42 @@
+{
+  "taskID": "SECP-PROGRAMMABLE-MATERIAL-V9-001",
+  "verificationType": "INVALIDATION_PROPAGATION",
+  "timestamp": "2026-10-27T08:26:00.000Z",
+  "status": "PASSED",
+  "testCases": [
+    {
+      "testId": "INV-PROP-01",
+      "mutatedNodeId": "MAT-DEF-CANONICAL",
+      "mutationReason": "Material stiffness modified in CAD",
+      "invalidatedNodes": [
+        "MAT-DEF-CANONICAL",
+        "FIELD-FIELD1",
+        "DEV-001",
+        "DECISION-DEV-001"
+      ],
+      "unaffectedNodes": [
+        "GEOM-001"
+      ],
+      "invalidationEdgesAdded": 3,
+      "result": "PASS"
+    },
+    {
+      "testId": "INV-PROP-02",
+      "mutatedNodeId": "GEOM-001",
+      "mutationReason": "Geometry mesh refined",
+      "invalidatedNodes": [
+        "GEOM-001",
+        "MAT-DEF-CANONICAL",
+        "FIELD-FIELD1",
+        "MFG-PROFILE-MFG-001",
+        "ASBUILT-001",
+        "DEV-001",
+        "DECISION-DEV-001"
+      ],
+      "unaffectedNodes": [
+        "MEAS-DS-001"
+      ],
+      "result": "PASS"
+    }
+  ]
+}

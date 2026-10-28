@@ -1,0 +1,73 @@
+{
+  "testSuite": "SECP-PROGRAMMABLE-MATERIAL-V4-001",
+  "category": "FEM_MATERIAL_BINDING_MATRIX",
+  "timestamp": "2026-10-27T07:35:00.000Z",
+  "formulationQualification": [
+    {
+      "formulationId": "BAR_1D",
+      "spatialEvaluationSupported": true,
+      "qualificationStatus": "QUALIFIED_V3_V4",
+      "evaluationPoint": "ELEMENT_MIDPOINT",
+      "coordinateFrameAware": true,
+      "propertiesConsumed": ["E"]
+    },
+    {
+      "formulationId": "TET4_3D",
+      "spatialEvaluationSupported": true,
+      "qualificationStatus": "QUALIFIED_V3_V4",
+      "evaluationPoint": "ELEMENT_CENTROID",
+      "coordinateFrameAware": true,
+      "propertiesConsumed": ["E", "nu"]
+    },
+    {
+      "formulationId": "CST_2D",
+      "spatialEvaluationSupported": false,
+      "qualificationStatus": "NOT_YET_IMPLEMENTED",
+      "gateAction": "FAIL_CLOSED_REJECTION",
+      "diagnosticCode": "[UNSUPPORTED_FORMULATION_SPATIAL_FIELD]"
+    },
+    {
+      "formulationId": "T6_2D",
+      "spatialEvaluationSupported": false,
+      "qualificationStatus": "NOT_YET_IMPLEMENTED",
+      "gateAction": "FAIL_CLOSED_REJECTION",
+      "diagnosticCode": "[UNSUPPORTED_FORMULATION_SPATIAL_FIELD]"
+    },
+    {
+      "formulationId": "Q4_2D",
+      "spatialEvaluationSupported": false,
+      "qualificationStatus": "NOT_YET_IMPLEMENTED",
+      "gateAction": "FAIL_CLOSED_REJECTION",
+      "diagnosticCode": "[UNSUPPORTED_FORMULATION_SPATIAL_FIELD]"
+    },
+    {
+      "formulationId": "BEAM_2D",
+      "spatialEvaluationSupported": false,
+      "qualificationStatus": "NOT_YET_IMPLEMENTED",
+      "gateAction": "FAIL_CLOSED_REJECTION",
+      "diagnosticCode": "[UNSUPPORTED_FORMULATION_SPATIAL_FIELD]"
+    },
+    {
+      "formulationId": "FRAME_2D",
+      "spatialEvaluationSupported": false,
+      "qualificationStatus": "NOT_YET_IMPLEMENTED",
+      "gateAction": "FAIL_CLOSED_REJECTION",
+      "diagnosticCode": "[UNSUPPORTED_FORMULATION_SPATIAL_FIELD]"
+    },
+    {
+      "formulationId": "TRUSS_2D_NL",
+      "spatialEvaluationSupported": false,
+      "qualificationStatus": "NOT_YET_IMPLEMENTED",
+      "gateAction": "FAIL_CLOSED_REJECTION",
+      "diagnosticCode": "[UNSUPPORTED_FORMULATION_SPATIAL_FIELD]"
+    },
+    {
+      "formulationId": "TET4_PLASTIC",
+      "spatialEvaluationSupported": false,
+      "qualificationStatus": "NOT_YET_IMPLEMENTED",
+      "gateAction": "FAIL_CLOSED_REJECTION",
+      "diagnosticCode": "[UNSUPPORTED_FORMULATION_SPATIAL_FIELD]"
+    }
+  ],
+  "verdict": "BINDINGS_BOUNDED_TO_QUALIFIED_FORMULATIONS"
+}

@@ -1,0 +1,79 @@
+{
+  "auditId": "SECP-PME-V12-FORENSIC-001",
+  "timestamp": "2026-10-27T09:51:47.106Z",
+  "capabilities": [
+    {
+      "name": "Spatial Material Fields",
+      "implementationStatus": "IMPLEMENTED",
+      "testCoverage": "PASS",
+      "numericalVerification": "VERIFIED",
+      "physicalEvidence": "MISSING",
+      "verdict": "SOFTWARE_VERIFIED_ONLY"
+    },
+    {
+      "name": "Nonlinear FEM Physics",
+      "implementationStatus": "IMPLEMENTED",
+      "testCoverage": "PASS",
+      "numericalVerification": "VERIFIED",
+      "physicalEvidence": "MISSING",
+      "verdict": "SOFTWARE_VERIFIED_ONLY"
+    },
+    {
+      "name": "Two-Way FSI Coupling",
+      "implementationStatus": "IMPLEMENTED",
+      "testCoverage": "PASS",
+      "numericalVerification": "VERIFIED",
+      "physicalEvidence": "MISSING",
+      "verdict": "SOFTWARE_VERIFIED_ONLY"
+    },
+    {
+      "name": "Manufacturing Constraints",
+      "implementationStatus": "IMPLEMENTED",
+      "testCoverage": "PASS",
+      "numericalVerification": "VERIFIED",
+      "physicalEvidence": "MISSING",
+      "verdict": "SOFTWARE_VERIFIED_ONLY"
+    },
+    {
+      "name": "As-Built Reconstruction",
+      "implementationStatus": "IMPLEMENTED",
+      "testCoverage": "PASS",
+      "numericalVerification": "VERIFIED",
+      "physicalEvidence": "MISSING",
+      "verdict": "SOFTWARE_VERIFIED_ONLY"
+    },
+    {
+      "name": "Deviation Analysis",
+      "implementationStatus": "IMPLEMENTED",
+      "testCoverage": "PASS",
+      "numericalVerification": "VERIFIED",
+      "physicalEvidence": "MISSING",
+      "verdict": "SOFTWARE_VERIFIED_ONLY"
+    },
+    {
+      "name": "Engineering Optimization",
+      "implementationStatus": "IMPLEMENTED",
+      "testCoverage": "PASS",
+      "numericalVerification": "VERIFIED",
+      "physicalEvidence": "MISSING",
+      "verdict": "SOFTWARE_VERIFIED_ONLY"
+    },
+    {
+      "name": "AI Material Exploration",
+      "implementationStatus": "IMPLEMENTED",
+      "testCoverage": "PASS",
+      "numericalVerification": "VERIFIED",
+      "physicalEvidence": "MISSING",
+      "verdict": "SOFTWARE_VERIFIED_ONLY"
+    },
+    {
+      "name": "Material Truth Thread",
+      "implementationStatus": "IMPLEMENTED",
+      "testCoverage": "PASS",
+      "numericalVerification": "VERIFIED",
+      "physicalEvidence": "MISSING",
+      "verdict": "SOFTWARE_VERIFIED_ONLY"
+    }
+  ],
+  "overallVerdict": "SOFTWARE_VERIFIED_ONLY"
+}

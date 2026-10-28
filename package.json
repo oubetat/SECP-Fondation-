@@ -11,6 +11,7 @@
     "test": "vitest"
   },
   "dependencies": {
+    "@google/genai": "^2.31.0",
     "@types/three": "^0.186.0",
     "buffer": "^6.0.3",
     "crypto-browserify": "^3.12.1",

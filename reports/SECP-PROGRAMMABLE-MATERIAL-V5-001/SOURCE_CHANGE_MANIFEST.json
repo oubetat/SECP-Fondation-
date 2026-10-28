@@ -1,0 +1,10 @@
+{
+  "task_id": "SECP-PROGRAMMABLE-MATERIAL-V5-001",
+  "modified_files": [
+    "src/engine/fem/core/Bar1DFormulation.ts",
+    "src/engine/fem/core/TET43DFormulation.ts"
+  ],
+  "created_files": [
+    "src/engine/fem/core/__tests__/GeometryMaterialPhysicsV5.test.ts"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "taskId": "SECP-PROGRAMMABLE-MATERIAL-004",
+  "version": "1.0.0",
+  "modifiedFiles": [
+    {
+      "path": "/src/engine/fem/core/FEMTypes.ts",
+      "changeType": "EXTENDED",
+      "description": "Added spatialFieldId to FEMElement and spatialMaterialFields to FEMModel."
+    },
+    {
+      "path": "/src/engine/fem/core/Bar1DFormulation.ts",
+      "changeType": "EXTENDED",
+      "description": "Added spatial material property evaluation at element midpoints for computeMatrices and computeStressStrain."
+    }
+  ],
+  "addedFiles": [
+    {
+      "path": "/src/engine/fem/core/SpatialMaterialField.ts",
+      "description": "New SpatialMaterialField contract and evaluation engine."
+    },
+    {
+      "path": "/src/engine/fem/core/__tests__/SpatialMaterialMapping004.test.ts",
+      "description": "Automated verification test suite for spatial material mapping."
+    }
+  ]
+}

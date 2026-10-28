@@ -1,0 +1,26 @@
+{
+  "campaignId": "SECP-PHYSICS-EXPANSION-002",
+  "timestamp": "2026-10-28T09:35:45.524Z",
+  "formulations": [
+    {
+      "id": "MATH-MOONEY-RIVLIN-3D",
+      "name": "Compressible Mooney-Rivlin Potential",
+      "potential": "W = C10*(I1_bar - 3) + C01*(I2_bar - 3) + 0.5*K*(J - 1)^2",
+      "tangent": "Exact 4th-order tensor C_mat = 4 * d^2W / (dC dC)"
+    },
+    {
+      "id": "MATH-LARGE-DEFORM-PLASTICITY-3D",
+      "name": "Total Lagrangian J2 Finite Elastoplasticity",
+      "yieldSurface": "f = q - (sigma_y0 + H * alpha) <= 0",
+      "algorithmicTangent": "D_alg = De - 3*mu*(beta*P_dev + (1-beta)*gamma_factor*(N (x) N))"
+    },
+    {
+      "id": "MATH-BIDIRECTIONAL-ELECTROTHERMAL",
+      "name": "3D Electrothermal Feedback Picard System",
+      "electricalConduction": "-div(sigma(T) * grad(phi)) = 0",
+      "conductivityFeedback": "sigma(T) = sigma0 / (1 + alpha_T * (T - T0))",
+      "jouleHeatDensity": "q = sigma(T) * |grad(phi)|^2 [W/m^3]",
+      "thermalConduction": "-div(k * grad(T)) = q"
+    }
+  ]
+}

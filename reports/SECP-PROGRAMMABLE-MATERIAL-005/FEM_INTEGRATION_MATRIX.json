@@ -1,0 +1,20 @@
+{
+  "taskId": "SECP-PROGRAMMABLE-MATERIAL-005",
+  "integrationMatrix": [
+    {
+      "formulationId": "BAR_1D",
+      "spatialMappingSupported": true,
+      "verificationStatus": "VERIFIED_BY_TEST"
+    },
+    {
+      "formulationId": "TET4_3D",
+      "spatialMappingSupported": false,
+      "verificationStatus": "NOT_YET_IMPLEMENTED"
+    },
+    {
+      "formulationId": "CST_2D",
+      "spatialMappingSupported": false,
+      "verificationStatus": "NOT_YET_IMPLEMENTED"
+    }
+  ]
+}

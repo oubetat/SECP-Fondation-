@@ -1,0 +1,36 @@
+{
+  "task_id": "SECP-PROGRAMMABLE-MATERIAL-V6-001",
+  "audit_timestamp": "2026-10-27T07:58:00Z",
+  "capability_support_matrix": [
+    {
+      "capability": "Minimum Feature Size Audit",
+      "status": "SUPPORTED_AND_VERIFIED",
+      "scope": "1D Bar Length & 3D TET4 Characteristic Size"
+    },
+    {
+      "capability": "Minimum Wall Thickness Audit",
+      "status": "SUPPORTED_AND_VERIFIED",
+      "scope": "Section Equivalent Thickness"
+    },
+    {
+      "capability": "Spatial Gradient Audit (|grad E|)",
+      "status": "SUPPORTED_AND_VERIFIED",
+      "scope": "Inter-element Modulus Variation"
+    },
+    {
+      "capability": "Material Process Compatibility Audit",
+      "status": "SUPPORTED_AND_VERIFIED",
+      "scope": "Process Profile Material Whitelist"
+    },
+    {
+      "capability": "Synthetic Profile Anti-False-Claim Gate",
+      "status": "SUPPORTED_AND_VERIFIED",
+      "scope": "Qualification Level & Machine ID Enforcement"
+    },
+    {
+      "capability": "Full CAD Thermal Process Simulation",
+      "status": "NOT_YET_IMPLEMENTED_FAIL_CLOSED",
+      "scope": "Out of scope for V6 (Reserved for V7-V10)"
+    }
+  ]
+}

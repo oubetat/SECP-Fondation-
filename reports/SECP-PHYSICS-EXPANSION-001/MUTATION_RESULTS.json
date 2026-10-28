@@ -1,0 +1,38 @@
+{
+  "campaignId": "SECP-PHYSICS-EXPANSION-001",
+  "timestamp": "2026-10-28T08:46:57.717Z",
+  "totalMutationsTested": 4,
+  "mutationsKilled": 4,
+  "mutationsSurvived": 0,
+  "mutationScore": 1,
+  "campaign": [
+    {
+      "mutationId": "MUT-01-WRONG-SIGN-K_GEO",
+      "target": "TET4LargeDeformationFormulation.computeGeometricStiffness",
+      "mutationDescription": "Invert sign of geometric stiffness Kt = K_mat - K_geo",
+      "detectedByTest": "Newton-Raphson tensile convergence rate or energy divergence",
+      "survived": false
+    },
+    {
+      "mutationId": "MUT-02-OMIT-ISOCHORIC-SCALING",
+      "target": "HyperelasticNeoHookean3D.computeStressAndTangent",
+      "mutationDescription": "Omit J^(-2/3) invariant volume scaling factor in S_iso",
+      "detectedByTest": "Small strain reduction test diff with linear D matrix exceeds 0.001",
+      "survived": false
+    },
+    {
+      "mutationId": "MUT-03-WRONG-POISSON-DIVISOR",
+      "target": "ElectrostaticSolver3D.computeTetGradients",
+      "mutationDescription": "Omit 1/6 factor in tetrahedral volume calculation",
+      "detectedByTest": "Capacitance benchmark discrepancy jumps to 600%",
+      "survived": false
+    },
+    {
+      "mutationId": "MUT-04-MISSING-DIRICHLET-GATE",
+      "target": "ElectrostaticSolver3D.solve",
+      "mutationDescription": "Remove unconstrained BC check, allowing singular system",
+      "detectedByTest": "Adversarial test ADV-03 immediately catches missing guard",
+      "survived": false
+    }
+  ]
+}

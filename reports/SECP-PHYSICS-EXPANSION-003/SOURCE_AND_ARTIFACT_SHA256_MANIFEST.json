@@ -1,0 +1,145 @@
+{
+  "campaign": "SECP-PHYSICS-EXPANSION-003",
+  "runId": "RUN-SECP-003-1793182654205",
+  "timestamp": "2026-10-28T10:17:34.205Z",
+  "sourceBindings": [
+    {
+      "relativePath": "src/engine/physics/electromagnetics/UnifiedThermoElectroMechanicalSolver3D.ts",
+      "exists": true,
+      "byteLength": 7227,
+      "sha256": "987b96e04a9552e541ba3ac561a6d56cec809ae487f43f7989093bf3a4f08a82"
+    },
+    {
+      "relativePath": "src/engine/physics/electromagnetics/BidirectionalElectrothermalSolver3D.ts",
+      "exists": true,
+      "byteLength": 13070,
+      "sha256": "cda3ab4419ba1c156752057c437818f768e840026b34c00a6ada2b6a3e6426d4"
+    },
+    {
+      "relativePath": "src/engine/physics/electromagnetics/ElectrostaticSolver3D.ts",
+      "exists": true,
+      "byteLength": 11132,
+      "sha256": "9e6ed835be30ed2bc7e4ca170fee72fd58db559558e45b495a7ff43e6b81c199"
+    },
+    {
+      "relativePath": "src/engine/fem/core/TET4LargeDeformationPlasticFormulation.ts",
+      "exists": true,
+      "byteLength": 10954,
+      "sha256": "477d41db93ba24a8eb0fc3482147cbd50cdd517f3a80040ddcfe54d3238e2272"
+    },
+    {
+      "relativePath": "src/engine/fem/core/NonlinearEquilibriumSolver.ts",
+      "exists": true,
+      "byteLength": 8503,
+      "sha256": "2d43f82f7c8844412a6b032f2c22e9567cd45746fdbfbc9c62c74333131decc5"
+    },
+    {
+      "relativePath": "src/engine/fem/core/HyperelasticMooneyRivlin3D.ts",
+      "exists": true,
+      "byteLength": 8108,
+      "sha256": "7e8bdb14f5cc0663994b9499f9ec8d564c9c6997f0afc66307f7c30d635a2914"
+    }
+  ],
+  "artifacts": [
+    {
+      "relativePath": "reports/SECP-PHYSICS-EXPANSION-003/ADVERSARIAL_TEST_RESULTS.json",
+      "byteLength": 94,
+      "sha256": "bd0931cf1d56e38ec9f9619ac37aa6d45526ede8bac83eba23fab48bc3ebf8e5"
+    },
+    {
+      "relativePath": "reports/SECP-PHYSICS-EXPANSION-003/BASELINE_REGRESSION_RESULTS.json",
+      "byteLength": 701,
+      "sha256": "52bee1402ee85c51c96f975a171c9259f5bea755fe077a67af3a6acca9207e5d"
+    },
+    {
+      "relativePath": "reports/SECP-PHYSICS-EXPANSION-003/CANONICAL_REVISION_BINDINGS.json",
+      "byteLength": 1505,
+      "sha256": "cf398c4ae32f06cb4923841ee0a33f5cd86d02d27593b162a662ee511ad10a76"
+    },
+    {
+      "relativePath": "reports/SECP-PHYSICS-EXPANSION-003/CONSERVATION_AND_ENERGY_BALANCE.json",
+      "byteLength": 164,
+      "sha256": "291aeaa2cc041dded5b7cd74e0ae9ac88b9ed05a5c4a95a2a0caac7522084062"
+    },
+    {
+      "relativePath": "reports/SECP-PHYSICS-EXPANSION-003/CONSTITUTIVE_TANGENT_VERIFICATION.json",
+      "byteLength": 157,
+      "sha256": "bb806ad1797a13b7cbd2a4778e1077debd936edaff9e09846e42efed16efd82d"
+    },
+    {
+      "relativePath": "reports/SECP-PHYSICS-EXPANSION-003/FIELD_TRANSFER_AND_COUPLING_CONVERGENCE.json",
+      "byteLength": 162,
+      "sha256": "8b04d712e46c17b853cbda94f2a0347d0b137c85b5c855ceb12478d07db4773d"
+    },
+    {
+      "relativePath": "reports/SECP-PHYSICS-EXPANSION-003/FINAL_ACCEPTANCE_DECISION.md",
+      "byteLength": 782,
+      "sha256": "b25544cf3dbbd8f760b3f97f0da4add6455d12a366d1f2fdd5add5f7ae4215bf"
+    },
+    {
+      "relativePath": "reports/SECP-PHYSICS-EXPANSION-003/FINAL_INDEPENDENT_VERIFICATION.md",
+      "byteLength": 14730,
+      "sha256": "ab2d6b4d52cb7fd3693bb6e5c3049765d9f89722f4c274c5550761e216781815"
+    },
+    {
+      "relativePath": "reports/SECP-PHYSICS-EXPANSION-003/IMPLEMENTATION_BOUNDARY.json",
+      "byteLength": 601,
+      "sha256": "cfaa39ee3fcdeb7e06144853436e1fa0dbcf9e838895b801a2603b2bfaaf0194"
+    },
+    {
+      "relativePath": "reports/SECP-PHYSICS-EXPANSION-003/INDEPENDENT_BENCHMARK_RESULTS.json",
+      "byteLength": 120,
+      "sha256": "e58095623e216f8757f239ac3b254a6662017130026d2542760c5cf3b2f76716"
+    },
+    {
+      "relativePath": "reports/SECP-PHYSICS-EXPANSION-003/MATERIAL_HISTORY_AND_ROLLBACK_RESULTS.json",
+      "byteLength": 107,
+      "sha256": "6dfc526ac29fd26d7bdea0c1a42fb884157ff597c205833fe82963e87e364341"
+    },
+    {
+      "relativePath": "reports/SECP-PHYSICS-EXPANSION-003/MATHEMATICAL_FORMULATION_REGISTER.json",
+      "byteLength": 412,
+      "sha256": "bb16eb767e09462484ea71719391c73f14de3929b30e6e370f99da8a6efac2bb"
+    },
+    {
+      "relativePath": "reports/SECP-PHYSICS-EXPANSION-003/MESH_AND_LOAD_STEP_SENSITIVITY.json",
+      "byteLength": 435,
+      "sha256": "9877686c07f5d3a9abc28c566c6f599164e026680e7828b86c6d8f0e032e3c29"
+    },
+    {
+      "relativePath": "reports/SECP-PHYSICS-EXPANSION-003/MUTATION_RESULTS.json",
+      "byteLength": 82,
+      "sha256": "6809356b460d0f0a4e6e77efa61459abb9acb8ede638f5a14e582e62c2094140"
+    },
+    {
+      "relativePath": "reports/SECP-PHYSICS-EXPANSION-003/NONLINEAR_EQUILIBRIUM_RESULTS.json",
+      "byteLength": 362,
+      "sha256": "24bd2ac596922a6ed9f23a70d7d355c4553da6d103f582cf5b3b3e642e8d6b2c"
+    },
+    {
+      "relativePath": "reports/SECP-PHYSICS-EXPANSION-003/NUMERICAL_LIMITATIONS_AND_UNRESOLVED_GAPS.json",
+      "byteLength": 113,
+      "sha256": "261916cc1234d8f0f648cad1aebd0cb003ff97e1e321a2b6899c81e50708a979"
+    },
+    {
+      "relativePath": "reports/SECP-PHYSICS-EXPANSION-003/PHYSICS_CAPABILITY_DELTA.json",
+      "byteLength": 380,
+      "sha256": "260941c76bd76c45b4ca2b5a8bad93bf8c3fbf02291d2e2c2b2bb7c6f3d61a64"
+    },
+    {
+      "relativePath": "reports/SECP-PHYSICS-EXPANSION-003/PRODUCTION_EXECUTION_TRACE.json",
+      "byteLength": 118,
+      "sha256": "5812bd1e1ba0c52f7d53a1ff00178b3bc35d8563f296b4d5aebdb912d95a1862"
+    },
+    {
+      "relativePath": "reports/SECP-PHYSICS-EXPANSION-003/STRUCTURAL_STABILITY_RESULTS.json",
+      "byteLength": 148,
+      "sha256": "f0aa453af1199d0c38c6d8b07e6064d3b16958e0f3b8ca909f12b935afa7b43a"
+    },
+    {
+      "relativePath": "reports/SECP-PHYSICS-EXPANSION-003/THERMO_ELECTRO_MECHANICAL_COUPLING_RESULTS.json",
+      "byteLength": 2683,
+      "sha256": "2de0387922873b8af1340c3d3e2376fa539575afa59413e7c72b78956914b807"
+    }
+  ]
+}

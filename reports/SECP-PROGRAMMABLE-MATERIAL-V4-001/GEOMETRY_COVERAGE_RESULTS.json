@@ -1,0 +1,57 @@
+{
+  "testSuite": "SECP-PROGRAMMABLE-MATERIAL-V4-001",
+  "category": "GEOMETRY_COVERAGE_RESULTS",
+  "timestamp": "2026-10-27T07:35:00.000Z",
+  "audits": [
+    {
+      "auditId": "COV_AUDIT_PASS_STRICT",
+      "meshNodesBBox": {
+        "min": { "x": 0.0, "y": 0.0, "z": 0.0 },
+        "max": { "x": 100.0, "y": 50.0, "z": 20.0 }
+      },
+      "fieldDomain": {
+        "min": { "x": -10.0, "y": -10.0, "z": -10.0 },
+        "max": { "x": 150.0, "y": 100.0, "z": 50.0 }
+      },
+      "coveragePolicy": "FULL_COVERAGE_MANDATORY",
+      "isContained": true,
+      "expectedResult": "VALIDATED",
+      "actualResult": "VALIDATED",
+      "passed": true
+    },
+    {
+      "auditId": "COV_AUDIT_FAIL_CLOSED_OVERRUN",
+      "meshNodesBBox": {
+        "min": { "x": 0.0, "y": 0.0, "z": 0.0 },
+        "max": { "x": 100.0, "y": 0.0, "z": 0.0 }
+      },
+      "fieldDomain": {
+        "min": { "x": 0.0, "y": 0.0, "z": 0.0 },
+        "max": { "x": 50.0, "y": 50.0, "z": 50.0 }
+      },
+      "coveragePolicy": "FULL_COVERAGE_MANDATORY",
+      "isContained": false,
+      "expectedResult": "REJECTED",
+      "actualResult": "REJECTED",
+      "diagnosticCode": "[GEOMETRY_COVERAGE_FAILURE]",
+      "passed": true
+    },
+    {
+      "auditId": "COV_AUDIT_PERMITTED_PARTIAL",
+      "meshNodesBBox": {
+        "min": { "x": 0.0, "y": 0.0, "z": 0.0 },
+        "max": { "x": 100.0, "y": 0.0, "z": 0.0 }
+      },
+      "fieldDomain": {
+        "min": { "x": 0.0, "y": 0.0, "z": 0.0 },
+        "max": { "x": 50.0, "y": 50.0, "z": 50.0 }
+      },
+      "coveragePolicy": "PARTIAL_PERMITTED",
+      "isContained": false,
+      "expectedResult": "READY_FOR_ANALYSIS",
+      "actualResult": "READY_FOR_ANALYSIS",
+      "passed": true
+    }
+  ],
+  "verdict": "FAIL_CLOSED_GATE_VERIFIED"
+}

@@ -1,0 +1,23 @@
+{
+  "registerId": "AC-REG-PME-001",
+  "criteria": [
+    {
+      "id": "AC-01",
+      "parameter": "Young's Modulus Gradient Error",
+      "limit": "< 1.5%",
+      "source": "ISO 13314"
+    },
+    {
+      "id": "AC-02",
+      "parameter": "Overhang Angle Limit",
+      "limit": ">= 45 deg",
+      "source": "ASTM F3301"
+    },
+    {
+      "id": "AC-03",
+      "parameter": "As-Built Dimensional Tolerance",
+      "limit": "+/- 0.05 mm",
+      "source": "ISO 286"
+    }
+  ]
+}

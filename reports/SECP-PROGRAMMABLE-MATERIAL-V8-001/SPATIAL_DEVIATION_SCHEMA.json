@@ -1,0 +1,119 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "SpatialMaterialDeviationSchema",
+  "description": "Schema for SECP-PROGRAMMABLE-MATERIAL-V8-001 Spatial Material Deviation Result",
+  "type": "object",
+  "required": [
+    "deviationResultId",
+    "engineeringRevisionId",
+    "intendedFieldId",
+    "asBuiltStateId",
+    "propertyId",
+    "criteria",
+    "overallStatus",
+    "regionalSummary",
+    "pointRecords",
+    "resultHash"
+  ],
+  "properties": {
+    "deviationResultId": { "type": "string" },
+    "engineeringRevisionId": { "type": "string" },
+    "intendedFieldId": { "type": "string" },
+    "asBuiltStateId": { "type": "string" },
+    "propertyId": { "type": "string" },
+    "criteria": {
+      "type": "object",
+      "required": ["criteriaId", "propertyId", "thresholdType", "unit", "sourceSpecification"],
+      "properties": {
+        "criteriaId": { "type": "string" },
+        "propertyId": { "type": "string" },
+        "thresholdType": {
+          "type": "string",
+          "enum": ["SYMMETRIC_DELTA", "ABSOLUTE_RANGE", "RELATIVE_PERCENTAGE"]
+        },
+        "maxSymmetricDelta": { "type": "number" },
+        "minAbsoluteValue": { "type": "number" },
+        "maxAbsoluteValue": { "type": "number" },
+        "maxRelativePercentage": { "type": "number" },
+        "unit": { "type": "string" },
+        "sourceSpecification": { "type": "string" }
+      }
+    },
+    "overallStatus": {
+      "type": "string",
+      "enum": [
+        "CONFORMING",
+        "NONCONFORMING",
+        "INDETERMINATE",
+        "NOT_MEASURED",
+        "INSUFFICIENT_COVERAGE",
+        "INVALID_INPUT",
+        "BLOCKED"
+      ]
+    },
+    "regionalSummary": {
+      "type": "object",
+      "required": [
+        "totalEvaluatedPoints",
+        "conformingPointsCount",
+        "nonConformingPointsCount",
+        "indeterminatePointsCount",
+        "unmeasuredPointsCount",
+        "coverageRatio",
+        "maxPositiveDeviation",
+        "maxNegativeDeviation",
+        "maxAbsoluteDeviation",
+        "rmsDeviation",
+        "meanDeviation"
+      ],
+      "properties": {
+        "totalEvaluatedPoints": { "type": "integer" },
+        "conformingPointsCount": { "type": "integer" },
+        "nonConformingPointsCount": { "type": "integer" },
+        "indeterminatePointsCount": { "type": "integer" },
+        "unmeasuredPointsCount": { "type": "integer" },
+        "coverageRatio": { "type": "number", "minimum": 0, "maximum": 1 },
+        "maxPositiveDeviation": { "type": "number" },
+        "maxNegativeDeviation": { "type": "number" },
+        "maxAbsoluteDeviation": { "type": "number" },
+        "rmsDeviation": { "type": "number" },
+        "meanDeviation": { "type": "number" }
+      }
+    },
+    "pointRecords": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["x", "y", "z", "propertyId", "intendedValue", "isMeasured", "isInterpolated", "status"],
+        "properties": {
+          "x": { "type": "number" },
+          "y": { "type": "number" },
+          "z": { "type": "number" },
+          "propertyId": { "type": "string" },
+          "intendedValue": { "type": "number" },
+          "actualValue": { "type": "number" },
+          "signedDeviation": { "type": "number" },
+          "absoluteDeviation": { "type": "number" },
+          "relativeDeviation": { "type": "number" },
+          "uncertainty": { "type": "number" },
+          "isMeasured": { "type": "boolean" },
+          "isInterpolated": { "type": "boolean" },
+          "status": {
+            "type": "string",
+            "enum": [
+              "CONFORMING",
+              "NONCONFORMING",
+              "INDETERMINATE",
+              "NOT_MEASURED",
+              "INSUFFICIENT_COVERAGE",
+              "INVALID_INPUT",
+              "BLOCKED"
+            ]
+          }
+        }
+      }
+    },
+    "resultHash": { "type": "string" },
+    "evaluatedAt": { "type": "string" }
+  }
+}

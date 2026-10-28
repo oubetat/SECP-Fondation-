@@ -1,0 +1,54 @@
+{
+  "taskID": "SECP-PROGRAMMABLE-MATERIAL-V9-001",
+  "roadmapPhase": "V9 - Material Truth Thread",
+  "capabilityMatrix": [
+    {
+      "capability": "Non-duplication of SECP Core objects (V9-ARCH-01)",
+      "status": "SUPPORTED",
+      "implementation": "/src/engine/fem/core/MaterialTruthThreadEngine.ts",
+      "verification": "MaterialTruthThreadV9.test.ts"
+    },
+    {
+      "capability": "Strict Provenance Classification (7 categories) (V9-ARCH-02)",
+      "status": "SUPPORTED",
+      "implementation": "/src/engine/fem/core/MaterialTruthThreadEngine.ts",
+      "verification": "MaterialTruthThreadV9.test.ts (V9-TEST-02)"
+    },
+    {
+      "capability": "10 Legal Directed Edge Relationship Rules",
+      "status": "SUPPORTED",
+      "implementation": "/src/engine/fem/core/MaterialTruthThreadEngine.ts",
+      "verification": "MaterialTruthThreadV9.test.ts (V9-TEST-03)"
+    },
+    {
+      "capability": "Dangling Reference Detection",
+      "status": "SUPPORTED",
+      "implementation": "/src/engine/fem/core/MaterialTruthThreadEngine.ts",
+      "verification": "MaterialTruthThreadV9.test.ts (V9-TEST-04)"
+    },
+    {
+      "capability": "Content Hash Corruption Detection",
+      "status": "SUPPORTED",
+      "implementation": "/src/engine/fem/core/MaterialTruthThreadEngine.ts",
+      "verification": "MaterialTruthThreadV9.test.ts (V9-TEST-05)"
+    },
+    {
+      "capability": "Cycle / DAG Integrity Detection",
+      "status": "SUPPORTED",
+      "implementation": "/src/engine/fem/core/MaterialTruthThreadEngine.ts",
+      "verification": "MaterialTruthThreadV9.test.ts (V9-TEST-06)"
+    },
+    {
+      "capability": "Transitive Revision Invalidation Cascade",
+      "status": "SUPPORTED",
+      "implementation": "/src/engine/fem/core/MaterialTruthThreadEngine.ts",
+      "verification": "MaterialTruthThreadV9.test.ts (V9-TEST-07)"
+    },
+    {
+      "capability": "Stale Evidence Invalidation Integration",
+      "status": "SUPPORTED",
+      "implementation": "/src/engine/fem/core/FEMEvidenceEngine.ts",
+      "verification": "MaterialTruthThreadV9.test.ts (V9-TEST-08)"
+    }
+  ]
+}

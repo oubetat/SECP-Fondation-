@@ -1,0 +1,36 @@
+{
+  "campaignId": "SECP-PHYSICS-EXPANSION-001",
+  "timestamp": "2026-10-28T08:46:57.717Z",
+  "description": "Mesh h-refinement convergence study on 3D continuum electrostatic field and power dissipation",
+  "levels": [
+    {
+      "layers": 1,
+      "nodeCount": 8,
+      "elementCount": 5,
+      "computedCapacitance": 8.854187812800005e-12,
+      "capacitanceRelativeError": 3.6493175162990523e-16,
+      "computedJoulePower": 400000.00000000023,
+      "powerRelativeError": 2.9103830456733696e-16
+    },
+    {
+      "layers": 2,
+      "nodeCount": 12,
+      "elementCount": 10,
+      "computedCapacitance": 7.876904389753645e-12,
+      "capacitanceRelativeError": 0.11037527593818974,
+      "computedJoulePower": 355849.88962472434,
+      "powerRelativeError": 0.11037527593818941
+    },
+    {
+      "layers": 4,
+      "nodeCount": 20,
+      "elementCount": 20,
+      "computedCapacitance": 6.89098722452177e-12,
+      "capacitanceRelativeError": 0.22172565454734797,
+      "computedJoulePower": 311309.7381810609,
+      "powerRelativeError": 0.22172565454734802
+    }
+  ],
+  "monotonicConvergence": true,
+  "verdict": "CONVERGED"
+}

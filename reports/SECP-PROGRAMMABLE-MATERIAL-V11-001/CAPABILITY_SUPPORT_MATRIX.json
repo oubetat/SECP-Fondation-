@@ -1,0 +1,11 @@
+{
+  "phase": "V11 - AI Material Exploration",
+  "capabilities": [
+    { "id": "V11-CAP-01", "name": "Explainable Candidate Generation (Gemini 4 Argon)", "status": "SUPPORTED" },
+    { "id": "V11-CAP-02", "name": "Physics-Constrained AI Proposals", "status": "SUPPORTED" },
+    { "id": "V11-CAP-03", "name": "Iterative Feedback Exploration", "status": "SUPPORTED" },
+    { "id": "V11-CAP-04", "name": "Pre-Solve Candidate Validation", "status": "SUPPORTED" },
+    { "id": "V11-CAP-05", "name": "Explainable Reasoning Metadata", "status": "SUPPORTED" },
+    { "id": "V11-CAP-06", "name": "AI-Core Decoupling & Authority Isolation", "status": "SUPPORTED" }
+  ]
+}

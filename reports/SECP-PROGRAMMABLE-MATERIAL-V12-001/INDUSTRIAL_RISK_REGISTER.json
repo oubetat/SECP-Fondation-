@@ -1,0 +1,10 @@
+{
+  "risks": [
+    {
+      "id": "RISK-01",
+      "description": "As-built porosity exceeding design threshold",
+      "severity": "HIGH",
+      "mitigation": "Require CT scan verification"
+    }
+  ]
+}
