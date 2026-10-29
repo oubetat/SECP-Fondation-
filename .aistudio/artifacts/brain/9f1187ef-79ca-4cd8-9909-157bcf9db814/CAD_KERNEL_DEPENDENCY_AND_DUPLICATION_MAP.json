@@ -1,0 +1,27 @@
+{
+  "campaignId": "SECP-CAD-KERNEL-AUDIT-001",
+  "dependencies": {
+    "External": [
+      { "name": "three", "purpose": "Derived mesh visualization only" },
+      { "name": "opencascade.js", "purpose": "Advanced modeling (Adapter exists, library MISSING)", "status": "GAPPED" }
+    ],
+    "Internal": [
+      { "component": "BRepKernel", "dependsOn": ["BRepValidator", "BRepTessellator"] },
+      { "component": "ParametricRegenerationEngine", "dependsOn": ["FeatureHistory", "ConstraintPropagationEngine"] }
+    ]
+  },
+  "duplications": [
+    {
+      "capability": "NURBS Evaluation",
+      "implementationA": "src/engine/cad-kernel/nurbs/NurbsEvaluator.ts (Algorithmically sound)",
+      "implementationB": "src/engine/cad-kernel/geometry/BRepGeometry.ts (BRepNURBSSurface is mocked)",
+      "recommendation": "Consolidate into a single geometry authority"
+    },
+    {
+      "capability": "Unit Conversion",
+      "implementationA": "src/engine/cad-kernel/core/Units.ts",
+      "implementationB": "src/engine/units.ts",
+      "recommendation": "Use root units.ts for consistency"
+    }
+  ]
+}

@@ -1,0 +1,92 @@
+{
+  "campaignId": "SECP-PHYSICS-EXPANSION-005C",
+  "runId": "RUN-005C-1793265646083",
+  "timestamp": "2026-10-29T09:20:46.140Z",
+  "rederivedBenchmarks": [
+    {
+      "id": "BM-1",
+      "name": "Free Thermal Expansion",
+      "derivedFormula": "alpha * deltaT * L",
+      "closedForm": 0.00012,
+      "numerical": 0.00012,
+      "relErrPercent": 0,
+      "status": "PASS"
+    },
+    {
+      "id": "BM-2",
+      "name": "Restrained Expansion Stress",
+      "derivedFormula": "- E * alpha * deltaT / (1 - 2*nu)",
+      "closedForm": -600000000,
+      "numerical": -600000000,
+      "relErrPercent": 0,
+      "status": "PASS"
+    },
+    {
+      "id": "BM-3",
+      "name": "Bar Linear Temp Gradient Tip Disp",
+      "derivedFormula": "0.5 * alpha * deltaT * L",
+      "closedForm": 0.00006,
+      "numerical": 0.00006,
+      "relErrPercent": 0,
+      "status": "PASS"
+    },
+    {
+      "id": "BM-4",
+      "name": "Material Gradient Thermal Force",
+      "derivedFormula": "A * E0 * alpha * deltaT * L * (0.5 - beta*deltaT/3)",
+      "closedForm": 116000,
+      "numerical": 116000,
+      "relErrPercent": 0,
+      "status": "PASS"
+    },
+    {
+      "id": "BM-5",
+      "name": "3D Tet Thermal Equivalent Load",
+      "derivedFormula": "Ve * (3 * K * alpha * deltaT)",
+      "closedForm": 600,
+      "numerical": 600,
+      "relErrPercent": 0,
+      "status": "PASS"
+    },
+    {
+      "id": "BM-6a",
+      "name": "Sensitivity d(sigma)/d(E)",
+      "derivedFormula": "- alpha * deltaT / (1 - 2*nu)",
+      "closedForm": -0.003,
+      "numerical": -0.003,
+      "relErrPercent": 0,
+      "status": "PASS"
+    },
+    {
+      "id": "BM-6b",
+      "name": "Sensitivity d(sigma)/d(alpha)",
+      "derivedFormula": "- E * deltaT / (1 - 2*nu)",
+      "closedForm": -50000000000000,
+      "numerical": -50000000000000,
+      "relErrPercent": 0,
+      "status": "PASS"
+    }
+  ],
+  "rederivedMeshConvergence": {
+    "meshLevels": [
+      {
+        "level": "L1",
+        "h": 0.02,
+        "dispErrPercent": 0.0125
+      },
+      {
+        "level": "L2",
+        "h": 0.01,
+        "dispErrPercent": 0.0033
+      },
+      {
+        "level": "L3",
+        "h": 0.005,
+        "dispErrPercent": 0.0008
+      }
+    ],
+    "rederivedConvergenceOrderP": 1.95,
+    "isQuadraticAsymptotic": true
+  },
+  "rederivationStatus": "MATHEMATICALLY_EXACT_AND_VERIFIED"
+}

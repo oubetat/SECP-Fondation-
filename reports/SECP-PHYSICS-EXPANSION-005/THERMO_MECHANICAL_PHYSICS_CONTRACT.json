@@ -1,0 +1,56 @@
+{
+  "contractId": "SECP-TM-PHYSICS-CONTRACT-005",
+  "title": "Thermo-Mechanical Physics Coupling Contract",
+  "revision": "1.0.0",
+  "gateG1Passed": true,
+  "kinematicAssumptions": "Small Strain Continuum Linear Elasticity with Thermal Strain Additivity",
+  "constitutiveRelations": {
+    "strainDecomposition": "eps_ij = eps_e_ij + eps_th_ij",
+    "thermalStrain": "eps_th_ij = alpha * (T - T_ref) * delta_ij",
+    "stressTensor": "sigma_ij = C_ijkl * (eps_kl - alpha * (T - T_ref) * delta_kl)",
+    "isotropicC": "C_ijkl = lambda * delta_ij * delta_kl + mu * (delta_ik * delta_jl + delta_il * delta_jk)"
+  },
+  "referenceState": {
+    "stressFreeTemperatureK": 293.15,
+    "ambientPressurePa": 101325,
+    "initialStrain": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "initialStress": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "units": {
+    "temperature": "Kelvin [K]",
+    "displacement": "Meters [m]",
+    "strain": "Dimensionless [m/m]",
+    "stress": "Pascals [Pa]",
+    "force": "Newtons [N]",
+    "thermalExpansionCoeff": "1 / Kelvin [1/K]",
+    "youngsModulus": "Pascals [Pa]",
+    "poissonsRatio": "Dimensionless"
+  },
+  "boundaryConditions": {
+    "dirichletMechanical": "Prescribed Displacement u_i = u_i_prescribed",
+    "neumannMechanical": "Prescribed Traction t_i = sigma_ij * n_j = t_i_prescribed",
+    "dirichletThermal": "Prescribed Temperature T = T_prescribed",
+    "neumannThermal": "Prescribed Heat Flux q_n = -k * (dT/dn) = q_prescribed"
+  },
+  "acceptabilityGates": {
+    "freeExpansionStressMaxPa": 0.001,
+    "restrainedStressErrorMaxPercent": 0.1,
+    "equilibriumResidualMaxN": 1e-10,
+    "boundaryReactionErrorMaxPercent": 0.01,
+    "adversarialMutationDetectionRate": 1
+  }
+}

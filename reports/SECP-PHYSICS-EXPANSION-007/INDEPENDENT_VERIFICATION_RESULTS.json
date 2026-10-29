@@ -1,0 +1,13 @@
+{
+  "campaignId": "SECP-PHYSICS-EXPANSION-007",
+  "benchmarks": [
+    {
+      "id": "BM-FATIGUE-01",
+      "analyticalDamage": 0.0006014573196434347,
+      "observedDamage": 0.0006014573196434347,
+      "relError": 0,
+      "status": "PASS"
+    }
+  ],
+  "status": "VERIFIED"
+}

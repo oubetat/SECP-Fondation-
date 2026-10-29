@@ -1,0 +1,34 @@
+{
+  "campaignId": "SECP-CAD-KERNEL-AUDIT-001",
+  "testSuites": [
+    {
+      "name": "BooleanEngine.test.ts",
+      "coverage": "Planar Booleans (Union, Intersection, Difference)",
+      "status": "PASSING_IN_CI",
+      "observations": "NURBS intersection test (TEST-019) is a polyhedral box fallback."
+    },
+    {
+      "name": "BRepValidator.test.ts",
+      "coverage": "Manifold, Euler, and Topological incidence checks",
+      "status": "PASSING_IN_CI",
+      "observations": "Highly rigorous, confirms topological authority."
+    },
+    {
+      "name": "Nurbs.test.ts",
+      "coverage": "NURBS Curve/Surface evaluation",
+      "status": "PASSING_IN_CI",
+      "observations": "Algorithms are sound but disconnected from BRepModeling paths."
+    },
+    {
+      "name": "CadKernelArchitecture.test.ts",
+      "coverage": "Layered dependency and authority checks",
+      "status": "PASSING_IN_CI",
+      "observations": "Confirms CAD authority over mesh visualization."
+    }
+  ],
+  "evidence": {
+    "provenance": "EngineeringHashChain integrated into ParametricRegenerationEngine.",
+    "immutability": "RevisionBinding prevents stale mutations across recomputations.",
+    "oracles": "BRepValidator acts as the primary topological oracle."
+  }
+}

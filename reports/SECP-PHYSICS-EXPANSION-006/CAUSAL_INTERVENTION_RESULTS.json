@@ -1,0 +1,72 @@
+{
+  "campaignId": "SECP-PHYSICS-EXPANSION-006",
+  "runId": "RUN-006-1793265882146",
+  "timestamp": "2026-10-29T09:24:42.147Z",
+  "interventions": [
+    {
+      "id": "INT-01",
+      "parameter": "Delta T (100 K -> 200 K)",
+      "expectedRatio": 2,
+      "observedRatio": 2,
+      "discrepancyPercent": 0,
+      "status": "PASS"
+    },
+    {
+      "id": "INT-02",
+      "parameter": "alpha (1.2e-5 -> 2.4e-5 1/K)",
+      "expectedRatio": 2,
+      "observedRatio": 2,
+      "discrepancyPercent": 0,
+      "status": "PASS"
+    },
+    {
+      "id": "INT-03",
+      "parameter": "Youngs Modulus E (200 GPa -> 100 GPa)",
+      "expectedRatio": 0.5,
+      "observedRatio": 0.5,
+      "discrepancyPercent": 0,
+      "status": "PASS"
+    },
+    {
+      "id": "INT-04",
+      "parameter": "Dirichlet BC (Free vs Restrained)",
+      "expectedState": "u=0, sigma=-600 MPa",
+      "observedState": "u=0, sigma=-600.0 MPa",
+      "discrepancyPercent": 0,
+      "status": "PASS"
+    },
+    {
+      "id": "INT-05",
+      "parameter": "Material Revision Mismatch Injection",
+      "expectedOutcome": "REJECTED",
+      "observedOutcome": "REJECTED_FAIL_CLOSED",
+      "discrepancyPercent": 0,
+      "status": "PASS"
+    },
+    {
+      "id": "INT-06",
+      "parameter": "Stale Thermal Field Invalidation",
+      "expectedOutcome": "INVALIDATED",
+      "observedOutcome": "INVALIDATED_FAIL_CLOSED",
+      "discrepancyPercent": 0,
+      "status": "PASS"
+    },
+    {
+      "id": "INT-07",
+      "parameter": "Evidence Binding Tampering",
+      "expectedOutcome": "REJECTED",
+      "observedOutcome": "REJECTED_FAIL_CLOSED",
+      "discrepancyPercent": 0,
+      "status": "PASS"
+    },
+    {
+      "id": "INT-08",
+      "parameter": "Iterative Picard Mesh Feedback",
+      "expectedOutcome": "R_e(u) & T^(k+1) updated",
+      "observedOutcome": "R_e updated from 1.000e-4 to 1.0012e-4 Ohm",
+      "discrepancyPercent": 0,
+      "status": "PASS"
+    }
+  ],
+  "status": "ALL_CAUSAL_INTERVENTIONS_PASSED"
+}

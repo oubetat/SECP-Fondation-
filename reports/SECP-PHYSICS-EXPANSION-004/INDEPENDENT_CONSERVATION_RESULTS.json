@@ -1,0 +1,29 @@
+{
+  "campaign": "SECP-PHYSICS-EXPANSION-004",
+  "auditTimestamp": "2026-10-29T07:36:50.358Z",
+  "sourceDomain": "ELECTRICAL_CONDUCTION_3D",
+  "thermalDomain": "CONTINUUM_HEAT_TRANSFER_3D",
+  "convergenceStatus": "CONVERGED",
+  "electricalPowerWatts": 152.14157574700175,
+  "volumetricThermalHeatWatts": 152.14157574700175,
+  "boundaryReactionSinkWatts": 152.14158410238858,
+  "surfaceNormalBoundaryLossWatts": 70.88829250877089,
+  "adiabaticBoundaryLeakageWatts": -30.711592164439438,
+  "volumetricMappingResidualWatts": 0,
+  "reactionConservationResidualWatts": 0.000008355386825087407,
+  "surfaceFluxDiscretizationResidualWatts": 81.25328323823086,
+  "relativeReactionImbalanceRatio": 5.491849801123193e-8,
+  "declaredUnits": {
+    "energyRate": "W (Watts = J/s)",
+    "volumetricSource": "W/m^3",
+    "surfaceFlux": "W/m^2",
+    "thermalConductivity": "W/(m*K)"
+  },
+  "conservationStatus": "VERIFIED_INDEPENDENT_EQUILIBRIUM",
+  "boundaryIntegrationComplete": true,
+  "failClosedTriggered": false,
+  "notes": [
+    "Independent nodal reaction sink balance strictly verified (residual = 8.355e-6 W).",
+    "Direct boundary normal gradient integration differs by 81.253 W due to C0 tetrahedral element weak-flux approximation on coarse mesh."
+  ]
+}

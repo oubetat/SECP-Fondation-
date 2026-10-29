@@ -1,0 +1,31 @@
+{
+  "campaignId": "SECP-PHYSICS-EXPANSION-005C",
+  "timestamp": "2026-10-29T09:20:46.144Z",
+  "totalGapsRecorded": 3,
+  "gaps": [
+    {
+      "gapId": "GAP-005C-01",
+      "category": "Experimental Validation",
+      "description": "Physical laboratory DIC optical strain coupon measurements remain UNVERIFIED.",
+      "impactOnEngineeringQualification": "Software math, runtime causality, and two-way Picard coupling are verified; physical coupon experimental validation is explicitly declared UNVERIFIED.",
+      "remediationRequirement": "Ingest physical lab DIC optical coupon dataset when available.",
+      "severity": "P1"
+    },
+    {
+      "gapId": "GAP-005C-02",
+      "category": "Nonlinear Scope Boundary",
+      "description": "Large strain thermo-plastic creeping strain is outside linear thermo-elastic scope.",
+      "impactOnEngineeringQualification": "Scope is strictly bounded to small strain linear thermo-elastic continuum physics.",
+      "remediationRequirement": "Enforce material validity temperature range [100 K, 1500 K].",
+      "severity": "P2"
+    },
+    {
+      "gapId": "GAP-005C-03",
+      "category": "Monolithic Coupling Solver",
+      "description": "SECP uses partitioned iterative coupling rather than monolithic unified Jacobian matrices.",
+      "impactOnEngineeringQualification": "Partitioned iterative coupling is fully verified; monolithic formulation is not present.",
+      "remediationRequirement": "Classify coupling as PRODUCTION_ITERATIVE_PARTITIONED.",
+      "severity": "P3"
+    }
+  ]
+}

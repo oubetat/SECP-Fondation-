@@ -1,0 +1,39 @@
+{
+  "test1_inverted_normals": {
+    "status": "DETECTED",
+    "baselineDirichletWatts": 70.88829250877089,
+    "invertedDirichletWatts": -70.88829250877089,
+    "detectionSignature": "Heat loss rate became strictly negative (outward heat converted to inward flux)"
+  },
+  "test2_missing_boundary_faces": {
+    "status": "DETECTED",
+    "baselineFaceCount": 12,
+    "corruptedFaceCount": 11,
+    "baselineDirichletWatts": 70.88829250877089,
+    "corruptedDirichletWatts": 35.444146254385444,
+    "detectionSignature": "Dirichlet boundary loss drop from omitted sink face"
+  },
+  "test3_inverted_flux_signs": {
+    "status": "DETECTED",
+    "invertedFaceCount": 12,
+    "detectionSignature": "Sign inversion across all face normal flux evaluations"
+  },
+  "test4_double_counted_faces": {
+    "status": "DETECTED",
+    "baselineAreaM2": 0.004200000000000001,
+    "doubleCountedAreaM2": 0.008400000000000003,
+    "detectionSignature": "Surface area doubled to 0.0084 m^2 against 0.0042 m^2 analytical limit"
+  },
+  "test5_unit_scaling_error_mm_to_m": {
+    "status": "DETECTED",
+    "scaleFactor": 1000,
+    "volumetricVolumeRatio": 1000000000,
+    "detectionSignature": "Volume scaled by 10^9 indicating millimetric input treated as meters"
+  },
+  "test6_deliberately_corrupted_flux": {
+    "status": "DETECTED",
+    "corruptionMultiplier": 1.5,
+    "corruptedDirichletWatts": 106.33243876315633,
+    "detectionSignature": "Residual deviation of +50% from verified baseline flux"
+  }
+}

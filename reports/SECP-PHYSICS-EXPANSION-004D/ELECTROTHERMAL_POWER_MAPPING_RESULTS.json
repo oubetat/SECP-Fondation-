@@ -1,0 +1,8 @@
+{
+  "caseId": "CHALLENGE_CASE_4C",
+  "description": "Independent Electrothermal Power-to-Heat Mapping Verification",
+  "totalElectricalPowerWatts": 152.141576,
+  "totalThermalVolumetricHeatWatts": 152.141576,
+  "powerToHeatMappingResidualWatts": 0,
+  "isUncorruptedPowerTransferVerified": true
+}

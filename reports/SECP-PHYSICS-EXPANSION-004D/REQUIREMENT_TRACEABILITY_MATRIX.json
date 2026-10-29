@@ -1,0 +1,40 @@
+{
+  "requirements": [
+    {
+      "id": "REQ-004D-01",
+      "description": "Audit raw numerical data & exact Kirchhoff derivations",
+      "verifiedInTest": "WP-C1",
+      "status": "PASS"
+    },
+    {
+      "id": "REQ-004D-02",
+      "description": "Challenge Case 4A Nonlinear k(T) Kirchhoff Conduction",
+      "verifiedInTest": "WP-C1",
+      "status": "PASS"
+    },
+    {
+      "id": "REQ-004D-03",
+      "description": "Challenge Case 4B Composite Material Interface Flux Continuity",
+      "verifiedInTest": "WP-C2",
+      "status": "PASS"
+    },
+    {
+      "id": "REQ-004D-04",
+      "description": "Challenge Case 4C Electrothermal Power-to-Heat Mapping",
+      "verifiedInTest": "WP-C3",
+      "status": "PASS"
+    },
+    {
+      "id": "REQ-004D-05",
+      "description": "15 Adversarial Mutation Fault Tests",
+      "verifiedInTest": "WP-D01 to WP-D15",
+      "status": "PASS"
+    },
+    {
+      "id": "REQ-004D-06",
+      "description": "Preserve prior baselines (003, 004, 004A, 004B, 004C)",
+      "verifiedInTest": "Reconciliation Battery",
+      "status": "PASS"
+    }
+  ]
+}

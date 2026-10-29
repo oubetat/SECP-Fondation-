@@ -1,0 +1,18 @@
+{
+  "oracles": [
+    {
+      "name": "IndependentOracleChallengeSuite",
+      "status": "INDEPENDENT_ISOLATED",
+      "sharedStateWithSolver": false,
+      "sharedStateWithAuditor": false,
+      "sourceFile": "src/engine/physics/thermal/IndependentOracleChallengeSuite.ts"
+    },
+    {
+      "name": "IndependentBoundaryTopologyAuditor",
+      "status": "INDEPENDENT_ISOLATED",
+      "sharedStateWithSolver": false,
+      "sharedStateWithAuditor": false,
+      "sourceFile": "src/engine/physics/thermal/IndependentBoundaryTopologyAuditor.ts"
+    }
+  ]
+}

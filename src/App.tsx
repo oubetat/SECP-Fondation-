@@ -213,6 +213,7 @@ import { VerificationPortal } from './components/verification/VerificationPortal
 import { MonorepoExplorer } from './components/MonorepoExplorer';
 import { SketchConvergenceMatrix } from './components/SketchConvergenceMatrix';
 import { PMEStudio } from './components/pme/PMEStudio';
+import { AdvancedPhysicsDashboard007 } from './components/physics/AdvancedPhysicsDashboard007';
 
 interface ProjectModel {
   id: string;
@@ -443,6 +444,7 @@ export default function App() {
       icon: Activity,
       badge: 'FEM',
       workbenches: [
+        { id: 'physics_expansion_007', name: 'Advanced Physics Expansion 007', icon: Zap, description: 'Independent qualification of Domain A-E: Damage, CFD, EM, Multiscale & Unified Coupling', badge: 'New 007', component: <AdvancedPhysicsDashboard007 /> },
         { id: 'cae_structural_master', name: 'Primary Structural FEM Workbench', icon: Activity, description: 'Sparse direct solver, von Mises stress contours, displacement fields & safety factors', badge: 'FEM Solver', component: <SimulationCaePanel /> },
         { id: 'gpu_fem_workbench', name: 'GPU-Accelerated FEM Matrix Solver', icon: Zap, description: 'CUDA/WebGPU conjugate gradient and direct solver with 1M+ DOFs', component: <GPUFEMWorkbenchPanel /> },
         { id: 'gpu_meshing_workbench', name: 'GPU Parallel Mesh Generator', icon: Grid, description: 'Delaunay tetrahedralization, Advancing Front, and quad/hex meshing', component: <GPUMeshingWorkbenchPanel /> },

@@ -1,0 +1,100 @@
+{
+  "campaign": "SECP-PHYSICS-EXPANSION-004B",
+  "runId": "RUN-SECP-004B-1793260890032",
+  "timestamp": "2026-10-29T08:01:30.032Z",
+  "sourceBindings": [
+    {
+      "relativePath": "src/engine/physics/thermal/AnalyticalThermal1DReference.ts",
+      "exists": true,
+      "byteLength": 3849,
+      "sha256": "68f2344c3b8cb01f42f04f50470a5dac984623516c36e9ab095e1a6bffda94f2"
+    },
+    {
+      "relativePath": "src/engine/physics/thermal/IndependentBoundaryTopologyAuditor.ts",
+      "exists": true,
+      "byteLength": 6651,
+      "sha256": "99f8ab5cd66e2bc64e74099cb1e95faa727b983c56164f18fe702a861c9421f6"
+    },
+    {
+      "relativePath": "src/engine/physics/electromagnetics/IndependentThermalConservationAuditor3D.ts",
+      "exists": true,
+      "byteLength": 23673,
+      "sha256": "b8a34a3aed3e13a883b3d0da236c7378b9327dac69e95b146c37bd06613b6d02"
+    },
+    {
+      "relativePath": "src/engine/physics/electromagnetics/BidirectionalElectrothermalSolver3D.ts",
+      "exists": true,
+      "byteLength": 13070,
+      "sha256": "cda3ab4419ba1c156752057c437818f768e840026b34c00a6ada2b6a3e6426d4"
+    },
+    {
+      "relativePath": "src/engine/physics/electromagnetics/UnifiedThermoElectroMechanicalSolver3D.ts",
+      "exists": true,
+      "byteLength": 7227,
+      "sha256": "987b96e04a9552e541ba3ac561a6d56cec809ae487f43f7989093bf3a4f08a82"
+    },
+    {
+      "relativePath": "src/engine/physics/electromagnetics/ElectrostaticSolver3D.ts",
+      "exists": true,
+      "byteLength": 11132,
+      "sha256": "9e6ed835be30ed2bc7e4ca170fee72fd58db559558e45b495a7ff43e6b81c199"
+    }
+  ],
+  "artifacts": [
+    {
+      "relativePath": "reports/SECP-PHYSICS-EXPANSION-004B/ADVERSARIAL_MUTATION_RESULTS.json",
+      "byteLength": 2417,
+      "sha256": "cc68d24d7cd40d55b42fe1410c26d59084e3e2e3f1d18268617937b02d8d12fe"
+    },
+    {
+      "relativePath": "reports/SECP-PHYSICS-EXPANSION-004B/ANALYTICAL_FORMULATION.md",
+      "byteLength": 1474,
+      "sha256": "0b95f8d16943a3112cf56d6f6f2646acda31ebd7c334e0e2d89dbefea2408d3f"
+    },
+    {
+      "relativePath": "reports/SECP-PHYSICS-EXPANSION-004B/ANALYTICAL_REFERENCE_RESULTS.json",
+      "byteLength": 419,
+      "sha256": "1359cd79875db0a3b10cc2e8433e58955486410475c663e0b5c9b7f9a4726b46"
+    },
+    {
+      "relativePath": "reports/SECP-PHYSICS-EXPANSION-004B/BOUNDARY_FLUX_CONVERGENCE_RESULTS.json",
+      "byteLength": 3478,
+      "sha256": "4d7c797959b484a2b22ba8af2f6c6a9e243c5cd468ed0675fbe53585fddd402c"
+    },
+    {
+      "relativePath": "reports/SECP-PHYSICS-EXPANSION-004B/BOUNDARY_TOPOLOGY_AUDIT.json",
+      "byteLength": 455,
+      "sha256": "ac227e8bd3b85e6a48390be2cc3fe77ab2e8ec638b0f7b174430065ddd1a9bda"
+    },
+    {
+      "relativePath": "reports/SECP-PHYSICS-EXPANSION-004B/FINAL_ACCEPTANCE_DECISION.md",
+      "byteLength": 1785,
+      "sha256": "180e409085e4a5a38a89c29b7e6e1e418b05de2a5af2ea67446f9afdee08971a"
+    },
+    {
+      "relativePath": "reports/SECP-PHYSICS-EXPANSION-004B/NUMERICAL_LIMITATIONS.json",
+      "byteLength": 924,
+      "sha256": "ec266b87b27ce1aceb9b9b7d9c2ade17cda2a60088485606ef30d4123708a649"
+    },
+    {
+      "relativePath": "reports/SECP-PHYSICS-EXPANSION-004B/ORACLE_INDEPENDENCE_REGISTER.json",
+      "byteLength": 1858,
+      "sha256": "1638bbd453167ec902751b286a626f07f6baa2c870d01070050bc18357ede301"
+    },
+    {
+      "relativePath": "reports/SECP-PHYSICS-EXPANSION-004B/REGRESSION_BASELINE_RESULTS.json",
+      "byteLength": 140,
+      "sha256": "36ab18d32f905336917cb5e79a90d5ca0a092abe592276448f183a0c476d6059"
+    },
+    {
+      "relativePath": "reports/SECP-PHYSICS-EXPANSION-004B/SOURCE_LINEAGE.json",
+      "byteLength": 422,
+      "sha256": "99c9c86c68a697b98b503076225925f3c3383bbcd815a801a6b73dbd147a1c35"
+    },
+    {
+      "relativePath": "reports/SECP-PHYSICS-EXPANSION-004B/THERMAL_FIELD_ERROR_RESULTS.json",
+      "byteLength": 1397,
+      "sha256": "2bef082434acd412cb6ba13e0f134cf6d6cd460a202a77ee82e4ae7a3215ee6a"
+    }
+  ]
+}

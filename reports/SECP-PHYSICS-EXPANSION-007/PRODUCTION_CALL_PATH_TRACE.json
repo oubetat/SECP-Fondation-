@@ -1,0 +1,8 @@
+{
+  "campaignId": "SECP-PHYSICS-EXPANSION-007",
+  "trace": [
+    "ProgressiveDamage",
+    "Fvm3DNavierStokes",
+    "UnifiedPhysicsSolver"
+  ]
+}

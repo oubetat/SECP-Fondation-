@@ -1,0 +1,92 @@
+{
+  "campaignId": "SECP-PHYSICS-EXPANSION-005",
+  "gateG2Passed": true,
+  "benchmarks": [
+    {
+      "id": "BM-1",
+      "name": "Unconstrained Uniform Thermal Expansion",
+      "parameters": {
+        "Lx": 0.1,
+        "alpha": 0.000012,
+        "deltaT": 100,
+        "E": 200000000000,
+        "nu": 0.3
+      },
+      "expectedResults": {
+        "displacementMeter": 0.00012,
+        "stressPascal": 0
+      }
+    },
+    {
+      "id": "BM-2",
+      "name": "Fully Restrained Uniform Thermal Expansion",
+      "parameters": {
+        "alpha": 0.000012,
+        "deltaT": 100,
+        "E": 200000000000,
+        "nu": 0.3,
+        "Area": 0.01
+      },
+      "expectedResults": {
+        "stressPascal": -600000000,
+        "reactionForceNewton": 6000000
+      }
+    },
+    {
+      "id": "BM-3",
+      "name": "1D Bar Linear Gradient Thermal Expansion",
+      "parameters": {
+        "L": 0.1,
+        "alpha": 0.000012,
+        "deltaT": 100
+      },
+      "expectedResults": {
+        "tipDisplacementMeter": 0.00006
+      }
+    },
+    {
+      "id": "BM-4",
+      "name": "Spatially Varying Temperature with E(T) Material Gradient",
+      "parameters": {
+        "L": 0.1,
+        "A": 0.01,
+        "E0": 200000000000,
+        "beta": 0.0005,
+        "alpha": 0.000012,
+        "deltaT": 100,
+        "T_ref": 293.15
+      },
+      "expectedResults": {
+        "thermalForceNewton": 116000
+      }
+    },
+    {
+      "id": "BM-5",
+      "name": "3D Tetrahedral Thermal Load Vector Integration",
+      "parameters": {
+        "Ve": 0.000001,
+        "E": 200000000000,
+        "nu": 0.3,
+        "alpha": 0.000012,
+        "deltaT": 100
+      },
+      "expectedResults": {
+        "equivalentThermalLoadNewton": 600
+      }
+    },
+    {
+      "id": "BM-6",
+      "name": "Parameter Sensitivity & Derivative Oracles",
+      "parameters": {
+        "E": 200000000000,
+        "nu": 0.3,
+        "alpha": 0.000012,
+        "deltaT": 100
+      },
+      "expectedResults": {
+        "dSigma_dE": -0.003,
+        "dSigma_dAlpha": -50000000000000
+      }
+    }
+  ]
+}

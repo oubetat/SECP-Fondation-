@@ -1,0 +1,29 @@
+{
+  "campaignId": "SECP-PHYSICS-EXPANSION-007",
+  "timestamp": "2026-10-29T09:40:46.351Z",
+  "status": "BASELINE_ESTABLISHED",
+  "existingCapabilities": {
+    "constitutiveModels": [
+      "Linear Elastic Isotropic",
+      "J2 Plasticity with Isotropic Hardening (Small & Large Strain)",
+      "Temperature Dependent Material Properties (E, yieldStress)"
+    ],
+    "fatigueScaffolding": [
+      "S-N Fatigue (Basquin & Tabulated)",
+      "Rainflow Cycle Counting (standalone)",
+      "Mean Stress Correction (Goodman, Gerber, Soderberg)"
+    ]
+  },
+  "capabilityGaps": [
+    {
+      "gapId": "GAP-007-01",
+      "description": "Progressive damage evolution (material softening) not integrated.",
+      "severity": "CRITICAL"
+    },
+    {
+      "gapId": "GAP-007-02",
+      "description": "Fatigue damage as post-process only.",
+      "severity": "HIGH"
+    }
+  ]
+}

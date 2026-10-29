@@ -1,0 +1,10 @@
+{
+  "campaign": "SECP-PHYSICS-EXPANSION-004B",
+  "timestamp": "2026-10-29T08:01:30.026Z",
+  "primaryModules": [
+    "src/engine/physics/thermal/AnalyticalThermal1DReference.ts",
+    "src/engine/physics/thermal/IndependentBoundaryTopologyAuditor.ts",
+    "src/engine/physics/electromagnetics/IndependentThermalConservationAuditor3D.ts",
+    "src/engine/physics/electromagnetics/BidirectionalElectrothermalSolver3D.ts"
+  ]
+}

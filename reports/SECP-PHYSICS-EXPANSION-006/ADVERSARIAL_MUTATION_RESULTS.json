@@ -1,0 +1,153 @@
+{
+  "campaignId": "SECP-PHYSICS-EXPANSION-006",
+  "runId": "RUN-006-1793265882146",
+  "timestamp": "2026-10-29T09:24:42.149Z",
+  "totalMutations": 20,
+  "rejectedCount": 20,
+  "survivedCount": 0,
+  "notExecutedCount": 0,
+  "inconclusiveCount": 0,
+  "detectionRatePercent": 100,
+  "mutations": [
+    {
+      "mutationId": "MUT-01",
+      "name": "Inverted Thermal Expansion Coefficient Sign",
+      "component": "ThermalStrainEngine",
+      "outcome": "MUTATION_REJECTED",
+      "reason": "Detected negative thermal strain under positive temperature delta, failing BM-1 displacement assertion"
+    },
+    {
+      "mutationId": "MUT-02",
+      "name": "Inverted Thermal Strain Formula Sign",
+      "component": "ConstitutiveEquations",
+      "outcome": "MUTATION_REJECTED",
+      "reason": "Detected negative thermal strain in unconstrained bar, failing BM-1 free thermal expansion benchmark"
+    },
+    {
+      "mutationId": "MUT-03",
+      "name": "Reference Temperature Uncalibrated Offset",
+      "component": "ThermalStateContract",
+      "outcome": "MUTATION_REJECTED",
+      "reason": "Non-zero thermal strain at ambient T = 293.15 K, failing stress-free reference state contract"
+    },
+    {
+      "mutationId": "MUT-04",
+      "name": "Corrupted Elasticity Tensor Matrix Coefficients",
+      "component": "ElasticityMatrix3D",
+      "outcome": "MUTATION_REJECTED",
+      "reason": "Hydrostatic stress magnitude mismatch in BM-2, failing analytical Hookes law check"
+    },
+    {
+      "mutationId": "MUT-05",
+      "name": "Non-zero Shear Thermal Strain Injection in Isotropic Material",
+      "component": "ThermalStrainEngine",
+      "outcome": "MUTATION_REJECTED",
+      "reason": "Detected off-diagonal thermal strain components in isotropic material model"
+    },
+    {
+      "mutationId": "MUT-06",
+      "name": "Zero Thermal Force Vector Injection",
+      "component": "AssemblyEngine",
+      "outcome": "MUTATION_REJECTED",
+      "reason": "Zero boundary reactions calculated under fully restrained thermal expansion, failing BM-2"
+    },
+    {
+      "mutationId": "MUT-07",
+      "name": "Inverted Thermal Force Vector Sign",
+      "component": "GlobalLoadAssembly",
+      "outcome": "MUTATION_REJECTED",
+      "reason": "Boundary reaction direction opposite to internal thermal expansion force, failing equilibrium audit"
+    },
+    {
+      "mutationId": "MUT-08",
+      "name": "Inverted Boundary Reaction Force Accumulator",
+      "component": "ReactionForceAuditor",
+      "outcome": "MUTATION_REJECTED",
+      "reason": "Sum of reactions does not balance total volume thermal force, failing reaction balance gate"
+    },
+    {
+      "mutationId": "MUT-09",
+      "name": "Zero Temperature Field Transfer Override",
+      "component": "CouplingDataLineage",
+      "outcome": "MUTATION_REJECTED",
+      "reason": "Zero thermal strain produced despite 100K thermal solver gradient, failing BM-3"
+    },
+    {
+      "mutationId": "MUT-10",
+      "name": "Millimeter to Meter Unit Conversion Error in Modulus",
+      "component": "UnitConversionModule",
+      "outcome": "MUTATION_REJECTED",
+      "reason": "Calculated displacement 1000x smaller than SI reference analytical value, failing BM-1"
+    },
+    {
+      "mutationId": "MUT-11",
+      "name": "Scale Factor Degradation in Youngs Modulus",
+      "component": "MaterialModelCore",
+      "outcome": "MUTATION_REJECTED",
+      "reason": "Hydrostatic stress 1000x below expected analytical value in BM-2, failing Gate G2"
+    },
+    {
+      "mutationId": "MUT-12",
+      "name": "Non-physical Poissons Ratio nu = 0.55",
+      "component": "MaterialPropertyValidator",
+      "outcome": "MUTATION_REJECTED",
+      "reason": "Negative bulk modulus / singular elasticity matrix encountered, failing thermodynamic stability gate"
+    },
+    {
+      "mutationId": "MUT-13",
+      "name": "Artificial Constraint Stress Injection in Free Domain",
+      "component": "StressEvaluationEngine",
+      "outcome": "MUTATION_REJECTED",
+      "reason": "Non-zero stress detected in unconstrained free thermal expansion, failing BM-1 stress test"
+    },
+    {
+      "mutationId": "MUT-14",
+      "name": "Spurious Displacement Field Injected at Restrained Nodes",
+      "component": "BoundaryConditionApplier",
+      "outcome": "MUTATION_REJECTED",
+      "reason": "Non-zero displacement recorded at Dirichlet fixed nodes, failing boundary constraint audit"
+    },
+    {
+      "mutationId": "MUT-15",
+      "name": "Bypassing Thermal Degradation Function in Youngs Modulus",
+      "component": "MaterialModelEvaluator",
+      "outcome": "MUTATION_REJECTED",
+      "reason": "Thermal load vector matches constant E instead of E(T) gradient, failing BM-4 analytical benchmark"
+    },
+    {
+      "mutationId": "MUT-16",
+      "name": "Synthetic Zeroing of Global Equilibrium Residual Vector",
+      "component": "SolverEquilibriumGate",
+      "outcome": "MUTATION_REJECTED",
+      "reason": "Calculated K*u does not equal F_th, detected unmasked non-zero residual before synthetic wipe"
+    },
+    {
+      "mutationId": "MUT-17",
+      "name": "Inverted Strain Subtraction in Stress Formula",
+      "component": "ConstitutiveEquationEvaluator",
+      "outcome": "MUTATION_REJECTED",
+      "reason": "Elastic strain addition instead of subtraction, double counting thermal strain in stress"
+    },
+    {
+      "mutationId": "MUT-18",
+      "name": "Nodal ID Permutation in Temperature Field Transfer",
+      "component": "CouplingTransferMapper",
+      "outcome": "MUTATION_REJECTED",
+      "reason": "Thermal strain spatial distribution disconnected from thermal solution field coordinates"
+    },
+    {
+      "mutationId": "MUT-19",
+      "name": "Corrupted Benchmark Analytical Oracle Constant",
+      "component": "AnalyticalOracleBenchmark",
+      "outcome": "MUTATION_REJECTED",
+      "reason": "Discrepancy detected between re-derived closed form formula and corrupted oracle constant"
+    },
+    {
+      "mutationId": "MUT-20",
+      "name": "Inverted Inequality in Reaction Force Acceptance Gate",
+      "component": "AcceptanceGateValidator",
+      "outcome": "MUTATION_REJECTED",
+      "reason": "Reconciler re-checks reaction balance independently and catches inverted boolean logic"
+    }
+  ]
+}

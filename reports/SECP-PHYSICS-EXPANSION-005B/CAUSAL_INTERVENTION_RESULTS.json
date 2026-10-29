@@ -1,0 +1,171 @@
+{
+  "campaignId": "SECP-PHYSICS-EXPANSION-005B",
+  "timestamp": "2026-10-29T09:15:32.016Z",
+  "totalInterventionsExecuted": 8,
+  "passedInterventionsCount": 8,
+  "failedInterventionsCount": 0,
+  "causalInterventions": [
+    {
+      "interventionId": "INT-01",
+      "name": "Temperature Delta Scaling (Delta T: 100 K -> 200 K)",
+      "targetVariable": "Delta T",
+      "controlRun": {
+        "deltaT": 100,
+        "displacementM": 0.00012,
+        "strain": 0.0012
+      },
+      "modifiedRun": {
+        "deltaT": 200,
+        "displacementM": 0.00024,
+        "strain": 0.0024
+      },
+      "expectedBehavior": "Displacement and thermal strain double linearly",
+      "observedBehavior": "Displacement scaled from 1.200e-4 m to 2.400e-4 m (ratio = 2.0000)",
+      "quantitativeDiscrepancyPercent": 0,
+      "passThresholdPercent": 0.01,
+      "status": "PASS",
+      "causalProofVerdict": "Causal dependency confirmed: thermal strain and displacement scale linearly with Delta T."
+    },
+    {
+      "interventionId": "INT-02",
+      "name": "Thermal Expansion Coefficient Change (alpha: 1.2e-5 -> 2.4e-5 1/K)",
+      "targetVariable": "alpha",
+      "controlRun": {
+        "alpha": 0.000012,
+        "displacementM": 0.00012
+      },
+      "modifiedRun": {
+        "alpha": 0.000024,
+        "displacementM": 0.00024
+      },
+      "expectedBehavior": "Displacement doubles linearly with thermal expansion coefficient",
+      "observedBehavior": "Displacement scaled from 1.200e-4 m to 2.400e-4 m (ratio = 2.0000)",
+      "quantitativeDiscrepancyPercent": 0,
+      "passThresholdPercent": 0.01,
+      "status": "PASS",
+      "causalProofVerdict": "Causal dependency confirmed: thermal strain scales directly with material coefficient alpha."
+    },
+    {
+      "interventionId": "INT-03",
+      "name": "Youngs Modulus Modification in Restrained Expansion (E: 200 GPa -> 100 GPa)",
+      "targetVariable": "Youngs Modulus E",
+      "controlRun": {
+        "E": 200000000000,
+        "hydrostaticStressPa": -600000000,
+        "reactionForceN": 6000000
+      },
+      "modifiedRun": {
+        "E": 100000000000,
+        "hydrostaticStressPa": -300000000,
+        "reactionForceN": 3000000
+      },
+      "expectedBehavior": "Restrained thermal stress and boundary reaction forces halve linearly",
+      "observedBehavior": "Stress dropped from -600 MPa to -300 MPa, Reaction dropped from 6 MN to 3 MN (ratio = 0.5000)",
+      "quantitativeDiscrepancyPercent": 0,
+      "passThresholdPercent": 0.01,
+      "status": "PASS",
+      "causalProofVerdict": "Causal dependency confirmed: Hookes law stiffness directly dictates restrained thermal stress."
+    },
+    {
+      "interventionId": "INT-04",
+      "name": "Boundary Condition Switch (Unconstrained Free Tip vs Fixed Fixed Box)",
+      "targetVariable": "Dirichlet Mechanical BC",
+      "controlRun": {
+        "bc": "FREE_EXPANSION_BM1",
+        "displacementM": 0.00012,
+        "stressPa": 0,
+        "reactionN": 0
+      },
+      "modifiedRun": {
+        "bc": "RESTRAINED_BM2",
+        "displacementM": 0,
+        "stressPa": -600000000,
+        "reactionN": 6000000
+      },
+      "expectedBehavior": "Free expansion shows u_x > 0 and sigma = 0; Fixed box shows u_x = 0 and sigma = -600 MPa",
+      "observedBehavior": "Displacement dropped to 0 m, stress jumped to -600.0 MPa, reaction force jumped to 6.000 MN",
+      "quantitativeDiscrepancyPercent": 0,
+      "passThresholdPercent": 0.01,
+      "status": "PASS",
+      "causalProofVerdict": "Causal dependency confirmed: boundary constraints dictate state transition between kinematic expansion and hydrostatic stress."
+    },
+    {
+      "interventionId": "INT-05",
+      "name": "Material State Revision Mismatch Injection",
+      "targetVariable": "Material State Revision Hash",
+      "controlRun": {
+        "materialHash": "b3204511567bac8b2680e2721754ae57961a42a9db8191f5b985db47ad064d0e",
+        "status": "SOLVED"
+      },
+      "modifiedRun": {
+        "materialHash": "2bed9e9fbf31bcd0ec2fd6a61d0b0163b23c629cc2a8d3d4eb46034cbb8bdbf0",
+        "status": "REJECTED"
+      },
+      "expectedBehavior": "Fail-closed rejection with error [REVISION_MISMATCH]",
+      "observedBehavior": "Production constitutive pipeline detected revision mismatch and threw [REVISION_MISMATCH]",
+      "quantitativeDiscrepancyPercent": 0,
+      "passThresholdPercent": 0,
+      "status": "PASS",
+      "causalProofVerdict": "Causal fail-closed gate confirmed: stale or uncalibrated material revision halts solver execution."
+    },
+    {
+      "interventionId": "INT-06",
+      "name": "Stale Thermal Field Invalidation",
+      "targetVariable": "Thermal Field Timestamp",
+      "controlRun": {
+        "thermalTimestamp": "2026-10-29T09:15:32.016Z",
+        "status": "SOLVED"
+      },
+      "modifiedRun": {
+        "thermalTimestamp": "2020-01-01T00:00:00Z",
+        "status": "REJECTED"
+      },
+      "expectedBehavior": "Fail-closed rejection with error [STALE_THERMAL_FIELD]",
+      "observedBehavior": "Thermal persistence engine invalidated stale thermal state and halted downstream mechanical solve",
+      "quantitativeDiscrepancyPercent": 0,
+      "passThresholdPercent": 0,
+      "status": "PASS",
+      "causalProofVerdict": "Causal invalidation confirmed: stale temperature fields cannot produce persisted mechanical results."
+    },
+    {
+      "interventionId": "INT-07",
+      "name": "Corrupted Solver Output / Evidence Binding Tamper",
+      "targetVariable": "Solver Result Hash & Evidence Signature",
+      "controlRun": {
+        "evidenceHash": "d7b7dbf12093a469ca15fd52d921dcbca857f08c8772981a2fe26e86b25ddcd1",
+        "status": "ACCEPTED"
+      },
+      "modifiedRun": {
+        "evidenceHash": "6eafbbb0d9d58ad1c94421e4e7e7f3cda4b48ed78f9f57b964e67fdd43a96732",
+        "status": "REJECTED"
+      },
+      "expectedBehavior": "Fail-closed rejection with error [EVIDENCE_BINDING_CORRUPTED]",
+      "observedBehavior": "Evidence verification engine detected hash mismatch and rejected evidence registration",
+      "quantitativeDiscrepancyPercent": 0,
+      "passThresholdPercent": 0,
+      "status": "PASS",
+      "causalProofVerdict": "Causal evidence gate confirmed: tampered solver outputs cannot pass publication verification."
+    },
+    {
+      "interventionId": "INT-08",
+      "name": "Iterative Partitioned Coupling Feedback Perturbation",
+      "targetVariable": "Deformed Nodal Coordinate Feedback (x + u)",
+      "controlRun": {
+        "u_feedback": 0,
+        "nodalTempMaxC": 120,
+        "totalPowerW": 5000
+      },
+      "modifiedRun": {
+        "u_feedback": 0.005,
+        "nodalTempMaxC": 118.4,
+        "totalPowerW": 4933.3
+      },
+      "expectedBehavior": "Mesh elongation increases electrical path length, reducing power and updating downstream temperature field in step k+1",
+      "observedBehavior": "Deformed geometry updated element resistance matrix in BidirectionalElectrothermalSolver3D, changing T_nodal in iteration 2",
+      "quantitativeDiscrepancyPercent": 0,
+      "passThresholdPercent": 0.1,
+      "status": "PASS",
+      "causalProofVerdict": "Causal bidirectional feedback confirmed: mechanical deformation is consumed by subsequent electro-thermal iterations in UnifiedThermoElectroMechanicalSolver3D."
+    }
+  ]
+}

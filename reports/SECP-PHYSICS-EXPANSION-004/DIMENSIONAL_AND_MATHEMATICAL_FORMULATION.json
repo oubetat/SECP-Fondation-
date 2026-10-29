@@ -1,0 +1,11 @@
+{
+  "campaign": "SECP-PHYSICS-EXPANSION-004",
+  "governingPde": "-div(k * grad(T)) = q_vol",
+  "jouleHeatDensity": "q_vol = sigma(T) * ||E||^2 [W/m^3]",
+  "thermalConductivity": "k = 200 W/(m*K)",
+  "gaussDivergenceTheorem": "\\int_\\Omega div(k grad(T)) d\\Omega = \\oint_{\\partial\\Omega} (k grad(T)) \\cdot n dA",
+  "discreteVariationalEquilibrium": "K_th * T = F_vol + R_sink",
+  "reactionFluxFormula": "R_i = \\sum_j K_ij * T_j - F_i",
+  "exactReactionConservation": "\\sum_{i \\in fixed} (-R_i) = \\sum_i F_i = Q_vol",
+  "c0DiscretizationLimit": "Piecewise constant element gradients inside coarse TET4 elements satisfy boundary flux variationally rather than pointwise."
+}

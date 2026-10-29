@@ -1,0 +1,57 @@
+{
+  "audit_metadata": {
+    "mission": "SECP-CAD-KERNEL-FORENSIC-AUDIT-001",
+    "phase": 0,
+    "verdict": "CRITICAL_RISKS_IDENTIFIED",
+    "timestamp": "2026-10-29T10:06:00Z"
+  },
+  "risks": [
+    {
+      "id": "RISK-001",
+      "category": "NUMERICAL_STABILITY",
+      "description": "Manual B-Rep implementation of Boolean operations (UNION, INTERSECT, DIFFERENCE) in TypeScript.",
+      "impact": "High risk of topological invalidity, non-manifold results, and numerical non-convergence in complex geometric tangency or near-coincidence cases.",
+      "mitigation_status": "NONE (Custom logic prone to O(N^2) complexity and epsilon-based instability)."
+    },
+    {
+      "id": "RISK-002",
+      "category": "ALGORITHMIC_LIMITATION",
+      "description": "Polyhedral stubs for analytical curved primitives.",
+      "evidence": "BRepKernel.createSphere() and BRepKernel.createTorus() implement polyhedral extrusions of circular polygons instead of true analytical or NURBS-based curved surfaces.",
+      "impact": "Inaccurate surface area and volume calculations; inability to perform precise FEA/CFD on curved boundaries."
+    },
+    {
+      "id": "RISK-003",
+      "category": "INTEROPERABILITY_INTEGRITY",
+      "description": "Mocked STEP Part 21 translator.",
+      "evidence": "STEPAP242Translator.ts uses JSON.stringify/parse instead of ISO 10303-21 parser/generator.",
+      "impact": "Total failure to interoperate with external CAD systems (SolidWorks, CATIA, NX) despite claims of STEP AP242 support."
+    },
+    {
+      "id": "RISK-004",
+      "category": "DEPENDENCY_ABSENCE",
+      "description": "Missing industrial-grade geometry engine (OpenCascade).",
+      "evidence": "OcctKernelAdapter exists but is unlinked; node_modules/opencascade.js is absent from the filesystem.",
+      "impact": "The system relies on 'BRepKernel.ts' (custom TS) which lacks the 30+ years of numerical hardening present in OCCT."
+    },
+    {
+      "id": "RISK-005",
+      "category": "PERFORMANCE",
+      "description": "Lack of spatial partitioning for topological queries.",
+      "evidence": "Topology checks and intersection logic use direct array iterations without BVH, Octree, or R-Tree indexing.",
+      "impact": "Exponential performance degradation as feature count and polygon density increase."
+    }
+  ],
+  "limitations": [
+    {
+      "area": "NURBS",
+      "status": "TEST_ONLY",
+      "details": "NURBS basis functions and evaluators exist in src/engine/cad-kernel/nurbs but are not integrated into the main BRepKernel pipeline."
+    },
+    {
+      "area": "Constraints",
+      "status": "PARTIAL_MOCK",
+      "details": "Constraint propagation uses simple graph traversal; missing a robust non-linear solver for multi-dimensional geometric constraints."
+    }
+  ]
+}

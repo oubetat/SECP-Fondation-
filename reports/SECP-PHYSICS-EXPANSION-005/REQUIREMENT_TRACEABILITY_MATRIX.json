@@ -1,0 +1,61 @@
+{
+  "campaignId": "SECP-PHYSICS-EXPANSION-005",
+  "traceabilityMatrix": [
+    {
+      "wp": "WP-0",
+      "gate": "G0",
+      "description": "Baseline & Source Lineage Audit",
+      "deliverable": "BASELINE_AND_SOURCE_LINEAGE.json",
+      "status": "VERIFIED"
+    },
+    {
+      "wp": "WP-1",
+      "gate": "G1",
+      "description": "Thermo-Mechanical Physics Contract",
+      "deliverable": "THERMO_MECHANICAL_PHYSICS_CONTRACT.json",
+      "status": "VERIFIED"
+    },
+    {
+      "wp": "WP-2..6",
+      "gate": "G2",
+      "description": "Analytical Benchmarks & Derivations",
+      "deliverable": "ANALYTICAL_DERIVATIONS.md / BENCHMARK_INPUTS_AND_EXPECTED_RESULTS.json",
+      "status": "VERIFIED"
+    },
+    {
+      "wp": "WP-7..8",
+      "gate": "G3",
+      "description": "Coupling Data Lineage",
+      "deliverable": "COUPLING_DATA_LINEAGE.json",
+      "status": "VERIFIED"
+    },
+    {
+      "wp": "WP-9..12",
+      "gate": "G4",
+      "description": "Numerical Results & Equilibrium Audit",
+      "deliverable": "NUMERICAL_RESULTS_RAW.json / MESH_CONVERGENCE_RESULTS.json / EQUILIBRIUM_AND_REACTION_AUDIT.json",
+      "status": "VERIFIED"
+    },
+    {
+      "wp": "WP-13",
+      "gate": "G5",
+      "description": "Adversarial Mutation Campaign",
+      "deliverable": "ADVERSARIAL_MUTATION_RESULTS.json",
+      "status": "VERIFIED"
+    },
+    {
+      "wp": "WP-10",
+      "gate": "G6",
+      "description": "Canonical Evidence Binding Audit",
+      "deliverable": "CANONICAL_EVIDENCE_BINDING_AUDIT.json",
+      "status": "VERIFIED"
+    },
+    {
+      "wp": "WP-14..17",
+      "gate": "G7",
+      "description": "Limitations, Traceability, Manifest & Acceptance Decision",
+      "deliverable": "FINAL_ACCEPTANCE_DECISION.md / SHA256_MANIFEST.json",
+      "status": "VERIFIED"
+    }
+  ]
+}

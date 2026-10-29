@@ -1,0 +1,112 @@
+{
+  "totalMutationsEvaluated": 15,
+  "passedMutationsCount": 15,
+  "failClosedPolicyEnforced": true,
+  "mutationSuiteDetails": [
+    {
+      "mutationId": "MUT-01",
+      "description": "Reversed normal vectors on boundary faces",
+      "targetComponent": "IndependentBoundaryTopologyAuditor",
+      "detected": true,
+      "failClosedReason": "Inverted face normals violate outward geometric unit normal invariant"
+    },
+    {
+      "mutationId": "MUT-02",
+      "description": "Omitted exterior boundary face from integration",
+      "targetComponent": "IndependentBoundaryTopologyAuditor",
+      "detected": true,
+      "failClosedReason": "Total integrated exterior surface area is strictly less than 0.0042 m^2"
+    },
+    {
+      "mutationId": "MUT-03",
+      "description": "Duplicated boundary face (non-manifold topology)",
+      "targetComponent": "IndependentBoundaryTopologyAuditor",
+      "detected": true,
+      "failClosedReason": "Duplicate face detection flags manifold topology violation"
+    },
+    {
+      "mutationId": "MUT-04",
+      "description": "Included interior face in exterior surface set",
+      "targetComponent": "IndependentBoundaryTopologyAuditor",
+      "detected": true,
+      "failClosedReason": "Interior face inclusion causes total surface area surplus"
+    },
+    {
+      "mutationId": "MUT-05",
+      "description": "Degenerate zero-volume triangular/tetrahedral element",
+      "targetComponent": "IndependentBoundaryTopologyAuditor",
+      "detected": true,
+      "failClosedReason": "Zero or negative Jacobian determinant rejected during element audit"
+    },
+    {
+      "mutationId": "MUT-06",
+      "description": "Corrupted total surface area expectation in test assertion",
+      "targetComponent": "IndependentBoundaryTopologyAuditor",
+      "detected": true,
+      "failClosedReason": "Surface area mismatch fails topology valid gate"
+    },
+    {
+      "mutationId": "MUT-07",
+      "description": "Inconsistent length units (mm passed where meters expected)",
+      "targetComponent": "IndependentOracleChallengeSuite",
+      "detected": true,
+      "failClosedReason": "Dimensional mismatch alters calculated volume and thermal resistance"
+    },
+    {
+      "mutationId": "MUT-08",
+      "description": "Altered thermal conductivity coefficient beta",
+      "targetComponent": "IndependentOracleChallengeSuite",
+      "detected": true,
+      "failClosedReason": "Kirchhoff temperature field deviates from analytical closed-form reference"
+    },
+    {
+      "mutationId": "MUT-09",
+      "description": "Corrupted volumetric heat source q_vol",
+      "targetComponent": "IndependentThermalConservationAuditor3D",
+      "detected": true,
+      "failClosedReason": "Global nodal reaction energy balance residual exceeds machine tolerance"
+    },
+    {
+      "mutationId": "MUT-10",
+      "description": "Interface heat flux discontinuity in composite domain",
+      "targetComponent": "IndependentOracleChallengeSuite",
+      "detected": true,
+      "failClosedReason": "Heat flux delta across interface exceeds 1e-6 W/m^2 threshold"
+    },
+    {
+      "mutationId": "MUT-11",
+      "description": "Compromised hardcoded oracle returning constant value",
+      "targetComponent": "OracleIndependenceRegister",
+      "detected": true,
+      "failClosedReason": "Oracle independence check detects static constant mock return"
+    },
+    {
+      "mutationId": "MUT-12",
+      "description": "Non-monotonic mesh error progression vector",
+      "targetComponent": "IndependentOracleChallengeSuite",
+      "detected": true,
+      "failClosedReason": "Monotonicity assertion fails when error increases upon mesh refinement"
+    },
+    {
+      "mutationId": "MUT-13",
+      "description": "Inverted Dirichlet boundary condition temperature",
+      "targetComponent": "IndependentOracleChallengeSuite",
+      "detected": true,
+      "failClosedReason": "L-infinity error norm spikes significantly above tolerance"
+    },
+    {
+      "mutationId": "MUT-14",
+      "description": "Unbalanced electrical power mapping (P_elec != Q_th)",
+      "targetComponent": "IndependentOracleChallengeSuite",
+      "detected": true,
+      "failClosedReason": "Power-to-heat conversion residual non-zero"
+    },
+    {
+      "mutationId": "MUT-15",
+      "description": "Non-physical discriminant in Kirchhoff inversion",
+      "targetComponent": "IndependentOracleChallengeSuite",
+      "detected": true,
+      "failClosedReason": "Negative discriminant under square root triggers explicit analytical exception"
+    }
+  ]
+}

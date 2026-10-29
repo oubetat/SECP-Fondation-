@@ -30,6 +30,15 @@ export interface FEMMaterial {
   alphaY?: number; // Temperature coeff for yield [1/K]
   thermalExpansionCoeff?: number; // [1/K]
   refTempC?: number; // [C]
+  // Fatigue & Damage Parameters (EXPANSION-007)
+  fatigueParams?: {
+    uts: number; // Ultimate Tensile Strength [MPa]
+    sf_prime?: number; // Fatigue strength coefficient [MPa]
+    b?: number; // Fatigue strength exponent
+    enduranceLimit?: number; // [MPa]
+    ductilityExponent?: number; // c
+    ductilityCoeff?: number; // eps_f_prime
+  };
 }
 
 export interface FEMSection {
@@ -209,6 +218,9 @@ export interface IntegrationPointState {
   equivalentPlasticStrain: number;
   yieldStress: number;
   totalStrain?: number[]; // To support incremental updates
+  // Damage & Fatigue State (EXPANSION-007)
+  damage?: number; // D in [0, 1]
+  accumulatedCycles?: number;
 }
 
 export interface MaterialState {

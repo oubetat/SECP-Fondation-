@@ -1,0 +1,22 @@
+{
+  "manifestHashes": {
+    "reports/SECP-PHYSICS-EXPANSION-004D/ADVERSARIAL_MUTATION_RESULTS.json": "736a6875ba9e4dfb432f8957885ed6ef787d0cb8c3abd073855b4bcdf273cfe6",
+    "reports/SECP-PHYSICS-EXPANSION-004D/ANALYTICAL_4D_BENCHMARK_RESULTS.json": "7becd1a912dcecdebbccb426283c80439504a280ce92634fb84e117ddf79f249",
+    "reports/SECP-PHYSICS-EXPANSION-004D/ANALYTICAL_FORMULATION_KIRCHHOFF.md": "beecd7ae4da471817f6ebf37f6965fccb15f47e7e3c3e93a982aef6dac5ae2e6",
+    "reports/SECP-PHYSICS-EXPANSION-004D/BOUNDARY_FLUX_CONVERGENCE_RESULTS.json": "1fbf1fbf84417554c0b93f3cb78279aba0fce94297b7bd1eff7321c468f5f415",
+    "reports/SECP-PHYSICS-EXPANSION-004D/COMPOSITE_INTERFACE_FLUX_RESULTS.json": "0ec6cd983c7cf482c2fdc5057f3705b9230cd1542ade0a178fa8b3f1d9c6ce97",
+    "reports/SECP-PHYSICS-EXPANSION-004D/ELECTROTHERMAL_POWER_MAPPING_RESULTS.json": "b6fe806283771c08e872a083161403ef7c6c72c99ef9fb8b48d4033abfa56d3e",
+    "reports/SECP-PHYSICS-EXPANSION-004D/FINAL_ACCEPTANCE_DECISION.md": "8e595a48286d9f193bc0ef48732a72ee16cef52dc4babf677dc34e8b81bba941",
+    "reports/SECP-PHYSICS-EXPANSION-004D/NUMERICAL_LIMITATIONS.json": "005b589a5f57ee50007cb4065206f6203418a3392161e7f32e24f5eec5a2fc41",
+    "reports/SECP-PHYSICS-EXPANSION-004D/ORACLE_INDEPENDENCE_REGISTER.json": "133a224bbdbebb410fc48d6a9369a613a079f0e1fb22733e4db298fc6730f7dc",
+    "reports/SECP-PHYSICS-EXPANSION-004D/REGRESSION_BASELINE_RESULTS.json": "219be763fa3d91a2531b9feeb9774e749d0f16d36137ce5da123326d6c0d1c0e",
+    "reports/SECP-PHYSICS-EXPANSION-004D/REQUIREMENT_TRACEABILITY_MATRIX.json": "28df36966f4280562eb9958c4e8bd8ea36b815bd8a210b6ec7f5092aba8bdde3",
+    "reports/SECP-PHYSICS-EXPANSION-004D/SOURCE_LINEAGE.json": "492dfc4cf9e7f9ad0c2d6f4b557a7f9bb9ef7b60bdac855adcc6b92f835ecf77",
+    "src/engine/physics/thermal/IndependentOracleChallengeSuite.ts": "0bebf03460d8c651e23baa09a06cb1b38e9e233a6526eaccc448ae9fbf43fb86",
+    "src/engine/physics/thermal/Analytical3DThermalBenchmarkSuite.ts": "279a6d42006e62ccc85aece22b463dc49362de0874c8f47b14ff3de9dc347f13",
+    "src/engine/physics/thermal/IndependentBoundaryTopologyAuditor.ts": "99f8ab5cd66e2bc64e74099cb1e95faa727b983c56164f18fe702a861c9421f6",
+    "src/engine/physics/electromagnetics/IndependentThermalConservationAuditor3D.ts": "b8a34a3aed3e13a883b3d0da236c7378b9327dac69e95b146c37bd06613b6d02",
+    "src/engine/physics/electromagnetics/BidirectionalElectrothermalSolver3D.ts": "cda3ab4419ba1c156752057c437818f768e840026b34c00a6ada2b6a3e6426d4",
+    "src/engine/physics/electromagnetics/__tests__/AnalyticalThermalBenchmark004D.test.ts": "7e8c82a48981f06fd6422ee1de92b8947aa4b11cb4e1dab62cb4d3f17384d719"
+  }
+}

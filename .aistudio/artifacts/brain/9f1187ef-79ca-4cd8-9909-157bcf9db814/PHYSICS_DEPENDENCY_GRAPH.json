@@ -1,0 +1,25 @@
+{
+  "campaignId": "SECP-PHYSICS-EXPANSION-007",
+  "dependencies": [
+    {
+      "source": "Domain_B_CFD",
+      "target": "Domain_D_Unified_Multiphysics",
+      "interaction": "Pressure loads and Heat Transfer Coefficients mapping to FEM"
+    },
+    {
+      "source": "Domain_C_Electromagnetics",
+      "target": "Domain_D_Unified_Multiphysics",
+      "interaction": "Joule heating sources and Lorentz forces to FEM"
+    },
+    {
+      "source": "Domain_A_Advanced_Materials",
+      "target": "Domain_D_Unified_Multiphysics",
+      "interaction": "State-dependent constitutive response in coupled analysis"
+    },
+    {
+      "source": "Domain_E_Multiscale",
+      "target": "Domain_A_Advanced_Materials",
+      "interaction": "Effective properties for macro-scale damage models"
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "requirements": [
+    {
+      "id": "REQ-004C-01",
+      "description": "Audit 004B evidence & topology derivation",
+      "verifiedInTest": "WP-A1",
+      "status": "PASS"
+    },
+    {
+      "id": "REQ-004C-02",
+      "description": "3D Benchmark Case 1 Linear Conduction",
+      "verifiedInTest": "WP-C1",
+      "status": "PASS"
+    },
+    {
+      "id": "REQ-004C-03",
+      "description": "3D Benchmark Case 2 Quadratic Joule Heating & Convergence",
+      "verifiedInTest": "WP-C2",
+      "status": "PASS"
+    },
+    {
+      "id": "REQ-004C-04",
+      "description": "3D Benchmark Case 3 Multi-Directional Harmonic Box",
+      "verifiedInTest": "WP-C3",
+      "status": "PASS"
+    },
+    {
+      "id": "REQ-004C-05",
+      "description": "12 Adversarial Mutation Fault Tests",
+      "verifiedInTest": "WP-D01 to WP-D12",
+      "status": "PASS"
+    },
+    {
+      "id": "REQ-004C-06",
+      "description": "Preserve prior baselines (003, 004, 004A, 004B)",
+      "verifiedInTest": "Reconciliation Battery",
+      "status": "PASS"
+    }
+  ]
+}

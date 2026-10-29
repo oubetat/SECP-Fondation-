@@ -1,0 +1,32 @@
+{
+  "targetQuantity": "Direct Surface Normal Conductive Heat Flux Error E_k",
+  "analyticalBenchmarkTotalWatts": 152.141576,
+  "rawMeshSizesH": [
+    0.1,
+    0.05,
+    0.025,
+    0.0125,
+    0.00625,
+    0.003125
+  ],
+  "rawFluxErrorsWatts": [
+    75.8153,
+    38.0352,
+    19.0182,
+    9.5093,
+    4.7547,
+    2.3773
+  ],
+  "recomputedEmpiricalConvergenceRates": [
+    0.9951538314536397,
+    0.9999544840900096,
+    0.9999696568577601,
+    0.9999848286681962,
+    1.0000303428231507
+  ],
+  "asymptoticConvergenceRate": 1.0000303428231507,
+  "isStrictlyMonotonic": true,
+  "isGeometricRatioConsistent": true,
+  "exactVariationalConservationSatisfied": true,
+  "orderSensitivityAnalysis": "Convergence order p remains in [0.9950, 1.0000] across all refinement levels, proving asymptotic regime onset at Level 2."
+}

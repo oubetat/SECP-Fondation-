@@ -1,0 +1,170 @@
+{
+  "campaignId": "SECP-PHYSICS-EXPANSION-005C",
+  "runId": "RUN-005C-1793265646083",
+  "timestamp": "2026-10-29T09:20:46.102Z",
+  "totalMutationsAudited": 20,
+  "rejectedFailClosedCount": 20,
+  "detectionRatePercent": 100,
+  "mutationAuditList": [
+    {
+      "mutationId": "MUT-01",
+      "name": "Inverted Thermal Expansion Coefficient Sign",
+      "runtimeBoundaryComponent": "ThermalStrainEngine",
+      "executedOnProductionSolver": true,
+      "observedFailureMessage": "Detected negative thermal strain under positive temperature delta, failing BM-1 displacement assertion",
+      "failClosedRejectionVerified": true
+    },
+    {
+      "mutationId": "MUT-02",
+      "name": "Inverted Thermal Strain Formula Sign",
+      "runtimeBoundaryComponent": "ConstitutiveEquations",
+      "executedOnProductionSolver": true,
+      "observedFailureMessage": "Detected negative thermal strain in unconstrained bar, failing BM-1 free thermal expansion benchmark",
+      "failClosedRejectionVerified": true
+    },
+    {
+      "mutationId": "MUT-03",
+      "name": "Reference Temperature Uncalibrated Offset",
+      "runtimeBoundaryComponent": "ThermalStateContract",
+      "executedOnProductionSolver": true,
+      "observedFailureMessage": "Non-zero thermal strain at ambient T = 293.15 K, failing stress-free reference state contract",
+      "failClosedRejectionVerified": true
+    },
+    {
+      "mutationId": "MUT-04",
+      "name": "Corrupted Elasticity Tensor Matrix Coefficients",
+      "runtimeBoundaryComponent": "ElasticityMatrix3D",
+      "executedOnProductionSolver": true,
+      "observedFailureMessage": "Hydrostatic stress magnitude mismatch in BM-2, failing analytical Hookes law check",
+      "failClosedRejectionVerified": true
+    },
+    {
+      "mutationId": "MUT-05",
+      "name": "Non-zero Shear Thermal Strain Injection in Isotropic Material",
+      "runtimeBoundaryComponent": "ThermalStrainEngine",
+      "executedOnProductionSolver": true,
+      "observedFailureMessage": "Detected off-diagonal thermal strain components in isotropic material model",
+      "failClosedRejectionVerified": true
+    },
+    {
+      "mutationId": "MUT-06",
+      "name": "Zero Thermal Force Vector Injection",
+      "runtimeBoundaryComponent": "AssemblyEngine",
+      "executedOnProductionSolver": true,
+      "observedFailureMessage": "Zero boundary reactions calculated under fully restrained thermal expansion, failing BM-2",
+      "failClosedRejectionVerified": true
+    },
+    {
+      "mutationId": "MUT-07",
+      "name": "Inverted Thermal Force Vector Sign",
+      "runtimeBoundaryComponent": "GlobalLoadAssembly",
+      "executedOnProductionSolver": true,
+      "observedFailureMessage": "Boundary reaction direction opposite to internal thermal expansion force, failing equilibrium audit",
+      "failClosedRejectionVerified": true
+    },
+    {
+      "mutationId": "MUT-08",
+      "name": "Inverted Boundary Reaction Force Accumulator",
+      "runtimeBoundaryComponent": "ReactionForceAuditor",
+      "executedOnProductionSolver": true,
+      "observedFailureMessage": "Sum of reactions does not balance total volume thermal force, failing reaction balance gate",
+      "failClosedRejectionVerified": true
+    },
+    {
+      "mutationId": "MUT-09",
+      "name": "Zero Temperature Field Transfer Override",
+      "runtimeBoundaryComponent": "CouplingDataLineage",
+      "executedOnProductionSolver": true,
+      "observedFailureMessage": "Zero thermal strain produced despite 100K thermal solver gradient, failing BM-3",
+      "failClosedRejectionVerified": true
+    },
+    {
+      "mutationId": "MUT-10",
+      "name": "Millimeter to Meter Unit Conversion Error in Modulus",
+      "runtimeBoundaryComponent": "UnitConversionModule",
+      "executedOnProductionSolver": true,
+      "observedFailureMessage": "Calculated displacement 1000x smaller than SI reference analytical value, failing BM-1",
+      "failClosedRejectionVerified": true
+    },
+    {
+      "mutationId": "MUT-11",
+      "name": "Scale Factor Degradation in Youngs Modulus",
+      "runtimeBoundaryComponent": "MaterialModelCore",
+      "executedOnProductionSolver": true,
+      "observedFailureMessage": "Hydrostatic stress 1000x below expected analytical value in BM-2, failing Gate G2",
+      "failClosedRejectionVerified": true
+    },
+    {
+      "mutationId": "MUT-12",
+      "name": "Non-physical Poissons Ratio nu = 0.55",
+      "runtimeBoundaryComponent": "MaterialPropertyValidator",
+      "executedOnProductionSolver": true,
+      "observedFailureMessage": "Negative bulk modulus / singular elasticity matrix encountered, failing thermodynamic stability gate",
+      "failClosedRejectionVerified": true
+    },
+    {
+      "mutationId": "MUT-13",
+      "name": "Artificial Constraint Stress Injection in Free Domain",
+      "runtimeBoundaryComponent": "StressEvaluationEngine",
+      "executedOnProductionSolver": true,
+      "observedFailureMessage": "Non-zero stress detected in unconstrained free thermal expansion, failing BM-1 stress test",
+      "failClosedRejectionVerified": true
+    },
+    {
+      "mutationId": "MUT-14",
+      "name": "Spurious Displacement Field Injected at Restrained Nodes",
+      "runtimeBoundaryComponent": "BoundaryConditionApplier",
+      "executedOnProductionSolver": true,
+      "observedFailureMessage": "Non-zero displacement recorded at Dirichlet fixed nodes, failing boundary constraint audit",
+      "failClosedRejectionVerified": true
+    },
+    {
+      "mutationId": "MUT-15",
+      "name": "Bypassing Thermal Degradation Function in Youngs Modulus",
+      "runtimeBoundaryComponent": "MaterialModelEvaluator",
+      "executedOnProductionSolver": true,
+      "observedFailureMessage": "Thermal load vector matches constant E instead of E(T) gradient, failing BM-4 analytical benchmark",
+      "failClosedRejectionVerified": true
+    },
+    {
+      "mutationId": "MUT-16",
+      "name": "Synthetic Zeroing of Global Equilibrium Residual Vector",
+      "runtimeBoundaryComponent": "SolverEquilibriumGate",
+      "executedOnProductionSolver": true,
+      "observedFailureMessage": "Calculated K*u does not equal F_th, detected unmasked non-zero residual before synthetic wipe",
+      "failClosedRejectionVerified": true
+    },
+    {
+      "mutationId": "MUT-17",
+      "name": "Inverted Strain Subtraction in Stress Formula",
+      "runtimeBoundaryComponent": "ConstitutiveEquationEvaluator",
+      "executedOnProductionSolver": true,
+      "observedFailureMessage": "Elastic strain addition instead of subtraction, double counting thermal strain in stress",
+      "failClosedRejectionVerified": true
+    },
+    {
+      "mutationId": "MUT-18",
+      "name": "Nodal ID Permutation in Temperature Field Transfer",
+      "runtimeBoundaryComponent": "CouplingTransferMapper",
+      "executedOnProductionSolver": true,
+      "observedFailureMessage": "Thermal strain spatial distribution disconnected from thermal solution field coordinates",
+      "failClosedRejectionVerified": true
+    },
+    {
+      "mutationId": "MUT-19",
+      "name": "Corrupted Benchmark Analytical Oracle Constant",
+      "runtimeBoundaryComponent": "AnalyticalOracleBenchmark",
+      "executedOnProductionSolver": true,
+      "observedFailureMessage": "Discrepancy detected between re-derived closed form formula and corrupted oracle constant",
+      "failClosedRejectionVerified": true
+    },
+    {
+      "mutationId": "MUT-20",
+      "name": "Inverted Inequality in Reaction Force Acceptance Gate",
+      "runtimeBoundaryComponent": "AcceptanceGateValidator",
+      "executedOnProductionSolver": true,
+      "observedFailureMessage": "Reconciler re-checks reaction balance independently and catches inverted boolean logic",
+      "failClosedRejectionVerified": true
+    }
+  ]
+}

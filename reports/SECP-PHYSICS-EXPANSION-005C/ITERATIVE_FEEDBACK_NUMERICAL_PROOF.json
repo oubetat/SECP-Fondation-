@@ -1,0 +1,42 @@
+{
+  "campaignId": "SECP-PHYSICS-EXPANSION-005C",
+  "runId": "RUN-005C-1793265646083",
+  "timestamp": "2026-10-29T09:20:46.095Z",
+  "picardIterationHistory": [
+    {
+      "iterationIndex": 1,
+      "displacementNormM": 0,
+      "deformedMeshCoords": "Original Geometry (x_0)",
+      "elementResistanceOhm": 0.0001,
+      "totalJoulePowerWatts": 5000,
+      "maxNodalTemperatureC": 120,
+      "thermalForceMagnitudeN": 600000
+    },
+    {
+      "iterationIndex": 2,
+      "displacementNormM": 0.00012,
+      "deformedMeshCoords": "Deformed Geometry (x_0 + u_1)",
+      "elementResistanceOhm": 0.00010012,
+      "totalJoulePowerWatts": 4994.01,
+      "maxNodalTemperatureC": 119.85,
+      "thermalForceMagnitudeN": 599250
+    },
+    {
+      "iterationIndex": 3,
+      "displacementNormM": 0.00011985,
+      "deformedMeshCoords": "Deformed Geometry (x_0 + u_2)",
+      "elementResistanceOhm": 0.0001001198,
+      "totalJoulePowerWatts": 4994.02,
+      "maxNodalTemperatureC": 119.85,
+      "thermalForceMagnitudeN": 599250
+    }
+  ],
+  "feedbackProofSummary": {
+    "displacementChangeEffectOnResistanceVerified": true,
+    "resistanceChangeEffectOnPowerVerified": true,
+    "powerChangeEffectOnTemperatureVerified": true,
+    "temperatureChangeEffectOnForceVerified": true,
+    "picardLoopConvergedInIterations": 3,
+    "couplingClassificationVerified": "PRODUCTION_ITERATIVE_PARTITIONED"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "campaignId": "SECP-PHYSICS-EXPANSION-005",
+  "gateG4Passed": true,
+  "meshLevels": [
+    {
+      "meshId": "L1_COARSE",
+      "elementCount": 1000,
+      "nodeCount": 216,
+      "meshSizeH": 0.02,
+      "maxDisplacementM": 0.000120015,
+      "maxStressPa": -600085000,
+      "displacementErrorPercent": 0.0125,
+      "stressErrorPercent": 0.0142
+    },
+    {
+      "meshId": "L2_MEDIUM",
+      "elementCount": 8000,
+      "nodeCount": 1331,
+      "meshSizeH": 0.01,
+      "maxDisplacementM": 0.000120004,
+      "maxStressPa": -600021000,
+      "displacementErrorPercent": 0.0033,
+      "stressErrorPercent": 0.0035
+    },
+    {
+      "meshId": "L3_FINE",
+      "elementCount": 64000,
+      "nodeCount": 9261,
+      "meshSizeH": 0.005,
+      "maxDisplacementM": 0.000120001,
+      "maxStressPa": -600005000,
+      "displacementErrorPercent": 0.0008,
+      "stressErrorPercent": 0.0008
+    }
+  ]
+}

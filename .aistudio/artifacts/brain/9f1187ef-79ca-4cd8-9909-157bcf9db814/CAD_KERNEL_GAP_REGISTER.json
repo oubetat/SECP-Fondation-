@@ -1,0 +1,40 @@
+{
+  "campaignId": "SECP-CAD-KERNEL-AUDIT-001",
+  "gaps": [
+    {
+      "id": "GAP-CAD-001",
+      "domain": "Production Engine Availability",
+      "severity": "CRITICAL",
+      "description": "OCCT (opencascade.js) is not physically present in the environment. Advanced modeling operations are mocked.",
+      "evidence": "Verification command 'ls node_modules/opencascade.js' failed."
+    },
+    {
+      "id": "GAP-CAD-002",
+      "domain": "Analytic Boolean Intersections",
+      "severity": "HIGH",
+      "description": "Lack of exact analytical curve intersectors for non-planar surface pairs (e.g. Cone-Cylinder).",
+      "evidence": "BooleanIntersector.ts returns unsupportedCount for non-planar pairs."
+    },
+    {
+      "id": "GAP-CAD-003",
+      "domain": "NURBS modeling",
+      "severity": "HIGH",
+      "description": "NURBS curves/surfaces are evaluatable but not supported in solid Boolean or trimming operations.",
+      "evidence": "BRepGeometry.ts stubs NURBS evaluation to a zero-plane; BooleanSplitter lacks NURBS intersection."
+    },
+    {
+      "id": "GAP-CAD-004",
+      "domain": "Interoperability Fidelity",
+      "severity": "MEDIUM",
+      "description": "STEP AP242 translator is a JSON mockup; losses occur on standard exchange.",
+      "evidence": "STEPAP242Translator.ts source uses JSON.stringify stub."
+    },
+    {
+      "id": "GAP-CAD-005",
+      "domain": "Spatial Acceleration",
+      "severity": "MEDIUM",
+      "description": "Assembly interference is O(N^2) pairwise AABB checks. No BVH/spatial indexing in the kernel.",
+      "evidence": "AssemblyInterferenceAnalyzer.ts uses simple nested loops for global analysis."
+    }
+  ]
+}

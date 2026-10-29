@@ -1,0 +1,14 @@
+{
+  "campaignId": "SECP-PHYSICS-EXPANSION-005B",
+  "timestamp": "2026-10-29T09:15:32.030Z",
+  "canonicalRevision": "SECP-REV-005B-20261029-TRUE-PHYSICS",
+  "materialStateId": "MAT-STEEL-STRUCTURAL-AISI304-VERIFIED",
+  "bindingAudit": {
+    "canonicalRevisionHash": "8c8a6ae1b2349dcc179c7438df06be889629576273bc1c654eed0ca87d7bb04a",
+    "materialStateHash": "e36930f91f4f54b3f0d910ea2e7df8963433c3ce4f9c43f8c6dc5d9c3c5c436e",
+    "runtimeTraceBindingValid": true,
+    "causalInterventionBindingValid": true,
+    "reportManifestBindingValid": true
+  },
+  "status": "VERIFIED"
+}

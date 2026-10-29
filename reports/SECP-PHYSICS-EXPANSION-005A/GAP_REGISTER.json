@@ -1,0 +1,39 @@
+{
+  "campaignId": "SECP-PHYSICS-EXPANSION-005A",
+  "timestamp": "2026-10-29T09:06:33.680Z",
+  "totalGapsRecorded": 4,
+  "gaps": [
+    {
+      "gapId": "GAP-005A-01",
+      "category": "Scaffolding",
+      "description": "Expansion 005 qualification benchmarks were evaluated through standalone auditor functions rather than an end-to-end UI user workflow.",
+      "impactOnEngineeringQualification": "Low operational impact; physics formulation and analytical formulas are identical, but UI integration remains separate.",
+      "remediationRequirement": "Bind UnifiedThermoElectroMechanicalSolver3D directly to UI workbench execution trigger in a future UI release.",
+      "severity": "P2"
+    },
+    {
+      "gapId": "GAP-005A-02",
+      "category": "Call-Path",
+      "description": "Adversarial mutations MUT-01 through MUT-20 were evaluated via auditor simulation methods rather than inline runtime AST code injection.",
+      "impactOnEngineeringQualification": "Proves auditor gate capability and oracle equations, but does not test production compiler mutations directly.",
+      "remediationRequirement": "Develop automated AST source code mutator script for production solvers.",
+      "severity": "P2"
+    },
+    {
+      "gapId": "GAP-005A-03",
+      "category": "Evidence",
+      "description": "Experimental DIC (Digital Image Correlation) physical coupon test measurements remain UNVERIFIED.",
+      "impactOnEngineeringQualification": "Numerical qualification is verified against analytical math; physical experimental qualification is explicitly declared UNVERIFIED.",
+      "remediationRequirement": "Ingest physical DIC optical strain coupon dataset when available.",
+      "severity": "P1"
+    },
+    {
+      "gapId": "GAP-005A-04",
+      "category": "Coupling",
+      "description": "Nonlinear thermo-plasticity and high-temperature creeping strain remain unverified outside linear thermo-elastic scope.",
+      "impactOnEngineeringQualification": "Application scope is strictly bounded to small deformation linear thermo-elastic continuum physics.",
+      "remediationRequirement": "Document material temperature limits (100 K - 1500 K) in user manual.",
+      "severity": "P2"
+    }
+  ]
+}

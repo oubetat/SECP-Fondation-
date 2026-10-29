@@ -1,0 +1,10 @@
+{
+  "campaignId": "SECP-PHYSICS-EXPANSION-005",
+  "gateG4Passed": true,
+  "refinementRatio": 2,
+  "empiricalConvergenceRateDisplacement": 1.95,
+  "empiricalConvergenceRateStress": 2.01,
+  "isMonotonicReduction": true,
+  "gridConvergenceIndexPercent": 0.0012,
+  "asymptoticConvergenceVerified": true
+}

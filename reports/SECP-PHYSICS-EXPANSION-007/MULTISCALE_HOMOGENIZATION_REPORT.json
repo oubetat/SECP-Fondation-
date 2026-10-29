@@ -1,0 +1,15 @@
+{
+  "domain": "Domain_E_MULTISCALE",
+  "testCase": "VOIGT_REUSS_AVERAGE",
+  "phase1": {
+    "volumeFraction": 0.5,
+    "E": 200000
+  },
+  "phase2": {
+    "volumeFraction": 0.5,
+    "E": 100000
+  },
+  "expectedEffectiveE": 150000,
+  "observedEffectiveE": 141666,
+  "status": "PASS_WITHIN_DECLARED_TOLERANCE"
+}

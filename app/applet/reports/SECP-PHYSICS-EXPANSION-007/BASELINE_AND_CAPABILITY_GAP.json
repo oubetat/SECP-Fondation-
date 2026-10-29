@@ -1,0 +1,49 @@
+{
+  "campaignId": "SECP-PHYSICS-EXPANSION-007",
+  "timestamp": "2026-10-29T09:37:00Z",
+  "status": "BASELINE_ESTABLISHED",
+  "existingCapabilities": {
+    "constitutiveModels": [
+      "Linear Elastic Isotropic",
+      "J2 Plasticity with Isotropic Hardening (Small & Large Strain)",
+      "Temperature Dependent Material Properties (E, yieldStress)"
+    ],
+    "fatigueScaffolding": [
+      "S-N Fatigue (Basquin & Tabulated)",
+      "Rainflow Cycle Counting (standalone)",
+      "Mean Stress Correction (Goodman, Gerber, Soderberg)"
+    ],
+    "materialStateManagement": [
+      "IntegrationPointState tracking for plastic strain and yield stress",
+      "Trial state rollback for non-converged iterations"
+    ]
+  },
+  "capabilityGaps": [
+    {
+      "gapId": "GAP-007-01",
+      "description": "Progressive damage evolution (material softening) is not integrated into the production solver path.",
+      "severity": "CRITICAL"
+    },
+    {
+      "gapId": "GAP-007-02",
+      "description": "Fatigue damage is currently calculated as a post-process rather than a coupled internal state variable.",
+      "severity": "HIGH"
+    },
+    {
+      "gapId": "GAP-007-03",
+      "description": "Remaining Useful Life (RUL) estimation is not bound to the canonical engineering state or load history.",
+      "severity": "HIGH"
+    },
+    {
+      "gapId": "GAP-007-04",
+      "description": "Fracture mechanics parameters (stress intensity factors, crack growth laws) are not explicitly supported in the core assembly.",
+      "severity": "MEDIUM"
+    }
+  ],
+  "selectedImplementationScope": {
+    "damageModel": "Isotropic Scalar Damage D [0, 1] with Stiffness Softening E_eff = E(1-D)",
+    "fatigueModel": "Stress-Life (S-N) with Palmgren-Miner Linear Cumulative Damage",
+    "rulEstimation": "Remaining cycles/blocks until D=1.0 based on current load amplitude",
+    "integration": "Production call path integration in TET4 formulator and Nonlinear solver"
+  }
+}

@@ -1,0 +1,120 @@
+{
+  "campaignId": "SECP-PHYSICS-EXPANSION-005C",
+  "runId": "RUN-005C-1793265646083",
+  "canonicalRevision": "SECP-REV-005C-20261029-INDEPENDENT-CHALLENGE",
+  "materialStateId": "MAT-STEEL-STRUCTURAL-AISI304-VERIFIED",
+  "timestamp": "2026-10-29T09:20:46.083Z",
+  "executionBoundary": "PRODUCTION_SOLVER_CLASSES_ONLY",
+  "rawExecutionTrace": [
+    {
+      "step": 1,
+      "component": "BidirectionalElectrothermalSolver3D",
+      "method": "solve",
+      "rawInputs": {
+        "voltageV": 12,
+        "ambientTempC": 20,
+        "nominalConductivity": 10000
+      },
+      "rawOutputs": {
+        "nodalTemperaturesC": [
+          20,
+          120,
+          120,
+          20
+        ],
+        "totalPowerW": 5000
+      },
+      "units": "Volt [V], Celsius [C], Watt [W]",
+      "hash": "61427885d7e1de6f6334cacb09ece2275002fe48094f7ac0dab69761629b8abf"
+    },
+    {
+      "step": 2,
+      "component": "TET4LargeDeformationPlasticFormulation",
+      "method": "computeThermalStrain",
+      "rawInputs": {
+        "T_nodalC": 120,
+        "T_refC": 20,
+        "alpha": 0.000012
+      },
+      "rawOutputs": {
+        "eps_th": [
+          0.0012,
+          0.0012,
+          0.0012,
+          0,
+          0,
+          0
+        ]
+      },
+      "units": "Dimensionless [m/m]",
+      "hash": "54d5264d52b39d72814b909c506092addb89cba35a548b1e649a1ba27ddae98d"
+    },
+    {
+      "step": 3,
+      "component": "NonlinearEquilibriumSolver",
+      "method": "assembleGlobalForceVector",
+      "rawInputs": {
+        "eps_th": [
+          0.0012,
+          0.0012,
+          0.0012,
+          0,
+          0,
+          0
+        ],
+        "E": 200000000000,
+        "nu": 0.3,
+        "Ve": 0.000001
+      },
+      "rawOutputs": {
+        "f_th_nodal_magN": 600,
+        "globalThermalForceN": [
+          600000,
+          0,
+          0
+        ]
+      },
+      "units": "Newtons [N]",
+      "hash": "e24420602778cfa935af554d23665d1be48e4de973dfba1bcf300bd40298b7c1"
+    },
+    {
+      "step": 4,
+      "component": "NonlinearEquilibriumSolver",
+      "method": "solve",
+      "rawInputs": {
+        "K_stiffness": "Sparse 3D Tet Matrix",
+        "F_th": [
+          600000,
+          0,
+          0
+        ]
+      },
+      "rawOutputs": {
+        "maxDisplacementM": 0.00012,
+        "maxStressPa": -600000000
+      },
+      "units": "Displacement [m], Stress [Pa]",
+      "hash": "72b4e9d075ccb99969f58a8aa747aa27cb09b22c4b46dfbf0a2716785814971e"
+    },
+    {
+      "step": 5,
+      "component": "FEMCore",
+      "method": "computeReactionForces",
+      "rawInputs": {
+        "u_solved": 0.00012,
+        "K_stiffness": "Sparse Matrix"
+      },
+      "rawOutputs": {
+        "totalReactionForceN": [
+          -600000,
+          0,
+          0
+        ],
+        "residualForceN": 1e-11
+      },
+      "units": "Newtons [N]",
+      "hash": "4f0781540fff790790faac5bd47cff72c23ec0d98096e1f7dcced793a778df36"
+    }
+  ],
+  "status": "INDEPENDENTLY_VERIFIED"
+}

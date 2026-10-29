@@ -1,0 +1,7 @@
+{
+  "src/engine/physics/thermal/Analytical3DThermalBenchmarkSuite.ts": "279a6d42006e62ccc85aece22b463dc49362de0874c8f47b14ff3de9dc347f13",
+  "src/engine/physics/thermal/IndependentBoundaryTopologyAuditor.ts": "99f8ab5cd66e2bc64e74099cb1e95faa727b983c56164f18fe702a861c9421f6",
+  "src/engine/physics/electromagnetics/IndependentThermalConservationAuditor3D.ts": "b8a34a3aed3e13a883b3d0da236c7378b9327dac69e95b146c37bd06613b6d02",
+  "src/engine/physics/electromagnetics/BidirectionalElectrothermalSolver3D.ts": "cda3ab4419ba1c156752057c437818f768e840026b34c00a6ada2b6a3e6426d4",
+  "src/engine/physics/electromagnetics/__tests__/AnalyticalThermalBenchmark004C.test.ts": "c7171b5a2b81a419f5b4cd7c081799457585838d9fb03597f9a504725b8adb62"
+}

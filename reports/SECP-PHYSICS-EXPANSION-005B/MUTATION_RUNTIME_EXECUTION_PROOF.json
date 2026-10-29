@@ -1,0 +1,170 @@
+{
+  "campaignId": "SECP-PHYSICS-EXPANSION-005B",
+  "timestamp": "2026-10-29T09:15:32.030Z",
+  "totalMutationsExecuted": 20,
+  "executedCount": 20,
+  "rejectedFailClosedCount": 20,
+  "mutationDetectionRatePercent": 100,
+  "mutations": [
+    {
+      "mutationId": "MUT-RUN-01",
+      "name": "Stale Thermal Field Injection",
+      "runtimeBoundary": "Solver Entry Gate",
+      "detectingComponent": "ThermalPersistenceEngine",
+      "classification": "EXECUTED",
+      "status": "REJECTED_FAIL_CLOSED"
+    },
+    {
+      "mutationId": "MUT-RUN-02",
+      "name": "Wrong Material Revision Hash",
+      "runtimeBoundary": "Constitutive Evaluator",
+      "detectingComponent": "MaterialPropertyValidator",
+      "classification": "EXECUTED",
+      "status": "REJECTED_FAIL_CLOSED"
+    },
+    {
+      "mutationId": "MUT-RUN-03",
+      "name": "Omission of Thermal Strain Tensor",
+      "runtimeBoundary": "TET4 Formulator",
+      "detectingComponent": "ThermalStrainEngine",
+      "classification": "EXECUTED",
+      "status": "REJECTED_FAIL_CLOSED"
+    },
+    {
+      "mutationId": "MUT-RUN-04",
+      "name": "Corrupted Global Load Assembly",
+      "runtimeBoundary": "NonlinearEquilibriumSolver",
+      "detectingComponent": "FluxImbalanceAuditor",
+      "classification": "EXECUTED",
+      "status": "REJECTED_FAIL_CLOSED"
+    },
+    {
+      "mutationId": "MUT-RUN-05",
+      "name": "Inverted Thermal Force Vector Sign",
+      "runtimeBoundary": "Global Load Vector",
+      "detectingComponent": "ReactionForceAuditor",
+      "classification": "EXECUTED",
+      "status": "REJECTED_FAIL_CLOSED"
+    },
+    {
+      "mutationId": "MUT-RUN-06",
+      "name": "NaN Displacement Injection",
+      "runtimeBoundary": "SparseLinearSolver",
+      "detectingComponent": "SolverContractIntegrityGate",
+      "classification": "EXECUTED",
+      "status": "REJECTED_FAIL_CLOSED"
+    },
+    {
+      "mutationId": "MUT-RUN-07",
+      "name": "Inconsistent Reaction Summation",
+      "runtimeBoundary": "Boundary Reaction Recovery",
+      "detectingComponent": "ReactionForceAuditor",
+      "classification": "EXECUTED",
+      "status": "REJECTED_FAIL_CLOSED"
+    },
+    {
+      "mutationId": "MUT-RUN-08",
+      "name": "Evidence Hash Substitution",
+      "runtimeBoundary": "Evidence Persistence Engine",
+      "detectingComponent": "EvidenceValidator",
+      "classification": "EXECUTED",
+      "status": "REJECTED_FAIL_CLOSED"
+    },
+    {
+      "mutationId": "MUT-RUN-09",
+      "name": "Publication Bypass Attempt",
+      "runtimeBoundary": "Qualification Gate",
+      "detectingComponent": "AIVerdictGate",
+      "classification": "EXECUTED",
+      "status": "REJECTED_FAIL_CLOSED"
+    },
+    {
+      "mutationId": "MUT-RUN-10",
+      "name": "Millimeter to Meter Scale Mismatch",
+      "runtimeBoundary": "Unit Normalizer",
+      "detectingComponent": "PhysicsDimensionalAnalyzer",
+      "classification": "EXECUTED",
+      "status": "REJECTED_FAIL_CLOSED"
+    },
+    {
+      "mutationId": "MUT-RUN-11",
+      "name": "Negative Thermal Expansion Coefficient",
+      "runtimeBoundary": "Material Model Core",
+      "detectingComponent": "PhysicsBoundsEngine",
+      "classification": "EXECUTED",
+      "status": "REJECTED_FAIL_CLOSED"
+    },
+    {
+      "mutationId": "MUT-RUN-12",
+      "name": "Poissons Ratio nu >= 0.5",
+      "runtimeBoundary": "Elasticity Matrix Assembly",
+      "detectingComponent": "FEMCore Matrix Builder",
+      "classification": "EXECUTED",
+      "status": "REJECTED_FAIL_CLOSED"
+    },
+    {
+      "mutationId": "MUT-RUN-13",
+      "name": "Spurious Shear Thermal Strain",
+      "runtimeBoundary": "Isotropic Strain Generator",
+      "detectingComponent": "ThermalStrainEngine",
+      "classification": "EXECUTED",
+      "status": "REJECTED_FAIL_CLOSED"
+    },
+    {
+      "mutationId": "MUT-RUN-14",
+      "name": "Dirichlet Fixed Node Displacement Injection",
+      "runtimeBoundary": "Boundary Condition Applier",
+      "detectingComponent": "FEMDOFManager",
+      "classification": "EXECUTED",
+      "status": "REJECTED_FAIL_CLOSED"
+    },
+    {
+      "mutationId": "MUT-RUN-15",
+      "name": "Uncalibrated Reference Temp Offset",
+      "runtimeBoundary": "Thermal State Contract",
+      "detectingComponent": "ThermalConsistencyEngine",
+      "classification": "EXECUTED",
+      "status": "REJECTED_FAIL_CLOSED"
+    },
+    {
+      "mutationId": "MUT-RUN-16",
+      "name": "Synthetic Residual Zeroing",
+      "runtimeBoundary": "Solver Equilibrium Gate",
+      "detectingComponent": "IndependentThermoMechanicalAuditor005",
+      "classification": "EXECUTED",
+      "status": "REJECTED_FAIL_CLOSED"
+    },
+    {
+      "mutationId": "MUT-RUN-17",
+      "name": "Mismatched Nodal Temperature Transfer",
+      "runtimeBoundary": "Mesh Mapping Coupling",
+      "detectingComponent": "PeriodicCouplingMap",
+      "classification": "EXECUTED",
+      "status": "REJECTED_FAIL_CLOSED"
+    },
+    {
+      "mutationId": "MUT-RUN-18",
+      "name": "Non-Physical Thermal Conductivity k <= 0",
+      "runtimeBoundary": "Electrothermal Solver",
+      "detectingComponent": "BidirectionalElectrothermalSolver3D",
+      "classification": "EXECUTED",
+      "status": "REJECTED_FAIL_CLOSED"
+    },
+    {
+      "mutationId": "MUT-RUN-19",
+      "name": "Corrupted Analytical Benchmark Oracle",
+      "runtimeBoundary": "Oracle Auditor",
+      "detectingComponent": "IndependentThermoMechanicalAuditor005",
+      "classification": "EXECUTED",
+      "status": "REJECTED_FAIL_CLOSED"
+    },
+    {
+      "mutationId": "MUT-RUN-20",
+      "name": "Inverted Reaction Gate Logic",
+      "runtimeBoundary": "Acceptance Reconciler",
+      "detectingComponent": "reconcile_secp_expansion_005b",
+      "classification": "EXECUTED",
+      "status": "REJECTED_FAIL_CLOSED"
+    }
+  ]
+}

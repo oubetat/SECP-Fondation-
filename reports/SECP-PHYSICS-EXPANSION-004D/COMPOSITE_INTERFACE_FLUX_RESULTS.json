@@ -1,0 +1,21 @@
+{
+  "caseId": "CHALLENGE_CASE_4B",
+  "description": "3D Composite Layered Material Conduction with Interface Flux Continuity",
+  "params": {
+    "lengthXM": 0.1,
+    "lengthYM": 0.01,
+    "lengthZM": 0.01,
+    "xInterfaceM": 0.05,
+    "k1_W_mK": 400,
+    "k2_W_mK": 100,
+    "tempLeftC": 20,
+    "tempRightC": 100
+  },
+  "interfaceTempC": 36,
+  "uniformHeatFluxW_per_m2": -128000,
+  "totalHeatFlowWatts": -12.8,
+  "dirichletReactionLeftWatts": 12.8,
+  "dirichletReactionRightWatts": -12.8,
+  "energyBalanceResidualWatts": 0,
+  "interfaceContinuitySatisfied": true
+}

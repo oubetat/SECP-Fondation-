@@ -1,0 +1,125 @@
+{
+  "campaignId": "SECP-PHYSICS-EXPANSION-005A",
+  "timestamp": "2026-10-29T09:06:33.673Z",
+  "status": "AUDITED_AND_VERIFIED",
+  "callPathGraph": [
+    {
+      "edgeId": "EDGE-01",
+      "name": "Canonical State & Revision Input to Field Setup",
+      "sourceFile": "src/engine/physics/PhysicsModel.ts",
+      "sourceMethod": "PhysicsModelFactory.createEmptyModel",
+      "destFile": "src/engine/physics/electromagnetics/BidirectionalElectrothermalSolver3D.ts",
+      "destMethod": "solve",
+      "executionClassification": "PRODUCTION_EXECUTED",
+      "notes": "Initializes model domain and field definitions"
+    },
+    {
+      "edgeId": "EDGE-02",
+      "name": "Nodal Temperature Field to Material Property Evaluation",
+      "sourceFile": "src/engine/physics/electromagnetics/BidirectionalElectrothermalSolver3D.ts",
+      "sourceMethod": "nodalTemperaturesC evaluation",
+      "destFile": "src/engine/fem/core/FEMTypes.ts",
+      "destMethod": "FEMMaterial referenceTempC",
+      "executionClassification": "PRODUCTION_EXECUTED",
+      "notes": "Transfers thermal field to material constitutive evaluator"
+    },
+    {
+      "edgeId": "EDGE-03",
+      "name": "Thermal Delta to Thermal Strain Tensor Assembly",
+      "sourceFile": "src/engine/fem/core/TET4LargeDeformationPlasticFormulation.ts",
+      "sourceMethod": "computeThermalStrain",
+      "destFile": "src/engine/fem/core/TET4LargeDeformationPlasticFormulation.ts",
+      "destMethod": "eps_th = alpha * (T - T_ref) * I",
+      "executionClassification": "PRODUCTION_EXECUTED",
+      "notes": "Computes isotropic volumetric thermal expansion strain"
+    },
+    {
+      "edgeId": "EDGE-04",
+      "name": "Thermal Strain to Element Load Vector Integration",
+      "sourceFile": "src/engine/fem/core/TET4LargeDeformationPlasticFormulation.ts",
+      "sourceMethod": "computeThermalForceVector",
+      "destFile": "src/engine/fem/core/NonlinearEquilibriumSolver.ts",
+      "destMethod": "assembleGlobalForceVector",
+      "executionClassification": "PRODUCTION_EXECUTED",
+      "notes": "Integrates f_th_e = integral(B^T * C * eps_th dV) into global RHS load vector"
+    },
+    {
+      "edgeId": "EDGE-05",
+      "name": "Global Stiffness Assembly & Fixed Boundary Penalty Modification",
+      "sourceFile": "src/engine/fem/core/NonlinearEquilibriumSolver.ts",
+      "sourceMethod": "assembleSystemMatrix",
+      "destFile": "src/engine/fem/sparse/SparseLinearSolver.ts",
+      "destMethod": "solveSystem",
+      "executionClassification": "PRODUCTION_EXECUTED",
+      "notes": "Applies Dirichlet boundary constraints K * u = F_ext + F_th"
+    },
+    {
+      "edgeId": "EDGE-06",
+      "name": "Linear/Nonlinear System Solve to Nodal Displacement Recovery",
+      "sourceFile": "src/engine/fem/core/NonlinearEquilibriumSolver.ts",
+      "sourceMethod": "solve",
+      "destFile": "src/engine/physics/electromagnetics/UnifiedThermoElectroMechanicalSolver3D.ts",
+      "destMethod": "finalNodalDisplacements recovery",
+      "executionClassification": "PRODUCTION_EXECUTED",
+      "notes": "Obtains converged nodal displacements u"
+    },
+    {
+      "edgeId": "EDGE-07",
+      "name": "Displacement to Stress Field & Additive Strain Recovery",
+      "sourceFile": "src/engine/fem/core/TET4LargeDeformationPlasticFormulation.ts",
+      "sourceMethod": "computeStress",
+      "destFile": "src/engine/fem/core/FEMTypes.ts",
+      "destMethod": "StructuralFieldRecovery",
+      "executionClassification": "PRODUCTION_EXECUTED",
+      "notes": "Evaluates elastic strain eps_e = eps_total - eps_th and stress sigma = C * eps_e"
+    },
+    {
+      "edgeId": "EDGE-08",
+      "name": "Equilibrium Residual & Boundary Reaction Force Calculation",
+      "sourceFile": "src/engine/fem/core/FEMCore.ts",
+      "sourceMethod": "computeReactionForces",
+      "destFile": "src/engine/fem/core/FEMEvidenceEngine.ts",
+      "destMethod": "recordReactionForceAudit",
+      "executionClassification": "PRODUCTION_EXECUTED",
+      "notes": "Computes R = K*u - F_th and verifies force balance"
+    },
+    {
+      "edgeId": "EDGE-09",
+      "name": "Benchmark Analytical Oracle Suite Execution",
+      "sourceFile": "scripts/run_secp_physics_expansion_005.ts",
+      "sourceMethod": "runCampaign005",
+      "destFile": "src/engine/physics/thermal/IndependentThermoMechanicalAuditor005.ts",
+      "destMethod": "evaluateBM1 through evaluateBM6",
+      "executionClassification": "TEST_ONLY",
+      "notes": "Executes analytical benchmarks in auditor scaffolding"
+    },
+    {
+      "edgeId": "EDGE-10",
+      "name": "Adversarial Mutation Suite Scaffolding Audit",
+      "sourceFile": "scripts/run_secp_physics_expansion_005.ts",
+      "sourceMethod": "runAdversarialMutations call",
+      "destFile": "src/engine/physics/thermal/IndependentThermoMechanicalAuditor005.ts",
+      "destMethod": "runAdversarialMutations",
+      "executionClassification": "REPORT_ONLY",
+      "notes": "Evaluates mutation detection rate in auditor"
+    },
+    {
+      "edgeId": "EDGE-11",
+      "name": "UI Frontend Workbench Event Binding",
+      "sourceFile": "src/components/pme/PhysicsSimulation.tsx",
+      "sourceMethod": "renderSimulationControls",
+      "destFile": "src/engine/physics/electromagnetics/UnifiedThermoElectroMechanicalSolver3D.ts",
+      "destMethod": "solve",
+      "executionClassification": "TEST_ONLY",
+      "notes": "UI calls simulation dispatch; full 3D FEM solver linked via worker/service"
+    }
+  ],
+  "summary": {
+    "totalEdges": 11,
+    "productionExecutedCount": 8,
+    "testOnlyCount": 2,
+    "reportOnlyCount": 1,
+    "missingCount": 0,
+    "indeterminateCount": 0
+  }
+}

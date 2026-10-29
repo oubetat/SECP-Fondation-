@@ -1,0 +1,19 @@
+{
+  "couplingId": "SECP-COUPLING-LINEAGE-005",
+  "gateG3Passed": true,
+  "couplingClassification": "SEQUENTIAL_ONE_WAY_THERMO_MECHANICAL",
+  "dataFlowArchitecture": {
+    "primarySourceDomain": "THERMAL_HEAT_TRANSFER_3D",
+    "primaryDestinationDomain": "SOLID_MECHANICS_3D_CONTINUUM",
+    "transferredField": "NODAL_TEMPERATURE_FIELD",
+    "transferUnits": "Kelvin [K]",
+    "couplingMechanism": "THERMAL_STRAIN_LHS_LOAD_ASSEMBLY",
+    "feedbackChannel": "MECHANICAL_DEFORMATION_TO_CONTACT_THERMAL_RESISTANCE (OPTIONAL 2-WAY)"
+  },
+  "lineageHashAlgorithm": "SHA-256",
+  "dataIntegrityChecks": {
+    "meshNodeCorrespondenceVerified": true,
+    "unitConsistencyVerified": true,
+    "temperatureInterpolationConservationVerified": true
+  }
+}

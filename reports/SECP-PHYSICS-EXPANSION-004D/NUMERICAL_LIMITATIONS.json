@@ -1,0 +1,14 @@
+{
+  "numericalLimitations": [
+    {
+      "topic": "Linear Tetrahedral Gradient Discretization Error",
+      "limitation": "C0 linear tetrahedral finite elements calculate piecewise-constant gradients on face centroids, causing O(h^1) surface flux discretization error.",
+      "mitigation": "Variational nodal reaction force sums must be used for global energy conservation auditing."
+    },
+    {
+      "topic": "Physical Validation Disclaimer",
+      "limitation": "All results are strictly mathematical, topological, and numerical verifications. No experimental physical thermocouple data is present.",
+      "mitigation": "Qualification verdict remains strictly PASS_WITHIN_DECLARED_SCOPE."
+    }
+  ]
+}

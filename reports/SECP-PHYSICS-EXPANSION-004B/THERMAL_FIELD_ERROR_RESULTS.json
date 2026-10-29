@@ -1,0 +1,51 @@
+[
+  {
+    "Nx": 1,
+    "elements": 6,
+    "nodes": 8,
+    "dxM": 0.1,
+    "maxTemperatureErrorC": 1.5722292036475096,
+    "rmsTemperatureErrorC": 0.7290804690438926,
+    "relativeMaxTempErrorPercent": 0.3927098116350521
+  },
+  {
+    "Nx": 2,
+    "elements": 12,
+    "nodes": 12,
+    "dxM": 0.05,
+    "maxTemperatureErrorC": 1.5362445624161296,
+    "rmsTemperatureErrorC": 0.5818743712117089,
+    "relativeMaxTempErrorPercent": 0.3837216045422532,
+    "empiricalTemperatureConvergenceOrder": 0.033403648605636466
+  },
+  {
+    "Nx": 4,
+    "elements": 24,
+    "nodes": 20,
+    "dxM": 0.025,
+    "maxTemperatureErrorC": 1.412216620111451,
+    "rmsTemperatureErrorC": 0.41520520697028046,
+    "relativeMaxTempErrorPercent": 0.3527420312415187,
+    "empiricalTemperatureConvergenceOrder": 0.12144650336055193
+  },
+  {
+    "Nx": 8,
+    "elements": 48,
+    "nodes": 36,
+    "dxM": 0.0125,
+    "maxTemperatureErrorC": 1.1019624556657845,
+    "rmsTemperatureErrorC": 0.24493807410258234,
+    "relativeMaxTempErrorPercent": 0.27524706155403006,
+    "empiricalTemperatureConvergenceOrder": 0.3578863292772682
+  },
+  {
+    "Nx": 16,
+    "elements": 96,
+    "nodes": 68,
+    "dxM": 0.00625,
+    "maxTemperatureErrorC": 0.6737428271682688,
+    "rmsTemperatureErrorC": 0.1163598707925121,
+    "relativeMaxTempErrorPercent": 0.1682867982186634,
+    "empiricalTemperatureConvergenceOrder": 0.7098051577330836
+  }
+]

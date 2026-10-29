@@ -1,0 +1,49 @@
+{
+  "campaignId": "SECP-PHYSICS-EXPANSION-005C",
+  "runId": "RUN-005C-1793265646083",
+  "timestamp": "2026-10-29T09:20:46.095Z",
+  "closedFormOracleReDerivation": {
+    "BM1_FreeDisplacementM": 0.00012000000000000002,
+    "BM2_RestrainedStressPa": -600000000,
+    "BM2_ReactionForceN": 6000000
+  },
+  "interventionsAudited": [
+    {
+      "interventionId": "ADV-INT-01",
+      "parameter": "Delta T (100 K -> 200 K)",
+      "closedFormFormula": "u = alpha * Delta T * L",
+      "analyticalValue": 0.00024000000000000003,
+      "rawNumericalValue": 0.00024,
+      "relativeErrorPercent": 0,
+      "passed": true
+    },
+    {
+      "interventionId": "ADV-INT-02",
+      "parameter": "alpha (1.2e-5 -> 2.4e-5 1/K)",
+      "closedFormFormula": "u = alpha * Delta T * L",
+      "analyticalValue": 0.00024000000000000003,
+      "rawNumericalValue": 0.00024,
+      "relativeErrorPercent": 0,
+      "passed": true
+    },
+    {
+      "interventionId": "ADV-INT-03",
+      "parameter": "E (200 GPa -> 100 GPa)",
+      "closedFormFormula": "sigma = - E * alpha * Delta T / (1 - 2*nu)",
+      "analyticalValue": -300000000,
+      "rawNumericalValue": -300000000,
+      "relativeErrorPercent": 0,
+      "passed": true
+    },
+    {
+      "interventionId": "ADV-INT-04",
+      "parameter": "Boundary Conditions (Free vs Restrained)",
+      "closedFormFormula": "Free: sigma = 0; Restrained: sigma = -600 MPa",
+      "analyticalValue": -600000000,
+      "rawNumericalValue": -600000000,
+      "relativeErrorPercent": 0,
+      "passed": true
+    }
+  ],
+  "status": "ALL_CAUSAL_INTERVENTIONS_MATHEMATICALLY_VERIFIED"
+}

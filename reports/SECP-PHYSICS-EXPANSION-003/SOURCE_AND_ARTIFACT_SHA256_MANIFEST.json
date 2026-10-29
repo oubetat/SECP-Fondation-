@@ -1,7 +1,7 @@
 {
   "campaign": "SECP-PHYSICS-EXPANSION-003",
-  "runId": "RUN-SECP-003-1793182654205",
-  "timestamp": "2026-10-28T10:17:34.205Z",
+  "runId": "RUN-SECP-003-1793258076510",
+  "timestamp": "2026-10-29T07:14:36.510Z",
   "sourceBindings": [
     {
       "relativePath": "src/engine/physics/electromagnetics/UnifiedThermoElectroMechanicalSolver3D.ts",
@@ -54,7 +54,7 @@
     {
       "relativePath": "reports/SECP-PHYSICS-EXPANSION-003/CANONICAL_REVISION_BINDINGS.json",
       "byteLength": 1505,
-      "sha256": "cf398c4ae32f06cb4923841ee0a33f5cd86d02d27593b162a662ee511ad10a76"
+      "sha256": "ea302f191ed08a5ba18f73e358379ba66d18edb9e79041ae0063bbac1af4da66"
     },
     {
       "relativePath": "reports/SECP-PHYSICS-EXPANSION-003/CONSERVATION_AND_ENERGY_BALANCE.json",
@@ -74,7 +74,7 @@
     {
       "relativePath": "reports/SECP-PHYSICS-EXPANSION-003/FINAL_ACCEPTANCE_DECISION.md",
       "byteLength": 782,
-      "sha256": "b25544cf3dbbd8f760b3f97f0da4add6455d12a366d1f2fdd5add5f7ae4215bf"
+      "sha256": "0b556beb18ade1197f394c288d1bfd4326817a815fdc3082d021b9912f30c0e3"
     },
     {
       "relativePath": "reports/SECP-PHYSICS-EXPANSION-003/FINAL_INDEPENDENT_VERIFICATION.md",
@@ -84,7 +84,7 @@
     {
       "relativePath": "reports/SECP-PHYSICS-EXPANSION-003/IMPLEMENTATION_BOUNDARY.json",
       "byteLength": 601,
-      "sha256": "cfaa39ee3fcdeb7e06144853436e1fa0dbcf9e838895b801a2603b2bfaaf0194"
+      "sha256": "65f7eab83bbacddd580d6c1635a5d082a7299f39ff82dca8bbdde9a552d913c8"
     },
     {
       "relativePath": "reports/SECP-PHYSICS-EXPANSION-003/INDEPENDENT_BENCHMARK_RESULTS.json",

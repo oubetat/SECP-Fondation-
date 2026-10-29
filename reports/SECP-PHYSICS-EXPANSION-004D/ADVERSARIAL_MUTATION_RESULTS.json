@@ -1,0 +1,97 @@
+{
+  "totalMutationTests": 15,
+  "passedMutationTests": 15,
+  "failClosedStatus": "PASS",
+  "mutationDetails": [
+    {
+      "id": "MUT-01",
+      "description": "Reversed normal vectors on boundary faces",
+      "detected": true,
+      "auditor": "IndependentBoundaryTopologyAuditor"
+    },
+    {
+      "id": "MUT-02",
+      "description": "Omitted exterior boundary face from integration",
+      "detected": true,
+      "auditor": "IndependentBoundaryTopologyAuditor"
+    },
+    {
+      "id": "MUT-03",
+      "description": "Duplicated boundary face (non-manifold topology)",
+      "detected": true,
+      "auditor": "IndependentBoundaryTopologyAuditor"
+    },
+    {
+      "id": "MUT-04",
+      "description": "Included interior face in exterior surface set",
+      "detected": true,
+      "auditor": "IndependentBoundaryTopologyAuditor"
+    },
+    {
+      "id": "MUT-05",
+      "description": "Degenerate zero-volume triangular element",
+      "detected": true,
+      "auditor": "IndependentBoundaryTopologyAuditor"
+    },
+    {
+      "id": "MUT-06",
+      "description": "Corrupted total surface area expectation",
+      "detected": true,
+      "auditor": "IndependentBoundaryTopologyAuditor"
+    },
+    {
+      "id": "MUT-07",
+      "description": "Inconsistent length units (mm instead of m)",
+      "detected": true,
+      "auditor": "IndependentOracleChallengeSuite"
+    },
+    {
+      "id": "MUT-08",
+      "description": "Altered thermal conductivity coefficient beta",
+      "detected": true,
+      "auditor": "IndependentOracleChallengeSuite"
+    },
+    {
+      "id": "MUT-09",
+      "description": "Corrupted volumetric heat source q_vol",
+      "detected": true,
+      "auditor": "IndependentThermalConservationAuditor3D"
+    },
+    {
+      "id": "MUT-10",
+      "description": "Interface heat flux discontinuity in composite domain",
+      "detected": true,
+      "auditor": "IndependentOracleChallengeSuite"
+    },
+    {
+      "id": "MUT-11",
+      "description": "Compromised hardcoded oracle returning constant value",
+      "detected": true,
+      "auditor": "OracleIndependenceRegister"
+    },
+    {
+      "id": "MUT-12",
+      "description": "Non-monotonic mesh error progression vector",
+      "detected": true,
+      "auditor": "IndependentOracleChallengeSuite"
+    },
+    {
+      "id": "MUT-13",
+      "description": "Inverted Dirichlet boundary condition temperature",
+      "detected": true,
+      "auditor": "IndependentOracleChallengeSuite"
+    },
+    {
+      "id": "MUT-14",
+      "description": "Unbalanced electrical power mapping (P_elec != Q_th)",
+      "detected": true,
+      "auditor": "IndependentOracleChallengeSuite"
+    },
+    {
+      "id": "MUT-15",
+      "description": "Non-physical discriminant in Kirchhoff inversion",
+      "detected": true,
+      "auditor": "IndependentOracleChallengeSuite"
+    }
+  ]
+}

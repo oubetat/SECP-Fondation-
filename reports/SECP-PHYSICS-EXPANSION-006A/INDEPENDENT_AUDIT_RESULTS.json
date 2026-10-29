@@ -1,0 +1,129 @@
+{
+  "inventoryAudit": [
+    {
+      "file": "BASELINE_AND_SCOPE.json",
+      "exists": true,
+      "hashMatch": true,
+      "actualHash": "1b0b9e6d2166e8ce7f9fe312806810dea276a0f967b70b684c1e07f3cd8bcee5"
+    },
+    {
+      "file": "REQUIREMENT_TRACEABILITY.json",
+      "exists": true,
+      "hashMatch": true,
+      "actualHash": "9d79936512d3e97830fa2bc4b266b3ecf5c8ec29350487d9751b3c7573ea3991"
+    },
+    {
+      "file": "PRODUCTION_RUNTIME_TRACE.json",
+      "exists": true,
+      "hashMatch": true,
+      "actualHash": "14a528b1626b4604af6231c5b141dd0b7fcd8ac0667a6b9e6b6e7a83d4660d86"
+    },
+    {
+      "file": "CAUSAL_INTERVENTION_RESULTS.json",
+      "exists": true,
+      "hashMatch": true,
+      "actualHash": "5571561619a6c836e8901c4040535ad48f21a06158c40d77987515f4f7162318"
+    },
+    {
+      "file": "INDEPENDENT_ORACLE_RESULTS.json",
+      "exists": true,
+      "hashMatch": true,
+      "actualHash": "a324adf367c86df72245ebe41f276c6464069b718c91e68ff0bf9d21d5d68cba"
+    },
+    {
+      "file": "RAW_MESH_CONVERGENCE_DATA.json",
+      "exists": true,
+      "hashMatch": true,
+      "actualHash": "2fa1ad56ac5883aafe814b22b138e4d63136f48b23cedcbf8f53ed4a93f6ea2e"
+    },
+    {
+      "file": "CONSERVATION_RECONCILIATION.json",
+      "exists": true,
+      "hashMatch": true,
+      "actualHash": "3780f4ad7a27c91db87736e7594d37d45288974514e6db7c82c2d734626ff682"
+    },
+    {
+      "file": "UNCERTAINTY_REGISTER.json",
+      "exists": true,
+      "hashMatch": true,
+      "actualHash": "8e934905c46631869aeed8880bb6d63a8dcfd11c5488fdc217a3bdb3388fbc74"
+    },
+    {
+      "file": "MATERIAL_AND_CANONICAL_BINDING_AUDIT.json",
+      "exists": true,
+      "hashMatch": true,
+      "actualHash": "5db4079fa6aa4171ada322b15e064b2cfdd3b8e42185efadbb040895e551cc90"
+    },
+    {
+      "file": "ADVERSARIAL_MUTATION_RESULTS.json",
+      "exists": true,
+      "hashMatch": true,
+      "actualHash": "b4bfb590970a616d610b3eaea6c4590da9537ad8f8ff0d49c795d6895edd3c02"
+    },
+    {
+      "file": "REPRODUCIBILITY_RESULTS.json",
+      "exists": true,
+      "hashMatch": true,
+      "actualHash": "51f1167134826d6cfc54e976c5d341420f6db2d610bd0a7cbbb339740a14df1a"
+    },
+    {
+      "file": "COMMON_MODE_DEPENDENCY_REGISTER.json",
+      "exists": true,
+      "hashMatch": true,
+      "actualHash": "039578a05981ec6709351b7988478102579cf075e98bb353f09cc46128a238c5"
+    },
+    {
+      "file": "GAP_REGISTER.json",
+      "exists": true,
+      "hashMatch": true,
+      "actualHash": "ce037da7e5302150d938596b29ecd5df9c54e90273e9a6c775efaf188e81c2e4"
+    },
+    {
+      "file": "FINAL_QUALIFICATION_DECISION.md",
+      "exists": true,
+      "hashMatch": true,
+      "actualHash": "aee6b32d731010bab7c0312e170afde1db05f1a0a143ceab45e1ecdbb34d468a"
+    }
+  ],
+  "convergenceAudit": {
+    "inputValues": {
+      "f1": 0.000120001,
+      "f2": 0.000120004,
+      "f3": 0.000120015,
+      "r": 2
+    },
+    "recalculatedOrderP": 1.8744691179191038,
+    "reportedOrderP": 1.95,
+    "orderDiscrepancy": 0.0755308820808962,
+    "recalculatedGCIPercent": 0.001171865234450346,
+    "reportedGCIPercent": 0.0012,
+    "status": "DISCREPANCY"
+  },
+  "conservationAudit": {
+    "recalculatedEnergyResidual": 0,
+    "reportedEnergyResidual": 0,
+    "recalculatedForceResidual": 0,
+    "reportedForceResidual": 1e-11,
+    "status": "MATCH"
+  },
+  "uncertaintyAudit": {
+    "recalculatedRSS": 0.11225618023075612,
+    "reportedCombinedUncertainty": 0.112,
+    "discrepancy": 0.0002561802307561173,
+    "status": "MATCH"
+  },
+  "productionAudit": {
+    "stepCount": 7,
+    "allProductionExecuted": true,
+    "status": "VERIFIED"
+  },
+  "commonModeAudit": {
+    "dependenciesCataloged": 3,
+    "riskAssessmentPresent": true,
+    "status": "VERIFIED"
+  },
+  "finalAuditDecision": {
+    "verdict": "PASS_WITH_OPEN_GAPS",
+    "justification": "Independent recalculation detected a discrepancy in mesh convergence order (Recalculated: 1.8745, Reported: 1.95). While the solution remains within acceptable error bounds, the reported convergence metric is slightly optimistic."
+  }
+}

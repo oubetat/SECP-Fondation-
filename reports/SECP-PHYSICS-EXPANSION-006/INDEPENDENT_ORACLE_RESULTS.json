@@ -1,0 +1,125 @@
+{
+  "campaignId": "SECP-PHYSICS-EXPANSION-006",
+  "runId": "RUN-006-1793265882146",
+  "timestamp": "2026-10-29T09:24:42.148Z",
+  "analyticalOracles": [
+    {
+      "id": "BM-1-DISP",
+      "oracle": {
+        "benchmarkId": "BM-1-DISP",
+        "name": "BM-1 Unconstrained Free Thermal Displacement u_x(Lx)",
+        "analyticalValue": 0.00012000000000000002,
+        "numericalValue": 0.00012,
+        "relativeErrorPercent": 1.1293772630057337e-14,
+        "passed": true,
+        "tolerancePercent": 0.1,
+        "details": "Analytical u_x = 1.200000e-4 m, Numerical = 1.200000e-4 m (Error: 0.0000%)"
+      }
+    },
+    {
+      "id": "BM-1-STRESS",
+      "oracle": {
+        "benchmarkId": "BM-1-STRESS",
+        "name": "BM-1 Unconstrained Free Thermal Stress sigma_xx",
+        "analyticalValue": 0,
+        "numericalValue": 0,
+        "relativeErrorPercent": 0,
+        "passed": true,
+        "tolerancePercent": 0.01,
+        "details": "Analytical sigma = 0 Pa, Numerical = 0.000000 Pa"
+      }
+    },
+    {
+      "id": "BM-2-STRESS",
+      "oracle": {
+        "benchmarkId": "BM-2-STRESS",
+        "name": "BM-2 Restrained Thermal Stress sigma_hydrostatic",
+        "analyticalValue": -600000000,
+        "numericalValue": -600000000,
+        "relativeErrorPercent": 0,
+        "passed": true,
+        "tolerancePercent": 0.1,
+        "details": "Analytical sigma = -6.000000e+8 Pa, Numerical = -6.000000e+8 Pa (Error: 0.0000%)"
+      }
+    },
+    {
+      "id": "BM-2-REACTION",
+      "oracle": {
+        "benchmarkId": "BM-2-REACTION",
+        "name": "BM-2 Boundary Reaction Force F_rxn",
+        "analyticalValue": 6000000,
+        "numericalValue": 6000000,
+        "relativeErrorPercent": 0,
+        "passed": true,
+        "tolerancePercent": 0.1,
+        "details": "Analytical F_rxn = 6.000000e+6 N, Numerical = 6.000000e+6 N (Error: 0.0000%)"
+      }
+    },
+    {
+      "id": "BM-3-DISP",
+      "oracle": {
+        "benchmarkId": "BM-3-TIP-DISP",
+        "name": "BM-3 1D Bar Linear Gradient Free Tip Displacement u(L)",
+        "analyticalValue": 0.00006000000000000001,
+        "numericalValue": 0.00006,
+        "relativeErrorPercent": 1.1293772630057337e-14,
+        "passed": true,
+        "tolerancePercent": 0.1,
+        "details": "Analytical u(L) = 6.000000e-5 m, Numerical = 6.000000e-5 m (Error: 0.0000%)"
+      }
+    },
+    {
+      "id": "BM-4-FORCE",
+      "oracle": {
+        "benchmarkId": "BM-4-THERMAL-FORCE",
+        "name": "BM-4 Integrated Thermal Load Vector with E(T) Gradient",
+        "analyticalValue": 116000,
+        "numericalValue": 116000,
+        "relativeErrorPercent": 0,
+        "passed": true,
+        "tolerancePercent": 0.1,
+        "details": "Analytical F_th = 1.160000e+5 N, Numerical = 1.160000e+5 N (Error: 0.0000%)"
+      }
+    },
+    {
+      "id": "BM-5-TET",
+      "oracle": {
+        "benchmarkId": "BM-5-3D-TET",
+        "name": "BM-5 3D Tetrahedral Thermal Equivalent Load Magnitude",
+        "analyticalValue": 600,
+        "numericalValue": 600,
+        "relativeErrorPercent": 0,
+        "passed": true,
+        "tolerancePercent": 0.1,
+        "details": "Analytical f_th = 6.000000e+2 N, Numerical = 6.000000e+2 N (Error: 0.0000%)"
+      }
+    },
+    {
+      "id": "BM-6-DE",
+      "oracle": {
+        "benchmarkId": "BM-6-DSIGMA-DE",
+        "name": "BM-6 Hydrostatic Stress Sensitivity d(sigma)/d(E)",
+        "analyticalValue": -0.003,
+        "numericalValue": -0.003,
+        "relativeErrorPercent": 0,
+        "passed": true,
+        "tolerancePercent": 0.1,
+        "details": "Analytical = -3.000000e-3, Numerical = -3.000000e-3 (Error: 0.0000%)"
+      }
+    },
+    {
+      "id": "BM-6-DALPHA",
+      "oracle": {
+        "benchmarkId": "BM-6-DSIGMA-DALPHA",
+        "name": "BM-6 Hydrostatic Stress Sensitivity d(sigma)/d(alpha)",
+        "analyticalValue": -50000000000000,
+        "numericalValue": -50000000000000,
+        "relativeErrorPercent": 0,
+        "passed": true,
+        "tolerancePercent": 0.1,
+        "details": "Analytical = -5.000000e+13, Numerical = -5.000000e+13 (Error: 0.0000%)"
+      }
+    }
+  ],
+  "status": "ORACLES_VERIFIED"
+}

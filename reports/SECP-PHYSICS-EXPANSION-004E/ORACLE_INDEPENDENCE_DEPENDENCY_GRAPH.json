@@ -1,0 +1,57 @@
+{
+  "nodes": [
+    {
+      "id": "IndependentOracleChallengeSuite",
+      "category": "Analytical Oracle",
+      "isolated": true
+    },
+    {
+      "id": "IndependentAdjudicationAuditor004E",
+      "category": "Scientific Auditor",
+      "isolated": true
+    },
+    {
+      "id": "IndependentBoundaryTopologyAuditor",
+      "category": "Topological Auditor",
+      "isolated": true
+    },
+    {
+      "id": "IndependentThermalConservationAuditor3D",
+      "category": "Conservation Auditor",
+      "isolated": true
+    },
+    {
+      "id": "BidirectionalElectrothermalSolver3D",
+      "category": "FEM Solver Engine",
+      "isolated": true
+    }
+  ],
+  "edges": [
+    {
+      "source": "IndependentAdjudicationAuditor004E",
+      "target": "IndependentOracleChallengeSuite",
+      "relation": "verifies"
+    },
+    {
+      "source": "IndependentAdjudicationAuditor004E",
+      "target": "IndependentBoundaryTopologyAuditor",
+      "relation": "verifies"
+    },
+    {
+      "source": "IndependentAdjudicationAuditor004E",
+      "target": "IndependentThermalConservationAuditor3D",
+      "relation": "verifies"
+    },
+    {
+      "source": "IndependentAdjudicationAuditor004E",
+      "target": "BidirectionalElectrothermalSolver3D",
+      "relation": "audits_output"
+    }
+  ],
+  "commonModeFailureRisks": [
+    {
+      "risk": "Shared floating-point numerical tolerances",
+      "mitigation": "Strict machine-precision thresholds (< 1e-10 W) applied independently."
+    }
+  ]
+}

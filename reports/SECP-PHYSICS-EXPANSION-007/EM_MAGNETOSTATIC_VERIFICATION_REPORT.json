@@ -1,0 +1,8 @@
+{
+  "domain": "Domain_C_EM",
+  "testCase": "CYLINDRICAL_CONDUCTOR_B_FIELD",
+  "analyticalB_max": 0.002,
+  "observedB_max": 0.001995,
+  "relError": 0.0025,
+  "status": "PASS"
+}

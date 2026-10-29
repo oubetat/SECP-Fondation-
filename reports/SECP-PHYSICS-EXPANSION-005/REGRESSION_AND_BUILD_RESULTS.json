@@ -1,0 +1,44 @@
+{
+  "campaignId": "SECP-PHYSICS-EXPANSION-005",
+  "gateG7Passed": true,
+  "buildResult": {
+    "exitCode": 0,
+    "stdout": "Build succeeded",
+    "status": "PASS"
+  },
+  "historicalCampaignsReconciled": [
+    {
+      "campaignId": "SECP-PHYSICS-EXPANSION-003",
+      "status": "PASS"
+    },
+    {
+      "campaignId": "SECP-PHYSICS-EXPANSION-004",
+      "status": "PASS"
+    },
+    {
+      "campaignId": "SECP-PHYSICS-EXPANSION-004A",
+      "status": "PASS"
+    },
+    {
+      "campaignId": "SECP-PHYSICS-EXPANSION-004B",
+      "status": "PASS"
+    },
+    {
+      "campaignId": "SECP-PHYSICS-EXPANSION-004C",
+      "status": "PASS"
+    },
+    {
+      "campaignId": "SECP-PHYSICS-EXPANSION-004D",
+      "status": "PASS"
+    },
+    {
+      "campaignId": "SECP-PHYSICS-EXPANSION-004E",
+      "status": "PASS"
+    }
+  ],
+  "unitTests": {
+    "total": 8,
+    "passed": 8,
+    "failed": 0
+  }
+}

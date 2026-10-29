@@ -1,0 +1,18 @@
+{
+  "gapsAndLimitations": [
+    {
+      "gapId": "GAP-004E-01",
+      "title": "Discretization Error on Surface Flux Integration",
+      "status": "NUMERICALLY_EXPLAINED",
+      "description": "Direct surface flux calculation exhibits O(h^1) discretization error due to C0 piecewise-constant element gradients. Decays monotonically with refinement.",
+      "impact": "Requires using variational nodal reactions for strict energy conservation auditing."
+    },
+    {
+      "gapId": "GAP-004E-02",
+      "title": "Experimental Physical Hardware Validation",
+      "status": "UNVERIFIED",
+      "description": "No physical hardware test bench or empirical thermocouple measurements are available in the codebase dataset.",
+      "impact": "Application status remains strictly PASS_WITHIN_DECLARED_SCOPE and UNVERIFIED for hardware deployment."
+    }
+  ]
+}

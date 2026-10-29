@@ -1,0 +1,8 @@
+{
+  "domain": "Domain_D_UNIFIED",
+  "testCase": "FSI_PLATE_DEFLECTION_IN_AIRFLOW",
+  "pressureLoadPa": 1000,
+  "expectedDeflectionMM": 1.2,
+  "observedDeflectionMM": 1.18,
+  "status": "PASS"
+}

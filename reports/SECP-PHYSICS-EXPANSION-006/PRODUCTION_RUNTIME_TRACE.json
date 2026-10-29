@@ -1,0 +1,60 @@
+{
+  "campaignId": "SECP-PHYSICS-EXPANSION-006",
+  "runId": "RUN-006-1793265882146",
+  "canonicalRevision": "SECP-REV-006-20261029-VVUQ-CREDIBILITY",
+  "materialStateId": "MAT-STEEL-STRUCTURAL-AISI304-VERIFIED",
+  "timestamp": "2026-10-29T09:24:42.147Z",
+  "executionBoundary": "PRODUCTION_SOLVERS",
+  "runtimeEvents": [
+    {
+      "eventId": "EV-01",
+      "component": "PhysicsModelFactory",
+      "action": "createEmptyModel",
+      "inputHash": "9863217cf1886e20421f4634a456cd0aaf2927e24766dde6ca9cdabfd5d9a7eb",
+      "outputHash": "bb0fedeff2f9022606c9450dc0da8a11822b71f2d8e108f50f0e8b19a71464d1"
+    },
+    {
+      "eventId": "EV-02",
+      "component": "BidirectionalElectrothermalSolver3D",
+      "action": "solveElectrothermal",
+      "inputHash": "46ee8cb87b547ad98eafbd1ca418235c496566c1ce75d3f2fb4afbfd828760d8",
+      "outputHash": "cc03f8c9eedad5d6bb73d9f5d74d0c6f58b51f6409a543aafc481dfb00c59622"
+    },
+    {
+      "eventId": "EV-03",
+      "component": "TET4LargeDeformationPlasticFormulation",
+      "action": "computeThermalStrain",
+      "inputHash": "cc03f8c9eedad5d6bb73d9f5d74d0c6f58b51f6409a543aafc481dfb00c59622",
+      "outputHash": "131d4c546dde359289a30afa0b608b45e210d8d02037b68bab11c071a297262e"
+    },
+    {
+      "eventId": "EV-04",
+      "component": "NonlinearEquilibriumSolver",
+      "action": "assembleGlobalForceVector",
+      "inputHash": "131d4c546dde359289a30afa0b608b45e210d8d02037b68bab11c071a297262e",
+      "outputHash": "282cd3c8993e34afe5363198bada7d0f6fc4e21421ab16301867c98341386e30"
+    },
+    {
+      "eventId": "EV-05",
+      "component": "NonlinearEquilibriumSolver",
+      "action": "solve",
+      "inputHash": "282cd3c8993e34afe5363198bada7d0f6fc4e21421ab16301867c98341386e30",
+      "outputHash": "df4dc4c76185d0b9068bf88cdafa5a256e9ef985c6cb743b2d9f425b858054dd"
+    },
+    {
+      "eventId": "EV-06",
+      "component": "FEMCore",
+      "action": "computeReactionForces",
+      "inputHash": "df4dc4c76185d0b9068bf88cdafa5a256e9ef985c6cb743b2d9f425b858054dd",
+      "outputHash": "ac86238c432c8bfb73fa153c7530270b7302ff5c959a20583be4eea168f3ca8a"
+    },
+    {
+      "eventId": "EV-07",
+      "component": "UnifiedThermoElectroMechanicalSolver3D",
+      "action": "picardIterationLoop",
+      "inputHash": "df4dc4c76185d0b9068bf88cdafa5a256e9ef985c6cb743b2d9f425b858054dd",
+      "outputHash": "378cd866e59bcf0078f821bb8c302aa54547bb826685c1e29ff201cffd719ade"
+    }
+  ],
+  "status": "PRODUCTION_RUNTIME_TRACE_VERIFIED"
+}

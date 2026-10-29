@@ -1,0 +1,265 @@
+{
+  "case1_linear3D": {
+    "caseId": "BENCHMARK_3D_CASE_1",
+    "caseDescription": "3D Linear Temperature Conduction (Zero Source, Constant Flux)",
+    "params": {
+      "lengthXM": 0.1,
+      "lengthYM": 0.01,
+      "lengthZM": 0.01,
+      "conductivityW_mK": 200,
+      "volumetricHeatW_m3": 0,
+      "boundaryTempInletC": 20,
+      "boundaryTempOutletC": 100
+    },
+    "volumeM3": 0.00001,
+    "totalVolumetricHeatWatts": 0,
+    "surfaceFluxDetails": [
+      {
+        "faceName": "X_INLET (x=0)",
+        "outwardUnitNormal": [
+          -1,
+          0,
+          0
+        ],
+        "areaM2": 0.0001,
+        "outwardFluxRateWatts": 16
+      },
+      {
+        "faceName": "X_OUTLET (x=Lx)",
+        "outwardUnitNormal": [
+          1,
+          0,
+          0
+        ],
+        "areaM2": 0.0001,
+        "outwardFluxRateWatts": -16
+      },
+      {
+        "faceName": "Y_MIN (y=0)",
+        "outwardUnitNormal": [
+          0,
+          -1,
+          0
+        ],
+        "areaM2": 0.001,
+        "outwardFluxRateWatts": 0
+      },
+      {
+        "faceName": "Y_MAX (y=Ly)",
+        "outwardUnitNormal": [
+          0,
+          1,
+          0
+        ],
+        "areaM2": 0.001,
+        "outwardFluxRateWatts": 0
+      },
+      {
+        "faceName": "Z_MIN (z=0)",
+        "outwardUnitNormal": [
+          0,
+          0,
+          -1
+        ],
+        "areaM2": 0.001,
+        "outwardFluxRateWatts": 0
+      },
+      {
+        "faceName": "Z_MAX (z=Lz)",
+        "outwardUnitNormal": [
+          0,
+          0,
+          1
+        ],
+        "areaM2": 0.001,
+        "outwardFluxRateWatts": 0
+      }
+    ],
+    "totalOutwardBoundaryFluxWatts": 0,
+    "totalDirichletReactionWatts": 16,
+    "globalEnergyBalanceResidualWatts": 0,
+    "maxTemperatureC": 100,
+    "maxTemperatureLocationM": [
+      0.1,
+      0,
+      0
+    ]
+  },
+  "case2_quadraticJouleHeating": {
+    "caseId": "BENCHMARK_3D_CASE_2",
+    "caseDescription": "3D Nonuniform Quadratic Thermal Source with Dirichlet & Adiabatic BCs",
+    "params": {
+      "lengthXM": 0.1,
+      "lengthYM": 0.01,
+      "lengthZM": 0.01,
+      "conductivityW_mK": 200,
+      "volumetricHeatW_m3": 15214157.6,
+      "boundaryTempInletC": 20,
+      "boundaryTempOutletC": 20
+    },
+    "volumeM3": 0.00001,
+    "totalVolumetricHeatWatts": 152.14157600000001,
+    "surfaceFluxDetails": [
+      {
+        "faceName": "DIRICHLET_BASE (x=0)",
+        "outwardUnitNormal": [
+          -1,
+          0,
+          0
+        ],
+        "areaM2": 0.0001,
+        "outwardFluxRateWatts": 152.14157600000001
+      },
+      {
+        "faceName": "ADIABATIC_END (x=Lx)",
+        "outwardUnitNormal": [
+          1,
+          0,
+          0
+        ],
+        "areaM2": 0.0001,
+        "outwardFluxRateWatts": 0
+      },
+      {
+        "faceName": "LATERAL_Y0 (y=0)",
+        "outwardUnitNormal": [
+          0,
+          -1,
+          0
+        ],
+        "areaM2": 0.001,
+        "outwardFluxRateWatts": 0
+      },
+      {
+        "faceName": "LATERAL_YMAX (y=Ly)",
+        "outwardUnitNormal": [
+          0,
+          1,
+          0
+        ],
+        "areaM2": 0.001,
+        "outwardFluxRateWatts": 0
+      },
+      {
+        "faceName": "LATERAL_Z0 (z=0)",
+        "outwardUnitNormal": [
+          0,
+          0,
+          -1
+        ],
+        "areaM2": 0.001,
+        "outwardFluxRateWatts": 0
+      },
+      {
+        "faceName": "LATERAL_ZMAX (z=Lz)",
+        "outwardUnitNormal": [
+          0,
+          0,
+          1
+        ],
+        "areaM2": 0.001,
+        "outwardFluxRateWatts": 0
+      }
+    ],
+    "totalOutwardBoundaryFluxWatts": 152.14157600000001,
+    "totalDirichletReactionWatts": 152.14157600000001,
+    "globalEnergyBalanceResidualWatts": 0,
+    "maxTemperatureC": 400.35394,
+    "maxTemperatureLocationM": [
+      0.1,
+      0.005,
+      0.005
+    ]
+  },
+  "case3_harmonicBox3D": {
+    "caseId": "BENCHMARK_3D_CASE_3",
+    "caseDescription": "3D Multi-Directional Harmonic Conduction Box with Opposite Wall Fluxes",
+    "params": {
+      "lengthXM": 0.1,
+      "lengthYM": 0.1,
+      "lengthZM": 0.1,
+      "conductivityW_mK": 100,
+      "volumetricHeatW_m3": 0,
+      "boundaryTempInletC": 20,
+      "boundaryTempOutletC": 20,
+      "gradCoeffs": {
+        "Cx": 50,
+        "Cy": 100,
+        "Cz": 150
+      }
+    },
+    "volumeM3": 0.0010000000000000002,
+    "totalVolumetricHeatWatts": 0,
+    "surfaceFluxDetails": [
+      {
+        "faceName": "FACE_X0 (x=0)",
+        "outwardUnitNormal": [
+          -1,
+          0,
+          0
+        ],
+        "areaM2": 0.010000000000000002,
+        "outwardFluxRateWatts": 50.00000000000001
+      },
+      {
+        "faceName": "FACE_XLx (x=Lx)",
+        "outwardUnitNormal": [
+          1,
+          0,
+          0
+        ],
+        "areaM2": 0.010000000000000002,
+        "outwardFluxRateWatts": -50.00000000000001
+      },
+      {
+        "faceName": "FACE_Y0 (y=0)",
+        "outwardUnitNormal": [
+          0,
+          -1,
+          0
+        ],
+        "areaM2": 0.010000000000000002,
+        "outwardFluxRateWatts": 100.00000000000001
+      },
+      {
+        "faceName": "FACE_YLy (y=Ly)",
+        "outwardUnitNormal": [
+          0,
+          1,
+          0
+        ],
+        "areaM2": 0.010000000000000002,
+        "outwardFluxRateWatts": -100.00000000000001
+      },
+      {
+        "faceName": "FACE_Z0 (z=0)",
+        "outwardUnitNormal": [
+          0,
+          0,
+          -1
+        ],
+        "areaM2": 0.010000000000000002,
+        "outwardFluxRateWatts": 150.00000000000003
+      },
+      {
+        "faceName": "FACE_ZLz (z=Lz)",
+        "outwardUnitNormal": [
+          0,
+          0,
+          1
+        ],
+        "areaM2": 0.010000000000000002,
+        "outwardFluxRateWatts": -150.00000000000003
+      }
+    ],
+    "totalOutwardBoundaryFluxWatts": 0,
+    "totalDirichletReactionWatts": 300.00000000000006,
+    "globalEnergyBalanceResidualWatts": 0,
+    "maxTemperatureC": 50,
+    "maxTemperatureLocationM": [
+      0.1,
+      0.1,
+      0.1
+    ]
+  }
+}

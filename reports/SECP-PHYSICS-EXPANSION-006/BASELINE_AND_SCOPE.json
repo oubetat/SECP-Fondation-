@@ -1,0 +1,57 @@
+{
+  "campaignId": "SECP-PHYSICS-EXPANSION-006",
+  "runId": "RUN-006-1793265882146",
+  "timestamp": "2026-10-29T09:24:42.146Z",
+  "status": "FROZEN_AND_AUDITED",
+  "historicalCampaigns": [
+    {
+      "id": "SECP-PHYSICS-EXPANSION-003",
+      "status": "PASS"
+    },
+    {
+      "id": "SECP-PHYSICS-EXPANSION-004",
+      "status": "PASS"
+    },
+    {
+      "id": "SECP-PHYSICS-EXPANSION-004A",
+      "status": "PASS"
+    },
+    {
+      "id": "SECP-PHYSICS-EXPANSION-004B",
+      "status": "PASS"
+    },
+    {
+      "id": "SECP-PHYSICS-EXPANSION-004C",
+      "status": "PASS"
+    },
+    {
+      "id": "SECP-PHYSICS-EXPANSION-004D",
+      "status": "PASS"
+    },
+    {
+      "id": "SECP-PHYSICS-EXPANSION-004E",
+      "status": "PASS"
+    },
+    {
+      "id": "SECP-PHYSICS-EXPANSION-005",
+      "status": "PASS_WITHIN_DECLARED_SCOPE"
+    },
+    {
+      "id": "SECP-PHYSICS-EXPANSION-005A",
+      "status": "PASS_WITHIN_DECLARED_SCOPE"
+    },
+    {
+      "id": "SECP-PHYSICS-EXPANSION-005B",
+      "status": "PASS_PRODUCTION_CAUSALITY_VERIFIED"
+    },
+    {
+      "id": "SECP-PHYSICS-EXPANSION-005C",
+      "status": "PASS_INDEPENDENT_COUPLING_VERIFIED"
+    }
+  ],
+  "vvuqFramework": {
+    "standard": "ASME V&V 20-2009 / NIST Special Publication 1200",
+    "verificationType": "Code Verification + Solution Verification",
+    "validationType": "Experimental Model Validation (UNVERIFIED: DIC Coupon Testing Required)"
+  }
+}

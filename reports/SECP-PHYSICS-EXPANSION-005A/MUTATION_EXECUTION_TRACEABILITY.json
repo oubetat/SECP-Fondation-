@@ -1,0 +1,230 @@
+{
+  "campaignId": "SECP-PHYSICS-EXPANSION-005A",
+  "timestamp": "2026-10-29T09:06:33.677Z",
+  "totalMutationsTraceable": 20,
+  "auditorCodeMutationsCount": 20,
+  "productionCodeMutationsCount": 0,
+  "mutationList": [
+    {
+      "mutationId": "MUT-01",
+      "name": "Inverted Thermal Expansion Coefficient Sign",
+      "targetComponent": "ThermalStrainEngine",
+      "targetFile": "src/engine/physics/thermal/IndependentThermoMechanicalAuditor005.ts",
+      "targetFunction": "runAdversarialMutations / evaluateBM*",
+      "targetClassification": "AUDITOR_CODE",
+      "detectionMechanism": "Detected negative thermal strain under positive temperature delta, failing BM-1 displacement assertion",
+      "detectedInAuditor": true,
+      "auditVerdictOnRobustness": "Proves auditor oracle correctness and fail-closed assertion capability under simulated parameter corruption."
+    },
+    {
+      "mutationId": "MUT-02",
+      "name": "Inverted Thermal Strain Formula Sign",
+      "targetComponent": "ConstitutiveEquations",
+      "targetFile": "src/engine/physics/thermal/IndependentThermoMechanicalAuditor005.ts",
+      "targetFunction": "runAdversarialMutations / evaluateBM*",
+      "targetClassification": "AUDITOR_CODE",
+      "detectionMechanism": "Detected negative thermal strain in unconstrained bar, failing BM-1 free thermal expansion benchmark",
+      "detectedInAuditor": true,
+      "auditVerdictOnRobustness": "Proves auditor oracle correctness and fail-closed assertion capability under simulated parameter corruption."
+    },
+    {
+      "mutationId": "MUT-03",
+      "name": "Reference Temperature Uncalibrated Offset",
+      "targetComponent": "ThermalStateContract",
+      "targetFile": "src/engine/physics/thermal/IndependentThermoMechanicalAuditor005.ts",
+      "targetFunction": "runAdversarialMutations / evaluateBM*",
+      "targetClassification": "AUDITOR_CODE",
+      "detectionMechanism": "Non-zero thermal strain at ambient T = 293.15 K, failing stress-free reference state contract",
+      "detectedInAuditor": true,
+      "auditVerdictOnRobustness": "Proves auditor oracle correctness and fail-closed assertion capability under simulated parameter corruption."
+    },
+    {
+      "mutationId": "MUT-04",
+      "name": "Corrupted Elasticity Tensor Matrix Coefficients",
+      "targetComponent": "ElasticityMatrix3D",
+      "targetFile": "src/engine/physics/thermal/IndependentThermoMechanicalAuditor005.ts",
+      "targetFunction": "runAdversarialMutations / evaluateBM*",
+      "targetClassification": "AUDITOR_CODE",
+      "detectionMechanism": "Hydrostatic stress magnitude mismatch in BM-2, failing analytical Hookes law check",
+      "detectedInAuditor": true,
+      "auditVerdictOnRobustness": "Proves auditor oracle correctness and fail-closed assertion capability under simulated parameter corruption."
+    },
+    {
+      "mutationId": "MUT-05",
+      "name": "Non-zero Shear Thermal Strain Injection in Isotropic Material",
+      "targetComponent": "ThermalStrainEngine",
+      "targetFile": "src/engine/physics/thermal/IndependentThermoMechanicalAuditor005.ts",
+      "targetFunction": "runAdversarialMutations / evaluateBM*",
+      "targetClassification": "AUDITOR_CODE",
+      "detectionMechanism": "Detected off-diagonal thermal strain components in isotropic material model",
+      "detectedInAuditor": true,
+      "auditVerdictOnRobustness": "Proves auditor oracle correctness and fail-closed assertion capability under simulated parameter corruption."
+    },
+    {
+      "mutationId": "MUT-06",
+      "name": "Zero Thermal Force Vector Injection",
+      "targetComponent": "AssemblyEngine",
+      "targetFile": "src/engine/physics/thermal/IndependentThermoMechanicalAuditor005.ts",
+      "targetFunction": "runAdversarialMutations / evaluateBM*",
+      "targetClassification": "AUDITOR_CODE",
+      "detectionMechanism": "Zero boundary reactions calculated under fully restrained thermal expansion, failing BM-2",
+      "detectedInAuditor": true,
+      "auditVerdictOnRobustness": "Proves auditor oracle correctness and fail-closed assertion capability under simulated parameter corruption."
+    },
+    {
+      "mutationId": "MUT-07",
+      "name": "Inverted Thermal Force Vector Sign",
+      "targetComponent": "GlobalLoadAssembly",
+      "targetFile": "src/engine/physics/thermal/IndependentThermoMechanicalAuditor005.ts",
+      "targetFunction": "runAdversarialMutations / evaluateBM*",
+      "targetClassification": "AUDITOR_CODE",
+      "detectionMechanism": "Boundary reaction direction opposite to internal thermal expansion force, failing equilibrium audit",
+      "detectedInAuditor": true,
+      "auditVerdictOnRobustness": "Proves auditor oracle correctness and fail-closed assertion capability under simulated parameter corruption."
+    },
+    {
+      "mutationId": "MUT-08",
+      "name": "Inverted Boundary Reaction Force Accumulator",
+      "targetComponent": "ReactionForceAuditor",
+      "targetFile": "src/engine/physics/thermal/IndependentThermoMechanicalAuditor005.ts",
+      "targetFunction": "runAdversarialMutations / evaluateBM*",
+      "targetClassification": "AUDITOR_CODE",
+      "detectionMechanism": "Sum of reactions does not balance total volume thermal force, failing reaction balance gate",
+      "detectedInAuditor": true,
+      "auditVerdictOnRobustness": "Proves auditor oracle correctness and fail-closed assertion capability under simulated parameter corruption."
+    },
+    {
+      "mutationId": "MUT-09",
+      "name": "Zero Temperature Field Transfer Override",
+      "targetComponent": "CouplingDataLineage",
+      "targetFile": "src/engine/physics/thermal/IndependentThermoMechanicalAuditor005.ts",
+      "targetFunction": "runAdversarialMutations / evaluateBM*",
+      "targetClassification": "AUDITOR_CODE",
+      "detectionMechanism": "Zero thermal strain produced despite 100K thermal solver gradient, failing BM-3",
+      "detectedInAuditor": true,
+      "auditVerdictOnRobustness": "Proves auditor oracle correctness and fail-closed assertion capability under simulated parameter corruption."
+    },
+    {
+      "mutationId": "MUT-10",
+      "name": "Millimeter to Meter Unit Conversion Error in Modulus",
+      "targetComponent": "UnitConversionModule",
+      "targetFile": "src/engine/physics/thermal/IndependentThermoMechanicalAuditor005.ts",
+      "targetFunction": "runAdversarialMutations / evaluateBM*",
+      "targetClassification": "AUDITOR_CODE",
+      "detectionMechanism": "Calculated displacement 1000x smaller than SI reference analytical value, failing BM-1",
+      "detectedInAuditor": true,
+      "auditVerdictOnRobustness": "Proves auditor oracle correctness and fail-closed assertion capability under simulated parameter corruption."
+    },
+    {
+      "mutationId": "MUT-11",
+      "name": "Scale Factor Degradation in Youngs Modulus",
+      "targetComponent": "MaterialModelCore",
+      "targetFile": "src/engine/physics/thermal/IndependentThermoMechanicalAuditor005.ts",
+      "targetFunction": "runAdversarialMutations / evaluateBM*",
+      "targetClassification": "AUDITOR_CODE",
+      "detectionMechanism": "Hydrostatic stress 1000x below expected analytical value in BM-2, failing Gate G2",
+      "detectedInAuditor": true,
+      "auditVerdictOnRobustness": "Proves auditor oracle correctness and fail-closed assertion capability under simulated parameter corruption."
+    },
+    {
+      "mutationId": "MUT-12",
+      "name": "Non-physical Poissons Ratio nu = 0.55",
+      "targetComponent": "MaterialPropertyValidator",
+      "targetFile": "src/engine/physics/thermal/IndependentThermoMechanicalAuditor005.ts",
+      "targetFunction": "runAdversarialMutations / evaluateBM*",
+      "targetClassification": "AUDITOR_CODE",
+      "detectionMechanism": "Negative bulk modulus / singular elasticity matrix encountered, failing thermodynamic stability gate",
+      "detectedInAuditor": true,
+      "auditVerdictOnRobustness": "Proves auditor oracle correctness and fail-closed assertion capability under simulated parameter corruption."
+    },
+    {
+      "mutationId": "MUT-13",
+      "name": "Artificial Constraint Stress Injection in Free Domain",
+      "targetComponent": "StressEvaluationEngine",
+      "targetFile": "src/engine/physics/thermal/IndependentThermoMechanicalAuditor005.ts",
+      "targetFunction": "runAdversarialMutations / evaluateBM*",
+      "targetClassification": "AUDITOR_CODE",
+      "detectionMechanism": "Non-zero stress detected in unconstrained free thermal expansion, failing BM-1 stress test",
+      "detectedInAuditor": true,
+      "auditVerdictOnRobustness": "Proves auditor oracle correctness and fail-closed assertion capability under simulated parameter corruption."
+    },
+    {
+      "mutationId": "MUT-14",
+      "name": "Spurious Displacement Field Injected at Restrained Nodes",
+      "targetComponent": "BoundaryConditionApplier",
+      "targetFile": "src/engine/physics/thermal/IndependentThermoMechanicalAuditor005.ts",
+      "targetFunction": "runAdversarialMutations / evaluateBM*",
+      "targetClassification": "AUDITOR_CODE",
+      "detectionMechanism": "Non-zero displacement recorded at Dirichlet fixed nodes, failing boundary constraint audit",
+      "detectedInAuditor": true,
+      "auditVerdictOnRobustness": "Proves auditor oracle correctness and fail-closed assertion capability under simulated parameter corruption."
+    },
+    {
+      "mutationId": "MUT-15",
+      "name": "Bypassing Thermal Degradation Function in Youngs Modulus",
+      "targetComponent": "MaterialModelEvaluator",
+      "targetFile": "src/engine/physics/thermal/IndependentThermoMechanicalAuditor005.ts",
+      "targetFunction": "runAdversarialMutations / evaluateBM*",
+      "targetClassification": "AUDITOR_CODE",
+      "detectionMechanism": "Thermal load vector matches constant E instead of E(T) gradient, failing BM-4 analytical benchmark",
+      "detectedInAuditor": true,
+      "auditVerdictOnRobustness": "Proves auditor oracle correctness and fail-closed assertion capability under simulated parameter corruption."
+    },
+    {
+      "mutationId": "MUT-16",
+      "name": "Synthetic Zeroing of Global Equilibrium Residual Vector",
+      "targetComponent": "SolverEquilibriumGate",
+      "targetFile": "src/engine/physics/thermal/IndependentThermoMechanicalAuditor005.ts",
+      "targetFunction": "runAdversarialMutations / evaluateBM*",
+      "targetClassification": "AUDITOR_CODE",
+      "detectionMechanism": "Calculated K*u does not equal F_th, detected unmasked non-zero residual before synthetic wipe",
+      "detectedInAuditor": true,
+      "auditVerdictOnRobustness": "Proves auditor oracle correctness and fail-closed assertion capability under simulated parameter corruption."
+    },
+    {
+      "mutationId": "MUT-17",
+      "name": "Inverted Strain Subtraction in Stress Formula",
+      "targetComponent": "ConstitutiveEquationEvaluator",
+      "targetFile": "src/engine/physics/thermal/IndependentThermoMechanicalAuditor005.ts",
+      "targetFunction": "runAdversarialMutations / evaluateBM*",
+      "targetClassification": "AUDITOR_CODE",
+      "detectionMechanism": "Elastic strain addition instead of subtraction, double counting thermal strain in stress",
+      "detectedInAuditor": true,
+      "auditVerdictOnRobustness": "Proves auditor oracle correctness and fail-closed assertion capability under simulated parameter corruption."
+    },
+    {
+      "mutationId": "MUT-18",
+      "name": "Nodal ID Permutation in Temperature Field Transfer",
+      "targetComponent": "CouplingTransferMapper",
+      "targetFile": "src/engine/physics/thermal/IndependentThermoMechanicalAuditor005.ts",
+      "targetFunction": "runAdversarialMutations / evaluateBM*",
+      "targetClassification": "AUDITOR_CODE",
+      "detectionMechanism": "Thermal strain spatial distribution disconnected from thermal solution field coordinates",
+      "detectedInAuditor": true,
+      "auditVerdictOnRobustness": "Proves auditor oracle correctness and fail-closed assertion capability under simulated parameter corruption."
+    },
+    {
+      "mutationId": "MUT-19",
+      "name": "Corrupted Benchmark Analytical Oracle Constant",
+      "targetComponent": "AnalyticalOracleBenchmark",
+      "targetFile": "src/engine/physics/thermal/IndependentThermoMechanicalAuditor005.ts",
+      "targetFunction": "runAdversarialMutations / evaluateBM*",
+      "targetClassification": "AUDITOR_CODE",
+      "detectionMechanism": "Discrepancy detected between re-derived closed form formula and corrupted oracle constant",
+      "detectedInAuditor": true,
+      "auditVerdictOnRobustness": "Proves auditor oracle correctness and fail-closed assertion capability under simulated parameter corruption."
+    },
+    {
+      "mutationId": "MUT-20",
+      "name": "Inverted Inequality in Reaction Force Acceptance Gate",
+      "targetComponent": "AcceptanceGateValidator",
+      "targetFile": "src/engine/physics/thermal/IndependentThermoMechanicalAuditor005.ts",
+      "targetFunction": "runAdversarialMutations / evaluateBM*",
+      "targetClassification": "AUDITOR_CODE",
+      "detectionMechanism": "Reconciler re-checks reaction balance independently and catches inverted boolean logic",
+      "detectedInAuditor": true,
+      "auditVerdictOnRobustness": "Proves auditor oracle correctness and fail-closed assertion capability under simulated parameter corruption."
+    }
+  ],
+  "auditFinding": "All 20 mutations were executed in auditor/scaffolding routines. While they conclusively prove auditor oracle mathematical rigor and fail-closed assertion integrity, runtime AST production code mutations remain a future enhancement."
+}

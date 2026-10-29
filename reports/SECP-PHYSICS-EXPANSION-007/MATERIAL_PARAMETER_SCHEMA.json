@@ -1,0 +1,17 @@
+{
+  "schemaName": "SECP-ADVANCED-PHYSICS-MATERIAL-SCHEMA",
+  "parameters": [
+    {
+      "id": "uts",
+      "unit": "MPa"
+    },
+    {
+      "id": "permeability_mu",
+      "unit": "H/m"
+    },
+    {
+      "id": "phase_volume_fractions",
+      "unit": "dimensionless"
+    }
+  ]
+}

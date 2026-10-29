@@ -1,0 +1,43 @@
+{
+  "campaignId": "SECP-PHYSICS-EXPANSION-005",
+  "timestamp": "2026-10-29T09:05:46.424Z",
+  "status": "AUDITED_AND_VERIFIED",
+  "gateG0Passed": true,
+  "capabilityScope": {
+    "domain": "THERMO_MECHANICAL_COUPLING",
+    "formulation": "3D Continuum FEA Thermal Strain Additive Decomposition",
+    "equations": [
+      "Total Strain Decomposition: eps = eps_elastic + eps_thermal",
+      "Thermal Strain Tensor: eps_th = alpha * (T - T_ref) * I",
+      "Isotropic Hookes Law: sigma = C : (eps - eps_th)",
+      "Equilibrium: div(sigma) + f_body = 0"
+    ],
+    "governingUnits": "SI (Pa, N, m, K, W/m*K, 1/K)"
+  },
+  "sourceLineage": {
+    "src/engine/physics/thermal/IndependentThermoMechanicalAuditor005.ts": {
+      "sizeBytes": 22424,
+      "sha256": "e4ec68cd5eafff01e98cb0cf60c7f0a2e5df29843df312a3e59c8c5bbba700cb"
+    },
+    "src/engine/physics/electromagnetics/BidirectionalElectrothermalSolver3D.ts": {
+      "sizeBytes": 13070,
+      "sha256": "cda3ab4419ba1c156752057c437818f768e840026b34c00a6ada2b6a3e6426d4"
+    },
+    "src/engine/physics/materials/MaterialModel.ts": {
+      "sizeBytes": 4711,
+      "sha256": "e7823a582d62ea70da083ee396d943afde8005eeaee10119f9fcf45fd09842e1"
+    },
+    "src/engine/physics/materials/MaterialTypes.ts": {
+      "sizeBytes": 1930,
+      "sha256": "b286bd8355d029c60fa735c637720120988a37c077971e59b31adaf3f244c203"
+    },
+    "src/engine/physics/AnalyticalMechanicsBenchmarkSuite.ts": {
+      "sizeBytes": 7587,
+      "sha256": "d201e3b3c59c98f2b1d98eb40b2ed49b9c0c86f4ca306bc8e118dcf2e8d8d673"
+    },
+    "src/engine/physics/__tests__/ThermoMechanicalQualification005.test.ts": {
+      "sizeBytes": 4326,
+      "sha256": "3298ddd3fd0dbd189afa75f42f5d356cacbff47c948bb4e764a3d8300c0dc61e"
+    }
+  }
+}

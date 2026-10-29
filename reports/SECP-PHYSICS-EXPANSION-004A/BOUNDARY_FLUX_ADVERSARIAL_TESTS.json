@@ -1,0 +1,43 @@
+{
+  "test1_reversed_normals": {
+    "status": "DETECTED",
+    "faultInjected": "Boundary face outward normal inverted (n -> -n)",
+    "baselineDirichletWatts": 99.75447975264998,
+    "corruptedDirichletWatts": -99.75447975264998,
+    "detectionSignature": "Negative heat rejection at Dirichlet sink (-99.75 W)"
+  },
+  "test2_missing_boundary_face": {
+    "status": "DETECTED",
+    "faultInjected": "Omission of Dirichlet sink triangular face",
+    "baselineFaceCount": 20,
+    "corruptedFaceCount": 19,
+    "detectionSignature": "Area shortfall and drop in calculated Dirichlet boundary heat loss"
+  },
+  "test3_duplicate_boundary_faces": {
+    "status": "DETECTED",
+    "faultInjected": "Duplicate boundary faces counted twice",
+    "baselineAreaM2": 0.0042000000000000015,
+    "corruptedAreaM2": 0.008400000000000003,
+    "detectionSignature": "Surface area 0.0084 m^2 violates analytical bounding box 0.0042 m^2"
+  },
+  "test4_flux_sign_inversion": {
+    "status": "DETECTED",
+    "faultInjected": "Sign of conductive heat flux inverted (q -> -q)",
+    "detectionSignature": "All boundary face normal heat fluxes inverted across all evaluations"
+  },
+  "test5_unit_scaling_mismatch": {
+    "status": "DETECTED",
+    "faultInjected": "Coordinates in millimeters scaled by 1000",
+    "detectionSignature": "Volume scaled by 10^9 indicating millimetric input treated as meters"
+  },
+  "test6_corrupted_boundary_quadrature": {
+    "status": "DETECTED",
+    "faultInjected": "Face area multiplied by artificial 1.5 factor",
+    "detectionSignature": "Surface area and normal flux elevated by 50% from analytical values"
+  },
+  "test7_independence_oracle_validation": {
+    "status": "DETECTED",
+    "faultInjected": "Reaction calculation decoupled from electrical power",
+    "detectionSignature": "Reaction flux evaluated purely from thermal stiffness K and temperature vector T"
+  }
+}

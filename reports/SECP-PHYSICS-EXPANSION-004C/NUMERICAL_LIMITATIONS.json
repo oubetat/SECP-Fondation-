@@ -1,0 +1,14 @@
+{
+  "numericalLimitations": [
+    {
+      "topic": "Boundary Heat Flux Integration",
+      "limitation": "Direct boundary flux integration using element centroid gradients exhibits first-order O(h^1) spatial discretization error due to C0 piecewise constant element gradients.",
+      "mitigation": "Variational boundary reaction forces must be used for global energy conservation auditing; direct boundary flux integration requires fine boundary mesh smoothing or higher-order C1 elements."
+    },
+    {
+      "topic": "Physical Validation Boundary",
+      "limitation": "All results are strictly numerical and mathematical verifications against closed-form 3D analytical benchmark problems. No hardware experimental thermocouple data is present.",
+      "mitigation": "Status remains strictly PASS_WITHIN_DECLARED_SCOPE; no physical or industrial qualification is claimed."
+    }
+  ]
+}

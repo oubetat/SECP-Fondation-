@@ -1,0 +1,22 @@
+{
+  "campaignId": "SECP-PHYSICS-EXPANSION-005",
+  "gateG4Passed": true,
+  "equilibriumAudit": {
+    "maxResidualN": 1e-11,
+    "residualToleranceN": 1e-8,
+    "equilibriumSatisfied": true,
+    "totalThermalForceVectorN": [
+      600000,
+      0,
+      0
+    ],
+    "totalBoundaryReactionN": [
+      -600000,
+      0,
+      0
+    ],
+    "reactionForceErrorPercent": 0,
+    "reactionBalanceSatisfied": true
+  },
+  "verdict": "GLOBAL_EQUILIBRIUM_AND_REACTION_BALANCE_PASSED"
+}

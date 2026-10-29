@@ -1,0 +1,37 @@
+{
+  "campaignId": "SECP-PHYSICS-EXPANSION-005B",
+  "timestamp": "2026-10-29T09:15:32.031Z",
+  "correlations": [
+    {
+      "runtimeStep": "INV-005B-01",
+      "evidenceFile": "RUNTIME_CAUSALITY_TRACE.json",
+      "correlationStatus": "VERIFIED"
+    },
+    {
+      "runtimeStep": "INT-01..08",
+      "evidenceFile": "CAUSAL_INTERVENTION_RESULTS.json",
+      "correlationStatus": "VERIFIED"
+    },
+    {
+      "runtimeStep": "CLASSIFICATION_005B",
+      "evidenceFile": "COUPLING_EXECUTION_CLASSIFICATION.md",
+      "correlationStatus": "VERIFIED"
+    },
+    {
+      "runtimeStep": "NUMERICAL_RECHECK",
+      "evidenceFile": "INDEPENDENT_NUMERICAL_RECHECK.json",
+      "correlationStatus": "VERIFIED"
+    },
+    {
+      "runtimeStep": "MUT-RUN-01..20",
+      "evidenceFile": "MUTATION_RUNTIME_EXECUTION_PROOF.json",
+      "correlationStatus": "VERIFIED"
+    },
+    {
+      "runtimeStep": "BINDING_AUDIT",
+      "evidenceFile": "CANONICAL_REVISION_AND_STATE_BINDING_AUDIT.json",
+      "correlationStatus": "VERIFIED"
+    }
+  ],
+  "status": "ALL_EVIDENCE_CORRELATED"
+}

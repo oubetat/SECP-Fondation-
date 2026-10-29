@@ -1,0 +1,15 @@
+{
+  "campaign": "SECP-PHYSICS-EXPANSION-004B",
+  "limitations": [
+    {
+      "limitation": "C0 TET4 Gradient Approximation",
+      "description": "Direct boundary normal flux evaluated from piecewise constant element gradients inside linear tetrahedral elements exhibits first-order O(h^1) discretization error against analytical boundary flux.",
+      "remedy": "Mesh refinement decreases error monotonically from 53.26% (Nx=1) down to 3.96% (Nx=16/20). Variational nodal reactions provide work-conjugate equilibrium exact to 8.36 microwatts."
+    },
+    {
+      "limitation": "Software-Only Analytical Benchmark Scope",
+      "description": "Benchmark is an uncorrupted mathematical software verification against analytical 1D ODE solutions.",
+      "remedy": "Acceptance status is strictly bounded as PASS_WITHIN_DECLARED_SCOPE; no physical or industrial qualification is claimed without hardware test data."
+    }
+  ]
+}

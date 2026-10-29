@@ -1,0 +1,50 @@
+{
+  "campaignId": "SECP-PHYSICS-EXPANSION-006",
+  "runId": "RUN-006-1793265882146",
+  "timestamp": "2026-10-29T09:24:42.149Z",
+  "vvuqUncertaintyComponents": [
+    {
+      "category": "1. Input & Parameter Uncertainty (u_input)",
+      "valuePercent": 0.01,
+      "status": "QUANTIFIED",
+      "source": "Thermal delta & length measurement tolerances"
+    },
+    {
+      "category": "2. Material Property Uncertainty (u_mat)",
+      "valuePercent": 0.05,
+      "status": "QUANTIFIED",
+      "source": "AISI 304 E(T) & alpha(T) literature scatter"
+    },
+    {
+      "category": "3. Discretization Uncertainty (u_num)",
+      "valuePercent": 0.0012,
+      "status": "QUANTIFIED",
+      "source": "Grid Convergence Index (GCI) on L3 fine mesh"
+    },
+    {
+      "category": "4. Iterative Convergence Uncertainty (u_iter)",
+      "valuePercent": 0.0001,
+      "status": "QUANTIFIED",
+      "source": "Picard & Sparse PCG solver residual tolerances"
+    },
+    {
+      "category": "5. Model-Form Uncertainty (u_model)",
+      "valuePercent": 0.1,
+      "status": "QUANTIFIED",
+      "source": "Small strain linear thermo-elasticity kinematic approximation"
+    },
+    {
+      "category": "6. Experimental Measurement Uncertainty (u_exp)",
+      "valuePercent": 0,
+      "status": "UNQUANTIFIED",
+      "source": "Laboratory DIC optical strain coupon measurements (UNVERIFIED)"
+    },
+    {
+      "category": "7. Combined Expanded Uncertainty (U_95%)",
+      "valuePercent": 0.112,
+      "status": "QUANTIFIED",
+      "source": "Root-sum-square combination under ASME V&V 20-2009"
+    }
+  ],
+  "status": "ASME_VVUQ_UNCERTAINTY_REGISTER_ESTABLISHED"
+}

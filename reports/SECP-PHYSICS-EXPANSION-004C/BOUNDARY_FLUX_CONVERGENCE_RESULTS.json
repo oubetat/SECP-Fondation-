@@ -1,0 +1,75 @@
+{
+  "targetQuantity": "Direct Surface Normal Conductive Heat Flux Error",
+  "analyticalBenchmarkValueWatts": 152.14157600000001,
+  "meshRefinementLevels": [
+    {
+      "meshLevel": 1,
+      "meshSizeH": 0.1,
+      "elementCount": 6,
+      "nodeCount": 8,
+      "totalVolumetricHeatWatts": 152.14157600000001,
+      "totalBoundaryReactionHeatWatts": 152.14157599999925,
+      "variationalReactionResidualWatts": 7.673861546209082e-13,
+      "directIntegratedSurfaceFluxWatts": 76.32247019986387,
+      "directSurfaceFluxDiscrepancyWatts": 75.81910580013614,
+      "directSurfaceFluxErrorPercent": 49.8345736869034
+    },
+    {
+      "meshLevel": 2,
+      "meshSizeH": 0.05,
+      "elementCount": 12,
+      "nodeCount": 12,
+      "totalVolumetricHeatWatts": 152.14157600000001,
+      "totalBoundaryReactionHeatWatts": 152.14157600000027,
+      "variationalReactionResidualWatts": 2.5579538487363607e-13,
+      "directIntegratedSurfaceFluxWatts": 114.11310218331823,
+      "directSurfaceFluxDiscrepancyWatts": 38.02847381668178,
+      "directSurfaceFluxErrorPercent": 24.995451484400146
+    },
+    {
+      "meshLevel": 4,
+      "meshSizeH": 0.025,
+      "elementCount": 24,
+      "nodeCount": 20,
+      "totalVolumetricHeatWatts": 152.14157600000007,
+      "totalBoundaryReactionHeatWatts": 152.14157599999973,
+      "variationalReactionResidualWatts": 2.8421709430404007e-13,
+      "directIntegratedSurfaceFluxWatts": 133.12399317375244,
+      "directSurfaceFluxDiscrepancyWatts": 19.017582826247576,
+      "directSurfaceFluxErrorPercent": 12.49992495558714
+    },
+    {
+      "meshLevel": 8,
+      "meshSizeH": 0.0125,
+      "elementCount": 48,
+      "nodeCount": 36,
+      "totalVolumetricHeatWatts": 152.14157600000004,
+      "totalBoundaryReactionHeatWatts": 152.14157600000107,
+      "variationalReactionResidualWatts": 1.0516032489249483e-12,
+      "directIntegratedSurfaceFluxWatts": 142.63273058194136,
+      "directSurfaceFluxDiscrepancyWatts": 9.508845418058655,
+      "directSurfaceFluxErrorPercent": 6.2499979742937954
+    },
+    {
+      "meshLevel": 16,
+      "meshSizeH": 0.00625,
+      "elementCount": 96,
+      "nodeCount": 68,
+      "totalVolumetricHeatWatts": 152.14157600000001,
+      "totalBoundaryReactionHeatWatts": 152.14157600000294,
+      "variationalReactionResidualWatts": 2.9274360713316128e-12,
+      "directIntegratedSurfaceFluxWatts": 147.38715206392718,
+      "directSurfaceFluxDiscrepancyWatts": 4.75442393607284,
+      "directSurfaceFluxErrorPercent": 3.1249997936611615
+    }
+  ],
+  "empiricalConvergenceRates": [
+    0.9954814007072151,
+    0.9997461526049851,
+    0.9999918062741014,
+    0.999999627662606
+  ],
+  "asymptoticConvergenceRate": 0.999999627662606,
+  "strictlyMonotonicReduction": true,
+  "exactVariationalConservationSatisfied": true
+}

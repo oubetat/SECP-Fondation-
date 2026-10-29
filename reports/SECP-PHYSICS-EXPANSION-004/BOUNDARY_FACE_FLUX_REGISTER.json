@@ -1,0 +1,349 @@
+{
+  "boundaryFaceCount": 12,
+  "dirichletFaceCount": 2,
+  "adiabaticFaceCount": 10,
+  "totalSurfaceAreaM2": 0.004200000000000001,
+  "dirichletSurfaceAreaM2": 0.0001,
+  "adiabaticSurfaceAreaM2": 0.0040999999999999995,
+  "totalBoundaryHeatLossWatts": 40.17670034433145,
+  "dirichletBoundaryLossWatts": 70.88829250877089,
+  "adiabaticBoundaryLeakageWatts": -30.711592164439438,
+  "faceFluxes": [
+    {
+      "faceKey": "N0::N1::N3",
+      "parentElementId": "E1",
+      "areaM2": 0.0005,
+      "outwardUnitNormal": [
+        0,
+        0,
+        -1
+      ],
+      "centroid": [
+        0.03333333333333333,
+        0.0033333333333333335,
+        0
+      ],
+      "tempGradientC_per_m": [
+        3544.4146254385446,
+        0,
+        0
+      ],
+      "heatFluxVectorW_per_m2": [
+        -708882.9250877089,
+        0,
+        0
+      ],
+      "normalHeatFluxW_per_m2": 0,
+      "heatLossRateWatts": 0,
+      "isDirichletSink": false
+    },
+    {
+      "faceKey": "N0::N1::N4",
+      "parentElementId": "E1",
+      "areaM2": 0.0005,
+      "outwardUnitNormal": [
+        0,
+        -1,
+        0
+      ],
+      "centroid": [
+        0.03333333333333333,
+        0,
+        0.0033333333333333335
+      ],
+      "tempGradientC_per_m": [
+        3544.4146254385446,
+        0,
+        0
+      ],
+      "heatFluxVectorW_per_m2": [
+        -708882.9250877089,
+        0,
+        0
+      ],
+      "normalHeatFluxW_per_m2": 0,
+      "heatLossRateWatts": 0,
+      "isDirichletSink": false
+    },
+    {
+      "faceKey": "N0::N3::N4",
+      "parentElementId": "E1",
+      "areaM2": 0.00005,
+      "outwardUnitNormal": [
+        -1,
+        0,
+        0
+      ],
+      "centroid": [
+        0,
+        0.0033333333333333335,
+        0.0033333333333333335
+      ],
+      "tempGradientC_per_m": [
+        3544.4146254385446,
+        0,
+        0
+      ],
+      "heatFluxVectorW_per_m2": [
+        -708882.9250877089,
+        0,
+        0
+      ],
+      "normalHeatFluxW_per_m2": 708882.9250877089,
+      "heatLossRateWatts": 35.444146254385444,
+      "isDirichletSink": true
+    },
+    {
+      "faceKey": "N1::N2::N3",
+      "parentElementId": "E2",
+      "areaM2": 0.0005,
+      "outwardUnitNormal": [
+        0,
+        0,
+        -1
+      ],
+      "centroid": [
+        0.06666666666666667,
+        0.006666666666666667,
+        0
+      ],
+      "tempGradientC_per_m": [
+        3534.4204213727908,
+        -99.94204065754457,
+        99.94204065753729
+      ],
+      "heatFluxVectorW_per_m2": [
+        -706884.0842745581,
+        19988.408131508913,
+        -19988.408131507458
+      ],
+      "normalHeatFluxW_per_m2": 19988.408131507458,
+      "heatLossRateWatts": 9.99420406575373,
+      "isDirichletSink": false
+    },
+    {
+      "faceKey": "N1::N2::N6",
+      "parentElementId": "E2",
+      "areaM2": 0.00005,
+      "outwardUnitNormal": [
+        1,
+        0,
+        0
+      ],
+      "centroid": [
+        0.10000000000000002,
+        0.006666666666666667,
+        0.0033333333333333335
+      ],
+      "tempGradientC_per_m": [
+        3534.4204213727908,
+        -99.94204065754457,
+        99.94204065753729
+      ],
+      "heatFluxVectorW_per_m2": [
+        -706884.0842745581,
+        19988.408131508913,
+        -19988.408131507458
+      ],
+      "normalHeatFluxW_per_m2": -706884.0842745581,
+      "heatLossRateWatts": -35.344204213727906,
+      "isDirichletSink": false
+    },
+    {
+      "faceKey": "N2::N3::N6",
+      "parentElementId": "E2",
+      "areaM2": 0.0005,
+      "outwardUnitNormal": [
+        0,
+        1,
+        0
+      ],
+      "centroid": [
+        0.06666666666666667,
+        0.01,
+        0.0033333333333333335
+      ],
+      "tempGradientC_per_m": [
+        3534.4204213727908,
+        -99.94204065754457,
+        99.94204065753729
+      ],
+      "heatFluxVectorW_per_m2": [
+        -706884.0842745581,
+        19988.408131508913,
+        -19988.408131507458
+      ],
+      "normalHeatFluxW_per_m2": 19988.408131508913,
+      "heatLossRateWatts": 9.994204065754458,
+      "isDirichletSink": false
+    },
+    {
+      "faceKey": "N1::N4::N5",
+      "parentElementId": "E3",
+      "areaM2": 0.0005,
+      "outwardUnitNormal": [
+        0,
+        -1,
+        0
+      ],
+      "centroid": [
+        0.06666666666666667,
+        0,
+        0.006666666666666667
+      ],
+      "tempGradientC_per_m": [
+        3534.4204213727908,
+        99.94204065753729,
+        -99.94204065754457
+      ],
+      "heatFluxVectorW_per_m2": [
+        -706884.0842745581,
+        -19988.408131507458,
+        19988.408131508913
+      ],
+      "normalHeatFluxW_per_m2": 19988.408131507458,
+      "heatLossRateWatts": 9.99420406575373,
+      "isDirichletSink": false
+    },
+    {
+      "faceKey": "N4::N5::N6",
+      "parentElementId": "E3",
+      "areaM2": 0.0005,
+      "outwardUnitNormal": [
+        0,
+        0,
+        1
+      ],
+      "centroid": [
+        0.06666666666666667,
+        0.0033333333333333335,
+        0.01
+      ],
+      "tempGradientC_per_m": [
+        3534.4204213727908,
+        99.94204065753729,
+        -99.94204065754457
+      ],
+      "heatFluxVectorW_per_m2": [
+        -706884.0842745581,
+        -19988.408131507458,
+        19988.408131508913
+      ],
+      "normalHeatFluxW_per_m2": 19988.408131508913,
+      "heatLossRateWatts": 9.994204065754458,
+      "isDirichletSink": false
+    },
+    {
+      "faceKey": "N1::N5::N6",
+      "parentElementId": "E3",
+      "areaM2": 0.00005,
+      "outwardUnitNormal": [
+        1,
+        0,
+        0
+      ],
+      "centroid": [
+        0.10000000000000002,
+        0.0033333333333333335,
+        0.006666666666666667
+      ],
+      "tempGradientC_per_m": [
+        3534.4204213727908,
+        99.94204065753729,
+        -99.94204065754457
+      ],
+      "heatFluxVectorW_per_m2": [
+        -706884.0842745581,
+        -19988.408131507458,
+        19988.408131508913
+      ],
+      "normalHeatFluxW_per_m2": -706884.0842745581,
+      "heatLossRateWatts": -35.344204213727906,
+      "isDirichletSink": false
+    },
+    {
+      "faceKey": "N3::N4::N7",
+      "parentElementId": "E4",
+      "areaM2": 0.00005,
+      "outwardUnitNormal": [
+        -1,
+        0,
+        0
+      ],
+      "centroid": [
+        0,
+        0.006666666666666667,
+        0.006666666666666667
+      ],
+      "tempGradientC_per_m": [
+        3544.414625438544,
+        0,
+        0
+      ],
+      "heatFluxVectorW_per_m2": [
+        -708882.9250877089,
+        0,
+        0
+      ],
+      "normalHeatFluxW_per_m2": 708882.9250877089,
+      "heatLossRateWatts": 35.444146254385444,
+      "isDirichletSink": true
+    },
+    {
+      "faceKey": "N4::N6::N7",
+      "parentElementId": "E4",
+      "areaM2": 0.0005,
+      "outwardUnitNormal": [
+        0,
+        0,
+        1
+      ],
+      "centroid": [
+        0.03333333333333333,
+        0.006666666666666667,
+        0.01
+      ],
+      "tempGradientC_per_m": [
+        3544.414625438544,
+        0,
+        0
+      ],
+      "heatFluxVectorW_per_m2": [
+        -708882.9250877089,
+        0,
+        0
+      ],
+      "normalHeatFluxW_per_m2": 0,
+      "heatLossRateWatts": 0,
+      "isDirichletSink": false
+    },
+    {
+      "faceKey": "N3::N6::N7",
+      "parentElementId": "E4",
+      "areaM2": 0.0005,
+      "outwardUnitNormal": [
+        0,
+        1,
+        0
+      ],
+      "centroid": [
+        0.03333333333333333,
+        0.01,
+        0.006666666666666667
+      ],
+      "tempGradientC_per_m": [
+        3544.414625438544,
+        0,
+        0
+      ],
+      "heatFluxVectorW_per_m2": [
+        -708882.9250877089,
+        0,
+        0
+      ],
+      "normalHeatFluxW_per_m2": 0,
+      "heatLossRateWatts": 0,
+      "isDirichletSink": false
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "domain": "Domain_B_CFD",
+  "testCase": "SST_K_OMEGA_FLAT_PLATE",
+  "metric": "Skin Friction Coefficient (Cf)",
+  "expected": 0.003,
+  "observed": 0.00312,
+  "status": "PASS_WITH_OPEN_GAPS",
+  "gap": "Mesh independence study pending for high-Re cases."
+}

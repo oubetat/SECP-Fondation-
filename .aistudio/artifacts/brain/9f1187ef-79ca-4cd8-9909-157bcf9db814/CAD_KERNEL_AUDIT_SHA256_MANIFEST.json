@@ -1,0 +1,48 @@
+{
+  "audit_id": "SECP-CAD-KERNEL-FORENSIC-AUDIT-001",
+  "phase": 0,
+  "status": "BASELINE_ESTABLISHED_WITH_VERIFIED_GAPS",
+  "timestamp": "2026-10-29T10:07:00Z",
+  "manifest": [
+    {
+      "file": "CAD_KERNEL_BASELINE_REPORT.md",
+      "sha256": "f21deffd7613b147c3209fe7e29971761e6a5a87a1830f9e86cdfa9a9b5f3676",
+      "description": "Architecture discovery summary and high-level findings."
+    },
+    {
+      "file": "CAD_KERNEL_CAPABILITY_REGISTER.json",
+      "sha256": "10abf7f1f92a7728d987d5bef156109a72320970a9a2536bd63e81190a703767",
+      "description": "Classified register of 8 core CAD capabilities and their implementation status."
+    },
+    {
+      "file": "CAD_KERNEL_EXECUTION_PATHS.json",
+      "sha256": "3d04e39190b7ce875c3dbac89aaa95f7755bfd0411c97f19dc340d1dc68c7e57",
+      "description": "Trace of 5 key execution paths from UI/Registry to the B-Rep Kernel."
+    },
+    {
+      "file": "CAD_KERNEL_DEPENDENCY_AND_DUPLICATION_MAP.json",
+      "sha256": "851668de78f71e9fdfe7aeb96b3b74c43447a1697a029333523947b9ab3105a6",
+      "description": "Map of internal and external dependencies, identifying redundant manual logic."
+    },
+    {
+      "file": "CAD_KERNEL_TEST_AND_EVIDENCE_AUDIT.json",
+      "sha256": "d0ae32fbce5fafc8012ceaa2998e9c889f377d2648424c01f62ebb32a5fb4594",
+      "description": "Audit of test coverage and evidence-bound validation gates."
+    },
+    {
+      "file": "CAD_KERNEL_GAP_REGISTER.json",
+      "sha256": "e679bdb9d79b15dfd37413e1b314369494f6f5474ed9bb202eee1a98df8a074f",
+      "description": "Documented critical gaps between claimed industrial grade and actual manual implementation."
+    },
+    {
+      "file": "CAD_KERNEL_RISK_AND_LIMITATIONS_REGISTER.json",
+      "sha256": "83eb30d20551642d47762676e671261990d13d9a4fb67740d815e4458f331d48",
+      "description": "Analysis of numerical, algorithmic, and interoperability risks."
+    },
+    {
+      "file": "CAD_KERNEL_EXPANSION_RECOMMENDATIONS.md",
+      "sha256": "dd335865757ce27816a016dd3b004de5b274630232e3e952815e86fde49936a5",
+      "description": "Strategic roadmap for Phase 1 expansion and hardening."
+    }
+  ]
+}

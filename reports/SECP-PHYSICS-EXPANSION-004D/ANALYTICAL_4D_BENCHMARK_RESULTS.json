@@ -1,0 +1,76 @@
+{
+  "case4A_nonlinearKirchhoff": {
+    "params": {
+      "lengthXM": 0.1,
+      "lengthYM": 0.01,
+      "lengthZM": 0.01,
+      "k0_W_mK": 200,
+      "beta_1_per_K": 0.002,
+      "volumetricHeatW_m3": 15214157.6,
+      "boundaryTempC": 20
+    },
+    "pointX0": {
+      "x": 0,
+      "y": 0,
+      "z": 0,
+      "kirchhoffThetaC": 0,
+      "analyticalTempC": 20.000000000000018,
+      "analyticalGradTC_per_m": [
+        7314.498846153846,
+        0,
+        0
+      ],
+      "analyticalHeatFluxW_per_m2": [
+        -1521415.76,
+        0,
+        0
+      ]
+    },
+    "pointXL": {
+      "x": 0.1,
+      "y": 0,
+      "z": 0,
+      "kirchhoffThetaC": 380.3539400000001,
+      "analyticalTempC": 306.6932130618183,
+      "analyticalGradTC_per_m": [
+        0,
+        0,
+        0
+      ],
+      "analyticalHeatFluxW_per_m2": [
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  "case4B_compositeMaterial": {
+    "caseId": "CHALLENGE_CASE_4B",
+    "description": "3D Composite Layered Material Conduction with Interface Flux Continuity",
+    "params": {
+      "lengthXM": 0.1,
+      "lengthYM": 0.01,
+      "lengthZM": 0.01,
+      "xInterfaceM": 0.05,
+      "k1_W_mK": 400,
+      "k2_W_mK": 100,
+      "tempLeftC": 20,
+      "tempRightC": 100
+    },
+    "interfaceTempC": 36,
+    "uniformHeatFluxW_per_m2": -128000,
+    "totalHeatFlowWatts": -12.8,
+    "dirichletReactionLeftWatts": 12.8,
+    "dirichletReactionRightWatts": -12.8,
+    "energyBalanceResidualWatts": 0,
+    "interfaceContinuitySatisfied": true
+  },
+  "case4C_electrothermalPowerMapping": {
+    "caseId": "CHALLENGE_CASE_4C",
+    "description": "Independent Electrothermal Power-to-Heat Mapping Verification",
+    "totalElectricalPowerWatts": 152.141576,
+    "totalThermalVolumetricHeatWatts": 152.141576,
+    "powerToHeatMappingResidualWatts": 0,
+    "isUncorruptedPowerTransferVerified": true
+  }
+}

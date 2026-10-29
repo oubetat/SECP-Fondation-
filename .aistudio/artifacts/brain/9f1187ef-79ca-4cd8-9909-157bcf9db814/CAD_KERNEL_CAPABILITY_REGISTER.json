@@ -1,0 +1,62 @@
+{
+  "campaignId": "SECP-CAD-KERNEL-AUDIT-001",
+  "timestamp": "2026-10-29T10:00:00Z",
+  "capabilities": [
+    {
+      "id": "BREP_TOPOLOGY",
+      "status": "IMPLEMENTED",
+      "description": "ISO-compliant B-Rep structure (Shell/Face/Loop/Edge/Vertex).",
+      "source": "src/engine/cad-kernel/brep/BRepKernel.ts",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "PLANAR_BOOLEANS",
+      "status": "IMPLEMENTED",
+      "description": "Exact Boolean operations for polyhedral solids.",
+      "source": "src/engine/cad-kernel/boolean/BooleanEngine.ts",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "CURVED_BOOLEANS",
+      "status": "PARTIALLY_IMPLEMENTED",
+      "description": "Analytical intersection for simple pairs (Plane-Sphere); others return polyhedral approximations.",
+      "source": "src/engine/cad-kernel/boolean/BooleanIntersector.ts",
+      "confidence": "MEDIUM"
+    },
+    {
+      "id": "PARAMETRIC_RECOMPUTATION",
+      "status": "IMPLEMENTED",
+      "description": "Topological re-execution with DAG sort and stable naming.",
+      "source": "src/engine/cad-kernel/parametric/ParametricRegenerationEngine.ts",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "STABLE_REFERENCE_RESOLUTION",
+      "status": "IMPLEMENTED",
+      "description": "Persistent topological naming via lineage DAG and geometric signatures.",
+      "source": "src/engine/cad-kernel/history/BRepNamingGraph.ts",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "NURBS_EVALUATION",
+      "status": "TEST_ONLY",
+      "description": "Genuine NURBS algorithms found in subdirectories but disconnected from main modeling paths.",
+      "source": "src/engine/cad-kernel/nurbs/NurbsEvaluator.ts",
+      "confidence": "MEDIUM"
+    },
+    {
+      "id": "STEP_EXCHANGE",
+      "status": "MOCKED_OR_PLACEHOLDER",
+      "description": "JSON stringify stub for STEP Part 21.",
+      "source": "src/engine/interop/STEPAP242Translator.ts",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "OCCT_INTEGRATION",
+      "status": "MOCKED_OR_PLACEHOLDER",
+      "description": "Adapter exists, but physical engine is missing; using high-fidelity mockup.",
+      "source": "src/engine/kernels/occt/loader.ts",
+      "confidence": "HIGH"
+    }
+  ]
+}

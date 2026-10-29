@@ -1,0 +1,11 @@
+{
+  "caseId": "ENERGY_VS_FLUX_ISOLATION_AUDIT",
+  "volumetricHeatGenerationWatts": 152.14157600000001,
+  "variationalReactionWatts": 152.14157600000027,
+  "globalEnergyResidualWatts": 2.5579538487363607e-13,
+  "isGlobalEnergyConserved": true,
+  "directBoundaryFluxWatts": 114.11310218331823,
+  "directFluxDiscrepancyWatts": 38.02847381668175,
+  "directFluxErrorPercent": 24.99545148440013,
+  "discrepancyOriginExplanation": "Global energy conservation holds strictly (< 10^-11 W) via variational nodal reactions. The discrepancy in direct surface flux integration is entirely discretization error from C0 linear tetrahedral element gradient computation."
+}

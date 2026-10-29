@@ -1,0 +1,80 @@
+{
+  "campaign": "SECP-PHYSICS-EXPANSION-004B",
+  "totalFaultsInjected": 12,
+  "totalFaultsDetected": 12,
+  "detectionRate": "100%",
+  "faults": [
+    {
+      "id": "WP-D1",
+      "fault": "Reversed boundary face normals (n -> -n)",
+      "status": "DETECTED",
+      "signature": "Negative Dirichlet heat loss rate (-99.75 W)"
+    },
+    {
+      "id": "WP-D2",
+      "fault": "Missing boundary face",
+      "status": "DETECTED",
+      "signature": "Boundary area shortfall and Dirichlet heat flux drop"
+    },
+    {
+      "id": "WP-D3",
+      "fault": "Duplicate boundary faces",
+      "status": "DETECTED",
+      "signature": "Surface area 0.0084 m^2 violates 0.0042 m^2 limit"
+    },
+    {
+      "id": "WP-D4",
+      "fault": "Corrupted face area (+50%)",
+      "status": "DETECTED",
+      "signature": "Surface normal flux elevated to 149.63 W"
+    },
+    {
+      "id": "WP-D5",
+      "fault": "Incorrect thermal conductivity (k=100 W/m*K)",
+      "status": "DETECTED",
+      "signature": "Peak temperature rise doubled to 800.70 C"
+    },
+    {
+      "id": "WP-D6",
+      "fault": "Reversed heat-flux sign (q -> -q)",
+      "status": "DETECTED",
+      "signature": "Inverted sign across all face normal flux evaluations"
+    },
+    {
+      "id": "WP-D7",
+      "fault": "Incorrect unit scale (mm vs m)",
+      "status": "DETECTED",
+      "signature": "10^9 volumetric scaling mismatch"
+    },
+    {
+      "id": "WP-D8",
+      "fault": "Corrupted volumetric heat generation (2x q_vol)",
+      "status": "DETECTED",
+      "signature": "Total volumetric heat doubled to 304.28 W"
+    },
+    {
+      "id": "WP-D9",
+      "fault": "Corrupted nodal reaction (perturbed BC temperature)",
+      "status": "DETECTED",
+      "signature": "Free nodal residual norm > 1.0 W (equilibrium lost)"
+    },
+    {
+      "id": "WP-D10",
+      "fault": "Unconstrained thermal system (missing prescribed BCs)",
+      "status": "DETECTED",
+      "signature": "Fail-closed exception [UNCONSTRAINED_THERMAL_SYSTEM] thrown"
+    },
+    {
+      "id": "WP-D11",
+      "fault": "Deliberately corrupted analytical reference (length=0.5m)",
+      "status": "DETECTED",
+      "signature": "Analytical reference volumetric heat mismatch"
+    },
+    {
+      "id": "WP-D12",
+      "fault": "Oracle independence & mutation check",
+      "status": "DETECTED",
+      "signature": "AnalyticalThermal1DReference verified with 0 solver imports"
+    }
+  ]
+}

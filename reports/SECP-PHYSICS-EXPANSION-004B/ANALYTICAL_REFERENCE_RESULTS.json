@@ -1,0 +1,16 @@
+{
+  "params": {
+    "lengthM": 0.1,
+    "widthM": 0.01,
+    "heightM": 0.01,
+    "conductivityW_mK": 200,
+    "volumetricHeatW_m3": 15214157.6,
+    "boundaryTempC": 20
+  },
+  "volumeM3": 0.00001,
+  "totalVolumetricHeatWatts": 152.14157600000001,
+  "totalBoundaryReactionHeatWatts": 152.14157600000001,
+  "outwardDirichletFluxWatts": 152.14157600000001,
+  "maxTemperatureC": 400.35394,
+  "maxTemperatureLocationM": 0.1
+}

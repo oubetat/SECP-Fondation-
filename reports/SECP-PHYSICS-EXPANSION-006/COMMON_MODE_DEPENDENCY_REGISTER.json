@@ -1,0 +1,26 @@
+{
+  "campaignId": "SECP-PHYSICS-EXPANSION-006",
+  "runId": "RUN-006-1793265882146",
+  "timestamp": "2026-10-29T09:24:42.150Z",
+  "commonModeDependencies": [
+    {
+      "dependency": "MathUtils.ts (Matrix Operations)",
+      "usage": "Shared between solvers and auditors",
+      "riskLevel": "LOW",
+      "mitigation": "Standard JS Array/Float64Array operations independently verified"
+    },
+    {
+      "dependency": "FEMTypes.ts (Mesh & Material Interfaces)",
+      "usage": "Shared data structure definition",
+      "riskLevel": "LOW",
+      "mitigation": "Pure interface definition with zero algorithmic logic"
+    },
+    {
+      "dependency": "SI Units Convention",
+      "usage": "Pa, N, m, K, W",
+      "riskLevel": "NONE",
+      "mitigation": "Standard ISO/SI units"
+    }
+  ],
+  "status": "COMMON_MODE_RISKS_AUDITED_AND_MITIGATED"
+}

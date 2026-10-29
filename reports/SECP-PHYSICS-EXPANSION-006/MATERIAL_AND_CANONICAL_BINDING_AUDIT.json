@@ -1,0 +1,16 @@
+{
+  "campaignId": "SECP-PHYSICS-EXPANSION-006",
+  "runId": "RUN-006-1793265882146",
+  "canonicalRevision": "SECP-REV-006-20261029-VVUQ-CREDIBILITY",
+  "materialStateId": "MAT-STEEL-STRUCTURAL-AISI304-VERIFIED",
+  "timestamp": "2026-10-29T09:24:42.149Z",
+  "bindingsAudited": {
+    "canonicalGeometryBinding": "VERIFIED",
+    "materialPropertyBinding": "VERIFIED",
+    "thermalFieldSourceBinding": "VERIFIED",
+    "meshTopologyBinding": "VERIFIED",
+    "boundaryConditionBinding": "VERIFIED",
+    "solverConfigBinding": "VERIFIED"
+  },
+  "status": "ALL_BINDINGS_VERIFIED"
+}

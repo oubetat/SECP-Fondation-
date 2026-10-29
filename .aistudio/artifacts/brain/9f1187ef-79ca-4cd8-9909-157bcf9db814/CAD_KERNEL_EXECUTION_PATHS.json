@@ -1,0 +1,30 @@
+{
+  "campaignId": "SECP-CAD-KERNEL-AUDIT-001",
+  "verifiedPaths": [
+    {
+      "operation": "Parametric Primitive Creation",
+      "path": "ParametricModelingPanel.tsx → ParametricModelingEngine.applyParametricEdit → ParametricRegenerationEngine.regenerate → FeatureExecutor.execute → BRepKernel.createBox → BRepKernel.extrudePolygon → BRepValidator.validate",
+      "status": "VERIFIED_PRODUCTION"
+    },
+    {
+      "operation": "Planar Boolean Operation",
+      "path": "ModelingOperation.ts → BooleanEngine.execute → BooleanIntersector.intersectPlanes → BooleanSplitter.splitSolids → BooleanAssembler.assemble → BRepValidator.validate",
+      "status": "VERIFIED_PRODUCTION"
+    },
+    {
+      "operation": "Persistent Topology Resolution",
+      "path": "ParametricRegenerationEngine.regenerate → BRepNamingGraph.resolveTargetEntity → BRepNamingGraph.computeFaceSignature",
+      "status": "VERIFIED_PRODUCTION"
+    },
+    {
+      "operation": "CAD Interop (STEP Export)",
+      "path": "CadTranslator.ts → STEPAP242Translator.exportToStepPart21 → JSON.stringify",
+      "status": "MOCKED"
+    },
+    {
+      "operation": "Advanced Modeling (Fillet/Sweep)",
+      "path": "OcctKernelAdapter.fillet → createBrowserMockOcInstance → MockNativeShape",
+      "status": "MOCKED_FALLBACK"
+    }
+  ]
+}

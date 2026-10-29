@@ -1,0 +1,67 @@
+{
+  "campaign": "SECP-PHYSICS-EXPANSION-004B",
+  "oracles": [
+    {
+      "id": "ORACLE_1_ANALYTICAL_REFERENCE",
+      "module": "src/engine/physics/thermal/AnalyticalThermal1DReference.ts",
+      "governingLaw": "-k * d2T/dx2 = q_vol",
+      "inputs": [
+        "L",
+        "W",
+        "H",
+        "k",
+        "q_vol",
+        "T_0"
+      ],
+      "dependencies": [
+        "NONE"
+      ],
+      "independenceConfirmed": true
+    },
+    {
+      "id": "ORACLE_2_VOLUMETRIC_INTEGRATION",
+      "module": "src/engine/physics/electromagnetics/IndependentThermalConservationAuditor3D.ts:auditVolumetricHeatGeneration",
+      "governingLaw": "Q_vol = sum_e q_e * V_e",
+      "inputs": [
+        "mesh.nodes",
+        "mesh.elements",
+        "elementHeats"
+      ],
+      "dependencies": [
+        "ElectrostaticSolver3D.computeTetGradients"
+      ],
+      "independenceConfirmed": true
+    },
+    {
+      "id": "ORACLE_3_VARIATIONAL_REACTIONS",
+      "module": "src/engine/physics/electromagnetics/IndependentThermalConservationAuditor3D.ts:computeNodalReactionFluxes",
+      "governingLaw": "R = K_th * T - F_vol",
+      "inputs": [
+        "mesh.nodes",
+        "mesh.elements",
+        "elementHeats",
+        "thermalBCs",
+        "nodalTemperatures"
+      ],
+      "dependencies": [
+        "MathUtils.Matrix"
+      ],
+      "independenceConfirmed": true
+    },
+    {
+      "id": "ORACLE_4_DIRECT_SURFACE_FLUX",
+      "module": "src/engine/physics/electromagnetics/IndependentThermalConservationAuditor3D.ts:integrateBoundaryFlux",
+      "governingLaw": "Phi_f = (-k * grad(T_e) . n_f) * A_f",
+      "inputs": [
+        "mesh.nodes",
+        "mesh.elements",
+        "boundaryFaces",
+        "nodalTemperatures"
+      ],
+      "dependencies": [
+        "ElectrostaticSolver3D.computeTetGradients"
+      ],
+      "independenceConfirmed": true
+    }
+  ]
+}

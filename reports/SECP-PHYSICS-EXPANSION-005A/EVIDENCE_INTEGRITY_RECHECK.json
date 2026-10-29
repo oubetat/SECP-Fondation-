@@ -1,0 +1,100 @@
+{
+  "campaignId": "SECP-PHYSICS-EXPANSION-005A",
+  "targetCampaignId": "SECP-PHYSICS-EXPANSION-005",
+  "timestamp": "2026-10-29T09:06:33.680Z",
+  "sha256ManifestVerified": true,
+  "artifactsVerifiedCount": 14,
+  "discrepancyCount": 0,
+  "crossReferenceAudit": {
+    "finalAcceptanceDecisionVerdict": "PASS_WITHIN_DECLARED_SCOPE",
+    "numericalResultsRawMatchesDecision": true,
+    "timestampSequenceValid": true,
+    "zeroTamperingDetected": true
+  },
+  "artifactRecheckList": [
+    {
+      "fileName": "BASELINE_AND_SOURCE_LINEAGE.json",
+      "expectedHash": "79e4190c0d7570c744aee8f47e1715e6f347cc80b30f37688fe7a3e465ec9891",
+      "actualHash": "79e4190c0d7570c744aee8f47e1715e6f347cc80b30f37688fe7a3e465ec9891",
+      "match": true
+    },
+    {
+      "fileName": "THERMO_MECHANICAL_PHYSICS_CONTRACT.json",
+      "expectedHash": "6c2a75553384927b732138a50405ba2949ffc7d2abaf839c6935c7144ecebe34",
+      "actualHash": "6c2a75553384927b732138a50405ba2949ffc7d2abaf839c6935c7144ecebe34",
+      "match": true
+    },
+    {
+      "fileName": "ANALYTICAL_DERIVATIONS.md",
+      "expectedHash": "412f19f88ac928a0d2c9e69176ad7cd8195c98b2319f9be00eb19df7873b8721",
+      "actualHash": "412f19f88ac928a0d2c9e69176ad7cd8195c98b2319f9be00eb19df7873b8721",
+      "match": true
+    },
+    {
+      "fileName": "BENCHMARK_INPUTS_AND_EXPECTED_RESULTS.json",
+      "expectedHash": "f08c0aa59bc7286f6fb82a9599f20f21e46a05a4480e1447960312e09a909261",
+      "actualHash": "f08c0aa59bc7286f6fb82a9599f20f21e46a05a4480e1447960312e09a909261",
+      "match": true
+    },
+    {
+      "fileName": "COUPLING_DATA_LINEAGE.json",
+      "expectedHash": "d9404df2952d86b8305c940f03968d06f549ef132e1745aa65d1179755935f58",
+      "actualHash": "d9404df2952d86b8305c940f03968d06f549ef132e1745aa65d1179755935f58",
+      "match": true
+    },
+    {
+      "fileName": "NUMERICAL_RESULTS_RAW.json",
+      "expectedHash": "85e13d33a009635ec8366c40e0d4938a08bb0f3dbfa080dd0edb34c5f6a35383",
+      "actualHash": "85e13d33a009635ec8366c40e0d4938a08bb0f3dbfa080dd0edb34c5f6a35383",
+      "match": true
+    },
+    {
+      "fileName": "MESH_CONVERGENCE_RESULTS.json",
+      "expectedHash": "c4d5975f31bef9fe65b37b20b76bf7102569310e0480d18f42bd3bc42fb99a1c",
+      "actualHash": "c4d5975f31bef9fe65b37b20b76bf7102569310e0480d18f42bd3bc42fb99a1c",
+      "match": true
+    },
+    {
+      "fileName": "EQUILIBRIUM_AND_REACTION_AUDIT.json",
+      "expectedHash": "00cb3ec3594d09a5d6159b4522b3d07ec792e1770bab01b5cd3accce23ea7675",
+      "actualHash": "00cb3ec3594d09a5d6159b4522b3d07ec792e1770bab01b5cd3accce23ea7675",
+      "match": true
+    },
+    {
+      "fileName": "MATERIAL_STATE_INTEGRITY_RESULTS.json",
+      "expectedHash": "df5f7b269608e11df248af5adbc0c4d2402b00be0bf101d1da5de018edf8a2fc",
+      "actualHash": "df5f7b269608e11df248af5adbc0c4d2402b00be0bf101d1da5de018edf8a2fc",
+      "match": true
+    },
+    {
+      "fileName": "CANONICAL_EVIDENCE_BINDING_AUDIT.json",
+      "expectedHash": "cb20b3bd80dbffecea890689fce7336cd49e2cd08b967a4aaffbf750be7f2ac5",
+      "actualHash": "cb20b3bd80dbffecea890689fce7336cd49e2cd08b967a4aaffbf750be7f2ac5",
+      "match": true
+    },
+    {
+      "fileName": "ADVERSARIAL_MUTATION_RESULTS.json",
+      "expectedHash": "77eeffc7df08a31bc6b798c4cc013de0722aa761214f13107a3c5cd5521f5960",
+      "actualHash": "77eeffc7df08a31bc6b798c4cc013de0722aa761214f13107a3c5cd5521f5960",
+      "match": true
+    },
+    {
+      "fileName": "REGRESSION_AND_BUILD_RESULTS.json",
+      "expectedHash": "b696fe407b50140fdd555e26ed8b7bcf00718039f9eab06ec0a545fb2d5ecf68",
+      "actualHash": "b696fe407b50140fdd555e26ed8b7bcf00718039f9eab06ec0a545fb2d5ecf68",
+      "match": true
+    },
+    {
+      "fileName": "NUMERICAL_LIMITATIONS.json",
+      "expectedHash": "6346dc43222177ff08208c504170ea63601feca3d9bcc4c08ccd6d890ca9d9b4",
+      "actualHash": "6346dc43222177ff08208c504170ea63601feca3d9bcc4c08ccd6d890ca9d9b4",
+      "match": true
+    },
+    {
+      "fileName": "REQUIREMENT_TRACEABILITY_MATRIX.json",
+      "expectedHash": "e72e4e76efb653cad0e08b06fb18c345c8a71f7d46dd018144b2efe4e2d392be",
+      "actualHash": "e72e4e76efb653cad0e08b06fb18c345c8a71f7d46dd018144b2efe4e2d392be",
+      "match": true
+    }
+  ]
+}

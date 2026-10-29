@@ -1,0 +1,13 @@
+{
+  "campaignId": "SECP-PHYSICS-EXPANSION-005",
+  "gateG4Passed": true,
+  "materialStateIntegrity": {
+    "thermalStrainFormulaVerified": true,
+    "strainAdditiveDecompositionVerified": true,
+    "stressFreeStateZeroStressVerified": true,
+    "temperatureDependenceEVerified": true,
+    "temperatureDependenceAlphaVerified": true,
+    "validityRangeCheckPassed": true
+  },
+  "verdict": "MATERIAL_STATE_AND_THERMAL_STRAIN_DECOMPOSITION_VERIFIED"
+}

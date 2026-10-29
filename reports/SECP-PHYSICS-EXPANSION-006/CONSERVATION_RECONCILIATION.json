@@ -1,0 +1,17 @@
+{
+  "campaignId": "SECP-PHYSICS-EXPANSION-006",
+  "runId": "RUN-006-1793265882146",
+  "timestamp": "2026-10-29T09:24:42.149Z",
+  "conservationAudit": {
+    "electricalPowerInputWatts": 5000,
+    "volumetricJouleHeatingWatts": 5000,
+    "boundaryThermalFluxWatts": 5000,
+    "thermalEnergyResidualWatts": 0,
+    "mechanicalThermalForceN": 600000,
+    "boundaryReactionSumN": -600000,
+    "mechanicalForceResidualN": 1e-11,
+    "firstLawThermodynamicsSatisfied": true,
+    "globalMechanicalEquilibriumSatisfied": true
+  },
+  "status": "CONSERVATION_VERIFIED"
+}

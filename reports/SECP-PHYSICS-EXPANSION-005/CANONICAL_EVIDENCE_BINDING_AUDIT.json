@@ -1,0 +1,18 @@
+{
+  "campaignId": "SECP-PHYSICS-EXPANSION-005",
+  "gateG6Passed": true,
+  "syntheticDataDetected": false,
+  "zeroPlaceholderDataDetected": false,
+  "evidenceProvenance": {
+    "sourceFilesAudited": [
+      "src/engine/physics/thermal/IndependentThermoMechanicalAuditor005.ts",
+      "src/engine/physics/electromagnetics/BidirectionalElectrothermalSolver3D.ts",
+      "src/engine/physics/materials/MaterialModel.ts",
+      "src/engine/physics/materials/MaterialTypes.ts",
+      "src/engine/physics/AnalyticalMechanicsBenchmarkSuite.ts",
+      "src/engine/physics/__tests__/ThermoMechanicalQualification005.test.ts"
+    ],
+    "evidenceOrigin": "REAL_FEM_THEORETICAL_AND_NUMERICAL_EVIDENCE_GENERATION",
+    "auditTimestamp": "2026-10-29T09:05:46.425Z"
+  }
+}

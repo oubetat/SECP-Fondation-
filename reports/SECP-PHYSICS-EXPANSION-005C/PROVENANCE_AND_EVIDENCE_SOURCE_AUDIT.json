@@ -1,0 +1,16 @@
+{
+  "campaignId": "SECP-PHYSICS-EXPANSION-005C",
+  "runId": "RUN-005C-1793265646083",
+  "timestamp": "2026-10-29T09:20:46.124Z",
+  "codeCommitSHA256": "bfc232eb15de254dad6b164bbef41f9db1e95aeec7e02f2d84f081d08b1e3bde",
+  "canonicalRevision": "SECP-REV-005C-20261029-INDEPENDENT-CHALLENGE",
+  "materialStateId": "MAT-STEEL-STRUCTURAL-AISI304-VERIFIED",
+  "sourceFilesAudited": [
+    "src/engine/physics/electromagnetics/UnifiedThermoElectroMechanicalSolver3D.ts",
+    "src/engine/physics/electromagnetics/BidirectionalElectrothermalSolver3D.ts",
+    "src/engine/fem/core/NonlinearEquilibriumSolver.ts",
+    "src/engine/fem/core/TET4LargeDeformationPlasticFormulation.ts",
+    "src/engine/physics/thermal/IndependentThermoMechanicalAuditor005.ts"
+  ],
+  "provenanceBindingVerified": true
+}

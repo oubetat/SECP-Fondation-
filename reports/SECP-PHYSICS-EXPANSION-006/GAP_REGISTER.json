@@ -1,0 +1,31 @@
+{
+  "campaignId": "SECP-PHYSICS-EXPANSION-006",
+  "timestamp": "2026-10-29T09:24:42.150Z",
+  "totalGapsRecorded": 3,
+  "gaps": [
+    {
+      "gapId": "GAP-006-01",
+      "category": "Experimental Validation",
+      "description": "Laboratory DIC (Digital Image Correlation) optical strain coupon testing remains UNVERIFIED.",
+      "impactOnQualification": "Software math, ASME VVUQ solution verification, and causality are verified; physical experimental validation is explicitly declared UNVERIFIED.",
+      "remediationRequirement": "Ingest physical lab DIC optical coupon dataset when available.",
+      "severity": "P1"
+    },
+    {
+      "gapId": "GAP-006-02",
+      "category": "Scope Boundary",
+      "description": "Large deformation thermo-plastic creeping strain is outside linear thermo-elastic scope.",
+      "impactOnQualification": "Scope is strictly bounded to small strain linear thermo-elastic continuum physics.",
+      "remediationRequirement": "Enforce material validity temperature range [100 K, 1500 K].",
+      "severity": "P2"
+    },
+    {
+      "gapId": "GAP-006-03",
+      "category": "Industrial Field Testing",
+      "description": "Full-scale industrial turbomachinery field operational testing is UNVERIFIED.",
+      "impactOnQualification": "Declared boundary; industrial qualification remains UNVERIFIED.",
+      "remediationRequirement": "Ingest industrial field telemetry data when available.",
+      "severity": "P2"
+    }
+  ]
+}

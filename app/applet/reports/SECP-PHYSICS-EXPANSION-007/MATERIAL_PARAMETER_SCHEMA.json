@@ -1,0 +1,48 @@
+{
+  "schemaName": "SECP-FATIGUE-MATERIAL-SCHEMA",
+  "version": "1.0.0",
+  "parameters": [
+    {
+      "id": "uts",
+      "name": "Ultimate Tensile Strength",
+      "unit": "MPa",
+      "description": "Maximum stress material can withstand before necking."
+    },
+    {
+      "id": "sf_prime",
+      "name": "Fatigue Strength Coefficient",
+      "unit": "MPa",
+      "description": "Intercept of Basquin log-log S-N curve at 1 cycle (reversal)."
+    },
+    {
+      "id": "b",
+      "name": "Fatigue Strength Exponent",
+      "unit": "dimensionless",
+      "description": "Slope of the Basquin S-N curve. Typically ranges from -0.05 to -0.15."
+    },
+    {
+      "id": "enduranceLimit",
+      "name": "Fatigue Endurance Limit",
+      "unit": "MPa",
+      "description": "Stress amplitude below which damage accumulation is assumed to be zero."
+    },
+    {
+      "id": "ductilityExponent",
+      "name": "Fatigue Ductility Exponent (c)",
+      "unit": "dimensionless",
+      "description": "Required for strain-life (E-N) Coffin-Manson relationship."
+    },
+    {
+      "id": "ductilityCoeff",
+      "name": "Fatigue Ductility Coefficient (eps_f_prime)",
+      "unit": "dimensionless",
+      "description": "Required for strain-life (E-N) Coffin-Manson relationship."
+    }
+  ],
+  "validationRules": [
+    "uts > 0",
+    "sf_prime > 0",
+    "b < 0",
+    "enduranceLimit >= 0"
+  ]
+}

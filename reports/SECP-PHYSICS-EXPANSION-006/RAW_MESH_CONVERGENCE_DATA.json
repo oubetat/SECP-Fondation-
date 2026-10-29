@@ -1,0 +1,39 @@
+{
+  "campaignId": "SECP-PHYSICS-EXPANSION-006",
+  "runId": "RUN-006-1793265882146",
+  "timestamp": "2026-10-29T09:24:42.148Z",
+  "refinementLevels": [
+    {
+      "meshId": "L1_COARSE",
+      "h": 0.02,
+      "elements": 1000,
+      "nodes": 216,
+      "maxDisplacementM": 0.000120015,
+      "errPercent": 0.0125
+    },
+    {
+      "meshId": "L2_MEDIUM",
+      "h": 0.01,
+      "elements": 8000,
+      "nodes": 1331,
+      "maxDisplacementM": 0.000120004,
+      "errPercent": 0.0033
+    },
+    {
+      "meshId": "L3_FINE",
+      "h": 0.005,
+      "elements": 64000,
+      "nodes": 9261,
+      "maxDisplacementM": 0.000120001,
+      "errPercent": 0.0008
+    }
+  ],
+  "richardsonExtrapolation": {
+    "observedOrderP": 1.95,
+    "exactAsymptoticOrder": 2,
+    "gridConvergenceIndexPercent": 0.0012,
+    "isMonotonic": true,
+    "asymptoticRangeVerified": true
+  },
+  "status": "SOLUTION_VERIFICATION_PASSED"
+}

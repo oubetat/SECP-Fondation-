@@ -1,0 +1,18 @@
+{
+  "oracles": [
+    {
+      "name": "Analytical3DThermalBenchmarkSuite",
+      "status": "INDEPENDENT",
+      "sharedStateWithSolver": false,
+      "sharedStateWithAuditor": false,
+      "sourceFile": "src/engine/physics/thermal/Analytical3DThermalBenchmarkSuite.ts"
+    },
+    {
+      "name": "IndependentBoundaryTopologyAuditor",
+      "status": "INDEPENDENT",
+      "sharedStateWithSolver": false,
+      "sharedStateWithAuditor": false,
+      "sourceFile": "src/engine/physics/thermal/IndependentBoundaryTopologyAuditor.ts"
+    }
+  ]
+}

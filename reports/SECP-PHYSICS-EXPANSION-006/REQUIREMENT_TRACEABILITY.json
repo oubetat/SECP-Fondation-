@@ -1,0 +1,78 @@
+{
+  "campaignId": "SECP-PHYSICS-EXPANSION-006",
+  "timestamp": "2026-10-29T09:24:42.147Z",
+  "traceabilityMatrix": [
+    {
+      "reqId": "REQ-006-01",
+      "phase": "P0 - Baseline",
+      "source": "BASELINE_AND_SCOPE.json",
+      "status": "VERIFIED"
+    },
+    {
+      "reqId": "REQ-006-02",
+      "phase": "P1 - Production Runtime Trace",
+      "source": "PRODUCTION_RUNTIME_TRACE.json",
+      "status": "VERIFIED"
+    },
+    {
+      "reqId": "REQ-006-03",
+      "phase": "P1 - Causal Interventions",
+      "source": "CAUSAL_INTERVENTION_RESULTS.json",
+      "status": "VERIFIED"
+    },
+    {
+      "reqId": "REQ-006-04",
+      "phase": "P2 - Independent Oracles",
+      "source": "INDEPENDENT_ORACLE_RESULTS.json",
+      "status": "VERIFIED"
+    },
+    {
+      "reqId": "REQ-006-05",
+      "phase": "P3 - Solution Verification & Mesh Convergence",
+      "source": "RAW_MESH_CONVERGENCE_DATA.json",
+      "status": "VERIFIED"
+    },
+    {
+      "reqId": "REQ-006-06",
+      "phase": "P4 - Energy & Multiphysics Conservation",
+      "source": "CONSERVATION_RECONCILIATION.json",
+      "status": "VERIFIED"
+    },
+    {
+      "reqId": "REQ-006-07",
+      "phase": "P5 - Material & State Binding",
+      "source": "MATERIAL_AND_CANONICAL_BINDING_AUDIT.json",
+      "status": "VERIFIED"
+    },
+    {
+      "reqId": "REQ-006-08",
+      "phase": "P6 - Uncertainty Quantification (ASME VVUQ)",
+      "source": "UNCERTAINTY_REGISTER.json",
+      "status": "VERIFIED"
+    },
+    {
+      "reqId": "REQ-006-09",
+      "phase": "P7 - Adversarial Mutation Campaign",
+      "source": "ADVERSARIAL_MUTATION_RESULTS.json",
+      "status": "VERIFIED"
+    },
+    {
+      "reqId": "REQ-006-10",
+      "phase": "P8 - Determinism & Reproducibility",
+      "source": "REPRODUCIBILITY_RESULTS.json",
+      "status": "VERIFIED"
+    },
+    {
+      "reqId": "REQ-006-11",
+      "phase": "P8 - Common Mode Dependency Audit",
+      "source": "COMMON_MODE_DEPENDENCY_REGISTER.json",
+      "status": "VERIFIED"
+    },
+    {
+      "reqId": "REQ-006-12",
+      "phase": "P9 - Gap Register & Decision",
+      "source": "GAP_REGISTER.json / FINAL_QUALIFICATION_DECISION.md",
+      "status": "VERIFIED"
+    }
+  ]
+}

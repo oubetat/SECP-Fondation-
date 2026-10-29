@@ -1,0 +1,14 @@
+{
+  "campaignId": "SECP-PHYSICS-EXPANSION-005",
+  "scopeBoundaries": {
+    "declaredQualificationScope": "Small Deformation Thermo-Elastic Linear Coupling",
+    "experimentalValidationStatus": "UNVERIFIED",
+    "meshSensitivityBounds": "Valid for element aspect ratio < 5.0 and mesh level >= L2",
+    "nonLinearTemperatureLimits": "Temperature range [100 K, 1500 K] for verified material data"
+  },
+  "knownLimitations": [
+    "Thermo-plasticity and large thermal creeping strain require high-temperature creep constitutive models",
+    "Phase transformation latent heat mechanical shock coupling is unverified in this qualification package",
+    "Experimental validation against physical test coupons (e.g. DIC optical strain measurements) remains UNVERIFIED"
+  ]
+}

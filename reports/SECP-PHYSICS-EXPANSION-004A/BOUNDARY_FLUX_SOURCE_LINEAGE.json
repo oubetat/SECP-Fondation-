@@ -1,0 +1,37 @@
+{
+  "campaign": "SECP-PHYSICS-EXPANSION-004A",
+  "timestamp": "2026-10-29T07:45:56.707Z",
+  "quantities": {
+    "electricalPower": {
+      "physicalSource": "Joule heat dissipation in 3D resistive conductor",
+      "governingPde": "-div(sigma(T) * grad(phi)) = 0",
+      "constitutiveEquation": "sigma(T) = sigma_0 / (1 + alpha * (T - T_0)) [S/m]",
+      "elementIntegral": "P_e = \\int_{\\Omega_e} \\mathbf{J} \\cdot \\mathbf{E} \\, d\\Omega = \\sigma(T_e) ||\\mathbf{E}_e||^2 V_e",
+      "assemblyMethod": "Independent element volume summation in ElectrostaticSolver3D:280",
+      "independenceConfirmed": true
+    },
+    "volumetricThermalGeneration": {
+      "physicalSource": "Volumetric heat source mapped into thermal continuum",
+      "governingPde": "-div(k * grad(T)) = q_vol",
+      "elementIntegral": "Q_th = \\int_\\Omega q_vol \\, d\\Omega = \\sum_e q_e V_e",
+      "assemblyMethod": "Independent element volume integration in IndependentThermalConservationAuditor3D:auditVolumetricHeatGeneration",
+      "independenceConfirmed": true
+    },
+    "variationalBoundaryReaction": {
+      "physicalSource": "Work-conjugate heat reaction at Dirichlet fixed-temperature boundary nodes",
+      "discreteEquation": "K_th * T = F_vol + R",
+      "nodalReactionEquation": "R_i = \\sum_j K_ij * T_j - F_i",
+      "conservationLaw": "\\sum_{i \\in fixed} (-R_i) = \\sum_i F_i = Q_vol",
+      "assemblyMethod": "Independent matrix-vector product and Dirichlet node summation in IndependentThermalConservationAuditor3D:computeNodalReactionFluxes",
+      "independenceConfirmed": true
+    },
+    "directConductiveBoundaryFlux": {
+      "physicalSource": "Continuum Fourier heat conduction normal to external boundary faces",
+      "governingLaw": "q_n = -k * (grad(T) \\cdot n)",
+      "surfaceIntegral": "\\Phi_f = \\int_f q_n \\, dA = q_n * A_f",
+      "discretizationBehavior": "Piecewise-constant gradient in C0 TET4 elements approximates quadratic temperature gradient with O(h^1) error",
+      "assemblyMethod": "Boundary face outward normal integration in IndependentThermalConservationAuditor3D:integrateBoundaryFlux",
+      "independenceConfirmed": true
+    }
+  }
+}
