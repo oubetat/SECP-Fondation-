@@ -5,6 +5,8 @@
  */
 
 import { WiringHarnessCanonicalModel } from './WiringHarnessCanonicalModel';
+import { HarnessToCoreBinding } from '../crossdomain/CanonicalDomainBinding';
+import { CanonicalDomainBindingEngine } from '../crossdomain/CanonicalDomainBindingEngine';
 
 export interface HarnessBomItem {
   itemNumber: number;
@@ -42,7 +44,13 @@ export interface ManufacturingReport {
 }
 
 export class WiringHarnessManufacturingVerifier {
-  public static generateManufacturingPackage(model: WiringHarnessCanonicalModel): ManufacturingReport {
+  public static generateManufacturingPackage(binding: HarnessToCoreBinding): ManufacturingReport {
+    // 0. GATING: Verify simulation authority seal (Fail-Closed)
+    if (!CanonicalDomainBindingEngine.validateBinding(binding)) {
+      throw new Error(`[AUTHORITY_GATE_REJECTION] Wiring Harness Manufacturing Verifier execution denied: Invalid or non-authoritative simulation seal.`);
+    }
+
+    const model = binding.payload;
     const bom: HarnessBomItem[] = [];
     const wireList: WireListItem[] = [];
     const pinoutTable: ConnectorPinoutRow[] = [];

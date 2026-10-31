@@ -1,0 +1,50 @@
+{
+  "programId": "SECP-ENGINEERING-TRUTH-INTEGRATION-001",
+  "auditTimestamp": "2026-10-31T08:06:00Z",
+  "nodes": [
+    { "id": "CORE", "label": "SECP Canonical Core (EngineeringDocument / BRepKernel)", "type": "AUTHORITY" },
+    { "id": "PCB", "label": "PCB Design & Component Placement (PcbCanonicalModel)", "type": "DOMAIN" },
+    { "id": "ELEC", "label": "Electrical Schematic & Nodal Circuit (CircuitModel)", "type": "DOMAIN" },
+    { "id": "HARNESS", "label": "Wiring Harness & Connectors (WiringHarnessCanonicalModel)", "type": "DOMAIN" },
+    { "id": "MECH", "label": "Mechanical Enclosure B-Rep Geometry (Solid Body)", "type": "DOMAIN" },
+    { "id": "MD", "label": "Multidomain Integration Coupling (Electrothermal & MNA)", "type": "COUPLING" },
+    { "id": "FEM", "label": "Structural FEM Analysis (FEMMesh & Solvers)", "type": "SIMULATION" },
+    { "id": "CFD", "label": "Fluid CFD Analysis (Fvm3DNavierStokesSolver)", "type": "SIMULATION" },
+    { "id": "EVIDENCE", "label": "Attestation Evidence Root (EngineeringHashChain)", "type": "ATTESTATION" }
+  ],
+  "edges": [
+    { "source": "CORE", "target": "PCB", "relationship": "PROVIDES_CANONICAL_REVISION_IDENTITY" },
+    { "source": "CORE", "target": "ELEC", "relationship": "PROVIDES_CANONICAL_REVISION_IDENTITY" },
+    { "source": "CORE", "target": "HARNESS", "relationship": "PROVIDES_CANONICAL_REVISION_IDENTITY" },
+    { "source": "CORE", "target": "MECH", "relationship": "PROVIDES_BREP_GEOMETRY_AND_TOPOLOGY_HASH" },
+    { "source": "PCB", "target": "MD", "relationship": "PROVIDES_PLACEMENTS_TRACES_AND_HEAT_SOURCES" },
+    { "source": "ELEC", "target": "MD", "relationship": "PROVIDES_NODAL_NET_CURRENTS_AND_POWER_DISSIPATION" },
+    { "source": "HARNESS", "target": "MD", "relationship": "PROVIDES_CONNECTOR_MATING_AMPACITY_AND_WIRE_RESISTANCE" },
+    { "source": "MECH", "target": "MD", "relationship": "PROVIDES_ENCLOSURE_VOLUME_AND_STANDOFF_CONSTRAINTS" },
+    { "source": "MD", "target": "FEM", "relationship": "PROVIDES_THERMAL_EXPANSION_LOADS_AND_PCB_DEFLECTION" },
+    { "source": "MD", "target": "CFD", "relationship": "PROVIDES_FLUID_BOUNDARY_FACE_TEMPERATURES_AND_FLOW_DOMAINS" },
+    { "source": "FEM", "target": "EVIDENCE", "relationship": "MINT_SEALED_EXECUTION_ENVELOPE" },
+    { "source": "CFD", "target": "EVIDENCE", "relationship": "MINT_SEALED_EXECUTION_ENVELOPE" },
+    { "source": "MD", "target": "EVIDENCE", "relationship": "MINT_CROSS_DOMAIN_ATTESTATION_RECORD" }
+  ],
+  "changePropagationRules": [
+    {
+      "triggerDomain": "PCB",
+      "triggerChange": "COMPONENT_MOVE_OR_TRACE_REROUTE",
+      "affectedDomains": ["ELEC", "HARNESS", "MD", "FEM", "CFD"],
+      "invalidationAction": "MARK_DERIVED_STATE_STALE_AND_REQUIRE_SELECTIVE_RECOMPUTE"
+    },
+    {
+      "triggerDomain": "MECH",
+      "triggerChange": "ENCLOSURE_GEOMETRY_MUTATION",
+      "affectedDomains": ["PCB", "HARNESS", "MD", "CFD"],
+      "invalidationAction": "INVALIDATE_HARNESS_ROUTE_WAYPOINTS_AND_CFD_MESH"
+    },
+    {
+      "triggerDomain": "ELEC",
+      "triggerChange": "NET_VOLTAGE_OR_CURRENT_SHIFT",
+      "affectedDomains": ["MD", "FEM", "CFD"],
+      "invalidationAction": "RECOMPUTE_JOULE_HEATING_AND_TEMPERATURE_DISTRIBUTION"
+    }
+  ]
+}

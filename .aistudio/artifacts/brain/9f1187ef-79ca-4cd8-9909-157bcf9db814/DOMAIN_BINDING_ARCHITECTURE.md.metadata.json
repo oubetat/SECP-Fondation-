@@ -1,0 +1,5 @@
+{
+  "summary":  "DOMAIN_BINDING_ARCHITECTURE.md specifying canonical domain binding architecture, lifecycle state machine, change propagation semantics, and authority matrix across PCB, Electrical, Harness, Multidomain, FEM, and CFD domains.",
+  "updatedAt":  "2026-10-31T08:10:32.021832737Z",
+  "userFacing":  true
+}

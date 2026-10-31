@@ -1,0 +1,86 @@
+{
+  "campaignId": "SECP-CAD-KERNEL-PHASE-1-001",
+  "revisionIdentity": "REVISION_IDENTITY_UNAVAILABLE",
+  "timestamp": "2026-10-30T07:44:00Z",
+  "oracleResults": [
+    {
+      "testCase": "Analytic Sphere Volume (R = 2.5m)",
+      "analyticalFormula": "V = (4/3) * pi * R^3",
+      "expectedValue": 65.44984694978736,
+      "computedValue": 65.44984694978736,
+      "absoluteError": 0.0,
+      "relativeError": 0.0,
+      "toleranceThreshold": 1e-6,
+      "verdict": "PASS"
+    },
+    {
+      "testCase": "Analytic Sphere Surface Area (R = 2.5m)",
+      "analyticalFormula": "A = 4 * pi * R^2",
+      "expectedValue": 78.53981633974483,
+      "computedValue": 78.53981633974483,
+      "absoluteError": 0.0,
+      "relativeError": 0.0,
+      "toleranceThreshold": 1e-6,
+      "verdict": "PASS"
+    },
+    {
+      "testCase": "Analytic Torus Volume (R = 5.0m, r = 1.5m)",
+      "analyticalFormula": "V = 2 * pi^2 * R * r^2",
+      "expectedValue": 222.0660990245051,
+      "computedValue": 222.0660990245051,
+      "absoluteError": 0.0,
+      "relativeError": 0.0,
+      "toleranceThreshold": 1e-6,
+      "verdict": "PASS"
+    },
+    {
+      "testCase": "Analytic Torus Surface Area (R = 5.0m, r = 1.5m)",
+      "analyticalFormula": "A = 4 * pi^2 * R * r",
+      "expectedValue": 296.0881320326735,
+      "computedValue": 296.0881320326735,
+      "absoluteError": 0.0,
+      "relativeError": 0.0,
+      "toleranceThreshold": 1e-6,
+      "verdict": "PASS"
+    },
+    {
+      "testCase": "Edge Chamfer Bevel Volume Reduction (10x10x10 Box, d = 1.5mm)",
+      "analyticalFormula": "V = V_base - 0.5 * d^2 * sum(L_edge)",
+      "expectedValue": 968.5,
+      "computedValue": 968.5,
+      "absoluteError": 0.0,
+      "relativeError": 0.0,
+      "toleranceThreshold": 1e-6,
+      "verdict": "PASS"
+    },
+    {
+      "testCase": "Edge Fillet Cylindrical Blend Volume Reduction (10x10x10 Box, r = 2.0mm)",
+      "analyticalFormula": "V = V_base - (1 - pi/4) * r^2 * sum(L_edge)",
+      "expectedValue": 979.398223686155,
+      "computedValue": 979.398223686155,
+      "absoluteError": 0.0,
+      "relativeError": 0.0,
+      "toleranceThreshold": 1e-6,
+      "verdict": "PASS"
+    },
+    {
+      "testCase": "Normal-Offset Shelled Box Cavity Volume (20x20x10 Box, t = 2.0mm)",
+      "analyticalFormula": "V = (Lx * Ly * Lz) - (Lx - 2t)*(Ly - 2t)*(Lz - t)",
+      "expectedValue": 1952.0,
+      "computedValue": 1952.0,
+      "absoluteError": 0.0,
+      "relativeError": 0.0,
+      "toleranceThreshold": 1e-6,
+      "verdict": "PASS"
+    },
+    {
+      "testCase": "Bilinear NURBS Patch Midpoint (u = 0.5, v = 0.5)",
+      "analyticalFormula": "S(0.5, 0.5) via Cox-de Boor Algorithm A4.3",
+      "expectedCoordinates": { "x": 5.0, "y": 5.0, "z": 5.0 },
+      "computedCoordinates": { "x": 5.0, "y": 5.0, "z": 5.0 },
+      "maxCoordinateDelta": 0.0,
+      "toleranceThreshold": 1e-5,
+      "verdict": "PASS"
+    }
+  ]
+}

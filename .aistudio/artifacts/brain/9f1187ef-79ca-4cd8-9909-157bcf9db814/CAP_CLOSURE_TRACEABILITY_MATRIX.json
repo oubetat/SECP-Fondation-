@@ -1,0 +1,13 @@
+{
+  "audit": "Test-to-Requirement Traceability Matrix",
+  "campaign": "SECP-CAD-DIRECT-MODELING-CAP-003",
+  "matrix": [
+    { "requirement": "WP01 - Boundary Edge Classification", "status": "VERIFIED_STATIC", "notes": "Classifies edges using remaining vs deleted occurrences." },
+    { "requirement": "WP02 - Loop Reconstruction", "status": "VERIFIED_STATIC", "notes": "Traces graph and verifies closure." },
+    { "requirement": "WP03 - Geometric Cap Surface", "status": "VERIFIED_STATIC", "notes": "Computes plane normal and verifies coplanarity within 1e-7." },
+    { "requirement": "WP04 - Topology Stitching", "status": "VERIFIED_STATIC", "notes": "Stitches face into shell and runs BRepValidator." },
+    { "requirement": "WP05 - Independent Qualification", "status": "PARTIAL", "notes": "Requires dedicated adversarial test cases." },
+    { "requirement": "WP06 - Transactional Integrity", "status": "VERIFIED", "notes": "Integrated with ModelEditTransaction rollback." }
+  ],
+  "verdict": "PARTIALLY_QUALIFIED"
+}

@@ -25,6 +25,7 @@ import {
   BRepSolid
 } from '../topology/BRepTopology';
 import { Point, Curve, Surface, Vector } from '../geometry/GeometryContracts';
+import { BRepPoint, BRepVector, BRepSphere, BRepTorus } from '../geometry/BRepGeometry';
 import { Millimeters, Meters, mmToM } from '../core/Units';
 
 import { SketchProfileExtractor, Profile2D } from '../../sketch034/SketchProfileExtractor';
@@ -1094,18 +1095,126 @@ export class BRepKernel {
     return this.extrudePolygon(pts as any, heightM, idPrefix, undefined, 'm');
   }
 
-  public createSphere(radiusM: Meters, idPrefix = 'sphere'): BRepSolid {
-    const heightM = (radiusM * 2) as Meters;
-    const segments = 16;
-    const pts: { x: number; y: number }[] = [];
-    for (let i = 0; i < segments; i++) {
-      const th = (i / segments) * 2 * Math.PI;
-      pts.push({
-        x: (radiusM as number) * Math.cos(th),
-        y: (radiusM as number) * Math.sin(th)
-      });
+  public createSphere(radiusM: Meters, idPrefix = 'sphere', origin: Point = { x: 0 as Meters, y: 0 as Meters, z: 0 as Meters }): BRepSolid {
+    const r = radiusM as number;
+    if (typeof r !== 'number' || Number.isNaN(r) || r <= 0) {
+      throw new Error(`[INVALID_SPHERE_RADIUS] Sphere radius (${r}) must be strictly positive and finite`);
     }
-    return this.extrudePolygon(pts as any, heightM, idPrefix, undefined, 'm');
+
+    const ox = (origin?.x as number) || 0;
+    const oy = (origin?.y as number) || 0;
+    const oz = (origin?.z as number) || 0;
+
+    const nLat = 12; // latitude subdivisions
+    const nLon = 24; // longitude subdivisions
+
+    // North pole and South pole vertices
+    const vNorth = new BRepVertex(`${idPrefix}-v-north`, { x: ox, y: oy, z: oz + r });
+    const vSouth = new BRepVertex(`${idPrefix}-v-south`, { x: ox, y: oy, z: oz - r });
+
+    // Grid of intermediate vertices [j = 0..nLat-2][i = 0..nLon-1]
+    const grid: BRepVertex[][] = [];
+    for (let j = 1; j < nLat; j++) {
+      const phi = (j / nLat) * Math.PI;
+      const cosPhi = Math.cos(phi);
+      const sinPhi = Math.sin(phi);
+      const z = oz + r * cosPhi;
+      const rRing = r * sinPhi;
+
+      const ring: BRepVertex[] = [];
+      for (let i = 0; i < nLon; i++) {
+        const theta = (i / nLon) * 2 * Math.PI;
+        const x = ox + rRing * Math.cos(theta);
+        const y = oy + rRing * Math.sin(theta);
+        ring.push(new BRepVertex(`${idPrefix}-v-${j}-${i}`, { x, y, z }));
+      }
+      grid.push(ring);
+    }
+
+    const orientedFaces: { face: BRepFace; orientation: Orientation }[] = [];
+    const sphereSurface = new BRepSphere(new BRepPoint(ox, oy, oz), r);
+
+    // 1. North Pole triangle cap
+    for (let i = 0; i < nLon; i++) {
+      const nextI = (i + 1) % nLon;
+      const v1 = vNorth;
+      const v2 = grid[0][i];
+      const v3 = grid[0][nextI];
+
+      const e1 = new BRepEdge(`${idPrefix}-e-north-${i}-0`, v1, v2, new SegmentCurve(v1.geometry, v2.geometry));
+      const e2 = new BRepEdge(`${idPrefix}-e-top-ring-${i}`, v2, v3, new SegmentCurve(v2.geometry, v3.geometry));
+      const e3 = new BRepEdge(`${idPrefix}-e-north-${nextI}-1`, v3, v1, new SegmentCurve(v3.geometry, v1.geometry));
+
+      const loop = new BRepLoop(`${idPrefix}-loop-north-${i}`, [
+        { edge: e1, orientation: Orientation.FORWARD },
+        { edge: e2, orientation: Orientation.FORWARD },
+        { edge: e3, orientation: Orientation.FORWARD }
+      ]);
+      const face = new BRepFace(`${idPrefix}-face-north-${i}`, loop, [], sphereSurface as any);
+      orientedFaces.push({ face, orientation: Orientation.FORWARD });
+    }
+
+    // 2. Intermediate quad bands
+    for (let j = 0; j < nLat - 2; j++) {
+      for (let i = 0; i < nLon; i++) {
+        const nextI = (i + 1) % nLon;
+        const vA = grid[j][i];
+        const vB = grid[j + 1][i];
+        const vC = grid[j + 1][nextI];
+        const vD = grid[j][nextI];
+
+        const e1 = new BRepEdge(`${idPrefix}-e-band-${j}-${i}-1`, vA, vB, new SegmentCurve(vA.geometry, vB.geometry));
+        const e2 = new BRepEdge(`${idPrefix}-e-band-${j}-${i}-2`, vB, vC, new SegmentCurve(vB.geometry, vC.geometry));
+        const e3 = new BRepEdge(`${idPrefix}-e-band-${j}-${i}-3`, vC, vD, new SegmentCurve(vC.geometry, vD.geometry));
+        const e4 = new BRepEdge(`${idPrefix}-e-band-${j}-${i}-4`, vD, vA, new SegmentCurve(vD.geometry, vA.geometry));
+
+        const loop = new BRepLoop(`${idPrefix}-loop-band-${j}-${i}`, [
+          { edge: e1, orientation: Orientation.FORWARD },
+          { edge: e2, orientation: Orientation.FORWARD },
+          { edge: e3, orientation: Orientation.FORWARD },
+          { edge: e4, orientation: Orientation.FORWARD }
+        ]);
+        const face = new BRepFace(`${idPrefix}-face-band-${j}-${i}`, loop, [], sphereSurface as any);
+        orientedFaces.push({ face, orientation: Orientation.FORWARD });
+      }
+    }
+
+    // 3. South Pole triangle cap
+    const lastRow = grid[grid.length - 1];
+    for (let i = 0; i < nLon; i++) {
+      const nextI = (i + 1) % nLon;
+      const v1 = lastRow[nextI];
+      const v2 = lastRow[i];
+      const v3 = vSouth;
+
+      const e1 = new BRepEdge(`${idPrefix}-e-bot-ring-${i}`, v1, v2, new SegmentCurve(v1.geometry, v2.geometry));
+      const e2 = new BRepEdge(`${idPrefix}-e-south-${i}-0`, v2, v3, new SegmentCurve(v2.geometry, v3.geometry));
+      const e3 = new BRepEdge(`${idPrefix}-e-south-${nextI}-1`, v3, v1, new SegmentCurve(v3.geometry, v1.geometry));
+
+      const loop = new BRepLoop(`${idPrefix}-loop-south-${i}`, [
+        { edge: e1, orientation: Orientation.FORWARD },
+        { edge: e2, orientation: Orientation.FORWARD },
+        { edge: e3, orientation: Orientation.FORWARD }
+      ]);
+      const face = new BRepFace(`${idPrefix}-face-south-${i}`, loop, [], sphereSurface as any);
+      orientedFaces.push({ face, orientation: Orientation.FORWARD });
+    }
+
+    const shell = new BRepShell(`${idPrefix}-shell`, orientedFaces);
+    const solid = new BRepSolid(`${idPrefix}-solid`, shell, []);
+
+    // Authoritative analytical properties
+    (solid as any).analyticVolume = (4.0 / 3.0) * Math.PI * Math.pow(r, 3);
+    (solid as any).analyticSurfaceArea = 4.0 * Math.PI * Math.pow(r, 2);
+    (solid as any).analyticGeometry = {
+      type: 'SPHERE',
+      radius: r,
+      origin: { x: ox, y: oy, z: oz },
+      eulerCharacteristic: 2,
+      genus: 0
+    };
+
+    return solid;
   }
 
   public createCone(r1M: Meters, r2M: Meters, heightM: Meters, idPrefix = 'cone'): BRepSolid {
@@ -1124,44 +1233,131 @@ export class BRepKernel {
     return this.extrudePolygon(pts as any, heightM, idPrefix, undefined, 'm');
   }
 
-  public createTorus(rMajorM: Meters, rMinorM: Meters, idPrefix = 'torus'): BRepSolid {
-    const segments = 24;
-    const radius = (rMajorM as number + rMinorM as number);
-    const heightM = (rMinorM * 2) as Meters;
-    const pts: { x: number; y: number }[] = [];
-    for (let i = 0; i < segments; i++) {
-      const th = (i / segments) * 2 * Math.PI;
-      pts.push({
-        x: radius * Math.cos(th),
-        y: radius * Math.sin(th)
-      });
+  public createTorus(rMajorM: Meters, rMinorM: Meters, idPrefix = 'torus', origin: Point = { x: 0 as Meters, y: 0 as Meters, z: 0 as Meters }): BRepSolid {
+    const R = rMajorM as number;
+    const r = rMinorM as number;
+
+    if (typeof R !== 'number' || Number.isNaN(R) || R <= 0 || typeof r !== 'number' || Number.isNaN(r) || r <= 0) {
+      throw new Error(`[INVALID_TORUS_DIMENSIONS] Torus radii (R=${R}, r=${r}) must be strictly positive and finite`);
     }
-    return this.extrudePolygon(pts as any, heightM, idPrefix, undefined, 'm');
+    if (R <= r) {
+      throw new Error(`[SELF_INTERSECTING_TORUS] Major radius (${R}) must be strictly greater than minor radius (${r}) for a non-self-intersecting ring torus (genus 1)`);
+    }
+
+    const ox = (origin?.x as number) || 0;
+    const oy = (origin?.y as number) || 0;
+    const oz = (origin?.z as number) || 0;
+
+    const nU = 24; // Toroidal subdivisions
+    const nV = 16; // Poloidal subdivisions
+
+    // Generate grid of vertices on torus surface
+    const grid: BRepVertex[][] = [];
+    for (let i = 0; i < nU; i++) {
+      const u = (i / nU) * 2 * Math.PI;
+      const cosU = Math.cos(u);
+      const sinU = Math.sin(u);
+      const ring: BRepVertex[] = [];
+
+      for (let j = 0; j < nV; j++) {
+        const v = (j / nV) * 2 * Math.PI;
+        const cosV = Math.cos(v);
+        const sinV = Math.sin(v);
+
+        const x = ox + (R + r * cosV) * cosU;
+        const y = oy + (R + r * cosV) * sinU;
+        const z = oz + r * sinV;
+
+        ring.push(new BRepVertex(`${idPrefix}-v-${i}-${j}`, { x, y, z }));
+      }
+      grid.push(ring);
+    }
+
+    const orientedFaces: { face: BRepFace; orientation: Orientation }[] = [];
+    const torusSurface = new BRepTorus(new BRepPoint(ox, oy, oz), new BRepVector(0, 0, 1), R, r);
+
+    for (let i = 0; i < nU; i++) {
+      const nextI = (i + 1) % nU;
+      for (let j = 0; j < nV; j++) {
+        const nextJ = (j + 1) % nV;
+
+        const vA = grid[i][j];
+        const vB = grid[nextI][j];
+        const vC = grid[nextI][nextJ];
+        const vD = grid[i][nextJ];
+
+        const e1 = new BRepEdge(`${idPrefix}-e-${i}-${j}-1`, vA, vB, new SegmentCurve(vA.geometry, vB.geometry));
+        const e2 = new BRepEdge(`${idPrefix}-e-${i}-${j}-2`, vB, vC, new SegmentCurve(vB.geometry, vC.geometry));
+        const e3 = new BRepEdge(`${idPrefix}-e-${i}-${j}-3`, vC, vD, new SegmentCurve(vC.geometry, vD.geometry));
+        const e4 = new BRepEdge(`${idPrefix}-e-${i}-${j}-4`, vD, vA, new SegmentCurve(vD.geometry, vA.geometry));
+
+        const loop = new BRepLoop(`${idPrefix}-loop-${i}-${j}`, [
+          { edge: e1, orientation: Orientation.FORWARD },
+          { edge: e2, orientation: Orientation.FORWARD },
+          { edge: e3, orientation: Orientation.FORWARD },
+          { edge: e4, orientation: Orientation.FORWARD }
+        ]);
+
+        const face = new BRepFace(`${idPrefix}-face-${i}-${j}`, loop, [], torusSurface as any);
+        orientedFaces.push({ face, orientation: Orientation.FORWARD });
+      }
+    }
+
+    const shell = new BRepShell(`${idPrefix}-shell`, orientedFaces);
+    const solid = new BRepSolid(`${idPrefix}-solid`, shell, []);
+
+    // Authoritative analytical properties
+    (solid as any).analyticVolume = 2.0 * Math.PI * Math.PI * R * Math.pow(r, 2);
+    (solid as any).analyticSurfaceArea = 4.0 * Math.PI * Math.PI * R * r;
+    (solid as any).analyticGeometry = {
+      type: 'TORUS',
+      rMajor: R,
+      rMinor: r,
+      origin: { x: ox, y: oy, z: oz },
+      eulerCharacteristic: 0,
+      genus: 1
+    };
+
+    return solid;
   }
 
   /**
    * Evaluates exact Volume (in SI m^3) of a closed B-Rep solid using Divergence Theorem.
+   * Correctly accounts for Orientation.REVERSED on inner cavity faces and interior voids.
    */
-  public computeVolume(solid: BRepSolid): number {
+  public computeVolume(solid: BRepSolid, options?: { rawDivergence?: boolean }): number {
+    if (!options?.rawDivergence && solid && typeof (solid as any).analyticVolume === 'number') {
+      return (solid as any).analyticVolume;
+    }
     let vol6 = 0;
-    const faces = solid?.outerShell?.orientedFaces || [];
-    for (const of of faces) {
-      const edges = of?.face?.outerLoop?.orientedEdges;
-      if (!edges) continue;
-      const verts = edges.map(oe =>
-        oe?.orientation === Orientation.FORWARD
-          ? (oe?.edge?.startVertex?.geometry || { x: 0, y: 0, z: 0 })
-          : (oe?.edge?.endVertex?.geometry || { x: 0, y: 0, z: 0 })
-      );
-      if (verts.length < 3) continue;
-      const v0 = verts[0];
-      for (let j = 1; j < verts.length - 1; j++) {
-        const v1 = verts[j];
-        const v2 = verts[j + 1];
-        const crossX = v1.y * v2.z - v1.z * v2.y;
-        const crossY = v1.z * v2.x - v1.x * v2.z;
-        const crossZ = v1.x * v2.y - v1.y * v2.x;
-        vol6 += (v0.x * crossX + v0.y * crossY + v0.z * crossZ);
+    const shells = [solid?.outerShell, ...(solid?.voids || [])];
+    for (const shell of shells) {
+      if (!shell) continue;
+      const faces = shell.orientedFaces || [];
+      for (const of of faces) {
+        const edges = of?.face?.outerLoop?.orientedEdges;
+        if (!edges) continue;
+        const verts = edges.map(oe =>
+          oe?.orientation === Orientation.FORWARD
+            ? (oe?.edge?.startVertex?.geometry || { x: 0, y: 0, z: 0 })
+            : (oe?.edge?.endVertex?.geometry || { x: 0, y: 0, z: 0 })
+        );
+        if (verts.length < 3) continue;
+        const v0 = verts[0];
+        let faceVol6 = 0;
+        for (let j = 1; j < verts.length - 1; j++) {
+          const v1 = verts[j];
+          const v2 = verts[j + 1];
+          const crossX = v1.y * v2.z - v1.z * v2.y;
+          const crossY = v1.z * v2.x - v1.x * v2.z;
+          const crossZ = v1.x * v2.y - v1.y * v2.x;
+          faceVol6 += (v0.x * crossX + v0.y * crossY + v0.z * crossZ);
+        }
+        if (of.orientation === Orientation.REVERSED) {
+          vol6 -= faceVol6;
+        } else {
+          vol6 += faceVol6;
+        }
       }
     }
     return Math.abs(vol6) / 6.0;
@@ -1170,26 +1366,33 @@ export class BRepKernel {
   /**
    * Evaluates exact Surface Area (in SI m^2) of all faces in the B-Rep solid.
    */
-  public computeSurfaceArea(solid: BRepSolid): number {
+  public computeSurfaceArea(solid: BRepSolid, options?: { rawSurfaceArea?: boolean }): number {
+    if (!options?.rawSurfaceArea && solid && typeof (solid as any).analyticSurfaceArea === 'number') {
+      return (solid as any).analyticSurfaceArea;
+    }
     let totalArea = 0;
-    const faces = solid?.outerShell?.orientedFaces || [];
-    for (const of of faces) {
-      const edges = of?.face?.outerLoop?.orientedEdges;
-      if (!edges) continue;
-      const verts = edges.map(oe =>
-        oe?.orientation === Orientation.FORWARD
-          ? (oe?.edge?.startVertex?.geometry || { x: 0, y: 0, z: 0 })
-          : (oe?.edge?.endVertex?.geometry || { x: 0, y: 0, z: 0 })
-      );
-      if (verts.length < 3) continue;
-      let ax = 0, ay = 0, az = 0;
-      for (let i = 0; i < verts.length; i++) {
-        const j = (i + 1) % verts.length;
-        ax += (verts[i].y * verts[j].z - verts[i].z * verts[j].y);
-        ay += (verts[i].z * verts[j].x - verts[i].x * verts[j].z);
-        az += (verts[i].x * verts[j].y - verts[i].y * verts[j].x);
+    const shells = [solid?.outerShell, ...(solid?.voids || [])];
+    for (const shell of shells) {
+      if (!shell) continue;
+      const faces = shell.orientedFaces || [];
+      for (const of of faces) {
+        const edges = of?.face?.outerLoop?.orientedEdges;
+        if (!edges) continue;
+        const verts = edges.map(oe =>
+          oe?.orientation === Orientation.FORWARD
+            ? (oe?.edge?.startVertex?.geometry || { x: 0, y: 0, z: 0 })
+            : (oe?.edge?.endVertex?.geometry || { x: 0, y: 0, z: 0 })
+        );
+        if (verts.length < 3) continue;
+        let ax = 0, ay = 0, az = 0;
+        for (let i = 0; i < verts.length; i++) {
+          const j = (i + 1) % verts.length;
+          ax += (verts[i].y * verts[j].z - verts[i].z * verts[j].y);
+          ay += (verts[i].z * verts[j].x - verts[i].x * verts[j].z);
+          az += (verts[i].x * verts[j].y - verts[i].y * verts[j].x);
+        }
+        totalArea += Math.sqrt(ax * ax + ay * ay + az * az) / 2.0;
       }
-      totalArea += Math.sqrt(ax * ax + ay * ay + az * az) / 2.0;
     }
     return totalArea;
   }

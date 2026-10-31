@@ -1,0 +1,82 @@
+{
+  "campaignId": "SECP-CAD-KERNEL-PHASE-1-001",
+  "kernelVersion": "2.1.0-PHASE-1",
+  "revisionIdentity": "REVISION_IDENTITY_UNAVAILABLE",
+  "authority": "SECP Canonical Model & Engineering Core",
+  "timestamp": "2026-10-30T07:42:00Z",
+  "externalKernelPolicy": "NO_EXTERNAL_KERNEL_DEPENDENCIES_PRESERVED",
+  "capabilities": [
+    {
+      "id": "CAP-GEO-001",
+      "name": "Analytic Sphere B-Rep Construction",
+      "domain": "Geometry/Topology",
+      "implementationPath": "src/engine/cad-kernel/brep/BRepKernel.ts",
+      "status": "PROVEN",
+      "eulerCharacteristic": 2,
+      "genus": 0,
+      "verificationMethod": "Analytical divergence volume and exact mathematical oracle (RelErr < 1e-6)",
+      "testSuite": "src/engine/cad-kernel/__tests__/CADKernelPhase1Qualification.test.ts"
+    },
+    {
+      "id": "CAP-GEO-002",
+      "name": "Analytic Torus Genus-1 B-Rep Construction",
+      "domain": "Geometry/Topology",
+      "implementationPath": "src/engine/cad-kernel/brep/BRepKernel.ts",
+      "status": "PROVEN",
+      "eulerCharacteristic": 0,
+      "genus": 1,
+      "verificationMethod": "Central cavity verification, toroidal parameterization, exact volume V=2*pi^2*R*r^2",
+      "testSuite": "src/engine/cad-kernel/__tests__/CADKernelPhase1Qualification.test.ts"
+    },
+    {
+      "id": "CAP-MOD-001",
+      "name": "Geometric Edge Chamfer Bevel Generation",
+      "domain": "Modeling/Features",
+      "implementationPath": "src/engine/cad-kernel/history/FeatureExecution.ts",
+      "status": "PROVEN",
+      "mutationType": "Topological B-Rep edge truncation and 45-degree planar bevel face synthesis",
+      "verificationMethod": "B-Rep face count expansion (6 to 14), exact volume decrement oracle deltaV=0.5*d^2*L",
+      "testSuite": "src/engine/cad-kernel/__tests__/CADKernelPhase1Qualification.test.ts"
+    },
+    {
+      "id": "CAP-MOD-002",
+      "name": "Geometric Edge Fillet Blend Generation",
+      "domain": "Modeling/Features",
+      "implementationPath": "src/engine/cad-kernel/history/FeatureExecution.ts",
+      "status": "PROVEN",
+      "mutationType": "Topological B-Rep edge replacement with cylindrical blend faces (G1 continuity)",
+      "verificationMethod": "B-Rep blend face construction, exact volume decrement deltaV=(1-pi/4)*r^2*L",
+      "testSuite": "src/engine/cad-kernel/__tests__/CADKernelPhase1Qualification.test.ts"
+    },
+    {
+      "id": "CAP-MOD-003",
+      "name": "True Normal-Offset Shell Evaluator",
+      "domain": "Modeling/Evaluators",
+      "implementationPath": "src/engine/cad-kernel/evaluators/ShellEvaluator.ts",
+      "status": "PROVEN",
+      "offsetMethod": "Inward face-normal offsetting with exact physical wall thickness t across all faces",
+      "verificationMethod": "Analytical shelled box cavity oracle V_shell = V_outer - V_inner, boundary collapse rejection",
+      "testSuite": "src/engine/cad-kernel/__tests__/CADKernelPhase1Qualification.test.ts"
+    },
+    {
+      "id": "CAP-INT-001",
+      "name": "STEP AP242 Part 21 Physical Exchange",
+      "domain": "Interoperability",
+      "implementationPath": "src/engine/interop/STEPAP242Translator.ts",
+      "status": "PROVEN",
+      "format": "ISO 10303-21 Physical File Standard (HEADER and DATA entities)",
+      "verificationMethod": "Full round-trip model hash preservation and adversarial corrupt syntax rejection",
+      "testSuite": "src/engine/engineering/__tests__/AP242Phase2RedTeam.test.ts"
+    },
+    {
+      "id": "CAP-NURBS-001",
+      "name": "Rational B-Spline Surface Cox-de Boor Evaluation",
+      "domain": "NURBS Geometry",
+      "implementationPath": "src/engine/nurbs-geometry/RationalSurfaceSynthesisEngine.ts",
+      "status": "PROVEN",
+      "algorithm": "Piegl & Tiller Algorithm A4.3 (SurfacePoint) with binary search knot spans",
+      "verificationMethod": "Bilinear patch midpoint exact oracle evaluation (x=5.0, y=5.0, z=5.0)",
+      "testSuite": "src/engine/cad-kernel/__tests__/CADKernelPhase1Qualification.test.ts"
+    }
+  ]
+}

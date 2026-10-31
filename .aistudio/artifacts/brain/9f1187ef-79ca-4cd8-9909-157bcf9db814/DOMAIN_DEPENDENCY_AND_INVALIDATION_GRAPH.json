@@ -1,0 +1,54 @@
+{
+  "programId": "SECP-ENGINEERING-TRUTH-INTEGRATION-002",
+  "specificationDate": "2026-10-31T08:10:00Z",
+  "graphTopology": {
+    "nodes": [
+      { "id": "CORE_CAD", "label": "CAD B-Rep Geometry & Topology", "authority": "BRepKernel" },
+      { "id": "PCB_DESIGN", "label": "PCB Layout, Traces & Placements", "authority": "PcbEngine" },
+      { "id": "ELEC_SCHEMATIC", "label": "Electrical Schematic & Netlist", "authority": "ElectricalWorkbenchEngine" },
+      { "id": "HARNESS_DESIGN", "label": "Wiring Harness 3D Route & Pinouts", "authority": "WiringHarnessGeometryKernel" },
+      { "id": "MULTIDOMAIN_COUPLING", "label": "Electrothermal & Mechanical Coupling", "authority": "MultidomainPcbIntegrationEngine" },
+      { "id": "STRUCTURAL_FEM", "label": "Structural FEM Stress & Deflection", "authority": "FEMCore" },
+      { "id": "FLUID_CFD", "label": "3D CFD Thermal Flow Fields", "authority": "Fvm3DNavierStokesSolver" },
+      { "id": "EVIDENCE_LEDGER", "label": "Attestation Evidence Root", "authority": "EvidenceBus" }
+    ],
+    "dependencyEdges": [
+      { "from": "CORE_CAD", "to": "PCB_DESIGN", "type": "MECHANICAL_ENCLOSURE_BOUNDARY" },
+      { "from": "CORE_CAD", "to": "HARNESS_DESIGN", "type": "CONNECTOR_3D_LOCATIONS_AND_ROUTES" },
+      { "from": "ELEC_SCHEMATIC", "to": "PCB_DESIGN", "type": "PIN_NETLIST_PARITY" },
+      { "from": "ELEC_SCHEMATIC", "to": "HARNESS_DESIGN", "type": "CONNECTOR_PIN_NET_ASSIGNMENTS" },
+      { "from": "PCB_DESIGN", "to": "MULTIDOMAIN_COUPLING", "type": "TRACE_JOULE_HEATING_AND_PLACEMENTS" },
+      { "from": "HARNESS_DESIGN", "to": "MULTIDOMAIN_COUPLING", "type": "WIRE_AMPACITY_AND_CONNECTOR_MATING" },
+      { "from": "MULTIDOMAIN_COUPLING", "to": "STRUCTURAL_FEM", "type": "THERMAL_EXPANSION_AND_DEFLECTION_LOADS" },
+      { "from": "MULTIDOMAIN_COUPLING", "to": "FLUID_CFD", "type": "HOTSPOT_FACE_BOUNDARIES" },
+      { "from": "STRUCTURAL_FEM", "to": "EVIDENCE_LEDGER", "type": "SEALED_FEM_EXECUTION_ENVELOPE" },
+      { "from": "FLUID_CFD", "to": "EVIDENCE_LEDGER", "type": "SEALED_CFD_EXECUTION_ENVELOPE" }
+    ]
+  },
+  "selectiveInvalidationRules": [
+    {
+      "ruleId": "INV-001",
+      "triggerDomain": "CORE_CAD",
+      "mutationType": "ENCLOSURE_DIMENSION_CHANGE",
+      "invalidatedNodes": ["HARNESS_DESIGN", "MULTIDOMAIN_COUPLING", "FLUID_CFD"],
+      "unaffectedNodes": ["ELEC_SCHEMATIC"],
+      "action": "SET_STATUS_STALE_AND_REQUIRE_SELECTIVE_RECOMPUTE"
+    },
+    {
+      "ruleId": "INV-002",
+      "triggerDomain": "PCB_DESIGN",
+      "mutationType": "COMPONENT_PLACEMENT_SHIFT",
+      "invalidatedNodes": ["MULTIDOMAIN_COUPLING", "STRUCTURAL_FEM", "FLUID_CFD"],
+      "unaffectedNodes": ["ELEC_SCHEMATIC", "CORE_CAD"],
+      "action": "SET_STATUS_STALE_AND_REQUIRE_SELECTIVE_RECOMPUTE"
+    },
+    {
+      "ruleId": "INV-003",
+      "triggerDomain": "ELEC_SCHEMATIC",
+      "mutationType": "VOLTAGE_OR_CURRENT_PARAMETER_CHANGE",
+      "invalidatedNodes": ["MULTIDOMAIN_COUPLING", "STRUCTURAL_FEM", "FLUID_CFD"],
+      "unaffectedNodes": ["CORE_CAD", "PCB_DESIGN", "HARNESS_DESIGN"],
+      "action": "SET_STATUS_STALE_AND_REQUIRE_SELECTIVE_RECOMPUTE"
+    }
+  ]
+}

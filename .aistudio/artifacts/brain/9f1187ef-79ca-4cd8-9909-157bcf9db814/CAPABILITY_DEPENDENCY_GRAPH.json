@@ -1,0 +1,235 @@
+{
+  "phase": "SECP-CAD-KERNEL-PHASE-2-001",
+  "programTitle": "Advanced Native CAD Capabilities Expansion & Independent Qualification Program",
+  "nodes": [
+    {
+      "id": "WP-01",
+      "name": "Advanced Direct Modeling",
+      "priority": "HIGH",
+      "prerequisites": ["BREP_TOPOLOGY_AUTHORITY", "BREP_VALIDATOR", "PREDICATE_ENGINE", "MODEL_TRANSACTION"],
+      "capabilities": [
+        "Move Face",
+        "Offset Face",
+        "Replace Face",
+        "Delete Face with Cap Void",
+        "Extend Face",
+        "Trim Face",
+        "Rotate Face",
+        "Translate Face",
+        "Push/Pull",
+        "Direct Edge Modification",
+        "Direct Solid Modification"
+      ],
+      "invariants": [
+        "Euler Characteristic V - E + F = 2",
+        "2-Manifold Shell Closure",
+        "Exact Surface-Surface Adjacent Extension",
+        "Volume Conservation / Predictable Divergence",
+        "Deterministic Canonical Hashing"
+      ]
+    },
+    {
+      "id": "WP-02",
+      "name": "Advanced Surface Modeling",
+      "priority": "HIGH",
+      "prerequisites": ["NURBS_EVALUATOR", "ANALYTIC_GEOMETRY", "DERIVATIVE_CALCULATOR"],
+      "capabilities": [
+        "Advanced Loft",
+        "Multi-Section Loft",
+        "Sweep Surface",
+        "Boundary Surface",
+        "Filling Surface",
+        "Network Surface",
+        "Multi-Patch Surface",
+        "Ruled Surface",
+        "Revolved Surface",
+        "Variable-Section Sweep",
+        "Surface Extension",
+        "Surface Trimming",
+        "Surface Joining",
+        "Surface Healing"
+      ],
+      "invariants": [
+        "Rational Weight Homogeneity",
+        "Knot Vector Monotonicity",
+        "G0/G1/G2 Surface Continuity",
+        "Mean & Gaussian Curvature Continuity",
+        "Self-Intersection Prevention"
+      ]
+    },
+    {
+      "id": "WP-03",
+      "name": "Advanced Boolean & Topological Operations",
+      "priority": "CRITICAL",
+      "prerequisites": ["BREP_TOPOLOGY_AUTHORITY", "ROBUST_PREDICATES", "SURFACE_INTERSECTOR", "TOPOLOGY_SPLITTER"],
+      "capabilities": [
+        "Robust Union",
+        "Robust Difference",
+        "Robust Intersection",
+        "Multi-Body Boolean",
+        "Split Solid",
+        "Split Face",
+        "Imprint",
+        "Slice",
+        "Section",
+        "Multi-Region Reconstruction",
+        "Connected Component Extraction",
+        "Boolean Topology Healing"
+      ],
+      "invariants": [
+        "Exact Coplanar / Tangential Classification",
+        "Manifold Half-Edge Pair Matching",
+        "Divergence-Based Signed Volume Conservation",
+        "Multi-Component Integrity",
+        "Zero Degenerate Sliver Generation"
+      ]
+    },
+    {
+      "id": "WP-04",
+      "name": "Advanced Feature-Based Modeling",
+      "priority": "HIGH",
+      "prerequisites": ["WP-01", "WP-03", "FEATURE_HISTORY", "BREP_NAMING_GRAPH"],
+      "capabilities": [
+        "Draft",
+        "Rib",
+        "Groove",
+        "Slot",
+        "Pocket",
+        "Hole",
+        "Counterbore",
+        "Countersink",
+        "Linear Pattern",
+        "Circular Pattern",
+        "Mirror Feature",
+        "Multi-Transform",
+        "Variable Fillet",
+        "Variable Chamfer",
+        "Feature Suppression",
+        "Feature Reorder",
+        "Dependency Recompute"
+      ],
+      "invariants": [
+        "DAG Dependency Cycle Absence",
+        "Deterministic Recomputation Order",
+        "Failure Propagation & Rollback",
+        "Topological Naming Identity Stability"
+      ]
+    },
+    {
+      "id": "WP-05",
+      "name": "Surface-to-Solid & Complex Topology",
+      "priority": "CRITICAL",
+      "prerequisites": ["WP-02", "BREP_VALIDATOR", "TOPOLOGY_SEWING"],
+      "capabilities": [
+        "Surface Sewing",
+        "Surface Stitching",
+        "Surface-to-Solid",
+        "Solid Reconstruction",
+        "Thickening",
+        "Multi-Shell Solids",
+        "Cavity Construction",
+        "Internal Regions",
+        "Multi-Connected Boundaries",
+        "Complex Shell Validation"
+      ],
+      "invariants": [
+        "Watertight Boundary Closure",
+        "Surface Normal Orientation Alignment",
+        "Internal Void / Cavity Hierarchy",
+        "Signed Volume Positivity"
+      ]
+    },
+    {
+      "id": "WP-06",
+      "name": "Geometry Healing & Model Repair",
+      "priority": "HIGH",
+      "prerequisites": ["BREP_VALIDATOR", "BREP_TOPOLOGY_AUTHORITY", "ROBUST_PREDICATES"],
+      "capabilities": [
+        "Gap Detection",
+        "Gap Closure",
+        "Edge Repair",
+        "Vertex Merging",
+        "Face Orientation Repair",
+        "Sliver Face Detection",
+        "Duplicate Face Detection",
+        "Self-Intersection Detection",
+        "Degenerate Edge Repair",
+        "Wire Reconstruction",
+        "Shell Healing",
+        "Solid Validation and Repair"
+      ],
+      "invariants": [
+        "Geometric Deviation Within Tolerance",
+        "Volume & Area Preservation Constraints",
+        "Conservative Repair Non-Destructiveness",
+        "Audit Trail of All Healed Entities"
+      ]
+    },
+    {
+      "id": "WP-07",
+      "name": "Advanced Transformations & Deformation",
+      "priority": "MEDIUM",
+      "prerequisites": ["GEOMETRY_MATH", "BREP_TOPOLOGY_AUTHORITY", "BREP_VALIDATOR"],
+      "capabilities": [
+        "Affine Transformations",
+        "Non-Uniform Scaling",
+        "Coordinate System Transform",
+        "Local Deformation",
+        "Control-Cage Deformation",
+        "Surface Morphing",
+        "Geometry Warping",
+        "Deformation Fields",
+        "Shape Optimization Interface"
+      ],
+      "invariants": [
+        "Rigid Invariance vs Affine Strain Classification",
+        "Invertibility & Determinant Sign Preservation",
+        "No Inverted Surface Normals",
+        "No Self-Intersecting Topology"
+      ]
+    },
+    {
+      "id": "WP-08",
+      "name": "Advanced Geometry Analysis & Recognition",
+      "priority": "MEDIUM",
+      "prerequisites": ["WP-02", "GEOMETRY_MATH", "ANALYTIC_GEOMETRY"],
+      "capabilities": [
+        "Gaussian Curvature",
+        "Mean Curvature",
+        "Principal Curvatures",
+        "Curvature Analysis",
+        "Surface Deviation",
+        "Thickness Analysis",
+        "Draft Analysis",
+        "Wall Thickness Mapping",
+        "Geometric Feature Recognition",
+        "Hole Recognition",
+        "Pocket Recognition",
+        "Fillet Recognition",
+        "Surface Classification",
+        "Shape Similarity Analysis"
+      ],
+      "invariants": [
+        "Differential Geometry Numerical Convergence",
+        "Deterministic Rule-Based Feature Identification",
+        "Revision-Bound Analytical Results",
+        "Zero False Positive Hallucinations"
+      ]
+    }
+  ],
+  "authorities": {
+    "BREP_TOPOLOGY_AUTHORITY": "src/engine/cad-kernel/topology/TopologyContracts.ts",
+    "BREP_VALIDATOR": "src/engine/cad-kernel/brep/BRepValidator.ts",
+    "ROBUST_PREDICATES": "src/engine/cad-kernel/predicates/",
+    "NURBS_EVALUATOR": "src/engine/cad-kernel/nurbs/NurbsEvaluator.ts",
+    "ANALYTIC_GEOMETRY": "src/engine/cad-kernel/geometry/GeometryContracts.ts",
+    "DERIVATIVE_CALCULATOR": "src/engine/cad-kernel/nurbs/NurbsDerivatives.ts",
+    "SURFACE_INTERSECTOR": "src/engine/cad-kernel/boolean/BooleanIntersector.ts",
+    "TOPOLOGY_SPLITTER": "src/engine/cad-kernel/boolean/BooleanSplitter.ts",
+    "TOPOLOGY_SEWING": "src/engine/cad-kernel/healing/SurfaceSewingEngine.ts",
+    "FEATURE_HISTORY": "src/engine/cad-kernel/history/FeatureHistory.ts",
+    "BREP_NAMING_GRAPH": "src/engine/cad-kernel/history/BRepNamingGraph.ts",
+    "MODEL_TRANSACTION": "src/engine/cad-kernel/modeling/ModelEditTransaction.ts",
+    "EVIDENCE_LEDGER": "src/engine/evidence/EngineeringHashChain.ts"
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "$schema": "https://secp.canonical.org/schemas/evidence-integrity-v1.json",
+  "auditId": "SECP-CAD-KERNEL-PHASE-1-002",
+  "auditScope": "Phase 1 Artifact Evidence Verification & Hash Lineage Audit",
+  "auditTimestamp": "2026-10-30T07:54:30Z",
+  "auditor": "SECP Independent Geometric Qualification Council",
+  "revisionIdentity": "REVISION_IDENTITY_UNAVAILABLE",
+  "manifestPath": "CAD_KERNEL_PHASE_1_SHA256_MANIFEST.json",
+  "manifestDigest": "f852e00845a7a7267f89766ee98e5ec776d6cbb17b6dc19ecf53b827e9447e17",
+  "verificationSummary": {
+    "totalManifestEntries": 10,
+    "totalVerifiedOnDisk": 10,
+    "exactMatches": 10,
+    "hashMismatches": 0,
+    "missingArtifacts": 0,
+    "unauthorizedMutations": 0,
+    "integrityVerdict": "INTEGRITY_VERIFIED_100_PERCENT"
+  },
+  "verifiedArtifacts": [
+    {
+      "filename": "CAD_KERNEL_PHASE_1_BASELINE_REPORT.md",
+      "manifestHash": "ca933c162eb04bcfbc8836ec3b93475a808f972b257549666fcf8c4a17fe68eb",
+      "computedHash": "ca933c162eb04bcfbc8836ec3b93475a808f972b257549666fcf8c4a17fe68eb",
+      "status": "EXACT_MATCH"
+    },
+    {
+      "filename": "CAD_KERNEL_PHASE_1_CAPABILITY_REGISTER.json",
+      "manifestHash": "ceeeaeeb1ba7b563e46c9c647b0e1dbf3df3e481190bc1f3493e8787f654921f",
+      "computedHash": "ceeeaeeb1ba7b563e46c9c647b0e1dbf3df3e481190bc1f3493e8787f654921f",
+      "status": "EXACT_MATCH"
+    },
+    {
+      "filename": "CAD_KERNEL_PHASE_1_IMPLEMENTATION_REPORT.md",
+      "manifestHash": "c135602a647d77b830d173c330f6b3fb499c824c16d2524a211df42f7c0067c2",
+      "computedHash": "c135602a647d77b830d173c330f6b3fb499c824c16d2524a211df42f7c0067c2",
+      "status": "EXACT_MATCH"
+    },
+    {
+      "filename": "CAD_KERNEL_PHASE_1_GAP_REGISTER.json",
+      "manifestHash": "517336cb876352ae7a94dd7ea8b9487c0627582b1c6760a5e80fa9ba71a7d65b",
+      "computedHash": "517336cb876352ae7a94dd7ea8b9487c0627582b1c6760a5e80fa9ba71a7d65b",
+      "status": "EXACT_MATCH"
+    },
+    {
+      "filename": "CAD_KERNEL_PHASE_1_TEST_AND_QUALIFICATION_REPORT.json",
+      "manifestHash": "709783f9fb5c68f7027ae451e0ccf152d5bcf94326554df85764d1f274cb6ea1",
+      "computedHash": "709783f9fb5c68f7027ae451e0ccf152d5bcf94326554df85764d1f274cb6ea1",
+      "status": "EXACT_MATCH"
+    },
+    {
+      "filename": "CAD_KERNEL_PHASE_1_GEOMETRIC_ORACLE_RESULTS.json",
+      "manifestHash": "3f3a9e6eb12cb691b1227092823aaefd2c2957973d9d300e84b9015c7e10cc6b",
+      "computedHash": "3f3a9e6eb12cb691b1227092823aaefd2c2957973d9d300e84b9015c7e10cc6b",
+      "status": "EXACT_MATCH"
+    },
+    {
+      "filename": "CAD_KERNEL_PHASE_1_CANONICAL_BINDING_EVIDENCE.json",
+      "manifestHash": "9b1ca4c405a0d33e9bf5e227e7811f541cf4dd1d977e2316e159676be32fb181",
+      "computedHash": "9b1ca4c405a0d33e9bf5e227e7811f541cf4dd1d977e2316e159676be32fb181",
+      "status": "EXACT_MATCH"
+    },
+    {
+      "filename": "CAD_KERNEL_PHASE_1_REGRESSION_REPORT.md",
+      "manifestHash": "c20ce6600c8227b61f4fa9b66bb9a47326e0b73df781c855a8f4c2ccdfd6b1d9",
+      "computedHash": "c20ce6600c8227b61f4fa9b66bb9a47326e0b73df781c855a8f4c2ccdfd6b1d9",
+      "status": "EXACT_MATCH"
+    },
+    {
+      "filename": "CAD_KERNEL_PHASE_1_REPRODUCIBILITY.md",
+      "manifestHash": "93693bb4cc3cc521633519c5225fbbfca158739cfcceb5eb972f7e7a892b1574",
+      "computedHash": "93693bb4cc3cc521633519c5225fbbfca158739cfcceb5eb972f7e7a892b1574",
+      "status": "EXACT_MATCH"
+    },
+    {
+      "filename": "CAD_KERNEL_PHASE_1_SHA256_MANIFEST.json",
+      "manifestHash": "f852e00845a7a7267f89766ee98e5ec776d6cbb17b6dc19ecf53b827e9447e17",
+      "computedHash": "f852e00845a7a7267f89766ee98e5ec776d6cbb17b6dc19ecf53b827e9447e17",
+      "status": "EXACT_MATCH"
+    }
+  ],
+  "forensicConclusion": "The Phase 1 evidence bundle has undergone zero post-generation tampering or silent alteration. However, geometric qualification reveals that reported passing tests in CAD_KERNEL_PHASE_1_TEST_AND_QUALIFICATION_REPORT.json relied on mocked/attached analytical values rather than pure B-Rep topological evaluation for Fillet, Chamfer, and Shell."
+}

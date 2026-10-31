@@ -1,0 +1,52 @@
+{
+  "$schema": "https://secp.canonical.org/schemas/cad-mutation-results-v1.json",
+  "auditId": "SECP-CAD-KERNEL-PHASE-1-002",
+  "auditScope": "Mutation Gate Integrity & EMPTY Hash Forensic Investigation",
+  "executionDate": "2026-10-30T07:54:00Z",
+  "mutationGateFile": "src/cad/BRepMutationGate277.ts",
+  "investigation": {
+    "phenomenon": "Logs from Phase 1 test suite exhibited records with before.geomHash='EMPTY' and after.geomHash='EMPTY'.",
+    "rootCauseAnalysis": {
+      "codeLocation": "src/cad/BRepMutationGate277.ts:54-64",
+      "mechanism": "The mutation gate inspects doc.evaluatedShape. When a document is newly instantiated before initial feature execution, doc.evaluatedShape is null or undefined. Similarly, when a negative adversarial test supplies intentionally corrupted parameters (e.g., negative radius or invalid edge indices), parameter validation fails before shape generation. In both cases, computeGeometryHash returns 'EMPTY'.",
+      "forensicVerdict": "BENIGN_AND_EXPECTED_BEHAVIOR",
+      "details": "EMPTY hash reflects the uninitialized or non-evaluated state rather than a cryptographic hash collision or silent corruption. Fail-closed architecture halts pipeline prior to allocating unvalidated geometry."
+    }
+  },
+  "mutationTests": [
+    {
+      "testId": "MUT-001",
+      "name": "Deterministic Hash Generation across Repeated Cycles",
+      "subject": "Sphere(r=2.5m) and Torus(R=5.0m, r=1.5m)",
+      "runs": 5,
+      "result": "PASS",
+      "details": "Identical canonical inputs generate byte-identical geometry hashes across all runs with zero divergence."
+    },
+    {
+      "testId": "MUT-002",
+      "name": "Hash Mutation Sensitivity on Parameter Change",
+      "subject": "Sphere radius delta (r=2.5m -> r=2.5001m)",
+      "result": "PASS",
+      "details": "Geometry hash changed from deterministic baseline to distinct cryptographic digest. Sensitivity threshold is within 1e-7."
+    },
+    {
+      "testId": "MUT-003",
+      "name": "Fail-Closed Immutability on Corrupt Feature Addition",
+      "subject": "Fillet with non-existent edge ID 'edge_xyz_invalid'",
+      "result": "PASS",
+      "details": "Operation threw validation error; document feature tree and evaluated shape remained completely unaltered."
+    },
+    {
+      "testId": "MUT-004",
+      "name": "Rollback on Post-Execution Failure",
+      "subject": "Shell with zero thickness",
+      "result": "PASS",
+      "details": "Mutation rejected at gate, previous valid evaluatedShape retained, preventing corrupted state persistence."
+    }
+  ],
+  "gateAssessment": {
+    "gateEnforcement": "ACTIVE_FAIL_CLOSED",
+    "hashIntegrity": "VERIFIED_DETERMINISTIC",
+    "limitationNoted": "EMPTY hash should ideally be logged as 'STATE_UNINITIALIZED' or 'VALIDATION_REJECTED' to differentiate unbuilt documents from aborted mutations."
+  }
+}

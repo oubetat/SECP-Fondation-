@@ -11,6 +11,8 @@ import {
   PcbCanonicalModel,
   PcbCanonicalModelValidator
 } from './PcbCanonicalModel';
+import { PcbToCoreBinding } from '../crossdomain/CanonicalDomainBinding';
+import { CanonicalDomainBindingEngine } from '../crossdomain/CanonicalDomainBindingEngine';
 import { PcbDesignRuleset, PcbDesignRulesManager } from './PcbDesignRules';
 import { PcbConnectivityVerifier, ConnectivityReport } from './PcbConnectivityVerifier';
 import { PcbGeometryVerifier, GeometryReport } from './PcbGeometryVerifier';
@@ -77,10 +79,16 @@ export class PcbVerificationService {
    * Executes full-suite PCB verification and registers cryptographic evidence in SECP ledger.
    */
   public static verifyAndAttest(
-    model: PcbCanonicalModel,
+    binding: PcbToCoreBinding,
     customRuleset?: PcbDesignRuleset,
     registerInLedger: boolean = true
   ): ComprehensivePcbVerificationResult {
+    // 0. GATING: Verify simulation authority seal (Fail-Closed)
+    if (!CanonicalDomainBindingEngine.validateBinding(binding)) {
+      throw new Error(`[AUTHORITY_GATE_REJECTION] PCB Verification execution denied: Invalid or non-authoritative simulation seal.`);
+    }
+
+    const model = binding.payload;
     const runId = `RUN-${Date.now().toString(36).toUpperCase()}-${Math.random().toString(36).substring(2, 6).toUpperCase()}`;
     const designId = model.designId || 'SECP-PCB-CANONICAL-REF';
     const revisionId = model.revisionId || 'REV-2.0.0';

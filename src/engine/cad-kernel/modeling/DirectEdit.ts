@@ -6,8 +6,12 @@
 export type DirectOperationType =
   | 'MOVE_FACE'
   | 'OFFSET_FACE'
+  | 'PUSH_PULL'
   | 'DELETE_FACE'
   | 'REPLACE_FACE'
+  | 'ROTATE_FACE'
+  | 'EXTEND_FACE'
+  | 'TRIM_FACE'
   | 'MOVE_VERTEX'
   | 'MOVE_EDGE'
   | 'TRANSFORM_BODY'

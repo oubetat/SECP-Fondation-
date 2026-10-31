@@ -1,0 +1,49 @@
+{
+  "campaignId": "SECP-CAD-KERNEL-DIRECT-MODELING-QUALIFICATION-002",
+  "timestamp": "2026-10-30T02:40:00Z",
+  "mode": "READ_ONLY_INDEPENDENT_AUDIT",
+  "paths": [
+    {
+      "capability": "Delete Face & Cap Void",
+      "publicApi": "DirectModelingEngine.applyDirectEdit",
+      "entryPoint": "DirectModelingEngine.executeDeleteFace",
+      "status": "VERIFIED_WITH_LIMITATIONS",
+      "notes": "Planar and cylindrical capping verified; complex freeform C2 capping has declared limitations."
+    },
+    {
+      "capability": "Replace Face",
+      "publicApi": "DirectModelingEngine.applyDirectEdit",
+      "entryPoint": "DirectModelingEngine.executeReplaceFace",
+      "status": "VERIFIED_WITH_LIMITATIONS",
+      "notes": "G0 positional matching verified; G2 curvature continuity requires analytical oracle enhancement."
+    },
+    {
+      "capability": "Move Face & Fillet Reapplication",
+      "publicApi": "DirectModelingEngine.applyDirectEdit",
+      "entryPoint": "DirectModelingEngine.executeMoveFace",
+      "status": "VERIFIED_WITH_LIMITATIONS",
+      "notes": "Linear translation and transaction rollback verified; dynamic blend surface re-blending is partially simulated."
+    },
+    {
+      "capability": "True Geometric Imprint",
+      "publicApi": "BooleanEngine / DirectModelingEngine",
+      "entryPoint": "BooleanEngine.imprint",
+      "status": "VERIFIED",
+      "notes": "Face-face intersection and subdivision verified without volume destruction."
+    },
+    {
+      "capability": "True Shell Offset",
+      "publicApi": "ShellEvaluator / DirectModelingEngine",
+      "entryPoint": "ShellEvaluator.computeOffset",
+      "status": "VERIFIED_WITH_LIMITATIONS",
+      "notes": "Uniform normal offset verified; variable thickness offset has declared limitations on high-curvature NURBS."
+    },
+    {
+      "capability": "Mathematical Zebra & Curvature",
+      "publicApi": "CurvatureAnalyzer",
+      "entryPoint": "CurvatureAnalyzer.computeGaussianAndMean",
+      "status": "VERIFIED",
+      "notes": "Analytical first/second fundamental forms verified against sphere, cylinder, and plane oracles."
+    }
+  ]
+}

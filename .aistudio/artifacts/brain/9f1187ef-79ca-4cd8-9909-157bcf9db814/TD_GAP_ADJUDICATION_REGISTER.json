@@ -1,0 +1,146 @@
+{
+  "programId": "SECP-ENGINEERING-TRUTH-INTEGRATION-002",
+  "specificationDate": "2026-10-31T08:10:00Z",
+  "adjudications": [
+    {
+      "id": "TD-001",
+      "targetDomain": "PCB",
+      "tracedFilePath": "src/engine/pcb/PcbCanonicalModel.ts",
+      "tracedLineRange": "182-220",
+      "status": "CONFIRMED_DISCONTINUITY",
+      "rootCauseAnalysis": "PcbCanonicalModelValidator.computeCanonicalHash calculates local JSON digest without incorporating canonicalRevisionId or EngineeringIdentity identityId from Core.",
+      "remediationContract": "PcbToCoreBinding: Bind PcbCanonicalModel to EngineeringIdentity and validate canonicalRevisionId before computing canonicalHash.",
+      "targetWP": "WP-02"
+    },
+    {
+      "id": "TD-002",
+      "targetDomain": "ELECTRICAL",
+      "tracedFilePath": "src/engine/engineeringCore/NodalCircuitSolver.ts",
+      "tracedLineRange": "1-120",
+      "status": "CONFIRMED_DISCONTINUITY",
+      "rootCauseAnalysis": "NodalCircuitSolver executes MNA nodal matrix solves on floating CircuitModel objects without domainRevisionBindings or parentRevisionId.",
+      "remediationContract": "ElectricalToCoreBinding: Require NodalCircuitSolver inputs to be wrapped in ElectricalToCoreBinding envelope with active schematic revision id.",
+      "targetWP": "WP-02"
+    },
+    {
+      "id": "TD-003",
+      "targetDomain": "WIRING_HARNESS",
+      "tracedFilePath": "src/engine/wiring-harness/WiringHarnessCanonicalModel.ts",
+      "tracedLineRange": "104-115",
+      "status": "CONFIRMED_DISCONTINUITY",
+      "rootCauseAnalysis": "RouteWaypoint 3D coordinates are floating numeric vectors with no topological B-Rep entity IDs linking waypoints to Mechanical Enclosure faces/edges.",
+      "remediationContract": "HarnessToCoreBinding: Bind RouteWaypoint definitions to geometryTopologyDigest containing B-Rep face/edge persistent topological IDs.",
+      "targetWP": "WP-02"
+    },
+    {
+      "id": "TD-004",
+      "targetDomain": "MULTIDOMAIN",
+      "tracedFilePath": "src/engine/crossdomain/MultidomainPcbIntegrationEngine.ts",
+      "tracedLineRange": "319-450",
+      "status": "CONFIRMED_DISCONTINUITY",
+      "rootCauseAnalysis": "MultidomainPcbIntegrationEngine performs in-memory electrothermal and MNA coupling calculations without triggering downstream stale invalidations when PCB component placements mutate.",
+      "remediationContract": "MultidomainToCoreBinding: Integrate MultidomainPcbIntegrationEngine into InvalidationPipelineEngine so PCB edits mark multidomain couplings STALE.",
+      "targetWP": "WP-03"
+    },
+    {
+      "id": "TD-005",
+      "targetDomain": "FEM",
+      "tracedFilePath": "src/engine/fem/core/FEMCore.ts",
+      "tracedLineRange": "100-220",
+      "status": "CONFIRMED_DISCONTINUITY",
+      "rootCauseAnalysis": "FEMCore.solve accepts raw FEMModel objects and calculates displacements/stresses without validating SimulationAuthorityInternal seal or executionAuthority token.",
+      "remediationContract": "FemToCoreBinding: Require FEMCore.solve to verify SimulationAuthorityInternal execution token and sealEnvelope on FEMSolveResult.",
+      "targetWP": "WP-05"
+    },
+    {
+      "id": "TD-006",
+      "targetDomain": "CFD",
+      "tracedFilePath": "src/engine/cfd3d/Fvm3DNavierStokesSolver.ts",
+      "tracedLineRange": "34-120",
+      "status": "CONFIRMED_DISCONTINUITY",
+      "rootCauseAnalysis": "Fvm3DNavierStokesSolver.solve calculates 3D Navier-Stokes flow fields on unsealed FvmMesh3D objects without verifying inputManifestHash or canonical CAD revision.",
+      "remediationContract": "CfdToCoreBinding: Require Fvm3DNavierStokesSolver.solve to check inputManifestHash against canonical CAD B-Rep revision and seal output with SimulationAuthorityInternal.",
+      "targetWP": "WP-05"
+    },
+    {
+      "id": "GAP-01",
+      "targetDomain": "ALL_DOMAINS",
+      "tracedFilePath": "src/engine/identity/CanonicalEngineeringIdentity.ts",
+      "tracedLineRange": "43-60",
+      "status": "REMEDIATION_SPECIFIED",
+      "rootCauseAnalysis": "CanonicalEngineeringIdentity defines core fields but lacks uniform helper for domain-specific inputs.",
+      "remediationContract": "Extend EngineeringIdentityFactory to provide domain-specific binding helpers for PCB, Electrical, Harness, Multidomain, FEM, and CFD.",
+      "targetWP": "WP-01"
+    },
+    {
+      "id": "GAP-02",
+      "targetDomain": "ALL_DOMAINS",
+      "tracedFilePath": "src/engine/crossdomain/CrossDomainRegistry.ts",
+      "tracedLineRange": "1-100",
+      "status": "REMEDIATION_SPECIFIED",
+      "rootCauseAnalysis": "CrossDomainRegistry handles basic domain registration but lacks explicit CanonicalDomainBindingEngine validator.",
+      "remediationContract": "Implement CanonicalDomainBindingEngine to validate binding envelopes and check parent revision lineage before computation.",
+      "targetWP": "WP-02"
+    },
+    {
+      "id": "GAP-03",
+      "targetDomain": "ALL_DOMAINS",
+      "tracedFilePath": "src/engine/workbench/InvalidationPipelineEngine.ts",
+      "tracedLineRange": "1-120",
+      "status": "REMEDIATION_SPECIFIED",
+      "rootCauseAnalysis": "InvalidationPipelineEngine handles B-Rep and Mesh invalidation for CAD but does not propagate stale status to PCB, Electrical, Harness, Multidomain, FEM, or CFD.",
+      "remediationContract": "Integrate CrossDomainDependencyGraph rules into InvalidationPipelineEngine to invalidate downstream domain results when upstream CAD/PCB mutates.",
+      "targetWP": "WP-03"
+    },
+    {
+      "id": "GAP-04",
+      "targetDomain": "ALL_DOMAINS",
+      "tracedFilePath": "src/engine/crossdomain/MultidomainPcbIntegrationEngine.ts",
+      "tracedLineRange": "324-400",
+      "status": "REMEDIATION_SPECIFIED",
+      "rootCauseAnalysis": "verifyEcadHarnessInterface verifies pin mappings but lacks cross-domain consistency checks for Thermal vs FEM/CFD material models.",
+      "remediationContract": "Build CrossDomainConsistencyEngine to enforce identity, topological, geometric, physical, and functional compatibility across domains.",
+      "targetWP": "WP-04"
+    },
+    {
+      "id": "GAP-05",
+      "targetDomain": "FEM_CFD",
+      "tracedFilePath": "src/engine/simulation/SimulationAuthorityInternal.ts",
+      "tracedLineRange": "1-67",
+      "status": "REMEDIATION_SPECIFIED",
+      "rootCauseAnalysis": "SimulationAuthorityInternal provides sealEnvelope and verifyEnvelopeSeal, but solvers do not mandate its usage.",
+      "remediationContract": "Enforce mandatory sealEnvelope and inputManifestHash verification in FEMCore and Fvm3DNavierStokesSolver.",
+      "targetWP": "WP-05"
+    },
+    {
+      "id": "GAP-06",
+      "targetDomain": "MULTIDOMAIN",
+      "tracedFilePath": "src/engine/crossdomain/MultidomainPcbIntegrationEngine.ts",
+      "tracedLineRange": "500-700",
+      "status": "REMEDIATION_SPECIFIED",
+      "rootCauseAnalysis": "Electrothermal coupling solves junction temperatures but does not offer formal feedback loop triggers.",
+      "remediationContract": "Upgrade MultidomainPcbIntegrationEngine to track multidomain execution state and trigger selective recompute loops.",
+      "targetWP": "WP-06"
+    },
+    {
+      "id": "GAP-07",
+      "targetDomain": "ATTESTATION",
+      "tracedFilePath": "src/engine/industrial-os/evidence-bus/EvidenceBus.ts",
+      "tracedLineRange": "1-80",
+      "status": "REMEDIATION_SPECIFIED",
+      "rootCauseAnalysis": "EvidenceBus captures envelopes, but some domain engines do not register evidence records upon execution completion.",
+      "remediationContract": "Unify EvidenceBus and PLMProjectionAdapter to register tamper-evident SHA-256 evidence records for every domain execution.",
+      "targetWP": "WP-07"
+    },
+    {
+      "id": "GAP-08",
+      "targetDomain": "UI",
+      "tracedFilePath": "src/engine/workbench/WorkbenchStateOwnershipEngine.ts",
+      "tracedLineRange": "1-90",
+      "status": "REMEDIATION_SPECIFIED",
+      "rootCauseAnalysis": "UI workbench state displays local cached items without displaying explicit STALE flags when upstream revisions increment.",
+      "remediationContract": "Enforce InvalidationPipelineEngine lifecycle states (CURRENT, STALE, INVALID) across all domain workbench UI panels.",
+      "targetWP": "WP-08"
+    }
+  ]
+}

@@ -21,6 +21,8 @@ import {
   ConvergenceAudit3D,
   WallTreatmentEvidence3D
 } from './Fvm3DTypes';
+import { CfdToCoreBinding } from '../crossdomain/CanonicalDomainBinding';
+import { CanonicalDomainBindingEngine } from '../crossdomain/CanonicalDomainBindingEngine';
 import { SstKomegaModel } from './solvers/rans/SstKomegaModel';
 import { SstKomegaConstants } from './solvers/rans/SstKomegaConstants';
 import { TurbulenceModelState } from './solvers/rans/TurbulenceModelContract';
@@ -32,14 +34,19 @@ export class Fvm3DNavierStokesSolver {
   public static sstDiagnosticCapture: any = {};
 
   public static solve(
-    mesh: FvmMesh3D,
-    fluid: FluidProperties3D,
-    configOrBc: Partial<SolverConfig3D> | BoundaryConditionSpec3D,
+    binding: CfdToCoreBinding,
     configOrRefArea?: SolverConfig3D | number,
     referenceAreaM2: number = 1.0,
     referenceVelocityMS: number = 1.0,
     initialFields?: { u?: number[], v?: number[], w?: number[], p?: number[], k?: number[], omega?: number[], nut?: number[], eps?: number[] }
   ): CfdSolution3D {
+    // 0. GATING: Verify simulation authority seal (Fail-Closed)
+    if (!CanonicalDomainBindingEngine.validateBinding(binding)) {
+      throw new Error(`[AUTHORITY_GATE_REJECTION] CFD Solver execution denied: Invalid or non-authoritative simulation seal.`);
+    }
+
+    const { mesh, fluid } = binding.payload;
+    const configOrBc = {}; // Default or derived from binding if needed
     let config: SolverConfig3D;
     let bcSpec: BoundaryConditionSpec3D | undefined;
 

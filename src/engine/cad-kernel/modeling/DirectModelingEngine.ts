@@ -16,10 +16,23 @@ import {
   OrientedEdge,
   Orientation
 } from '../topology/TopologyContracts';
-import { Point } from '../geometry/GeometryContracts';
+import { Point, Curve } from '../geometry/GeometryContracts';
 import { BRepValidator } from '../brep/BRepValidator';
 import { EngineeringHashChain } from '../../evidence/EngineeringHashChain';
 import { DirectEdit } from './DirectEdit';
+import { CapClosureEngine } from './CapClosureEngine';
+
+class LineSegmentCurve implements Curve {
+  constructor(private p0: Point, private p1: Point) {}
+  public evaluate(u: number): Point {
+    return {
+      x: (this.p0.x + u * (this.p1.x - this.p0.x)) as any,
+      y: (this.p0.y + u * (this.p1.y - this.p0.y)) as any,
+      z: (this.p0.z + u * (this.p1.z - this.p0.z)) as any
+    };
+  }
+  public domain() { return { uMin: 0, uMax: 1 }; }
+}
 
 export interface DirectEditExecutionResult {
   updatedShape: TopoShape;
@@ -99,12 +112,28 @@ export class DirectModelingEngine {
           affectedIds = this.executeOffsetFace(clonedShape, edit, entityMap, diagnostics);
           success = affectedIds.length > 0 || this.isNoOpEdit(edit);
           break;
+        case 'PUSH_PULL':
+          affectedIds = this.executePushPull(clonedShape, edit, entityMap, diagnostics);
+          success = affectedIds.length > 0 || this.isNoOpEdit(edit);
+          break;
         case 'DELETE_FACE':
           affectedIds = this.executeDeleteFace(clonedShape, edit, entityMap, diagnostics);
           success = affectedIds.length > 0;
           break;
         case 'REPLACE_FACE':
           affectedIds = this.executeReplaceFace(clonedShape, edit, entityMap, diagnostics);
+          success = affectedIds.length > 0;
+          break;
+        case 'ROTATE_FACE':
+          affectedIds = this.executeRotateFace(clonedShape, edit, entityMap, diagnostics);
+          success = affectedIds.length > 0 || this.isNoOpEdit(edit);
+          break;
+        case 'EXTEND_FACE':
+          affectedIds = this.executeExtendFace(clonedShape, edit, entityMap, diagnostics);
+          success = affectedIds.length > 0 || this.isNoOpEdit(edit);
+          break;
+        case 'TRIM_FACE':
+          affectedIds = this.executeTrimFace(clonedShape, edit, entityMap, diagnostics);
           success = affectedIds.length > 0;
           break;
         case 'MOVE_VERTEX':
@@ -223,10 +252,57 @@ export class DirectModelingEngine {
       const dz = p.dz ?? p.z ?? 0;
       return dx === 0 && dy === 0 && dz === 0;
     }
-    if (edit.operation === 'OFFSET_FACE') {
-      return (p.distance ?? p.offset ?? 0) === 0;
+    if (edit.operation === 'OFFSET_FACE' || edit.operation === 'PUSH_PULL') {
+      return (p.distance ?? p.offset ?? p.depth ?? 0) === 0;
     }
     return false;
+  }
+
+  private static executePushPull(
+    shape: TopoShape,
+    edit: DirectEdit,
+    entityMap: Map<string, TopoShape>,
+    diagnostics: string[]
+  ): string[] {
+    const p = edit.parameters || {};
+    const distance = p.distance ?? p.offset ?? p.depth ?? 0;
+
+    const affectedVertices = new Set<Vertex>();
+    const affectedIds = new Set<string>();
+
+    for (const targetId of edit.targetEntityIds) {
+      const entity = entityMap.get(targetId);
+      if (entity && entity.shapeType === TopoShapeEnum.FACE) {
+        const face = entity as Face;
+        affectedIds.add(face.id);
+
+        const normal = this.computeFaceNormal(face);
+        const dx = normal.x * distance;
+        const dy = normal.y * distance;
+        const dz = normal.z * distance;
+
+        const faceVertices = new Set<Vertex>();
+        this.collectFaceVertices(face, faceVertices);
+
+        // Update face surface origin
+        if (face.geometry && typeof (face.geometry as any).origin === 'object') {
+          const orig = (face.geometry as any).origin;
+          orig.x += dx;
+          orig.y += dy;
+          orig.z += dz;
+        }
+
+        for (const v of faceVertices) {
+          v.geometry.x += dx;
+          v.geometry.y += dy;
+          v.geometry.z += dz;
+          affectedVertices.add(v);
+          affectedIds.add(v.id);
+        }
+      }
+    }
+
+    return Array.from(affectedIds);
   }
 
   private static executeMoveFace(
@@ -249,6 +325,14 @@ export class DirectModelingEngine {
         const face = entity as Face;
         affectedIds.add(face.id);
         this.collectFaceVertices(face, affectedVertices);
+
+        // Update underlying mathematical surface geometry if defined
+        if (face.geometry && typeof (face.geometry as any).origin === 'object') {
+          const orig = (face.geometry as any).origin;
+          orig.x += dx;
+          orig.y += dy;
+          orig.z += dz;
+        }
       }
     }
 
@@ -289,6 +373,14 @@ export class DirectModelingEngine {
         const faceVertices = new Set<Vertex>();
         this.collectFaceVertices(face, faceVertices);
 
+        // Update underlying mathematical surface geometry if defined
+        if (face.geometry && typeof (face.geometry as any).origin === 'object') {
+          const orig = (face.geometry as any).origin;
+          orig.x += dx;
+          orig.y += dy;
+          orig.z += dz;
+        }
+
         for (const v of faceVertices) {
           v.geometry.x += dx;
           v.geometry.y += dy;
@@ -311,29 +403,34 @@ export class DirectModelingEngine {
     const targetSet = new Set(edit.targetEntityIds);
     const affectedIds: string[] = [];
 
+    // Collect targeted face IDs first
+    for (const targetId of edit.targetEntityIds) {
+      const entity = entityMap.get(targetId);
+      if (entity && entity.shapeType === TopoShapeEnum.FACE) {
+        affectedIds.push(entity.id);
+      }
+    }
+
+    if (affectedIds.length === 0) {
+      diagnostics.push('No matching face entities found to delete');
+      return [];
+    }
+
     if (shape.shapeType === TopoShapeEnum.SOLID) {
       const solid = shape as Solid;
-      const initialFaceCount = solid.outerShell.orientedFaces.length;
-      solid.outerShell.orientedFaces = solid.outerShell.orientedFaces.filter(of => {
-        if (targetSet.has(of.face.id)) {
-          affectedIds.push(of.face.id);
-          return false;
-        }
-        return true;
-      });
+      const capResult = CapClosureEngine.reconstructAndCap(solid, affectedIds, edit.tolerance || 1e-7);
 
-      if (solid.outerShell.orientedFaces.length === initialFaceCount) {
-        diagnostics.push('No matching faces found to delete');
+      if (!capResult.success || !capResult.cappedSolid) {
+        diagnostics.push(...capResult.diagnostics);
+        return [];
       }
+
+      // Mutate solid in place to preserve reference for B-Rep wrapper
+      solid.outerShell = capResult.cappedSolid.outerShell;
+      diagnostics.push(...capResult.diagnostics);
     } else if (shape.shapeType === TopoShapeEnum.SHELL) {
       const shell = shape as Shell;
-      shell.orientedFaces = shell.orientedFaces.filter(of => {
-        if (targetSet.has(of.face.id)) {
-          affectedIds.push(of.face.id);
-          return false;
-        }
-        return true;
-      });
+      shell.orientedFaces = shell.orientedFaces.filter(of => !targetSet.has(of.face.id));
     }
 
     return affectedIds;
@@ -348,14 +445,286 @@ export class DirectModelingEngine {
     const affectedIds: string[] = [];
     const newSurface = edit.parameters?.newSurface;
 
+    if (!newSurface) {
+      diagnostics.push('ReplaceFace requires parameter newSurface');
+      return [];
+    }
+
     for (const targetId of edit.targetEntityIds) {
       const entity = entityMap.get(targetId);
       if (entity && entity.shapeType === TopoShapeEnum.FACE) {
         const face = entity as Face;
-        if (newSurface) {
-          face.geometry = newSurface;
+
+        const faceVertices = new Set<Vertex>();
+        this.collectFaceVertices(face, faceVertices);
+
+        // Project boundary vertices if planar surface
+        if (newSurface.origin && newSurface.normal) {
+          const orig = newSurface.origin;
+          const norm = newSurface.normal;
+          const len = Math.hypot(norm.x, norm.y, norm.z) || 1;
+          const un = { x: norm.x / len, y: norm.y / len, z: norm.z / len };
+
+          for (const v of faceVertices) {
+            const vx = v.geometry.x;
+            const vy = v.geometry.y;
+            const vz = v.geometry.z;
+            const dist = un.x * (vx - orig.x) + un.y * (vy - orig.y) + un.z * (vz - orig.z);
+
+            if (Math.abs(dist) > 1e-3) {
+              diagnostics.push(`ReplaceFace: Boundary vertex ${v.id} deviation (${dist.toExponential(3)} m) exceeds acceptable envelope from replacement surface.`);
+              return [];
+            }
+
+            v.geometry.x = (vx - dist * un.x) as any;
+            v.geometry.y = (vy - dist * un.y) as any;
+            v.geometry.z = (vz - dist * un.z) as any;
+            affectedIds.push(v.id);
+          }
         }
+
+        face.geometry = newSurface;
         affectedIds.push(face.id);
+      }
+    }
+
+    return affectedIds;
+  }
+
+  private static executeRotateFace(
+    shape: TopoShape,
+    edit: DirectEdit,
+    entityMap: Map<string, TopoShape>,
+    diagnostics: string[]
+  ): string[] {
+    const p = edit.parameters || {};
+    const angleRad = (p.angle ?? 0) * (Math.PI / 180.0);
+    const axisPoint = p.axisPoint || { x: 0, y: 0, z: 0 };
+    const axisDir = p.axisDir || { x: 0, y: 0, z: 1 };
+
+    const affectedVertices = new Set<Vertex>();
+    const affectedIds = new Set<string>();
+
+    const normalize = (v: { x: number; y: number; z: number }) => {
+      const l = Math.hypot(v.x, v.y, v.z) || 1;
+      return { x: v.x / l, y: v.y / l, z: v.z / l };
+    };
+
+    const u = normalize(axisDir);
+    const cosA = Math.cos(angleRad);
+    const sinA = Math.sin(angleRad);
+
+    for (const targetId of edit.targetEntityIds) {
+      const entity = entityMap.get(targetId);
+      if (entity && entity.shapeType === TopoShapeEnum.FACE) {
+        const face = entity as Face;
+        affectedIds.add(face.id);
+        this.collectFaceVertices(face, affectedVertices);
+
+        // Update underlying surface origin and normal
+        if (face.geometry && typeof (face.geometry as any).origin === 'object') {
+          const orig = (face.geometry as any).origin;
+          const px = orig.x - axisPoint.x;
+          const py = orig.y - axisPoint.y;
+          const pz = orig.z - axisPoint.z;
+          const dot = px * u.x + py * u.y + pz * u.z;
+          const crossX = u.y * pz - u.z * py;
+          const crossY = u.z * px - u.x * pz;
+          const crossZ = u.x * py - u.y * px;
+          orig.x = axisPoint.x + (px * cosA + crossX * sinA + u.x * dot * (1 - cosA));
+          orig.y = axisPoint.y + (py * cosA + crossY * sinA + u.y * dot * (1 - cosA));
+          orig.z = axisPoint.z + (pz * cosA + crossZ * sinA + u.z * dot * (1 - cosA));
+        }
+        if (face.geometry && typeof (face.geometry as any).normal === 'object') {
+          const n = (face.geometry as any).normal;
+          const dot = n.x * u.x + n.y * u.y + n.z * u.z;
+          const crossX = u.y * n.z - u.z * n.y;
+          const crossY = u.z * n.x - u.x * n.z;
+          const crossZ = u.x * n.y - u.y * n.x;
+          n.x = n.x * cosA + crossX * sinA + u.x * dot * (1 - cosA);
+          n.y = n.y * cosA + crossY * sinA + u.y * dot * (1 - cosA);
+          n.z = n.z * cosA + crossZ * sinA + u.z * dot * (1 - cosA);
+        }
+      }
+    }
+
+    for (const v of affectedVertices) {
+      const px = v.geometry.x - axisPoint.x;
+      const py = v.geometry.y - axisPoint.y;
+      const pz = v.geometry.z - axisPoint.z;
+
+      // Rodrigues rotation formula
+      const dot = px * u.x + py * u.y + pz * u.z;
+      const crossX = u.y * pz - u.z * py;
+      const crossY = u.z * px - u.x * pz;
+      const crossZ = u.x * py - u.y * px;
+
+      v.geometry.x = axisPoint.x + (px * cosA + crossX * sinA + u.x * dot * (1 - cosA));
+      v.geometry.y = axisPoint.y + (py * cosA + crossY * sinA + u.y * dot * (1 - cosA));
+      v.geometry.z = axisPoint.z + (pz * cosA + crossZ * sinA + u.z * dot * (1 - cosA));
+      affectedIds.add(v.id);
+    }
+
+    return Array.from(affectedIds);
+  }
+
+  private static executeExtendFace(
+    shape: TopoShape,
+    edit: DirectEdit,
+    entityMap: Map<string, TopoShape>,
+    diagnostics: string[]
+  ): string[] {
+    const p = edit.parameters || {};
+    const distance = p.distance ?? 0;
+
+    const affectedIds = new Set<string>();
+
+    for (const targetId of edit.targetEntityIds) {
+      const entity = entityMap.get(targetId);
+      if (entity && entity.shapeType === TopoShapeEnum.FACE) {
+        const face = entity as Face;
+        affectedIds.add(face.id);
+
+        const faceVertices = new Set<Vertex>();
+        this.collectFaceVertices(face, faceVertices);
+        const vArray = Array.from(faceVertices);
+        if (vArray.length < 3) continue;
+
+        let cx = 0, cy = 0, cz = 0;
+        for (const v of vArray) {
+          cx += v.geometry.x;
+          cy += v.geometry.y;
+          cz += v.geometry.z;
+        }
+        cx /= vArray.length;
+        cy /= vArray.length;
+        cz /= vArray.length;
+
+        for (const v of vArray) {
+          const rx = v.geometry.x - cx;
+          const ry = v.geometry.y - cy;
+          const rz = v.geometry.z - cz;
+          const rLen = Math.hypot(rx, ry, rz) || 1;
+          v.geometry.x = (v.geometry.x + (rx / rLen) * distance) as any;
+          v.geometry.y = (v.geometry.y + (ry / rLen) * distance) as any;
+          v.geometry.z = (v.geometry.z + (rz / rLen) * distance) as any;
+          affectedIds.add(v.id);
+        }
+      }
+    }
+
+    return Array.from(affectedIds);
+  }
+
+  private static executeTrimFace(
+    shape: TopoShape,
+    edit: DirectEdit,
+    entityMap: Map<string, TopoShape>,
+    diagnostics: string[]
+  ): string[] {
+    const trimmingPlane = edit.parameters?.trimmingPlane;
+    const trimmingToolId = edit.parameters?.trimmingToolId;
+    let planeOrigin: Point | null = null;
+    let planeNormal: { x: number; y: number; z: number } | null = null;
+
+    if (trimmingPlane && trimmingPlane.origin && trimmingPlane.normal) {
+      planeOrigin = trimmingPlane.origin;
+      planeNormal = trimmingPlane.normal;
+    } else if (trimmingToolId) {
+      const toolEntity = entityMap.get(trimmingToolId);
+      if (toolEntity && toolEntity.shapeType === TopoShapeEnum.FACE) {
+        const toolFace = toolEntity as Face;
+        planeNormal = this.computeFaceNormal(toolFace);
+        const verts = new Set<Vertex>();
+        this.collectFaceVertices(toolFace, verts);
+        const firstV = verts.values().next().value;
+        if (firstV) planeOrigin = firstV.geometry;
+      }
+    }
+
+    if (!planeOrigin || !planeNormal) {
+      diagnostics.push('Trimming face requires a valid trimmingPlane or trimmingToolId face');
+      return [];
+    }
+
+    const nLen = Math.hypot(planeNormal.x, planeNormal.y, planeNormal.z) || 1;
+    const un = { x: planeNormal.x / nLen, y: planeNormal.y / nLen, z: planeNormal.z / nLen };
+    const p0 = planeOrigin;
+
+    const affectedIds: string[] = [];
+
+    for (const targetId of edit.targetEntityIds) {
+      const entity = entityMap.get(targetId);
+      if (entity && entity.shapeType === TopoShapeEnum.FACE) {
+        const face = entity as Face;
+        if (!face.outerLoop || !face.outerLoop.orientedEdges) continue;
+
+        const orientedEdges = face.outerLoop.orientedEdges;
+        const originalVertices: Vertex[] = orientedEdges.map(oe =>
+          oe.orientation === Orientation.FORWARD ? oe.edge.startVertex : oe.edge.endVertex
+        );
+
+        if (originalVertices.length < 3) continue;
+
+        const dist = (p: Point) => un.x * (p.x - p0.x) + un.y * (p.y - p0.y) + un.z * (p.z - p0.z);
+
+        // Sutherland-Hodgman clipping against half-space dist(p) >= -1e-7
+        const clippedPoints: Point[] = [];
+        const N = originalVertices.length;
+
+        for (let i = 0; i < N; i++) {
+          const curr = originalVertices[i].geometry;
+          const next = originalVertices[(i + 1) % N].geometry;
+          const dCurr = dist(curr);
+          const dNext = dist(next);
+
+          if (dCurr >= -1e-7) {
+            clippedPoints.push(curr);
+          }
+
+          if ((dCurr >= -1e-7 && dNext < -1e-7) || (dCurr < -1e-7 && dNext >= -1e-7)) {
+            const denom = dCurr - dNext;
+            const t = Math.abs(denom) > 1e-12 ? dCurr / denom : 0;
+            const intPt: Point = {
+              x: (curr.x + t * (next.x - curr.x)) as any,
+              y: (curr.y + t * (next.y - curr.y)) as any,
+              z: (curr.z + t * (next.z - curr.z)) as any
+            };
+            clippedPoints.push(intPt);
+          }
+        }
+
+        if (clippedPoints.length < 3) {
+          diagnostics.push(`TrimFace: Face ${face.id} was completely trimmed away by tool plane.`);
+          return [];
+        }
+
+        const newEdges: OrientedEdge[] = [];
+        const K = clippedPoints.length;
+        for (let i = 0; i < K; i++) {
+          const pStart = clippedPoints[i];
+          const pEnd = clippedPoints[(i + 1) % K];
+          const tol = edit.tolerance || 1e-7;
+          const vStart: Vertex = { id: `${face.id}_tv_${i}`, shapeType: TopoShapeEnum.VERTEX, geometry: pStart, tolerance: tol };
+          const vEnd: Vertex = { id: `${face.id}_tv_${(i + 1) % K}`, shapeType: TopoShapeEnum.VERTEX, geometry: pEnd, tolerance: tol };
+          const edge: Edge = {
+            id: `${face.id}_te_${i}`,
+            shapeType: TopoShapeEnum.EDGE,
+            geometry: new LineSegmentCurve(pStart, pEnd),
+            startVertex: vStart,
+            endVertex: vEnd,
+            tolerance: tol
+          };
+          newEdges.push({ edge, orientation: Orientation.FORWARD });
+          affectedIds.push(vStart.id, edge.id);
+        }
+
+        face.outerLoop = {
+          id: `${face.id}_trimmed_loop`,
+          shapeType: TopoShapeEnum.LOOP,
+          orientedEdges: newEdges
+        };
+        affectedIds.push(face.id, face.outerLoop.id);
       }
     }
 

@@ -1,0 +1,5 @@
+{
+  "summary":  "Independent oracle results recording both analytical formula values and raw divergence theorem evaluations without overrides, quantifying exact discretization errors.",
+  "updatedAt":  "2026-10-30T07:52:35.786928508Z",
+  "userFacing":  true
+}

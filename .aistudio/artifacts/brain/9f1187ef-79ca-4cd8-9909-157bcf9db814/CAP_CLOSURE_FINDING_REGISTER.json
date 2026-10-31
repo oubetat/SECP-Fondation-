@@ -1,0 +1,30 @@
+{
+  "audit": "Independent CapClosureEngine Finding Register",
+  "campaign": "SECP-CAD-DIRECT-MODELING-CAP-003",
+  "findings": [
+    {
+      "id": "FIND-01",
+      "severity": "HIGH",
+      "category": "DETERMINISM",
+      "description": "Use of Date.now() in cap face and loop ID generation introduces non-determinism across test replay runs.",
+      "file": "src/engine/cad-kernel/modeling/CapClosureEngine.ts",
+      "lines": [211, 218]
+    },
+    {
+      "id": "FIND-02",
+      "severity": "MEDIUM",
+      "category": "GEOMETRY",
+      "description": "Non-planar boundaries fail closed correctly as declared in Phase 1 scope, but limit freeform capping capability.",
+      "file": "src/engine/cad-kernel/modeling/CapClosureEngine.ts",
+      "lines": [202, 209]
+    },
+    {
+      "id": "FIND-03",
+      "severity": "LOW",
+      "category": "TESTING",
+      "description": "Dedicated unit test suite specifically targeting edge-case failure modes of CapClosureEngine should be expanded.",
+      "file": "src/engine/cad-kernel/modeling/__tests__/DirectModelingEngine.test.ts",
+      "lines": [1-152]
+    }
+  ]
+}

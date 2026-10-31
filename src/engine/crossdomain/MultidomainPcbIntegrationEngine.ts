@@ -39,8 +39,11 @@ import {
 } from '../engineeringCore/ElectrothermalSolver';
 import {
   ElectrothermalCouplingContract,
-  DEFAULT_ELECTROTHERMAL_OPTIONS
+  DEFAULT_ELECTROTHERMAL_OPTIONS,
+  ComponentElectrothermalProperty
 } from '../engineeringCore/ElectrothermalCouplingContract';
+import { ElectricalToCoreBinding } from './CanonicalDomainBinding';
+import { CanonicalDomainBindingEngine } from './CanonicalDomainBindingEngine';
 import { PcbThermalBridge } from '../pcb/PcbThermalBridge';
 
 
@@ -425,7 +428,20 @@ export class MultidomainPcbIntegrationEngine {
     copperResistivityOhmM: number = 1.68e-8,
     standardCopperThicknessUm: number = 35 // 1 oz copper = 35 um = 0.035 mm
   ): ElectricalPcbVerificationResult {
-    const nodalResult = NodalCircuitSolver.solveDetailed(assembly.electricalCircuit);
+    // Wrap circuit in authoritative binding for solver gating
+    const circuitBinding = CanonicalDomainBindingEngine.createBinding(
+      'ELECTRICAL',
+      assembly.assemblyId,
+      assembly.revisionId,
+      assembly.electricalCircuit,
+      'geo-hash', // In a real scenario, these would come from the assembly's hash chain
+      'topo-hash',
+      'mat-hash',
+      'env-hash',
+      'phys-hash'
+    ) as ElectricalToCoreBinding;
+
+    const nodalResult = NodalCircuitSolver.solveDetailed(circuitBinding);
 
     const traceResults: TraceVoltageDropResult[] = [];
     const violations: string[] = [];
@@ -516,8 +532,21 @@ export class MultidomainPcbIntegrationEngine {
     let maxJunctionTempC = ambient;
     let hottestComponentRefDes = '';
 
+    // Wrap circuit in authoritative binding for solver gating
+    const circuitBinding = CanonicalDomainBindingEngine.createBinding(
+      'ELECTRICAL',
+      assembly.assemblyId,
+      assembly.revisionId,
+      assembly.electricalCircuit,
+      'geo-hash',
+      'topo-hash',
+      'mat-hash',
+      'env-hash',
+      'phys-hash'
+    ) as ElectricalToCoreBinding;
+
     // Solve nodal circuit to get exact powers dissipated by circuit components
-    const nodalResult = NodalCircuitSolver.solveDetailed(assembly.electricalCircuit);
+    const nodalResult = NodalCircuitSolver.solveDetailed(circuitBinding);
 
     for (const comp of assembly.pcb.components) {
       const spec = assembly.thermalEnvironment.componentThermalSpecs[comp.refDes] || {
@@ -621,8 +650,21 @@ export class MultidomainPcbIntegrationEngine {
       };
     }
 
-    return ElectrothermalSolver.solve(
+    // Wrap circuit in authoritative binding for solver gating
+    const circuitBinding = CanonicalDomainBindingEngine.createBinding(
+      'ELECTRICAL',
+      assembly.assemblyId,
+      assembly.revisionId,
       assembly.electricalCircuit,
+      'geo-hash',
+      'topo-hash',
+      'mat-hash',
+      'env-hash',
+      'phys-hash'
+    ) as ElectricalToCoreBinding;
+
+    return ElectrothermalSolver.solve(
+      circuitBinding,
       thermalConfig,
       contract
     );

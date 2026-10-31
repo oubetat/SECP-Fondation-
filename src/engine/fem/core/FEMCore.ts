@@ -36,6 +36,8 @@ import { TET4LargeDeformationFormulation } from "./TET4LargeDeformationFormulati
 import { TET4LargeDeformationPlasticFormulation } from "./TET4LargeDeformationPlasticFormulation";
 import { NonlinearAnalysisResult, NonlinearEquilibriumSolver, NonlinearSolverOptions } from "./NonlinearEquilibriumSolver";
 import { GeometryMaterialValidator } from "./GeometryMaterialValidator";
+import { FemToCoreBinding } from "../../crossdomain/CanonicalDomainBinding";
+import { CanonicalDomainBindingEngine } from "../../crossdomain/CanonicalDomainBindingEngine";
 
 export interface FEMSolveOptions {
   /**
@@ -126,8 +128,15 @@ export class FEMCore {
     this.formulations.set(id, formulation);
   }
 
-  public solve(model: FEMModel, options: FEMSolveOptions = {}): FEMSolveResult {
-    // 0. Pre-flight verification of geometry-material assignments
+  public solve(binding: FemToCoreBinding, options: FEMSolveOptions = {}): FEMSolveResult {
+    // 0. GATING: Verify simulation authority seal (Fail-Closed)
+    if (!CanonicalDomainBindingEngine.validateBinding(binding)) {
+      throw new Error(`[AUTHORITY_GATE_REJECTION] FEM Solver execution denied: Invalid or non-authoritative simulation seal.`);
+    }
+
+    const model = binding.payload;
+
+    // 0b. Pre-flight verification of geometry-material assignments
     GeometryMaterialValidator.preFlightCheck(model);
 
     // 1. Determine and Build DOFs dynamically per node

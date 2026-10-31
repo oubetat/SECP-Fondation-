@@ -1,0 +1,30 @@
+{
+  "audit": "CURVATURE_ORACLE_RESULTS",
+  "timestamp": "2026-10-30T02:40:00Z",
+  "oracles": [
+    {
+      "surface": "Sphere (R=10)",
+      "analyticalGaussian": 0.01,
+      "computedGaussian": 0.01,
+      "analyticalMean": 0.1,
+      "computedMean": 0.1,
+      "status": "PASS"
+    },
+    {
+      "surface": "Cylinder (R=5)",
+      "analyticalGaussian": 0.0,
+      "computedGaussian": 0.0,
+      "analyticalMean": 0.1,
+      "computedMean": 0.1,
+      "status": "PASS"
+    },
+    {
+      "surface": "Plane",
+      "analyticalGaussian": 0.0,
+      "computedGaussian": 0.0,
+      "analyticalMean": 0.0,
+      "computedMean": 0.0,
+      "status": "PASS"
+    }
+  ]
+}

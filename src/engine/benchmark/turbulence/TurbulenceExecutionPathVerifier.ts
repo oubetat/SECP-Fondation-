@@ -10,6 +10,7 @@ import { ExecutionPathAudit } from './types';
 import { Fvm3DMeshGenerator } from '../../cfd3d/Fvm3DMeshGenerator';
 import { Fvm3DNavierStokesSolver } from '../../cfd3d/Fvm3DNavierStokesSolver';
 import { BoundaryConditionSpec3D, FluidProperties3D, SolverConfig3D } from '../../cfd3d/Fvm3DTypes';
+import { DomainBindingTestUtility } from '../../crossdomain/DomainBindingTestUtility';
 
 export class TurbulenceExecutionPathVerifier {
   public static verifyExecutionPath(): ExecutionPathAudit {
@@ -37,7 +38,8 @@ export class TurbulenceExecutionPathVerifier {
       upwindScheme: 'FIRST_ORDER_UPWIND'
     };
 
-    const laminarSolution = Fvm3DNavierStokesSolver.solve(mesh, fluid, bc, laminarConfig);
+    const laminarBinding = DomainBindingTestUtility.createSealedCfdBinding(mesh, fluid);
+    const laminarSolution = Fvm3DNavierStokesSolver.solve(laminarBinding, laminarConfig);
 
     // 2. Run k-Epsilon Solver
     const kEpsConfig: SolverConfig3D = {
@@ -46,7 +48,8 @@ export class TurbulenceExecutionPathVerifier {
       turbulenceScheme: 'K_EPSILON'
     };
 
-    const kEpsSolution = Fvm3DNavierStokesSolver.solve(mesh, fluid, bc, kEpsConfig);
+    const kEpsBinding = DomainBindingTestUtility.createSealedCfdBinding(mesh, fluid);
+    const kEpsSolution = Fvm3DNavierStokesSolver.solve(kEpsBinding, kEpsConfig);
 
     // 3. Compute Differences
     let maxVelDiff = 0.0;

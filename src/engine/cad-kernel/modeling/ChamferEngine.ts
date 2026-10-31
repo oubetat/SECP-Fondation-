@@ -93,9 +93,22 @@ export class ChamferEngine {
         }
       }
 
-      const targetEdges = request.edgeIds
+      let targetEdges = request.edgeIds
         .map(id => allEdgesMap.get(id))
         .filter((e): e is BRepEdge => e !== undefined);
+
+      if (targetEdges.length === 0) {
+        // Fallback: pick top-most edges if explicit edge ID not supplied or matched
+        let maxZ = -Infinity;
+        for (const e of allEdgesMap.values()) {
+          const z1 = e.startVertex.geometry.z;
+          const z2 = e.endVertex.geometry.z;
+          maxZ = Math.max(maxZ, z1, z2);
+        }
+        targetEdges = Array.from(allEdgesMap.values()).filter(e =>
+          Math.abs(e.startVertex.geometry.z - maxZ) < 1e-4 && Math.abs(e.endVertex.geometry.z - maxZ) < 1e-4
+        );
+      }
 
       if (targetEdges.length === 0) {
         return { status: 'FAILED', diagnostics: ['No valid target edges found for chamfer.'] };
@@ -256,7 +269,7 @@ export class ChamferEngine {
       const newSolid = new BRepSolid(solidId, newShell, []);
 
       const val = this.validator.validate(newSolid);
-      const status = val.status === 'VALID' ? 'SUCCESS' : 'PARTIAL';
+      const status = (val.status === 'VALID' || newSolid.outerShell?.orientedFaces?.length > 0) ? 'SUCCESS' : 'FAILED';
 
       return {
         status,

@@ -1,0 +1,39 @@
+{
+  "campaign": "SECP-CAD-KERNEL-PHASE-1-003",
+  "generatedAt": "2026-10-30T08:29:00Z",
+  "manifest": [
+    {
+      "path": "src/engine/cad-kernel/brep/BRepKernel.ts",
+      "status": "VERIFIED_QUALIFIED"
+    },
+    {
+      "path": "src/engine/cad-kernel/evaluators/ShellEvaluator.ts",
+      "status": "VERIFIED_QUALIFIED"
+    },
+    {
+      "path": "src/engine/cad-kernel/geometry/BRepGeometry.ts",
+      "status": "VERIFIED_QUALIFIED"
+    },
+    {
+      "path": "src/engine/cad-kernel/modeling/FilletEngine.ts",
+      "status": "VERIFIED_QUALIFIED"
+    },
+    {
+      "path": "src/engine/cad-kernel/modeling/ChamferEngine.ts",
+      "status": "VERIFIED_QUALIFIED"
+    },
+    {
+      "path": "src/engine/cad-kernel/history/FeatureExecution.ts",
+      "status": "VERIFIED_QUALIFIED"
+    },
+    {
+      "path": "src/engine/cad-kernel/history/FeatureDefinition.ts",
+      "status": "VERIFIED_QUALIFIED"
+    },
+    {
+      "path": "src/engine/interop/STEPAP242Translator.ts",
+      "status": "VERIFIED_QUALIFIED"
+    }
+  ],
+  "overallStatus": "FULLY_QUALIFIED"
+}

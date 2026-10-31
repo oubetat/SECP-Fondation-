@@ -1,0 +1,64 @@
+{
+  "campaignId": "SECP-CAD-KERNEL-PHASE-1-002",
+  "auditType": "PRODUCTION_EXECUTION_PATH_TRACE",
+  "revisionIdentity": "REVISION_IDENTITY_UNAVAILABLE",
+  "timestamp": "2026-10-30T07:53:30Z",
+  "tracedPaths": [
+    {
+      "operation": "Sphere Primitive Creation",
+      "entryPoint": "BRepKernel.createSphere(radius, idPrefix, origin)",
+      "dispatchedEvaluator": "Internal parameterized mesh generation in BRepKernel.ts",
+      "topologyOutput": "BRepSolid with BRepShell containing 288 BRepFaces",
+      "canonicalDocumentBinding": "Bound via CADDocument.appendFeature / SolidGeometryKernel",
+      "productionPathStatus": "VERIFIED_PRODUCTION_PATH"
+    },
+    {
+      "operation": "Torus Primitive Creation",
+      "entryPoint": "BRepKernel.createTorus(rMajor, rMinor, idPrefix, origin)",
+      "dispatchedEvaluator": "Internal toroidal mesh generation in BRepKernel.ts",
+      "topologyOutput": "BRepSolid with BRepShell containing 384 BRepFaces",
+      "canonicalDocumentBinding": "Bound via CADDocument.appendFeature / SolidGeometryKernel",
+      "productionPathStatus": "VERIFIED_PRODUCTION_PATH"
+    },
+    {
+      "operation": "Feature Chamfer Execution",
+      "entryPoint": "FeatureExecutor.execute(featureNode, context)",
+      "dispatchedEvaluator": "FeatureExecutor.executeChamfer in FeatureExecution.ts",
+      "topologyOutput": "BRepSolid with duplicate top face and single bevel face (incomplete loop)",
+      "canonicalDocumentBinding": "Bound via FeatureRegistry277 / EngineeringDocument",
+      "productionPathStatus": "PRODUCTION_PATH_ACTIVE_BUT_TOPOLOGY_DEFICIENT"
+    },
+    {
+      "operation": "Feature Fillet Execution",
+      "entryPoint": "FeatureExecutor.execute(featureNode, context)",
+      "dispatchedEvaluator": "FeatureExecutor.executeFillet in FeatureExecution.ts",
+      "topologyOutput": "BRepSolid with duplicate top face and single blend face (incomplete loop)",
+      "canonicalDocumentBinding": "Bound via FeatureRegistry277 / EngineeringDocument",
+      "productionPathStatus": "PRODUCTION_PATH_ACTIVE_BUT_TOPOLOGY_DEFICIENT"
+    },
+    {
+      "operation": "Shell Feature Evaluation",
+      "entryPoint": "ShellEvaluator.evaluate(parentSolid, params)",
+      "dispatchedEvaluator": "ShellEvaluator.evaluate in ShellEvaluator.ts",
+      "topologyOutput": "BRepSolid with 14 faces (5 outer, 5 inner, 4 rim)",
+      "canonicalDocumentBinding": "Called via FeatureExecutor.executeShell / FeatureRegistry277",
+      "productionPathStatus": "VERIFIED_PRODUCTION_PATH_AXIS_ALIGNED"
+    },
+    {
+      "operation": "NURBS Surface Evaluation",
+      "entryPoint": "BRepNURBSSurface.evaluate(u, v)",
+      "dispatchedEvaluator": "RationalSurfaceSynthesisEngine.evaluatePoint",
+      "topologyOutput": "Evaluated Point3D",
+      "canonicalDocumentBinding": "Surface builders instantiate BRepNURBSSurface with swapped arguments; tessellator comments out point evaluation",
+      "productionPathStatus": "ISOLATED_EVALUATOR_SIGNATURE_MISMATCH"
+    },
+    {
+      "operation": "STEP AP242 Export/Import",
+      "entryPoint": "STEPAP242Translator.exportToStepPart21 / importFromStepPart21",
+      "dispatchedEvaluator": "STEPAP242Translator.ts + StepAp242Parser.ts",
+      "topologyOutput": "AP242SemanticModel",
+      "canonicalDocumentBinding": "Called via CadTranslator and NativeSECPInteroperabilityBridge",
+      "productionPathStatus": "ACTIVE_WITH_COMMENT_METADATA_FALLBACK"
+    }
+  ]
+}

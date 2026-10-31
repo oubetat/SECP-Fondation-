@@ -1,0 +1,67 @@
+{
+  "campaignId": "SECP-CAD-KERNEL-PHASE-1-001",
+  "auditBaselineId": "SECP-CAD-KERNEL-FORENSIC-AUDIT-001",
+  "revisionIdentity": "REVISION_IDENTITY_UNAVAILABLE",
+  "timestamp": "2026-10-30T07:43:00Z",
+  "gaps": [
+    {
+      "gapId": "GAP-CAD-001",
+      "title": "Primitive Construction Accuracy: Sphere & Torus Fake Extrusion",
+      "severity": "CRITICAL",
+      "baselineState": "Extruded 2D polygon into cylinder/prism without spherical curvature or toroidal genus-1 cavity",
+      "resolutionState": "CLOSED",
+      "resolutionDetails": "Implemented genuine B-Rep parameterized sphere (Euler chi=2) and torus (Euler chi=0, genus=1) with exact analytical volume and surface area",
+      "resolvedIn": "src/engine/cad-kernel/brep/BRepKernel.ts",
+      "qualificationVerdict": "PROVEN"
+    },
+    {
+      "gapId": "GAP-CAD-002",
+      "title": "Edge Fillet and Chamfer Lack of Geometric/Topological Mutation",
+      "severity": "CRITICAL",
+      "baselineState": "Feature execution merely recorded parameter metadata on solid object without modifying B-Rep faces or edges",
+      "resolutionState": "CLOSED",
+      "resolutionDetails": "Implemented genuine geometric beveling (chamfer) and cylindrical blending (fillet), generating blend/bevel faces and mutating B-Rep topology with volume verification",
+      "resolvedIn": "src/engine/cad-kernel/history/FeatureExecution.ts",
+      "qualificationVerdict": "PROVEN"
+    },
+    {
+      "gapId": "GAP-CAD-003",
+      "title": "Shell Evaluator Hardcoded Uniform Scale Shortcut",
+      "severity": "HIGH",
+      "baselineState": "Shell feature multiplied vertex coordinates by scale=0.8 rather than calculating normal offsets with physical wall thickness",
+      "resolutionState": "CLOSED",
+      "resolutionDetails": "Implemented true inward face-normal offsetting with exact physical wall thickness t, opening rim faces, and collapse rejection",
+      "resolvedIn": "src/engine/cad-kernel/evaluators/ShellEvaluator.ts",
+      "qualificationVerdict": "PROVEN"
+    },
+    {
+      "gapId": "GAP-CAD-004",
+      "title": "STEP AP242 Part 21 Synthetic JSON Serialization",
+      "severity": "HIGH",
+      "baselineState": "STEPAP242Translator returned JSON.stringify(model) and rejected real STEP files that did not start with '{'",
+      "resolutionState": "CLOSED",
+      "resolutionDetails": "Implemented formal ISO 10303-21 Part 21 physical file serialization and parser with B-Rep entities and adversarial corrupt input rejection",
+      "resolvedIn": "src/engine/interop/STEPAP242Translator.ts",
+      "qualificationVerdict": "PROVEN"
+    },
+    {
+      "gapId": "GAP-CAD-005",
+      "title": "NURBS Rational Surface Hardcoded Evaluation Constant",
+      "severity": "HIGH",
+      "baselineState": "RationalSurfaceSynthesisEngine.evaluatePoint returned static point { x: 5, y: 5, z: 2.5 }",
+      "resolutionState": "CLOSED",
+      "resolutionDetails": "Implemented Piegl & Tiller Algorithm A4.3 for tensor-product rational B-spline surface point evaluation using Cox-de Boor basis functions",
+      "resolvedIn": "src/engine/nurbs-geometry/RationalSurfaceSynthesisEngine.ts",
+      "qualificationVerdict": "PROVEN"
+    },
+    {
+      "gapId": "GAP-CAD-006",
+      "title": "Topological Naming Persistence Under Complex History Rollback",
+      "severity": "MEDIUM",
+      "baselineState": "Topological naming persistence verified for simple extrusions, partial for complex re-ordering",
+      "resolutionState": "ROADMAP_PHASE_2",
+      "resolutionDetails": "Scheduled for Phase 2 history graph topological tracking expansion",
+      "qualificationVerdict": "PARTIAL"
+    }
+  ]
+}

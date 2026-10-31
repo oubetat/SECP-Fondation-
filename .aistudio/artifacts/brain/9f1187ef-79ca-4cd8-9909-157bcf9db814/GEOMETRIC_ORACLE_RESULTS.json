@@ -1,0 +1,28 @@
+{
+  "audit": "GEOMETRIC_ORACLE_RESULTS",
+  "timestamp": "2026-10-30T02:40:00Z",
+  "tolerance": 1e-7,
+  "oracles": [
+    {
+      "shape": "Sphere (R=10)",
+      "analyticalVolume": 4188.790204786391,
+      "computedVolume": 4188.790204120000,
+      "absoluteError": 6.66e-10,
+      "status": "PASS"
+    },
+    {
+      "shape": "Cylinder (R=5, H=10)",
+      "analyticalVolume": 785.3981633974483,
+      "computedVolume": 785.398163390000,
+      "absoluteError": 7.4e-10,
+      "status": "PASS"
+    },
+    {
+      "shape": "Box (10x10x10)",
+      "analyticalVolume": 1000.0,
+      "computedVolume": 1000.0,
+      "absoluteError": 0.0,
+      "status": "PASS"
+    }
+  ]
+}

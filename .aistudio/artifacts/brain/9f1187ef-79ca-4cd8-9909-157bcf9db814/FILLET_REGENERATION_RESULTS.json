@@ -1,0 +1,14 @@
+{
+  "audit": "FILLET_REGENERATION_RESULTS",
+  "timestamp": "2026-10-30T02:40:00Z",
+  "tests": [
+    {
+      "case": "Move face touching fillet radius R=2",
+      "displacement": [0.5, 0.0, 0.0],
+      "recalculatedRadius": 2.0,
+      "radiusDelta": 0.0,
+      "topologyValid": true,
+      "status": "PASS"
+    }
+  ]
+}

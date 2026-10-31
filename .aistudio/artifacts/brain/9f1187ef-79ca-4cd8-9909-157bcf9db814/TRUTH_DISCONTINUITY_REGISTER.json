@@ -1,0 +1,54 @@
+{
+  "programId": "SECP-ENGINEERING-TRUTH-INTEGRATION-001",
+  "auditTimestamp": "2026-10-31T08:06:00Z",
+  "discontinuities": [
+    {
+      "discontinuityId": "TD-001",
+      "domain": "PCB",
+      "location": "src/engine/pcb/PcbCanonicalModel.ts:182 (PcbCanonicalModelValidator)",
+      "issue": "PcbCanonicalModel computes custom JSON stringify hash without binding to EngineeringIdentity identityId or canonicalRevisionId.",
+      "severity": "CRITICAL",
+      "impact": "PCB modifications generate local hash changes that are not registered as revision increments in Core RevisionEngine."
+    },
+    {
+      "discontinuityId": "TD-002",
+      "domain": "ELECTRICAL",
+      "location": "src/engine/engineeringCore/NodalCircuitSolver.ts",
+      "issue": "NodalCircuitSolver computes voltage drops and branch currents on floating CircuitModel objects without domainRevisionBindings.",
+      "severity": "CRITICAL",
+      "impact": "Circuit simulation results can be presented for an old schematic revision without stale result detection."
+    },
+    {
+      "discontinuityId": "TD-003",
+      "domain": "WIRING_HARNESS",
+      "location": "src/engine/wiring-harness/WiringHarnessCanonicalModel.ts:104 (RouteWaypoint)",
+      "issue": "RouteWaypoint 3D coordinates are floating numeric vectors with no topological link to Mechanical Enclosure B-Rep face/edge IDs.",
+      "severity": "HIGH",
+      "impact": "Mechanical enclosure dimensional edits do not invalidate or flag harness routes as out-of-date."
+    },
+    {
+      "discontinuityId": "TD-004",
+      "domain": "MULTIDOMAIN",
+      "location": "src/engine/crossdomain/MultidomainPcbIntegrationEngine.ts:319",
+      "issue": "MultidomainPcbIntegrationEngine performs electrothermal & MNA coupling in-memory without propagating stale status downstream when PCB component placements mutate.",
+      "severity": "CRITICAL",
+      "impact": "Thermal/electrical coupling reports do not trigger invalidation of downstream FEM/CFD boundary condition manifests."
+    },
+    {
+      "discontinuityId": "TD-005",
+      "domain": "FEM",
+      "location": "src/engine/fem/core/FEMCore.ts:100",
+      "issue": "FEMCore executes stiffness matrix and displacement solves without checking or requiring SimulationAuthorityInternal seal or executionAuthority token.",
+      "severity": "CRITICAL",
+      "impact": "FEM simulation results can be generated from unverified or tampered mesh input files."
+    },
+    {
+      "discontinuityId": "TD-006",
+      "domain": "CFD",
+      "location": "src/engine/cfd3d/Fvm3DNavierStokesSolver.ts",
+      "issue": "Navier-Stokes fluid flow calculations execute on raw CFD meshes without verifying inputManifestHash or binding to canonical CAD B-Rep revision.",
+      "severity": "CRITICAL",
+      "impact": "Fluid dynamics flow fields can be presented as valid for a superseded geometry revision."
+    }
+  ]
+}

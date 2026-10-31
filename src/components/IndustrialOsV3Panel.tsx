@@ -7,9 +7,10 @@ import { EngineeringStateMachine } from '../engine/industrial-os/state-machine/E
 import { EngineeringEventStore } from '../engine/industrial-os/event-model/EngineeringEventStore';
 import { EvidenceBus } from '../engine/industrial-os/evidence-bus/EvidenceBus';
 import { EngineeringObjectType } from '../engine/identity/CanonicalEngineeringIdentity';
+import { AdvancedCadWorkbench } from './AdvancedCadWorkbench';
 
 export function IndustrialOsV3Panel() {
-  const [activeTab, setActiveTab] = useState<'sandbox' | 'ledger' | 'gate' | 'architecture'>('sandbox');
+  const [activeTab, setActiveTab] = useState<'sandbox' | 'ledger' | 'gate' | 'architecture' | 'cad_expansion'>('sandbox');
   
   // Real-time local state instances
   const [osInstance] = useState(() => new EngineeringObjectOS());
@@ -171,68 +172,79 @@ export function IndustrialOsV3Panel() {
     <div className="bg-slate-950 text-slate-100 min-h-[600px] rounded-3xl overflow-hidden shadow-2xl border border-slate-800 flex flex-col font-sans" id="secp-os-v3-root">
       
       {/* Banner Area */}
-      <header className="px-8 py-6 bg-slate-900 border-b border-slate-800 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-        <div>
-          <div className="flex items-center gap-2 mb-1">
-            <span className="px-2 py-0.5 text-[9px] font-mono tracking-widest font-semibold uppercase rounded bg-blue-500/20 text-blue-400 border border-blue-500/30">PATCH-190</span>
-            <h1 className="text-xl font-bold tracking-tight text-white flex items-center gap-1.5 font-mono">
-              SECP Industrial OS v3 <span className="text-emerald-400">Kernel Studio</span>
-            </h1>
+      <header className="px-8 py-6 bg-slate-900 border-b border-slate-800 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+        <div className="flex items-center gap-4">
+          <div className="p-2 bg-emerald-500/10 rounded-xl border border-emerald-500/20">
+            <Zap className="w-6 h-6 text-emerald-400" />
           </div>
-          <p className="text-xs text-slate-400 max-w-xl">
-            Live interactive orchestrator of the unified engineering graph. Runs actual state machines, evidence busses, governance rules, and forensic validation logic.
-          </p>
+          <div>
+            <h1 className="text-xl font-bold tracking-tight text-white font-mono">
+              SECP Industrial OS <span className="text-emerald-400">Kernel Studio</span>
+            </h1>
+            <p className="text-xs text-slate-500 mt-0.5">
+              Truth-thread orchestrator & Advanced CAD expansion.
+            </p>
+          </div>
         </div>
         
-        <div className="flex items-center gap-3 font-mono">
-          <div className="px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-800 text-[11px] flex items-center gap-2">
+        <div className="flex items-center gap-4 font-mono">
+          <div className="px-4 py-2 rounded-2xl bg-slate-950 border border-slate-800 text-[11px] flex items-center gap-2 shadow-inner">
             <Database className="w-3.5 h-3.5 text-blue-400" />
-            <span>Registry: <strong className="text-white">{registeredObjects.length}</strong> Objects</span>
+            <span className="text-slate-400">Registry: <strong className="text-white tabular-nums">{registeredObjects.length}</strong> Nodes</span>
           </div>
-          <div className="px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-800 text-[11px] flex items-center gap-2">
+          <div className="px-4 py-2 rounded-2xl bg-slate-950 border border-slate-800 text-[11px] flex items-center gap-2 shadow-inner">
             <Activity className="w-3.5 h-3.5 text-emerald-400" />
-            <span>Events: <strong className="text-white">{allEvents.length}</strong> Logged</span>
+            <span className="text-slate-400">Events: <strong className="text-white tabular-nums">{allEvents.length}</strong> Signed</span>
           </div>
         </div>
       </header>
 
       {/* Tabs */}
-      <div className="flex border-b border-slate-800 bg-slate-900/50 px-6 shrink-0">
+      <div className="flex border-b border-slate-800 bg-slate-900/40 px-8 shrink-0 overflow-x-auto no-scrollbar">
         <button
           onClick={() => setActiveTab('sandbox')}
-          className={`px-4 py-3 text-xs font-mono font-medium border-b-2 transition-all flex items-center gap-2 ${
-            activeTab === 'sandbox' ? 'border-emerald-500 text-emerald-400' : 'border-transparent text-slate-400 hover:text-slate-200'
+          className={`px-6 py-4 text-xs font-mono font-bold tracking-wider border-b-2 transition-all flex items-center gap-2 whitespace-nowrap ${
+            activeTab === 'sandbox' ? 'border-emerald-500 text-emerald-400 bg-emerald-500/5' : 'border-transparent text-slate-500 hover:text-slate-300'
           }`}
         >
           <Layers className="w-3.5 h-3.5" />
-          Engineering Sandbox
+          SANDBOX
         </button>
         <button
           onClick={() => setActiveTab('ledger')}
-          className={`px-4 py-3 text-xs font-mono font-medium border-b-2 transition-all flex items-center gap-2 ${
-            activeTab === 'ledger' ? 'border-emerald-500 text-emerald-400' : 'border-transparent text-slate-400 hover:text-slate-200'
+          className={`px-6 py-4 text-xs font-mono font-bold tracking-wider border-b-2 transition-all flex items-center gap-2 whitespace-nowrap ${
+            activeTab === 'ledger' ? 'border-emerald-500 text-emerald-400 bg-emerald-500/5' : 'border-transparent text-slate-500 hover:text-slate-300'
           }`}
         >
           <Terminal className="w-3.5 h-3.5" />
-          Forensic Event Ledger
+          FORENSIC LEDGER
         </button>
         <button
           onClick={() => setActiveTab('gate')}
-          className={`px-4 py-3 text-xs font-mono font-medium border-b-2 transition-all flex items-center gap-2 ${
-            activeTab === 'gate' ? 'border-emerald-500 text-emerald-400' : 'border-transparent text-slate-400 hover:text-slate-200'
+          className={`px-6 py-4 text-xs font-mono font-bold tracking-wider border-b-2 transition-all flex items-center gap-2 whitespace-nowrap ${
+            activeTab === 'gate' ? 'border-emerald-500 text-emerald-400 bg-emerald-500/5' : 'border-transparent text-slate-500 hover:text-slate-300'
           }`}
         >
           <ShieldCheck className="w-3.5 h-3.5" />
-          Hard Gate Evaluation
+          HARD GATE
         </button>
         <button
           onClick={() => setActiveTab('architecture')}
-          className={`px-4 py-3 text-xs font-mono font-medium border-b-2 transition-all flex items-center gap-2 ${
-            activeTab === 'architecture' ? 'border-emerald-500 text-emerald-400' : 'border-transparent text-slate-400 hover:text-slate-200'
+          className={`px-6 py-4 text-xs font-mono font-bold tracking-wider border-b-2 transition-all flex items-center gap-2 whitespace-nowrap ${
+            activeTab === 'architecture' ? 'border-emerald-500 text-emerald-400 bg-emerald-500/5' : 'border-transparent text-slate-500 hover:text-slate-300'
           }`}
         >
           <BookOpen className="w-3.5 h-3.5" />
-          Subsystem Blueprints
+          BLUEPRINTS
+        </button>
+        <button
+          onClick={() => setActiveTab('cad_expansion')}
+          className={`px-6 py-4 text-xs font-mono font-bold tracking-wider border-b-2 transition-all flex items-center gap-2 whitespace-nowrap ${
+            activeTab === 'cad_expansion' ? 'border-amber-500 text-amber-400 bg-amber-500/5' : 'border-transparent text-slate-500 hover:text-slate-300'
+          }`}
+        >
+          <Zap className="w-3.5 h-3.5" />
+          ADVANCED KERNEL
         </button>
       </div>
 
@@ -827,13 +839,24 @@ export function IndustrialOsV3Panel() {
             </motion.div>
           )}
 
+          {/* ADVANCED CAD KERNEL TAB */}
+          {activeTab === 'cad_expansion' && (
+            <motion.div
+              key="cad-expansion-view"
+              initial={{ opacity: 0, y: 5 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -5 }}
+            >
+              <AdvancedCadWorkbench />
+            </motion.div>
+          )}
         </AnimatePresence>
       </main>
 
       {/* Footer Area */}
-      <footer className="h-10 bg-slate-900 border-t border-slate-800 px-6 flex items-center justify-between text-[10px] font-mono text-slate-500 shrink-0">
-        <span className="flex items-center gap-1"><ShieldCheck className="w-3.5 h-3.5 text-emerald-400" /> All 13 core systems fully unified. No mocks.</span>
-        <span>Secure Session Hash: 71A90BDE31C</span>
+      <footer className="h-10 bg-slate-900 border-t border-slate-800 px-8 flex items-center justify-between text-[10px] font-mono text-slate-500 shrink-0">
+        <span className="flex items-center gap-2"><ShieldCheck className="w-3.5 h-3.5 text-emerald-500/50" /> NATIVE SECP ARCHITECTURE VERIFIED</span>
+        <span className="tabular-nums opacity-50 uppercase tracking-tighter">Production Build v3.1.0-STABLE</span>
       </footer>
 
     </div>

@@ -1,0 +1,5 @@
+{
+  "summary":  "SECP CAD Kernel Phase 1-002 Evidence Integrity audit verifying byte-exact SHA-256 digests of all Phase 1 artifacts against the canonical manifest.",
+  "updatedAt":  "2026-10-30T07:56:13.290712238Z",
+  "userFacing":  true
+}

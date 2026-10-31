@@ -1,0 +1,5 @@
+{
+  "summary":  "Phase 1 Regression Report documenting non-regression across existing gates, integration points with FEM/CFD/CAM pipelines, and build verification.",
+  "updatedAt":  "2026-10-30T07:44:19.975349286Z",
+  "userFacing":  true
+}

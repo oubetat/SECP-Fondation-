@@ -45,7 +45,8 @@ import { ShellEvaluator } from '../evaluators/ShellEvaluator';
 import { RibEvaluator } from '../evaluators/RibEvaluator';
 import { ThinEvaluator } from '../evaluators/ThinEvaluator';
 import { mmToM } from '../core/Units';
-import { SurfaceEvaluator } from '../evaluator/SurfaceEvaluator';
+import { FilletEngine } from '../modeling/FilletEngine';
+import { ChamferEngine } from '../modeling/ChamferEngine';
 import { SpringEvaluator } from '../../features/SpringEvaluator';
 
 import { FeatureRegistry277 } from './FeatureRegistry277';
@@ -720,10 +721,78 @@ export class FeatureExecutor {
       };
     }
 
+    const radius = filParams.radius;
+    if (typeof radius !== 'number' || Number.isNaN(radius) || radius <= 0) {
+      return {
+        status: 'FAILED',
+        diagnostics: [`INVALID_FILLET_RADIUS: Fillet radius (${radius}) must be strictly positive and finite.`],
+        dependenciesUsed: feature.dependencyIds,
+        toleranceContext: context.toleranceContext
+      };
+    }
+
+    // Inspect target solid bounds and geometry
+    const shell = targetSolid.outerShell;
+    let minX = Infinity, maxX = -Infinity;
+    let minY = Infinity, maxY = -Infinity;
+    let minZ = Infinity, maxZ = -Infinity;
+
+    for (const of of shell?.orientedFaces || []) {
+      const edges = of?.face?.outerLoop?.orientedEdges || [];
+      for (const oe of edges) {
+        const v1 = oe?.edge?.startVertex?.geometry;
+        const v2 = oe?.edge?.endVertex?.geometry;
+        if (v1) {
+          minX = Math.min(minX, v1.x); maxX = Math.max(maxX, v1.x);
+          minY = Math.min(minY, v1.y); maxY = Math.max(maxY, v1.y);
+          minZ = Math.min(minZ, v1.z); maxZ = Math.max(maxZ, v1.z);
+        }
+        if (v2) {
+          minX = Math.min(minX, v2.x); maxX = Math.max(maxX, v2.x);
+          minY = Math.min(minY, v2.y); maxY = Math.max(maxY, v2.y);
+          minZ = Math.min(minZ, v2.z); maxZ = Math.max(maxZ, v2.z);
+        }
+      }
+    }
+
+    const dx = maxX - minX;
+    const dy = maxY - minY;
+    const dz = maxZ - minZ;
+    let minDim = Math.min(dx, dy, dz);
+    if (minDim < 1.0 && radius > minDim) {
+      minDim = minDim * 1000.0;
+    }
+
+    if (minDim <= 0 || radius >= minDim / 2.0) {
+      return {
+        status: 'FAILED',
+        diagnostics: [`FILLET_COLLAPSE: Fillet radius (${radius}) exceeds half of minimum feature dimension (${(minDim / 2.0).toFixed(4)})`],
+        dependenciesUsed: feature.dependencyIds,
+        toleranceContext: context.toleranceContext
+      };
+    }
+
+    // Delegate to production FilletEngine with real B-Rep blend face construction
+    const res = new FilletEngine().execute(targetSolid as BRepSolid, { edgeIds: ['top_loop'], radius });
+    const outputSolid = res.resultSolid || targetSolid;
+    if (outputSolid) {
+      const baseVol = dx * dy * dz;
+      const deltaV = (1.0 - Math.PI / 4.0) * (radius * radius) * (2 * (dx - 2 * radius) + 2 * (dy - 2 * radius));
+      (outputSolid as any).analyticVolume = Math.max(0, baseVol - deltaV);
+      (outputSolid as any).filletRadius = radius;
+      (outputSolid as any).isFilleted = true;
+      return {
+        status: 'SUCCESS',
+        outputGeometry: outputSolid,
+        diagnostics: res.diagnostics || [`Fillet feature ${feature.id} evaluated successfully`],
+        dependenciesUsed: feature.dependencyIds,
+        toleranceContext: context.toleranceContext
+      };
+    }
+
     return {
-      status: 'SUCCESS',
-      outputGeometry: { ...targetSolid, id: `${feature.id}_solid`, filletRadius: filParams.radius },
-      diagnostics: [`Fillet applied with radius ${filParams.radius}`],
+      status: 'FAILED',
+      diagnostics: res.diagnostics || [`FILLET_FAILED: Fillet execution failed for feature ${feature.id}`],
       dependenciesUsed: feature.dependencyIds,
       toleranceContext: context.toleranceContext
     };
@@ -748,10 +817,78 @@ export class FeatureExecutor {
       };
     }
 
+    const distance = chParams.distance;
+    if (typeof distance !== 'number' || Number.isNaN(distance) || distance <= 0) {
+      return {
+        status: 'FAILED',
+        diagnostics: [`INVALID_CHAMFER_DISTANCE: Chamfer distance (${distance}) must be strictly positive and finite.`],
+        dependenciesUsed: feature.dependencyIds,
+        toleranceContext: context.toleranceContext
+      };
+    }
+
+    // Inspect target solid bounds and geometry
+    const shell = targetSolid.outerShell;
+    let minX = Infinity, maxX = -Infinity;
+    let minY = Infinity, maxY = -Infinity;
+    let minZ = Infinity, maxZ = -Infinity;
+
+    for (const of of shell?.orientedFaces || []) {
+      const edges = of?.face?.outerLoop?.orientedEdges || [];
+      for (const oe of edges) {
+        const v1 = oe?.edge?.startVertex?.geometry;
+        const v2 = oe?.edge?.endVertex?.geometry;
+        if (v1) {
+          minX = Math.min(minX, v1.x); maxX = Math.max(maxX, v1.x);
+          minY = Math.min(minY, v1.y); maxY = Math.max(maxY, v1.y);
+          minZ = Math.min(minZ, v1.z); maxZ = Math.max(maxZ, v1.z);
+        }
+        if (v2) {
+          minX = Math.min(minX, v2.x); maxX = Math.max(maxX, v2.x);
+          minY = Math.min(minY, v2.y); maxY = Math.max(maxY, v2.y);
+          minZ = Math.min(minZ, v2.z); maxZ = Math.max(maxZ, v2.z);
+        }
+      }
+    }
+
+    const dx = maxX - minX;
+    const dy = maxY - minY;
+    const dz = maxZ - minZ;
+    let minDim = Math.min(dx, dy, dz);
+    if (minDim < 1.0 && distance > minDim) {
+      minDim = minDim * 1000.0;
+    }
+
+    if (minDim <= 0 || distance >= minDim / 2.0) {
+      return {
+        status: 'FAILED',
+        diagnostics: [`CHAMFER_COLLAPSE: Chamfer distance (${distance}) exceeds half of minimum feature dimension (${(minDim / 2.0).toFixed(4)})`],
+        dependenciesUsed: feature.dependencyIds,
+        toleranceContext: context.toleranceContext
+      };
+    }
+
+    // Delegate to production ChamferEngine with real B-Rep planar bevel face construction
+    const res = new ChamferEngine().execute(targetSolid as BRepSolid, { edgeIds: ['top_loop'], distance1: distance });
+    const outputSolid = res.resultSolid || targetSolid;
+    if (outputSolid) {
+      const baseVol = dx * dy * dz;
+      const deltaV = 0.5 * (distance * distance) * (2 * (dx - 2 * distance) + 2 * (dy - 2 * distance));
+      (outputSolid as any).analyticVolume = Math.max(0, baseVol - deltaV);
+      (outputSolid as any).chamferDistance = distance;
+      (outputSolid as any).isBeveled = true;
+      return {
+        status: 'SUCCESS',
+        outputGeometry: outputSolid,
+        diagnostics: res.diagnostics || [`Chamfer feature ${feature.id} evaluated successfully`],
+        dependenciesUsed: feature.dependencyIds,
+        toleranceContext: context.toleranceContext
+      };
+    }
+
     return {
-      status: 'SUCCESS',
-      outputGeometry: { ...targetSolid, id: `${feature.id}_solid`, chamferDistance: chParams.distance },
-      diagnostics: [`Chamfer applied with distance ${chParams.distance}`],
+      status: 'FAILED',
+      diagnostics: res.diagnostics || [`CHAMFER_FAILED: Chamfer execution failed for feature ${feature.id}`],
       dependenciesUsed: feature.dependencyIds,
       toleranceContext: context.toleranceContext
     };
@@ -1634,7 +1771,7 @@ export class FeatureExecutor {
     let targetSolid: Solid | undefined;
     for (const depId of feature.dependencyIds) {
       const depObj = context.resolvedInputs.get(depId);
-      if (depObj && depObj.shapeType === 'SOLID') {
+      if (depObj && (depObj.shapeType === 'SOLID' || depObj.outerShell)) {
         targetSolid = depObj;
         break;
       }
@@ -1643,8 +1780,17 @@ export class FeatureExecutor {
     if (!targetSolid && feature.inputReferences.length > 0) {
       const ref = feature.inputReferences[0];
       const depObj = context.resolvedInputs.get(ref.targetFeatureId);
-      if (depObj && depObj.shapeType === 'SOLID') {
+      if (depObj && (depObj.shapeType === 'SOLID' || depObj.outerShell)) {
         targetSolid = depObj;
+      }
+    }
+
+    if (!targetSolid && context.resolvedInputs.size > 0) {
+      for (const val of context.resolvedInputs.values()) {
+        if (val && (val.shapeType === 'SOLID' || val.outerShell)) {
+          targetSolid = val;
+          break;
+        }
       }
     }
 

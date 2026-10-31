@@ -222,7 +222,7 @@ export class BRepEulerOps {
     return {
       success: true,
       solid: newSolid,
-      newFaces: [blendFaceObj, mutatedFaceA, mutatedFaceB], 
+      newFaces: [blendFaceObj, mutatedFaceA, mutatedFaceB],
       newEdges: [eTrimA, eTrimB, eCap1, eCap2],
       newVertices: [vA1, vA2, vB1, vB2],
       eulerCharacteristic: chiRes.chi,

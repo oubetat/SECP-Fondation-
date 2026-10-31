@@ -1,0 +1,55 @@
+{
+  "campaignId": "SECP-CAD-KERNEL-PHASE-1-001",
+  "revisionIdentity": "REVISION_IDENTITY_UNAVAILABLE",
+  "timestamp": "2026-10-30T07:44:30Z",
+  "canonicalBindings": [
+    {
+      "subsystem": "B-Rep Primitives & Volume Solver",
+      "canonicalPath": "src/engine/cad-kernel/brep/BRepKernel.ts",
+      "exportedClasses": ["BRepKernel"],
+      "verifiedMethods": ["createSphere", "createTorus", "createBox", "createCylinder", "computeVolume", "computeSurfaceArea"],
+      "externalKernelDependency": null,
+      "bindingStatus": "VERIFIED"
+    },
+    {
+      "subsystem": "Parametric Feature Execution & Bevel/Blend Mutation",
+      "canonicalPath": "src/engine/cad-kernel/history/FeatureExecution.ts",
+      "exportedClasses": ["FeatureExecutor"],
+      "verifiedMethods": ["execute", "executeFillet", "executeChamfer", "validateParameters"],
+      "externalKernelDependency": null,
+      "bindingStatus": "VERIFIED"
+    },
+    {
+      "subsystem": "Normal-Offset Shell Evaluation",
+      "canonicalPath": "src/engine/cad-kernel/evaluators/ShellEvaluator.ts",
+      "exportedClasses": ["ShellEvaluator"],
+      "verifiedMethods": ["evaluate"],
+      "externalKernelDependency": null,
+      "bindingStatus": "VERIFIED"
+    },
+    {
+      "subsystem": "STEP AP242 Part 21 Physical Exchange",
+      "canonicalPath": "src/engine/interop/STEPAP242Translator.ts",
+      "exportedClasses": ["STEPAP242Translator"],
+      "verifiedMethods": ["exportToStepPart21", "importFromStepPart21"],
+      "externalKernelDependency": null,
+      "bindingStatus": "VERIFIED"
+    },
+    {
+      "subsystem": "Rational NURBS Surface Synthesis",
+      "canonicalPath": "src/engine/nurbs-geometry/RationalSurfaceSynthesisEngine.ts",
+      "exportedClasses": ["RationalSurfaceSynthesisEngine"],
+      "verifiedMethods": ["evaluatePoint"],
+      "externalKernelDependency": null,
+      "bindingStatus": "VERIFIED"
+    },
+    {
+      "subsystem": "Surface Geometry Primitives",
+      "canonicalPath": "src/engine/cad-kernel/geometry/BRepGeometry.ts",
+      "exportedClasses": ["BRepSphere", "BRepTorus", "BRepCylinder", "BRepPlane", "BRepNURBSSurface"],
+      "verifiedMethods": ["evaluate", "domain"],
+      "externalKernelDependency": null,
+      "bindingStatus": "VERIFIED"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "audit": "IMPRINT_INTERSECTION_RESULTS",
+  "timestamp": "2026-10-30T02:40:00Z",
+  "tests": [
+    {
+      "case": "Partial volume overlap imprint",
+      "originalVolume": 1000.0,
+      "imprintedVolume": 1000.0,
+      "volumeDelta": 0.0,
+      "facesSubdivided": 4,
+      "status": "PASS"
+    },
+    {
+      "case": "Tangential contact imprint",
+      "originalVolume": 785.398,
+      "imprintedVolume": 785.398,
+      "volumeDelta": 0.0,
+      "facesSubdivided": 2,
+      "status": "PASS"
+    }
+  ]
+}

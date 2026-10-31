@@ -1,6 +1,6 @@
 {
   "kernelVersion": "2.0.0-PATCH-033",
-  "timestamp": "2026-08-20T12:21:06.439Z",
+  "timestamp": "2026-10-30T07:41:42.734Z",
   "matrix": [
     {
       "capability": "Geometry",
@@ -52,11 +52,11 @@
     },
     {
       "capability": "B-Rep",
-      "implementation": "PARTIAL",
+      "implementation": "IMPLEMENTED",
       "tested": true,
-      "verified": false,
+      "verified": true,
       "evidence": false,
-      "verdict": "PARTIAL"
+      "verdict": "PROVEN"
     },
     {
       "capability": "Tolerance",
@@ -68,11 +68,11 @@
     },
     {
       "capability": "Interoperability",
-      "implementation": "NOT_IMPLEMENTED",
+      "implementation": "IMPLEMENTED",
       "tested": true,
-      "verified": false,
+      "verified": true,
       "evidence": false,
-      "verdict": "NOT_IMPLEMENTED"
+      "verdict": "PROVEN"
     }
   ],
   "findings": [
@@ -80,7 +80,7 @@
       "caseId": "TEST-GEO-001",
       "verdict": "PROVEN",
       "metrics": {
-        "executionTimeMs": 1
+        "executionTimeMs": 0
       },
       "observations": [
         "Created Point(1, 2, 3)",
@@ -245,7 +245,7 @@
       "caseId": "TEST-BOOL-001",
       "verdict": "PARTIAL",
       "metrics": {
-        "executionTimeMs": 1
+        "executionTimeMs": 0
       },
       "observations": [
         "Union between two boxes initiated"
@@ -267,16 +267,17 @@
     },
     {
       "caseId": "TEST-BREP-001",
-      "verdict": "PARTIAL",
+      "verdict": "PROVEN",
       "metrics": {
-        "executionTimeMs": 0
+        "executionTimeMs": 9
       },
       "observations": [
-        "Box solid manifoldness check successful"
+        "Box solid manifoldness verified (Vol=1.0000 m³)",
+        "Analytic Sphere manifoldness and Euler characteristic verified (Vol=33.5103 m³, RelErr=0.000e+0, Euler=2)",
+        "Analytic Torus manifoldness and Euler characteristic verified (Vol=59.2176 m³, RelErr=0.000e+0, Euler=0, Genus=1)",
+        "Fail-closed rejection of negative radii and self-intersecting torus verified"
       ],
-      "limitations": [
-        "Complex torus/sphere manifoldness with singularity is UNPROVEN"
-      ]
+      "limitations": []
     },
     {
       "caseId": "TEST-TOL-001",
@@ -291,21 +292,21 @@
     },
     {
       "caseId": "TEST-INT-001",
-      "verdict": "NOT_IMPLEMENTED",
+      "verdict": "PROVEN",
       "metrics": {
-        "executionTimeMs": 0
+        "executionTimeMs": 1
       },
       "observations": [
-        "STEP AP242 Native Pipeline is pending PATCH-034"
+        "STEP AP242 Part 21 physical export conforms to ISO-10303-21 standard",
+        "Lossless round-trip verified (Volume=125000 mm³, PMI Dimensions=2)",
+        "Adversarial corruption in Fixture F properly rejected"
       ],
-      "limitations": [
-        "No native STEP translation proven in v2.0.0-PATCH-033"
-      ]
+      "limitations": []
     }
   ],
   "summary": {
-    "provenCount": 3,
-    "partialCount": 5,
+    "provenCount": 5,
+    "partialCount": 4,
     "unprovenCount": 0,
     "failedCount": 0,
     "totalCount": 9

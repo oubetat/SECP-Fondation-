@@ -1,0 +1,129 @@
+{
+  "programId": "SECP-ENGINEERING-TRUTH-INTEGRATION-001",
+  "auditTimestamp": "2026-10-31T08:06:00Z",
+  "domains": {
+    "SECP_CORE": {
+      "domainId": "CORE",
+      "engineClass": "EngineeringObjectOS",
+      "sourceFiles": [
+        "src/engine/industrial-os/EngineeringObjectOS.ts",
+        "src/engine/plm/CanonicalPLMProjectionAdapter.ts",
+        "src/engine/revision/RevisionEngine.ts",
+        "src/engine/workbench/InvalidationPipelineEngine.ts",
+        "src/engine/production-proof/ProductionProofEngine.ts"
+      ],
+      "dataContracts": [
+        "EngineeringIdentity",
+        "EngineeringObject",
+        "PLMProjectionContract",
+        "Revision",
+        "InvalidationPipelineExecutionReport"
+      ],
+      "revisionBindingMechanism": "RevisionEngine.computeRevisionHash / EngineeringIdentity.identityId",
+      "truthAuthorityStatus": "CANONICAL_SOURCE_OF_TRUTH"
+    },
+    "PCB": {
+      "domainId": "PCB",
+      "engineClass": "PcbEngine",
+      "sourceFiles": [
+        "src/engine/pcbEngine.ts",
+        "src/engine/pcb/PcbCanonicalModel.ts",
+        "src/engine/pcb/PcbVerificationService.ts",
+        "src/engine/pcb/PcbGeometryKernel.ts"
+      ],
+      "dataContracts": [
+        "PcbCanonicalModel",
+        "PcbComponentPlacementRecord",
+        "PcbTraceRecord",
+        "PcbViaRecord"
+      ],
+      "revisionBindingMechanism": "PcbCanonicalModelValidator.computeCanonicalHash",
+      "truthAuthorityStatus": "STANDALONE_MODEL_NEEDS_CORE_BINDING"
+    },
+    "ELECTRICAL": {
+      "domainId": "ELECTRICAL",
+      "engineClass": "ElectricalWorkbenchEngine",
+      "sourceFiles": [
+        "src/engine/electricalWorkbench.ts",
+        "src/engine/engineeringCore/electrical.ts",
+        "src/engine/engineeringCore/NodalCircuitSolver.ts",
+        "src/engine/engineeringCore/ReferenceCircuitModel.ts"
+      ],
+      "dataContracts": [
+        "CircuitModel",
+        "NodalSolveResult",
+        "ReferenceCircuitModel"
+      ],
+      "revisionBindingMechanism": "NodalCircuitSolver hash / In-memory instance",
+      "truthAuthorityStatus": "STANDALONE_MODEL_NEEDS_CORE_BINDING"
+    },
+    "WIRING_HARNESS": {
+      "domainId": "WIRING_HARNESS",
+      "engineClass": "WiringHarnessGeometryKernel",
+      "sourceFiles": [
+        "src/engine/wiring-harness/WiringHarnessCanonicalModel.ts",
+        "src/engine/wiring-harness/WiringHarnessGeometryKernel.ts",
+        "src/engine/wiring-harness/WiringHarnessElectricalVerifier.ts"
+      ],
+      "dataContracts": [
+        "WiringHarnessCanonicalModel",
+        "WireDefinition",
+        "ConnectorDefinition",
+        "BranchDefinition",
+        "RouteDefinition"
+      ],
+      "revisionBindingMechanism": "WiringHarnessCanonicalModelValidator.validate",
+      "truthAuthorityStatus": "STANDALONE_MODEL_NEEDS_CORE_BINDING"
+    },
+    "MULTIDOMAIN": {
+      "domainId": "MULTIDOMAIN",
+      "engineClass": "MultidomainPcbIntegrationEngine",
+      "sourceFiles": [
+        "src/engine/crossdomain/MultidomainPcbIntegrationEngine.ts",
+        "src/engine/crossdomain/CrossDomainRegistry.ts",
+        "src/engine/crossdomain/CrossDomainWorkflowEngine.ts"
+      ],
+      "dataContracts": [
+        "PcbHarnessInterfaceMapping",
+        "MultidomainMechanicalEnclosure",
+        "ElectrothermalCouplingContract"
+      ],
+      "revisionBindingMechanism": "Local createHash digest",
+      "truthAuthorityStatus": "STANDALONE_MODEL_NEEDS_CORE_BINDING"
+    },
+    "FEM": {
+      "domainId": "FEM",
+      "engineClass": "FEMCore",
+      "sourceFiles": [
+        "src/engine/fem/core/FEMCore.ts",
+        "src/engine/structuralFem.ts",
+        "src/engine/p1-parametric-stress/P1ParametricStressQualificationEngine.ts",
+        "src/engine/engineering_webgpu/fem/GPUFEMEvidenceGenerator.ts"
+      ],
+      "dataContracts": [
+        "FEMMesh",
+        "FEMMaterial",
+        "FEMSolveResult"
+      ],
+      "revisionBindingMechanism": "FEMMeshSerializer / local solver hash",
+      "truthAuthorityStatus": "STANDALONE_MODEL_NEEDS_CORE_BINDING"
+    },
+    "CFD": {
+      "domainId": "CFD",
+      "engineClass": "Fvm3DNavierStokesSolver",
+      "sourceFiles": [
+        "src/engine/cfdEngine.ts",
+        "src/engine/cfd3d/Fvm3DNavierStokesSolver.ts",
+        "src/engine/cfd3d/adaptive/CFDEvidenceGenerator.ts",
+        "src/engine/cad-kernel/cfd/CFDAdapter.ts"
+      ],
+      "dataContracts": [
+        "CFDMesh",
+        "CFDFlowResult",
+        "CFDEvidenceRecord"
+      ],
+      "revisionBindingMechanism": "CFDEvidenceGenerator SHA-256",
+      "truthAuthorityStatus": "STANDALONE_MODEL_NEEDS_CORE_BINDING"
+    }
+  }
+}

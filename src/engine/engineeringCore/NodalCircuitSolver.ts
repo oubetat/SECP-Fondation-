@@ -6,6 +6,8 @@
 
 import { CircuitModel, CircuitComponent, computeCircuitCanonicalHash } from './ReferenceCircuitModel';
 import { ElectricalCoreEngine } from './electrical';
+import { ElectricalToCoreBinding } from '../crossdomain/CanonicalDomainBinding';
+import { CanonicalDomainBindingEngine } from '../crossdomain/CanonicalDomainBindingEngine';
 
 export interface BranchCurrent {
   componentId: string;
@@ -64,8 +66,8 @@ export class NodalCircuitSolver {
    * Simple legacy solver signature for backwards compatibility.
    * Returns a map of node voltages or null if solving fails.
    */
-  public static solve(model: CircuitModel): Record<string, number> | null {
-    const detailed = this.solveDetailed(model);
+  public static solve(binding: ElectricalToCoreBinding): Record<string, number> | null {
+    const detailed = this.solveDetailed(binding);
     if (!detailed.success) return null;
     return detailed.nodeVoltages;
   }
@@ -73,8 +75,8 @@ export class NodalCircuitSolver {
   /**
    * Explicit entry point for nonlinear circuit solving (Newton-Raphson).
    */
-  public static solveNonlinearCircuit(model: CircuitModel): NodalSolveResult {
-    return this.solveDetailed(model);
+  public static solveNonlinearCircuit(binding: ElectricalToCoreBinding): NodalSolveResult {
+    return this.solveDetailed(binding);
   }
 
 
@@ -82,7 +84,13 @@ export class NodalCircuitSolver {
    * Detailed solver performing full Modified Nodal Analysis (MNA),
    * calculating branch currents, KCL residuals, and power balance.
    */
-  public static solveDetailed(model: CircuitModel): NodalSolveResult {
+  public static solveDetailed(binding: ElectricalToCoreBinding): NodalSolveResult {
+    // 0. GATING: Verify simulation authority seal (Fail-Closed)
+    if (!CanonicalDomainBindingEngine.validateBinding(binding)) {
+      throw new Error(`[AUTHORITY_GATE_REJECTION] Electrical Solver execution denied: Invalid or non-authoritative simulation seal.`);
+    }
+
+    const model = binding.payload;
     const startTime = Date.now();
     const modelHash = computeCircuitCanonicalHash(model);
 

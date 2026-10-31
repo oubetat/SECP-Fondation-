@@ -1,0 +1,20 @@
+{
+  "audit": "Independent CapClosureEngine Forensic Audit",
+  "campaign": "SECP-CAD-DIRECT-MODELING-CAP-003",
+  "mode": "STRICT_READ_ONLY",
+  "timestamp": "2026-10-30T04:41:00Z",
+  "callGraph": {
+     "DirectModelingEngine.applyDirectEdit": [
+        "DirectModelingEngine.executeDeleteFace",
+        "CapClosureEngine.reconstructAndCap"
+     ],
+     "CapClosureEngine.reconstructAndCap": [
+        "RemainingFaces / DeletedFaces classification (WP01)",
+        "vertexToEdges adjacency graph construction (WP02)",
+        "Loop tracing and closure verification (WP02)",
+        "Coplanarity and normal calculation (WP03)",
+        "Face creation and shell orientation (WP04)",
+        "BRepValidator.validate (WP05)"
+     ]
+  }
+}

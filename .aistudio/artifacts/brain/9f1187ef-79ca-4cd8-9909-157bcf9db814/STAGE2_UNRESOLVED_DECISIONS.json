@@ -1,0 +1,27 @@
+{
+  "programId": "SECP-ENGINEERING-TRUTH-INTEGRATION-003",
+  "adjudicationDate": "2026-10-31T08:14:00Z",
+  "unresolvedDecisions": [
+    {
+      "decisionId": "DEC-001",
+      "topic": "Binding Adapter Unification Strategy",
+      "question": "Should PcbToCoreBinding, ElectricalToCoreBinding, HarnessToCoreBinding, etc., be exported as a single unified TypeScript interface `CanonicalDomainBinding` with a generic domain payload, or as distinct specialized sub-interfaces extending a common base?",
+      "assignedWP": "Stage 3 WP-01 & WP-02",
+      "recommendedDecision": "Use a single base `CanonicalDomainBinding<T>` interface with a discriminated union on `domainId` for type-safe domain payloads."
+    },
+    {
+      "decisionId": "DEC-002",
+      "topic": "Simulation Seal Enforcement Fallback Mode",
+      "question": "When legacy or isolated unit tests run FEMCore or Fvm3DNavierStokesSolver directly without a booted SimulationAuthorityInternal handshake, should solvers throw an exception or execute in TEST_UNSEALED mode?",
+      "assignedWP": "Stage 3 WP-05",
+      "recommendedDecision": "Require explicit `testMode: true` option for unsealed test runs, but strictly fail closed (throw SIMULATION_AUTHORITY_VIOLATION) in production mode."
+    },
+    {
+      "decisionId": "DEC-003",
+      "topic": "Harness Waypoint Persistent Topological Naming",
+      "question": "How should route waypoints reference B-Rep faces/edges when CAD geometry undergoes topology replacement (e.g. face ID mutation)?",
+      "assignedWP": "Stage 3 WP-02 & WP-03",
+      "recommendedDecision": "Use PersistentTopologyNaming signature (geometric signature hash) in addition to transient entity IDs to resolve waypoints across CAD feature re-evaluation."
+    }
+  ]
+}

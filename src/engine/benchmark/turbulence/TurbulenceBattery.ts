@@ -25,6 +25,7 @@ import { TurbulenceDeterminismSuite } from './TurbulenceDeterminismSuite';
 import { HardAcceptanceGate176 } from './HardAcceptanceGate176';
 import { Fvm3DNavierStokesSolver } from '../../cfd3d/Fvm3DNavierStokesSolver';
 import { Fvm3DMeshGenerator } from '../../cfd3d/Fvm3DMeshGenerator';
+import { DomainBindingTestUtility } from '../../crossdomain/DomainBindingTestUtility';
 
 export class TurbulenceBattery {
   public static runFullBattery(): FinalTurbulenceBenchmarkReport {
@@ -54,7 +55,8 @@ export class TurbulenceBattery {
 
     for (const c of cases) {
       const clonedMesh = Fvm3DMeshGenerator.cloneMesh(c.mesh);
-      const sol = Fvm3DNavierStokesSolver.solve(clonedMesh, c.fluid, c.boundaryConditions, c.solverConfig);
+      const binding = DomainBindingTestUtility.createSealedCfdBinding(clonedMesh, c.fluid);
+      const sol = Fvm3DNavierStokesSolver.solve(binding, c.solverConfig);
       const refVal = TurbulenceReferenceValidator.validateCase(c, sol);
       referenceValidations.push(refVal);
 

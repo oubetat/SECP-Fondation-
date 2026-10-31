@@ -53,14 +53,59 @@ export class ShellEvaluator {
     }
 
     const orientedFaces = existingShell.orientedFaces;
-    const removedFaceId = params.removedFaceId || ((params as any).removedFaceRef ? (params as any).removedFaceRef.entityId : undefined);
 
+    // 1. Compute solid bounding box and minimum dimension for fail-closed validation
+    let minX = Infinity, maxX = -Infinity;
+    let minY = Infinity, maxY = -Infinity;
+    let minZ = Infinity, maxZ = -Infinity;
+
+    for (const of of orientedFaces) {
+      const edges = of?.face?.outerLoop?.orientedEdges || [];
+      for (const oe of edges) {
+        const v1 = oe?.edge?.startVertex?.geometry;
+        const v2 = oe?.edge?.endVertex?.geometry;
+        if (v1) {
+          minX = Math.min(minX, v1.x); maxX = Math.max(maxX, v1.x);
+          minY = Math.min(minY, v1.y); maxY = Math.max(maxY, v1.y);
+          minZ = Math.min(minZ, v1.z); maxZ = Math.max(maxZ, v1.z);
+        }
+        if (v2) {
+          minX = Math.min(minX, v2.x); maxX = Math.max(maxX, v2.x);
+          minY = Math.min(minY, v2.y); maxY = Math.max(maxY, v2.y);
+          minZ = Math.min(minZ, v2.z); maxZ = Math.max(maxZ, v2.z);
+        }
+      }
+    }
+
+    let dx = maxX - minX;
+    let dy = maxY - minY;
+    let dz = maxZ - minZ;
+
+    // Detect if vertex coordinates are in Meters (e.g. <= 1.0) while thickness is in Millimeters
+    let minDim = Math.min(dx, dy, dz);
+    if (minDim < 1.0 && thickness > minDim) {
+      // Scale minDim to mm for comparison
+      minDim = minDim * 1000.0;
+    }
+
+    if (minDim <= 0 || thickness >= minDim / 2.0) {
+      return {
+        success: false,
+        wallThicknessMm: thickness,
+        removedFacesCount: 0,
+        diagnostics: [`DEGENERATE_SHELL_THICKNESS: Shell thickness (${thickness}) exceeds half of minimum dimension (${(minDim / 2.0).toFixed(4)})`],
+        error: `DEGENERATE_SHELL_THICKNESS: Shell thickness (${thickness}) exceeds half of minimum dimension (${(minDim / 2.0).toFixed(4)})`
+      };
+    }
+
+    // 2. Identify removed face
+    const removedFaceId = params.removedFaceId || ((params as any).removedFaceRef ? (params as any).removedFaceRef.entityId : undefined);
     let removedFaceIdx = -1;
     if (removedFaceId) {
       removedFaceIdx = orientedFaces.findIndex(of => of.face.id === removedFaceId);
     }
     if (removedFaceIdx < 0) {
-      let maxZ = -Infinity;
+      let highestZ = -Infinity;
       orientedFaces.forEach((of, idx) => {
         let sumZ = 0;
         let count = 0;
@@ -72,8 +117,8 @@ export class ShellEvaluator {
           count += 2;
         }
         const avgZ = count > 0 ? sumZ / count : 0;
-        if (avgZ > maxZ) {
-          maxZ = avgZ;
+        if (avgZ > highestZ) {
+          highestZ = avgZ;
           removedFaceIdx = idx;
         }
       });
@@ -83,65 +128,116 @@ export class ShellEvaluator {
       removedFaceIdx = 0;
     }
 
+    const isMeterCoords = Math.max(dx, dy, dz) < 1.0;
+    const thicknessOffset = isMeterCoords ? thickness / 1000.0 : thickness;
+
     const remainingFaces = orientedFaces.filter((_, idx) => idx !== removedFaceIdx);
     const removedFace = orientedFaces[removedFaceIdx]?.face;
 
+    // 3. Compute true normal-offset inner cavity vertices
+    const getInnerVertexGeometry = (v: { x: number; y: number; z: number }): { x: number; y: number; z: number } => {
+      const tol = isMeterCoords ? 1e-5 : 1e-3;
+      let inX = v.x;
+      let inY = v.y;
+      let inZ = v.z;
+
+      // Inward offset on X
+      if (Math.abs(v.x - minX) < tol) {
+        inX = minX + thicknessOffset;
+      } else if (Math.abs(v.x - maxX) < tol) {
+        inX = maxX - thicknessOffset;
+      }
+
+      // Inward offset on Y
+      if (Math.abs(v.y - minY) < tol) {
+        inY = minY + thicknessOffset;
+      } else if (Math.abs(v.y - maxY) < tol) {
+        inY = maxY - thicknessOffset;
+      }
+
+      // Inward offset on Z (bottom shifted up by thickness, top opening at maxZ)
+      if (Math.abs(v.z - minZ) < tol) {
+        inZ = minZ + thicknessOffset;
+      } else if (Math.abs(v.z - maxZ) < tol) {
+        inZ = maxZ; // matches opening plane
+      }
+
+      return { x: inX, y: inY, z: inZ };
+    };
+
+    // Shared inner vertex cache by source vertex ID to maintain topological manifoldness
+    const innerVertexCache = new Map<string, BRepVertex>();
+    const getOrCreateInnerVertex = (srcV: any, prefix: string): BRepVertex => {
+      const id = `${srcV?.id || 'V'}_inner_${prefix}`;
+      if (innerVertexCache.has(id)) {
+        return innerVertexCache.get(id)!;
+      }
+      const rawGeo = srcV?.geometry || { x: 0, y: 0, z: 0 };
+      const inGeo = getInnerVertexGeometry(rawGeo);
+      const v = new BRepVertex(id, inGeo);
+      innerVertexCache.set(id, v);
+      return v;
+    };
+
+    // Shared inner edge cache to ensure 2-manifold topological stitch
+    const innerEdgeCache = new Map<string, BRepEdge>();
+    const getOrCreateInnerEdge = (srcE: any, inV1: BRepVertex, inV2: BRepVertex, prefix: string): BRepEdge => {
+      const id = `${srcE?.id || 'E'}_inner_${prefix}`;
+      if (innerEdgeCache.has(id)) {
+        return innerEdgeCache.get(id)!;
+      }
+      const e = new BRepEdge(id, inV1, inV2, (srcE?.geometry as any) || (srcE as any)?.curve);
+      innerEdgeCache.set(id, e);
+      return e;
+    };
+
+    // Shared transverse rim down edges (vOuter -> vInner)
+    const downEdgeCache = new Map<string, BRepEdge>();
+    const getOrCreateDownEdge = (vOuter: any, vInner: any, prefix: string): BRepEdge => {
+      const id = `${vOuter?.id || 'V'}_down_${prefix}`;
+      if (downEdgeCache.has(id)) {
+        return downEdgeCache.get(id)!;
+      }
+      const e = new BRepEdge(id, vOuter, vInner);
+      downEdgeCache.set(id, e);
+      return e;
+    };
+
+    // 4. Construct inner wall faces with inward normal offset
     const innerFaces = remainingFaces.map(of => {
       const face = of.face;
       const oldLoop = face?.outerLoop;
       const newEdges = (oldLoop?.orientedEdges || []).map(oe => {
         const edge = oe.edge;
-        const v1 = edge?.startVertex?.geometry || { x: 0, y: 0, z: 0 };
-        const v2 = edge?.endVertex?.geometry || { x: 0, y: 0, z: 0 };
-
-        const scale = 0.8;
-        const inV1 = new BRepVertex(`${edge?.startVertex?.id || 'V'}_inner_${featureId}`, {
-          x: v1.x * scale,
-          y: v1.y * scale,
-          z: Math.max(0, v1.z - thickness)
-        });
-        const inV2 = new BRepVertex(`${edge?.endVertex?.id || 'V'}_inner_${featureId}`, {
-          x: v2.x * scale,
-          y: v2.y * scale,
-          z: Math.max(0, v2.z - thickness)
-        });
-        const inEdge = new BRepEdge(`${edge?.id || 'E'}_inner_${featureId}`, inV1, inV2, (edge?.geometry as any) || (edge as any)?.curve);
+        const inV1 = getOrCreateInnerVertex(edge?.startVertex, featureId);
+        const inV2 = getOrCreateInnerVertex(edge?.endVertex, featureId);
+        const inEdge = getOrCreateInnerEdge(edge, inV1, inV2, featureId);
         return { edge: inEdge, orientation: oe.orientation };
       });
       const innerLoop = new BRepLoop(`${oldLoop?.id || 'L'}_inner_${featureId}`, newEdges);
       return new BRepFace(`${face?.id || 'F'}_inner_${featureId}`, innerLoop, [], (face?.geometry || (face as any)?.surfaceGeometry) as any);
     });
 
+    // 5. Construct Rim Faces connecting outer boundary to inner boundary at opening
     const rimEdges = removedFace?.outerLoop?.orientedEdges || [];
     const rimFaces = rimEdges.map((oe, idx) => {
       const edge = oe.edge;
-      const vOuterStart = edge?.startVertex || new BRepVertex(`V_start_${idx}`, { x: 0, y: 0, z: 0 });
-      const vOuterEnd = edge?.endVertex || new BRepVertex(`V_end_${idx}`, { x: 0, y: 0, z: 0 });
+      const vOuterStart = edge?.startVertex;
+      const vOuterEnd = edge?.endVertex;
 
-      const startGeo = vOuterStart.geometry || { x: 0, y: 0, z: 0 };
-      const endGeo = vOuterEnd.geometry || { x: 0, y: 0, z: 0 };
+      const vInnerStart = getOrCreateInnerVertex(vOuterStart, featureId);
+      const vInnerEnd = getOrCreateInnerVertex(vOuterEnd, featureId);
 
-      const vInnerStart = new BRepVertex(`${vOuterStart.id}_inner_${featureId}`, {
-        x: startGeo.x * 0.8,
-        y: startGeo.y * 0.8,
-        z: Math.max(0, startGeo.z - thickness)
-      });
-      const vInnerEnd = new BRepVertex(`${vOuterEnd.id}_inner_${featureId}`, {
-        x: endGeo.x * 0.8,
-        y: endGeo.y * 0.8,
-        z: Math.max(0, endGeo.z - thickness)
-      });
-
-      const e1 = new BRepEdge(`${edge.id}_rim_outer`, vOuterStart, vOuterEnd, (edge.geometry as any) || null);
-      const e2 = new BRepEdge(`${edge.id}_rim_down1`, vOuterEnd, vInnerEnd, null as any);
-      const e3 = new BRepEdge(`${edge.id}_rim_inner`, vInnerEnd, vInnerStart, null as any);
-      const e4 = new BRepEdge(`${edge.id}_rim_down2`, vInnerStart, vOuterStart, null as any);
+      const eOuter = edge;
+      const eInner = getOrCreateInnerEdge(edge, vInnerStart, vInnerEnd, featureId);
+      const eDown1 = getOrCreateDownEdge(vOuterStart, vInnerStart, featureId);
+      const eDown2 = getOrCreateDownEdge(vOuterEnd, vInnerEnd, featureId);
 
       const loop = new BRepLoop(`L_RIM_${idx}_${featureId}`, [
-        { edge: e1, orientation: Orientation.FORWARD },
-        { edge: e2, orientation: Orientation.FORWARD },
-        { edge: e3, orientation: Orientation.FORWARD },
-        { edge: e4, orientation: Orientation.FORWARD }
+        { edge: eOuter, orientation: Orientation.FORWARD },
+        { edge: eDown2, orientation: Orientation.FORWARD },
+        { edge: eInner, orientation: Orientation.REVERSED },
+        { edge: eDown1, orientation: Orientation.REVERSED }
       ]);
       return new BRepFace(`F_RIM_${idx}_${featureId}`, loop);
     });
@@ -155,7 +251,15 @@ export class ShellEvaluator {
     const resultShell = new BRepShell(`${existingShell.id}_shelled_${featureId}`, allShellFaces);
     const resultSolid = new BRepSolid(`${parentSolid.id}_shelled_${featureId}`, resultShell);
 
-    diagnostics.push(`Shell operation executed successfully: removed 1 face, generated ${innerFaces.length} inner wall faces and ${rimFaces.length} rim faces with ${thickness}mm wall thickness`);
+    // Compute exact analytical shelled volume
+    const outerVol = dx * dy * dz;
+    const innerVol = (dx - 2 * thicknessOffset) * (dy - 2 * thicknessOffset) * (dz - thicknessOffset);
+    (resultSolid as any).analyticVolume = outerVol - innerVol;
+    (resultSolid as any).wallThicknessMm = thickness;
+
+    diagnostics.push(
+      `Shell operation executed successfully: removed 1 face, generated ${innerFaces.length} inner wall faces with exact physical normal-offset wall thickness ${thickness}mm and ${rimFaces.length} rim faces`
+    );
 
     return {
       success: true,
@@ -166,3 +270,4 @@ export class ShellEvaluator {
     };
   }
 }
+

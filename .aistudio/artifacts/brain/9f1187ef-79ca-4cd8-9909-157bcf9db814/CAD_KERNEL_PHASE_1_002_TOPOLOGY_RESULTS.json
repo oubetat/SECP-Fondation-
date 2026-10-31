@@ -1,0 +1,84 @@
+{
+  "campaignId": "SECP-CAD-KERNEL-PHASE-1-002",
+  "auditType": "TOPOLOGICAL_MANIFOLDNESS_AND_CONTINUITY_AUDIT",
+  "revisionIdentity": "REVISION_IDENTITY_UNAVAILABLE",
+  "timestamp": "2026-10-30T07:52:45Z",
+  "topologicalEntities": [
+    {
+      "shape": "Sphere (R = 2.5m)",
+      "faceCount": 288,
+      "vertexCount": 266,
+      "edgeCount": 552,
+      "eulerCharacteristic": 2,
+      "genus": 0,
+      "boundarySeamsClosed": true,
+      "normalOrientationConsistent": true,
+      "isManifold2Shell": true,
+      "verdict": "VERIFIED_MANIFOLD"
+    },
+    {
+      "shape": "Torus (R = 5.0m, r = 1.5m)",
+      "faceCount": 384,
+      "vertexCount": 384,
+      "edgeCount": 768,
+      "eulerCharacteristic": 0,
+      "genus": 1,
+      "boundarySeamsClosed": true,
+      "normalOrientationConsistent": true,
+      "isManifold2Shell": true,
+      "verdict": "VERIFIED_MANIFOLD"
+    },
+    {
+      "shape": "Chamfer Output Solid (from 10x10x10 Box)",
+      "faceCount": 8,
+      "faceIds": [
+        "ch1_chamfer_face_top",
+        "ch1_chamfer_face_bevel_east",
+        "box-face-bot",
+        "box-face-top",
+        "box-face-side-0",
+        "box-face-side-1",
+        "box-face-side-2",
+        "box-face-side-3"
+      ],
+      "duplicateFaces": ["ch1_chamfer_face_top", "box-face-top"],
+      "missingBevelFaces": ["bevel_north", "bevel_west", "bevel_south"],
+      "untrimmedFaces": ["box-face-side-0", "box-face-side-1", "box-face-side-2", "box-face-side-3"],
+      "boundarySeamsClosed": false,
+      "isManifold2Shell": false,
+      "verdict": "FAILED_TOPOLOGY_NON_MANIFOLD"
+    },
+    {
+      "shape": "Fillet Output Solid (from 10x10x10 Box)",
+      "faceCount": 8,
+      "faceIds": [
+        "f1_fillet_face_top",
+        "f1_fillet_face_blend_east",
+        "box-face-bot",
+        "box-face-top",
+        "box-face-side-0",
+        "box-face-side-1",
+        "box-face-side-2",
+        "box-face-side-3"
+      ],
+      "duplicateFaces": ["f1_fillet_face_top", "box-face-top"],
+      "missingBlendFaces": ["blend_north", "blend_west", "blend_south"],
+      "untrimmedFaces": ["box-face-side-0", "box-face-side-1", "box-face-side-2", "box-face-side-3"],
+      "boundarySeamsClosed": false,
+      "isManifold2Shell": false,
+      "verdict": "FAILED_TOPOLOGY_NON_MANIFOLD"
+    },
+    {
+      "shape": "Shell Output Solid (20x20x10, t = 2.0mm)",
+      "faceCount": 14,
+      "outerFacesCount": 5,
+      "innerFacesCount": 5,
+      "rimFacesCount": 4,
+      "boundarySeamsClosed": true,
+      "innerFaceOrientation": "REVERSED",
+      "rimFaceOrientation": "FORWARD",
+      "isManifold2Shell": true,
+      "verdict": "VERIFIED_MANIFOLD_AXIS_ALIGNED_ONLY"
+    }
+  ]
+}

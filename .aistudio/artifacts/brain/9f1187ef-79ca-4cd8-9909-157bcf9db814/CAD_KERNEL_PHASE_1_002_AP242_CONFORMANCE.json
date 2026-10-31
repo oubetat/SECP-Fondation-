@@ -1,0 +1,46 @@
+{
+  "campaignId": "SECP-CAD-KERNEL-PHASE-1-002",
+  "auditType": "STEP_AP242_CONFORMANCE_AND_SCHEMA_AUDIT",
+  "revisionIdentity": "REVISION_IDENTITY_UNAVAILABLE",
+  "timestamp": "2026-10-30T07:53:15Z",
+  "iso10303_21_Structure": {
+    "headerSectionPresent": true,
+    "fileDescriptionPresent": true,
+    "fileNamePresent": true,
+    "fileSchemaDeclared": "AP242_MANAGED_MODEL_BASED_3D_ENGINEERING_MIM_LF { 1 0 10303 242 1 1 1 }",
+    "dataSectionPresent": true,
+    "endsecPresent": true,
+    "endIso10303_21Present": true,
+    "syntaxVerdict": "COMPLIANT_ENVELOPE"
+  },
+  "entityCoverage": [
+    { "entity": "MANIFOLD_SOLID_BREP", "emitted": true, "parsed": true },
+    { "entity": "CLOSED_SHELL", "emitted": true, "parsed": true },
+    { "entity": "ADVANCED_FACE", "emitted": true, "parsed": true },
+    { "entity": "EDGE_CURVE", "emitted": true, "parsed": true },
+    { "entity": "VERTEX_POINT", "emitted": true, "parsed": true },
+    { "entity": "CARTESIAN_POINT", "emitted": true, "parsed": true },
+    { "entity": "DIMENSIONAL_CHARACTERISTIC_REPRESENTATION", "emitted": true, "parsed": true },
+    { "entity": "GEOMETRIC_TOLERANCE_WITH_DATUM_REFERENCE", "emitted": true, "parsed": true }
+  ],
+  "adversarialChallengeFindings": [
+    {
+      "test": "Pure STEP Part 21 Import (comment metadata removed)",
+      "resultSolidsCount": 0,
+      "resultDimensionsCount": 0,
+      "finding": "STEPAP242Translator.importFromStepPart21 strictly relies on the embedded /* SECP_AP242_SEMANTIC_METADATA: <base64> */ comment to reconstruct solids and dimensions. When stripped of this comment, it only parses metadata and leaves solids and dimensions empty.",
+      "severity": "CRITICAL_INTEROPERABILITY_GAP"
+    },
+    {
+      "test": "Adversarial Corrupted Stream Interception (Fixture F)",
+      "status": "PASSED",
+      "finding": "Correctly rejects NaN, UNKNOWN_LEGACY_SCHEMA, and corrupted tokens with typed fail-closed exception."
+    },
+    {
+      "test": "Truncated Stream Interception",
+      "status": "PASSED",
+      "finding": "Correctly rejects incomplete STEP streams missing END-ISO-10303-21 guard."
+    }
+  ],
+  "verdict": "PARTIALLY_CONFORMANT_WITH_METADATA_DEPENDENCY"
+}

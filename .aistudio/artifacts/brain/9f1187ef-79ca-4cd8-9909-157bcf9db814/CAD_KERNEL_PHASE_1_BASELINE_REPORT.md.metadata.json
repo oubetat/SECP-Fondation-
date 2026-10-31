@@ -1,0 +1,5 @@
+{
+  "summary":  "Baseline engineering report for SECP CAD Kernel Phase 1 capability restoration campaign. Documents initial gap state across analytic primitives, fillet/chamfer topology mutation, normal-offset shell evaluation, STEP AP242 Part 21 physical serialization, and rational NURBS evaluation.",
+  "updatedAt":  "2026-10-30T07:42:50.283042509Z",
+  "userFacing":  true
+}

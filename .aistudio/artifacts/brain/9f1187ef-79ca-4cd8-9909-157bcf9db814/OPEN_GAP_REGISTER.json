@@ -1,0 +1,18 @@
+{
+  "audit": "OPEN_GAP_REGISTER",
+  "timestamp": "2026-10-30T02:40:00Z",
+  "openGaps": [
+    {
+      "gapId": "GAP-01",
+      "description": "High-order NURBS G2 curvature continuity requires advanced analytical oracle extension.",
+      "severity": "LOW",
+      "status": "DECLARED_LIMITATION"
+    },
+    {
+      "gapId": "GAP-02",
+      "description": "CFD solver convergence requires physical calibration beyond iteration limits.",
+      "severity": "MEDIUM",
+      "status": "DECLARED_LIMITATION"
+    }
+  ]
+}

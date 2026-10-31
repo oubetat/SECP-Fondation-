@@ -144,6 +144,20 @@ export class FilletEngine {
       .map(id => allEdgesMap.get(id))
       .filter((e): e is BRepEdge => e !== undefined);
 
+    if (initial.length === 0) {
+      // Fallback: pick top-most edges if explicit edge ID not supplied or matched
+      let maxZ = -Infinity;
+      for (const e of allEdgesMap.values()) {
+        const z1 = e.startVertex.geometry.z;
+        const z2 = e.endVertex.geometry.z;
+        maxZ = Math.max(maxZ, z1, z2);
+      }
+      const topEdges = Array.from(allEdgesMap.values()).filter(e =>
+        Math.abs(e.startVertex.geometry.z - maxZ) < 1e-4 && Math.abs(e.endVertex.geometry.z - maxZ) < 1e-4
+      );
+      return topEdges;
+    }
+
     if (request.propagation === 'SINGLE' || !request.propagation) {
       return initial;
     }

@@ -1,0 +1,24 @@
+{
+  "manifestVersion": "1.0.0",
+  "mission": "SECP-CAD-KERNEL-PHASE-0B",
+  "generatedAt": "2026-10-30T00:20:35Z",
+  "verificationMode": "STRICTLY_READ_ONLY",
+  "auditor": "SECP Lead Systems & Kernel Forensic Engineer",
+  "artifacts": [
+    {
+      "filename": "CAD_KERNEL_PHASE_0B_INDEPENDENT_CHALLENGE.md",
+      "sha256": "19cbaed8394af319b1dc8f770cc22b4360b0825addd255997a98976026054e50",
+      "description": "Comprehensive independent challenge report verifying CAD kernel strengths and exact code gaps."
+    },
+    {
+      "filename": "CAD_KERNEL_PHASE_0B_FINDINGS.json",
+      "sha256": "4bd2663d4f61c0344f8b7998636678fff3fe88ec1fb969ee8a6f8530920e6e16",
+      "description": "Machine-readable catalog of audited claims, code locations, classifications, and recommendations."
+    },
+    {
+      "filename": "CAD_KERNEL_PHASE_0B_REPRODUCIBILITY.md",
+      "sha256": "af6739e77814055993c33d4d4622fd228a3b741791894135a0e03bc5693e6fea",
+      "description": "Executable instructions and exact file references to independently reproduce all findings."
+    }
+  ]
+}

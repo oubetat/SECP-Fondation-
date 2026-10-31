@@ -1,0 +1,4 @@
+{
+  "summary":  "CROSS_DOMAIN_DEPENDENCY_GRAPH.json specifying cross-domain dependencies, propagation paths, and stale result triggers across PCB, Electrical, Harness, Multidomain, FEM, and CFD.",
+  "updatedAt":  "2026-10-31T08:06:30.863621029Z"
+}

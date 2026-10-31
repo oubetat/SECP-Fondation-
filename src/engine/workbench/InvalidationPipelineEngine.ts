@@ -252,11 +252,36 @@ export class InvalidationPipelineEngine {
       timestamp: new Date().toISOString(),
     };
 
+    // Step 10: Propagate Invalidation to Domain Bindings (PCB, Electrical, FEM, CFD)
+    this.propagateDomainInvalidation(doc, newRev);
+
     return {
       updatedDoc: doc,
       renderData: newRenderData,
       report,
     };
+  }
+
+  /**
+   * Propagates STALE status to all domain bindings associated with the document.
+   */
+  private propagateDomainInvalidation(doc: EngineeringDocument, newRev: number): void {
+    if (!doc.derived) return;
+
+    // Simulate domain binding invalidation
+    const domains: string[] = ['PCB', 'ELECTRICAL', 'FEM', 'CFD', 'WIRING_HARNESS'];
+    domains.forEach(domain => {
+      // In a real implementation, we would search for active solver bindings
+      // and update their status. For now, we record this in the audit log.
+      (doc as any)._domainBindingAudit = (doc as any)._domainBindingAudit || [];
+      (doc as any)._domainBindingAudit.push({
+        domain,
+        revision: newRev,
+        status: 'STALE',
+        reason: 'Canonical design mutation triggered automatic domain invalidation.',
+        timestamp: new Date().toISOString()
+      });
+    });
   }
 
   /**

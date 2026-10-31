@@ -1,0 +1,60 @@
+{
+  "programId": "SECP-ENGINEERING-TRUTH-INTEGRATION-003",
+  "adjudicationDate": "2026-10-31T08:14:00Z",
+  "domainContractAudit": {
+    "PCB": {
+      "contractName": "PcbToCoreBinding",
+      "identityConsistency": "CONFIRMED_ALIGNED_WITH_ENGINEERING_OBJECT_OS",
+      "revisionAuthority": "RevisionEngine.computeRevisionHash",
+      "inputDigestSemantics": "SHA256(boardOutline + placements + traces + vias + footprintLibrary)",
+      "executionAuthority": "PcbVerificationService / SimulationAuthorityInternal",
+      "evidenceLineage": "EvidenceBus.registerEnvelope(PCB_EVIDENCE)",
+      "zeroParallelAuthorityCheck": "PASSED"
+    },
+    "ELECTRICAL": {
+      "contractName": "ElectricalToCoreBinding",
+      "identityConsistency": "CONFIRMED_ALIGNED_WITH_ENGINEERING_OBJECT_OS",
+      "revisionAuthority": "RevisionEngine.computeRevisionHash",
+      "inputDigestSemantics": "SHA256(nodalNets + branchConnections + componentParameters)",
+      "executionAuthority": "ElectricalWorkbenchEngine / NodalCircuitSolver",
+      "evidenceLineage": "EvidenceBus.registerEnvelope(ELECTRICAL_EVIDENCE)",
+      "zeroParallelAuthorityCheck": "PASSED"
+    },
+    "WIRING_HARNESS": {
+      "contractName": "HarnessToCoreBinding",
+      "identityConsistency": "CONFIRMED_ALIGNED_WITH_ENGINEERING_OBJECT_OS",
+      "revisionAuthority": "RevisionEngine.computeRevisionHash",
+      "inputDigestSemantics": "SHA256(connectors + terminals + wires + waypoints + BRepTopologyIDs)",
+      "executionAuthority": "WiringHarnessGeometryKernel / ElectricalHarnessIntegrator",
+      "evidenceLineage": "EvidenceBus.registerEnvelope(HARNESS_EVIDENCE)",
+      "zeroParallelAuthorityCheck": "PASSED"
+    },
+    "MULTIDOMAIN": {
+      "contractName": "MultidomainToCoreBinding",
+      "identityConsistency": "CONFIRMED_ALIGNED_WITH_ENGINEERING_OBJECT_OS",
+      "revisionAuthority": "RevisionEngine.computeRevisionHash",
+      "inputDigestSemantics": "SHA256(pcbDigest + harnessDigest + mechDigest + couplingOptions)",
+      "executionAuthority": "MultidomainPcbIntegrationEngine / SimulationAuthorityInternal",
+      "evidenceLineage": "EvidenceBus.registerEnvelope(MULTIDOMAIN_EVIDENCE)",
+      "zeroParallelAuthorityCheck": "PASSED"
+    },
+    "FEM": {
+      "contractName": "FemToCoreBinding",
+      "identityConsistency": "CONFIRMED_ALIGNED_WITH_ENGINEERING_OBJECT_OS",
+      "revisionAuthority": "RevisionEngine.computeRevisionHash",
+      "inputDigestSemantics": "SHA256(femMeshNodes + femMeshElements + materials + boundaryConditions)",
+      "executionAuthority": "SimulationAuthorityInternal + FEMCore",
+      "evidenceLineage": "SimulationAuthorityInternal.sealEnvelope(FEM_RESULT_EVIDENCE)",
+      "zeroParallelAuthorityCheck": "PASSED"
+    },
+    "CFD": {
+      "contractName": "CfdToCoreBinding",
+      "identityConsistency": "CONFIRMED_ALIGNED_WITH_ENGINEERING_OBJECT_OS",
+      "revisionAuthority": "RevisionEngine.computeRevisionHash",
+      "inputDigestSemantics": "SHA256(fvmMeshCells + fvmMeshFaces + fluidProperties + boundarySpecs)",
+      "executionAuthority": "SimulationAuthorityInternal + Fvm3DNavierStokesSolver",
+      "evidenceLineage": "SimulationAuthorityInternal.sealEnvelope(CFD_RESULT_EVIDENCE)",
+      "zeroParallelAuthorityCheck": "PASSED"
+    }
+  }
+}

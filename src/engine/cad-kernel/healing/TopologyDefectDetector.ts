@@ -4,7 +4,7 @@
  */
 
 import {
-  Solid, Shell, Face, Loop, Edge, Vertex, OrientedEdge, OrientedFace, TopoShapeEnum
+  Solid, Shell, Face, Loop, Edge, Vertex, OrientedEdge, OrientedFace, TopoShapeEnum, Orientation
 } from '../topology/TopologyContracts';
 import { HealingDefect } from './HealingTypes';
 import { HealingDiagnostics } from './HealingDiagnostics';
@@ -40,8 +40,8 @@ export class TopologyDefectDetector {
       this.detectFaceDefects(shape as Face, defects, model);
     }
 
-    if (defects.length === 0) {
-      // console.log(`[DEBUG] No defects detected for shape ${shape.id} of type ${shape.shapeType}`);
+    if (defects.length > 0) {
+      // Defects detected - processing internal register
     }
 
     return defects;
@@ -125,6 +125,45 @@ export class TopologyDefectDetector {
 
     if (freeEdgeCount > 0) {
       defects.push(HealingDiagnostics.openShell(shell.id, freeEdgeCount));
+    }
+
+    this.detectOrientationDefects(shell, edgeUsage, defects);
+  }
+
+  private static detectOrientationDefects(
+    shell: Shell,
+    edgeUsage: Map<string, { edge: Edge; faces: string[] }>,
+    defects: HealingDefect[]
+  ): void {
+    // For a manifold closed shell, each edge must be used twice in opposite directions.
+    // If an edge is used twice in the SAME direction by two faces, one face is reversed.
+    const orientedUsage = new Map<string, { faceId: string; orientation: number }[]>();
+
+    for (const of of shell.orientedFaces) {
+      if (!of.face.outerLoop) continue;
+      const faceOrientation = (of.orientation === Orientation.REVERSED || of.orientation === -1) ? -1 : 1;
+      for (const oe of of.face.outerLoop.orientedEdges) {
+        const edgeOrientation = (oe.orientation === Orientation.REVERSED || oe.orientation === -1) ? -1 : 1;
+        const key = oe.edge.id;
+        if (!orientedUsage.has(key)) orientedUsage.set(key, []);
+        orientedUsage.get(key)!.push({ faceId: of.face.id, orientation: faceOrientation * edgeOrientation });
+      }
+    }
+
+    for (const [eId, usages] of orientedUsage.entries()) {
+      if (usages.length === 2) {
+        if (usages[0].orientation === usages[1].orientation) {
+          defects.push(
+            HealingDiagnostics.createDefect(
+              'FACE_ORIENTATION_CONFLICT',
+              'WARNING',
+              [usages[0].faceId, usages[1].faceId],
+              `Edge ${eId} is used with the same orientation by two adjacent faces. Shell normal field is inconsistent.`,
+              'SAFE'
+            )
+          );
+        }
+      }
     }
   }
 

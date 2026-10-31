@@ -26,6 +26,8 @@ import {
   DEFAULT_ELECTROTHERMAL_OPTIONS,
   ElectrothermalConvergenceOptions
 } from './ElectrothermalCouplingContract';
+import { ElectricalToCoreBinding } from '../crossdomain/CanonicalDomainBinding';
+import { CanonicalDomainBindingEngine } from '../crossdomain/CanonicalDomainBindingEngine';
 
 export interface ElectrothermalIterationRecord {
   iteration: number;
@@ -96,10 +98,11 @@ export class ElectrothermalSolver {
    * Performs rigorous iterative electrothermal co-simulation with under-relaxation.
    */
   public static solve(
-    baseCircuit: CircuitModel,
+    binding: ElectricalToCoreBinding,
     baseThermalBoard: PcbThermalBoardConfig,
     contract: ElectrothermalCouplingContract
   ): ElectrothermalSolveResult {
+    const baseCircuit = binding.payload;
     const diagnostics: string[] = [];
     const options: ElectrothermalConvergenceOptions = {
       ...DEFAULT_ELECTROTHERMAL_OPTIONS,
@@ -212,11 +215,24 @@ export class ElectrothermalSolver {
       }
 
       // Step B: Solve electrical domain
+      // Wrap current iteration in an authoritative binding for the solver
+      const iterationBinding = CanonicalDomainBindingEngine.createBinding(
+        'ELECTRICAL',
+        binding.designId,
+        `${binding.revisionId}-ITER-${iter}`,
+        currentCircuit,
+        binding.geometryHash,
+        binding.topologyHash,
+        binding.materialHash,
+        binding.environmentHash,
+        binding.physicsHash
+      );
+
       // Use nonlinear solver if diodes are present, otherwise detailed MNA
       const hasDiodes = currentCircuit.components.some(c => c.type === 'DIODE');
       const circuitResult = hasDiodes
-        ? NodalCircuitSolver.solveNonlinearCircuit(currentCircuit)
-        : NodalCircuitSolver.solveDetailed(currentCircuit);
+        ? NodalCircuitSolver.solveNonlinearCircuit(iterationBinding as ElectricalToCoreBinding)
+        : NodalCircuitSolver.solveDetailed(iterationBinding as ElectricalToCoreBinding);
 
       lastCircuitResult = circuitResult;
 

@@ -1,0 +1,66 @@
+{
+  "programId": "SECP-ENGINEERING-TRUTH-INTEGRATION-003",
+  "adjudicationDate": "2026-10-31T08:14:00Z",
+  "invalidationEdges": [
+    {
+      "edgeId": "EDGE-CAD-PCB",
+      "sourceInput": "CAD Mechanical Enclosure B-Rep Geometry",
+      "derivedArtifact": "PCB Board Outline & Standoff Keepout Envelope",
+      "exactTrigger": "Enclosure inner dimension or standoff post location edit",
+      "isMandatory": true,
+      "productionPresenceEvidence": "PcbMechanicalVerifier.verify(model)",
+      "verifyingTest": "src/engine/pcb/tests/PcbMechanicalVerifier.test.ts",
+      "selectiveInvalidationRule": "Invalidates PCB mechanical fit report and CFD enclosure flow domain. Schematic MNA remains CURRENT."
+    },
+    {
+      "edgeId": "EDGE-ELEC-PCB",
+      "sourceInput": "Electrical Schematic Netlist & Pin Connections",
+      "derivedArtifact": "PCB Physical Traces & Via Connectivity",
+      "exactTrigger": "Schematic net topology edit or pin connection change",
+      "isMandatory": true,
+      "productionPresenceEvidence": "PcbSchematicConsistencyVerifier.verify(model, connectivityReport)",
+      "verifyingTest": "src/engine/pcb/tests/PcbSchematicConsistencyVerifier.test.ts",
+      "selectiveInvalidationRule": "Invalidates PCB connectivity report, Multidomain interface mapping, and trace Joule heating."
+    },
+    {
+      "edgeId": "EDGE-ELEC-HARNESS",
+      "sourceInput": "Electrical Connector Pin Assignments & Ampacity",
+      "derivedArtifact": "Wiring Harness Connector Mating & Wire Gauges",
+      "exactTrigger": "Current load or connector pin assignment change",
+      "isMandatory": true,
+      "productionPresenceEvidence": "ElectricalHarnessIntegrator.verifyRoute",
+      "verifyingTest": "src/engine/integration/__tests__/ElectricalHarnessIntegrator.test.ts",
+      "selectiveInvalidationRule": "Invalidates Harness wire ampacity check and Multidomain connector mating verification."
+    },
+    {
+      "edgeId": "EDGE-PCB-MULTIDOMAIN",
+      "sourceInput": "PCB Component Placement & Trace Dimensions",
+      "derivedArtifact": "Electrothermal Thermal Hotspot & Resistance Model",
+      "exactTrigger": "Component centroid move or trace width/layer edit",
+      "isMandatory": true,
+      "productionPresenceEvidence": "MultidomainPcbIntegrationEngine.verifyEcadHarnessInterface",
+      "verifyingTest": "src/engine/crossdomain/__tests__/MultidomainPcbIntegrationEngine.test.ts",
+      "selectiveInvalidationRule": "Invalidates Electrothermal coupling result, PCB deflection FEM loads, and CFD cooling flow fields."
+    },
+    {
+      "edgeId": "EDGE-MULTIDOMAIN-FEM",
+      "sourceInput": "Multidomain Thermal Hotspot Temperatures & Deflection",
+      "derivedArtifact": "Structural FEM Thermal Expansion Load Vector",
+      "exactTrigger": "Electrothermal junction temperature shift",
+      "isMandatory": true,
+      "productionPresenceEvidence": "P1ParametricStressQualificationEngine",
+      "verifyingTest": "src/engine/p1-parametric-stress/__tests__/P1ParametricStressQualificationEngine.test.ts",
+      "selectiveInvalidationRule": "Invalidates FEM displacement vector U and von Mises stress field. Unaffected mechanical clearance remains CURRENT."
+    },
+    {
+      "edgeId": "EDGE-MULTIDOMAIN-CFD",
+      "sourceInput": "Multidomain Boundary Surface Temperature Distribution",
+      "derivedArtifact": "3D CFD Fluid Thermal Boundary Specs",
+      "exactTrigger": "PCB hotspot temperature or enclosure wall thickness change",
+      "isMandatory": true,
+      "productionPresenceEvidence": "CFDAdapter.computeBoundingBox",
+      "verifyingTest": "src/engine/cfd/__tests__/CFDCADPipeline.test.ts",
+      "selectiveInvalidationRule": "Invalidates CFD SIMPLE solver pressure/velocity iterations and convergence monitors."
+    }
+  ]
+}

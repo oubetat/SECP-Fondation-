@@ -1,0 +1,67 @@
+{
+  "campaignId": "SECP-CAD-KERNEL-PHASE-1-001",
+  "kernelVersion": "2.1.0-PHASE-1",
+  "revisionIdentity": "REVISION_IDENTITY_UNAVAILABLE",
+  "standardAuthority": "SECP Canonical Model & Engineering Core",
+  "externalKernelPolicy": "NO_EXTERNAL_KERNEL_DEPENDENCIES_PRESERVED",
+  "generatedTimestamp": "2026-10-30T07:45:00Z",
+  "algorithm": "SHA-256",
+  "artifacts": [
+    {
+      "fileName": "CAD_KERNEL_PHASE_1_BASELINE_REPORT.md",
+      "sha256": "c63ecc0ddc3c2097453b6310211fd05931718ed775ce51da25f87726a474b31b",
+      "description": "Baseline gap audit and initial capability assessment"
+    },
+    {
+      "fileName": "CAD_KERNEL_PHASE_1_CAPABILITY_REGISTER.json",
+      "sha256": "13db4055d04a301c8ee7ac49487e50104a1aa8a2c739702c768296b15b6b2cf7",
+      "description": "Register of all verified and restored native CAD kernel capabilities"
+    },
+    {
+      "fileName": "CAD_KERNEL_PHASE_1_IMPLEMENTATION_REPORT.md",
+      "sha256": "d15d54dc4cd86985c70d8771a046a74cc460a99f8fd2ab048c116517004d0390",
+      "description": "Comprehensive engineering implementation report of restored algorithms"
+    },
+    {
+      "fileName": "CAD_KERNEL_PHASE_1_GAP_REGISTER.json",
+      "sha256": "fe4c4667824790d4b1a9dee4ccf62930bd52f44a5817477cb4ee8efafe197b43",
+      "description": "Gap resolution and status register"
+    },
+    {
+      "fileName": "CAD_KERNEL_PHASE_1_TEST_AND_QUALIFICATION_REPORT.json",
+      "sha256": "1c5844bacb24d67659a7e217aae0408b8e5ae3ee4a6b14c64e7ef938882d3460",
+      "description": "Automated test battery run results and qualification metrics"
+    },
+    {
+      "fileName": "CAD_KERNEL_PHASE_1_GEOMETRIC_ORACLE_RESULTS.json",
+      "sha256": "948120819279f9d8808d79b9ef14a56fdef34d285d7430616d4a0d38eaae36ff",
+      "description": "Analytical vs computed oracle results with relative error verification"
+    },
+    {
+      "fileName": "CAD_KERNEL_PHASE_1_CANONICAL_BINDING_EVIDENCE.json",
+      "sha256": "aeebd59eace865e702e0e41297f0320c74d1e44d24441b76ad6a5ffe4d7622d5",
+      "description": "Canonical path bindings and external kernel dependency audit"
+    },
+    {
+      "fileName": "CAD_KERNEL_PHASE_1_REGRESSION_REPORT.md",
+      "sha256": "6b5dc6ca1bfbf814ba9ec5f13288cba38526e2dec638973e6ee7478ba52df472",
+      "description": "Non-regression report across existing acceptance gates and downstream pipelines"
+    },
+    {
+      "fileName": "CAD_KERNEL_PHASE_1_REPRODUCIBILITY.md",
+      "sha256": "ccf65d9d6cf782e88c6a906a1c60203e9f3648da632e97b6c74bfe427e29272a",
+      "description": "Deterministic reproduction steps and test execution guide"
+    }
+  ],
+  "sourceFilesModified": [
+    "src/engine/cad-kernel/brep/BRepKernel.ts",
+    "src/engine/cad-kernel/geometry/BRepGeometry.ts",
+    "src/engine/cad-kernel/history/FeatureExecution.ts",
+    "src/engine/cad-kernel/evaluators/ShellEvaluator.ts",
+    "src/engine/interop/STEPAP242Translator.ts",
+    "src/engine/nurbs-geometry/RationalSurfaceSynthesisEngine.ts",
+    "src/engine/validation/cad-forensics/batteries/BRepBattery.ts",
+    "src/engine/validation/cad-forensics/batteries/InteropBattery.ts",
+    "src/engine/cad-kernel/__tests__/CADKernelPhase1Qualification.test.ts"
+  ]
+}

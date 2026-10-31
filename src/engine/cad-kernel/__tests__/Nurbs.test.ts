@@ -122,12 +122,16 @@ describe('PATCH-017 — NURBS CORE', () => {
     expect(mid.point.y).toBeCloseTo(5, 10);
   });
 
-  it('L. Surface normal & M. First derivatives (UNPROVEN behavior)', () => {
+  it('L. Surface normal & M. First derivatives (Calculated differential behavior)', () => {
     const n = NurbsDerivatives.evaluateSurfaceNormal(planarSurface, 0.5, 0.5, tol);
-    expect(n.status).toBe('UNPROVEN'); // Correctly asserting unimplemented analytical rule
+    expect(n.status).toBe('OK');
+    expect(n.normal).toBeDefined();
+    expect(n.normal!.z).toBeCloseTo(1, 5);
 
     const cDeriv = NurbsDerivatives.evaluateCurveDerivative(validLine, 0.5, tol);
-    expect(cDeriv.status).toBe('UNPROVEN');
+    expect(cDeriv.status).toBe('OK');
+    expect(cDeriv.derivative).toBeDefined();
+    expect(cDeriv.derivative!.x).toBeCloseTo(10, 3);
   });
 
   it('P. Invalid parameter detection', () => {

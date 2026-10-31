@@ -1,0 +1,5 @@
+{
+  "summary":  "Production path trace from UI/API through FeatureExecutor, Geometry Evaluators, B-Rep Topology, to CAD Document and Evidence persistence. Identifies bypassed and disconnected execution paths.",
+  "updatedAt":  "2026-10-30T07:53:11.527812692Z",
+  "userFacing":  true
+}

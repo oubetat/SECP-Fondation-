@@ -1,0 +1,102 @@
+{
+  "programId": "SECP-ENGINEERING-TRUTH-INTEGRATION-002",
+  "specificationDate": "2026-10-31T08:10:00Z",
+  "contracts": {
+    "PcbToCoreBinding": {
+      "domainId": "PCB",
+      "canonicalEntityIdFormat": "PCB-${designId}",
+      "canonicalRevisionId": "REV-${revisionCode}",
+      "parentRevisionId": "REV-${parentCode}",
+      "geometryTopologyDigest": {
+        "geometryHash": "SHA256(boardOutline + placements + traces + vias)",
+        "topologyHash": "SHA256(schematicNets + pinConnectivity)"
+      },
+      "inputManifestDigest": "SHA256(footprintLibrary + designRules + layerStackup)",
+      "executionAuthorityBoundary": "PcbVerificationService / EngineeringObjectOS",
+      "derivedResultIdentity": "PCB_DRC_REPORT_${canonicalRevisionId}",
+      "evidenceRootAndProvenance": "EvidenceBus.registerEnvelope(PCB_EVIDENCE)",
+      "stalenessInvalidationSemantics": "Component placement shift or trace reroute triggers STALE in Electrical, Multidomain, and CFD",
+      "persistenceAndReplayRequirements": "Deterministic reconstruction via PcbCanonicalModel.placements & traces"
+    },
+    "ElectricalToCoreBinding": {
+      "domainId": "ELECTRICAL",
+      "canonicalEntityIdFormat": "ELEC-${schematicId}",
+      "canonicalRevisionId": "REV-${revisionCode}",
+      "parentRevisionId": "REV-${parentCode}",
+      "geometryTopologyDigest": {
+        "geometryHash": "N/A (Non-geometric schematic layout)",
+        "topologyHash": "SHA256(nodalNets + branchConnections + componentParameters)"
+      },
+      "inputManifestDigest": "SHA256(voltageSources + currentLoads + componentTolerances)",
+      "executionAuthorityBoundary": "ElectricalWorkbenchEngine / NodalCircuitSolver",
+      "derivedResultIdentity": "MNA_SOLVE_RESULT_${canonicalRevisionId}",
+      "evidenceRootAndProvenance": "EvidenceBus.registerEnvelope(ELECTRICAL_EVIDENCE)",
+      "stalenessInvalidationSemantics": "Source voltage or net topology edit triggers STALE in Multidomain and Electrothermal",
+      "persistenceAndReplayRequirements": "Deterministic MNA nodal matrix reconstruction"
+    },
+    "HarnessToCoreBinding": {
+      "domainId": "WIRING_HARNESS",
+      "canonicalEntityIdFormat": "HARNESS-${harnessId}",
+      "canonicalRevisionId": "REV-${revisionCode}",
+      "parentRevisionId": "REV-${parentCode}",
+      "geometryTopologyDigest": {
+        "geometryHash": "SHA256(routeWaypoints + mountingPoints + 3DPositions)",
+        "topologyHash": "SHA256(connectors + terminals + wires + branches + junctions)"
+      },
+      "inputManifestDigest": "SHA256(wireGauges + cableBendRadii + sleeveMaterials)",
+      "executionAuthorityBoundary": "WiringHarnessGeometryKernel / ElectricalHarnessIntegrator",
+      "derivedResultIdentity": "HARNESS_VERIFICATION_${canonicalRevisionId}",
+      "evidenceRootAndProvenance": "EvidenceBus.registerEnvelope(HARNESS_EVIDENCE)",
+      "stalenessInvalidationSemantics": "Enclosure boundary edit or connector move triggers STALE in route waypoints and ampacity",
+      "persistenceAndReplayRequirements": "Replay waypoints and connector pin assignments from WiringHarnessCanonicalModel"
+    },
+    "MultidomainToCoreBinding": {
+      "domainId": "MULTIDOMAIN",
+      "canonicalEntityIdFormat": "MULTIDOMAIN-${assemblyId}",
+      "canonicalRevisionId": "REV-${revisionCode}",
+      "parentRevisionId": "REV-${parentCode}",
+      "geometryTopologyDigest": {
+        "geometryHash": "SHA256(pcbGeometryHash + enclosureGeometryHash + harnessGeometryHash)",
+        "topologyHash": "SHA256(pcbTopologyHash + harnessTopologyHash + interfaceMappings)"
+      },
+      "inputManifestDigest": "SHA256(electrothermalOptions + standoffConstraints + interfacePinMappings)",
+      "executionAuthorityBoundary": "MultidomainPcbIntegrationEngine / EngineeringObjectOS",
+      "derivedResultIdentity": "MULTIDOMAIN_COUPLING_RESULT_${canonicalRevisionId}",
+      "evidenceRootAndProvenance": "EvidenceBus.registerEnvelope(MULTIDOMAIN_EVIDENCE)",
+      "stalenessInvalidationSemantics": "Any constituent domain (PCB, Elec, Harness, Mech) mutation triggers STALE in Multidomain coupling",
+      "persistenceAndReplayRequirements": "Reconstruct coupled electrothermal and MNA solution matrices"
+    },
+    "FemToCoreBinding": {
+      "domainId": "FEM",
+      "canonicalEntityIdFormat": "FEM-${studyId}",
+      "canonicalRevisionId": "REV-${revisionCode}",
+      "parentRevisionId": "REV-${parentCode}",
+      "geometryTopologyDigest": {
+        "geometryHash": "SHA256(sourceCADGeometryHash)",
+        "topologyHash": "SHA256(femMeshNodes + femMeshElements + dofMap)"
+      },
+      "inputManifestDigest": "SHA256(materialProperties + boundaryConditions + loadVectors + solverConfig)",
+      "executionAuthorityBoundary": "SimulationAuthorityInternal + FEMCore",
+      "derivedResultIdentity": "FEM_SOLVE_RESULT_${canonicalRevisionId}",
+      "evidenceRootAndProvenance": "SimulationAuthorityInternal.sealEnvelope(FEM_RESULT_EVIDENCE)",
+      "stalenessInvalidationSemantics": "Upstream CAD geometry shift or thermal load update triggers STALE in displacement and stress fields",
+      "persistenceAndReplayRequirements": "Replay PCG or direct solver execution from FEMMesh and boundary vectors"
+    },
+    "CfdToCoreBinding": {
+      "domainId": "CFD",
+      "canonicalEntityIdFormat": "CFD-${studyId}",
+      "canonicalRevisionId": "REV-${revisionCode}",
+      "parentRevisionId": "REV-${parentCode}",
+      "geometryTopologyDigest": {
+        "geometryHash": "SHA256(cadFluidDomainGeometryHash)",
+        "topologyHash": "SHA256(fvmMeshCells + fvmMeshFaces + boundaryPatches)"
+      },
+      "inputManifestDigest": "SHA256(fluidProperties + turbulenceModel + boundaryConditions + solverConfig3D)",
+      "executionAuthorityBoundary": "SimulationAuthorityInternal + Fvm3DNavierStokesSolver",
+      "derivedResultIdentity": "CFD_SOLUTION_3D_${canonicalRevisionId}",
+      "evidenceRootAndProvenance": "SimulationAuthorityInternal.sealEnvelope(CFD_RESULT_EVIDENCE)",
+      "stalenessInvalidationSemantics": "CAD fluid domain edit or thermal boundary update triggers STALE in velocity and pressure fields",
+      "persistenceAndReplayRequirements": "Replay SIMPLE solver iterations from FvmMesh3D and fluid properties"
+    }
+  }
+}

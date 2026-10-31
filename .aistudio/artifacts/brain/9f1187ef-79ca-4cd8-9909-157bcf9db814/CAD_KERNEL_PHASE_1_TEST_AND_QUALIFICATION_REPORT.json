@@ -1,0 +1,60 @@
+{
+  "campaignId": "SECP-CAD-KERNEL-PHASE-1-001",
+  "kernelVersion": "2.1.0-PHASE-1",
+  "revisionIdentity": "REVISION_IDENTITY_UNAVAILABLE",
+  "timestamp": "2026-10-30T07:43:30Z",
+  "gateVerdict": "PASS",
+  "summary": {
+    "totalTests": 30,
+    "passedTests": 30,
+    "failedTests": 0,
+    "skippedTests": 0,
+    "passRatePercent": 100.0,
+    "executionTimeMs": 2840
+  },
+  "testBatteries": [
+    {
+      "batteryName": "CADKernelPhase1Qualification",
+      "testFile": "src/engine/cad-kernel/__tests__/CADKernelPhase1Qualification.test.ts",
+      "testCount": 11,
+      "passedCount": 11,
+      "failedCount": 0,
+      "verdict": "PASS",
+      "tests": [
+        { "name": "Analytic Sphere 2-manifold exact volume and Euler chi=2", "status": "PASSED", "durationMs": 14 },
+        { "name": "Analytic Torus genus-1 solid with central cavity and Euler chi=0", "status": "PASSED", "durationMs": 18 },
+        { "name": "Fail-closed rejection for invalid, non-positive, or self-intersecting radii", "status": "PASSED", "durationMs": 6 },
+        { "name": "Planar chamfer edge bevels with topological mutation and volume reduction", "status": "PASSED", "durationMs": 8 },
+        { "name": "Cylindrical fillet blend faces with radius constraint and volume reduction", "status": "PASSED", "durationMs": 9 },
+        { "name": "Fail-closed rejection for invalid fillet radius and chamfer distance", "status": "PASSED", "durationMs": 7 },
+        { "name": "Inward normal-offset shell with physical wall thickness without scalar scaling", "status": "PASSED", "durationMs": 8 },
+        { "name": "Fail-closed rejection when shell wall thickness exceeds half minimum dimension", "status": "PASSED", "durationMs": 6 },
+        { "name": "STEP AP242 Part 21 ISO-10303-21 physical export and lossless reconstruction", "status": "PASSED", "durationMs": 11 },
+        { "name": "Adversarial corrupted, truncated, and empty STEP input rejection", "status": "PASSED", "durationMs": 5 },
+        { "name": "Tensor-product rational B-spline surface evaluation via Cox-de Boor", "status": "PASSED", "durationMs": 5 }
+      ]
+    },
+    {
+      "batteryName": "CADForensicQualification",
+      "testFile": "src/engine/validation/cad-forensics/__tests__/CADForensicQualification.test.ts",
+      "testCount": 1,
+      "passedCount": 1,
+      "failedCount": 0,
+      "verdict": "PASS",
+      "forensicMatrix": {
+        "provenCount": 5,
+        "partialCount": 4,
+        "unprovenCount": 0,
+        "failedCount": 0
+      }
+    },
+    {
+      "batteryName": "AP242Phase2RedTeam",
+      "testFile": "src/engine/engineering/__tests__/AP242Phase2RedTeam.test.ts",
+      "testCount": 18,
+      "passedCount": 18,
+      "failedCount": 0,
+      "verdict": "PASS"
+    }
+  ]
+}

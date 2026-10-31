@@ -1,0 +1,51 @@
+{
+  "programId": "SECP-ENGINEERING-TRUTH-INTEGRATION-001",
+  "auditTimestamp": "2026-10-31T08:06:00Z",
+  "canonicalAuthorities": {
+    "IDENTITY_AUTHORITY": {
+      "authorityClass": "EngineeringIdentityFactory / EngineeringIdentityService",
+      "sourceFile": "src/engine/identity/EngineeringIdentityFactory.ts",
+      "canonicalIdFormat": "canonicalEntityId + domainId + canonicalRevisionId",
+      "governance": "EngineeringObjectOS"
+    },
+    "REVISION_AUTHORITY": {
+      "authorityClass": "RevisionEngine / RevisionCanonicalizer",
+      "sourceFile": "src/engine/revision/RevisionEngine.ts",
+      "canonicalFormat": "REV-A, REV-B, ... / SHA-256 revisionHash",
+      "governance": "MasterPLMManager / CanonicalPLMProjectionAdapter"
+    },
+    "GEOMETRY_AUTHORITY": {
+      "authorityClass": "BRepKernel / CADDocument",
+      "sourceFile": "src/engine/cad-kernel/brep/BRepKernel.ts",
+      "canonicalFormat": "BRepTopology + BRepHasher (SHA-256 geometryHash/topologyHash)",
+      "governance": "DirectModelingEngine / BRepMutationGate277"
+    },
+    "INVALIDATION_AUTHORITY": {
+      "authorityClass": "InvalidationPipelineEngine / WorkbenchStateOwnershipEngine",
+      "sourceFile": "src/engine/workbench/InvalidationPipelineEngine.ts",
+      "canonicalSequence": [
+        "CANONICAL_MUTATION",
+        "REVISION_INCREMENT",
+        "BREP_REGENERATION",
+        "MESH_REGENERATION",
+        "DERIVED_STATE_INVALIDATION",
+        "SELECTION_STALE",
+        "RENDER_STALE",
+        "RE_EVALUATION",
+        "CURRENT"
+      ]
+    },
+    "SIMULATION_EXECUTION_AUTHORITY": {
+      "authorityClass": "SimulationAuthorityInternal",
+      "sourceFile": "src/engine/simulation/SimulationAuthorityInternal.ts",
+      "sealSymbol": "SIMULATION_AUTHORITY_SEAL",
+      "verificationMethod": "verifyEnvelopeSeal"
+    },
+    "EVIDENCE_AUTHORITY": {
+      "authorityClass": "EvidenceHasher / EngineeringHashChain / EvidenceBus",
+      "sourceFile": "src/engine/evidence/EngineeringHashChain.ts",
+      "canonicalFormat": "SHA-256 cryptographic chain root",
+      "governance": "ProductionProofEngine / AttestationCanonicalizer"
+    }
+  }
+}

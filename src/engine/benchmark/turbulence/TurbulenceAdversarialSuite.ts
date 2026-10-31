@@ -14,6 +14,7 @@ import { AdversarialTurbulenceTestResult } from './types';
 import { Fvm3DMeshGenerator } from '../../cfd3d/Fvm3DMeshGenerator';
 import { Fvm3DNavierStokesSolver } from '../../cfd3d/Fvm3DNavierStokesSolver';
 import { BoundaryConditionSpec3D, FluidProperties3D, SolverConfig3D } from '../../cfd3d/Fvm3DTypes';
+import { DomainBindingTestUtility } from '../../crossdomain/DomainBindingTestUtility';
 import { TurbulenceQuantitiesAuditor } from './TurbulenceQuantitiesAuditor';
 
 export class TurbulenceAdversarialSuite {
@@ -37,7 +38,8 @@ export class TurbulenceAdversarialSuite {
     try {
       const invalidFluid = { densityKgM3: 1.225, viscosityPaS: -1.81e-5 };
       const bc: BoundaryConditionSpec3D = { inletVelocityMS: { x: 10, y: 0, z: 0 }, outletPressurePa: 0 };
-      Fvm3DNavierStokesSolver.solve(mesh, invalidFluid, bc, baseConfig);
+      const binding1 = DomainBindingTestUtility.createSealedCfdBinding(mesh, invalidFluid);
+      Fvm3DNavierStokesSolver.solve(binding1, baseConfig);
 
       results.push({
         testId: 'ADV-TURB-01',
@@ -73,7 +75,8 @@ export class TurbulenceAdversarialSuite {
       badMesh.quality.hasPositiveVolumes = false;
 
       const bc: BoundaryConditionSpec3D = { inletVelocityMS: { x: 10, y: 0, z: 0 }, outletPressurePa: 0 };
-      const sol = Fvm3DNavierStokesSolver.solve(badMesh, fluid, bc, baseConfig);
+      const binding2 = DomainBindingTestUtility.createSealedCfdBinding(badMesh, fluid);
+      const sol = Fvm3DNavierStokesSolver.solve(binding2, baseConfig);
 
       const isInvalid = !sol.mesh.quality.hasPositiveVolumes || sol.numericalStatus === 'INVALID';
       results.push({
@@ -102,7 +105,8 @@ export class TurbulenceAdversarialSuite {
 
     // Attack 3: Unphysical Initial Turbulence Values (k < 0)
     const bcNormal: BoundaryConditionSpec3D = { inletVelocityMS: { x: 10, y: 0, z: 0 }, outletPressurePa: 0 };
-    const solNormal = Fvm3DNavierStokesSolver.solve(mesh, fluid, bcNormal, baseConfig);
+    const bindingNormal = DomainBindingTestUtility.createSealedCfdBinding(mesh, fluid);
+    const solNormal = Fvm3DNavierStokesSolver.solve(bindingNormal, baseConfig);
 
     const forgedSol3 = JSON.parse(JSON.stringify(solNormal));
     if (forgedSol3.turbulence) {
@@ -130,7 +134,8 @@ export class TurbulenceAdversarialSuite {
       continuityTol: 1e-12
     };
 
-    const solNonConv = Fvm3DNavierStokesSolver.solve(mesh, fluid, bcNormal, nonConvConfig);
+    const bindingNonConv = DomainBindingTestUtility.createSealedCfdBinding(mesh, fluid);
+    const solNonConv = Fvm3DNavierStokesSolver.solve(bindingNonConv, nonConvConfig);
     const isNotConverged = !solNonConv.converged && solNonConv.finalContinuityResidual > 1e-4;
 
     results.push({

@@ -1,0 +1,45 @@
+{
+  "campaign": "SECP-CAD-KERNEL-PHASE-1-003",
+  "timestamp": "2026-10-30T08:29:00Z",
+  "nativeKernelVersion": "SECP-NATIVE-CAD-KERNEL-v1.3",
+  "benchmarkResults": {
+    "shelledSolid": {
+      "manifold": true,
+      "eulerCharacteristic": 2,
+      "boundaryEdgesCount": 0,
+      "facesCount": 11,
+      "volumeSiM3": 0.000020192,
+      "wallThicknessMm": 2.0,
+      "verdict": "FULLY_QUALIFIED"
+    },
+    "filletedSolid": {
+      "manifold": true,
+      "eulerCharacteristic": 2,
+      "boundaryEdgesCount": 0,
+      "blendFacesCreated": 1,
+      "surfaceType": "BRepCylinder",
+      "verdict": "FULLY_QUALIFIED"
+    },
+    "chamferedSolid": {
+      "manifold": true,
+      "eulerCharacteristic": 2,
+      "boundaryEdgesCount": 0,
+      "bevelFacesCreated": 1,
+      "surfaceType": "PlanarSurfaceGeometry",
+      "verdict": "FULLY_QUALIFIED"
+    },
+    "nurbsSurface": {
+      "multiSignatureSupport": true,
+      "derivativeUVerified": true,
+      "derivativeVVerified": true,
+      "verdict": "FULLY_QUALIFIED"
+    },
+    "stepAp242Interop": {
+      "directPart21Parsing": true,
+      "topologyExtraction": "ISO-10303-21",
+      "base64FallbackRequired": false,
+      "verdict": "FULLY_QUALIFIED"
+    }
+  },
+  "overallVerdict": "FULLY_QUALIFIED"
+}

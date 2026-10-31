@@ -5,6 +5,8 @@
  */
 
 import { WiringHarnessCanonicalModel, WireDefinition, TerminalDefinition } from './WiringHarnessCanonicalModel';
+import { HarnessToCoreBinding } from '../crossdomain/CanonicalDomainBinding';
+import { CanonicalDomainBindingEngine } from '../crossdomain/CanonicalDomainBindingEngine';
 
 export interface ElectricalViolation {
   code: string;
@@ -23,7 +25,13 @@ export interface WiringHarnessElectricalResult {
 }
 
 export class WiringHarnessElectricalVerifier {
-  public static verify(model: WiringHarnessCanonicalModel): WiringHarnessElectricalResult {
+  public static verify(binding: HarnessToCoreBinding): WiringHarnessElectricalResult {
+    // 0. GATING: Verify simulation authority seal (Fail-Closed)
+    if (!CanonicalDomainBindingEngine.validateBinding(binding)) {
+      throw new Error(`[AUTHORITY_GATE_REJECTION] Wiring Harness Electrical Verifier execution denied: Invalid or non-authoritative simulation seal.`);
+    }
+
+    const model = binding.payload;
     const violations: ElectricalViolation[] = [];
     let openCircuits = 0;
     let miswirings = 0;

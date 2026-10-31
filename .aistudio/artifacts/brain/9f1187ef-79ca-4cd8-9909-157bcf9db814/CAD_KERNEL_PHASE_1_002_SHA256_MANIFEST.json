@@ -1,0 +1,51 @@
+{
+  "$schema": "https://secp.canonical.org/schemas/cad-sha256-manifest-v1.json",
+  "campaign": "SECP-CAD-KERNEL-PHASE-1-002",
+  "auditTitle": "Independent Geometric Verification & Qualification Challenge",
+  "timestamp": "2026-10-30T07:55:30Z",
+  "revisionIdentity": "REVISION_IDENTITY_UNAVAILABLE",
+  "finalVerdict": "PARTIALLY_QUALIFIED_WITH_DECLARED_LIMITATIONS",
+  "algorithm": "SHA-256",
+  "deliverables": [
+    {
+      "filename": "CAD_KERNEL_PHASE_1_002_INDEPENDENT_AUDIT.md",
+      "sha256": "8904a2acfaafef0bb2b2c7cc01bc0ddb80cbd1d3b33bfdf59b94a2ac9f6bc12e",
+      "description": "Comprehensive independent forensic audit report and final qualification verdict"
+    },
+    {
+      "filename": "CAD_KERNEL_PHASE_1_002_ORACLE_RESULTS.json",
+      "sha256": "c411eadf4cc2bc4a2bad4c5af2aa2948d7f8d45a5a9ad74917ddbdbbbaf04ebe",
+      "description": "Independent geometric oracle benchmark comparing analytical formulas to raw facet divergence"
+    },
+    {
+      "filename": "CAD_KERNEL_PHASE_1_002_TOPOLOGY_RESULTS.json",
+      "sha256": "65f7a5e006254a752689e1ab42782728207637f5963c240ee342d725d89b66f0",
+      "description": "Topological B-Rep validity results including Euler characteristic, face counts, and manifoldness checks"
+    },
+    {
+      "filename": "CAD_KERNEL_PHASE_1_002_AP242_CONFORMANCE.json",
+      "sha256": "afc8d46835b89045ce896f38b74d7a3320f7c31e54a41c52b73dde6f1ca328d7",
+      "description": "STEP AP242 ISO 10303-21 roundtrip conformance and comment coupling investigation"
+    },
+    {
+      "filename": "CAD_KERNEL_PHASE_1_002_PRODUCTION_PATHS.json",
+      "sha256": "f69aad38adc798d5e4149b9e56d81cf5057a1a488d76440d32e4ef0af2bd5628",
+      "description": "Verification of production execution paths from CadContext down to BRepKernel and FEM/CFD solvers"
+    },
+    {
+      "filename": "CAD_KERNEL_PHASE_1_002_MUTATION_RESULTS.json",
+      "sha256": "1866b8b5e23fc203942a0579b936cc76852bd8db49b8d7fc3e7fd6f84fc402d5",
+      "description": "Mutation gate integrity tests and forensic root-cause analysis of EMPTY geometry hashes"
+    },
+    {
+      "filename": "CAD_KERNEL_PHASE_1_002_EVIDENCE_INTEGRITY.json",
+      "sha256": "8f4ea41c69dc9301d44210e8a016ecf9655e0576829e76c886b31ffc75c22916",
+      "description": "Cryptographic evidence integrity verification confirming byte-exact match of all 10 Phase 1 artifacts"
+    },
+    {
+      "filename": "CAD_KERNEL_PHASE_1_002_GAP_REGISTER.json",
+      "sha256": "246f4b28b0aa0387e0371b244101004f0ec7ac65637374b6a29503fd1466e1a7",
+      "description": "Verified implementation and topological gap register detailing defects and remediation scope"
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "campaignId": "SECP-CAD-KERNEL-PHASE-1-002",
+  "auditType": "INDEPENDENT_GEOMETRIC_ORACLE_CHALLENGE",
+  "revisionIdentity": "REVISION_IDENTITY_UNAVAILABLE",
+  "timestamp": "2026-10-30T07:52:00Z",
+  "oracles": [
+    {
+      "testCase": "Analytic Sphere Volume (R = 2.5m, 12x24 facets)",
+      "analyticalExpected": 65.44984694978736,
+      "reportedAnalyticalProperty": 65.44984694978736,
+      "rawDivergenceTheoremVolume": 63.6023806378147,
+      "discretizationDeficitPercent": 2.8227,
+      "radiusInvarianceMaxDeviation": 0.000084,
+      "isManifoldClosedShell": true,
+      "eulerCharacteristic": 2,
+      "verdict": "QUALIFIED_WITH_KNOWN_DISCRETIZATION_DEFICIT"
+    },
+    {
+      "testCase": "Analytic Torus Volume (R = 5.0m, r = 1.5m, 24x16 facets)",
+      "analyticalExpected": 222.06609902451058,
+      "reportedAnalyticalProperty": 222.06609902451058,
+      "rawDivergenceTheoremVolume": 213.93884276918115,
+      "discretizationDeficitPercent": 3.6598,
+      "centralOpeningDistanceMin": 3.5,
+      "isManifoldClosedShell": true,
+      "eulerCharacteristic": 0,
+      "genus": 1,
+      "verdict": "QUALIFIED_WITH_KNOWN_DISCRETIZATION_DEFICIT"
+    },
+    {
+      "testCase": "Normal-Offset Shelled Box (20x20x10, t = 2.0mm)",
+      "analyticalExpected": 1952.0,
+      "reportedAnalyticalProperty": 1952.0,
+      "rawDivergenceTheoremVolume": 4341.333333333333,
+      "discrepancyRatio": 2.224,
+      "measuredNormalDistanceX": 2.0,
+      "measuredNormalDistanceY": 2.0,
+      "measuredNormalDistanceZ": 2.0,
+      "rootCause": "BRepKernel.computeVolume disregards Orientation.REVERSED on inner cavity faces, causing additive rather than subtractive volumetric integration",
+      "verdict": "PARTIALLY_QUALIFIED_INTEGRATION_SIGN_DEFECT"
+    },
+    {
+      "testCase": "Edge Chamfer Bevel Volume (10x10x10 Box, d = 1.5mm)",
+      "analyticalExpected": 968.5,
+      "reportedAnalyticalProperty": 968.5,
+      "actualBevelFacesInShell": 1,
+      "expectedBevelFaces": 4,
+      "duplicateFacesPresent": true,
+      "untrimmedSideFaces": true,
+      "isManifoldClosedShell": false,
+      "verdict": "FAILED_TOPOLOGICAL_CORRECTNESS"
+    },
+    {
+      "testCase": "Edge Fillet Blend Volume (10x10x10 Box, r = 2.0mm)",
+      "analyticalExpected": 979.398223686155,
+      "reportedAnalyticalProperty": 979.398223686155,
+      "actualBlendFacesInShell": 1,
+      "expectedBlendFaces": 4,
+      "duplicateFacesPresent": true,
+      "untrimmedSideFaces": true,
+      "isManifoldClosedShell": false,
+      "verdict": "FAILED_TOPOLOGICAL_CORRECTNESS"
+    },
+    {
+      "testCase": "Rational NURBS Surface Evaluation (Bilinear 1x1 Patch)",
+      "targetUV": { "u": 0.5, "v": 0.5 },
+      "expectedCoordinates": { "x": 5.0, "y": 5.0, "z": 5.0 },
+      "evaluatedCoordinates": { "x": 5.0, "y": 5.0, "z": 5.0 },
+      "algorithm": "Piegl & Tiller Algorithm A4.3",
+      "verdict": "QUALIFIED_MATHEMATICALLY"
+    }
+  ]
+}

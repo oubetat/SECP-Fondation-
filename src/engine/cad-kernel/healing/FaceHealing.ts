@@ -54,7 +54,8 @@ export class FaceHealing {
     if (shape.shapeType === 'SOLID' && shape.outerShell) {
       for (const of of shape.outerShell.orientedFaces || []) {
         if (of.face && of.face.id === faceId) {
-          of.orientation = of.orientation === 'FORWARD' ? 'REVERSED' : 'FORWARD';
+          const isForward = of.orientation === 'FORWARD' || of.orientation === 1;
+          of.orientation = isForward ? 'REVERSED' : 'FORWARD';
           return true;
         }
       }

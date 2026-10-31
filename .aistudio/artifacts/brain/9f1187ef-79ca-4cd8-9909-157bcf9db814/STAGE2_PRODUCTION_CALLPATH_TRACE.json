@@ -1,0 +1,90 @@
+{
+  "programId": "SECP-ENGINEERING-TRUTH-INTEGRATION-003",
+  "adjudicationDate": "2026-10-31T08:14:00Z",
+  "callPathTraces": [
+    {
+      "id": "TD-001",
+      "domain": "PCB",
+      "entryPoint": "PcbVerificationService.verifyAndAttest(model, customRuleset, registerInLedger)",
+      "sourceFile": "src/engine/pcb/PcbVerificationService.ts",
+      "lineRange": "84-94",
+      "caller": "PcbEngine.runComprehensiveVerification / UI PCB Workbench",
+      "authoritativeInput": "PcbCanonicalModel",
+      "revisionSource": "model.revisionId || 'REV-2.0.0' (Fallback default)",
+      "validationBoundary": "PcbCanonicalModelValidator.validate(model)",
+      "evidencePath": "EngineeringEvidenceLedger.registerEntry",
+      "discontinuityReason": "Uses fallback default revision string if model.revisionId is omitted and generates non-deterministic runId using Date.now().",
+      "status": "CONFIRMED"
+    },
+    {
+      "id": "TD-002",
+      "domain": "ELECTRICAL",
+      "entryPoint": "NodalCircuitSolver.solveDetailed(model)",
+      "sourceFile": "src/engine/engineeringCore/NodalCircuitSolver.ts",
+      "lineRange": "62-78",
+      "caller": "ElectricalWorkbenchEngine.runMnaSolve / UI Circuit Workbench",
+      "authoritativeInput": "CircuitModel",
+      "revisionSource": "None (CircuitModel lacks revision properties)",
+      "validationBoundary": "CircuitModelValidator (In-memory checks)",
+      "evidencePath": "N/A (Calculates modelHash in-memory without EvidenceBus registration)",
+      "discontinuityReason": "Solves circuit equations on floating CircuitModel objects without checking active schematic revision id in RevisionEngine.",
+      "status": "CONFIRMED"
+    },
+    {
+      "id": "TD-003",
+      "domain": "WIRING_HARNESS",
+      "entryPoint": "WiringHarnessGeometryKernel.calculatePathLengthMm(waypoints)",
+      "sourceFile": "src/engine/wiring-harness/WiringHarnessGeometryKernel.ts",
+      "lineRange": "33-80",
+      "caller": "ElectricalHarnessIntegrator.verifyRoute",
+      "authoritativeInput": "RouteWaypoint[] ({ x, y, z })",
+      "revisionSource": "None (Waypoints are floating numeric vectors)",
+      "validationBoundary": "WiringHarnessCanonicalModelValidator.validate",
+      "evidencePath": "N/A (In-memory geometry calculations)",
+      "discontinuityReason": "Route waypoints are pure 3D floating vectors lacking persistent topological entity IDs referencing Mechanical Enclosure B-Rep geometry.",
+      "status": "CONFIRMED"
+    },
+    {
+      "id": "TD-004",
+      "domain": "MULTIDOMAIN",
+      "entryPoint": "MultidomainPcbIntegrationEngine.verifyEcadHarnessInterface(assembly)",
+      "sourceFile": "src/engine/crossdomain/MultidomainPcbIntegrationEngine.ts",
+      "lineRange": "324-380",
+      "caller": "CrossDomainWorkflowEngine.executeCoupledAnalysis",
+      "authoritativeInput": "MultidomainPcbAssembly",
+      "revisionSource": "In-memory assembly object",
+      "validationBoundary": "Local pin & net parity checks",
+      "evidencePath": "MultidomainPcbHardAcceptanceGate",
+      "discontinuityReason": "Multidomain couplings execute in-memory without registering invalidation listeners in InvalidationPipelineEngine.",
+      "status": "CONFIRMED"
+    },
+    {
+      "id": "TD-005",
+      "domain": "FEM",
+      "entryPoint": "FEMCore.solve(model, options)",
+      "sourceFile": "src/engine/fem/core/FEMCore.ts",
+      "lineRange": "100-130",
+      "caller": "StructuralFemEngine / P1ParametricStressQualificationEngine",
+      "authoritativeInput": "FEMModel",
+      "revisionSource": "model.revisionId (Optional)",
+      "validationBoundary": "FEMMeshValidator / GeometryMaterialValidator",
+      "evidencePath": "FEMEvidenceEngine / GPUFEMEvidenceGenerator",
+      "discontinuityReason": "FEMCore accepts raw FEMModel objects and calculates displacements directly without verifying SimulationAuthorityInternal seal symbol.",
+      "status": "CONFIRMED"
+    },
+    {
+      "id": "TD-006",
+      "domain": "CFD",
+      "entryPoint": "Fvm3DNavierStokesSolver.solve(mesh, fluid, configOrBc, ...)",
+      "sourceFile": "src/engine/cfd3d/Fvm3DNavierStokesSolver.ts",
+      "lineRange": "34-80",
+      "caller": "CfdEngine / CFDCADPipeline / GPUCFDEvidenceGenerator",
+      "authoritativeInput": "FvmMesh3D, FluidProperties3D, BoundaryConditionSpec3D",
+      "revisionSource": "None (FvmMesh3D is a mesh object)",
+      "validationBoundary": "CFDPhysicalSanityChecker / CFDValidationGate250",
+      "evidencePath": "CFDEvidenceGenerator",
+      "discontinuityReason": "Fvm3DNavierStokesSolver solves 3D Navier-Stokes equations without verifying inputManifestHash against canonical CAD B-Rep revision.",
+      "status": "CONFIRMED"
+    }
+  ]
+}

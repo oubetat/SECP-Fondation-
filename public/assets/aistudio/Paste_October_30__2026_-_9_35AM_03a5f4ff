@@ -1,0 +1,1292 @@
+هذه ستكون مرحلة الانتقال من إصلاح النواة واستعادة موثوقيتها إلى توسيع قدراتها الهندسية المتقدمة. لا أريد أن تتحول إلى قائمة أوامر CAD إضافية؛ المطلوب بناء قدرات هندسية أصلية ومتكاملة، لكل منها عقد تنفيذ واضح، وخوارزميات فعلية، واختبارات مستقلة، وبوابة تأهيل لا يمكن تجاوزها.
+
+سأفصل بين ثلاثة أمور:
+
+* امتلاك القدرة: وجود تنفيذ هندسي حقيقي داخل النواة.
+
+* صحة القدرة: إثبات صحة نتائجها رياضيًا وطوبولوجيًا.
+
+* تأهيل القدرة: إثبات أنها تعمل ضمن نطاق معلن، وتقاوم الحالات الحدية، ولا تفسد النموذج القانوني.
+
+### المهمة التنفيذية الكبرى
+
+ADVANCED KERNEL EXPANSION PROGRAM
+
+### SECP-CAD-KERNEL-PHASE-2-001
+
+Advanced Native CAD Capabilities Expansion & Independent Qualification Program
+
+برنامج توسيع القدرات المتقدمة للنواة الأصلية وتأهيل كل قدرة هندسيًا بصورة مستقلة.
+
+الهدف الاستراتيجي
+
+تطوير نواة CAD الأصلية في SECP إلى منظومة هندسية متقدمة تدعم النمذجة المباشرة، والأسطح المعقدة، والعمليات الطوبولوجية المتقدمة، والهندسة التكيفية، وإصلاح النماذج، وإدارة تاريخ العمليات، مع إثبات مستقل لصحة كل قدرة قبل إعلان تأهيلها.
+
+### أولًا: شروط الدخول إلى المرحلة
+
+هذه المرحلة تعتمد على نتائج `SECP-CAD-KERNEL-PHASE-1-003`.
+
+قبل التوسع، يجب على وكيل البرمجة:
+
+* قراءة نتائج المعالجة وإعادة التدقيق.
+
+* التأكد من صلاحية B-Rep Validation Authority.
+
+* التأكد من سلامة Fillet وChamfer وShell ضمن نطاقهما المؤهل.
+
+* التحقق من صحة حساب الحجم الموقّع.
+
+* التحقق من مسارات NURBS.
+
+* التحقق من STEP AP242.
+
+* التأكد من ارتباط الهندسة بالنموذج القانوني.
+
+إذا بقيت فجوة حرجة تؤثر في قدرة جديدة، فلا يجوز البناء فوقها. يسجل الاعتماد ويُعالج أولًا.
+
+ممنوع اعتبار نجاح Phase 1-003 تلقائيًا دليلًا على جاهزية جميع قدرات Phase 2.
+
+### ثانيًا: حزم توسيع القدرات المتقدمة
+
+### WP-01 — Advanced Direct Modeling
+
+قدرة أساسية متقدمة
+
+![The Illegal CAD Technique - Direct Modeling](https://images.openai.com/static-rsc-4/ad5all9HNmp80vWe6owum-AmG8uPPRBrul9W3Xni9oEDfK5W45-kAwfl23lBMEPv_Z2wqWr55vpxvA6j_qJYkA4bmPjjiAhQWEScIckrS0LgFk8xR77oljJeLxo-DhI0JH9piJN1nLX_Jwv39noI278n4mGIr1F7sFOqRWCmkKroXEdNUkCFyI7e7fqWqCyu?purpose=fullsize)
+
+![Trim a face — Onshape](https://images.openai.com/static-rsc-4/N_QGvz-BEEYONsnqCLFsMxQ3T6r6fFfzF6e7jZw1P62Tz5yxKXbysspjo4EmDMr7a133YFhjqshYyOPqef8gvbdDKJkzVhr1nmql4xTFbC1nUNc6RMRU_siBzdreSsHtNuso09O6TKlnBR44zUR0s4eF1_jdBk7LJJFwgIZ3n08ode7GVASdeOMa8TZkPytj?purpose=fullsize)
+
+![Tips & Tricks for Working with Imported Models](https://images.openai.com/static-rsc-4/v1fqchGZGmYmDzaJkZjVVxea8fpm36i9sVS2svVvT3GYqw77whmMh3TFpiBS_B6JNFI4x2bvWgSVB5gakGYPkO_pTAptC1CMlVAO7JWeCbKf-4blKoaBEUeKbZHf1AJTgnUhk0COxaeUV3vX0SI5bUjA08nDVEg-ce5YjME3H_Ml9Qi2Zgbik1JkBEWXtRpo?purpose=fullsize)
+
+![How synchronous technology improve cad productivity | JANUS Engineering USA](https://images.openai.com/static-rsc-4/Bei8x7UWFPiMwE-XiWNu1kRrBo-eNxgeu9nPG_FzVYx6RFvlbQpUeH8VYOmIfU0kHZ2BXc6q0xDMecfwSbnpS1s1Tf-oTLpsZl9mbirw83vYcFMWy9h8WJ3V37x1U_4Npm7-A-VKlHdSUfKUeuldbYDFg2euI_aFmZp7QN6awyfRyWqBxU1CLeO_JxxxXH7l?purpose=fullsize)
+
+![Articles](https://images.openai.com/static-rsc-4/KM-B2d-_7WxEJOTtERXssIUko88Fcr-fUcTtFyogxMngMdaVx1gaK5Noco2i1d3wdCf5Hyr6TRvXs_EZUoTu4nLi9Qqy_U9q3bbXUV9gmokPAXtnVT0rb2lVGZWyTRNWmFzvwDMc8wR7dz5DS0lqAVfZanwWdxkKSZ7LQJ-EsEnixhY93Q-GNlMfIRjHvprL?purpose=fullsize)
+
+![Learning IronCAD Lesson 5 - Integrated History Based/Direct Edit
+   Modeling](https://images.openai.com/static-rsc-4/r28lXCuuG9JzJEeZ4GHH8WO-JWCpHaYMy1IUzHUK7_SEXaAc8vf7o5D7-5Qv4bJS9lnqA7XdLuw3iFt3w8R9rBCQjO30aRkClQCRpTmVxdbbQD-3CttSMTdzJ25Yi1hgmAxXI2SWJeTmNI86ZjyTG0kSpKOX5AvlwSiyV0aSwdDIAoBcmcahra4oo6FlXmiZ?purpose=fullsize)
+
+![Extrude-Remove-Offset from Surface to retain wall thickness? — Onshape](https://images.openai.com/static-rsc-4/WjcAaN-8jOoUJWyvKszGp8pEjwVm6-31hA31Xfy8Pf6YKmOrSZ0Mv3PJy_a54NiRjTBKP3lbhk51x4YNzsUGkh6bTVpsSJ5GIZwGgUkEzXj-2QUpTfxYtPmZPTIjwROviL_3JhPK13ZZpKehwr1MVFLQSYKRoMpSChQ11GT5Je-hwt6Y48qZ7u3YjzebaY3N?purpose=fullsize)
+
+![Прямое моделирование: изменение топологии и адаптация скруглений / Хабр](https://images.openai.com/static-rsc-4/iNFTVQ9Fh8y07hM3zHCHUxeChmrOqVvYlXZSfVGU8fLyQa0ufwZRLeAhcxh6WKt02FwigtmUuGvuQWm9iGyaNIVkAxI2lVzmptlmVXFkrgOIOwiA9Obxa4fc7Ai5xkhOMAPOmFAMnsRtTJG3L6qV-OQ1TX9IjTamOrx1-Fj151vRkFhG4T47TNClwMl7BMqt?purpose=fullsize)
+
+![Adjust the edge to other part — Onshape](https://images.openai.com/static-rsc-4/GVMWo2UT5jBPvFFCGZM6BZaAJCDWCT5oefV8fXaw2KWH9QehE--26T4MI59KiWYKO8z468RpskWURdFdvyDVdYdZIBGk2Rb3GZaqAQ2bUQwpaaT4uLU6P4OjwquYLDauiLSanEytFg16DwIc2XeG1tq97hLtu-wGTtXdgRbz_aYeLN1YUmsdCYtPxAXzvUoh?purpose=fullsize)
+
+![Прямое моделирование: изменение топологии и адаптация скруглений](https://images.openai.com/static-rsc-4/2NMSHghzhaEZslh5_iGZvkrFxdwUrtzQRgBp2n_clnL1jFUjNfQ1VmJcyAzovC6Kh1jLaqnp829wDkUkqOS9dokZaOhaMKBDAB5mEc8V7DfQLpweQZHkEoH4ptAgzQV-RWSL5LIOanaSJ2e7W3lv0wDYLjGIU0pvHCenneVdIc5LbV2e1vcGi4FHbOb0mlTT?purpose=fullsize)
+
+![How can I extrude a mesh whose thickness is 0? - Need help? We are here. - Shapr3D Community](https://images.openai.com/static-rsc-4/fsRvsgWoCps2jHgZaitgspdl2lKR5-jNx8FKS1yz-lAa-FmTcDgLpQZt80ecnj1F4HXBQnRNBT9aLfuJFLt7FYrFF0lCEiLABNwWRtzddcIjHPKi25O6I6RGWuWfh3WXkL7W4EHbqKikUC6GdBQYFRcA6OyH7AGTRgGtq_F5ZuxKr-ZvahWE0MsnypdhE0c9?purpose=fullsize)
+
+بناء نظام نمذجة مباشرة حقيقي لا يعتمد على إعادة إنشاء النموذج من الصفر.
+
+القدرات المطلوبة:
+
+* Move Face.
+
+* Offset Face.
+
+* Replace Face.
+
+* Delete Face مع إعادة بناء المنطقة.
+
+* Extend Face.
+
+* Trim Face.
+
+* Rotate Face.
+
+* Translate Face.
+
+* Push/Pull.
+
+* Direct Edge Modification.
+
+* Direct Solid Modification.
+
+التأهيل المستقل:
+
+* الحفاظ على إغلاق المجسم.
+
+* الحفاظ على اتصال الأسطح.
+
+* عدم إنتاج حواف مفتوحة.
+
+* إعادة حساب التقاطعات والحدود.
+
+* التحقق من حجم الجسم قبل وبعد التعديل.
+
+* كشف الحالات غير القابلة للحل.
+
+* إثبات إمكانية التراجع وإعادة التنفيذ.
+
+* حفظ Feature وTopology Lineage.
+
+لا يُقبل تعديل الإحداثيات وحدها وتسميته Direct Modeling.
+
+### WP-02 — Advanced Surface Modeling
+
+قدرة هندسية متقدمة
+
+![Design Stunning 3D Models with xNURBS: A Comprehensive Guide to High-Q](https://images.openai.com/static-rsc-4/9GBrJni_5lLfEvM8MPdghszEn1dBeMnbBX1MIfMfwmOxvfSE7uByBU4KmJ1WlH4Tq1hs1xtPNvKW5oSCnpRcgzPXWGELlS4JFrETMGjlv9u8OEn8BNzVqSygSd9J6Nbfc4TmJSx5zOCnmo2r31Oj_CGWZkry1pYqsc99BbdgY4-2Pgu5zJ2MZPaGTIC1DGu9?purpose=fullsize)
+
+![Surface modeling](https://images.openai.com/static-rsc-4/b0Q_XZWUBx-Ti_dFX85CHx55issh4JFySFLQNac5lb98iin3jOSPH7xTf7yph5yXVGBJvr0dL_E6vPLzBQr67ILsgKOQJNr510NOjVVfgv8G_8AlzYejk_YS--1rL-DUHeuZdeAyGEdgS6Ksteh_gGZD942CosheU0eAID19Dt9GLf9QwLrHFYACgHLnwWsm?purpose=fullsize)
+
+![Is my surface smooth or not? - Rhino for Windows - McNeel Forum](https://images.openai.com/static-rsc-4/Ou_C0ll-ImCJcC5t_TMf1QLjs60zJ9pUTlEbxhmGgp6CM6LRMdqctfDyZSAZd_OBrGFxscOC05y49Ok30qE7tUwsS3eFsKb8lAAFCdaQKmfSf2hCAoYKIT0us0ZfVxaBpqCYllyPlTwmp9BhosKiwUh9Bz4ZF9F_av_MV1XDG4Y6M-4C_odDjIVn0ibqgnll?purpose=fullsize)
+
+![Style: Tooltips on Curve Tangents](https://images.openai.com/static-rsc-4/zrdLadn6LKyoSc7mBxOYkkc9JsBEq1sLdt12qeJYIZc-DU2JjnPvkWgq1EPeSOafikIsABmLFlzH5XAJ8DSno5Iq7nPq94nCGWA_GyKVHBN4EW9iea8dPtwFsgqpwJ-orHXMWgngX0KCLayzI_dzwPXrTkLtt7awwwpkZNnuwSC2rPKbAiGyFOaU3XhsXRrL?purpose=fullsize)
+
+![A Single Loft Profile on Two Different Planes - End Conditions Problems — Onshape](https://images.openai.com/static-rsc-4/oeBj8tCwAEGbAiBCiRDwYpuw0O1XAwYe-5ZqKY01VAZkBc4Z1-POTWsde5O363m6vu29XDJ6uqInwcWsM4SU3NXeznrZsluqgADCkvUluHn0Pig85Knq1C3YQWihQ49uHpccned1cmZl1XBAmlSo5qqygVI8Ucgwf9ZHJUk2AxIpUKQDr0j0AWhqcUFZWw1c?purpose=fullsize)
+
+![G2 Matching of two surfaces - Rhino for Windows - McNeel Forum](https://images.openai.com/static-rsc-4/RiyeX-LjBwRMUkKKx-OuWCf6b-InkFCPcfxldAFeyAjcrsP_YdujV8WMMV82qwaTRZGDQsAQrgE7qQbFW42NZIVMhH1RfixQZSyT5StybL9Ks40XJ9nv5uH66RUVJvRBdhE9uSgYr1nMT99M4m82e8r_NxWe6tsFIRcbhN0szZ9xwwiRtOmOxrhpDYIqrZey?purpose=fullsize)
+
+![Solidworks ppt 2015 | PPTX](https://images.openai.com/static-rsc-4/lzy4SNfY_UvbkAlOW4iwZxYSt513OM6FHTQguCn_8IHO449xLJ40931F6NKmNfp99QRlDsLvHkJ8uHUe9lPV36lTqd-wbccgN9RHKitt1gZQielJ1RQ8q1PFgddm1PETg101P3moiCFTk1GAexieVuSreypsVlwdyVZgAbNgBw7p4WoCfj5US3KE_fJIt6Z4?purpose=fullsize)
+
+![Surface Modeling in CAD Design](https://images.openai.com/static-rsc-4/Ht0xrzCbvjMgpvLzyuJYLI0zJnndaHIEz-fAP6P7qdp7VHK-Bk_SUgCmwWSYX6StxzOoLU4vgE_tmo8PNXEY9BgpGhvdWwAbRF5kXMgevXgwCxRXeE9C-_hkB6-odiiRuzxAV9aPwHKCz_1Jr0A6Jeve1DdN0Jg9T3QGIC7ExtD39K0tswOiCGC4lsVS8PoM?purpose=fullsize)
+
+![rhino汽车建模实例教程，教你BMW-I8犀牛建模方法（下）-优概念](https://images.openai.com/static-rsc-4/D2305viE2meVf9voTs1dKgoFDoZ5Ht0nKGridNI3_Z2tQ-QWhQTRWCB2ZeyS7ACon3wyfLwBFPyAy20t-gupYWwlxfnS1UBAL0OxaH191CCgt2x2gWq7WHe_Gm0LNsqkhcyMhJo0fWSTEBC6D3gqqyT3kiO5QLSB_VLTpGOHdRwkR9C0A8Zg__EQpewziXHy?purpose=fullsize)
+
+![occt_modeling_data(二)——形状的属性_自动量化全局形状属性-CSDN博客](https://images.openai.com/static-rsc-4/eDPcTwGXD2Ya6v3lqaF2SMLdTYyza45J9kqN6wvGKz_YmSthmXa_ugRbF6qhPkSzGUa74-RpKIijDgqLIU-h48S-1WZt83aKGe1PWMLMUYv4tLiPTVpvGpKxRw0LSPRBEswBCFBF4D1DElJHI7txjMXlAmNe55CgjlpLjwhQ6a49-BUNv7t7iWDK7CH6Ia90?purpose=fullsize)
+
+![Siemens Digital Industries Software Community](https://images.openai.com/static-rsc-4/AGB1AyMpBNiN9bGhFivCrMd3mWqxHrFL6bhHrv6Gkl-sKVndiTzErqMLjEpRBomhq97kiu5UI-Hg7pd3IWLNct07imk3WwBm8rJ80DOQ4obrlvUhYuNkufOmdnHsjS0KzfWOVnRqERtFtgErvcLLUqtuCN1k2fueEgh2Qkuztf73yolDp3HlQakEYQv9xJw_?purpose=fullsize)
+
+توسيع منظومة بناء الأسطح الحرة والمعقدة.
+
+القدرات المطلوبة:
+
+* Advanced Loft.
+
+* Multi-Section Loft.
+
+* Sweep Surface.
+
+* Boundary Surface.
+
+* Filling Surface.
+
+* Network Surface.
+
+* Multi-Patch Surface.
+
+* Ruled Surface.
+
+* Revolved Surface.
+
+* Variable-Section Sweep.
+
+* Surface Extension.
+
+* Surface Trimming.
+
+* Surface Joining.
+
+* Surface Healing.
+
+التأهيل:
+
+* دقة تقييم NURBS.
+
+* صحة أوزان Rational NURBS.
+
+* صحة Knot Vectors.
+
+* فحص استمرارية G0 وG1 وG2.
+
+* فحص Curvature Continuity.
+
+* كشف التموجات والانقطاعات.
+
+* التحقق من الحدود المشتركة بين الأسطح.
+
+* اختبار الأسطح متعددة الرقع.
+
+* مقارنة النتائج مع مراجع رياضية مستقلة.
+
+يجب التمييز بين الاستمرارية الموضعية والاستمرارية الهندسية الفعلية بين رقعتين.
+
+### WP-03 — Advanced Boolean & Topological Operations
+
+حساسية طوبولوجية مرتفعة
+
+![4.16 Solid Primitives | Geometry for Modeling and Design | Peachpit](https://images.openai.com/static-rsc-4/ynerw6aQO02loHh_XQ3aO7HxzeMKK2Jj1e1NdLd7BCjjRD_9PLuUqoH6G1fNvN6TI1JbDctvsShbjAIIu5txEEfQYnuKU738E7j6cKGv2JLf_rsBHRj3UNgoAUoQ7EWsnr2YhKPmIEwup1oW-u6wTLDqGTrBbvWQoaCfy7_pWtbmicafR1UpuKtSMZ2toO-4?purpose=fullsize)
+
+![面向错位装配体的自动曲面嵌入算法](https://images.openai.com/static-rsc-4/J45sL09kpT9O8aWD1UlBjw628yyLxERMWkxGs2_h6OF45QmgbGkVfUn-F67h4Ib1q97WR3DmX9RzQfD3Y9WFoym1Tp6mJ80qgPJflySNDYmAZoMaawT2406MB0rIBXTZMlJ-wV3RMx-WTtoMnKsvnm3DdIAccDA-CbUbJ6z5QzS7aWgR-XOelyUVAzKc42aR?purpose=fullsize)
+
+![Геометрическое ядро RGK на форуме компании «Топ Системы»](https://images.openai.com/static-rsc-4/EProrocdvrkNSZ2NWl7Medh6RXNS7nwC2ibPpPDPZYJVq4xi1s-sQkIshcplODJUkYOKIoPDe0ZaD_S6yI0zk_sa4zeCFve_yqGRrrtVuEAP_XBx5pS5ufuM0ZERriDnK3s593Jh00jfelV2ZYuB8f1iL3_pH_7lxikKiVcT-SDQUVneo_frzEjBv2i0hxEM?purpose=fullsize)
+
+![What’s new in Parasolid v 38.0 | Tech Soft 3D](https://images.openai.com/static-rsc-4/g41mzB-z_fLnengtX4dWdimtCV7dMzqnVIHQuZIx6H1cTWGghFaxl8lpdbEYW6nU_3I7kVjtjohhDbOHF-ISMlhl1_48688AWue9NH7qQ3AxrOlPgyYzAcPfk_XyCQNPjHDh62qQ8AdhWLjnfD9mzFSfo5ANEzle2UATkEb6yfFx4rcLfraLYeD_2rpVEgsF?purpose=fullsize)
+
+![Geometry or computational domain creation](https://images.openai.com/static-rsc-4/43DwZo37Vl18EidPg_fdfOyNXPY8tHF3OG_OFlIO767wWQCwfH8wHZq4tyUS0X9vZZ4uFQ_6FfKLRNLjiOyoIMVU1Wig1uw3Yx4d2785TqgrjnT0t-63BDqYDgn8ADOJvaXHkz3fMqJYKECi8rrmG5kmrTAp7OKdE5xcMpCd1tQ52y1yfHv-OHTgeamW0FdO?purpose=fullsize)
+
+![Boolean](https://images.openai.com/static-rsc-4/Gihw1jb2fFaW14CUldKnxawkRHj7tA97yivNFVg7RWIrd1f9RsS-4yFkV8n9j3BSnnQeyp-pxawkx1w0AaLTQ9A815vlf3nAmsiH6DuUhDjwSYJ1fzcH5zEXdcTuKl36-GqM8fUlC7fWiZfyCSHDgTDreYGRSRh5UhvYm9bMr2eMpEcd8nK5L9jvOLWi2hXZ?purpose=fullsize)
+
+![Multi Body Design and Boolean Operations in Part Design | Dassault Systèmes®](https://images.openai.com/static-rsc-4/44ToriN47lABPHlrZghDUOi_VN1dH3q0idTnAmygNMawclDobKf8opmzBTaRWt3LQOpvd6uvWuU31yRA5HUmWoDdf_U8JTDS18XnRK3zg8lwwdg4-9DK_mqSWptTP3EchThI0KrcWs9oMMj0zHqcMYS_0PFRAnWdUDKnrD8EO6MbfeUDOmhQIV2sqtAucPyl?purpose=fullsize)
+
+![How to split surface problems with imprint - Geometry - Coreform Forum](https://images.openai.com/static-rsc-4/vZ5U9teurF280TdAI_N4d39RJ16NzxoZVrCgWM4Lmknp7N0Cf5OgDk3FzaJ28EevDgh9S4AyW_UMo2vYEOjXXIffk4B8nXHMFaBu2hXKKU7S1dBQXF77NoEcLgsVgCXWN-LlvDIQU35wQioat3yOCA3ysUy08QlwksGK6OttwLyNTOWdaXT78abKgWx1OGza?purpose=fullsize)
+
+![How do I work around self-intersecting geometry error for t-spline body when I need geometry to self... - Autodesk Community](https://images.openai.com/static-rsc-4/_PIlcSefxcF4MPgcvk5Mta38cT0--rCZxHHIRIkUbXMD2bPo74hF7Eim3hrQVoiB-3xef4xtCImeQq8QFkG2r16cUM18VT3r0jCK9znjsJ3QkTSc4Ap8f8LcnvOcpxM0av-CJXLq1Yj3QklcPk0fNlXJCUW_KVL6i3NSV93grCj6Au7__-Iy0huTXMA6BRv_?purpose=fullsize)
+
+تطوير عمليات طوبولوجية متقدمة تتحمل الأشكال المعقدة والحالات العددية الصعبة.
+
+القدرات المطلوبة:
+
+* Robust Union.
+
+* Robust Difference.
+
+* Robust Intersection.
+
+* Multi-Body Boolean.
+
+* Split Solid.
+
+* Split Face.
+
+* Imprint.
+
+* Slice.
+
+* Section.
+
+* Multi-Region Reconstruction.
+
+* Connected Component Extraction.
+
+* Topology Healing after Boolean.
+
+التأهيل:
+
+* تقاطعات متعددة.
+
+* أسطح متطابقة.
+
+* تماس حافي وسطحي.
+
+* تقاطعات مماسية.
+
+* أجسام منفصلة.
+
+* أجسام متداخلة بالكامل.
+
+* حالات قرب التسامح.
+
+* عمليات متسلسلة ومتكررة.
+
+* الحفاظ على هوية العناصر وعلاقاتها.
+
+* كشف النتائج المتدهورة أو غير المحددة.
+
+كل عملية يجب أن تثبت صحة جميع الأجسام الناتجة، وليس أول جسم فقط.
+
+### WP-04 — Advanced Feature-Based Modeling
+
+![要素の依存関係6 - C#ATIA](https://images.openai.com/static-rsc-4/lGbAsvpWVCUImRZZYVglDPU3cl7SG_pbUy5jnpc-LXOfjpq9lUVgYG6kCjdOk-OicAxNLrXoKlU9MXbwL1lBlMFypfhZXmZCHxm56lWWd7v_20z5BvVBplvuaK1La5XyU0bC7iK6zjVCIL0wI9GUmK33eUOko9D4vaFk6p1ZlZal6xKInK346X4PEBF4Zx8B?purpose=fullsize)
+
+![Week 9 - Attachment Feature Creation (Ribs & Screw Boss) - Challenge 1](https://images.openai.com/static-rsc-4/5ESSKvjfG1Hgo6VIkM3XLBi5EI_UAthmWuUWT4J3Q3iJO3eAeexV3pJU_4QuAvWBza-iI_gQXj1M-2dkquMKVlvUV7qI4aIcjpNvFncxWF1V7JwtVjdmJHstFh8kszzj5XuHzvWRI4IRJHnfRMwcdEiLmmTOEOW9IzzumAjd9fORfl5WyRerRU7JPCbH2ZXH?purpose=fullsize)
+
+![Trouble  with shell feature at desired thickness of .172" - Autodesk Community](https://images.openai.com/static-rsc-4/Kwq8uZajIxREV30psuqcvzMUFMs77_S1YLLkU6DbDsDnsQd4Z4eEnuMI1Kuocpyvrv6EhoSVTlWxzeofRJWL_nyocT5J5Q_4iIXtHmbqJIOwUPhmTnEk3iKNR2w7IkJ2IGEYXeWjyG2jifw3mlIINThhPRmH6-Hn-YHzG6h6WUUSEeCuucDocRQoqtLKAFoJ?purpose=fullsize)
+
+![Tech Tip: How to Use Sketch Points for Variable Fillets in Onshape](https://images.openai.com/static-rsc-4/NgPSyv85O7ophjDrP1SCNRBrNa2fm_0Vd2cYbJnFg2jq8htglKy8KCUdmm49Hs5QtQk8GAfxKZW5MZQs6_u9_AB-C7se41C42mZp8AppE45wKrDGatGeOOhdF3XkUHKm42n4sRlURCsrRAPdliQruZdcPnlL5dKJCn-NWQAiSF-HOFInYCsFNM08IIfWyGqQ?purpose=fullsize)
+
+![What Is Direct Modeling | Kubotek Kosmos](https://images.openai.com/static-rsc-4/W2hJyPLuohMvAKDVHHhLz3-juxFtTzJSum1XD80I4S-S3XXsYVFny-DHbKtORkidCz9nlRC11AZByMkcvaEnz-COVsk5nJC6TkKY4VXbBo-VHFC3Ap2C9__EmqLFhrRDZcq6tPtkXKTRRgKKPY7B_JF775vRH8L33J9R8qmwkCiHEvW8GbFlCfiRyNfyeYU8?purpose=fullsize)
+
+![\[CATIA\] 17. Part Design Tools - Rib, Groove, Solid Combine](https://images.openai.com/static-rsc-4/FEpAesTgrXDOvmZuBFaVqRXk1lokvwqtleTqyAX__FBghDo_j_2G-TeEfkCXx-ISNOt2BDsOLNBWea1lkP7OqWmI8KeHP5-5Z7aU9-HLnP2fozxQwSobI4p7LMf3xOBmXp3vuvU58njJvXh0XTaJhmEdGRI5iqgxTSwJ5GGYGd-1Gns-fmATLFjEQiVOe9qb?purpose=fullsize)
+
+![Solved: Lip and Groove for shelled part with ribs intercepting the edge. - Autodesk Community](https://images.openai.com/static-rsc-4/AxlEDyI7AAUPtDOSKXpFURYqwtrPQLgTY0fYw4Ox7o6XXwSDVORN5SZGJLvL6jSgHcpIZO6qKNcipNFzULAGLgHMCaS2qnVIiSACnQnvVhn1eZTwhbCSFZhavuXnitzF2NkViIhEnowSzl79xPyuYK5fOrt9Iq5KlhqUQ8l8iUAXweSMCF81W4NbN75ydR1s?purpose=fullsize)
+
+![CAD Club - The Wave](https://images.openai.com/static-rsc-4/SKqBXjIfhT1tkaHuelA7PKO6_uj2_WQrXUXxzqaycSQrwEJQWwEOTkKVMV8iz35XZ0z_wbuSPsvAwqx1n0E2QLPVhSPRQ-m46-YmH41C_8OUmjPw8Y8TpORrDjthjYslMv1o1zMLYz-_ElrWwdz0qxBOE_rfHFQudUx_GRHb4ZrJxOnuRgaBMdNu6VgjioCA?purpose=fullsize)
+
+![CATIA V5R16 Fundamentals - Version V5 Release 16 - Part Design | PDF](https://images.openai.com/static-rsc-4/uXlzX2Y0awgClbTQnhWA7DSb7vET0GguXLRWknkJXL6e8FpY65zmEIMKfAIpRkWIsq5m-v426VlxmgjzBJE8CDHY04Y1LAn4TQGe2Iafvij6amwD9VCDQThfcIJ_9_3bZS4V3WYE9NLB7hqQGlfhliH9X-wnmBQmqLyxmJuLST3GL00M8bPxI8VYnO_iEv5o?purpose=fullsize)
+
+![Impeller Headache - Page 2 - Autodesk Inventor - AutoCAD Forums](https://images.openai.com/static-rsc-4/XRQuKs4se3M46_3p7FTk4IoeG44pHF9UwwoqjqR3jb6foVsPzRGrZkkYQCcfgeJpWBllHV01jnLaIbbT-hLKitqqBC32lXQEj3kISRDaHVSyb7Hadl-O4vkdF0Zkbl_w5P6Bsp_d-xXS928gjk1gigexmjY0hqSVEK03Lhzghd_jTxSjXocgu_ijPmjBVkW-?purpose=fullsize)
+
+![Sketch-Base Features and Dess-Up Feature in Catia.](https://images.openai.com/static-rsc-4/bJ-zyyjtw04jSmLbuE_IFpHmB0BALWD1jx11QFEDR8dFsLWCfha9znYJnFhkmZFA6hhu0AmAJC_8M7LnuUJWq3hnsk4f2U5-WfaH43yDTY9Ave0Pi75JbqR_7IX92Gaq5OF5z8IEqxVF7fzHiVxjMjZ0ZRsC_DVpR86Lpdly22heAPwbbcOgD2Rm9hqkXksP?purpose=fullsize)
+
+تطوير نظام Feature Modeling أكثر عمقًا وقابلية لإعادة الحساب.
+
+القدرات المطلوبة:
+
+* Draft.
+
+* Rib.
+
+* Groove.
+
+* Slot.
+
+* Pocket.
+
+* Hole.
+
+* Counterbore.
+
+* Countersink.
+
+* Linear Pattern.
+
+* Circular Pattern.
+
+* Mirror Feature.
+
+* Multi-Transform.
+
+* Variable Fillet.
+
+* Variable Chamfer.
+
+* Feature Suppression.
+
+* Feature Reorder.
+
+* Dependency Recompute.
+
+التأهيل:
+
+* صحة Feature Dependencies.
+
+* كشف المراجع المفقودة.
+
+* ثبات إعادة الحساب.
+
+* كشف Feature Failure.
+
+* استعادة النموذج بعد فشل Feature.
+
+* الحفاظ على Feature History.
+
+* كشف تغيّر هوية الأوجه والحواف.
+
+* اختبار إعادة ترتيب العمليات.
+
+* إثبات حتمية النتائج.
+
+لا يكفي وجود شجرة Features في الواجهة؛ يجب أن تكون مرتبطة بالتنفيذ الفعلي للنواة.
+
+### WP-05 — Advanced Surface-to-Solid & Complex Topology
+
+![Surface Modelling: How to Convert Surfaces to Solid Bodies in SOLIDWOR](https://images.openai.com/static-rsc-4/KfLO5B29zvscNbOwo9IE5ybPwaNJIjLaqG4aAYPWG4601wF-23eNlgFKkgeP81Jg1PKAPfYY8uyiRl66e8sBCcaHONdqliQd-vLbBIT12rhIEqBJffLjaV83dwFsXK3v6V3WVk2Ym3Ox-bOvzJ1pxGsIASqjHNHX7DK9zdqNrMsi38U8d86799kPKO3KQZLy?purpose=fullsize)
+
+![Model Won’t Slice? Fix Non Manifold Edges Fast](https://images.openai.com/static-rsc-4/8ZzRnU5AJCF4wNetp3ZcRFEhNUd53r4zKCHbLiPwjEmcy9YHr4Z6vrDBUUQbao-cn3TK0pw23fmgVsuLNXxUMQGLhSOduV1lFsuzJiNW4IzINNYPFKry0efMjYNk1hDZEynIFQW9bRJ_kqZNh2I3t2qM2gMHcxjS6Rjr55KLQWwaTiLKzCPyegs3-YpqTtBN?purpose=fullsize)
+
+![Siemens Digital Industries Software Community](https://images.openai.com/static-rsc-4/Dv7odYbszBYlCfywupowIJFENzoCDTEHMBSojlPm8cuhHNOkP7IuauR7q3vyCt9UDkZ1TioPQ-kNpbxGW5N7DZpXPOMv0g0Xrv4RNBThhjje4dQODM1V3AYN-5u6GkiHNl-h83pMS0rQNcXjjASNrr0ZN8GtWW3RqDpOpt8WXfITqpv-UF7RsWtwWe_M10kl?purpose=fullsize)
+
+![Design Tech Academy: Create Solid From Closed surfaces in SolidWorks](https://images.openai.com/static-rsc-4/piG8EK1ZbSnd3CeVQo0p2wZUxBIXQa0IL_2XetqvKfVVM5l0fcCfyLn0A93s_gKWOHbBRHSgvN7LtLTeOAMezcNkHc1ddR7TKw3A2w_4pyJInzWnqVKa9X347lKGzHtctDENuff3TcL4WVvIVOx1H27ELbQs2ZPnl2KjplHh2rWrCjVDIWt8LH5ItkZyW1vh?purpose=fullsize)
+
+![Help with a Boolean action — Onshape](https://images.openai.com/static-rsc-4/XSa08xYYLIs3zUu2cYm6jqldzBKLsQ2sJnshCUxEUdLsPDJwsH4ZYL6s0gXIhwrNoUrVkeA4rM6F4X2XPL1g1xg-awOp3ansFTs3g5T1318PTiaRJIo41MadmlN83acxBQXqRdI_zsKpL02Ae-S4cwjdX0UWXu3O8W-2MsIDt4r7KnB0E9Bk5adznOk2ge90?purpose=fullsize)
+
+![Boolean Union / join won't work - results in naked / non manifold edges - Rhino - McNeel Forum](https://images.openai.com/static-rsc-4/xNSnlR_QWwNKoUCNZcW-ucpmyCfn13Q1QqhfQ3wj-Qupsi013pGKjwOU0lXWlzl7YP3dVBpvVrKjT1gv9WZ52hiRaNd2rUW8PG1wzEWBmxvUB_SVMQ0cLd08FN1P0PE4TIyTTZUTWQFSVdxpwhUKnwkgtaqDnhhW6JU2eUt5MZFnC_0g0ZKnp7rL7ZDhI3-6?purpose=fullsize)
+
+![Remove Coplanar Faces - Developer - McNeel Forum](https://images.openai.com/static-rsc-4/zyyvP7DtB3t3yMJ2Xnb2x9WCn9dJDTsti5rTEfYD5lMUQgDRK2jZKckkxAPHsxo_2OZ3Czk7gw2IDb4GZZjnz28MDY552rMw3rRfOpWkjwS84Md3vL7uQNe-7on_1WinTfogFoJZaxe-UqCbs4UiRVnjP-5jadb-gO5n0GAptmk2KDbMaw04Jnl9uQi2Na_p?purpose=fullsize)
+
+![HLR mode for OBJ file - Forum Open Cascade Technology](https://images.openai.com/static-rsc-4/nbDYgE6T90JmoPglvdZbD8drW9CTR5XsKDqzCO4YwNyLNwE-C5jGjnn-Mdxmx70Ko6yYGoJ4qIQJIIPqrNAADLWLP7oJwMRVFiVml2gK3MBtkEooYQPddSiA_6Yu93v7ii8nn0iXixVHxhr8oqE1v7XATnkZG2eWLJJrHWEnGd1UQopGjgH6mR4lQtmXAodq?purpose=fullsize)
+
+![How do I work around self-intersecting geometry error for t-spline body when I need geometry to self... - Autodesk Community](https://images.openai.com/static-rsc-4/_PIlcSefxcF4MPgcvk5Mta38cT0--rCZxHHIRIkUbXMD2bPo74hF7Eim3hrQVoiB-3xef4xtCImeQq8QFkG2r16cUM18VT3r0jCK9znjsJ3QkTSc4Ap8f8LcnvOcpxM0av-CJXLq1Yj3QklcPk0fNlXJCUW_KVL6i3NSV93grCj6Au7__-Iy0huTXMA6BRv_?purpose=fullsize)
+
+![Solid fill between surfaces - AutoCAD 3D Modelling & Rendering - AutoCAD Forums](https://images.openai.com/static-rsc-4/p1z9EjKNuXrGcjf2fCq4PNyJFKkAI1Xf55AEcLkwSGj5KM5625_NP1YDzf5iWTBIhRoTi3B8EmLmDFtsVd_w6F17rzK0ieWy-NOtDtKRFOdp-Jfg92d5--aC_YikFSmwQRarO-ZN8xZ0Vc6ly1-cZuDUIysYbm2h6atHBMJEJF9GNoK8qNDRbzWKTamQMcr6?purpose=fullsize)
+
+![Tuto SOLIDWORKS : transformer du surfacique en volumique](https://images.openai.com/static-rsc-4/SZlAx9goN0R27T8pNV2BsX77yB2jSXDsTwGze_8Vsbfd4z-0Ms3B5sk9ew-ji4ShNTJb29TKTxTCKvVG-vN1ymmTMrPB4VsyoJ8CA_3g8JbAUL5IGbW6CJSXf7KEPicaLGu9p8Wt8uvx1T2otkRablb9fa6L9jnel3H0Hh9GqW6BA2EF57UkfuJMMBKVi-YO?purpose=fullsize)
+
+تطوير منظومة الانتقال بين الأسطح والأجسام الصلبة.
+
+القدرات المطلوبة:
+
+* Surface Sewing.
+
+* Surface Stitching.
+
+* Surface-to-Solid.
+
+* Solid Reconstruction.
+
+* Thickening.
+
+* Multi-Shell Solids.
+
+* Cavity Construction.
+
+* Internal Regions.
+
+* Multi-Connected Boundaries.
+
+* Complex Shell Validation.
+
+التأهيل:
+
+* كشف الحدود المفتوحة.
+
+* كشف الحواف المشتركة غير المتوافقة.
+
+* كشف الأسطح المتداخلة.
+
+* التحقق من عدد المكونات.
+
+* التحقق من حدود الأجسام الداخلية.
+
+* التحقق من اتجاه الأسطح.
+
+* التحقق من الحجم الموقّع.
+
+* إثبات صلاحية الجسم للاستهلاك بواسطة FEM وعمليات التصنيع.
+
+### WP-06 — Geometry Healing & Model Repair
+
+قدرة عالية القيمة
+
+![Simulation Environment of assembly with Imported Solidworks part files - Autodesk Community](https://images.openai.com/static-rsc-4/2wQjqPdCxTGOHWc874Y-7dc-ml_7XA-TxB_xhXB2Vk58phB5WxgegJoBn57IWRW8EQlQws__F3mdaUufcATit9ravg04cYYF3gWvnrKXJ1OUnXzGMBZQfZdARmZPRuuiCH_fieFPFCwMpqW9sNQDdMsjrQB5tpjnIwH2TJVo9G2ngFs6Q-sOUdD-5f3wFCZf?purpose=fullsize)
+
+![CAD Model Repair: Automated Healing for Reliable Exchanges | CAD Interop](https://images.openai.com/static-rsc-4/1hxqQr9-008vwLaYdNhAfYYJU5ev8ssVsFUcNfxEP655xp80Sgbnl825xRqZIdeX_jZcrk1hdNrN-5zvEDur3ynBsiZkGAKCuakCDx5Lxi05cVxw5MiGU0RmOn5LYe_n815uH5bkPrJ5R96xjbfNW3OtOtKgf2LrQBPvlbH3cfyOglmsQgVxhlR7hVN4cOfR?purpose=fullsize)
+
+![How to Use the Import Diagnostics Tool in SOLIDWORKS | GoEngineer](https://images.openai.com/static-rsc-4/bheXy41Y09mMTCgc58vLpn7Adn8XMK84tWy0uE14kNWAfHuyYydFHiEPGdkhtDGfuMJI_saTbZJDcAFTB6iUbAx2rkNA8bUuS8N-QmG3onzmBvlJ17fTmW05cTCS6IYo3L1K4sh2JtEZaED7k6B54OwpZ1qC5dYuTbDafi0YD-ATrfQxJqycu6MNWASZ61N4?purpose=fullsize)
+
+![Solved: Composite To Solid Issue STEP File - Inventor 2024 - Autodesk Community](https://images.openai.com/static-rsc-4/wUWwC3cFSCt3b4s4ZBd7CJlEpJcQSE5LIh8ZaayBchi5wWJhdMsP7dFoJVFznYLlfwZMjZ9Io0p92txFzLALjL_-IZJjqrqRiKdhIsDxySpvSMYXzwvL-d9UZ_uw50QU2svytpUfQfOK5s91cmFtpHVTxsHtNZhxEP5osdYYxWQmdVAKkUN7UaZDu4HKCFLu?purpose=fullsize)
+
+![Error when importing a specific geometry - Bug Reports - PrePoMax](https://images.openai.com/static-rsc-4/cTMQ7RYdop1eYIQEHeAZ2Qudtmt1bjQHDyhLic9oY49UxP5PLiIo0hsWfBhnxYC64EHgBoO_ihpYjasZSARhIxLDmnvPncQMNsByO_i_lZXv6V704uljwCKbaOe4PfK3fceSAvzPWepQ1nLFkfA4i7CPdGf7P4OVyijVBtR27ndL2cA5mXjRHls6LgyNapgY?purpose=fullsize)
+
+![Solved: Face Orientation Errors Inventor 2016 - Autodesk Community](https://images.openai.com/static-rsc-4/LWB6vsSV6T4fvngRszE85mUYRQL4XXG4rzecKvb_HKBKcOKbQgIghXnovCjI6XYqX-MfK525XDUnGCB-i0EWbgGDTprmiB_4a3lNu8edx-12XUBOtmSl43MrOhMfItDEhOza2bpsGzo1qLbj7zyhCYKhamDCJ6HZ-1XqOhgw_30quDczSjbkLv24HN9baWVK?purpose=fullsize)
+
+![CAD インポートモジュール - CAD ファイルを COMSOL® ソフトウェアにインポートします.](https://images.openai.com/static-rsc-4/5QAx0TuOEoXD-_ZCyALLxDNr4TgK53x88_ak9X6o91QXl8j0iBSYRU3c0Gp-pgsTZ1DbwxNDq19miFANbH5-9Snxq9Jej_2fYEjJuSX5hsAvK5Jq34ERlh_bdiHA2dHhLL0ZXQMieQTkeKY_dt2DJUlCTlas4zW9Xnz4q9XHHaaupurIx7Ze2fm67bpH5EDx?purpose=fullsize)
+
+![CAD Processor | Open CASCADE Technology](https://images.openai.com/static-rsc-4/zBbK_fe6TreKGoXZ7JefNSk0PN6Bdsw2E8FHxslCO_AZUDLusLjPjmW9eS_asysCWDFm4hL5YYnQQuJtLFR1hAwDIclpcDWlVnkd63lZw3GWtVBPILhL8t-VwE1aOoywWbGCfJiUyI1NUTXXc4YlgXtc83bXW04aweb_DOOCGDiNYY6YNZUep66GkHakZkiY?purpose=fullsize)
+
+![Converting Inventor Surface Models to Solid - Autodesk Community](https://images.openai.com/static-rsc-4/MZqqScnhwgO8yq9f5anVTRF1-JwKBBEK1haP_9Xn8-aCADvXbMBnRs3j345Na9HgoJi8uWpPvNaSE6AhyLGZGv3UNhgv9K46adJuLC4thge-mFa4tVbo-rh-s-uAZiMwk0LNyO-o7lbjecKhP2TvQqQDWIOedr9dLh7J-zSq93zH4HRVy2FgHGnNHKcr0MHM?purpose=fullsize)
+
+![CAD Translation & Repair Ansys SpaceClaim | Origin Engineering](https://images.openai.com/static-rsc-4/D0Cc81dsmcOi7Udy-se0nJvDo9ILFt6gvjkQ2EqQRpJZVz5GzRajslawjF4GzDFxc3ESf_m3kgtBH0gAGqvKi6AzVrKiCMp_ICkIwVgkK51g3zkljhShl0HCbrcrgBjixQGUJa0vRe4C_xaXULE_vELyPGhSzh-dwQJTnNUqA9F1hpVBxj-D6rEEnqg56N8w?purpose=fullsize)
+
+![MagicHeal - CAD Model Repair - TransMagic](https://images.openai.com/static-rsc-4/xmNEVYBivngWnOiQDb2Ya8FZdSK3G6WEq136UvE42CQZ6LqdEn4KF03f8mmaVh-pnlDHGBoTQ431tC5TqNl3J7hQiQotUv9cqjfARmi-xXMTMM49iLotb1bxuDSoLtUqthRu1SS_3uljv9N8_MgQH7SnCZPrF4ikBk-k0cyBXUK8I-nUfxorrMmvnDBQr5_N?purpose=fullsize)
+
+![التعامل مع البيانات غير المرتبطة بـ SOLIDWORKS - برنامج السوليدوركس - منتدى المهندس](https://images.openai.com/static-rsc-4/No28c4WPxOeTWBPK9fz6537lgoTb_6GML0zyg_iFanZKcTRHLT19NKGtO_nFi3LBf0-ukAhV-SUyOh9kPD1wyhjjDzlAz90mv3-LAbV-PkSmOI0LyxJHymsBKptJ9QGu9wxycoaWT0DVgoyPNpwVWi0IJyK0QxcxF-y_MdP5JwNseHjre744X0eNyjHfyO99?purpose=fullsize)
+
+بناء قدرة أصلية لإصلاح النماذج الهندسية المستوردة أو المتدهورة.
+
+القدرات المطلوبة:
+
+* Gap Detection.
+
+* Gap Closure.
+
+* Edge Repair.
+
+* Vertex Merging.
+
+* Face Orientation Repair.
+
+* Sliver Face Detection.
+
+* Duplicate Face Detection.
+
+* Self-Intersection Detection.
+
+* Degenerate Edge Repair.
+
+* Wire Reconstruction.
+
+* Shell Healing.
+
+* Solid Validation and Repair.
+
+التأهيل:
+
+* قياس الانحراف الهندسي قبل الإصلاح وبعده.
+
+* منع تغيير الشكل خارج حدود السماحية.
+
+* الحفاظ على خصائص الحجم والمساحة ضمن الحدود.
+
+* إثبات عدم حذف تفاصيل هندسية صحيحة.
+
+* تسجيل كل تعديل إصلاحي.
+
+* إنتاج تقرير قبل/بعد.
+
+* رفض الإصلاح عندما لا يمكن ضمان النتيجة.
+
+الإصلاح التلقائي لا يعني تعديل النموذج بأي ثمن؛ يجب أن يكون محافظًا على الحقيقة الهندسية.
+
+### WP-07 — Advanced Transformations & Deformation
+
+![SketchyFFD – mind.sight.studios](https://images.openai.com/static-rsc-4/gzBNRqVwm_D5s1dul1SzocFeI8AdiUJR8gOupAlVjEBzlq4vSpMaC6uwlaucySLcA38FkAmlmoq6dByN8Qk9NZfMBcx09f0TKUiNq1UeZz2cOAngVeX19cSLlwcs0tEEfvB2BCeaV1GyLda-UtYTIc0zW09k6GDbORM2ENZjdIPJp7HbpDfahZk6zplzhbra?purpose=fullsize)
+
+![Fast and Efficient Geometry Optimization with Morphing | CAESES](https://images.openai.com/static-rsc-4/vNcdcHD1WEs-jG2ZXlaOyKsxP5GqL1P0nbSsSgFYulaqy6CjqTD5wXgnp62HRZrEgnL4TNTjKHG62exArFRJNlfnFgFBzJjXEx3bPDYxWTUTr-4bLxBUHLuLbM6il8Yry1ny0_cF_Uo-XoM4YTgO_bB3WzQjkl3BCG0aG0XlAHlzzDBwfJVqDFLfdHhZK-O7?purpose=fullsize)
+
+![How to scale in one axis only. - CAD Forum discussion (EN)](https://images.openai.com/static-rsc-4/wAHca9EAjXAp6dq84jCP0NcMKJ_jJAXYcHMRZErfprV1FWcMwNSlyXxF8gInNlxrz3smVImXsyfXpKl01mEmgKK_F06UyzeCpmkkQsEnz7G5BqKaPa6wdOFiSypNmo6br8pbDjwWvl-iAtpcgiYyo1SSk0gIX5_nsnX-DecRO65nW4MsrmeoJU_Hzzmyq37D?purpose=fullsize)
+
+![PPT - CSE 554 Lecture 9: Extrinsic Deformations PowerPoint Presentation - ID:1373005](https://images.openai.com/static-rsc-4/aMV4pZNiNcpGn5OjsxlDzpamv10bFa4ZVA33JjJi0GTv9FEUkZwzKhsZIOTwRNHERCzJWxTaveIri1mRuMET5rURnwBefgvWB-jA-y5stAYDHNQKawnNzH9cIXljW_fdpX5Ke47l31tBjJWt9QLgxZO4Zp6v3l5IQytmH0F5sIYlwYHAOIB2iTkFqq0FwmYn?purpose=fullsize)
+
+![CADfix Geometry Morphing | ITI, a Wipro Company](https://images.openai.com/static-rsc-4/VuNFpI9x-oBOkxiE5AbvGGz4KRxbxIni8plF2XYtebNa7FGsD7D8uuwPwR9u0vVvehneTtoh51yjGTNBvAv3dJ9IZaneCgckYJw0nrJWK8KaaFxOK5IpeZ4wzzy_fltrOgxwDfxPP_sULbwJnEWNlRpYqssjL9kB7Ues33Ka8dqyrKNDIg311F43H8VBb6l_?purpose=fullsize)
+
+![With regards to the command of Shape Morphing in CATIA GSD | Dassault Systèmes®](https://images.openai.com/static-rsc-4/0vK-ljrkRZUqMDHKXNIjIW6j9ZsALqNw7V9lMXQFazD2fvf_0klV3xHJRwG9rQWslumHxpd7URCPE4UDa3NSCPA4aL4WPi9i_xAHAyWnPhBO8S6NIZfatqe2svNmLKeUs33jFl5pOLV4KJBJktulysfI9yJVnlCnOXqjoN2UcYm1c0MKrum3ixzLRgG6ps26?purpose=fullsize)
+
+![PPT - Extended Free-Form Deformation PowerPoint Presentation, free download - ID:1718207](https://images.openai.com/static-rsc-4/nMPHa6-cnDuGLf8ciUQsUt9SLtmD9v5B6r2tOnTL7Td_md2jFojNbZs0HFBWxTkQG6MHKz3B0tH-jlRakc5AOV9y3K_do-DOkKM2FcBh4yXV5AgWKS0z2oBaGIUlWXt50QTfgSgeowGIXFu7ZJZzBKduRUn_0PFiS-6jaj1Lj94Z9RQqeyIq-wfI9w8HSHLD?purpose=fullsize)
+
+![Articles](https://images.openai.com/static-rsc-4/yOxC4AowvjAISimoNGK9k48f9C2V3cJRPMw7LPs_NMjr8j3IYmDHoRTLlQz8wix9t9i_pTOS2v4xNadl5iZSaHcZUyxpukGbLnDCvqtHYrC8GTHU10igX31NLLE9HVv1sEx0kH8cM3hxnrVFG8AuTgtY_J9phQcOkvwpatwg9_5D-2nFiWkldRxad4NG8iCN?purpose=fullsize)
+
+![Design Software History: Lattices, Cages, and Variational Methods: Evo](https://images.openai.com/static-rsc-4/dhfsh0GNoBQfwX1tVtzxttXdTqdx7JMjJgR3ArgJ5OP3rZnIIxpamGrfpeHjZlpgCE7f6g4VEAMggnYUwSAzyl-YORNqsWgYtCHCbENVPYTXE06YGNq2ZXqmx0nWROrsciveYcwM0mlHB0Woqvwe8xUwKt6nes3Xieoz7axZcl9Y2FAw9y9CNgZeGUxAa205?purpose=fullsize)
+
+![HM-3590: Morph Adhesive Layers](https://images.openai.com/static-rsc-4/3Mey2ZcKGsFuuIerrIUmumC8z8WLiqDI274kNACb1KZV6b2Tzer1-W-O_BOa-E69cCE-wtiIK30OUIuWaKkavLMnUr-HzWALZvi-tMFhdtsCBpCBS6UcweIPGzPU5qqQjFAKnZu1U-UtgC2ifrP7S5hu08PH3w9bz-GEp-OscfmYfU2aqVH5u8tQCVXUqjO9?purpose=fullsize)
+
+![3DEXPERIENCE CATIA Springback and Warp Compensation CAD Models | GoEngineer](https://images.openai.com/static-rsc-4/DmZCiSuWr6d_38GtfbzHSQ_QvHICd5x4IIpIv-JbR8SZksacKrBmJzMPKtBGDK1L-B1x1ZvJG5mLwlf8vNTXxylNFQgc6D8YjI0J95FOn7EM02gbAPU8fHDr5Py3XFQWBouOyMnUHr4vcGlzzt46g7gvZIxcxhRec7OKIHR9eY3bQisp803-XL4uaWow23XV?purpose=fullsize)
+
+القدرات المطلوبة:
+
+* Affine Transformations.
+
+* Non-Uniform Scaling.
+
+* Coordinate System Transform.
+
+* Local Deformation.
+
+* Control-Cage Deformation.
+
+* Surface Morphing.
+
+* Geometry Warping.
+
+* Deformation Field.
+
+* Shape Optimization Interface.
+
+التأهيل:
+
+* الحفاظ على الاتساق الهندسي.
+
+* التحقق من التحويلات العكسية.
+
+* قياس الانحراف.
+
+* كشف الانضغاط الهندسي أو انقلاب الاتجاه.
+
+* كشف التقاطعات الذاتية.
+
+* الحفاظ على المراجع القانونية.
+
+* ربط التعديلات بالمراجعة والأدلة.
+
+يجب الفصل بين التحويلات الصلبة، والتحويلات الأفينية، والتشوهات غير الصلبة؛ فلكل منها قواعد تحقق مختلفة.
+
+### WP-08 — Advanced Geometry Analysis & Recognition
+
+![Análisis de curva/superficie](https://images.openai.com/static-rsc-4/ICsHu65L3K5WImnBwVw0stRrg5jJseLWjTNQvJ3XqafsRtMBcFczP7l5d721-mLPAbTghuY-PJt8EDFtGgD_QCCBhICgJIq9ukl9v2Wfc1-d5nfvB6ZyUQOhwCuruuIWTnYRktG4JuErQVZ5rMpQhTwielVOr8m1ZJEAW0lfyevTMrDG3jQo73-JgnFqRXZK?purpose=fullsize)
+
+![3-D Machining Feature Recognition | by Shivkaran Singh | Medium](https://images.openai.com/static-rsc-4/NS8KA1hSIbj0oPRHQaUlWpBZkQv_MhUD8X9k7DJaml-wPQJVirs20vmAdZevPbXnxzaj0bChzXIHre18sb5Mj6VNggL5aDh1Wq18wHyfY56vw8BP_N5MrQGFgxwn1uWRDEMrwzvr1dIIOkNOFcv3eFBQ9nZnZC9mEGHsCYd2GGlEfZp--pcnqPwx7NRvu11Z?purpose=fullsize)
+
+![Free CAD Designs, Files & 3D Models | The GrabCAD Community Library](https://images.openai.com/static-rsc-4/WLs2z2trJ7PSsrwd8WQlMxspBqexIfy8r7q-EoMAv9jXAqapqAQPO_BeOT66jgiI1UtuK8dd4SExliie3Z9ExBUPtkaF981CVY3FirO1eokcZpHZGzyLxWKVTv-RMiKYX4ldsz4AYnfe-zrBMcXQTED6gYq45IFEMNFqZv2Ph7R6obaA1WPlp7ohII9Isjmp?purpose=fullsize)
+
+![Shaded curvature in Onshape — Onshape](https://images.openai.com/static-rsc-4/lfpOB57gZyl0jTpoSNQx55PwX79L2T3lgJaNbOs2sadGeKCqDTMpUyHVoWMXoOS-DvEQYC6Mq4kCf654g_yAgT8A38wXS1Onaf63zXa49Pz2COQ9wADTPO4iRXNKUGiWOHx_Gtof3tzAWaSvc2ysOP9x1UfXZIxb6LjVceNkYakN3zcntnz_D94U7nXRJHqp?purpose=fullsize)
+
+![Cimatron CAD-AI: How we developed AI for feature detection | Cimatron posted on the topic | LinkedIn](https://images.openai.com/static-rsc-4/_4yxaKSCq0ZuAwXGy7xd15UrAKK7c_5LbuJBwiQifNCs5nS0nFVhi1_-JTzA02Vx_DNC3BW_lTbB2NS_nIHqL8VGNdulMAI430msNxAkGsYDubDz6TMYTbbcf9EtAPeXNtk18n18FuTBHBvQDpRxaRssMoh3SMCmNXG_fWgllFTEZYnaxd1EsALXE9Pahz_P?purpose=fullsize)
+
+![Design for Manufacturability using SolidWorks Tools](https://images.openai.com/static-rsc-4/t0kAIS4ZHudZvPfo6FLtzDSGfn4tFjN1wrD-4lem9OHl_TQwc0Xk5m_ZSEO0a0hZV9oRd0U_em5m6RMMfiv3tDKXBA6ZvKMRH7UXXcPCMsxI55qLrUWdAiFUnPfPisd0pHLKkG_y5PCJQS-4_wbNXYnXSG1mm5jwo_7nED_6MJQJ54D7uUwYPcEtbXM_da8Q?purpose=fullsize)
+
+![FikusPlus: best CAM integrating faster solid CAD solution](https://images.openai.com/static-rsc-4/tO0AFwUmfME17Sum__rbUHnIXmcdMlBLj2S7M66hZYUp9ZUoJgYoSo-XMTopauiD6rxJypylkitdhmI9gIo7QBgRwIE--P-uIcuEO0Oz5UsLo-NHkVUjOo7ZWuYPINm6AJV4L-8J2HpYq-zmB02G3dWhcpDdwNnmJUmZcrDUlorEPdWE15eZXYFwb-QkKTVg?purpose=fullsize)
+
+![SpinFire Insight | 3D CAD Viewer for Enterprise Collaboration](https://images.openai.com/static-rsc-4/nK24GNMLDw5jigCzquIgGAQ_nbdyUALPyGVXal-CUm2xwg9rixpOvNGjGLLxv-IyyVmlQojzyB13p1QrB4wMwI7awxsEUe1ZAu4lobutTyARim6JXV4K0UaxppbIhMUSi-e-EeXHXSHBh_lfAPe7ozYYY_lhyfQ1Ep8LCprfOfeWfPdG-McgBvY1RlPUy6iH?purpose=fullsize)
+
+![CGM Modeler - the tool that brings advanced feature recognition to any imported model, without accessing its feature tree.
+
+With the help of operators, CGM Modeler can identify crucial features such… | Spatial Corp](https://images.openai.com/static-rsc-4/QwQVKWp4meATdpVAq2_Vg0hIYoo5gGxGbWt47r4bMhvHBO5TvOTkGPlp9OuHBHHjgAW4PzRb6-Hn2HIwj2xzJZKGV6vClgIWStco6dBbnIJMv2c56Krw7EfvF1kSWp4RFivHE46dOpXK0bsGaazpZoB9co6oBMc6sDZuOtWmUu8rRFiPxqFWd7WuugmYdPj-?purpose=fullsize)
+
+![Observations on Curvature and Surfacing — Onshape](https://images.openai.com/static-rsc-4/-nAVN_7_pP4N5GvqcquKXoQZbREmQF489ySu3LygkIjswYsCf7HJ5fwqqD4D6k7f_d7xFgH3r4KeVeQd3V4z3naf2TQVwK1OcyuarKonbCtgW12JNRru6qG78NVK_6BtOyaMGBTpdRaDNnGq8f5-f56_mnFX6lyG078PZWlo2Bh1JIqlNtyZnbvKA5rOhTFB?purpose=fullsize)
+
+![基于图的特征识别：AAG在CAD工程中的应用-CSDN博客](https://images.openai.com/static-rsc-4/t8gSxVIGplq3v99CX03ZGg_frnvD--mpaYuU8F9RqzNSaQqUKmxKBC2aNeNrepkIUyZOVX4p3r5Cl0Tp-_rsbTcCJtmU5K-qY7_AQArzXXYmH4JcuzYGQ5t6pgpGOnIE7ViEH7FxpyHkDuTPVtsW9BaqI7GkE6m3s-sVypCG90SpFxBg_xMVd6HPrDlw5TK3?purpose=fullsize)
+
+![SCD Engineering | Engineering Detailing](https://images.openai.com/static-rsc-4/md7y9J09xagNjI4ihED9Mbb6mgqQaSIU-Bg3hXwg9HrOainzZRmciJY1t21bvEBLYLn6KYnqQ2GP2uLtmymyOQIcYJhhqUFmhPPaol8sWUI7_fhhf3FmVQULAw3HaUTCK59u5atn3614Ir5SCWxMcbRcvC6Ki67MSLXFBt60l3I5TLEVonMkOFlqsfMXXrPQ?purpose=fullsize)
+
+إضافة قدرات تحليل هندسي داخل النواة.
+
+القدرات المطلوبة:
+
+* Curvature Analysis.
+
+* Gaussian Curvature.
+
+* Mean Curvature.
+
+* Principal Curvature.
+
+* Surface Deviation.
+
+* Thickness Analysis.
+
+* Draft Analysis.
+
+* Wall Thickness Map.
+
+* Geometric Feature Recognition.
+
+* Hole Recognition.
+
+* Pocket Recognition.
+
+* Fillet Recognition.
+
+* Surface Classification.
+
+* Shape Similarity Analysis.
+
+التأهيل:
+
+* مقارنات رياضية مستقلة.
+
+* اختبار دقة الاشتقاقات.
+
+* اختبار الحالات الحدية.
+
+* قياس الخطأ العددي.
+
+* إثبات أن التصنيف لا يختلق Features غير موجودة.
+
+* فصل التحليل الهندسي عن أي استنتاج AI غير مثبت.
+
+### ثالثًا: نظام التأهيل المستقل لكل قدرة
+
+هذه أهم نقطة في المهمة: لا توجد شهادة عامة واحدة تغطي كل القدرات.
+
+كل قدرة يجب أن تمر ببوابة تأهيل مستقلة.
+
+### Capability Qualification Lifecycle
+
+* CAPABILITY CONTRACT
+
+    تعريف المدخلات والمخرجات والقيود والوحدات والتسامحيات والحالات المدعومة.
+
+* IMPLEMENTATION PROOF
+
+    إثبات وجود مسار إنتاج فعلي داخل النواة، وليس اختبارًا منفصلًا أو Mock.
+
+* MATHEMATICAL VERIFICATION
+
+    مقارنة النتائج بمراجع تحليلية أو عددية مستقلة.
+
+* TOPOLOGICAL VERIFICATION
+
+    التحقق من العلاقات الهندسية والطوبولوجية وسلامة B-Rep.
+
+* ADVERSARIAL QUALIFICATION
+
+    إدخال حالات متدهورة وحدية ومحاولات إفساد متعمدة.
+
+* REGRESSION & PERFORMANCE
+
+    اختبار عدم التراجع وقياس الأداء وقابلية التوسع.
+
+* CANONICAL EVIDENCE BINDING
+
+    ربط النتيجة بمراجعة النموذج وبصمات الهندسة وأصل العمليات.
+
+* INDEPENDENT ACCEPTANCE
+
+    قرار مستقل: مؤهل، مؤهل بقيود، أو غير مؤهل.
+
+### حالات التأهيل الرسمية
+
+| الحالة                       | معناها                     |
+| ---------------------------- | -------------------------- |
+| DECLARED                     | القدرة معلنة فقط           |
+| IMPLEMENTED                  | يوجد تنفيذ فعلي            |
+| FUNCTIONALLY_VERIFIED        | اجتازت اختبارات الوظيفة    |
+| MATHEMATICALLY_VERIFIED      | اجتازت المرجع الرياضي      |
+| TOPOLOGICALLY_VERIFIED       | اجتازت التحقق الطوبولوجي   |
+| ADVERSARIAL_QUALIFIED        | اجتازت الاختبارات الخصومية |
+| FULLY_QUALIFIED_WITHIN_SCOPE | مؤهلة ضمن نطاق موثق        |
+| QUALIFIED_WITH_LIMITATIONS   | مؤهلة مع قيود صريحة        |
+| FAILED                       | فشلت في التأهيل            |
+
+لا يجوز الانتقال من حالة إلى أخرى بتغيير سجل الحالة؛ الانتقال يحتاج إلى دليل الاختبار المناسب.
+
+### رابعًا: متطلبات البنية المعمارية
+
+يجب على الوكيل إجراء تدقيق مسبق لمنع إنشاء محركات متكررة أو سلطات متضاربة.
+
+البنية المستهدفة:
+
+```text
+SECP CAD KERNEL
+│
+├── Canonical Geometry Authority
+│
+├── B-Rep Topology Authority
+│
+├── Geometric Mathematics Layer
+│   ├── Analytic Geometry
+│   ├── Curves & Surfaces
+│   ├── NURBS
+│   └── Robust Predicates
+│
+├── Modeling Operations
+│   ├── Direct Modeling
+│   ├── Feature Modeling
+│   ├── Surface Modeling
+│   ├── Boolean Operations
+│   └── Transformations
+│
+├── Geometry Repair & Healing
+│
+├── Geometry Analysis & Recognition
+│
+├── STEP AP242 Interoperability
+│
+├── Capability Qualification Authority
+│
+└── Engineering Truth & Evidence Binding
+```
+
+هذا رسم تنظيمي مستهدف، وليس تفويضًا بإنشاء كل وحدة من الصفر. يجب إعادة استخدام المحركات والسلطات الموجودة بعد التحقق من صلاحيتها.
+
+### خامسًا: بوابات التنفيذ وترتيب الأولوية
+
+لن نبدأ بالحزم الثماني بالتوازي. نعتمد ترتيبًا يراعي التبعيات الهندسية.
+
+| الترتيب | الحزمة                              | أولوية التنفيذ |
+| ------- | ----------------------------------- | -------------- |
+| 1       | Direct Modeling                     | مرتفعة         |
+| 2       | Advanced Surface Modeling           | مرتفعة         |
+| 3       | Boolean & Topological Operations    | حرجة           |
+| 4       | Feature-Based Modeling              | مرتفعة         |
+| 5       | Surface-to-Solid & Complex Topology | حرجة           |
+| 6       | Geometry Healing & Repair           | مرتفعة         |
+| 7       | Transformations & Deformation       | متوسطة         |
+| 8       | Geometry Analysis & Recognition     | متوسطة         |
+
+كل حزمة مستقلة في تقرير التأهيل، لكن لا تُنفذ عملية تعتمد على أساس لم يجتز تأهيله.
+
+### سادسًا: اختبارات التحدي التنافسي
+
+أريد أن يضيف الوكيل Benchmark Framework يقارن قدرات SECP مع مراجع هندسية معروفة، متى توفرت إصدارات مرخصة وقابلة للاختبار.
+
+المراجع المقترحة:
+
+* Open CASCADE Technology.
+
+* Parasolid.
+
+* ACIS.
+
+المقارنة تكون على ملفات إدخال موحدة، ووحدات وسماحيات متكافئة، وعمليات متطابقة، وبيئة تشغيل موثقة.
+
+المقاييس:
+
+* Geometric Accuracy.
+
+* Topological Validity.
+
+* Operation Success Rate.
+
+* Failure Detection Rate.
+
+* Numerical Robustness.
+
+* STEP Interoperability.
+
+* Reproducibility.
+
+* Runtime.
+
+* Memory Consumption.
+
+* Recovery Correctness.
+
+لا تُسجّل نتائج لمحرك منافس لم يتم تشغيله فعليًا، ولا تعلن SECP متفوقة إلا على القدرات التي أثبتت نتائج المقارنة تفوقها فيها.
+
+### سابعًا: شروط القبول النهائية
+
+### PHASE-2 EXIT CRITERIA
+
+* جميع القدرات الثماني لها عقود تنفيذ واضحة.
+
+* جميع القدرات المعلنة لها مسارات إنتاج حقيقية.
+
+* لكل قدرة مجموعة اختبارات مستقلة خاصة بها.
+
+* لكل قدرة Mathematical Oracle مناسب.
+
+* كل قدرة B-Rep لها Topology Qualification.
+
+* اختبارات الحالات الحدية والخصومية منفذة.
+
+* لا توجد عمليات تعلن SUCCESS مع إخراج هندسة غير صالحة.
+
+* لا توجد اختبارات تعتمد على قيم مخزنة لتزكية صحة الهندسة.
+
+* لا توجد ازدواجية في مصادر الحقيقة أو سلطات التحقق.
+
+* Feature History وTopology Lineage محفوظان.
+
+* كل نتيجة مرتبطة بمراجعة Canonical.
+
+* جميع تقارير التأهيل قابلة لإعادة الإنتاج.
+
+* جميع حالات الفشل والقيود موثقة.
+
+* تم إجراء Benchmark تنافسي حيث تسمح بيئة الاختبار.
+
+### ثامنًا: المخرجات الإلزامية
+
+يجب إنشاء حزمة أدلة مستقلة لكل قدرة، إضافة إلى سجل مركزي:
+
+```text
+CAD_KERNEL_PHASE_2/
+│
+├── PHASE_2_BASELINE_REPORT.md
+├── PHASE_2_ARCHITECTURE_AUDIT.md
+├── CAPABILITY_REGISTER.json
+├── CAPABILITY_DEPENDENCY_GRAPH.json
+│
+├── WP01_DIRECT_MODELING/
+│   ├── IMPLEMENTATION_REPORT.md
+│   ├── MATHEMATICAL_RESULTS.json
+│   ├── TOPOLOGY_RESULTS.json
+│   ├── ADVERSARIAL_RESULTS.json
+│   └── QUALIFICATION_DECISION.json
+│
+├── WP02_ADVANCED_SURFACES/
+├── WP03_BOOLEAN_TOPOLOGY/
+├── WP04_FEATURE_MODELING/
+├── WP05_COMPLEX_TOPOLOGY/
+├── WP06_GEOMETRY_HEALING/
+├── WP07_TRANSFORMATIONS/
+├── WP08_GEOMETRY_ANALYSIS/
+│
+├── BENCHMARK_REPORT.md
+├── REGRESSION_REPORT.md
+├── CANONICAL_EVIDENCE_BINDING.json
+├── REPRODUCIBILITY.md
+├── GAP_REGISTER.json
+├── SHA256_MANIFEST.json
+└── FINAL_QUALIFICATION_REPORT.md
+```
+
+### نص المهمة التنفيذي لوكيل البرمجة
+
+هذا هو التكليف الذي يمكن إرساله مباشرة إلى الوكيل:
+
+# SECP-CAD-KERNEL-PHASE-2-001
+## ADVANCED NATIVE CAD CAPABILITIES EXPANSION & INDEPENDENT QUALIFICATION PROGRAM
+
+### 1. MISSION
+
+Expand the native SECP CAD kernel with advanced engineering capabilities while preserving its canonical architecture and establishing independent qualification for every individual capability.
+
+This program is intended to advance the kernel beyond basic geometric operations toward advanced direct modeling, freeform surface engineering, robust Boolean processing, feature-based modeling, complex topology, geometry healing, geometric transformations, and engineering geometry analysis.
+
+The objective is not to increase the number of UI commands or create superficial API coverage.
+
+Every delivered capability must represent a real production implementation, with an explicit mathematical and topological contract, independently verifiable outputs, adversarial tests, regression evidence, and canonical traceability.
+
+Do not claim global superiority without reproducible comparative benchmark evidence.
+
+### 2. ENTRY CONDITIONS
+
+Before implementation:
+
+1. Inspect the final results of SECP-CAD-KERNEL-PHASE-1-003.
+2. Verify the actual status of B-Rep topology validation.
+3. Verify Fillet, Chamfer, Shell, Offset, signed-volume handling, NURBS, and STEP AP242.
+4. Identify unresolved critical defects.
+5. Map existing production engines and eliminate duplicate implementation proposals.
+6. Verify canonical geometry and revision-binding mechanisms.
+
+Do not assume that previous phases are complete merely because an earlier report declared success.
+
+If an unresolved foundational defect blocks a capability, document the dependency and resolve it before building on top of it.
+
+### 3. GOVERNING RULES
+
+- Preserve the native SECP CAD kernel.
+- No kernel replacement.
+- No parallel canonical geometry model.
+- No duplicate source of truth.
+- No unsupported UI capabilities.
+- No mocks or placeholders as implementation evidence.
+- No precomputed analytic values as proof of actual geometry correctness.
+- No weakened tests or acceptance criteria.
+- No silent tolerance relaxation.
+- No fake SUCCESS status.
+- No unverified claims of STEP conformance.
+- No unsupported NURBS integration claims.
+- No partial geometry mutation on failed transactions.
+- Every accepted output must pass the relevant validation authorities.
+- Every output must be bound to the canonical revision and geometry identity.
+
+### 4. WORK PACKAGE 01 — ADVANCED DIRECT MODELING
+
+Implement and qualify:
+
+- Move Face.
+- Offset Face.
+- Replace Face.
+- Delete Face with geometric reconstruction.
+- Extend Face.
+- Trim Face.
+- Rotate Face.
+- Translate Face.
+- Push/Pull.
+- Direct Edge Modification.
+- Direct Solid Modification.
+
+Requirements:
+
+- Actual geometric reconstruction.
+- Adjacent face intersection and trimming.
+- Boundary reconstruction.
+- Topological identity management.
+- Closure and manifold validation.
+- Volume and surface deviation checks.
+- Deterministic recomputation.
+- Transactional rollback.
+- Feature and topology lineage.
+
+Do not treat coordinate editing or metadata modification as direct modeling.
+
+### 5. WORK PACKAGE 02 — ADVANCED SURFACE MODELING
+
+Implement and qualify:
+
+- Advanced Loft.
+- Multi-Section Loft.
+- Sweep Surface.
+- Boundary Surface.
+- Filling Surface.
+- Network Surface.
+- Multi-Patch Surface.
+- Ruled Surface.
+- Revolved Surface.
+- Variable-Section Sweep.
+- Surface Extension.
+- Surface Trimming.
+- Surface Joining.
+- Surface Healing.
+
+Requirements:
+
+- Genuine NURBS evaluation.
+- Rational weights and valid knot vectors.
+- Derivative and curvature evaluation.
+- G0, G1, and G2 continuity analysis.
+- Boundary consistency.
+- Multi-patch continuity.
+- Self-intersection detection.
+- Numerical stability.
+- Independent mathematical reference tests.
+
+### 6. WORK PACKAGE 03 — ADVANCED BOOLEAN AND TOPOLOGICAL OPERATIONS
+
+Implement and qualify:
+
+- Robust Union.
+- Robust Difference.
+- Robust Intersection.
+- Multi-Body Boolean.
+- Split Solid.
+- Split Face.
+- Imprint.
+- Slice.
+- Section.
+- Multi-Region Reconstruction.
+- Connected Component Extraction.
+- Boolean Topology Healing.
+
+Test:
+
+- Coincident surfaces.
+- Partially coincident surfaces.
+- Tangential intersections.
+- Edge and vertex contacts.
+- Multiple intersections.
+- Disconnected results.
+- Degenerate input geometry.
+- Near-tolerance cases.
+- Repeated and sequential Boolean operations.
+
+All output components must be independently validated.
+
+### 7. WORK PACKAGE 04 — ADVANCED FEATURE-BASED MODELING
+
+Implement and qualify:
+
+- Draft.
+- Rib.
+- Groove.
+- Slot.
+- Pocket.
+- Hole.
+- Counterbore.
+- Countersink.
+- Linear Pattern.
+- Circular Pattern.
+- Mirror Feature.
+- Multi-Transform.
+- Variable Fillet.
+- Variable Chamfer.
+- Feature Suppression.
+- Feature Reorder.
+- Dependency Recompute.
+
+Requirements:
+
+- Real geometry operations.
+- Explicit dependency contracts.
+- Deterministic recomputation.
+- Failure propagation.
+- Stable history management.
+- Topology lineage.
+- Transactional recovery.
+- No fake feature tree entries.
+
+### 8. WORK PACKAGE 05 — SURFACE-TO-SOLID AND COMPLEX TOPOLOGY
+
+Implement and qualify:
+
+- Surface Sewing.
+- Surface Stitching.
+- Surface-to-Solid.
+- Solid Reconstruction.
+- Thickening.
+- Multi-Shell Solids.
+- Cavity Construction.
+- Internal Regions.
+- Multi-Connected Boundaries.
+- Complex Shell Validation.
+
+Requirements:
+
+- Boundary closure.
+- Orientation consistency.
+- Manifold validation.
+- Internal-region classification.
+- Signed-volume verification.
+- Self-intersection detection.
+- Valid solid reconstruction.
+
+### 9. WORK PACKAGE 06 — GEOMETRY HEALING AND MODEL REPAIR
+
+Implement and qualify:
+
+- Gap Detection.
+- Gap Closure.
+- Edge Repair.
+- Vertex Merging.
+- Face Orientation Repair.
+- Sliver Face Detection.
+- Duplicate Face Detection.
+- Self-Intersection Detection.
+- Degenerate Edge Repair.
+- Wire Reconstruction.
+- Shell Healing.
+- Solid Validation and Repair.
+
+Every repair must report:
+
+- Original defect.
+- Proposed correction.
+- Geometric deviation.
+- Topological changes.
+- Tolerance used.
+- Result validation.
+- Rejected or unresolved defects.
+
+Do not silently alter valid geometry.
+
+### 10. WORK PACKAGE 07 — ADVANCED TRANSFORMATIONS AND DEFORMATION
+
+Implement and qualify:
+
+- Affine Transformations.
+- Non-Uniform Scaling.
+- Coordinate System Transform.
+- Local Deformation.
+- Control-Cage Deformation.
+- Surface Morphing.
+- Geometry Warping.
+- Deformation Fields.
+- Shape Optimization Interface.
+
+Distinguish rigid, affine, and non-rigid transformations.
+
+Verify invertibility where applicable, orientation, self-intersections, geometric deviation, and canonical revision binding.
+
+### 11. WORK PACKAGE 08 — GEOMETRY ANALYSIS AND RECOGNITION
+
+Implement and qualify:
+
+- Gaussian Curvature.
+- Mean Curvature.
+- Principal Curvature.
+- Curvature Analysis.
+- Surface Deviation.
+- Thickness Analysis.
+- Draft Analysis.
+- Wall Thickness Mapping.
+- Geometric Feature Recognition.
+- Hole Recognition.
+- Pocket Recognition.
+- Fillet Recognition.
+- Surface Classification.
+- Shape Similarity Analysis.
+
+Every analytical result must be linked to the exact geometry revision.
+
+AI-generated classifications must never be treated as verified geometry facts without deterministic validation.
+
+### 12. INDIVIDUAL CAPABILITY QUALIFICATION
+
+Each capability must have its own qualification record and independent evidence.
+
+Required lifecycle:
+
+DECLARED
+→ IMPLEMENTED
+→ FUNCTIONALLY_VERIFIED
+→ MATHEMATICALLY_VERIFIED
+→ TOPOLOGICALLY_VERIFIED
+→ ADVERSARIAL_QUALIFIED
+→ FULLY_QUALIFIED_WITHIN_SCOPE
+
+Alternative final statuses:
+
+- QUALIFIED_WITH_LIMITATIONS
+- FAILED
+
+A capability may not skip a stage by changing a status field.
+
+For each capability, provide:
+
+1. Capability contract.
+2. Production call-path proof.
+3. Input/output validation.
+4. Mathematical oracle tests.
+5. Topological validation.
+6. Boundary and degeneracy tests.
+7. Mutation and adversarial tests.
+8. Regression tests.
+9. Performance measurements.
+10. Canonical evidence binding.
+11. Explicit qualification decision.
+
+### 13. CROSS-CUTTING QUALIFICATION
+
+Build independent qualification systems for:
+
+- Mathematical correctness.
+- Topological validity.
+- Numerical robustness.
+- Deterministic execution.
+- Mutation resistance.
+- Metamorphic properties.
+- Regression safety.
+- Interoperability.
+- Recovery and rollback.
+- Performance and scalability.
+
+Include deliberate corruptions such as reversed faces, missing edges, duplicate faces, open boundaries, invalid NURBS weights, degenerate geometry, stale revisions, and invalid shell orientation.
+
+### 14. ARCHITECTURAL INTEGRATION
+
+Integrate all accepted capabilities with the existing:
+
+- Canonical Geometry Authority.
+- B-Rep Topology Authority.
+- Geometric Mathematics Layer.
+- Feature Execution System.
+- STEP AP242 Translator.
+- Engineering Truth and Evidence system.
+
+Reuse valid existing components.
+
+Do not create duplicate registries, duplicate validators, duplicate geometry stores, or parallel authorities.
+
+All downstream consumers, including FEM, CFD, and manufacturing, must receive only geometry that has passed the required validation contracts.
+
+### 15. COMPETITIVE BENCHMARKING
+
+Where legitimate test access is available, compare SECP with established kernels such as Open CASCADE Technology, Parasolid, and ACIS.
+
+Use reproducible test models, equivalent operations, units, tolerances, and documented hardware.
+
+Measure:
+
+- Geometric accuracy.
+- Topological validity.
+- Operation success and failure detection.
+- Numerical robustness.
+- STEP interoperability.
+- Reproducibility.
+- Runtime.
+- Memory consumption.
+- Recovery behavior.
+
+Do not fabricate competitor results or claim superiority without direct evidence.
+
+### 16. EXECUTION DISCIPLINE
+
+Execute sequentially according to capability dependencies.
+
+For each work package:
+
+BASELINE
+→ CONTRACT
+→ IMPLEMENT
+→ TEST
+→ VERIFY
+→ ADVERSARIAL QUALIFICATION
+→ EVIDENCE
+→ PERSIST
+→ BENCHMARK
+→ PUBLISH
+
+Do not advance a dependent capability while its critical prerequisites remain unqualified.
+
+Do not hide unresolved gaps in aggregate pass percentages.
+
+### 17. REQUIRED DELIVERABLES
+
+- Phase baseline report.
+- Architecture and production-path audit.
+- Capability register.
+- Capability dependency graph.
+- Eight work-package implementation reports.
+- Individual qualification reports.
+- Mathematical oracle results.
+- Topological qualification results.
+- Adversarial and mutation reports.
+- Regression report.
+- Performance benchmark report.
+- Canonical binding evidence.
+- Gap register.
+- Reproducibility guide.
+- SHA-256 manifest.
+- Final qualification decision.
+
+### 18. FINAL ACCEPTANCE
+
+The program must not be declared fully qualified based on implementation count or aggregate test pass rate.
+
+Every capability must have an explicit, independently supported qualification status.
+
+Final program status must be one of:
+
+- FULLY_QUALIFIED_WITHIN_DECLARED_SCOPE
+- PARTIALLY_QUALIFIED_WITH_DECLARED_LIMITATIONS
+- NOT_QUALIFIED
+
+Preserve failures and limitations. Do not weaken gates. Do not publish unsupported claims of global superiority.
+
+The final report must identify precisely which capabilities are production-ready, which remain limited, and which require further engineering.
+
+### تاسعًا: ما الذي ستكسبه SECP من هذه المرحلة؟
+
+إذا نُفذت هذه الحزم فعلًا وتأهلت، فستكتسب النواة قدرات مهمة:
+
+| المجال              | المكسب المتوقع                                                        |
+| ------------------- | --------------------------------------------------------------------- |
+| Direct Modeling     | تعديل المجسمات مباشرة دون الاعتماد الدائم على إعادة بناء Feature Tree |
+| Surface Engineering | بناء أسطح حرة ومعقدة بجودة هندسية قابلة للقياس                        |
+| Boolean             | عمليات هندسية أكثر متانة في الحالات المعقدة                           |
+| Feature Modeling    | تاريخ عمليات مترابط وقابل لإعادة الحساب                               |
+| Complex Topology    | التعامل مع أجسام متعددة الأصداف والتجاويف                             |
+| Geometry Healing    | إصلاح النماذج المستوردة مع قياس الانحراف                              |
+| Deformation         | تحويل وتشوه هندسي متقدم                                               |
+| Geometry Analysis   | تحليل الانحناء والسماكة والتعرف على الخصائص                           |
+
+لكن هناك ميزة استراتيجية أعتبرها أهم من عدد هذه الوظائف: أن كل قدرة ستملك سجلًا يوضح ما تنفذه فعلًا، وما الذي تم إثباته، وما حدود صلاحيتها، وأي مراجعة هندسية أنتجتها.
+
+وهذا يسمح لاحقًا بربط النواة بصورة أكثر موثوقية مع PCB وElectrical وWiring Harness وMultidomain Integration، ومع محركات FEM وCFD، دون أن تتحول النماذج الهندسية إلى بيانات منفصلة عن حقيقتها.
+
+توصيتي التنفيذية: اعتمد هذه المهمة بوصفها برنامج Phase 2، لكن اطلب من الوكيل أولًا إخراج `BASELINE + CAPABILITY DEPENDENCY GRAPH` قبل كتابة أي كود. بعد ذلك يبدأ WP-01، ولا ينتقل إلى الحزمة التالية إلا بعد تأهيل القدرة السابقة أو توثيق سبب تقني واضح يسمح بالتوازي. بهذه الطريقة نتجنب بناء ثماني واجهات جديدة فوق أساس غير مؤهل.

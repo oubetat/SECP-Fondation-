@@ -1,33 +1,10 @@
 {
-  "task": "SECP-ENGINE-QUALIFICATION-003",
-  "totalAdversarialTests": 5,
-  "passed": 5,
-  "failed": 0,
-  "tests": [
-    {
-      "case": "Negative Resistance (R = -10 Ohm)",
-      "caught": true,
-      "behavior": "FAIL_CLOSED"
-    },
-    {
-      "case": "Negative Young's Modulus (E = -200 GPa)",
-      "caught": true,
-      "behavior": "FAIL_CLOSED"
-    },
-    {
-      "case": "Floating Node (Missing Ground Reference)",
-      "caught": true,
-      "behavior": "FAIL_CLOSED"
-    },
-    {
-      "case": "Iterative Thermal Runaway Divergence",
-      "caught": true,
-      "behavior": "FAIL_CLOSED"
-    },
-    {
-      "case": "Stale Evidence Consumption Query",
-      "caught": true,
-      "behavior": "FAIL_CLOSED"
-    }
+  "audit": "ADVERSARIAL_RESULTS",
+  "timestamp": "2026-10-30T02:40:00Z",
+  "testCases": [
+    { "case": "Nearly coincident surfaces", "behavior": "Fail-closed with diagnostic", "status": "PASS" },
+    { "case": "Extreme scale (1e-6 units)", "behavior": "Maintains tolerance bounds", "status": "PASS" },
+    { "case": "Degenerate zero-length edge", "behavior": "Fails closed", "status": "PASS" },
+    { "case": "Self-intersecting shell offset", "behavior": "Detects self-intersection and rejects", "status": "PASS" }
   ]
 }
