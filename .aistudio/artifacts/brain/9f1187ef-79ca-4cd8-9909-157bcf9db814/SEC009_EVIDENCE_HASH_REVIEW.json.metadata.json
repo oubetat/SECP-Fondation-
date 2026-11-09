@@ -1,0 +1,5 @@
+{
+  "summary":  "Cryptographic SHA-256 recomputation and byte-for-byte verification of all 28 evidence files against SEC009_HASH_REVALIDATION.json.",
+  "updatedAt":  "2026-11-02T08:24:54.222171308Z",
+  "userFacing":  true
+}

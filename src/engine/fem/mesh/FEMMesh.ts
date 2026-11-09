@@ -21,6 +21,7 @@ export class FEMMesh {
   // Performance and statistics metadata
   diagnostics?: string;
   timestamp: number = Date.now();
+  cadRevisionId?: string; // Link to the specific CAD revision that produced this mesh
 
   constructor(init?: Partial<FEMMesh>) {
     if (init) Object.assign(this, init);

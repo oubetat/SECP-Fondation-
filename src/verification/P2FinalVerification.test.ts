@@ -97,8 +97,8 @@ describe('P2 FINAL VERIFICATION: Executable Engineering Proofs', () => {
 
     doc = AssemblyIntentMutator.apply(doc, mateIntent as any);
     expect(doc.revision).toBe(2);
-    expect(doc.assembly.mates.length).toBe(1);
-    expect(doc.assembly.mates[0].type).toBe('COINCIDENT');
+    expect(doc.assembly!.mates!.length).toBe(1);
+    expect(doc.assembly!.mates![0].type).toBe('COINCIDENT');
 
     // 3. Execute real Kinematics Solver: ForwardKinematicsSolver with Haas machine kinematic chain
     const machineLib = new MachineLibrary();
@@ -193,13 +193,14 @@ describe('P2 FINAL VERIFICATION: Executable Engineering Proofs', () => {
 
     // 3. Compute deterministic geometric hash from actual nodes and elements
     const meshSignature = `QUAD4_N${femMesh.nodeCount}_E${femMesh.elementCount}_LX${lx}_LY${ly}_V${femMesh.nodes[0]}_${femMesh.nodes[femMesh.nodes.length - 1]}`;
+    if (!doc.derived) doc.derived = {};
     doc.derived.geometryHash = `GEO-FEM-${meshSignature}`;
-    doc.revision++;
+    doc.revision = (Number(doc.revision) || 0) + 1;
 
     // 4. Attach real derived FEA model linked to geometryHash
-    doc.derived.fea = {
+    doc.derived!.fea = {
       modelId: femMesh.meshId,
-      geometryHash: doc.derived.geometryHash,
+      geometryHash: doc.derived!.geometryHash,
       nodeCount: femMesh.nodeCount,
       elementCount: femMesh.elementCount,
       nodes: femMesh.nodes,
@@ -208,9 +209,9 @@ describe('P2 FINAL VERIFICATION: Executable Engineering Proofs', () => {
       totalDofs: femMesh.totalDofs
     } as any;
 
-    expect(doc.derived.fea.geometryHash).toBe(doc.derived.geometryHash);
-    expect(doc.derived.fea.nodeCount).toBe(33);
-    expect(doc.derived.fea.elementCount).toBe(20);
+    expect(doc.derived!.fea.geometryHash).toBe(doc.derived!.geometryHash);
+    expect(doc.derived!.fea.nodeCount).toBe(33);
+    expect(doc.derived!.fea.elementCount).toBe(20);
     console.log('PASS: Path B - Real QUAD4 FEM meshing and geometric causality proven.');
   });
 
@@ -284,9 +285,9 @@ describe('P2 FINAL VERIFICATION: Executable Engineering Proofs', () => {
     expect(result.success).toBe(true);
     doc = result.document!;
 
-    expect(doc.derived.cfd).toBeDefined();
-    expect(doc.derived.cfd.cellCount).toBe(50);
-    expect(doc.derived.cfd.geometryHash).toBe(doc.derived.geometryHash);
+    expect(doc.derived!.cfd).toBeDefined();
+    expect(doc.derived!.cfd.cellCount).toBe(50);
+    expect(doc.derived!.cfd.geometryHash).toBe(doc.derived!.geometryHash);
     console.log(`PASS: Path C - CFD FVM mesh (50 cells), divergence evaluation, and Re=${Math.round(reynoldsNumber)} proven.`);
   });
 

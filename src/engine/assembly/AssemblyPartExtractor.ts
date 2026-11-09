@@ -148,7 +148,7 @@ export class AssemblyPartExtractor {
 
     // Search by instanceId first, then partId
     const matchingInstances = instances.filter(
-      i => i.instanceId === targetIdentifier || i.partId === targetIdentifier
+      (i: any) => i.instanceId === targetIdentifier || i.partId === targetIdentifier
     );
 
     if (matchingInstances.length === 0) {
@@ -160,7 +160,7 @@ export class AssemblyPartExtractor {
       };
     }
 
-    if (matchingInstances.length > 1 && !instances.some(i => i.instanceId === targetIdentifier)) {
+    if (matchingInstances.length > 1 && !instances.some((i: any) => i.instanceId === targetIdentifier)) {
       return {
         status: 'AMBIGUOUS_PART_ID',
         targetId: targetIdentifier,
@@ -260,13 +260,14 @@ export class AssemblyPartExtractor {
       brepHash = tessResult.brepHash;
 
       // Compute bounds from BRep solid bounding box if available, else from vertices
-      if (sourceSolid.boundingBox) {
-        minBounds[0] = sourceSolid.boundingBox.min.x;
-        minBounds[1] = sourceSolid.boundingBox.min.y;
-        minBounds[2] = sourceSolid.boundingBox.min.z;
-        maxBounds[0] = sourceSolid.boundingBox.max.x;
-        maxBounds[1] = sourceSolid.boundingBox.max.y;
-        maxBounds[2] = sourceSolid.boundingBox.max.z;
+      const bbox = (sourceSolid as any).boundingBox;
+      if (bbox && bbox.min && bbox.max) {
+        minBounds[0] = bbox.min.x;
+        minBounds[1] = bbox.min.y;
+        minBounds[2] = bbox.min.z;
+        maxBounds[0] = bbox.max.x;
+        maxBounds[1] = bbox.max.y;
+        maxBounds[2] = bbox.max.z;
       } else {
         for (let i = 0; i < vertices.length; i += 3) {
           if (vertices[i] < minBounds[0]) minBounds[0] = vertices[i];

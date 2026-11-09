@@ -1,6 +1,36 @@
 import { ManufacturingExecutionEvent } from './ManufacturingExecutionTypes';
 
 export class ExecutionEventEngine {
+  public static createEvent(
+    eventId: string,
+    executionSessionId: string,
+    jobId: string,
+    machineId: string,
+    eventType: any,
+    source: string,
+    previousState?: any,
+    newState?: any,
+    errorCode?: string,
+    message?: string
+  ): ManufacturingExecutionEvent {
+    const event: ManufacturingExecutionEvent = {
+      eventId,
+      executionSessionId,
+      jobId,
+      machineId,
+      eventType,
+      timestamp: new Date().toISOString(),
+      source,
+      previousState,
+      newState,
+      errorCode,
+      message,
+      provenanceHash: ''
+    };
+    event.provenanceHash = ExecutionEventEngine.computeEventProvenance(event);
+    return event;
+  }
+
   public static computeEventProvenance(event: ManufacturingExecutionEvent): string {
     const payload = JSON.stringify({
       eventId: event.eventId,

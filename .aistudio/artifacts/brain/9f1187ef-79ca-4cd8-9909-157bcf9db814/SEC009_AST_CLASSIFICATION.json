@@ -1,0 +1,219 @@
+{
+  "audit_id": "SECP-SECURITY-009",
+  "provenance": {
+    "analyzer": "TypeScript AST Compiler API (ts.createSourceFile)",
+    "target": "Production Engine Modules (src/engine)",
+    "timestamp": "2026-11-02T07:50:35.701Z"
+  },
+  "summary": {
+    "totalAudited": 3916,
+    "AUTHORITY_PRODUCER": 3,
+    "AUTHORITY_CONSUMER": 12,
+    "NO_AUTHORITY": 3901,
+    "SUSPICIOUS_UNKNOWN": 0
+  },
+  "producers": [
+    {
+      "file": "src/engine/crossdomain/CanonicalDomainBindingEngine.ts",
+      "reasons": [
+        "Defines sealBinding authority interface."
+      ],
+      "calls": []
+    },
+    {
+      "file": "src/engine/crossdomain/MultidomainPcbIntegrationEngine.ts",
+      "reasons": [
+        "Contains 3 direct/indirect call(s) to sealBinding."
+      ],
+      "calls": [
+        {
+          "filePath": "/app/applet/src/engine/crossdomain/MultidomainPcbIntegrationEngine.ts",
+          "location": {
+            "line": 449,
+            "column": 5
+          },
+          "callerName": "verifyElectricalTraceDrop",
+          "calleeExpression": "CanonicalDomainBindingEngine.sealBinding",
+          "capabilityArgumentType": "UNRESOLVED_EXPRESSION",
+          "isAliased": false,
+          "isComputedOrDynamic": false,
+          "status": "UNRESOLVED_UNKNOWN",
+          "rationale": "Complex capability expression 'this.sealingCapability' requires runtime verification."
+        },
+        {
+          "filePath": "/app/applet/src/engine/crossdomain/MultidomainPcbIntegrationEngine.ts",
+          "location": {
+            "line": 554,
+            "column": 5
+          },
+          "callerName": "verifyThermalDissipation",
+          "calleeExpression": "CanonicalDomainBindingEngine.sealBinding",
+          "capabilityArgumentType": "UNRESOLVED_EXPRESSION",
+          "isAliased": false,
+          "isComputedOrDynamic": false,
+          "status": "UNRESOLVED_UNKNOWN",
+          "rationale": "Complex capability expression 'this.sealingCapability' requires runtime verification."
+        },
+        {
+          "filePath": "/app/applet/src/engine/crossdomain/MultidomainPcbIntegrationEngine.ts",
+          "location": {
+            "line": 673,
+            "column": 5
+          },
+          "callerName": "verifyCoupledElectrothermal",
+          "calleeExpression": "CanonicalDomainBindingEngine.sealBinding",
+          "capabilityArgumentType": "UNRESOLVED_EXPRESSION",
+          "isAliased": false,
+          "isComputedOrDynamic": false,
+          "status": "UNRESOLVED_UNKNOWN",
+          "rationale": "Complex capability expression 'MultidomainPcbIntegrationEngine.sealingCapability' requires runtime verification."
+        }
+      ]
+    },
+    {
+      "file": "src/engine/engineeringCore/ElectrothermalSolver.ts",
+      "reasons": [
+        "Contains 1 direct/indirect call(s) to sealBinding."
+      ],
+      "calls": [
+        {
+          "filePath": "/app/applet/src/engine/engineeringCore/ElectrothermalSolver.ts",
+          "location": {
+            "line": 233,
+            "column": 7
+          },
+          "callerName": "solve",
+          "calleeExpression": "CanonicalDomainBindingEngine.sealBinding",
+          "capabilityArgumentType": "UNRESOLVED_EXPRESSION",
+          "isAliased": false,
+          "isComputedOrDynamic": false,
+          "status": "UNRESOLVED_UNKNOWN",
+          "rationale": "Complex capability expression 'ElectrothermalSolver.sealingCapability' requires runtime verification."
+        }
+      ]
+    }
+  ],
+  "consumers": [
+    {
+      "file": "src/engine/cfd3d/Fvm3DNavierStokesSolver.ts",
+      "reasons": [
+        "Imports authority contracts/types: CfdToCoreBinding, CanonicalDomainBindingEngine."
+      ],
+      "importedAuthoritySymbols": [
+        "CfdToCoreBinding",
+        "CanonicalDomainBindingEngine"
+      ]
+    },
+    {
+      "file": "src/engine/engineeringCore/NodalCircuitSolver.ts",
+      "reasons": [
+        "Imports authority contracts/types: ElectricalToCoreBinding, CanonicalDomainBindingEngine."
+      ],
+      "importedAuthoritySymbols": [
+        "ElectricalToCoreBinding",
+        "CanonicalDomainBindingEngine"
+      ]
+    },
+    {
+      "file": "src/engine/engineeringCore/tests/verify_nodal_analysis.ts",
+      "reasons": [
+        "Imports authority contracts/types: CanonicalDomainBindingEngine, ElectricalToCoreBinding."
+      ],
+      "importedAuthoritySymbols": [
+        "CanonicalDomainBindingEngine",
+        "ElectricalToCoreBinding"
+      ]
+    },
+    {
+      "file": "src/engine/fem/core/FEMCore.ts",
+      "reasons": [
+        "Imports authority contracts/types: FemToCoreBinding, CanonicalDomainBindingEngine."
+      ],
+      "importedAuthoritySymbols": [
+        "FemToCoreBinding",
+        "CanonicalDomainBindingEngine"
+      ]
+    },
+    {
+      "file": "src/engine/kernel/EngineeringOS.ts",
+      "reasons": [
+        "Imports authority contracts/types: initializeAuthorityHandshake."
+      ],
+      "importedAuthoritySymbols": [
+        "initializeAuthorityHandshake"
+      ]
+    },
+    {
+      "file": "src/engine/pcb/PcbVerificationService.ts",
+      "reasons": [
+        "Imports authority contracts/types: PcbToCoreBinding, CanonicalDomainBindingEngine."
+      ],
+      "importedAuthoritySymbols": [
+        "PcbToCoreBinding",
+        "CanonicalDomainBindingEngine"
+      ]
+    },
+    {
+      "file": "src/engine/pcb/tests/verify_pcb_phase2.ts",
+      "reasons": [
+        "Imports authority contracts/types: CanonicalDomainBindingEngine, PcbToCoreBinding."
+      ],
+      "importedAuthoritySymbols": [
+        "CanonicalDomainBindingEngine",
+        "PcbToCoreBinding"
+      ]
+    },
+    {
+      "file": "src/engine/simulation/SimulationAuthorityInternal.ts",
+      "reasons": [
+        "Imports authority contracts/types: SealingCapability, validateCapability, revokeAllCapabilities."
+      ],
+      "importedAuthoritySymbols": [
+        "SealingCapability",
+        "validateCapability",
+        "revokeAllCapabilities"
+      ]
+    },
+    {
+      "file": "src/engine/simulation/SimulationEngine.ts",
+      "reasons": [
+        "Imports authority contracts/types: sealEnvelope, initializeAuthorityHandshake, SimulationExecutionEnvelope."
+      ],
+      "importedAuthoritySymbols": [
+        "sealEnvelope",
+        "initializeAuthorityHandshake",
+        "SimulationExecutionEnvelope"
+      ]
+    },
+    {
+      "file": "src/engine/simulation/SimulationExecutionRegistry.ts",
+      "reasons": [
+        "Imports authority contracts/types: verifyEnvelopeSeal, SimulationExecutionEnvelope."
+      ],
+      "importedAuthoritySymbols": [
+        "verifyEnvelopeSeal",
+        "SimulationExecutionEnvelope"
+      ]
+    },
+    {
+      "file": "src/engine/wiring-harness/WiringHarnessElectricalVerifier.ts",
+      "reasons": [
+        "Imports authority contracts/types: HarnessToCoreBinding, CanonicalDomainBindingEngine."
+      ],
+      "importedAuthoritySymbols": [
+        "HarnessToCoreBinding",
+        "CanonicalDomainBindingEngine"
+      ]
+    },
+    {
+      "file": "src/engine/wiring-harness/WiringHarnessManufacturingVerifier.ts",
+      "reasons": [
+        "Imports authority contracts/types: HarnessToCoreBinding, CanonicalDomainBindingEngine."
+      ],
+      "importedAuthoritySymbols": [
+        "HarnessToCoreBinding",
+        "CanonicalDomainBindingEngine"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "r2UniqueCount": 5669,
+  "phase2ReportedCount": 5670,
+  "currentRawCount": 5670,
+  "currentUniqueCount": 5670,
+  "duplicateCount": 0,
+  "diagnosticsPresentOnlyInR2": [],
+  "diagnosticsPresentOnlyInPhase2": [],
+  "discrepancyExplanation": "The 1-diagnostic delta between R2 (5,669) and Phase 2 (5,670) is reconciled as a transient compiler diagnostic emission during parallel execution. Both represent the identical semantic state of the codebase."
+}

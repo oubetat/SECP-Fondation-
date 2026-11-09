@@ -31,6 +31,9 @@ export class AdaptiveRoughingEngine {
     let totalLength = 0;
     let maxEngagement = 0;
 
+    if (!config.toolAssembly || !config.feedsAndSpeeds) {
+      throw new Error('AdaptiveRoughing requires toolAssembly and feedsAndSpeeds');
+    }
     const tool = config.toolAssembly.tool;
     const toolRadius = tool.diameterMm / 2;
     const stepover = Math.min(config.parameters?.stepoverMm || 4.8, tool.diameterMm * 0.45); // Max 45% stepover for HSM
@@ -38,8 +41,8 @@ export class AdaptiveRoughingEngine {
     const targetEngagementAngleDeg = 45; // Default for legacy
     const targetEngagementRad = (targetEngagementAngleDeg * Math.PI) / 180;
 
-    const safeZ = config.clearancePlaneZ;
-    const retractZ = config.retractPlaneZ;
+    const safeZ = config.clearancePlaneZ ?? (boundary.topZ + 15);
+    const retractZ = config.retractPlaneZ ?? (boundary.topZ + 5);
     const topZ = boundary.topZ;
     const bottomZ = boundary.bottomZ;
 
@@ -209,7 +212,7 @@ export class AdaptiveRoughingEngine {
     );
 
     return {
-      operationId: config.operationId,
+      operationId: config.operationId ?? config.id ?? 'op-adaptive-01',
       strategy: 'ROUGHING_ADAPTIVE',
       points,
       totalLengthMm: Number(totalLength.toFixed(3)),

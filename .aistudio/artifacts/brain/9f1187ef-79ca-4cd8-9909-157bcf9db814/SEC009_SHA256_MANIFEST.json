@@ -1,0 +1,39 @@
+{
+  "manifestId": "SECP-SECURITY-009-SHA256",
+  "timestamp": "2026-11-02T07:51:44.419Z",
+  "algorithm": "SHA-256",
+  "coreFiles": {
+    "src/engine/forensic/LiveForensicAuditor.ts": "769191ec9c8e4cbdd2c7d188a04e28c14b775fa9b6c8cad02d22b71079dbd184",
+    "src/engine/forensic/SEC007_LiveForensicAuditor.test.ts": "ecdc4a3dd16443d26d09b112b19af05b50a2fedea9ec5b10beecb409538156ef",
+    "src/engine/forensic/__tests__/SEC009_MutationHarness.test.ts": "c50c6e7098f53e3b93e0f02dfb0fa4135a7241684f1de393d97d3b158a5d445a",
+    "src/engine/crossdomain/CanonicalDomainBindingEngine.ts": "695b080283e4343e49dc17ee7b1e9fa4e852e0a89ca6d6a24f501306c4764430",
+    "src/engine/simulation/SimulationSealingAuthorization.ts": "ed838a96b3925ef6526cc4fc3d52788db30b0ab922e578530582a84f5e316cd1"
+  },
+  "physicalFixtures": {
+    "src/engine/forensic/__fixtures__/SEC009/01_direct_unauthenticated.ts": "f1695d140d2f882bab5963b15138bf2c48295a81c6d7762da5c5696835141857",
+    "src/engine/forensic/__fixtures__/SEC009/02_aliased_import.ts": "9b1273a1901ba77e0fb097b8ce890ba4197bebc1e61b7e57de5b77e3f081d4e6",
+    "src/engine/forensic/__fixtures__/SEC009/03_reexport_intermediate.ts": "3c8e9a52b4dd71101cde674e3cdc4d7adc83f4ccdb6fd3573611b767191e6a42",
+    "src/engine/forensic/__fixtures__/SEC009/04_wrapper_function.ts": "733553f15a0a403c21eedc4136febbef5d0656e84f8f52c30f7abb19ab5b672f",
+    "src/engine/forensic/__fixtures__/SEC009/05_computed_property_access.ts": "9d9d199ab191b88c6e7cb13e3863b3fe2adeda84f68d26a22fcee556a48e29fe",
+    "src/engine/forensic/__fixtures__/SEC009/06_dynamic_import.ts": "9082e1b7fabeda10227cd2e6607d742eb7f2b51049f3b643b145f8251862cab1",
+    "src/engine/forensic/__fixtures__/SEC009/07_forged_structural_capability.ts": "e1f6129253f7d4a8a0b7e17b9317a3518cba639d57e71d3ebae2cbb280a66073",
+    "src/engine/forensic/__fixtures__/SEC009/08_revoked_capability_replay.ts": "9d8d72f7895b5e0ecb08e11ddb85f69c3593aac718469fd66cfb5da640627a1b",
+    "src/engine/forensic/__fixtures__/SEC009/09_domain_mismatch.ts": "1f81817432824418f83722ca980ea8be76dabeee34db5500a9937fd40b34b731",
+    "src/engine/forensic/__fixtures__/SEC009/10_comment_keyword_spoofing.ts": "94d1da0e2c3cf22d19888322d3ffb95a51fbcfe721c84f9a9dbd1e330b955107",
+    "src/engine/forensic/__fixtures__/SEC009/11_test_utility_wildcard.ts": "c15e9eae45816eed68ed803e5d0ab55a58b8e5ee345f00d08cd9cbfbc768d720",
+    "src/engine/forensic/__fixtures__/SEC009/13_unknown_indirect_call.ts": "a80661cba25803f79d50126736060e49f666670e2703ba53964a008431834cb9",
+    "src/engine/forensic/__fixtures__/SEC009/14_mutation_removed_capability_check.ts": "ba18a5430530597a6d6dd665b92e457186ffcd6c9cf04105bab8740575159c56",
+    "src/engine/forensic/__fixtures__/SEC009/15_mutation_removed_domain_check.ts": "010a154f550bbc05d972a20c0c3fae9d073a9df6ba104abe53b8fb4c8447e605",
+    "src/verification/__fixtures__/adv12_out_of_engine.ts": "bd69043374292ad7b3d385dd29980f2bb1f6990bc7384f7c6a4f1751bba8f90b"
+  },
+  "deliverables": {
+    "SEC009_DISCOVERY_MANIFEST.json": "4f3d9e1737780b4130acfb0d40452920db577b5b0c82b6aa79997b3d338c5a15",
+    "SEC009_AST_CLASSIFICATION.json": "e27809bd241807cef3f94549c2cd4105f504662dce8e910bbdfcf9955c5df294",
+    "SEC009_SEAL_CALLPATH_GRAPH.json": "936bcd5a7d6943c0242e5a2bcb80b1953addbfba16058eb672c15c6e2946bd50",
+    "SEC009_ADVERSARIAL_EXECUTION_RESULTS.json": "e5a3c02d702ff64e74e08a5166f4aa3b3ea1e6fa39417baee4f94a949f5ebff8",
+    "SEC009_MUTATION_EXECUTION_RESULTS.json": "54a931d4b4d3c913fbeda3f0b6172fb638a025f8747812da7fabc960a1167593",
+    "SEC009_TEST_ISOLATION_REPORT.json": "fd115ba34ace5bbff88c3abdf10b3146fcf829e60565e0245f26cac3c93596d8",
+    "SEC009_RAW_EXECUTION_LOG.txt": "7b77be3edaa870fbef4d94c91973bd3c14ca65431ae6ebd3cc12a63970c5d431",
+    "SEC009_FINAL_REMEDIATION_REPORT.md": "147576921f115e51c183a6bea369b217325962f5aa505401a24579536aef8f10"
+  }
+}

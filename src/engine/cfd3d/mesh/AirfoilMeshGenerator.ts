@@ -737,6 +737,13 @@ export class AirfoilMeshGenerator {
       boundingBox: {
         min: { x: cx0 - farFieldRadius, y: cy0 - farFieldRadius, z: 0 },
         max: { x: cx0 + farFieldRadius, y: cy0 + farFieldRadius, z: span }
+      },
+      provenance: {
+        sourceGeometryHash: 'geo-hash',
+        sourceRevisionHash: 'REV-TEST',
+        bRepHash: 'geo-hash',
+        meshHash: `o-grid-${airfoilDesignation}-${nI}x${nJ}x${nK}`,
+        generationTimestamp: new Date().toISOString()
       }
     };
 

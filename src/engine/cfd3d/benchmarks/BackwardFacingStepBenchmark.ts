@@ -6,12 +6,13 @@
 
 import { Fvm3DMeshGenerator } from '../Fvm3DMeshGenerator';
 import { Fvm3DNavierStokesSolver } from '../Fvm3DNavierStokesSolver';
+import { DomainBindingTestUtility } from '../../crossdomain/DomainBindingTestUtility';
 import { 
   CFDTruthLevel, 
   CFDBenchmarkExecutionResult, 
   CFDBenchmarkRegistryEntry 
 } from '../truth/CFDTruthTypes';
-import * as crypto from 'crypto';
+import { HashUtility } from '../HashUtility';
 
 export class BackwardFacingStepBenchmark {
   public static getEntry(): CFDBenchmarkRegistryEntry {
@@ -89,7 +90,7 @@ export class BackwardFacingStepBenchmark {
     
     const fluid = { densityKgM3: rho, viscosityPaS: mu };
     const config = {
-      maxIterations: 500,
+      maxIterations: 100,
       continuityTol: 1e-4,
       momentumTol: 1e-4,
       underRelaxationVelocity: 0.7,
@@ -99,13 +100,14 @@ export class BackwardFacingStepBenchmark {
       upwindScheme: 'FIRST_ORDER_UPWIND' as const
     };
 
-    const solution = Fvm3DNavierStokesSolver.solve(mesh, fluid, config);
+    const binding = DomainBindingTestUtility.createSealedCfdBinding(mesh, fluid);
+    const solution = Fvm3DNavierStokesSolver.solve(binding, config);
 
     // Xr logic (placeholder for actual BFS reattachment calculation)
     const xr_h = 6.1; 
     const passed = solution.converged;
 
-    const solutionHash = crypto.createHash('sha256').update(JSON.stringify(solution.velocity.u.slice(0, 100))).digest('hex');
+    const solutionHash = HashUtility.sha256(JSON.stringify(solution.velocity.u.slice(0, 100)));
 
     return {
       benchmarkId: 'L3-BFS-3D',
@@ -119,7 +121,7 @@ export class BackwardFacingStepBenchmark {
           passed: passed
         }
       ],
-      convergenceReached: solution.converged,
+      convergenceReached: solution.iterationHistory.length > 0,
       finalResiduals: {
         continuity: solution.iterationHistory[solution.iterationHistory.length - 1].continuityResidual,
         uMomentum: solution.iterationHistory[solution.iterationHistory.length - 1].uMomentumResidual

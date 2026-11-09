@@ -65,7 +65,8 @@ export class BearingPlacementEngine {
       revision: 1
     };
 
-    const assemblyComponent: AssemblyComponent = {
+    const assemblyComponent = new AssemblyComponent({
+      id: instId,
       instanceId: instId,
       partId: bearing.partNumber,
       name: bearingInstance.name,
@@ -74,33 +75,35 @@ export class BearingPlacementEngine {
       suppressed: false,
       fixed: false,
       revision: 1
-    };
+    });
 
     const constraints: AssemblyConstraint[] = [
-      {
+      new AssemblyConstraint({
         id: `const-conc-${instId}`,
+        constraintId: `const-conc-${instId}`,
         name: 'Concentric',
         type: 'CONCENTRIC' as any,
-        componentAId: instId,
-        componentBId: shaft.instanceId,
-        entityAId: 'bearing_bore',
-        entityBId: 'shaft_cyl',
+        componentA: instId,
+        componentB: shaft.instanceId,
+        entityA: 'bearing_bore',
+        entityB: 'shaft_cyl',
         parameters: {},
         isSuppressed: false,
         status: 'RESOLVED'
-      },
-      {
+      }),
+      new AssemblyConstraint({
         id: `const-mate-${instId}`,
+        constraintId: `const-mate-${instId}`,
         name: 'Mate',
         type: 'MATE' as any,
-        componentAId: instId,
-        componentBId: shaft.instanceId,
-        entityAId: 'bearing_face',
-        entityBId: 'shaft_shoulder',
+        componentA: instId,
+        componentB: shaft.instanceId,
+        entityA: 'bearing_face',
+        entityB: 'shaft_shoulder',
         parameters: { offset: 0 },
         isSuppressed: false,
         status: 'RESOLVED'
-      }
+      })
     ];
 
     return {

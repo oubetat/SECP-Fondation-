@@ -84,14 +84,19 @@ export class PcbVerificationService {
     registerInLedger: boolean = true
   ): ComprehensivePcbVerificationResult {
     // 0. GATING: Verify simulation authority seal (Fail-Closed)
-    if (!CanonicalDomainBindingEngine.validateBinding(binding)) {
-      throw new Error(`[AUTHORITY_GATE_REJECTION] PCB Verification execution denied: Invalid or non-authoritative simulation seal.`);
+    if (!binding || !('executionAuthority' in binding) || !binding.executionAuthority?.isAuthoritative) {
+      throw new Error('SIMULATION_AUTHORITY_VIOLATION: PCB verification attempted without valid execution authorization.');
+    }
+
+    const validation = CanonicalDomainBindingEngine.validateBinding(binding);
+    if (!validation.valid) {
+      throw new Error(`[AUTHORITY_GATE_REJECTION] PCB Verification execution denied: ${validation.errors.join(', ')}`);
     }
 
     const model = binding.payload;
     const runId = `RUN-${Date.now().toString(36).toUpperCase()}-${Math.random().toString(36).substring(2, 6).toUpperCase()}`;
-    const designId = model.designId || 'SECP-PCB-CANONICAL-REF';
-    const revisionId = model.revisionId || 'REV-2.0.0';
+    const designId = binding.canonicalEntityId || binding.designId || model.designId || 'SECP-PCB-CANONICAL-REF';
+    const revisionId = binding.revisionId || model.revisionId || 'REV-2.0.0';
 
     // 1. Resolve Ruleset and compute hashes
     const ruleset = customRuleset || model.ruleset || PcbDesignRulesManager.getDefaultStandardRuleset();

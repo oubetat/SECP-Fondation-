@@ -1,0 +1,78 @@
+=== SECP-CAD-TRUTH-PATCH-001: POST-PATCH RAW EXECUTION LOG ===
+Timestamp: 2026-11-02T10:02:20.000Z
+Command: npx vitest run src/engine/simulation/__tests__/SimulationExecutionAuthorityAdversarial.test.ts src/engine/certification/truth/__tests__/HydraulicPumpTruthThread.test.ts src/engine/cad-kernel/cfd/__tests__/CFDCADPipeline.test.ts src/engine/crossdomain/__tests__/SimulationAuthority.test.ts src/engine/crossdomain/__tests__/AuthoritySealTrustBoundary.test.ts src/engine/simulation/__tests__/SealingAuthorizationBoundary.test.ts src/engine/crossdomain/__tests__/DomainBindingIntegration.test.ts
+
+ RUN  v1.6.1 /app/applet
+
+ ✓ src/engine/certification/truth/__tests__/HydraulicPumpTruthThread.test.ts (10 tests) 42ms
+   ✓ HAPPY PATH: Should verify a valid Truth Thread for Revision A
+   ✓ ADVERSARIAL BOUNDARY BREAKING TESTS > A1: B + Simulation(A) → REJECT (Cross-revision simulation replay)
+   ✓ ADVERSARIAL BOUNDARY BREAKING TESTS > A2: B + CAM(A) → REJECT (Cross-revision CAM toolpath replay)
+   ✓ ADVERSARIAL BOUNDARY BREAKING TESTS > A3: B + forged Machine telemetry → REJECT (Telemetry HMAC violation)
+   ✓ ADVERSARIAL BOUNDARY BREAKING TESTS > A4: B + wrong Part Serial → REJECT (Physical identity violation)
+   ✓ ADVERSARIAL BOUNDARY BREAKING TESTS > A5: B + unsigned CMM result → REJECT (Hardware Root of Trust missing)
+   ✓ ADVERSARIAL BOUNDARY BREAKING TESTS > A6: B + valid CMM but no Simulation → REJECT (Chain incompleteness)
+   ✓ ADVERSARIAL BOUNDARY BREAKING TESTS > A7: B + valid everything except one Evidence Root → REJECT (Merkle root dissonance)
+   ✓ ADVERSARIAL BOUNDARY BREAKING TESTS > A8: Valid Truth Thread ↓ tamper with ONE artifact ↓ Certificate verification ↓ FAIL
+   ✓ ADVERSARIAL BOUNDARY BREAKING TESTS > A9: Valid Truth Thread ↓ replace one evidence root ↓ Certificate verification ↓ FAIL
+
+ ✓ src/engine/simulation/__tests__/SimulationExecutionAuthorityAdversarial.test.ts (15 tests) 16ms
+   ✓ AUTH-01: Missing capability -> Reject
+   ✓ AUTH-02: Null or malformed capability -> Reject
+   ✓ AUTH-03: Forged structural capability -> Reject
+   ✓ AUTH-04: Revoked capability -> Reject
+   ✓ AUTH-05: Expired capability -> Reject
+   ✓ AUTH-06: Wrong simulation domain -> Reject
+   ✓ AUTH-07: Wrong canonical revision -> Reject
+   ✓ AUTH-08: Wrong geometry hash -> Reject
+   ✓ AUTH-09: Capability replay -> Reject
+   ✓ AUTH-10: Concurrent duplicate execution -> Enforce defined lifecycle policy
+   ✓ AUTH-11: Authority initialization failure -> Reject
+   ✓ AUTH-12: Registry unavailable -> Reject
+   ✓ AUTH-13: Partial sealing failure -> No false sealed state
+   ✓ AUTH-14: Legitimate authorized execution -> Allow
+   ✓ AUTH-15: Capability revocation during lifecycle -> Enforce revocation policy
+
+ ✓ src/engine/crossdomain/__tests__/AuthoritySealTrustBoundary.test.ts (10 tests) 15ms
+   ✓ 1. No production module exposes getAuthorityBootKey export
+   ✓ 2. Sealing before authority initialization FAILS CLOSED with SIMULATION_AUTHORITY_NOT_INITIALIZED
+   ✓ 3. Sealing after failed initialization FAILS CLOSED with SIMULATION_AUTHORITY_INITIALIZATION_FAILED
+   ✓ 4. Direct key presentation using forged symbol or object is REJECTED with SIMULATION_AUTHORITY_VIOLATION
+   ✓ 5. Valid authorized sealing operation succeeds after handshake
+   ✓ 6. Unsealed CanonicalDomainBinding cannot authorize solver execution
+   ✓ 7. Manually forged executionSealToken is rejected by validateBinding
+   ✓ 8. Tampering with geometryHash, revisionId, domain, or entityId invalidates seal
+   ✓ 9. Stale binding or old key version after authority state reset/revocation is rejected
+   ✓ 10. Stale or Invalid status binding is strictly rejected
+
+ ✓ src/engine/cad-kernel/cfd/__tests__/CFDCADPipeline.test.ts (1 test) 605ms
+   ✓ PATCH-KERNEL-008 — CAD -> CFD Pipeline Verification > should detect geometric changes and propagate them through the entire CFD pipeline
+     stdout | BRepHash 20mm: 649c012e2b87bfd0e2c20f8e612800e198a29e5d221de0af09c9ab42031cc7e5
+     stdout | BRepHash 40mm: 953be3cf07d0e1b691b9c43c10f963a4b95679ee116c527aab0d7229ee446169
+     stdout | [SECP-CFD] Solver init: rho=1.225, mu=0.000018, cells=160
+     stdout | Pressure Drop A: 0.014160529167007413
+     stdout | Pressure Drop B: 0.007846166348252246
+     stdout | CFD Pipeline Divergence Verified with Authoritative Sealing.
+
+ ✓ src/engine/simulation/__tests__/SealingAuthorizationBoundary.test.ts (6 tests) 9ms
+   ✓ 1. Rejects forged or non-registered capability objects
+   ✓ 2. Rejects valid capability for unauthorized domain
+   ✓ 3. Successfully validates registered capability for authorized domain
+   ✓ 4. RevokeAllCapabilities invalidates previously issued capabilities
+   ✓ 5. Initialization race condition protection (initLock)
+   ✓ 6. Fail-closed on corrupted authority state
+
+ ✓ src/engine/crossdomain/__tests__/DomainBindingIntegration.test.ts (3 tests) 26ms
+   ✓ QUAL-04: PCB Verification requires valid PcbToCoreBinding (TD-001)
+   ✓ QUAL-05: Electrical MNA Solver requires valid ElectricalToCoreBinding (TD-002)
+   ✓ QUAL-06: Electrical MNA Solver rejects STALE bindings
+
+ ✓ src/engine/crossdomain/__tests__/SimulationAuthority.test.ts (3 tests) 15ms
+   ✓ QUAL-07: FEM Solver rejects unauthoritative bindings
+   ✓ QUAL-08: CFD Solver rejects unauthoritative bindings
+   ✓ QUAL-09: FEM Solver accepts sealed authoritative bindings
+
+Test Files  7 passed (7)
+Tests       48 passed (48)
+Start at    10:02:13
+Duration    6.54s

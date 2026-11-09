@@ -245,49 +245,49 @@ export class CyberPhysicalHILTestHarness {
       case 'REPLAY_ATTACK':
         // Reuse an existing acquisition ID that was already processed
         (pkg.measurementEnvelope as any).acquisitionId = 'ACQ-ALREADY-PROCESSED-001';
-        pkg.measurementEnvelope.verificationStatus = 'REPLAYED';
+        (pkg.measurementEnvelope as any).verificationStatus = 'REPLAYED';
         break;
 
       case 'SIGNATURE_FORGERY':
         // Forged signature
         (pkg.measurementEnvelope as any).signature = 'SIG-FORGED-INVALID-TAMPERED-KEY';
-        pkg.measurementEnvelope.verificationStatus = 'TAMPERED';
+        (pkg.measurementEnvelope as any).verificationStatus = 'TAMPERED';
         break;
 
       case 'SERIAL_SUBSTITUTION':
         // Serial number mismatch between physical part identity and execution envelope
         (pkg.physicalPartIdentity as any).partSerial = 'SN-FORGED-WRONG-SERIAL-999';
-        pkg.physicalPartIdentity.verificationStatus = 'REJECTED';
+        (pkg.physicalPartIdentity as any).verificationStatus = 'REJECTED';
         break;
 
       case 'REVISION_SUBSTITUTION':
         // Revision mismatch between G-code revision and physical part revision
         (pkg.physicalPartIdentity as any).canonicalCadRevision = 'REV-TAMPERED-OUT-OF-SYNC';
-        pkg.physicalPartIdentity.verificationStatus = 'REJECTED';
+        (pkg.physicalPartIdentity as any).verificationStatus = 'REJECTED';
         break;
 
       case 'CALIBRATION_EXPIRY':
         // Expired calibration date
         (pkg.calibrationIdentity as any).expiresAt = new Date(Date.now() - 365 * 86400 * 1000).toISOString();
-        pkg.calibrationIdentity.verificationStatus = 'EXPIRED';
+        (pkg.calibrationIdentity as any).verificationStatus = 'EXPIRED';
         break;
 
       case 'MACHINE_IDENTITY_SUBSTITUTION':
         // Unenrolled machine identity
         (pkg.machineIdentity as any).machineId = 'EMU-UNENROLLED-ROGUE-CNC-99';
-        pkg.machineIdentity.verificationStatus = 'REJECTED';
+        (pkg.machineIdentity as any).verificationStatus = 'REJECTED';
         break;
 
       case 'CERTIFICATE_SUBSTITUTION':
         // Invalid certification authority
         (pkg.certificationAuthority as any).authorityId = 'FORGED-UNACCREDITED-BODY';
-        pkg.certificationAuthority.verificationStatus = 'REJECTED';
+        (pkg.certificationAuthority as any).verificationStatus = 'REJECTED';
         break;
 
       case 'MEASUREMENT_MUTATION':
         // Out-of-tolerance feature measurement
         (pkg.measurementEnvelope as any).featureMeasurements = GoldenTurbineTestArticle.generateMutatedMeasurements(pkg.physicalPartIdentity.partSerial);
-        pkg.measurementEnvelope.verificationStatus = 'REJECTED';
+        (pkg.measurementEnvelope as any).verificationStatus = 'REJECTED';
         break;
     }
 

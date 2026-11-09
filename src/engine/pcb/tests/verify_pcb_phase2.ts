@@ -19,6 +19,25 @@ import { PcbSchematicConsistencyVerifier } from '../PcbSchematicConsistencyVerif
 import { PcbHardAcceptanceGate } from '../PcbHardAcceptanceGate';
 import { PcbVerificationService } from '../PcbVerificationService';
 import { EngineeringEvidenceLedger } from '../../evidence/ledger/EngineeringEvidenceLedger';
+import { CanonicalDomainBindingEngine } from '../../crossdomain/CanonicalDomainBindingEngine';
+import { PcbToCoreBinding } from '../../crossdomain/CanonicalDomainBinding';
+
+function createSealedPcbBinding(model: PcbCanonicalModel): PcbToCoreBinding {
+  const binding = CanonicalDomainBindingEngine.createBinding(
+    'PCB',
+    model.designId || 'TEST-DESIGN',
+    model.revisionId || 'REV-TEST',
+    model,
+    'g-hash',
+    't-hash',
+    'm-hash',
+    'e-hash',
+    'p-hash'
+  ) as PcbToCoreBinding;
+  (binding.executionAuthority as any).isAuthoritative = true;
+  (binding.executionAuthority as any).executionSealToken = 'TEST-SEAL';
+  return binding;
+}
 
 export interface Phase2TestAssertionResult {
   id: string;
@@ -324,7 +343,8 @@ export function runPhase2Suite(): {
     delete base.footprintLibrary['FP_MCU_QFP48'];
 
     const conn = PcbConnectivityVerifier.verify(base);
-    const serviceRes = PcbVerificationService.verifyAndAttest(base, undefined, false);
+    const binding = createSealedPcbBinding(base);
+    const serviceRes = PcbVerificationService.verifyAndAttest(binding, undefined, false);
 
     const closedFail = conn.status === 'INCOMPLETE_FOOTPRINT_DATA' &&
       serviceRes.overallStatus === 'INCOMPLETE' &&
@@ -408,7 +428,8 @@ export function runPhase2Suite(): {
     const ruleset = PcbDesignRulesManager.getDefaultStandardRuleset();
 
     // Generate valid attested evidence
-    const verifyResult = PcbVerificationService.verifyAndAttest(base, ruleset, true);
+    const binding = createSealedPcbBinding(base);
+    const verifyResult = PcbVerificationService.verifyAndAttest(binding, ruleset, true);
     const evidence = verifyResult.evidence;
 
     // Check 1: Fresh against identical model

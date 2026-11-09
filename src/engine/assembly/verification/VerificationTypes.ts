@@ -47,7 +47,7 @@ export interface RegenerationVerificationResult {
 
 export interface AssemblyVerificationReport {
   documentId: string;
-  revision: number;
+  revision: string | number;
   timestamp: string;
   constraints: ConstraintVerificationResult[];
   dof: DOFVerificationResult;

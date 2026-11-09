@@ -1,0 +1,21 @@
+{
+  "taskId": "SECP-STAGE3-ADJ-004",
+  "auditTarget": "Adversarial security test battery execution",
+  "timestamp": "2026-11-01T09:35:00Z",
+  "reproduction": {
+    "testSuite": "src/engine/crossdomain/__tests__/AuthoritySealTrustBoundary.test.ts",
+    "totalTests": 10,
+    "pass": 10,
+    "fail": 0,
+    "duration": "1.04s"
+  },
+  "verifiedBehaviors": [
+    "Unauthorized sealing before initialization throws correctly.",
+    "Sealing after failed initialization throws correctly.",
+    "Forged symbol keys are rejected.",
+    "Tampering with geometry or revision invalidates the seal HMAC.",
+    "Old key versions after revocation are rejected.",
+    "Binding status (STALE/INVALID) is checked during validation."
+  ],
+  "verdict": "INDEPENDENTLY_VERIFIED"
+}

@@ -28,8 +28,8 @@ describe('P6-003 — Evidence / Engineering Result Causality', () => {
 
     const result = {
       resultId: 'RES-001',
-      domain: 'CAD' as const,
       executionId: 'EXEC-001',
+      domain: 'CAD' as const,
       outputMetrics: { volume: 100, bRepHash },
       bRepHash,
       kernelVersion: '3.5.2',
@@ -39,7 +39,7 @@ describe('P6-003 — Evidence / Engineering Result Causality', () => {
     const evidence = EvidenceIntegrityEngine.generateEvidence({
       domain: 'CAD',
       documentId: doc.documentId,
-      documentRevision: doc.revision,
+      documentRevision: typeof doc.revision === 'number' ? doc.revision : (Number(doc.revision) || 1),
       actionId: 'EVALUATE',
       executionId: result.executionId,
       capabilityId: 'BRepExtrude',

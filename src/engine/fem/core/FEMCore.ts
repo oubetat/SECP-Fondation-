@@ -130,8 +130,13 @@ export class FEMCore {
 
   public solve(binding: FemToCoreBinding, options: FEMSolveOptions = {}): FEMSolveResult {
     // 0. GATING: Verify simulation authority seal (Fail-Closed)
-    if (!CanonicalDomainBindingEngine.validateBinding(binding)) {
-      throw new Error(`[AUTHORITY_GATE_REJECTION] FEM Solver execution denied: Invalid or non-authoritative simulation seal.`);
+    if (!binding || !('executionAuthority' in binding) || !binding.executionAuthority?.isAuthoritative) {
+      throw new Error('SIMULATION_AUTHORITY_VIOLATION: FEM solve attempted without valid execution authorization.');
+    }
+
+    const validation = CanonicalDomainBindingEngine.validateBinding(binding);
+    if (!validation.valid) {
+      throw new Error(`[AUTHORITY_GATE_REJECTION] FEM Solver execution denied: ${validation.errors.join(', ')}`);
     }
 
     const model = binding.payload;

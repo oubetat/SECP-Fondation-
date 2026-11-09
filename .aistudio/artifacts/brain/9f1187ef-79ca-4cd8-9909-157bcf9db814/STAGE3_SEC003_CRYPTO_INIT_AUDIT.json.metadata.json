@@ -1,0 +1,5 @@
+{
+  "summary":  "Audit report documenting removal of insecure fallback secrets, fail-closed initialization enforcement, HMAC-SHA256 payload domain separation, and constant-time tag verification.",
+  "updatedAt":  "2026-11-01T09:19:23.606973424Z",
+  "userFacing":  true
+}

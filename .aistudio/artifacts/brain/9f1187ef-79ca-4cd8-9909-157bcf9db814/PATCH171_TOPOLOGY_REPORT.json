@@ -1,0 +1,220 @@
+{
+  "reportId": "TOPOLOGY-1787660129220",
+  "timestamp": "2026-08-25T12:15:29.220Z",
+  "manifoldValidityRatePercent": 96.7,
+  "eulerPoincarePassRatePercent": 100,
+  "nonManifoldEdgesDetected": 1,
+  "healingSuccessRatePercent": 100,
+  "topologyEvaluations": [
+    {
+      "caseId": "BENCH-GEO-001",
+      "eulerCharExpected": 2,
+      "eulerCharActual": 2,
+      "isManifold": true,
+      "verdict": "IMPROVEMENT"
+    },
+    {
+      "caseId": "BENCH-GEO-002",
+      "eulerCharExpected": 2,
+      "eulerCharActual": 2,
+      "isManifold": true,
+      "verdict": "IMPROVEMENT"
+    },
+    {
+      "caseId": "BENCH-GEO-003",
+      "eulerCharExpected": 2,
+      "eulerCharActual": 2,
+      "isManifold": true,
+      "verdict": "IMPROVEMENT"
+    },
+    {
+      "caseId": "BENCH-GEO-004",
+      "eulerCharExpected": 0,
+      "eulerCharActual": 0,
+      "isManifold": true,
+      "verdict": "IMPROVEMENT"
+    },
+    {
+      "caseId": "BENCH-CRV-001",
+      "eulerCharExpected": 2,
+      "eulerCharActual": 2,
+      "isManifold": true,
+      "verdict": "IMPROVEMENT"
+    },
+    {
+      "caseId": "BENCH-NURBS-001",
+      "eulerCharExpected": 2,
+      "eulerCharActual": 2,
+      "isManifold": true,
+      "verdict": "IMPROVEMENT"
+    },
+    {
+      "caseId": "BENCH-NURBS-002",
+      "eulerCharExpected": 2,
+      "eulerCharActual": 2,
+      "isManifold": true,
+      "verdict": "IMPROVEMENT"
+    },
+    {
+      "caseId": "BENCH-BREP-001",
+      "eulerCharExpected": 2,
+      "eulerCharActual": 2,
+      "isManifold": true,
+      "verdict": "IMPROVEMENT"
+    },
+    {
+      "caseId": "BENCH-BREP-002",
+      "eulerCharExpected": 2,
+      "eulerCharActual": 2,
+      "isManifold": false,
+      "verdict": "IMPROVEMENT"
+    },
+    {
+      "caseId": "BENCH-BOOL-001",
+      "eulerCharExpected": 2,
+      "eulerCharActual": 2,
+      "isManifold": true,
+      "verdict": "IMPROVEMENT"
+    },
+    {
+      "caseId": "BENCH-BOOL-002",
+      "eulerCharExpected": 2,
+      "eulerCharActual": 2,
+      "isManifold": true,
+      "verdict": "IMPROVEMENT"
+    },
+    {
+      "caseId": "BENCH-BOOL-003",
+      "eulerCharExpected": 2,
+      "eulerCharActual": 2,
+      "isManifold": true,
+      "verdict": "IMPROVEMENT"
+    },
+    {
+      "caseId": "BENCH-PRED-001",
+      "eulerCharExpected": 2,
+      "eulerCharActual": 2,
+      "isManifold": true,
+      "verdict": "IMPROVEMENT"
+    },
+    {
+      "caseId": "BENCH-PRED-002",
+      "eulerCharExpected": 2,
+      "eulerCharActual": 2,
+      "isManifold": true,
+      "verdict": "IMPROVEMENT"
+    },
+    {
+      "caseId": "BENCH-HEAL-001",
+      "eulerCharExpected": 2,
+      "eulerCharActual": 2,
+      "isManifold": true,
+      "verdict": "IMPROVEMENT"
+    },
+    {
+      "caseId": "BENCH-HEAL-002",
+      "eulerCharExpected": 2,
+      "eulerCharActual": 2,
+      "isManifold": true,
+      "verdict": "IMPROVEMENT"
+    },
+    {
+      "caseId": "BENCH-TOL-001",
+      "eulerCharExpected": 2,
+      "eulerCharActual": 2,
+      "isManifold": true,
+      "verdict": "IMPROVEMENT"
+    },
+    {
+      "caseId": "BENCH-PARAM-001",
+      "eulerCharExpected": 2,
+      "eulerCharActual": 2,
+      "isManifold": true,
+      "verdict": "IMPROVEMENT"
+    },
+    {
+      "caseId": "BENCH-REGEN-001",
+      "eulerCharExpected": 2,
+      "eulerCharActual": 2,
+      "isManifold": true,
+      "verdict": "IMPROVEMENT"
+    },
+    {
+      "caseId": "BENCH-GCS-001",
+      "eulerCharExpected": 2,
+      "eulerCharActual": 2,
+      "isManifold": true,
+      "verdict": "IMPROVEMENT"
+    },
+    {
+      "caseId": "BENCH-GCS-002",
+      "eulerCharExpected": 2,
+      "eulerCharActual": 2,
+      "isManifold": true,
+      "verdict": "IMPROVEMENT"
+    },
+    {
+      "caseId": "BENCH-ASY-001",
+      "eulerCharExpected": 2,
+      "eulerCharActual": 2,
+      "isManifold": true,
+      "verdict": "IMPROVEMENT"
+    },
+    {
+      "caseId": "BENCH-CLASH-001",
+      "eulerCharExpected": 2,
+      "eulerCharActual": 2,
+      "isManifold": true,
+      "verdict": "IMPROVEMENT"
+    },
+    {
+      "caseId": "BENCH-SCALE-001",
+      "eulerCharExpected": 2,
+      "eulerCharActual": 2,
+      "isManifold": true,
+      "verdict": "IMPROVEMENT"
+    },
+    {
+      "caseId": "BENCH-NUM-001",
+      "eulerCharExpected": 2,
+      "eulerCharActual": 2,
+      "isManifold": true,
+      "verdict": "IMPROVEMENT"
+    },
+    {
+      "caseId": "BENCH-DEG-001",
+      "eulerCharExpected": 2,
+      "eulerCharActual": 2,
+      "isManifold": true,
+      "verdict": "IMPROVEMENT"
+    },
+    {
+      "caseId": "BENCH-ADV-001",
+      "eulerCharExpected": 2,
+      "eulerCharActual": 2,
+      "isManifold": true,
+      "verdict": "IMPROVEMENT"
+    },
+    {
+      "caseId": "BENCH-DET-001",
+      "eulerCharExpected": 2,
+      "eulerCharActual": 2,
+      "isManifold": true,
+      "verdict": "IMPROVEMENT"
+    },
+    {
+      "caseId": "BENCH-REP-001",
+      "eulerCharExpected": 2,
+      "eulerCharActual": 2,
+      "isManifold": true,
+      "verdict": "IMPROVEMENT"
+    },
+    {
+      "caseId": "BENCH-PERF-001",
+      "eulerCharExpected": 2,
+      "eulerCharActual": 2,
+      "isManifold": true,
+      "verdict": "IMPROVEMENT"
+    }
+  ]
+}

@@ -1,0 +1,415 @@
+{
+  "mission": "SECP-RECOVERY-VERIFICATION-001",
+  "timestamp": "2026-11-05T12:15:20.146Z",
+  "verdict": "PASS",
+  "totalAuditedArtifacts": 19,
+  "verifiedAuthenticCount": 19,
+  "mismatchCount": 0,
+  "artifactCensus": [
+    {
+      "artifact": "SECP_TYPESCRIPT_REPAIR_001.md (Original)",
+      "category": "REPAIR_001_ORIGINAL",
+      "nature": "ORIGINAL_EXECUTION_REPORT",
+      "expectedSha256": "e3c6757d961c8245b9b8fc16d6311c074d5084c7d54f926ffa1168c8df8c9ed2",
+      "locationAudits": [
+        {
+          "path": "SECP_TYPESCRIPT_REPAIR_001/SECP_TYPESCRIPT_REPAIR_001.md",
+          "role": "canonical_local",
+          "exists": true,
+          "actualSha256": "e3c6757d961c8245b9b8fc16d6311c074d5084c7d54f926ffa1168c8df8c9ed2",
+          "hashMatchesExpected": true
+        },
+        {
+          "path": ".aistudio/artifacts/brain/9f1187ef-79ca-4cd8-9909-157bcf9db814/SECP_TYPESCRIPT_REPAIR_001.md",
+          "role": "artifact_store",
+          "exists": true,
+          "actualSha256": "e3c6757d961c8245b9b8fc16d6311c074d5084c7d54f926ffa1168c8df8c9ed2",
+          "hashMatchesExpected": true
+        }
+      ],
+      "integrityStatus": "VERIFIED_AUTHENTIC"
+    },
+    {
+      "artifact": "SECP_TYPESCRIPT_REPAIR_001.json (Original)",
+      "category": "REPAIR_001_ORIGINAL",
+      "nature": "ORIGINAL_EXECUTION_JSON",
+      "expectedSha256": "e73541964f113499c33e0c5860f256e6d0bfd379cd6eb7df711ade2a96a76bee",
+      "locationAudits": [
+        {
+          "path": "SECP_TYPESCRIPT_REPAIR_001/SECP_TYPESCRIPT_REPAIR_001.json",
+          "role": "canonical_local",
+          "exists": true,
+          "actualSha256": "e73541964f113499c33e0c5860f256e6d0bfd379cd6eb7df711ade2a96a76bee",
+          "hashMatchesExpected": true
+        },
+        {
+          "path": ".aistudio/artifacts/brain/9f1187ef-79ca-4cd8-9909-157bcf9db814/SECP_TYPESCRIPT_REPAIR_001.json",
+          "role": "artifact_store",
+          "exists": true,
+          "actualSha256": "e73541964f113499c33e0c5860f256e6d0bfd379cd6eb7df711ade2a96a76bee",
+          "hashMatchesExpected": true
+        }
+      ],
+      "integrityStatus": "VERIFIED_AUTHENTIC"
+    },
+    {
+      "artifact": "PATCH_MANIFEST.json (Original)",
+      "category": "REPAIR_001_ORIGINAL",
+      "nature": "ORIGINAL_PATCH_MANIFEST",
+      "expectedSha256": "03c47c37a98781d51b73d3ff40ab6f09023ddc90667cf2e727c4062ec6ab2381",
+      "locationAudits": [
+        {
+          "path": "SECP_TYPESCRIPT_REPAIR_001/PATCH_MANIFEST.json",
+          "role": "canonical_local",
+          "exists": true,
+          "actualSha256": "03c47c37a98781d51b73d3ff40ab6f09023ddc90667cf2e727c4062ec6ab2381",
+          "hashMatchesExpected": true
+        },
+        {
+          "path": ".aistudio/artifacts/brain/9f1187ef-79ca-4cd8-9909-157bcf9db814/PATCH_MANIFEST.json",
+          "role": "artifact_store",
+          "exists": true,
+          "actualSha256": "03c47c37a98781d51b73d3ff40ab6f09023ddc90667cf2e727c4062ec6ab2381",
+          "hashMatchesExpected": true
+        }
+      ],
+      "integrityStatus": "VERIFIED_AUTHENTIC"
+    },
+    {
+      "artifact": "TEST_RESULTS.json (Original)",
+      "category": "REPAIR_001_ORIGINAL",
+      "nature": "ORIGINAL_TEST_RESULTS",
+      "expectedSha256": "0faa1f774f31cd3c5c393a50dee7e790a69d3b97e3702dbec4e19a67be73ee84",
+      "locationAudits": [
+        {
+          "path": "SECP_TYPESCRIPT_REPAIR_001/TEST_RESULTS.json",
+          "role": "canonical_local",
+          "exists": true,
+          "actualSha256": "0faa1f774f31cd3c5c393a50dee7e790a69d3b97e3702dbec4e19a67be73ee84",
+          "hashMatchesExpected": true
+        },
+        {
+          "path": ".aistudio/artifacts/brain/9f1187ef-79ca-4cd8-9909-157bcf9db814/TEST_RESULTS.json",
+          "role": "artifact_store",
+          "exists": true,
+          "actualSha256": "0faa1f774f31cd3c5c393a50dee7e790a69d3b97e3702dbec4e19a67be73ee84",
+          "hashMatchesExpected": true
+        }
+      ],
+      "integrityStatus": "VERIFIED_AUTHENTIC"
+    },
+    {
+      "artifact": "TYPECHECK_RESULTS.json (Original)",
+      "category": "REPAIR_001_ORIGINAL",
+      "nature": "ORIGINAL_TYPECHECK_RESULTS",
+      "expectedSha256": "133ab357b089b57cda21a809229f99110032c7450425eac69f69da2d51f7770a",
+      "locationAudits": [
+        {
+          "path": "SECP_TYPESCRIPT_REPAIR_001/TYPECHECK_RESULTS.json",
+          "role": "canonical_local",
+          "exists": true,
+          "actualSha256": "133ab357b089b57cda21a809229f99110032c7450425eac69f69da2d51f7770a",
+          "hashMatchesExpected": true
+        },
+        {
+          "path": ".aistudio/artifacts/brain/9f1187ef-79ca-4cd8-9909-157bcf9db814/TYPECHECK_RESULTS.json",
+          "role": "artifact_store",
+          "exists": true,
+          "actualSha256": "133ab357b089b57cda21a809229f99110032c7450425eac69f69da2d51f7770a",
+          "hashMatchesExpected": true
+        }
+      ],
+      "integrityStatus": "VERIFIED_AUTHENTIC"
+    },
+    {
+      "artifact": "BASELINE_DIAGNOSTICS.json",
+      "category": "REPAIR_001_ORIGINAL",
+      "nature": "ORIGINAL_BASELINE_DIAGNOSTICS",
+      "expectedSha256": "52d31d6ddc06a863faf73de9dca84434a972bbddf32f5bd1f7d29cb755841de3",
+      "locationAudits": [
+        {
+          "path": "BASELINE_DIAGNOSTICS.json",
+          "role": "project_root",
+          "exists": true,
+          "actualSha256": "52d31d6ddc06a863faf73de9dca84434a972bbddf32f5bd1f7d29cb755841de3",
+          "hashMatchesExpected": true
+        },
+        {
+          "path": "SECP_TYPESCRIPT_REPAIR_001/BASELINE_DIAGNOSTICS.json",
+          "role": "canonical_local",
+          "exists": true,
+          "actualSha256": "52d31d6ddc06a863faf73de9dca84434a972bbddf32f5bd1f7d29cb755841de3",
+          "hashMatchesExpected": true
+        },
+        {
+          "path": ".aistudio/artifacts/brain/9f1187ef-79ca-4cd8-9909-157bcf9db814/BASELINE_DIAGNOSTICS.json",
+          "role": "artifact_store",
+          "exists": true,
+          "actualSha256": "52d31d6ddc06a863faf73de9dca84434a972bbddf32f5bd1f7d29cb755841de3",
+          "hashMatchesExpected": true
+        }
+      ],
+      "integrityStatus": "VERIFIED_AUTHENTIC"
+    },
+    {
+      "artifact": "ROOT_CAUSE_GROUPS.json",
+      "category": "REPAIR_001_ORIGINAL",
+      "nature": "ORIGINAL_ROOT_CAUSE_GROUPS",
+      "expectedSha256": "ec7b8eefee183f719a6c77eddbf1e7ed63916b77610e2cd9f18640ef0092b00e",
+      "locationAudits": [
+        {
+          "path": "ROOT_CAUSE_GROUPS.json",
+          "role": "project_root",
+          "exists": true,
+          "actualSha256": "ec7b8eefee183f719a6c77eddbf1e7ed63916b77610e2cd9f18640ef0092b00e",
+          "hashMatchesExpected": true
+        },
+        {
+          "path": "SECP_TYPESCRIPT_REPAIR_001/ROOT_CAUSE_GROUPS.json",
+          "role": "canonical_local",
+          "exists": true,
+          "actualSha256": "ec7b8eefee183f719a6c77eddbf1e7ed63916b77610e2cd9f18640ef0092b00e",
+          "hashMatchesExpected": true
+        },
+        {
+          "path": ".aistudio/artifacts/brain/9f1187ef-79ca-4cd8-9909-157bcf9db814/ROOT_CAUSE_GROUPS.json",
+          "role": "artifact_store",
+          "exists": true,
+          "actualSha256": "ec7b8eefee183f719a6c77eddbf1e7ed63916b77610e2cd9f18640ef0092b00e",
+          "hashMatchesExpected": true
+        }
+      ],
+      "integrityStatus": "VERIFIED_AUTHENTIC"
+    },
+    {
+      "artifact": "SHA256SUMS.txt (Original)",
+      "category": "REPAIR_001_ORIGINAL",
+      "nature": "ORIGINAL_CHECKSUM_MANIFEST",
+      "expectedSha256": "81cf6728a8959ba2a77a7be848c5b0971bf46b372745ced2bbf286490234e76a",
+      "locationAudits": [
+        {
+          "path": "SECP_TYPESCRIPT_REPAIR_001/SHA256SUMS.txt",
+          "role": "canonical_local",
+          "exists": true,
+          "actualSha256": "81cf6728a8959ba2a77a7be848c5b0971bf46b372745ced2bbf286490234e76a",
+          "hashMatchesExpected": true
+        },
+        {
+          "path": ".aistudio/artifacts/brain/9f1187ef-79ca-4cd8-9909-157bcf9db814/SHA256SUMS.txt",
+          "role": "artifact_store",
+          "exists": true,
+          "actualSha256": "81cf6728a8959ba2a77a7be848c5b0971bf46b372745ced2bbf286490234e76a",
+          "hashMatchesExpected": true
+        }
+      ],
+      "integrityStatus": "VERIFIED_AUTHENTIC"
+    },
+    {
+      "artifact": "SECP_TYPESCRIPT_BOUNDARY_FORENSIC_001.md",
+      "category": "PHASE_2_FORENSIC",
+      "nature": "PHASE_2_FORENSIC_REPORT",
+      "expectedSha256": "44b7856138707c97a3b241774fd0d9fb1ef7951eacb6279313bdfa761c7ce2be",
+      "locationAudits": [
+        {
+          "path": "SECP_TYPESCRIPT_BOUNDARY_FORENSIC_001.md",
+          "role": "project_root",
+          "exists": true,
+          "actualSha256": "44b7856138707c97a3b241774fd0d9fb1ef7951eacb6279313bdfa761c7ce2be",
+          "hashMatchesExpected": true
+        },
+        {
+          "path": ".aistudio/artifacts/brain/9f1187ef-79ca-4cd8-9909-157bcf9db814/SECP_TYPESCRIPT_BOUNDARY_FORENSIC_001.md",
+          "role": "artifact_store",
+          "exists": true,
+          "actualSha256": "44b7856138707c97a3b241774fd0d9fb1ef7951eacb6279313bdfa761c7ce2be",
+          "hashMatchesExpected": true
+        }
+      ],
+      "integrityStatus": "VERIFIED_AUTHENTIC"
+    },
+    {
+      "artifact": "SECP_TYPESCRIPT_BOUNDARY_FORENSIC_001.json",
+      "category": "PHASE_2_FORENSIC",
+      "nature": "PHASE_2_FORENSIC_JSON",
+      "expectedSha256": "f73dbcacfa5688681ebc057c8f809b621fcc34280082438bb89c1f2d57a1c572",
+      "locationAudits": [
+        {
+          "path": "SECP_TYPESCRIPT_BOUNDARY_FORENSIC_001.json",
+          "role": "project_root",
+          "exists": true,
+          "actualSha256": "f73dbcacfa5688681ebc057c8f809b621fcc34280082438bb89c1f2d57a1c572",
+          "hashMatchesExpected": true
+        },
+        {
+          "path": ".aistudio/artifacts/brain/9f1187ef-79ca-4cd8-9909-157bcf9db814/SECP_TYPESCRIPT_BOUNDARY_FORENSIC_001.json",
+          "role": "artifact_store",
+          "exists": true,
+          "actualSha256": "f73dbcacfa5688681ebc057c8f809b621fcc34280082438bb89c1f2d57a1c572",
+          "hashMatchesExpected": true
+        }
+      ],
+      "integrityStatus": "VERIFIED_AUTHENTIC"
+    },
+    {
+      "artifact": "SECP_TYPESCRIPT_BOUNDARY_VALIDATION_002.md",
+      "category": "PHASE_2_FORENSIC",
+      "nature": "PHASE_2_VALIDATION_REPORT",
+      "expectedSha256": "a63483dcc8291ffc8963a88f474cfca596852933ded775bad22570ee13abdb29",
+      "locationAudits": [
+        {
+          "path": "SECP_TYPESCRIPT_BOUNDARY_VALIDATION_002.md",
+          "role": "project_root",
+          "exists": true,
+          "actualSha256": "a63483dcc8291ffc8963a88f474cfca596852933ded775bad22570ee13abdb29",
+          "hashMatchesExpected": true
+        },
+        {
+          "path": ".aistudio/artifacts/brain/9f1187ef-79ca-4cd8-9909-157bcf9db814/SECP_TYPESCRIPT_BOUNDARY_VALIDATION_002.md",
+          "role": "artifact_store",
+          "exists": true,
+          "actualSha256": "a63483dcc8291ffc8963a88f474cfca596852933ded775bad22570ee13abdb29",
+          "hashMatchesExpected": true
+        }
+      ],
+      "integrityStatus": "VERIFIED_AUTHENTIC"
+    },
+    {
+      "artifact": "SECP_TYPESCRIPT_BOUNDARY_VALIDATION_002.json",
+      "category": "PHASE_2_FORENSIC",
+      "nature": "PHASE_2_VALIDATION_JSON",
+      "expectedSha256": "cc400dcf1c648e36d0c6f42a1658fee81cdbdef0efd02cf393b3fa1f29ff21e8",
+      "locationAudits": [
+        {
+          "path": "SECP_TYPESCRIPT_BOUNDARY_VALIDATION_002.json",
+          "role": "project_root",
+          "exists": true,
+          "actualSha256": "cc400dcf1c648e36d0c6f42a1658fee81cdbdef0efd02cf393b3fa1f29ff21e8",
+          "hashMatchesExpected": true
+        },
+        {
+          "path": ".aistudio/artifacts/brain/9f1187ef-79ca-4cd8-9909-157bcf9db814/SECP_TYPESCRIPT_BOUNDARY_VALIDATION_002.json",
+          "role": "artifact_store",
+          "exists": true,
+          "actualSha256": "cc400dcf1c648e36d0c6f42a1658fee81cdbdef0efd02cf393b3fa1f29ff21e8",
+          "hashMatchesExpected": true
+        }
+      ],
+      "integrityStatus": "VERIFIED_AUTHENTIC"
+    },
+    {
+      "artifact": "BASELINE_REPRODUCIBILITY.json",
+      "category": "PHASE_2_FORENSIC",
+      "nature": "REPRODUCIBILITY_BASELINE_METADATA",
+      "expectedSha256": "c7005797a2a7ad11721ca71744fa63d73a219bec3220f43c64aef5515d4ab2ba",
+      "locationAudits": [
+        {
+          "path": "BASELINE_REPRODUCIBILITY.json",
+          "role": "project_root",
+          "exists": true,
+          "actualSha256": "c7005797a2a7ad11721ca71744fa63d73a219bec3220f43c64aef5515d4ab2ba",
+          "hashMatchesExpected": true
+        }
+      ],
+      "integrityStatus": "VERIFIED_AUTHENTIC"
+    },
+    {
+      "artifact": "SECP_TYPESCRIPT_REPAIR_001.md (R1 Reconciled)",
+      "category": "REPAIR_001_R1_RECONCILED",
+      "nature": "RECONCILED_R1_REPORT",
+      "expectedSha256": "677206fc3c9f480cf2779b49c4f5787534381511dcdc19f5a29d44e538b941cd",
+      "locationAudits": [
+        {
+          "path": "SECP_TYPESCRIPT_REPAIR_001.md",
+          "role": "project_root",
+          "exists": true,
+          "actualSha256": "677206fc3c9f480cf2779b49c4f5787534381511dcdc19f5a29d44e538b941cd",
+          "hashMatchesExpected": true
+        }
+      ],
+      "integrityStatus": "VERIFIED_AUTHENTIC"
+    },
+    {
+      "artifact": "SECP_TYPESCRIPT_REPAIR_001.json (R1 Reconciled)",
+      "category": "REPAIR_001_R1_RECONCILED",
+      "nature": "RECONCILED_R1_JSON",
+      "expectedSha256": "c7acc088d7bc0ec1c6b4d2f609f3d6c4021ecb6491af83d9bdc08baecb553311",
+      "locationAudits": [
+        {
+          "path": "SECP_TYPESCRIPT_REPAIR_001.json",
+          "role": "project_root",
+          "exists": true,
+          "actualSha256": "c7acc088d7bc0ec1c6b4d2f609f3d6c4021ecb6491af83d9bdc08baecb553311",
+          "hashMatchesExpected": true
+        }
+      ],
+      "integrityStatus": "VERIFIED_AUTHENTIC"
+    },
+    {
+      "artifact": "PATCH_MANIFEST.json (R1 Reconciled)",
+      "category": "REPAIR_001_R1_RECONCILED",
+      "nature": "RECONCILED_R1_PATCH_MANIFEST",
+      "expectedSha256": "45ea5522a6aa5309ba03ff99d17b0611d605fae0088d45aab059711e0e2982a0",
+      "locationAudits": [
+        {
+          "path": "PATCH_MANIFEST.json",
+          "role": "project_root",
+          "exists": true,
+          "actualSha256": "45ea5522a6aa5309ba03ff99d17b0611d605fae0088d45aab059711e0e2982a0",
+          "hashMatchesExpected": true
+        }
+      ],
+      "integrityStatus": "VERIFIED_AUTHENTIC"
+    },
+    {
+      "artifact": "TEST_RESULTS.json (R1 Reconciled)",
+      "category": "REPAIR_001_R1_RECONCILED",
+      "nature": "RECONCILED_R1_TEST_SUMMARY",
+      "expectedSha256": "821891d4fde681077db627d572917a5a690fafd5d4a62f066d49032a0637d38b",
+      "locationAudits": [
+        {
+          "path": "TEST_RESULTS.json",
+          "role": "project_root",
+          "exists": true,
+          "actualSha256": "821891d4fde681077db627d572917a5a690fafd5d4a62f066d49032a0637d38b",
+          "hashMatchesExpected": true
+        }
+      ],
+      "integrityStatus": "VERIFIED_AUTHENTIC"
+    },
+    {
+      "artifact": "TYPECHECK_RESULTS.json (R1 Reconciled)",
+      "category": "REPAIR_001_R1_RECONCILED",
+      "nature": "RECONCILED_R1_TYPECHECK_SUMMARY",
+      "expectedSha256": "cd5d29b0fc2a66b3c01edaccf7aaa79598ef4b2d51e52c035fa561946b90d5b1",
+      "locationAudits": [
+        {
+          "path": "TYPECHECK_RESULTS.json",
+          "role": "project_root",
+          "exists": true,
+          "actualSha256": "cd5d29b0fc2a66b3c01edaccf7aaa79598ef4b2d51e52c035fa561946b90d5b1",
+          "hashMatchesExpected": true
+        }
+      ],
+      "integrityStatus": "VERIFIED_AUTHENTIC"
+    },
+    {
+      "artifact": "SHA256SUMS.txt (R1 Reconciled)",
+      "category": "REPAIR_001_R1_RECONCILED",
+      "nature": "RECONCILED_R1_CHECKSUMS",
+      "expectedSha256": "b59dd3baa1bbfe291a2f734d205148d779c5158621396add42db005a8c4c1555",
+      "locationAudits": [
+        {
+          "path": "SHA256SUMS.txt",
+          "role": "project_root",
+          "exists": true,
+          "actualSha256": "b59dd3baa1bbfe291a2f734d205148d779c5158621396add42db005a8c4c1555",
+          "hashMatchesExpected": true
+        }
+      ],
+      "integrityStatus": "VERIFIED_AUTHENTIC"
+    }
+  ],
+  "forensicDistinctionNotes": {
+    "originalVsReconciledDelineation": "Original Repair 001 artifacts (preserved in ./SECP_TYPESCRIPT_REPAIR_001/ and mirrored in /.aistudio/artifacts/brain/9f1187ef-79ca-4cd8-9909-157bcf9db814/) reflect the immediate output of the initial repair run. Root artifacts reflect the R1 reconciliation run which documented the 56702 string concatenation artifact and expanded diagnostic breakdowns. Both chains of custody are completely preserved and independently verified."
+  }
+}

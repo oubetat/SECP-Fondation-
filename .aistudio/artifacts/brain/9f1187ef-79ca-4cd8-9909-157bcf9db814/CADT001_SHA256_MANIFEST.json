@@ -1,0 +1,134 @@
+{
+  "manifestId": "CADT001-SHA256-MANIFEST-20261102",
+  "auditMission": "SECP-CAD-TRUTH-FORENSIC-001",
+  "timestamp": "2026-11-02T08:52:00.000Z",
+  "hashAlgorithm": "SHA-256",
+  "deliverables": {
+    "CADT001_SOURCE_INVENTORY.json": {
+      "bytes": 8785,
+      "sha256": "0937ab96b96d2d9d0a6adc81d4d10fdbe4342402792672e6491f53a7a83a3109"
+    },
+    "CADT001_CAPABILITY_IMPLEMENTATION_MATRIX.json": {
+      "bytes": 13691,
+      "sha256": "0a98e10a0486e784743f8ab56de49ec5fac03af1c2f8c45921d4cc2e737b2eaa"
+    },
+    "CADT001_ASSEMBLY_INTEGRATION_MAP.json": {
+      "bytes": 4831,
+      "sha256": "92c2ae0721fde991251dcf753085d850b2a075f4ac5211c7a576815b382be7a7"
+    },
+    "CADT001_CANONICAL_REVISION_AUDIT.json": {
+      "bytes": 2801,
+      "sha256": "1f20e292aa0448a80899f72a4237977cb8810df1c67636fb3ba3b751e09c7223"
+    },
+    "CADT001_ENGINEERING_TRUTH_THREAD_MAP.json": {
+      "bytes": 6765,
+      "sha256": "f0ad595da4073b2cd939db40afac1b8b371edc3ca3e4a3e8c9c0382534f47a84"
+    },
+    "CADT001_G1_G6_GATE_STATUS.json": {
+      "bytes": 3863,
+      "sha256": "2ba54dbd2ea2fa087a7d99cf048b1bce1553384dbea81fa5951f2a820925de69"
+    },
+    "CADT001_CROSS_DOMAIN_BINDING_MATRIX.json": {
+      "bytes": 3659,
+      "sha256": "f10a4ce3e5427caabe219d2107ccad68ce9d2f39291d5565b5f069c6e62227bb"
+    },
+    "CADT001_TEST_EVIDENCE_MATRIX.json": {
+      "bytes": 9352,
+      "sha256": "c126e62f1530ae17970523a8368deef4a10dd4d7bf729b4f5e6aea11509d16bb"
+    },
+    "CADT001_GAP_REGISTER.json": {
+      "bytes": 10788,
+      "sha256": "ee088024a3a1a3c5040558534c5559c01177dd08c841f64eaaf98a00079e3bb3"
+    },
+    "CADT001_RAW_EXECUTION_LOG.txt": {
+      "bytes": 7479,
+      "sha256": "e4cf3abbe38ff68c693afacc3a56c7855f7128efc3e346043d9d5fb9df0c0d86"
+    },
+    "CADT001_FINAL_FORENSIC_REPORT.md": {
+      "bytes": 16451,
+      "sha256": "873e65eb2c639cb0a3c50f143ffe971cac6cf08cd445edb747044e8e5ebf9e9c"
+    }
+  },
+  "auditedCoreSourceFiles": {
+    "src/engine/cad-kernel/brep/BRepKernel.ts": {
+      "bytes": 55119,
+      "sha256": "6841a75bd4deeaa2bd62c602f1228d7d5017b0ae210661bdabf635b698fe24e5"
+    },
+    "src/engine/cad-kernel/topology/BRepTopology.ts": {
+      "bytes": 12845,
+      "sha256": "e2a392e2fb3bc4742a0a283818e61219eeea11342502efc2e0b5d9212adcc34b"
+    },
+    "src/engine/cad-kernel/brep/BRepEulerOps.ts": {
+      "bytes": 11422,
+      "sha256": "eab0bc9d16c15295ec98d60e2ebfb862de19b0e15768d91b776f652c5bdde30f"
+    },
+    "src/engine/cad-kernel/brep/BRepValidator.ts": {
+      "bytes": 14265,
+      "sha256": "3960fa91fd60931b4383d5b2060f335280ec668701b57a82f42a59ce85100c56"
+    },
+    "src/engine/cad-kernel/boolean/BooleanEngine.ts": {
+      "bytes": 14052,
+      "sha256": "b06605dc2e39e0ab7c495c1afc9e5a31d2869bcf97857e240a7b0e59b4d8e57c"
+    },
+    "src/engine/cad-kernel/boolean/BooleanIntersector.ts": {
+      "bytes": 14144,
+      "sha256": "d7cbb64e58bfc085054bedf2d593be0df26dfb0af675952bbf062c403c17b029"
+    },
+    "src/engine/cad-kernel/modeling/FilletEngine.ts": {
+      "bytes": 16974,
+      "sha256": "b36e973eb1443877813069b6b284477d04d6c14c3aeb4783a0fd40f4a8718517"
+    },
+    "src/engine/cad-kernel/modeling/ChamferEngine.ts": {
+      "bytes": 13173,
+      "sha256": "a28ae1f3f82353a28d469f0d227ec4c468de35493ddf866191f4b5d34fe61f6e"
+    },
+    "src/engine/cad-kernel/evaluators/ShellEvaluator.ts": {
+      "bytes": 10655,
+      "sha256": "a9c55b2977ecf7285ddf2a0aed7e053e4af89e1e3e992762a6b2021e15872352"
+    },
+    "src/engine/cad-kernel/history/FeatureHistory.ts": {
+      "bytes": 7527,
+      "sha256": "c21d4949f97e77b938879cf0819daac288657558b718ef5f8f09be03cc201e97"
+    },
+    "src/engine/cad-kernel/history/FeatureExecution.ts": {
+      "bytes": 73928,
+      "sha256": "69dc17c5d45e4d6fc668003220bc2c8fbc89771c3b47b1e1e49f0b7aef018bb0"
+    },
+    "src/engine/cad-kernel/document/DocumentEvaluator.ts": {
+      "bytes": 29154,
+      "sha256": "1a7bc5724af2e0cc38ccb6cc40d8951e05802c0b03199222281b49d810468cd8"
+    },
+    "src/engine/cad-kernel/topology/PersistentTopologyNaming.ts": {
+      "bytes": 13515,
+      "sha256": "6aa43fa0e34bbed70887e11a8efeefb1febcf1128e3adcff228b7385849dc355"
+    },
+    "src/engine/assembly/ProductionAssemblyGraphEngine.ts": {
+      "bytes": 8210,
+      "sha256": "d0be30001af08848ec8bff1356afe949fac2dde0fd1261581c333734b781a6e9"
+    },
+    "src/engine/assembly/AssemblyConstraintSolver.ts": {
+      "bytes": 21685,
+      "sha256": "141762c361dda378bba289b7fad57d7eab5fdb7ada10bbaa810b621fa4e09f14"
+    },
+    "src/engine/revision/RevisionEngine.ts": {
+      "bytes": 21295,
+      "sha256": "2efaad191bcf2259322f1be7be4757bcf69c93844739776fc38d3887147a3f03"
+    },
+    "src/engine/topology/TopologyLineageProofEngine.ts": {
+      "bytes": 34633,
+      "sha256": "32f3a4fb015c2a44bfeadb11c68a0c4d9a6141a13d595fdd0aedf75d9d334b5f"
+    },
+    "src/engine/simulation/SimulationEngine.ts": {
+      "bytes": 8976,
+      "sha256": "4c7e3beaa368eb5b8a34ad54e28fbd2bd11ea350bd326c2bee9f89bbe4ef1141"
+    },
+    "src/engine/manufacturing/pma/PhysicalManufacturingEngine.ts": {
+      "bytes": 3725,
+      "sha256": "6d89c8dc46124cd1cd1fc7262d068faa139d8531f2448b638b952101b909f209"
+    },
+    "src/engine/certification/truth/EngineeringTruthCertificateEngine.ts": {
+      "bytes": 6853,
+      "sha256": "9a18dedb88cc19054ad15070560c1e15d5c80201cf76bf5b25bd280f07a857aa"
+    }
+  }
+}

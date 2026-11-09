@@ -170,6 +170,15 @@ export interface AIRecoveryProposal {
     status: 'RESOLVED' | 'NOT_RESOLVED' | 'REVALIDATION_REQUIRED';
     notes: string;
   };
+  strategy?: string;
+  confidenceScore?: number;
+  predictedSafetyFactorGain?: number;
+  proposedChanges?: Array<{
+    parameter: string;
+    oldValue: string;
+    newValue: string;
+    rationale: string;
+  }>;
 }
 
 export interface EngineeringFailureEvent {
@@ -189,6 +198,26 @@ export interface EngineeringFailureEvent {
   engineerReviewer?: string;
   isEarlyWarning?: boolean;
   isPredictionOnly?: boolean;
+
+  eventId?: string;
+  sessionId?: string;
+  category?: FailureCategory;
+  state?: FailureState;
+  detectionSource?: DetectionSource | string;
+  title?: string;
+  description?: string;
+  failureMode?: string;
+  componentId?: string;
+  detectedAtStressMpa?: number;
+  allowableLimitMpa?: number;
+  locationCoordinates?: { x: number; y: number; z: number };
+  location?: {
+    type: string;
+    entityId: string;
+    name: string;
+    coordinates?: [number, number, number];
+  };
+  timestamp?: string;
 }
 
 export interface AIFailureDetectionSession {

@@ -1,0 +1,51 @@
+{
+  "gateId": "GATE-167-CHAIN-OF-CUSTODY",
+  "patch": "PATCH-167",
+  "verdict": "PASS",
+  "evaluatedAt": "2026-09-03T07:27:28.884Z",
+  "totalChecks": 5,
+  "passedChecks": 5,
+  "checks": [
+    {
+      "id": "CHECK-01-GENESIS-INTEGRITY",
+      "name": "Genesis Chain Integrity",
+      "description": "Verifies a newly created custody record is cryptographically valid and linked to GENESIS",
+      "passed": true,
+      "verdict": "VALID",
+      "details": "Genesis hash: hash"
+    },
+    {
+      "id": "CHECK-02-CHAIN-EXTENSION",
+      "name": "Cryptographic Chain Extension",
+      "description": "Verifies that appending an event correctly links to the previous hash and maintains validity",
+      "passed": true,
+      "verdict": "VALID",
+      "details": "Extended hash: hash2"
+    },
+    {
+      "id": "CHECK-03-TAMPER-DETECTION-DATA",
+      "name": "Data Tamper Detection",
+      "description": "Verifies that any modification to event metadata (e.g. operation) invalidates the cryptographic hash",
+      "passed": true,
+      "verdict": "INVALID",
+      "details": "Correct rejected tampered record"
+    },
+    {
+      "id": "CHECK-04-TAMPER-DETECTION-LINKAGE",
+      "name": "Linkage Tamper Detection",
+      "description": "Verifies that modifying the previousCustodyHash breaks the chain linkage and is detected",
+      "passed": true,
+      "verdict": "INVALID",
+      "details": "Correctly detected broken chain linkage"
+    },
+    {
+      "id": "CHECK-05-REVOCATION-STATUS",
+      "name": "Revocation Propagation",
+      "description": "Verifies that a revocation event correctly updates the record status to REVOKED while maintaining chain integrity",
+      "passed": true,
+      "verdict": "REVOKED",
+      "details": "Revoked at: undefined"
+    }
+  ],
+  "summary": "Hard Acceptance Gate 167 PASSED: Chain-of-Custody system verified for cryptographic integrity, tamper detection, and status propagation."
+}

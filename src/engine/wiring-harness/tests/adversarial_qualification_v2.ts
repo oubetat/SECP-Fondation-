@@ -52,13 +52,13 @@ function testElectrical() {
   
   // Case: Open Circuit
   model.terminals[0].status = 'UNCONNECTED';
-  const res1 = WiringHarnessElectricalVerifier.verify(model);
+  const res1 = WiringHarnessElectricalVerifier.verify(model as any);
   assert("Open Circuit Detection", res1.openCircuits > 0, "Successfully detected open circuit");
 
   // Case: Short Circuit
   const model2 = createBaseModel();
   model2.wires.push({ id: "W2", name: "W2", sourceTerminalId: "T1", targetTerminalId: "T2", gaugeAwg: "AWG 20", color: "BLUE", lengthMm: 100 });
-  const res2 = WiringHarnessElectricalVerifier.verify(model2);
+  const res2 = WiringHarnessElectricalVerifier.verify(model2 as any);
   assert("Short Circuit Detection", res2.shorts > 0, "Successfully detected short circuit");
 }
 
@@ -69,13 +69,13 @@ function testSpatial() {
   const obstacles = [{ id: "OBS1", min: { x: 0, y: 0, z: 0 }, max: { x: 15, y: 15, z: 15 } }];
   
   // Case: Route through obstacle
-  const res1 = WiringHarnessGeometryKernel.detectCllashes(model, obstacles);
+  const res1 = WiringHarnessGeometryKernel.detectCllashes(model as any, obstacles);
   assert("Route Clash Detection", res1.clashes.length > 0, "Successfully detected route clash");
   
   // Case: Near miss (no clash)
   const model2 = createBaseModel();
   model2.routes[0].waypoints = [{ x: 20, y: 20, z: 20 }, { x: 25, y: 25, z: 25 }];
-  const res2 = WiringHarnessGeometryKernel.detectCllashes(model2, obstacles);
+  const res2 = WiringHarnessGeometryKernel.detectCllashes(model2 as any, obstacles);
   assert("Near Miss (No Clash)", res2.clashes.length === 0, "Successfully ignored near miss");
 }
 

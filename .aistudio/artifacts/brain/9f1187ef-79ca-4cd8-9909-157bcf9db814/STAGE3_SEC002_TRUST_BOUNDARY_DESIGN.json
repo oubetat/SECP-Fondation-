@@ -1,0 +1,40 @@
+{
+  "task_id": "SECP-STAGE3-SECURITY-CLOSURE-002",
+  "artifact_type": "TRUST_BOUNDARY_DESIGN",
+  "timestamp": "2026-11-01T08:56:00.000Z",
+  "design_principles": [
+    "1. Key-Authenticated Sealing: sealBinding requires an unexportable boot key symbol.",
+    "2. Cryptographic HMAC Token Integrity: Seal tokens are HMAC-SHA256 signatures keyed on a runtime secret created during boot.",
+    "3. Fail-Closed Verification: validateBinding recalculates the HMAC signature and rejects forged or tampered tokens.",
+    "4. Zero Unauthenticated Public Sealing: Calling sealBinding without a valid key throws SIMULATION_AUTHORITY_VIOLATION.",
+    "5. Backdoor Isolation: Test authority components remain isolated from production modules."
+  ],
+  "authority_lifecycle": {
+    "boot_handshake": {
+      "module": "src/engine/simulation/SimulationAuthorityInternal.ts",
+      "method": "initializeAuthorityHandshake()",
+      "action": "Instantiates unique unexportable boot key symbol and initializes HMAC secret."
+    },
+    "key_verification": {
+      "module": "src/engine/simulation/SimulationAuthorityInternal.ts",
+      "method": "verifyAuthorityKey(key: symbol)",
+      "action": "Validates presented key against internal boot key."
+    },
+    "seal_issuance": {
+      "module": "src/engine/crossdomain/CanonicalDomainBindingEngine.ts",
+      "method": "sealBinding(binding, authorityKey)",
+      "action": "Enforces verifyAuthorityKey(authorityKey), calculates HMAC seal token, sets isAuthoritative = true."
+    },
+    "seal_validation": {
+      "module": "src/engine/crossdomain/CanonicalDomainBindingEngine.ts",
+      "method": "validateBinding(binding)",
+      "action": "Recalculates HMAC signature, checks isAuthoritative, verifies binding status === 'CURRENT' and binding ID alignment."
+    }
+  },
+  "security_guarantees": {
+    "untrusted_caller_protection": "Unauthenticated calls to sealBinding throw SIMULATION_AUTHORITY_VIOLATION.",
+    "forgery_protection": "Manually setting isAuthoritative: true or executionSealToken fails HMAC validation in validateBinding.",
+    "tamper_protection": "Modifying geometry, revision, or domain after sealing breaks HMAC signature matching.",
+    "replay_protection": "Bindings marked STALE or INVALID are rejected immediately."
+  }
+}

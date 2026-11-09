@@ -1,0 +1,238 @@
+--- src/engine/adse/p0/ADSEEngine.ts ---
+/**
+ * SECP — ADSE-P0 Systems Engineering Engine
+ * Advanced Aerospace & Defense Systems Engineering (ADSE)
+ */
+
+import { createHash } from 'crypto';
+import { 
+  SystemModel, 
+  SystemRequirement, 
+  SystemInterface, 
+  ADSECapabilityRegistration, 
+  PluginMaturityLevel, 
+  EngineeringGateStage, 
+  GateEvaluationResult,
+  GovernanceAction,
+  GovernanceActionRecord
+} from './types';
+import { CoreExecutionAuthority } from '../../execution/CoreExecutionAuthority';
+import { CoreExecutionRequest, GenericExecutionEnvelope } from '../../execution/CoreExecutionTypes';
+import { RevisionEngine } from '../../revision/RevisionEngine';
+import { Revision, RevisionLifecycleState, RevisionApproval, RevisionEntityType } from '../../revision/types';
+import { CapabilityRegistry } from '../../capabilities/CapabilityRegistry';
+
+export class ADSEEngine {
+  private static instance: ADSEEngine;
+  private systems: Map<string, SystemModel> = new Map();
+  private capabilities: Map<string, ADSECapabilityRegistration> = new Map();
+  private governanceLogs: GovernanceActionRecord[] = [];
+  private revisionEngine: RevisionEngine = new RevisionEngine();
+
+  private constructor() {
+    CoreExecutionAuthority.initialize(this.revisionEngine);
+    CoreExecutionAuthority.setRevisionEngine(this.revisionEngine);
+    this.initializeDefaultCapabilities();
+  }
+
+  public static getInstance(): ADSEEngine {
+    if (!ADSEEngine.instance) {
+      ADSEEngine.instance = new ADSEEngine();
+    }
+    return ADSEEngine.instance;
+  }
+
+  public getRevisionEngine(): RevisionEngine {
+    return this.revisionEngine;
+  }
+
+  private initializeDefaultCapabilities() {
+    // Register Aerospace Mach-Flow Capability at M10 Baseline
+    this.registerCapability({
+--- src/engine/adse/p0/ADSEForensicClosureAuditEngine.ts ---
+/**
+ * SECP — ADSE-P0 Forensic Closure Audit Engine
+ * Advanced Aerospace & Defense Systems Engineering (ADSE)
+ * 
+ * Executes un-bypassable forensic assertions and negative corruption proofs
+ * to guarantee Engineering Truth and single canonical authority prior to P0 closure.
+ */
+
+import { ADSEEngine } from './ADSEEngine';
+import { runADSERepresentativePath } from './ADSERepresentativePath';
+import { CoreExecutionAuthority } from '../../execution/CoreExecutionAuthority';
+import { GenericExecutionRegistry } from '../../execution/GenericExecutionRegistry';
+import { EngineeringGateStage } from './types';
+import { EvidenceMerkleTree } from '../../certification/truth/EvidenceMerkleTree';
+
+export interface ForensicAuditVectorResult {
+  vectorId: string;
+  name: string;
+  passed: boolean;
+  details: string;
+  evidenceRef?: string;
+}
+
+export interface ADSEForensicClosureAuditReport {
+  timestamp: string;
+  overallStatus: 'PASSED_ENGINEERING_CLOSURE' | 'FAILED_FORENSIC_AUDIT';
+  totalVectorsEvaluated: number;
+  passedVectors: number;
+  failedVectors: number;
+  vectors: ForensicAuditVectorResult[];
+  negativeCorruptionProofsPassed: number;
+  totalNegativeCorruptionProofs: number;
+}
+
+export class ADSEForensicClosureAuditEngine {
+  public static async executeFullForensicAudit(): Promise<ADSEForensicClosureAuditReport> {
+    const vectors: ForensicAuditVectorResult[] = [];
+
+    // --- Vector 1: Real Core Execution Authority Verification ---
+    try {
+      const repPath = await runADSERepresentativePath();
+      const envelope = repPath.envelope;
+      const isSealed = envelope.state === 'SEALED' && !!envelope.executionId;
+      vectors.push({
+        vectorId: 'FORENSIC-V1-CORE-AUTHORITY',
+        name: 'Real Core Execution Authority Sealing',
+        passed: isSealed && repPath.gateResultsSummary.CORE_BIND === true,
+        details: `Envelope ${envelope.executionId} verified as sealed by CoreExecutionAuthority key handshake.`,
+        evidenceRef: envelope.executionId
+      });
+--- src/engine/adse/p10/ADSEP10Engine.ts ---
+import { SensorRegistry } from './SensorRegistry';
+import { MeasurementEngine } from './MeasurementEngine';
+import { SensorGovernanceEngine } from './SensorGovernanceEngine';
+import { SensorPersistenceEngine } from './SensorPersistenceEngine';
+import { RevisionEngine } from '../../revision/RevisionEngine';
+import { DigitalThreadRegistry } from '../p4/DigitalThreadRegistry';
+
+export class ADSEP10Engine {
+  private static instance: ADSEP10Engine | null = null;
+
+  public registry: SensorRegistry;
+  public measurement: MeasurementEngine;
+  public governance: SensorGovernanceEngine;
+  public persistence: SensorPersistenceEngine;
+
+  constructor(revisionEngine: RevisionEngine, digitalThread: DigitalThreadRegistry) {
+    this.registry = new SensorRegistry();
+    this.measurement = new MeasurementEngine(this.registry, digitalThread);
+    this.governance = new SensorGovernanceEngine(this.registry);
+    this.persistence = new SensorPersistenceEngine(this.registry);
+  }
+
+  public static getInstance(revisionEngine: RevisionEngine, digitalThread: DigitalThreadRegistry): ADSEP10Engine {
+    if (!this.instance) {
+      this.instance = new ADSEP10Engine(revisionEngine, digitalThread);
+    }
+    return this.instance;
+  }
+
+  public static resetInstance(): void {
+    this.instance = null;
+  }
+}
+--- src/engine/adse/p10/MeasurementEngine.ts ---
+import { createHash } from 'crypto';
+import { SensorRegistry } from './SensorRegistry';
+import { Sensor, CalibrationCertificate, Measurement, SensorDiagnosticState } from './types';
+import { DigitalThreadRegistry } from '../p4/DigitalThreadRegistry';
+
+export class MeasurementEngine {
+  private registry: SensorRegistry;
+  private digitalThread: DigitalThreadRegistry;
+
+  constructor(registry: SensorRegistry, digitalThread: DigitalThreadRegistry) {
+    this.registry = registry;
+    this.digitalThread = digitalThread;
+  }
+
+  /**
+   * P10.2 & P10.4: Processes raw sensor voltage acquisition into calibrated engineering values
+   * with complete uncertainty boundaries.
+   */
+  public acquireCalibratedMeasurement(params: {
+    measurementId: string;
+    sensorId: string;
+    rawValue: number;
+    unit: string;
+    timestamp: string;
+    acquisitionContext: string;
+    configurationId: string;
+  }): Measurement {
+    const sensor = this.registry.getSensor(params.sensorId);
+    if (!sensor) {
+      throw new Error(`SENSOR_NOT_FOUND: Sensor '${params.sensorId}' is not registered.`);
+    }
+
+    const cal = this.registry.getCalibrationForSensor(params.sensorId);
+    if (!cal) {
+      throw new Error(`UNBOUND_CALIBRATION: Sensor '${params.sensorId}' has no valid calibration certificates registered.`);
+    }
+
+    // 1. Process Physical/Calibrated Conversion: Value = gain * rawValue + offset
+    const value = cal.gain * params.rawValue + cal.offset;
+
+    // 2. Assess Calibration Expiry
+    const now = new Date(params.timestamp).toISOString();
+    let diagnosticState = SensorDiagnosticState.VALID;
+    if (now > cal.expiresAt || sensor.calibrationState === 'EXPIRED') {
+      diagnosticState = SensorDiagnosticState.CALIBRATION_EXPIRED;
+    }
+
+    // 3. Compute Measurement Uncertainty
+    // Standard gaussian combined uncertainty = Sensor Base Uncertainty + Calibration Offset Uncertainty
+    const baseUncertainty = sensor.uncertaintyModel.value;
+--- src/engine/adse/p10/SensorGovernanceEngine.ts ---
+import { isAIActor } from '../p9/CommunicationGovernanceEngine';
+import { SensorRegistry } from './SensorRegistry';
+import { Sensor, CalibrationCertificate } from './types';
+
+export class SensorGovernanceEngine {
+  private registry: SensorRegistry;
+
+  constructor(registry: SensorRegistry) {
+    this.registry = registry;
+  }
+
+  /**
+   * Enforces strict human engineering authorization boundaries.
+   * AI cannot authorize, publish, or certify measurement calibration.
+   */
+  public authorizeCalibration(cert: CalibrationCertificate, actor: string): void {
+    if (isAIActor(actor) || actor === 'AI_SYNTHETIC_AGENT') {
+      throw new Error(
+        `AI_GOVERNANCE_VIOLATION: AI agent '${actor}' is unauthorized to sign or authorize Calibration Certificates. Human validation required.`
+      );
+    }
+    
+    this.registry.registerCalibrationCertificate(cert);
+  }
+
+  /**
+   * Prevents UI bypasses or unapproved direct modifications to Sensor model attributes.
+   */
+  public mutateSensorCanonicalState(params: {
+    sensorId: string;
+    newAccuracy: number;
+    actor: string;
+  }): void {
+    if (isAIActor(params.actor) || params.actor === 'AI_SYNTHETIC_AGENT') {
+      throw new Error(
+        `AI_GOVERNANCE_VIOLATION: AI agent '${params.actor}' cannot directly mutate canonical sensor engineering properties.`
+      );
+    }
+
+    const sensor = this.registry.getSensor(params.sensorId);
+    if (!sensor) {
+      throw new Error(`SENSOR_NOT_FOUND: Sensor '${params.sensorId}' does not exist.`);
+    }
+
+    // Prohibit direct mutation without proper engineering request or revision
+    if (params.newAccuracy <= 0) {
+      throw new Error(`INVALID_MUTATION: Accuracy bounds must be strictly positive.`);
+    }
+
+    sensor.accuracy = params.newAccuracy;

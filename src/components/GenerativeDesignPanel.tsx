@@ -3,7 +3,7 @@ import { Sparkles, Sliders, CheckCircle2, Cpu, Layers, Filter, TrendingDown, Shi
 import { GenerativeDesignEngine, GenerativeDesignSummary, GenerativeCandidate } from '../engine/generativeDesignEngine';
 import { MaterialsEngine } from '../engine/materials';
 import { EngineeringDocument } from '../engine/cad-kernel/document/CADDocument';
-import { CadSolidEntity } from '../cadKernel';
+import { CadSolidEntity } from '../engine/cadKernel';
 
 export interface GenerativeDesignPanelProps {
   canonicalDocument?: EngineeringDocument | null;

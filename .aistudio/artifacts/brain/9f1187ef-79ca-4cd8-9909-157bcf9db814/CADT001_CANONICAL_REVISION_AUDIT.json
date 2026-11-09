@@ -1,0 +1,42 @@
+{
+  "auditId": "SECP-CAD-TRUTH-FORENSIC-001",
+  "workstream": "WORKSTREAM_C_CANONICAL_ENGINEERING_REVISION",
+  "verdict": "PARTIALLY_VERIFIED_BASELINE",
+  "lifecycleAudit": {
+    "creationPoints": {
+      "enterprisePLM": "src/engine/revision/RevisionEngine.ts:createRevision (Revision object)",
+      "cadDocument": "src/engine/cad-kernel/document/CADDocument.ts (EngineeringDocument.revision: number)",
+      "canonicalProjection": "src/engine/plm/CanonicalPLMProjectionAdapter.ts (EngineeringArtifact@REV-A)"
+    },
+    "canonicalStateComposition": {
+      "identity": "entityId + revisionCode (e.g. HYDRAULIC-PUMP-001@REV-A)",
+      "contentDigest": "RevisionCanonicalizer.normalize(content) -> SHA-256 contentHash",
+      "geometryBinding": "BRepHasher.computeEvidence(solid) -> geometryHash, topologyHash",
+      "evidenceChain": "EngineeringHashChain.computeCanonicalHash({ documentId, revision, featureHash, geometryHash, topologyHash, meshHash })"
+    },
+    "revisionSpecificHashes": {
+      "cadRevisionHash": "Explicitly verified in DocumentEvaluator.test.ts and P5-001: Part REV-A produces bRepHash '5468e1f8...', Part REV-B produces bRepHash '953be3cf...'.",
+      "canonicalGeometryHash": "Derived from evaluated B-Rep vertex coordinates, face equations, and loop topologies."
+    },
+    "immutabilityAndLineage": {
+      "isImmutable": true,
+      "mechanism": "RevisionEngine enforces isLocked: true on RELEASED revisions. Modifying properties throws REVISION_IMMUTABLE. EngineeringPLMEngine deep-freezes released artifact snapshots.",
+      "evidence": "src/verification/p5/P5-001-CADAssemblyAssociativity.test.ts: TEST-C confirms historical evidence immutability."
+    },
+    "downstreamInvalidation": {
+      "isImplemented": true,
+      "mechanism": "CanonicalPLMProjectionAdapter detects upstream revision changes and marks downstream dependent artifacts STALE or REQUIRES_RECALCULATION.",
+      "empiricalLog": "[PLM] Artifact ART-P5-ASM-01@REV-A invalidated by change in ART-P5-CAD-01@REV-A (verified live)"
+    },
+    "persistenceVulnerability": {
+      "survivesRestart": false,
+      "severity": "CRITICAL_DEFECT",
+      "sourceLocation": "src/engine/revision/RevisionEngine.ts:30",
+      "actualObservedBehavior": "revisions: Map<string, Revision> = new Map(); Zero storage adapters (SQLite, IndexedDB, or filesystem) are wired to RevisionEngine.",
+      "impact": "On browser refresh or process restart, all registered engineering revisions, approval logs, and baselines evaporate from memory."
+    },
+    "dualRevisionArchitecture": {
+      "finding": "Divergence between RevisionEngine (Revision string labels 'A', 'B', '01') and CADDocument (integer revision: 1, 2). Reconciled via RevisionUtils.revisionToLetter, but lacks single unified database schema."
+    }
+  }
+}

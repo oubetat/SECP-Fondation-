@@ -98,7 +98,9 @@ export class SimulationCertificateEngine {
   public buildSimulationResultManifest(
     raw: SimulationResultManifest
   ): SimulationResultManifest {
-    return Object.freeze({ ...raw });
+    const manifest = Object.freeze({ ...raw });
+    SimulationExecutionRegistry.registerResult(manifest.resultHash, manifest);
+    return manifest;
   }
 
   /**
@@ -299,11 +301,16 @@ export class SimulationCertificateEngine {
       success = false;
     } else {
       // Cryptographically verify manifest content against authoritative registry
-      const manifestDigest = SimulationExecutionRegistry.computeCanonicalContentDigest(result);
-      const authenticDigest = authenticRecord.canonicalContentDigest || SimulationExecutionRegistry.computeCanonicalContentDigest(authenticRecord);
-      
-      if (manifestDigest !== authenticDigest) {
-        errors.push(`RESULT_INTEGRITY_VIOLATION: Candidate manifest content does not match authoritative execution record. Potential result substitution detected.`);
+      try {
+        const manifestDigest = SimulationExecutionRegistry.computeCanonicalContentDigest(result);
+        const authenticDigest = authenticRecord.canonicalContentDigest || SimulationExecutionRegistry.computeCanonicalContentDigest(authenticRecord);
+        
+        if (manifestDigest !== authenticDigest) {
+          errors.push(`RESULT_INTEGRITY_VIOLATION: Candidate manifest content does not match authoritative execution record. Potential result substitution detected.`);
+          success = false;
+        }
+      } catch (err: any) {
+        errors.push(`RESULT_INTEGRITY_VIOLATION: Candidate manifest cannot be canonicalized (${err?.message || err}).`);
         success = false;
       }
     }

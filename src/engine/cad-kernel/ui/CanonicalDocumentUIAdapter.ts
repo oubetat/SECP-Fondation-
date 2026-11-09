@@ -8,7 +8,7 @@
  * - Guarantees revision and history integrity on every executed modification.
  */
 
-import { EngineeringDocument, Sketch, FeatureNode } from '../document/CADDocument';
+import { EngineeringDocument, Sketch } from '../document/CADDocument';
 import { DocumentEvaluator, DocumentEvaluationResult } from '../document/DocumentEvaluator';
 import { CapabilityTruthGate } from '../registry/CapabilityTruthGate';
 import { SketchUIIntegration, ExtrudeActionOptions } from '../ui-integration/SketchUIIntegration';
@@ -463,7 +463,7 @@ export class CanonicalDocumentUIAdapter {
    * Toggles the suppression state of a canonical feature.
    */
   public static executeSuppressFeature(doc: EngineeringDocument, featureId: string): { result: ExecutionResult; evaluation?: DocumentEvaluationResult } {
-    const feature = doc.features.find((f: any) => (f.featureId || f.id) === featureId);
+    const feature = doc.features?.find((f: any) => (f.featureId || f.id) === featureId);
     if (!feature) {
       return { result: { success: false, status: 'FAILED', documentId: doc.documentId, documentRevision: doc.revision, actionId: `ACT_SUPPRESS_${Date.now()}`, error: 'Feature not found' } };
     }
@@ -476,7 +476,7 @@ export class CanonicalDocumentUIAdapter {
     const { updatedDoc } = engine.mutateCanonicalDocument(
       doc.documentId,
       (targetDoc) => {
-        targetDoc.features = targetDoc.features.map((f: any) => {
+        targetDoc.features = (targetDoc.features || []).map((f: any) => {
           const id = f.featureId || f.id;
           if (id === featureId) {
             return { ...f, suppressed: !f.suppressed };
@@ -509,7 +509,7 @@ export class CanonicalDocumentUIAdapter {
    * Deletes a feature from the canonical history.
    */
   public static executeDeleteFeature(doc: EngineeringDocument, featureId: string): { result: ExecutionResult; evaluation?: DocumentEvaluationResult } {
-    const exists = doc.features.some((f: any) => (f.featureId || f.id) === featureId);
+    const exists = (doc.features || []).some((f: any) => (f.featureId || f.id) === featureId);
     if (!exists) {
       return { result: { success: false, status: 'FAILED', documentId: doc.documentId, documentRevision: doc.revision, actionId: `ACT_DELETE_${Date.now()}`, error: 'Feature not found' } };
     }
@@ -522,7 +522,7 @@ export class CanonicalDocumentUIAdapter {
     const { updatedDoc } = engine.mutateCanonicalDocument(
       doc.documentId,
       (targetDoc) => {
-        targetDoc.features = targetDoc.features.filter((f: any) => (f.featureId || f.id) !== featureId);
+        targetDoc.features = (targetDoc.features || []).filter((f: any) => (f.featureId || f.id) !== featureId);
       },
       `Delete Feature: ${featureId}`,
       'FEATURE_TREE_WORKBENCH'
@@ -553,7 +553,7 @@ export class CanonicalDocumentUIAdapter {
     paramId: string, 
     newValue: any
   ): { result: ExecutionResult; evaluation?: DocumentEvaluationResult } {
-    const feature = doc.features.find((f: any) => (f.featureId || f.id) === featureId);
+    const feature = (doc.features || []).find((f: any) => (f.featureId || f.id) === featureId);
     if (!feature) {
       return { result: { success: false, status: 'FAILED', documentId: doc.documentId, documentRevision: doc.revision, actionId: `ACT_UPDATE_PARAM_${Date.now()}`, error: 'Feature not found' } };
     }
@@ -566,7 +566,7 @@ export class CanonicalDocumentUIAdapter {
     const { updatedDoc } = engine.mutateCanonicalDocument(
       doc.documentId,
       (targetDoc) => {
-        targetDoc.features = targetDoc.features.map((f: any) => {
+        targetDoc.features = (targetDoc.features || []).map((f: any) => {
           const id = f.featureId || f.id;
           if (id === featureId) {
             const updatedParams = { ...(f.parameters || {}), [paramId]: newValue };

@@ -3,14 +3,14 @@
 **تقرير التأهيل الهندسي الرسمي لمنظومة التحكم الإلكتروني — المرحلة الخامسة**
 
 ### 1. بيانات التعريف والقرار النهائي (Executive Decision)
-- **Report ID:** `SECP-P5-QUAL-SECP-REF-ECU-001-1792573891140`
+- **Report ID:** `SECP-P5-QUAL-SECP-REF-ECU-001-1793517500649`
 - **Target System:** `SECP-REF-ECU-001` (Revision: `REV-5.0.0-QUAL`)
 - **Target Domain:** `AIRCRAFT_AVIONICS`
 - **Governing Standards:** `DO-254 & IPC-6012 Class 3`
-- **Timestamp:** `2026-10-21T09:11:31.111Z`
+- **Timestamp:** `2026-11-01T07:18:20.600Z`
 - **Canonical System SHA-256:** `598682e41a861f8f05385c02363a9ec55de4c4f212753c661f9bda8e11411003`
 - **Evidence Merkle Tree Root:** `3d0a1f4db1b5d194ae0e8e3390c087e5bd5fe934a89dceea4457fc3096f9b80b`
-- **Qualification Cryptographic Signature:** `5168e78d564c26f5ddc2aba34948cf609047674c8025a385f05222f1368738fe`
+- **Qualification Cryptographic Signature:** `64ececdd3963370138d7a9a70dfb03eb7e5e2a63ecf86b90b1c2cf1651e446f5`
 - **FINAL QUALIFICATION VERDICT:** **`QUALIFIED_WITHIN_DECLARED_SCOPE`**
 
 ### 2. ملخص متطلبات القبول (Acceptance Metrics Summary)

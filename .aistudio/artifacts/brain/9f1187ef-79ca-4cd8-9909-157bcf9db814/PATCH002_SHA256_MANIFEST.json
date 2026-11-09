@@ -1,0 +1,65 @@
+{
+  "mission": "SECP-CAD-TRUTH-PATCH-002",
+  "title": "SHA-256 Manifest for Code and Artifact Deliverables",
+  "generatedAt": "2026-11-02T10:17:51Z",
+  "sourceFiles": [
+    {
+      "path": "src/engine/cfd3d/Fvm3DTypes.ts",
+      "sha256": "d77ef953bec26f43b5cd412dd1a4d908df11da6e77b7e7855c4d2718e2c0f234"
+    },
+    {
+      "path": "src/engine/cad-kernel/cfd/CFDAdapter.ts",
+      "sha256": "ccf4ff479772fe153d12ebb610aefdb74619aeafd2c8039afe45315df5d8fd93"
+    },
+    {
+      "path": "src/engine/cfd3d/Fvm3DNavierStokesSolver.ts",
+      "sha256": "950ca7f7692c7a326ef5d4822a08b14254044326a17a2209e462ea3fd12cbd8d"
+    },
+    {
+      "path": "src/engine/crossdomain/CanonicalDomainBindingEngine.ts",
+      "sha256": "39b3c96e0bbca73c6fa3f8ac44e99a7c15aa9a1bfa3e5a3d3958629791017b25"
+    },
+    {
+      "path": "src/engine/simulation/__tests__/CanonicalCadCfdTruthAdversarial.test.ts",
+      "sha256": "bec9c1835ca4beb26476abae7fee16b07c2ac42630f7feaf2545d7ffcbaac9cc"
+    },
+    {
+      "path": "src/engine/cad-kernel/cfd/__tests__/CFDCADPipeline.test.ts",
+      "sha256": "ef4c71b0be67da63bf2291625e670430ff467a3925876ef18fadeb978c2ff383"
+    }
+  ],
+  "artifactFiles": [
+    {
+      "path": "PATCH002_BASELINE_ARCHITECTURE_MAP.json",
+      "sha256": "94268c88aee23b32eec94300423e7dd44cdcc1fba75f566db387d915b0b7d995"
+    },
+    {
+      "path": "PATCH002_CANONICAL_IDENTITY_CONTRACT.json",
+      "sha256": "e015d8e2dbed1db1a49571b5b13e862c45a506dbcb2ddb8891acee0c4693a0ea"
+    },
+    {
+      "path": "PATCH002_CFD_MESH_PROVENANCE_GRAPH.json",
+      "sha256": "82e9d756381accde27bfb955bcb7be11b5204aaefba71a51e237075c3270917b"
+    },
+    {
+      "path": "PATCH002_EXECUTION_EVIDENCE_BINDING.json",
+      "sha256": "fab256821c6cf41890be05ebaf53d929a0a8b9906957d503a8221414c8e7e812"
+    },
+    {
+      "path": "PATCH002_ADVERSARIAL_TEST_MATRIX.json",
+      "sha256": "387ef4a72b70d82dd4d5d4f958af147d36564322cc4de1d3f4811c4a0ad1b503"
+    },
+    {
+      "path": "PATCH002_NUMERICAL_QUALIFICATION_SEPARATION.json",
+      "sha256": "48b36248bbbf0ff3efaa32911653726681bce1d7ce4ee7f3f4f50b9123a80cc2"
+    },
+    {
+      "path": "PATCH002_SOURCE_CHANGE_MANIFEST.json",
+      "sha256": "b53a30cd2726a0971a2a4cda9986d8fa99311070e7d4a8e23a6a28c8be8739af"
+    },
+    {
+      "path": "PATCH002_RAW_EXECUTION_LOG.txt",
+      "sha256": "8d248c3c5a6d0e952a0cdc6dd28c56874d0fe73ada9e1b18d53218f8a607fa97"
+    }
+  ]
+}

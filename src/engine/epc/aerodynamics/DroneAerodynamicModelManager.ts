@@ -320,10 +320,20 @@ export class DroneAerodynamicModelManager {
 
     // 1. Build CFD Domain Mesh using SECP CFDMeshBuilder
     const meshBuild = CFDMeshBuilder.buildBoxMesh([8, 8, 8], [2.0, 2.0, 2.0]);
+    const airframeModel = this.airframeManager.getModel();
+    const sourceGeomHash = airframeModel?.geometryHash || 'GEO-AIRFRAME-DRONE-001';
+    const sourceRevHash = airframeModel?.revision || '1.0';
+    const sourceBRepHash = airframeModel?.topologyHash || sourceGeomHash;
     
     // Convert to FvmMesh3D structure for Fvm3DNavierStokesSolver
     const fvmMesh: FvmMesh3D = {
       meshId: 'MESH-DRONE-CFD-FVM-001',
+      provenance: {
+        sourceGeometryHash: sourceGeomHash,
+        sourceRevisionHash: sourceRevHash,
+        bRepHash: sourceBRepHash,
+        meshHash: `MESH-${sourceGeomHash}`
+      },
       cells: meshBuild.mesh.cells.map(c => ({
         cellId: c.id,
         volume: c.volume,

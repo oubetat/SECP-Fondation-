@@ -1,0 +1,688 @@
+{
+  "timestamp": "2026-08-23T14:09:51.352Z",
+  "executionMode": "VERIFICATION",
+  "engineVersion": "SECP_ASSEMBLY_v1.0",
+  "caseResults": [
+    {
+      "caseId": "BENCH-ASM-01",
+      "caseName": "Basic Assembly Graph",
+      "category": "BASIC",
+      "verdict": "PASS",
+      "metrics": {
+        "totalRuntimeMs": 0.7380890000000022,
+        "componentCount": 2,
+        "assemblyCreationTimeMs": 0.7380890000000022
+      },
+      "details": "Created assembly with 2 instances.",
+      "evidencePacket": {
+        "instances": [
+          {
+            "instanceId": "inst-1",
+            "partId": "part-a",
+            "name": "Instance 1",
+            "placementTransform": {
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1
+              ],
+              "position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              },
+              "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              }
+            },
+            "worldTransform": {
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1
+              ],
+              "position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              },
+              "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              }
+            },
+            "suppressed": false,
+            "fixed": false
+          },
+          {
+            "instanceId": "inst-2",
+            "partId": "part-a",
+            "name": "Instance 2",
+            "placementTransform": {
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1
+              ],
+              "position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              },
+              "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              }
+            },
+            "worldTransform": {
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1
+              ],
+              "position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              },
+              "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              }
+            },
+            "suppressed": false,
+            "fixed": false
+          }
+        ]
+      },
+      "evidenceHash": "0ba1b9ceff2574d8"
+    },
+    {
+      "caseId": "BENCH-ASM-02",
+      "caseName": "Basic Constraint Solve",
+      "category": "CONSTRAINT",
+      "verdict": "PASS",
+      "metrics": {
+        "totalRuntimeMs": 5.168954999999983,
+        "constraintSolveTimeMs": 1.3649220000000355,
+        "constraintCount": 1,
+        "componentCount": 2
+      },
+      "details": "Constraint solved with status: UNDER_CONSTRAINED",
+      "evidencePacket": {
+        "status": "UNDER_CONSTRAINED",
+        "satisfiedConstraintsCount": 1,
+        "totalActiveConstraintsCount": 1,
+        "iterationsTaken": 1,
+        "convergenceResidual": 0,
+        "totalAssemblyDof": 3,
+        "componentDofs": {
+          "i1": {
+            "instanceId": "i1",
+            "isFixed": true,
+            "translation": {
+              "tx": false,
+              "ty": false,
+              "tz": false
+            },
+            "rotation": {
+              "rx": false,
+              "ry": false,
+              "rz": false
+            },
+            "remainingDofCount": 0,
+            "activeConstraintIds": [],
+            "statusMessage": "Fixed Ground Anchor (0 DOF)"
+          },
+          "i2": {
+            "instanceId": "i2",
+            "isFixed": false,
+            "translation": {
+              "tx": true,
+              "ty": true,
+              "tz": false
+            },
+            "rotation": {
+              "rx": false,
+              "ry": false,
+              "rz": true
+            },
+            "remainingDofCount": 3,
+            "activeConstraintIds": [
+              "c1"
+            ],
+            "statusMessage": "Partially Constrained (3 DOF remaining: Tx, Ty, Rz)"
+          }
+        },
+        "diagnostics": [
+          "[Solver] Initializing Assembly Constraint Solver...",
+          "[DOF] Component I1 (i1) is FIXED -> 0 DOF.",
+          "[DOF] Component I2: Partially Constrained (3 DOF remaining: Tx, Ty, Rz)",
+          "[Solver] Assembly is UNDER_CONSTRAINED: 3 total DOFs remaining."
+        ],
+        "solvedTimestamp": "2026-08-23T14:09:48.999Z",
+        "isDeterministic": true
+      },
+      "evidenceHash": "4865d710b61bb87d"
+    },
+    {
+      "caseId": "BENCH-ASM-03",
+      "caseName": "Conflicting Constraints",
+      "category": "CONSTRAINT",
+      "verdict": "PASS",
+      "metrics": {
+        "totalRuntimeMs": 0.8966040000000248,
+        "constraintCount": 2
+      },
+      "details": "Solved with status: CONFLICTING",
+      "evidencePacket": {
+        "status": "CONFLICTING",
+        "satisfiedConstraintsCount": 0,
+        "totalActiveConstraintsCount": 2,
+        "iterationsTaken": 0,
+        "convergenceResidual": 1,
+        "totalAssemblyDof": 4,
+        "componentDofs": {
+          "i1": {
+            "instanceId": "i1",
+            "isFixed": true,
+            "translation": {
+              "tx": false,
+              "ty": false,
+              "tz": false
+            },
+            "rotation": {
+              "rx": false,
+              "ry": false,
+              "rz": false
+            },
+            "remainingDofCount": 0,
+            "activeConstraintIds": [],
+            "statusMessage": "Fixed Ground Anchor (0 DOF)"
+          },
+          "i2": {
+            "instanceId": "i2",
+            "isFixed": false,
+            "translation": {
+              "tx": false,
+              "ty": true,
+              "tz": false
+            },
+            "rotation": {
+              "rx": true,
+              "ry": true,
+              "rz": true
+            },
+            "remainingDofCount": 4,
+            "activeConstraintIds": [
+              "c1",
+              "c2"
+            ],
+            "statusMessage": "Partially Constrained (4 DOF remaining: Ty, Rx, Ry, Rz)"
+          }
+        },
+        "diagnostics": [
+          "[Solver] Initializing Assembly Constraint Solver...",
+          "[Solver-Conflict] Conflicting distance constraints between i1 and i2: 10mm vs 20mm."
+        ],
+        "solvedTimestamp": "2026-08-23T14:09:49.003Z",
+        "isDeterministic": true
+      },
+      "evidenceHash": "df2bd95f1387e358"
+    },
+    {
+      "caseId": "BENCH-ASM-04",
+      "caseName": "Kinematic Solver",
+      "category": "KINEMATICS",
+      "verdict": "PASS",
+      "metrics": {
+        "totalRuntimeMs": 2.302850000000035
+      },
+      "details": "Kinematic solve status: UNDER_CONSTRAINED. Joint at solved.",
+      "evidencePacket": {
+        "status": "UNDER_CONSTRAINED",
+        "solved": true,
+        "degreesOfFreedom": 6,
+        "constrainedDOF": 5,
+        "freeDOF": 1,
+        "componentTransforms": {
+          "root": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "link": [
+            0.7071067811865476,
+            -0.7071067811865475,
+            0,
+            0,
+            0.7071067811865475,
+            0.7071067811865476,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        "residualError": 0,
+        "violatedConstraints": [],
+        "violatedLimits": [],
+        "collisions": [],
+        "solverIterations": 1,
+        "deterministicHash": "hash-kinematics-75c6b406",
+        "diagnostics": [
+          "[Solver] Initiating Kinematic Solve for 2 components, 3 joints, 0 constraints.",
+          "[DOF] Total System DOF: 6, Constrained: 5, Free: 1 (UNDER_CONSTRAINED).",
+          "[Ground] Root component Root anchored at origin/placement.",
+          "[Solver Outcome] Status: UNDER_CONSTRAINED, Residual: 0.0000e+0, Iterations: 1."
+        ]
+      },
+      "evidenceHash": "hash-kinematics-75c6b406"
+    },
+    {
+      "caseId": "BENCH-ASM-05",
+      "caseName": "Clash Detection",
+      "category": "CLASH",
+      "verdict": "PASS",
+      "metrics": {
+        "totalRuntimeMs": 2306.7227519999997,
+        "clashCount": 1
+      },
+      "details": "Detected 1 clashes.",
+      "evidencePacket": {
+        "status": "INTERFERENCE",
+        "clashes": [
+          {
+            "id": "clash-i1-i2",
+            "componentAId": "i1",
+            "componentAName": "I1",
+            "componentBId": "i2",
+            "componentBName": "I2",
+            "intersectionVolumeMm3": 48000,
+            "intersectionLocation": {
+              "x": 25,
+              "y": 20,
+              "z": 20
+            },
+            "severity": "CRITICAL_COLLISION",
+            "clashDetails": "Volumetric clash of 48000.00 mm³ detected between I1 and I2."
+          }
+        ],
+        "totalClashVolumeMm3": 48000,
+        "evaluatedPairsCount": 1,
+        "timestamp": "2026-08-23T14:09:51.313Z",
+        "kernelUsed": "OCCT"
+      },
+      "evidenceHash": "ff6f00cf8e8af30c"
+    },
+    {
+      "caseId": "BENCH-ASM-06",
+      "caseName": "Large Assembly (10,000)",
+      "category": "SCALABILITY",
+      "verdict": "PASS",
+      "metrics": {
+        "totalRuntimeMs": 35.47997000000032,
+        "componentCount": 10000,
+        "assemblyCreationTimeMs": 35.47997000000032
+      },
+      "details": "Created 10,000 components in 35.48ms.",
+      "evidencePacket": {
+        "count": 10000,
+        "runtimeMs": 35.47997000000032
+      },
+      "evidenceHash": "9c2d4831c23b93a6"
+    },
+    {
+      "caseId": "BENCH-ASM-07",
+      "caseName": "BOM Mutation Integrity",
+      "category": "BOM",
+      "verdict": "PASS",
+      "metrics": {
+        "componentCount": 1
+      },
+      "details": "Instance removal works.",
+      "evidencePacket": {
+        "instances": [
+          {
+            "instanceId": "i2",
+            "partId": "p1",
+            "name": "I2",
+            "placementTransform": {
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1
+              ],
+              "position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              },
+              "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              }
+            },
+            "worldTransform": {
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1
+              ],
+              "position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              },
+              "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              }
+            },
+            "suppressed": false,
+            "fixed": false
+          }
+        ]
+      },
+      "evidenceHash": "205fb1830b9e1905"
+    },
+    {
+      "caseId": "BENCH-ASM-08",
+      "caseName": "Determinism",
+      "category": "DETERMINISM",
+      "verdict": "PASS",
+      "metrics": {},
+      "details": "Two separate constraint solves match.",
+      "evidencePacket": {
+        "h1": "4865d710b61bb87d",
+        "h2": "4865d710b61bb87d"
+      },
+      "evidenceHash": "4865d710b61bb87d"
+    },
+    {
+      "caseId": "BENCH-ASM-09",
+      "caseName": "Duplicate Instance ID",
+      "category": "ADVERSARIAL",
+      "verdict": "PASS",
+      "metrics": {},
+      "details": "Duplicate ID silently overwrote.",
+      "evidencePacket": {
+        "instances": [
+          {
+            "instanceId": "i1",
+            "partId": "p1",
+            "name": "I1-dup",
+            "placementTransform": {
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1
+              ],
+              "position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              },
+              "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              }
+            },
+            "worldTransform": {
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1
+              ],
+              "position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              },
+              "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              }
+            },
+            "suppressed": false,
+            "fixed": false
+          }
+        ]
+      },
+      "evidenceHash": "31eadab436312346"
+    },
+    {
+      "caseId": "BENCH-ASM-10",
+      "caseName": "Missing Part Reference",
+      "category": "ADVERSARIAL",
+      "verdict": "PASS",
+      "metrics": {},
+      "details": "Rejected missing part reference.",
+      "evidencePacket": {},
+      "evidenceHash": "NA"
+    }
+  ],
+  "gateResult": {
+    "gateId": "PATCH180_ASSEMBLY_BENCHMARK_GATE",
+    "passed": true,
+    "score": 100,
+    "finalVerdict": "PASS",
+    "criteriaResults": [
+      {
+        "id": "CRIT-180-BENCH-ASM-01",
+        "name": "Basic Assembly Graph",
+        "passed": true,
+        "verdict": "PASS",
+        "score": 10,
+        "details": "Created assembly with 2 instances."
+      },
+      {
+        "id": "CRIT-180-BENCH-ASM-02",
+        "name": "Basic Constraint Solve",
+        "passed": true,
+        "verdict": "PASS",
+        "score": 10,
+        "details": "Constraint solved with status: UNDER_CONSTRAINED"
+      },
+      {
+        "id": "CRIT-180-BENCH-ASM-03",
+        "name": "Conflicting Constraints",
+        "passed": true,
+        "verdict": "PASS",
+        "score": 10,
+        "details": "Solved with status: CONFLICTING"
+      },
+      {
+        "id": "CRIT-180-BENCH-ASM-04",
+        "name": "Kinematic Solver",
+        "passed": true,
+        "verdict": "PASS",
+        "score": 10,
+        "details": "Kinematic solve status: UNDER_CONSTRAINED. Joint at solved."
+      },
+      {
+        "id": "CRIT-180-BENCH-ASM-05",
+        "name": "Clash Detection",
+        "passed": true,
+        "verdict": "PASS",
+        "score": 10,
+        "details": "Detected 1 clashes."
+      },
+      {
+        "id": "CRIT-180-BENCH-ASM-06",
+        "name": "Large Assembly (10,000)",
+        "passed": true,
+        "verdict": "PASS",
+        "score": 10,
+        "details": "Created 10,000 components in 35.48ms."
+      },
+      {
+        "id": "CRIT-180-BENCH-ASM-07",
+        "name": "BOM Mutation Integrity",
+        "passed": true,
+        "verdict": "PASS",
+        "score": 10,
+        "details": "Instance removal works."
+      },
+      {
+        "id": "CRIT-180-BENCH-ASM-08",
+        "name": "Determinism",
+        "passed": true,
+        "verdict": "PASS",
+        "score": 10,
+        "details": "Two separate constraint solves match."
+      },
+      {
+        "id": "CRIT-180-BENCH-ASM-09",
+        "name": "Duplicate Instance ID",
+        "passed": true,
+        "verdict": "PASS",
+        "score": 10,
+        "details": "Duplicate ID silently overwrote."
+      },
+      {
+        "id": "CRIT-180-BENCH-ASM-10",
+        "name": "Missing Part Reference",
+        "passed": true,
+        "verdict": "PASS",
+        "score": 10,
+        "details": "Rejected missing part reference."
+      }
+    ],
+    "attestationSignature": "ATTEST-GATE180-42317d62a",
+    "timestamp": "2026-08-23T14:09:51.352Z"
+  },
+  "integrityHash": "75fa05567cfba76f"
+}

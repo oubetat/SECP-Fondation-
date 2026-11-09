@@ -1,0 +1,102 @@
+{
+  "task_id": "SECP-STAGE3-IFA-001",
+  "artifact_type": "ATTACK_MATRIX",
+  "timestamp": "2026-11-01T08:32:00.000Z",
+  "defect_summary": {
+    "total_scenarios_tested": 8,
+    "blocked_scenarios": 7,
+    "exploitable_scenarios": 1,
+    "critical_defect_id": "IFA-DEFECT-001",
+    "critical_defect_description": "CanonicalDomainBindingEngine.sealBinding() is publicly static and callable by any production code without presenting an authoritative engine key or boot token."
+  },
+  "attack_scenarios": [
+    {
+      "attack_id": "ATTACK-001",
+      "scenario_name": "Public Self-Sealing via CanonicalDomainBindingEngine",
+      "target_api": "CanonicalDomainBindingEngine.sealBinding(binding)",
+      "attack_vector": "Arbitrary caller constructs a CanonicalDomainBinding object and invokes CanonicalDomainBindingEngine.sealBinding(binding) directly.",
+      "expected_defense": "The seal method requires presenting a private authority key initialized during SimulationEngine.bootAuthority().",
+      "observed_behavior": "The method executes successfully and attaches a valid SHA256 sealToken without checking caller authority.",
+      "exploitability_status": "EXPLOITABLE",
+      "severity": "CRITICAL",
+      "remediation": "Update `sealBinding(binding, authorityKey?)` or check initialized `SimulationAuthorityInternal` key before sealing."
+    },
+    {
+      "attack_id": "ATTACK-002",
+      "scenario_name": "Bypass via Hardcoded MD-SEAL Token",
+      "target_api": "CanonicalDomainBindingEngine.validateBinding",
+      "attack_vector": "Caller sets executionAuthority = { isAuthoritative: true, executionSealToken: 'MD-SEAL' }.",
+      "expected_defense": "Validator recalculates expected SHA256 hash and rejects literal static strings like 'MD-SEAL'.",
+      "observed_behavior": "Validation fails with `INVALID_SEAL_TOKEN`. Static tokens are rejected.",
+      "exploitability_status": "BLOCKED",
+      "severity": "HIGH",
+      "remediation": "None needed; static tokens are blocked."
+    },
+    {
+      "attack_id": "ATTACK-003",
+      "scenario_name": "Replay of Revoked or Stale Binding",
+      "target_api": "Solver entry validation (e.g. FEMCore.solveStaticLinear)",
+      "attack_vector": "Caller submits an old binding whose status has been set to 'STALE' or 'INVALID'.",
+      "expected_defense": "Validator inspects binding.status and rejects non-CURRENT bindings.",
+      "observed_behavior": "Validation fails with error 'Binding status STALE is not CURRENT'. Solver throws SIMULATION_AUTHORITY_VIOLATION.",
+      "exploitability_status": "BLOCKED",
+      "severity": "HIGH",
+      "remediation": "None needed; stale status rejection enforced."
+    },
+    {
+      "attack_id": "ATTACK-004",
+      "scenario_name": "Cross-Domain Identity Substitution",
+      "target_api": "Fvm3DNavierStokesSolver.solveNavierStokes",
+      "attack_vector": "Caller submits a valid PCB domain binding to the CFD solver.",
+      "expected_defense": "Solver checks domain match (`binding.domain === 'CFD'`).",
+      "observed_behavior": "Validation fails with 'Domain mismatch: expected CFD, got PCB'. Solver rejects execution.",
+      "exploitability_status": "BLOCKED",
+      "severity": "HIGH",
+      "remediation": "None needed; domain validation enforced."
+    },
+    {
+      "attack_id": "ATTACK-005",
+      "scenario_name": "Test-Helper Production Import Backdoor",
+      "target_api": "src/engine/__test_helpers__/SimulationAuthorityMock.ts",
+      "attack_vector": "Production code imports `mintCompromisedEnvelope` or `SimulationAuthorityMock` to bypass authority.",
+      "expected_defense": "CI static check `NoBackdoor.test.ts` scans all production files and fails build if imported.",
+      "observed_behavior": "Zero production files import test helpers. `NoBackdoor.test.ts` passes 100%.",
+      "exploitability_status": "BLOCKED",
+      "severity": "CRITICAL",
+      "remediation": "None needed; test helper isolation enforced."
+    },
+    {
+      "attack_id": "ATTACK-006",
+      "scenario_name": "Geometry Tampering with Mismatched Hash",
+      "target_api": "CanonicalDomainBindingEngine.validateBinding",
+      "attack_vector": "Caller modifies geometric entity payload after seal generation without re-computing sealToken.",
+      "expected_defense": "Validator re-generates geometryHash and compares against sealToken SHA256 components.",
+      "observed_behavior": "Hash mismatch detected; validation fails.",
+      "exploitability_status": "BLOCKED",
+      "severity": "HIGH",
+      "remediation": "None needed; hash integrity check enforced."
+    },
+    {
+      "attack_id": "ATTACK-007",
+      "scenario_name": "Caller-Supplied isAuthoritative Flag Mutation",
+      "target_api": "Domain solver execution gates",
+      "attack_vector": "Caller sets `isAuthoritative: true` on an unsealed binding object.",
+      "expected_defense": "Validator checks both `isAuthoritative === true` AND valid `executionSealToken` hash signature.",
+      "observed_behavior": "Validation fails because `executionSealToken` is empty or invalid. Solver throws violation.",
+      "exploitability_status": "BLOCKED",
+      "severity": "HIGH",
+      "remediation": "None needed; boolean flag alone is insufficient."
+    },
+    {
+      "attack_id": "ATTACK-008",
+      "scenario_name": "Direct Solver Execution without Binding Parameter",
+      "target_api": "ElectrothermalSolver / FEMCore / Fvm3DNavierStokesSolver",
+      "attack_vector": "Caller invokes solver entry method with `undefined` or null binding argument.",
+      "expected_defense": "Solver verifies binding argument presence immediately at entry and fails closed.",
+      "observed_behavior": "Solver throws `SIMULATION_AUTHORITY_VIOLATION: Missing authoritative domain binding`.",
+      "exploitability_status": "BLOCKED",
+      "severity": "CRITICAL",
+      "remediation": "None needed; null/undefined binding check enforced."
+    }
+  ]
+}

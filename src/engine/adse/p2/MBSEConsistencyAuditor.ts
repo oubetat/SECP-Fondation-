@@ -35,7 +35,7 @@ export class MBSEConsistencyAuditor {
   /**
    * Performs an authoritative multi-dimensional consistency audit on the current MBSE model.
    */
-  public auditSystemConsistency(configurationId: string, revisionId: string): MBSEConsistencyReport {
+  public auditSystemConsistency(configurationId: string = 'CFG-BASELINE', revisionId: string = 'REV-A'): MBSEConsistencyReport {
     const findings: MBSEFinding[] = [];
     let checksCount = 0;
 

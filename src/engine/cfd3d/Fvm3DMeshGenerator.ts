@@ -294,6 +294,13 @@ export class Fvm3DMeshGenerator {
       boundingBox: {
         min: { x: 0, y: 0, z: 0 },
         max: { x: lx, y: ly, z: lz }
+      },
+      provenance: {
+        sourceGeometryHash: 'geo-hash',
+        sourceRevisionHash: 'REV-TEST',
+        bRepHash: 'geo-hash',
+        meshHash: id,
+        generationTimestamp: new Date().toISOString()
       }
     };
   }
@@ -587,6 +594,13 @@ export class Fvm3DMeshGenerator {
       boundingBox: {
         min: { x: 0, y: 0, z: 0 },
         max: { x: lx, y: ly, z: lz }
+      },
+      provenance: {
+        sourceGeometryHash: 'geo-hash',
+        sourceRevisionHash: 'REV-TEST',
+        bRepHash: 'geo-hash',
+        meshHash: id,
+        generationTimestamp: new Date().toISOString()
       }
     };
   }

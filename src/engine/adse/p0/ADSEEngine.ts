@@ -257,6 +257,9 @@ export class ADSEEngine {
         content: { geomId: params.engineeringObjectId, CAD: true },
         snapshot: {
           geometryState: {
+            parameters: {},
+            features: [],
+            topologyHash: createHash('sha256').update(`TOPO-${params.engineeringObjectId}`).digest('hex'),
             geometryHash: createHash('sha256').update(`GEOM-${params.engineeringObjectId}`).digest('hex')
           }
         }
@@ -265,6 +268,7 @@ export class ADSEEngine {
 
     // 4. STAGE: EXECUTE & CORE_BIND
     const reqEnvelope: CoreExecutionRequest = {
+      requestId: `REQ-ADSE-${Date.now()}`,
       pluginId: params.pluginId,
       pluginVersion: '1.4.0',
       engineeringObjectId: params.engineeringObjectId,
@@ -349,7 +353,7 @@ export class ADSEEngine {
         requirementId: req.id,
         systemId: sys.systemId,
         revisionId: activeRev.revisionId,
-        evidenceLeafHash: envelope.evidenceLeaf.leafHash,
+        evidenceLeafHash: envelope.evidenceLeaf?.leafHash || '',
         status: req.verificationStatus
       }
     };

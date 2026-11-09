@@ -1,0 +1,16 @@
+{
+  "layers": [
+    {
+      "name": "Persistent Storage",
+      "type": "JSON"
+    },
+    {
+      "name": "Independent Verification",
+      "type": "Isolated Process"
+    },
+    {
+      "name": "Authority Handshake",
+      "type": "HMAC"
+    }
+  ]
+}

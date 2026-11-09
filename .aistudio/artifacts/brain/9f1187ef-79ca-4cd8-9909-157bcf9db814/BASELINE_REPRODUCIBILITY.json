@@ -1,0 +1,27 @@
+{
+  "mission": "SECP-TYPESCRIPT-REPAIR-001-R2",
+  "baseline": {
+    "count": 7087,
+    "source": "SECP_TYPESCRIPT_BOUNDARY_VALIDATION_002.json",
+    "status": "REPRODUCIBLE",
+    "metadata": {
+      "tscVersion": "5.8.3",
+      "tsconfig": "tsconfig.json",
+      "strict": true
+    }
+  },
+  "current": {
+    "count": 5669,
+    "unique": true,
+    "status": "VERIFIED",
+    "metadata": {
+      "tscVersion": "5.8.3",
+      "tsconfig": "tsconfig.json",
+      "strict": true
+    }
+  },
+  "reconciliation": {
+    "netResolved": 1418,
+    "comparability": "FULL_MATCH"
+  }
+}

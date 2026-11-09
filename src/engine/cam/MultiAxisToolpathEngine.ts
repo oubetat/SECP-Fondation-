@@ -29,8 +29,11 @@ export class MultiAxisToolpathEngine {
     let pointIndex = 0;
     let totalLength = 0;
 
+    if (!config.toolAssembly || !config.feedsAndSpeeds) {
+      throw new Error('MultiAxisToolpath requires toolAssembly and feedsAndSpeeds');
+    }
     const tool = config.toolAssembly.tool;
-    const safeZ = config.clearancePlaneZ;
+    const safeZ = config.clearancePlaneZ ?? 25.0;
 
     const leadRad = (leadAngleDeg * Math.PI) / 180;
     const tiltRad = (tiltAngleDeg * Math.PI) / 180;
@@ -110,8 +113,8 @@ export class MultiAxisToolpathEngine {
     );
 
     return {
-      operationId: config.operationId,
-      strategy: config.strategy,
+      operationId: config.operationId ?? config.id ?? 'op-multiaxis-01',
+      strategy: config.strategy ?? 'FIVE_AXIS_CONTOUR',
       points,
       totalLengthMm: Number(totalLength.toFixed(3)),
       estimatedTimeSec: Number(estimatedTime.toFixed(1)),

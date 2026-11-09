@@ -1,0 +1,60 @@
+{
+  "canonicalRevision": {
+    "revisionHash": "CAD-REV-B-9988-7766",
+    "entityName": "Hydraulic Pump Assembly B",
+    "timestamp": "2026-11-02T12:02:30.167Z"
+  },
+  "bRepGeometry": {
+    "geometryHash": "GEO-BREP-A-1122-3344",
+    "faceCount": 12,
+    "topologyFaceIds": [
+      "face_0",
+      "face_1",
+      "face_2",
+      "face_3",
+      "face_4",
+      "face_5",
+      "face_6",
+      "face_7",
+      "face_8",
+      "face_9",
+      "face_10",
+      "face_11"
+    ]
+  },
+  "meshProvenance": {
+    "meshHash": "MESH-HEX-001",
+    "sourceGeometryHash": "GEO-BREP-A-1122-3344",
+    "sourceRevisionHash": "CAD-REV-B-9988-7766",
+    "elementCount": 1000,
+    "nodeCount": 1200,
+    "provenanceDigest": "b0f9779a91d0d6fe0c1d6b6fe8929a9ebe865507d14a43475cd8fcb582b5989a"
+  },
+  "executionAuthority": {
+    "isAuthoritative": true,
+    "executionSealToken": "8009c63885237a975598a9bc685434adeed1c169a02b9453c90674b0fb992433",
+    "timestamp": "2026-11-02T12:02:30.168Z",
+    "originatingCoreRevision": "CAD-REV-B-9988-7766",
+    "keyVersion": "SECP-V3-PROVENANCE-KEY-001",
+    "executionContext": "CAD_CFD_TRUTH_BATTERY",
+    "domain": "CFD",
+    "canonicalEntityId": "HYDRAULIC_PUMP_B_001"
+  },
+  "executionRecord": {
+    "executionId": "EXEC-CFD-999",
+    "domain": "CFD",
+    "bindingId": "HYDRAULIC_PUMP_B_001",
+    "cadRevisionHash": "CAD-REV-B-9988-7766",
+    "canonicalGeometryHash": "GEO-BREP-A-1122-3344",
+    "inputHash": "INPUT-CFD-001",
+    "resultHash": "RESULT-CFD-001",
+    "timestamp": "2026-11-02T12:02:30.168Z"
+  },
+  "cfdResult": {
+    "converged": true,
+    "iterations": 150,
+    "terminationReason": "CONVERGED",
+    "forceStabilityPassed": true
+  },
+  "contentDigest": "66320b43445f281adb8cf50a0a4bf2ae4842e1caa75802bed52ba0d8dae70588"
+}

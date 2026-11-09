@@ -1,0 +1,211 @@
+{
+  "benchmarkIdentity": {
+    "id": "PATCH-151-FORENSIC-03",
+    "timestamp": "2026-08-21T13:38:11.768Z"
+  },
+  "environmentFingerprint": {
+    "OS": "Linux",
+    "CPU": "unknown",
+    "CPUCores": 2,
+    "RAM": "4.0 GB",
+    "runtime": "NodeJS",
+    "runtimeVersion": "v22.23.1",
+    "buildHash": "build-hpc-secp-151-forensic-gamma"
+  },
+  "scaleResults": [
+    {
+      "instances": 1000,
+      "uniqueGeometries": 50,
+      "breakdown": {
+        "geometryDefinitionsMB": 425,
+        "instanceMetadataMB": 0.1220703125,
+        "transformsMB": 0.1220703125,
+        "spatialIndexMB": 0.091552734375,
+        "dependencyGraphMB": 0.0762939453125,
+        "lodStateMB": 0.0152587890625,
+        "streamingCacheMB": 50,
+        "evidenceStateMB": 0.06103515625,
+        "renderStateMB": 0.0457763671875,
+        "totalAssemblyMemoryMB": 475.5340576171875
+      },
+      "theoreticalNonInstancedMB": 8500,
+      "avoidedMemoryMB": 8075
+    },
+    {
+      "instances": 5000,
+      "uniqueGeometries": 50,
+      "breakdown": {
+        "geometryDefinitionsMB": 425,
+        "instanceMetadataMB": 0.6103515625,
+        "transformsMB": 0.6103515625,
+        "spatialIndexMB": 0.457763671875,
+        "dependencyGraphMB": 0.3814697265625,
+        "lodStateMB": 0.0762939453125,
+        "streamingCacheMB": 250,
+        "evidenceStateMB": 0.30517578125,
+        "renderStateMB": 0.2288818359375,
+        "totalAssemblyMemoryMB": 677.6702880859375
+      },
+      "theoreticalNonInstancedMB": 42500,
+      "avoidedMemoryMB": 42075
+    },
+    {
+      "instances": 10000,
+      "uniqueGeometries": 50,
+      "breakdown": {
+        "geometryDefinitionsMB": 425,
+        "instanceMetadataMB": 1.220703125,
+        "transformsMB": 1.220703125,
+        "spatialIndexMB": 0.91552734375,
+        "dependencyGraphMB": 0.762939453125,
+        "lodStateMB": 0.152587890625,
+        "streamingCacheMB": 256,
+        "evidenceStateMB": 0.6103515625,
+        "renderStateMB": 0.457763671875,
+        "totalAssemblyMemoryMB": 686.340576171875
+      },
+      "theoreticalNonInstancedMB": 85000,
+      "avoidedMemoryMB": 84575
+    },
+    {
+      "instances": 25000,
+      "uniqueGeometries": 50,
+      "breakdown": {
+        "geometryDefinitionsMB": 425,
+        "instanceMetadataMB": 3.0517578125,
+        "transformsMB": 3.0517578125,
+        "spatialIndexMB": 2.288818359375,
+        "dependencyGraphMB": 1.9073486328125,
+        "lodStateMB": 0.3814697265625,
+        "streamingCacheMB": 256,
+        "evidenceStateMB": 1.52587890625,
+        "renderStateMB": 1.1444091796875,
+        "totalAssemblyMemoryMB": 694.3514404296875
+      },
+      "theoreticalNonInstancedMB": 212500,
+      "avoidedMemoryMB": 212075
+    },
+    {
+      "instances": 46000,
+      "uniqueGeometries": 50,
+      "breakdown": {
+        "geometryDefinitionsMB": 425,
+        "instanceMetadataMB": 5.615234375,
+        "transformsMB": 5.615234375,
+        "spatialIndexMB": 4.21142578125,
+        "dependencyGraphMB": 3.509521484375,
+        "lodStateMB": 0.701904296875,
+        "streamingCacheMB": 256,
+        "evidenceStateMB": 2.8076171875,
+        "renderStateMB": 2.105712890625,
+        "totalAssemblyMemoryMB": 705.566650390625
+      },
+      "theoreticalNonInstancedMB": 391000,
+      "avoidedMemoryMB": 390575
+    },
+    {
+      "instances": 100000,
+      "uniqueGeometries": 50,
+      "breakdown": {
+        "geometryDefinitionsMB": 425,
+        "instanceMetadataMB": 12.20703125,
+        "transformsMB": 12.20703125,
+        "spatialIndexMB": 9.1552734375,
+        "dependencyGraphMB": 7.62939453125,
+        "lodStateMB": 1.52587890625,
+        "streamingCacheMB": 256,
+        "evidenceStateMB": 6.103515625,
+        "renderStateMB": 4.57763671875,
+        "totalAssemblyMemoryMB": 734.40576171875
+      },
+      "theoreticalNonInstancedMB": 850000,
+      "avoidedMemoryMB": 849575
+    },
+    {
+      "instances": 250000,
+      "uniqueGeometries": 50,
+      "breakdown": {
+        "geometryDefinitionsMB": 425,
+        "instanceMetadataMB": 30.517578125,
+        "transformsMB": 30.517578125,
+        "spatialIndexMB": 22.88818359375,
+        "dependencyGraphMB": 19.073486328125,
+        "lodStateMB": 3.814697265625,
+        "streamingCacheMB": 256,
+        "evidenceStateMB": 15.2587890625,
+        "renderStateMB": 11.444091796875,
+        "totalAssemblyMemoryMB": 814.514404296875
+      },
+      "theoreticalNonInstancedMB": 2125000,
+      "avoidedMemoryMB": 2124575
+    }
+  ],
+  "mutationAudits": [
+    {
+      "mutationType": "TRANSFORM_CHANGE_1",
+      "durationMs": 0.023427999999967142,
+      "affectedNodesCount": 1,
+      "integrityPass": true
+    },
+    {
+      "mutationType": "TRANSFORM_CHANGE_100",
+      "durationMs": 0.08505000000002383,
+      "affectedNodesCount": 100,
+      "integrityPass": true
+    },
+    {
+      "mutationType": "TRANSFORM_CHANGE_1000",
+      "durationMs": 0.2294790000000262,
+      "affectedNodesCount": 1000,
+      "integrityPass": true
+    },
+    {
+      "mutationType": "TRANSFORM_CHANGE_10000",
+      "durationMs": 0.8640359999999987,
+      "affectedNodesCount": 10000,
+      "integrityPass": true
+    },
+    {
+      "mutationType": "DELETE_INSTANCES",
+      "durationMs": 0.1937159999999949,
+      "affectedNodesCount": 500,
+      "integrityPass": true
+    },
+    {
+      "mutationType": "ADD_INSTANCES",
+      "durationMs": 0.9943950000000541,
+      "affectedNodesCount": 1000,
+      "integrityPass": true
+    },
+    {
+      "mutationType": "LOD_DOWNGRADE_GLOBAL",
+      "durationMs": 1.348233999999934,
+      "affectedNodesCount": 46500,
+      "integrityPass": true
+    },
+    {
+      "mutationType": "REPARTITION_SPATIAL",
+      "durationMs": 2.2957589999999755,
+      "affectedNodesCount": 46500,
+      "integrityPass": true
+    },
+    {
+      "mutationType": "STREAM_EVICTION_SIM",
+      "durationMs": 0.058055000000081236,
+      "affectedNodesCount": 10000,
+      "integrityPass": true
+    },
+    {
+      "mutationType": "GEOMETRY_MUTATION",
+      "durationMs": 1.9436439999999493,
+      "affectedNodesCount": 930,
+      "integrityPass": true
+    }
+  ],
+  "mathematicalFormula": {
+    "theoreticalNonInstancedMemory": "Total_Instances * 8.5 MB",
+    "actualInstancedMemory": "50 * 8.5 MB + Total_Instances * LayerOverheads",
+    "avoidedMemory": "TheoreticalNonInstancedMemory - ActualInstancedGeometryMemory"
+  },
+  "verdict": "PASS"
+}

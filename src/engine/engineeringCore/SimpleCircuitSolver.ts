@@ -1,7 +1,7 @@
 /**
  * Analytical Solver for EEC-001
  */
-import { CircuitModel } from '../ReferenceCircuitModel';
+import { CircuitModel } from './ReferenceCircuitModel';
 
 export class SimpleCircuitSolver {
     public static solve(model: CircuitModel) {

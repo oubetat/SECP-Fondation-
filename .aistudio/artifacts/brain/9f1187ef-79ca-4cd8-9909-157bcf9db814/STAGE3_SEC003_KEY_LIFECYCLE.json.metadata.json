@@ -1,0 +1,5 @@
+{
+  "summary":  "Definition of the authority key lifecycle, including boot initialization, versioning, revocation, restart behavior, and concurrent initialization protection for SECP-STAGE3-SEC003.",
+  "updatedAt":  "2026-11-01T09:24:32.417451736Z",
+  "userFacing":  true
+}

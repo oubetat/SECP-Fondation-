@@ -85,9 +85,17 @@ export class NodalCircuitSolver {
    * calculating branch currents, KCL residuals, and power balance.
    */
   public static solveDetailed(binding: ElectricalToCoreBinding): NodalSolveResult {
-    // 0. GATING: Verify simulation authority seal (Fail-Closed)
-    if (!CanonicalDomainBindingEngine.validateBinding(binding)) {
-      throw new Error(`[AUTHORITY_GATE_REJECTION] Electrical Solver execution denied: Invalid or non-authoritative simulation seal.`);
+    // 0. GATING: Verify simulation authority and canonical freshness (Fail-Closed)
+    if (binding && binding.status === 'STALE') {
+      throw new Error('CANONICAL_VIOLATION: Attempting to solve STALE electrical model');
+    }
+    if (!binding || !('executionAuthority' in binding) || !binding.executionAuthority?.isAuthoritative) {
+      throw new Error('SIMULATION_AUTHORITY_VIOLATION: Electrical solve attempted without valid execution authorization.');
+    }
+
+    const validation = CanonicalDomainBindingEngine.validateBinding(binding);
+    if (!validation.valid) {
+      throw new Error(`[AUTHORITY_GATE_REJECTION] Electrical Solver execution denied: ${validation.errors.join(', ')}`);
     }
 
     const model = binding.payload;

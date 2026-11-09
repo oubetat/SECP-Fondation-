@@ -1,0 +1,125 @@
+{
+  "task_id": "SECP-STAGE3-IFA-001",
+  "artifact_type": "AUTHORITY_CALLGRAPH",
+  "timestamp": "2026-11-01T08:30:00.000Z",
+  "lifecycle_stages": [
+    "CANONICAL_REVISION",
+    "DOMAIN_BINDING",
+    "AUTHORITY_VALIDATION",
+    "EXECUTION_AUTHORIZATION",
+    "SOLVER_ENTRY",
+    "SIMULATION_EXECUTION",
+    "RESULT_GENERATION",
+    "EVIDENCE_RECORDING"
+  ],
+  "domain_pathways": {
+    "PCB": {
+      "binding_type": "PcbToCoreBinding",
+      "entry_point": "MultidomainPcbIntegrationEngine.executePcbAnalysis",
+      "validation_gate": "CanonicalDomainBindingEngine.validateBinding",
+      "solver_entry": "MultidomainPcbIntegrationEngine.runPcbThermalSolver"
+    },
+    "ELECTRICAL": {
+      "binding_type": "ElectricalToCoreBinding",
+      "entry_point": "NodalCircuitSolver.solveCircuit",
+      "validation_gate": "CanonicalDomainBindingEngine.validateBinding",
+      "solver_entry": "NodalCircuitSolver.computeNodalEquations"
+    },
+    "WIRING_HARNESS": {
+      "binding_type": "HarnessToCoreBinding",
+      "entry_point": "HarnessElectricalSolver.solveHarness",
+      "validation_gate": "CanonicalDomainBindingEngine.validateBinding",
+      "solver_entry": "HarnessElectricalSolver.computeHarnessIRDrop"
+    },
+    "MULTIDOMAIN": {
+      "binding_type": "MultidomainToCoreBinding",
+      "entry_point": "ElectrothermalSolver.solveElectrothermal",
+      "validation_gate": "CanonicalDomainBindingEngine.validateBinding",
+      "solver_entry": "ElectrothermalSolver.executeCoupledLoop"
+    },
+    "FEM": {
+      "binding_type": "FemToCoreBinding",
+      "entry_point": "FEMCore.solveStaticLinear",
+      "validation_gate": "CanonicalDomainBindingEngine.validateBinding",
+      "solver_entry": "FEMCore.assembleAndSolve"
+    },
+    "CFD": {
+      "binding_type": "CfdToCoreBinding",
+      "entry_point": "Fvm3DNavierStokesSolver.solveNavierStokes",
+      "validation_gate": "CanonicalDomainBindingEngine.validateBinding",
+      "solver_entry": "Fvm3DNavierStokesSolver.computeFvmStep"
+    }
+  },
+  "nodes": [
+    { "id": "NODE_REVISION", "label": "Canonical Revision Model", "file": "src/engine/crossdomain/CanonicalDomainBinding.ts" },
+    { "id": "NODE_BINDING_FACTORY", "label": "CanonicalDomainBindingEngine.createBinding", "file": "src/engine/crossdomain/CanonicalDomainBindingEngine.ts" },
+    { "id": "NODE_SEAL_FACTORY", "label": "CanonicalDomainBindingEngine.sealBinding", "file": "src/engine/crossdomain/CanonicalDomainBindingEngine.ts" },
+    { "id": "NODE_VALIDATOR", "label": "CanonicalDomainBindingEngine.validateBinding", "file": "src/engine/crossdomain/CanonicalDomainBindingEngine.ts" },
+    { "id": "NODE_SOLVER_PCB", "label": "MultidomainPcbIntegrationEngine", "file": "src/engine/crossdomain/MultidomainPcbIntegrationEngine.ts" },
+    { "id": "NODE_SOLVER_ELEC", "label": "NodalCircuitSolver", "file": "src/engine/electrical/NodalCircuitSolver.ts" },
+    { "id": "NODE_SOLVER_HARNESS", "label": "HarnessElectricalSolver", "file": "src/engine/harness/HarnessElectricalSolver.ts" },
+    { "id": "NODE_SOLVER_MULTI", "label": "ElectrothermalSolver", "file": "src/engine/multidomain/ElectrothermalSolver.ts" },
+    { "id": "NODE_SOLVER_FEM", "label": "FEMCore", "file": "src/engine/fem/core/FEMCore.ts" },
+    { "id": "NODE_SOLVER_CFD", "label": "Fvm3DNavierStokesSolver", "file": "src/engine/cfd/Fvm3DNavierStokesSolver.ts" },
+    { "id": "NODE_EVIDENCE", "label": "Evidence Envelope & Provenance Hash", "file": "src/engine/simulation/SimulationAuthorityInternal.ts" }
+  ],
+  "edges": [
+    { "from": "NODE_REVISION", "to": "NODE_BINDING_FACTORY", "action": "Pass revision ID and hash parameters" },
+    { "from": "NODE_BINDING_FACTORY", "to": "NODE_SEAL_FACTORY", "action": "Construct unsealed CanonicalDomainBinding object" },
+    { "from": "NODE_SEAL_FACTORY", "to": "NODE_VALIDATOR", "action": "Attach SHA256 sealToken & mark isAuthoritative: true" },
+    { "from": "NODE_VALIDATOR", "to": "NODE_SOLVER_PCB", "action": "Verify executionAuthority before PCB execution" },
+    { "from": "NODE_VALIDATOR", "to": "NODE_SOLVER_ELEC", "action": "Verify executionAuthority before Circuit execution" },
+    { "from": "NODE_VALIDATOR", "to": "NODE_SOLVER_HARNESS", "action": "Verify executionAuthority before Harness execution" },
+    { "from": "NODE_VALIDATOR", "to": "NODE_SOLVER_MULTI", "action": "Verify executionAuthority before Electrothermal execution" },
+    { "from": "NODE_VALIDATOR", "to": "NODE_SOLVER_FEM", "action": "Verify executionAuthority before FEM solve" },
+    { "from": "NODE_VALIDATOR", "to": "NODE_SOLVER_CFD", "action": "Verify executionAuthority before CFD solve" },
+    { "from": "NODE_SOLVER_PCB", "to": "NODE_EVIDENCE", "action": "Mint result envelope on pass" },
+    { "from": "NODE_SOLVER_ELEC", "to": "NODE_EVIDENCE", "action": "Mint result envelope on pass" },
+    { "from": "NODE_SOLVER_HARNESS", "to": "NODE_EVIDENCE", "action": "Mint result envelope on pass" },
+    { "from": "NODE_SOLVER_MULTI", "to": "NODE_EVIDENCE", "action": "Mint result envelope on pass" },
+    { "from": "NODE_SOLVER_FEM", "to": "NODE_EVIDENCE", "action": "Mint result envelope on pass" },
+    { "from": "NODE_SOLVER_CFD", "to": "NODE_EVIDENCE", "action": "Mint result envelope on pass" }
+  ],
+  "forensic_questions_answers": {
+    "1_who_can_create_binding": {
+      "answer": "Any component can instantiate an unsealed binding via `CanonicalDomainBindingEngine.createBinding()`.",
+      "code_reference": "src/engine/crossdomain/CanonicalDomainBindingEngine.ts:createBinding"
+    },
+    "2_who_can_seal_it": {
+      "answer": "Currently `CanonicalDomainBindingEngine.sealBinding()` is a public static method. Any production caller can invoke it without presenting a private key (Defect IFA-DEFECT-001).",
+      "code_reference": "src/engine/crossdomain/CanonicalDomainBindingEngine.ts:sealBinding"
+    },
+    "3_who_can_validate_seal": {
+      "answer": "`CanonicalDomainBindingEngine.validateBinding()` validates token structure, domain compatibility, status, and SHA256 integrity.",
+      "code_reference": "src/engine/crossdomain/CanonicalDomainBindingEngine.ts:validateBinding"
+    },
+    "4_can_arbitrary_production_callers_invoke_seal_api": {
+      "answer": "YES. `CanonicalDomainBindingEngine.sealBinding()` is publicly exported and lacks a caller key check.",
+      "code_reference": "src/engine/crossdomain/CanonicalDomainBindingEngine.ts:sealBinding"
+    },
+    "5_can_callers_manufacture_valid_looking_binding": {
+      "answer": "YES. Because seal generation is deterministic and publicly exposed, callers can construct a binding payload and self-seal it.",
+      "code_reference": "src/engine/crossdomain/CanonicalDomainBindingEngine.ts:generateSealToken"
+    },
+    "6_is_authority_bound_to_revision_and_geometry": {
+      "answer": "YES. The generated seal token incorporates domain, canonicalEntityId, revisionId, and geometryHash into the SHA256 payload.",
+      "code_reference": "src/engine/crossdomain/CanonicalDomainBindingEngine.ts:generateSealToken"
+    },
+    "7_can_binding_be_replayed_across_entities": {
+      "answer": "NO direct replay without modifying hashes. However, because sealing is public, an attacker can generate a fresh seal for modified geometry.",
+      "code_reference": "src/engine/crossdomain/CanonicalDomainBindingEngine.ts:validateBinding"
+    },
+    "8_can_revoked_seal_authorize_execution": {
+      "answer": "NO. `validateBinding()` explicitly checks `binding.status === 'CURRENT'`. Bindings marked 'STALE' or 'INVALID' are rejected immediately.",
+      "code_reference": "src/engine/crossdomain/CanonicalDomainBindingEngine.ts:validateBinding"
+    },
+    "9_can_test_helper_be_imported_by_production": {
+      "answer": "NO. Strictly enforced by `src/engine/crossdomain/__tests__/NoBackdoor.test.ts` which scans all `src/engine/**/*.ts` production files.",
+      "code_reference": "src/engine/crossdomain/__tests__/NoBackdoor.test.ts"
+    },
+    "10_does_solver_independently_reject_unauthorized_execution": {
+      "answer": "YES. All 6 domain solvers (PCB, Electrical, Harness, Multidomain, FEM, CFD) call `CanonicalDomainBindingEngine.validateBinding()` at entry and throw `SIMULATION_AUTHORITY_VIOLATION` if missing/unsealed.",
+      "code_reference": "src/engine/fem/core/FEMCore.ts, src/engine/cfd/Fvm3DNavierStokesSolver.ts, etc."
+    }
+  }
+}

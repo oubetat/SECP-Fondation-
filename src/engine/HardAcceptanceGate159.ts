@@ -42,6 +42,7 @@ export class HardAcceptanceGate159 {
       policyId: 'OVERRIDE-TEST',
       policyVersion: '1.0.0',
       name: 'Override Test',
+      description: 'High priority override test policy for gate verification',
       scope: 'GLOBAL' as any,
       priority: 999, // Highest
       conditions: [{ field: 'operation', operator: 'EQUALS' as any, value: 'CREATE' }],

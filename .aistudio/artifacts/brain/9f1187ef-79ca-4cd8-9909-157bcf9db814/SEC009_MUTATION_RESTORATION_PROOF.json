@@ -1,0 +1,69 @@
+{
+  "audit_id": "SECP-SECURITY-009-CLOSE",
+  "title": "Mutation Harness Implementation, Finally-Block Guarantee, and SHA-256 Baseline Proof",
+  "timestamp": "2026-11-02T08:05:44.630Z",
+  "implementationGuarantees": [
+    "Every mutation test in src/engine/forensic/__tests__/SEC009_MutationHarness.test.ts executes within a try { ... } finally { ... } construct.",
+    "Restoration executes deterministically even if an assertion error or unhandled exception is thrown.",
+    "Cryptographic SHA-256 method hashes are computed before mutation, during mutation, and after restoration.",
+    "Assertions strictly require hashRestored === hashBaseline and hashMutated !== hashBaseline."
+  ],
+  "mutations": [
+    {
+      "id": "MUT-01",
+      "name": "Null Capability Check Removal",
+      "targetFunction": "env.validateCap",
+      "hashBaseline": "97352ab5640f0c058c49e7fa6992d4be0cba5ea7b21dc80562e105e4e760bf0c",
+      "hashMutated": "bc6dc63c2670bc23ff504a5170d4bc0b3917d0901dafe639dc23a9d9489569fa",
+      "hashRestored": "97352ab5640f0c058c49e7fa6992d4be0cba5ea7b21dc80562e105e4e760bf0c",
+      "hashRestoredEqualsBaseline": true,
+      "assertionDetectedMutation": true,
+      "restoredInFinally": true
+    },
+    {
+      "id": "MUT-02",
+      "name": "Capability Identity Check Weakening",
+      "targetFunction": "env.validateCap",
+      "hashBaseline": "97352ab5640f0c058c49e7fa6992d4be0cba5ea7b21dc80562e105e4e760bf0c",
+      "hashMutated": "e0c4f840f95932598389332e2c81525bca253e7d58cebcbb5a549925ee743ee0",
+      "hashRestored": "97352ab5640f0c058c49e7fa6992d4be0cba5ea7b21dc80562e105e4e760bf0c",
+      "hashRestoredEqualsBaseline": true,
+      "assertionDetectedMutation": true,
+      "restoredInFinally": true
+    },
+    {
+      "id": "MUT-03",
+      "name": "Domain Authorization Scope Removal",
+      "targetFunction": "env.validateCap",
+      "hashBaseline": "97352ab5640f0c058c49e7fa6992d4be0cba5ea7b21dc80562e105e4e760bf0c",
+      "hashMutated": "0095d242c75a2d12e61fc80c85b149b1a5e1d528990c0ef78ec1eb603fc5c00e",
+      "hashRestored": "97352ab5640f0c058c49e7fa6992d4be0cba5ea7b21dc80562e105e4e760bf0c",
+      "hashRestoredEqualsBaseline": true,
+      "assertionDetectedMutation": true,
+      "restoredInFinally": true
+    },
+    {
+      "id": "MUT-04",
+      "name": "Authority Initialization Gate Removal",
+      "targetFunction": "env.seal",
+      "hashBaseline": "54ac36beca2f07d2f9540b01639d6cf12d1b7e63ee468eb797e887d1dfcbb3f5",
+      "hashMutated": "2d7505cdd8fe697f3b89ce7d7ea2687bf1516e8340d0ea354f572776c11d6101",
+      "hashRestored": "54ac36beca2f07d2f9540b01639d6cf12d1b7e63ee468eb797e887d1dfcbb3f5",
+      "hashRestoredEqualsBaseline": true,
+      "assertionDetectedMutation": true,
+      "restoredInFinally": true
+    },
+    {
+      "id": "MUT-05",
+      "name": "Token Revocation Registry Bypass",
+      "targetFunction": "env.revokeAll",
+      "hashBaseline": "72ea467c69992f15598696ec091a1343714ee3fe85e43a9f99db73384fa6e4df",
+      "hashMutated": "c06ced4b455b809be04192b02e6c551fece2ff6a60db266a2eec6fbc70f90766",
+      "hashRestored": "72ea467c69992f15598696ec091a1343714ee3fe85e43a9f99db73384fa6e4df",
+      "hashRestoredEqualsBaseline": true,
+      "assertionDetectedMutation": true,
+      "restoredInFinally": true
+    }
+  ],
+  "verdict": "VERIFIED_FAIL_CLOSED_WITH_RESTORATION_GUARANTEE"
+}

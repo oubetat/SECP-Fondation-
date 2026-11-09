@@ -1,0 +1,5 @@
+{
+  "summary":  "Independent forensic cryptographic audit of HMAC seal generation, entropy, fallback secrets, signature payload scope, and tamper detection for SECP-STAGE3-SEC002-ADJ-003.",
+  "updatedAt":  "2026-11-01T09:02:16.935512519Z",
+  "userFacing":  true
+}

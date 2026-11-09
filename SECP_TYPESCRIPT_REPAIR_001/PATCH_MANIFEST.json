@@ -1,0 +1,47 @@
+{
+  "mission": "SECP-TYPESCRIPT-REPAIR-001",
+  "patchesApplied": [
+    {
+      "patchId": "PATCH_001_POLICY_TYPES",
+      "targetFile": "src/engine/industrial-os/policy/types.ts",
+      "description": "Added exported interfaces for PolicyDecision, AggregatePolicyDecision, PolicyCondition, PolicyContext",
+      "integrityHash": "repaired_cleanly"
+    },
+    {
+      "patchId": "PATCH_002_ASSEMBLY_TYPES",
+      "targetFile": "src/engine/assembly/AssemblyConstraintTypes.ts",
+      "description": "Exported missing solver, DOF, kinematic joint, and vector types for AssemblyConstraintSolver",
+      "integrityHash": "repaired_cleanly"
+    },
+    {
+      "patchId": "PATCH_003_DIGITAL_THREAD_TYPES",
+      "targetFile": "src/engine/collaboration/DigitalThreadTypes.ts",
+      "description": "Expanded DigitalThreadNodeType and DigitalThreadRelationshipType with CAM, Mesh, and Supplier members",
+      "integrityHash": "repaired_cleanly"
+    },
+    {
+      "patchId": "PATCH_004_CAM_FEATURE_TYPES",
+      "targetFile": "src/engine/cam/feature-recognition/FeatureTypes.ts",
+      "description": "Exported SlotFeatureParams, StepFeatureParams, PocketFeatureParams, and ManufacturingIntent members",
+      "integrityHash": "repaired_cleanly"
+    },
+    {
+      "patchId": "PATCH_005_POST_TYPES",
+      "targetFile": "src/engine/cam/post-processor/PostTypes.ts",
+      "description": "Exported ModalState, UnitsMode, ControllerDialect, and PostValidationResult",
+      "integrityHash": "repaired_cleanly"
+    },
+    {
+      "patchId": "PATCH_006_TOOLPATH_TYPES",
+      "targetFile": "src/engine/cam/toolpath/ToolpathTypes.ts",
+      "description": "Exported ToolHolderGeometry, MachiningParameters, and StockModelBounds",
+      "integrityHash": "repaired_cleanly"
+    },
+    {
+      "patchId": "PATCH_007_FEATURE_TREE",
+      "targetFile": "src/engine/featureTree.ts",
+      "description": "Exported FeatureTreeNode interface required by projectStorage.ts",
+      "integrityHash": "repaired_cleanly"
+    }
+  ]
+}

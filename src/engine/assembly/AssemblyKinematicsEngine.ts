@@ -33,8 +33,8 @@ export class AssemblyKinematicsEngine {
   } {
     // 1. Clamp to joint motion range if limits are enabled
     let pos = targetPosition;
-    if (joint.limitsEnabled) {
-      pos = Math.max(joint.motionRange.min, Math.min(joint.motionRange.max, pos));
+    if (joint.limitsEnabled && joint.motionRange) {
+      pos = Math.max(joint.motionRange.min ?? -Infinity, Math.min(joint.motionRange.max ?? Infinity, pos));
     }
 
     const parentPos = parentComponent.worldTransform.position;
@@ -97,16 +97,17 @@ export class AssemblyKinematicsEngine {
 
     // Velocity estimation based on position difference
     const dt = 0.016; // 60fps frame delta
-    const velocity = (pos - joint.currentPosition) / dt;
+    const currentPos = joint.currentPosition ?? 0;
+    const velocity = (pos - currentPos) / dt;
     joint.currentPosition = pos;
     joint.velocity = velocity;
 
     // Update child component world transform matrix
-    childComponent.worldTransform = {
+    childComponent.worldTransform = new Transform3D({
       position: updatedPos,
       rotation: updatedRot,
       matrix: computeTransformMatrix(updatedPos, updatedRot, childComponent.placementTransform.scale)
-    };
+    }) as any;
 
     return {
       updatedPosition: updatedPos,
@@ -122,6 +123,7 @@ export class AssemblyKinematicsEngine {
   public static createDefaultKinematicJoints(): KinematicJoint[] {
     return [
       {
+        id: 'joint-crank-rev',
         jointId: 'joint-crank-rev',
         name: 'Crankshaft Main Bearing (Revolute)',
         type: 'REVOLUTE',
@@ -137,6 +139,7 @@ export class AssemblyKinematicsEngine {
         suppressionState: 'ACTIVE'
       },
       {
+        id: 'joint-piston-prism',
         jointId: 'joint-piston-prism',
         name: 'Piston Bore Guide (Prismatic)',
         type: 'PRISMATIC',
@@ -152,6 +155,7 @@ export class AssemblyKinematicsEngine {
         suppressionState: 'ACTIVE'
       },
       {
+        id: 'joint-valve-cyl',
         jointId: 'joint-valve-cyl',
         name: 'Intake Valve Helical Guide (Cylindrical)',
         type: 'CYLINDRICAL',

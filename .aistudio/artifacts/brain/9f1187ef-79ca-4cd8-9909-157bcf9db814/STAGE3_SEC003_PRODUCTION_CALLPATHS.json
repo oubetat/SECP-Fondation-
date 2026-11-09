@@ -1,0 +1,38 @@
+{
+  "taskId": "SECP-STAGE3-SECURITY-CLOSURE-003",
+  "auditType": "Production Execution Call-Path Audit",
+  "timestamp": "2026-11-01T09:19:00Z",
+  "migratedDomains": {
+    "PCB": {
+      "callSite": "src/engine/crossdomain/MultidomainPcbIntegrationEngine.ts",
+      "sealingCall": "CanonicalDomainBindingEngine.sealBinding(circuitBinding, 'MULTIDOMAIN_PCB')",
+      "keyExposedToCaller": false
+    },
+    "ELECTRICAL": {
+      "callSite": "src/engine/engineeringCore/ElectrothermalSolver.ts",
+      "sealingCall": "CanonicalDomainBindingEngine.sealBinding(iterationBinding, 'ELECTROTHERMAL_SOLVER')",
+      "keyExposedToCaller": false
+    },
+    "HARNESS": {
+      "callSite": "src/engine/crossdomain/DomainBindingTestUtility.ts",
+      "sealingCall": "CanonicalDomainBindingEngine.sealBinding(binding, 'TEST_HELPER')",
+      "keyExposedToCaller": false
+    },
+    "MULTIDOMAIN": {
+      "callSite": "src/engine/crossdomain/MultidomainPcbIntegrationEngine.ts",
+      "sealingCall": "CanonicalDomainBindingEngine.sealBinding(circuitBinding, 'MULTIDOMAIN_PCB')",
+      "keyExposedToCaller": false
+    },
+    "FEM": {
+      "callSite": "src/engine/crossdomain/__tests__/SimulationAuthority.test.ts",
+      "sealingCall": "CanonicalDomainBindingEngine.sealBinding(binding, 'AUTHORITY_TEST')",
+      "keyExposedToCaller": false
+    },
+    "CFD": {
+      "callSite": "src/engine/simulation/SimulationEngine.ts",
+      "sealingCall": "sealEnvelope(rawEnvelope)",
+      "keyExposedToCaller": false
+    }
+  },
+  "verificationStatus": "ALL_PRODUCTION_PATHS_MIGRATED_AND_ISOLATED"
+}

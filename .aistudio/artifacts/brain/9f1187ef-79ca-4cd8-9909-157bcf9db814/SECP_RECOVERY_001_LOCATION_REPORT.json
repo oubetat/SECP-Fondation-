@@ -1,0 +1,113 @@
+{
+  "mission": "SECP-RECOVERY-001: REPOSITORY LOCATION DISCOVERY — READ-ONLY",
+  "actual_working_directory": "/app/applet",
+  "inventory": {
+    "has_package_json": true,
+    "has_tsconfig_json": true,
+    "has_src": true,
+    "has_git": false,
+    "has_node_modules": true,
+    "top_level_entry_count": 568
+  },
+  "candidate_repository_roots": [
+    {
+      "absolute_path": "/app/applet",
+      "presence": {
+        "package.json": true,
+        "tsconfig.json": true,
+        "src/": true,
+        ".git": false,
+        "node_modules/": true
+      },
+      "top_level_entry_count": 568,
+      "description": "Primary SECP codebase workspace containing src/, configuration files, node_modules/, and SECP test/qualification suites."
+    },
+    {
+      "absolute_path": "/app",
+      "presence": {
+        "package.json": false,
+        "tsconfig.json": false,
+        "src/": false,
+        ".git": false,
+        "node_modules/": false
+      },
+      "top_level_entry_count": 6,
+      "description": "Parent container directory housing applet, cloudsql, control-plane-api, start.sh, and runtime PIDs."
+    },
+    {
+      "absolute_path": "/app/cloudsql",
+      "presence": {
+        "package.json": false,
+        "tsconfig.json": false,
+        "src/": false,
+        ".git": false,
+        "node_modules/": false
+      },
+      "top_level_entry_count": 0,
+      "description": "Empty sibling directory for Cloud SQL socket/mount."
+    },
+    {
+      "absolute_path": "/app/control-plane-api",
+      "presence": {
+        "package.json": false,
+        "tsconfig.json": false,
+        "src/": false,
+        ".git": false,
+        "node_modules/": false
+      },
+      "top_level_entry_count": 1,
+      "description": "Sibling directory for control plane API binary."
+    },
+    {
+      "absolute_path": "/workspace",
+      "presence": {
+        "package.json": false,
+        "tsconfig.json": false,
+        "src/": false,
+        ".git": false,
+        "node_modules/": false
+      },
+      "top_level_entry_count": 0,
+      "description": "Empty root workspace directory."
+    },
+    {
+      "absolute_path": "/root",
+      "presence": {
+        "package.json": false,
+        "tsconfig.json": false,
+        "src/": false,
+        ".git": false,
+        "node_modules/": false
+      },
+      "top_level_entry_count": 6,
+      "description": "User home directory containing tool caches (.npm, .bun, .playwright)."
+    },
+    {
+      "absolute_path": "/tmp",
+      "presence": {
+        "package.json": false,
+        "tsconfig.json": false,
+        "src/": false,
+        ".git": false,
+        "node_modules/": false
+      },
+      "top_level_entry_count": 3,
+      "description": "System temporary files directory."
+    }
+  ],
+  "is_current_directory_incomplete": true,
+  "reasons_incomplete": [
+    ".git directory is missing from /app/applet and all parent directories.",
+    "git status fails with exit code 128 (fatal: not a git repository)."
+  ],
+  "permission_or_path_errors": [],
+  "exact_commands_executed": [
+    "pwd",
+    "ls -la",
+    "ls -la ..",
+    "ls -la ../..",
+    "git status",
+    "python3 inspect_script.py (bounded filesystem inspection of candidate paths)"
+  ],
+  "final_verdict": "CURRENT_DIRECTORY_INCOMPLETE"
+}

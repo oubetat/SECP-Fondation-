@@ -122,7 +122,7 @@ export class ShopFloorExecutionEngine {
 
     // Step 4: Map Tool Setup Wear Baselines (060-E)
     const clPkg = execPackage.verifiedCLData;
-    clPkg.trajectories.forEach((traj, idx) => {
+    clPkg?.trajectories?.forEach((traj: any, idx: number) => {
       const tId = traj.tool.toolId;
       session.toolConsumption[tId] = ToolConsumptionEngine.createToolRecord(
         tId,
@@ -331,7 +331,7 @@ export class ShopFloorExecutionEngine {
     const producedParts: ManufacturedPartInstance[] = [];
     const unitCountToProduce = 3; // Produce 3 serialized units
     for (let i = 1; i <= unitCountToProduce; i++) {
-      const pInstance = ExecutionProvenanceEngine.signPartInstance(
+      const pInstance = ExecutionProvenanceEngine.createPartInstance(
         `part-${sessionId}-unit-${i}`,
         job.partId,
         job.partRevision,
@@ -340,8 +340,8 @@ export class ShopFloorExecutionEngine {
         lot.materialLotId,
         Object.keys(session.toolConsumption),
         session.machineId,
-        execPackage.clDataHash,
-        execPackage.ncProgramHash
+        execPackage.clDataHash || '',
+        execPackage.ncProgramHash || execPackage.packageHash
       );
       producedParts.push(pInstance);
       session.partInstances.push(pInstance);

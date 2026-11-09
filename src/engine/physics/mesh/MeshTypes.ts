@@ -83,6 +83,8 @@ export interface MeshQualityReport {
 export interface MeshSet {
   meshId: string;
   modelId: string;
+  modelRevisionId?: string; // Link to the specific CAD revision that produced this mesh
+  modelRevisionHash?: string; // Link to the specific CAD geometry hash that produced this mesh
   meshVersion: string;
   dimension: MeshDimension;
   topologyType: 'STRUCTURED' | 'UNSTRUCTURED' | 'HYBRID';
@@ -94,6 +96,7 @@ export interface MeshSet {
   quality?: MeshQualityReport;
   provenanceId?: string;
   revision: string;
+  status?: 'CURRENT' | 'STALE' | 'INVALID';
   metadata?: Record<string, any>;
   canonicalHash?: string;
 }

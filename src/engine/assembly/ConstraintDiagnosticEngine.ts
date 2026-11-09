@@ -23,53 +23,60 @@ export class ConstraintDiagnosticEngine {
     dofReport: DOFReport
   ): ConstraintDiagnosticResult {
     
+    const cId = constraint.constraintId || constraint.id || '';
+    const compAKey = constraint.componentA || '';
+    const compBKey = constraint.componentB || '';
+
     // 1. Check for Dangling References
-    const compA = components.find(c => c.instanceId === constraint.componentA);
-    const compB = components.find(c => c.instanceId === constraint.componentB);
+    const compA = components.find(c => c.instanceId === compAKey);
+    const compB = components.find(c => c.instanceId === compBKey);
 
     if (!compA || !compB) {
       return {
-        constraintId: constraint.constraintId,
+        constraintId: cId,
         status: 'DANGLING_REFERENCE',
-        affectedComponents: [constraint.componentA, constraint.componentB],
+        affectedComponents: [compAKey, compBKey],
         affectedDOF: 0,
         residual: 0,
-        message: `Constraint refers to missing component(s): ${!compA ? constraint.componentA : ''} ${!compB ? constraint.componentB : ''}`
+        message: `Constraint refers to missing component(s): ${!compA ? compAKey : ''} ${!compB ? compBKey : ''}`
       };
     }
 
+    const solverErr = constraint.solverError ?? 0;
+    const tol = constraint.parameters?.tolerance || 1e-4;
+
     // 2. Check for Conflicts / Large Residuals
-    if (constraint.status === 'CONFLICTING' || constraint.solverError > (constraint.parameters.tolerance || 1e-4)) {
+    if (constraint.status === 'CONFLICTING' || solverErr > tol) {
       // Try to identify what it conflicts with
       const relatedConstraints = allConstraints.filter(c => 
-        c.constraintId !== constraint.constraintId && 
-        (c.componentA === constraint.componentA || c.componentB === constraint.componentA ||
-         c.componentA === constraint.componentB || c.componentB === constraint.componentB)
+        (c.constraintId || c.id) !== cId && 
+        (c.componentA === compAKey || c.componentB === compAKey ||
+         c.componentA === compBKey || c.componentB === compBKey)
       );
 
       return {
-        constraintId: constraint.constraintId,
+        constraintId: cId,
         status: 'CONFLICTING',
-        affectedComponents: [constraint.componentA, constraint.componentB],
+        affectedComponents: [compAKey, compBKey],
         affectedDOF: 0, // Conflict means it's fighting over existing DOF
-        conflictsWith: relatedConstraints.map(c => c.constraintId),
-        residual: constraint.solverError,
-        message: `Constraint residual ${constraint.solverError.toExponential(4)} exceeds tolerance.`
+        conflictsWith: relatedConstraints.map(c => c.constraintId || c.id || ''),
+        residual: solverErr,
+        message: `Constraint residual ${solverErr.toExponential(4)} exceeds tolerance.`
       };
     }
 
     // 3. Analyze DOF context
-    const dofA = dofReport.componentDofs[constraint.componentA];
-    const dofB = dofReport.componentDofs[constraint.componentB];
+    const dofA = compAKey && dofReport.componentDofs ? dofReport.componentDofs[compAKey] : undefined;
+    const dofB = compBKey && dofReport.componentDofs ? dofReport.componentDofs[compBKey] : undefined;
 
     if (dofA && dofB) {
        if (dofA.isFixed && dofB.isFixed) {
          return {
-           constraintId: constraint.constraintId,
+           constraintId: cId,
            status: 'OVER_CONSTRAINED',
-           affectedComponents: [constraint.componentA, constraint.componentB],
+           affectedComponents: [compAKey, compBKey],
            affectedDOF: 0,
-           residual: constraint.solverError,
+           residual: solverErr,
            message: "Constraint applied between two fixed components (Redundant)."
          };
        }
@@ -77,11 +84,11 @@ export class ConstraintDiagnosticEngine {
 
     // 4. If none of the above, it's valid (or at least satisfied)
     return {
-      constraintId: constraint.constraintId,
+      constraintId: cId,
       status: 'VALID',
-      affectedComponents: [constraint.componentA, constraint.componentB],
+      affectedComponents: [compAKey, compBKey],
       affectedDOF: 0, // Needs deep integration with DOF analyzer to be precise
-      residual: constraint.solverError
+      residual: solverErr
     };
   }
 
@@ -94,8 +101,8 @@ export class ConstraintDiagnosticEngine {
   ): string[] {
     // Basic implementation: return all constraints with high residuals or status 'CONFLICTING'
     return constraints
-      .filter(c => c.status === 'CONFLICTING' || c.solverError > (c.parameters.tolerance || 1e-3))
-      .map(c => c.constraintId);
+      .filter(c => c.status === 'CONFLICTING' || (c.solverError ?? 0) > (c.parameters?.tolerance || 1e-3))
+      .map(c => c.constraintId || c.id || '');
   }
 
   /**

@@ -1,0 +1,211 @@
+{
+  "auditId": "SECP-CAD-TRUTH-FORENSIC-001",
+  "timestamp": "2026-11-02T08:42:00.000Z",
+  "auditType": "READ-ONLY FORENSIC BASELINE",
+  "inventorySummary": {
+    "totalCadRelatedFiles": 754,
+    "totalTruthRevisionGateFiles": 287,
+    "cadKernelSourceFiles": 221,
+    "assemblySourceFiles": 41,
+    "revisionSourceFiles": 16,
+    "topologySourceFiles": 18,
+    "truthCertificationFiles": 14,
+    "interopStepFiles": 62
+  },
+  "subsystemInventories": {
+    "cadKernel": {
+      "baseDirectory": "src/engine/cad-kernel",
+      "coreEngines": [
+        {
+          "file": "src/engine/cad-kernel/brep/BRepKernel.ts",
+          "lines": 1430,
+          "role": "Canonical B-Rep entity creation (Vertex, Edge, Loop, Face, Shell, Solid), extrude, revolve, box, cylinder, sphere",
+          "classification": "IMPLEMENTED_AND_EXECUTED"
+        },
+        {
+          "file": "src/engine/cad-kernel/brep/BRepTopology.ts",
+          "lines": 395,
+          "role": "Topological class implementations conforming to ISO/STEP B-Rep standards",
+          "classification": "IMPLEMENTED_AND_EXECUTED"
+        },
+        {
+          "file": "src/engine/cad-kernel/brep/BRepEulerOps.ts",
+          "lines": 260,
+          "role": "Euler operators preserving Euler-Poincare characteristic (V - E + F = 2)",
+          "classification": "IMPLEMENTED_AND_EXECUTED"
+        },
+        {
+          "file": "src/engine/cad-kernel/brep/BRepValidator.ts",
+          "lines": 412,
+          "role": "Manifold verification, edge sharing, orientation parity, loop closure",
+          "classification": "IMPLEMENTED_AND_EXECUTED"
+        },
+        {
+          "file": "src/engine/cad-kernel/boolean/BooleanEngine.ts",
+          "lines": 375,
+          "role": "Boolean operations pipeline (UNION, INTERSECT, DIFFERENCE)",
+          "classification": "PARTIALLY_IMPLEMENTED"
+        },
+        {
+          "file": "src/engine/cad-kernel/boolean/BooleanIntersector.ts",
+          "lines": 389,
+          "role": "Surface-surface intersection (Plane-Plane, Plane-Cylinder, Plane-Sphere)",
+          "classification": "PARTIALLY_IMPLEMENTED"
+        },
+        {
+          "file": "src/engine/cad-kernel/modeling/FilletEngine.ts",
+          "lines": 463,
+          "role": "B-Rep rolling-ball cylindrical blend face construction and face trimming",
+          "classification": "IMPLEMENTED_AND_EXECUTED"
+        },
+        {
+          "file": "src/engine/cad-kernel/modeling/ChamferEngine.ts",
+          "lines": 425,
+          "role": "B-Rep planar bevel chamfer face construction and edge replacement",
+          "classification": "IMPLEMENTED_AND_EXECUTED"
+        },
+        {
+          "file": "src/engine/cad-kernel/evaluators/ShellEvaluator.ts",
+          "lines": 274,
+          "role": "Inward/outward shell cavity and wall-thickness evaluator for prismatic solids",
+          "classification": "PARTIALLY_IMPLEMENTED"
+        },
+        {
+          "file": "src/engine/cad-kernel/history/FeatureHistory.ts",
+          "lines": 680,
+          "role": "Directed Acyclic Graph (DAG) feature dependency tree, ordered execution, and invalidation",
+          "classification": "IMPLEMENTED_AND_EXECUTED"
+        },
+        {
+          "file": "src/engine/cad-kernel/history/FeatureExecution.ts",
+          "lines": 1910,
+          "role": "Dispatches features (Extrude, Revolve, Fillet, Chamfer, Hole, Thread, Shell, Pattern, Mirror)",
+          "classification": "IMPLEMENTED_AND_EXECUTED"
+        },
+        {
+          "file": "src/engine/cad-kernel/document/DocumentEvaluator.ts",
+          "lines": 834,
+          "role": "Top-level CAD parametric pipeline evaluator (Parameters -> Sketches -> Features -> B-Rep Solid + Evidence)",
+          "classification": "IMPLEMENTED_AND_EXECUTED"
+        },
+        {
+          "file": "src/engine/cad-kernel/topology/PersistentTopologyNaming.ts",
+          "lines": 415,
+          "role": "Deterministic naming tags and geometric signatures across regeneration",
+          "classification": "IMPLEMENTED_AND_EXECUTED"
+        }
+      ]
+    },
+    "assembly": {
+      "baseDirectory": "src/engine/assembly",
+      "coreEngines": [
+        {
+          "file": "src/engine/assembly/ProductionAssemblyGraphEngine.ts",
+          "lines": 340,
+          "role": "DAG assembly graph, component occurrence transforms, cycle prevention",
+          "classification": "IMPLEMENTED_AND_EXECUTED"
+        },
+        {
+          "file": "src/engine/assembly/AssemblyConstraintSolver.ts",
+          "lines": 520,
+          "role": "Constraint solver (coincident, concentric, distance, angle, fixed mates)",
+          "classification": "IMPLEMENTED_AND_EXECUTED"
+        },
+        {
+          "file": "src/engine/assembly/AssemblyKinematicsEngine.ts",
+          "lines": 485,
+          "role": "Kinematic joint motion solver and degree-of-freedom analyzer",
+          "classification": "IMPLEMENTED_AND_EXECUTED"
+        },
+        {
+          "file": "src/engine/assembly/InterferenceDetectionEngine.ts",
+          "lines": 380,
+          "role": "Bounding box AABB and mesh triangle clash detection between assembly instances",
+          "classification": "IMPLEMENTED_AND_EXECUTED"
+        },
+        {
+          "file": "src/engine/assembly-intelligence/AssemblyDesignIntentEngine.ts",
+          "lines": 410,
+          "role": "SECP-072 assembly intelligence (uses mock CADPart objects in quality gate)",
+          "classification": "PLACEHOLDER_OR_SIMULATED"
+        }
+      ]
+    },
+    "revisionAndPlm": {
+      "baseDirectory": "src/engine/revision",
+      "coreEngines": [
+        {
+          "file": "src/engine/revision/RevisionEngine.ts",
+          "lines": 616,
+          "role": "Lifecycle state transitions, approvals, baselines (In-memory Map storage only)",
+          "classification": "PARTIALLY_IMPLEMENTED"
+        },
+        {
+          "file": "src/engine/revision/RevisionCanonicalizer.ts",
+          "lines": 185,
+          "role": "Deterministic JSON canonicalization and hash computation of revision payloads",
+          "classification": "IMPLEMENTED_AND_EXECUTED"
+        },
+        {
+          "file": "src/engine/plm/CanonicalPLMProjectionAdapter.ts",
+          "lines": 665,
+          "role": "Projects EngineeringDocument truth into EngineeringPLMEngine and propagates invalidation",
+          "classification": "IMPLEMENTED_AND_EXECUTED"
+        },
+        {
+          "file": "src/engine/plm/EngineeringPLMEngine.ts",
+          "lines": 420,
+          "role": "Engineering artifact registry, dependency tracking, and stale state flags",
+          "classification": "IMPLEMENTED_AND_EXECUTED"
+        }
+      ]
+    },
+    "truthThreadAndGates": {
+      "baseDirectory": "src/engine/certification/truth",
+      "coreEngines": [
+        {
+          "file": "src/engine/topology/TopologyLineageProofEngine.ts",
+          "lines": 987,
+          "role": "G1: Persistent topology naming, canonical face/edge reference creation, rebindReference",
+          "classification": "IMPLEMENTED_AND_EXECUTED"
+        },
+        {
+          "file": "src/engine/simulation/SimulationExecutionRegistry.ts",
+          "lines": 248,
+          "role": "G2: Canonical simulation execution registry and deep freeze immutability",
+          "classification": "IMPLEMENTED_AND_EXECUTED"
+        },
+        {
+          "file": "src/engine/simulation/SimulationEngine.ts",
+          "lines": 214,
+          "role": "Simulation execution runner (CRITICAL DEFECT: calls sealEnvelope without SealingCapability)",
+          "classification": "PARTIALLY_IMPLEMENTED"
+        },
+        {
+          "file": "src/engine/topology/CanonicalDerivedArtifactBinding.ts",
+          "lines": 228,
+          "role": "G3: Deterministic cryptographic SHA-256 binding of derived artifacts to CAD revision and geometry",
+          "classification": "IMPLEMENTED_AND_EXECUTED"
+        },
+        {
+          "file": "src/engine/manufacturing/pma/HardAcceptanceGatePMA001.ts",
+          "lines": 167,
+          "role": "G4: Manufacturing G-code parity and telemetry validation (Hardware root of trust is NOT_PROVISIONED)",
+          "classification": "PLACEHOLDER_OR_SIMULATED"
+        },
+        {
+          "file": "src/engine/manufacturing/pma/PhysicalManufacturingEngine.ts",
+          "lines": 88,
+          "role": "G5: Telemetry HMAC verification with hardcoded secret and dimensional deviation checks",
+          "classification": "PLACEHOLDER_OR_SIMULATED"
+        },
+        {
+          "file": "src/engine/certification/truth/EngineeringTruthCertificateEngine.ts",
+          "lines": 161,
+          "role": "G6: Merkle tree evidence aggregation, root computation, and Truth Certificate issuance",
+          "classification": "IMPLEMENTED_AND_EXECUTED"
+        }
+      ]
+    }
+  }
+}

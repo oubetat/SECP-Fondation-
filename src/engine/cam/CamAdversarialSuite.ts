@@ -4,7 +4,8 @@
  */
 
 import { ParametricCAMBridge } from './ParametricCAMBridge';
-import { MachiningOperationConfig, MachiningParameters, ToolHolderGeometry } from './ToolpathTypes';
+import { MachiningOperationConfig } from './ToolpathTypes';
+import { ToolType } from './toolpath/ToolpathTypes';
 import { CuttingToolModel } from './CuttingToolModel';
 import { ThreeAxisToolpathEngine } from './ThreeAxisToolpathEngine';
 import { ToolpathVerificationEngine } from './ToolpathVerificationEngine';
@@ -19,7 +20,7 @@ export class CamAdversarialSuite {
 
     // 1. Invalid Tool Diameter
     try {
-      const tool = await CuttingToolModel.createTool('bad-tool', 'Bad Tool', 'FLAT_ENDMILL', -10, 4, 10, 50);
+      const tool = await CuttingToolModel.createTool('bad-tool', 'Bad Tool', ToolType.FLAT_END_MILL, -10, 4, 10, 50);
       results.failures.push('Negative tool diameter accepted');
     } catch (e) {
       results.passes.push('Rejected negative tool diameter');
@@ -45,7 +46,7 @@ export class CamAdversarialSuite {
       };
       const candidate = await ThreeAxisToolpathEngine.generateToolpathAsync(opConfig, stock, 'topo1', machine);
       const verified = await ToolpathVerificationEngine.verifyToolpathAsync(candidate, 0, { bounds: stock } as any);
-      if (verified.verificationReport.isValid) {
+      if (verified.verificationReport?.isValid) {
         results.failures.push('Accepted NaN in stepover');
       } else {
         results.passes.push('Rejected NaN coordinates in toolpath');
@@ -64,7 +65,7 @@ export class CamAdversarialSuite {
         provenance: { trajectoryHash: 'h1' } as any
       };
       const verified = await ToolpathVerificationEngine.verifyToolpathAsync(candidate, 0, { bounds: stock } as any);
-      if (verified.verificationReport.metrics.stockViolations > 0) {
+      if (verified.verificationReport && verified.verificationReport.metrics.stockViolations > 0) {
         results.passes.push('Detected stock boundary violation');
       } else {
         results.failures.push('Failed to detect stock violation');
@@ -104,7 +105,7 @@ export class CamAdversarialSuite {
         provenance: { trajectoryHash: 'h2' } as any
       };
       const verified = await ToolpathVerificationEngine.verifyToolpathAsync(candidate, 0, { bounds: stock } as any);
-      if (verified.verificationReport.metrics.zeroLengthSegments > 0) {
+      if (verified.verificationReport && verified.verificationReport.metrics.zeroLengthSegments > 0) {
         results.passes.push('Detected duplicate consecutive points (zero-length segments)');
       } else {
         results.failures.push('Failed to detect duplicate consecutive points');

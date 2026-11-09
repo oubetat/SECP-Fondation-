@@ -23,6 +23,13 @@ export class ToolConsumptionEngine {
     };
   }
 
+  public static updateMeasuredOffset(record: ToolConsumptionRecord, offsetMm: number): ToolConsumptionRecord {
+    return {
+      ...record,
+      measuredOffsetOffsetMm: offsetMm
+    };
+  }
+
   public static isToolWornOut(record: ToolConsumptionRecord): boolean {
     return record.currentSpindleSecondsUsed >= record.totalSpindleSecondsLimit;
   }

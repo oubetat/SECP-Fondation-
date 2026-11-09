@@ -1,0 +1,38 @@
+{
+  "clusters": [
+    {
+      "clusterId": "C1-STRICT-NULL",
+      "stableDiagnosticIds": [
+        "FsiWorkspace.tsx:77:18047",
+        "FsiWorkspace.tsx:79:2322"
+      ],
+      "affectedFiles": [
+        "src/components/cfd/FsiWorkspace.tsx"
+      ],
+      "exactDiagnosticCodes": [
+        18047,
+        2322
+      ],
+      "contractInvolved": "Material properties null safety",
+      "productionReachability": "PRODUCTION_TRANSITIVE",
+      "evidenceBackedImpact": "Potential null propagation in physics parameter binding",
+      "unresolvedAssumptions": "Assumes runtime nulls originate from uninitialized state"
+    },
+    {
+      "clusterId": "C2-ENUM-DRIFT",
+      "stableDiagnosticIds": [
+        "ThreeAxisCamWorkspace.tsx:114:2339"
+      ],
+      "affectedFiles": [
+        "src/components/cam/ThreeAxisCamWorkspace.tsx"
+      ],
+      "exactDiagnosticCodes": [
+        2339
+      ],
+      "contractInvolved": "ManufacturingFeatureType enums",
+      "productionReachability": "PRODUCTION_TRANSITIVE",
+      "evidenceBackedImpact": "Type mismatch between UI selection and kernel enums",
+      "unresolvedAssumptions": "None"
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "auditMission": "SECP-CAD-TRUTH-PATCH-001",
+  "phase": "PHASE_A_FORENSIC_BASELINE",
+  "timestamp": "2026-11-02T09:30:00.000Z",
+  "entryPoints": [
+    {
+      "caller": "HydraulicPumpTruthThread.test.ts:83",
+      "method": "SimulationEngine.runScenario(scenarioA)",
+      "callChain": [
+        "SimulationEngine.runScenario()",
+        "SimulationIdentityService.resolveAuthoritativeRevisionHash()",
+        "SimulationIdentityService.resolveAuthoritativeGeometryHash()",
+        "CanonicalDerivedArtifactBinding.createBinding()",
+        "SimulationAuthorityInternal.initializeAuthorityHandshake()",
+        "SimulationAuthorityInternal.sealEnvelope(rawEnvelope) [MISSING CAPABILITY ARGUMENT]"
+      ],
+      "failurePoint": "SimulationAuthorityInternal.sealEnvelope(rawEnvelope) -> validateCapability(undefined) throws SIMULATION_AUTHORITY_VIOLATION: Invalid or missing SealingCapability.",
+      "rootCauseNode": "src/engine/simulation/SimulationEngine.ts:175"
+    },
+    {
+      "caller": "CFDCADPipeline.test.ts:52",
+      "method": "Fvm3DNavierStokesSolver.solve(meshA, fluid, config)",
+      "callChain": [
+        "Fvm3DNavierStokesSolver.solve()",
+        "Gating Check: !('executionAuthority' in binding) || !binding.executionAuthority?.isAuthoritative"
+      ],
+      "failurePoint": "Fvm3DNavierStokesSolver.solve() throws SIMULATION_AUTHORITY_VIOLATION: CFD solve attempted without valid execution authorization.",
+      "rootCauseNode": "src/engine/cad-kernel/cfd/__tests__/CFDCADPipeline.test.ts:52 (Caller passed raw mesh object instead of an authoritative sealed CfdToCoreBinding)"
+    }
+  ],
+  "authoritativeProducers": [
+    {
+      "file": "src/engine/simulation/SimulationSealingAuthorization.ts",
+      "method": "issueSealingCapability(context, domains)",
+      "role": "Exclusive capability token factory."
+    },
+    {
+      "file": "src/engine/simulation/SimulationAuthorityInternal.ts",
+      "method": "initializeAuthorityHandshake()",
+      "role": "System boot key and secret HMAC generator."
+    },
+    {
+      "file": "src/engine/crossdomain/CanonicalDomainBindingEngine.ts",
+      "method": "sealBinding(binding, capability)",
+      "role": "Domain binding HMAC sealer."
+    }
+  ],
+  "authoritativeConsumers": [
+    {
+      "file": "src/engine/simulation/SimulationAuthorityInternal.ts",
+      "method": "sealEnvelope(envelope, capability)",
+      "role": "Enforces validateCapability(capability) and stamps symbol seal."
+    },
+    {
+      "file": "src/engine/simulation/SimulationExecutionRegistry.ts",
+      "method": "registerExecution(envelope)",
+      "role": "Verifies envelope seal, binding integrity, revision match, and prevents record overwrite."
+    },
+    {
+      "file": "src/engine/cfd3d/Fvm3DNavierStokesSolver.ts",
+      "method": "solve(binding, ...)",
+      "role": "Verifies binding.executionAuthority and validates seal before numerical execution."
+    },
+    {
+      "file": "src/engine/fem/core/FEMCore.ts",
+      "method": "solve(binding)",
+      "role": "Verifies binding.executionAuthority and validates seal before FEM execution."
+    }
+  ]
+}

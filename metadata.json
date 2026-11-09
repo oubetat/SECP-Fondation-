@@ -1,6 +1,7 @@
 {
-  "name": "SECP Industrial OS v3 — Programmable Material Engineering & AI Exploration Platform",
-  "description": "Production-grade industrial OS with exact CAD-kernel authority, AI-driven material exploration, physics-constrained optimization, and cryptographic Truth Thread provenance.",
-  "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+  "name": "cad-cae-engineering-suite",
+  "description": "Enterprise CAD Kernel and Multiphysics Simulation Engineering Suite",
+  "version": "1.0.0",
+  "permissions": [],
+  "capabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

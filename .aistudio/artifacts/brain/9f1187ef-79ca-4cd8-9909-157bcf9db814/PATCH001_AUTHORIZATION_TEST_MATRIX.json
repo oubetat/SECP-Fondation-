@@ -1,0 +1,128 @@
+{
+  "auditMission": "SECP-CAD-TRUTH-PATCH-001",
+  "phase": "PHASE_C_AUTHORIZATION_TEST_MATRIX",
+  "timestamp": "2026-11-02T10:03:00.000Z",
+  "testSuite": "src/engine/simulation/__tests__/SimulationExecutionAuthorityAdversarial.test.ts",
+  "matrix": [
+    {
+      "id": "AUTH-01",
+      "scenario": "Missing capability",
+      "boundaryTested": "SimulationAuthorityInternal.sealEnvelope",
+      "expectedResult": "Reject with SIMULATION_AUTHORITY_VIOLATION",
+      "actualResult": "Reject (SIMULATION_AUTHORITY_VIOLATION: Invalid or missing SealingCapability)",
+      "status": "PASS"
+    },
+    {
+      "id": "AUTH-02",
+      "scenario": "Null or malformed capability",
+      "boundaryTested": "SimulationSealingAuthorization.validateCapability",
+      "expectedResult": "Reject with SIMULATION_AUTHORITY_VIOLATION",
+      "actualResult": "Reject (SIMULATION_AUTHORITY_VIOLATION: Invalid or missing SealingCapability)",
+      "status": "PASS"
+    },
+    {
+      "id": "AUTH-03",
+      "scenario": "Forged structural capability",
+      "boundaryTested": "SimulationSealingAuthorization.validateCapability",
+      "expectedResult": "Reject with SIMULATION_AUTHORITY_VIOLATION",
+      "actualResult": "Reject (SIMULATION_AUTHORITY_VIOLATION: Unrecognized or forged SealingCapability)",
+      "status": "PASS"
+    },
+    {
+      "id": "AUTH-04",
+      "scenario": "Revoked capability",
+      "boundaryTested": "SimulationSealingAuthorization.validateCapability",
+      "expectedResult": "Reject with SIMULATION_AUTHORITY_VIOLATION",
+      "actualResult": "Reject (SIMULATION_AUTHORITY_VIOLATION: SealingCapability has been revoked)",
+      "status": "PASS"
+    },
+    {
+      "id": "AUTH-05",
+      "scenario": "Expired capability",
+      "boundaryTested": "SimulationSealingAuthorization.validateCapability",
+      "expectedResult": "Reject with SIMULATION_AUTHORITY_VIOLATION",
+      "actualResult": "Reject (SIMULATION_AUTHORITY_VIOLATION: SealingCapability has expired)",
+      "status": "PASS"
+    },
+    {
+      "id": "AUTH-06",
+      "scenario": "Wrong simulation domain",
+      "boundaryTested": "CanonicalDomainBindingEngine.sealBinding",
+      "expectedResult": "Reject with SIMULATION_AUTHORITY_VIOLATION",
+      "actualResult": "Reject (SIMULATION_AUTHORITY_VIOLATION: Capability is not authorized for domain 'CFD')",
+      "status": "PASS"
+    },
+    {
+      "id": "AUTH-07",
+      "scenario": "Wrong canonical revision",
+      "boundaryTested": "SimulationAuthorityInternal.sealEnvelope",
+      "expectedResult": "Reject with SIMULATION_AUTHORITY_VIOLATION",
+      "actualResult": "Reject (SIMULATION_AUTHORITY_VIOLATION: Capability CAD revision mismatch)",
+      "status": "PASS"
+    },
+    {
+      "id": "AUTH-08",
+      "scenario": "Wrong geometry hash",
+      "boundaryTested": "SimulationAuthorityInternal.sealEnvelope",
+      "expectedResult": "Reject with SIMULATION_AUTHORITY_VIOLATION",
+      "actualResult": "Reject (SIMULATION_AUTHORITY_VIOLATION: Capability geometry hash mismatch)",
+      "status": "PASS"
+    },
+    {
+      "id": "AUTH-09",
+      "scenario": "Capability replay",
+      "boundaryTested": "SimulationSealingAuthorization.validateCapability (maxUses check)",
+      "expectedResult": "Reject second use with usage limit error",
+      "actualResult": "Reject (SIMULATION_AUTHORITY_VIOLATION: SealingCapability usage limit exceeded)",
+      "status": "PASS"
+    },
+    {
+      "id": "AUTH-10",
+      "scenario": "Concurrent duplicate execution",
+      "boundaryTested": "SimulationExecutionRegistry.registerExecution",
+      "expectedResult": "Enforce immutability & reject overwrite",
+      "actualResult": "Reject (SIMULATION_REGISTRATION_FAILED: Execution identity is already registered and immutable)",
+      "status": "PASS"
+    },
+    {
+      "id": "AUTH-11",
+      "scenario": "Authority initialization failure",
+      "boundaryTested": "SimulationAuthorityInternal.sealEnvelope",
+      "expectedResult": "Reject with SIMULATION_AUTHORITY_INITIALIZATION_FAILED",
+      "actualResult": "Reject (SIMULATION_AUTHORITY_INITIALIZATION_FAILED: Authority boot failed)",
+      "status": "PASS"
+    },
+    {
+      "id": "AUTH-12",
+      "scenario": "Registry unavailable / unregistered provenance",
+      "boundaryTested": "SimulationExecutionRegistry.verifyResultBinding",
+      "expectedResult": "Reject with UNREGISTERED_RESULT_PROVENANCE",
+      "actualResult": "Reject (isValid: false, failureReason: UNREGISTERED_RESULT_PROVENANCE)",
+      "status": "PASS"
+    },
+    {
+      "id": "AUTH-13",
+      "scenario": "Partial sealing failure",
+      "boundaryTested": "SimulationAuthorityInternal.verifyEnvelopeSeal",
+      "expectedResult": "No false sealed state (returns false)",
+      "actualResult": "No false sealed state (returns false)",
+      "status": "PASS"
+    },
+    {
+      "id": "AUTH-14",
+      "scenario": "Legitimate authorized execution",
+      "boundaryTested": "Full end-to-end execution path",
+      "expectedResult": "Allow execution & register authoritative record",
+      "actualResult": "Allow (verifyEnvelopeSeal: true, verifyExecution: true)",
+      "status": "PASS"
+    },
+    {
+      "id": "AUTH-15",
+      "scenario": "Capability revocation during lifecycle",
+      "boundaryTested": "SimulationSealingAuthorization.revokeCapability",
+      "expectedResult": "Reject subsequent usage after revocation",
+      "actualResult": "Reject (SIMULATION_AUTHORITY_VIOLATION: SealingCapability has been revoked)",
+      "status": "PASS"
+    }
+  ]
+}

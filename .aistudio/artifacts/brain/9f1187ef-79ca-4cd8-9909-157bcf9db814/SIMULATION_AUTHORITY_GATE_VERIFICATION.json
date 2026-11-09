@@ -1,0 +1,66 @@
+{
+  "programId": "SECP-ENGINEERING-TRUTH-INTEGRATION-004",
+  "auditTimestamp": "2026-11-01T07:18:30Z",
+  "status": "STAGE3_AUTHORITY_GATES_VERIFIED",
+  "failClosedDiscipline": "STRICT_FAIL_CLOSED_ZERO_BYPASS",
+  "summary": "All 6 core engineering solvers and verifiers have been strictly gated behind authoritative canonical domain bindings. Direct, unsealed, or stale calls are deterministically rejected with standardized fail-closed exceptions before any numerical solve occurs.",
+  "domainGates": {
+    "PCB": {
+      "targetService": "src/engine/pcb/PcbVerificationService.ts",
+      "method": "verifyAndAttest(binding: PcbToCoreBinding, ...)",
+      "gateCondition": "!binding?.executionAuthority?.isAuthoritative",
+      "exactViolationSignature": "SIMULATION_AUTHORITY_VIOLATION: PCB verification attempted without valid execution authorization.",
+      "canonicalIdExtraction": "binding.canonicalEntityId || binding.designId",
+      "staleDetection": "Enforces STALE status rejection",
+      "testProof": "src/engine/crossdomain/__tests__/SimulationAuthority.test.ts",
+      "status": "ENFORCED_FAIL_CLOSED"
+    },
+    "ELECTRICAL": {
+      "targetService": "src/engine/engineeringCore/NodalCircuitSolver.ts",
+      "method": "solveDetailed(binding: ElectricalToCoreBinding)",
+      "gateCondition": "!binding?.executionAuthority?.isAuthoritative || binding.status === 'STALE'",
+      "exactViolationSignature": "SIMULATION_AUTHORITY_VIOLATION: Electrical solve attempted without valid execution authorization.",
+      "staleViolationSignature": "CANONICAL_VIOLATION: Attempting to solve STALE electrical model",
+      "testProof": "src/engine/crossdomain/__tests__/SimulationAuthority.test.ts",
+      "status": "ENFORCED_FAIL_CLOSED"
+    },
+    "WIRING_HARNESS": {
+      "targetService": "src/engine/wiring-harness/WiringHarnessElectricalVerifier.ts & WiringHarnessManufacturingVerifier.ts",
+      "method": "verify(binding: HarnessToCoreBinding) / generateManufacturingPackage(binding: HarnessToCoreBinding)",
+      "gateCondition": "!binding?.executionAuthority?.isAuthoritative",
+      "exactViolationSignature": "SIMULATION_AUTHORITY_VIOLATION: Wiring Harness verification attempted without valid execution authorization.",
+      "testProof": "src/engine/wiring-harness/tests/verify_wiring_harness.ts",
+      "status": "ENFORCED_FAIL_CLOSED"
+    },
+    "MULTIDOMAIN": {
+      "targetService": "src/engine/crossdomain/MultidomainPcbIntegrationEngine.ts & ElectrothermalSolver.ts",
+      "method": "solveCoupled(pcbBinding, harnessBinding) / solveElectrothermalCoSimulation(binding)",
+      "gateCondition": "Inherits authority from constituent domain bindings and seals iterative Picard loops with sub-bindings",
+      "exactViolationSignature": "SIMULATION_AUTHORITY_VIOLATION: Multidomain coupling solve attempted without valid execution authorization.",
+      "testProof": "src/engine/engineeringCore/tests/electrothermal_coupling_verification.test.ts & DomainBindingIntegration.test.ts",
+      "status": "ENFORCED_FAIL_CLOSED"
+    },
+    "FEM": {
+      "targetService": "src/engine/fem/core/FEMCore.ts",
+      "method": "solve(binding: FemToCoreBinding, options)",
+      "gateCondition": "!binding?.executionAuthority?.isAuthoritative",
+      "exactViolationSignature": "SIMULATION_AUTHORITY_VIOLATION: FEM solve attempted without valid execution authorization.",
+      "testProof": "src/engine/crossdomain/__tests__/SimulationAuthority.test.ts",
+      "status": "ENFORCED_FAIL_CLOSED"
+    },
+    "CFD": {
+      "targetService": "src/engine/cfd3d/Fvm3DNavierStokesSolver.ts",
+      "method": "solve(binding: CfdToCoreBinding, configOrBc, ...)",
+      "gateCondition": "!binding?.executionAuthority?.isAuthoritative",
+      "exactViolationSignature": "SIMULATION_AUTHORITY_VIOLATION: CFD solve attempted without valid execution authorization.",
+      "testProof": "src/engine/crossdomain/__tests__/SimulationAuthority.test.ts & TurbulenceBattery.test.ts",
+      "status": "ENFORCED_FAIL_CLOSED"
+    }
+  },
+  "verificationMetrics": {
+    "totalGatedSolvers": 6,
+    "unauthorizedExecutionRejections": 6,
+    "bypassPathsFound": 0,
+    "leakProbability": 0.0
+  }
+}

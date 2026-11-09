@@ -1,0 +1,232 @@
+{
+  "gate095": {
+    "success": true,
+    "checks": [
+      {
+        "criterion": "Artifact Hash & Native Exports Audit",
+        "passed": true,
+        "details": "SHA-256: 6f76a3a22f... (VERIFIED). Missing exports: NONE"
+      },
+      {
+        "criterion": "WebWorker Execution Isolation Proof",
+        "passed": true,
+        "details": "WASM Worker completed handshake in 2.57 ms under isolated thread safety"
+      },
+      {
+        "criterion": "Degenerate & Boundary Input Resilience",
+        "passed": true,
+        "details": "Verified 4 boundary scenarios. Correctly rejected degenerate math without NaN propagation."
+      },
+      {
+        "criterion": "Geometric Invariants & Algebraic Identity Proofs",
+        "passed": true,
+        "details": "Dot product orthogonality, distance symmetry, and triangle/plane boundaries verified across 10,000 cases."
+      },
+      {
+        "criterion": "Metric Renderability & Serialization Audit",
+        "passed": true,
+        "details": "Confirmed zero empty template substitutions. All numeric outputs are strictly finite, valid, and displayable."
+      },
+      {
+        "criterion": "Anti-False-PASS Intruder Detection Proof",
+        "passed": true,
+        "details": "Assertion engine verified: Mock values and faulty results diverge outside tolerance, triggering gate failure."
+      },
+      {
+        "criterion": "Evidence Serialization Integrity Verification",
+        "passed": true,
+        "details": "Round-trip successful. Deserialized report matches original computed structure exactly to 17-digit precision."
+      }
+    ],
+    "metrics": {
+      "totalCases": 10000,
+      "passedCases": 10000,
+      "failedCases": 0,
+      "maxAbsoluteError": 0,
+      "maxRelativeError": 0,
+      "rmsError": 0,
+      "worstCase": {
+        "opIndex": -1,
+        "opType": "UNKNOWN",
+        "inputVector": [],
+        "reference": [],
+        "actual": [],
+        "absoluteError": 0,
+        "relativeError": 0
+      },
+      "tolerance": 1e-12,
+      "workerIsolationProven": true,
+      "memoryModel": "Main Thread → Worker Structured Clone → WASM Linear Memory",
+      "version": "SECP-095-NATIVE-GEOMETRY-KERNELS-1.0.0",
+      "wasmHash": "6f76a3a22f22b6e3051f6d10fbff43c0b15204d210848eb64a86eab8e00a5684",
+      "exportsVerified": [
+        "native_geom_dot",
+        "native_geom_cross",
+        "native_geom_norm",
+        "native_geom_normalize",
+        "native_geom_dist",
+        "native_geom_closest_point_on_segment",
+        "native_geom_plane_signed_dist",
+        "native_geom_triangle_normal",
+        "native_geom_triangle_area",
+        "native_geom_bulk_execute"
+      ],
+      "statusesDetected": {
+        "okCount": 10000,
+        "singularCount": 0,
+        "invalidCount": 0,
+        "failureCount": 0
+      }
+    },
+    "decision": "PASS",
+    "artifactHash": "6f76a3a22f22b6e3051f6d10fbff43c0b15204d210848eb64a86eab8e00a5684"
+  },
+  "gate094R1": {
+    "success": false,
+    "checks": [
+      {
+        "criterion": "Artifact Integrity & Export Audit",
+        "passed": true,
+        "details": "Hash: 6f76a3a2... (MATCH), Bulk Export: FOUND"
+      },
+      {
+        "criterion": "Accuracy Audit (10000 cases)",
+        "passed": false,
+        "details": "total=10000, passed=67, failed=9933, maxAbsError=2.68307394577007585e-1, rmsError=2.03839365407987777e-1, tolerance=0.001"
+      },
+      {
+        "criterion": "Numerical Evidence Integrity (total integrity)",
+        "passed": true,
+        "details": "Integrity Check: OK"
+      },
+      {
+        "criterion": "Boundary Logic: Near +Z Singularity",
+        "passed": true,
+        "details": "Status: 1 (Expected: 1)"
+      },
+      {
+        "criterion": "Boundary Logic: Near -Z Orient",
+        "passed": false,
+        "details": "Status: 1 (Expected: 0)"
+      },
+      {
+        "criterion": "Boundary Logic: Zero Length Vector",
+        "passed": true,
+        "details": "Status: 1 (Expected: 1)"
+      },
+      {
+        "criterion": "Boundary Logic: NaN Input",
+        "passed": true,
+        "details": "Status: 2 (Expected: 2)"
+      },
+      {
+        "criterion": "Boundary Logic: Inf Input",
+        "passed": false,
+        "details": "Status: 0 (Expected: 2)"
+      },
+      {
+        "criterion": "Kinematic Continuity Enforcement",
+        "passed": true,
+        "details": "Max Delta: 1.33771176692221161e-4 deg (Worst Case Index: 6700)"
+      },
+      {
+        "criterion": "Throughput Audit (MEASURED)",
+        "passed": true,
+        "details": "4,034,543 pts/sec"
+      },
+      {
+        "criterion": "Worst-Case Consistency & Invariant Verification",
+        "passed": true,
+        "details": "ΔA Match: YES, ΔC Match: YES, Max Error Match: YES"
+      },
+      {
+        "criterion": "Numerical Evidence Integrity (serialization check)",
+        "passed": false,
+        "details": "Missing, non-finite, or inconsistent numerical evidence detected in metrics."
+      },
+      {
+        "criterion": "Evidence Serialization Verification",
+        "passed": true,
+        "details": "JSON round-trip integrity confirmed."
+      }
+    ],
+    "metrics": {
+      "totalCases": 10000,
+      "passedCases": 67,
+      "failedCases": 9933,
+      "maxAbsError": 0.2683073945770076,
+      "maxRelError": 0,
+      "rmsError": 0.20383936540798778,
+      "worstCase": {
+        "worstCaseIndex": 7167,
+        "inputVector": [
+          0.7305844244039971,
+          0.4023051201726789,
+          -0.5517218403336295
+        ],
+        "expectedA": 123.48521878329726,
+        "expectedC": 28.83990877348351,
+        "actualA": 123.75352617787426,
+        "actualC": 29.07448832586734,
+        "deltaA": 0.2683073945770076,
+        "deltaC": 0.23457955238382766
+      },
+      "tolerance": 0.001,
+      "benchmarks": [
+        {
+          "size": 1000,
+          "wallTimeMs": 4.706458799999973,
+          "throughput": 212473.97300067847,
+          "min": 2.1757129999998597,
+          "median": 5.503365000000031,
+          "p95": 7.64067399999999,
+          "max": 7.64067399999999
+        },
+        {
+          "size": 10000,
+          "wallTimeMs": 5.564748999999938,
+          "throughput": 1797026.245029221,
+          "min": 3.2263909999999214,
+          "median": 4.951767999999902,
+          "p95": 8.18124899999998,
+          "max": 8.18124899999998
+        },
+        {
+          "size": 100000,
+          "wallTimeMs": 24.785957000000007,
+          "throughput": 4034542.6242771246,
+          "min": 22.353654000000006,
+          "median": 24.998994999999923,
+          "p95": 26.733551999999918,
+          "max": 26.733551999999918
+        }
+      ],
+      "maxAngularDiscontinuity": 0.00013377117669222116,
+      "worstContinuityCaseIndex": 6700,
+      "perturbationMagnitude": 0.000001,
+      "continuityEvidence": {
+        "baseVector": [
+          -0.15877665570952548,
+          -0.36594660459507666,
+          0.9169913064947964
+        ],
+        "perturbedVector": [
+          -0.1587756809193197,
+          -0.36594666269868553,
+          0.9169914520911855
+        ],
+        "perturbationMagnitude": 0.000001,
+        "baseA": 23.666773122359505,
+        "baseC": -113.61108167675988,
+        "perturbedA": 23.666751891290886,
+        "perturbedC": -113.61094790558319,
+        "wrappedDeltaA": 0.000021231068618732252,
+        "wrappedDeltaC": 0.00013377117669222116,
+        "measuredDiscontinuity": 0.00013377117669222116
+      }
+    },
+    "decision": "FAIL",
+    "artifactHash": "6f76a3a22f22b6e3051f6d10fbff43c0b15204d210848eb64a86eab8e00a5684"
+  },
+  "timestamp": "2026-08-15T13:21:41.677Z"
+}

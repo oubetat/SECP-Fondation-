@@ -1,0 +1,702 @@
+[
+  {
+    "file": "/app/applet/src/components/cam/FourAxisCamWorkspace.tsx",
+    "line": 19,
+    "code": 2305,
+    "message": "Module '\"../../engine/cam/fouraxis/HardAcceptanceGate257\"' has no exported member 'Gate257Summary'.",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/components/cam/FourAxisCamWorkspace.tsx",
+    "line": 86,
+    "code": 2339,
+    "message": "Property 'runAllTests' does not exist on type 'typeof HardAcceptanceGate257'.",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/components/cam/FourAxisCamWorkspace.tsx",
+    "line": 875,
+    "code": 7006,
+    "message": "Parameter 'test' implicitly has an 'any' type.",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/components/cam/ManufacturingFeatureWorkspace.tsx",
+    "line": 321,
+    "code": 2345,
+    "message": "Argument of type 'ManufacturingIntent | undefined' is not assignable to parameter of type 'SetStateAction<ManufacturingIntent>'.\n  Type 'undefined' is not assignable to type 'SetStateAction<ManufacturingIntent>'.",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/components/cam/ManufacturingFeatureWorkspace.tsx",
+    "line": 462,
+    "code": 18048,
+    "message": "'selectedFeature.explanation' is possibly 'undefined'.",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/components/cam/ManufacturingFeatureWorkspace.tsx",
+    "line": 462,
+    "code": 2339,
+    "message": "Property 'map' does not exist on type 'string | string[]'.\n  Property 'map' does not exist on type 'string'.",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/components/cam/ManufacturingFeatureWorkspace.tsx",
+    "line": 462,
+    "code": 7006,
+    "message": "Parameter 'exp' implicitly has an 'any' type.",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/components/cam/ManufacturingFeatureWorkspace.tsx",
+    "line": 462,
+    "code": 7006,
+    "message": "Parameter 'idx' implicitly has an 'any' type.",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/components/cam/ManufacturingFeatureWorkspace.tsx",
+    "line": 477,
+    "code": 18048,
+    "message": "'selectedFeature.edgeIds' is possibly 'undefined'.",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/components/cam/ManufacturingFeatureWorkspace.tsx",
+    "line": 505,
+    "code": 2339,
+    "message": "Property 'orientation' does not exist on type 'MachiningSetup'.",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/components/cam/ManufacturingFeatureWorkspace.tsx",
+    "line": 511,
+    "code": 2339,
+    "message": "Property 'estimatedOperations' does not exist on type 'MachiningSetup'.",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/components/cam/ManufacturingFeatureWorkspace.tsx",
+    "line": 511,
+    "code": 7006,
+    "message": "Parameter 'op' implicitly has an 'any' type.",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/components/cam/ManufacturingFeatureWorkspace.tsx",
+    "line": 511,
+    "code": 7006,
+    "message": "Parameter 'i' implicitly has an 'any' type.",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/components/cam/ManufacturingFeatureWorkspace.tsx",
+    "line": 552,
+    "code": 2339,
+    "message": "Property 'holeCount' does not exist on type 'HolePatternCandidate'.",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/components/cam/ManufacturingFeatureWorkspace.tsx",
+    "line": 558,
+    "code": 2339,
+    "message": "Property 'holeDiameterMm' does not exist on type 'HolePatternCandidate'.",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/components/cam/ManufacturingFeatureWorkspace.tsx",
+    "line": 560,
+    "code": 2339,
+    "message": "Property 'boltCircleDiameterMm' does not exist on type 'HolePatternCandidate'.",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/components/cam/ManufacturingFeatureWorkspace.tsx",
+    "line": 563,
+    "code": 2339,
+    "message": "Property 'boltCircleDiameterMm' does not exist on type 'HolePatternCandidate'.",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/components/cam/ManufacturingFeatureWorkspace.tsx",
+    "line": 566,
+    "code": 2339,
+    "message": "Property 'angularSpacingDeg' does not exist on type 'HolePatternCandidate'.",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/components/cam/ManufacturingFeatureWorkspace.tsx",
+    "line": 569,
+    "code": 2339,
+    "message": "Property 'angularSpacingDeg' does not exist on type 'HolePatternCandidate'.",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/components/cam/ManufacturingFeatureWorkspace.tsx",
+    "line": 572,
+    "code": 2339,
+    "message": "Property 'pitchDistanceMm' does not exist on type 'HolePatternCandidate'.",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/components/cam/ManufacturingFeatureWorkspace.tsx",
+    "line": 575,
+    "code": 2339,
+    "message": "Property 'pitchDistanceMm' does not exist on type 'HolePatternCandidate'.",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/components/cam/ThreeAxisCamWorkspace.tsx",
+    "line": 58,
+    "code": 2339,
+    "message": "Property 'PLANAR_FACE' does not exist on type 'typeof ManufacturingFeatureType'.",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/components/cam/ThreeAxisCamWorkspace.tsx",
+    "line": 69,
+    "code": 2339,
+    "message": "Property 'POCKET_RECTANGULAR' does not exist on type 'typeof ManufacturingFeatureType'.",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/components/cam/ThreeAxisCamWorkspace.tsx",
+    "line": 80,
+    "code": 2339,
+    "message": "Property 'POCKET_RECTANGULAR' does not exist on type 'typeof ManufacturingFeatureType'.",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/components/cam/ThreeAxisCamWorkspace.tsx",
+    "line": 87,
+    "code": 2339,
+    "message": "Property 'POCKET_RECTANGULAR' does not exist on type 'typeof ManufacturingFeatureType'.",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/components/cam/ThreeAxisCamWorkspace.tsx",
+    "line": 94,
+    "code": 2339,
+    "message": "Property 'SLOT_THROUGH' does not exist on type 'typeof ManufacturingFeatureType'.",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/components/cam/ThreeAxisCamWorkspace.tsx",
+    "line": 105,
+    "code": 2339,
+    "message": "Property 'HOLE_SIMPLE' does not exist on type 'typeof ManufacturingFeatureType'.",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/components/cam/ThreeAxisCamWorkspace.tsx",
+    "line": 112,
+    "code": 2339,
+    "message": "Property 'HOLE_SIMPLE' does not exist on type 'typeof ManufacturingFeatureType'.",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/components/cam/ThreeAxisCamWorkspace.tsx",
+    "line": 119,
+    "code": 2339,
+    "message": "Property 'HOLE_SIMPLE' does not exist on type 'typeof ManufacturingFeatureType'.",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/components/cam/ThreeAxisCamWorkspace.tsx",
+    "line": 131,
+    "code": 2339,
+    "message": "Property 'POCKET_RECTANGULAR' does not exist on type 'typeof ManufacturingFeatureType'.",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/components/cam/ThreeAxisCamWorkspace.tsx",
+    "line": 138,
+    "code": 2339,
+    "message": "Property 'SLOT_THROUGH' does not exist on type 'typeof ManufacturingFeatureType'.",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/components/cam/ThreeAxisCamWorkspace.tsx",
+    "line": 145,
+    "code": 2339,
+    "message": "Property 'HOLE_SIMPLE' does not exist on type 'typeof ManufacturingFeatureType'.",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/components/cam/ToolLibraryWorkspace.tsx",
+    "line": 285,
+    "code": 2551,
+    "message": "Property 'generateEvidence' does not exist on type 'typeof ToolEvidenceGenerator'. Did you mean 'generateToolEvidence'?",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/engine/benchmark/cad/CADBenchmarkComparator.ts",
+    "line": 6,
+    "code": 2724,
+    "message": "'\"./types\"' has no exported member named 'BenchmarkComparisonResult'. Did you mean 'CADBenchmarkComparison'?",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/engine/benchmark/cad/CADBenchmarkComparator.ts",
+    "line": 6,
+    "code": 2305,
+    "message": "Module '\"./types\"' has no exported member 'BenchmarkTolerance'.",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/engine/benchmark/cad/CADBenchmarkMetrics.ts",
+    "line": 78,
+    "code": 18048,
+    "message": "'metrics.iterationCount' is possibly 'undefined'.",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/engine/cad-kernel/topology/BRepTopology.ts",
+    "line": 41,
+    "code": 2322,
+    "message": "Type 'string' is not assignable to type 'object'.",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/engine/cad-kernel/topology/PersistentTopologyNaming.ts",
+    "line": 240,
+    "code": 2345,
+    "message": "Argument of type 'string | undefined' is not assignable to parameter of type 'string'.\n  Type 'undefined' is not assignable to type 'string'.",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/engine/cad-kernel/topology/PersistentTopologyNaming.ts",
+    "line": 241,
+    "code": 2345,
+    "message": "Argument of type 'string | undefined' is not assignable to parameter of type 'string'.\n  Type 'undefined' is not assignable to type 'string'.",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/engine/cad-kernel/topology/PersistentTopologyNaming.ts",
+    "line": 264,
+    "code": 2345,
+    "message": "Argument of type 'string | undefined' is not assignable to parameter of type 'string'.\n  Type 'undefined' is not assignable to type 'string'.",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/engine/cad-kernel/topology/PersistentTopologyNaming.ts",
+    "line": 265,
+    "code": 2345,
+    "message": "Argument of type 'string | undefined' is not assignable to parameter of type 'string'.\n  Type 'undefined' is not assignable to type 'string'.",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/engine/cad-kernel/topology/PersistentTopologyNaming.ts",
+    "line": 269,
+    "code": 2345,
+    "message": "Argument of type 'string | undefined' is not assignable to parameter of type 'string'.\n  Type 'undefined' is not assignable to type 'string'.",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/engine/cad-kernel/topology/PersistentTopologyNaming.ts",
+    "line": 270,
+    "code": 2345,
+    "message": "Argument of type 'string | undefined' is not assignable to parameter of type 'string'.\n  Type 'undefined' is not assignable to type 'string'.",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/engine/cad-kernel/topology/PersistentTopologyNaming.ts",
+    "line": 274,
+    "code": 2345,
+    "message": "Argument of type 'string | undefined' is not assignable to parameter of type 'string'.\n  Type 'undefined' is not assignable to type 'string'.",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/engine/cad-kernel/topology/PersistentTopologyNaming.ts",
+    "line": 275,
+    "code": 2345,
+    "message": "Argument of type 'string | undefined' is not assignable to parameter of type 'string'.\n  Type 'undefined' is not assignable to type 'string'.",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/engine/cad/nurbs/NURBSEngine.ts",
+    "line": 169,
+    "code": 7006,
+    "message": "Parameter 'pt' implicitly has an 'any' type.",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/engine/cad/nurbs/NURBSEngine.ts",
+    "line": 170,
+    "code": 7006,
+    "message": "Parameter 'row' implicitly has an 'any' type.",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/engine/cad/nurbs/NURBSEngine.ts",
+    "line": 313,
+    "code": 7006,
+    "message": "Parameter 'pt' implicitly has an 'any' type.",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/engine/cad/nurbs/NURBSEngine.ts",
+    "line": 352,
+    "code": 7006,
+    "message": "Parameter 'pt' implicitly has an 'any' type.",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/engine/cad/nurbs/NURBSEngine.ts",
+    "line": 379,
+    "code": 7006,
+    "message": "Parameter 'row' implicitly has an 'any' type.",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/engine/cad/nurbs/NURBSEngine.ts",
+    "line": 658,
+    "code": 7006,
+    "message": "Parameter 'pt' implicitly has an 'any' type.",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/engine/cad/nurbs/NURBSEngine.ts",
+    "line": 660,
+    "code": 7006,
+    "message": "Parameter 'pt' implicitly has an 'any' type.",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/engine/cad/nurbs/NURBSEngine.ts",
+    "line": 686,
+    "code": 7006,
+    "message": "Parameter 'pt' implicitly has an 'any' type.",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/engine/cad/surface/SheetMetalEngine.ts",
+    "line": 294,
+    "code": 18048,
+    "message": "'doc.features' is possibly 'undefined'.",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/engine/cam/CAMProvenanceEngine.ts",
+    "line": 73,
+    "code": 2739,
+    "message": "Type '{ isValid: false; failureReason: string; mismatchDetails: string; }' is missing the following properties from type 'DerivedArtifactVerificationResult': isDigestValid, isRevisionMatched, isGeometryMatched, reasons, status",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/engine/cam/CuttingToolModel.ts",
+    "line": 6,
+    "code": 2305,
+    "message": "Module '\"./ToolpathTypes\"' has no exported member 'ToolHolderGeometry'.",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/engine/cam/CuttingToolModel.ts",
+    "line": 6,
+    "code": 2305,
+    "message": "Module '\"./ToolpathTypes\"' has no exported member 'ToolType'.",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/engine/cam/CuttingToolModel.ts",
+    "line": 56,
+    "code": 2353,
+    "message": "Object literal may only specify known properties, and 'holder' does not exist in type 'CuttingTool'.",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/engine/cam/ParametricCAMBridge.ts",
+    "line": 9,
+    "code": 2305,
+    "message": "Module '\"./ToolpathTypes\"' has no exported member 'MachiningParameters'.",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/engine/cam/ParametricCAMBridge.ts",
+    "line": 10,
+    "code": 2305,
+    "message": "Module '\"./ToolpathTypes\"' has no exported member 'ToolHolderGeometry'.",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/engine/cam/ThreeAxisToolpathEngine.ts",
+    "line": 61,
+    "code": 2322,
+    "message": "Type 'string | undefined' is not assignable to type 'string'.\n  Type 'undefined' is not assignable to type 'string'.",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/engine/cam/ThreeAxisToolpathEngine.ts",
+    "line": 62,
+    "code": 2322,
+    "message": "Type 'string | undefined' is not assignable to type 'string'.\n  Type 'undefined' is not assignable to type 'string'.",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/engine/cam/ThreeAxisToolpathEngine.ts",
+    "line": 65,
+    "code": 18048,
+    "message": "'config.feedsAndSpeeds' is possibly 'undefined'.",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/engine/cam/ThreeAxisToolpathEngine.ts",
+    "line": 81,
+    "code": 18048,
+    "message": "'config.toolAssembly' is possibly 'undefined'.",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/engine/cam/ThreeAxisToolpathEngine.ts",
+    "line": 82,
+    "code": 18048,
+    "message": "'config.parameters' is possibly 'undefined'.",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/engine/cam/ThreeAxisToolpathEngine.ts",
+    "line": 92,
+    "code": 2322,
+    "message": "Type 'number | undefined' is not assignable to type 'number'.\n  Type 'undefined' is not assignable to type 'number'.",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/engine/cam/ThreeAxisToolpathEngine.ts",
+    "line": 94,
+    "code": 18048,
+    "message": "'config.feedsAndSpeeds' is possibly 'undefined'.",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/engine/cam/ThreeAxisToolpathEngine.ts",
+    "line": 95,
+    "code": 18048,
+    "message": "'config.feedsAndSpeeds' is possibly 'undefined'.",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/engine/cam/ThreeAxisToolpathEngine.ts",
+    "line": 103,
+    "code": 18048,
+    "message": "'config.feedsAndSpeeds' is possibly 'undefined'.",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/engine/cam/ThreeAxisToolpathEngine.ts",
+    "line": 104,
+    "code": 18048,
+    "message": "'config.feedsAndSpeeds' is possibly 'undefined'.",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/engine/cam/ThreeAxisToolpathEngine.ts",
+    "line": 112,
+    "code": 18048,
+    "message": "'config.feedsAndSpeeds' is possibly 'undefined'.",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/engine/cam/ThreeAxisToolpathEngine.ts",
+    "line": 113,
+    "code": 18048,
+    "message": "'config.feedsAndSpeeds' is possibly 'undefined'.",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/engine/cam/ThreeAxisToolpathEngine.ts",
+    "line": 119,
+    "code": 2322,
+    "message": "Type 'number | undefined' is not assignable to type 'number'.\n  Type 'undefined' is not assignable to type 'number'.",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/engine/cam/ThreeAxisToolpathEngine.ts",
+    "line": 121,
+    "code": 18048,
+    "message": "'config.feedsAndSpeeds' is possibly 'undefined'.",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/engine/cam/ThreeAxisToolpathEngine.ts",
+    "line": 122,
+    "code": 18048,
+    "message": "'config.feedsAndSpeeds' is possibly 'undefined'.",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/engine/cam/ThreeAxisToolpathEngine.ts",
+    "line": 136,
+    "code": 18048,
+    "message": "'config.toolAssembly' is possibly 'undefined'.",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/engine/cam/ThreeAxisToolpathEngine.ts",
+    "line": 140,
+    "code": 18048,
+    "message": "'config.parameters' is possibly 'undefined'.",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/engine/cam/ThreeAxisToolpathEngine.ts",
+    "line": 141,
+    "code": 18048,
+    "message": "'config.parameters' is possibly 'undefined'.",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/engine/cam/ThreeAxisToolpathEngine.ts",
+    "line": 153,
+    "code": 18048,
+    "message": "'config.feedsAndSpeeds' is possibly 'undefined'.",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/engine/cam/ThreeAxisToolpathEngine.ts",
+    "line": 154,
+    "code": 18048,
+    "message": "'config.feedsAndSpeeds' is possibly 'undefined'.",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/engine/cam/ThreeAxisToolpathEngine.ts",
+    "line": 165,
+    "code": 18048,
+    "message": "'config.toolAssembly' is possibly 'undefined'.",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/engine/cam/ThreeAxisToolpathEngine.ts",
+    "line": 167,
+    "code": 18048,
+    "message": "'config.parameters' is possibly 'undefined'.",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/engine/cam/ThreeAxisToolpathEngine.ts",
+    "line": 180,
+    "code": 2322,
+    "message": "Type 'number | undefined' is not assignable to type 'number'.\n  Type 'undefined' is not assignable to type 'number'.",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/engine/cam/ThreeAxisToolpathEngine.ts",
+    "line": 182,
+    "code": 18048,
+    "message": "'config.feedsAndSpeeds' is possibly 'undefined'.",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/engine/cam/ThreeAxisToolpathEngine.ts",
+    "line": 182,
+    "code": 18048,
+    "message": "'config.feedsAndSpeeds' is possibly 'undefined'.",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/engine/cam/ThreeAxisToolpathEngine.ts",
+    "line": 183,
+    "code": 18048,
+    "message": "'config.feedsAndSpeeds' is possibly 'undefined'.",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/engine/cam/ThreeAxisToolpathEngine.ts",
+    "line": 199,
+    "code": 2322,
+    "message": "Type 'number | undefined' is not assignable to type 'number'.\n  Type 'undefined' is not assignable to type 'number'.",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/engine/cam/ThreeAxisToolpathEngine.ts",
+    "line": 201,
+    "code": 18048,
+    "message": "'config.feedsAndSpeeds' is possibly 'undefined'.",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/engine/cam/ThreeAxisToolpathEngine.ts",
+    "line": 202,
+    "code": 18048,
+    "message": "'config.feedsAndSpeeds' is possibly 'undefined'.",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/engine/cam/ToolpathVerificationEngine.ts",
+    "line": 162,
+    "code": 2322,
+    "message": "Type '\"CUTTING\"' is not assignable to type '\"RAPID\" | \"FEED\" | \"TRANSITION\" | \"LOCKED\"'.",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/engine/cam/collision/CollisionClassifier.ts",
+    "line": 93,
+    "code": 2322,
+    "message": "Type 'string' is not assignable to type 'CollisionType'.",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/engine/cam/collision/CollisionClassifier.ts",
+    "line": 94,
+    "code": 2322,
+    "message": "Type 'string' is not assignable to type 'CollisionSeverity'.",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/engine/cam/collision/CollisionClassifier.ts",
+    "line": 95,
+    "code": 2322,
+    "message": "Type 'string' is not assignable to type 'CollisionState'.",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/engine/cam/collision/ContinuousCollisionDetector.ts",
+    "line": 75,
+    "code": 2561,
+    "message": "Object literal may only specify known properties, but 'feedRateMmMin' does not exist in type 'ToolPose'. Did you mean to write 'feedMmMin'?",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/engine/cam/collision/ContinuousCollisionDetector.ts",
+    "line": 75,
+    "code": 2551,
+    "message": "Property 'feedRateMmMin' does not exist on type 'ToolPose'. Did you mean 'feedMmMin'?",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/engine/cam/feature-recognition/ChamferAndFilletRecognizer.ts",
+    "line": 14,
+    "code": 2724,
+    "message": "'\"./FeatureTypes\"' has no exported member named 'ChamferFeatureParams'. Did you mean 'HoleFeatureParams'?",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/engine/cam/feature-recognition/ChamferAndFilletRecognizer.ts",
+    "line": 15,
+    "code": 2724,
+    "message": "'\"./FeatureTypes\"' has no exported member named 'FilletFeatureParams'. Did you mean 'HoleFeatureParams'?",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/engine/cam/feature-recognition/ChamferAndFilletRecognizer.ts",
+    "line": 69,
+    "code": 2339,
+    "message": "Property 'CHAMFER_FEATURE' does not exist on type 'typeof ManufacturingFeatureType'.",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/engine/cam/feature-recognition/ChamferAndFilletRecognizer.ts",
+    "line": 71,
+    "code": 2551,
+    "message": "Property 'CHAMFER_MILLING' does not exist on type 'typeof ManufacturingIntent'. Did you mean 'CHAMFERING'?",
+    "isProduction": true
+  },
+  {
+    "file": "/app/applet/src/engine/cam/feature-recognition/ChamferAndFilletRecognizer.ts",
+    "line": 134,
+    "code": 2339,
+    "message": "Property 'FILLET_FEATURE' does not exist on type 'typeof ManufacturingFeatureType'.",
+    "isProduction": true
+  }
+]

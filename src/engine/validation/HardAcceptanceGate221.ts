@@ -208,8 +208,8 @@ export class HardAcceptanceGate221 {
       instanceId: 'inst-plate-hole-1',
       partId: 'part-main-plate',
       name: 'Hole Cylinder Reference',
-      placementTransform: { position: { x: 100, y: 200, z: 10 }, rotation: { x: 0, y: 0, z: 0 }, matrix: [1, 0, 0, 100, 0, 1, 0, 200, 0, 0, 1, 10, 0, 0, 0, 1] },
-      worldTransform: { position: { x: 100, y: 200, z: 10 }, rotation: { x: 0, y: 0, z: 0 }, matrix: [1, 0, 0, 100, 0, 1, 0, 200, 0, 0, 1, 10, 0, 0, 0, 1] },
+      placementTransform: { position: { x: 100, y: 200, z: 10 }, rotation: { x: 0, y: 0, z: 0 }, scale: { x: 1, y: 1, z: 1 }, matrix: [1, 0, 0, 100, 0, 1, 0, 200, 0, 0, 1, 10, 0, 0, 0, 1] },
+      worldTransform: { position: { x: 100, y: 200, z: 10 }, rotation: { x: 0, y: 0, z: 0 }, scale: { x: 1, y: 1, z: 1 }, matrix: [1, 0, 0, 100, 0, 1, 0, 200, 0, 0, 1, 10, 0, 0, 0, 1] },
       suppressed: false,
       fixed: true,
       revision: 1

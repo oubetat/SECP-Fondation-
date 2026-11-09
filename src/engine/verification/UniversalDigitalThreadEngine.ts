@@ -26,6 +26,7 @@ export type ThreadNodeType =
 export interface ThreadDependency {
   nodeId: string;
   expectedRevision: string;
+  expectedHash?: string;
 }
 
 export interface ThreadNode {
@@ -145,11 +146,25 @@ export class UniversalDigitalThreadEngine {
         }
 
         // Check for revision mismatch (STALE)
-        if (upstreamNode.revision !== dep.expectedRevision) {
+        const revisionMismatch = upstreamNode.revision !== dep.expectedRevision;
+        
+        // PATCH-004: Check for hash mismatch (Geometric Truth)
+        // We look for geometryHash in CAD nodes, or general hash in others
+        const actualHash = upstreamNode.metadata?.geometryHash || upstreamNode.metadata?.hash;
+        const hashMismatch = dep.expectedHash && actualHash !== dep.expectedHash;
+
+        if (revisionMismatch || hashMismatch) {
           derivedStatus = 'STALE';
-          messages.push(
-            `Dependency revision mismatch on [${node.name}] -> Upstream [${upstreamNode.name}] is [${upstreamNode.revision}] but expected [${dep.expectedRevision}]`
-          );
+          if (revisionMismatch) {
+            messages.push(
+              `Dependency revision mismatch on [${node.name}] -> Upstream [${upstreamNode.name}] is [${upstreamNode.revision}] but expected [${dep.expectedRevision}]`
+            );
+          }
+          if (hashMismatch) {
+            messages.push(
+              `Dependency geometric hash mismatch on [${node.name}] -> Upstream [${upstreamNode.name}] hash is [${actualHash}] but expected [${dep.expectedHash}]`
+            );
+          }
         } else if (upstreamStatus === 'STALE') {
           derivedStatus = 'STALE';
           messages.push(`Node [${node.name}] inherits stale state from upstream [${upstreamNode.name}]`);
@@ -204,7 +219,8 @@ export class UniversalDigitalThreadEngine {
   public static propagateChange(
     thread: UniversalDigitalThread,
     changedNodeId: string,
-    newRevision: string
+    newRevision: string,
+    newHash?: string
   ): UniversalDigitalThread {
     // Clone nodes map to keep implementation pure
     const clonedNodes = new Map<string, ThreadNode>();
@@ -218,6 +234,14 @@ export class UniversalDigitalThreadEngine {
     const targetNode = clonedNodes.get(changedNodeId);
     if (targetNode) {
       targetNode.revision = newRevision;
+      if (newHash) {
+        // Ensure metadata is updated with the new hash for Truth Thread evaluation
+        targetNode.metadata = {
+          ...targetNode.metadata,
+          geometryHash: targetNode.type === 'CAD_REVISION' ? newHash : targetNode.metadata.geometryHash,
+          hash: targetNode.type !== 'CAD_REVISION' ? newHash : targetNode.metadata.hash
+        };
+      }
     }
 
     return {

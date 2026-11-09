@@ -11,6 +11,7 @@ import { NumericalStabilityAudit } from './types';
 import { Fvm3DMeshGenerator } from '../../cfd3d/Fvm3DMeshGenerator';
 import { Fvm3DNavierStokesSolver } from '../../cfd3d/Fvm3DNavierStokesSolver';
 import { BoundaryConditionSpec3D, FluidProperties3D, SolverConfig3D } from '../../cfd3d/Fvm3DTypes';
+import { DomainBindingTestUtility } from '../../crossdomain/DomainBindingTestUtility';
 
 export class TurbulenceStabilitySuite {
   public static auditStability(): NumericalStabilityAudit {
@@ -38,7 +39,9 @@ export class TurbulenceStabilitySuite {
         upwindScheme: 'FIRST_ORDER_UPWIND'
       };
 
-      const sol = Fvm3DNavierStokesSolver.solve(Fvm3DMeshGenerator.cloneMesh(mesh), fluid, bc, cfg);
+      const clonedMesh = Fvm3DMeshGenerator.cloneMesh(mesh);
+      const binding = DomainBindingTestUtility.createSealedCfdBinding(clonedMesh, fluid);
+      const sol = Fvm3DNavierStokesSolver.solve(binding, bc, cfg);
       residualRes.push(sol.finalContinuityResidual);
     }
 
@@ -67,7 +70,9 @@ export class TurbulenceStabilitySuite {
         upwindScheme: 'FIRST_ORDER_UPWIND'
       };
 
-      const sol = Fvm3DNavierStokesSolver.solve(Fvm3DMeshGenerator.cloneMesh(mesh), fluid, bc, cfg);
+      const clonedMesh = Fvm3DMeshGenerator.cloneMesh(mesh);
+      const binding = DomainBindingTestUtility.createSealedCfdBinding(clonedMesh, fluid);
+      const sol = Fvm3DNavierStokesSolver.solve(binding, bc, cfg);
       let maxU = 0;
       for (const val of sol.velocity.u) if (Math.abs(val) > maxU) maxU = Math.abs(val);
       maxU_results.push(maxU);

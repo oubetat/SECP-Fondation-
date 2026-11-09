@@ -1,0 +1,95 @@
+=== SECP-CAD-TRUTH-FORENSIC-001 RAW EXECUTION LOG ===
+TIMESTAMP: 2026-11-02T08:39:57Z
+COMMAND: npx vitest run src/engine/cad-kernel/__tests__/BooleanEngine.test.ts src/engine/cad-kernel/brep/__tests__/BRepEulerOps.test.ts src/engine/cad-kernel/__tests__/BRepValidator.test.ts src/engine/cad-kernel/history/__tests__/PersistentTopology.test.ts src/engine/cad-kernel/history/__tests__/FeatureHistory.test.ts src/engine/cad-kernel/document/__tests__/DocumentEvaluator.test.ts src/engine/cad-kernel/history/__tests__/DraftShellRibThinCanonicalConvergence.test.ts src/engine/cad-kernel/history/__tests__/HoleCanonicalConvergence.test.ts src/engine/cad-kernel/modeling/__tests__/DirectModelingEngine.test.ts src/engine/cad-kernel/tessellation/__tests__/BRepTessellator.test.ts src/engine/cad-kernel/tolerance/__tests__/ToleranceModel.test.ts src/engine/topology/__tests__/CanonicalDerivedArtifactBinding.test.ts src/engine/topology/__tests__/ProductionConsumerEnforcement.test.ts src/engine/manufacturing/pma/__tests__/PhysicalManufacturingAdversarial.test.ts src/engine/certification/truth/__tests__/IndependentAuditPackage.test.ts src/engine/assembly/constraints/__tests__/AssemblyConstraintSolver.test.ts src/engine/assembly/kinematics/__tests__/KinematicAssemblyEngine.test.ts
+
+OUTPUT:
+ RUN  v1.6.1 /app/applet
+ ✓ src/engine/assembly/constraints/__tests__/AssemblyConstraintSolver.test.ts  (11 tests) 330ms
+ ✓ src/engine/certification/truth/__tests__/IndependentAuditPackage.test.ts  (10 tests) 15ms
+stdout | src/engine/cad-kernel/document/__tests__/DocumentEvaluator.test.ts > PATCH-KERNEL-002 — Canonical Engineering Document & Evaluator > TEST-03: Full pipeline execution: Document (Parameters + Sketches + Features) -> Evaluator -> BRepSolid
+[PLM] Registering ART-DOC_BRACKET_002@REV-A (VALID)
+[PLM] Registering ART-FEM-DOC_BRACKET_002@REV-A (VALID)
+[PLM] Registering ART-CFD-DOC_BRACKET_002@REV-A (VALID)
+[PLM] Registering ART-CAM-DOC_BRACKET_002@REV-A (VALID)
+stdout | src/engine/cad-kernel/document/__tests__/DocumentEvaluator.test.ts > PATCH-KERNEL-002 — Canonical Engineering Document & Evaluator > TEST-04: Sketch-only document should not evaluate to a SOLID
+[PLM] Registering ART-DOC_SKETCH_ONLY@REV-A (REQUIRES_RECALCULATION)
+stdout | src/engine/cad-kernel/document/__tests__/DocumentEvaluator.test.ts > PATCH-KERNEL-002 — Canonical Engineering Document & Evaluator > TEST-05: Causality and determinism on parametric changes
+[PLM] Registering ART-DOC_PARAM_01@REV-A (VALID)
+[PLM] Registering ART-FEM-DOC_PARAM_01@REV-A (VALID)
+[PLM] Registering ART-CFD-DOC_PARAM_01@REV-A (VALID)
+[PLM] Registering ART-CAM-DOC_PARAM_01@REV-A (VALID)
+[PLM] Registering ART-DOC_PARAM_01@REV-A (VALID)
+[PLM] Registering ART-FEM-DOC_PARAM_01@REV-A (VALID)
+[PLM] Registering ART-CFD-DOC_PARAM_01@REV-A (VALID)
+[PLM] Registering ART-CAM-DOC_PARAM_01@REV-A (VALID)
+[PLM] Registering ART-DOC_PARAM_01@REV-A (VALID)
+[PLM] Artifact ART-FEM-DOC_PARAM_01@REV-A invalidated by change in ART-DOC_PARAM_01@REV-A
+[PLM] Artifact ART-CFD-DOC_PARAM_01@REV-A invalidated by change in ART-DOC_PARAM_01@REV-A
+[PLM] Artifact ART-CAM-DOC_PARAM_01@REV-A invalidated by change in ART-DOC_PARAM_01@REV-A
+[PLM] Registering ART-FEM-DOC_PARAM_01@REV-A (VALID)
+[PLM] Registering ART-CFD-DOC_PARAM_01@REV-A (VALID)
+[PLM] Registering ART-CAM-DOC_PARAM_01@REV-A (VALID)
+ ✓ src/engine/cad-kernel/document/__tests__/DocumentEvaluator.test.ts  (6 tests) 65ms
+ ✓ src/engine/cad-kernel/history/__tests__/HoleCanonicalConvergence.test.ts  (10 tests) 6928ms
+ ✓ src/engine/cad-kernel/__tests__/BooleanEngine.test.ts  (20 tests) 239ms
+ ✓ src/engine/cad-kernel/tolerance/__tests__/ToleranceModel.test.ts  (12 tests) 12ms
+ ✓ src/engine/manufacturing/pma/__tests__/PhysicalManufacturingAdversarial.test.ts  (11 tests) 12ms
+ ✓ src/engine/cad-kernel/brep/__tests__/BRepEulerOps.test.ts  (2 tests) 8ms
+stdout | src/engine/cad-kernel/brep/__tests__/BRepEulerOps.test.ts > BRepEulerOps — Euler Operators & Topological Fillet Rewiring Engine > should compute Euler-Poincaré characteristic V - E + F = 2 for a closed 2-manifold cube
+EULER DIAGNOSTIC: V=8, E=12, F=6, Chi=2
+stdout | src/engine/cad-kernel/brep/__tests__/BRepEulerOps.test.ts > BRepEulerOps — Euler Operators & Topological Fillet Rewiring Engine > should execute a topological fillet operation on e1, trimming adjacent faces and preserving Euler characteristic
+EULER DIAGNOSTIC: V=10, E=15, F=7, Chi=2
+EULER DIAGNOSTIC: V=10, E=15, F=7, Chi=2
+ ✓ src/engine/cad-kernel/history/__tests__/PersistentTopology.test.ts  (2 tests) 20ms
+ ✓ src/engine/cad-kernel/modeling/__tests__/DirectModelingEngine.test.ts  (6 tests) 21ms
+ ✓ src/engine/cad-kernel/tessellation/__tests__/BRepTessellator.test.ts  (2 tests) 23ms
+ ✓ src/engine/topology/__tests__/CanonicalDerivedArtifactBinding.test.ts  (45 tests) 6340ms
+ ✓ src/engine/topology/__tests__/ProductionConsumerEnforcement.test.ts  (2 tests) 26ms
+ ✓ src/engine/cad-kernel/history/__tests__/FeatureHistory.test.ts  (16 tests) 21ms
+ ✓ src/engine/cad-kernel/history/__tests__/DraftShellRibThinCanonicalConvergence.test.ts  (10 tests) 42ms
+ ✓ src/engine/cad-kernel/__tests__/BRepValidator.test.ts  (11 tests) 18ms
+ ✓ src/engine/assembly/kinematics/__tests__/KinematicAssemblyEngine.test.ts  (4 tests) 15ms
+
+ Test Files  17 passed (17)
+      Tests  189 passed (189)
+   Duration  26.13s
+EXIT_CODE: 0
+
+---
+COMMAND: npx vitest run src/verification/p5/P5-001-CADAssemblyAssociativity.test.ts
+stdout | src/verification/p5/P5-001-CADAssemblyAssociativity.test.ts > P5-001 — CAD → Assembly Revision & Associativity Proof > P5-001-A — Assembly topology survives CAD geometry mutation
+[PLM] Registering ART-P5-CAD-01@REV-A (VALID)
+[PLM] Registering ART-P5-ASM-01@REV-A (VALID)
+[PLM] Registering ART-P5-CAD-01@REV-B (VALID)
+[PLM] Artifact ART-P5-ASM-01@REV-A invalidated by change in ART-P5-CAD-01@REV-A
+[PLM] Registering ART-P5-ASM-01@REV-A (VALID)
+ Test Files  1 passed (1)
+      Tests  5 passed (5)
+   Duration  2.14s
+EXIT_CODE: 0
+
+---
+COMMAND: npx vitest run src/engine/certification/truth/__tests__/HydraulicPumpTruthThread.test.ts
+FAIL  src/engine/certification/truth/__tests__/HydraulicPumpTruthThread.test.ts
+ ❯ Hydraulic Pump Engineering Truth Thread Benchmark > HAPPY PATH: Should verify a valid Truth Thread for Revision A
+   → Error: SIMULATION_AUTHORITY_VIOLATION: Invalid or missing SealingCapability.
+      at Module.validateCapability (src/engine/simulation/SimulationSealingAuthorization.ts:57:11)
+      at Module.sealEnvelope (src/engine/simulation/SimulationAuthorityInternal.ts:179:3)
+      at Function.runScenario (src/engine/simulation/SimulationEngine.ts:175:22)
+      at src/engine/certification/truth/__tests__/HydraulicPumpTruthThread.test.ts:83:36
+ Test Files  1 failed (1)
+      Tests  10 failed (10)
+   Duration  1.22s
+EXIT_CODE: 1
+
+---
+COMMAND: npx vitest run src/engine/cad-kernel/cfd/__tests__/CFDCADPipeline.test.ts
+FAIL  src/engine/cad-kernel/cfd/__tests__/CFDCADPipeline.test.ts
+ ❯ PATCH-KERNEL-008 — CAD -> CFD Pipeline Verification > should detect geometric changes and propagate them through the entire CFD pipeline
+   → Error: SIMULATION_AUTHORITY_VIOLATION: CFD solve attempted without valid execution authorization.
+      at Function.solve (src/engine/cfd3d/Fvm3DNavierStokesSolver.ts:46:13)
+      at src/engine/cad-kernel/cfd/__tests__/CFDCADPipeline.test.ts:52:42
+ Test Files  1 failed (1)
+      Tests  1 failed (1)
+   Duration  2.65s
+EXIT_CODE: 1

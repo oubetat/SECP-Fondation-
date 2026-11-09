@@ -24,7 +24,9 @@ import { IndependentEvidenceIntegrityVerifier } from '../../engine/evidence/inte
 import {
   CanonicalEvidenceRecord,
   EngineeringResultRecord,
+  ValidationParams,
   ValidationRecord,
+  IndependentVerificationParams,
   IndependentVerificationRecord
 } from '../../engine/evidence/integrity/EvidenceIntegrityTypes';
 import { EngineeringEvidenceLedger } from '../../engine/evidence/ledger/EngineeringEvidenceLedger';
@@ -38,6 +40,7 @@ import { CryptographicAttestationEngine } from '../../engine/attestation/Cryptog
 import { SigningKeyPair } from '../../engine/attestation/types';
 import { CanonicalDerivedArtifactBinding } from '../../engine/topology/CanonicalDerivedArtifactBinding';
 import { sealEnvelope, initializeAuthorityHandshake } from '../../engine/simulation/SimulationAuthorityInternal';
+import { issueSealingCapability } from '../../engine/simulation/SimulationSealingAuthorization';
 import { SimulationExecutionRegistry } from '../../engine/simulation/SimulationExecutionRegistry';
 
 // ============================================================================
@@ -84,7 +87,7 @@ function createCanonicalCADDocument(docId: string, depth: number, rev: number = 
 
 describe('P6-001 — Engineering Evidence Authority & Causal Lineage Proof', () => {
   beforeEach(() => {
-    EngineeringEvidenceLedger.getInstance().reset();
+    EngineeringEvidenceLedger.getInstance().reset(); EvidenceIntegrityEngine.clearRegistry();
     SimulationCertificateEngine.getInstance().resetRegistry();
   });
 
@@ -120,7 +123,7 @@ describe('P6-001 — Engineering Evidence Authority & Causal Lineage Proof', () 
     };
 
     // 3. Validation Record
-    const validation: ValidationRecord = {
+    const validation: ValidationParams = {
       validationId: 'VAL-001-CAD',
       checks: [
         { code: 'CHK-MANIFOLD', description: 'Solid is 2-manifold', passed: true },
@@ -130,9 +133,11 @@ describe('P6-001 — Engineering Evidence Authority & Causal Lineage Proof', () 
     };
 
     // 4. Independent Verification Record
-    const verification: IndependentVerificationRecord = {
+    const verification: IndependentVerificationParams = {
       verificationId: 'VERIF-001-INDEPENDENT',
+       
       verifierIdentity: 'SECP-INDEPENDENT-INTEGRITY-AUDITOR',
+       
       independentVerdict: 'PASS',
       details: 'All geometric and topological invariants verified by independent audit'
     };
@@ -141,13 +146,17 @@ describe('P6-001 — Engineering Evidence Authority & Causal Lineage Proof', () 
     const evidence: CanonicalEvidenceRecord = EvidenceIntegrityEngine.generateEvidence({
       domain: 'CAD',
       documentId: docCAD.documentId,
-      documentRevision: docCAD.revision,
+      documentRevision: Number(docCAD.revision),
       actionId: 'EXTRUDE_SOLID',
       executionId: actualResult.executionId,
       capabilityId: 'BRepExtrude',
       featureId: 'EXT_01',
       result: actualResult,
-      validation,
+      validation: {
+        ...validation,
+           
+         
+      },
       verification,
       sourceOrigin: 'REAL_KERNEL'
     });
@@ -173,13 +182,13 @@ describe('P6-001 — Engineering Evidence Authority & Causal Lineage Proof', () 
   it('P6-001-B — Rejection of Unbound / Missing Engineering Result', () => {
     const docCAD = createCanonicalCADDocument('DOC-P6-UNBOUND', 25, 1);
 
-    const validation: ValidationRecord = {
+    const validation: ValidationParams = {
       validationId: 'VAL-UNBOUND',
       checks: [{ code: 'CHK', description: 'check', passed: true }],
       passed: true
     };
 
-    const verification: IndependentVerificationRecord = {
+    const verification: IndependentVerificationParams = {
       verificationId: 'VERIF-UNBOUND',
       verifierIdentity: 'SECP-INDEPENDENT-INTEGRITY-AUDITOR',
       independentVerdict: 'PASS'
@@ -237,13 +246,13 @@ describe('P6-001 — Engineering Evidence Authority & Causal Lineage Proof', () 
       isFabricated: false
     };
 
-    const validation: ValidationRecord = {
+    const validation: ValidationParams = {
       validationId: 'VAL-UI',
       checks: [{ code: 'CHK', description: 'check', passed: true }],
       passed: true
     };
 
-    const verification: IndependentVerificationRecord = {
+    const verification: IndependentVerificationParams = {
       verificationId: 'VERIF-UI',
       verifierIdentity: 'SECP-INDEPENDENT-INTEGRITY-AUDITOR',
       independentVerdict: 'PASS'
@@ -292,18 +301,18 @@ describe('P6-001 — Engineering Evidence Authority & Causal Lineage Proof', () 
       resultId: 'RES-REV-1',
       domain: 'CAD',
       executionId: 'EXEC-1',
-      outputMetrics: { volume: 50 * 50 * 25, bRepHash: evalRev1.derivedArtifacts?.bRepHash },
+      outputMetrics: { volume: 50 * 50 * 25, bRepHash: evalRev1.derivedArtifacts?.bRepHash ?? '' },
       kernelVersion: '3.5.2',
       isFabricated: false
     };
 
-    const validation: ValidationRecord = {
+    const validation: ValidationParams = {
       validationId: 'VAL-REV1',
       checks: [{ code: 'VOL', description: 'Volume ok', passed: true }],
       passed: true
     };
 
-    const verification: IndependentVerificationRecord = {
+    const verification: IndependentVerificationParams = {
       verificationId: 'VERIF-REV1',
       verifierIdentity: 'SECP-INDEPENDENT-INTEGRITY-AUDITOR',
       independentVerdict: 'PASS'
@@ -340,7 +349,7 @@ describe('P6-001 — Engineering Evidence Authority & Causal Lineage Proof', () 
       resultId: 'RES-REV-2',
       domain: 'CAD',
       executionId: 'EXEC-2',
-      outputMetrics: { volume: 50 * 50 * 50, bRepHash: evalRev2.derivedArtifacts?.bRepHash },
+      outputMetrics: { volume: 50 * 50 * 50, bRepHash: evalRev2.derivedArtifacts?.bRepHash ?? '' },
       kernelVersion: '3.5.2',
       isFabricated: false
     };
@@ -369,13 +378,13 @@ describe('P6-001 — Engineering Evidence Authority & Causal Lineage Proof', () 
       isFabricated: true // explicit fabrication flag
     };
 
-    const validation: ValidationRecord = {
+    const validation: ValidationParams = {
       validationId: 'VAL-FAB',
       checks: [{ code: 'CHK', description: 'check', passed: true }],
       passed: true
     };
 
-    const verification: IndependentVerificationRecord = {
+    const verification: IndependentVerificationParams = {
       verificationId: 'VERIF-FAB',
       verifierIdentity: 'SECP-INDEPENDENT-INTEGRITY-AUDITOR',
       independentVerdict: 'PASS'
@@ -418,14 +427,14 @@ describe('P6-001 — Engineering Evidence Authority & Causal Lineage Proof', () 
       isFabricated: false
     };
 
-    const validation: ValidationRecord = {
+    const validation: ValidationParams = {
       validationId: 'VAL-SELF',
       checks: [{ code: 'CHK', description: 'check', passed: true }],
       passed: true
     };
 
     // Self-attestation: verifier identity is identical to generator version
-    const selfVerification: IndependentVerificationRecord = {
+    const selfVerification: IndependentVerificationParams = {
       verificationId: 'VERIF-SELF',
       verifierIdentity: EvidenceIntegrityEngine.GENERATOR_VERSION, // Self-attestation loop!
       independentVerdict: 'PASS'
@@ -470,7 +479,7 @@ describe('P6-001 — Engineering Evidence Authority & Causal Lineage Proof', () 
       projectId: 'PRJ-AEROSPACE-P6',
       organizationId: 'SECP-AIR',
       producerIdentity: 'SECP-CAD-KERNEL',
-      producerType: 'ALGORITHM',
+      producerType: 'SYSTEM',
       sourceSystem: 'BRepKernel',
       sourceVersion: '3.5.2',
       payload: {
@@ -580,7 +589,7 @@ describe('P6-001 — Engineering Evidence Authority & Causal Lineage Proof', () 
     });
 
     const resultManifest = simEngine.buildSimulationResultManifest({
-      resultId: 'RES-CFD-001',
+      resultId: 'RES-CFD-001', executionId: 'EXEC-CFD-001',
       resultHash: 'HASH-CFD-CONVERGED-RES',
       fieldHashes: { pressure: 'HASH-P', velocity: 'HASH-U' },
       scalarResults: { dragCoefficient: 0.31, maxPressure: 102500 },
@@ -605,13 +614,18 @@ describe('P6-001 — Engineering Evidence Authority & Causal Lineage Proof', () 
       resultHash: derivedBinding.artifactDigest
     };
 
+    initializeAuthorityHandshake();
+    const cap = issueSealingCapability('P6-001-TEST', ['SIMULATION'], {
+      cadRevisionHash: 'REV-01',
+      canonicalGeometryHash: modelHash
+    });
     const authEnvelope = sealEnvelope({
       provenanceHash: derivedBinding.artifactDigest,
       result: mutableResult,
       authoritativeRevisionHash: 'REV-01',
       authoritativeGeometryHash: modelHash,
       timestamp: '2026-08-22T00:00:00.000Z'
-    }, initializeAuthorityHandshake());
+    }, cap);
 
     SimulationExecutionRegistry.registerExecution(authEnvelope);
 
@@ -630,7 +644,7 @@ describe('P6-001 — Engineering Evidence Authority & Causal Lineage Proof', () 
       keyId: 'KEY-AUTHORITY-01',
       publicKey: 'PUBLIC_KEY_PEM_01',
       privateKey: 'PRIVATE_KEY_PEM_01',
-      algorithm: 'ECDSA_SHA256'
+      algorithm: 'ECDSA-P256-SHA256'
     };
 
     const attestationResult = CryptographicAttestationEngine.createAttestation({

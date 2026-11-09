@@ -1,0 +1,58 @@
+[
+  {
+    "file": "src/engine/industrial-os/policy/types.ts",
+    "sha256": "037a559d5a186174b4e7bb8c147b34ead53c47b92642a03821b6dab578980c2c",
+    "lineCount": 64,
+    "byteSize": 1358,
+    "strictnessPreserved": true,
+    "noTypeIgnoreOrNocheck": true
+  },
+  {
+    "file": "src/engine/assembly/AssemblyConstraintTypes.ts",
+    "sha256": "124712dd9e4fd5b9a5d3b82c1e1cbe8bbac5b3d613339505f1b8de88321dde57",
+    "lineCount": 185,
+    "byteSize": 4007,
+    "strictnessPreserved": true,
+    "noTypeIgnoreOrNocheck": true
+  },
+  {
+    "file": "src/engine/collaboration/DigitalThreadTypes.ts",
+    "sha256": "32934696d0f446477f258256a6b37d19474c2abdfdc50b22c74d8ee792ff4848",
+    "lineCount": 114,
+    "byteSize": 2117,
+    "strictnessPreserved": true,
+    "noTypeIgnoreOrNocheck": true
+  },
+  {
+    "file": "src/engine/cam/feature-recognition/FeatureTypes.ts",
+    "sha256": "7ff9d6ec0d6984f4c5d740e77800325efa5fe40651e2315e0424bb772460a5f6",
+    "lineCount": 242,
+    "byteSize": 5230,
+    "strictnessPreserved": true,
+    "noTypeIgnoreOrNocheck": true
+  },
+  {
+    "file": "src/engine/cam/post-processor/PostTypes.ts",
+    "sha256": "850b52a723ededd26b0183610812572b37c3c427f322d4182b722d5e3e489ea0",
+    "lineCount": 71,
+    "byteSize": 2726,
+    "strictnessPreserved": true,
+    "noTypeIgnoreOrNocheck": true
+  },
+  {
+    "file": "src/engine/cam/toolpath/ToolpathTypes.ts",
+    "sha256": "71f01278fafee21fb7b35352705cceda2e6babd7358e365b51e295676daaca83",
+    "lineCount": 315,
+    "byteSize": 7599,
+    "strictnessPreserved": true,
+    "noTypeIgnoreOrNocheck": true
+  },
+  {
+    "file": "src/engine/featureTree.ts",
+    "sha256": "ece684da46026c959d4da9cba82b2894c0b6fd5b24e19bf09f41aa76466f0b59",
+    "lineCount": 24,
+    "byteSize": 486,
+    "strictnessPreserved": true,
+    "noTypeIgnoreOrNocheck": true
+  }
+]

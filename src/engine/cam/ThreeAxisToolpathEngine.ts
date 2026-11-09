@@ -57,12 +57,13 @@ export class ThreeAxisToolpathEngine {
       }
     );
 
+    const feed = config.feedsAndSpeeds?.cuttingFeedMmMin || 1500;
     return {
-      operationId: config.operationId,
-      strategy: config.strategy,
+      operationId: config.operationId ?? config.id ?? 'op-threeaxis-01',
+      strategy: config.strategy ?? 'FACING',
       points,
       totalLengthMm: Number(totalLength.toFixed(3)),
-      estimatedTimeSec: Number((totalLength / config.feedsAndSpeeds.cuttingFeedMmMin * 60).toFixed(1)),
+      estimatedTimeSec: Number((totalLength / feed * 60).toFixed(1)),
       generatedAt: new Date().toISOString(),
       provenance
     };
@@ -78,9 +79,13 @@ export class ThreeAxisToolpathEngine {
 
   private static generateFacingPoints(config: MachiningOperationConfig, stock: any): CutterLocationPoint[] {
     const points: CutterLocationPoint[] = [];
+    if (!config.toolAssembly || !config.parameters || !config.feedsAndSpeeds) {
+      throw new Error('Facing requires toolAssembly, parameters, and feedsAndSpeeds');
+    }
     const tool = config.toolAssembly.tool;
     const stepover = config.parameters.stepoverMm;
     const z = stock.zMax;
+    const clearanceZ = config.clearancePlaneZ ?? (stock.zMax + 15);
     
     let currentY = stock.yMin + tool.diameterMm / 2;
     let pointIndex = 0;
@@ -89,7 +94,7 @@ export class ThreeAxisToolpathEngine {
       // One pass from X min to X max
       points.push({
         pointIndex: pointIndex++,
-        position: { x: stock.xMin - tool.diameterMm, y: currentY, z: config.clearancePlaneZ },
+        position: { x: stock.xMin - tool.diameterMm, y: currentY, z: clearanceZ },
         toolVector: { x: 0, y: 0, z: 1 },
         feedRateMmMin: config.feedsAndSpeeds.rapidFeedMmMin,
         spindleRpm: config.feedsAndSpeeds.spindleRpm,
@@ -116,7 +121,7 @@ export class ThreeAxisToolpathEngine {
 
       points.push({
         pointIndex: pointIndex++,
-        position: { x: stock.xMax + tool.diameterMm, y: currentY, z: config.clearancePlaneZ },
+        position: { x: stock.xMax + tool.diameterMm, y: currentY, z: clearanceZ },
         toolVector: { x: 0, y: 0, z: 1 },
         feedRateMmMin: config.feedsAndSpeeds.rapidFeedMmMin,
         spindleRpm: config.feedsAndSpeeds.spindleRpm,
@@ -132,6 +137,9 @@ export class ThreeAxisToolpathEngine {
   private static generateAdaptiveRoughingPoints(config: MachiningOperationConfig, stock: any): CutterLocationPoint[] {
     // Simplified deterministic spiral roughing for SECP-098
     const points: CutterLocationPoint[] = [];
+    if (!config.toolAssembly || !config.parameters || !config.feedsAndSpeeds) {
+      throw new Error('AdaptiveRoughing requires toolAssembly, parameters, and feedsAndSpeeds');
+    }
     let pointIndex = 0;
     const tool = config.toolAssembly.tool;
     const centerX = (stock.xMin + stock.xMax) / 2;
@@ -161,10 +169,14 @@ export class ThreeAxisToolpathEngine {
 
   private static generateContourPoints(config: MachiningOperationConfig, stock: any): CutterLocationPoint[] {
     const points: CutterLocationPoint[] = [];
+    if (!config.toolAssembly || !config.parameters || !config.feedsAndSpeeds) {
+      throw new Error('Contour requires toolAssembly, parameters, and feedsAndSpeeds');
+    }
     let pointIndex = 0;
     const tool = config.toolAssembly.tool;
     const offset = tool.diameterMm / 2;
     const z = stock.zMax - config.parameters.stepdownMm;
+    const clearanceZ = config.clearancePlaneZ ?? (stock.zMax + 15);
 
     const corners = [
       { x: stock.xMin - offset, y: stock.yMin - offset },
@@ -174,13 +186,14 @@ export class ThreeAxisToolpathEngine {
       { x: stock.xMin - offset, y: stock.yMin - offset }
     ];
 
+    const feeds = config.feedsAndSpeeds;
     corners.forEach((c, idx) => {
       points.push({
         pointIndex: pointIndex++,
-        position: { x: c.x, y: c.y, z: idx === 0 ? config.clearancePlaneZ : z },
+        position: { x: c.x, y: c.y, z: idx === 0 ? clearanceZ : z },
         toolVector: { x: 0, y: 0, z: 1 },
-        feedRateMmMin: idx === 0 ? config.feedsAndSpeeds.rapidFeedMmMin : config.feedsAndSpeeds.cuttingFeedMmMin,
-        spindleRpm: config.feedsAndSpeeds.spindleRpm,
+        feedRateMmMin: idx === 0 ? feeds.rapidFeedMmMin : feeds.cuttingFeedMmMin,
+        spindleRpm: feeds.spindleRpm,
         moveType: idx === 0 ? 'RAPID_APPROACH' : 'CUTTING'
       });
     });
@@ -194,12 +207,13 @@ export class ThreeAxisToolpathEngine {
   }
 
   private static generateClearancePoints(config: MachiningOperationConfig, stock: any): CutterLocationPoint[] {
+    const feeds = config.feedsAndSpeeds ?? { rapidFeedMmMin: 5000, spindleRpm: 4000 };
     return [{
       pointIndex: 0,
-      position: { x: stock.xMin, y: stock.yMin, z: config.clearancePlaneZ },
+      position: { x: stock.xMin, y: stock.yMin, z: config.clearancePlaneZ ?? (stock.zMax + 15) },
       toolVector: { x: 0, y: 0, z: 1 },
-      feedRateMmMin: config.feedsAndSpeeds.rapidFeedMmMin,
-      spindleRpm: config.feedsAndSpeeds.spindleRpm,
+      feedRateMmMin: feeds.rapidFeedMmMin,
+      spindleRpm: feeds.spindleRpm,
       moveType: 'RAPID_APPROACH'
     }];
   }

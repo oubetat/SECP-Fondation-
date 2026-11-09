@@ -1,0 +1,5 @@
+{
+  "summary":  "Audit report verifying complete removal and isolation of authority key exports, eliminating public key getters across all production and test modules.",
+  "updatedAt":  "2026-11-01T09:19:07.933889494Z",
+  "userFacing":  true
+}

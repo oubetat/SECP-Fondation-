@@ -120,8 +120,8 @@ export class HardAcceptanceGate310 {
       const instBlock = canonicalDoc.assembly?.instances.find(i => i.instanceId === 'inst-block-01');
       const instPiston = canonicalDoc.assembly?.instances.find(i => i.instanceId === 'inst-piston-01');
       const ownershipValid = 
-        instBlock?.position.x === 0 && 
-        instPiston?.position.y === 15 &&
+        instBlock?.position?.x === 0 && 
+        instPiston?.position?.y === 15 &&
         core.getInstance('inst-piston-01')?.placementTransform?.translation?.[1] === 15;
 
       if (ownershipValid) {
@@ -239,7 +239,7 @@ export class HardAcceptanceGate310 {
       // Case B: UI changed, EngineeringDocument unchanged -> Must reject
       let uiTransform = { x: 500, y: 500, z: 500 };
       const uiMutationRejected = 
-        uiTransform.x !== canonicalDoc.assembly?.instances[1].position.x;
+        uiTransform.x !== canonicalDoc.assembly?.instances[1]?.position?.x;
 
       if (uiMutationRejected) {
         checks.find(c => c.id === 'NEG_UI_ONLY')!.status = 'PASS';

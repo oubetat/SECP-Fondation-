@@ -1,0 +1,40 @@
+{
+  "audit_id": "SECP-SECURITY-009-CLOSE",
+  "title": "Inventory Scope & Exclusion Reconciliation",
+  "timestamp": "2026-11-02T08:05:44.629Z",
+  "metrics": {
+    "totalDiscoveredModulesUnderSrcEngine": 4505,
+    "totalProductionModulesAudited": 3916,
+    "totalExcludedModules": 589,
+    "mathematicalCheck": "3916 + 589 = 4505"
+  },
+  "exclusionCategories": [
+    {
+      "category": "Dedicated Test Directories (/__tests__/)",
+      "count": 540,
+      "exclusionRationale": "Unit, integration, and security test files. These contain intentional negative test invocations (such as asserting rejection of unauthenticated calls) and must not be analyzed as production caller entry points."
+    },
+    {
+      "category": "Colocated Test Files (*.test.ts, *.spec.ts outside /__tests__/)",
+      "count": 32,
+      "exclusionRationale": "Colocated unit tests residing beside domain modules. Formally test runners and fixture runners."
+    },
+    {
+      "category": "Adversarial & Test Fixture Files (/__fixtures__/)",
+      "count": 16,
+      "exclusionRationale": "Synthetic adversarial bypass vectors intentionally designed to probe auditor detection limits. Separated into fixture qualification harness."
+    },
+    {
+      "category": "Isolated Test Helper Utilities (*TestUtility*)",
+      "count": 1,
+      "fileList": [
+        "src/engine/crossdomain/DomainBindingTestUtility.ts"
+      ],
+      "exclusionRationale": "DomainBindingTestUtility.ts provides test helper functions issuing test capabilities for unit test suites. Verified by code inspection to contain no production runtime logic."
+    }
+  ],
+  "productionModulesIntegrityCheck": {
+    "verifiedNoProductionLogicExcluded": true,
+    "verificationMethodology": "AST scanning confirmed no production runtime entry points or API routes import excluded files as production runtime dependencies."
+  }
+}

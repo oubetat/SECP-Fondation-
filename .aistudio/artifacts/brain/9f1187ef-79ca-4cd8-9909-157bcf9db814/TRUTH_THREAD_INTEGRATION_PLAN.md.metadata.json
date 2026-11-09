@@ -1,0 +1,6 @@
+{
+  "summary":  "Integration plan for linking CAD, Mesh, and CFD in the SECP Engineering Truth Thread.\nIncludes mapping Mesh provenance to B-Rep identifiers, implementing invalidation logic via the Digital Thread Engine, and binding solver results to execution records.",
+  "updatedAt":  "2026-11-02T12:38:56.774611686Z",
+  "requestFeedback":  true,
+  "userFacing":  true
+}

@@ -1,4 +1,11 @@
+import { MeshSet } from './physics/mesh/MeshTypes';
+import { MeshValidator } from './physics/mesh/MeshValidator';
+
 export interface CfdFlowResult {
+  meshRevisionId?: string;
+  cadRevisionId?: string;
+  meshHash?: string;
+  cadGeometryHash?: string;
   maxVelocityMS: number;
   reynoldsNumber: number;
   flowRegime: string;
@@ -13,6 +20,41 @@ export interface CfdFlowResult {
 }
 
 export class CfdEngine {
+  private static _solverInvocations = 0;
+
+  public static getSolverInvocations(): number {
+    return this._solverInvocations;
+  }
+
+  public static resetInvocations(): void {
+    this._solverInvocations = 0;
+  }
+
+  public static runSimulation(
+    mesh: MeshSet,
+    inletVelocity: number,
+    density: number,
+    viscosity: number,
+    iterations: number,
+    expectedGeometryHash?: string
+  ): CfdFlowResult {
+    // GUARDRAIL: Validate mesh before allowing solver execution
+    const validation = MeshValidator.validateMesh(mesh, expectedGeometryHash);
+    if (!validation.valid) {
+      throw new Error(`[CFD_SOLVER_PRECONDITION_FAILURE] Mesh validation failed: ${validation.errors.join('; ')}`);
+    }
+
+    const result = this.solveIncompressibleRANS(mesh, inletVelocity, viscosity, iterations, density);
+    
+    // Inject provenance IDs and hashes into result
+    result.meshRevisionId = mesh.revision;
+    result.cadRevisionId = mesh.modelRevisionId;
+    result.meshHash = mesh.canonicalHash || MeshValidator.calculateCanonicalHash(mesh);
+    result.cadGeometryHash = mesh.modelRevisionHash;
+    
+    return result;
+  }
+
   public static solveCfdFlow(
     mesh: any,
     inletVelocity: number,
@@ -30,6 +72,7 @@ export class CfdEngine {
     maxSteps = 100,
     density = 1.225
   ): CfdFlowResult {
+    this._solverInvocations++; // Track actual mathematical execution
     if (fluidViscosity <= 0) {
       throw new Error('[INVALID_PHYSICAL_VISCOSITY_ERROR] Fluid kinematic viscosity must be strictly positive');
     }

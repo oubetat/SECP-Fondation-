@@ -1,0 +1,410 @@
+src/engine/cam/ParametricCAMBridge.ts(9,3): error TS2305: Module '"./ToolpathTypes"' has no exported member 'MachiningParameters'.
+src/engine/cam/ParametricCAMBridge.ts(10,3): error TS2305: Module '"./ToolpathTypes"' has no exported member 'ToolHolderGeometry'.
+src/engine/cam/ParametricCAMBridge.ts(54,7): error TS2345: Argument of type '"FLAT_ENDMILL"' is not assignable to parameter of type 'ToolType'.
+src/engine/cam/ToolpathVerificationEngine.ts(162,134): error TS2322: Type '"CUTTING"' is not assignable to type '"FEED" | "LOCKED" | "RAPID" | "TRANSITION"'.
+src/engine/cam/__tests__/CAMRevisionInvalidationProof.test.ts(44,5): error TS18048: 'docRev1.derived' is possibly 'undefined'.
+src/engine/cam/__tests__/CAMRevisionInvalidationProof.test.ts(53,5): error TS18048: 'docRev1.evidence' is possibly 'undefined'.
+src/engine/cam/__tests__/CAMRevisionInvalidationProof.test.ts(71,36): error TS18048: 'docRev1.evidence' is possibly 'undefined'.
+src/engine/cam/__tests__/CAMRevisionInvalidationProof.test.ts(92,5): error TS18048: 'docRev2.derived' is possibly 'undefined'.
+src/engine/cam/collision/CollisionClassifier.ts(93,7): error TS2322: Type 'string' is not assignable to type 'CollisionType'.
+src/engine/cam/collision/CollisionClassifier.ts(94,7): error TS2322: Type 'string' is not assignable to type 'CollisionSeverity'.
+src/engine/cam/collision/CollisionClassifier.ts(95,7): error TS2322: Type 'string' is not assignable to type 'CollisionState'.
+src/engine/cam/collision/CollisionMathUtils.ts(34,17): error TS2699: Static property 'length' conflicts with built-in property 'Function.length' of constructor function 'CollisionMathUtils'.
+src/engine/cam/collision/ContinuousCollisionDetector.ts(75,9): error TS2561: Object literal may only specify known properties, but 'feedRateMmMin' does not exist in type 'ToolPose'. Did you mean to write 'feedMmMin'?
+src/engine/cam/collision/ContinuousCollisionDetector.ts(75,32): error TS2551: Property 'feedRateMmMin' does not exist on type 'ToolPose'. Did you mean 'feedMmMin'?
+src/engine/cam/feature-recognition/ChamferAndFilletRecognizer.ts(14,3): error TS2724: '"./FeatureTypes"' has no exported member named 'ChamferFeatureParams'. Did you mean 'HoleFeatureParams'?
+src/engine/cam/feature-recognition/ChamferAndFilletRecognizer.ts(15,3): error TS2724: '"./FeatureTypes"' has no exported member named 'FilletFeatureParams'. Did you mean 'HoleFeatureParams'?
+src/engine/cam/feature-recognition/ChamferAndFilletRecognizer.ts(69,44): error TS2339: Property 'CHAMFER_FEATURE' does not exist on type 'typeof ManufacturingFeatureType'.
+src/engine/cam/feature-recognition/ChamferAndFilletRecognizer.ts(71,41): error TS2551: Property 'CHAMFER_MILLING' does not exist on type 'typeof ManufacturingIntent'. Did you mean 'CHAMFERING'?
+src/engine/cam/feature-recognition/ChamferAndFilletRecognizer.ts(134,44): error TS2339: Property 'FILLET_FEATURE' does not exist on type 'typeof ManufacturingFeatureType'.
+src/engine/cam/feature-recognition/ChamferAndFilletRecognizer.ts(136,41): error TS2339: Property 'FILLET_MILLING' does not exist on type 'typeof ManufacturingIntent'.
+src/engine/cam/feature-recognition/FeatureAccessibilityAnalyzer.ts(97,32): error TS2339: Property 'OBLIQUE' does not exist on type 'typeof ToolAccessDirection'.
+src/engine/cam/feature-recognition/FeaturePatternRecognizer.ts(57,13): error TS2322: Type '"LINEAR_ARRAY"' is not assignable to type '"CIRCULAR" | "GRID" | "LINEAR"'.
+src/engine/cam/feature-recognition/FeaturePatternRecognizer.ts(94,9): error TS2322: Type '"CIRCULAR_BOLT_CIRCLE"' is not assignable to type '"CIRCULAR" | "GRID" | "LINEAR"'.
+src/engine/cam/feature-recognition/FeaturePatternRecognizer.ts(131,9): error TS2322: Type '"LINEAR_ARRAY"' is not assignable to type '"CIRCULAR" | "GRID" | "LINEAR"'.
+src/engine/cam/feature-recognition/HardAcceptanceGate255.ts(121,85): error TS2339: Property 'FACING_REGION' does not exist on type 'typeof ManufacturingFeatureType'.
+src/engine/cam/feature-recognition/HardAcceptanceGate255.ts(121,138): error TS2339: Property 'PLANAR_FACE' does not exist on type 'typeof ManufacturingFeatureType'.
+src/engine/cam/feature-recognition/HardAcceptanceGate255.ts(135,88): error TS2339: Property 'CHAMFER_FEATURE' does not exist on type 'typeof ManufacturingFeatureType'.
+src/engine/cam/feature-recognition/HardAcceptanceGate255.ts(212,52): error TS2339: Property 'holeCount' does not exist on type 'HolePatternCandidate'.
+src/engine/cam/feature-recognition/HardAcceptanceGate255.ts(212,75): error TS2339: Property 'holeDiameterMm' does not exist on type 'HolePatternCandidate'.
+src/engine/cam/feature-recognition/MachiningSetupAnalyzer.ts(36,27): error TS2339: Property 'OBLIQUE' does not exist on type 'typeof ToolAccessDirection'.
+src/engine/cam/feature-recognition/MachiningSetupAnalyzer.ts(54,22): error TS2367: This comparison appears to be unintentional because the types 'ManufacturingFeatureType' and '"FACING_REGION"' have no overlap.
+src/engine/cam/feature-recognition/MachiningSetupAnalyzer.ts(72,11): error TS2353: Object literal may only specify known properties, and 'orientation' does not exist in type 'MachiningSetup'.
+src/engine/cam/feature-recognition/ManufacturingFeatureEngine.ts(89,73): error TS2345: Argument of type 'Map<string, import("/app/applet/src/engine/cam/feature-recognition/FeatureGeometryAnalyzer").FaceGeometryInfo>' is not assignable to parameter of type 'Map<string, import("/app/applet/src/engine/cam/feature-recognition/FeatureTypes").FaceGeometryInfo>'.
+  Type 'import("/app/applet/src/engine/cam/feature-recognition/FeatureGeometryAnalyzer").FaceGeometryInfo' is missing the following properties from type 'import("/app/applet/src/engine/cam/feature-recognition/FeatureTypes").FaceGeometryInfo': faceType, boundingBoxMin, boundingBoxMax, adjacentFaceIds
+src/engine/cam/feature-recognition/ManufacturingFeatureEngine.ts(97,80): error TS2345: Argument of type 'Map<string, import("/app/applet/src/engine/cam/feature-recognition/FeatureGeometryAnalyzer").FaceGeometryInfo>' is not assignable to parameter of type 'Map<string, import("/app/applet/src/engine/cam/feature-recognition/FeatureTypes").FaceGeometryInfo>'.
+  Type 'import("/app/applet/src/engine/cam/feature-recognition/FeatureGeometryAnalyzer").FaceGeometryInfo' is missing the following properties from type 'import("/app/applet/src/engine/cam/feature-recognition/FeatureTypes").FaceGeometryInfo': faceType, boundingBoxMin, boundingBoxMax, adjacentFaceIds
+src/engine/cam/feature-recognition/index.ts(7,1): error TS2308: Module './FeatureTypes' has already exported a member named 'FaceGeometryInfo'. Consider explicitly re-exporting to resolve the ambiguity.
+src/engine/cam/feature-recognition/index.ts(8,1): error TS2308: Module './FeatureTypes' has already exported a member named 'FaceAdjacencyGraph'. Consider explicitly re-exporting to resolve the ambiguity.
+src/engine/cam/feature-recognition/index.ts(8,1): error TS2308: Module './FeatureTypes' has already exported a member named 'TopologicalEdgeInfo'. Consider explicitly re-exporting to resolve the ambiguity.
+src/engine/cam/fiveaxis/AdaptiveToolpathSampler.ts(9,3): error TS2305: Module '"./FiveAxisTypes"' has no exported member 'FiveAxisToolpathPoint'.
+src/engine/cam/fiveaxis/AdaptiveToolpathSampler.ts(11,3): error TS2305: Module '"./FiveAxisTypes"' has no exported member 'MachineDefinition'.
+src/engine/cam/fiveaxis/FiveAxisCollisionEngine.ts(106,15): error TS2820: Type '"SPINDLE_NOSE_COLLISION"' is not assignable to type 'CollisionClassification'. Did you mean '"SPINDLE_COLLISION"'?
+src/engine/cam/fiveaxis/FiveAxisCollisionEngine.ts(124,17): error TS2322: Type '"CRITICAL_ALARM"' is not assignable to type '"CRITICAL" | "FATAL" | "WARNING"'.
+src/engine/cam/fiveaxis/FiveAxisGougeDetector.ts(10,3): error TS2305: Module '"./FiveAxisTypes"' has no exported member 'GougeClassification'.
+src/engine/cam/fiveaxis/FiveAxisGougeDetector.ts(11,3): error TS2305: Module '"./FiveAxisTypes"' has no exported member 'GougeEvent'.
+src/engine/cam/fiveaxis/FiveAxisGougeDetector.ts(38,28): error TS2339: Property 'type' does not exist on type 'FiveAxisToolDefinition'.
+src/engine/cam/fiveaxis/FiveAxisGougeDetector.ts(38,57): error TS2339: Property 'type' does not exist on type 'FiveAxisToolDefinition'.
+src/engine/cam/fiveaxis/FiveAxisGougeDetector.ts(39,9): error TS18048: 'tool.diameterMm' is possibly 'undefined'.
+src/engine/cam/fiveaxis/FiveAxisGougeDetector.ts(40,15): error TS2339: Property 'type' does not exist on type 'FiveAxisToolDefinition'.
+src/engine/cam/fiveaxis/FiveAxisGougeDetector.ts(40,43): error TS2339: Property 'cornerRadMm' does not exist on type 'FiveAxisToolDefinition'.
+src/engine/cam/fiveaxis/FiveAxisGougeDetector.ts(40,57): error TS18048: 'tool.diameterMm' is possibly 'undefined'.
+src/engine/cam/fiveaxis/FiveAxisGougeDetector.ts(62,14): error TS2339: Property 'type' does not exist on type 'FiveAxisToolDefinition'.
+src/engine/cam/fiveaxis/FiveAxisGougeDetector.ts(67,32): error TS18048: 'tool.diameterMm' is possibly 'undefined'.
+src/engine/cam/fiveaxis/FiveAxisGougeDetector.ts(94,14): error TS2339: Property 'type' does not exist on type 'FiveAxisToolDefinition'.
+src/engine/cam/fiveaxis/FiveAxisGougeDetector.ts(95,30): error TS18048: 'tool.diameterMm' is possibly 'undefined'.
+src/engine/cam/fiveaxis/FiveAxisKinematicsEvidence.ts(8,3): error TS2724: '"./FiveAxisTypes"' has no exported member named 'FiveAxisKinematicEvidence'. Did you mean 'FiveAxisKinematicsEvidence'?
+src/engine/cam/fiveaxis/FiveAxisMachineKinematics.ts(9,3): error TS2305: Module '"./FiveAxisTypes"' has no exported member 'MachineDefinition'.
+src/engine/cam/fiveaxis/FiveAxisStockEngine.ts(10,3): error TS2305: Module '"./FiveAxisTypes"' has no exported member 'StockBoundingBox'.
+src/engine/cam/fiveaxis/FiveAxisStockEngine.ts(11,3): error TS2305: Module '"./FiveAxisTypes"' has no exported member 'RestMaterialRegion'.
+src/engine/cam/fiveaxis/FiveAxisStockEngine.ts(12,3): error TS2305: Module '"./FiveAxisTypes"' has no exported member 'FiveAxisToolpathPoint'.
+src/engine/cam/fiveaxis/FiveAxisStockEngine.ts(50,37): error TS2345: Argument of type 'number | undefined' is not assignable to parameter of type 'number'.
+src/engine/cam/fiveaxis/FiveAxisSweptVolume.ts(52,21): error TS18048: 'tool.diameterMm' is possibly 'undefined'.
+src/engine/cam/fiveaxis/FiveAxisSweptVolume.ts(53,18): error TS18048: 'tool.diameterMm' is possibly 'undefined'.
+src/engine/cam/fiveaxis/FiveAxisSweptVolume.ts(58,34): error TS18048: 'tool.shoulderLengthMm' is possibly 'undefined'.
+src/engine/cam/fiveaxis/FiveAxisSweptVolume.ts(75,62): error TS2345: Argument of type 'number | undefined' is not assignable to parameter of type 'number'.
+src/engine/cam/fiveaxis/FiveAxisSweptVolume.ts(76,62): error TS2345: Argument of type 'number | undefined' is not assignable to parameter of type 'number'.
+src/engine/cam/fiveaxis/FiveAxisSweptVolume.ts(78,25): error TS18048: 'tool.holder.stages' is possibly 'undefined'.
+src/engine/cam/fiveaxis/FiveAxisSweptVolume.ts(79,21): error TS18048: 'tool.holder.stages' is possibly 'undefined'.
+src/engine/cam/fiveaxis/FiveAxisSweptVolume.ts(88,23): error TS18048: 'stage.bottomDiameterMm' is possibly 'undefined'.
+src/engine/cam/fiveaxis/FiveAxisSweptVolume.ts(89,20): error TS18048: 'stage.topDiameterMm' is possibly 'undefined'.
+src/engine/cam/fiveaxis/FiveAxisSweptVolume.ts(106,21): error TS18048: 'tool.holder.flangeDiameterMm' is possibly 'undefined'.
+src/engine/cam/fiveaxis/FiveAxisSweptVolume.ts(107,18): error TS18048: 'tool.holder.flangeDiameterMm' is possibly 'undefined'.
+src/engine/cam/fiveaxis/NCSimulationEngine.ts(10,3): error TS2724: '"./FiveAxisTypes"' has no exported member named 'FiveAxisTrajectory'. Did you mean 'FiveAxisTrajectoryPoint'?
+src/engine/cam/fiveaxis/NCSimulationEngine.ts(11,3): error TS2305: Module '"./FiveAxisTypes"' has no exported member 'MachineDefinition'.
+src/engine/cam/fiveaxis/NCSimulationEngine.ts(12,3): error TS2305: Module '"./FiveAxisTypes"' has no exported member 'NCSimulationState'.
+src/engine/cam/fiveaxis/NCSimulationEngine.ts(13,3): error TS2305: Module '"./FiveAxisTypes"' has no exported member 'PartComparisonMetrics'.
+src/engine/cam/fiveaxis/NCSimulationEngine.ts(14,3): error TS2305: Module '"./FiveAxisTypes"' has no exported member 'PostProcessedProgram'.
+src/engine/cam/fiveaxis/PostProcessorEngine.ts(9,3): error TS2724: '"./FiveAxisTypes"' has no exported member named 'FiveAxisTrajectory'. Did you mean 'FiveAxisTrajectoryPoint'?
+src/engine/cam/fiveaxis/PostProcessorEngine.ts(10,3): error TS2305: Module '"./FiveAxisTypes"' has no exported member 'MachineDefinition'.
+src/engine/cam/fiveaxis/PostProcessorEngine.ts(11,3): error TS2305: Module '"./FiveAxisTypes"' has no exported member 'PostProcessedProgram'.
+src/engine/cam/fiveaxis/PostProcessorEngine.ts(12,3): error TS2305: Module '"./FiveAxisTypes"' has no exported member 'GCodeBlock'.
+src/engine/cam/fiveaxis/PostProcessorEngine.ts(13,3): error TS2305: Module '"./FiveAxisTypes"' has no exported member 'FiveAxisToolpathPoint'.
+src/engine/cam/fiveaxis/ToolAxisOptimizer.ts(10,3): error TS2305: Module '"./FiveAxisTypes"' has no exported member 'MachineDefinition'.
+src/engine/cam/fiveaxis/ToolAxisOptimizer.ts(178,14): error TS2339: Property 'type' does not exist on type 'FiveAxisToolDefinition'.
+src/engine/cam/fiveaxis/ToolAxisOptimizer.ts(178,43): error TS2339: Property 'type' does not exist on type 'FiveAxisToolDefinition'.
+src/engine/cam/fiveaxis/ToolAxisOptimizer.ts(179,17): error TS18048: 'tool.diameterMm' is possibly 'undefined'.
+src/engine/cam/fiveaxis/ToolAxisOptimizer.ts(186,21): error TS2339: Property 'type' does not exist on type 'FiveAxisToolDefinition'.
+src/engine/cam/fiveaxis/ToolAxisOptimizer.ts(187,22): error TS2339: Property 'cornerRadMm' does not exist on type 'FiveAxisToolDefinition'.
+src/engine/cam/fiveaxis/ToolAxisOptimizer.ts(188,17): error TS18048: 'tool.diameterMm' is possibly 'undefined'.
+src/engine/cam/fiveaxis/ToolAxisSmoother.ts(8,10): error TS2305: Module '"./FiveAxisTypes"' has no exported member 'FiveAxisToolpathPoint'.
+src/engine/cam/fiveaxis/True5AxisQualificationBattery.ts(10,3): error TS2305: Module '"./FiveAxisTypes"' has no exported member 'MachineDefinition'.
+src/engine/cam/fiveaxis/True5AxisQualificationBattery.ts(11,3): error TS2724: '"./FiveAxisTypes"' has no exported member named 'FiveAxisTrajectory'. Did you mean 'FiveAxisTrajectoryPoint'?
+src/engine/cam/fiveaxis/True5AxisQualificationBattery.ts(12,3): error TS2305: Module '"./FiveAxisTypes"' has no exported member 'PostProcessedProgram'.
+src/engine/cam/fiveaxis/True5AxisQualificationBattery.ts(13,3): error TS2305: Module '"./FiveAxisTypes"' has no exported member 'True5AxisVerificationReport'.
+src/engine/cam/fiveaxis/True5AxisQualificationBattery.ts(83,13): error TS2353: Object literal may only specify known properties, and 'stageIndex' does not exist in type '{ diameterMm: number; lengthMm: number; bottomDiameterMm?: number | undefined; topDiameterMm?: number | undefined; }'.
+src/engine/cam/fiveaxis/True5AxisQualificationBattery.ts(84,13): error TS2353: Object literal may only specify known properties, and 'stageIndex' does not exist in type '{ diameterMm: number; lengthMm: number; bottomDiameterMm?: number | undefined; topDiameterMm?: number | undefined; }'.
+src/engine/cam/fiveaxis/True5AxisQualificationBattery.ts(85,13): error TS2353: Object literal may only specify known properties, and 'stageIndex' does not exist in type '{ diameterMm: number; lengthMm: number; bottomDiameterMm?: number | undefined; topDiameterMm?: number | undefined; }'.
+src/engine/cam/fiveaxis/True5AxisQualificationBattery.ts(372,63): error TS2339: Property 'type' does not exist on type 'CollisionEvent'.
+src/engine/cam/fiveaxis/True5AxisQualificationBattery.ts(471,51): error TS7006: Parameter 'p' implicitly has an 'any' type.
+src/engine/cam/fiveaxis/True5AxisQualificationBattery.ts(472,51): error TS7006: Parameter 'p' implicitly has an 'any' type.
+src/engine/cam/fiveaxis/True5AxisToolpathEngine.ts(10,3): error TS2305: Module '"./FiveAxisTypes"' has no exported member 'MachineDefinition'.
+src/engine/cam/fiveaxis/True5AxisToolpathEngine.ts(11,3): error TS2724: '"./FiveAxisTypes"' has no exported member named 'FiveAxisTrajectory'. Did you mean 'FiveAxisTrajectoryPoint'?
+src/engine/cam/fiveaxis/True5AxisToolpathEngine.ts(12,3): error TS2305: Module '"./FiveAxisTypes"' has no exported member 'FiveAxisToolpathPoint'.
+src/engine/cam/fiveaxis/True5AxisToolpathEngine.ts(13,3): error TS2305: Module '"./FiveAxisTypes"' has no exported member 'FiveAxisMoveType'.
+src/engine/cam/fiveaxis/True5AxisToolpathEngine.ts(14,3): error TS2305: Module '"./FiveAxisTypes"' has no exported member 'StockBoundingBox'.
+src/engine/cam/fiveaxis/True5AxisToolpathEngine.ts(216,49): error TS2345: Argument of type 'number | undefined' is not assignable to parameter of type 'number'.
+src/engine/cam/fiveaxis/True5AxisToolpathEngine.ts(223,24): error TS2339: Property 'name' does not exist on type 'FiveAxisToolDefinition'.
+src/engine/cam/fouraxis/FourAxisToolpathEngine.ts(128,7): error TS2353: Object literal may only specify known properties, and 'stickoutMm' does not exist in type 'CuttingTool'.
+src/engine/cam/fouraxis/FourAxisToolpathEngine.ts(140,7): error TS2353: Object literal may only specify known properties, and 'stickoutMm' does not exist in type 'CuttingTool'.
+src/engine/cam/fouraxis/FourAxisToolpathEngine.ts(152,7): error TS2353: Object literal may only specify known properties, and 'stickoutMm' does not exist in type 'CuttingTool'.
+src/engine/cam/fouraxis/FourAxisToolpathEngine.ts(164,7): error TS2353: Object literal may only specify known properties, and 'stickoutMm' does not exist in type 'CuttingTool'.
+src/engine/cam/fouraxis/FourAxisToolpathValidator.ts(115,45): error TS2339: Property 'stickoutMm' does not exist on type 'CuttingTool'.
+src/engine/cam/machine-sim/MachineCollisionEngine.ts(48,112): error TS2339: Property 'PROVIDER_ID' does not exist on type 'typeof MachineSimulationCollisionProvider'.
+src/engine/cam/machine-sim/MachineSimulationEngine.ts(161,107): error TS2551: Property 'gaugeLength' does not exist on type 'ToolHolderDefinition'. Did you mean 'gaugeLengthMm'?
+src/engine/cam/machine-sim/MachineSimulationTypes.ts(7,10): error TS2724: '"../verification/GCodeVerificationTypes"' has no exported member named 'GCodeVerificationResult'. Did you mean 'VerificationResult'?
+src/engine/cam/machine-sim/MachineSimulationTypes.ts(8,10): error TS2724: '"../tool-library/ToolTypes"' has no exported member named 'ToolGeometryDefinition'. Did you mean 'ToolHolderDefinition'?
+src/engine/cam/machine-sim/SimulationBenchmarks.ts(15,10): error TS2724: '"../tool-library/ToolTypes"' has no exported member named 'ToolGeometryDefinition'. Did you mean 'ToolHolderDefinition'?
+src/engine/cam/machine-sim/SimulationBenchmarks.ts(101,7): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'ToolHolderDefinition'.
+src/engine/cam/machine-sim/SimulationBenchmarks.ts(109,7): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'ToolHolderDefinition'.
+src/engine/cam/machine-sim/ToolAssemblyModel.ts(6,10): error TS2724: '"../tool-library/ToolTypes"' has no exported member named 'ToolGeometryDefinition'. Did you mean 'ToolHolderDefinition'?
+src/engine/cam/machine-sim/ToolAssemblyModel.ts(68,44): error TS2551: Property 'gaugeLength' does not exist on type 'ToolHolderDefinition'. Did you mean 'gaugeLengthMm'?
+src/engine/cam/machine-sim/ToolAssemblyModel.ts(69,40): error TS2339: Property 'bodyDiameter' does not exist on type 'ToolHolderDefinition'.
+src/engine/cam/machine-sim/ToolAssemblyModel.ts(70,40): error TS2339: Property 'colletDiameter' does not exist on type 'ToolHolderDefinition'.
+src/engine/cam/post-processor/ControllerProfiles.ts(28,7): error TS2353: Object literal may only specify known properties, and 'name' does not exist in type 'Omit<PostProcessorDefinition, "postHash">'.
+src/engine/cam/post-processor/ControllerProfiles.ts(63,7): error TS2353: Object literal may only specify known properties, and 'name' does not exist in type 'Omit<PostProcessorDefinition, "postHash">'.
+src/engine/cam/post-processor/ControllerProfiles.ts(98,7): error TS2353: Object literal may only specify known properties, and 'name' does not exist in type 'Omit<PostProcessorDefinition, "postHash">'.
+src/engine/cam/post-processor/ControllerProfiles.ts(133,7): error TS2353: Object literal may only specify known properties, and 'name' does not exist in type 'Omit<PostProcessorDefinition, "postHash">'.
+src/engine/cam/post-processor/ControllerProfiles.ts(168,7): error TS2353: Object literal may only specify known properties, and 'name' does not exist in type 'Omit<PostProcessorDefinition, "postHash">'.
+src/engine/cam/post-processor/ControllerProfiles.ts(206,25): error TS2339: Property 'formatting' does not exist on type 'Omit<PostProcessorDefinition, "postHash">'.
+src/engine/cam/post-processor/ControllerProfiles.ts(207,21): error TS2339: Property 'safety' does not exist on type 'Omit<PostProcessorDefinition, "postHash">'.
+src/engine/cam/post-processor/ControllerProfiles.ts(208,19): error TS2339: Property 'rtcpCapabilities' does not exist on type 'Omit<PostProcessorDefinition, "postHash">'.
+src/engine/cam/post-processor/ControllerProfiles.ts(213,7): error TS2353: Object literal may only specify known properties, and 'postHash' does not exist in type 'PostProcessorDefinition'.
+src/engine/cam/post-processor/MachineDefinitionRegistry.ts(51,9): error TS2353: Object literal may only specify known properties, and 'maxToolLengthMm' does not exist in type '{ toolChangeTimeSec: number; capacity?: number | undefined; maxToolDiameterMm?: number | undefined; maxToolWeightKg?: number | undefined; }'.
+src/engine/cam/post-processor/MachineDefinitionRegistry.ts(89,9): error TS2353: Object literal may only specify known properties, and 'maxToolLengthMm' does not exist in type '{ toolChangeTimeSec: number; capacity?: number | undefined; maxToolDiameterMm?: number | undefined; maxToolWeightKg?: number | undefined; }'.
+src/engine/cam/post-processor/MachineDefinitionRegistry.ts(127,9): error TS2353: Object literal may only specify known properties, and 'maxToolLengthMm' does not exist in type '{ toolChangeTimeSec: number; capacity?: number | undefined; maxToolDiameterMm?: number | undefined; maxToolWeightKg?: number | undefined; }'.
+src/engine/cam/post-processor/MachineDefinitionRegistry.ts(164,9): error TS2353: Object literal may only specify known properties, and 'maxToolLengthMm' does not exist in type '{ toolChangeTimeSec: number; capacity?: number | undefined; maxToolDiameterMm?: number | undefined; maxToolWeightKg?: number | undefined; }'.
+src/engine/cam/post-processor/MachineDefinitionRegistry.ts(201,9): error TS2353: Object literal may only specify known properties, and 'maxToolLengthMm' does not exist in type '{ toolChangeTimeSec: number; capacity?: number | undefined; maxToolDiameterMm?: number | undefined; maxToolWeightKg?: number | undefined; }'.
+src/engine/cam/post-processor/ModalStateManager.ts(79,52): error TS2532: Object is possibly 'undefined'.
+src/engine/cam/post-processor/ModalStateManager.ts(95,55): error TS2532: Object is possibly 'undefined'.
+src/engine/cam/post-processor/ModalStateManager.ts(176,46): error TS2532: Object is possibly 'undefined'.
+src/engine/cam/post-processor/ModalStateManager.ts(176,101): error TS2532: Object is possibly 'undefined'.
+src/engine/cam/post-processor/ModalStateManager.ts(177,46): error TS2532: Object is possibly 'undefined'.
+src/engine/cam/post-processor/ModalStateManager.ts(177,101): error TS2532: Object is possibly 'undefined'.
+src/engine/cam/post-processor/ModalStateManager.ts(178,46): error TS2532: Object is possibly 'undefined'.
+src/engine/cam/post-processor/ModalStateManager.ts(178,101): error TS2532: Object is possibly 'undefined'.
+src/engine/cam/post-processor/ModalStateManager.ts(179,46): error TS2532: Object is possibly 'undefined'.
+src/engine/cam/post-processor/ModalStateManager.ts(179,101): error TS2532: Object is possibly 'undefined'.
+src/engine/cam/post-processor/ModalStateManager.ts(180,46): error TS2532: Object is possibly 'undefined'.
+src/engine/cam/post-processor/ModalStateManager.ts(180,101): error TS2532: Object is possibly 'undefined'.
+src/engine/cam/post-processor/ModalStateManager.ts(181,46): error TS2532: Object is possibly 'undefined'.
+src/engine/cam/post-processor/ModalStateManager.ts(181,101): error TS2532: Object is possibly 'undefined'.
+src/engine/cam/post-processor/ModalStateManager.ts(183,30): error TS2532: Object is possibly 'undefined'.
+src/engine/cam/post-processor/ModalStateManager.ts(184,30): error TS2532: Object is possibly 'undefined'.
+src/engine/cam/post-processor/ModalStateManager.ts(185,30): error TS2532: Object is possibly 'undefined'.
+src/engine/cam/post-processor/ModalStateManager.ts(186,30): error TS2532: Object is possibly 'undefined'.
+src/engine/cam/post-processor/ModalStateManager.ts(187,30): error TS2532: Object is possibly 'undefined'.
+src/engine/cam/post-processor/ModalStateManager.ts(188,30): error TS2532: Object is possibly 'undefined'.
+src/engine/cam/post-processor/NCIntermediateRepresentation.ts(60,7): error TS2322: Type '"PROGRAM_HEADER"' is not assignable to type 'IREventType'.
+src/engine/cam/post-processor/NCIntermediateRepresentation.ts(67,7): error TS2322: Type '"SAFETY_BLOCK"' is not assignable to type 'IREventType'.
+src/engine/cam/post-processor/NCIntermediateRepresentation.ts(81,9): error TS2322: Type '"OPERATION_START"' is not assignable to type 'IREventType'.
+src/engine/cam/post-processor/NCIntermediateRepresentation.ts(89,9): error TS2353: Object literal may only specify known properties, and 'eventId' does not exist in type 'IREvent'.
+src/engine/cam/post-processor/NCIntermediateRepresentation.ts(100,9): error TS2322: Type '"WORK_OFFSET_SELECT"' is not assignable to type 'IREventType'.
+src/engine/cam/post-processor/NCIntermediateRepresentation.ts(109,9): error TS2322: Type '"SPINDLE_COMMAND"' is not assignable to type 'IREventType'.
+src/engine/cam/post-processor/NCIntermediateRepresentation.ts(119,9): error TS2322: Type '"COOLANT_COMMAND"' is not assignable to type 'IREventType'.
+src/engine/cam/post-processor/NCIntermediateRepresentation.ts(129,11): error TS2322: Type '"RTCP_ENABLE"' is not assignable to type 'IREventType'.
+src/engine/cam/post-processor/NCIntermediateRepresentation.ts(159,11): error TS2322: Type '"LINEAR_FEED" | "RAPID_TRAVERSE"' is not assignable to type 'IREventType'.
+src/engine/cam/post-processor/NCIntermediateRepresentation.ts(174,11): error TS2322: Type '"DWELL"' is not assignable to type 'IREventType'.
+src/engine/cam/post-processor/NCIntermediateRepresentation.ts(185,11): error TS2322: Type '"RTCP_DISABLE"' is not assignable to type 'IREventType'.
+src/engine/cam/post-processor/NCIntermediateRepresentation.ts(194,9): error TS2322: Type '"OPERATION_END"' is not assignable to type 'IREventType'.
+src/engine/cam/post-processor/NCIntermediateRepresentation.ts(203,7): error TS2322: Type '"PROGRAM_FOOTER"' is not assignable to type 'IREventType'.
+src/engine/cam/post-processor/NCIntermediateRepresentation.ts(214,55): error TS2339: Property 'eventId' does not exist on type 'IREvent'.
+src/engine/cam/post-processor/NCIntermediateRepresentation.ts(218,7): error TS2353: Object literal may only specify known properties, and 'irId' does not exist in type 'NCIntermediateRepresentation'.
+src/engine/cam/post-processor/PostBenchmarks.ts(35,7): error TS2561: Object literal may only specify known properties, but 'toolId' does not exist in type 'ToolSnapshot'. Did you mean to write 'toolUUID'?
+src/engine/cam/post-processor/PostBenchmarks.ts(519,66): error TS7006: Parameter 'e' implicitly has an 'any' type.
+src/engine/cam/post-processor/PostBenchmarks.ts(569,38): error TS2339: Property 'enableSafetyBlocks' does not exist on type 'PostConfiguration'.
+src/engine/cam/post-processor/PostBenchmarks.ts(570,40): error TS2339: Property 'enableModalOptimization' does not exist on type 'PostConfiguration'.
+src/engine/cam/post-processor/PostEvidenceGenerator.ts(38,35): error TS2339: Property 'postHash' does not exist on type 'PostProcessorDefinition'.
+src/engine/cam/post-processor/PostEvidenceGenerator.ts(57,35): error TS2339: Property 'postHash' does not exist on type 'PostProcessorDefinition'.
+src/engine/cam/post-processor/PostProcessorEngine.ts(65,44): error TS2345: Argument of type 'string' is not assignable to parameter of type 'UnitsMode | undefined'.
+src/engine/cam/post-processor/PostProcessorEngine.ts(80,11): error TS2367: This comparison appears to be unintentional because the types 'IREventType' and '"OPERATION_START"' have no overlap.
+src/engine/cam/post-processor/PostProcessorEngine.ts(80,53): error TS2339: Property 'sourceOperationId' does not exist on type 'IREvent'.
+src/engine/cam/post-processor/PostProcessorEngine.ts(81,29): error TS2339: Property 'sourceOperationId' does not exist on type 'IREvent'.
+src/engine/cam/post-processor/PostProcessorEngine.ts(98,30): error TS2339: Property 'targetPosition' does not exist on type 'IREvent'.
+src/engine/cam/post-processor/PostProcessorEngine.ts(104,11): error TS2367: This comparison appears to be unintentional because the types 'IREventType' and '"OPERATION_END"' have no overlap.
+src/engine/cam/post-processor/PostProcessorEngine.ts(116,44): error TS2339: Property 'rawText' does not exist on type 'NCBlock'.
+src/engine/cam/post-processor/PostProcessorEngine.ts(138,30): error TS2339: Property 'totalRapidDistanceMm' does not exist on type 'NCIntermediateRepresentation'.
+src/engine/cam/post-processor/PostProcessorEngine.ts(139,32): error TS2339: Property 'totalCuttingDistanceMm' does not exist on type 'NCIntermediateRepresentation'.
+src/engine/cam/post-processor/PostProcessorEngine.ts(140,35): error TS2339: Property 'toolsUsed' does not exist on type 'NCIntermediateRepresentation'.
+src/engine/cam/post-processor/PostProcessorEngine.ts(140,59): error TS18048: 'machine.toolChanger' is possibly 'undefined'.
+src/engine/cam/post-processor/PostProcessorEngine.ts(151,18): error TS2339: Property 'irHash' does not exist on type 'NCIntermediateRepresentation'.
+src/engine/cam/post-processor/PostProcessorEngine.ts(185,34): error TS2339: Property 'irHash' does not exist on type 'NCIntermediateRepresentation'.
+src/engine/cam/post-processor/PostProcessorWorkspace.tsx(111,7): error TS2561: Object literal may only specify known properties, but 'toolId' does not exist in type 'ToolSnapshot'. Did you mean to write 'toolUUID'?
+src/engine/cam/post-processor/PostProcessorWorkspace.tsx(125,7): error TS2561: Object literal may only specify known properties, but 'toolId' does not exist in type 'ToolSnapshot'. Did you mean to write 'toolUUID'?
+src/engine/cam/post-processor/PostProcessorWorkspace.tsx(441,34): error TS18048: 'activeMachine.axes' is possibly 'undefined'.
+src/engine/cam/post-processor/PostProcessorWorkspace.tsx(441,67): error TS18048: 'activeMachine.axes' is possibly 'undefined'.
+src/engine/cam/post-processor/PostProcessorWorkspace.tsx(441,103): error TS18048: 'activeMachine.axes' is possibly 'undefined'.
+src/engine/cam/post-processor/PostProcessorWorkspace.tsx(441,136): error TS18048: 'activeMachine.axes' is possibly 'undefined'.
+src/engine/cam/post-processor/PostProcessorWorkspace.tsx(441,172): error TS18048: 'activeMachine.axes' is possibly 'undefined'.
+src/engine/cam/post-processor/PostProcessorWorkspace.tsx(441,205): error TS18048: 'activeMachine.axes' is possibly 'undefined'.
+src/engine/cam/post-processor/PostProcessorWorkspace.tsx(442,96): error TS18048: 'activeMachine.axes' is possibly 'undefined'.
+src/engine/cam/post-processor/PostProcessorWorkspace.tsx(460,22): error TS2339: Property 'name' does not exist on type 'PostProcessorDefinition'.
+src/engine/cam/post-processor/PostProcessorWorkspace.tsx(595,51): error TS2339: Property 'sequenceNumber' does not exist on type 'NCBlock'.
+src/engine/cam/post-processor/PostProcessorWorkspace.tsx(677,85): error TS2339: Property 'rawText' does not exist on type 'NCBlock'.
+src/engine/cam/post-processor/PostProcessorWorkspace.tsx(678,123): error TS2339: Property 'commandType' does not exist on type 'NCBlock'.
+src/engine/cam/post-processor/PostProcessorWorkspace.tsx(679,32): error TS2339: Property 'sourceOperationName' does not exist on type 'NCBlock'.
+src/engine/cam/post-processor/PostProcessorWorkspace.tsx(680,124): error TS2339: Property 'sourceOperationName' does not exist on type 'NCBlock'.
+src/engine/cam/post-processor/PostProcessorWorkspace.tsx(682,32): error TS2339: Property 'sourceToolpathSegmentId' does not exist on type 'NCBlock'.
+src/engine/cam/post-processor/PostProcessorWorkspace.tsx(683,120): error TS2339: Property 'sourceToolpathSegmentId' does not exist on type 'NCBlock'.
+src/engine/cam/post-processor/PostProcessorWorkspace.tsx(687,30): error TS2339: Property 'modalStateAfter' does not exist on type 'NCBlock'.
+src/engine/cam/post-processor/PostProcessorWorkspace.tsx(692,84): error TS2339: Property 'modalStateAfter' does not exist on type 'NCBlock'.
+src/engine/cam/post-processor/PostProcessorWorkspace.tsx(693,83): error TS2339: Property 'modalStateAfter' does not exist on type 'NCBlock'.
+src/engine/cam/post-processor/PostProcessorWorkspace.tsx(694,85): error TS2339: Property 'modalStateAfter' does not exist on type 'NCBlock'.
+src/engine/cam/post-processor/PostProcessorWorkspace.tsx(694,141): error TS2339: Property 'modalStateAfter' does not exist on type 'NCBlock'.
+src/engine/cam/post-processor/PostProcessorWorkspace.tsx(695,85): error TS2339: Property 'modalStateAfter' does not exist on type 'NCBlock'.
+src/engine/cam/post-processor/PostProcessorWorkspace.tsx(696,82): error TS2339: Property 'modalStateAfter' does not exist on type 'NCBlock'.
+src/engine/cam/post-processor/PostProcessorWorkspace.tsx(697,83): error TS2339: Property 'modalStateAfter' does not exist on type 'NCBlock'.
+src/engine/cam/post-processor/PostProcessorWorkspace.tsx(697,140): error TS2339: Property 'modalStateAfter' does not exist on type 'NCBlock'.
+src/engine/cam/post-processor/PostProcessorWorkspace.tsx(701,34): error TS2339: Property 'modalStateAfter' does not exist on type 'NCBlock'.
+src/engine/cam/post-processor/PostProcessorWorkspace.tsx(705,81): error TS2339: Property 'modalStateAfter' does not exist on type 'NCBlock'.
+src/engine/cam/post-processor/PostProcessorWorkspace.tsx(706,81): error TS2339: Property 'modalStateAfter' does not exist on type 'NCBlock'.
+src/engine/cam/post-processor/PostProcessorWorkspace.tsx(707,81): error TS2339: Property 'modalStateAfter' does not exist on type 'NCBlock'.
+src/engine/cam/post-processor/PostProcessorWorkspace.tsx(708,82): error TS2339: Property 'modalStateAfter' does not exist on type 'NCBlock'.
+src/engine/cam/post-processor/PostProcessorWorkspace.tsx(709,82): error TS2339: Property 'modalStateAfter' does not exist on type 'NCBlock'.
+src/engine/cam/post-processor/PostProcessorWorkspace.tsx(710,82): error TS2339: Property 'modalStateAfter' does not exist on type 'NCBlock'.
+src/engine/cam/post-processor/PostProcessorWorkspace.tsx(739,74): error TS2339: Property 'ncProgramHash' does not exist on type 'PostProcessingEvidence'.
+src/engine/cam/post-processor/PostProcessorWorkspace.tsx(740,76): error TS2339: Property 'postDefinitionHash' does not exist on type 'PostProcessingEvidence'.
+src/engine/cam/post-processor/PostProcessorWorkspace.tsx(741,79): error TS2339: Property 'machineHash' does not exist on type 'PostProcessingEvidence'.
+src/engine/cam/post-processor/PostProcessorWorkspace.tsx(742,83): error TS2339: Property 'provenanceDigestSha256' does not exist on type 'PostProcessingEvidence'.
+src/engine/cam/production-gate/CAMDependencyEngine.ts(8,3): error TS2305: Module '"./CAMProductionTypes"' has no exported member 'CAMArtifactFingerprint'.
+src/engine/cam/production-gate/CAMDependencyEngine.ts(9,3): error TS2724: '"./CAMProductionTypes"' has no exported member named 'CAMProductionArtifact'. Did you mean 'CAMProductionVerdict'?
+src/engine/cam/production-gate/CAMDependencyEngine.ts(11,3): error TS2305: Module '"./CAMProductionTypes"' has no exported member 'ManufacturingSetupDefinition'.
+src/engine/cam/production-gate/CAMDependencyEngine.ts(12,3): error TS2305: Module '"./CAMProductionTypes"' has no exported member 'ManufacturingOperationDefinition'.
+src/engine/cam/production-gate/CAMProductionGateWorkspace.tsx(59,19): error TS2345: Argument of type 'Gate265Report' is not assignable to parameter of type 'SetStateAction<Gate265Report | null>'.
+src/engine/cam/production-gate/CAMProductionGateWorkspace.tsx(66,44): error TS2339: Property 'createEngineeringPart' does not exist on type 'typeof RealEngineerCAMWorkflow'.
+src/engine/cam/production-gate/CAMProductionGateWorkspace.tsx(67,43): error TS2339: Property 'executeWorkflow' does not exist on type 'typeof RealEngineerCAMWorkflow'.
+src/engine/cam/production-gate/CAMProductionGateWorkspace.tsx(142,32): error TS2339: Property 'verdict' does not exist on type 'CAMProductionEvidencePackage'.
+src/engine/cam/production-gate/CAMProductionGateWorkspace.tsx(144,36): error TS2339: Property 'verdict' does not exist on type 'CAMProductionEvidencePackage'.
+src/engine/cam/production-gate/CAMProductionGateWorkspace.tsx(149,31): error TS2339: Property 'verdict' does not exist on type 'CAMProductionEvidencePackage'.
+src/engine/cam/production-gate/CAMProductionGateWorkspace.tsx(150,31): error TS2339: Property 'verdict' does not exist on type 'CAMProductionEvidencePackage'.
+src/engine/cam/production-gate/CAMProductionGateWorkspace.tsx(151,37): error TS2339: Property 'verdict' does not exist on type 'CAMProductionEvidencePackage'.
+src/engine/cam/production-gate/CAMProductionGateWorkspace.tsx(369,74): error TS2339: Property 'cadModelName' does not exist on type 'CAMProductionEvidencePackage'.
+src/engine/cam/production-gate/CAMProductionGateWorkspace.tsx(381,84): error TS2339: Property 'finalStockComparison' does not exist on type 'CAMProductionEvidencePackage'.
+src/engine/cam/production-gate/CAMProductionGateWorkspace.tsx(429,62): error TS2339: Property 'setup' does not exist on type 'CAMProductionEvidencePackage'.
+src/engine/cam/production-gate/CAMProductionGateWorkspace.tsx(434,102): error TS2339: Property 'setup' does not exist on type 'CAMProductionEvidencePackage'.
+src/engine/cam/production-gate/CAMProductionGateWorkspace.tsx(435,92): error TS2339: Property 'setup' does not exist on type 'CAMProductionEvidencePackage'.
+src/engine/cam/production-gate/CAMProductionGateWorkspace.tsx(435,135): error TS2339: Property 'setup' does not exist on type 'CAMProductionEvidencePackage'.
+src/engine/cam/production-gate/CAMProductionGateWorkspace.tsx(439,99): error TS2339: Property 'setup' does not exist on type 'CAMProductionEvidencePackage'.
+src/engine/cam/production-gate/CAMProductionGateWorkspace.tsx(440,103): error TS2339: Property 'setup' does not exist on type 'CAMProductionEvidencePackage'.
+src/engine/cam/production-gate/CAMProductionGateWorkspace.tsx(454,38): error TS2339: Property 'toolsUsed' does not exist on type 'CAMProductionEvidencePackage'.
+src/engine/cam/production-gate/CAMProductionGateWorkspace.tsx(454,53): error TS7006: Parameter 'tool' implicitly has an 'any' type.
+src/engine/cam/production-gate/CAMProductionGateWorkspace.tsx(454,59): error TS7006: Parameter 'idx' implicitly has an 'any' type.
+src/engine/cam/production-gate/CAMProductionGateWorkspace.tsx(479,38): error TS2339: Property 'operations' does not exist on type 'CAMProductionEvidencePackage'.
+src/engine/cam/production-gate/CAMProductionGateWorkspace.tsx(479,53): error TS7006: Parameter 'op' implicitly has an 'any' type.
+src/engine/cam/production-gate/CAMProductionGateWorkspace.tsx(509,78): error TS2339: Property 'setup' does not exist on type 'CAMProductionEvidencePackage'.
+src/engine/cam/production-gate/CAMProductionGateWorkspace.tsx(514,84): error TS2339: Property 'machineSimulation' does not exist on type 'CAMProductionEvidencePackage'.
+src/engine/cam/production-gate/CAMProductionGateWorkspace.tsx(528,36): error TS2339: Property 'safetyStatus' does not exist on type 'CAMProductionEvidencePackage'.
+src/engine/cam/production-gate/CAMProductionGateWorkspace.tsx(531,99): error TS2339: Property 'safetyStatus' does not exist on type 'CAMProductionEvidencePackage'.
+src/engine/cam/production-gate/CAMProductionGateWorkspace.tsx(555,78): error TS2339: Property 'setup' does not exist on type 'CAMProductionEvidencePackage'.
+src/engine/cam/production-gate/CAMProductionGateWorkspace.tsx(559,81): error TS2339: Property 'finalStockComparison' does not exist on type 'CAMProductionEvidencePackage'.
+src/engine/cam/production-gate/CAMProductionGateWorkspace.tsx(563,93): error TS2339: Property 'machineSimulation' does not exist on type 'CAMProductionEvidencePackage'.
+src/engine/cam/production-gate/CAMProductionGateWorkspace.tsx(605,94): error TS2339: Property 'gcodeVerification' does not exist on type 'CAMProductionEvidencePackage'.
+src/engine/cam/production-gate/CAMProductionGateWorkspace.tsx(609,78): error TS2339: Property 'gcodeVerification' does not exist on type 'CAMProductionEvidencePackage'.
+src/engine/cam/production-gate/CAMProductionGateWorkspace.tsx(613,84): error TS2339: Property 'gcodeVerification' does not exist on type 'CAMProductionEvidencePackage'.
+src/engine/cam/production-gate/CAMProductionGateWorkspace.tsx(630,42): error TS2339: Property 'machineSimulation' does not exist on type 'CAMProductionEvidencePackage'.
+src/engine/cam/production-gate/CAMProductionGateWorkspace.tsx(633,51): error TS2339: Property 'machineSimulation' does not exist on type 'CAMProductionEvidencePackage'.
+src/engine/cam/production-gate/CAMProductionGateWorkspace.tsx(633,136): error TS2339: Property 'machineSimulation' does not exist on type 'CAMProductionEvidencePackage'.
+src/engine/cam/production-gate/CAMProductionGateWorkspace.tsx(639,42): error TS2339: Property 'machineSimulation' does not exist on type 'CAMProductionEvidencePackage'.
+src/engine/cam/production-gate/CAMProductionGateWorkspace.tsx(642,42): error TS2339: Property 'machineSimulation' does not exist on type 'CAMProductionEvidencePackage'.
+src/engine/cam/production-gate/CAMProductionGateWorkspace.tsx(657,38): error TS2339: Property 'finalStockComparison' does not exist on type 'CAMProductionEvidencePackage'.
+src/engine/cam/production-gate/CAMProductionGateWorkspace.tsx(657,87): error TS7006: Parameter 'd' implicitly has an 'any' type.
+src/engine/cam/production-gate/CAMProductionGateWorkspace.tsx(690,41): error TS2339: Property 'verdict' does not exist on type 'CAMProductionEvidencePackage'.
+src/engine/cam/production-gate/CAMProductionGateWorkspace.tsx(693,40): error TS2339: Property 'verdict' does not exist on type 'CAMProductionEvidencePackage'.
+src/engine/cam/production-gate/CAMProductionGateWorkspace.tsx(698,83): error TS2339: Property 'productionScorePPS' does not exist on type 'CAMProductionEvidencePackage'.
+src/engine/cam/production-gate/CAMProductionGateWorkspace.tsx(720,54): error TS2339: Property 'safetyStatus' does not exist on type 'CAMProductionEvidencePackage'.
+src/engine/cam/production-gate/CAMProductionGateWorkspace.tsx(721,40): error TS2339: Property 'safetyStatus' does not exist on type 'CAMProductionEvidencePackage'.
+src/engine/cam/production-gate/CAMProductionGateWorkspace.tsx(726,54): error TS2339: Property 'safetyStatus' does not exist on type 'CAMProductionEvidencePackage'.
+src/engine/cam/production-gate/CAMProductionGateWorkspace.tsx(727,40): error TS2339: Property 'safetyStatus' does not exist on type 'CAMProductionEvidencePackage'.
+src/engine/cam/production-gate/CAMProductionGateWorkspace.tsx(732,54): error TS2339: Property 'finalStockComparison' does not exist on type 'CAMProductionEvidencePackage'.
+src/engine/cam/production-gate/CAMProductionGateWorkspace.tsx(733,40): error TS2339: Property 'finalStockComparison' does not exist on type 'CAMProductionEvidencePackage'.
+src/engine/cam/production-gate/CAMProductionGateWorkspace.tsx(814,26): error TS2339: Property 'id' does not exist on type 'CAMProductionTestResult'.
+src/engine/cam/production-gate/CAMProductionGateWorkspace.tsx(816,23): error TS2339: Property 'passed' does not exist on type 'CAMProductionTestResult'.
+src/engine/cam/production-gate/CAMProductionGateWorkspace.tsx(821,27): error TS2339: Property 'testNumber' does not exist on type 'CAMProductionTestResult'.
+src/engine/cam/production-gate/CAMProductionGateWorkspace.tsx(821,44): error TS2339: Property 'id' does not exist on type 'CAMProductionTestResult'.
+src/engine/cam/production-gate/CAMProductionGateWorkspace.tsx(825,27): error TS2339: Property 'passed' does not exist on type 'CAMProductionTestResult'.
+src/engine/cam/production-gate/CAMProductionGateWorkspace.tsx(828,26): error TS2339: Property 'passed' does not exist on type 'CAMProductionTestResult'.
+src/engine/cam/production-gate/CAMProductionGateWorkspace.tsx(829,26): error TS2339: Property 'actualVerdict' does not exist on type 'CAMProductionTestResult'.
+src/engine/cam/production-gate/CAMProductionGateWorkspace.tsx(833,69): error TS2339: Property 'name' does not exist on type 'CAMProductionTestResult'.
+src/engine/cam/production-gate/CAMProductionGateWorkspace.tsx(834,73): error TS2339: Property 'description' does not exist on type 'CAMProductionTestResult'.
+src/engine/cam/production-gate/CAMProductionGateWorkspace.tsx(837,30): error TS2339: Property 'notes' does not exist on type 'CAMProductionTestResult'.
+src/engine/cam/production-gate/CAMProductionGateWorkspace.tsx(838,30): error TS2339: Property 'executionTimeMs' does not exist on type 'CAMProductionTestResult'.
+src/engine/cam/production-gate/CAMProductionGateWorkspace.tsx(863,36): error TS2339: Property 'traceability' does not exist on type 'CAMProductionEvidencePackage'.
+src/engine/cam/production-gate/CAMProductionGateWorkspace.tsx(867,34): error TS2339: Property 'traceability' does not exist on type 'CAMProductionEvidencePackage'.
+src/engine/cam/production-gate/CAMProductionGateWorkspace.tsx(867,57): error TS7006: Parameter 'n' implicitly has an 'any' type.
+src/engine/cam/production-gate/CAMProductionGateWorkspace.tsx(912,61): error TS7006: Parameter 'st' implicitly has an 'any' type.
+src/engine/cam/production-gate/CAMProductionGateWorkspace.tsx(939,27): error TS2339: Property 'capabilityMatrix' does not exist on type 'Gate265Report'.
+src/engine/cam/production-gate/CAMProductionGateWorkspace.tsx(939,61): error TS7006: Parameter 'cap' implicitly has an 'any' type.
+src/engine/cam/production-gate/CAMProductionGateWorkspace.tsx(976,33): error TS2339: Property 'overallQualificationLevel' does not exist on type 'Gate265Report'.
+src/engine/cam/production-gate/CAMProductionGateWorkspace.tsx(985,31): error TS2339: Property 'passedRules' does not exist on type 'Gate265Report'.
+src/engine/cam/production-gate/CAMProductionGateWorkspace.tsx(985,58): error TS2339: Property 'totalRules' does not exist on type 'Gate265Report'.
+src/engine/cam/production-gate/CAMProductionGateWorkspace.tsx(987,73): error TS2339: Property 'verdictSignature' does not exist on type 'Gate265Report'.
+src/engine/cam/production-gate/CAMProductionGateWorkspace.tsx(992,27): error TS2339: Property 'rules' does not exist on type 'Gate265Report'.
+src/engine/cam/production-gate/CAMProductionGateWorkspace.tsx(992,37): error TS7006: Parameter 'rule' implicitly has an 'any' type.
+src/engine/cam/production-gate/CAMProductionGateWorkspace.tsx(1036,78): error TS2339: Property 'packageId' does not exist on type 'CAMProductionEvidencePackage'.
+src/engine/cam/production-gate/CAMProductionGateWorkspace.tsx(1040,80): error TS2339: Property 'workflowExecutionId' does not exist on type 'CAMProductionEvidencePackage'.
+src/engine/cam/production-gate/CAMProductionGateWorkspace.tsx(1044,68): error TS2339: Property 'engineerRole' does not exist on type 'CAMProductionEvidencePackage'.
+src/engine/cam/production-gate/CAMProductionGateWorkspace.tsx(1048,80): error TS2339: Property 'verdict' does not exist on type 'CAMProductionEvidencePackage'.
+src/engine/cam/production-gate/CAMProductionGateWorkspace.tsx(1056,38): error TS2339: Property 'digitalSignatureSHA256' does not exist on type 'CAMProductionEvidencePackage'.
+src/engine/cam/production-gate/CAMProductionGateWorkspace.tsx(1062,38): error TS2339: Property 'cadModelHash' does not exist on type 'CAMProductionEvidencePackage'.
+src/engine/cam/production-gate/CAMTraceabilityEngine.ts(8,3): error TS2305: Module '"./CAMProductionTypes"' has no exported member 'CAMTraceabilityNode'.
+src/engine/cam/production-gate/CAMTraceabilityEngine.ts(9,3): error TS2305: Module '"./CAMProductionTypes"' has no exported member 'CAMTraceabilityGraph'.
+src/engine/cam/production-gate/CAMTraceabilityEngine.ts(10,3): error TS2305: Module '"./CAMProductionTypes"' has no exported member 'ManufacturingOperationDefinition'.
+src/engine/cam/production-gate/CAMTraceabilityEngine.ts(12,10): error TS2305: Module '"../feature-recognition/FeatureTypes"' has no exported member 'RecognizedFeature'.
+src/engine/cam/production-gate/CAMTraceabilityEngine.ts(13,10): error TS2724: '"../verification/GCodeVerificationTypes"' has no exported member named 'GCodeVerificationResult'. Did you mean 'VerificationResult'?
+src/engine/cam/production-gate/CAMTraceabilityEngine.ts(58,107): error TS2339: Property 'totalRemovedVolumeMm3' does not exist on type 'StockSimulationResult'.
+src/engine/cam/stock/HardAcceptanceGate260.ts(272,9): error TS2353: Object literal may only specify known properties, and 'axis' does not exist in type 'SweptSamplePoint'.
+src/engine/cam/stock/HardAcceptanceGate260.ts(297,9): error TS2353: Object literal may only specify known properties, and 'axis' does not exist in type 'SweptSamplePoint'.
+src/engine/cam/tool-library/ToolBenchmarks.ts(58,64): error TS2741: Property 'dimensions' is missing in type 'CAMTool' but required in type '{ toolId: string; name: string; type: ToolType; geometry: ToolGeometryModel; dimensions: ToolDimensions; }'.
+src/engine/cam/tool-library/ToolBenchmarks.ts(59,100): error TS2741: Property 'dimensions' is missing in type 'CAMTool' but required in type '{ toolId: string; name: string; type: ToolType; dimensions: ToolDimensions; geometry: ToolGeometryModel; }'.
+src/engine/cam/tool-library/ToolBenchmarks.ts(69,50): error TS2551: Property 'generateEvidence' does not exist on type 'typeof ToolEvidenceGenerator'. Did you mean 'generateToolEvidence'?
+src/engine/cam/tool-library/ToolBenchmarks.ts(122,64): error TS2741: Property 'dimensions' is missing in type 'CAMTool' but required in type '{ toolId: string; name: string; type: ToolType; geometry: ToolGeometryModel; dimensions: ToolDimensions; }'.
+src/engine/cam/tool-library/ToolBenchmarks.ts(128,50): error TS2551: Property 'generateEvidence' does not exist on type 'typeof ToolEvidenceGenerator'. Did you mean 'generateToolEvidence'?
+src/engine/cam/tool-library/ToolBenchmarks.ts(167,70): error TS2741: Property 'dimensions' is missing in type 'CAMTool' but required in type '{ toolId: string; name: string; type: ToolType; dimensions: ToolDimensions; geometry: ToolGeometryModel; }'.
+src/engine/cam/tool-library/ToolBenchmarks.ts(173,50): error TS2551: Property 'generateEvidence' does not exist on type 'typeof ToolEvidenceGenerator'. Did you mean 'generateToolEvidence'?
+src/engine/cam/tool-library/ToolEvidenceGenerator.ts(1,10): error TS2305: Module '"./ToolTypes"' has no exported member 'MachiningTool'.
+src/engine/cam/tool-library/ToolLibraryEngine.ts(185,34): error TS2551: Property 'generateEvidence' does not exist on type 'typeof ToolEvidenceGenerator'. Did you mean 'generateToolEvidence'?
+src/engine/cam/tool-library/ToolRepository.ts(523,78): error TS2552: Cannot find name 'generateDeterministicHashSync'. Did you mean 'generateDeterministicHash'?
+src/engine/cam/tool-library/ToolRepository.ts(779,28): error TS2552: Cannot find name 'generateDeterministicHashSync'. Did you mean 'generateDeterministicHash'?
+src/engine/cam/toolpath/ThreeAxisToolpathEngine.ts(193,62): error TS2339: Property 'HOLE_SIMPLE' does not exist on type 'typeof ManufacturingFeatureType'.
+src/engine/cam/toolpath/ThreeAxisToolpathEngine.ts(194,64): error TS2339: Property 'POCKET_RECTANGULAR' does not exist on type 'typeof ManufacturingFeatureType'.
+src/engine/cam/toolpath/ToolpathGenerator.ts(159,37): error TS2339: Property 'PLANAR_FACE' does not exist on type 'typeof ManufacturingFeatureType'.
+src/engine/cam/toolpath/ToolpathGenerator.ts(163,27): error TS2339: Property 'boundingVolume' does not exist on type 'ManufacturingFeature'.
+src/engine/cam/toolpath/ToolpathGenerator.ts(164,27): error TS2339: Property 'boundingVolume' does not exist on type 'ManufacturingFeature'.
+src/engine/cam/toolpath/ToolpathGenerator.ts(165,27): error TS2339: Property 'boundingVolume' does not exist on type 'ManufacturingFeature'.
+src/engine/cam/toolpath/ToolpathGenerator.ts(166,27): error TS2339: Property 'boundingVolume' does not exist on type 'ManufacturingFeature'.
+src/engine/cam/toolpath/ToolpathGenerator.ts(167,27): error TS2339: Property 'boundingVolume' does not exist on type 'ManufacturingFeature'.
+src/engine/cam/toolpath/ToolpathGenerator.ts(168,27): error TS2339: Property 'boundingVolume' does not exist on type 'ManufacturingFeature'.
+src/engine/cam/toolpath/ToolpathGenerator.ts(170,19): error TS2339: Property 'boundingVolume' does not exist on type 'ManufacturingFeature'.
+src/engine/cam/toolpath/ToolpathGenerator.ts(177,37): error TS2339: Property 'POCKET_RECTANGULAR' does not exist on type 'typeof ManufacturingFeatureType'.
+src/engine/cam/toolpath/ToolpathGenerator.ts(178,37): error TS2339: Property 'POCKET_CIRCULAR' does not exist on type 'typeof ManufacturingFeatureType'.
+src/engine/cam/toolpath/ToolpathGenerator.ts(179,37): error TS2339: Property 'POCKET_GENERAL' does not exist on type 'typeof ManufacturingFeatureType'.
+src/engine/cam/toolpath/ToolpathGenerator.ts(183,27): error TS2339: Property 'boundingVolume' does not exist on type 'ManufacturingFeature'.
+src/engine/cam/toolpath/ToolpathGenerator.ts(184,27): error TS2339: Property 'boundingVolume' does not exist on type 'ManufacturingFeature'.
+src/engine/cam/toolpath/ToolpathGenerator.ts(185,27): error TS2339: Property 'boundingVolume' does not exist on type 'ManufacturingFeature'.
+src/engine/cam/toolpath/ToolpathGenerator.ts(186,27): error TS2339: Property 'boundingVolume' does not exist on type 'ManufacturingFeature'.
+src/engine/cam/toolpath/ToolpathGenerator.ts(187,27): error TS2339: Property 'boundingVolume' does not exist on type 'ManufacturingFeature'.
+src/engine/cam/toolpath/ToolpathGenerator.ts(188,29): error TS2339: Property 'boundingVolume' does not exist on type 'ManufacturingFeature'.
+src/engine/cam/toolpath/ToolpathGenerator.ts(196,37): error TS2339: Property 'SLOT_THROUGH' does not exist on type 'typeof ManufacturingFeatureType'.
+src/engine/cam/toolpath/ToolpathGenerator.ts(197,37): error TS2339: Property 'SLOT_BLIND' does not exist on type 'typeof ManufacturingFeatureType'.
+src/engine/cam/toolpath/ToolpathGenerator.ts(199,24): error TS2339: Property 'boundingVolume' does not exist on type 'ManufacturingFeature'.
+src/engine/cam/toolpath/ToolpathGenerator.ts(199,57): error TS2339: Property 'boundingVolume' does not exist on type 'ManufacturingFeature'.
+src/engine/cam/toolpath/ToolpathGenerator.ts(199,87): error TS2339: Property 'boundingVolume' does not exist on type 'ManufacturingFeature'.
+src/engine/cam/toolpath/ToolpathGenerator.ts(200,24): error TS2339: Property 'boundingVolume' does not exist on type 'ManufacturingFeature'.
+src/engine/cam/toolpath/ToolpathGenerator.ts(200,57): error TS2339: Property 'boundingVolume' does not exist on type 'ManufacturingFeature'.
+src/engine/cam/toolpath/ToolpathGenerator.ts(200,87): error TS2339: Property 'boundingVolume' does not exist on type 'ManufacturingFeature'.
+src/engine/cam/toolpath/ToolpathGenerator.ts(202,19): error TS2339: Property 'boundingVolume' does not exist on type 'ManufacturingFeature'.
+src/engine/cam/toolpath/ToolpathGenerator.ts(203,19): error TS2339: Property 'boundingVolume' does not exist on type 'ManufacturingFeature'.
+src/engine/cam/toolpath/ToolpathGenerator.ts(210,37): error TS2339: Property 'HOLE_SIMPLE' does not exist on type 'typeof ManufacturingFeatureType'.
+src/engine/cam/toolpath/ToolpathGenerator.ts(211,37): error TS2339: Property 'HOLE_BLIND' does not exist on type 'typeof ManufacturingFeatureType'.
+src/engine/cam/toolpath/ToolpathGenerator.ts(212,37): error TS2339: Property 'HOLE_THROUGH' does not exist on type 'typeof ManufacturingFeatureType'.
+src/engine/cam/toolpath/ToolpathGenerator.ts(213,37): error TS2339: Property 'HOLE_COUNTERBORE' does not exist on type 'typeof ManufacturingFeatureType'.
+src/engine/cam/toolpath/ToolpathGenerator.ts(214,37): error TS2339: Property 'HOLE_COUNTERSINK' does not exist on type 'typeof ManufacturingFeatureType'.
+src/engine/cam/toolpath/ToolpathGenerator.ts(217,25): error TS2339: Property 'boundingVolume' does not exist on type 'ManufacturingFeature'.
+src/engine/cam/toolpath/ToolpathGenerator.ts(217,55): error TS2339: Property 'boundingVolume' does not exist on type 'ManufacturingFeature'.
+src/engine/cam/toolpath/ToolpathGenerator.ts(218,25): error TS2339: Property 'boundingVolume' does not exist on type 'ManufacturingFeature'.
+src/engine/cam/toolpath/ToolpathGenerator.ts(218,55): error TS2339: Property 'boundingVolume' does not exist on type 'ManufacturingFeature'.
+src/engine/cam/toolpath/ToolpathGenerator.ts(220,19): error TS2339: Property 'boundingVolume' does not exist on type 'ManufacturingFeature'.
+src/engine/cam/toolpath/ToolpathGenerator.ts(221,50): error TS2339: Property 'boundingVolume' does not exist on type 'ManufacturingFeature'.
+src/engine/cam/toolpath/ToolpathGenerator.ts(221,80): error TS2339: Property 'boundingVolume' does not exist on type 'ManufacturingFeature'.
+src/engine/cam/toolpath/ToolpathGenerator.ts(234,27): error TS2339: Property 'boundingVolume' does not exist on type 'ManufacturingFeature'.
+src/engine/cam/toolpath/ToolpathGenerator.ts(235,27): error TS2339: Property 'boundingVolume' does not exist on type 'ManufacturingFeature'.
+src/engine/cam/toolpath/ToolpathGenerator.ts(236,27): error TS2339: Property 'boundingVolume' does not exist on type 'ManufacturingFeature'.
+src/engine/cam/toolpath/ToolpathGenerator.ts(237,27): error TS2339: Property 'boundingVolume' does not exist on type 'ManufacturingFeature'.
+src/engine/cam/toolpath/ToolpathGenerator.ts(238,27): error TS2339: Property 'boundingVolume' does not exist on type 'ManufacturingFeature'.
+src/engine/cam/toolpath/ToolpathGenerator.ts(239,29): error TS2339: Property 'boundingVolume' does not exist on type 'ManufacturingFeature'.
+src/engine/cam/verification/BackKinematicVerifier.ts(11,10): error TS2305: Module '"../fiveaxis/FiveAxisTypes"' has no exported member 'FiveAxisMachinePose'.
+src/engine/cam/verification/GCodeParser.ts(196,12): error TS2678: Type '"GENERIC_ISO"' is not comparable to type 'ControllerDialect'.
+src/engine/cam/verification/GCodeTokenizer.ts(19,5): error TS2322: Type '"GENERIC_ISO"' is not assignable to type 'ControllerDialect'.
+src/engine/cam/verification/GCodeTokenizer.ts(31,5): error TS2322: Type '"GENERIC_ISO"' is not assignable to type 'ControllerDialect'.
+src/engine/cam/verification/GCodeVerificationEngine.ts(93,7): error TS2345: Argument of type 'string' is not assignable to parameter of type 'UnitsMode | undefined'.
+src/engine/cam/verification/GCodeVerificationEngine.ts(108,7): error TS2345: Argument of type 'string' is not assignable to parameter of type 'UnitsMode | undefined'.
+src/engine/cam/verification/GCodeVerificationEngine.ts(145,9): error TS2345: Argument of type 'string' is not assignable to parameter of type 'UnitsMode | undefined'.
+src/engine/cam/verification/GCodeVerificationTypes.ts(11,166): error TS2305: Module '"../post-processor/PostTypes"' has no exported member 'RTCPMode'.
+src/engine/cam/verification/GCodeVerificationTypes.ts(13,10): error TS2305: Module '"../fiveaxis/FiveAxisTypes"' has no exported member 'FiveAxisMachinePose'.
+src/engine/cam/verification/GCodeVerificationTypes.ts(14,10): error TS2305: Module '"../ToolpathTypes"' has no exported member 'ToolpathSegment'.
+src/engine/cam/verification/ModalStateTracker.ts(11,147): error TS2305: Module '"../post-processor/PostTypes"' has no exported member 'RTCPMode'.
+src/engine/cam/verification/ModalStateTracker.ts(23,5): error TS2322: Type '"GENERIC_ISO"' is not assignable to type 'ControllerDialect'.
+src/engine/cam/verification/ModalStateTracker.ts(101,7): error TS2322: Type '"IMPERIAL_INCH"' is not assignable to type 'UnitsMode'.
+src/engine/cam/verification/ModalStateTracker.ts(154,7): error TS2322: Type '"CANNED_CYCLE"' is not assignable to type 'MotionMode'.
+src/engine/cam/verification/ModalStateTracker.ts(170,7): error TS2322: Type '"G93_INVERSE_TIME"' is not assignable to type 'FeedMode'.
+src/engine/cam/verification/MotionReconstructor.ts(11,10): error TS2305: Module '"../fiveaxis/FiveAxisTypes"' has no exported member 'FiveAxisMachinePose'.
+src/engine/cam/verification/MotionReconstructor.ts(335,25): error TS2552: Cannot find name 'MotionReconstructionType'. Did you mean 'MotionReconstructor'?
+src/engine/cam/verification/ToolStateChecker.ts(76,58): error TS2339: Property 'maxToolLengthMm' does not exist on type '{ toolChangeTimeSec: number; capacity?: number | undefined; maxToolDiameterMm?: number | undefined; maxToolWeightKg?: number | undefined; }'.
+src/engine/cam/verification/ToolStateChecker.ts(84,56): error TS2339: Property 'maxToolLengthMm' does not exist on type '{ toolChangeTimeSec: number; capacity?: number | undefined; maxToolDiameterMm?: number | undefined; maxToolWeightKg?: number | undefined; }'.
+src/engine/cam/verification/ToolStateChecker.ts(85,165): error TS2339: Property 'maxToolLengthMm' does not exist on type '{ toolChangeTimeSec: number; capacity?: number | undefined; maxToolDiameterMm?: number | undefined; maxToolWeightKg?: number | undefined; }'.
+src/engine/cam/verification/ToolStateChecker.ts(88,40): error TS18048: 'machine.toolChanger.maxToolDiameterMm' is possibly 'undefined'.
+src/engine/cam/verification/ToolpathComparator.ts(11,10): error TS2305: Module '"../ToolpathTypes"' has no exported member 'ToolpathSegment'.
+src/engine/cam/verification/VerificationBenchmarks.ts(12,10): error TS2305: Module '"../ToolpathTypes"' has no exported member 'ToolpathSegment'.
+src/engine/cam/verification/VerificationBenchmarks.ts(13,10): error TS2305: Module '"../fiveaxis/FiveAxisTypes"' has no exported member 'FiveAxisMachinePose'.
+src/engine/cam/verification/VerificationBenchmarks.ts(39,9): error TS2561: Object literal may only specify known properties, but 'toolId' does not exist in type 'ToolSnapshot'. Did you mean to write 'toolUUID'?
+src/engine/cam/verification/VerificationBenchmarks.ts(67,9): error TS2561: Object literal may only specify known properties, but 'toolId' does not exist in type 'ToolSnapshot'. Did you mean to write 'toolUUID'?
+src/engine/cam/verification/VerificationBenchmarks.ts(102,47): error TS2339: Property 'getMachine' does not exist on type 'typeof MachineDefinitionRegistry'.
+src/engine/cam/verification/VerificationBenchmarks.ts(172,47): error TS2339: Property 'getMachine' does not exist on type 'typeof MachineDefinitionRegistry'.
+src/engine/cam/verification/VerificationBenchmarks.ts(228,47): error TS2339: Property 'getMachine' does not exist on type 'typeof MachineDefinitionRegistry'.
+src/engine/cam/verification/VerificationBenchmarks.ts(292,47): error TS2339: Property 'getMachine' does not exist on type 'typeof MachineDefinitionRegistry'.
+src/engine/cam/verification/VerificationBenchmarks.ts(343,47): error TS2339: Property 'getMachine' does not exist on type 'typeof MachineDefinitionRegistry'.
+src/engine/cam/verification/VerificationBenchmarks.ts(394,47): error TS2339: Property 'getMachine' does not exist on type 'typeof MachineDefinitionRegistry'.
+src/engine/cam/verification/VerificationBenchmarks.ts(445,47): error TS2339: Property 'getMachine' does not exist on type 'typeof MachineDefinitionRegistry'.
+src/engine/cam/verification/VerificationBenchmarks.ts(508,47): error TS2339: Property 'getMachine' does not exist on type 'typeof MachineDefinitionRegistry'.
+src/engine/cam/verification/VerificationBenchmarks.ts(573,47): error TS2339: Property 'getMachine' does not exist on type 'typeof MachineDefinitionRegistry'.
+src/engine/cam/verification/VerificationBenchmarks.ts(626,47): error TS2339: Property 'getMachine' does not exist on type 'typeof MachineDefinitionRegistry'.

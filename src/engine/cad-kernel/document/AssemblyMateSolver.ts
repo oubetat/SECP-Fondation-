@@ -16,8 +16,8 @@ export type MateSolveStatus = 'SOLVED' | 'UNSOLVED' | 'UNSUPPORTED' | 'CONFLICTI
 export interface EvaluatedAssemblyMate {
   id: string;
   kind: string;
-  compAId: string;
-  compBId: string;
+  compAId?: string;
+  compBId?: string;
   instanceAId?: string;
   instanceBId?: string;
   status: MateSolveStatus;
@@ -107,9 +107,15 @@ export class AssemblyMateSolver {
     const groundedInstances = new Set<string>();
 
     for (const inst of sortedInstances) {
+      const posX = inst.position?.x ?? 0;
+      const posY = inst.position?.y ?? 0;
+      const posZ = inst.position?.z ?? 0;
+      const rotX = inst.rotation?.x ?? 0;
+      const rotY = inst.rotation?.y ?? 0;
+      const rotZ = inst.rotation?.z ?? 0;
       transforms.set(inst.instanceId, {
-        position: { x: inst.position.x, y: inst.position.y, z: inst.position.z },
-        rotation: { x: inst.rotation.x, y: inst.rotation.y, z: inst.rotation.z }
+        position: { x: posX, y: posY, z: posZ },
+        rotation: { x: rotX, y: rotY, z: rotZ }
       });
     }
 

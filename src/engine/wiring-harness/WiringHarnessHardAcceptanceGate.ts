@@ -11,6 +11,7 @@ import { WiringHarnessElectricalVerifier } from './WiringHarnessElectricalVerifi
 import { WiringHarnessManufacturingVerifier } from './WiringHarnessManufacturingVerifier';
 import { WiringHarnessDesignRulesManager } from './WiringHarnessDesignRules';
 import { generateDeterministicHashSync } from '../evidence/DeterministicHash';
+import { DomainBindingTestUtility } from '../crossdomain/DomainBindingTestUtility';
 
 export interface HarnessAssertionResult {
   id: string;
@@ -135,7 +136,8 @@ export class WiringHarnessHardAcceptanceGate {
     // WH-002: Unconnected terminal detection (Open Circuit)
     const defectModel002 = JSON.parse(JSON.stringify(baseModel));
     defectModel002.terminals[0].status = 'UNCONNECTED';
-    const elecResult002 = WiringHarnessElectricalVerifier.verify(defectModel002);
+    const binding002 = DomainBindingTestUtility.createSealedHarnessBinding(defectModel002);
+    const elecResult002 = WiringHarnessElectricalVerifier.verify(binding002);
     const caught002 = elecResult002.openCircuits > 0 && !elecResult002.passed;
     assertions.push({
       id: 'WH-002',
@@ -148,7 +150,8 @@ export class WiringHarnessHardAcceptanceGate {
     // WH-003: Miswiring rejection (Incompatible gauge)
     const defectModel003 = JSON.parse(JSON.stringify(baseModel));
     defectModel003.wires[0].gaugeAwg = 'AWG 24'; // Mismatch with TERM_J1_P1 AWG 20
-    const elecResult003 = WiringHarnessElectricalVerifier.verify(defectModel003);
+    const binding003 = DomainBindingTestUtility.createSealedHarnessBinding(defectModel003);
+    const elecResult003 = WiringHarnessElectricalVerifier.verify(binding003);
     const caught003 = elecResult003.miswirings > 0 && !elecResult003.passed;
     assertions.push({
       id: 'WH-003',
@@ -270,7 +273,8 @@ export class WiringHarnessHardAcceptanceGate {
     });
 
     // WH-013: Incomplete branch topology detection
-    const mfgReport = WiringHarnessManufacturingVerifier.generateManufacturingPackage(baseModel);
+    const mfgBinding = DomainBindingTestUtility.createSealedHarnessBinding(baseModel);
+    const mfgReport = WiringHarnessManufacturingVerifier.generateManufacturingPackage(mfgBinding);
     assertions.push({
       id: 'WH-013',
       category: 'MANUFACTURING',

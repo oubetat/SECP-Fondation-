@@ -241,6 +241,7 @@ export class AssemblyDOFAnalyzer {
     const rowsByConstraintId = new Map<string, number[][]>();
 
     activeConstraints.forEach(C => {
+      if (!C.componentA || !C.componentB || !C.constraintId) return;
       const idxA = compIndexMap.get(C.componentA);
       const idxB = compIndexMap.get(C.componentB);
       if (idxA === undefined || idxB === undefined) return;
@@ -352,16 +353,17 @@ export class AssemblyDOFAnalyzer {
 
     // Push base anchors (Grounding constraints are always first)
     groundingRows.forEach(row => J_active.push(row));
-    let currentRank = computeRankOfMatrix(J_active, tol);
+    let currentRank = computeRankOfMatrix(J_active, tol ?? 1e-7);
 
     activeConstraints.forEach(C => {
+      if (!C.constraintId) return;
       const cRows = rowsByConstraintId.get(C.constraintId) || [];
       if (cRows.length === 0) return;
 
       const J_temp = J_active.map(row => [...row]);
       cRows.forEach(row => J_temp.push(row));
 
-      const newRank = computeRankOfMatrix(J_temp, tol);
+      const newRank = computeRankOfMatrix(J_temp, tol ?? 1e-7);
       if (newRank > currentRank) {
         // This constraint is linearly independent
         cRows.forEach(row => J_active.push(row));
@@ -399,14 +401,15 @@ export class AssemblyDOFAnalyzer {
 
     // Singular values are square root of eigenvalues of J^T * J
     const singularValues = eigenvalues.map(v => Math.sqrt(v)).sort((a, b) => b - a);
-    const nonzeroSingular = singularValues.filter(v => v > tol);
+    const nonzeroSingular = singularValues.filter(v => v > (tol ?? 1e-7));
 
     if (nonzeroSingular.length > 0) {
       const s_max = nonzeroSingular[0];
       const s_min = nonzeroSingular[nonzeroSingular.length - 1];
       condNum = s_max / s_min;
 
-      if (condNum >= tolerancePolicy.conditioningThreshold) {
+      const condThreshold = tolerancePolicy.conditioningThreshold ?? 1e5;
+      if (condNum >= condThreshold) {
         conditioningStatus = 'SINGULAR';
         singularityStatus = 'SINGULAR_CONFIGURATION';
         diagnostics.push(`[Singular] Near-singular layout detected! Conditioning index: ${condNum.toExponential(3)}`);
@@ -421,7 +424,7 @@ export class AssemblyDOFAnalyzer {
     // Determine null-space vectors of J (eigenvalues close to 0)
     const K_indices: number[] = [];
     for (let k = 0; k < eigenvalues.length; k++) {
-      if (eigenvalues[k] <= tol) {
+      if (eigenvalues[k] <= (tol ?? 1e-7)) {
         K_indices.push(k);
       }
     }
@@ -666,7 +669,9 @@ export class AssemblyDOFAnalyzer {
       remainingDOF: freeDOF,
       componentDOF: componentDOFStates,
       redundantConstraints,
-      conflictingConstraints: overallStatus === 'CONFLICTED' ? activeConstraints.filter(c => c.solverError > 0.5).map(c => c.constraintId) : [],
+      conflictingConstraints: overallStatus === 'CONFLICTED' 
+        ? activeConstraints.filter(c => (c.solverError ?? 0) > 0.5).map(c => c.constraintId || c.id || '') 
+        : [],
       singularityStatus,
       conditioningStatus,
       tolerancePolicyHash,

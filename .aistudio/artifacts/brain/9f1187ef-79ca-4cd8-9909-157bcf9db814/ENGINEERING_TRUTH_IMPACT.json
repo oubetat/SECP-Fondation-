@@ -1,0 +1,3944 @@
+[
+  {
+    "file": "/app/applet/src/components/cam/FourAxisCamWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'runAllTests' does not exist on type 'typeof HardAcceptanceGate257'."
+  },
+  {
+    "file": "/app/applet/src/components/cam/FourAxisCamWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Parameter 'test' implicitly has an 'any' type."
+  },
+  {
+    "file": "/app/applet/src/components/cam/ManufacturingFeatureWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Argument of type 'ManufacturingIntent | undefined' is not assignable to parameter of type 'SetStateAction<ManufacturingIntent>'.\n  Type 'undefined' is not assignable to type 'SetStateAction<ManufacturingIntent>'."
+  },
+  {
+    "file": "/app/applet/src/components/cam/ManufacturingFeatureWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'map' does not exist on type 'string | string[]'.\n  Property 'map' does not exist on type 'string'."
+  },
+  {
+    "file": "/app/applet/src/components/cam/ManufacturingFeatureWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Parameter 'exp' implicitly has an 'any' type."
+  },
+  {
+    "file": "/app/applet/src/components/cam/ManufacturingFeatureWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Parameter 'idx' implicitly has an 'any' type."
+  },
+  {
+    "file": "/app/applet/src/components/cam/ManufacturingFeatureWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'orientation' does not exist on type 'MachiningSetup'."
+  },
+  {
+    "file": "/app/applet/src/components/cam/ManufacturingFeatureWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'estimatedOperations' does not exist on type 'MachiningSetup'."
+  },
+  {
+    "file": "/app/applet/src/components/cam/ManufacturingFeatureWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Parameter 'op' implicitly has an 'any' type."
+  },
+  {
+    "file": "/app/applet/src/components/cam/ManufacturingFeatureWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Parameter 'i' implicitly has an 'any' type."
+  },
+  {
+    "file": "/app/applet/src/components/cam/ManufacturingFeatureWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'holeCount' does not exist on type 'HolePatternCandidate'."
+  },
+  {
+    "file": "/app/applet/src/components/cam/ManufacturingFeatureWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'holeDiameterMm' does not exist on type 'HolePatternCandidate'."
+  },
+  {
+    "file": "/app/applet/src/components/cam/ManufacturingFeatureWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'boltCircleDiameterMm' does not exist on type 'HolePatternCandidate'."
+  },
+  {
+    "file": "/app/applet/src/components/cam/ManufacturingFeatureWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'boltCircleDiameterMm' does not exist on type 'HolePatternCandidate'."
+  },
+  {
+    "file": "/app/applet/src/components/cam/ManufacturingFeatureWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'angularSpacingDeg' does not exist on type 'HolePatternCandidate'."
+  },
+  {
+    "file": "/app/applet/src/components/cam/ManufacturingFeatureWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'angularSpacingDeg' does not exist on type 'HolePatternCandidate'."
+  },
+  {
+    "file": "/app/applet/src/components/cam/ManufacturingFeatureWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'pitchDistanceMm' does not exist on type 'HolePatternCandidate'."
+  },
+  {
+    "file": "/app/applet/src/components/cam/ManufacturingFeatureWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'pitchDistanceMm' does not exist on type 'HolePatternCandidate'."
+  },
+  {
+    "file": "/app/applet/src/components/cam/ThreeAxisCamWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'PLANAR_FACE' does not exist on type 'typeof ManufacturingFeatureType'."
+  },
+  {
+    "file": "/app/applet/src/components/cam/ThreeAxisCamWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'POCKET_RECTANGULAR' does not exist on type 'typeof ManufacturingFeatureType'."
+  },
+  {
+    "file": "/app/applet/src/components/cam/ThreeAxisCamWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'POCKET_RECTANGULAR' does not exist on type 'typeof ManufacturingFeatureType'."
+  },
+  {
+    "file": "/app/applet/src/components/cam/ThreeAxisCamWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'POCKET_RECTANGULAR' does not exist on type 'typeof ManufacturingFeatureType'."
+  },
+  {
+    "file": "/app/applet/src/components/cam/ThreeAxisCamWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'SLOT_THROUGH' does not exist on type 'typeof ManufacturingFeatureType'."
+  },
+  {
+    "file": "/app/applet/src/components/cam/ThreeAxisCamWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'HOLE_SIMPLE' does not exist on type 'typeof ManufacturingFeatureType'."
+  },
+  {
+    "file": "/app/applet/src/components/cam/ThreeAxisCamWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'HOLE_SIMPLE' does not exist on type 'typeof ManufacturingFeatureType'."
+  },
+  {
+    "file": "/app/applet/src/components/cam/ThreeAxisCamWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'HOLE_SIMPLE' does not exist on type 'typeof ManufacturingFeatureType'."
+  },
+  {
+    "file": "/app/applet/src/components/cam/ThreeAxisCamWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'POCKET_RECTANGULAR' does not exist on type 'typeof ManufacturingFeatureType'."
+  },
+  {
+    "file": "/app/applet/src/components/cam/ThreeAxisCamWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'SLOT_THROUGH' does not exist on type 'typeof ManufacturingFeatureType'."
+  },
+  {
+    "file": "/app/applet/src/components/cam/ThreeAxisCamWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'HOLE_SIMPLE' does not exist on type 'typeof ManufacturingFeatureType'."
+  },
+  {
+    "file": "/app/applet/src/components/cam/ToolLibraryWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'generateEvidence' does not exist on type 'typeof ToolEvidenceGenerator'. Did you mean 'generateToolEvidence'?"
+  },
+  {
+    "file": "/app/applet/src/components/cfd/FsiWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Type 'number | null' is not assignable to type 'number'.\n  Type 'null' is not assignable to type 'number'."
+  },
+  {
+    "file": "/app/applet/src/components/cfd/FsiWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Type 'number | null' is not assignable to type 'number'.\n  Type 'null' is not assignable to type 'number'."
+  },
+  {
+    "file": "/app/applet/src/components/cfd/FsiWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Type 'number | null' is not assignable to type 'number'.\n  Type 'null' is not assignable to type 'number'."
+  },
+  {
+    "file": "/app/applet/src/components/cfd/FsiWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Type 'number | null' is not assignable to type 'number'.\n  Type 'null' is not assignable to type 'number'."
+  },
+  {
+    "file": "/app/applet/src/components/cfd/FsiWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'THERMAL_FSI' does not exist on type 'typeof FSIPhenomenon'."
+  },
+  {
+    "file": "/app/applet/src/components/cfd/FsiWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'ADAPTIVE' does not exist on type 'typeof RelaxationType'."
+  },
+  {
+    "file": "/app/applet/src/components/cfd/FsiWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Type 'number | null' is not assignable to type 'string | number | readonly string[] | undefined'.\n  Type 'null' is not assignable to type 'string | number | readonly string[] | undefined'."
+  },
+  {
+    "file": "/app/applet/src/components/cfd/FsiWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Type 'number | null' is not assignable to type 'string | number | readonly string[] | undefined'.\n  Type 'null' is not assignable to type 'string | number | readonly string[] | undefined'."
+  },
+  {
+    "file": "/app/applet/src/components/cfd/FsiWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Type 'number | null' is not assignable to type 'string | number | readonly string[] | undefined'.\n  Type 'null' is not assignable to type 'string | number | readonly string[] | undefined'."
+  },
+  {
+    "file": "/app/applet/src/components/cfd/FsiWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'join' does not exist on type 'string'."
+  },
+  {
+    "file": "/app/applet/src/components/cfd/FsiWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'errorDisplacementPct' does not exist on type 'FSIBenchmarkResult'."
+  },
+  {
+    "file": "/app/applet/src/components/cfd/FsiWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'name' does not exist on type 'GateTestReport254'."
+  },
+  {
+    "file": "/app/applet/src/components/cfd/FsiWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'geometryHash' does not exist on type 'FSIEvidencePackage'."
+  },
+  {
+    "file": "/app/applet/src/components/cfd/FsiWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'fluidMeshHash' does not exist on type 'FSIEvidencePackage'."
+  },
+  {
+    "file": "/app/applet/src/components/cfd/FsiWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'structuralMeshHash' does not exist on type 'FSIEvidencePackage'."
+  },
+  {
+    "file": "/app/applet/src/components/cfd/FsiWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'materialProperties' does not exist on type 'FSIEvidencePackage'."
+  },
+  {
+    "file": "/app/applet/src/components/cfd/FsiWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'deterministicReproduction' does not exist on type 'FSIEvidencePackage'."
+  },
+  {
+    "file": "/app/applet/src/components/cfd/FsiWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'conservationAudit' does not exist on type 'FSIEvidencePackage'."
+  },
+  {
+    "file": "/app/applet/src/components/cfd/FvmDiscretizationWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Cannot find module 'motion/react' or its corresponding type declarations."
+  },
+  {
+    "file": "/app/applet/src/components/cfd/HeatTransferWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Cannot find module 'motion/react' or its corresponding type declarations."
+  },
+  {
+    "file": "/app/applet/src/components/cfd/HeatTransferWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Type 'number | null' is not assignable to type 'number'.\n  Type 'null' is not assignable to type 'number'."
+  },
+  {
+    "file": "/app/applet/src/components/cfd/HeatTransferWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Type 'number | null' is not assignable to type 'number'.\n  Type 'null' is not assignable to type 'number'."
+  },
+  {
+    "file": "/app/applet/src/components/cfd/HeatTransferWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Type 'number | null' is not assignable to type 'number'.\n  Type 'null' is not assignable to type 'number'."
+  },
+  {
+    "file": "/app/applet/src/components/cfd/HeatTransferWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Type 'number | null' is not assignable to type 'number'.\n  Type 'null' is not assignable to type 'number'."
+  },
+  {
+    "file": "/app/applet/src/components/cfd/HeatTransferWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Type 'number | null' is not assignable to type 'number'.\n  Type 'null' is not assignable to type 'number'."
+  },
+  {
+    "file": "/app/applet/src/components/cfd/HeatTransferWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Type 'number | null' is not assignable to type 'number | undefined'.\n  Type 'null' is not assignable to type 'number | undefined'."
+  },
+  {
+    "file": "/app/applet/src/components/cfd/HeatTransferWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Type 'number | null' is not assignable to type 'number'.\n  Type 'null' is not assignable to type 'number'."
+  },
+  {
+    "file": "/app/applet/src/components/cfd/HeatTransferWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Type 'number | null' is not assignable to type 'number'.\n  Type 'null' is not assignable to type 'number'."
+  },
+  {
+    "file": "/app/applet/src/components/cfd/HeatTransferWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Type 'number | null' is not assignable to type 'number'.\n  Type 'null' is not assignable to type 'number'."
+  },
+  {
+    "file": "/app/applet/src/components/cfd/HeatTransferWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Type 'number | null' is not assignable to type 'number | undefined'.\n  Type 'null' is not assignable to type 'number | undefined'."
+  },
+  {
+    "file": "/app/applet/src/components/cfd/HeatTransferWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Argument of type 'number | null' is not assignable to parameter of type 'number | undefined'.\n  Type 'null' is not assignable to type 'number | undefined'."
+  },
+  {
+    "file": "/app/applet/src/components/cfd/HeatTransferWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Argument of type 'number | null' is not assignable to parameter of type 'number | undefined'.\n  Type 'null' is not assignable to type 'number | undefined'."
+  },
+  {
+    "file": "/app/applet/src/components/cfd/HeatTransferWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Type 'number | null' is not assignable to type 'string | number | readonly string[] | undefined'.\n  Type 'null' is not assignable to type 'string | number | readonly string[] | undefined'."
+  },
+  {
+    "file": "/app/applet/src/components/cfd/HeatTransferWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Type 'number | null' is not assignable to type 'string | number | readonly string[] | undefined'.\n  Type 'null' is not assignable to type 'string | number | readonly string[] | undefined'."
+  },
+  {
+    "file": "/app/applet/src/components/cfd/HeatTransferWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Type 'number | null' is not assignable to type 'string | number | readonly string[] | undefined'.\n  Type 'null' is not assignable to type 'string | number | readonly string[] | undefined'."
+  },
+  {
+    "file": "/app/applet/src/components/cfd/HeatTransferWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Type 'number | null' is not assignable to type 'string | number | readonly string[] | undefined'.\n  Type 'null' is not assignable to type 'string | number | readonly string[] | undefined'."
+  },
+  {
+    "file": "/app/applet/src/components/cfd/HeatTransferWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Type 'number | null' is not assignable to type 'string | number | readonly string[] | undefined'.\n  Type 'null' is not assignable to type 'string | number | readonly string[] | undefined'."
+  },
+  {
+    "file": "/app/applet/src/components/cfd/HeatTransferWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Type 'number | null' is not assignable to type 'string | number | readonly string[] | undefined'.\n  Type 'null' is not assignable to type 'string | number | readonly string[] | undefined'."
+  },
+  {
+    "file": "/app/applet/src/components/cfd/HeatTransferWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Type 'number | null' is not assignable to type 'string | number | readonly string[] | undefined'.\n  Type 'null' is not assignable to type 'string | number | readonly string[] | undefined'."
+  },
+  {
+    "file": "/app/applet/src/components/cfd/HeatTransferWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Type 'number | null' is not assignable to type 'string | number | readonly string[] | undefined'.\n  Type 'null' is not assignable to type 'string | number | readonly string[] | undefined'."
+  },
+  {
+    "file": "/app/applet/src/components/cfd/HeatTransferWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Type 'number | null' is not assignable to type 'string | number | readonly string[] | undefined'.\n  Type 'null' is not assignable to type 'string | number | readonly string[] | undefined'."
+  },
+  {
+    "file": "/app/applet/src/components/cfd/HeatTransferWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'runBenchmark' does not exist on type 'typeof ThermalBenchmarkSuite'."
+  },
+  {
+    "file": "/app/applet/src/components/cfd/HeatTransferWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'internalGeneration' does not exist on type '{ energyIn: number; energyOut: number; imbalance: number; relativeImbalance: number; conservative: boolean; }'."
+  },
+  {
+    "file": "/app/applet/src/components/cfd/MultiphaseWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Cannot find module 'motion/react' or its corresponding type declarations."
+  },
+  {
+    "file": "/app/applet/src/components/cfd/MultiphaseWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'runSuite' does not exist on type 'typeof HardAcceptanceGate252'."
+  },
+  {
+    "file": "/app/applet/src/components/cfd/MultiphaseWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'runBenchmark' does not exist on type 'typeof MultiphaseBenchmarkSuite'."
+  },
+  {
+    "file": "/app/applet/src/components/cfd/MultiphaseWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'evidence' does not exist on type 'GateResult252'."
+  },
+  {
+    "file": "/app/applet/src/components/cfd/MultiphaseWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'evidence' does not exist on type 'GateResult252'."
+  },
+  {
+    "file": "/app/applet/src/components/cfd/MultiphaseWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'evidence' does not exist on type 'GateResult252'."
+  },
+  {
+    "file": "/app/applet/src/components/cfd/MultiphaseWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'evidence' does not exist on type 'GateResult252'."
+  },
+  {
+    "file": "/app/applet/src/components/cfd/MultiphaseWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'overallVerdict' does not exist on type 'GateResult252'."
+  },
+  {
+    "file": "/app/applet/src/components/cfd/MultiphaseWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'testsPassed' does not exist on type 'GateResult252'."
+  },
+  {
+    "file": "/app/applet/src/components/cfd/MultiphaseWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'testsTotal' does not exist on type 'GateResult252'."
+  },
+  {
+    "file": "/app/applet/src/components/cfd/MultiphaseWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'testReports' does not exist on type 'GateResult252'."
+  },
+  {
+    "file": "/app/applet/src/components/cfd/MultiphaseWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Parameter 'report' implicitly has an 'any' type."
+  },
+  {
+    "file": "/app/applet/src/components/cfd/MultiphaseWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Parameter 'idx' implicitly has an 'any' type."
+  },
+  {
+    "file": "/app/applet/src/components/cfd/NavierStokesWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Cannot find module 'motion/react' or its corresponding type declarations."
+  },
+  {
+    "file": "/app/applet/src/components/cfd/PressureVelocityWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Cannot find module 'motion/react' or its corresponding type declarations."
+  },
+  {
+    "file": "/app/applet/src/components/cfd/ResidualEngineWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Cannot find module 'motion/react' or its corresponding type declarations."
+  },
+  {
+    "file": "/app/applet/src/engine/benchmark/cad/CADBenchmarkComparator.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "'\"./types\"' has no exported member named 'BenchmarkComparisonResult'. Did you mean 'CADBenchmarkComparison'?"
+  },
+  {
+    "file": "/app/applet/src/engine/benchmark/cad/CADBenchmarkComparator.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Module '\"./types\"' has no exported member 'BenchmarkTolerance'."
+  },
+  {
+    "file": "/app/applet/src/engine/benchmark/cfd/AdaptiveCFDBenchmarkSuite.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'isPressurePinned' does not exist on type 'BCValidationReport'."
+  },
+  {
+    "file": "/app/applet/src/engine/benchmark/cfd/AdaptiveCFDBenchmarkSuite.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'inletAreaM2' does not exist on type 'BCValidationReport'."
+  },
+  {
+    "file": "/app/applet/src/engine/benchmark/cfd/AdaptiveCFDBenchmarkSuite.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'totalBoundaryFaces' does not exist on type 'BCValidationReport'."
+  },
+  {
+    "file": "/app/applet/src/engine/benchmark/cfd/AdaptiveCFDBenchmarkSuite.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'inletAreaM2' does not exist on type 'BCValidationReport'."
+  },
+  {
+    "file": "/app/applet/src/engine/benchmark/cfd/AdaptiveCFDBenchmarkSuite.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'reason' does not exist on type '{ isConverged: boolean; }'."
+  },
+  {
+    "file": "/app/applet/src/engine/benchmark/cfd/AdaptiveCFDBenchmarkSuite.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Argument of type 'string | undefined' is not assignable to parameter of type 'string'.\n  Type 'undefined' is not assignable to type 'string'."
+  },
+  {
+    "file": "/app/applet/src/engine/benchmark/cfd/CFDAdversarialEngine.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Argument of type 'FvmMesh3D' is not assignable to parameter of type 'CfdToCoreBinding'.\n  Type 'FvmMesh3D' is missing the following properties from type 'CfdToCoreBinding': domain, domainId, payload, bindingId, and 10 more."
+  },
+  {
+    "file": "/app/applet/src/engine/benchmark/cfd/CFDAdversarialEngine.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Argument of type 'FvmMesh3D' is not assignable to parameter of type 'CfdToCoreBinding'.\n  Type 'FvmMesh3D' is missing the following properties from type 'CfdToCoreBinding': domain, domainId, payload, bindingId, and 10 more."
+  },
+  {
+    "file": "/app/applet/src/engine/benchmark/cfd/CFDAdversarialEngine.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Argument of type 'FvmMesh3D' is not assignable to parameter of type 'CfdToCoreBinding'.\n  Type 'FvmMesh3D' is missing the following properties from type 'CfdToCoreBinding': domain, domainId, payload, bindingId, and 10 more."
+  },
+  {
+    "file": "/app/applet/src/engine/benchmark/cfd/CFDAdversarialEngine.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Argument of type 'FvmMesh3D' is not assignable to parameter of type 'CfdToCoreBinding'.\n  Type 'FvmMesh3D' is missing the following properties from type 'CfdToCoreBinding': domain, domainId, payload, bindingId, and 10 more."
+  },
+  {
+    "file": "/app/applet/src/engine/benchmark/cfd/CFDAdversarialEngine.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Argument of type 'FvmMesh3D' is not assignable to parameter of type 'CfdToCoreBinding'.\n  Type 'FvmMesh3D' is missing the following properties from type 'CfdToCoreBinding': domain, domainId, payload, bindingId, and 10 more."
+  },
+  {
+    "file": "/app/applet/src/engine/benchmark/cfd/CFDDeterminismAuditor.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Argument of type 'FluidProperties3D' is not assignable to parameter of type 'BoundaryConditionSpec3D | Partial<SolverConfig3D> | undefined'."
+  },
+  {
+    "file": "/app/applet/src/engine/benchmark/cfd/CFDMeshRefinementAuditor.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Argument of type 'FvmMesh3D' is not assignable to parameter of type 'CfdToCoreBinding'.\n  Type 'FvmMesh3D' is missing the following properties from type 'CfdToCoreBinding': domain, domainId, payload, bindingId, and 10 more."
+  },
+  {
+    "file": "/app/applet/src/engine/benchmark/cfd/CFDMeshRefinementAuditor.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Type 'number | undefined' is not assignable to type 'number'.\n  Type 'undefined' is not assignable to type 'number'."
+  },
+  {
+    "file": "/app/applet/src/engine/benchmark/cfd/CFDPerformanceBenchmarker.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Argument of type 'FvmMesh3D' is not assignable to parameter of type 'CfdToCoreBinding'.\n  Type 'FvmMesh3D' is missing the following properties from type 'CfdToCoreBinding': domain, domainId, payload, bindingId, and 10 more."
+  },
+  {
+    "file": "/app/applet/src/engine/benchmark/cfd/CFDPerformanceBenchmarker.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Type 'number | undefined' is not assignable to type 'number'.\n  Type 'undefined' is not assignable to type 'number'."
+  },
+  {
+    "file": "/app/applet/src/engine/benchmark/cfd/CFDRunner.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Argument of type 'FvmMesh3D' is not assignable to parameter of type 'CfdToCoreBinding'.\n  Type 'FvmMesh3D' is missing the following properties from type 'CfdToCoreBinding': domain, domainId, payload, bindingId, and 10 more."
+  },
+  {
+    "file": "/app/applet/src/engine/benchmark/cfd/CFDRunner.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Type 'number | undefined' is not assignable to type 'number'.\n  Type 'undefined' is not assignable to type 'number'."
+  },
+  {
+    "file": "/app/applet/src/engine/benchmark/cfd/ProductionQualificationBattery175.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Argument of type 'string | undefined' is not assignable to parameter of type 'string'.\n  Type 'undefined' is not assignable to type 'string'."
+  },
+  {
+    "file": "/app/applet/src/engine/benchmark/cfd/TurbulenceQualificationBattery176.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Argument of type 'number | undefined' is not assignable to parameter of type 'number'.\n  Type 'undefined' is not assignable to type 'number'."
+  },
+  {
+    "file": "/app/applet/src/engine/benchmark/cfd/TurbulenceQualificationBattery176.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Argument of type 'number | undefined' is not assignable to parameter of type 'number'.\n  Type 'undefined' is not assignable to type 'number'."
+  },
+  {
+    "file": "/app/applet/src/engine/benchmark/cfd/TurbulenceQualificationBattery176.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Argument of type 'number | undefined' is not assignable to parameter of type 'number'.\n  Type 'undefined' is not assignable to type 'number'."
+  },
+  {
+    "file": "/app/applet/src/engine/benchmark/cfd/TurbulenceQualificationBattery176.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Argument of type 'number | undefined' is not assignable to parameter of type 'number'.\n  Type 'undefined' is not assignable to type 'number'."
+  },
+  {
+    "file": "/app/applet/src/engine/benchmark/cfd/TurbulenceQualificationBattery176.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Argument of type 'number | undefined' is not assignable to parameter of type 'number'.\n  Type 'undefined' is not assignable to type 'number'."
+  },
+  {
+    "file": "/app/applet/src/engine/benchmark/cfd/TurbulenceQualificationBattery176.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'recirculationLengthM' does not exist on type 'string | number'.\n  Property 'recirculationLengthM' does not exist on type 'string'."
+  },
+  {
+    "file": "/app/applet/src/engine/benchmark/cfd/TurbulenceQualificationBattery176.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Argument of type 'number | undefined' is not assignable to parameter of type 'number'.\n  Type 'undefined' is not assignable to type 'number'."
+  },
+  {
+    "file": "/app/applet/src/engine/benchmark/cfd/TurbulenceQualificationBattery176.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Argument of type 'number | undefined' is not assignable to parameter of type 'number'.\n  Type 'undefined' is not assignable to type 'number'."
+  },
+  {
+    "file": "/app/applet/src/engine/benchmark/cfd/TurbulenceQualificationBattery176.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Argument of type 'number | undefined' is not assignable to parameter of type 'number'.\n  Type 'undefined' is not assignable to type 'number'."
+  },
+  {
+    "file": "/app/applet/src/engine/benchmark/cfd/TurbulenceQualificationBattery176.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'separationLocationX' does not exist on type 'string | number'.\n  Property 'separationLocationX' does not exist on type 'string'."
+  },
+  {
+    "file": "/app/applet/src/engine/benchmark/cfd/TurbulenceQualificationBattery176.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'separationDetected' does not exist on type 'string | number'.\n  Property 'separationDetected' does not exist on type 'string'."
+  },
+  {
+    "file": "/app/applet/src/engine/benchmark/cfd/TurbulenceQualificationBattery176.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Argument of type 'number | undefined' is not assignable to parameter of type 'number'.\n  Type 'undefined' is not assignable to type 'number'."
+  },
+  {
+    "file": "/app/applet/src/engine/benchmark/cfd/TurbulenceQualificationBattery176.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'maxQCriterion' does not exist on type 'string | number'.\n  Property 'maxQCriterion' does not exist on type 'string'."
+  },
+  {
+    "file": "/app/applet/src/engine/benchmark/cfd/TurbulenceQualificationBattery176.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'coherentVortexCoresCount' does not exist on type 'string | number'.\n  Property 'coherentVortexCoresCount' does not exist on type 'string'."
+  },
+  {
+    "file": "/app/applet/src/engine/benchmark/cfd/TurbulenceQualificationBattery176.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Argument of type 'number | undefined' is not assignable to parameter of type 'number'.\n  Type 'undefined' is not assignable to type 'number'."
+  },
+  {
+    "file": "/app/applet/src/engine/benchmark/cfd/TurbulenceQualificationBattery176.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'maxEnstrophy' does not exist on type 'string | number'.\n  Property 'maxEnstrophy' does not exist on type 'string'."
+  },
+  {
+    "file": "/app/applet/src/engine/benchmark/cfd/TurbulenceQualificationBattery176.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Argument of type 'number | undefined' is not assignable to parameter of type 'number'.\n  Type 'undefined' is not assignable to type 'number'."
+  },
+  {
+    "file": "/app/applet/src/engine/benchmark/cfd/TurbulenceQualificationBattery176.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Argument of type 'number | undefined' is not assignable to parameter of type 'number'.\n  Type 'undefined' is not assignable to type 'number'."
+  },
+  {
+    "file": "/app/applet/src/engine/benchmark/cfd/TurbulenceQualificationBattery176.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "The left-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type."
+  },
+  {
+    "file": "/app/applet/src/engine/benchmark/cfd/TurbulenceQualificationBattery176.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "The right-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type."
+  },
+  {
+    "file": "/app/applet/src/engine/benchmark/cfd/TurbulenceQualificationBattery176.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Argument of type 'string | number' is not assignable to parameter of type 'number'.\n  Type 'string' is not assignable to type 'number'."
+  },
+  {
+    "file": "/app/applet/src/engine/benchmark/fem/NonlinearFEMBenchmarkBattery177.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Object literal may only specify known properties, and 'id' does not exist in type 'ContactNode2D'."
+  },
+  {
+    "file": "/app/applet/src/engine/benchmark/fem/NonlinearFEMBenchmarkBattery177.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Object literal may only specify known properties, and 'id' does not exist in type 'ContactNode2D'."
+  },
+  {
+    "file": "/app/applet/src/engine/cad-kernel/topology/BRepTopology.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Type 'string' is not assignable to type 'object'."
+  },
+  {
+    "file": "/app/applet/src/engine/cad-kernel/topology/PersistentTopologyNaming.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Argument of type 'string | undefined' is not assignable to parameter of type 'string'.\n  Type 'undefined' is not assignable to type 'string'."
+  },
+  {
+    "file": "/app/applet/src/engine/cad-kernel/topology/PersistentTopologyNaming.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Argument of type 'string | undefined' is not assignable to parameter of type 'string'.\n  Type 'undefined' is not assignable to type 'string'."
+  },
+  {
+    "file": "/app/applet/src/engine/cad-kernel/topology/PersistentTopologyNaming.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Argument of type 'string | undefined' is not assignable to parameter of type 'string'.\n  Type 'undefined' is not assignable to type 'string'."
+  },
+  {
+    "file": "/app/applet/src/engine/cad-kernel/topology/PersistentTopologyNaming.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Argument of type 'string | undefined' is not assignable to parameter of type 'string'.\n  Type 'undefined' is not assignable to type 'string'."
+  },
+  {
+    "file": "/app/applet/src/engine/cad-kernel/topology/PersistentTopologyNaming.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Argument of type 'string | undefined' is not assignable to parameter of type 'string'.\n  Type 'undefined' is not assignable to type 'string'."
+  },
+  {
+    "file": "/app/applet/src/engine/cad-kernel/topology/PersistentTopologyNaming.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Argument of type 'string | undefined' is not assignable to parameter of type 'string'.\n  Type 'undefined' is not assignable to type 'string'."
+  },
+  {
+    "file": "/app/applet/src/engine/cad-kernel/topology/PersistentTopologyNaming.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Argument of type 'string | undefined' is not assignable to parameter of type 'string'.\n  Type 'undefined' is not assignable to type 'string'."
+  },
+  {
+    "file": "/app/applet/src/engine/cad-kernel/topology/PersistentTopologyNaming.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Argument of type 'string | undefined' is not assignable to parameter of type 'string'.\n  Type 'undefined' is not assignable to type 'string'."
+  },
+  {
+    "file": "/app/applet/src/engine/cad/nurbs/NURBSEngine.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Parameter 'pt' implicitly has an 'any' type."
+  },
+  {
+    "file": "/app/applet/src/engine/cad/nurbs/NURBSEngine.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Parameter 'row' implicitly has an 'any' type."
+  },
+  {
+    "file": "/app/applet/src/engine/cad/nurbs/NURBSEngine.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Parameter 'pt' implicitly has an 'any' type."
+  },
+  {
+    "file": "/app/applet/src/engine/cad/nurbs/NURBSEngine.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Parameter 'pt' implicitly has an 'any' type."
+  },
+  {
+    "file": "/app/applet/src/engine/cad/nurbs/NURBSEngine.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Parameter 'row' implicitly has an 'any' type."
+  },
+  {
+    "file": "/app/applet/src/engine/cad/nurbs/NURBSEngine.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Parameter 'pt' implicitly has an 'any' type."
+  },
+  {
+    "file": "/app/applet/src/engine/cad/nurbs/NURBSEngine.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Parameter 'pt' implicitly has an 'any' type."
+  },
+  {
+    "file": "/app/applet/src/engine/cad/nurbs/NURBSEngine.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Parameter 'pt' implicitly has an 'any' type."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/CAMProvenanceEngine.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Type '{ isValid: false; failureReason: string; mismatchDetails: string; }' is missing the following properties from type 'DerivedArtifactVerificationResult': isDigestValid, isRevisionMatched, isGeometryMatched, reasons, status"
+  },
+  {
+    "file": "/app/applet/src/engine/cam/CuttingToolModel.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Object literal may only specify known properties, and 'holder' does not exist in type 'CuttingTool'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/ThreeAxisToolpathEngine.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Type 'string | undefined' is not assignable to type 'string'.\n  Type 'undefined' is not assignable to type 'string'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/ThreeAxisToolpathEngine.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Type 'string | undefined' is not assignable to type 'string'.\n  Type 'undefined' is not assignable to type 'string'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/ThreeAxisToolpathEngine.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Type 'number | undefined' is not assignable to type 'number'.\n  Type 'undefined' is not assignable to type 'number'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/ThreeAxisToolpathEngine.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Type 'number | undefined' is not assignable to type 'number'.\n  Type 'undefined' is not assignable to type 'number'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/ThreeAxisToolpathEngine.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Type 'number | undefined' is not assignable to type 'number'.\n  Type 'undefined' is not assignable to type 'number'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/ThreeAxisToolpathEngine.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Type 'number | undefined' is not assignable to type 'number'.\n  Type 'undefined' is not assignable to type 'number'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/ToolpathVerificationEngine.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Type '\"CUTTING\"' is not assignable to type '\"RAPID\" | \"FEED\" | \"TRANSITION\" | \"LOCKED\"'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/collision/CollisionClassifier.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Type 'string' is not assignable to type 'CollisionType'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/collision/CollisionClassifier.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Type 'string' is not assignable to type 'CollisionSeverity'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/collision/CollisionClassifier.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Type 'string' is not assignable to type 'CollisionState'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/collision/ContinuousCollisionDetector.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Object literal may only specify known properties, but 'feedRateMmMin' does not exist in type 'ToolPose'. Did you mean to write 'feedMmMin'?"
+  },
+  {
+    "file": "/app/applet/src/engine/cam/collision/ContinuousCollisionDetector.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'feedRateMmMin' does not exist on type 'ToolPose'. Did you mean 'feedMmMin'?"
+  },
+  {
+    "file": "/app/applet/src/engine/cam/feature-recognition/ChamferAndFilletRecognizer.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'CHAMFER_FEATURE' does not exist on type 'typeof ManufacturingFeatureType'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/feature-recognition/ChamferAndFilletRecognizer.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'CHAMFER_MILLING' does not exist on type 'typeof ManufacturingIntent'. Did you mean 'CHAMFERING'?"
+  },
+  {
+    "file": "/app/applet/src/engine/cam/feature-recognition/ChamferAndFilletRecognizer.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'FILLET_FEATURE' does not exist on type 'typeof ManufacturingFeatureType'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/feature-recognition/ChamferAndFilletRecognizer.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'FILLET_MILLING' does not exist on type 'typeof ManufacturingIntent'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/feature-recognition/FeatureAccessibilityAnalyzer.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'OBLIQUE' does not exist on type 'typeof ToolAccessDirection'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/feature-recognition/FeaturePatternRecognizer.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Type '\"LINEAR_ARRAY\"' is not assignable to type '\"LINEAR\" | \"CIRCULAR\" | \"GRID\"'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/feature-recognition/FeaturePatternRecognizer.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Type '\"CIRCULAR_BOLT_CIRCLE\"' is not assignable to type '\"LINEAR\" | \"CIRCULAR\" | \"GRID\"'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/feature-recognition/FeaturePatternRecognizer.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Type '\"LINEAR_ARRAY\"' is not assignable to type '\"LINEAR\" | \"CIRCULAR\" | \"GRID\"'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/feature-recognition/HardAcceptanceGate255.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'FACING_REGION' does not exist on type 'typeof ManufacturingFeatureType'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/feature-recognition/HardAcceptanceGate255.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'PLANAR_FACE' does not exist on type 'typeof ManufacturingFeatureType'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/feature-recognition/HardAcceptanceGate255.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'CHAMFER_FEATURE' does not exist on type 'typeof ManufacturingFeatureType'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/feature-recognition/HardAcceptanceGate255.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'holeCount' does not exist on type 'HolePatternCandidate'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/feature-recognition/HardAcceptanceGate255.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'holeDiameterMm' does not exist on type 'HolePatternCandidate'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/feature-recognition/MachiningSetupAnalyzer.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'OBLIQUE' does not exist on type 'typeof ToolAccessDirection'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/feature-recognition/MachiningSetupAnalyzer.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "This comparison appears to be unintentional because the types 'ManufacturingFeatureType' and '\"FACING_REGION\"' have no overlap."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/feature-recognition/MachiningSetupAnalyzer.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Object literal may only specify known properties, and 'orientation' does not exist in type 'MachiningSetup'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/feature-recognition/ManufacturingFeatureEngine.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Argument of type 'Map<string, import(\"/app/applet/src/engine/cam/feature-recognition/FeatureGeometryAnalyzer\").FaceGeometryInfo>' is not assignable to parameter of type 'Map<string, import(\"/app/applet/src/engine/cam/feature-recognition/FeatureTypes\").FaceGeometryInfo>'.\n  Type 'FaceGeometryInfo' is missing the following properties from type 'FaceGeometryInfo': faceType, boundingBoxMin, boundingBoxMax, adjacentFaceIds"
+  },
+  {
+    "file": "/app/applet/src/engine/cam/feature-recognition/ManufacturingFeatureEngine.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Argument of type 'Map<string, import(\"/app/applet/src/engine/cam/feature-recognition/FeatureGeometryAnalyzer\").FaceGeometryInfo>' is not assignable to parameter of type 'Map<string, import(\"/app/applet/src/engine/cam/feature-recognition/FeatureTypes\").FaceGeometryInfo>'.\n  Type 'FaceGeometryInfo' is missing the following properties from type 'FaceGeometryInfo': faceType, boundingBoxMin, boundingBoxMax, adjacentFaceIds"
+  },
+  {
+    "file": "/app/applet/src/engine/cam/fouraxis/FourAxisToolpathEngine.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Object literal may only specify known properties, and 'stickoutMm' does not exist in type 'CuttingTool'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/fouraxis/FourAxisToolpathEngine.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Object literal may only specify known properties, and 'stickoutMm' does not exist in type 'CuttingTool'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/fouraxis/FourAxisToolpathEngine.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Object literal may only specify known properties, and 'stickoutMm' does not exist in type 'CuttingTool'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/fouraxis/FourAxisToolpathEngine.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Object literal may only specify known properties, and 'stickoutMm' does not exist in type 'CuttingTool'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/fouraxis/FourAxisToolpathValidator.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'stickoutMm' does not exist on type 'CuttingTool'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/ControllerProfiles.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Object literal may only specify known properties, and 'name' does not exist in type 'Omit<PostProcessorDefinition, \"postHash\">'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/ControllerProfiles.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Object literal may only specify known properties, and 'name' does not exist in type 'Omit<PostProcessorDefinition, \"postHash\">'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/ControllerProfiles.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Object literal may only specify known properties, and 'name' does not exist in type 'Omit<PostProcessorDefinition, \"postHash\">'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/ControllerProfiles.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Object literal may only specify known properties, and 'name' does not exist in type 'Omit<PostProcessorDefinition, \"postHash\">'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/ControllerProfiles.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Object literal may only specify known properties, and 'name' does not exist in type 'Omit<PostProcessorDefinition, \"postHash\">'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/ControllerProfiles.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'formatting' does not exist on type 'Omit<PostProcessorDefinition, \"postHash\">'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/ControllerProfiles.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'safety' does not exist on type 'Omit<PostProcessorDefinition, \"postHash\">'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/ControllerProfiles.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'rtcpCapabilities' does not exist on type 'Omit<PostProcessorDefinition, \"postHash\">'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/ControllerProfiles.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Object literal may only specify known properties, and 'postHash' does not exist in type 'PostProcessorDefinition'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/MachineDefinitionRegistry.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Object literal may only specify known properties, and 'capacity' does not exist in type '{ toolChangeTimeSec: number; }'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/MachineDefinitionRegistry.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Object literal may only specify known properties, and 'capacity' does not exist in type '{ toolChangeTimeSec: number; }'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/MachineDefinitionRegistry.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Object literal may only specify known properties, and 'capacity' does not exist in type '{ toolChangeTimeSec: number; }'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/MachineDefinitionRegistry.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Object literal may only specify known properties, and 'capacity' does not exist in type '{ toolChangeTimeSec: number; }'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/MachineDefinitionRegistry.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Object literal may only specify known properties, and 'capacity' does not exist in type '{ toolChangeTimeSec: number; }'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/MachineDefinitionRegistry.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'name' does not exist on type 'Omit<MachineDefinition, \"entityHash\">'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/MachineDefinitionRegistry.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'manufacturer' does not exist on type 'Omit<MachineDefinition, \"entityHash\">'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/MachineDefinitionRegistry.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'machineType' does not exist on type 'Omit<MachineDefinition, \"entityHash\">'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/MachineDefinitionRegistry.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'controllerDialect' does not exist on type 'Omit<MachineDefinition, \"entityHash\">'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/MachineDefinitionRegistry.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'axes' does not exist on type 'Omit<MachineDefinition, \"entityHash\">'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/MachineDefinitionRegistry.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'spindle' does not exist on type 'Omit<MachineDefinition, \"entityHash\">'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/MachineDefinitionRegistry.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Object literal may only specify known properties, and 'entityHash' does not exist in type 'MachineDefinition'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/ModalStateManager.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Type '\"METRIC_MM\"' is not assignable to type 'UnitsMode'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/ModalStateManager.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Type '\"G17_XY\"' is not assignable to type 'ActivePlane'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/ModalStateManager.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Type '\"G94_UNITS_PER_MIN\"' is not assignable to type 'FeedMode'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/ModalStateManager.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Object literal may only specify known properties, and 'currentPosition' does not exist in type 'Readonly<ModalState>'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/ModalStateManager.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'currentPosition' does not exist on type 'ModalState'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/ModalStateManager.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'motionMode' does not exist on type 'ModalState'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/ModalStateManager.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'motionMode' does not exist on type 'ModalState'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/ModalStateManager.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "This comparison appears to be unintentional because the types 'MotionMode' and '\"G1_LINEAR\"' have no overlap."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/ModalStateManager.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "This comparison appears to be unintentional because the types 'MotionMode' and '\"G2_CW_ARC\"' have no overlap."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/ModalStateManager.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "This comparison appears to be unintentional because the types 'MotionMode' and '\"G3_CCW_ARC\"' have no overlap."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/ModalStateManager.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "This comparison appears to be unintentional because the types 'ActivePlane' and '\"G18_ZX\"' have no overlap."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/ModalStateManager.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "This comparison appears to be unintentional because the types 'ActivePlane' and '\"G19_YZ\"' have no overlap."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/ModalStateManager.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'currentFeedRate' does not exist on type 'ModalState'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/ModalStateManager.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'currentFeedRate' does not exist on type 'ModalState'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/ModalStateManager.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Type '\"M3_CW\" | \"M4_CCW\"' is not assignable to type 'SpindleState'.\n  Type '\"M3_CW\"' is not assignable to type 'SpindleState'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/ModalStateManager.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'spindleState' does not exist on type 'ModalState'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/ModalStateManager.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'currentSpindleRpm' does not exist on type 'ModalState'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/ModalStateManager.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'spindleState' does not exist on type 'ModalState'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/ModalStateManager.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'currentSpindleRpm' does not exist on type 'ModalState'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/ModalStateManager.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "This comparison appears to be unintentional because the types 'SpindleState' and '\"M3_CW\"' have no overlap."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/ModalStateManager.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'spindleState' does not exist on type 'ModalState'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/ModalStateManager.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'spindleState' does not exist on type 'ModalState'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/ModalStateManager.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'currentSpindleRpm' does not exist on type 'ModalState'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/ModalStateManager.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'coolantState' does not exist on type 'ModalState'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/ModalStateManager.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'coolantState' does not exist on type 'ModalState'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/ModalStateManager.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "This comparison appears to be unintentional because the types 'CoolantState' and '\"M8_FLOOD\"' have no overlap."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/ModalStateManager.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "This comparison appears to be unintentional because the types 'CoolantState' and '\"M7_MIST\"' have no overlap."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/ModalStateManager.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "This comparison appears to be unintentional because the types 'CoolantState' and '\"M88_THROUGH_SPINDLE\"' have no overlap."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/ModalStateManager.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'workOffset' does not exist on type 'ModalState'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/ModalStateManager.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'workOffset' does not exist on type 'ModalState'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/ModalStateManager.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "This comparison appears to be unintentional because the types '\"G54\"' and '\"G54.1_P1\"' have no overlap."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/ModalStateManager.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'activeToolNumber' does not exist on type 'ModalState'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/ModalStateManager.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'activeToolHOffset' does not exist on type 'ModalState'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/ModalStateManager.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'activeToolDOffset' does not exist on type 'ModalState'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/ModalStateManager.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'rtcpActive' does not exist on type 'ModalState'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/ModalStateManager.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'currentPosition' does not exist on type 'ModalState'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/ModalStateManager.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'currentPosition' does not exist on type 'ModalState'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/ModalStateManager.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'currentPosition' does not exist on type 'ModalState'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/ModalStateManager.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'currentPosition' does not exist on type 'ModalState'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/ModalStateManager.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'currentPosition' does not exist on type 'ModalState'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/ModalStateManager.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'currentPosition' does not exist on type 'ModalState'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/ModalStateManager.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'currentPosition' does not exist on type 'ModalState'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/ModalStateManager.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'currentPosition' does not exist on type 'ModalState'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/ModalStateManager.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'currentPosition' does not exist on type 'ModalState'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/ModalStateManager.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'currentPosition' does not exist on type 'ModalState'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/ModalStateManager.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'currentPosition' does not exist on type 'ModalState'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/ModalStateManager.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'currentPosition' does not exist on type 'ModalState'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/ModalStateManager.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'currentPosition' does not exist on type 'ModalState'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/ModalStateManager.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'currentPosition' does not exist on type 'ModalState'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/ModalStateManager.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'currentPosition' does not exist on type 'ModalState'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/ModalStateManager.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'currentPosition' does not exist on type 'ModalState'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/ModalStateManager.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'currentPosition' does not exist on type 'ModalState'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/ModalStateManager.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'currentPosition' does not exist on type 'ModalState'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/NCIntermediateRepresentation.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Type '\"PROGRAM_HEADER\"' is not assignable to type 'IREventType'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/NCIntermediateRepresentation.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Type '\"SAFETY_BLOCK\"' is not assignable to type 'IREventType'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/NCIntermediateRepresentation.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Type '\"OPERATION_START\"' is not assignable to type 'IREventType'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/NCIntermediateRepresentation.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Object literal may only specify known properties, and 'eventId' does not exist in type 'IREvent'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/NCIntermediateRepresentation.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Type '\"WORK_OFFSET_SELECT\"' is not assignable to type 'IREventType'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/NCIntermediateRepresentation.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Type '\"SPINDLE_COMMAND\"' is not assignable to type 'IREventType'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/NCIntermediateRepresentation.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Type '\"COOLANT_COMMAND\"' is not assignable to type 'IREventType'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/NCIntermediateRepresentation.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Type '\"RTCP_ENABLE\"' is not assignable to type 'IREventType'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/NCIntermediateRepresentation.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Type '\"RAPID_TRAVERSE\" | \"LINEAR_FEED\"' is not assignable to type 'IREventType'.\n  Type '\"RAPID_TRAVERSE\"' is not assignable to type 'IREventType'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/NCIntermediateRepresentation.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Type '\"DWELL\"' is not assignable to type 'IREventType'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/NCIntermediateRepresentation.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Type '\"RTCP_DISABLE\"' is not assignable to type 'IREventType'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/NCIntermediateRepresentation.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Type '\"OPERATION_END\"' is not assignable to type 'IREventType'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/NCIntermediateRepresentation.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Type '\"PROGRAM_FOOTER\"' is not assignable to type 'IREventType'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/NCIntermediateRepresentation.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'eventId' does not exist on type 'IREvent'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/NCIntermediateRepresentation.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Object literal may only specify known properties, and 'irId' does not exist in type 'NCIntermediateRepresentation'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/PostBenchmarks.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Object literal may only specify known properties, but 'toolId' does not exist in type 'ToolSnapshot'. Did you mean to write 'toolUUID'?"
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/PostBenchmarks.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Type '\"M8_FLOOD\"' is not assignable to type 'CoolantState'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/PostBenchmarks.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Type '\"M8_FLOOD\"' is not assignable to type 'CoolantState'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/PostBenchmarks.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Type '\"M88_THROUGH_SPINDLE\"' is not assignable to type 'CoolantState'. Did you mean '\"THROUGH_SPINDLE\"'?"
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/PostBenchmarks.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Type '\"M8_FLOOD\"' is not assignable to type 'CoolantState'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/PostBenchmarks.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Type '\"M8_FLOOD\"' is not assignable to type 'CoolantState'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/PostBenchmarks.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Type '\"M8_FLOOD\"' is not assignable to type 'CoolantState'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/PostBenchmarks.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Type '\"M88_THROUGH_SPINDLE\"' is not assignable to type 'CoolantState'. Did you mean '\"THROUGH_SPINDLE\"'?"
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/PostBenchmarks.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Type '\"M8_FLOOD\"' is not assignable to type 'CoolantState'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/PostBenchmarks.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Parameter 'e' implicitly has an 'any' type."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/PostBenchmarks.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'enableSafetyBlocks' does not exist on type 'PostConfiguration'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/PostBenchmarks.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'enableModalOptimization' does not exist on type 'PostConfiguration'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/PostBenchmarks.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Type '\"M8_FLOOD\" | \"M88_THROUGH_SPINDLE\"' is not assignable to type 'CoolantState'.\n  Type '\"M8_FLOOD\"' is not assignable to type 'CoolantState'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/PostEvidenceGenerator.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'postHash' does not exist on type 'PostProcessorDefinition'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/PostEvidenceGenerator.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'entityHash' does not exist on type 'MachineDefinition'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/PostEvidenceGenerator.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'postHash' does not exist on type 'PostProcessorDefinition'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/PostEvidenceGenerator.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'entityHash' does not exist on type 'MachineDefinition'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/PostProcessorEngine.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Argument of type 'string' is not assignable to parameter of type 'UnitsMode | undefined'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/PostProcessorEngine.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "This comparison appears to be unintentional because the types 'IREventType' and '\"OPERATION_START\"' have no overlap."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/PostProcessorEngine.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'sourceOperationId' does not exist on type 'IREvent'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/PostProcessorEngine.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'sourceOperationId' does not exist on type 'IREvent'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/PostProcessorEngine.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'targetPosition' does not exist on type 'IREvent'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/PostProcessorEngine.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "This comparison appears to be unintentional because the types 'IREventType' and '\"OPERATION_END\"' have no overlap."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/PostProcessorEngine.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'rawText' does not exist on type 'NCBlock'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/PostProcessorEngine.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'totalRapidDistanceMm' does not exist on type 'NCIntermediateRepresentation'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/PostProcessorEngine.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'totalCuttingDistanceMm' does not exist on type 'NCIntermediateRepresentation'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/PostProcessorEngine.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'toolsUsed' does not exist on type 'NCIntermediateRepresentation'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/PostProcessorEngine.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'irHash' does not exist on type 'NCIntermediateRepresentation'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/PostProcessorEngine.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'irHash' does not exist on type 'NCIntermediateRepresentation'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/PostProcessorWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Object literal may only specify known properties, but 'toolId' does not exist in type 'ToolSnapshot'. Did you mean to write 'toolUUID'?"
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/PostProcessorWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Object literal may only specify known properties, but 'toolId' does not exist in type 'ToolSnapshot'. Did you mean to write 'toolUUID'?"
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/PostProcessorWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Type '\"M8_FLOOD\"' is not assignable to type 'CoolantState'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/PostProcessorWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Type '\"M8_FLOOD\"' is not assignable to type 'CoolantState'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/PostProcessorWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Type '\"M88_THROUGH_SPINDLE\"' is not assignable to type 'CoolantState'. Did you mean '\"THROUGH_SPINDLE\"'?"
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/PostProcessorWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Type '\"M8_FLOOD\"' is not assignable to type 'CoolantState'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/PostProcessorWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Type '\"M88_THROUGH_SPINDLE\"' is not assignable to type 'CoolantState'. Did you mean '\"THROUGH_SPINDLE\"'?"
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/PostProcessorWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'name' does not exist on type 'MachineDefinition'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/PostProcessorWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'machineType' does not exist on type 'MachineDefinition'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/PostProcessorWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'axes' does not exist on type 'MachineDefinition'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/PostProcessorWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'axes' does not exist on type 'MachineDefinition'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/PostProcessorWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'axes' does not exist on type 'MachineDefinition'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/PostProcessorWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'axes' does not exist on type 'MachineDefinition'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/PostProcessorWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'axes' does not exist on type 'MachineDefinition'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/PostProcessorWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'axes' does not exist on type 'MachineDefinition'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/PostProcessorWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'spindle' does not exist on type 'MachineDefinition'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/PostProcessorWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'axes' does not exist on type 'MachineDefinition'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/PostProcessorWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'name' does not exist on type 'PostProcessorDefinition'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/PostProcessorWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'sequenceNumber' does not exist on type 'NCBlock'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/PostProcessorWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'rawText' does not exist on type 'NCBlock'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/PostProcessorWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'commandType' does not exist on type 'NCBlock'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/PostProcessorWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'sourceOperationName' does not exist on type 'NCBlock'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/PostProcessorWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'sourceOperationName' does not exist on type 'NCBlock'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/PostProcessorWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'sourceToolpathSegmentId' does not exist on type 'NCBlock'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/PostProcessorWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'sourceToolpathSegmentId' does not exist on type 'NCBlock'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/PostProcessorWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'modalStateAfter' does not exist on type 'NCBlock'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/PostProcessorWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'modalStateAfter' does not exist on type 'NCBlock'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/PostProcessorWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'modalStateAfter' does not exist on type 'NCBlock'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/PostProcessorWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'modalStateAfter' does not exist on type 'NCBlock'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/PostProcessorWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'modalStateAfter' does not exist on type 'NCBlock'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/PostProcessorWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'modalStateAfter' does not exist on type 'NCBlock'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/PostProcessorWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'modalStateAfter' does not exist on type 'NCBlock'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/PostProcessorWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'modalStateAfter' does not exist on type 'NCBlock'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/PostProcessorWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'modalStateAfter' does not exist on type 'NCBlock'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/PostProcessorWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'modalStateAfter' does not exist on type 'NCBlock'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/PostProcessorWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'modalStateAfter' does not exist on type 'NCBlock'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/PostProcessorWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'modalStateAfter' does not exist on type 'NCBlock'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/PostProcessorWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'modalStateAfter' does not exist on type 'NCBlock'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/PostProcessorWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'modalStateAfter' does not exist on type 'NCBlock'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/PostProcessorWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'modalStateAfter' does not exist on type 'NCBlock'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/PostProcessorWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'modalStateAfter' does not exist on type 'NCBlock'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/PostProcessorWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'ncProgramHash' does not exist on type 'PostProcessingEvidence'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/PostProcessorWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'postDefinitionHash' does not exist on type 'PostProcessingEvidence'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/PostProcessorWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'machineHash' does not exist on type 'PostProcessingEvidence'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/post-processor/PostProcessorWorkspace.tsx",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'provenanceDigestSha256' does not exist on type 'PostProcessingEvidence'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/stock/HardAcceptanceGate260.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Object literal may only specify known properties, and 'axis' does not exist in type 'SweptSamplePoint'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/stock/HardAcceptanceGate260.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Object literal may only specify known properties, and 'axis' does not exist in type 'SweptSamplePoint'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/tool-library/ToolBenchmarks.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Argument of type 'CAMTool' is not assignable to parameter of type '{ toolId: string; name: string; type: ToolType; geometry: ToolGeometryModel; dimensions: ToolDimensions; }'.\n  Property 'dimensions' is missing in type 'CAMTool' but required in type '{ toolId: string; name: string; type: ToolType; geometry: ToolGeometryModel; dimensions: ToolDimensions; }'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/tool-library/ToolBenchmarks.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Argument of type 'CAMTool' is not assignable to parameter of type '{ toolId: string; name: string; type: ToolType; dimensions: ToolDimensions; geometry: ToolGeometryModel; }'.\n  Property 'dimensions' is missing in type 'CAMTool' but required in type '{ toolId: string; name: string; type: ToolType; dimensions: ToolDimensions; geometry: ToolGeometryModel; }'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/tool-library/ToolBenchmarks.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'generateEvidence' does not exist on type 'typeof ToolEvidenceGenerator'. Did you mean 'generateToolEvidence'?"
+  },
+  {
+    "file": "/app/applet/src/engine/cam/tool-library/ToolBenchmarks.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Argument of type 'CAMTool' is not assignable to parameter of type '{ toolId: string; name: string; type: ToolType; geometry: ToolGeometryModel; dimensions: ToolDimensions; }'.\n  Property 'dimensions' is missing in type 'CAMTool' but required in type '{ toolId: string; name: string; type: ToolType; geometry: ToolGeometryModel; dimensions: ToolDimensions; }'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/tool-library/ToolBenchmarks.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'generateEvidence' does not exist on type 'typeof ToolEvidenceGenerator'. Did you mean 'generateToolEvidence'?"
+  },
+  {
+    "file": "/app/applet/src/engine/cam/tool-library/ToolBenchmarks.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Argument of type 'CAMTool' is not assignable to parameter of type '{ toolId: string; name: string; type: ToolType; dimensions: ToolDimensions; geometry: ToolGeometryModel; }'.\n  Property 'dimensions' is missing in type 'CAMTool' but required in type '{ toolId: string; name: string; type: ToolType; dimensions: ToolDimensions; geometry: ToolGeometryModel; }'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/tool-library/ToolBenchmarks.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'generateEvidence' does not exist on type 'typeof ToolEvidenceGenerator'. Did you mean 'generateToolEvidence'?"
+  },
+  {
+    "file": "/app/applet/src/engine/cam/tool-library/ToolLibraryEngine.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'generateEvidence' does not exist on type 'typeof ToolEvidenceGenerator'. Did you mean 'generateToolEvidence'?"
+  },
+  {
+    "file": "/app/applet/src/engine/cam/toolpath/ThreeAxisToolpathEngine.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'HOLE_SIMPLE' does not exist on type 'typeof ManufacturingFeatureType'."
+  },
+  {
+    "file": "/app/applet/src/engine/cam/toolpath/ThreeAxisToolpathEngine.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'POCKET_RECTANGULAR' does not exist on type 'typeof ManufacturingFeatureType'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineeringCore/ElectrothermalSolver.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Parameter 'c' implicitly has an 'any' type."
+  },
+  {
+    "file": "/app/applet/src/engine/engineeringCore/ElectrothermalSolver.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Parameter 'c' implicitly has an 'any' type."
+  },
+  {
+    "file": "/app/applet/src/engine/engineeringCore/ElectrothermalSolver.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Object literal may only specify known properties, and 'prescribedTemperatures' does not exist in type 'PcbThermalBoardConfig'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineeringCore/ElectrothermalSolver.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'prescribedTemperatures' does not exist on type 'PcbThermalBoardConfig'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineeringCore/ElectrothermalSolver.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'prescribedTemperatures' does not exist on type 'PcbThermalBoardConfig'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineeringCore/ElectrothermalSolver.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Parameter 'p' implicitly has an 'any' type."
+  },
+  {
+    "file": "/app/applet/src/engine/engineeringCore/ElectrothermalSolver.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'ambientTemperatureC' does not exist on type 'PcbThermalBoardConfig'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineeringCore/NodalCircuitSolver.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Parameter 'c' implicitly has an 'any' type."
+  },
+  {
+    "file": "/app/applet/src/engine/engineeringCore/NodalCircuitSolver.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Parameter 'a' implicitly has an 'any' type."
+  },
+  {
+    "file": "/app/applet/src/engine/engineeringCore/NodalCircuitSolver.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Parameter 'b' implicitly has an 'any' type."
+  },
+  {
+    "file": "/app/applet/src/engine/engineeringCore/NodalCircuitSolver.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Parameter 'c' implicitly has an 'any' type."
+  },
+  {
+    "file": "/app/applet/src/engine/engineeringCore/NodalCircuitSolver.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Parameter 'vs' implicitly has an 'any' type."
+  },
+  {
+    "file": "/app/applet/src/engine/engineeringCore/NodalCircuitSolver.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Parameter 'k' implicitly has an 'any' type."
+  },
+  {
+    "file": "/app/applet/src/engine/engineeringCore/NodalCircuitSolver.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Parameter 'vs' implicitly has an 'any' type."
+  },
+  {
+    "file": "/app/applet/src/engine/engineeringCore/NodalCircuitSolver.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Parameter 'k' implicitly has an 'any' type."
+  },
+  {
+    "file": "/app/applet/src/engine/engineeringCore/NodalCircuitSolver.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Parameter 'c' implicitly has an 'any' type."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/ComputeBackend.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'gpu' does not exist on type 'Navigator'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/GPUKernelRegistry.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'buffer' does not exist on type 'number[] | Float32Array<ArrayBufferLike>'.\n  Property 'buffer' does not exist on type 'number[]'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/GPUKernelRegistry.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'byteOffset' does not exist on type 'number[] | Float32Array<ArrayBufferLike>'.\n  Property 'byteOffset' does not exist on type 'number[]'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/GPUKernelRegistry.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'buffer' does not exist on type 'number[] | Float32Array<ArrayBufferLike>'.\n  Property 'buffer' does not exist on type 'number[]'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/GPUKernelRegistry.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'byteOffset' does not exist on type 'number[] | Float32Array<ArrayBufferLike>'.\n  Property 'byteOffset' does not exist on type 'number[]'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/GPUKernelRegistry.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'buffer' does not exist on type 'number[] | Float32Array<ArrayBufferLike>'.\n  Property 'buffer' does not exist on type 'number[]'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/GPUKernelRegistry.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'byteOffset' does not exist on type 'number[] | Float32Array<ArrayBufferLike>'.\n  Property 'byteOffset' does not exist on type 'number[]'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/HardAcceptanceGate296.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'detectCapabilities' does not exist on type 'WebGPUComputeBackend'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/HardAcceptanceGate296.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'getCapabilities' does not exist on type 'WebGPUComputeBackend'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/HardAcceptanceGate296.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'initialize' does not exist on type 'WebGPUComputeBackend'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/HardAcceptanceGate296.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'getTruthState' does not exist on type 'WebGPUComputeBackend'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/HardAcceptanceGate296.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'createManagedBuffer' does not exist on type 'typeof GPUBufferManager'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/HardAcceptanceGate296.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'releaseBuffer' does not exist on type 'typeof GPUBufferManager'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/HardAcceptanceGate296.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'createManagedBuffer' does not exist on type 'typeof GPUBufferManager'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/HardAcceptanceGate296.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'uploadToBuffer' does not exist on type 'typeof GPUBufferManager'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/HardAcceptanceGate296.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'releaseBuffer' does not exist on type 'typeof GPUBufferManager'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/HardAcceptanceGate296.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'generateTestVector' does not exist on type 'typeof WebGPUBenchmarkHarness'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/HardAcceptanceGate296.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'generateTestVector' does not exist on type 'typeof WebGPUBenchmarkHarness'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/HardAcceptanceGate296.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'executeJob' does not exist on type 'typeof BackendSelector'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/HardAcceptanceGate296.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'generateTestVector' does not exist on type 'typeof WebGPUBenchmarkHarness'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/HardAcceptanceGate296.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'executeJob' does not exist on type 'typeof BackendSelector'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/HardAcceptanceGate296.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'generateTestVector' does not exist on type 'typeof WebGPUBenchmarkHarness'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/HardAcceptanceGate296.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'executeJob' does not exist on type 'typeof BackendSelector'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/HardAcceptanceGate296.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'generateMatrix' does not exist on type 'typeof WebGPUBenchmarkHarness'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/HardAcceptanceGate296.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'generateMatrix' does not exist on type 'typeof WebGPUBenchmarkHarness'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/HardAcceptanceGate296.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'executeJob' does not exist on type 'typeof BackendSelector'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/HardAcceptanceGate296.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'generateTestVector' does not exist on type 'typeof WebGPUBenchmarkHarness'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/HardAcceptanceGate296.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'generateTestVector' does not exist on type 'typeof WebGPUBenchmarkHarness'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/HardAcceptanceGate296.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'executeJob' does not exist on type 'typeof BackendSelector'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/HardAcceptanceGate296.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'generateTestVector' does not exist on type 'typeof WebGPUBenchmarkHarness'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/HardAcceptanceGate296.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'generateTestVector' does not exist on type 'typeof WebGPUBenchmarkHarness'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/HardAcceptanceGate296.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'executeJob' does not exist on type 'typeof BackendSelector'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/HardAcceptanceGate296.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'generateTestVector' does not exist on type 'typeof WebGPUBenchmarkHarness'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/HardAcceptanceGate296.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'generateTestVector' does not exist on type 'typeof WebGPUBenchmarkHarness'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/HardAcceptanceGate296.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'executeJob' does not exist on type 'typeof BackendSelector'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/HardAcceptanceGate296.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'outputData' does not exist on type 'Float32Array<ArrayBufferLike>'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/HardAcceptanceGate296.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'outputData' does not exist on type 'Float32Array<ArrayBufferLike>'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/HardAcceptanceGate296.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'outputData' does not exist on type 'Float32Array<ArrayBufferLike>'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/HardAcceptanceGate296.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'outputData' does not exist on type 'Float32Array<ArrayBufferLike>'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/HardAcceptanceGate296.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'outputData' does not exist on type 'Float32Array<ArrayBufferLike>'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/HardAcceptanceGate296.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'outputData' does not exist on type 'Float32Array<ArrayBufferLike>'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/HardAcceptanceGate296.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'outputData' does not exist on type 'Float32Array<ArrayBufferLike>'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/HardAcceptanceGate296.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'outputData' does not exist on type 'Float32Array<ArrayBufferLike>'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/HardAcceptanceGate296.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'generateTestVector' does not exist on type 'typeof WebGPUBenchmarkHarness'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/HardAcceptanceGate296.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'generateTestVector' does not exist on type 'typeof WebGPUBenchmarkHarness'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/HardAcceptanceGate296.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'outputHash' does not exist on type 'Float32Array<ArrayBufferLike>'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/HardAcceptanceGate296.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'outputHash' does not exist on type 'Float32Array<ArrayBufferLike>'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/HardAcceptanceGate296.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'outputHash' does not exist on type 'Float32Array<ArrayBufferLike>'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/HardAcceptanceGate296.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'releaseAllBuffers' does not exist on type 'typeof GPUBufferManager'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/HardAcceptanceGate296.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'getMemoryDiagnostics' does not exist on type 'typeof GPUBufferManager'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/HardAcceptanceGate296.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'createManagedBuffer' does not exist on type 'typeof GPUBufferManager'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/HardAcceptanceGate296.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'createManagedBuffer' does not exist on type 'typeof GPUBufferManager'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/HardAcceptanceGate296.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'readbackBuffer' does not exist on type 'typeof GPUBufferManager'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/HardAcceptanceGate296.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'actualBackend' does not exist on type 'Float32Array<ArrayBufferLike>'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/HardAcceptanceGate296.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'truthState' does not exist on type 'Float32Array<ArrayBufferLike>'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/HardAcceptanceGate296.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'actualBackend' does not exist on type 'Float32Array<ArrayBufferLike>'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/HardAcceptanceGate296.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'actualBackend' does not exist on type 'Float32Array<ArrayBufferLike>'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/HardAcceptanceGate296.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'truthState' does not exist on type 'Float32Array<ArrayBufferLike>'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/HardAcceptanceGate296.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'fallbackInfo' does not exist on type 'Float32Array<ArrayBufferLike>'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/HardAcceptanceGate296.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'actualBackend' does not exist on type 'Float32Array<ArrayBufferLike>'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/HardAcceptanceGate296.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'provenance' does not exist on type 'Float32Array<ArrayBufferLike>'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/HardAcceptanceGate296.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'provenance' does not exist on type 'Float32Array<ArrayBufferLike>'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/HardAcceptanceGate296.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'releaseAllBuffers' does not exist on type 'typeof GPUBufferManager'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/HardAcceptanceGate296.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'getMemoryDiagnostics' does not exist on type 'typeof GPUBufferManager'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/HardAcceptanceGate296.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'DEFAULT_LIMITS' does not exist on type 'typeof GPUBufferManager'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/HardAcceptanceGate296.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'setBackendMode' does not exist on type 'typeof BackendSelector'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/HardAcceptanceGate296.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'getBackendMode' does not exist on type 'typeof BackendSelector'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/HardAcceptanceGate296.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'setBackendMode' does not exist on type 'typeof BackendSelector'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/HardAcceptanceGate296.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'getCapabilities' does not exist on type 'WebGPUComputeBackend'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/HardAcceptanceGate296.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'generateTestVector' does not exist on type 'typeof WebGPUBenchmarkHarness'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/HardAcceptanceGate296.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'generateTestVector' does not exist on type 'typeof WebGPUBenchmarkHarness'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/HardAcceptanceGate296.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'runBenchmarkCase' does not exist on type 'typeof WebGPUBenchmarkHarness'. Did you mean 'runBenchmark'?"
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/HardAcceptanceGate296.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'timing' does not exist on type 'Float32Array<ArrayBufferLike>'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/HardAcceptanceGate296.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'timing' does not exist on type 'Float32Array<ArrayBufferLike>'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/HardAcceptanceGate296.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'timing' does not exist on type 'Float32Array<ArrayBufferLike>'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/HardAcceptanceGate296.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'timing' does not exist on type 'Float32Array<ArrayBufferLike>'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/HardAcceptanceGate296.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'timing' does not exist on type 'Float32Array<ArrayBufferLike>'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/HardAcceptanceGate296.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'timing' does not exist on type 'Float32Array<ArrayBufferLike>'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/HardAcceptanceGate296.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'generateTestVector' does not exist on type 'typeof WebGPUBenchmarkHarness'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/HardAcceptanceGate296.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'generateTestVector' does not exist on type 'typeof WebGPUBenchmarkHarness'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/HardAcceptanceGate296.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'executeJob' does not exist on type 'typeof BackendSelector'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/HardAcceptanceGate296.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'provenance' does not exist on type 'Float32Array<ArrayBufferLike>'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/HardAcceptanceGate296.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Argument of type 'Float32Array<ArrayBufferLike>' is not assignable to parameter of type 'ComputeJobResult'.\n  Type 'Float32Array<ArrayBufferLike>' is missing the following properties from type 'ComputeJobResult': jobId, kernelId, kernelVersion, requestedBackend, and 11 more."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/HardAcceptanceGate296.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Argument of type 'Float32Array<ArrayBufferLike>' is not assignable to parameter of type 'ComputeJobResult'.\n  Type 'Float32Array<ArrayBufferLike>' is missing the following properties from type 'ComputeJobResult': jobId, kernelId, kernelVersion, requestedBackend, and 11 more."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/HardAcceptanceGate296.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'createManagedBuffer' does not exist on type 'typeof GPUBufferManager'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/HardAcceptanceGate296.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'createManagedBuffer' does not exist on type 'typeof GPUBufferManager'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/HardAcceptanceGate296.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'releaseJobBuffers' does not exist on type 'typeof GPUBufferManager'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/HardAcceptanceGate296.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'getMemoryDiagnostics' does not exist on type 'typeof GPUBufferManager'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/HardAcceptanceGate296.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Parameter 'b' implicitly has an 'any' type."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/HardAcceptanceGate296.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Parameter 'b' implicitly has an 'any' type."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/HardAcceptanceGate296.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'releaseJobBuffers' does not exist on type 'typeof GPUBufferManager'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/HardAcceptanceGate296.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'outputData' does not exist on type 'Float32Array<ArrayBufferLike>'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/HardAcceptanceGate296.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'outputData' does not exist on type 'Float32Array<ArrayBufferLike>'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/HardAcceptanceGate296.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'dispose' does not exist on type 'WebGPUComputeBackend'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/HardAcceptanceGate296.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'getTruthState' does not exist on type 'WebGPUComputeBackend'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/HardAcceptanceGate296.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'initialize' does not exist on type 'WebGPUComputeBackend'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/WebGPUBenchmarkHarness.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "'navigator.gpu' is of type 'unknown'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/WebGPUBenchmarkHarness.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Type '{ vendor: any; architecture: any; device: any; description: any; } | undefined' is not assignable to type 'WebGPUAdapterInfo'.\n  Type 'undefined' is not assignable to type 'WebGPUAdapterInfo'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/WebGPUBenchmarkHarness.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'requestAdapter' does not exist on type '{}'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/WebGPUEvidenceGenerator.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'addNode' does not exist on type 'DigitalThreadService'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/WebGPUEvidenceGenerator.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'addEdge' does not exist on type 'DigitalThreadService'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/cfd/HardAcceptanceGate299.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Object literal may only specify known properties, and 'timestamp' does not exist in type 'Gate299Report'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/linear_algebra/GPULinearAlgebraBackend.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'getTruthState' does not exist on type 'CPUBackend'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/linear_algebra/GPULinearAlgebraBackend.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'getTruthState' does not exist on type 'WebGPUComputeBackend'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/linear_algebra/GPULinearAlgebraBackend.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'getTruthState' does not exist on type 'WebGPUComputeBackend'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/linear_algebra/GPULinearAlgebraBackend.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'outputData' does not exist on type 'Float32Array<ArrayBufferLike>'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/linear_algebra/GPULinearAlgebraBackend.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'timing' does not exist on type 'Float32Array<ArrayBufferLike>'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/linear_algebra/GPULinearAlgebraBackend.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'outputData' does not exist on type 'Float32Array<ArrayBufferLike>'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/linear_algebra/GPULinearAlgebraBackend.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'timing' does not exist on type 'Float32Array<ArrayBufferLike>'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/linear_algebra/GPULinearAlgebraBackend.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'outputData' does not exist on type 'Float32Array<ArrayBufferLike>'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/linear_algebra/GPULinearAlgebraBackend.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'outputData' does not exist on type 'Float32Array<ArrayBufferLike>'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/linear_algebra/GPULinearAlgebraBackend.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'timing' does not exist on type 'Float32Array<ArrayBufferLike>'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/linear_algebra/GPULinearAlgebraBackend.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'outputData' does not exist on type 'Float32Array<ArrayBufferLike>'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/linear_algebra/GPULinearAlgebraBackend.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'outputData' does not exist on type 'Float32Array<ArrayBufferLike>'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/linear_algebra/GPULinearAlgebraBackend.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'timing' does not exist on type 'Float32Array<ArrayBufferLike>'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/linear_algebra/GPULinearAlgebraBackend.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'outputData' does not exist on type 'Float32Array<ArrayBufferLike>'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/linear_algebra/GPULinearAlgebraBackend.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'timing' does not exist on type 'Float32Array<ArrayBufferLike>'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/linear_algebra/GPULinearAlgebraBackend.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'outputData' does not exist on type 'Float32Array<ArrayBufferLike>'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/linear_algebra/GPULinearAlgebraBackend.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'timing' does not exist on type 'Float32Array<ArrayBufferLike>'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/linear_algebra/GPULinearAlgebraBackend.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'outputData' does not exist on type 'Float32Array<ArrayBufferLike>'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/linear_algebra/GPULinearAlgebraBackend.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'timing' does not exist on type 'Float32Array<ArrayBufferLike>'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/linear_algebra/GPULinearAlgebraBackend.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'outputData' does not exist on type 'Float32Array<ArrayBufferLike>'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/linear_algebra/GPULinearAlgebraBackend.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'timing' does not exist on type 'Float32Array<ArrayBufferLike>'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/linear_algebra/GPULinearAlgebraBackend.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'outputData' does not exist on type 'Float32Array<ArrayBufferLike>'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/linear_algebra/GPULinearAlgebraBackend.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'outputData' does not exist on type 'Float32Array<ArrayBufferLike>'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/linear_algebra/GPULinearAlgebraBackend.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'timing' does not exist on type 'Float32Array<ArrayBufferLike>'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/linear_algebra/GPULinearAlgebraBackend.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'outputData' does not exist on type 'Float32Array<ArrayBufferLike>'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/linear_algebra/GPULinearAlgebraBackend.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'outputData' does not exist on type 'Float32Array<ArrayBufferLike>'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/linear_algebra/GPULinearAlgebraBackend.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'outputData' does not exist on type 'Float32Array<ArrayBufferLike>'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/linear_algebra/GPULinearAlgebraBackend.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'timing' does not exist on type 'Float32Array<ArrayBufferLike>'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/linear_algebra/GPULinearAlgebraBackend.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'outputData' does not exist on type 'Float32Array<ArrayBufferLike>'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/linear_algebra/GPULinearAlgebraBackend.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'timing' does not exist on type 'Float32Array<ArrayBufferLike>'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/linear_algebra/GPULinearAlgebraEvidenceGenerator.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'recordEntityEvent' does not exist on type 'typeof DigitalThreadService'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/linear_algebra/GPUReductionEngine.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'getTruthState' does not exist on type 'WebGPUComputeBackend'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/linear_algebra/GPUReductionEngine.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'outputData' does not exist on type 'Float32Array<ArrayBufferLike>'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/linear_algebra/HardAcceptanceGate297.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'getMemoryDiagnostics' does not exist on type 'typeof GPUBufferManager'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/meshing/CADGeometryGenerator.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Type '\"BOX_WITH_HOLE\"' is not assignable to type '\"PLANE\" | \"CYLINDER\" | \"SPHERE\" | \"CONE\" | \"NURBS\" | \"HIGH_CURVATURE\"'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/meshing/CADGeometryGenerator.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Type '\"THIN_BODY\"' is not assignable to type '\"PLANE\" | \"CYLINDER\" | \"SPHERE\" | \"CONE\" | \"NURBS\" | \"HIGH_CURVATURE\"'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/meshing/GPUMeshKernelRegistry.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Type '\"MESH_SMOOTHING\"' is not assignable to type 'MeshKernelType'."
+  },
+  {
+    "file": "/app/applet/src/engine/engineering_webgpu/meshing/GPUMeshingBenchmark.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Object literal may only specify known properties, and 'vertexCount' does not exist in type 'MeshBenchmarkMetrics'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/assembly/ConstraintAssembler.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'getRowEntries' does not exist on type 'CSRStorage'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/assembly/ConstraintAssembler.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'getRowEntries' does not exist on type 'CSRStorage'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/assembly/GlobalStiffnessAssembler.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'toDense' does not exist on type 'CSRStorage'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/assembly/HardAcceptanceGate234.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Object literal may only specify known properties, and 'boundaryTags' does not exist in type 'FEMNode'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/assembly/HardAcceptanceGate234.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Object literal may only specify known properties, and 'boundaryTags' does not exist in type 'FEMNode'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/assembly/HardAcceptanceGate234.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Object literal may only specify known properties, and 'boundaryTags' does not exist in type 'FEMNode'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/assembly/HardAcceptanceGate234.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Object literal may only specify known properties, and 'boundaryTags' does not exist in type 'FEMNode'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/assembly/SparseMatrixBuilder.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'getRowEntries' does not exist on type 'CSRStorage'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/assembly/benchmarks/Bar1DBenchmark.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Object literal may only specify known properties, and 'boundaryTags' does not exist in type 'FEMNode'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/assembly/benchmarks/CantileverBeamBenchmark.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Object literal may only specify known properties, and 'boundaryTags' does not exist in type 'FEMNode'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/assembly/benchmarks/PatchTestBenchmark.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Object literal may only specify known properties, and 'boundaryTags' does not exist in type 'FEMNode'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/assembly/benchmarks/PatchTestBenchmark.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Object literal may only specify known properties, and 'boundaryTags' does not exist in type 'FEMNode'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/assembly/benchmarks/PatchTestBenchmark.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Object literal may only specify known properties, and 'boundaryTags' does not exist in type 'FEMNode'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/assembly/benchmarks/PatchTestBenchmark.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Object literal may only specify known properties, and 'boundaryTags' does not exist in type 'FEMNode'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/assembly/benchmarks/PatchTestBenchmark.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Object literal may only specify known properties, and 'boundaryTags' does not exist in type 'FEMNode'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/core/AsBuiltMaterialStateEngine.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'evaluateProperty' does not exist on type 'SpatialMaterialField'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/core/ConstitutiveModel.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Cannot find module '../MathUtils' or its corresponding type declarations."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/core/ConstitutiveModel.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Cannot find module '../FEMTypes' or its corresponding type declarations."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/core/GeometryMaterialValidator.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'canonicalGeometryId' does not exist on type 'SpatialMaterialField'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/core/GeometryMaterialValidator.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'canonicalGeometryId' does not exist on type 'SpatialMaterialField'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/core/GeometryMaterialValidator.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'canonicalGeometryId' does not exist on type 'SpatialMaterialField'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/core/GeometryMaterialValidator.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'canonicalRevisionId' does not exist on type 'SpatialMaterialField'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/core/GeometryMaterialValidator.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'canonicalRevisionId' does not exist on type 'SpatialMaterialField'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/core/GeometryMaterialValidator.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'canonicalRevisionId' does not exist on type 'SpatialMaterialField'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/core/GeometryMaterialValidator.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'domain' does not exist on type 'SpatialMaterialField'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/core/GeometryMaterialValidator.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'domain' does not exist on type 'SpatialMaterialField'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/core/GeometryMaterialValidator.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'domain' does not exist on type 'SpatialMaterialField'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/core/GeometryMaterialValidator.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'domain' does not exist on type 'SpatialMaterialField'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/core/GeometryMaterialValidator.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'domain' does not exist on type 'SpatialMaterialField'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/core/GeometryMaterialValidator.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'domain' does not exist on type 'SpatialMaterialField'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/core/GeometryMaterialValidator.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'domain' does not exist on type 'SpatialMaterialField'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/core/GeometryMaterialValidator.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'domain' does not exist on type 'SpatialMaterialField'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/core/GeometryMaterialValidator.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'domain' does not exist on type 'SpatialMaterialField'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/core/HyperelasticNeoHookean3D.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Object literal may only specify known properties, and 'alpha' does not exist in type 'IntegrationPointState'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/core/HyperelasticNeoHookean3D.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'alpha' does not exist on type 'IntegrationPointState'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/core/MaterialTruthThreadEngine.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'propertyName' does not exist on type 'SpatialMaterialField'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/core/MaterialTruthThreadEngine.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'baseValue' does not exist on type 'SpatialMaterialField'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/core/MaterialTruthThreadEngine.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'evaluationMode' does not exist on type 'SpatialMaterialField'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/core/MaterialTruthThreadEngine.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'revision' does not exist on type 'SpatialMaterialField'. Did you mean 'revisionId'?"
+  },
+  {
+    "file": "/app/applet/src/engine/fem/core/MaterialTruthThreadEngine.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'computeHash' does not exist on type 'SpatialMaterialField'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/core/MaterialTruthThreadEngine.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'computeHash' does not exist on type 'SpatialMaterialField'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/core/MaterialTruthThreadEngine.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'propertyName' does not exist on type 'SpatialMaterialField'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/core/MaterialTruthThreadEngine.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'revision' does not exist on type 'SpatialMaterialField'. Did you mean 'revisionId'?"
+  },
+  {
+    "file": "/app/applet/src/engine/fem/core/MaterialTruthThreadEngine.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'measurementDatasetId' does not exist on type 'AsBuiltMaterialState'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/core/MaterialTruthThreadEngine.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'measurementDatasetId' does not exist on type 'AsBuiltMaterialState'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/core/MaterialTruthThreadEngine.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'measurementMethodId' does not exist on type 'AsBuiltMaterialState'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/core/MaterialTruthThreadEngine.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'reconstructedFields' does not exist on type 'AsBuiltMaterialState'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/core/MaterialTruthThreadEngine.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'deviationId' does not exist on type 'SpatialMaterialDeviationResult'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/core/MaterialTruthThreadEngine.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'conformanceDecision' does not exist on type 'SpatialMaterialDeviationResult'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/core/MaterialTruthThreadEngine.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'conformanceDecision' does not exist on type 'SpatialMaterialDeviationResult'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/core/TET4LargeDeformationFormulation.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Type '\"dimensionless (Green-Lagrange)\"' is not assignable to type '\"dimensionless\"'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/core/TET4LargeDeformationFormulation.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Type '\"MPa (Cauchy)\"' is not assignable to type '\"MPa\" | \"Pa\"'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/core/TET4LargeDeformationPlasticFormulation.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Object literal may only specify known properties, and 'yieldFlag' does not exist in type 'IntegrationPointState'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/core/TET4LargeDeformationPlasticFormulation.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Object literal may only specify known properties, and 'yieldFlag' does not exist in type 'IntegrationPointState'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/elements/ElementRegistry.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'formulationVersion' does not exist on type 'typeof BAR2Element'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/elements/ElementRegistry.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'formulationVersion' does not exist on type 'typeof TRI3Element'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/elements/ElementRegistry.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'formulationVersion' does not exist on type 'typeof QUAD4Element'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/elements/ElementRegistry.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'formulationVersion' does not exist on type 'typeof TET4Element'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/elements/ElementRegistry.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'formulationVersion' does not exist on type 'typeof ShellElement'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/elements/ElementVerificationEngine.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'Ke' does not exist on type '{ Ke: Matrix; stiffnessMatrix: Matrix; } | ElementComputedStiffness'.\n  Property 'Ke' does not exist on type 'ElementComputedStiffness'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/elements/ElementVerificationEngine.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'length' does not exist on type 'never'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/elements/ElementVerificationEngine.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'length' does not exist on type 'never'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/elements/ElementVerificationEngine.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'Ke' does not exist on type '{ Ke: Matrix; stiffnessMatrix: Matrix; } | ElementComputedStiffness'.\n  Property 'Ke' does not exist on type 'ElementComputedStiffness'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/elements/ElementVerificationEngine.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'length' does not exist on type 'never'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/elements/ElementVerificationEngine.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'length' does not exist on type 'never'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/elements/ElementVerificationEngine.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'matrixHash' does not exist on type '{ Ke: Matrix; stiffnessMatrix: Matrix; } | ElementComputedStiffness'.\n  Property 'matrixHash' does not exist on type '{ Ke: Matrix; stiffnessMatrix: Matrix; }'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/elements/ElementVerificationEngine.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'matrixHash' does not exist on type '{ Ke: Matrix; stiffnessMatrix: Matrix; } | ElementComputedStiffness'.\n  Property 'matrixHash' does not exist on type '{ Ke: Matrix; stiffnessMatrix: Matrix; }'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/elements/HEX8Element.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Object literal may only specify known properties, and 'Ke' does not exist in type 'ElementComputedStiffness'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/elements/SolidElement.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Type '{ elementTypeId: string; formulationVersion: string; Ke: Matrix; stiffnessMatrix: Matrix; }' is missing the following properties from type 'ElementComputedStiffness': elementId, integrationRuleId, dofCount, matrixHash"
+  },
+  {
+    "file": "/app/applet/src/engine/fem/material/constitutive/HardAcceptanceGate233.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'evaluateDefinitionAt' does not exist on type 'TemperatureDependentMaterial'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/material/constitutive/HardAcceptanceGate233.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'evaluateStrainRateResponse' does not exist on type 'typeof StrainRateModelInterface'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/material/constitutive/MaterialConstitutiveLibrary.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Type '\"POLYMER\"' is not assignable to type '\"TITANIUM\" | \"ALUMINUM\" | \"STEEL\" | \"POLYMERS\" | \"CERAMICS\" | \"COMPOSITES\" | \"CONCRETE\"'. Did you mean '\"POLYMERS\"'?"
+  },
+  {
+    "file": "/app/applet/src/engine/fem/mesh/FEMMeshRefiner.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Object literal may only specify known properties, and 'boundaryTags' does not exist in type 'FEMNode'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/mesh/FEMMeshRefiner.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'boundaryTags' does not exist on type 'FEMNode'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/mesh/FEMMeshRefiner.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'boundaryTags' does not exist on type 'FEMNode'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/mesh/FEMMeshRefiner.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'regionIds' does not exist on type 'FEMNode'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/mesh/FEMMeshRefiner.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'regionIds' does not exist on type 'FEMNode'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/mesh/FEMMeshRefiner.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Object literal may only specify known properties, and 'boundaryTags' does not exist in type 'FEMNode'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/mesh/FEMMeshRefiner.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'regionIds' does not exist on type 'FEMNode'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/mesh/FEMMeshRefiner.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'calculateHashes' does not exist on type 'typeof FEMMeshDeterminism'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/mesh/HardAcceptanceGate231.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Object literal may only specify known properties, and 'boundaryTags' does not exist in type 'FEMNode'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/mesh/HardAcceptanceGate231.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Object literal may only specify known properties, and 'boundaryTags' does not exist in type 'FEMNode'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/mesh/HardAcceptanceGate231.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Object literal may only specify known properties, and 'boundaryTags' does not exist in type 'FEMNode'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/mesh/HardAcceptanceGate231.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Object literal may only specify known properties, and 'boundaryTags' does not exist in type 'FEMNode'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/mesh/HardAcceptanceGate231.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Object literal may only specify known properties, and 'boundaryTags' does not exist in type 'FEMNode'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/mesh/HardAcceptanceGate231.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Object literal may only specify known properties, and 'boundaryTags' does not exist in type 'FEMNode'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/nonlinear/NonlinearFEMEngine.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Argument of type '{ converged: boolean; iterationsCount: number; displacements: any; loadFactor: any; stressState: { vonMisesMax: number; }; plasticState: { maxEquivalentPlasticStrain: number; }; contactState: { ...; }; energy: { ...; }; }' is not assignable to parameter of type 'NonlinearStepResult'.\n  Type '{ converged: boolean; iterationsCount: number; displacements: any; loadFactor: any; stressState: { vonMisesMax: number; }; plasticState: { maxEquivalentPlasticStrain: number; }; contactState: { ...; }; energy: { ...; }; }' is missing the following properties from type 'NonlinearStepResult': stepIndex, reactionForces, convergenceHistory"
+  },
+  {
+    "file": "/app/applet/src/engine/fem/nonlinear/NonlinearFEMEngine.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Argument of type '{ converged: boolean; iterationsCount: number; displacements: any; loadFactor: any; stressState: { vonMisesMax: number; }; plasticState: { maxEquivalentPlasticStrain: number; }; contactState: { ...; }; energy: { ...; }; }' is not assignable to parameter of type 'NonlinearStepResult'.\n  Type '{ converged: boolean; iterationsCount: number; displacements: any; loadFactor: any; stressState: { vonMisesMax: number; }; plasticState: { maxEquivalentPlasticStrain: number; }; contactState: { ...; }; energy: { ...; }; }' is missing the following properties from type 'NonlinearStepResult': stepIndex, reactionForces, convergenceHistory"
+  },
+  {
+    "file": "/app/applet/src/engine/fem/nonlinear/NonlinearFEMEngine.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'equivalentPlasticStrain' does not exist on type 'never'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/nonlinear/NonlinearFEMEngine.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'equivalentPlasticStrain' does not exist on type 'never'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/nonlinear/NonlinearFEMEngine.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Argument of type '{ data: never[]; }' is not assignable to parameter of type 'Matrix'.\n  Type '{ data: never[]; }' is missing the following properties from type 'Matrix': rows, cols, get, set, and 12 more."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/nonlinear/materials/SolidMaterialModels.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Type '{ plasticStrainVoigt: number[]; equivalentPlasticStrain: number; yieldStatus: string; energyDensity: number; plasticDissipation: number; }' is not assignable to type 'MaterialInternalState'.\n  Types of property 'yieldStatus' are incompatible.\n    Type 'string' is not assignable to type '\"PLASTIC\" | \"ELASTIC\" | \"YIELDING\"'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/nonlinear/solver/NonlinearStructuralSolver.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Type '{ converged: boolean; iterationsCount: number; displacements: any; loadFactor: number; reactionForces: any[]; maxVonMisesStress: number; maxEquivalentPlasticStrain: number; retryCount: number; diagnostics: never[]; }' is missing the following properties from type 'LoadStepResult': stepIndex, deltaLoadFactor, internalForces, yieldedPointCount, and 3 more."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/nonlinear/solver/NonlinearStructuralSolver.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Type '{ converged: boolean; iterationsCount: number; displacements: any; loadFactor: number; reactionForces: any[]; maxVonMisesStress: number; maxEquivalentPlasticStrain: number; retryCount: number; diagnostics: never[]; }' is missing the following properties from type 'LoadStepResult': stepIndex, deltaLoadFactor, internalForces, yieldedPointCount, and 3 more."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/nonlinear/verification/HardAcceptanceGate238.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Object literal may only specify known properties, and 'gateId' does not exist in type 'HardGate238Result'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/solvers/PreconditionedConjugateGradientSolver.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'apply' does not exist on type 'IPreconditioner'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/solvers/PreconditionedConjugateGradientSolver.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'apply' does not exist on type 'IPreconditioner'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/solvers/benchmarks/LinearSolverBenchmarks.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Type 'boolean | undefined' is not assignable to type 'boolean'.\n  Type 'undefined' is not assignable to type 'boolean'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/solvers/benchmarks/LinearSolverBenchmarks.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Parameter 'n' implicitly has an 'any' type."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/solvers/benchmarks/LinearSolverBenchmarks.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Parameter 'n' implicitly has an 'any' type."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/solvers/benchmarks/LinearSolverBenchmarks.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Parameter 'id' implicitly has an 'any' type."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/solvers/benchmarks/LinearSolverBenchmarks.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Parameter 'n' implicitly has an 'any' type."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/solvers/benchmarks/LinearSolverBenchmarks.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Parameter 'n' implicitly has an 'any' type."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/solvers/benchmarks/LinearSolverBenchmarks.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Parameter 'id' implicitly has an 'any' type."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/solvers/benchmarks/LinearSolverBenchmarks.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Parameter 'n' implicitly has an 'any' type."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/solvers/benchmarks/LinearSolverBenchmarks.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Parameter 'n' implicitly has an 'any' type."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/solvers/benchmarks/LinearSolverBenchmarks.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Parameter 'id' implicitly has an 'any' type."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/solvers/benchmarks/LinearSolverBenchmarks.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Parameter 'n' implicitly has an 'any' type."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/solvers/benchmarks/LinearSolverBenchmarks.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Parameter 'n' implicitly has an 'any' type."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/solvers/benchmarks/LinearSolverBenchmarks.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Parameter 'id' implicitly has an 'any' type."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/sparse/HardAcceptanceGate236.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'inspectBackend' does not exist on type 'typeof ParallelismBoundary'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/sparse/HardAcceptanceGate236.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'inspectBackend' does not exist on type 'typeof ParallelismBoundary'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/sparse/HardAcceptanceGate236.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'inspectBackend' does not exist on type 'typeof ParallelismBoundary'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/sparse/IterativeSolvers.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'apply' does not exist on type 'IPreconditioner'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/sparse/IterativeSolvers.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'type' does not exist on type 'IPreconditioner'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/sparse/IterativeSolvers.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'type' does not exist on type 'IPreconditioner'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/sparse/IterativeSolvers.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'type' does not exist on type 'IPreconditioner'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/sparse/IterativeSolvers.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'type' does not exist on type 'IPreconditioner'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/sparse/IterativeSolvers.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'type' does not exist on type 'IPreconditioner'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/sparse/IterativeSolvers.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'type' does not exist on type 'IPreconditioner'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/sparse/IterativeSolvers.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'apply' does not exist on type 'IPreconditioner'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/sparse/IterativeSolvers.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'type' does not exist on type 'IPreconditioner'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/sparse/IterativeSolvers.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'type' does not exist on type 'IPreconditioner'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/sparse/SparseMatrix.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'reserve' does not exist on type 'COOBuilder'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/sparse/SparseMatrix.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Argument of type 'number[] | Float64Array<ArrayBufferLike> | number[][]' is not assignable to parameter of type 'number[][]'.\n  Type 'number[]' is not assignable to type 'number[][]'.\n    Type 'number' is not assignable to type 'number[]'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/sparse/SparseMatrixHasher.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'getRowEntries' does not exist on type 'CSRStorage'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/sparse/SparseMatrixHasher.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Property 'getRowEntries' does not exist on type 'CSRStorage'."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/sparse/benchmarks/SparseMatrixBenchmarks.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Parameter 'n' implicitly has an 'any' type."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/sparse/benchmarks/SparseMatrixBenchmarks.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Parameter 'n' implicitly has an 'any' type."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/sparse/benchmarks/SparseMatrixBenchmarks.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Parameter 'id' implicitly has an 'any' type."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/sparse/benchmarks/SparseMatrixBenchmarks.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Parameter 'n' implicitly has an 'any' type."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/sparse/benchmarks/SparseMatrixBenchmarks.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Parameter 'n' implicitly has an 'any' type."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/sparse/benchmarks/SparseMatrixBenchmarks.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Parameter 'id' implicitly has an 'any' type."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/sparse/benchmarks/SparseMatrixBenchmarks.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Parameter 'n' implicitly has an 'any' type."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/sparse/benchmarks/SparseMatrixBenchmarks.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Parameter 'n' implicitly has an 'any' type."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/sparse/benchmarks/SparseMatrixBenchmarks.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Parameter 'id' implicitly has an 'any' type."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/sparse/benchmarks/SparseMatrixBenchmarks.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Parameter 'n' implicitly has an 'any' type."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/sparse/benchmarks/SparseMatrixBenchmarks.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Parameter 'n' implicitly has an 'any' type."
+  },
+  {
+    "file": "/app/applet/src/engine/fem/sparse/benchmarks/SparseMatrixBenchmarks.ts",
+    "severity": "HIGH",
+    "reason": "Type contract violation in production path",
+    "diagnostic": "Parameter 'id' implicitly has an 'any' type."
+  }
+]

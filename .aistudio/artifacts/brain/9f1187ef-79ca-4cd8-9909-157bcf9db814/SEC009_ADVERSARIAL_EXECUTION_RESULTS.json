@@ -1,0 +1,269 @@
+{
+  "audit_id": "SECP-SECURITY-009",
+  "provenance": {
+    "fixturePath": "src/engine/forensic/__fixtures__/SEC009/ and src/verification/__fixtures__/",
+    "executionTimestamp": "2026-11-02T07:50:35.704Z",
+    "harness": "Physical on-disk files evaluated live by LiveForensicAuditor"
+  },
+  "summary": {
+    "totalFixtures": 15,
+    "directViolationsDetected": 5,
+    "unresolvedOrSuspiciousFailClosed": 8,
+    "authenticatedBypassesAllowed": 0,
+    "falseNegativeRate": "0.0%"
+  },
+  "fixtureDetails": [
+    {
+      "file": "01_direct_unauthenticated.ts",
+      "classification": "AUTHORITY_PRODUCER",
+      "outcome": "DIRECT_VIOLATION_DETECTED",
+      "reasons": [
+        "Contains 1 direct/indirect call(s) to sealBinding."
+      ],
+      "sealCalls": [
+        {
+          "callee": "CanonicalDomainBindingEngine.sealBinding",
+          "location": {
+            "line": 4,
+            "column": 10
+          },
+          "status": "UNAUTHENTICATED_VIOLATION",
+          "rationale": "Call to sealBinding explicitly provides null, undefined, or missing capability."
+        }
+      ]
+    },
+    {
+      "file": "02_aliased_import.ts",
+      "classification": "AUTHORITY_PRODUCER",
+      "outcome": "DIRECT_VIOLATION_DETECTED",
+      "reasons": [
+        "Contains 1 direct/indirect call(s) to sealBinding."
+      ],
+      "sealCalls": [
+        {
+          "callee": "aliasSeal",
+          "location": {
+            "line": 6,
+            "column": 10
+          },
+          "status": "UNAUTHENTICATED_VIOLATION",
+          "rationale": "Call to sealBinding explicitly provides null, undefined, or missing capability."
+        }
+      ]
+    },
+    {
+      "file": "03_reexport_intermediate.ts",
+      "classification": "SUSPICIOUS_UNKNOWN",
+      "outcome": "FAIL_CLOSED_UNRESOLVED_OR_SUSPICIOUS",
+      "reasons": [
+        "Re-exports authority symbols: CanonicalDomainBindingEngine."
+      ],
+      "sealCalls": []
+    },
+    {
+      "file": "04_wrapper_function.ts",
+      "classification": "AUTHORITY_PRODUCER",
+      "outcome": "FAIL_CLOSED_UNRESOLVED_OR_SUSPICIOUS",
+      "reasons": [
+        "Contains 1 direct/indirect call(s) to sealBinding."
+      ],
+      "sealCalls": [
+        {
+          "callee": "CanonicalDomainBindingEngine.sealBinding",
+          "location": {
+            "line": 4,
+            "column": 10
+          },
+          "status": "UNRESOLVED_UNKNOWN",
+          "rationale": "Capability variable 'uncheckedToken' origin cannot be statically verified within module scope."
+        }
+      ]
+    },
+    {
+      "file": "05_computed_property_access.ts",
+      "classification": "AUTHORITY_PRODUCER",
+      "outcome": "FAIL_CLOSED_UNRESOLVED_OR_SUSPICIOUS",
+      "reasons": [
+        "Contains 1 direct/indirect call(s) to sealBinding."
+      ],
+      "sealCalls": [
+        {
+          "callee": "(CanonicalDomainBindingEngine as any)[method]",
+          "location": {
+            "line": 5,
+            "column": 10
+          },
+          "status": "UNRESOLVED_UNKNOWN",
+          "rationale": "Computed bracket notation accessing sealing property dynamically."
+        }
+      ]
+    },
+    {
+      "file": "06_dynamic_import.ts",
+      "classification": "AUTHORITY_PRODUCER",
+      "outcome": "DIRECT_VIOLATION_DETECTED",
+      "reasons": [
+        "Dynamic asynchronous import of authority module detected.",
+        "Contains 1 direct/indirect call(s) to sealBinding."
+      ],
+      "sealCalls": [
+        {
+          "callee": "mod.CanonicalDomainBindingEngine.sealBinding",
+          "location": {
+            "line": 3,
+            "column": 10
+          },
+          "status": "UNAUTHENTICATED_VIOLATION",
+          "rationale": "Call to sealBinding explicitly provides null, undefined, or missing capability."
+        }
+      ]
+    },
+    {
+      "file": "07_forged_structural_capability.ts",
+      "classification": "AUTHORITY_PRODUCER",
+      "outcome": "FAIL_CLOSED_UNRESOLVED_OR_SUSPICIOUS",
+      "reasons": [
+        "Contains 1 direct/indirect call(s) to sealBinding."
+      ],
+      "sealCalls": [
+        {
+          "callee": "CanonicalDomainBindingEngine.sealBinding",
+          "location": {
+            "line": 9,
+            "column": 10
+          },
+          "status": "UNRESOLVED_UNKNOWN",
+          "rationale": "Capability variable 'forged' origin cannot be statically verified within module scope."
+        }
+      ]
+    },
+    {
+      "file": "08_revoked_capability_replay.ts",
+      "classification": "AUTHORITY_PRODUCER",
+      "outcome": "FAIL_CLOSED_UNRESOLVED_OR_SUSPICIOUS",
+      "reasons": [
+        "Contains 1 direct/indirect call(s) to sealBinding."
+      ],
+      "sealCalls": [
+        {
+          "callee": "CanonicalDomainBindingEngine.sealBinding",
+          "location": {
+            "line": 7,
+            "column": 10
+          },
+          "status": "UNRESOLVED_UNKNOWN",
+          "rationale": "Capability variable 'cap' origin cannot be statically verified within module scope."
+        }
+      ]
+    },
+    {
+      "file": "09_domain_mismatch.ts",
+      "classification": "AUTHORITY_PRODUCER",
+      "outcome": "FAIL_CLOSED_UNRESOLVED_OR_SUSPICIOUS",
+      "reasons": [
+        "Contains 1 direct/indirect call(s) to sealBinding."
+      ],
+      "sealCalls": [
+        {
+          "callee": "CanonicalDomainBindingEngine.sealBinding",
+          "location": {
+            "line": 6,
+            "column": 10
+          },
+          "status": "UNRESOLVED_UNKNOWN",
+          "rationale": "Capability variable 'cfdOnlyCap' origin cannot be statically verified within module scope."
+        }
+      ]
+    },
+    {
+      "file": "10_comment_keyword_spoofing.ts",
+      "classification": "AUTHORITY_PRODUCER",
+      "outcome": "DIRECT_VIOLATION_DETECTED",
+      "reasons": [
+        "Contains 1 direct/indirect call(s) to sealBinding."
+      ],
+      "sealCalls": [
+        {
+          "callee": "CanonicalDomainBindingEngine.sealBinding",
+          "location": {
+            "line": 5,
+            "column": 10
+          },
+          "status": "UNAUTHENTICATED_VIOLATION",
+          "rationale": "Call to sealBinding explicitly provides null, undefined, or missing capability."
+        }
+      ]
+    },
+    {
+      "file": "11_test_utility_wildcard.ts",
+      "classification": "AUTHORITY_PRODUCER",
+      "outcome": "FAIL_CLOSED_UNRESOLVED_OR_SUSPICIOUS",
+      "reasons": [
+        "Contains 1 direct/indirect call(s) to sealBinding."
+      ],
+      "sealCalls": [
+        {
+          "callee": "CanonicalDomainBindingEngine.sealBinding",
+          "location": {
+            "line": 6,
+            "column": 10
+          },
+          "status": "UNRESOLVED_UNKNOWN",
+          "rationale": "Capability variable 'wildcardCap' origin cannot be statically verified within module scope."
+        }
+      ]
+    },
+    {
+      "file": "13_unknown_indirect_call.ts",
+      "classification": "AUTHORITY_PRODUCER",
+      "outcome": "FAIL_CLOSED_UNRESOLVED_OR_SUSPICIOUS",
+      "reasons": [
+        "Contains 1 direct/indirect call(s) to sealBinding."
+      ],
+      "sealCalls": [
+        {
+          "callee": "Reflect.get",
+          "location": {
+            "line": 4,
+            "column": 14
+          },
+          "status": "UNRESOLVED_UNKNOWN",
+          "rationale": "Reflection or dynamic Function/eval dispatch targeting sealing interfaces."
+        }
+      ]
+    },
+    {
+      "file": "14_mutation_removed_capability_check.ts",
+      "classification": "NO_AUTHORITY",
+      "outcome": "NO_AUTHORITY_HELPER",
+      "reasons": [],
+      "sealCalls": []
+    },
+    {
+      "file": "15_mutation_removed_domain_check.ts",
+      "classification": "NO_AUTHORITY",
+      "outcome": "NO_AUTHORITY_HELPER",
+      "reasons": [],
+      "sealCalls": []
+    },
+    {
+      "file": "adv12_out_of_engine.ts",
+      "classification": "AUTHORITY_PRODUCER",
+      "outcome": "DIRECT_VIOLATION_DETECTED",
+      "reasons": [
+        "Contains 1 direct/indirect call(s) to sealBinding."
+      ],
+      "sealCalls": [
+        {
+          "callee": "CanonicalDomainBindingEngine.sealBinding",
+          "location": {
+            "line": 4,
+            "column": 10
+          },
+          "status": "UNAUTHENTICATED_VIOLATION",
+          "rationale": "Call to sealBinding explicitly provides null, undefined, or missing capability."
+        }
+      ]
+    }
+  ]
+}

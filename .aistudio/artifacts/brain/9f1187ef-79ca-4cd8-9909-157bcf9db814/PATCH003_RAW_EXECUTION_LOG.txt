@@ -1,0 +1,597 @@
+SECP-CAD-TRUTH-PATCH-003B RAW EXECUTION LOG
+DATE: 2026-11-02T12:02:29.078Z
+
+--- STAGE 1: POSITIVE COLD START ---
+--- SECP-CAD-TRUTH-PATCH-003B: STARTING POSITIVE COLD START PROOF ---
+Authority initialized in generator process. KeyVersion: SECP-V3-PROVENANCE-KEY-001
+Valid chain generated and saved to: /app/applet/.aistudio/artifacts/brain/9f1187ef-79ca-4cd8-9909-157bcf9db814/PATCH003_POSITIVE_RECOVERY_CHAIN.json
+Spawning standalone verifier process...
+Subprocess Exit Code: 0
+Subprocess Output: {
+  "outcome": "PROVENANCE_VERIFIED",
+  "isValid": true,
+  "provenanceValid": true,
+  "numericalQualified": true,
+  "reconstructedChainDigest": "66320b43445f281adb8cf50a0a4bf2ae4842e1caa75802bed52ba0d8dae70588",
+  "reconstructionErrors": [],
+  "details": {
+    "canonicalRevisionVerified": true,
+    "geometryHashVerified": true,
+    "meshProvenanceVerified": true,
+    "authorityVerified": true,
+    "executionRecordVerified": true,
+    "contentDigestVerified": true,
+    "numericalQualificationStatus": "NUMERICAL_QUALIFIED",
+    "missingLinks": [],
+    "integrityViolations": []
+  }
+}
+
+SUCCESS: Positive cold start recovery verified.
+
+POSITIVE RECOVERY VERIFIED.
+
+--- STAGE 2: NEGATIVE COLD START ---
+[CASE A] Missing Secret (Expect Failure)
+Status: 1 (Expected: 1)
+Output: {
+  "outcome": "PROVENANCE_REJECTED",
+  "isValid": false,
+  "provenanceValid": false,
+  "numericalQualified": false,
+  "reconstructedChainDigest": "66320b43445f281adb8cf50a0a4bf2ae4842e1caa75802bed52ba0d8dae70588",
+  "reconstructionErrors": [
+    "AUTHORITY_SEAL_INVALID: Seal token signature verification failed for token '8009c63885237a975598a9bc685434adeed1c169a02b9453c90674b0fb992433'"
+  ],
+  "details": {
+    "canonicalRevisionVerified": true,
+    "geometryHashVerified": true,
+    "meshProvenanceVerified": true,
+    "authorityVerified": false,
+    "executionRecordVerified": true,
+    "contentDigestVerified": true,
+    "numericalQualificationStatus": "REJECTED_BEFORE_NUMERICAL_CHECK",
+    "missingLinks": [],
+    "integrityViolations": [
+      "AUTHORITY_SEAL_INVALID"
+    ]
+  }
+}
+
+[CASE B] Forged Seal Token (Expect Failure)
+Status: 1 (Expected: 1)
+[CASE C] Modified Payload - Mesh Hash (Expect Failure)
+Status: 1 (Expected: 1)
+NEGATIVE COLD START VERIFIED.
+
+--- STAGE 3: FULL REGRESSION ---
+
+ RUN  v1.6.1 /app/applet
+
+ ✓ src/engine/simulation/__tests__/HydraulicPumpTruthThread.test.ts  (17 tests) 38ms
+ ✓ src/engine/simulation/__tests__/CanonicalCadCfdTruthAdversarial.test.ts  (12 tests) 278ms
+stdout | src/engine/simulation/__tests__/CanonicalCadCfdTruthAdversarial.test.ts > SECP-CAD-TRUTH-PATCH-002 — Canonical CAD Identity -> CFD Execution -> Truth Binding > CAD-01: should complete end-to-end provenance chain from CAD Revision to Truth Thread
+[SECP-CFD] Solver init: rho=1.225, mu=0.000018, cells=45
+Iter 1: Cont=4.0235e-8, MomLinf=6.5689e-4, MomL1=3.2180e-4, dV=4.7599e-3, MaxV=1.00, Cl=0.0000, Cd=0.0001
+Iter 10: Cont=4.0320e-8, MomLinf=1.2545e-4, MomL1=2.3775e-5, dV=6.4686e-5, MaxV=1.01, Cl=0.0000, Cd=0.0001
+
+[SECP-CFD-CONVERGENCE]
+iteration=10
+terminationReason=MAX_ITERATIONS_REACHED
+continuityL1=4.0320e-8
+continuityL2=1.0622e-9
+continuityLinf=1.8223e-9
+momentumLinf=1.2545e-4
+momentumL1=2.3775e-5
+momentumL2=4.5354e-5
+pressureCorrection=1.2195e-3
+velocityCorrection=6.4686e-5
+kResidual=0.0000e+0
+omegaResidual=0.0000e+0
+forceStabilityPassed=false
+maxVelocity=1.0068
+minPressure=0.00
+maxPressure=0.02
+
+stdout | src/engine/simulation/__tests__/CanonicalCadCfdTruthAdversarial.test.ts > SECP-CAD-TRUTH-PATCH-002 — Canonical CAD Identity -> CFD Execution -> Truth Binding > CAD-10: should verify Provenance Integrity PASS even when numerical solver terminates without convergence (MAX_ITERATIONS_REACHED)
+[SECP-CFD] Solver init: rho=1.225, mu=0.000018, cells=54
+Iter 1: Cont=4.6980e-8, MomLinf=8.0558e-4, MomL1=2.8980e-4, dV=4.2603e-3, MaxV=1.00, Cl=-0.0000, Cd=0.0001
+
+[SECP-CFD-CONVERGENCE]
+iteration=3
+terminationReason=MAX_ITERATIONS_REACHED
+continuityL1=4.9094e-8
+continuityL2=1.0676e-9
+continuityLinf=1.8051e-9
+momentumLinf=2.3045e-4
+momentumL1=7.5624e-5
+momentumL2=9.4997e-5
+pressureCorrection=8.2578e-3
+velocityCorrection=1.2777e-3
+kResidual=5.5072e-3
+epsResidual=1.0201e-2
+omegaResidual=0.0000e+0 (model=K_EPSILON)
+forceStabilityPassed=false
+maxVelocity=1.0047
+minPressure=0.00
+maxPressure=0.02
+
+stdout | src/engine/simulation/__tests__/ProcessLevelRecoveryAdversarial.test.ts > SECP-CAD-TRUTH-PATCH-003B — Cryptographic Trust Boundary & Process-Level Recovery Test Battery > TB-05: should write evidence chain JSON to disk and verify cleanly post-reload in fresh process context
+[SECP-CFD] Solver init: rho=1.225, mu=0.000018, cells=16
+Iter 1: Cont=8.1444e-8, MomLinf=1.1194e-3, MomL1=7.2791e-4, dV=1.9449e-3, MaxV=1.00, Cl=0.0000, Cd=0.0001
+
+[SECP-CFD-CONVERGENCE]
+iteration=5
+terminationReason=MAX_ITERATIONS_REACHED
+continuityL1=7.3612e-8
+continuityL2=5.6057e-9
+continuityLinf=1.0042e-8
+momentumLinf=2.5467e-4
+momentumL1=1.1804e-4
+momentumL2=1.4242e-4
+pressureCorrection=2.6155e-3
+velocityCorrection=1.1252e-4
+kResidual=4.5081e-4
+epsResidual=6.7648e-4
+omegaResidual=0.0000e+0 (model=K_EPSILON)
+forceStabilityPassed=false
+maxVelocity=1.0000
+minPressure=0.00
+maxPressure=0.02
+
+stdout | src/engine/simulation/__tests__/ProcessLevelRecoveryAdversarial.test.ts > SECP-CAD-TRUTH-PATCH-003B — Cryptographic Trust Boundary & Process-Level Recovery Test Battery > TB-05B: should verify evidence chain via isolated subprocess CLI execution (genuine out-of-process cold start)
+[SECP-CFD] Solver init: rho=1.225, mu=0.000018, cells=16
+Iter 1: Cont=8.1444e-8, MomLinf=1.1194e-3, MomL1=7.2791e-4, dV=1.9449e-3, MaxV=1.00, Cl=0.0000, Cd=0.0001
+
+[SECP-CFD-CONVERGENCE]
+iteration=5
+terminationReason=MAX_ITERATIONS_REACHED
+continuityL1=7.3612e-8
+continuityL2=5.6057e-9
+continuityLinf=1.0042e-8
+momentumLinf=2.5467e-4
+momentumL1=1.1804e-4
+momentumL2=1.4242e-4
+pressureCorrection=2.6155e-3
+velocityCorrection=1.1252e-4
+kResidual=4.5081e-4
+epsResidual=6.7648e-4
+omegaResidual=0.0000e+0 (model=K_EPSILON)
+forceStabilityPassed=false
+maxVelocity=1.0000
+minPressure=0.00
+maxPressure=0.02
+
+stdout | src/engine/simulation/__tests__/ProcessLevelRecoveryAdversarial.test.ts > SECP-CAD-TRUTH-PATCH-003B — Cryptographic Trust Boundary & Process-Level Recovery Test Battery > TB-06: should detect post-reload disk-level file tampering when payload is mutated on disk
+[SECP-CFD] Solver init: rho=1.225, mu=0.000018, cells=16
+Iter 1: Cont=8.1444e-8, MomLinf=1.1194e-3, MomL1=7.2791e-4, dV=1.9449e-3, MaxV=1.00, Cl=0.0000, Cd=0.0001
+
+[SECP-CFD-CONVERGENCE]
+iteration=5
+terminationReason=MAX_ITERATIONS_REACHED
+continuityL1=7.3612e-8
+continuityL2=5.6057e-9
+continuityLinf=1.0042e-8
+momentumLinf=2.5467e-4
+momentumL1=1.1804e-4
+momentumL2=1.4242e-4
+pressureCorrection=2.6155e-3
+velocityCorrection=1.1252e-4
+kResidual=4.5081e-4
+epsResidual=6.7648e-4
+omegaResidual=0.0000e+0 (model=K_EPSILON)
+forceStabilityPassed=false
+maxVelocity=1.0000
+minPressure=0.00
+maxPressure=0.02
+
+stdout | src/engine/simulation/__tests__/ProcessLevelRecoveryAdversarial.test.ts > SECP-CAD-TRUTH-PATCH-003B — Cryptographic Trust Boundary & Process-Level Recovery Test Battery > TB-07: should reject payload mutation even if attacker recomputes top-level SHA-256 digest without secret HMAC key
+[SECP-CFD] Solver init: rho=1.225, mu=0.000018, cells=16
+Iter 1: Cont=8.1444e-8, MomLinf=1.1194e-3, MomL1=7.2791e-4, dV=1.9449e-3, MaxV=1.00, Cl=0.0000, Cd=0.0001
+
+[SECP-CFD-CONVERGENCE]
+iteration=5
+terminationReason=MAX_ITERATIONS_REACHED
+continuityL1=7.3612e-8
+continuityL2=5.6057e-9
+continuityLinf=1.0042e-8
+momentumLinf=2.5467e-4
+momentumL1=1.1804e-4
+momentumL2=1.4242e-4
+pressureCorrection=2.6155e-3
+velocityCorrection=1.1252e-4
+kResidual=4.5081e-4
+epsResidual=6.7648e-4
+omegaResidual=0.0000e+0 (model=K_EPSILON)
+forceStabilityPassed=false
+maxVelocity=1.0000
+minPressure=0.00
+maxPressure=0.02
+
+stdout | src/engine/simulation/__tests__/ProcessLevelRecoveryAdversarial.test.ts > SECP-CAD-TRUTH-PATCH-003B — Cryptographic Trust Boundary & Process-Level Recovery Test Battery > TB-08: should reject qualification when iterations or residuals contain NaN or non-numeric values
+[SECP-CFD] Solver init: rho=1.225, mu=0.000018, cells=16
+Iter 1: Cont=8.1444e-8, MomLinf=1.1194e-3, MomL1=7.2791e-4, dV=1.9449e-3, MaxV=1.00, Cl=0.0000, Cd=0.0001
+
+[SECP-CFD-CONVERGENCE]
+iteration=5
+terminationReason=MAX_ITERATIONS_REACHED
+continuityL1=7.3612e-8
+continuityL2=5.6057e-9
+continuityLinf=1.0042e-8
+momentumLinf=2.5467e-4
+momentumL1=1.1804e-4
+momentumL2=1.4242e-4
+pressureCorrection=2.6155e-3
+velocityCorrection=1.1252e-4
+kResidual=4.5081e-4
+epsResidual=6.7648e-4
+omegaResidual=0.0000e+0 (model=K_EPSILON)
+forceStabilityPassed=false
+maxVelocity=1.0000
+minPressure=0.00
+maxPressure=0.02
+
+stdout | src/engine/simulation/__tests__/ProcessLevelRecoveryAdversarial.test.ts > SECP-CAD-TRUTH-PATCH-003B — Cryptographic Trust Boundary & Process-Level Recovery Test Battery > TB-09: should reject qualification when top-level and nested numerical fields conflict
+[SECP-CFD] Solver init: rho=1.225, mu=0.000018, cells=16
+Iter 1: Cont=8.1444e-8, MomLinf=1.1194e-3, MomL1=7.2791e-4, dV=1.9449e-3, MaxV=1.00, Cl=0.0000, Cd=0.0001
+
+[SECP-CFD-CONVERGENCE]
+iteration=5
+terminationReason=MAX_ITERATIONS_REACHED
+continuityL1=7.3612e-8
+continuityL2=5.6057e-9
+continuityLinf=1.0042e-8
+momentumLinf=2.5467e-4
+momentumL1=1.1804e-4
+momentumL2=1.4242e-4
+pressureCorrection=2.6155e-3
+velocityCorrection=1.1252e-4
+kResidual=4.5081e-4
+epsResidual=6.7648e-4
+omegaResidual=0.0000e+0 (model=K_EPSILON)
+forceStabilityPassed=false
+maxVelocity=1.0000
+minPressure=0.00
+maxPressure=0.02
+
+stdout | src/engine/simulation/__tests__/ProcessLevelRecoveryAdversarial.test.ts > SECP-CAD-TRUTH-PATCH-003B — Cryptographic Trust Boundary & Process-Level Recovery Test Battery > TB-10: should reject qualification when converged is claimed alongside MAX_ITERATIONS_REACHED or forceStabilityPassed: false
+[SECP-CFD] Solver init: rho=1.225, mu=0.000018, cells=16
+Iter 1: Cont=8.1444e-8, MomLinf=1.1194e-3, MomL1=7.2791e-4, dV=1.9449e-3, MaxV=1.00, Cl=0.0000, Cd=0.0001
+
+[SECP-CFD-CONVERGENCE]
+iteration=5
+terminationReason=MAX_ITERATIONS_REACHED
+continuityL1=7.3612e-8
+continuityL2=5.6057e-9
+continuityLinf=1.0042e-8
+momentumLinf=2.5467e-4
+momentumL1=1.1804e-4
+momentumL2=1.4242e-4
+pressureCorrection=2.6155e-3
+velocityCorrection=1.1252e-4
+kResidual=4.5081e-4
+epsResidual=6.7648e-4
+omegaResidual=0.0000e+0 (model=K_EPSILON)
+forceStabilityPassed=false
+maxVelocity=1.0000
+minPressure=0.00
+maxPressure=0.02
+
+ ✓ src/engine/simulation/__tests__/ProcessLevelRecoveryAdversarial.test.ts  (11 tests) 2919ms
+stdout | src/engine/simulation/__tests__/CanonicalCadCfdPersistenceAdversarial.test.ts > SECP-CAD-TRUTH-PATCH-003 — Persistent Engineering Truth & Tamper Battery > T01: should reject reconstruction when meshHash in meshProvenance is tampered
+[SECP-CFD] Solver init: rho=1.225, mu=0.000018, cells=16
+Iter 1: Cont=4.5634e-8, MomLinf=1.2057e-3, MomL1=7.8392e-4, dV=2.0941e-3, MaxV=1.00, Cl=0.0000, Cd=0.0001
+
+[SECP-CFD-CONVERGENCE]
+iteration=5
+terminationReason=MAX_ITERATIONS_REACHED
+continuityL1=4.7286e-8
+continuityL2=3.6013e-9
+continuityLinf=6.4366e-9
+momentumLinf=2.7434e-4
+momentumL1=1.2708e-4
+momentumL2=1.5338e-4
+pressureCorrection=2.8147e-3
+velocityCorrection=1.2081e-4
+kResidual=4.8131e-4
+epsResidual=7.2228e-4
+omegaResidual=0.0000e+0 (model=K_EPSILON)
+forceStabilityPassed=false
+maxVelocity=1.0000
+minPressure=0.01
+maxPressure=0.02
+
+stdout | src/engine/simulation/__tests__/CanonicalCadCfdPersistenceAdversarial.test.ts > SECP-CAD-TRUTH-PATCH-003 — Persistent Engineering Truth & Tamper Battery > T02: should reject reconstruction when geometry hash is swapped with a different B-Rep
+[SECP-CFD] Solver init: rho=1.225, mu=0.000018, cells=16
+Iter 1: Cont=4.5634e-8, MomLinf=1.2057e-3, MomL1=7.8392e-4, dV=2.0941e-3, MaxV=1.00, Cl=0.0000, Cd=0.0001
+
+[SECP-CFD-CONVERGENCE]
+iteration=5
+terminationReason=MAX_ITERATIONS_REACHED
+continuityL1=4.7286e-8
+continuityL2=3.6013e-9
+continuityLinf=6.4366e-9
+momentumLinf=2.7434e-4
+momentumL1=1.2708e-4
+momentumL2=1.5338e-4
+pressureCorrection=2.8147e-3
+velocityCorrection=1.2081e-4
+kResidual=4.8131e-4
+epsResidual=7.2228e-4
+omegaResidual=0.0000e+0 (model=K_EPSILON)
+forceStabilityPassed=false
+maxVelocity=1.0000
+minPressure=0.01
+maxPressure=0.02
+
+stdout | src/engine/simulation/__tests__/CanonicalCadCfdPersistenceAdversarial.test.ts > SECP-CAD-TRUTH-PATCH-003 — Persistent Engineering Truth & Tamper Battery > T03: should reject reconstruction when execution authority seal token is forged
+[SECP-CFD] Solver init: rho=1.225, mu=0.000018, cells=16
+Iter 1: Cont=4.5634e-8, MomLinf=1.2057e-3, MomL1=7.8392e-4, dV=2.0941e-3, MaxV=1.00, Cl=0.0000, Cd=0.0001
+
+[SECP-CFD-CONVERGENCE]
+iteration=5
+terminationReason=MAX_ITERATIONS_REACHED
+continuityL1=4.7286e-8
+continuityL2=3.6013e-9
+continuityLinf=6.4366e-9
+momentumLinf=2.7434e-4
+momentumL1=1.2708e-4
+momentumL2=1.5338e-4
+pressureCorrection=2.8147e-3
+velocityCorrection=1.2081e-4
+kResidual=4.8131e-4
+epsResidual=7.2228e-4
+omegaResidual=0.0000e+0 (model=K_EPSILON)
+forceStabilityPassed=false
+maxVelocity=1.0000
+minPressure=0.01
+maxPressure=0.02
+
+stdout | src/engine/simulation/__tests__/CanonicalCadCfdPersistenceAdversarial.test.ts > SECP-CAD-TRUTH-PATCH-003 — Persistent Engineering Truth & Tamper Battery > T04: should return PROVENANCE_INCOMPLETE when meshProvenance link is omitted
+[SECP-CFD] Solver init: rho=1.225, mu=0.000018, cells=16
+Iter 1: Cont=4.5634e-8, MomLinf=1.2057e-3, MomL1=7.8392e-4, dV=2.0941e-3, MaxV=1.00, Cl=0.0000, Cd=0.0001
+
+[SECP-CFD-CONVERGENCE]
+iteration=5
+terminationReason=MAX_ITERATIONS_REACHED
+continuityL1=4.7286e-8
+continuityL2=3.6013e-9
+continuityLinf=6.4366e-9
+momentumLinf=2.7434e-4
+momentumL1=1.2708e-4
+momentumL2=1.5338e-4
+pressureCorrection=2.8147e-3
+velocityCorrection=1.2081e-4
+kResidual=4.8131e-4
+epsResidual=7.2228e-4
+omegaResidual=0.0000e+0 (model=K_EPSILON)
+forceStabilityPassed=false
+maxVelocity=1.0000
+minPressure=0.01
+maxPressure=0.02
+
+stdout | src/engine/simulation/__tests__/CanonicalCadCfdPersistenceAdversarial.test.ts > SECP-CAD-TRUTH-PATCH-003 — Persistent Engineering Truth & Tamper Battery > T05: should reject reconstruction when solver configuration parameters are mutated post-solve
+[SECP-CFD] Solver init: rho=1.225, mu=0.000018, cells=16
+Iter 1: Cont=4.5634e-8, MomLinf=1.2057e-3, MomL1=7.8392e-4, dV=2.0941e-3, MaxV=1.00, Cl=0.0000, Cd=0.0001
+
+[SECP-CFD-CONVERGENCE]
+iteration=5
+terminationReason=MAX_ITERATIONS_REACHED
+continuityL1=4.7286e-8
+continuityL2=3.6013e-9
+continuityLinf=6.4366e-9
+momentumLinf=2.7434e-4
+momentumL1=1.2708e-4
+momentumL2=1.5338e-4
+pressureCorrection=2.8147e-3
+velocityCorrection=1.2081e-4
+kResidual=4.8131e-4
+epsResidual=7.2228e-4
+omegaResidual=0.0000e+0 (model=K_EPSILON)
+forceStabilityPassed=false
+maxVelocity=1.0000
+minPressure=0.01
+maxPressure=0.02
+
+stdout | src/engine/simulation/__tests__/CanonicalCadCfdPersistenceAdversarial.test.ts > SECP-CAD-TRUTH-PATCH-003 — Persistent Engineering Truth & Tamper Battery > T06: should reject reconstruction when CAD revision hash in meshProvenance is stale
+[SECP-CFD] Solver init: rho=1.225, mu=0.000018, cells=16
+Iter 1: Cont=4.5634e-8, MomLinf=1.2057e-3, MomL1=7.8392e-4, dV=2.0941e-3, MaxV=1.00, Cl=0.0000, Cd=0.0001
+
+[SECP-CFD-CONVERGENCE]
+iteration=5
+terminationReason=MAX_ITERATIONS_REACHED
+continuityL1=4.7286e-8
+continuityL2=3.6013e-9
+continuityLinf=6.4366e-9
+momentumLinf=2.7434e-4
+momentumL1=1.2708e-4
+momentumL2=1.5338e-4
+pressureCorrection=2.8147e-3
+velocityCorrection=1.2081e-4
+kResidual=4.8131e-4
+epsResidual=7.2228e-4
+omegaResidual=0.0000e+0 (model=K_EPSILON)
+forceStabilityPassed=false
+maxVelocity=1.0000
+minPressure=0.01
+maxPressure=0.02
+
+stdout | src/engine/simulation/__tests__/CanonicalCadCfdPersistenceAdversarial.test.ts > SECP-CAD-TRUTH-PATCH-003 — Persistent Engineering Truth & Tamper Battery > T07: should return PROVENANCE_INCOMPLETE when canonicalRevision link is missing
+[SECP-CFD] Solver init: rho=1.225, mu=0.000018, cells=16
+Iter 1: Cont=4.5634e-8, MomLinf=1.2057e-3, MomL1=7.8392e-4, dV=2.0941e-3, MaxV=1.00, Cl=0.0000, Cd=0.0001
+
+[SECP-CFD-CONVERGENCE]
+iteration=5
+terminationReason=MAX_ITERATIONS_REACHED
+continuityL1=4.7286e-8
+continuityL2=3.6013e-9
+continuityLinf=6.4366e-9
+momentumLinf=2.7434e-4
+momentumL1=1.2708e-4
+momentumL2=1.5338e-4
+pressureCorrection=2.8147e-3
+velocityCorrection=1.2081e-4
+kResidual=4.8131e-4
+epsResidual=7.2228e-4
+omegaResidual=0.0000e+0 (model=K_EPSILON)
+forceStabilityPassed=false
+maxVelocity=1.0000
+minPressure=0.01
+maxPressure=0.02
+
+stdout | src/engine/simulation/__tests__/CanonicalCadCfdPersistenceAdversarial.test.ts > SECP-CAD-TRUTH-PATCH-003 — Persistent Engineering Truth & Tamper Battery > T08: should reject reconstruction when top-level contentDigest is mutated
+[SECP-CFD] Solver init: rho=1.225, mu=0.000018, cells=16
+Iter 1: Cont=4.5634e-8, MomLinf=1.2057e-3, MomL1=7.8392e-4, dV=2.0941e-3, MaxV=1.00, Cl=0.0000, Cd=0.0001
+
+[SECP-CFD-CONVERGENCE]
+iteration=5
+terminationReason=MAX_ITERATIONS_REACHED
+continuityL1=4.7286e-8
+continuityL2=3.6013e-9
+continuityLinf=6.4366e-9
+momentumLinf=2.7434e-4
+momentumL1=1.2708e-4
+momentumL2=1.5338e-4
+pressureCorrection=2.8147e-3
+velocityCorrection=1.2081e-4
+kResidual=4.8131e-4
+epsResidual=7.2228e-4
+omegaResidual=0.0000e+0 (model=K_EPSILON)
+forceStabilityPassed=false
+maxVelocity=1.0000
+minPressure=0.01
+maxPressure=0.02
+
+stdout | src/engine/simulation/__tests__/CanonicalCadCfdPersistenceAdversarial.test.ts > SECP-CAD-TRUTH-PATCH-003 — Persistent Engineering Truth & Tamper Battery > T09: should verify evidence chain strictly from raw serialized JSON bytes after clearing in-memory registry (Cold Start)
+[SECP-CFD] Solver init: rho=1.225, mu=0.000018, cells=16
+Iter 1: Cont=4.5634e-8, MomLinf=1.2057e-3, MomL1=7.8392e-4, dV=2.0941e-3, MaxV=1.00, Cl=0.0000, Cd=0.0001
+
+[SECP-CFD-CONVERGENCE]
+iteration=5
+terminationReason=MAX_ITERATIONS_REACHED
+continuityL1=4.7286e-8
+continuityL2=3.6013e-9
+continuityLinf=6.4366e-9
+momentumLinf=2.7434e-4
+momentumL1=1.2708e-4
+momentumL2=1.5338e-4
+pressureCorrection=2.8147e-3
+velocityCorrection=1.2081e-4
+kResidual=4.8131e-4
+epsResidual=7.2228e-4
+omegaResidual=0.0000e+0 (model=K_EPSILON)
+forceStabilityPassed=false
+maxVelocity=1.0000
+minPressure=0.01
+maxPressure=0.02
+
+stdout | src/engine/simulation/__tests__/CanonicalCadCfdPersistenceAdversarial.test.ts > SECP-CAD-TRUTH-PATCH-003 — Persistent Engineering Truth & Tamper Battery > T10: should reject reconstruction when topology face IDs length does not match face count
+[SECP-CFD] Solver init: rho=1.225, mu=0.000018, cells=16
+Iter 1: Cont=4.5634e-8, MomLinf=1.2057e-3, MomL1=7.8392e-4, dV=2.0941e-3, MaxV=1.00, Cl=0.0000, Cd=0.0001
+
+[SECP-CFD-CONVERGENCE]
+iteration=5
+terminationReason=MAX_ITERATIONS_REACHED
+continuityL1=4.7286e-8
+continuityL2=3.6013e-9
+continuityLinf=6.4366e-9
+momentumLinf=2.7434e-4
+momentumL1=1.2708e-4
+momentumL2=1.5338e-4
+pressureCorrection=2.8147e-3
+velocityCorrection=1.2081e-4
+kResidual=4.8131e-4
+epsResidual=7.2228e-4
+omegaResidual=0.0000e+0 (model=K_EPSILON)
+forceStabilityPassed=false
+maxVelocity=1.0000
+minPressure=0.01
+maxPressure=0.02
+
+stdout | src/engine/simulation/__tests__/CanonicalCadCfdPersistenceAdversarial.test.ts > SECP-CAD-TRUTH-PATCH-003 — Persistent Engineering Truth & Tamper Battery > T11: should STRICTLY prohibit MAX_ITERATIONS_REACHED from being marked as NUMERICAL_QUALIFIED
+[SECP-CFD] Solver init: rho=1.225, mu=0.000018, cells=16
+Iter 1: Cont=4.5634e-8, MomLinf=1.2057e-3, MomL1=7.8392e-4, dV=2.0941e-3, MaxV=1.00, Cl=0.0000, Cd=0.0001
+
+[SECP-CFD-CONVERGENCE]
+iteration=5
+terminationReason=MAX_ITERATIONS_REACHED
+continuityL1=4.7286e-8
+continuityL2=3.6013e-9
+continuityLinf=6.4366e-9
+momentumLinf=2.7434e-4
+momentumL1=1.2708e-4
+momentumL2=1.5338e-4
+pressureCorrection=2.8147e-3
+velocityCorrection=1.2081e-4
+kResidual=4.8131e-4
+epsResidual=7.2228e-4
+omegaResidual=0.0000e+0 (model=K_EPSILON)
+forceStabilityPassed=false
+maxVelocity=1.0000
+minPressure=0.01
+maxPressure=0.02
+
+stdout | src/engine/simulation/__tests__/CanonicalCadCfdPersistenceAdversarial.test.ts > SECP-CAD-TRUTH-PATCH-003 — Persistent Engineering Truth & Tamper Battery > T12: [STATUS-GATING UNIT TEST] should transition status to NUMERICAL_QUALIFIED when provided with a converged solution fixture
+[SECP-CFD] Solver init: rho=1.225, mu=0.000018, cells=16
+Iter 1: Cont=4.5634e-8, MomLinf=1.2057e-3, MomL1=7.8392e-4, dV=2.0941e-3, MaxV=1.00, Cl=0.0000, Cd=0.0001
+
+[SECP-CFD-CONVERGENCE]
+iteration=5
+terminationReason=MAX_ITERATIONS_REACHED
+continuityL1=4.7286e-8
+continuityL2=3.6013e-9
+continuityLinf=6.4366e-9
+momentumLinf=2.7434e-4
+momentumL1=1.2708e-4
+momentumL2=1.5338e-4
+pressureCorrection=2.8147e-3
+velocityCorrection=1.2081e-4
+kResidual=4.8131e-4
+epsResidual=7.2228e-4
+omegaResidual=0.0000e+0 (model=K_EPSILON)
+forceStabilityPassed=false
+maxVelocity=1.0000
+minPressure=0.01
+maxPressure=0.02
+
+stdout | src/engine/simulation/__tests__/CanonicalCadCfdPersistenceAdversarial.test.ts > SECP-CAD-TRUTH-PATCH-003 — Persistent Engineering Truth & Tamper Battery > T13: should handle multi-pass verification idempotently and handle malformed JSON safely
+[SECP-CFD] Solver init: rho=1.225, mu=0.000018, cells=16
+Iter 1: Cont=4.5634e-8, MomLinf=1.2057e-3, MomL1=7.8392e-4, dV=2.0941e-3, MaxV=1.00, Cl=0.0000, Cd=0.0001
+
+[SECP-CFD-CONVERGENCE]
+iteration=5
+terminationReason=MAX_ITERATIONS_REACHED
+continuityL1=4.7286e-8
+continuityL2=3.6013e-9
+continuityLinf=6.4366e-9
+momentumLinf=2.7434e-4
+momentumL1=1.2708e-4
+momentumL2=1.5338e-4
+pressureCorrection=2.8147e-3
+velocityCorrection=1.2081e-4
+kResidual=4.8131e-4
+epsResidual=7.2228e-4
+omegaResidual=0.0000e+0 (model=K_EPSILON)
+forceStabilityPassed=false
+maxVelocity=1.0000
+minPressure=0.01
+maxPressure=0.02
+
+ ✓ src/engine/simulation/__tests__/CanonicalCadCfdPersistenceAdversarial.test.ts  (13 tests) 351ms
+ ✓ src/engine/simulation/__tests__/SimulationExecutionAuthorityAdversarial.test.ts  (15 tests) 17ms
+ ✓ src/engine/simulation/__tests__/SimulationScenario.test.ts  (11 tests) 13ms
+ ✓ src/engine/simulation/__tests__/SealingAuthorizationBoundary.test.ts  (6 tests) 8ms
+stdout | src/engine/simulation/__tests__/SimulationConsumerEnforcement.test.ts > SECP Industrial OS — Simulation Truth Consumer Enforcement Suite
+P1 DIAGNOSTICS: { status: 'SAFE', hasBinding: true, isAuth: true }
+
+ ✓ src/engine/simulation/__tests__/SimulationConsumerEnforcement.test.ts  (2 tests) 32ms
+
+ Test Files  8 passed (8)
+      Tests  87 passed (87)
+   Start at  12:02:36
+   Duration  10.90s (transform 1.36s, setup 1ms, collect 2.13s, tests 3.66s, environment 2ms, prepare 1.36s)
+
+
+REGRESSION SUITE COMPLETED.
+
+--- STAGE 4: ARTIFACT GENERATION ---

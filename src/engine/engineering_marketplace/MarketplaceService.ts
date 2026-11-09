@@ -3,7 +3,7 @@
  * Orchestrates engineering component procurement, verification,
  * and integration with CAD/PLM pipelines.
  */
-import { MarketplaceEngine, MarketplaceItem, MarketplaceCategory } from './marketplaceEngine';
+import { MarketplaceEngine, MarketplaceItem, MarketplaceCategory } from '../marketplaceEngine';
 
 export class MarketplaceService {
   public getCatalog(): MarketplaceItem[] {

@@ -1,0 +1,32 @@
+[
+  {
+    "file": "src/engine/industrial-os/policy/EngineeringPolicyEngine.ts",
+    "errorsInFullProgram": 0,
+    "status": "CLEAN"
+  },
+  {
+    "file": "src/engine/persistence/FirestoreStorageEngine.ts",
+    "errorsInFullProgram": 0,
+    "status": "CLEAN"
+  },
+  {
+    "file": "src/engine/projectStorage.ts",
+    "errorsInFullProgram": 0,
+    "status": "CLEAN"
+  },
+  {
+    "file": "src/engine/cam/feature-recognition/SlotFeatureRecognizer.ts",
+    "errorsInFullProgram": 0,
+    "status": "CLEAN"
+  },
+  {
+    "file": "src/engine/cam/feature-recognition/StepFeatureRecognizer.ts",
+    "errorsInFullProgram": 0,
+    "status": "CLEAN"
+  },
+  {
+    "file": "src/engine/cam/feature-recognition/PocketFeatureRecognizer.ts",
+    "errorsInFullProgram": 0,
+    "status": "CLEAN"
+  }
+]

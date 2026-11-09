@@ -97,6 +97,8 @@ export class PcbHardAcceptanceGate {
    */
   public static createValidBaselineModel(): PcbCanonicalModel {
     return {
+      designId: 'SECP-PCB-GATE-REF',
+      revisionId: 'REV-0.1.0',
       version: '1.0.0-PROD',
       boardWidthMm: 80,
       boardHeightMm: 50,

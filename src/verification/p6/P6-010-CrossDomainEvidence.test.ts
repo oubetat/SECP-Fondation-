@@ -50,7 +50,7 @@ describe('P6-010 — CROSS-DOMAIN EVIDENCE', () => {
 
     // 3. FEM
     const artFEM = {
-      artifactId: 'ART-FEM-1', documentId: 'FEM-1', revision: 'REV-A', version: 1, type: 'SIMULATION_FEM' as const, status: 'VALID' as const,
+      artifactId: 'ART-FEM-1', documentId: 'FEM-1', revision: 'REV-A', version: 1, type: 'FEA_RESULT' as const, status: 'VALID' as const,
       geometryHash: 'GEO-FEM', topologyHash: 'TOP-FEM', dependencyHash: artAsm.geometryHash, provenanceReference: 'EVID-FEM', childDependencies: [artAsm.artifactId]
     };
     EngineeringPLMEngine.registerArtifact(artFEM);
@@ -58,7 +58,7 @@ describe('P6-010 — CROSS-DOMAIN EVIDENCE', () => {
 
     // 4. CFD
     const artCFD = {
-      artifactId: 'ART-CFD-1', documentId: 'CFD-1', revision: 'REV-A', version: 1, type: 'SIMULATION_CFD' as const, status: 'VALID' as const,
+      artifactId: 'ART-CFD-1', documentId: 'CFD-1', revision: 'REV-A', version: 1, type: 'CFD_RESULT' as const, status: 'VALID' as const,
       geometryHash: 'GEO-CFD', topologyHash: 'TOP-CFD', dependencyHash: artAsm.geometryHash, provenanceReference: 'EVID-CFD', childDependencies: [artAsm.artifactId]
     };
     EngineeringPLMEngine.registerArtifact(artCFD);
@@ -78,7 +78,13 @@ describe('P6-010 — CROSS-DOMAIN EVIDENCE', () => {
 
     // Mutate CAD Source -> triggers downstream invalidation to all
     docCAD.revision = 2;
-    docCAD.features[0].parameters.depth = 20;
+    const firstFeature = docCAD.features?.[0];
+    if (firstFeature) {
+      if (!firstFeature.parameters) {
+        firstFeature.parameters = {};
+      }
+      firstFeature.parameters.depth = 20;
+    }
     const evalCAD_2 = DocumentEvaluator.evaluate(docCAD);
     const artCAD_2 = CanonicalPLMProjectionAdapter.projectFromDocument(docCAD, evalCAD_2);
     EngineeringPLMEngine.registerArtifact(artCAD_2);

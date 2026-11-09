@@ -19,7 +19,7 @@ import {
 } from 'lucide-react';
 import { CadSolidEntity } from '../engine/cadKernel';
 import { SketchUIIntegration } from '../engine/cad-kernel/ui-integration/SketchUIIntegration';
-import { EngineeringDocument } from '../engine/cad-kernel/document/EngineeringDocument';
+import { EngineeringDocument } from '../engine/cad-kernel/document/CADDocument';
 import { DocumentEvaluationResult } from '../engine/cad-kernel/document/DocumentEvaluator';
 
 // Define materials for Industrial Quadcopter Drone

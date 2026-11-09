@@ -62,10 +62,8 @@ export class PersistencePositiveProofs {
           id: 'FEAT-EXTRUDE-01',
           name: 'Base Extrude Feature',
           type: 'EXTRUDE',
-          featureType: 'EXTRUDE',
           operation: 'ADD',
           suppressed: false,
-          isSuppressed: false,
           dependencies: ['SK-BASE-01'],
           parameters: {
             width: 50,
@@ -292,10 +290,8 @@ export class PersistencePositiveProofs {
         id: 'FEAT-EXTRUDE-02',
         name: 'Boss Extrude Feature',
         type: 'EXTRUDE',
-        featureType: 'EXTRUDE',
         operation: 'ADD',
         suppressed: false,
-        isSuppressed: false,
         dependencies: ['FEAT-EXTRUDE-01'],
         parameters: {
           width: 20,

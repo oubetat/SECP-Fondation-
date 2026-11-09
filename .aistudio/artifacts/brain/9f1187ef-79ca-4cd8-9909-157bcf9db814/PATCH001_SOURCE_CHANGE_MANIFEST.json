@@ -1,0 +1,47 @@
+{
+  "auditMission": "SECP-CAD-TRUTH-PATCH-001",
+  "phase": "PHASE_B_SOURCE_CHANGE_MANIFEST",
+  "timestamp": "2026-11-02T10:03:00.000Z",
+  "modifiedFiles": [
+    {
+      "filePath": "src/engine/simulation/SimulationSealingAuthorization.ts",
+      "baselineSha256": "ed838a96b3925ef6526cc4fc3d52788db30b0ab922e578530582a84f5e316cd1",
+      "patchedSha256": "1932897370fa8ee8048a729a0a426f18687a0667622032ff06f59846ddc6ac7e",
+      "linesBefore": 78,
+      "linesAfter": 144,
+      "rationale": "Expanded SealingCapability interface and validateCapability implementation to enforce CAD revision hash, canonical geometry hash, expiration (ttlMs), revocation check, single-use/limited-use (maxUses) replay protection, and domain authorization."
+    },
+    {
+      "filePath": "src/engine/simulation/SimulationAuthorityInternal.ts",
+      "baselineSha256": "111e369a80b0db5d7145f627b2db05c82a032003297e58de01132f1b4b4f53c0",
+      "patchedSha256": "f727a01e0b5b2bb6df7145ac55fba9ce544fdd9c232fc398136b2a7ff52c4ac7",
+      "linesBefore": 200,
+      "linesAfter": 200,
+      "rationale": "Updated computeHMACSealToken and sealEnvelope to pass authoritativeRevisionHash and authoritativeGeometryHash down to validateCapability for strict context and identity binding."
+    },
+    {
+      "filePath": "src/engine/simulation/SimulationEngine.ts",
+      "baselineSha256": "4c7e3beaa368eb5b8a34ad54e28fbd2bd11ea350bd326c2bee9f89bbe4ef1141",
+      "patchedSha256": "1ca5ed6d3d3ea5dadbb4ca9e1b685f74c6bf6b1a80c32ed485486da8a454166e",
+      "linesBefore": 214,
+      "linesAfter": 220,
+      "rationale": "Updated runScenario to acquire a single-use execution SealingCapability bound to authoritativeRevisionHash and authoritativeGeometryHash from trusted issueSealingCapability, passing it to sealEnvelope."
+    },
+    {
+      "filePath": "src/engine/cad-kernel/cfd/__tests__/CFDCADPipeline.test.ts",
+      "baselineSha256": "5a3214ada1ed3f9102f7122709de7034775365335ce26f5e6277c9655415fbdb",
+      "patchedSha256": "d67d1f4d15b06649a065eca31a3ade0226e2f867f6fb621b700a9d762e40750e",
+      "linesBefore": 69,
+      "linesAfter": 111,
+      "rationale": "Updated test to construct CfdToCoreBinding objects for generated CAD meshes, seal them via CanonicalDomainBindingEngine.sealBinding with CFD SealingCapabilities, and pass sealed bindings to Fvm3DNavierStokesSolver.solve."
+    },
+    {
+      "filePath": "src/engine/simulation/__tests__/SimulationExecutionAuthorityAdversarial.test.ts",
+      "baselineSha256": "N/A (NEW_TEST_SUITE)",
+      "patchedSha256": "047130ab6cb4cd2ea65e4cc50f786351d201d5df4eea46b22232972430eee8ad",
+      "linesBefore": 0,
+      "linesAfter": 299,
+      "rationale": "Added comprehensive 15-scenario adversarial test battery (AUTH-01 through AUTH-15) verifying fail-closed authority boundaries."
+    }
+  ]
+}

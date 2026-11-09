@@ -13,6 +13,10 @@ import { AssemblyComponentItem, AssemblyEngine } from '../engine/assembly';
 import { UnitEngine } from '../engine/units';
 import { buildSolidWorksBallValve } from './CadIndustrialModels';
 import { CanonicalRenderData, createCanonicalRenderDataFromMesh } from '../engine/viewport/CanonicalRenderContract';
+import { DigitalThreadEngine, DigitalThreadState } from '../engine/thread/DigitalThreadEngine';
+import { TruthThreadDashboard } from './TruthThreadDashboard';
+import { CadGeometryKernel } from '../engine/cadKernel';
+import { EngineeringReleaseEngine } from '../engine/release/EngineeringReleaseEngine';
 import {
   convertRenderDataToThreeBufferGeometry,
   convertCanonicalFaceToHighlightGeometry,
@@ -166,6 +170,78 @@ export const CadViewport3D: React.FC<CadViewport3DProps> = ({
   const [internalHandleColor, setInternalHandleColor] = useState<string | null>(valveConfig?.handleColor ?? null);
   const [showValveControls, setShowValveControls] = useState(true);
   const [dismissedBlankCanvas, setDismissedBlankCanvas] = useState(false);
+
+  // SECP-CAD-TRUTH-PATCH-005: Engineering Truth Thread State
+  const [truthThread, setTruthThread] = useState<DigitalThreadEngine | null>(() => {
+    // Initial bootstrap state for demonstration
+    const box = CadGeometryKernel.createBox(120, 50, 25);
+    const initialState: DigitalThreadState = {
+      cadId: box.id,
+      revisionId: 'v1.0.0',
+      cadEntity: box,
+      meshSet: {
+        meshId: 'MESH-001',
+        modelId: box.id,
+        modelRevisionId: 'v1.0.0',
+        modelRevisionHash: box.geometryHash,
+        meshVersion: '1.0.0',
+        dimension: '3D',
+        topologyType: 'UNSTRUCTURED',
+        elementFamily: 'HEXAHEDRON',
+        nodes: [],
+        elements: [],
+        regions: [],
+        revision: 'v1.0.0',
+        status: 'CURRENT',
+        canonicalHash: 'MESH-HASH-001'
+      },
+      cfdResult: {
+        success: true,
+        iterations: 100,
+        residual: 1e-6,
+        status: 'CURRENT'
+      } as any,
+      digitalThreadStatus: 'CURRENT',
+      evidenceChain: []
+    };
+    return new DigitalThreadEngine(initialState);
+  });
+
+  const [threadState, setThreadState] = useState<DigitalThreadState | null>(truthThread?.getState() || null);
+  const [releaseResult, setReleaseResult] = useState<{ success: boolean; certificateId?: string; errors?: string[] } | null>(null);
+
+  const handleMutateGeometry = () => {
+    if (!truthThread) return;
+    truthThread.mutateGeometry({ dxMm: 150, dyMm: 60, dzMm: 30 });
+    setThreadState({ ...truthThread.getState() });
+    setReleaseResult(null); // Reset release result on mutation
+  };
+
+  const handleRegenerateMesh = () => {
+    if (!truthThread) return;
+    truthThread.regenerateMesh();
+    setThreadState({ ...truthThread.getState() });
+  };
+
+  const handleRecomputeCfd = () => {
+    if (!truthThread) return;
+    truthThread.recomputeCfd();
+    setThreadState({ ...truthThread.getState() });
+  };
+
+  const handleRelease = () => {
+    if (!truthThread || !threadState) return;
+    const res = EngineeringReleaseEngine.publishRelease({
+      releaseId: 'REL-DEMO-001',
+      projectName: 'TRUTH_THREAD_DEMO',
+      cadEntity: threadState.cadEntity,
+      meshSet: threadState.meshSet,
+      cfdResult: threadState.cfdResult,
+      digitalThreadStatus: threadState.digitalThreadStatus,
+      evidenceChain: threadState.evidenceChain
+    });
+    setReleaseResult(res);
+  };
 
   // Reset overlay dismissal when project or active solid changes
   useEffect(() => {
@@ -1619,6 +1695,18 @@ export const CadViewport3D: React.FC<CadViewport3DProps> = ({
             Selected Entity: <strong className="text-white">{selectedEntityName}</strong>
           </span>
         </div>
+      )}
+
+      {/* Engineering Truth Thread Dashboard Overlay */}
+      {threadState && (
+        <TruthThreadDashboard 
+          state={threadState} 
+          onMutateGeometry={handleMutateGeometry}
+          onRegenerateMesh={handleRegenerateMesh}
+          onRecomputeCfd={handleRecomputeCfd}
+          onRelease={handleRelease}
+          releaseResult={releaseResult}
+        />
       )}
 
       {/* Viewport Overlay Axis Legend & Pipeline */}

@@ -1,0 +1,31 @@
+{
+  "principle": "STRICT_SEPARATION_OF_CONCERNS",
+  "rationale": "Provenance Integrity validates identity, cryptographic seals, and geometry/mesh derivation links. Numerical Qualification validates physics convergence, residuals, and stability. A valid provenance chain must NOT mask numerical non-convergence (e.g. MAX_ITERATIONS_REACHED), and numerical non-convergence must NOT fail provenance integrity.",
+  "dataStructures": {
+    "provenanceIntegrity": {
+      "valid": "boolean",
+      "cadRevisionHash": "string | number",
+      "canonicalGeometryHash": "string",
+      "bRepHash": "string",
+      "meshHash": "string",
+      "executionId": "string",
+      "failureReasons": "string[]"
+    },
+    "numericalQualification": {
+      "converged": "boolean",
+      "terminationReason": "CONVERGED | MAX_ITERATIONS_REACHED | DIVERGED | FAILED",
+      "forceStabilityPassed": "boolean",
+      "iterations": "number",
+      "finalContinuityResidual": "number",
+      "finalMomentumResidual": "number"
+    }
+  },
+  "empiricalProof": {
+    "testCase": "CAD-10",
+    "solverIterations": 3,
+    "provenanceIntegrityValid": true,
+    "numericalConverged": false,
+    "terminationReason": "MAX_ITERATIONS_REACHED",
+    "verdict": "VERIFIED_SEPARATION"
+  }
+}

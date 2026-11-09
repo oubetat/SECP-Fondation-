@@ -1,0 +1,40 @@
+{
+  "timestamp": "2026-11-01T01:20:30Z",
+  "auditObjective": "Audit reconstructed files (SpatialMaterialField.ts and package.json) for member utilization and lockfile version alignment.",
+  "spatialMaterialFieldAudit": {
+    "file": "src/engine/fem/core/SpatialMaterialField.ts",
+    "publicMembers": [
+      { "member": "constructor", "usedInProduction": true, "usageLocation": "EngineeringOptimizationEngine.ts:357" },
+      { "member": "fieldId", "usedInProduction": true, "usageLocation": "ManufacturingConstraintEngine.ts:264" },
+      { "member": "geometryId", "usedInProduction": true, "usageLocation": "EngineeringOptimizationEngine.ts" },
+      { "member": "revisionId", "usedInProduction": true, "usageLocation": "EngineeringOptimizationEngine.ts" },
+      { "member": "baseMaterialId", "usedInProduction": true, "usageLocation": "EngineeringOptimizationEngine.ts" },
+      { "member": "properties", "usedInProduction": true, "usageLocation": "EngineeringOptimizationEngine.ts:344" },
+      { "member": "domainBounds", "usedInProduction": true, "usageLocation": "SpatialMaterialField.ts evaluate method" },
+      { "member": "outOfDomainBehavior", "usedInProduction": true, "usageLocation": "SpatialMaterialField.ts evaluate method" },
+      { "member": "evaluate(coords)", "usedInProduction": true, "usageLocation": "Bar1DFormulation.ts:63, TET43DFormulation.ts:126, TET43DFormulation.ts:297" }
+    ],
+    "testOnlyMembers": [],
+    "verdict": "100% PUBLIC MEMBERS ACTIVELY UTILIZED IN PRODUCTION CODE"
+  },
+  "packageJsonAudit": {
+    "file": "package.json",
+    "lockfile": "package-lock.json",
+    "lockfileDependenciesVerified": [
+      "@google/genai", "express", "firebase", "framer-motion", "lucide-react", "react", "react-dom", "recharts",
+      "@tailwindcss/vite", "@types/express", "@types/react", "@types/react-dom", "@vitejs/plugin-react", "esbuild", "tailwindcss", "tsx", "typescript", "vite"
+    ],
+    "discrepanciesFound": [
+      {
+        "package": "zod",
+        "lockfileVersion": "^3.25.76",
+        "statusInPackageJson": "MISSING_IN_PACKAGE_JSON",
+        "impact": "Low (transitive or legacy lock entry)"
+      }
+    ],
+    "additionalPackageJsonDeps": [
+      "three", "@types/three", "buffer", "crypto-browserify", "vitest", "jsdom", "lru-cache", "autoprefixer", "postcss", "@testing-library/react", "@testing-library/jest-dom"
+    ],
+    "verdict": "PACKAGE_JSON_VALIDATED_WITH_DOCUMENTED_DISCREPANCIES"
+  }
+}

@@ -1,0 +1,245 @@
+{
+  "timestamp": "2026-08-23T14:26:39.932Z",
+  "benchmarkVersion": "1.0.0",
+  "executiveVerdict": "DETERMINISTIC",
+  "scenarios": [
+    {
+      "scenarioId": "SCEN-DET-001",
+      "category": "INPUT",
+      "inputHash": "DIRECT_OBJECT",
+      "canonicalInputHash": "db87e5c54d16b517434f55ef320758e8959b3e0c54b9bfcffb5a6156da51e0a3",
+      "engineVersion": "2.0.0",
+      "environmentFingerprint": "NODEJS_VITE",
+      "runResults": [
+        {
+          "runId": "run-0",
+          "timestamp": "2026-08-23T14:26:39.929Z",
+          "outputHash": "db87e5c54d16b517434f55ef320758e8959b3e0c54b9bfcffb5a6156da51e0a3",
+          "evidenceHash": "NA",
+          "resultData": {
+            "z": 3,
+            "a": 1,
+            "m": {
+              "y": 2,
+              "x": 1
+            },
+            "arr": [
+              10,
+              20,
+              30
+            ]
+          }
+        },
+        {
+          "runId": "run-1",
+          "timestamp": "2026-08-23T14:26:39.930Z",
+          "outputHash": "db87e5c54d16b517434f55ef320758e8959b3e0c54b9bfcffb5a6156da51e0a3",
+          "evidenceHash": "NA",
+          "resultData": {
+            "z": 3,
+            "a": 1,
+            "m": {
+              "y": 2,
+              "x": 1
+            },
+            "arr": [
+              10,
+              20,
+              30
+            ]
+          }
+        },
+        {
+          "runId": "run-2",
+          "timestamp": "2026-08-23T14:26:39.930Z",
+          "outputHash": "db87e5c54d16b517434f55ef320758e8959b3e0c54b9bfcffb5a6156da51e0a3",
+          "evidenceHash": "NA",
+          "resultData": {
+            "z": 3,
+            "a": 1,
+            "m": {
+              "y": 2,
+              "x": 1
+            },
+            "arr": [
+              10,
+              20,
+              30
+            ]
+          }
+        }
+      ],
+      "determinismStatus": "DETERMINISTIC"
+    },
+    {
+      "scenarioId": "SCEN-DET-002",
+      "category": "EVIDENCE",
+      "inputHash": "FIXED_INCIDENT_PARAMS",
+      "canonicalInputHash": "NA",
+      "engineVersion": "2.0.0",
+      "environmentFingerprint": "NODEJS_VITE",
+      "runResults": [
+        {
+          "runId": "run-0",
+          "timestamp": "2026-08-23T14:26:39.931Z",
+          "outputHash": "7d7854d61e65831f5040946f89f881ac1de2cce9ee3364537ef852f393c30ba0",
+          "evidenceHash": "7d7854d61e65831f5040946f89f881ac1de2cce9ee3364537ef852f393c30ba0",
+          "resultData": [
+            {
+              "incidentId": "inc-1-1f9461a66af30add",
+              "caseId": "CASE-01",
+              "evidenceId": "EV-01",
+              "category": "UNIT_TEST",
+              "severity": "INFO",
+              "detectedAt": "2024-08-23T14:13:20.000Z",
+              "expected": "100",
+              "observed": "100",
+              "affectedArtifacts": [
+                "ART-001"
+              ],
+              "hashes": {},
+              "provenanceChain": [],
+              "reproductionNotes": "Test",
+              "status": "PRESERVED"
+            }
+          ]
+        },
+        {
+          "runId": "run-1",
+          "timestamp": "2026-08-23T14:26:39.931Z",
+          "outputHash": "7d7854d61e65831f5040946f89f881ac1de2cce9ee3364537ef852f393c30ba0",
+          "evidenceHash": "7d7854d61e65831f5040946f89f881ac1de2cce9ee3364537ef852f393c30ba0",
+          "resultData": [
+            {
+              "incidentId": "inc-1-1f9461a66af30add",
+              "caseId": "CASE-01",
+              "evidenceId": "EV-01",
+              "category": "UNIT_TEST",
+              "severity": "INFO",
+              "detectedAt": "2024-08-23T14:13:20.000Z",
+              "expected": "100",
+              "observed": "100",
+              "affectedArtifacts": [
+                "ART-001"
+              ],
+              "hashes": {},
+              "provenanceChain": [],
+              "reproductionNotes": "Test",
+              "status": "PRESERVED"
+            }
+          ]
+        },
+        {
+          "runId": "run-2",
+          "timestamp": "2026-08-23T14:26:39.931Z",
+          "outputHash": "7d7854d61e65831f5040946f89f881ac1de2cce9ee3364537ef852f393c30ba0",
+          "evidenceHash": "7d7854d61e65831f5040946f89f881ac1de2cce9ee3364537ef852f393c30ba0",
+          "resultData": [
+            {
+              "incidentId": "inc-1-1f9461a66af30add",
+              "caseId": "CASE-01",
+              "evidenceId": "EV-01",
+              "category": "UNIT_TEST",
+              "severity": "INFO",
+              "detectedAt": "2024-08-23T14:13:20.000Z",
+              "expected": "100",
+              "observed": "100",
+              "affectedArtifacts": [
+                "ART-001"
+              ],
+              "hashes": {},
+              "provenanceChain": [],
+              "reproductionNotes": "Test",
+              "status": "PRESERVED"
+            }
+          ]
+        }
+      ],
+      "determinismStatus": "DETERMINISTIC",
+      "structuralDifference": []
+    },
+    {
+      "scenarioId": "SCEN-DET-003",
+      "category": "NUMERICAL",
+      "inputHash": "NUMERIC_ARRAY",
+      "canonicalInputHash": "NA",
+      "engineVersion": "2.0.0",
+      "environmentFingerprint": "IEEE-754",
+      "runResults": [
+        {
+          "runId": "ORDER_A",
+          "timestamp": "2026-08-23T14:26:39.931Z",
+          "outputHash": "4.5",
+          "evidenceHash": "NA",
+          "resultData": 4.5
+        },
+        {
+          "runId": "ORDER_B",
+          "timestamp": "2026-08-23T14:26:39.931Z",
+          "outputHash": "4.5",
+          "evidenceHash": "NA",
+          "resultData": 4.5
+        }
+      ],
+      "determinismStatus": "DETERMINISTIC",
+      "numericalDifference": 0
+    },
+    {
+      "scenarioId": "SCEN-DET-004",
+      "category": "ORDERING",
+      "inputHash": "KEYS_ABC_VS_CBA",
+      "canonicalInputHash": "NA",
+      "engineVersion": "2.0.0",
+      "environmentFingerprint": "V8_OBJECT_ITERATION",
+      "runResults": [
+        {
+          "runId": "ASC",
+          "timestamp": "2026-08-23T14:26:39.932Z",
+          "outputHash": "0756c7fe6f47340c71bbc8c149787fe93eb27223bb0ee1f209e0a340cd498f3b",
+          "evidenceHash": "NA",
+          "resultData": "{\"a\":1,\"b\":1,\"c\":1}"
+        },
+        {
+          "runId": "DESC",
+          "timestamp": "2026-08-23T14:26:39.932Z",
+          "outputHash": "0756c7fe6f47340c71bbc8c149787fe93eb27223bb0ee1f209e0a340cd498f3b",
+          "evidenceHash": "NA",
+          "resultData": "{\"a\":1,\"b\":1,\"c\":1}"
+        }
+      ],
+      "determinismStatus": "DETERMINISTIC"
+    },
+    {
+      "scenarioId": "SCEN-DET-005",
+      "category": "REPLAY",
+      "inputHash": "d7e0b3f05fad52c7e54cbab289906dbf8e88ef6e4daa8c455c70119a660f5023",
+      "canonicalInputHash": "d7e0b3f05fad52c7e54cbab289906dbf8e88ef6e4daa8c455c70119a660f5023",
+      "engineVersion": "2.0.0",
+      "environmentFingerprint": "CRYPTO_SHA256",
+      "runResults": [
+        {
+          "runId": "REPLAY_1",
+          "timestamp": "2026-08-23T14:26:39.932Z",
+          "outputHash": "1e8c4e22ff3329083c734c2da54fe4baa1d2a4319600a8381f863be06ea7901a",
+          "evidenceHash": "1e8c4e22ff3329083c734c2da54fe4baa1d2a4319600a8381f863be06ea7901a",
+          "resultData": "1e8c4e22ff3329083c734c2da54fe4baa1d2a4319600a8381f863be06ea7901a"
+        },
+        {
+          "runId": "REPLAY_2",
+          "timestamp": "2026-08-23T14:26:39.932Z",
+          "outputHash": "1e8c4e22ff3329083c734c2da54fe4baa1d2a4319600a8381f863be06ea7901a",
+          "evidenceHash": "1e8c4e22ff3329083c734c2da54fe4baa1d2a4319600a8381f863be06ea7901a",
+          "resultData": "1e8c4e22ff3329083c734c2da54fe4baa1d2a4319600a8381f863be06ea7901a"
+        }
+      ],
+      "determinismStatus": "DETERMINISTIC"
+    }
+  ],
+  "summary": {
+    "totalScenarios": 5,
+    "deterministicCount": 5,
+    "reproducibleCount": 0,
+    "nonDeterministicCount": 0,
+    "unprovenCount": 0
+  }
+}

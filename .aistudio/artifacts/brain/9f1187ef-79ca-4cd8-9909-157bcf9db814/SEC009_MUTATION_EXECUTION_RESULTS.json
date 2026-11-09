@@ -1,0 +1,52 @@
+{
+  "audit_id": "SECP-SECURITY-009",
+  "provenance": {
+    "testFile": "src/engine/forensic/__tests__/SEC009_MutationHarness.test.ts",
+    "executionHarness": "Vitest v1.6.1 with live dynamic mutation injection and restoration",
+    "timestamp": "2026-11-02T07:50:35.708Z"
+  },
+  "baselineVerified": true,
+  "mutationsTested": [
+    {
+      "mutation": "MUT-01: Null Capability Validation Removal",
+      "targetedBehavior": "Throws SIMULATION_AUTHORITY_VIOLATION when capability is null/undefined",
+      "mutationAction": "Bypass null check and return synthetic wildcard capability",
+      "detectedByTest": true,
+      "detectionLog": "[MUTATION TEST] Mutation 1 detected: Null capability was accepted under mutation.",
+      "baselineRestored": true
+    },
+    {
+      "mutation": "MUT-02: Capability Identity Validation Weakening",
+      "targetedBehavior": "Throws SIMULATION_AUTHORITY_VIOLATION when capability reference != registered (prevents structural object forgery)",
+      "mutationAction": "Match capabilityId property only without instance identity check",
+      "detectedByTest": true,
+      "detectionLog": "[MUTATION TEST] Mutation 2 detected: Forged structural object passed reference check.",
+      "baselineRestored": true
+    },
+    {
+      "mutation": "MUT-03: Domain Scope Authorization Removal",
+      "targetedBehavior": "Throws SIMULATION_AUTHORITY_VIOLATION when domain is not in authorizedDomains",
+      "mutationAction": "Omit domain parameter during validation",
+      "detectedByTest": true,
+      "detectionLog": "[MUTATION TEST] Mutation 3 detected: Cross-domain capability leakage allowed.",
+      "baselineRestored": true
+    },
+    {
+      "mutation": "MUT-04: Authority Boot Initialization Gate Removal",
+      "targetedBehavior": "Throws SIMULATION_AUTHORITY_NOT_INITIALIZED when sealing prior to handshake",
+      "mutationAction": "Omit initState check in seal()",
+      "detectedByTest": true,
+      "detectionLog": "[MUTATION TEST] Mutation 4 detected: Pre-boot uninitialized seal allowed.",
+      "baselineRestored": true
+    },
+    {
+      "mutation": "MUT-05: Token Revocation Check Bypass",
+      "targetedBehavior": "Throws SIMULATION_AUTHORITY_VIOLATION when previously issued token is reused post-revocation",
+      "mutationAction": "Make revokeAll() a no-op",
+      "detectedByTest": true,
+      "detectionLog": "[MUTATION TEST] Mutation 5 detected: Revoked capability was replayed successfully.",
+      "baselineRestored": true
+    }
+  ],
+  "verdict": "ALL_MUTATIONS_DETECTED_AND_BASELINES_RESTORED"
+}

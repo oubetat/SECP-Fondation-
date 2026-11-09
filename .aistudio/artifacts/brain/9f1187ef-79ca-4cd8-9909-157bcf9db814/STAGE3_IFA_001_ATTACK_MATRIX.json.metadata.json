@@ -1,0 +1,5 @@
+{
+  "summary":  "Stage 3 IFA Attack Matrix evaluating 8 security attack scenarios against the simulation authority boundary, highlighting defect IFA-DEFECT-001 (public self-sealing) and recommending minimal remediation.",
+  "updatedAt":  "2026-11-01T08:30:08.022945589Z",
+  "userFacing":  true
+}

@@ -24,7 +24,7 @@ import {
 import { CaeCfdService } from '../engine/engineering_cfd/CaeCfdService';
 import { HardAcceptanceGate377, Gate377Report } from '../engine/engineering_cfd/HardAcceptanceGate377';
 import { EngineeringDocument, CFDModel } from '../engine/cad-kernel/document/CADDocument';
-import { CadSolidEntity } from '../cadKernel';
+import { CadSolidEntity } from '../engine/cadKernel';
 import { deriveTruthProvenance, TruthOrigin } from '../engine/context/EngineeringContext';
 
 export interface CaeCfdPanelProps {
@@ -152,7 +152,7 @@ export function CaeCfdPanel({
         fluidViscosity: Number(fluidViscosity),
         maxSteps: Number(maxSteps),
         density: Number(density)
-      });
+      }, activeSolid?.geometryHash || canonicalDocument?.derived?.geometryHash);
       setSolution(res);
       setVtkOutput(null);
 

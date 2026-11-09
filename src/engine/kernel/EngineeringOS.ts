@@ -50,8 +50,8 @@ export class EngineeringOS {
     
     // Initialize Simulation Authority Boundary
     try {
-      const engineKey = initializeAuthorityHandshake();
-      SimulationEngine.bootAuthority(engineKey);
+      initializeAuthorityHandshake();
+      SimulationEngine.bootAuthority();
     } catch (e) {
       console.warn('[SECP OS] Simulation Authority already initialized or failed.');
     }

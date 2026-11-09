@@ -41,7 +41,9 @@ export class FEMBenchmarkSuiteOrchestrator {
         energyMetrics: { globalStrainEnergy: 0, sumElementStrainEnergy: 0, externalWork: 0, energyErrorAbsolute: 0, energyErrorRelative: 0, workEnergyErrorRelative: 0, passed: true },
         performanceStats: { assemblyTimeMs: 1, factorizationTimeMs: 1, solveTimeMs: 1, recoveryTimeMs: 1, verificationTimeMs: 1, totalTimeMs: 5, matrixMemoryBytes: 1024, factorizationMemoryBytes: 1024, solutionMemoryBytes: 1024, peakMemoryBytes: 2048, originalNNZ: 10, factorNNZ: 10, fillInRatio: 1.0 },
         evidencePacket: {} as any,
-        evidenceHash: c01.executionEvidenceHash
+        evidenceHash: c01.executionEvidenceHash,
+        stiffnessMatrix: [],
+        globalStiffnessMatrix: []
       },
       c01.inputHash,
       c01.metrics.runtimeMs

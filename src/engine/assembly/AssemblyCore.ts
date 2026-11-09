@@ -2,12 +2,45 @@ import { EngineeringDocument } from '../cad-kernel/document/CADDocument';
 
 export class Transform3D {
   translation?: [number, number, number];
-  rotation?: [number, number, number] | { x: number; y: number; z: number };
-  scale?: [number, number, number];
-  matrix?: number[];
-  position?: { x: number; y: number; z: number };
-  constructor(init?: Partial<Transform3D>) {
-    if (init) Object.assign(this, init);
+  rotation: { x: number; y: number; z: number };
+  scale: { x: number; y: number; z: number };
+  matrix?: number[] | number[][];
+  position: { x: number; y: number; z: number };
+
+  constructor(init?: Partial<Transform3D> & { [key: string]: any }) {
+    this.position = { x: 0, y: 0, z: 0 };
+    this.rotation = { x: 0, y: 0, z: 0 };
+    this.scale = { x: 1, y: 1, z: 1 };
+
+    if (init) {
+      if (init.position) {
+        this.position = { x: init.position.x ?? 0, y: init.position.y ?? 0, z: init.position.z ?? 0 };
+      } else if (init.translation) {
+        this.position = { x: init.translation[0] ?? 0, y: init.translation[1] ?? 0, z: init.translation[2] ?? 0 };
+      }
+
+      if (init.rotation) {
+        if (Array.isArray(init.rotation)) {
+          this.rotation = { x: init.rotation[0] ?? 0, y: init.rotation[1] ?? 0, z: init.rotation[2] ?? 0 };
+        } else {
+          this.rotation = { x: init.rotation.x ?? 0, y: init.rotation.y ?? 0, z: init.rotation.z ?? 0 };
+        }
+      }
+
+      if (init.scale) {
+        if (Array.isArray(init.scale)) {
+          this.scale = { x: init.scale[0] ?? 1, y: init.scale[1] ?? 1, z: init.scale[2] ?? 1 };
+        } else {
+          this.scale = { x: init.scale.x ?? 1, y: init.scale.y ?? 1, z: init.scale.z ?? 1 };
+        }
+      }
+
+      if (init.matrix) this.matrix = init.matrix;
+      if (init.translation) this.translation = init.translation;
+      else this.translation = [this.position.x, this.position.y, this.position.z];
+    } else {
+      this.translation = [0, 0, 0];
+    }
   }
 }
 
@@ -63,11 +96,11 @@ export class AssemblyInstance {
 export class AssemblyComponent {
   id: string;
   instanceId: string;
+  partId?: string;
   name: string;
-  partId: string;
   transform: Transform3D;
-  placementTransform?: Transform3D;
-  worldTransform?: Transform3D;
+  placementTransform: Transform3D;
+  worldTransform: Transform3D;
   suppressed?: boolean;
   fixed?: boolean;
   colorHex?: string;
@@ -80,54 +113,83 @@ export class AssemblyComponent {
     this.instanceId = init.instanceId || this.id;
     this.name = init.name || 'Untitled Component';
     this.partId = init.partId || 'p-001';
-    this.transform = init.transform || new Transform3D();
+    this.transform = init.transform instanceof Transform3D ? init.transform : new Transform3D(init.transform);
+    this.placementTransform = init.placementTransform instanceof Transform3D ? init.placementTransform : new Transform3D(init.placementTransform || this.transform);
+    this.worldTransform = init.worldTransform instanceof Transform3D ? init.worldTransform : new Transform3D(init.worldTransform || this.placementTransform);
     if (init) Object.assign(this, init);
   }
 }
 
-export function computeTransformMatrix(transform?: Transform3D): number[][] {
-  if (!transform) {
-    return [
-      [1, 0, 0, 0],
-      [0, 1, 0, 0],
-      [0, 0, 1, 0],
-      [0, 0, 0, 1]
-    ];
-  }
-  
-  // Handle both array translation and object position
+export function computeTransformMatrix(
+  transformOrPos?: Transform3D | { x?: number; y?: number; z?: number } | [number, number, number],
+  rotation?: [number, number, number] | { x?: number; y?: number; z?: number },
+  scale?: [number, number, number] | { x?: number; y?: number; z?: number }
+): any {
   let tx = 0, ty = 0, tz = 0;
-  if (transform.translation) {
-    [tx, ty, tz] = transform.translation;
-  } else if (transform.position) {
-    tx = transform.position.x || 0;
-    ty = transform.position.y || 0;
-    tz = transform.position.z || 0;
+  let sx = 1, sy = 1, sz = 1;
+
+  if (transformOrPos) {
+    if ('position' in transformOrPos && transformOrPos.position) {
+      tx = transformOrPos.position.x || 0;
+      ty = transformOrPos.position.y || 0;
+      tz = transformOrPos.position.z || 0;
+    } else if ('translation' in transformOrPos && transformOrPos.translation) {
+      [tx, ty, tz] = transformOrPos.translation;
+    } else if (Array.isArray(transformOrPos)) {
+      [tx, ty, tz] = transformOrPos;
+    } else if ('x' in transformOrPos) {
+      tx = transformOrPos.x || 0;
+      ty = transformOrPos.y || 0;
+      tz = transformOrPos.z || 0;
+    }
+
+    if ('scale' in transformOrPos && transformOrPos.scale) {
+      if (Array.isArray(transformOrPos.scale)) {
+        [sx, sy, sz] = transformOrPos.scale;
+      } else {
+        sx = transformOrPos.scale.x ?? 1;
+        sy = transformOrPos.scale.y ?? 1;
+        sz = transformOrPos.scale.z ?? 1;
+      }
+    }
   }
 
-  const [sx, sy, sz] = transform.scale || [1, 1, 1];
-  
-  return [
+  if (scale) {
+    if (Array.isArray(scale)) {
+      [sx, sy, sz] = scale;
+    } else {
+      sx = scale.x ?? 1;
+      sy = scale.y ?? 1;
+      sz = scale.z ?? 1;
+    }
+  }
+
+  // Support 4x4 matrix representation
+  const mat2D = [
     [sx, 0, 0, tx],
     [0, sy, 0, ty],
     [0, 0, sz, tz],
     [0, 0, 0, 1]
   ];
+  return mat2D;
 }
 
 export function createIdentityTransform(): Transform3D {
   return new Transform3D({
-    translation: [0, 0, 0],
-    rotation: [0, 0, 0],
-    scale: [1, 1, 1]
+    position: { x: 0, y: 0, z: 0 },
+    rotation: { x: 0, y: 0, z: 0 },
+    scale: { x: 1, y: 1, z: 1 }
   });
 }
 
 export function createTransform3D(t?: [number, number, number], r?: [number, number, number], s?: [number, number, number]): Transform3D {
+  const pos = t ? { x: t[0], y: t[1], z: t[2] } : { x: 0, y: 0, z: 0 };
+  const rot = r ? { x: r[0], y: r[1], z: r[2] } : { x: 0, y: 0, z: 0 };
+  const scl = s ? { x: s[0], y: s[1], z: s[2] } : { x: 1, y: 1, z: 1 };
   return new Transform3D({
-    translation: t || [0, 0, 0],
-    rotation: r || [0, 0, 0],
-    scale: s || [1, 1, 1]
+    position: pos,
+    rotation: rot,
+    scale: scl
   });
 }
 

@@ -1,0 +1,44 @@
+{
+  "timestamp": "2026-11-06T09:31:35Z",
+  "typescriptVersion": "7.0.2",
+  "command": "npx tsc --noEmit -p tsconfig.json",
+  "exitCode": 1,
+  "summary": {
+    "totalDiagnostics": 6647,
+    "byDirectory": {
+      "src/engine": 4177,
+      "src/components": 1127,
+      "src/verification": 351,
+      "src/test": 8,
+      "src/lib": 1,
+      "src/services": 1
+    },
+    "topFiles": [
+      { "file": "src/engine/assembly/AssemblyConstraintSolver.ts", "count": 244 },
+      { "file": "src/engine/engineering_webgpu/HardAcceptanceGate296.ts", "count": 103 },
+      { "file": "src/engine/cam/production-gate/CAMProductionGateWorkspace.tsx", "count": 87 },
+      { "file": "src/engine/cad-kernel/__tests__/KernelTruthQualification.test.ts", "count": 70 },
+      { "file": "src/engine/forensic/LiveForensicAuditor.ts", "count": 67 }
+    ]
+  },
+  "rootCauseClusters": [
+    {
+      "id": "ASSEMBLY_CONTRACT_MISMATCH",
+      "impact": "High (244+ errors)",
+      "authoritativeFiles": ["src/engine/assembly/AssemblyConstraintTypes.ts", "src/engine/assembly/KinematicTypes.ts"],
+      "description": "Mismatch between DOF analysis states and their interface definitions."
+    },
+    {
+      "id": "WEBGPU_API_SKEW",
+      "impact": "Medium (103+ errors)",
+      "authoritativeFiles": ["src/engine/engineering_webgpu/ComputeBackend.ts"],
+      "description": "Acceptance gates calling non-existent methods on backend implementations."
+    },
+    {
+      "id": "UI_SIMULATION_STATE_MISMATCH",
+      "impact": "Medium (100+ errors)",
+      "authoritativeFiles": ["src/types/simulation.ts", "src/types/engineering.ts"],
+      "description": "UI components using properties not defined in the domain model interfaces."
+    }
+  ]
+}

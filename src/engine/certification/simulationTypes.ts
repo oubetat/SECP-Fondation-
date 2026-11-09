@@ -100,21 +100,28 @@ export interface SimulationExecutionManifest {
   readonly simulationId: string;
   readonly solverIdentity: string;
   readonly solverVersion: string;
-  readonly runtime: string;
-  readonly platform: string;
-  readonly configuration: Record<string, any>;
-  readonly startTime: string;
-  readonly endTime: string;
-  readonly iterationCount: number;
-  readonly terminationReason: SimulationConvergenceStatus;
+  readonly runtime?: string;
+  readonly platform?: string;
+  readonly configuration?: Record<string, any>;
+  readonly startTime?: string;
+  readonly endTime?: string;
+  readonly iterationCount?: number;
+  readonly terminationReason?: SimulationConvergenceStatus;
+  readonly hardwareProfile?: string;
+  readonly executionTimestamp?: string;
+  readonly executionDurationMs?: number;
+  readonly exitCode?: number;
+  readonly resourceConsumption?: Record<string, any>;
 }
 
 export interface SimulationResultManifest {
   readonly resultId: string;
+  readonly executionId: string;
   readonly resultHash: string;
-  readonly fieldHashes: Record<string, string>;
-  readonly scalarResults: Record<string, number>;
+  readonly fieldHashes?: Record<string, string>;
+  readonly scalarResults?: Record<string, number>;
   readonly vectorResults?: Record<string, readonly number[]>;
+  readonly tensorResults?: Record<string, any>;
   readonly iterationData?: readonly Record<string, any>[];
   readonly residualHistory?: readonly Record<string, number>[];
   readonly conservationMetrics?: {
@@ -122,13 +129,17 @@ export interface SimulationResultManifest {
     readonly momentumError?: number;
     readonly energyError?: number;
     readonly isConserved: boolean;
+    readonly massBalance?: number;
+    readonly energyBalance?: number;
   };
   readonly convergenceMetrics?: {
     readonly isConverged: boolean;
-    readonly residualTolerance: number;
-    readonly finalResiduals: Record<string, number>;
+    readonly residualTolerance?: number;
+    readonly finalResiduals?: Record<string, number>;
+    readonly finalResidual?: number;
+    readonly iterations?: number;
   };
-  readonly solverTerminationState: string;
+  readonly solverTerminationState?: string;
 }
 
 export interface VerificationClaim {
@@ -136,12 +147,12 @@ export interface VerificationClaim {
   readonly claimType: string;
   readonly description: string;
   readonly passed: boolean;
-  readonly evidenceReference: string; // must point to a specific evidence component (Section 10)
+  readonly evidenceReference?: string; // must point to a specific evidence component (Section 10)
 }
 
 export interface SimulationVerificationMatrix {
   readonly verificationId: string;
-  readonly simulationId: string;
+  readonly simulationId?: string;
   readonly resultId: string;
   readonly claims: readonly VerificationClaim[];
 }
@@ -202,14 +213,16 @@ export interface SimulationCertificate {
 
 export interface SimulationCertificationPolicy {
   readonly policyId: string;
-  readonly policyVersion: string;
+  readonly policyVersion?: string;
   readonly requiredClaims: readonly string[];
-  readonly minCertificationLevel: SimulationCertificationLevel;
+  readonly minCertificationLevel?: SimulationCertificationLevel;
+  readonly requiredLevel?: number;
   readonly requiredSolverIdentity?: string;
   readonly requiredSolverVersion?: string;
   readonly requireConvergence?: boolean;
   readonly requireConservation?: boolean;
   readonly requireStability?: boolean;
+  readonly requireIndependentVerification?: boolean;
 }
 
 export interface SimulationCertificateVerificationResult {

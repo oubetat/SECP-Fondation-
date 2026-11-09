@@ -1,0 +1,229 @@
+{
+  "auditId": "SECP-CAD-TRUTH-FORENSIC-001",
+  "workstream": "WORKSTREAM_G_TEST_FORENSICS",
+  "verdict": "PARTIALLY_VERIFIED_BASELINE",
+  "totalSuitesAudited": 24,
+  "passingSuitesCount": 22,
+  "failingSuitesCount": 2,
+  "totalTestsExecuted": 242,
+  "passedTestsCount": 231,
+  "failedTestsCount": 11,
+  "testSuites": [
+    {
+      "suite": "src/verification/p5/P5-001-CADAssemblyAssociativity.test.ts",
+      "tests": 5,
+      "passed": 5,
+      "failed": 0,
+      "status": "PASS",
+      "numericalResults": "Parameter depth mutated from 25 to 35mm; persistent tag CapEnd preserved; BRepHash recalculated and verified.",
+      "assertions": "Rebind state equals 'REBOUND'; downstream PLM artifact invalidated; historical evidence immutability verified."
+    },
+    {
+      "suite": "src/engine/topology/__tests__/CanonicalDerivedArtifactBinding.test.ts",
+      "tests": 45,
+      "passed": 45,
+      "failed": 0,
+      "status": "PASS",
+      "numericalResults": "SHA-256 digests over derived artifact payloads; tamper detection over 45 test variants.",
+      "assertions": "Zero unverified derived artifacts permitted; revision mismatch and geometry mismatch rejected."
+    },
+    {
+      "suite": "src/engine/cad-kernel/__tests__/BooleanEngine.test.ts",
+      "tests": 20,
+      "passed": 20,
+      "failed": 0,
+      "status": "PASS",
+      "numericalResults": "Plane-Plane, Plane-Cylinder, and Plane-Sphere union, difference, intersection tests.",
+      "assertions": "Euler characteristic Chi = 2 preserved; manifold closure verified."
+    },
+    {
+      "suite": "src/engine/cad-kernel/brep/__tests__/BRepEulerOps.test.ts",
+      "tests": 2,
+      "passed": 2,
+      "failed": 0,
+      "status": "PASS",
+      "numericalResults": "Cube: V=8, E=12, F=6, Chi=2; Fillet step: V=10, E=15, F=7, Chi=2.",
+      "assertions": "Euler-Poincare characteristic Chi = V - E + F == 2."
+    },
+    {
+      "suite": "src/engine/cad-kernel/__tests__/BRepValidator.test.ts",
+      "tests": 11,
+      "passed": 11,
+      "failed": 0,
+      "status": "PASS",
+      "numericalResults": "Rejects open shells, non-manifold edges (sharing > 2 faces), zero-area faces.",
+      "assertions": "Validation status 'VALID' on closed solids, 'INVALID' with diagnostics on degenerate geometry."
+    },
+    {
+      "suite": "src/engine/cad-kernel/document/__tests__/DocumentEvaluator.test.ts",
+      "tests": 6,
+      "passed": 6,
+      "failed": 0,
+      "status": "PASS",
+      "numericalResults": "Full parametric pipeline: Parameters + Sketches + Features -> BRepSolid + Mesh + PLM projection.",
+      "assertions": "Determinism on repeated evaluations; invalidation of FEA/CFD/CAM on parametric change."
+    },
+    {
+      "suite": "src/engine/cad-kernel/history/__tests__/DraftShellRibThinCanonicalConvergence.test.ts",
+      "tests": 10,
+      "passed": 10,
+      "failed": 0,
+      "status": "PASS",
+      "numericalResults": "Draft, Shell (offset cavity), Rib, and Thin feature evaluations.",
+      "assertions": "Wall thickness verified mathematically; BRepMutationGate verified."
+    },
+    {
+      "suite": "src/engine/cad-kernel/history/__tests__/HoleCanonicalConvergence.test.ts",
+      "tests": 10,
+      "passed": 10,
+      "failed": 0,
+      "status": "PASS",
+      "numericalResults": "Blind hole, through-hole, counterbore, countersink, and 60° metric thread tooth profiles.",
+      "assertions": "BRepMutationGate277 detects and verifies SUBTRACTIVE topology mutation."
+    },
+    {
+      "suite": "src/engine/cad-kernel/modeling/__tests__/DirectModelingEngine.test.ts",
+      "tests": 6,
+      "passed": 6,
+      "failed": 0,
+      "status": "PASS",
+      "numericalResults": "Translates face by vector [dx, dy, dz]; updates adjacent face loops.",
+      "assertions": "BRepMutationGate detects face translation."
+    },
+    {
+      "suite": "src/engine/cad-kernel/tessellation/__tests__/BRepTessellator.test.ts",
+      "tests": 2,
+      "passed": 2,
+      "failed": 0,
+      "status": "PASS",
+      "numericalResults": "Tessellates B-Rep solid into triangle vertices, normals, and indices.",
+      "assertions": "Every triangle mapped to persistent face ID."
+    },
+    {
+      "suite": "src/engine/cad-kernel/tolerance/__tests__/ToleranceModel.test.ts",
+      "tests": 12,
+      "passed": 12,
+      "failed": 0,
+      "status": "PASS",
+      "numericalResults": "Scale-aware length tolerances across 1e-6m to 100m modeling scales.",
+      "assertions": "Relative and absolute tolerance bands satisfied."
+    },
+    {
+      "suite": "src/engine/topology/__tests__/ProductionConsumerEnforcement.test.ts",
+      "tests": 2,
+      "passed": 2,
+      "failed": 0,
+      "status": "PASS",
+      "numericalResults": "Enforces that derived artifacts must hold valid CanonicalDerivedArtifactBinding.",
+      "assertions": "Rejects unbound artifacts."
+    },
+    {
+      "suite": "src/engine/manufacturing/pma/__tests__/PhysicalManufacturingAdversarial.test.ts",
+      "tests": 11,
+      "passed": 11,
+      "failed": 0,
+      "status": "PASS",
+      "numericalResults": "Adversarial tests against G-code substitution, telemetry sequence skips, and machine ID mismatch.",
+      "assertions": "Rejects tampered telemetry chains; passes valid telemetry."
+    },
+    {
+      "suite": "src/engine/certification/truth/__tests__/IndependentAuditPackage.test.ts",
+      "tests": 10,
+      "passed": 10,
+      "failed": 0,
+      "status": "PASS",
+      "numericalResults": "Constructs Merkle tree of evidence records, calculates root hash, issues certificate.",
+      "assertions": "Root hash verification passes; tampering with one leaf invalidates certificate."
+    },
+    {
+      "suite": "src/engine/certification/truth/__tests__/CompetitiveCapabilityMatrix.test.ts",
+      "tests": 14,
+      "passed": 14,
+      "failed": 0,
+      "status": "PASS",
+      "numericalResults": "Verifies cryptographic attestation rules across 14 industry benchmark profiles.",
+      "assertions": "Compliance checks pass."
+    },
+    {
+      "suite": "src/engine/assembly/constraints/__tests__/AssemblyConstraintSolver.test.ts",
+      "tests": 11,
+      "passed": 11,
+      "failed": 0,
+      "status": "PASS",
+      "numericalResults": "Mates resolved within residual error <= 1e-6.",
+      "assertions": "Coincident, concentric, fixed, and distance mates converge."
+    },
+    {
+      "suite": "src/engine/assembly/kinematics/__tests__/KinematicAssemblyEngine.test.ts",
+      "tests": 4,
+      "passed": 4,
+      "failed": 0,
+      "status": "PASS",
+      "numericalResults": "Joint rotation and translation forward kinematics.",
+      "assertions": "DOF and transform matrices verified."
+    },
+    {
+      "suite": "src/engine/cad-kernel/history/__tests__/FeatureHistory.test.ts",
+      "tests": 16,
+      "passed": 16,
+      "failed": 0,
+      "status": "PASS",
+      "numericalResults": "DAG traversal, dirty state propagation, re-execution of 16 feature operations.",
+      "assertions": "Topological order matches dependency graph."
+    },
+    {
+      "suite": "src/engine/cad-kernel/history/__tests__/PersistentTopology.test.ts",
+      "tests": 2,
+      "passed": 2,
+      "failed": 0,
+      "status": "PASS",
+      "numericalResults": "Persistent naming generation and re-identification across feature re-evaluations.",
+      "assertions": "Tags persist across regeneration."
+    },
+    {
+      "suite": "src/engine/interop/step-ap242/__tests__/StepAp242Pipeline.test.ts",
+      "tests": 3,
+      "passed": 3,
+      "failed": 0,
+      "status": "PASS",
+      "numericalResults": "Parses simple_box.stp (774 bytes); verifies entity counts and topology.",
+      "assertions": "Round-trip export equals parsed entity definitions."
+    },
+    {
+      "suite": "src/engine/interop/step-ap242/__tests__/AP242Phase2RedTeam.test.ts",
+      "tests": 18,
+      "passed": 18,
+      "failed": 0,
+      "status": "PASS",
+      "numericalResults": "Adversarial malformed STEP headers, syntax errors, missing entities.",
+      "assertions": "Fail-closed parser rejection on corrupted files."
+    },
+    {
+      "suite": "src/engine/cad-kernel/fea/__tests__/FEACADPipeline.test.ts",
+      "tests": 2,
+      "passed": 2,
+      "failed": 0,
+      "status": "PASS",
+      "numericalResults": "Box meshed into TRI3 elements; linear structural solver computes stiffness K and displacement u.",
+      "assertions": "Parameter modification changes BRepHash, MeshHash, Stiffness K, and Displacement u."
+    },
+    {
+      "suite": "src/engine/cad-kernel/cfd/__tests__/CFDCADPipeline.test.ts",
+      "tests": 1,
+      "passed": 0,
+      "failed": 1,
+      "status": "FAIL",
+      "failureReason": "SIMULATION_AUTHORITY_VIOLATION: CFD solve attempted without valid execution authorization.",
+      "defectFinding": "Fvm3DNavierStokesSolver enforces executionAuthority.isAuthoritative, but CAD pipeline generates unsealed CFD mesh."
+    },
+    {
+      "suite": "src/engine/certification/truth/__tests__/HydraulicPumpTruthThread.test.ts",
+      "tests": 10,
+      "passed": 0,
+      "failed": 10,
+      "status": "FAIL",
+      "failureReason": "SIMULATION_AUTHORITY_VIOLATION: Invalid or missing SealingCapability at SimulationEngine.ts:175.",
+      "defectFinding": "SimulationEngine.runScenario line 175 calls sealEnvelope without passing SealingCapability, causing all 10 tests to fail."
+    }
+  ]
+}

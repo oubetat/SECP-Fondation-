@@ -11,6 +11,7 @@ import { ReferenceValidationResult } from './types';
 import { TurbulenceCaseRegistry } from './TurbulenceCaseRegistry';
 import { Fvm3DNavierStokesSolver } from '../../cfd3d/Fvm3DNavierStokesSolver';
 import { Fvm3DMeshGenerator } from '../../cfd3d/Fvm3DMeshGenerator';
+import { DomainBindingTestUtility } from '../../crossdomain/DomainBindingTestUtility';
 
 export class TurbulenceReferenceValidator {
   public static validateCase(
@@ -146,7 +147,9 @@ export class TurbulenceReferenceValidator {
     const cases = TurbulenceCaseRegistry.getCanonicalCases();
 
     for (const c of cases) {
-      const sol = Fvm3DNavierStokesSolver.solve(Fvm3DMeshGenerator.cloneMesh(c.mesh), c.fluid, c.boundaryConditions, c.solverConfig);
+      const clonedMesh = Fvm3DMeshGenerator.cloneMesh(c.mesh);
+      const binding = DomainBindingTestUtility.createSealedCfdBinding(clonedMesh, c.fluid);
+      const sol = Fvm3DNavierStokesSolver.solve(binding, c.boundaryConditions, c.solverConfig);
       results.push(TurbulenceReferenceValidator.validateCase(c, sol));
     }
 

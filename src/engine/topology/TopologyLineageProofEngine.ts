@@ -51,6 +51,8 @@ export interface CanonicalTopologyReference {
   bodyId: string;
   topologyEntityType: 'FACE' | 'EDGE' | 'VERTEX' | 'SOLID';
   topologyEntityIdentifier: string; // The persistent naming tag or canonical ID
+  persistentTag?: string;
+  geometricSignature?: string;
   sourceRevision: number;
   lineage: {
     createdByFeature: string;
@@ -147,6 +149,8 @@ export class TopologyLineageProofEngine {
       bodyId,
       topologyEntityType: 'FACE',
       topologyEntityIdentifier: persistentId,
+      persistentTag: persistentId,
+      geometricSignature: signature,
       sourceRevision: doc.revision,
       lineage: {
         createdByFeature: featureId,

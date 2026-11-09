@@ -87,9 +87,9 @@ describe('P6-006 — ASSEMBLY EVIDENCE', () => {
       topologyReferences: [
         {
           referenceId: canonicalRef.topologyEntityIdentifier,
-          entityType: 'FACE',
-          persistentTag: canonicalRef.persistentTag,
-          geometricSignature: canonicalRef.geometricSignature,
+          entityType: 'FACE' as const,
+          persistentTag: canonicalRef.persistentTag ?? 'TAG-001',
+          geometricSignature: canonicalRef.geometricSignature ?? 'SIG-001',
           semanticRole: 'MATE_TARGET',
           lineageAncestors: []
         }
@@ -99,7 +99,7 @@ describe('P6-006 — ASSEMBLY EVIDENCE', () => {
     const evidenceAsm = EvidenceIntegrityEngine.generateEvidence({
       domain: 'ASSEMBLY',
       documentId: docAsm.documentId,
-      documentRevision: docAsm.revision,
+      documentRevision: typeof docAsm.revision === 'number' ? docAsm.revision : (Number(docAsm.revision) || 1),
       actionId: 'EVALUATE',
       executionId: asmResult.executionId,
       capabilityId: 'AssemblySolver',
@@ -114,8 +114,8 @@ describe('P6-006 — ASSEMBLY EVIDENCE', () => {
 
     // 4. Mutate CAD Source (REV-B)
     docCAD.revision = 2;
-    docCAD.features[0].parameters.depth = 20;
-    docCAD.parameters[0].value = 20;
+    docCAD.features![0].parameters!.depth = 20;
+    docCAD.parameters![0].value = 20;
 
     const evalCAD_B = DocumentEvaluator.evaluate(docCAD);
     const artCAD_B = CanonicalPLMProjectionAdapter.projectFromDocument(docCAD, evalCAD_B);

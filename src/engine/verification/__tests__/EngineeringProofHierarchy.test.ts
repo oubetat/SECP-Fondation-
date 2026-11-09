@@ -22,7 +22,9 @@ describe('SECP-PROOF-TIERS-6 — 6-Tier Engineering Proof Hierarchy', () => {
       cadRevision: 'REV-A',
       parametricFeatures: ['Main Spars', 'Rotor Arms'],
       material: 'MAT-CF-3K',
-      assemblyId: 'ASM-1'
+      assemblyId: 'ASM-1',
+      massProperties: { mass: 1.5, cg: { x: 0, y: 0, z: 0 }, inertiaTensor: [[1, 0, 0], [0, 1, 0], [0, 0, 1]] },
+      designParameters: {}
     },
     fea: {
       analysisId: 'FEA-1',
@@ -136,7 +138,7 @@ describe('SECP-PROOF-TIERS-6 — 6-Tier Engineering Proof Hierarchy', () => {
       manufacturingDefinitionId: 'MFG-1',
       camRevision: 'REV-A',
       bomRevision: 'BOM-1'
-    },
+    } as any,
     requirementsCompliance: {
       matrix: [
         {
@@ -232,7 +234,7 @@ describe('SECP-PROOF-TIERS-6 — 6-Tier Engineering Proof Hierarchy', () => {
       tests: [
         {
           testId: 'TEST-PHYS-LOAD-01',
-          testType: 'PHYSICAL_STATIC_LOAD',
+          testType: 'PHYSICAL' as any,
           configurationId: 'CONF-OPT-029',
           operator: 'CHIEF_AUDITOR',
           timestamp: '2026-09-01T12:00:00Z',
@@ -241,7 +243,7 @@ describe('SECP-PROOF-TIERS-6 — 6-Tier Engineering Proof Hierarchy', () => {
           acceptanceCriteria: { maxYieldStrainLimit: 0.004 },
           verdict: 'PASS',
           evidenceHash: 'HASH-PHYS-TEST-LOAD'
-        },
+        } as any,
         {
           testId: 'TEST-FLIGHT-01',
           testType: 'FLIGHT_TEST',

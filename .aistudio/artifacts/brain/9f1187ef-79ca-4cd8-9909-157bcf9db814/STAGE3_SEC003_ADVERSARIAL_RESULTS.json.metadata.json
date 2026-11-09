@@ -1,0 +1,5 @@
+{
+  "summary":  "Results of the 10 adversarial security test cases in AuthoritySealTrustBoundary.test.ts verifying key isolation, fail-closed behavior, tamper detection, and key revocation.",
+  "updatedAt":  "2026-11-01T09:19:38.081679493Z",
+  "userFacing":  true
+}

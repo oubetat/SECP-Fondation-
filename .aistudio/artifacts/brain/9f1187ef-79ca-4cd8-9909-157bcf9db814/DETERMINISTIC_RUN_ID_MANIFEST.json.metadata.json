@@ -1,0 +1,5 @@
+{
+  "summary":  "Manifest detailing the cryptographic and deterministic derivation of run IDs and attestation fingerprints across SECP domains, eliminating timestamp pollution from evidence roots.",
+  "updatedAt":  "2026-11-01T07:18:46.415250016Z",
+  "userFacing":  true
+}

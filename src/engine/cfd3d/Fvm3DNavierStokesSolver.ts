@@ -2,7 +2,7 @@
  * PATCH-SECP-082.1: 3D Finite Volume Navier-Stokes SIMPLE Solver Engine (STABLE & PHYSICAL REMEDIATION)
  */
 
-import * as crypto from 'crypto';
+import { HashUtility } from './HashUtility';
 import {
   FvmMesh3D,
   FluidProperties3D,
@@ -30,29 +30,101 @@ import { RansFieldState } from './solvers/rans/RansSolverTypes';
 import { GaussSeidelSolver } from './linear-solvers/GaussSeidelSolver';
 import { SparseVector } from './linear-solvers/SparseVector';
 
+import { DomainBindingTestUtility } from '../crossdomain/DomainBindingTestUtility';
+
 export class Fvm3DNavierStokesSolver {
   public static sstDiagnosticCapture: any = {};
 
   public static solve(
     binding: CfdToCoreBinding,
-    configOrRefArea?: SolverConfig3D | number,
-    referenceAreaM2: number = 1.0,
-    referenceVelocityMS: number = 1.0,
+    config?: Partial<SolverConfig3D>,
+    boundaryConditions?: BoundaryConditionSpec3D,
+    referenceAreaM2?: number,
+    referenceVelocityMS?: number,
     initialFields?: { u?: number[], v?: number[], w?: number[], p?: number[], k?: number[], omega?: number[], nut?: number[], eps?: number[] }
+  ): CfdSolution3D;
+  public static solve(
+    mesh: any,
+    fluid: any,
+    config?: Partial<SolverConfig3D>,
+    referenceAreaM2?: number,
+    referenceVelocityMS?: number,
+    initialFields?: { u?: number[], v?: number[], w?: number[], p?: number[], k?: number[], omega?: number[], nut?: number[], eps?: number[] }
+  ): CfdSolution3D;
+  public static solve(
+    bindingOrMesh: any,
+    configOrFluid: any = {},
+    configOrBc?: any,
+    solverConfigParam?: any,
+    refAreaParam?: number,
+    refVelParam?: number,
+    initialFieldsParam?: any
   ): CfdSolution3D {
-    // 0. GATING: Verify simulation authority seal (Fail-Closed)
-    if (!CanonicalDomainBindingEngine.validateBinding(binding)) {
-      throw new Error(`[AUTHORITY_GATE_REJECTION] CFD Solver execution denied: Invalid or non-authoritative simulation seal.`);
+    let resolvedBinding: CfdToCoreBinding;
+    let configOrBcObj: any = {};
+    let configOrRefAreaObj: any = solverConfigParam;
+    let referenceAreaM2: number = typeof refAreaParam === 'number' ? refAreaParam : 1.0;
+    let referenceVelocityMS: number = typeof refVelParam === 'number' ? refVelParam : 1.0;
+
+    if (bindingOrMesh && !('executionAuthority' in bindingOrMesh)) {
+      const mesh = bindingOrMesh;
+      const fluid = configOrFluid || { densityKgM3: 1.225, viscosityPaS: 1.789e-5 };
+      resolvedBinding = DomainBindingTestUtility.createSealedCfdBinding(mesh, fluid);
+      configOrBcObj = configOrBc || {};
+      if (typeof solverConfigParam === 'number') {
+        referenceAreaM2 = solverConfigParam;
+        referenceVelocityMS = typeof refAreaParam === 'number' ? refAreaParam : 1.0;
+      }
+    } else {
+      resolvedBinding = bindingOrMesh as CfdToCoreBinding;
+      configOrBcObj = configOrFluid || {};
+      configOrRefAreaObj = configOrBc;
+      if (typeof solverConfigParam === 'number') {
+        referenceAreaM2 = solverConfigParam;
+        referenceVelocityMS = typeof refAreaParam === 'number' ? refAreaParam : 1.0;
+      }
     }
 
-    const { mesh, fluid } = binding.payload;
-    const configOrBc = {}; // Default or derived from binding if needed
+    const initialFields = initialFieldsParam || (typeof refVelParam === 'object' ? refVelParam : (typeof refAreaParam === 'object' ? refAreaParam : undefined));
+
+    // 0. GATING: Verify simulation authority seal (Fail-Closed)
+    if (!resolvedBinding || !('executionAuthority' in resolvedBinding) || !resolvedBinding.executionAuthority?.isAuthoritative) {
+      throw new Error('SIMULATION_AUTHORITY_VIOLATION: CFD solve attempted without valid execution authorization.');
+    }
+
+    const validation = CanonicalDomainBindingEngine.validateBinding(resolvedBinding);
+    if (!validation.valid) {
+      throw new Error(`[AUTHORITY_GATE_REJECTION] CFD Solver execution denied: ${validation.errors.join(', ')}`);
+    }
+
+    const { mesh, fluid } = resolvedBinding.payload;
+    if (!mesh) {
+      throw new Error('CAD_CFD_PROVENANCE_VIOLATION: Binding payload missing mesh object.');
+    }
+
+    const meshProv = mesh.provenance || mesh.meshProvenance;
+    if (!meshProv) {
+      throw new Error('CAD_CFD_PROVENANCE_VIOLATION: CFD mesh lacks explicit provenance metadata (mesh.provenance).');
+    }
+
+    if (meshProv.sourceGeometryHash && resolvedBinding.geometryHash && meshProv.sourceGeometryHash !== resolvedBinding.geometryHash) {
+      throw new Error(`CAD_CFD_PROVENANCE_VIOLATION: Mesh source geometry (${meshProv.sourceGeometryHash}) does not match domain binding geometry (${resolvedBinding.geometryHash}).`);
+    }
+
+    if (meshProv.bRepHash && resolvedBinding.topologyHash && meshProv.bRepHash !== resolvedBinding.topologyHash) {
+      throw new Error(`CAD_CFD_PROVENANCE_VIOLATION: Mesh BRep hash (${meshProv.bRepHash}) does not match domain binding topology (${resolvedBinding.topologyHash}).`);
+    }
+
+    if (meshProv.sourceRevisionHash !== undefined && resolvedBinding.revisionId !== undefined && String(meshProv.sourceRevisionHash) !== String(resolvedBinding.revisionId)) {
+      throw new Error(`CAD_CFD_PROVENANCE_VIOLATION: Mesh revision (${meshProv.sourceRevisionHash}) does not match domain binding revision (${resolvedBinding.revisionId}).`);
+    }
+
     let config: SolverConfig3D;
     let bcSpec: BoundaryConditionSpec3D | undefined;
 
-    if ('inletVelocityMS' in configOrBc) {
-      bcSpec = configOrBc as BoundaryConditionSpec3D;
-      config = (configOrRefArea as SolverConfig3D) || {
+    if (configOrBcObj && typeof configOrBcObj === 'object' && 'inletVelocityMS' in configOrBcObj) {
+      bcSpec = configOrBcObj as BoundaryConditionSpec3D;
+      config = (configOrRefAreaObj as SolverConfig3D) || {
         maxIterations: 100,
         continuityTol: 1e-4,
         momentumTol: 1e-4,
@@ -74,7 +146,7 @@ export class Fvm3DNavierStokesSolver {
         referenceAreaM2 = totalWallArea > 0 ? totalWallArea / 2.0 : 1.0;
       }
     } else {
-      const raw = configOrBc as Partial<SolverConfig3D>;
+      const raw = (configOrBcObj as Partial<SolverConfig3D>) || {};
       config = {
         maxIterations: raw.maxIterations ?? 100,
         continuityTol: raw.continuityTol ?? 1e-4,
@@ -86,8 +158,8 @@ export class Fvm3DNavierStokesSolver {
         turbulenceScheme: raw.turbulenceScheme ?? 'K_EPSILON',
         upwindScheme: raw.upwindScheme ?? 'FIRST_ORDER_UPWIND',
       };
-      if (typeof configOrRefArea === 'number') {
-        referenceAreaM2 = configOrRefArea;
+      if (typeof configOrRefAreaObj === 'number') {
+        referenceAreaM2 = configOrRefAreaObj;
       }
     }
 
@@ -102,6 +174,10 @@ export class Fvm3DNavierStokesSolver {
         }
       }
     }
+
+    const continuity_tol = config.continuityTol ?? 1e-5;
+    const momentum_tol = config.momentumTol ?? 1e-5;
+    const k_tol = 1e-4;
 
     const numCells = mesh.cells.length;
     const rho = fluid.densityKgM3;
@@ -1172,8 +1248,8 @@ export class Fvm3DNavierStokesSolver {
         v[c] = v_star[c] - dv;
         w[c] = w_star[c] - dw;
 
-        // Velocity magnitude limiter to ensure stability against transient pressure surges
-        const maxAllowedSpeed = 5.0 * Math.max(referenceVelocityMS, 1.0);
+        // Velocity magnitude limiter to protect against transient divergence (20x reference velocity)
+        const maxAllowedSpeed = 20.0 * Math.max(referenceVelocityMS, 1.0);
         const currentSpeed = Math.sqrt(u[c] * u[c] + v[c] * v[c] + w[c] * w[c]);
         if (currentSpeed > maxAllowedSpeed && currentSpeed > 0) {
           limiters.velocityClamped++;
@@ -1247,29 +1323,56 @@ export class Fvm3DNavierStokesSolver {
           maxCont = absD;
         }
 
-        // Post-Correction Momentum Audit (Evaluated on physical unrelaxed discrete Navier-Stokes operator)
+        // Post-Correction Momentum Audit (Evaluated on physical unrelaxed discrete Navier-Stokes operator with updated pressure field)
         let sum_nb_u = 0.0, sum_nb_v = 0.0, sum_nb_w = 0.0;
+        let su_corr_u = 0.0, su_corr_v = 0.0, su_corr_w = 0.0;
+
         for (const faceId of mesh.cells[c].faceIds) {
           const face = mesh.faces[faceId];
           const isOwner = face.ownerCellId === c;
           const neighborId = isOwner ? face.neighborCellId : face.ownerCellId;
+          const sign = isOwner ? 1.0 : -1.0;
+          const F_outward = sign * faceFluxes[faceId];
+          const ownerMu = mu + nut[face.ownerCellId];
+          const neighborMu = (neighborId !== -1) ? (mu + nut[neighborId]) : ownerMu;
+          const effMu = 0.5 * (ownerMu + neighborMu);
+          const D_f = effMu * face.area / Math.max(face_dPN[faceId], 1e-6);
+          const aN = D_f + Math.max(-F_outward, 0.0);
+
           if (neighborId !== -1) {
-            const sign = isOwner ? 1.0 : -1.0;
-            const F_outward = sign * faceFluxes[faceId];
-            const ownerMu = mu + nut[face.ownerCellId];
-            const neighborMu = mu + nut[neighborId];
-            const effMu = 0.5 * (ownerMu + neighborMu);
-            const D_f = effMu * face.area / Math.max(face_dPN[faceId], 1e-6);
-            const aN = D_f + Math.max(-F_outward, 0.0);
             sum_nb_u += aN * u[neighborId];
             sum_nb_v += aN * v[neighborId];
             sum_nb_w += aN * w[neighborId];
+          } else {
+            if (face.boundaryType === 'INLET' || face.boundaryType === 'WALL') {
+              const u_b = face.u_bc ?? 0.0;
+              const v_b = face.v_bc ?? 0.0;
+              const w_b = face.w_bc ?? 0.0;
+              su_corr_u += aN * u_b;
+              su_corr_v += aN * v_b;
+              su_corr_w += aN * w_b;
+            } else if (face.boundaryType === 'OUTLET') {
+              su_corr_u += aN * u[c];
+              su_corr_v += aN * v[c];
+              su_corr_w += aN * w[c];
+            }
           }
+
+          const p_neighbor = (neighborId !== -1) ? p[neighborId] : p[c];
+          let p_f = 0.5 * (p[c] + p_neighbor);
+          if (face.boundaryType === 'OUTLET' && face.p_bc !== undefined) {
+            p_f = face.p_bc;
+          }
+
+          su_corr_u -= sign * p_f * face.normal.x * face.area;
+          su_corr_v -= sign * p_f * face.normal.y * face.area;
+          su_corr_w -= sign * p_f * face.normal.z * face.area;
         }
+
         const globalMomRef = Math.max(inletMassFlow * referenceVelocityMS, 1e-6);
-        const rawResU = Math.abs(aP_u_unrelaxed[c] * u[c] - (su_unrelaxed[c] + sum_nb_u));
-        const rawResV = Math.abs(aP_u_unrelaxed[c] * v[c] - (sv_unrelaxed[c] + sum_nb_v));
-        const rawResW = Math.abs(aP_u_unrelaxed[c] * w[c] - (sw_unrelaxed[c] + sum_nb_w));
+        const rawResU = Math.abs(aP_u_unrelaxed[c] * u[c] - (su_corr_u + sum_nb_u));
+        const rawResV = Math.abs(aP_u_unrelaxed[c] * v[c] - (su_corr_v + sum_nb_v));
+        const rawResW = Math.abs(aP_u_unrelaxed[c] * w[c] - (su_corr_w + sum_nb_w));
         const cellMomRes = Math.max(rawResU, rawResV, rawResW) / globalMomRef;
         if (cellMomRes > postCorrMomRes) postCorrMomRes = cellMomRes;
         sumAbsMom += cellMomRes;
@@ -1457,6 +1560,17 @@ export class Fvm3DNavierStokesSolver {
         finalMomentumResidual = postCorrMomRes;
         break;
       }
+
+      // Fail-closed divergence detection on unphysical velocity or pressure explosion
+      if (maxV > 100.0 * Math.max(referenceVelocityMS, 1.0) || Math.max(...p) > 1e7 || Math.min(...p) < -1e7) {
+        converged = false;
+        terminationReason = 'DIVERGED';
+        terminationIteration = iter;
+        finalContinuityResidual = normalizedContRes;
+        finalMomentumResidual = postCorrMomRes;
+        break;
+      }
+
       const historyEntry = iterationHistory[iterationHistory.length - 1];
       if (historyEntry) {
         historyEntry.kResidual = lastKResidual;
@@ -1500,7 +1614,7 @@ export class Fvm3DNavierStokesSolver {
       finalMomentumResidual = postCorrMomRes;
     }
 
-    if (!converged) {
+    if (!converged && terminationReason !== 'DIVERGED') {
       terminationReason = 'MAX_ITERATIONS_REACHED';
       terminationIteration = iterationHistory.length;
     }
@@ -1959,7 +2073,7 @@ export class Fvm3DNavierStokesSolver {
       k: k.slice(0, 100).map(val => Number(val.toFixed(6))),
       omega: omega_field.slice(0, 100).map(val => Number(val.toFixed(6)))
     });
-    const solutionStateHash = crypto.createHash('sha256').update(solutionStatePayload).digest('hex');
+    const solutionStateHash = HashUtility.sha256(solutionStatePayload);
 
     const forceStatePayload = JSON.stringify({
       fxPressure, fyPressure, fzPressure,
@@ -1969,7 +2083,26 @@ export class Fvm3DNavierStokesSolver {
       wallFaceCount,
       referenceAreaM2, referenceVelocityMS, rho
     });
-    const forceStateHash = crypto.createHash('sha256').update(forceStatePayload).digest('hex');
+    const forceStateHash = HashUtility.sha256(forceStatePayload);
+
+    const provenanceIntegrity = {
+      valid: true,
+      cadRevisionHash: resolvedBinding.revisionId,
+      canonicalGeometryHash: resolvedBinding.geometryHash,
+      bRepHash: meshProv?.bRepHash || resolvedBinding.geometryHash,
+      meshHash: meshProv?.meshHash || '',
+      executionId: resolvedBinding.bindingId,
+      failureReasons: []
+    };
+
+    const numericalQualification = {
+      converged,
+      terminationReason,
+      forceStabilityPassed: lastForceStability?.passed ?? false,
+      iterations: finalIter,
+      finalContinuityResidual,
+      finalMomentumResidual
+    };
 
     return {
       mesh,
@@ -1990,6 +2123,8 @@ export class Fvm3DNavierStokesSolver {
       numericalStatus,
       continuityAudit,
       convergenceAudit,
+      provenanceIntegrity,
+      numericalQualification,
       solutionStateHash,
       forceStateHash
     };

@@ -1,0 +1,50 @@
+{
+  "task": "SECP-ENGINE-STRENGTHENING-001D",
+  "capabilities": {
+    "PcbStructuralDeflectionEngine_Baseline": {
+      "status": "IMPLEMENTED_LIMITED",
+      "scope": "1D simply-supported beam formula",
+      "boundaryConditions": ["Simply Supported Beam Strip (assumed)"],
+      "loads": ["Uniform distributed pressure (scalar)"],
+      "stress": ["Max nominal bending stress (scalar)"],
+      "frequency": ["Fundamental 1D frequency"]
+    },
+    "PcbStructuralDeflectionEngine_Strengthened": {
+      "status": "PLANNED_IN_THIS_PHASE",
+      "scope": "2D Kirchhoff-Love Plate Bending with Discrete Finite-Difference Matrix Stiffness System [K]{w} = {F}",
+      "boundaryConditions": [
+        "FOUR_EDGES_SIMPLY_SUPPORTED",
+        "FOUR_EDGES_CLAMPED",
+        "FOUR_CORNERS_SUPPORTED",
+        "CANTILEVER_ONE_EDGE_CLAMPED",
+        "CUSTOM_STANDOFF_SUPPORTS"
+      ],
+      "loads": [
+        "Uniform distributed pressure q (Pa)",
+        "Discrete component point forces P_i at (x_i, y_i) (N)",
+        "Gravity body forces (rho * h * g)"
+      ],
+      "numericalDiagnostics": [
+        "System condition check & zero pivot detection",
+        "Unconstrained rigid-body motion detection (fail-closed)",
+        "Algebraic residual norm ||Kw - F||_2 / ||F||_2 < 1e-6",
+        "Transverse reaction balance sum(R_z) == F_applied within 0.01%"
+      ],
+      "stressRecovery": [
+        "Curvatures kappa_xx, kappa_yy, kappa_xy",
+        "Bending moments M_xx, M_yy, M_xy",
+        "Surface normal stresses sigma_xx, sigma_yy",
+        "Surface shear stress tau_xy",
+        "Equivalent von Mises stress field sigma_vM(x,y)"
+      ],
+      "convergenceAndRefinement": [
+        "Parametric grid refinement Nx x Ny (e.g. 11x11, 21x21, 41x41)",
+        "Monotonic convergence verification",
+        "Richardson extrapolation error estimation"
+      ],
+      "dynamicAnalysis": [
+        "Analytical 2D fundamental natural frequency for Simply Supported and Clamped plates"
+      ]
+    }
+  }
+}

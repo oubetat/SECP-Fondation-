@@ -75,6 +75,16 @@ export interface MeshQualityReport3D {
   passed: boolean;
 }
 
+export interface CFDMeshProvenance {
+  sourceGeometryHash: string;
+  sourceRevisionHash: string | number;
+  bRepHash: string;
+  meshHash: string;
+  generationTimestamp?: string;
+  transformations?: any[];
+  refinementHistory?: any[];
+}
+
 export interface FvmMesh3D {
   meshId: string;
   cells: FvmCell3D[];
@@ -85,6 +95,8 @@ export interface FvmMesh3D {
     min: Vector3D;
     max: Vector3D;
   };
+  provenance?: CFDMeshProvenance;
+  meshProvenance?: CFDMeshProvenance;
 }
 
 export type Fvm3DMesh = FvmMesh3D;
@@ -302,6 +314,7 @@ export interface ConvergenceAudit3D {
   velocityPassed: boolean;
   pressurePassed: boolean;
   forceStabilityPassed: boolean;
+  turbulencePassed: boolean;
   continuity: {
     l1: number;
     l2: number;
@@ -374,6 +387,25 @@ export interface AerodynamicMonitors3D {
   reference?: FlowReferenceEvidence3D;
 }
 
+export interface ProvenanceIntegrityReport {
+  valid: boolean;
+  cadRevisionHash: string | number;
+  canonicalGeometryHash: string;
+  bRepHash?: string;
+  meshHash?: string;
+  executionId?: string;
+  failureReasons: string[];
+}
+
+export interface NumericalQualificationReport {
+  converged: boolean;
+  terminationReason: 'CONVERGED' | 'MAX_ITERATIONS_REACHED' | 'DIVERGED' | 'FAILED';
+  forceStabilityPassed: boolean;
+  iterations: number;
+  finalContinuityResidual: number;
+  finalMomentumResidual: number;
+}
+
 export interface CfdSolution3D {
   mesh: FvmMesh3D;
   fluid: FluidProperties3D;
@@ -394,6 +426,8 @@ export interface CfdSolution3D {
   numericalStatus: 'STABLE' | 'SENSITIVE' | 'ILL_CONDITIONED' | 'UNSTABLE' | 'INVALID';
   continuityAudit?: ContinuityAudit3D;
   convergenceAudit?: ConvergenceAudit3D;
+  provenanceIntegrity?: ProvenanceIntegrityReport;
+  numericalQualification?: NumericalQualificationReport;
   solutionStateHash?: string;
   forceStateHash?: string;
 }

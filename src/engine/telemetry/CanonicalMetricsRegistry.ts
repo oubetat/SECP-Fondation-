@@ -203,7 +203,7 @@ export class CanonicalMetricsRegistry {
       dimensionsCount: dimensionsCount || constraintsCount,
       residual: 0.000002,
       activeSketchId: sketches[0]?.id,
-      revision: doc.revision
+      revision: typeof doc.revision === 'number' ? doc.revision : (parseInt(String(doc.revision), 10) || 0)
     };
   }
 
@@ -223,7 +223,7 @@ export class CanonicalMetricsRegistry {
       dof: Math.max(0, (componentsCount - 1) * 6 - jointsCount * 5),
       interferencesCount: 0,
       brokenReferencesCount: 0,
-      revision: doc.revision
+      revision: typeof doc.revision === 'number' ? doc.revision : (parseInt(String(doc.revision), 10) || 0)
     };
   }
 
@@ -240,7 +240,7 @@ export class CanonicalMetricsRegistry {
       nodes: 41802,
       loadCases: 6,
       solverStatus: isUpToDate ? 'UP_TO_DATE' : (solvedRev === 0 ? 'NOT_SOLVED' : 'STALE'),
-      sourceRevision: doc.revision,
+      sourceRevision: typeof doc.revision === 'number' ? doc.revision : (parseInt(String(doc.revision), 10) || 0),
       solvedRevision: solvedRev,
       maxVonMisesMPa: isUpToDate ? 142.8 : undefined,
       maxDisplacementMm: isUpToDate ? 0.312 : undefined
@@ -260,7 +260,7 @@ export class CanonicalMetricsRegistry {
       nodes: 58200,
       boundaryConditionsCount: 4,
       solverStatus: isUpToDate ? 'UP_TO_DATE' : (solvedRev === 0 ? 'NOT_SOLVED' : 'STALE'),
-      sourceRevision: doc.revision,
+      sourceRevision: typeof doc.revision === 'number' ? doc.revision : (parseInt(String(doc.revision), 10) || 0),
       solvedRevision: solvedRev,
       maxVelocityMs: isUpToDate ? 32.4 : undefined,
       maxPressurePa: isUpToDate ? 101325 : undefined
@@ -281,7 +281,7 @@ export class CanonicalMetricsRegistry {
       estimatedCycleTimeSeconds: 1122, // 18m 42s
       materialRemovalVolumeCm3: Number((vol * 0.001 * 0.25).toFixed(1)),
       status: isUpToDate ? 'UP_TO_DATE' : (tpRev === 0 ? 'NOT_GENERATED' : 'STALE'),
-      sourceRevision: doc.revision,
+      sourceRevision: typeof doc.revision === 'number' ? doc.revision : (parseInt(String(doc.revision), 10) || 0),
       toolpathRevision: tpRev,
       gcodeBlockCount: isUpToDate ? 3420 : 0
     };
@@ -298,7 +298,7 @@ export class CanonicalMetricsRegistry {
       viewsCount: 4,
       dimensionsCount: 28,
       status: isUpToDate ? 'UP_TO_DATE' : (dwgRev === 0 ? 'NOT_GENERATED' : 'STALE'),
-      sourceRevision: doc.revision,
+      sourceRevision: typeof doc.revision === 'number' ? doc.revision : (parseInt(String(doc.revision), 10) || 0),
       drawingRevision: dwgRev
     };
   }
@@ -315,7 +315,7 @@ export class CanonicalMetricsRegistry {
       lineItemsCount: itemsCount,
       totalPartQuantity: itemsCount,
       status: isUpToDate ? 'UP_TO_DATE' : 'STALE',
-      sourceRevision: doc.revision,
+      sourceRevision: typeof doc.revision === 'number' ? doc.revision : (parseInt(String(doc.revision), 10) || 0),
       bomRevision: bomRev
     };
   }

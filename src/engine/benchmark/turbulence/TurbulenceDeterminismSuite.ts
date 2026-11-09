@@ -10,6 +10,7 @@ import { Fvm3DMeshGenerator } from '../../cfd3d/Fvm3DMeshGenerator';
 import { Fvm3DNavierStokesSolver } from '../../cfd3d/Fvm3DNavierStokesSolver';
 import { BoundaryConditionSpec3D, FluidProperties3D, SolverConfig3D } from '../../cfd3d/Fvm3DTypes';
 import { pureSha256 } from '../../../polyfills/crypto';
+import { DomainBindingTestUtility } from '../../crossdomain/DomainBindingTestUtility';
 
 export class TurbulenceDeterminismSuite {
   public static verifyDeterminism(): DeterminismResult {
@@ -36,7 +37,8 @@ export class TurbulenceDeterminismSuite {
     const runsCount = 3;
 
     for (let run = 0; run < runsCount; run++) {
-      const sol = Fvm3DNavierStokesSolver.solve(mesh, fluid, bc, config);
+      const binding = DomainBindingTestUtility.createSealedCfdBinding(mesh, fluid);
+      const sol = Fvm3DNavierStokesSolver.solve(binding, bc, config);
 
       // Create deterministic string payload
       const payload = JSON.stringify({

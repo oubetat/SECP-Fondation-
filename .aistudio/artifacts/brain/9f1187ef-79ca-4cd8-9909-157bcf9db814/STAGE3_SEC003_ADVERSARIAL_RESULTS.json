@@ -1,0 +1,76 @@
+{
+  "taskId": "SECP-STAGE3-SECURITY-CLOSURE-003",
+  "auditType": "Adversarial Security Test Battery Results",
+  "timestamp": "2026-11-01T09:19:00Z",
+  "testSuite": "src/engine/crossdomain/__tests__/AuthoritySealTrustBoundary.test.ts",
+  "summary": {
+    "total": 10,
+    "passed": 10,
+    "failed": 0,
+    "skipped": 0,
+    "durationMs": 14
+  },
+  "testCases": [
+    {
+      "id": 1,
+      "name": "No production module exposes getAuthorityBootKey export",
+      "status": "PASSED",
+      "propertyVerified": "Key Isolation Boundary"
+    },
+    {
+      "id": 2,
+      "name": "Sealing before authority initialization FAILS CLOSED with SIMULATION_AUTHORITY_NOT_INITIALIZED",
+      "status": "PASSED",
+      "propertyVerified": "Fail-Closed Uninitialized Sealing"
+    },
+    {
+      "id": 3,
+      "name": "Sealing after failed initialization FAILS CLOSED with SIMULATION_AUTHORITY_INITIALIZATION_FAILED",
+      "status": "PASSED",
+      "propertyVerified": "Fail-Closed Failed Handshake"
+    },
+    {
+      "id": 4,
+      "name": "Direct key presentation using forged symbol or object is REJECTED with SIMULATION_AUTHORITY_VIOLATION",
+      "status": "PASSED",
+      "propertyVerified": "Forged Key / Symbol Rejection"
+    },
+    {
+      "id": 5,
+      "name": "Valid authorized sealing operation succeeds after handshake",
+      "status": "PASSED",
+      "propertyVerified": "Authorized Execution Path"
+    },
+    {
+      "id": 6,
+      "name": "Unsealed CanonicalDomainBinding cannot authorize solver execution",
+      "status": "PASSED",
+      "propertyVerified": "Solver Gate Enforcement"
+    },
+    {
+      "id": 7,
+      "name": "Manually forged executionSealToken is rejected by validateBinding",
+      "status": "PASSED",
+      "propertyVerified": "HMAC Seal Token Authenticity"
+    },
+    {
+      "id": 8,
+      "name": "Tampering with geometryHash, revisionId, domain, or entityId invalidates seal",
+      "status": "PASSED",
+      "propertyVerified": "Payload Tamper Detection"
+    },
+    {
+      "id": 9,
+      "name": "Stale binding or old key version after authority state reset/revocation is rejected",
+      "status": "PASSED",
+      "propertyVerified": "Key Revocation & Stale Seal Invalidation"
+    },
+    {
+      "id": 10,
+      "name": "Stale or Invalid status binding is strictly rejected",
+      "status": "PASSED",
+      "propertyVerified": "Binding Status Lifecycle Enforcement"
+    }
+  ],
+  "verificationStatus": "ALL_ADVERSARIAL_TESTS_PASSED"
+}

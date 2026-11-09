@@ -40,16 +40,16 @@ function runAdversarialTests() {
     const model = createComplexModel();
 
     // 1. Electrical Short Test
-    const elecResult = WiringHarnessElectricalVerifier.verify(model);
+    const elecResult = WiringHarnessElectricalVerifier.verify(model as any);
     console.log(`Electrical Test: Shorts=${elecResult.shorts}, Passed=${elecResult.shorts > 0}`);
 
     // 2. Spatial Clash Test
     const obstacles = [{ id: "OBS1", min: { x: 0, y: 0, z: 0 }, max: { x: 6, y: 6, z: 6 } }];
-    const geoResult = WiringHarnessGeometryKernel.detectCllashes(model, obstacles);
+    const geoResult = WiringHarnessGeometryKernel.detectCllashes(model as any, obstacles);
     console.log(`Geometry Test: Clashes=${geoResult.clashes.length}, Passed=${geoResult.clashes.length > 0}`);
 
     // 3. Manufacturing Data Test
-    const manResult = WiringHarnessManufacturingVerifier.generateManufacturingPackage(model);
+    const manResult = WiringHarnessManufacturingVerifier.generateManufacturingPackage(model as any);
     console.log(`Manufacturing Test: BOMItems=${manResult.bom.length}, Passed=${manResult.bom.length > 0}`);
 }
 

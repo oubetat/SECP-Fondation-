@@ -1,0 +1,5 @@
+{
+  "summary":  "Root cause analysis of defect IFA-DEFECT-001 documenting public static seal minting vulnerability, lack of caller key authentication, and predictable token payload structure.",
+  "updatedAt":  "2026-11-01T08:53:31.826251679Z",
+  "userFacing":  true
+}

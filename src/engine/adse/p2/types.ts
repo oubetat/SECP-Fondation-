@@ -40,7 +40,8 @@ export type MBSEElementType =
   | 'ItemFlow'
   | 'FlowPort'
   | 'FlowProperty'
-  | 'Signal';
+  | 'Signal'
+  | 'Requirement';
 
 export type MBSERelationshipType = 
   | 'DERIVES_FROM'
@@ -60,7 +61,7 @@ export type MBSERelationshipType =
   | 'BINDS_TO'
   | 'REPRESENTS';
 
-export type CoreBindingState = 'UNBOUND' | 'BOUND_CANONICAL' | 'VERIFIED_CORE';
+export type CoreBindingState = 'UNBOUND' | 'BOUND_CANONICAL' | 'VERIFIED_CORE' | 'BOUND_TO_CORE';
 
 export interface MBSEElementIdentity {
   mbseId: string; // e.g., 'mbse:system:SYS-001'

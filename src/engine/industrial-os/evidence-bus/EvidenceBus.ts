@@ -90,40 +90,24 @@ export class EvidenceBus {
     }
   }
 
-  public correlate(correlationId: string): EvidenceEnvelope[] {
-    return this.query({ correlationId } as any);
+  public correlate(arg: string | { correlationId?: string; subjectIdentityId?: string }): EvidenceEnvelope[] {
+    const id = typeof arg === 'string' ? arg : arg.correlationId || arg.subjectIdentityId || '';
+    return this.query({ correlationId: id } as any);
   }
 
   public verify(envelope: EvidenceEnvelope): any {
     return EvidenceVerifier.verify(envelope);
   }
 
-  public publishSync(envelope: Omit<EvidenceEnvelope, 'identity' | 'integrity' | 'verification'> & Partial<EvidenceEnvelope>): EvidenceEnvelope {
+  public publishSync(request: EvidencePublishRequest): EvidenceEnvelope {
     const sequence = this.storage.length + 1;
     const previousEnvelope = this.storage[this.storage.length - 1];
     const previousEvidenceHash = previousEnvelope ? previousEnvelope.integrity.envelopeHash : undefined;
 
-    const request: EvidencePublishRequest = {
-      evidenceId: envelope.evidenceId,
-      evidenceType: envelope.evidenceType,
-      sourceCapability: envelope.provenance?.sourceCapability || (envelope as any).sourceCapability || 'capability:system',
-      sourceOperation: envelope.provenance?.sourceOperation || (envelope as any).sourceOperation || 'execute',
-      producerType: envelope.provenance?.producerType || 'SYSTEM',
-      producerId: envelope.provenance?.producerId || 'system-main',
-      correlationId: envelope.correlation?.correlationId || (envelope as any).correlationId,
-      engineeringObjectId: envelope.correlation?.engineeringObjectId || (envelope as any).targetObjectId || (envelope as any).engineeringObjectId,
-      eventId: envelope.correlation?.eventId || (envelope as any).eventId,
-      workflowId: envelope.correlation?.workflowId || (envelope as any).workflowId,
-      runId: envelope.correlation?.runId || (envelope as any).runId,
-      parentEvidenceId: envelope.correlation?.parentEvidenceId || (envelope as any).parentEvidenceId,
-      payload: envelope.payload || {},
-      metadata: envelope.metadata
-    };
-
     const fullEnvelope = EvidenceEnvelopeFactory.createEnvelope(
       request,
       sequence,
-      envelope.identity?.runSequence || sequence,
+      (request as any).runSequence || sequence,
       previousEvidenceHash,
       sequence - 1
     );
@@ -198,8 +182,8 @@ export class EvidenceBus {
     return proxyEnvelope;
   }
 
-  public async publish(envelope: Omit<EvidenceEnvelope, 'identity' | 'integrity' | 'verification'>): Promise<EvidenceEnvelope> {
-    return this.publishSync(envelope);
+  public async publish(request: EvidencePublishRequest): Promise<EvidenceEnvelope> {
+    return this.publishSync(request);
   }
 
   public query(filter: Partial<EvidenceEnvelope> & Record<string, any>): EvidenceEnvelope[] {

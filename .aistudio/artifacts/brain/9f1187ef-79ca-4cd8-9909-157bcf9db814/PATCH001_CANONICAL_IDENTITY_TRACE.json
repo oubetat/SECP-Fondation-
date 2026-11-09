@@ -1,0 +1,55 @@
+{
+  "auditMission": "SECP-CAD-TRUTH-PATCH-001",
+  "phase": "PHASE_E_CANONICAL_IDENTITY_TRACE",
+  "timestamp": "2026-11-02T10:03:00.000Z",
+  "identityContinuityChain": {
+    "cadRevision": {
+      "revisionId": "PUMP-REV-A",
+      "revisionNumber": 1,
+      "cadRevisionHash": "f83a219e...",
+      "sourceModule": "RevisionEngine"
+    },
+    "canonicalGeometry": {
+      "entityId": "HYDRAULIC-PUMP-001",
+      "canonicalGeometryHash": "GEOM-PUMP-A",
+      "topologyHash": "TOPO-PUMP-A",
+      "sourceModule": "SimulationIdentityService"
+    },
+    "simulationScenario": {
+      "scenarioId": "SIM-PUMP-A",
+      "materialHash": "STEEL-440C",
+      "meshHash": "MESH-PUMP-A",
+      "boundaryConditionHash": "bc-hash-1",
+      "solverConfigurationHash": "NS_SOLVER"
+    },
+    "sealingAuthorization": {
+      "authorizedContext": "SIMULATION_ENGINE",
+      "authorizedDomains": ["SIMULATION", "STRUCTURAL"],
+      "cadRevisionHash": "f83a219e...",
+      "canonicalGeometryHash": "GEOM-PUMP-A",
+      "maxUses": 1,
+      "usedCount": 1,
+      "sealToken": "hmac-sha256-seal-token-v1"
+    },
+    "executionEnvelope": {
+      "sealSymbolVerified": true,
+      "authoritativeRevisionHash": "f83a219e...",
+      "authoritativeGeometryHash": "GEOM-PUMP-A",
+      "provenanceHash": "f3b201a9...",
+      "registrationStatus": "REGISTERED_AND_IMMUTABLE"
+    },
+    "derivedArtifactBinding": {
+      "artifactKind": "SIMULATION_RESULT",
+      "derivationIdentity": "SimulationEngine.runScenario",
+      "artifactDigest": "f3b201a9...",
+      "cadRevisionHash": "f83a219e...",
+      "canonicalGeometryHash": "GEOM-PUMP-A"
+    },
+    "truthCertificate": {
+      "certificateId": "CERT-PUMP-A",
+      "evidenceRootHash": "merkle-root-proof",
+      "overallVerdict": "PASS"
+    }
+  },
+  "continuityVerdict": "CANONICAL_IDENTITY_FULLY_BOUND"
+}

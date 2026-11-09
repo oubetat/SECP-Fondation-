@@ -46,16 +46,17 @@ export interface EngineeringResultRecord {
   readonly resultId: string;
   readonly domain: EvidenceDomainType;
   readonly executionId: string;
-  readonly actionId: string;
-  readonly documentId: string;
-  readonly documentRevision: number;
-  readonly featureOrOperationId: string;
+  readonly actionId?: string;
+  readonly documentId?: string;
+  readonly documentRevision?: number;
+  readonly featureOrOperationId?: string;
   readonly outputMetrics: Readonly<Record<string, number | string | boolean>>;
   readonly topologyReferences?: readonly TopologyReferenceSnapshot[];
-  readonly rawResultSummary: string;
-  readonly producedByKernel: string;
-  readonly kernelVersion: string;
+  readonly rawResultSummary?: string;
+  readonly producedByKernel?: string;
+  readonly kernelVersion?: string;
   readonly isFabricated?: boolean;
+  readonly bRepHash?: string;
 }
 
 export interface ValidationRecord {
@@ -64,6 +65,7 @@ export interface ValidationRecord {
   readonly passed: boolean;
   readonly checks: readonly {
     readonly checkName: string;
+    readonly code?: string;
     readonly passed: boolean;
     readonly metric: string;
     readonly observedValue: number | string;
@@ -71,6 +73,23 @@ export interface ValidationRecord {
   }[];
   readonly validatorVersion: string;
   readonly validatedAt: string;
+}
+
+export interface ValidationParams {
+  readonly validationId: string;
+  readonly resultId?: string;
+  readonly passed: boolean;
+  readonly checks: readonly {
+    readonly checkName?: string;
+    readonly description?: string;
+    readonly code?: string;
+    readonly passed: boolean;
+    readonly metric?: string;
+    readonly observedValue?: number | string;
+    readonly threshold?: number | string;
+  }[];
+  readonly validatorVersion?: string;
+  readonly validatedAt?: string;
 }
 
 export interface IndependentVerificationRecord {
@@ -82,7 +101,21 @@ export interface IndependentVerificationRecord {
   readonly independentVerdict: 'PASS' | 'FAIL' | 'INCONCLUSIVE';
   readonly isSelfAttested: boolean; // Must be false!
   readonly verificationChecks: readonly string[];
+  readonly details?: string;
   readonly verifiedAt: string;
+}
+
+export interface IndependentVerificationParams {
+  readonly verificationId: string;
+  readonly resultId?: string;
+  readonly validationId?: string;
+  readonly verifierIdentity: string;
+  readonly verifierVersion?: string;
+  readonly independentVerdict: 'PASS' | 'FAIL' | 'INCONCLUSIVE';
+  readonly isSelfAttested?: boolean;
+  readonly verificationChecks?: readonly string[];
+  readonly details?: string;
+  readonly verifiedAt?: string;
 }
 
 export interface CanonicalEvidenceRecord {

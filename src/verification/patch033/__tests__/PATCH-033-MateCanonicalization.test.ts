@@ -73,7 +73,7 @@ describe('PATCH-033 — Assembly & Joint Mate Solver Canonicalization', () => {
 
     // Now, even if someone attempts to inject a "solver-only" mate at runtime in the evaluation result,
     // the canonical truth of the document remains 0 mates.
-    expect(doc.assembly?.mates.length).toBe(0);
+    expect(doc.assembly?.mates?.length).toBe(0);
   });
 
   it('Case B: JointSolver-only Constraint — Joint constraint only in private runtime/solver state is ignored/excluded on canonical solveDocument call', () => {
@@ -139,8 +139,16 @@ describe('PATCH-033 — Assembly & Joint Mate Solver Canonicalization', () => {
 
     // Verify completely deterministic and identical solved positions
     expect(solveResult1.converged).toBe(solveResult2.converged);
-    expect(solveResult1.updatedDocument.assembly?.instances[1].position.x)
-      .toBe(solveResult2.updatedDocument.assembly?.instances[1].position.x);
+    
+    const inst1 = solveResult1.updatedDocument.assembly?.instances[1];
+    const inst2 = solveResult2.updatedDocument.assembly?.instances[1];
+    
+    expect(inst1).toBeDefined();
+    expect(inst2).toBeDefined();
+    expect(inst1?.position).toBeDefined();
+    expect(inst2?.position).toBeDefined();
+    
+    expect(inst1?.position?.x).toBe(inst2?.position?.x);
   });
 
   it('Case E: Fake Success — Verify solver-only "successful" reports without canonical document persistence are treated as invalid', () => {

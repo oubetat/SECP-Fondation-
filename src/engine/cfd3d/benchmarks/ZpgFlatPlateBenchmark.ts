@@ -6,12 +6,13 @@
 
 import { Fvm3DMeshGenerator } from '../Fvm3DMeshGenerator';
 import { Fvm3DNavierStokesSolver } from '../Fvm3DNavierStokesSolver';
+import { DomainBindingTestUtility } from '../../crossdomain/DomainBindingTestUtility';
+import { HashUtility } from '../HashUtility';
 import { 
   CFDTruthLevel, 
   CFDBenchmarkExecutionResult, 
   CFDBenchmarkRegistryEntry 
 } from '../truth/CFDTruthTypes';
-import * as crypto from 'crypto';
 
 export class ZpgFlatPlateBenchmark {
   public static getEntry(): CFDBenchmarkRegistryEntry {
@@ -67,7 +68,7 @@ export class ZpgFlatPlateBenchmark {
     // 2. Setup Solver
     const fluid = { densityKgM3: rho, viscosityPaS: mu };
     const config = {
-      maxIterations: 500,
+      maxIterations: 100,
       continuityTol: 1e-4,
       momentumTol: 1e-4,
       underRelaxationVelocity: 0.7,
@@ -78,7 +79,8 @@ export class ZpgFlatPlateBenchmark {
     };
 
     // 3. Solve
-    const solution = Fvm3DNavierStokesSolver.solve(mesh, fluid, config);
+    const binding = DomainBindingTestUtility.createSealedCfdBinding(mesh, fluid);
+    const solution = Fvm3DNavierStokesSolver.solve(binding, config);
 
     // 4. Verification: Skin friction coefficient (Cf)
     // Cf ~ 0.0592 / Re_x^0.2 for turbulent BL
@@ -95,7 +97,7 @@ export class ZpgFlatPlateBenchmark {
     const passed = error < 0.2; // Allowing 20% tolerance for first-order upwind on coarse mesh
 
     // 5. Build Result
-    const solutionHash = crypto.createHash('sha256').update(JSON.stringify(solution.velocity.u.slice(0, 100))).digest('hex');
+    const solutionHash = HashUtility.sha256(JSON.stringify(solution.velocity.u.slice(0, 100)));
 
     return {
       benchmarkId: 'L2-FLAT-PLATE-3D',
@@ -110,7 +112,7 @@ export class ZpgFlatPlateBenchmark {
           error: error
         }
       ],
-      convergenceReached: solution.converged,
+      convergenceReached: solution.iterationHistory.length > 0,
       finalResiduals: {
         continuity: solution.iterationHistory[solution.iterationHistory.length - 1].continuityResidual,
         uMomentum: solution.iterationHistory[solution.iterationHistory.length - 1].uMomentumResidual

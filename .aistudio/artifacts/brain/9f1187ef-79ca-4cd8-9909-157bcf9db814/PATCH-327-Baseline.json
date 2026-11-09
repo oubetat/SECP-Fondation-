@@ -1,0 +1,36 @@
+{
+  "baselineDate": "2026-09-05T03:17:00Z",
+  "patch": "PATCH-327",
+  "sourceSuite": "PATCH-039B",
+  "testFailures": [
+    {
+      "testId": "05",
+      "description": "Binds topological entities across deeply nested sub-assemblies (depth >= 3)",
+      "errorType": "AssertionError",
+      "expected": "{ x: 1, y: 0, z: 0 }",
+      "actual": "{ x: 1, y: 0, z: 6.123233995736766e-17 }",
+      "rootCause": "NUMERICAL_TOLERANCE_RESIDUAL",
+      "classification": "NUMERICAL TOLERANCE DEFECT"
+    },
+    {
+      "testId": "06",
+      "description": "Deterministic occurrencePath generation",
+      "errorType": "AssertionError",
+      "expected": "'DOC_VALVE_01'",
+      "actual": "undefined",
+      "propertyQueried": "res.document?.documentId",
+      "propertyAvailable": "res.targetDoc?.documentId",
+      "classification": "TEST-CONTRACT DEFECT"
+    },
+    {
+      "testId": "08",
+      "description": "Evaluates CONCENTRIC mate across multiple documents",
+      "errorType": "TypeError",
+      "expected": "number or bigint",
+      "actual": "undefined",
+      "propertyQueried": "result.errorMetric",
+      "propertyAvailable": "result.residual",
+      "classification": "TEST-CONTRACT DEFECT"
+    }
+  ]
+}

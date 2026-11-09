@@ -87,6 +87,7 @@ export interface EvidenceEnvelopeIdentity {
   readonly runSequence?: number;
   readonly timestamp: string;
   readonly schemaVersion: string;
+  readonly targetObjectId?: string;
 }
 
 export interface EvidenceEnvelopeProvenance {
@@ -160,6 +161,7 @@ export interface EvidencePublishRequest {
   readonly evidenceType: ControlledEvidenceType;
   readonly sourceCapability: string;
   readonly sourceOperation: string;
+  readonly targetObjectId?: string;
   readonly producerType?: 'ENGINE' | 'SOLVER' | 'WORKFLOW' | 'VERIFIER' | 'OPERATOR' | 'SYSTEM' | 'AI';
   readonly producerId?: string;
   readonly engineVersion?: string;

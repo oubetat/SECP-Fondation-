@@ -1,0 +1,5 @@
+{
+  "summary":  "Verification of SEC003 evidence manifest, confirming all 8 deliverables are present and their SHA-256 digests match the reported manifest for SECP-STAGE3-ADJ-004.",
+  "updatedAt":  "2026-11-01T09:34:41.560339063Z",
+  "userFacing":  true
+}

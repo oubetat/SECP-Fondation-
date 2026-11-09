@@ -12,7 +12,7 @@ import {
   SubsystemDefinition,
   SystemInterface
 } from './ProductArchitectureTypes';
-import { UnitRegistry } from '../../core/units/UnitRegistry';
+import { UnitRegistry } from '../../physics/units/Unit';
 
 export class ProductArchitectureValidator {
   /**

@@ -1,0 +1,68 @@
+{
+  "mission": "SECP-RECOVERY-VERIFICATION-001",
+  "timestamp": "2026-11-05T12:14:47.775Z",
+  "verdict": "PASS",
+  "stableIdentityFormula": "normalized_file_path:line:col:code:normalized_message",
+  "runs": {
+    "originalBaseline": {
+      "source": "tsc_final.txt (pre-repair)",
+      "rawDiagnosticCount": 7087,
+      "uniqueDiagnosticCount": 7087,
+      "duplicateCount": 0
+    },
+    "repair001PostRunAndPhase2": {
+      "source": "tsc_r2_count.txt / SECP_TYPESCRIPT_BOUNDARY_VALIDATION_002",
+      "rawDiagnosticCount": 5670,
+      "uniqueDiagnosticCount": 5669,
+      "duplicateCount": 1,
+      "stringConcatenationArtifactClarification": "5670 was visually rendered as 56702 when concatenated with next line 2. Executing Vitest..."
+    },
+    "currentPostRecovery": {
+      "source": "tsc_post_recovery.txt",
+      "rawDiagnosticCount": 5648,
+      "uniqueDiagnosticCount": 5647,
+      "duplicateCount": 1
+    }
+  },
+  "phase2VsCurrentDetailedComparison": {
+    "diagnosticsInPhase2NotCurrentCount": 22,
+    "diagnosticsInCurrentNotPhase2Count": 0,
+    "rootCauseOf22Difference": "TS2307: Cannot find module motion/react or its corresponding type declarations across 22 UI panels when motion module was uninstalled vs installed.",
+    "resolvedModuleListSample": [
+      {
+        "file": "src/components/BRepReconstructionWorkbenchPanel.tsx",
+        "code": "TS2307",
+        "message": "Cannot find module 'motion/react' or its corresponding type declarations."
+      },
+      {
+        "file": "src/components/FeatureRecognitionWorkbenchPanel.tsx",
+        "code": "TS2307",
+        "message": "Cannot find module 'motion/react' or its corresponding type declarations."
+      },
+      {
+        "file": "src/components/LongRunningSimulationQualificationPanel.tsx",
+        "code": "TS2307",
+        "message": "Cannot find module 'motion/react' or its corresponding type declarations."
+      },
+      {
+        "file": "src/components/NURBSReconstructionWorkbenchPanel.tsx",
+        "code": "TS2307",
+        "message": "Cannot find module 'motion/react' or its corresponding type declarations."
+      },
+      {
+        "file": "src/components/ParametricFeatureWorkbenchPanel.tsx",
+        "code": "TS2307",
+        "message": "Cannot find module 'motion/react' or its corresponding type declarations."
+      }
+    ],
+    "strictlyPreservedDiagnosticsSubset": true
+  },
+  "baselineVsCurrentComparison": {
+    "persistentExactIdentityCount": 3241,
+    "lineShiftedCount": 110,
+    "genuinelyAddedCount": 2297,
+    "genuinelyResolvedCount": 3738,
+    "resolvedByShiftCount": 108,
+    "netReductionFromOriginalBaseline": 1439
+  }
+}

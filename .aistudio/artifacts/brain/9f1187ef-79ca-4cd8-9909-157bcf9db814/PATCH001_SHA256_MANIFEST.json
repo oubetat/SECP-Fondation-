@@ -1,0 +1,66 @@
+{
+  "manifestId": "PATCH001-SHA256-MANIFEST-20261102",
+  "auditMission": "SECP-CAD-TRUTH-PATCH-001",
+  "timestamp": "2026-11-02T10:03:00.000Z",
+  "hashAlgorithm": "SHA-256",
+  "deliverables": {
+    "PATCH001_BASELINE_CALLGRAPH.json": {
+      "bytes": 3108,
+      "sha256": "fec6f21c6d4ce20c22a190f3462e63a19094c2fd6d6e957975e324287fd7c082"
+    },
+    "PATCH001_AUTHORITY_CONTRACT.json": {
+      "bytes": 4271,
+      "sha256": "7794432b29bba9f027c2f048244681459d50c5c95ea6dd0821cd69c6e565a70e"
+    },
+    "PATCH001_SOURCE_CHANGE_MANIFEST.json": {
+      "bytes": 2823,
+      "sha256": "c64d026d8460cdcd14ff3289634ac9577f3b1fad8a537dfcd7606f3bd4958678"
+    },
+    "PATCH001_AUTHORIZATION_TEST_MATRIX.json": {
+      "bytes": 5503,
+      "sha256": "4d34e8ee8e52fe0af16d6f5d2075b605fe53c2e3766c878829b416cdbc9f7c56"
+    },
+    "PATCH001_ADVERSARIAL_RESULTS.json": {
+      "bytes": 1825,
+      "sha256": "372dc4b0d77d5369691d6524172a0d7b29aa65eb878e3723c38044fad000d11d"
+    },
+    "PATCH001_INTEGRATION_TEST_RESULTS.json": {
+      "bytes": 1983,
+      "sha256": "41502098771ce391dd23d79e34d91632124c7c964726928611d439ad7e6e17fe"
+    },
+    "PATCH001_CANONICAL_IDENTITY_TRACE.json": {
+      "bytes": 1827,
+      "sha256": "d20979b7fb220ae3066bdb67e54391a6be590ce85092fcaf58ea41e547c074f0"
+    },
+    "PATCH001_RAW_EXECUTION_LOG.txt": {
+      "bytes": 5562,
+      "sha256": "65cea39d99ff9f067f9eeab26de733b5899287a8b130bf9fbf43be571520fd02"
+    },
+    "PATCH001_FINAL_ENGINEERING_REPORT.md": {
+      "bytes": 9882,
+      "sha256": "7da5d101b48bc033c7e49ca3d9a1d588e4f1a75de16957a90cee5070bc9a11fb"
+    }
+  },
+  "patchedSourceFiles": {
+    "src/engine/simulation/SimulationSealingAuthorization.ts": {
+      "bytes": 4473,
+      "sha256": "1932897370fa8ee8048a729a0a426f18687a0667622032ff06f59846ddc6ac7e"
+    },
+    "src/engine/simulation/SimulationAuthorityInternal.ts": {
+      "bytes": 6499,
+      "sha256": "f727a01e0b5b2bb6df7145ac55fba9ce544fdd9c232fc398136b2a7ff52c4ac7"
+    },
+    "src/engine/simulation/SimulationEngine.ts": {
+      "bytes": 9307,
+      "sha256": "1ca5ed6d3d3ea5dadbb4ca9e1b685f74c6bf6b1a80c32ed485486da8a454166e"
+    },
+    "src/engine/cad-kernel/cfd/__tests__/CFDCADPipeline.test.ts": {
+      "bytes": 4419,
+      "sha256": "d67d1f4d15b06649a065eca31a3ade0226e2f867f6fb621b700a9d762e40750e"
+    },
+    "src/engine/simulation/__tests__/SimulationExecutionAuthorityAdversarial.test.ts": {
+      "bytes": 9882,
+      "sha256": "047130ab6cb4cd2ea65e4cc50f786351d201d5df4eea46b22232972430eee8ad"
+    }
+  }
+}

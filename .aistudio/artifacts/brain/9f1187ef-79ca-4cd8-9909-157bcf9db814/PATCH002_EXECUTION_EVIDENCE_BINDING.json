@@ -1,0 +1,28 @@
+{
+  "bindingSpecification": "CanonicalDerivedArtifactBinding",
+  "evidenceStructure": {
+    "artifactDigest": "64-char SHA256 canonical hash of derived payload",
+    "cadRevisionHash": "CAD revision ID linked to execution",
+    "canonicalGeometryHash": "BRep geometry hash linked to execution",
+    "artifactKind": "CFD_SOLUTION | CFD_RESULT",
+    "payload": {
+      "cadRevisionHash": "string",
+      "canonicalGeometryHash": "string",
+      "artifactContentHash": "string",
+      "artifactKind": "string",
+      "derivationParameters": "object"
+    }
+  },
+  "registryEnforcement": {
+    "engine": "SimulationExecutionRegistry",
+    "registrationMethod": "registerExecution(envelope)",
+    "verificationMethod": "verifyResultBinding(result, targetRevision, targetGeometry)",
+    "checks": [
+      "Authoritative envelope HMAC seal verification",
+      "Provenance hash matching derivedArtifactBinding.artifactDigest",
+      "Authoritative revision and geometry match",
+      "Immutable overwrite prevention",
+      "Deep-freeze result payload immutability"
+    ]
+  }
+}

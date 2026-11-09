@@ -3,6 +3,25 @@
  */
 import { NodalCircuitSolver } from '../NodalCircuitSolver';
 import { CircuitModel } from '../ReferenceCircuitModel';
+import { CanonicalDomainBindingEngine } from '../../crossdomain/CanonicalDomainBindingEngine';
+import { ElectricalToCoreBinding } from '../../crossdomain/CanonicalDomainBinding';
+
+function createSealedElectricalBinding(model: CircuitModel): ElectricalToCoreBinding {
+    const binding = CanonicalDomainBindingEngine.createBinding(
+        'ELECTRICAL',
+        model.id || 'TEST-ELEC',
+        'REV-TEST',
+        model,
+        'N/A',
+        't-hash',
+        'm-hash',
+        'e-hash',
+        'p-hash'
+    ) as ElectricalToCoreBinding;
+    (binding.executionAuthority as any).isAuthoritative = true;
+    (binding.executionAuthority as any).executionSealToken = 'TEST-SEAL';
+    return binding;
+}
 
 const results: { test: string, status: string, details: string }[] = [];
 
@@ -29,7 +48,8 @@ function runTests() {
             { id: "R2", type: 'RESISTOR', value: 2000, nodes: ['Nx', 'GND'] }
         ]
     };
-    const resSeries = NodalCircuitSolver.solve(series);
+    const bindingSeries = createSealedElectricalBinding(series);
+    const resSeries = NodalCircuitSolver.solve(bindingSeries);
     if (resSeries) {
         const vNx = resSeries['Nx'];
         assert("EEC-014 Series (Nx Voltage)", Math.abs(vNx - 6.666666667) < 1e-7, `Expected 6.6667V, got ${vNx}`);
@@ -47,7 +67,8 @@ function runTests() {
             { id: "R2", type: 'RESISTOR', value: 2000, nodes: ['N1', 'GND'] }
         ]
     };
-    const resParallel = NodalCircuitSolver.solve(parallel);
+    const bindingParallel = createSealedElectricalBinding(parallel);
+    const resParallel = NodalCircuitSolver.solve(bindingParallel);
     if (resParallel) {
         // I1 = 10/1000 = 10mA, I2 = 10/2000 = 5mA, Itot = 15mA
         assert("EEC-015 Parallel (N1 Voltage)", Math.abs(resParallel['N1'] - 10) < 1e-9, `Expected 10V, got ${resParallel['N1']}`);
@@ -68,7 +89,8 @@ function runTests() {
             { id: "R4", type: 'RESISTOR', value: 4000, nodes: ['Ny', 'GND'] }
         ]
     };
-    const resBridge = NodalCircuitSolver.solve(bridge);
+    const bindingBridge = createSealedElectricalBinding(bridge);
+    const resBridge = NodalCircuitSolver.solve(bindingBridge);
     if (resBridge) {
         const vNx = resBridge['Nx']; // VNx = 10 * (3000 / (1000+3000)) = 7.5V
         const vNy = resBridge['Ny']; // VNy = 10 * (4000 / (2000+4000)) = 6.6667V

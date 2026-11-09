@@ -1,25 +1,23 @@
-import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
+import react from '@vitejs/plugin-react';
 import path from 'path';
+import {defineConfig} from 'vite';
 
-export default defineConfig({
-  plugins: [react(), tailwindcss()],
-  resolve: {
-    alias: {
-      'motion/react': 'framer-motion',
-      buffer: path.resolve(__dirname, 'src/polyfills/buffer.ts'),
-      crypto: path.resolve(__dirname, 'src/polyfills/crypto.ts'),
-      'node:crypto': path.resolve(__dirname, 'src/polyfills/crypto.ts'),
-      'node:buffer': path.resolve(__dirname, 'src/polyfills/buffer.ts')
-    }
-  },
-  define: {
-    'process.env': {},
-    global: 'globalThis'
-  },
-  server: {
-    port: 3000,
-    host: true
-  }
+export default defineConfig(() => {
+  return {
+    plugins: [react(), tailwindcss()],
+    resolve: {
+      alias: {
+        '@': path.resolve(__dirname, '.'),
+      },
+    },
+    server: {
+      allowedHosts: true,
+      hmr: process.env.DISABLE_HMR !== 'true',
+      watch: process.env.DISABLE_HMR === 'true' ? null : {},
+    },
+    preview: {
+      allowedHosts: true,
+    },
+  };
 });

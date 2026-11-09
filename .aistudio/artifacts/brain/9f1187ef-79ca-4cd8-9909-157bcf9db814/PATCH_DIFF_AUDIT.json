@@ -1,0 +1,44 @@
+[
+  {
+    "file": "src/engine/industrial-os/policy/types.ts",
+    "repair": "Exported missing root governance interfaces: PolicyCondition, PolicyContext, PolicyDecision, AggregatePolicyDecision.",
+    "strictness": "PRESERVED",
+    "status": "PASS"
+  },
+  {
+    "file": "src/engine/assembly/AssemblyConstraintTypes.ts",
+    "repair": "Exported missing kinematic solver and topology types: ComponentDOFState, ConstraintGraph, KinematicJoint, TopologyType.",
+    "strictness": "PRESERVED",
+    "status": "PASS"
+  },
+  {
+    "file": "src/engine/collaboration/DigitalThreadTypes.ts",
+    "repair": "Expanded DigitalThreadNodeType and DigitalThreadRelationshipType enums to support active CAM and mesh nodes.",
+    "strictness": "PRESERVED",
+    "status": "PASS"
+  },
+  {
+    "file": "src/engine/cam/feature-recognition/FeatureTypes.ts",
+    "repair": "Exported missing feature parameter interfaces: SlotFeatureParams, StepFeatureParams, PocketFeatureParams.",
+    "strictness": "PRESERVED",
+    "status": "PASS"
+  },
+  {
+    "file": "src/engine/cam/post-processor/PostTypes.ts",
+    "repair": "Exported G-code modal state and machine definition interfaces.",
+    "strictness": "PRESERVED",
+    "status": "PASS"
+  },
+  {
+    "file": "src/engine/cam/toolpath/ToolpathTypes.ts",
+    "repair": "Exported ToolHolderGeometry, MachiningParameters, and StockModelBounds.",
+    "strictness": "PRESERVED",
+    "status": "PASS"
+  },
+  {
+    "file": "src/engine/featureTree.ts",
+    "repair": "Exported FeatureTreeNode interface for project serialization.",
+    "strictness": "PRESERVED",
+    "status": "PASS"
+  }
+]

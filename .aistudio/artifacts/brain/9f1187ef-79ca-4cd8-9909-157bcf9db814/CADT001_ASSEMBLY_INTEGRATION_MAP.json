@@ -1,0 +1,66 @@
+{
+  "auditId": "SECP-CAD-TRUTH-FORENSIC-001",
+  "workstream": "WORKSTREAM_B_ADVANCED_ASSEMBLY",
+  "verdict": "PARTIALLY_VERIFIED_BASELINE",
+  "assemblyArchitectureAnalysis": {
+    "occurrenceModel": {
+      "status": "IMPLEMENTED_AND_EXECUTED",
+      "implementation": "src/engine/assembly/ProductionAssemblyGraphEngine.ts",
+      "mechanism": "Occurrence paths (e.g. 'ROOT/SUB_01/BOLT_03') maintain independent 4x4 coordinate frames while sharing underlying component definitions.",
+      "evidence": "P5-001-A verifies occurrence path 'INST_PART_1' referencing 'P5-CAD-01'."
+    },
+    "mateAndConstraintSolving": {
+      "status": "IMPLEMENTED_AND_EXECUTED",
+      "implementation": "src/engine/assembly/constraints/AssemblyConstraintSolver.ts:1-520, src/engine/cad-kernel/document/AssemblyMateSolver.ts:1-310",
+      "typesSupported": ["FIXED", "COINCIDENT", "CONCENTRIC", "DISTANCE", "ANGLE", "PARALLEL"],
+      "solverMethod": "Iterative numerical relaxation with constraint error residuals (tolerance 1e-6)",
+      "evidence": "src/engine/assembly/constraints/__tests__/AssemblyConstraintSolver.test.ts (11 tests pass)"
+    },
+    "degreesOfFreedomAndKinematics": {
+      "status": "IMPLEMENTED_AND_EXECUTED",
+      "implementation": "src/engine/assembly/kinematics/KinematicAssemblyEngine.ts:1-420, AssemblyDOFAnalyzer.ts",
+      "jointsSupported": ["REVOLUTE", "PRISMATIC", "CYLINDRICAL", "SPHERICAL", "PLANAR", "GEAR"],
+      "solverMethod": "Forward kinematic propagation and Jacobian-based velocity/displacement solving",
+      "evidence": "src/engine/assembly/kinematics/__tests__/KinematicAssemblyEngine.test.ts (4 tests pass)"
+    },
+    "collisionAndInterferenceDetection": {
+      "status": "IMPLEMENTED_AND_EXECUTED",
+      "implementation": "src/engine/assembly/clash/NarrowPhaseDetector.ts:1-310, InterferenceDetectionEngine.ts",
+      "mechanism": "Broad-phase AABB tree bounding checks followed by narrow-phase triangle-triangle intersection tests",
+      "evidence": "src/engine/assembly/clash/__tests__/NarrowPhaseDetector.test.ts"
+    },
+    "assemblyAssociativityAndRegeneration": {
+      "status": "IMPLEMENTED_AND_EXECUTED",
+      "implementation": "src/engine/cad-kernel/document/DocumentEvaluator.ts:evaluateAssembly, TopologyLineageProofEngine.ts:rebindReference",
+      "mechanism": "When an instance CAD part undergoes parameter mutation (e.g. depth 25 -> 35 in P5-001), DocumentEvaluator re-evaluates the solid, rebinds the topology reference via persistent tags (CapEnd), updates mate positions, and notifies PLM.",
+      "evidence": "src/verification/p5/P5-001-CADAssemblyAssociativity.test.ts: PASS (5/5 tests in 97ms)"
+    }
+  },
+  "specificHistoricalWorkInspection": {
+    "SECP_071": {
+      "declaredTitle": "Geometric Intelligence Quality Gate",
+      "productionImplementation": "src/engine/parametric-cad/ (FeatureDependencyGraph, EngineeringConstraintSolver, DesignIntentEngine)",
+      "validationGate": "src/engine/validation/HardAcceptanceGate071.ts",
+      "forensicFinding": "Gate 071 exercises parametric sketches and constraint solving, but relies heavily on legacy wrappers in src/engine/cad-kernel/legacy/ParametricGeometryEngine.ts rather than modern BRepKernel."
+    },
+    "SECP_072": {
+      "declaredTitle": "Assembly & Kinematics Quality Gate",
+      "productionImplementation": "src/engine/assembly-intelligence/ (GearTrainEngine, KinematicSolverEngine, CollisionDetectionEngine)",
+      "validationGate": "src/engine/validation/HardAcceptanceGate072.ts",
+      "forensicFinding": "CRITICAL FINDING: HardAcceptanceGate072 lines 49-58 explicitly setup mock CADPart objects ('solids: [{ id: s1, faceIds: [f1, f2], volume: 200, mass: 1.5 } as any]') with hardcoded fingerprints ('crank-fprint'). Gate 072 does NOT execute against real evaluated B-Rep solids from BRepKernel.",
+      "classification": "PLACEHOLDER_OR_SIMULATED"
+    },
+    "PATCH_034": {
+      "declaredTitle": "Parametric Sketch and 2D Constraints Engine",
+      "productionImplementation": "src/engine/sketch034/SketchProfileExtractor.ts, src/engine/cad-kernel/constraints/",
+      "forensicFinding": "Extracts genuine 2D profiles and feeds closed loops into BRepKernel.extrudeProfile for extrusion.",
+      "classification": "IMPLEMENTED_AND_EXECUTED"
+    },
+    "P5_001": {
+      "declaredTitle": "CAD -> Assembly Revision & Associativity Proof",
+      "productionImplementation": "src/verification/p5/P5-001-CADAssemblyAssociativity.test.ts, DocumentEvaluator.ts, TopologyLineageProofEngine.ts",
+      "forensicFinding": "VERIFIED PRODUCTION PASS: Evaluates real BRepSolid instances for Part REV-A, creates persistent face references (F_EXT_01_CapEnd), mutates parameter to REV-B, rebinds reference, and verifies assembly mate survival.",
+      "classification": "IMPLEMENTED_AND_EXECUTED"
+    }
+  }
+}

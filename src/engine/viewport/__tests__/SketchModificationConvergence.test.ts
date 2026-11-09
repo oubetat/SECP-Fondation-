@@ -14,7 +14,7 @@ describe('PROMPT-017 — Sketch Modification Convergence Tests', () => {
     // Generate standard test document with active sketch
     const { document } = SketchUIIntegration.createPrimitiveDocument('BOX', 'DOC_SKETCH_MOD_TEST');
     testDoc = document;
-    sketchId = testDoc.sketches[0].id;
+    sketchId = testDoc.sketches![0].id;
   });
 
   function createIntent(toolId: string, params: any): AnyEngineeringIntent {
@@ -47,7 +47,7 @@ describe('PROMPT-017 — Sketch Modification Convergence Tests', () => {
     ind.entities['pt_e2'] = { id: 'pt_e2', type: 'POINT', x: 50, y: 50 } as any;
 
     const populatedSketch = CanonicalSketchAdapter.fromIndustrialSketch(ind);
-    testDoc.sketches[0] = populatedSketch;
+    testDoc.sketches![0] = populatedSketch as any;
 
     // Trim line_1 at (75,0)
     const intent = createIntent('SKETCH_TRIM', {
@@ -77,7 +77,7 @@ describe('PROMPT-017 — Sketch Modification Convergence Tests', () => {
     ind.entities['pt_be'] = { id: 'pt_be', type: 'POINT', x: 50, y: 50 } as any;
 
     const populatedSketch = CanonicalSketchAdapter.fromIndustrialSketch(ind);
-    testDoc.sketches[0] = populatedSketch;
+    testDoc.sketches![0] = populatedSketch as any;
 
     const intent = createIntent('SKETCH_EXTEND', {
       targetEntityId: 'line_tgt'
@@ -98,7 +98,7 @@ describe('PROMPT-017 — Sketch Modification Convergence Tests', () => {
     ind.entities['pt_b'] = { id: 'pt_b', type: 'POINT', x: 100, y: 0 } as any;
 
     const populatedSketch = CanonicalSketchAdapter.fromIndustrialSketch(ind);
-    testDoc.sketches[0] = populatedSketch;
+    testDoc.sketches![0] = populatedSketch as any;
 
     const intent = createIntent('SKETCH_SPLIT', {
       targetEntityId: 'line_split',
@@ -126,7 +126,7 @@ describe('PROMPT-017 — Sketch Modification Convergence Tests', () => {
     ind.entities['pt_2'] = { id: 'pt_2', type: 'POINT', x: 10, y: 100 } as any;
 
     const populatedSketch = CanonicalSketchAdapter.fromIndustrialSketch(ind);
-    testDoc.sketches[0] = populatedSketch;
+    testDoc.sketches![0] = populatedSketch as any;
 
     const intent = createIntent('SKETCH_OFFSET', {
       targetEntityId: 'line_off',
@@ -147,7 +147,7 @@ describe('PROMPT-017 — Sketch Modification Convergence Tests', () => {
     ind.entities['pt_x2'] = { id: 'pt_x2', type: 'POINT', x: 20, y: 20 } as any;
 
     const populatedSketch = CanonicalSketchAdapter.fromIndustrialSketch(ind);
-    testDoc.sketches[0] = populatedSketch;
+    testDoc.sketches![0] = populatedSketch as any;
 
     const intent = createIntent('SKETCH_MIRROR', {
       selectedEntityIds: ['line_mir'],
@@ -168,7 +168,7 @@ describe('PROMPT-017 — Sketch Modification Convergence Tests', () => {
     ind.entities['pt_y2'] = { id: 'pt_y2', type: 'POINT', x: 20, y: 20 } as any;
 
     const populatedSketch = CanonicalSketchAdapter.fromIndustrialSketch(ind);
-    testDoc.sketches[0] = populatedSketch;
+    testDoc.sketches![0] = populatedSketch as any;
 
     const linearIntent = createIntent('SKETCH_PATTERN_LINEAR', {
       selectedEntityIds: ['line_pat'],

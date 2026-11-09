@@ -78,7 +78,7 @@ export class CutterLocationDataEngine {
       operations,
       trajectories,
       totalPointsCount: totalPoints,
-      totalMachiningTimeSec: Number(totalTime.toFixed(1)),
+      totalEstimatedTimeSec: Number(totalTime.toFixed(1)),
       totalMaterialRemovedMm3: Number(totalVolume.toFixed(2)),
       clDataHash,
       provenanceSignature,

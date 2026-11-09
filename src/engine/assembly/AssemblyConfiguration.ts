@@ -36,22 +36,24 @@ export class AssemblyConfigurationManager {
 
     // 1. Apply Suppression to Components
     for (const comp of components) {
-      const override = config.componentOverrides[comp.instanceId];
+      const override = config.componentOverrides ? config.componentOverrides[comp.instanceId] : undefined;
       if (override && override.suppressed !== undefined) {
         comp.suppressed = override.suppressed;
-      } else {
-        // Default to not suppressed if not in override? 
-        // Or keep current? Usually config defines a total state.
       }
       
-      if (override && override.placementTransform) {
-         comp.placementTransform = override.placementTransform;
+      if (override && (override as any).placementTransform) {
+         comp.placementTransform = (override as any).placementTransform;
       }
     }
 
     // 2. Apply Suppression to Constraints
+    const suppConstraints = config.constraintOverrides
+      ? Object.keys(config.constraintOverrides).filter(k => config.constraintOverrides[k]?.suppressed)
+      : (config as any).suppressedConstraints || [];
+
     for (const constraint of constraints) {
-      if (config.suppressedConstraints.includes(constraint.constraintId)) {
+      const cId = constraint.constraintId || constraint.id || '';
+      if (cId && suppConstraints.includes(cId)) {
         constraint.suppressionState = 'SUPPRESSED';
         constraint.status = 'SUPPRESSED';
       } else {
@@ -61,8 +63,10 @@ export class AssemblyConfigurationManager {
     }
 
     // 3. Apply Suppression to Joints
+    const suppJoints = (config as any).suppressedJoints || [];
     for (const joint of joints) {
-      if (config.suppressedJoints.includes(joint.jointId)) {
+      const jId = joint.jointId || joint.id || '';
+      if (jId && suppJoints.includes(jId)) {
         joint.suppressionState = 'SUPPRESSED';
       } else {
         joint.suppressionState = 'ACTIVE';

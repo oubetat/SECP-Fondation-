@@ -7,6 +7,7 @@ import { describe, it, expect } from "vitest";
 import { SpatialMaterialField } from "../SpatialMaterialField";
 import { FEMCore } from "../FEMCore";
 import { FEMModel, DOFComponent } from "../FEMTypes";
+import { DomainBindingTestUtility } from "../../../crossdomain/DomainBindingTestUtility";
 
 describe("SECP-PROGRAMMABLE-MATERIAL-006: 3D Spatial Material Mapping Verification", () => {
   it("PME-006-01: TET4_3D Homogeneous Equivalence with Spatial Field Binding", () => {
@@ -58,7 +59,8 @@ describe("SECP-PROGRAMMABLE-MATERIAL-006: 3D Spatial Material Mapping Verificati
     };
 
     const core = new FEMCore();
-    const result = core.solve(model, {
+    const binding = DomainBindingTestUtility.createSealedFemBinding(model);
+    const result = core.solve(binding, {
       solverType: 'SPARSE_PCG',
       bcMethod: 'DIRECT_ELIMINATION'
     });
@@ -110,7 +112,8 @@ describe("SECP-PROGRAMMABLE-MATERIAL-006: 3D Spatial Material Mapping Verificati
     };
 
     const core = new FEMCore();
-    const resultGraded = core.solve(modelGraded, { solverType: 'SPARSE_PCG', bcMethod: 'DIRECT_ELIMINATION' });
+    const bindingGraded = DomainBindingTestUtility.createSealedFemBinding(modelGraded);
+    const resultGraded = core.solve(bindingGraded, { solverType: 'SPARSE_PCG', bcMethod: 'DIRECT_ELIMINATION' });
     expect(resultGraded.equilibrium.ok).toBe(true);
     const uxGraded = resultGraded.displacements.get("N2")![DOFComponent.UX]!;
 
@@ -123,7 +126,8 @@ describe("SECP-PROGRAMMABLE-MATERIAL-006: 3D Spatial Material Mapping Verificati
       spatialMaterialFields: undefined
     };
 
-    const resultBase = core.solve(modelBase, { solverType: 'SPARSE_PCG', bcMethod: 'DIRECT_ELIMINATION' });
+    const bindingBase = DomainBindingTestUtility.createSealedFemBinding(modelBase);
+    const resultBase = core.solve(bindingBase, { solverType: 'SPARSE_PCG', bcMethod: 'DIRECT_ELIMINATION' });
     const uxBase = resultBase.displacements.get("N2")![DOFComponent.UX]!;
 
     // Since E is higher on average in the graded case (E(x) = 100k(1+0.1x) >= 100k), stiffness is higher, so displacement should be smaller.

@@ -13,10 +13,11 @@ import { MachineDefinitionRegistry } from '../../engine/cam/post-processor/Machi
 import { GCodeVerificationEngine } from '../../engine/cam/verification/GCodeVerificationEngine';
 import { DEFAULT_VERIFICATION_TOLERANCES, VerificationContract } from '../../engine/cam/verification/GCodeVerificationTypes';
 import { CAMOperationData } from '../../engine/cam/post-processor/NCIntermediateRepresentation';
-import { ToolSnapshot } from '../../engine/cam/tool-library/ToolTypes';
+import { ToolSnapshot, ToolGeometryModel, CAMTool } from '../../engine/cam/tool-library/ToolTypes';
 import { EngineeringHashChain } from '../../engine/evidence/EngineeringHashChain';
 import { CAMDependencyEngine } from '../../engine/cam/production-gate/CAMDependencyEngine';
-import { MotionType, MachiningSetup, Toolpath } from '../../engine/cam/toolpath/ToolpathTypes';
+import { MotionType, MachiningSetup, Toolpath, CoolantState } from '../../engine/cam/toolpath/ToolpathTypes';
+import { ControllerDialect } from '../../engine/cam/post-processor/PostTypes';
 import { EngineeringArtifact } from '../../engine/plm/PLMTypes';
 
 describe('P5-004 — CAD → CAM Revision / Associativity / Toolpath Invalidation Proof', () => {
@@ -39,6 +40,7 @@ describe('P5-004 — CAD → CAM Revision / Associativity / Toolpath Invalidatio
         shankDiameterMm: 12,
         overallLengthMm: 75,
         cuttingLengthMm: 30,
+        shoulderLengthMm: 35,
         fluteCount: 4
       },
       cornerType: 'SHARP',
@@ -108,7 +110,7 @@ describe('P5-004 — CAD → CAM Revision / Associativity / Toolpath Invalidatio
       toolSnapshot,
       spindleRpm: 4500,
       spindleDirection: 'CW',
-      coolant: 'M8_FLOOD',
+      coolant: 'FLOOD',
       workOffset: 'G54',
       points: toolpath.positions.map(p => ({
         x: p.x,
@@ -173,7 +175,7 @@ describe('P5-004 — CAD → CAM Revision / Associativity / Toolpath Invalidatio
 
     // 2. Mutate CAD Document to REV-B: Depth 25mm -> 50mm
     docCAD.revision = 2;
-    docCAD.features[0].parameters.depth = 50;
+    docCAD.features![0].parameters!.depth = 50;
 
     const evalResultB = DocumentEvaluator.evaluate(docCAD);
     expect(evalResultB.success).toBe(true);
@@ -270,7 +272,7 @@ describe('P5-004 — CAD → CAM Revision / Associativity / Toolpath Invalidatio
 
     // 4. Mutate CAD Document to REV-B
     docCAD.revision = 2;
-    docCAD.features[0].parameters.depth = 60;
+    docCAD.features![0].parameters!.depth = 60;
 
     const evalResultB = DocumentEvaluator.evaluate(docCAD);
     const artCAD_B = CanonicalPLMProjectionAdapter.projectFromDocument(docCAD, evalResultB);
@@ -376,7 +378,7 @@ describe('P5-004 — CAD → CAM Revision / Associativity / Toolpath Invalidatio
     const verifContractA: VerificationContract = {
       ncProgramText: postResultA.program.rawGCodeText,
       programName: '5001',
-      controllerDialect: postDef.controllerDialect,
+      controllerDialect: postDef.controllerDialect as ControllerDialect,
       machine,
       toolSnapshots: [toolSnapshotA],
       tolerances: DEFAULT_VERIFICATION_TOLERANCES
@@ -390,7 +392,7 @@ describe('P5-004 — CAD → CAM Revision / Associativity / Toolpath Invalidatio
 
     // 2. Advance CAD to REV-B: Depth 25mm -> 60mm
     docCAD.revision = 2;
-    docCAD.features[0].parameters.depth = 60;
+    docCAD.features![0].parameters!.depth = 60;
 
     const evalResultB = DocumentEvaluator.evaluate(docCAD);
     const solidB = evalResultB.evaluatedShape as Solid;
@@ -602,7 +604,7 @@ describe('P5-004 — CAD → CAM Revision / Associativity / Toolpath Invalidatio
     const verifContractA: VerificationContract = {
       ncProgramText: postResultA.program.rawGCodeText,
       programName: '5501',
-      controllerDialect: postDef.controllerDialect,
+      controllerDialect: postDef.controllerDialect as ControllerDialect,
       machine,
       toolSnapshots: [toolSnapshotA],
       tolerances: DEFAULT_VERIFICATION_TOLERANCES
@@ -627,7 +629,7 @@ describe('P5-004 — CAD → CAM Revision / Associativity / Toolpath Invalidatio
       sourceSystem: 'SECP_CAM_ENGINE',
       documentId: docCAD.documentId,
       revision: 1,
-      canonicalHash: canonicalHashA,
+      canonicalHash: canonicalHashA.canonicalHash,
       geometryHash: `G-HASH-${docCAD.documentId}-REV1`,
       timestamp: '2026-09-14T00:00:00.000Z',
       payload: {
@@ -639,7 +641,7 @@ describe('P5-004 — CAD → CAM Revision / Associativity / Toolpath Invalidatio
       verdict: 'VALID',
       status: 'ACTIVE'
     };
-    docCAD.evidence.push(evREV1);
+    docCAD.evidence!.push(evREV1);
 
     // G) Project CAD REV-A and CAM REV-A into PLM
     const artCAD_A = CanonicalPLMProjectionAdapter.projectFromDocument(docCAD, evalResultA);
@@ -670,7 +672,7 @@ describe('P5-004 — CAD → CAM Revision / Associativity / Toolpath Invalidatio
 
     // 2. CAD REVISION MUTATION: Depth 30mm -> 65mm (REV-B)
     docCAD.revision = 2;
-    docCAD.features[0].parameters.depth = 65;
+    docCAD.features![0].parameters!.depth = 65;
 
     // H) Evaluate CAD REV-B & Project into PLM
     const evalResultB = DocumentEvaluator.evaluate(docCAD);
@@ -720,7 +722,7 @@ describe('P5-004 — CAD → CAM Revision / Associativity / Toolpath Invalidatio
     const verifContractB: VerificationContract = {
       ncProgramText: postResultB.program.rawGCodeText,
       programName: '5502',
-      controllerDialect: postDef.controllerDialect,
+      controllerDialect: postDef.controllerDialect as ControllerDialect,
       machine,
       toolSnapshots: [toolSnapshotB],
       tolerances: DEFAULT_VERIFICATION_TOLERANCES
@@ -745,7 +747,7 @@ describe('P5-004 — CAD → CAM Revision / Associativity / Toolpath Invalidatio
       sourceSystem: 'SECP_CAM_ENGINE',
       documentId: docCAD.documentId,
       revision: 2,
-      canonicalHash: canonicalHashB,
+      canonicalHash: canonicalHashB.canonicalHash,
       geometryHash: `G-HASH-${docCAD.documentId}-REV2`,
       timestamp: '2026-09-14T00:00:00.000Z',
       payload: {
@@ -757,7 +759,7 @@ describe('P5-004 — CAD → CAM Revision / Associativity / Toolpath Invalidatio
       verdict: 'VALID',
       status: 'ACTIVE'
     };
-    docCAD.evidence.push(evREV2);
+    docCAD.evidence!.push(evREV2);
 
     // N) Register CAM REV-B in PLM
     const artCAM_B: EngineeringArtifact = {
@@ -801,9 +803,9 @@ describe('P5-004 — CAD → CAM Revision / Associativity / Toolpath Invalidatio
     expect(isValidRevAforRevB).toBe(false);
 
     // Both historical evidence records preserved in docCAD (including automated evaluations)
-    expect(docCAD.evidence.length).toBe(4);
-    expect(docCAD.evidence[1].revision).toBe(1);
-    expect(docCAD.evidence[3].revision).toBe(2);
+    expect(docCAD.evidence!.length).toBe(4);
+    expect(docCAD.evidence![1].revision).toBe(1);
+    expect(docCAD.evidence![3].revision).toBe(2);
 
     // Event Store verified: projection events recorded without manual test appends
     const events = EngineeringEventStore.getInstance().getAll();

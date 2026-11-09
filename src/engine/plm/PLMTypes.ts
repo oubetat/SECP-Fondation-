@@ -32,19 +32,21 @@ export type ArtifactStatus =
 export interface EngineeringArtifact {
   artifactId: string;
   type: ArtifactType;
-  name: string;
+  name?: string;
   revision: string;
   version: number;
   status: ArtifactStatus;
-  createdBy: string;
-  createdAt: string;
+  createdBy?: string;
+  createdAt?: string;
   parentRevision?: string;
   geometryHash: string;
   topologyHash?: string;
+  documentId?: string;
   sourceDocumentId?: string;
+  childDependencies?: string[];
   dependencyHash: string; // Hash of all dependency artifact IDs and their revisions
   provenanceReference?: string;
-  metadata: Record<string, any>;
+  metadata?: Record<string, any>;
 }
 
 export interface ECOChangeRequest {
@@ -62,6 +64,7 @@ export interface EngineeringChangeOrder {
   description: string;
   reason: string;
   author: string;
+  requestedBy?: string;
   createdAt: string;
   status: 'OPEN' | 'IN_PROGRESS' | 'VALIDATION' | 'REVIEW' | 'APPROVED' | 'REJECTED' | 'CLOSED';
   affectedArtifacts: string[]; // List of artifact IDs

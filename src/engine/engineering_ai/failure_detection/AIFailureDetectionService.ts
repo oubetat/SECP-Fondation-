@@ -55,23 +55,37 @@ export class AIFailureDetectionService {
     locationCoordinates?: any;
     evidencePackage?: any;
   }): EngineeringFailureEvent {
+    const id = `EVT-FAIL-${Date.now()}`;
+    const now = new Date().toISOString();
     const evt: EngineeringFailureEvent = {
-      eventId: `EVT-FAIL-${Date.now()}`,
+      failureId: id,
+      eventId: id,
       sessionId: 'SESS-DEF-01',
+      runId: 'RUN-DEF-01',
+      caseId: 'CASE-DEF-01',
+      failureType: 'FEM_FAILURE',
       category: 'FEM_FAILURE',
       severity: params.severity || 'CRITICAL',
+      status: 'DETECTED',
       state: 'DETECTED',
+      source: 'VALIDATION_GATES',
       detectionSource: 'SOLVER_ASSERTION',
+      detectedAt: now,
+      timestamp: now,
       title: params.description || 'Structural Failure Detected',
       description: params.description || 'Failure detected in component',
+      failureMode: params.failureMode || 'STRUCTURAL_YIELD',
+      componentId: params.componentId || 'COMP-01',
+      detectedAtStressMpa: params.detectedAtStressMpa,
+      allowableLimitMpa: params.allowableLimitMpa,
+      locationCoordinates: params.locationCoordinates || { x: 0, y: 0, z: 0 },
       location: {
         type: 'ELEMENT',
         entityId: params.componentId || 'COMP-01',
         name: params.componentId || 'Component',
         coordinates: params.locationCoordinates ? [params.locationCoordinates.x, params.locationCoordinates.y, params.locationCoordinates.z] : undefined
       },
-      evidence: [],
-      timestamp: new Date().toISOString()
+      evidence: []
     };
     this.events.push(evt);
     return evt;
@@ -736,7 +750,7 @@ export class AIFailureDetectionService {
     let isOscillating = false;
     let isStagnant = false;
 
-    if (residuals.length > 5) {
+    if (residuals.length >= 3) {
       const recent = residuals.slice(-5);
       const diffs = recent.map((val, idx) => (idx > 0 ? val - recent[idx - 1] : 0)).slice(1);
       
@@ -747,7 +761,7 @@ export class AIFailureDetectionService {
 
       // Check stagnation (improvement ≈ 0)
       const maxChange = Math.max(...diffs.map((d) => Math.abs(d)));
-      if (maxChange < 1e-7 && !isConverged) {
+      if (maxChange < 1e-5 && !isConverged) {
         isStagnant = true;
       }
 
@@ -971,6 +985,10 @@ export class AIFailureDetectionService {
         proposalId: `PROP-${Date.now()}`,
         failureId: eventId,
         suggestedAction: arg1.strategy || 'PARAMETRIC_GEOMETRY_OPTIMIZATION',
+        strategy: arg1.strategy || 'PARAMETRIC_GEOMETRY_OPTIMIZATION',
+        confidenceScore: arg1.confidenceScore ?? 0.94,
+        predictedSafetyFactorGain: arg1.predictedSafetyFactorGain ?? 0.42,
+        proposedChanges: arg1.proposedChanges || [],
         reason: 'Automated recovery proposal',
         affectedParameters: arg1.proposedChanges ? arg1.proposedChanges.map((c: any) => c.parameter) : [],
         risk: 'LOW',

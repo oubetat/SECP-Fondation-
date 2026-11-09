@@ -1,6 +1,8 @@
 import { describe, it, expect } from 'vitest';
 import { Fvm3DNavierStokesSolver } from '../../../engine/cfd3d/Fvm3DNavierStokesSolver';
 import { FvmMesh3D, FluidProperties3D, BoundaryConditionSpec3D, SolverConfig3D } from '../../../engine/cfd3d/Fvm3DTypes';
+import { DomainBindingTestUtility } from '../../../engine/crossdomain/DomainBindingTestUtility';
+import { initializeAuthorityHandshake } from '../../../engine/simulation/SimulationAuthorityInternal';
 
 describe('POST-005 Track C: CFD Telemetry & Forensic Verification', () => {
   function createMinimalHexMesh(): FvmMesh3D {
@@ -66,6 +68,13 @@ describe('POST-005 Track C: CFD Telemetry & Forensic Verification', () => {
       boundingBox: {
         min: { x: 0, y: 0, z: 0 },
         max: { x: 2, y: 1, z: 1 }
+      },
+      provenance: {
+        sourceGeometryHash: 'geo-hash',
+        sourceRevisionHash: 'REV-TEST',
+        bRepHash: 'geo-hash',
+        meshHash: 'TEST-HEX-2CELL',
+        generationTimestamp: new Date().toISOString()
       }
     };
   }
@@ -92,8 +101,10 @@ describe('POST-005 Track C: CFD Telemetry & Forensic Verification', () => {
   };
 
   it('GAP-012: Captures and exports limiters telemetry (velocityClamped, pressureClamped)', () => {
+    initializeAuthorityHandshake();
     const mesh = createMinimalHexMesh();
-    const result = Fvm3DNavierStokesSolver.solve(mesh, fluid, bcSpec, config, 1.0, 10.0);
+    const binding = DomainBindingTestUtility.createSealedCfdBinding(mesh, fluid);
+    const result = Fvm3DNavierStokesSolver.solve(binding, bcSpec, config, 1.0, 10.0);
 
     expect(result.convergenceAudit).toBeDefined();
     expect(result.convergenceAudit!.limiters).toBeDefined();
@@ -105,9 +116,10 @@ describe('POST-005 Track C: CFD Telemetry & Forensic Verification', () => {
   it('GAP-013: Captures structured firstInvalidCell diagnostic on non-finite fields', () => {
     const mesh = createMinimalHexMesh();
     
+    const binding = DomainBindingTestUtility.createSealedCfdBinding(mesh, fluid);
     // Pass NaN initial fields on interior cell 1 to trigger divergence capture
     try {
-      Fvm3DNavierStokesSolver.solve(mesh, fluid, bcSpec, config, 1.0, 10.0, {
+      Fvm3DNavierStokesSolver.solve(binding, bcSpec, config, 1.0, 10.0, {
         u: [10, NaN],
         v: [0, 0],
         w: [0, 0],

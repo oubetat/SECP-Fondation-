@@ -90,3 +90,5 @@ export interface AssemblyInterferenceReport {
     z: number;
   };
 }
+
+export { AssemblyComponent, AssemblyConstraint, PartDefinition as AssemblyPartDefinition } from './AssemblyCore';

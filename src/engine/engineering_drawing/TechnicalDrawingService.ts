@@ -4,7 +4,7 @@
  * with provenance tracking for Digital Thread compliance.
  */
 import { TechnicalDrawingEngine } from '../drawingEngine';
-import { DrawingDocument } from './drawing/DrawingTypes';
+import { DrawingDocument } from '../drawing/DrawingTypes';
 
 export class TechnicalDrawingService {
   public createDrawingDocument(title: string): DrawingDocument {

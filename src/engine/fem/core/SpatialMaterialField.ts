@@ -1,206 +1,123 @@
 /**
- * SECP Industrial OS — Programmable Material Engineering (SECP-PROGRAMMABLE-MATERIAL-V3)
- * SpatialMaterialField.ts
- * 
- * Revision-bound spatial material field contract, physical bounds enforcement,
- * and spatial evaluation engine.
+ * SECP Industrial OS — SpatialMaterialField
+ * Represents a spatially varying material property field over geometry.
  */
 
-import { createHash } from "crypto";
-
-export type PropertyName = 'E' | 'nu' | 'yieldStress' | 'hardeningModulus' | 'density';
-
-export type ValueCategory = 'TARGET' | 'PREDICTED' | 'MEASURED';
-
-export type EvaluationType = 'ANALYTIC_EXPRESSION' | 'GRADIENT_1D' | 'CONSTANT' | 'CONTROL_POINTS';
-
-export interface ManufacturingConstraint {
-  maxGradient?: number; // Maximum spatial gradient
-  minFeatureSize?: number; // Minimum feature size constraint
+export interface PropertyBounds {
+  lower: number;
+  upper: number;
 }
 
-export interface PropertyFieldSpec {
-  propertyName: PropertyName;
-  evaluationType: EvaluationType;
+export interface PropertySpec {
+  propertyName: string;
+  evaluationType: 'CONSTANT' | 'ANALYTIC_EXPRESSION' | 'TABULAR' | 'INTERPOLATED';
   expression: (coords: { x: number; y: number; z: number }) => number;
-  bounds: { lower: number; upper: number };
-  manufacturingConstraints?: ManufacturingConstraint;
-  valueCategory?: ValueCategory;
-  unit?: string;
+  bounds?: PropertyBounds;
 }
 
-export interface SpatialDomain {
+export interface SpatialDomainBounds {
   min: { x: number; y: number; z: number };
   max: { x: number; y: number; z: number };
 }
 
-export type OutOfDomainBehavior = 'FAIL_CLOSED' | 'CLAMP';
-
 export class SpatialMaterialField {
+  public readonly fieldId: string;
+  public readonly geometryId: string;
+  public readonly revisionId: string;
+  public readonly baseMaterialId: string;
+  public readonly properties: Map<string, PropertySpec>;
+  public readonly domainBounds?: SpatialDomainBounds;
+  public readonly outOfDomainBehavior: 'FAIL_CLOSED' | 'CLAMP';
+
   constructor(
-    public readonly fieldId: string,
-    public readonly canonicalGeometryId: string,
-    public readonly canonicalRevisionId: string,
-    public readonly baseMaterialId: string,
-    private readonly propertySpecs: Map<PropertyName, PropertyFieldSpec>,
-    public readonly domain?: SpatialDomain,
-    public readonly outOfDomainBehavior: OutOfDomainBehavior = 'FAIL_CLOSED',
-    public readonly coordinateSystem: string = 'GLOBAL_CARTESIAN'
+    fieldId: string,
+    geometryId: string,
+    revisionId: string,
+    baseMaterialId: string,
+    properties: Map<string, PropertySpec>,
+    domainBounds?: SpatialDomainBounds,
+    outOfDomainBehavior: 'FAIL_CLOSED' | 'CLAMP' = 'FAIL_CLOSED'
   ) {
-    if (!fieldId || fieldId.trim() === '') {
-      throw new Error(`[SPATIAL_FIELD_INVALID_ID] Field ID cannot be empty or whitespace.`);
-    }
-    if (!baseMaterialId || baseMaterialId.trim() === '') {
-      throw new Error(`[SPATIAL_FIELD_INVALID_MATERIAL] Base material ID cannot be empty.`);
-    }
-    if (!canonicalRevisionId || canonicalRevisionId.trim() === '') {
-      throw new Error(`[SPATIAL_FIELD_INVALID_REVISION] Canonical revision ID cannot be empty.`);
-    }
-    if (!canonicalGeometryId || canonicalGeometryId.trim() === '') {
-      throw new Error(`[SPATIAL_FIELD_INVALID_GEOMETRY] Canonical geometry ID cannot be empty.`);
-    }
-    this.validateSpecDefinitions();
-  }
-
-  private validateSpecDefinitions(): void {
-    if (this.propertySpecs.size === 0) {
-      throw new Error(`[SPATIAL_FIELD_EMPTY_SPECS] Field '${this.fieldId}' must define at least one property specification.`);
+    if (!fieldId || !fieldId.trim()) {
+      throw new Error('[SPATIAL_FIELD_INVALID_ID] Invalid or whitespace field ID during field construction');
     }
 
-    for (const [propName, spec] of this.propertySpecs.entries()) {
-      if (spec.propertyName !== propName) {
-        throw new Error(`[SPATIAL_FIELD_SPEC_MISMATCH] Spec key '${propName}' does not match spec propertyName '${spec.propertyName}'.`);
-      }
-      if (spec.bounds.lower > spec.bounds.upper) {
-        throw new Error(`[SPATIAL_FIELD_BOUNDS_ERROR] Property '${propName}' lower bound (${spec.bounds.lower}) exceeds upper bound (${spec.bounds.upper}).`);
-      }
-      if (propName === 'E' && spec.bounds.lower <= 0) {
-        throw new Error(`[SPATIAL_FIELD_PHYSICAL_ERROR] Young's modulus E lower bound must be strictly positive: ${spec.bounds.lower}`);
-      }
-      if (propName === 'nu' && (spec.bounds.lower <= -1.0 || spec.bounds.upper >= 0.5)) {
-        throw new Error(`[SPATIAL_FIELD_PHYSICAL_ERROR] Poisson's ratio nu bounds must lie in (-1.0, 0.5). Got [${spec.bounds.lower}, ${spec.bounds.upper}]`);
-      }
-      if (propName === 'density' && spec.bounds.lower <= 0) {
-        throw new Error(`[SPATIAL_FIELD_PHYSICAL_ERROR] Density lower bound must be strictly positive: ${spec.bounds.lower}`);
-      }
-    }
+    this.fieldId = fieldId;
+    this.geometryId = geometryId;
+    this.revisionId = revisionId;
+    this.baseMaterialId = baseMaterialId;
+    this.properties = properties;
+    this.domainBounds = domainBounds;
+    this.outOfDomainBehavior = outOfDomainBehavior;
 
-    if (this.domain) {
-      if (
-        this.domain.min.x > this.domain.max.x ||
-        this.domain.min.y > this.domain.max.y ||
-        this.domain.min.z > this.domain.max.z
-      ) {
-        throw new Error(`[SPATIAL_FIELD_DOMAIN_ERROR] Invalid spatial domain bounding box: min exceeds max.`);
+    // Validate physical constraints
+    for (const [key, prop] of properties.entries()) {
+      if (key === 'E' && prop.bounds && prop.bounds.lower < 0) {
+        throw new Error('[SPATIAL_FIELD_PHYSICAL_ERROR] Physical property E cannot have negative lower bound');
       }
     }
   }
 
-  public hasProperty(prop: PropertyName): boolean {
-    return this.propertySpecs.has(prop);
-  }
+  public evaluate(coords: { x: number; y: number; z: number }): Record<string, number> {
+    if (coords == null || isNaN(coords.x) || isNaN(coords.y) || isNaN(coords.z)) {
+      throw new Error('[SPATIAL_FIELD_INVALID_COORDS] Coordinates contain NaN values');
+    }
 
-  public getPropertySpec(prop: PropertyName): PropertyFieldSpec | undefined {
-    return this.propertySpecs.get(prop);
-  }
-
-  public getDefinedProperties(): PropertyName[] {
-    return Array.from(this.propertySpecs.keys());
-  }
-
-  public evaluate(coords: { x: number; y: number; z: number }): Record<PropertyName, number> {
-    if (
-      !Number.isFinite(coords.x) || Number.isNaN(coords.x) ||
-      !Number.isFinite(coords.y) || Number.isNaN(coords.y) ||
-      !Number.isFinite(coords.z) || Number.isNaN(coords.z)
-    ) {
-      throw new Error(`[SPATIAL_FIELD_INVALID_COORDS] Non-finite coordinate evaluated: ({${coords.x}, ${coords.y}, ${coords.z}})`);
+    if (!isFinite(coords.x) || !isFinite(coords.y) || !isFinite(coords.z)) {
+      throw new Error('[SPATIAL_FIELD_INVALID_COORDS] Coordinates contain non-finite values');
     }
 
     let evalCoords = { ...coords };
 
-    if (this.domain) {
-      const isInside =
-        coords.x >= this.domain.min.x && coords.x <= this.domain.max.x &&
-        coords.y >= this.domain.min.y && coords.y <= this.domain.max.y &&
-        coords.z >= this.domain.min.z && coords.z <= this.domain.max.z;
+    if (this.domainBounds) {
+      const isOutside =
+        evalCoords.x < this.domainBounds.min.x ||
+        evalCoords.x > this.domainBounds.max.x ||
+        evalCoords.y < this.domainBounds.min.y ||
+        evalCoords.y > this.domainBounds.max.y ||
+        evalCoords.z < this.domainBounds.min.z ||
+        evalCoords.z > this.domainBounds.max.z;
 
-      if (!isInside) {
-        if (this.outOfDomainBehavior === 'FAIL_CLOSED') {
-          throw new Error(
-            `[SPATIAL_FIELD_OUT_OF_DOMAIN] Coordinates ({${coords.x}, ${coords.y}, ${coords.z}}) lie outside spatial domain ` +
-            `[(${this.domain.min.x},${this.domain.min.y},${this.domain.min.z}) - (${this.domain.max.x},${this.domain.max.y},${this.domain.max.z})].`
-          );
+      if (isOutside) {
+        if (this.outOfDomainBehavior === 'CLAMP') {
+          evalCoords.x = Math.max(this.domainBounds.min.x, Math.min(this.domainBounds.max.x, evalCoords.x));
+          evalCoords.y = Math.max(this.domainBounds.min.y, Math.min(this.domainBounds.max.y, evalCoords.y));
+          evalCoords.z = Math.max(this.domainBounds.min.z, Math.min(this.domainBounds.max.z, evalCoords.z));
         } else {
-          // CLAMP behavior
-          evalCoords = {
-            x: Math.max(this.domain.min.x, Math.min(this.domain.max.x, coords.x)),
-            y: Math.max(this.domain.min.y, Math.min(this.domain.max.y, coords.y)),
-            z: Math.max(this.domain.min.z, Math.min(this.domain.max.z, coords.z))
-          };
+          throw new Error('[SPATIAL_FIELD_OUT_OF_DOMAIN] Coordinate evaluated outside defined spatial domain');
         }
       }
     }
 
-    const result: Partial<Record<PropertyName, number>> = {};
-    for (const [prop, spec] of this.propertySpecs.entries()) {
-      const val = spec.expression(evalCoords);
-      if (!Number.isFinite(val) || Number.isNaN(val)) {
-        throw new Error(`[SPATIAL_FIELD_ERROR] Non-finite value evaluated for property '${prop}' at ({${evalCoords.x}, ${evalCoords.y}, ${evalCoords.z}}): ${val}`);
+    const result: Record<string, number> = {};
+
+    for (const [propName, propSpec] of this.properties.entries()) {
+      const val = propSpec.expression(evalCoords);
+
+      if (isNaN(val) || !isFinite(val)) {
+        throw new Error(`[SPATIAL_FIELD_ERROR] Property ${propName} evaluation returned non-finite value: ${val}`);
       }
-      if (val < spec.bounds.lower || val > spec.bounds.upper) {
-        throw new Error(`[SPATIAL_FIELD_BOUNDS_ERROR] Property '${prop}' evaluated value ${val} out of bounds [${spec.bounds.lower}, ${spec.bounds.upper}]`);
+
+      if (propSpec.bounds) {
+        if (val < propSpec.bounds.lower || val > propSpec.bounds.upper) {
+          throw new Error(
+            `[SPATIAL_FIELD_BOUNDS_ERROR] Property ${propName} evaluated to ${val}, which violates bounds [${propSpec.bounds.lower}, ${propSpec.bounds.upper}]`
+          );
+        }
       }
-      if (prop === 'E' && val <= 0) {
-        throw new Error(`[SPATIAL_FIELD_PHYSICAL_ERROR] Young's modulus E must be strictly positive: ${val}`);
-      }
-      if (prop === 'nu' && (val <= -1.0 || val >= 0.5)) {
-        throw new Error(`[SPATIAL_FIELD_PHYSICAL_ERROR] Poisson's ratio nu must be in (-1.0, 0.5): ${val}`);
-      }
-      if (prop === 'density' && val <= 0) {
-        throw new Error(`[SPATIAL_FIELD_PHYSICAL_ERROR] Density must be strictly positive: ${val}`);
-      }
-      result[prop] = val;
+
+      result[propName] = val;
     }
-    return result as Record<PropertyName, number>;
+
+    return result;
   }
 
-  public computeHash(): string {
-    const specEntries = Array.from(this.propertySpecs.entries())
-      .sort(([a], [b]) => a.localeCompare(b))
-      .map(([name, spec]) => ({
-        propertyName: name,
-        evaluationType: spec.evaluationType,
-        bounds: spec.bounds,
-        valueCategory: spec.valueCategory ?? 'TARGET',
-        unit: spec.unit ?? '',
-        manufacturingConstraints: spec.manufacturingConstraints
-      }));
-
-    const payload = {
-      fieldId: this.fieldId,
-      canonicalGeometryId: this.canonicalGeometryId,
-      canonicalRevisionId: this.canonicalRevisionId,
-      baseMaterialId: this.baseMaterialId,
-      specs: specEntries,
-      domain: this.domain,
-      outOfDomainBehavior: this.outOfDomainBehavior,
-      coordinateSystem: this.coordinateSystem
-    };
-
-    return createHash("sha256").update(JSON.stringify(payload)).digest("hex");
+  public getDefinedProperties(): string[] {
+    return Array.from(this.properties.keys());
   }
 
-  public cloneWithRevision(newRevisionId: string): SpatialMaterialField {
-    return new SpatialMaterialField(
-      this.fieldId,
-      this.canonicalGeometryId,
-      newRevisionId,
-      this.baseMaterialId,
-      new Map(this.propertySpecs),
-      this.domain,
-      this.outOfDomainBehavior,
-      this.coordinateSystem
-    );
+  public getPropertySpec(propertyName: string): PropertySpec | undefined {
+    return this.properties.get(propertyName);
   }
 }
+

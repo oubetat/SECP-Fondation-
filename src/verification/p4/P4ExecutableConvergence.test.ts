@@ -93,8 +93,9 @@ describe('SECP — P4 UI ↔ Canonical Engineering State Convergence Suite', () 
   // P4-002: CAD ROUND TRIP
   // ==========================================================================
   it('P4-002: Executes full CAD round-trip (UI Intent -> Sketch -> Extrude -> Evaluator -> B-Rep -> RenderData)', async () => {
-    const doc = DocumentEvaluator.createDocument({ documentId: 'DOC-P4-002', name: 'Flange Plate' });
-    doc.sketches.push({
+    const doc = DocumentEvaluator.createDocument({ documentId: 'DOC-P4-002' });
+    doc.name = 'Flange Plate';
+    doc.sketches!.push({
       id: 'SK_FLANGE',
       plane: 'XY',
       entities: [
@@ -104,7 +105,8 @@ describe('SECP — P4 UI ↔ Canonical Engineering State Convergence Suite', () 
         { id: 'L4', type: 'LINE', start: { x: 0, y: 30 }, end: { x: 0, y: 0 } }
       ]
     });
-    doc.features.push({
+    doc.features!.push({
+      id: 'FEAT_EXT_01',
       featureId: 'FEAT_EXT_01',
       name: 'Flange Body Extrusion',
       type: 'EXTRUDE',
@@ -125,7 +127,7 @@ describe('SECP — P4 UI ↔ Canonical Engineering State Convergence Suite', () 
     const renderData = createCanonicalRenderData(evalResult.document);
     expect(renderData.hasGeometry).toBe(true);
     expect(renderData.facesCount).toBeGreaterThanOrEqual(6);
-    expect(renderData.brepHash).toBe(evalResult.document.derived.mesh.brepHash);
+    expect(renderData.brepHash).toBe(evalResult.document.derived!.mesh.brepHash);
   });
 
   // ==========================================================================
@@ -133,7 +135,7 @@ describe('SECP — P4 UI ↔ Canonical Engineering State Convergence Suite', () 
   // ==========================================================================
   it('P4-003: Mutates feature parameter (25mm -> 35mm), preserving document identity while regenerating B-Rep and updating revision', async () => {
     const baseDoc = DocumentEvaluator.createDocument({ documentId: 'DOC-P4-003' });
-    baseDoc.sketches.push({
+    baseDoc.sketches!.push({
       id: 'SK_01',
       plane: 'XY',
       entities: [
@@ -143,7 +145,8 @@ describe('SECP — P4 UI ↔ Canonical Engineering State Convergence Suite', () 
         { id: 'L4', type: 'LINE', start: { x: 0, y: 40 }, end: { x: 0, y: 0 } }
       ]
     });
-    baseDoc.features.push({
+    baseDoc.features!.push({
+      id: 'FEAT_EXT',
       featureId: 'FEAT_EXT',
       name: 'Base Extrude',
       type: 'EXTRUDE',
@@ -153,16 +156,16 @@ describe('SECP — P4 UI ↔ Canonical Engineering State Convergence Suite', () 
 
     const res1 = DocumentEvaluator.evaluate(baseDoc, { generateMesh: true });
     const hash1 = res1.derivedArtifacts?.bRepHash;
-    const vol1 = res1.evaluatedShape?.calculateVolume ? res1.evaluatedShape.calculateVolume() : 40 * 40 * 25;
+    const vol1 = (res1.evaluatedShape as any)?.calculateVolume ? (res1.evaluatedShape as any).calculateVolume() : 40 * 40 * 25;
 
     // Mutate parameter to 35mm
     const mutatedDoc = JSON.parse(JSON.stringify(baseDoc)) as EngineeringDocument;
-    mutatedDoc.features[0].parameters.depth = 35;
+    mutatedDoc.features![0].parameters!.depth = 35;
     mutatedDoc.revision = 2;
 
     const res2 = DocumentEvaluator.evaluate(mutatedDoc, { generateMesh: true });
     const hash2 = res2.derivedArtifacts?.bRepHash;
-    const vol2 = res2.evaluatedShape?.calculateVolume ? res2.evaluatedShape.calculateVolume() : 40 * 40 * 35;
+    const vol2 = (res2.evaluatedShape as any)?.calculateVolume ? (res2.evaluatedShape as any).calculateVolume() : 40 * 40 * 35;
 
     expect(mutatedDoc.documentId).toBe(baseDoc.documentId);
     expect(res2.document.revision).toBe(2);
@@ -184,7 +187,7 @@ describe('SECP — P4 UI ↔ Canonical Engineering State Convergence Suite', () 
   it('P4-004: Executes assembly workflow with child part resolution and mate solving', async () => {
     const resolver = new InMemoryDocumentResolver();
     const childDoc = DocumentEvaluator.createDocument({ documentId: 'PART-PIN-01' });
-    childDoc.sketches.push({
+    childDoc.sketches!.push({
       id: 'SK_PIN',
       plane: 'XY',
       entities: [
@@ -194,7 +197,8 @@ describe('SECP — P4 UI ↔ Canonical Engineering State Convergence Suite', () 
         { id: 'L4', type: 'LINE', start: { x: 0, y: 10 }, end: { x: 0, y: 0 } }
       ]
     });
-    childDoc.features.push({
+    childDoc.features!.push({
+      id: 'FEAT_PIN',
       featureId: 'FEAT_PIN',
       name: 'Pin Extrude',
       type: 'EXTRUDE',
@@ -207,8 +211,8 @@ describe('SECP — P4 UI ↔ Canonical Engineering State Convergence Suite', () 
     assyDoc.type = 'ASSEMBLY';
     assyDoc.assembly = {
       instances: [
-        { instanceId: 'INST-PIN-A', documentId: 'PART-PIN-01', position: { x: 0, y: 0, z: 0 }, rotation: { x: 0, y: 0, z: 0, w: 1 } },
-        { instanceId: 'INST-PIN-B', documentId: 'PART-PIN-01', position: { x: 100, y: 0, z: 0 }, rotation: { x: 0, y: 0, z: 0, w: 1 } }
+        { instanceId: 'INST-PIN-A', documentId: 'PART-PIN-01', position: { x: 0, y: 0, z: 0 }, rotation: { x: 0, y: 0, z: 0 } },
+        { instanceId: 'INST-PIN-B', documentId: 'PART-PIN-01', position: { x: 100, y: 0, z: 0 }, rotation: { x: 0, y: 0, z: 0 } }
       ],
       constraints: []
     };
@@ -250,7 +254,7 @@ describe('SECP — P4 UI ↔ Canonical Engineering State Convergence Suite', () 
     // Mutate CAD solid depth (20 -> 50)
     const mutated = SketchUIIntegration.createPrimitiveDocument('BOX', 'DOC_FEM_001');
     mutated.document.revision = 2;
-    const extrudeFeature = mutated.document.features.find((f: any) => f.type === 'EXTRUDE' || f.name?.includes('Extrude'));
+    const extrudeFeature = mutated.document.features!.find((f: any) => f.type === 'EXTRUDE' || f.name?.includes('Extrude'));
     if (extrudeFeature && extrudeFeature.parameters) {
       extrudeFeature.parameters.depth = 50;
       extrudeFeature.parameters.distance = 50;
@@ -336,7 +340,7 @@ describe('SECP — P4 UI ↔ Canonical Engineering State Convergence Suite', () 
   // ==========================================================================
   it('P4-008: Verifies that UI mutations produce authoritative PLM projections without manual creation', () => {
     const doc = DocumentEvaluator.createDocument({ documentId: 'P4-VALVE-PLM' });
-    doc.sketches.push({
+    doc.sketches!.push({
       id: 'SK_V',
       plane: 'XY',
       entities: [
@@ -346,7 +350,8 @@ describe('SECP — P4 UI ↔ Canonical Engineering State Convergence Suite', () 
         { id: 'L4', type: 'LINE', start: { x: 0, y: 20 }, end: { x: 0, y: 0 } }
       ]
     });
-    doc.features.push({
+    doc.features!.push({
+      id: 'F_EXT',
       featureId: 'F_EXT',
       name: 'Extrude',
       type: 'EXTRUDE',
@@ -368,8 +373,9 @@ describe('SECP — P4 UI ↔ Canonical Engineering State Convergence Suite', () 
   // ==========================================================================
   it('P4-009: Reconstructs exact UI and engineering state from persisted canonical document bundle', () => {
     const resolver = new InMemoryDocumentResolver();
-    const doc = DocumentEvaluator.createDocument({ documentId: 'DOC-PERSIST-009', name: 'Original Root' });
-    doc.sketches.push({
+    const doc = DocumentEvaluator.createDocument({ documentId: 'DOC-PERSIST-009' });
+    doc.name = 'Original Root';
+    doc.sketches!.push({
       id: 'SK_MAIN',
       plane: 'XY',
       entities: [
@@ -379,7 +385,8 @@ describe('SECP — P4 UI ↔ Canonical Engineering State Convergence Suite', () 
         { id: 'L4', type: 'LINE', start: { x: 0, y: 80 }, end: { x: 0, y: 0 } }
       ]
     });
-    doc.features.push({
+    doc.features!.push({
+      id: 'FEAT_01',
       featureId: 'FEAT_01',
       name: 'Block Base',
       type: 'EXTRUDE',
@@ -403,12 +410,12 @@ describe('SECP — P4 UI ↔ Canonical Engineering State Convergence Suite', () 
 
     expect(evalAfter.success).toBe(true);
     expect(evalAfter.derivedArtifacts?.bRepHash).toBe(evalBefore.derivedArtifacts?.bRepHash);
-    expect(rehydratedDoc.features.length).toBe(doc.features.length);
+    expect(rehydratedDoc.features!.length).toBe(doc.features!.length);
 
     // UI render data reconstruction from rehydrated document
     const renderData = createCanonicalRenderData(rehydratedDoc);
     expect(renderData.hasGeometry).toBe(true);
-    expect(renderData.brepHash).toBe(evalAfter.document.derived.mesh.brepHash);
+    expect(renderData.brepHash).toBe(evalAfter.document.derived!.mesh.brepHash);
   });
 
   // ==========================================================================
@@ -444,7 +451,7 @@ describe('SECP — P4 UI ↔ Canonical Engineering State Convergence Suite', () 
     expect(art2?.status).toBe('VALID');
 
     // Attempting an illegal backward state mutation on superseded artifact is detected
-    const badTransition = EngineeringPLMEngine.transitionArtifactStatus('ART-P4-CONFLICT-DOC', 'REV-A', 'RELEASED');
+    const badTransition = EngineeringPLMEngine.transitionArtifactStatus('ART-P4-CONFLICT-DOC', 'REV-A', 'RELEASED', 'SECP_ADMIN', 'Test');
     expect(badTransition.success).toBe(false);
   });
 
@@ -468,7 +475,8 @@ describe('SECP — P4 UI ↔ Canonical Engineering State Convergence Suite', () 
       faceId: targetFaceId,
       persistentId: targetFaceId,
       triangleIndex: 0,
-      triangleIndices: [0, 1, 2]
+      triangleIndices: [0, 1, 2],
+      timestamp: Date.now()
     };
 
     // Before mutation: Selection is CURRENT
@@ -498,7 +506,7 @@ describe('SECP — P4 UI ↔ Canonical Engineering State Convergence Suite', () 
   // ==========================================================================
   it('P4-012: Enforces that evaluated EngineeringDocument completely overrides any divergent UI presentation cache', () => {
     const doc = DocumentEvaluator.createDocument({ documentId: 'P4-DOMINANCE-01' });
-    doc.sketches.push({
+    doc.sketches!.push({
       id: 'SK_1',
       plane: 'XY',
       entities: [
@@ -508,7 +516,8 @@ describe('SECP — P4 UI ↔ Canonical Engineering State Convergence Suite', () 
         { id: 'L4', type: 'LINE', start: { x: 0, y: 10 }, end: { x: 0, y: 0 } }
       ]
     });
-    doc.features.push({
+    doc.features!.push({
+      id: 'FEAT_1',
       featureId: 'FEAT_1',
       name: 'Extrude 10mm',
       type: 'EXTRUDE',
@@ -577,7 +586,7 @@ describe('SECP — P4 UI ↔ Canonical Engineering State Convergence Suite', () 
       EngineeringEventStore.getInstance().clear();
 
       const doc = DocumentEvaluator.createDocument({ documentId: 'DETERMINISTIC-VALVE' });
-      doc.sketches.push({
+      doc.sketches!.push({
         id: 'SK_1',
         plane: 'XY',
         entities: [
@@ -587,7 +596,8 @@ describe('SECP — P4 UI ↔ Canonical Engineering State Convergence Suite', () 
           { id: 'L4', type: 'LINE', start: { x: 0, y: 50 }, end: { x: 0, y: 0 } }
         ]
       });
-      doc.features.push({
+      doc.features!.push({
+        id: 'FEAT_1',
         featureId: 'FEAT_1',
         name: 'Extrude 50',
         type: 'EXTRUDE',

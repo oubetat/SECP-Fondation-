@@ -1,0 +1,63 @@
+{
+  "auditId": "SECP-CAD-TRUTH-FORENSIC-001",
+  "workstream": "WORKSTREAM_F_CROSS_DOMAIN",
+  "verdict": "PARTIALLY_VERIFIED_BASELINE",
+  "domains": {
+    "PCB_ECAD": {
+      "engine": "src/engine/pcb/PcbGeometryKernel.ts, PcbCanonicalModel.ts",
+      "canonicalRevisionBinding": "BOUND_VIA_MULTIDOMAIN",
+      "authorityMechanism": "CanonicalDomainBindingEngine.sealBinding using issueSealingCapability('MULTIDOMAIN_PCB_INTEGRATION', ['ELECTRICAL', 'MULTIDOMAIN_PCB'])",
+      "status": "IMPLEMENTED_AND_EXECUTED",
+      "notes": "Verified in MultidomainPcbIntegrationEngine.ts."
+    },
+    "ElectricalEngineering": {
+      "engine": "src/engine/engineeringCore/NodalCircuitSolver.ts",
+      "canonicalRevisionBinding": "BOUND_VIA_ELECTRICAL_TO_CORE_BINDING",
+      "authorityMechanism": "Requires sealed ElectricalToCoreBinding for detailed solve",
+      "status": "IMPLEMENTED_AND_EXECUTED",
+      "notes": "Fails closed if unsealed binding presented."
+    },
+    "WiringHarness": {
+      "engine": "src/engine/wiring-harness/WiringHarnessCanonicalModel.ts",
+      "canonicalRevisionBinding": "BOUND_VIA_HARNESS_INTERFACES",
+      "authorityMechanism": "MultidomainPcbIntegrationEngine.verifyEcadHarnessInterface",
+      "status": "IMPLEMENTED_AND_EXECUTED",
+      "notes": "Mating connector and ampacity validation."
+    },
+    "FEM_Structural": {
+      "engine": "src/engine/fem/solver/LinearStructuralSolver.ts, FEAAdapter.ts",
+      "canonicalRevisionBinding": "UNBOUND_DIRECT_SOLVER",
+      "authorityMechanism": "LinearStructuralSolver.solve takes StructuralModel directly without requiring CanonicalDomainBinding or sealBinding.",
+      "status": "PARTIALLY_IMPLEMENTED",
+      "notes": "Executes genuine stiffness matrix computation, but lacks enforced simulation authority seal boundary."
+    },
+    "CFD_Fluids": {
+      "engine": "src/engine/cfd3d/Fvm3DNavierStokesSolver.ts, CFDAdapter.ts",
+      "canonicalRevisionBinding": "SEAL_REQUIRED_BUT_CAD_PIPELINE_UNBOUND",
+      "authorityMechanism": "Fvm3DNavierStokesSolver.solve enforces executionAuthority.isAuthoritative check.",
+      "status": "PARTIALLY_IMPLEMENTED",
+      "defectFinding": "CFDCADPipeline.test.ts fails because DocumentEvaluator.deriveCFDModel creates unsealed mesh, causing Fvm3DNavierStokesSolver to reject the solve with SIMULATION_AUTHORITY_VIOLATION."
+    },
+    "Thermal": {
+      "engine": "src/engine/engineeringCore/SpatialThermalSolver.ts, ElectrothermalSolver.ts",
+      "canonicalRevisionBinding": "BOUND_VIA_SEALING_CAPABILITY",
+      "authorityMechanism": "ElectrothermalSolver.sealingCapability issues ['ELECTRICAL', 'THERMODYNAMICS']",
+      "status": "IMPLEMENTED_AND_EXECUTED",
+      "notes": "Picard iteration with energy conservation check <= 0.1%."
+    },
+    "Manufacturing_CAM": {
+      "engine": "src/engine/manufacturing/pma/HardAcceptanceGatePMA001.ts, CAMProvenanceEngine.ts",
+      "canonicalRevisionBinding": "METADATA_BOUND_WITH_TEMPLATE_GCODE",
+      "authorityMechanism": "CanonicalDerivedArtifactBinding verifies cadRevisionHash and canonicalGeometryHash",
+      "status": "PLACEHOLDER_OR_SIMULATED",
+      "notes": "Cryptographic binding to CAD revision is strictly verified, but the underlying toolpath G-code is a hardcoded template."
+    },
+    "Metrology": {
+      "engine": "src/engine/manufacturing/pma/PhysicalManufacturingEngine.ts",
+      "canonicalRevisionBinding": "HASH_COMPARISON_ONLY",
+      "authorityMechanism": "Checks expectedGeometryHash === actualGeometryHash and compares numeric tolerances",
+      "status": "PLACEHOLDER_OR_SIMULATED",
+      "notes": "Lacks direct B-Rep point cloud deviation calculation."
+    }
+  }
+}

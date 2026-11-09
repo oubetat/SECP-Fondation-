@@ -1,0 +1,50 @@
+{
+  "auditId": "SECP-CAD-TRUTH-FORENSIC-001",
+  "workstream": "WORKSTREAM_E_SIX_GATES",
+  "verdict": "PARTIALLY_VERIFIED_BASELINE",
+  "gates": {
+    "G1_TopologyLineage": {
+      "status": "PASS",
+      "verdict": "VERIFIED_IMPLEMENTATION",
+      "implementation": "src/engine/topology/TopologyLineageProofEngine.ts:1-987, src/engine/cad-kernel/topology/PersistentTopologyNaming.ts:1-415",
+      "evidence": "src/verification/p5/P5-001-CADAssemblyAssociativity.test.ts (5/5 PASS), PersistentTopology.test.ts (2/2 PASS)",
+      "findings": "Topology references survive real parameter mutations and regeneration via persistent naming tags (CapEnd) and semantic descriptors."
+    },
+    "G2_SimulationExecutionAuthority": {
+      "status": "FAIL",
+      "verdict": "CRITICAL_DEFECT_BLOCKING",
+      "implementation": "src/engine/simulation/SimulationExecutionRegistry.ts:1-248, SimulationEngine.ts:165-180, SimulationAuthorityInternal.ts:167-183",
+      "evidence": "src/engine/certification/truth/__tests__/HydraulicPumpTruthThread.test.ts (10/10 FAILED)",
+      "rootCause": "SimulationEngine.ts line 175 calls sealEnvelope(rawEnvelope) without passing a SealingCapability argument. validateCapability(undefined) throws SIMULATION_AUTHORITY_VIOLATION.",
+      "secondaryFinding": "SimulationResultManifestAdapter.ts lines 29-31 generate string interpolation placeholders ('HASH-STRESS-${maxStressMpa}') rather than cryptographic field tensor hashes."
+    },
+    "G3_CanonicalDerivedArtifactBinding": {
+      "status": "PASS",
+      "verdict": "VERIFIED_IMPLEMENTATION",
+      "implementation": "src/engine/topology/CanonicalDerivedArtifactBinding.ts:1-228",
+      "evidence": "src/engine/topology/__tests__/CanonicalDerivedArtifactBinding.test.ts (45/45 PASS), ProductionConsumerEnforcement.test.ts (2/2 PASS)",
+      "findings": "Enforces non-authoritative cryptographic SHA-256 binding of derived artifacts to exact cadRevisionHash and canonicalGeometryHash. Correctly detects tampering, revision mismatches, and stale evidence."
+    },
+    "G4_ManufacturingEvidence": {
+      "status": "PARTIAL",
+      "verdict": "PLACEHOLDER_OR_SIMULATED",
+      "implementation": "src/engine/manufacturing/pma/HardAcceptanceGatePMA001.ts:1-167, PhysicalManufacturingEngine.ts:1-88",
+      "evidence": "src/engine/manufacturing/pma/__tests__/PhysicalManufacturingAdversarial.test.ts (11/11 PASS with test anchor)",
+      "findings": "G-Code verification logic works, but DocumentEvaluator.deriveCAMModel generates hardcoded template G-code ('G00 Z5.0\\nG01 Z-1.0 F800'). Telemetry uses hardcoded secret 'secure-telemetry-secret'. Hardware root of trust is explicitly NOT_PROVISIONED."
+    },
+    "G5_MetrologyEvidence": {
+      "status": "PARTIAL",
+      "verdict": "PLACEHOLDER_OR_SIMULATED",
+      "implementation": "src/engine/manufacturing/pma/PhysicalManufacturingTypes.ts:MetrologyProof, PhysicalManufacturingEngine.ts:analyzeDeviation",
+      "evidence": "PhysicalManufacturingAdversarial.test.ts",
+      "findings": "Validates numerical tolerance dictionaries against thresholds. Lacks direct geometric comparison between measured CMM 3D point clouds/scan meshes and canonical B-Rep CAD geometry."
+    },
+    "G6_EngineeringTruthCertificate": {
+      "status": "PARTIAL",
+      "verdict": "IMPLEMENTED_BUT_BLOCKED_BY_G2",
+      "implementation": "src/engine/certification/truth/EngineeringTruthCertificateEngine.ts:1-161, EvidenceMerkleTree.ts:1-150",
+      "evidence": "src/engine/certification/truth/__tests__/IndependentAuditPackage.test.ts (10/10 PASS on pre-computed evidence)",
+      "findings": "The Merkle tree aggregation and cryptographic attestation engine operates correctly in isolation. However, end-to-end automated certification across the live Truth Thread is blocked by the G2 SimulationEngine crash in HydraulicPumpTruthThread.test.ts."
+    }
+  }
+}

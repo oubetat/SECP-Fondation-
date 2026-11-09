@@ -74,25 +74,25 @@ export class HardAcceptanceGate220 {
     // 2. TEST B — Component Insertion (Assembly Graph Linkages)
     // ==========================================
     const rawInstances: AssemblyComponent[] = [
-      { instanceId: 'inst-base', partId: 'part-base', name: 'Main Base Plate', placementTransform: { position: { x: 0, y: 0, z: 0 }, rotation: { x: 0, y: 0, z: 0 }, matrix: defaultMatrix }, worldTransform: { position: { x: 0, y: 0, z: 0 }, rotation: { x: 0, y: 0, z: 0 }, matrix: defaultMatrix }, suppressed: false, fixed: true, revision: 1 },
-      { instanceId: 'inst-housing', partId: 'part-housing', name: 'Housing Assembly', placementTransform: { position: { x: 0, y: 0, z: 50 }, rotation: { x: 0, y: 0, z: 0 }, matrix: defaultMatrix }, worldTransform: { position: { x: 0, y: 0, z: 50 }, rotation: { x: 0, y: 0, z: 0 }, matrix: defaultMatrix }, suppressed: false, fixed: false, revision: 1 },
-      { instanceId: 'inst-shaft', partId: 'part-shaft', name: 'Main Drive Shaft', placementTransform: { position: { x: 0, y: 0, z: 120 }, rotation: { x: 0, y: 0, z: 0 }, matrix: defaultMatrix }, worldTransform: { position: { x: 0, y: 0, z: 120 }, rotation: { x: 0, y: 0, z: 0 }, matrix: defaultMatrix }, suppressed: false, fixed: false, revision: 1 },
-      { instanceId: 'inst-bearing-a', partId: 'part-bearing-a', name: 'Main Bearing A', placementTransform: { position: { x: 0, y: 0, z: 80 }, rotation: { x: 0, y: 0, z: 0 }, matrix: defaultMatrix }, worldTransform: { position: { x: 0, y: 0, z: 80 }, rotation: { x: 0, y: 0, z: 0 }, matrix: defaultMatrix }, suppressed: false, fixed: false, revision: 1 },
-      { instanceId: 'inst-bearing-b', partId: 'part-bearing-b', name: 'Main Bearing B', placementTransform: { position: { x: 0, y: 0, z: 160 }, rotation: { x: 0, y: 0, z: 0 }, matrix: defaultMatrix }, worldTransform: { position: { x: 0, y: 0, z: 160 }, rotation: { x: 0, y: 0, z: 0 }, matrix: defaultMatrix }, suppressed: false, fixed: false, revision: 1 },
-      { instanceId: 'inst-gear', partId: 'part-gear', name: 'Spur Gear Z24', placementTransform: { position: { x: 0, y: 25, z: 120 }, rotation: { x: 0, y: 0, z: 0 }, matrix: defaultMatrix }, worldTransform: { position: { x: 0, y: 25, z: 120 }, rotation: { x: 0, y: 0, z: 0 }, matrix: defaultMatrix }, suppressed: false, fixed: false, revision: 1 },
-      { instanceId: 'inst-cover', partId: 'part-cover', name: 'Front Flange Cover', placementTransform: { position: { x: 0, y: 0, z: 200 }, rotation: { x: 0, y: 0, z: 0 }, matrix: defaultMatrix }, worldTransform: { position: { x: 0, y: 0, z: 200 }, rotation: { x: 0, y: 0, z: 0 }, matrix: defaultMatrix }, suppressed: false, fixed: false, revision: 1 },
+      { instanceId: 'inst-base', partId: 'part-base', name: 'Main Base Plate', placementTransform: { position: { x: 0, y: 0, z: 0 }, rotation: { x: 0, y: 0, z: 0 }, scale: { x: 1, y: 1, z: 1 }, matrix: defaultMatrix }, worldTransform: { position: { x: 0, y: 0, z: 0 }, rotation: { x: 0, y: 0, z: 0 }, scale: { x: 1, y: 1, z: 1 }, matrix: defaultMatrix }, suppressed: false, fixed: true, revision: 1 },
+      { instanceId: 'inst-housing', partId: 'part-housing', name: 'Housing Assembly', placementTransform: { position: { x: 0, y: 0, z: 50 }, rotation: { x: 0, y: 0, z: 0 }, scale: { x: 1, y: 1, z: 1 }, matrix: defaultMatrix }, worldTransform: { position: { x: 0, y: 0, z: 50 }, rotation: { x: 0, y: 0, z: 0 }, scale: { x: 1, y: 1, z: 1 }, matrix: defaultMatrix }, suppressed: false, fixed: false, revision: 1 },
+      { instanceId: 'inst-shaft', partId: 'part-shaft', name: 'Main Drive Shaft', placementTransform: { position: { x: 0, y: 0, z: 120 }, rotation: { x: 0, y: 0, z: 0 }, scale: { x: 1, y: 1, z: 1 }, matrix: defaultMatrix }, worldTransform: { position: { x: 0, y: 0, z: 120 }, rotation: { x: 0, y: 0, z: 0 }, scale: { x: 1, y: 1, z: 1 }, matrix: defaultMatrix }, suppressed: false, fixed: false, revision: 1 },
+      { instanceId: 'inst-bearing-a', partId: 'part-bearing-a', name: 'Main Bearing A', placementTransform: { position: { x: 0, y: 0, z: 80 }, rotation: { x: 0, y: 0, z: 0 }, scale: { x: 1, y: 1, z: 1 }, matrix: defaultMatrix }, worldTransform: { position: { x: 0, y: 0, z: 80 }, rotation: { x: 0, y: 0, z: 0 }, scale: { x: 1, y: 1, z: 1 }, matrix: defaultMatrix }, suppressed: false, fixed: false, revision: 1 },
+      { instanceId: 'inst-bearing-b', partId: 'part-bearing-b', name: 'Main Bearing B', placementTransform: { position: { x: 0, y: 0, z: 160 }, rotation: { x: 0, y: 0, z: 0 }, scale: { x: 1, y: 1, z: 1 }, matrix: defaultMatrix }, worldTransform: { position: { x: 0, y: 0, z: 160 }, rotation: { x: 0, y: 0, z: 0 }, scale: { x: 1, y: 1, z: 1 }, matrix: defaultMatrix }, suppressed: false, fixed: false, revision: 1 },
+      { instanceId: 'inst-gear', partId: 'part-gear', name: 'Spur Gear Z24', placementTransform: { position: { x: 0, y: 25, z: 120 }, rotation: { x: 0, y: 0, z: 0 }, scale: { x: 1, y: 1, z: 1 }, matrix: defaultMatrix }, worldTransform: { position: { x: 0, y: 25, z: 120 }, rotation: { x: 0, y: 0, z: 0 }, scale: { x: 1, y: 1, z: 1 }, matrix: defaultMatrix }, suppressed: false, fixed: false, revision: 1 },
+      { instanceId: 'inst-cover', partId: 'part-cover', name: 'Front Flange Cover', placementTransform: { position: { x: 0, y: 0, z: 200 }, rotation: { x: 0, y: 0, z: 0 }, scale: { x: 1, y: 1, z: 1 }, matrix: defaultMatrix }, worldTransform: { position: { x: 0, y: 0, z: 200 }, rotation: { x: 0, y: 0, z: 0 }, scale: { x: 1, y: 1, z: 1 }, matrix: defaultMatrix }, suppressed: false, fixed: false, revision: 1 },
       
       // Bolts
-      { instanceId: 'inst-bolt-1', partId: 'part-bolt', name: 'Hex Bolt 1', placementTransform: { position: { x: -30, y: -30, z: 200 }, rotation: { x: 0, y: 0, z: 0 }, matrix: defaultMatrix }, worldTransform: { position: { x: -30, y: -30, z: 200 }, rotation: { x: 0, y: 0, z: 0 }, matrix: defaultMatrix }, suppressed: false, fixed: false, revision: 1 },
-      { instanceId: 'inst-bolt-2', partId: 'part-bolt', name: 'Hex Bolt 2', placementTransform: { position: { x: 30, y: -30, z: 200 }, rotation: { x: 0, y: 0, z: 0 }, matrix: defaultMatrix }, worldTransform: { position: { x: 30, y: -30, z: 200 }, rotation: { x: 0, y: 0, z: 0 }, matrix: defaultMatrix }, suppressed: false, fixed: false, revision: 1 },
-      { instanceId: 'inst-bolt-3', partId: 'part-bolt', name: 'Hex Bolt 3', placementTransform: { position: { x: 30, y: 30, z: 200 }, rotation: { x: 0, y: 0, z: 0 }, matrix: defaultMatrix }, worldTransform: { position: { x: 30, y: 30, z: 200 }, rotation: { x: 0, y: 0, z: 0 }, matrix: defaultMatrix }, suppressed: false, fixed: false, revision: 1 },
-      { instanceId: 'inst-bolt-4', partId: 'part-bolt', name: 'Hex Bolt 4', placementTransform: { position: { x: -30, y: 30, z: 200 }, rotation: { x: 0, y: 0, z: 0 }, matrix: defaultMatrix }, worldTransform: { position: { x: -30, y: 30, z: 200 }, rotation: { x: 0, y: 0, z: 0 }, matrix: defaultMatrix }, suppressed: false, fixed: false, revision: 1 },
+      { instanceId: 'inst-bolt-1', partId: 'part-bolt', name: 'Hex Bolt 1', placementTransform: { position: { x: -30, y: -30, z: 200 }, rotation: { x: 0, y: 0, z: 0 }, scale: { x: 1, y: 1, z: 1 }, matrix: defaultMatrix }, worldTransform: { position: { x: -30, y: -30, z: 200 }, rotation: { x: 0, y: 0, z: 0 }, scale: { x: 1, y: 1, z: 1 }, matrix: defaultMatrix }, suppressed: false, fixed: false, revision: 1 },
+      { instanceId: 'inst-bolt-2', partId: 'part-bolt', name: 'Hex Bolt 2', placementTransform: { position: { x: 30, y: -30, z: 200 }, rotation: { x: 0, y: 0, z: 0 }, scale: { x: 1, y: 1, z: 1 }, matrix: defaultMatrix }, worldTransform: { position: { x: 30, y: -30, z: 200 }, rotation: { x: 0, y: 0, z: 0 }, scale: { x: 1, y: 1, z: 1 }, matrix: defaultMatrix }, suppressed: false, fixed: false, revision: 1 },
+      { instanceId: 'inst-bolt-3', partId: 'part-bolt', name: 'Hex Bolt 3', placementTransform: { position: { x: 30, y: 30, z: 200 }, rotation: { x: 0, y: 0, z: 0 }, scale: { x: 1, y: 1, z: 1 }, matrix: defaultMatrix }, worldTransform: { position: { x: 30, y: 30, z: 200 }, rotation: { x: 0, y: 0, z: 0 }, scale: { x: 1, y: 1, z: 1 }, matrix: defaultMatrix }, suppressed: false, fixed: false, revision: 1 },
+      { instanceId: 'inst-bolt-4', partId: 'part-bolt', name: 'Hex Bolt 4', placementTransform: { position: { x: -30, y: 30, z: 200 }, rotation: { x: 0, y: 0, z: 0 }, scale: { x: 1, y: 1, z: 1 }, matrix: defaultMatrix }, worldTransform: { position: { x: -30, y: 30, z: 200 }, rotation: { x: 0, y: 0, z: 0 }, scale: { x: 1, y: 1, z: 1 }, matrix: defaultMatrix }, suppressed: false, fixed: false, revision: 1 },
       
       // Washers
-      { instanceId: 'inst-washer-1', partId: 'part-washer', name: 'M8 Washer 1', placementTransform: { position: { x: -30, y: -30, z: 198 }, rotation: { x: 0, y: 0, z: 0 }, matrix: defaultMatrix }, worldTransform: { position: { x: -30, y: -30, z: 198 }, rotation: { x: 0, y: 0, z: 0 }, matrix: defaultMatrix }, suppressed: false, fixed: false, revision: 1 },
-      { instanceId: 'inst-washer-2', partId: 'part-washer', name: 'M8 Washer 2', placementTransform: { position: { x: 30, y: -30, z: 198 }, rotation: { x: 0, y: 0, z: 0 }, matrix: defaultMatrix }, worldTransform: { position: { x: 30, y: -30, z: 198 }, rotation: { x: 0, y: 0, z: 0 }, matrix: defaultMatrix }, suppressed: false, fixed: false, revision: 1 },
-      { instanceId: 'inst-washer-3', partId: 'part-washer', name: 'M8 Washer 3', placementTransform: { position: { x: 30, y: 30, z: 198 }, rotation: { x: 0, y: 0, z: 0 }, matrix: defaultMatrix }, worldTransform: { position: { x: 30, y: 30, z: 198 }, rotation: { x: 0, y: 0, z: 0 }, matrix: defaultMatrix }, suppressed: false, fixed: false, revision: 1 },
-      { instanceId: 'inst-washer-4', partId: 'part-washer', name: 'M8 Washer 4', placementTransform: { position: { x: -30, y: 30, z: 198 }, rotation: { x: 0, y: 0, z: 0 }, matrix: defaultMatrix }, worldTransform: { position: { x: -30, y: 30, z: 198 }, rotation: { x: 0, y: 0, z: 0 }, matrix: defaultMatrix }, suppressed: false, fixed: false, revision: 1 }
+      { instanceId: 'inst-washer-1', partId: 'part-washer', name: 'M8 Washer 1', placementTransform: { position: { x: -30, y: -30, z: 198 }, rotation: { x: 0, y: 0, z: 0 }, scale: { x: 1, y: 1, z: 1 }, matrix: defaultMatrix }, worldTransform: { position: { x: -30, y: -30, z: 198 }, rotation: { x: 0, y: 0, z: 0 }, scale: { x: 1, y: 1, z: 1 }, matrix: defaultMatrix }, suppressed: false, fixed: false, revision: 1 },
+      { instanceId: 'inst-washer-2', partId: 'part-washer', name: 'M8 Washer 2', placementTransform: { position: { x: 30, y: -30, z: 198 }, rotation: { x: 0, y: 0, z: 0 }, scale: { x: 1, y: 1, z: 1 }, matrix: defaultMatrix }, worldTransform: { position: { x: 30, y: -30, z: 198 }, rotation: { x: 0, y: 0, z: 0 }, scale: { x: 1, y: 1, z: 1 }, matrix: defaultMatrix }, suppressed: false, fixed: false, revision: 1 },
+      { instanceId: 'inst-washer-3', partId: 'part-washer', name: 'M8 Washer 3', placementTransform: { position: { x: 30, y: 30, z: 198 }, rotation: { x: 0, y: 0, z: 0 }, scale: { x: 1, y: 1, z: 1 }, matrix: defaultMatrix }, worldTransform: { position: { x: 30, y: 30, z: 198 }, rotation: { x: 0, y: 0, z: 0 }, scale: { x: 1, y: 1, z: 1 }, matrix: defaultMatrix }, suppressed: false, fixed: false, revision: 1 },
+      { instanceId: 'inst-washer-4', partId: 'part-washer', name: 'M8 Washer 4', placementTransform: { position: { x: -30, y: 30, z: 198 }, rotation: { x: 0, y: 0, z: 0 }, scale: { x: 1, y: 1, z: 1 }, matrix: defaultMatrix }, worldTransform: { position: { x: -30, y: 30, z: 198 }, rotation: { x: 0, y: 0, z: 0 }, scale: { x: 1, y: 1, z: 1 }, matrix: defaultMatrix }, suppressed: false, fixed: false, revision: 1 }
     ].map(item => new AssemblyComponent({
       ...item,
       id: item.instanceId,
@@ -119,6 +119,7 @@ export class HardAcceptanceGate220 {
           placementTransform: {
             position: newPos,
             rotation: { x: 0, y: 0, z: 0 },
+            scale: { x: 1, y: 1, z: 1 },
             matrix: [1, 0, 0, newPos.x, 0, 1, 0, newPos.y, 0, 0, 1, newPos.z, 0, 0, 0, 1]
           }
         });
@@ -236,10 +237,10 @@ export class HardAcceptanceGate220 {
     // Scenario 1: Gear placed intersecting Housing (Collision = true)
     const clashingComponents = manipulatedInstances.map(c => {
       if (c.instanceId === 'inst-gear') {
-        return {
+        return new AssemblyComponent({
           ...c,
-          worldTransform: { position: { x: 0, y: 5, z: 120 }, rotation: { x: 0, y: 0, z: 0 }, matrix: defaultMatrix }
-        };
+          worldTransform: { position: { x: 0, y: 5, z: 120 }, rotation: { x: 0, y: 0, z: 0 }, scale: { x: 1, y: 1, z: 1 }, matrix: defaultMatrix }
+        });
       }
       return c;
     });
@@ -271,10 +272,10 @@ export class HardAcceptanceGate220 {
     // Corrected layout (Interactive correction shift gear out of Housing)
     const clearedComponents = manipulatedInstances.map(c => {
       if (c.instanceId === 'inst-gear') {
-        return {
+        return new AssemblyComponent({
           ...c,
-          worldTransform: { position: { x: 0, y: 35, z: 120 }, rotation: { x: 0, y: 0, z: 0 }, matrix: defaultMatrix }
-        };
+          worldTransform: { position: { x: 0, y: 35, z: 120 }, rotation: { x: 0, y: 0, z: 0 }, scale: { x: 1, y: 1, z: 1 }, matrix: defaultMatrix }
+        });
       }
       return c;
     });

@@ -6,24 +6,36 @@ export interface AssertionResult309 {
   description: string;
   passed: boolean;
   message: string;
+  details?: string;
 }
 
 export interface HardAcceptanceGate309Report {
   gateId: string;
+  passed: boolean;
   totalAssertions: number;
   passedCount: number;
   failedCount: number;
   successRatePercent: number;
+  executionTimeMs: number;
   assertions: AssertionResult309[];
 }
 
 export class HardAcceptanceGate309 {
+  public runAcceptanceSuite(): HardAcceptanceGate309Report {
+    return HardAcceptanceGate309.runSuite();
+  }
+
   public static async runGate(): Promise<HardAcceptanceGate309Report> {
+    return HardAcceptanceGate309.runSuite();
+  }
+
+  public static runSuite(): HardAcceptanceGate309Report {
+    const startTime = Date.now();
     const assertions: AssertionResult309[] = [];
     let idCounter = 1;
 
     const addAssertion = (desc: string, passed: boolean, msg: string) => {
-      assertions.push({ id: idCounter++, description: desc, passed, message: msg });
+      assertions.push({ id: idCounter++, description: desc, passed, message: msg, details: msg });
     };
 
     const service = new AIOptimizationService();
@@ -57,10 +69,12 @@ export class HardAcceptanceGate309 {
     const passedCount = assertions.filter(a => a.passed).length;
     return {
       gateId: 'HAG-309',
+      passed: passedCount === assertions.length,
       totalAssertions: assertions.length,
       passedCount,
       failedCount: assertions.length - passedCount,
       successRatePercent: (passedCount / assertions.length) * 100,
+      executionTimeMs: Math.max(1, Date.now() - startTime),
       assertions
     };
   }

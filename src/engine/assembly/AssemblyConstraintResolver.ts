@@ -11,14 +11,13 @@ import { Tolerance } from '../geometry/GeometryTolerance';
 
 export class AssemblyConstraintResolver {
   private static readonly SUPPORTED_CONSTRAINTS: Set<AssemblyConstraintType> = new Set([
-    'MATE',
-    'ALIGN',
-    'CONCENTRIC',
-    'DISTANCE',
-    'ANGLE',
-    'PERPENDICULAR',
-    'PARALLEL',
-    'LOCK'
+    AssemblyConstraintType.MATE,
+    AssemblyConstraintType.ANGLE,
+    AssemblyConstraintType.DISTANCE,
+    AssemblyConstraintType.FLUSH,
+    AssemblyConstraintType.INSERT,
+    AssemblyConstraintType.SYMMETRIC,
+    AssemblyConstraintType.TANGENT
   ]);
 
   /**
@@ -44,8 +43,8 @@ export class AssemblyConstraintResolver {
     if (!this.SUPPORTED_CONSTRAINTS.has(constraint.type)) {
       return {
         constraintId: constraint.constraintId,
-        sourceComponentId: constraint.componentA,
-        targetComponentId: constraint.componentB,
+        sourceComponentId: constraint.componentA || '',
+        targetComponentId: constraint.componentB || '',
         type: constraint.type,
         geometricReferences: geoRefs,
         mathematicalRelation: `UNSUPPORTED_RELATION(${constraint.type})`,
@@ -62,8 +61,8 @@ export class AssemblyConstraintResolver {
       case 'MATE':
         return {
           constraintId: constraint.constraintId,
-          sourceComponentId: constraint.componentA,
-          targetComponentId: constraint.componentB,
+          sourceComponentId: constraint.componentA || '',
+          targetComponentId: constraint.componentB || '',
           type: constraint.type,
           geometricReferences: geoRefs,
           mathematicalRelation: 'dot(n_A, p_A - p_B) = 0 AND dot(n_A, n_B) = -1',
@@ -76,8 +75,8 @@ export class AssemblyConstraintResolver {
       case 'ALIGN':
         return {
           constraintId: constraint.constraintId,
-          sourceComponentId: constraint.componentA,
-          targetComponentId: constraint.componentB,
+          sourceComponentId: constraint.componentA || '',
+          targetComponentId: constraint.componentB || '',
           type: constraint.type,
           geometricReferences: geoRefs,
           mathematicalRelation: 'cross(axis_A, axis_B) = 0',
@@ -89,8 +88,8 @@ export class AssemblyConstraintResolver {
       case 'CONCENTRIC':
         return {
           constraintId: constraint.constraintId,
-          sourceComponentId: constraint.componentA,
-          targetComponentId: constraint.componentB,
+          sourceComponentId: constraint.componentA || '',
+          targetComponentId: constraint.componentB || '',
           type: constraint.type,
           geometricReferences: geoRefs,
           mathematicalRelation: 'cross(axis_A, axis_B) = 0 AND cross(axis_A, p_B - p_A) = 0',
@@ -102,8 +101,8 @@ export class AssemblyConstraintResolver {
       case 'DISTANCE':
         return {
           constraintId: constraint.constraintId,
-          sourceComponentId: constraint.componentA,
-          targetComponentId: constraint.componentB,
+          sourceComponentId: constraint.componentA || '',
+          targetComponentId: constraint.componentB || '',
           type: constraint.type,
           geometricReferences: geoRefs,
           mathematicalRelation: '||p_A - p_B|| - d = 0 OR dot(n_A, p_B - p_A) - d = 0',
@@ -116,8 +115,8 @@ export class AssemblyConstraintResolver {
       case 'ANGLE':
         return {
           constraintId: constraint.constraintId,
-          sourceComponentId: constraint.componentA,
-          targetComponentId: constraint.componentB,
+          sourceComponentId: constraint.componentA || '',
+          targetComponentId: constraint.componentB || '',
           type: constraint.type,
           geometricReferences: geoRefs,
           mathematicalRelation: 'acos(dot(n_A, n_B)) - theta = 0',
@@ -130,8 +129,8 @@ export class AssemblyConstraintResolver {
       case 'PARALLEL':
         return {
           constraintId: constraint.constraintId,
-          sourceComponentId: constraint.componentA,
-          targetComponentId: constraint.componentB,
+          sourceComponentId: constraint.componentA || '',
+          targetComponentId: constraint.componentB || '',
           type: constraint.type,
           geometricReferences: geoRefs,
           mathematicalRelation: 'cross(n_A, n_B) = 0',
@@ -143,8 +142,8 @@ export class AssemblyConstraintResolver {
       case 'PERPENDICULAR':
         return {
           constraintId: constraint.constraintId,
-          sourceComponentId: constraint.componentA,
-          targetComponentId: constraint.componentB,
+          sourceComponentId: constraint.componentA || '',
+          targetComponentId: constraint.componentB || '',
           type: constraint.type,
           geometricReferences: geoRefs,
           mathematicalRelation: 'dot(n_A, n_B) = 0',
@@ -156,8 +155,8 @@ export class AssemblyConstraintResolver {
       case 'LOCK':
         return {
           constraintId: constraint.constraintId,
-          sourceComponentId: constraint.componentA,
-          targetComponentId: constraint.componentB,
+          sourceComponentId: constraint.componentA || '',
+          targetComponentId: constraint.componentB || '',
           type: constraint.type,
           geometricReferences: geoRefs,
           mathematicalRelation: 'T_relative = constant (6 DOF locked)',
@@ -169,8 +168,8 @@ export class AssemblyConstraintResolver {
       default:
         return {
           constraintId: constraint.constraintId,
-          sourceComponentId: constraint.componentA,
-          targetComponentId: constraint.componentB,
+          sourceComponentId: constraint.componentA || '',
+          targetComponentId: constraint.componentB || '',
           type: constraint.type,
           geometricReferences: geoRefs,
           mathematicalRelation: 'GENERIC_CONSTRAINT',

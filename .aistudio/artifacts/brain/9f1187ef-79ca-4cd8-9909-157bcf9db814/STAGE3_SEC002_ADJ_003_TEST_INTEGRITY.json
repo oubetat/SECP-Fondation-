@@ -1,0 +1,57 @@
+{
+  "taskId": "SECP-STAGE3-SEC002-ADJ-003",
+  "auditTarget": "Test Integrity and Adversarial Security Suite Verification",
+  "timestamp": "2026-11-01T09:02:00Z",
+  "testSuite": {
+    "file": "src/engine/crossdomain/__tests__/AuthoritySealTrustBoundary.test.ts",
+    "totalTests": 8,
+    "passed": 8,
+    "failed": 0,
+    "skipped": 0,
+    "durationMs": 13
+  },
+  "assertionAudit": [
+    {
+      "testNumber": 1,
+      "name": "Normal untrusted caller calling sealBinding without key must THROW SIMULATION_AUTHORITY_VIOLATION",
+      "assertionStrength": "HIGH (Verifies throw on missing key)"
+    },
+    {
+      "testNumber": 2,
+      "name": "Caller with invalid/fake symbol calling sealBinding must THROW SIMULATION_AUTHORITY_VIOLATION",
+      "assertionStrength": "HIGH (Verifies throw on fake key)"
+    },
+    {
+      "testNumber": 3,
+      "name": "Caller-created unsealed CanonicalDomainBinding cannot authorize execution",
+      "assertionStrength": "HIGH (Verifies solver throw on unsealed binding)"
+    },
+    {
+      "testNumber": 4,
+      "name": "Manually forged executionSealToken on object without key is rejected by validateBinding",
+      "assertionStrength": "HIGH (Verifies rejection of forged tokens)"
+    },
+    {
+      "testNumber": 5,
+      "name": "Modified geometry hash after sealing invalidates HMAC seal token signature",
+      "assertionStrength": "HIGH (Verifies HMAC tamper detection on geometry)"
+    },
+    {
+      "testNumber": 6,
+      "name": "Binding from another revision is rejected if revisionId is modified",
+      "assertionStrength": "HIGH (Verifies HMAC tamper detection on revision)"
+    },
+    {
+      "testNumber": 7,
+      "name": "Stale or Invalid status binding is rejected",
+      "assertionStrength": "HIGH (Verifies rejection of STALE/INVALID status)"
+    },
+    {
+      "testNumber": 8,
+      "name": "Legitimate authority-issued binding with valid boot key permits execution",
+      "assertionStrength": "HIGH (Verifies valid execution path with boot key)"
+    }
+  ],
+  "weakeningOrSkippingDetected": false,
+  "auditVerdict": "TEST_BATTERY_STRONG_AND_PASSING"
+}

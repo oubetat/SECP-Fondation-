@@ -1,0 +1,197 @@
+{
+  "auditId": "SECP-CAD-TRUTH-FORENSIC-001",
+  "workstream": "WORKSTREAM_A_CAD_CORE",
+  "verdict": "PARTIALLY_VERIFIED_BASELINE",
+  "capabilities": {
+    "A1_GeometricKernel": {
+      "bRepDataModel": {
+        "status": "IMPLEMENTED_AND_EXECUTED",
+        "implementationPath": "src/engine/cad-kernel/brep/BRepKernel.ts:1-1430",
+        "executionPath": "CadGeometryKernel -> BRepKernel.getCanonical() -> createBox / createCylinder / createSphere / extrudeProfile",
+        "evidence": "src/engine/cad-kernel/brep/__tests__/BRepEulerOps.test.ts, src/engine/cad-kernel/__tests__/BRepValidator.test.ts (11 tests pass)",
+        "notes": "Produces topological BRepSolid with outerShell, orientedFaces, loops, orientedEdges, and vertices."
+      },
+      "topologicalEntities": {
+        "status": "IMPLEMENTED_AND_EXECUTED",
+        "implementationPath": "src/engine/cad-kernel/topology/BRepTopology.ts:1-395",
+        "executionPath": "BRepVertex, BRepEdge, BRepLoop, BRepFace, BRepShell, BRepSolid, BRepCompound conforming to TopologyContracts.ts",
+        "evidence": "Verified in Euler operator calculations V - E + F = 2",
+        "notes": "Full ISO/STEP topological hierarchy implemented."
+      },
+      "nurbsCurvesAndSurfaces": {
+        "status": "IMPLEMENTED_AND_EXECUTED",
+        "implementationPath": "src/engine/cad-kernel/nurbs/NurbsEvaluator.ts:1-310, NurbsBasis.ts, NurbsDerivatives.ts",
+        "executionPath": "NurbsEvaluator.evaluateSurface(surface, u, v) -> NurbsBasis.evaluateCoxDeBoor",
+        "evidence": "src/engine/cad-kernel/__tests__/Nurbs.test.ts, NurbsAdversarial.test.ts",
+        "notes": "Real Cox-de Boor mathematical evaluation, knot insertion, and surface derivatives up to 2nd order."
+      },
+      "geometricTolerances": {
+        "status": "IMPLEMENTED_AND_EXECUTED",
+        "implementationPath": "src/engine/cad-kernel/tolerance/ToleranceEngine.ts:1-240, GeometricTolerance.ts",
+        "executionPath": "ToleranceEngine.resolveTolerance(model, scale) -> GeometricTolerance.getScaleAwareLengthTolerance",
+        "evidence": "src/engine/cad-kernel/tolerance/__tests__/ToleranceModel.test.ts (12 tests pass)",
+        "notes": "Scale-aware tolerances conforming to IEEE-754 and CAD modeling domains."
+      },
+      "geometricValidityAndClosure": {
+        "status": "IMPLEMENTED_AND_EXECUTED",
+        "implementationPath": "src/engine/cad-kernel/brep/BRepValidator.ts:1-412",
+        "executionPath": "BRepValidator.validate(shape) -> checks manifoldness, orientation consistency, loop planarity, vertex coincidence",
+        "evidence": "src/engine/cad-kernel/__tests__/BRepValidator.test.ts (11 tests pass)",
+        "notes": "Fail-closed validation rejecting open, non-manifold, or degenerate shapes."
+      },
+      "booleanOperations": {
+        "status": "PARTIALLY_IMPLEMENTED",
+        "implementationPath": "src/engine/cad-kernel/boolean/BooleanEngine.ts:1-375, BooleanIntersector.ts:1-389",
+        "executionPath": "BooleanEngine.execute(op, solidA, solidB) -> BooleanIntersector.intersectSolids -> BooleanSplitter -> BooleanAssembler",
+        "evidence": "src/engine/cad-kernel/__tests__/BooleanEngine.test.ts (20 tests pass)",
+        "notes": "Genuinely executes Plane-Plane, Plane-Cylinder, and Plane-Sphere B-Rep Booleans. Returns UNSUPPORTED for Cylinder-Cylinder, Torus, Cone, or NURBS-NURBS pairs."
+      },
+      "filletAndChamfer": {
+        "status": "IMPLEMENTED_AND_EXECUTED",
+        "implementationPath": "src/engine/cad-kernel/modeling/FilletEngine.ts:1-463, ChamferEngine.ts:1-425",
+        "executionPath": "FeatureExecution -> FilletEngine.execute / ChamferEngine.execute -> rolling ball cylindrical face construction / planar bevel",
+        "evidence": "src/engine/cad-kernel/brep/__tests__/BRepEulerOps.test.ts (Euler characteristic verified)",
+        "notes": "Constructs real B-Rep blend faces and updates topology adjacencies."
+      },
+      "shellAndOffset": {
+        "status": "PARTIALLY_IMPLEMENTED",
+        "implementationPath": "src/engine/cad-kernel/evaluators/ShellEvaluator.ts:1-274",
+        "executionPath": "FeatureExecution -> ShellEvaluator.evaluate -> inward offset cavity creation",
+        "evidence": "src/engine/cad-kernel/history/__tests__/DraftShellRibThinCanonicalConvergence.test.ts (10 tests pass)",
+        "notes": "Implemented for prismatic and box solids; generalized complex NURBS surface offsetting is missing."
+      },
+      "directModeling": {
+        "status": "IMPLEMENTED_AND_EXECUTED",
+        "implementationPath": "src/engine/cad-kernel/modeling/DirectModelingEngine.ts:1-350, DirectModelingBRepMutationGate.ts",
+        "executionPath": "DirectModelingEngine.moveFace / offsetFace -> BRepMutationGate verification",
+        "evidence": "src/engine/cad-kernel/modeling/__tests__/DirectModelingEngine.test.ts (6 tests pass)",
+        "notes": "Face translations with adjacent face re-trimming and mutation tracking."
+      },
+      "transformations": {
+        "status": "IMPLEMENTED_AND_EXECUTED",
+        "implementationPath": "src/engine/cad-kernel/core/Matrix4.ts, Vector3.ts, BRepKernel.ts",
+        "executionPath": "Affine 4x4 matrix multiplication applied to vertices, face origins, and normal vectors",
+        "evidence": "Used across feature mirroring, patterning, and assembly mate transforms",
+        "notes": "Full SE(3) Euclidean rigid-body transformations."
+      },
+      "massPropertiesAndBoundingBoxes": {
+        "status": "IMPLEMENTED_AND_EXECUTED",
+        "implementationPath": "src/engine/cad-kernel/brep/BRepKernel.ts:computeVolume, computeBoundingBox, DocumentEvaluator.computeSolidBounds",
+        "executionPath": "Divergence theorem integration over B-Rep planar/curved faces for volume and AABB calculation",
+        "evidence": "src/engine/cad-kernel/document/__tests__/DocumentEvaluator.test.ts",
+        "notes": "Computes exact volume, bounding box (AABB), and centroid."
+      }
+    },
+    "A2_ParametricModeling": {
+      "sketchEngine": {
+        "status": "IMPLEMENTED_AND_EXECUTED",
+        "implementationPath": "src/engine/sketch034/SketchProfileExtractor.ts:1-380, CADDocument.ts:Sketch",
+        "executionPath": "DocumentEvaluator -> SketchProfileExtractor.extractClosedProfiles -> boundary cycle detection",
+        "evidence": "src/engine/cad-kernel/history/__tests__/RealExtrude.test.ts",
+        "notes": "Extracts 2D closed loops from line segments, arcs, and circles on planar coordinate systems."
+      },
+      "constraintSolver": {
+        "status": "IMPLEMENTED_AND_EXECUTED",
+        "implementationPath": "src/engine/cad-kernel/constraints/ConstraintPropagationEngine.ts:1-320",
+        "executionPath": "ConstraintPropagationEngine.solveConstraints -> iterative relaxation of geometric constraints",
+        "evidence": "src/engine/cad-kernel/constraints/__tests__/ConstraintPropagationEngine.test.ts",
+        "notes": "Solves distance, coincident, parallel, perpendicular, and horizontal/vertical constraints."
+      },
+      "degreesOfFreedom": {
+        "status": "IMPLEMENTED_AND_EXECUTED",
+        "implementationPath": "src/engine/cad-kernel/constraints/ConstraintPropagationEngine.ts:computeDOF",
+        "executionPath": "Tracks free vertices vs constrained degrees of freedom in 2D sketch space",
+        "evidence": "Tested in sketch constraint qualification batteries",
+        "notes": "Reports under-constrained, fully-constrained, and over-constrained states."
+      },
+      "featureTreeAndDAG": {
+        "status": "IMPLEMENTED_AND_EXECUTED",
+        "implementationPath": "src/engine/cad-kernel/history/FeatureHistory.ts:1-680",
+        "executionPath": "FeatureHistory.addFeature -> DependencyGraph.addNode -> getTopologicalOrder",
+        "evidence": "src/engine/cad-kernel/history/__tests__/FeatureHistory.test.ts (16 tests pass)",
+        "notes": "Maintains feature DAG, prevents cycles, and orders execution deterministically."
+      },
+      "featureRegeneration": {
+        "status": "IMPLEMENTED_AND_EXECUTED",
+        "implementationPath": "src/engine/cad-kernel/history/FeatureHistory.ts:regenerateAll",
+        "executionPath": "FeatureHistory.regenerateAll -> walks topological order -> dispatches FeatureExecutor.execute",
+        "evidence": "src/engine/cad-kernel/history/__tests__/FeatureHistoryAdversarial.test.ts",
+        "notes": "Evaluates features in dependency order, propagating intermediate B-Rep solids."
+      },
+      "recomputeOrderingAndFailurePropagation": {
+        "status": "IMPLEMENTED_AND_EXECUTED",
+        "implementationPath": "src/engine/cad-kernel/history/FeatureHistory.ts:markDirtyAndDownstream",
+        "executionPath": "Modifying upstream feature marks all downstream dependents DIRTY; aborts on invalid inputs with fail-closed diagnostics",
+        "evidence": "src/engine/cad-kernel/document/__tests__/DocumentEvaluator.test.ts",
+        "notes": "Failure propagation halts evaluation and returns diagnostic error codes."
+      },
+      "deterministicRegeneration": {
+        "status": "IMPLEMENTED_AND_EXECUTED",
+        "implementationPath": "src/engine/cad-kernel/history/FeatureHistoryEvidence.ts:computeHistoryHash",
+        "executionPath": "Computes SHA-256 over canonicalized feature definitions and topological execution sequence",
+        "evidence": "src/engine/cad-kernel/history/__tests__/FeatureHistoryCanonical.test.ts",
+        "notes": "Bit-exact identical hash outputs across repeated regenerations."
+      },
+      "parameterManagement": {
+        "status": "IMPLEMENTED_AND_EXECUTED",
+        "implementationPath": "src/engine/cad-kernel/document/DocumentEvaluator.ts:evaluateParameters (lines 429-482)",
+        "executionPath": "Iterative dependency expression resolver evaluating algebraic equations into numbers",
+        "evidence": "Tested in P5-001 parameter mutation (depth 25 -> 35)",
+        "notes": "Resolves parameter expressions and maps them to sketch dimensions and feature parameters."
+      }
+    },
+    "A3_CadDataIntegrity": {
+      "geometryHashing": {
+        "status": "IMPLEMENTED_AND_EXECUTED",
+        "implementationPath": "src/engine/cad-kernel/topology/BRepHasher.ts:1-210",
+        "executionPath": "BRepHasher.computeEvidence(solid) -> geometryHash, topologyHash",
+        "evidence": "src/engine/cad-kernel/document/__tests__/DocumentEvaluator.test.ts",
+        "notes": "Canonical SHA-256 hashing of vertex coordinates, edge curves, face surfaces, and bounding boxes."
+      },
+      "topologyIdentityAndPersistentNaming": {
+        "status": "IMPLEMENTED_AND_EXECUTED",
+        "implementationPath": "src/engine/cad-kernel/topology/PersistentTopologyNaming.ts:1-415, TopologyLineageProofEngine.ts:1-987",
+        "executionPath": "Generates persistent tags (e.g. F_EXT_01_CapEnd) and semantic descriptors (normal, centroid, adjacency)",
+        "evidence": "src/verification/p5/P5-001-CADAssemblyAssociativity.test.ts (5 tests pass)",
+        "notes": "Faces and edges rebind successfully across legitimate geometry modifications."
+      },
+      "shapeEquivalenceAndDeviation": {
+        "status": "IMPLEMENTED_AND_EXECUTED",
+        "implementationPath": "src/engine/cad-kernel/analysis/ShapeComparator.ts:1-180",
+        "executionPath": "Compares topological counts and calculates Hausdorff distance between mesh tessellations",
+        "evidence": "src/engine/cad-kernel/__tests__/WP08AnalysisQualification.test.ts",
+        "notes": "Verifies geometric equivalence within scale-aware tolerance."
+      },
+      "stepImportExport": {
+        "status": "IMPLEMENTED_AND_EXECUTED",
+        "implementationPath": "src/engine/interop/step-ap242/StepAp242Parser.ts, StepAp242Exporter.ts, StepAp242Pipeline.ts",
+        "executionPath": "StepAp242Pipeline.executeRoundTrip -> StepAp242Parser.parse -> StepAp242Mapper -> StepAp242Exporter.export",
+        "evidence": "src/engine/interop/step-ap242/__tests__/StepAp242Pipeline.test.ts, AP242Phase2RedTeam.test.ts (21 tests pass)",
+        "notes": "ISO 10303-21 / AP242 syntax parsing, header validation, entity cross-referencing, and round-trip verification."
+      }
+    },
+    "A4_DrawingAndEngineeringDefinition": {
+      "technicalDrawingsAndProjections": {
+        "status": "IMPLEMENTED_AND_EXECUTED",
+        "implementationPath": "src/engine/drawing/ProjectionEngine.ts:1-320, HiddenLineRemoval.ts",
+        "executionPath": "ProjectionEngine.projectSolid -> orthographic front/top/right and isometric projection with hidden line classification",
+        "evidence": "src/engine/drawing/DrawingProductionGate285.ts",
+        "notes": "Converts 3D B-Rep edges into 2D drawing projection lines (VISIBLE / HIDDEN)."
+      },
+      "dimensionsAndGdt": {
+        "status": "IMPLEMENTED_AND_EXECUTED",
+        "implementationPath": "src/engine/dimensioning/EngineeringDimensionSystem283.ts:1-340, src/engine/gdt/GDTSystem284.ts:1-360",
+        "executionPath": "EngineeringDimensionSystem283.createLinearDimension -> GDTSystem284.applyFeatureControlFrame",
+        "evidence": "HardAcceptanceGate283.ts, HardAcceptanceGate284.ts",
+        "notes": "ASME Y14.5 / ISO 1101 datum reference frames, position, flatness, perpendicularity, runout."
+      },
+      "billOfMaterials": {
+        "status": "IMPLEMENTED_AND_EXECUTED",
+        "implementationPath": "src/engine/assembly/graph/AssemblyBOMEngine.ts:1-250",
+        "executionPath": "AssemblyBOMEngine.generateBOM(assemblyGraph) -> itemizes components, quantities, occurrence paths, and mass",
+        "evidence": "Tested in assembly qualification test suites",
+        "notes": "Indented and flattened BOM generation bound to assembly graph occurrence identities."
+      }
+    }
+  }
+}

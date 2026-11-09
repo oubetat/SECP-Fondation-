@@ -18,7 +18,8 @@
  * 12. Full MultidomainPcbAssembly integration
  */
 
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, beforeAll } from 'vitest';
+import { initializeAuthorityHandshake } from '../../simulation/SimulationAuthorityInternal';
 import { CircuitModel, referenceCircuit } from '../ReferenceCircuitModel';
 import { NodalCircuitSolver } from '../NodalCircuitSolver';
 import {
@@ -39,6 +40,7 @@ import {
   MultidomainPcbIntegrationEngine,
   MultidomainPcbHardAcceptanceGate
 } from '../../crossdomain/MultidomainPcbIntegrationEngine';
+import { DomainBindingTestUtility } from '../../crossdomain/DomainBindingTestUtility';
 
 function createTestThermalBoard(power: number = 0.0): PcbThermalBoardConfig {
   return {
@@ -71,6 +73,9 @@ function createTestThermalBoard(power: number = 0.0): PcbThermalBoardConfig {
 }
 
 describe('SECP-ENGINE-STRENGTHENING-001C — Electrothermal Coupling Engine Battery', () => {
+  beforeAll(() => {
+    initializeAuthorityHandshake();
+  });
   // --------------------------------------------------------------------------
   // TEST 1: Zero Coupling Baseline (alpha = 0)
   // --------------------------------------------------------------------------
@@ -104,7 +109,8 @@ describe('SECP-ENGINE-STRENGTHENING-001C — Electrothermal Coupling Engine Batt
       }
     };
 
-    const result = ElectrothermalSolver.solve(circuit, board, contract);
+    const binding = DomainBindingTestUtility.createSealedElectricalBinding(circuit);
+    const result = ElectrothermalSolver.solve(binding, board, contract);
 
     expect(result.success).toBe(true);
     expect(result.status).toBe('CONVERGED');
@@ -155,7 +161,8 @@ describe('SECP-ENGINE-STRENGTHENING-001C — Electrothermal Coupling Engine Batt
       }
     };
 
-    const result = ElectrothermalSolver.solve(circuit, board, contract);
+    const binding = DomainBindingTestUtility.createSealedElectricalBinding(circuit);
+    const result = ElectrothermalSolver.solve(binding, board, contract);
 
     expect(result.success).toBe(true);
     expect(result.status).toBe('CONVERGED');
@@ -212,7 +219,8 @@ describe('SECP-ENGINE-STRENGTHENING-001C — Electrothermal Coupling Engine Batt
       }
     };
 
-    const result = ElectrothermalSolver.solve(circuit, board, contract);
+    const binding = DomainBindingTestUtility.createSealedElectricalBinding(circuit);
+    const result = ElectrothermalSolver.solve(binding, board, contract);
 
     expect(result.success).toBe(true);
     expect(result.iterationHistory.length).toBeGreaterThanOrEqual(3);
@@ -289,7 +297,8 @@ describe('SECP-ENGINE-STRENGTHENING-001C — Electrothermal Coupling Engine Batt
       options: DEFAULT_ELECTROTHERMAL_OPTIONS
     };
 
-    const result = ElectrothermalSolver.solve(circuit, board, contract);
+    const binding = DomainBindingTestUtility.createSealedElectricalBinding(circuit);
+    const result = ElectrothermalSolver.solve(binding, board, contract);
 
     expect(result.success).toBe(true);
     expect(result.energyConserved).toBe(true);
@@ -376,7 +385,8 @@ describe('SECP-ENGINE-STRENGTHENING-001C — Electrothermal Coupling Engine Batt
       options: DEFAULT_ELECTROTHERMAL_OPTIONS
     };
 
-    const result = ElectrothermalSolver.solve(circuit, board, contract);
+    const binding = DomainBindingTestUtility.createSealedElectricalBinding(circuit);
+    const result = ElectrothermalSolver.solve(binding, board, contract);
 
     expect(result.success).toBe(true);
     expect(result.status).toBe('CONVERGED');
@@ -473,7 +483,8 @@ describe('SECP-ENGINE-STRENGTHENING-001C — Electrothermal Coupling Engine Batt
       options: DEFAULT_ELECTROTHERMAL_OPTIONS
     };
 
-    const result = ElectrothermalSolver.solve(circuit, board, contract);
+    const binding = DomainBindingTestUtility.createSealedElectricalBinding(circuit);
+    const result = ElectrothermalSolver.solve(binding, board, contract);
 
     expect(result.success).toBe(true);
     expect(result.status).toBe('CONVERGED');
@@ -518,7 +529,8 @@ describe('SECP-ENGINE-STRENGTHENING-001C — Electrothermal Coupling Engine Batt
       }
     };
 
-    const result = ElectrothermalSolver.solve(circuit, board, contract);
+    const binding = DomainBindingTestUtility.createSealedElectricalBinding(circuit);
+    const result = ElectrothermalSolver.solve(binding, board, contract);
 
     expect(result.success).toBe(false);
     expect(result.status === 'THERMAL_RUNAWAY' || result.status === 'NON_CONVERGED').toBe(true);
@@ -555,7 +567,8 @@ describe('SECP-ENGINE-STRENGTHENING-001C — Electrothermal Coupling Engine Batt
       options: DEFAULT_ELECTROTHERMAL_OPTIONS
     };
 
-    const result = ElectrothermalSolver.solve(circuit, board, contract);
+    const binding = DomainBindingTestUtility.createSealedElectricalBinding(circuit);
+    const result = ElectrothermalSolver.solve(binding, board, contract);
 
     expect(result.success).toBe(false);
     expect(result.status === 'SINGULAR_MATRIX' || result.status === 'ELECTRICAL_DIVERGENCE').toBe(true);
@@ -591,7 +604,8 @@ describe('SECP-ENGINE-STRENGTHENING-001C — Electrothermal Coupling Engine Batt
       options: DEFAULT_ELECTROTHERMAL_OPTIONS
     };
 
-    const result = ElectrothermalSolver.solve(circuit, board, contract);
+    const binding = DomainBindingTestUtility.createSealedElectricalBinding(circuit);
+    const result = ElectrothermalSolver.solve(binding, board, contract);
 
     expect(result.success).toBe(false);
     expect(result.status).toBe('INVALID_INPUT');
@@ -632,8 +646,9 @@ describe('SECP-ENGINE-STRENGTHENING-001C — Electrothermal Coupling Engine Batt
     const circSnap = JSON.stringify(circuit);
     const boardSnap = JSON.stringify(board);
 
-    const run1 = ElectrothermalSolver.solve(circuit, board, contract);
-    const run2 = ElectrothermalSolver.solve(circuit, board, contract);
+    const binding = DomainBindingTestUtility.createSealedElectricalBinding(circuit);
+    const run1 = ElectrothermalSolver.solve(binding, board, contract);
+    const run2 = ElectrothermalSolver.solve(binding, board, contract);
 
     expect(run1.success).toBe(true);
     expect(run2.success).toBe(true);

@@ -39,20 +39,26 @@ export interface KinematicJoint {
   id: string;
   jointId?: string;
   name: string;
-  type: KinematicJointType;
+  type: KinematicJointType | string;
   parentComponentId: string;
   childComponentId: string;
   anchorReference?: GeometryReference;
   axis: Vector3D;
   origin: Vector3D;
   limits?: KinematicLimit;
-  currentPosition: number;        // Angle (deg) for revolute, translation (mm) for prismatic
-  currentVelocity: number;        // deg/s or mm/s
-  currentAcceleration: number;    // deg/s2 or mm/s2
-  enabled: boolean;
-  revisionNumber: number;
-  capabilityStatus: JointCapabilityStatus;
+  motionRange?: { min: number; max: number };
+  limitsEnabled?: boolean;
+  currentPosition?: number;        // Angle (deg) for revolute, translation (mm) for prismatic
+  currentVelocity?: number;        // deg/s or mm/s
+  velocity?: number;
+  currentAcceleration?: number;    // deg/s2 or mm/s2
+  enabled?: boolean;
+  revisionNumber?: number;
+  capabilityStatus?: JointCapabilityStatus;
   secondaryPosition?: number;     // e.g. Translation for Cylindrical, Pitch/Yaw for Universal/Spherical
+  dofRemaining?: number;
+  suppressionState?: string;
+  [key: string]: any;
 }
 
 export interface GearJoint {

@@ -1,0 +1,33 @@
+{
+  "taskId": "SECP-STAGE3-ADJ-004",
+  "auditTarget": "Authority Trust Boundary implementation in SimulationAuthorityInternal.ts and CanonicalDomainBindingEngine.ts",
+  "timestamp": "2026-11-01T09:35:00Z",
+  "findings": [
+    {
+      "id": "ADJ-BOUNDARY-001",
+      "title": "Module-Scoped Key Isolation Confirmed",
+      "severity": "LOW",
+      "location": "src/engine/simulation/SimulationAuthorityInternal.ts",
+      "evidence": "authoritySecretHMAC and activeKeyVersion are module-level variables with no exports. The getAuthorityBootKey() export has been removed.",
+      "disposition": "VERIFIED"
+    },
+    {
+      "id": "ADJ-BOUNDARY-002",
+      "title": "Seal Issuance Internalization",
+      "severity": "LOW",
+      "location": "src/engine/crossdomain/CanonicalDomainBindingEngine.ts",
+      "evidence": "sealBinding() no longer accepts an authority symbol key. It performs sealing via internal calls to computeHMACSealToken().",
+      "disposition": "VERIFIED"
+    },
+    {
+      "id": "ADJ-BOUNDARY-003",
+      "title": "Implicit Trust of Execution Context String",
+      "severity": "MEDIUM",
+      "location": "src/engine/crossdomain/CanonicalDomainBindingEngine.ts:129",
+      "evidence": "sealBinding accepts an optional executionContext string (default 'CORE_EXECUTION'). This string is incorporated into the HMAC but is not validated against a known policy or caller identity.",
+      "reproducibility": "Any module can call sealBinding(binding, 'ANY_CONTEXT') and receive a valid seal for that context.",
+      "disposition": "IDENTIFIED_RESIDUAL_RISK"
+    }
+  ],
+  "verdict": "VERIFIED_WITH_BOUNDED_RESIDUAL_RISKS"
+}

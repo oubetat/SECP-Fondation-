@@ -1,0 +1,200 @@
+{
+  "reviewId": "SECP-SECURITY-009-INDEPENDENT-REVIEW-FIXTURES",
+  "reviewTimestamp": "2026-11-02T08:23:30.000Z",
+  "verdict": "VERIFIED",
+  "fixturesSummary": {
+    "totalPhysicalFixtures": 15,
+    "directViolationsDetected": 5,
+    "failClosedUnresolvedOrSuspicious": 10,
+    "authenticatedPasses": 0,
+    "unclassifiedOutcomes": 0,
+    "falseNegativeRate": "0.0%"
+  },
+  "falseNegativeDerivation": {
+    "definition": "False Negative = An adversarial bypass fixture that achieves AUTHENTICATED status by the auditor without possessing legitimate authority.",
+    "formula": "FN / TotalAdversarialFixtures = 0 / 15 = 0.0%",
+    "groundTruthExpectation": "All 15 fixtures are designed to attempt unauthenticated, forged, replayed, mismatched, or obfuscated sealing operations. None may pass as AUTHENTICATED."
+  },
+  "matrix": [
+    {
+      "fixture": "01_direct_unauthenticated.ts",
+      "path": "src/engine/forensic/__fixtures__/SEC009/01_direct_unauthenticated.ts",
+      "executableCallPresent": true,
+      "sealCallsCount": 1,
+      "calleeExpression": "CanonicalDomainBindingEngine.sealBinding",
+      "argumentType": "NULL_OR_UNDEFINED",
+      "callStatus": "UNAUTHENTICATED_VIOLATION",
+      "moduleClassification": "AUTHORITY_PRODUCER",
+      "category": "DIRECT_VIOLATION",
+      "rationale": "Direct call to sealBinding passing null as capability."
+    },
+    {
+      "fixture": "02_aliased_import.ts",
+      "path": "src/engine/forensic/__fixtures__/SEC009/02_aliased_import.ts",
+      "executableCallPresent": true,
+      "sealCallsCount": 1,
+      "calleeExpression": "aliasSeal",
+      "argumentType": "NULL_OR_UNDEFINED",
+      "callStatus": "UNAUTHENTICATED_VIOLATION",
+      "moduleClassification": "AUTHORITY_PRODUCER",
+      "category": "DIRECT_VIOLATION",
+      "rationale": "Direct call via local variable function alias aliasSeal passing null as capability."
+    },
+    {
+      "fixture": "03_reexport_intermediate.ts",
+      "path": "src/engine/forensic/__fixtures__/SEC009/03_reexport_intermediate.ts",
+      "executableCallPresent": false,
+      "sealCallsCount": 0,
+      "calleeExpression": "NONE",
+      "argumentType": "NONE",
+      "callStatus": "NONE",
+      "moduleClassification": "SUSPICIOUS_UNKNOWN",
+      "category": "FAIL_CLOSED_SUSPICIOUS",
+      "rationale": "Re-exports CanonicalDomainBindingEngine without defining logic. Flagged fail-closed as SUSPICIOUS_UNKNOWN to prevent proxy leakage."
+    },
+    {
+      "fixture": "04_wrapper_function.ts",
+      "path": "src/engine/forensic/__fixtures__/SEC009/04_wrapper_function.ts",
+      "executableCallPresent": true,
+      "sealCallsCount": 1,
+      "calleeExpression": "CanonicalDomainBindingEngine.sealBinding",
+      "argumentType": "UNRESOLVED_EXPRESSION",
+      "callStatus": "UNRESOLVED_UNKNOWN",
+      "moduleClassification": "AUTHORITY_PRODUCER_WITH_UNRESOLVED_PATHS",
+      "category": "FAIL_CLOSED_UNRESOLVED",
+      "rationale": "Wrapper accepts unverified parameter uncheckedToken; capability provenance cannot be statically proven within module scope."
+    },
+    {
+      "fixture": "05_computed_property_access.ts",
+      "path": "src/engine/forensic/__fixtures__/SEC009/05_computed_property_access.ts",
+      "executableCallPresent": true,
+      "sealCallsCount": 1,
+      "calleeExpression": "(CanonicalDomainBindingEngine as any)[method]",
+      "argumentType": "UNRESOLVED_EXPRESSION",
+      "callStatus": "UNRESOLVED_UNKNOWN",
+      "moduleClassification": "AUTHORITY_PRODUCER_WITH_UNRESOLVED_PATHS",
+      "category": "FAIL_CLOSED_UNRESOLVED",
+      "rationale": "Dynamic bracket element access attempting to obscure sealBinding invocation."
+    },
+    {
+      "fixture": "06_dynamic_import.ts",
+      "path": "src/engine/forensic/__fixtures__/SEC009/06_dynamic_import.ts",
+      "executableCallPresent": true,
+      "sealCallsCount": 1,
+      "calleeExpression": "mod.CanonicalDomainBindingEngine.sealBinding",
+      "argumentType": "NULL_OR_UNDEFINED",
+      "callStatus": "UNAUTHENTICATED_VIOLATION",
+      "moduleClassification": "AUTHORITY_PRODUCER",
+      "category": "DIRECT_VIOLATION",
+      "rationale": "Dynamic asynchronous import() expression targeting authority module combined with null capability call."
+    },
+    {
+      "fixture": "07_forged_structural_capability.ts",
+      "path": "src/engine/forensic/__fixtures__/SEC009/07_forged_structural_capability.ts",
+      "executableCallPresent": true,
+      "sealCallsCount": 1,
+      "calleeExpression": "CanonicalDomainBindingEngine.sealBinding",
+      "argumentType": "UNRESOLVED_EXPRESSION",
+      "callStatus": "UNRESOLVED_UNKNOWN",
+      "moduleClassification": "AUTHORITY_PRODUCER_WITH_UNRESOLVED_PATHS",
+      "category": "FAIL_CLOSED_UNRESOLVED",
+      "rationale": "Locally scoped synthetic capability variable forged origin is unverified at top-level pass; fails closed to UNRESOLVED_UNKNOWN."
+    },
+    {
+      "fixture": "08_revoked_capability_replay.ts",
+      "path": "src/engine/forensic/__fixtures__/SEC009/08_revoked_capability_replay.ts",
+      "executableCallPresent": true,
+      "sealCallsCount": 1,
+      "calleeExpression": "CanonicalDomainBindingEngine.sealBinding",
+      "argumentType": "UNRESOLVED_EXPRESSION",
+      "callStatus": "UNRESOLVED_UNKNOWN",
+      "moduleClassification": "AUTHORITY_PRODUCER_WITH_UNRESOLVED_PATHS",
+      "category": "FAIL_CLOSED_UNRESOLVED",
+      "rationale": "Replays capability inside local function after revocation; fails closed to UNRESOLVED_UNKNOWN."
+    },
+    {
+      "fixture": "09_domain_mismatch.ts",
+      "path": "src/engine/forensic/__fixtures__/SEC009/09_domain_mismatch.ts",
+      "executableCallPresent": true,
+      "sealCallsCount": 1,
+      "calleeExpression": "CanonicalDomainBindingEngine.sealBinding",
+      "argumentType": "UNRESOLVED_EXPRESSION",
+      "callStatus": "UNRESOLVED_UNKNOWN",
+      "moduleClassification": "AUTHORITY_PRODUCER_WITH_UNRESOLVED_PATHS",
+      "category": "FAIL_CLOSED_UNRESOLVED",
+      "rationale": "Locally declared cfdOnlyCap passed to unverified binding; fails closed to UNRESOLVED_UNKNOWN."
+    },
+    {
+      "fixture": "10_comment_keyword_spoofing.ts",
+      "path": "src/engine/forensic/__fixtures__/SEC009/10_comment_keyword_spoofing.ts",
+      "executableCallPresent": true,
+      "sealCallsCount": 1,
+      "calleeExpression": "CanonicalDomainBindingEngine.sealBinding",
+      "argumentType": "NULL_OR_UNDEFINED",
+      "callStatus": "UNAUTHENTICATED_VIOLATION",
+      "moduleClassification": "AUTHORITY_PRODUCER",
+      "category": "DIRECT_VIOLATION",
+      "rationale": "Comment mentions SealingCapability keywords to spoof regex, but AST analyzes actual code and catches null capability."
+    },
+    {
+      "fixture": "11_test_utility_wildcard.ts",
+      "path": "src/engine/forensic/__fixtures__/SEC009/11_test_utility_wildcard.ts",
+      "executableCallPresent": true,
+      "sealCallsCount": 1,
+      "calleeExpression": "CanonicalDomainBindingEngine.sealBinding",
+      "argumentType": "UNRESOLVED_EXPRESSION",
+      "callStatus": "UNRESOLVED_UNKNOWN",
+      "moduleClassification": "AUTHORITY_PRODUCER_WITH_UNRESOLVED_PATHS",
+      "category": "FAIL_CLOSED_UNRESOLVED",
+      "rationale": "Locally declared wildcard capability inside function body; fails closed to UNRESOLVED_UNKNOWN."
+    },
+    {
+      "fixture": "13_unknown_indirect_call.ts",
+      "path": "src/engine/forensic/__fixtures__/SEC009/13_unknown_indirect_call.ts",
+      "executableCallPresent": true,
+      "sealCallsCount": 1,
+      "calleeExpression": "Reflect.get",
+      "argumentType": "UNRESOLVED_EXPRESSION",
+      "callStatus": "UNRESOLVED_UNKNOWN",
+      "moduleClassification": "AUTHORITY_PRODUCER_WITH_UNRESOLVED_PATHS",
+      "category": "FAIL_CLOSED_UNRESOLVED",
+      "rationale": "Reflection invocation via Reflect.get(CanonicalDomainBindingEngine, 'sealBinding'); fails closed."
+    },
+    {
+      "fixture": "14_mutation_removed_capability_check.ts",
+      "path": "src/engine/forensic/__fixtures__/SEC009/14_mutation_removed_capability_check.ts",
+      "executableCallPresent": true,
+      "sealCallsCount": 1,
+      "calleeExpression": "CanonicalDomainBindingEngine.sealBinding",
+      "argumentType": "UNRESOLVED_EXPRESSION",
+      "callStatus": "UNRESOLVED_UNKNOWN",
+      "moduleClassification": "AUTHORITY_PRODUCER_WITH_UNRESOLVED_PATHS",
+      "category": "FAIL_CLOSED_UNRESOLVED",
+      "rationale": "Active caller passing undefined variable unvalidatedCap; fails closed to UNRESOLVED_UNKNOWN."
+    },
+    {
+      "fixture": "15_mutation_removed_domain_check.ts",
+      "path": "src/engine/forensic/__fixtures__/SEC009/15_mutation_removed_domain_check.ts",
+      "executableCallPresent": true,
+      "sealCallsCount": 1,
+      "calleeExpression": "CanonicalDomainBindingEngine.sealBinding",
+      "argumentType": "UNRESOLVED_EXPRESSION",
+      "callStatus": "UNRESOLVED_UNKNOWN",
+      "moduleClassification": "AUTHORITY_PRODUCER_WITH_UNRESOLVED_PATHS",
+      "category": "FAIL_CLOSED_UNRESOLVED",
+      "rationale": "Active caller passing empty domain capability; fails closed to UNRESOLVED_UNKNOWN."
+    },
+    {
+      "fixture": "adv12_out_of_engine.ts",
+      "path": "src/verification/__fixtures__/adv12_out_of_engine.ts",
+      "executableCallPresent": true,
+      "sealCallsCount": 1,
+      "calleeExpression": "CanonicalDomainBindingEngine.sealBinding",
+      "argumentType": "NULL_OR_UNDEFINED",
+      "callStatus": "UNAUTHENTICATED_VIOLATION",
+      "moduleClassification": "AUTHORITY_PRODUCER",
+      "category": "DIRECT_VIOLATION",
+      "rationale": "External module outside src/engine invoking sealBinding with null capability."
+    }
+  ]
+}

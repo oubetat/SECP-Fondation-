@@ -756,7 +756,13 @@ export class Patch034QualificationBattery {
       physicsResult: physRes,
       toleranceStackUpMm: 0.025,
       maxAllowedToleranceMm: 0.050,
-      evidenceRecordsCount: 4
+      evidenceRecordsCount: 4,
+      assignedMaterial: {
+        name: 'Aluminum 6061-T6',
+        densityGcm3: 2.7,
+        yieldStrengthMPa: 276,
+        isValid: true
+      }
     });
 
     testCases.push({

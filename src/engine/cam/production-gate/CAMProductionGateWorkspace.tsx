@@ -747,15 +747,15 @@ M30
                     <select
                       value={selectedDialect}
                       onChange={e => {
-                        setSelectedDialect(e.target.value as CNCControllerDialect);
+                        setSelectedDialect(e.target.value as ControllerDialect);
                         setTimeout(runLiveWorkflow, 50);
                       }}
                       className="w-full bg-slate-900 border border-slate-700 text-slate-200 rounded px-2 py-1 font-mono text-[11px]"
                     >
-                      <option value={CNCControllerDialect.FANUC_31I}>Fanuc 31i (G43.4 TCPC)</option>
-                      <option value={CNCControllerDialect.SIEMENS_840D}>Siemens 840D (TRAORI)</option>
-                      <option value={CNCControllerDialect.HEIDENHAIN_TNC640}>Heidenhain TNC 640 (M128)</option>
-                      <option value={CNCControllerDialect.HAAS_NGC}>Haas NGC (G234 TCPC)</option>
+                      <option value="FANUC_31I">Fanuc 31i (G43.4 TCPC)</option>
+                      <option value="SIEMENS_840D">Siemens 840D (TRAORI)</option>
+                      <option value="HEIDENHAIN_TNC640">Heidenhain TNC 640 (M128)</option>
+                      <option value="HAAS_NGC">Haas NGC (G234 TCPC)</option>
                     </select>
                   </div>
                   <div>
@@ -763,15 +763,15 @@ M30
                     <select
                       value={selectedKinematics}
                       onChange={e => {
-                        setSelectedKinematics(e.target.value as KinematicConfiguration);
+                        setSelectedKinematics(e.target.value as MachineKinematicType);
                         setTimeout(runLiveWorkflow, 50);
                       }}
                       className="w-full bg-slate-900 border border-slate-700 text-slate-200 rounded px-2 py-1 font-mono text-[11px]"
                     >
-                      <option value={KinematicConfiguration.TABLE_TABLE}>5-Axis Table-Table (Trunnion A/C)</option>
-                      <option value={KinematicConfiguration.HEAD_TABLE}>5-Axis Head-Table (Swivel B / Table C)</option>
-                      <option value={KinematicConfiguration.HEAD_HEAD}>5-Axis Head-Head (Gantry A/B)</option>
-                      <option value={KinematicConfiguration.THREE_AXIS}>3-Axis Linear VMC (XYZ)</option>
+                      <option value="5-AXIS-TABLE-TABLE">5-Axis Table-Table (Trunnion A/C)</option>
+                      <option value="5-AXIS-HEAD-TABLE">5-Axis Head-Table (Swivel B / Table C)</option>
+                      <option value="5-AXIS-HEAD-HEAD">5-Axis Head-Head (Gantry A/B)</option>
+                      <option value="3-AXIS-MILL">3-Axis Linear VMC (XYZ)</option>
                     </select>
                   </div>
                 </div>

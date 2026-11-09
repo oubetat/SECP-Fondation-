@@ -1,0 +1,22 @@
+{
+  "eventTypes": [
+    "OBJECT_CREATED",
+    "OBJECT_UPDATED",
+    "OBJECT_REVISED",
+    "OBJECT_DELETED",
+    "OBJECT_ARCHIVED",
+    "STATE_CHANGED",
+    "DEPENDENCY_CREATED",
+    "DEPENDENCY_CHANGED",
+    "DEPENDENCY_REMOVED",
+    "SIMULATION_STARTED",
+    "SIMULATION_COMPLETED",
+    "SOLVER_STARTED",
+    "SOLVER_COMPLETED"
+  ],
+  "schema": "1.0",
+  "actorModel": "Typed (USER, SYSTEM, ENGINE, etc.)",
+  "sourceModel": "Hierarchical (Service/Component/Version)",
+  "integrity": "SHA-256 Payload Hashing + Sequence Numbering",
+  "verdict": "PROVEN"
+}

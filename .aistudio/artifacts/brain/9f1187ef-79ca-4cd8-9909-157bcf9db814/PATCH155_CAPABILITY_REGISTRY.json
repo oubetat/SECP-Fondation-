@@ -1,0 +1,191 @@
+[
+  {
+    "id": "capability:cad.brep.boolean",
+    "name": "B-Rep Boolean Kernel",
+    "version": "1.2.0",
+    "domain": "cad",
+    "description": "Solid Modeling Boolean Operations",
+    "status": "PROVEN",
+    "executionMode": "LOCAL",
+    "providerIds": [
+      "cad-local-engine"
+    ],
+    "requiredCapabilities": [],
+    "supportedObjectTypes": [
+      "GEOMETRY",
+      "BREP"
+    ],
+    "requiredPolicies": [],
+    "evidenceIds": [
+      "EVID-CAD-01"
+    ],
+    "enabled": true,
+    "deterministic": true,
+    "reproducible": true,
+    "metadata": {
+      "isCoreGeometry": true
+    }
+  },
+  {
+    "id": "capability:cad.spoofed.proven",
+    "name": "Spoofed Proven CAD",
+    "version": "1.0.0",
+    "domain": "cad",
+    "description": "Fraudulent Proven Claims",
+    "status": "PROVEN",
+    "executionMode": "LOCAL",
+    "providerIds": [
+      "cad-local-engine-spoofed"
+    ],
+    "requiredCapabilities": [],
+    "supportedObjectTypes": [
+      "GEOMETRY"
+    ],
+    "requiredPolicies": [],
+    "evidenceIds": [],
+    "enabled": true,
+    "deterministic": true,
+    "reproducible": true,
+    "metadata": {}
+  },
+  {
+    "id": "capability:compute.spoofed.gpu",
+    "name": "GPU simulation fallback",
+    "version": "1.0.0",
+    "domain": "compute",
+    "description": "WebGPU spoofing",
+    "status": "PROVEN",
+    "executionMode": "GPU",
+    "providerIds": [
+      "cpu-fallback-provider"
+    ],
+    "requiredCapabilities": [],
+    "supportedObjectTypes": [
+      "GEOMETRY"
+    ],
+    "requiredPolicies": [],
+    "evidenceIds": [
+      "EVID-SPOOFED-GPU"
+    ],
+    "enabled": true,
+    "deterministic": true,
+    "reproducible": true,
+    "metadata": {}
+  },
+  {
+    "id": "capability:physics.solve.spoofed.evidence",
+    "name": "Solver with non-existent evidence",
+    "version": "1.0.0",
+    "domain": "physics",
+    "description": "Solver",
+    "status": "PROVEN",
+    "executionMode": "LOCAL",
+    "providerIds": [
+      "spoofed-ev-provider"
+    ],
+    "requiredCapabilities": [],
+    "supportedObjectTypes": [
+      "GEOMETRY"
+    ],
+    "requiredPolicies": [],
+    "evidenceIds": [
+      "NON-EXISTENT-EVID-ID"
+    ],
+    "enabled": true,
+    "deterministic": true,
+    "reproducible": true,
+    "metadata": {}
+  },
+  {
+    "id": "capability:circular.alpha",
+    "name": "Alpha",
+    "version": "1.0.0",
+    "domain": "test",
+    "description": "Alpha",
+    "status": "UNPROVEN",
+    "executionMode": "LOCAL",
+    "providerIds": [],
+    "requiredCapabilities": [
+      "capability:circular.beta"
+    ],
+    "supportedObjectTypes": [],
+    "requiredPolicies": [],
+    "evidenceIds": [],
+    "enabled": true,
+    "deterministic": true,
+    "reproducible": true,
+    "metadata": {}
+  },
+  {
+    "id": "capability:physics.unsupported.solver",
+    "name": "Unsupported Solver",
+    "version": "1.0.0",
+    "domain": "physics",
+    "description": "No provider exists for this",
+    "status": "PROVEN",
+    "executionMode": "LOCAL",
+    "providerIds": [
+      "non-existent-prov-id"
+    ],
+    "requiredCapabilities": [],
+    "supportedObjectTypes": [
+      "GEOMETRY"
+    ],
+    "requiredPolicies": [],
+    "evidenceIds": [
+      "EVID-1"
+    ],
+    "enabled": true,
+    "deterministic": true,
+    "reproducible": true,
+    "metadata": {}
+  },
+  {
+    "id": "capability:cad.tampered.evidence",
+    "name": "Tampered CAD Solver",
+    "version": "1.0.0",
+    "domain": "cad",
+    "description": "Tampered",
+    "status": "PROVEN",
+    "executionMode": "LOCAL",
+    "providerIds": [
+      "tampered-ev-provider"
+    ],
+    "requiredCapabilities": [],
+    "supportedObjectTypes": [
+      "GEOMETRY"
+    ],
+    "requiredPolicies": [],
+    "evidenceIds": [
+      "EVID-TAMPERED-01"
+    ],
+    "enabled": true,
+    "deterministic": true,
+    "reproducible": true,
+    "metadata": {}
+  },
+  {
+    "id": "capability:compute.hpc.remote",
+    "name": "HPC Remote Solver",
+    "version": "1.0.0",
+    "domain": "compute",
+    "description": "Remote Compute Grid",
+    "status": "PROVEN",
+    "executionMode": "REMOTE",
+    "providerIds": [
+      "remote-grid-node"
+    ],
+    "requiredCapabilities": [],
+    "supportedObjectTypes": [
+      "GEOMETRY"
+    ],
+    "requiredPolicies": [],
+    "evidenceIds": [
+      "EVID-HPC-01"
+    ],
+    "enabled": true,
+    "deterministic": true,
+    "reproducible": true,
+    "metadata": {}
+  }
+]

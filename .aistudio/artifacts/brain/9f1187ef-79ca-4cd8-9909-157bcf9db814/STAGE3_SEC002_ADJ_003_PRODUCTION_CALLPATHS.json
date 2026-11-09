@@ -1,0 +1,49 @@
+{
+  "taskId": "SECP-STAGE3-SEC002-ADJ-003",
+  "auditTarget": "Production Execution Call Paths Across Six Domains",
+  "timestamp": "2026-11-01T09:02:00Z",
+  "domains": {
+    "PCB": {
+      "verifierFile": "src/engine/pcb/PcbVerificationService.ts",
+      "validationCheck": "CanonicalDomainBindingEngine.validateBinding(binding)",
+      "failClosedBehavior": "Throws SIMULATION_AUTHORITY_VIOLATION if invalid or unsealed",
+      "sealingCallSite": "MultidomainPcbIntegrationEngine.ts"
+    },
+    "ELECTRICAL": {
+      "verifierFile": "src/engine/engineeringCore/NodalCircuitSolver.ts",
+      "validationCheck": "CanonicalDomainBindingEngine.validateBinding(binding)",
+      "failClosedBehavior": "Throws SIMULATION_AUTHORITY_VIOLATION if invalid or unsealed",
+      "sealingCallSite": "ElectrothermalSolver.ts / MultidomainPcbIntegrationEngine.ts"
+    },
+    "HARNESS": {
+      "verifierFile": "src/engine/wiring-harness/WiringHarnessElectricalVerifier.ts",
+      "validationCheck": "CanonicalDomainBindingEngine.validateBinding(binding)",
+      "failClosedBehavior": "Throws SIMULATION_AUTHORITY_VIOLATION if invalid or unsealed",
+      "sealingCallSite": "MultidomainPcbIntegrationEngine.ts"
+    },
+    "MULTIDOMAIN": {
+      "verifierFile": "src/engine/crossdomain/MultidomainPcbIntegrationEngine.ts",
+      "validationCheck": "CanonicalDomainBindingEngine.validateBinding(binding)",
+      "failClosedBehavior": "Rejects integration pipeline if invalid or unsealed",
+      "sealingCallSite": "MultidomainPcbIntegrationEngine.ts via getAuthorityBootKey()"
+    },
+    "FEM": {
+      "verifierFile": "src/engine/fem/core/FEMCore.ts",
+      "validationCheck": "CanonicalDomainBindingEngine.validateBinding(binding)",
+      "failClosedBehavior": "Throws SIMULATION_AUTHORITY_VIOLATION if invalid or unsealed",
+      "sealingCallSite": "MultidomainPcbIntegrationEngine.ts / ElectrothermalSolver.ts"
+    },
+    "CFD": {
+      "verifierFile": "src/engine/cfd3d/Fvm3DNavierStokesSolver.ts",
+      "validationCheck": "CanonicalDomainBindingEngine.validateBinding(binding)",
+      "failClosedBehavior": "Throws SIMULATION_AUTHORITY_VIOLATION if invalid or unsealed",
+      "sealingCallSite": "MultidomainPcbIntegrationEngine.ts / ElectrothermalSolver.ts"
+    }
+  },
+  "bypassScan": {
+    "literalStringSeals": 0,
+    "unauthenticatedSealFactories": 0,
+    "mockAuthorityInProduction": 0,
+    "auditVerdict": "FAIL_CLOSED_ENFORCED_ALL_DOMAINS"
+  }
+}

@@ -181,7 +181,7 @@ export class CanonicalKinematicsPipeline {
         translationalDOF: isGrounded ? 0 : 3,
         rotationalDOF: isGrounded ? 0 : 3,
         remainingDOF: isGrounded ? 0 : 6,
-        status: 'SOLVED'
+        status: 'VALID'
       };
     });
 
@@ -234,7 +234,7 @@ export class CanonicalKinematicsPipeline {
           limitViolated = true;
           hasLimitViolation = true;
           joint.state = 'LIMIT_REACHED';
-          joint.limitStatus = joint.currentPosition < joint.primaryLimit.minimum ? 'MIN_LIMIT_EXCEEDED' : 'MAX_LIMIT_EXCEEDED';
+          joint.limitStatus = 'HARD_LIMIT_BLOCKED';
         }
       }
 
@@ -262,7 +262,7 @@ export class CanonicalKinematicsPipeline {
 
     let collisionOccurred = false;
     if (checkCollisions) {
-      const clearanceRec = DynamicClearanceEngine.evaluateDynamicClearance(components, 0, 0);
+      const clearanceRec = DynamicClearanceEngine.evaluateDynamicClearance(components);
       collisionOccurred = clearanceRec.collisionDetected;
     }
 
@@ -331,7 +331,7 @@ export class CanonicalKinematicsPipeline {
     const evidenceHash = CanonicalKinematicsVerifier.computeKinematicEvidenceHash(evidencePayload);
 
     const solution: KinematicSolution = {
-      assemblyRevision: document.revision,
+      assemblyRevision: typeof document.revision === 'number' ? document.revision : (parseInt(String(document.revision), 10) || 0),
       jointStates,
       componentTransforms,
       mobilityReport,
@@ -340,7 +340,7 @@ export class CanonicalKinematicsPipeline {
       maxResidual: solveResult.maxResidual,
       loopClosureErrors,
       collisionOccurred,
-      solutionRevision: (typeof document.revision === 'number' ? document.revision + 1 : 1),
+      solutionRevision: (typeof document.revision === 'number' ? document.revision + 1 : (parseInt(String(document.revision), 10) || 0) + 1),
       evidenceHash
     };
 
@@ -368,7 +368,7 @@ export class CanonicalKinematicsPipeline {
     // Step 10: Frontend Projection Construction
     const frontendProjection = {
       documentId: updatedDoc.documentId,
-      revision: updatedDoc.revision,
+      revision: typeof updatedDoc.revision === 'number' ? updatedDoc.revision : (parseInt(String(updatedDoc.revision), 10) || 0),
       occurrences: components.map(c => ({
         instanceId: c.componentId,
         position: { ...c.worldOrigin },

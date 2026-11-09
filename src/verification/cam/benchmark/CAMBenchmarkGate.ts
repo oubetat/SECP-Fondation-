@@ -3,7 +3,7 @@ import { generateDeterministicHash } from '../../../lib/hash';
 
 export class CAMBenchmarkGate {
   public static async evaluateGate179(caseResults: CAMBenchmarkCaseResult[]): Promise<CAMBenchmarkGateResult> {
-    const criteriaResults = [];
+    const criteriaResults: any[] = [];
     let score = 0;
     let passedCriteria = 0;
     

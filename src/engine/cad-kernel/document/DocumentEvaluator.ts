@@ -57,6 +57,7 @@ export interface DocumentEvaluationOptions {
   skipPLMProjection?: boolean;
   tolerancePolicy?: string;
   context?: DocumentEvaluationContext;
+  documentResolver?: IDocumentResolver;
 }
 
 export interface DocumentEvaluationResult {
@@ -72,6 +73,7 @@ export interface DocumentEvaluationResult {
     bRepHash?: string;
     mesh?: any;
   };
+  metrics?: Record<string, any>;
   diagnostics: string[];
   evaluationTimeMs: number;
   error?: string;

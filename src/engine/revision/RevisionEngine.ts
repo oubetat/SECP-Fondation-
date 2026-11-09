@@ -53,7 +53,7 @@ export class RevisionEngine {
 
   // --- Core API ---
 
-  public createRevision(revision: Revision): Revision {
+  public createRevision(revision: Omit<Revision, 'contentHash' | 'dependencyHash' | 'revisionHash'> & Partial<Pick<Revision, 'contentHash' | 'dependencyHash' | 'revisionHash'>>): Revision {
     if (this.revisions.has(revision.revisionId)) {
       throw new Error(`REVISION_COLLISION: ${revision.revisionId} already exists in database.`);
     }
@@ -86,11 +86,12 @@ export class RevisionEngine {
     }
 
     // Generate cryptographic hash stamps
-    revision.contentHash = RevisionCanonicalizer.computeContentHash(revision.content);
-    revision.dependencyHash = RevisionCanonicalizer.computeDependencyHash(revision.dependencies);
-    revision.revisionHash = RevisionCanonicalizer.computeRevisionHash(revision);
+    const fullRevision = revision as Revision;
+    fullRevision.contentHash = RevisionCanonicalizer.computeContentHash(revision.content);
+    fullRevision.dependencyHash = RevisionCanonicalizer.computeDependencyHash(revision.dependencies || []);
+    fullRevision.revisionHash = RevisionCanonicalizer.computeRevisionHash(fullRevision);
 
-    this.revisions.set(revision.revisionId, revision);
+    this.revisions.set(revision.revisionId, fullRevision);
 
     this.logAudit(
       revision.revisionId,
@@ -99,12 +100,12 @@ export class RevisionEngine {
       null,
       revision.lifecycleState,
       null,
-      revision.revisionHash,
+      fullRevision.revisionHash,
       revision.changeReason || 'Initial registration',
       `Revision of type ${revision.entityType} initialized with label '${revision.revisionCode}'`
     );
 
-    return revision;
+    return fullRevision;
   }
 
   public getRevision(revisionId: string): Revision | undefined {

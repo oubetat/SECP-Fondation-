@@ -1,0 +1,12 @@
+{
+  "classificationMethod": "TypeScript AST Module Resolution Trace",
+  "counts": {
+    "PRODUCTION_DIRECT": 2,
+    "PRODUCTION_TRANSITIVE": 1973,
+    "TEST_ONLY": 120,
+    "VERIFICATION_ONLY": 85,
+    "EXPERIMENTAL_UNREACHABLE": 45,
+    "UNRESOLVED": 0
+  },
+  "note": "Files under src/engine were rigorously verified against entry point imports rather than assumed reachable."
+}

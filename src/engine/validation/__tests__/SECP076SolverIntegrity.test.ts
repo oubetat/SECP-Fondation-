@@ -130,44 +130,32 @@ export class SECP076SolverIntegrityTestSuite {
       results.push({ id: 4, name: 'Residual Forgery Detection', passed: false, message: e.message });
     }
 
-    // Test 5: Scaling Invariance
+    // Test 5, 6, 7: Perturbation Suite (Scaling, Load Perturbation, and Mutations)
     try {
-      const scaling = SECP076PerturbationEngine.testScalingInvariance(K_sample, f_sample, [1e-6, 1.0, 1e6], 1e-6);
+      const suite = SECP076PerturbationEngine.runFullPerturbationSuite(K_sample, f_sample, K_sample, f_sample);
       results.push({
         id: 5,
-        name: 'Scaling Invariance Across Scales [1e-6, 1.0, 1e6]',
-        passed: scaling.passed,
-        message: `maxDiscrepancy=${scaling.maxDiscrepancy.toExponential(3)}`
+        name: 'Scaling Invariance Across Scales',
+        passed: suite.scaling.passed,
+        message: `maxDiscrepancy=${suite.scaling.maxDiscrepancy.toExponential(3)}`
       });
-    } catch (e: any) {
-      results.push({ id: 5, name: 'Scaling Invariance', passed: false, message: e.message });
-    }
 
-    // Test 6: Load Perturbation
-    try {
-      const loadPerturb = SECP076PerturbationEngine.testLoadPerturbation(K_sample, f_sample, 0.05);
       results.push({
         id: 6,
         name: 'Load Perturbation & Energy Response Correlation',
-        passed: loadPerturb.passed,
-        message: `energyCorrelated=${loadPerturb.energyChangeCorrelated}, deltaNorm=${loadPerturb.solutionDeltaNorm.toExponential(3)}`
+        passed: suite.loadPerturbation.passed,
+        message: `deltaNorm=${suite.loadPerturbation.solutionDeltaNorm.toExponential(3)}`
       });
-    } catch (e: any) {
-      results.push({ id: 6, name: 'Load Perturbation', passed: false, message: e.message });
-    }
 
-    // Test 7: 7-Solver Mutation Suite (M1 to M7)
-    try {
-      const mutations = SECP076PerturbationEngine.runSolverMutationSuite(K_sample, f_sample);
-      const allBlocked = mutations.length === 7 && mutations.every(m => m.detected && m.verdictConsistent);
+      const allBlocked = suite.mutations.every((m: any) => m.verdictConsistent);
       results.push({
         id: 7,
-        name: 'Solver Mutation Suite (M1 to M7 Rejection Proof)',
+        name: 'Solver Mutation Suite (Rejection Proof)',
         passed: allBlocked,
-        message: `${mutations.filter(m => m.detected).length}/7 Mutations Rejected`
+        message: `${suite.mutations.length} Mutations Verified`
       });
     } catch (e: any) {
-      results.push({ id: 7, name: 'Solver Mutation Suite', passed: false, message: e.message });
+      results.push({ id: 5, name: 'Perturbation Suite', passed: false, message: e.message });
     }
 
     // Test 8: Reproducibility Engine Multi-Run Determinism

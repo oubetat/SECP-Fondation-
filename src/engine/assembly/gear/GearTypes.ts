@@ -130,6 +130,9 @@ export interface GearDefinition {
   pitchDiameterMm?: number;
   baseDiameterMm?: number;
   rootDiameterMm?: number;
+  transversePressureAngleDeg?: number;
+  basePitchMm?: number;
+  backlashMm?: number;
   massProperties?: any;
   involuteProfile?: any;
   transverseModule?: number;
@@ -139,19 +142,51 @@ export interface GearDefinition {
 
 export interface GearPairDefinition {
   pairId: string;
-  pinionId: string;
-  wheelId: string;
-  centerDistanceMm: number;
+  name?: string;
+  pinionId?: string;
+  wheelId?: string;
+  pinionGearId?: string;
+  wheelGearId?: string;
+  centerDistanceMm?: number;
+  nominalCenterDistanceMm?: number;
+  operatingPressureAngleDeg?: number;
   gearRatio: number;
+  transmissionRatio?: number;
   transmissionError?: number;
   contactRatio?: number;
+  contactRatioProfileEpsilonAlpha?: number;
+  overlapRatioEpsilonBeta?: number;
+  totalContactRatioEpsilonGamma?: number;
+  operatingBacklashMm?: number;
   wheelRotationDirection?: string;
+  pinionRotationDirection?: string;
   wheelSpeedRpm?: number;
   pinionSpeedRpm?: number;
-  pinionRotationDirection?: string;
   meshingStatus?: string;
   diagnostics?: string[];
   hasInterference?: boolean;
-  nominalCenterDistanceMm?: number;
-  contactRatioProfileEpsilonAlpha?: number;
+  [key: string]: any;
+}
+
+export interface GearAssemblyInstance {
+  instanceId: string;
+  gearId: string;
+  gearDefinition: GearDefinition;
+  assemblyComponent: AssemblyComponent;
+}
+
+export interface InvolutePoint2D {
+  x: number;
+  y: number;
+  radiusMm?: number;
+  involuteRollAngleRad?: number;
+}
+
+export interface InvoluteToothProfile2D {
+  points: InvolutePoint2D[];
+  pitchRadiusMm: number;
+  baseRadiusMm: number;
+  tipRadiusMm: number;
+  rootRadiusMm: number;
+  toothThicknessAngleRad: number;
 }

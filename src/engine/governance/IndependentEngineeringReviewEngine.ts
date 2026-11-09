@@ -113,8 +113,8 @@ export class IndependentEngineeringReviewEngine {
       review.reviewId,
       review.scope.modelRevision,
       'IndependentEngineeringReviewEngine',
-      'VALIDATED',
-      { type: 'REVIEW_INIT', reviewer: review.reviewer.name, scope: JSON.stringify(review.scope) }
+      { type: 'REVIEW_INIT', reviewer: review.reviewer.name, scope: JSON.stringify(review.scope) },
+      'VALIDATED'
     );
   }
 
@@ -124,8 +124,8 @@ export class IndependentEngineeringReviewEngine {
       finding.findingId,
       'REV-FINDING',
       'IndependentEngineeringReviewEngine',
-      'VALIDATED',
-      { reviewId, severity: finding.severity, domain: finding.domain }
+      { reviewId, severity: finding.severity, domain: finding.domain },
+      'VALIDATED'
     );
   }
 
@@ -135,8 +135,8 @@ export class IndependentEngineeringReviewEngine {
       `VERDICT-${review.reviewId}`,
       review.scope.modelRevision,
       'IndependentEngineeringReviewEngine',
-      review.verdict === 'REJECT' ? 'FAILED' : 'VALIDATED',
-      { reviewId: review.reviewId, verdict: review.verdict, rationale: review.rationale }
+      { reviewId: review.reviewId, verdict: review.verdict, rationale: review.rationale },
+      review.verdict === 'REJECT' ? 'INVALID' : 'VALIDATED'
     );
   }
 

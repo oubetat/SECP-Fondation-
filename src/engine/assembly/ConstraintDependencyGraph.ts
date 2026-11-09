@@ -39,40 +39,50 @@ export class ConstraintDependencyGraph {
 
     // 2. Initialize Constraint Nodes & Connect to Components
     for (const constraint of constraints) {
+      const cId = constraint.constraintId || constraint.id || '';
+      const compA = constraint.componentA || '';
+      const compB = constraint.componentB || '';
+      if (!cId) continue;
+
       const node: DependencyNode = {
-        id: constraint.constraintId,
+        id: cId,
         type: 'CONSTRAINT',
-        dependencies: [constraint.componentA, constraint.componentB],
+        dependencies: [compA, compB].filter(Boolean),
         dependents: []
       };
-      this.nodes.set(constraint.constraintId, node);
+      this.nodes.set(cId, node);
 
       // Add back-references to components
-      this.addDependent(constraint.componentA, constraint.constraintId);
-      this.addDependent(constraint.componentB, constraint.constraintId);
+      if (compA) this.addDependent(compA, cId);
+      if (compB) this.addDependent(compB, cId);
 
       // 046-A causality: The constraint also affects the components it connects
-      this.addDependent(constraint.constraintId, constraint.componentA);
-      this.addDependent(constraint.constraintId, constraint.componentB);
+      if (compA) this.addDependent(cId, compA);
+      if (compB) this.addDependent(cId, compB);
     }
 
     // 3. Initialize Joint Nodes & Connect to Components
     for (const joint of joints) {
+      const jId = joint.jointId || joint.id || '';
+      const parentId = joint.parentComponentId || '';
+      const childId = joint.childComponentId || '';
+      if (!jId) continue;
+
       const node: DependencyNode = {
-        id: joint.jointId,
+        id: jId,
         type: 'JOINT',
-        dependencies: [joint.parentComponentId, joint.childComponentId],
+        dependencies: [parentId, childId].filter(Boolean),
         dependents: []
       };
-      this.nodes.set(joint.jointId, node);
+      this.nodes.set(jId, node);
 
       // Add back-references to components
-      this.addDependent(joint.parentComponentId, joint.jointId);
-      this.addDependent(joint.childComponentId, joint.jointId);
+      if (parentId) this.addDependent(parentId, jId);
+      if (childId) this.addDependent(childId, jId);
 
       // 046-A causality: The joint also affects the components
-      this.addDependent(joint.jointId, joint.parentComponentId);
-      this.addDependent(joint.jointId, joint.childComponentId);
+      if (parentId) this.addDependent(jId, parentId);
+      if (childId) this.addDependent(jId, childId);
     }
   }
 

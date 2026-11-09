@@ -98,8 +98,8 @@ export class AssemblyVerificationEngine {
     let expectedRel: any = null;
     let diagnostic = '';
 
-    const posA = instA.position;
-    const posB = instB.position;
+    const posA = instA.position || { x: 0, y: 0, z: 0 };
+    const posB = instB.position || { x: 0, y: 0, z: 0 };
 
     switch (mate.type) {
       case 'COINCIDENT': {
@@ -142,8 +142,8 @@ export class AssemblyVerificationEngine {
       case 'GEAR': {
         // Gear Verification Requirement: Verify ratio between rotations
         const ratio = mate.parameters?.ratio || 1.0;
-        const rotA = instA.rotation.z;
-        const rotB = instB.rotation.z;
+        const rotA = instA.rotation?.z ?? 0;
+        const rotB = instB.rotation?.z ?? 0;
         // thetaB = -ratio * thetaA (standard internal gear logic)
         // We measure if the relationship holds
         // Note: Gears often need an initial offset, but we'll assume 0-base for verification sim
@@ -161,7 +161,7 @@ export class AssemblyVerificationEngine {
         const min = mate.parameters?.min ?? -Infinity;
         const max = mate.parameters?.max ?? Infinity;
         // Assume limit is on X translation for this sim
-        const pos = instA.position.x;
+        const pos = posA.x;
         residual = 0;
         if (pos < min) residual = min - pos;
         if (pos > max) residual = pos - max;
@@ -244,10 +244,13 @@ export class AssemblyVerificationEngine {
         const a = instances[i];
         const b = instances[j];
         
+        const posA = a.position || { x: 0, y: 0, z: 0 };
+        const posB = b.position || { x: 0, y: 0, z: 0 };
+
         // Geometric check: simplified bounding sphere check (radius 10mm)
-        const dx = a.position.x - b.position.x;
-        const dy = a.position.y - b.position.y;
-        const dz = a.position.z - b.position.z;
+        const dx = posA.x - posB.x;
+        const dy = posA.y - posB.y;
+        const dz = posA.z - posB.z;
         const dist = Math.sqrt(dx*dx + dy*dy + dz*dz);
         
         if (dist < 10) { // Collision threshold

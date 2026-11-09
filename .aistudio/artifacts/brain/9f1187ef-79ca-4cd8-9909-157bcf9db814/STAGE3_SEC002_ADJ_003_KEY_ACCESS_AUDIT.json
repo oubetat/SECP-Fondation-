@@ -1,0 +1,28 @@
+{
+  "taskId": "SECP-STAGE3-SEC002-ADJ-003",
+  "auditTarget": "Authority Key Access and Exposure Analysis",
+  "timestamp": "2026-11-01T09:02:00Z",
+  "keyStorage": {
+    "type": "JavaScript Symbol (SECP_AUTHORITY_ENGINE_KEY)",
+    "location": "Module-level closure variable engineKey in SimulationAuthorityInternal.ts",
+    "initialization": "initializeAuthorityHandshake() called during engine boot or lazily upon key request",
+    "singleton": true
+  },
+  "exportBoundary": {
+    "function": "getAuthorityBootKey()",
+    "file": "src/engine/simulation/SimulationAuthorityInternal.ts",
+    "isExported": true,
+    "accessControl": "NONE (Public export accessible to any module importing the file)",
+    "callerVerification": "None (No stack frame verification or caller authorization)"
+  },
+  "verificationMechanism": {
+    "function": "verifyAuthorityKey(key: symbol)",
+    "logic": "Strict equality comparison (key === engineKey)",
+    "tamperResistance": "High against forged symbols or strings; zero against callers possessing the engineKey reference"
+  },
+  "keyReachabilityAssessment": {
+    "untrustedCallerAcquisition": "POSSIBLE in-process via import { getAuthorityBootKey } from '...'",
+    "externalProcessExposure": "PROTECTED (Symbol reference cannot be serialized or accessed across IPC/process boundaries)",
+    "auditVerdict": "BOUNDED_ACCESS_EXPOSURE"
+  }
+}

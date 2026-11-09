@@ -12,7 +12,7 @@ import {
   BRepLoop,
   BRepEdge,
   BRepVertex
-} from './BRepTopology';
+} from '../topology/BRepTopology';
 import { Orientation } from '../topology/TopologyContracts';
 
 export interface BRepAuditReport {

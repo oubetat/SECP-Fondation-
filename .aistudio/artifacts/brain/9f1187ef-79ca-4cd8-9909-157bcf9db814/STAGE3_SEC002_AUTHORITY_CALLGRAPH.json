@@ -1,0 +1,30 @@
+{
+  "task_id": "SECP-STAGE3-SECURITY-CLOSURE-002",
+  "artifact_type": "AUTHORITY_CALLGRAPH",
+  "timestamp": "2026-11-01T09:00:00.000Z",
+  "nodes": [
+    { "id": "NODE_BOOT", "label": "initializeAuthorityHandshake()", "file": "src/engine/simulation/SimulationAuthorityInternal.ts" },
+    { "id": "NODE_KEY", "label": "bootKey Symbol & HMAC Secret", "file": "src/engine/simulation/SimulationAuthorityInternal.ts" },
+    { "id": "NODE_FACTORY", "label": "createBinding()", "file": "src/engine/crossdomain/CanonicalDomainBindingEngine.ts" },
+    { "id": "NODE_AUTHENTICATED_SEAL", "label": "sealBinding(binding, bootKey)", "file": "src/engine/crossdomain/CanonicalDomainBindingEngine.ts" },
+    { "id": "NODE_HMAC", "label": "computeHMACSealToken()", "file": "src/engine/simulation/SimulationAuthorityInternal.ts" },
+    { "id": "NODE_VALIDATOR", "label": "validateBinding()", "file": "src/engine/crossdomain/CanonicalDomainBindingEngine.ts" },
+    { "id": "NODE_SOLVERS", "label": "Domain Solvers (PCB/Elec/Harness/Multi/FEM/CFD)", "file": "src/engine/*" },
+    { "id": "NODE_EVIDENCE", "label": "Attested Evidence Lineage", "file": "src/engine/simulation/SimulationAuthorityInternal.ts" }
+  ],
+  "edges": [
+    { "from": "NODE_BOOT", "to": "NODE_KEY", "action": "Generate unexportable boot key symbol & HMAC secret" },
+    { "from": "NODE_KEY", "to": "NODE_AUTHENTICATED_SEAL", "action": "Provide bootKey symbol to internal authority sealing calls" },
+    { "from": "NODE_FACTORY", "to": "NODE_AUTHENTICATED_SEAL", "action": "Pass unsealed binding object" },
+    { "from": "NODE_AUTHENTICATED_SEAL", "to": "NODE_HMAC", "action": "Invoke HMAC signature generation on key match" },
+    { "from": "NODE_HMAC", "to": "NODE_VALIDATOR", "action": "Attach HMAC executionSealToken to binding" },
+    { "from": "NODE_VALIDATOR", "to": "NODE_SOLVERS", "action": "Verify HMAC signature and isAuthoritative before entry" },
+    { "from": "NODE_SOLVERS", "to": "NODE_EVIDENCE", "action": "Record provenance lineage on successful execution" }
+  ],
+  "untrusted_call_path_defense": {
+    "entry": "Arbitrary caller invoking sealBinding(binding) without key",
+    "defense_action": "verifyAuthorityKey fails -> THROWS SIMULATION_AUTHORITY_VIOLATION",
+    "forgery_entry": "Arbitrary caller manually assigning executionSealToken",
+    "defense_action": "validateBinding recalculates HMAC -> FAILS WITH INVALID_SEAL_TOKEN"
+  }
+}

@@ -8,6 +8,10 @@ import {
   SimulationCertificationPolicy
 } from '../../engine/certification/simulationTypes';
 import { EngineeringPLMEngine } from '../../engine/plm/EngineeringPLMEngine';
+import { SimulationExecutionRegistry } from '../../engine/simulation/SimulationExecutionRegistry';
+import { initializeAuthorityHandshake, sealEnvelope } from '../../engine/simulation/SimulationAuthorityInternal';
+import { issueSealingCapability } from '../../engine/simulation/SimulationSealingAuthorization';
+import { CanonicalDerivedArtifactBinding } from '../../engine/topology/CanonicalDerivedArtifactBinding';
 
 describe('P6-008 — CFD EVIDENCE', () => {
   const engine = SimulationCertificateEngine.getInstance();
@@ -15,6 +19,8 @@ describe('P6-008 — CFD EVIDENCE', () => {
   beforeEach(() => {
     engine.resetRegistry();
     EngineeringPLMEngine.clear();
+    SimulationExecutionRegistry.clear();
+    initializeAuthorityHandshake();
   });
 
   const basePolicy: SimulationCertificationPolicy = {
@@ -68,10 +74,18 @@ describe('P6-008 — CFD EVIDENCE', () => {
       resourceConsumption: { memoryMb: 4096, computeCores: 8 }
     });
 
+    const binding = CanonicalDerivedArtifactBinding.createBinding({
+      cadRevisionHash: 'REV-A',
+      canonicalGeometryHash: 'GEO-3D-CFD',
+      artifactKind: 'SIMULATION_RESULT',
+      derivationIdentity: 'SECP-CFD-SOLVER',
+      artifactContentHash: overrides?.resultHash || 'RES-HASH-CFD'
+    });
+
     const result = engine.buildSimulationResultManifest({
       resultId: 'RES-CFD-001',
       executionId: 'EXEC-CFD-001',
-      resultHash: 'RES-HASH-CFD',
+      resultHash: binding.artifactDigest,
       scalarResults: { maxVelocity: 15.5, pressureDrop: 120 },
       tensorResults: {},
       convergenceMetrics: {
@@ -84,8 +98,25 @@ describe('P6-008 — CFD EVIDENCE', () => {
         massBalance: 1e-7,
         energyBalance: 1e-6
       },
-      residualHistory: overrides?.residualHistory || [{ 'velocity': 1e-5 }]
+      residualHistory: overrides?.residualHistory || [{ 'velocity': 1e-5 }],
+      // Metadata required by registry
+      provenanceHash: binding.artifactDigest,
+      derivedArtifactBinding: binding
+    } as any);
+
+    // Register as authentic result
+    const cap = issueSealingCapability('P6-008-TEST', ['SIMULATION', 'CFD'], {
+      cadRevisionHash: 'REV-A',
+      canonicalGeometryHash: 'GEO-3D-CFD'
     });
+    const envelope = sealEnvelope({
+      provenanceHash: binding.artifactDigest,
+      result: result,
+      authoritativeRevisionHash: 'REV-A',
+      authoritativeGeometryHash: 'GEO-3D-CFD',
+      timestamp: new Date().toISOString()
+    }, cap);
+    SimulationExecutionRegistry.registerExecution(envelope);
 
     const matrix: SimulationVerificationMatrix = {
       verificationId: 'VERIF-CFD-001',
@@ -104,6 +135,10 @@ describe('P6-008 — CFD EVIDENCE', () => {
     const certOutcome = engine.createSimulationCertificate({
       input, execution, result, matrix, policy: basePolicy
     });
+    
+    if (!certOutcome.success) {
+      console.log('CERT_ERRORS:', certOutcome.errors);
+    }
     
     expect(certOutcome.success).toBe(true);
     expect(certOutcome.certificate?.certificationStatus).toBe('CERTIFIED');

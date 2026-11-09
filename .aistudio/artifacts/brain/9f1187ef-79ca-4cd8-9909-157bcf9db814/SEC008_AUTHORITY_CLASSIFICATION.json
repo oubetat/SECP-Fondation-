@@ -1,0 +1,118 @@
+{
+  "audit_id": "SECP-SECURITY-008",
+  "classificationMethodology": "Forensic Code AST and Reference Verification",
+  "totalModules": 4489,
+  "sec007Classifications": {
+    "AUTHORITY_PRODUCER": 11,
+    "AUTHORITY_CONSUMER": 1054,
+    "NO_AUTHORITY": 3424
+  },
+  "refinedForensicClassifications": {
+    "trueAuthorityProducers": {
+      "total": 11,
+      "productionCore": [
+        {
+          "path": "src/engine/crossdomain/CanonicalDomainBindingEngine.ts",
+          "isProduction": true,
+          "hasSealBinding": true,
+          "hasCapability": true,
+          "importsAuthority": true
+        },
+        {
+          "path": "src/engine/crossdomain/MultidomainPcbIntegrationEngine.ts",
+          "isProduction": true,
+          "hasSealBinding": true,
+          "hasCapability": true,
+          "importsAuthority": true
+        },
+        {
+          "path": "src/engine/engineeringCore/ElectrothermalSolver.ts",
+          "isProduction": true,
+          "hasSealBinding": true,
+          "hasCapability": true,
+          "importsAuthority": true
+        },
+        {
+          "path": "src/engine/simulation/SimulationAuthorityInternal.ts",
+          "isProduction": true,
+          "hasSealBinding": false,
+          "hasCapability": true,
+          "importsAuthority": true
+        }
+      ],
+      "testAndUtilities": [
+        {
+          "path": "src/engine/crossdomain/DomainBindingTestUtility.ts",
+          "isProduction": false,
+          "hasSealBinding": true,
+          "hasCapability": true,
+          "importsAuthority": true
+        },
+        {
+          "path": "src/engine/crossdomain/__tests__/AuthoritySealTrustBoundary.test.ts",
+          "isProduction": false,
+          "hasSealBinding": true,
+          "hasCapability": true,
+          "importsAuthority": true
+        },
+        {
+          "path": "src/engine/crossdomain/__tests__/DomainBindingIntegration.test.ts",
+          "isProduction": false,
+          "hasSealBinding": true,
+          "hasCapability": true,
+          "importsAuthority": true
+        },
+        {
+          "path": "src/engine/crossdomain/__tests__/SimulationAuthority.test.ts",
+          "isProduction": false,
+          "hasSealBinding": true,
+          "hasCapability": true,
+          "importsAuthority": true
+        },
+        {
+          "path": "src/engine/forensic/SEC007_LiveForensicAuditor.test.ts",
+          "isProduction": false,
+          "hasSealBinding": true,
+          "hasCapability": true,
+          "importsAuthority": true
+        },
+        {
+          "path": "src/engine/forensic/__tests__/SEC008_AdversarialQualificationHarness.test.ts",
+          "isProduction": false,
+          "hasSealBinding": true,
+          "hasCapability": true,
+          "importsAuthority": true
+        },
+        {
+          "path": "src/engine/simulation/__tests__/SealingAuthorizationBoundary.test.ts",
+          "isProduction": false,
+          "hasSealBinding": false,
+          "hasCapability": true,
+          "importsAuthority": true
+        }
+      ]
+    },
+    "trueAuthorityConsumers": {
+      "total": 10,
+      "modules": [
+        "src/engine/cfd3d/Fvm3DNavierStokesSolver.ts",
+        "src/engine/crossdomain/CanonicalDomainBinding.ts",
+        "src/engine/crossdomain/__tests__/CanonicalDomainBinding.test.ts",
+        "src/engine/engineeringCore/NodalCircuitSolver.ts",
+        "src/engine/engineeringCore/tests/verify_nodal_analysis.ts",
+        "src/engine/fem/core/FEMCore.ts",
+        "src/engine/pcb/PcbVerificationService.ts",
+        "src/engine/pcb/tests/verify_pcb_phase2.ts",
+        "src/engine/wiring-harness/WiringHarnessElectricalVerifier.ts",
+        "src/engine/wiring-harness/WiringHarnessManufacturingVerifier.ts"
+      ]
+    },
+    "falsePositiveConsumersFromKeywords": {
+      "count": 1044,
+      "explanation": "Modules categorized by SEC007 as AUTHORITY_CONSUMER merely due to string matches on Solver or Verifier without importing domain bindings or authority"
+    },
+    "independentNoAuthorityModules": {
+      "count": 3424
+    }
+  }
+}

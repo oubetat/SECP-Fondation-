@@ -1,0 +1,5 @@
+{
+  "summary":  "Updated authority call graph reflecting boot key handshake, authenticated seal issuance, and HMAC signature validation.",
+  "updatedAt":  "2026-11-01T08:54:22.731990070Z",
+  "userFacing":  true
+}

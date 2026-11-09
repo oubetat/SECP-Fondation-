@@ -1,0 +1,35 @@
+{
+  "taskId": "SECP-STAGE3-SEC002-ADJ-003",
+  "auditTarget": "Cryptographic Seal Mechanism and HMAC Security",
+  "timestamp": "2026-11-01T09:02:00Z",
+  "hmacMechanism": {
+    "algorithm": "HMAC-SHA256",
+    "secretSource": "authoritySecretHMAC generated via SHA-256 digest of SECP_BOOT_HMAC_SECRET_2026_${Date.now()}_${Math.random()}",
+    "secretEntropy": "256-bit hexadecimal string",
+    "fallbackSecret": "DEFAULT_SECP_AUTHORITY_SECRET",
+    "fallbackRiskLevel": "MEDIUM (Fallback string constant used if computeHMACSealToken invoked prior to handshake)"
+  },
+  "payloadScope": {
+    "fieldsIncluded": [
+      "domain",
+      "canonicalEntityId",
+      "revisionId",
+      "geometryHash"
+    ],
+    "fieldsOmittedFromHMAC": [
+      "topologyHash",
+      "materialHash",
+      "environmentHash",
+      "physicsHash"
+    ],
+    "secondaryValidation": "validateBinding re-computes bindingId over all 8 fields, ensuring full structural integrity"
+  },
+  "tamperDetection": {
+    "geometryHashTampering": "DETECTED (INVALID_SEAL_TOKEN)",
+    "revisionIdTampering": "DETECTED (INVALID_SEAL_TOKEN)",
+    "domainTampering": "DETECTED (INVALID_SEAL_TOKEN)",
+    "canonicalEntityIdTampering": "DETECTED (INVALID_SEAL_TOKEN)",
+    "statusTampering": "DETECTED (Binding status STALE/INVALID rejected)"
+  },
+  "auditVerdict": "CRYPTOGRAM_VALID_WITH_FALLBACK_RISK"
+}

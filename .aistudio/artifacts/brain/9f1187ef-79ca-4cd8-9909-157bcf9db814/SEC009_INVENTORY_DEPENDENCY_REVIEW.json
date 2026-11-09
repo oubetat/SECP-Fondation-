@@ -1,0 +1,81 @@
+{
+  "reviewId": "SECP-SECURITY-009-INDEPENDENT-REVIEW-INVENTORY",
+  "reviewTimestamp": "2026-11-02T08:25:00.000Z",
+  "verdict": "VERIFIED",
+  "inventoryReconciliation": {
+    "totalDiscoveredModules": 4505,
+    "productionModules": 3916,
+    "excludedModules": 589,
+    "mathematicalSumCheck": "3916 + 589 = 4505 (MATCHES)",
+    "excludedBreakdown": {
+      "inTestsDirectory": 540,
+      "testOrSpecFilenameSuffix": 32,
+      "inFixturesDirectory": 16,
+      "testUtilities": 1,
+      "testUtilityNames": ["DomainBindingTestUtility.ts"]
+    }
+  },
+  "astDependencyAnalysis": {
+    "scannedProductionModules": 3916,
+    "coreProductionEnginesImportingTestUtilitiesOrFixtures": 0,
+    "benchmarkOrNonStandardTestModulesImportingExcludedFiles": 11,
+    "detailsOfNonStandardTestImports": [
+      {
+        "file": "src/engine/benchmark/turbulence/TurbulenceAdversarialSuite.ts",
+        "imported": "src/engine/crossdomain/DomainBindingTestUtility.ts",
+        "nature": "Benchmark turbulence adversarial test harness outside /__tests__/"
+      },
+      {
+        "file": "src/engine/benchmark/turbulence/TurbulenceBattery.ts",
+        "imported": "src/engine/crossdomain/DomainBindingTestUtility.ts",
+        "nature": "Benchmark turbulence test battery"
+      },
+      {
+        "file": "src/engine/benchmark/turbulence/TurbulenceDeterminismSuite.ts",
+        "imported": "src/engine/crossdomain/DomainBindingTestUtility.ts",
+        "nature": "Benchmark determinism test suite"
+      },
+      {
+        "file": "src/engine/benchmark/turbulence/TurbulenceExecutionPathVerifier.ts",
+        "imported": "src/engine/crossdomain/DomainBindingTestUtility.ts",
+        "nature": "Benchmark execution path test verifier"
+      },
+      {
+        "file": "src/engine/benchmark/turbulence/TurbulenceMeshSensitivity.ts",
+        "imported": "src/engine/crossdomain/DomainBindingTestUtility.ts",
+        "nature": "Benchmark mesh sensitivity test suite"
+      },
+      {
+        "file": "src/engine/benchmark/turbulence/TurbulenceModelComparator.ts",
+        "imported": "src/engine/crossdomain/DomainBindingTestUtility.ts",
+        "nature": "Benchmark turbulence model comparator harness"
+      },
+      {
+        "file": "src/engine/benchmark/turbulence/TurbulenceReferenceValidator.ts",
+        "imported": "src/engine/crossdomain/DomainBindingTestUtility.ts",
+        "nature": "Benchmark reference validation suite"
+      },
+      {
+        "file": "src/engine/benchmark/turbulence/TurbulenceStabilitySuite.ts",
+        "imported": "src/engine/crossdomain/DomainBindingTestUtility.ts",
+        "nature": "Benchmark numerical stability test suite"
+      },
+      {
+        "file": "src/engine/engineeringCore/tests/verify_nodal_solver_phase4.ts",
+        "imported": "src/engine/crossdomain/DomainBindingTestUtility.ts",
+        "nature": "Verification script in /tests/ directory (non-dunder name)"
+      },
+      {
+        "file": "src/engine/interop/cross-kernel/CrossKernelCorpus.ts",
+        "imported": "src/engine/interop/native-secp/__fixtures__/NativeSECPFixtures.ts",
+        "nature": "Cross-kernel CAD test corpus generator referencing native CAD test fixtures"
+      },
+      {
+        "file": "src/engine/wiring-harness/WiringHarnessHardAcceptanceGate.ts",
+        "imported": "src/engine/crossdomain/DomainBindingTestUtility.ts",
+        "nature": "CI acceptance gate script for wiring harness validation"
+      }
+    ],
+    "productionSafetyConclusion": "Zero core production engines (e.g. MultidomainPcbIntegrationEngine, ElectrothermalSolver, CanonicalDomainBindingEngine, PcbGeometryKernel, NodalCircuitSolver) import DomainBindingTestUtility or any fixtures. All 11 detected imports belong to benchmark batteries, test corpora, and acceptance verification scripts that reside outside /__tests__/."
+  }
+}

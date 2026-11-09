@@ -1,0 +1,92 @@
+{
+  "testSuite": "src/engine/simulation/__tests__/CanonicalCadCfdTruthAdversarial.test.ts",
+  "totalTests": 12,
+  "passed": 12,
+  "failed": 0,
+  "matrix": [
+    {
+      "id": "CAD-01",
+      "scenario": "Valid End-to-End Execution (Happy Path)",
+      "expectedOutcome": "PASS",
+      "actualOutcome": "PASS",
+      "notes": "Full chain from CAD revision to solver execution and provenance integrity report"
+    },
+    {
+      "id": "CAD-02",
+      "scenario": "Tampered Geometry Hash in Domain Binding",
+      "expectedOutcome": "REJECT",
+      "actualOutcome": "REJECT",
+      "notes": "Rejection triggered by geometry hash mismatch against mesh provenance"
+    },
+    {
+      "id": "CAD-03",
+      "scenario": "Stale CAD Revision ID",
+      "expectedOutcome": "REJECT",
+      "actualOutcome": "REJECT",
+      "notes": "Rejection triggered when mesh provenance revision mismatches binding revision"
+    },
+    {
+      "id": "CAD-04",
+      "scenario": "Mesh Derived from Different B-Rep Geometry",
+      "expectedOutcome": "REJECT",
+      "actualOutcome": "REJECT",
+      "notes": "Rejection triggered when mesh provenance BRep hash mismatches binding geometry hash"
+    },
+    {
+      "id": "CAD-05",
+      "scenario": "Forged Execution Authority Seal Signature",
+      "expectedOutcome": "REJECT",
+      "actualOutcome": "REJECT",
+      "notes": "Rejection triggered by HMAC token validation failure in CanonicalDomainBindingEngine"
+    },
+    {
+      "id": "CAD-06",
+      "scenario": "Missing Mesh Provenance Metadata",
+      "expectedOutcome": "REJECT",
+      "actualOutcome": "REJECT",
+      "notes": "Rejection triggered when mesh payload lacks explicit provenance object"
+    },
+    {
+      "id": "CAD-07",
+      "scenario": "Unsealed / Unauthenticated Domain Binding",
+      "expectedOutcome": "REJECT",
+      "actualOutcome": "REJECT",
+      "notes": "Rejection triggered by missing authoritative seal on domain binding"
+    },
+    {
+      "id": "CAD-08",
+      "scenario": "Binding Marked with STALE Status",
+      "expectedOutcome": "REJECT",
+      "actualOutcome": "REJECT",
+      "notes": "Rejection triggered by binding status check in validateBinding"
+    },
+    {
+      "id": "CAD-09",
+      "scenario": "Domain Mismatch (FEA capability used for CFD binding)",
+      "expectedOutcome": "REJECT",
+      "actualOutcome": "REJECT",
+      "notes": "Rejection triggered by domain restriction in issueSealingCapability"
+    },
+    {
+      "id": "CAD-10",
+      "scenario": "Numerical Non-Convergence with Valid Provenance",
+      "expectedOutcome": "PROVENANCE PASS / NUMERICAL NON_CONVERGED",
+      "actualOutcome": "PROVENANCE PASS / NUMERICAL NON_CONVERGED",
+      "notes": "Proves strict separation of Provenance Integrity and Numerical Qualification"
+    },
+    {
+      "id": "CAD-11",
+      "scenario": "CAD B-Rep Topology Mutation Invalidation",
+      "expectedOutcome": "PROVENANCE INVALID",
+      "actualOutcome": "PROVENANCE INVALID",
+      "notes": "Modifying B-Rep dimensions invalidates derived mesh provenance"
+    },
+    {
+      "id": "CAD-12",
+      "scenario": "Evidence Replay with Tampered Revision",
+      "expectedOutcome": "REJECT",
+      "actualOutcome": "REJECT",
+      "notes": "SimulationExecutionRegistry rejects unregistered or revision-mismatched result"
+    }
+  ]
+}

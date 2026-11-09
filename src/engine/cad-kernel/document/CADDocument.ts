@@ -146,6 +146,7 @@ export interface Sketch {
 
 export interface CADFeature {
   id: string;
+  featureId?: string;
   name?: string;
   type: string;
   parameters?: Record<string, any>;
@@ -220,6 +221,10 @@ export interface EngineeringDocument {
     bRepHash?: string;
     topologyHash?: string;
     mesh?: any;
+    fea?: any;
+    cfd?: any;
+    cam?: any;
+    solid?: Solid;
     [key: string]: any;
   };
   metadata?: {

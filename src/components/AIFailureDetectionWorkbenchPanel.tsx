@@ -69,8 +69,9 @@ export const AIFailureDetectionWorkbenchPanel: React.FC = () => {
       confidenceScore: 0.94
     });
 
-    setActiveEventId(demoEvt.eventId);
-    setFeedback(`Recorded and grounded engineering failure anomaly ${demoEvt.eventId} with validated AI recovery proposal.`);
+    const selectedId = demoEvt.eventId || demoEvt.failureId || '';
+    setActiveEventId(selectedId);
+    setFeedback(`Recorded and grounded engineering failure anomaly ${selectedId} with validated AI recovery proposal.`);
     refresh();
   };
 
@@ -180,7 +181,7 @@ export const AIFailureDetectionWorkbenchPanel: React.FC = () => {
                 <div
                   key={ev.eventId}
                   onClick={() => {
-                    setActiveEventId(ev.eventId);
+                    setActiveEventId(ev.eventId || ev.failureId || '');
                     setActiveTab('ROOT_CAUSE');
                   }}
                   className={`p-4 rounded-xl border transition cursor-pointer ${
@@ -234,7 +235,7 @@ export const AIFailureDetectionWorkbenchPanel: React.FC = () => {
             </div>
             <div className="p-3 bg-slate-900 rounded border border-slate-800">
               <span className="text-[10px] text-slate-500 uppercase block">Spatial Coordinates</span>
-              <strong className="text-amber-400 text-xs">[{activeEvent.locationCoordinates.x}, {activeEvent.locationCoordinates.y}, {activeEvent.locationCoordinates.z}]</strong>
+              <strong className="text-amber-400 text-xs">[{activeEvent.locationCoordinates?.x ?? 0}, {activeEvent.locationCoordinates?.y ?? 0}, {activeEvent.locationCoordinates?.z ?? 0}]</strong>
             </div>
           </div>
         </div>
@@ -243,15 +244,15 @@ export const AIFailureDetectionWorkbenchPanel: React.FC = () => {
       {activeTab === 'RECOVERY' && activeEvent && (
         <div className="space-y-4 font-mono text-xs">
           <h3 className="text-xs font-semibold uppercase text-slate-400 tracking-wider">AI Parametric Recovery Proposals</h3>
-          {service.getRecoveryProposals(activeEvent.eventId).map((prop, idx) => (
+          {service.getRecoveryProposals(activeEvent.eventId || activeEvent.failureId || '').map((prop, idx) => (
             <div key={idx} className="p-4 bg-slate-950/60 border border-slate-850 rounded-xl space-y-3">
               <div className="flex items-center justify-between">
-                <span className="font-bold text-emerald-400">{prop.strategy}</span>
-                <span className="text-slate-400 text-[11px]">Confidence: {(prop.confidenceScore * 100).toFixed(0)}%</span>
+                <span className="font-bold text-emerald-400">{prop.strategy || prop.suggestedAction}</span>
+                <span className="text-slate-400 text-[11px]">Confidence: {((prop.confidenceScore ?? 0.9) * 100).toFixed(0)}%</span>
               </div>
 
               <div className="space-y-2">
-                {prop.proposedChanges.map((ch, i) => (
+                {(prop.proposedChanges || []).map((ch, i) => (
                   <div key={i} className="p-3 bg-slate-900 rounded border border-slate-800 space-y-1">
                     <div className="flex items-center gap-2 text-slate-200">
                       <strong className="text-amber-400">{ch.parameter}</strong>:

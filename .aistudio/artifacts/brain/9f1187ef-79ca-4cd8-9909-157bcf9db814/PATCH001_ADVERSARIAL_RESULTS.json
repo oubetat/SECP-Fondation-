@@ -1,0 +1,29 @@
+{
+  "auditMission": "SECP-CAD-TRUTH-PATCH-001",
+  "phase": "PHASE_C_ADVERSARIAL_RESULTS",
+  "timestamp": "2026-11-02T10:03:00.000Z",
+  "testSuite": "src/engine/simulation/__tests__/SimulationExecutionAuthorityAdversarial.test.ts",
+  "summary": {
+    "totalScenarios": 15,
+    "passed": 15,
+    "failed": 0,
+    "securityVerdict": "VERIFIED_FAIL_CLOSED"
+  },
+  "results": [
+    { "id": "AUTH-01", "name": "Missing capability", "result": "PASS", "durationMs": 2 },
+    { "id": "AUTH-02", "name": "Null or malformed capability", "result": "PASS", "durationMs": 1 },
+    { "id": "AUTH-03", "name": "Forged structural capability", "result": "PASS", "durationMs": 1 },
+    { "id": "AUTH-04", "name": "Revoked capability", "result": "PASS", "durationMs": 1 },
+    { "id": "AUTH-05", "name": "Expired capability", "result": "PASS", "durationMs": 1 },
+    { "id": "AUTH-06", "name": "Wrong simulation domain", "result": "PASS", "durationMs": 1 },
+    { "id": "AUTH-07", "name": "Wrong canonical revision", "result": "PASS", "durationMs": 1 },
+    { "id": "AUTH-08", "name": "Wrong geometry hash", "result": "PASS", "durationMs": 1 },
+    { "id": "AUTH-09", "name": "Capability replay", "result": "PASS", "durationMs": 1 },
+    { "id": "AUTH-10", "name": "Concurrent duplicate execution", "result": "PASS", "durationMs": 2 },
+    { "id": "AUTH-11", "name": "Authority initialization failure", "result": "PASS", "durationMs": 1 },
+    { "id": "AUTH-12", "name": "Registry unavailable", "result": "PASS", "durationMs": 1 },
+    { "id": "AUTH-13", "name": "Partial sealing failure", "result": "PASS", "durationMs": 1 },
+    { "id": "AUTH-14", "name": "Legitimate authorized execution", "result": "PASS", "durationMs": 1 },
+    { "id": "AUTH-15", "name": "Capability revocation during lifecycle", "result": "PASS", "durationMs": 1 }
+  ]
+}

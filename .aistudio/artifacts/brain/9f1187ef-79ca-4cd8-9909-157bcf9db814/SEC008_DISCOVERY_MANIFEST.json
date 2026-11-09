@@ -1,0 +1,537 @@
+{
+  "scanTimestamp": "2026-11-02T07:26:46.096Z",
+  "targetDirectory": "src/engine",
+  "totalModulesFound": 4489,
+  "fileExtension": ".ts",
+  "summaryBySize": {
+    "under1KB": 577,
+    "between1And10KB": 3030,
+    "over10KB": 882
+  },
+  "directoryDistribution": {
+    "root": 42,
+    "__test_helpers__": 1,
+    "adse": 143,
+    "ai": 2,
+    "assembly": 171,
+    "assembly-intelligence": 18,
+    "asset-reliability": 11,
+    "attestation": 9,
+    "audit": 15,
+    "benchmark": 104,
+    "bom": 8,
+    "cad": 85,
+    "cad-kernel": 221,
+    "cam": 169,
+    "capabilities": 11,
+    "certification": 43,
+    "cfd3d": 495,
+    "chaos": 6,
+    "classa5axis": 19,
+    "clock": 1,
+    "closed_loop": 2,
+    "closure-audit": 4,
+    "collaboration": 15,
+    "collision-authority": 48,
+    "configuration": 6,
+    "context": 2,
+    "core": 6,
+    "crossdomain": 23,
+    "custody": 5,
+    "determinism": 9,
+    "digital_thread": 9,
+    "digital_twin": 19,
+    "dimensioning": 3,
+    "distributed-compute": 13,
+    "drawing": 11,
+    "drone": 15,
+    "eco": 8,
+    "engineering": 16,
+    "engineeringCore": 25,
+    "engineering_ai": 124,
+    "engineering_cfd": 2,
+    "engineering_compute": 2,
+    "engineering_distributed": 11,
+    "engineering_drawing": 2,
+    "engineering_gpu": 7,
+    "engineering_hpc": 14,
+    "engineering_marketplace": 2,
+    "engineering_wasm": 12,
+    "engineering_webgpu": 44,
+    "engineering_workers": 8,
+    "enterprise-trust": 21,
+    "epc": 189,
+    "evidence": 43,
+    "execution": 6,
+    "features": 13,
+    "fem": 418,
+    "forensic": 3,
+    "gcs3d": 32,
+    "gdt": 3,
+    "geometry": 10,
+    "geometry_twin": 12,
+    "governance": 5,
+    "hpc": 16,
+    "identity": 4,
+    "impact": 7,
+    "industrial-data-governance": 13,
+    "industrial-os": 57,
+    "inspection_twin": 6,
+    "integration": 18,
+    "integrity": 3,
+    "intent": 4,
+    "interop": 88,
+    "kernel": 4,
+    "kernels": 8,
+    "kinematics": 12,
+    "lifecycle": 6,
+    "maintenance-governance": 13,
+    "manufacturing": 181,
+    "manufacturing-execution": 9,
+    "manufacturing-job": 3,
+    "manufacturing-release": 10,
+    "manufacturing_twin": 7,
+    "materials": 161,
+    "navigation": 1,
+    "nc": 5,
+    "ncr": 10,
+    "nurbs-geometry": 10,
+    "p0-qualification": 4,
+    "p1-parametric-stress": 3,
+    "parametric": 6,
+    "parametric-cad": 15,
+    "patch035": 18,
+    "pcb": 22,
+    "performance": 3,
+    "persistence-proof": 4,
+    "physical": 5,
+    "physics": 117,
+    "physics_twin": 8,
+    "plm": 17,
+    "plm_evidence": 5,
+    "plugins": 6,
+    "postprocessor": 6,
+    "predictive": 4,
+    "predictive_engineering": 10,
+    "production-continuity": 17,
+    "production-proof": 3,
+    "provenance": 10,
+    "qif": 17,
+    "qualification": 12,
+    "quality-metrology": 4,
+    "random": 1,
+    "regeneration-proof": 4,
+    "release": 4,
+    "rendering": 15,
+    "reproducibility": 10,
+    "reverse_engineering": 53,
+    "revision": 16,
+    "round-trip": 3,
+    "runtime_telemetry": 6,
+    "security": 3,
+    "semantics": 10,
+    "serialization": 10,
+    "session": 2,
+    "simulation": 17,
+    "sketch": 52,
+    "sketch034": 20,
+    "spc": 9,
+    "state_sync": 7,
+    "storage": 1,
+    "structural-physics": 35,
+    "surface": 5,
+    "sync": 6,
+    "telemetry": 32,
+    "tests": 1,
+    "tool-qualification": 5,
+    "topology": 15,
+    "trust": 17,
+    "twin_evidence": 9,
+    "validation": 217,
+    "variants": 6,
+    "verification": 32,
+    "viewport": 73,
+    "wiring-harness": 10,
+    "workbench": 6,
+    "workflow": 6,
+    "workflows": 3
+  },
+  "sampleModules": [
+    {
+      "path": "src/engine/FirestoreStorageEngine.ts",
+      "sizeBytes": 3558
+    },
+    {
+      "path": "src/engine/HardAcceptanceGate158.ts",
+      "sizeBytes": 4484
+    },
+    {
+      "path": "src/engine/HardAcceptanceGate159.ts",
+      "sizeBytes": 2861
+    },
+    {
+      "path": "src/engine/HardAcceptanceGate161.ts",
+      "sizeBytes": 139
+    },
+    {
+      "path": "src/engine/HardAcceptanceGate162.ts",
+      "sizeBytes": 169
+    },
+    {
+      "path": "src/engine/HardAcceptanceGate163.ts",
+      "sizeBytes": 171
+    },
+    {
+      "path": "src/engine/HardAcceptanceGate167.ts",
+      "sizeBytes": 131
+    },
+    {
+      "path": "src/engine/HardAcceptanceGate179.ts",
+      "sizeBytes": 2593
+    },
+    {
+      "path": "src/engine/HardAcceptanceGate180.ts",
+      "sizeBytes": 228
+    },
+    {
+      "path": "src/engine/HardAcceptanceGate181.ts",
+      "sizeBytes": 15836
+    },
+    {
+      "path": "src/engine/HardAcceptanceGate182.ts",
+      "sizeBytes": 16072
+    },
+    {
+      "path": "src/engine/P2ClosureForensic.ts",
+      "sizeBytes": 3389
+    },
+    {
+      "path": "src/engine/__test_helpers__/SimulationAuthorityMock.ts",
+      "sizeBytes": 412
+    },
+    {
+      "path": "src/engine/adse/p0/ADSEEngine.ts",
+      "sizeBytes": 15818
+    },
+    {
+      "path": "src/engine/adse/p0/ADSEForensicClosureAuditEngine.ts",
+      "sizeBytes": 12888
+    },
+    {
+      "path": "src/engine/adse/p0/ADSERepresentativePath.ts",
+      "sizeBytes": 1525
+    },
+    {
+      "path": "src/engine/adse/p0/types.ts",
+      "sizeBytes": 4481
+    },
+    {
+      "path": "src/engine/adse/p1/ADSEP1Engine.ts",
+      "sizeBytes": 5543
+    },
+    {
+      "path": "src/engine/adse/p1/ADSEP1ForensicAuditEngine.ts",
+      "sizeBytes": 5231
+    },
+    {
+      "path": "src/engine/adse/p1/ADSERequirementsEngine.ts",
+      "sizeBytes": 6033
+    },
+    {
+      "path": "src/engine/adse/p1/ADSESystemModelEngine.ts",
+      "sizeBytes": 5654
+    },
+    {
+      "path": "src/engine/adse/p1/RequirementImpactAnalyzer.ts",
+      "sizeBytes": 1583
+    },
+    {
+      "path": "src/engine/adse/p1/RequirementTraceabilityEngine.ts",
+      "sizeBytes": 1745
+    },
+    {
+      "path": "src/engine/adse/p1/VerificationIntentEngine.ts",
+      "sizeBytes": 2025
+    },
+    {
+      "path": "src/engine/adse/p1/index.ts",
+      "sizeBytes": 393
+    },
+    {
+      "path": "src/engine/adse/p1/types.ts",
+      "sizeBytes": 3677
+    },
+    {
+      "path": "src/engine/adse/p10/ADSEP10Engine.ts",
+      "sizeBytes": 1296
+    },
+    {
+      "path": "src/engine/adse/p10/MeasurementEngine.ts",
+      "sizeBytes": 5146
+    },
+    {
+      "path": "src/engine/adse/p10/SensorGovernanceEngine.ts",
+      "sizeBytes": 1827
+    },
+    {
+      "path": "src/engine/adse/p10/SensorPersistenceEngine.ts",
+      "sizeBytes": 3226
+    },
+    {
+      "path": "src/engine/adse/p10/SensorRegistry.ts",
+      "sizeBytes": 5615
+    },
+    {
+      "path": "src/engine/adse/p10/types.ts",
+      "sizeBytes": 2346
+    },
+    {
+      "path": "src/engine/adse/p11/ADSEP11Engine.ts",
+      "sizeBytes": 7619
+    },
+    {
+      "path": "src/engine/adse/p11/FailureGovernanceEngine.ts",
+      "sizeBytes": 4190
+    },
+    {
+      "path": "src/engine/adse/p11/FailureRegistry.ts",
+      "sizeBytes": 5834
+    },
+    {
+      "path": "src/engine/adse/p11/ReliabilityCausalityEngine.ts",
+      "sizeBytes": 2811
+    },
+    {
+      "path": "src/engine/adse/p11/ReliabilityPersistenceEngine.ts",
+      "sizeBytes": 3060
+    },
+    {
+      "path": "src/engine/adse/p11/types.ts",
+      "sizeBytes": 2627
+    },
+    {
+      "path": "src/engine/adse/p12/ADSEP12Engine.ts",
+      "sizeBytes": 8408
+    },
+    {
+      "path": "src/engine/adse/p12/SafetyCausalityEngine.ts",
+      "sizeBytes": 2601
+    },
+    {
+      "path": "src/engine/adse/p12/SafetyGovernanceEngine.ts",
+      "sizeBytes": 5069
+    },
+    {
+      "path": "src/engine/adse/p12/SafetyPersistenceEngine.ts",
+      "sizeBytes": 3507
+    },
+    {
+      "path": "src/engine/adse/p12/SafetyRegistry.ts",
+      "sizeBytes": 4731
+    },
+    {
+      "path": "src/engine/adse/p12/types.ts",
+      "sizeBytes": 2310
+    },
+    {
+      "path": "src/engine/adse/p13/ADSEP13Engine.ts",
+      "sizeBytes": 9864
+    },
+    {
+      "path": "src/engine/adse/p13/ConfigurationApplicabilityEngine.ts",
+      "sizeBytes": 2603
+    },
+    {
+      "path": "src/engine/adse/p13/ConfigurationAuthorityEngine.ts",
+      "sizeBytes": 2856
+    },
+    {
+      "path": "src/engine/adse/p13/ConfigurationBaselineEngine.ts",
+      "sizeBytes": 4266
+    },
+    {
+      "path": "src/engine/adse/p13/ConfigurationChangeEngine.ts",
+      "sizeBytes": 4649
+    },
+    {
+      "path": "src/engine/adse/p13/ConfigurationCompatibilityEngine.ts",
+      "sizeBytes": 3631
+    },
+    {
+      "path": "src/engine/adse/p5/index.ts",
+      "sizeBytes": 576
+    },
+    {
+      "path": "src/engine/assembly/clash/ClashEvidence.ts",
+      "sizeBytes": 5245
+    },
+    {
+      "path": "src/engine/assembly/massive/AssemblyGPUScene.ts",
+      "sizeBytes": 4545
+    },
+    {
+      "path": "src/engine/benchmark/cad/CADBenchmarkBattery.ts",
+      "sizeBytes": 2345
+    },
+    {
+      "path": "src/engine/cad/direct/DirectModelingEngine.ts",
+      "sizeBytes": 4790
+    },
+    {
+      "path": "src/engine/cad-kernel/__tests__/KernelTruthQualification.test.ts",
+      "sizeBytes": 22669
+    },
+    {
+      "path": "src/engine/cad-kernel/healing/WireHealing.ts",
+      "sizeBytes": 3462
+    },
+    {
+      "path": "src/engine/cad-kernel/topology/TopologyContracts.ts",
+      "sizeBytes": 1852
+    },
+    {
+      "path": "src/engine/cam/machine-sim/SimulationEvidenceGenerator.ts",
+      "sizeBytes": 3146
+    },
+    {
+      "path": "src/engine/certification/SimulationCertificateEngine.ts",
+      "sizeBytes": 19377
+    },
+    {
+      "path": "src/engine/cfd3d/conservation/MassFluxCalculator.ts",
+      "sizeBytes": 1299
+    },
+    {
+      "path": "src/engine/cfd3d/fvm/FvmTypes.ts",
+      "sizeBytes": 1417
+    },
+    {
+      "path": "src/engine/cfd3d/solvers/adversarial/__tests__/AdversarialBattery.test.ts",
+      "sizeBytes": 3119
+    },
+    {
+      "path": "src/engine/cfd3d/solvers/rans/RansFailure.ts",
+      "sizeBytes": 1104
+    },
+    {
+      "path": "src/engine/cfd3d/solvers/verification/IndependentCFDVerifier.ts",
+      "sizeBytes": 1488
+    },
+    {
+      "path": "src/engine/collision-authority/adapters/CanonicalGeometryAdapter.ts",
+      "sizeBytes": 6620
+    },
+    {
+      "path": "src/engine/digital_twin/types.ts",
+      "sizeBytes": 7430
+    },
+    {
+      "path": "src/engine/engineering_ai/EngineeringAIRuntime.ts",
+      "sizeBytes": 9543
+    },
+    {
+      "path": "src/engine/engineering_ai/simulation/SimulationDiagnosticEngine.ts",
+      "sizeBytes": 4277
+    },
+    {
+      "path": "src/engine/engineering_webgpu/linear_algebra/GPUReductionEngine.ts",
+      "sizeBytes": 5759
+    },
+    {
+      "path": "src/engine/epc/__tests__/EPC040.test.ts",
+      "sizeBytes": 7547
+    },
+    {
+      "path": "src/engine/epc/robot/RobotForwardKinematicsTypes.ts",
+      "sizeBytes": 5360
+    },
+    {
+      "path": "src/engine/fem/assembly/GlobalAssemblyEvidenceEngine.ts",
+      "sizeBytes": 3292
+    },
+    {
+      "path": "src/engine/fem/core/IndustrialQualificationEngine.ts",
+      "sizeBytes": 7564
+    },
+    {
+      "path": "src/engine/fem/kinematics/FiniteStrainMaterial.ts",
+      "sizeBytes": 1133
+    },
+    {
+      "path": "src/engine/fem/solver/HardAcceptanceGate079.ts",
+      "sizeBytes": 10266
+    },
+    {
+      "path": "src/engine/fem/verification/HardAcceptanceGate087.ts",
+      "sizeBytes": 12306
+    },
+    {
+      "path": "src/engine/impact/ChangeImpactAnalyzer.ts",
+      "sizeBytes": 14065
+    },
+    {
+      "path": "src/engine/integration/tests/adversarial_integration_tests_003.ts",
+      "sizeBytes": 2800
+    },
+    {
+      "path": "src/engine/kernel/types.ts",
+      "sizeBytes": 744
+    },
+    {
+      "path": "src/engine/manufacturing/collision/generateReports106.ts",
+      "sizeBytes": 4594
+    },
+    {
+      "path": "src/engine/manufacturing/twin/MachineTwinAnomalyEngine.ts",
+      "sizeBytes": 7173
+    },
+    {
+      "path": "src/engine/materials/ParameterOptimizationTypes273.ts",
+      "sizeBytes": 5823
+    },
+    {
+      "path": "src/engine/materials/temperature/InterpolationEngine.ts",
+      "sizeBytes": 633
+    },
+    {
+      "path": "src/engine/pcb/PcbStructuralDeflectionEngine.ts",
+      "sizeBytes": 7215
+    },
+    {
+      "path": "src/engine/physics/materials/MaterialValidator.ts",
+      "sizeBytes": 2179
+    },
+    {
+      "path": "src/engine/production-continuity/ContinuityPlanEngine.ts",
+      "sizeBytes": 338
+    },
+    {
+      "path": "src/engine/reverse_engineering/features/FeatureRecognitionTypes320.ts",
+      "sizeBytes": 2913
+    },
+    {
+      "path": "src/engine/simulation/PhysicsAiSurrogate.ts",
+      "sizeBytes": 2573
+    },
+    {
+      "path": "src/engine/state_sync/HardAcceptanceGate128.ts",
+      "sizeBytes": 8384
+    },
+    {
+      "path": "src/engine/topology/TopologyAdversarialSuite.ts",
+      "sizeBytes": 7897
+    },
+    {
+      "path": "src/engine/validation/HardAcceptanceGate085.ts",
+      "sizeBytes": 10424
+    },
+    {
+      "path": "src/engine/validation/SketchModelVerifier.ts",
+      "sizeBytes": 5522
+    },
+    {
+      "path": "src/engine/viewport/DraftTool277.ts",
+      "sizeBytes": 1218
+    }
+  ]
+}

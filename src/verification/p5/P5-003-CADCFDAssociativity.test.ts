@@ -10,12 +10,17 @@ import { Fvm3DNavierStokesSolver } from '../../engine/cfd3d/Fvm3DNavierStokesSol
 import { EngineeringHashChain } from '../../engine/evidence/EngineeringHashChain';
 import { EngineeringEventStore } from '../../engine/industrial-os/event-model/EngineeringEventStore';
 import { FluidProperties3D, SolverConfig3D } from '../../engine/cfd3d/Fvm3DTypes';
+import { initializeAuthorityHandshake } from '../../engine/simulation/SimulationAuthorityInternal';
+
+initializeAuthorityHandshake();
 
 describe('P5-003 — CAD → CFD Revision / Associativity / Invalidation Proof', () => {
+
   const standardFluid: FluidProperties3D = {
     densityKgM3: 1.225,
     viscosityPaS: 1.8e-5
   };
+
 
   const solverConfig: SolverConfig3D = {
     maxIterations: 10,
@@ -86,7 +91,7 @@ describe('P5-003 — CAD → CFD Revision / Associativity / Invalidation Proof',
 
     // 2. Perform CAD Mutation: Extrude depth 25 mm -> 50 mm (REV-B)
     docCAD.revision = 2;
-    docCAD.features[0].parameters.depth = 50;
+    docCAD.features![0].parameters!.depth = 50;
 
     const evalResultB = DocumentEvaluator.evaluate(docCAD, { generateCFD: true });
     expect(evalResultB.success).toBe(true);
@@ -178,7 +183,7 @@ describe('P5-003 — CAD → CFD Revision / Associativity / Invalidation Proof',
 
     // 3. Mutate CAD to REV-B (Extrude depth: 30 mm -> 60 mm)
     docCAD.revision = 2;
-    docCAD.features[0].parameters.depth = 60;
+    docCAD.features![0].parameters!.depth = 60;
 
     const evalB = DocumentEvaluator.evaluate(docCAD, { generateCFD: true });
     const artCAD_B = CanonicalPLMProjectionAdapter.projectFromDocument(docCAD, evalB);
@@ -266,11 +271,11 @@ describe('P5-003 — CAD → CFD Revision / Associativity / Invalidation Proof',
       },
       verdict: 'VALID'
     };
-    docCAD.evidence.push(evidenceA);
+    docCAD.evidence!.push(evidenceA);
 
     // 3. Mutate CAD to REV-B (Extrude depth: 25 mm -> 60 mm)
     docCAD.revision = 2;
-    docCAD.features[0].parameters.depth = 60;
+    docCAD.features![0].parameters!.depth = 60;
 
     const evalB = DocumentEvaluator.evaluate(docCAD, { generateCFD: true });
     const solidB = evalB.evaluatedShape as Solid;
@@ -312,7 +317,7 @@ describe('P5-003 — CAD → CFD Revision / Associativity / Invalidation Proof',
       },
       verdict: 'VALID'
     };
-    docCAD.evidence.push(evidenceB);
+    docCAD.evidence!.push(evidenceB);
 
     // 5. Strict Physical & Evidence Discretization Proof
     expect(meshA.cells[0].volume).not.toEqual(meshB.cells[0].volume);
@@ -322,8 +327,8 @@ describe('P5-003 — CAD → CFD Revision / Associativity / Invalidation Proof',
     expect(solverOutputHashA).not.toEqual(solverOutputHashB);
 
     // 6. Immutability & Anti-Masquerade Proof
-    const evREV1 = docCAD.evidence.find(e => e.revision === 1 && e.sourceSystem === 'SECP_CFD_ENGINE');
-    const evREV2 = docCAD.evidence.find(e => e.revision === 2 && e.sourceSystem === 'SECP_CFD_ENGINE');
+    const evREV1 = docCAD.evidence!.find(e => e.revision === 1 && e.sourceSystem === 'SECP_CFD_ENGINE');
+    const evREV2 = docCAD.evidence!.find(e => e.revision === 2 && e.sourceSystem === 'SECP_CFD_ENGINE');
 
     expect(evREV1).toBeDefined();
     expect(evREV2).toBeDefined();
@@ -471,7 +476,7 @@ describe('P5-003 — CAD → CFD Revision / Associativity / Invalidation Proof',
       payload: { pressureDropPa: solA.monitors.pressureDropPa },
       verdict: 'VALID'
     };
-    docCAD.evidence.push(evidenceA);
+    docCAD.evidence!.push(evidenceA);
 
     // Step 4: Register CFD Artifact in PLM with dependency
     EngineeringPLMEngine.registerArtifact({
@@ -493,7 +498,7 @@ describe('P5-003 — CAD → CFD Revision / Associativity / Invalidation Proof',
 
     // Step 5: CAD Geometry Mutation -> REV-B
     docCAD.revision = 2;
-    docCAD.features[0].parameters.depth = 50;
+    docCAD.features![0].parameters!.depth = 50;
 
     const evalB = DocumentEvaluator.evaluate(docCAD, { generateCFD: true });
     expect(evalB.success).toBe(true);
@@ -537,7 +542,7 @@ describe('P5-003 — CAD → CFD Revision / Associativity / Invalidation Proof',
       payload: { pressureDropPa: solB.monitors.pressureDropPa },
       verdict: 'VALID'
     };
-    docCAD.evidence.push(evidenceB);
+    docCAD.evidence!.push(evidenceB);
 
     // Step 9: Register REV-B CFD Artifact in PLM
     EngineeringPLMEngine.registerArtifact({

@@ -1,0 +1,61 @@
+================================================================================
+SECP-SECURITY-009 RAW FORENSIC EXECUTION LOG
+Execution Timestamp: 2026-11-02T07:50:59.841Z
+Command: npx vitest run src/engine/forensic/SEC007_LiveForensicAuditor.test.ts src/engine/forensic/__tests__/SEC009_MutationHarness.test.ts
+Environment: Node.js v22.23.4 / Vitest 1.6.1 / TypeScript 5.9.3 AST Analyzer
+================================================================================
+
+
+ RUN  v1.6.1 /app/applet
+
+stdout | src/engine/forensic/__tests__/SEC009_MutationHarness.test.ts > SECP-SECURITY-009 Real Mutation Qualification Suite > Mutation 1: Null Capability Check Removal is detected via security assertion failure
+[MUTATION TEST] Mutation 1 detected: Null capability was accepted under mutation.
+[MUTATION TEST] Baseline restored after Mutation 1.
+
+stdout | src/engine/forensic/__tests__/SEC009_MutationHarness.test.ts > SECP-SECURITY-009 Real Mutation Qualification Suite > Mutation 2: Capability Identity Check Weakening is detected
+[MUTATION TEST] Mutation 2 detected: Forged structural object passed reference check.
+[MUTATION TEST] Baseline restored after Mutation 2.
+
+stdout | src/engine/forensic/__tests__/SEC009_MutationHarness.test.ts > SECP-SECURITY-009 Real Mutation Qualification Suite > Mutation 3: Domain Authorization Scope Removal is detected
+[MUTATION TEST] Mutation 3 detected: Cross-domain capability leakage allowed.
+[MUTATION TEST] Baseline restored after Mutation 3.
+
+stdout | src/engine/forensic/__tests__/SEC009_MutationHarness.test.ts > SECP-SECURITY-009 Real Mutation Qualification Suite > Mutation 4: Authority Initialization Gate Removal is detected
+[MUTATION TEST] Mutation 4 detected: Pre-boot uninitialized seal allowed.
+[MUTATION TEST] Baseline restored after Mutation 4.
+
+stdout | src/engine/forensic/__tests__/SEC009_MutationHarness.test.ts > SECP-SECURITY-009 Real Mutation Qualification Suite > Mutation 5: Token Revocation Registry Bypass is detected
+[MUTATION TEST] Mutation 5 detected: Revoked capability was replayed successfully.
+[MUTATION TEST] Baseline restored after Mutation 5.
+
+ ✓ src/engine/forensic/__tests__/SEC009_MutationHarness.test.ts  (6 tests) 12ms
+ ✓ src/engine/forensic/SEC007_LiveForensicAuditor.test.ts  (4 tests) 7014ms
+stdout | src/engine/forensic/SEC007_LiveForensicAuditor.test.ts > SECP-SECURITY-009 Remediated Forensic Auditor (AST-Enforced) > should deterministically enumerate all modules and perform AST analysis on src/engine
+[SEC009 AST AUDITOR] Deterministically discovered 4505 modules under src/engine
+[SEC009 AST AUDITOR] Total Production Modules Audited: 3916
+[SEC009 AST AUDITOR] Production AUTHORITY_PRODUCER: 3
+[SEC009 AST AUDITOR] Production AUTHORITY_CONSUMER: 12
+[SEC009 AST AUDITOR] Production NO_AUTHORITY: 3901
+[SEC009 AST AUDITOR] Production SUSPICIOUS_UNKNOWN: 0
+[SEC009 AST AUDITOR] Production Unauthenticated Seal Calls: 0
+[SEC009 AST AUDITOR] Production Unresolved Dynamic Calls: 4
+
+stdout | src/engine/forensic/SEC007_LiveForensicAuditor.test.ts > SECP-SECURITY-009 Remediated Forensic Auditor (AST-Enforced) > should discover intentional negative unauthenticated tests in test directories via AST
+[SEC009 AST AUDITOR] Discovered 1 intentional unauthenticated negative test(s) in test suites
+
+stdout | src/engine/forensic/SEC007_LiveForensicAuditor.test.ts > SECP-SECURITY-009 Remediated Forensic Auditor (AST-Enforced) > should execute against all 15 physical adversarial fixtures and enforce zero false negatives
+[SEC009 ADVERSARIAL VALIDATION] Evaluated 15 physical fixtures:
+ - Direct Violations Detected: 5
+ - Unresolved / Suspicious (Fail-Closed): 8
+ - Authenticated Passes: 0
+
+
+ Test Files  2 passed (2)
+      Tests  10 passed (10)
+   Start at  07:50:47
+   Duration  12.35s (transform 3.61s, setup 0ms, collect 4.36s, tests 7.03s, environment 0ms, prepare 271ms)
+
+
+================================================================================
+END OF EXECUTION LOG — 10 TESTS TOTAL (4 AST AUDITOR TESTS, 6 MUTATION TESTS)
+================================================================================

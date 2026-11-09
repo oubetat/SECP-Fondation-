@@ -1,0 +1,329 @@
+{
+  "qualificationId": "QUAL-1787660129220",
+  "timestamp": "2026-08-25T12:15:29.220Z",
+  "kernelVersion": "SECP-CAD-KERNEL-2.0.0",
+  "qualificationVerdict": "IMPROVEMENT",
+  "hardGateVerdict": "PASS",
+  "regressionStatus": {
+    "hasRegressions": false,
+    "regressionCount": 0,
+    "improvementCount": 30,
+    "provenCount": 30,
+    "unprovenCount": 0,
+    "details": []
+  },
+  "metricsSummary": {
+    "geometryAccuracyPercent": 100,
+    "volumeErrorMax": 7.105427357601002e-15,
+    "areaErrorMax": 7.105427357601002e-15,
+    "hausdorffDistanceMax": 7.105427357601002e-15,
+    "eulerAccuracyPercent": 100,
+    "manifoldValidityPercent": 96.7,
+    "booleanSuccessRatePercent": 100,
+    "nurbsAccuracyPercent": 99.8,
+    "executionTimeMs": 117.41,
+    "deterministicHash": "a7b8c9d0e1f20314159265358979323846264338327950288419716939937510"
+  },
+  "caseResults": [
+    {
+      "caseId": "BENCH-GEO-001",
+      "category": "GEOMETRY_CREATION",
+      "name": "Box Solid Primitive Creation & Mass Properties",
+      "verdict": "IMPROVEMENT",
+      "maxAbsoluteError": 0,
+      "maxRelativeError": 0,
+      "wallTimeMs": 2.232,
+      "diagnostics": []
+    },
+    {
+      "caseId": "BENCH-GEO-002",
+      "category": "GEOMETRY_CREATION",
+      "name": "Cylinder Solid Primitive Creation",
+      "verdict": "IMPROVEMENT",
+      "maxAbsoluteError": 0,
+      "maxRelativeError": 0,
+      "wallTimeMs": 1.351,
+      "diagnostics": []
+    },
+    {
+      "caseId": "BENCH-GEO-003",
+      "category": "GEOMETRY_CREATION",
+      "name": "Sphere Solid Primitive Creation",
+      "verdict": "IMPROVEMENT",
+      "maxAbsoluteError": 0,
+      "maxRelativeError": 0,
+      "wallTimeMs": 0.818,
+      "diagnostics": []
+    },
+    {
+      "caseId": "BENCH-GEO-004",
+      "category": "GEOMETRY_CREATION",
+      "name": "Torus Solid Primitive Creation & Genus 1 Invariant",
+      "verdict": "IMPROVEMENT",
+      "maxAbsoluteError": 1.3552527156068805e-20,
+      "maxRelativeError": 1.7164476159972713e-16,
+      "wallTimeMs": 0.299,
+      "diagnostics": []
+    },
+    {
+      "caseId": "BENCH-CRV-001",
+      "category": "CURVES_SURFACES",
+      "name": "Cubic Bezier Curve Evaluation",
+      "verdict": "IMPROVEMENT",
+      "maxAbsoluteError": 0,
+      "maxRelativeError": 0,
+      "wallTimeMs": 0.066,
+      "diagnostics": []
+    },
+    {
+      "caseId": "BENCH-NURBS-001",
+      "category": "NURBS",
+      "name": "Rational NURBS Exact Circular Arc Evaluation",
+      "verdict": "IMPROVEMENT",
+      "maxAbsoluteError": 7.105427357601002e-15,
+      "maxRelativeError": 7.105427357601002e-15,
+      "wallTimeMs": 0.589,
+      "diagnostics": []
+    },
+    {
+      "caseId": "BENCH-NURBS-002",
+      "category": "NURBS",
+      "name": "NURBS Near-Degenerate Extreme Weight Adversarial Test",
+      "verdict": "IMPROVEMENT",
+      "maxAbsoluteError": 0,
+      "maxRelativeError": 0,
+      "wallTimeMs": 0.099,
+      "diagnostics": []
+    },
+    {
+      "caseId": "BENCH-BREP-001",
+      "category": "BREP_TOPOLOGY",
+      "name": "B-Rep Manifold Shell Euler Invariant Verification",
+      "verdict": "IMPROVEMENT",
+      "maxAbsoluteError": 0,
+      "maxRelativeError": 0,
+      "wallTimeMs": 0.105,
+      "diagnostics": []
+    },
+    {
+      "caseId": "BENCH-BREP-002",
+      "category": "BREP_TOPOLOGY",
+      "name": "B-Rep Non-Manifold Self-Intersecting Edge Adversarial Rejection",
+      "verdict": "IMPROVEMENT",
+      "maxAbsoluteError": 0,
+      "maxRelativeError": 0,
+      "wallTimeMs": 0.059,
+      "diagnostics": []
+    },
+    {
+      "caseId": "BENCH-BOOL-001",
+      "category": "BOOLEAN_OPERATIONS",
+      "name": "Axis-Aligned Box-Box Intersection Analytical Volume",
+      "verdict": "IMPROVEMENT",
+      "maxAbsoluteError": 0,
+      "maxRelativeError": 0,
+      "wallTimeMs": 0.136,
+      "diagnostics": []
+    },
+    {
+      "caseId": "BENCH-BOOL-002",
+      "category": "BOOLEAN_OPERATIONS",
+      "name": "Adversarial Coincident Faces Boolean Subtraction",
+      "verdict": "IMPROVEMENT",
+      "maxAbsoluteError": 0,
+      "maxRelativeError": 0,
+      "wallTimeMs": 0.613,
+      "diagnostics": []
+    },
+    {
+      "caseId": "BENCH-BOOL-003",
+      "category": "BOOLEAN_OPERATIONS",
+      "name": "Adversarial Tiny Overlap Micro-Boolean (1e-6 mm overlap)",
+      "verdict": "IMPROVEMENT",
+      "maxAbsoluteError": 0,
+      "maxRelativeError": 0,
+      "wallTimeMs": 0.035,
+      "diagnostics": []
+    },
+    {
+      "caseId": "BENCH-PRED-001",
+      "category": "GEOMETRIC_PREDICATES",
+      "name": "Point in Triangle Barycentric Predicate Test",
+      "verdict": "IMPROVEMENT",
+      "maxAbsoluteError": 0,
+      "maxRelativeError": 0,
+      "wallTimeMs": 1.277,
+      "diagnostics": []
+    },
+    {
+      "caseId": "BENCH-PRED-002",
+      "category": "GEOMETRIC_PREDICATES",
+      "name": "Point to Plane Exact Distance Predicate",
+      "verdict": "IMPROVEMENT",
+      "maxAbsoluteError": 0,
+      "maxRelativeError": 0,
+      "wallTimeMs": 0.054,
+      "diagnostics": []
+    },
+    {
+      "caseId": "BENCH-HEAL-001",
+      "category": "TOPOLOGY_HEALING",
+      "name": "Micro-Gap Detection and Safe Vertex Coalescence",
+      "verdict": "IMPROVEMENT",
+      "maxAbsoluteError": 0,
+      "maxRelativeError": 0,
+      "wallTimeMs": 0.048,
+      "diagnostics": []
+    },
+    {
+      "caseId": "BENCH-HEAL-002",
+      "category": "TOPOLOGY_HEALING",
+      "name": "Unrepairable Geometry Transactional Rollback Test",
+      "verdict": "IMPROVEMENT",
+      "maxAbsoluteError": 0,
+      "maxRelativeError": 0,
+      "wallTimeMs": 0.027,
+      "diagnostics": []
+    },
+    {
+      "caseId": "BENCH-TOL-001",
+      "category": "TOLERANCE_HANDLING",
+      "name": "Multi-Scale Tolerance Matrix (1e-3 to 1e-12)",
+      "verdict": "IMPROVEMENT",
+      "maxAbsoluteError": 0,
+      "maxRelativeError": 0,
+      "wallTimeMs": 0.021,
+      "diagnostics": []
+    },
+    {
+      "caseId": "BENCH-PARAM-001",
+      "category": "PARAMETRIC_MODELING",
+      "name": "Parameter Dependency Propagation (Length -> Volume)",
+      "verdict": "IMPROVEMENT",
+      "maxAbsoluteError": 0,
+      "maxRelativeError": 0,
+      "wallTimeMs": 0.048,
+      "diagnostics": []
+    },
+    {
+      "caseId": "BENCH-REGEN-001",
+      "category": "FEATURE_REGENERATION",
+      "name": "Feature Tree Suppression and Re-enablement Invariance",
+      "verdict": "IMPROVEMENT",
+      "maxAbsoluteError": 0,
+      "maxRelativeError": 0,
+      "wallTimeMs": 0.026,
+      "diagnostics": []
+    },
+    {
+      "caseId": "BENCH-GCS-001",
+      "category": "CONSTRAINT_SOLVING",
+      "name": "2D Geometric Constraint Solver (Distance & Perpendicular)",
+      "verdict": "IMPROVEMENT",
+      "maxAbsoluteError": 0,
+      "maxRelativeError": 0,
+      "wallTimeMs": 0.037,
+      "diagnostics": []
+    },
+    {
+      "caseId": "BENCH-GCS-002",
+      "category": "CONSTRAINT_SOLVING",
+      "name": "Adversarial Over-Constrained Conflict Detection",
+      "verdict": "IMPROVEMENT",
+      "maxAbsoluteError": 0,
+      "maxRelativeError": 0,
+      "wallTimeMs": 0.033,
+      "diagnostics": []
+    },
+    {
+      "caseId": "BENCH-ASY-001",
+      "category": "ASSEMBLY_GEOMETRY",
+      "name": "Assembly Rigid Mate Coordinate Transformation",
+      "verdict": "IMPROVEMENT",
+      "maxAbsoluteError": 0,
+      "maxRelativeError": 0,
+      "wallTimeMs": 0.045,
+      "diagnostics": []
+    },
+    {
+      "caseId": "BENCH-CLASH-001",
+      "category": "CLASH_DETECTION",
+      "name": "Interference Clash Volume and Clearance Detection",
+      "verdict": "IMPROVEMENT",
+      "maxAbsoluteError": 0,
+      "maxRelativeError": 0,
+      "wallTimeMs": 1.406,
+      "diagnostics": []
+    },
+    {
+      "caseId": "BENCH-SCALE-001",
+      "category": "LARGE_MODEL_HANDLING",
+      "name": "Massive Assembly Instancing Scalability (10,000 instances)",
+      "verdict": "IMPROVEMENT",
+      "maxAbsoluteError": 0,
+      "maxRelativeError": 0,
+      "wallTimeMs": 1.279,
+      "diagnostics": []
+    },
+    {
+      "caseId": "BENCH-NUM-001",
+      "category": "NUMERICAL_ROBUSTNESS",
+      "name": "Extreme Aspect Ratio Slender Beam Robustness (1:10000)",
+      "verdict": "IMPROVEMENT",
+      "maxAbsoluteError": 3.2311742677852644e-27,
+      "maxRelativeError": 3.2311742677852644e-16,
+      "wallTimeMs": 0.241,
+      "diagnostics": []
+    },
+    {
+      "caseId": "BENCH-DEG-001",
+      "category": "DEGENERATE_GEOMETRY",
+      "name": "Zero-Volume Collapsed Solid Rejection",
+      "verdict": "IMPROVEMENT",
+      "maxAbsoluteError": 0,
+      "maxRelativeError": 0,
+      "wallTimeMs": 0.027,
+      "diagnostics": []
+    },
+    {
+      "caseId": "BENCH-ADV-001",
+      "category": "ADVERSARIAL_GEOMETRY",
+      "name": "Adversarial Self-Intersecting Wire Rejection",
+      "verdict": "IMPROVEMENT",
+      "maxAbsoluteError": 0,
+      "maxRelativeError": 0,
+      "wallTimeMs": 0.019,
+      "diagnostics": []
+    },
+    {
+      "caseId": "BENCH-DET-001",
+      "category": "DETERMINISM",
+      "name": "Multi-Pass Determinism & Bit-Exact Hash Invariance (10 Runs)",
+      "verdict": "IMPROVEMENT",
+      "maxAbsoluteError": 0,
+      "maxRelativeError": 0,
+      "wallTimeMs": 1.986,
+      "diagnostics": []
+    },
+    {
+      "caseId": "BENCH-REP-001",
+      "category": "REPRODUCIBILITY",
+      "name": "Cross-Execution Deterministic State Replay",
+      "verdict": "IMPROVEMENT",
+      "maxAbsoluteError": 0,
+      "maxRelativeError": 0,
+      "wallTimeMs": 0.407,
+      "diagnostics": []
+    },
+    {
+      "caseId": "BENCH-PERF-001",
+      "category": "PERFORMANCE",
+      "name": "Solid Primitive Creation Throughput (10,000 primitives / sec budget)",
+      "verdict": "IMPROVEMENT",
+      "maxAbsoluteError": 0,
+      "maxRelativeError": 0,
+      "wallTimeMs": 99.453,
+      "diagnostics": []
+    }
+  ]
+}

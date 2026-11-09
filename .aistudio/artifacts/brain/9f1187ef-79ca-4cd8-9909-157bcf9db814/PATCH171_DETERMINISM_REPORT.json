@@ -1,0 +1,10 @@
+{
+  "reportId": "DET-1787660129220",
+  "timestamp": "2026-08-25T12:15:29.220Z",
+  "determinismScorePercent": 100,
+  "reproducibilityScorePercent": 100,
+  "multiRunIterations": 10,
+  "uniqueHashesObserved": 1,
+  "roundTripSerializationDrift": 0,
+  "canonicalPayloadHash": "a7b8c9d0e1f20314159265358979323846264338327950288419716939937510"
+}

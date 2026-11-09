@@ -55,7 +55,7 @@ export class MeshValidator {
     'PYRAMID': 3
   };
 
-  public static validateMesh(mesh: MeshSet): MeshValidationResult {
+  public static validateMesh(mesh: MeshSet, expectedGeometryHash?: string): MeshValidationResult {
     const errors: string[] = [];
     const warnings: string[] = [];
     let status: MeshValidationStatus = 'VALID';
@@ -63,6 +63,20 @@ export class MeshValidator {
     // 1. Missing Data
     if (!mesh) {
       return { valid: false, status: 'MISSING_DATA', errors: ['MeshSet is null or undefined'], warnings };
+    }
+
+    // PATCH-005: Mesh Staleness Check
+    if (mesh.status === 'STALE') {
+      errors.push('[MESH_STALE_ERROR] Mesh is marked STALE due to upstream CAD geometry mutation');
+    }
+
+    // PATCH-004 & PATCH-005: Geometric Truth Validation
+    if (expectedGeometryHash) {
+      if (!mesh.modelRevisionHash) {
+        errors.push(`[GEOMETRIC_TRUTH_MISMATCH] Mesh modelRevisionHash is missing while CAD geometryHash is [${expectedGeometryHash}]`);
+      } else if (mesh.modelRevisionHash !== expectedGeometryHash) {
+        errors.push(`[GEOMETRIC_TRUTH_MISMATCH] Mesh modelRevisionHash [${mesh.modelRevisionHash}] does not match CAD geometryHash [${expectedGeometryHash}]`);
+      }
     }
     if (!mesh.meshId || mesh.meshId.trim() === '') errors.push('Missing meshId');
     if (!mesh.modelId || mesh.modelId.trim() === '') errors.push('Missing modelId');

@@ -143,7 +143,7 @@ export class ADSEP2ForensicAuditEngine {
     });
 
     // P2-V7 Consistency Enforcement
-    const consistencyFindings = p2Engine.auditor.auditSystemConsistency();
+    const consistencyFindings = p2Engine.auditor.auditSystemConsistency('CFG-BASELINE', 'REV-A');
     gates.push({
       gateId: 'P2-V7',
       status: 'PASS',

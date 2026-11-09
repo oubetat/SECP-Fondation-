@@ -1,0 +1,29 @@
+{
+  "clusters": [
+    {
+      "code": "TS2339",
+      "category": "API_INTEGRITY",
+      "description": "Property does not exist on type",
+      "primaryOccurrences": ["src/engine/assembly/AssemblyConstraintSolver.ts", "src/engine/engineering_webgpu/HardAcceptanceGate296.ts"],
+      "remediation": "Update interfaces in AssemblyConstraintTypes.ts and ComputeBackend.ts to include missing properties used by solvers and gates."
+    },
+    {
+      "code": "TS2322",
+      "category": "CONTRACT_INTEGRITY",
+      "description": "Type not assignable to type",
+      "primaryOccurrences": ["src/components/AISimulationSetupWorkbenchPanel.tsx"],
+      "remediation": "Align enum values and object structures between UI state and domain model interfaces."
+    },
+    {
+      "code": "TS18048",
+      "category": "NULLABILITY",
+      "description": "Object is possibly undefined",
+      "primaryOccurrences": ["src/engine/cad-kernel/document/AssemblyMateSolver.ts"],
+      "remediation": "Add null guards or non-null assertions where data flow guarantees validity, or update types to reflect mandatory presence."
+    }
+  ],
+  "dependencies": {
+    "src/engine/assembly/AssemblyConstraintSolver.ts": ["src/engine/assembly/AssemblyConstraintTypes.ts", "src/engine/assembly/KinematicTypes.ts"],
+    "src/engine/engineering_webgpu/HardAcceptanceGate296.ts": ["src/engine/engineering_webgpu/ComputeBackend.ts"]
+  }
+}

@@ -27,8 +27,13 @@ export interface WiringHarnessElectricalResult {
 export class WiringHarnessElectricalVerifier {
   public static verify(binding: HarnessToCoreBinding): WiringHarnessElectricalResult {
     // 0. GATING: Verify simulation authority seal (Fail-Closed)
-    if (!CanonicalDomainBindingEngine.validateBinding(binding)) {
-      throw new Error(`[AUTHORITY_GATE_REJECTION] Wiring Harness Electrical Verifier execution denied: Invalid or non-authoritative simulation seal.`);
+    if (!binding || !('executionAuthority' in binding) || !binding.executionAuthority?.isAuthoritative) {
+      throw new Error('SIMULATION_AUTHORITY_VIOLATION: Wiring Harness verification attempted without valid execution authorization.');
+    }
+
+    const validation = CanonicalDomainBindingEngine.validateBinding(binding);
+    if (!validation.valid) {
+      throw new Error(`[AUTHORITY_GATE_REJECTION] Wiring Harness Electrical Verifier execution denied: ${validation.errors.join(', ')}`);
     }
 
     const model = binding.payload;

@@ -28,6 +28,7 @@ import {
 } from './ElectrothermalCouplingContract';
 import { ElectricalToCoreBinding } from '../crossdomain/CanonicalDomainBinding';
 import { CanonicalDomainBindingEngine } from '../crossdomain/CanonicalDomainBindingEngine';
+import { issueSealingCapability } from '../simulation/SimulationSealingAuthorization';
 
 export interface ElectrothermalIterationRecord {
   iteration: number;
@@ -94,6 +95,8 @@ export interface AnalyticalSelfHeatingBenchmarkResult {
 }
 
 export class ElectrothermalSolver {
+  private static readonly sealingCapability = issueSealingCapability('ELECTROTHERMAL_SOLVER', ['ELECTRICAL', 'THERMODYNAMICS']);
+
   /**
    * Performs rigorous iterative electrothermal co-simulation with under-relaxation.
    */
@@ -226,13 +229,14 @@ export class ElectrothermalSolver {
         binding.materialHash,
         binding.environmentHash,
         binding.physicsHash
-      );
+      ) as ElectricalToCoreBinding;
+      CanonicalDomainBindingEngine.sealBinding(iterationBinding, ElectrothermalSolver.sealingCapability);
 
       // Use nonlinear solver if diodes are present, otherwise detailed MNA
       const hasDiodes = currentCircuit.components.some(c => c.type === 'DIODE');
       const circuitResult = hasDiodes
-        ? NodalCircuitSolver.solveNonlinearCircuit(iterationBinding as ElectricalToCoreBinding)
-        : NodalCircuitSolver.solveDetailed(iterationBinding as ElectricalToCoreBinding);
+        ? NodalCircuitSolver.solveNonlinearCircuit(iterationBinding)
+        : NodalCircuitSolver.solveDetailed(iterationBinding);
 
       lastCircuitResult = circuitResult;
 

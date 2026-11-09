@@ -20,6 +20,15 @@ import {
 } from './SyncTypes';
 
 export class CanonicalProjections {
+  private static parseRev(rev: string | number | undefined): number {
+    if (typeof rev === 'number') return rev;
+    if (typeof rev === 'string') {
+      const p = parseInt(rev, 10);
+      return isNaN(p) ? 0 : p;
+    }
+    return 0;
+  }
+
   /**
    * Derives Feature Tree Projection from canonical document features and sketches.
    */
@@ -33,7 +42,7 @@ export class CanonicalProjections {
           id: sketch.id,
           featureId: sketch.id,
           documentId: doc.documentId,
-          documentRevision: doc.revision,
+          documentRevision: CanonicalProjections.parseRev(doc.revision),
           name: sketch.name || `Sketch_${sketch.id}`,
           type: 'SKETCH',
           suppressed: false,
@@ -61,7 +70,7 @@ export class CanonicalProjections {
           id: featureId,
           featureId,
           documentId: doc.documentId,
-          documentRevision: doc.revision,
+          documentRevision: CanonicalProjections.parseRev(doc.revision),
           name,
           type,
           suppressed,
@@ -93,13 +102,13 @@ export class CanonicalProjections {
     if (doc.parameters) {
       doc.parameters.forEach(p => {
         items.push({
-          id: p.id,
+          id: p.id || `PARAM-${Math.random().toString(36).substring(2, 9)}`,
           name: p.name,
           value: p.value,
           unit: p.unit || doc.units?.length || 'mm',
           expression: p.expression,
           isDriving: p.isDriving ?? true,
-          documentRevision: doc.revision
+          documentRevision: CanonicalProjections.parseRev(doc.revision)
         });
       });
     }
@@ -115,7 +124,7 @@ export class CanonicalProjections {
             name: `${feat.name || 'Feature'} -> ${key}`,
             value: typeof val === 'object' && val !== null ? JSON.stringify(val) : val,
             unit: doc.units?.length || 'mm',
-            documentRevision: doc.revision,
+            documentRevision: CanonicalProjections.parseRev(doc.revision),
             sourceFeatureId: selectedFeatureId
           });
         });
@@ -124,7 +133,7 @@ export class CanonicalProjections {
 
     return {
       documentId: doc.documentId,
-      documentRevision: doc.revision,
+      documentRevision: CanonicalProjections.parseRev(doc.revision),
       selectedFeatureId,
       items
     };
@@ -135,7 +144,7 @@ export class CanonicalProjections {
    */
   public static deriveViewport(doc: EngineeringDocument): ViewportGeometryProjection {
     const mesh = doc.derived?.mesh;
-    const bRepHash = doc.topologyMap?.hashes?.geometryHash || (doc.evaluatedShape as any)?.id;
+    const bRepHash = (doc.topologyMap as any)?.hashes?.geometryHash || (doc.evaluatedShape as any)?.id;
 
     let faces = 0;
     let edges = 0;
@@ -149,7 +158,7 @@ export class CanonicalProjections {
 
     return {
       documentId: doc.documentId,
-      documentRevision: doc.revision,
+      documentRevision: CanonicalProjections.parseRev(doc.revision),
       mesh,
       bRepHash,
       isStale: false,
@@ -172,7 +181,7 @@ export class CanonicalProjections {
     if (!currentSelection) {
       return {
         documentId: doc.documentId,
-        documentRevision: doc.revision,
+        documentRevision: CanonicalProjections.parseRev(doc.revision),
         selectionStatus: 'EMPTY'
       };
     }
@@ -185,17 +194,17 @@ export class CanonicalProjections {
       if (featureExists) {
         return {
           documentId: doc.documentId,
-          documentRevision: doc.revision,
+          documentRevision: CanonicalProjections.parseRev(doc.revision),
           selectedEntity: {
             ...currentSelection,
-            documentRevision: doc.revision
+            documentRevision: CanonicalProjections.parseRev(doc.revision)
           },
           selectionStatus: 'VALID'
         };
       } else {
         return {
           documentId: doc.documentId,
-          documentRevision: doc.revision,
+          documentRevision: CanonicalProjections.parseRev(doc.revision),
           selectionStatus: 'INVALIDATED',
           reason: `Target feature '${currentSelection.featureId}' was removed in revision ${doc.revision}.`
         };
@@ -215,10 +224,10 @@ export class CanonicalProjections {
     if (isTopologyValid) {
       return {
         documentId: doc.documentId,
-        documentRevision: doc.revision,
+        documentRevision: CanonicalProjections.parseRev(doc.revision),
         selectedEntity: {
           ...currentSelection,
-          documentRevision: doc.revision
+          documentRevision: CanonicalProjections.parseRev(doc.revision)
         },
         selectionStatus: 'VALID'
       };
@@ -226,7 +235,7 @@ export class CanonicalProjections {
 
     return {
       documentId: doc.documentId,
-      documentRevision: doc.revision,
+      documentRevision: CanonicalProjections.parseRev(doc.revision),
       selectionStatus: 'INVALIDATED',
       reason: `Topology '${currentSelection.topologyId}' deleted or modified in revision ${doc.revision}.`
     };
@@ -236,13 +245,15 @@ export class CanonicalProjections {
    * Reconciles Evidence records against current document revision.
    */
   public static reconcileEvidence(doc: EngineeringDocument): EvidenceProjection {
+    const docRevNum = CanonicalProjections.parseRev(doc.revision);
     const records = (doc.evidence || []).map(ev => {
-      const isStale = ev.revision !== doc.revision;
+      const evRevNum = CanonicalProjections.parseRev(ev.revision);
+      const isStale = evRevNum !== docRevNum;
       return {
         evidenceId: ev.evidenceId,
         stage: ev.stage,
         verdict: ev.verdict || 'VALID',
-        evidenceRevision: ev.revision,
+        evidenceRevision: evRevNum,
         isStale,
         canonicalHash: ev.canonicalHash
       };
@@ -252,7 +263,7 @@ export class CanonicalProjections {
 
     return {
       documentId: doc.documentId,
-      documentRevision: doc.revision,
+      documentRevision: docRevNum,
       records,
       hasStaleEvidence
     };
@@ -265,10 +276,11 @@ export class CanonicalProjections {
     doc: EngineeringDocument,
     executionResult?: any
   ): DerivedStatusProjection {
+    const docRevNum = CanonicalProjections.parseRev(doc.revision);
     if (executionResult && executionResult.success === false) {
       return {
         documentId: doc.documentId,
-        documentRevision: doc.revision,
+        documentRevision: docRevNum,
         status: 'FAILED',
         explanation: executionResult.error || 'Engineering operation failed in backend.',
         actionId: executionResult.actionId
@@ -276,10 +288,11 @@ export class CanonicalProjections {
     }
 
     const latestEvidence = doc.evidence?.[doc.evidence.length - 1];
-    if (latestEvidence && latestEvidence.verdict === 'VALID' && latestEvidence.revision === doc.revision) {
+    const latestEvRevNum = latestEvidence ? CanonicalProjections.parseRev(latestEvidence.revision) : -1;
+    if (latestEvidence && latestEvidence.verdict === 'VALID' && latestEvRevNum === docRevNum) {
       return {
         documentId: doc.documentId,
-        documentRevision: doc.revision,
+        documentRevision: docRevNum,
         status: 'VALIDATED',
         explanation: `Document revision ${doc.revision} mathematically validated with evidence hash ${latestEvidence.canonicalHash.substring(0, 8)}.`,
         evidenceId: latestEvidence.evidenceId
@@ -288,7 +301,7 @@ export class CanonicalProjections {
 
     return {
       documentId: doc.documentId,
-      documentRevision: doc.revision,
+      documentRevision: docRevNum,
       status: 'MUTATED',
       explanation: `EngineeringDocument mutated to canonical revision ${doc.revision}.`
     };

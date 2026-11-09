@@ -1,0 +1,35 @@
+{
+  "mission": "SECP-CAD-TRUTH-PATCH-002",
+  "filesModified": [
+    {
+      "path": "src/engine/cfd3d/Fvm3DTypes.ts",
+      "sha256": "d77ef953bec26f43b5cd412dd1a4d908df11da6e77b7e7855c4d2718e2c0f234",
+      "changes": "Added CFDMeshProvenance, ProvenanceIntegrityReport, and NumericalQualificationReport interfaces; added provenance/meshProvenance to FvmMesh3D and reports to CfdSolution3D."
+    },
+    {
+      "path": "src/engine/cad-kernel/cfd/CFDAdapter.ts",
+      "sha256": "ccf4ff479772fe153d12ebb610aefdb74619aeafd2c8039afe45315df5d8fd93",
+      "changes": "Updated meshFromBRep to accept cadRevisionHash in options and construct & attach explicit provenance metadata to generated mesh."
+    },
+    {
+      "path": "src/engine/cfd3d/Fvm3DNavierStokesSolver.ts",
+      "sha256": "950ca7f7692c7a326ef5d4822a08b14254044326a17a2209e462ea3fd12cbd8d",
+      "changes": "Enforced mesh provenance validation at start of solve(); attached provenanceIntegrity and numericalQualification to CfdSolution3D output."
+    },
+    {
+      "path": "src/engine/crossdomain/CanonicalDomainBindingEngine.ts",
+      "sha256": "39b3c96e0bbca73c6fa3f8ac44e99a7c15aa9a1bfa3e5a3d3958629791017b25",
+      "changes": "Added verifyMeshProvenanceBinding method to validate mesh provenance against domain binding metadata."
+    },
+    {
+      "path": "src/engine/simulation/__tests__/CanonicalCadCfdTruthAdversarial.test.ts",
+      "sha256": "bec9c1835ca4beb26476abae7fee16b07c2ac42630f7feaf2545d7ffcbaac9cc",
+      "changes": "Created comprehensive 12-scenario adversarial test suite covering CAD-01 through CAD-12."
+    },
+    {
+      "path": "src/engine/cad-kernel/cfd/__tests__/CFDCADPipeline.test.ts",
+      "sha256": "ef4c71b0be67da63bf2291625e670430ff467a3925876ef18fadeb978c2ff383",
+      "changes": "Updated meshFromBRep option calls to specify matching cadRevisionHash."
+    }
+  ]
+}

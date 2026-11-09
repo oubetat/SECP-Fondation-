@@ -31,7 +31,7 @@ import {
 import { EngineeringPLMEngine } from '../../engine/plm/EngineeringPLMEngine';
 import { CanonicalPLMProjectionAdapter } from '../../engine/plm/CanonicalPLMProjectionAdapter';
 import { EngineeringEventStore } from '../../engine/industrial-os/event-model/EngineeringEventStore';
-import { Solid, Face, TopoShapeEnum } from '../../engine/cad-kernel/topology/TopologyContracts';
+import { Solid, Face, TopoShapeEnum, Orientation } from '../../engine/cad-kernel/topology/TopologyContracts';
 import { EngineeringArtifact } from '../../engine/plm/PLMTypes';
 
 // ============================================================================
@@ -432,12 +432,15 @@ describe('P5-005 — Cross-Domain Dependency Graph & Multi-Workbench Invalidatio
     EngineeringPLMEngine.createECO({
       ecoId: 'ECO-FAIL-TEST',
       title: 'Attempt Release of Outdated Assembly',
+      description: 'Attempt Release of Outdated Assembly',
       reason: 'Validation of release block gate',
+      author: 'SECP_USER',
       status: 'APPROVED',
       approvalStatus: 'APPROVED',
       affectedArtifacts: [artASM_A.artifactId],
-      requestedBy: 'SECP_USER',
-      requestTimestamp: '2026-01-01T00:00:00.000Z'
+      changeRequests: [],
+      validationGates: [],
+      createdAt: '2026-01-01T00:00:00.000Z'
     });
 
     expect(() => {
@@ -618,7 +621,8 @@ describe('P5-005 — Cross-Domain Dependency Graph & Multi-Workbench Invalidatio
         id: 'SHELL_EMPTY',
         shapeType: TopoShapeEnum.SHELL,
         orientedFaces: []
-      }
+      },
+      innerShells: []
     };
 
     // P5-005-S: Deleted Topology
@@ -635,10 +639,11 @@ describe('P5-005 — Cross-Domain Dependency Graph & Multi-Workbench Invalidatio
         id: 'SH_AMBIG',
         shapeType: TopoShapeEnum.SHELL,
         orientedFaces: [
-          { face: { ...topFaceA, id: 'F_DUP_1', persistentId: refA.topologyEntityIdentifier }, orientation: 1 },
-          { face: { ...topFaceA, id: 'F_DUP_2', persistentId: refA.topologyEntityIdentifier }, orientation: 1 }
+          { face: { ...topFaceA, id: 'F_DUP_1', persistentId: refA.topologyEntityIdentifier }, orientation: Orientation.FORWARD },
+          { face: { ...topFaceA, id: 'F_DUP_2', persistentId: refA.topologyEntityIdentifier }, orientation: Orientation.FORWARD }
         ]
-      }
+      },
+      innerShells: []
     };
 
     const ambiguousRebind = TopologyLineageProofEngine.rebindReference(refA, ambiguousSolid, 2);
@@ -717,10 +722,11 @@ describe('P5-005 — Cross-Domain Dependency Graph & Multi-Workbench Invalidatio
       cfdHashB: string;
       camHashA: string;
       camHashB: string;
-      asmStatusA_After: string;
-      femStatusA_After: string;
-      cfdStatusA_After: string;
-      camStatusA_After: string;
+      asmStatusA_Outdated: string;
+      femStatusA_Outdated: string;
+      cfdStatusA_Outdated: string;
+      camStatusA_Outdated: string;
+      femStatusA_AfterRecomp: string;
       rebindState: string;
     }
 

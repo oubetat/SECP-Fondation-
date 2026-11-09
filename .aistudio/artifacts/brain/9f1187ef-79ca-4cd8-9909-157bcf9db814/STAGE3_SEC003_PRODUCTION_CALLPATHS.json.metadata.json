@@ -1,0 +1,5 @@
+{
+  "summary":  "Audit of production call-path migration verifying that all six engineering domains request sealing through the internal authority boundary without receiving raw keys.",
+  "updatedAt":  "2026-11-01T09:19:31.579624962Z",
+  "userFacing":  true
+}

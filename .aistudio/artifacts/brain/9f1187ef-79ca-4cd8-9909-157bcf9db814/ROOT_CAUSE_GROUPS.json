@@ -1,0 +1,93 @@
+{
+  "mission": "SECP-TYPESCRIPT-REPAIR-001",
+  "groups": [
+    {
+      "groupId": "RCG_001_AUTHORITY_GOVERNANCE_TYPES",
+      "targetDomain": "AUTHORITY_GOVERNANCE",
+      "rootContractFiles": [
+        "src/engine/industrial-os/policy/types.ts",
+        "src/engine/industrial-os/types.ts",
+        "src/engine/collaboration/DigitalThreadTypes.ts"
+      ],
+      "description": "Missing exported enum/union members and interface properties in policy, audit, and digital thread contracts.",
+      "repairedMembers": [
+        "PolicyEffect",
+        "PolicyCondition",
+        "EngineeringPolicy",
+        "PolicyContext",
+        "PolicyDecision",
+        "AggregatePolicyDecision",
+        "DigitalThreadNodeType (CAM_OPERATION, MESH, BOUNDARY_CONDITION, etc.)",
+        "DigitalThreadRelationshipType (APPROVED_BY, EVIDENCED_BY, VERIFIES, etc.)",
+        "ThreadConsistencyReport"
+      ],
+      "affectedDiagnosticsCount": 128,
+      "status": "REPAIRED"
+    },
+    {
+      "groupId": "RCG_002_ASSEMBLY_CONSTRAINT_CONTRACTS",
+      "targetDomain": "DATA_CONTRACT_INTERFACE",
+      "rootContractFiles": [
+        "src/engine/assembly/AssemblyConstraintTypes.ts",
+        "src/engine/featureTree.ts"
+      ],
+      "description": "Missing exported solver types, DOF analysis interfaces, kinematic joints, and feature tree nodes in assembly engine.",
+      "repairedMembers": [
+        "ComponentDOFState",
+        "ComponentDOF",
+        "RankTolerance",
+        "DOFTolerancePolicy",
+        "ConstraintGraph",
+        "AssemblySolverReport",
+        "KinematicJoint",
+        "KinematicJointType",
+        "TopologyType",
+        "Vector3",
+        "Vector3D",
+        "FeatureTreeNode"
+      ],
+      "affectedDiagnosticsCount": 312,
+      "status": "REPAIRED"
+    },
+    {
+      "groupId": "RCG_003_CAM_FEATURE_RECOGNITION_CONTRACTS",
+      "targetDomain": "DATA_CONTRACT_INTERFACE",
+      "rootContractFiles": [
+        "src/engine/cam/feature-recognition/FeatureTypes.ts",
+        "src/engine/cam/post-processor/PostTypes.ts",
+        "src/engine/cam/toolpath/ToolpathTypes.ts"
+      ],
+      "description": "Missing feature params, machining intents, post-processor modal states, and toolpath parameters.",
+      "repairedMembers": [
+        "SlotFeatureParams",
+        "StepFeatureParams",
+        "PocketFeatureParams",
+        "ManufacturingFeatureConfidence",
+        "UnitsMode",
+        "ActivePlane",
+        "CoordinateSystemId",
+        "ControllerDialect",
+        "ModalState",
+        "ToolHolderGeometry",
+        "MachiningParameters"
+      ],
+      "affectedDiagnosticsCount": 425,
+      "status": "REPAIRED"
+    },
+    {
+      "groupId": "RCG_004_PERSISTENCE_STORAGE_CONTRACTS",
+      "targetDomain": "PERSISTENCE_STORAGE",
+      "rootContractFiles": [
+        "src/engine/FirestoreStorageEngine.ts",
+        "src/engine/projectStorage.ts"
+      ],
+      "description": "Project storage import path misalignments and Firestore storage engine type conversions.",
+      "repairedMembers": [
+        "FeatureTreeNode import from featureTree.ts",
+        "ProductRecord Firestore conversions"
+      ],
+      "affectedDiagnosticsCount": 15,
+      "status": "REPAIRED"
+    }
+  ]
+}

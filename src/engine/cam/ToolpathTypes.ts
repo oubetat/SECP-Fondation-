@@ -71,13 +71,14 @@ export interface MachiningOperationConfig {
   fingerprint?: string;
 }
 
+// PHASE 3 CONTRACT CHANGE: moveType widened | engagementAngleRad added
 export interface CutterLocationPoint {
   pointIndex: number;
   position: Vector3D;
   toolVector?: Vector3D;
   feedRateMmMin: number;
   spindleRpm: number;
-  moveType: 'RAPID_APPROACH' | 'CUTTING' | 'RETRACT' | 'PLUNGE' | 'CLEARANCE' | 'TRANSITION';
+  moveType: 'RAPID_APPROACH' | 'CUTTING' | 'RETRACT' | 'PLUNGE' | 'CLEARANCE' | 'TRANSITION' | 'ADAPTIVE_TROCHOIDAL' | 'CLEARANCE_TRANSITION' | 'REST_MACHINING';
   x?: number;
   y?: number;
   z?: number;
@@ -86,6 +87,8 @@ export interface CutterLocationPoint {
   k?: number;
   feed?: number;
   rpm?: number;
+  engagementAngleRad?: number;
+  stepoverMm?: number;
 }
 
 export interface MachineConfiguration {

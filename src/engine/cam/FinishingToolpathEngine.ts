@@ -35,10 +35,13 @@ export class FinishingToolpathEngine {
     let pointIndex = 0;
     let totalLength = 0;
 
+    if (!config.toolAssembly || !config.feedsAndSpeeds || !config.parameters) {
+      throw new Error('FinishingToolpath requires toolAssembly, parameters, and feedsAndSpeeds');
+    }
     const tool = config.toolAssembly.tool;
     const toolRadius = tool.diameterMm / 2;
     const stepdown = config.parameters.stepdownMm;
-    const safeZ = config.clearancePlaneZ;
+    const safeZ = config.clearancePlaneZ ?? (surfaceBounds.topZ + 15);
 
     const scallopHeight = this.calculateScallopHeight(toolRadius, config.parameters.stepoverMm);
 
@@ -113,8 +116,8 @@ export class FinishingToolpathEngine {
     );
 
     return {
-      operationId: config.operationId,
-      strategy: config.strategy,
+      operationId: config.operationId ?? config.id ?? 'op-finishing-01',
+      strategy: config.strategy ?? 'FINISHING',
       points,
       totalLengthMm: Number(totalLength.toFixed(3)),
       estimatedTimeSec: Number(estimatedTime.toFixed(1)),

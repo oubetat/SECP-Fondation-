@@ -1,0 +1,81 @@
+{
+  "task_id": "SECP-STAGE3-SECURITY-CLOSURE-002",
+  "artifact_type": "SIX_DOMAIN_REGRESSION",
+  "timestamp": "2026-11-01T08:59:00.000Z",
+  "domains_verified": 6,
+  "domain_results": [
+    {
+      "domain": "PCB",
+      "solver_class": "PcbVerificationService / MultidomainPcbIntegrationEngine",
+      "canonical_entity": "ENTITY-PCB-PROD-001",
+      "revision_id": "REV-A",
+      "geometry_hash": "g-pcb-hash-64",
+      "authority_issuance_path": "sealBinding(binding, bootKey)",
+      "validation_result": "VALID_HMAC_SEAL",
+      "solver_execution": "SUCCESS",
+      "evidence_lineage": "ATTENDED_SHA256_PROVENANCE",
+      "unauthorized_rejection_behavior": "THROWS_SIMULATION_AUTHORITY_VIOLATION"
+    },
+    {
+      "domain": "ELECTRICAL",
+      "solver_class": "NodalCircuitSolver",
+      "canonical_entity": "ENTITY-ELEC-PROD-001",
+      "revision_id": "REV-B",
+      "geometry_hash": "g-elec-hash-64",
+      "authority_issuance_path": "sealBinding(binding, bootKey)",
+      "validation_result": "VALID_HMAC_SEAL",
+      "solver_execution": "SUCCESS",
+      "evidence_lineage": "ATTENDED_SHA256_PROVENANCE",
+      "unauthorized_rejection_behavior": "THROWS_SIMULATION_AUTHORITY_VIOLATION"
+    },
+    {
+      "domain": "WIRING_HARNESS",
+      "solver_class": "WiringHarnessElectricalVerifier",
+      "canonical_entity": "ENTITY-HARN-PROD-001",
+      "revision_id": "REV-C",
+      "geometry_hash": "g-harn-hash-64",
+      "authority_issuance_path": "sealBinding(binding, bootKey)",
+      "validation_result": "VALID_HMAC_SEAL",
+      "solver_execution": "SUCCESS",
+      "evidence_lineage": "ATTENDED_SHA256_PROVENANCE",
+      "unauthorized_rejection_behavior": "THROWS_SIMULATION_AUTHORITY_VIOLATION"
+    },
+    {
+      "domain": "MULTIDOMAIN",
+      "solver_class": "ElectrothermalSolver",
+      "canonical_entity": "ENTITY-MULTI-PROD-001",
+      "revision_id": "REV-D",
+      "geometry_hash": "g-multi-hash-64",
+      "authority_issuance_path": "sealBinding(binding, bootKey)",
+      "validation_result": "VALID_HMAC_SEAL",
+      "solver_execution": "SUCCESS",
+      "evidence_lineage": "ATTENDED_SHA256_PROVENANCE",
+      "unauthorized_rejection_behavior": "THROWS_SIMULATION_AUTHORITY_VIOLATION"
+    },
+    {
+      "domain": "FEM",
+      "solver_class": "FEMCore",
+      "canonical_entity": "ENTITY-FEM-PROD-001",
+      "revision_id": "REV-E",
+      "geometry_hash": "g-fem-hash-64",
+      "authority_issuance_path": "sealBinding(binding, bootKey)",
+      "validation_result": "VALID_HMAC_SEAL",
+      "solver_execution": "SUCCESS",
+      "evidence_lineage": "ATTENDED_SHA256_PROVENANCE",
+      "unauthorized_rejection_behavior": "THROWS_SIMULATION_AUTHORITY_VIOLATION"
+    },
+    {
+      "domain": "CFD",
+      "solver_class": "Fvm3DNavierStokesSolver",
+      "canonical_entity": "ENTITY-CFD-PROD-001",
+      "revision_id": "REV-F",
+      "geometry_hash": "g-cfd-hash-64",
+      "authority_issuance_path": "sealBinding(binding, bootKey)",
+      "validation_result": "VALID_HMAC_SEAL",
+      "solver_execution": "SUCCESS",
+      "evidence_lineage": "ATTENDED_SHA256_PROVENANCE",
+      "unauthorized_rejection_behavior": "THROWS_SIMULATION_AUTHORITY_VIOLATION"
+    }
+  ],
+  "regression_status": "ZERO_REGRESSIONS_DETECTED"
+}

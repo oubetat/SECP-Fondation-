@@ -17,6 +17,7 @@
 
 import { NodalCircuitSolver, NodalSolveResult } from '../NodalCircuitSolver';
 import { CircuitModel, computeCircuitCanonicalHash } from '../ReferenceCircuitModel';
+import { DomainBindingTestUtility } from '../../crossdomain/DomainBindingTestUtility';
 
 interface AssertionLog {
   id: string;
@@ -79,7 +80,9 @@ function runPhase4Battery() {
     ]
   };
 
-  const bridgeResult: NodalSolveResult = NodalCircuitSolver.solveDetailed(wheatstoneActiveModel);
+  const bridgeResult: NodalSolveResult = NodalCircuitSolver.solveDetailed(
+    DomainBindingTestUtility.createSealedElectricalBinding(wheatstoneActiveModel)
+  );
 
   // Analytical reference values derived via closed-form Cramer's rule:
   // Vx = 225 / 31 = 7.258064516129 V
@@ -190,7 +193,9 @@ function runPhase4Battery() {
     ]
   };
 
-  const singularResult = NodalCircuitSolver.solveDetailed(floatingCircuit);
+  const singularResult = NodalCircuitSolver.solveDetailed(
+    DomainBindingTestUtility.createSealedElectricalBinding(floatingCircuit)
+  );
   assertTest(
     'EEC-021',
     'Singular System Detection: Isolated Floating Subnetwork',
@@ -210,7 +215,9 @@ function runPhase4Battery() {
     ]
   };
 
-  const missingRefResult = NodalCircuitSolver.solveDetailed(missingRefCircuit);
+  const missingRefResult = NodalCircuitSolver.solveDetailed(
+    DomainBindingTestUtility.createSealedElectricalBinding(missingRefCircuit)
+  );
   assertTest(
     'EEC-022',
     'Missing Reference Node Rejection (No ground reference defined)',
@@ -230,7 +237,9 @@ function runPhase4Battery() {
     ]
   };
 
-  const negResult = NodalCircuitSolver.solveDetailed(negativeRCircuit);
+  const negResult = NodalCircuitSolver.solveDetailed(
+    DomainBindingTestUtility.createSealedElectricalBinding(negativeRCircuit)
+  );
   assertTest(
     'EEC-023',
     'Invalid Parameter Rejection (Negative Resistance Value)',
@@ -250,7 +259,9 @@ function runPhase4Battery() {
     ]
   };
 
-  const shortedResult = NodalCircuitSolver.solveDetailed(shortedComponentCircuit);
+  const shortedResult = NodalCircuitSolver.solveDetailed(
+    DomainBindingTestUtility.createSealedElectricalBinding(shortedComponentCircuit)
+  );
   assertTest(
     'EEC-024',
     'Component Shorted to Same Node Rejection (n1 === n2)',
@@ -267,7 +278,9 @@ function runPhase4Battery() {
     components: [...wheatstoneActiveModel.components].reverse() // Reversed array order
   };
 
-  const permutedResult = NodalCircuitSolver.solveDetailed(permutedModel);
+  const permutedResult = NodalCircuitSolver.solveDetailed(
+    DomainBindingTestUtility.createSealedElectricalBinding(permutedModel)
+  );
   const diffVx = Math.abs(permutedResult.nodeVoltages['Nx'] - actualVx);
   const diffVy = Math.abs(permutedResult.nodeVoltages['Ny'] - actualVy);
   const diffPower = Math.abs(permutedResult.powerBalance.totalPowerSuppliedWatts - pSupplied);
@@ -292,7 +305,9 @@ function runPhase4Battery() {
   };
 
   const mutatedHash = computeCircuitCanonicalHash(mutatedModel);
-  const mutatedResult = NodalCircuitSolver.solveDetailed(mutatedModel);
+  const mutatedResult = NodalCircuitSolver.solveDetailed(
+    DomainBindingTestUtility.createSealedElectricalBinding(mutatedModel)
+  );
   const mutatedVx = mutatedResult.nodeVoltages['Nx'];
   const voltageShift = Math.abs(mutatedVx - actualVx);
 

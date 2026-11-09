@@ -1,0 +1,5 @@
+{
+  "summary":  "Register of identified security gaps and residual risks discovered during adjudication, specifically noting the implicit trust of caller-provided execution context strings for SECP-STAGE3-ADJ-004.",
+  "updatedAt":  "2026-11-01T09:34:47.154365142Z",
+  "userFacing":  true
+}

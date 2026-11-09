@@ -45,6 +45,7 @@ import {
 import { ElectricalToCoreBinding } from './CanonicalDomainBinding';
 import { CanonicalDomainBindingEngine } from './CanonicalDomainBindingEngine';
 import { PcbThermalBridge } from '../pcb/PcbThermalBridge';
+import { SealingCapability, issueSealingCapability } from '../simulation/SimulationSealingAuthorization';
 
 
 // ============================================================================
@@ -320,6 +321,11 @@ export function computeMultidomainCanonicalHash(assembly: MultidomainPcbAssembly
 // ============================================================================
 
 export class MultidomainPcbIntegrationEngine {
+  private static readonly sealingCapability: SealingCapability = issueSealingCapability(
+    'MULTIDOMAIN_PCB_INTEGRATION',
+    ['ELECTRICAL', 'MULTIDOMAIN_PCB']
+  );
+
   /**
    * 1. ECAD <-> Wiring Harness Interface Consistency Verifier
    * Verifies pin-by-pin parity, net identities, and wire/trace current capacity.
@@ -440,6 +446,7 @@ export class MultidomainPcbIntegrationEngine {
       'env-hash',
       'phys-hash'
     ) as ElectricalToCoreBinding;
+    CanonicalDomainBindingEngine.sealBinding(circuitBinding, this.sealingCapability);
 
     const nodalResult = NodalCircuitSolver.solveDetailed(circuitBinding);
 
@@ -544,6 +551,7 @@ export class MultidomainPcbIntegrationEngine {
       'env-hash',
       'phys-hash'
     ) as ElectricalToCoreBinding;
+    CanonicalDomainBindingEngine.sealBinding(circuitBinding, this.sealingCapability);
 
     // Solve nodal circuit to get exact powers dissipated by circuit components
     const nodalResult = NodalCircuitSolver.solveDetailed(circuitBinding);
@@ -662,6 +670,7 @@ export class MultidomainPcbIntegrationEngine {
       'env-hash',
       'phys-hash'
     ) as ElectricalToCoreBinding;
+    CanonicalDomainBindingEngine.sealBinding(circuitBinding, MultidomainPcbIntegrationEngine.sealingCapability);
 
     return ElectrothermalSolver.solve(
       circuitBinding,

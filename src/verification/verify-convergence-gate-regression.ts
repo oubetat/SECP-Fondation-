@@ -13,8 +13,10 @@
 
 import { AirfoilMeshGenerator } from '../engine/cfd3d/mesh/AirfoilMeshGenerator';
 import { Fvm3DNavierStokesSolver } from '../engine/cfd3d/Fvm3DNavierStokesSolver';
+import { initializeAuthorityHandshake } from '../engine/simulation/SimulationAuthorityInternal';
 
 export function runConvergenceGateRegressionTest() {
+  initializeAuthorityHandshake();
   console.log('[REGRESSION TEST] Starting Convergence Gate Forensic Regression Battery...');
 
   const mesh = AirfoilMeshGenerator.generateOGrid({

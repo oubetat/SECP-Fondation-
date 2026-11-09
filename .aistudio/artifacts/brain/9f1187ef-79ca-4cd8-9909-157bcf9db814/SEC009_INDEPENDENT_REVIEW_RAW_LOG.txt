@@ -1,0 +1,78 @@
+=== SECP-SECURITY-009 INDEPENDENT REVIEW EXECUTION LOG ===
+TIMESTAMP: 2026-11-02T08:17:16Z
+COMMAND: npx vitest run src/engine/forensic/SEC007_LiveForensicAuditor.test.ts src/engine/forensic/__tests__/SEC009_MutationHarness.test.ts src/engine/crossdomain/__tests__/AuthoritySealTrustBoundary.test.ts src/engine/crossdomain/__tests__/SimulationAuthority.test.ts src/engine/simulation/__tests__/SealingAuthorizationBoundary.test.ts src/engine/crossdomain/__tests__/DomainBindingIntegration.test.ts
+
+RUN  v1.6.1 /app/applet
+
+stdout | src/engine/forensic/__tests__/SEC009_MutationHarness.test.ts > SECP-SECURITY-009 Real Mutation Qualification Suite (with Restoration Proof) > Mutation 1: Null Capability Check Removal is detected and restored in finally block
+[MUTATION 1] Applied (hash: bc6dc63c). Null capability accepted.
+[MUTATION 1] Restored in finally (hash: 97352ab5). Baseline verified.
+
+stdout | src/engine/forensic/__tests__/SEC009_MutationHarness.test.ts > SECP-SECURITY-009 Real Mutation Qualification Suite (with Restoration Proof) > Mutation 2: Capability Identity Check Weakening is detected and restored in finally block
+[MUTATION 2] Applied (hash: e0c4f840). Forged capability accepted.
+[MUTATION 2] Restored in finally (hash: 97352ab5). Baseline verified.
+
+stdout | src/engine/forensic/__tests__/SEC009_MutationHarness.test.ts > SECP-SECURITY-009 Real Mutation Qualification Suite (with Restoration Proof) > Mutation 3: Domain Authorization Scope Removal is detected and restored in finally block
+[MUTATION 3] Applied (hash: 0095d242). Domain mismatch accepted.
+[MUTATION 3] Restored in finally (hash: 97352ab5). Baseline verified.
+
+stdout | src/engine/forensic/__tests__/SEC009_MutationHarness.test.ts > SECP-SECURITY-009 Real Mutation Qualification Suite (with Restoration Proof) > Mutation 4: Authority Initialization Gate Removal is detected and restored in finally block
+[MUTATION 4] Applied (hash: 2d7505cd). Pre-boot seal accepted.
+[MUTATION 4] Restored in finally (hash: 54ac36be). Baseline verified.
+
+stdout | src/engine/forensic/__tests__/SEC009_MutationHarness.test.ts > SECP-SECURITY-009 Real Mutation Qualification Suite (with Restoration Proof) > Mutation 5: Token Revocation Registry Bypass is detected and restored in finally block
+[MUTATION 5] Applied (hash: c06ced4b). Revoked token replayed.
+[MUTATION 5] Restored in finally (hash: 72ea467c). Baseline verified.
+
+ ✓ src/engine/forensic/__tests__/SEC009_MutationHarness.test.ts  (6 tests) 14ms
+ ✓ src/engine/crossdomain/__tests__/AuthoritySealTrustBoundary.test.ts  (10 tests) 18ms
+
+stdout | src/engine/forensic/SEC007_LiveForensicAuditor.test.ts > SECP-SECURITY-009 Remediated Forensic Auditor (AST-Enforced) > should deterministically enumerate all modules and perform AST analysis on src/engine
+[SEC009 AST AUDITOR] Deterministically discovered 4505 modules under src/engine
+[SEC009 AST AUDITOR] Total Production Modules Audited: 3916
+[SEC009 AST AUDITOR] Production AUTHORITY_PRODUCER: 3
+[SEC009 AST AUDITOR] Production AUTHORITY_CONSUMER: 12
+[SEC009 AST AUDITOR] Production NO_AUTHORITY: 3901
+[SEC009 AST AUDITOR] Production SUSPICIOUS_UNKNOWN: 0
+[SEC009 AST AUDITOR] Production Unauthenticated Seal Calls: 0
+[SEC009 AST AUDITOR] Production Unresolved Dynamic Calls: 0
+[SEC009 AST AUDITOR] Production Authenticated Calls: 4
+
+stdout | src/engine/forensic/SEC007_LiveForensicAuditor.test.ts > SECP-SECURITY-009 Remediated Forensic Auditor (AST-Enforced) > should discover intentional negative unauthenticated tests in test directories via AST
+[SEC009 AST AUDITOR] Discovered 1 intentional unauthenticated negative test(s) in test suites
+
+stdout | src/engine/forensic/SEC007_LiveForensicAuditor.test.ts > SECP-SECURITY-009 Remediated Forensic Auditor (AST-Enforced) > should execute against all 15 physical adversarial fixtures and enforce zero false negatives
+[SEC009 ADVERSARIAL VALIDATION] Evaluated 15 physical fixtures:
+ - Direct Violations Detected: 5
+ - Unresolved / Suspicious (Fail-Closed): 10
+ - Authenticated Passes: 0
+
+ ✓ src/engine/forensic/SEC007_LiveForensicAuditor.test.ts  (4 tests) 7604ms
+ ✓ src/engine/simulation/__tests__/SealingAuthorizationBoundary.test.ts  (6 tests) 7ms
+ ✓ src/engine/crossdomain/__tests__/DomainBindingIntegration.test.ts  (3 tests) 15ms
+ ✓ src/engine/crossdomain/__tests__/SimulationAuthority.test.ts  (3 tests) 12ms
+
+ Test Files  6 passed (6)
+      Tests  32 passed (32)
+   Start at  08:16:59
+   Duration  16.63s (transform 5.19s, setup 0ms, collect 6.22s, tests 7.67s, environment 2ms, prepare 936ms)
+EXIT_CODE: 0
+
+---
+ISOLATED PHYSICAL FILE MUTATION AND RESTORATION CHECK:
+[ISOLATED COPY CREATED] /tmp/mutation-test-HIu00Y/SimulationSealingAuthorization.ts
+Baseline Full-File SHA-256: ed838a96b3925ef6526cc4fc3d52788db30b0ab922e578530582a84f5e316cd1
+Mutated Full-File SHA-256: 84885d79ca2cdc95826d1f49fd69533785ba77619834721c4869634087571d5b
+Hashes differ: true
+Caught intentional error: INTENTIONAL_ASSERTION_FAILURE_DURING_TEST
+Restored Full-File SHA-256: ed838a96b3925ef6526cc4fc3d52788db30b0ab922e578530582a84f5e316cd1
+Restoration equals baseline: true
+Error was caught and finally ran: true
+EXIT_CODE: 0
+
+---
+EVIDENCE HASH REVALIDATION:
+Total files compared: 28
+All hashes match perfectly: true
+Every single hash matches 100%!
+EXIT_CODE: 0

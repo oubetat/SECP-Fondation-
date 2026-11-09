@@ -1,0 +1,5 @@
+{
+  "summary":  "Trust boundary design artifact detailing key-authenticated sealing, cryptographic HMAC signature generation, and runtime seal verification.",
+  "updatedAt":  "2026-11-01T08:53:44.711551587Z",
+  "userFacing":  true
+}

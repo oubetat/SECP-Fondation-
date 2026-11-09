@@ -13,6 +13,7 @@ import {
 } from '../topology/CanonicalDerivedArtifactBinding';
 import { AttestationCanonicalizer } from '../attestation/AttestationCanonicalizer';
 import { sealEnvelope, initializeAuthorityHandshake, SimulationExecutionEnvelope } from './SimulationAuthorityInternal';
+import { issueSealingCapability } from './SimulationSealingAuthorization';
 
 export interface SimulationResult {
   maxStressMpa: number;
@@ -47,9 +48,8 @@ export class SimulationEngine {
   /**
    * Initializes the engine authority. Must be called once during system boot.
    */
-  public static bootAuthority(key: symbol): void {
-    if (this.engineKey) throw new Error('ENGINE_AUTHORITY_ALREADY_BOOTED');
-    this.engineKey = key;
+  public static bootAuthority(): void {
+    initializeAuthorityHandshake();
   }
 
   /**
@@ -172,19 +172,13 @@ export class SimulationEngine {
       timestamp: new Date().toISOString()
     };
 
-    if (!this.engineKey) {
-      try {
-        this.engineKey = initializeAuthorityHandshake();
-      } catch (e) {
-        // Handshake failed or already booted
-      }
-    }
-
-    if (!this.engineKey) {
-      throw new Error('SIMULATION_ENGINE_UNINITIALIZED: Engine authority key missing. Run bootAuthority() first.');
-    }
-
-    const envelope = sealEnvelope(rawEnvelope, this.engineKey);
+    initializeAuthorityHandshake();
+    const sealingCapability = issueSealingCapability('SIMULATION_ENGINE', ['SIMULATION', 'STRUCTURAL'], {
+      cadRevisionHash: authoritativeRevisionHash,
+      canonicalGeometryHash: authoritativeGeometryHash,
+      maxUses: 1
+    });
+    const envelope = sealEnvelope(rawEnvelope, sealingCapability);
 
     // 6. Register Authoritative Execution
     SimulationExecutionRegistry.registerExecution(envelope);

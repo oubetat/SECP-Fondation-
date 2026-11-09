@@ -1,0 +1,34 @@
+=== SECP-CAD-TRUTH-PATCH-001: PHASE A BASELINE RAW LOG ===
+Timestamp: 2026-11-02T09:30:00.000Z
+Command: npx vitest run src/engine/certification/truth/__tests__/HydraulicPumpTruthThread.test.ts src/engine/cad-kernel/cfd/__tests__/CFDCADPipeline.test.ts src/engine/crossdomain/__tests__/SimulationAuthority.test.ts src/engine/crossdomain/__tests__/AuthoritySealTrustBoundary.test.ts src/engine/simulation/__tests__/SealingAuthorizationBoundary.test.ts src/engine/crossdomain/__tests__/DomainBindingIntegration.test.ts
+
+FAIL  src/engine/certification/truth/__tests__/HydraulicPumpTruthThread.test.ts > Hydraulic Pump Engineering Truth Thread Benchmark > HAPPY PATH: Should verify a valid Truth Thread for Revision A
+Error: SIMULATION_AUTHORITY_VIOLATION: Invalid or missing SealingCapability.
+ ❯ Module.validateCapability src/engine/simulation/SimulationSealingAuthorization.ts:57:11
+ ❯ Module.sealEnvelope src/engine/simulation/SimulationAuthorityInternal.ts:179:3
+ ❯ Function.runScenario src/engine/simulation/SimulationEngine.ts:175:22
+ ❯ src/engine/certification/truth/__tests__/HydraulicPumpTruthThread.test.ts:83:36
+
+FAIL  src/engine/certification/truth/__tests__/HydraulicPumpTruthThread.test.ts > Hydraulic Pump Engineering Truth Thread Benchmark > ADVERSARIAL BOUNDARY BREAKING TESTS > A1: B + Simulation(A) → REJECT (Cross-revision simulation replay)
+FAIL  src/engine/certification/truth/__tests__/HydraulicPumpTruthThread.test.ts > Hydraulic Pump Engineering Truth Thread Benchmark > ADVERSARIAL BOUNDARY BREAKING TESTS > A2: B + CAM(A) → REJECT (Cross-revision CAM toolpath replay)
+FAIL  src/engine/certification/truth/__tests__/HydraulicPumpTruthThread.test.ts > Hydraulic Pump Engineering Truth Thread Benchmark > ADVERSARIAL BOUNDARY BREAKING TESTS > A3: B + forged Machine telemetry → REJECT (Telemetry HMAC violation)
+FAIL  src/engine/certification/truth/__tests__/HydraulicPumpTruthThread.test.ts > Hydraulic Pump Engineering Truth Thread Benchmark > ADVERSARIAL BOUNDARY BREAKING TESTS > A4: B + wrong Part Serial → REJECT (Physical identity violation)
+FAIL  src/engine/certification/truth/__tests__/HydraulicPumpTruthThread.test.ts > Hydraulic Pump Engineering Truth Thread Benchmark > ADVERSARIAL BOUNDARY BREAKING TESTS > A5: B + unsigned CMM result → REJECT (Hardware Root of Trust missing)
+FAIL  src/engine/certification/truth/__tests__/HydraulicPumpTruthThread.test.ts > Hydraulic Pump Engineering Truth Thread Benchmark > ADVERSARIAL BOUNDARY BREAKING TESTS > A6: B + valid CMM but no Simulation → REJECT (Chain incompleteness)
+FAIL  src/engine/certification/truth/__tests__/HydraulicPumpTruthThread.test.ts > Hydraulic Pump Engineering Truth Thread Benchmark > ADVERSARIAL BOUNDARY BREAKING TESTS > A7: B + valid everything except one Evidence Root → REJECT (Merkle root dissonance)
+FAIL  src/engine/certification/truth/__tests__/HydraulicPumpTruthThread.test.ts > Hydraulic Pump Engineering Truth Thread Benchmark > ADVERSARIAL BOUNDARY BREAKING TESTS > A8: Valid Truth Thread ↓ tamper with ONE artifact ↓ Certificate verification ↓ FAIL
+FAIL  src/engine/certification/truth/__tests__/HydraulicPumpTruthThread.test.ts > Hydraulic Pump Engineering Truth Thread Benchmark > ADVERSARIAL BOUNDARY BREAKING TESTS > A9: Valid Truth Thread ↓ replace one evidence root ↓ Certificate verification ↓ FAIL
+
+FAIL  src/engine/cad-kernel/cfd/__tests__/CFDCADPipeline.test.ts > PATCH-KERNEL-008 — CAD -> CFD Pipeline Verification > should detect geometric changes and propagate them through the entire CFD pipeline
+Error: SIMULATION_AUTHORITY_VIOLATION: CFD solve attempted without valid execution authorization.
+ ❯ Function.solve src/engine/cfd3d/Fvm3DNavierStokesSolver.ts:46:13
+ ❯ src/engine/cad-kernel/cfd/__tests__/CFDCADPipeline.test.ts:52:42
+
+PASS  src/engine/crossdomain/__tests__/AuthoritySealTrustBoundary.test.ts (10 tests)
+PASS  src/engine/simulation/__tests__/SealingAuthorizationBoundary.test.ts (6 tests)
+PASS  src/engine/crossdomain/__tests__/DomainBindingIntegration.test.ts (3 tests)
+PASS  src/engine/crossdomain/__tests__/SimulationAuthority.test.ts (3 tests)
+
+Test Files  2 failed | 4 passed (6)
+Tests       11 failed | 22 passed (33)
+Duration    5.24s

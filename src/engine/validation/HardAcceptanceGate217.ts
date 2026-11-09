@@ -63,6 +63,7 @@ export class HardAcceptanceGate217 {
       const baseTransform = {
         position: { x: 0, y: 0, z: 0 },
         rotation: { x: 0, y: 0, z: 0 },
+        scale: { x: 1, y: 1, z: 1 },
         matrix: [1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,1]
       };
 

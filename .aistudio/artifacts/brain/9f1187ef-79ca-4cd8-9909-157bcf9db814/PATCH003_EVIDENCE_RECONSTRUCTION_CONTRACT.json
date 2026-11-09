@@ -1,0 +1,12 @@
+{
+  "contractId": "SECP-PATCH003-RECON-001",
+  "description": "Defines the rules for reconstructing engineering truth from persistent JSON records.",
+  "links": [
+    "Revision",
+    "Geometry",
+    "Mesh",
+    "Authority",
+    "Execution",
+    "Numerical"
+  ]
+}

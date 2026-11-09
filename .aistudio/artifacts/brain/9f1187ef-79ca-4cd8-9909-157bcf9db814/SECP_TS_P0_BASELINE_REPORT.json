@@ -1,0 +1,94 @@
+{
+  "roadmap_phase": "SECP-TS-P0",
+  "phase_title": "AUTHORITATIVE TYPESCRIPT BASELINE & REPOSITORY SAFETY",
+  "execution_mode": "READ-ONLY",
+  "timestamp": "2026-11-05T05:33:15-08:00",
+  "environment": {
+    "node_version": "v22.23.3",
+    "tsc_version": "7.0.2",
+    "working_directory": "/app/applet",
+    "active_tsconfig": "tsconfig.json"
+  },
+  "baseline_metrics": {
+    "total_unique_diagnostics": 6746,
+    "reachability_breakdown": {
+      "production_src": 6746,
+      "test_files": 0,
+      "experimental_other": 0
+    },
+    "fingerprints": {
+      "raw_tsc_stdout_sha256": "2072cd0e65be13df4bf6ecb865bb235f0e7975caa13aa1a4d40494d98d5e5139",
+      "parsed_inventory_sha256": "a6567eb1d576e07f48f15a222b9204ce70bcde51a966ee2f47f9549de58fc66a"
+    }
+  },
+  "top_error_codes": {
+    "TS2339": {
+      "description": "Property does not exist on type",
+      "count": 1933,
+      "percentage": 28.65
+    },
+    "TS18048": {
+      "description": "Object is possibly undefined",
+      "count": 926,
+      "percentage": 13.73
+    },
+    "TS2307": {
+      "description": "Cannot find module or its corresponding type declarations",
+      "count": 725,
+      "percentage": 10.75
+    },
+    "TS2322": {
+      "description": "Type is not assignable to type",
+      "count": 708,
+      "percentage": 10.49
+    },
+    "TS2353": {
+      "description": "Object literal may only specify known properties",
+      "count": 358,
+      "percentage": 5.31
+    },
+    "TS2345": {
+      "description": "Argument of type is not assignable to parameter of type",
+      "count": 284,
+      "percentage": 4.21
+    },
+    "TS2740": {
+      "description": "Type is missing properties from type",
+      "count": 270,
+      "percentage": 4.00
+    },
+    "TS7006": {
+      "description": "Parameter implicitly has an any type",
+      "count": 262,
+      "percentage": 3.88
+    },
+    "TS2305": {
+      "description": "Module has no exported member",
+      "count": 230,
+      "percentage": 3.41
+    },
+    "TS18047": {
+      "description": "Object is possibly null",
+      "count": 126,
+      "percentage": 1.87
+    }
+  },
+  "top_offending_production_files": [
+    { "path": "src/engine/assembly/AssemblyConstraintSolver.ts", "count": 244 },
+    { "path": "src/engine/engineering_webgpu/HardAcceptanceGate296.ts", "count": 103 },
+    { "path": "src/engine/cam/production-gate/CAMProductionGateWorkspace.tsx", "count": 87 },
+    { "path": "src/engine/cad-kernel/__tests__/KernelTruthQualification.test.ts", "count": 71 },
+    { "path": "src/engine/forensic/LiveForensicAuditor.ts", "count": 67 },
+    { "path": "src/components/AIOptimizationWorkbenchPanel.tsx", "count": 61 },
+    { "path": "src/components/SpringEngineeringWorkspace.tsx", "count": 55 },
+    { "path": "src/engine/cam/post-processor/ModalStateManager.ts", "count": 53 },
+    { "path": "src/components/GPUFEMWorkbenchPanel.tsx", "count": 46 },
+    { "path": "src/engine/cam/post-processor/PostProcessorWorkspace.tsx", "count": 45 }
+  ],
+  "bounded_execution_compliance": {
+    "code_modified": false,
+    "packages_installed": false,
+    "ts_strictness_altered": false,
+    "reports_written_outside_repo": true
+  }
+}

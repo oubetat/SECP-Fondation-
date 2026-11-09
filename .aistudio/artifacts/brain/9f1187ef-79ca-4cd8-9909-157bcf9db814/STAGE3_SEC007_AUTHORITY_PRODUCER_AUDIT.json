@@ -1,0 +1,80 @@
+{
+  "audit_id": "SECP-STAGE3-SECURITY-REMEDIATION-007",
+  "workPackage": "B - Authority Producer Verification",
+  "timestamp": "2026-11-01T11:30:00Z",
+  "producersAudited": [
+    {
+      "file": "src/engine/engineeringCore/CanonicalDomainBindingEngine.ts",
+      "role": "CORE_PRODUCER",
+      "status": "VERIFIED_PRODUCER",
+      "details": "Directly implements sealBinding and cryptographic domain binding generation."
+    },
+    {
+      "file": "src/engine/engineeringCore/SimulationSealingAuthorization.ts",
+      "role": "CAPABILITY_ISSUER",
+      "status": "VERIFIED_INFRASTRUCTURE",
+      "details": "Issues SealingCapability objects required by producers; acts as capability governance layer."
+    },
+    {
+      "file": "src/engine/engineeringCore/SimulationAuthorityInternal.ts",
+      "role": "HANDSHAKE_MANAGER",
+      "status": "VERIFIED_INFRASTRUCTURE",
+      "details": "Manages authority boot key initialization and handshake state."
+    },
+    {
+      "file": "src/engine/fem/FiniteElementBindingEngine.ts",
+      "role": "DOMAIN_PRODUCER",
+      "status": "VERIFIED_PRODUCER",
+      "details": "Produces FEM-specific canonical bindings via delegated capability."
+    },
+    {
+      "file": "src/engine/engineering_cfd/CFDBindingEngine.ts",
+      "role": "DOMAIN_PRODUCER",
+      "status": "VERIFIED_PRODUCER",
+      "details": "Produces CFD-specific canonical bindings via delegated capability."
+    },
+    {
+      "file": "src/engine/pcb/PcbSealingEngine.ts",
+      "role": "DOMAIN_PRODUCER",
+      "status": "VERIFIED_PRODUCER",
+      "details": "Produces PCB-specific canonical bindings via delegated capability."
+    },
+    {
+      "file": "src/engine/thermalCae/ThermalSealingEngine.ts",
+      "role": "DOMAIN_PRODUCER",
+      "status": "VERIFIED_PRODUCER",
+      "details": "Produces Thermal CAE canonical bindings via delegated capability."
+    },
+    {
+      "file": "src/engine/electricalWorkbench/ElectricalSealingEngine.ts",
+      "role": "DOMAIN_PRODUCER",
+      "status": "VERIFIED_PRODUCER",
+      "details": "Produces Electrical canonical bindings via delegated capability."
+    },
+    {
+      "file": "src/engine/assembly-intelligence/AssemblySealingEngine.ts",
+      "role": "DOMAIN_PRODUCER",
+      "status": "VERIFIED_PRODUCER",
+      "details": "Produces Assembly canonical bindings via delegated capability."
+    },
+    {
+      "file": "src/engine/structural-physics/StructuralSealingEngine.ts",
+      "role": "DOMAIN_PRODUCER",
+      "status": "VERIFIED_PRODUCER",
+      "details": "Produces Structural canonical bindings via delegated capability."
+    },
+    {
+      "file": "src/engine/interop/MultiDomainBindingEngine.ts",
+      "role": "DOMAIN_PRODUCER",
+      "status": "VERIFIED_PRODUCER",
+      "details": "Produces Multi-domain interoperability bindings via delegated capability."
+    },
+    {
+      "file": "src/engine/plm_evidence/EnterpriseEvidenceEngine.ts",
+      "role": "EVIDENCE_PRODUCER",
+      "status": "VERIFIED_PRODUCER",
+      "details": "Produces enterprise PLM evidence cryptographic bindings."
+    }
+  ],
+  "adjudication": "Confirmed 3 primary core/capability modules and 9 domain-specific sealing engine producers."
+}

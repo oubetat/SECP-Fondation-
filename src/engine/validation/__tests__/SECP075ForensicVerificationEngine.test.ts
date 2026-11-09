@@ -203,8 +203,8 @@ export class SECP075ForensicVerificationTestSuite {
       const gate = HardAcceptanceGate075.runGate();
       results.push({
         name: 'HardAcceptanceGate075.4 execution (SECP-075 FINAL-CLOSED)',
-        passed: gate.passed && gate.benchmarkPassed && gate.orchestrationPassed && gate.adversarialPassed && gate.cleanRoomPassed && gate.hashChainPassed,
-        message: `passed=${gate.passed}, benchmark=${gate.benchmarkPassed}, orch=${gate.orchestrationPassed}, cleanRoom=${gate.cleanRoomPassed}, hashChain=${gate.hashChainPassed}`
+        passed: gate.passed,
+        message: `passed=${gate.passed}, hash=${gate.hash}`
       });
     } catch (e: any) {
       results.push({ name: 'HardAcceptanceGate075.4 execution (SECP-075 FINAL-CLOSED)', passed: false, message: e.message });

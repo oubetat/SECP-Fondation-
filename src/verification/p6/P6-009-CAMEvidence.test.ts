@@ -14,7 +14,7 @@ describe('P6-009 — CAM EVIDENCE', () => {
     actionId: 'TOOLPATH_GENERATE',
     documentId: 'P6-CAD-CAM-1',
     documentRevision: 1,
-    featureId: 'CAM_OP_1',
+    featureOrOperationId: 'CAM_OP_1',
     outputMetrics: {
       toolpathHash: overrides?.toolpathHash || 'TP-HASH-123',
       gCodeHash: overrides?.gCodeHash || 'GCODE-HASH-123',

@@ -764,6 +764,7 @@ export class MaterialsBenchmarkCaseRunner {
           eps_y_min = eps_y;
         }
       }
+      if (!res) throw new Error('VonMisesPlasticity failed');
       return res.newState;
     };
 

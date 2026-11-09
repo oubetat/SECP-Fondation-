@@ -25,9 +25,12 @@ export class DrillingCycleEngine {
     let pointIndex = 0;
     let totalLength = 0;
 
+    if (!config.toolAssembly || !config.feedsAndSpeeds) {
+      throw new Error('DrillingCycle requires toolAssembly and feedsAndSpeeds');
+    }
     const tool = config.toolAssembly.tool;
-    const safeZ = config.clearancePlaneZ;
-    const retractZ = config.retractPlaneZ;
+    const safeZ = config.clearancePlaneZ ?? (holeCenter.topZ + 15);
+    const retractZ = config.retractPlaneZ ?? (holeCenter.topZ + 5);
     const bottomZ = holeCenter.topZ - holeCenter.depthMm;
     const peck = holeCenter.peckIncrementMm || 3.0;
 
@@ -111,8 +114,8 @@ export class DrillingCycleEngine {
     );
 
     return {
-      operationId: config.operationId,
-      strategy: config.strategy,
+      operationId: config.operationId ?? config.id ?? 'op-drilling-01',
+      strategy: config.strategy ?? 'DRILLING',
       points,
       totalLengthMm: Number(totalLength.toFixed(3)),
       estimatedTimeSec: Number(estimatedTime.toFixed(1)),

@@ -1,0 +1,5 @@
+{
+  "summary":  "Persistence recovery results confirming cold-start deserialization, disk reload, out-of-process subprocess CLI verification, and fail-closed security posture.",
+  "updatedAt":  "2026-11-02T11:36:38.078483980Z",
+  "userFacing":  true
+}

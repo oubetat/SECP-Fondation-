@@ -1,0 +1,12 @@
+{
+  "task": "SECP-ENGINE-STRENGTHENING-001E",
+  "dependencyMatrix": [
+    { "from": "Canonical Model", "to": "Electrical Solver", "edgeType": "DATA_DEPENDENCY", "status": "VERIFIED_PREREQUISITE" },
+    { "from": "Canonical Model", "to": "Thermal Solver", "edgeType": "DATA_DEPENDENCY", "status": "VERIFIED_PREREQUISITE" },
+    { "from": "Canonical Model", "to": "Structural Solver", "edgeType": "DATA_DEPENDENCY", "status": "VERIFIED_PREREQUISITE" },
+    { "from": "Electrical Solver", "to": "Thermal Solver", "edgeType": "PHYSICAL_COUPLING", "status": "VERIFIED_PREREQUISITE" },
+    { "from": "Thermal Solver", "to": "Electrical Solver", "edgeType": "PHYSICAL_COUPLING", "status": "VERIFIED_PREREQUISITE" },
+    { "from": "Thermal Solver", "to": "Structural Solver", "edgeType": "PHYSICAL_COUPLING", "status": "UNSUPPORTED" },
+    { "from": "Structural Solver", "to": "Electrical Solver", "edgeType": "PHYSICAL_COUPLING", "status": "UNSUPPORTED" }
+  ]
+}

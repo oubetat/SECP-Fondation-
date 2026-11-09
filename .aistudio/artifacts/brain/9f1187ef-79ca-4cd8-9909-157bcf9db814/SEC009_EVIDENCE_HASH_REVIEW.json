@@ -1,0 +1,207 @@
+{
+  "reviewId": "SECP-SECURITY-009-INDEPENDENT-REVIEW-HASHES",
+  "reviewTimestamp": "2026-11-02T08:25:30.000Z",
+  "verdict": "VERIFIED",
+  "totalFilesAudited": 28,
+  "matchedFilesCount": 28,
+  "mismatchedFilesCount": 0,
+  "cryptographicEquality": "100.0%",
+  "recomputedEntries": [
+    {
+      "category": "closureDeliverables",
+      "path": "SEC009_CLOSURE_FIXTURE_RECONCILIATION.json",
+      "recordedSha256": "24e2357c96a38d5cd978a80947cc605e76ac5891c10b6eeefe63357be9562cc5",
+      "recomputedSha256": "24e2357c96a38d5cd978a80947cc605e76ac5891c10b6eeefe63357be9562cc5",
+      "match": true
+    },
+    {
+      "category": "closureDeliverables",
+      "path": "SEC009_DYNAMIC_CALL_RECONCILIATION.json",
+      "recordedSha256": "9217a14045522d61f1b70959add5da6d0c80c1f37148935ac1c70c1f3ae130ee",
+      "recomputedSha256": "9217a14045522d61f1b70959add5da6d0c80c1f37148935ac1c70c1f3ae130ee",
+      "match": true
+    },
+    {
+      "category": "closureDeliverables",
+      "path": "SEC009_INVENTORY_SCOPE_RECONCILIATION.json",
+      "recordedSha256": "fc9b3d6bc5a34ded036318beea50174689915dd09204a8d4d879d0eee61976a2",
+      "recomputedSha256": "fc9b3d6bc5a34ded036318beea50174689915dd09204a8d4d879d0eee61976a2",
+      "match": true
+    },
+    {
+      "category": "closureDeliverables",
+      "path": "SEC009_MUTATION_RESTORATION_PROOF.json",
+      "recordedSha256": "14293bf081c3ec4f0c59ebcbcfa0254736bb9662cfe984fa956cdf99368dcf88",
+      "recomputedSha256": "14293bf081c3ec4f0c59ebcbcfa0254736bb9662cfe984fa956cdf99368dcf88",
+      "match": true
+    },
+    {
+      "category": "closureDeliverables",
+      "path": "SEC009_REGRESSION_RAW_LOG.txt",
+      "recordedSha256": "4e54a82c522843486c6f25c338969cb18a3d322fa3b140261ce0bd0ceee1f7f0",
+      "recomputedSha256": "4e54a82c522843486c6f25c338969cb18a3d322fa3b140261ce0bd0ceee1f7f0",
+      "match": true
+    },
+    {
+      "category": "closureDeliverables",
+      "path": "SEC009_FINAL_CLOSURE_REPORT.md",
+      "recordedSha256": "0ff2bb3538e029b2a5f0ba716128bfe98fcd161767171541425bc9a4f5d53e07",
+      "recomputedSha256": "0ff2bb3538e029b2a5f0ba716128bfe98fcd161767171541425bc9a4f5d53e07",
+      "match": true
+    },
+    {
+      "category": "physicalFixtures",
+      "path": "src/engine/forensic/__fixtures__/SEC009/01_direct_unauthenticated.ts",
+      "recordedSha256": "f1695d140d2f882bab5963b15138bf2c48295a81c6d7762da5c5696835141857",
+      "recomputedSha256": "f1695d140d2f882bab5963b15138bf2c48295a81c6d7762da5c5696835141857",
+      "match": true
+    },
+    {
+      "category": "physicalFixtures",
+      "path": "src/engine/forensic/__fixtures__/SEC009/02_aliased_import.ts",
+      "recordedSha256": "9b1273a1901ba77e0fb097b8ce890ba4197bebc1e61b7e57de5b77e3f081d4e6",
+      "recomputedSha256": "9b1273a1901ba77e0fb097b8ce890ba4197bebc1e61b7e57de5b77e3f081d4e6",
+      "match": true
+    },
+    {
+      "category": "physicalFixtures",
+      "path": "src/engine/forensic/__fixtures__/SEC009/03_reexport_intermediate.ts",
+      "recordedSha256": "3c8e9a52b4dd71101cde674e3cdc4d7adc83f4ccdb6fd3573611b767191e6a42",
+      "recomputedSha256": "3c8e9a52b4dd71101cde674e3cdc4d7adc83f4ccdb6fd3573611b767191e6a42",
+      "match": true
+    },
+    {
+      "category": "physicalFixtures",
+      "path": "src/engine/forensic/__fixtures__/SEC009/04_wrapper_function.ts",
+      "recordedSha256": "733553f15a0a403c21eedc4136febbef5d0656e84f8f52c30f7abb19ab5b672f",
+      "recomputedSha256": "733553f15a0a403c21eedc4136febbef5d0656e84f8f52c30f7abb19ab5b672f",
+      "match": true
+    },
+    {
+      "category": "physicalFixtures",
+      "path": "src/engine/forensic/__fixtures__/SEC009/05_computed_property_access.ts",
+      "recordedSha256": "9d9d199ab191b88c6e7cb13e3863b3fe2adeda84f68d26a22fcee556a48e29fe",
+      "recomputedSha256": "9d9d199ab191b88c6e7cb13e3863b3fe2adeda84f68d26a22fcee556a48e29fe",
+      "match": true
+    },
+    {
+      "category": "physicalFixtures",
+      "path": "src/engine/forensic/__fixtures__/SEC009/06_dynamic_import.ts",
+      "recordedSha256": "9082e1b7fabeda10227cd2e6607d742eb7f2b51049f3b643b145f8251862cab1",
+      "recomputedSha256": "9082e1b7fabeda10227cd2e6607d742eb7f2b51049f3b643b145f8251862cab1",
+      "match": true
+    },
+    {
+      "category": "physicalFixtures",
+      "path": "src/engine/forensic/__fixtures__/SEC009/07_forged_structural_capability.ts",
+      "recordedSha256": "e1f6129253f7d4a8a0b7e17b9317a3518cba639d57e71d3ebae2cbb280a66073",
+      "recomputedSha256": "e1f6129253f7d4a8a0b7e17b9317a3518cba639d57e71d3ebae2cbb280a66073",
+      "match": true
+    },
+    {
+      "category": "physicalFixtures",
+      "path": "src/engine/forensic/__fixtures__/SEC009/08_revoked_capability_replay.ts",
+      "recordedSha256": "9d8d72f7895b5e0ecb08e11ddb85f69c3593aac718469fd66cfb5da640627a1b",
+      "recomputedSha256": "9d8d72f7895b5e0ecb08e11ddb85f69c3593aac718469fd66cfb5da640627a1b",
+      "match": true
+    },
+    {
+      "category": "physicalFixtures",
+      "path": "src/engine/forensic/__fixtures__/SEC009/09_domain_mismatch.ts",
+      "recordedSha256": "1f81817432824418f83722ca980ea8be76dabeee34db5500a9937fd40b34b731",
+      "recomputedSha256": "1f81817432824418f83722ca980ea8be76dabeee34db5500a9937fd40b34b731",
+      "match": true
+    },
+    {
+      "category": "physicalFixtures",
+      "path": "src/engine/forensic/__fixtures__/SEC009/10_comment_keyword_spoofing.ts",
+      "recordedSha256": "94d1da0e2c3cf22d19888322d3ffb95a51fbcfe721c84f9a9dbd1e330b955107",
+      "recomputedSha256": "94d1da0e2c3cf22d19888322d3ffb95a51fbcfe721c84f9a9dbd1e330b955107",
+      "match": true
+    },
+    {
+      "category": "physicalFixtures",
+      "path": "src/engine/forensic/__fixtures__/SEC009/11_test_utility_wildcard.ts",
+      "recordedSha256": "c15e9eae45816eed68ed803e5d0ab55a58b8e5ee345f00d08cd9cbfbc768d720",
+      "recomputedSha256": "c15e9eae45816eed68ed803e5d0ab55a58b8e5ee345f00d08cd9cbfbc768d720",
+      "match": true
+    },
+    {
+      "category": "physicalFixtures",
+      "path": "src/engine/forensic/__fixtures__/SEC009/13_unknown_indirect_call.ts",
+      "recordedSha256": "a80661cba25803f79d50126736060e49f666670e2703ba53964a008431834cb9",
+      "recomputedSha256": "a80661cba25803f79d50126736060e49f666670e2703ba53964a008431834cb9",
+      "match": true
+    },
+    {
+      "category": "physicalFixtures",
+      "path": "src/engine/forensic/__fixtures__/SEC009/14_mutation_removed_capability_check.ts",
+      "recordedSha256": "cfa216eb937f98c0040d682777fe7869f9ab2f7c686069b79a8451011fbce12b",
+      "recomputedSha256": "cfa216eb937f98c0040d682777fe7869f9ab2f7c686069b79a8451011fbce12b",
+      "match": true
+    },
+    {
+      "category": "physicalFixtures",
+      "path": "src/engine/forensic/__fixtures__/SEC009/15_mutation_removed_domain_check.ts",
+      "recordedSha256": "d825c788d362aa48d917230e8b3350ec7e37a55a2c58c0e8716e97b61a8b9b99",
+      "recomputedSha256": "d825c788d362aa48d917230e8b3350ec7e37a55a2c58c0e8716e97b61a8b9b99",
+      "match": true
+    },
+    {
+      "category": "physicalFixtures",
+      "path": "src/verification/__fixtures__/adv12_out_of_engine.ts",
+      "recordedSha256": "bd69043374292ad7b3d385dd29980f2bb1f6990bc7384f7c6a4f1751bba8f90b",
+      "recomputedSha256": "bd69043374292ad7b3d385dd29980f2bb1f6990bc7384f7c6a4f1751bba8f90b",
+      "match": true
+    },
+    {
+      "category": "testSuites",
+      "path": "src/engine/forensic/SEC007_LiveForensicAuditor.test.ts",
+      "recordedSha256": "d7477a2863ef9008bb93357dd0ef5a407eb4ae25f905b5cec3ed823729f45961",
+      "recomputedSha256": "d7477a2863ef9008bb93357dd0ef5a407eb4ae25f905b5cec3ed823729f45961",
+      "match": true
+    },
+    {
+      "category": "testSuites",
+      "path": "src/engine/forensic/__tests__/SEC009_MutationHarness.test.ts",
+      "recordedSha256": "242b2bb87273e1c56febe3cf27892c56ce2d4391007a62fcb6d722aea8201d1e",
+      "recomputedSha256": "242b2bb87273e1c56febe3cf27892c56ce2d4391007a62fcb6d722aea8201d1e",
+      "match": true
+    },
+    {
+      "category": "testSuites",
+      "path": "src/engine/forensic/LiveForensicAuditor.ts",
+      "recordedSha256": "bd2bba78a4799037cd888715f3f6aeff58fb5f93513bd869a60e8d9649b92d72",
+      "recomputedSha256": "bd2bba78a4799037cd888715f3f6aeff58fb5f93513bd869a60e8d9649b92d72",
+      "match": true
+    },
+    {
+      "category": "testSuites",
+      "path": "src/engine/crossdomain/__tests__/AuthoritySealTrustBoundary.test.ts",
+      "recordedSha256": "49acd8c41994dbe21acd95f19e24b202c7e1b6886238c418a6e37439943f13a6",
+      "recomputedSha256": "49acd8c41994dbe21acd95f19e24b202c7e1b6886238c418a6e37439943f13a6",
+      "match": true
+    },
+    {
+      "category": "testSuites",
+      "path": "src/engine/crossdomain/__tests__/SimulationAuthority.test.ts",
+      "recordedSha256": "4273bc822090a88a6b4d2fa762547b5ad98a75b0578e4e4b83f0d9669084500c",
+      "recomputedSha256": "4273bc822090a88a6b4d2fa762547b5ad98a75b0578e4e4b83f0d9669084500c",
+      "match": true
+    },
+    {
+      "category": "testSuites",
+      "path": "src/engine/simulation/__tests__/SealingAuthorizationBoundary.test.ts",
+      "recordedSha256": "0769b83fcb8202f4cea21d91c57f39b6d2cef4112a679e2bdad9c1f12a2c2ad4",
+      "recomputedSha256": "0769b83fcb8202f4cea21d91c57f39b6d2cef4112a679e2bdad9c1f12a2c2ad4",
+      "match": true
+    },
+    {
+      "category": "testSuites",
+      "path": "src/engine/crossdomain/__tests__/DomainBindingIntegration.test.ts",
+      "recordedSha256": "a04a15b727c184987c482abb61cf1d79b64f902e296e99b40a1f1d633486f38a",
+      "recomputedSha256": "a04a15b727c184987c482abb61cf1d79b64f902e296e99b40a1f1d633486f38a",
+      "match": true
+    }
+  ]
+}

@@ -37,7 +37,7 @@ import {
   Database
 } from 'lucide-react';
 import { EngineeringDocument, CAMModel } from '../engine/cad-kernel/document/CADDocument';
-import { CadSolidEntity } from '../cadKernel';
+import { CadSolidEntity } from '../engine/cadKernel';
 import { deriveTruthProvenance, TruthOrigin, CanonicalPickResult } from '../engine/context/EngineeringContext';
 import { useEngineeringToolContext } from '../engine/telemetry/useEngineeringToolContext';
 import { EngineeringToolContext } from '../engine/telemetry/EngineeringToolContext';

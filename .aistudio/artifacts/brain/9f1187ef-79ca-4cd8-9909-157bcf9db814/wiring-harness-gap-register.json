@@ -1,0 +1,12 @@
+{
+  "registerId": "SECP-WH-GAP-001",
+  "timestamp": "2026-10-20T01:30:00Z",
+  "gaps": [
+    {
+      "gapId": "GAP-WH-01",
+      "description": "Full multi-physics thermal/electromagnetic FEA co-simulation for harness bundle heating under high DC loads is deferred to Phase 4.",
+      "status": "DEFERRED",
+      "mitigation": "Marked as NOT_APPLICABLE / NOT_PROVEN until multi-physics solver is integrated."
+    }
+  ]
+}

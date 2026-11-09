@@ -16,6 +16,10 @@ export type ThreadAuthoritySource =
   | 'P1_VERIFICATION_INTENT_AUTHORITY'
   | 'P2_MBSE_SEMANTIC_AUTHORITY'
   | 'P3_ARCHITECTURE_AUTHORITY'
+  | 'P10_MEASUREMENT_ENGINE'
+  | 'P11_RELIABILITY_ENGINE'
+  | 'P12_SAFETY_ENGINE'
+  | 'P13_CONFIGURATION_AUTHORITY'
   | 'SECP_CORE_REVISION_AUTHORITY'
   | 'SECP_CORE_EXECUTION_AUTHORITY'
   | 'SECP_VERIFICATION_AUTHORITY'
@@ -36,6 +40,7 @@ export type ThreadNodeType =
   | 'Allocation'
   | 'Constraint'
   | 'Configuration'
+  | 'ConfigurationItem'
   | 'Revision'
   | 'Execution'
   | 'VerificationIntent'
@@ -54,6 +59,7 @@ export type ThreadEdgeType =
   | 'DEPENDS_ON'
   | 'CONSTRAINED_BY'
   | 'CONFIGURED_BY'
+  | 'CONFIGURES'
   | 'REVISED_BY'
   | 'EXECUTED_BY'
   | 'VERIFIED_BY'
@@ -62,7 +68,12 @@ export type ThreadEdgeType =
   | 'PERSISTED_AS'
   | 'PUBLISHED_AS'
   | 'IMPACTS'
-  | 'SUPERSEDES';
+  | 'SUPERSEDES'
+  | 'CAUSES'
+  | 'MITIGATES'
+  | 'ADDRESSES'
+  | 'CONTAINS'
+  | 'AFFECTS';
 
 export interface DigitalThreadNode {
   nodeId: string; // e.g. 'thread:node:REQ-AV-001'

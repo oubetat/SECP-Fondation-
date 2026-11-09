@@ -22,7 +22,7 @@ describe('SECP Forensic Audit — Production Governance & Rollback Verification'
 
   describe('1. CanonicalDocumentUIAdapter Contract Stability & Assertion Integrity', () => {
     it('preserves exact ExecutionResult shape and evaluator return contracts in executeAddFeature', () => {
-      const initialFeatureCount = testDoc.features.length;
+      const initialFeatureCount = testDoc.features!.length;
       const initialRev = Number(testDoc.revision);
 
       const { result, evaluation } = CanonicalDocumentUIAdapter.executeAddFeature(testDoc, {
@@ -39,7 +39,7 @@ describe('SECP Forensic Audit — Production Governance & Rollback Verification'
       expect(typeof result.featureId).toBe('string');
 
       expect(evaluation).toBeDefined();
-      expect(evaluation?.document.features.length).toBe(initialFeatureCount + 1);
+      expect(evaluation?.document.features!.length).toBe(initialFeatureCount + 1);
     });
 
     it('preserves exact contract and toggles suppression cleanly with executeSuppressFeature', () => {
@@ -59,7 +59,7 @@ describe('SECP Forensic Audit — Production Governance & Rollback Verification'
       expect(result.geometryChanged).toBe(true);
       expect(result.topologyChanged).toBe(true);
 
-      const suppressedFeat = evaluation?.document.features.find(
+      const suppressedFeat = evaluation?.document.features!.find(
         (f: any) => (f.id || f.featureId) === targetFeatId
       );
       expect(suppressedFeat?.suppressed).toBe(true);
@@ -80,7 +80,7 @@ describe('SECP Forensic Audit — Production Governance & Rollback Verification'
     it('preserves exact contract in executeDeleteFeature and removes target feature cleanly', () => {
       const targetFeatId = 'F_EXTRUDE_1';
       const initialRev = Number(testDoc.revision);
-      const initialFeatureCount = testDoc.features.length;
+      const initialFeatureCount = testDoc.features!.length;
 
       const { result, evaluation } = CanonicalDocumentUIAdapter.executeDeleteFeature(
         testDoc,
@@ -91,9 +91,9 @@ describe('SECP Forensic Audit — Production Governance & Rollback Verification'
       expect(result.status).toBe('SUCCESS');
       expect(result.documentId).toBe('DOC-FORENSIC-SOT-777');
       expect(result.documentRevision).toBe(initialRev + 1);
-      expect(evaluation?.document.features.length).toBe(initialFeatureCount - 1);
+      expect(evaluation?.document.features!.length).toBe(initialFeatureCount - 1);
       expect(
-        evaluation?.document.features.some((f: any) => (f.id || f.featureId) === targetFeatId)
+        evaluation?.document.features!.some((f: any) => (f.id || f.featureId) === targetFeatId)
       ).toBe(false);
     });
 
@@ -114,7 +114,7 @@ describe('SECP Forensic Audit — Production Governance & Rollback Verification'
       expect(result.documentRevision).toBe(initialRev + 1);
       expect(result.featureId).toBe(targetFeatId);
 
-      const updatedFeat = evaluation?.document.features.find(
+      const updatedFeat = evaluation?.document.features!.find(
         (f: any) => (f.id || f.featureId) === targetFeatId
       );
       expect(updatedFeat?.definition.parameters.depth).toBe(175);
@@ -142,7 +142,7 @@ describe('SECP Forensic Audit — Production Governance & Rollback Verification'
       const currentEngineDoc = engine.getCanonicalDocument('DOC-FORENSIC-SOT-777');
       expect(currentEngineDoc).toBe(testDoc);
       expect(currentEngineDoc?.revision).toBe(initialRev + 1);
-      expect(currentEngineDoc?.features[1].definition.parameters.depth).toBe(220);
+      expect(currentEngineDoc?.features![1].definition.parameters.depth).toBe(220);
 
       // 4. Verify evaluation document is synchronized
       expect(evaluation?.document.revision).toBe(initialRev + 1);
@@ -166,8 +166,9 @@ describe('SECP Forensic Audit — Production Governance & Rollback Verification'
           'DOC-FORENSIC-SOT-777',
           (doc) => {
             // Corrupt feature list
-            doc.features.push({
+            doc.features!.push({
               featureId: 'HALF_BAKED_CAD_FEAT',
+              id: 'HALF_BAKED_CAD_FEAT',
               name: 'Corrupted CAD Feature',
               type: 'SWEEP',
               parameters: { twist: 999 },
@@ -195,9 +196,9 @@ describe('SECP Forensic Audit — Production Governance & Rollback Verification'
       expect(testDoc.revision).toBe(initialRev);
 
       // 3. Verify features were restored completely
-      expect(testDoc.features.length).toBe(initialFeatures.length);
-      expect(testDoc.features.some((f: any) => (f.id || f.featureId) === 'HALF_BAKED_CAD_FEAT')).toBe(false);
-      expect(testDoc.features[1].definition.parameters.depth).toBe(initialFeatures[1].definition.parameters.depth);
+      expect(testDoc.features!.length).toBe(initialFeatures.length);
+      expect(testDoc.features!.some((f: any) => (f.id || f.featureId) === 'HALF_BAKED_CAD_FEAT')).toBe(false);
+      expect(testDoc.features![1].definition.parameters.depth).toBe(initialFeatures[1].definition.parameters.depth);
 
       // 4. Verify sketches were restored completely
       expect(testDoc.sketches![0].closedProfile).toBe(initialSketches[0].closedProfile);
@@ -239,10 +240,12 @@ describe('SECP Forensic Audit — Production Governance & Rollback Verification'
             doc.evaluatedShape!.outerShell.orientedFaces.pop();
 
             // 2. Document feature corruption
-            doc.features.push({
+            doc.features!.push({
               featureId: 'LEAKY_FEAT',
+              id: 'LEAKY_FEAT',
               name: 'Leaky Feature',
               type: 'EXTRUDE',
+              parameters: {}
             });
 
             throw new Error('Geometric kernel boolean evaluation failed in mid-flight!');
@@ -263,12 +266,12 @@ describe('SECP Forensic Audit — Production Governance & Rollback Verification'
       // Corrupted property deleted
       expect((testDoc.evaluatedShape as any).inPlaceCorruptedFlag).toBeUndefined();
       // Tolerance restored
-      expect(testDoc.evaluatedShape?.tolerance).toBe(initialTolerance);
+      expect((testDoc.evaluatedShape as any).tolerance).toBe(initialTolerance);
       // Oriented faces array restored in-place
       expect(testDoc.evaluatedShape?.outerShell.orientedFaces.length).toBe(initialFaceCount);
 
       // 4. Features restored
-      expect(testDoc.features.some((f: any) => (f.id || f.featureId) === 'LEAKY_FEAT')).toBe(false);
+      expect(testDoc.features!.some((f: any) => (f.id || f.featureId) === 'LEAKY_FEAT')).toBe(false);
 
       // 5. Derived cache preserved on aborted transaction
       expect(engine.getDerivedCache('DOC-FORENSIC-SOT-777', 'evaluated B-Rep')).toEqual({

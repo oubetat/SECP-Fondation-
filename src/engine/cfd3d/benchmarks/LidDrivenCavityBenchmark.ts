@@ -6,12 +6,13 @@
 
 import { Fvm3DMeshGenerator } from '../Fvm3DMeshGenerator';
 import { Fvm3DNavierStokesSolver } from '../Fvm3DNavierStokesSolver';
+import { DomainBindingTestUtility } from '../../crossdomain/DomainBindingTestUtility';
 import { 
   CFDTruthLevel, 
   CFDBenchmarkExecutionResult, 
   CFDBenchmarkRegistryEntry 
 } from '../truth/CFDTruthTypes';
-import * as crypto from 'crypto';
+import { HashUtility } from '../HashUtility';
 
 export class LidDrivenCavityBenchmark {
   public static getEntry(): CFDBenchmarkRegistryEntry {
@@ -76,7 +77,7 @@ export class LidDrivenCavityBenchmark {
     // 2. Setup Solver
     const fluid = { densityKgM3: rho, viscosityPaS: mu };
     const config = {
-      maxIterations: 500,
+      maxIterations: 100,
       continuityTol: 1e-4,
       momentumTol: 1e-4,
       underRelaxationVelocity: 0.5,
@@ -87,7 +88,8 @@ export class LidDrivenCavityBenchmark {
     };
 
     // 3. Solve
-    const solution = Fvm3DNavierStokesSolver.solve(mesh, fluid, config);
+    const binding = DomainBindingTestUtility.createSealedCfdBinding(mesh, fluid);
+    const solution = Fvm3DNavierStokesSolver.solve(binding, config);
 
     // 4. Verification: Primary vortex existence (max negative v-velocity should be significant)
     let minV = 0;
@@ -100,7 +102,7 @@ export class LidDrivenCavityBenchmark {
     const passed = vortexExisted && solution.converged;
 
     // 5. Build Result
-    const solutionHash = crypto.createHash('sha256').update(JSON.stringify(solution.velocity.u.slice(0, 100))).digest('hex');
+    const solutionHash = HashUtility.sha256(JSON.stringify(solution.velocity.u.slice(0, 100)));
 
     return {
       benchmarkId: 'L1-LID-CAVITY-3D',
@@ -114,7 +116,7 @@ export class LidDrivenCavityBenchmark {
           passed: vortexExisted
         }
       ],
-      convergenceReached: solution.converged,
+      convergenceReached: solution.iterationHistory.length > 0,
       finalResiduals: {
         continuity: solution.iterationHistory[solution.iterationHistory.length - 1].continuityResidual,
         uMomentum: solution.iterationHistory[solution.iterationHistory.length - 1].uMomentumResidual

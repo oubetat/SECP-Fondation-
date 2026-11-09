@@ -164,6 +164,7 @@ export interface ADSECapabilityRegistration {
   persisted: boolean;
   benchmarkValidated: boolean;
   published: boolean;
+  stage?: string;
   gateResults: Record<EngineeringGateStage, GateEvaluationResult>;
 }
 
@@ -171,6 +172,8 @@ export type GovernanceAction =
   | 'VIEW'
   | 'ANALYZE'
   | 'PROPOSE'
+  | 'RECOMMEND'
+  | 'REQUEST_EXECUTION'
   | 'EXECUTE'
   | 'VERIFY'
   | 'APPROVE'
@@ -189,3 +192,6 @@ export interface GovernanceActionRecord {
   evidenceId?: string;
   approved: boolean;
 }
+
+export type EngineeringAuthority = string;
+export type LifecycleState = ADSELifecycleState;

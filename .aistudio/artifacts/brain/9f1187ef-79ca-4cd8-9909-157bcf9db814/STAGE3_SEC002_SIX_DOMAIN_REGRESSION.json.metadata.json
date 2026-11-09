@@ -1,0 +1,5 @@
+{
+  "summary":  "Six domain regression matrix verifying legitimate execution and fail-closed rejections across PCB, Electrical, Harness, Multidomain, FEM, and CFD.",
+  "updatedAt":  "2026-11-01T08:54:14.595098591Z",
+  "userFacing":  true
+}

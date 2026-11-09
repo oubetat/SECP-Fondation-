@@ -1,0 +1,50 @@
+{
+  "auditId": "SECP-P5-AUDIT-SECP-REF-ECU-001-1792573893667",
+  "timestamp": "2026-10-21T09:11:33.627Z",
+  "targetSystemId": "SECP-REF-ECU-001",
+  "targetRevision": "REV-5.0.0-QUAL",
+  "overallAuditVerdict": "APPROVED_FOR_DECLARED_SCOPE",
+  "gates": [
+    {
+      "gateId": "P5-C1",
+      "title": "Requirements Source & Canonical Binding Audit",
+      "status": "PASS",
+      "checkedAssertions": 13,
+      "passedAssertions": 13,
+      "notes": "Checked 13 requirements; 100% have valid standard attribution and canonical model paths."
+    },
+    {
+      "gateId": "P5-C2",
+      "title": "Independent Solver Mathematical & Physical Verification",
+      "status": "PASS",
+      "checkedAssertions": 3,
+      "passedAssertions": 3,
+      "notes": "MNA matrix solved successfully; power residue = 1.1102230246251565e-16 W (< 1e-12 W threshold). Theta-JA thermal and rigid MCAD bounds formally registered."
+    },
+    {
+      "gateId": "P5-C3",
+      "title": "Adversarial Mutation & Fault Injection Resistance",
+      "status": "PASS",
+      "checkedAssertions": 1,
+      "passedAssertions": 1,
+      "notes": "Mutation fault injection (excessive trace length) correctly triggered VERIFICATION_FAILED verdict."
+    },
+    {
+      "gateId": "P5-C4",
+      "title": "Evidence Ledger & Revision Provenance Audit",
+      "status": "PASS",
+      "checkedAssertions": 2,
+      "passedAssertions": 2,
+      "notes": "Revision mutation successfully detected; evidence invalidation cascade blocked stale certification."
+    },
+    {
+      "gateId": "P5-C5",
+      "title": "Clean Reproduction of Qualification Verdict",
+      "status": "PASS",
+      "checkedAssertions": 3,
+      "passedAssertions": 3,
+      "notes": "Clean reproduction produced identical Merkle root (3d0a1f4db1b5d194...) and verdict."
+    }
+  ],
+  "summary": "All 5 Independent Closure Audit Gates (P5-C1 through P5-C5) passed successfully. Qualification is approved strictly within declared scope."
+}

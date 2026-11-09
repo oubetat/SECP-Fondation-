@@ -1,0 +1,66 @@
+================================================================================
+SECP-SECURITY-009-CLOSE REGRESSION RAW EXECUTION LOG
+Execution Timestamp: 2026-11-02T08:06:04.573Z
+Command: npx vitest run src/engine/forensic/SEC007_LiveForensicAuditor.test.ts src/engine/forensic/__tests__/SEC009_MutationHarness.test.ts src/engine/crossdomain/__tests__/AuthoritySealTrustBoundary.test.ts src/engine/crossdomain/__tests__/SimulationAuthority.test.ts src/engine/simulation/__tests__/SealingAuthorizationBoundary.test.ts src/engine/crossdomain/__tests__/DomainBindingIntegration.test.ts
+Environment: Node.js v22.23.4 / Vitest 1.6.1 / TypeScript 5.9.3
+================================================================================
+
+
+ RUN  v1.6.1 /app/applet
+
+stdout | src/engine/forensic/__tests__/SEC009_MutationHarness.test.ts > SECP-SECURITY-009 Real Mutation Qualification Suite (with Restoration Proof) > Mutation 1: Null Capability Check Removal is detected and restored in finally block
+[MUTATION 1] Applied (hash: bc6dc63c). Null capability accepted.
+[MUTATION 1] Restored in finally (hash: 97352ab5). Baseline verified.
+
+stdout | src/engine/forensic/__tests__/SEC009_MutationHarness.test.ts > SECP-SECURITY-009 Real Mutation Qualification Suite (with Restoration Proof) > Mutation 2: Capability Identity Check Weakening is detected and restored in finally block
+[MUTATION 2] Applied (hash: e0c4f840). Forged capability accepted.
+[MUTATION 2] Restored in finally (hash: 97352ab5). Baseline verified.
+
+stdout | src/engine/forensic/__tests__/SEC009_MutationHarness.test.ts > SECP-SECURITY-009 Real Mutation Qualification Suite (with Restoration Proof) > Mutation 3: Domain Authorization Scope Removal is detected and restored in finally block
+[MUTATION 3] Applied (hash: 0095d242). Domain mismatch accepted.
+[MUTATION 3] Restored in finally (hash: 97352ab5). Baseline verified.
+
+stdout | src/engine/forensic/__tests__/SEC009_MutationHarness.test.ts > SECP-SECURITY-009 Real Mutation Qualification Suite (with Restoration Proof) > Mutation 4: Authority Initialization Gate Removal is detected and restored in finally block
+[MUTATION 4] Applied (hash: 2d7505cd). Pre-boot seal accepted.
+[MUTATION 4] Restored in finally (hash: 54ac36be). Baseline verified.
+
+stdout | src/engine/forensic/__tests__/SEC009_MutationHarness.test.ts > SECP-SECURITY-009 Real Mutation Qualification Suite (with Restoration Proof) > Mutation 5: Token Revocation Registry Bypass is detected and restored in finally block
+[MUTATION 5] Applied (hash: c06ced4b). Revoked token replayed.
+[MUTATION 5] Restored in finally (hash: 72ea467c). Baseline verified.
+
+ ✓ src/engine/forensic/__tests__/SEC009_MutationHarness.test.ts  (6 tests) 15ms
+ ✓ src/engine/crossdomain/__tests__/AuthoritySealTrustBoundary.test.ts  (10 tests) 20ms
+ ✓ src/engine/forensic/SEC007_LiveForensicAuditor.test.ts  (4 tests) 8046ms
+stdout | src/engine/forensic/SEC007_LiveForensicAuditor.test.ts > SECP-SECURITY-009 Remediated Forensic Auditor (AST-Enforced) > should deterministically enumerate all modules and perform AST analysis on src/engine
+[SEC009 AST AUDITOR] Deterministically discovered 4505 modules under src/engine
+[SEC009 AST AUDITOR] Total Production Modules Audited: 3916
+[SEC009 AST AUDITOR] Production AUTHORITY_PRODUCER: 3
+[SEC009 AST AUDITOR] Production AUTHORITY_CONSUMER: 12
+[SEC009 AST AUDITOR] Production NO_AUTHORITY: 3901
+[SEC009 AST AUDITOR] Production SUSPICIOUS_UNKNOWN: 0
+[SEC009 AST AUDITOR] Production Unauthenticated Seal Calls: 0
+[SEC009 AST AUDITOR] Production Unresolved Dynamic Calls: 0
+[SEC009 AST AUDITOR] Production Authenticated Calls: 4
+
+stdout | src/engine/forensic/SEC007_LiveForensicAuditor.test.ts > SECP-SECURITY-009 Remediated Forensic Auditor (AST-Enforced) > should discover intentional negative unauthenticated tests in test directories via AST
+[SEC009 AST AUDITOR] Discovered 1 intentional unauthenticated negative test(s) in test suites
+
+stdout | src/engine/forensic/SEC007_LiveForensicAuditor.test.ts > SECP-SECURITY-009 Remediated Forensic Auditor (AST-Enforced) > should execute against all 15 physical adversarial fixtures and enforce zero false negatives
+[SEC009 ADVERSARIAL VALIDATION] Evaluated 15 physical fixtures:
+ - Direct Violations Detected: 5
+ - Unresolved / Suspicious (Fail-Closed): 10
+ - Authenticated Passes: 0
+
+ ✓ src/engine/simulation/__tests__/SealingAuthorizationBoundary.test.ts  (6 tests) 14ms
+ ✓ src/engine/crossdomain/__tests__/DomainBindingIntegration.test.ts  (3 tests) 18ms
+ ✓ src/engine/crossdomain/__tests__/SimulationAuthority.test.ts  (3 tests) 16ms
+
+ Test Files  6 passed (6)
+      Tests  32 passed (32)
+   Start at  08:05:46
+   Duration  18.22s (transform 5.72s, setup 1ms, collect 6.91s, tests 8.13s, environment 2ms, prepare 1.07s)
+
+
+================================================================================
+END OF REGRESSION LOG — 32 TESTS TOTAL ACROSS 6 TEST SUITES (ALL PASSED)
+================================================================================

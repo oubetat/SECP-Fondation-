@@ -11,7 +11,7 @@ import {
   ManufacturingSetupDefinition,
   ManufacturingOperationDefinition,
 } from './CAMProductionTypes';
-import { CuttingTool } from '../tool-library/ToolLibraryTypes';
+import { CuttingTool } from '../ToolpathTypes';
 
 export type CAMArtifactNodeType =
   | 'CAD_GEOMETRY'

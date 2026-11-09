@@ -41,6 +41,10 @@ export class HardAcceptanceGate311 {
     this.service = service || new AIFailureDetectionService();
   }
 
+  public static evaluate(): GateTestResult311[] {
+    return new HardAcceptanceGate311().runAllGateChecks().testResults;
+  }
+
   public runAllGateChecks(): GateReport311 {
     const results: GateTestResult311[] = [];
 

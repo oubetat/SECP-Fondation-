@@ -3,7 +3,8 @@
  * Standardized tool geometries, assemblies, and deterministic fingerprints.
  */
 
-import { CuttingTool, ToolHolderGeometry, ToolType, ToolAssembly } from './ToolpathTypes';
+import { CuttingTool, ToolHolder, ToolAssembly } from './ToolpathTypes';
+import { ToolType } from './toolpath/ToolpathTypes';
 import { generateDeterministicHash } from '../../lib/hash';
 
 export class CuttingToolModel {
@@ -26,7 +27,7 @@ export class CuttingToolModel {
     fluteLengthMm: number,
     overallLengthMm: number,
     material: 'CARBIDE' | 'HSS' | 'CERAMIC' | 'CBN' | 'PCD' = 'CARBIDE',
-    holder?: ToolHolderGeometry
+    holder?: ToolHolder
   ): Promise<CuttingTool> {
     if (diameterMm <= 0) throw new Error('Tool diameter must be positive.');
     if (overallLengthMm <= 0) throw new Error('Tool length must be positive.');
@@ -53,7 +54,6 @@ export class CuttingToolModel {
       ...toolBase,
       holderDiameterMm: holder ? holder.upperDiameterMm : diameterMm * 2,
       gaugeLengthMm: holder ? holder.lengthMm + reachMm : overallLengthMm + 30,
-      holder,
       fingerprint
     };
   }
@@ -64,7 +64,7 @@ export class CuttingToolModel {
   public static async createAssembly(
     assemblyId: string,
     tool: CuttingTool,
-    holder: ToolHolderGeometry,
+    holder: ToolHolder,
     offsetNumber: number = 1
   ): Promise<ToolAssembly> {
     const assemblyData = {

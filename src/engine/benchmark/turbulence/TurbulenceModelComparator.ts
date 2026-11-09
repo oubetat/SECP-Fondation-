@@ -8,6 +8,7 @@ import { ModelComparisonResult } from './types';
 import { TurbulenceCaseRegistry } from './TurbulenceCaseRegistry';
 import { Fvm3DNavierStokesSolver } from '../../cfd3d/Fvm3DNavierStokesSolver';
 import { Fvm3DMeshGenerator } from '../../cfd3d/Fvm3DMeshGenerator';
+import { DomainBindingTestUtility } from '../../crossdomain/DomainBindingTestUtility';
 
 export class TurbulenceModelComparator {
   public static compareModelsOnCases(): ModelComparisonResult[] {
@@ -18,7 +19,8 @@ export class TurbulenceModelComparator {
       // 1. Laminar Run with isolated mesh clone
       const meshLam = Fvm3DMeshGenerator.cloneMesh(c.mesh);
       const laminarConfig = { ...c.solverConfig, useTurbulenceModel: false, turbulenceScheme: 'LAMINAR' as const };
-      const solLam = Fvm3DNavierStokesSolver.solve(meshLam, c.fluid, c.boundaryConditions, laminarConfig);
+      const bindingLam = DomainBindingTestUtility.createSealedCfdBinding(meshLam, c.fluid);
+      const solLam = Fvm3DNavierStokesSolver.solve(bindingLam, c.boundaryConditions, laminarConfig);
 
       let maxNutLam = 0;
       if (solLam.turbulence?.nut) {
@@ -41,7 +43,8 @@ export class TurbulenceModelComparator {
       // 2. K-Epsilon Run with isolated fresh mesh clone
       const meshKEps = Fvm3DMeshGenerator.cloneMesh(c.mesh);
       const kEpsConfig = { ...c.solverConfig, useTurbulenceModel: true, turbulenceScheme: 'K_EPSILON' as const };
-      const solKEps = Fvm3DNavierStokesSolver.solve(meshKEps, c.fluid, c.boundaryConditions, kEpsConfig);
+      const bindingKEps = DomainBindingTestUtility.createSealedCfdBinding(meshKEps, c.fluid);
+      const solKEps = Fvm3DNavierStokesSolver.solve(bindingKEps, c.boundaryConditions, kEpsConfig);
 
       let maxNutKEps = 0;
       if (solKEps.turbulence?.nut) {

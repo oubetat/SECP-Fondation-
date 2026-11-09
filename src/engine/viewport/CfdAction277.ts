@@ -117,7 +117,7 @@ export class CfdAction277 implements CanonicalAction<CfdSimulationIntent> {
     const evalResult = DocumentEvaluator.evaluate(updatedDocument);
 
     // 7. Capture payload hash AFTER
-    const canonicalPayloadHashAfter = TelemetryHasher.hashString(JSON.stringify(updatedDocument.derived.cfd));
+    const canonicalPayloadHashAfter = TelemetryHasher.hashString(JSON.stringify(updatedDocument.derived!.cfd));
 
     // 8. Verify Mutation Proof via CanonicalMutationVerifier
     const proof = {

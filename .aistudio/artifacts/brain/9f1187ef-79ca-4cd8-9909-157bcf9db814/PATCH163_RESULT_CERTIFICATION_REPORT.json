@@ -1,0 +1,139 @@
+{
+  "gateId": "GATE-163-RESULT-CERTIFICATION",
+  "patch": "PATCH-163",
+  "verdict": "PASS",
+  "passedChecks": 17,
+  "totalChecks": 17,
+  "summary": "Evaluated 17/17 result certification security checks. Result: PASS",
+  "evaluatedAt": "2026-08-22T02:08:32.000Z",
+  "capabilities": {
+    "resultIntegrity": "PROVEN",
+    "verificationBinding": "PROVEN",
+    "evidenceBinding": "PROVEN",
+    "policyBinding": "PROVEN",
+    "attestationBinding": "PROVEN",
+    "tamperDetection": "PROVEN",
+    "signatureAuthenticity": "PROVEN"
+  },
+  "checks": [
+    {
+      "id": "SEC-163-01",
+      "name": "Compliant Result Certification",
+      "description": "Result satisfies all policy conditions and generates a VALID CERTIFIED Certificate.",
+      "passed": true,
+      "verdict": "CERTIFIED"
+    },
+    {
+      "id": "SEC-163-02",
+      "name": "Independent Certificate Verification",
+      "description": "Verifies the unmodified certificate and registers a VALID status.",
+      "passed": true,
+      "verdict": "CERTIFIED"
+    },
+    {
+      "id": "SEC-163-03",
+      "name": "Modified Result Tamper Detection",
+      "description": "Recomputing the result canonical representation post-issuance must fail.",
+      "passed": true,
+      "verdict": "INVALID"
+    },
+    {
+      "id": "SEC-163-04",
+      "name": "Modified Solver Inputs Detection",
+      "description": "Re-verifying certificate against altered solver inputHash must fail.",
+      "passed": true,
+      "verdict": "INVALID"
+    },
+    {
+      "id": "SEC-163-05",
+      "name": "Modified Solver Version Detection",
+      "description": "Validates that solver version changes must invalidate the certificate.",
+      "passed": true,
+      "verdict": "INVALID"
+    },
+    {
+      "id": "SEC-163-06",
+      "name": "Modified Verification Evidence Detection",
+      "description": "Detects if supporting physical evidence hash diverges post-issuance.",
+      "passed": true,
+      "verdict": "INVALID"
+    },
+    {
+      "id": "SEC-163-07",
+      "name": "Modified Attestation Detection",
+      "description": "Fails if the original cryptographically sealed attestation changes.",
+      "passed": true,
+      "verdict": "INVALID"
+    },
+    {
+      "id": "SEC-163-08",
+      "name": "Policy Change Detection",
+      "description": "Invalidates verification if governance policy is replaced or modified.",
+      "passed": true,
+      "verdict": "INVALID"
+    },
+    {
+      "id": "SEC-163-09",
+      "name": "Certificate Replay Attack Detection",
+      "description": "Prevents reusing/splicing a valid certificate onto a different result entity.",
+      "passed": true,
+      "verdict": "INVALID"
+    },
+    {
+      "id": "SEC-163-10",
+      "name": "Numerical Tolerance Enforcement",
+      "description": "Fails to certify if physics output violates tolerance boundaries specified by policy.",
+      "passed": true,
+      "verdict": "INVALID"
+    },
+    {
+      "id": "SEC-163-11",
+      "name": "Numerical Convergence Constraint",
+      "description": "Rejects result certification if the solver iteration failed to converge.",
+      "passed": true,
+      "verdict": "INVALID"
+    },
+    {
+      "id": "SEC-163-12",
+      "name": "Numerical Conservation Constraint",
+      "description": "Rejects result certification if basic physical conservation laws are violated.",
+      "passed": true,
+      "verdict": "INVALID"
+    },
+    {
+      "id": "SEC-163-13",
+      "name": "Numerical Stability Constraint",
+      "description": "Rejects result certification if the integration scheme reports solver instability.",
+      "passed": true,
+      "verdict": "INVALID"
+    },
+    {
+      "id": "SEC-163-14",
+      "name": "Enforce Required Elements Missing as UNPROVEN",
+      "description": "Policy-mandated numerical checks that are missing must output UNPROVEN status.",
+      "passed": true,
+      "verdict": "UNPROVEN"
+    },
+    {
+      "id": "SEC-163-15",
+      "name": "Cryptographic Signature Tamper Detection",
+      "description": "Forced changes to the signature hex must fail cryptographic authentication.",
+      "passed": true,
+      "verdict": "INVALID"
+    },
+    {
+      "id": "SEC-163-16",
+      "name": "Revocation Protocol Enforcement",
+      "description": "Verifying a revoked certificate yields the REVOKED status and prevents false certification claims.",
+      "passed": true,
+      "verdict": "REVOKED"
+    },
+    {
+      "id": "SEC-163-17",
+      "name": "Certificate Verification Reproducibility",
+      "description": "Validates that exporting/serialization does not affect deterministic verification result.",
+      "passed": true,
+      "verdict": "CERTIFIED"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "benchmarkIdentity": {
+    "id": "PATCH-151-FORENSIC-04",
+    "timestamp": "2026-08-21T13:52:45.514Z"
+  },
+  "environmentFingerprint": {
+    "OS": "Linux",
+    "CPU": "unknown",
+    "CPUCores": 2,
+    "RAM": "4.0 GB",
+    "runtime": "NodeJS",
+    "runtimeVersion": "v22.23.1",
+    "buildHash": "build-hpc-secp-151-forensic-delta"
+  },
+  "measurements": {
+    "instances": 46000,
+    "definitions": 50,
+    "reuseRatio": 920,
+    "avoidedMemoryMB": 390575,
+    "realMetadataHeapMB": 40.555755615234375,
+    "volatileCheckAccumulator": -116148644.91373396
+  },
+  "statistics": {
+    "mutation1": {
+      "median": 0.0024945000000116124,
+      "p95": 0.004795999999942069,
+      "mean": 0.0052467900000056035
+    },
+    "mutation100": {
+      "median": 0.024300999999979922,
+      "p95": 0.056694999999990614,
+      "mean": 0.03739343000000531
+    },
+    "mutation1000": {
+      "median": 0.024300999999979922,
+      "p95": 0.056694999999990614,
+      "mean": 0.03739343000000531
+    },
+    "mutation10000": {
+      "median": 1.3019704999999817,
+      "p95": 2.202401000000009,
+      "mean": 1.53681364999999
+    }
+  },
+  "dependencyCascade": {
+    "graphTraversalTimeMs": 7.2131129999999075,
+    "cascadedNodes": 920
+  },
+  "verdict": "PASS"
+}

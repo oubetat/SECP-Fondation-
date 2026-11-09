@@ -43,9 +43,9 @@ export interface MeshGeometryData {
   normals: number[];  // Flattened nx,ny,nz unit vectors
   indices: number[];  // Triangle vertex index buffer
   facesCount: number; // Number of triangles
-  topologyMap: MeshTopologyMap;
-  brepHash: string;
-  meshHash: string;
+  topologyMap?: MeshTopologyMap;
+  brepHash?: string;
+  meshHash?: string;
 }
 
 export class BRepTessellator {

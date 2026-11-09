@@ -1,0 +1,50 @@
+{
+  "task": "SECP-ENGINE-STRENGTHENING-001D",
+  "evaluationTimestamp": "2026-10-22T08:05:00Z",
+  "solver": "StructuralPlateSolver.solve",
+  "adversarialCases": [
+    {
+      "testId": "ADV-STRUC-001",
+      "name": "Unconstrained Rigid-Body Motion",
+      "description": "Plate submitted with 0 support constraints (floating body in space)",
+      "expectedErrorCode": "UNCONSTRAINED_RIGID_BODY_MOTION",
+      "caught": true,
+      "verdict": "FAIL_CLOSED_PASS"
+    },
+    {
+      "testId": "ADV-STRUC-002",
+      "name": "Negative Plate Thickness",
+      "description": "Plate submitted with thickness h = -1.6 mm",
+      "expectedErrorCode": "INVALID_GEOMETRY",
+      "caught": true,
+      "verdict": "FAIL_CLOSED_PASS"
+    },
+    {
+      "testId": "ADV-STRUC-003",
+      "name": "Non-Physical Young Modulus",
+      "description": "Plate submitted with E = -10.0 GPa",
+      "expectedErrorCode": "INVALID_MATERIAL",
+      "caught": true,
+      "verdict": "FAIL_CLOSED_PASS"
+    },
+    {
+      "testId": "ADV-STRUC-004",
+      "name": "Compressible / Auxetic Limit Breach",
+      "description": "Plate submitted with Poisson ratio nu >= 0.5 (incompressible continuum violation)",
+      "expectedErrorCode": "INVALID_MATERIAL",
+      "caught": true,
+      "verdict": "FAIL_CLOSED_PASS"
+    },
+    {
+      "testId": "ADV-STRUC-005",
+      "name": "Singular Stiffness Matrix Detection",
+      "description": "Near-zero pivot detection in Gaussian elimination",
+      "expectedErrorCode": "SINGULAR_STIFFNESS_MATRIX",
+      "caught": true,
+      "verdict": "FAIL_CLOSED_PASS"
+    }
+  ],
+  "totalAdversarialCases": 5,
+  "passedAdversarialCases": 5,
+  "failClosedIntegrity": "100%_SECURE"
+}

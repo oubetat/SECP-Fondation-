@@ -1,0 +1,65 @@
+{
+  "mission": "SECP-CAD-TRUTH-PATCH-002",
+  "title": "Canonical CAD Identity -> CFD Execution -> Engineering Truth Binding",
+  "securityPosture": "FAIL-CLOSED",
+  "architectureGraph": {
+    "nodes": [
+      {
+        "id": "CAD_REVISION",
+        "type": "CANONICAL_IDENTITY",
+        "description": "Canonical CAD Revision Hash originating from BRepKernel",
+        "source": "src/engine/cad-kernel/brep/BRepKernel.ts"
+      },
+      {
+        "id": "BREP_GEOMETRY",
+        "type": "GEOMETRY_TRUTH",
+        "description": "BRep Solid topology & geometry representation",
+        "source": "src/engine/cad-kernel/topology/TopologyContracts.ts"
+      },
+      {
+        "id": "CFD_MESH_DERIVATION",
+        "type": "DERIVED_MESH",
+        "description": "FvmMesh3D constructed by CFDAdapter carrying CFDMeshProvenance",
+        "source": "src/engine/cad-kernel/cfd/CFDAdapter.ts"
+      },
+      {
+        "id": "DOMAIN_BINDING",
+        "type": "AUTHORITATIVE_BINDING",
+        "description": "CfdToCoreBinding sealed with HMAC token using SealingCapability",
+        "source": "src/engine/crossdomain/CanonicalDomainBindingEngine.ts"
+      },
+      {
+        "id": "CFD_SOLVER",
+        "type": "EXECUTION_ENGINE",
+        "description": "Fvm3DNavierStokesSolver validating provenance before SIMPLE iterations",
+        "source": "src/engine/cfd3d/Fvm3DNavierStokesSolver.ts"
+      },
+      {
+        "id": "SIMULATION_REGISTRY",
+        "type": "AUTHORITATIVE_REGISTRY",
+        "description": "SimulationExecutionRegistry storing immutable execution records and verifying candidate results",
+        "source": "src/engine/simulation/SimulationExecutionRegistry.ts"
+      },
+      {
+        "id": "TRUTH_THREAD",
+        "type": "DIGITAL_THREAD",
+        "description": "Unified digital evidence ledger verifying end-to-end lineage and hash chain integrity",
+        "source": "src/engine/kernel/EngineeringTruthEngine.ts"
+      }
+    ],
+    "edges": [
+      { "from": "CAD_REVISION", "to": "BREP_GEOMETRY", "relation": "DEFINES_CANONICAL_GEOMETRY" },
+      { "from": "BREP_GEOMETRY", "to": "CFD_MESH_DERIVATION", "relation": "DERIVES_FVM_MESH_WITH_PROVENANCE" },
+      { "from": "CFD_MESH_DERIVATION", "to": "DOMAIN_BINDING", "relation": "EMBEDS_MESH_PAYLOAD" },
+      { "from": "DOMAIN_BINDING", "to": "CFD_SOLVER", "relation": "PROVIDES_AUTHORITATIVE_EXECUTION_SEAL" },
+      { "from": "CFD_SOLVER", "to": "SIMULATION_REGISTRY", "relation": "REGISTERS_EXECUTION_EVIDENCE" },
+      { "from": "SIMULATION_REGISTRY", "to": "TRUTH_THREAD", "relation": "BINDS_DERIVED_EVIDENCE" }
+    ]
+  },
+  "provenanceRules": [
+    "FAIL_CLOSED_ON_MISSING_PROVENANCE",
+    "FAIL_CLOSED_ON_GEOMETRY_HASH_MISMATCH",
+    "FAIL_CLOSED_ON_REVISION_HASH_MISMATCH",
+    "SEPARATE_PROVENANCE_INTEGRITY_FROM_NUMERICAL_QUALIFICATION"
+  ]
+}

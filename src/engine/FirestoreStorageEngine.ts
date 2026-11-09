@@ -9,7 +9,8 @@ import {
   deleteDoc, 
   updateDoc,
   Timestamp,
-  serverTimestamp
+  serverTimestamp,
+  QueryDocumentSnapshot
 } from 'firebase/firestore';
 import { db, auth } from '../lib/firebase';
 import { ProductRecord } from './projectStorage';
@@ -62,7 +63,7 @@ export class FirestoreStorageEngine {
     try {
       const q = query(collection(db, path), where('ownerId', '==', auth.currentUser.uid));
       const snapshot = await getDocs(q);
-      return snapshot.docs.map(d => ({ ...d.data(), id: d.id } as ProductRecord));
+      return snapshot.docs.map((d: QueryDocumentSnapshot) => ({ ...d.data(), id: d.id } as ProductRecord));
     } catch (error) {
       handleFirestoreError(error, OperationType.LIST, path);
       return [];

@@ -1,0 +1,78 @@
+{
+  "auditMission": "SECP-CAD-TRUTH-PATCH-001",
+  "phase": "PHASE_D_INTEGRATION_REGRESSION",
+  "timestamp": "2026-11-02T10:03:00.000Z",
+  "summary": {
+    "testSuitesExecuted": 7,
+    "testSuitesPassed": 7,
+    "totalTestsExecuted": 48,
+    "testsPassed": 48,
+    "testsFailed": 0,
+    "verdict": "INTEGRATION_VERIFIED"
+  },
+  "testSuites": [
+    {
+      "suitePath": "src/engine/certification/truth/__tests__/HydraulicPumpTruthThread.test.ts",
+      "testCount": 10,
+      "passed": 10,
+      "failed": 0,
+      "status": "PASS",
+      "durationMs": 42
+    },
+    {
+      "suitePath": "src/engine/simulation/__tests__/SimulationExecutionAuthorityAdversarial.test.ts",
+      "testCount": 15,
+      "passed": 15,
+      "failed": 0,
+      "status": "PASS",
+      "durationMs": 16
+    },
+    {
+      "suitePath": "src/engine/crossdomain/__tests__/AuthoritySealTrustBoundary.test.ts",
+      "testCount": 10,
+      "passed": 10,
+      "failed": 0,
+      "status": "PASS",
+      "durationMs": 15
+    },
+    {
+      "suitePath": "src/engine/cad-kernel/cfd/__tests__/CFDCADPipeline.test.ts",
+      "testCount": 1,
+      "passed": 1,
+      "failed": 0,
+      "status": "PASS",
+      "durationMs": 605
+    },
+    {
+      "suitePath": "src/engine/simulation/__tests__/SealingAuthorizationBoundary.test.ts",
+      "testCount": 6,
+      "passed": 6,
+      "failed": 0,
+      "status": "PASS",
+      "durationMs": 9
+    },
+    {
+      "suitePath": "src/engine/crossdomain/__tests__/DomainBindingIntegration.test.ts",
+      "testCount": 3,
+      "passed": 3,
+      "failed": 0,
+      "status": "PASS",
+      "durationMs": 26
+    },
+    {
+      "suitePath": "src/engine/crossdomain/__tests__/SimulationAuthority.test.ts",
+      "testCount": 3,
+      "passed": 3,
+      "failed": 0,
+      "status": "PASS",
+      "durationMs": 15
+    }
+  ],
+  "cadCoreRegressionSummary": {
+    "suitesExecuted": 18,
+    "suitesPassed": 18,
+    "testsExecuted": 101,
+    "testsPassed": 101,
+    "testsFailed": 0
+  }
+}

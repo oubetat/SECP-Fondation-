@@ -1,0 +1,34 @@
+[
+  {
+    "id": "EVID-CAD-01",
+    "capabilityId": "capability:cad.brep.boolean",
+    "timestamp": "2026-08-21T15:58:44.243Z",
+    "verifier": "Verifier-CAD-Main",
+    "hash": "sha256-hash-main",
+    "metricSnapshots": {},
+    "valid": true
+  },
+  {
+    "id": "EVID-SPOOFED-GPU",
+    "capabilityId": "capability:compute.spoofed.gpu",
+    "timestamp": "2026-08-21T15:58:44.244Z",
+    "verifier": "Verifier",
+    "hash": "hash",
+    "metricSnapshots": {
+      "apiDetected": true,
+      "adapterDetected": true,
+      "shaderCompiled": true,
+      "realHardwareExecution": false
+    },
+    "valid": true
+  },
+  {
+    "id": "EVID-TAMPERED-01",
+    "capabilityId": "capability:cad.tampered.evidence",
+    "timestamp": "2026-08-21T15:58:44.244Z",
+    "verifier": "Verifier",
+    "hash": "corrupted-hash",
+    "metricSnapshots": {},
+    "valid": false
+  }
+]

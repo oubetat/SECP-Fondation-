@@ -1,0 +1,219 @@
+{
+  "task_id": "SECP-STAGE3-IFA-001",
+  "artifact_type": "AUTHORIZED_PATH_MATRIX",
+  "timestamp": "2026-11-01T08:35:00.000Z",
+  "domains_evaluated": [
+    "PCB",
+    "ELECTRICAL",
+    "WIRING_HARNESS",
+    "MULTIDOMAIN",
+    "FEM",
+    "CFD"
+  ],
+  "verification_matrix": [
+    {
+      "domain": "PCB",
+      "solver_engine": "MultidomainPcbIntegrationEngine",
+      "conditions": [
+        {
+          "condition": "VALID_AUTHORITATIVE_BINDING",
+          "expected_behavior": "EXECUTION_SUCCESS",
+          "observed_behavior": "EXECUTION_SUCCESS",
+          "status": "PASS",
+          "evidence": "src/engine/crossdomain/__tests__/DomainBindingIntegration.test.ts"
+        },
+        {
+          "condition": "UNBOUND_OR_UNSEALED_REQUEST",
+          "expected_behavior": "SIMULATION_AUTHORITY_VIOLATION",
+          "observed_behavior": "SIMULATION_AUTHORITY_VIOLATION",
+          "status": "PASS",
+          "evidence": "Direct invocation without binding throws SIMULATION_AUTHORITY_VIOLATION"
+        },
+        {
+          "condition": "TAMPERED_SEAL_TOKEN",
+          "expected_behavior": "INVALID_SEAL_TOKEN",
+          "observed_behavior": "INVALID_SEAL_TOKEN",
+          "status": "PASS",
+          "evidence": "Tampered executionSealToken fails SHA256 validation"
+        },
+        {
+          "condition": "MISMATCHED_GEOMETRY_OR_REVISION",
+          "expected_behavior": "HASH_MISMATCH_REJECTION",
+          "observed_behavior": "HASH_MISMATCH_REJECTION",
+          "status": "PASS",
+          "evidence": "Altered geometryHash causes validateBinding failure"
+        }
+      ]
+    },
+    {
+      "domain": "ELECTRICAL",
+      "solver_engine": "NodalCircuitSolver",
+      "conditions": [
+        {
+          "condition": "VALID_AUTHORITATIVE_BINDING",
+          "expected_behavior": "EXECUTION_SUCCESS",
+          "observed_behavior": "EXECUTION_SUCCESS",
+          "status": "PASS",
+          "evidence": "NodalCircuitSolver produces nodal voltages under valid binding"
+        },
+        {
+          "condition": "UNBOUND_OR_UNSEALED_REQUEST",
+          "expected_behavior": "SIMULATION_AUTHORITY_VIOLATION",
+          "observed_behavior": "SIMULATION_AUTHORITY_VIOLATION",
+          "status": "PASS",
+          "evidence": "Unbound call throws SIMULATION_AUTHORITY_VIOLATION"
+        },
+        {
+          "condition": "TAMPERED_SEAL_TOKEN",
+          "expected_behavior": "INVALID_SEAL_TOKEN",
+          "observed_behavior": "INVALID_SEAL_TOKEN",
+          "status": "PASS",
+          "evidence": "Token validation fails"
+        },
+        {
+          "condition": "MISMATCHED_GEOMETRY_OR_REVISION",
+          "expected_behavior": "HASH_MISMATCH_REJECTION",
+          "observed_behavior": "HASH_MISMATCH_REJECTION",
+          "status": "PASS",
+          "evidence": "Revision/geometry mismatch triggers rejection"
+        }
+      ]
+    },
+    {
+      "domain": "WIRING_HARNESS",
+      "solver_engine": "HarnessElectricalSolver",
+      "conditions": [
+        {
+          "condition": "VALID_AUTHORITATIVE_BINDING",
+          "expected_behavior": "EXECUTION_SUCCESS",
+          "observed_behavior": "EXECUTION_SUCCESS",
+          "status": "PASS",
+          "evidence": "Harness IR drop calculation succeeds under valid binding"
+        },
+        {
+          "condition": "UNBOUND_OR_UNSEALED_REQUEST",
+          "expected_behavior": "SIMULATION_AUTHORITY_VIOLATION",
+          "observed_behavior": "SIMULATION_AUTHORITY_VIOLATION",
+          "status": "PASS",
+          "evidence": "Rejects unbound harness analysis"
+        },
+        {
+          "condition": "TAMPERED_SEAL_TOKEN",
+          "expected_behavior": "INVALID_SEAL_TOKEN",
+          "observed_behavior": "INVALID_SEAL_TOKEN",
+          "status": "PASS",
+          "evidence": "Rejects invalid harness seal"
+        },
+        {
+          "condition": "MISMATCHED_GEOMETRY_OR_REVISION",
+          "expected_behavior": "HASH_MISMATCH_REJECTION",
+          "observed_behavior": "HASH_MISMATCH_REJECTION",
+          "status": "PASS",
+          "evidence": "Rejects mismatched harness topology/geometry"
+        }
+      ]
+    },
+    {
+      "domain": "MULTIDOMAIN",
+      "solver_engine": "ElectrothermalSolver",
+      "conditions": [
+        {
+          "condition": "VALID_AUTHORITATIVE_BINDING",
+          "expected_behavior": "EXECUTION_SUCCESS",
+          "observed_behavior": "EXECUTION_SUCCESS",
+          "status": "PASS",
+          "evidence": "Coupled electrothermal loop executes to convergence under binding"
+        },
+        {
+          "condition": "UNBOUND_OR_UNSEALED_REQUEST",
+          "expected_behavior": "SIMULATION_AUTHORITY_VIOLATION",
+          "observed_behavior": "SIMULATION_AUTHORITY_VIOLATION",
+          "status": "PASS",
+          "evidence": "Rejects unbound electrothermal coupling"
+        },
+        {
+          "condition": "TAMPERED_SEAL_TOKEN",
+          "expected_behavior": "INVALID_SEAL_TOKEN",
+          "observed_behavior": "INVALID_SEAL_TOKEN",
+          "status": "PASS",
+          "evidence": "Invalid token rejected"
+        },
+        {
+          "condition": "MISMATCHED_GEOMETRY_OR_REVISION",
+          "expected_behavior": "HASH_MISMATCH_REJECTION",
+          "observed_behavior": "HASH_MISMATCH_REJECTION",
+          "status": "PASS",
+          "evidence": "Mismatched geometry rejected"
+        }
+      ]
+    },
+    {
+      "domain": "FEM",
+      "solver_engine": "FEMCore",
+      "conditions": [
+        {
+          "condition": "VALID_AUTHORITATIVE_BINDING",
+          "expected_behavior": "EXECUTION_SUCCESS",
+          "observed_behavior": "EXECUTION_SUCCESS",
+          "status": "PASS",
+          "evidence": "Static linear FEM analysis completes under authoritative binding"
+        },
+        {
+          "condition": "UNBOUND_OR_UNSEALED_REQUEST",
+          "expected_behavior": "SIMULATION_AUTHORITY_VIOLATION",
+          "observed_behavior": "SIMULATION_AUTHORITY_VIOLATION",
+          "status": "PASS",
+          "evidence": "Unbound FEM solve rejected"
+        },
+        {
+          "condition": "TAMPERED_SEAL_TOKEN",
+          "expected_behavior": "INVALID_SEAL_TOKEN",
+          "observed_behavior": "INVALID_SEAL_TOKEN",
+          "status": "PASS",
+          "evidence": "Tampered token rejected"
+        },
+        {
+          "condition": "MISMATCHED_GEOMETRY_OR_REVISION",
+          "expected_behavior": "HASH_MISMATCH_REJECTION",
+          "observed_behavior": "HASH_MISMATCH_REJECTION",
+          "status": "PASS",
+          "evidence": "Mismatched mesh geometry rejected"
+        }
+      ]
+    },
+    {
+      "domain": "CFD",
+      "solver_engine": "Fvm3DNavierStokesSolver",
+      "conditions": [
+        {
+          "condition": "VALID_AUTHORITATIVE_BINDING",
+          "expected_behavior": "EXECUTION_SUCCESS",
+          "observed_behavior": "EXECUTION_SUCCESS",
+          "status": "PASS",
+          "evidence": "Navier-Stokes fluid step completes under binding"
+        },
+        {
+          "condition": "UNBOUND_OR_UNSEALED_REQUEST",
+          "expected_behavior": "SIMULATION_AUTHORITY_VIOLATION",
+          "observed_behavior": "SIMULATION_AUTHORITY_VIOLATION",
+          "status": "PASS",
+          "evidence": "Unbound fluid solve rejected"
+        },
+        {
+          "condition": "TAMPERED_SEAL_TOKEN",
+          "expected_behavior": "INVALID_SEAL_TOKEN",
+          "observed_behavior": "INVALID_SEAL_TOKEN",
+          "status": "PASS",
+          "evidence": "Tampered token rejected"
+        },
+        {
+          "condition": "MISMATCHED_GEOMETRY_OR_REVISION",
+          "expected_behavior": "HASH_MISMATCH_REJECTION",
+          "observed_behavior": "HASH_MISMATCH_REJECTION",
+          "status": "PASS",
+          "evidence": "Mismatched fluid mesh rejected"
+        }
+      ]
+    }
+  ]
+}

@@ -31,26 +31,35 @@ export class AIOptimizationEvidenceGenerator {
     selectedCandidate: OptimizationCandidate,
     decisionTrace: string[]
   ): OptimizationEvidencePackage {
+    const candidateId = selectedCandidate.candidateId || selectedCandidate.id;
     const timestamp = Date.now();
-    const evidenceToken = `DT_SECP_OPT_${session.sessionId}_${selectedCandidate.candidateId}_${timestamp}`;
+    const evidenceToken = `DT_SECP_OPT_${session.sessionId}_${candidateId}_${timestamp}`;
 
-    const bestMetrics: Record<string, number> = {};
-    for (const [k, v] of Object.entries(selectedCandidate.metrics)) {
-      bestMetrics[k] = v.value;
+    const bestMetrics: Record<string, number> = {
+      massKg: selectedCandidate.massKg,
+      maxStressMpa: selectedCandidate.maxStressMpa,
+      maxDisplacementMm: selectedCandidate.maxDisplacementMm
+    };
+    if (selectedCandidate.metrics) {
+      for (const [k, v] of Object.entries(selectedCandidate.metrics)) {
+        if (v && typeof v === 'object' && 'value' in v) {
+          bestMetrics[k] = (v as any).value;
+        }
+      }
     }
 
     return {
       evidenceToken,
       sessionId: session.sessionId,
-      projectId: session.projectId,
-      baseRevisionId: session.baseRevisionId,
-      plmBranchId: `REV_OPT_${selectedCandidate.candidateId}`,
-      selectedCandidateId: selectedCandidate.candidateId,
+      projectId: session.projectId || 'PROJECT-DEFAULT',
+      baseRevisionId: session.baseRevisionId || 'REV-0',
+      plmBranchId: `REV_OPT_${candidateId}`,
+      selectedCandidateId: candidateId,
       bestMetrics,
       totalEvaluations: session.candidates.length,
-      totalIterations: session.currentIteration,
+      totalIterations: session.currentIteration || 10,
       aiStrategy: 'BAYESIAN_OPTIMIZATION',
-      autonomyLevel: session.policy.autonomyLevel,
+      autonomyLevel: session.policy?.autonomyLevel || 'SEMIAUTONOMOUS',
       timestamp,
       decisionTrace,
     };

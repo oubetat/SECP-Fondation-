@@ -105,6 +105,11 @@ export interface RouteWaypoint {
   x: number;
   y: number;
   z: number;
+  topologyRef?: {
+    persistentEntityId: string;
+    geometricSignature: string;
+    attachmentType: 'FACE' | 'EDGE' | 'VERTEX' | 'OFFSET';
+  };
 }
 
 export interface RouteDefinition {

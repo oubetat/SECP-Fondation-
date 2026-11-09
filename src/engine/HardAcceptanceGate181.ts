@@ -304,7 +304,7 @@ export class HardAcceptanceGate181 {
     });
 
     // 19. Manufacturing Impact Detection
-    const crit19 = impact.manufacturingImpact.ncReprogrammingRequired;
+    const crit19 = Boolean(impact?.manufacturingImpact?.ncReprogrammingRequired);
     criteriaList.push({
       id: 'CRIT-181-19',
       title: 'Manufacturing Impact Detection',
@@ -336,13 +336,13 @@ export class HardAcceptanceGate181 {
     });
 
     // 22. End-to-End Change Propagation
-    const crit22 = impact.releaseBlockers.length > 0;
+    const crit22 = (impact?.releaseBlockers?.length ?? 0) > 0;
     criteriaList.push({
       id: 'CRIT-181-22',
       title: 'End-to-End Change Propagation',
       description: 'Blocks release if downstream artifacts remain outdated or unverified.',
       passed: crit22,
-      metric: `Release blocked by ${impact.releaseBlockers.length} downstream item(s)`
+      metric: `Release blocked by ${impact?.releaseBlockers?.length ?? 0} downstream item(s)`
     });
 
     // 23. Deterministic Reproduction

@@ -1,0 +1,120 @@
+{
+  "auditId": "SECP-CAD-TRUTH-FORENSIC-001",
+  "workstream": "WORKSTREAM_D_TRUTH_THREAD",
+  "verdict": "PARTIALLY_VERIFIED_BASELINE",
+  "transitions": [
+    {
+      "step": 1,
+      "name": "CAD Intent -> Parametric Features",
+      "sourceComponent": "CADDocument (Sketches, Parameters, Feature Definitions)",
+      "targetComponent": "FeatureHistory / FeatureNode",
+      "callPath": "DocumentEvaluator.evaluate -> FeatureHistory.addFeature",
+      "dataContract": "CanonicalFeatureDefinition (FeatureType, ExtrudeParameters, etc.)",
+      "hashBinding": "FeatureHistoryEvidence.computeHistoryHash",
+      "status": "IMPLEMENTED_AND_EXECUTED",
+      "evidence": "DocumentEvaluator.test.ts (6 tests pass)"
+    },
+    {
+      "step": 2,
+      "name": "Parametric Features -> B-Rep Geometry",
+      "sourceComponent": "FeatureExecutor / FeatureExecution.ts",
+      "targetComponent": "BRepKernel / BooleanEngine / FilletEngine",
+      "callPath": "FeatureExecutor.execute -> BRepKernel.extrudeProfile / BooleanEngine.execute",
+      "dataContract": "BRepSolid (outerShell, orientedFaces, orientedEdges, vertices)",
+      "hashBinding": "BRepHasher.computeEvidence(solid) -> geometryHash, topologyHash",
+      "status": "IMPLEMENTED_AND_EXECUTED",
+      "evidence": "BooleanEngine.test.ts (20 tests pass), BRepEulerOps.test.ts (2 tests pass)"
+    },
+    {
+      "step": 3,
+      "name": "B-Rep Geometry -> Topology Lineage",
+      "sourceComponent": "PersistentTopologyNaming / TopologyContracts",
+      "targetComponent": "TopologyLineageProofEngine",
+      "callPath": "TopologyLineageProofEngine.createFaceReference -> PersistentTopologyNaming.generateFaceTag",
+      "dataContract": "CanonicalTopologyReference (referenceId, featureId, topologyEntityIdentifier, geometricSignature)",
+      "hashBinding": "geometricSignature (SHA-256 of normal, centroid, area, adjacencies)",
+      "status": "IMPLEMENTED_AND_EXECUTED",
+      "evidence": "P5-001-A (rebinds CapEnd across depth change)"
+    },
+    {
+      "step": 4,
+      "name": "Topology Lineage -> Canonical Engineering Revision",
+      "sourceComponent": "DocumentEvaluator / BRepHasher",
+      "targetComponent": "CanonicalPLMProjectionAdapter / EngineeringPLMEngine",
+      "callPath": "DocumentEvaluator.evaluate -> CanonicalPLMProjectionAdapter.project -> EngineeringPLMEngine.registerArtifact",
+      "dataContract": "EngineeringArtifact (documentId, revision, geometryHash, topologyHash, bRepHash)",
+      "hashBinding": "EngineeringHashChain.computeCanonicalHash",
+      "status": "IMPLEMENTED_AND_EXECUTED",
+      "evidence": "P5-001-A and DocumentEvaluator.test.ts"
+    },
+    {
+      "step": 5,
+      "name": "Canonical Engineering Revision -> Derived Artifact Binding",
+      "sourceComponent": "CanonicalDerivedArtifactBinding",
+      "targetComponent": "Derived Artifacts (Mesh, FEA, CFD, CAM)",
+      "callPath": "CanonicalDerivedArtifactBinding.createBinding(payload)",
+      "dataContract": "DerivedArtifactBindingPayload (cadRevisionHash, canonicalGeometryHash, artifactContentHash, artifactKind)",
+      "hashBinding": "artifactDigest (SHA-256 of canonicalized payload)",
+      "status": "IMPLEMENTED_AND_EXECUTED",
+      "evidence": "CanonicalDerivedArtifactBinding.test.ts (45 tests pass)"
+    },
+    {
+      "step": 6,
+      "name": "Derived Artifact Binding -> Simulation",
+      "sourceComponent": "SimulationEngine.runScenario",
+      "targetComponent": "SimulationExecutionRegistry / SimulationAuthorityInternal",
+      "callPath": "SimulationEngine.runScenario:175 -> sealEnvelope(rawEnvelope)",
+      "dataContract": "SimulationExecutionEnvelope",
+      "hashBinding": "canonicalContentDigest via AttestationCanonicalizer",
+      "status": "PARTIALLY_IMPLEMENTED",
+      "failurePoint": "CRITICAL ARCHITECTURAL CRASH: SimulationEngine.runScenario line 175 calls sealEnvelope without passing SealingCapability, throwing SIMULATION_AUTHORITY_VIOLATION.",
+      "evidence": "HydraulicPumpTruthThread.test.ts: FAILED (10/10 tests fail due to this crash)"
+    },
+    {
+      "step": 7,
+      "name": "Simulation -> Manufacturing",
+      "sourceComponent": "DocumentEvaluator.deriveCAMModel / CAMProvenanceEngine",
+      "targetComponent": "HardAcceptanceGatePMA001 / PhysicalManufacturingEngine",
+      "callPath": "HardAcceptanceGatePMA001.executeGate(req)",
+      "dataContract": "ManufacturingExecutionEnvelope (gCodeHash, loadedProgramHash, telemetryRoot)",
+      "hashBinding": "G-Code SHA-256 parity and telemetry chain hashing",
+      "status": "PLACEHOLDER_OR_SIMULATED",
+      "failurePoint": "deriveCAMModel returns hardcoded template G-code; PhysicalManufacturingEngine uses hardcoded HMAC secret 'secure-telemetry-secret'; hardware root of trust is NOT_PROVISIONED.",
+      "evidence": "PhysicalManufacturingAdversarial.test.ts (11 tests pass with simulated tokens)"
+    },
+    {
+      "step": 8,
+      "name": "Manufacturing -> Metrology",
+      "sourceComponent": "PhysicalManufacturingEngine.analyzeDeviation",
+      "targetComponent": "MetrologyProof",
+      "callPath": "PhysicalManufacturingEngine.analyzeDeviation(expectedGeom, actualGeom, metrology, tolerances)",
+      "dataContract": "MetrologyProof (inspectionId, dimensionalMeasurements, geometricDeviations, inspectionEvidenceHash)",
+      "hashBinding": "inspectionEvidenceHash",
+      "status": "PLACEHOLDER_OR_SIMULATED",
+      "failurePoint": "Evaluates numerical key-value dictionary against threshold numbers; does not compare measured CMM point clouds to canonical B-Rep geometry.",
+      "evidence": "PhysicalManufacturingEngine.ts:61-77"
+    },
+    {
+      "step": 9,
+      "name": "Metrology -> As-Built State & Deviation",
+      "sourceComponent": "PhysicalManufacturingAttestation",
+      "targetComponent": "DeviationVerdict",
+      "callPath": "analyzeDeviation -> returns PASS / OUT_OF_TOLERANCE / GEOMETRY_PROVENANCE_MISMATCH",
+      "dataContract": "DeviationVerdict",
+      "hashBinding": "predecessorAttestationHash",
+      "status": "IMPLEMENTED_AND_EXECUTED",
+      "evidence": "PhysicalManufacturingAdversarial.test.ts"
+    },
+    {
+      "step": 10,
+      "name": "As-Built State -> Engineering Truth Certificate",
+      "sourceComponent": "EngineeringTruthCertificateEngine.issue",
+      "targetComponent": "EngineeringTruthCertificate / EvidenceMerkleTree",
+      "callPath": "EngineeringTruthCertificateEngine.issue(params) -> EvidenceMerkleTree.buildFromLeaves",
+      "dataContract": "EngineeringTruthCertificate (certificateId, evidenceRootHash, attestationRoot, chainOfCustodyRoot)",
+      "hashBinding": "Merkle Root SHA-256 over all EvidenceLeafRecords",
+      "status": "IMPLEMENTED_AND_EXECUTED",
+      "evidence": "IndependentAuditPackage.test.ts (10 tests pass)"
+    }
+  ]
+}

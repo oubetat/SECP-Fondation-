@@ -231,6 +231,14 @@ export class SimulationExecutionRegistry {
     return { isValid: true, authoritativeResult: authenticRecord };
   }
 
+  public static registerResult(hash: string, record: any): void {
+    const cloned = JSON.parse(JSON.stringify(record));
+    if (!cloned.canonicalContentDigest) {
+      cloned.canonicalContentDigest = this.computeCanonicalContentDigest(cloned);
+    }
+    this.authenticResults.set(hash, this.deepFreeze(cloned));
+  }
+
   /**
    * Retrieves a safe, immutable copy of the authoritative result.
    */
@@ -242,6 +250,54 @@ export class SimulationExecutionRegistry {
 
   public static clear(): void {
     this.authenticResults.clear();
+  }
+
+  /**
+   * Serializes a single registered execution record to JSON format.
+   */
+  public static exportChainRecord(provenanceHash: string): string {
+    const record = this.authenticResults.get(provenanceHash);
+    if (!record) {
+      throw new Error(`EXECUTION_NOT_FOUND: Record '${provenanceHash}' not present in registry`);
+    }
+    return JSON.stringify(record, null, 2);
+  }
+
+  /**
+   * Serializes all registered execution records to a single JSON array string.
+   */
+  public static exportAllToJson(): string {
+    const allRecords = Array.from(this.authenticResults.values());
+    return JSON.stringify(allRecords, null, 2);
+  }
+
+  /**
+   * Rehydrates registry records from a serialized JSON string.
+   */
+  public static rehydrateFromJson(jsonString: string): { importedCount: number; errors: string[] } {
+    const errors: string[] = [];
+    let importedCount = 0;
+    try {
+      const records = JSON.parse(jsonString);
+      const recordArray = Array.isArray(records) ? records : [records];
+      for (const rec of recordArray) {
+        if (!rec || typeof rec !== 'object') {
+          errors.push('INVALID_RECORD_FORMAT');
+          continue;
+        }
+        const provHash = rec.provenanceHash || rec.derivedArtifactBinding?.artifactDigest;
+        if (!provHash) {
+          errors.push('MISSING_PROVENANCE_HASH');
+          continue;
+        }
+        const cloned = JSON.parse(JSON.stringify(rec));
+        this.authenticResults.set(provHash, this.deepFreeze(cloned));
+        importedCount++;
+      }
+    } catch (err: any) {
+      errors.push(`REHYDRATION_FAILED: ${err.message || 'Invalid JSON syntax'}`);
+    }
+    return { importedCount, errors };
   }
 }
 

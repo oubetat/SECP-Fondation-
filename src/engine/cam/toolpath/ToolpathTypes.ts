@@ -263,6 +263,31 @@ export interface ToolpathValidationReport {
   safeRetractVerified: boolean;
 }
 
+export interface ToolHolderGeometry {
+  holderId: string;
+  gaugeLengthMm: number;
+  maxDiameterMm: number;
+  segments: { diameterMm: number; lengthMm: number }[];
+}
+
+export interface MachiningParameters {
+  feedRateMmMin: number;
+  spindleRpm: number;
+  stepoverMm: number;
+  stepdownMm: number;
+  coolant: CoolantState;
+  [key: string]: any;
+}
+
+export interface StockModelBounds {
+  minX: number;
+  maxX: number;
+  minY: number;
+  maxY: number;
+  minZ: number;
+  maxZ: number;
+}
+
 export interface ToolpathEvidence {
   evidenceId: string;
   timestamp: string;
@@ -286,3 +311,4 @@ export interface ToolpathEvidence {
     maxNegativeGougeMm: number;
   };
 }
+

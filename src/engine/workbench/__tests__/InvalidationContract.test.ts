@@ -80,8 +80,8 @@ describe('Invalidation Contract & Complex Lifecycle Scenarios Test Suite', () =>
       const result = pipelineEngine.executePipeline(
         doc,
         (d) => {
-          d.parameters[0].value = 75;
-          d.parameters[0].expression = '75';
+          d.parameters![0].value = 75;
+          d.parameters![0].expression = '75';
         },
         'Update Parameter depth = 75'
       );
@@ -128,7 +128,7 @@ describe('Invalidation Contract & Complex Lifecycle Scenarios Test Suite', () =>
       const pipelineRes = pipelineEngine.executePipeline(
         docRev1,
         (d) => {
-          d.parameters[0].value = 75;
+          d.parameters![0].value = 75;
         },
         'Modify PARAM_DEPTH to 75'
       );
@@ -172,7 +172,7 @@ describe('Invalidation Contract & Complex Lifecycle Scenarios Test Suite', () =>
         docRev1,
         (d) => {
           // Remove FACE_2 from topologyMap
-          delete d.derived.mesh?.topologyMap.faceTriangleMap['FACE_2'];
+          delete d.derived!.mesh?.topologyMap.faceTriangleMap['FACE_2'];
           delete (d.topologyMap as any).faceMap['FACE_2'];
         },
         'Delete Feature removing FACE_2'

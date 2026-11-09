@@ -1,0 +1,1 @@
+src/engine/assembly/bearing/BearingPlacementEngine.ts(107,5): error TS1005: ',' expected.

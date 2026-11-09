@@ -1,0 +1,85 @@
+{
+  "targetFunction": "CanonicalDomainBindingEngine.sealBinding<T>(binding: T, capability: SealingCapability): T",
+  "securityGates": [
+    {
+      "gateIndex": 1,
+      "gateName": "Secure Authority Boot State",
+      "condition": "getAuthorityInitializationState() === INITIALIZED",
+      "errorOnFailure": "SIMULATION_AUTHORITY_NOT_INITIALIZED"
+    },
+    {
+      "gateIndex": 2,
+      "gateName": "Metadata Integrity",
+      "condition": "binding.domain && binding.canonicalEntityId && binding.geometryHash",
+      "errorOnFailure": "SIMULATION_AUTHORITY_VIOLATION: Missing required domain binding metadata for sealing."
+    },
+    {
+      "gateIndex": 3,
+      "gateName": "Capability Object Validation",
+      "condition": "validateCapability(capability, domain)",
+      "errorOnFailure": "SIMULATION_AUTHORITY_VIOLATION: Invalid or missing SealingCapability / Unrecognized or forged / Domain mismatch"
+    },
+    {
+      "gateIndex": 4,
+      "gateName": "HMAC Seal Computation",
+      "condition": "computeHMACSealToken(capability, domain, entityId, revisionId, geometryHash)",
+      "output": "Cryptographic HMAC SHA-256 sealToken bound to capability and geometry"
+    }
+  ],
+  "discoveredCallersInCodebase": [
+    {
+      "module": "src/engine/crossdomain/MultidomainPcbIntegrationEngine.ts",
+      "callerContext": "Production Engine",
+      "capabilityAcquisition": "issueSealingCapability(\"MultidomainPcbIntegrationEngine\", [\"pcb\", \"thermal\", \"mechanical\"])",
+      "sealBindingCall": "CanonicalDomainBindingEngine.sealBinding(binding, capability, originatingRevision)",
+      "authorizedDomains": [
+        "pcb",
+        "thermal",
+        "mechanical"
+      ],
+      "status": "AUTHENTICATED_PRODUCTION_PATH"
+    },
+    {
+      "module": "src/engine/engineeringCore/ElectrothermalSolver.ts",
+      "callerContext": "Production Solver",
+      "capabilityAcquisition": "issueSealingCapability(\"ElectrothermalSolver\", [\"thermal\", \"electrical\"])",
+      "sealBindingCall": "CanonicalDomainBindingEngine.sealBinding(binding, capability, \"REV-01\")",
+      "authorizedDomains": [
+        "thermal",
+        "electrical"
+      ],
+      "status": "AUTHENTICATED_PRODUCTION_PATH"
+    },
+    {
+      "module": "src/engine/crossdomain/DomainBindingTestUtility.ts",
+      "callerContext": "Test Utility",
+      "capabilityAcquisition": "issueSealingCapability(\"TestUtility\", [\"*\"])",
+      "sealBindingCall": "CanonicalDomainBindingEngine.sealBinding(binding, cap)",
+      "authorizedDomains": [
+        "*"
+      ],
+      "status": "AUTHENTICATED_TEST_UTILITY_PATH"
+    },
+    {
+      "module": "src/engine/crossdomain/__tests__/AuthoritySealTrustBoundary.test.ts",
+      "callerContext": "Security Boundary Unit Test",
+      "status": "AUTHENTICATED_TEST_PATH"
+    },
+    {
+      "module": "src/engine/crossdomain/__tests__/DomainBindingIntegration.test.ts",
+      "callerContext": "Integration Test",
+      "status": "AUTHENTICATED_TEST_PATH"
+    },
+    {
+      "module": "src/engine/crossdomain/__tests__/SimulationAuthority.test.ts",
+      "callerContext": "Authority Handshake Test",
+      "status": "AUTHENTICATED_TEST_PATH"
+    },
+    {
+      "module": "src/engine/forensic/__tests__/SEC008_AdversarialQualificationHarness.test.ts",
+      "callerContext": "Forensic Qualification Test",
+      "status": "AUTHENTICATED_TEST_PATH"
+    }
+  ],
+  "unauthenticatedCallersFoundInSource": []
+}

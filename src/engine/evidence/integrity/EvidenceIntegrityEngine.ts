@@ -9,8 +9,10 @@ import {
   EngineeringResultRecord,
   EvidenceDomainType,
   EvidenceIntegrityState,
+  IndependentVerificationParams,
   IndependentVerificationRecord,
   TopologyReferenceSnapshot,
+  ValidationParams,
   ValidationRecord
 } from './EvidenceIntegrityTypes';
 
@@ -97,8 +99,8 @@ export class EvidenceIntegrityEngine {
     capabilityId: string;
     featureId: string;
     result: EngineeringResultRecord;
-    validation: ValidationRecord;
-    verification: IndependentVerificationRecord;
+    validation: ValidationParams;
+    verification: IndependentVerificationParams;
     sourceOrigin?: 'REAL_KERNEL' | 'UI_STATE' | 'PREVIEW' | 'NOTIFICATION' | 'HARDCODED';
     topologyReferences?: readonly TopologyReferenceSnapshot[];
     dependencyReferences?: readonly string[];
@@ -111,6 +113,7 @@ export class EvidenceIntegrityEngine {
     const topRefs = params.topologyReferences ?? params.result.topologyReferences ?? [];
     const depRefs = params.dependencyReferences ?? [];
 
+    // Core Canonical Payload - Must be deterministic and free of unstable random/timestamp variables
     // Core Canonical Payload - Must be deterministic and free of unstable random/timestamp variables
     const payload = params.overridePayload ?? {
       domain: params.domain,
@@ -162,6 +165,39 @@ export class EvidenceIntegrityEngine {
       state = 'INVALID';
     }
 
+    // MAP PARAMS TO FULL RECORDS
+    const validationRecord: ValidationRecord = {
+      validationId: params.validation.validationId,
+      resultId: params.validation.resultId ?? params.result.resultId,
+      validatorId: params.validation.validatorId,
+      validatorVersion: params.validation.validatorVersion ?? this.EVALUATOR_VERSION,
+      validatorSignature: params.validation.validatorSignature ?? `SIG-VAL-${params.validation.validatorId}`,
+      validatedAt: params.validation.validatedAt ?? '2026-09-09T08:00:00.000Z',
+      passed: params.validation.passed,
+      checks: params.validation.checks.map(c => ({
+        checkName: c.checkName ?? c.description ?? c.code ?? 'UNKNOWN_CHECK',
+        code: c.code,
+        passed: c.passed,
+        metric: c.metric ?? 'GENERIC',
+        observedValue: c.observedValue ?? 'N/A',
+        threshold: c.threshold ?? 'N/A'
+      }))
+    };
+
+    const verificationRecord: IndependentVerificationRecord = {
+      verificationId: params.verification.verificationId,
+      resultId: params.verification.resultId ?? params.result.resultId,
+      validationId: params.verification.validationId ?? params.validation.validationId,
+      verifierId: params.verification.verifierId,
+      verifierVersion: params.verification.verifierVersion ?? this.GENERATOR_VERSION,
+      verifierIdentity: params.verification.verifierIdentity,
+      verifierSignature: params.verification.verifierSignature ?? `SIG-VER-${params.verification.verifierId}`,
+      verifiedAt: params.verification.verifiedAt ?? '2026-09-09T08:00:00.000Z',
+      independentVerdict: params.verification.independentVerdict,
+      isSelfAttested: params.verification.isSelfAttested ?? false,
+      verificationChecks: params.verification.verificationChecks ?? []
+    };
+
     const record: CanonicalEvidenceRecord = {
       evidenceId,
       evidenceType: `${params.domain}_ENGINEERING_EVIDENCE`,
@@ -179,13 +215,13 @@ export class EvidenceIntegrityEngine {
         resultHash
       },
       validationReference: {
-        validationId: params.validation.validationId,
-        validationPassed: params.validation.passed
+        validationId: validationRecord.validationId,
+        validationPassed: validationRecord.passed
       },
       verificationReference: {
-        verificationId: params.verification.verificationId,
-        verifierIdentity: params.verification.verifierIdentity,
-        verdict: params.verification.independentVerdict
+        verificationId: verificationRecord.verificationId,
+        verifierIdentity: verificationRecord.verifierIdentity,
+        verdict: verificationRecord.independentVerdict
       },
       topologyReferences: Object.freeze([...topRefs]),
       dependencyReferences: Object.freeze([...depRefs]),

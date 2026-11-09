@@ -1,0 +1,26 @@
+{
+  "claim": "Results with MAX_ITERATIONS_REACHED are rejected as NUMERICAL_QUALIFIED",
+  "evidence": [
+    {
+      "input": {
+        "terminationReason": "MAX_ITERATIONS_REACHED",
+        "converged": true
+      },
+      "expected": {
+        "numericalQualified": false,
+        "outcome": "NUMERICAL_QUALIFICATION_PENDING"
+      }
+    },
+    {
+      "input": {
+        "terminationReason": "CONVERGED",
+        "converged": true
+      },
+      "expected": {
+        "numericalQualified": true,
+        "outcome": "PROVENANCE_VERIFIED"
+      }
+    }
+  ],
+  "verified": true
+}

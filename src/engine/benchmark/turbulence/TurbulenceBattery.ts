@@ -56,7 +56,7 @@ export class TurbulenceBattery {
     for (const c of cases) {
       const clonedMesh = Fvm3DMeshGenerator.cloneMesh(c.mesh);
       const binding = DomainBindingTestUtility.createSealedCfdBinding(clonedMesh, c.fluid);
-      const sol = Fvm3DNavierStokesSolver.solve(binding, c.solverConfig);
+      const sol = Fvm3DNavierStokesSolver.solve(binding, c.boundaryConditions, c.solverConfig);
       const refVal = TurbulenceReferenceValidator.validateCase(c, sol);
       referenceValidations.push(refVal);
 

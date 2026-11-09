@@ -1,3 +1,10 @@
+export interface FeatureTreeNode {
+  id: string;
+  name: string;
+  type: string;
+  [key: string]: any;
+}
+
 export class FeatureTreeEngine {
   static getInitialTree() {
     return [
@@ -13,3 +20,4 @@ export class FeatureTreeEngine {
     ];
   }
 }
+

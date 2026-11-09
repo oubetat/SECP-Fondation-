@@ -11,11 +11,15 @@ import { MMSBenchmark } from '../benchmarks/MMSBenchmark';
 import { Naca0012SstBenchmark } from '../benchmarks/Naca0012SstBenchmark';
 import { BackwardFacingStepBenchmark } from '../benchmarks/BackwardFacingStepBenchmark';
 
+import { initializeAuthorityHandshake } from '../../simulation/SimulationAuthorityInternal';
+
 export class CFDTruthBootstrap {
   private static bootstrapped = false;
 
   public static bootstrap(): void {
     if (this.bootstrapped) return;
+
+    initializeAuthorityHandshake();
 
     // L0 Benchmarks
     CFDTruthBenchmarkRegistry.register(PoiseuilleFlowBenchmark.getEntry());

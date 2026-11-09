@@ -1,0 +1,191 @@
+{
+  "mission": "SECP-RECOVERY-VERIFICATION-001",
+  "timestamp": "2026-11-05T12:14:05.577Z",
+  "verdict": "PASS",
+  "coreFiles": [
+    {
+      "file": "package.json",
+      "exists": true,
+      "sizeBytes": 1196,
+      "sha256": "b03f33f2279b48c95c7fc5c173f23b20ac7c2d91a95875c7f1975e98dc7ef385",
+      "lastModified": "2026-11-05T11:49:50.573Z"
+    },
+    {
+      "file": "package-lock.json",
+      "exists": true,
+      "sizeBytes": 87763,
+      "sha256": "6bc2758639ff07570b7bca7ba72cc38678253dce79c871a9e86171b2df735c85",
+      "lastModified": "2026-11-05T11:49:46.191Z"
+    },
+    {
+      "file": "tsconfig.json",
+      "exists": true,
+      "sizeBytes": 585,
+      "sha256": "b1bc0c807c5ef6f5f55ab4f8faa4e626416b189542f92e73e833e56f5f87e980",
+      "lastModified": "2026-11-05T11:49:49.794Z"
+    },
+    {
+      "file": "tsconfig.active.json",
+      "exists": true,
+      "sizeBytes": 593,
+      "sha256": "4162bd4e0ebd4bfc99d9eea434628f7d3893e191d7bb73f95514960fcbd63579",
+      "lastModified": "2026-11-05T11:49:47.331Z"
+    },
+    {
+      "file": "tsconfig.lenient.json",
+      "exists": true,
+      "sizeBytes": 594,
+      "sha256": "ec5f64a3d8dd61233fdda74e5effd84e3b8d76d2956804e1f56474ce051d0ed1",
+      "lastModified": "2026-11-05T11:49:46.769Z"
+    },
+    {
+      "file": "tsconfig.patch039c.json",
+      "exists": true,
+      "sizeBytes": 438,
+      "sha256": "3c9d1cb65ba884a75b0c005f4e6a63e0cad5aa0196c6fc08f6ce6071e0d41afe",
+      "lastModified": "2026-11-05T11:49:47.170Z"
+    },
+    {
+      "file": "tsconfig.test.json",
+      "exists": true,
+      "sizeBytes": 616,
+      "sha256": "0cd1c0f09caa66913b3198727f9a0c356ac6e218a83f4d96edebf69057fd089b",
+      "lastModified": "2026-11-05T11:49:47.352Z"
+    },
+    {
+      "file": "vite.config.ts",
+      "exists": true,
+      "sizeBytes": 686,
+      "sha256": "f1124f132de5190ffec982dcb5dbbe9174ee7f043033cee51d5ab33d1faa59a2",
+      "lastModified": "2026-11-05T11:49:51.218Z"
+    },
+    {
+      "file": "vitest.config.ts",
+      "exists": true,
+      "sizeBytes": 246,
+      "sha256": "0ff04170a54c0c43f55f1a5745db4caf1e0f55d68922640589651eabf5cfbc8e",
+      "lastModified": "2026-11-05T11:49:45.950Z"
+    },
+    {
+      "file": "server.ts",
+      "exists": true,
+      "sizeBytes": 13083,
+      "sha256": "63ecffc0d2fa6075e926b31a2758b173e2d21a39346305ebac39862351007b5e",
+      "lastModified": "2026-11-05T11:49:46.086Z"
+    },
+    {
+      "file": "index.html",
+      "exists": true,
+      "sizeBytes": 1029,
+      "sha256": "b788535189cc360b8bed7fc1473dbd5015c659dba6677e725b3eccc8b5f8b376",
+      "lastModified": "2026-11-05T11:49:50.853Z"
+    },
+    {
+      "file": "src/main.tsx",
+      "exists": true,
+      "sizeBytes": 444,
+      "sha256": "6c5ac467de08d9248ba5e72144a15cca56049014bb5575534f0433764b56323e",
+      "lastModified": "2026-11-05T11:49:50.923Z"
+    },
+    {
+      "file": "src/App.tsx",
+      "exists": true,
+      "sizeBytes": 81302,
+      "sha256": "4a535afda32c3bdb67e48f88dee41a5b974b582a6a0457505f64b31aa79ec1a6",
+      "lastModified": "2026-11-05T11:49:46.176Z"
+    },
+    {
+      "file": "firebase-applet-config.json",
+      "exists": true,
+      "sizeBytes": 540,
+      "sha256": "a0f9c41dba6c90d43478656067b09d92d6baa2880d1045b078530fa17d21af9c",
+      "lastModified": "2026-11-05T11:49:49.755Z"
+    },
+    {
+      "file": "metadata.json",
+      "exists": true,
+      "sizeBytes": 396,
+      "sha256": "9186caa953a937ffa9e7b63dc60fe82466e694196581b85c184f61d50bf01064",
+      "lastModified": "2026-11-05T11:51:05.587Z"
+    },
+    {
+      "file": "vercel.json",
+      "exists": true,
+      "sizeBytes": 96,
+      "sha256": "0ecff71cc2ad5da02ba9cdae5333431044f59c4b7f9376e50356e856fec2e20a",
+      "lastModified": "2026-11-05T11:49:45.244Z"
+    }
+  ],
+  "duplicateArtifactConfigs": [
+    {
+      "file": "package-lock.json",
+      "rootLocation": "package-lock.json",
+      "artifactLocation": ".aistudio/artifacts/brain/9f1187ef-79ca-4cd8-9909-157bcf9db814/package-lock.json",
+      "rootSha256": "6bc2758639ff07570b7bca7ba72cc38678253dce79c871a9e86171b2df735c85",
+      "artifactSha256": "6bc2758639ff07570b7bca7ba72cc38678253dce79c871a9e86171b2df735c85",
+      "conflict": false,
+      "status": "IDENTICAL_NON_CONFLICTING_MIRROR"
+    },
+    {
+      "file": "tsconfig.json",
+      "rootLocation": "tsconfig.json",
+      "artifactLocation": ".aistudio/artifacts/brain/9f1187ef-79ca-4cd8-9909-157bcf9db814/tsconfig.json",
+      "rootSha256": "b1bc0c807c5ef6f5f55ab4f8faa4e626416b189542f92e73e833e56f5f87e980",
+      "artifactSha256": "b1bc0c807c5ef6f5f55ab4f8faa4e626416b189542f92e73e833e56f5f87e980",
+      "conflict": false,
+      "status": "IDENTICAL_NON_CONFLICTING_MIRROR"
+    },
+    {
+      "file": "tsconfig.active.json",
+      "rootLocation": "tsconfig.active.json",
+      "artifactLocation": ".aistudio/artifacts/brain/9f1187ef-79ca-4cd8-9909-157bcf9db814/tsconfig.active.json",
+      "rootSha256": "4162bd4e0ebd4bfc99d9eea434628f7d3893e191d7bb73f95514960fcbd63579",
+      "artifactSha256": "4162bd4e0ebd4bfc99d9eea434628f7d3893e191d7bb73f95514960fcbd63579",
+      "conflict": false,
+      "status": "IDENTICAL_NON_CONFLICTING_MIRROR"
+    },
+    {
+      "file": "tsconfig.patch039c.json",
+      "rootLocation": "tsconfig.patch039c.json",
+      "artifactLocation": ".aistudio/artifacts/brain/9f1187ef-79ca-4cd8-9909-157bcf9db814/tsconfig.patch039c.json",
+      "rootSha256": "3c9d1cb65ba884a75b0c005f4e6a63e0cad5aa0196c6fc08f6ce6071e0d41afe",
+      "artifactSha256": "3c9d1cb65ba884a75b0c005f4e6a63e0cad5aa0196c6fc08f6ce6071e0d41afe",
+      "conflict": false,
+      "status": "IDENTICAL_NON_CONFLICTING_MIRROR"
+    },
+    {
+      "file": "tsconfig.test.json",
+      "rootLocation": "tsconfig.test.json",
+      "artifactLocation": ".aistudio/artifacts/brain/9f1187ef-79ca-4cd8-9909-157bcf9db814/tsconfig.test.json",
+      "rootSha256": "0cd1c0f09caa66913b3198727f9a0c356ac6e218a83f4d96edebf69057fd089b",
+      "artifactSha256": "0cd1c0f09caa66913b3198727f9a0c356ac6e218a83f4d96edebf69057fd089b",
+      "conflict": false,
+      "status": "IDENTICAL_NON_CONFLICTING_MIRROR"
+    },
+    {
+      "file": "firebase-applet-config.json",
+      "rootLocation": "firebase-applet-config.json",
+      "artifactLocation": ".aistudio/artifacts/brain/9f1187ef-79ca-4cd8-9909-157bcf9db814/firebase-applet-config.json",
+      "rootSha256": "a0f9c41dba6c90d43478656067b09d92d6baa2880d1045b078530fa17d21af9c",
+      "artifactSha256": "a0f9c41dba6c90d43478656067b09d92d6baa2880d1045b078530fa17d21af9c",
+      "conflict": false,
+      "status": "IDENTICAL_NON_CONFLICTING_MIRROR"
+    },
+    {
+      "file": "metadata.json",
+      "rootLocation": "metadata.json",
+      "artifactLocation": ".aistudio/artifacts/brain/9f1187ef-79ca-4cd8-9909-157bcf9db814/metadata.json",
+      "rootSha256": "9186caa953a937ffa9e7b63dc60fe82466e694196581b85c184f61d50bf01064",
+      "artifactSha256": "9186caa953a937ffa9e7b63dc60fe82466e694196581b85c184f61d50bf01064",
+      "conflict": false,
+      "status": "IDENTICAL_NON_CONFLICTING_MIRROR"
+    }
+  ],
+  "packageManifest": {
+    "name": "secp-industrial-os",
+    "scriptsCount": 5,
+    "dependenciesCount": 12,
+    "devDependenciesCount": 18,
+    "nodeModulesPresent": true
+  }
+}

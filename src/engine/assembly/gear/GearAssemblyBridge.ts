@@ -24,21 +24,14 @@ export class GearAssemblyBridge {
     const instanceId = `COMP-${gear.gearId}-${instanceIndex}`;
     const partDef = GearGenerator.toAssemblyPartDefinition(gear);
 
-    const assemblyComponent: AssemblyComponent = {
+    const assemblyComponent = new AssemblyComponent({
+      id: instanceId,
       instanceId,
       partId: gear.gearId,
       name: `${gear.name} (#${instanceIndex})`,
-      configurationId: 'DEFAULT',
-      isGrounded: false,
-      transform: {
-        position: { x: 0, y: 0, z: 0 },
-        rotation: { x: 0, y: 0, z: 0 },
-        scale: { x: 1, y: 1, z: 1 }
-      },
-      materialOverride: gear.material.name,
-      visibility: 'VISIBLE',
+      grounded: false,
       suppressed: false
-    };
+    });
 
     return {
       instanceId,
@@ -73,22 +66,23 @@ export class GearAssemblyBridge {
       fitDiagnostic = `Bore/Journal Incompatibility: Gear bore Ø${boreDia}mm does not match Shaft Journal Ø${shaftJournalDiameterMm}mm (Delta: ${diametralDiff.toFixed(3)}mm).`;
     }
 
-    const concentricConstraint: AssemblyConstraint = {
+    const concentricConstraint = new AssemblyConstraint({
+      id: `CST-CONC-${gear.gearId}-${shaftComponentId}`,
       constraintId: `CST-CONC-${gear.gearId}-${shaftComponentId}`,
       assemblyId: 'MAIN_ASSEMBLY',
       componentA: gearComponentId,
       componentB: shaftComponentId,
       geometryRefA: {
         componentId: gearComponentId,
-        entityType: 'CYLINDER',
-        entityId: 'BORE_CYLINDER',
-        subIndex: 0
+        topologyType: 'CYLINDER',
+        topologyIndex: 0,
+        geometricSignature: 'BORE_CYLINDER'
       },
       geometryRefB: {
         componentId: shaftComponentId,
-        entityType: 'CYLINDER',
-        entityId: 'JOURNAL_CYLINDER',
-        subIndex: 0
+        topologyType: 'CYLINDER',
+        topologyIndex: 0,
+        geometricSignature: 'JOURNAL_CYLINDER'
       },
       type: 'CONCENTRIC',
       status: isBoreFitValid ? 'SATISFIED' : 'FAILED',
@@ -96,25 +90,26 @@ export class GearAssemblyBridge {
         alignment: 'ALIGNED',
         offset: 0
       },
-      revision: 'REV-1'
-    };
+      revision: 1
+    });
 
-    const axialMateConstraint: AssemblyConstraint = {
+    const axialMateConstraint = new AssemblyConstraint({
+      id: `CST-MATE-${gear.gearId}-${shaftComponentId}`,
       constraintId: `CST-MATE-${gear.gearId}-${shaftComponentId}`,
       assemblyId: 'MAIN_ASSEMBLY',
       componentA: gearComponentId,
       componentB: shaftComponentId,
       geometryRefA: {
         componentId: gearComponentId,
-        entityType: 'FACE',
-        entityId: 'GEAR_HUB_BACK_FACE',
-        subIndex: 0
+        topologyType: 'FACE',
+        topologyIndex: 0,
+        geometricSignature: 'GEAR_HUB_BACK_FACE'
       },
       geometryRefB: {
         componentId: shaftComponentId,
-        entityType: 'FACE',
-        entityId: 'SHAFT_SHOULDER_FACE',
-        subIndex: 0
+        topologyType: 'FACE',
+        topologyIndex: 0,
+        geometricSignature: 'SHAFT_SHOULDER_FACE'
       },
       type: 'MATE',
       status: 'SATISFIED',
@@ -122,8 +117,8 @@ export class GearAssemblyBridge {
         offset: axialPositionZMm,
         mateType: 'COINCIDENT'
       },
-      revision: 'REV-1'
-    };
+      revision: 1
+    });
 
     return {
       concentricConstraint,
@@ -141,22 +136,23 @@ export class GearAssemblyBridge {
     instanceB: GearAssemblyInstance,
     pairDef: GearPairDefinition
   ): AssemblyConstraint {
-    return {
+    return new AssemblyConstraint({
+      id: `CST-GEAR-MATE-${pairDef.pairId}`,
       constraintId: `CST-GEAR-MATE-${pairDef.pairId}`,
       assemblyId: 'MAIN_ASSEMBLY',
       componentA: instanceA.instanceId,
       componentB: instanceB.instanceId,
       geometryRefA: {
         componentId: instanceA.instanceId,
-        entityType: 'CYLINDER',
-        entityId: 'PITCH_CYLINDER',
-        subIndex: 0
+        topologyType: 'CYLINDER',
+        topologyIndex: 0,
+        geometricSignature: 'PITCH_CYLINDER'
       },
       geometryRefB: {
         componentId: instanceB.instanceId,
-        entityType: 'CYLINDER',
-        entityId: 'PITCH_CYLINDER',
-        subIndex: 0
+        topologyType: 'CYLINDER',
+        topologyIndex: 0,
+        geometricSignature: 'PITCH_CYLINDER'
       },
       type: 'GEAR_MATE',
       status: pairDef.hasInterference ? 'FAILED' : 'SATISFIED',
@@ -166,8 +162,8 @@ export class GearAssemblyBridge {
         pitchDiameterB: instanceB.gearDefinition.pitchDiameterMm,
         reverseDirection: pairDef.wheelRotationDirection === 'CCW'
       },
-      revision: 'REV-1'
-    };
+      revision: 1
+    });
   }
 
   /**

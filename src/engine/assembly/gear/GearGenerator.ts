@@ -78,4 +78,19 @@ export class GearGenerator {
       igesData: 'S      1'
     } as any;
   }
+
+  public static toAssemblyPartDefinition(gear: GearDefinition): any {
+    return {
+      id: gear.gearId,
+      partId: gear.gearId,
+      name: gear.name,
+      revision: '1',
+      cadSource: 'PARAMETRIC_GEAR',
+      geometryType: gear.type,
+      primitives: [],
+      features: gear.featureTree || [],
+      material: gear.material,
+      massProperties: gear.massProperties
+    };
+  }
 }

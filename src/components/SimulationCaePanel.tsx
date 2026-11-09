@@ -28,7 +28,7 @@ import {
   Award
 } from 'lucide-react';
 import { EngineeringDocument, FEAModel } from '../engine/cad-kernel/document/CADDocument';
-import { CadSolidEntity } from '../cadKernel';
+import { CadSolidEntity } from '../engine/cadKernel';
 import { CadToFemModelBuilder } from '../engine/fem/verification/CadToFemModelBuilder';
 import { FEMMeshGenerator } from '../engine/fem/mesh/FEMMeshGenerator';
 import { FEMMeshValidator } from '../engine/fem/mesh/FEMMeshValidator';

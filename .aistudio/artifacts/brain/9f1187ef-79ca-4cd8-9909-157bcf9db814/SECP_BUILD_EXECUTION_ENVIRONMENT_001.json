@@ -1,0 +1,41 @@
+{
+  "mission": "SECP-BUILD-EXECUTION-ENVIRONMENT-001",
+  "title": "Bounded Build & Type-Check Diagnostics",
+  "timestamp": "2026-11-04T09:17:30Z",
+  "verdict": "FAIL",
+  "verdictDetail": "Production build passed with exit code 0; Type-check failed due to reproducible errors across legacy prototype files in src/",
+  "environment": {
+    "nodeVersion": "v22.23.3",
+    "npmVersion": "10.9.9",
+    "ramTotalKb": 4194304,
+    "ramFreeKb": 3007724,
+    "cpuCores": 2,
+    "diskTotal": "504G",
+    "diskUsed": "634M",
+    "diskUsagePercent": "1%"
+  },
+  "build": {
+    "command": "npx vite build",
+    "pid": 304,
+    "durationMs": 35294,
+    "exitCode": 0,
+    "signal": null,
+    "status": "PASS",
+    "modulesTransformed": 3709,
+    "output": {
+      "html": "dist/index.html (1.12 kB)",
+      "css": "dist/assets/index-DXbacb61.css (273.57 kB)",
+      "js": "dist/assets/index-DB6DruyG.js (8192.42 kB)"
+    }
+  },
+  "typeCheck": {
+    "command": "tsc --noEmit",
+    "tsconfig": "tsconfig.json",
+    "strict": true,
+    "srcFilesCount": 5026,
+    "status": "FAIL",
+    "hasReproducibleErrors": true,
+    "sampleDiagnosticsSource": "tsc_final.txt",
+    "errorCountEstimate": 10828
+  }
+}

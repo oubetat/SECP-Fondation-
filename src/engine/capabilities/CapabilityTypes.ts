@@ -30,7 +30,8 @@ export type EngineeringDomain =
   | 'ASSEMBLY' 
   | 'PLM' 
   | 'HPC' 
-  | 'INTEROP';
+  | 'INTEROP'
+  | 'HUMAN_FACTORS';
 
 export interface PerformanceMetrics {
   medianExecutionTimeMs: number;

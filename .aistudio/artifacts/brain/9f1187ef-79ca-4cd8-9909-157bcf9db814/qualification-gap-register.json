@@ -1,0 +1,86 @@
+{
+  "registerId": "SECP-PHASE5-GAP-REG-001",
+  "platform": "SolidEdge Cloud Platform (SECP) — Engineering Truth OS",
+  "phase": "Phase 5 — Aircraft & Industrial Qualification",
+  "timestamp": "2026-10-21T08:15:00.000Z",
+  "totalGapsIdentified": 8,
+  "criticalBlockersCount": 0,
+  "resolvedBlockersCount": 3,
+  "gaps": [
+    {
+      "gapId": "GAP-P5-001",
+      "phaseSubstage": "P5.1 — Qualification Requirements & Traceability",
+      "severity": "RESOLVED",
+      "status": "CLOSED_IMPLEMENTED_AND_VERIFIED",
+      "title": "Absence of Canonical QualificationRequirement Schema with Design & Evidence Traceability",
+      "description": "Implemented `src/engine/qualification/QualificationRequirement.ts` with formal standard attribution, criticality, verification methods, acceptance criteria algebra, and canonical design references.",
+      "resolutionReference": "Verified in src/engine/qualification/tests/requirement_traceability.test.ts (8/8 PASS)"
+    },
+    {
+      "gapId": "GAP-P5-002",
+      "phaseSubstage": "P5.2 — Aircraft & Industrial System Model",
+      "severity": "RESOLVED",
+      "status": "CLOSED_IMPLEMENTED_AND_VERIFIED",
+      "title": "System-Level Root Entity Unifying Subsystems (ECU Reference Assembly)",
+      "description": "Implemented `src/engine/qualification/EngineeringSystemCanonicalModel.ts` and `createReferenceEcuSystem()` (SECP-REF-ECU-001) defining full operating envelope, multidomain assembly, qualification requirements, and explicit solver validity envelope.",
+      "resolutionReference": "Verified in src/engine/qualification/tests/system_qualification.test.ts (12/12 PASS)"
+    },
+    {
+      "gapId": "GAP-P5-003",
+      "phaseSubstage": "P5.4 — Thermal & Environmental Qualification",
+      "severity": "MODERATE",
+      "status": "OPEN_CONTROLLED_BY_POLICY",
+      "title": "Lumped Theta-JA Thermal Model Conflation Risk",
+      "description": "Thermal calculations use 1D Theta-JA lumped parameter thermal equations. Bounded explicitly as 0D/1D steady-state in solver validity limits; 3D CFD air-flow modeling is declared NOT_PROVEN.",
+      "impact": "Controlled via explicit NOT_PROVEN disclosure in qualification reports.",
+      "remediationPlan": "Maintained in solver-validity-register.json; 3D CFD remains NOT_PROVEN."
+    },
+    {
+      "gapId": "GAP-P5-004",
+      "phaseSubstage": "P5.5 — Mechanical, Structural & Vibration Qualification",
+      "severity": "HIGH",
+      "status": "OPEN_RECORDED_AS_NOT_PROVEN",
+      "title": "Unintegrated Structural Vibration & Dynamic Shock Solvers",
+      "description": "FEA solvers under `src/engine/fem` exist in isolation. Dynamic vibration (MIL-STD-810H) and shock are formally declared NOT_PROVEN; only rigid kinematic clearances are verified.",
+      "impact": "Dynamic vibration and shock survival cannot be claimed without external FEA/lab tests.",
+      "remediationPlan": "Documented in declared scope limitations."
+    },
+    {
+      "gapId": "GAP-P5-005",
+      "phaseSubstage": "P5.6 — Reliability, FMEA & Functional Safety",
+      "severity": "HIGH",
+      "status": "OPEN_RECORDED_AS_NOT_PROVEN",
+      "title": "Lack of Quantitative Hardware FMEA / FMECA and Fault Tree Engine",
+      "description": "Hardware failure rates (FIT) and single-point fault metrics (SPFM) are not yet computed from canonical components. Regulatory ASIL D / DAL A ratings remain NOT_PROVEN.",
+      "impact": "Mandatory NOT_PROVEN verdict for external regulatory certifications.",
+      "remediationPlan": "Next development cycle."
+    },
+    {
+      "gapId": "GAP-P5-006",
+      "phaseSubstage": "P5.7 — Multidomain Failure Propagation & Evidence Invalidation",
+      "severity": "RESOLVED",
+      "status": "CLOSED_IMPLEMENTED_AND_VERIFIED",
+      "title": "Automated Cross-Domain Revision Invalidation Cascade",
+      "description": "Implemented `src/engine/qualification/QualificationChangeImpact.ts` which computes deterministic domain fingerprints, detects modifications, invalidates affected evidence, and triggers QUALIFICATION_BLOCKED.",
+      "resolutionReference": "Verified in src/engine/qualification/tests/qualification_adversarial.test.ts (ADV-CAS-001 & ADV-CAS-002 PASS)"
+    },
+    {
+      "gapId": "GAP-P5-007",
+      "phaseSubstage": "P5.8 — Independent Verification & Evidence Binding",
+      "severity": "RESOLVED",
+      "status": "CLOSED_IMPLEMENTED_AND_VERIFIED",
+      "title": "Unified Evidence Record Alignment with Qualification Standard Clauses",
+      "description": "Requirements Traceability Matrix (RTM) now links DO-254, IPC-6012, MIL-STD-810H, and SECP-CORE standard clauses directly to SHA-256 evidence digests and Merkle root.",
+      "resolutionReference": "Verified in SECP-P5-QUALIFICATION-REPORT-001.md"
+    },
+    {
+      "gapId": "GAP-P5-008",
+      "phaseSubstage": "P5.9 — Qualification Gate & Controlled Release",
+      "severity": "RESOLVED",
+      "status": "CLOSED_IMPLEMENTED_AND_VERIFIED",
+      "title": "Fail-Closed Qualification Release Gate",
+      "description": "Implemented in `SystemQualificationEngine.ts`: emits QUALIFIED_WITHIN_DECLARED_SCOPE only when 100% of requirements are verified and non-invalidated. Emits QUALIFICATION_BLOCKED or VERIFICATION_FAILED on any violation.",
+      "resolutionReference": "Verified in system_qualification.test.ts (12/12 PASS) and qualification_adversarial.test.ts (10/10 PASS)"
+    }
+  ]
+}

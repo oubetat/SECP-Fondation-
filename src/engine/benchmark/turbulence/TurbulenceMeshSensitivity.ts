@@ -9,6 +9,7 @@ import { BenchmarkCaseId, MeshSensitivityPoint, MeshSensitivityStudy } from './t
 import { Fvm3DMeshGenerator } from '../../cfd3d/Fvm3DMeshGenerator';
 import { Fvm3DNavierStokesSolver } from '../../cfd3d/Fvm3DNavierStokesSolver';
 import { BoundaryConditionSpec3D, FluidProperties3D, SolverConfig3D } from '../../cfd3d/Fvm3DTypes';
+import { DomainBindingTestUtility } from '../../crossdomain/DomainBindingTestUtility';
 
 export class TurbulenceMeshSensitivityEngine {
   public static runMeshSensitivityStudy(caseId: BenchmarkCaseId): MeshSensitivityStudy {
@@ -35,9 +36,13 @@ export class TurbulenceMeshSensitivityEngine {
     const mediumMesh = Fvm3DMeshGenerator.generateBoxMesh(0.4, 0.03, 0.03, 15, 4, 4);
     const fineMesh = Fvm3DMeshGenerator.generateBoxMesh(0.4, 0.03, 0.03, 20, 5, 5);
 
-    const solCoarse = Fvm3DNavierStokesSolver.solve(coarseMesh, fluid, bc, config);
-    const solMedium = Fvm3DNavierStokesSolver.solve(mediumMesh, fluid, bc, config);
-    const solFine = Fvm3DNavierStokesSolver.solve(fineMesh, fluid, bc, config);
+    const bindingCoarse = DomainBindingTestUtility.createSealedCfdBinding(coarseMesh, fluid);
+    const bindingMedium = DomainBindingTestUtility.createSealedCfdBinding(mediumMesh, fluid);
+    const bindingFine = DomainBindingTestUtility.createSealedCfdBinding(fineMesh, fluid);
+
+    const solCoarse = Fvm3DNavierStokesSolver.solve(bindingCoarse, bc, config);
+    const solMedium = Fvm3DNavierStokesSolver.solve(bindingMedium, bc, config);
+    const solFine = Fvm3DNavierStokesSolver.solve(bindingFine, bc, config);
 
     const extractPoint = (level: 'COARSE' | 'MEDIUM' | 'FINE', sol: typeof solCoarse): MeshSensitivityPoint => {
       let maxU = 0;

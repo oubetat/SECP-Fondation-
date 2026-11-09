@@ -5,8 +5,8 @@ import { TopologyLineageProofEngine } from '../../engine/topology/TopologyLineag
 import { EngineeringPLMEngine } from '../../engine/plm/EngineeringPLMEngine';
 import { CanonicalPLMProjectionAdapter } from '../../engine/plm/CanonicalPLMProjectionAdapter';
 import { Solid } from '../../engine/cad-kernel/topology/TopologyContracts';
-import { BRepHasher } from '../../engine/cad-kernel/brep/BRepHasher';
-import { EngineeringHashChain } from '../../engine/cad-kernel/evidence/EngineeringHashChain';
+import { BRepHasher } from '../../engine/cad-kernel/topology/BRepHasher';
+import { EngineeringHashChain } from '../../engine/evidence/EngineeringHashChain';
 
 describe('P5-002 — CAD → FEM Revision & Associativity Proof', () => {
   beforeEach(() => {
@@ -66,7 +66,7 @@ describe('P5-002 — CAD → FEM Revision & Associativity Proof', () => {
 
     // 2. Perform CAD Mutation: Extrude depth 25 mm -> 50 mm (REV-B)
     docCAD.revision = 2;
-    docCAD.features[0].parameters.depth = 50;
+    docCAD.features![0].parameters!.depth = 50;
 
     const evalResultB = DocumentEvaluator.evaluate(docCAD);
     expect(evalResultB.success).toBe(true);
@@ -135,7 +135,7 @@ describe('P5-002 — CAD → FEM Revision & Associativity Proof', () => {
       documentId: 'P5-FEM-02',
       revision: 'REV-A',
       version: 1,
-      type: 'SIMULATION_FEM',
+      type: 'FEA_RESULT',
       status: 'VALID',
       geometryHash: artCAD_A.geometryHash,
       topologyHash: artCAD_A.topologyHash,
@@ -152,7 +152,7 @@ describe('P5-002 — CAD → FEM Revision & Associativity Proof', () => {
 
     // 3. Mutate Upstream CAD Document to REV-B
     docCAD.revision = 2;
-    docCAD.features[0].parameters.depth = 40;
+    docCAD.features![0].parameters!.depth = 40;
     const evalB = DocumentEvaluator.evaluate(docCAD);
 
     const artCAD_B = CanonicalPLMProjectionAdapter.projectFromDocument(docCAD, evalB);
@@ -232,11 +232,11 @@ describe('P5-002 — CAD → FEM Revision & Associativity Proof', () => {
       solverOutputHash: femModelA.solverOutputHash,
       verdict: 'PASS'
     };
-    docCAD.evidence.push(evidenceA);
+    docCAD.evidence!.push(evidenceA);
 
     // 2. Mutate CAD Model to REV-B (depth 25 -> 60 mm)
     docCAD.revision = 2;
-    docCAD.features[0].parameters.depth = 60;
+    docCAD.features![0].parameters!.depth = 60;
     const evalB = DocumentEvaluator.evaluate(docCAD);
     const geomHashB = evalB.derivedArtifacts?.bRepHash || 'G-HASH-REV2';
 
@@ -269,13 +269,13 @@ describe('P5-002 — CAD → FEM Revision & Associativity Proof', () => {
       solverOutputHash: femModelB.solverOutputHash,
       verdict: 'PASS'
     };
-    docCAD.evidence.push(evidenceB);
+    docCAD.evidence!.push(evidenceB);
 
     // 4. Strict Evidence Proof & Immutability Verification
-    expect(docCAD.evidence.length).toBeGreaterThanOrEqual(2);
+    expect(docCAD.evidence!.length).toBeGreaterThanOrEqual(2);
 
-    const evREV1 = docCAD.evidence.find(e => e.revision === 1 && e.sourceSystem === 'SECP_FEM_ENGINE');
-    const evREV2 = docCAD.evidence.find(e => e.revision === 2 && e.sourceSystem === 'SECP_FEM_ENGINE');
+    const evREV1 = docCAD.evidence!.find(e => e.revision === 1 && e.sourceSystem === 'SECP_FEM_ENGINE');
+    const evREV2 = docCAD.evidence!.find(e => e.revision === 2 && e.sourceSystem === 'SECP_FEM_ENGINE');
 
     expect(evREV1).toBeDefined();
     expect(evREV2).toBeDefined();
@@ -343,7 +343,7 @@ describe('P5-002 — CAD → FEM Revision & Associativity Proof', () => {
     const solidB = evalB.evaluatedShape;
 
     // 3. Rebind attempt against deleted geometry
-    const rebindResult = TopologyLineageProofEngine.rebindReference(bcRef, solidB, 2);
+    const rebindResult = TopologyLineageProofEngine.rebindReference(bcRef, solidB!, 2);
     expect(rebindResult.success).toBe(false);
     expect(rebindResult.state).toBe('DELETED');
     expect(rebindResult.reason).toContain('destroyed');
@@ -396,7 +396,7 @@ describe('P5-002 — CAD → FEM Revision & Associativity Proof', () => {
       documentId: 'P5-FEM-05',
       revision: 'REV-A',
       version: 1,
-      type: 'SIMULATION_FEM' as const,
+      type: 'FEA_RESULT' as const,
       status: 'VALID' as const,
       geometryHash: artCAD_A.geometryHash,
       topologyHash: artCAD_A.topologyHash,
@@ -409,7 +409,7 @@ describe('P5-002 — CAD → FEM Revision & Associativity Proof', () => {
 
     // 2. CAD Mutation REV-B
     docCAD.revision = 2;
-    docCAD.features[0].parameters.depth = 20; // Double beam depth
+    docCAD.features![0].parameters!.depth = 20; // Double beam depth
 
     const evalB = DocumentEvaluator.evaluate(docCAD);
     const artCAD_B = CanonicalPLMProjectionAdapter.projectFromDocument(docCAD, evalB);
@@ -425,7 +425,7 @@ describe('P5-002 — CAD → FEM Revision & Associativity Proof', () => {
       documentId: 'P5-FEM-05',
       revision: 'REV-B',
       version: 2,
-      type: 'SIMULATION_FEM' as const,
+      type: 'FEA_RESULT' as const,
       status: 'VALID' as const,
       geometryHash: artCAD_B.geometryHash,
       topologyHash: artCAD_B.topologyHash,

@@ -1,0 +1,136 @@
+{
+  "workflowDefinitions": {
+    "id": "workflow:engineering.truth",
+    "version": "1.0.0",
+    "name": "workflow:engineering.truth",
+    "description": "workflow:engineering.truth",
+    "status": "COMPLETED",
+    "objectIds": [
+      "geom-01"
+    ],
+    "taskIds": [
+      "task:cad",
+      "task:mesh",
+      "task:cfd",
+      "task:conv",
+      "task:cons",
+      "task:ev"
+    ],
+    "requiredCapabilities": [
+      "capability:cad.validation",
+      "capability:mesh.generation",
+      "capability:cfd.solve",
+      "capability:convergence.verification",
+      "capability:conservation.verification",
+      "capability:evidence.generation"
+    ],
+    "policyIds": [],
+    "deterministic": true,
+    "replayable": true,
+    "evidenceIds": [],
+    "metadata": {
+      "deterministic": true,
+      "replayable": true,
+      "tasks": [
+        {
+          "id": "task:cad",
+          "workflowId": "workflow:engineering.truth",
+          "name": "CAD Structural Integrity",
+          "capabilityId": "capability:cad.validation",
+          "dependsOn": [],
+          "objectIds": [
+            "geom-01"
+          ],
+          "status": "PENDING",
+          "evidenceIds": [],
+          "metadata": {}
+        },
+        {
+          "id": "task:mesh",
+          "workflowId": "workflow:engineering.truth",
+          "name": "Discretization mesh",
+          "capabilityId": "capability:mesh.generation",
+          "dependsOn": [
+            "task:cad"
+          ],
+          "objectIds": [
+            "geom-01"
+          ],
+          "status": "PENDING",
+          "evidenceIds": [],
+          "metadata": {}
+        },
+        {
+          "id": "task:cfd",
+          "workflowId": "workflow:engineering.truth",
+          "name": "Navier-Stokes CFD Solve",
+          "capabilityId": "capability:cfd.solve",
+          "dependsOn": [
+            "task:mesh"
+          ],
+          "objectIds": [
+            "geom-01"
+          ],
+          "status": "PENDING",
+          "evidenceIds": [],
+          "metadata": {}
+        },
+        {
+          "id": "task:conv",
+          "workflowId": "workflow:engineering.truth",
+          "name": "Solution Convergence check",
+          "capabilityId": "capability:convergence.verification",
+          "dependsOn": [
+            "task:cfd"
+          ],
+          "objectIds": [
+            "geom-01"
+          ],
+          "status": "PENDING",
+          "evidenceIds": [],
+          "metadata": {}
+        },
+        {
+          "id": "task:cons",
+          "workflowId": "workflow:engineering.truth",
+          "name": "Conservation equations check",
+          "capabilityId": "capability:conservation.verification",
+          "dependsOn": [
+            "task:cfd"
+          ],
+          "objectIds": [
+            "geom-01"
+          ],
+          "status": "PENDING",
+          "evidenceIds": [],
+          "metadata": {}
+        },
+        {
+          "id": "task:ev",
+          "workflowId": "workflow:engineering.truth",
+          "name": "Compile and pack evidence",
+          "capabilityId": "capability:evidence.generation",
+          "dependsOn": [
+            "task:conv",
+            "task:cons"
+          ],
+          "objectIds": [
+            "geom-01"
+          ],
+          "status": "PENDING",
+          "evidenceIds": [],
+          "metadata": {}
+        }
+      ]
+    }
+  },
+  "taskGraph": [
+    "task:cad",
+    "task:mesh",
+    "task:cfd",
+    "task:conv",
+    "task:cons",
+    "task:ev"
+  ],
+  "verdict": "PASS"
+}

@@ -1,0 +1,35 @@
+{
+  "graphIdentity": "ParametricDependencyGraph",
+  "nodeCount": 3,
+  "edgeCount": 2,
+  "rootCount": 1,
+  "leafCount": 1,
+  "cycleCount": 0,
+  "validationResult": {
+    "valid": true,
+    "errors": [],
+    "warnings": [],
+    "nodeCount": 3,
+    "edgeCount": 2,
+    "cycleCount": 0
+  },
+  "topologicalOrderHash": "5fa00204f4c3c3e49192358cb6a967a066c0e474f23d17b11833842986a7403a",
+  "snapshotHash": "34b072b1665528e5dd87c362f9b2d853ccb17ba35141bc93f7f2a050a3e94536",
+  "deterministicReplay": true,
+  "testsExecuted": [
+    "NodeIdentity",
+    "EdgeIntegrity",
+    "CycleDetection",
+    "DeterministicSnapshot",
+    "TopologicalOrder",
+    "TransitiveDependencies",
+    "ImpactSet"
+  ],
+  "adversarialTestsExecuted": [
+    "DuplicateNode",
+    "MissingReference",
+    "SelfDependency",
+    "Cycle"
+  ],
+  "verdict": "PASS"
+}

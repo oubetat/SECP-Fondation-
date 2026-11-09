@@ -39,7 +39,7 @@ export class TurbulenceExecutionPathVerifier {
     };
 
     const laminarBinding = DomainBindingTestUtility.createSealedCfdBinding(mesh, fluid);
-    const laminarSolution = Fvm3DNavierStokesSolver.solve(laminarBinding, laminarConfig);
+    const laminarSolution = Fvm3DNavierStokesSolver.solve(laminarBinding, bc, laminarConfig);
 
     // 2. Run k-Epsilon Solver
     const kEpsConfig: SolverConfig3D = {
@@ -49,7 +49,7 @@ export class TurbulenceExecutionPathVerifier {
     };
 
     const kEpsBinding = DomainBindingTestUtility.createSealedCfdBinding(mesh, fluid);
-    const kEpsSolution = Fvm3DNavierStokesSolver.solve(kEpsBinding, kEpsConfig);
+    const kEpsSolution = Fvm3DNavierStokesSolver.solve(kEpsBinding, bc, kEpsConfig);
 
     // 3. Compute Differences
     let maxVelDiff = 0.0;

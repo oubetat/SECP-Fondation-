@@ -1,0 +1,61 @@
+
+ RUN  v1.6.1 /app/applet
+
+stdout | src/engine/simulation/__tests__/CanonicalCadCfdTruthAdversarial.test.ts > SECP-CAD-TRUTH-PATCH-002 — Canonical CAD Identity -> CFD Execution -> Truth Binding > CAD-01: should complete end-to-end provenance chain from CAD Revision to Truth Thread
+[SECP-CFD] Solver init: rho=1.225, mu=0.000018, cells=45
+Iter 1: Cont=4.0235e-8, MomLinf=6.5689e-4, MomL1=3.2180e-4, dV=4.7599e-3, MaxV=1.00, Cl=0.0000, Cd=0.0001
+Iter 10: Cont=4.0320e-8, MomLinf=1.2545e-4, MomL1=2.3775e-5, dV=6.4686e-5, MaxV=1.01, Cl=0.0000, Cd=0.0001
+
+[SECP-CFD-CONVERGENCE]
+iteration=10
+terminationReason=MAX_ITERATIONS_REACHED
+continuityL1=4.0320e-8
+continuityL2=1.0622e-9
+continuityLinf=1.8223e-9
+momentumLinf=1.2545e-4
+momentumL1=2.3775e-5
+momentumL2=4.5354e-5
+pressureCorrection=1.2195e-3
+velocityCorrection=6.4686e-5
+kResidual=0.0000e+0
+omegaResidual=0.0000e+0
+forceStabilityPassed=false
+maxVelocity=1.0068
+minPressure=0.00
+maxPressure=0.02
+
+stdout | src/engine/simulation/__tests__/CanonicalCadCfdTruthAdversarial.test.ts > SECP-CAD-TRUTH-PATCH-002 — Canonical CAD Identity -> CFD Execution -> Truth Binding > CAD-10: should verify Provenance Integrity PASS even when numerical solver terminates without convergence (MAX_ITERATIONS_REACHED)
+[SECP-CFD] Solver init: rho=1.225, mu=0.000018, cells=54
+Iter 1: Cont=4.6980e-8, MomLinf=8.0558e-4, MomL1=2.8980e-4, dV=4.2603e-3, MaxV=1.00, Cl=-0.0000, Cd=0.0001
+
+[SECP-CFD-CONVERGENCE]
+iteration=3
+terminationReason=MAX_ITERATIONS_REACHED
+continuityL1=4.9094e-8
+continuityL2=1.0676e-9
+continuityLinf=1.8051e-9
+momentumLinf=2.3045e-4
+momentumL1=7.5624e-5
+momentumL2=9.4997e-5
+pressureCorrection=8.2578e-3
+velocityCorrection=1.2777e-3
+kResidual=5.5072e-3
+epsResidual=1.0201e-2
+omegaResidual=0.0000e+0 (model=K_EPSILON)
+forceStabilityPassed=false
+maxVelocity=1.0047
+minPressure=0.00
+maxPressure=0.02
+
+ ✓ src/engine/simulation/__tests__/CanonicalCadCfdTruthAdversarial.test.ts  (12 tests) 271ms
+ ✓ src/engine/simulation/__tests__/SimulationExecutionAuthorityAdversarial.test.ts  (15 tests) 14ms
+ ✓ src/engine/crossdomain/__tests__/AuthoritySealTrustBoundary.test.ts  (10 tests) 15ms
+ ✓ src/engine/crossdomain/__tests__/DomainBindingIntegration.test.ts  (3 tests) 23ms
+ ✓ src/engine/crossdomain/__tests__/CanonicalDomainBinding.test.ts  (3 tests) 5ms
+
+ Test Files  5 passed (5)
+      Tests  43 passed (43)
+   Start at  12:12:41
+   Duration  4.35s (transform 1.16s, setup 89ms, collect 1.49s, tests 328ms, environment 1ms, prepare 687ms)
+
+

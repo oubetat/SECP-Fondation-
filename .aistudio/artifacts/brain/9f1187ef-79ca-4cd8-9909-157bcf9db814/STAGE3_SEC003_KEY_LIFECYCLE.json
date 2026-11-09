@@ -1,0 +1,29 @@
+{
+  "taskId": "SECP-STAGE3-SECURITY-CLOSURE-003",
+  "auditType": "Authority Key Lifecycle Specification",
+  "timestamp": "2026-11-01T09:24:00Z",
+  "lifecycleStages": {
+    "BOOT": {
+      "mechanism": "initializeAuthorityHandshake() called during EngineeringOS.boot()",
+      "entropy": "crypto.randomBytes(32)",
+      "versioning": "SECP-AUTH-KEY-<TIMESTAMP>-<RANDOM>"
+    },
+    "ACTIVE": {
+      "scope": "In-memory JS process space",
+      "persistence": "NONE (Material never serializes or persists)",
+      "concurrency": "Protected by initLock to prevent race-condition key generation"
+    },
+    "REVOCATION": {
+      "mechanism": "revokeAuthorityState() resets all internal cryptographic material to NULL",
+      "trigger": "Explicit rotation request, system reset, or process termination"
+    },
+    "RESTART": {
+      "behavior": "Deterministic invalidation of all existing seal tokens (New secret generates non-matching tags for old bindings)"
+    }
+  },
+  "staleBindingHandling": {
+    "validation": "verifyHMACSealToken rejects tokens matching old key versions or previous process secrets",
+    "status": "FAIL_CLOSED"
+  },
+  "verificationStatus": "KEY_LIFECYCLE_ENFORCED"
+}

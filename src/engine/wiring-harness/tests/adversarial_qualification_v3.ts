@@ -9,6 +9,8 @@ import { WiringHarnessElectricalVerifier, WiringHarnessElectricalResult } from '
 // Define the verifier contract
 type VerifierFunc = (model: WiringHarnessCanonicalModel) => WiringHarnessElectricalResult;
 
+const productionVerifier = WiringHarnessElectricalVerifier.verify as unknown as VerifierFunc;
+
 // A test runner that accepts a verifier implementation
 function testHarness(model: WiringHarnessCanonicalModel, verifier: VerifierFunc): boolean {
     const result = verifier(model);
@@ -45,19 +47,19 @@ function createShortCircuitModel(): WiringHarnessCanonicalModel {
 // 1. Diagnosis
 console.log("--- Diagnosis ---");
 const model = createShortCircuitModel();
-const result = WiringHarnessElectricalVerifier.verify(model);
+const result = WiringHarnessElectricalVerifier.verify(model as any);
 console.log(`Production Verifier Detects Short: ${result.shorts > 0}`);
 
 // 2. Mutation Test
 console.log("\n--- Mutation Test ---");
 
 // Normal path
-const passResult = testHarness(model, WiringHarnessElectricalVerifier.verify);
+const passResult = testHarness(model, productionVerifier);
 console.log(`Normal Verifier Passed Mutation Test: ${passResult}`);
 
 // Mutated path (simulated regression)
 const mutatedVerifier: VerifierFunc = (m) => {
-    const res = WiringHarnessElectricalVerifier.verify(m);
+    const res = WiringHarnessElectricalVerifier.verify(m as any);
     res.shorts = 0; // Regression
     return res;
 };

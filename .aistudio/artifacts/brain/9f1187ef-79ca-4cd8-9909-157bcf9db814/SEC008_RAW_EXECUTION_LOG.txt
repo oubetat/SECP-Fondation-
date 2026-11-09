@@ -1,0 +1,32 @@
+================================================================================
+SECP-SECURITY-008 RAW FORENSIC EXECUTION LOG
+Execution Timestamp: 2026-11-02T07:28:01.681Z
+Command: npx vitest run src/engine/forensic/SEC007_LiveForensicAuditor.test.ts src/engine/forensic/__tests__/SEC008_AdversarialQualificationHarness.test.ts
+Environment: Node.js v22.23.4 / Vitest 1.6.1
+================================================================================
+
+
+ RUN  v1.6.1 /app/applet
+
+stdout | src/engine/forensic/__tests__/SEC008_AdversarialQualificationHarness.test.ts > SECP-SECURITY-008 Independent Forensic Auditor Qualification > Adversarial Bypass Detection Qualification (SEC007) > should evaluate SEC007 detection effectiveness against 15 adversarial bypass fixtures
+[SEC008 FORENSIC QUALIFICATION] Tested 15 fixtures: 3 detected, 12 evaded.
+
+ ✓ src/engine/forensic/__tests__/SEC008_AdversarialQualificationHarness.test.ts  (8 tests) 10ms
+ ✓ src/engine/forensic/SEC007_LiveForensicAuditor.test.ts  (2 tests) 318ms
+stdout | src/engine/forensic/SEC007_LiveForensicAuditor.test.ts > SECP-STAGE3-SECURITY-REMEDIATION-007 Live Forensic Auditor > should scan src/engine directory and verify exact module count and authority boundaries programmatically
+[LIVE FORENSIC AUDIT] Total .ts modules found under src/engine: 4489
+[LIVE FORENSIC AUDIT] AUTHORITY_PRODUCER: 11
+[LIVE FORENSIC AUDIT] AUTHORITY_CONSUMER: 1053
+[LIVE FORENSIC AUDIT] NO_AUTHORITY: 3425
+[LIVE FORENSIC AUDIT] Unauthenticated seal bindings detected: 0
+
+
+ Test Files  2 passed (2)
+      Tests  10 passed (10)
+   Start at  07:28:00
+   Duration  1.45s (transform 107ms, setup 2ms, collect 126ms, tests 328ms, environment 0ms, prepare 270ms)
+
+
+================================================================================
+END OF EXECUTION LOG — 10 TESTS TOTAL (2 SEC007 AUDITOR TESTS, 8 SEC008 QUALIFICATION TESTS)
+================================================================================

@@ -1,0 +1,23 @@
+{
+  "patch": "SECP-CAD-TRUTH-PATCH-003B-AUDIT",
+  "modifiedFiles": [
+    {
+      "file": "src/engine/plm_evidence/IndependentPersistentEvidenceVerifier.ts",
+      "description": "Refined numerical qualification status guard logic: added numeric type checks (NaN/Infinity), missing field checks, and conflict detection between top-level and nested numerical fields."
+    },
+    {
+      "file": "src/engine/simulation/SimulationAuthorityInternal.ts",
+      "description": "Added support for SECP_AUTHORITY_SECRET and SECP_AUTHORITY_KEY_VERSION environment variables for persistent key management across process boundaries."
+    },
+    {
+      "file": "src/engine/simulation/__tests__/ProcessLevelRecoveryAdversarial.test.ts",
+      "description": "Added subprocess CLI test execution (TB-05B), environment variable configuration, and updated TB-06 resultHash tamper tracking."
+    }
+  ],
+  "createdFiles": [
+    {
+      "file": "src/engine/plm_evidence/cli/standaloneVerifierProcess.ts",
+      "description": "Standalone CLI process runner for out-of-process cold start evidence chain verification."
+    }
+  ]
+}

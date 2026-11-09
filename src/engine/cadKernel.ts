@@ -21,13 +21,27 @@ function generateRandomId(): string {
 }
 
 /**
+ * Computes a deterministic canonical geometry hash based purely on physical & geometric properties.
+ * PATCH-005.1: Non-geometric metadata (name, description, author, timestamp) MUST NOT alter geometryHash.
+ */
+export function computeCanonicalGeometryHash(type: string, props: any): string {
+  // Strip any non-geometric metadata if accidentally passed
+  const { name, author, description, timestamp, ...cleanProps } = props || {};
+  const payload = { type, props: cleanProps };
+  const { canonicalHash } = EngineeringHashChain.computeCanonicalHash(payload);
+  return canonicalHash;
+}
+
+/**
  * Generates a deterministic ID for an engineering entity based on its canonical properties.
  * PATCH-013: Ensures Engineering Identity is stable across runs.
  */
-function generateEngineeringId(type: string, props: any, name?: string): string {
-  const payload = { type, props, name: name || 'ENTITY' };
-  const { canonicalHash } = EngineeringHashChain.computeCanonicalHash(payload);
-  return `${type}_${canonicalHash.substring(0, 12)}`;
+function generateEngineeringIdentity(type: string, props: any, name?: string): { id: string, hash: string } {
+  const geometryHash = computeCanonicalGeometryHash(type, props);
+  return {
+    id: `${type}_${geometryHash.substring(0, 12)}`,
+    hash: geometryHash
+  };
 }
 import { BooleanEngine } from './cad-kernel/boolean/BooleanEngine';
 import { BoxFactory } from './cad-kernel/boolean/BoxFactory';
@@ -82,6 +96,7 @@ export interface CadSolidEntity {
   chamferedEdgesCount?: number;
   faces?: any[];
   brep?: BRepSolid;
+  geometryHash?: string;
 }
 
 export class CadGeometryKernel {
@@ -130,16 +145,25 @@ export class CadGeometryKernel {
       z: depthM / 2.0
     };
 
-    // 5. Deterministic ID
-    const solidId = featureId ? `SOLID-${featureId}` : `SOLID-EXTRUDE-${Math.round(profile.areaMm2)}-${Math.round(depthMm)}`;
+    // 5. Deterministic Identity
+    const identity = generateEngineeringIdentity('EXTRUDE', { 
+      points: profile.points, 
+      depthM,
+      areaM2,
+      volumeM3,
+      surfaceAreaM2,
+      cog: centerOfGravity,
+      featureId 
+    }, name);
 
     // 6. Viewport 3D Mesh directly tessellated from the Canonical B-Rep Solid
     const mesh = this.brepKernel.tessellate(brep as any);
 
     return {
-      id: solidId,
+      id: identity.id,
+      geometryHash: identity.hash,
       name,
-      type: 'BOX',
+      type: 'BOX', // extrusions often represent box-like parts in this kernel
       position: { x: 0, y: 0, z: 0 },
       rotation: { x: 0, y: 0, z: 0 },
       scale: { x: 1, y: 1, z: 1 },
@@ -168,8 +192,17 @@ export class CadGeometryKernel {
     const surfaceAreaM2 = this.brepKernel.computeSurfaceArea(brep) || (2 * (dxM * dyM + dyM * dzM + dzM * dxM));
     const mesh = this.brepKernel.tessellate(brep);
 
+    const identity = generateEngineeringIdentity('BOX', { 
+      dx: dxM, 
+      dy: dyM, 
+      dz: dzM,
+      volumeM3,
+      surfaceAreaM2,
+      cog: { x: dxM / 2, y: dyM / 2, z: dzM / 2 }
+    }, name);
     return {
-      id: generateEngineeringId('BOX', { dx: dxM, dy: dyM, dz: dzM }, name),
+      id: identity.id,
+      geometryHash: identity.hash,
       name,
       type: 'BOX',
       position: { x: 0, y: 0, z: 0 },
@@ -199,8 +232,16 @@ export class CadGeometryKernel {
     const surfaceAreaM2 = this.brepKernel.computeSurfaceArea(brep) || (2 * Math.PI * rM * hM + 2 * Math.PI * rM * rM);
     const mesh = this.brepKernel.tessellate(brep);
 
+    const identity = generateEngineeringIdentity('CYLINDER', { 
+      radius: rM, 
+      height: hM,
+      volumeM3,
+      surfaceAreaM2,
+      cog: { x: 0, y: 0, z: hM / 2 }
+    }, name);
     return {
-      id: generateEngineeringId('CYLINDER', { radius: rM, height: hM }, name),
+      id: identity.id,
+      geometryHash: identity.hash,
       name,
       type: 'CYLINDER',
       position: { x: 0, y: 0, z: 0 },
@@ -229,8 +270,15 @@ export class CadGeometryKernel {
     const surfaceAreaM2 = 4.0 * Math.PI * rM * rM;
     const mesh = this.brepKernel.tessellate(brep);
 
+    const identity = generateEngineeringIdentity('SPHERE', { 
+      radius: rM,
+      volumeM3,
+      surfaceAreaM2,
+      cog: { x: 0, y: 0, z: 0 }
+    }, name);
     return {
-      id: generateEngineeringId('SPHERE', { radius: rM }, name),
+      id: identity.id,
+      geometryHash: identity.hash,
       name,
       type: 'SPHERE',
       position: { x: 0, y: 0, z: 0 },
@@ -261,8 +309,10 @@ export class CadGeometryKernel {
     const surfaceAreaM2 = Math.PI * (r1M + r2M) * Math.sqrt(Math.pow(r1M - r2M, 2) + hM * hM);
     const mesh = this.brepKernel.tessellate(brep);
 
+    const identity = generateEngineeringIdentity('CONE', { radius: r1M, radius2: r2M, height: hM }, name);
     return {
-      id: generateEngineeringId('CONE', { radius: r1M, radius2: r2M, height: hM }, name),
+      id: identity.id,
+      geometryHash: identity.hash,
       name,
       type: 'CONE',
       position: { x: 0, y: 0, z: 0 },
@@ -292,8 +342,10 @@ export class CadGeometryKernel {
     const surfaceAreaM2 = 4 * Math.PI * Math.PI * RM * rM;
     const mesh = this.brepKernel.tessellate(brep);
 
+    const identity = generateEngineeringIdentity('TORUS', { majorRadius: RM, minorRadius: rM }, name);
     return {
-      id: generateEngineeringId('TORUS', { majorRadius: RM, minorRadius: rM }, name),
+      id: identity.id,
+      geometryHash: identity.hash,
       name,
       type: 'TORUS',
       position: { x: 0, y: 0, z: 0 },
@@ -378,9 +430,11 @@ export class CadGeometryKernel {
       // BRep result available
     }
 
+    const identity = generateEngineeringIdentity('COMPOUND_BOOLEAN', { op, targetId: targetSolid.id, toolId: toolSolid.id, resultHash: result.evidence?.topologyHash }, name);
     return {
       ...targetSolid,
-      id: generateEngineeringId('COMPOUND_BOOLEAN', { op, targetId: targetSolid.id, toolId: toolSolid.id, resultHash: result.evidence?.topologyHash }, name),
+      id: identity.id,
+      geometryHash: identity.hash,
       name,
       type: 'COMPOUND_BOOLEAN',
       volumeM3,
@@ -410,9 +464,11 @@ export class CadGeometryKernel {
       propagation: 'TANGENT'
     }, GeometricTolerance.DEFAULT);
 
+    const identity = generateEngineeringIdentity('FILLET', { radius: radiusMm, sourceId: solid.id, edgeIds });
     return {
       ...solid,
-      id: generateEngineeringId('FILLET', { radius: radiusMm, sourceId: solid.id, edgeIds }),
+      id: identity.id,
+      geometryHash: identity.hash,
       name: `${solid.name}_FILLET`,
       volumeM3: solid.volumeM3 * 0.99,
       surfaceAreaM2: solid.surfaceAreaM2 * 1.05,
@@ -439,9 +495,11 @@ export class CadGeometryKernel {
       type: 'EQUAL'
     }, GeometricTolerance.DEFAULT) : ((engine as any).chamfer?.(solid.brep as any, edgeIds || [], distanceMm) || {});
 
+    const identity = generateEngineeringIdentity('CHAMFER', { distance: distanceMm, sourceId: solid.id, edgeIds });
     return {
       ...solid,
-      id: generateEngineeringId('CHAMFER', { distance: distanceMm, sourceId: solid.id, edgeIds }),
+      id: identity.id,
+      geometryHash: identity.hash,
       name: `${solid.name}_CHAMFER`,
       volumeM3: solid.volumeM3 * 0.98,
       surfaceAreaM2: solid.surfaceAreaM2 * 1.08,
@@ -480,8 +538,13 @@ export class CadGeometryKernel {
     const name = nameMatch ? nameMatch[1] : 'REIMPORTED_STEP_SOLID';
     const volumeM3 = volumeMatch ? parseFloat(volumeMatch[1]) : 0.0015;
 
+    const identity = generateEngineeringIdentity('REIMPORTED', { 
+      stepHash: EngineeringHashChain.computeCanonicalHash(stepContent).canonicalHash 
+    }, name);
+
     return {
-      id: generateEngineeringId('REIMPORTED', { stepHash: EngineeringHashChain.computeCanonicalHash(stepContent).canonicalHash }, name),
+      id: identity.id,
+      geometryHash: identity.hash,
       name: `${name}_REIMPORTED`,
       type: 'COMPOUND_BOOLEAN',
       position: { x: 0, y: 0, z: 0 },

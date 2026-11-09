@@ -14,6 +14,7 @@ export class CFDAdapter {
     nz?: number;
     inletVelocity?: { x: number; y: number; z: number };
     outletPressure?: number;
+    cadRevisionHash?: string | number;
   } = {}): { mesh: FvmMesh3D; brepHash: string; meshHash: string } {
     
     const brepHash = BRepTessellator.computeBRepHash(solid);
@@ -164,6 +165,23 @@ export class CFDAdapter {
       }
     }
 
+    const meshHash = EngineeringHashChain.computeCanonicalHash({
+      cellsCount: cells.length,
+      facesCount: faces.length,
+      bbMin: bb.min,
+      bbMax: bb.max,
+      totalVolume: cells.reduce((sum, c) => sum + c.volume, 0),
+      faceAreas: faces.map(f => Number(f.area.toFixed(8)))
+    }).canonicalHash;
+
+    const provenanceRecord = {
+      sourceGeometryHash: brepHash,
+      sourceRevisionHash: options.cadRevisionHash ?? 'REV-01',
+      bRepHash: brepHash,
+      meshHash: meshHash,
+      generationTimestamp: new Date().toISOString()
+    };
+
     const mesh: FvmMesh3D = {
       meshId: `cfd-mesh-${brepHash.substring(0, 8)}`,
       cells,
@@ -185,17 +203,10 @@ export class CFDAdapter {
         hasDegenerateCells: false,
         meshQualityStatus: 'EXCELLENT',
         passed: true
-      }
+      },
+      provenance: provenanceRecord,
+      meshProvenance: provenanceRecord
     };
-
-    const meshHash = EngineeringHashChain.computeCanonicalHash({
-      cellsCount: cells.length,
-      facesCount: faces.length,
-      bbMin: bb.min,
-      bbMax: bb.max,
-      totalVolume: cells.reduce((sum, c) => sum + c.volume, 0),
-      faceAreas: faces.map(f => Number(f.area.toFixed(8)))
-    }).canonicalHash;
 
     return { mesh, brepHash, meshHash };
   }

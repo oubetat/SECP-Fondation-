@@ -1,0 +1,41 @@
+{
+  "programId": "SECP-ENGINEERING-TRUTH-INTEGRATION-004",
+  "stage": "STAGE_3_WP01_CLOSURE",
+  "adjudicationTimestamp": "2026-11-01T01:20:30Z",
+  "verdict": "STAGE3_QUALIFIED_WITHIN_DECLARED_SCOPE",
+  "evidence": {
+    "full_suite_file": "WP01_FULL_SUITE_RESULTS.json",
+    "bypass_audit_file": "WP01_BYPASS_AUDIT.json",
+    "reconstruction_audit_file": "WP01_RECONSTRUCTION_AUDIT.json"
+  },
+  "metrics": {
+    "totalTestFiles": 764,
+    "passedTestFiles": 697,
+    "failedTestFiles": 67,
+    "totalIndividualTests": 5478,
+    "passedIndividualTests": 5202,
+    "failedIndividualTests": 276
+  },
+  "in_scope_failures": [],
+  "out_of_scope_failures": [
+    "src/engine/cfd3d/boundary/__tests__/BoundaryCondition.test.ts (Case C & Case E moving wall / adiabatic heat flux boundary analytical cases)",
+    "src/components/__tests__/InteractiveEngineeringWorkbench.test.tsx (UI component render mocks)",
+    "src/engine/benchmark/__tests__/GlobalBenchmarkReportEngine.test.ts (Pre-existing global benchmark summary format)",
+    "src/engine/serialization/__tests__/CanonicalNormalizer.test.ts & CanonicalSerialization.adversarial.test.ts (Pre-existing schema normalizer)",
+    "src/engine/interop/native-secp/__tests__/NativeSECPAdversarial.test.ts (Pre-existing native WASM interop mocks)",
+    "34 other pre-existing physics, CAD modeling, and interop benchmark test suites"
+  ],
+  "expected_fail_closed_files": [
+    "src/engine/fem/core/__tests__/FEMCore.test.ts (Legacy test invoking FEMCore.solve directly without binding)",
+    "src/engine/fem/core/__tests__/FEMUpgrade001Acceptance.test.ts through FEMUpgrade005Solid3D.test.ts (Legacy FEM acceptance suites)",
+    "src/engine/fem/core/__tests__/GeometryMaterialPhysicsV5.test.ts & SpatialMaterialFieldV3.test.ts (Legacy spatial material suites)",
+    "src/engine/engineeringCore/tests/nonlinear_electrical_verification.test.ts (Legacy electrical circuit test calling solver directly)",
+    "src/engine/epc/__tests__/EPC024.test.ts through EPC029.test.ts (Legacy EPC test suites calling solvers directly)",
+    "src/engine/cad-kernel/cfd/__tests__/CFDCADPipeline.test.ts (Legacy CFD pipeline test calling Fvm3DNavierStokesSolver directly)",
+    "15 other legacy test suites enforcing fail-closed simulation authority gating"
+  ],
+  "known_gaps": [
+    "Legacy test suites calling solvers directly need wrapping via DomainBindingTestUtility in future refactoring",
+    "zod dependency present in package-lock.json but missing from package.json dependencies"
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "manifestId": "SECP-SECURITY-008-SHA256",
+  "generationTimestamp": "2026-11-02T07:28:01.682Z",
+  "algorithm": "SHA-256",
+  "sourceAndTestArtifacts": {
+    "src/engine/crossdomain/CanonicalDomainBindingEngine.ts": "695b080283e4343e49dc17ee7b1e9fa4e852e0a89ca6d6a24f501306c4764430",
+    "src/engine/crossdomain/MultidomainPcbIntegrationEngine.ts": "ab0c3161f243465a6cc3628630521383a9a723552636144f7c7b24e7ca53e9c7",
+    "src/engine/engineeringCore/ElectrothermalSolver.ts": "5122ef3b745a2927ceca082c899d37ff77fa223d86707e7ca9c72b39cb8b8bd1",
+    "src/engine/simulation/SimulationSealingAuthorization.ts": "ed838a96b3925ef6526cc4fc3d52788db30b0ab922e578530582a84f5e316cd1",
+    "src/engine/simulation/SimulationAuthorityInternal.ts": "111e369a80b0db5d7145f627b2db05c82a032003297e58de01132f1b4b4f53c0",
+    "src/engine/forensic/SEC007_LiveForensicAuditor.test.ts": "dd73052707cd943d7aa2acd3ab574a786565e7778a82f9c264fc91429c2048a5",
+    "src/engine/forensic/__tests__/SEC008_AdversarialQualificationHarness.test.ts": "e4fa209a3100dd3e57cc7b789320aabb46bdc5c29a4d6de816ecebbafb3989f0",
+    "src/test/setup.ts": "72d367ab8782e675b0ff066e13cdf68a63a0eb4d51ebc78c617809f6a14304b2"
+  },
+  "deliverableArtifacts": {
+    "SEC008_DISCOVERY_MANIFEST.json": "925e62a2166b8d48d27c0366ee4ab0d83e7077492160323c45147158fca166c1",
+    "SEC008_INVENTORY_RECONCILIATION.json": "28ef6ac539d6d05ac91086686ed996c5f1048a1b21cbdf05c341ef8d96e90f64",
+    "SEC008_AUTHORITY_CLASSIFICATION.json": "b7611d0d8af2ba1fd7c5280f59dbdd7e81b93b63c2081af9f0ffdd6ab23ba578",
+    "SEC008_SEAL_CALLPATH_GRAPH.json": "e02d31a3484414f5a1c8bc8badee015df5c3453b9752a98c09a09b0e473004d6",
+    "SEC008_ADVERSARIAL_FIXTURE_RESULTS.json": "38cc0f4f846e6f378815b9225f32634f3fa7a89d1deca667618733c35729792c",
+    "SEC008_MUTATION_RESULTS.json": "0bc866b0f79cdfa7b0e1869ef77ee966c45766965deedd514eb86b07e91b12db",
+    "SEC008_TEST_ISOLATION_REPORT.json": "07874c63ed7d1479fb869e19c20a91019a8dbb6f4af18f548d93e6977c4301c7",
+    "SEC008_RAW_EXECUTION_LOG.txt": "21b0ecb29535129d0a722e37a10a7733a7b3f6d4c4e6c92378cd6f5f62ea3456",
+    "SEC008_FINAL_QUALIFICATION_REPORT.md": "d27b99cfabcb3981f1acbc8640dfd76ac40473255e58654b5946dd4f6c85f569"
+  },
+  "lastUpdated": "2026-11-02T07:29:02.373Z"
+}

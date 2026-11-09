@@ -25,6 +25,7 @@ describe('Workbench State Ownership & Invalidation Architecture Audit', () => {
       features: [
         {
           featureId: 'EXTRUDE-1',
+          id: 'EXTRUDE-1',
           name: 'Base Pad',
           type: 'EXTRUDE',
           status: 'VALID',
@@ -169,8 +170,9 @@ describe('Workbench State Ownership & Invalidation Architecture Audit', () => {
       const result = engine.mutateCanonicalDocument(
         'DOC-AUDIT-101',
         (doc) => {
-          doc.features.push({
+          doc.features!.push({
             featureId: 'FILLET-1',
+            id: 'FILLET-1',
             name: 'Edge Fillet',
             type: 'FILLET',
             parameters: { radius: 3 },
@@ -181,7 +183,7 @@ describe('Workbench State Ownership & Invalidation Architecture Audit', () => {
       );
 
       expect(result.revision).toBe((initialRev as number) + 1);
-      expect(result.updatedDoc.features).toHaveLength(2);
+      expect(result.updatedDoc.features!).toHaveLength(2);
       expect(subscriberNotified).toBe(true);
       expect(invalidatedList).toContain('evaluated B-Rep');
       expect(invalidatedList).toContain('render mesh');
@@ -213,8 +215,9 @@ describe('Workbench State Ownership & Invalidation Architecture Audit', () => {
         session.sessionId,
         'DOC-AUDIT-101',
         (doc, staged) => {
-          doc.features.push({
+          doc.features!.push({
             featureId: 'PATTERN-1',
+            id: 'PATTERN-1',
             name: staged[0].patternName,
             type: 'PATTERN',
             parameters: staged[0],
@@ -222,7 +225,7 @@ describe('Workbench State Ownership & Invalidation Architecture Audit', () => {
         }
       );
 
-      expect(commitResult.updatedDoc.features).toHaveLength(2);
+      expect(commitResult.updatedDoc.features!).toHaveLength(2);
       expect(commitResult.revision).toBe(2);
       expect(session.isCommitted).toBe(true);
     });
@@ -244,8 +247,9 @@ describe('Workbench State Ownership & Invalidation Architecture Audit', () => {
         session.sessionId,
         'DOC-AUDIT-101',
         (doc, staged) => {
-          doc.features.push({
+          doc.features!.push({
             featureId: 'DM-TX-1',
+            id: 'DM-TX-1',
             name: 'Push/Pull Face',
             type: 'DIRECT_MODELING',
             parameters: staged[0],
@@ -253,7 +257,7 @@ describe('Workbench State Ownership & Invalidation Architecture Audit', () => {
         }
       );
 
-      expect(result.updatedDoc.features.some((f: any) => f.featureId === 'DM-TX-1')).toBe(true);
+      expect(result.updatedDoc.features!.some((f: any) => f.featureId === 'DM-TX-1')).toBe(true);
     });
   });
 
@@ -265,13 +269,13 @@ describe('Workbench State Ownership & Invalidation Architecture Audit', () => {
         command: 'EXTRUDE_BOSS',
         parameters: { height: 50 },
         timestamp: new Date().toISOString(),
-        source: 'LEGACY_TREE',
+        source: 'UI',
       });
 
       engine.bridgeLegacyFeatureTreeManager(legacyManager, sampleDoc);
 
-      expect(sampleDoc.features).toHaveLength(1);
-      expect(sampleDoc.features[0].name).toBe('EXTRUDE_BOSS');
+      expect(sampleDoc.features!).toHaveLength(1);
+      expect(sampleDoc.features![0].name).toBe('EXTRUDE_BOSS');
       expect(sampleDoc.revision).toBe(2);
     });
   });
@@ -311,7 +315,7 @@ describe('Workbench State Ownership & Invalidation Architecture Audit', () => {
 
   describe('7. Rigorous Transactional Atomicity & Adversarial Invariant Suite', () => {
     it('GATE 1: should atomically rollback document in-place when mutatorFn fails midway with no partial state and no revision bump', () => {
-      const initialFeatureCount = sampleDoc.features.length;
+      const initialFeatureCount = sampleDoc.features!.length;
       const initialRev = sampleDoc.revision;
       let subscriberNotified = false;
 
@@ -328,8 +332,9 @@ describe('Workbench State Ownership & Invalidation Architecture Audit', () => {
           'DOC-AUDIT-101',
           (doc) => {
             // Partial write 1
-            doc.features.push({
+            doc.features!.push({
               featureId: 'HALF_BAKED_FEATURE',
+              id: 'HALF_BAKED_FEATURE',
               name: 'Corrupted Feature',
               type: 'INVALID',
               parameters: {},
@@ -343,8 +348,8 @@ describe('Workbench State Ownership & Invalidation Architecture Audit', () => {
       }).toThrow(/Canonical mutation transaction failed and was rolled back atomically/);
 
       // Verify document was restored in-place
-      expect(sampleDoc.features).toHaveLength(initialFeatureCount);
-      expect(sampleDoc.features.some((f: any) => f.featureId === 'HALF_BAKED_FEATURE')).toBe(false);
+      expect(sampleDoc.features!).toHaveLength(initialFeatureCount);
+      expect(sampleDoc.features!.some((f: any) => f.featureId === 'HALF_BAKED_FEATURE')).toBe(false);
       expect(sampleDoc.revision).toBe(initialRev);
 
       // Verify subscriber was NEVER notified of aborted transaction
@@ -358,7 +363,7 @@ describe('Workbench State Ownership & Invalidation Architecture Audit', () => {
 
     it('GATE 2: should reject non-canonical direct mutation attempts on CANONICAL_SOT without any state or revision change', () => {
       const initialRev = sampleDoc.revision;
-      const initialFeatures = [...sampleDoc.features];
+      const initialFeatures = [...sampleDoc.features!];
 
       const audit = engine.auditStateMutation({
         workbenchId: 'ROGUE_BYPASS_WORKBENCH',
@@ -401,8 +406,9 @@ describe('Workbench State Ownership & Invalidation Architecture Audit', () => {
         session.sessionId,
         'DOC-AUDIT-101',
         (doc, staged) => {
-          doc.features.push({
+          doc.features!.push({
             featureId: 'PATTERN-BATCH-1',
+            id: 'PATTERN-BATCH-1',
             name: 'Linear Pattern Array',
             type: 'PATTERN',
             parameters: { instances: staged },
@@ -435,7 +441,7 @@ describe('Workbench State Ownership & Invalidation Architecture Audit', () => {
       engine.stageSessionChange(session.sessionId, { deltaX: 200, deltaY: -100, deltaZ: 50 });
 
       const initialRev = sampleDoc.revision;
-      const initialFeatureCount = sampleDoc.features.length;
+      const initialFeatureCount = sampleDoc.features!.length;
 
       // Discard session
       const discardResult = engine.discardSession(session.sessionId);
@@ -444,7 +450,7 @@ describe('Workbench State Ownership & Invalidation Architecture Audit', () => {
 
       // Zero impact on document
       expect(sampleDoc.revision).toBe(initialRev);
-      expect(sampleDoc.features).toHaveLength(initialFeatureCount);
+      expect(sampleDoc.features!).toHaveLength(initialFeatureCount);
     });
 
     it('GATE 5: should strictly prevent consumption of stale derived state by wiping derived cache on canonical mutation', () => {

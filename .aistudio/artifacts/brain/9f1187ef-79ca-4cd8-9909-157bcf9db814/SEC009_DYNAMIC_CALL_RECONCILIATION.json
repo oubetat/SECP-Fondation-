@@ -1,0 +1,75 @@
+{
+  "audit_id": "SECP-SECURITY-009-CLOSE",
+  "title": "Production Dynamic Call Resolution & Zero Unresolved Path Proof",
+  "timestamp": "2026-11-02T08:05:44.549Z",
+  "investigation": {
+    "previousIssue": "Previous log noted: Production Unresolved Dynamic Calls: 4 while Production SUSPICIOUS_UNKNOWN: 0.",
+    "investigationResult": "The 4 unresolved calls were all located in MultidomainPcbIntegrationEngine.ts (lines 449, 554, 673) and ElectrothermalSolver.ts (line 233). They were previously unresolved because they access class fields (this.sealingCapability, ElectrothermalSolver.sealingCapability). Pass 1 of the AST auditor was only checking variable statements and missed class property declarations.",
+    "remediationAction": "LiveForensicAuditor was upgraded to parse ts.isPropertyDeclaration on class declarations and resolve member property accesses on capability holders.",
+    "currentStatus": "All 4 production calls are now verified as AUTHENTICATED. Unresolved dynamic calls in production = 0. Suspicious unknown production modules = 0."
+  },
+  "resolvedProductionCallpaths": [
+    {
+      "file": "src/engine/crossdomain/MultidomainPcbIntegrationEngine.ts",
+      "line": 449,
+      "column": 5,
+      "astNodeType": "CallExpression -> PropertyAccessExpression",
+      "calleeExpression": "CanonicalDomainBindingEngine.sealBinding",
+      "capabilityArgumentExpression": "this.sealingCapability",
+      "declarationSite": "MultidomainPcbIntegrationEngine.ts:324 (private static readonly sealingCapability = issueSealingCapability(...))",
+      "capabilityType": "VALID_ACQUIRED_CAPABILITY",
+      "authorizedDomains": [
+        "ELECTRICAL",
+        "MULTIDOMAIN_PCB"
+      ],
+      "resolutionStatus": "AUTHENTICATED"
+    },
+    {
+      "file": "src/engine/crossdomain/MultidomainPcbIntegrationEngine.ts",
+      "line": 554,
+      "column": 5,
+      "astNodeType": "CallExpression -> PropertyAccessExpression",
+      "calleeExpression": "CanonicalDomainBindingEngine.sealBinding",
+      "capabilityArgumentExpression": "this.sealingCapability",
+      "declarationSite": "MultidomainPcbIntegrationEngine.ts:324",
+      "capabilityType": "VALID_ACQUIRED_CAPABILITY",
+      "authorizedDomains": [
+        "ELECTRICAL",
+        "MULTIDOMAIN_PCB"
+      ],
+      "resolutionStatus": "AUTHENTICATED"
+    },
+    {
+      "file": "src/engine/crossdomain/MultidomainPcbIntegrationEngine.ts",
+      "line": 673,
+      "column": 5,
+      "astNodeType": "CallExpression -> PropertyAccessExpression",
+      "calleeExpression": "CanonicalDomainBindingEngine.sealBinding",
+      "capabilityArgumentExpression": "MultidomainPcbIntegrationEngine.sealingCapability",
+      "declarationSite": "MultidomainPcbIntegrationEngine.ts:324",
+      "capabilityType": "VALID_ACQUIRED_CAPABILITY",
+      "authorizedDomains": [
+        "ELECTRICAL",
+        "MULTIDOMAIN_PCB"
+      ],
+      "resolutionStatus": "AUTHENTICATED"
+    },
+    {
+      "file": "src/engine/engineeringCore/ElectrothermalSolver.ts",
+      "line": 233,
+      "column": 7,
+      "astNodeType": "CallExpression -> PropertyAccessExpression",
+      "calleeExpression": "CanonicalDomainBindingEngine.sealBinding",
+      "capabilityArgumentExpression": "ElectrothermalSolver.sealingCapability",
+      "declarationSite": "ElectrothermalSolver.ts:98 (private static readonly sealingCapability = issueSealingCapability(...))",
+      "capabilityType": "VALID_ACQUIRED_CAPABILITY",
+      "authorizedDomains": [
+        "ELECTRICAL",
+        "THERMODYNAMICS"
+      ],
+      "resolutionStatus": "AUTHENTICATED"
+    }
+  ],
+  "unresolvedDynamicCallsRemaining": 0,
+  "suspiciousUnknownModulesRemaining": 0
+}

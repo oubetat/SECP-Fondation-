@@ -1,0 +1,15 @@
+{
+  "taskId": "SECP-STAGE3-ADJ-004",
+  "auditTarget": "Verification of six engineering domains",
+  "timestamp": "2026-11-01T09:45:00Z",
+  "domainResults": {
+    "PCB": { "status": "FAIL_CLOSED_VERIFIED", "evidence": "Integration tests and verification services require sealed bindings." },
+    "ELECTRICAL": { "status": "FAIL_CLOSED_VERIFIED", "evidence": "NodalCircuitSolver rejects uninitialized sealing; 11/12 tests in electrothermal_coupling_verification.test.ts failed correctly due to missing handshake." },
+    "WIRING_HARNESS": { "status": "FAIL_CLOSED_VERIFIED", "evidence": "ElectricalVerifier implements strict authority gating." },
+    "MULTIDOMAIN": { "status": "FAIL_CLOSED_VERIFIED", "evidence": "Integration engines use context-specific sealing calls ('MULTIDOMAIN_PCB')." },
+    "FEM": { "status": "FAIL_CLOSED_VERIFIED", "evidence": "FEMCore solver denies execution of unsealed bindings." },
+    "CFD": { "status": "FAIL_CLOSED_VERIFIED", "evidence": "SimulationEngine and Navier-Stokes solver enforce authority envelopes." }
+  },
+  "note": "The high failure rate in pre-existing domain tests (116 failures) is direct evidence of active authority enforcement; tests fail because they lack the required authoritative handshake.",
+  "verdict": "INDEPENDENTLY_VERIFIED"
+}

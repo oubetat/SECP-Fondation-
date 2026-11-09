@@ -1,0 +1,53 @@
+{
+  "contractVersion": "2.0.0",
+  "domain": "CFD_CAD_TRUTH_BINDING",
+  "identityFields": {
+    "cadRevisionHash": {
+      "type": "string",
+      "required": true,
+      "description": "64-char SHA256 or revision ID representing CAD revision origin"
+    },
+    "canonicalGeometryHash": {
+      "type": "string",
+      "required": true,
+      "description": "Deterministic SHA256 hash of BRep topology and geometry"
+    },
+    "bRepHash": {
+      "type": "string",
+      "required": true,
+      "description": "Cryptographic hash of BRep solid tessellation"
+    },
+    "meshHash": {
+      "type": "string",
+      "required": true,
+      "description": "Deterministic canonical hash of CFD mesh topology & volumes"
+    },
+    "executionId": {
+      "type": "string",
+      "required": true,
+      "description": "Deterministic binding ID computed by CanonicalDomainBindingEngine"
+    }
+  },
+  "gatingInvariants": [
+    {
+      "code": "G2_HMAC_SEAL_REQUIRED",
+      "assertion": "binding.executionAuthority.isAuthoritative === true and verifyHMACSealToken(...) === true",
+      "failureCode": "AUTHORITY_GATE_REJECTION"
+    },
+    {
+      "code": "G2_MESH_PROVENANCE_REQUIRED",
+      "assertion": "mesh.provenance !== undefined and mesh.provenance.sourceGeometryHash === binding.geometryHash",
+      "failureCode": "CAD_CFD_PROVENANCE_VIOLATION"
+    },
+    {
+      "code": "G2_REVISION_MATCH_REQUIRED",
+      "assertion": "mesh.provenance.sourceRevisionHash === binding.revisionId",
+      "failureCode": "CAD_CFD_PROVENANCE_VIOLATION"
+    },
+    {
+      "code": "G2_STATUS_CURRENT_REQUIRED",
+      "assertion": "binding.status === 'CURRENT'",
+      "failureCode": "AUTHORITY_GATE_REJECTION"
+    }
+  ]
+}

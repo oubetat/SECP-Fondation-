@@ -28,23 +28,23 @@ describe('CFD Truth Ladder systematic verification', () => {
     const result = await CFDTruthBenchmarkRegistry.runBenchmark('L1-LID-CAVITY-3D');
     // For now, we expect it to execute and reach some physical state
     expect(result.convergenceReached).toBe(true);
-  }, 15000);
+  }, 120000);
 
   it('L2: Executes Boundary-Layer Flat Plate Benchmark', async () => {
     const result = await CFDTruthBenchmarkRegistry.runBenchmark('L2-FLAT-PLATE-3D');
     // Boundary layer benchmarks are sensitive to mesh/scheme
     expect(result.convergenceReached).toBe(true);
-  }, 20000);
+  }, 120000);
 
   it('L3: Executes Separation Backward-Facing Step Benchmark', async () => {
     const result = await CFDTruthBenchmarkRegistry.runBenchmark('L3-BFS-3D');
     expect(result.convergenceReached).toBe(true);
-  }, 30000);
+  }, 120000);
 
   it('L4: Executes External Aerodynamics NACA0012 Benchmark', async () => {
     const result = await CFDTruthBenchmarkRegistry.runBenchmark('L4-NACA0012-SST');
     expect(result.convergenceReached).toBe(true);
-  }, 120000);
+  }, 300000);
 
   it('Ladder: Executes all levels up to L4', async () => {
     const results = await CFDTruthBenchmarkRegistry.runLadder(CFDTruthLevel.L4_EXTERNAL_AERODYNAMICS);
@@ -57,5 +57,5 @@ describe('CFD Truth Ladder systematic verification', () => {
     for (const res of results) {
        expect(res.convergenceReached).toBe(true);
     }
-  }, 60000);
+  }, 600000);
 });

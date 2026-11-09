@@ -1,0 +1,6 @@
+{
+  "contractId": "SECP-PATCH003-VERIFIER-001",
+  "logic": "IndependentPersistentEvidenceVerifier.ts",
+  "isolation": "Process-Level (CLI)",
+  "trustBoundary": "HMAC-SHA256"
+}

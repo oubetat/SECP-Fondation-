@@ -1318,7 +1318,7 @@ export const RevisionManagementPanel: React.FC = () => {
 
                   {/* Integrity Checker Diagnostic Output Card */}
                   <div className={`border rounded-xl p-6 ${
-                    integrityReport?.health === 'VALID' ? 'bg-slate-900/40 border-slate-800' :
+                    integrityReport?.health === 'HEALTHY' ? 'bg-slate-900/40 border-slate-800' :
                     integrityReport?.health === 'WARNING' ? 'bg-amber-950/10 border-amber-500/20' :
                     'bg-rose-950/10 border-rose-500/25'
                   }`}>
@@ -1331,11 +1331,11 @@ export const RevisionManagementPanel: React.FC = () => {
                       <div className="space-y-4">
                         <div className="flex items-center justify-between">
                           <div className="flex items-center gap-2">
-                            {integrityReport.health === 'VALID' && <CheckCircle2 className="h-5 w-5 text-emerald-400" />}
+                            {integrityReport.health === 'HEALTHY' && <CheckCircle2 className="h-5 w-5 text-emerald-400" />}
                             {integrityReport.health === 'WARNING' && <AlertTriangle className="h-5 w-5 text-amber-500" />}
                             {(integrityReport.health === 'BROKEN' || integrityReport.health === 'CORRUPTED') && <AlertCircle className="h-5 w-5 text-rose-500" />}
                             <span className="text-xs font-mono">Calculated Health Status: <strong className={`font-bold ${
-                              integrityReport.health === 'VALID' ? 'text-emerald-400' :
+                              integrityReport.health === 'HEALTHY' ? 'text-emerald-400' :
                               integrityReport.health === 'WARNING' ? 'text-amber-400' : 'text-rose-400'
                             }`}>{integrityReport.health}</strong></span>
                           </div>

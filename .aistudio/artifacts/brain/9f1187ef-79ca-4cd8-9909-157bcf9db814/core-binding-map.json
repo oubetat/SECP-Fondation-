@@ -1,0 +1,78 @@
+{
+  "mapId": "SECP-PHASE5-CORE-BINDING-001",
+  "platform": "SolidEdge Cloud Platform (SECP) — Engineering Truth OS",
+  "timestamp": "2026-10-21T08:00:00.000Z",
+  "authoritativeCore": "src/engine/engineeringCore",
+  "bindings": [
+    {
+      "domain": "ECAD",
+      "domainEntity": "PcbCanonicalModel",
+      "canonicalSourcePath": "src/engine/pcb/PcbCanonicalModel.ts",
+      "coreBindingTarget": "EngineeringCore.mechanics / EngineeringCore.electrical",
+      "bindingType": "HIERARCHICAL_CONTAINMENT",
+      "authorityRole": "Canonical geometry, stackup, nets, footprints, and copper traces"
+    },
+    {
+      "domain": "ELECTRICAL_ENGINEERING",
+      "domainEntity": "NodalCircuitSolver / ElectricalCoreEngine",
+      "canonicalSourcePath": "src/engine/engineeringCore/NodalCircuitSolver.ts",
+      "coreBindingTarget": "EngineeringCore.electrical",
+      "bindingType": "MATHEMATICAL_SOLVER_EXECUTION",
+      "authorityRole": "Modified Nodal Analysis (MNA), KCL, KVL, branch currents, and power balance"
+    },
+    {
+      "domain": "WIRING_HARNESS",
+      "domainEntity": "WiringHarnessCanonicalModel",
+      "canonicalSourcePath": "src/engine/wiring-harness/WiringHarnessCanonicalModel.ts",
+      "coreBindingTarget": "EngineeringCore.ProjectAssembly / PcbCanonicalModel",
+      "bindingType": "INTERFACE_MAPPING_AND_TOPOLOGY",
+      "authorityRole": "Mating connectors, wire gauge, bundle topology, and pin-to-net mapping"
+    },
+    {
+      "domain": "MCAD_MECHANICAL",
+      "domainEntity": "PcbGeometryKernel / Assembly",
+      "canonicalSourcePath": "src/engine/pcb/PcbGeometryKernel.ts",
+      "coreBindingTarget": "CADKernel.BrepModel / EngineeringCore.mechanics",
+      "bindingType": "GEOMETRIC_COAXIAL_AND_CLEARANCE",
+      "authorityRole": "3D enclosure collision detection, mounting standoffs, and lid clearance keepouts"
+    },
+    {
+      "domain": "MULTIDOMAIN_INTEGRATION",
+      "domainEntity": "MultidomainPcbIntegrationEngine",
+      "canonicalSourcePath": "src/engine/crossdomain/MultidomainPcbIntegrationEngine.ts",
+      "coreBindingTarget": "SECP Multidomain Coordination Authority",
+      "bindingType": "SYSTEM_INTEGRATION_ARBITRATOR",
+      "authorityRole": "Synchronous multi-physics resolution, unified BOM reconciliation, and cross-domain gates"
+    },
+    {
+      "domain": "EVIDENCE_INTEGRITY",
+      "domainEntity": "EngineeringEvidenceLedger / DeterministicHash",
+      "canonicalSourcePath": "src/engine/evidence/ledger/EngineeringEvidenceLedger.ts",
+      "coreBindingTarget": "SECP Cryptographic Ledger Subsystem",
+      "bindingType": "CRYPTOGRAPHIC_MERKLE_BINDING",
+      "authorityRole": "Deterministic SHA-256 fingerprinting, Merkle root verification, and audit trail"
+    },
+    {
+      "domain": "CONFIGURATION_REVISION",
+      "domainEntity": "RevisionEngine / ChangeImpactAnalyzer",
+      "canonicalSourcePath": "src/engine/revision/RevisionEngine.ts",
+      "coreBindingTarget": "SECP Governance Subsystem",
+      "bindingType": "GOVERNED_REVISION_LINEAGE",
+      "authorityRole": "Revision freezing, baseline integrity, change impact analysis, and evidence invalidation"
+    },
+    {
+      "domain": "QUALIFICATION_TRUTH",
+      "domainEntity": "EngineeringTruthCertificateEngine",
+      "canonicalSourcePath": "src/engine/certification/truth/EngineeringTruthCertificateEngine.ts",
+      "coreBindingTarget": "SECP Certification Authority",
+      "bindingType": "TRUTH_VERDICT_ISSUER",
+      "authorityRole": "Issuance of immutable Engineering Truth Certificates bound to design and evidence"
+    }
+  ],
+  "antiShadowPolicy": {
+    "prohibitParallelModels": true,
+    "prohibitDuplicateSolvers": true,
+    "prohibitMockBypass": true,
+    "verificationStatus": "ENFORCED"
+  }
+}

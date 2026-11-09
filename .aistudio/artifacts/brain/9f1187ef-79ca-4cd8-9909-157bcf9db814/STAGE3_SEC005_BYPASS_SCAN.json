@@ -1,0 +1,38 @@
+{
+  "audit_id": "SECP-STAGE3-SECURITY-REMEDIATION-005",
+  "phase": "Phase D - Bypass Forensic Scan",
+  "timestamp": "2026-11-01T11:25:00Z",
+  "check1_sealBinding_without_capability": {
+    "hits": 0,
+    "files": []
+  },
+  "check2_executionSealToken_direct": {
+    "hits": 0,
+    "files": []
+  },
+  "check3_isAuthoritative_direct": {
+    "hits": 0,
+    "files": []
+  },
+  "check4_SimulationAuthorityInternal_direct": {
+    "hits": 0,
+    "files": []
+  },
+  "check5_requestSealingCapability_allowlist": {
+    "hits": 3,
+    "files": [
+      "src/engine/engineeringCore/SimulationSealingAuthorization.ts",
+      "src/engine/engineeringCore/CanonicalDomainBindingEngine.ts",
+      "src/engine/engineeringCore/SimulationAuthorityInternal.ts"
+    ]
+  },
+  "check6_initializeAuthorityHandshake_locations": {
+    "hits": 4,
+    "files": [
+      "src/test/setup.ts",
+      "src/engine/governance/__tests__/CoreExecutionAuthorityAdversarial.test.ts",
+      "src/engine/engineeringCore/__tests__/SealingAuthorizationBoundary.test.ts",
+      "src/engine/engineeringCore/__tests__/AuthoritySealTrustBoundary.test.ts"
+    ]
+  }
+}

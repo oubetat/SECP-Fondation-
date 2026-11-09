@@ -61,8 +61,8 @@ describe('P5-001 — CAD → Assembly Revision & Associativity Proof', () => {
     expect(evalResultA.evaluatedShape).toBeDefined();
 
     const solidA = evalResultA.evaluatedShape as Solid;
-    const geometryHashA = evalResultA.derivedArtifacts.bRepHash;
-    const evidenceA = docCAD.evidence[docCAD.evidence.length - 1];
+    const geometryHashA = evalResultA.derivedArtifacts!.bRepHash;
+    const evidenceA = docCAD.evidence![docCAD.evidence!.length - 1];
     const topologyHashA = evidenceA.topologyHash;
 
     expect(geometryHashA).toBeDefined();
@@ -127,16 +127,16 @@ describe('P5-001 — CAD → Assembly Revision & Associativity Proof', () => {
 
     // 2. Perform CAD Parameter Mutation: depth 25 -> 35
     docCAD.revision = 2;
-    docCAD.features[0].parameters.depth = 35;
-    docCAD.parameters[0].value = 35;
-    docCAD.parameters[0].expression = '35';
+    docCAD.features![0].parameters!.depth = 35;
+    docCAD.parameters![0].value = 35;
+    docCAD.parameters![0].expression = '35';
 
     const evalResultB: DocumentEvaluationResult = DocumentEvaluator.evaluate(docCAD);
     expect(evalResultB.success).toBe(true);
 
     const solidB = evalResultB.evaluatedShape as Solid;
-    const geometryHashB = evalResultB.derivedArtifacts.bRepHash;
-    const evidenceB = docCAD.evidence[docCAD.evidence.length - 1];
+    const geometryHashB = evalResultB.derivedArtifacts!.bRepHash;
+    const evidenceB = docCAD.evidence![docCAD.evidence!.length - 1];
     const topologyHashB = evidenceB.topologyHash;
 
     expect(geometryHashB).toBeDefined();
@@ -217,7 +217,7 @@ describe('P5-001 — CAD → Assembly Revision & Associativity Proof', () => {
     const solidB = evalResultB.evaluatedShape;
 
     // Rebind face reference against empty solid / deleted solid
-    const rebindResult = TopologyLineageProofEngine.rebindReference(faceRef, solidB, 2);
+    const rebindResult = TopologyLineageProofEngine.rebindReference(faceRef, solidB!, 2);
     expect(rebindResult.success).toBe(false);
     expect(rebindResult.state).toBe('DELETED');
 
@@ -306,8 +306,8 @@ describe('P5-001 — CAD → Assembly Revision & Associativity Proof', () => {
     const eval1 = DocumentEvaluator.evaluate(docCAD);
     expect(eval1.success).toBe(true);
 
-    const hash1 = eval1.derivedArtifacts.bRepHash;
-    const evidence1 = docCAD.evidence[0];
+    const hash1 = eval1.derivedArtifacts!.bRepHash;
+    const evidence1 = docCAD.evidence![0];
     expect(evidence1.revision).toBe(1);
 
     const artREV1 = EngineeringPLMEngine.getArtifact('ART-P5-CAD-03', 'REV-A');
@@ -316,20 +316,20 @@ describe('P5-001 — CAD → Assembly Revision & Associativity Proof', () => {
 
     // Mutate to REV 2
     docCAD.revision = 2;
-    docCAD.features[0].parameters.depth = 40;
+    docCAD.features![0].parameters!.depth = 40;
 
     const eval2 = DocumentEvaluator.evaluate(docCAD);
     expect(eval2.success).toBe(true);
 
-    const hash2 = eval2.derivedArtifacts.bRepHash;
-    const evidence2 = docCAD.evidence[1];
+    const hash2 = eval2.derivedArtifacts!.bRepHash;
+    const evidence2 = docCAD.evidence![1];
 
     // Verify revision isolation properties
     expect(hash1).not.toEqual(hash2);
-    expect(docCAD.evidence.length).toBe(2);
-    expect(docCAD.evidence[0].revision).toBe(1);
-    expect(docCAD.evidence[0].geometryHash).toEqual(evidence1.geometryHash);
-    expect(docCAD.evidence[1].revision).toBe(2);
+    expect(docCAD.evidence!.length).toBe(2);
+    expect(docCAD.evidence![0].revision).toBe(1);
+    expect(docCAD.evidence![0].geometryHash).toEqual(evidence1.geometryHash);
+    expect(docCAD.evidence![1].revision).toBe(2);
 
     const artREV1_after = EngineeringPLMEngine.getArtifact('ART-P5-CAD-03', 'REV-A');
     const artREV2 = EngineeringPLMEngine.getArtifact('ART-P5-CAD-03', 'REV-B');
@@ -418,7 +418,7 @@ describe('P5-001 — CAD → Assembly Revision & Associativity Proof', () => {
 
     // Mutate child doc to REV 2
     docChild.revision = 2;
-    docChild.features[0].parameters.depth = 15;
+    docChild.features![0].parameters!.depth = 15;
     DocumentEvaluator.evaluate(docChild);
 
     // Verify invalidation cascade
@@ -479,7 +479,7 @@ describe('P5-001 — CAD → Assembly Revision & Associativity Proof', () => {
 
     // Rebind against mutated solid
     docCAD.revision = 2;
-    docCAD.features[0].parameters.depth = 60;
+    docCAD.features![0].parameters!.depth = 60;
     const eval2 = DocumentEvaluator.evaluate(docCAD);
     const solid2 = eval2.evaluatedShape as Solid;
 

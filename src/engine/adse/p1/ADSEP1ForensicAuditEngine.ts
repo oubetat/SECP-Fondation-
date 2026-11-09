@@ -80,6 +80,7 @@ export class ADSEP1ForensicAuditEngine {
       
       CoreExecutionAuthority.initialize(p1.revisionEngine);
       const envelope = await CoreExecutionAuthority.execute({
+        requestId: 'REQ-AUDIT-01',
         pluginId: 'secp-plugin-aerospace',
         pluginVersion: '1.4.0',
         engineeringObjectId: 'AUDIT-REQ-01',

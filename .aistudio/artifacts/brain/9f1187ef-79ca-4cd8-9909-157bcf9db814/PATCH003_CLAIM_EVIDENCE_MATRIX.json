@@ -1,0 +1,19 @@
+{
+  "claims": [
+    {
+      "claim": "Positive Cold Start Recovery",
+      "evidence": "PATCH003_PERSISTENCE_RECOVERY_RESULTS.json",
+      "logLine": "POSITIVE RECOVERY VERIFIED"
+    },
+    {
+      "claim": "Zero-Trust Isolation",
+      "evidence": "standaloneVerifierProcess.ts",
+      "logLine": "Spawning standalone verifier process"
+    },
+    {
+      "claim": "Numerical Status Guard",
+      "evidence": "PATCH003_NUMERICAL_STATUS_SEPARATION.json",
+      "logLine": "NUMERICAL_QUALIFICATION_PENDING"
+    }
+  ]
+}

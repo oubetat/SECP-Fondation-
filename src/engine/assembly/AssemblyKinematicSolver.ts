@@ -272,11 +272,15 @@ export class AssemblyKinematicSolver {
     let iterations = 0;
 
     for (const c of constraints) {
-      const transA = componentTransforms[c.componentA];
-      const transB = componentTransforms[c.componentB];
+      const compAKey = c.componentA || '';
+      const compBKey = c.componentB || '';
+      const cId = c.constraintId || c.id || '';
+
+      const transA = compAKey ? componentTransforms[compAKey] : undefined;
+      const transB = compBKey ? componentTransforms[compBKey] : undefined;
 
       if (!transA || !transB) {
-        violatedConstraints.push(c.constraintId);
+        if (cId) violatedConstraints.push(cId);
         continue;
       }
 
@@ -311,8 +315,8 @@ export class AssemblyKinematicSolver {
 
       if (cResidual > posTol) {
         residualError += cResidual;
-        if (cResidual > 1.0) {
-          violatedConstraints.push(c.constraintId);
+        if (cResidual > 1.0 && cId) {
+          violatedConstraints.push(cId);
         }
       }
     }
@@ -321,31 +325,32 @@ export class AssemblyKinematicSolver {
     const collisions: ClashClassification[] = [];
     if (config.checkInterferences && partsMap.size > 0) {
       // Update temporary component world transforms
-      const tempComps = components.map(comp => {
+      const tempComps: AssemblyComponent[] = components.map(comp => {
         const mat = componentTransforms[comp.instanceId];
         if (mat) {
           const pos = AssemblyTransformEngine.getPosition(mat);
           const rot = AssemblyTransformEngine.getEulerAnglesDeg(mat);
-          return {
+          return new AssemblyComponent({
             ...comp,
-            worldTransform: {
+            worldTransform: new Transform3D({
               position: pos,
               rotation: rot,
               matrix: mat
-            }
-          };
+            })
+          });
         }
-        return comp;
+        return comp instanceof AssemblyComponent ? comp : new AssemblyComponent(comp);
       });
 
       try {
         const clashReport = await AssemblyInterferenceEngine.analyzeInterference(tempComps, partsMap);
         for (const cl of clashReport.clashes) {
+          const vol = cl.intersectionVolumeMm3 ?? 0;
           collisions.push({
-            componentA: cl.componentAId,
-            componentB: cl.componentBId,
-            volumeMm3: cl.intersectionVolumeMm3,
-            type: cl.intersectionVolumeMm3 > 0.01 ? 'INTERFERENCE' : 'CONTACT',
+            componentA: cl.componentAId || '',
+            componentB: cl.componentBId || '',
+            volumeMm3: vol,
+            type: vol > 0.01 ? 'INTERFERENCE' : 'CONTACT',
             centroid: cl.intersectionLocation
           });
         }

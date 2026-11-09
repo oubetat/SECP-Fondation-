@@ -39,7 +39,7 @@ export class TurbulenceAdversarialSuite {
       const invalidFluid = { densityKgM3: 1.225, viscosityPaS: -1.81e-5 };
       const bc: BoundaryConditionSpec3D = { inletVelocityMS: { x: 10, y: 0, z: 0 }, outletPressurePa: 0 };
       const binding1 = DomainBindingTestUtility.createSealedCfdBinding(mesh, invalidFluid);
-      Fvm3DNavierStokesSolver.solve(binding1, baseConfig);
+      Fvm3DNavierStokesSolver.solve(binding1, bc, baseConfig);
 
       results.push({
         testId: 'ADV-TURB-01',
@@ -76,7 +76,7 @@ export class TurbulenceAdversarialSuite {
 
       const bc: BoundaryConditionSpec3D = { inletVelocityMS: { x: 10, y: 0, z: 0 }, outletPressurePa: 0 };
       const binding2 = DomainBindingTestUtility.createSealedCfdBinding(badMesh, fluid);
-      const sol = Fvm3DNavierStokesSolver.solve(binding2, baseConfig);
+      const sol = Fvm3DNavierStokesSolver.solve(binding2, bc, baseConfig);
 
       const isInvalid = !sol.mesh.quality.hasPositiveVolumes || sol.numericalStatus === 'INVALID';
       results.push({
@@ -106,7 +106,7 @@ export class TurbulenceAdversarialSuite {
     // Attack 3: Unphysical Initial Turbulence Values (k < 0)
     const bcNormal: BoundaryConditionSpec3D = { inletVelocityMS: { x: 10, y: 0, z: 0 }, outletPressurePa: 0 };
     const bindingNormal = DomainBindingTestUtility.createSealedCfdBinding(mesh, fluid);
-    const solNormal = Fvm3DNavierStokesSolver.solve(bindingNormal, baseConfig);
+    const solNormal = Fvm3DNavierStokesSolver.solve(bindingNormal, bcNormal, baseConfig);
 
     const forgedSol3 = JSON.parse(JSON.stringify(solNormal));
     if (forgedSol3.turbulence) {
@@ -135,7 +135,7 @@ export class TurbulenceAdversarialSuite {
     };
 
     const bindingNonConv = DomainBindingTestUtility.createSealedCfdBinding(mesh, fluid);
-    const solNonConv = Fvm3DNavierStokesSolver.solve(bindingNonConv, nonConvConfig);
+    const solNonConv = Fvm3DNavierStokesSolver.solve(bindingNonConv, bcNormal, nonConvConfig);
     const isNotConverged = !solNonConv.converged && solNonConv.finalContinuityResidual > 1e-4;
 
     results.push({

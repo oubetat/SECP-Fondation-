@@ -1,0 +1,91 @@
+{
+  "canonicalRevision": {
+    "revisionHash": "REV-SUBPROC-01",
+    "entityName": "Pipe_Subprocess_01",
+    "timestamp": "2026-11-02T12:02:40.638Z",
+    "author": "Lead Forensic Engineer"
+  },
+  "bRepGeometry": {
+    "geometryHash": "507fdc4a89b2c46bdfe1476600aff12e984cd9858e46a9629c1b17fba98711ad",
+    "topologyType": "CYLINDER",
+    "surfaceArea": 0.0125,
+    "volume": 0.000188,
+    "faceCount": 3,
+    "edgeCount": 2,
+    "topologyFaceIds": [
+      "FACE_SIDE_1",
+      "FACE_CAP_TOP",
+      "FACE_CAP_BOT"
+    ],
+    "topologyEdgeIds": [
+      "EDGE_CIRC_1",
+      "EDGE_CIRC_2"
+    ]
+  },
+  "meshProvenance": {
+    "meshHash": "7c03036ca99670ed1171d9a21f8e5c0ae450e8825303bb9deacbbeb43b371e56",
+    "sourceGeometryHash": "507fdc4a89b2c46bdfe1476600aff12e984cd9858e46a9629c1b17fba98711ad",
+    "sourceRevisionHash": "REV-SUBPROC-01",
+    "elementCount": 16,
+    "nodeCount": 68,
+    "timestamp": "2026-11-02T12:02:40.638Z",
+    "provenanceDigest": "188dc869c7911822dc1407a968b6c224c080ac019156bb30558b23c697270aca"
+  },
+  "executionAuthority": {
+    "isAuthoritative": true,
+    "executionSealToken": "fe5cd7ee929d718f17f7bd27df7e0766c4cc15c965ce6cd90f80f5d44e1862b3",
+    "timestamp": "2026-11-02T12:02:40.599Z",
+    "originatingCoreRevision": "REV-SUBPROC-01",
+    "domain": "CFD",
+    "canonicalEntityId": "Pipe_Subprocess_01",
+    "executionContext": "CAD_CFD_TRUTH_BATTERY",
+    "keyVersion": "v1_test_key_3b"
+  },
+  "executionRecord": {
+    "executionId": "EXEC-507fdc4a",
+    "domain": "CFD",
+    "bindingId": "2461e347e0652bc2d4218670789ecb22ba363801702d68c8332d0807c883af95",
+    "cadRevisionHash": "REV-SUBPROC-01",
+    "canonicalGeometryHash": "507fdc4a89b2c46bdfe1476600aff12e984cd9858e46a9629c1b17fba98711ad",
+    "inputHash": "0135b8eaba40d00a30413fec95c32adaa60bebd1b38c74ec6f23bd65922f0b40",
+    "resultHash": "MUTATED_SUBPROCESS_HASH",
+    "timestamp": "2026-11-02T12:02:40.638Z",
+    "solverConfiguration": {
+      "maxIterations": 5,
+      "continuityTol": 0.0001,
+      "momentumTol": 0.0001
+    }
+  },
+  "cfdResult": {
+    "executionId": "EXEC-507fdc4a",
+    "status": "STABLE",
+    "converged": false,
+    "terminationReason": "MAX_ITERATIONS_REACHED",
+    "iterations": 5,
+    "forceStabilityPassed": false,
+    "provenanceIntegrity": {
+      "valid": true,
+      "cadRevisionHash": "REV-SUBPROC-01",
+      "canonicalGeometryHash": "507fdc4a89b2c46bdfe1476600aff12e984cd9858e46a9629c1b17fba98711ad",
+      "bRepHash": "507fdc4a89b2c46bdfe1476600aff12e984cd9858e46a9629c1b17fba98711ad",
+      "meshHash": "7c03036ca99670ed1171d9a21f8e5c0ae450e8825303bb9deacbbeb43b371e56",
+      "executionId": "2461e347e0652bc2d4218670789ecb22ba363801702d68c8332d0807c883af95",
+      "failureReasons": []
+    },
+    "numericalQualification": {
+      "converged": false,
+      "terminationReason": "MAX_ITERATIONS_REACHED",
+      "forceStabilityPassed": false,
+      "iterations": 5,
+      "finalContinuityResidual": 7.361204622497243e-8,
+      "finalMomentumResidual": 0.00025467437341652294
+    }
+  },
+  "derivedEvidence": {
+    "artifactDigest": "c4f05d608ce15fbce1904404b1971d0d203a41d9ed44c914c26752e4a65c6463",
+    "artifactKind": "CFD_RESULT_003B",
+    "cadRevisionHash": "REV-SUBPROC-01",
+    "canonicalGeometryHash": "507fdc4a89b2c46bdfe1476600aff12e984cd9858e46a9629c1b17fba98711ad"
+  },
+  "contentDigest": "a445d95451f6d43063c628dcc791b9b67b4b67c5d82c5a43fd1252ba8cea68e6"
+}

@@ -60,7 +60,8 @@ export class AssemblyConstraintSolver {
         remainingDofCount: state.remainingDOF,
         activeConstraintIds: constraints
           .filter(c => c.componentA === comp.instanceId || c.componentB === comp.instanceId)
-          .map(c => c.constraintId),
+          .map(c => c.constraintId || c.id)
+          .filter((id): id is string => Boolean(id)),
         statusMessage: state.status === 'FULLY_CONSTRAINED'
           ? 'Fully Constrained (0 DOF)'
           : `Partially Constrained (${state.remainingDOF} DOF remaining: ${state.freeAxes.join(', ')})`
@@ -178,15 +179,16 @@ export class AssemblyConstraintSolver {
 
     // 4. Reset/Initialize worldTransforms from placementTransforms before solving
     for (const comp of activeComponents) {
+      const pt = comp.placementTransform || comp.transform || {};
+      const pos = pt.position || (pt.translation ? { x: pt.translation[0], y: pt.translation[1], z: pt.translation[2] } : { x: 0, y: 0, z: 0 });
+      const rot = (pt.rotation && !Array.isArray(pt.rotation)) ? pt.rotation : (Array.isArray(pt.rotation) ? { x: pt.rotation[0], y: pt.rotation[1], z: pt.rotation[2] } : { x: 0, y: 0, z: 0 });
+      const scl = (pt.scale && !Array.isArray(pt.scale)) ? pt.scale : (Array.isArray(pt.scale) ? { x: pt.scale[0], y: pt.scale[1], z: pt.scale[2] } : { x: 1, y: 1, z: 1 });
+
       comp.worldTransform = {
-        position: { ...comp.placementTransform.position },
-        rotation: { ...comp.placementTransform.rotation },
-        scale: comp.placementTransform.scale ? { ...comp.placementTransform.scale } : { x: 1, y: 1, z: 1 },
-        matrix: computeTransformMatrix(
-          comp.placementTransform.position,
-          comp.placementTransform.rotation,
-          comp.placementTransform.scale
-        )
+        position: { x: pos.x ?? 0, y: pos.y ?? 0, z: pos.z ?? 0 },
+        rotation: { x: rot.x ?? 0, y: rot.y ?? 0, z: rot.z ?? 0 },
+        scale: { x: scl.x ?? 1, y: scl.y ?? 1, z: scl.z ?? 1 },
+        matrix: computeTransformMatrix(pos, rot, scl)
       };
     }
 

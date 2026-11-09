@@ -64,8 +64,8 @@ describe('PATCH-034-Persistence — SOT-001 Step 3B Persistence & Special-Path C
     const docB = loadedData!.canonicalDocument!;
     expect(docB.documentId).toBe(evalResultA.document.documentId);
     expect(docB.revision).toBe(evalResultA.document.revision);
-    expect(docB.sketches.length).toBe(evalResultA.document.sketches.length);
-    expect(docB.features.length).toBe(evalResultA.document.features.length);
+    expect(docB.sketches?.length).toBe(evalResultA.document.sketches?.length);
+    expect(docB.features?.length).toBe(evalResultA.document.features?.length);
     expect(docB.units).toEqual(evalResultA.document.units);
 
     // Re-evaluate Loaded Document
@@ -574,7 +574,7 @@ describe('PATCH-034-Persistence — SOT-001 Step 3B Persistence & Special-Path C
       updatedAt: new Date().toISOString(),
       parameters: {},
       constraints: [],
-      featureTree: [],
+      featureTree: {},
       activeSolid: appActiveSolid || undefined,
       canonicalDocument: appCanonicalDocument || undefined, // strictly excluded from serializing when null
       assemblyComponents: [],

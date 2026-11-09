@@ -1,0 +1,222 @@
+{
+  "audit_id": "SECP-SECURITY-009-CLOSE",
+  "title": "15 Physical Adversarial Fixtures Accounting & Reconciliation",
+  "timestamp": "2026-11-02T08:05:44.514Z",
+  "accountingSummary": {
+    "totalPhysicalFixturesOnDisk": 15,
+    "directViolationsDetected": 5,
+    "failClosedUnresolvedOrSuspicious": 10,
+    "authenticatedBypassesAllowed": 0,
+    "mathematicalCheck": "5 + 10 + 0 = 15 (100% accounted for, zero missing, zero false negatives)"
+  },
+  "discrepancyResolution": {
+    "historicalIssue": "Previous turn reported 5 direct violations + 8 unresolved = 13 fixtures (2 unaccounted).",
+    "rootCause": "Fixtures 14 & 15 were previously non-invoking simulation stubs without sealBinding calls. They have been refactored into active adversarial callers (14: undefined capability mutation bypass; 15: empty domain capability mutation bypass). Both are now actively evaluated by LiveForensicAuditor.auditFile().",
+    "currentCount": "Exactly 15 out of 15 fixtures are audited live."
+  },
+  "itemizedFixtures": [
+    {
+      "file": "01_direct_unauthenticated.ts",
+      "path": "src/engine/forensic/__fixtures__/SEC009/01_direct_unauthenticated.ts",
+      "classification": "AUTHORITY_PRODUCER",
+      "auditOutcome": "DIRECT_VIOLATION_DETECTED",
+      "callsFound": [
+        {
+          "callee": "CanonicalDomainBindingEngine.sealBinding",
+          "status": "UNAUTHENTICATED_VIOLATION",
+          "capType": "NULL_OR_UNDEFINED",
+          "rationale": "Call to sealBinding explicitly provides null, undefined, or missing capability."
+        }
+      ]
+    },
+    {
+      "file": "02_aliased_import.ts",
+      "path": "src/engine/forensic/__fixtures__/SEC009/02_aliased_import.ts",
+      "classification": "AUTHORITY_PRODUCER",
+      "auditOutcome": "DIRECT_VIOLATION_DETECTED",
+      "callsFound": [
+        {
+          "callee": "aliasSeal",
+          "status": "UNAUTHENTICATED_VIOLATION",
+          "capType": "NULL_OR_UNDEFINED",
+          "rationale": "Call to sealBinding explicitly provides null, undefined, or missing capability."
+        }
+      ]
+    },
+    {
+      "file": "03_reexport_intermediate.ts",
+      "path": "src/engine/forensic/__fixtures__/SEC009/03_reexport_intermediate.ts",
+      "classification": "SUSPICIOUS_UNKNOWN",
+      "auditOutcome": "FAIL_CLOSED_UNRESOLVED_OR_SUSPICIOUS",
+      "callsFound": []
+    },
+    {
+      "file": "04_wrapper_function.ts",
+      "path": "src/engine/forensic/__fixtures__/SEC009/04_wrapper_function.ts",
+      "classification": "AUTHORITY_PRODUCER_WITH_UNRESOLVED_PATHS",
+      "auditOutcome": "FAIL_CLOSED_UNRESOLVED_OR_SUSPICIOUS",
+      "callsFound": [
+        {
+          "callee": "CanonicalDomainBindingEngine.sealBinding",
+          "status": "UNRESOLVED_UNKNOWN",
+          "capType": "UNRESOLVED_EXPRESSION",
+          "rationale": "Capability variable 'uncheckedToken' origin cannot be statically verified within module scope."
+        }
+      ]
+    },
+    {
+      "file": "05_computed_property_access.ts",
+      "path": "src/engine/forensic/__fixtures__/SEC009/05_computed_property_access.ts",
+      "classification": "AUTHORITY_PRODUCER_WITH_UNRESOLVED_PATHS",
+      "auditOutcome": "FAIL_CLOSED_UNRESOLVED_OR_SUSPICIOUS",
+      "callsFound": [
+        {
+          "callee": "(CanonicalDomainBindingEngine as any)[method]",
+          "status": "UNRESOLVED_UNKNOWN",
+          "capType": "UNRESOLVED_EXPRESSION",
+          "rationale": "Computed bracket notation accessing sealing property dynamically."
+        }
+      ]
+    },
+    {
+      "file": "06_dynamic_import.ts",
+      "path": "src/engine/forensic/__fixtures__/SEC009/06_dynamic_import.ts",
+      "classification": "AUTHORITY_PRODUCER",
+      "auditOutcome": "DIRECT_VIOLATION_DETECTED",
+      "callsFound": [
+        {
+          "callee": "mod.CanonicalDomainBindingEngine.sealBinding",
+          "status": "UNAUTHENTICATED_VIOLATION",
+          "capType": "NULL_OR_UNDEFINED",
+          "rationale": "Call to sealBinding explicitly provides null, undefined, or missing capability."
+        }
+      ]
+    },
+    {
+      "file": "07_forged_structural_capability.ts",
+      "path": "src/engine/forensic/__fixtures__/SEC009/07_forged_structural_capability.ts",
+      "classification": "AUTHORITY_PRODUCER_WITH_UNRESOLVED_PATHS",
+      "auditOutcome": "FAIL_CLOSED_UNRESOLVED_OR_SUSPICIOUS",
+      "callsFound": [
+        {
+          "callee": "CanonicalDomainBindingEngine.sealBinding",
+          "status": "UNRESOLVED_UNKNOWN",
+          "capType": "UNRESOLVED_EXPRESSION",
+          "rationale": "Capability variable 'forged' origin cannot be statically verified within module scope."
+        }
+      ]
+    },
+    {
+      "file": "08_revoked_capability_replay.ts",
+      "path": "src/engine/forensic/__fixtures__/SEC009/08_revoked_capability_replay.ts",
+      "classification": "AUTHORITY_PRODUCER_WITH_UNRESOLVED_PATHS",
+      "auditOutcome": "FAIL_CLOSED_UNRESOLVED_OR_SUSPICIOUS",
+      "callsFound": [
+        {
+          "callee": "CanonicalDomainBindingEngine.sealBinding",
+          "status": "UNRESOLVED_UNKNOWN",
+          "capType": "UNRESOLVED_EXPRESSION",
+          "rationale": "Capability variable 'cap' origin cannot be statically verified within module scope."
+        }
+      ]
+    },
+    {
+      "file": "09_domain_mismatch.ts",
+      "path": "src/engine/forensic/__fixtures__/SEC009/09_domain_mismatch.ts",
+      "classification": "AUTHORITY_PRODUCER_WITH_UNRESOLVED_PATHS",
+      "auditOutcome": "FAIL_CLOSED_UNRESOLVED_OR_SUSPICIOUS",
+      "callsFound": [
+        {
+          "callee": "CanonicalDomainBindingEngine.sealBinding",
+          "status": "UNRESOLVED_UNKNOWN",
+          "capType": "UNRESOLVED_EXPRESSION",
+          "rationale": "Capability variable 'cfdOnlyCap' origin cannot be statically verified within module scope."
+        }
+      ]
+    },
+    {
+      "file": "10_comment_keyword_spoofing.ts",
+      "path": "src/engine/forensic/__fixtures__/SEC009/10_comment_keyword_spoofing.ts",
+      "classification": "AUTHORITY_PRODUCER",
+      "auditOutcome": "DIRECT_VIOLATION_DETECTED",
+      "callsFound": [
+        {
+          "callee": "CanonicalDomainBindingEngine.sealBinding",
+          "status": "UNAUTHENTICATED_VIOLATION",
+          "capType": "NULL_OR_UNDEFINED",
+          "rationale": "Call to sealBinding explicitly provides null, undefined, or missing capability."
+        }
+      ]
+    },
+    {
+      "file": "11_test_utility_wildcard.ts",
+      "path": "src/engine/forensic/__fixtures__/SEC009/11_test_utility_wildcard.ts",
+      "classification": "AUTHORITY_PRODUCER_WITH_UNRESOLVED_PATHS",
+      "auditOutcome": "FAIL_CLOSED_UNRESOLVED_OR_SUSPICIOUS",
+      "callsFound": [
+        {
+          "callee": "CanonicalDomainBindingEngine.sealBinding",
+          "status": "UNRESOLVED_UNKNOWN",
+          "capType": "UNRESOLVED_EXPRESSION",
+          "rationale": "Capability variable 'wildcardCap' origin cannot be statically verified within module scope."
+        }
+      ]
+    },
+    {
+      "file": "13_unknown_indirect_call.ts",
+      "path": "src/engine/forensic/__fixtures__/SEC009/13_unknown_indirect_call.ts",
+      "classification": "AUTHORITY_PRODUCER_WITH_UNRESOLVED_PATHS",
+      "auditOutcome": "FAIL_CLOSED_UNRESOLVED_OR_SUSPICIOUS",
+      "callsFound": [
+        {
+          "callee": "Reflect.get",
+          "status": "UNRESOLVED_UNKNOWN",
+          "capType": "UNRESOLVED_EXPRESSION",
+          "rationale": "Reflection or dynamic Function/eval dispatch targeting sealing interfaces."
+        }
+      ]
+    },
+    {
+      "file": "14_mutation_removed_capability_check.ts",
+      "path": "src/engine/forensic/__fixtures__/SEC009/14_mutation_removed_capability_check.ts",
+      "classification": "AUTHORITY_PRODUCER_WITH_UNRESOLVED_PATHS",
+      "auditOutcome": "FAIL_CLOSED_UNRESOLVED_OR_SUSPICIOUS",
+      "callsFound": [
+        {
+          "callee": "CanonicalDomainBindingEngine.sealBinding",
+          "status": "UNRESOLVED_UNKNOWN",
+          "capType": "UNRESOLVED_EXPRESSION",
+          "rationale": "Capability variable 'unvalidatedCap' origin cannot be statically verified within module scope."
+        }
+      ]
+    },
+    {
+      "file": "15_mutation_removed_domain_check.ts",
+      "path": "src/engine/forensic/__fixtures__/SEC009/15_mutation_removed_domain_check.ts",
+      "classification": "AUTHORITY_PRODUCER_WITH_UNRESOLVED_PATHS",
+      "auditOutcome": "FAIL_CLOSED_UNRESOLVED_OR_SUSPICIOUS",
+      "callsFound": [
+        {
+          "callee": "CanonicalDomainBindingEngine.sealBinding",
+          "status": "UNRESOLVED_UNKNOWN",
+          "capType": "UNRESOLVED_EXPRESSION",
+          "rationale": "Capability variable 'emptyDomainCap' origin cannot be statically verified within module scope."
+        }
+      ]
+    },
+    {
+      "file": "adv12_out_of_engine.ts",
+      "path": "src/verification/__fixtures__/adv12_out_of_engine.ts",
+      "classification": "AUTHORITY_PRODUCER",
+      "auditOutcome": "DIRECT_VIOLATION_DETECTED",
+      "callsFound": [
+        {
+          "callee": "CanonicalDomainBindingEngine.sealBinding",
+          "status": "UNAUTHENTICATED_VIOLATION",
+          "capType": "NULL_OR_UNDEFINED",
+          "rationale": "Call to sealBinding explicitly provides null, undefined, or missing capability."
+        }
+      ]
+    }
+  ]
+}

@@ -1,5 +1,5 @@
-import { Matrix } from "../MathUtils";
-import { IntegrationPointState } from "../FEMTypes";
+import { Matrix } from "./MathUtils";
+import { IntegrationPointState } from "./FEMTypes";
 
 export interface ConstitutiveResult {
   stress: number[]; // Voigt

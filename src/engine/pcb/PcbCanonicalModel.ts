@@ -180,9 +180,12 @@ export class PcbCanonicalModelValidator {
    * Computes deterministic canonical cryptographic digest of the PCB model.
    */
   public static computeCanonicalHash(model: PcbCanonicalModel): string {
+    if (!model.designId) throw new Error('CANONICAL_VIOLATION: PCB designId is missing.');
+    if (!model.revisionId) throw new Error('CANONICAL_VIOLATION: PCB revisionId is missing.');
+
     const canonicalPayload = {
-      designId: model.designId || 'SECP-PCB-CANONICAL-UNASSIGNED',
-      revisionId: model.revisionId || 'REV-0.1.0',
+      designId: model.designId,
+      revisionId: model.revisionId,
       boardWidthMm: Number(model.boardWidthMm.toFixed(4)),
       boardHeightMm: Number(model.boardHeightMm.toFixed(4)),
       thicknessMm: Number(model.thicknessMm.toFixed(4)),

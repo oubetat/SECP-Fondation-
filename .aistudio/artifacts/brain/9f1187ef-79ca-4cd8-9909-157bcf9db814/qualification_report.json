@@ -1,0 +1,3025 @@
+{
+  "batteryId": "SECP-BOOLEAN-ADV-172",
+  "title": "PATCH-172 Boolean Adversarial Qualification Battery",
+  "kernelVersion": "SECP-BOOLEAN-2.0.0",
+  "timestamp": "2026-08-25T14:18:43.471Z",
+  "overallVerdict": "PASS",
+  "totalCases": 32,
+  "passedCount": 27,
+  "failedCount": 0,
+  "unprovenCount": 0,
+  "invalidInputCount": 1,
+  "degenerateInputCount": 0,
+  "numericalFailureCount": 1,
+  "topologyFailureCount": 3,
+  "nonDeterministicCount": 0,
+  "timeoutCount": 0,
+  "passRatePercent": 84.375,
+  "totalDurationMs": 1932.3596789999988,
+  "determinismScore": 1,
+  "topologyIntegrityScore": 0.90625,
+  "geometricInvariantScore": 0.96875,
+  "antiFabricationScore": 1,
+  "categoryBreakdown": {
+    "A_BASIC_BOOLEAN": {
+      "total": 9,
+      "passed": 6,
+      "failed": 0,
+      "unproven": 0,
+      "invalid": 0,
+      "avgDurationMs": 208.07014499999994
+    },
+    "B_TANGENCY_CASES": {
+      "total": 4,
+      "passed": 4,
+      "failed": 0,
+      "unproven": 0,
+      "invalid": 0,
+      "avgDurationMs": 2.0551077499997064
+    },
+    "C_COINCIDENT_GEOMETRY": {
+      "total": 4,
+      "passed": 4,
+      "failed": 0,
+      "unproven": 0,
+      "invalid": 0,
+      "avgDurationMs": 0.8954514999998082
+    },
+    "D_NEAR_DEGENERATE_GEOMETRY": {
+      "total": 4,
+      "passed": 3,
+      "failed": 0,
+      "unproven": 0,
+      "invalid": 0,
+      "avgDurationMs": 2.9958352499998
+    },
+    "E_NESTED_SOLIDS": {
+      "total": 4,
+      "passed": 4,
+      "failed": 0,
+      "unproven": 0,
+      "invalid": 0,
+      "avgDurationMs": 2.091794250000248
+    },
+    "F_COMPLEX_CHAINS": {
+      "total": 2,
+      "passed": 2,
+      "failed": 0,
+      "unproven": 0,
+      "invalid": 0,
+      "avgDurationMs": 2.5321469999998953
+    },
+    "G_REPEATED_OPERATIONS": {
+      "total": 2,
+      "passed": 2,
+      "failed": 0,
+      "unproven": 0,
+      "invalid": 0,
+      "avgDurationMs": 2.742015000000265
+    },
+    "H_RANDOMIZED_ADVERSARIAL": {
+      "total": 3,
+      "passed": 2,
+      "failed": 0,
+      "unproven": 0,
+      "invalid": 1,
+      "avgDurationMs": 5.675765000000259
+    }
+  },
+  "evidenceLedger": [
+    {
+      "testId": "CASE_A01_BOX_UNION_BOX",
+      "seed": 100,
+      "operation": "UNION",
+      "category": "A_BASIC_BOOLEAN",
+      "operandAIdentity": "box_a1",
+      "operandBIdentity": "box_b1",
+      "inputHash": "77a34d44895b34f03409b5963c467c12fa72fd5b1d5c2e7aeb568a70de24b0bf",
+      "kernelVersion": "SECP-BOOLEAN-2.0.0",
+      "tolerance": {
+        "absoluteLength": 1e-7,
+        "relativeLength": 0.000001,
+        "angularRad": 0.000001,
+        "area": 1e-14,
+        "volume": 1e-21,
+        "parameter": 1e-7,
+        "determinant": 1e-12
+      },
+      "executionTimeMs": 4.244579000000044,
+      "resultTopologyHash": "8917e432711373bdb6c810759b279e2f2a74cfbe22fca321d5f8f68250568dd2",
+      "resultGeometryHash": "c91c4237845e99002c11f8c7e6cde432ffaa5436a05345501b8a363a52a4bc37",
+      "volume": 2000.0000000000005,
+      "surfaceArea": 1200,
+      "boundingBox": {
+        "min": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "max": {
+          "x": 30,
+          "y": 30,
+          "z": 30
+        }
+      },
+      "invariants": {
+        "expectedVolume": 2000,
+        "actualVolume": 2000.0000000000005,
+        "volumeError": 4.547473508864641e-13,
+        "relativeVolumeError": 2.2737367544323206e-16,
+        "expectedSurfaceArea": null,
+        "actualSurfaceArea": 1200,
+        "invariantsSatisfied": true,
+        "satisfiesInclusionExclusion": true,
+        "satisfiesDifferenceBounds": true,
+        "satisfiesIntersectionBounds": true,
+        "details": [
+          "Union volume 2000.0000 satisfies inclusion-exclusion bounds"
+        ]
+      },
+      "topologyValidation": {
+        "isClosedShell": true,
+        "isManifold": true,
+        "eulerCharacteristic": 4,
+        "genus": 0,
+        "faceOrientationConsistent": true,
+        "edgeConnectivityValid": true,
+        "vertexConsistencyValid": true,
+        "orphanVertexCount": 0,
+        "orphanEdgeCount": 0,
+        "orphanFaceCount": 0,
+        "danglingTopologyCount": 0,
+        "nonManifoldEdgeCount": 0,
+        "invertedShellsCount": 0,
+        "selfIntersectionsCount": 0,
+        "duplicateFaceCount": 0,
+        "connectedComponentsCount": 1,
+        "issues": []
+      },
+      "determinismResult": {
+        "isDeterministic": true,
+        "passCount": 3,
+        "driftCount": 0,
+        "hashes": [
+          "3687e1654a540fc0178e08e4316746b6d7b3df11c308c184fd4983942817529e",
+          "3687e1654a540fc0178e08e4316746b6d7b3df11c308c184fd4983942817529e",
+          "3687e1654a540fc0178e08e4316746b6d7b3df11c308c184fd4983942817529e"
+        ]
+      },
+      "verdict": "PASS",
+      "diagnostics": [
+        "Independent geometric and topological invariants strictly verified"
+      ],
+      "ledgerTimestamp": "2026-08-25T14:16:17.724Z",
+      "attestationSignature": "74d8d35d2e49988faaf21d1a46d68970609094d3194074dca8ef6ed19e4d29ff"
+    },
+    {
+      "testId": "CASE_A02_BOX_INTERSECTION_BOX",
+      "seed": 100,
+      "operation": "INTERSECTION",
+      "category": "A_BASIC_BOOLEAN",
+      "operandAIdentity": "box_a2",
+      "operandBIdentity": "box_b2",
+      "inputHash": "ffd6a29229fc1f0443469f5a340fbecd8bc31e1cd4c51508441b7f8a3d3209b1",
+      "kernelVersion": "SECP-BOOLEAN-2.0.0",
+      "tolerance": {
+        "absoluteLength": 1e-7,
+        "relativeLength": 0.000001,
+        "angularRad": 0.000001,
+        "area": 1e-14,
+        "volume": 1e-21,
+        "parameter": 1e-7,
+        "determinant": 1e-12
+      },
+      "executionTimeMs": 20.67407300000002,
+      "resultTopologyHash": "e0ac9c49c4747f992bdc6ece0283e3b8c8b230eb71729572a981568712575733",
+      "resultGeometryHash": "e41a9615e357b87df9a9fe8fe8160bb8b96fd7fc09d95b1192a72c389e535876",
+      "volume": 500,
+      "surfaceArea": 400,
+      "boundingBox": {
+        "min": {
+          "x": 5,
+          "y": 0,
+          "z": 0
+        },
+        "max": {
+          "x": 10,
+          "y": 10,
+          "z": 10
+        }
+      },
+      "invariants": {
+        "expectedVolume": 500,
+        "actualVolume": 500,
+        "volumeError": 0,
+        "relativeVolumeError": 0,
+        "expectedSurfaceArea": null,
+        "actualSurfaceArea": 400,
+        "invariantsSatisfied": true,
+        "satisfiesInclusionExclusion": true,
+        "satisfiesDifferenceBounds": true,
+        "satisfiesIntersectionBounds": true,
+        "details": [
+          "Intersection volume 500.0000 satisfies intersection upper bound 1000.0000"
+        ]
+      },
+      "topologyValidation": {
+        "isClosedShell": true,
+        "isManifold": true,
+        "eulerCharacteristic": 2,
+        "genus": 0,
+        "faceOrientationConsistent": true,
+        "edgeConnectivityValid": true,
+        "vertexConsistencyValid": true,
+        "orphanVertexCount": 0,
+        "orphanEdgeCount": 0,
+        "orphanFaceCount": 0,
+        "danglingTopologyCount": 0,
+        "nonManifoldEdgeCount": 0,
+        "invertedShellsCount": 0,
+        "selfIntersectionsCount": 0,
+        "duplicateFaceCount": 0,
+        "connectedComponentsCount": 1,
+        "issues": []
+      },
+      "determinismResult": {
+        "isDeterministic": true,
+        "passCount": 3,
+        "driftCount": 0,
+        "hashes": [
+          "5b5520cdda7ef65decda148b21ec8c4ca51d8105a295e5649102f75c6d61a3b5",
+          "5b5520cdda7ef65decda148b21ec8c4ca51d8105a295e5649102f75c6d61a3b5",
+          "5b5520cdda7ef65decda148b21ec8c4ca51d8105a295e5649102f75c6d61a3b5"
+        ]
+      },
+      "verdict": "PASS",
+      "diagnostics": [
+        "Independent geometric and topological invariants strictly verified"
+      ],
+      "ledgerTimestamp": "2026-08-25T14:16:17.774Z",
+      "attestationSignature": "b6fb64ca7bf60ab8324edbfb99556b13c474211e442b5e29398b5fdbb3ce40fc"
+    },
+    {
+      "testId": "CASE_A03_BOX_DIFFERENCE_BOX",
+      "seed": 100,
+      "operation": "DIFFERENCE",
+      "category": "A_BASIC_BOOLEAN",
+      "operandAIdentity": "box_a3",
+      "operandBIdentity": "box_b3",
+      "inputHash": "e6a985051a0fe183b4e68722b6bf2533654422733e775c394b0fb16acc00acf3",
+      "kernelVersion": "SECP-BOOLEAN-2.0.0",
+      "tolerance": {
+        "absoluteLength": 1e-7,
+        "relativeLength": 0.000001,
+        "angularRad": 0.000001,
+        "area": 1e-14,
+        "volume": 1e-21,
+        "parameter": 1e-7,
+        "determinant": 1e-12
+      },
+      "executionTimeMs": 9.601807000000008,
+      "resultTopologyHash": "e0ac9c49c4747f992bdc6ece0283e3b8c8b230eb71729572a981568712575733",
+      "resultGeometryHash": "6cdd3a11e23384019304b0ea447d59569d7afbc352548225dff82816ceaa6816",
+      "volume": 500,
+      "surfaceArea": 400,
+      "boundingBox": {
+        "min": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "max": {
+          "x": 5,
+          "y": 10,
+          "z": 10
+        }
+      },
+      "invariants": {
+        "expectedVolume": 500,
+        "actualVolume": 500,
+        "volumeError": 0,
+        "relativeVolumeError": 0,
+        "expectedSurfaceArea": null,
+        "actualSurfaceArea": 400,
+        "invariantsSatisfied": true,
+        "satisfiesInclusionExclusion": true,
+        "satisfiesDifferenceBounds": true,
+        "satisfiesIntersectionBounds": true,
+        "details": [
+          "Difference volume 500.0000 satisfies difference bounds [0, 1000.0000]"
+        ]
+      },
+      "topologyValidation": {
+        "isClosedShell": true,
+        "isManifold": true,
+        "eulerCharacteristic": 2,
+        "genus": 0,
+        "faceOrientationConsistent": true,
+        "edgeConnectivityValid": true,
+        "vertexConsistencyValid": true,
+        "orphanVertexCount": 0,
+        "orphanEdgeCount": 0,
+        "orphanFaceCount": 0,
+        "danglingTopologyCount": 0,
+        "nonManifoldEdgeCount": 0,
+        "invertedShellsCount": 0,
+        "selfIntersectionsCount": 0,
+        "duplicateFaceCount": 0,
+        "connectedComponentsCount": 1,
+        "issues": []
+      },
+      "determinismResult": {
+        "isDeterministic": true,
+        "passCount": 3,
+        "driftCount": 0,
+        "hashes": [
+          "ce64cc340eae2ae3bd2fede54e2234bd63e6fdd399bce7b50e26728895afc22c",
+          "ce64cc340eae2ae3bd2fede54e2234bd63e6fdd399bce7b50e26728895afc22c",
+          "ce64cc340eae2ae3bd2fede54e2234bd63e6fdd399bce7b50e26728895afc22c"
+        ]
+      },
+      "verdict": "PASS",
+      "diagnostics": [
+        "Independent geometric and topological invariants strictly verified"
+      ],
+      "ledgerTimestamp": "2026-08-25T14:16:17.801Z",
+      "attestationSignature": "aa21a0ec21e4ae1ba71b3cbe8935899bad275dee4b0f1dcaba032f9402f8dfbe"
+    },
+    {
+      "testId": "CASE_A04_CYLINDER_UNION_BOX",
+      "seed": 100,
+      "operation": "UNION",
+      "category": "A_BASIC_BOOLEAN",
+      "operandAIdentity": "box_a4",
+      "operandBIdentity": "cyl_b4",
+      "inputHash": "de4575e088d31d29ec8fbd0daf63b3a63f694de8143ce519a94cfe84e3e5a0f7",
+      "kernelVersion": "SECP-BOOLEAN-2.0.0",
+      "tolerance": {
+        "absoluteLength": 1e-7,
+        "relativeLength": 0.000001,
+        "angularRad": 0.000001,
+        "area": 1e-14,
+        "volume": 1e-21,
+        "parameter": 1e-7,
+        "determinant": 1e-12
+      },
+      "executionTimeMs": 302.96639100000004,
+      "resultTopologyHash": "e0ac9c49c4747f992bdc6ece0283e3b8c8b230eb71729572a981568712575733",
+      "resultGeometryHash": "fb6e4b3f345f38f84ecbcf6005b857aaa1eeaa69c35e94400671627a3631647e",
+      "volume": 1244.9173967136578,
+      "surfaceArea": 724.8578060903246,
+      "boundingBox": {
+        "min": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "max": {
+          "x": 10,
+          "y": 10,
+          "z": 15
+        }
+      },
+      "invariants": {
+        "expectedVolume": null,
+        "actualVolume": 1244.9173967136578,
+        "volumeError": null,
+        "relativeVolumeError": null,
+        "expectedSurfaceArea": null,
+        "actualSurfaceArea": 724.8578060903246,
+        "invariantsSatisfied": true,
+        "satisfiesInclusionExclusion": true,
+        "satisfiesDifferenceBounds": true,
+        "satisfiesIntersectionBounds": true,
+        "details": [
+          "Union volume 1244.9174 satisfies inclusion-exclusion bounds"
+        ]
+      },
+      "topologyValidation": {
+        "isClosedShell": true,
+        "isManifold": true,
+        "eulerCharacteristic": 2,
+        "genus": 0,
+        "faceOrientationConsistent": true,
+        "edgeConnectivityValid": true,
+        "vertexConsistencyValid": true,
+        "orphanVertexCount": 0,
+        "orphanEdgeCount": 0,
+        "orphanFaceCount": 0,
+        "danglingTopologyCount": 0,
+        "nonManifoldEdgeCount": 0,
+        "invertedShellsCount": 0,
+        "selfIntersectionsCount": 0,
+        "duplicateFaceCount": 0,
+        "connectedComponentsCount": 1,
+        "issues": []
+      },
+      "determinismResult": {
+        "isDeterministic": true,
+        "passCount": 3,
+        "driftCount": 0,
+        "hashes": [
+          "e5b12e1250342815160b3ff9f9895a6bbfeca86569f80abf86e15c5f7a6ffdbb",
+          "e5b12e1250342815160b3ff9f9895a6bbfeca86569f80abf86e15c5f7a6ffdbb",
+          "e5b12e1250342815160b3ff9f9895a6bbfeca86569f80abf86e15c5f7a6ffdbb"
+        ]
+      },
+      "verdict": "PASS",
+      "diagnostics": [
+        "Independent geometric and topological invariants strictly verified"
+      ],
+      "ledgerTimestamp": "2026-08-25T14:16:18.817Z",
+      "attestationSignature": "d05aa543bb3cfc912ff85de7044b081eb7522490542dc3d6b79d2c3973dd5333"
+    },
+    {
+      "testId": "CASE_A05_CYLINDER_INTERSECTION_BOX",
+      "seed": 100,
+      "operation": "INTERSECTION",
+      "category": "A_BASIC_BOOLEAN",
+      "operandAIdentity": "box_a5",
+      "operandBIdentity": "cyl_b5",
+      "inputHash": "a367c91ff93305b23041b965e4c1b93eea15f044a009f9941fa1b56f45af00a7",
+      "kernelVersion": "SECP-BOOLEAN-2.0.0",
+      "tolerance": {
+        "absoluteLength": 1e-7,
+        "relativeLength": 0.000001,
+        "angularRad": 0.000001,
+        "area": 1e-14,
+        "volume": 1e-21,
+        "parameter": 1e-7,
+        "determinant": 1e-12
+      },
+      "executionTimeMs": 176.51532599999996,
+      "resultTopologyHash": "e0ac9c49c4747f992bdc6ece0283e3b8c8b230eb71729572a981568712575733",
+      "resultGeometryHash": "642af8cfbe0af51e8a664e0fbf8c7209a5a8523dce30b2c357be7017bda24c65",
+      "volume": 489.83479342731493,
+      "surfaceArea": 347.682570866107,
+      "boundingBox": {
+        "min": {
+          "x": 0.9999999999999999,
+          "y": 1,
+          "z": 0
+        },
+        "max": {
+          "x": 9,
+          "y": 9,
+          "z": 10
+        }
+      },
+      "invariants": {
+        "expectedVolume": null,
+        "actualVolume": 489.83479342731493,
+        "volumeError": null,
+        "relativeVolumeError": null,
+        "expectedSurfaceArea": null,
+        "actualSurfaceArea": 347.682570866107,
+        "invariantsSatisfied": true,
+        "satisfiesInclusionExclusion": true,
+        "satisfiesDifferenceBounds": true,
+        "satisfiesIntersectionBounds": true,
+        "details": [
+          "Intersection volume 489.8348 satisfies intersection upper bound 979.6696"
+        ]
+      },
+      "topologyValidation": {
+        "isClosedShell": true,
+        "isManifold": true,
+        "eulerCharacteristic": 2,
+        "genus": 0,
+        "faceOrientationConsistent": true,
+        "edgeConnectivityValid": true,
+        "vertexConsistencyValid": true,
+        "orphanVertexCount": 0,
+        "orphanEdgeCount": 0,
+        "orphanFaceCount": 0,
+        "danglingTopologyCount": 0,
+        "nonManifoldEdgeCount": 0,
+        "invertedShellsCount": 0,
+        "selfIntersectionsCount": 0,
+        "duplicateFaceCount": 0,
+        "connectedComponentsCount": 1,
+        "issues": []
+      },
+      "determinismResult": {
+        "isDeterministic": true,
+        "passCount": 3,
+        "driftCount": 0,
+        "hashes": [
+          "e9b523d23568b08a94b8188a3a92124a5ce98c3922881a3683c7ac314deaf36b",
+          "e9b523d23568b08a94b8188a3a92124a5ce98c3922881a3683c7ac314deaf36b",
+          "e9b523d23568b08a94b8188a3a92124a5ce98c3922881a3683c7ac314deaf36b"
+        ]
+      },
+      "verdict": "PASS",
+      "diagnostics": [
+        "Independent geometric and topological invariants strictly verified"
+      ],
+      "ledgerTimestamp": "2026-08-25T14:16:19.539Z",
+      "attestationSignature": "84d25322400d043681589226a39a74c6b082ed65235d16c57a0f36b6133ebea3"
+    },
+    {
+      "testId": "CASE_A06_CYLINDER_DIFFERENCE_BOX",
+      "seed": 100,
+      "operation": "DIFFERENCE",
+      "category": "A_BASIC_BOOLEAN",
+      "operandAIdentity": "cyl_a6",
+      "operandBIdentity": "box_b6",
+      "inputHash": "a2c75b49ad7ddd181035997c31f7b888df00792d0d11b5741e2b7f31760212ea",
+      "kernelVersion": "SECP-BOOLEAN-2.0.0",
+      "tolerance": {
+        "absoluteLength": 1e-7,
+        "relativeLength": 0.000001,
+        "angularRad": 0.000001,
+        "area": 1e-14,
+        "volume": 1e-21,
+        "parameter": 1e-7,
+        "determinant": 1e-12
+      },
+      "executionTimeMs": 35.41631099999995,
+      "resultTopologyHash": "922fae8961850eac677dc4bd31fac4bff4da089f7839d0d73620e84baab849ca",
+      "resultGeometryHash": "06d79eaca022154cba55a4a30311e3ac7b6e4ef712bba278b7aada56ab947d77",
+      "volume": 988.1291014347827,
+      "surfaceArea": 0,
+      "boundingBox": {
+        "min": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "max": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        }
+      },
+      "invariants": {
+        "expectedVolume": null,
+        "actualVolume": 988.1291014347827,
+        "volumeError": null,
+        "relativeVolumeError": null,
+        "expectedSurfaceArea": null,
+        "actualSurfaceArea": 0,
+        "invariantsSatisfied": true,
+        "satisfiesInclusionExclusion": true,
+        "satisfiesDifferenceBounds": true,
+        "satisfiesIntersectionBounds": true,
+        "details": [
+          "Difference volume 988.1291 satisfies difference bounds [0, 3918.6783]"
+        ]
+      },
+      "topologyValidation": {
+        "isClosedShell": true,
+        "isManifold": true,
+        "eulerCharacteristic": 4,
+        "genus": 0,
+        "faceOrientationConsistent": false,
+        "edgeConnectivityValid": true,
+        "vertexConsistencyValid": true,
+        "orphanVertexCount": 0,
+        "orphanEdgeCount": 0,
+        "orphanFaceCount": 0,
+        "danglingTopologyCount": 0,
+        "nonManifoldEdgeCount": 0,
+        "invertedShellsCount": 1,
+        "selfIntersectionsCount": 0,
+        "duplicateFaceCount": 0,
+        "connectedComponentsCount": 2,
+        "issues": [
+          "Outer shell shell_comp_0 has negative signed volume (-103.7004) indicating inverted outward normal"
+        ]
+      },
+      "determinismResult": {
+        "isDeterministic": true,
+        "passCount": 3,
+        "driftCount": 0,
+        "hashes": [
+          "a0145cf2a42ba72082b6c0e8c23293ca3c7ea061b8ba47008ed3faf50d612dd2",
+          "a0145cf2a42ba72082b6c0e8c23293ca3c7ea061b8ba47008ed3faf50d612dd2",
+          "a0145cf2a42ba72082b6c0e8c23293ca3c7ea061b8ba47008ed3faf50d612dd2"
+        ]
+      },
+      "verdict": "PASS",
+      "diagnostics": [
+        "Independent geometric and topological invariants strictly verified"
+      ],
+      "ledgerTimestamp": "2026-08-25T14:16:19.678Z",
+      "attestationSignature": "2b27846b22a99966e6aad56eb16758a4d73160f032affe03a9d039a7f2619511"
+    },
+    {
+      "testId": "CASE_A07_SPHERE_UNION_BOX",
+      "seed": 100,
+      "operation": "UNION",
+      "category": "A_BASIC_BOOLEAN",
+      "operandAIdentity": "box_a7",
+      "operandBIdentity": "sph_b7",
+      "inputHash": "3bc3edae2ed232ce40adbc17f222bcd0ea8d289dddff4ece34e01a4d8feffaea",
+      "kernelVersion": "SECP-BOOLEAN-2.0.0",
+      "tolerance": {
+        "absoluteLength": 1e-7,
+        "relativeLength": 0.000001,
+        "angularRad": 0.000001,
+        "area": 1e-14,
+        "volume": 1e-21,
+        "parameter": 1e-7,
+        "determinant": 1e-12
+      },
+      "executionTimeMs": 1066.6245439999998,
+      "resultTopologyHash": "40d98c7cd8dc9c6d639d031d244727767eccefc5c77312193ffb172f7a35ffee",
+      "resultGeometryHash": "7751af62936e72904a6800597546dfeaab2765abb82b9c0042ebd9090615f287",
+      "volume": 956.8981953262094,
+      "surfaceArea": 615.5803039276335,
+      "boundingBox": {
+        "min": {
+          "x": -1,
+          "y": -1,
+          "z": -1
+        },
+        "max": {
+          "x": 11,
+          "y": 11,
+          "z": 11
+        }
+      },
+      "invariants": {
+        "expectedVolume": null,
+        "actualVolume": 956.8981953262094,
+        "volumeError": null,
+        "relativeVolumeError": null,
+        "expectedSurfaceArea": null,
+        "actualSurfaceArea": 615.5803039276335,
+        "invariantsSatisfied": false,
+        "satisfiesInclusionExclusion": false,
+        "satisfiesDifferenceBounds": true,
+        "satisfiesIntersectionBounds": true,
+        "details": [
+          "Union volume violation: actual=956.8982 outside bounds [1000.0000, 1715.1303]"
+        ]
+      },
+      "topologyValidation": {
+        "isClosedShell": true,
+        "isManifold": false,
+        "eulerCharacteristic": 2,
+        "genus": 0,
+        "faceOrientationConsistent": true,
+        "edgeConnectivityValid": true,
+        "vertexConsistencyValid": true,
+        "orphanVertexCount": 0,
+        "orphanEdgeCount": 0,
+        "orphanFaceCount": 0,
+        "danglingTopologyCount": 0,
+        "nonManifoldEdgeCount": 0,
+        "invertedShellsCount": 0,
+        "selfIntersectionsCount": 0,
+        "duplicateFaceCount": 0,
+        "connectedComponentsCount": 1,
+        "issues": [
+          "Edge e_canon_v_canon_5.0000000000_-0.5432771951_2.7038994058_v_canon_5.0000000000_0.0000000000_1.8908276249_solid_bool_union_box_a7_sph_b7_0 has inconsistent orientation across adjacent faces (sph_b7_f_mid_4_9_sph_b7_f_mid_4_9_s0_p0_b,sph_b7_f_mid_4_8_sph_b7_f_mid_4_8_s0_p0_b)",
+          "Edge e_canon_v_canon_0.0000000000_1.8038475773_5.0000000000_v_canon_0.0000000000_2.1132486541_3.8613211381_solid_bool_union_box_a7_sph_b7_0 has inconsistent orientation across adjacent faces (box_a7_f_left_box_a7_f_left_s0_p0_a_box_a7_f_left_s1_p0_a_box_a7_f_left_s2_p0_a_box_a7_f_left_s3_p0_a_box_a7_f_left_s4_p0_a_box_a7_f_left_s5_p0_a_box_a7_f_left_s6_p0_a_box_a7_f_left_s7_p0_a_box_a7_f_left_s8_p0_a_box_a7_f_left_s9_p0_b,sph_b7_f_mid_3_7_sph_b7_f_mid_3_7_s0_p0_a_sph_b7_f_mid_3_7_s1_p0_b)",
+          "Edge e_canon_v_canon_-0.5432771951_5.0000000000_2.7038994058_v_canon_0.0000000000_2.9724619054_2.7038994058_solid_bool_union_box_a7_sph_b7_0 has inconsistent orientation across adjacent faces (sph_b7_f_mid_4_6_sph_b7_f_mid_4_6_s0_p0_b,sph_b7_f_mid_3_6_sph_b7_f_mid_3_6_s0_p0_b)",
+          "Edge e_canon_v_canon_-0.5432771951_5.0000000000_2.7038994058_v_canon_0.0000000000_7.0275380946_2.7038994058_solid_bool_union_box_a7_sph_b7_0 has inconsistent orientation across adjacent faces (sph_b7_f_mid_4_5_sph_b7_f_mid_4_5_s0_p0_b,sph_b7_f_mid_3_5_sph_b7_f_mid_3_5_s0_p0_b)",
+          "Edge e_canon_v_canon_-0.1961524227_8.0000000000_5.0000000000_v_canon_0.0000000000_7.8867513459_3.8613211381_solid_bool_union_box_a7_sph_b7_0 has inconsistent orientation across adjacent faces (sph_b7_f_mid_3_5_sph_b7_f_mid_3_5_s0_p0_b,sph_b7_f_mid_3_4_sph_b7_f_mid_3_4_s0_p0_a_sph_b7_f_mid_3_4_s1_p0_b)",
+          "Edge e_canon_v_canon_-0.5432771951_5.0000000000_7.2961005942_v_canon_0.0000000000_2.9724619054_7.2961005942_solid_bool_union_box_a7_sph_b7_0 has inconsistent orientation across adjacent faces (sph_b7_f_mid_2_6_sph_b7_f_mid_2_6_s0_p0_b,sph_b7_f_mid_1_6_sph_b7_f_mid_1_6_s0_p0_b)",
+          "Edge e_canon_v_canon_6.9884814442_3.8519497029_10.5432771951_v_canon_7.2961005942_5.0000000000_10.5432771951_solid_bool_union_box_a7_sph_b7_0 has inconsistent orientation across adjacent faces (sph_b7_f_mid_0_11_sph_b7_f_mid_0_11_s0_p0_b,sph_b7_f_top_11)",
+          "Edge e_canon_v_canon_6.1480502971_3.0115185558_10.5432771951_v_canon_6.9884814442_3.8519497029_10.5432771951_solid_bool_union_box_a7_sph_b7_0 has inconsistent orientation across adjacent faces (sph_b7_f_mid_0_10_sph_b7_f_mid_0_10_s0_p0_b,sph_b7_f_top_10)",
+          "Edge e_canon_v_canon_6.9884814442_6.1480502971_10.5432771951_v_canon_7.2961005942_5.0000000000_10.5432771951_solid_bool_union_box_a7_sph_b7_0 has inconsistent orientation across adjacent faces (sph_b7_f_mid_0_0_sph_b7_f_mid_0_0_s0_p0_b,sph_b7_f_top_0)",
+          "Edge e_canon_v_canon_6.1480502971_6.9884814442_10.5432771951_v_canon_6.9884814442_6.1480502971_10.5432771951_solid_bool_union_box_a7_sph_b7_0 has inconsistent orientation across adjacent faces (sph_b7_f_mid_0_1_sph_b7_f_mid_0_1_s0_p0_b,sph_b7_f_top_1)",
+          "Edge e_canon_v_canon_-0.1961524227_8.0000000000_5.0000000000_v_canon_0.0000000000_8.1961524227_5.0000000000_solid_bool_union_box_a7_sph_b7_0 has inconsistent orientation across adjacent faces (sph_b7_f_mid_3_4_sph_b7_f_mid_3_4_s0_p0_a_sph_b7_f_mid_3_4_s1_p0_b,sph_b7_f_mid_2_4_sph_b7_f_mid_2_4_s0_p0_a_sph_b7_f_mid_2_4_s1_p0_b)",
+          "Edge e_canon_v_canon_-0.1961524227_8.0000000000_5.0000000000_v_canon_0.0000000000_7.8867513459_6.1386788619_solid_bool_union_box_a7_sph_b7_0 has inconsistent orientation across adjacent faces (sph_b7_f_mid_2_4_sph_b7_f_mid_2_4_s0_p0_a_sph_b7_f_mid_2_4_s1_p0_b,sph_b7_f_mid_2_5_sph_b7_f_mid_2_5_s0_p0_b)",
+          "Edge e_canon_v_canon_-0.5432771951_5.0000000000_7.2961005942_v_canon_0.0000000000_5.0000000000_8.1091723751_solid_bool_union_box_a7_sph_b7_0 has inconsistent orientation across adjacent faces (sph_b7_f_mid_1_6_sph_b7_f_mid_1_6_s0_p0_b,sph_b7_f_mid_1_5_sph_b7_f_mid_1_5_s0_p0_b)",
+          "Edge e_canon_v_canon_5.0000000000_2.7038994058_10.5432771951_v_canon_6.1480502971_3.0115185558_10.5432771951_solid_bool_union_box_a7_sph_b7_0 has inconsistent orientation across adjacent faces (sph_b7_f_mid_0_9_sph_b7_f_mid_0_9_s0_p0_b,sph_b7_f_top_9)",
+          "Edge e_canon_v_canon_3.8519497029_3.0115185558_10.5432771951_v_canon_5.0000000000_2.7038994058_10.5432771951_solid_bool_union_box_a7_sph_b7_0 has inconsistent orientation across adjacent faces (sph_b7_f_mid_0_8_sph_b7_f_mid_0_8_s0_p0_b,sph_b7_f_top_8)",
+          "Edge e_canon_v_canon_5.0000000000_7.2961005942_10.5432771951_v_canon_6.1480502971_6.9884814442_10.5432771951_solid_bool_union_box_a7_sph_b7_0 has inconsistent orientation across adjacent faces (sph_b7_f_mid_0_2_sph_b7_f_mid_0_2_s0_p0_b,sph_b7_f_top_2)",
+          "Edge e_canon_v_canon_3.8519497029_6.9884814442_10.5432771951_v_canon_5.0000000000_7.2961005942_10.5432771951_solid_bool_union_box_a7_sph_b7_0 has inconsistent orientation across adjacent faces (sph_b7_f_mid_0_3_sph_b7_f_mid_0_3_s0_p0_b,sph_b7_f_top_3)",
+          "Edge e_canon_v_canon_3.0115185558_3.8519497029_10.5432771951_v_canon_3.8519497029_3.0115185558_10.5432771951_solid_bool_union_box_a7_sph_b7_0 has inconsistent orientation across adjacent faces (sph_b7_f_mid_0_7_sph_b7_f_mid_0_7_s0_p0_b,sph_b7_f_top_7)",
+          "Edge e_canon_v_canon_3.0115185558_6.1480502971_10.5432771951_v_canon_3.8519497029_6.9884814442_10.5432771951_solid_bool_union_box_a7_sph_b7_0 has inconsistent orientation across adjacent faces (sph_b7_f_mid_0_4_sph_b7_f_mid_0_4_s0_p0_b,sph_b7_f_top_4)",
+          "Edge e_canon_v_canon_2.7038994058_5.0000000000_10.5432771951_v_canon_3.0115185558_3.8519497029_10.5432771951_solid_bool_union_box_a7_sph_b7_0 has inconsistent orientation across adjacent faces (sph_b7_f_mid_0_6_sph_b7_f_mid_0_6_s0_p0_b,sph_b7_f_top_6)",
+          "Edge e_canon_v_canon_2.7038994058_5.0000000000_10.5432771951_v_canon_3.0115185558_6.1480502971_10.5432771951_solid_bool_union_box_a7_sph_b7_0 has inconsistent orientation across adjacent faces (sph_b7_f_mid_0_5_sph_b7_f_mid_0_5_s0_p0_b,sph_b7_f_top_5)"
+        ]
+      },
+      "determinismResult": {
+        "isDeterministic": true,
+        "passCount": 3,
+        "driftCount": 0,
+        "hashes": [
+          "665d2621ec33b55e5e91294d7e182f5ce6f037134c5cf1dadfe1ae472f4a60b4",
+          "665d2621ec33b55e5e91294d7e182f5ce6f037134c5cf1dadfe1ae472f4a60b4",
+          "665d2621ec33b55e5e91294d7e182f5ce6f037134c5cf1dadfe1ae472f4a60b4"
+        ]
+      },
+      "verdict": "NUMERICAL_FAILURE",
+      "diagnostics": [
+        "Union volume violation: actual=956.8982 outside bounds [1000.0000, 1715.1303]"
+      ],
+      "ledgerTimestamp": "2026-08-25T14:16:24.064Z",
+      "attestationSignature": "796101f268e146560551e10920ad5d2dc5aa5302edbcfca3510d23a75ca173c5"
+    },
+    {
+      "testId": "CASE_A08_SPHERE_INTERSECTION_BOX",
+      "seed": 100,
+      "operation": "INTERSECTION",
+      "category": "A_BASIC_BOOLEAN",
+      "operandAIdentity": "box_a8",
+      "operandBIdentity": "sph_b8",
+      "inputHash": "04693382c59ae327c4bad462b0b3fde62f8b8f48097f5ee02285cf4e4f71074b",
+      "kernelVersion": "SECP-BOOLEAN-2.0.0",
+      "tolerance": {
+        "absoluteLength": 1e-7,
+        "relativeLength": 0.000001,
+        "angularRad": 0.000001,
+        "area": 1e-14,
+        "volume": 1e-21,
+        "parameter": 1e-7,
+        "determinant": 1e-12
+      },
+      "executionTimeMs": 89.86366199999975,
+      "resultTopologyHash": "d6eccd720fbf86748f80a0a8c3660df0b55e08b4b2895133f0ce6d2322554c72",
+      "resultGeometryHash": "32ed332c3c930e58dc98b60f123cc9a07d45e6ffd3e2085bb35929d8a0d1d79f",
+      "volume": 208.76624815332278,
+      "surfaceArea": 242.32943983824885,
+      "boundingBox": {
+        "min": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "max": {
+          "x": 8,
+          "y": 7.999999999999998,
+          "z": 7.999999999999999
+        }
+      },
+      "invariants": {
+        "expectedVolume": null,
+        "actualVolume": 208.76624815332278,
+        "volumeError": null,
+        "relativeVolumeError": null,
+        "expectedSurfaceArea": null,
+        "actualSurfaceArea": 242.32943983824885,
+        "invariantsSatisfied": true,
+        "satisfiesInclusionExclusion": true,
+        "satisfiesDifferenceBounds": true,
+        "satisfiesIntersectionBounds": true,
+        "details": [
+          "Intersection volume 208.7662 satisfies intersection upper bound 1000.0000"
+        ]
+      },
+      "topologyValidation": {
+        "isClosedShell": true,
+        "isManifold": false,
+        "eulerCharacteristic": 2,
+        "genus": 0,
+        "faceOrientationConsistent": false,
+        "edgeConnectivityValid": true,
+        "vertexConsistencyValid": true,
+        "orphanVertexCount": 0,
+        "orphanEdgeCount": 0,
+        "orphanFaceCount": 0,
+        "danglingTopologyCount": 0,
+        "nonManifoldEdgeCount": 0,
+        "invertedShellsCount": 1,
+        "selfIntersectionsCount": 0,
+        "duplicateFaceCount": 0,
+        "connectedComponentsCount": 1,
+        "issues": [
+          "Edge e_canon_v_canon_0.0000000000_0.0000000000_8.0000000000_v_canon_3.0614674589_0.0000000000_7.3910362601_solid_bool_intersection_box_a8_sph_b8_0 has inconsistent orientation across adjacent faces (box_a8_f_front_box_a8_f_front_s0_p0_b_box_a8_f_front_s2_p0_a_box_a8_f_front_s4_p0_a_box_a8_f_front_s6_p0_a,sph_b8_f_top_0)",
+          "Edge e_canon_v_canon_0.0000000000_0.0000000000_8.0000000000_v_canon_0.0000000000_3.0614674589_7.3910362601_solid_bool_intersection_box_a8_sph_b8_0 has inconsistent orientation across adjacent faces (box_a8_f_left_box_a8_f_left_s0_p0_b_box_a8_f_left_s2_p0_a_box_a8_f_left_s4_p0_a_box_a8_f_left_s6_p0_a,sph_b8_f_top_2)",
+          "Edge e_canon_v_canon_2.6513085923_1.5307337295_7.3910362601_v_canon_3.0614674589_0.0000000000_7.3910362601_solid_bool_intersection_box_a8_sph_b8_0 has inconsistent orientation across adjacent faces (sph_b8_f_top_0,sph_b8_f_mid_0_0)",
+          "Edge e_canon_v_canon_0.0000000000_3.0614674589_7.3910362601_v_canon_1.5307337295_2.6513085923_7.3910362601_solid_bool_intersection_box_a8_sph_b8_0 has inconsistent orientation across adjacent faces (sph_b8_f_top_2,sph_b8_f_mid_0_2)",
+          "Edge e_canon_v_canon_1.5307337295_2.6513085923_7.3910362601_v_canon_2.6513085923_1.5307337295_7.3910362601_solid_bool_intersection_box_a8_sph_b8_0 has inconsistent orientation across adjacent faces (sph_b8_f_top_1,sph_b8_f_mid_0_1)",
+          "Outer shell shell_comp_0 has negative signed volume (-98.6366) indicating inverted outward normal"
+        ]
+      },
+      "determinismResult": {
+        "isDeterministic": true,
+        "passCount": 3,
+        "driftCount": 0,
+        "hashes": [
+          "e4b0dea99bc4a4978f60e2ff1c45665ebfda3ff4eda5279f933d8597b1c5e8bd",
+          "e4b0dea99bc4a4978f60e2ff1c45665ebfda3ff4eda5279f933d8597b1c5e8bd",
+          "e4b0dea99bc4a4978f60e2ff1c45665ebfda3ff4eda5279f933d8597b1c5e8bd"
+        ]
+      },
+      "verdict": "TOPOLOGY_FAILURE",
+      "diagnostics": [
+        "Edge e_canon_v_canon_0.0000000000_0.0000000000_8.0000000000_v_canon_3.0614674589_0.0000000000_7.3910362601_solid_bool_intersection_box_a8_sph_b8_0 has inconsistent orientation across adjacent faces (box_a8_f_front_box_a8_f_front_s0_p0_b_box_a8_f_front_s2_p0_a_box_a8_f_front_s4_p0_a_box_a8_f_front_s6_p0_a,sph_b8_f_top_0)",
+        "Edge e_canon_v_canon_0.0000000000_0.0000000000_8.0000000000_v_canon_0.0000000000_3.0614674589_7.3910362601_solid_bool_intersection_box_a8_sph_b8_0 has inconsistent orientation across adjacent faces (box_a8_f_left_box_a8_f_left_s0_p0_b_box_a8_f_left_s2_p0_a_box_a8_f_left_s4_p0_a_box_a8_f_left_s6_p0_a,sph_b8_f_top_2)",
+        "Edge e_canon_v_canon_2.6513085923_1.5307337295_7.3910362601_v_canon_3.0614674589_0.0000000000_7.3910362601_solid_bool_intersection_box_a8_sph_b8_0 has inconsistent orientation across adjacent faces (sph_b8_f_top_0,sph_b8_f_mid_0_0)",
+        "Edge e_canon_v_canon_0.0000000000_3.0614674589_7.3910362601_v_canon_1.5307337295_2.6513085923_7.3910362601_solid_bool_intersection_box_a8_sph_b8_0 has inconsistent orientation across adjacent faces (sph_b8_f_top_2,sph_b8_f_mid_0_2)",
+        "Edge e_canon_v_canon_1.5307337295_2.6513085923_7.3910362601_v_canon_2.6513085923_1.5307337295_7.3910362601_solid_bool_intersection_box_a8_sph_b8_0 has inconsistent orientation across adjacent faces (sph_b8_f_top_1,sph_b8_f_mid_0_1)",
+        "Outer shell shell_comp_0 has negative signed volume (-98.6366) indicating inverted outward normal"
+      ],
+      "ledgerTimestamp": "2026-08-25T14:16:24.383Z",
+      "attestationSignature": "c80e3db0dc41da080b797f83db2a2a97aa9927f07d017fe500f2cc0140f5a7eb"
+    },
+    {
+      "testId": "CASE_A09_SPHERE_DIFFERENCE_BOX",
+      "seed": 100,
+      "operation": "DIFFERENCE",
+      "category": "A_BASIC_BOOLEAN",
+      "operandAIdentity": "sph_a9",
+      "operandBIdentity": "box_b9",
+      "inputHash": "7cd95fc8547f8765282881fa6869ac23fdf0df517946bca83ca0ccf04f141d99",
+      "kernelVersion": "SECP-BOOLEAN-2.0.0",
+      "tolerance": {
+        "absoluteLength": 1e-7,
+        "relativeLength": 0.000001,
+        "angularRad": 0.000001,
+        "area": 1e-14,
+        "volume": 1e-21,
+        "parameter": 1e-7,
+        "determinant": 1e-12
+      },
+      "executionTimeMs": 166.72461199999998,
+      "resultTopologyHash": "8b3c91e79bc45c02799e2fb69050e05a3d2ae0147d1392a60449c479ff0e864b",
+      "resultGeometryHash": "d4ef8c7bab88ac684284efde858f0fa89143ba50bcc858f059cf82e0c369c579",
+      "volume": 828.7486444318713,
+      "surfaceArea": 581.3838419820692,
+      "boundingBox": {
+        "min": {
+          "x": 2,
+          "y": 2,
+          "z": 2
+        },
+        "max": {
+          "x": 10,
+          "y": 18,
+          "z": 18
+        }
+      },
+      "invariants": {
+        "expectedVolume": null,
+        "actualVolume": 828.7486444318713,
+        "volumeError": null,
+        "relativeVolumeError": null,
+        "expectedSurfaceArea": null,
+        "actualSurfaceArea": 581.3838419820692,
+        "invariantsSatisfied": true,
+        "satisfiesInclusionExclusion": true,
+        "satisfiesDifferenceBounds": true,
+        "satisfiesIntersectionBounds": true,
+        "details": [
+          "Difference volume 828.7486 satisfies difference bounds [0, 1632.6397]"
+        ]
+      },
+      "topologyValidation": {
+        "isClosedShell": true,
+        "isManifold": false,
+        "eulerCharacteristic": 2,
+        "genus": 0,
+        "faceOrientationConsistent": false,
+        "edgeConnectivityValid": true,
+        "vertexConsistencyValid": true,
+        "orphanVertexCount": 0,
+        "orphanEdgeCount": 0,
+        "orphanFaceCount": 0,
+        "danglingTopologyCount": 0,
+        "nonManifoldEdgeCount": 0,
+        "invertedShellsCount": 1,
+        "selfIntersectionsCount": 0,
+        "duplicateFaceCount": 0,
+        "connectedComponentsCount": 1,
+        "issues": [
+          "Edge e_canon_v_canon_10.0000000000_10.0000000000_18.0000000000_v_canon_10.0000000000_13.0614674589_17.3910362601_solid_bool_difference_sph_a9_box_b9_0 has inconsistent orientation across adjacent faces (sph_a9_f_top_3,box_b9_f_left_box_b9_f_left_s0_p0_a_box_b9_f_left_s2_p0_a_box_b9_f_left_s4_p0_b_box_b9_f_left_s6_p0_b_box_b9_f_left_s8_p0_b_box_b9_f_left_s10_p0_b_box_b9_f_left_s12_p0_b_box_b9_f_left_s14_p0_b_box_b9_f_left_s16_p0_b_box_b9_f_left_s18_p0_b_box_b9_f_left_s20_p0_b_box_b9_f_left_s22_p0_b_box_b9_f_left_s24_p0_b_box_b9_f_left_s26_p0_b_box_b9_f_left_s28_p0_b_box_b9_f_left_s30_p0_b)",
+          "Edge e_canon_v_canon_10.0000000000_13.0614674589_17.3910362601_v_canon_8.4692662705_12.6513085923_17.3910362601_solid_bool_difference_sph_a9_box_b9_0 has inconsistent orientation across adjacent faces (sph_a9_f_top_3,sph_a9_f_mid_0_3)",
+          "Edge e_canon_v_canon_7.3486914077_11.5307337295_17.3910362601_v_canon_8.4692662705_12.6513085923_17.3910362601_solid_bool_difference_sph_a9_box_b9_0 has inconsistent orientation across adjacent faces (sph_a9_f_top_4,sph_a9_f_mid_0_4)",
+          "Edge e_canon_v_canon_10.0000000000_10.0000000000_18.0000000000_v_canon_10.0000000000_6.9385325411_17.3910362601_solid_bool_difference_sph_a9_box_b9_0 has inconsistent orientation across adjacent faces (box_b9_f_left_box_b9_f_left_s0_p0_a_box_b9_f_left_s2_p0_a_box_b9_f_left_s4_p0_b_box_b9_f_left_s6_p0_b_box_b9_f_left_s8_p0_b_box_b9_f_left_s10_p0_b_box_b9_f_left_s12_p0_b_box_b9_f_left_s14_p0_b_box_b9_f_left_s16_p0_b_box_b9_f_left_s18_p0_b_box_b9_f_left_s20_p0_b_box_b9_f_left_s22_p0_b_box_b9_f_left_s24_p0_b_box_b9_f_left_s26_p0_b_box_b9_f_left_s28_p0_b_box_b9_f_left_s30_p0_b,sph_a9_f_top_8)",
+          "Edge e_canon_v_canon_6.9385325411_10.0000000000_17.3910362601_v_canon_7.3486914077_11.5307337295_17.3910362601_solid_bool_difference_sph_a9_box_b9_0 has inconsistent orientation across adjacent faces (sph_a9_f_top_5,sph_a9_f_mid_0_5)",
+          "Edge e_canon_v_canon_10.0000000000_6.9385325411_17.3910362601_v_canon_8.4692662705_7.3486914077_17.3910362601_solid_bool_difference_sph_a9_box_b9_0 has inconsistent orientation across adjacent faces (sph_a9_f_top_8,sph_a9_f_mid_0_8)",
+          "Edge e_canon_v_canon_6.9385325411_10.0000000000_17.3910362601_v_canon_7.3486914077_8.4692662705_17.3910362601_solid_bool_difference_sph_a9_box_b9_0 has inconsistent orientation across adjacent faces (sph_a9_f_top_6,sph_a9_f_mid_0_6)",
+          "Edge e_canon_v_canon_7.3486914077_8.4692662705_17.3910362601_v_canon_8.4692662705_7.3486914077_17.3910362601_solid_bool_difference_sph_a9_box_b9_0 has inconsistent orientation across adjacent faces (sph_a9_f_top_7,sph_a9_f_mid_0_7)",
+          "Outer shell shell_comp_0 has negative signed volume (-793.4069) indicating inverted outward normal"
+        ]
+      },
+      "determinismResult": {
+        "isDeterministic": true,
+        "passCount": 3,
+        "driftCount": 0,
+        "hashes": [
+          "f9b73a76396af6efdd584b97a166a778411b30584421f6556a2e8dc1041f720d",
+          "f9b73a76396af6efdd584b97a166a778411b30584421f6556a2e8dc1041f720d",
+          "f9b73a76396af6efdd584b97a166a778411b30584421f6556a2e8dc1041f720d"
+        ]
+      },
+      "verdict": "TOPOLOGY_FAILURE",
+      "diagnostics": [
+        "Edge e_canon_v_canon_10.0000000000_10.0000000000_18.0000000000_v_canon_10.0000000000_13.0614674589_17.3910362601_solid_bool_difference_sph_a9_box_b9_0 has inconsistent orientation across adjacent faces (sph_a9_f_top_3,box_b9_f_left_box_b9_f_left_s0_p0_a_box_b9_f_left_s2_p0_a_box_b9_f_left_s4_p0_b_box_b9_f_left_s6_p0_b_box_b9_f_left_s8_p0_b_box_b9_f_left_s10_p0_b_box_b9_f_left_s12_p0_b_box_b9_f_left_s14_p0_b_box_b9_f_left_s16_p0_b_box_b9_f_left_s18_p0_b_box_b9_f_left_s20_p0_b_box_b9_f_left_s22_p0_b_box_b9_f_left_s24_p0_b_box_b9_f_left_s26_p0_b_box_b9_f_left_s28_p0_b_box_b9_f_left_s30_p0_b)",
+        "Edge e_canon_v_canon_10.0000000000_13.0614674589_17.3910362601_v_canon_8.4692662705_12.6513085923_17.3910362601_solid_bool_difference_sph_a9_box_b9_0 has inconsistent orientation across adjacent faces (sph_a9_f_top_3,sph_a9_f_mid_0_3)",
+        "Edge e_canon_v_canon_7.3486914077_11.5307337295_17.3910362601_v_canon_8.4692662705_12.6513085923_17.3910362601_solid_bool_difference_sph_a9_box_b9_0 has inconsistent orientation across adjacent faces (sph_a9_f_top_4,sph_a9_f_mid_0_4)",
+        "Edge e_canon_v_canon_10.0000000000_10.0000000000_18.0000000000_v_canon_10.0000000000_6.9385325411_17.3910362601_solid_bool_difference_sph_a9_box_b9_0 has inconsistent orientation across adjacent faces (box_b9_f_left_box_b9_f_left_s0_p0_a_box_b9_f_left_s2_p0_a_box_b9_f_left_s4_p0_b_box_b9_f_left_s6_p0_b_box_b9_f_left_s8_p0_b_box_b9_f_left_s10_p0_b_box_b9_f_left_s12_p0_b_box_b9_f_left_s14_p0_b_box_b9_f_left_s16_p0_b_box_b9_f_left_s18_p0_b_box_b9_f_left_s20_p0_b_box_b9_f_left_s22_p0_b_box_b9_f_left_s24_p0_b_box_b9_f_left_s26_p0_b_box_b9_f_left_s28_p0_b_box_b9_f_left_s30_p0_b,sph_a9_f_top_8)",
+        "Edge e_canon_v_canon_6.9385325411_10.0000000000_17.3910362601_v_canon_7.3486914077_11.5307337295_17.3910362601_solid_bool_difference_sph_a9_box_b9_0 has inconsistent orientation across adjacent faces (sph_a9_f_top_5,sph_a9_f_mid_0_5)",
+        "Edge e_canon_v_canon_10.0000000000_6.9385325411_17.3910362601_v_canon_8.4692662705_7.3486914077_17.3910362601_solid_bool_difference_sph_a9_box_b9_0 has inconsistent orientation across adjacent faces (sph_a9_f_top_8,sph_a9_f_mid_0_8)",
+        "Edge e_canon_v_canon_6.9385325411_10.0000000000_17.3910362601_v_canon_7.3486914077_8.4692662705_17.3910362601_solid_bool_difference_sph_a9_box_b9_0 has inconsistent orientation across adjacent faces (sph_a9_f_top_6,sph_a9_f_mid_0_6)",
+        "Edge e_canon_v_canon_7.3486914077_8.4692662705_17.3910362601_v_canon_8.4692662705_7.3486914077_17.3910362601_solid_bool_difference_sph_a9_box_b9_0 has inconsistent orientation across adjacent faces (sph_a9_f_top_7,sph_a9_f_mid_0_7)",
+        "Outer shell shell_comp_0 has negative signed volume (-793.4069) indicating inverted outward normal"
+      ],
+      "ledgerTimestamp": "2026-08-25T14:16:25.034Z",
+      "attestationSignature": "e2b370f4320a7406a6c22d0342f29b35d40a6062606c124a856816a35425ca3e"
+    },
+    {
+      "testId": "CASE_B01_TANGENT_FACE_CONTACT",
+      "seed": 100,
+      "operation": "UNION",
+      "category": "B_TANGENCY_CASES",
+      "operandAIdentity": "box_tan_f1",
+      "operandBIdentity": "box_tan_f2",
+      "inputHash": "f794689e5e7363e292681e9bf1a826235be9a80fed690bd59f52b52070cd5d5d",
+      "kernelVersion": "SECP-BOOLEAN-2.0.0",
+      "tolerance": {
+        "absoluteLength": 1e-7,
+        "relativeLength": 0.000001,
+        "angularRad": 0.000001,
+        "area": 1e-14,
+        "volume": 1e-21,
+        "parameter": 1e-7,
+        "determinant": 1e-12
+      },
+      "executionTimeMs": 2.0065139999996973,
+      "resultTopologyHash": "e0ac9c49c4747f992bdc6ece0283e3b8c8b230eb71729572a981568712575733",
+      "resultGeometryHash": "69a6a7e19b1bfcf5d3e8f507efb20c222b5507e675a0a7d45533a6cd0e5de52c",
+      "volume": 1999.9999999999998,
+      "surfaceArea": 1000,
+      "boundingBox": {
+        "min": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "max": {
+          "x": 20,
+          "y": 10,
+          "z": 10
+        }
+      },
+      "invariants": {
+        "expectedVolume": 2000,
+        "actualVolume": 1999.9999999999998,
+        "volumeError": 2.2737367544323206e-13,
+        "relativeVolumeError": 1.1368683772161603e-16,
+        "expectedSurfaceArea": null,
+        "actualSurfaceArea": 1000,
+        "invariantsSatisfied": true,
+        "satisfiesInclusionExclusion": true,
+        "satisfiesDifferenceBounds": true,
+        "satisfiesIntersectionBounds": true,
+        "details": [
+          "Union volume 2000.0000 satisfies inclusion-exclusion bounds"
+        ]
+      },
+      "topologyValidation": {
+        "isClosedShell": true,
+        "isManifold": true,
+        "eulerCharacteristic": 2,
+        "genus": 0,
+        "faceOrientationConsistent": true,
+        "edgeConnectivityValid": true,
+        "vertexConsistencyValid": true,
+        "orphanVertexCount": 0,
+        "orphanEdgeCount": 0,
+        "orphanFaceCount": 0,
+        "danglingTopologyCount": 0,
+        "nonManifoldEdgeCount": 0,
+        "invertedShellsCount": 0,
+        "selfIntersectionsCount": 0,
+        "duplicateFaceCount": 0,
+        "connectedComponentsCount": 1,
+        "issues": []
+      },
+      "determinismResult": {
+        "isDeterministic": true,
+        "passCount": 3,
+        "driftCount": 0,
+        "hashes": [
+          "ecba693b7cf55d5e9ff4f6e71c4df965d5c8d589d3ba8b79f1c33133e1be4526",
+          "ecba693b7cf55d5e9ff4f6e71c4df965d5c8d589d3ba8b79f1c33133e1be4526",
+          "ecba693b7cf55d5e9ff4f6e71c4df965d5c8d589d3ba8b79f1c33133e1be4526"
+        ]
+      },
+      "verdict": "PASS",
+      "diagnostics": [
+        "Independent geometric and topological invariants strictly verified"
+      ],
+      "ledgerTimestamp": "2026-08-25T14:16:25.044Z",
+      "attestationSignature": "30b12382fbcd5826420baff2a921e3839c6d5b1562a02673968e504f98a432e6"
+    },
+    {
+      "testId": "CASE_B02_TANGENT_EDGE_CONTACT",
+      "seed": 100,
+      "operation": "UNION",
+      "category": "B_TANGENCY_CASES",
+      "operandAIdentity": "box_tan_e1",
+      "operandBIdentity": "box_tan_e2",
+      "inputHash": "af0563f6ac5a0da8e12f68713a60c6b902fe24e4084554b24d64c3b0a2b48a7e",
+      "kernelVersion": "SECP-BOOLEAN-2.0.0",
+      "tolerance": {
+        "absoluteLength": 1e-7,
+        "relativeLength": 0.000001,
+        "angularRad": 0.000001,
+        "area": 1e-14,
+        "volume": 1e-21,
+        "parameter": 1e-7,
+        "determinant": 1e-12
+      },
+      "executionTimeMs": 2.4690389999996114,
+      "resultTopologyHash": "e0ac9c49c4747f992bdc6ece0283e3b8c8b230eb71729572a981568712575733",
+      "resultGeometryHash": "fe9783acc9c9a45918e8d5ebec87626de80d8ba4c78abbfc91f6220bd89b1850",
+      "volume": 2000,
+      "surfaceArea": 0,
+      "boundingBox": {
+        "min": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "max": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        }
+      },
+      "invariants": {
+        "expectedVolume": 2000,
+        "actualVolume": 2000,
+        "volumeError": 0,
+        "relativeVolumeError": 0,
+        "expectedSurfaceArea": null,
+        "actualSurfaceArea": 0,
+        "invariantsSatisfied": true,
+        "satisfiesInclusionExclusion": true,
+        "satisfiesDifferenceBounds": true,
+        "satisfiesIntersectionBounds": true,
+        "details": [
+          "Union volume 2000.0000 satisfies inclusion-exclusion bounds"
+        ]
+      },
+      "topologyValidation": {
+        "isClosedShell": true,
+        "isManifold": true,
+        "eulerCharacteristic": 2,
+        "genus": 1,
+        "faceOrientationConsistent": true,
+        "edgeConnectivityValid": true,
+        "vertexConsistencyValid": true,
+        "orphanVertexCount": 0,
+        "orphanEdgeCount": 0,
+        "orphanFaceCount": 0,
+        "danglingTopologyCount": 0,
+        "nonManifoldEdgeCount": 0,
+        "invertedShellsCount": 0,
+        "selfIntersectionsCount": 0,
+        "duplicateFaceCount": 0,
+        "connectedComponentsCount": 2,
+        "issues": []
+      },
+      "determinismResult": {
+        "isDeterministic": true,
+        "passCount": 3,
+        "driftCount": 0,
+        "hashes": [
+          "5b759b403abb36049dd9ad09cb152a657786d7df6d6bd987d1779f605745e9d3",
+          "5b759b403abb36049dd9ad09cb152a657786d7df6d6bd987d1779f605745e9d3",
+          "5b759b403abb36049dd9ad09cb152a657786d7df6d6bd987d1779f605745e9d3"
+        ]
+      },
+      "verdict": "PASS",
+      "diagnostics": [
+        "Independent geometric and topological invariants strictly verified"
+      ],
+      "ledgerTimestamp": "2026-08-25T14:16:25.054Z",
+      "attestationSignature": "4ecf4786fd170c16ca6c5d73e7a015d4a098523a00afb4e661cb4b2f2d8baa46"
+    },
+    {
+      "testId": "CASE_B03_TANGENT_VERTEX_CONTACT",
+      "seed": 100,
+      "operation": "UNION",
+      "category": "B_TANGENCY_CASES",
+      "operandAIdentity": "box_tan_v1",
+      "operandBIdentity": "box_tan_v2",
+      "inputHash": "ec6f92879d938940561559982f1593a2e63d5626017d89faa4b0ee15a2a77071",
+      "kernelVersion": "SECP-BOOLEAN-2.0.0",
+      "tolerance": {
+        "absoluteLength": 1e-7,
+        "relativeLength": 0.000001,
+        "angularRad": 0.000001,
+        "area": 1e-14,
+        "volume": 1e-21,
+        "parameter": 1e-7,
+        "determinant": 1e-12
+      },
+      "executionTimeMs": 2.193148999999721,
+      "resultTopologyHash": "2b63e394a52c4dd4ecb990456f847dca927da4e40f0b69aa8aeb38e8811eb4f9",
+      "resultGeometryHash": "fe9783acc9c9a45918e8d5ebec87626de80d8ba4c78abbfc91f6220bd89b1850",
+      "volume": 2000,
+      "surfaceArea": 0,
+      "boundingBox": {
+        "min": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "max": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        }
+      },
+      "invariants": {
+        "expectedVolume": 2000,
+        "actualVolume": 2000,
+        "volumeError": 0,
+        "relativeVolumeError": 0,
+        "expectedSurfaceArea": null,
+        "actualSurfaceArea": 0,
+        "invariantsSatisfied": true,
+        "satisfiesInclusionExclusion": true,
+        "satisfiesDifferenceBounds": true,
+        "satisfiesIntersectionBounds": true,
+        "details": [
+          "Union volume 2000.0000 satisfies inclusion-exclusion bounds"
+        ]
+      },
+      "topologyValidation": {
+        "isClosedShell": true,
+        "isManifold": true,
+        "eulerCharacteristic": 3,
+        "genus": 1,
+        "faceOrientationConsistent": true,
+        "edgeConnectivityValid": true,
+        "vertexConsistencyValid": true,
+        "orphanVertexCount": 0,
+        "orphanEdgeCount": 0,
+        "orphanFaceCount": 0,
+        "danglingTopologyCount": 0,
+        "nonManifoldEdgeCount": 0,
+        "invertedShellsCount": 0,
+        "selfIntersectionsCount": 0,
+        "duplicateFaceCount": 0,
+        "connectedComponentsCount": 2,
+        "issues": []
+      },
+      "determinismResult": {
+        "isDeterministic": true,
+        "passCount": 3,
+        "driftCount": 0,
+        "hashes": [
+          "19f736d2028667db5330054c46ba48e0b18c2a39069680d7845cdab381345bae",
+          "19f736d2028667db5330054c46ba48e0b18c2a39069680d7845cdab381345bae",
+          "19f736d2028667db5330054c46ba48e0b18c2a39069680d7845cdab381345bae"
+        ]
+      },
+      "verdict": "PASS",
+      "diagnostics": [
+        "Independent geometric and topological invariants strictly verified"
+      ],
+      "ledgerTimestamp": "2026-08-25T14:16:25.065Z",
+      "attestationSignature": "8f6908ede4459e7a88b2c9651836c33a388ec2dce605d140ca9dce06e5ab686b"
+    },
+    {
+      "testId": "CASE_B04_TANGENT_INTERSECTION_EMPTY",
+      "seed": 100,
+      "operation": "INTERSECTION",
+      "category": "B_TANGENCY_CASES",
+      "operandAIdentity": "box_tan_i1",
+      "operandBIdentity": "box_tan_i2",
+      "inputHash": "0e78e555737af671ff90ec91d1f90309910872d4931506b049cd150a644a36f5",
+      "kernelVersion": "SECP-BOOLEAN-2.0.0",
+      "tolerance": {
+        "absoluteLength": 1e-7,
+        "relativeLength": 0.000001,
+        "angularRad": 0.000001,
+        "area": 1e-14,
+        "volume": 1e-21,
+        "parameter": 1e-7,
+        "determinant": 1e-12
+      },
+      "executionTimeMs": 1.5517289999997956,
+      "resultTopologyHash": "1b0d0c88f28ee8ce41882fe9eb576e932b50b5ce389706b0c89f3f13c55561b6",
+      "resultGeometryHash": "9e5d69416c8bf9f934129ea62dee33868e90ef39a4eac12c99df5e067508da39",
+      "volume": 0,
+      "surfaceArea": 0,
+      "boundingBox": {
+        "min": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "max": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        }
+      },
+      "invariants": {
+        "expectedVolume": 0,
+        "actualVolume": 0,
+        "volumeError": 0,
+        "relativeVolumeError": 0,
+        "expectedSurfaceArea": null,
+        "actualSurfaceArea": 0,
+        "invariantsSatisfied": true,
+        "satisfiesInclusionExclusion": true,
+        "satisfiesDifferenceBounds": true,
+        "satisfiesIntersectionBounds": true,
+        "details": [
+          "Intersection volume 0.0000 satisfies intersection upper bound 1000.0000"
+        ]
+      },
+      "topologyValidation": {
+        "isClosedShell": true,
+        "isManifold": true,
+        "eulerCharacteristic": 0,
+        "genus": 0,
+        "faceOrientationConsistent": true,
+        "edgeConnectivityValid": true,
+        "vertexConsistencyValid": true,
+        "orphanVertexCount": 0,
+        "orphanEdgeCount": 0,
+        "orphanFaceCount": 0,
+        "danglingTopologyCount": 0,
+        "nonManifoldEdgeCount": 0,
+        "invertedShellsCount": 0,
+        "selfIntersectionsCount": 0,
+        "duplicateFaceCount": 0,
+        "connectedComponentsCount": 0,
+        "issues": [
+          "Null shape evaluated as empty topology"
+        ]
+      },
+      "determinismResult": {
+        "isDeterministic": true,
+        "passCount": 3,
+        "driftCount": 0,
+        "hashes": [
+          "b1ab8941b2160c7e97906ba215468d4ae72edc9d93a6a896d24e1a743ce9f89e",
+          "b1ab8941b2160c7e97906ba215468d4ae72edc9d93a6a896d24e1a743ce9f89e",
+          "b1ab8941b2160c7e97906ba215468d4ae72edc9d93a6a896d24e1a743ce9f89e"
+        ]
+      },
+      "verdict": "PASS",
+      "diagnostics": [
+        "Independent geometric and topological invariants strictly verified"
+      ],
+      "ledgerTimestamp": "2026-08-25T14:16:25.072Z",
+      "attestationSignature": "0e495789241474e8bbb1efffd2e50aaae177529be51fe9d8d14331c9fa42ecf7"
+    },
+    {
+      "testId": "CASE_C01_IDENTICAL_UNION",
+      "seed": 100,
+      "operation": "UNION",
+      "category": "C_COINCIDENT_GEOMETRY",
+      "operandAIdentity": "box_iden_1",
+      "operandBIdentity": "box_iden_1",
+      "inputHash": "b4d70dd57769d6fb59bf0b1c083b9fb833a6a3eee90dbcddb3a46f52ed74ca5c",
+      "kernelVersion": "SECP-BOOLEAN-2.0.0",
+      "tolerance": {
+        "absoluteLength": 1e-7,
+        "relativeLength": 0.000001,
+        "angularRad": 0.000001,
+        "area": 1e-14,
+        "volume": 1e-21,
+        "parameter": 1e-7,
+        "determinant": 1e-12
+      },
+      "executionTimeMs": 0.37006900000051246,
+      "resultTopologyHash": "e0ac9c49c4747f992bdc6ece0283e3b8c8b230eb71729572a981568712575733",
+      "resultGeometryHash": "9193ff4939087b69a400e9847f3c347b6497a78e95427df3c0e2760ecc1c9952",
+      "volume": 1000,
+      "surfaceArea": 600,
+      "boundingBox": {
+        "min": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "max": {
+          "x": 10,
+          "y": 10,
+          "z": 10
+        }
+      },
+      "invariants": {
+        "expectedVolume": 1000,
+        "actualVolume": 1000,
+        "volumeError": 0,
+        "relativeVolumeError": 0,
+        "expectedSurfaceArea": null,
+        "actualSurfaceArea": 600,
+        "invariantsSatisfied": true,
+        "satisfiesInclusionExclusion": true,
+        "satisfiesDifferenceBounds": true,
+        "satisfiesIntersectionBounds": true,
+        "details": [
+          "Union volume 1000.0000 satisfies inclusion-exclusion bounds"
+        ]
+      },
+      "topologyValidation": {
+        "isClosedShell": true,
+        "isManifold": true,
+        "eulerCharacteristic": 2,
+        "genus": 0,
+        "faceOrientationConsistent": true,
+        "edgeConnectivityValid": true,
+        "vertexConsistencyValid": true,
+        "orphanVertexCount": 0,
+        "orphanEdgeCount": 0,
+        "orphanFaceCount": 0,
+        "danglingTopologyCount": 0,
+        "nonManifoldEdgeCount": 0,
+        "invertedShellsCount": 0,
+        "selfIntersectionsCount": 0,
+        "duplicateFaceCount": 0,
+        "connectedComponentsCount": 1,
+        "issues": []
+      },
+      "determinismResult": {
+        "isDeterministic": true,
+        "passCount": 3,
+        "driftCount": 0,
+        "hashes": [
+          "9a0b66e93d5a1c7b2c49157cd2af26e0430e4a838546e060c2ba7c6954723021",
+          "9a0b66e93d5a1c7b2c49157cd2af26e0430e4a838546e060c2ba7c6954723021",
+          "9a0b66e93d5a1c7b2c49157cd2af26e0430e4a838546e060c2ba7c6954723021"
+        ]
+      },
+      "verdict": "PASS",
+      "diagnostics": [
+        "Independent geometric and topological invariants strictly verified"
+      ],
+      "ledgerTimestamp": "2026-08-25T14:16:25.074Z",
+      "attestationSignature": "cee72b41855976aea35b7d92328144ee883afd9101487c0d982b66800e111a7e"
+    },
+    {
+      "testId": "CASE_C02_IDENTICAL_INTERSECTION",
+      "seed": 100,
+      "operation": "INTERSECTION",
+      "category": "C_COINCIDENT_GEOMETRY",
+      "operandAIdentity": "box_iden_2",
+      "operandBIdentity": "box_iden_2",
+      "inputHash": "192237a68e8b4def0104ae27a8e66159bcf315082fa558ed1dc10bce01f8a3cd",
+      "kernelVersion": "SECP-BOOLEAN-2.0.0",
+      "tolerance": {
+        "absoluteLength": 1e-7,
+        "relativeLength": 0.000001,
+        "angularRad": 0.000001,
+        "area": 1e-14,
+        "volume": 1e-21,
+        "parameter": 1e-7,
+        "determinant": 1e-12
+      },
+      "executionTimeMs": 0.22192099999938364,
+      "resultTopologyHash": "e0ac9c49c4747f992bdc6ece0283e3b8c8b230eb71729572a981568712575733",
+      "resultGeometryHash": "9193ff4939087b69a400e9847f3c347b6497a78e95427df3c0e2760ecc1c9952",
+      "volume": 1000,
+      "surfaceArea": 600,
+      "boundingBox": {
+        "min": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "max": {
+          "x": 10,
+          "y": 10,
+          "z": 10
+        }
+      },
+      "invariants": {
+        "expectedVolume": 1000,
+        "actualVolume": 1000,
+        "volumeError": 0,
+        "relativeVolumeError": 0,
+        "expectedSurfaceArea": null,
+        "actualSurfaceArea": 600,
+        "invariantsSatisfied": true,
+        "satisfiesInclusionExclusion": true,
+        "satisfiesDifferenceBounds": true,
+        "satisfiesIntersectionBounds": true,
+        "details": [
+          "Intersection volume 1000.0000 satisfies intersection upper bound 1000.0000"
+        ]
+      },
+      "topologyValidation": {
+        "isClosedShell": true,
+        "isManifold": true,
+        "eulerCharacteristic": 2,
+        "genus": 0,
+        "faceOrientationConsistent": true,
+        "edgeConnectivityValid": true,
+        "vertexConsistencyValid": true,
+        "orphanVertexCount": 0,
+        "orphanEdgeCount": 0,
+        "orphanFaceCount": 0,
+        "danglingTopologyCount": 0,
+        "nonManifoldEdgeCount": 0,
+        "invertedShellsCount": 0,
+        "selfIntersectionsCount": 0,
+        "duplicateFaceCount": 0,
+        "connectedComponentsCount": 1,
+        "issues": []
+      },
+      "determinismResult": {
+        "isDeterministic": true,
+        "passCount": 3,
+        "driftCount": 0,
+        "hashes": [
+          "1ef427f06f8111d1fae0b8d13f0d2cb23450b3189ecc78fb40a7d051cea2b90c",
+          "1ef427f06f8111d1fae0b8d13f0d2cb23450b3189ecc78fb40a7d051cea2b90c",
+          "1ef427f06f8111d1fae0b8d13f0d2cb23450b3189ecc78fb40a7d051cea2b90c"
+        ]
+      },
+      "verdict": "PASS",
+      "diagnostics": [
+        "Independent geometric and topological invariants strictly verified"
+      ],
+      "ledgerTimestamp": "2026-08-25T14:16:25.075Z",
+      "attestationSignature": "2d00f4fefd1715ab64c787bc5271c175061d919298e2990b958b77b8fdaaa1db"
+    },
+    {
+      "testId": "CASE_C03_IDENTICAL_DIFFERENCE",
+      "seed": 100,
+      "operation": "DIFFERENCE",
+      "category": "C_COINCIDENT_GEOMETRY",
+      "operandAIdentity": "box_iden_3",
+      "operandBIdentity": "box_iden_3",
+      "inputHash": "0f7712e8af9704a065d8275613d11c85d4ec7c758aee5f35231d25a72eb26ef8",
+      "kernelVersion": "SECP-BOOLEAN-2.0.0",
+      "tolerance": {
+        "absoluteLength": 1e-7,
+        "relativeLength": 0.000001,
+        "angularRad": 0.000001,
+        "area": 1e-14,
+        "volume": 1e-21,
+        "parameter": 1e-7,
+        "determinant": 1e-12
+      },
+      "executionTimeMs": 0.18692399999963527,
+      "resultTopologyHash": "1b0d0c88f28ee8ce41882fe9eb576e932b50b5ce389706b0c89f3f13c55561b6",
+      "resultGeometryHash": "9e5d69416c8bf9f934129ea62dee33868e90ef39a4eac12c99df5e067508da39",
+      "volume": 0,
+      "surfaceArea": 0,
+      "boundingBox": {
+        "min": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "max": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        }
+      },
+      "invariants": {
+        "expectedVolume": 0,
+        "actualVolume": 0,
+        "volumeError": 0,
+        "relativeVolumeError": 0,
+        "expectedSurfaceArea": null,
+        "actualSurfaceArea": 0,
+        "invariantsSatisfied": true,
+        "satisfiesInclusionExclusion": true,
+        "satisfiesDifferenceBounds": true,
+        "satisfiesIntersectionBounds": true,
+        "details": [
+          "Difference volume 0.0000 satisfies difference bounds [0, 1000.0000]"
+        ]
+      },
+      "topologyValidation": {
+        "isClosedShell": true,
+        "isManifold": true,
+        "eulerCharacteristic": 0,
+        "genus": 0,
+        "faceOrientationConsistent": true,
+        "edgeConnectivityValid": true,
+        "vertexConsistencyValid": true,
+        "orphanVertexCount": 0,
+        "orphanEdgeCount": 0,
+        "orphanFaceCount": 0,
+        "danglingTopologyCount": 0,
+        "nonManifoldEdgeCount": 0,
+        "invertedShellsCount": 0,
+        "selfIntersectionsCount": 0,
+        "duplicateFaceCount": 0,
+        "connectedComponentsCount": 0,
+        "issues": [
+          "Null shape evaluated as empty topology"
+        ]
+      },
+      "determinismResult": {
+        "isDeterministic": true,
+        "passCount": 3,
+        "driftCount": 0,
+        "hashes": [
+          "77c4ffc859deced839a108b88b01f6bb3a5fc097803e517d019c99220c4bdd45",
+          "77c4ffc859deced839a108b88b01f6bb3a5fc097803e517d019c99220c4bdd45",
+          "77c4ffc859deced839a108b88b01f6bb3a5fc097803e517d019c99220c4bdd45"
+        ]
+      },
+      "verdict": "PASS",
+      "diagnostics": [
+        "Independent geometric and topological invariants strictly verified"
+      ],
+      "ledgerTimestamp": "2026-08-25T14:16:25.076Z",
+      "attestationSignature": "9b0bcf17f6abce07a07670581d2fa33f0fa4d0d92d7f717be2172d3cb2d21060"
+    },
+    {
+      "testId": "CASE_C04_COINCIDENT_BOTTOM_FACE",
+      "seed": 100,
+      "operation": "UNION",
+      "category": "C_COINCIDENT_GEOMETRY",
+      "operandAIdentity": "box_cop_1",
+      "operandBIdentity": "box_cop_2",
+      "inputHash": "39944950fd3f03fe56cafabcf48de9e96e07309ea64131936725dbf3e894e4c4",
+      "kernelVersion": "SECP-BOOLEAN-2.0.0",
+      "tolerance": {
+        "absoluteLength": 1e-7,
+        "relativeLength": 0.000001,
+        "angularRad": 0.000001,
+        "area": 1e-14,
+        "volume": 1e-21,
+        "parameter": 1e-7,
+        "determinant": 1e-12
+      },
+      "executionTimeMs": 2.8028919999997015,
+      "resultTopologyHash": "e0ac9c49c4747f992bdc6ece0283e3b8c8b230eb71729572a981568712575733",
+      "resultGeometryHash": "5e3e03e1d0607f69e0de4d6fb4ace31fbe3b764f7a4bab3580105c289448d855",
+      "volume": 1500,
+      "surfaceArea": 800,
+      "boundingBox": {
+        "min": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "max": {
+          "x": 15,
+          "y": 10,
+          "z": 10
+        }
+      },
+      "invariants": {
+        "expectedVolume": 1500,
+        "actualVolume": 1500,
+        "volumeError": 0,
+        "relativeVolumeError": 0,
+        "expectedSurfaceArea": null,
+        "actualSurfaceArea": 800,
+        "invariantsSatisfied": true,
+        "satisfiesInclusionExclusion": true,
+        "satisfiesDifferenceBounds": true,
+        "satisfiesIntersectionBounds": true,
+        "details": [
+          "Union volume 1500.0000 satisfies inclusion-exclusion bounds"
+        ]
+      },
+      "topologyValidation": {
+        "isClosedShell": true,
+        "isManifold": true,
+        "eulerCharacteristic": 2,
+        "genus": 0,
+        "faceOrientationConsistent": true,
+        "edgeConnectivityValid": true,
+        "vertexConsistencyValid": true,
+        "orphanVertexCount": 0,
+        "orphanEdgeCount": 0,
+        "orphanFaceCount": 0,
+        "danglingTopologyCount": 0,
+        "nonManifoldEdgeCount": 0,
+        "invertedShellsCount": 0,
+        "selfIntersectionsCount": 0,
+        "duplicateFaceCount": 0,
+        "connectedComponentsCount": 1,
+        "issues": []
+      },
+      "determinismResult": {
+        "isDeterministic": true,
+        "passCount": 3,
+        "driftCount": 0,
+        "hashes": [
+          "37cd0fdbe8b0965489846cf987f69c07dcf4d3dd9a76949813637bfd18933d10",
+          "37cd0fdbe8b0965489846cf987f69c07dcf4d3dd9a76949813637bfd18933d10",
+          "37cd0fdbe8b0965489846cf987f69c07dcf4d3dd9a76949813637bfd18933d10"
+        ]
+      },
+      "verdict": "PASS",
+      "diagnostics": [
+        "Independent geometric and topological invariants strictly verified"
+      ],
+      "ledgerTimestamp": "2026-08-25T14:16:25.090Z",
+      "attestationSignature": "0eaccf0de172f0f7a9dcd2f3812d330a9e764d8e4e4e5357d5e6e904a9ab34b1"
+    },
+    {
+      "testId": "CASE_D01_TINY_GAP_1E7",
+      "seed": 100,
+      "operation": "UNION",
+      "category": "D_NEAR_DEGENERATE_GEOMETRY",
+      "operandAIdentity": "box_gap_1",
+      "operandBIdentity": "box_gap_2",
+      "inputHash": "f99647881c2c336cca94557734070f1736cb43b0deb9412641e75c70b6e1618c",
+      "kernelVersion": "SECP-BOOLEAN-2.0.0",
+      "tolerance": {
+        "absoluteLength": 1e-7,
+        "relativeLength": 0.000001,
+        "angularRad": 0.000001,
+        "area": 1e-14,
+        "volume": 1e-21,
+        "parameter": 1e-7,
+        "determinant": 1e-12
+      },
+      "executionTimeMs": 2.7100940000000264,
+      "resultTopologyHash": "e0ac9c49c4747f992bdc6ece0283e3b8c8b230eb71729572a981568712575733",
+      "resultGeometryHash": "fef2e608eeae2e785448b523e6be93798401b8eaa5de2beda8c96b068296de2e",
+      "volume": 2000.0000100000002,
+      "surfaceArea": 1000.0000040000003,
+      "boundingBox": {
+        "min": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "max": {
+          "x": 20.0000001,
+          "y": 10,
+          "z": 10
+        }
+      },
+      "invariants": {
+        "expectedVolume": 2000,
+        "actualVolume": 2000.0000100000002,
+        "volumeError": 0.000010000000202126103,
+        "relativeVolumeError": 5.000000101063051e-9,
+        "expectedSurfaceArea": null,
+        "actualSurfaceArea": 1000.0000040000003,
+        "invariantsSatisfied": true,
+        "satisfiesInclusionExclusion": true,
+        "satisfiesDifferenceBounds": true,
+        "satisfiesIntersectionBounds": true,
+        "details": [
+          "Union volume 2000.0000 satisfies inclusion-exclusion bounds"
+        ]
+      },
+      "topologyValidation": {
+        "isClosedShell": true,
+        "isManifold": true,
+        "eulerCharacteristic": 2,
+        "genus": 0,
+        "faceOrientationConsistent": true,
+        "edgeConnectivityValid": true,
+        "vertexConsistencyValid": true,
+        "orphanVertexCount": 0,
+        "orphanEdgeCount": 0,
+        "orphanFaceCount": 0,
+        "danglingTopologyCount": 0,
+        "nonManifoldEdgeCount": 0,
+        "invertedShellsCount": 0,
+        "selfIntersectionsCount": 0,
+        "duplicateFaceCount": 0,
+        "connectedComponentsCount": 1,
+        "issues": []
+      },
+      "determinismResult": {
+        "isDeterministic": true,
+        "passCount": 3,
+        "driftCount": 0,
+        "hashes": [
+          "5ce8dc56c52cd4a833b72e47c8a316a66d1f8a7298991c5d3edd8f3614780c0c",
+          "5ce8dc56c52cd4a833b72e47c8a316a66d1f8a7298991c5d3edd8f3614780c0c",
+          "5ce8dc56c52cd4a833b72e47c8a316a66d1f8a7298991c5d3edd8f3614780c0c"
+        ]
+      },
+      "verdict": "PASS",
+      "diagnostics": [
+        "Independent geometric and topological invariants strictly verified"
+      ],
+      "ledgerTimestamp": "2026-08-25T14:16:25.098Z",
+      "attestationSignature": "29ebe56594443c46fe4cddb6ad8a832a822d36daef41781ace1f7df7712c3856"
+    },
+    {
+      "testId": "CASE_D02_TINY_OVERLAP_1E7",
+      "seed": 100,
+      "operation": "INTERSECTION",
+      "category": "D_NEAR_DEGENERATE_GEOMETRY",
+      "operandAIdentity": "box_ov_1",
+      "operandBIdentity": "box_ov_2",
+      "inputHash": "9a0beeb3e42a8cbbbad50627677feb4ba5c33892a121ac7886c863328c735682",
+      "kernelVersion": "SECP-BOOLEAN-2.0.0",
+      "tolerance": {
+        "absoluteLength": 1e-7,
+        "relativeLength": 0.000001,
+        "angularRad": 0.000001,
+        "area": 1e-14,
+        "volume": 1e-21,
+        "parameter": 1e-7,
+        "determinant": 1e-12
+      },
+      "executionTimeMs": 2.0023229999997056,
+      "resultTopologyHash": "1b0d0c88f28ee8ce41882fe9eb576e932b50b5ce389706b0c89f3f13c55561b6",
+      "resultGeometryHash": "9e5d69416c8bf9f934129ea62dee33868e90ef39a4eac12c99df5e067508da39",
+      "volume": 0,
+      "surfaceArea": 0,
+      "boundingBox": {
+        "min": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "max": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        }
+      },
+      "invariants": {
+        "expectedVolume": null,
+        "actualVolume": 0,
+        "volumeError": null,
+        "relativeVolumeError": null,
+        "expectedSurfaceArea": null,
+        "actualSurfaceArea": 0,
+        "invariantsSatisfied": true,
+        "satisfiesInclusionExclusion": true,
+        "satisfiesDifferenceBounds": true,
+        "satisfiesIntersectionBounds": true,
+        "details": [
+          "Intersection volume 0.0000 satisfies intersection upper bound 1000.0000"
+        ]
+      },
+      "topologyValidation": {
+        "isClosedShell": true,
+        "isManifold": true,
+        "eulerCharacteristic": 0,
+        "genus": 0,
+        "faceOrientationConsistent": true,
+        "edgeConnectivityValid": true,
+        "vertexConsistencyValid": true,
+        "orphanVertexCount": 0,
+        "orphanEdgeCount": 0,
+        "orphanFaceCount": 0,
+        "danglingTopologyCount": 0,
+        "nonManifoldEdgeCount": 0,
+        "invertedShellsCount": 0,
+        "selfIntersectionsCount": 0,
+        "duplicateFaceCount": 0,
+        "connectedComponentsCount": 0,
+        "issues": [
+          "Null shape evaluated as empty topology"
+        ]
+      },
+      "determinismResult": {
+        "isDeterministic": true,
+        "passCount": 3,
+        "driftCount": 0,
+        "hashes": [
+          "33d526b9f772357dee7e439b0be1da25f1a5ae5f4e495eedbc167c1f5ad9fc7a",
+          "33d526b9f772357dee7e439b0be1da25f1a5ae5f4e495eedbc167c1f5ad9fc7a",
+          "33d526b9f772357dee7e439b0be1da25f1a5ae5f4e495eedbc167c1f5ad9fc7a"
+        ]
+      },
+      "verdict": "PASS",
+      "diagnostics": [
+        "Independent geometric and topological invariants strictly verified"
+      ],
+      "ledgerTimestamp": "2026-08-25T14:16:25.108Z",
+      "attestationSignature": "7107a129357b858387bfa741da66a001151fb8ec17880a6b0ae6421895a61e71"
+    },
+    {
+      "testId": "CASE_D03_VERY_THIN_SOLID_1E5",
+      "seed": 100,
+      "operation": "UNION",
+      "category": "D_NEAR_DEGENERATE_GEOMETRY",
+      "operandAIdentity": "box_thin_1",
+      "operandBIdentity": "box_thin_2",
+      "inputHash": "eb397ece233c5e2aa24aba983544e95b69d981389366be781c2403321ee791d6",
+      "kernelVersion": "SECP-BOOLEAN-2.0.0",
+      "tolerance": {
+        "absoluteLength": 1e-7,
+        "relativeLength": 0.000001,
+        "angularRad": 0.000001,
+        "area": 1e-14,
+        "volume": 1e-21,
+        "parameter": 1e-7,
+        "determinant": 1e-12
+      },
+      "executionTimeMs": 4.508859999999913,
+      "resultTopologyHash": "d4b885a7d130a8816f08f943b6bb2562ae656b5b255d151b425a788c812d6d47",
+      "resultGeometryHash": "b17806333ffbf8dd6eda8d8de1138229438f3559c015be9d6bb95450a2508265",
+      "volume": 1000.0007499999999,
+      "surfaceArea": 700.00015,
+      "boundingBox": {
+        "min": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "max": {
+          "x": 15,
+          "y": 10,
+          "z": 10
+        }
+      },
+      "invariants": {
+        "expectedVolume": null,
+        "actualVolume": 1000.0007499999999,
+        "volumeError": null,
+        "relativeVolumeError": null,
+        "expectedSurfaceArea": null,
+        "actualSurfaceArea": 700.00015,
+        "invariantsSatisfied": true,
+        "satisfiesInclusionExclusion": true,
+        "satisfiesDifferenceBounds": true,
+        "satisfiesIntersectionBounds": true,
+        "details": [
+          "Union volume 1000.0007 satisfies inclusion-exclusion bounds"
+        ]
+      },
+      "topologyValidation": {
+        "isClosedShell": false,
+        "isManifold": false,
+        "eulerCharacteristic": 0,
+        "genus": 1,
+        "faceOrientationConsistent": true,
+        "edgeConnectivityValid": true,
+        "vertexConsistencyValid": true,
+        "orphanVertexCount": 0,
+        "orphanEdgeCount": 5,
+        "orphanFaceCount": 0,
+        "danglingTopologyCount": 5,
+        "nonManifoldEdgeCount": 1,
+        "invertedShellsCount": 0,
+        "selfIntersectionsCount": 0,
+        "duplicateFaceCount": 0,
+        "connectedComponentsCount": 1,
+        "issues": [
+          "Non-manifold edge e_canon_v_canon_10.0000000000_0.0000000000_0.0000000000_v_canon_10.0000000000_10.0000000000_0.0000000000_solid_bool_union_box_thin_1_box_thin_2_0 shared by 3 faces (box_thin_1_f_bottom_box_thin_1_f_bottom_s2_p0_b,box_thin_1_f_right,box_thin_2_f_bottom_box_thin_2_f_bottom_s2_p0_b)",
+          "Edge e_canon_v_canon_10.0000000000_0.0000000000_0.0000100000_v_canon_10.0000000000_10.0000000000_0.0000100000_solid_bool_union_box_thin_1_box_thin_2_0 is open/boundary (used by only 1 face: box_thin_1_f_right)",
+          "Edge e_canon_v_canon_10.0000000000_0.0000000000_0.0000100000_v_canon_15.0000000000_0.0000000000_0.0000000000_solid_bool_union_box_thin_1_box_thin_2_0 is open/boundary (used by only 1 face: box_thin_2_f_front_box_thin_2_f_front_s1_p0_b_box_thin_2_f_front_s2_p0_b)",
+          "Edge e_canon_v_canon_10.0000000000_10.0000000000_0.0000100000_v_canon_15.0000000000_10.0000000000_0.0000000000_solid_bool_union_box_thin_1_box_thin_2_0 is open/boundary (used by only 1 face: box_thin_2_f_back_box_thin_2_f_back_s1_p0_b_box_thin_2_f_back_s2_p0_b)",
+          "Edge e_canon_v_canon_10.0000000000_10.0000000000_0.0000000000_v_canon_15.0000000000_10.0000000000_0.0000000000_solid_bool_union_box_thin_1_box_thin_2_0 is open/boundary (used by only 1 face: box_thin_2_f_bottom_box_thin_2_f_bottom_s2_p0_b)",
+          "Edge e_canon_v_canon_10.0000000000_0.0000000000_0.0000000000_v_canon_15.0000000000_0.0000000000_0.0000000000_solid_bool_union_box_thin_1_box_thin_2_0 is open/boundary (used by only 1 face: box_thin_2_f_bottom_box_thin_2_f_bottom_s2_p0_b)"
+        ]
+      },
+      "determinismResult": {
+        "isDeterministic": true,
+        "passCount": 3,
+        "driftCount": 0,
+        "hashes": [
+          "2b6953f272e80b2d80caa8e7279d16e177ec1507adc876e0a14c602e07f8e18a",
+          "2b6953f272e80b2d80caa8e7279d16e177ec1507adc876e0a14c602e07f8e18a",
+          "2b6953f272e80b2d80caa8e7279d16e177ec1507adc876e0a14c602e07f8e18a"
+        ]
+      },
+      "verdict": "TOPOLOGY_FAILURE",
+      "diagnostics": [
+        "Non-manifold edge e_canon_v_canon_10.0000000000_0.0000000000_0.0000000000_v_canon_10.0000000000_10.0000000000_0.0000000000_solid_bool_union_box_thin_1_box_thin_2_0 shared by 3 faces (box_thin_1_f_bottom_box_thin_1_f_bottom_s2_p0_b,box_thin_1_f_right,box_thin_2_f_bottom_box_thin_2_f_bottom_s2_p0_b)",
+        "Edge e_canon_v_canon_10.0000000000_0.0000000000_0.0000100000_v_canon_10.0000000000_10.0000000000_0.0000100000_solid_bool_union_box_thin_1_box_thin_2_0 is open/boundary (used by only 1 face: box_thin_1_f_right)",
+        "Edge e_canon_v_canon_10.0000000000_0.0000000000_0.0000100000_v_canon_15.0000000000_0.0000000000_0.0000000000_solid_bool_union_box_thin_1_box_thin_2_0 is open/boundary (used by only 1 face: box_thin_2_f_front_box_thin_2_f_front_s1_p0_b_box_thin_2_f_front_s2_p0_b)",
+        "Edge e_canon_v_canon_10.0000000000_10.0000000000_0.0000100000_v_canon_15.0000000000_10.0000000000_0.0000000000_solid_bool_union_box_thin_1_box_thin_2_0 is open/boundary (used by only 1 face: box_thin_2_f_back_box_thin_2_f_back_s1_p0_b_box_thin_2_f_back_s2_p0_b)",
+        "Edge e_canon_v_canon_10.0000000000_10.0000000000_0.0000000000_v_canon_15.0000000000_10.0000000000_0.0000000000_solid_bool_union_box_thin_1_box_thin_2_0 is open/boundary (used by only 1 face: box_thin_2_f_bottom_box_thin_2_f_bottom_s2_p0_b)",
+        "Edge e_canon_v_canon_10.0000000000_0.0000000000_0.0000000000_v_canon_15.0000000000_0.0000000000_0.0000000000_solid_bool_union_box_thin_1_box_thin_2_0 is open/boundary (used by only 1 face: box_thin_2_f_bottom_box_thin_2_f_bottom_s2_p0_b)"
+      ],
+      "ledgerTimestamp": "2026-08-25T14:16:25.126Z",
+      "attestationSignature": "eb75740f7e34c789d2680c7fbbfae28aee313e18fa04ccc6b834b6367f21f614"
+    },
+    {
+      "testId": "CASE_D04_SLIGHT_ROTATION_1E5",
+      "seed": 100,
+      "operation": "INTERSECTION",
+      "category": "D_NEAR_DEGENERATE_GEOMETRY",
+      "operandAIdentity": "box_tilt_1",
+      "operandBIdentity": "box_tilt_2",
+      "inputHash": "fd7675be21089f6001e77f8ab81c2936025b29a53ab65a9a6bce50a7041e8c11",
+      "kernelVersion": "SECP-BOOLEAN-2.0.0",
+      "tolerance": {
+        "absoluteLength": 1e-7,
+        "relativeLength": 0.000001,
+        "angularRad": 0.000001,
+        "area": 1e-14,
+        "volume": 1e-21,
+        "parameter": 1e-7,
+        "determinant": 1e-12
+      },
+      "executionTimeMs": 2.7620639999995547,
+      "resultTopologyHash": "e0ac9c49c4747f992bdc6ece0283e3b8c8b230eb71729572a981568712575733",
+      "resultGeometryHash": "e41a9615e357b87df9a9fe8fe8160bb8b96fd7fc09d95b1192a72c389e535876",
+      "volume": 500,
+      "surfaceArea": 400,
+      "boundingBox": {
+        "min": {
+          "x": 5,
+          "y": 0,
+          "z": 0
+        },
+        "max": {
+          "x": 10,
+          "y": 10,
+          "z": 10
+        }
+      },
+      "invariants": {
+        "expectedVolume": null,
+        "actualVolume": 500,
+        "volumeError": null,
+        "relativeVolumeError": null,
+        "expectedSurfaceArea": null,
+        "actualSurfaceArea": 400,
+        "invariantsSatisfied": true,
+        "satisfiesInclusionExclusion": true,
+        "satisfiesDifferenceBounds": true,
+        "satisfiesIntersectionBounds": true,
+        "details": [
+          "Intersection volume 500.0000 satisfies intersection upper bound 1000.0000"
+        ]
+      },
+      "topologyValidation": {
+        "isClosedShell": true,
+        "isManifold": true,
+        "eulerCharacteristic": 2,
+        "genus": 0,
+        "faceOrientationConsistent": true,
+        "edgeConnectivityValid": true,
+        "vertexConsistencyValid": true,
+        "orphanVertexCount": 0,
+        "orphanEdgeCount": 0,
+        "orphanFaceCount": 0,
+        "danglingTopologyCount": 0,
+        "nonManifoldEdgeCount": 0,
+        "invertedShellsCount": 0,
+        "selfIntersectionsCount": 0,
+        "duplicateFaceCount": 0,
+        "connectedComponentsCount": 1,
+        "issues": []
+      },
+      "determinismResult": {
+        "isDeterministic": true,
+        "passCount": 3,
+        "driftCount": 0,
+        "hashes": [
+          "f45928ca2cfa106298128d681b4c3803ed3de4d157a38f44cb5dbafea15f3fb0",
+          "f45928ca2cfa106298128d681b4c3803ed3de4d157a38f44cb5dbafea15f3fb0",
+          "f45928ca2cfa106298128d681b4c3803ed3de4d157a38f44cb5dbafea15f3fb0"
+        ]
+      },
+      "verdict": "PASS",
+      "diagnostics": [
+        "Independent geometric and topological invariants strictly verified"
+      ],
+      "ledgerTimestamp": "2026-08-25T14:16:25.139Z",
+      "attestationSignature": "55f5e6d83212ee122b1ad37060352e7f02d4360f73b9b7c5ab88bc6035614baf"
+    },
+    {
+      "testId": "CASE_E01_NESTED_SUBTRACTION_HOLE",
+      "seed": 100,
+      "operation": "DIFFERENCE",
+      "category": "E_NESTED_SOLIDS",
+      "operandAIdentity": "box_nest_a1",
+      "operandBIdentity": "box_nest_b1",
+      "inputHash": "3ca784c43f466f5e2666d3df9eed2af32f9f3ec4a5cb6fb79a66c375b6b6d028",
+      "kernelVersion": "SECP-BOOLEAN-2.0.0",
+      "tolerance": {
+        "absoluteLength": 1e-7,
+        "relativeLength": 0.000001,
+        "angularRad": 0.000001,
+        "area": 1e-14,
+        "volume": 1e-21,
+        "parameter": 1e-7,
+        "determinant": 1e-12
+      },
+      "executionTimeMs": 3.59436900000037,
+      "resultTopologyHash": "8917e432711373bdb6c810759b279e2f2a74cfbe22fca321d5f8f68250568dd2",
+      "resultGeometryHash": "0fea1521958f5f348a945e54053de26f3b24b8cc924a00c5451a47cc27b6e806",
+      "volume": 936,
+      "surfaceArea": 696,
+      "boundingBox": {
+        "min": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "max": {
+          "x": 10,
+          "y": 10,
+          "z": 10
+        }
+      },
+      "invariants": {
+        "expectedVolume": 936,
+        "actualVolume": 936,
+        "volumeError": 0,
+        "relativeVolumeError": 0,
+        "expectedSurfaceArea": null,
+        "actualSurfaceArea": 696,
+        "invariantsSatisfied": true,
+        "satisfiesInclusionExclusion": true,
+        "satisfiesDifferenceBounds": true,
+        "satisfiesIntersectionBounds": true,
+        "details": [
+          "Difference volume 936.0000 satisfies difference bounds [0, 1000.0000]"
+        ]
+      },
+      "topologyValidation": {
+        "isClosedShell": true,
+        "isManifold": true,
+        "eulerCharacteristic": 4,
+        "genus": 0,
+        "faceOrientationConsistent": true,
+        "edgeConnectivityValid": true,
+        "vertexConsistencyValid": true,
+        "orphanVertexCount": 0,
+        "orphanEdgeCount": 0,
+        "orphanFaceCount": 0,
+        "danglingTopologyCount": 0,
+        "nonManifoldEdgeCount": 0,
+        "invertedShellsCount": 0,
+        "selfIntersectionsCount": 0,
+        "duplicateFaceCount": 0,
+        "connectedComponentsCount": 2,
+        "issues": []
+      },
+      "determinismResult": {
+        "isDeterministic": true,
+        "passCount": 3,
+        "driftCount": 0,
+        "hashes": [
+          "668525de9a3ac3ad9f8b4b9f8d0d303f7b7d480ade40005fcf16c66d0fc5b64c",
+          "668525de9a3ac3ad9f8b4b9f8d0d303f7b7d480ade40005fcf16c66d0fc5b64c",
+          "668525de9a3ac3ad9f8b4b9f8d0d303f7b7d480ade40005fcf16c66d0fc5b64c"
+        ]
+      },
+      "verdict": "PASS",
+      "diagnostics": [
+        "Independent geometric and topological invariants strictly verified"
+      ],
+      "ledgerTimestamp": "2026-08-25T14:16:25.152Z",
+      "attestationSignature": "35b90961d4142017d4c89749af30fcf792a90e731042a023377b2393d503e96e"
+    },
+    {
+      "testId": "CASE_E02_REVERSE_NESTED_DIFFERENCE",
+      "seed": 100,
+      "operation": "DIFFERENCE",
+      "category": "E_NESTED_SOLIDS",
+      "operandAIdentity": "box_nest_b2",
+      "operandBIdentity": "box_nest_a2",
+      "inputHash": "e88e87f38bf5527effb9d07155e1238a0e5665ed2e1dc9c740378a95cad93a40",
+      "kernelVersion": "SECP-BOOLEAN-2.0.0",
+      "tolerance": {
+        "absoluteLength": 1e-7,
+        "relativeLength": 0.000001,
+        "angularRad": 0.000001,
+        "area": 1e-14,
+        "volume": 1e-21,
+        "parameter": 1e-7,
+        "determinant": 1e-12
+      },
+      "executionTimeMs": 1.5415970000003654,
+      "resultTopologyHash": "1b0d0c88f28ee8ce41882fe9eb576e932b50b5ce389706b0c89f3f13c55561b6",
+      "resultGeometryHash": "9e5d69416c8bf9f934129ea62dee33868e90ef39a4eac12c99df5e067508da39",
+      "volume": 0,
+      "surfaceArea": 0,
+      "boundingBox": {
+        "min": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "max": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        }
+      },
+      "invariants": {
+        "expectedVolume": 0,
+        "actualVolume": 0,
+        "volumeError": 0,
+        "relativeVolumeError": 0,
+        "expectedSurfaceArea": null,
+        "actualSurfaceArea": 0,
+        "invariantsSatisfied": true,
+        "satisfiesInclusionExclusion": true,
+        "satisfiesDifferenceBounds": true,
+        "satisfiesIntersectionBounds": true,
+        "details": [
+          "Difference volume 0.0000 satisfies difference bounds [0, 64.0000]"
+        ]
+      },
+      "topologyValidation": {
+        "isClosedShell": true,
+        "isManifold": true,
+        "eulerCharacteristic": 0,
+        "genus": 0,
+        "faceOrientationConsistent": true,
+        "edgeConnectivityValid": true,
+        "vertexConsistencyValid": true,
+        "orphanVertexCount": 0,
+        "orphanEdgeCount": 0,
+        "orphanFaceCount": 0,
+        "danglingTopologyCount": 0,
+        "nonManifoldEdgeCount": 0,
+        "invertedShellsCount": 0,
+        "selfIntersectionsCount": 0,
+        "duplicateFaceCount": 0,
+        "connectedComponentsCount": 0,
+        "issues": [
+          "Null shape evaluated as empty topology"
+        ]
+      },
+      "determinismResult": {
+        "isDeterministic": true,
+        "passCount": 3,
+        "driftCount": 0,
+        "hashes": [
+          "198a9ba0f785c08b42aae1feea1fe3af4a3021ee5c465a2546a1003e466daf2e",
+          "198a9ba0f785c08b42aae1feea1fe3af4a3021ee5c465a2546a1003e466daf2e",
+          "198a9ba0f785c08b42aae1feea1fe3af4a3021ee5c465a2546a1003e466daf2e"
+        ]
+      },
+      "verdict": "PASS",
+      "diagnostics": [
+        "Independent geometric and topological invariants strictly verified"
+      ],
+      "ledgerTimestamp": "2026-08-25T14:16:25.158Z",
+      "attestationSignature": "c05f793de4c6d4b8457e2c060fc43e2df6bacd15e26bb65396cdd3befb7276c4"
+    },
+    {
+      "testId": "CASE_E03_NESTED_INTERSECTION",
+      "seed": 100,
+      "operation": "INTERSECTION",
+      "category": "E_NESTED_SOLIDS",
+      "operandAIdentity": "box_nest_a3",
+      "operandBIdentity": "box_nest_b3",
+      "inputHash": "5548541b2ccd3edada769eca14950d5df55c091172b021bacee68e6648e50974",
+      "kernelVersion": "SECP-BOOLEAN-2.0.0",
+      "tolerance": {
+        "absoluteLength": 1e-7,
+        "relativeLength": 0.000001,
+        "angularRad": 0.000001,
+        "area": 1e-14,
+        "volume": 1e-21,
+        "parameter": 1e-7,
+        "determinant": 1e-12
+      },
+      "executionTimeMs": 1.6153709999998682,
+      "resultTopologyHash": "e0ac9c49c4747f992bdc6ece0283e3b8c8b230eb71729572a981568712575733",
+      "resultGeometryHash": "25cbae600602be54aff74b562793be4b56674703fb433fde165d870c79a6dd0e",
+      "volume": 64,
+      "surfaceArea": 96,
+      "boundingBox": {
+        "min": {
+          "x": 3,
+          "y": 3,
+          "z": 3
+        },
+        "max": {
+          "x": 7,
+          "y": 7,
+          "z": 7
+        }
+      },
+      "invariants": {
+        "expectedVolume": 64,
+        "actualVolume": 64,
+        "volumeError": 0,
+        "relativeVolumeError": 0,
+        "expectedSurfaceArea": null,
+        "actualSurfaceArea": 96,
+        "invariantsSatisfied": true,
+        "satisfiesInclusionExclusion": true,
+        "satisfiesDifferenceBounds": true,
+        "satisfiesIntersectionBounds": true,
+        "details": [
+          "Intersection volume 64.0000 satisfies intersection upper bound 64.0000"
+        ]
+      },
+      "topologyValidation": {
+        "isClosedShell": true,
+        "isManifold": true,
+        "eulerCharacteristic": 2,
+        "genus": 0,
+        "faceOrientationConsistent": true,
+        "edgeConnectivityValid": true,
+        "vertexConsistencyValid": true,
+        "orphanVertexCount": 0,
+        "orphanEdgeCount": 0,
+        "orphanFaceCount": 0,
+        "danglingTopologyCount": 0,
+        "nonManifoldEdgeCount": 0,
+        "invertedShellsCount": 0,
+        "selfIntersectionsCount": 0,
+        "duplicateFaceCount": 0,
+        "connectedComponentsCount": 1,
+        "issues": []
+      },
+      "determinismResult": {
+        "isDeterministic": true,
+        "passCount": 3,
+        "driftCount": 0,
+        "hashes": [
+          "1674e47483ecbae47946326713039ab69a28bfe5d042f31cbc20bd967093ad33",
+          "1674e47483ecbae47946326713039ab69a28bfe5d042f31cbc20bd967093ad33",
+          "1674e47483ecbae47946326713039ab69a28bfe5d042f31cbc20bd967093ad33"
+        ]
+      },
+      "verdict": "PASS",
+      "diagnostics": [
+        "Independent geometric and topological invariants strictly verified"
+      ],
+      "ledgerTimestamp": "2026-08-25T14:16:25.167Z",
+      "attestationSignature": "9ec13b25d2b9bde59c1783d60e93a117a233add1ce9a141e746d71b002dfbb3b"
+    },
+    {
+      "testId": "CASE_E04_NESTED_UNION",
+      "seed": 100,
+      "operation": "UNION",
+      "category": "E_NESTED_SOLIDS",
+      "operandAIdentity": "box_nest_a4",
+      "operandBIdentity": "box_nest_b4",
+      "inputHash": "cc9bbd58344d767b04fa297c910c8ace47e5a9ed2a900f40e83b070cf804b611",
+      "kernelVersion": "SECP-BOOLEAN-2.0.0",
+      "tolerance": {
+        "absoluteLength": 1e-7,
+        "relativeLength": 0.000001,
+        "angularRad": 0.000001,
+        "area": 1e-14,
+        "volume": 1e-21,
+        "parameter": 1e-7,
+        "determinant": 1e-12
+      },
+      "executionTimeMs": 1.6158400000003894,
+      "resultTopologyHash": "e0ac9c49c4747f992bdc6ece0283e3b8c8b230eb71729572a981568712575733",
+      "resultGeometryHash": "9193ff4939087b69a400e9847f3c347b6497a78e95427df3c0e2760ecc1c9952",
+      "volume": 1000,
+      "surfaceArea": 600,
+      "boundingBox": {
+        "min": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "max": {
+          "x": 10,
+          "y": 10,
+          "z": 10
+        }
+      },
+      "invariants": {
+        "expectedVolume": 1000,
+        "actualVolume": 1000,
+        "volumeError": 0,
+        "relativeVolumeError": 0,
+        "expectedSurfaceArea": null,
+        "actualSurfaceArea": 600,
+        "invariantsSatisfied": true,
+        "satisfiesInclusionExclusion": true,
+        "satisfiesDifferenceBounds": true,
+        "satisfiesIntersectionBounds": true,
+        "details": [
+          "Union volume 1000.0000 satisfies inclusion-exclusion bounds"
+        ]
+      },
+      "topologyValidation": {
+        "isClosedShell": true,
+        "isManifold": true,
+        "eulerCharacteristic": 2,
+        "genus": 0,
+        "faceOrientationConsistent": true,
+        "edgeConnectivityValid": true,
+        "vertexConsistencyValid": true,
+        "orphanVertexCount": 0,
+        "orphanEdgeCount": 0,
+        "orphanFaceCount": 0,
+        "danglingTopologyCount": 0,
+        "nonManifoldEdgeCount": 0,
+        "invertedShellsCount": 0,
+        "selfIntersectionsCount": 0,
+        "duplicateFaceCount": 0,
+        "connectedComponentsCount": 1,
+        "issues": []
+      },
+      "determinismResult": {
+        "isDeterministic": true,
+        "passCount": 3,
+        "driftCount": 0,
+        "hashes": [
+          "a6eda2fe43df6f12d8a61da64bf74616ac35b7bf08368816d5cd233d771dc095",
+          "a6eda2fe43df6f12d8a61da64bf74616ac35b7bf08368816d5cd233d771dc095",
+          "a6eda2fe43df6f12d8a61da64bf74616ac35b7bf08368816d5cd233d771dc095"
+        ]
+      },
+      "verdict": "PASS",
+      "diagnostics": [
+        "Independent geometric and topological invariants strictly verified"
+      ],
+      "ledgerTimestamp": "2026-08-25T14:16:25.174Z",
+      "attestationSignature": "4d502f837f81bf335143aee093d9c336612ba57958e04eeb14ddbd48d71d4b68"
+    },
+    {
+      "testId": "CASE_F01_CHAIN_UNION_THEN_DIFFERENCE",
+      "seed": 100,
+      "operation": "UNION",
+      "category": "F_COMPLEX_CHAINS",
+      "operandAIdentity": "chain_b1",
+      "operandBIdentity": "chain_b2",
+      "inputHash": "8f5e3f4fc6942e07b7b55f2069935c9859da8e59cb26a1a41480af1fc6254097",
+      "kernelVersion": "SECP-BOOLEAN-2.0.0",
+      "tolerance": {
+        "absoluteLength": 1e-7,
+        "relativeLength": 0.000001,
+        "angularRad": 0.000001,
+        "area": 1e-14,
+        "volume": 1e-21,
+        "parameter": 1e-7,
+        "determinant": 1e-12
+      },
+      "executionTimeMs": 2.767775999999685,
+      "resultTopologyHash": "e0ac9c49c4747f992bdc6ece0283e3b8c8b230eb71729572a981568712575733",
+      "resultGeometryHash": "5e3e03e1d0607f69e0de4d6fb4ace31fbe3b764f7a4bab3580105c289448d855",
+      "volume": 1500,
+      "surfaceArea": 800,
+      "boundingBox": {
+        "min": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "max": {
+          "x": 15,
+          "y": 10,
+          "z": 10
+        }
+      },
+      "invariants": {
+        "expectedVolume": 1500,
+        "actualVolume": 1500,
+        "volumeError": 0,
+        "relativeVolumeError": 0,
+        "expectedSurfaceArea": null,
+        "actualSurfaceArea": 800,
+        "invariantsSatisfied": true,
+        "satisfiesInclusionExclusion": true,
+        "satisfiesDifferenceBounds": true,
+        "satisfiesIntersectionBounds": true,
+        "details": [
+          "Union volume 1500.0000 satisfies inclusion-exclusion bounds"
+        ]
+      },
+      "topologyValidation": {
+        "isClosedShell": true,
+        "isManifold": true,
+        "eulerCharacteristic": 2,
+        "genus": 0,
+        "faceOrientationConsistent": true,
+        "edgeConnectivityValid": true,
+        "vertexConsistencyValid": true,
+        "orphanVertexCount": 0,
+        "orphanEdgeCount": 0,
+        "orphanFaceCount": 0,
+        "danglingTopologyCount": 0,
+        "nonManifoldEdgeCount": 0,
+        "invertedShellsCount": 0,
+        "selfIntersectionsCount": 0,
+        "duplicateFaceCount": 0,
+        "connectedComponentsCount": 1,
+        "issues": []
+      },
+      "determinismResult": {
+        "isDeterministic": true,
+        "passCount": 3,
+        "driftCount": 0,
+        "hashes": [
+          "1f3eda2dcee376c16b3e328909e3068a44c1697e1b62e471ae383bc75770bb61",
+          "1f3eda2dcee376c16b3e328909e3068a44c1697e1b62e471ae383bc75770bb61",
+          "1f3eda2dcee376c16b3e328909e3068a44c1697e1b62e471ae383bc75770bb61"
+        ]
+      },
+      "verdict": "PASS",
+      "diagnostics": [
+        "Independent geometric and topological invariants strictly verified"
+      ],
+      "ledgerTimestamp": "2026-08-25T14:16:25.186Z",
+      "attestationSignature": "4e1c8984a428f3665975e05bef9c65582de1b87b3b7969049080b8993515f1a3"
+    },
+    {
+      "testId": "CASE_F02_CHAIN_MULTI_STEP_INTERSECTION",
+      "seed": 100,
+      "operation": "INTERSECTION",
+      "category": "F_COMPLEX_CHAINS",
+      "operandAIdentity": "chain_int_a",
+      "operandBIdentity": "chain_int_b",
+      "inputHash": "1805bfa5007515de9b0dec84dee435d38f68dfdf701e209c8b9a372bb074c782",
+      "kernelVersion": "SECP-BOOLEAN-2.0.0",
+      "tolerance": {
+        "absoluteLength": 1e-7,
+        "relativeLength": 0.000001,
+        "angularRad": 0.000001,
+        "area": 1e-14,
+        "volume": 1e-21,
+        "parameter": 1e-7,
+        "determinant": 1e-12
+      },
+      "executionTimeMs": 2.2965180000001055,
+      "resultTopologyHash": "e0ac9c49c4747f992bdc6ece0283e3b8c8b230eb71729572a981568712575733",
+      "resultGeometryHash": "6ed078994afd60a38df7118ab41b8567d418de5cb5ec9c9064d2b63cc09b848e",
+      "volume": 216,
+      "surfaceArea": 216,
+      "boundingBox": {
+        "min": {
+          "x": 2,
+          "y": 2,
+          "z": 2
+        },
+        "max": {
+          "x": 8,
+          "y": 8,
+          "z": 8
+        }
+      },
+      "invariants": {
+        "expectedVolume": 216,
+        "actualVolume": 216,
+        "volumeError": 0,
+        "relativeVolumeError": 0,
+        "expectedSurfaceArea": null,
+        "actualSurfaceArea": 216,
+        "invariantsSatisfied": true,
+        "satisfiesInclusionExclusion": true,
+        "satisfiesDifferenceBounds": true,
+        "satisfiesIntersectionBounds": true,
+        "details": [
+          "Intersection volume 216.0000 satisfies intersection upper bound 216.0000"
+        ]
+      },
+      "topologyValidation": {
+        "isClosedShell": true,
+        "isManifold": true,
+        "eulerCharacteristic": 2,
+        "genus": 0,
+        "faceOrientationConsistent": true,
+        "edgeConnectivityValid": true,
+        "vertexConsistencyValid": true,
+        "orphanVertexCount": 0,
+        "orphanEdgeCount": 0,
+        "orphanFaceCount": 0,
+        "danglingTopologyCount": 0,
+        "nonManifoldEdgeCount": 0,
+        "invertedShellsCount": 0,
+        "selfIntersectionsCount": 0,
+        "duplicateFaceCount": 0,
+        "connectedComponentsCount": 1,
+        "issues": []
+      },
+      "determinismResult": {
+        "isDeterministic": true,
+        "passCount": 3,
+        "driftCount": 0,
+        "hashes": [
+          "3992471a0b8b3f6e20e27adf8af991ce4995a78bee123968a436b4e2f20f3f1f",
+          "3992471a0b8b3f6e20e27adf8af991ce4995a78bee123968a436b4e2f20f3f1f",
+          "3992471a0b8b3f6e20e27adf8af991ce4995a78bee123968a436b4e2f20f3f1f"
+        ]
+      },
+      "verdict": "PASS",
+      "diagnostics": [
+        "Independent geometric and topological invariants strictly verified"
+      ],
+      "ledgerTimestamp": "2026-08-25T14:16:25.195Z",
+      "attestationSignature": "c46c60df4bb411488b11edf8ce46faeda0c314273b0475f3dbe1dd536788da41"
+    },
+    {
+      "testId": "CASE_G01_REPEATED_UNION_STABILITY",
+      "seed": 100,
+      "operation": "UNION",
+      "category": "G_REPEATED_OPERATIONS",
+      "operandAIdentity": "box_rep_a1",
+      "operandBIdentity": "box_rep_b1",
+      "inputHash": "f4eb7d99105214ce07fe684c65ad43770ecc43ac55dc5b2c27ab86248be19e36",
+      "kernelVersion": "SECP-BOOLEAN-2.0.0",
+      "tolerance": {
+        "absoluteLength": 1e-7,
+        "relativeLength": 0.000001,
+        "angularRad": 0.000001,
+        "area": 1e-14,
+        "volume": 1e-21,
+        "parameter": 1e-7,
+        "determinant": 1e-12
+      },
+      "executionTimeMs": 2.731738000000405,
+      "resultTopologyHash": "e0ac9c49c4747f992bdc6ece0283e3b8c8b230eb71729572a981568712575733",
+      "resultGeometryHash": "5e3e03e1d0607f69e0de4d6fb4ace31fbe3b764f7a4bab3580105c289448d855",
+      "volume": 1500,
+      "surfaceArea": 800,
+      "boundingBox": {
+        "min": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "max": {
+          "x": 15,
+          "y": 10,
+          "z": 10
+        }
+      },
+      "invariants": {
+        "expectedVolume": 1500,
+        "actualVolume": 1500,
+        "volumeError": 0,
+        "relativeVolumeError": 0,
+        "expectedSurfaceArea": null,
+        "actualSurfaceArea": 800,
+        "invariantsSatisfied": true,
+        "satisfiesInclusionExclusion": true,
+        "satisfiesDifferenceBounds": true,
+        "satisfiesIntersectionBounds": true,
+        "details": [
+          "Union volume 1500.0000 satisfies inclusion-exclusion bounds"
+        ]
+      },
+      "topologyValidation": {
+        "isClosedShell": true,
+        "isManifold": true,
+        "eulerCharacteristic": 2,
+        "genus": 0,
+        "faceOrientationConsistent": true,
+        "edgeConnectivityValid": true,
+        "vertexConsistencyValid": true,
+        "orphanVertexCount": 0,
+        "orphanEdgeCount": 0,
+        "orphanFaceCount": 0,
+        "danglingTopologyCount": 0,
+        "nonManifoldEdgeCount": 0,
+        "invertedShellsCount": 0,
+        "selfIntersectionsCount": 0,
+        "duplicateFaceCount": 0,
+        "connectedComponentsCount": 1,
+        "issues": []
+      },
+      "determinismResult": {
+        "isDeterministic": true,
+        "passCount": 3,
+        "driftCount": 0,
+        "hashes": [
+          "fdd535555b55233cc6281a7ebf048acdf0e401559fbe6e98076e642b80b5c955",
+          "fdd535555b55233cc6281a7ebf048acdf0e401559fbe6e98076e642b80b5c955",
+          "fdd535555b55233cc6281a7ebf048acdf0e401559fbe6e98076e642b80b5c955"
+        ]
+      },
+      "verdict": "PASS",
+      "diagnostics": [
+        "Independent geometric and topological invariants strictly verified"
+      ],
+      "ledgerTimestamp": "2026-08-25T14:16:25.208Z",
+      "attestationSignature": "f92ca1fa3813a23dab7b5cdd0f18c9ff9f71ed83aa43f28bdcf68a0632550446"
+    },
+    {
+      "testId": "CASE_G02_REPEATED_DIFFERENCE_STABILITY",
+      "seed": 100,
+      "operation": "DIFFERENCE",
+      "category": "G_REPEATED_OPERATIONS",
+      "operandAIdentity": "box_rep_a2",
+      "operandBIdentity": "box_rep_b2",
+      "inputHash": "8c1c945ca23037bf20210865b5c2e67ddaa7d1e25ac753c10a50a324ab37081a",
+      "kernelVersion": "SECP-BOOLEAN-2.0.0",
+      "tolerance": {
+        "absoluteLength": 1e-7,
+        "relativeLength": 0.000001,
+        "angularRad": 0.000001,
+        "area": 1e-14,
+        "volume": 1e-21,
+        "parameter": 1e-7,
+        "determinant": 1e-12
+      },
+      "executionTimeMs": 2.752292000000125,
+      "resultTopologyHash": "e0ac9c49c4747f992bdc6ece0283e3b8c8b230eb71729572a981568712575733",
+      "resultGeometryHash": "6cdd3a11e23384019304b0ea447d59569d7afbc352548225dff82816ceaa6816",
+      "volume": 500,
+      "surfaceArea": 400,
+      "boundingBox": {
+        "min": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "max": {
+          "x": 5,
+          "y": 10,
+          "z": 10
+        }
+      },
+      "invariants": {
+        "expectedVolume": 500,
+        "actualVolume": 500,
+        "volumeError": 0,
+        "relativeVolumeError": 0,
+        "expectedSurfaceArea": null,
+        "actualSurfaceArea": 400,
+        "invariantsSatisfied": true,
+        "satisfiesInclusionExclusion": true,
+        "satisfiesDifferenceBounds": true,
+        "satisfiesIntersectionBounds": true,
+        "details": [
+          "Difference volume 500.0000 satisfies difference bounds [0, 1000.0000]"
+        ]
+      },
+      "topologyValidation": {
+        "isClosedShell": true,
+        "isManifold": true,
+        "eulerCharacteristic": 2,
+        "genus": 0,
+        "faceOrientationConsistent": true,
+        "edgeConnectivityValid": true,
+        "vertexConsistencyValid": true,
+        "orphanVertexCount": 0,
+        "orphanEdgeCount": 0,
+        "orphanFaceCount": 0,
+        "danglingTopologyCount": 0,
+        "nonManifoldEdgeCount": 0,
+        "invertedShellsCount": 0,
+        "selfIntersectionsCount": 0,
+        "duplicateFaceCount": 0,
+        "connectedComponentsCount": 1,
+        "issues": []
+      },
+      "determinismResult": {
+        "isDeterministic": true,
+        "passCount": 3,
+        "driftCount": 0,
+        "hashes": [
+          "52cb6ae0b6e7b4550ed3108e225a53acaa65c90618543be38817436ddb80d6b3",
+          "52cb6ae0b6e7b4550ed3108e225a53acaa65c90618543be38817436ddb80d6b3",
+          "52cb6ae0b6e7b4550ed3108e225a53acaa65c90618543be38817436ddb80d6b3"
+        ]
+      },
+      "verdict": "PASS",
+      "diagnostics": [
+        "Independent geometric and topological invariants strictly verified"
+      ],
+      "ledgerTimestamp": "2026-08-25T14:16:25.220Z",
+      "attestationSignature": "eb5936d873a0ebca89cef27b1f36de97d17cc5d9403ba0f13b15223a0bfa7734"
+    },
+    {
+      "testId": "CASE_H01_RANDOMIZED_DISPLACEMENTS_SEED_42",
+      "seed": 100,
+      "operation": "UNION",
+      "category": "H_RANDOMIZED_ADVERSARIAL",
+      "operandAIdentity": "box_rnd_a1",
+      "operandBIdentity": "box_rnd_b1",
+      "inputHash": "da860f0d76cd0aa44c16bd9381d73846f0b39d062c8fd4b67400d58c2409f8da",
+      "kernelVersion": "SECP-BOOLEAN-2.0.0",
+      "tolerance": {
+        "absoluteLength": 1e-7,
+        "relativeLength": 0.000001,
+        "angularRad": 0.000001,
+        "area": 1e-14,
+        "volume": 1e-21,
+        "parameter": 1e-7,
+        "determinant": 1e-12
+      },
+      "executionTimeMs": 10.74467100000038,
+      "resultTopologyHash": "e0ac9c49c4747f992bdc6ece0283e3b8c8b230eb71729572a981568712575733",
+      "resultGeometryHash": "b45334f530d195a72b0b9f75a45d6a8ea0289271d1f896ec1158a3385e75d59d",
+      "volume": 1533.6335536780994,
+      "surfaceArea": 832.7574744982819,
+      "boundingBox": {
+        "min": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "max": {
+          "x": 10.001643535216939,
+          "y": 12.622935508958005,
+          "z": 13.677117660340963
+        }
+      },
+      "invariants": {
+        "expectedVolume": null,
+        "actualVolume": 1533.6335536780994,
+        "volumeError": null,
+        "relativeVolumeError": null,
+        "expectedSurfaceArea": null,
+        "actualSurfaceArea": 832.7574744982819,
+        "invariantsSatisfied": true,
+        "satisfiesInclusionExclusion": true,
+        "satisfiesDifferenceBounds": true,
+        "satisfiesIntersectionBounds": true,
+        "details": [
+          "Union volume 1533.6336 satisfies inclusion-exclusion bounds"
+        ]
+      },
+      "topologyValidation": {
+        "isClosedShell": true,
+        "isManifold": true,
+        "eulerCharacteristic": 2,
+        "genus": 0,
+        "faceOrientationConsistent": true,
+        "edgeConnectivityValid": true,
+        "vertexConsistencyValid": true,
+        "orphanVertexCount": 0,
+        "orphanEdgeCount": 0,
+        "orphanFaceCount": 0,
+        "danglingTopologyCount": 0,
+        "nonManifoldEdgeCount": 0,
+        "invertedShellsCount": 0,
+        "selfIntersectionsCount": 0,
+        "duplicateFaceCount": 0,
+        "connectedComponentsCount": 1,
+        "issues": []
+      },
+      "determinismResult": {
+        "isDeterministic": true,
+        "passCount": 3,
+        "driftCount": 0,
+        "hashes": [
+          "2c26ea67bef41a7412187a9427945922346b2847718d900708d7d98e2a091aef",
+          "2c26ea67bef41a7412187a9427945922346b2847718d900708d7d98e2a091aef",
+          "2c26ea67bef41a7412187a9427945922346b2847718d900708d7d98e2a091aef"
+        ]
+      },
+      "verdict": "PASS",
+      "diagnostics": [
+        "Independent geometric and topological invariants strictly verified"
+      ],
+      "ledgerTimestamp": "2026-08-25T14:16:25.255Z",
+      "attestationSignature": "d67dd2be5ad15ca2e80e8937d2505ddf1d81a705029f9beae6784f468025de87"
+    },
+    {
+      "testId": "CASE_H02_RANDOMIZED_INTERSECTION_SEED_1337",
+      "seed": 100,
+      "operation": "INTERSECTION",
+      "category": "H_RANDOMIZED_ADVERSARIAL",
+      "operandAIdentity": "box_rnd_a2",
+      "operandBIdentity": "box_rnd_b2",
+      "inputHash": "5456d71f941122995a61ec35fce8d4e95e34b12721a30d55a86772961ee09af4",
+      "kernelVersion": "SECP-BOOLEAN-2.0.0",
+      "tolerance": {
+        "absoluteLength": 1e-7,
+        "relativeLength": 0.000001,
+        "angularRad": 0.000001,
+        "area": 1e-14,
+        "volume": 1e-21,
+        "parameter": 1e-7,
+        "determinant": 1e-12
+      },
+      "executionTimeMs": 6.030529999999999,
+      "resultTopologyHash": "e0ac9c49c4747f992bdc6ece0283e3b8c8b230eb71729572a981568712575733",
+      "resultGeometryHash": "e84415888f4b14138a62bd4f5fd46df6707051a227c7da83476583a3c4d07bf1",
+      "volume": 253.5026814336066,
+      "surfaceArea": 247.67974181573481,
+      "boundingBox": {
+        "min": {
+          "x": 2.041855420956253,
+          "y": 5.464090989403511,
+          "z": 2.977263097630127
+        },
+        "max": {
+          "x": 10,
+          "y": 10,
+          "z": 10
+        }
+      },
+      "invariants": {
+        "expectedVolume": null,
+        "actualVolume": 253.5026814336066,
+        "volumeError": null,
+        "relativeVolumeError": null,
+        "expectedSurfaceArea": null,
+        "actualSurfaceArea": 247.67974181573481,
+        "invariantsSatisfied": true,
+        "satisfiesInclusionExclusion": true,
+        "satisfiesDifferenceBounds": true,
+        "satisfiesIntersectionBounds": true,
+        "details": [
+          "Intersection volume 253.5027 satisfies intersection upper bound 512.0000"
+        ]
+      },
+      "topologyValidation": {
+        "isClosedShell": true,
+        "isManifold": true,
+        "eulerCharacteristic": 2,
+        "genus": 0,
+        "faceOrientationConsistent": true,
+        "edgeConnectivityValid": true,
+        "vertexConsistencyValid": true,
+        "orphanVertexCount": 0,
+        "orphanEdgeCount": 0,
+        "orphanFaceCount": 0,
+        "danglingTopologyCount": 0,
+        "nonManifoldEdgeCount": 0,
+        "invertedShellsCount": 0,
+        "selfIntersectionsCount": 0,
+        "duplicateFaceCount": 0,
+        "connectedComponentsCount": 1,
+        "issues": []
+      },
+      "determinismResult": {
+        "isDeterministic": true,
+        "passCount": 3,
+        "driftCount": 0,
+        "hashes": [
+          "d5f41066dd6f01e515ff067094d37f414876ecee19a8931f9bdb720766ab56e6",
+          "d5f41066dd6f01e515ff067094d37f414876ecee19a8931f9bdb720766ab56e6",
+          "d5f41066dd6f01e515ff067094d37f414876ecee19a8931f9bdb720766ab56e6"
+        ]
+      },
+      "verdict": "PASS",
+      "diagnostics": [
+        "Independent geometric and topological invariants strictly verified"
+      ],
+      "ledgerTimestamp": "2026-08-25T14:16:25.282Z",
+      "attestationSignature": "f7cc4903df21585836f62c4029983fd423a5af27d4336443c2bb17213eed0236"
+    },
+    {
+      "testId": "CASE_H03_MALFORMED_INPUT_REJECTION",
+      "seed": 100,
+      "operation": "UNION",
+      "category": "H_RANDOMIZED_ADVERSARIAL",
+      "operandAIdentity": "box_valid",
+      "operandBIdentity": "malformed_null_shell",
+      "inputHash": "cd7320c3634e167152ee9598c3965a0570d6c599ceb9153cd7f4ab76b590b632",
+      "kernelVersion": "SECP-BOOLEAN-2.0.0",
+      "tolerance": {
+        "absoluteLength": 1e-7,
+        "relativeLength": 0.000001,
+        "angularRad": 0.000001,
+        "area": 1e-14,
+        "volume": 1e-21,
+        "parameter": 1e-7,
+        "determinant": 1e-12
+      },
+      "executionTimeMs": 0.2520940000003975,
+      "resultTopologyHash": "a19695831dfd021f3318f437b35fd379235c3d8d113474ebec36131c777ea26f",
+      "resultGeometryHash": "9e5d69416c8bf9f934129ea62dee33868e90ef39a4eac12c99df5e067508da39",
+      "volume": 0,
+      "surfaceArea": 0,
+      "boundingBox": {
+        "min": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "max": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        }
+      },
+      "invariants": {
+        "expectedVolume": null,
+        "actualVolume": 0,
+        "volumeError": null,
+        "relativeVolumeError": null,
+        "expectedSurfaceArea": null,
+        "actualSurfaceArea": 0,
+        "invariantsSatisfied": false,
+        "satisfiesInclusionExclusion": false,
+        "satisfiesDifferenceBounds": true,
+        "satisfiesIntersectionBounds": true,
+        "details": [
+          "Union volume violation: actual=0.0000 outside bounds [1000.0000, 1000.0000]"
+        ]
+      },
+      "topologyValidation": {
+        "isClosedShell": true,
+        "isManifold": true,
+        "eulerCharacteristic": 0,
+        "genus": 0,
+        "faceOrientationConsistent": true,
+        "edgeConnectivityValid": true,
+        "vertexConsistencyValid": true,
+        "orphanVertexCount": 0,
+        "orphanEdgeCount": 0,
+        "orphanFaceCount": 0,
+        "danglingTopologyCount": 0,
+        "nonManifoldEdgeCount": 0,
+        "invertedShellsCount": 0,
+        "selfIntersectionsCount": 0,
+        "duplicateFaceCount": 0,
+        "connectedComponentsCount": 0,
+        "issues": [
+          "Null shape evaluated as empty topology"
+        ]
+      },
+      "determinismResult": {
+        "isDeterministic": true,
+        "passCount": 1,
+        "driftCount": 0,
+        "hashes": [
+          "63e0b823175185526ebb97ecfd2be525a9aacb038793c8f1d2bc91cabecbe2ec"
+        ]
+      },
+      "verdict": "INVALID_INPUT",
+      "diagnostics": [
+        "Shape B validation error: Solid missing outer shell"
+      ],
+      "ledgerTimestamp": "2026-08-25T14:16:25.283Z",
+      "attestationSignature": "095b9b7c59f869295c442a5123e4c6e8cce22834ebb48590aa83a88e11ebc695"
+    }
+  ],
+  "stressReport": [
+    {
+      "scale": "SMALL",
+      "casesExecuted": 3,
+      "avgLatencyMs": 25.197968333333545,
+      "peakHeapMb": 66,
+      "failureRate": 0
+    },
+    {
+      "scale": "MEDIUM",
+      "casesExecuted": 6,
+      "avgLatencyMs": 176.32834316666685,
+      "peakHeapMb": 94,
+      "failureRate": 0
+    },
+    {
+      "scale": "LARGE",
+      "casesExecuted": 12,
+      "avgLatencyMs": 1333.0614998333335,
+      "peakHeapMb": 40,
+      "failureRate": 0
+    },
+    {
+      "scale": "EXTREME",
+      "casesExecuted": 24,
+      "avgLatencyMs": 5043.563200624999,
+      "peakHeapMb": 48,
+      "failureRate": 0
+    }
+  ],
+  "mutationReport": {
+    "mutationsInjected": 6,
+    "mutationsDetected": 6,
+    "detectionRatePercent": 100,
+    "falseAcceptanceCount": 0,
+    "details": [
+      {
+        "mutationType": "PERTURB_VERTEX",
+        "mutationDescription": "Displaced corner vertex by (+5, 0, +5)",
+        "detected": true,
+        "verdict": "TOPOLOGY_FAILURE",
+        "detectedIssues": [],
+        "evidenceHash": "mut_hash_1787667523471_1"
+      },
+      {
+        "mutationType": "INVERT_FACE_ORIENTATION",
+        "mutationDescription": "Inverted orientation of top face from FORWARD to REVERSED",
+        "detected": true,
+        "verdict": "TOPOLOGY_FAILURE",
+        "detectedIssues": [
+          "Edge mut_box_2_e_001_101 has inconsistent orientation across adjacent faces (mut_box_2_f_top,mut_box_2_f_front)",
+          "Edge mut_box_2_e_101_111 has inconsistent orientation across adjacent faces (mut_box_2_f_top,mut_box_2_f_right)",
+          "Edge mut_box_2_e_111_011 has inconsistent orientation across adjacent faces (mut_box_2_f_top,mut_box_2_f_back)",
+          "Edge mut_box_2_e_011_001 has inconsistent orientation across adjacent faces (mut_box_2_f_top,mut_box_2_f_left)"
+        ],
+        "evidenceHash": "mut_hash_1787667523471_2"
+      },
+      {
+        "mutationType": "DUPLICATE_FACE",
+        "mutationDescription": "Appended duplicate bottom face into outer shell",
+        "detected": true,
+        "verdict": "TOPOLOGY_FAILURE",
+        "detectedIssues": [
+          "Duplicate face reference detected: mut_box_3_f_bottom",
+          "Non-manifold edge mut_box_3_e_010_000 shared by 3 faces (mut_box_3_f_bottom,mut_box_3_f_left,mut_box_3_f_bottom)",
+          "Non-manifold edge mut_box_3_e_110_010 shared by 3 faces (mut_box_3_f_bottom,mut_box_3_f_back,mut_box_3_f_bottom)",
+          "Non-manifold edge mut_box_3_e_100_110 shared by 3 faces (mut_box_3_f_bottom,mut_box_3_f_right,mut_box_3_f_bottom)",
+          "Non-manifold edge mut_box_3_e_000_100 shared by 3 faces (mut_box_3_f_bottom,mut_box_3_f_front,mut_box_3_f_bottom)"
+        ],
+        "evidenceHash": "mut_hash_1787667523471_3"
+      },
+      {
+        "mutationType": "INTRODUCE_TINY_GAP",
+        "mutationDescription": "Disconnected start vertex with 1e-4 coordinate gap",
+        "detected": true,
+        "verdict": "TOPOLOGY_FAILURE",
+        "detectedIssues": [
+          "Edge disconnected_edge_slit is open/boundary (used by only 1 face: mut_box_4_f_bottom)",
+          "Edge mut_box_4_e_010_000 is open/boundary (used by only 1 face: mut_box_4_f_left)"
+        ],
+        "evidenceHash": "mut_hash_1787667523471_4"
+      },
+      {
+        "mutationType": "CORRUPT_LOOP_TOPOLOGY",
+        "mutationDescription": "Cleared all oriented edges from face outer loop",
+        "detected": true,
+        "verdict": "TOPOLOGY_FAILURE",
+        "detectedIssues": [
+          "Face mut_box_5_f_bottom loop loop_mut_box_5_f_bottom has fewer than 3 edges (degenerate loop)",
+          "Edge mut_box_5_e_000_100 is open/boundary (used by only 1 face: mut_box_5_f_front)",
+          "Edge mut_box_5_e_110_010 is open/boundary (used by only 1 face: mut_box_5_f_back)",
+          "Edge mut_box_5_e_010_000 is open/boundary (used by only 1 face: mut_box_5_f_left)",
+          "Edge mut_box_5_e_100_110 is open/boundary (used by only 1 face: mut_box_5_f_right)"
+        ],
+        "evidenceHash": "mut_hash_1787667523471_5"
+      },
+      {
+        "mutationType": "ZERO_VOLUME_COLLAPSE",
+        "mutationDescription": "Collapsed bounding height to 0 (2D degenerate planar solid)",
+        "detected": true,
+        "verdict": "DEGENERATE_INPUT",
+        "detectedIssues": [
+          "Calculated volume is 0.0000 m3 (degenerate solid)"
+        ],
+        "evidenceHash": "mut_hash_1787667523471_6"
+      }
+    ]
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "cwd": "/app/applet",
+  "files": {
+    "package.json": {
+      "existsInRoot": false,
+      "foundInArtifacts": true
+    },
+    "tsconfig.json": {
+      "existsInRoot": false,
+      "foundInArtifacts": true
+    },
+    "index.html": {
+      "existsInRoot": true
+    },
+    "server.ts": {
+      "existsInRoot": true
+    },
+    "src/main.tsx": {
+      "existsInRoot": true
+    },
+    "src/App.tsx": {
+      "existsInRoot": true
+    }
+  },
+  "movedArtifacts": [
+    "package.json",
+    "tsconfig.json",
+    "tsconfig.active.json",
+    "tsconfig.lenient.json",
+    "tsconfig.test.json"
+  ],
+  "finding": "CONFIRMED: The previous wildcard move command (mv *.json) swept essential project configuration files into the artifact directory, validating the user's critical warning."
+}

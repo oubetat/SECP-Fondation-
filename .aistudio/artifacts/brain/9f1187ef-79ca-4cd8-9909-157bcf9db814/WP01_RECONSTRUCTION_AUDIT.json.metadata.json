@@ -1,0 +1,5 @@
+{
+  "summary":  "WP01 Reconstruction Audit report analyzing public members of SpatialMaterialField.ts and comparing package.json against package-lock.json.",
+  "updatedAt":  "2026-11-01T08:20:22.734236482Z",
+  "userFacing":  true
+}

@@ -75,6 +75,11 @@ export interface ManufacturingExecutionPackage {
   blocksCount: number;
   ncProgram: string;
   blocks: NCBlock[];
+  ncBlocks?: NCBlock[];
+  machineDefinition?: any;
+  verifiedCLData?: any;
+  clDataHash?: string;
+  ncProgramHash?: string;
   revisions: string[];
   merkleRoot: string;
   packageHash: string;

@@ -1,0 +1,18 @@
+[
+  {
+    "capabilityId": "capability:cad.brep.boolean",
+    "objectId": "OBJ-GEOM-123",
+    "status": "COMPLETED",
+    "result": {
+      "resultState": "SUCCESS",
+      "volume": 200
+    },
+    "providerId": "cad-local-engine",
+    "evidenceIds": [
+      "EVID-CAD-01"
+    ],
+    "startedAt": "2026-08-21T15:58:44.243Z",
+    "completedAt": "2026-08-21T15:58:44.243Z",
+    "executionHash": "7e96afc31fba358fae7a514c19be525171f74ddbb2f8e91753d34aa84a561ef6"
+  }
+]

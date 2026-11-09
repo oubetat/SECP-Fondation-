@@ -1,0 +1,509 @@
+{
+  "registerId": "SECP-PHASE5-CAP-REG-001",
+  "platform": "SolidEdge Cloud Platform (SECP) — Engineering Truth OS",
+  "phase": "Phase 5 — Aircraft & Industrial Qualification",
+  "timestamp": "2026-10-21T08:00:00.000Z",
+  "statusCategoriesAllowed": [
+    "DECLARED",
+    "IMPLEMENTED",
+    "EXECUTED",
+    "VERIFIED",
+    "EVIDENCE_BACKED",
+    "QUALIFICATION_ACCEPTED"
+  ],
+  "capabilities": [
+    {
+      "capabilityId": "CAP-ECAD-CANONICAL-001",
+      "name": "PCB Canonical Model & Layout Verification",
+      "currentStatus": "EVIDENCE_BACKED",
+      "actualSourceFiles": [
+        "src/engine/pcb/PcbCanonicalModel.ts",
+        "src/engine/pcb/PcbGeometryKernel.ts",
+        "src/engine/pcb/PcbHardAcceptanceGate.ts",
+        "src/engine/pcb/PcbDesignRules.ts"
+      ],
+      "canonicalInputs": [
+        "PcbCanonicalModel",
+        "LayerStackupDefinition",
+        "FootprintDefinition[]",
+        "CopperTraceDefinition[]",
+        "ViaDefinition[]",
+        "SchematicNetDefinition[]"
+      ],
+      "authoritativeEngine": "PcbGeometryKernel / PcbCanonicalModelValidator",
+      "executionPath": "PcbCanonicalModelValidator.validate() -> PcbHardAcceptanceGate.evaluate()",
+      "verificationMethod": "COMBINED",
+      "existingTests": [
+        "src/engine/pcb/tests/verify_pcb.ts",
+        "src/engine/pcb/tests/verify_pcb_geometry.ts",
+        "src/engine/pcb/tests/verify_pcb_adversarial_closure.ts"
+      ],
+      "evidenceReferences": [
+        "SECP-MULTIDOMAIN-ENGINEERING-PHASE-4-001.json",
+        "SECP-MULTIDOMAIN-ENGINEERING-PHASE-4-001.md"
+      ],
+      "knownLimitations": "Assumes rigid planar substrates (FR4/Polyimide); flexible PCB bending radii physics not yet integrated.",
+      "missingRequirements": "IPC-6012 Class 3 / MIL-PRF-31032 aerospace substrate qualification rules.",
+      "recommendedNextAction": "Bind to Phase 5 QualificationRequirement schema with Class 3 acceptance criteria."
+    },
+    {
+      "capabilityId": "CAP-ELEC-MNA-001",
+      "name": "Electrical Nodal Circuit Solver (MNA) & Power Balancing",
+      "currentStatus": "EVIDENCE_BACKED",
+      "actualSourceFiles": [
+        "src/engine/engineeringCore/NodalCircuitSolver.ts",
+        "src/engine/engineeringCore/electrical.ts",
+        "src/engine/engineeringCore/CircuitTopologySolver.ts"
+      ],
+      "canonicalInputs": [
+        "CircuitModel",
+        "CircuitNode[]",
+        "CircuitElement[] (Resistors, Independent Voltage/Current Sources)"
+      ],
+      "authoritativeEngine": "NodalCircuitSolver / ElectricalCoreEngine",
+      "executionPath": "NodalCircuitSolver.solve(model) -> compute Branch Currents & Power Balance",
+      "verificationMethod": "ANALYSIS",
+      "existingTests": [
+        "src/engine/engineeringCore/tests/verify_nodal_solver_phase4.ts",
+        "src/engine/engineeringCore/tests/verify_electrical_foundation.ts",
+        "src/engine/engineeringCore/tests/adversarial_electrical_tests.ts"
+      ],
+      "evidenceReferences": [
+        "Residual power balance residual < 1e-12 W in verify_multidomain_pcb.ts",
+        "SECP-MULTIDOMAIN-ENGINEERING-PHASE-4-001.json"
+      ],
+      "knownLimitations": "Linear DC steady-state analysis only. AC frequency response, transmission line effects, and inductive switching transients not modeled.",
+      "missingRequirements": "DO-160 Section 16/17 power input transient tolerance and lightning surge modeling.",
+      "recommendedNextAction": "Document validity envelope strictly as DC steady-state; declare transient/RF as NOT_PROVEN."
+    },
+    {
+      "capabilityId": "CAP-TRACE-VDROP-001",
+      "name": "Copper Trace DC Resistance & Voltage Drop Evaluation",
+      "currentStatus": "EVIDENCE_BACKED",
+      "actualSourceFiles": [
+        "src/engine/crossdomain/MultidomainPcbIntegrationEngine.ts",
+        "src/engine/engineeringCore/electrical.ts"
+      ],
+      "canonicalInputs": [
+        "CopperTraceDefinition (length, width, thickness, material)",
+        "Operating Current",
+        "Temperature Coefficient"
+      ],
+      "authoritativeEngine": "MultidomainPcbIntegrationEngine (ASTM B193 Resistivity Formula)",
+      "executionPath": "MultidomainPcbIntegrationEngine.computeTraceResistance() -> computeTraceVoltageDrop()",
+      "verificationMethod": "ANALYSIS",
+      "existingTests": [
+        "src/engine/crossdomain/tests/verify_multidomain_pcb.ts",
+        "src/engine/crossdomain/tests/adversarial_multidomain_pcb.ts"
+      ],
+      "evidenceReferences": [
+        "V_drop = 0.151% (Threshold: 3.0%) recorded in SECP-MULTIDOMAIN-ENGINEERING-PHASE-4-001.json"
+      ],
+      "knownLimitations": "Uniform cross-section DC conduction assumption. No AC skin-depth or high-frequency current crowding.",
+      "missingRequirements": "IPC-2152 temperature-rise charts for internal vs external layers under continuous altitude derating.",
+      "recommendedNextAction": "Add environmental ambient derating factors for high-altitude aerospace profiles."
+    },
+    {
+      "capabilityId": "CAP-HARNESS-INTERCONNECT-001",
+      "name": "Wiring Harness Electrical & Interconnect Verification",
+      "currentStatus": "EVIDENCE_BACKED",
+      "actualSourceFiles": [
+        "src/engine/wiring-harness/WiringHarnessCanonicalModel.ts",
+        "src/engine/wiring-harness/WiringHarnessElectricalVerifier.ts",
+        "src/engine/wiring-harness/WiringHarnessHardAcceptanceGate.ts"
+      ],
+      "canonicalInputs": [
+        "WiringHarnessCanonicalModel",
+        "ConnectorDefinition[]",
+        "WireDefinition[]",
+        "TerminalDefinition[]"
+      ],
+      "authoritativeEngine": "WiringHarnessElectricalVerifier / WiringHarnessHardAcceptanceGate",
+      "executionPath": "WiringHarnessElectricalVerifier.verify() -> evaluateAmpacityAndVoltageDrop()",
+      "verificationMethod": "COMBINED",
+      "existingTests": [
+        "src/engine/wiring-harness/tests/verify_wiring_harness.ts",
+        "src/engine/wiring-harness/tests/adversarial_qualification.ts",
+        "src/engine/wiring-harness/tests/adversarial_qualification_v3.ts"
+      ],
+      "evidenceReferences": [
+        "SECP-WH-QUALIFICATION-REPORT-001.md",
+        "SECP-MULTIDOMAIN-ENGINEERING-PHASE-4-001.json"
+      ],
+      "knownLimitations": "Assumes point-to-point harness topology. High-voltage insulation breakdown (corona discharge at altitude) not computed.",
+      "missingRequirements": "SAE AS50881 / MIL-W-5088L aerospace harness installation & bundle derating verification.",
+      "recommendedNextAction": "Integrate bundle grouping derating factor and altitude pressure correction."
+    },
+    {
+      "capabilityId": "CAP-MCAD-ASSEMBLY-001",
+      "name": "MCAD Enclosure Standoff & Clearance Keepout Verification",
+      "currentStatus": "EVIDENCE_BACKED",
+      "actualSourceFiles": [
+        "src/engine/pcb/PcbGeometryKernel.ts",
+        "src/engine/pcb/PcbMechanicalVerifier.ts",
+        "src/engine/crossdomain/MultidomainPcbIntegrationEngine.ts"
+      ],
+      "canonicalInputs": [
+        "EnclosureDefinition",
+        "BoardDimensions",
+        "StandoffDefinition[]",
+        "MountingHoleDefinition[]",
+        "Component3DKeepout[]"
+      ],
+      "authoritativeEngine": "PcbGeometryKernel / MultidomainPcbIntegrationEngine",
+      "executionPath": "MultidomainPcbIntegrationEngine.verifyMcadKeepouts()",
+      "verificationMethod": "INSPECTION",
+      "existingTests": [
+        "src/engine/crossdomain/tests/verify_multidomain_pcb.ts",
+        "src/engine/pcb/tests/verify_pcb_mechanical.ts"
+      ],
+      "evidenceReferences": [
+        "Standoff deviation = 0.00mm, Lid clearance = 11.90mm in SECP-MULTIDOMAIN-ENGINEERING-PHASE-4-001.json"
+      ],
+      "knownLimitations": "Rigid body interference detection only. Elastic deflection under aerodynamic/gravitational G-loads not evaluated.",
+      "missingRequirements": "DO-160 Section 8 structural vibration resonance and sustained G-load clearance.",
+      "recommendedNextAction": "Distinguish geometric clearance from dynamic deflection; mark structural deformation as NOT_PROVEN."
+    },
+    {
+      "capabilityId": "CAP-THERMAL-LUMPED-001",
+      "name": "Thermal Junction Temperature & Joule Heating Estimation",
+      "currentStatus": "EVIDENCE_BACKED",
+      "actualSourceFiles": [
+        "src/engine/crossdomain/MultidomainPcbIntegrationEngine.ts",
+        "src/engine/engineeringCore/thermodynamics.ts"
+      ],
+      "canonicalInputs": [
+        "PowerDissipation (Watts)",
+        "ThetaJA (°C/W)",
+        "AmbientTemperature (°C)",
+        "ComponentMaxRatedJunctionTemp (°C)"
+      ],
+      "authoritativeEngine": "MultidomainPcbIntegrationEngine (Lumped Parameter Theta-JA)",
+      "executionPath": "MultidomainPcbIntegrationEngine.evaluateThermalJunctions()",
+      "verificationMethod": "ANALYSIS",
+      "existingTests": [
+        "src/engine/crossdomain/tests/verify_multidomain_pcb.ts",
+        "src/engine/crossdomain/tests/adversarial_multidomain_pcb.ts"
+      ],
+      "evidenceReferences": [
+        "Hottest junction 48.1°C against 105.0°C limit in SECP-MULTIDOMAIN-ENGINEERING-PHASE-4-001.json"
+      ],
+      "knownLimitations": "1D lumped parameter thermal model. Does not solve 3D Navier-Stokes airflow or conjugate heat transfer.",
+      "missingRequirements": "DO-160 Section 4 temperature/altitude operating extremes (-55°C to +85°C with solar radiation).",
+      "recommendedNextAction": "Explicitly register model as 0D/1D Lumped-Parameter in solver-validity-register.json; disallow claiming 3D CFD."
+    },
+    {
+      "capabilityId": "CAP-BOM-RECON-001",
+      "name": "Unified Cross-Domain Manufacturing BOM Reconciliation",
+      "currentStatus": "EVIDENCE_BACKED",
+      "actualSourceFiles": [
+        "src/engine/crossdomain/MultidomainPcbIntegrationEngine.ts"
+      ],
+      "canonicalInputs": [
+        "PcbCanonicalModel.components",
+        "WiringHarnessCanonicalModel.connectors",
+        "WiringHarnessCanonicalModel.wires",
+        "EnclosureDefinition parts"
+      ],
+      "authoritativeEngine": "MultidomainPcbIntegrationEngine.generateUnifiedBom()",
+      "executionPath": "MultidomainPcbIntegrationEngine.generateUnifiedBom() -> reconcile quantities & designators",
+      "verificationMethod": "INSPECTION",
+      "existingTests": [
+        "src/engine/crossdomain/tests/verify_multidomain_pcb.ts",
+        "src/engine/crossdomain/tests/adversarial_multidomain_pcb.ts"
+      ],
+      "evidenceReferences": [
+        "8 reconciled items matched exactly in SECP-MULTIDOMAIN-ENGINEERING-PHASE-4-001.json"
+      ],
+      "knownLimitations": "Matches by standard component part numbers. Vendor obsolescence (PCN) and supply chain lead times not queried live.",
+      "missingRequirements": "Aerospace traceability to lot numbers and certificates of conformance (CoC).",
+      "recommendedNextAction": "Add traceability fields for manufacturing lot and qualification test unit serials."
+    },
+    {
+      "capabilityId": "CAP-EVIDENCE-ATTEST-001",
+      "name": "Deterministic Hash & Cryptographic Merkle Evidence Tree",
+      "currentStatus": "EVIDENCE_BACKED",
+      "actualSourceFiles": [
+        "src/engine/evidence/DeterministicHash.ts",
+        "src/engine/evidence/ledger/EngineeringEvidenceLedger.ts",
+        "src/engine/certification/truth/EvidenceMerkleTree.ts",
+        "src/engine/crossdomain/MultidomainPcbIntegrationEngine.ts"
+      ],
+      "canonicalInputs": [
+        "MultidomainPcbAssembly canonical serialization",
+        "Evidence records array"
+      ],
+      "authoritativeEngine": "DeterministicHash / EvidenceMerkleTree",
+      "executionPath": "computeMultidomainCanonicalHash() -> EvidenceMerkleTree.buildTree()",
+      "verificationMethod": "TEST",
+      "existingTests": [
+        "src/engine/crossdomain/tests/verify_multidomain_pcb.ts (Permutation Invariance Test)",
+        "src/engine/crossdomain/tests/adversarial_multidomain_pcb.ts"
+      ],
+      "evidenceReferences": [
+        "Hash f655ebf3c5b986975a285d8aaefdd81ca69d12384976aa0f2495d03bb630739c verified invariant to array key sorting"
+      ],
+      "knownLimitations": "Proves cryptographic non-tampering of recorded payload; does not validate underlying physical assumptions.",
+      "missingRequirements": "Binding to external qualification standard clause numbers.",
+      "recommendedNextAction": "Retain as cryptographic foundation; bind Merkle leaves directly to QualificationRequirement IDs."
+    },
+    {
+      "capabilityId": "CAP-CHANGE-INVALIDATION-001",
+      "name": "Design Mutation Detection & Evidence Invalidation",
+      "currentStatus": "VERIFIED",
+      "actualSourceFiles": [
+        "src/engine/impact/ChangeImpactAnalyzer.ts",
+        "src/engine/revision/RevisionImpactAnalyzer.ts",
+        "src/engine/crossdomain/tests/mutation_multidomain_pcb.ts"
+      ],
+      "canonicalInputs": [
+        "Design mutation delta",
+        "Previous verification digest",
+        "Dependency graph"
+      ],
+      "authoritativeEngine": "ChangeImpactAnalyzer / MultidomainPcbHardAcceptanceGate",
+      "executionPath": "Mutate design -> Re-run gate -> Detect digest mismatch -> Invalidate previous evidence",
+      "verificationMethod": "TEST",
+      "existingTests": [
+        "src/engine/crossdomain/tests/mutation_multidomain_pcb.ts (4/4 mutants killed)",
+        "src/engine/crossdomain/tests/adversarial_multidomain_pcb.ts (11/11 rejected)"
+      ],
+      "evidenceReferences": [
+        "Mutation score 100% recorded in SECP-MULTIDOMAIN-ENGINEERING-PHASE-4-001.md"
+      ],
+      "knownLimitations": "Currently executed via test harness scripts; automated background cascade daemon pending P5.7 integration.",
+      "missingRequirements": "Automated system-level status transition from VALID to INVALIDATED in durable storage on git commit.",
+      "recommendedNextAction": "Formalize QualificationChangeImpactEngine in Phase 5."
+    },
+    {
+      "capabilityId": "CAP-STRUCTURAL-FEA-001",
+      "name": "Structural Vibration, Modal Analysis & Shock Dynamics",
+      "currentStatus": "IMPLEMENTED",
+      "actualSourceFiles": [
+        "src/engine/fem/modal/",
+        "src/engine/fem/solver/",
+        "src/engine/fem/fatigue/"
+      ],
+      "canonicalInputs": [
+        "FEA Mesh",
+        "Material constitutive matrices",
+        "Boundary acceleration spectra"
+      ],
+      "authoritativeEngine": "src/engine/fem/solver",
+      "executionPath": "Isolated FEM solvers under src/engine/fem",
+      "verificationMethod": "ANALYSIS",
+      "existingTests": [
+        "src/engine/fem/modal/__tests__/",
+        "src/engine/fem/fatigue/__tests__/"
+      ],
+      "evidenceReferences": [
+        "None in Multidomain PCB Integration (Not integrated in Phase 4 gate)"
+      ],
+      "knownLimitations": "Solvers exist in isolation but are not bound into MultidomainPcbIntegrationEngine or Acceptance Gates.",
+      "missingRequirements": "End-to-end integration of random vibration profiles (MIL-STD-810H / DO-160 Section 8) with PCB mounting standoffs.",
+      "recommendedNextAction": "Explicitly record as GAP-P5-004; designate structural qualification as NOT_PROVEN in Phase 5 baseline."
+    },
+    {
+      "capabilityId": "CAP-SAFETY-FMEA-001",
+      "name": "Functional Safety & Failure Modes Effects Analysis (FMEA)",
+      "currentStatus": "DECLARED",
+      "actualSourceFiles": [
+        "src/engine/asset-reliability/",
+        "src/engine/p1-parametric-stress/"
+      ],
+      "canonicalInputs": [
+        "Component failure rates (FIT)",
+        "Failure mode catalogs",
+        "Operating mission profiles"
+      ],
+      "authoritativeEngine": "None formally bound at multidomain system level",
+      "executionPath": "Not bound to Canonical Model",
+      "verificationMethod": "INSPECTION",
+      "existingTests": [],
+      "evidenceReferences": [],
+      "knownLimitations": "Software tests verify logic mutations, but no quantitative hardware FMEA/FMECA or FTA engine is active.",
+      "missingRequirements": "MIL-HDBK-217F / Siemens SN 29500 reliability prediction and ISO 26262 ASIL hazard analysis.",
+      "recommendedNextAction": "Record as GAP-P5-005; disallow claiming functional safety qualification without quantitative models."
+    },
+    {
+      "capabilityId": "CAP-AERO-DO254-001",
+      "name": "DO-254 / DO-178C Airborne Systems Qualification Traceability",
+      "currentStatus": "DECLARED",
+      "actualSourceFiles": [],
+      "canonicalInputs": [
+        "Plan for Hardware Aspects of Certification (PHAC)",
+        "Hardware Design Life Cycle Data"
+      ],
+      "authoritativeEngine": "None (External regulatory standard)",
+      "executionPath": "Unimplemented",
+      "verificationMethod": "INSPECTION",
+      "existingTests": [],
+      "evidenceReferences": [
+        "Declared NOT_PROVEN in SECP-MULTIDOMAIN-ENGINEERING-PHASE-4-001.json"
+      ],
+      "knownLimitations": "SECP provides engineering evidence; it does not constitute FAA/EASA certification authority.",
+      "missingRequirements": "Traceable qualification data package aligned with DO-254 Design Assurance Levels (DAL A-E).",
+      "recommendedNextAction": "Enforce status as NOT_PROVEN in all certificates until formal qualification package is generated."
+    },
+    {
+      "capabilityId": "CAP-AUTO-ISO26262-001",
+      "name": "ISO 26262 ASIL D Automotive Functional Safety Qualification",
+      "currentStatus": "DECLARED",
+      "actualSourceFiles": [],
+      "canonicalInputs": [
+        "Item Definition",
+        "HARA (Hazard Analysis and Risk Assessment)",
+        "Safety Goals"
+      ],
+      "authoritativeEngine": "None (External regulatory standard)",
+      "executionPath": "Unimplemented",
+      "verificationMethod": "INSPECTION",
+      "existingTests": [],
+      "evidenceReferences": [
+        "Declared NOT_PROVEN in SECP-MULTIDOMAIN-ENGINEERING-PHASE-4-001.json"
+      ],
+      "knownLimitations": "No ASIL D hardware metrics (SPFM, LFM, PMHF) computed from canonical components.",
+      "missingRequirements": "Quantitative safety mechanism diagnostic coverage modeling.",
+      "recommendedNextAction": "Enforce status as NOT_PROVEN; prohibit marketing labels claiming ASIL compliance."
+    },
+    {
+      "capabilityId": "CAP-QUAL-SYSTEM-001",
+      "name": "System-Level Qualification Engine (Aircraft & Industrial)",
+      "currentStatus": "EVIDENCE_BACKED",
+      "actualSourceFiles": [
+        "src/engine/qualification/SystemQualificationEngine.ts"
+      ],
+      "canonicalInputs": [
+        "EngineeringSystem",
+        "MultidomainPcbAssembly",
+        "QualificationRequirement[]"
+      ],
+      "authoritativeEngine": "SystemQualificationEngine",
+      "executionPath": "SystemQualificationEngine.evaluateSystem(system) -> Gate Evaluation -> RTM Mapping -> Merkle Root",
+      "verificationMethod": "COMBINED",
+      "existingTests": [
+        "src/engine/qualification/tests/system_qualification.test.ts",
+        "src/engine/qualification/tests/qualification_adversarial.test.ts"
+      ],
+      "evidenceReferences": [
+        "SECP-P5-QUALIFICATION-REPORT-001.md",
+        "SECP-P5-QUALIFICATION-REPORT-001.json"
+      ],
+      "knownLimitations": "Decision bounded by declared scope: steady-state DC, lumped Theta-JA thermal, and rigid kinematic MCAD only.",
+      "missingRequirements": "Full 3D CFD, random vibration FEA, and hardware FMEA models remain designated NOT_PROVEN.",
+      "recommendedNextAction": "Operational and verified in Phase 5."
+    },
+    {
+      "capabilityId": "CAP-QUAL-REQ-001",
+      "name": "Canonical Qualification Requirements & Traceability Schema",
+      "currentStatus": "EVIDENCE_BACKED",
+      "actualSourceFiles": [
+        "src/engine/qualification/QualificationRequirement.ts"
+      ],
+      "canonicalInputs": [
+        "QualificationRequirement",
+        "AcceptanceThreshold",
+        "CanonicalDesignReference"
+      ],
+      "authoritativeEngine": "evaluateAcceptanceCriteria",
+      "executionPath": "evaluateAcceptanceCriteria(criteria, measuredValue)",
+      "verificationMethod": "ANALYSIS",
+      "existingTests": [
+        "src/engine/qualification/tests/requirement_traceability.test.ts"
+      ],
+      "evidenceReferences": [
+        "requirement_traceability.test.ts: 8/8 passed"
+      ],
+      "knownLimitations": "Covers mathematical operators (<, <=, >, >=, ==, !=, MATCHES).",
+      "missingRequirements": "None for declared scope.",
+      "recommendedNextAction": "Maintain requirement repository."
+    },
+    {
+      "capabilityId": "CAP-QUAL-SYSMODEL-001",
+      "name": "Engineering System Canonical Root Entity (ECU Reference Assembly)",
+      "currentStatus": "EVIDENCE_BACKED",
+      "actualSourceFiles": [
+        "src/engine/qualification/EngineeringSystemCanonicalModel.ts"
+      ],
+      "canonicalInputs": [
+        "EngineeringSystem",
+        "SystemOperatingEnvelope",
+        "SystemSolverValidityEnvelope"
+      ],
+      "authoritativeEngine": "createReferenceEcuSystem",
+      "executionPath": "createReferenceEcuSystem() -> SECP-REF-ECU-001 Assembly",
+      "verificationMethod": "INSPECTION",
+      "existingTests": [
+        "src/engine/qualification/tests/system_qualification.test.ts"
+      ],
+      "evidenceReferences": [
+        "SECP-REF-ECU-001 benchmark assembly verified in system_qualification.test.ts"
+      ],
+      "knownLimitations": "Benchmark instantiated as 4-layer IPC-6012 Class 3 rigid ECU.",
+      "missingRequirements": "None for declared scope.",
+      "recommendedNextAction": "Expand to additional avionics configurations as needed."
+    },
+    {
+      "capabilityId": "CAP-QUAL-CASCADE-001",
+      "name": "Automated Cross-Domain Revision Invalidation Cascade",
+      "currentStatus": "EVIDENCE_BACKED",
+      "actualSourceFiles": [
+        "src/engine/qualification/QualificationChangeImpact.ts"
+      ],
+      "canonicalInputs": [
+        "SystemDesignFingerprint",
+        "SubsystemFingerprint[]",
+        "RequirementVerificationEvidence"
+      ],
+      "authoritativeEngine": "QualificationChangeImpact.evaluateChangeImpact",
+      "executionPath": "evaluateChangeImpact(baseline, active, evidenceMap) -> Invalidation Cascade",
+      "verificationMethod": "TEST",
+      "existingTests": [
+        "src/engine/qualification/tests/qualification_adversarial.test.ts"
+      ],
+      "evidenceReferences": [
+        "ADV-CAS-001 & ADV-CAS-002: Stale evidence rejected and blocked"
+      ],
+      "knownLimitations": "Fingerprint is computed across ECAD, Electrical, Harness, MCAD, Thermal, and BOM.",
+      "missingRequirements": "None for declared scope.",
+      "recommendedNextAction": "Continuous trigger on design revision creation."
+    },
+    {
+      "capabilityId": "CAP-QUAL-REPORT-001",
+      "name": "Qualification Report & Traceability Artifact Generator",
+      "currentStatus": "EVIDENCE_BACKED",
+      "actualSourceFiles": [
+        "src/engine/qualification/QualificationReportGenerator.ts"
+      ],
+      "canonicalInputs": [
+        "SystemQualificationReport"
+      ],
+      "authoritativeEngine": "QualificationReportGenerator.saveReportsToDisk",
+      "executionPath": "saveReportsToDisk(report) -> Markdown & JSON",
+      "verificationMethod": "INSPECTION",
+      "existingTests": [
+        "src/engine/qualification/tests/system_qualification.test.ts"
+      ],
+      "evidenceReferences": [
+        "SECP-P5-QUALIFICATION-REPORT-001.md",
+        "SECP-P5-QUALIFICATION-REPORT-001.json"
+      ],
+      "knownLimitations": "None.",
+      "missingRequirements": "None.",
+      "recommendedNextAction": "Publish to project root and UI dashboard."
+    }
+  ],
+  "summary": {
+    "totalAuditedCapabilities": 18,
+    "evidenceBacked": 13,
+    "verified": 1,
+    "implementedIsolated": 1,
+    "declaredUnimplemented": 3,
+    "notProvenStandards": [
+      "DO-254",
+      "DO-178C",
+      "ISO 26262 ASIL D",
+      "IEC 61508 SIL"
+    ]
+  }
+}

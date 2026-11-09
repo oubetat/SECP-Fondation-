@@ -1,0 +1,40 @@
+{
+  "mission": "SECP-RECOVERY-VERIFICATION-001",
+  "timestamp": "2026-11-05T12:14:05.765Z",
+  "verdict": "PASS",
+  "compilerApiResolution": {
+    "resolvedConfigFile": "./tsconfig.json",
+    "tsVersion": "5.8.3",
+    "options": {
+      "strict": true,
+      "noEmit": true,
+      "moduleResolution": "Bundler (100)",
+      "target": "ES2022 (9)",
+      "module": "ESNext (99)",
+      "jsx": "ReactJSX (4)",
+      "skipLibCheck": true,
+      "baseUrl": null,
+      "paths": null,
+      "isolatedModules": true,
+      "allowImportingTsExtensions": true,
+      "resolveJsonModule": true
+    },
+    "include": [
+      "src"
+    ],
+    "exclude": [
+      "node_modules",
+      "dist",
+      "src/verification"
+    ],
+    "projectReferences": null,
+    "totalMatchedFiles": 4842
+  },
+  "intendedConfigurationVerification": {
+    "strictEnforced": true,
+    "noEmitEnforced": true,
+    "bundlerResolutionEnforced": true,
+    "noUnsafeWeakeningDirectives": true,
+    "status": "INTENDED_CONFIGURATION_ACTIVE"
+  }
+}

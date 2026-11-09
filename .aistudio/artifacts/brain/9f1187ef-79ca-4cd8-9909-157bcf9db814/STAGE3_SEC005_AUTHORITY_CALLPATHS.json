@@ -1,0 +1,51 @@
+{
+  "audit_id": "SECP-STAGE3-SECURITY-REMEDIATION-005",
+  "phase": "Phase B - Authority Call Path Forensic",
+  "timestamp": "2026-11-01T11:25:00Z",
+  "totalProductionSealPaths": 3,
+  "totalProductionSolverPaths": 24,
+  "sealBindingCallSites": [
+    {
+      "caller": "src/engine/engineeringCore/SimulationSealingAuthorization.ts",
+      "target": "CanonicalDomainBindingEngine.sealBinding",
+      "protectedByCapability": true
+    },
+    {
+      "caller": "src/engine/engineeringCore/CanonicalDomainBindingEngine.ts",
+      "target": "sealBinding internal implementation",
+      "protectedByCapability": true
+    },
+    {
+      "caller": "src/engine/engineeringCore/SimulationAuthorityInternal.ts",
+      "target": "initializeAuthorityHandshake",
+      "protectedByCapability": true
+    }
+  ],
+  "solverCallSites": [
+    {
+      "solver": "ElectrothermalSolver",
+      "path": "src/engine/engineeringCore/ElectrothermalSolver.ts",
+      "delegatesToBinding": true
+    },
+    {
+      "solver": "FEMCore",
+      "path": "src/engine/fem/FEMCore.ts",
+      "delegatesToBinding": true
+    },
+    {
+      "solver": "Fvm3DNavierStokesSolver",
+      "path": "src/engine/engineering_cfd/Fvm3DNavierStokesSolver.ts",
+      "delegatesToBinding": true
+    },
+    {
+      "solver": "NodalCircuitSolver",
+      "path": "src/engine/electricalWorkbench/NodalCircuitSolver.ts",
+      "delegatesToBinding": true
+    },
+    {
+      "solver": "PcbVerificationService",
+      "path": "src/engine/pcb/PcbVerificationService.ts",
+      "delegatesToBinding": true
+    }
+  ]
+}

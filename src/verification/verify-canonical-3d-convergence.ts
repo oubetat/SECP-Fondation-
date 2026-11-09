@@ -6,7 +6,8 @@ import { createCanonicalRenderData } from '../engine/viewport/CanonicalRenderCon
 import { convertRenderDataToThreeBufferGeometry } from '../engine/viewport/ThreeGeometryConverter';
 
 const testDocumentResolver: IDocumentResolver = {
-  resolveDocument: (docId: string) => null
+  resolve: (documentId: string) => undefined,
+  resolveDocument: (docId: string) => undefined
 };
 
 async function runCanonical3DConvergenceProof() {

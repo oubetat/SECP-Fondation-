@@ -1,0 +1,5 @@
+{
+  "summary":  "Reproduction results for the adversarial security battery, confirming passing status for 10/10 test cases covering unauthorized sealing, failed initialization, and tamper detection for SECP-STAGE3-ADJ-004.",
+  "updatedAt":  "2026-11-01T09:34:32.255145655Z",
+  "userFacing":  true
+}

@@ -77,17 +77,20 @@ export const AIDesignReviewWorkbenchPanel: React.FC = () => {
     });
 
     setActiveReviewId(demo.reviewId);
-    setFeedback(`Generated automated AI design review ${demo.reviewId} for ${demo.partId}.`);
+    setFeedback(`Generated automated AI design review ${demo.reviewId} for ${demo.designId}.`);
     refresh();
   };
 
   const handleGrantWaiver = (findingId: string) => {
-    service.grantWaiver({
-      reviewId: activeReview?.reviewId || '',
-      findingId,
-      approvedBy: 'CHIEF_ENGINEER',
-      justification: 'Waiver granted for prototype testing batch. Tool chatter dampened via custom carbide tooling.'
-    });
+    const session = service.getCurrentSession();
+    if (session) {
+      service.waiveFinding(
+        session,
+        findingId,
+        'Waiver granted for prototype testing batch. Tool chatter dampened via custom carbide tooling.',
+        'CHIEF_ENGINEER'
+      );
+    }
     setFeedback(`Granted engineering waiver for ${findingId}.`);
     refresh();
   };
@@ -96,8 +99,8 @@ export const AIDesignReviewWorkbenchPanel: React.FC = () => {
     const results = HardAcceptanceGate312.evaluate();
     setGateResults(results);
     setActiveTab('GATE312');
-    const passed = results.every(r => r.passed);
-    setFeedback(`Gate 312 evaluated: ${passed ? 'PASSED (100%)' : 'FAILED'} (${results.filter(r => r.passed).length}/${results.length} assertions).`);
+    const passed = results.every((r: GateTestResult) => r.passed);
+    setFeedback(`Gate 312 evaluated: ${passed ? 'PASSED (100%)' : 'FAILED'} (${results.filter((r: GateTestResult) => r.passed).length}/${results.length} assertions).`);
   };
 
   return (
@@ -197,7 +200,7 @@ export const AIDesignReviewWorkbenchPanel: React.FC = () => {
                   }`}
                 >
                   <div className="flex items-center justify-between">
-                    <span className="font-mono text-xs font-bold text-slate-200">{r.partId} (Rev {r.revision})</span>
+                    <span className="font-mono text-xs font-bold text-slate-200">{r.designId} (Rev {r.designRevision})</span>
                     <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-950 text-emerald-400 border border-emerald-800">
                       {r.status}
                     </span>
@@ -205,7 +208,7 @@ export const AIDesignReviewWorkbenchPanel: React.FC = () => {
 
                   <div className="mt-2 text-xs text-slate-400 space-y-1">
                     <div>Review ID: <span className="font-mono text-slate-300">{r.reviewId}</span></div>
-                    <div>Audited Standards: <span className="text-slate-300 font-mono">{r.standards.join(', ')}</span></div>
+                    <div>Audited Scope: <span className="text-slate-300 font-mono">{r.reviewScope.join(', ')}</span></div>
                     <div>Total Findings: <strong className="text-amber-400">{r.findings.length}</strong></div>
                   </div>
                 </div>
@@ -218,7 +221,7 @@ export const AIDesignReviewWorkbenchPanel: React.FC = () => {
       {activeTab === 'FINDINGS' && activeReview && (
         <div className="space-y-3">
           <h3 className="text-xs font-semibold uppercase text-slate-400 tracking-wider">
-            Findings for {activeReview.partId} ({activeReview.findings.length})
+            Findings for {activeReview.designId} ({activeReview.findings.length})
           </h3>
 
           {activeReview.findings.map(f => (
@@ -230,12 +233,12 @@ export const AIDesignReviewWorkbenchPanel: React.FC = () => {
                   </span>
                   <span className="font-bold text-slate-200">{f.title}</span>
                 </div>
-                <span className="text-[10px] text-slate-500">{f.ruleCategory}</span>
+                <span className="text-[10px] text-slate-500">{f.category}</span>
               </div>
 
               <p className="text-slate-300 font-sans">{f.description}</p>
               <div className="text-[11px] text-slate-400 bg-slate-900 p-2.5 rounded border border-slate-800 font-sans">
-                💡 <strong className="text-emerald-400">Recommendation:</strong> {f.recommendedAction}
+                💡 <strong className="text-emerald-400">Recommendation:</strong> {f.recommendation}
               </div>
 
               <div className="flex justify-end pt-2">

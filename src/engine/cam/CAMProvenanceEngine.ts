@@ -72,6 +72,11 @@ export class CAMProvenanceEngine {
     if (!chain?.derivedArtifactBinding) {
       return {
         isValid: false,
+        isDigestValid: false,
+        isRevisionMatched: false,
+        isGeometryMatched: false,
+        reasons: ['UNBOUND: NCProvenanceChain lacks required derivedArtifactBinding'],
+        status: 'UNBOUND',
         failureReason: 'UNBOUND',
         mismatchDetails: 'NCProvenanceChain lacks required derivedArtifactBinding'
       };

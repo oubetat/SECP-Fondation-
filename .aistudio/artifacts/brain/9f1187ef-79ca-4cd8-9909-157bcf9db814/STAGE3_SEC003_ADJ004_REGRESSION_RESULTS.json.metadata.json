@@ -1,0 +1,5 @@
+{
+  "summary":  "Updated independent security adjudication regression results for Stage 3 SEC003. Reflects the remediation of two domain-specific failures (CFD evidence and analytical re-derivation) while maintaining the 114 'Expected Fail-Closed' legacy test results which lack authority handshakes. Final verdict confirmed as VERIFIED_FAIL_CLOSED.",
+  "updatedAt":  "2026-11-01T09:52:22.784057575Z",
+  "userFacing":  true
+}

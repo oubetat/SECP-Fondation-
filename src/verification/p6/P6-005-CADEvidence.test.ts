@@ -45,14 +45,31 @@ describe('P6-005 — CAD EVIDENCE', () => {
     const evidenceA = EvidenceIntegrityEngine.generateEvidence({
       domain: 'CAD',
       documentId: docA.documentId,
-      documentRevision: docA.revision,
+      documentRevision: typeof docA.revision === 'number' ? docA.revision : (Number(docA.revision) || 1),
       actionId: 'EVALUATE',
       executionId: resultA.executionId,
       capabilityId: 'BRepExtrude',
       featureId: 'EXT_01',
       result: resultA,
-      validation: { validationId: 'V1', passed: true, checks: [] },
-      verification: { verificationId: 'VR1', verifierIdentity: 'SYS', independentVerdict: 'PASS' },
+      validation: { 
+        validationId: 'V1', 
+        passed: true, 
+        checks: [],
+        resultId: resultA.resultId,
+        validatorVersion: '3.5.2',
+        validatedAt: new Date().toISOString()
+      },
+      verification: { 
+        verificationId: 'VR1', 
+        resultId: resultA.resultId,
+        validationId: 'V1',
+        verifierIdentity: 'SYS', 
+        verifierVersion: '1.0.0',
+        independentVerdict: 'PASS',
+        isSelfAttested: false,
+        verificationChecks: [],
+        verifiedAt: new Date().toISOString()
+      },
       sourceOrigin: 'REAL_KERNEL'
     });
 
@@ -82,14 +99,31 @@ describe('P6-005 — CAD EVIDENCE', () => {
     const evidenceB = EvidenceIntegrityEngine.generateEvidence({
       domain: 'CAD',
       documentId: docB.documentId,
-      documentRevision: docB.revision,
+      documentRevision: typeof docB.revision === 'number' ? docB.revision : (Number(docB.revision) || 2),
       actionId: 'EVALUATE',
       executionId: resultB.executionId,
       capabilityId: 'BRepExtrude',
       featureId: 'EXT_01',
       result: resultB,
-      validation: { validationId: 'V2', passed: true, checks: [] },
-      verification: { verificationId: 'VR2', verifierIdentity: 'SYS', independentVerdict: 'PASS' },
+      validation: { 
+        validationId: 'V2', 
+        passed: true, 
+        checks: [],
+        resultId: resultB.resultId,
+        validatorVersion: '3.5.2',
+        validatedAt: new Date().toISOString()
+      },
+      verification: { 
+        verificationId: 'VR2', 
+        resultId: resultB.resultId,
+        validationId: 'V2',
+        verifierIdentity: 'SYS', 
+        verifierVersion: '1.0.0',
+        independentVerdict: 'PASS',
+        isSelfAttested: false,
+        verificationChecks: [],
+        verifiedAt: new Date().toISOString()
+      },
       sourceOrigin: 'REAL_KERNEL'
     });
 

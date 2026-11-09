@@ -6,12 +6,14 @@
 import { CfdEngine, CfdFlowResult } from '../cfdEngine';
 import { CfdTool277 } from '../viewport/CfdTool277';
 import { EngineeringDocument } from '../cad-kernel/document/CADDocument';
+import { MeshSet } from '../physics/mesh/MeshTypes';
 
 export interface CfdSimulationParams {
   inletVelocity: number;
   fluidViscosity: number;
   density: number;
   maxSteps: number;
+  mesh?: MeshSet; // Optional explicit mesh
 }
 
 export class CaeCfdService {
@@ -29,7 +31,22 @@ export class CaeCfdService {
     return CaeCfdService.instance;
   }
 
-  public async runSimulation(params: CfdSimulationParams): Promise<CfdFlowResult> {
+  public async runSimulation(params: CfdSimulationParams, expectedGeometryHash?: string): Promise<CfdFlowResult> {
+    // If no mesh is provided, we use a fallback to keep the service functional,
+    // but the guardrail in CfdEngine will now enforce structural integrity if a mesh object is passed.
+    
+    if (params.mesh) {
+      return CfdEngine.runSimulation(
+        params.mesh,
+        params.inletVelocity,
+        params.density,
+        params.fluidViscosity,
+        params.maxSteps,
+        expectedGeometryHash
+      );
+    }
+
+    // Legacy fallback for when mesh-less simulation is requested (e.g. analytical 1D)
     return CfdEngine.solveIncompressibleRANS(
       null,
       params.inletVelocity,

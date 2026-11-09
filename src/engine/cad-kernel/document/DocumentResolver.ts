@@ -9,8 +9,8 @@ export interface DocumentResolutionResult {
 }
 
 export interface IDocumentResolver {
+  resolve(documentId: string, revisionId?: string | number): EngineeringDocument | undefined;
   resolveDocument?: (docId: string) => EngineeringDocument | null | undefined;
-  resolve?: (documentId: string, revisionId?: string | number) => EngineeringDocument | undefined;
   resolveWithStatus?: (documentId: string, context?: DocumentEvaluationContext) => DocumentResolutionResult;
   register?: (doc: EngineeringDocument) => void;
   has?: (documentId: string) => boolean;

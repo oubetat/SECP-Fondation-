@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Box, Plane, Cpu, Plus, FilePlus } from 'lucide-react';
 import { SketchUIIntegration } from '../engine/cad-kernel/ui-integration/SketchUIIntegration';
-import { CanonicalEngineeringDocument } from '../engine/cad-kernel/CanonicalDocumentContract';
+import { EngineeringDocument } from '../engine/cad-kernel/document/CADDocument';
 
 interface ProjectTemplate {
   id: string;
@@ -18,7 +18,7 @@ export function NewProjectWorkspace({
   setCanonicalDocument
 }: {
   onSelectProject: (projectType: string | undefined, tab: string) => void;
-  setCanonicalDocument: (doc: CanonicalEngineeringDocument) => void;
+  setCanonicalDocument: (doc: EngineeringDocument) => void;
 }) {
 
   const templates: ProjectTemplate[] = [

@@ -21,8 +21,8 @@ import { IndependentEvidenceIntegrityVerifier } from '../../engine/evidence/inte
 import {
   CanonicalEvidenceRecord,
   EngineeringResultRecord,
-  ValidationRecord,
-  IndependentVerificationRecord
+  ValidationParams,
+  IndependentVerificationParams
 } from '../../engine/evidence/integrity/EvidenceIntegrityTypes';
 import { EngineeringHashChain } from '../../engine/evidence/EngineeringHashChain';
 import { EngineeringHashChainGate } from '../../engine/evidence/EngineeringHashChainGate';
@@ -112,13 +112,13 @@ describe('P6-002 — Canonical Evidence Identity, Normalization & Hash Chain Int
         isFabricated: false
       };
 
-      const validation: ValidationRecord = {
+      const validation: ValidationParams = {
         validationId: 'VAL-FIXED-001',
         checks: [{ code: 'MANIFOLD', description: '2-manifold', passed: true }],
         passed: true
       };
 
-      const verification: IndependentVerificationRecord = {
+      const verification: IndependentVerificationParams = {
         verificationId: 'VERIF-FIXED-001',
         verifierIdentity: 'SECP-INDEPENDENT-INTEGRITY-AUDITOR',
         independentVerdict: 'PASS'
@@ -127,7 +127,7 @@ describe('P6-002 — Canonical Evidence Identity, Normalization & Hash Chain Int
       const evidence = EvidenceIntegrityEngine.generateEvidence({
         domain: 'CAD',
         documentId: doc.documentId,
-        documentRevision: doc.revision,
+        documentRevision: typeof doc.revision === 'number' ? doc.revision : (Number(doc.revision) || 1),
         actionId: 'EXTRUDE_SOLID',
         executionId: resultRecord.executionId,
         capabilityId: 'BRepExtrude',
@@ -296,13 +296,13 @@ describe('P6-002 — Canonical Evidence Identity, Normalization & Hash Chain Int
       isFabricated: false
     };
 
-    const validation: ValidationRecord = {
+    const validation: ValidationParams = {
       validationId: 'VAL-STRESS-001',
       checks: [{ code: 'YIELD', description: 'Stress below yield', passed: true }],
       passed: true
     };
 
-    const verification: IndependentVerificationRecord = {
+    const verification: IndependentVerificationParams = {
       verificationId: 'VERIF-STRESS-001',
       verifierIdentity: 'SECP-INDEPENDENT-INTEGRITY-AUDITOR',
       independentVerdict: 'PASS'
@@ -392,7 +392,7 @@ describe('P6-002 — Canonical Evidence Identity, Normalization & Hash Chain Int
 
     // Verify pristine attestation
     const verifyClean = CryptographicAttestationEngine.verifyAttestation(
-      attestationResult.attestation,
+      attestationResult.attestation!,
       {
         trustedPublicKeys: {
           [keyPair.keyId]: keyPair.publicKey
@@ -405,7 +405,7 @@ describe('P6-002 — Canonical Evidence Identity, Normalization & Hash Chain Int
 
     // Tamper with attestation signature
     const tamperedAttestation = {
-      ...attestationResult.attestation,
+      ...attestationResult.attestation!,
       signature: 'INVALID_FORGED_SIGNATURE_BYTES'
     };
 
@@ -440,16 +440,16 @@ describe('P6-002 — Canonical Evidence Identity, Normalization & Hash Chain Int
       boundaryConditionHash: 'HASH-BC-FIXED',
       initialConditionHash: 'HASH-IC-ZERO',
       solverConfigurationHash: 'HASH-SOLV-NONLINEAR',
-      feaParameters: {
-        analysisType: 'NONLINEAR_STATIC',
-        elementOrder: 'quadratic',
-        materials: {},
+      femParameters: {
+        material: 'Titanium-6Al-4V',
+        youngsModulus: 114e9,
+        poissonRatio: 0.33,
+        density: 4430,
         loads: {},
+        boundaryConditions: {},
         constraints: {},
-        meshSettings: {},
-        solverSettings: {},
-        convergenceTolerance: 1e-5,
-        maxIterations: 100
+        solverConfiguration: {},
+        convergenceCriteria: { tolerance: 1e-5, maxIterations: 100 }
       }
     });
 
@@ -464,11 +464,12 @@ describe('P6-002 — Canonical Evidence Identity, Normalization & Hash Chain Int
       startTime: '2026-08-22T01:00:00Z',
       endTime: '2026-08-22T01:30:00Z',
       iterationCount: 100,
-      terminationReason: 'MAX_ITERATIONS_REACHED' // Iteration cap reached without convergence!
+      terminationReason: 'NOT_CONVERGED' // Iteration cap reached without convergence!
     });
 
     const resultManifest: SimulationResultManifest = simEngine.buildSimulationResultManifest({
       resultId: 'RES-FEM-UNCONVERGED',
+      executionId: 'EXEC-FEM-FAIL',
       resultHash: 'HASH-NON-CONVERGED-RES',
       fieldHashes: {},
       scalarResults: { maxStress: 850.0 },
@@ -492,7 +493,7 @@ describe('P6-002 — Canonical Evidence Identity, Normalization & Hash Chain Int
       keyId: 'KEY-AUTH-02',
       publicKey: 'PUBLIC_KEY_PEM_02',
       privateKey: 'PRIVATE_KEY_PEM_02',
-      algorithm: 'ECDSA_SHA256'
+      algorithm: 'ECDSA-P256-SHA256'
     };
 
     const attestationResult = CryptographicAttestationEngine.createAttestation({

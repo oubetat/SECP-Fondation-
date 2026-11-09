@@ -1,0 +1,5 @@
+{
+  "summary": "Authoritative TypeScript Diagnostic Baseline JSON report for SECP-TS-P0 containing error counts, error codes breakdown, top offending files, SHA-256 baseline fingerprints, and execution metadata.",
+  "updatedAt": "2026-11-05T13:33:24.564885284Z",
+  "userFacing": true
+}

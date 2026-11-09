@@ -1,11 +1,19 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, beforeAll } from 'vitest';
 import { BRepKernel } from '../../brep/BRepKernel';
 import { CFDAdapter } from '../CFDAdapter';
 import { Fvm3DNavierStokesSolver } from '../../../cfd3d/Fvm3DNavierStokesSolver';
 import { EngineeringHashChain } from '../../../evidence/EngineeringHashChain';
+import { CanonicalDomainBindingEngine } from '../../../crossdomain/CanonicalDomainBindingEngine';
+import { CfdToCoreBinding } from '../../../crossdomain/CanonicalDomainBinding';
+import { initializeAuthorityHandshake } from '../../../simulation/SimulationAuthorityInternal';
+import { issueSealingCapability } from '../../../simulation/SimulationSealingAuthorization';
 
 describe('PATCH-KERNEL-008 — CAD -> CFD Pipeline Verification', () => {
   const brepKernel = BRepKernel.getCanonical();
+
+  beforeAll(() => {
+    initializeAuthorityHandshake();
+  });
 
   it('should detect geometric changes and propagate them through the entire CFD pipeline', () => {
     // 1. Setup two pipes with DIFFERENT diameters (20mm vs 40mm)
@@ -16,12 +24,14 @@ describe('PATCH-KERNEL-008 — CAD -> CFD Pipeline Verification', () => {
     // 2. Extract domain & mesh from BRep
     const { mesh: meshA, brepHash: hashA, meshHash: mHashA } = CFDAdapter.meshFromBRep(pipeA, {
       nx: 10, ny: 4, nz: 4,
-      inletVelocity: { x: 1.0, y: 0, z: 0 }
+      inletVelocity: { x: 1.0, y: 0, z: 0 },
+      cadRevisionHash: 'REV-PIPE-20MM'
     });
 
     const { mesh: meshB, brepHash: hashB, meshHash: mHashB } = CFDAdapter.meshFromBRep(pipeB, {
       nx: 10, ny: 4, nz: 4,
-      inletVelocity: { x: 1.0, y: 0, z: 0 }
+      inletVelocity: { x: 1.0, y: 0, z: 0 },
+      cadRevisionHash: 'REV-PIPE-40MM'
     });
 
     // 3. ASSERT: BRep Hashes must be different
@@ -36,7 +46,7 @@ describe('PATCH-KERNEL-008 — CAD -> CFD Pipeline Verification', () => {
     expect(meshA.boundingBox).not.toEqual(meshB.boundingBox);
     expect(mHashA).not.toBe(mHashB);
 
-    // 5. Run Navier-Stokes solver on both
+    // 5. Run Navier-Stokes solver on both using authoritative bindings
     const fluid = { densityKgM3: 1.225, viscosityPaS: 1.8e-5 };
     const config = {
       maxIterations: 10, // Small iterations for verification speed
@@ -49,8 +59,42 @@ describe('PATCH-KERNEL-008 — CAD -> CFD Pipeline Verification', () => {
       upwindScheme: 'FIRST_ORDER_UPWIND' as const
     };
 
-    const resA = Fvm3DNavierStokesSolver.solve(meshA, fluid, config);
-    const resB = Fvm3DNavierStokesSolver.solve(meshB, fluid, config);
+    const capA = issueSealingCapability('CAD_CFD_PIPELINE', ['CFD'], {
+      cadRevisionHash: 'REV-PIPE-20MM',
+      canonicalGeometryHash: hashA
+    });
+    const bindingA = CanonicalDomainBindingEngine.createBinding(
+      'CFD',
+      'Pipe_20mm',
+      'REV-PIPE-20MM',
+      { mesh: meshA, fluid },
+      hashA,
+      'TOPO-A',
+      'MAT-AIR',
+      'ENV-STD',
+      'PHYS-CFD'
+    ) as CfdToCoreBinding;
+    CanonicalDomainBindingEngine.sealBinding(bindingA, capA, 'REV-PIPE-20MM');
+
+    const capB = issueSealingCapability('CAD_CFD_PIPELINE', ['CFD'], {
+      cadRevisionHash: 'REV-PIPE-40MM',
+      canonicalGeometryHash: hashB
+    });
+    const bindingB = CanonicalDomainBindingEngine.createBinding(
+      'CFD',
+      'Pipe_40mm',
+      'REV-PIPE-40MM',
+      { mesh: meshB, fluid },
+      hashB,
+      'TOPO-B',
+      'MAT-AIR',
+      'ENV-STD',
+      'PHYS-CFD'
+    ) as CfdToCoreBinding;
+    CanonicalDomainBindingEngine.sealBinding(bindingB, capB, 'REV-PIPE-40MM');
+
+    const resA = Fvm3DNavierStokesSolver.solve(bindingA, config);
+    const resB = Fvm3DNavierStokesSolver.solve(bindingB, config);
 
     // 6. ASSERT: Results must reflect the geometry
     // Pressure drop in a pipe is sensitive to diameter (dP ~ 1/D^4 for laminar flow)

@@ -1,0 +1,98 @@
+{
+  "registerId": "SECP-PHASE5-EVID-REG-001",
+  "platform": "SolidEdge Cloud Platform (SECP) — Engineering Truth OS",
+  "phase": "Phase 5 — Aircraft & Industrial Qualification",
+  "timestamp": "2026-10-21T08:00:00.000Z",
+  "auditedEvidenceEntries": [
+    {
+      "evidenceId": "EVID-MD-PCB-001",
+      "testSuitePath": "src/engine/crossdomain/tests/verify_multidomain_pcb.ts",
+      "scope": "Multidomain PCB Engineering Integration Baseline",
+      "executionStatus": "PASS_EXECUTED",
+      "totalAssertions": 12,
+      "passedAssertions": 12,
+      "failedAssertions": 0,
+      "canonicalDigest": "f655ebf3c5b986975a285d8aaefdd81ca69d12384976aa0f2495d03bb630739c",
+      "numericalFindings": {
+        "mnaPowerResidualWatts": 0.0,
+        "traceVoltageDropPercent": 0.151,
+        "maxAllowableVoltageDropPercent": 3.0,
+        "maxJunctionTemperatureCelsius": 48.1,
+        "maxRatedJunctionTemperatureCelsius": 105.0,
+        "mcadStandoffCoaxialDeviationMm": 0.0,
+        "mcadLidClearanceMm": 11.9,
+        "unifiedBomReconciledCount": 8
+      },
+      "validityState": "VALID",
+      "independentVerificationMethod": "Hard Acceptance Gate with zero tolerance on singular matrix and clearance violations"
+    },
+    {
+      "evidenceId": "EVID-MD-ADVERSARIAL-002",
+      "testSuitePath": "src/engine/crossdomain/tests/adversarial_multidomain_pcb.ts",
+      "scope": "Adversarial Injected Fault Detection (11 Failure Modes)",
+      "executionStatus": "PASS_EXECUTED",
+      "totalAssertions": 11,
+      "passedAssertions": 11,
+      "failedAssertions": 0,
+      "scenariosTested": [
+        "ADV-01: Standoff displacement creating mechanical clash (REJECTED)",
+        "ADV-02: Enclosure lid reduction creating height clash (REJECTED)",
+        "ADV-03: Excessive wire resistance causing voltage drop breach (REJECTED)",
+        "ADV-04: Undersized wire gauge exceeding ampacity limit (REJECTED)",
+        "ADV-05: High power dissipation causing thermal junction breach (REJECTED)",
+        "ADV-06: Mismatched connector pinout in wiring harness (REJECTED)",
+        "ADV-07: Floating/Disconnected net in schematic netlist (REJECTED)",
+        "ADV-08: Singular/Unsolvable MNA circuit configuration (REJECTED)",
+        "ADV-09: Unregistered footprint in PCB canonical model (REJECTED)",
+        "ADV-10: Trace length/width causing unresolvable impedance (REJECTED)",
+        "ADV-11: BOM quantity mismatch across domain manifests (REJECTED)"
+      ],
+      "validityState": "VALID",
+      "independentVerificationMethod": "Adversarial Fault Injection Oracle"
+    },
+    {
+      "evidenceId": "EVID-MD-MUTATION-003",
+      "testSuitePath": "src/engine/crossdomain/tests/mutation_multidomain_pcb.ts",
+      "scope": "Canonical Digest Mutation Sensitivity Oracle",
+      "executionStatus": "PASS_EXECUTED",
+      "totalAssertions": 4,
+      "passedAssertions": 4,
+      "failedAssertions": 0,
+      "mutantsEvaluated": [
+        "MUTANT-01: Alter component reference designator (KILLED)",
+        "MUTANT-02: Perturb trace width by +0.05mm (KILLED)",
+        "MUTANT-03: Change harness wire gauge AWG (KILLED)",
+        "MUTANT-04: Modify standoff Z-coordinate by 0.1mm (KILLED)"
+      ],
+      "validityState": "VALID",
+      "independentVerificationMethod": "Cryptographic Hash Sensitivity Invariant"
+    },
+    {
+      "evidenceId": "EVID-WH-PHASE3-004",
+      "testSuitePath": "src/engine/wiring-harness/tests/verify_wiring_harness.ts",
+      "scope": "Wiring Harness Engineering Electrical & Geometric Foundation",
+      "executionStatus": "PASS_EXECUTED",
+      "totalAssertions": 15,
+      "passedAssertions": 15,
+      "failedAssertions": 0,
+      "validityState": "VALID",
+      "independentVerificationMethod": "WiringHarnessHardAcceptanceGate"
+    },
+    {
+      "evidenceId": "EVID-AERO-DO254-005",
+      "testSuitePath": "N/A (External Certification Audit)",
+      "scope": "DO-254 Airborne Electronic Hardware Qualification",
+      "executionStatus": "NOT_EXECUTED",
+      "validityState": "NOT_PROVEN",
+      "notes": "No external regulatory findings or authorized DER sign-off exists. Stated as NOT_PROVEN to preserve engineering truth."
+    },
+    {
+      "evidenceId": "EVID-AUTO-ISO26262-006",
+      "testSuitePath": "N/A (External Certification Audit)",
+      "scope": "ISO 26262 ASIL D Functional Safety Qualification",
+      "executionStatus": "NOT_EXECUTED",
+      "validityState": "NOT_PROVEN",
+      "notes": "No quantitative hardware reliability metrics or FMEDA audit submitted. Stated as NOT_PROVEN."
+    }
+  ]
+}

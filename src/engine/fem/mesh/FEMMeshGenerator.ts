@@ -10,6 +10,7 @@ export interface MeshGenerationParams {
   elementType?: 'BAR' | 'TRI' | 'QUAD' | 'TET' | 'HEX' | string;
   elementSize: number;
   dimensions: Record<string, number>;
+  cadRevisionId?: string; // Link to the specific CAD revision that produced this mesh
 }
 
 export class FEMMeshGenerator {
@@ -45,6 +46,11 @@ export class FEMMeshGenerator {
     } else {
       // Default to 3D BOX
       mesh = this.generateBox(dims.dx || 1.0, dims.dy || 1.0, dims.dz || 1.0, elemSize, elemType);
+    }
+
+    // Assign cadRevisionId if provided
+    if (params.cadRevisionId) {
+      mesh.cadRevisionId = params.cadRevisionId;
     }
 
     // Assign deterministic hashes

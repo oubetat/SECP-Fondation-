@@ -1,0 +1,20 @@
+{
+  "taskId": "SECP-STAGE3-ADJ-004",
+  "auditTarget": "SEC003 Evidence Integrity and Manifest Validation",
+  "timestamp": "2026-11-01T09:35:00Z",
+  "manifestVerification": {
+    "manifestFile": "STAGE3_SEC003_SHA256_MANIFEST.json",
+    "manifestHash": "4bbc17a2e03cc0e2d07f443e8525571e8db02daa46c732f76142d8cd052ae9a9",
+    "status": "ALL_HASHES_MATCH_ACTUAL_FILES"
+  },
+  "artifactVerification": [
+    { "file": "STAGE3_SEC003_KEY_ISOLATION_AUDIT.json", "expected": "c3cc1956d51c872061cac88af86c613bf4459d1dc143ebf8f359dff7ee2b644f", "actual": "c3cc1956d51c872061cac88af86c613bf4459d1dc143ebf8f359dff7ee2b644f", "status": "PASS" },
+    { "file": "STAGE3_SEC003_CRYPTO_INIT_AUDIT.json", "expected": "c8efb3948e451c7af99b0cb4a18351b5e690ced14a055fe438fd7c2e6f3f6be6", "actual": "c8efb3948e451c7af99b0cb4a18351b5e690ced14a055fe438fd7c2e6f3f6be6", "status": "PASS" },
+    { "file": "STAGE3_SEC003_PRODUCTION_CALLPATHS.json", "expected": "912c2b11095bad902f58250ab8be73c6352d0bf6d8314ce567e313ccdff9f55d", "actual": "912c2b11095bad902f58250ab8be73c6352d0bf6d8314ce567e313ccdff9f55d", "status": "PASS" },
+    { "file": "STAGE3_SEC003_ADVERSARIAL_RESULTS.json", "expected": "5035745fd26435a940df8d17981ac2eda0574b0055e83ffedaeecb49ed529ba6", "actual": "5035745fd26435a940df8d17981ac2eda0574b0055e83ffedaeecb49ed529ba6", "status": "PASS" },
+    { "file": "STAGE3_SEC003_TEST_INTEGRITY.json", "expected": "9743541b29eefc1af118f82a3172ed6e9a40e998f7916340e557776c0a281639", "actual": "9743541b29eefc1af118f82a3172ed6e9a40e998f7916340e557776c0a281639", "status": "PASS" },
+    { "file": "STAGE3_SEC003_KEY_LIFECYCLE.json", "expected": "487eca959f01e7421d4082e1221f7551a651814958893b3ffa7b44820fe4d6ac", "actual": "487eca959f01e7421d4082e1221f7551a651814958893b3ffa7b44820fe4d6ac", "status": "PASS" },
+    { "file": "STAGE3_SEC003_FINAL_REPORT.md", "expected": "89f44c5717b4fb3b5704b16a645dc91f501cf402b2aeec87f580af7291f13a5d", "actual": "89f44c5717b4fb3b5704b16a645dc91f501cf402b2aeec87f580af7291f13a5d", "status": "PASS" }
+  ],
+  "verdict": "INDEPENDENTLY_VERIFIED"
+}

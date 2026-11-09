@@ -1,0 +1,150 @@
+{
+  "qualificationSuite": "SECP-SECURITY-008 Adversarial Bypass Vector Qualification",
+  "targetAuditor": "SEC007_LiveForensicAuditor.test.ts",
+  "evaluationDate": "2026-11-02T07:27:42.271Z",
+  "metrics": {
+    "totalFixturesEvaluated": 15,
+    "detectedAsBypassBySEC007": 3,
+    "evadedSEC007FalseNegatives": 12,
+    "detectionRatePercentage": "20.0%",
+    "evasionRatePercentage": "80.0%"
+  },
+  "fixtures": [
+    {
+      "id": "ADV-01",
+      "name": "Direct Unauthenticated sealBinding Call",
+      "bypassVector": "Direct invocation with null capability",
+      "filePath": "src/engine/fixtures/adv01_direct_unauthenticated.ts",
+      "detectedBySEC007": true,
+      "sec007Outcome": "DETECTED_AS_BYPASS",
+      "analysis": "DETECTED: Contains literal sealBinding and lacks capability/Capability substring"
+    },
+    {
+      "id": "ADV-02",
+      "name": "Comment Spoofed Capability Keyword",
+      "bypassVector": "Regex/substring evasion via comment keyword",
+      "filePath": "src/engine/fixtures/adv02_comment_spoof.ts",
+      "detectedBySEC007": false,
+      "sec007Outcome": "EVADED_FALSE_NEGATIVE",
+      "analysis": "EVADED (FALSE NEGATIVE): Naive substring check bypassed because text contains word capability in comments"
+    },
+    {
+      "id": "ADV-03",
+      "name": "Aliased Import Evasion",
+      "bypassVector": "Function alias assignment",
+      "filePath": "src/engine/fixtures/adv03_aliased_import.ts",
+      "detectedBySEC007": true,
+      "sec007Outcome": "DETECTED_AS_BYPASS",
+      "analysis": "DETECTED: Contains literal sealBinding in alias definition and lacks capability"
+    },
+    {
+      "id": "ADV-04",
+      "name": "Dynamic String Concatenation Property Access",
+      "bypassVector": "String concatenation property dispatch",
+      "filePath": "src/engine/fixtures/adv04_dynamic_concatenation.ts",
+      "detectedBySEC007": false,
+      "sec007Outcome": "EVADED_FALSE_NEGATIVE",
+      "analysis": "EVADED (FALSE NEGATIVE): sealBinding string split across literals (seal + Binding)"
+    },
+    {
+      "id": "ADV-05",
+      "name": "Variable Property Indirection",
+      "bypassVector": "Variable indirection with token spoof",
+      "filePath": "src/engine/fixtures/adv05_variable_indirection.ts",
+      "detectedBySEC007": false,
+      "sec007Outcome": "EVADED_FALSE_NEGATIVE",
+      "analysis": "EVADED (FALSE NEGATIVE): Naive substring check bypassed because variable identifier contains capability"
+    },
+    {
+      "id": "ADV-06",
+      "name": "Forged Structural Capability Object",
+      "bypassVector": "Structural forgery of SealingCapability",
+      "filePath": "src/engine/fixtures/adv06_forged_capability.ts",
+      "detectedBySEC007": false,
+      "sec007Outcome": "EVADED_FALSE_NEGATIVE",
+      "analysis": "EVADED (FALSE NEGATIVE): Static text contains capability, but object is forged and lacks authority registry issuance"
+    },
+    {
+      "id": "ADV-07",
+      "name": "Revoked Capability Replay Attack",
+      "bypassVector": "Capability reuse after global revocation",
+      "filePath": "src/engine/fixtures/adv07_revoked_replay.ts",
+      "detectedBySEC007": false,
+      "sec007Outcome": "EVADED_FALSE_NEGATIVE",
+      "analysis": "EVADED (FALSE NEGATIVE): Static auditor cannot track lifecycle state of issued vs revoked tokens"
+    },
+    {
+      "id": "ADV-08",
+      "name": "Domain Mismatched Capability Misuse",
+      "bypassVector": "Cross-domain capability leakage",
+      "filePath": "src/engine/fixtures/adv08_domain_mismatch.ts",
+      "detectedBySEC007": false,
+      "sec007Outcome": "EVADED_FALSE_NEGATIVE",
+      "analysis": "EVADED (FALSE NEGATIVE): Static auditor does not verify domain parameter compatibility between token and binding"
+    },
+    {
+      "id": "ADV-09",
+      "name": "Dynamic Module Import Invocation",
+      "bypassVector": "Asynchronous dynamic import",
+      "filePath": "src/engine/fixtures/adv09_dynamic_import.ts",
+      "detectedBySEC007": false,
+      "sec007Outcome": "EVADED_FALSE_NEGATIVE",
+      "analysis": "EVADED (FALSE NEGATIVE): Dynamic import with capability notes evades naive check"
+    },
+    {
+      "id": "ADV-10",
+      "name": "Reflect.get Property Invocation",
+      "bypassVector": "Reflection API property extraction",
+      "filePath": "src/engine/fixtures/adv10_reflection_invocation.ts",
+      "detectedBySEC007": false,
+      "sec007Outcome": "EVADED_FALSE_NEGATIVE",
+      "analysis": "EVADED (FALSE NEGATIVE): Reflection method resolution evades direct AST call inspection"
+    },
+    {
+      "id": "ADV-11",
+      "name": "Prototype Chain Extraction",
+      "bypassVector": "Prototype chain extraction",
+      "filePath": "src/engine/fixtures/adv11_prototype_extraction.ts",
+      "detectedBySEC007": false,
+      "sec007Outcome": "EVADED_FALSE_NEGATIVE",
+      "analysis": "EVADED (FALSE NEGATIVE): Prototype lookup hides direct method name"
+    },
+    {
+      "id": "ADV-12",
+      "name": "Intermediate Re-export Propagation",
+      "bypassVector": "Intermediary pass-through re-export",
+      "filePath": "src/engine/fixtures/adv12_reexport_propagation.ts",
+      "detectedBySEC007": false,
+      "sec007Outcome": "EVADED_FALSE_NEGATIVE",
+      "analysis": "EVADED (FALSE NEGATIVE): Pass-through re-export does not invoke sealBinding in place, propagating unmonitored access"
+    },
+    {
+      "id": "ADV-13",
+      "name": "Destructured Parameter Unchecked Wrapper",
+      "bypassVector": "Destructured argument wrapper",
+      "filePath": "src/engine/fixtures/adv13_destructured_wrapper.ts",
+      "detectedBySEC007": false,
+      "sec007Outcome": "EVADED_FALSE_NEGATIVE",
+      "analysis": "EVADED (FALSE NEGATIVE): Wrapper function mentions capability in comments/params, evading heuristic"
+    },
+    {
+      "id": "ADV-14",
+      "name": "Eval / Function Constructor Execution",
+      "bypassVector": "Runtime Function constructor evaluation",
+      "filePath": "src/engine/fixtures/adv14_eval_constructor.ts",
+      "detectedBySEC007": true,
+      "sec007Outcome": "DETECTED_AS_BYPASS",
+      "analysis": "DETECTED: Function string literal contains sealBinding without capability substring"
+    },
+    {
+      "id": "ADV-15",
+      "name": "External Scope Call Outside src/engine",
+      "bypassVector": "Out-of-scope filesystem caller",
+      "filePath": "src/verification/adv15_external_caller.ts",
+      "detectedBySEC007": false,
+      "sec007Outcome": "EVADED_FALSE_NEGATIVE",
+      "analysis": "EVADED (FALSE NEGATIVE): Completely missed because SEC007 hardcodes scan root to src/engine"
+    }
+  ],
+  "forensicQualificationVerdict": "AUDITOR_METHODOLOGY_PARTIALLY_QUALIFIED — High false negative rate on adversarial vectors, requires AST and runtime enforcement."
+}

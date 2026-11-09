@@ -1,0 +1,21 @@
+{
+  "provenanceModel": "CFDMeshProvenance",
+  "structure": {
+    "sourceGeometryHash": "string (BRep Hash of originating CAD Solid)",
+    "sourceRevisionHash": "string | number (CAD Revision Identifier)",
+    "bRepHash": "string (BRep Tessellation Hash)",
+    "meshHash": "string (Canonical Hash of mesh topology, volumes, areas)",
+    "generationTimestamp": "ISO 8601 string",
+    "transformations": "array (optional spatial geometric transforms)",
+    "refinementHistory": "array (optional mesh refinement steps)"
+  },
+  "validationEngine": {
+    "method": "CanonicalDomainBindingEngine.verifyMeshProvenanceBinding",
+    "solverEnforcement": "Fvm3DNavierStokesSolver.solve (pre-execution fail-closed check)",
+    "rules": [
+      "If mesh.provenance is missing -> REJECT (CAD_CFD_PROVENANCE_VIOLATION)",
+      "If mesh.provenance.sourceGeometryHash != binding.geometryHash -> REJECT (CAD_CFD_PROVENANCE_VIOLATION)",
+      "If mesh.provenance.sourceRevisionHash != binding.revisionId -> REJECT (CAD_CFD_PROVENANCE_VIOLATION)"
+    ]
+  }
+}

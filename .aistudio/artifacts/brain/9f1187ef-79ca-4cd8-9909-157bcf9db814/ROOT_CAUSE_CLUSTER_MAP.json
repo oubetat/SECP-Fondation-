@@ -1,0 +1,2781 @@
+{
+  "Module '\"../../engine/cam/fouraxis/HardAcceptanceGate257\"'": {
+    "count": 1,
+    "examples": [
+      "Module '\"../../engine/cam/fouraxis/HardAcceptanceGate257\"' has no exported member 'Gate257Summary'."
+    ]
+  },
+  "Property 'runAllTests'": {
+    "count": 1,
+    "examples": [
+      "Property 'runAllTests' does not exist on type 'typeof HardAcceptanceGate257'."
+    ]
+  },
+  "Parameter 'test'": {
+    "count": 1,
+    "examples": [
+      "Parameter 'test' implicitly has an 'any' type."
+    ]
+  },
+  "Argument of": {
+    "count": 223,
+    "examples": [
+      "Argument of type 'ManufacturingIntent | undefined' is not assignable to parameter of type 'SetStateAction<ManufacturingIntent>'.\n  Type 'undefined' is not assignable to type 'SetStateAction<ManufacturingIntent>'.",
+      "Argument of type 'number | null' is not assignable to parameter of type 'number | undefined'.\n  Type 'null' is not assignable to type 'number | undefined'.",
+      "Argument of type 'number | null' is not assignable to parameter of type 'number | undefined'.\n  Type 'null' is not assignable to type 'number | undefined'."
+    ]
+  },
+  "'selectedFeature.explanation' is": {
+    "count": 1,
+    "examples": [
+      "'selectedFeature.explanation' is possibly 'undefined'."
+    ]
+  },
+  "Property 'map'": {
+    "count": 1,
+    "examples": [
+      "Property 'map' does not exist on type 'string | string[]'.\n  Property 'map' does not exist on type 'string'."
+    ]
+  },
+  "Parameter 'exp'": {
+    "count": 1,
+    "examples": [
+      "Parameter 'exp' implicitly has an 'any' type."
+    ]
+  },
+  "Parameter 'idx'": {
+    "count": 3,
+    "examples": [
+      "Parameter 'idx' implicitly has an 'any' type.",
+      "Parameter 'idx' implicitly has an 'any' type.",
+      "Parameter 'idx' implicitly has an 'any' type."
+    ]
+  },
+  "'selectedFeature.edgeIds' is": {
+    "count": 1,
+    "examples": [
+      "'selectedFeature.edgeIds' is possibly 'undefined'."
+    ]
+  },
+  "Property 'orientation'": {
+    "count": 1,
+    "examples": [
+      "Property 'orientation' does not exist on type 'MachiningSetup'."
+    ]
+  },
+  "Property 'estimatedOperations'": {
+    "count": 1,
+    "examples": [
+      "Property 'estimatedOperations' does not exist on type 'MachiningSetup'."
+    ]
+  },
+  "Parameter 'op'": {
+    "count": 2,
+    "examples": [
+      "Parameter 'op' implicitly has an 'any' type.",
+      "Parameter 'op' implicitly has an 'any' type."
+    ]
+  },
+  "Parameter 'i'": {
+    "count": 1,
+    "examples": [
+      "Parameter 'i' implicitly has an 'any' type."
+    ]
+  },
+  "Property 'holeCount'": {
+    "count": 2,
+    "examples": [
+      "Property 'holeCount' does not exist on type 'HolePatternCandidate'.",
+      "Property 'holeCount' does not exist on type 'HolePatternCandidate'."
+    ]
+  },
+  "Property 'holeDiameterMm'": {
+    "count": 2,
+    "examples": [
+      "Property 'holeDiameterMm' does not exist on type 'HolePatternCandidate'.",
+      "Property 'holeDiameterMm' does not exist on type 'HolePatternCandidate'."
+    ]
+  },
+  "Property 'boltCircleDiameterMm'": {
+    "count": 2,
+    "examples": [
+      "Property 'boltCircleDiameterMm' does not exist on type 'HolePatternCandidate'.",
+      "Property 'boltCircleDiameterMm' does not exist on type 'HolePatternCandidate'."
+    ]
+  },
+  "Property 'angularSpacingDeg'": {
+    "count": 2,
+    "examples": [
+      "Property 'angularSpacingDeg' does not exist on type 'HolePatternCandidate'.",
+      "Property 'angularSpacingDeg' does not exist on type 'HolePatternCandidate'."
+    ]
+  },
+  "Property 'pitchDistanceMm'": {
+    "count": 2,
+    "examples": [
+      "Property 'pitchDistanceMm' does not exist on type 'HolePatternCandidate'.",
+      "Property 'pitchDistanceMm' does not exist on type 'HolePatternCandidate'."
+    ]
+  },
+  "Property 'PLANAR_FACE'": {
+    "count": 3,
+    "examples": [
+      "Property 'PLANAR_FACE' does not exist on type 'typeof ManufacturingFeatureType'.",
+      "Property 'PLANAR_FACE' does not exist on type 'typeof ManufacturingFeatureType'.",
+      "Property 'PLANAR_FACE' does not exist on type 'typeof ManufacturingFeatureType'."
+    ]
+  },
+  "Property 'POCKET_RECTANGULAR'": {
+    "count": 6,
+    "examples": [
+      "Property 'POCKET_RECTANGULAR' does not exist on type 'typeof ManufacturingFeatureType'.",
+      "Property 'POCKET_RECTANGULAR' does not exist on type 'typeof ManufacturingFeatureType'.",
+      "Property 'POCKET_RECTANGULAR' does not exist on type 'typeof ManufacturingFeatureType'."
+    ]
+  },
+  "Property 'SLOT_THROUGH'": {
+    "count": 3,
+    "examples": [
+      "Property 'SLOT_THROUGH' does not exist on type 'typeof ManufacturingFeatureType'.",
+      "Property 'SLOT_THROUGH' does not exist on type 'typeof ManufacturingFeatureType'.",
+      "Property 'SLOT_THROUGH' does not exist on type 'typeof ManufacturingFeatureType'."
+    ]
+  },
+  "Property 'HOLE_SIMPLE'": {
+    "count": 6,
+    "examples": [
+      "Property 'HOLE_SIMPLE' does not exist on type 'typeof ManufacturingFeatureType'.",
+      "Property 'HOLE_SIMPLE' does not exist on type 'typeof ManufacturingFeatureType'.",
+      "Property 'HOLE_SIMPLE' does not exist on type 'typeof ManufacturingFeatureType'."
+    ]
+  },
+  "Property 'generateEvidence'": {
+    "count": 5,
+    "examples": [
+      "Property 'generateEvidence' does not exist on type 'typeof ToolEvidenceGenerator'. Did you mean 'generateToolEvidence'?",
+      "Property 'generateEvidence' does not exist on type 'typeof ToolEvidenceGenerator'. Did you mean 'generateToolEvidence'?",
+      "Property 'generateEvidence' does not exist on type 'typeof ToolEvidenceGenerator'. Did you mean 'generateToolEvidence'?"
+    ]
+  },
+  "Cannot find": {
+    "count": 77,
+    "examples": [
+      "Cannot find module 'motion/react' or its corresponding type declarations.",
+      "Cannot find module 'motion/react' or its corresponding type declarations.",
+      "Cannot find name 'S'."
+    ]
+  },
+  "'youngsModulus' is": {
+    "count": 2,
+    "examples": [
+      "'youngsModulus' is possibly 'null'.",
+      "'youngsModulus' is possibly 'null'."
+    ]
+  },
+  "Type 'number": {
+    "count": 41,
+    "examples": [
+      "Type 'number | null' is not assignable to type 'number'.\n  Type 'null' is not assignable to type 'number'.",
+      "Type 'number | null' is not assignable to type 'number'.\n  Type 'null' is not assignable to type 'number'.",
+      "Type 'number | null' is not assignable to type 'number'.\n  Type 'null' is not assignable to type 'number'."
+    ]
+  },
+  "'fluidDensity' is": {
+    "count": 1,
+    "examples": [
+      "'fluidDensity' is possibly 'null'."
+    ]
+  },
+  "Property 'THERMAL_FSI'": {
+    "count": 1,
+    "examples": [
+      "Property 'THERMAL_FSI' does not exist on type 'typeof FSIPhenomenon'."
+    ]
+  },
+  "Property 'ADAPTIVE'": {
+    "count": 1,
+    "examples": [
+      "Property 'ADAPTIVE' does not exist on type 'typeof RelaxationType'."
+    ]
+  },
+  "'b.diagnostics' is": {
+    "count": 1,
+    "examples": [
+      "'b.diagnostics' is possibly 'undefined'."
+    ]
+  },
+  "Property 'join'": {
+    "count": 1,
+    "examples": [
+      "Property 'join' does not exist on type 'string'."
+    ]
+  },
+  "Property 'errorDisplacementPct'": {
+    "count": 1,
+    "examples": [
+      "Property 'errorDisplacementPct' does not exist on type 'FSIBenchmarkResult'."
+    ]
+  },
+  "Property 'name'": {
+    "count": 8,
+    "examples": [
+      "Property 'name' does not exist on type 'GateTestReport254'.",
+      "Property 'name' does not exist on type 'FiveAxisToolDefinition'.",
+      "Property 'name' does not exist on type 'Omit<MachineDefinition, \"entityHash\">'."
+    ]
+  },
+  "Property 'geometryHash'": {
+    "count": 1,
+    "examples": [
+      "Property 'geometryHash' does not exist on type 'FSIEvidencePackage'."
+    ]
+  },
+  "Property 'fluidMeshHash'": {
+    "count": 1,
+    "examples": [
+      "Property 'fluidMeshHash' does not exist on type 'FSIEvidencePackage'."
+    ]
+  },
+  "Property 'structuralMeshHash'": {
+    "count": 1,
+    "examples": [
+      "Property 'structuralMeshHash' does not exist on type 'FSIEvidencePackage'."
+    ]
+  },
+  "Property 'materialProperties'": {
+    "count": 1,
+    "examples": [
+      "Property 'materialProperties' does not exist on type 'FSIEvidencePackage'."
+    ]
+  },
+  "Property 'deterministicReproduction'": {
+    "count": 1,
+    "examples": [
+      "Property 'deterministicReproduction' does not exist on type 'FSIEvidencePackage'."
+    ]
+  },
+  "Property 'conservationAudit'": {
+    "count": 1,
+    "examples": [
+      "Property 'conservationAudit' does not exist on type 'FSIEvidencePackage'."
+    ]
+  },
+  "'conductivity' is": {
+    "count": 1,
+    "examples": [
+      "'conductivity' is possibly 'null'."
+    ]
+  },
+  "'density' is": {
+    "count": 1,
+    "examples": [
+      "'density' is possibly 'null'."
+    ]
+  },
+  "'specificHeat' is": {
+    "count": 1,
+    "examples": [
+      "'specificHeat' is possibly 'null'."
+    ]
+  },
+  "Property 'runBenchmark'": {
+    "count": 2,
+    "examples": [
+      "Property 'runBenchmark' does not exist on type 'typeof ThermalBenchmarkSuite'.",
+      "Property 'runBenchmark' does not exist on type 'typeof MultiphaseBenchmarkSuite'."
+    ]
+  },
+  "Property 'internalGeneration'": {
+    "count": 1,
+    "examples": [
+      "Property 'internalGeneration' does not exist on type '{ energyIn: number; energyOut: number; imbalance: number; relativeImbalance: number; conservative: boolean; }'."
+    ]
+  },
+  "Property 'TOTAL_WALL_SHEAR'": {
+    "count": 1,
+    "examples": [
+      "Property 'TOTAL_WALL_SHEAR' does not exist on type 'typeof QuantityOfInterestType'."
+    ]
+  },
+  "Property 'isAsymptoticRangeSatisfied'": {
+    "count": 2,
+    "examples": [
+      "Property 'isAsymptoticRangeSatisfied' does not exist on type 'MeshConvergenceEvidence'.",
+      "Property 'isAsymptoticRangeSatisfied' does not exist on type 'MeshConvergenceEvidence'."
+    ]
+  },
+  "Property 'coarseLevel'": {
+    "count": 2,
+    "examples": [
+      "Property 'coarseLevel' does not exist on type 'MeshConvergenceEvidence'.",
+      "Property 'coarseLevel' does not exist on type 'MeshConvergenceEvidence'."
+    ]
+  },
+  "Property 'mediumLevel'": {
+    "count": 2,
+    "examples": [
+      "Property 'mediumLevel' does not exist on type 'MeshConvergenceEvidence'.",
+      "Property 'mediumLevel' does not exist on type 'MeshConvergenceEvidence'."
+    ]
+  },
+  "Property 'fineLevel'": {
+    "count": 2,
+    "examples": [
+      "Property 'fineLevel' does not exist on type 'MeshConvergenceEvidence'.",
+      "Property 'fineLevel' does not exist on type 'MeshConvergenceEvidence'."
+    ]
+  },
+  "Property 'apparentOrder'": {
+    "count": 1,
+    "examples": [
+      "Property 'apparentOrder' does not exist on type 'MeshConvergenceEvidence'."
+    ]
+  },
+  "Property 'fineGCI'": {
+    "count": 2,
+    "examples": [
+      "Property 'fineGCI' does not exist on type 'MeshConvergenceEvidence'.",
+      "Property 'fineGCI' does not exist on type 'MeshConvergenceEvidence'."
+    ]
+  },
+  "Property 'extrapolatedQoI'": {
+    "count": 1,
+    "examples": [
+      "Property 'extrapolatedQoI' does not exist on type 'MeshConvergenceEvidence'."
+    ]
+  },
+  "Property 'relativeErrorMediumFine'": {
+    "count": 1,
+    "examples": [
+      "Property 'relativeErrorMediumFine' does not exist on type 'MeshConvergenceEvidence'."
+    ]
+  },
+  "Property 'asymptoticRangeRatio'": {
+    "count": 1,
+    "examples": [
+      "Property 'asymptoticRangeRatio' does not exist on type 'MeshConvergenceEvidence'."
+    ]
+  },
+  "Property 'runSuite'": {
+    "count": 1,
+    "examples": [
+      "Property 'runSuite' does not exist on type 'typeof HardAcceptanceGate252'."
+    ]
+  },
+  "Property 'evidence'": {
+    "count": 4,
+    "examples": [
+      "Property 'evidence' does not exist on type 'GateResult252'.",
+      "Property 'evidence' does not exist on type 'GateResult252'.",
+      "Property 'evidence' does not exist on type 'GateResult252'."
+    ]
+  },
+  "Property 'overallVerdict'": {
+    "count": 1,
+    "examples": [
+      "Property 'overallVerdict' does not exist on type 'GateResult252'."
+    ]
+  },
+  "Property 'testsPassed'": {
+    "count": 1,
+    "examples": [
+      "Property 'testsPassed' does not exist on type 'GateResult252'."
+    ]
+  },
+  "Property 'testsTotal'": {
+    "count": 1,
+    "examples": [
+      "Property 'testsTotal' does not exist on type 'GateResult252'."
+    ]
+  },
+  "Property 'testReports'": {
+    "count": 1,
+    "examples": [
+      "Property 'testReports' does not exist on type 'GateResult252'."
+    ]
+  },
+  "Parameter 'report'": {
+    "count": 1,
+    "examples": [
+      "Parameter 'report' implicitly has an 'any' type."
+    ]
+  },
+  "Property 'BACKWARD_EULER'": {
+    "count": 2,
+    "examples": [
+      "Property 'BACKWARD_EULER' does not exist on type 'typeof TemporalScheme'.",
+      "Property 'BACKWARD_EULER' does not exist on type 'typeof TemporalScheme'."
+    ]
+  },
+  "'\"./types\"' has": {
+    "count": 1,
+    "examples": [
+      "'\"./types\"' has no exported member named 'BenchmarkComparisonResult'. Did you mean 'CADBenchmarkComparison'?"
+    ]
+  },
+  "Module '\"./types\"'": {
+    "count": 2,
+    "examples": [
+      "Module '\"./types\"' has no exported member 'BenchmarkTolerance'.",
+      "Module '\"./types\"' has no exported member 'FiveAxisGeneratorConfig'."
+    ]
+  },
+  "'metrics.iterationCount' is": {
+    "count": 1,
+    "examples": [
+      "'metrics.iterationCount' is possibly 'undefined'."
+    ]
+  },
+  "Property 'isPressurePinned'": {
+    "count": 1,
+    "examples": [
+      "Property 'isPressurePinned' does not exist on type 'BCValidationReport'."
+    ]
+  },
+  "Property 'inletAreaM2'": {
+    "count": 2,
+    "examples": [
+      "Property 'inletAreaM2' does not exist on type 'BCValidationReport'.",
+      "Property 'inletAreaM2' does not exist on type 'BCValidationReport'."
+    ]
+  },
+  "Property 'totalBoundaryFaces'": {
+    "count": 1,
+    "examples": [
+      "Property 'totalBoundaryFaces' does not exist on type 'BCValidationReport'."
+    ]
+  },
+  "Property 'reason'": {
+    "count": 1,
+    "examples": [
+      "Property 'reason' does not exist on type '{ isConverged: boolean; }'."
+    ]
+  },
+  "'solution.faceFluxes' is": {
+    "count": 2,
+    "examples": [
+      "'solution.faceFluxes' is possibly 'undefined'.",
+      "'solution.faceFluxes' is possibly 'undefined'."
+    ]
+  },
+  "'iters' is": {
+    "count": 2,
+    "examples": [
+      "'iters' is possibly 'undefined'.",
+      "'iters' is possibly 'undefined'."
+    ]
+  },
+  "'iterations' is": {
+    "count": 2,
+    "examples": [
+      "'iterations' is possibly 'undefined'.",
+      "'iterations' is possibly 'undefined'."
+    ]
+  },
+  "Property 'recirculationLengthM'": {
+    "count": 1,
+    "examples": [
+      "Property 'recirculationLengthM' does not exist on type 'string | number'.\n  Property 'recirculationLengthM' does not exist on type 'string'."
+    ]
+  },
+  "Property 'separationLocationX'": {
+    "count": 1,
+    "examples": [
+      "Property 'separationLocationX' does not exist on type 'string | number'.\n  Property 'separationLocationX' does not exist on type 'string'."
+    ]
+  },
+  "Property 'separationDetected'": {
+    "count": 1,
+    "examples": [
+      "Property 'separationDetected' does not exist on type 'string | number'.\n  Property 'separationDetected' does not exist on type 'string'."
+    ]
+  },
+  "Property 'maxQCriterion'": {
+    "count": 1,
+    "examples": [
+      "Property 'maxQCriterion' does not exist on type 'string | number'.\n  Property 'maxQCriterion' does not exist on type 'string'."
+    ]
+  },
+  "Property 'coherentVortexCoresCount'": {
+    "count": 1,
+    "examples": [
+      "Property 'coherentVortexCoresCount' does not exist on type 'string | number'.\n  Property 'coherentVortexCoresCount' does not exist on type 'string'."
+    ]
+  },
+  "Property 'maxEnstrophy'": {
+    "count": 1,
+    "examples": [
+      "Property 'maxEnstrophy' does not exist on type 'string | number'.\n  Property 'maxEnstrophy' does not exist on type 'string'."
+    ]
+  },
+  "The left-hand": {
+    "count": 1,
+    "examples": [
+      "The left-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type."
+    ]
+  },
+  "The right-hand": {
+    "count": 1,
+    "examples": [
+      "The right-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type."
+    ]
+  },
+  "Object literal": {
+    "count": 94,
+    "examples": [
+      "Object literal may only specify known properties, and 'id' does not exist in type 'ContactNode2D'.",
+      "Object literal may only specify known properties, and 'id' does not exist in type 'ContactNode2D'.",
+      "Object literal may only specify known properties, and 'engagementAngleRad' does not exist in type 'CutterLocationPoint'."
+    ]
+  },
+  "Type 'string'": {
+    "count": 7,
+    "examples": [
+      "Type 'string' is not assignable to type 'object'.",
+      "Type 'string' is not assignable to type 'CollisionType'.",
+      "Type 'string' is not assignable to type 'CollisionSeverity'."
+    ]
+  },
+  "Parameter 'pt'": {
+    "count": 6,
+    "examples": [
+      "Parameter 'pt' implicitly has an 'any' type.",
+      "Parameter 'pt' implicitly has an 'any' type.",
+      "Parameter 'pt' implicitly has an 'any' type."
+    ]
+  },
+  "Parameter 'row'": {
+    "count": 2,
+    "examples": [
+      "Parameter 'row' implicitly has an 'any' type.",
+      "Parameter 'row' implicitly has an 'any' type."
+    ]
+  },
+  "Type 'string": {
+    "count": 18,
+    "examples": [
+      "Type 'string | undefined' is not assignable to type 'string'.\n  Type 'undefined' is not assignable to type 'string'.",
+      "Type 'string | undefined' is not assignable to type 'string'.\n  Type 'undefined' is not assignable to type 'string'.",
+      "Type 'string | undefined' is not assignable to type 'string'.\n  Type 'undefined' is not assignable to type 'string'."
+    ]
+  },
+  "'doc.units' is": {
+    "count": 4,
+    "examples": [
+      "'doc.units' is possibly 'undefined'.",
+      "'doc.units' is possibly 'undefined'.",
+      "'doc.units' is possibly 'undefined'."
+    ]
+  },
+  "Object is": {
+    "count": 4,
+    "examples": [
+      "Object is possibly 'undefined'.",
+      "Object is possibly 'undefined'.",
+      "Object is possibly 'undefined'."
+    ]
+  },
+  "Property 'evaluate'": {
+    "count": 3,
+    "examples": [
+      "Property 'evaluate' does not exist on type 'BRepRuledSurface'.",
+      "Property 'evaluate' does not exist on type 'BRepExtrudedSurface'.",
+      "Property 'evaluate' does not exist on type 'BRepNURBSSurface | BRepRevolvedSurface'.\n  Property 'evaluate' does not exist on type 'BRepRevolvedSurface'."
+    ]
+  },
+  "Property 'type'": {
+    "count": 19,
+    "examples": [
+      "Property 'type' does not exist on type 'BRepNURBSSurface | BRepLoftedSurface'.\n  Property 'type' does not exist on type 'BRepLoftedSurface'.",
+      "Property 'type' does not exist on type 'BRepNURBSSurface | BRepSweptSurface'.\n  Property 'type' does not exist on type 'BRepSweptSurface'.",
+      "Property 'type' does not exist on type 'FiveAxisToolDefinition'."
+    ]
+  },
+  "Expected 4": {
+    "count": 1,
+    "examples": [
+      "Expected 4 arguments, but got 3."
+    ]
+  },
+  "Property 'extendSurface'": {
+    "count": 1,
+    "examples": [
+      "Property 'extendSurface' does not exist on type 'typeof SurfaceEngine'."
+    ]
+  },
+  "Parameter 'r'": {
+    "count": 1,
+    "examples": [
+      "Parameter 'r' implicitly has an 'any' type."
+    ]
+  },
+  "'doc.features' is": {
+    "count": 1,
+    "examples": [
+      "'doc.features' is possibly 'undefined'."
+    ]
+  },
+  "Type 'EngineeringDocument": {
+    "count": 2,
+    "examples": [
+      "Type 'EngineeringDocument | { documentId: string; revision: number; units: { system: \"SI_MM\"; length: \"mm\"; mass: \"kg\"; force: \"N\"; pressure: \"MPa\"; angle: \"deg\"; }; sketches: never[]; ... 5 more ...; evidence: never[]; }' is not assignable to type 'EngineeringDocument'.\n  Type '{ documentId: string; revision: number; units: { system: \"SI_MM\"; length: \"mm\"; mass: \"kg\"; force: \"N\"; pressure: \"MPa\"; angle: \"deg\"; }; sketches: never[]; constraints: never[]; features: { featureId: string; id: string; thickness: number; bendRadius: number; kFactor: number; }[]; parameters: never[]; topologyMap: ...' is not assignable to type 'EngineeringDocument'.\n    Types of property 'features' are incompatible.\n      Type '{ featureId: string; id: string; thickness: number; bendRadius: number; kFactor: number; }[]' is not assignable to type 'CADFeature[]'.\n        Property 'type' is missing in type '{ featureId: string; id: string; thickness: number; bendRadius: number; kFactor: number; }' but required in type 'CADFeature'.",
+      "Type 'EngineeringDocument | { documentId: string; revision: number; units: { system: \"SI_MM\"; length: \"mm\"; mass: \"kg\"; force: \"N\"; pressure: \"MPa\"; angle: \"deg\"; }; sketches: never[]; ... 5 more ...; evidence: never[]; }' is not assignable to type 'EngineeringDocument'.\n  Type '{ documentId: string; revision: number; units: { system: \"SI_MM\"; length: \"mm\"; mass: \"kg\"; force: \"N\"; pressure: \"MPa\"; angle: \"deg\"; }; sketches: never[]; constraints: never[]; features: { featureId: string; id: string; memberCount: number; }[]; parameters: never[]; topologyMap: { ...; }; derived: {}; evidence: ne...' is not assignable to type 'EngineeringDocument'.\n    Types of property 'features' are incompatible.\n      Type '{ featureId: string; id: string; memberCount: number; }[]' is not assignable to type 'CADFeature[]'.\n        Property 'type' is missing in type '{ featureId: string; id: string; memberCount: number; }' but required in type 'CADFeature'."
+    ]
+  },
+  "Type 'any[]": {
+    "count": 1,
+    "examples": [
+      "Type 'any[] | undefined' must have a '[Symbol.iterator]()' method that returns an iterator."
+    ]
+  },
+  "'r.canonicalHash' is": {
+    "count": 1,
+    "examples": [
+      "'r.canonicalHash' is possibly 'undefined'."
+    ]
+  },
+  "'config.toolAssembly' is": {
+    "count": 7,
+    "examples": [
+      "'config.toolAssembly' is possibly 'undefined'.",
+      "'config.toolAssembly' is possibly 'undefined'.",
+      "'config.toolAssembly' is possibly 'undefined'."
+    ]
+  },
+  "'config.feedsAndSpeeds' is": {
+    "count": 56,
+    "examples": [
+      "'config.feedsAndSpeeds' is possibly 'undefined'.",
+      "'config.feedsAndSpeeds' is possibly 'undefined'.",
+      "'config.feedsAndSpeeds' is possibly 'undefined'."
+    ]
+  },
+  "Type '\"ADAPTIVE_TROCHOIDAL\"'": {
+    "count": 1,
+    "examples": [
+      "Type '\"ADAPTIVE_TROCHOIDAL\"' is not assignable to type '\"CLEARANCE\" | \"TRANSITION\" | \"RETRACT\" | \"PLUNGE\" | \"RAPID_APPROACH\" | \"CUTTING\"'."
+    ]
+  },
+  "Type '\"CLEARANCE_TRANSITION\"'": {
+    "count": 2,
+    "examples": [
+      "Type '\"CLEARANCE_TRANSITION\"' is not assignable to type '\"CLEARANCE\" | \"TRANSITION\" | \"RETRACT\" | \"PLUNGE\" | \"RAPID_APPROACH\" | \"CUTTING\"'.",
+      "Type '\"CLEARANCE_TRANSITION\"' is not assignable to type '\"CLEARANCE\" | \"TRANSITION\" | \"RETRACT\" | \"PLUNGE\" | \"RAPID_APPROACH\" | \"CUTTING\"'."
+    ]
+  },
+  "Type '{": {
+    "count": 17,
+    "examples": [
+      "Type '{ isValid: false; failureReason: string; mismatchDetails: string; }' is missing the following properties from type 'DerivedArtifactVerificationResult': isDigestValid, isRevisionMatched, isGeometryMatched, reasons, status",
+      "Type '{ vendor: any; architecture: any; device: any; description: any; } | undefined' is not assignable to type 'WebGPUAdapterInfo'.\n  Type 'undefined' is not assignable to type 'WebGPUAdapterInfo'.",
+      "Type '{ x: number; y: number; z: number; reconstructedProperties: { E?: undefined; } | { E: { value: number; uncertainty: number; isInterpolated: boolean; unit: string; }; }; isMeasured: boolean; qualityStatus: any; }[]' is not assignable to type 'ReconstructedFieldPoint[]'.\n  Type '{ x: number; y: number; z: number; reconstructedProperties: { E?: undefined; } | { E: { value: number; uncertainty: number; isInterpolated: boolean; unit: string; }; }; isMeasured: boolean; qualityStatus: any; }' is not assignable to type 'ReconstructedFieldPoint'.\n    Types of property 'reconstructedProperties' are incompatible.\n      Type '{ E?: undefined; } | { E: { value: number; uncertainty: number; isInterpolated: boolean; unit: string; }; }' is not assignable to type 'Record<string, ReconstructedProperty>'.\n        Type '{ E?: undefined; }' is not assignable to type 'Record<string, ReconstructedProperty>'.\n          Property 'E' is incompatible with index signature.\n            Type 'undefined' is not assignable to type 'ReconstructedProperty'."
+    ]
+  },
+  "Module '\"./ToolpathTypes\"'": {
+    "count": 6,
+    "examples": [
+      "Module '\"./ToolpathTypes\"' has no exported member 'MachiningParameters'.",
+      "Module '\"./ToolpathTypes\"' has no exported member 'ToolHolderGeometry'.",
+      "Module '\"./ToolpathTypes\"' has no exported member 'ToolHolderGeometry'."
+    ]
+  },
+  "'verified.verificationReport' is": {
+    "count": 3,
+    "examples": [
+      "'verified.verificationReport' is possibly 'undefined'.",
+      "'verified.verificationReport' is possibly 'undefined'.",
+      "'verified.verificationReport' is possibly 'undefined'."
+    ]
+  },
+  "'retractZ' is": {
+    "count": 1,
+    "examples": [
+      "'retractZ' is possibly 'undefined'."
+    ]
+  },
+  "'config.parameters' is": {
+    "count": 7,
+    "examples": [
+      "'config.parameters' is possibly 'undefined'.",
+      "'config.parameters' is possibly 'undefined'.",
+      "'config.parameters' is possibly 'undefined'."
+    ]
+  },
+  "'safeZ' is": {
+    "count": 2,
+    "examples": [
+      "'safeZ' is possibly 'undefined'.",
+      "'safeZ' is possibly 'undefined'."
+    ]
+  },
+  "Type '\"CUTTING\"'": {
+    "count": 1,
+    "examples": [
+      "Type '\"CUTTING\"' is not assignable to type '\"RAPID\" | \"FEED\" | \"TRANSITION\" | \"LOCKED\"'."
+    ]
+  },
+  "'docRev1.derived' is": {
+    "count": 1,
+    "examples": [
+      "'docRev1.derived' is possibly 'undefined'."
+    ]
+  },
+  "'docRev1.evidence' is": {
+    "count": 2,
+    "examples": [
+      "'docRev1.evidence' is possibly 'undefined'.",
+      "'docRev1.evidence' is possibly 'undefined'."
+    ]
+  },
+  "'docRev2.derived' is": {
+    "count": 1,
+    "examples": [
+      "'docRev2.derived' is possibly 'undefined'."
+    ]
+  },
+  "Property 'feedRateMmMin'": {
+    "count": 1,
+    "examples": [
+      "Property 'feedRateMmMin' does not exist on type 'ToolPose'. Did you mean 'feedMmMin'?"
+    ]
+  },
+  "'\"./FeatureTypes\"' has": {
+    "count": 2,
+    "examples": [
+      "'\"./FeatureTypes\"' has no exported member named 'ChamferFeatureParams'. Did you mean 'HoleFeatureParams'?",
+      "'\"./FeatureTypes\"' has no exported member named 'FilletFeatureParams'. Did you mean 'HoleFeatureParams'?"
+    ]
+  },
+  "Property 'CHAMFER_FEATURE'": {
+    "count": 2,
+    "examples": [
+      "Property 'CHAMFER_FEATURE' does not exist on type 'typeof ManufacturingFeatureType'.",
+      "Property 'CHAMFER_FEATURE' does not exist on type 'typeof ManufacturingFeatureType'."
+    ]
+  },
+  "Property 'CHAMFER_MILLING'": {
+    "count": 1,
+    "examples": [
+      "Property 'CHAMFER_MILLING' does not exist on type 'typeof ManufacturingIntent'. Did you mean 'CHAMFERING'?"
+    ]
+  },
+  "Property 'FILLET_FEATURE'": {
+    "count": 1,
+    "examples": [
+      "Property 'FILLET_FEATURE' does not exist on type 'typeof ManufacturingFeatureType'."
+    ]
+  },
+  "Property 'FILLET_MILLING'": {
+    "count": 1,
+    "examples": [
+      "Property 'FILLET_MILLING' does not exist on type 'typeof ManufacturingIntent'."
+    ]
+  },
+  "Property 'OBLIQUE'": {
+    "count": 2,
+    "examples": [
+      "Property 'OBLIQUE' does not exist on type 'typeof ToolAccessDirection'.",
+      "Property 'OBLIQUE' does not exist on type 'typeof ToolAccessDirection'."
+    ]
+  },
+  "Type '\"LINEAR_ARRAY\"'": {
+    "count": 2,
+    "examples": [
+      "Type '\"LINEAR_ARRAY\"' is not assignable to type '\"LINEAR\" | \"CIRCULAR\" | \"GRID\"'.",
+      "Type '\"LINEAR_ARRAY\"' is not assignable to type '\"LINEAR\" | \"CIRCULAR\" | \"GRID\"'."
+    ]
+  },
+  "Type '\"CIRCULAR_BOLT_CIRCLE\"'": {
+    "count": 1,
+    "examples": [
+      "Type '\"CIRCULAR_BOLT_CIRCLE\"' is not assignable to type '\"LINEAR\" | \"CIRCULAR\" | \"GRID\"'."
+    ]
+  },
+  "Property 'FACING_REGION'": {
+    "count": 1,
+    "examples": [
+      "Property 'FACING_REGION' does not exist on type 'typeof ManufacturingFeatureType'."
+    ]
+  },
+  "This comparison": {
+    "count": 27,
+    "examples": [
+      "This comparison appears to be unintentional because the types 'ManufacturingFeatureType' and '\"FACING_REGION\"' have no overlap.",
+      "This comparison appears to be unintentional because the types 'MotionMode' and '\"G1_LINEAR\"' have no overlap.",
+      "This comparison appears to be unintentional because the types 'MotionMode' and '\"G2_CW_ARC\"' have no overlap."
+    ]
+  },
+  "Module './FeatureTypes'": {
+    "count": 3,
+    "examples": [
+      "Module './FeatureTypes' has already exported a member named 'FaceGeometryInfo'. Consider explicitly re-exporting to resolve the ambiguity.",
+      "Module './FeatureTypes' has already exported a member named 'FaceAdjacencyGraph'. Consider explicitly re-exporting to resolve the ambiguity.",
+      "Module './FeatureTypes' has already exported a member named 'TopologicalEdgeInfo'. Consider explicitly re-exporting to resolve the ambiguity."
+    ]
+  },
+  "Module '\"./FiveAxisTypes\"'": {
+    "count": 25,
+    "examples": [
+      "Module '\"./FiveAxisTypes\"' has no exported member 'FiveAxisToolpathPoint'.",
+      "Module '\"./FiveAxisTypes\"' has no exported member 'MachineDefinition'.",
+      "Module '\"./FiveAxisTypes\"' has no exported member 'GougeClassification'."
+    ]
+  },
+  "Type '\"SPINDLE_NOSE_COLLISION\"'": {
+    "count": 1,
+    "examples": [
+      "Type '\"SPINDLE_NOSE_COLLISION\"' is not assignable to type 'CollisionClassification'. Did you mean '\"SPINDLE_COLLISION\"'?"
+    ]
+  },
+  "Type '\"CRITICAL_ALARM\"'": {
+    "count": 1,
+    "examples": [
+      "Type '\"CRITICAL_ALARM\"' is not assignable to type '\"WARNING\" | \"CRITICAL\" | \"FATAL\"'."
+    ]
+  },
+  "'tool.diameterMm' is": {
+    "count": 8,
+    "examples": [
+      "'tool.diameterMm' is possibly 'undefined'.",
+      "'tool.diameterMm' is possibly 'undefined'.",
+      "'tool.diameterMm' is possibly 'undefined'."
+    ]
+  },
+  "Property 'cornerRadMm'": {
+    "count": 2,
+    "examples": [
+      "Property 'cornerRadMm' does not exist on type 'FiveAxisToolDefinition'.",
+      "Property 'cornerRadMm' does not exist on type 'FiveAxisToolDefinition'."
+    ]
+  },
+  "'\"./FiveAxisTypes\"' has": {
+    "count": 5,
+    "examples": [
+      "'\"./FiveAxisTypes\"' has no exported member named 'FiveAxisKinematicEvidence'. Did you mean 'FiveAxisKinematicsEvidence'?",
+      "'\"./FiveAxisTypes\"' has no exported member named 'FiveAxisTrajectory'. Did you mean 'FiveAxisTrajectoryPoint'?",
+      "'\"./FiveAxisTypes\"' has no exported member named 'FiveAxisTrajectory'. Did you mean 'FiveAxisTrajectoryPoint'?"
+    ]
+  },
+  "'tool.shoulderLengthMm' is": {
+    "count": 1,
+    "examples": [
+      "'tool.shoulderLengthMm' is possibly 'undefined'."
+    ]
+  },
+  "'tool.holder.stages' is": {
+    "count": 2,
+    "examples": [
+      "'tool.holder.stages' is possibly 'undefined'.",
+      "'tool.holder.stages' is possibly 'undefined'."
+    ]
+  },
+  "'stage.bottomDiameterMm' is": {
+    "count": 1,
+    "examples": [
+      "'stage.bottomDiameterMm' is possibly 'undefined'."
+    ]
+  },
+  "'stage.topDiameterMm' is": {
+    "count": 1,
+    "examples": [
+      "'stage.topDiameterMm' is possibly 'undefined'."
+    ]
+  },
+  "'tool.holder.flangeDiameterMm' is": {
+    "count": 2,
+    "examples": [
+      "'tool.holder.flangeDiameterMm' is possibly 'undefined'.",
+      "'tool.holder.flangeDiameterMm' is possibly 'undefined'."
+    ]
+  },
+  "Parameter 'p'": {
+    "count": 4,
+    "examples": [
+      "Parameter 'p' implicitly has an 'any' type.",
+      "Parameter 'p' implicitly has an 'any' type.",
+      "Parameter 'p' implicitly has an 'any' type."
+    ]
+  },
+  "Property 'stickoutMm'": {
+    "count": 1,
+    "examples": [
+      "Property 'stickoutMm' does not exist on type 'CuttingTool'."
+    ]
+  },
+  "Property 'PROVIDER_ID'": {
+    "count": 1,
+    "examples": [
+      "Property 'PROVIDER_ID' does not exist on type 'typeof MachineSimulationCollisionProvider'."
+    ]
+  },
+  "Property 'gaugeLength'": {
+    "count": 2,
+    "examples": [
+      "Property 'gaugeLength' does not exist on type 'ToolHolderDefinition'. Did you mean 'gaugeLengthMm'?",
+      "Property 'gaugeLength' does not exist on type 'ToolHolderDefinition'. Did you mean 'gaugeLengthMm'?"
+    ]
+  },
+  "'\"../verification/GCodeVerificationTypes\"' has": {
+    "count": 2,
+    "examples": [
+      "'\"../verification/GCodeVerificationTypes\"' has no exported member named 'GCodeVerificationResult'. Did you mean 'VerificationResult'?",
+      "'\"../verification/GCodeVerificationTypes\"' has no exported member named 'GCodeVerificationResult'. Did you mean 'VerificationResult'?"
+    ]
+  },
+  "'\"../tool-library/ToolTypes\"' has": {
+    "count": 3,
+    "examples": [
+      "'\"../tool-library/ToolTypes\"' has no exported member named 'ToolGeometryDefinition'. Did you mean 'ToolHolderDefinition'?",
+      "'\"../tool-library/ToolTypes\"' has no exported member named 'ToolGeometryDefinition'. Did you mean 'ToolHolderDefinition'?",
+      "'\"../tool-library/ToolTypes\"' has no exported member named 'ToolGeometryDefinition'. Did you mean 'ToolHolderDefinition'?"
+    ]
+  },
+  "Type '\"FANUC_31I\"'": {
+    "count": 3,
+    "examples": [
+      "Type '\"FANUC_31I\"' is not assignable to type 'ControllerDialect'.",
+      "Type '\"FANUC_31I\"' is not comparable to type 'ControllerDialect'.",
+      "Type '\"FANUC_31I\"' is not assignable to type 'ControllerDialect'."
+    ]
+  },
+  "Type '\"HAAS_NGC\"'": {
+    "count": 15,
+    "examples": [
+      "Type '\"HAAS_NGC\"' is not assignable to type 'ControllerDialect'.",
+      "Type '\"HAAS_NGC\"' is not assignable to type 'ControllerDialect'.",
+      "Type '\"HAAS_NGC\"' is not assignable to type 'ControllerDialect'."
+    ]
+  },
+  "Type '\"HEIDENHAIN_TNC640\"'": {
+    "count": 3,
+    "examples": [
+      "Type '\"HEIDENHAIN_TNC640\"' is not assignable to type 'ControllerDialect'.",
+      "Type '\"HEIDENHAIN_TNC640\"' is not assignable to type 'ControllerDialect'.",
+      "Type '\"HEIDENHAIN_TNC640\"' is not comparable to type 'ControllerDialect'."
+    ]
+  },
+  "Property 'bodyDiameter'": {
+    "count": 1,
+    "examples": [
+      "Property 'bodyDiameter' does not exist on type 'ToolHolderDefinition'."
+    ]
+  },
+  "Property 'colletDiameter'": {
+    "count": 1,
+    "examples": [
+      "Property 'colletDiameter' does not exist on type 'ToolHolderDefinition'."
+    ]
+  },
+  "Property 'formatting'": {
+    "count": 1,
+    "examples": [
+      "Property 'formatting' does not exist on type 'Omit<PostProcessorDefinition, \"postHash\">'."
+    ]
+  },
+  "Property 'safety'": {
+    "count": 1,
+    "examples": [
+      "Property 'safety' does not exist on type 'Omit<PostProcessorDefinition, \"postHash\">'."
+    ]
+  },
+  "Property 'rtcpCapabilities'": {
+    "count": 1,
+    "examples": [
+      "Property 'rtcpCapabilities' does not exist on type 'Omit<PostProcessorDefinition, \"postHash\">'."
+    ]
+  },
+  "Property 'manufacturer'": {
+    "count": 1,
+    "examples": [
+      "Property 'manufacturer' does not exist on type 'Omit<MachineDefinition, \"entityHash\">'."
+    ]
+  },
+  "Property 'machineType'": {
+    "count": 6,
+    "examples": [
+      "Property 'machineType' does not exist on type 'Omit<MachineDefinition, \"entityHash\">'.",
+      "Property 'machineType' does not exist on type 'MachineDefinition'.",
+      "Property 'machineType' does not exist on type 'MachineDefinition'."
+    ]
+  },
+  "Property 'controllerDialect'": {
+    "count": 1,
+    "examples": [
+      "Property 'controllerDialect' does not exist on type 'Omit<MachineDefinition, \"entityHash\">'."
+    ]
+  },
+  "Property 'axes'": {
+    "count": 10,
+    "examples": [
+      "Property 'axes' does not exist on type 'Omit<MachineDefinition, \"entityHash\">'.",
+      "Property 'axes' does not exist on type 'MachineDefinition'.",
+      "Property 'axes' does not exist on type 'MachineDefinition'."
+    ]
+  },
+  "Property 'spindle'": {
+    "count": 3,
+    "examples": [
+      "Property 'spindle' does not exist on type 'Omit<MachineDefinition, \"entityHash\">'.",
+      "Property 'spindle' does not exist on type 'MachineDefinition'.",
+      "Property 'spindle' does not exist on type 'MachineDefinition'."
+    ]
+  },
+  "Type '\"METRIC_MM\"'": {
+    "count": 4,
+    "examples": [
+      "Type '\"METRIC_MM\"' is not assignable to type 'UnitsMode'.",
+      "Type '\"METRIC_MM\"' is not assignable to type 'UnitsMode'.",
+      "Type '\"METRIC_MM\"' is not assignable to type 'UnitsMode'."
+    ]
+  },
+  "Type '\"G17_XY\"'": {
+    "count": 3,
+    "examples": [
+      "Type '\"G17_XY\"' is not assignable to type 'ActivePlane'.",
+      "Type '\"G17_XY\"' is not assignable to type 'ActivePlane'.",
+      "Type '\"G17_XY\"' is not assignable to type 'ActivePlane'."
+    ]
+  },
+  "Type '\"G94_UNITS_PER_MIN\"'": {
+    "count": 3,
+    "examples": [
+      "Type '\"G94_UNITS_PER_MIN\"' is not assignable to type 'FeedMode'.",
+      "Type '\"G94_UNITS_PER_MIN\"' is not assignable to type 'FeedMode'.",
+      "Type '\"G94_UNITS_PER_MIN\"' is not assignable to type 'FeedMode'."
+    ]
+  },
+  "Property 'currentPosition'": {
+    "count": 19,
+    "examples": [
+      "Property 'currentPosition' does not exist on type 'ModalState'.",
+      "Property 'currentPosition' does not exist on type 'ModalState'.",
+      "Property 'currentPosition' does not exist on type 'ModalState'."
+    ]
+  },
+  "Property 'motionMode'": {
+    "count": 2,
+    "examples": [
+      "Property 'motionMode' does not exist on type 'ModalState'.",
+      "Property 'motionMode' does not exist on type 'ModalState'."
+    ]
+  },
+  "Property 'currentFeedRate'": {
+    "count": 2,
+    "examples": [
+      "Property 'currentFeedRate' does not exist on type 'ModalState'.",
+      "Property 'currentFeedRate' does not exist on type 'ModalState'."
+    ]
+  },
+  "Type '\"M3_CW\"": {
+    "count": 1,
+    "examples": [
+      "Type '\"M3_CW\" | \"M4_CCW\"' is not assignable to type 'SpindleState'.\n  Type '\"M3_CW\"' is not assignable to type 'SpindleState'."
+    ]
+  },
+  "Property 'spindleState'": {
+    "count": 4,
+    "examples": [
+      "Property 'spindleState' does not exist on type 'ModalState'.",
+      "Property 'spindleState' does not exist on type 'ModalState'.",
+      "Property 'spindleState' does not exist on type 'ModalState'."
+    ]
+  },
+  "Property 'currentSpindleRpm'": {
+    "count": 3,
+    "examples": [
+      "Property 'currentSpindleRpm' does not exist on type 'ModalState'.",
+      "Property 'currentSpindleRpm' does not exist on type 'ModalState'.",
+      "Property 'currentSpindleRpm' does not exist on type 'ModalState'."
+    ]
+  },
+  "Property 'coolantState'": {
+    "count": 2,
+    "examples": [
+      "Property 'coolantState' does not exist on type 'ModalState'.",
+      "Property 'coolantState' does not exist on type 'ModalState'."
+    ]
+  },
+  "Property 'workOffset'": {
+    "count": 2,
+    "examples": [
+      "Property 'workOffset' does not exist on type 'ModalState'.",
+      "Property 'workOffset' does not exist on type 'ModalState'."
+    ]
+  },
+  "Property 'activeToolNumber'": {
+    "count": 1,
+    "examples": [
+      "Property 'activeToolNumber' does not exist on type 'ModalState'."
+    ]
+  },
+  "Property 'activeToolHOffset'": {
+    "count": 1,
+    "examples": [
+      "Property 'activeToolHOffset' does not exist on type 'ModalState'."
+    ]
+  },
+  "Property 'activeToolDOffset'": {
+    "count": 1,
+    "examples": [
+      "Property 'activeToolDOffset' does not exist on type 'ModalState'."
+    ]
+  },
+  "Property 'rtcpActive'": {
+    "count": 1,
+    "examples": [
+      "Property 'rtcpActive' does not exist on type 'ModalState'."
+    ]
+  },
+  "Type '\"PROGRAM_HEADER\"'": {
+    "count": 1,
+    "examples": [
+      "Type '\"PROGRAM_HEADER\"' is not assignable to type 'IREventType'."
+    ]
+  },
+  "Type '\"SAFETY_BLOCK\"'": {
+    "count": 1,
+    "examples": [
+      "Type '\"SAFETY_BLOCK\"' is not assignable to type 'IREventType'."
+    ]
+  },
+  "Type '\"OPERATION_START\"'": {
+    "count": 1,
+    "examples": [
+      "Type '\"OPERATION_START\"' is not assignable to type 'IREventType'."
+    ]
+  },
+  "Type '\"WORK_OFFSET_SELECT\"'": {
+    "count": 1,
+    "examples": [
+      "Type '\"WORK_OFFSET_SELECT\"' is not assignable to type 'IREventType'."
+    ]
+  },
+  "Type '\"SPINDLE_COMMAND\"'": {
+    "count": 1,
+    "examples": [
+      "Type '\"SPINDLE_COMMAND\"' is not assignable to type 'IREventType'."
+    ]
+  },
+  "Type '\"COOLANT_COMMAND\"'": {
+    "count": 1,
+    "examples": [
+      "Type '\"COOLANT_COMMAND\"' is not assignable to type 'IREventType'."
+    ]
+  },
+  "Type '\"RTCP_ENABLE\"'": {
+    "count": 1,
+    "examples": [
+      "Type '\"RTCP_ENABLE\"' is not assignable to type 'IREventType'."
+    ]
+  },
+  "Type '\"RAPID_TRAVERSE\"": {
+    "count": 1,
+    "examples": [
+      "Type '\"RAPID_TRAVERSE\" | \"LINEAR_FEED\"' is not assignable to type 'IREventType'.\n  Type '\"RAPID_TRAVERSE\"' is not assignable to type 'IREventType'."
+    ]
+  },
+  "Type '\"DWELL\"'": {
+    "count": 1,
+    "examples": [
+      "Type '\"DWELL\"' is not assignable to type 'IREventType'."
+    ]
+  },
+  "Type '\"RTCP_DISABLE\"'": {
+    "count": 1,
+    "examples": [
+      "Type '\"RTCP_DISABLE\"' is not assignable to type 'IREventType'."
+    ]
+  },
+  "Type '\"OPERATION_END\"'": {
+    "count": 1,
+    "examples": [
+      "Type '\"OPERATION_END\"' is not assignable to type 'IREventType'."
+    ]
+  },
+  "Type '\"PROGRAM_FOOTER\"'": {
+    "count": 1,
+    "examples": [
+      "Type '\"PROGRAM_FOOTER\"' is not assignable to type 'IREventType'."
+    ]
+  },
+  "Property 'eventId'": {
+    "count": 1,
+    "examples": [
+      "Property 'eventId' does not exist on type 'IREvent'."
+    ]
+  },
+  "Type '\"M8_FLOOD\"'": {
+    "count": 10,
+    "examples": [
+      "Type '\"M8_FLOOD\"' is not assignable to type 'CoolantState'.",
+      "Type '\"M8_FLOOD\"' is not assignable to type 'CoolantState'.",
+      "Type '\"M8_FLOOD\"' is not assignable to type 'CoolantState'."
+    ]
+  },
+  "Type '\"M88_THROUGH_SPINDLE\"'": {
+    "count": 5,
+    "examples": [
+      "Type '\"M88_THROUGH_SPINDLE\"' is not assignable to type 'CoolantState'. Did you mean '\"THROUGH_SPINDLE\"'?",
+      "Type '\"M88_THROUGH_SPINDLE\"' is not assignable to type 'CoolantState'. Did you mean '\"THROUGH_SPINDLE\"'?",
+      "Type '\"M88_THROUGH_SPINDLE\"' is not assignable to type 'CoolantState'. Did you mean '\"THROUGH_SPINDLE\"'?"
+    ]
+  },
+  "Parameter 'e'": {
+    "count": 1,
+    "examples": [
+      "Parameter 'e' implicitly has an 'any' type."
+    ]
+  },
+  "Property 'enableSafetyBlocks'": {
+    "count": 1,
+    "examples": [
+      "Property 'enableSafetyBlocks' does not exist on type 'PostConfiguration'."
+    ]
+  },
+  "Property 'enableModalOptimization'": {
+    "count": 1,
+    "examples": [
+      "Property 'enableModalOptimization' does not exist on type 'PostConfiguration'."
+    ]
+  },
+  "Type '\"M8_FLOOD\"": {
+    "count": 1,
+    "examples": [
+      "Type '\"M8_FLOOD\" | \"M88_THROUGH_SPINDLE\"' is not assignable to type 'CoolantState'.\n  Type '\"M8_FLOOD\"' is not assignable to type 'CoolantState'."
+    ]
+  },
+  "Property 'postHash'": {
+    "count": 2,
+    "examples": [
+      "Property 'postHash' does not exist on type 'PostProcessorDefinition'.",
+      "Property 'postHash' does not exist on type 'PostProcessorDefinition'."
+    ]
+  },
+  "Property 'entityHash'": {
+    "count": 2,
+    "examples": [
+      "Property 'entityHash' does not exist on type 'MachineDefinition'.",
+      "Property 'entityHash' does not exist on type 'MachineDefinition'."
+    ]
+  },
+  "Property 'sourceOperationId'": {
+    "count": 2,
+    "examples": [
+      "Property 'sourceOperationId' does not exist on type 'IREvent'.",
+      "Property 'sourceOperationId' does not exist on type 'IREvent'."
+    ]
+  },
+  "Property 'targetPosition'": {
+    "count": 1,
+    "examples": [
+      "Property 'targetPosition' does not exist on type 'IREvent'."
+    ]
+  },
+  "Property 'rawText'": {
+    "count": 2,
+    "examples": [
+      "Property 'rawText' does not exist on type 'NCBlock'.",
+      "Property 'rawText' does not exist on type 'NCBlock'."
+    ]
+  },
+  "Property 'totalRapidDistanceMm'": {
+    "count": 1,
+    "examples": [
+      "Property 'totalRapidDistanceMm' does not exist on type 'NCIntermediateRepresentation'."
+    ]
+  },
+  "Property 'totalCuttingDistanceMm'": {
+    "count": 1,
+    "examples": [
+      "Property 'totalCuttingDistanceMm' does not exist on type 'NCIntermediateRepresentation'."
+    ]
+  },
+  "Property 'toolsUsed'": {
+    "count": 2,
+    "examples": [
+      "Property 'toolsUsed' does not exist on type 'NCIntermediateRepresentation'.",
+      "Property 'toolsUsed' does not exist on type 'CAMProductionEvidencePackage'."
+    ]
+  },
+  "Property 'irHash'": {
+    "count": 2,
+    "examples": [
+      "Property 'irHash' does not exist on type 'NCIntermediateRepresentation'.",
+      "Property 'irHash' does not exist on type 'NCIntermediateRepresentation'."
+    ]
+  },
+  "Property 'sequenceNumber'": {
+    "count": 1,
+    "examples": [
+      "Property 'sequenceNumber' does not exist on type 'NCBlock'."
+    ]
+  },
+  "Property 'commandType'": {
+    "count": 1,
+    "examples": [
+      "Property 'commandType' does not exist on type 'NCBlock'."
+    ]
+  },
+  "Property 'sourceOperationName'": {
+    "count": 2,
+    "examples": [
+      "Property 'sourceOperationName' does not exist on type 'NCBlock'.",
+      "Property 'sourceOperationName' does not exist on type 'NCBlock'."
+    ]
+  },
+  "Property 'sourceToolpathSegmentId'": {
+    "count": 2,
+    "examples": [
+      "Property 'sourceToolpathSegmentId' does not exist on type 'NCBlock'.",
+      "Property 'sourceToolpathSegmentId' does not exist on type 'NCBlock'."
+    ]
+  },
+  "Property 'modalStateAfter'": {
+    "count": 16,
+    "examples": [
+      "Property 'modalStateAfter' does not exist on type 'NCBlock'.",
+      "Property 'modalStateAfter' does not exist on type 'NCBlock'.",
+      "Property 'modalStateAfter' does not exist on type 'NCBlock'."
+    ]
+  },
+  "Property 'ncProgramHash'": {
+    "count": 1,
+    "examples": [
+      "Property 'ncProgramHash' does not exist on type 'PostProcessingEvidence'."
+    ]
+  },
+  "Property 'postDefinitionHash'": {
+    "count": 1,
+    "examples": [
+      "Property 'postDefinitionHash' does not exist on type 'PostProcessingEvidence'."
+    ]
+  },
+  "Property 'machineHash'": {
+    "count": 1,
+    "examples": [
+      "Property 'machineHash' does not exist on type 'PostProcessingEvidence'."
+    ]
+  },
+  "Property 'provenanceDigestSha256'": {
+    "count": 1,
+    "examples": [
+      "Property 'provenanceDigestSha256' does not exist on type 'PostProcessingEvidence'."
+    ]
+  },
+  "Module '\"./CAMProductionTypes\"'": {
+    "count": 6,
+    "examples": [
+      "Module '\"./CAMProductionTypes\"' has no exported member 'CAMArtifactFingerprint'.",
+      "Module '\"./CAMProductionTypes\"' has no exported member 'ManufacturingSetupDefinition'.",
+      "Module '\"./CAMProductionTypes\"' has no exported member 'ManufacturingOperationDefinition'."
+    ]
+  },
+  "'\"./CAMProductionTypes\"' has": {
+    "count": 1,
+    "examples": [
+      "'\"./CAMProductionTypes\"' has no exported member named 'CAMProductionArtifact'. Did you mean 'CAMProductionVerdict'?"
+    ]
+  },
+  "Property 'createEngineeringPart'": {
+    "count": 1,
+    "examples": [
+      "Property 'createEngineeringPart' does not exist on type 'typeof RealEngineerCAMWorkflow'."
+    ]
+  },
+  "Property 'executeWorkflow'": {
+    "count": 1,
+    "examples": [
+      "Property 'executeWorkflow' does not exist on type 'typeof RealEngineerCAMWorkflow'."
+    ]
+  },
+  "Property 'verdict'": {
+    "count": 8,
+    "examples": [
+      "Property 'verdict' does not exist on type 'CAMProductionEvidencePackage'.",
+      "Property 'verdict' does not exist on type 'CAMProductionEvidencePackage'.",
+      "Property 'verdict' does not exist on type 'CAMProductionEvidencePackage'."
+    ]
+  },
+  "Property 'cadModelName'": {
+    "count": 1,
+    "examples": [
+      "Property 'cadModelName' does not exist on type 'CAMProductionEvidencePackage'."
+    ]
+  },
+  "Property 'finalStockComparison'": {
+    "count": 5,
+    "examples": [
+      "Property 'finalStockComparison' does not exist on type 'CAMProductionEvidencePackage'.",
+      "Property 'finalStockComparison' does not exist on type 'CAMProductionEvidencePackage'.",
+      "Property 'finalStockComparison' does not exist on type 'CAMProductionEvidencePackage'."
+    ]
+  },
+  "Property 'setup'": {
+    "count": 8,
+    "examples": [
+      "Property 'setup' does not exist on type 'CAMProductionEvidencePackage'.",
+      "Property 'setup' does not exist on type 'CAMProductionEvidencePackage'.",
+      "Property 'setup' does not exist on type 'CAMProductionEvidencePackage'."
+    ]
+  },
+  "Parameter 'tool'": {
+    "count": 1,
+    "examples": [
+      "Parameter 'tool' implicitly has an 'any' type."
+    ]
+  },
+  "Property 'operations'": {
+    "count": 1,
+    "examples": [
+      "Property 'operations' does not exist on type 'CAMProductionEvidencePackage'."
+    ]
+  },
+  "Property 'machineSimulation'": {
+    "count": 7,
+    "examples": [
+      "Property 'machineSimulation' does not exist on type 'CAMProductionEvidencePackage'.",
+      "Property 'machineSimulation' does not exist on type 'CAMProductionEvidencePackage'.",
+      "Property 'machineSimulation' does not exist on type 'CAMProductionEvidencePackage'."
+    ]
+  },
+  "Property 'safetyStatus'": {
+    "count": 6,
+    "examples": [
+      "Property 'safetyStatus' does not exist on type 'CAMProductionEvidencePackage'.",
+      "Property 'safetyStatus' does not exist on type 'CAMProductionEvidencePackage'.",
+      "Property 'safetyStatus' does not exist on type 'CAMProductionEvidencePackage'."
+    ]
+  },
+  "Property 'gcodeVerification'": {
+    "count": 3,
+    "examples": [
+      "Property 'gcodeVerification' does not exist on type 'CAMProductionEvidencePackage'.",
+      "Property 'gcodeVerification' does not exist on type 'CAMProductionEvidencePackage'.",
+      "Property 'gcodeVerification' does not exist on type 'CAMProductionEvidencePackage'."
+    ]
+  },
+  "Parameter 'd'": {
+    "count": 1,
+    "examples": [
+      "Parameter 'd' implicitly has an 'any' type."
+    ]
+  },
+  "Property 'productionScorePPS'": {
+    "count": 1,
+    "examples": [
+      "Property 'productionScorePPS' does not exist on type 'CAMProductionEvidencePackage'."
+    ]
+  },
+  "Property 'id'": {
+    "count": 2,
+    "examples": [
+      "Property 'id' does not exist on type 'CAMProductionTestResult'.",
+      "Property 'id' does not exist on type 'CAMProductionTestResult'."
+    ]
+  },
+  "Property 'passed'": {
+    "count": 3,
+    "examples": [
+      "Property 'passed' does not exist on type 'CAMProductionTestResult'.",
+      "Property 'passed' does not exist on type 'CAMProductionTestResult'.",
+      "Property 'passed' does not exist on type 'CAMProductionTestResult'."
+    ]
+  },
+  "Property 'testNumber'": {
+    "count": 1,
+    "examples": [
+      "Property 'testNumber' does not exist on type 'CAMProductionTestResult'."
+    ]
+  },
+  "Property 'actualVerdict'": {
+    "count": 1,
+    "examples": [
+      "Property 'actualVerdict' does not exist on type 'CAMProductionTestResult'."
+    ]
+  },
+  "Property 'description'": {
+    "count": 1,
+    "examples": [
+      "Property 'description' does not exist on type 'CAMProductionTestResult'."
+    ]
+  },
+  "Property 'notes'": {
+    "count": 1,
+    "examples": [
+      "Property 'notes' does not exist on type 'CAMProductionTestResult'."
+    ]
+  },
+  "Property 'executionTimeMs'": {
+    "count": 1,
+    "examples": [
+      "Property 'executionTimeMs' does not exist on type 'CAMProductionTestResult'."
+    ]
+  },
+  "Property 'traceability'": {
+    "count": 2,
+    "examples": [
+      "Property 'traceability' does not exist on type 'CAMProductionEvidencePackage'.",
+      "Property 'traceability' does not exist on type 'CAMProductionEvidencePackage'."
+    ]
+  },
+  "Parameter 'n'": {
+    "count": 17,
+    "examples": [
+      "Parameter 'n' implicitly has an 'any' type.",
+      "Parameter 'n' implicitly has an 'any' type.",
+      "Parameter 'n' implicitly has an 'any' type."
+    ]
+  },
+  "Parameter 'st'": {
+    "count": 1,
+    "examples": [
+      "Parameter 'st' implicitly has an 'any' type."
+    ]
+  },
+  "Property 'capabilityMatrix'": {
+    "count": 1,
+    "examples": [
+      "Property 'capabilityMatrix' does not exist on type 'Gate265Report'."
+    ]
+  },
+  "Parameter 'cap'": {
+    "count": 1,
+    "examples": [
+      "Parameter 'cap' implicitly has an 'any' type."
+    ]
+  },
+  "Property 'overallQualificationLevel'": {
+    "count": 1,
+    "examples": [
+      "Property 'overallQualificationLevel' does not exist on type 'Gate265Report'."
+    ]
+  },
+  "Property 'passedRules'": {
+    "count": 1,
+    "examples": [
+      "Property 'passedRules' does not exist on type 'Gate265Report'."
+    ]
+  },
+  "Property 'totalRules'": {
+    "count": 1,
+    "examples": [
+      "Property 'totalRules' does not exist on type 'Gate265Report'."
+    ]
+  },
+  "Property 'verdictSignature'": {
+    "count": 1,
+    "examples": [
+      "Property 'verdictSignature' does not exist on type 'Gate265Report'."
+    ]
+  },
+  "Property 'rules'": {
+    "count": 1,
+    "examples": [
+      "Property 'rules' does not exist on type 'Gate265Report'."
+    ]
+  },
+  "Parameter 'rule'": {
+    "count": 1,
+    "examples": [
+      "Parameter 'rule' implicitly has an 'any' type."
+    ]
+  },
+  "Property 'packageId'": {
+    "count": 1,
+    "examples": [
+      "Property 'packageId' does not exist on type 'CAMProductionEvidencePackage'."
+    ]
+  },
+  "Property 'workflowExecutionId'": {
+    "count": 1,
+    "examples": [
+      "Property 'workflowExecutionId' does not exist on type 'CAMProductionEvidencePackage'."
+    ]
+  },
+  "Property 'engineerRole'": {
+    "count": 1,
+    "examples": [
+      "Property 'engineerRole' does not exist on type 'CAMProductionEvidencePackage'."
+    ]
+  },
+  "Property 'digitalSignatureSHA256'": {
+    "count": 1,
+    "examples": [
+      "Property 'digitalSignatureSHA256' does not exist on type 'CAMProductionEvidencePackage'."
+    ]
+  },
+  "Property 'cadModelHash'": {
+    "count": 1,
+    "examples": [
+      "Property 'cadModelHash' does not exist on type 'CAMProductionEvidencePackage'."
+    ]
+  },
+  "Module '\"../feature-recognition/FeatureTypes\"'": {
+    "count": 1,
+    "examples": [
+      "Module '\"../feature-recognition/FeatureTypes\"' has no exported member 'RecognizedFeature'."
+    ]
+  },
+  "Property 'totalRemovedVolumeMm3'": {
+    "count": 1,
+    "examples": [
+      "Property 'totalRemovedVolumeMm3' does not exist on type 'StockSimulationResult'."
+    ]
+  },
+  "Module '\"./ToolTypes\"'": {
+    "count": 1,
+    "examples": [
+      "Module '\"./ToolTypes\"' has no exported member 'MachiningTool'."
+    ]
+  },
+  "Property 'boundingVolume'": {
+    "count": 34,
+    "examples": [
+      "Property 'boundingVolume' does not exist on type 'ManufacturingFeature'.",
+      "Property 'boundingVolume' does not exist on type 'ManufacturingFeature'.",
+      "Property 'boundingVolume' does not exist on type 'ManufacturingFeature'."
+    ]
+  },
+  "Property 'POCKET_CIRCULAR'": {
+    "count": 1,
+    "examples": [
+      "Property 'POCKET_CIRCULAR' does not exist on type 'typeof ManufacturingFeatureType'."
+    ]
+  },
+  "Property 'POCKET_GENERAL'": {
+    "count": 1,
+    "examples": [
+      "Property 'POCKET_GENERAL' does not exist on type 'typeof ManufacturingFeatureType'."
+    ]
+  },
+  "Property 'SLOT_BLIND'": {
+    "count": 1,
+    "examples": [
+      "Property 'SLOT_BLIND' does not exist on type 'typeof ManufacturingFeatureType'."
+    ]
+  },
+  "Property 'HOLE_BLIND'": {
+    "count": 1,
+    "examples": [
+      "Property 'HOLE_BLIND' does not exist on type 'typeof ManufacturingFeatureType'."
+    ]
+  },
+  "Property 'HOLE_THROUGH'": {
+    "count": 1,
+    "examples": [
+      "Property 'HOLE_THROUGH' does not exist on type 'typeof ManufacturingFeatureType'."
+    ]
+  },
+  "Property 'HOLE_COUNTERBORE'": {
+    "count": 1,
+    "examples": [
+      "Property 'HOLE_COUNTERBORE' does not exist on type 'typeof ManufacturingFeatureType'."
+    ]
+  },
+  "Property 'HOLE_COUNTERSINK'": {
+    "count": 1,
+    "examples": [
+      "Property 'HOLE_COUNTERSINK' does not exist on type 'typeof ManufacturingFeatureType'."
+    ]
+  },
+  "Module '\"../fiveaxis/FiveAxisTypes\"'": {
+    "count": 4,
+    "examples": [
+      "Module '\"../fiveaxis/FiveAxisTypes\"' has no exported member 'FiveAxisMachinePose'.",
+      "Module '\"../fiveaxis/FiveAxisTypes\"' has no exported member 'FiveAxisMachinePose'.",
+      "Module '\"../fiveaxis/FiveAxisTypes\"' has no exported member 'FiveAxisMachinePose'."
+    ]
+  },
+  "Type '\"SIEMENS_840D\"'": {
+    "count": 2,
+    "examples": [
+      "Type '\"SIEMENS_840D\"' is not comparable to type 'ControllerDialect'.",
+      "Type '\"SIEMENS_840D\"' is not assignable to type 'ControllerDialect'."
+    ]
+  },
+  "Type '\"GENERIC_ISO\"'": {
+    "count": 4,
+    "examples": [
+      "Type '\"GENERIC_ISO\"' is not comparable to type 'ControllerDialect'.",
+      "Type '\"GENERIC_ISO\"' is not assignable to type 'ControllerDialect'.",
+      "Type '\"GENERIC_ISO\"' is not assignable to type 'ControllerDialect'."
+    ]
+  },
+  "Property 'defaultUnits'": {
+    "count": 2,
+    "examples": [
+      "Property 'defaultUnits' does not exist on type 'MachineDefinition'.",
+      "Property 'defaultUnits' does not exist on type 'MachineDefinition'."
+    ]
+  },
+  "Module '\"../post-processor/PostTypes\"'": {
+    "count": 2,
+    "examples": [
+      "Module '\"../post-processor/PostTypes\"' has no exported member 'RTCPMode'.",
+      "Module '\"../post-processor/PostTypes\"' has no exported member 'RTCPMode'."
+    ]
+  },
+  "Module '\"../ToolpathTypes\"'": {
+    "count": 3,
+    "examples": [
+      "Module '\"../ToolpathTypes\"' has no exported member 'ToolpathSegment'.",
+      "Module '\"../ToolpathTypes\"' has no exported member 'ToolpathSegment'.",
+      "Module '\"../ToolpathTypes\"' has no exported member 'ToolpathSegment'."
+    ]
+  },
+  "Type '\"G0_RAPID\"'": {
+    "count": 2,
+    "examples": [
+      "Type '\"G0_RAPID\"' is not assignable to type 'MotionMode'.",
+      "Type '\"G0_RAPID\"' is not assignable to type 'MotionMode'."
+    ]
+  },
+  "Type '\"G40_OFF\"'": {
+    "count": 2,
+    "examples": [
+      "Type '\"G40_OFF\"' is not assignable to type 'CutterCompensationMode'.",
+      "Type '\"G40_OFF\"' is not assignable to type 'CutterCompensationMode'."
+    ]
+  },
+  "Type '\"M5_OFF\"'": {
+    "count": 2,
+    "examples": [
+      "Type '\"M5_OFF\"' is not assignable to type 'SpindleState'.",
+      "Type '\"M5_OFF\"' is not assignable to type 'SpindleState'."
+    ]
+  },
+  "Type '\"M9_OFF\"'": {
+    "count": 2,
+    "examples": [
+      "Type '\"M9_OFF\"' is not assignable to type 'CoolantState'.",
+      "Type '\"M9_OFF\"' is not assignable to type 'CoolantState'."
+    ]
+  },
+  "Type '\"IMPERIAL_INCH\"'": {
+    "count": 1,
+    "examples": [
+      "Type '\"IMPERIAL_INCH\"' is not assignable to type 'UnitsMode'."
+    ]
+  },
+  "Type '\"G18_ZX\"'": {
+    "count": 1,
+    "examples": [
+      "Type '\"G18_ZX\"' is not assignable to type 'ActivePlane'."
+    ]
+  },
+  "Type '\"G19_YZ\"'": {
+    "count": 1,
+    "examples": [
+      "Type '\"G19_YZ\"' is not assignable to type 'ActivePlane'."
+    ]
+  },
+  "Type '\"G1_LINEAR\"'": {
+    "count": 1,
+    "examples": [
+      "Type '\"G1_LINEAR\"' is not assignable to type 'MotionMode'."
+    ]
+  },
+  "Type '\"G2_CW_ARC\"'": {
+    "count": 1,
+    "examples": [
+      "Type '\"G2_CW_ARC\"' is not assignable to type 'MotionMode'."
+    ]
+  },
+  "Type '\"G3_CCW_ARC\"'": {
+    "count": 1,
+    "examples": [
+      "Type '\"G3_CCW_ARC\"' is not assignable to type 'MotionMode'."
+    ]
+  },
+  "Type '\"CANNED_CYCLE\"'": {
+    "count": 1,
+    "examples": [
+      "Type '\"CANNED_CYCLE\"' is not assignable to type 'MotionMode'."
+    ]
+  },
+  "Type '\"G95_UNITS_PER_REV\"'": {
+    "count": 1,
+    "examples": [
+      "Type '\"G95_UNITS_PER_REV\"' is not assignable to type 'FeedMode'."
+    ]
+  },
+  "Type '\"G93_INVERSE_TIME\"'": {
+    "count": 1,
+    "examples": [
+      "Type '\"G93_INVERSE_TIME\"' is not assignable to type 'FeedMode'."
+    ]
+  },
+  "Type '\"G41_LEFT\"'": {
+    "count": 1,
+    "examples": [
+      "Type '\"G41_LEFT\"' is not assignable to type 'CutterCompensationMode'."
+    ]
+  },
+  "Type '\"G42_RIGHT\"'": {
+    "count": 1,
+    "examples": [
+      "Type '\"G42_RIGHT\"' is not assignable to type 'CutterCompensationMode'."
+    ]
+  },
+  "Type '\"M3_CW\"'": {
+    "count": 1,
+    "examples": [
+      "Type '\"M3_CW\"' is not assignable to type 'SpindleState'."
+    ]
+  },
+  "Type '\"M4_CCW\"'": {
+    "count": 1,
+    "examples": [
+      "Type '\"M4_CCW\"' is not assignable to type 'SpindleState'."
+    ]
+  },
+  "Type '\"M7_MIST\"'": {
+    "count": 1,
+    "examples": [
+      "Type '\"M7_MIST\"' is not assignable to type 'CoolantState'."
+    ]
+  },
+  "Property 'capacity'": {
+    "count": 1,
+    "examples": [
+      "Property 'capacity' does not exist on type '{ toolChangeTimeSec: number; }'."
+    ]
+  },
+  "Property 'maxToolLengthMm'": {
+    "count": 3,
+    "examples": [
+      "Property 'maxToolLengthMm' does not exist on type '{ toolChangeTimeSec: number; }'.",
+      "Property 'maxToolLengthMm' does not exist on type '{ toolChangeTimeSec: number; }'.",
+      "Property 'maxToolLengthMm' does not exist on type '{ toolChangeTimeSec: number; }'."
+    ]
+  },
+  "Property 'maxToolDiameterMm'": {
+    "count": 3,
+    "examples": [
+      "Property 'maxToolDiameterMm' does not exist on type '{ toolChangeTimeSec: number; }'.",
+      "Property 'maxToolDiameterMm' does not exist on type '{ toolChangeTimeSec: number; }'.",
+      "Property 'maxToolDiameterMm' does not exist on type '{ toolChangeTimeSec: number; }'."
+    ]
+  },
+  "Property 'getMachine'": {
+    "count": 10,
+    "examples": [
+      "Property 'getMachine' does not exist on type 'typeof MachineDefinitionRegistry'.",
+      "Property 'getMachine' does not exist on type 'typeof MachineDefinitionRegistry'.",
+      "Property 'getMachine' does not exist on type 'typeof MachineDefinitionRegistry'."
+    ]
+  },
+  "Parameter 'c'": {
+    "count": 5,
+    "examples": [
+      "Parameter 'c' implicitly has an 'any' type.",
+      "Parameter 'c' implicitly has an 'any' type.",
+      "Parameter 'c' implicitly has an 'any' type."
+    ]
+  },
+  "Property 'prescribedTemperatures'": {
+    "count": 2,
+    "examples": [
+      "Property 'prescribedTemperatures' does not exist on type 'PcbThermalBoardConfig'.",
+      "Property 'prescribedTemperatures' does not exist on type 'PcbThermalBoardConfig'."
+    ]
+  },
+  "Property 'ambientTemperatureC'": {
+    "count": 1,
+    "examples": [
+      "Property 'ambientTemperatureC' does not exist on type 'PcbThermalBoardConfig'."
+    ]
+  },
+  "Parameter 'a'": {
+    "count": 1,
+    "examples": [
+      "Parameter 'a' implicitly has an 'any' type."
+    ]
+  },
+  "Parameter 'b'": {
+    "count": 3,
+    "examples": [
+      "Parameter 'b' implicitly has an 'any' type.",
+      "Parameter 'b' implicitly has an 'any' type.",
+      "Parameter 'b' implicitly has an 'any' type."
+    ]
+  },
+  "Parameter 'vs'": {
+    "count": 2,
+    "examples": [
+      "Parameter 'vs' implicitly has an 'any' type.",
+      "Parameter 'vs' implicitly has an 'any' type."
+    ]
+  },
+  "Parameter 'k'": {
+    "count": 2,
+    "examples": [
+      "Parameter 'k' implicitly has an 'any' type.",
+      "Parameter 'k' implicitly has an 'any' type."
+    ]
+  },
+  "Type 'boolean": {
+    "count": 6,
+    "examples": [
+      "Type 'boolean | undefined' is not assignable to type 'boolean'.\n  Type 'undefined' is not assignable to type 'boolean'.",
+      "Type 'boolean | undefined' is not assignable to type 'boolean'.\n  Type 'undefined' is not assignable to type 'boolean'.",
+      "Type 'boolean | undefined' is not assignable to type 'boolean'.\n  Type 'undefined' is not assignable to type 'boolean'."
+    ]
+  },
+  "Property 'gpu'": {
+    "count": 1,
+    "examples": [
+      "Property 'gpu' does not exist on type 'Navigator'."
+    ]
+  },
+  "Property 'buffer'": {
+    "count": 3,
+    "examples": [
+      "Property 'buffer' does not exist on type 'number[] | Float32Array<ArrayBufferLike>'.\n  Property 'buffer' does not exist on type 'number[]'.",
+      "Property 'buffer' does not exist on type 'number[] | Float32Array<ArrayBufferLike>'.\n  Property 'buffer' does not exist on type 'number[]'.",
+      "Property 'buffer' does not exist on type 'number[] | Float32Array<ArrayBufferLike>'.\n  Property 'buffer' does not exist on type 'number[]'."
+    ]
+  },
+  "Property 'byteOffset'": {
+    "count": 3,
+    "examples": [
+      "Property 'byteOffset' does not exist on type 'number[] | Float32Array<ArrayBufferLike>'.\n  Property 'byteOffset' does not exist on type 'number[]'.",
+      "Property 'byteOffset' does not exist on type 'number[] | Float32Array<ArrayBufferLike>'.\n  Property 'byteOffset' does not exist on type 'number[]'.",
+      "Property 'byteOffset' does not exist on type 'number[] | Float32Array<ArrayBufferLike>'.\n  Property 'byteOffset' does not exist on type 'number[]'."
+    ]
+  },
+  "Property 'detectCapabilities'": {
+    "count": 1,
+    "examples": [
+      "Property 'detectCapabilities' does not exist on type 'WebGPUComputeBackend'."
+    ]
+  },
+  "Property 'getCapabilities'": {
+    "count": 2,
+    "examples": [
+      "Property 'getCapabilities' does not exist on type 'WebGPUComputeBackend'.",
+      "Property 'getCapabilities' does not exist on type 'WebGPUComputeBackend'."
+    ]
+  },
+  "Property 'initialize'": {
+    "count": 2,
+    "examples": [
+      "Property 'initialize' does not exist on type 'WebGPUComputeBackend'.",
+      "Property 'initialize' does not exist on type 'WebGPUComputeBackend'."
+    ]
+  },
+  "Property 'getTruthState'": {
+    "count": 6,
+    "examples": [
+      "Property 'getTruthState' does not exist on type 'WebGPUComputeBackend'.",
+      "Property 'getTruthState' does not exist on type 'WebGPUComputeBackend'.",
+      "Property 'getTruthState' does not exist on type 'CPUBackend'."
+    ]
+  },
+  "Property 'createManagedBuffer'": {
+    "count": 6,
+    "examples": [
+      "Property 'createManagedBuffer' does not exist on type 'typeof GPUBufferManager'.",
+      "Property 'createManagedBuffer' does not exist on type 'typeof GPUBufferManager'.",
+      "Property 'createManagedBuffer' does not exist on type 'typeof GPUBufferManager'."
+    ]
+  },
+  "Property 'releaseBuffer'": {
+    "count": 2,
+    "examples": [
+      "Property 'releaseBuffer' does not exist on type 'typeof GPUBufferManager'.",
+      "Property 'releaseBuffer' does not exist on type 'typeof GPUBufferManager'."
+    ]
+  },
+  "Property 'uploadToBuffer'": {
+    "count": 1,
+    "examples": [
+      "Property 'uploadToBuffer' does not exist on type 'typeof GPUBufferManager'."
+    ]
+  },
+  "Property 'generateTestVector'": {
+    "count": 16,
+    "examples": [
+      "Property 'generateTestVector' does not exist on type 'typeof WebGPUBenchmarkHarness'.",
+      "Property 'generateTestVector' does not exist on type 'typeof WebGPUBenchmarkHarness'.",
+      "Property 'generateTestVector' does not exist on type 'typeof WebGPUBenchmarkHarness'."
+    ]
+  },
+  "Property 'executeJob'": {
+    "count": 8,
+    "examples": [
+      "Property 'executeJob' does not exist on type 'typeof BackendSelector'.",
+      "Property 'executeJob' does not exist on type 'typeof BackendSelector'.",
+      "Property 'executeJob' does not exist on type 'typeof BackendSelector'."
+    ]
+  },
+  "Property 'generateMatrix'": {
+    "count": 2,
+    "examples": [
+      "Property 'generateMatrix' does not exist on type 'typeof WebGPUBenchmarkHarness'.",
+      "Property 'generateMatrix' does not exist on type 'typeof WebGPUBenchmarkHarness'."
+    ]
+  },
+  "Expected 2": {
+    "count": 31,
+    "examples": [
+      "Expected 2 arguments, but got 1.",
+      "Expected 2 arguments, but got 1.",
+      "Expected 2 arguments, but got 1."
+    ]
+  },
+  "Property 'outputData'": {
+    "count": 27,
+    "examples": [
+      "Property 'outputData' does not exist on type 'Float32Array<ArrayBufferLike>'.",
+      "Property 'outputData' does not exist on type 'Float32Array<ArrayBufferLike>'.",
+      "Property 'outputData' does not exist on type 'Float32Array<ArrayBufferLike>'."
+    ]
+  },
+  "Property 'outputHash'": {
+    "count": 3,
+    "examples": [
+      "Property 'outputHash' does not exist on type 'Float32Array<ArrayBufferLike>'.",
+      "Property 'outputHash' does not exist on type 'Float32Array<ArrayBufferLike>'.",
+      "Property 'outputHash' does not exist on type 'Float32Array<ArrayBufferLike>'."
+    ]
+  },
+  "Property 'releaseAllBuffers'": {
+    "count": 2,
+    "examples": [
+      "Property 'releaseAllBuffers' does not exist on type 'typeof GPUBufferManager'.",
+      "Property 'releaseAllBuffers' does not exist on type 'typeof GPUBufferManager'."
+    ]
+  },
+  "Property 'getMemoryDiagnostics'": {
+    "count": 4,
+    "examples": [
+      "Property 'getMemoryDiagnostics' does not exist on type 'typeof GPUBufferManager'.",
+      "Property 'getMemoryDiagnostics' does not exist on type 'typeof GPUBufferManager'.",
+      "Property 'getMemoryDiagnostics' does not exist on type 'typeof GPUBufferManager'."
+    ]
+  },
+  "Property 'readbackBuffer'": {
+    "count": 1,
+    "examples": [
+      "Property 'readbackBuffer' does not exist on type 'typeof GPUBufferManager'."
+    ]
+  },
+  "Property 'actualBackend'": {
+    "count": 4,
+    "examples": [
+      "Property 'actualBackend' does not exist on type 'Float32Array<ArrayBufferLike>'.",
+      "Property 'actualBackend' does not exist on type 'Float32Array<ArrayBufferLike>'.",
+      "Property 'actualBackend' does not exist on type 'Float32Array<ArrayBufferLike>'."
+    ]
+  },
+  "Property 'truthState'": {
+    "count": 2,
+    "examples": [
+      "Property 'truthState' does not exist on type 'Float32Array<ArrayBufferLike>'.",
+      "Property 'truthState' does not exist on type 'Float32Array<ArrayBufferLike>'."
+    ]
+  },
+  "Property 'fallbackInfo'": {
+    "count": 1,
+    "examples": [
+      "Property 'fallbackInfo' does not exist on type 'Float32Array<ArrayBufferLike>'."
+    ]
+  },
+  "Property 'provenance'": {
+    "count": 3,
+    "examples": [
+      "Property 'provenance' does not exist on type 'Float32Array<ArrayBufferLike>'.",
+      "Property 'provenance' does not exist on type 'Float32Array<ArrayBufferLike>'.",
+      "Property 'provenance' does not exist on type 'Float32Array<ArrayBufferLike>'."
+    ]
+  },
+  "Property 'DEFAULT_LIMITS'": {
+    "count": 1,
+    "examples": [
+      "Property 'DEFAULT_LIMITS' does not exist on type 'typeof GPUBufferManager'."
+    ]
+  },
+  "Property 'setBackendMode'": {
+    "count": 2,
+    "examples": [
+      "Property 'setBackendMode' does not exist on type 'typeof BackendSelector'.",
+      "Property 'setBackendMode' does not exist on type 'typeof BackendSelector'."
+    ]
+  },
+  "Property 'getBackendMode'": {
+    "count": 1,
+    "examples": [
+      "Property 'getBackendMode' does not exist on type 'typeof BackendSelector'."
+    ]
+  },
+  "Property 'runBenchmarkCase'": {
+    "count": 1,
+    "examples": [
+      "Property 'runBenchmarkCase' does not exist on type 'typeof WebGPUBenchmarkHarness'. Did you mean 'runBenchmark'?"
+    ]
+  },
+  "Property 'timing'": {
+    "count": 17,
+    "examples": [
+      "Property 'timing' does not exist on type 'Float32Array<ArrayBufferLike>'.",
+      "Property 'timing' does not exist on type 'Float32Array<ArrayBufferLike>'.",
+      "Property 'timing' does not exist on type 'Float32Array<ArrayBufferLike>'."
+    ]
+  },
+  "Property 'releaseJobBuffers'": {
+    "count": 2,
+    "examples": [
+      "Property 'releaseJobBuffers' does not exist on type 'typeof GPUBufferManager'.",
+      "Property 'releaseJobBuffers' does not exist on type 'typeof GPUBufferManager'."
+    ]
+  },
+  "Property 'dispose'": {
+    "count": 1,
+    "examples": [
+      "Property 'dispose' does not exist on type 'WebGPUComputeBackend'."
+    ]
+  },
+  "'navigator.gpu' is": {
+    "count": 1,
+    "examples": [
+      "'navigator.gpu' is of type 'unknown'."
+    ]
+  },
+  "Property 'requestAdapter'": {
+    "count": 1,
+    "examples": [
+      "Property 'requestAdapter' does not exist on type '{}'."
+    ]
+  },
+  "Property 'addNode'": {
+    "count": 1,
+    "examples": [
+      "Property 'addNode' does not exist on type 'DigitalThreadService'."
+    ]
+  },
+  "Property 'addEdge'": {
+    "count": 1,
+    "examples": [
+      "Property 'addEdge' does not exist on type 'DigitalThreadService'."
+    ]
+  },
+  "Type '\"FEM_STIFFNESS\"'": {
+    "count": 5,
+    "examples": [
+      "Type '\"FEM_STIFFNESS\"' is not assignable to type 'KernelCategory'.",
+      "Type '\"FEM_STIFFNESS\"' is not assignable to type 'KernelCategory'.",
+      "Type '\"FEM_STIFFNESS\"' is not assignable to type 'KernelCategory'."
+    ]
+  },
+  "Type '\"FEM_RECOVERY\"'": {
+    "count": 1,
+    "examples": [
+      "Type '\"FEM_RECOVERY\"' is not assignable to type 'KernelCategory'."
+    ]
+  },
+  "Property 'recordEntityEvent'": {
+    "count": 1,
+    "examples": [
+      "Property 'recordEntityEvent' does not exist on type 'typeof DigitalThreadService'."
+    ]
+  },
+  "Type '\"BOX_WITH_HOLE\"'": {
+    "count": 1,
+    "examples": [
+      "Type '\"BOX_WITH_HOLE\"' is not assignable to type '\"PLANE\" | \"CYLINDER\" | \"SPHERE\" | \"CONE\" | \"NURBS\" | \"HIGH_CURVATURE\"'."
+    ]
+  },
+  "Type '\"THIN_BODY\"'": {
+    "count": 1,
+    "examples": [
+      "Type '\"THIN_BODY\"' is not assignable to type '\"PLANE\" | \"CYLINDER\" | \"SPHERE\" | \"CONE\" | \"NURBS\" | \"HIGH_CURVATURE\"'."
+    ]
+  },
+  "Type '\"MESH_SMOOTHING\"'": {
+    "count": 1,
+    "examples": [
+      "Type '\"MESH_SMOOTHING\"' is not assignable to type 'MeshKernelType'."
+    ]
+  },
+  "Property 'getRowEntries'": {
+    "count": 6,
+    "examples": [
+      "Property 'getRowEntries' does not exist on type 'CSRStorage'.",
+      "Property 'getRowEntries' does not exist on type 'CSRStorage'.",
+      "Property 'getRowEntries' does not exist on type 'CSRStorage'."
+    ]
+  },
+  "Property 'toDense'": {
+    "count": 2,
+    "examples": [
+      "Property 'toDense' does not exist on type 'CSRStorage'.",
+      "Property 'toDense' does not exist on type 'CSRStorage'."
+    ]
+  },
+  "Module '\"../core/FEMTypes\"'": {
+    "count": 1,
+    "examples": [
+      "Module '\"../core/FEMTypes\"' has no exported member 'FEMSolveResult'."
+    ]
+  },
+  "Property 'length'": {
+    "count": 5,
+    "examples": [
+      "Property 'length' does not exist on type 'Map<number, number>'.",
+      "Property 'length' does not exist on type 'never'.",
+      "Property 'length' does not exist on type 'never'."
+    ]
+  },
+  "Property 'tangentialBehavior'": {
+    "count": 2,
+    "examples": [
+      "Property 'tangentialBehavior' does not exist on type 'ContactPair'.",
+      "Property 'tangentialBehavior' does not exist on type 'ContactPair'."
+    ]
+  },
+  "Property 'enforcement'": {
+    "count": 3,
+    "examples": [
+      "Property 'enforcement' does not exist on type 'ContactPair'.",
+      "Property 'enforcement' does not exist on type 'ContactPair'.",
+      "Property 'enforcement' does not exist on type 'ContactPair'."
+    ]
+  },
+  "Property 'evaluateProperty'": {
+    "count": 1,
+    "examples": [
+      "Property 'evaluateProperty' does not exist on type 'SpatialMaterialField'."
+    ]
+  },
+  "Expected 1": {
+    "count": 2,
+    "examples": [
+      "Expected 1 arguments, but got 2.",
+      "Expected 1 arguments, but got 2."
+    ]
+  },
+  "Module '\"./FEMTypes\"'": {
+    "count": 7,
+    "examples": [
+      "Module '\"./FEMTypes\"' has no exported member 'FEMSolveResult'.",
+      "Module '\"./FEMTypes\"' has no exported member 'ElementNonlinearResult'.",
+      "Module '\"./FEMTypes\"' has no exported member 'FEMDOFManager'."
+    ]
+  },
+  "Module '\"./SpatialMaterialField\"'": {
+    "count": 2,
+    "examples": [
+      "Module '\"./SpatialMaterialField\"' has no exported member 'PropertyName'.",
+      "Module '\"./SpatialMaterialField\"' has no exported member 'SpatialDomain'."
+    ]
+  },
+  "Property 'canonicalGeometryId'": {
+    "count": 4,
+    "examples": [
+      "Property 'canonicalGeometryId' does not exist on type 'SpatialMaterialField'.",
+      "Property 'canonicalGeometryId' does not exist on type 'SpatialMaterialField'.",
+      "Property 'canonicalGeometryId' does not exist on type 'SpatialMaterialField'."
+    ]
+  },
+  "Property 'canonicalRevisionId'": {
+    "count": 4,
+    "examples": [
+      "Property 'canonicalRevisionId' does not exist on type 'SpatialMaterialField'.",
+      "Property 'canonicalRevisionId' does not exist on type 'SpatialMaterialField'.",
+      "Property 'canonicalRevisionId' does not exist on type 'SpatialMaterialField'."
+    ]
+  },
+  "Property 'domain'": {
+    "count": 10,
+    "examples": [
+      "Property 'domain' does not exist on type 'SpatialMaterialField'.",
+      "Property 'domain' does not exist on type 'SpatialMaterialField'.",
+      "Property 'domain' does not exist on type 'SpatialMaterialField'."
+    ]
+  },
+  "Expected 5-7": {
+    "count": 1,
+    "examples": [
+      "Expected 5-7 arguments, but got 8."
+    ]
+  },
+  "Property 'coordinateSystem'": {
+    "count": 1,
+    "examples": [
+      "Property 'coordinateSystem' does not exist on type 'SpatialMaterialField'."
+    ]
+  },
+  "Property 'alpha'": {
+    "count": 2,
+    "examples": [
+      "Property 'alpha' does not exist on type 'IntegrationPointState'.",
+      "Property 'alpha' does not exist on type 'IntegrationPointState'."
+    ]
+  },
+  "Property 'measurementDatasetId'": {
+    "count": 3,
+    "examples": [
+      "Property 'measurementDatasetId' does not exist on type 'AsBuiltMaterialState'.",
+      "Property 'measurementDatasetId' does not exist on type 'AsBuiltMaterialState'.",
+      "Property 'measurementDatasetId' does not exist on type 'AsBuiltMaterialState'."
+    ]
+  },
+  "Property 'uncertaintyMap'": {
+    "count": 1,
+    "examples": [
+      "Property 'uncertaintyMap' does not exist on type 'AsBuiltMaterialState'."
+    ]
+  },
+  "Property 'conformanceDecision'": {
+    "count": 4,
+    "examples": [
+      "Property 'conformanceDecision' does not exist on type 'SpatialMaterialDeviationResult'.",
+      "Property 'conformanceDecision' does not exist on type 'SpatialMaterialDeviationResult'.",
+      "Property 'conformanceDecision' does not exist on type 'SpatialMaterialDeviationResult'."
+    ]
+  },
+  "Property 'propertyName'": {
+    "count": 2,
+    "examples": [
+      "Property 'propertyName' does not exist on type 'SpatialMaterialField'.",
+      "Property 'propertyName' does not exist on type 'SpatialMaterialField'."
+    ]
+  },
+  "Property 'baseValue'": {
+    "count": 1,
+    "examples": [
+      "Property 'baseValue' does not exist on type 'SpatialMaterialField'."
+    ]
+  },
+  "Property 'evaluationMode'": {
+    "count": 1,
+    "examples": [
+      "Property 'evaluationMode' does not exist on type 'SpatialMaterialField'."
+    ]
+  },
+  "Property 'revision'": {
+    "count": 2,
+    "examples": [
+      "Property 'revision' does not exist on type 'SpatialMaterialField'. Did you mean 'revisionId'?",
+      "Property 'revision' does not exist on type 'SpatialMaterialField'. Did you mean 'revisionId'?"
+    ]
+  },
+  "Property 'computeHash'": {
+    "count": 2,
+    "examples": [
+      "Property 'computeHash' does not exist on type 'SpatialMaterialField'.",
+      "Property 'computeHash' does not exist on type 'SpatialMaterialField'."
+    ]
+  },
+  "Property 'measurementMethodId'": {
+    "count": 1,
+    "examples": [
+      "Property 'measurementMethodId' does not exist on type 'AsBuiltMaterialState'."
+    ]
+  },
+  "Property 'reconstructedFields'": {
+    "count": 1,
+    "examples": [
+      "Property 'reconstructedFields' does not exist on type 'AsBuiltMaterialState'."
+    ]
+  },
+  "Property 'deviationId'": {
+    "count": 1,
+    "examples": [
+      "Property 'deviationId' does not exist on type 'SpatialMaterialDeviationResult'."
+    ]
+  },
+  "Type '\"dimensionless": {
+    "count": 1,
+    "examples": [
+      "Type '\"dimensionless (Green-Lagrange)\"' is not assignable to type '\"dimensionless\"'."
+    ]
+  },
+  "Type '\"MPa": {
+    "count": 1,
+    "examples": [
+      "Type '\"MPa (Cauchy)\"' is not assignable to type '\"MPa\" | \"Pa\"'."
+    ]
+  },
+  "No overload": {
+    "count": 12,
+    "examples": [
+      "No overload matches this call.\n  Overload 1 of 4, '(iterable?: Iterable<readonly [string, FEMElement]> | null | undefined): Map<string, FEMElement>', gave the following error.\n    Argument of type '[string, { elementId: string; formulationId: string; nodeIds: string[]; materialId: string; }][]' is not assignable to parameter of type 'Iterable<readonly [string, FEMElement]>'.\n      The types returned by '[Symbol.iterator]().next(...)' are incompatible between these types.\n        Type 'IteratorResult<[string, { elementId: string; formulationId: string; nodeIds: string[]; materialId: string; }], undefined>' is not assignable to type 'IteratorResult<readonly [string, FEMElement], any>'.\n          Type 'IteratorYieldResult<[string, { elementId: string; formulationId: string; nodeIds: string[]; materialId: string; }]>' is not assignable to type 'IteratorResult<readonly [string, FEMElement], any>'.\n            Type 'IteratorYieldResult<[string, { elementId: string; formulationId: string; nodeIds: string[]; materialId: string; }]>' is not assignable to type 'IteratorYieldResult<readonly [string, FEMElement]>'.\n              Type '[string, { elementId: string; formulationId: string; nodeIds: string[]; materialId: string; }]' is not assignable to type 'readonly [string, FEMElement]'.\n                Type at position 1 in source is not compatible with type at position 1 in target.\n                  Property 'sectionId' is missing in type '{ elementId: string; formulationId: string; nodeIds: string[]; materialId: string; }' but required in type 'FEMElement'.\n  Overload 2 of 4, '(entries?: readonly (readonly [string, FEMElement])[] | null | undefined): Map<string, FEMElement>', gave the following error.\n    Property 'sectionId' is missing in type '{ elementId: string; formulationId: string; nodeIds: string[]; materialId: string; }' but required in type 'FEMElement'.",
+      "No overload matches this call.\n  Overload 1 of 4, '(iterable?: Iterable<readonly [string, FEMMaterial]> | null | undefined): Map<string, FEMMaterial>', gave the following error.\n    Argument of type '[string, { materialId: string; name: string; E: number; nu: number; density: number; }][]' is not assignable to parameter of type 'Iterable<readonly [string, FEMMaterial]>'.\n      The types returned by '[Symbol.iterator]().next(...)' are incompatible between these types.\n        Type 'IteratorResult<[string, { materialId: string; name: string; E: number; nu: number; density: number; }], undefined>' is not assignable to type 'IteratorResult<readonly [string, FEMMaterial], any>'.\n          Type 'IteratorYieldResult<[string, { materialId: string; name: string; E: number; nu: number; density: number; }]>' is not assignable to type 'IteratorResult<readonly [string, FEMMaterial], any>'.\n            Type 'IteratorYieldResult<[string, { materialId: string; name: string; E: number; nu: number; density: number; }]>' is not assignable to type 'IteratorYieldResult<readonly [string, FEMMaterial]>'.\n              Type '[string, { materialId: string; name: string; E: number; nu: number; density: number; }]' is not assignable to type 'readonly [string, FEMMaterial]'.\n                Type at position 1 in source is not compatible with type at position 1 in target.\n                  Object literal may only specify known properties, and 'name' does not exist in type 'FEMMaterial'.\n  Overload 2 of 4, '(entries?: readonly (readonly [string, FEMMaterial])[] | null | undefined): Map<string, FEMMaterial>', gave the following error.\n    Object literal may only specify known properties, and 'name' does not exist in type 'FEMMaterial'.",
+      "No overload matches this call.\n  Overload 1 of 4, '(iterable?: Iterable<readonly [string, PropertySpec]> | null | undefined): Map<string, PropertySpec>', gave the following error.\n    Argument of type '[string, { propertyName: string; evaluationType: \"ANALYTIC\"; expression: (p: { x: number; y: number; z: number; }) => number; bounds: { lower: number; upper: number; }; valueCategory: string; unit: string; }][]' is not assignable to parameter of type 'Iterable<readonly [string, PropertySpec]>'.\n      The types returned by '[Symbol.iterator]().next(...)' are incompatible between these types.\n        Type 'IteratorResult<[string, { propertyName: string; evaluationType: \"ANALYTIC\"; expression: (p: { x: number; y: number; z: number; }) => number; bounds: { lower: number; upper: number; }; valueCategory: string; unit: string; }], undefined>' is not assignable to type 'IteratorResult<readonly [string, PropertySpec], any>'.\n          Type 'IteratorYieldResult<[string, { propertyName: string; evaluationType: \"ANALYTIC\"; expression: (p: { x: number; y: number; z: number; }) => number; bounds: { lower: number; upper: number; }; valueCategory: string; unit: string; }]>' is not assignable to type 'IteratorResult<readonly [string, PropertySpec], any>'.\n            Type 'IteratorYieldResult<[string, { propertyName: string; evaluationType: \"ANALYTIC\"; expression: (p: { x: number; y: number; z: number; }) => number; bounds: { lower: number; upper: number; }; valueCategory: string; unit: string; }]>' is not assignable to type 'IteratorYieldResult<readonly [string, PropertySpec]>'.\n              Type '[string, { propertyName: string; evaluationType: \"ANALYTIC\"; expression: (p: { x: number; y: number; z: number; }) => number; bounds: { lower: number; upper: number; }; valueCategory: string; unit: string; }]' is not assignable to type 'readonly [string, PropertySpec]'.\n                Type at position 1 in source is not compatible with type at position 1 in target.\n                  Object literal may only specify known properties, and 'valueCategory' does not exist in type 'PropertySpec'.\n  Overload 2 of 4, '(entries?: readonly (readonly [string, PropertySpec])[] | null | undefined): Map<string, PropertySpec>', gave the following error.\n    Type '\"ANALYTIC\"' is not assignable to type '\"CONSTANT\" | \"INTERPOLATED\" | \"ANALYTIC_EXPRESSION\" | \"TABULAR\"'."
+    ]
+  },
+  "Property 'yieldFlag'": {
+    "count": 2,
+    "examples": [
+      "Property 'yieldFlag' does not exist on type 'IntegrationPointState'.",
+      "Property 'yieldFlag' does not exist on type 'IntegrationPointState'."
+    ]
+  },
+  "'uA' is": {
+    "count": 1,
+    "examples": [
+      "'uA' is possibly 'undefined'."
+    ]
+  },
+  "'uB' is": {
+    "count": 1,
+    "examples": [
+      "'uB' is possibly 'undefined'."
+    ]
+  },
+  "'uClassical' is": {
+    "count": 1,
+    "examples": [
+      "'uClassical' is possibly 'undefined'."
+    ]
+  },
+  "'uBound' is": {
+    "count": 1,
+    "examples": [
+      "'uBound' is possibly 'undefined'."
+    ]
+  },
+  "Type '\"LPBF\"'": {
+    "count": 1,
+    "examples": [
+      "Type '\"LPBF\"' is not assignable to type 'ProcessType'."
+    ]
+  },
+  "Parameter 'coords'": {
+    "count": 1,
+    "examples": [
+      "Parameter 'coords' implicitly has an 'any' type."
+    ]
+  },
+  "Property 'cloneWithRevision'": {
+    "count": 1,
+    "examples": [
+      "Property 'cloneWithRevision' does not exist on type 'SpatialMaterialField'."
+    ]
+  },
+  "Property 'formulationVersion'": {
+    "count": 9,
+    "examples": [
+      "Property 'formulationVersion' does not exist on type 'typeof BAR2Element'.",
+      "Property 'formulationVersion' does not exist on type 'typeof TRI3Element'.",
+      "Property 'formulationVersion' does not exist on type 'typeof QUAD4Element'."
+    ]
+  },
+  "Property 'Ke'": {
+    "count": 2,
+    "examples": [
+      "Property 'Ke' does not exist on type '{ Ke: Matrix; stiffnessMatrix: Matrix; } | ElementComputedStiffness'.\n  Property 'Ke' does not exist on type 'ElementComputedStiffness'.",
+      "Property 'Ke' does not exist on type '{ Ke: Matrix; stiffnessMatrix: Matrix; } | ElementComputedStiffness'.\n  Property 'Ke' does not exist on type 'ElementComputedStiffness'."
+    ]
+  },
+  "Property 'matrixHash'": {
+    "count": 2,
+    "examples": [
+      "Property 'matrixHash' does not exist on type '{ Ke: Matrix; stiffnessMatrix: Matrix; } | ElementComputedStiffness'.\n  Property 'matrixHash' does not exist on type '{ Ke: Matrix; stiffnessMatrix: Matrix; }'.",
+      "Property 'matrixHash' does not exist on type '{ Ke: Matrix; stiffnessMatrix: Matrix; } | ElementComputedStiffness'.\n  Property 'matrixHash' does not exist on type '{ Ke: Matrix; stiffnessMatrix: Matrix; }'."
+    ]
+  },
+  "Expected 3": {
+    "count": 1,
+    "examples": [
+      "Expected 3 arguments, but got 4."
+    ]
+  },
+  "'res.hotspots' is": {
+    "count": 1,
+    "examples": [
+      "'res.hotspots' is possibly 'undefined'."
+    ]
+  },
+  "'engineResult.cycles' is": {
+    "count": 1,
+    "examples": [
+      "'engineResult.cycles' is possibly 'undefined'."
+    ]
+  },
+  "'result.hotspots' is": {
+    "count": 2,
+    "examples": [
+      "'result.hotspots' is possibly 'undefined'.",
+      "'result.hotspots' is possibly 'undefined'."
+    ]
+  },
+  "Expected 0": {
+    "count": 3,
+    "examples": [
+      "Expected 0 arguments, but got 1.",
+      "Expected 0 arguments, but got 2.",
+      "Expected 0 arguments, but got 1."
+    ]
+  },
+  "Property 'evaluateDefinitionAt'": {
+    "count": 1,
+    "examples": [
+      "Property 'evaluateDefinitionAt' does not exist on type 'TemperatureDependentMaterial'."
+    ]
+  },
+  "Property 'evaluateStrainRateResponse'": {
+    "count": 1,
+    "examples": [
+      "Property 'evaluateStrainRateResponse' does not exist on type 'typeof StrainRateModelInterface'."
+    ]
+  },
+  "Type '\"POLYMER\"'": {
+    "count": 1,
+    "examples": [
+      "Type '\"POLYMER\"' is not assignable to type '\"TITANIUM\" | \"ALUMINUM\" | \"STEEL\" | \"POLYMERS\" | \"CERAMICS\" | \"COMPOSITES\" | \"CONCRETE\"'. Did you mean '\"POLYMERS\"'?"
+    ]
+  },
+  "Property 'boundaryTags'": {
+    "count": 2,
+    "examples": [
+      "Property 'boundaryTags' does not exist on type 'FEMNode'.",
+      "Property 'boundaryTags' does not exist on type 'FEMNode'."
+    ]
+  },
+  "Property 'regionIds'": {
+    "count": 3,
+    "examples": [
+      "Property 'regionIds' does not exist on type 'FEMNode'.",
+      "Property 'regionIds' does not exist on type 'FEMNode'.",
+      "Property 'regionIds' does not exist on type 'FEMNode'."
+    ]
+  },
+  "Property 'calculateHashes'": {
+    "count": 1,
+    "examples": [
+      "Property 'calculateHashes' does not exist on type 'typeof FEMMeshDeterminism'."
+    ]
+  },
+  "Variable 'freeIndices'": {
+    "count": 2,
+    "examples": [
+      "Variable 'freeIndices' implicitly has type 'any[]' in some locations where its type cannot be determined.",
+      "Variable 'freeIndices' implicitly has an 'any[]' type."
+    ]
+  },
+  "Property 'equivalentPlasticStrain'": {
+    "count": 2,
+    "examples": [
+      "Property 'equivalentPlasticStrain' does not exist on type 'never'.",
+      "Property 'equivalentPlasticStrain' does not exist on type 'never'."
+    ]
+  },
+  "Property 'apply'": {
+    "count": 4,
+    "examples": [
+      "Property 'apply' does not exist on type 'IPreconditioner'.",
+      "Property 'apply' does not exist on type 'IPreconditioner'.",
+      "Property 'apply' does not exist on type 'IPreconditioner'."
+    ]
+  },
+  "Parameter 'id'": {
+    "count": 8,
+    "examples": [
+      "Parameter 'id' implicitly has an 'any' type.",
+      "Parameter 'id' implicitly has an 'any' type.",
+      "Parameter 'id' implicitly has an 'any' type."
+    ]
+  },
+  "Module '\"./ParallelismBoundary\"'": {
+    "count": 1,
+    "examples": [
+      "Module '\"./ParallelismBoundary\"' has no exported member 'ParallelismVerdict'."
+    ]
+  },
+  "Property 'inspectBackend'": {
+    "count": 3,
+    "examples": [
+      "Property 'inspectBackend' does not exist on type 'typeof ParallelismBoundary'.",
+      "Property 'inspectBackend' does not exist on type 'typeof ParallelismBoundary'.",
+      "Property 'inspectBackend' does not exist on type 'typeof ParallelismBoundary'."
+    ]
+  },
+  "Property 'reserve'": {
+    "count": 1,
+    "examples": [
+      "Property 'reserve' does not exist on type 'COOBuilder'."
+    ]
+  },
+  "Property 'boundingBox'": {
+    "count": 1,
+    "examples": [
+      "Property 'boundingBox' does not exist on type '{ volume: number; surfaceArea: number; }'."
+    ]
+  },
+  "Property 'getExports'": {
+    "count": 2,
+    "examples": [
+      "Property 'getExports' does not exist on type 'typeof WasmModuleLoader'.",
+      "Property 'getExports' does not exist on type 'typeof WasmModuleLoader'."
+    ]
+  },
+  "Property 'allocateCsrInWasm'": {
+    "count": 1,
+    "examples": [
+      "Property 'allocateCsrInWasm' does not exist on type 'typeof WasmModuleLoader'."
+    ]
+  },
+  "Module '\"../kinematics/types\"'": {
+    "count": 1,
+    "examples": [
+      "Module '\"../kinematics/types\"' has no exported member 'MachineDefinition'."
+    ]
+  },
+  "'p0.rotaryAxes.a' is": {
+    "count": 1,
+    "examples": [
+      "'p0.rotaryAxes.a' is possibly 'undefined'."
+    ]
+  },
+  "'p0.rotaryAxes.b' is": {
+    "count": 1,
+    "examples": [
+      "'p0.rotaryAxes.b' is possibly 'undefined'."
+    ]
+  },
+  "'p0.rotaryAxes.c' is": {
+    "count": 1,
+    "examples": [
+      "'p0.rotaryAxes.c' is possibly 'undefined'."
+    ]
+  },
+  "Property 'u'": {
+    "count": 1,
+    "examples": [
+      "Property 'u' does not exist on type 'ControlPoint3D'."
+    ]
+  },
+  "Property 'v'": {
+    "count": 1,
+    "examples": [
+      "Property 'v' does not exist on type 'ControlPoint3D'."
+    ]
+  },
+  "Property 'solutionHash'": {
+    "count": 2,
+    "examples": [
+      "Property 'solutionHash' does not exist on type 'CfdSolution3D'.",
+      "Property 'solutionHash' does not exist on type 'CfdSolution3D'."
+    ]
+  },
+  "Property 'status'": {
+    "count": 2,
+    "examples": [
+      "Property 'status' does not exist on type 'CfdSolution3D'.",
+      "Property 'status' does not exist on type 'CfdSolution3D'."
+    ]
+  },
+  "Type 'ProvenanceIntegrityReport": {
+    "count": 2,
+    "examples": [
+      "Type 'ProvenanceIntegrityReport | undefined' is not assignable to type '{ valid: boolean; cadRevisionHash?: string | undefined; canonicalGeometryHash?: string | undefined; meshHash?: string | undefined; } | undefined'.\n  Type 'ProvenanceIntegrityReport' is not assignable to type '{ valid: boolean; cadRevisionHash?: string | undefined; canonicalGeometryHash?: string | undefined; meshHash?: string | undefined; }'.\n    Types of property 'cadRevisionHash' are incompatible.\n      Type 'string | number' is not assignable to type 'string | undefined'.\n        Type 'number' is not assignable to type 'string'.",
+      "Type 'ProvenanceIntegrityReport | undefined' is not assignable to type '{ valid: boolean; cadRevisionHash?: string | undefined; canonicalGeometryHash?: string | undefined; meshHash?: string | undefined; } | undefined'.\n  Type 'ProvenanceIntegrityReport' is not assignable to type '{ valid: boolean; cadRevisionHash?: string | undefined; canonicalGeometryHash?: string | undefined; meshHash?: string | undefined; }'.\n    Types of property 'cadRevisionHash' are incompatible.\n      Type 'string | number' is not assignable to type 'string | undefined'.\n        Type 'number' is not assignable to type 'string'."
+    ]
+  },
+  "Property 'derivedArtifactBinding'": {
+    "count": 2,
+    "examples": [
+      "Property 'derivedArtifactBinding' does not exist on type 'CfdSolution3D'.",
+      "Property 'derivedArtifactBinding' does not exist on type 'CfdSolution3D'."
+    ]
+  },
+  "Type '\"CFD_RESULT_012\"'": {
+    "count": 1,
+    "examples": [
+      "Type '\"CFD_RESULT_012\"' is not assignable to type 'DerivedArtifactKind'."
+    ]
+  },
+  "Module '\"../SimulationEngine\"'": {
+    "count": 1,
+    "examples": [
+      "Module '\"../SimulationEngine\"' declares 'SimulationScenario' locally, but it is not exported."
+    ]
+  },
+  "'result.document.features' is": {
+    "count": 1,
+    "examples": [
+      "'result.document.features' is possibly 'undefined'."
+    ]
+  },
+  "'result.document.sketches' is": {
+    "count": 1,
+    "examples": [
+      "'result.document.sketches' is possibly 'undefined'."
+    ]
+  },
+  "Property 'degreesOfFreedom'": {
+    "count": 1,
+    "examples": [
+      "Property 'degreesOfFreedom' does not exist on type 'SketchDOFReport'. Did you mean 'totalDegreesOfFreedom'?"
+    ]
+  },
+  "'doc.sketches' is": {
+    "count": 1,
+    "examples": [
+      "'doc.sketches' is possibly 'undefined'."
+    ]
+  },
+  "Type 'Sketch[]": {
+    "count": 1,
+    "examples": [
+      "Type 'Sketch[] | undefined' must have a '[Symbol.iterator]()' method that returns an iterator."
+    ]
+  },
+  "Module '\"./ConstraintSolver\"'": {
+    "count": 1,
+    "examples": [
+      "Module '\"./ConstraintSolver\"' has no exported member 'SolverOptions'."
+    ]
+  },
+  "'docRev1.features' is": {
+    "count": 1,
+    "examples": [
+      "'docRev1.features' is possibly 'undefined'."
+    ]
+  },
+  "'docRev1.sketches' is": {
+    "count": 1,
+    "examples": [
+      "'docRev1.sketches' is possibly 'undefined'."
+    ]
+  },
+  "'docRev2.parameters' is": {
+    "count": 1,
+    "examples": [
+      "'docRev2.parameters' is possibly 'undefined'."
+    ]
+  },
+  "'docRev2.features' is": {
+    "count": 1,
+    "examples": [
+      "'docRev2.features' is possibly 'undefined'."
+    ]
+  },
+  "'extrudeBaseFeat.parameters' is": {
+    "count": 1,
+    "examples": [
+      "'extrudeBaseFeat.parameters' is possibly 'undefined'."
+    ]
+  },
+  "Module '\"../TopologyAdversarialRebindingSuite\"'": {
+    "count": 1,
+    "examples": [
+      "Module '\"../TopologyAdversarialRebindingSuite\"' has no exported member 'AdversarialProofExecutionResult'."
+    ]
+  },
+  "Type 'number'": {
+    "count": 1,
+    "examples": [
+      "Type 'number' is not assignable to type 'Orientation'."
+    ]
+  },
+  "Type '\"MILLING_3AXIS\"'": {
+    "count": 1,
+    "examples": [
+      "Type '\"MILLING_3AXIS\"' is not assignable to type 'ProcessType'. Did you mean 'ProcessType.MILLING_5AXIS'?"
+    ]
+  }
+}

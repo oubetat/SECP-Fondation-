@@ -52,10 +52,19 @@ export class GearPairKinematicsEngine {
     }
 
     // 4. Center Distance Calculation (ISO 21771)
+    const pitch1 = g1.pitchDiameterMm ?? (g1.geometry?.pitchDiameter || g1.module * g1.teethCount);
+    const pitch2 = g2.pitchDiameterMm ?? (g2.geometry?.pitchDiameter || g2.module * g2.teethCount);
+    const tip1 = g1.tipDiameterMm ?? (g1.geometry?.tipDiameter || pitch1 + 2 * g1.module);
+    const tip2 = g2.tipDiameterMm ?? (g2.geometry?.tipDiameter || pitch2 + 2 * g2.module);
+    const base1 = g1.baseDiameterMm ?? (g1.geometry?.baseDiameter || pitch1 * Math.cos((g1.pressureAngleDeg * Math.PI) / 180));
+    const base2 = g2.baseDiameterMm ?? (g2.geometry?.baseDiameter || pitch2 * Math.cos((g2.pressureAngleDeg * Math.PI) / 180));
+    const root1 = g1.rootDiameterMm ?? (g1.geometry?.rootDiameter || pitch1 - 2.5 * g1.module);
+    const root2 = g2.rootDiameterMm ?? (g2.geometry?.rootDiameter || pitch2 - 2.5 * g2.module);
+
     const isInternal = g2.type === 'SPUR_INTERNAL' || g2.type === 'HELICAL_INTERNAL';
     const standardCenterDistance = isInternal
-      ? Math.abs(g2.pitchDiameterMm - g1.pitchDiameterMm) / 2
-      : (g1.pitchDiameterMm + g2.pitchDiameterMm) / 2;
+      ? Math.abs(pitch2 - pitch1) / 2
+      : (pitch1 + pitch2) / 2;
 
     const actualCenterDistance = options.centerDistanceOverrideMm || standardCenterDistance;
 
@@ -68,12 +77,12 @@ export class GearPairKinematicsEngine {
     const wheelDir: 'CW' | 'CCW' = isInternal ? 'CW' : 'CCW';
 
     // 6. Contact Ratio (ISO 21771 Profile Contact Ratio epsilon_alpha)
-    const ra1 = g1.tipDiameterMm / 2;
-    const rb1 = g1.baseDiameterMm / 2;
-    const ra2 = g2.tipDiameterMm / 2;
-    const rb2 = g2.baseDiameterMm / 2;
-    const alphaTRad = (g1.transversePressureAngleDeg * Math.PI) / 180;
-    const pbMm = g1.basePitchMm;
+    const ra1 = tip1 / 2;
+    const rb1 = base1 / 2;
+    const ra2 = tip2 / 2;
+    const rb2 = base2 / 2;
+    const alphaTRad = ((g1.transversePressureAngleDeg ?? g1.pressureAngleDeg) * Math.PI) / 180;
+    const pbMm = g1.basePitchMm ?? (Math.PI * g1.module * Math.cos((g1.pressureAngleDeg * Math.PI) / 180));
 
     // Contact length on line of action
     const gAlpha = Math.sqrt(Math.max(ra1 * ra1 - rb1 * rb1, 0)) +
@@ -93,9 +102,9 @@ export class GearPairKinematicsEngine {
     }
 
     // 7. Clearance & Backlash Verification
-    const rootClearance1 = Math.abs(actualCenterDistance - (g1.pitchDiameterMm / 2 + g2.rootDiameterMm / 2));
+    const rootClearance1 = Math.abs(actualCenterDistance - (pitch1 / 2 + root2 / 2));
     const minClearance = 0.25 * g1.module;
-    const operatingBacklash = options.backlashAllowanceMm || (g1.backlashMm + g2.backlashMm);
+    const operatingBacklash = options.backlashAllowanceMm || ((g1.backlashMm ?? 0.05) + (g2.backlashMm ?? 0.05));
 
     // 8. Power & Torque Transmission
     const pKw = options.inputPowerKw || 15;
@@ -103,7 +112,7 @@ export class GearPairKinematicsEngine {
     const meshEfficiency = 0.985;
     const outputTorqueNm = inputTorqueNm * gearRatio * meshEfficiency;
 
-    const hasTipInterference = actualCenterDistance < (g1.rootDiameterMm + g2.rootDiameterMm) / 2;
+    const hasTipInterference = actualCenterDistance < (root1 + root2) / 2;
     const hasInterference = moduleDiff > 0.001 || hasTipInterference;
     const meshingStatus = moduleDiff > 0.001
       ? 'MODULE_MISMATCH'
@@ -117,7 +126,7 @@ export class GearPairKinematicsEngine {
       pinionGearId: g1.gearId,
       wheelGearId: g2.gearId,
       nominalCenterDistanceMm: Math.round(actualCenterDistance * 1000) / 1000,
-      operatingPressureAngleDeg: g1.transversePressureAngleDeg,
+      operatingPressureAngleDeg: g1.transversePressureAngleDeg ?? g1.pressureAngleDeg,
       gearRatio: Math.round(gearRatio * 1000) / 1000,
       transmissionRatio: Math.round(transmissionRatio * 1000) / 1000,
       contactRatioProfileEpsilonAlpha: Math.round(contactRatioProfile * 100) / 100,

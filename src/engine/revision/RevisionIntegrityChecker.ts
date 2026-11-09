@@ -7,6 +7,7 @@ export interface IntegrityError {
 
 export interface IntegrityReport {
   isValid: boolean;
+  health: 'HEALTHY' | 'WARNING' | 'BROKEN' | 'CORRUPTED';
   errors: IntegrityError[];
 }
 
@@ -33,8 +34,14 @@ export class RevisionIntegrityChecker {
       });
     }
 
+    let health: 'HEALTHY' | 'WARNING' | 'BROKEN' | 'CORRUPTED' = 'HEALTHY';
+    if (errors.length > 0) {
+      health = errors.some(e => e.field === 'revisionHash') ? 'CORRUPTED' : 'BROKEN';
+    }
+
     return {
       isValid: errors.length === 0,
+      health,
       errors
     };
   }

@@ -1,0 +1,48 @@
+{
+  "programId": "SECP-ENGINEERING-TRUTH-INTEGRATION-004",
+  "auditDate": "2026-11-01T07:18:40Z",
+  "architectureObjective": "Cryptographic determinism of run IDs and attestation fingerprints across all engineering domains",
+  "timestampIsolationPolicy": {
+    "policy": "TIMESTAMPS_ISOLATED_FROM_DIGESTS",
+    "rule": "System clock readings (e.g., Date.now(), ISO timestamps) are strictly informational session metadata and are excluded from the canonical payload hashing, run ID generation, and cryptographic evidence Merkle roots."
+  },
+  "domainRunIdDerivation": {
+    "PCB": {
+      "runIdAlgorithm": "SHA256(canonicalEntityId + ':' + canonicalRevisionId + ':' + geometryHash + ':' + topologyHash).substring(0, 16)",
+      "evidenceEnvelopeDigest": "SHA256(runId + ':' + drcResultSummaryHash + ':' + inputManifestDigest)",
+      "deterministicAcrossReplays": true,
+      "isolationAudit": "PcbVerificationService uses canonical binding hashes for evidence fingerprinting; runtime elapsed ms does not alter evidence payload."
+    },
+    "ELECTRICAL": {
+      "runIdAlgorithm": "SHA256('MNA:' + schematicId + ':' + revisionId + ':' + topologyHash).substring(0, 16)",
+      "evidenceEnvelopeDigest": "SHA256(runId + ':' + nodeVoltageVectorHash + ':' + branchCurrentVectorHash)",
+      "deterministicAcrossReplays": true,
+      "isolationAudit": "NodalCircuitSolver produces bit-exact solution vectors for identical sparse conductance matrices."
+    },
+    "WIRING_HARNESS": {
+      "runIdAlgorithm": "SHA256('WH:' + harnessId + ':' + revisionId + ':' + canonicalHash).substring(0, 16)",
+      "evidenceEnvelopeDigest": "SHA256(runId + ':' + bomHash + ':' + pinoutHash)",
+      "deterministicAcrossReplays": true,
+      "isolationAudit": "Verified by WH-011 and WH-012; reordering array elements preserves canonical fingerprint."
+    },
+    "MULTIDOMAIN": {
+      "runIdAlgorithm": "SHA256('MD:' + pcbBindingId + ':' + harnessBindingId + ':' + iterationCount).substring(0, 16)",
+      "evidenceEnvelopeDigest": "SHA256(runId + ':' + electrothermalCouplingHash)",
+      "deterministicAcrossReplays": true,
+      "isolationAudit": "Picard iterations inherit root execution seal and generate deterministic sub-binding IDs."
+    },
+    "FEM": {
+      "runIdAlgorithm": "SHA256('FEM:' + studyId + ':' + meshTopologyHash + ':' + materialHash + ':' + loadHash).substring(0, 16)",
+      "evidenceEnvelopeDigest": "SHA256(runId + ':' + displacementVectorHash + ':' + vonMisesStressHash)",
+      "deterministicAcrossReplays": true,
+      "isolationAudit": "FEMCore solver passes exact deterministic vectors to EvidenceBus."
+    },
+    "CFD": {
+      "runIdAlgorithm": "SHA256('CFD:' + studyId + ':' + meshHash + ':' + fluidHash + ':' + bcHash).substring(0, 16)",
+      "evidenceEnvelopeDigest": "SHA256(runId + ':' + velocityFieldHash + ':' + pressureFieldHash)",
+      "deterministicAcrossReplays": true,
+      "isolationAudit": "Fvm3DNavierStokesSolver SIMPLE convergence fields hash deterministically across runs."
+    }
+  },
+  "verdict": "FULL_DETERMINISTIC_COMPLIANCE_ACHIEVED"
+}

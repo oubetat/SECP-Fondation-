@@ -1,0 +1,83 @@
+{
+  "audit_id": "SECP-SECURITY-009",
+  "provenance": {
+    "methodology": "AST Traversal of CallExpressions, PropertyAccessExpressions, and Identifiers",
+    "timestamp": "2026-11-02T07:50:35.704Z"
+  },
+  "productionSealCallpaths": [
+    {
+      "file": "src/engine/crossdomain/MultidomainPcbIntegrationEngine.ts",
+      "line": 449,
+      "column": 5,
+      "caller": "verifyElectricalTraceDrop",
+      "callee": "CanonicalDomainBindingEngine.sealBinding",
+      "capabilityType": "UNRESOLVED_EXPRESSION",
+      "isAliased": false,
+      "isDynamic": false,
+      "status": "UNRESOLVED_UNKNOWN",
+      "rationale": "Complex capability expression 'this.sealingCapability' requires runtime verification."
+    },
+    {
+      "file": "src/engine/crossdomain/MultidomainPcbIntegrationEngine.ts",
+      "line": 554,
+      "column": 5,
+      "caller": "verifyThermalDissipation",
+      "callee": "CanonicalDomainBindingEngine.sealBinding",
+      "capabilityType": "UNRESOLVED_EXPRESSION",
+      "isAliased": false,
+      "isDynamic": false,
+      "status": "UNRESOLVED_UNKNOWN",
+      "rationale": "Complex capability expression 'this.sealingCapability' requires runtime verification."
+    },
+    {
+      "file": "src/engine/crossdomain/MultidomainPcbIntegrationEngine.ts",
+      "line": 673,
+      "column": 5,
+      "caller": "verifyCoupledElectrothermal",
+      "callee": "CanonicalDomainBindingEngine.sealBinding",
+      "capabilityType": "UNRESOLVED_EXPRESSION",
+      "isAliased": false,
+      "isDynamic": false,
+      "status": "UNRESOLVED_UNKNOWN",
+      "rationale": "Complex capability expression 'MultidomainPcbIntegrationEngine.sealingCapability' requires runtime verification."
+    },
+    {
+      "file": "src/engine/engineeringCore/ElectrothermalSolver.ts",
+      "line": 233,
+      "column": 7,
+      "caller": "solve",
+      "callee": "CanonicalDomainBindingEngine.sealBinding",
+      "capabilityType": "UNRESOLVED_EXPRESSION",
+      "isAliased": false,
+      "isDynamic": false,
+      "status": "UNRESOLVED_UNKNOWN",
+      "rationale": "Complex capability expression 'ElectrothermalSolver.sealingCapability' requires runtime verification."
+    }
+  ],
+  "pipelineStages": [
+    {
+      "stage": "Caller Invocation",
+      "description": "Production solver or engine triggers domain sealing"
+    },
+    {
+      "stage": "Capability Acquisition",
+      "description": "issueSealingCapability(context, domains) issues opaque SealingCapability with randomBytes UUID"
+    },
+    {
+      "stage": "Boot Gate Verification",
+      "description": "getAuthorityInitializationState() === INITIALIZED verified Fail-Closed"
+    },
+    {
+      "stage": "Metadata Integrity",
+      "description": "binding.domain, canonicalEntityId, and geometryHash presence verified"
+    },
+    {
+      "stage": "Identity & Domain Validation",
+      "description": "validateCapability checks instance reference equality (registered === capability) and domain match"
+    },
+    {
+      "stage": "HMAC Seal",
+      "description": "computeHMACSealToken computes SHA-256 HMAC binding seal"
+    }
+  ]
+}

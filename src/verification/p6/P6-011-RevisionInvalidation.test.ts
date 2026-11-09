@@ -41,20 +41,25 @@ describe('P6-011 — REVISION INVALIDATION', () => {
 
     const resultA = {
       resultId: 'RES-A', domain: 'CAD' as const, executionId: 'EXEC-A',
-      outputMetrics: { volume: evalA.metrics?.volume || 0, bRepHash: evalA.derivedArtifacts?.bRepHash || 'H' },
+      outputMetrics: { volume: (evalA as any).metrics?.volume || 0, bRepHash: evalA.derivedArtifacts?.bRepHash || 'H' },
       bRepHash: evalA.derivedArtifacts?.bRepHash || 'H', kernelVersion: '3.5.2', isFabricated: false
     };
 
     const evA = EvidenceIntegrityEngine.generateEvidence({
-      domain: 'CAD', documentId: docCAD.documentId, documentRevision: docCAD.revision, actionId: 'EVAL', executionId: resultA.executionId, capabilityId: 'BRep', featureId: 'EXT_1',
-      result: resultA, validation: { validationId: 'V1', passed: true, checks: [] }, verification: { verificationId: 'VR1', verifierIdentity: 'SYS', independentVerdict: 'PASS' }, sourceOrigin: 'REAL_KERNEL'
+      domain: 'CAD', documentId: docCAD.documentId, documentRevision: Number(docCAD.revision), actionId: 'EVAL', executionId: resultA.executionId, capabilityId: 'BRep', featureId: 'EXT_1',
+      result: resultA,
+      validation: { validationId: 'V1', passed: true, checks: [], resultId: 'RES-A', validatorVersion: '1', validatedAt: '' },
+      verification: { verificationId: 'VR1', verifierIdentity: 'SYS', independentVerdict: 'PASS', resultId: 'RES-A', validationId: 'V1', verifierVersion: '1', isSelfAttested: false, verificationChecks: [], verifiedAt: '' },
+      sourceOrigin: 'REAL_KERNEL'
     });
 
     expect(evA.state).toBe('VALID');
 
     // 2. CAD REV-B
     docCAD.revision = 2;
-    docCAD.features[0].parameters.depth = 20;
+    if (docCAD.features && docCAD.features[0]) {
+      docCAD.features[0].parameters!.depth = 20;
+    }
     const evalB = DocumentEvaluator.evaluate(docCAD);
     const artCAD_B = CanonicalPLMProjectionAdapter.projectFromDocument(docCAD, evalB);
     EngineeringPLMEngine.registerArtifact(artCAD_B);
@@ -66,13 +71,16 @@ describe('P6-011 — REVISION INVALIDATION', () => {
 
     const resultB = {
       resultId: 'RES-B', domain: 'CAD' as const, executionId: 'EXEC-B',
-      outputMetrics: { volume: evalB.metrics?.volume || 0, bRepHash: evalB.derivedArtifacts?.bRepHash || 'H' },
+      outputMetrics: { volume: (evalB as any).metrics?.volume || 0, bRepHash: evalB.derivedArtifacts?.bRepHash || 'H' },
       bRepHash: evalB.derivedArtifacts?.bRepHash || 'H', kernelVersion: '3.5.2', isFabricated: false
     };
 
     const evB = EvidenceIntegrityEngine.generateEvidence({
-      domain: 'CAD', documentId: docCAD.documentId, documentRevision: docCAD.revision, actionId: 'EVAL', executionId: resultB.executionId, capabilityId: 'BRep', featureId: 'EXT_1',
-      result: resultB, validation: { validationId: 'V2', passed: true, checks: [] }, verification: { verificationId: 'VR2', verifierIdentity: 'SYS', independentVerdict: 'PASS' }, sourceOrigin: 'REAL_KERNEL'
+      domain: 'CAD', documentId: docCAD.documentId, documentRevision: Number(docCAD.revision), actionId: 'EVAL', executionId: resultB.executionId, capabilityId: 'BRep', featureId: 'EXT_1',
+      result: resultB,
+      validation: { validationId: 'V2', passed: true, checks: [], resultId: 'RES-B', validatorVersion: '1', validatedAt: '' },
+      verification: { verificationId: 'VR2', verifierIdentity: 'SYS', independentVerdict: 'PASS', resultId: 'RES-B', validationId: 'V2', verifierVersion: '1', isSelfAttested: false, verificationChecks: [], verifiedAt: '' },
+      sourceOrigin: 'REAL_KERNEL'
     });
 
     // Historical REV-A evidence must remain immutable

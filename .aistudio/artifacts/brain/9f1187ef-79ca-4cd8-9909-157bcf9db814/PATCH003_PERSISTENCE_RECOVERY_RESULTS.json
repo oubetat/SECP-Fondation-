@@ -1,0 +1,26 @@
+{
+  "testCase": "POSITIVE_COLD_START_RECOVERY",
+  "status": "PASSED",
+  "timestamp": "2026-11-02T12:02:31.455Z",
+  "keyVersion": "SECP-V3-PROVENANCE-KEY-001",
+  "subprocessExitCode": 0,
+  "verificationOutput": {
+    "outcome": "PROVENANCE_VERIFIED",
+    "isValid": true,
+    "provenanceValid": true,
+    "numericalQualified": true,
+    "reconstructedChainDigest": "66320b43445f281adb8cf50a0a4bf2ae4842e1caa75802bed52ba0d8dae70588",
+    "reconstructionErrors": [],
+    "details": {
+      "canonicalRevisionVerified": true,
+      "geometryHashVerified": true,
+      "meshProvenanceVerified": true,
+      "authorityVerified": true,
+      "executionRecordVerified": true,
+      "contentDigestVerified": true,
+      "numericalQualificationStatus": "NUMERICAL_QUALIFIED",
+      "missingLinks": [],
+      "integrityViolations": []
+    }
+  }
+}

@@ -1,0 +1,5 @@
+{
+  "summary":  "Authorization Test Matrix for SECP-CAD-TRUTH-PATCH-001 mapping AUTH-01 through AUTH-15 scenarios to test cases, boundary checks, expected vs actual outcomes.",
+  "updatedAt":  "2026-11-02T10:03:12.008758724Z",
+  "userFacing":  true
+}

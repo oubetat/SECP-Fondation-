@@ -106,9 +106,9 @@ export class MultiDocumentPersistence {
       // Convert canonical EngineeringDocument to PersistedEngineeringDocument (stripping derived runtime data)
       const persistedDoc: PersistedEngineeringDocument = {
         documentId: doc.documentId,
-        revision: doc.revision,
-        type: doc.type || (doc.assembly ? 'ASSEMBLY' : 'PART'),
-        units: { ...doc.units },
+        revision: typeof doc.revision === 'number' ? doc.revision : (parseInt(String(doc.revision), 10) || 0),
+        type: (doc.type === 'ASSEMBLY' || doc.type === 'PART' ? doc.type : (doc.assembly ? 'ASSEMBLY' : 'PART')) as 'PART' | 'ASSEMBLY',
+        units: doc.units || DEFAULT_UNIT_SYSTEM_MM,
         sketches: JSON.parse(JSON.stringify(doc.sketches || [])),
         constraints: JSON.parse(JSON.stringify(doc.constraints || [])),
         features: JSON.parse(JSON.stringify(doc.features || [])),
@@ -118,8 +118,8 @@ export class MultiDocumentPersistence {
               instances: (doc.assembly.instances || []).map(inst => ({
                 instanceId: inst.instanceId,
                 documentId: inst.documentId,
-                position: { ...inst.position },
-                rotation: { ...inst.rotation },
+                position: inst.position ? { ...inst.position } : { x: 0, y: 0, z: 0 },
+                rotation: inst.rotation ? { ...inst.rotation } : { x: 0, y: 0, z: 0 },
                 colorHex: inst.colorHex,
                 isSuppressed: inst.isSuppressed ? true : false
               })),
@@ -136,7 +136,7 @@ export class MultiDocumentPersistence {
         topologyMap: doc.topologyMap
           ? {
               documentId: doc.topologyMap.documentId || doc.documentId,
-              version: doc.topologyMap.version || doc.revision,
+              version: typeof (doc.topologyMap as any).version === 'number' ? (doc.topologyMap as any).version : (parseInt(String((doc.topologyMap as any).version || doc.revision), 10) || 0),
               entries: doc.topologyMap.entries || {},
               faceMap: doc.topologyMap.faceMap || {},
               edgeMap: doc.topologyMap.edgeMap || {},
@@ -149,7 +149,7 @@ export class MultiDocumentPersistence {
       docMap.set(doc.documentId, persistedDoc);
 
       // Recursively traverse child assembly instances
-      if (doc.assembly?.instances && resolver) {
+      if (doc.assembly?.instances && resolver && typeof resolver.resolve === 'function') {
         for (const inst of doc.assembly.instances) {
           if (inst.documentId && !docMap.has(inst.documentId)) {
             const childDoc = resolver.resolve(inst.documentId);

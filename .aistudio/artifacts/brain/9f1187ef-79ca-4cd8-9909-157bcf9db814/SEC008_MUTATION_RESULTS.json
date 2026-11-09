@@ -1,0 +1,53 @@
+{
+  "qualificationSuite": "SECP-SECURITY-008 Controlled Mutation Verification",
+  "targetGate": "CanonicalDomainBindingEngine.sealBinding / SimulationSealingAuthorization.validateCapability",
+  "evaluationDate": "2026-11-02T07:27:42.289Z",
+  "mutations": [
+    {
+      "mutationId": "MUT-01",
+      "name": "Null Capability Guard Removal",
+      "targetedCheck": "validateCapability: if (!capability || typeof capability !== object)",
+      "unmutatedBehavior": "Throws SIMULATION_AUTHORITY_VIOLATION: Invalid or missing SealingCapability.",
+      "mutatedBehavior": "Allows unauthenticated callers to acquire authoritative HMAC seal tokens.",
+      "failClosedPreservedInProduction": true,
+      "runtimeEnforcementStatus": "VERIFIED_FAIL_CLOSED"
+    },
+    {
+      "mutationId": "MUT-02",
+      "name": "Capability Object Identity Weakening",
+      "targetedCheck": "validateCapability: registered !== capability (Instance reference equality)",
+      "unmutatedBehavior": "Throws SIMULATION_AUTHORITY_VIOLATION: Unrecognized or forged SealingCapability.",
+      "mutatedBehavior": "Allows structurally forged JSON objects matching the SealingCapability interface to pass.",
+      "failClosedPreservedInProduction": true,
+      "runtimeEnforcementStatus": "VERIFIED_FAIL_CLOSED"
+    },
+    {
+      "mutationId": "MUT-03",
+      "name": "Authority State Handshake Check Removal",
+      "targetedCheck": "sealBinding: if (initState !== INITIALIZED)",
+      "unmutatedBehavior": "Throws SIMULATION_AUTHORITY_NOT_INITIALIZED: Cannot seal domain binding before secure authority handshake completion.",
+      "mutatedBehavior": "Permits pre-boot execution and sealing without cryptographic authority boot.",
+      "failClosedPreservedInProduction": true,
+      "runtimeEnforcementStatus": "VERIFIED_FAIL_CLOSED"
+    },
+    {
+      "mutationId": "MUT-04",
+      "name": "Domain Scope Enforcement Removal",
+      "targetedCheck": "validateCapability: !registered.authorizedDomains.includes(requiredDomain)",
+      "unmutatedBehavior": "Throws SIMULATION_AUTHORITY_VIOLATION: Capability is not authorized for domain <domain>.",
+      "mutatedBehavior": "Enables cross-domain privilege escalation (e.g. thermal capability sealing CAD structures).",
+      "failClosedPreservedInProduction": true,
+      "runtimeEnforcementStatus": "VERIFIED_FAIL_CLOSED"
+    },
+    {
+      "mutationId": "MUT-05",
+      "name": "Revocation Registry Bypass",
+      "targetedCheck": "revokeAllCapabilities: capabilityRegistry.clear()",
+      "unmutatedBehavior": "Throws SIMULATION_AUTHORITY_VIOLATION: Unrecognized or forged SealingCapability on subsequent calls.",
+      "mutatedBehavior": "Enables token replay attacks across session and test boundaries.",
+      "failClosedPreservedInProduction": true,
+      "runtimeEnforcementStatus": "VERIFIED_FAIL_CLOSED"
+    }
+  ],
+  "conclusion": "All 5 runtime authority gates exhibit strict Fail-Closed behavior when unmutated, successfully mitigating runtime risks that evade static regex detection."
+}

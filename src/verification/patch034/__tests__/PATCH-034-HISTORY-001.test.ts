@@ -33,8 +33,8 @@ describe('PATCH-034-HISTORY-001: Preserve Canonical Feature History', () => {
   it('proves non-destructive feature history accumulation and causality across sequential operations', () => {
     // Initial State: Canonical empty document
     const initialDoc = SketchUIIntegration.createEmptyDocument('DOC_HISTORY_VERIFICATION');
-    expect(initialDoc.features.length).toBe(0);
-    expect(initialDoc.sketches.length).toBe(0);
+    expect(initialDoc.features?.length).toBe(0);
+    expect(initialDoc.sketches?.length).toBe(0);
 
     // =========================================================================
     // CASE A: Sketch A (100 x 50) -> Extrude A (depth 20)
@@ -58,11 +58,11 @@ describe('PATCH-034-HISTORY-001: Preserve Canonical Feature History', () => {
     expect(evidenceA.geometryHash.length).toBe(64);
 
     const docAfterA = resA.document;
-    expect(docAfterA.features.length).toBe(2);
-    expect(docAfterA.features[0].featureId).toBe('F_SKETCH_1');
-    expect(docAfterA.features[1].featureId).toBe('F_EXTRUDE_1');
-    expect(docAfterA.features[1].dependencyIds).toEqual(['F_SKETCH_1']);
-    expect(docAfterA.sketches.length).toBe(1);
+    expect(docAfterA.features?.length).toBe(2);
+    expect(docAfterA.features?.[0].featureId).toBe('F_SKETCH_1');
+    expect(docAfterA.features?.[1].featureId).toBe('F_EXTRUDE_1');
+    expect(docAfterA.features?.[1].dependencyIds).toEqual(['F_SKETCH_1']);
+    expect(docAfterA.sketches?.length).toBe(1);
 
     // =========================================================================
     // CASE B: On the SAME canonical document, perform Sketch B (50 x 40) -> Extrude B (depth 30)
@@ -92,27 +92,27 @@ describe('PATCH-034-HISTORY-001: Preserve Canonical Feature History', () => {
     // =========================================================================
 
     // 1. Total feature count is 4 (2 sketches, 2 extrusions)
-    expect(docAfterB.features.length).toBe(4);
+    expect(docAfterB.features?.length).toBe(4);
 
     // 2. Feature A remains intact
-    const featA = docAfterB.features.find(f => (f.featureId || f.id) === 'F_SKETCH_1');
+    const featA = docAfterB.features?.find(f => (f.featureId || f.id) === 'F_SKETCH_1');
     expect(featA).toBeDefined();
     expect(featA?.type).toBe('SKETCH');
 
     // 3. Extrude A remains intact
-    const extA = docAfterB.features.find(f => (f.featureId || f.id) === 'F_EXTRUDE_1');
+    const extA = docAfterB.features?.find(f => (f.featureId || f.id) === 'F_EXTRUDE_1');
     expect(extA).toBeDefined();
     expect(extA?.type).toBe('EXTRUDE');
     expect(extA?.definition?.parameters?.depth).toBe(20);
     expect(extA?.dependencyIds).toEqual(['F_SKETCH_1']);
 
     // 4. Feature B exists with collision-free ID
-    const featB = docAfterB.features.find(f => (f.featureId || f.id) === 'F_SKETCH_2');
+    const featB = docAfterB.features?.find(f => (f.featureId || f.id) === 'F_SKETCH_2');
     expect(featB).toBeDefined();
     expect(featB?.type).toBe('SKETCH');
 
     // 5. Extrude B exists with collision-free ID
-    const extB = docAfterB.features.find(f => (f.featureId || f.id) === 'F_EXTRUDE_2');
+    const extB = docAfterB.features?.find(f => (f.featureId || f.id) === 'F_EXTRUDE_2');
     expect(extB).toBeDefined();
     expect(extB?.type).toBe('EXTRUDE');
     expect(extB?.definition?.parameters?.depth).toBe(30);
@@ -145,13 +145,13 @@ describe('PATCH-034-HISTORY-001: Preserve Canonical Feature History', () => {
     const docAfterC = resC.document;
 
     // Feature count MUST remain exactly 4 (no duplicate features created)
-    expect(docAfterC.features.length).toBe(4);
+    expect(docAfterC.features?.length).toBe(4);
 
-    const updatedExtA = docAfterC.features.find(f => (f.featureId || f.id) === 'F_EXTRUDE_1');
+    const updatedExtA = docAfterC.features?.find(f => (f.featureId || f.id) === 'F_EXTRUDE_1');
     expect(updatedExtA?.definition?.parameters?.depth).toBe(40);
 
     // Feature B and Extrude B are still preserved
-    expect(docAfterC.features.some(f => (f.featureId || f.id) === 'F_SKETCH_2')).toBe(true);
-    expect(docAfterC.features.some(f => (f.featureId || f.id) === 'F_EXTRUDE_2')).toBe(true);
+    expect(docAfterC.features?.some(f => (f.featureId || f.id) === 'F_SKETCH_2')).toBe(true);
+    expect(docAfterC.features?.some(f => (f.featureId || f.id) === 'F_EXTRUDE_2')).toBe(true);
   });
 });

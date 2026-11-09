@@ -65,7 +65,7 @@ export class CAMBenchmarkCaseRunner {
     const stock = this.createStock();
     const { verified, runtimeMs } = await this.executeVerification(config, stock, 0);
 
-    const verdict: CAMBenchmarkVerdict = verified.verificationReport.isValid ? 'PASS' : 'FAIL';
+    const verdict: CAMBenchmarkVerdict = verified.verificationReport!.isValid ? 'PASS' : 'FAIL';
     
     return {
       caseId: 'BENCH-CAM-01',
@@ -73,13 +73,13 @@ export class CAMBenchmarkCaseRunner {
       category: 'TOOLPATH_GENERATION',
       verdict,
       metrics: {
-        segmentCount: verified.verificationReport.metrics.segmentCount,
-        totalLengthMm: verified.verificationReport.metrics.totalLengthMm,
+        segmentCount: verified.verificationReport!.metrics.segmentCount,
+        totalLengthMm: verified.verificationReport!.metrics.totalLengthMm,
         runtimeMs
       },
-      details: `Generated pocket toolpath with ${verified.verificationReport.metrics.segmentCount} segments. Validity: ${verified.verificationReport.isValid}`,
+      details: `Generated pocket toolpath with ${verified.verificationReport!.metrics.segmentCount} segments. Validity: ${verified.verificationReport!.isValid}`,
       evidencePacket: verified,
-      evidenceHash: verified.verificationReport.provenanceHash
+      evidenceHash: verified.verificationReport!.provenanceHash
     };
   }
 
@@ -89,7 +89,7 @@ export class CAMBenchmarkCaseRunner {
     const stock = this.createStock();
     const { verified, runtimeMs } = await this.executeVerification(config, stock, 0);
 
-    const verdict: CAMBenchmarkVerdict = verified.verificationReport.isValid ? 'PASS' : 'FAIL';
+    const verdict: CAMBenchmarkVerdict = verified.verificationReport!.isValid ? 'PASS' : 'FAIL';
     
     return {
       caseId: 'BENCH-CAM-02',
@@ -97,13 +97,13 @@ export class CAMBenchmarkCaseRunner {
       category: 'TOOLPATH_GENERATION',
       verdict,
       metrics: {
-        segmentCount: verified.verificationReport.metrics.segmentCount,
-        totalLengthMm: verified.verificationReport.metrics.totalLengthMm,
+        segmentCount: verified.verificationReport!.metrics.segmentCount,
+        totalLengthMm: verified.verificationReport!.metrics.totalLengthMm,
         runtimeMs
       },
-      details: `Generated contour toolpath with ${verified.verificationReport.metrics.segmentCount} segments.`,
+      details: `Generated contour toolpath with ${verified.verificationReport!.metrics.segmentCount} segments.`,
       evidencePacket: verified,
-      evidenceHash: verified.verificationReport.provenanceHash
+      evidenceHash: verified.verificationReport!.provenanceHash
     };
   }
 
@@ -113,7 +113,7 @@ export class CAMBenchmarkCaseRunner {
     const stock = this.createStock();
     const { verified, runtimeMs } = await this.executeVerification(config, stock, 0);
 
-    const verdict: CAMBenchmarkVerdict = verified.verificationReport.isValid ? 'PASS' : 'FAIL';
+    const verdict: CAMBenchmarkVerdict = verified.verificationReport!.isValid ? 'PASS' : 'FAIL';
     
     return {
       caseId: 'BENCH-CAM-03',
@@ -121,13 +121,13 @@ export class CAMBenchmarkCaseRunner {
       category: 'TOOLPATH_GENERATION',
       verdict,
       metrics: {
-        segmentCount: verified.verificationReport.metrics.segmentCount,
-        totalLengthMm: verified.verificationReport.metrics.totalLengthMm,
+        segmentCount: verified.verificationReport!.metrics.segmentCount,
+        totalLengthMm: verified.verificationReport!.metrics.totalLengthMm,
         runtimeMs
       },
-      details: `Generated facing toolpath. Points: ${verified.verificationReport.metrics.segmentCount}`,
+      details: `Generated facing toolpath. Points: ${verified.verificationReport!.metrics.segmentCount}`,
       evidencePacket: verified,
-      evidenceHash: verified.verificationReport.provenanceHash
+      evidenceHash: verified.verificationReport!.provenanceHash
     };
   }
 
@@ -161,18 +161,18 @@ export class CAMBenchmarkCaseRunner {
   // Case 07: Gouge Detection (Part Gouge)
   public static async runCase07(): Promise<CAMBenchmarkCaseResult> {
     const config = this.createBaseConfig('CONTOUR_PROFILE');
-    config.parameters.stepdownMm = 30; // Z will go to stock.zMax (20) - 30 = -10, part floor is 0
+    config.parameters!.stepdownMm = 30; // Z will go to stock.zMax (20) - 30 = -10, part floor is 0
     const stock = this.createStock();
     const { verified, runtimeMs } = await this.executeVerification(config, stock, 0);
 
-    const hasGouge = verified.verificationReport.issues.some(i => i.issueType === 'GOUGE_PART');
+    const hasGouge = verified.verificationReport!.issues.some(i => i.issueType === 'GOUGE_PART');
     const verdict: CAMBenchmarkVerdict = hasGouge ? 'PASS' : 'FAIL';
 
     return {
       caseId: 'BENCH-CAM-07', caseName: 'Gouge Detection', category: 'COLLISION',
-      verdict, metrics: { runtimeMs, invalidSegments: verified.verificationReport.issues.length },
+      verdict, metrics: { runtimeMs, invalidSegments: verified.verificationReport!.issues.length },
       details: `Detected gouge: ${hasGouge}. Toolpath generated below part floor.`,
-      evidencePacket: verified, evidenceHash: verified.verificationReport.provenanceHash
+      evidencePacket: verified, evidenceHash: verified.verificationReport!.provenanceHash
     };
   }
 
@@ -182,14 +182,14 @@ export class CAMBenchmarkCaseRunner {
     const stock = this.createStock();
     const { verified, runtimeMs } = await this.executeVerification(config, stock, 0);
 
-    const continuityGaps = verified.verificationReport.metrics.continuityGaps;
-    const verdict: CAMBenchmarkVerdict = verified.verificationReport.isValid && continuityGaps === 0 ? 'PASS' : 'FAIL';
+    const continuityGaps = verified.verificationReport!.metrics.continuityGaps;
+    const verdict: CAMBenchmarkVerdict = verified.verificationReport!.isValid && continuityGaps === 0 ? 'PASS' : 'FAIL';
 
     return {
       caseId: 'BENCH-CAM-08', caseName: 'Toolpath Continuity', category: 'TOOLPATH_ANALYSIS',
       verdict, metrics: { runtimeMs, continuityGaps },
       details: `Continuity gaps: ${continuityGaps}`,
-      evidencePacket: verified, evidenceHash: verified.verificationReport.provenanceHash
+      evidencePacket: verified, evidenceHash: verified.verificationReport!.provenanceHash
     };
   }
 
@@ -230,13 +230,13 @@ export class CAMBenchmarkCaseRunner {
 
     // If verified checks against original machine bounds it would fail, but we only have stock limits.
     // For now, testing stock boundary violations.
-    const hasLimitViolation = verified.verificationReport.metrics.stockViolations > 0;
+    const hasLimitViolation = verified.verificationReport!.metrics.stockViolations > 0;
     
     return {
       caseId: 'BENCH-CAM-12', caseName: 'Machine Limits Enforcement', category: 'KINEMATICS',
       verdict: 'UNPROVEN', metrics: { runtimeMs },
       details: 'Machine limit checking separate from stock bounds is unproven.',
-      evidencePacket: verified, evidenceHash: verified.verificationReport.provenanceHash
+      evidencePacket: verified, evidenceHash: verified.verificationReport!.provenanceHash
     };
   }
 
@@ -280,22 +280,22 @@ export class CAMBenchmarkCaseRunner {
   // Case 16: Parameter Sensitivity
   public static async runCase16(): Promise<CAMBenchmarkCaseResult> {
     const config1 = this.createBaseConfig('FACING');
-    config1.parameters.stepoverMm = 5;
+    config1.parameters!.stepoverMm = 5;
     const config2 = this.createBaseConfig('FACING');
-    config2.parameters.stepoverMm = 10;
+    config2.parameters!.stepoverMm = 10;
     
     const stock = this.createStock();
     const { verified: v1, runtimeMs: r1 } = await this.executeVerification(config1, stock, 0);
     const { verified: v2, runtimeMs: r2 } = await this.executeVerification(config2, stock, 0);
 
-    const isSensitive = v1.verificationReport.metrics.totalLengthMm > v2.verificationReport.metrics.totalLengthMm && v1.verificationReport.metrics.segmentCount > v2.verificationReport.metrics.segmentCount;
+    const isSensitive = v1.verificationReport!.metrics.totalLengthMm > v2.verificationReport!.metrics.totalLengthMm && v1.verificationReport!.metrics.segmentCount > v2.verificationReport!.metrics.segmentCount;
     const verdict: CAMBenchmarkVerdict = isSensitive ? 'PASS' : 'FAIL';
 
     return {
       caseId: 'BENCH-CAM-16', caseName: 'Parameter Sensitivity', category: 'TOOLPATH_GENERATION',
       verdict, metrics: { runtimeMs: r1 + r2 },
-      details: `Stepover 5mm length=${v1.verificationReport.metrics.totalLengthMm}, Stepover 10mm length=${v2.verificationReport.metrics.totalLengthMm}`,
-      evidencePacket: { len1: v1.verificationReport.metrics.totalLengthMm, len2: v2.verificationReport.metrics.totalLengthMm }, 
+      details: `Stepover 5mm length=${v1.verificationReport!.metrics.totalLengthMm}, Stepover 10mm length=${v2.verificationReport!.metrics.totalLengthMm}`,
+      evidencePacket: { len1: v1.verificationReport!.metrics.totalLengthMm, len2: v2.verificationReport!.metrics.totalLengthMm }, 
       evidenceHash: v1.provenance.trajectoryHash
     };
   }
@@ -312,20 +312,20 @@ export class CAMBenchmarkCaseRunner {
   // Case 18: Adversarial CAM
   public static async runCase18(): Promise<CAMBenchmarkCaseResult> {
     const config = this.createBaseConfig('CONTOUR_PROFILE');
-    config.parameters.stepdownMm = NaN;
+    config.parameters!.stepdownMm = NaN;
     
     const stock = this.createStock();
     const { verified, runtimeMs } = await this.executeVerification(config, stock, 0);
 
-    const hasInvalidSegments = verified.verificationReport.metrics.invalidSegments > 0;
+    const hasInvalidSegments = verified.verificationReport!.metrics.invalidSegments > 0;
     // Expected behavior: verification should flag the segments
-    const verdict: CAMBenchmarkVerdict = hasInvalidSegments && !verified.verificationReport.isValid ? 'PASS' : 'FAIL';
+    const verdict: CAMBenchmarkVerdict = hasInvalidSegments && !verified.verificationReport!.isValid ? 'PASS' : 'FAIL';
 
     return {
       caseId: 'BENCH-CAM-18', caseName: 'Adversarial CAM Rejection', category: 'ADVERSARIAL',
-      verdict, metrics: { runtimeMs, invalidSegments: verified.verificationReport.metrics.invalidSegments },
+      verdict, metrics: { runtimeMs, invalidSegments: verified.verificationReport!.metrics.invalidSegments },
       details: `Injected NaN stepdown. Invalid segments detected: ${hasInvalidSegments}`,
-      evidencePacket: verified, evidenceHash: verified.verificationReport.provenanceHash
+      evidencePacket: verified, evidenceHash: verified.verificationReport!.provenanceHash
     };
   }
 
@@ -357,14 +357,14 @@ export class CAMBenchmarkCaseRunner {
     const stock = this.createStock();
     const { verified, runtimeMs } = await this.executeVerification(config, stock, 0);
 
-    const hasEvidence = !!verified.verificationReport.provenanceHash && !!verified.provenance.trajectoryHash;
+    const hasEvidence = !!verified.verificationReport!.provenanceHash && !!verified.provenance.trajectoryHash;
     const verdict: CAMBenchmarkVerdict = hasEvidence ? 'PASS' : 'FAIL';
 
     return {
       caseId: 'BENCH-CAM-20', caseName: 'Manufacturing Evidence Lineage', category: 'INTEGRITY',
       verdict, metrics: { runtimeMs },
-      details: `Evidence generated: ${hasEvidence}. Provenance Hash: ${verified.verificationReport.provenanceHash}`,
-      evidencePacket: verified, evidenceHash: verified.verificationReport.provenanceHash
+      details: `Evidence generated: ${hasEvidence}. Provenance Hash: ${verified.verificationReport!.provenanceHash}`,
+      evidencePacket: verified, evidenceHash: verified.verificationReport!.provenanceHash
     };
   }
 }

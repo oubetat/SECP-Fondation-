@@ -155,6 +155,91 @@ export function createHash(algorithm: string = 'sha256'): Hash {
   return new Hash(algorithm);
 }
 
+export class Hmac {
+  private ipad: Uint8Array;
+  private opad: Uint8Array;
+  private chunks: Uint8Array[] = [];
+
+  constructor(key: string | Uint8Array | Buffer) {
+    const blockSize = 64; // SHA-256 block size
+    let keyBytes: Uint8Array;
+
+    if (typeof key === 'string') {
+      keyBytes = new TextEncoder().encode(key);
+    } else if (key instanceof Buffer) {
+      keyBytes = new Uint8Array(key);
+    } else {
+      keyBytes = key;
+    }
+
+    if (keyBytes.length > blockSize) {
+      keyBytes = sha256(keyBytes);
+    }
+
+    const k = new Uint8Array(blockSize);
+    k.set(keyBytes);
+
+    this.ipad = new Uint8Array(blockSize);
+    this.opad = new Uint8Array(blockSize);
+
+    for (let i = 0; i < blockSize; i++) {
+      this.ipad[i] = k[i] ^ 0x36;
+      this.opad[i] = k[i] ^ 0x5c;
+    }
+  }
+
+  public update(data: any, encoding?: string): Hmac {
+    if (typeof data === 'string') {
+      this.chunks.push(new TextEncoder().encode(data));
+    } else if (data instanceof Uint8Array) {
+      this.chunks.push(data);
+    } else if (data instanceof Buffer) {
+      this.chunks.push(new Uint8Array(data));
+    }
+    return this;
+  }
+
+  public digest(encoding: 'hex' | 'binary' | string = 'hex'): any {
+    const totalLen = this.chunks.reduce((acc, c) => acc + c.length, 0);
+    const m = new Uint8Array(totalLen);
+    let offset = 0;
+    for (const chunk of this.chunks) {
+      m.set(chunk, offset);
+      offset += chunk.length;
+    }
+
+    const inner = new Uint8Array(this.ipad.length + m.length);
+    inner.set(this.ipad);
+    inner.set(m, this.ipad.length);
+    const innerHash = sha256(inner);
+
+    const outer = new Uint8Array(this.opad.length + innerHash.length);
+    outer.set(this.opad);
+    outer.set(innerHash, this.opad.length);
+    const result = sha256(outer);
+
+    if (encoding === 'hex') {
+      return Array.from(result)
+        .map(b => b.toString(16).padStart(2, '0'))
+        .join('');
+    }
+    return Buffer.from(result);
+  }
+}
+
+export function createHmac(algorithm: string, key: any): Hmac {
+  return new Hmac(key);
+}
+
+export function timingSafeEqual(a: Buffer | Uint8Array, b: Buffer | Uint8Array): boolean {
+  if (a.length !== b.length) return false;
+  let result = 0;
+  for (let i = 0; i < a.length; i++) {
+    result |= a[i] ^ b[i];
+  }
+  return result === 0;
+}
+
 export function randomBytes(size: number): Buffer {
   const arr = new Uint8Array(size);
   if (typeof globalThis !== 'undefined' && globalThis.crypto && globalThis.crypto.getRandomValues) {
@@ -201,6 +286,8 @@ export function generateKeyPairSync(type: string, options: any): any {
 
 const cryptoPolyfill = {
   createHash,
+  createHmac,
+  timingSafeEqual,
   randomBytes,
   randomUUID,
   createSign,

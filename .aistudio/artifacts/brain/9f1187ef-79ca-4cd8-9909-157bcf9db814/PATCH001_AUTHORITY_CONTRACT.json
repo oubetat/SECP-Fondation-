@@ -1,0 +1,83 @@
+{
+  "auditMission": "SECP-CAD-TRUTH-PATCH-001",
+  "phase": "PHASE_A_AUTHORITY_CONTRACT",
+  "timestamp": "2026-11-02T09:30:00.000Z",
+  "authorityContract": {
+    "issuer": "SimulationSealingAuthorization.issueSealingCapability",
+    "capabilityStructure": {
+      "capabilityId": "Random 16-byte hex string",
+      "authorizedContext": "Execution module identity context string",
+      "authorizedDomains": "Array of string engineering domain identifiers",
+      "cadRevisionHash": "Optional explicit CAD revision hash binding",
+      "canonicalGeometryHash": "Optional explicit geometry hash binding",
+      "issuedAt": "Epoch timestamp in milliseconds",
+      "expiresAt": "Optional expiration epoch timestamp",
+      "maxUses": "Optional single-use or limited-use execution count",
+      "usedCount": "Counter tracking capability consumption"
+    },
+    "validationBoundary": {
+      "location": "SimulationSealingAuthorization.validateCapability",
+      "checks": [
+        "Capability object is non-null and is a valid object",
+        "Capability instance matches the registered instance in capabilityRegistry (instance equality)",
+        "Capability is not revoked (isRevoked !== true)",
+        "Current timestamp does not exceed expiresAt (if defined)",
+        "Required domain is listed in authorizedDomains (if requiredDomain is provided)",
+        "cadRevisionHash matches requiredRevisionHash (if both are provided)",
+        "canonicalGeometryHash matches requiredGeometryHash (if both are provided)",
+        "usedCount does not exceed maxUses (if maxUses is defined)"
+      ]
+    },
+    "sealingBoundaries": [
+      {
+        "boundary": "SimulationAuthorityInternal.sealEnvelope",
+        "target": "SimulationExecutionEnvelope",
+        "requirements": [
+          "Authority initialization state MUST be 'INITIALIZED'",
+          "Valid SealingCapability MUST be provided",
+          "Capability MUST be authorized for 'SIMULATION' domain and match envelope's revision and geometry hashes"
+        ]
+      },
+      {
+        "boundary": "CanonicalDomainBindingEngine.sealBinding",
+        "target": "CanonicalDomainBinding (e.g. CfdToCoreBinding, FemToCoreBinding)",
+        "requirements": [
+          "Authority initialization state MUST be 'INITIALIZED'",
+          "Valid SealingCapability MUST be provided",
+          "Capability MUST be authorized for the target engineering domain (e.g. 'CFD', 'FEM')",
+          "HMAC seal token is calculated over (keyVersion, domain, entityId, revisionId, geometryHash, context)"
+        ]
+      }
+    ],
+    "solverGatingBoundaries": [
+      {
+        "solver": "Fvm3DNavierStokesSolver.solve",
+        "domain": "CFD",
+        "requirements": [
+          "1st argument MUST be a valid CfdToCoreBinding object",
+          "binding.executionAuthority.isAuthoritative MUST be true",
+          "CanonicalDomainBindingEngine.validateBinding(binding) MUST return valid: true",
+          "HMAC seal token MUST verify against active key secret"
+        ]
+      },
+      {
+        "solver": "FEMCore.solve",
+        "domain": "FEM",
+        "requirements": [
+          "1st argument MUST be a valid FemToCoreBinding object",
+          "binding.executionAuthority.isAuthoritative MUST be true",
+          "CanonicalDomainBindingEngine.validateBinding(binding) MUST return valid: true"
+        ]
+      }
+    ]
+  },
+  "sourceHashes": {
+    "src/engine/simulation/SimulationEngine.ts": "4c7e3beaa368eb5b8a34ad54e28fbd2bd11ea350bd326c2bee9f89bbe4ef1141",
+    "src/engine/simulation/SimulationExecutionRegistry.ts": "c45ce10c103bd8a6b0eda019ce710346b3689f6e2ae3f1a345a005f2d68ccbc4",
+    "src/engine/simulation/SimulationAuthorityInternal.ts": "111e369a80b0db5d7145f627b2db05c82a032003297e58de01132f1b4b4f53c0",
+    "src/engine/simulation/SimulationSealingAuthorization.ts": "ed838a96b3925ef6526cc4fc3d52788db30b0ab922e578530582a84f5e316cd1",
+    "src/engine/crossdomain/CanonicalDomainBindingEngine.ts": "695b080283e4343e49dc17ee7b1e9fa4e852e0a89ca6d6a24f501306c4764430",
+    "src/engine/crossdomain/CanonicalDomainBinding.ts": "e69e41d4b03c4b246d89c2a99cfcad6ae1e71b32398fbffd3d21a057aa0fdf03",
+    "src/engine/cfd3d/Fvm3DNavierStokesSolver.ts": "95b45f961c8930eb61d8868956a7e5239a5ef1d127e9a4fa870c206eb948eec0"
+  }
+}
